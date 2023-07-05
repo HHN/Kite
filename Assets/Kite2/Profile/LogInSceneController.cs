@@ -1,0 +1,49 @@
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+public class LogInSceneController : SceneController, OnSuccessHandler
+{
+    public TMP_InputField usernameInputField;
+    public TMP_InputField passwordInputField;
+    public Button performLoginButton;
+    public Button forgotPasswordButton;
+    public GameObject loginServerCall;
+
+    void Start()
+    {
+        performLoginButton.onClick.AddListener(delegate { OnPerformLoginButton(); });
+        forgotPasswordButton.onClick.AddListener(delegate { OnForgotPasswordButton(); });
+    }
+
+    public void OnPerformLoginButton()
+    {
+        if (usernameInputField.text.Trim() == string.Empty || passwordInputField.text.Trim() == string.Empty)
+        {
+            this.DisplayErrorMessage(ErrorMessages.NOT_EVERYTHING_ENTERED);
+        }
+        else
+        {
+            this.DisplayInfoMessage(InfoMessages.WAIT_FOR_LOG_IN);
+            LogInServerCall call = Instantiate(loginServerCall).GetComponent<LogInServerCall>();
+            call.sceneController = this;
+            call.onSuccessHandler = this;
+            call.username = usernameInputField.text.Trim();
+            call.password = passwordInputField.text.Trim();
+            call.SendRequest();
+        }
+    }
+
+    public void OnForgotPasswordButton()
+    {
+        SceneLoader.LoadResetPasswordScene();
+    }
+
+    public void OnSuccess(Response response)
+    {
+        messageObject.CloseMessageBox();
+        AuthenticationManager.Instance().SetAuthToken(response.authToken);
+        AuthenticationManager.Instance().SetRefreshToken(response.refreshToken);
+        SceneLoader.LoadMainMenuScene();
+    }
+}

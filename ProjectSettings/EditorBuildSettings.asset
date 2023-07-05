@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Kite2/Common/WelcomeScene.unity
+    guid: 15f4fb8cc3e25df4da52691145c1a515
+  - enabled: 1
+    path: Assets/Kite2/Common/MainMenuScene.unity
+    guid: 3f684c50ceffa584480cfc12a815401b
+  - enabled: 1
+    path: Assets/Kite2/Maker/CharacterMakerScene.unity
+    guid: e0a95336933ab0e478ae957accd4476a
+  - enabled: 1
+    path: Assets/Kite2/Maker/DialogueMakerScene.unity
+    guid: 95fa3dd3a6e4bf744a06c47b1f8c7800
+  - enabled: 1
+    path: Assets/Kite2/Maker/EnvironmentMakerScene.unity
+    guid: e42a7cd4fab1d684c89797fa1914d0f6
+  - enabled: 1
+    path: Assets/Kite2/Maker/GenerateNovelScene.unity
+    guid: 5aa39f604bfff9147b4dc2a054652b90
+  - enabled: 1
+    path: Assets/Kite2/Maker/SaveNovelScene.unity
+    guid: dd54594464877b04a857dd745a51e3a1
+  - enabled: 1
+    path: Assets/Kite2/Player/FeedbackScene.unity
+    guid: b0393e03ad9357e4cafd694c35f17130
+  - enabled: 1
+    path: Assets/Kite2/Player/PlayNovelScene.unity
+    guid: 945b72fd05426924f830464ef17543ec
+  - enabled: 1
+    path: Assets/Kite2/Player/SelectNovelScene.unity
+    guid: d7d598b8664f8e543ade9081a5e0ca74
+  - enabled: 1
+    path: Assets/Kite2/Profile/LogInScene.unity
+    guid: 608ca49a8a7359c4991d58699f489b42
+  - enabled: 1
+    path: Assets/Kite2/Profile/RegistrationScene.unity
+    guid: 35eb9a7d06d8cbb489d037638fd78467
+  - enabled: 1
+    path: Assets/Kite2/Profile/ResetPasswordScene.unity
+    guid: 669afdb6622dd204896884180571c5f7
+  - enabled: 1
+    path: Assets/Kite2/Common/SettingsScene.unity
+    guid: 421e8bb45387ffd499ffc331477553c8
+  m_configObjects: {}
