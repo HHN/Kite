@@ -37,6 +37,6 @@ public class RegistrationSceneController : SceneController, OnSuccessHandler
     public void OnSuccess(Response response)
     {
         messageObject.CloseMessageBox();
-        SceneLoader.LoadWelcomeScene();
+        SceneLoader.LoadMainMenuScene();
     }
 }

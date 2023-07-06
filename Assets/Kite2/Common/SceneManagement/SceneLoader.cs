@@ -7,10 +7,6 @@ public class SceneLoader : MonoBehaviour
         LoadScene(SceneNames.MAIN_MENU_SCENE);
     }
 
-    public static void LoadWelcomeScene() {
-        LoadScene(SceneNames.WELCOME_SCENE);
-    }
-
     public static void LoadCharacterMakerScene() {
         LoadScene(SceneNames.CHARACTER_MAKER_SCENE);
     }

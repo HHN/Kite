@@ -12,8 +12,8 @@ public class SceneRouter
             case (SceneNames.SELECT_NOVEL_SCENE): return SceneNames.MAIN_MENU_SCENE;
             case (SceneNames.PLAY_NOVEL_SCENE): return SceneNames.SELECT_NOVEL_SCENE;
             case (SceneNames.FEEDBACK_SCENE): return SceneNames.PLAY_NOVEL_SCENE;
-            case (SceneNames.REGISTRATION_SCENE): return SceneNames.WELCOME_SCENE;
-            case (SceneNames.LOG_IN_SCENE): return SceneNames.WELCOME_SCENE;
+            case (SceneNames.REGISTRATION_SCENE): return SceneNames.MAIN_MENU_SCENE;
+            case (SceneNames.LOG_IN_SCENE): return SceneNames.MAIN_MENU_SCENE;
             case (SceneNames.RESET_PASSWORD_SCENE): return SceneNames.LOG_IN_SCENE;
             case (SceneNames.SETTINGS_SCENE): return SceneNames.MAIN_MENU_SCENE;
             default: return "";
@@ -32,9 +32,9 @@ public class SceneRouter
             case (SceneNames.SELECT_NOVEL_SCENE): return SceneNames.MAIN_MENU_SCENE;
             case (SceneNames.PLAY_NOVEL_SCENE): return SceneNames.MAIN_MENU_SCENE;
             case (SceneNames.FEEDBACK_SCENE): return SceneNames.MAIN_MENU_SCENE;
-            case (SceneNames.REGISTRATION_SCENE): return SceneNames.WELCOME_SCENE;
-            case (SceneNames.LOG_IN_SCENE): return SceneNames.WELCOME_SCENE;
-            case (SceneNames.RESET_PASSWORD_SCENE): return SceneNames.WELCOME_SCENE;
+            case (SceneNames.REGISTRATION_SCENE): return SceneNames.MAIN_MENU_SCENE;
+            case (SceneNames.LOG_IN_SCENE): return SceneNames.MAIN_MENU_SCENE;
+            case (SceneNames.RESET_PASSWORD_SCENE): return SceneNames.MAIN_MENU_SCENE;
             case (SceneNames.SETTINGS_SCENE): return SceneNames.MAIN_MENU_SCENE;
             default: return "";
         }

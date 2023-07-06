@@ -1,7 +1,6 @@
 public class SceneNames
 {
     public const string MAIN_MENU_SCENE = "MainMenuScene";
-    public const string WELCOME_SCENE = "WelcomeScene";
     public const string CHARACTER_MAKER_SCENE = "CharacterMakerScene";
     public const string DIALOGUE_MAKER_SCENE = "DialogueMakerScene";
     public const string ENVIRONMENT_MAKER_SCENE = "EnvironmentMakerScene";
