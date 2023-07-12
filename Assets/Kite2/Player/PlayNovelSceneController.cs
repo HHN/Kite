@@ -1,18 +1,298 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.UI;
+using TMPro;
 using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
 
 public class PlayNovelSceneController : SceneController
 {
-    // Start is called before the first frame update
+    private VisualNovel novelToPlay;
+    public Slider progressbar;
+    public TextMeshProUGUI novelName;
+    public ConversationContentGuiController conversationContent;
+    public GameObject novelImageContainer;
+    public GameObject novelBackgroundPrefab;
+    public GameObject characterPrefab;
+    private bool isWaitingForConfirmation = false;
+    private Dictionary<long, VisualNovelEvent> novelEvents = new Dictionary<long, VisualNovelEvent>();
+    private VisualNovelEvent nextEventToPlay;
+    public GameObject backgroundContainer;
+    public GameObject[] backgroundPrefab;
+    private GameObject currentBackground;
+    public GameObject characterContainer;
+    public GameObject[] characterPrefabs;
+    private Dictionary<string, GameObject> currentCharacters = new Dictionary<string, GameObject>();
+    public ChatScrollView chatScroll;
+
     void Start()
     {
-        
+        novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
+        Initialize();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Input.GetKeyDown("space"))
+        {
+            OnConfirm();
+        }
+    }
+
+    public void Initialize()
+    {
+        if (novelToPlay == null)
+        {
+            return;
+        }
+
+        novelName.text = novelToPlay.title;
+
+        if (novelToPlay.novelEvents.Count <= 0)
+        {
+            return;
+        }
+
+        foreach (VisualNovelEvent novelEvent in novelToPlay.novelEvents)
+        {
+            novelEvents.Add(novelEvent.id, novelEvent);
+        }
+        nextEventToPlay = novelToPlay.novelEvents[0];
+        StartCoroutine(StartNextEventInOneSeconds(1));
+    }
+
+    public void OnConfirm()
+    {
+        if (!isWaitingForConfirmation)
+        {
+            return;
+        }
+        isWaitingForConfirmation = false;
+        PlayNextEvent();
+    }
+
+    public void PlayNextEvent()
+    {
+        VisualNovelEventType type = VisualNovelEventTypeHelper.ValueOf(nextEventToPlay.eventType);
+
+        switch (type)
+        {
+            case VisualNovelEventType.SET_BACKGROUND_EVENT:
+                {
+                    HandleBackgrundEvent(nextEventToPlay);
+                    break;
+                }
+            case VisualNovelEventType.CHARAKTER_JOIN_EVENT:
+                {
+                    HandleCharacterJoinEvent(nextEventToPlay);
+                    break;
+                }
+            case VisualNovelEventType.CHARAKTER_EXIT_EVENT:
+                {
+                    HandleCharacterExitEvent(nextEventToPlay);
+                    break;
+                }
+            case VisualNovelEventType.SHOW_MESSAGE_EVENT:
+                {
+                    HandleShowMessageEvent(nextEventToPlay);
+                    ScrollToBottom();
+                    break;
+                }
+            case VisualNovelEventType.ADD_CHOICE_EVENT:
+                {
+                    HandleAddChoiceEvent(nextEventToPlay);
+                    break;
+                }
+            case VisualNovelEventType.SHOW_CHOICES_EVENT:
+                {
+                    HandleShowChoicesEvent(nextEventToPlay);
+                    ScrollToBottom();
+                    break;
+                }
+            case VisualNovelEventType.ADD_OPINION_CHOICE_EVENT:
+                {
+                    HandleAddOpinionChoiceEvent(nextEventToPlay);
+                    break;
+                }
+            case VisualNovelEventType.ASK_FOR_OPINION_EVENT:
+                {
+                    HandleAskForOpinionEvent(nextEventToPlay);
+                    ScrollToBottom();
+                    break;
+                }
+            case VisualNovelEventType.SHOW_OPINION_FEEDBACK_EVENT:
+                {
+                    HandleOpinionFeedbackEvent(nextEventToPlay);
+                    break;
+                }
+            case VisualNovelEventType.END_NOVEL_EVENT:
+                {
+                    HandleEndNovelEvent(nextEventToPlay);
+                    break;
+                }
+            default:
+                {
+                    break;
+                }
+        }
+    }
+
+    public void HandleBackgrundEvent(VisualNovelEvent novelEvent)
+    {
+        long nextEventID = novelEvent.nextId;
+        nextEventToPlay = novelEvents[nextEventID];
+
+        if (currentBackground != null)
+        {
+            Destroy(currentBackground);
+        }
+        currentBackground = Instantiate(backgroundPrefab[novelEvent.imageId], backgroundContainer.transform);
+
+        if (novelEvent.waitForUserConfirmation)
+        {
+            isWaitingForConfirmation = true;
+            return;
+        }
+        StartCoroutine(StartNextEventInOneSeconds(1));
+    }
+
+    public void HandleCharacterJoinEvent(VisualNovelEvent novelEvent)
+    {
+        long nextEventID = novelEvent.nextId;
+        nextEventToPlay = novelEvents[nextEventID];
+
+        GameObject character = Instantiate(characterPrefabs[novelEvent.imageId], characterContainer.transform);
+        currentCharacters.Add(novelEvent.name, character);
+
+        if (novelEvent.waitForUserConfirmation)
+        {
+            isWaitingForConfirmation = true;
+            return;
+        }
+        StartCoroutine(StartNextEventInOneSeconds(1));
+    }
+
+    public void HandleCharacterExitEvent(VisualNovelEvent novelEvent)
+    {
+        long nextEventID = novelEvent.nextId;
+        nextEventToPlay = novelEvents[nextEventID];
+
+        GameObject character = currentCharacters[novelEvent.name];
+        currentCharacters.Remove(novelEvent.name);
+        Destroy(character);
+
+        if (novelEvent.waitForUserConfirmation)
+        {
+            isWaitingForConfirmation = true;
+            return;
+        }
+        StartCoroutine(StartNextEventInOneSeconds(1));
+    }
+
+    public void HandleShowMessageEvent(VisualNovelEvent novelEvent)
+    {
+        long nextEventID = novelEvent.nextId;
+        nextEventToPlay = novelEvents[nextEventID];
+
+        conversationContent.AddContent(novelEvent, this);
+
+        if (novelEvent.waitForUserConfirmation)
+        {
+            isWaitingForConfirmation = true;
+            return;
+        }
+        StartCoroutine(StartNextEventInOneSeconds(1));
+    }
+
+    public void HandleAddChoiceEvent(VisualNovelEvent novelEvent)
+    {
+        long nextEventID = novelEvent.nextId;
+        nextEventToPlay = novelEvents[nextEventID];
+
+        conversationContent.AddContent(novelEvent, this);
+
+        if (novelEvent.waitForUserConfirmation)
+        {
+            isWaitingForConfirmation = true;
+            return;
+        }
+        PlayNextEvent();
+    }
+
+    public void HandleShowChoicesEvent(VisualNovelEvent novelEvent)
+    {
+        conversationContent.AddContent(novelEvent, this);
+    }
+
+    public void HandleAddOpinionChoiceEvent(VisualNovelEvent novelEvent)
+    {
+        long nextEventID = novelEvent.nextId;
+        nextEventToPlay = novelEvents[nextEventID];
+
+        // Here code
+
+        if (novelEvent.waitForUserConfirmation)
+        {
+            isWaitingForConfirmation = true;
+            return;
+        }
+        PlayNextEvent();
+    }
+
+    public void HandleAskForOpinionEvent(VisualNovelEvent novelEvent)
+    {
+        long nextEventID = novelEvent.nextId;
+        nextEventToPlay = novelEvents[nextEventID];
+
+        // Here code
+
+        if (novelEvent.waitForUserConfirmation)
+        {
+            isWaitingForConfirmation = true;
+            return;
+        }
+        StartCoroutine(StartNextEventInOneSeconds(1));
+    }
+
+    public void HandleOpinionFeedbackEvent(VisualNovelEvent novelEvent)
+    {
+        long nextEventID = novelEvent.nextId;
+        nextEventToPlay = novelEvents[nextEventID];
+
+        // Here code
+
+        if (novelEvent.waitForUserConfirmation)
+        {
+            isWaitingForConfirmation = true;
+            return;
+        }
+        StartCoroutine(StartNextEventInOneSeconds(1));
+    }
+
+    public void HandleEndNovelEvent(VisualNovelEvent novelEvent)
+    {
+        SceneLoader.LoadFeedbackScene();
+    }
+
+    public IEnumerator StartNextEventInOneSeconds(int second)
+    {
+        yield return new WaitForSeconds(second);
+        PlayNextEvent();
+    }
+
+    public void ShowAnswer(string message)
+    {
+        conversationContent.ShowPlayerAnswer(message);
+        ScrollToBottom();
+    }
+
+    public void SetNextEvent(long id)
+    {
+        nextEventToPlay = novelEvents[id];
+        PlayNextEvent();
+    }
+
+    public void ScrollToBottom()
+    {
+        StartCoroutine(chatScroll.ScrollToBottom());
     }
 }

@@ -25,7 +25,7 @@ public enum ResultCode
 
 public class ResultCodeHelper
 {
-    public static int toInt(ResultCode resultCode)
+    public static int ToInt(ResultCode resultCode)
     {
         switch (resultCode)
         {
@@ -53,7 +53,7 @@ public class ResultCodeHelper
         }
     }
 
-    public static ResultCode valueOf(int i)
+    public static ResultCode ValueOf(int i)
     {
         switch (i)
         {

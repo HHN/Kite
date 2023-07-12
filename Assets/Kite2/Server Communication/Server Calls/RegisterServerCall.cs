@@ -22,7 +22,7 @@ public class RegisterServerCall : ServerCall
 
     protected override void OnResponse(Response response)
     {
-        switch (ResultCodeHelper.valueOf(response.resultCode))
+        switch (ResultCodeHelper.ValueOf(response.resultCode))
         {
             case ResultCode.SUCCESSFULLY_REGISTERED_NEW_USER:
                 {

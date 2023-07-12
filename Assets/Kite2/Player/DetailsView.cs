@@ -23,7 +23,7 @@ public class DetailsView : MonoBehaviour
         long idOfNovelSprite = novelToDisplay.image;
         Sprite spriteOfNovel = sceneController.FindBigSpriteById(idOfNovelSprite);
         novelImage.sprite = spriteOfNovel;
-        novelTitle.text = novelToDisplay.headline;
+        novelTitle.text = novelToDisplay.title;
         novelDescription.text = novelToDisplay.description;
     }
 

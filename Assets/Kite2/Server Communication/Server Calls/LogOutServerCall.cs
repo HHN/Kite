@@ -18,7 +18,7 @@ public class LogOutServerCall : ServerCall
 
     protected override void OnResponse(Response response)
     {
-        switch (ResultCodeHelper.valueOf(response.resultCode))
+        switch (ResultCodeHelper.ValueOf(response.resultCode))
         {
             case ResultCode.SUCCESSFULLY_LOGGED_OUT:
                 {

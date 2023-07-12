@@ -1,11 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class VisualNovel
 {
-    public string headline;
+    public string title;
     public string description;
     public long image;
+    public string nameOfMainCharacter;
+    public string feedback;
+    public List<VisualNovelEvent> novelEvents;
 }

@@ -195,6 +195,7 @@ MonoBehaviour:
   novelPlayerButton: {fileID: 7797249983160617427}
   novelMakerButton: {fileID: 7797249981879205017}
   settingsButton: {fileID: 7797249983907297049}
+  sceneController: {fileID: 0}
 --- !u!1 &7797249981879204999
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,7 +443,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -917.5}
+  m_AnchoredPosition: {x: 0, y: -912.5}
   m_SizeDelta: {x: 1080, y: 95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7797249982169124993
@@ -1092,7 +1093,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 917.5}
+  m_AnchoredPosition: {x: 0, y: 912.5}
   m_SizeDelta: {x: 1080, y: 95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7797249983306858099

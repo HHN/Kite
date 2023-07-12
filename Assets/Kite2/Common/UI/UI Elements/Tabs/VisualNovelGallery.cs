@@ -53,7 +53,7 @@ public class VisualNovelGallery : MonoBehaviour
 
             VisualNovelRepresentation representation = novelRepresentation.GetComponent<VisualNovelRepresentation>();
             representation.visualNovel = novels[i];
-            representation.SetHeadline(novels[i].headline);
+            representation.SetHeadline(novels[i].title);
             Sprite sprite = sceneController.FindSmalSpriteById(novels[i].image);
             representation.SetButtonImage(sprite);
             representation.sceneController = sceneController;
