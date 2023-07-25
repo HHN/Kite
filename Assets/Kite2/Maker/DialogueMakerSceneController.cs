@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueMakerSceneController : SceneController
 {
-    // Start is called before the first frame update
+    public Button nextButton;
+
     void Start()
     {
-        
+        nextButton.onClick.AddListener(delegate { OnNextButton(); });
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnNextButton()
     {
-        
+        SceneLoader.LoadSaveNovelScene();
     }
 }

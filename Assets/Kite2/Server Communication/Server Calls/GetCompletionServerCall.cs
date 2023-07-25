@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.Networking;
 
 public class GetCompletionServerCall : ServerCall
 {
+    public string prompt;
+
     protected override object CreateRequestObject()
     {
-        throw new System.NotImplementedException();
+        GptRequest call = new GptRequest();
+        call.prompt = prompt;
+        return call;
     }
 
     protected override UnityWebRequest CreateUnityWebRequestObject()
@@ -17,6 +18,18 @@ public class GetCompletionServerCall : ServerCall
 
     protected override void OnResponse(Response response)
     {
-        throw new System.NotImplementedException();
+        switch (ResultCodeHelper.ValueOf(response.resultCode))
+        {
+            case ResultCode.SUCCESSFULLY_GOT_COMPLETION:
+                {
+                    onSuccessHandler.OnSuccess(response);
+                    return;
+                }
+            default:
+                {
+                    sceneController.DisplayErrorMessage(ErrorMessages.UNEXPECTED_SERVER_ERROR);
+                    return;
+                }
+        }
     }
 }

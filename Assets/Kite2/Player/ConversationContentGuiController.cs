@@ -67,6 +67,7 @@ public class ConversationContentGuiController : MonoBehaviour
         ChatMessageBox messageBox = newMessageBox.GetComponent<ChatMessageBox>();
         messageBox.SetMessage(novelEvent.text);
         guiContent.Add(newMessageBox);
+        PromptManager.Instance().AddLineToPrompt(novelEvent.name + ": " + novelEvent.text);
     }
 
     public void ShowPlayerAnswer(string message)
@@ -75,5 +76,7 @@ public class ConversationContentGuiController : MonoBehaviour
         ChatMessageBox messageBox = newMessageBox.GetComponent<ChatMessageBox>();
         messageBox.SetMessage(message);
         guiContent.Add(newMessageBox);
+        PromptManager.Instance().AddLineToPrompt(
+            PlayManager.Instance().GetVisualNovelToPlay().nameOfMainCharacter + ": " + message);
     }
 }

@@ -20,6 +20,25 @@ public class SceneBase : MonoBehaviour
         novelPlayerButton.onClick.AddListener(delegate { OnNovelPlayerButton(); });
         novelMakerButton.onClick.AddListener(delegate { OnNovelMakerButton(); });
         settingsButton.onClick.AddListener(delegate { OnSettingsButton(); });
+
+        if (GameManager.Instance().applicationMode == ApplicationModes.GUEST_MODE)
+        {
+            OnGuestMode();
+        }
+        else
+        {
+            OnLoggedInUserMode();
+        }
+    }
+
+    public void OnGuestMode()
+    {
+        novelMakerButton.interactable = false;
+    }
+
+    public void OnLoggedInUserMode()
+    {
+        novelMakerButton.interactable = true;
     }
 
     public void OnBackButton()

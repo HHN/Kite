@@ -40,6 +40,8 @@ public class PlayNovelSceneController : SceneController
 
     public void Initialize()
     {
+        PromptManager.Instance().InitializePrompt();
+
         if (novelToPlay == null)
         {
             return;

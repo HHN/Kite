@@ -5,6 +5,7 @@ public class ErrorMessages
     public static readonly string EMAIL_INVALID = "Die Email-Adresse ist nicht gültig.";
     public static readonly string NO_INTERNET = "Es gibt keine Verbindung zum Internet.";
     public static readonly string UNEXPECTED_SERVER_ERROR = "Ein unerwarteter Server-Fehler ist aufgetreten.";
+    public static readonly string MICROFON_NOT_CONNECTED_ERROR = "Ein unerwarteter Fehler ist aufgetreten.";
     public static readonly string INVALID_CREDENTIALS = "Die Zugangsdaten sind ungültig.";
     public static readonly string NO_NOVELS = "Es sind keine spielbaren Visual Novels verfügbar.";
     public static readonly string NOT_LOGGED_IN = "Sie müssen sich einloggen um diese Aktion durchzuführen";

@@ -625,6 +625,7 @@ public class PlayManager
 
         novelToPlay.novelEvents = visualNovelEvents;
 
+        /**
         string feedback = "In diesem Szenario hat der Bankmitarbeiter die Unternehmerin diskriminiert. " +
             "Er hat unangemessene Fragen zu ihrem Familienstand gestellt, was irrelevant für den Kreditantrag ist. " +
             "Es ist nicht seine Aufgabe, die Familienplanung der Unternehmerin zu beurteilen oder zu berücksichtigen. " +
@@ -635,8 +636,10 @@ public class PlayManager
             "Die Unternehmerin sollte das Verhalten des Bankmitarbeiters ansprechen und gegebenenfalls eine " +
             "Beschwerde einreichen. Es ist wichtig, dass der Bankmitarbeiter sein Verhalten überdenkt und sich " +
             "in Zukunft professioneller verhält, um Diskriminierung zu vermeiden.";
-
+       
         novelToPlay.feedback = feedback;
+        */
+
         return novelToPlay;
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class MicrofonButton : MonoBehaviour
+public class MicrofonButton : MonoBehaviour, OnSuccessHandler
 {   
     private bool isMicrofonConnected = false;
     private int minFreq;
@@ -14,6 +14,8 @@ public class MicrofonButton : MonoBehaviour
     public Sprite microfonImageWhite;
     public Sprite microfonImageRed;
     public TMP_InputField textField;
+    public GameObject whisperRequestPrefab;
+    public SceneController sceneController;
 
     void Start()
     {
@@ -38,7 +40,12 @@ public class MicrofonButton : MonoBehaviour
     private void VoiceToText(AudioClip userInput)
     {
         byte[] data = SaveWav.Save("input", userInput);
-        // TODO: Send Request to Server, translate the audio clip to text and put the text in the Textfield.
+
+        GetTextOfAudioServerCall call = Instantiate(whisperRequestPrefab).GetComponent<GetTextOfAudioServerCall>();
+        call.onSuccessHandler = this;
+        call.file = data;
+        call.sceneController = sceneController;
+        call.SendRequest();
     }
 
     public void OnButtonPressed()
@@ -62,7 +69,7 @@ public class MicrofonButton : MonoBehaviour
     {
         if (!isMicrofonConnected)
         {
-            // TODO: Show error message to the user.
+            sceneController.DisplayErrorMessage(ErrorMessages.MICROFON_NOT_CONNECTED_ERROR);
             return;
         }
         if (!Microphone.IsRecording(null))
@@ -79,7 +86,7 @@ public class MicrofonButton : MonoBehaviour
         
         if (!isMicrofonConnected)
         {
-            // TODO: Show error message to the user.
+            sceneController.DisplayErrorMessage(ErrorMessages.MICROFON_NOT_CONNECTED_ERROR);
             return null;
         }
         if (Microphone.IsRecording(null))
@@ -87,5 +94,10 @@ public class MicrofonButton : MonoBehaviour
             Microphone.End(null); 
         }
         return result;
+    }
+
+    public void OnSuccess(Response response)
+    {
+        textField.text = response.completion;
     }
 }
