@@ -11,6 +11,176 @@ public class RentingAnOfficeNovel : VisualNovel
         feedback = "";
         novelEvents = new List<VisualNovelEvent>()
         {
+            new VisualNovelEvent()
+            {
+                id = 1,
+                nextId = 2,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SET_BACKGROUND_EVENT),
+                waitForUserConfirmation = false,
+                animationType = AnimationTypeHelper.ToInt(AnimationType.FLY_IN_FROM_ABOVE),
+                xPosition = 0,
+                yPosition = 0,
+                imageId = 0
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 2,
+                nextId = 3,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.CHARAKTER_JOIN_EVENT),
+                waitForUserConfirmation = true,
+                name = "Herr Müller",
+                animationType = AnimationTypeHelper.ToInt(AnimationType.FLY_IN_FROM_ABOVE),
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING),
+                xPosition = 0,
+                yPosition = -6,
+                imageId = 0
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 3,
+                nextId = 4,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Intro",
+                text = "Du hast heute einen Termin für die Besichtigung von Büroräumen."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 4,
+                nextId = 5,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Herr Müller",
+                text = "Guten Tag. Dies sind also die zur Verfügung stehenden Räumlichkeiten. " +
+                "Welche Art von Unternehmen möchten Sie den gründen?",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 5,
+                nextId = 6,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Lea",
+                text = "Ich möchte ein Technologieunternehmen gründen, das sich auf die Entwicklung " +
+                "nachhaltiger und personalisierter Lösungen in den Bereichen Energie, Mobilität und " +
+                "Digitalisierung konzentriert.",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 6,
+                nextId = 7,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Herr Müller",
+                text = "Oh, wirklich? Wie in der Anzeige geschrieben liegt der Mietpreis kalt bei " +
+                "8,11 € pro Quadratmeter. Sind Sie sicher, diesen Betrag monatlich über längere " +
+                "Zeit bezahlen zu können?",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 7,
+                nextId = 8,
+                onChoice = 11,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                name = "Lea",
+                text = "Natürlich! Meine Marktrecherchen ergeben, dass es eine hohe Nachfrage " +
+                "gibt und ich habe für die nächsten drei Jahre einen Finanzplan erstellt, der " +
+                "genug Einkommen prognostiziert."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 8,
+                nextId = 9,
+                onChoice = 13,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                name = "Lea",
+                text = "Ich denke schon. Zumindest haben das meine Recherchen ergeben."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 9,
+                nextId = 10,
+                onChoice = 12,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                name = "Lea",
+                text = "Ich sollte genügend Einkommen haben, " +
+                "außerdem habe ich für die nächsten Monate noch eine Gründerförderung."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 10,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_CHOICES_EVENT),
+                waitForUserConfirmation = true
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 11,
+                nextId = 14,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Herr Müller",
+                text = "Wenn Sie das sagen. Wenn Sie mir eine Mieterselbstauskunft zuschicken, " +
+                "setze ich Sie auf die Liste der positiven Bewerber*innen. In ein paar Tagen werde " +
+                "ich Ihnen Bescheid geben, ob Sie die Räumlichkeiten haben können.",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 12,
+                nextId = 14,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Herr Müller",
+                text = "Das hört sich gut an. Ich bräuchte von Ihnen noch eine Mieterselbstauskunft.",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 13,
+                nextId = 14,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Herr Müller",
+                text = "Ich bin mir nicht sichr, ob das ausreicht. " +
+                "Es gibt noch andere Bewerber*innen, denen ich die Räumlichkeiten eher vermieten möchte",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 14,
+                nextId = 15,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.CHARAKTER_EXIT_EVENT),
+                waitForUserConfirmation = false,
+                name = "Herr Müller",
+                animationType = AnimationTypeHelper.ToInt(AnimationType.FLY_IN_FROM_ABOVE),
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 15,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.END_NOVEL_EVENT),
+                waitForUserConfirmation = false
+            }
         };
     }
 }

@@ -5,12 +5,205 @@ public class ConversationWithAcquaintancesNovel : VisualNovel
     public ConversationWithAcquaintancesNovel()
     {
         title = "Gespräch mit Bekannten";
-        description = "Du triffst dich mit einem*einer Bekannten, den*die du seit ein paar Jahren nicht mehr gesehen hast, in einem kleinen Café. Er*Sie hat dir soeben erzählt, wo er*sie zurzeit beruflich steht. Nun bist du an der Reihe.";
+        description = "Du triffst dich mit einem*einer Bekannten, den*die du seit ein paar Jahren " +
+            "nicht mehr gesehen hast, in einem kleinen Café. Er*Sie hat dir soeben erzählt, wo " +
+            "er*sie zurzeit beruflich steht. Nun bist du an der Reihe.";
         image = 7;
         nameOfMainCharacter = "Lea";
         feedback = "";
         novelEvents = new List<VisualNovelEvent>()
         {
+            new VisualNovelEvent()
+            {
+                id = 1,
+                nextId = 2,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SET_BACKGROUND_EVENT),
+                waitForUserConfirmation = false,
+                animationType = AnimationTypeHelper.ToInt(AnimationType.FLY_IN_FROM_ABOVE),
+                xPosition = 0,
+                yPosition = 0,
+                imageId = 0
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 2,
+                nextId = 3,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.CHARAKTER_JOIN_EVENT),
+                waitForUserConfirmation = true,
+                name = "Lisa",
+                animationType = AnimationTypeHelper.ToInt(AnimationType.FLY_IN_FROM_ABOVE),
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING),
+                xPosition = 0,
+                yPosition = -6,
+                imageId = 0
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 3,
+                nextId = 4,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Intro",
+                text = "Du triffst dich mit einem*einer Bekannten, den*die du seit ein paar Jahren " +
+                "nicht mehr gesehen hast, in einem kleinen Café. Er*Sie hat dir soeben erzählt, wo " +
+                "er*sie zurzeit beruflich steht. Nun bist du an der Reihe."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 4,
+                nextId = 5,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Lisa",
+                text = "Und letztes Jahr wurde ich befördert. Wie läuft es bei dir?",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 5,
+                nextId = 6,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Lea",
+                text = "Ich bin gerade dabei mich selbstständig zu machen und ein Unternehmen zu gründen.",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 6,
+                nextId = 7,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Lisa",
+                text = "Wirklich? In welcher Branche?",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 7,
+                nextId = 8,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Lea",
+                text = "Ja, genau! Ich habe mich dazu entschieden, meinen eigenen Weg zu gehen und " +
+                "in der Tech-Branche Fuß zu fassen. Meine Firma spezialisiert sich auf die " +
+                "Entwicklung von KI-gestützter Software zur Verbesserung von Geschäftsprozessen. " +
+                "Durch den Einsatz künstlicher Intelligenz wollen wir Unternehmen dabei helfen, " +
+                "effizienter zu arbeiten und datengesteuerte Entscheidungen zu treffen.",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 8,
+                nextId = 9,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Lisa",
+                text = "Ist das als Frau nicht ziemlich schwer?",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 9,
+                nextId = 10,
+                onChoice = 13,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                name = "Lea",
+                text = "Nein, überhaupt nicht."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 10,
+                nextId = 11,
+                onChoice = 14,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                name = "Lea",
+                text = "Warum sollte es? Ich als Frau kann den gleichen Arbeitsaufwand aufbringen wie ein Mann."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 11,
+                nextId = 12,
+                onChoice = 15,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                name = "Lea",
+                text = "Schwieriger ist es nicht. Man muss nur leider immer wieder damit rechnen, " +
+                "dass man einem nicht so viel zutraut wie einem Mann und man deswegen immer wieder " +
+                "aufs neue seine Kompetenzen aufzeigen muss."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 12,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_CHOICES_EVENT),
+                waitForUserConfirmation = true
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 13,
+                nextId = 16,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Lisa",
+                text = "Ah, ich verstehe.",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 14,
+                nextId = 16,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Lisa",
+                text = "Selbstverständlich, tut mir leid. Ich wollte eigentlich einfach nur wissen, " +
+                "ob so eine Gründung nicht im allgemeinen schwierig und zeitaufwendig ist.",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 15,
+                nextId = 16,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Lisa",
+                text = "Das klingt aber schon irgendwie als wäre es für Frauen anstrengender, " +
+                "wenn sie sich ständig gegen Sexismus wehren müssen.",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 16,
+                nextId = 17,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.CHARAKTER_EXIT_EVENT),
+                waitForUserConfirmation = false,
+                name = "Lisa",
+                animationType = AnimationTypeHelper.ToInt(AnimationType.FLY_IN_FROM_ABOVE),
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 17,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.END_NOVEL_EVENT),
+                waitForUserConfirmation = false
+            }
         };
     }
 }

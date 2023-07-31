@@ -30,7 +30,14 @@ public class VisualNovelGallery : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        content.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, novels.Count / 2 * 600);
+        if ((novels.Count % 2) == 0)
+        {
+            content.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, novels.Count / 2 * 600);
+        }
+        else
+        {
+            content.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, ((novels.Count / 2) + 1) * 600);
+        }
 
         for (int i = 0; i < novels.Count; i++)
         {
