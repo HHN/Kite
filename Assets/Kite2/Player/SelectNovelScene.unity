@@ -171,11 +171,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1080, y: 1920}
+  m_ScreenMatchMode: 2
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -712,9 +712,12 @@ MonoBehaviour:
   novelTitle: {fileID: 771424588}
   novelDescription: {fileID: 1729414208}
   novelToDisplay:
-    headline: 
+    title: 
     description: 
     image: 0
+    nameOfMainCharacter: 
+    feedback: 
+    novelEvents: []
   sceneController: {fileID: 600045262}
 --- !u!1 &1249170440
 GameObject:
@@ -861,9 +864,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41c3dc0b81cfc11438c80b89bc1548f8, type: 3}
---- !u!4 &1364703430 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7797249981855615905, guid: 41c3dc0b81cfc11438c80b89bc1548f8, type: 3}
+--- !u!224 &1364703430 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1364391345958252880, guid: 41c3dc0b81cfc11438c80b89bc1548f8, type: 3}
   m_PrefabInstance: {fileID: 1364703429}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1407736441 stripped
