@@ -91,7 +91,69 @@ public class FeeNegotiationNovel : VisualNovel
             {
                 id = 7,
                 nextId = 8,
-                onChoice = 11,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_OPINION_FEEDBACK_EVENT),
+                waitForUserConfirmation = false
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 8,
+                nextId = 9,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                opinionChoiceNumber = 1,
+                text = "Dieses Gefühl ist vollkommen normal. Du weißt, dass dieses Gespräch darüber " +
+                "entscheidet, wie viel du für deine Arbeit bekommst oder ob der*die Auftraggeber*in " +
+                "überhaupt zusagt und das kann einen nervös machen."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 9,
+                nextId = 10,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                opinionChoiceNumber = 2,
+                text = "In dieser Situation ängstlich zu sein ist verständlich. Du musst jetzt schließlich " +
+                "deinen verlangten Preis rechtfertigen und weißt nicht, wie das von deinem Gegenüber " +
+                "aufgenommen wird."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 10,
+                nextId = 11,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                opinionChoiceNumber = 3,
+                text = "Du weißt was deine Arbeit wert ist und das ist sehr wichtig. Den verlangten Preis " +
+                "hast du nicht einfach so gewählt und das darf dein Gegenüber ruhig wissen."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 11,
+                nextId = 12,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                opinionChoiceNumber = 4,
+                text = "Zu hören, dass deine Arbeit deinem Gegenüber nicht so viel wert ist, " +
+                "kann einen durchaus verärgern."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 12,
+                nextId = 13,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ASK_FOR_OPINION_EVENT),
+                waitForUserConfirmation = true,
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 13,
+                nextId = 14,
+                onChoice = 17,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -100,9 +162,9 @@ public class FeeNegotiationNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 8,
-                nextId = 9,
-                onChoice = 12,
+                id = 14,
+                nextId = 15,
+                onChoice = 18,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -111,9 +173,9 @@ public class FeeNegotiationNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 9,
-                nextId = 10,
-                onChoice = 13,
+                id = 15,
+                nextId = 16,
+                onChoice = 19,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -123,15 +185,15 @@ public class FeeNegotiationNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 10,
+                id = 16,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_CHOICES_EVENT),
                 waitForUserConfirmation = true
             },
 
             new VisualNovelEvent()
             {
-                id = 11,
-                nextId = 14,
+                id = 17,
+                nextId = 20,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Winkler",
@@ -143,8 +205,8 @@ public class FeeNegotiationNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 12,
-                nextId = 14,
+                id = 18,
+                nextId = 20,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Winkler",
@@ -156,8 +218,8 @@ public class FeeNegotiationNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 13,
-                nextId = 14,
+                id = 19,
+                nextId = 20,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Winkler",
@@ -169,8 +231,8 @@ public class FeeNegotiationNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 14,
-                nextId = 15,
+                id = 20,
+                nextId = 21,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.CHARAKTER_EXIT_EVENT),
                 waitForUserConfirmation = false,
                 name = "Frau Winkler",
@@ -180,7 +242,7 @@ public class FeeNegotiationNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 15,
+                id = 21,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.END_NOVEL_EVENT),
                 waitForUserConfirmation = false
             }

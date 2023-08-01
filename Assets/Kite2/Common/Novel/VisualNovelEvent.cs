@@ -15,4 +15,5 @@ public class VisualNovelEvent
     public int expressionType;
     public int xPosition;
     public int yPosition;
+    public int opinionChoiceNumber; // 1 -> Nervous; 2 -> Fearfull; 3 -> Encouraged; 4 -> Annoyed;
 }

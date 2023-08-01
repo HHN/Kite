@@ -219,7 +219,72 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
             {
                 id = 19,
                 nextId = 20,
-                onChoice = 25,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_OPINION_FEEDBACK_EVENT),
+                waitForUserConfirmation = false
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 20,
+                nextId = 21,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                opinionChoiceNumber = 1,
+                text = "Dieses Gefühl ist vollkommen normal, ein Unternehmen zu gründen ist ein großer " +
+                "Schritt und die Geschäftsidee einer fremden Person vorzustellen ohne zu wissen, wie " +
+                "sie reagiert ist nervenaufreibend."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 21,
+                nextId = 22,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                opinionChoiceNumber = 2,
+                text = "In dieser Situation ängstlich zu sein ist verständlich. Sie müssen schließlich " +
+                "Ihre eigene Geschäftsidee erklären und wissen nicht, ob sie positiv aufgenommen wird."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 22,
+                nextId = 23,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                opinionChoiceNumber = 3,
+                text = "Ihre Idee scheint überzeugt zu haben, also ist ein ermutigtes Gefühl durchaus " +
+                "angemessen! Sie haben schließlich die Fakten Ihres Businessplans im Kopf und wissen, " +
+                "was Sie damit erreichen wollen."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 23,
+                nextId = 24,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                opinionChoiceNumber = 4,
+                text = "Auch heutzutage wird man manchmal bei Gesprächen zu einer Förderung immer noch mit " +
+                "Sexismus konfrontiert. Fragen wie diese hier beruhen teilweise auch unbewusst auf der " +
+                "Annahme, dass Frauen weniger leisten können, wenn sie eine Familie haben oder mit ihren " +
+                "Geschäftsideen weniger Erfolg haben als Männer."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 24,
+                nextId = 25,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ASK_FOR_OPINION_EVENT),
+                waitForUserConfirmation = true,
+            },
+
+
+            new VisualNovelEvent()
+            {
+                id = 25,
+                nextId = 26,
+                onChoice = 31,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -229,9 +294,9 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 20,
-                nextId = 21,
-                onChoice = 26,
+                id = 26,
+                nextId = 27,
+                onChoice = 32,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -241,9 +306,9 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 21,
-                nextId = 22,
-                onChoice = 27,
+                id = 27,
+                nextId = 28,
+                onChoice = 33,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -253,9 +318,9 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 22,
-                nextId = 23,
-                onChoice = 28,
+                id = 28,
+                nextId = 29,
+                onChoice = 34,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -265,9 +330,9 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 23,
-                nextId = 24,
-                onChoice = 29,
+                id = 29,
+                nextId = 30,
+                onChoice = 35,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -276,15 +341,15 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 24,
+                id = 30,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_CHOICES_EVENT),
                 waitForUserConfirmation = true
             },
 
             new VisualNovelEvent()
             {
-                id = 25,
-                nextId = 30,
+                id = 31,
+                nextId = 36,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
@@ -294,8 +359,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 26,
-                nextId = 30,
+                id = 32,
+                nextId = 36,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
@@ -305,8 +370,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 27,
-                nextId = 30,
+                id = 33,
+                nextId = 36,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
@@ -317,8 +382,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 28,
-                nextId = 30,
+                id = 34,
+                nextId = 36,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
@@ -329,8 +394,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 29,
-                nextId = 30,
+                id = 35,
+                nextId = 36,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
@@ -342,8 +407,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 30,
-                nextId = 31,
+                id = 36,
+                nextId = 37,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
@@ -354,8 +419,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 31,
-                nextId = 32,
+                id = 37,
+                nextId = 38,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.CHARAKTER_EXIT_EVENT),
                 waitForUserConfirmation = false,
                 name = "Herr Müller",
@@ -365,7 +430,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 32,
+                id = 38,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.END_NOVEL_EVENT),
                 waitForUserConfirmation = false
             }

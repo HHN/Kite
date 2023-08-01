@@ -9,7 +9,7 @@ public enum VisualNovelEventType
     SHOW_CHOICES_EVENT,
     ADD_OPINION_CHOICE_EVENT,
     ASK_FOR_OPINION_EVENT,
-    SHOW_OPINION_FEEDBACK_EVENT,
+    SHOW_OPINION_FEEDBACK_EVENT, // This event cleans up the feelingsPanel.
     END_NOVEL_EVENT
 }
 

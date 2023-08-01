@@ -12,6 +12,7 @@ public class ConversationContentGuiController : MonoBehaviour
     public GameObject turqouiseMessagePrefab;
     public GameObject cottaMessagePrefab;
     public GameObject optionsPrefab;
+    public GameObject askForFeelingsButton;
 
     public void AddContent(VisualNovelEvent novelEvent, PlayNovelSceneController controller)
     {
@@ -40,6 +41,12 @@ public class ConversationContentGuiController : MonoBehaviour
                     OptionsManager prefab = Instantiate(optionsPrefab, this.transform).GetComponent<OptionsManager>();
                     prefab.Initialize(controller, options);
                     options = new List<VisualNovelEvent>();
+                    break;
+                }
+            case VisualNovelEventType.ASK_FOR_OPINION_EVENT:
+                {
+                    AskForFeelingsButton prefab = Instantiate(askForFeelingsButton, this.transform).GetComponent<AskForFeelingsButton>();
+                    prefab.controller = controller;
                     break;
                 }
             default:

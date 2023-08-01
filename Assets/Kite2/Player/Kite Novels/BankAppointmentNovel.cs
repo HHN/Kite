@@ -87,7 +87,66 @@ public class BankAppointmentNovel : VisualNovel
             {
                 id = 7,
                 nextId = 8,
-                onChoice = 10,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_OPINION_FEEDBACK_EVENT),
+                waitForUserConfirmation = false
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 8,
+                nextId = 9,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                opinionChoiceNumber = 1,
+                text = "Du darfst in dieser Situation nervös sein. " +
+                "Der Kredit ist wichtig und der Ausgang des Gesprächs unklar."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 9,
+                nextId = 10,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                opinionChoiceNumber = 2,
+                text = "Jetzt ängstlich zu sein ist normal. Du brauchst den Kredit, um mit deinem " +
+                "Unternehmen durchstarten zu können und musst nun darlegen, wie du ihn zurückzahlen möchtest."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 10,
+                nextId = 11,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                opinionChoiceNumber = 3,
+                text = ""
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 11,
+                nextId = 12,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                opinionChoiceNumber = 4,
+                text = "Es ist verständlich, verärgert zu sein. Du brauchst den Kredit und dass man " +
+                "dir unterstellt, dass du ihn nicht zurückzahlen kannst, ist nervig."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 12,
+                nextId = 13,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ASK_FOR_OPINION_EVENT),
+                waitForUserConfirmation = true,
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 13,
+                nextId = 14,
+                onChoice = 16,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -97,9 +156,9 @@ public class BankAppointmentNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 8,
-                nextId = 9,
-                onChoice = 10,
+                id = 14,
+                nextId = 15,
+                onChoice = 16,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -109,15 +168,15 @@ public class BankAppointmentNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 9,
+                id = 15,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_CHOICES_EVENT),
                 waitForUserConfirmation = true
             },
 
             new VisualNovelEvent()
             {
-                id = 10,
-                nextId = 11,
+                id = 16,
+                nextId = 17,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Winkler",
@@ -129,8 +188,8 @@ public class BankAppointmentNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 11,
-                nextId = 12,
+                id = 17,
+                nextId = 18,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.CHARAKTER_EXIT_EVENT),
                 waitForUserConfirmation = false,
                 name = "Frau Winkler",
@@ -140,7 +199,7 @@ public class BankAppointmentNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 12,
+                id = 18,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.END_NOVEL_EVENT),
                 waitForUserConfirmation = false
             }

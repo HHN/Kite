@@ -77,7 +77,67 @@ public class CallWithNotaryNovel : VisualNovel
             {
                 id = 6,
                 nextId = 7,
-                onChoice = 10,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_OPINION_FEEDBACK_EVENT),
+                waitForUserConfirmation = false
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 7,
+                nextId = 8,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                opinionChoiceNumber = 1,
+                text = "Bei dem Termin beim Notar/bei der Notarin wird dein Unternehmen beurkundet und " +
+                "ins Handelsregister eingetragen. Bei so einem großen Schritt darfst du nervös sein."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 8,
+                nextId = 9,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                opinionChoiceNumber = 2,
+                text = "Es ist in Ordnung in diesem Moment ängstlich zu sein, schließlich handelt es sich " +
+                "um einen wichtigen Schritt in der Unternehmensgründung."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 9,
+                nextId = 10,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                opinionChoiceNumber = 3,
+                text = "Du bist dabei den nächsten Schritt in der Unternehmensgründung zu beschreiten " +
+                "und das kann sehr ermutigend wirken."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 10,
+                nextId = 11,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                opinionChoiceNumber = 4,
+                text = "Es klingt, als würde die Person am anderen Ende der Leitung dich nicht als " +
+                "Geschäftsführerin erkennen und es ist nachvollziehbar, deswegen verärgert zu sein."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 11,
+                nextId = 12,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ASK_FOR_OPINION_EVENT),
+                waitForUserConfirmation = true,
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 12,
+                nextId = 13,
+                onChoice = 16,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -86,9 +146,9 @@ public class CallWithNotaryNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 7,
-                nextId = 8,
-                onChoice = 11,
+                id = 13,
+                nextId = 14,
+                onChoice = 17,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -97,9 +157,9 @@ public class CallWithNotaryNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 8,
-                nextId = 9,
-                onChoice = 12,
+                id = 14,
+                nextId = 15,
+                onChoice = 18,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -109,15 +169,15 @@ public class CallWithNotaryNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 9,
+                id = 15,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_CHOICES_EVENT),
                 waitForUserConfirmation = true
             },
 
             new VisualNovelEvent()
             {
-                id = 10,
-                nextId = 13,
+                id = 16,
+                nextId = 19,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Mayer",
@@ -128,8 +188,8 @@ public class CallWithNotaryNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 11,
-                nextId = 13,
+                id = 17,
+                nextId = 19,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Mayer",
@@ -139,8 +199,8 @@ public class CallWithNotaryNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 12,
-                nextId = 13,
+                id = 18,
+                nextId = 19,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Mayer",
@@ -150,8 +210,8 @@ public class CallWithNotaryNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 13,
-                nextId = 14,
+                id = 19,
+                nextId = 20,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.CHARAKTER_EXIT_EVENT),
                 waitForUserConfirmation = false,
                 name = "Frau Mayer",
@@ -161,7 +221,7 @@ public class CallWithNotaryNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 14,
+                id = 20,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.END_NOVEL_EVENT),
                 waitForUserConfirmation = false
             }

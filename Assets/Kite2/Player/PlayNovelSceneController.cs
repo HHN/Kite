@@ -13,7 +13,7 @@ public class PlayNovelSceneController : SceneController
     public GameObject novelImageContainer;
     public GameObject novelBackgroundPrefab;
     public GameObject characterPrefab;
-    private bool isWaitingForConfirmation = false;
+    public bool isWaitingForConfirmation = false;
     private Dictionary<long, VisualNovelEvent> novelEvents = new Dictionary<long, VisualNovelEvent>();
     private VisualNovelEvent nextEventToPlay;
     public GameObject backgroundContainer;
@@ -23,6 +23,7 @@ public class PlayNovelSceneController : SceneController
     public GameObject[] characterPrefabs;
     private Dictionary<string, GameObject> currentCharacters = new Dictionary<string, GameObject>();
     public ChatScrollView chatScroll;
+    public FeelingPanelController feelingPanelController;
 
     void Start()
     {
@@ -230,12 +231,32 @@ public class PlayNovelSceneController : SceneController
         long nextEventID = novelEvent.nextId;
         nextEventToPlay = novelEvents[nextEventID];
 
-        // Here code
-
-        if (novelEvent.waitForUserConfirmation)
+        switch (novelEvent.opinionChoiceNumber)
         {
-            isWaitingForConfirmation = true;
-            return;
+            case 1:
+                {
+                    feelingPanelController.SetNervousFeedback(novelEvent.text);
+                    break;
+                }
+            case 2:
+                {
+                    feelingPanelController.SetFearfullFeedback(novelEvent.text);
+                    break;
+                }
+            case 3:
+                {
+                    feelingPanelController.SetEncouragedFeedback(novelEvent.text);
+                    break;
+                }
+            case 4:
+                {
+                    feelingPanelController.SetAnnoyedFeedback(novelEvent.text);
+                    break;
+                }
+            default:
+                {
+                    break;
+                }
         }
         PlayNextEvent();
     }
@@ -245,14 +266,8 @@ public class PlayNovelSceneController : SceneController
         long nextEventID = novelEvent.nextId;
         nextEventToPlay = novelEvents[nextEventID];
 
-        // Here code
-
-        if (novelEvent.waitForUserConfirmation)
-        {
-            isWaitingForConfirmation = true;
-            return;
-        }
-        StartCoroutine(StartNextEventInOneSeconds(1));
+        this.feelingPanelController.Initialize();
+        conversationContent.AddContent(novelEvent, this);
     }
 
     public void HandleOpinionFeedbackEvent(VisualNovelEvent novelEvent)
@@ -260,14 +275,8 @@ public class PlayNovelSceneController : SceneController
         long nextEventID = novelEvent.nextId;
         nextEventToPlay = novelEvents[nextEventID];
 
-        // Here code
-
-        if (novelEvent.waitForUserConfirmation)
-        {
-            isWaitingForConfirmation = true;
-            return;
-        }
-        StartCoroutine(StartNextEventInOneSeconds(1));
+        feelingPanelController.CleanUp();
+        PlayNextEvent();
     }
 
     public void HandleEndNovelEvent(VisualNovelEvent novelEvent)
@@ -296,5 +305,10 @@ public class PlayNovelSceneController : SceneController
     public void ScrollToBottom()
     {
         StartCoroutine(chatScroll.ScrollToBottom());
+    }
+
+    public void SetFeelingsPanelActive(bool active)
+    {
+        feelingPanelController.gameObject.SetActive(active);
     }
 }
