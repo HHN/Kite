@@ -10,4 +10,5 @@ public class VisualNovel
     public string nameOfMainCharacter;
     public string feedback;
     public List<VisualNovelEvent> novelEvents;
+    public long id;
 }
