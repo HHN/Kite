@@ -21,7 +21,8 @@ public class VisualNovelGallery : MonoBehaviour
             novels = sceneController.GetKiteNovels();
         } else
         {
-            novels = sceneController.GetUserNovels();
+            //novels = sceneController.GetUserNovels();
+            novels = sceneController.GetKiteNovels();
         }
         ShowNovels(novels);
     }
