@@ -6,9 +6,12 @@ public class VisualNovelGallery : MonoBehaviour
 {
     public GameObject visualNovelRepresentationPrefab;
     public GameObject content;
+    public GameObject galleryRowPrefab;
     public SelectNovelSceneController sceneController;
     public bool isKiteNovelGallery = false;
     public bool isUserNovelGallery = false;
+
+    private GameObject galleryRow = null;
 
     private void Start()
     {
@@ -25,45 +28,48 @@ public class VisualNovelGallery : MonoBehaviour
 
     public void ShowNovels(List<VisualNovel> novels)
     {
-        foreach (Transform child in content.transform)
-        {
-            Destroy(child.gameObject);
-        }
-
-        if ((novels.Count % 2) == 0)
-        {
-            content.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, novels.Count / 2 * 600);
-        }
-        else
-        {
-            content.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, ((novels.Count / 2) + 1) * 600);
-        }
+        CleanUp();
 
         for (int i = 0; i < novels.Count; i++)
         {
-            GameObject novelRepresentation = Instantiate(visualNovelRepresentationPrefab, content.transform);
+            VisualNovel novelToAdd = novels[i];
+            AddNovelToGallery(novelToAdd);
+        }
+    }
 
-            float x;
-            float y;
+    public void AddNovelToGallery(VisualNovel novel)
+    {
+        if (novel == null)
+        {
+            return;
+        }
+        bool rowFullAfterAddingNovel = true;
 
-            if (i % 2 == 0)
-            {
-                x = 295;
-            }
-            else
-            {
-                x = 785;
-            }
-            int o = i / 2;
-            y = -300 - (o * 600);
-            novelRepresentation.transform.localPosition = new Vector2(x, y);
+        if (galleryRow == null)
+        {
+            galleryRow = Instantiate(galleryRowPrefab, content.transform);
+            rowFullAfterAddingNovel = false;
+        }
+        GameObject novelRepresentation = Instantiate(visualNovelRepresentationPrefab, galleryRow.transform);
 
-            VisualNovelRepresentation representation = novelRepresentation.GetComponent<VisualNovelRepresentation>();
-            representation.visualNovel = novels[i];
-            representation.SetHeadline(novels[i].title);
-            Sprite sprite = sceneController.FindSmalSpriteById(novels[i].image);
-            representation.SetButtonImage(sprite);
-            representation.sceneController = sceneController;
+        if (rowFullAfterAddingNovel)
+        {
+            galleryRow = null;
+        }
+
+        VisualNovelRepresentation representation = novelRepresentation.GetComponent<VisualNovelRepresentation>();
+        representation.visualNovel = novel;
+        representation.SetHeadline(novel.title);
+        Sprite sprite = sceneController.FindSmalSpriteById(novel.image);
+        representation.SetButtonImage(sprite);
+        representation.sceneController = sceneController;
+    }
+
+    private void CleanUp()
+    {
+        foreach (Transform child in content.transform)
+        {
+            Destroy(child.gameObject);
         }
     }
 }
