@@ -567,7 +567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ea3d466d0153040ace7c0ebb58fd74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  messageBox: {fileID: 2094115470087163258, guid: b5e64a7b512ff4a4e86f1c7eedcefe68, type: 3}
+  messageBox: {fileID: 5629918238507184917, guid: 47c0a3038b673a24cb82a566be2abf20, type: 3}
   canvas: {fileID: 1979810991}
   usernameInputField: {fileID: 763476793006112653}
   emailInputField: {fileID: 2325033217379969362}

@@ -502,7 +502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4f78edd287c424282ab19f8ed90303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  messageBox: {fileID: 2094115470087163258, guid: b5e64a7b512ff4a4e86f1c7eedcefe68, type: 3}
+  messageBox: {fileID: 5629918238507184917, guid: 47c0a3038b673a24cb82a566be2abf20, type: 3}
   canvas: {fileID: 1948049258}
   nextButton: {fileID: 2012555654}
 --- !u!4 &1230263275

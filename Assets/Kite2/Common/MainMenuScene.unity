@@ -260,7 +260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7968387007483526364, guid: 3a5317799af231d4881820280eb558ce, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 453
       objectReference: {fileID: 0}
     - target: {fileID: 7968387007483526364, guid: 3a5317799af231d4881820280eb558ce, type: 3}
       propertyPath: m_SizeDelta.y
@@ -296,7 +296,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7968387007483526364, guid: 3a5317799af231d4881820280eb558ce, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 50
+      value: 226.5
       objectReference: {fileID: 0}
     - target: {fileID: 7968387007483526364, guid: 3a5317799af231d4881820280eb558ce, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -436,7 +436,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1142041131289362116, guid: 1ae41ef0b36350c44a5251e44f8cd23a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 453
       objectReference: {fileID: 0}
     - target: {fileID: 1142041131289362116, guid: 1ae41ef0b36350c44a5251e44f8cd23a, type: 3}
       propertyPath: m_SizeDelta.y
@@ -472,7 +472,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1142041131289362116, guid: 1ae41ef0b36350c44a5251e44f8cd23a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 50
+      value: 226.5
       objectReference: {fileID: 0}
     - target: {fileID: 1142041131289362116, guid: 1ae41ef0b36350c44a5251e44f8cd23a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -562,7 +562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64a586cd1c00e7b4b9724bce1870c09c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  messageBox: {fileID: 2094115470087163258, guid: b5e64a7b512ff4a4e86f1c7eedcefe68, type: 3}
+  messageBox: {fileID: 5629918238507184917, guid: 47c0a3038b673a24cb82a566be2abf20, type: 3}
   canvas: {fileID: 1748407828}
   novelPlayerButton: {fileID: 20191257}
   novelMakerButton: {fileID: 20191256}
@@ -659,8 +659,8 @@ MonoBehaviour:
   m_Spacing: 100
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0

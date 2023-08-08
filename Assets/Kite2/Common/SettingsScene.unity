@@ -421,9 +421,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41c3dc0b81cfc11438c80b89bc1548f8, type: 3}
---- !u!4 &1540981793 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7797249981855615905, guid: 41c3dc0b81cfc11438c80b89bc1548f8, type: 3}
+--- !u!224 &1540981793 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1364391345958252880, guid: 41c3dc0b81cfc11438c80b89bc1548f8, type: 3}
   m_PrefabInstance: {fileID: 1540981792}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1808706316
@@ -455,7 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965d1f99722ccba41b81ddb891a917bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  messageBox: {fileID: 2094115470087163258, guid: b5e64a7b512ff4a4e86f1c7eedcefe68, type: 3}
+  messageBox: {fileID: 5629918238507184917, guid: 47c0a3038b673a24cb82a566be2abf20, type: 3}
   canvas: {fileID: 807243719}
 --- !u!4 &1808706318
 Transform:
