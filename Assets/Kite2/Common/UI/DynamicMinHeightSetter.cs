@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(LayoutElement))]
-public class DynamicMinHeight : MonoBehaviour
+public class DynamicMinHeightSetter : MonoBehaviour
 {
     private LayoutElement layoutElement;
 
@@ -11,7 +10,7 @@ public class DynamicMinHeight : MonoBehaviour
         layoutElement = GetComponent<LayoutElement>();
     }
 
-    void Start()
+    void Update()
     {
         layoutElement.minHeight = GetComponent<RectTransform>().rect.height;
     }

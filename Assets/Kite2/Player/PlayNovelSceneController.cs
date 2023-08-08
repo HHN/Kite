@@ -31,14 +31,6 @@ public class PlayNovelSceneController : SceneController
         Initialize();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown("space"))
-        {
-            OnConfirm();
-        }
-    }
-
     public void Initialize()
     {
         PromptManager.Instance().InitializePrompt();
