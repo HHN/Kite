@@ -76,10 +76,10 @@ public class FeelingPanelController : MonoBehaviour
         fearfullFeedback = "";
         encouragedFeedback = "";
         annoyedFeedback = "";
-        SetNervousButtonText("- Nervös");
-        SetFearfullButtonText("- Ängstlich");
+        SetNervousButtonText("- NervÃ¶s");
+        SetFearfullButtonText("- Ã„ngstlich");
         SetEncouragedButtonText("- Ermutigt");
-        SetAnnoyedButtonText("- Verärgert");
+        SetAnnoyedButtonText("- VerÃ¤rgert");
     }
 
     public void SetQuestion(string question)
