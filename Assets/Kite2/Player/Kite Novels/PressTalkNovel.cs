@@ -4,11 +4,11 @@ public class PressTalkNovel : VisualNovel
 {
     public PressTalkNovel()
     {
-        title = "Pressegespräch";
+        title = "PressegesprÃ¤ch";
         description = "Du befindest dich auf einer Veranstaltung, bei der Jungunternehmer*innen ihre " +
-            "Geschäftsidee vor einem Publikum präsentieren können, um Rückmeldung zu der Idee zu " +
-            "erhalten und zu networken. Nachdem du deine Geschäftsidee vor dem Publikum gepitcht hast, " +
-            "stellst du dich an einen Tisch mit anderen Gästen, um mit ihnen zu reden.";
+            "GeschÃ¤ftsidee vor einem Publikum prÃ¤sentieren kÃ¶nnen, um RÃ¼ckmeldung zu der Idee zu " +
+            "erhalten und zu networken. Nachdem du deine GeschÃ¤ftsidee vor dem Publikum gepitcht hast, " +
+            "stellst du dich an einen Tisch mit anderen GÃ¤sten, um mit ihnen zu reden.";
         image = 2;
         nameOfMainCharacter = "Lea";
         feedback = "";
@@ -48,9 +48,9 @@ public class PressTalkNovel : VisualNovel
                 waitForUserConfirmation = true,
                 name = "Intro",
                 text = "Du befindest dich auf einer Veranstaltung, bei der Jungunternehmer*innen ihre " +
-                "Geschäftsidee vor einem Publikum präsentieren können, um Rückmeldung zu der Idee zu " +
-                "erhalten und zu networken. Nachdem du deine Geschäftsidee vor dem Publikum gepitcht " +
-                "hast, stellst du dich an einen Tisch mit anderen Gästen, um mit ihnen zu reden."
+                "GeschÃ¤ftsidee vor einem Publikum prÃ¤sentieren kÃ¶nnen, um RÃ¼ckmeldung zu der Idee zu " +
+                "erhalten und zu networken. Nachdem du deine GeschÃ¤ftsidee vor dem Publikum gepitcht " +
+                "hast, stellst du dich an einen Tisch mit anderen GÃ¤sten, um mit ihnen zu reden."
             },
 
             new VisualNovelEvent()
@@ -61,7 +61,7 @@ public class PressTalkNovel : VisualNovel
                 waitForUserConfirmation = true,
                 name = "Frau Mayer",
                 text = "Das war ein sehr interessanter Pitch. Ich bin von der lokalen Presse und es " +
-                "würde mich freuen, wenn ich etwas über Ihre Geschäftsidee schreiben dürfte.",
+                "wÃ¼rde mich freuen, wenn ich etwas Ã¼ber Ihre GeschÃ¤ftsidee schreiben dÃ¼rfte.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -72,7 +72,7 @@ public class PressTalkNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
-                text = "Danke! Das wäre toll! Haben Sie eine spezielle Frage für Ihren Artikel?",
+                text = "Danke! Das wÃ¤re toll! Haben Sie eine spezielle Frage fÃ¼r Ihren Artikel?",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -83,7 +83,7 @@ public class PressTalkNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Mayer",
-                text = "Ja. Wann kamen Sie auf die Idee für Ihr Unternehmen?",
+                text = "Ja. Wann kamen Sie auf die Idee fÃ¼r Ihr Unternehmen?",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -94,8 +94,8 @@ public class PressTalkNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
-                text = "Die Idee für mein Unternehmen kam mir während eines Sabbatjahres im Jahr 2021, " +
-                "als ich die enorme Lücke in der Branche für nachhaltige, personalisierte Technologien " +
+                text = "Die Idee fÃ¼r mein Unternehmen kam mir wÃ¤hrend eines Sabbatjahres im Jahr 2021, " +
+                "als ich die enorme LÃ¼cke in der Branche fÃ¼r nachhaltige, personalisierte Technologien " +
                 "entdeckte.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
@@ -107,7 +107,7 @@ public class PressTalkNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Mayer",
-                text = "Das ist spannend. Eine Frau, die ein Unternehmen gründet, " +
+                text = "Das ist spannend. Eine Frau, die ein Unternehmen grÃ¼ndet, " +
                 "das wird sicher viele Leser*innen interessieren.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
@@ -127,8 +127,8 @@ public class PressTalkNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 1,
-                text = "Nervosität während eines Interviews mit jemandem von der Presse ist verständlich. " +
-                "Es bringt Aufmerksamkeit für das eigene Unternehmen und auch mögliche Kund*innen."
+                text = "NervositÃ¤t wÃ¤hrend eines Interviews mit jemandem von der Presse ist verstÃ¤ndlich. " +
+                "Es bringt Aufmerksamkeit fÃ¼r das eigene Unternehmen und auch mÃ¶gliche Kund*innen."
             },
 
             new VisualNovelEvent()
@@ -138,7 +138,7 @@ public class PressTalkNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 2,
-                text = "Ängstlich zu sein ist in Ordnung. Du weißt nicht, was dein Gegenüber in dem " +
+                text = "Ã„ngstlich zu sein ist in Ordnung. Du weiÃŸt nicht, was dein GegenÃ¼ber in dem " +
                 "Artikel schreiben wird und welche Auswirkungen der Artikel haben wird."
             },
 
@@ -160,8 +160,8 @@ public class PressTalkNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 4,
-                text = "An diesem Punkt des Gesprächs wirkt es, als würde dein Geschlecht für den Artikel " +
-                "mehr zählen als deine Geschäftsidee. Dies kann durchaus verärgern."
+                text = "An diesem Punkt des GesprÃ¤chs wirkt es, als wÃ¼rde dein Geschlecht fÃ¼r den Artikel " +
+                "mehr zÃ¤hlen als deine GeschÃ¤ftsidee. Dies kann durchaus verÃ¤rgern."
             },
 
             new VisualNovelEvent()
@@ -180,7 +180,7 @@ public class PressTalkNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Das wäre toll. Wann wird der Artikel erscheinen?"
+                text = "Das wÃ¤re toll. Wann wird der Artikel erscheinen?"
             },
 
             new VisualNovelEvent()
@@ -191,7 +191,7 @@ public class PressTalkNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Mir ist es wichtig, dass meine Geschäftsidee in dem Artikel betont wird. " +
+                text = "Mir ist es wichtig, dass meine GeschÃ¤ftsidee in dem Artikel betont wird. " +
                 "Ist das machbar?"
             },
 
@@ -203,8 +203,8 @@ public class PressTalkNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Wäre es möglich, dass mein Geschlecht nicht allzu sehr in dem Artikel " +
-                "hervorgehoben wird? Ich möchte für mein Unternehmen Aufmerksamkeit bekommen und " +
+                text = "WÃ¤re es mÃ¶glich, dass mein Geschlecht nicht allzu sehr in dem Artikel " +
+                "hervorgehoben wird? Ich mÃ¶chte fÃ¼r mein Unternehmen Aufmerksamkeit bekommen und " +
                 "nicht weil ich eine Frau bin."
             },
 
@@ -222,7 +222,7 @@ public class PressTalkNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Mayer",
-                text = "Vielen Dank für die Beantwortung der Frage. " +
+                text = "Vielen Dank fÃ¼r die Beantwortung der Frage. " +
                 "Der Artikel wird am Sonntag erscheinen.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
@@ -234,8 +234,8 @@ public class PressTalkNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Mayer",
-                text = "Aber natürlich! Vielen Dank für den Hinweis. " +
-                "Der Artikel wird am nächsten Sonntag erscheinen.",
+                text = "Aber natÃ¼rlich! Vielen Dank fÃ¼r den Hinweis. " +
+                "Der Artikel wird am nÃ¤chsten Sonntag erscheinen.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -247,7 +247,7 @@ public class PressTalkNovel : VisualNovel
                 waitForUserConfirmation = true,
                 name = "Frau Mayer",
                 text = "Das wird allerdings nicht so gut bei den Lesenden ankommen. Ich denke unter " +
-                "diesen Umständen wird sich die Redaktion für eine andere Story entscheiden.",
+                "diesen UmstÃ¤nden wird sich die Redaktion fÃ¼r eine andere Story entscheiden.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -258,7 +258,7 @@ public class PressTalkNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Mayer",
-                text = "Ich wünsche Ihnen viel Erfolg für Ihr Unternehmen! Auf Wiedersehen!",
+                text = "Ich wÃ¼nsche Ihnen viel Erfolg fÃ¼r Ihr Unternehmen! Auf Wiedersehen!",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 

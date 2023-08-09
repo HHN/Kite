@@ -5,8 +5,8 @@ public class FeeNegotiationNovel : VisualNovel
     public FeeNegotiationNovel()
     {
         title = "Honrarverhandlung mit Kundin";
-        description = "Du bist in Kontakt mit einem Kunden gekommen. Nachdem geklärt wurde, dass " +
-            "deine angebotenen Leistungen zu den Anforderungen deines Gegenübers passen, geht es " +
+        description = "Du bist in Kontakt mit einem Kunden gekommen. Nachdem geklÃ¤rt wurde, dass " +
+            "deine angebotenen Leistungen zu den Anforderungen deines GegenÃ¼bers passen, geht es " +
             "nun um die Honorarverhandlung.";
         image = 6;
         nameOfMainCharacter = "Lea";
@@ -46,8 +46,8 @@ public class FeeNegotiationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Intro",
-                text = "Du bist in Kontakt mit einem Kunden gekommen. Nachdem geklärt wurde, dass " +
-                "deine angebotenen Leistungen zu den Anforderungen deines Gegenübers passen, geht " +
+                text = "Du bist in Kontakt mit einem Kunden gekommen. Nachdem geklÃ¤rt wurde, dass " +
+                "deine angebotenen Leistungen zu den Anforderungen deines GegenÃ¼bers passen, geht " +
                 "es nun um die Honorarverhandlung."
             },
 
@@ -58,8 +58,8 @@ public class FeeNegotiationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Winkler",
-                text = "Es freut uns, dass Sie uns unterstützen können. " +
-                "Nun stellt sich uns natürlich die Frage, wie viel Sie verlangen.",
+                text = "Es freut uns, dass Sie uns unterstÃ¼tzen kÃ¶nnen. " +
+                "Nun stellt sich uns natÃ¼rlich die Frage, wie viel Sie verlangen.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -70,7 +70,7 @@ public class FeeNegotiationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
-                text = "Über die Dauer der Zeit und der mit dem daraus entstehenden Aufwand würde " +
+                text = "Ãœber die Dauer der Zeit und der mit dem daraus entstehenden Aufwand wÃ¼rde " +
                 "ich 20.000,00 Euro in Rechnung stellen.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
@@ -82,8 +82,8 @@ public class FeeNegotiationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Winkler",
-                text = "Ist das nicht etwas viel verlangt für die Arbeit? " +
-                "Geht das nicht auch günstiger?",
+                text = "Ist das nicht etwas viel verlangt fÃ¼r die Arbeit? " +
+                "Geht das nicht auch gÃ¼nstiger?",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -102,9 +102,9 @@ public class FeeNegotiationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 1,
-                text = "Dieses Gefühl ist vollkommen normal. Du weißt, dass dieses Gespräch darüber " +
-                "entscheidet, wie viel du für deine Arbeit bekommst oder ob der*die Auftraggeber*in " +
-                "überhaupt zusagt und das kann einen nervös machen."
+                text = "Dieses GefÃ¼hl ist vollkommen normal. Du weiÃŸt, dass dieses GesprÃ¤ch darÃ¼ber " +
+                "entscheidet, wie viel du fÃ¼r deine Arbeit bekommst oder ob der*die Auftraggeber*in " +
+                "Ã¼berhaupt zusagt und das kann einen nervÃ¶s machen."
             },
 
             new VisualNovelEvent()
@@ -114,8 +114,8 @@ public class FeeNegotiationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 2,
-                text = "In dieser Situation ängstlich zu sein ist verständlich. Du musst jetzt schließlich " +
-                "deinen verlangten Preis rechtfertigen und weißt nicht, wie das von deinem Gegenüber " +
+                text = "In dieser Situation Ã¤ngstlich zu sein ist verstÃ¤ndlich. Du musst jetzt schlieÃŸlich " +
+                "deinen verlangten Preis rechtfertigen und weiÃŸt nicht, wie das von deinem GegenÃ¼ber " +
                 "aufgenommen wird."
             },
 
@@ -126,8 +126,8 @@ public class FeeNegotiationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 3,
-                text = "Du weißt was deine Arbeit wert ist und das ist sehr wichtig. Den verlangten Preis " +
-                "hast du nicht einfach so gewählt und das darf dein Gegenüber ruhig wissen."
+                text = "Du weiÃŸt was deine Arbeit wert ist und das ist sehr wichtig. Den verlangten Preis " +
+                "hast du nicht einfach so gewÃ¤hlt und das darf dein GegenÃ¼ber ruhig wissen."
             },
 
             new VisualNovelEvent()
@@ -137,8 +137,8 @@ public class FeeNegotiationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 4,
-                text = "Zu hören, dass deine Arbeit deinem Gegenüber nicht so viel wert ist, " +
-                "kann einen durchaus verärgern."
+                text = "Zu hÃ¶ren, dass deine Arbeit deinem GegenÃ¼ber nicht so viel wert ist, " +
+                "kann einen durchaus verÃ¤rgern."
             },
 
             new VisualNovelEvent()
@@ -168,7 +168,7 @@ public class FeeNegotiationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Die Höhe meiner Preise orientieren sich am Aufwand und sind fair berechnet."
+                text = "Die HÃ¶he meiner Preise orientieren sich am Aufwand und sind fair berechnet."
             },
 
             new VisualNovelEvent()
@@ -180,7 +180,7 @@ public class FeeNegotiationNovel : VisualNovel
                 waitForUserConfirmation = false,
                 name = "Lea",
                 text = "Wenn Ihnen der Preis zu hoch ist, " +
-                "könnten wir Komponenten aus dem Angebot streichen."
+                "kÃ¶nnten wir Komponenten aus dem Angebot streichen."
             },
 
             new VisualNovelEvent()
@@ -210,8 +210,8 @@ public class FeeNegotiationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Winkler",
-                text = "Hmm, da muss ich erst nochmal Rücksprache halten. Bitte schicken Sie mir " +
-                "ihr Angebot schriftlich zu, damit ich das abklären kann. Die Tage werde ich mich " +
+                text = "Hmm, da muss ich erst nochmal RÃ¼cksprache halten. Bitte schicken Sie mir " +
+                "ihr Angebot schriftlich zu, damit ich das abklÃ¤ren kann. Die Tage werde ich mich " +
                 "bei Ihnen melden, zu welcher Entscheidung es kam.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
@@ -223,8 +223,8 @@ public class FeeNegotiationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Winkler",
-                text = "Hmm, da muss ich erst nochmal Rücksprache halten. Bitte schicken Sie mir " +
-                "ihr Angebot schriftlich zu, damit ich das abklären kann. Die Tage werde ich mich " +
+                text = "Hmm, da muss ich erst nochmal RÃ¼cksprache halten. Bitte schicken Sie mir " +
+                "ihr Angebot schriftlich zu, damit ich das abklÃ¤ren kann. Die Tage werde ich mich " +
                 "bei Ihnen melden, zu welcher Entscheidung es kam.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },

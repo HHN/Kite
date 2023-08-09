@@ -4,8 +4,8 @@ public class RentingAnOfficeNovel : VisualNovel
 {
     public RentingAnOfficeNovel()
     {
-        title = "Anmietung eines Büros";
-        description = "Du hast heute einen Termin für die Besichtigung von Büroräumen.";
+        title = "Anmietung eines BÃ¼ros";
+        description = "Du hast heute einen Termin fÃ¼r die Besichtigung von BÃ¼rorÃ¤umen.";
         image = 4;
         nameOfMainCharacter = "Lea";
         feedback = "";
@@ -29,7 +29,7 @@ public class RentingAnOfficeNovel : VisualNovel
                 nextId = 3,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.CHARAKTER_JOIN_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
+                name = "Herr MÃ¼ller",
                 animationType = AnimationTypeHelper.ToInt(AnimationType.FLY_IN_FROM_ABOVE),
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING),
                 xPosition = 0,
@@ -44,7 +44,7 @@ public class RentingAnOfficeNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Intro",
-                text = "Du hast heute einen Termin für die Besichtigung von Büroräumen."
+                text = "Du hast heute einen Termin fÃ¼r die Besichtigung von BÃ¼rorÃ¤umen."
             },
 
             new VisualNovelEvent()
@@ -53,9 +53,9 @@ public class RentingAnOfficeNovel : VisualNovel
                 nextId = 5,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
-                text = "Guten Tag. Dies sind also die zur Verfügung stehenden Räumlichkeiten. " +
-                "Welche Art von Unternehmen möchten Sie den gründen?",
+                name = "Herr MÃ¼ller",
+                text = "Guten Tag. Dies sind also die zur VerfÃ¼gung stehenden RÃ¤umlichkeiten. " +
+                "Welche Art von Unternehmen mÃ¶chten Sie den grÃ¼nden?",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -66,8 +66,8 @@ public class RentingAnOfficeNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
-                text = "Ich möchte ein Technologieunternehmen gründen, das sich auf die Entwicklung " +
-                "nachhaltiger und personalisierter Lösungen in den Bereichen Energie, Mobilität und " +
+                text = "Ich mÃ¶chte ein Technologieunternehmen grÃ¼nden, das sich auf die Entwicklung " +
+                "nachhaltiger und personalisierter LÃ¶sungen in den Bereichen Energie, MobilitÃ¤t und " +
                 "Digitalisierung konzentriert.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
@@ -78,10 +78,10 @@ public class RentingAnOfficeNovel : VisualNovel
                 nextId = 7,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
+                name = "Herr MÃ¼ller",
                 text = "Oh, wirklich? Wie in der Anzeige geschrieben liegt der Mietpreis kalt bei " +
-                "8,11 € pro Quadratmeter. Sind Sie sicher, diesen Betrag monatlich über längere " +
-                "Zeit bezahlen zu können?",
+                "8,11 â‚¬ pro Quadratmeter. Sind Sie sicher, diesen Betrag monatlich Ã¼ber lÃ¤ngere " +
+                "Zeit bezahlen zu kÃ¶nnen?",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -100,7 +100,7 @@ public class RentingAnOfficeNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 1,
-                text = "Es ist in Ordnung, jetzt nervös zu sein. Räumlichkeiten für sein Unternehmen anzumieten ist ein weiterer wichtiger Schritt in die Verwirklichung seiner Pläne."
+                text = "Es ist in Ordnung, jetzt nervÃ¶s zu sein. RÃ¤umlichkeiten fÃ¼r sein Unternehmen anzumieten ist ein weiterer wichtiger Schritt in die Verwirklichung seiner PlÃ¤ne."
             },
 
             new VisualNovelEvent()
@@ -110,9 +110,9 @@ public class RentingAnOfficeNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 2,
-                text = "Jetzt ängstlich zu sein ist in Ordnung. Du stehst kurz davor, einen " +
-                "weiteren Schritt in die Selbstständigkeit zu beschreiten und von deiner Antwort " +
-                "kann abhängen, ob du die Bürofläche bekommen wirst."
+                text = "Jetzt Ã¤ngstlich zu sein ist in Ordnung. Du stehst kurz davor, einen " +
+                "weiteren Schritt in die SelbststÃ¤ndigkeit zu beschreiten und von deiner Antwort " +
+                "kann abhÃ¤ngen, ob du die BÃ¼roflÃ¤che bekommen wirst."
             },
 
             new VisualNovelEvent()
@@ -122,8 +122,8 @@ public class RentingAnOfficeNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 3,
-                text = "Du stehst kurz davor, den nächsten Schritt zur Verwirklichung deiner Pläne zu " +
-                "tätigen und zu wissen, dass man diese Frage optimistisch beantworten kann ist ermutigend."
+                text = "Du stehst kurz davor, den nÃ¤chsten Schritt zur Verwirklichung deiner PlÃ¤ne zu " +
+                "tÃ¤tigen und zu wissen, dass man diese Frage optimistisch beantworten kann ist ermutigend."
             },
 
             new VisualNovelEvent()
@@ -133,8 +133,8 @@ public class RentingAnOfficeNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 4,
-                text = "Es kann verärgern, dass einem unterstellt wird, dass das eigene Unternehmen " +
-                "nicht lange genug überleben wird, um die Miete konstant zahlen zu können."
+                text = "Es kann verÃ¤rgern, dass einem unterstellt wird, dass das eigene Unternehmen " +
+                "nicht lange genug Ã¼berleben wird, um die Miete konstant zahlen zu kÃ¶nnen."
             },
 
             new VisualNovelEvent()
@@ -153,8 +153,8 @@ public class RentingAnOfficeNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Natürlich! Meine Marktrecherchen ergeben, dass es eine hohe Nachfrage " +
-                "gibt und ich habe für die nächsten drei Jahre einen Finanzplan erstellt, der " +
+                text = "NatÃ¼rlich! Meine Marktrecherchen ergeben, dass es eine hohe Nachfrage " +
+                "gibt und ich habe fÃ¼r die nÃ¤chsten drei Jahre einen Finanzplan erstellt, der " +
                 "genug Einkommen prognostiziert."
             },
 
@@ -177,8 +177,8 @@ public class RentingAnOfficeNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Ich sollte genügend Einkommen haben, " +
-                "außerdem habe ich für die nächsten Monate noch eine Gründerförderung."
+                text = "Ich sollte genÃ¼gend Einkommen haben, " +
+                "auÃŸerdem habe ich fÃ¼r die nÃ¤chsten Monate noch eine GrÃ¼nderfÃ¶rderung."
             },
 
             new VisualNovelEvent()
@@ -194,10 +194,10 @@ public class RentingAnOfficeNovel : VisualNovel
                 nextId = 20,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
+                name = "Herr MÃ¼ller",
                 text = "Wenn Sie das sagen. Wenn Sie mir eine Mieterselbstauskunft zuschicken, " +
                 "setze ich Sie auf die Liste der positiven Bewerber*innen. In ein paar Tagen werde " +
-                "ich Ihnen Bescheid geben, ob Sie die Räumlichkeiten haben können.",
+                "ich Ihnen Bescheid geben, ob Sie die RÃ¤umlichkeiten haben kÃ¶nnen.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -207,8 +207,8 @@ public class RentingAnOfficeNovel : VisualNovel
                 nextId = 20,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
-                text = "Das hört sich gut an. Ich bräuchte von Ihnen noch eine Mieterselbstauskunft.",
+                name = "Herr MÃ¼ller",
+                text = "Das hÃ¶rt sich gut an. Ich brÃ¤uchte von Ihnen noch eine Mieterselbstauskunft.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -218,9 +218,9 @@ public class RentingAnOfficeNovel : VisualNovel
                 nextId = 20,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
+                name = "Herr MÃ¼ller",
                 text = "Ich bin mir nicht sichr, ob das ausreicht. " +
-                "Es gibt noch andere Bewerber*innen, denen ich die Räumlichkeiten eher vermieten möchte",
+                "Es gibt noch andere Bewerber*innen, denen ich die RÃ¤umlichkeiten eher vermieten mÃ¶chte",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -230,7 +230,7 @@ public class RentingAnOfficeNovel : VisualNovel
                 nextId = 21,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.CHARAKTER_EXIT_EVENT),
                 waitForUserConfirmation = false,
-                name = "Herr Müller",
+                name = "Herr MÃ¼ller",
                 animationType = AnimationTypeHelper.ToInt(AnimationType.FLY_IN_FROM_ABOVE),
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },

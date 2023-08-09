@@ -4,8 +4,8 @@ public class StartUpGrantNovel : VisualNovel
 {
     public StartUpGrantNovel()
     {
-        title = "Gründerzuschuss";
-        description = "Du bist heute bei deinem örtlichen Arbeitsamt, um einen Gründerzuschuss zu beantragen.";
+        title = "GrÃ¼nderzuschuss";
+        description = "Du bist heute bei deinem Ã¶rtlichen Arbeitsamt, um einen GrÃ¼nderzuschuss zu beantragen.";
         image = 6;
         nameOfMainCharacter = "Lea";
         feedback = "";
@@ -29,7 +29,7 @@ public class StartUpGrantNovel : VisualNovel
                 nextId = 3,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.CHARAKTER_JOIN_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
+                name = "Herr MÃ¼ller",
                 animationType = AnimationTypeHelper.ToInt(AnimationType.FLY_IN_FROM_ABOVE),
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING),
                 xPosition = 0,
@@ -44,7 +44,7 @@ public class StartUpGrantNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Intro",
-                text = "Du bist heute bei deinem örtlichen Arbeitsamt, um einen Gründerzuschuss zu beantragen."
+                text = "Du bist heute bei deinem Ã¶rtlichen Arbeitsamt, um einen GrÃ¼nderzuschuss zu beantragen."
             },
 
             new VisualNovelEvent()
@@ -53,7 +53,7 @@ public class StartUpGrantNovel : VisualNovel
                 nextId = 5,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
+                name = "Herr MÃ¼ller",
                 text = "Guten Tag. Es freut mich, dass Sie heute vorbeikommen konnten. " +
                 "Haben Sie alle Unterlagen dabei?",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
@@ -67,7 +67,7 @@ public class StartUpGrantNovel : VisualNovel
                 waitForUserConfirmation = true,
                 name = "Lea",
                 text = "Ja. Ich habe hier meine Zeugnisse von IHK-Kursen in den Bereichen " +
-                "Existenzgründung und Social Media-Marketing und eine Bewertung meines Businessplans.",
+                "ExistenzgrÃ¼ndung und Social Media-Marketing und eine Bewertung meines Businessplans.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -77,9 +77,9 @@ public class StartUpGrantNovel : VisualNovel
                 nextId = 7,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
+                name = "Herr MÃ¼ller",
                 text = "Nur diese Zwei? Was ist mit den Bereichen Finanzwesen und Buchhaltung? " +
-                "Können Sie überhaupt mit Zahlen umgehen?",
+                "KÃ¶nnen Sie Ã¼berhaupt mit Zahlen umgehen?",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -98,8 +98,8 @@ public class StartUpGrantNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 1,
-                text = "Es geht um einen Gründerzuschuss, der dir beim Aufbau deines Unternehmens " +
-                "helfen kann. Jetzt nervös zu sein ist vollkommen verständlich."
+                text = "Es geht um einen GrÃ¼nderzuschuss, der dir beim Aufbau deines Unternehmens " +
+                "helfen kann. Jetzt nervÃ¶s zu sein ist vollkommen verstÃ¤ndlich."
             },
 
             new VisualNovelEvent()
@@ -109,8 +109,8 @@ public class StartUpGrantNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 2,
-                text = "Ängstlich zu sein ist in Ordnung. Dein Gegenüber fordert von dir Unterlagen, die " +
-                "du möglicherweise nicht hast und du weißt nicht, wie er darauf reagieren wird."
+                text = "Ã„ngstlich zu sein ist in Ordnung. Dein GegenÃ¼ber fordert von dir Unterlagen, die " +
+                "du mÃ¶glicherweise nicht hast und du weiÃŸt nicht, wie er darauf reagieren wird."
             },
 
             new VisualNovelEvent()
@@ -120,7 +120,7 @@ public class StartUpGrantNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 3,
-                text = "Du weißt, dass du die Kompetenzen besitzt und wie du sie beweisen kannst. " +
+                text = "Du weiÃŸt, dass du die Kompetenzen besitzt und wie du sie beweisen kannst. " +
                 "Das ist sehr ermutigend."
             },
 
@@ -131,8 +131,8 @@ public class StartUpGrantNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 4,
-                text = "Dein Gegenüber scheint dir vorzuwerfen, dass du nicht mit Zahlen umgehen kannst. " +
-                "Das kann verärgern."
+                text = "Dein GegenÃ¼ber scheint dir vorzuwerfen, dass du nicht mit Zahlen umgehen kannst. " +
+                "Das kann verÃ¤rgern."
             },
 
             new VisualNovelEvent()
@@ -174,9 +174,9 @@ public class StartUpGrantNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Finanzwesen und Buchhaltung habe ich mir selbst beigebracht, während ich " +
-                "den Businessplan geschrieben habe und die Bewertung für den Finanzplan ist sehr " +
-                "gut ausgefallen. Außerdem habe ich vor, baldmöglichst eine Person mit Expertise " +
+                text = "Finanzwesen und Buchhaltung habe ich mir selbst beigebracht, wÃ¤hrend ich " +
+                "den Businessplan geschrieben habe und die Bewertung fÃ¼r den Finanzplan ist sehr " +
+                "gut ausgefallen. AuÃŸerdem habe ich vor, baldmÃ¶glichst eine Person mit Expertise " +
                 "in diesem Bereich einzustellen."
             },
 
@@ -193,8 +193,8 @@ public class StartUpGrantNovel : VisualNovel
                 nextId = 20,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
-                text = "Wir können gerne den Antrag stellen, aber ich kann nicht sagen, " +
+                name = "Herr MÃ¼ller",
+                text = "Wir kÃ¶nnen gerne den Antrag stellen, aber ich kann nicht sagen, " +
                 "ob er auch genehmigt wird.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
@@ -205,8 +205,8 @@ public class StartUpGrantNovel : VisualNovel
                 nextId = 20,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
-                text = "Selbst erlerntes Wissen ist nicht aussagekräftig, " +
+                name = "Herr MÃ¼ller",
+                text = "Selbst erlerntes Wissen ist nicht aussagekrÃ¤ftig, " +
                 "genau wie die Bewertung des Businessplans.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
@@ -217,7 +217,7 @@ public class StartUpGrantNovel : VisualNovel
                 nextId = 20,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
+                name = "Herr MÃ¼ller",
                 text = "Wenn Sie das Zeugnis nachreichen, wird die Beantragung problemlos sein.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
@@ -228,7 +228,7 @@ public class StartUpGrantNovel : VisualNovel
                 nextId = 21,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.CHARAKTER_EXIT_EVENT),
                 waitForUserConfirmation = false,
-                name = "Herr Müller",
+                name = "Herr MÃ¼ller",
                 animationType = AnimationTypeHelper.ToInt(AnimationType.FLY_IN_FROM_ABOVE),
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },

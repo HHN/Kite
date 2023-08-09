@@ -5,7 +5,7 @@ public class CallWithNotaryNovel : VisualNovel
     public CallWithNotaryNovel()
     {
         title = "Telefonat mit dem Notar";
-        description = "Du hast ein Telefonat mit einer Notarin, um einen Termin für deine Gründung auszumachen.";
+        description = "Du hast ein Telefonat mit einer Notarin, um einen Termin fÃ¼r deine GrÃ¼ndung auszumachen.";
         image = 3;
         nameOfMainCharacter = "Lea";
         feedback = "";
@@ -44,7 +44,7 @@ public class CallWithNotaryNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Intro",
-                text = "Du hast ein Telefonat mit einer Notarin, um einen Termin für deine Gründung auszumachen."
+                text = "Du hast ein Telefonat mit einer Notarin, um einen Termin fÃ¼r deine GrÃ¼ndung auszumachen."
             },
 
             new VisualNovelEvent()
@@ -55,7 +55,7 @@ public class CallWithNotaryNovel : VisualNovel
                 waitForUserConfirmation = true,
                 name = "Lea",
                 text = "Guten Tag, mein Name ist Lea Winkler. Ich rufe an, weil ich mein " +
-                "Unternehmen gerne ins Handelsregister eintragen lassen möchte.",
+                "Unternehmen gerne ins Handelsregister eintragen lassen mÃ¶chte.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -66,9 +66,9 @@ public class CallWithNotaryNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Mayer",
-                text = "Das freut mich. Als erstes muss ein Fragebogen ausgefüllt werden, in dem " +
-                "vorab Fragen zum Unternehmen geklärt werden, wie der Name, die Rechtsform und der " +
-                "Unternehmensgegenstand. Wichtig ist auch, dass der Geschäftsführer anwesend ist, " +
+                text = "Das freut mich. Als erstes muss ein Fragebogen ausgefÃ¼llt werden, in dem " +
+                "vorab Fragen zum Unternehmen geklÃ¤rt werden, wie der Name, die Rechtsform und der " +
+                "Unternehmensgegenstand. Wichtig ist auch, dass der GeschÃ¤ftsfÃ¼hrer anwesend ist, " +
                 "weil seine Unterschrift essentiell ist.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
@@ -89,7 +89,7 @@ public class CallWithNotaryNovel : VisualNovel
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 1,
                 text = "Bei dem Termin beim Notar/bei der Notarin wird dein Unternehmen beurkundet und " +
-                "ins Handelsregister eingetragen. Bei so einem großen Schritt darfst du nervös sein."
+                "ins Handelsregister eingetragen. Bei so einem groÃŸen Schritt darfst du nervÃ¶s sein."
             },
 
             new VisualNovelEvent()
@@ -99,8 +99,8 @@ public class CallWithNotaryNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 2,
-                text = "Es ist in Ordnung in diesem Moment ängstlich zu sein, schließlich handelt es sich " +
-                "um einen wichtigen Schritt in der Unternehmensgründung."
+                text = "Es ist in Ordnung in diesem Moment Ã¤ngstlich zu sein, schlieÃŸlich handelt es sich " +
+                "um einen wichtigen Schritt in der UnternehmensgrÃ¼ndung."
             },
 
             new VisualNovelEvent()
@@ -110,7 +110,7 @@ public class CallWithNotaryNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 3,
-                text = "Du bist dabei den nächsten Schritt in der Unternehmensgründung zu beschreiten " +
+                text = "Du bist dabei den nÃ¤chsten Schritt in der UnternehmensgrÃ¼ndung zu beschreiten " +
                 "und das kann sehr ermutigend wirken."
             },
 
@@ -121,8 +121,8 @@ public class CallWithNotaryNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 4,
-                text = "Es klingt, als würde die Person am anderen Ende der Leitung dich nicht als " +
-                "Geschäftsführerin erkennen und es ist nachvollziehbar, deswegen verärgert zu sein."
+                text = "Es klingt, als wÃ¼rde die Person am anderen Ende der Leitung dich nicht als " +
+                "GeschÃ¤ftsfÃ¼hrerin erkennen und es ist nachvollziehbar, deswegen verÃ¤rgert zu sein."
             },
 
             new VisualNovelEvent()
@@ -141,7 +141,7 @@ public class CallWithNotaryNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Vielen Dank. Können Sie mir den Fragebogen per Mail zusenden?"
+                text = "Vielen Dank. KÃ¶nnen Sie mir den Fragebogen per Mail zusenden?"
             },
 
             new VisualNovelEvent()
@@ -152,7 +152,7 @@ public class CallWithNotaryNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Das ist kein Problem, da ich die Geschäftsführerin bin."
+                text = "Das ist kein Problem, da ich die GeschÃ¤ftsfÃ¼hrerin bin."
             },
 
             new VisualNovelEvent()
@@ -163,8 +163,8 @@ public class CallWithNotaryNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Die Geschäftsführerin bin ich und ich " +
-                "möchte auch als solche angesprochen werden!"
+                text = "Die GeschÃ¤ftsfÃ¼hrerin bin ich und ich " +
+                "mÃ¶chte auch als solche angesprochen werden!"
             },
 
             new VisualNovelEvent()
@@ -182,7 +182,7 @@ public class CallWithNotaryNovel : VisualNovel
                 waitForUserConfirmation = true,
                 name = "Frau Mayer",
                 text = "Den Fragebogen sende ich Ihnen gerne zu. " +
-                "Nächsten Monat hätte ich noch einen Termin frei. Würde Ihnen das passen?",
+                "NÃ¤chsten Monat hÃ¤tte ich noch einen Termin frei. WÃ¼rde Ihnen das passen?",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -193,7 +193,7 @@ public class CallWithNotaryNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Mayer",
-                text = "Oh, tut mir leid. Da war ich wohl etwas voreilig. Ich kann Ihnen die benötigten Formulare zusenden und nächsten Monat hätte ich einen Termin frei.",
+                text = "Oh, tut mir leid. Da war ich wohl etwas voreilig. Ich kann Ihnen die benÃ¶tigten Formulare zusenden und nÃ¤chsten Monat hÃ¤tte ich einen Termin frei.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 

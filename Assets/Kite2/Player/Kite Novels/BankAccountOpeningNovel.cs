@@ -4,9 +4,9 @@ public class BankAccountOpeningNovel : VisualNovel
 {
     public BankAccountOpeningNovel()
     {
-        title = "Bank Kontoeröffnung";
-        description = "Du hast eine Einladung zu einem Bankgespräch erhalten, um mehr " +
-            "Informationen über die Eröffnung eines Bankkontos zu erhalten und dieses darauf " +
+        title = "Bank KontoerÃ¶ffnung";
+        description = "Du hast eine Einladung zu einem BankgesprÃ¤ch erhalten, um mehr " +
+            "Informationen Ã¼ber die ErÃ¶ffnung eines Bankkontos zu erhalten und dieses darauf " +
             "zu beantragen.";
         image = 0;
         nameOfMainCharacter = "Lea";
@@ -31,7 +31,7 @@ public class BankAccountOpeningNovel : VisualNovel
                 nextId = 3,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.CHARAKTER_JOIN_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
+                name = "Herr MÃ¼ller",
                 animationType = AnimationTypeHelper.ToInt(AnimationType.FLY_IN_FROM_ABOVE),
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING),
                 xPosition = 0,
@@ -46,8 +46,8 @@ public class BankAccountOpeningNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Intro",
-                text = "Du hast eine Einladung zu einem Bankgespräch erhalten, " +
-                "um mehr Informationen über die Eröffnung eines Bankkontos zu erhalten " +
+                text = "Du hast eine Einladung zu einem BankgesprÃ¤ch erhalten, " +
+                "um mehr Informationen Ã¼ber die ErÃ¶ffnung eines Bankkontos zu erhalten " +
                 "und dieses darauf zu beantragen."
             },
 
@@ -57,7 +57,7 @@ public class BankAccountOpeningNovel : VisualNovel
                 nextId = 5,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
+                name = "Herr MÃ¼ller",
                 text = "Willkommen. Haben Sie alle Unterlagen bei sich?",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
@@ -79,7 +79,7 @@ public class BankAccountOpeningNovel : VisualNovel
                 nextId = 7,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
+                name = "Herr MÃ¼ller",
                 text = "Vielen Dank.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
@@ -90,9 +90,9 @@ public class BankAccountOpeningNovel : VisualNovel
                 nextId = 8,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
-                text = "Nach einer kurzen Überprüfung habe ich das Gefühl, dass Ihre " +
-                "Geschäftsidee in eine Risikobranche fällt, was wir nur ungern unterstützen.",
+                name = "Herr MÃ¼ller",
+                text = "Nach einer kurzen ÃœberprÃ¼fung habe ich das GefÃ¼hl, dass Ihre " +
+                "GeschÃ¤ftsidee in eine Risikobranche fÃ¤llt, was wir nur ungern unterstÃ¼tzen.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -111,8 +111,8 @@ public class BankAccountOpeningNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 1,
-                text = "Es ist in Ordnung, jetzt nervös zu sein. " +
-                "Das Geschäftskonto ist ein wesentlicher Teil für die Geschäftsgründung."
+                text = "Es ist in Ordnung, jetzt nervÃ¶s zu sein. " +
+                "Das GeschÃ¤ftskonto ist ein wesentlicher Teil fÃ¼r die GeschÃ¤ftsgrÃ¼ndung."
             },
 
             new VisualNovelEvent()
@@ -122,8 +122,8 @@ public class BankAccountOpeningNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 2,
-                text = "Jetzt ängstlich zu sein ist in Ordnung. Es scheint, als müsstest du jetzt deine " +
-                "Geschäftsidee verteidigen, um ein Firmenkonto eröffnen zu können."
+                text = "Jetzt Ã¤ngstlich zu sein ist in Ordnung. Es scheint, als mÃ¼sstest du jetzt deine " +
+                "GeschÃ¤ftsidee verteidigen, um ein Firmenkonto erÃ¶ffnen zu kÃ¶nnen."
             },
 
             new VisualNovelEvent()
@@ -143,8 +143,8 @@ public class BankAccountOpeningNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 4,
-                text = "Jetzt verärgert zu sein ist verständlich. Ein Geschäftskonto ist wichtig für die " +
-                "Firmengründung und eine Ablehnung wäre ein herber Rückschlag."
+                text = "Jetzt verÃ¤rgert zu sein ist verstÃ¤ndlich. Ein GeschÃ¤ftskonto ist wichtig fÃ¼r die " +
+                "FirmengrÃ¼ndung und eine Ablehnung wÃ¤re ein herber RÃ¼ckschlag."
             },
 
             new VisualNovelEvent()
@@ -164,7 +164,7 @@ public class BankAccountOpeningNovel : VisualNovel
                 waitForUserConfirmation = false,
                 name = "Lea",
                 text = "Meine Marktrecherche hat ergeben, dass es genug Kunden gibt und ich " +
-                "regelmäßige Einnahmen erzielen kann. Das können Sie alles auf Seite 14 nachlesen."
+                "regelmÃ¤ÃŸige Einnahmen erzielen kann. Das kÃ¶nnen Sie alles auf Seite 14 nachlesen."
             },
 
             new VisualNovelEvent()
@@ -193,8 +193,8 @@ public class BankAccountOpeningNovel : VisualNovel
                 nextId = 18,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
-                text = "In dem Fall werde ich den Businessplan noch einmal prüfen. " +
+                name = "Herr MÃ¼ller",
+                text = "In dem Fall werde ich den Businessplan noch einmal prÃ¼fen. " +
                 "Allerdings wird das etwas dauern.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
@@ -205,7 +205,7 @@ public class BankAccountOpeningNovel : VisualNovel
                 nextId = 19,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.CHARAKTER_EXIT_EVENT),
                 waitForUserConfirmation = false,
-                name = "Herr Müller",
+                name = "Herr MÃ¼ller",
                 animationType = AnimationTypeHelper.ToInt(AnimationType.FLY_IN_FROM_ABOVE),
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },

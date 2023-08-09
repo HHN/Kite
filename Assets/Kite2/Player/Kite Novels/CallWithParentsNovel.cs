@@ -5,7 +5,7 @@ public class CallWithParentsNovel : VisualNovel
     public CallWithParentsNovel()
     {
         title = "Telefonat mit den Eltern";
-        description = "Du beschlieﬂt, deine Eltern anzurufen, und ihnen von deinem Gr¸ndungsvorhaben zu berichten.";
+        description = "Du beschlie√üt, deine Eltern anzurufen, und ihnen von deinem Gr√ºndungsvorhaben zu berichten.";
         image = 1;
         nameOfMainCharacter = "Lea";
         feedback = "";
@@ -44,7 +44,7 @@ public class CallWithParentsNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Intro",
-                text = "Du beschlieﬂt, deine Eltern anzurufen, und ihnen von deinem Gr¸ndungsvorhaben zu berichten."
+                text = "Du beschlie√üt, deine Eltern anzurufen, und ihnen von deinem Gr√ºndungsvorhaben zu berichten."
             },
 
             new VisualNovelEvent()
@@ -54,7 +54,7 @@ public class CallWithParentsNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Mama",
-                text = "Hallo, Schˆn dass du anrufst. Wie geht es dir?",
+                text = "Hallo, Sch√∂n dass du anrufst. Wie geht es dir?",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -65,7 +65,7 @@ public class CallWithParentsNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
-                text = "Hi. Mir geht es gut. Ich rufe an, weil ich euch etwas wichtiges mitteilen mˆchte.",
+                text = "Hi. Mir geht es gut. Ich rufe an, weil ich euch etwas wichtiges mitteilen m√∂chte.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -95,8 +95,8 @@ public class CallWithParentsNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 1,
-                text = "Deinen Eltern dein Gr¸ndungsvorhaben zu erz‰hlen, kann dich nervˆs machen. " +
-                "Ihre Meinung z‰hlt f¸r dich schlieﬂlich mehr als die von Fremden."
+                text = "Deinen Eltern dein Gr√ºndungsvorhaben zu erz√§hlen, kann dich nerv√∂s machen. " +
+                "Ihre Meinung z√§hlt f√ºr dich schlie√ülich mehr als die von Fremden."
             },
 
             new VisualNovelEvent()
@@ -106,8 +106,8 @@ public class CallWithParentsNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 2,
-                text = "Du weiﬂt nicht, wie deine Eltern auf deine Idee, zu gr¸nden, reagieren werden. " +
-                "Daher ist es in Ordnung auch in dieser Situation ‰ngstlich zu sein."
+                text = "Du wei√üt nicht, wie deine Eltern auf deine Idee, zu gr√ºnden, reagieren werden. " +
+                "Daher ist es in Ordnung auch in dieser Situation √§ngstlich zu sein."
             },
 
             new VisualNovelEvent()
@@ -117,8 +117,8 @@ public class CallWithParentsNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 3,
-                text = "Es kann Mut machen, seinen eigenen Eltern von der Gr¸ndungsidee zu erz‰hlen. " +
-                "Insbesondere wenn du jetzt schon weiﬂt, dass sie hinter dir stehen."
+                text = "Es kann Mut machen, seinen eigenen Eltern von der Gr√ºndungsidee zu erz√§hlen. " +
+                "Insbesondere wenn du jetzt schon wei√üt, dass sie hinter dir stehen."
             },
 
             new VisualNovelEvent()
@@ -146,7 +146,7 @@ public class CallWithParentsNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
-                text = "Ich habe vor mich selbst‰ndig zu machen und ein Unternehmen zu gr¸nden.",
+                text = "Ich habe vor mich selbst√§ndig zu machen und ein Unternehmen zu gr√ºnden.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -169,7 +169,7 @@ public class CallWithParentsNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "So etwas ist immer mit einem Risiko verbunden, aber ich habe mir dar¸ber " +
+                text = "So etwas ist immer mit einem Risiko verbunden, aber ich habe mir dar√ºber " +
                 "bereits Gedanken gemacht."
             },
 

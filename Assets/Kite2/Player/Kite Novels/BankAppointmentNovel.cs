@@ -5,8 +5,8 @@ public class BankAppointmentNovel : VisualNovel
     public BankAppointmentNovel()
     {
         title = "Banktermin zur Kreditvergabe";
-        description = "Du hast eine Einladung zu einem Bankgespräch erhalten, um mehr " +
-            "Informationen über einen Kredit zu erhalten und diesen darauf zu beantragen.";
+        description = "Du hast eine Einladung zu einem BankgesprÃ¤ch erhalten, um mehr " +
+            "Informationen Ã¼ber einen Kredit zu erhalten und diesen darauf zu beantragen.";
         image = 0;
         nameOfMainCharacter = "Lea";
         feedback = "";
@@ -45,8 +45,8 @@ public class BankAppointmentNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Intro",
-                text = "Du hast eine Einladung zu einem Bankgespräch erhalten, um mehr " +
-                "Informationen über einen Kredit zu erhalten und diesen darauf zu beantragen."
+                text = "Du hast eine Einladung zu einem BankgesprÃ¤ch erhalten, um mehr " +
+                "Informationen Ã¼ber einen Kredit zu erhalten und diesen darauf zu beantragen."
             },
 
             new VisualNovelEvent()
@@ -56,7 +56,7 @@ public class BankAppointmentNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Winkler",
-                text = "Willkommen. In welcher Höhe möchten Sie denn den Kredit beantragen?",
+                text = "Willkommen. In welcher HÃ¶he mÃ¶chten Sie denn den Kredit beantragen?",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -67,7 +67,7 @@ public class BankAppointmentNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
-                text = "Ich bräuchte einen Kredit in Höhe von 20.000,00 Euro.",
+                text = "Ich brÃ¤uchte einen Kredit in HÃ¶he von 20.000,00 Euro.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -79,7 +79,7 @@ public class BankAppointmentNovel : VisualNovel
                 waitForUserConfirmation = true,
                 name = "Frau Winkler",
                 text = "Hmm... Das ist ein ziemlich hoher Kredit. Sind Sie sicher, " +
-                "den auch wieder zurückzahlen zu können?",
+                "den auch wieder zurÃ¼ckzahlen zu kÃ¶nnen?",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -98,8 +98,8 @@ public class BankAppointmentNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 1,
-                text = "Du darfst in dieser Situation nervös sein. " +
-                "Der Kredit ist wichtig und der Ausgang des Gesprächs unklar."
+                text = "Du darfst in dieser Situation nervÃ¶s sein. " +
+                "Der Kredit ist wichtig und der Ausgang des GesprÃ¤chs unklar."
             },
 
             new VisualNovelEvent()
@@ -109,8 +109,8 @@ public class BankAppointmentNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 2,
-                text = "Jetzt ängstlich zu sein ist normal. Du brauchst den Kredit, um mit deinem " +
-                "Unternehmen durchstarten zu können und musst nun darlegen, wie du ihn zurückzahlen möchtest."
+                text = "Jetzt Ã¤ngstlich zu sein ist normal. Du brauchst den Kredit, um mit deinem " +
+                "Unternehmen durchstarten zu kÃ¶nnen und musst nun darlegen, wie du ihn zurÃ¼ckzahlen mÃ¶chtest."
             },
 
             new VisualNovelEvent()
@@ -130,8 +130,8 @@ public class BankAppointmentNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 4,
-                text = "Es ist verständlich, verärgert zu sein. Du brauchst den Kredit und dass man " +
-                "dir unterstellt, dass du ihn nicht zurückzahlen kannst, ist nervig."
+                text = "Es ist verstÃ¤ndlich, verÃ¤rgert zu sein. Du brauchst den Kredit und dass man " +
+                "dir unterstellt, dass du ihn nicht zurÃ¼ckzahlen kannst, ist nervig."
             },
 
             new VisualNovelEvent()
@@ -150,8 +150,8 @@ public class BankAppointmentNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Natürlich kann ich ihn zurückzahlen. Sehen Sie, hier in meinem Businessplan " +
-                "habe ich bereits damit kalkuliert und habe genügend Einnahmen, um die Schulden zu tilgen."
+                text = "NatÃ¼rlich kann ich ihn zurÃ¼ckzahlen. Sehen Sie, hier in meinem Businessplan " +
+                "habe ich bereits damit kalkuliert und habe genÃ¼gend Einnahmen, um die Schulden zu tilgen."
             },
 
             new VisualNovelEvent()
@@ -162,8 +162,8 @@ public class BankAppointmentNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Ich wäre nicht hier und hätte mit Ihnen den Termin ausgemacht, wenn ich mir " +
-                "nicht sicher wäre, den Kredit zurückzahlen zu können."
+                text = "Ich wÃ¤re nicht hier und hÃ¤tte mit Ihnen den Termin ausgemacht, wenn ich mir " +
+                "nicht sicher wÃ¤re, den Kredit zurÃ¼ckzahlen zu kÃ¶nnen."
             },
 
             new VisualNovelEvent()
@@ -180,9 +180,9 @@ public class BankAppointmentNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Winkler",
-                text = "Könnten Sie mir ihren Busnessplan da lassen? Dann werde ich das überprüfen. " +
+                text = "KÃ¶nnten Sie mir ihren Busnessplan da lassen? Dann werde ich das Ã¼berprÃ¼fen. " +
                 "Ich werde Ihnen dann meine Entscheidung in einer Mail mitteilen und je nachdem " +
-                "können wir noch einmal einen Termin ausmachen, um alles formelle zu klären.",
+                "kÃ¶nnen wir noch einmal einen Termin ausmachen, um alles formelle zu klÃ¤ren.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 

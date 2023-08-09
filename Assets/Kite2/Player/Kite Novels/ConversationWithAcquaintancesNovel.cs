@@ -4,9 +4,9 @@ public class ConversationWithAcquaintancesNovel : VisualNovel
 {
     public ConversationWithAcquaintancesNovel()
     {
-        title = "Gespräch mit Bekannten";
+        title = "GesprÃ¤ch mit Bekannten";
         description = "Du triffst dich mit einem*einer Bekannten, den*die du seit ein paar Jahren " +
-            "nicht mehr gesehen hast, in einem kleinen Café. Er*Sie hat dir soeben erzählt, wo " +
+            "nicht mehr gesehen hast, in einem kleinen CafÃ©. Er*Sie hat dir soeben erzÃ¤hlt, wo " +
             "er*sie zurzeit beruflich steht. Nun bist du an der Reihe.";
         image = 7;
         nameOfMainCharacter = "Lea";
@@ -47,7 +47,7 @@ public class ConversationWithAcquaintancesNovel : VisualNovel
                 waitForUserConfirmation = true,
                 name = "Intro",
                 text = "Du triffst dich mit einem*einer Bekannten, den*die du seit ein paar Jahren " +
-                "nicht mehr gesehen hast, in einem kleinen Café. Er*Sie hat dir soeben erzählt, wo " +
+                "nicht mehr gesehen hast, in einem kleinen CafÃ©. Er*Sie hat dir soeben erzÃ¤hlt, wo " +
                 "er*sie zurzeit beruflich steht. Nun bist du an der Reihe."
             },
 
@@ -58,7 +58,7 @@ public class ConversationWithAcquaintancesNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lisa",
-                text = "Und letztes Jahr wurde ich befördert. Wie läuft es bei dir?",
+                text = "Und letztes Jahr wurde ich befÃ¶rdert. Wie lÃ¤uft es bei dir?",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -69,7 +69,7 @@ public class ConversationWithAcquaintancesNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
-                text = "Ich bin gerade dabei mich selbstständig zu machen und ein Unternehmen zu gründen.",
+                text = "Ich bin gerade dabei mich selbststÃ¤ndig zu machen und ein Unternehmen zu grÃ¼nden.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -92,9 +92,9 @@ public class ConversationWithAcquaintancesNovel : VisualNovel
                 waitForUserConfirmation = true,
                 name = "Lea",
                 text = "Ja, genau! Ich habe mich dazu entschieden, meinen eigenen Weg zu gehen und " +
-                "in der Tech-Branche Fuß zu fassen. Meine Firma spezialisiert sich auf die " +
-                "Entwicklung von KI-gestützter Software zur Verbesserung von Geschäftsprozessen. " +
-                "Durch den Einsatz künstlicher Intelligenz wollen wir Unternehmen dabei helfen, " +
+                "in der Tech-Branche FuÃŸ zu fassen. Meine Firma spezialisiert sich auf die " +
+                "Entwicklung von KI-gestÃ¼tzter Software zur Verbesserung von GeschÃ¤ftsprozessen. " +
+                "Durch den Einsatz kÃ¼nstlicher Intelligenz wollen wir Unternehmen dabei helfen, " +
                 "effizienter zu arbeiten und datengesteuerte Entscheidungen zu treffen.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
@@ -125,8 +125,8 @@ public class ConversationWithAcquaintancesNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 1,
-                text = "Da du nicht vorhersehen kannst, wie die Frage von deinem Gegenüber gemeint ist " +
-                "und wie es auf deine Antwort reagieren wird, ist es verständlich nervös zu sein."
+                text = "Da du nicht vorhersehen kannst, wie die Frage von deinem GegenÃ¼ber gemeint ist " +
+                "und wie es auf deine Antwort reagieren wird, ist es verstÃ¤ndlich nervÃ¶s zu sein."
             },
 
             new VisualNovelEvent()
@@ -146,8 +146,8 @@ public class ConversationWithAcquaintancesNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 3,
-                text = "Du hast jetzt die Möglichkeit, deinem Gegenüber zu zeigen, dass du die " +
-                "Gründung eines Unternehmens stemmen kannst und dies nichts mit deinem Geschlecht " +
+                text = "Du hast jetzt die MÃ¶glichkeit, deinem GegenÃ¼ber zu zeigen, dass du die " +
+                "GrÃ¼ndung eines Unternehmens stemmen kannst und dies nichts mit deinem Geschlecht " +
                 "zu tun hat. Dies kann ermutigen."
             },
 
@@ -158,8 +158,8 @@ public class ConversationWithAcquaintancesNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 4,
-                text = "Es ist verständlich, verärgert zu sein. Deine Fertigkeiten werden auf dein " +
-                "Geschlecht beschränkt und dir unterstellt, dass die Gründung für dich schwer sein " +
+                text = "Es ist verstÃ¤ndlich, verÃ¤rgert zu sein. Deine Fertigkeiten werden auf dein " +
+                "Geschlecht beschrÃ¤nkt und dir unterstellt, dass die GrÃ¼ndung fÃ¼r dich schwer sein " +
                 "muss nur weil du eine Frau bist."
             },
 
@@ -179,7 +179,7 @@ public class ConversationWithAcquaintancesNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Nein, überhaupt nicht."
+                text = "Nein, Ã¼berhaupt nicht."
             },
 
             new VisualNovelEvent()
@@ -231,8 +231,8 @@ public class ConversationWithAcquaintancesNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lisa",
-                text = "Selbstverständlich, tut mir leid. Ich wollte eigentlich einfach nur wissen, " +
-                "ob so eine Gründung nicht im allgemeinen schwierig und zeitaufwendig ist.",
+                text = "SelbstverstÃ¤ndlich, tut mir leid. Ich wollte eigentlich einfach nur wissen, " +
+                "ob so eine GrÃ¼ndung nicht im allgemeinen schwierig und zeitaufwendig ist.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -243,8 +243,8 @@ public class ConversationWithAcquaintancesNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lisa",
-                text = "Das klingt aber schon irgendwie als wäre es für Frauen anstrengender, " +
-                "wenn sie sich ständig gegen Sexismus wehren müssen.",
+                text = "Das klingt aber schon irgendwie als wÃ¤re es fÃ¼r Frauen anstrengender, " +
+                "wenn sie sich stÃ¤ndig gegen Sexismus wehren mÃ¼ssen.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 

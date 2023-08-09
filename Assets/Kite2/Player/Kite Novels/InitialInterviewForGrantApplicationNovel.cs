@@ -4,8 +4,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
 {
     public InitialInterviewForGrantApplicationNovel()
     {
-        title = "Erstgespräch Förderantrag";
-        description = "Du wurdest zu einem Termin beim Arbeitsamt eingeladen, wo du dich mit einem Berater über deine Geschäftsidee unterhalten kannst und hoffentlich Informationen zu passenden Förderungen erhalten wirst.";
+        title = "ErstgesprÃ¤ch FÃ¶rderantrag";
+        description = "Du wurdest zu einem Termin beim Arbeitsamt eingeladen, wo du dich mit einem Berater Ã¼ber deine GeschÃ¤ftsidee unterhalten kannst und hoffentlich Informationen zu passenden FÃ¶rderungen erhalten wirst.";
         image = 5;
         nameOfMainCharacter = "Lea";
         feedback = "";
@@ -29,7 +29,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 nextId = 3,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.CHARAKTER_JOIN_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
+                name = "Herr MÃ¼ller",
                 animationType = AnimationTypeHelper.ToInt(AnimationType.FLY_IN_FROM_ABOVE),
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING),
                 xPosition = 0,
@@ -44,7 +44,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Intro",
-                text = "Du wurdest zu einem Termin beim Arbeitsamt eingeladen, wo du dich mit einem Berater über deine Geschäftsidee unterhalten kannst und hoffentlich Informationen zu passenden Förderungen erhalten wirst."
+                text = "Du wurdest zu einem Termin beim Arbeitsamt eingeladen, wo du dich mit einem Berater Ã¼ber deine GeschÃ¤ftsidee unterhalten kannst und hoffentlich Informationen zu passenden FÃ¶rderungen erhalten wirst."
             },
 
             new VisualNovelEvent()
@@ -53,7 +53,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 nextId = 5,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
+                name = "Herr MÃ¼ller",
                 text = "Guten Tag. Haben Sie gut hergefunden?",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
@@ -88,7 +88,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Ich habe das Gebäude zuerst nicht gesehen, aber dann doch noch die richtige Straße gefunden."
+                text = "Ich habe das GebÃ¤ude zuerst nicht gesehen, aber dann doch noch die richtige StraÃŸe gefunden."
             },
 
             new VisualNovelEvent()
@@ -105,7 +105,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Das freut mich zu hören. Zu dieser Uhrzeit sind immer viele Leute unterwegs.",
+                text = "Das freut mich zu hÃ¶ren. Zu dieser Uhrzeit sind immer viele Leute unterwegs.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -116,7 +116,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Die Parksituation hier ist tatsächlich sehr schwierig. Die Angestellten beschweren sich auch ständig.",
+                text = "Die Parksituation hier ist tatsÃ¤chlich sehr schwierig. Die Angestellten beschweren sich auch stÃ¤ndig.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -127,7 +127,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Das kann jedem mal passieren. Die Straßenführung hier ist nicht die beste.",
+                text = "Das kann jedem mal passieren. Die StraÃŸenfÃ¼hrung hier ist nicht die beste.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -149,8 +149,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Sie haben mir ja bereits Ihren vorläufigen Businessplan zugeschickt und er " +
-                "liest sich auch sehr gut. Könnten Sie mir dennoch in 2-3 Sätzen Ihre Gründungsidee pitchen?",
+                text = "Sie haben mir ja bereits Ihren vorlÃ¤ufigen Businessplan zugeschickt und er " +
+                "liest sich auch sehr gut. KÃ¶nnten Sie mir dennoch in 2-3 SÃ¤tzen Ihre GrÃ¼ndungsidee pitchen?",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -174,7 +174,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 name = "Lea",
                 text = "Ich entwickele eine KI-basierte, personalisierte Lernplattform, die die Art und Weise, " +
                 "wie wir Wissen erwerben, revolutioniert, indem sie den Lernprozess auf die individuellen " +
-                "Bedürfnisse und Lernstile eines jeden Nutzenden abstimmt.",
+                "BedÃ¼rfnisse und Lernstile eines jeden Nutzenden abstimmt.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -184,9 +184,9 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 nextId = 17,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
-                text = "Das hört sich nach einer sehr innovativen Idee an. Und Sie haben in ihren " +
-                "Papieren gut herausgearbeitet, wie Sie damit einen Profit erzielen können.",
+                name = "Herr MÃ¼ller",
+                text = "Das hÃ¶rt sich nach einer sehr innovativen Idee an. Und Sie haben in ihren " +
+                "Papieren gut herausgearbeitet, wie Sie damit einen Profit erzielen kÃ¶nnen.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -196,9 +196,9 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 nextId = 18,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
-                text = "Ich halte eine Förderung für gut möglich, allerdings ist es natürlich den " +
-                "Förderern wichtig, dass das Unternehmen über lange Zeit besteht und Geld einbringt.",
+                name = "Herr MÃ¼ller",
+                text = "Ich halte eine FÃ¶rderung fÃ¼r gut mÃ¶glich, allerdings ist es natÃ¼rlich den " +
+                "FÃ¶rderern wichtig, dass das Unternehmen Ã¼ber lange Zeit besteht und Geld einbringt.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -208,9 +208,9 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 nextId = 19,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
+                name = "Herr MÃ¼ller",
                 text = "Da es in der Vergangenheit schon vorkam, dass ein Unternehmen wegen Kindern " +
-                "aufgegeben werden musste, würde es mich interessieren, wie es bei Ihnen mit dem Kinderwunsch " +
+                "aufgegeben werden musste, wÃ¼rde es mich interessieren, wie es bei Ihnen mit dem Kinderwunsch " +
                 "bzw. mit dem Familienstand steht.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
@@ -230,8 +230,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 1,
-                text = "Dieses Gefühl ist vollkommen normal, ein Unternehmen zu gründen ist ein großer " +
-                "Schritt und die Geschäftsidee einer fremden Person vorzustellen ohne zu wissen, wie " +
+                text = "Dieses GefÃ¼hl ist vollkommen normal, ein Unternehmen zu grÃ¼nden ist ein groÃŸer " +
+                "Schritt und die GeschÃ¤ftsidee einer fremden Person vorzustellen ohne zu wissen, wie " +
                 "sie reagiert ist nervenaufreibend."
             },
 
@@ -242,8 +242,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 2,
-                text = "In dieser Situation ängstlich zu sein ist verständlich. Sie müssen schließlich " +
-                "Ihre eigene Geschäftsidee erklären und wissen nicht, ob sie positiv aufgenommen wird."
+                text = "In dieser Situation Ã¤ngstlich zu sein ist verstÃ¤ndlich. Sie mÃ¼ssen schlieÃŸlich " +
+                "Ihre eigene GeschÃ¤ftsidee erklÃ¤ren und wissen nicht, ob sie positiv aufgenommen wird."
             },
 
             new VisualNovelEvent()
@@ -253,8 +253,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 3,
-                text = "Ihre Idee scheint überzeugt zu haben, also ist ein ermutigtes Gefühl durchaus " +
-                "angemessen! Sie haben schließlich die Fakten Ihres Businessplans im Kopf und wissen, " +
+                text = "Ihre Idee scheint Ã¼berzeugt zu haben, also ist ein ermutigtes GefÃ¼hl durchaus " +
+                "angemessen! Sie haben schlieÃŸlich die Fakten Ihres Businessplans im Kopf und wissen, " +
                 "was Sie damit erreichen wollen."
             },
 
@@ -265,10 +265,10 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 4,
-                text = "Auch heutzutage wird man manchmal bei Gesprächen zu einer Förderung immer noch mit " +
+                text = "Auch heutzutage wird man manchmal bei GesprÃ¤chen zu einer FÃ¶rderung immer noch mit " +
                 "Sexismus konfrontiert. Fragen wie diese hier beruhen teilweise auch unbewusst auf der " +
-                "Annahme, dass Frauen weniger leisten können, wenn sie eine Familie haben oder mit ihren " +
-                "Geschäftsideen weniger Erfolg haben als Männer."
+                "Annahme, dass Frauen weniger leisten kÃ¶nnen, wenn sie eine Familie haben oder mit ihren " +
+                "GeschÃ¤ftsideen weniger Erfolg haben als MÃ¤nner."
             },
 
             new VisualNovelEvent()
@@ -288,8 +288,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Ich habe bereits Kinder, aber es ist für mich kein Problem ein Unternehmen " +
-                "zu führen. Ich kann mich auf die Unterstützung meiner Familie verlassen!"
+                text = "Ich habe bereits Kinder, aber es ist fÃ¼r mich kein Problem ein Unternehmen " +
+                "zu fÃ¼hren. Ich kann mich auf die UnterstÃ¼tzung meiner Familie verlassen!"
             },
 
             new VisualNovelEvent()
@@ -300,8 +300,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Ich habe noch keine Kinder und dies ist für mich die " +
-                "nächste Zeit auch nicht geplant."
+                text = "Ich habe noch keine Kinder und dies ist fÃ¼r mich die " +
+                "nÃ¤chste Zeit auch nicht geplant."
             },
 
             new VisualNovelEvent()
@@ -325,7 +325,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 waitForUserConfirmation = false,
                 name = "Lea",
                 text = "Ich finde diese Frage ungerechtfertigt und unpassend. " +
-                "Hätten Sie sie auch einem Mann gestellt?"
+                "HÃ¤tten Sie sie auch einem Mann gestellt?"
             },
 
             new VisualNovelEvent()
@@ -336,7 +336,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Ich sehe keinen Grund, diese Frage beantworten zu müssen."
+                text = "Ich sehe keinen Grund, diese Frage beantworten zu mÃ¼ssen."
             },
 
             new VisualNovelEvent()
@@ -352,7 +352,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 nextId = 36,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
+                name = "Herr MÃ¼ller",
                 text = "Ich verstehe.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
@@ -363,8 +363,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 nextId = 36,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
-                text = "Das ist gut zu hören.",
+                name = "Herr MÃ¼ller",
+                text = "Das ist gut zu hÃ¶ren.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -374,7 +374,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 nextId = 36,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
+                name = "Herr MÃ¼ller",
                 text = "Sie sind sich sicher? Ein Kind kann viel Zeit beanspruchen. " +
                 "Aber wenn Sie dies schon bedacht haben, wird es wohl passen.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
@@ -386,9 +386,9 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 nextId = 36,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
+                name = "Herr MÃ¼ller",
                 text = "Es tut mir leid, so habe ich die Frage nicht gemeint. " +
-                "Natürlich müssen Sie die Fragen nicht beantworten.",
+                "NatÃ¼rlich mÃ¼ssen Sie die Fragen nicht beantworten.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -398,10 +398,10 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 nextId = 36,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
-                text = "Tatsächlich ja. Wir hatten auch schon den FAll, dass ein Mann während" +
-                "des Gründungsprozesses aussteigen musste, weil er Vater wurde und die Einnahmen aus dem" +
-                "Unternehmen nicht für die Familie gereicht hätten.",
+                name = "Herr MÃ¼ller",
+                text = "TatsÃ¤chlich ja. Wir hatten auch schon den FAll, dass ein Mann wÃ¤hrend" +
+                "des GrÃ¼ndungsprozesses aussteigen musste, weil er Vater wurde und die Einnahmen aus dem" +
+                "Unternehmen nicht fÃ¼r die Familie gereicht hÃ¤tten.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -411,9 +411,9 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 nextId = 37,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
-                text = "Ich habe bereits ein paar Förderungen herausgesucht, " +
-                "die zu Ihrer Gründungsidee passen würden.",
+                name = "Herr MÃ¼ller",
+                text = "Ich habe bereits ein paar FÃ¶rderungen herausgesucht, " +
+                "die zu Ihrer GrÃ¼ndungsidee passen wÃ¼rden.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -423,7 +423,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 nextId = 38,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.CHARAKTER_EXIT_EVENT),
                 waitForUserConfirmation = false,
-                name = "Herr Müller",
+                name = "Herr MÃ¼ller",
                 animationType = AnimationTypeHelper.ToInt(AnimationType.FLY_IN_FROM_ABOVE),
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
