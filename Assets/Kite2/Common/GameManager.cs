@@ -14,4 +14,10 @@ public class GameManager
         }
         return instance;
     }
+    
+    public void LogOut()
+    {
+        AuthenticationManager.Instance().RemoveAuthTokens();
+        this.applicationMode = ApplicationModes.GUEST_MODE;
+    }
 }

@@ -20,7 +20,13 @@ public enum ResultCode
     EMAIL_NOT_CONFIRMED,
     NO_NOVEL_AVAILABLE,
     SUCCESSFULLY_GOT_NOVELS,
-    SUCCESSFULLY_GOT_COMPLETION
+    SUCCESSFULLY_GOT_COMPLETION,
+    NOVEL_NOT_FOUND,
+    SUCCESSFULLY_DELETED_NOVEL,
+    USER_NOT_FOUND,
+    SUCCESSFULLY_DELETED_USER,
+    SUCCESSFULLY_CHANGED_PASSWORD,
+    CHANGE_OF_PASSWORD_FAILED
 }
 
 public class ResultCodeHelper
@@ -49,6 +55,12 @@ public class ResultCodeHelper
             case ResultCode.NO_NOVEL_AVAILABLE: { return 18; }
             case ResultCode.SUCCESSFULLY_GOT_NOVELS: { return 19; }
             case ResultCode.SUCCESSFULLY_GOT_COMPLETION: { return 20; }
+            case ResultCode.NOVEL_NOT_FOUND: { return 21; }
+            case ResultCode.SUCCESSFULLY_DELETED_NOVEL: { return 22; }
+            case ResultCode.USER_NOT_FOUND: { return 23; }
+            case ResultCode.SUCCESSFULLY_DELETED_USER: { return 24; }
+            case ResultCode.SUCCESSFULLY_CHANGED_PASSWORD: { return 25; }
+            case ResultCode.CHANGE_OF_PASSWORD_FAILED: { return 26; }
             default: { return -1; }
         }
     }
@@ -77,6 +89,12 @@ public class ResultCodeHelper
             case 18: { return ResultCode.NO_NOVEL_AVAILABLE; }
             case 19: { return ResultCode.SUCCESSFULLY_GOT_NOVELS; }
             case 20: { return ResultCode.SUCCESSFULLY_GOT_COMPLETION; }
+            case 21: { return ResultCode.NOVEL_NOT_FOUND; }
+            case 22: { return ResultCode.SUCCESSFULLY_DELETED_NOVEL; }
+            case 23: { return ResultCode.USER_NOT_FOUND; }
+            case 24: { return ResultCode.SUCCESSFULLY_DELETED_USER; }
+            case 25: { return ResultCode.SUCCESSFULLY_CHANGED_PASSWORD; }
+            case 26: { return ResultCode.CHANGE_OF_PASSWORD_FAILED; }
             default: { return ResultCode.NONE; }
         }
     }
