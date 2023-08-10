@@ -8,4 +8,5 @@ public class ConnectionLink
     public static readonly string COMPLETION_LINK = BASE_LINK + "ai";
     public static readonly string VOICE_TO_TEXT_LINK = BASE_LINK + "vtt";
     public static readonly string DELETE_ACCOUNT_LINK = BASE_LINK + "delete";
+    public static readonly string CHANGE_PASSWORD_LINK = BASE_LINK + "changepassword";
 }

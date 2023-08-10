@@ -56,6 +56,11 @@ public class SceneLoader : MonoBehaviour
         LoadScene(SceneNames.SETTINGS_SCENE);
     }
 
+    public static void LoadChangePasswordSceneScene()
+    {
+        LoadScene(SceneNames.CHANGE_PASSWORD_SCENE);
+    }
+
     public static void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);

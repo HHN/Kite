@@ -11,4 +11,5 @@ public class ErrorMessages
     public static readonly string NOT_LOGGED_IN = "Sie müssen sich einloggen um diese Aktion durchzuführen";
     public static readonly string NOT_EVERYTHING_ENTERED = "Bitte füllen Sie alle notwendigen Felder aus.";
     public static readonly string EMAIL_NOT_CONFIRMED = "Bitte bestätigen Sie ihre Email Adresse um sich einloggen zu können.";
+    public static readonly string WRONG_PASSWORD = "Das angegebene alte Passwort ist nicht korrekt.";
 }

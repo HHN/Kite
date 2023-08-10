@@ -8,6 +8,7 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     public Button novelMakerButton;
     public Button logInLogOutButton;
     public Button registerButton;
+    public Button settingsButton;
     public GameObject logoutServerCall;
 
     void Start()
@@ -15,6 +16,7 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
         novelPlayerButton.onClick.AddListener(delegate { OnNovelPlayerButton(); });
         novelMakerButton.onClick.AddListener(delegate { OnNovelMakerButton(); });
         registerButton.onClick.AddListener(delegate { OnRegisterButton(); });
+        settingsButton.onClick.AddListener(delegate { OnSettingsButton(); });
 
         if (AuthenticationManager.Instance().GetAuthToken() == "")
         { 
@@ -31,6 +33,7 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
         GameManager.Instance().applicationMode = ApplicationModes.GUEST_MODE;
         novelMakerButton.interactable = false;
         registerButton.gameObject.SetActive(true);
+        settingsButton.gameObject.SetActive(false);
         logInLogOutButton.GetComponentInChildren<TMP_Text>().text = "EINLOGGEN";
         logInLogOutButton.onClick.AddListener(delegate { OnLogInButton(); });
     }
@@ -40,6 +43,7 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
         GameManager.Instance().applicationMode = ApplicationModes.LOGGED_IN_USER_MODE;
         novelMakerButton.interactable = true;
         registerButton.gameObject.SetActive(false);
+        settingsButton.gameObject.SetActive(true);
         logInLogOutButton.GetComponentInChildren<TMP_Text>().text = "AUSLOGGEN";
         logInLogOutButton.onClick.AddListener(delegate { OnLogOutButton(); });
     }
@@ -66,6 +70,11 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
         call.sceneController = this;
         call.onSuccessHandler = this;
         call.SendRequest();
+    }
+
+    public void OnSettingsButton()
+    {
+        SceneLoader.LoadSettingsScene();
     }
 
     public void OnSuccess(Response response)

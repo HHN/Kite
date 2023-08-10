@@ -16,6 +16,7 @@ public class SceneRouter
             case (SceneNames.LOG_IN_SCENE): return SceneNames.MAIN_MENU_SCENE;
             case (SceneNames.RESET_PASSWORD_SCENE): return SceneNames.LOG_IN_SCENE;
             case (SceneNames.SETTINGS_SCENE): return SceneNames.MAIN_MENU_SCENE;
+            case (SceneNames.CHANGE_PASSWORD_SCENE): return SceneNames.SETTINGS_SCENE;
             default: return "";
         }
     }
@@ -36,6 +37,7 @@ public class SceneRouter
             case (SceneNames.LOG_IN_SCENE): return SceneNames.MAIN_MENU_SCENE;
             case (SceneNames.RESET_PASSWORD_SCENE): return SceneNames.MAIN_MENU_SCENE;
             case (SceneNames.SETTINGS_SCENE): return SceneNames.MAIN_MENU_SCENE;
+            case (SceneNames.CHANGE_PASSWORD_SCENE): return SceneNames.MAIN_MENU_SCENE;
             default: return "";
         }
     }

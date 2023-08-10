@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Kite2/Common/SettingsScene.unity
     guid: 421e8bb45387ffd499ffc331477553c8
+  - enabled: 1
+    path: Assets/Kite2/Profile/ChangePasswordScene.unity
+    guid: 95d40f7a68c54894a9e2d52ded2ad6ba
   m_configObjects: {}

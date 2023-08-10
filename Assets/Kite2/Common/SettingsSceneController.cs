@@ -6,18 +6,22 @@ using UnityEngine.UI;
 public class SettingsSceneController : SceneController, OnSuccessHandler
 {
     public Button deleteAccountButton;
+    public Button changePasswordButton;
     public GameObject deleteAccountServerCallPrefab;
 
     void Start()
     {
         deleteAccountButton.onClick.AddListener(delegate { OnDeleteAccountButton(); });
+        changePasswordButton.onClick.AddListener(delegate { OnChangePasswordButton(); });
 
         if (GameManager.Instance().applicationMode == ApplicationModes.LOGGED_IN_USER_MODE)
         {
             deleteAccountButton.gameObject.SetActive(true);
+            changePasswordButton.gameObject.SetActive(true);
         } else
         {
             deleteAccountButton.gameObject.SetActive(false);
+            changePasswordButton.gameObject.SetActive(false);
         }
     }
 
@@ -29,6 +33,11 @@ public class SettingsSceneController : SceneController, OnSuccessHandler
         call.sceneController = this;
         call.onSuccessHandler = this;
         call.SendRequest();
+    }
+
+    public void OnChangePasswordButton()
+    {
+        SceneLoader.LoadChangePasswordSceneScene();
     }
 
     public void OnSuccess(Response response)
