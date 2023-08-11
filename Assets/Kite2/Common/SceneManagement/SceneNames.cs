@@ -14,4 +14,5 @@ public class SceneNames
     public const string RESET_PASSWORD_SCENE = "ResetPasswordScene";
     public const string SETTINGS_SCENE = "SettingsScene";
     public const string CHANGE_PASSWORD_SCENE = "ChangePasswordScene";
+    public const string GALLERY_SCENE = "GalleryScene";
 }

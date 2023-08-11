@@ -7,21 +7,27 @@ public class VisualNovelGallery : MonoBehaviour
     public GameObject visualNovelRepresentationPrefab;
     public GameObject content;
     public GameObject galleryRowPrefab;
-    public SelectNovelSceneController sceneController;
+    public NovelProvider novelProvider;
     public bool isKiteNovelGallery = false;
     public bool isUserNovelGallery = false;
+    public bool isAccountNovelGallery = false;
 
     private GameObject galleryRow = null;
 
     private void Start()
     {
-        List<VisualNovel> novels;
+        List<VisualNovel> novels = new List<VisualNovel>();
         if (isKiteNovelGallery)
         {
-            novels = sceneController.GetKiteNovels();
-        } else
+            novels = novelProvider.GetKiteNovels();
+        } 
+        else if (isUserNovelGallery)
         {
-            novels = sceneController.GetUserNovels();
+            novels = novelProvider.GetUserNovels();
+        } 
+        else if (isAccountNovelGallery)
+        {
+            novels = novelProvider.GetAccountNovels();
         }
         ShowNovels(novels);
     }
@@ -60,9 +66,9 @@ public class VisualNovelGallery : MonoBehaviour
         VisualNovelRepresentation representation = novelRepresentation.GetComponent<VisualNovelRepresentation>();
         representation.visualNovel = novel;
         representation.SetHeadline(novel.title);
-        Sprite sprite = sceneController.FindSmalSpriteById(novel.image);
+        Sprite sprite = novelProvider.FindSmalSpriteById(novel.image);
         representation.SetButtonImage(sprite);
-        representation.sceneController = sceneController;
+        representation.novelProvider = novelProvider;
     }
 
     private void CleanUp()

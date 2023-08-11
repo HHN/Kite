@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -9,7 +7,7 @@ public class VisualNovelRepresentation : MonoBehaviour
     public VisualNovel visualNovel;
     public Button button;
     public TextMeshProUGUI novelHeadline;
-    public SelectNovelSceneController sceneController;
+    public NovelProvider novelProvider;
 
     void Start()
     {
@@ -28,6 +26,6 @@ public class VisualNovelRepresentation : MonoBehaviour
 
     public void OnClick()
     {
-        sceneController.ShowDetailsViewWithNovel(visualNovel);
+        novelProvider.ShowDetailsViewWithNovel(visualNovel);
     }
 }

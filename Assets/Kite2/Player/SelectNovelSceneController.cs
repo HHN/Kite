@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectNovelSceneController : SceneController
+public class SelectNovelSceneController : NovelProvider
 {
     public GameObject visualNovelRepresentationPrefab;
     public Sprite[] smalNovelSprites;
@@ -12,7 +12,7 @@ public class SelectNovelSceneController : SceneController
     public bool isDisplayingDetails = false;
 
     // 400 * 400 sprites for representation next to each other.
-    public Sprite FindSmalSpriteById(long id)
+    public override Sprite FindSmalSpriteById(long id)
     {
         if (smalNovelSprites.Length <= id)
         {
@@ -22,7 +22,7 @@ public class SelectNovelSceneController : SceneController
     }
 
     // 800 * 800 sprites for displaying it on big view.
-    public Sprite FindBigSpriteById(long id)
+    public override Sprite FindBigSpriteById(long id)
     {
         if (bigNovelSprites.Length <= id)
         {
@@ -31,7 +31,7 @@ public class SelectNovelSceneController : SceneController
         return bigNovelSprites[id];
     }
 
-    public List<VisualNovel> GetKiteNovels()
+    public override List<VisualNovel> GetKiteNovels()
     {
         return new List<VisualNovel>
         {
@@ -49,7 +49,12 @@ public class SelectNovelSceneController : SceneController
         };
     }
 
-    public List<VisualNovel> GetUserNovels()
+    public override List<VisualNovel> GetUserNovels()
+    {
+        return new List<VisualNovel>();
+    }
+
+    public override List<VisualNovel> GetAccountNovels()
     {
         return new List<VisualNovel>();
     }
@@ -59,7 +64,7 @@ public class SelectNovelSceneController : SceneController
         throw new System.NotImplementedException();
     }
 
-    public void ShowDetailsViewWithNovel(VisualNovel novel)
+    public override void ShowDetailsViewWithNovel(VisualNovel novel)
     {
         isDisplayingDetails = true;
         DetailsView view = detailsView.GetComponent<DetailsView>();

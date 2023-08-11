@@ -33,12 +33,10 @@ public class SceneBase : MonoBehaviour
 
     public void OnGuestMode()
     {
-        novelMakerButton.interactable = false;
     }
 
     public void OnLoggedInUserMode()
     {
-
     }
 
     public void OnBackButton()

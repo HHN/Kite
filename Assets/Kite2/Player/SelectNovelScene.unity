@@ -889,7 +889,7 @@ MonoBehaviour:
   visualNovelRepresentationPrefab: {fileID: 3696140715562972363, guid: 66eee92e7bdcbc94e9b8b6fddd9b02bd, type: 3}
   content: {fileID: 465675438067315527}
   galleryRowPrefab: {fileID: 6498039573485986842, guid: e60eb68ae451c40448d3b834dda0f693, type: 3}
-  sceneController: {fileID: 600045262}
+  novelProvider: {fileID: 600045262}
   isKiteNovelGallery: 1
   isUserNovelGallery: 0
 --- !u!1 &1082630612
@@ -1288,7 +1288,7 @@ MonoBehaviour:
   visualNovelRepresentationPrefab: {fileID: 3696140715562972363, guid: 66eee92e7bdcbc94e9b8b6fddd9b02bd, type: 3}
   content: {fileID: 3515906972208229354}
   galleryRowPrefab: {fileID: 6498039573485986842, guid: e60eb68ae451c40448d3b834dda0f693, type: 3}
-  sceneController: {fileID: 600045262}
+  novelProvider: {fileID: 600045262}
   isKiteNovelGallery: 0
   isUserNovelGallery: 1
 --- !u!1 &1592230350

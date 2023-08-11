@@ -9,6 +9,7 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     public Button logInLogOutButton;
     public Button registerButton;
     public Button settingsButton;
+    public Button galleryButton;
     public GameObject logoutServerCall;
 
     void Start()
@@ -17,6 +18,7 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
         novelMakerButton.onClick.AddListener(delegate { OnNovelMakerButton(); });
         registerButton.onClick.AddListener(delegate { OnRegisterButton(); });
         settingsButton.onClick.AddListener(delegate { OnSettingsButton(); });
+        galleryButton.onClick.AddListener(delegate { OnGalleryButton(); });
 
         if (AuthenticationManager.Instance().GetAuthToken() == "")
         { 
@@ -31,7 +33,6 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     private void OnGuestMode()
     {
         GameManager.Instance().applicationMode = ApplicationModes.GUEST_MODE;
-        novelMakerButton.interactable = false;
         registerButton.gameObject.SetActive(true);
         settingsButton.gameObject.SetActive(false);
         logInLogOutButton.GetComponentInChildren<TMP_Text>().text = "EINLOGGEN";
@@ -41,7 +42,6 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     private void OnLoggedInUserMode()
     {
         GameManager.Instance().applicationMode = ApplicationModes.LOGGED_IN_USER_MODE;
-        novelMakerButton.interactable = true;
         registerButton.gameObject.SetActive(false);
         settingsButton.gameObject.SetActive(true);
         logInLogOutButton.GetComponentInChildren<TMP_Text>().text = "AUSLOGGEN";
@@ -87,5 +87,10 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     public void OnRegisterButton()
     {
         SceneLoader.LoadRegistrationScene();
+    }
+
+    public void OnGalleryButton()
+    {
+        SceneLoader.LoadGalleryScene();
     }
 }
