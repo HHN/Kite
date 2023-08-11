@@ -1,18 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class ResetPasswordSceneController : SceneController
+public class ResetPasswordSceneController : SceneController, OnSuccessHandler
 {
-    // Start is called before the first frame update
+    public TMP_InputField usernameInputField;
+    public Button resetPasswordButton;
+    public GameObject resetPasswordServerCallPrefab;
+
     void Start()
     {
-        
+        resetPasswordButton.onClick.AddListener(delegate { OnResetPasswordButton(); });
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnResetPasswordButton()
     {
-        
+        if (usernameInputField.text.Trim() == string.Empty)
+        {
+            this.DisplayErrorMessage(ErrorMessages.NOT_EVERYTHING_ENTERED);
+        }
+        else
+        {
+            this.DisplayInfoMessage(InfoMessages.WAIT_FOR_RESET_OF_PASSWORD);
+            ResetPasswordServerCall call = Instantiate(resetPasswordServerCallPrefab).GetComponent<ResetPasswordServerCall>();
+            call.sceneController = this;
+            call.onSuccessHandler = this;
+            call.username = usernameInputField.text.Trim();
+            call.SendRequest();
+        }
+    }
+
+    public void OnSuccess(Response response)
+    {
+        messageObject.CloseMessageBox();
+        SceneLoader.LoadMainMenuScene();
     }
 }

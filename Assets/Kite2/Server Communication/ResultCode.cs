@@ -26,7 +26,10 @@ public enum ResultCode
     USER_NOT_FOUND,
     SUCCESSFULLY_DELETED_USER,
     SUCCESSFULLY_CHANGED_PASSWORD,
-    CHANGE_OF_PASSWORD_FAILED
+    CHANGE_OF_PASSWORD_FAILED,
+    SUCCESSFULLY_RESETED_PASSWORD,
+    PASSWORD_ALREADY_RESETED,
+    SUCCESSFULLY_INITIATED_RESET
 }
 
 public class ResultCodeHelper
@@ -61,6 +64,9 @@ public class ResultCodeHelper
             case ResultCode.SUCCESSFULLY_DELETED_USER: { return 24; }
             case ResultCode.SUCCESSFULLY_CHANGED_PASSWORD: { return 25; }
             case ResultCode.CHANGE_OF_PASSWORD_FAILED: { return 26; }
+            case ResultCode.SUCCESSFULLY_RESETED_PASSWORD: { return 27; }
+            case ResultCode.PASSWORD_ALREADY_RESETED: { return 28; }
+            case ResultCode.SUCCESSFULLY_INITIATED_RESET: { return 29; }
             default: { return -1; }
         }
     }
@@ -95,6 +101,9 @@ public class ResultCodeHelper
             case 24: { return ResultCode.SUCCESSFULLY_DELETED_USER; }
             case 25: { return ResultCode.SUCCESSFULLY_CHANGED_PASSWORD; }
             case 26: { return ResultCode.CHANGE_OF_PASSWORD_FAILED; }
+            case 27: { return ResultCode.SUCCESSFULLY_RESETED_PASSWORD; }
+            case 28: { return ResultCode.PASSWORD_ALREADY_RESETED; }
+            case 29: { return ResultCode.SUCCESSFULLY_INITIATED_RESET; }
             default: { return ResultCode.NONE; }
         }
     }

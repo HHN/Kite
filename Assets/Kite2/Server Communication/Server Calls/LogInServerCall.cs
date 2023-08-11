@@ -38,7 +38,7 @@ public class LogInServerCall : ServerCall
                     sceneController.DisplayErrorMessage(ErrorMessages.EMAIL_NOT_CONFIRMED);
                     return;
                 }
-            case ResultCode.FAILURE:
+            default:
                 {
                     sceneController.DisplayErrorMessage(ErrorMessages.UNEXPECTED_SERVER_ERROR);
                     return;
