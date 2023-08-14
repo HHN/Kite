@@ -10,6 +10,7 @@ public class DualTabSystem : MonoBehaviour
     public GameObject contentTab1;
     public GameObject contentTab2;
     private int selectedTab;
+    public SearchBar searchBar;
 
     private void Start()
     {
@@ -29,6 +30,7 @@ public class DualTabSystem : MonoBehaviour
         contentTab1.SetActive(true);
         contentTab2.SetActive(false);
         selectedTab = 1;
+        searchBar.gallery = contentTab1.GetComponent<VisualNovelGallery>();
     }
 
     public void OnTab2Button()
@@ -42,5 +44,6 @@ public class DualTabSystem : MonoBehaviour
         contentTab1.SetActive(false);
         contentTab2.SetActive(true);
         selectedTab = 2;
+        searchBar.gallery = contentTab2.GetComponent<VisualNovelGallery>();
     }
 }

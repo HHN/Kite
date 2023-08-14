@@ -12,6 +12,8 @@ public class VisualNovelGallery : MonoBehaviour
     public bool isUserNovelGallery = false;
     public bool isAccountNovelGallery = false;
 
+    private List<VisualNovel> novelsInGallery;
+
     private GameObject galleryRow = null;
 
     private void Start()
@@ -29,6 +31,7 @@ public class VisualNovelGallery : MonoBehaviour
         {
             novels = novelProvider.GetAccountNovels();
         }
+        this.novelsInGallery = novels;
         ShowNovels(novels);
     }
 
@@ -77,5 +80,16 @@ public class VisualNovelGallery : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        galleryRow = null;
+    }
+
+    public List<VisualNovel> GetVisualNovels()
+    {
+        return novelsInGallery;
+    }
+
+    public void Reload()
+    {
+        this.ShowNovels(novelsInGallery);
     }
 }
