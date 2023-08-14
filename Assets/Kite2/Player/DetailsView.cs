@@ -12,6 +12,7 @@ public class DetailsView : MonoBehaviour
     public TextMeshProUGUI novelDescription;
     public VisualNovel novelToDisplay;
     public NovelProvider novelProvider;
+    public FavoriteButton favoriteButton;
 
     private void Start()
     {
@@ -25,6 +26,8 @@ public class DetailsView : MonoBehaviour
         novelImage.sprite = spriteOfNovel;
         novelTitle.text = novelToDisplay.title;
         novelDescription.text = novelToDisplay.description;
+        favoriteButton.novel = novelToDisplay;
+        favoriteButton.Init();
     }
 
     public void OnPlayButton()

@@ -12,6 +12,7 @@ public class VisualNovelGallery : MonoBehaviour
     public bool isUserNovelGallery = false;
     public bool isAccountNovelGallery = false;
     public bool isFavoritesNovelGallery = false;
+    public GetNovelsServerCall getNovelsServerCallPrefab;
 
     private List<VisualNovel> novelsInGallery;
 
@@ -34,7 +35,7 @@ public class VisualNovelGallery : MonoBehaviour
         } 
         else if (isFavoritesNovelGallery)
         {
-            novels = novelProvider.GetFavoriteNovels();
+            novels = novelProvider.GetFavoriteNovels(this);
         }
         this.novelsInGallery = novels;
         ShowNovels(novels);
@@ -96,5 +97,25 @@ public class VisualNovelGallery : MonoBehaviour
     public void Reload()
     {
         this.ShowNovels(novelsInGallery);
+    }
+
+    public void AddNovelToFavoritesWithRealtimeUpdate(VisualNovel novel)
+    {
+        if (novelsInGallery.Contains(novel))
+        {
+            return;
+        }
+        novelsInGallery.Add(novel);
+        AddNovelToGallery(novel);
+    }
+
+    public void RemoveNovelFromFavoritesWithRealitmeUpdate(VisualNovel novel)
+    {
+        if (!novelsInGallery.Contains(novel))
+        {
+            return;
+        }
+        novelsInGallery.Remove(novel); 
+        Reload();
     }
 }

@@ -29,7 +29,8 @@ public enum ResultCode
     CHANGE_OF_PASSWORD_FAILED,
     SUCCESSFULLY_RESETED_PASSWORD,
     PASSWORD_ALREADY_RESETED,
-    SUCCESSFULLY_INITIATED_RESET
+    SUCCESSFULLY_INITIATED_RESET,
+    SUCCESSFULLY_FOUND_NOVEL
 }
 
 public class ResultCodeHelper
@@ -67,6 +68,7 @@ public class ResultCodeHelper
             case ResultCode.SUCCESSFULLY_RESETED_PASSWORD: { return 27; }
             case ResultCode.PASSWORD_ALREADY_RESETED: { return 28; }
             case ResultCode.SUCCESSFULLY_INITIATED_RESET: { return 29; }
+            case ResultCode.SUCCESSFULLY_FOUND_NOVEL: { return 30; }
             default: { return -1; }
         }
     }
@@ -104,6 +106,7 @@ public class ResultCodeHelper
             case 27: { return ResultCode.SUCCESSFULLY_RESETED_PASSWORD; }
             case 28: { return ResultCode.PASSWORD_ALREADY_RESETED; }
             case 29: { return ResultCode.SUCCESSFULLY_INITIATED_RESET; }
+            case 30: { return ResultCode.SUCCESSFULLY_FOUND_NOVEL; }
             default: { return ResultCode.NONE; }
         }
     }

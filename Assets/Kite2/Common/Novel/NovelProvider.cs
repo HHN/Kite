@@ -1,13 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NovelProvider : MonoBehaviour
+public class NovelProvider : MonoBehaviour, OnSuccessHandler
 {
     public Sprite[] smalNovelSprites;
     public Sprite[] bigNovelSprites;
     public GameObject allNovelsView;
     public GameObject detailsView;
     public bool isDisplayingDetails = false;
+    public List<VisualNovel> userNovels;
+    public GameObject FindVisualNovelServerCall;
+    public VisualNovelGallery gallery;
+    public SceneController sceneController;
 
     // 400 * 400 sprites for representation next to each other.
     public Sprite FindSmalSpriteById(long id)
@@ -31,51 +35,45 @@ public class NovelProvider : MonoBehaviour
 
     public List<VisualNovel> GetKiteNovels()
     {
-        return new List<VisualNovel>
-        {
-            new BankTalkNovel(),
-            new CallWithParentsNovel(),
-            new PressTalkNovel(),
-            new CallWithNotaryNovel(),
-            new BankAccountOpeningNovel(),
-            new RentingAnOfficeNovel(),
-            new InitialInterviewForGrantApplicationNovel(),
-            new StartUpGrantNovel(),
-            new ConversationWithAcquaintancesNovel(),
-            new BankAppointmentNovel(),
-            new FeeNegotiationNovel()
-        };
+        return KiteNovelManager.GetAllKiteNovels();
     }
 
     public List<VisualNovel> GetUserNovels()
     {
-        return new List<VisualNovel>
-        {
-            new InitialInterviewForGrantApplicationNovel(),
-            new StartUpGrantNovel(),
-            new ConversationWithAcquaintancesNovel(),
-        };
+        return userNovels;
     }
 
     public List<VisualNovel> GetAccountNovels()
     {
         return new List<VisualNovel>
         {
-            new ConversationWithAcquaintancesNovel(),
+            new ConversationWithAcquaintancesNovel() { id = 0},
             new BankAppointmentNovel(),
-            new FeeNegotiationNovel()
+            new FeeNegotiationNovel() { id = 0},
         };
     }
 
-    public List<VisualNovel> GetFavoriteNovels()
+    public List<VisualNovel> GetFavoriteNovels(VisualNovelGallery gallery)
     {
-        return new List<VisualNovel>
+        this.gallery = gallery;
+        List<long> ids = FavoritesManager.GetFavoritesIds();
+        List<VisualNovel> result = new List<VisualNovel>();
+
+        foreach (long id in ids)
         {
-            new CallWithParentsNovel(),
-            new RentingAnOfficeNovel(),
-            new BankAppointmentNovel(),
-            new FeeNegotiationNovel()
-        };
+            if (id < 0)
+            {
+                result.Add(KiteNovelManager.GetKiteNovelById(id));
+            } 
+            else
+            {
+                FindNovelServerCall call = Instantiate(FindVisualNovelServerCall).GetComponent<FindNovelServerCall>();
+                call.sceneController = sceneController;
+                call.onSuccessHandler = this;
+                call.SendRequest();
+            }
+        }
+        return result;
     }
 
     public void ShowDetailsViewWithNovel(VisualNovel novel)
@@ -93,5 +91,10 @@ public class NovelProvider : MonoBehaviour
         isDisplayingDetails = false;
         detailsView.SetActive(false);
         allNovelsView.SetActive(true);
+    }
+
+    public void OnSuccess(Response response)
+    {
+        gallery.AddNovelToGallery(response.specifiedNovel);
     }
 }

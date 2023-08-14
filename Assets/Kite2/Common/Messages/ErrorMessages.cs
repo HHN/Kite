@@ -8,9 +8,9 @@ public class ErrorMessages
     public static readonly string MICROFON_NOT_CONNECTED_ERROR = "Ein unerwarteter Fehler ist aufgetreten.";
     public static readonly string INVALID_CREDENTIALS = "Die Zugangsdaten sind ungültig.";
     public static readonly string NO_NOVELS = "Es sind keine spielbaren Visual Novels verfügbar.";
-    public static readonly string NOT_LOGGED_IN = "Sie müssen sich einloggen um diese Aktion durchzuführen";
-    public static readonly string NOT_EVERYTHING_ENTERED = "Bitte füllen Sie alle notwendigen Felder aus.";
-    public static readonly string EMAIL_NOT_CONFIRMED = "Bitte bestätigen Sie ihre Email Adresse um sich einloggen zu können.";
+    public static readonly string NOT_LOGGED_IN = "Du musst dich einloggen um diese Aktion durchzuführen";
+    public static readonly string NOT_EVERYTHING_ENTERED = "Bitte fülle alle notwendigen Felder aus.";
+    public static readonly string EMAIL_NOT_CONFIRMED = "Bitte bestätige deine Email Adresse um dich einloggen zu können.";
     public static readonly string WRONG_PASSWORD = "Das angegebene alte Passwort ist nicht korrekt.";
     public static readonly string USER_NOT_FOUND = "Der angegebene Benutzername oder die angegebene Email-Adresse ist nicht registriert.";
 }

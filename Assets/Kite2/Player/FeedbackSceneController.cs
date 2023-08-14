@@ -6,16 +6,22 @@ using TMPro;
 public class FeedbackSceneController : SceneController, OnSuccessHandler
 {
     public TextMeshProUGUI feedbackText;
+    public TextMeshProUGUI novelTitle;
     public GameObject gptServercallPrefab;
+    public FavoriteButton favoriteButton;
+    private VisualNovel novelToPlay;
 
     private void Start()
     {
-        VisualNovel novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
+        novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
 
         if (novelToPlay == null)
         {
             return;
         }
+        novelTitle.SetText(novelToPlay.title);
+        favoriteButton.novel = novelToPlay;
+        favoriteButton.Init();
         if (string.IsNullOrEmpty(novelToPlay.feedback))
         {
             feedbackText.SetText("Bitte warten, Feedback wird geladen...");
