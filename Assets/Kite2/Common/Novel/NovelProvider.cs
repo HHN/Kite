@@ -1,17 +1,97 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class NovelProvider : SceneController
+public class NovelProvider : MonoBehaviour
 {
-    public abstract List<VisualNovel> GetKiteNovels();
+    public Sprite[] smalNovelSprites;
+    public Sprite[] bigNovelSprites;
+    public GameObject allNovelsView;
+    public GameObject detailsView;
+    public bool isDisplayingDetails = false;
 
-    public abstract List<VisualNovel> GetUserNovels();
+    // 400 * 400 sprites for representation next to each other.
+    public Sprite FindSmalSpriteById(long id)
+    {
+        if (smalNovelSprites.Length <= id)
+        {
+            return null;
+        }
+        return smalNovelSprites[id];
+    }
 
-    public abstract List<VisualNovel> GetAccountNovels();
+    // 800 * 800 sprites for displaying it on big view.
+    public Sprite FindBigSpriteById(long id)
+    {
+        if (bigNovelSprites.Length <= id)
+        {
+            return null;
+        }
+        return bigNovelSprites[id];
+    }
 
-    public abstract Sprite FindSmalSpriteById(long id);
+    public List<VisualNovel> GetKiteNovels()
+    {
+        return new List<VisualNovel>
+        {
+            new BankTalkNovel(),
+            new CallWithParentsNovel(),
+            new PressTalkNovel(),
+            new CallWithNotaryNovel(),
+            new BankAccountOpeningNovel(),
+            new RentingAnOfficeNovel(),
+            new InitialInterviewForGrantApplicationNovel(),
+            new StartUpGrantNovel(),
+            new ConversationWithAcquaintancesNovel(),
+            new BankAppointmentNovel(),
+            new FeeNegotiationNovel()
+        };
+    }
 
-    public abstract Sprite FindBigSpriteById(long id);
+    public List<VisualNovel> GetUserNovels()
+    {
+        return new List<VisualNovel>
+        {
+            new InitialInterviewForGrantApplicationNovel(),
+            new StartUpGrantNovel(),
+            new ConversationWithAcquaintancesNovel(),
+        };
+    }
 
-    public abstract void ShowDetailsViewWithNovel(VisualNovel novel);
+    public List<VisualNovel> GetAccountNovels()
+    {
+        return new List<VisualNovel>
+        {
+            new ConversationWithAcquaintancesNovel(),
+            new BankAppointmentNovel(),
+            new FeeNegotiationNovel()
+        };
+    }
+
+    public List<VisualNovel> GetFavoriteNovels()
+    {
+        return new List<VisualNovel>
+        {
+            new CallWithParentsNovel(),
+            new RentingAnOfficeNovel(),
+            new BankAppointmentNovel(),
+            new FeeNegotiationNovel()
+        };
+    }
+
+    public void ShowDetailsViewWithNovel(VisualNovel novel)
+    {
+        isDisplayingDetails = true;
+        DetailsView view = detailsView.GetComponent<DetailsView>();
+        view.novelToDisplay = novel;
+        view.Initialize();
+        allNovelsView.SetActive(false);
+        detailsView.SetActive(true);
+    }
+
+    public void ShowAllNovelsView()
+    {
+        isDisplayingDetails = false;
+        detailsView.SetActive(false);
+        allNovelsView.SetActive(true);
+    }
 }

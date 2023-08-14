@@ -4,6 +4,7 @@ public class PressTalkNovel : VisualNovel
 {
     public PressTalkNovel()
     {
+        id = -3;
         title = "Pressegespräch";
         description = "Du befindest dich auf einer Veranstaltung, bei der Jungunternehmer*innen ihre " +
             "Geschäftsidee vor einem Publikum präsentieren können, um Rückmeldung zu der Idee zu " +

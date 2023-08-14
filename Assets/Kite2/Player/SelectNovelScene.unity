@@ -441,6 +441,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 475555610}
   m_CullTransparentMesh: 1
+--- !u!1 &531522053
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 531522055}
+  - component: {fileID: 531522054}
+  m_Layer: 0
+  m_Name: VisualNovelProvider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &531522054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531522053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9bd68b01f5008d42aa95de9ed2c991c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smalNovelSprites:
+  - {fileID: 21300000, guid: 681d5da46a05dc54a9e7ad7cd358a42a, type: 3}
+  - {fileID: 21300000, guid: 666e47e2eeee84142ab153796ccd0ce0, type: 3}
+  - {fileID: 21300000, guid: 4e72209cbf0348e468963ae47bbd949f, type: 3}
+  - {fileID: 21300000, guid: c680c267586957846b3f53c96c1d8774, type: 3}
+  - {fileID: 21300000, guid: 462cace05f1d22148a7b95833b9b0d95, type: 3}
+  - {fileID: 21300000, guid: f898b1765f248354194d9200c013cd2d, type: 3}
+  - {fileID: 21300000, guid: 25cf621be69e20548a63953923015ddd, type: 3}
+  - {fileID: 21300000, guid: db48e3a8db7549449afa42f39e5074a1, type: 3}
+  bigNovelSprites:
+  - {fileID: 21300000, guid: b0f8e344488eef14299cc7b23821c6ea, type: 3}
+  - {fileID: 21300000, guid: 085acf14f57beca4ebd382f0a364c3d7, type: 3}
+  - {fileID: 21300000, guid: 051ebc68cdfbd6d41a24ed03aea58f02, type: 3}
+  - {fileID: 21300000, guid: ba40f5e1d3d5a994a9d221c83b108e87, type: 3}
+  - {fileID: 21300000, guid: 78d9894b0f2661447991c14bcbe829db, type: 3}
+  - {fileID: 21300000, guid: 1c0762576cafee747b241f3447fab35d, type: 3}
+  - {fileID: 21300000, guid: 70af5a0a4c042fd40902474e9a153894, type: 3}
+  - {fileID: 21300000, guid: ba6bdaff02fd7714d812bbc6a81cf68a, type: 3}
+  allNovelsView: {fileID: 625588590}
+  detailsView: {fileID: 1082630612}
+  isDisplayingDetails: 0
+--- !u!4 &531522055
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531522053}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1137.4094, y: 1144.2078, z: -8.384162}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &588656231
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,28 +746,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageBox: {fileID: 5629918238507184917, guid: 47c0a3038b673a24cb82a566be2abf20, type: 3}
   canvas: {fileID: 98923145}
-  visualNovelRepresentationPrefab: {fileID: 3696140715562972363, guid: 66eee92e7bdcbc94e9b8b6fddd9b02bd, type: 3}
-  smalNovelSprites:
-  - {fileID: 21300000, guid: 681d5da46a05dc54a9e7ad7cd358a42a, type: 3}
-  - {fileID: 21300000, guid: 666e47e2eeee84142ab153796ccd0ce0, type: 3}
-  - {fileID: 21300000, guid: 4e72209cbf0348e468963ae47bbd949f, type: 3}
-  - {fileID: 21300000, guid: c680c267586957846b3f53c96c1d8774, type: 3}
-  - {fileID: 21300000, guid: 462cace05f1d22148a7b95833b9b0d95, type: 3}
-  - {fileID: 21300000, guid: f898b1765f248354194d9200c013cd2d, type: 3}
-  - {fileID: 21300000, guid: 25cf621be69e20548a63953923015ddd, type: 3}
-  - {fileID: 21300000, guid: db48e3a8db7549449afa42f39e5074a1, type: 3}
-  bigNovelSprites:
-  - {fileID: 21300000, guid: b0f8e344488eef14299cc7b23821c6ea, type: 3}
-  - {fileID: 21300000, guid: 085acf14f57beca4ebd382f0a364c3d7, type: 3}
-  - {fileID: 21300000, guid: 051ebc68cdfbd6d41a24ed03aea58f02, type: 3}
-  - {fileID: 21300000, guid: ba40f5e1d3d5a994a9d221c83b108e87, type: 3}
-  - {fileID: 21300000, guid: 78d9894b0f2661447991c14bcbe829db, type: 3}
-  - {fileID: 21300000, guid: 1c0762576cafee747b241f3447fab35d, type: 3}
-  - {fileID: 21300000, guid: 70af5a0a4c042fd40902474e9a153894, type: 3}
-  - {fileID: 21300000, guid: ba6bdaff02fd7714d812bbc6a81cf68a, type: 3}
-  allNovelsView: {fileID: 625588590}
-  detailsView: {fileID: 1082630612}
-  isDisplayingDetails: 0
 --- !u!4 &600045263
 Transform:
   m_ObjectHideFlags: 0
@@ -1392,10 +1435,11 @@ MonoBehaviour:
   visualNovelRepresentationPrefab: {fileID: 3696140715562972363, guid: 66eee92e7bdcbc94e9b8b6fddd9b02bd, type: 3}
   content: {fileID: 465675438067315527}
   galleryRowPrefab: {fileID: 6498039573485986842, guid: e60eb68ae451c40448d3b834dda0f693, type: 3}
-  novelProvider: {fileID: 600045262}
+  novelProvider: {fileID: 531522054}
   isKiteNovelGallery: 1
   isUserNovelGallery: 0
   isAccountNovelGallery: 0
+  isFavoritesNovelGallery: 0
 --- !u!1 &1082630612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,7 +1507,7 @@ MonoBehaviour:
     feedback: 
     novelEvents: []
     id: 0
-  sceneController: {fileID: 600045262}
+  novelProvider: {fileID: 531522054}
 --- !u!114 &1082630615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1729,6 +1773,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7797249981855615906, guid: 41c3dc0b81cfc11438c80b89bc1548f8, type: 3}
+      propertyPath: novelProvider
+      value: 
+      objectReference: {fileID: 531522054}
+    - target: {fileID: 7797249981855615906, guid: 41c3dc0b81cfc11438c80b89bc1548f8, type: 3}
       propertyPath: sceneController
       value: 
       objectReference: {fileID: 600045262}
@@ -1895,10 +1943,11 @@ MonoBehaviour:
   visualNovelRepresentationPrefab: {fileID: 3696140715562972363, guid: 66eee92e7bdcbc94e9b8b6fddd9b02bd, type: 3}
   content: {fileID: 3515906972208229354}
   galleryRowPrefab: {fileID: 6498039573485986842, guid: e60eb68ae451c40448d3b834dda0f693, type: 3}
-  novelProvider: {fileID: 600045262}
+  novelProvider: {fileID: 531522054}
   isKiteNovelGallery: 0
   isUserNovelGallery: 1
   isAccountNovelGallery: 0
+  isFavoritesNovelGallery: 0
 --- !u!1 &1592230350
 GameObject:
   m_ObjectHideFlags: 0

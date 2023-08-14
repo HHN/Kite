@@ -4,6 +4,7 @@ public class StartUpGrantNovel : VisualNovel
 {
     public StartUpGrantNovel()
     {
+        id = -8;
         title = "Gründerzuschuss";
         description = "Du bist heute bei deinem örtlichen Arbeitsamt, um einen Gründerzuschuss zu beantragen.";
         image = 6;

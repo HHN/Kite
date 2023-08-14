@@ -4,6 +4,7 @@ public class CallWithNotaryNovel : VisualNovel
 {
     public CallWithNotaryNovel()
     {
+        id = -4;
         title = "Telefonat mit dem Notar";
         description = "Du hast ein Telefonat mit einer Notarin, um einen Termin für deine Gründung auszumachen.";
         image = 3;

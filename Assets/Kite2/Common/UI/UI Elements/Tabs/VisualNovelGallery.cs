@@ -11,6 +11,7 @@ public class VisualNovelGallery : MonoBehaviour
     public bool isKiteNovelGallery = false;
     public bool isUserNovelGallery = false;
     public bool isAccountNovelGallery = false;
+    public bool isFavoritesNovelGallery = false;
 
     private List<VisualNovel> novelsInGallery;
 
@@ -30,6 +31,10 @@ public class VisualNovelGallery : MonoBehaviour
         else if (isAccountNovelGallery)
         {
             novels = novelProvider.GetAccountNovels();
+        } 
+        else if (isFavoritesNovelGallery)
+        {
+            novels = novelProvider.GetFavoriteNovels();
         }
         this.novelsInGallery = novels;
         ShowNovels(novels);

@@ -82,6 +82,16 @@ public class SearchBar : MonoBehaviour
             if (distance <= threshold)
             {
                 matches.Add(entry);
+            } else
+            {
+                long id;
+                if (long.TryParse(query, out id))
+                {
+                    if (id == entry.id)
+                    {
+                        matches.Add(entry);
+                    }
+                }
             }
         }
 

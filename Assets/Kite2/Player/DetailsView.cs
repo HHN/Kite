@@ -11,7 +11,7 @@ public class DetailsView : MonoBehaviour
     public TextMeshProUGUI novelTitle;
     public TextMeshProUGUI novelDescription;
     public VisualNovel novelToDisplay;
-    public SelectNovelSceneController sceneController;
+    public NovelProvider novelProvider;
 
     private void Start()
     {
@@ -21,7 +21,7 @@ public class DetailsView : MonoBehaviour
     public void Initialize()
     {
         long idOfNovelSprite = novelToDisplay.image;
-        Sprite spriteOfNovel = sceneController.FindBigSpriteById(idOfNovelSprite);
+        Sprite spriteOfNovel = novelProvider.FindBigSpriteById(idOfNovelSprite);
         novelImage.sprite = spriteOfNovel;
         novelTitle.text = novelToDisplay.title;
         novelDescription.text = novelToDisplay.description;

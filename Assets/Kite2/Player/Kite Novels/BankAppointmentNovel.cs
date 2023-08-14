@@ -4,6 +4,7 @@ public class BankAppointmentNovel : VisualNovel
 {
     public BankAppointmentNovel()
     {
+        id = -10;
         title = "Banktermin zur Kreditvergabe";
         description = "Du hast eine Einladung zu einem Bankgespräch erhalten, um mehr " +
             "Informationen über einen Kredit zu erhalten und diesen darauf zu beantragen.";

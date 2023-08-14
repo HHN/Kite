@@ -10,7 +10,7 @@ public class SceneBase : MonoBehaviour
     public Button novelPlayerButton;
     public Button novelMakerButton;
     public Button settingsButton;
-    public SceneController sceneController;
+    public NovelProvider novelProvider;
 
     void Start()
     {
@@ -44,12 +44,11 @@ public class SceneBase : MonoBehaviour
         string currentScene = SceneManager.GetActiveScene().name;
         string lastScene = SceneRouter.GetTargetSceneForBackButton(currentScene);
 
-        if (currentScene == SceneNames.SELECT_NOVEL_SCENE)
+        if (currentScene == SceneNames.SELECT_NOVEL_SCENE || currentScene == SceneNames.GALLERY_SCENE)
         {
-            SelectNovelSceneController selectNovelSceneController = (SelectNovelSceneController) sceneController;
-            if (selectNovelSceneController.isDisplayingDetails)
+            if (novelProvider.isDisplayingDetails)
             {
-                selectNovelSceneController.ShowAllNovelsView();
+                novelProvider.ShowAllNovelsView();
                 return;
             }
         }

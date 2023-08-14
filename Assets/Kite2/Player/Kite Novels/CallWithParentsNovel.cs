@@ -4,6 +4,7 @@ public class CallWithParentsNovel : VisualNovel
 {
     public CallWithParentsNovel()
     {
+        id = -2;
         title = "Telefonat mit den Eltern";
         description = "Du beschließt, deine Eltern anzurufen, und ihnen von deinem Gründungsvorhaben zu berichten.";
         image = 1;

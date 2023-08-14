@@ -4,6 +4,7 @@ public class ConversationWithAcquaintancesNovel : VisualNovel
 {
     public ConversationWithAcquaintancesNovel()
     {
+        id = -9;
         title = "Gespräch mit Bekannten";
         description = "Du triffst dich mit einem*einer Bekannten, den*die du seit ein paar Jahren " +
             "nicht mehr gesehen hast, in einem kleinen Café. Er*Sie hat dir soeben erzählt, wo " +
