@@ -6,115 +6,101 @@ public class VisualNovelGallery : MonoBehaviour
     public GameObject visualNovelRepresentationPrefab;
     public GameObject content;
     public GameObject galleryRowPrefab;
-    public NovelProvider novelProvider;
-    public bool isKiteNovelGallery = false;
-    public bool isUserNovelGallery = false;
-    public bool isAccountNovelGallery = false;
-    public bool isFavoritesNovelGallery = false;
-    public GetNovelsServerCall getNovelsServerCallPrefab;
+    public GameObject placeHolder;
+    public GameObject noNovelsInfo;
+    private List<VisualNovel> novelsInGallery = new List<VisualNovel>();
+    private GameObject currentGalleryRow = null;
+    private GameObject currentPlaceHolder = null;
+    private GameObject currentNoNovelsInfo = null;
+    public Sprite[] smalNovelSprites;
 
-    private List<VisualNovel> novelsInGallery;
-
-    private GameObject galleryRow = null;
-
-    private void Start()
+    public void Awake()
     {
-        List<VisualNovel> novels = new List<VisualNovel>();
-        if (isKiteNovelGallery)
-        {
-            novels = novelProvider.GetKiteNovels();
-        } 
-        else if (isUserNovelGallery)
-        {
-            novels = novelProvider.GetUserNovels();
-        } 
-        else if (isAccountNovelGallery)
-        {
-            novels = novelProvider.GetAccountNovels();
-        } 
-        else if (isFavoritesNovelGallery)
-        {
-            novels = novelProvider.GetFavoriteNovels(this);
-        }
-        this.novelsInGallery = novels;
-        ShowNovels(novels);
-    }
-
-    public void ShowNovels(List<VisualNovel> novels)
-    {
-        CleanUp();
-
-        for (int i = 0; i < novels.Count; i++)
-        {
-            VisualNovel novelToAdd = novels[i];
-            AddNovelToGallery(novelToAdd);
-        }
+        currentGalleryRow = Instantiate(galleryRowPrefab, content.transform);
+        currentNoNovelsInfo = Instantiate(noNovelsInfo, currentGalleryRow.transform);
+        currentPlaceHolder = Instantiate(placeHolder, currentGalleryRow.transform);
+        novelsInGallery = new List<VisualNovel>();
     }
 
     public void AddNovelToGallery(VisualNovel novel)
     {
-        if (novel == null)
+        if (novel == null || novelsInGallery.Contains(novel))
         {
             return;
         }
-        bool rowFullAfterAddingNovel = true;
+        GameObject novelRepresentation;
 
-        if (galleryRow == null)
+        if (novelsInGallery.Count == 0)
         {
-            galleryRow = Instantiate(galleryRowPrefab, content.transform);
-            rowFullAfterAddingNovel = false;
+            Destroy(currentNoNovelsInfo);
+            Destroy(currentPlaceHolder);
+            novelRepresentation = Instantiate(visualNovelRepresentationPrefab, currentGalleryRow.transform);
+            currentPlaceHolder = Instantiate(placeHolder, currentGalleryRow.transform);
         }
-        GameObject novelRepresentation = Instantiate(visualNovelRepresentationPrefab, galleryRow.transform);
-
-        if (rowFullAfterAddingNovel)
+        else if ((novelsInGallery.Count % 2) == 0)
         {
-            galleryRow = null;
+            currentGalleryRow = Instantiate(galleryRowPrefab, content.transform);
+            novelRepresentation = Instantiate(visualNovelRepresentationPrefab, currentGalleryRow.transform);
+            currentPlaceHolder = Instantiate(placeHolder, currentGalleryRow.transform);
+        } 
+        else
+        {
+            Destroy(currentPlaceHolder);
+            novelRepresentation = Instantiate(visualNovelRepresentationPrefab, currentGalleryRow.transform);
         }
-
+        novelsInGallery.Add(novel);
         VisualNovelRepresentation representation = novelRepresentation.GetComponent<VisualNovelRepresentation>();
         representation.visualNovel = novel;
         representation.SetHeadline(novel.title);
-        Sprite sprite = novelProvider.FindSmalSpriteById(novel.image);
-        representation.SetButtonImage(sprite);
-        representation.novelProvider = novelProvider;
+        representation.SetButtonImage(FindSmalSpriteById(novel.image));
     }
 
-    private void CleanUp()
+    public void AddNovelsToGallery(List<VisualNovel> novels)
+    {
+        foreach (VisualNovel novel in novels)
+        {
+            AddNovelToGallery(novel);
+        }
+    }
+
+    public void RemoveNovelFromGallery(VisualNovel novel)
+    {
+        if (novel == null || !novelsInGallery.Contains(novel))
+        {
+            return;
+        }
+        List<VisualNovel> currentNovels = novelsInGallery;
+        currentNovels.Remove(novel);
+        RemoveAll();
+        AddNovelsToGallery(currentNovels);
+    }
+
+    public void RemoveNovelsFromGallery(List<VisualNovel> novels)
+    {
+        foreach (VisualNovel novel in novels)
+        {
+            RemoveNovelFromGallery(novel);
+        }
+    }
+
+    public void RemoveAll()
     {
         foreach (Transform child in content.transform)
         {
             Destroy(child.gameObject);
         }
-        galleryRow = null;
+        currentGalleryRow = Instantiate(galleryRowPrefab, content.transform);
+        currentNoNovelsInfo = Instantiate(noNovelsInfo, currentGalleryRow.transform);
+        currentPlaceHolder = Instantiate(placeHolder, currentGalleryRow.transform);
+        novelsInGallery = new List<VisualNovel>();
     }
 
-    public List<VisualNovel> GetVisualNovels()
+    private Sprite FindSmalSpriteById(long id)
     {
-        return novelsInGallery;
-    }
-
-    public void Reload()
-    {
-        this.ShowNovels(novelsInGallery);
-    }
-
-    public void AddNovelToFavoritesWithRealtimeUpdate(VisualNovel novel)
-    {
-        if (novelsInGallery.Contains(novel))
+        if (smalNovelSprites.Length <= id)
         {
-            return;
+            return null;
         }
-        novelsInGallery.Add(novel);
-        AddNovelToGallery(novel);
-    }
-
-    public void RemoveNovelFromFavoritesWithRealitmeUpdate(VisualNovel novel)
-    {
-        if (!novelsInGallery.Contains(novel))
-        {
-            return;
-        }
-        novelsInGallery.Remove(novel); 
-        Reload();
+        return smalNovelSprites[id];
     }
 }

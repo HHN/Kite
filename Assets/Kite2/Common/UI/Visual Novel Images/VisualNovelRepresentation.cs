@@ -7,7 +7,6 @@ public class VisualNovelRepresentation : MonoBehaviour
     public VisualNovel visualNovel;
     public Button button;
     public TextMeshProUGUI novelHeadline;
-    public NovelProvider novelProvider;
 
     void Start()
     {
@@ -26,6 +25,7 @@ public class VisualNovelRepresentation : MonoBehaviour
 
     public void OnClick()
     {
-        novelProvider.ShowDetailsViewWithNovel(visualNovel);
+        PlayManager.Instance().SetVisualNovelToPlay(visualNovel);
+        SceneLoader.LoadDetailsViewScene();
     }
 }

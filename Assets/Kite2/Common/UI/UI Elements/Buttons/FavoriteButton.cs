@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +11,7 @@ public class FavoriteButton : MonoBehaviour
     void Start()
     {
         this.gameObject.GetComponent<Button>().onClick.AddListener(delegate { OnClick(); });
+        Init();
     }
 
     public void OnClick()
@@ -31,11 +30,6 @@ public class FavoriteButton : MonoBehaviour
         this.gameObject.GetComponent<Button>().image.sprite = sprites[1];
         isFavorite = true;
         FavoritesManager.MarkAsFavorite(novel);
-
-        if (favoritesGallery != null)
-        {
-            favoritesGallery.AddNovelToFavoritesWithRealtimeUpdate(novel);
-        }
     }
 
     public void UnmarkAsFavorite()
@@ -43,23 +37,22 @@ public class FavoriteButton : MonoBehaviour
         this.gameObject.GetComponent<Button>().image.sprite = sprites[0];
         isFavorite = false;
         FavoritesManager.UnmarkAsFavorite(novel);
-
-
-        if (favoritesGallery != null)
-        {
-            favoritesGallery.RemoveNovelFromFavoritesWithRealitmeUpdate(novel);
-        }
     }
 
     public void Init()
     {
+        novel = PlayManager.Instance().GetVisualNovelToPlay();
+        if (novel == null)
+        {
+            return;
+        }
         if (novel.id == 0)
         {
-            this.gameObject.SetActive(false);
+            this.gameObject.GetComponent<Button>().interactable = false;
             return;
         } else
         {
-            this.gameObject.SetActive(true);
+            this.gameObject.GetComponent<Button>().interactable = true;
         }
         this.gameObject.GetComponent<Button>().image.sprite = sprites[0];
         isFavorite = false;

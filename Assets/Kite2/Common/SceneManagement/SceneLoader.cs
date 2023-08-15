@@ -34,8 +34,8 @@ public class SceneLoader
         LoadScene(SceneNames.FEEDBACK_SCENE);
     }
 
-    public static void LoadSelectNovelScene() {
-        LoadScene(SceneNames.SELECT_NOVEL_SCENE);
+    public static void LoadNovelExplorerScene() {
+        LoadScene(SceneNames.NOVEL_EXPLORER_SCENE);
     }
 
     public static void LoadLogInScene() {
@@ -60,9 +60,9 @@ public class SceneLoader
         LoadScene(SceneNames.CHANGE_PASSWORD_SCENE);
     }
 
-    public static void LoadGalleryScene()
+    public static void LoadDetailsViewScene()
     {
-        LoadScene(SceneNames.GALLERY_SCENE);
+        LoadScene(SceneNames.DETAILS_VIEW_SCENE);
     }
 
     public static void LoadScene(string sceneName)

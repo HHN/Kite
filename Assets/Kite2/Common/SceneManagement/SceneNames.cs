@@ -8,11 +8,11 @@ public class SceneNames
     public const string SAVE_NOVEL_SCENE = "SaveNovelScene";
     public const string PLAY_NOVEL_SCENE = "PlayNovelScene";
     public const string FEEDBACK_SCENE = "FeedbackScene";
-    public const string SELECT_NOVEL_SCENE = "SelectNovelScene";
+    public const string NOVEL_EXPLORER_SCENE = "NovelExplorerScene";
     public const string LOG_IN_SCENE = "LogInScene";
     public const string REGISTRATION_SCENE = "RegistrationScene";
     public const string RESET_PASSWORD_SCENE = "ResetPasswordScene";
     public const string SETTINGS_SCENE = "SettingsScene";
     public const string CHANGE_PASSWORD_SCENE = "ChangePasswordScene";
-    public const string GALLERY_SCENE = "GalleryScene";
+    public const string DETAILS_VIEW_SCENE = "DetailsViewScene";
 }

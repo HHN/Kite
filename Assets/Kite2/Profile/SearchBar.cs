@@ -22,11 +22,11 @@ public class SearchBar : MonoBehaviour
 
         if (string.IsNullOrEmpty(searchText))
         {
-            gallery.Reload();
+            //gallery.Reload();
             return;
         }
 
-        dataSet = gallery.GetVisualNovels();
+        //dataSet = gallery.GetVisualNovels();
         if (dataSet.Count == 0)
         {
             return;
@@ -34,7 +34,7 @@ public class SearchBar : MonoBehaviour
 
         List<VisualNovel> results = FuzzySearch(dataSet, searchText, 2);
 
-        gallery.ShowNovels(results);
+       // gallery.ShowNovels(results);
     }
 
     public int LevenshteinDistance(string a, string b)

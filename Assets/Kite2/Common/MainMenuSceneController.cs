@@ -9,7 +9,6 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     public Button logInLogOutButton;
     public Button registerButton;
     public Button settingsButton;
-    public Button galleryButton;
     public GameObject logoutServerCall;
 
     void Start()
@@ -18,8 +17,7 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
         novelMakerButton.onClick.AddListener(delegate { OnNovelMakerButton(); });
         registerButton.onClick.AddListener(delegate { OnRegisterButton(); });
         settingsButton.onClick.AddListener(delegate { OnSettingsButton(); });
-        galleryButton.onClick.AddListener(delegate { OnGalleryButton(); });
-
+ 
         if (AuthenticationManager.Instance().GetAuthToken() == "")
         { 
             OnGuestMode();
@@ -50,7 +48,7 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
 
     public void OnNovelPlayerButton()
     {
-        SceneLoader.LoadSelectNovelScene();
+        SceneLoader.LoadNovelExplorerScene();
     }
 
     public void OnNovelMakerButton()
@@ -87,10 +85,5 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     public void OnRegisterButton()
     {
         SceneLoader.LoadRegistrationScene();
-    }
-
-    public void OnGalleryButton()
-    {
-        SceneLoader.LoadGalleryScene();
     }
 }

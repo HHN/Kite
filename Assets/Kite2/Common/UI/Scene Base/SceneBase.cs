@@ -10,7 +10,6 @@ public class SceneBase : MonoBehaviour
     public Button novelPlayerButton;
     public Button novelMakerButton;
     public Button settingsButton;
-    public NovelProvider novelProvider;
 
     void Start()
     {
@@ -44,14 +43,6 @@ public class SceneBase : MonoBehaviour
         string currentScene = SceneManager.GetActiveScene().name;
         string lastScene = SceneRouter.GetTargetSceneForBackButton(currentScene);
 
-        if (currentScene == SceneNames.SELECT_NOVEL_SCENE || currentScene == SceneNames.GALLERY_SCENE)
-        {
-            if (novelProvider.isDisplayingDetails)
-            {
-                novelProvider.ShowAllNovelsView();
-                return;
-            }
-        }
         if (lastScene == "")
         {
             return;
@@ -78,7 +69,7 @@ public class SceneBase : MonoBehaviour
 
     public void OnNovelPlayerButton()
     {
-        SceneLoader.LoadSelectNovelScene();
+        SceneLoader.LoadNovelExplorerScene();
     }
 
     public void OnNovelMakerButton()
