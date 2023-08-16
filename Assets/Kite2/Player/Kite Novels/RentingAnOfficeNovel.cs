@@ -7,7 +7,7 @@ public class RentingAnOfficeNovel : VisualNovel
         id = -6;
         title = "Anmietung eines Büros";
         description = "Du hast heute einen Termin für die Besichtigung von Büroräumen.";
-        image = 4;
+        image = 5;
         nameOfMainCharacter = "Lea";
         feedback = "";
         novelEvents = new List<VisualNovelEvent>()

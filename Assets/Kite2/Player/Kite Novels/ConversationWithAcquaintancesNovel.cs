@@ -9,7 +9,7 @@ public class ConversationWithAcquaintancesNovel : VisualNovel
         description = "Du triffst dich mit einem*einer Bekannten, den*die du seit ein paar Jahren " +
             "nicht mehr gesehen hast, in einem kleinen Café. Er*Sie hat dir soeben erzählt, wo " +
             "er*sie zurzeit beruflich steht. Nun bist du an der Reihe.";
-        image = 7;
+        image = 8;
         nameOfMainCharacter = "Lea";
         feedback = "";
         novelEvents = new List<VisualNovelEvent>()

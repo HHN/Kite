@@ -7,7 +7,7 @@ public class StartUpGrantNovel : VisualNovel
         id = -8;
         title = "Gründerzuschuss";
         description = "Du bist heute bei deinem örtlichen Arbeitsamt, um einen Gründerzuschuss zu beantragen.";
-        image = 6;
+        image = 7;
         nameOfMainCharacter = "Lea";
         feedback = "";
         novelEvents = new List<VisualNovelEvent>()

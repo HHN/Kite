@@ -9,7 +9,7 @@ public class FeeNegotiationNovel : VisualNovel
         description = "Du bist in Kontakt mit einem Kunden gekommen. Nachdem geklärt wurde, dass " +
             "deine angebotenen Leistungen zu den Anforderungen deines Gegenübers passen, geht es " +
             "nun um die Honorarverhandlung.";
-        image = 6;
+        image = 9;
         nameOfMainCharacter = "Lea";
         feedback = "";
         novelEvents = new List<VisualNovelEvent>()
