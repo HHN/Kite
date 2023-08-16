@@ -10,6 +10,9 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     public Button registerButton;
     public Button settingsButton;
     public GameObject logoutServerCall;
+    public Sprite loginSprite;
+    public Sprite logoutSprite;
+    public Image loginLogoutImage;
 
     void Start()
     {
@@ -34,6 +37,7 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
         registerButton.gameObject.SetActive(true);
         settingsButton.gameObject.SetActive(false);
         logInLogOutButton.GetComponentInChildren<TMP_Text>().text = "EINLOGGEN";
+        loginLogoutImage.sprite = loginSprite;
         logInLogOutButton.onClick.AddListener(delegate { OnLogInButton(); });
     }
 
@@ -43,6 +47,7 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
         registerButton.gameObject.SetActive(false);
         settingsButton.gameObject.SetActive(true);
         logInLogOutButton.GetComponentInChildren<TMP_Text>().text = "AUSLOGGEN";
+        loginLogoutImage.sprite = logoutSprite;
         logInLogOutButton.onClick.AddListener(delegate { OnLogOutButton(); });
     }
 
