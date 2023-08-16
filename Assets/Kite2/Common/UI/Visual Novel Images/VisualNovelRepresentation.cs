@@ -4,9 +4,10 @@ using TMPro;
 
 public class VisualNovelRepresentation : MonoBehaviour
 {
-    public VisualNovel visualNovel;
+    private VisualNovel visualNovel;
     public Button button;
     public TextMeshProUGUI novelHeadline;
+    public GameObject privateHint;
 
     void Start()
     {
@@ -27,5 +28,14 @@ public class VisualNovelRepresentation : MonoBehaviour
     {
         PlayManager.Instance().SetVisualNovelToPlay(visualNovel);
         SceneLoader.LoadDetailsViewScene();
+    }
+
+    public void SetVisaulNovel(VisualNovel visualNovel)
+    {
+        this.visualNovel = visualNovel;
+        if (visualNovel.id == 0)
+        {
+            privateHint.SetActive(true);
+        }
     }
 }

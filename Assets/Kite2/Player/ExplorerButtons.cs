@@ -19,6 +19,7 @@ public class ExplorerButtons : MonoBehaviour
     public TextMeshProUGUI contentInfoText;
     public VisualNovelGallery gallery;
     public NovelExplorerSceneController sceneController;
+    public GameObject filter;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,7 @@ public class ExplorerButtons : MonoBehaviour
 
     public void OnKiteNovelsButton()
     {
+        filter.SetActive(false);
         kiteNovelsUnterline.gameObject.SetActive(true);
         userNovelsUnterline.gameObject.SetActive(false);
         accountNovelsUnterline.gameObject.SetActive(false);
@@ -47,6 +49,7 @@ public class ExplorerButtons : MonoBehaviour
 
     public void OnUserNovelsButton()
     {
+        filter.SetActive(false);
         kiteNovelsUnterline.gameObject.SetActive(false);
         userNovelsUnterline.gameObject.SetActive(true);
         accountNovelsUnterline.gameObject.SetActive(false);
@@ -61,6 +64,7 @@ public class ExplorerButtons : MonoBehaviour
 
     public void OnAccountNovelsButton()
     {
+        filter.SetActive(false);
         kiteNovelsUnterline.gameObject.SetActive(false);
         userNovelsUnterline.gameObject.SetActive(false);
         accountNovelsUnterline.gameObject.SetActive(true);
@@ -75,6 +79,7 @@ public class ExplorerButtons : MonoBehaviour
 
     public void OnFavoritNovelsButton()
     {
+        filter.SetActive(false);
         kiteNovelsUnterline.gameObject.SetActive(false);
         userNovelsUnterline.gameObject.SetActive(false);
         accountNovelsUnterline.gameObject.SetActive(false);
@@ -99,9 +104,10 @@ public class ExplorerButtons : MonoBehaviour
         List<VisualNovel> visualNovels = new List<VisualNovel>();
         gallery.RemoveAll();
         gallery.AddNovelsToGallery(visualNovels);
+        filter.SetActive(true);
     }
 
-    private List<VisualNovel> GetFavoriteNovels()
+    public List<VisualNovel> GetFavoriteNovels()
     {
         List<long> ids = FavoritesManager.GetFavoritesIds();
         List<VisualNovel> favorites = new List<VisualNovel>();

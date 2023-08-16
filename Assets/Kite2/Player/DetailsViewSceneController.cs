@@ -9,8 +9,6 @@ public class DetailsViewSceneController : SceneController
     public TextMeshProUGUI novelTitle;
     public TextMeshProUGUI novelDescription;
     public VisualNovel novelToDisplay;
-    public FavoriteButton favoriteButton;
-    public UploadButton uploadButton;
     public Sprite[] novelSprites;
 
     private void Start()

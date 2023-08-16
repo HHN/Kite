@@ -4,12 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class SearchBar : MonoBehaviour
+public class SearchFilter : MonoBehaviour
 {
     public Button searchButton;
     public TMP_InputField inputField;
     public VisualNovelGallery gallery;
-    public List<VisualNovel> dataSet;
+    public RadioButtonHandler radioButtonHandler;
+    public NovelExplorerSceneController sceneController;
+    public ExplorerButtons explorerButtons;
+    public GameObject filterView;
 
     private void Start()
     {
@@ -19,22 +22,28 @@ public class SearchBar : MonoBehaviour
     public void OnSearchButton()
     {
         string searchText = inputField.text.Trim();
+        List<VisualNovel> dataset = new List<VisualNovel>();
 
-        if (string.IsNullOrEmpty(searchText))
+        if (radioButtonHandler.IsKiteNovelsOn())
         {
-            //gallery.Reload();
-            return;
-        }
-
-        //dataSet = gallery.GetVisualNovels();
-        if (dataSet.Count == 0)
+            dataset = KiteNovelManager.GetAllKiteNovels();
+        } 
+        else if (radioButtonHandler.IsUserNovelsOn())
         {
-            return;
+            dataset = sceneController.userNovels;
+        } 
+        else if (radioButtonHandler.IsAccountNovelsOn())
+        {
+            dataset = AccountNovelManager.GetAllAccountNovels();
+        } 
+        else if (radioButtonHandler.IsFavoritesOn())
+        {
+            dataset = explorerButtons.GetFavoriteNovels();
         }
-
-        List<VisualNovel> results = FuzzySearch(dataSet, searchText, 2);
-
-       // gallery.ShowNovels(results);
+        List<VisualNovel> results = FuzzySearch(dataset, searchText, 2);
+        gallery.RemoveAll();
+        gallery.AddNovelsToGallery(results);
+        filterView.SetActive(false);
     }
 
     public int LevenshteinDistance(string a, string b)
@@ -82,7 +91,8 @@ public class SearchBar : MonoBehaviour
             if (distance <= threshold)
             {
                 matches.Add(entry);
-            } else
+            }
+            else
             {
                 long id;
                 if (long.TryParse(query, out id))
@@ -97,5 +107,4 @@ public class SearchBar : MonoBehaviour
 
         return matches;
     }
-
 }

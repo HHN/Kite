@@ -159,7 +159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 540, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &205931720
@@ -405,7 +405,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 942.5, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &501074847
@@ -423,6 +423,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: 903da58ad9d000547a042a72fa92f997, type: 3}
   - {fileID: 21300000, guid: be080373b9da78843af28bd6b1acad34, type: 3}
+  - {fileID: 21300000, guid: 8b06f5215adedac4f964ec6e80e61ed9, type: 3}
   isFavorite: 0
   novel:
     title: 
@@ -432,6 +433,8 @@ MonoBehaviour:
     feedback: 
     novelEvents: []
     id: 0
+  favoritesGallery: {fileID: 0}
+  hasTransformedIntoEditButton: 0
 --- !u!114 &501074848
 MonoBehaviour:
   m_ObjectHideFlags: 0

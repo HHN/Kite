@@ -50,7 +50,7 @@ public class VisualNovelGallery : MonoBehaviour
         }
         novelsInGallery.Add(novel);
         VisualNovelRepresentation representation = novelRepresentation.GetComponent<VisualNovelRepresentation>();
-        representation.visualNovel = novel;
+        representation.SetVisaulNovel(novel);
         representation.SetHeadline(novel.title);
         representation.SetButtonImage(FindSmalSpriteById(novel.image));
     }
