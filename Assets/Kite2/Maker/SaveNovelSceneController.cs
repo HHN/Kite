@@ -6,6 +6,8 @@ public class SaveNovelSceneController : SceneController
 
     void Start()
     {
+        BackStackManager.Instance().Push(SceneNames.SAVE_NOVEL_SCENE);
+
         nextButton.onClick.AddListener(delegate { OnNextButton(); });
     }
 

@@ -6,6 +6,8 @@ public class EnvironmentMakerSceneController : SceneController
 
     void Start()
     {
+        BackStackManager.Instance().Push(SceneNames.ENVIRONMENT_MAKER_SCENE);
+
         nextButton.onClick.AddListener(delegate { OnNextButton(); });
     }
 

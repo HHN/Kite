@@ -13,6 +13,8 @@ public class DetailsViewSceneController : SceneController
 
     private void Start()
     {
+        BackStackManager.Instance().Push(SceneNames.DETAILS_VIEW_SCENE);
+
         playButton.onClick.AddListener(delegate { OnPlayButton(); });
         Initialize();
     }

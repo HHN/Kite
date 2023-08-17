@@ -16,12 +16,14 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
 
     void Start()
     {
+        BackStackManager.Instance().Clear();
+
         novelPlayerButton.onClick.AddListener(delegate { OnNovelPlayerButton(); });
         novelMakerButton.onClick.AddListener(delegate { OnNovelMakerButton(); });
         registerButton.onClick.AddListener(delegate { OnRegisterButton(); });
         settingsButton.onClick.AddListener(delegate { OnSettingsButton(); });
  
-        if (AuthenticationManager.Instance().GetAuthToken() == "")
+        if (string.IsNullOrEmpty(AuthenticationManager.Instance().GetAuthToken()))
         { 
             OnGuestMode();
         }

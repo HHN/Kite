@@ -12,6 +12,8 @@ public class RegistrationSceneController : SceneController, OnSuccessHandler
 
     void Start()
     {
+        BackStackManager.Instance().Push(SceneNames.REGISTRATION_SCENE);
+
         performRegistrationButton.onClick.AddListener(delegate { OnPerformRegistrationButton(); });
     }
 

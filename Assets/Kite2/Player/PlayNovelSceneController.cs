@@ -27,6 +27,8 @@ public class PlayNovelSceneController : SceneController
 
     void Start()
     {
+        BackStackManager.Instance().Push(SceneNames.PLAY_NOVEL_SCENE);
+
         novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
         Initialize();
     }

@@ -9,6 +9,8 @@ public class SettingsSceneController : SceneController, OnSuccessHandler
 
     void Start()
     {
+        BackStackManager.Instance().Push(SceneNames.SETTINGS_SCENE);
+
         deleteAccountButton.onClick.AddListener(delegate { OnDeleteAccountButton(); });
         changePasswordButton.onClick.AddListener(delegate { OnChangePasswordButton(); });
 

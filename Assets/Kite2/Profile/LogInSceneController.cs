@@ -12,6 +12,8 @@ public class LogInSceneController : SceneController, OnSuccessHandler
 
     void Start()
     {
+        BackStackManager.Instance().Push(SceneNames.LOG_IN_SCENE);
+
         performLoginButton.onClick.AddListener(delegate { OnPerformLoginButton(); });
         forgotPasswordButton.onClick.AddListener(delegate { OnForgotPasswordButton(); });
     }

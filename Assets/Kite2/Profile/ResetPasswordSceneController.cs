@@ -10,6 +10,8 @@ public class ResetPasswordSceneController : SceneController, OnSuccessHandler
 
     void Start()
     {
+        BackStackManager.Instance().Push(SceneNames.RESET_PASSWORD_SCENE);
+
         resetPasswordButton.onClick.AddListener(delegate { OnResetPasswordButton(); });
     }
 

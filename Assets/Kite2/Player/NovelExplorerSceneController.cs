@@ -9,6 +9,8 @@ public class NovelExplorerSceneController : SceneController, OnSuccessHandler
 
     void Start()
     {
+        BackStackManager.Instance().Push(SceneNames.NOVEL_EXPLORER_SCENE);
+
         this.DisplayInfoMessage(InfoMessages.WAIT_FOR_LOAD_NOVEL);
         GetNovelsServerCall call = Instantiate(getNovelsServerCall).GetComponent<GetNovelsServerCall>();
         call.sceneController = this;

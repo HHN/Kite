@@ -40,11 +40,11 @@ public class SceneBase : MonoBehaviour
 
     public void OnBackButton()
     {
-        string currentScene = SceneManager.GetActiveScene().name;
-        string lastScene = SceneRouter.GetTargetSceneForBackButton(currentScene);
+        string lastScene = SceneRouter.GetTargetSceneForBackButton();
 
-        if (lastScene == "")
+        if (string.IsNullOrEmpty(lastScene))
         {
+            SceneLoader.LoadMainMenuScene();
             return;
         }
         SceneLoader.LoadScene(lastScene);
@@ -52,11 +52,11 @@ public class SceneBase : MonoBehaviour
 
     public void OnCloseButton()
     {
-        string currentScene = SceneManager.GetActiveScene().name;
-        string lastScene = SceneRouter.GetTargetSceneForCloseButton(currentScene);
+        string lastScene = SceneRouter.GetTargetSceneForCloseButton();
 
-        if (lastScene == "")
+        if (string.IsNullOrEmpty(lastScene))
         {
+            SceneLoader.LoadMainMenuScene();
             return;
         }
         SceneLoader.LoadScene(lastScene);

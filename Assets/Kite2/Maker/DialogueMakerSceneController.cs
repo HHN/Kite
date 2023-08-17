@@ -6,6 +6,8 @@ public class DialogueMakerSceneController : SceneController
 
     void Start()
     {
+        BackStackManager.Instance().Push(SceneNames.DIALOGUE_MAKER_SCENE);
+
         nextButton.onClick.AddListener(delegate { OnNextButton(); });
     }
 

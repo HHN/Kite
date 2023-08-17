@@ -11,6 +11,8 @@ public class ChangePasswordSceneController : SceneController, OnSuccessHandler
 
     void Start()
     {
+        BackStackManager.Instance().Push(SceneNames.CHANGE_PASSWORD_SCENE);
+
         changePasswordButton.onClick.AddListener(delegate { OnChangePasswordButton(); });
     }
 

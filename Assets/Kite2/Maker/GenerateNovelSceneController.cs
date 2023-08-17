@@ -13,6 +13,8 @@ public class GenerateNovelSceneController : SceneController
 
     void Start()
     {
+        BackStackManager.Instance().Push(SceneNames.GENERATE_NOVEL_SCENE);
+
         generateNovelButton.onClick.AddListener(delegate { OnGenerateNovelButton(); });
         skipGenerationButton.onClick.AddListener(delegate { OnSkipGenerationButton(); });
     }

@@ -6,6 +6,8 @@ public class CharacterMakerSceneController : SceneController
 
     void Start()
     {
+        BackStackManager.Instance().Push(SceneNames.CHARACTER_MAKER_SCENE);
+
         nextButton.onClick.AddListener(delegate { OnNextButton(); });
     }
 

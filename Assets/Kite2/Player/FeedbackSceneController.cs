@@ -11,6 +11,8 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler
 
     private void Start()
     {
+        BackStackManager.Instance().Push(SceneNames.FEEDBACK_SCENE);
+
         novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
 
         if (novelToPlay == null)
