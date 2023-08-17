@@ -17,6 +17,7 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     void Start()
     {
         BackStackManager.Instance().Clear();
+        SceneMemoryManager.Instance().ClearMemory();
 
         novelPlayerButton.onClick.AddListener(delegate { OnNovelPlayerButton(); });
         novelMakerButton.onClick.AddListener(delegate { OnNovelMakerButton(); });

@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader
@@ -65,8 +66,49 @@ public class SceneLoader
         LoadScene(SceneNames.DETAILS_VIEW_SCENE);
     }
 
+    /**
     public static void LoadScene(string sceneName)
     {
+        GameObject oldSceneControllerGameObjectObject = GameObject.Find("Controller");
+        SceneController oldSceneController = oldSceneControllerGameObjectObject.GetComponent<SceneController>();
+        oldSceneController.OnStop();
+
         SceneManager.LoadScene(sceneName);
+
+        GameObject newSceneControllerGameObjectObject = GameObject.Find("Controller");
+        SceneController newSceneController = newSceneControllerGameObjectObject.GetComponent<SceneController>();
+        newSceneController.OnStart();
+    }
+    */
+
+    public static void LoadScene(string sceneName)
+    {
+        GameObject oldSceneControllerGameObject = GameObject.Find("Controller");
+        if (oldSceneControllerGameObject != null)
+        {
+            SceneController oldSceneController = oldSceneControllerGameObject.GetComponent<SceneController>();
+            if (oldSceneController != null)
+            {
+                oldSceneController.OnStop();
+            }
+        }
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.LoadScene(sceneName);
+    }
+
+    private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        GameObject newSceneControllerGameObject = GameObject.Find("Controller");
+        if (newSceneControllerGameObject != null)
+        {
+            SceneController newSceneController = newSceneControllerGameObject.GetComponent<SceneController>();
+            if (newSceneController != null)
+            {
+                newSceneController.OnStart();
+            }
+        }
+
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

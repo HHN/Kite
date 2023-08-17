@@ -29,4 +29,12 @@ public class SceneController : MonoBehaviour
         messageObject.Activate();
         return messageObject;
     }
+
+    public virtual void OnStart()
+    {
+    }
+
+    public virtual void OnStop()
+    {
+    }
 }
