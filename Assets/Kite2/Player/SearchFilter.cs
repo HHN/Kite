@@ -34,7 +34,7 @@ public class SearchFilter : MonoBehaviour
         } 
         else if (radioButtonHandler.IsAccountNovelsOn())
         {
-            dataset = AccountNovelManager.GetAllAccountNovels();
+            dataset = AccountNovelManager.Instance().GetAllAccountNovels();
         } 
         else if (radioButtonHandler.IsFavoritesOn())
         {

@@ -3,14 +3,31 @@ using UnityEngine;
 
 public class FavoritesManager
 {
-    private static FavoritesWrapper favorites = LoadFavorites();
+    private static FavoritesManager instance;
+
+    private FavoritesWrapper favorites;
     private const string key = "FavoritesWrapper";
-    public static bool IsFavorite(VisualNovel novel)
+
+    private FavoritesManager() 
+    { 
+        favorites = LoadFavorites();
+    }
+
+    public static FavoritesManager Instance()
+    {
+        if (instance == null)
+        {
+            instance = new FavoritesManager();
+        }
+        return instance;
+    }
+
+    public bool IsFavorite(VisualNovel novel)
     {
         return favorites.favorites.Contains(novel.id);
     }
 
-    public static void MarkAsFavorite(VisualNovel novel)
+    public void MarkAsFavorite(VisualNovel novel)
     {
         if (favorites == null)
         {
@@ -24,7 +41,7 @@ public class FavoritesManager
         }
     }
 
-    public static void UnmarkAsFavorite(VisualNovel novel)
+    public void UnmarkAsFavorite(VisualNovel novel)
     {
         if (favorites == null)
         {
@@ -38,7 +55,7 @@ public class FavoritesManager
         }
     }
 
-    public static FavoritesWrapper LoadFavorites()
+    public FavoritesWrapper LoadFavorites()
     {
         if (PlayerPrefs.HasKey(key))
         {
@@ -53,14 +70,14 @@ public class FavoritesManager
             };
         }
     }
-    public static void Save()
+    public void Save()
     {
         string json = JsonUtility.ToJson(favorites);
         PlayerPrefs.SetString(key, json);
         PlayerPrefs.Save();
     }
 
-    public static List<long> GetFavoritesIds()
+    public List<long> GetFavoritesIds()
     {
         FavoritesWrapper wrapper = LoadFavorites();
         return wrapper.favorites;

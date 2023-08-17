@@ -72,7 +72,7 @@ public class ExplorerButtons : MonoBehaviour
         filterNovelsUnterline.gameObject.SetActive(false);
         contentInfoText.SetText("EIGENE NOVELS");
 
-        List<VisualNovel> visualNovels = AccountNovelManager.GetAllAccountNovels();
+        List<VisualNovel> visualNovels = AccountNovelManager.Instance().GetAllAccountNovels();
         gallery.RemoveAll();
         gallery.AddNovelsToGallery(visualNovels);
     }
@@ -109,7 +109,7 @@ public class ExplorerButtons : MonoBehaviour
 
     public List<VisualNovel> GetFavoriteNovels()
     {
-        List<long> ids = FavoritesManager.GetFavoritesIds();
+        List<long> ids = FavoritesManager.Instance().GetFavoritesIds();
         List<VisualNovel> favorites = new List<VisualNovel>();
 
         foreach (long id in ids)

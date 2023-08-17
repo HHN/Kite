@@ -35,14 +35,14 @@ public class FavoriteButton : MonoBehaviour
     {
         this.gameObject.GetComponent<Button>().image.sprite = sprites[1];
         isFavorite = true;
-        FavoritesManager.MarkAsFavorite(novel);
+        FavoritesManager.Instance().MarkAsFavorite(novel);
     }
 
     public void UnmarkAsFavorite()
     {
         this.gameObject.GetComponent<Button>().image.sprite = sprites[0];
         isFavorite = false;
-        FavoritesManager.UnmarkAsFavorite(novel);
+        FavoritesManager.Instance().UnmarkAsFavorite(novel);
     }
 
     public void TransformIntoEditButton()
@@ -66,7 +66,7 @@ public class FavoriteButton : MonoBehaviour
         this.gameObject.GetComponent<Button>().image.sprite = sprites[0];
         isFavorite = false;
 
-        if (FavoritesManager.IsFavorite(novel))
+        if (FavoritesManager.Instance().IsFavorite(novel))
         {
             isFavorite = true;
             MarkAsFavorite();

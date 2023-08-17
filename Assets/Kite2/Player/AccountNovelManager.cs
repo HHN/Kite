@@ -2,9 +2,11 @@ using System.Collections.Generic;
 
 public class AccountNovelManager
 {
-    private static List<VisualNovel> novels = new List<VisualNovel>();
+    private static AccountNovelManager instance;
 
-    static AccountNovelManager()
+    private List<VisualNovel> novels = new List<VisualNovel>();
+
+    private AccountNovelManager()
     {
         novels = new List<VisualNovel>
         {
@@ -14,7 +16,16 @@ public class AccountNovelManager
         };
     }
 
-    public static List<VisualNovel> GetAllAccountNovels()
+    public static AccountNovelManager Instance()
+    {
+        if (instance == null)
+        {
+            instance = new AccountNovelManager();
+        }
+        return instance;
+    }
+
+    public List<VisualNovel> GetAllAccountNovels()
     {
         return novels;
     }
