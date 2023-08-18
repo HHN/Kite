@@ -239,6 +239,7 @@ MonoBehaviour:
   gallery: {fileID: 1006767249}
   sceneController: {fileID: 600045262}
   filter: {fileID: 1082630612}
+  radioButtonHandler: {fileID: 1132253302}
 --- !u!1 &5591086
 GameObject:
   m_ObjectHideFlags: 0
@@ -1631,6 +1632,11 @@ MonoBehaviour:
   canvas: {fileID: 98923145}
   getNovelsServerCall: {fileID: 7727810964123109598, guid: 3c4d5570ed57d4a43983c7bf2d1959d2, type: 3}
   userNovels: []
+  tabIndex: 0
+  explorerButtons: {fileID: 3770571}
+  radioButtonHandler: {fileID: 1132253302}
+  searchInputField: {fileID: 2091515307}
+  gallery: {fileID: 1006767249}
 --- !u!4 &600045263
 Transform:
   m_ObjectHideFlags: 0
@@ -2696,6 +2702,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 35351606e4417d546b0af4c6af294c74, type: 3}
   - {fileID: 21300000, guid: 2ca21f136308d094da92c19bc31164cd, type: 3}
   - {fileID: 21300000, guid: d3c1033af865d66469d15e989bb2b75c, type: 3}
+  hasPosition: 0
+  scrollPosition: 0
 --- !u!1 &1082630612
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VisualNovelGallery : MonoBehaviour
 {
@@ -20,6 +23,13 @@ public class VisualNovelGallery : MonoBehaviour
         currentNoNovelsInfo = Instantiate(noNovelsInfo, currentGalleryRow.transform);
         currentPlaceHolder = Instantiate(placeHolder, currentGalleryRow.transform);
         novelsInGallery = new List<VisualNovel>();
+    }
+
+    public IEnumerator EnsureCorrectScrollPosition(float value)
+    {
+        yield return null;
+        Canvas.ForceUpdateCanvases();
+        GetComponent<ScrollRect>().verticalNormalizedPosition = value;
     }
 
     public void AddNovelToGallery(VisualNovel novel)
@@ -102,5 +112,10 @@ public class VisualNovelGallery : MonoBehaviour
             return null;
         }
         return smalNovelSprites[id];
+    }
+
+    public float GetCurrentScrollPosition()
+    {
+        return GetComponent<ScrollRect>().verticalNormalizedPosition;
     }
 }

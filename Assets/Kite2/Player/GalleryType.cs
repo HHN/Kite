@@ -1,0 +1,9 @@
+public enum GalleryType
+{
+    KITE_GALLERY,
+    USER_GALLERY,
+    ACCOUNT_GALLERY,
+    FAVORITES_GALLERY,
+    FILTER_GALLERY,
+    NONE
+}
