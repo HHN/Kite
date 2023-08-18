@@ -916,12 +916,12 @@ MonoBehaviour:
   content: []
   guiContent: []
   options: []
-  blueMessagePrefab: {fileID: 3119361966071925198, guid: a1d322144dde0254893783dc35a9cd16, type: 3}
-  greyMessagePrefab: {fileID: 6848169443508043642, guid: bf0924955c42e1944bd9ac2e5d52df31, type: 3}
-  turqouiseMessagePrefab: {fileID: 576203227638902646, guid: 4c5b2382f10ced2478505be599db9782, type: 3}
-  cottaMessagePrefab: {fileID: 2949831055151200100, guid: 0eaf1ed3ca7df644799376cf56644979, type: 3}
+  blueMessagePrefab: {fileID: 7934107218342486494, guid: 371e8f258e3e70f40aa33d74a459ffd7, type: 3}
+  greyMessagePrefab: {fileID: 7934107218342486494, guid: a88e32b2455c5f240a7e179d522f710d, type: 3}
+  turqouiseMessagePrefab: {fileID: 7934107218342486494, guid: 77440337cbcc6c84cb66acb6676efbd2, type: 3}
+  cottaMessagePrefab: {fileID: 7934107218342486494, guid: cf02915dd022dcf4b89016bb02761657, type: 3}
   optionsPrefab: {fileID: 5121638205295232454, guid: f5112ae07ee1f9a4ebe2c92f58693096, type: 3}
-  askForFeelingsButton: {fileID: 4292364372567170605, guid: 9c6a6a5acc6ebab47b8cc3053b288de8, type: 3}
+  askForFeelingsButton: {fileID: 9071931096445139848, guid: 7f599cbb71ea21548a1f24adc0874029, type: 3}
 --- !u!114 &563275610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -935,7 +935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
-  m_VerticalFit: 1
+  m_VerticalFit: 2
 --- !u!114 &563275611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -958,7 +958,7 @@ MonoBehaviour:
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
-  m_ChildControlHeight: 0
+  m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0

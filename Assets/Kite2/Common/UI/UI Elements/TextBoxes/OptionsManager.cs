@@ -27,7 +27,6 @@ public class OptionsManager : MonoBehaviour
         if (options.Count == 0)
         {
             gameObject.SetActive(false);
-            GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 0);
             return;
         }
         optionA.SetMessage(options[0].text);
@@ -39,7 +38,6 @@ public class OptionsManager : MonoBehaviour
             optionB.gameObject.SetActive(false);
             optionC.gameObject.SetActive(false);
             optionD.gameObject.SetActive(false);
-            GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, optionA.height);
             return;
         }
         optionB.SetMessage(options[1].text);
@@ -50,7 +48,6 @@ public class OptionsManager : MonoBehaviour
         {
             optionC.gameObject.SetActive(false);
             optionD.gameObject.SetActive(false);
-            GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, optionA.height + 20f + optionB.height);
             return;
         }
         optionC.SetMessage(options[2].text);
@@ -60,13 +57,11 @@ public class OptionsManager : MonoBehaviour
         if (options.Count == 3)
         {
             optionD.gameObject.SetActive(false);
-            GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, optionA.height + 20f + optionB.height + 20f + optionC.height);
             return;
         }
         optionD.SetMessage(options[3].text);
         idD = options[3].onChoice;
         stringD = options[3].text;
-        GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, optionA.height + 20f + optionB.height + 20f + optionC.height + 20f + optionD.height);
         return;
     }
 
