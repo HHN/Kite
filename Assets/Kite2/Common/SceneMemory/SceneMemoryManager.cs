@@ -18,6 +18,7 @@ public class SceneMemoryManager
     private LogInSceneMemory logInSceneMemory;
     private RegistrationSceneMemory registrationSceneMemory;
     private ResetPasswordSceneMemory resetPasswordSceneMemory;
+    private InfoSceneMemory infoSceneMemory;
 
     private SceneMemoryManager()
     {
@@ -35,6 +36,7 @@ public class SceneMemoryManager
         this.logInSceneMemory = null;
         this.registrationSceneMemory = null;
         this.resetPasswordSceneMemory = null;
+        this.infoSceneMemory = null;
 }
 
     public static SceneMemoryManager Instance()
@@ -116,6 +118,11 @@ public class SceneMemoryManager
         return this.resetPasswordSceneMemory;
     }
 
+    public InfoSceneMemory GetMemoryOfInfoScene()
+    {
+        return this.infoSceneMemory;
+    }
+
     public void SetMemoryOfSettingsScene(SettingsSceneMemory settingsSceneMemory)
     {
         this.settingsSceneMemory = settingsSceneMemory;
@@ -181,9 +188,14 @@ public class SceneMemoryManager
         this.registrationSceneMemory = registrationSceneMemory;
     }
 
-    public void GetMemoryOfResetPasswordScene(ResetPasswordSceneMemory resetPasswordSceneMemory)
+    public void SetMemoryOfResetPasswordScene(ResetPasswordSceneMemory resetPasswordSceneMemory)
     {
         this.resetPasswordSceneMemory = resetPasswordSceneMemory;
+    }
+
+    public void SetMemoryOfInfoScene(InfoSceneMemory infoSceneMemory)
+    {
+        this.infoSceneMemory = infoSceneMemory;
     }
 
     public void ClearMemory()
@@ -202,5 +214,6 @@ public class SceneMemoryManager
         this.logInSceneMemory = null;
         this.registrationSceneMemory = null;
         this.resetPasswordSceneMemory = null;
+        this.infoSceneMemory = null;
     }
 }

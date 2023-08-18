@@ -66,20 +66,10 @@ public class SceneLoader
         LoadScene(SceneNames.DETAILS_VIEW_SCENE);
     }
 
-    /**
-    public static void LoadScene(string sceneName)
+    public static void LoadInfoScene()
     {
-        GameObject oldSceneControllerGameObjectObject = GameObject.Find("Controller");
-        SceneController oldSceneController = oldSceneControllerGameObjectObject.GetComponent<SceneController>();
-        oldSceneController.OnStop();
-
-        SceneManager.LoadScene(sceneName);
-
-        GameObject newSceneControllerGameObjectObject = GameObject.Find("Controller");
-        SceneController newSceneController = newSceneControllerGameObjectObject.GetComponent<SceneController>();
-        newSceneController.OnStart();
+        LoadScene(SceneNames.INFO_SCENE);
     }
-    */
 
     public static void LoadScene(string sceneName)
     {

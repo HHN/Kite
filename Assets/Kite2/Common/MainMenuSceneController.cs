@@ -9,6 +9,7 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     public Button logInLogOutButton;
     public Button registerButton;
     public Button settingsButton;
+    public Button kiteLogo;
     public GameObject logoutServerCall;
     public Sprite loginSprite;
     public Sprite logoutSprite;
@@ -23,6 +24,7 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
         novelMakerButton.onClick.AddListener(delegate { OnNovelMakerButton(); });
         registerButton.onClick.AddListener(delegate { OnRegisterButton(); });
         settingsButton.onClick.AddListener(delegate { OnSettingsButton(); });
+        kiteLogo.onClick.AddListener(delegate { OnKiteLogoButton(); });
  
         if (string.IsNullOrEmpty(AuthenticationManager.Instance().GetAuthToken()))
         { 
@@ -93,5 +95,10 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     public void OnRegisterButton()
     {
         SceneLoader.LoadRegistrationScene();
+    }
+
+    public void OnKiteLogoButton()
+    {
+        SceneLoader.LoadInfoScene();
     }
 }

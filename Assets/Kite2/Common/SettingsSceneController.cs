@@ -5,6 +5,7 @@ public class SettingsSceneController : SceneController, OnSuccessHandler
 {
     public Button deleteAccountButton;
     public Button changePasswordButton;
+    public Button infoButton;
     public GameObject deleteAccountServerCallPrefab;
 
     void Start()
@@ -13,6 +14,7 @@ public class SettingsSceneController : SceneController, OnSuccessHandler
 
         deleteAccountButton.onClick.AddListener(delegate { OnDeleteAccountButton(); });
         changePasswordButton.onClick.AddListener(delegate { OnChangePasswordButton(); });
+        infoButton.onClick.AddListener(delegate { OnInfoButton(); });
 
         if (GameManager.Instance().applicationMode == ApplicationModes.LOGGED_IN_USER_MODE)
         {
@@ -38,6 +40,11 @@ public class SettingsSceneController : SceneController, OnSuccessHandler
     public void OnChangePasswordButton()
     {
         SceneLoader.LoadChangePasswordSceneScene();
+    }
+
+    public void OnInfoButton()
+    {
+        SceneLoader.LoadInfoScene();
     }
 
     public void OnSuccess(Response response)
