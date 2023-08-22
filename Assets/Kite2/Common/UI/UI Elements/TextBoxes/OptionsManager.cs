@@ -69,6 +69,7 @@ public class OptionsManager : MonoBehaviour
     {
         gameObject.SetActive(false);
         sceneController.ShowAnswer(stringA);
+        sceneController.isWaitingForConfirmation = true;
         sceneController.SetNextEvent(idA);
     }
 
@@ -76,6 +77,7 @@ public class OptionsManager : MonoBehaviour
     {
         gameObject.SetActive(false);
         sceneController.ShowAnswer(stringB);
+        sceneController.isWaitingForConfirmation = true;
         sceneController.SetNextEvent(idB);
     }
 
@@ -83,6 +85,7 @@ public class OptionsManager : MonoBehaviour
     {
         gameObject.SetActive(false);
         sceneController.ShowAnswer(stringC);
+        sceneController.isWaitingForConfirmation = true;
         sceneController.SetNextEvent(idC);
     }
 
@@ -90,6 +93,7 @@ public class OptionsManager : MonoBehaviour
     {
         gameObject.SetActive(false);
         sceneController.ShowAnswer(stringD);
+        sceneController.isWaitingForConfirmation = true;
         sceneController.SetNextEvent(idD);
     }
 }

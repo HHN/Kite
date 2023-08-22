@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using Febucci.UI.Core;
 
 public class PlayNovelSceneController : SceneController
 {
@@ -24,6 +25,8 @@ public class PlayNovelSceneController : SceneController
     private Dictionary<string, GameObject> currentCharacters = new Dictionary<string, GameObject>();
     public ChatScrollView chatScroll;
     public FeelingPanelController feelingPanelController;
+    public TypewriterCore currentTypeWriter;
+    public SelectOptionContinueConversation selectOptionContinueConversation;
 
     void Start()
     {
@@ -69,6 +72,16 @@ public class PlayNovelSceneController : SceneController
 
     public void PlayNextEvent()
     {
+        if (selectOptionContinueConversation != null)
+        {
+            selectOptionContinueConversation.alreadyPlayedNextEvent = true;
+            selectOptionContinueConversation = null;
+        }
+        if (currentTypeWriter != null) 
+        {
+            currentTypeWriter.SkipTypewriter(); // no check for isShowing necessary
+            currentTypeWriter = null;
+        }
         VisualNovelEventType type = VisualNovelEventTypeHelper.ValueOf(nextEventToPlay.eventType);
 
         switch (type)
@@ -197,6 +210,7 @@ public class PlayNovelSceneController : SceneController
             isWaitingForConfirmation = true;
             return;
         }
+        Debug.Log("Skipped waiting for Confirmation");
         StartCoroutine(StartNextEventInOneSeconds(1));
     }
 
