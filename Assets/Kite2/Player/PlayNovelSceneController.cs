@@ -210,7 +210,6 @@ public class PlayNovelSceneController : SceneController
             isWaitingForConfirmation = true;
             return;
         }
-        Debug.Log("Skipped waiting for Confirmation");
         StartCoroutine(StartNextEventInOneSeconds(1));
     }
 

@@ -11,7 +11,7 @@ public class SelectOptionContinueConversation : MonoBehaviour
         {
             return;
         }
-        controller.PlayNextEvent();
+        //controller.PlayNextEvent();
     }
 
     public void OnTypwritingStart()

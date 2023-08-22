@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +18,10 @@ public class OptionsManager : MonoBehaviour
     private string stringB;
     private string stringC;
     private string stringD;
+
+    private bool selected = false;
+
+    public AudioClip selectedSound;
 
     private PlayNovelSceneController sceneController;
 
@@ -67,33 +72,37 @@ public class OptionsManager : MonoBehaviour
 
     public void OnOptionA()
     {
-        gameObject.SetActive(false);
-        sceneController.ShowAnswer(stringA);
-        sceneController.isWaitingForConfirmation = true;
-        sceneController.SetNextEvent(idA);
+        StartCoroutine(AfterSelection("Selected A", stringA, idA));
     }
 
     public void OnOptionB()
     {
-        gameObject.SetActive(false);
-        sceneController.ShowAnswer(stringB);
-        sceneController.isWaitingForConfirmation = true;
-        sceneController.SetNextEvent(idB);
+        StartCoroutine(AfterSelection("Selected B", stringB, idB));
     }
 
     public void OnOptionC()
     {
-        gameObject.SetActive(false);
-        sceneController.ShowAnswer(stringC);
-        sceneController.isWaitingForConfirmation = true;
-        sceneController.SetNextEvent(idC);
+        StartCoroutine(AfterSelection("Selected C", stringC, idC));
     }
 
     public void OnOptionD()
     {
+        StartCoroutine(AfterSelection("Selected D", stringD, idD));
+    }
+
+    public IEnumerator AfterSelection(string parameterName, string answer, long nextEventID)
+    {
+        if (selected) { yield break; }
+        selected = true;
+
+        GetComponent<Animator>().SetBool(parameterName, true);
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.clip = selectedSound;
+        audio.Play();
+        yield return new WaitForSeconds(2f);
         gameObject.SetActive(false);
-        sceneController.ShowAnswer(stringD);
+        sceneController.ShowAnswer(answer);
         sceneController.isWaitingForConfirmation = true;
-        sceneController.SetNextEvent(idD);
+        sceneController.SetNextEvent(nextEventID);
     }
 }
