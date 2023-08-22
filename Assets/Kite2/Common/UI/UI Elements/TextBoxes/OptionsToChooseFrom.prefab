@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1638771511639155622}
   - component: {fileID: 1638771511639155643}
   - component: {fileID: 1638771511639155640}
+  - component: {fileID: 4550494645502342216}
   m_Layer: 5
   m_Name: Message Text
   m_TagString: Untagged
@@ -135,6 +136,33 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4550494645502342216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638771511639155623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ace8ced0e81c847968cdca0aeda757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typewriterStartsAutomatically: 0
+  animationLoop: 0
+  timeScale: 0
+  _text: Text
+  useDynamicScaling: 1
+  referenceFontSize: 10
+  isResettingTimeOnNewText: 1
+  useDefaultDatabases: 1
+  databaseBehaviors: {fileID: 11400000, guid: 36b41337ca2175645861324359818513, type: 2}
+  databaseAppearances: {fileID: 11400000, guid: f71a7fc6b7c33904595ea896102aa62d, type: 2}
+  databaseActions: {fileID: 11400000, guid: 611418122d9dfc24698874f25163ce41, type: 2}
+  defaultAppearancesTags: []
+  defaultDisappearancesTags: []
+  defaultBehaviorsTags: []
+  defaultTagsMode: 0
 --- !u!1 &1638771511793664248
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,6 +554,7 @@ GameObject:
   - component: {fileID: 4577096424837979346}
   - component: {fileID: 4577096424837979343}
   - component: {fileID: 4577096424837979340}
+  - component: {fileID: 4032942810174263910}
   m_Layer: 5
   m_Name: Message Text
   m_TagString: Untagged
@@ -650,6 +679,33 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4032942810174263910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4577096424837979347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ace8ced0e81c847968cdca0aeda757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typewriterStartsAutomatically: 0
+  animationLoop: 0
+  timeScale: 0
+  _text: Text
+  useDynamicScaling: 1
+  referenceFontSize: 10
+  isResettingTimeOnNewText: 1
+  useDefaultDatabases: 1
+  databaseBehaviors: {fileID: 11400000, guid: 36b41337ca2175645861324359818513, type: 2}
+  databaseAppearances: {fileID: 11400000, guid: f71a7fc6b7c33904595ea896102aa62d, type: 2}
+  databaseActions: {fileID: 11400000, guid: 611418122d9dfc24698874f25163ce41, type: 2}
+  defaultAppearancesTags: []
+  defaultDisappearancesTags: []
+  defaultBehaviorsTags: []
+  defaultTagsMode: 0
 --- !u!1 &5084195957652898474
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,6 +907,7 @@ GameObject:
   - component: {fileID: 5084195958440665588}
   - component: {fileID: 5084195958440665577}
   - component: {fileID: 5084195958440665578}
+  - component: {fileID: 9209781590367159601}
   m_Layer: 5
   m_Name: Message Text
   m_TagString: Untagged
@@ -975,6 +1032,33 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &9209781590367159601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5084195958440665589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ace8ced0e81c847968cdca0aeda757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typewriterStartsAutomatically: 0
+  animationLoop: 0
+  timeScale: 0
+  _text: Text
+  useDynamicScaling: 1
+  referenceFontSize: 10
+  isResettingTimeOnNewText: 1
+  useDefaultDatabases: 1
+  databaseBehaviors: {fileID: 11400000, guid: 36b41337ca2175645861324359818513, type: 2}
+  databaseAppearances: {fileID: 11400000, guid: f71a7fc6b7c33904595ea896102aa62d, type: 2}
+  databaseActions: {fileID: 11400000, guid: 611418122d9dfc24698874f25163ce41, type: 2}
+  defaultAppearancesTags: []
+  defaultDisappearancesTags: []
+  defaultBehaviorsTags: []
+  defaultTagsMode: 0
 --- !u!1 &5121638205295232454
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,6 +1071,7 @@ GameObject:
   - component: {fileID: 5121638205295232448}
   - component: {fileID: 8132953579297726514}
   - component: {fileID: 7817814136942365934}
+  - component: {fileID: -6069254304036180157}
   m_Layer: 5
   m_Name: OptionsToChooseFrom
   m_TagString: Untagged
@@ -1074,6 +1159,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!95 &-6069254304036180157
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5121638205295232454}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e41eec1501bb8ea479cc17185a5622cf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7198479507517336928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,6 +1381,7 @@ GameObject:
   - component: {fileID: 7198479508033900094}
   - component: {fileID: 7198479508033900067}
   - component: {fileID: 7198479508033900064}
+  - component: {fileID: 594533126065980701}
   m_Layer: 5
   m_Name: Message Text
   m_TagString: Untagged
@@ -1399,3 +1506,30 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &594533126065980701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7198479508033900095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ace8ced0e81c847968cdca0aeda757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typewriterStartsAutomatically: 0
+  animationLoop: 0
+  timeScale: 0
+  _text: Text
+  useDynamicScaling: 1
+  referenceFontSize: 10
+  isResettingTimeOnNewText: 1
+  useDefaultDatabases: 1
+  databaseBehaviors: {fileID: 11400000, guid: 36b41337ca2175645861324359818513, type: 2}
+  databaseAppearances: {fileID: 11400000, guid: f71a7fc6b7c33904595ea896102aa62d, type: 2}
+  databaseActions: {fileID: 11400000, guid: 611418122d9dfc24698874f25163ce41, type: 2}
+  defaultAppearancesTags: []
+  defaultDisappearancesTags: []
+  defaultBehaviorsTags: []
+  defaultTagsMode: 0

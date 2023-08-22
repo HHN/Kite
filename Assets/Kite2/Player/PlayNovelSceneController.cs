@@ -293,7 +293,6 @@ public class PlayNovelSceneController : SceneController
     public void SetNextEvent(long id)
     {
         nextEventToPlay = novelEvents[id];
-        PlayNextEvent();
     }
 
     public void ScrollToBottom()

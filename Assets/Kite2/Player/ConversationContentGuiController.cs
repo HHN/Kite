@@ -15,6 +15,7 @@ public class ConversationContentGuiController : MonoBehaviour
     public GameObject cottaMessagePrefab;
     public GameObject optionsPrefab;
     public GameObject askForFeelingsButton;
+    public GameObject blueMessagePrefabWithTrigger;
 
     public void AddContent(VisualNovelEvent novelEvent, PlayNovelSceneController controller)
     {
@@ -81,7 +82,7 @@ public class ConversationContentGuiController : MonoBehaviour
 
     public void ShowPlayerAnswer(string message)
     {
-        GameObject newMessageBox = Instantiate(blueMessagePrefab, this.transform);
+        GameObject newMessageBox = Instantiate(blueMessagePrefabWithTrigger, this.transform);
         ChatMessageBox messageBox = newMessageBox.GetComponent<ChatMessageBox>();
         messageBox.SetMessage(message);
         guiContent.Add(newMessageBox);

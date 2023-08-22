@@ -922,6 +922,7 @@ MonoBehaviour:
   cottaMessagePrefab: {fileID: 7934107218342486494, guid: cf02915dd022dcf4b89016bb02761657, type: 3}
   optionsPrefab: {fileID: 5121638205295232454, guid: f5112ae07ee1f9a4ebe2c92f58693096, type: 3}
   askForFeelingsButton: {fileID: 9071931096445139848, guid: 7f599cbb71ea21548a1f24adc0874029, type: 3}
+  blueMessagePrefabWithTrigger: {fileID: 7934107218342486494, guid: 836e83615683cb14aa78d493ea2caf2c, type: 3}
 --- !u!114 &563275610
 MonoBehaviour:
   m_ObjectHideFlags: 0
