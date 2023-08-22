@@ -3312,6 +3312,8 @@ MonoBehaviour:
   - {fileID: 1465545687914413273, guid: aa2ae7c4c5e34ea48ba637f2c59e7998, type: 3}
   chatScroll: {fileID: 1164301132}
   feelingPanelController: {fileID: 857370850}
+  currentTypeWriter: {fileID: 0}
+  selectOptionContinueConversation: {fileID: 0}
 --- !u!4 &2133875533
 Transform:
   m_ObjectHideFlags: 0
