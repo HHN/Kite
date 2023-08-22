@@ -9,6 +9,7 @@ public class AskForFeelingsButton : MonoBehaviour
     public void OnButtonClick()
     {
         this.gameObject.SetActive(false);
+        controller.confirmArea.gameObject.SetActive(true);
         controller.SetFeelingsPanelActive(true);
     }
 }

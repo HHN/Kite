@@ -27,6 +27,7 @@ public class PlayNovelSceneController : SceneController
     public FeelingPanelController feelingPanelController;
     public TypewriterCore currentTypeWriter;
     public SelectOptionContinueConversation selectOptionContinueConversation;
+    public Button confirmArea;
 
     void Start()
     {
@@ -114,6 +115,7 @@ public class PlayNovelSceneController : SceneController
                 }
             case VisualNovelEventType.SHOW_CHOICES_EVENT:
                 {
+                    confirmArea.gameObject.SetActive(false);
                     HandleShowChoicesEvent(nextEventToPlay);
                     ScrollToBottom();
                     break;
@@ -125,6 +127,7 @@ public class PlayNovelSceneController : SceneController
                 }
             case VisualNovelEventType.ASK_FOR_OPINION_EVENT:
                 {
+                    confirmArea.gameObject.SetActive(false);
                     HandleAskForOpinionEvent(nextEventToPlay);
                     ScrollToBottom();
                     break;

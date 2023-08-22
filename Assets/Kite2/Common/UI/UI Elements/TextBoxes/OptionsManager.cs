@@ -101,6 +101,7 @@ public class OptionsManager : MonoBehaviour
         audio.Play();
         yield return new WaitForSeconds(2f);
         gameObject.SetActive(false);
+        sceneController.confirmArea.gameObject.SetActive(true);
         sceneController.ShowAnswer(answer);
         sceneController.isWaitingForConfirmation = true;
         sceneController.SetNextEvent(nextEventID);
