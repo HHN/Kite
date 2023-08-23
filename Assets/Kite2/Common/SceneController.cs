@@ -30,10 +30,6 @@ public class SceneController : MonoBehaviour
         return messageObject;
     }
 
-    public virtual void OnStart()
-    {
-    }
-
     public virtual void OnStop()
     {
     }

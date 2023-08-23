@@ -18,6 +18,7 @@ public class NovelExplorerSceneController : SceneController, OnSuccessHandler
     void Start()
     {
         BackStackManager.Instance().Push(SceneNames.NOVEL_EXPLORER_SCENE);
+        InitMemory();
     }
 
     public void OnSuccess(Response response)
@@ -47,10 +48,8 @@ public class NovelExplorerSceneController : SceneController, OnSuccessHandler
         return null;
     }
 
-    public override void OnStart()
+    public void InitMemory()
     {
-        base.OnStart();
-
         NovelExplorerSceneMemory memory = SceneMemoryManager.Instance().GetMemoryOfNovelExplorerScene();
         if (memory == null)
         {
@@ -76,7 +75,7 @@ public class NovelExplorerSceneController : SceneController, OnSuccessHandler
 
     public override void OnStop()
     {
-        base.OnStart();
+        base.OnStop();
         
         NovelExplorerSceneMemory memory = new NovelExplorerSceneMemory();
         memory.SetTabIndex(tabIndex);

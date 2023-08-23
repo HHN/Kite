@@ -82,23 +82,6 @@ public class SceneLoader
                 oldSceneController.OnStop();
             }
         }
-
-        SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.LoadScene(sceneName);
-    }
-
-    private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        GameObject newSceneControllerGameObject = GameObject.Find("Controller");
-        if (newSceneControllerGameObject != null)
-        {
-            SceneController newSceneController = newSceneControllerGameObject.GetComponent<SceneController>();
-            if (newSceneController != null)
-            {
-                newSceneController.OnStart();
-            }
-        }
-
-        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }
