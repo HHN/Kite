@@ -30,7 +30,17 @@ public enum ResultCode
     SUCCESSFULLY_RESETED_PASSWORD,
     PASSWORD_ALREADY_RESETED,
     SUCCESSFULLY_INITIATED_RESET,
-    SUCCESSFULLY_FOUND_NOVEL
+    SUCCESSFULLY_FOUND_NOVEL,
+    SUCCESSFULLY_POSTED_COMMENT,
+    SUCCESSFULLY_UPDATED_COMMENT,
+    SUCCESSFULLY_DELETED_COMMENT,
+    SUCCESSFULLY_GOT_COMMENTS_FOR_NOVEL,
+    NO_COMMENTS_FOUND_FOR_NOVEL,
+    COMMENT_NOT_FOUND,
+    FAILED_TO_POST_COMMENT,
+    FAILED_TO_UPDATE_COMMENT,
+    FAILED_TO_DELETE_COMMENT,
+    FAILED_TO_GET_COMMENTS_FOR_NOVEL
 }
 
 public class ResultCodeHelper
@@ -69,6 +79,16 @@ public class ResultCodeHelper
             case ResultCode.PASSWORD_ALREADY_RESETED: { return 28; }
             case ResultCode.SUCCESSFULLY_INITIATED_RESET: { return 29; }
             case ResultCode.SUCCESSFULLY_FOUND_NOVEL: { return 30; }
+            case ResultCode.SUCCESSFULLY_POSTED_COMMENT: { return 31; }
+            case ResultCode.SUCCESSFULLY_UPDATED_COMMENT: { return 32; }
+            case ResultCode.SUCCESSFULLY_DELETED_COMMENT: { return 33; }
+            case ResultCode.SUCCESSFULLY_GOT_COMMENTS_FOR_NOVEL: { return 34; }
+            case ResultCode.NO_COMMENTS_FOUND_FOR_NOVEL: { return 35; }
+            case ResultCode.COMMENT_NOT_FOUND: { return 36; }
+            case ResultCode.FAILED_TO_POST_COMMENT: { return 37; }
+            case ResultCode.FAILED_TO_UPDATE_COMMENT: { return 38; }
+            case ResultCode.FAILED_TO_DELETE_COMMENT: { return 39; }
+            case ResultCode.FAILED_TO_GET_COMMENTS_FOR_NOVEL: { return 40; }
             default: { return -1; }
         }
     }
@@ -107,6 +127,16 @@ public class ResultCodeHelper
             case 28: { return ResultCode.PASSWORD_ALREADY_RESETED; }
             case 29: { return ResultCode.SUCCESSFULLY_INITIATED_RESET; }
             case 30: { return ResultCode.SUCCESSFULLY_FOUND_NOVEL; }
+            case 31: { return ResultCode.SUCCESSFULLY_POSTED_COMMENT; }
+            case 32: { return ResultCode.SUCCESSFULLY_UPDATED_COMMENT; }
+            case 33: { return ResultCode.SUCCESSFULLY_DELETED_COMMENT; }
+            case 34: { return ResultCode.SUCCESSFULLY_GOT_COMMENTS_FOR_NOVEL; }
+            case 35: { return ResultCode.NO_COMMENTS_FOUND_FOR_NOVEL; }
+            case 36: { return ResultCode.COMMENT_NOT_FOUND; }
+            case 37: { return ResultCode.FAILED_TO_POST_COMMENT; }
+            case 38: { return ResultCode.FAILED_TO_UPDATE_COMMENT; }
+            case 39: { return ResultCode.FAILED_TO_DELETE_COMMENT; }
+            case 40: { return ResultCode.FAILED_TO_GET_COMMENTS_FOR_NOVEL; }
             default: { return ResultCode.NONE; }
         }
     }

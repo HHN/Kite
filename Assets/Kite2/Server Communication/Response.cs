@@ -10,5 +10,6 @@ public class Response
     public string refreshToken;
     public string completion;
     public List<VisualNovel> novels;
+    public List<Comment> comments;
     public VisualNovel specifiedNovel;
 }
