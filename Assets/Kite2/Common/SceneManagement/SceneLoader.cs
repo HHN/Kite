@@ -71,6 +71,11 @@ public class SceneLoader
         LoadScene(SceneNames.INFO_SCENE);
     }
 
+    public static void LoadCommentSectionScene()
+    {
+        LoadScene(SceneNames.COMMENT_SECTION_SCENE);
+    }
+
     public static void LoadScene(string sceneName)
     {
         GameObject oldSceneControllerGameObject = GameObject.Find("Controller");

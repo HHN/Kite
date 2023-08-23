@@ -53,4 +53,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Kite2/Common/InfoScene.unity
     guid: b3399910d54a05240acd6262d79881a1
+  - enabled: 1
+    path: Assets/Kite2/Player/CommentSectionScene.unity
+    guid: f6ffedf9b58eaab42913d8c10f65a97c
   m_configObjects: {}

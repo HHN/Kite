@@ -19,6 +19,7 @@ public class SceneMemoryManager
     private RegistrationSceneMemory registrationSceneMemory;
     private ResetPasswordSceneMemory resetPasswordSceneMemory;
     private InfoSceneMemory infoSceneMemory;
+    private CommentSectionSceneMemory commentSectionSceneMemory;
 
     private SceneMemoryManager()
     {
@@ -37,6 +38,7 @@ public class SceneMemoryManager
         this.registrationSceneMemory = null;
         this.resetPasswordSceneMemory = null;
         this.infoSceneMemory = null;
+        this.commentSectionSceneMemory = null;
 }
 
     public static SceneMemoryManager Instance()
@@ -123,6 +125,11 @@ public class SceneMemoryManager
         return this.infoSceneMemory;
     }
 
+    public CommentSectionSceneMemory GetMemoryOfCommentSectionScene()
+    {
+        return this.commentSectionSceneMemory;
+    }
+
     public void SetMemoryOfSettingsScene(SettingsSceneMemory settingsSceneMemory)
     {
         this.settingsSceneMemory = settingsSceneMemory;
@@ -198,6 +205,11 @@ public class SceneMemoryManager
         this.infoSceneMemory = infoSceneMemory;
     }
 
+    public void SetMemoryOfCommentSectionScene(CommentSectionSceneMemory commentSectionSceneMemory)
+    {
+        this.commentSectionSceneMemory = commentSectionSceneMemory;
+    }
+
     public void ClearMemory()
     {
         this.settingsSceneMemory = null;
@@ -215,5 +227,6 @@ public class SceneMemoryManager
         this.registrationSceneMemory = null;
         this.resetPasswordSceneMemory = null;
         this.infoSceneMemory = null;
+        this.commentSectionSceneMemory = null;
     }
 }
