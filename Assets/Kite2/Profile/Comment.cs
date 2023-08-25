@@ -7,4 +7,6 @@ public class Comment
     public string comment;
     public VisualNovel visualNovel;
     public string author;
+    public long likeCount;
+    public bool liked;
 }

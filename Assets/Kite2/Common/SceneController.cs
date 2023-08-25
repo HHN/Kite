@@ -4,7 +4,7 @@ public class SceneController : MonoBehaviour
 {
     public GameObject messageBox;
     public GameObject canvas;
-    protected MessageBox messageObject;
+    public MessageBox messageObject;
 
     public MessageBox DisplayInfoMessage(string errorMessage)
     {

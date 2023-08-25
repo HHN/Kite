@@ -7,4 +7,6 @@ public class InfoMessages
     public static readonly string WAIT_FOR_CHANGE_OF_PASSWORD = "Bitte warten! Das Passwort wird geändert!";
     public static readonly string WAIT_FOR_RESET_OF_PASSWORD = "Bitte warten! Ihr Passwort wird zurück gesetzt!";
     public static readonly string WAIT_FOR_LOAD_NOVEL = "Bitte warten! Die Visual Novels werden geladen!";
+    public static readonly string WAIT_FOR_LOAD_COMMENT_SECTION = "Bitte warten! Die Kommentare zur Visual Novel werden geladen!";
+    public static readonly string WAIT_FOR_UPLOAD_COMMENT = "Bitte warten! Der Kommentar wird gepostet!";
 }
