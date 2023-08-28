@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,10 +8,13 @@ public class UserComment : MonoBehaviour
     public TextMeshProUGUI comment;
     public TextMeshProUGUI likeCount;
     public Button likeButton;
+    public Button deleteButton;
+    public Button editButton;
     public Sprite likeButtonUnselected;
     public Sprite likeButtonSelected;
     private bool liked = false;
     private long commentId;
+    private bool isOwnComment;
 
     private void Start()
     {
@@ -46,6 +47,15 @@ public class UserComment : MonoBehaviour
         likeCount.text = comment.likeCount.ToString();
         SetLiked(comment.liked);
         commentId = comment.id;
+        isOwnComment = comment.isOwnComment;
+
+        EditCommentButton editCommentButton = editButton.GetComponent<EditCommentButton>();
+        DeleteCommentButton deleteCommentButton = deleteButton.GetComponent<DeleteCommentButton>();
+        editCommentButton.commentId = commentId;
+        editCommentButton.isOwnComment = comment.isOwnComment;
+        editCommentButton.commentText = comment.comment;
+        deleteCommentButton.commentId = commentId;
+
     }
 
     public void SetLiked(bool liked)

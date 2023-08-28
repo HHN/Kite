@@ -30,7 +30,7 @@ public class BankTalkNovel : VisualNovel
                 nextId = 3,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.CHARAKTER_JOIN_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Müller",
+                name = "Herr Mayer",
                 animationType = AnimationTypeHelper.ToInt(AnimationType.FLY_IN_FROM_ABOVE),
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING),
                 xPosition = 0,
@@ -221,8 +221,8 @@ public class BankTalkNovel : VisualNovel
                 waitForUserConfirmation = true,
                 name = "Lea",
                 text = "Ja, also wie vorab schon in der E-Mail besprochen geht es darum, " +
-                       "dass ich gerne einen kredit aufnehmen möchte. Und ich würde entsprechend " +
-                       "auch ein Geschäftkonto hier einrichten.",
+                       "dass ich gerne einen Kredit aufnehmen möchte. Und ich würde entsprechend " +
+                       "auch ein Geschäftskonto hier einrichten.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -246,7 +246,7 @@ public class BankTalkNovel : VisualNovel
                 waitForUserConfirmation = true,
                 name = "Lea",
                 text = "Und Sie hatten ja meine Unterlagen und Businessplan schon gesichtet. " +
-                       "Entsprechend bin ich jetzt auch hier um Fragen zu beantowrten und auch gespannt " +
+                       "Entsprechend bin ich jetzt auch hier um Fragen zu beantworten und auch gespannt " +
                        "auf das, was wir hier gemeinsam machen können.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
@@ -271,7 +271,7 @@ public class BankTalkNovel : VisualNovel
                 waitForUserConfirmation = true,
                 name = "Lea",
                 text = "Ja, natürlich. Ich habe ein Game Development Studio " +
-                        "namens Knights Gambit Studios gegründen.",
+                        "namens Knights Gambit Studios gegründet.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -392,7 +392,7 @@ public class BankTalkNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Also ich hab mit dieser Frage jetzt nicht gerechnet um ehrlich zu sein."
+                text = "Also ich habe mit dieser Frage jetzt nicht gerechnet um ehrlich zu sein."
             },
 
             new VisualNovelEvent()
@@ -659,7 +659,7 @@ public class BankTalkNovel : VisualNovel
                 nextId = 61,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.CHARAKTER_EXIT_EVENT),
                 waitForUserConfirmation = false,
-                name = "Herr Müller",
+                name = "Herr Mayer",
                 animationType = AnimationTypeHelper.ToInt(AnimationType.FLY_IN_FROM_ABOVE),
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },

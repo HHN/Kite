@@ -10,11 +10,24 @@ public class CommentSectionInputArea : MonoBehaviour, OnSuccessHandler
     public TMP_InputField inputField;
     public GameObject postCommentServerCallPrefab;
     public CommentSectionSceneController commentSectionSceneController;
+    public bool inPostMode = true;
+    public EditCommentButton editButton;
 
-    // Start is called before the first frame update
     void Start()
     {
-        postButton.onClick.AddListener(delegate { OnPostButton(); });
+        postButton.onClick.AddListener(delegate { OnClick(); });
+    }
+
+    public void OnClick()
+    {
+        if (inPostMode)
+        {
+            OnPostButton();
+        } 
+        else
+        {
+            OnUpdateButton();
+        }
     }
 
     public void OnPostButton()
@@ -34,5 +47,22 @@ public class CommentSectionInputArea : MonoBehaviour, OnSuccessHandler
         commentSectionSceneController.messageObject.CloseMessageBox();
         List<Comment> comments = response.comments;
         commentSectionSceneController.SetComments(comments);
+    }
+
+    public void ActivateEditMode()
+    {
+        this.inPostMode = false;
+        postButton.GetComponentInChildren<TextMeshProUGUI>().text = "SPEICHERN";
+    }
+
+    public void DeactivateEditMode()
+    {
+        this.inPostMode = true;
+        postButton.GetComponentInChildren<TextMeshProUGUI>().text = "POSTEN";
+    }
+
+    public void OnUpdateButton()
+    {
+        editButton.OnChangeButton();
     }
 }

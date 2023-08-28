@@ -9,4 +9,6 @@ public class InfoMessages
     public static readonly string WAIT_FOR_LOAD_NOVEL = "Bitte warten! Die Visual Novels werden geladen!";
     public static readonly string WAIT_FOR_LOAD_COMMENT_SECTION = "Bitte warten! Die Kommentare zur Visual Novel werden geladen!";
     public static readonly string WAIT_FOR_UPLOAD_COMMENT = "Bitte warten! Der Kommentar wird gepostet!";
+    public static readonly string WAIT_FOR_DELETE_COMMENT = "Bitte warten! Der Kommentar wird gelöscht!";
+    public static readonly string WAIT_FOR_CHANGE_COMMENT = "Bitte warten! Änderung wird gespeichert!";
 }

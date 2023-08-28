@@ -159,8 +159,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -70, y: 0}
-  m_SizeDelta: {x: -180, y: -20}
+  m_AnchoredPosition: {x: -95, y: 0}
+  m_SizeDelta: {x: -230, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &17245902
 MonoBehaviour:
@@ -264,8 +264,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -80, y: 0}
-  m_SizeDelta: {x: 120, y: 50}
+  m_AnchoredPosition: {x: -105, y: 0}
+  m_SizeDelta: {x: 170, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &168111117
 MonoBehaviour:
@@ -1127,7 +1127,7 @@ GameObject:
   - component: {fileID: 837296793}
   - component: {fileID: 837296794}
   m_Layer: 5
-  m_Name: Input Area
+  m_Name: InputArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1171,6 +1171,8 @@ MonoBehaviour:
   inputField: {fileID: 574695317}
   postCommentServerCallPrefab: {fileID: 1558165677080889477, guid: cfd17fb2685835948921dbf0535c7b83, type: 3}
   commentSectionSceneController: {fileID: 152177252}
+  inPostMode: 1
+  editButton: {fileID: 0}
 --- !u!114 &837296794
 MonoBehaviour:
   m_ObjectHideFlags: 0

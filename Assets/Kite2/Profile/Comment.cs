@@ -9,4 +9,5 @@ public class Comment
     public string author;
     public long likeCount;
     public bool liked;
+    public bool isOwnComment;
 }
