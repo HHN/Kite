@@ -12,4 +12,5 @@ public class ConnectionLink
     public static readonly string RESET_PASSWORD_LINK = BASE_LINK + "resetpassword";
     public static readonly string FIND_NOVEL_LINK = BASE_LINK + "novel";
     public static readonly string COMMENT_LINK = BASE_LINK + "comment";
+    public static readonly string COMMENT_LIKE_LINK = BASE_LINK + "commentlike";
 }

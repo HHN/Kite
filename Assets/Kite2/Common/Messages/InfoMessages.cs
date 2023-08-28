@@ -11,4 +11,6 @@ public class InfoMessages
     public static readonly string WAIT_FOR_UPLOAD_COMMENT = "Bitte warten! Der Kommentar wird gepostet!";
     public static readonly string WAIT_FOR_DELETE_COMMENT = "Bitte warten! Der Kommentar wird gelöscht!";
     public static readonly string WAIT_FOR_CHANGE_COMMENT = "Bitte warten! Änderung wird gespeichert!";
+    public static readonly string WAIT_FOR_LIKE_COMMENT = "Bitte warten! Kommentar wird mit 'Gefällt mir' markiert!";
+    public static readonly string WAIT_FOR_UNLIKE_COMMENT = "Bitte warten! 'Gefällt mir'-Markierung wird aufgehoben!";
 }

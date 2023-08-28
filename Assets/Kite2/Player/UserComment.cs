@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UserComment : MonoBehaviour
+public class UserComment : MonoBehaviour, OnSuccessHandler
 {
     public TextMeshProUGUI authorName;
     public TextMeshProUGUI comment;
@@ -14,11 +15,14 @@ public class UserComment : MonoBehaviour
     public Sprite likeButtonSelected;
     private bool liked = false;
     private long commentId;
-    private bool isOwnComment;
+    public GameObject likeCommentServerCallPrefab;
+    public GameObject unlikeCommentServerCallPrefab;
+    public CommentSectionSceneController commentSectionSceneController;
 
     private void Start()
     {
         likeButton.onClick.AddListener(delegate { OnLikeButton(); });
+        commentSectionSceneController = GameObject.Find("Controller").GetComponent<CommentSectionSceneController>();
 
         if (GameManager.Instance().applicationMode != ApplicationModes.LOGGED_IN_USER_MODE) 
         {
@@ -30,12 +34,10 @@ public class UserComment : MonoBehaviour
     {
         if (liked)
         {
-            SetLiked(false);
             SendUnlikeRequest();
         }
         else
         {
-            SetLiked(true);
             SendLikeRequest();
         }
     }
@@ -47,7 +49,6 @@ public class UserComment : MonoBehaviour
         likeCount.text = comment.likeCount.ToString();
         SetLiked(comment.liked);
         commentId = comment.id;
-        isOwnComment = comment.isOwnComment;
 
         EditCommentButton editCommentButton = editButton.GetComponent<EditCommentButton>();
         DeleteCommentButton deleteCommentButton = deleteButton.GetComponent<DeleteCommentButton>();
@@ -65,6 +66,7 @@ public class UserComment : MonoBehaviour
         if (liked)
         {
             likeButton.image.sprite = likeButtonSelected;
+
         } 
         else
         {
@@ -74,11 +76,28 @@ public class UserComment : MonoBehaviour
 
     public void SendLikeRequest()
     {
-
+        commentSectionSceneController.DisplayInfoMessage(InfoMessages.WAIT_FOR_LIKE_COMMENT);
+        LikeCommentServerCall call = Instantiate(likeCommentServerCallPrefab).GetComponent<LikeCommentServerCall>();
+        call.sceneController = commentSectionSceneController;
+        call.onSuccessHandler = this;
+        call.commentId = commentId;
+        call.SendRequest();
     }
 
     public void SendUnlikeRequest()
     {
+        commentSectionSceneController.DisplayInfoMessage(InfoMessages.WAIT_FOR_UNLIKE_COMMENT);
+        UnlikeCommentServerCall call = Instantiate(unlikeCommentServerCallPrefab).GetComponent<UnlikeCommentServerCall>();
+        call.sceneController = commentSectionSceneController;
+        call.onSuccessHandler = this;
+        call.commentId = commentId;
+        call.SendRequest();
+    }
 
+    public void OnSuccess(Response response)
+    {
+        commentSectionSceneController.messageObject.CloseMessageBox();
+        List<Comment> comments = response.comments;
+        commentSectionSceneController.SetComments(comments);
     }
 }

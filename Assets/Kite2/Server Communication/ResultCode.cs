@@ -40,7 +40,12 @@ public enum ResultCode
     FAILED_TO_POST_COMMENT,
     FAILED_TO_UPDATE_COMMENT,
     FAILED_TO_DELETE_COMMENT,
-    FAILED_TO_GET_COMMENTS_FOR_NOVEL
+    FAILED_TO_GET_COMMENTS_FOR_NOVEL,
+    SUCCESSFULLY_LIKED_COMMENT,
+    SUCCESSFULLY_UNLIKED_COMMENT,
+    FAILED_TO_LIKE_COMMENT,
+    FAILED_TO_UNLIKE_COMMENT,
+    COMMENT_LIKE_NOT_FOUND
 }
 
 public class ResultCodeHelper
@@ -89,6 +94,11 @@ public class ResultCodeHelper
             case ResultCode.FAILED_TO_UPDATE_COMMENT: { return 38; }
             case ResultCode.FAILED_TO_DELETE_COMMENT: { return 39; }
             case ResultCode.FAILED_TO_GET_COMMENTS_FOR_NOVEL: { return 40; }
+            case ResultCode.SUCCESSFULLY_LIKED_COMMENT: { return 41; }
+            case ResultCode.SUCCESSFULLY_UNLIKED_COMMENT: { return 42; }
+            case ResultCode.FAILED_TO_LIKE_COMMENT: { return 43; }
+            case ResultCode.FAILED_TO_UNLIKE_COMMENT: { return 44; }
+            case ResultCode.COMMENT_LIKE_NOT_FOUND: { return 45; }
             default: { return -1; }
         }
     }
@@ -137,6 +147,11 @@ public class ResultCodeHelper
             case 38: { return ResultCode.FAILED_TO_UPDATE_COMMENT; }
             case 39: { return ResultCode.FAILED_TO_DELETE_COMMENT; }
             case 40: { return ResultCode.FAILED_TO_GET_COMMENTS_FOR_NOVEL; }
+            case 41: { return ResultCode.SUCCESSFULLY_LIKED_COMMENT; }
+            case 42: { return ResultCode.SUCCESSFULLY_UNLIKED_COMMENT; }
+            case 43: { return ResultCode.FAILED_TO_LIKE_COMMENT; }
+            case 44: { return ResultCode.FAILED_TO_UNLIKE_COMMENT; }
+            case 45: { return ResultCode.COMMENT_LIKE_NOT_FOUND; }
             default: { return ResultCode.NONE; }
         }
     }
