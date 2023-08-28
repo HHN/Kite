@@ -7,7 +7,6 @@ public class FavoriteButton : MonoBehaviour
     public bool isFavorite = false;
     public VisualNovel novel;
     public VisualNovelGallery favoritesGallery;
-    public bool hasTransformedIntoEditButton = false;
 
     void Start()
     {
@@ -17,11 +16,7 @@ public class FavoriteButton : MonoBehaviour
 
     public void OnClick()
     {
-        if (hasTransformedIntoEditButton)
-        {
-            // Start Editing.
-        }
-        else if (this.isFavorite)
+        if (this.isFavorite)
         {
             UnmarkAsFavorite();
         } 
@@ -45,12 +40,6 @@ public class FavoriteButton : MonoBehaviour
         FavoritesManager.Instance().UnmarkAsFavorite(novel);
     }
 
-    public void TransformIntoEditButton()
-    {
-        this.gameObject.GetComponent<Button>().image.sprite = sprites[2];
-        hasTransformedIntoEditButton = true;
-    }
-
     public void Init()
     {
         novel = PlayManager.Instance().GetVisualNovelToPlay();
@@ -60,7 +49,7 @@ public class FavoriteButton : MonoBehaviour
         }
         if (novel.id == 0)
         {
-            TransformIntoEditButton();
+            this.gameObject.SetActive(false);
             return;
         }
         this.gameObject.GetComponent<Button>().image.sprite = sprites[0];

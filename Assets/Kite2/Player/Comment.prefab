@@ -878,8 +878,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1490,6 +1490,7 @@ MonoBehaviour:
   likeButtonSelected: {fileID: 21300000, guid: c4dacbbdc8b50684e86312433cbb58fa, type: 3}
   likeCommentServerCallPrefab: {fileID: 6404053385794394407, guid: 116415374eaf0c4409bdf435bc37d7f8, type: 3}
   unlikeCommentServerCallPrefab: {fileID: 4004426153799440139, guid: 64e0ab746ea128a47b57523267f613ff, type: 3}
+  commentSectionSceneController: {fileID: 0}
 --- !u!1 &8595105101221073558
 GameObject:
   m_ObjectHideFlags: 0

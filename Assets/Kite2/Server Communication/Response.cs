@@ -12,4 +12,6 @@ public class Response
     public List<VisualNovel> novels;
     public List<Comment> comments;
     public VisualNovel specifiedNovel;
+    public int numberOfNovelLikes;
+    public bool novelLikedByUser;
 }

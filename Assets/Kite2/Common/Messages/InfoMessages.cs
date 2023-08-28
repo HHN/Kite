@@ -13,4 +13,7 @@ public class InfoMessages
     public static readonly string WAIT_FOR_CHANGE_COMMENT = "Bitte warten! Änderung wird gespeichert!";
     public static readonly string WAIT_FOR_LIKE_COMMENT = "Bitte warten! Kommentar wird mit 'Gefällt mir' markiert!";
     public static readonly string WAIT_FOR_UNLIKE_COMMENT = "Bitte warten! 'Gefällt mir'-Markierung wird aufgehoben!";
+    public static readonly string WAIT_FOR_LIKE_NOVEL = "Bitte warten! Novel wird mit 'Gefällt mir' markiert!";
+    public static readonly string WAIT_FOR_UNLIKE_NOVEL = "Bitte warten! 'Gefällt mir'-Markierung wird aufgehoben!";
+    public static readonly string WAIT_FOR_LOAD_NOVEL_INFORMATION = "Bitte warten! Die Visual Novel wird geladen!";
 }
