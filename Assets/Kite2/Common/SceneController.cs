@@ -4,7 +4,7 @@ public class SceneController : MonoBehaviour
 {
     public GameObject messageBox;
     public GameObject canvas;
-    public MessageBox messageObject;
+    private MessageBox messageObject;
 
     public MessageBox DisplayInfoMessage(string errorMessage)
     {
@@ -32,5 +32,14 @@ public class SceneController : MonoBehaviour
 
     public virtual void OnStop()
     {
+    }
+
+    public void CloseMessageBox()
+    {
+        if (messageObject == null)
+        {
+            return;
+        }
+        messageObject.CloseMessageBox();
     }
 }

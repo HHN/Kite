@@ -43,5 +43,6 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler
     public void OnSuccess(Response response)
     {
         feedbackText.SetText(response.completion);
+        novelToPlay.feedback = (response.completion);
     }
 }

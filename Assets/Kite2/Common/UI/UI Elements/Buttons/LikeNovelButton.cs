@@ -11,8 +11,9 @@ public class LikeNovelButton : MonoBehaviour, OnSuccessHandler
     public GameObject unlikeNovelServerCallPrefab;
     public GameObject getNovelLikeServerCallPrefab;
     public Button button;
-    public DetailsViewSceneController sceneController;
+    public SceneController sceneController;
     public TextMeshProUGUI count;
+    public GameObject parent;
 
     void Start()
     {
@@ -29,7 +30,7 @@ public class LikeNovelButton : MonoBehaviour, OnSuccessHandler
         }
         if (novel.id == 0)
         {
-            this.gameObject.SetActive(false);
+            parent.SetActive(false);
             return;
         }
         if (GameManager.Instance().applicationMode != ApplicationModes.LOGGED_IN_USER_MODE)
@@ -43,7 +44,6 @@ public class LikeNovelButton : MonoBehaviour, OnSuccessHandler
 
     public void RequestInformation()
     {
-        sceneController.DisplayInfoMessage(InfoMessages.WAIT_FOR_LIKE_NOVEL);
         GetNovelLikeInformationServerCall call = Instantiate(getNovelLikeServerCallPrefab)
             .GetComponent<GetNovelLikeInformationServerCall>();
         call.sceneController = sceneController;
@@ -68,7 +68,6 @@ public class LikeNovelButton : MonoBehaviour, OnSuccessHandler
 
     public void SendLikeRequest()
     {
-        sceneController.DisplayInfoMessage(InfoMessages.WAIT_FOR_LIKE_NOVEL);
         LikeNovelServerCall call = Instantiate(likeNovelServerCallPrefab).GetComponent<LikeNovelServerCall>();
         call.sceneController = sceneController;
         call.onSuccessHandler = this;
@@ -78,7 +77,6 @@ public class LikeNovelButton : MonoBehaviour, OnSuccessHandler
 
     public void SendUnlikeRequest()
     {
-        sceneController.DisplayInfoMessage(InfoMessages.WAIT_FOR_UNLIKE_NOVEL);
         UnlikeNovelServerCall call = Instantiate(unlikeNovelServerCallPrefab).GetComponent<UnlikeNovelServerCall>();
         call.sceneController = sceneController;
         call.onSuccessHandler = this;
@@ -88,7 +86,6 @@ public class LikeNovelButton : MonoBehaviour, OnSuccessHandler
 
     public void OnSuccess(Response response)
     {
-        sceneController.messageObject.CloseMessageBox();
         count.text = response.numberOfNovelLikes.ToString();
 
         if (response.novelLikedByUser) 

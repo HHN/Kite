@@ -6,7 +6,6 @@ public class FavoriteButton : MonoBehaviour
     public Sprite[] sprites;
     public bool isFavorite = false;
     public VisualNovel novel;
-    public VisualNovelGallery favoritesGallery;
 
     void Start()
     {

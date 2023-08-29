@@ -29,57 +29,71 @@ public class EditCommentButton : MonoBehaviour, OnSuccessHandler
         commentSectionSceneController = GameObject.Find("Controller").GetComponent<CommentSectionSceneController>();
         commentSectionInputArea = GameObject.Find("InputArea").GetComponent<CommentSectionInputArea>();
         inputField = commentSectionInputArea.inputField;
+
+        if (!commentSectionInputArea.inPostMode)
+        {
+            if (commentId == commentSectionInputArea.idOfCommentInEdit)
+            {
+                ActivateEditMode(false);
+            }
+        }
     }
 
     public void OnClick()
     {
         if (inEdit)
         {
-            DeactivateEditMode();
+            DeactivateEditMode(true);
         }
         else
         {
-            ActivateEditMode();
+            ActivateEditMode(true);
         }
     }
 
     public void OnChangeButton()
     {
-        commentSectionSceneController.DisplayInfoMessage(InfoMessages.WAIT_FOR_CHANGE_COMMENT);
         ChangeCommentServerCall call = Instantiate(editCommentServerCallPrefab).GetComponent<ChangeCommentServerCall>();
         call.sceneController = commentSectionSceneController;
         call.onSuccessHandler = this;
         call.id = commentId;
         call.comment = inputField.text.Trim();
         call.SendRequest();
-        inputField.text = string.Empty;
+        DeactivateEditMode(true);
     }
 
-    public void ActivateEditMode()
+    public void ActivateEditMode(bool setCommentText)
     {
         marking.SetActive(true);
         inEdit = true;
         if (commentSectionInputArea.editButton != null)
         {
-            commentSectionInputArea.editButton.DeactivateEditMode();
+            commentSectionInputArea.editButton.DeactivateEditMode(false);
         }
         commentSectionInputArea.editButton = this;
-        commentSectionInputArea.ActivateEditMode();
-        inputField.text = commentText;
+        commentSectionInputArea.ActivateEditMode(commentId);
+
+        if (setCommentText)
+        {
+            inputField.text = commentText;
+        }
     }
 
-    public void DeactivateEditMode()
+    public void DeactivateEditMode(bool setTextToNull)
     {
         marking.SetActive(false);
         inEdit = false;
         commentSectionInputArea.editButton = null;
         commentSectionInputArea.DeactivateEditMode();
-        inputField.text = string.Empty;
+
+        if (setTextToNull)
+        {
+            inputField.text = string.Empty;
+        }
     }
 
     public void OnSuccess(Response response)
     {
-        commentSectionSceneController.messageObject.CloseMessageBox();
         List<Comment> comments = response.comments;
         commentSectionSceneController.SetComments(comments);
     }

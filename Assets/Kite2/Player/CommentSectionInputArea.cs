@@ -12,10 +12,19 @@ public class CommentSectionInputArea : MonoBehaviour, OnSuccessHandler
     public CommentSectionSceneController commentSectionSceneController;
     public bool inPostMode = true;
     public EditCommentButton editButton;
+    public long idOfCommentInEdit;
 
     void Start()
     {
         postButton.onClick.AddListener(delegate { OnClick(); });
+
+        if (GameManager.Instance().applicationMode != ApplicationModes.LOGGED_IN_USER_MODE)
+        {
+            postButton.interactable = false;
+            postButton.gameObject.SetActive(false);
+            inputField.text = "Du musst eingeloggt sein zum kommentieren!";
+            inputField.interactable = false;
+        }
     }
 
     public void OnClick()
@@ -32,7 +41,6 @@ public class CommentSectionInputArea : MonoBehaviour, OnSuccessHandler
 
     public void OnPostButton()
     {
-        commentSectionSceneController.DisplayInfoMessage(InfoMessages.WAIT_FOR_UPLOAD_COMMENT);
         PostCommentServerCall call = Instantiate(postCommentServerCallPrefab).GetComponent<PostCommentServerCall>();
         call.sceneController = commentSectionSceneController;
         call.onSuccessHandler = this;
@@ -44,20 +52,21 @@ public class CommentSectionInputArea : MonoBehaviour, OnSuccessHandler
 
     public void OnSuccess(Response response)
     {
-        commentSectionSceneController.messageObject.CloseMessageBox();
         List<Comment> comments = response.comments;
         commentSectionSceneController.SetComments(comments);
     }
 
-    public void ActivateEditMode()
+    public void ActivateEditMode(long idOfCommentInEdit)
     {
         this.inPostMode = false;
+        this.idOfCommentInEdit = idOfCommentInEdit;
         postButton.GetComponentInChildren<TextMeshProUGUI>().text = "SPEICHERN";
     }
 
     public void DeactivateEditMode()
     {
         this.inPostMode = true;
+        this.idOfCommentInEdit = -1;
         postButton.GetComponentInChildren<TextMeshProUGUI>().text = "POSTEN";
     }
 

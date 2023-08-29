@@ -76,7 +76,6 @@ public class UserComment : MonoBehaviour, OnSuccessHandler
 
     public void SendLikeRequest()
     {
-        commentSectionSceneController.DisplayInfoMessage(InfoMessages.WAIT_FOR_LIKE_COMMENT);
         LikeCommentServerCall call = Instantiate(likeCommentServerCallPrefab).GetComponent<LikeCommentServerCall>();
         call.sceneController = commentSectionSceneController;
         call.onSuccessHandler = this;
@@ -86,7 +85,6 @@ public class UserComment : MonoBehaviour, OnSuccessHandler
 
     public void SendUnlikeRequest()
     {
-        commentSectionSceneController.DisplayInfoMessage(InfoMessages.WAIT_FOR_UNLIKE_COMMENT);
         UnlikeCommentServerCall call = Instantiate(unlikeCommentServerCallPrefab).GetComponent<UnlikeCommentServerCall>();
         call.sceneController = commentSectionSceneController;
         call.onSuccessHandler = this;
@@ -96,7 +94,6 @@ public class UserComment : MonoBehaviour, OnSuccessHandler
 
     public void OnSuccess(Response response)
     {
-        commentSectionSceneController.messageObject.CloseMessageBox();
         List<Comment> comments = response.comments;
         commentSectionSceneController.SetComments(comments);
     }

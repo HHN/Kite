@@ -24,7 +24,6 @@ public class ChangePasswordSceneController : SceneController, OnSuccessHandler
         }
         else
         {
-            this.DisplayInfoMessage(InfoMessages.WAIT_FOR_CHANGE_OF_PASSWORD);
             ChangePasswortServerCall call = Instantiate(changePasswordServerCall).GetComponent<ChangePasswortServerCall>();
             call.sceneController = this;
             call.onSuccessHandler = this;
@@ -36,7 +35,6 @@ public class ChangePasswordSceneController : SceneController, OnSuccessHandler
 
     public void OnSuccess(Response response)
     {
-        messageObject.CloseMessageBox();
         SceneLoader.LoadMainMenuScene();
     }
 }

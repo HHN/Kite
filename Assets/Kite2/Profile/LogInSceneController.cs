@@ -26,7 +26,6 @@ public class LogInSceneController : SceneController, OnSuccessHandler
         }
         else
         {
-            this.DisplayInfoMessage(InfoMessages.WAIT_FOR_LOG_IN);
             LogInServerCall call = Instantiate(loginServerCall).GetComponent<LogInServerCall>();
             call.sceneController = this;
             call.onSuccessHandler = this;
@@ -43,7 +42,6 @@ public class LogInSceneController : SceneController, OnSuccessHandler
 
     public void OnSuccess(Response response)
     {
-        messageObject.CloseMessageBox();
         AuthenticationManager.Instance().SetAuthToken(response.authToken);
         AuthenticationManager.Instance().SetRefreshToken(response.refreshToken);
         SceneLoader.LoadMainMenuScene();

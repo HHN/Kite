@@ -210,6 +210,7 @@ MonoBehaviour:
   messageObject: {fileID: 0}
   content: {fileID: 1716764423}
   commentPrefab: {fileID: 8595105100738809965, guid: 02d14e855e7a8cd449fdeadf9a004fa0, type: 3}
+  noCommentPrefab: {fileID: 8595105100738809965, guid: 1024f69c38b5b564c8b872b6e6ecf71c, type: 3}
   getCommentsServerCallPrefab: {fileID: 5310191564796620474, guid: 286c0f5082951814d819e80eb128dec2, type: 3}
   inputArea: {fileID: 837296791}
 --- !u!4 &152177253

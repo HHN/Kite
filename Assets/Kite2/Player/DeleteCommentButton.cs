@@ -24,7 +24,6 @@ public class DeleteCommentButton : MonoBehaviour, OnSuccessHandler
 
     public void OnClick()
     {
-        commentSectionSceneController.DisplayInfoMessage(InfoMessages.WAIT_FOR_DELETE_COMMENT);
         DeleteCommentServerCall call = Instantiate(deleteCommentServerCallPrefab).GetComponent<DeleteCommentServerCall>();
         call.sceneController = commentSectionSceneController;
         call.onSuccessHandler = this;
@@ -34,7 +33,6 @@ public class DeleteCommentButton : MonoBehaviour, OnSuccessHandler
 
     public void OnSuccess(Response response)
     {
-        commentSectionSceneController.messageObject.CloseMessageBox();
         List<Comment> comments = response.comments;
         commentSectionSceneController.SetComments(comments);
     }

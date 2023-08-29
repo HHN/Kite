@@ -46,6 +46,8 @@ public class PlayNovelSceneController : SceneController
             return;
         }
 
+        novelToPlay.feedback = string.Empty;
+
         novelName.text = novelToPlay.title;
 
         if (novelToPlay.novelEvents.Count <= 0)

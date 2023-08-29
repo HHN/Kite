@@ -73,7 +73,6 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
 
     public void OnLogOutButton()
     {
-        this.DisplayInfoMessage(InfoMessages.WAIT_FOR_LOG_OUT);
         LogOutServerCall call = Instantiate(logoutServerCall).GetComponent<LogOutServerCall>();
         call.sceneController = this;
         call.onSuccessHandler = this;
@@ -87,7 +86,6 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
 
     public void OnSuccess(Response response)
     {
-        messageObject.CloseMessageBox();
         AuthenticationManager.Instance().RemoveAuthTokens();
         OnGuestMode();
     }

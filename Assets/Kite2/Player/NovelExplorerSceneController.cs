@@ -28,7 +28,6 @@ public class NovelExplorerSceneController : SceneController, OnSuccessHandler
             userNovels = response.novels;
             MapNovels(userNovels);
         }
-        this.messageObject.CloseMessageBox();
     }
 
     private void MapNovels(List<VisualNovel> novels)
@@ -54,7 +53,6 @@ public class NovelExplorerSceneController : SceneController, OnSuccessHandler
         if (memory == null)
         {
             explorerButtons.OnKiteNovelsButton();
-            this.DisplayInfoMessage(InfoMessages.WAIT_FOR_LOAD_NOVEL);
             GetNovelsServerCall call = Instantiate(getNovelsServerCall).GetComponent<GetNovelsServerCall>();
             call.sceneController = this;
             call.onSuccessHandler = this;

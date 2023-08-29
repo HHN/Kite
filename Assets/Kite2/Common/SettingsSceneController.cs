@@ -29,7 +29,6 @@ public class SettingsSceneController : SceneController, OnSuccessHandler
 
     public void OnDeleteAccountButton()
     {
-        this.DisplayInfoMessage(InfoMessages.WAIT_FOR_DELETION_OF_ACCOUNT);
         DeleteAccountServerCall call = Instantiate(deleteAccountServerCallPrefab)
             .GetComponent<DeleteAccountServerCall>();
         call.sceneController = this;
@@ -49,7 +48,6 @@ public class SettingsSceneController : SceneController, OnSuccessHandler
 
     public void OnSuccess(Response response)
     {
-        messageObject.CloseMessageBox();
         GameManager.Instance().LogOut();
         SceneLoader.LoadMainMenuScene();
     }

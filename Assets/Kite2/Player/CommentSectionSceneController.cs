@@ -5,6 +5,7 @@ public class CommentSectionSceneController : SceneController, OnSuccessHandler
 {
     public GameObject content;
     public GameObject commentPrefab;
+    public GameObject noCommentPrefab;
     public GameObject getCommentsServerCallPrefab;
     public GameObject inputArea;
 
@@ -12,22 +13,12 @@ public class CommentSectionSceneController : SceneController, OnSuccessHandler
     {
         BackStackManager.Instance().Push(SceneNames.COMMENT_SECTION_SCENE);
         RequestComments();
-
-        if (GameManager.Instance().applicationMode == ApplicationModes.LOGGED_IN_USER_MODE)
-        {
-            inputArea.SetActive(true);
-        } 
-        else
-        {
-            inputArea.SetActive(false);
-        }
     }
 
     private void RequestComments()
     {
         if (PlayManager.Instance().GetVisualNovelToPlay() == null) { return; }
 
-        this.DisplayInfoMessage(InfoMessages.WAIT_FOR_LOAD_COMMENT_SECTION);
         GetCommentsServerCall call = Instantiate(getCommentsServerCallPrefab).GetComponent<GetCommentsServerCall>();
         call.sceneController = this;
         call.onSuccessHandler = this;
@@ -37,7 +28,6 @@ public class CommentSectionSceneController : SceneController, OnSuccessHandler
 
     public void OnSuccess(Response response)
     {
-        messageObject.CloseMessageBox();
         List<Comment> comments = response.comments;
         SetComments(comments);
     }
@@ -47,6 +37,11 @@ public class CommentSectionSceneController : SceneController, OnSuccessHandler
         foreach (Transform transform in content.transform)
         {
             Destroy(transform.gameObject);
+        }
+        if (comments == null || comments.Count == 0)
+        {
+            Instantiate(noCommentPrefab, content.transform);
+            return;
         }
         foreach (Comment comment in comments)
         {
