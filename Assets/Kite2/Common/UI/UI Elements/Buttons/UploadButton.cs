@@ -17,6 +17,7 @@ public class UploadButton : MonoBehaviour
             return;
         }
         this.gameObject.SetActive(novel.id == 0);
+        this.gameObject.GetComponent<Button>().interactable = (GameManager.Instance().applicationMode == ApplicationModes.LOGGED_IN_USER_MODE);
     }
 
     public void OnClick()
