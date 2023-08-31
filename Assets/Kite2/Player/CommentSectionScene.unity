@@ -207,7 +207,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageBox: {fileID: 5629918238507184917, guid: 47c0a3038b673a24cb82a566be2abf20, type: 3}
   canvas: {fileID: 701403517}
-  messageObject: {fileID: 0}
   content: {fileID: 1716764423}
   commentPrefab: {fileID: 8595105100738809965, guid: 02d14e855e7a8cd449fdeadf9a004fa0, type: 3}
   noCommentPrefab: {fileID: 8595105100738809965, guid: 1024f69c38b5b564c8b872b6e6ecf71c, type: 3}
@@ -1172,8 +1171,6 @@ MonoBehaviour:
   inputField: {fileID: 574695317}
   postCommentServerCallPrefab: {fileID: 1558165677080889477, guid: cfd17fb2685835948921dbf0535c7b83, type: 3}
   commentSectionSceneController: {fileID: 152177252}
-  inPostMode: 1
-  editButton: {fileID: 0}
 --- !u!114 &837296794
 MonoBehaviour:
   m_ObjectHideFlags: 0

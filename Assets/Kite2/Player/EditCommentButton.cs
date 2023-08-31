@@ -6,95 +6,128 @@ using UnityEngine.UI;
 
 public class EditCommentButton : MonoBehaviour, OnSuccessHandler
 {
-    public long commentId;
-    public bool isOwnComment;
-    public string commentText;
-    public Button button;
-    public GameObject editCommentServerCallPrefab;
-    public CommentSectionSceneController commentSectionSceneController;
-    public CommentSectionInputArea commentSectionInputArea;
-    TMP_InputField inputField;
-    public GameObject parent;
-    public GameObject marking;
-    public bool inEdit;
+    [SerializeField] private Button button;
+    [SerializeField] private Button uploadButon;
+    [SerializeField] private GameObject editCommentServerCallPrefab;
+    [SerializeField] private TMP_InputField inputField;
+    [SerializeField] private GameObject inputFieldWrapper;
+    [SerializeField] private TextMeshProUGUI commentTextGameObject;
+    [SerializeField] private GameObject parent;
+
+    private long commentId;
+    private CommentSectionSceneController commentSectionSceneController;
+    private bool isInEditMode;
+    private bool isOwnComment;
 
     private void Start()
     {
-        if (GameManager.Instance().applicationMode != ApplicationModes.LOGGED_IN_USER_MODE || !isOwnComment)
+        if (GameManager.Instance().applicationMode != ApplicationModes.LOGGED_IN_USER_MODE || !this.isOwnComment)
         {
-            parent.SetActive(false);
+            this.parent.SetActive(false);
             return;
         }
-        button.onClick.AddListener(delegate { OnClick(); });
-        commentSectionSceneController = GameObject.Find("Controller").GetComponent<CommentSectionSceneController>();
-        commentSectionInputArea = GameObject.Find("InputArea").GetComponent<CommentSectionInputArea>();
-        inputField = commentSectionInputArea.inputField;
+        this.button.onClick.AddListener(delegate { this.OnClick(); });
+        this.uploadButon.onClick.AddListener(delegate { this.OnClickUploadButton(); });
+    }
 
-        if (!commentSectionInputArea.inPostMode)
+    public void SetOwnComment(bool isOwnComment)
+    {
+        this.isOwnComment = isOwnComment;
+    }
+
+    public void SetCommentId(long id)
+    {
+        this.commentId = id;
+    }
+
+    public void SetInputText(string inputText)
+    {
+        this.inputField.text = inputText;
+    }
+
+    public string GetInputText()
+    {
+        return this.inputField.text;
+    }
+
+    public void SetControllerAndCheckForCommentInEdit(CommentSectionSceneController controller)
+    {
+        this.commentSectionSceneController = controller;
+
+        if (controller.GetCommentInEdit() == null)
         {
-            if (commentId == commentSectionInputArea.idOfCommentInEdit)
-            {
-                ActivateEditMode(false);
-            }
+            return;
         }
+        if (controller.GetCommentInEdit().Equals(this))
+        {
+            controller.SetCommentInEdit(this);
+        }
+    }
+
+    public bool Equals(EditCommentButton instance)
+    {
+        return (instance.commentId == this.commentId);
     }
 
     public void OnClick()
     {
-        if (inEdit)
+        if (this.isInEditMode)
         {
-            DeactivateEditMode(true);
+            this.DeactivateEditMode();
         }
         else
         {
-            ActivateEditMode(true);
+            this.ActivateEditMode();
         }
+    }
+
+    public void OnClickUploadButton()
+    {
+        OnChangeButton();
     }
 
     public void OnChangeButton()
     {
-        ChangeCommentServerCall call = Instantiate(editCommentServerCallPrefab).GetComponent<ChangeCommentServerCall>();
-        call.sceneController = commentSectionSceneController;
+        ChangeCommentServerCall call = Instantiate(this.editCommentServerCallPrefab).GetComponent<ChangeCommentServerCall>();
+        call.sceneController = this.commentSectionSceneController;
         call.onSuccessHandler = this;
-        call.id = commentId;
-        call.comment = inputField.text.Trim();
+        call.id = this.commentId;
+        call.comment = this.inputField.text.Trim();
         call.SendRequest();
-        DeactivateEditMode(true);
+        this.DeactivateEditMode();
     }
 
-    public void ActivateEditMode(bool setCommentText)
+    public void ActivateEditMode()
     {
-        marking.SetActive(true);
-        inEdit = true;
-        if (commentSectionInputArea.editButton != null)
-        {
-            commentSectionInputArea.editButton.DeactivateEditMode(false);
-        }
-        commentSectionInputArea.editButton = this;
-        commentSectionInputArea.ActivateEditMode(commentId);
-
-        if (setCommentText)
-        {
-            inputField.text = commentText;
-        }
+        this.CheckForOtherCommentsInEditModeAndHandleThem();
+        this.commentTextGameObject.gameObject.SetActive(false);
+        this.inputFieldWrapper.SetActive(true);
+        this.isInEditMode = true;
+        this.SetInputText(commentTextGameObject.text);
+        this.commentSectionSceneController.SetCommentInEdit(this);
     }
 
-    public void DeactivateEditMode(bool setTextToNull)
+    public void DeactivateEditMode()
     {
-        marking.SetActive(false);
-        inEdit = false;
-        commentSectionInputArea.editButton = null;
-        commentSectionInputArea.DeactivateEditMode();
+        this.commentTextGameObject.gameObject.SetActive(true);
+        this.inputFieldWrapper.SetActive(false);
+        this.isInEditMode = false;
+        this.commentSectionSceneController.SetCommentInEdit(null);
+    }
 
-        if (setTextToNull)
+    private void CheckForOtherCommentsInEditModeAndHandleThem()
+    {
+        if (this.commentSectionSceneController.GetCommentInEdit() == null)
         {
-            inputField.text = string.Empty;
+            return;
         }
+
+        this.commentSectionSceneController.GetCommentInEdit().DeactivateEditMode();
     }
 
     public void OnSuccess(Response response)
     {
         List<Comment> comments = response.comments;
-        commentSectionSceneController.SetComments(comments);
+        this.commentSectionSceneController.UpdatePage(comments);
     }
 }

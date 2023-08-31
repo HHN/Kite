@@ -3,33 +3,73 @@ using UnityEngine;
 
 public class CommentSectionSceneController : SceneController, OnSuccessHandler
 {
-    public GameObject content;
-    public GameObject commentPrefab;
-    public GameObject noCommentPrefab;
-    public GameObject getCommentsServerCallPrefab;
-    public GameObject inputArea;
+    [SerializeField] private GameObject content;
+    [SerializeField] private GameObject commentPrefab;
+    [SerializeField] private GameObject noCommentPrefab;
+    [SerializeField] private GameObject getCommentsServerCallPrefab;
+    [SerializeField] private GameObject inputArea;
+
+    private EditCommentButton commentInEdit;
+    private string commentEditText;
 
     private void Start()
     {
         BackStackManager.Instance().Push(SceneNames.COMMENT_SECTION_SCENE);
-        RequestComments();
+        this.RequestComments();
+        commentInEdit = null;
     }
 
     private void RequestComments()
     {
         if (PlayManager.Instance().GetVisualNovelToPlay() == null) { return; }
 
-        GetCommentsServerCall call = Instantiate(getCommentsServerCallPrefab).GetComponent<GetCommentsServerCall>();
+        GetCommentsServerCall call = Instantiate(this.getCommentsServerCallPrefab).GetComponent<GetCommentsServerCall>();
         call.sceneController = this;
         call.onSuccessHandler = this;
         call.visualNovelId = PlayManager.Instance().GetVisualNovelToPlay().id;
         call.SendRequest();
     }
 
+    public void SetCommentInEdit(EditCommentButton commentInEdit)
+    {
+        this.commentInEdit = commentInEdit;
+    }
+
+    public EditCommentButton GetCommentInEdit()
+    {
+        return commentInEdit;
+    }
+
     public void OnSuccess(Response response)
     {
         List<Comment> comments = response.comments;
-        SetComments(comments);
+        this.UpdatePage(comments);
+    }
+
+    public void UpdatePage(List<Comment> comments)
+    {
+        this.BeforeUpdate();
+        this.SetComments(comments);
+        this.AfterUpdate();
+    }
+
+    public void BeforeUpdate()
+    {
+        if (this.commentInEdit == null)
+        {
+            return;
+        }
+        this.commentEditText = commentInEdit.GetInputText();
+    }
+
+    public void AfterUpdate()
+    {
+        if (this.commentInEdit == null)
+        {
+            return;
+        }
+        commentInEdit.ActivateEditMode();
+        commentInEdit.SetInputText(commentEditText);
     }
 
     public void SetComments(List<Comment> comments)
@@ -40,14 +80,14 @@ public class CommentSectionSceneController : SceneController, OnSuccessHandler
         }
         if (comments == null || comments.Count == 0)
         {
-            Instantiate(noCommentPrefab, content.transform);
+            Instantiate(this.noCommentPrefab, this.content.transform);
             return;
         }
         foreach (Comment comment in comments)
         {
-            GameObject commentGameObject = Instantiate(commentPrefab, content.transform);
+            GameObject commentGameObject = Instantiate(this.commentPrefab, this.content.transform);
             UserComment userComment = commentGameObject.GetComponent<UserComment>();
-            userComment.Initialize(comment);
+            userComment.Initialize(comment, this);
         }
     }
 }

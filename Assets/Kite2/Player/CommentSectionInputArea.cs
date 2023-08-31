@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -6,72 +5,58 @@ using UnityEngine.UI;
 
 public class CommentSectionInputArea : MonoBehaviour, OnSuccessHandler
 {
-    public Button postButton;
-    public TMP_InputField inputField;
-    public GameObject postCommentServerCallPrefab;
-    public CommentSectionSceneController commentSectionSceneController;
-    public bool inPostMode = true;
-    public EditCommentButton editButton;
-    public long idOfCommentInEdit;
+    [SerializeField] private Button postButton;
+    [SerializeField] private TMP_InputField inputField;
+    [SerializeField] private GameObject postCommentServerCallPrefab;
+    [SerializeField] private CommentSectionSceneController commentSectionSceneController;
 
     void Start()
     {
-        postButton.onClick.AddListener(delegate { OnClick(); });
+        this.postButton.onClick.AddListener(delegate { this.OnClick(); });
 
         if (GameManager.Instance().applicationMode != ApplicationModes.LOGGED_IN_USER_MODE)
         {
-            postButton.interactable = false;
-            postButton.gameObject.SetActive(false);
-            inputField.text = "Du musst eingeloggt sein zum kommentieren!";
-            inputField.interactable = false;
+            this.OnGuestMode();
         }
+    }
+
+    public void OnGuestMode()
+    {
+        this.postButton.interactable = false;
+        this.postButton.gameObject.SetActive(false);
+        this.inputField.text = "Du musst eingeloggt sein zum kommentieren!";
+        this.inputField.interactable = false;
     }
 
     public void OnClick()
     {
-        if (inPostMode)
-        {
-            OnPostButton();
-        } 
-        else
-        {
-            OnUpdateButton();
-        }
+        this.OnPostButton();
     }
 
     public void OnPostButton()
     {
-        PostCommentServerCall call = Instantiate(postCommentServerCallPrefab).GetComponent<PostCommentServerCall>();
-        call.sceneController = commentSectionSceneController;
+        if (string.IsNullOrEmpty(this.inputField.text.Trim()))
+        {
+            this.commentSectionSceneController.DisplayErrorMessage(ErrorMessages.NO_COMMENT_ENTERED);
+            return;
+        }
+        this.SendPostRequest();
+    }
+
+    public void SendPostRequest()
+    {
+        PostCommentServerCall call = Instantiate(this.postCommentServerCallPrefab).GetComponent<PostCommentServerCall>();
+        call.sceneController = this.commentSectionSceneController;
         call.onSuccessHandler = this;
         call.visualNovelId = PlayManager.Instance().GetVisualNovelToPlay().id;
-        call.comment = inputField.text.Trim();
+        call.comment = this.inputField.text.Trim();
         call.SendRequest();
-        inputField.text = string.Empty;
+        this.inputField.text = string.Empty;
     }
 
     public void OnSuccess(Response response)
     {
         List<Comment> comments = response.comments;
-        commentSectionSceneController.SetComments(comments);
-    }
-
-    public void ActivateEditMode(long idOfCommentInEdit)
-    {
-        this.inPostMode = false;
-        this.idOfCommentInEdit = idOfCommentInEdit;
-        postButton.GetComponentInChildren<TextMeshProUGUI>().text = "SPEICHERN";
-    }
-
-    public void DeactivateEditMode()
-    {
-        this.inPostMode = true;
-        this.idOfCommentInEdit = -1;
-        postButton.GetComponentInChildren<TextMeshProUGUI>().text = "POSTEN";
-    }
-
-    public void OnUpdateButton()
-    {
-        editButton.OnChangeButton();
+        this.commentSectionSceneController.UpdatePage(comments);
     }
 }

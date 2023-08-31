@@ -1,100 +1,53 @@
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UserComment : MonoBehaviour, OnSuccessHandler
+public class UserComment : MonoBehaviour
 {
-    public TextMeshProUGUI authorName;
-    public TextMeshProUGUI comment;
-    public TextMeshProUGUI likeCount;
-    public Button likeButton;
-    public Button deleteButton;
-    public Button editButton;
-    public Sprite likeButtonUnselected;
-    public Sprite likeButtonSelected;
-    private bool liked = false;
+    [SerializeField] private TextMeshProUGUI authorName;
+    [SerializeField] private TextMeshProUGUI comment;
+    [SerializeField] private TextMeshProUGUI likeCount;
+    [SerializeField] private Button deleteButton;
+    [SerializeField] private Button editButton;
+    [SerializeField] private Button likeButton;
+
     private long commentId;
-    public GameObject likeCommentServerCallPrefab;
-    public GameObject unlikeCommentServerCallPrefab;
-    public CommentSectionSceneController commentSectionSceneController;
+    private CommentSectionSceneController commentSectionSceneController;
 
-    private void Start()
+    public void Initialize(Comment comment, CommentSectionSceneController controller)
     {
-        likeButton.onClick.AddListener(delegate { OnLikeButton(); });
-        commentSectionSceneController = GameObject.Find("Controller").GetComponent<CommentSectionSceneController>();
-
-        if (GameManager.Instance().applicationMode != ApplicationModes.LOGGED_IN_USER_MODE) 
-        {
-            likeButton.interactable = false;
-        }
-    }
-
-    public void OnLikeButton()
-    {
-        if (liked)
-        {
-            SendUnlikeRequest();
-        }
-        else
-        {
-            SendLikeRequest();
-        }
-    }
-
-    public void Initialize(Comment comment)
-    {
-        authorName.text = comment.author;
+        this.authorName.text = comment.author;
         this.comment.text = comment.comment;
-        likeCount.text = comment.likeCount.ToString();
-        SetLiked(comment.liked);
-        commentId = comment.id;
+        this.likeCount.text = comment.likeCount.ToString();
+        this.commentId = comment.id;
+        this.commentSectionSceneController = controller;
 
-        EditCommentButton editCommentButton = editButton.GetComponent<EditCommentButton>();
-        DeleteCommentButton deleteCommentButton = deleteButton.GetComponent<DeleteCommentButton>();
-        editCommentButton.commentId = commentId;
-        editCommentButton.isOwnComment = comment.isOwnComment;
-        editCommentButton.commentText = comment.comment;
-        deleteCommentButton.commentId = commentId;
-
+        InitializeDeleteButton(comment);
+        InitializeEditCommentButton(comment);
+        InitializeLikeButton(comment);
     }
 
-    public void SetLiked(bool liked)
+    private void InitializeEditCommentButton(Comment comment)
     {
-        this.liked = liked;
-
-        if (liked)
-        {
-            likeButton.image.sprite = likeButtonSelected;
-
-        } 
-        else
-        {
-            likeButton.image.sprite = likeButtonUnselected;
-        }
+        EditCommentButton editCommentButton = this.editButton.GetComponent<EditCommentButton>();
+        editCommentButton.SetCommentId(this.commentId);
+        editCommentButton.SetOwnComment(comment.isOwnComment);
+        editCommentButton.SetControllerAndCheckForCommentInEdit(this.commentSectionSceneController);
     }
 
-    public void SendLikeRequest()
+    private void InitializeDeleteButton(Comment comment)
     {
-        LikeCommentServerCall call = Instantiate(likeCommentServerCallPrefab).GetComponent<LikeCommentServerCall>();
-        call.sceneController = commentSectionSceneController;
-        call.onSuccessHandler = this;
-        call.commentId = commentId;
-        call.SendRequest();
+        DeleteCommentButton deleteCommentButton = this.deleteButton.GetComponent<DeleteCommentButton>();
+        deleteCommentButton.SetCommentId(this.commentId);
+        deleteCommentButton.SetController(this.commentSectionSceneController);
     }
 
-    public void SendUnlikeRequest()
+    private void InitializeLikeButton(Comment comment)
     {
-        UnlikeCommentServerCall call = Instantiate(unlikeCommentServerCallPrefab).GetComponent<UnlikeCommentServerCall>();
-        call.sceneController = commentSectionSceneController;
-        call.onSuccessHandler = this;
-        call.commentId = commentId;
-        call.SendRequest();
-    }
+        LikeCommentButton likeCommentButton = this.likeButton.GetComponent<LikeCommentButton>();
+        likeCommentButton.MarkAsLiked(comment.liked);
+        likeCommentButton.SetCommentId(this.commentId);
+        likeCommentButton.SetSceneController(this.commentSectionSceneController);
 
-    public void OnSuccess(Response response)
-    {
-        List<Comment> comments = response.comments;
-        commentSectionSceneController.SetComments(comments);
     }
 }
