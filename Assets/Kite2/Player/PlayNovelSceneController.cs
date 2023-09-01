@@ -27,6 +27,7 @@ public class PlayNovelSceneController : SceneController
     public TypewriterCore currentTypeWriter;
     public SelectOptionContinueConversation selectOptionContinueConversation;
     public Button confirmArea;
+    public CharacterController currentTalkingCharacterController;
 
     void Start()
     {
@@ -213,14 +214,14 @@ public class PlayNovelSceneController : SceneController
         long nextEventID = novelEvent.nextId;
         nextEventToPlay = novelEvents[nextEventID];
 
-        conversationContent.AddContent(novelEvent, this);
-        
         if (currentCharacters.ContainsKey(novelEvent.name))
         {
             GameObject character = currentCharacters[novelEvent.name];
-            CharacterController controller = character.GetComponent<CharacterController>();
-            controller.SetFaceSprite(novelEvent.changeFaceToSpriteId);
+            currentTalkingCharacterController = character.GetComponent<CharacterController>();
+            currentTalkingCharacterController.SetFaceSprite(novelEvent.changeFaceToSpriteId);
         }
+
+        conversationContent.AddContent(novelEvent, this);
 
         if (novelEvent.waitForUserConfirmation)
         {
@@ -333,5 +334,24 @@ public class PlayNovelSceneController : SceneController
     public void SetFeelingsPanelActive(bool active)
     {
         feelingPanelController.gameObject.SetActive(active);
+    }
+
+    public void StartTalking()
+    {
+        if (currentTalkingCharacterController == null)
+        {
+            return;
+        }
+        currentTalkingCharacterController.StartTalking();
+    }
+
+    public void StopTalking()
+    {
+        if (currentTalkingCharacterController == null)
+        {
+            return;
+        }
+        currentTalkingCharacterController.StopTalking();
+        currentTalkingCharacterController = null;
     }
 }

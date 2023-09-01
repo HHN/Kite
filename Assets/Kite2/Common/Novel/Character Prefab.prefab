@@ -88,6 +88,8 @@ GameObject:
   - component: {fileID: 1465545687914413252}
   - component: {fileID: 4126753951640385348}
   - component: {fileID: 4524035883740533591}
+  - component: {fileID: 6155688656520349526}
+  - component: {fileID: 4253796331781111194}
   m_Layer: 5
   m_Name: Character Prefab
   m_TagString: Untagged
@@ -162,18 +164,81 @@ MonoBehaviour:
   clotheSprites:
   - {fileID: 21300000, guid: 9aaa60e2d4effa64f8d45d4e29b8855e, type: 3}
   hairSprites:
-  - {fileID: 21300000, guid: 8e1129628d3a8dc4580ccf5b10ceb508, type: 3}
-  faceSprites:
-  - {fileID: 21300000, guid: 1323f6ad24786ff4eb7da36c08e34b37, type: 3}
-  - {fileID: 21300000, guid: a3cfe88d3e71bca4582af2b59c3868f7, type: 3}
-  - {fileID: 21300000, guid: fd7f62190a093464cac5d4b95855da58, type: 3}
-  - {fileID: 21300000, guid: 37c3b0b018260dc43a71da279a49675f, type: 3}
-  - {fileID: 21300000, guid: c576cd13220f7b642822a7fa67bc3227, type: 3}
-  - {fileID: 21300000, guid: 6da9f54e40442e04ebbe2b8a11b9649d, type: 3}
-  - {fileID: 21300000, guid: eb1eb9b449ba64842a81828f8196c087, type: 3}
-  - {fileID: 21300000, guid: 3221e710eeb20014b930df5f0fb60b77, type: 3}
-  - {fileID: 21300000, guid: ce426102e4067334c8110b94eda1dfd8, type: 3}
-  - {fileID: 21300000, guid: 6bd45654b3392c1489bcfa6464ef9c42, type: 3}
+  - {fileID: 21300000, guid: 3efe2b7ef95dcc542bab304d24940b25, type: 3}
+  animator: {fileID: 6155688656520349526}
+--- !u!95 &6155688656520349526
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465545687914413273}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 225d5490373db9042bd16f00b6d3abca, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &4253796331781111194
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465545687914413273}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &2070218041177338841
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,7 +305,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8e1129628d3a8dc4580ccf5b10ceb508, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3efe2b7ef95dcc542bab304d24940b25, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -316,7 +381,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1323f6ad24786ff4eb7da36c08e34b37, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8ad0826a0767c89458b62f64f42e1992, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -265,7 +265,7 @@ public class BankTalkNovel : VisualNovel
                 nextId = 24,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                changeFaceToSpriteId = 2,
+                changeFaceToSpriteId = 6,
                 name = "Herr Mayer",
                 text = "Verzeihung. könnten Sie mir nochmal kurz sagen worum es geht? " +
                         "Ich habe so viele Kunden, da komme ich ab und zu durcheinander.",
@@ -290,7 +290,7 @@ public class BankTalkNovel : VisualNovel
                 nextId = 26,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                changeFaceToSpriteId = 2,
+                changeFaceToSpriteId = 6,
                 name = "Herr Mayer",
                 text = "Ah ok.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
@@ -302,7 +302,7 @@ public class BankTalkNovel : VisualNovel
                 nextId = 27,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                changeFaceToSpriteId = 2,
+                changeFaceToSpriteId = 6,
                 name = "Herr Mayer",
                 text = "Eine Frage, wenn es um Investitionen geht. " +
                         "Haben Sie einen Mann? Oder sind Sie verheiratet?",
@@ -326,7 +326,7 @@ public class BankTalkNovel : VisualNovel
                 nextId = 29,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                changeFaceToSpriteId = 2,
+                changeFaceToSpriteId = 6,
                 name = "Herr Mayer",
                 text = "Oder müssen Sie das jetzt alles alleine stemmen?",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
@@ -357,7 +357,7 @@ public class BankTalkNovel : VisualNovel
                 nextId = 32,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
-                opinionChoiceNumber = 2,
+                opinionChoiceNumber = 6,
                 text = "Dieses Gefühl ist vollkommen normal, ein Unternehmen zu gründen ist ein großer " +
                 "Schritt und die Geschäftsidee einer fremden Person vorzustellen ohne zu wissen, wie sie " +
                 "reagiert ist nervenaufreibend."
@@ -453,7 +453,7 @@ public class BankTalkNovel : VisualNovel
                 nextId = 41,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                changeFaceToSpriteId = 2,
+                changeFaceToSpriteId = 6,
                 name = "Herr Mayer",
                 text = "Ich möchte wissen, ob da jetzt ein größeres Startkapital auch vorhanden ist?",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
@@ -476,7 +476,7 @@ public class BankTalkNovel : VisualNovel
                 nextId = 43,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                changeFaceToSpriteId = 2,
+                changeFaceToSpriteId = 6,
                 name = "Herr Mayer",
                 text = "Aha. Und haben Sie Kinder?",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
@@ -528,7 +528,7 @@ public class BankTalkNovel : VisualNovel
                 nextId = 48,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                changeFaceToSpriteId = 2,
+                changeFaceToSpriteId = 6,
                 name = "Herr Mayer",
                 text = "Es ist einfach nur wichtig zu wissen, weil ich schon Gründerinnen hier hatte, und da war dann der Kinderwunsch im Endeffekt größer.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
@@ -540,7 +540,7 @@ public class BankTalkNovel : VisualNovel
                 nextId = 49,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                changeFaceToSpriteId = 2,
+                changeFaceToSpriteId = 26,
                 name = "Herr Mayer",
                 text = "Die haben dann den Kredit bekommen und plötzlich waren Kinder da und dann wurde das schwierig. Aber wie gesagt, das ist jetzt eigentlich gar nicht so wichtig.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
@@ -647,7 +647,7 @@ public class BankTalkNovel : VisualNovel
                 nextId = 58,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                changeFaceToSpriteId = 2,
+                changeFaceToSpriteId = 6,
                 name = "Herr Mayer",
                 text = "Ich denke mal im Laufe der nächsten 4 bis 5 Monate. Und ja, ich drück Ihnen die Daumen.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)

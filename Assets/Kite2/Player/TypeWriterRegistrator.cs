@@ -8,5 +8,12 @@ public class TypeWriterRegistrator : MonoBehaviour
         TypewriterCore typewriterCore = GetComponent<TypewriterCore>();
         PlayNovelSceneController controller = GameObject.Find("Controller").GetComponent<PlayNovelSceneController>();
         controller.currentTypeWriter = typewriterCore;
+        controller.StartTalking();
+    }
+
+    public void OnStopTyping()
+    {
+        PlayNovelSceneController controller = GameObject.Find("Controller").GetComponent<PlayNovelSceneController>();
+        controller.StopTalking();
     }
 }
