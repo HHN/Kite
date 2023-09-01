@@ -486,7 +486,6 @@ MonoBehaviour:
   inputFieldWrapper: {fileID: 4426155440760357796}
   commentTextGameObject: {fileID: 8595105099215660064}
   parent: {fileID: 4476734828860716739}
-  marking: {fileID: 0}
 --- !u!1 &4426155440760357796
 GameObject:
   m_ObjectHideFlags: 0

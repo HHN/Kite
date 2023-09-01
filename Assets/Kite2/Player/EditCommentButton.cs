@@ -88,6 +88,11 @@ public class EditCommentButton : MonoBehaviour, OnSuccessHandler
 
     public void OnChangeButton()
     {
+        if (string.IsNullOrEmpty(this.inputField.text.Trim()))
+        {
+            this.DeactivateEditMode();
+            return;
+        }
         ChangeCommentServerCall call = Instantiate(this.editCommentServerCallPrefab).GetComponent<ChangeCommentServerCall>();
         call.sceneController = this.commentSectionSceneController;
         call.onSuccessHandler = this;

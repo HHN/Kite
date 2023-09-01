@@ -22,7 +22,7 @@ public class BankAppointmentNovel : VisualNovel
                 animationType = AnimationTypeHelper.ToInt(AnimationType.FLY_IN_FROM_ABOVE),
                 xPosition = 0,
                 yPosition = 0,
-                imageId = 0
+                backgroundSpriteId = 0
             },
 
             new VisualNovelEvent()
@@ -36,7 +36,10 @@ public class BankAppointmentNovel : VisualNovel
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING),
                 xPosition = 0,
                 yPosition = -6,
-                imageId = 0
+                skinSpriteId = 0,
+                clotheSpriteId = 0,
+                hairSpriteId = 0,
+                faceSpriteId = 0
             },
 
             new VisualNovelEvent()

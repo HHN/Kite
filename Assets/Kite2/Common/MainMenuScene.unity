@@ -366,7 +366,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageBox: {fileID: 5629918238507184917, guid: 47c0a3038b673a24cb82a566be2abf20, type: 3}
   canvas: {fileID: 1748407828}
-  messageObject: {fileID: 0}
   novelPlayerButton: {fileID: 3970773575772385792}
   novelMakerButton: {fileID: 5291005856426179429}
   logInLogOutButton: {fileID: 2003831898849102916}

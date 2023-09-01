@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7776896220159045922}
   - component: {fileID: 2735791881534372737}
   m_Layer: 5
-  m_Name: Clothes
+  m_Name: ClotheImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 1465545687914413254}
   - component: {fileID: 1465545687914413252}
   - component: {fileID: 4126753951640385348}
+  - component: {fileID: 4524035883740533591}
   m_Layer: 5
   m_Name: Character Prefab
   m_TagString: Untagged
@@ -140,6 +141,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 2
   m_AspectRatio: 1.1497505
+--- !u!114 &4524035883740533591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465545687914413273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce19c46472896824fb0a14726030f762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinImage: {fileID: 6553579731152782210}
+  clotheImage: {fileID: 2735791881534372737}
+  hairImage: {fileID: 3816683545305009484}
+  faceImage: {fileID: 5629460200802205328}
+  skinSprites:
+  - {fileID: 21300000, guid: 05cbbd121a7d8ac47b5b3212464ee1cd, type: 3}
+  clotheSprites:
+  - {fileID: 21300000, guid: 9aaa60e2d4effa64f8d45d4e29b8855e, type: 3}
+  hairSprites:
+  - {fileID: 21300000, guid: 8e1129628d3a8dc4580ccf5b10ceb508, type: 3}
+  faceSprites:
+  - {fileID: 21300000, guid: 1323f6ad24786ff4eb7da36c08e34b37, type: 3}
+  - {fileID: 21300000, guid: a3cfe88d3e71bca4582af2b59c3868f7, type: 3}
+  - {fileID: 21300000, guid: fd7f62190a093464cac5d4b95855da58, type: 3}
+  - {fileID: 21300000, guid: 37c3b0b018260dc43a71da279a49675f, type: 3}
+  - {fileID: 21300000, guid: c576cd13220f7b642822a7fa67bc3227, type: 3}
+  - {fileID: 21300000, guid: 6da9f54e40442e04ebbe2b8a11b9649d, type: 3}
+  - {fileID: 21300000, guid: eb1eb9b449ba64842a81828f8196c087, type: 3}
+  - {fileID: 21300000, guid: 3221e710eeb20014b930df5f0fb60b77, type: 3}
+  - {fileID: 21300000, guid: ce426102e4067334c8110b94eda1dfd8, type: 3}
+  - {fileID: 21300000, guid: 6bd45654b3392c1489bcfa6464ef9c42, type: 3}
 --- !u!1 &2070218041177338841
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,7 +186,7 @@ GameObject:
   - component: {fileID: 6930783501542966584}
   - component: {fileID: 3816683545305009484}
   m_Layer: 5
-  m_Name: Hair
+  m_Name: HairImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,7 +262,7 @@ GameObject:
   - component: {fileID: 7358533904813618294}
   - component: {fileID: 5629460200802205328}
   m_Layer: 5
-  m_Name: Expression
+  m_Name: FaceImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -304,7 +338,7 @@ GameObject:
   - component: {fileID: 1708361632811465625}
   - component: {fileID: 6553579731152782210}
   m_Layer: 5
-  m_Name: Skin
+  m_Name: SkinImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

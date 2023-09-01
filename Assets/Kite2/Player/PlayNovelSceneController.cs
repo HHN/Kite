@@ -21,7 +21,6 @@ public class PlayNovelSceneController : SceneController
     public GameObject[] backgroundPrefab;
     private GameObject currentBackground;
     public GameObject characterContainer;
-    public GameObject[] characterPrefabs;
     private Dictionary<string, GameObject> currentCharacters = new Dictionary<string, GameObject>();
     public ChatScrollView chatScroll;
     public FeelingPanelController feelingPanelController;
@@ -160,7 +159,7 @@ public class PlayNovelSceneController : SceneController
         {
             Destroy(currentBackground);
         }
-        currentBackground = Instantiate(backgroundPrefab[novelEvent.imageId], backgroundContainer.transform);
+        currentBackground = Instantiate(backgroundPrefab[novelEvent.backgroundSpriteId], backgroundContainer.transform);
 
         if (novelEvent.waitForUserConfirmation)
         {
@@ -175,7 +174,13 @@ public class PlayNovelSceneController : SceneController
         long nextEventID = novelEvent.nextId;
         nextEventToPlay = novelEvents[nextEventID];
 
-        GameObject character = Instantiate(characterPrefabs[novelEvent.imageId], characterContainer.transform);
+        GameObject character = Instantiate(characterPrefab, characterContainer.transform);
+        CharacterController controller = character.GetComponent<CharacterController>();
+        controller.SetSkinSprite(novelEvent.skinSpriteId);
+        controller.SetClotheSprite(novelEvent.clotheSpriteId);
+        controller.SetHairSprite(novelEvent.hairSpriteId);
+        controller.SetFaceSprite(novelEvent.faceSpriteId);
+
         currentCharacters.Add(novelEvent.name, character);
 
         if (novelEvent.waitForUserConfirmation)
@@ -209,6 +214,13 @@ public class PlayNovelSceneController : SceneController
         nextEventToPlay = novelEvents[nextEventID];
 
         conversationContent.AddContent(novelEvent, this);
+        
+        if (currentCharacters.ContainsKey(novelEvent.name))
+        {
+            GameObject character = currentCharacters[novelEvent.name];
+            CharacterController controller = character.GetComponent<CharacterController>();
+            controller.SetFaceSprite(novelEvent.changeFaceToSpriteId);
+        }
 
         if (novelEvent.waitForUserConfirmation)
         {
