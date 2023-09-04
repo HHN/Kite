@@ -74,10 +74,10 @@ public class FeelingPanelController : MonoBehaviour
         fearfullFeedback = "";
         encouragedFeedback = "";
         annoyedFeedback = "";
-        SetNervousButtonText("- Nervös");
-        SetFearfullButtonText("- Ängstlich");
-        SetEncouragedButtonText("- Ermutigt");
-        SetAnnoyedButtonText("- Verärgert");
+        SetNervousButtonText("NERVÖS");
+        SetFearfullButtonText("ÄNGSTLICH");
+        SetEncouragedButtonText("ERMUTIGT");
+        SetAnnoyedButtonText("VERÄRGERT");
     }
 
     public void SetQuestion(string question)
@@ -140,6 +140,8 @@ public class FeelingPanelController : MonoBehaviour
         fearfullButton.gameObject.SetActive(false);
         encouragedButton.gameObject.SetActive(false);
         feedback.gameObject.SetActive(true);
+
+        SetNervousButtonText("WEITER");
     }
 
     public void OnFearfullButton()
@@ -157,6 +159,8 @@ public class FeelingPanelController : MonoBehaviour
         nervousButton.gameObject.SetActive(false);
         encouragedButton.gameObject.SetActive(false);
         feedback.gameObject.SetActive(true);
+
+        SetFearfullButtonText("WEITER");
     }
 
     public void OnEncouragedButton()
@@ -174,6 +178,8 @@ public class FeelingPanelController : MonoBehaviour
         fearfullButton.gameObject.SetActive(false);
         nervousButton.gameObject.SetActive(false);
         feedback.gameObject.SetActive(true);
+
+        SetEncouragedButtonText("WEITER");
     }
 
     public void OnAnnoyedButton()
@@ -191,6 +197,8 @@ public class FeelingPanelController : MonoBehaviour
         fearfullButton.gameObject.SetActive(false);
         encouragedButton.gameObject.SetActive(false);
         feedback.gameObject.SetActive(true);
+
+        SetAnnoyedButtonText("WEITER");
     }
 
     public void OnAlreadyChosen()
