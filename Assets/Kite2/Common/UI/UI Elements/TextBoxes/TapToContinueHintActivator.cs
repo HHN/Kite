@@ -1,7 +1,9 @@
 using Febucci.UI.Core;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class TypeWriterRegistrator : MonoBehaviour
+public class TapToContinueHintActivator : MonoBehaviour
 {
     private PlayNovelSceneController controller;
 
@@ -12,13 +14,11 @@ public class TypeWriterRegistrator : MonoBehaviour
 
     public void OnStartTyping()
     {
-        TypewriterCore typewriterCore = GetComponent<TypewriterCore>();
-        controller.currentTypeWriter = typewriterCore;
-        controller.StartTalking();
+        controller.SetTypeToContinueAnimationActive(false);
     }
 
     public void OnStopTyping()
     {
-        controller.StopTalking();
+        controller.SetTypeToContinueAnimationActive(true);
     }
 }

@@ -103,7 +103,7 @@ public class OptionsManager : MonoBehaviour
         gameObject.SetActive(false);
         sceneController.confirmArea.gameObject.SetActive(true);
         sceneController.ShowAnswer(answer);
-        sceneController.isWaitingForConfirmation = true;
+        sceneController.SetWaitingForConfirmation(true);
         sceneController.SetNextEvent(nextEventID);
     }
 }

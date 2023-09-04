@@ -204,7 +204,7 @@ public class FeelingPanelController : MonoBehaviour
     public void OnAlreadyChosen()
     {
         this.gameObject.SetActive(false);
-        this.controller.isWaitingForConfirmation = true;
+        this.controller.SetWaitingForConfirmation(true);
         this.controller.OnConfirm();
     }
 }

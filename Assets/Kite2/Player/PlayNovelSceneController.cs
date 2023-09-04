@@ -14,7 +14,7 @@ public class PlayNovelSceneController : SceneController
     public GameObject novelImageContainer;
     public GameObject novelBackgroundPrefab;
     public GameObject characterPrefab;
-    public bool isWaitingForConfirmation = false;
+    private bool isWaitingForConfirmation = false;
     private Dictionary<long, VisualNovelEvent> novelEvents = new Dictionary<long, VisualNovelEvent>();
     private VisualNovelEvent nextEventToPlay;
     public GameObject backgroundContainer;
@@ -28,6 +28,7 @@ public class PlayNovelSceneController : SceneController
     public SelectOptionContinueConversation selectOptionContinueConversation;
     public Button confirmArea;
     public CharacterController currentTalkingCharacterController;
+    public GameObject tapToContinueAnimation;
 
     void Start()
     {
@@ -69,7 +70,7 @@ public class PlayNovelSceneController : SceneController
         {
             return;
         }
-        isWaitingForConfirmation = false;
+        SetWaitingForConfirmation(false);
         PlayNextEvent();
     }
 
@@ -164,7 +165,7 @@ public class PlayNovelSceneController : SceneController
 
         if (novelEvent.waitForUserConfirmation)
         {
-            isWaitingForConfirmation = true;
+            SetWaitingForConfirmation(true);
             return;
         }
         StartCoroutine(StartNextEventInOneSeconds(1));
@@ -186,7 +187,7 @@ public class PlayNovelSceneController : SceneController
 
         if (novelEvent.waitForUserConfirmation)
         {
-            isWaitingForConfirmation = true;
+            SetWaitingForConfirmation(true);
             return;
         }
         StartCoroutine(StartNextEventInOneSeconds(1));
@@ -203,7 +204,7 @@ public class PlayNovelSceneController : SceneController
 
         if (novelEvent.waitForUserConfirmation)
         {
-            isWaitingForConfirmation = true;
+            SetWaitingForConfirmation(true);
             return;
         }
         StartCoroutine(StartNextEventInOneSeconds(1));
@@ -225,7 +226,7 @@ public class PlayNovelSceneController : SceneController
 
         if (novelEvent.waitForUserConfirmation)
         {
-            isWaitingForConfirmation = true;
+            SetWaitingForConfirmation(true);
             return;
         }
         StartCoroutine(StartNextEventInOneSeconds(1));
@@ -240,7 +241,7 @@ public class PlayNovelSceneController : SceneController
 
         if (novelEvent.waitForUserConfirmation)
         {
-            isWaitingForConfirmation = true;
+            SetWaitingForConfirmation(true);
             return;
         }
         PlayNextEvent();
@@ -353,5 +354,17 @@ public class PlayNovelSceneController : SceneController
         }
         currentTalkingCharacterController.StopTalking();
         currentTalkingCharacterController = null;
+    }
+
+    public void SetWaitingForConfirmation(bool value)
+    {
+        this.isWaitingForConfirmation = value;
+        SetTypeToContinueAnimationActive(value);
+    }
+
+    public void SetTypeToContinueAnimationActive(bool value)
+    {
+        tapToContinueAnimation.SetActive(value);
+        tapToContinueAnimation.GetComponent<Animator>().enabled = value;
     }
 }
