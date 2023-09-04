@@ -29,6 +29,7 @@ public class PlayNovelSceneController : SceneController
     public Button confirmArea;
     public CharacterController currentTalkingCharacterController;
     public GameObject tapToContinueAnimation;
+    private bool isTyping;
 
     void Start()
     {
@@ -366,5 +367,19 @@ public class PlayNovelSceneController : SceneController
     {
         tapToContinueAnimation.SetActive(value);
         tapToContinueAnimation.GetComponent<Animator>().enabled = value;
+    }
+
+    public void SetTyping(bool value)
+    {
+        isTyping = value;
+
+        if (!isTyping && isWaitingForConfirmation)
+        {
+            tapToContinueAnimation.SetActive(true);
+            tapToContinueAnimation.GetComponent<Animator>().enabled = true;
+            return;
+        }
+        tapToContinueAnimation.SetActive(false);
+        tapToContinueAnimation.GetComponent<Animator>().enabled = false;
     }
 }

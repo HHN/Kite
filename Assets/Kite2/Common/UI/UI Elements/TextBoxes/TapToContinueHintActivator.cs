@@ -14,11 +14,11 @@ public class TapToContinueHintActivator : MonoBehaviour
 
     public void OnStartTyping()
     {
-        controller.SetTypeToContinueAnimationActive(false);
+        controller.SetTyping(true);
     }
 
     public void OnStopTyping()
     {
-        controller.SetTypeToContinueAnimationActive(true);
+        controller.SetTyping(false);
     }
 }
