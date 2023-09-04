@@ -6,6 +6,11 @@ public class AskForFeelingsButton : MonoBehaviour
 {
     public PlayNovelSceneController controller;
 
+    private void Start()
+    {
+        GetComponent<Animator>().SetBool("AskForOpinionPulsation", true);
+    }
+
     public void OnButtonClick()
     {
         this.gameObject.SetActive(false);
