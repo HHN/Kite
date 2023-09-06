@@ -14,4 +14,5 @@ public class Response
     public VisualNovel specifiedNovel;
     public int numberOfNovelLikes;
     public bool novelLikedByUser;
+    public long score;
 }

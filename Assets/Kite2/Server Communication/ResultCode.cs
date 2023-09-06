@@ -52,7 +52,11 @@ public enum ResultCode
     FAILED_TO_UNLIKE_NOVEL,
     NOVEL_LIKE_NOT_FOUND,
     SUCCESSFULLY_GOT_NOVEL_LIKE_INFORMATION,
-    FAILED_TO_GET_NOVEL_LIKE_INFORMATION
+    FAILED_TO_GET_NOVEL_LIKE_INFORMATION,
+    SUCCESSFULLY_GOT_SCORE,
+    FAILED_TO_GET_SCORE,
+    SUCCESSFULLY_UPDATED_SCORE,
+    FAILED_TO_UPDATE_SCORE
 }
 
 public class ResultCodeHelper
@@ -113,6 +117,10 @@ public class ResultCodeHelper
             case ResultCode.NOVEL_LIKE_NOT_FOUND: { return 50; }
             case ResultCode.SUCCESSFULLY_GOT_NOVEL_LIKE_INFORMATION: { return 51; }
             case ResultCode.FAILED_TO_GET_NOVEL_LIKE_INFORMATION: { return 52; }
+            case ResultCode.SUCCESSFULLY_GOT_SCORE: { return 53; }
+            case ResultCode.FAILED_TO_GET_SCORE: { return 54; }
+            case ResultCode.SUCCESSFULLY_UPDATED_SCORE: { return 55; }
+            case ResultCode.FAILED_TO_UPDATE_SCORE: { return 56; }
             default: { return -1; }
         }
     }
@@ -173,6 +181,10 @@ public class ResultCodeHelper
             case 50: { return ResultCode.NOVEL_LIKE_NOT_FOUND; }
             case 51: { return ResultCode.SUCCESSFULLY_GOT_NOVEL_LIKE_INFORMATION; }
             case 52: { return ResultCode.FAILED_TO_GET_NOVEL_LIKE_INFORMATION; }
+            case 53: { return ResultCode.SUCCESSFULLY_GOT_SCORE; }
+            case 54: { return ResultCode.FAILED_TO_GET_SCORE; }
+            case 55: { return ResultCode.SUCCESSFULLY_UPDATED_SCORE; }
+            case 56: { return ResultCode.FAILED_TO_UPDATE_SCORE; }
             default: { return ResultCode.NONE; }
         }
     }
