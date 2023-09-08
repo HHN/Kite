@@ -32,6 +32,7 @@ public class LogInSceneController : SceneController, OnSuccessHandler
             call.username = usernameInputField.text.Trim();
             call.password = passwordInputField.text.Trim();
             call.SendRequest();
+            DontDestroyOnLoad(call.gameObject);
         }
     }
 

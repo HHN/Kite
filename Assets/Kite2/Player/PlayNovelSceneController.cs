@@ -31,12 +31,28 @@ public class PlayNovelSceneController : SceneController
     public GameObject tapToContinueAnimation;
     private bool isTyping;
 
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI moneyText;
+
+    [SerializeField] private GameObject addScoreServerCallPrefab;
+    [SerializeField] private GameObject addMoneyServerCallPrefab;
+
     void Start()
     {
         BackStackManager.Instance().Push(SceneNames.PLAY_NOVEL_SCENE);
 
         novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
         Initialize();
+        InitializeMoneyAndScore();
+    }
+
+    public void InitializeMoneyAndScore()
+    {
+        long money = MoneyManager.Instance().GetMoney();
+        long score = ScoreManager.Instance().GetScore();
+
+        moneyText.text = money.ToString();
+        scoreText.text = score.ToString();
     }
 
     public void Initialize()
@@ -308,6 +324,8 @@ public class PlayNovelSceneController : SceneController
 
     public void HandleEndNovelEvent(VisualNovelEvent novelEvent)
     {
+        AddScore(5);
+        AddMoney(5);
         SceneLoader.LoadFeedbackScene();
     }
 
@@ -381,5 +399,37 @@ public class PlayNovelSceneController : SceneController
         }
         tapToContinueAnimation.SetActive(false);
         tapToContinueAnimation.GetComponent<Animator>().enabled = false;
+    }
+
+    public void AddScore(long value)
+    {
+        scoreText.text = (ScoreManager.Instance().GetScore() + value).ToString();
+
+        if (GameManager.Instance().applicationMode != ApplicationModes.LOGGED_IN_USER_MODE || value == 0)
+        {
+            return;
+        }
+        AddScoreServerCall call = Instantiate(this.addScoreServerCallPrefab).GetComponent<AddScoreServerCall>();
+        call.sceneController = this;
+        call.onSuccessHandler = UpdateScoreAndMoneyManager.Instance();
+        call.value = value;
+        call.SendRequest();
+        DontDestroyOnLoad(call.gameObject);
+    }
+
+    public void AddMoney(long value)
+    {
+        moneyText.text = (MoneyManager.Instance().GetMoney() + value).ToString();
+
+        if (GameManager.Instance().applicationMode != ApplicationModes.LOGGED_IN_USER_MODE || value == 0)
+        {
+            return;
+        }
+        AddMoneyServerCall call = Instantiate(this.addMoneyServerCallPrefab).GetComponent<AddMoneyServerCall>();
+        call.sceneController = this;
+        call.onSuccessHandler = UpdateScoreAndMoneyManager.Instance();
+        call.value = value;
+        call.SendRequest();
+        DontDestroyOnLoad(call.gameObject);
     }
 }

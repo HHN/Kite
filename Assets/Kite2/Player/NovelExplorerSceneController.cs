@@ -57,6 +57,7 @@ public class NovelExplorerSceneController : SceneController, OnSuccessHandler
             call.sceneController = this;
             call.onSuccessHandler = this;
             call.SendRequest();
+            DontDestroyOnLoad(call.gameObject);
             return;
         }
 

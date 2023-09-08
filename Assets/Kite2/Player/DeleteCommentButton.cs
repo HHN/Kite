@@ -39,6 +39,7 @@ public class DeleteCommentButton : MonoBehaviour, OnSuccessHandler
         call.onSuccessHandler = this;
         call.id = this.commentId;
         call.SendRequest();
+        DontDestroyOnLoad(call.gameObject);
     }
 
     public void OnSuccess(Response response)

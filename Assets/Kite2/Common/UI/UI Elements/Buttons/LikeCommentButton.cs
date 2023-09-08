@@ -70,6 +70,7 @@ public class LikeCommentButton : MonoBehaviour, OnSuccessHandler
         call.onSuccessHandler = this;
         call.commentId = this.commentId;
         call.SendRequest();
+        DontDestroyOnLoad(call.gameObject);
     }
 
     public void SendLikeRequest()
@@ -80,6 +81,7 @@ public class LikeCommentButton : MonoBehaviour, OnSuccessHandler
         call.onSuccessHandler = this;
         call.commentId = this.commentId;
         call.SendRequest();
+        DontDestroyOnLoad(call.gameObject);
     }
 
     public void OnSuccess(Response response)

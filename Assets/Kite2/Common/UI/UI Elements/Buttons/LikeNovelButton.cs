@@ -50,6 +50,7 @@ public class LikeNovelButton : MonoBehaviour, OnSuccessHandler
         call.onSuccessHandler = this;
         call.id = novel.id;
         call.SendRequest();
+        DontDestroyOnLoad(call.gameObject);
     }
 
     public void LikeNovel()
@@ -73,6 +74,7 @@ public class LikeNovelButton : MonoBehaviour, OnSuccessHandler
         call.onSuccessHandler = this;
         call.id = novel.id;
         call.SendRequest();
+        DontDestroyOnLoad(call.gameObject);
     }
 
     public void SendUnlikeRequest()
@@ -82,6 +84,7 @@ public class LikeNovelButton : MonoBehaviour, OnSuccessHandler
         call.onSuccessHandler = this;
         call.id = novel.id;
         call.SendRequest();
+        DontDestroyOnLoad(call.gameObject);
     }
 
     public void OnSuccess(Response response)

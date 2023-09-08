@@ -34,6 +34,7 @@ public class SettingsSceneController : SceneController, OnSuccessHandler
         call.sceneController = this;
         call.onSuccessHandler = this;
         call.SendRequest();
+        DontDestroyOnLoad(call.gameObject);
     }
 
     public void OnChangePasswordButton()

@@ -15,6 +15,9 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     public Sprite logoutSprite;
     public Image loginLogoutImage;
 
+    [SerializeField] private GameObject getMoneyServerCallPrefab;
+    [SerializeField] private GameObject getScoreServerCallPrefab;
+
     void Start()
     {
         BackStackManager.Instance().Clear();
@@ -44,6 +47,9 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
         logInLogOutButton.GetComponentInChildren<TMP_Text>().text = "EINLOGGEN";
         loginLogoutImage.sprite = loginSprite;
         logInLogOutButton.onClick.AddListener(delegate { OnLogInButton(); });
+
+        MoneyManager.Instance().SetMoney(0);
+        ScoreManager.Instance().SetScore(0);
     }
 
     private void OnLoggedInUserMode()
@@ -54,6 +60,18 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
         logInLogOutButton.GetComponentInChildren<TMP_Text>().text = "AUSLOGGEN";
         loginLogoutImage.sprite = logoutSprite;
         logInLogOutButton.onClick.AddListener(delegate { OnLogOutButton(); });
+
+        GetMoneyServerCall getMoneyServerCall = Instantiate(getMoneyServerCallPrefab).GetComponent<GetMoneyServerCall>();
+        getMoneyServerCall.sceneController = this;
+        getMoneyServerCall.onSuccessHandler = new GetMoneySuccessHandler();
+        getMoneyServerCall.SendRequest();
+        DontDestroyOnLoad(getMoneyServerCall.gameObject);
+
+        GetScoreServerCall getScoreServerCall = Instantiate(getScoreServerCallPrefab).GetComponent<GetScoreServerCall>();
+        getScoreServerCall.sceneController = this;
+        getScoreServerCall.onSuccessHandler = new GetScoreSuccessHandler();
+        getScoreServerCall.SendRequest();
+        DontDestroyOnLoad(getScoreServerCall.gameObject);
     }
 
     public void OnNovelPlayerButton()
@@ -77,6 +95,7 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
         call.sceneController = this;
         call.onSuccessHandler = this;
         call.SendRequest();
+        DontDestroyOnLoad(call.gameObject);
     }
 
     public void OnSettingsButton()
@@ -98,5 +117,21 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     public void OnKiteLogoButton()
     {
         SceneLoader.LoadInfoScene();
+    }
+
+    public class GetMoneySuccessHandler : OnSuccessHandler
+    {
+        public void OnSuccess(Response response)
+        {
+            MoneyManager.Instance().SetMoney(response.money);
+        }
+    }
+
+    public class GetScoreSuccessHandler : OnSuccessHandler 
+    { 
+        public void OnSuccess(Response response) 
+        {
+            ScoreManager.Instance().SetScore(response.score);
+        } 
     }
 }

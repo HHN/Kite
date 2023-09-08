@@ -33,6 +33,7 @@ public class RegistrationSceneController : SceneController, OnSuccessHandler
             registerServerCall.email = emailInputField.text.Trim();
             registerServerCall.password = passwordInputField.text.Trim();
             registerServerCall.SendRequest();
+            DontDestroyOnLoad(registerServerCall.gameObject);
         }
     }
 

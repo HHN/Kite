@@ -15,4 +15,5 @@ public class Response
     public int numberOfNovelLikes;
     public bool novelLikedByUser;
     public long score;
+    public long money;
 }

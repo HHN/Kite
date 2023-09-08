@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class FeedbackSceneController : SceneController, OnSuccessHandler
 {
@@ -30,6 +31,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler
             call.onSuccessHandler = this;
             call.prompt = PromptManager.Instance().GetPrompt();
             call.SendRequest();
+            DontDestroyOnLoad(call.gameObject);
             return;
         }
         feedbackText.SetText(novelToPlay.feedback);
@@ -42,6 +44,11 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler
 
     public void OnSuccess(Response response)
     {
+        if (SceneManager.GetActiveScene().name != SceneNames.FEEDBACK_SCENE 
+            && SceneManager.GetActiveScene().name != SceneNames.COMMENT_SECTION_SCENE)
+        {
+            return;
+        }
         feedbackText.SetText(response.completion);
         novelToPlay.feedback = (response.completion);
     }

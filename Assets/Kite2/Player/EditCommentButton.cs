@@ -99,6 +99,7 @@ public class EditCommentButton : MonoBehaviour, OnSuccessHandler
         call.id = this.commentId;
         call.comment = this.inputField.text.Trim();
         call.SendRequest();
+        DontDestroyOnLoad(call.gameObject);
         this.DeactivateEditMode();
     }
 

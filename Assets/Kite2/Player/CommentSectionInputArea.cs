@@ -51,6 +51,7 @@ public class CommentSectionInputArea : MonoBehaviour, OnSuccessHandler
         call.visualNovelId = PlayManager.Instance().GetVisualNovelToPlay().id;
         call.comment = this.inputField.text.Trim();
         call.SendRequest();
+        DontDestroyOnLoad(call.gameObject);
         this.inputField.text = string.Empty;
     }
 

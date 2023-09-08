@@ -29,6 +29,7 @@ public class ResetPasswordSceneController : SceneController, OnSuccessHandler
             call.onSuccessHandler = this;
             call.username = usernameInputField.text.Trim();
             call.SendRequest();
+            DontDestroyOnLoad(call.gameObject);
         }
     }
 

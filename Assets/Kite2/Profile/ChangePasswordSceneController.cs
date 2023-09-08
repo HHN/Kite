@@ -30,6 +30,7 @@ public class ChangePasswordSceneController : SceneController, OnSuccessHandler
             call.oldPassword = oldPasswordInputField.text.Trim();
             call.newPassword = newPasswordInputField.text.Trim();
             call.SendRequest();
+            DontDestroyOnLoad(call.gameObject);
         }
     }
 

@@ -28,6 +28,7 @@ public class CommentSectionSceneController : SceneController, OnSuccessHandler
         call.onSuccessHandler = this;
         call.visualNovelId = PlayManager.Instance().GetVisualNovelToPlay().id;
         call.SendRequest();
+        DontDestroyOnLoad(call.gameObject);
     }
 
     public void SetCommentInEdit(EditCommentButton commentInEdit)

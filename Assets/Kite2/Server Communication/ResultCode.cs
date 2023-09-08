@@ -56,7 +56,11 @@ public enum ResultCode
     SUCCESSFULLY_GOT_SCORE,
     FAILED_TO_GET_SCORE,
     SUCCESSFULLY_UPDATED_SCORE,
-    FAILED_TO_UPDATE_SCORE
+    FAILED_TO_UPDATE_SCORE,
+    SUCCESSFULLY_GOT_MONEY,
+    FAILED_TO_GET_MONEY,
+    SUCCESSFULLY_UPDATED_MONEY,
+    FAILED_TO_UPDATE_MONEY
 }
 
 public class ResultCodeHelper
@@ -121,6 +125,10 @@ public class ResultCodeHelper
             case ResultCode.FAILED_TO_GET_SCORE: { return 54; }
             case ResultCode.SUCCESSFULLY_UPDATED_SCORE: { return 55; }
             case ResultCode.FAILED_TO_UPDATE_SCORE: { return 56; }
+            case ResultCode.SUCCESSFULLY_GOT_MONEY: { return 57; }
+            case ResultCode.FAILED_TO_GET_MONEY: { return 58; }
+            case ResultCode.SUCCESSFULLY_UPDATED_MONEY: { return 59; }
+            case ResultCode.FAILED_TO_UPDATE_MONEY: { return 60; }
             default: { return -1; }
         }
     }
@@ -185,6 +193,10 @@ public class ResultCodeHelper
             case 54: { return ResultCode.FAILED_TO_GET_SCORE; }
             case 55: { return ResultCode.SUCCESSFULLY_UPDATED_SCORE; }
             case 56: { return ResultCode.FAILED_TO_UPDATE_SCORE; }
+            case 57: { return ResultCode.SUCCESSFULLY_GOT_MONEY; }
+            case 58: { return ResultCode.FAILED_TO_GET_MONEY; }
+            case 59: { return ResultCode.SUCCESSFULLY_UPDATED_MONEY; }
+            case 60: { return ResultCode.FAILED_TO_UPDATE_MONEY; }
             default: { return ResultCode.NONE; }
         }
     }

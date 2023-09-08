@@ -46,6 +46,7 @@ public class MicrofonButton : MonoBehaviour, OnSuccessHandler
         call.file = data;
         call.sceneController = sceneController;
         call.SendRequest();
+        DontDestroyOnLoad(call.gameObject);
     }
 
     public void OnButtonPressed()

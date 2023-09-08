@@ -59,6 +59,7 @@ public abstract class ServerCall : MonoBehaviour
                     break;
                 }
         }
+        StartCoroutine(DestroyInSeconds(5));
     }
 
     public bool StopWebRequest()
@@ -77,4 +78,10 @@ public abstract class ServerCall : MonoBehaviour
     protected abstract object CreateRequestObject();
 
     protected abstract void OnResponse(Response response);
+
+    private IEnumerator DestroyInSeconds(long seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        Destroy(this.gameObject);
+    }
 }
