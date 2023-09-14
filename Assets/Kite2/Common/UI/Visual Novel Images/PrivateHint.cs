@@ -9,6 +9,11 @@ public class PrivateHint : MonoBehaviour
     void Start()
     {
         VisualNovel visualNovel = PlayManager.Instance().GetVisualNovelToPlay();
+
+        if (visualNovel == null)
+        {
+            return;
+        }
         privateHint.SetActive(visualNovel.id == 0);
     }
 }

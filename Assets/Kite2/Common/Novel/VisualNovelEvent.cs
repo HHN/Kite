@@ -13,7 +13,6 @@ public class VisualNovelEvent
     public int hairSpriteId;
     public int faceSpriteId;
     public int backgroundSpriteId;
-    public int changeFaceToSpriteId;
     public string name;
     public string text;
     public int animationType;

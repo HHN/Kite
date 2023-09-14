@@ -23,6 +23,7 @@ public class PlayNovelSceneController : SceneController
     public GameObject characterContainer;
     private Dictionary<string, GameObject> currentCharacters = new Dictionary<string, GameObject>();
     public ChatScrollView chatScroll;
+    [SerializeField] private ImageScrollView imageScroll;
     public FeelingPanelController feelingPanelController;
     public TypewriterCore currentTypeWriter;
     public SelectOptionContinueConversation selectOptionContinueConversation;
@@ -179,6 +180,7 @@ public class PlayNovelSceneController : SceneController
             Destroy(currentBackground);
         }
         currentBackground = Instantiate(backgroundPrefab[novelEvent.backgroundSpriteId], backgroundContainer.transform);
+        StartCoroutine(imageScroll.ScrollToPoint(0.5f, 1f));
 
         if (novelEvent.waitForUserConfirmation)
         {
@@ -198,7 +200,7 @@ public class PlayNovelSceneController : SceneController
         controller.SetSkinSprite(novelEvent.skinSpriteId);
         controller.SetClotheSprite(novelEvent.clotheSpriteId);
         controller.SetHairSprite(novelEvent.hairSpriteId);
-        controller.SetFaceSprite(novelEvent.faceSpriteId);
+        controller.SetFaceExpression(novelEvent.faceSpriteId);
 
         currentCharacters.Add(novelEvent.name, character);
 
@@ -236,7 +238,7 @@ public class PlayNovelSceneController : SceneController
         {
             GameObject character = currentCharacters[novelEvent.name];
             currentTalkingCharacterController = character.GetComponent<CharacterController>();
-            currentTalkingCharacterController.SetFaceSprite(novelEvent.changeFaceToSpriteId);
+            currentTalkingCharacterController.SetFaceExpression(novelEvent.expressionType);
         }
 
         conversationContent.AddContent(novelEvent, this);

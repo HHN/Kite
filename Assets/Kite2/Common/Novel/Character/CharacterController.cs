@@ -39,48 +39,73 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    public void SetFaceSprite(int faceSpriteIndex)
+    public void SetFaceExpression(int expression)
     {
-        switch (faceSpriteIndex)
+        switch (expression)
         {
-            case 0:
+            case 1:
                 {
                     PlayRelaxedAnimation();
                     return;
                 }
-            case 1:
-                {
-                    PlaySurprisedAnimation();
-                    return;
-                }
             case 2:
                 {
-                    PlayRefusingAnimation();
+                    PlayAstonishedAnimation();
                     return;
                 }
             case 3:
                 {
-                    PlaySmileAnimation();
+                    PlayRefusingAnimation();
                     return;
                 }
             case 4:
                 {
-                    PlayNeutralAnimation();
+                    PlaySmileAnimation();
                     return;
                 }
             case 5:
                 {
-                    PlayLaughingAnimation();
+                    PlayFriendlyAnimation();
                     return;
                 }
             case 6:
                 {
-                    PlayCriticalAnimation();
+                    PlayLaughingAnimation();
                     return;
                 }
             case 7:
                 {
+                    PlayCriticalAnimation();
+                    return;
+                }
+            case 8:
+                {
                     PlayNoDealAnimation();
+                    return;
+                }
+            case 9:
+                {
+                    PlayHappyAnimation();
+                    return;
+                }
+            case 10:
+                {
+                    PlayProudAnimation();
+                    return;
+                }
+            case 11:
+                {
+                    PlayScaredAnimation();
+                    return;
+                }
+            case 12:
+                {
+                    PlayQuestioningAnimation();
+                    return;
+                }
+            case 13:
+                {
+                    PlayDefeatedAnimation();
                     return;
                 }
             default:
@@ -88,6 +113,31 @@ public class CharacterController : MonoBehaviour
                     return;
                 }
         }
+    }
+
+    public void PlayDefeatedAnimation()
+    {
+        animator.Play("defeated");
+    }
+
+    public void PlayQuestioningAnimation()
+    {
+        animator.Play("questioning");
+    }
+
+    public void PlayScaredAnimation()
+    {
+        animator.Play("scared");
+    }
+
+    public void PlayProudAnimation()
+    {
+        animator.Play("proud");
+    }
+
+    public void PlayHappyAnimation()
+    {
+        animator.Play("happy");
     }
 
     public void PlayRelaxedAnimation()
@@ -100,7 +150,7 @@ public class CharacterController : MonoBehaviour
         animator.Play("critical");
     }
 
-    public void PlayNeutralAnimation()
+    public void PlayFriendlyAnimation()
     {
         animator.Play("neutral");
     }
@@ -125,7 +175,7 @@ public class CharacterController : MonoBehaviour
         animator.Play("laughing");
     }
 
-    public void PlaySurprisedAnimation()
+    public void PlayAstonishedAnimation()
     {
         animator.Play("surprised");
     }
