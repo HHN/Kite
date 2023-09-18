@@ -88,7 +88,7 @@ public class BankTalkNovel : VisualNovel
             {
                 id = 7,
                 nextId = 8,
-                onChoice = 13,
+                onChoice = 14,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -146,6 +146,15 @@ public class BankTalkNovel : VisualNovel
             {
                 id = 13,
                 nextId = 14,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = true,
+                audioClipToPlay = 1
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 14,
+                nextId = 15,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
@@ -155,8 +164,8 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 14,
-                nextId = 15,
+                id = 15,
+                nextId = 16,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
@@ -166,8 +175,8 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 15,
-                nextId = 16,
+                id = 16,
+                nextId = 17,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
@@ -177,9 +186,9 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 16,
-                nextId = 17,
-                onChoice = 19,
+                id = 17,
+                nextId = 18,
+                onChoice = 20,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -189,9 +198,9 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 17,
-                nextId = 18,
-                onChoice = 19,
+                id = 18,
+                nextId = 19,
+                onChoice = 20,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -200,15 +209,15 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 18,
+                id = 19,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_CHOICES_EVENT),
                 waitForUserConfirmation = true
             },
 
             new VisualNovelEvent()
             {
-                id = 19,
-                nextId = 20,
+                id = 20,
+                nextId = 21,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
@@ -218,8 +227,8 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 20,
-                nextId = 21,
+                id = 21,
+                nextId = 22,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
@@ -231,8 +240,8 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 21,
-                nextId = 22,
+                id = 22,
+                nextId = 23,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
@@ -243,8 +252,8 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 22,
-                nextId = 23,
+                id = 23,
+                nextId = 24,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
@@ -256,8 +265,8 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 23,
-                nextId = 24,
+                id = 24,
+                nextId = 25,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
@@ -268,8 +277,8 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 24,
-                nextId = 25,
+                id = 25,
+                nextId = 26,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
@@ -280,8 +289,8 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 25,
-                nextId = 26,
+                id = 26,
+                nextId = 27,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
@@ -291,8 +300,8 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 26,
-                nextId = 27,
+                id = 27,
+                nextId = 28,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
@@ -303,8 +312,8 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 27,
-                nextId = 28,
+                id = 28,
+                nextId = 29,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
@@ -314,8 +323,8 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 28,
-                nextId = 29,
+                id = 29,
+                nextId = 30,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
@@ -325,16 +334,16 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 29,
-                nextId = 30,
+                id = 30,
+                nextId = 31,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_OPINION_FEEDBACK_EVENT),
                 waitForUserConfirmation = false
             },
 
             new VisualNovelEvent()
             {
-                id = 30,
-                nextId = 31,
+                id = 31,
+                nextId = 32,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 1,
@@ -344,8 +353,8 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 31,
-                nextId = 32,
+                id = 32,
+                nextId = 33,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 6,
@@ -356,8 +365,8 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 32,
-                nextId = 33,
+                id = 33,
+                nextId = 34,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 3,
@@ -368,8 +377,8 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 33,
-                nextId = 34,
+                id = 34,
+                nextId = 35,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 4,
@@ -381,17 +390,17 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 34,
-                nextId = 35,
+                id = 35,
+                nextId = 36,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ASK_FOR_OPINION_EVENT),
                 waitForUserConfirmation = true,
             },
 
             new VisualNovelEvent()
             {
-                id = 35,
-                nextId = 36,
-                onChoice = 40,
+                id = 36,
+                nextId = 37,
+                onChoice = 41,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -400,9 +409,9 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 36,
-                nextId = 37,
-                onChoice = 40,
+                id = 37,
+                nextId = 38,
+                onChoice = 41,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -411,9 +420,9 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 37,
-                nextId = 38,
-                onChoice = 40,
+                id = 38,
+                nextId = 39,
+                onChoice = 41,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -422,9 +431,9 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 38,
-                nextId = 39,
-                onChoice = 40,
+                id = 39,
+                nextId = 40,
+                onChoice = 41,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -433,15 +442,15 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 39,
+                id = 40,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_CHOICES_EVENT),
                 waitForUserConfirmation = true
             },
 
             new VisualNovelEvent()
             {
-                id = 40,
-                nextId = 41,
+                id = 41,
+                nextId = 42,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
@@ -451,8 +460,8 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 41,
-                nextId = 42,
+                id = 42,
+                nextId = 43,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
@@ -462,8 +471,8 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 42,
-                nextId = 43,
+                id = 43,
+                nextId = 44,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
@@ -473,9 +482,9 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 43,
-                nextId = 44,
-                onChoice = 47,
+                id = 44,
+                nextId = 45,
+                onChoice = 48,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -484,9 +493,9 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 44,
-                nextId = 45,
-                onChoice = 47,
+                id = 45,
+                nextId = 46,
+                onChoice = 48,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -495,9 +504,9 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 45,
-                nextId = 46,
-                onChoice = 47,
+                id = 46,
+                nextId = 47,
+                onChoice = 48,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -506,20 +515,9 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 46,
+                id = 47,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_CHOICES_EVENT),
                 waitForUserConfirmation = true
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 47,
-                nextId = 48,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = "Herr Mayer",
-                text = "Es ist einfach nur wichtig zu wissen, weil ich schon Gründerinnen hier hatte, und da war dann der Kinderwunsch im Endeffekt größer.",
-                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.QUESTIONING)
             },
 
             new VisualNovelEvent()
@@ -529,8 +527,8 @@ public class BankTalkNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Die haben dann den Kredit bekommen und plötzlich waren Kinder da und dann wurde das schwierig. Aber wie gesagt, das ist jetzt eigentlich gar nicht so wichtig.",
-                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+                text = "Es ist einfach nur wichtig zu wissen, weil ich schon Gründerinnen hier hatte, und da war dann der Kinderwunsch im Endeffekt größer.",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.QUESTIONING)
             },
 
             new VisualNovelEvent()
@@ -539,8 +537,8 @@ public class BankTalkNovel : VisualNovel
                 nextId = 50,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Lea",
-                text = "Ich hätte eine Frage. Und zwar wie geht es ab hier weiter? Also ich habe nen Gründungsberater, der mir natürlich den Ablauf erklärt hat, aber jetzt intern über Sie wie läuft das?",
+                name = "Herr Mayer",
+                text = "Die haben dann den Kredit bekommen und plötzlich waren Kinder da und dann wurde das schwierig. Aber wie gesagt, das ist jetzt eigentlich gar nicht so wichtig.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -551,7 +549,7 @@ public class BankTalkNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
-                text = "Ich bin jetzt davon ausgegangen, dass wir in diesem Gespräch eigentlich abschließend klären, ob Sie das als Bank machen möchten.",
+                text = "Ich hätte eine Frage. Und zwar wie geht es ab hier weiter? Also ich habe nen Gründungsberater, der mir natürlich den Ablauf erklärt hat, aber jetzt intern über Sie wie läuft das?",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -562,7 +560,7 @@ public class BankTalkNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
-                text = "Wie ich heraushören kann, ist das ja noch offen, weil Sie ja gar nicht wissen, was in meinem Businessplan überhaupt beschrieben wird. Ich dachte, es werden jetzt konkrete Fragen gestellt.",
+                text = "Ich bin jetzt davon ausgegangen, dass wir in diesem Gespräch eigentlich abschließend klären, ob Sie das als Bank machen möchten.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -572,9 +570,9 @@ public class BankTalkNovel : VisualNovel
                 nextId = 53,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Herr Mayer",
-                text = "Also, prinzipiell ist es so, dass ich erst nochmal Rückfrage mit jemanden aus der Filialleitung halten muss, denn ich darf hier in so einem Fall gar keine Entscheidung treffen.",
-                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.DEFEATED)
+                name = "Lea",
+                text = "Wie ich heraushören kann, ist das ja noch offen, weil Sie ja gar nicht wissen, was in meinem Businessplan überhaupt beschrieben wird. Ich dachte, es werden jetzt konkrete Fragen gestellt.",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
             new VisualNovelEvent()
@@ -584,8 +582,8 @@ public class BankTalkNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Wie gesagt, ich bin eigentlich nur hier um so ein bisschen rauszufinden, hat das Perspektive?",
-                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+                text = "Also, prinzipiell ist es so, dass ich erst nochmal Rückfrage mit jemanden aus der Filialleitung halten muss, denn ich darf hier in so einem Fall gar keine Entscheidung treffen.",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.DEFEATED)
             },
 
             new VisualNovelEvent()
@@ -595,7 +593,7 @@ public class BankTalkNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Kann das funktionieren? Kann ich mir das auch vorstellen? Die Frage ist ja auch, was gebe ich an Informationen weiter. Und was ich auf jeden Fall sehe, ist eine sehr selbstbewusste junge Frau.",
+                text = "Wie gesagt, ich bin eigentlich nur hier um so ein bisschen rauszufinden, hat das Perspektive?",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -606,7 +604,7 @@ public class BankTalkNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Das ist ein sehr wichtiger Punkt, finde ich. Da denke ich haben sie sicher auch ganz gute Chancen.",
+                text = "Kann das funktionieren? Kann ich mir das auch vorstellen? Die Frage ist ja auch, was gebe ich an Informationen weiter. Und was ich auf jeden Fall sehe, ist eine sehr selbstbewusste junge Frau.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -614,6 +612,17 @@ public class BankTalkNovel : VisualNovel
             {
                 id = 56,
                 nextId = 57,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Herr Mayer",
+                text = "Das ist ein sehr wichtiger Punkt, finde ich. Da denke ich haben sie sicher auch ganz gute Chancen.",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 57,
+                nextId = 58,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
@@ -625,8 +634,8 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 57,
-                nextId = 58,
+                id = 58,
+                nextId = 59,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
@@ -636,8 +645,8 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 58,
-                nextId = 59,
+                id = 59,
+                nextId = 60,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
@@ -647,8 +656,8 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-             id = 59,
-             nextId = 60,
+             id = 60,
+             nextId = 61,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
@@ -658,8 +667,8 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 60,
-                nextId = 61,
+                id = 61,
+                nextId = 62,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.CHARAKTER_EXIT_EVENT),
                 waitForUserConfirmation = false,
                 name = "Herr Mayer",
@@ -669,7 +678,7 @@ public class BankTalkNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 61,
+                id = 62,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.END_NOVEL_EVENT),
                 waitForUserConfirmation = false
             }

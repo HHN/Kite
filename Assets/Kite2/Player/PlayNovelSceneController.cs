@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using Febucci.UI.Core;
+using System;
 
 public class PlayNovelSceneController : SceneController
 {
@@ -37,6 +38,9 @@ public class PlayNovelSceneController : SceneController
 
     [SerializeField] private GameObject addScoreServerCallPrefab;
     [SerializeField] private GameObject addMoneyServerCallPrefab;
+
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] clips;
 
     void Start()
     {
@@ -163,11 +167,34 @@ public class PlayNovelSceneController : SceneController
                     HandleEndNovelEvent(nextEventToPlay);
                     break;
                 }
+            case VisualNovelEventType.PLAY_SOUND_EVENT:
+                {
+                    HandlePlaySoundEvent(nextEventToPlay);
+                    break;
+                }
             default:
                 {
                     break;
                 }
         }
+    }
+
+    private void HandlePlaySoundEvent(VisualNovelEvent novelEvent)
+    {
+        long nextEventID = novelEvent.nextId;
+        nextEventToPlay = novelEvents[nextEventID];
+
+        if (novelEvent.audioClipToPlay != 0) {
+            audioSource.clip = clips[novelEvent.audioClipToPlay];
+            audioSource.Play();
+        }
+
+        if (novelEvent.waitForUserConfirmation)
+        {
+            SetWaitingForConfirmation(true);
+            return;
+        }
+        StartCoroutine(StartNextEventInOneSeconds(1));
     }
 
     public void HandleBackgrundEvent(VisualNovelEvent novelEvent)

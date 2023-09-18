@@ -10,7 +10,8 @@ public enum VisualNovelEventType
     ADD_OPINION_CHOICE_EVENT,
     ASK_FOR_OPINION_EVENT,
     SHOW_OPINION_FEEDBACK_EVENT, // This event cleans up the feelingsPanel.
-    END_NOVEL_EVENT
+    END_NOVEL_EVENT,
+    PLAY_SOUND_EVENT
 }
 
 public class VisualNovelEventTypeHelper
@@ -30,6 +31,7 @@ public class VisualNovelEventTypeHelper
             case VisualNovelEventType.ASK_FOR_OPINION_EVENT: { return 8; }
             case VisualNovelEventType.SHOW_OPINION_FEEDBACK_EVENT: { return 9; }
             case VisualNovelEventType.END_NOVEL_EVENT: { return 10; }
+            case VisualNovelEventType.PLAY_SOUND_EVENT: { return 11; }
 
             default: { return -1; }
         }
@@ -50,6 +52,7 @@ public class VisualNovelEventTypeHelper
             case 8: { return VisualNovelEventType.ASK_FOR_OPINION_EVENT; }
             case 9: { return VisualNovelEventType.SHOW_OPINION_FEEDBACK_EVENT; }
             case 10: { return VisualNovelEventType.END_NOVEL_EVENT; }
+            case 11: { return VisualNovelEventType.PLAY_SOUND_EVENT; }
             default: { return VisualNovelEventType.NONE; }
         }
     }
