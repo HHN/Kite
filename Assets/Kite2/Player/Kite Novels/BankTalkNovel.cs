@@ -146,9 +146,9 @@ public class BankTalkNovel : VisualNovel
             {
                 id = 13,
                 nextId = 14,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_ANIMATION_EVENT),
                 waitForUserConfirmation = true,
-                audioClipToPlay = 1
+                animationToPlay = 1
             },
 
             new VisualNovelEvent()

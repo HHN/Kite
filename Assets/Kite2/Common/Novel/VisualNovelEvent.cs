@@ -21,4 +21,5 @@ public class VisualNovelEvent
     public int yPosition;
     public int opinionChoiceNumber; // 1 -> Nervous; 2 -> Fearfull; 3 -> Encouraged; 4 -> Annoyed;
     public int audioClipToPlay;
+    public int animationToPlay;
 }

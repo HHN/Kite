@@ -42,6 +42,10 @@ public class PlayNovelSceneController : SceneController
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip[] clips;
 
+    [SerializeField] private GameObject[] novelAnimations;
+    [SerializeField] private GameObject viewPortOfImages;
+    private GameObject currentAnimation;
+
     void Start()
     {
         BackStackManager.Instance().Push(SceneNames.PLAY_NOVEL_SCENE);
@@ -172,6 +176,11 @@ public class PlayNovelSceneController : SceneController
                     HandlePlaySoundEvent(nextEventToPlay);
                     break;
                 }
+            case VisualNovelEventType.PLAY_ANIMATION_EVENT:
+                {
+                    HandlePlayAnimationEvent(nextEventToPlay);
+                    break;
+                }
             default:
                 {
                     break;
@@ -195,6 +204,17 @@ public class PlayNovelSceneController : SceneController
             return;
         }
         StartCoroutine(StartNextEventInOneSeconds(1));
+    }
+
+    private void HandlePlayAnimationEvent(VisualNovelEvent novelEvent)
+    {
+        long nextEventID = novelEvent.nextId;
+        nextEventToPlay = novelEvents[nextEventID];
+
+        if (novelEvent.animationToPlay != 0)
+        {
+            currentAnimation = Instantiate(novelAnimations[novelEvent.animationToPlay], viewPortOfImages.transform);
+        }
     }
 
     public void HandleBackgrundEvent(VisualNovelEvent novelEvent)
@@ -460,5 +480,16 @@ public class PlayNovelSceneController : SceneController
         call.value = value;
         call.SendRequest();
         DontDestroyOnLoad(call.gameObject);
+    }
+
+    public void AnimationFinished()
+    {
+        SetWaitingForConfirmation(true);
+
+        if (DestroyValidator.IsNullOrDestroyed(currentAnimation))
+        {
+            return;
+        }
+        Destroy(currentAnimation);
     }
 }

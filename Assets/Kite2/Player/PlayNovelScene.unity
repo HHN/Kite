@@ -4901,6 +4901,10 @@ MonoBehaviour:
   clips:
   - {fileID: 0}
   - {fileID: 8300000, guid: 6a2f896f4c76c7f44b538a4b04dad09e, type: 3}
+  novelAnimations:
+  - {fileID: 0}
+  - {fileID: 2451443837264726971, guid: 399db683e4364e449887b9f4d7120744, type: 3}
+  viewPortOfImages: {fileID: 2069162108}
 --- !u!4 &2133875533
 Transform:
   m_ObjectHideFlags: 0
