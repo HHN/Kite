@@ -22,6 +22,10 @@ public class SceneController : MonoBehaviour
         {
             messageObject.CloseMessageBox();
         }
+        if (DestroyValidator.IsNullOrDestroyed(canvas))
+        {
+            return null;
+        }
         messageObject = null;
         messageObject = Instantiate(messageBox, canvas.transform).GetComponent<MessageBox>();
         messageObject.SetHeadline(headline);

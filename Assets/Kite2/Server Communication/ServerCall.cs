@@ -42,6 +42,10 @@ public abstract class ServerCall : MonoBehaviour
         {
             case UnityWebRequest.Result.Success:
                 {
+                    if (DestroyValidator.IsNullOrDestroyed(onSuccessHandler))
+                    {
+                        break;
+                    }
                     Response response = JsonUtility.FromJson<Response>(webRequest.downloadHandler.text);
                     OnResponse(response);
                     break;

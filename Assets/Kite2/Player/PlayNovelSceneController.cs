@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections;
 using Febucci.UI.Core;
 using System;
+using System.Drawing;
 
 public class PlayNovelSceneController : SceneController
 {
@@ -45,6 +46,14 @@ public class PlayNovelSceneController : SceneController
     [SerializeField] private GameObject[] novelAnimations;
     [SerializeField] private GameObject viewPortOfImages;
     private GameObject currentAnimation;
+
+    [SerializeField] private GameObject backgroundBlur;
+    [SerializeField] private GameObject imageAreaBlur;
+    [SerializeField] private GameObject screenContentBlur;
+
+    [SerializeField] private GameObject backgroundColor;
+    [SerializeField] private GameObject imageAreaColor;
+    [SerializeField] private GameObject screenContentColor;
 
     void Start()
     {
@@ -491,5 +500,71 @@ public class PlayNovelSceneController : SceneController
             return;
         }
         Destroy(currentAnimation);
+    }
+
+    public void SetBackGroundBlur(bool value)
+    {
+        if (backgroundBlur == null)
+        {
+            return;
+        }
+        backgroundBlur.SetActive(value);
+    }
+
+    public void SetImageAreaBlur(bool value)
+    {
+        if (backgroundBlur == null || imageAreaBlur == null)
+        {
+            return;
+        }
+        backgroundBlur.SetActive(false);
+        imageAreaBlur.SetActive(value);
+    }
+
+    public void SetScreenContentBlur(bool value)
+    {
+        if (backgroundBlur == null || imageAreaBlur == null || screenContentBlur == null)
+        {
+            return;
+        }
+        backgroundBlur.SetActive(false);
+        imageAreaBlur.SetActive(false);
+        screenContentBlur.SetActive(value);
+    }
+
+    public void SetBackGroundColor(bool value, UnityEngine.Color color)
+    {
+        if (backgroundColor == null)
+        {
+            return;
+        }
+        backgroundColor.SetActive(value);
+        color.a = (2 / 3);
+        backgroundColor.GetComponent<Image>().color = color;
+    }
+
+    public void SetImageAreaColor(bool value, UnityEngine.Color color)
+    {
+        if (backgroundColor == null || imageAreaColor == null)
+        {
+            return;
+        }
+        backgroundColor.SetActive(false);
+        imageAreaColor.SetActive(value);
+        color.a = (2 / 3);
+        imageAreaColor.GetComponent<Image>().color = color;
+    }
+
+    public void SetScreenContentColor(bool value, UnityEngine.Color color)
+    {
+        if (backgroundColor == null || imageAreaColor == null || screenContentColor == null)
+        {
+            return;
+        }
+        backgroundColor.SetActive(false);
+        imageAreaColor.SetActive(false);
+        screenContentColor.SetActive(value);
+        color.a = (2 / 3);
+        screenContentColor.GetComponent<Image>().color = color;
     }
 }
