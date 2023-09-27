@@ -64,6 +64,74 @@ public class PlayNovelSceneController : SceneController
         InitializeMoneyAndScore();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            SetScreenContentColor(true, new UnityEngine.Color(0, 0, 0, 1));
+        } 
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            SetScreenContentColor(false, new UnityEngine.Color(0, 0, 0, 1));
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            SetImageAreaColor(true, new UnityEngine.Color(0, 0, 0, 1));
+        }
+        else if (Input.GetKeyDown(KeyCode.F))
+        {
+            SetImageAreaColor(false, new UnityEngine.Color(0, 0, 0, 1));
+        }
+        else if (Input.GetKeyDown(KeyCode.G))
+        {
+            SetBackgroundColor(true, new UnityEngine.Color(0, 0, 0, 1));
+        }
+        else if (Input.GetKeyDown(KeyCode.H))
+        {
+            SetBackgroundColor(false, new UnityEngine.Color(0, 0, 0, 1));
+        }
+        else if (Input.GetKeyDown(KeyCode.J))
+        {
+            SetScreenContentBlur(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.K))
+        {
+            SetScreenContentBlur(false);
+        }
+        else if (Input.GetKeyDown(KeyCode.L))
+        {
+            SetImageAreaBlur(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.M))
+        {
+            SetImageAreaBlur(false);
+        }
+        else if (Input.GetKeyDown(KeyCode.N))
+        {
+            SetBackGroundBlur(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.B))
+        {
+            SetBackGroundBlur(false);
+        }
+        else if (Input.GetKeyDown(KeyCode.V))
+        {
+            SetCharacterBrither(true, "Herr Mayer");
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            SetCharacterBrither(false, "Herr Mayer");
+        }
+        else if (Input.GetKeyDown(KeyCode.X))
+        {
+            SetCharacterBlur(true, "Herr Mayer");
+        }
+        else if (Input.GetKeyDown(KeyCode.Y))
+        {
+            SetCharacterBlur(false, "Herr Mayer");
+        }
+    }
+
     public void InitializeMoneyAndScore()
     {
         long money = MoneyManager.Instance().GetMoney();
@@ -532,14 +600,14 @@ public class PlayNovelSceneController : SceneController
         screenContentBlur.SetActive(value);
     }
 
-    public void SetBackGroundColor(bool value, UnityEngine.Color color)
+    public void SetBackgroundColor(bool value, UnityEngine.Color color)
     {
         if (backgroundColor == null)
         {
             return;
         }
         backgroundColor.SetActive(value);
-        color.a = (2 / 3);
+        color.a = (2f / 3f);
         backgroundColor.GetComponent<Image>().color = color;
     }
 
@@ -551,7 +619,7 @@ public class PlayNovelSceneController : SceneController
         }
         backgroundColor.SetActive(false);
         imageAreaColor.SetActive(value);
-        color.a = (2 / 3);
+        color.a = (2f / 3f);
         imageAreaColor.GetComponent<Image>().color = color;
     }
 
@@ -564,7 +632,41 @@ public class PlayNovelSceneController : SceneController
         backgroundColor.SetActive(false);
         imageAreaColor.SetActive(false);
         screenContentColor.SetActive(value);
-        color.a = (2 / 3);
+        color.a = (2f / 3f);
         screenContentColor.GetComponent<Image>().color = color;
+    }
+
+    public void SetCharacterBrither(bool value, string characterName)
+    {
+        if (!currentCharacters.ContainsKey(characterName))
+        {
+            return;
+        }
+
+        ShaderToggle shaderToogle = currentCharacters[characterName].GetComponent<ShaderToggle>();
+
+        if (shaderToogle == null)
+        {
+            return;
+        }
+
+        shaderToogle.SetCharacterBrightness(value);
+    }
+
+    public void SetCharacterBlur(bool value, string characterName)
+    {
+        if (!currentCharacters.ContainsKey(characterName))
+        {
+            return;
+        }
+
+        ShaderToggle shaderToogle = currentCharacters[characterName].GetComponent<ShaderToggle>();
+
+        if (shaderToogle == null)
+        {
+            return;
+        }
+
+        shaderToogle.SetCharacterBlur(value);
     }
 }
