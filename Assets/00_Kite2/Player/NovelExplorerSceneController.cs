@@ -53,12 +53,15 @@ public class NovelExplorerSceneController : SceneController, OnSuccessHandler
         if (memory == null)
         {
             explorerButtons.OnKiteNovelsButton();
-            GetNovelsServerCall call = Instantiate(getNovelsServerCall).GetComponent<GetNovelsServerCall>();
-            call.sceneController = this;
-            call.onSuccessHandler = this;
-            call.SendRequest();
-            DontDestroyOnLoad(call.gameObject);
-            return;
+
+            return; // Server Call is not performed, because its a GET-call and has a body. Since iOS 13 GET-calls are not allowed to have a body.
+
+            //GetNovelsServerCall call = Instantiate(getNovelsServerCall).GetComponent<GetNovelsServerCall>();
+            //call.sceneController = this;
+            //call.onSuccessHandler = this;
+            //call.SendRequest();
+            //DontDestroyOnLoad(call.gameObject);
+            //return;
         }
 
         userNovels = memory.GetUserNovels();

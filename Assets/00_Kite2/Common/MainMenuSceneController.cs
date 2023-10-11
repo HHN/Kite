@@ -42,7 +42,7 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     private void OnGuestMode()
     {
         GameManager.Instance().applicationMode = ApplicationModes.GUEST_MODE;
-        registerButton.gameObject.SetActive(true);
+        //registerButton.gameObject.SetActive(true);
         settingsButton.gameObject.SetActive(false);
         logInLogOutButton.GetComponentInChildren<TMP_Text>().text = "EINLOGGEN";
         loginLogoutImage.sprite = loginSprite;

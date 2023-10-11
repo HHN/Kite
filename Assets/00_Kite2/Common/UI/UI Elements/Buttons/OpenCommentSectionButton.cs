@@ -7,8 +7,9 @@ public class OpenCommentSectionButton : MonoBehaviour
 
     void Start()
     {
-        button.onClick.AddListener(delegate { OnClick(); });
-        Init();
+        return;
+        //button.onClick.AddListener(delegate { OnClick(); });
+        //Init();
     }
 
     public void Init()

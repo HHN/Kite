@@ -7,8 +7,9 @@ public class EditNovelButton : MonoBehaviour
 {
     public void Start()
     {
-        this.gameObject.GetComponent<Button>().onClick.AddListener(delegate { OnClick(); });
-        Init();
+        return;
+        //this.gameObject.GetComponent<Button>().onClick.AddListener(delegate { OnClick(); });
+        //Init();
     }
 
     public void Init()

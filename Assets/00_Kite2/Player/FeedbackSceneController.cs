@@ -49,7 +49,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler
         {
             return;
         }
-        feedbackText.SetText(response.completion);
-        novelToPlay.feedback = (response.completion);
+        feedbackText.SetText(response.completion.Trim());
+        novelToPlay.feedback = (response.completion.Trim());
     }
 }
