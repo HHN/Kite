@@ -18,13 +18,38 @@ public class MockUpController : MonoBehaviour
         continueButton.onClick.AddListener(delegate { Continue(); });
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            Back();
+        }
+    }
+
     public void Continue()
     {
-        if (currentIndex >= mockUpPages.Length)
+        if (currentIndex >= mockUpPages.Length - 1)
         {
             currentIndex = 0;
         }
+        else
+        {
+            currentIndex++;
+        }
         image.sprite = mockUpPages[currentIndex];
-        currentIndex++;
     }
+
+    public void Back()
+    {
+        if (currentIndex <= 0)
+        {
+            currentIndex = mockUpPages.Length - 1;
+        }
+        else
+        {
+            currentIndex--;
+        }
+        image.sprite = mockUpPages[currentIndex];
+    }
+
 }
