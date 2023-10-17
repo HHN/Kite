@@ -258,14 +258,6 @@ public class PressTalkNovel : VisualNovel
                 "Wenn der Artikel sich zu stark auf mein Geschlecht konzentriert, besteht die Gefahr, dass die Aufmerksamkeit von der eigentlichen Geschichte abgelenkt wird - " + 
                 "nämlich meiner Geschäftsidee, ihrer Entwicklung und ihrem Einfluss."
             },
-            // TOFO: FEHLT
-
-            // Neutral
-            // Wäre es möglich, dass mein Geschlecht nicht allzu sehr in dem Artikel hervorgehoben wird? Ich möchte für mein Unternehmen Aufmerksamkeit bekommen und nicht, weil ich eine Frau bin.
-            // Wie reagiert die Person?
-            // Positiv
-            // Neutral
-            // Ablehnend
 
             new VisualNovelEvent()
             {
