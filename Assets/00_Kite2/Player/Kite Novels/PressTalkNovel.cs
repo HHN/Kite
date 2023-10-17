@@ -1122,21 +1122,6 @@ public class PressTalkNovel : VisualNovel
                 "Ich denke, es ist am besten, wenn wir das Gespräch hier beenden.Auf Wiedersehen."
             },
 
-
-
-
-
-            // new VisualNovelEvent()
-            // {
-            //     id = 24,
-            //     nextId = 23,
-            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-            //     waitForUserConfirmation = true,
-            //     name = "Frau Mayer",
-            //     text = "Ich wünsche Ihnen viel Erfolg für Ihr Unternehmen! Auf Wiedersehen!",
-            //     expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
-            // },
-
             new VisualNovelEvent()
             {
                 id = 99,
@@ -1152,7 +1137,7 @@ public class PressTalkNovel : VisualNovel
             {
                 id = 101,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.END_NOVEL_EVENT),
-                waitForUserConfirmation = false
+                waitForUserConfirmation = true
             },
 
             new VisualNovelEvent()
@@ -1168,20 +1153,20 @@ public class PressTalkNovel : VisualNovel
             if(optionOneOrTwo == 0){
                 value = Random.Range(0, 10);
                 if(value < 5){
-                    return 22;
+                    return 31;
                 } else if(value > 8){
-                    return 28;
+                    return 32;
                 } else {
-                    return 51;
+                    return 70;
                 }
             } else {
                 value = Random.Range(0, 10);
                 if(value < 2){
-                    return 22;
+                    return 31;
                 } else if(value > 6){
-                    return 28;
+                    return 32;
                 } else {
-                    return 51;
+                    return 70;
                 }
             }
         }
