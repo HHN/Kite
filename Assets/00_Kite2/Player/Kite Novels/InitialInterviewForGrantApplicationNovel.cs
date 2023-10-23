@@ -261,8 +261,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 3,
-                text = "Deine Idee scheint überzeugt zu haben. Also ist ein ermutigtes Gefühl durchaus angemessen! " + 
-                "Du hast schließlich die Fakten deines Businessplans im Kopf und weißt, was du damit erreichen willst.
+                text = "Deine Idee scheint überzeugt zu haben. Also ist ein ermutigtes Gefühl durchaus angemessen! " +
+                "Du hast schließlich die Fakten deines Businessplans im Kopf und weißt, was du damit erreichen willst."
             },
 
             new VisualNovelEvent()
