@@ -296,7 +296,7 @@ public class CallWithParentsNovel : VisualNovel
             {
                 id = 27,
                 nextId = 28,
-                onChoice = 44,
+                onChoice = 43,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -360,7 +360,7 @@ public class CallWithParentsNovel : VisualNovel
             {
                 id = 33,
                 nextId = 34,
-                onChoice = 36,
+                onChoice = 149,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -371,7 +371,7 @@ public class CallWithParentsNovel : VisualNovel
             {
                 id = 34,
                 nextId = 35,
-                onChoice = 36,
+                onChoice = 149,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -382,86 +382,11 @@ public class CallWithParentsNovel : VisualNovel
             {
                 id = 35,
                 nextId = 200,
-                onChoice = 36,
+                onChoice = 149,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
                 text = "... für die Besichtigung von Büroräumen."
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 36,
-                nextId = 37,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = "Lea",
-                text = "Mal schauen, wie das läuft."
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 37,
-                nextId = 38,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = "Mama",
-                text = "Da bin ich auch gespannt. Denk dran, die Leute werden sich wohler fühlen, mit dir zu arbeiten, " + 
-                "wenn du freundlich und aufgeschlossen auftrittst.",
-                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.QUESTIONING)
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 38,
-                nextId = 39,
-                onChoice = 40,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                name = "Lea",
-                text = "Du gehst nicht weiter darauf ein."
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 39,
-                nextId = 200,
-                onChoice = 43,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                name = "Lea",
-                text = "Du gehst auf diesen Kommentar ein."
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 40,
-                nextId = 41,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = "Lea",
-                text = "Hm, ich muss dann auch weiter."
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 41,
-                nextId = 42,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = "Lea",
-                text = "Ich halte euch auf dem Laufenden. Bis dann."
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 42,
-                nextId = 199,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = "Mama",
-                text = "Alles klar, und besuch uns auch mal wieder. Bis dann.",
-                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
             new VisualNovelEvent()
@@ -1606,6 +1531,133 @@ public class CallWithParentsNovel : VisualNovel
                 waitForUserConfirmation = false,
                 name = "Lea",
                 text = "Was ist denn das für eine Logik?"
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 149,
+                nextId = 150,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Lea",
+                text = "Ich bin schon total gespannt, wie das sein wird!"
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 150,
+                nextId = Random.Range(151, 153),
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Mama",
+                text = "Ich freue mich so für dich! Erzähl dann, wie es dann verlaufen ist, ja?",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.HAPPY)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 151,
+                nextId = 158,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Lea",
+                text = "Klar, ich melde mich dann."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 152,
+                nextId = 153,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Mama",
+                text = "Und du kannst auch deinen weiblichen Charme nutzen! Dann helfen Leute dir noch viel lieber.",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.HAPPY)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 153,
+                nextId = 154,
+                onChoice = 151,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                name = "Lea",
+                text = "Du beschließt, nicht weiter auf diesen Kommentar einzugehen."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 154,
+                nextId = 200,
+                onChoice = 155,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                name = "Lea",
+                text = "Du gehst auf diesen Kommentar ein."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 155,
+                nextId = 156,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Lea",
+                text = "Das würdest du jetzt nicht zu einem Mann sagen. Was soll 'weiblicher Charme' überhaupt bedeuten?"
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 156,
+                nextId = 157,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Mama",
+                text = "Du hast ja recht. Da habe ich nicht richtig darüber nachgedacht.",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.DEFEATED)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 157,
+                nextId = 151,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Mama",
+                text = "Melde dich einfach nach dem Termin, ja?",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.DEFEATED)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 158,
+                nextId = 159,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Lea",
+                text = "Ich muss auch schon wieder weiter."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 159,
+                nextId = 160,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Lea",
+                text = "Nochmal danke und bis dann."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 160,
+                nextId = 199,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Mama",
+                text = "Melde dich einfach nach dem Termin, ja?",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.DEFEATED)
             },
 
             new VisualNovelEvent()
