@@ -25,19 +25,19 @@ public class PlayManager
         {
             return null;
         }
-        
+         
 
         /**
         string feedback = "In diesem Szenario hat der Bankmitarbeiter die Unternehmerin diskriminiert. " +
-            "Er hat unangemessene Fragen zu ihrem Familienstand gestellt, was irrelevant für den Kreditantrag ist. " +
-            "Es ist nicht seine Aufgabe, die Familienplanung der Unternehmerin zu beurteilen oder zu berücksichtigen. " +
-            "Es ist auch nicht angebracht, nach einem Ehepartner oder einem größeren Startkapital zu fragen, " +
-            "da dies nicht relevant für den Kreditantrag ist." + " \n\n" + "Die Unternehmerin hat sich jedoch gut verhalten, " +
+            "Er hat unangemessene Fragen zu ihrem Familienstand gestellt, was irrelevant fï¿½r den Kreditantrag ist. " +
+            "Es ist nicht seine Aufgabe, die Familienplanung der Unternehmerin zu beurteilen oder zu berï¿½cksichtigen. " +
+            "Es ist auch nicht angebracht, nach einem Ehepartner oder einem grï¿½ï¿½eren Startkapital zu fragen, " +
+            "da dies nicht relevant fï¿½r den Kreditantrag ist." + " \n\n" + "Die Unternehmerin hat sich jedoch gut verhalten, " +
             "indem sie ruhig und sachlich geblieben ist und die Fragen des Bankmitarbeiters beantwortet hat. " +
-            "Sie hat auch den Ablauf des Gesprächs und ihre Erwartungen klar ausgedrückt und um konkrete Fragen gebeten. \n\n" + 
+            "Sie hat auch den Ablauf des Gesprï¿½chs und ihre Erwartungen klar ausgedrï¿½ckt und um konkrete Fragen gebeten. \n\n" + 
             "Die Unternehmerin sollte das Verhalten des Bankmitarbeiters ansprechen und gegebenenfalls eine " +
-            "Beschwerde einreichen. Es ist wichtig, dass der Bankmitarbeiter sein Verhalten überdenkt und sich " +
-            "in Zukunft professioneller verhält, um Diskriminierung zu vermeiden.";
+            "Beschwerde einreichen. Es ist wichtig, dass der Bankmitarbeiter sein Verhalten ï¿½berdenkt und sich " +
+            "in Zukunft professioneller verhï¿½lt, um Diskriminierung zu vermeiden.";
        
         novelToPlay.feedback = feedback;
         */

@@ -1621,16 +1621,16 @@ public class CallWithParentsNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 201,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.END_NOVEL_EVENT),
-                waitForUserConfirmation = false
+                id = 200,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_CHOICES_EVENT),
+                waitForUserConfirmation = true
             },
 
             new VisualNovelEvent()
             {
-                id = 200,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_CHOICES_EVENT),
-                waitForUserConfirmation = true
+                id = 201,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.END_NOVEL_EVENT),
+                waitForUserConfirmation = false
             }
             
         };

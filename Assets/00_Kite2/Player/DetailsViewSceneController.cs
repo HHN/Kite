@@ -37,7 +37,7 @@ public class DetailsViewSceneController : SceneController
     public void OnPlayButton()
     {
         PlayManager.Instance().SetVisualNovelToPlay(novelToDisplay);
-        SceneLoader.LoadPlayNovelScene();
+        SceneLoader.LoadPlayNovelScene(); 
     }
 
     private Sprite FindBigSpriteById(long id)

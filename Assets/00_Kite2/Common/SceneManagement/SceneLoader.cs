@@ -88,5 +88,5 @@ public class SceneLoader
             }
         }
         SceneManager.LoadScene(sceneName);
-    }
+    } 
 }

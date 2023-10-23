@@ -33,6 +33,7 @@ public class PlayNovelSceneController : SceneController
     public CharacterController currentTalkingCharacterController;
     public GameObject tapToContinueAnimation;
     private bool isTyping;
+    private List<string> playThroughHistory = new List<string>();
 
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI moneyText;
@@ -205,6 +206,7 @@ public class PlayNovelSceneController : SceneController
                 }
             case VisualNovelEventType.CHARAKTER_EXIT_EVENT:
                 {
+                    Debug.Log(getPlayThroughHistoryAsString());
                     HandleCharacterExitEvent(nextEventToPlay);
                     break;
                 }
@@ -367,6 +369,11 @@ public class PlayNovelSceneController : SceneController
 
         conversationContent.AddContent(novelEvent, this);
 
+        Debug.Log("Show message event");
+        Debug.Log("name: " + novelEvent.name);
+        Debug.Log("text: " + novelEvent.text);
+        addEntryToPlayThroughHistory(novelEvent.name, novelEvent.text);
+
         if (novelEvent.waitForUserConfirmation)
         {
             SetWaitingForConfirmation(true);
@@ -391,7 +398,11 @@ public class PlayNovelSceneController : SceneController
     }
 
     public void HandleShowChoicesEvent(VisualNovelEvent novelEvent)
-    {
+    { 
+        Debug.Log("Show choice event");
+        Debug.Log("name: " + novelEvent.name);
+        Debug.Log("text: " + novelEvent.text);
+        addEntryToPlayThroughHistory(novelEvent.name, novelEvent.text);
         conversationContent.AddContent(novelEvent, this);
     }
 
@@ -463,6 +474,8 @@ public class PlayNovelSceneController : SceneController
 
     public void ShowAnswer(string message)
     {
+        Debug.Log("answer: " + message);
+        addEntryToPlayThroughHistory("Lea", message);
         conversationContent.ShowPlayerAnswer(message);
         ScrollToBottom();
     }
@@ -669,4 +682,18 @@ public class PlayNovelSceneController : SceneController
 
         shaderToogle.SetCharacterBlur(value);
     }
+
+    private void addEntryToPlayThroughHistory(string name, string text){
+        playThroughHistory.Add(name + ": " + text);
+    }
+
+    private string getPlayThroughHistoryAsString(){
+        var returnString = "";
+        foreach(string entry in playThroughHistory){
+            returnString += entry + "\n";
+        }
+        return returnString;
+    }
 }
+
+    
