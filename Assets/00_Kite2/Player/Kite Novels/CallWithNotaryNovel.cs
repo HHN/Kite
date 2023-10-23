@@ -611,7 +611,7 @@ public class CallWithNotaryNovel : VisualNovel
             {
                 id = 57,
                 nextId = Random.Range(58,60),
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
                 text = "Es ist mir wichtig, dass meine Position als Geschäftsführerin richtig anerkannt wird. Ich erwarte, in diesem Prozess angemessen behandelt zu werden."
