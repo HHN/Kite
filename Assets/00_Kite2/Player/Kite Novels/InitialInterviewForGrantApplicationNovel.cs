@@ -1158,7 +1158,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 104,
-                nextId = 177,
+                nextId = 178,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
@@ -1960,7 +1960,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 177,
+                id = 178,
                 nextId = 39,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
