@@ -8,12 +8,7 @@ public class AccountNovelManager
 
     private AccountNovelManager()
     {
-        novels = new List<VisualNovel>
-        {
-            new ConversationWithAcquaintancesNovel() { id = 0},
-            new BankAppointmentNovel(),
-            new FeeNegotiationNovel() { id = 0},
-        };
+        novels = new List<VisualNovel>();
     }
 
     public static AccountNovelManager Instance()

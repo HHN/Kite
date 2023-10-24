@@ -8,6 +8,8 @@ public class VisualNovelRepresentation : MonoBehaviour
     public Button button;
     public TextMeshProUGUI novelHeadline;
     public GameObject privateHint;
+    public GameObject modifiedHint; // Modified from KITE II Team
+    public GameObject kiteOneHint;  // Novel from Kite I
 
     void Start()
     {
@@ -36,6 +38,14 @@ public class VisualNovelRepresentation : MonoBehaviour
         if (visualNovel.id == 0)
         {
             privateHint.SetActive(true);
+        }
+        else if ((visualNovel.id == (-3)) || (visualNovel.id == (-4)) || (visualNovel.id == (-6)) || (visualNovel.id == (-7)))
+        {
+            modifiedHint.SetActive(true);
+        }
+        else if (visualNovel.id < 0)
+        {
+            kiteOneHint.SetActive(true);
         }
     }
 }

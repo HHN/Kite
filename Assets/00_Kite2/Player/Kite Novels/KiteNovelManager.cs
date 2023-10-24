@@ -7,13 +7,16 @@ public class KiteNovelManager : MonoBehaviour
 
     static KiteNovelManager()
     {
-        novels[-1] = new BankTalkNovel();
-        novels[-2] = new CallWithParentsNovel();
+        //already modified novels
         novels[-3] = new PressTalkNovel();
         novels[-4] = new CallWithNotaryNovel();
-        novels[-5] = new BankAccountOpeningNovel();
         novels[-6] = new RentingAnOfficeNovel();
         novels[-7] = new InitialInterviewForGrantApplicationNovel();
+
+        // not modified novels
+        novels[-1] = new BankTalkNovel();
+        novels[-2] = new CallWithParentsNovel();
+        novels[-5] = new BankAccountOpeningNovel();
         novels[-8] = new StartUpGrantNovel();
         novels[-9] = new ConversationWithAcquaintancesNovel();
         novels[-10] = new BankAppointmentNovel();
