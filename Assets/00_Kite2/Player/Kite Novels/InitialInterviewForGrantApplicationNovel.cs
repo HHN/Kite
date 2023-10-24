@@ -1158,7 +1158,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 104,
-                nextId = 98,
+                nextId = 177,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
@@ -1956,6 +1956,18 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 name = "Lea",
                 text = "Ich finde es unangemessen, nach meinem Familienstand gefragt zu werden. " +
                 "Meine Fähigkeiten als Unternehmerin sollten nicht davon abhängen."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 177,
+                nextId = 39,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Herr Müller",
+                text = "Ihre Überlegungen in Bezug auf Ihren Kinderwunsch sind relevant, um sicherzustellen, " + 
+                "dass Ihr Unternehmen stabil läuft, während Sie auch persönliche Verpflichtungen haben.",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.NONE)
             },
 
 
