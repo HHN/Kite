@@ -1,4 +1,5 @@
 using UnityEngine.Networking;
+using UnityEngine;
 
 public class GetCompletionServerCall : ServerCall
 {
@@ -6,8 +7,9 @@ public class GetCompletionServerCall : ServerCall
 
     protected override object CreateRequestObject()
     {
-        GptRequest call = new GptRequest();
+        GptRequest call = new GptRequest(); 
         call.prompt = prompt;
+        Debug.Log("Prompt: " + prompt);
         return call;
     }
 

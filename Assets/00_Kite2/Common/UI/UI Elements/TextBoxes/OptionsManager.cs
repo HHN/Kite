@@ -8,16 +8,19 @@ public class OptionsManager : MonoBehaviour
     public ChatMessageBox optionB;
     public ChatMessageBox optionC;
     public ChatMessageBox optionD;
+    public ChatMessageBox optionE;
 
     private long idA;
     private long idB;
     private long idC;
     private long idD;
+    private long idE;
 
     private string stringA;
     private string stringB;
     private string stringC;
     private string stringD;
+    private string stringE;
 
     private bool selected = false;
 
@@ -28,7 +31,6 @@ public class OptionsManager : MonoBehaviour
     public void Initialize(PlayNovelSceneController sceneController, List<VisualNovelEvent> options)
     {
         this.sceneController = sceneController;
-
         if (options.Count == 0)
         {
             gameObject.SetActive(false);
@@ -43,6 +45,7 @@ public class OptionsManager : MonoBehaviour
             optionB.gameObject.SetActive(false);
             optionC.gameObject.SetActive(false);
             optionD.gameObject.SetActive(false);
+            optionE.gameObject.SetActive(false);
             return;
         }
         optionB.SetMessage(options[1].text);
@@ -53,6 +56,7 @@ public class OptionsManager : MonoBehaviour
         {
             optionC.gameObject.SetActive(false);
             optionD.gameObject.SetActive(false);
+            optionE.gameObject.SetActive(false);
             return;
         }
         optionC.SetMessage(options[2].text);
@@ -62,11 +66,21 @@ public class OptionsManager : MonoBehaviour
         if (options.Count == 3)
         {
             optionD.gameObject.SetActive(false);
+            optionE.gameObject.SetActive(false);
             return;
         }
         optionD.SetMessage(options[3].text);
         idD = options[3].onChoice;
         stringD = options[3].text;
+
+        if (options.Count == 4)
+        {
+            optionE.gameObject.SetActive(false);
+            return;
+        }
+        optionE.SetMessage(options[4].text);
+        idE = options[4].onChoice;
+        stringE = options[4].text;
         return;
     }
 
@@ -88,6 +102,11 @@ public class OptionsManager : MonoBehaviour
     public void OnOptionD()
     {
         StartCoroutine(AfterSelection("Selected D", stringD, idD));
+    }
+
+    public void OnOptionE()
+    {
+        StartCoroutine(AfterSelection("Selected E", stringE, idE));
     }
 
     public IEnumerator AfterSelection(string parameterName, string answer, long nextEventID)

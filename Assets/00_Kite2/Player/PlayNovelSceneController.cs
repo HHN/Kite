@@ -33,6 +33,7 @@ public class PlayNovelSceneController : SceneController
     public CharacterController currentTalkingCharacterController;
     public GameObject tapToContinueAnimation;
     private bool isTyping;
+    private List<string> playThroughHistory = new List<string>();
 
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI moneyText;
@@ -205,6 +206,7 @@ public class PlayNovelSceneController : SceneController
                 }
             case VisualNovelEventType.CHARAKTER_EXIT_EVENT:
                 {
+                    Debug.Log(GetPlayThroughHistoryAsString());
                     HandleCharacterExitEvent(nextEventToPlay);
                     break;
                 }
@@ -367,6 +369,8 @@ public class PlayNovelSceneController : SceneController
 
         conversationContent.AddContent(novelEvent, this);
 
+        AddEntryToPlayThroughHistory(novelEvent.name, novelEvent.text);
+
         if (novelEvent.waitForUserConfirmation)
         {
             SetWaitingForConfirmation(true);
@@ -391,7 +395,8 @@ public class PlayNovelSceneController : SceneController
     }
 
     public void HandleShowChoicesEvent(VisualNovelEvent novelEvent)
-    {
+    { 
+        AddEntryToPlayThroughHistory(novelEvent.name, novelEvent.text);
         conversationContent.AddContent(novelEvent, this);
     }
 
@@ -463,6 +468,7 @@ public class PlayNovelSceneController : SceneController
 
     public void ShowAnswer(string message)
     {
+        AddEntryToPlayThroughHistory("Lea", message);
         conversationContent.ShowPlayerAnswer(message);
         ScrollToBottom();
     }
@@ -669,4 +675,18 @@ public class PlayNovelSceneController : SceneController
 
         shaderToogle.SetCharacterBlur(value);
     }
+
+    private void AddEntryToPlayThroughHistory(string name, string text){
+        playThroughHistory.Add(name + ": " + text);
+    }
+
+    private string GetPlayThroughHistoryAsString(){
+        var returnString = "";
+        foreach(string entry in playThroughHistory){
+            returnString += entry + "\n";
+        }
+        return returnString;
+    }
 }
+
+    
