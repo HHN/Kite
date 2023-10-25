@@ -9,12 +9,12 @@ public class MockUpController : MonoBehaviour
     [SerializeField] private Button continueButton;
     [SerializeField] private Image image;
 
-    private int currentIndex;
+    [SerializeField] private int currentIndex;
 
 
     void Start()
     {
-        currentIndex = 1;
+        currentIndex = 0;
         continueButton.onClick.AddListener(delegate { Continue(); });
     }
 
