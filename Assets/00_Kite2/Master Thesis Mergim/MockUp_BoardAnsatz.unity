@@ -621,6 +621,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 748bafd65346d7645a5d0c2d8358d4cf, type: 3}
   - {fileID: 21300000, guid: 9bfa458cb64eeeb469d9fb6683c2a7dd, type: 3}
   - {fileID: 21300000, guid: 3a82ce5d5d690184a8d5606a5cfdc51b, type: 3}
+  - {fileID: 21300000, guid: 07fada73186645847a4e36d5733ed602, type: 3}
   continueButton: {fileID: 1046164964}
   image: {fileID: 1046164962}
   currentIndex: 0
