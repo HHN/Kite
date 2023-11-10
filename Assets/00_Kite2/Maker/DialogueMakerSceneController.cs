@@ -1,18 +1,44 @@
 using UnityEngine.UI;
+using UnityEngine;
 
 public class DialogueMakerSceneController : SceneController
 {
-    public Button nextButton;
+    [SerializeField] private Button infoButton;
+    [SerializeField] private Animator detailsPanelAnimator;
+    [SerializeField] private RectTransform detailsPanel;
 
     void Start()
     {
         BackStackManager.Instance().Push(SceneNames.DIALOGUE_MAKER_SCENE);
 
-        nextButton.onClick.AddListener(delegate { OnNextButton(); });
+        infoButton.onClick.AddListener(delegate { OnInfoButton(); });
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(detailsPanel);
     }
 
-    public void OnNextButton()
+    private void Update()
     {
-        SceneLoader.LoadSaveNovelScene();
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            OpenDetailsPanel();
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            CloseDetailsPanel();
+        }
+    }
+
+    public void OnInfoButton()
+    {
+    }
+
+    public void OpenDetailsPanel()
+    {
+        detailsPanelAnimator.SetBool("isOpen", true);
+    }
+
+    public void CloseDetailsPanel()
+    {
+        detailsPanelAnimator.SetBool("isOpen", false);
     }
 }
