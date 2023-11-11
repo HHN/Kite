@@ -699,6 +699,12 @@ MonoBehaviour:
   dialogueNodeWrapperRectTransform: {fileID: 177876071}
   dialogueNodeRectTransform: {fileID: 1818440968}
   contextMenuRectTransform: {fileID: 362534622}
+  optionsButton: {fileID: 407898766}
+  addNodeButton: {fileID: 992438215}
+  editNodeButton: {fileID: 937375477}
+  connectNodeButton: {fileID: 10908440}
+  isContextMenuVisible: 0
+  contextMenu: {fileID: 362534621}
 --- !u!1 &257451214
 GameObject:
   m_ObjectHideFlags: 0
