@@ -116,7 +116,7 @@ public class RoomMenuSceneController : SceneController, OnSuccessHandler
     public void OnNovelMakerButton()
     {
         Debug.Log("OnNovelMakerButton");
-        SceneLoader.LoadGenerateNovelScene();
+        SceneLoader.LoadNovelMakerScene();
     }
 
     public void OnLogInButton()

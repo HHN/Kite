@@ -1,7 +1,7 @@
 using UnityEngine.UI;
 using UnityEngine;
 
-public class DialogueMakerSceneController : SceneController
+public class NovelMakerSceneController : SceneController
 {
     [SerializeField] private Button infoButton;
     [SerializeField] private Animator detailsPanelAnimator;
@@ -9,7 +9,7 @@ public class DialogueMakerSceneController : SceneController
 
     void Start()
     {
-        BackStackManager.Instance().Push(SceneNames.DIALOGUE_MAKER_SCENE);
+        BackStackManager.Instance().Push(SceneNames.NOVEL_MAKER_SCENE);
 
         infoButton.onClick.AddListener(delegate { OnInfoButton(); });
 

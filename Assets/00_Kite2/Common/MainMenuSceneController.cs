@@ -81,7 +81,7 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
 
     public void OnNovelMakerButton()
     {
-        SceneLoader.LoadGenerateNovelScene();
+        SceneLoader.LoadNovelMakerScene();
     }
 
     public void OnLogInButton()

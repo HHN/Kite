@@ -74,7 +74,7 @@ public class SceneBase : MonoBehaviour
 
     public void OnNovelMakerButton()
     {
-        SceneLoader.LoadGenerateNovelScene();
+        SceneLoader.LoadNovelMakerScene();
     }
 
     public void OnSettingsButton()

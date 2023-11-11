@@ -7,26 +7,6 @@ public class SceneLoader
         LoadScene(SceneNames.MAIN_MENU_SCENE);
     }
 
-    public static void LoadCharacterMakerScene() {
-        LoadScene(SceneNames.CHARACTER_MAKER_SCENE);
-    }
-
-    public static void LoadDialogueMakerScene() {
-        LoadScene(SceneNames.DIALOGUE_MAKER_SCENE);
-    }
-
-    public static void LoadEnvironmentMakerScene() {
-        LoadScene(SceneNames.ENVIRONMENT_MAKER_SCENE);
-    }
-
-    public static void LoadGenerateNovelScene() {
-        LoadScene(SceneNames.GENERATE_NOVEL_SCENE);
-    }
-
-    public static void LoadSaveNovelScene() {
-        LoadScene(SceneNames.SAVE_NOVEL_SCENE);
-    }
-
     public static void LoadPlayNovelScene() {
         LoadScene(SceneNames.PLAY_NOVEL_SCENE);
     }
@@ -74,6 +54,36 @@ public class SceneLoader
     public static void LoadCommentSectionScene()
     {
         LoadScene(SceneNames.COMMENT_SECTION_SCENE);
+    }
+
+    public static void LoadNovelMakerScene()
+    {
+        LoadScene(SceneNames.NOVEL_MAKER_SCENE);
+    }
+
+    public static void LoadCharacterExplorerScene()
+    {
+        LoadScene(SceneNames.CHARACTER_EXPLORER_SCENE);
+    }
+
+    public static void LoadEnvironmentExplorerScene()
+    {
+        LoadScene(SceneNames.ENVIRONMENT_EXPLORER_SCENE);
+    }
+
+    public static void LoadFinishNovelScene()
+    {
+        LoadScene(SceneNames.FINISH_NOVEL_SCENE);
+    }
+
+    public static void LoadHelpForNovelMakerScene()
+    {
+        LoadScene(SceneNames.HELP_FOR_NOVEL_MAKER_SCENE);
+    }
+
+    public static void LoadNovelPreviewScene()
+    {
+        LoadScene(SceneNames.NOVEL_PREVIEW_SCENE);
     }
 
     public static void LoadScene(string sceneName)
