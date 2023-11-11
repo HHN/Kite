@@ -19,5 +19,5 @@ public class SceneNames
     public const string ENVIRONMENT_EXPLORER_SCENE = "EnvironmentExplorerScene";
     public const string FINISH_NOVEL_SCENE = "FinishNovelScene";
     public const string HELP_FOR_NOVEL_MAKER_SCENE = "HelpForNovelMakerScene";
-    public const string NOVEL_PREVIEW_SCENE = "NovelPreviewSceneController";
+    public const string NOVEL_PREVIEW_SCENE = "NovelPreviewScene";
 }

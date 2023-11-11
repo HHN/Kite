@@ -3,7 +3,11 @@ using UnityEngine;
 
 public class NovelMakerSceneController : SceneController
 {
-    [SerializeField] private Button infoButton;
+    [SerializeField] private Button helpButton;
+    [SerializeField] private Button characterExplorerButton;
+    [SerializeField] private Button environmentExplorerButton;
+    [SerializeField] private Button previewNovelButton;
+    [SerializeField] private Button finishNovelButton;
     [SerializeField] private Animator detailsPanelAnimator;
     [SerializeField] private RectTransform detailsPanel;
 
@@ -11,7 +15,11 @@ public class NovelMakerSceneController : SceneController
     {
         BackStackManager.Instance().Push(SceneNames.NOVEL_MAKER_SCENE);
 
-        infoButton.onClick.AddListener(delegate { OnInfoButton(); });
+        helpButton.onClick.AddListener(delegate { OnHelpButton(); });
+        characterExplorerButton.onClick.AddListener(delegate { OnCharacterExplorerButton(); });
+        environmentExplorerButton.onClick.AddListener(delegate { OnEnvironmentExplorerButton(); });
+        previewNovelButton.onClick.AddListener(delegate { OnPreviewButton(); });
+        finishNovelButton.onClick.AddListener(delegate { OnFinishNovelButton(); });
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(detailsPanel);
     }
@@ -28,8 +36,29 @@ public class NovelMakerSceneController : SceneController
         }
     }
 
-    public void OnInfoButton()
+    public void OnHelpButton()
     {
+        SceneLoader.LoadHelpForNovelMakerScene();
+    }
+
+    public void OnCharacterExplorerButton()
+    {
+        SceneLoader.LoadCharacterExplorerScene();
+    }
+
+    public void OnPreviewButton()
+    {
+        SceneLoader.LoadNovelPreviewScene();
+    }
+
+    public void OnEnvironmentExplorerButton()
+    {
+        SceneLoader.LoadEnvironmentExplorerScene();
+    }
+
+    public void OnFinishNovelButton()
+    {
+        SceneLoader.LoadFinishNovelScene();
     }
 
     public void OpenDetailsPanel()
