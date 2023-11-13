@@ -67,7 +67,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
             {
                 id = 5,
                 nextId = 6,
-                onChoice = 179,
+                onChoice = 9,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -78,7 +78,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
             {
                 id = 6,
                 nextId = 7,
-                onChoice = 180,
+                onChoice = 10,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -89,7 +89,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
             {
                 id = 7,
                 nextId = 8,
-                onChoice = 181,
+                onChoice = 11,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -100,7 +100,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
             {
                 id = 8,
                 nextId = 400,
-                onChoice = 182,
+                onChoice = 12,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -302,7 +302,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
             {
                 id = 26,
                 nextId = 27,
-                onChoice = 183,
+                onChoice = 31,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -313,7 +313,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
             {
                 id = 27,
                 nextId = 28,
-                onChoice = 184,
+                onChoice = Random.Range(82, 85),
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -324,7 +324,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
             {
                 id = 28,
                 nextId = 29,
-                onChoice = 185,
+                onChoice = 102,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -335,7 +335,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
             {
                 id = 29,
                 nextId = 30,
-                onChoice = 186,
+                onChoice = 133,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -346,7 +346,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
             {
                 id = 30,
                 nextId = 400,
-                onChoice = 187,
+                onChoice = Random.Range(167, 170),
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -444,7 +444,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
             {
                 id = 39,
                 nextId = 40,
-                onChoice = 188,
+                onChoice = 42,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -455,7 +455,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
             {
                 id = 40,
                 nextId = 41,
-                onChoice = 189,
+                onChoice = 68,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -466,7 +466,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
             {
                 id = 41,
                 nextId = 400,
-                onChoice = 190,
+                onChoice = 77,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -509,11 +509,12 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
             {
                 id = 45,
                 nextId = 46,
-                onChoice = 47,
+                onChoice = 179,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Ich möchte nach Informationen zu Förderungen fragen."
+                text = "Ich möchte nach Informationen zu Förderungen fragen.",
+                show = false
             },
 
             new VisualNovelEvent()
@@ -721,7 +722,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Ich möchte nach Informationen zu Förderungen fragen."
+                text = "Ich möchte nach Informationen zu Förderungen fragen.",
+                show = false
             },
 
             new VisualNovelEvent()
@@ -897,7 +899,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Ich habe bereits Überlegung getroffen und habe Strategien entwickelt, um damit umzugehen."
+                text = "Ich habe bereits Überlegung getroffen und habe Strategien entwickelt, um damit umzugehen.",
+                show = false
             },
 
             new VisualNovelEvent()
@@ -907,7 +910,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
-                text = "Ich habe jedoch meine Entscheidung nach reiflicher Überlegung getroffen und habe Strategien, um eine mögliche Überforderung zu vermeiden."
+                text = "Ich habe meine Entscheidung nach reiflicher Überlegung getroffen und habe Strategien, " +
+                "um eine mögliche Überforderung zu vermeiden."
             },
 
             new VisualNovelEvent()
@@ -1052,7 +1056,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Ich möchte lieber mit einer anderen Ansprechperson zusammenarbeiten."
+                text = "Ich möchte lieber mit einer anderen Ansprechperson zusammenarbeiten.",
+                show = false
             },
 
             new VisualNovelEvent()
@@ -1063,7 +1068,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Ich frage lieber woanders nach Informationen zu Förderungen."
+                text = "Ich frage lieber woanders nach Informationen zu Förderungen.",
+                show = false
             },
 
             new VisualNovelEvent()
@@ -1073,7 +1079,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
-                text = "Wenn meine Fähigkeiten infrage gestelllt werden, weil Sie Negatives mit Frauen " +
+                text = "Wenn meine Fähigkeiten infrage gestellt werden, weil Sie Negatives mit Frauen " +
                 "als Gründerinnen verbinden, fühle ich mich nicht angemessen unterstützt und respektiert. " +
                 "Deshalb möchte ich das Gespräch beenden und in Zukunft mit einer anderen Ansprechperson zusammenarbeiten."
             },
@@ -1419,7 +1425,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Ich möchte nach Informationen zu Förderungen fragen."
+                text = "Ich möchte nach Informationen zu Förderungen fragen.",
+                show = false
             },
 
             new VisualNovelEvent()
@@ -1575,7 +1582,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Ich möchte klar sagen, dass das sexistisch ist."
+                text = "Ich möchte klar sagen, dass das sexistisch ist.",
+                show = false
             },
 
             new VisualNovelEvent()
@@ -1653,7 +1661,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Meine persönliche Situation sollte keinen Einfluss auf meine Fähigkeiten haben."
+                text = "Meine persönliche Situation sollte keinen Einfluss auf meine Fähigkeiten haben.",
+                show = false
             },
 
             new VisualNovelEvent()
@@ -1664,7 +1673,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Konzentrieren wir uns auf die Geschäftsidee an sich."
+                text = "Konzentrieren wir uns auf die Geschäftsidee an sich.",
+                show = false
             },
 
             new VisualNovelEvent()
@@ -1763,7 +1773,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Ich möchte einlenken und beschwichtigen."
+                text = "Ich möchte einlenken und beschwichtigen.",
+                show = false
             },
 
             new VisualNovelEvent()
@@ -1774,7 +1785,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Ich möchte klar sagen, dass diese Haltung inakzeptabel ist."
+                text = "Ich möchte klar sagen, dass diese Haltung inakzeptabel ist.",
+                show = false
             },
 
             new VisualNovelEvent()
@@ -1784,8 +1796,9 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
-                text = "Danke, dass Sie das so offen ansprechen. Ich bin mir bewusst, wie anspruchsvoll " +
-                "das Unternehmertum sein kann. Ich werde sicherstellen, dass ich alle Aspekte sorgfältig berücksichtige, um erfolgreich zu sein."
+                text = "Danke, dass Sie das so offen ansprechen. Ich bin mir bewusst, wie " +
+                "anspruchsvoll das Unternehmertum sein kann. Ich werde sicherstellen, dass " +
+                "ich alle Aspekte sorgfältig berücksichtige, um erfolgreich zu sein."
             },
 
             new VisualNovelEvent()
@@ -1806,8 +1819,9 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
-                text = "Ihre Haltung ist inakzeptabel. Meine Entscheidung, diese Frage nicht zu beantworten, sollte " +
-                "keinen Einfluss auf meine Fähigkeiten als Unternehmerin haben. Ich erwarte, respektvoll behandelt zu werden."
+                text = "Ihre Haltung ist inakzeptabel. Meine Entscheidung, diese Frage nicht zu " +
+                "beantworten, sollte keinen Einfluss auf meine Fähigkeiten als Unternehmerin haben. " +
+                "Ich erwarte, respektvoll behandelt zu werden."
             },
 
             new VisualNovelEvent()
@@ -1888,7 +1902,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Meine persönliche Situation sollte keinen Einfluss auf meine Fähigkeiten haben."
+                text = "Meine persönliche Situation sollte keinen Einfluss auf meine Fähigkeiten haben.",
+                show = false
             },
 
             new VisualNovelEvent()
@@ -1899,7 +1914,8 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Konzentrieren wir uns auf die Geschäftsidee an sich."
+                text = "Konzentrieren wir uns auf die Geschäftsidee an sich.",
+                show = false
             },
 
             new VisualNovelEvent()
@@ -1973,334 +1989,24 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 179,
-                nextId = 9,
+                nextId = 47,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
-                text = "Ja, ich habe gut hergefunden. Es war nur sehr viel Verkehr."
+                text = "Haben Sie Informationen zu möglichen Förderungen, die zu mir passen könnten?"
             },
-
+            //TODO: Yvonne fragen
             new VisualNovelEvent()
             {
                 id = 180,
-                nextId = 10,
+                nextId = 153,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
-                text = "Ja, ich habe gut hergefunden. Es war nur schwer einen Parkplatz zu finden."
+                text = "Ich schätze Ihre Sorge. Ich werde sicherstellen, dass ich alle Aspekte sorgfältig " +
+                "berücksichtige, um erfolgreich zu sein. Aber ich denke, wir sollten uns auf das " +
+                "eigentliche Thema konzentrieren."
             },
-
-            new VisualNovelEvent()
-            {
-                id = 181,
-                nextId = 11,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = "Lea",
-                text = "Ich habe das Gebäude zuerst nicht gesehen, aber dann doch noch die richtige Straße gefunden."
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 182,
-                nextId = 12,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = "Lea",
-                text = "Ja, ich habe gut hergefunden."
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 183,
-                nextId = 31,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = "Lea",
-                text = "Ich habe bereits Kinder."
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 184,
-                nextId = Random.Range(82, 85),
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = "Lea",
-                text = "Ich habe nicht vor Kinder zu haben."
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 185,
-                nextId = 102,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = "Lea",
-                text = "Ich habe einen Kinderwunsch."
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 186,
-                nextId = 133,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = "Lea",
-                text = "Ich finde diese Frage ungerechtfertigt."
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 187,
-                nextId = Random.Range(167, 170),
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = "Lea",
-                text = "Ich sehe keinen Grund, diese Frage beantworten zu müssen."
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 188,
-                nextId = 42,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = "Lea",
-                text = "Ich habe da bereits einen Plan, wie ich damit umgehen werde."
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 189,
-                nextId = 68,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = "Lea",
-                text = "Ehrlich gesagt, ist es frustrierend, dass meine familiäre Situation eine potenzielle Schwäche darstellt."
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 190,
-                nextId = 77,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = "Lea",
-                text = "Lassen Sie uns bitte auf die Stärken und Potenziale meiner Idee konzentrieren."
-            },
-
-            // new VisualNovelEvent()
-            // {
-            //     id = 191,
-            //     nextId = ,
-            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-            //     waitForUserConfirmation = true,
-            //     name = "Lea",
-            //     text = ""
-            // },
-            
-            // new VisualNovelEvent()
-            // {
-            //     id = 192,
-            //     nextId = ,
-            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-            //     waitForUserConfirmation = true,
-            //     name = "Lea",
-            //     text = ""
-            // },
-            
-            // new VisualNovelEvent()
-            // {
-            //     id = 193,
-            //     nextId = ,
-            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-            //     waitForUserConfirmation = true,
-            //     name = "Lea",
-            //     text = ""
-            // },
-            
-            // new VisualNovelEvent()
-            // {
-            //     id = 194,
-            //     nextId = ,
-            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-            //     waitForUserConfirmation = true,
-            //     name = "Lea",
-            //     text = ""
-            // },
-            
-            // new VisualNovelEvent()
-            // {
-            //     id = 195,
-            //     nextId = ,
-            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-            //     waitForUserConfirmation = true,
-            //     name = "Lea",
-            //     text = ""
-            // },
-            
-            // new VisualNovelEvent()
-            // {
-            //     id = 196,
-            //     nextId = ,
-            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-            //     waitForUserConfirmation = true,
-            //     name = "Lea",
-            //     text = ""
-            // },
-            
-            // new VisualNovelEvent()
-            // {
-            //     id = 197,
-            //     nextId = ,
-            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-            //     waitForUserConfirmation = true,
-            //     name = "Lea",
-            //     text = ""
-            // },
-            
-            // new VisualNovelEvent()
-            // {
-            //     id = 198,
-            //     nextId = ,
-            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-            //     waitForUserConfirmation = true,
-            //     name = "Lea",
-            //     text = ""
-            // },
-            
-            // new VisualNovelEvent()
-            // {
-            //     id = 199,
-            //     nextId = ,
-            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-            //     waitForUserConfirmation = true,
-            //     name = "Lea",
-            //     text = ""
-            // },
-            
-            // new VisualNovelEvent()
-            // {
-            //     id = 200,
-            //     nextId = ,
-            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-            //     waitForUserConfirmation = true,
-            //     name = "Lea",
-            //     text = ""
-            // },
-            
-            // new VisualNovelEvent()
-            // {
-            //     id = 201,
-            //     nextId = ,
-            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-            //     waitForUserConfirmation = true,
-            //     name = "Lea",
-            //     text = ""
-            // },
-            
-            // new VisualNovelEvent()
-            // {
-            //     id = 202,
-            //     nextId = ,
-            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-            //     waitForUserConfirmation = true,
-            //     name = "Lea",
-            //     text = ""
-            // },
-            
-            // new VisualNovelEvent()
-            // {
-            //     id = 203,
-            //     nextId = ,
-            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-            //     waitForUserConfirmation = true,
-            //     name = "Lea",
-            //     text = ""
-            // },
-            
-            // new VisualNovelEvent()
-            // {
-            //     id = 204,
-            //     nextId = ,
-            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-            //     waitForUserConfirmation = true,
-            //     name = "Lea",
-            //     text = ""
-            // },
-            
-            // new VisualNovelEvent()
-            // {
-            //     id = 205,
-            //     nextId = ,
-            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-            //     waitForUserConfirmation = true,
-            //     name = "Lea",
-            //     text = ""
-            // },
-            
-            // new VisualNovelEvent()
-            // {
-            //     id = 206,
-            //     nextId = ,
-            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-            //     waitForUserConfirmation = true,
-            //     name = "Lea",
-            //     text = ""
-            // },
-            
-            // new VisualNovelEvent()
-            // {
-            //     id = 207,
-            //     nextId = ,
-            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-            //     waitForUserConfirmation = true,
-            //     name = "Lea",
-            //     text = ""
-            // },
-            
-            // new VisualNovelEvent()
-            // {
-            //     id = 208,
-            //     nextId = ,
-            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-            //     waitForUserConfirmation = true,
-            //     name = "Lea",
-            //     text = ""
-            // },
-            
-            // new VisualNovelEvent()
-            // {
-            //     id = 209,
-            //     nextId = ,
-            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-            //     waitForUserConfirmation = true,
-            //     name = "Lea",
-            //     text = ""
-            // },
-            
-            // new VisualNovelEvent()
-            // {
-            //     id = 210,
-            //     nextId = ,
-            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-            //     waitForUserConfirmation = true,
-            //     name = "Lea",
-            //     text = ""
-            // },
-
-
-
-            
-
-
-
-
-
-
-
-
 
             new VisualNovelEvent()
             {
