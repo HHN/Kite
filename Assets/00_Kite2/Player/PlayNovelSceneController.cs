@@ -367,9 +367,13 @@ public class PlayNovelSceneController : SceneController
             currentTalkingCharacterController.SetFaceExpression(novelEvent.expressionType);
         }
 
-        conversationContent.AddContent(novelEvent, this);
+        if(novelEvent.show){
+            conversationContent.AddContent(novelEvent, this);
 
-        AddEntryToPlayThroughHistory(novelEvent.name, novelEvent.text);
+            AddEntryToPlayThroughHistory(novelEvent.name, novelEvent.text);
+        }
+
+        
 
         if (novelEvent.waitForUserConfirmation)
         {
