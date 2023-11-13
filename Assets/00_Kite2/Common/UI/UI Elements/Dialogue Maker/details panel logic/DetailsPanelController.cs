@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class DetailsPanelController : MonoBehaviour
 {
@@ -13,6 +14,14 @@ public class DetailsPanelController : MonoBehaviour
     [SerializeField] private GameObject speakWithEmotionSettingsWrapper;
 
     [SerializeField] private DialogueNodeType dialogueNodeType;
+
+    [SerializeField] private TMP_Dropdown typeSettingsDropDown;
+    [SerializeField] private TMP_Dropdown goToSettingsDropDown;
+    [SerializeField] private TMP_Dropdown characterComesSettingsDropDown;
+    [SerializeField] private TMP_Dropdown comesOrGoesSettingsDropDown;
+    [SerializeField] private TMP_Dropdown comesWithEmotionSettingsDropDown;
+    [SerializeField] private TMP_Dropdown characterSpeaksSettingsDropDown;
+    [SerializeField] private TMP_Dropdown speaksWithEmotionSettingsDropDown;
 
     private void Start()
     {
