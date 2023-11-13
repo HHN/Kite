@@ -36,7 +36,7 @@ public class PlayNovelSceneController : SceneController
     private List<string> playThroughHistory = new List<string>();
 
     [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI moneyText;
+    //[SerializeField] private TextMeshProUGUI moneyText;
 
     [SerializeField] private GameObject addScoreServerCallPrefab;
     [SerializeField] private GameObject addMoneyServerCallPrefab;
@@ -138,7 +138,7 @@ public class PlayNovelSceneController : SceneController
         long money = MoneyManager.Instance().GetMoney();
         long score = ScoreManager.Instance().GetScore();
 
-        moneyText.text = money.ToString();
+       // moneyText.text = money.ToString();
         scoreText.text = score.ToString();
     }
 
@@ -555,7 +555,7 @@ public class PlayNovelSceneController : SceneController
 
     public void AddMoney(long value)
     {
-        moneyText.text = (MoneyManager.Instance().GetMoney() + value).ToString();
+        //moneyText.text = (MoneyManager.Instance().GetMoney() + value).ToString();
 
         if (GameManager.Instance().applicationMode != ApplicationModes.LOGGED_IN_USER_MODE || value == 0)
         {
