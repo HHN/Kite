@@ -219,8 +219,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Bist du sicher, dass du zum Hauptmen\xFC zur\xFCckkehren m\xF6chtest?
-    \n\nAlle Fortschritte in der aktuellen Novel gehen verloren."
+  m_text: "Bist du sicher, dass du die Einstellungen \xF6ffnen m\xF6chtest? \n\nAlle
+    Fortschritte in der aktuellen Novel gehen verloren."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
@@ -319,8 +319,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5629918238507184916}
   - component: {fileID: 3785603064409756483}
+  - component: {fileID: 1472594007212599471}
   m_Layer: 5
-  m_Name: LeaveNovelAndGoBackToMainmenuMessageBox
+  m_Name: LeaveNovelAndGoToSettingsMessageBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -358,6 +359,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0eb29dd0b1d0d345bf020de0dc00056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  messageBoxHeadline: {fileID: 5629918239078764577}
+  messageBoxBody: {fileID: 5629918238001899984}
+  closeButton: {fileID: 5629918239529746242}
+  cancelButton: {fileID: 3285660958884881377}
+  confirmButton: {fileID: 933067902189610237}
+--- !u!114 &1472594007212599471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5629918238507184917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14dd62dfea7e4cb47acbb9cb40bd1dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   messageBoxHeadline: {fileID: 5629918239078764577}
@@ -1478,7 +1496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7185633894973996858, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}
       propertyPath: m_text
-      value: ZUM HAUPTMENU
+      value: ZU DEN EINSTELLUNGEN
       objectReference: {fileID: 0}
     - target: {fileID: 7185633894973996858, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}
       propertyPath: m_fontColor.b

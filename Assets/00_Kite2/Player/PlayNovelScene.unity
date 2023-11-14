@@ -4607,6 +4607,10 @@ PrefabInstance:
       propertyPath: leaveGameAndGoToMainMenuMessageBox
       value: 
       objectReference: {fileID: 5629918238507184917, guid: 02336cf7844601448ad76ec2335ed21f, type: 3}
+    - target: {fileID: 7797249981855615906, guid: 41c3dc0b81cfc11438c80b89bc1548f8, type: 3}
+      propertyPath: leaveGameAndGoToSettingsMessageBox
+      value: 
+      objectReference: {fileID: 5629918238507184917, guid: 58ba1e2100f02dc4f8242962fbe84a48, type: 3}
     - target: {fileID: 7797249981879205016, guid: 41c3dc0b81cfc11438c80b89bc1548f8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

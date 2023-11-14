@@ -12,7 +12,9 @@ public class SceneBase : MonoBehaviour
     public Button settingsButton;
 
     [SerializeField] private GameObject leaveGameAndGoToMainMenuMessageBox;
+    [SerializeField] private GameObject leaveGameAndGoToSettingsMessageBox;
     [SerializeField] private LeaveNovelAndGoBackToMainmenuMessageBox leaveGameAndGoToMainMenuMessageBoxObject;
+    [SerializeField] private LeaveNovelAndGoToSettingsMessageBox leaveGameAndGoToSettingsMessageBoxObject;
     [SerializeField] private Canvas canvas;
 
     void Start()
@@ -21,7 +23,6 @@ public class SceneBase : MonoBehaviour
         closeButton.onClick.AddListener(delegate { OnCloseButton(); });
         novelPlayerButton.onClick.AddListener(delegate { OnNovelPlayerButton(); });
         novelMakerButton.onClick.AddListener(delegate { OnNovelMakerButton(); });
-        settingsButton.onClick.AddListener(delegate { OnSettingsButton(); });
 
         if (GameManager.Instance().applicationMode == ApplicationModes.GUEST_MODE)
         {
@@ -35,10 +36,12 @@ public class SceneBase : MonoBehaviour
         if (SceneManager.GetActiveScene().name.Equals(SceneNames.PLAY_NOVEL_SCENE))
         {
             homeButton.onClick.AddListener(delegate { OnHomeButtonForNovelPlayer(); });
+            settingsButton.onClick.AddListener(delegate { OnSettingsButtonForNovelPlayer(); });
         } 
         else
         {
             homeButton.onClick.AddListener(delegate { OnHomeButton(); });
+            settingsButton.onClick.AddListener(delegate { OnSettingsButton(); });
         }
     }
 
@@ -108,5 +111,21 @@ public class SceneBase : MonoBehaviour
     public void OnSettingsButton()
     {
         SceneLoader.LoadSettingsScene();
+    }
+
+    public void OnSettingsButtonForNovelPlayer()
+    {
+        if (!DestroyValidator.IsNullOrDestroyed(leaveGameAndGoToSettingsMessageBoxObject))
+        {
+            leaveGameAndGoToSettingsMessageBoxObject.CloseMessageBox();
+        }
+        if (DestroyValidator.IsNullOrDestroyed(canvas))
+        {
+            return;
+        }
+        leaveGameAndGoToSettingsMessageBoxObject = null;
+        leaveGameAndGoToSettingsMessageBoxObject = Instantiate(leaveGameAndGoToSettingsMessageBox,
+            canvas.transform).GetComponent<LeaveNovelAndGoToSettingsMessageBox>();
+        leaveGameAndGoToSettingsMessageBoxObject.Activate();
     }
 }
