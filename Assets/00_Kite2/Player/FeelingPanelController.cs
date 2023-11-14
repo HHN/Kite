@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using static System.Net.Mime.MediaTypeNames;
 
 public class FeelingPanelController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class FeelingPanelController : MonoBehaviour
     public Button fearfullButton;
     public Button encouragedButton;
     public Button annoyedButton;
+    public Button skipButton;
     public PlayNovelSceneController controller;
 
     private string nervousFeedback;
@@ -25,6 +27,7 @@ public class FeelingPanelController : MonoBehaviour
         fearfullButton.onClick.AddListener(delegate { OnFearfullButton(); });
         encouragedButton.onClick.AddListener(delegate { OnEncouragedButton(); });
         annoyedButton.onClick.AddListener(delegate { OnAnnoyedButton(); });
+        skipButton.onClick.AddListener(delegate { OnSkipButton(); });
     }
 
     public void Initialize()
@@ -36,6 +39,7 @@ public class FeelingPanelController : MonoBehaviour
         else
         {
             nervousButton.gameObject.SetActive(true);
+            nervousButton.interactable = true;
         }
 
         if (string.IsNullOrEmpty(fearfullFeedback))
@@ -45,6 +49,7 @@ public class FeelingPanelController : MonoBehaviour
         else
         {
             fearfullButton.gameObject.SetActive(true);
+            fearfullButton.interactable = true;
         }
 
         if (string.IsNullOrEmpty(encouragedFeedback))
@@ -54,6 +59,7 @@ public class FeelingPanelController : MonoBehaviour
         else
         {
             encouragedButton.gameObject.SetActive(true);
+            encouragedButton.interactable = true;
         }
 
         if (string.IsNullOrEmpty(annoyedFeedback))
@@ -63,6 +69,7 @@ public class FeelingPanelController : MonoBehaviour
         else
         {
             annoyedButton.gameObject.SetActive(true);
+            annoyedButton.interactable = true;
         }
 
         feedback.gameObject.SetActive(false);
@@ -129,7 +136,6 @@ public class FeelingPanelController : MonoBehaviour
     {
         if (alreadyChosen)
         {
-            OnAlreadyChosen();
             return;
         }
         alreadyChosen = true;
@@ -141,14 +147,14 @@ public class FeelingPanelController : MonoBehaviour
         encouragedButton.gameObject.SetActive(false);
         feedback.gameObject.SetActive(true);
 
-        SetNervousButtonText("WEITER");
+        nervousButton.interactable = false;
+        this.skipButton.GetComponentInChildren<TextMeshProUGUI>().text = "WEITER";
     }
 
     public void OnFearfullButton()
     {
         if (alreadyChosen)
         {
-            OnAlreadyChosen();
             return;
         }
         alreadyChosen = true;
@@ -160,14 +166,14 @@ public class FeelingPanelController : MonoBehaviour
         encouragedButton.gameObject.SetActive(false);
         feedback.gameObject.SetActive(true);
 
-        SetFearfullButtonText("WEITER");
+        fearfullButton.interactable = false;
+        this.skipButton.GetComponentInChildren<TextMeshProUGUI>().text = "WEITER";
     }
 
     public void OnEncouragedButton()
     {
         if (alreadyChosen)
         {
-            OnAlreadyChosen();
             return;
         }
         alreadyChosen = true;
@@ -179,14 +185,14 @@ public class FeelingPanelController : MonoBehaviour
         nervousButton.gameObject.SetActive(false);
         feedback.gameObject.SetActive(true);
 
-        SetEncouragedButtonText("WEITER");
+        encouragedButton.interactable = false;
+        this.skipButton.GetComponentInChildren<TextMeshProUGUI>().text = "WEITER";
     }
 
     public void OnAnnoyedButton()
     {
         if (alreadyChosen)
         {
-            OnAlreadyChosen();
             return;
         }
         alreadyChosen = true;
@@ -198,10 +204,11 @@ public class FeelingPanelController : MonoBehaviour
         encouragedButton.gameObject.SetActive(false);
         feedback.gameObject.SetActive(true);
 
-        SetAnnoyedButtonText("WEITER");
+        annoyedButton.interactable = false;
+        this.skipButton.GetComponentInChildren<TextMeshProUGUI>().text = "WEITER";
     }
 
-    public void OnAlreadyChosen()
+    public void OnSkipButton()
     {
         this.gameObject.SetActive(false);
         this.controller.SetWaitingForConfirmation(true);

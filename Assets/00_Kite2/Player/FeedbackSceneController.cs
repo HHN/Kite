@@ -37,9 +37,11 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler
         feedbackText.SetText(novelToPlay.feedback);
     }
 
-    public void OnMainMenuButton()
+    public void OnFinishButton()
     {
-        SceneLoader.LoadMainMenuScene();
+        BackStackManager.Instance().Clear(); // we go back to the explorer and don't want
+                                             // the back-button to bring us to the feedback scene aggain
+        SceneLoader.LoadNovelExplorerScene();
     }
 
     public void OnSuccess(Response response)
