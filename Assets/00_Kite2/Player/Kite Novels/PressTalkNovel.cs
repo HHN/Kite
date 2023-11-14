@@ -176,16 +176,17 @@ public class PressTalkNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ASK_FOR_OPINION_EVENT),
                 waitForUserConfirmation = true,
             },
-
+            
             new VisualNovelEvent()
             {
                 id = 15,
                 nextId = 16,
-                onChoice = 18,
+                onChoice = 18,  //TODO: 18 is wrong
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Das wäre toll. Wann wird der Artikel erscheinen?"
+                text = "Das wäre toll. Wann wird der Artikel erscheinen?",
+                show = false
             },
 
             new VisualNovelEvent()
@@ -642,7 +643,8 @@ public class PressTalkNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Das kann ich nachvollziehen, möchte aber ein Gleichgewicht finden."
+                text = "Das kann ich nachvollziehen, möchte aber ein Gleichgewicht finden.",
+                show = false
             }, 
 
             new VisualNovelEvent()

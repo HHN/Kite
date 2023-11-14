@@ -470,8 +470,13 @@ public class PlayNovelSceneController : SceneController
         PlayNextEvent();
     }
 
-    public void ShowAnswer(string message)
+    public void ShowAnswer(string message, bool show)
     {
+        if (!show) 
+        {
+            return;
+        }
+        Debug.Log("ShowAnswer" + show);
         AddEntryToPlayThroughHistory("Lea", message);
         conversationContent.ShowPlayerAnswer(message);
         ScrollToBottom();

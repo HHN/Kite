@@ -16,6 +16,12 @@ public class OptionsManager : MonoBehaviour
     private long idD;
     private long idE;
 
+    private bool displayAfterSelectionA;
+    private bool displayAfterSelectionB;
+    private bool displayAfterSelectionC;
+    private bool displayAfterSelectionD;
+    private bool displayAfterSelectionE;
+
     private string stringA;
     private string stringB;
     private string stringC;
@@ -39,7 +45,8 @@ public class OptionsManager : MonoBehaviour
         optionA.SetMessage(options[0].text);
         idA = options[0].onChoice;
         stringA = options[0].text;
-        
+        displayAfterSelectionA = options[0].show;
+
         if (options.Count == 1)
         {
             optionB.gameObject.SetActive(false);
@@ -51,6 +58,7 @@ public class OptionsManager : MonoBehaviour
         optionB.SetMessage(options[1].text);
         idB = options[1].onChoice;
         stringB = options[1].text;
+        displayAfterSelectionB = options[1].show;
 
         if (options.Count == 2)
         {
@@ -62,6 +70,7 @@ public class OptionsManager : MonoBehaviour
         optionC.SetMessage(options[2].text);
         idC = options[2].onChoice;
         stringC = options[2].text;
+        displayAfterSelectionC = options[2].show;
 
         if (options.Count == 3)
         {
@@ -72,6 +81,7 @@ public class OptionsManager : MonoBehaviour
         optionD.SetMessage(options[3].text);
         idD = options[3].onChoice;
         stringD = options[3].text;
+        displayAfterSelectionD = options[3].show;
 
         if (options.Count == 4)
         {
@@ -81,35 +91,36 @@ public class OptionsManager : MonoBehaviour
         optionE.SetMessage(options[4].text);
         idE = options[4].onChoice;
         stringE = options[4].text;
+        displayAfterSelectionE = options[4].show;
         return;
     }
 
     public void OnOptionA()
     {
-        StartCoroutine(AfterSelection("Selected A", stringA, idA));
+        StartCoroutine(AfterSelection("Selected A", stringA, idA, displayAfterSelectionA));
     }
 
     public void OnOptionB()
     {
-        StartCoroutine(AfterSelection("Selected B", stringB, idB));
+        StartCoroutine(AfterSelection("Selected B", stringB, idB, displayAfterSelectionB));
     }
 
     public void OnOptionC()
     {
-        StartCoroutine(AfterSelection("Selected C", stringC, idC));
+        StartCoroutine(AfterSelection("Selected C", stringC, idC, displayAfterSelectionC));
     }
 
     public void OnOptionD()
     {
-        StartCoroutine(AfterSelection("Selected D", stringD, idD));
+        StartCoroutine(AfterSelection("Selected D", stringD, idD, displayAfterSelectionD));
     }
 
     public void OnOptionE()
     {
-        StartCoroutine(AfterSelection("Selected E", stringE, idE));
+        StartCoroutine(AfterSelection("Selected E", stringE, idE, displayAfterSelectionE));
     }
 
-    public IEnumerator AfterSelection(string parameterName, string answer, long nextEventID)
+    public IEnumerator AfterSelection(string parameterName, string answer, long nextEventID, bool displayAfterSelection)
     {
         if (selected) { yield break; }
         selected = true;
@@ -121,7 +132,7 @@ public class OptionsManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         gameObject.SetActive(false);
         sceneController.confirmArea.gameObject.SetActive(true);
-        sceneController.ShowAnswer(answer);
+        sceneController.ShowAnswer(answer, displayAfterSelection);
         sceneController.SetWaitingForConfirmation(true);
         sceneController.SetNextEvent(nextEventID);
     }

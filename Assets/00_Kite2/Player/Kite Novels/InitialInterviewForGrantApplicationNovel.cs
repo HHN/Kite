@@ -2031,10 +2031,6 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
 
 
 
-
-
-
-
             new VisualNovelEvent()
             {
                 id = 401,
