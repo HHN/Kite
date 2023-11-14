@@ -39,7 +39,7 @@ public class VisualNovelRepresentation : MonoBehaviour
         {
             privateHint.SetActive(true);
         }
-        else if ((visualNovel.id == (-3)) || (visualNovel.id == (-4)) || (visualNovel.id == (-6)) || (visualNovel.id == (-7)))
+        else if ((visualNovel.id == (-2)) || (visualNovel.id == (-3)) || (visualNovel.id == (-4)) || (visualNovel.id == (-7)))
         {
             modifiedHint.SetActive(true);
         }
