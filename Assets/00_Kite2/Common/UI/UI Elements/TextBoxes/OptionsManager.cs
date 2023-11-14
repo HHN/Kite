@@ -135,5 +135,10 @@ public class OptionsManager : MonoBehaviour
         sceneController.ShowAnswer(answer, displayAfterSelection);
         sceneController.SetWaitingForConfirmation(true);
         sceneController.SetNextEvent(nextEventID);
+
+        if (!displayAfterSelection)
+        {
+            sceneController.OnConfirm();
+        }
     }
 }

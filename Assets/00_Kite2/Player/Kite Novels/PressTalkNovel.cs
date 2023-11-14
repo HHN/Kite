@@ -185,8 +185,7 @@ public class PressTalkNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Das wäre toll. Wann wird der Artikel erscheinen?",
-                show = false
+                text = "Das wäre toll. Wann wird der Artikel erscheinen?"
             },
 
             new VisualNovelEvent()

@@ -4596,9 +4596,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7797249981855615906, guid: 41c3dc0b81cfc11438c80b89bc1548f8, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1048358126}
+    - target: {fileID: 7797249981855615906, guid: 41c3dc0b81cfc11438c80b89bc1548f8, type: 3}
       propertyPath: enableNovelPlayerButton
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7797249981855615906, guid: 41c3dc0b81cfc11438c80b89bc1548f8, type: 3}
+      propertyPath: leaveGameAndGoToMainMenuMessageBox
+      value: 
+      objectReference: {fileID: 5629918238507184917, guid: 02336cf7844601448ad76ec2335ed21f, type: 3}
     - target: {fileID: 7797249981879205016, guid: 41c3dc0b81cfc11438c80b89bc1548f8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -5165,7 +5173,6 @@ MonoBehaviour:
   currentTalkingCharacterController: {fileID: 0}
   tapToContinueAnimation: {fileID: 1966865798}
   scoreText: {fileID: 2036370749}
-  moneyText: {fileID: 0}
   addScoreServerCallPrefab: {fileID: 7160933486993280637, guid: ff0db1083a1a0e946a964b9aeb0c50cd, type: 3}
   addMoneyServerCallPrefab: {fileID: 5571745016954355384, guid: 872fdb0cca16bb14dade1297f173bf4a, type: 3}
   audioSource: {fileID: 2133875534}
