@@ -182,7 +182,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
-                text = "Ich entwickele eine KI-basierte, personalisierte Lernplattform, die die Art und Weise, " +
+                text = "Ich entwickle eine KI-basierte, personalisierte Lernplattform, die die Art und Weise, " +
                 "wie wir Wissen erwerben, revolutioniert, indem sie den Lernprozess auf die individuellen " +
                 "Bedürfnisse und Lernstile eines jeden Nutzenden abstimmt.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
@@ -280,22 +280,9 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 24,
-                nextId = 25,
+                nextId = 26,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ASK_FOR_OPINION_EVENT),
                 waitForUserConfirmation = true,
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 25,
-                nextId = 26,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = "Herr Müller",
-                text = "Da es in der Vergangenheit schon vorkam, dass ein Unternehmen wegen Kindern " +
-                "aufgegeben werden musste, würde es mich interessieren, wie es bei Ihnen mit dem Kinderwunsch " +
-                "bzw. mit dem Familienstand steht.",
-                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
             new VisualNovelEvent()
@@ -1485,17 +1472,6 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 135,
-                nextId = 121,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = "Herr Müller",
-                text = "Es tut mir leid. So habe ich die Frage nicht gemeint. Natürlich müssen Sie die Frage nicht beantworten.",
-                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.DEFEATED)
-            },
-
-            new VisualNovelEvent()
-            {
                 id = 136,
                 nextId = 149,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
@@ -1648,7 +1624,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 nextId = 150,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Lea",
+                name = "Herr Müller",
                 text = "Wir hatten auch schon den Fall, dass ein Mann während des Gründungsprozesses aussteigen " +
                 "musste, weil er Vater wurde und die Einnahmen aus dem Unternehmen nicht für die Familie gereicht hätte."
             },
@@ -1864,7 +1840,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 168,
-                nextId = 166,
+                nextId = 181,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
@@ -1995,7 +1971,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 name = "Lea",
                 text = "Haben Sie Informationen zu möglichen Förderungen, die zu mir passen könnten?"
             },
-            //TODO: Yvonne fragen
+            //TODO: Yvonne fragen wegen ähnlicher Formulierung
             new VisualNovelEvent()
             {
                 id = 180,
@@ -2007,6 +1983,57 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 "berücksichtige, um erfolgreich zu sein. Aber ich denke, wir sollten uns auf das " +
                 "eigentliche Thema konzentrieren."
             },
+
+             new VisualNovelEvent()
+            {
+                id = 181,
+                nextId = 182,
+                onChoice = 177,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                name = "Lea",
+                text = "Ich möchte klarstellen, dass die Frage unangemessen ist.",
+                show = false
+            },
+
+             new VisualNovelEvent()
+            {
+                id = 182,
+                nextId = 400,
+                onChoice = 183,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                name = "Lea",
+                text = "Ich möchte nicht weiter darauf eingehen."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 183,
+                nextId = 184,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Lea",
+                text = "Lassen Sie uns doch über meine Geschäftsidee sprechen."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 184,
+                nextId = 59,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Herr Müller",
+                text = "Ja, gerne. Aber...",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+
+
+
+
+
+
 
             new VisualNovelEvent()
             {

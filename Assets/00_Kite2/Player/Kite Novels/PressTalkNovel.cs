@@ -420,7 +420,7 @@ public class PressTalkNovel : VisualNovel
                 nextId = 37,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = "Frau Mayer",
+                name = "Lea",
                 text = "Ich hoffe, wir können beides so darstellen, dass die Leser*innen einen umfassenden Einblick in meine Unternehmensreise bekommen.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
@@ -440,7 +440,7 @@ public class PressTalkNovel : VisualNovel
             {
                 id = 38,
                 nextId = 39,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
                 text = "Dann..."
@@ -1031,7 +1031,8 @@ public class PressTalkNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Ich möchte deren Fokus auf mein Geschlecht kritisieren."
+                text = "Ich möchte deren Fokus auf mein Geschlecht kritisieren.",
+                show = false
             },
 
             new VisualNovelEvent()

@@ -59,4 +59,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_Kite2/Maker/NovelPreviewScene.unity
     guid: 2c535f4c9d91c204784cc97b631df847
+  - enabled: 1
+    path: Assets/00_Kite2/Common/InfoScene.unity
+    guid: 080ab86213d0b95438a8159fab784de5
   m_configObjects: {}
