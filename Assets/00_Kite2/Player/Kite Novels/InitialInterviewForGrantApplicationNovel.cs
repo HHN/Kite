@@ -1547,7 +1547,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Ich möchte klartsellen, dass solche Fragen reflektiert werden sollen."
+                text = "Ich möchte beschwichtigen und das Gespräch umlenken."
             },
 
             new VisualNovelEvent()
