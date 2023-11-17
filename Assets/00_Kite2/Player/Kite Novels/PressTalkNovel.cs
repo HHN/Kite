@@ -181,7 +181,7 @@ public class PressTalkNovel : VisualNovel
             {
                 id = 15,
                 nextId = 16,
-                onChoice = 18,  //TODO: 18 is wrong
+                onChoice = 18,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
