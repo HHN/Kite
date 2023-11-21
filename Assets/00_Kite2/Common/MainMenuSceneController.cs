@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 
 public class MainMenuSceneController : SceneController, OnSuccessHandler
-{
+{ 
     public Button novelPlayerButton;
     public Button novelMakerButton;
     public Button logInLogOutButton;

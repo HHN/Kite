@@ -86,6 +86,11 @@ public class SceneLoader
         LoadScene(SceneNames.NOVEL_PREVIEW_SCENE);
     }
 
+    public static void LoadInitialTalkScene()
+    {
+        LoadScene(SceneNames.INITIAL_TALK_SCENE);
+    }
+
     public static void LoadScene(string sceneName)
     {
         GameObject oldSceneControllerGameObject = GameObject.Find("Controller");

@@ -23,6 +23,12 @@ public class ConversationContentGuiController : MonoBehaviour
         content.Add(novelEvent);
     }
 
+    public void AddContent(VisualNovelEvent novelEvent, InitialTalkSceneController controller)
+    {
+        HandleNewContent(novelEvent, controller);
+        content.Add(novelEvent);
+    }
+
     private void HandleNewContent(VisualNovelEvent novelEvent, PlayNovelSceneController controller)
     {
         VisualNovelEventType type = VisualNovelEventTypeHelper.ValueOf(novelEvent.eventType);
@@ -50,6 +56,36 @@ public class ConversationContentGuiController : MonoBehaviour
                 {
                     AskForFeelingsButton prefab = Instantiate(askForFeelingsButton, this.transform).GetComponent<AskForFeelingsButton>();
                     prefab.controller = controller;
+                    break;
+                }
+            default:
+                {
+                    break;
+                }
+        }
+    }
+
+    private void HandleNewContent(VisualNovelEvent novelEvent, InitialTalkSceneController controller)
+    {
+        VisualNovelEventType type = VisualNovelEventTypeHelper.ValueOf(novelEvent.eventType);
+
+        switch (type)
+        {
+            case VisualNovelEventType.SHOW_MESSAGE_EVENT :
+                {
+                    ShowMessage(novelEvent);
+                    break;
+                }
+            case VisualNovelEventType.ADD_CHOICE_EVENT:
+                {
+                    options.Add(novelEvent);
+                    break;
+                }
+            case VisualNovelEventType.SHOW_CHOICES_EVENT:
+                {
+                    OptionsManager prefab = Instantiate(optionsPrefab, this.transform).GetComponent<OptionsManager>();
+                    prefab.Initialize(controller, options);
+                    options = new List<VisualNovelEvent>();
                     break;
                 }
             default:
