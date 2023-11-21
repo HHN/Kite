@@ -54,7 +54,7 @@ public class CallWithParentsNovel : VisualNovel
                 waitForUserConfirmation = true,
                 name = "Intro",
                 text = "Nachdem du dich gründlich informiert hast, hast du dich dazu entschlossen ein Unternehmen zu gründen. " + 
-                "Du hast dir auch schon die nächsten Schritte überlegt und rufst nun deine Eltern an, um ihnen von deinem Gründungsvorhaben zu berichten"
+                "Du hast dir auch schon die nächsten Schritte überlegt und rufst nun deine Eltern an, um ihnen von deinem Gründungsvorhaben zu berichten"  + getRandomNumber(3, 5)
             },
 
             new VisualNovelEvent()
@@ -1694,7 +1694,7 @@ public class CallWithParentsNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Intro",
-                text = "Wie reagiert Mama?"
+                text = "Wie reagiert deine Mutter?"
             },
 
             new VisualNovelEvent()
@@ -1812,6 +1812,7 @@ public class CallWithParentsNovel : VisualNovel
 
     public int getRandomNumber(int lowerBound, int upperBound) 
     {
+        Debug.Log(System.DateTime.Now.Millisecond);
         Random.InitState(System.DateTime.Now.Millisecond);
         return Random.Range(lowerBound, upperBound);
     }
