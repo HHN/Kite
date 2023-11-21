@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DialogueNodeWrapper : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI nodeName;
     [SerializeField] private RectTransform dialogueNodeWrapperRectTransform;
     [SerializeField] private RectTransform dialogueNodeRectTransform;
     [SerializeField] private RectTransform contextMenuRectTransform;
@@ -14,6 +16,12 @@ public class DialogueNodeWrapper : MonoBehaviour
     [SerializeField] private Button connectNodeButton;
     [SerializeField] private bool isContextMenuVisible;
     [SerializeField] private GameObject contextMenu;
+    [SerializeField] private DialogueNode dialogueNode;
+
+    [SerializeField] private Image nodeImage;
+    [SerializeField] private Sprite changeLocationSprite;
+    [SerializeField] private Sprite charactercomesOrGoesSprite;
+    [SerializeField] private Sprite characterTalkesSprite;
 
     void Start()
     {
@@ -25,6 +33,8 @@ public class DialogueNodeWrapper : MonoBehaviour
         addNodeButton.onClick.AddListener(delegate { OnAddNodeButton(); });
         editNodeButton.onClick.AddListener(delegate { OnEditNodeButton(); });
         connectNodeButton.onClick.AddListener(delegate { OnConnectNodesButton(); });
+
+        dialogueNode = new DialogueNode();
     }
 
     public void OnOptionsButton()
@@ -41,16 +51,60 @@ public class DialogueNodeWrapper : MonoBehaviour
 
     public void OnAddNodeButton()
     {
-        Debug.Log("Add Node Button");
+        isContextMenuVisible = false;
+        contextMenu.SetActive(false);
     }
 
     public void OnEditNodeButton()
     {
-        Debug.Log("Edit Node Button");
+        isContextMenuVisible = false;
+        contextMenu.SetActive(false);
+        NovelMakerSceneController controller = GameObject.Find("Controller").GetComponent<NovelMakerSceneController>();
+        controller.OpenDetailsPanelForNode(dialogueNode, this);
     }
 
     public void OnConnectNodesButton()
     {
-        Debug.Log("Connect Node Button");
+        isContextMenuVisible = false;
+        contextMenu.SetActive(false);
+    }
+
+    public void SetDialogueNode(DialogueNode node)
+    {
+        this.dialogueNode = node;
+    }
+
+    public void OnFinishEdit()
+    {
+        nodeName.text = dialogueNode.GetNodeName();
+
+        switch (dialogueNode.GetNodeType())
+        {
+            case DialogueNodeType.NONE:
+                {
+                    nodeImage.sprite = null; 
+                    nodeImage.gameObject.SetActive(false);
+                    return;
+                }
+            case DialogueNodeType.CHANGE_LOCATION:
+                {
+                    nodeImage.sprite = changeLocationSprite;
+                    nodeImage.gameObject.SetActive(true);
+                    return;
+                }
+            case DialogueNodeType.CHARACTER_COMES_OR_GOES:
+                {
+                    nodeImage.sprite = charactercomesOrGoesSprite;
+                    nodeImage.gameObject.SetActive(true); 
+                    return;
+                }
+            case DialogueNodeType.CHARACTER_SPEAKS:
+                {
+                    nodeImage.sprite = characterTalkesSprite;
+                    nodeImage.gameObject.SetActive(true); 
+                    return;
+                }
+            default: return;
+        }
     }
 }
