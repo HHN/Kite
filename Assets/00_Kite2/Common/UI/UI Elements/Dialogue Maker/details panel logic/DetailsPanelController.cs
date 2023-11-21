@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class DetailsPanelController : MonoBehaviour
 {
+    [SerializeField] private SceneController controller;
     [SerializeField] private GameObject goToSettingsWrapper;
     [SerializeField] private GameObject characterComesSettingsWrapper;
     [SerializeField] private GameObject comesGoesSettingsWrapper;
@@ -62,6 +63,7 @@ public class DetailsPanelController : MonoBehaviour
     {
         if (this.nodeNameInputField.text == string.Empty || this.nodeNameInputField.text == "")
         {
+            controller.DisplayInfoMessage("Bitte gebe einen Namen für diesen Dialog-Knoten ein.");
             return;
         }
 
