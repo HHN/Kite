@@ -9,6 +9,7 @@ public class NovelMakerSceneController : SceneController
     [SerializeField] private Button previewNovelButton;
     [SerializeField] private Button finishNovelButton;
     [SerializeField] private Animator detailsPanelAnimator;
+    [SerializeField] private DetailsPanelController detailsPanelController;
     [SerializeField] private RectTransform detailsPanel;
 
     void Start()
@@ -63,11 +64,17 @@ public class NovelMakerSceneController : SceneController
 
     public void OpenDetailsPanel()
     {
-        detailsPanelAnimator.SetBool("isOpen", true);
+        detailsPanelController.OpenDetailsPanel();
+    }
+
+    public void OpenDetailsPanelForNode(DialogueNode node, DialogueNodeWrapper wrapper)
+    {
+        detailsPanelController.Initialize(node, wrapper);
+        detailsPanelController.OpenDetailsPanel();
     }
 
     public void CloseDetailsPanel()
     {
-        detailsPanelAnimator.SetBool("isOpen", false);
+        detailsPanelController.CloseDetailsPanel();
     }
 }

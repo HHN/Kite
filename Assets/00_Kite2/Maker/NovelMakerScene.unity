@@ -542,6 +542,7 @@ MonoBehaviour:
   previewNovelButton: {fileID: 446046242}
   finishNovelButton: {fileID: 2048420163}
   detailsPanelAnimator: {fileID: 680696086}
+  detailsPanelController: {fileID: 680696089}
   detailsPanel: {fileID: 145645242}
 --- !u!4 &42981014
 Transform:
@@ -1490,6 +1491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50911373d7566e546b7a6bdaee972188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nodeName: {fileID: 1536475419}
   dialogueNodeWrapperRectTransform: {fileID: 177876071}
   dialogueNodeRectTransform: {fileID: 1818440968}
   contextMenuRectTransform: {fileID: 362534622}
@@ -1499,6 +1501,10 @@ MonoBehaviour:
   connectNodeButton: {fileID: 10908440}
   isContextMenuVisible: 0
   contextMenu: {fileID: 362534621}
+  nodeImage: {fileID: 378209908}
+  changeLocationSprite: {fileID: 21300000, guid: 0b299848d3e145048873016e399a81cd, type: 3}
+  charactercomesOrGoesSprite: {fileID: 21300000, guid: c96ce816fc36c8540921e4c26e6deab1, type: 3}
+  characterTalkesSprite: {fileID: 21300000, guid: bdcf6f84c8794dd42b0091cb2121da49, type: 3}
 --- !u!1 &200425014
 GameObject:
   m_ObjectHideFlags: 0
@@ -2038,7 +2044,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 945, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &257451216
@@ -2865,7 +2871,31 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 680696089}
+        m_TargetAssemblyTypeName: DetailsPanelController, Assembly-CSharp
+        m_MethodName: OnValueChangedForTypeDropdown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 680696089}
+        m_TargetAssemblyTypeName: DetailsPanelController, Assembly-CSharp
+        m_MethodName: ValidateDetailsPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &325285876
 MonoBehaviour:
@@ -3509,7 +3539,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 675, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &390389488
@@ -3743,7 +3773,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 215.75, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &407898764
@@ -5370,7 +5400,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 622214296}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 680696089}
+        m_TargetAssemblyTypeName: DetailsPanelController, Assembly-CSharp
+        m_MethodName: OnConfirmButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &622214296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5529,7 +5571,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 680696089}
+        m_TargetAssemblyTypeName: DetailsPanelController, Assembly-CSharp
+        m_MethodName: ValidateDetailsPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6105,14 +6159,17 @@ MonoBehaviour:
   characterSpeakesSettingsWrapper: {fileID: 460439708}
   textToSpeakSettingsWrapper: {fileID: 143123982}
   speakWithEmotionSettingsWrapper: {fileID: 1717872967}
-  dialogueNodeType: 0
-  typeSettingsDropDown: {fileID: 0}
-  goToSettingsDropDown: {fileID: 0}
-  characterComesSettingsDropDown: {fileID: 0}
-  comesOrGoesSettingsDropDown: {fileID: 0}
-  comesWithEmotionSettingsDropDown: {fileID: 0}
-  characterSpeaksSettingsDropDown: {fileID: 0}
-  speaksWithEmotionSettingsDropDown: {fileID: 0}
+  dialogueNodeWrapper: {fileID: 0}
+  nodeNameInputField: {fileID: 632618487}
+  textToSpeakInputField: {fileID: 1548422079}
+  typeSettingsDropDown: {fileID: 325285875}
+  goToSettingsDropDown: {fileID: 1090170559}
+  characterComesSettingsDropDown: {fileID: 903064171}
+  comesOrGoesSettingsDropDown: {fileID: 1013595067}
+  comesWithEmotionSettingsDropDown: {fileID: 1079587983}
+  characterSpeaksSettingsDropDown: {fileID: 1019232084}
+  speaksWithEmotionSettingsDropDown: {fileID: 1960602676}
+  detailsPanelAnimator: {fileID: 680696086}
 --- !u!1 &690146411
 GameObject:
   m_ObjectHideFlags: 0
@@ -6151,7 +6208,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 135, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &690146413
@@ -7049,7 +7106,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 771211843}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 680696089}
+        m_TargetAssemblyTypeName: DetailsPanelController, Assembly-CSharp
+        m_MethodName: OnCancelButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &771211843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8225,7 +8294,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 680696089}
+        m_TargetAssemblyTypeName: DetailsPanelController, Assembly-CSharp
+        m_MethodName: ValidateDetailsPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &903064172
 MonoBehaviour:
@@ -8599,8 +8680,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &963043562
 MonoBehaviour:
@@ -9334,7 +9415,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 680696089}
+        m_TargetAssemblyTypeName: DetailsPanelController, Assembly-CSharp
+        m_MethodName: ValidateDetailsPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1013595068
 MonoBehaviour:
@@ -9562,7 +9655,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 680696089}
+        m_TargetAssemblyTypeName: DetailsPanelController, Assembly-CSharp
+        m_MethodName: ValidateDetailsPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1019232085
 MonoBehaviour:
@@ -10011,7 +10116,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 680696089}
+        m_TargetAssemblyTypeName: DetailsPanelController, Assembly-CSharp
+        m_MethodName: ValidateDetailsPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1079587984
 MonoBehaviour:
@@ -10172,7 +10289,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 680696089}
+        m_TargetAssemblyTypeName: DetailsPanelController, Assembly-CSharp
+        m_MethodName: ValidateDetailsPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1090170560
 MonoBehaviour:
@@ -10586,7 +10715,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 405, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1161473500
@@ -13355,7 +13484,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 97.875, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1536475418
@@ -13589,7 +13718,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 680696089}
+        m_TargetAssemblyTypeName: DetailsPanelController, Assembly-CSharp
+        m_MethodName: ValidateDetailsPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -16888,7 +17029,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 680696089}
+        m_TargetAssemblyTypeName: DetailsPanelController, Assembly-CSharp
+        m_MethodName: ValidateDetailsPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1960602677
 MonoBehaviour:
