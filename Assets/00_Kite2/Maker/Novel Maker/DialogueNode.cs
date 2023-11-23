@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DialogueNode
 {
+    private int id;
     private string nodeName;
     private DialogueNodeType nodeType;
 
@@ -118,5 +119,15 @@ public class DialogueNode
     public EmotionEnum GetEmotionWhileTalking()
     {
         return this.emotionWhileTalking;
+    }
+
+    public void SetID(int id)
+    {
+        this.id = id;
+    }
+
+    public int GetId()
+    {
+        return this.id;
     }
 }

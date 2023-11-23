@@ -17,14 +17,17 @@ public class DialogueNodeWrapper : MonoBehaviour
     [SerializeField] private bool isContextMenuVisible;
     [SerializeField] private GameObject contextMenu;
     [SerializeField] private DialogueNode dialogueNode;
-
     [SerializeField] private Image nodeImage;
     [SerializeField] private Sprite changeLocationSprite;
     [SerializeField] private Sprite charactercomesOrGoesSprite;
     [SerializeField] private Sprite characterTalkesSprite;
+    [SerializeField] private DraggableObject draggableObject;
+    [SerializeField] private NovelMakerSceneController novelMakerSceneController;
 
     void Start()
     {
+        novelMakerSceneController = GameObject.Find("Controller").GetComponent<NovelMakerSceneController>();
+
         LayoutRebuilder.ForceRebuildLayoutImmediate(dialogueNodeWrapperRectTransform);
         LayoutRebuilder.ForceRebuildLayoutImmediate(dialogueNodeRectTransform);
         LayoutRebuilder.ForceRebuildLayoutImmediate(contextMenuRectTransform);
@@ -53,6 +56,10 @@ public class DialogueNodeWrapper : MonoBehaviour
     {
         isContextMenuVisible = false;
         contextMenu.SetActive(false);
+
+        Vector2 position = this.gameObject.transform.localPosition;
+        position = new Vector2(position.x, position.y + 200);
+        novelMakerSceneController.AddNewDialogueNode(position, this);
     }
 
     public void OnEditNodeButton()
@@ -84,27 +91,37 @@ public class DialogueNodeWrapper : MonoBehaviour
                 {
                     nodeImage.sprite = null; 
                     nodeImage.gameObject.SetActive(false);
-                    return;
+                    break;
                 }
             case DialogueNodeType.CHANGE_LOCATION:
                 {
                     nodeImage.sprite = changeLocationSprite;
                     nodeImage.gameObject.SetActive(true);
-                    return;
+                    break;
                 }
             case DialogueNodeType.CHARACTER_COMES_OR_GOES:
                 {
                     nodeImage.sprite = charactercomesOrGoesSprite;
-                    nodeImage.gameObject.SetActive(true); 
-                    return;
+                    nodeImage.gameObject.SetActive(true);
+                    break;
                 }
             case DialogueNodeType.CHARACTER_SPEAKS:
                 {
                     nodeImage.sprite = characterTalkesSprite;
-                    nodeImage.gameObject.SetActive(true); 
-                    return;
+                    nodeImage.gameObject.SetActive(true);
+                    break;
                 }
-            default: return;
+            default: break;
         }
+        LayoutRebuilder.ForceRebuildLayoutImmediate(dialogueNodeWrapperRectTransform);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(dialogueNodeRectTransform);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(contextMenuRectTransform);
+
+        draggableObject.SetSizeOfBoxCollider();
+    }
+
+    public DialogueNode GetDialogueNode()
+    {
+        return this.dialogueNode;
     }
 }
