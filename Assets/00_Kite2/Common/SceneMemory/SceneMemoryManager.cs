@@ -24,24 +24,8 @@ public class SceneMemoryManager
 
     private SceneMemoryManager()
     {
-        this.settingsSceneMemory = null;
-        this.detailsViewSceneMemory = null;
-        this.feedbackSceneMemory = null;
-        this.novelExplorerSceneMemory = null;
-        this.playNovelSceneMemory = null;
-        this.changePasswordSceneMemory = null;
-        this.logInSceneMemory = null;
-        this.registrationSceneMemory = null;
-        this.resetPasswordSceneMemory = null;
-        this.infoSceneMemory = null;
-        this.commentSectionSceneMemory = null;
-        this.novelMakerSceneMemory = null;
-        this.characterExplorerSceneMemory = null;
-        this.environmentExplorerSceneMemory = null;
-        this.helpForNovelMakerSceneMemory = null;
-        this.finishNovelSceneMemory = null;
-        this.novelPreviewSceneMemory = null;
-}
+        ClearMemory();
+    }
 
     public static SceneMemoryManager Instance()
     {

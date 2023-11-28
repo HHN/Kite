@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class MainMenuSceneController : SceneController, OnSuccessHandler
 { 
@@ -18,8 +19,13 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     [SerializeField] private GameObject getMoneyServerCallPrefab;
     [SerializeField] private GameObject getScoreServerCallPrefab;
 
-    void Start()
+    async void Start()
     {
+        // Analytics 
+        var analytics = AnalyticsServiceHandler.Instance();
+        await analytics.StartAnalytics();
+        
+
         BackStackManager.Instance().Clear();
         SceneMemoryManager.Instance().ClearMemory();
 
@@ -76,6 +82,7 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
 
     public void OnNovelPlayerButton()
     {
+        AnalyticsServiceHandler.Instance().SendMainMenuStatistics();
         SceneLoader.LoadNovelExplorerScene();
     }
 
