@@ -20,18 +20,8 @@ public class NovelExplorerSceneController : SceneController, OnSuccessHandler
     public TMP_InputField searchInputField;
     public VisualNovelGallery gallery;
 
-
-    //Analytics
-
-    private Stopwatch stopwatch;
-    private String fromWhereIsNovelSelected;
-
     void Start()
     {
-        // Analytics
-        stopwatch = new Stopwatch();
-        stopwatch.Start();
-
         BackStackManager.Instance().Push(SceneNames.NOVEL_EXPLORER_SCENE);
         InitMemory();
     }

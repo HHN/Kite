@@ -28,6 +28,7 @@ public class VisualNovelRepresentation : MonoBehaviour
 
     public void OnClick()
     {
+        AnalyticsServiceHandler.Instance().SendNovelExplorerStatistics(visualNovel.id);
         PlayManager.Instance().SetVisualNovelToPlay(visualNovel);
         SceneLoader.LoadDetailsViewScene();
     }

@@ -13,6 +13,7 @@ public class DetailsViewSceneController : SceneController
 
     private void Start()
     {
+        AnalyticsServiceHandler.Instance().StartStopwatch();
         BackStackManager.Instance().Push(SceneNames.DETAILS_VIEW_SCENE);
 
         playButton.onClick.AddListener(delegate { OnPlayButton(); });
@@ -36,6 +37,7 @@ public class DetailsViewSceneController : SceneController
 
     public void OnPlayButton()
     {
+        AnalyticsServiceHandler.Instance().SendDetailViewStatistics(novelToDisplay.id);
         PlayManager.Instance().SetVisualNovelToPlay(novelToDisplay);
         SceneLoader.LoadPlayNovelScene(); 
     }

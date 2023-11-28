@@ -54,7 +54,7 @@ public class CallWithParentsNovel : VisualNovel
                 waitForUserConfirmation = true,
                 name = "Intro",
                 text = "Nachdem du dich gründlich informiert hast, hast du dich dazu entschlossen ein Unternehmen zu gründen. " + 
-                "Du hast dir auch schon die nächsten Schritte überlegt und rufst nun deine Eltern an, um ihnen von deinem Gründungsvorhaben zu berichten"  + getRandomNumber(3, 5)
+                "Du hast dir auch schon die nächsten Schritte überlegt und rufst nun deine Eltern an, um ihnen von deinem Gründungsvorhaben zu berichten"
             },
 
             new VisualNovelEvent()

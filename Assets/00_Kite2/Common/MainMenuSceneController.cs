@@ -19,11 +19,11 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     [SerializeField] private GameObject getMoneyServerCallPrefab;
     [SerializeField] private GameObject getScoreServerCallPrefab;
 
-    async void Start()
+    void Start()
     {
         // Analytics 
         var analytics = AnalyticsServiceHandler.Instance();
-        await analytics.StartAnalytics();
+        analytics.StartAnalytics();
         
 
         BackStackManager.Instance().Clear();

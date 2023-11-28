@@ -31,6 +31,7 @@ public class ExplorerButtons : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AnalyticsServiceHandler.Instance().StartStopwatch();
         kiteNovelsButton.onClick.AddListener(delegate { OnKiteNovelsButton(); });
         userNovelsButton.onClick.AddListener(delegate { OnUserNovelsButton(); });
         accountNovelsButton.onClick.AddListener(delegate { OnAccountNovelsButton(); });
@@ -40,6 +41,7 @@ public class ExplorerButtons : MonoBehaviour
 
     public void OnKiteNovelsButton()
     {
+        AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("KITE NOVELS");
         SaveCurrentPosition();
         filter.SetActive(false);
         kiteNovelsUnterline.gameObject.SetActive(true);
@@ -60,6 +62,7 @@ public class ExplorerButtons : MonoBehaviour
 
     public void OnUserNovelsButton()
     {
+        AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("USER NOVELS");
         SaveCurrentPosition();
         filter.SetActive(false);
         kiteNovelsUnterline.gameObject.SetActive(false);
@@ -80,6 +83,7 @@ public class ExplorerButtons : MonoBehaviour
 
     public void OnAccountNovelsButton()
     {
+        AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("EIGENE NOVELS");
         SaveCurrentPosition();
         filter.SetActive(false);
         kiteNovelsUnterline.gameObject.SetActive(false);
@@ -100,6 +104,7 @@ public class ExplorerButtons : MonoBehaviour
 
     public void OnFavoritNovelsButton()
     {
+        AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("FAVORITEN");
         SaveCurrentPosition();
         filter.SetActive(false);
         kiteNovelsUnterline.gameObject.SetActive(false);
@@ -120,6 +125,7 @@ public class ExplorerButtons : MonoBehaviour
 
     public void OnFilterNovelsButton()
     {
+        AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("FILTER SUCHE");
         SaveCurrentPosition();
         kiteNovelsUnterline.gameObject.SetActive(false);
         userNovelsUnterline.gameObject.SetActive(false);

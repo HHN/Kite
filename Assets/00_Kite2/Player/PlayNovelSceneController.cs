@@ -56,8 +56,12 @@ public class PlayNovelSceneController : SceneController
     [SerializeField] private GameObject imageAreaColor;
     [SerializeField] private GameObject screenContentColor;
 
+    // Analytics
+    private bool firstUserConfirmation = true;
+
     void Start()
     {
+        AnalyticsServiceHandler.Instance().StartStopwatch();
         BackStackManager.Instance().Push(SceneNames.PLAY_NOVEL_SCENE);
 
         novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
@@ -173,6 +177,11 @@ public class PlayNovelSceneController : SceneController
         if (!isWaitingForConfirmation)
         {
             return;
+        }
+        if(firstUserConfirmation)
+        {
+            firstUserConfirmation = false;
+            AnalyticsServiceHandler.Instance().SendPlayNovelFirstConfirmation(); 
         }
         SetWaitingForConfirmation(false);
         PlayNextEvent();
@@ -402,6 +411,7 @@ public class PlayNovelSceneController : SceneController
     { 
         AddEntryToPlayThroughHistory(novelEvent.name, novelEvent.text);
         conversationContent.AddContent(novelEvent, this);
+        //TODO: Check position of chosen choiceEvent. Maybe always the first...?
     }
 
     public void HandleAddOpinionChoiceEvent(VisualNovelEvent novelEvent)
@@ -446,6 +456,7 @@ public class PlayNovelSceneController : SceneController
 
         this.feelingPanelController.Initialize();
         conversationContent.AddContent(novelEvent, this);
+        //TODO: Check which feelingEvent. Maybe always the first or none...?
     }
 
     public void HandleOpinionFeedbackEvent(VisualNovelEvent novelEvent)
@@ -455,6 +466,7 @@ public class PlayNovelSceneController : SceneController
 
         feelingPanelController.CleanUp();
         PlayNextEvent();
+        //TODO: Check time of feelingEvent. Maybe the answer will not be read
     }
 
     public void HandleEndNovelEvent(VisualNovelEvent novelEvent)
@@ -462,6 +474,7 @@ public class PlayNovelSceneController : SceneController
         AddScore(5);
         AddMoney(5);
         SceneLoader.LoadFeedbackScene();
+        //TODO: Check time
     }
 
     public IEnumerator StartNextEventInOneSeconds(int second)
@@ -476,7 +489,6 @@ public class PlayNovelSceneController : SceneController
         {
             return;
         }
-        Debug.Log("ShowAnswer" + show);
         AddEntryToPlayThroughHistory("Lea", message);
         conversationContent.ShowPlayerAnswer(message);
         ScrollToBottom();
