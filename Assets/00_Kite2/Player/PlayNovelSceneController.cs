@@ -6,6 +6,7 @@ using System.Collections;
 using Febucci.UI.Core;
 using System;
 using System.Drawing;
+using System.Text.RegularExpressions;
 
 public class PlayNovelSceneController : SceneController
 {
@@ -40,6 +41,7 @@ public class PlayNovelSceneController : SceneController
 
     [SerializeField] private GameObject addScoreServerCallPrefab;
     [SerializeField] private GameObject addMoneyServerCallPrefab;
+    [SerializeField] private GameObject gptServercallPrefab;
 
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip[] clips;
@@ -267,6 +269,11 @@ public class PlayNovelSceneController : SceneController
                     HandleFreeTextInputEvent(nextEventToPlay);
                     break;
                 }
+            case VisualNovelEventType.GPT_PROMPT_EVENT:
+                {
+                    HandleGptPromptEvent(nextEventToPlay);
+                    break;
+                }
             default:
                 {
                     break;
@@ -319,6 +326,31 @@ public class PlayNovelSceneController : SceneController
         FreeTextInputController freeTextInputController = Instantiate(this.freeTextInputPrefab, canvas.transform)
             .GetComponent<FreeTextInputController>();
         freeTextInputController.Initialize(novelEvent.questionForFreeTextInput, novelEvent.variablesName);
+    }
+
+    private void HandleGptPromptEvent(VisualNovelEvent novelEvent)
+    {
+        long nextEventID = novelEvent.nextId;
+        nextEventToPlay = novelEvents[nextEventID];
+
+        if (novelEvent.gptPrompt == String.Empty 
+            || novelEvent.gptPrompt == "" 
+            || novelEvent.variablesNameForGptPromp == String.Empty 
+            || novelEvent.variablesNameForGptPromp == "")
+        {
+            return;
+        }
+        GetCompletionServerCall call = Instantiate(gptServercallPrefab).GetComponent<GetCompletionServerCall>();
+        call.sceneController = this;
+        GptRequestEventOnSuccessHandler onSuccessHandler = new GptRequestEventOnSuccessHandler();
+        onSuccessHandler.variablesNameForGptPromp = novelEvent.variablesNameForGptPromp;
+        onSuccessHandler.completionHandler = GptCompletionHandlerManager.Instance().GetCompletionHandlerById(novelEvent.id);
+        call.onSuccessHandler = onSuccessHandler;
+        call.prompt = ReplacePlaceholders(novelEvent.gptPrompt, novelToPlay.GetGlobalVariables());
+        call.SendRequest();
+        DontDestroyOnLoad(call.gameObject);
+
+        StartCoroutine(StartNextEventInOneSeconds(20));
     }
 
     public void HandleBackgrundEvent(VisualNovelEvent novelEvent)
@@ -395,7 +427,7 @@ public class PlayNovelSceneController : SceneController
         if(novelEvent.show){
             conversationContent.AddContent(novelEvent, this);
 
-            AddEntryToPlayThroughHistory(novelEvent.name, novelEvent.text);
+            AddEntryToPlayThroughHistory(novelEvent.name, ReplacePlaceholders(novelEvent.text, novelToPlay.GetGlobalVariables()));
         }
 
         
@@ -722,9 +754,13 @@ public class PlayNovelSceneController : SceneController
         return returnString;
     }
 
-    private void AskForUserInput(string questiom, string variablesName)
+    static string ReplacePlaceholders(string text, Dictionary<string, string> replacements)
     {
-
+        return Regex.Replace(text, @"\[(.*?)\]", match =>
+        {
+            string key = match.Groups[1].Value;
+            return replacements.TryGetValue(key, out string replacement) ? replacement : match.Value;
+        });
     }
 }
 

@@ -25,4 +25,7 @@ public class VisualNovelEvent
     public bool show = true;
     public string questionForFreeTextInput;
     public string variablesName;
+    public string gptPrompt;
+    public string variablesNameForGptPromp;
+    public int gptCompletionHandlerId;
 }

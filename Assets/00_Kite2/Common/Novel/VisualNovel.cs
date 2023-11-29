@@ -51,4 +51,13 @@ public class VisualNovel
         }
         return globalVariables[name];
     }
+
+    public Dictionary<string, string> GetGlobalVariables()
+    {
+        if (globalVariables == null)
+        {
+            globalVariables = new Dictionary<string, string>();
+        }
+        return globalVariables;
+    }
 }

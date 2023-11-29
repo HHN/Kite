@@ -48,6 +48,10 @@ public class FreeTextInputController : MonoBehaviour
             Debug.Log("Unexpected Error!");
             return; 
         }
+        if (novelToPlay.IsVariableExistend(variablesName))
+        {
+            novelToPlay.RemoveGlobalVariable(variablesName);
+        }
         novelToPlay.AddGlobalVariable(variablesName, input);
 
         wrapper.SetActive(false);
