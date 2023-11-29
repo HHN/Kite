@@ -11,4 +11,44 @@ public class VisualNovel
     public string feedback;
     public List<VisualNovelEvent> novelEvents;
     public long id;
+    public Dictionary<string, string> globalVariables;
+
+    public void AddGlobalVariable(string name, string value)
+    {
+        if (globalVariables == null) 
+        {  
+            globalVariables = new Dictionary<string, string>(); 
+        }
+        globalVariables[name] = value;
+    }
+
+    public bool IsVariableExistend(string name)
+    {
+        if (globalVariables == null)
+        {
+            return false;
+        }
+        return globalVariables.ContainsKey(name);
+    }
+
+    public void RemoveGlobalVariable(string name)
+    {
+        if (globalVariables == null)
+        {
+            return;
+        }
+        if (globalVariables.ContainsKey(name))
+        {
+            globalVariables.Remove(name);
+        }
+    }
+
+    public string GetGlobalVariable(string name)
+    {
+        if (globalVariables == null || !globalVariables.ContainsKey(name))
+        {
+            return string.Empty;
+        }
+        return globalVariables[name];
+    }
 }

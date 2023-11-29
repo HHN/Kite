@@ -24,8 +24,22 @@ public class DialogueNodeWrapper : MonoBehaviour
     [SerializeField] private DraggableObject draggableObject;
     [SerializeField] private NovelMakerSceneController novelMakerSceneController;
 
+    [SerializeField] private bool initializationStarted = false;
+
     void Start()
     {
+        Initialize();
+    }
+
+    public void Initialize()
+    {
+        if (initializationStarted)
+        {
+            return;
+        }
+        this.initializationStarted = true;
+
+        dialogueNode = new DialogueNode();
         novelMakerSceneController = GameObject.Find("Controller").GetComponent<NovelMakerSceneController>();
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(dialogueNodeWrapperRectTransform);
@@ -36,8 +50,6 @@ public class DialogueNodeWrapper : MonoBehaviour
         addNodeButton.onClick.AddListener(delegate { OnAddNodeButton(); });
         editNodeButton.onClick.AddListener(delegate { OnEditNodeButton(); });
         connectNodeButton.onClick.AddListener(delegate { OnConnectNodesButton(); });
-
-        dialogueNode = new DialogueNode();
     }
 
     public void OnOptionsButton()
@@ -58,7 +70,7 @@ public class DialogueNodeWrapper : MonoBehaviour
         contextMenu.SetActive(false);
 
         Vector2 position = this.gameObject.transform.localPosition;
-        position = new Vector2(position.x, position.y + 200);
+        position = new Vector2(position.x, position.y - 200);
         novelMakerSceneController.AddNewDialogueNode(position, this);
     }
 

@@ -56,12 +56,10 @@ public class PlayNovelSceneController : SceneController
     [SerializeField] private GameObject imageAreaColor;
     [SerializeField] private GameObject screenContentColor;
 
-    // Analytics
-    private bool firstUserConfirmation = true;
+    [SerializeField] private GameObject freeTextInputPrefab;
 
     void Start()
     {
-        AnalyticsServiceHandler.Instance().StartStopwatch();
         BackStackManager.Instance().Push(SceneNames.PLAY_NOVEL_SCENE);
 
         novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
@@ -178,11 +176,6 @@ public class PlayNovelSceneController : SceneController
         {
             return;
         }
-        if(firstUserConfirmation)
-        {
-            firstUserConfirmation = false;
-            AnalyticsServiceHandler.Instance().SendPlayNovelFirstConfirmation(); 
-        }
         SetWaitingForConfirmation(false);
         PlayNextEvent();
     }
@@ -269,6 +262,11 @@ public class PlayNovelSceneController : SceneController
                     HandlePlayAnimationEvent(nextEventToPlay);
                     break;
                 }
+            case VisualNovelEventType.FREE_TEXT_INPUT_EVENT:
+                {
+                    HandleFreeTextInputEvent(nextEventToPlay);
+                    break;
+                }
             default:
                 {
                     break;
@@ -303,6 +301,24 @@ public class PlayNovelSceneController : SceneController
         {
             currentAnimation = Instantiate(novelAnimations[novelEvent.animationToPlay], viewPortOfImages.transform);
         }
+    }
+
+    private void HandleFreeTextInputEvent(VisualNovelEvent novelEvent)
+    {
+        long nextEventID = novelEvent.nextId;
+        nextEventToPlay = novelEvents[nextEventID];
+
+        if (novelEvent.questionForFreeTextInput == string.Empty 
+            || novelEvent.questionForFreeTextInput == "" 
+            || novelEvent.variablesName == string.Empty 
+            || novelEvent.variablesName == "")
+        {
+            return;
+        }
+
+        FreeTextInputController freeTextInputController = Instantiate(this.freeTextInputPrefab, canvas.transform)
+            .GetComponent<FreeTextInputController>();
+        freeTextInputController.Initialize(novelEvent.questionForFreeTextInput, novelEvent.variablesName);
     }
 
     public void HandleBackgrundEvent(VisualNovelEvent novelEvent)
@@ -411,7 +427,6 @@ public class PlayNovelSceneController : SceneController
     { 
         AddEntryToPlayThroughHistory(novelEvent.name, novelEvent.text);
         conversationContent.AddContent(novelEvent, this);
-        //TODO: Check position of chosen choiceEvent. Maybe always the first...?
     }
 
     public void HandleAddOpinionChoiceEvent(VisualNovelEvent novelEvent)
@@ -456,7 +471,6 @@ public class PlayNovelSceneController : SceneController
 
         this.feelingPanelController.Initialize();
         conversationContent.AddContent(novelEvent, this);
-        //TODO: Check which feelingEvent. Maybe always the first or none...?
     }
 
     public void HandleOpinionFeedbackEvent(VisualNovelEvent novelEvent)
@@ -466,7 +480,6 @@ public class PlayNovelSceneController : SceneController
 
         feelingPanelController.CleanUp();
         PlayNextEvent();
-        //TODO: Check time of feelingEvent. Maybe the answer will not be read
     }
 
     public void HandleEndNovelEvent(VisualNovelEvent novelEvent)
@@ -474,7 +487,6 @@ public class PlayNovelSceneController : SceneController
         AddScore(5);
         AddMoney(5);
         SceneLoader.LoadFeedbackScene();
-        //TODO: Check time
     }
 
     public IEnumerator StartNextEventInOneSeconds(int second)
@@ -489,6 +501,7 @@ public class PlayNovelSceneController : SceneController
         {
             return;
         }
+        Debug.Log("ShowAnswer" + show);
         AddEntryToPlayThroughHistory("Lea", message);
         conversationContent.ShowPlayerAnswer(message);
         ScrollToBottom();
@@ -707,6 +720,11 @@ public class PlayNovelSceneController : SceneController
             returnString += entry + "\n";
         }
         return returnString;
+    }
+
+    private void AskForUserInput(string questiom, string variablesName)
+    {
+
     }
 }
 

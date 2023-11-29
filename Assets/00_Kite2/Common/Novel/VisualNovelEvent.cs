@@ -23,4 +23,6 @@ public class VisualNovelEvent
     public int audioClipToPlay;
     public int animationToPlay;
     public bool show = true;
+    public string questionForFreeTextInput;
+    public string variablesName;
 }

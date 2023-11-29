@@ -5193,6 +5193,7 @@ MonoBehaviour:
   backgroundColor: {fileID: 1033715450}
   imageAreaColor: {fileID: 182827003}
   screenContentColor: {fileID: 1281647807}
+  freeTextInputPrefab: {fileID: 3171214583603264105, guid: 59415a69fbe4f7e4a85431a77d1028fd, type: 3}
 --- !u!4 &2133875533
 Transform:
   m_ObjectHideFlags: 0

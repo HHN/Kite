@@ -21,6 +21,8 @@ public class NovelMakerSceneController : SceneController
     [SerializeField] private List<DialogueNodeWrapper> allNodes;
     [SerializeField] private List<LineController> allLines;
 
+    [SerializeField] private DialogueNodeWrapper startNode;
+
     void Start()
     {
         BackStackManager.Instance().Push(SceneNames.NOVEL_MAKER_SCENE);
@@ -102,6 +104,7 @@ public class NovelMakerSceneController : SceneController
     public void AddNewDialogueNode(Vector2 position, DialogueNodeWrapper originalNode = null)
     {
         GameObject dialogueNode = Instantiate(dialogueNodePrefab, nodesContainer.transform);
+        dialogueNode.GetComponent<DialogueNodeWrapper>().Initialize();
         dialogueNode.transform.localPosition = position;
         allNodes.Add(dialogueNode.GetComponent<DialogueNodeWrapper>());
 
@@ -110,6 +113,8 @@ public class NovelMakerSceneController : SceneController
         AddNewLine(originalNode.transform, dialogueNode.transform, originalNode.GetDialogueNode().GetId(), 
             dialogueNode.GetComponent<DialogueNodeWrapper>().GetDialogueNode().GetId());
     }
+
+   
 
     public void AddNewLine(Transform positionOne, Transform positionTwo, int from, int to)
     {

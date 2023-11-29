@@ -27,7 +27,7 @@ public class LineController : MonoBehaviour
     {
         for (int i = 0; i < points.Length; i++)
         {
-            lineRenderer.SetPosition(i, new Vector3(points[i].position.x, points[i].position.y, 5));
+            lineRenderer.SetPosition(i, new Vector3(points[i].position.x, points[i].position.y, -5));
         }
     }
 }
