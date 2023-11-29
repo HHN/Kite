@@ -5179,6 +5179,7 @@ MonoBehaviour:
   scoreText: {fileID: 2036370749}
   addScoreServerCallPrefab: {fileID: 7160933486993280637, guid: ff0db1083a1a0e946a964b9aeb0c50cd, type: 3}
   addMoneyServerCallPrefab: {fileID: 5571745016954355384, guid: 872fdb0cca16bb14dade1297f173bf4a, type: 3}
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   audioSource: {fileID: 2133875534}
   clips:
   - {fileID: 0}

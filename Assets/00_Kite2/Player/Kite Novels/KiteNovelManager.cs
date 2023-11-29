@@ -21,6 +21,7 @@ public class KiteNovelManager : MonoBehaviour
         novels[-9] = new ConversationWithAcquaintancesNovel();
         novels[-10] = new BankAppointmentNovel();
         novels[-11] = new FeeNegotiationNovel();
+        novels[-12] = new FreeTextAndGptDemo();
     }
 
     public static VisualNovel GetKiteNovelById(long id)

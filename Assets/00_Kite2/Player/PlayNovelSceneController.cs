@@ -71,6 +71,7 @@ public class PlayNovelSceneController : SceneController
 
     private void Update()
     {
+        /**
         if (Input.GetKeyDown(KeyCode.A))
         {
             SetScreenContentColor(true, new UnityEngine.Color(0, 0, 0, 1));
@@ -135,6 +136,7 @@ public class PlayNovelSceneController : SceneController
         {
             SetCharacterBlur(false, "Herr Mayer");
         }
+        */
     }
 
     public void InitializeMoneyAndScore()
@@ -350,7 +352,7 @@ public class PlayNovelSceneController : SceneController
         call.SendRequest();
         DontDestroyOnLoad(call.gameObject);
 
-        StartCoroutine(StartNextEventInOneSeconds(20));
+        PlayNextEvent();
     }
 
     public void HandleBackgrundEvent(VisualNovelEvent novelEvent)
@@ -414,6 +416,8 @@ public class PlayNovelSceneController : SceneController
 
     public void HandleShowMessageEvent(VisualNovelEvent novelEvent)
     {
+        novelEvent.text = ReplacePlaceholders(novelEvent.text, novelToPlay.GetGlobalVariables());
+
         long nextEventID = novelEvent.nextId;
         nextEventToPlay = novelEvents[nextEventID];
 
@@ -427,7 +431,7 @@ public class PlayNovelSceneController : SceneController
         if(novelEvent.show){
             conversationContent.AddContent(novelEvent, this);
 
-            AddEntryToPlayThroughHistory(novelEvent.name, ReplacePlaceholders(novelEvent.text, novelToPlay.GetGlobalVariables()));
+            AddEntryToPlayThroughHistory(novelEvent.name, novelEvent.text);
         }
 
         

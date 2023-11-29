@@ -43,7 +43,7 @@ public class FreeTextInputController : MonoBehaviour
         input = input.Trim();
         VisualNovel novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
 
-        if (novelToPlay != null) 
+        if (novelToPlay == null) 
         {
             Debug.Log("Unexpected Error!");
             return; 
