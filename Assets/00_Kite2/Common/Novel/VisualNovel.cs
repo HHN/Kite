@@ -60,4 +60,9 @@ public class VisualNovel
         }
         return globalVariables;
     }
+
+    public void ClearGlobalVariables()
+    {
+        globalVariables = new Dictionary<string, string>();
+    }
 }
