@@ -156,7 +156,7 @@ public class PlayNovelSceneController : SceneController
         {
             return;
         }
-
+        novelToPlay.ClearGlobalVariables();
         novelToPlay.feedback = string.Empty;
 
         novelName.text = novelToPlay.title;
