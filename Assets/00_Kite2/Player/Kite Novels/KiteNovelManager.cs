@@ -12,11 +12,11 @@ public class KiteNovelManager : MonoBehaviour
         novels[-3] = new PressTalkNovel();
         novels[-4] = new CallWithNotaryNovel();
         novels[-7] = new InitialInterviewForGrantApplicationNovel();
+        novels[-6] = new RentingAnOfficeNovel();
 
         // not modified novels
         novels[-1] = new BankTalkNovel();
         novels[-5] = new BankAccountOpeningNovel();
-        novels[-6] = new RentingAnOfficeNovel();
         novels[-8] = new StartUpGrantNovel();
         novels[-9] = new ConversationWithAcquaintancesNovel();
         novels[-10] = new BankAppointmentNovel();

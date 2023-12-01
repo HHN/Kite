@@ -13,6 +13,12 @@ public class AnalyticsServiceHandler
 
     private string fromWhereIsNovelSelected = "KITE NOVELS";
 
+    private List<string> choiceList = new List<string>();
+
+    private string lastQuestionForChoice;
+
+    private long idOfCurrentNovel;
+
     // Private Konstruktor, um direkte Instanziierung zu verhindern
     private AnalyticsServiceHandler() {}
 
@@ -47,6 +53,36 @@ public class AnalyticsServiceHandler
         return stopwatch.ElapsedMilliseconds;
     }
 
+    public void SetFromWhereIsNovelSelected(string fromWhereIsNovelSelected)
+    {
+        this.fromWhereIsNovelSelected = fromWhereIsNovelSelected;
+    }
+
+    public void AddChoiceToList(string choice)
+    {
+        choiceList.Add(choice);
+    }
+
+    private int GetChoiceIdByText(string text)
+    {
+        return choiceList.IndexOf(text);
+    }
+
+    private string GetTextByChoiceId(int id)
+    {
+        return choiceList[id];
+    }
+
+    public void SetLastQuestionForChoice(string question)
+    {
+        lastQuestionForChoice = question;
+    }
+
+    public void SetIdOfCurrentNovel(long id)
+    {
+        idOfCurrentNovel = id;
+    }
+
     public void SendMainMenuStatistics()
     {
         StopStopwatch();
@@ -57,11 +93,6 @@ public class AnalyticsServiceHandler
         };
         AnalyticsService.Instance.CustomData("mainMenuStatistics", parameters);
         // UnityEngine.Debug.Log("");
-    }
-
-    public void SetFromWhereIsNovelSelected(string fromWhereIsNovelSelected)
-    {
-        this.fromWhereIsNovelSelected = fromWhereIsNovelSelected;
     }
 
     public void SendNovelExplorerStatistics(long visualNovelID)
@@ -99,5 +130,25 @@ public class AnalyticsServiceHandler
         AnalyticsService.Instance.CustomData("playNovelFirstConfirmation", parameters);
         UnityEngine.Debug.Log("millisecondsBeforePlayNovelFirstConfirmation: " + stopwatch.ElapsedMilliseconds);
         //TODO: Add position of confirmation. Maybe user thinks he/she has to click on the symbol...
+    }
+
+    public void SendPlayerChoice(int id)
+    {
+        var text = GetTextByChoiceId(id);
+        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        {
+            {"novelId", idOfCurrentNovel},
+            {"question", lastQuestionForChoice},
+            {"text", text},
+            {"indexOfChoice", id},
+            {"lengthOfChoice", text.Length}
+        };
+        choiceList.Clear();
+        AnalyticsService.Instance.CustomData("playerChoice", parameters);
+        UnityEngine.Debug.Log("idOfCurrentNovel: " + idOfCurrentNovel + "\n" +
+        "question: " + lastQuestionForChoice + "\n" + 
+        "text: " + text + "\n" + 
+        "indexOfChoice: " + id + "\n" +
+        "lengthOfChoice: " + text.Length);
     }
 }

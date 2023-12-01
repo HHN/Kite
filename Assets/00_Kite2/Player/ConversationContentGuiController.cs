@@ -120,6 +120,7 @@ public class ConversationContentGuiController : MonoBehaviour
     {
         GameObject newMessageBox = Instantiate(blueMessagePrefabWithTrigger, this.transform);
         ChatMessageBox messageBox = newMessageBox.GetComponent<ChatMessageBox>();
+        Debug.Log("Message: " + message);
         messageBox.SetMessage(message);
         guiContent.Add(newMessageBox);
         PromptManager.Instance().AddLineToPrompt(

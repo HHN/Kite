@@ -13,7 +13,7 @@ public class FeelingPanelController : MonoBehaviour
     public Button annoyedButton;
     public Button skipButton;
     public PlayNovelSceneController controller;
-
+ 
     private string nervousFeedback;
     private string fearfullFeedback;
     private string encouragedFeedback;

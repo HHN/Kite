@@ -60,8 +60,12 @@ public class PlayNovelSceneController : SceneController
 
     [SerializeField] private GameObject freeTextInputPrefab;
 
+    // Analytics
+    private bool firstUserConfirmation = true;
+
     void Start()
     {
+        AnalyticsServiceHandler.Instance().StartStopwatch();
         BackStackManager.Instance().Push(SceneNames.PLAY_NOVEL_SCENE);
 
         novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
@@ -150,6 +154,8 @@ public class PlayNovelSceneController : SceneController
 
     public void Initialize()
     {
+        AnalyticsServiceHandler.Instance().SetIdOfCurrentNovel(novelToPlay.id);
+
         PromptManager.Instance().InitializePrompt();
 
         if (novelToPlay == null)
@@ -179,6 +185,11 @@ public class PlayNovelSceneController : SceneController
         if (!isWaitingForConfirmation)
         {
             return;
+        }
+        if(firstUserConfirmation)
+        {
+            firstUserConfirmation = false;
+            AnalyticsServiceHandler.Instance().SendPlayNovelFirstConfirmation(); 
         }
         SetWaitingForConfirmation(false);
         PlayNextEvent();
@@ -432,6 +443,7 @@ public class PlayNovelSceneController : SceneController
             conversationContent.AddContent(novelEvent, this);
 
             AddEntryToPlayThroughHistory(novelEvent.name, novelEvent.text);
+            AnalyticsServiceHandler.Instance().SetLastQuestionForChoice(novelEvent.text);
         }
 
         
@@ -456,6 +468,7 @@ public class PlayNovelSceneController : SceneController
             SetWaitingForConfirmation(true);
             return;
         }
+        AnalyticsServiceHandler.Instance().AddChoiceToList(novelEvent.text);
         PlayNextEvent();
     }
 
@@ -537,7 +550,6 @@ public class PlayNovelSceneController : SceneController
         {
             return;
         }
-        Debug.Log("ShowAnswer" + show);
         AddEntryToPlayThroughHistory("Lea", message);
         conversationContent.ShowPlayerAnswer(message);
         ScrollToBottom();

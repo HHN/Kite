@@ -159,26 +159,31 @@ public class OptionsManager : MonoBehaviour
 
     public void OnOptionA()
     {
+        AnalyticsServiceHandler.Instance().SendPlayerChoice(0);
         StartCoroutine(AfterSelection("Selected A", stringA, idA, displayAfterSelectionA));
     }
 
     public void OnOptionB()
     {
+        AnalyticsServiceHandler.Instance().SendPlayerChoice(1);
         StartCoroutine(AfterSelection("Selected B", stringB, idB, displayAfterSelectionB));
     }
 
     public void OnOptionC()
     {
+        AnalyticsServiceHandler.Instance().SendPlayerChoice(2);
         StartCoroutine(AfterSelection("Selected C", stringC, idC, displayAfterSelectionC));
     }
 
     public void OnOptionD()
     {
+        AnalyticsServiceHandler.Instance().SendPlayerChoice(3);
         StartCoroutine(AfterSelection("Selected D", stringD, idD, displayAfterSelectionD));
     }
 
     public void OnOptionE()
     {
+        AnalyticsServiceHandler.Instance().SendPlayerChoice(4);
         StartCoroutine(AfterSelection("Selected E", stringE, idE, displayAfterSelectionE));
     }
 
