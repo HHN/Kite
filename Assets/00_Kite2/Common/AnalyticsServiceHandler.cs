@@ -15,6 +15,8 @@ public class AnalyticsServiceHandler
 
     private List<string> choiceList = new List<string>();
 
+    private List<string> feelingList = new List<string>();
+
     private string lastQuestionForChoice;
 
     private long idOfCurrentNovel;
@@ -63,6 +65,11 @@ public class AnalyticsServiceHandler
         choiceList.Add(choice);
     }
 
+    public void AddFeelingToList(string feeling)
+    {
+        feelingList.Add(feeling);
+    }
+
     private int GetChoiceIdByText(string text)
     {
         return choiceList.IndexOf(text);
@@ -81,6 +88,11 @@ public class AnalyticsServiceHandler
     public void SetIdOfCurrentNovel(long id)
     {
         idOfCurrentNovel = id;
+    }
+
+    private string GetChoosableFeelings()
+    {
+        return string.Join(",", feelingList);
     }
 
     public void SendMainMenuStatistics()
@@ -150,5 +162,29 @@ public class AnalyticsServiceHandler
         "text: " + text + "\n" + 
         "indexOfChoice: " + id + "\n" +
         "lengthOfChoice: " + text.Length);
+    }
+
+    public void SendPlayerFeeling(int id)
+    {
+        var text = "";
+        if(feelingList.Count <= id)
+        {
+            text = "Skip";
+        } else {
+            text = GetTextByChoiceId(id);
+        }
+        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        {
+            {"novelId", idOfCurrentNovel},
+            {"text", text},
+            {"indexOfFeeling", id},
+            {"chooseableFeelings", GetChoosableFeelings()}
+        };
+        choiceList.Clear();
+        AnalyticsService.Instance.CustomData("playerChoice", parameters);
+        UnityEngine.Debug.Log("idOfCurrentNovel: " + idOfCurrentNovel + "\n" +
+        "text: " + text + "\n" + 
+        "indexOfFeeling: " + id + "\n" +
+        "chooseableFeelings: " + GetChoosableFeelings());
     }
 }

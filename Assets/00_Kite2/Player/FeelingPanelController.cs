@@ -40,6 +40,7 @@ public class FeelingPanelController : MonoBehaviour
         {
             nervousButton.gameObject.SetActive(true);
             nervousButton.interactable = true;
+            AnalyticsServiceHandler.Instance().AddFeelingToList("Nervous");
         }
 
         if (string.IsNullOrEmpty(fearfullFeedback))
@@ -50,6 +51,7 @@ public class FeelingPanelController : MonoBehaviour
         {
             fearfullButton.gameObject.SetActive(true);
             fearfullButton.interactable = true;
+            AnalyticsServiceHandler.Instance().AddFeelingToList("Fearfull");
         }
 
         if (string.IsNullOrEmpty(encouragedFeedback))
@@ -60,6 +62,7 @@ public class FeelingPanelController : MonoBehaviour
         {
             encouragedButton.gameObject.SetActive(true);
             encouragedButton.interactable = true;
+            AnalyticsServiceHandler.Instance().AddFeelingToList("Encouraged");
         }
 
         if (string.IsNullOrEmpty(annoyedFeedback))
@@ -70,6 +73,7 @@ public class FeelingPanelController : MonoBehaviour
         {
             annoyedButton.gameObject.SetActive(true);
             annoyedButton.interactable = true;
+            AnalyticsServiceHandler.Instance().AddFeelingToList("Annoyed");
         }
 
         feedback.gameObject.SetActive(false);
@@ -149,6 +153,7 @@ public class FeelingPanelController : MonoBehaviour
 
         nervousButton.interactable = false;
         this.skipButton.GetComponentInChildren<TextMeshProUGUI>().text = "WEITER";
+        AnalyticsServiceHandler.Instance().SendPlayerFeeling(0);
     }
 
     public void OnFearfullButton()
@@ -168,6 +173,7 @@ public class FeelingPanelController : MonoBehaviour
 
         fearfullButton.interactable = false;
         this.skipButton.GetComponentInChildren<TextMeshProUGUI>().text = "WEITER";
+        AnalyticsServiceHandler.Instance().SendPlayerFeeling(1);
     }
 
     public void OnEncouragedButton()
@@ -187,6 +193,7 @@ public class FeelingPanelController : MonoBehaviour
 
         encouragedButton.interactable = false;
         this.skipButton.GetComponentInChildren<TextMeshProUGUI>().text = "WEITER";
+        AnalyticsServiceHandler.Instance().SendPlayerFeeling(2);
     }
 
     public void OnAnnoyedButton()
@@ -206,6 +213,7 @@ public class FeelingPanelController : MonoBehaviour
 
         annoyedButton.interactable = false;
         this.skipButton.GetComponentInChildren<TextMeshProUGUI>().text = "WEITER";
+        AnalyticsServiceHandler.Instance().SendPlayerFeeling(3);
     }
 
     public void OnSkipButton()
@@ -213,5 +221,6 @@ public class FeelingPanelController : MonoBehaviour
         this.gameObject.SetActive(false);
         this.controller.SetWaitingForConfirmation(true);
         this.controller.OnConfirm();
+        AnalyticsServiceHandler.Instance().SendPlayerFeeling(4);
     }
 }
