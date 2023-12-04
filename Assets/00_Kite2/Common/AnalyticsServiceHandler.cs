@@ -194,4 +194,15 @@ public class AnalyticsServiceHandler
         "chooseableFeelings: " + GetChoosableFeelings());
         feelingList.Clear();
     }
+
+    public void SendNovelPlayTime()
+    {
+        stopwatch.Stop();
+        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        {
+            {"playTime", stopwatch.ElapsedMilliseconds}
+        };
+        AnalyticsService.Instance.CustomData("novelPlayTime", parameters);
+        UnityEngine.Debug.Log("Novel ended after: " + stopwatch.ElapsedMilliseconds);
+    }
 }
