@@ -80,6 +80,11 @@ public class AnalyticsServiceHandler
         return choiceList[id];
     }
 
+    private string GetTextByFeelingId(int id)
+    {
+        return feelingList[id];
+    }
+
     public void SetLastQuestionForChoice(string question)
     {
         lastQuestionForChoice = question;
@@ -146,6 +151,8 @@ public class AnalyticsServiceHandler
 
     public void SendPlayerChoice(int id)
     {
+        UnityEngine.Debug.Log("Length of choice: " + choiceList.Count);
+        UnityEngine.Debug.Log("ID: " + id);
         var text = GetTextByChoiceId(id);
         Dictionary<string, object> parameters = new Dictionary<string, object>()
         {
@@ -155,13 +162,13 @@ public class AnalyticsServiceHandler
             {"indexOfChoice", id},
             {"lengthOfChoice", text.Length}
         };
-        choiceList.Clear();
         AnalyticsService.Instance.CustomData("playerChoice", parameters);
         UnityEngine.Debug.Log("idOfCurrentNovel: " + idOfCurrentNovel + "\n" +
         "question: " + lastQuestionForChoice + "\n" + 
         "text: " + text + "\n" + 
         "indexOfChoice: " + id + "\n" +
         "lengthOfChoice: " + text.Length);
+        choiceList.Clear();
     }
 
     public void SendPlayerFeeling(int id)
@@ -171,7 +178,7 @@ public class AnalyticsServiceHandler
         {
             text = "Skip";
         } else {
-            text = GetTextByChoiceId(id);
+            text = GetTextByFeelingId(id);
         }
         Dictionary<string, object> parameters = new Dictionary<string, object>()
         {
@@ -180,11 +187,11 @@ public class AnalyticsServiceHandler
             {"indexOfFeeling", id},
             {"chooseableFeelings", GetChoosableFeelings()}
         };
-        choiceList.Clear();
-        AnalyticsService.Instance.CustomData("playerChoice", parameters);
+        AnalyticsService.Instance.CustomData("playerFeeling", parameters);
         UnityEngine.Debug.Log("idOfCurrentNovel: " + idOfCurrentNovel + "\n" +
         "text: " + text + "\n" + 
         "indexOfFeeling: " + id + "\n" +
         "chooseableFeelings: " + GetChoosableFeelings());
+        feelingList.Clear();
     }
 }
