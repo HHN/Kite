@@ -205,4 +205,9 @@ public class AnalyticsServiceHandler
         AnalyticsService.Instance.CustomData("novelPlayTime", parameters);
         UnityEngine.Debug.Log("Novel ended after: " + stopwatch.ElapsedMilliseconds);
     }
+
+    public void SendWaitedForAIFeedback()
+    {
+        
+    }
 }

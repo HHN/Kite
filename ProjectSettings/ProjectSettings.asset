@@ -250,8 +250,8 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: D:/00_Desktop/Unity projects/user.keystore
-  AndroidKeyaliasName: mergo
+  AndroidKeystoreName: C:/Users/JL/Documents/Code/KITE 2/user.keystore
+  AndroidKeyaliasName: jl
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
