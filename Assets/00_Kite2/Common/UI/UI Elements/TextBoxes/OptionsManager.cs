@@ -33,7 +33,6 @@ public class OptionsManager : MonoBehaviour
     public AudioClip selectedSound;
 
     private PlayNovelSceneController sceneController;
-    private InitialTalkSceneController talkSceneController;
 
     public void Initialize(PlayNovelSceneController sceneController, List<VisualNovelEvent> options)
     {
@@ -44,6 +43,8 @@ public class OptionsManager : MonoBehaviour
             return;
         }
         optionA.SetMessage(options[0].text);
+        AnalyticsServiceHandler.Instance().AddChoiceToList(options[0].text);
+        Debug.Log("Added Choice A");
         idA = options[0].onChoice;
         stringA = options[0].text;
         displayAfterSelectionA = options[0].show;
@@ -57,6 +58,7 @@ public class OptionsManager : MonoBehaviour
             return;
         }
         optionB.SetMessage(options[1].text);
+        AnalyticsServiceHandler.Instance().AddChoiceToList(options[1].text);
         idB = options[1].onChoice;
         stringB = options[1].text;
         displayAfterSelectionB = options[1].show;
@@ -69,6 +71,7 @@ public class OptionsManager : MonoBehaviour
             return;
         }
         optionC.SetMessage(options[2].text);
+        AnalyticsServiceHandler.Instance().AddChoiceToList(options[2].text);
         idC = options[2].onChoice;
         stringC = options[2].text;
         displayAfterSelectionC = options[2].show;
@@ -80,6 +83,7 @@ public class OptionsManager : MonoBehaviour
             return;
         }
         optionD.SetMessage(options[3].text);
+        AnalyticsServiceHandler.Instance().AddChoiceToList(options[3].text);
         idD = options[3].onChoice;
         stringD = options[3].text;
         displayAfterSelectionD = options[3].show;
@@ -90,67 +94,7 @@ public class OptionsManager : MonoBehaviour
             return;
         }
         optionE.SetMessage(options[4].text);
-        idE = options[4].onChoice;
-        stringE = options[4].text;
-        displayAfterSelectionE = options[4].show;
-        return;
-    }
-
-    public void Initialize(InitialTalkSceneController sceneController, List<VisualNovelEvent> options)
-    {
-        this.talkSceneController = sceneController;
-        if (options.Count == 0)
-        {
-            gameObject.SetActive(false);
-            return;
-        }
-        optionA.SetMessage(options[0].text);
-        idA = options[0].onChoice;
-        stringA = options[0].text;
-        displayAfterSelectionA = options[0].show;
-
-        if (options.Count == 1)
-        {
-            optionB.gameObject.SetActive(false);
-            optionC.gameObject.SetActive(false);
-            optionD.gameObject.SetActive(false);
-            optionE.gameObject.SetActive(false);
-            return;
-        }
-        optionB.SetMessage(options[1].text);
-        idB = options[1].onChoice;
-        stringB = options[1].text;
-        displayAfterSelectionB = options[1].show;
-
-        if (options.Count == 2)
-        {
-            optionC.gameObject.SetActive(false);
-            optionD.gameObject.SetActive(false);
-            optionE.gameObject.SetActive(false);
-            return;
-        }
-        optionC.SetMessage(options[2].text);
-        idC = options[2].onChoice;
-        stringC = options[2].text;
-        displayAfterSelectionC = options[2].show;
-
-        if (options.Count == 3)
-        {
-            optionD.gameObject.SetActive(false);
-            optionE.gameObject.SetActive(false);
-            return;
-        }
-        optionD.SetMessage(options[3].text);
-        idD = options[3].onChoice;
-        stringD = options[3].text;
-        displayAfterSelectionD = options[3].show;
-
-        if (options.Count == 4)
-        {
-            optionE.gameObject.SetActive(false);
-            return;
-        }
-        optionE.SetMessage(options[4].text);
+        AnalyticsServiceHandler.Instance().AddChoiceToList(options[4].text);
         idE = options[4].onChoice;
         stringE = options[4].text;
         displayAfterSelectionE = options[4].show;
@@ -209,18 +153,6 @@ public class OptionsManager : MonoBehaviour
             {
                 sceneController.OnConfirm();
             }
-        } else if(talkSceneController != null) 
-        {
-            talkSceneController.confirmArea.gameObject.SetActive(true);
-            talkSceneController.ShowAnswer(answer, displayAfterSelection);
-            talkSceneController.SetWaitingForConfirmation(true);
-            talkSceneController.SetNextEvent(nextEventID);
-
-            if (!displayAfterSelection)
-            {
-                talkSceneController.OnConfirm();
-            }
-        }
-        
+        } 
     }
 }

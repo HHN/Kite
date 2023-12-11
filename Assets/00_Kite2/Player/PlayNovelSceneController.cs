@@ -533,6 +533,7 @@ public class PlayNovelSceneController : SceneController
 
     public void HandleEndNovelEvent(VisualNovelEvent novelEvent)
     {
+        AnalyticsServiceHandler.Instance().SendNovelPlayTime();
         AddScore(5);
         AddMoney(5);
         SceneLoader.LoadFeedbackScene();
