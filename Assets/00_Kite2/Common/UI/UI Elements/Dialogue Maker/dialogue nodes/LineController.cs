@@ -10,6 +10,8 @@ public class LineController : MonoBehaviour
     [SerializeField] private int fromNodeId;
     [SerializeField] private int toNodeId;
 
+    [SerializeField] private const float zPositon = 89f;
+
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
@@ -27,7 +29,7 @@ public class LineController : MonoBehaviour
     {
         for (int i = 0; i < points.Length; i++)
         {
-            lineRenderer.SetPosition(i, new Vector3(points[i].position.x, points[i].position.y, -5));
+            lineRenderer.SetPosition(i, new Vector3(points[i].position.x, points[i].position.y, zPositon));
         }
     }
 }
