@@ -11,6 +11,8 @@ public class AnalyticsServiceHandler
 
     private Stopwatch stopwatch;
 
+    private Stopwatch stopwatchSession;
+
     private string fromWhereIsNovelSelected = "KITE NOVELS";
 
     private List<string> choiceList = new List<string>();
@@ -40,6 +42,26 @@ public class AnalyticsServiceHandler
         AnalyticsService.Instance.StartDataCollection();    //TODO: show the player a UI element that asks for consent.
         UnityEngine.Debug.Log("UserID: " + AnalyticsService.Instance.GetAnalyticsUserID());
         StartStopwatch();
+        Application.quitting += OnQuit();
+        stopwatchSession = new Stopwatch();
+        stopwatchSession.Start();
+    }
+
+    private void OnApplicationPause(bool pauseStatus) {
+        if(pauseStatus)
+        {
+            stopwatchSession.Stop();
+            UnityEngine.Debug.Log("Stopped session time");
+        } else 
+        {
+            stopwatchSession.Start();
+            UnityEngine.Debug.Log("Continued session time");
+        }
+    }
+
+    private void OnQuit ()
+    {
+        SendSessionStatistics();
     }
 
     public void StartStopwatch()
@@ -209,5 +231,16 @@ public class AnalyticsServiceHandler
     public void SendWaitedForAIFeedback()
     {
         
+    }
+
+    private void SendSessionStatistics ()
+    {
+        stopwatchSession.Stop();
+        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        {
+            {"sessionTime", stopwatchSession.ElapsedMilliseconds}
+        };
+        AnalyticsService.Instance.CustomData("sessionStatistics", parameters);
+        UnityEngine.Debug.Log("Session ended after: " + stopwatchSession.ElapsedMilliseconds);
     }
 }
