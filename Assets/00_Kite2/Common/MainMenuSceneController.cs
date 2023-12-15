@@ -83,6 +83,7 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     public void OnNovelPlayerButton()
     {
         AnalyticsServiceHandler.Instance().SendMainMenuStatistics();
+        AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("KITE NOVELS");
         SceneLoader.LoadNovelExplorerScene();
     }
 

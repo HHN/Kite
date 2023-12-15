@@ -13,7 +13,7 @@ public class AnalyticsServiceHandler
 
     private Stopwatch stopwatchSession;
 
-    private string fromWhereIsNovelSelected = "KITE NOVELS";
+    private string fromWhereIsNovelSelected = "";
 
     private List<string> choiceList = new List<string>();
 

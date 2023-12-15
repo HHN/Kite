@@ -1162,7 +1162,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 105,
-                nextId = 98,
+                nextId = 185,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
@@ -2026,6 +2026,17 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 name = "Herr Müller",
                 text = "Ja, gerne. Aber...",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 185,
+                nextId = 107,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Herr Müller",
+                text = "Ich hoffe, Sie sind sich bewusst, dass es wirklich eine große Herausforderung sein kann, beides zu managen.",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.NONE)
             },
 
 
