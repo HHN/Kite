@@ -23,6 +23,10 @@ public class AnalyticsServiceHandler
 
     private long idOfCurrentNovel;
 
+    private bool addedAllEntriesToChoiceList = false;
+
+    private int choiceId = -10;
+
     // Private Konstruktor, um direkte Instanziierung zu verhindern
     private AnalyticsServiceHandler() {}
 
@@ -84,6 +88,25 @@ public class AnalyticsServiceHandler
     public void AddChoiceToList(string choice)
     {
         choiceList.Add(choice);
+    }
+
+    public void AddedLastChoice ()
+    {
+        addedAllEntriesToChoiceList = true;
+        if(choiceId >= 0)
+        {
+            SendPlayerChoice(choiceId);
+        }
+    }
+
+    public void SetChoiceId(int choiceId)
+    {
+        if(addedAllEntriesToChoiceList)
+        {
+            SendPlayerChoice(choiceId);
+        } else {
+            this.choiceId = choiceId;
+        }
     }
 
     public void AddFeelingToList(string feeling)
@@ -189,6 +212,8 @@ public class AnalyticsServiceHandler
         "text: " + text + "\n" + 
         "indexOfChoice: " + id + "\n" +
         "lengthOfChoice: " + text.Length);
+        choiceId = -10;  // means no choice selected
+        addedAllEntriesToChoiceList = false;
         choiceList.Clear();
     }
 
