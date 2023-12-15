@@ -39,6 +39,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler
 
     public void OnFinishButton()
     {
+        AnalyticsServiceHandler.Instance().SendWaitedForAIFeedback();
         BackStackManager.Instance().Clear(); // we go back to the explorer and don't want
                                              // the back-button to bring us to the feedback scene aggain
         SceneLoader.LoadNovelExplorerScene();
@@ -53,5 +54,6 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler
         }
         feedbackText.SetText(response.completion.Trim());
         novelToPlay.feedback = (response.completion.Trim());
+        AnalyticsServiceHandler.Instance().SetWaitedForAiFeedbackTrue();
     }
 }

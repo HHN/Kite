@@ -27,6 +27,8 @@ public class AnalyticsServiceHandler
 
     private int choiceId = -10;
 
+    private bool waitForAIFeedback = false;
+
     // Private Konstruktor, um direkte Instanziierung zu verhindern
     private AnalyticsServiceHandler() {}
 
@@ -144,6 +146,11 @@ public class AnalyticsServiceHandler
         return string.Join(",", feelingList);
     }
 
+    public void SetWaitedForAiFeedbackTrue()
+    {
+        waitForAIFeedback = true;
+    }
+
     public void SendMainMenuStatistics()
     {
         StopStopwatch();
@@ -200,7 +207,7 @@ public class AnalyticsServiceHandler
         var text = GetTextByChoiceId(id);
         Dictionary<string, object> parameters = new Dictionary<string, object>()
         {
-            {"novelId", idOfCurrentNovel},
+            {"novelID", idOfCurrentNovel},
             {"question", lastQuestionForChoice},
             {"text", text},
             {"indexOfChoice", id},
@@ -228,7 +235,7 @@ public class AnalyticsServiceHandler
         }
         Dictionary<string, object> parameters = new Dictionary<string, object>()
         {
-            {"novelId", idOfCurrentNovel},
+            {"novelID", idOfCurrentNovel},
             {"text", text},
             {"indexOfFeeling", id},
             {"chooseableFeelings", GetChoosableFeelings()}
@@ -254,7 +261,13 @@ public class AnalyticsServiceHandler
 
     public void SendWaitedForAIFeedback()
     {
-        
+        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        {
+            {"waitForAIFeedback", waitForAIFeedback}
+        };
+        AnalyticsService.Instance.CustomData("waitForAIFeedback", parameters);
+        UnityEngine.Debug.Log("Did player waited for ai feedback? Answer: " + waitForAIFeedback);
+        waitForAIFeedback = false;
     }
 
     private void SendSessionStatistics ()
