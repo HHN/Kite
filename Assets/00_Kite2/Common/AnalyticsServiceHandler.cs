@@ -42,7 +42,6 @@ public class AnalyticsServiceHandler
         AnalyticsService.Instance.StartDataCollection();    //TODO: show the player a UI element that asks for consent.
         UnityEngine.Debug.Log("UserID: " + AnalyticsService.Instance.GetAnalyticsUserID());
         StartStopwatch();
-        Application.quitting += OnQuit();
         stopwatchSession = new Stopwatch();
         stopwatchSession.Start();
     }
@@ -59,7 +58,7 @@ public class AnalyticsServiceHandler
         }
     }
 
-    private void OnQuit ()
+    private void OnApplicationQuit() 
     {
         SendSessionStatistics();
     }
@@ -139,8 +138,8 @@ public class AnalyticsServiceHandler
         StopStopwatch();
         Dictionary<string, object> parameters = new Dictionary<string, object>()
         {
-            {"fromWhereIsNovelSelected", fromWhereIsNovelSelected},
-            {"novelID", visualNovelID},
+            // {"fromWhereIsNovelSelected", fromWhereIsNovelSelected},
+            // {"novelID", visualNovelID},
             {"millisecondsInNovelExplorer", stopwatch.ElapsedMilliseconds}
         };
         AnalyticsService.Instance.CustomData("novelExplorerStatistics", parameters);
