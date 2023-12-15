@@ -55,6 +55,7 @@ public class OptionsManager : MonoBehaviour
             optionC.gameObject.SetActive(false);
             optionD.gameObject.SetActive(false);
             optionE.gameObject.SetActive(false);
+            AnalyticsServiceHandler.Instance().AddedLastChoice();
             return;
         }
         optionB.SetMessage(options[1].text);
@@ -69,6 +70,7 @@ public class OptionsManager : MonoBehaviour
             optionC.gameObject.SetActive(false);
             optionD.gameObject.SetActive(false);
             optionE.gameObject.SetActive(false);
+            AnalyticsServiceHandler.Instance().AddedLastChoice();
             return;
         }
         optionC.SetMessage(options[2].text);
@@ -82,6 +84,7 @@ public class OptionsManager : MonoBehaviour
         {
             optionD.gameObject.SetActive(false);
             optionE.gameObject.SetActive(false);
+            AnalyticsServiceHandler.Instance().AddedLastChoice();
             return;
         }
         optionD.SetMessage(options[3].text);
@@ -94,6 +97,7 @@ public class OptionsManager : MonoBehaviour
         if (options.Count == 4)
         {
             optionE.gameObject.SetActive(false);
+            AnalyticsServiceHandler.Instance().AddedLastChoice();
             return;
         }
         optionE.SetMessage(options[4].text);
@@ -102,6 +106,7 @@ public class OptionsManager : MonoBehaviour
         idE = options[4].onChoice;
         stringE = options[4].text;
         displayAfterSelectionE = options[4].show;
+        AnalyticsServiceHandler.Instance().AddedLastChoice();
         return;
     }
 
