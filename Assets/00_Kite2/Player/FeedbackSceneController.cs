@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class FeedbackSceneController : SceneController, OnSuccessHandler
 {
@@ -9,6 +10,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler
     public GameObject gptServercallPrefab;
     public FavoriteButton favoriteButton;
     private VisualNovel novelToPlay;
+    [SerializeField] private RectTransform layout;
 
     private void Start()
     {
@@ -55,5 +57,6 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler
         feedbackText.SetText(response.completion.Trim());
         novelToPlay.feedback = (response.completion.Trim());
         AnalyticsServiceHandler.Instance().SetWaitedForAiFeedbackTrue();
+        LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
     }
 }
