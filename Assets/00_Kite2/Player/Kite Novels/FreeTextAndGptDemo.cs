@@ -6,7 +6,7 @@ public class FreeTextAndGptDemo : VisualNovel
     {
         id = -1;
         title = "FreeTextAndGptDemo";
-        description = "Du hast eine Einladung zu einem Bankgespräch erhalten, um mehr Informationen über einen Kredit zu erhalten und diesen darauf zu beantragen.";
+        description = "Du hast eine Einladung zu einem BankgesprÃ¤ch erhalten, um mehr Informationen Ã¼ber einen Kredit zu erhalten und diesen darauf zu beantragen.";
         image = 0;
         nameOfMainCharacter = "Lea";
         feedback = "";
@@ -30,8 +30,8 @@ public class FreeTextAndGptDemo : VisualNovel
                 nextId = 2,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.FREE_TEXT_INPUT_EVENT),
                 waitForUserConfirmation = false,
-                questionForFreeTextInput = "Erzähl etwas über dein Geschäftsvorhaben!",
-                variablesName = "Geschäftsvorhaben"
+                questionForFreeTextInput = "ErzÃ¤hl etwas Ã¼ber dein GeschÃ¤ftsvorhaben!",
+                variablesName = "GeschÃ¤ftsvorhaben"
             },
 
             new VisualNovelEvent()
@@ -58,7 +58,7 @@ public class FreeTextAndGptDemo : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Intro",
-                text = "Du hast eine Einladung zu einem Bankgespräch erhalten, um mehr Informationen über einen Kredit zu erhalten und diesen darauf zu beantragen."
+                text = "Du hast eine Einladung zu einem BankgesprÃ¤ch erhalten, um mehr Informationen Ã¼ber einen Kredit zu erhalten und diesen darauf zu beantragen."
             },
 
             new VisualNovelEvent()
@@ -67,8 +67,8 @@ public class FreeTextAndGptDemo : VisualNovel
                 nextId = 4,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.GPT_PROMPT_EVENT),
                 gptPrompt = "Nehm folgenden Satz und setze die Variable so ein, dass es sinn macht:" +
-                "Satz: Hallo. Ich bin gespannt über ihr {Unternehmen} zu hören. Guten Tag, setzen Sie sich. Kann ich Ihnen was zu trinken anbieten?" +
-                "Variable: {Unternehmen} --> [Geschäftsvorhaben]",
+                "Satz: Hallo. Ich bin gespannt Ã¼ber ihr {Unternehmen} zu hÃ¶ren. Guten Tag, setzen Sie sich. Kann ich Ihnen was zu trinken anbieten?" +
+                "Variable: {Unternehmen} --> [GeschÃ¤ftsvorhaben]",
                 variablesNameForGptPromp = "text01",
                 gptCompletionHandlerId = 0
             },
@@ -80,7 +80,7 @@ public class FreeTextAndGptDemo : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
-                text = "Hallo. Schönen guten Tag.",
+                text = "Hallo. SchÃ¶nen guten Tag.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.RELAXED)
             },
 
@@ -215,7 +215,7 @@ public class FreeTextAndGptDemo : VisualNovel
                 waitForUserConfirmation = false,
                 name = "Lea",
                 text = "Ja, das hat sehr gut geklappt. ich war ja schon mal hier in der Bank. " +
-                       "Aber da noch nicht als Geschäftskunde."
+                       "Aber da noch nicht als GeschÃ¤ftskunde."
             },
 
             new VisualNovelEvent()
@@ -226,7 +226,7 @@ public class FreeTextAndGptDemo : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Ich habe leider ein wenig gebraucht, um das Büro zu finden."
+                text = "Ich habe leider ein wenig gebraucht, um das BÃ¼ro zu finden."
             },
 
             new VisualNovelEvent()
@@ -243,7 +243,7 @@ public class FreeTextAndGptDemo : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Ja, was führt Sie zu mir?",
+                text = "Ja, was fÃ¼hrt Sie zu mir?",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.LAUGHING)
             },
 
@@ -255,8 +255,8 @@ public class FreeTextAndGptDemo : VisualNovel
                 waitForUserConfirmation = true,
                 name = "Lea",
                 text = "Ja, also wie vorab schon in der E-Mail besprochen geht es darum, " +
-                       "dass ich gerne einen Kredit aufnehmen möchte. Und ich würde entsprechend " +
-                       "auch ein Geschäftskonto hier einrichten.",
+                       "dass ich gerne einen Kredit aufnehmen mÃ¶chte. Und ich wÃ¼rde entsprechend " +
+                       "auch ein GeschÃ¤ftskonto hier einrichten.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -268,7 +268,7 @@ public class FreeTextAndGptDemo : VisualNovel
                 waitForUserConfirmation = true,
                 name = "Lea",
                 text = "Da sagten Sie, dass das ja zusammen gekoppelt ist. " +
-                       "Was mir auch recht ist, da ich noch kein Geschäftskonto habe.",
+                       "Was mir auch recht ist, da ich noch kein GeschÃ¤ftskonto habe.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -281,7 +281,7 @@ public class FreeTextAndGptDemo : VisualNovel
                 name = "Lea",
                 text = "Und Sie hatten ja meine Unterlagen und Businessplan schon gesichtet. " +
                        "Entsprechend bin ich jetzt auch hier um Fragen zu beantworten und auch gespannt " +
-                       "auf das, was wir hier gemeinsam machen können.",
+                       "auf das, was wir hier gemeinsam machen kÃ¶nnen.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -292,7 +292,7 @@ public class FreeTextAndGptDemo : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Verzeihung. könnten Sie mir nochmal kurz sagen worum es geht? " +
+                text = "Verzeihung. kÃ¶nnten Sie mir nochmal kurz sagen worum es geht? " +
                         "Ich habe so viele Kunden, da komme ich ab und zu durcheinander.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.CRITICAL)
             },
@@ -304,8 +304,8 @@ public class FreeTextAndGptDemo : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
-                text = "Ja, natürlich. Ich habe ein Game Development Studio " +
-                        "namens Knights Gambit Studios gegründet.",
+                text = "Ja, natÃ¼rlich. Ich habe ein Game Development Studio " +
+                        "namens Knights Gambit Studios gegrÃ¼ndet.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -350,7 +350,7 @@ public class FreeTextAndGptDemo : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Oder müssen Sie das jetzt alles alleine stemmen?",
+                text = "Oder mÃ¼ssen Sie das jetzt alles alleine stemmen?",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.PROUD)
             },
 
@@ -369,8 +369,8 @@ public class FreeTextAndGptDemo : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 1,
-                text = "In dieser Situation nervös zu sein ist verständlich - Du musst schließlich deine " +
-                "eigene Geschäftsidee erklären und weißt nicht, ob sie positiv aufgenommen wird."
+                text = "In dieser Situation nervÃ¶s zu sein ist verstÃ¤ndlich - Du musst schlieÃŸlich deine " +
+                "eigene GeschÃ¤ftsidee erklÃ¤ren und weiÃŸt nicht, ob sie positiv aufgenommen wird."
             },
 
             new VisualNovelEvent()
@@ -380,8 +380,8 @@ public class FreeTextAndGptDemo : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 6,
-                text = "Dieses Gefühl ist vollkommen normal, ein Unternehmen zu gründen ist ein großer " +
-                "Schritt und die Geschäftsidee einer fremden Person vorzustellen ohne zu wissen, wie sie " +
+                text = "Dieses GefÃ¼hl ist vollkommen normal, ein Unternehmen zu grÃ¼nden ist ein groÃŸer " +
+                "Schritt und die GeschÃ¤ftsidee einer fremden Person vorzustellen ohne zu wissen, wie sie " +
                 "reagiert ist nervenaufreibend."
             },
 
@@ -392,8 +392,8 @@ public class FreeTextAndGptDemo : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 3,
-                text = "Deine Idee scheint überzeugt zu haben, also ist ein ermutigtes Gefühl durchaus " +
-                "angemessen! Du hast schließlich die Fakten über deine Geschäftsidee im Kopf und weißt, " +
+                text = "Deine Idee scheint Ã¼berzeugt zu haben, also ist ein ermutigtes GefÃ¼hl durchaus " +
+                "angemessen! Du hast schlieÃŸlich die Fakten Ã¼ber deine GeschÃ¤ftsidee im Kopf und weiÃŸt, " +
                 "was du damit erreichen willst."
             },
 
@@ -404,10 +404,10 @@ public class FreeTextAndGptDemo : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 opinionChoiceNumber = 4,
-                text = "Auch heutzutage wird man manchmal bei Gesprächen zu einer Förderung immernoch mit " +
+                text = "Auch heutzutage wird man manchmal bei GesprÃ¤chen zu einer FÃ¶rderung immernoch mit " +
                 "Sexismus konfrontiert. Fragen wie diese hier beruhen teilweise auch unbewusst auf der " +
-                "Annahme, dass Frauen weniger leisten können, wenn sie eine Familie haben oder mit ihren " +
-                "Geschäftsideen weniger Erfolg haben als Männer."
+                "Annahme, dass Frauen weniger leisten kÃ¶nnen, wenn sie eine Familie haben oder mit ihren " +
+                "GeschÃ¤ftsideen weniger Erfolg haben als MÃ¤nner."
             },
 
             new VisualNovelEvent()
@@ -476,7 +476,7 @@ public class FreeTextAndGptDemo : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Ich möchte wissen, ob da jetzt ein größeres Startkapital auch vorhanden ist?",
+                text = "Ich mÃ¶chte wissen, ob da jetzt ein grÃ¶ÃŸeres Startkapital auch vorhanden ist?",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.RELAXED)
             },
 
@@ -487,7 +487,7 @@ public class FreeTextAndGptDemo : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
-                text = "Nein, also ich habe jetzt kein größeres Eigenkapital und deswegen brauche ich den Kredit.",
+                text = "Nein, also ich habe jetzt kein grÃ¶ÃŸeres Eigenkapital und deswegen brauche ich den Kredit.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -549,7 +549,7 @@ public class FreeTextAndGptDemo : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Es ist einfach nur wichtig zu wissen, weil ich schon Gründerinnen hier hatte, und da war dann der Kinderwunsch im Endeffekt größer.",
+                text = "Es ist einfach nur wichtig zu wissen, weil ich schon GrÃ¼nderinnen hier hatte, und da war dann der Kinderwunsch im Endeffekt grÃ¶ÃŸer.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.QUESTIONING)
             },
 
@@ -560,7 +560,7 @@ public class FreeTextAndGptDemo : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Die haben dann den Kredit bekommen und plötzlich waren Kinder da und dann wurde das schwierig. Aber wie gesagt, das ist jetzt eigentlich gar nicht so wichtig.",
+                text = "Die haben dann den Kredit bekommen und plÃ¶tzlich waren Kinder da und dann wurde das schwierig. Aber wie gesagt, das ist jetzt eigentlich gar nicht so wichtig.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -571,7 +571,7 @@ public class FreeTextAndGptDemo : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
-                text = "Ich hätte eine Frage. Und zwar wie geht es ab hier weiter? Also ich habe nen Gründungsberater, der mir natürlich den Ablauf erklärt hat, aber jetzt intern über Sie wie läuft das?",
+                text = "Ich hÃ¤tte eine Frage. Und zwar wie geht es ab hier weiter? Also ich habe nen GrÃ¼ndungsberater, der mir natÃ¼rlich den Ablauf erklÃ¤rt hat, aber jetzt intern Ã¼ber Sie wie lÃ¤uft das?",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -582,7 +582,7 @@ public class FreeTextAndGptDemo : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
-                text = "Ich bin jetzt davon ausgegangen, dass wir in diesem Gespräch eigentlich abschließend klären, ob Sie das als Bank machen möchten.",
+                text = "Ich bin jetzt davon ausgegangen, dass wir in diesem GesprÃ¤ch eigentlich abschlieÃŸend klÃ¤ren, ob Sie das als Bank machen mÃ¶chten.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -593,7 +593,7 @@ public class FreeTextAndGptDemo : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
-                text = "Wie ich heraushören kann, ist das ja noch offen, weil Sie ja gar nicht wissen, was in meinem Businessplan überhaupt beschrieben wird. Ich dachte, es werden jetzt konkrete Fragen gestellt.",
+                text = "Wie ich heraushÃ¶ren kann, ist das ja noch offen, weil Sie ja gar nicht wissen, was in meinem Businessplan Ã¼berhaupt beschrieben wird. Ich dachte, es werden jetzt konkrete Fragen gestellt.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -604,7 +604,7 @@ public class FreeTextAndGptDemo : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Also, prinzipiell ist es so, dass ich erst nochmal Rückfrage mit jemanden aus der Filialleitung halten muss, denn ich darf hier in so einem Fall gar keine Entscheidung treffen.",
+                text = "Also, prinzipiell ist es so, dass ich erst nochmal RÃ¼ckfrage mit jemanden aus der Filialleitung halten muss, denn ich darf hier in so einem Fall gar keine Entscheidung treffen.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.DEFEATED)
             },
 
@@ -649,7 +649,7 @@ public class FreeTextAndGptDemo : VisualNovel
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
                 text = "Ich kann jetzt aber in dem Zustand hier noch keine Entscheidungen treffen. " +
-                       "Ich würde mich auf jeden Fall bei Ihnen melden. Am besten machen " +
+                       "Ich wÃ¼rde mich auf jeden Fall bei Ihnen melden. Am besten machen " +
                        "wir noch einen weiteren Termin aus.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
@@ -661,7 +661,7 @@ public class FreeTextAndGptDemo : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Ich denke mal im Laufe der nächsten 4 bis 5 Monate. Und ja, ich drück Ihnen die Daumen.",
+                text = "Ich denke mal im Laufe der nÃ¤chsten 4 bis 5 Monate. Und ja, ich drÃ¼ck Ihnen die Daumen.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -672,7 +672,7 @@ public class FreeTextAndGptDemo : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
-                text = "Dankeschön.",
+                text = "DankeschÃ¶n.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
