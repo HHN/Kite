@@ -27,7 +27,7 @@ public class Job09_GenerateDialogOptionsFour : PipelineJob
 
             return PipelineJobState.COMPLETED;
         }
-        catch (Exception e)
+        catch
         {
             Debug.Log("Failure with Completion: " + completion);
             return PipelineJobState.FAILED;

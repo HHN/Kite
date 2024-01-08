@@ -53,7 +53,7 @@ public class Job04_GenerateLinearNovel : PipelineJob
             }
             return true;
         }
-        catch (Exception e) 
+        catch
         {
             return false;
         }
