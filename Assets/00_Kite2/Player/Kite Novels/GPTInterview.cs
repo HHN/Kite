@@ -89,13 +89,32 @@ public class GPTInterview : VisualNovel
                 id = 7,
                 nextId = 8,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.GPT_PROMPT_EVENT),
-                gptPrompt = "" +
-                
-                "Nehm folgenden Satz und setze die Variable so ein, dass es sinn macht:" +
-                "Satz: Hallo. Ich bin gespannt über ihr {Unternehmen} zu hören. Guten Tag, setzen Sie sich. Kann ich Ihnen was zu trinken anbieten?" +
-                "Variable: {Unternehmen} --> [Geschäftsvorhaben]",
-                variablesNameForGptPromp = "text01",
+                waitForUserConfirmation = true,
+                gptPrompt = GetTaskPrompt() + " Dies ist die Liste Visual Novels: " + GetNovelSummary() + " Dies ist die Antwort der Person: [Preverences]",
+                variablesNameForGptPromp = "GPTAnswerForPreverences",
                 gptCompletionHandlerId = 0
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 8,
+                nextId = 9,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Herr Mayer",
+                text = "Dies sind die Novels, welche dich hoffentlich am meisten interessieren: [GPTAnswerForPreverences]",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 9,
+                nextId = 61,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Herr Mayer",
+                text = "Dies sind die Novels, welche dich hoffentlich am meisten interessieren: [GPTAnswerForPreverences]",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
 
@@ -122,19 +141,8 @@ public class GPTInterview : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 4,
-                nextId = 5,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = "Lea",
-                text = "Hallo. Schönen guten Tag.",
-                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.RELAXED)
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 5,
-                nextId = 6,
+                id = 500,
+                nextId = 600,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
@@ -164,7 +172,16 @@ public class GPTInterview : VisualNovel
         };
     }
 
-    private string getNovelSummary()
+    private string GetTaskPrompt()
+    {
+        return "Du erhältst eine Liste von Visual Novels, die jeweils mit spezifischen Tags versehen sind. " +
+        "Deine Aufgabe ist es, anhand einer gegebenen Antwort einer Person zu bewerten, wie relevant jede dieser Visual Novels für die Person ist. " +
+        "Die Relevanz soll in Prozent ausgedrückt werden. " +
+        "Deine Antwort sollte die Namen der Visual Novels und die entsprechenden Prozentzahlen in folgendem Format enthalten: '[Name der ersten Novel] : Prozentzahl | [Name der zweiten Novel] : Prozentzahl | ...'. " +
+        "Bitte führe diese Bewertung basierend auf der Antwort der Person durch und gib die Relevanz für jede Visual Novel an.";
+    }
+
+    private string GetNovelSummary()
     {
         return  "1. BankAccountOpeningNovel: Finanzmanagement: Fokus auf Bankkonten und finanzielle Planung. | Entscheidungsfindung: Verschiedene Handlungsoptionen und deren Konsequenzen. | Realistisches Business-Szenario: Praktische Darstellung von Geschäftssituationen. | Kommunikationsfähigkeit: Interaktion und Dialogführung in einem professionellen Umfeld. | Strategische Problem-Lösung: Herausforderungen im Kontext der Geschäftsgründung. | Selbstbehauptung im Business: Verteidigung und Präsentation der Geschäftsidee. " + 
                 "2. BankAppointmentNovel: Finanzmanagement: Fokus auf Kreditbeantragung und Rückzahlungsplanung. | Entscheidungsfindung: Auswahl von Argumenten zur Kreditwürdigkeit. | Realistisches Business-Szenario: Darstellung eines Kreditgesprächs in der Bank. | Kommunikationsfähigkeit: Effektive Kommunikation und Überzeugungsarbeit im Finanzkontext. | Strategische Problem-Lösung: Entwicklung und Präsentation eines überzeugenden Businessplans. | Selbstbehauptung im Business: Selbstsicheres Auftreten und Verteidigung der eigenen Geschäftspläne. " +
