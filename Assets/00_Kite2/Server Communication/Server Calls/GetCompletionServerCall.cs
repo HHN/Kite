@@ -29,7 +29,14 @@ public class GetCompletionServerCall : ServerCall
                 }
             default:
                 {
-                    sceneController.DisplayErrorMessage(ErrorMessages.UNEXPECTED_SERVER_ERROR);
+                    if (onErrorHandler != null)
+                    {
+                        onErrorHandler.OnError(response);
+                    } 
+                    else
+                    {
+                        sceneController.DisplayErrorMessage(ErrorMessages.UNEXPECTED_SERVER_ERROR);
+                    }
                     return;
                 }
         }

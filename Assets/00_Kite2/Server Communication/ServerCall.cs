@@ -6,6 +6,7 @@ using System.Text;
 public abstract class ServerCall : MonoBehaviour
 {
     public OnSuccessHandler onSuccessHandler;
+    public OnErrorHandler onErrorHandler;
     public SceneController sceneController;
     private Coroutine serverCallCoroutine;
 
