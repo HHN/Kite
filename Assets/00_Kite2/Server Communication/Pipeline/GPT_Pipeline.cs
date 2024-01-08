@@ -3,9 +3,10 @@ using UnityEngine;
 
 public abstract class GPT_Pipeline : MonoBehaviour
 {
-    [SerializeField] private Dictionary<string, string> memory;
-    [SerializeField] private Queue<PipelineJob> jobs;
-    [SerializeField] private PipelineState state;
+    [SerializeField] protected Dictionary<string, string> memory;
+    [SerializeField] protected Queue<PipelineJob> jobs;
+    [SerializeField] protected PipelineState state;
+    [SerializeField] protected SceneController controller;
 
     public GPT_Pipeline() 
     { 
@@ -13,12 +14,11 @@ public abstract class GPT_Pipeline : MonoBehaviour
         jobs = new Queue<PipelineJob>();
         state = PipelineState.READY_TO_START;
         InitializePipelineJobs();
-        DontDestroyOnLoad(this.gameObject);
     }
 
     public abstract void InitializePipelineJobs();
 
-    public void Start()
+    public void StartPipeline()
     {
         state = PipelineState.RUNNING;
 
@@ -39,22 +39,17 @@ public abstract class GPT_Pipeline : MonoBehaviour
         {
             state = PipelineState.FAILED;
             OnFailure();
-            Destroy(lastJob.gameObject);
-            Destroy(this.gameObject);
             return;
         }
         if (jobs.Count == 0)
         {
             state = PipelineState.COMPLETED;
             OnSuccess();
-            Destroy(lastJob.gameObject);
-            Destroy(this.gameObject);
             return;
         }
         OnProgress();
         PipelineJob nextJob = jobs.Dequeue();
         nextJob.StartJob();
-        Destroy(lastJob.gameObject);
 
     }
 
@@ -67,5 +62,10 @@ public abstract class GPT_Pipeline : MonoBehaviour
     public PipelineState GetState()
     {
         return state;
+    }
+
+    public Dictionary<string, string> GetMemory()
+    {
+        return memory;
     }
 }

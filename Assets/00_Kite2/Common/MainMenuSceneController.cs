@@ -19,6 +19,9 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     [SerializeField] private GameObject getMoneyServerCallPrefab;
     [SerializeField] private GameObject getScoreServerCallPrefab;
 
+    public bool generated = false;
+    public GenerateNovelPipeline pipeline;
+
     void Start()
     {
         // Analytics 
@@ -43,6 +46,18 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
         {
             OnLoggedInUserMode();
         }
+    }
+
+    void Update()
+    {
+    //    if (Input.GetKeyDown(KeyCode.G))
+    //    {
+    //        if (generated == false)
+    //        {
+    //            generated = true;
+    //            pipeline.GenerateNovel();
+    //        }
+    //    }
     }
 
     private void OnGuestMode()

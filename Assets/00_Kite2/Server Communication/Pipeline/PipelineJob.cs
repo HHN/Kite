@@ -2,20 +2,21 @@ using UnityEngine;
 
 public abstract class PipelineJob : MonoBehaviour, OnSuccessHandler, OnErrorHandler
 {
-    [SerializeField] private GPT_Pipeline pipeline;
-    [SerializeField] private PipelineJobState state;
-    [SerializeField] private string prompt;
-    [SerializeField] private GameObject gptServercallPrefab;
-    [SerializeField] private SceneController controller;
+    [SerializeField] protected GPT_Pipeline pipeline;
+    [SerializeField] protected PipelineJobState state;
+    [SerializeField] protected string prompt;
+    [SerializeField] protected GameObject gptServercallPrefab;
+    [SerializeField] protected SceneController controller;
+    [SerializeField] protected string jobName;
 
     public PipelineJob()
     {
         state = PipelineJobState.READY_TO_START;
-        DontDestroyOnLoad(this.gameObject);
     }
 
     public void StartJob()
     {
+        Debug.Log("Start Job with name: " + jobName);
         state = PipelineJobState.JOB_RUNNING;
         GetCompletionServerCall call = Instantiate(gptServercallPrefab).GetComponent<GetCompletionServerCall>();
         call.sceneController = controller;
@@ -28,13 +29,13 @@ public abstract class PipelineJob : MonoBehaviour, OnSuccessHandler, OnErrorHand
 
     public void OnSuccess(Response response)
     {
-        state = HandleCompletion();
+        state = HandleCompletion(response.completion);
         pipeline.OnJobFinished(this);
     }
 
     public abstract void InitializePrompt();
 
-    public abstract PipelineJobState HandleCompletion();
+    public abstract PipelineJobState HandleCompletion(string completion);
 
     public PipelineJobState GetState()
     {

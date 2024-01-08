@@ -9,7 +9,6 @@ public class GetCompletionServerCall : ServerCall
     {
         GptRequest call = new GptRequest(); 
         call.prompt = prompt;
-        Debug.Log("Prompt: " + prompt);
         return call;
     }
 
