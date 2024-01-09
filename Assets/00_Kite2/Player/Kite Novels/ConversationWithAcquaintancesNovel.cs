@@ -106,7 +106,7 @@ public class ConversationWithAcquaintancesNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 8,
-                nextId = 9,
+                nextId = 15,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lisa",
@@ -114,66 +114,66 @@ public class ConversationWithAcquaintancesNovel : VisualNovel
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
-            new VisualNovelEvent()
-            {
-                id = 9,
-                nextId = 10,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_OPINION_FEEDBACK_EVENT),
-                waitForUserConfirmation = false
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 9,
+            //     nextId = 10,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_OPINION_FEEDBACK_EVENT),
+            //     waitForUserConfirmation = false
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 10,
-                nextId = 11,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                opinionChoiceNumber = 1,
-                text = "Da du nicht vorhersehen kannst, wie die Frage von deinem Gegenüber gemeint ist " +
-                "und wie es auf deine Antwort reagieren wird, ist es verständlich nervös zu sein."
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 10,
+            //     nextId = 11,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+            //     waitForUserConfirmation = false,
+            //     opinionChoiceNumber = 1,
+            //     text = "Da du nicht vorhersehen kannst, wie die Frage von deinem Gegenüber gemeint ist " +
+            //     "und wie es auf deine Antwort reagieren wird, ist es verständlich nervös zu sein."
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 11,
-                nextId = 12,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                opinionChoiceNumber = 2,
-                text = ""
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 11,
+            //     nextId = 12,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+            //     waitForUserConfirmation = false,
+            //     opinionChoiceNumber = 2,
+            //     text = ""
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 12,
-                nextId = 13,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                opinionChoiceNumber = 3,
-                text = "Du hast jetzt die Möglichkeit, deinem Gegenüber zu zeigen, dass du die " +
-                "Gründung eines Unternehmens stemmen kannst und dies nichts mit deinem Geschlecht " +
-                "zu tun hat. Dies kann ermutigen."
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 12,
+            //     nextId = 13,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+            //     waitForUserConfirmation = false,
+            //     opinionChoiceNumber = 3,
+            //     text = "Du hast jetzt die Möglichkeit, deinem Gegenüber zu zeigen, dass du die " +
+            //     "Gründung eines Unternehmens stemmen kannst und dies nichts mit deinem Geschlecht " +
+            //     "zu tun hat. Dies kann ermutigen."
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 13,
-                nextId = 14,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                opinionChoiceNumber = 4,
-                text = "Es ist verständlich, verärgert zu sein. Deine Fertigkeiten werden auf dein " +
-                "Geschlecht beschränkt und dir unterstellt, dass die Gründung für dich schwer sein " +
-                "muss nur weil du eine Frau bist."
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 13,
+            //     nextId = 14,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+            //     waitForUserConfirmation = false,
+            //     opinionChoiceNumber = 4,
+            //     text = "Es ist verständlich, verärgert zu sein. Deine Fertigkeiten werden auf dein " +
+            //     "Geschlecht beschränkt und dir unterstellt, dass die Gründung für dich schwer sein " +
+            //     "muss nur weil du eine Frau bist."
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 14,
-                nextId = 15,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ASK_FOR_OPINION_EVENT),
-                waitForUserConfirmation = true,
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 14,
+            //     nextId = 15,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ASK_FOR_OPINION_EVENT),
+            //     waitForUserConfirmation = true,
+            // },
 
             new VisualNovelEvent()
             {

@@ -214,7 +214,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 18,
-                nextId = 19,
+                nextId = 26,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
@@ -224,66 +224,66 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
-            new VisualNovelEvent()
-            {
-                id = 19,
-                nextId = 20,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_OPINION_FEEDBACK_EVENT),
-                waitForUserConfirmation = false
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 19,
+            //     nextId = 20,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_OPINION_FEEDBACK_EVENT),
+            //     waitForUserConfirmation = false
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 20,
-                nextId = 21,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                opinionChoiceNumber = 1,
-                text = "In dieser Situation nervös zu sein, ist verständlich. Du musst schließlich deine " +
-                "eigene Geschäftsidee erklären und weißt nicht, ob sie positiv aufgenommen wird."
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 20,
+            //     nextId = 21,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+            //     waitForUserConfirmation = false,
+            //     opinionChoiceNumber = 1,
+            //     text = "In dieser Situation nervös zu sein, ist verständlich. Du musst schließlich deine " +
+            //     "eigene Geschäftsidee erklären und weißt nicht, ob sie positiv aufgenommen wird."
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 21,
-                nextId = 22,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                opinionChoiceNumber = 2,
-                text = "Dieses Gefühl ist vollkommen normal. Die Gründung eines Unternehmens ist ein großer " + 
-                "Schritt und die Geschäftsidee einer fremden Person vorzustellen, ohne zu wissen, wie er*sie reagiert, ist nervenaufreibend."
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 21,
+            //     nextId = 22,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+            //     waitForUserConfirmation = false,
+            //     opinionChoiceNumber = 2,
+            //     text = "Dieses Gefühl ist vollkommen normal. Die Gründung eines Unternehmens ist ein großer " + 
+            //     "Schritt und die Geschäftsidee einer fremden Person vorzustellen, ohne zu wissen, wie er*sie reagiert, ist nervenaufreibend."
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 22,
-                nextId = 23,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                opinionChoiceNumber = 3,
-                text = "Deine Idee scheint überzeugt zu haben. Also ist ein ermutigtes Gefühl durchaus angemessen! " +
-                "Du hast schließlich die Fakten deines Businessplans im Kopf und weißt, was du damit erreichen willst."
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 22,
+            //     nextId = 23,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+            //     waitForUserConfirmation = false,
+            //     opinionChoiceNumber = 3,
+            //     text = "Deine Idee scheint überzeugt zu haben. Also ist ein ermutigtes Gefühl durchaus angemessen! " +
+            //     "Du hast schließlich die Fakten deines Businessplans im Kopf und weißt, was du damit erreichen willst."
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 23,
-                nextId = 24,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                opinionChoiceNumber = 4,
-                text = "Auch heutzutage werden Menschen manchmal bei Gesprächen zu einer Förderung immer noch mit Sexismus konfrontiert. " + 
-                "Fragen wie diese hier beruhen teilweise auch unbewust auf der Annahme, dass Frauen weniger leisten können, wenn sie eine " + 
-                "Familie haben oder mit ihren Geschäftsideen weniger Erfolg haben als Männer."
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 23,
+            //     nextId = 24,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+            //     waitForUserConfirmation = false,
+            //     opinionChoiceNumber = 4,
+            //     text = "Auch heutzutage werden Menschen manchmal bei Gesprächen zu einer Förderung immer noch mit Sexismus konfrontiert. " + 
+            //     "Fragen wie diese hier beruhen teilweise auch unbewust auf der Annahme, dass Frauen weniger leisten können, wenn sie eine " + 
+            //     "Familie haben oder mit ihren Geschäftsideen weniger Erfolg haben als Männer."
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 24,
-                nextId = 26,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ASK_FOR_OPINION_EVENT),
-                waitForUserConfirmation = true,
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 24,
+            //     nextId = 26,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ASK_FOR_OPINION_EVENT),
+            //     waitForUserConfirmation = true,
+            // },
 
             new VisualNovelEvent()
             {

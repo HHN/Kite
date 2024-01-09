@@ -78,7 +78,7 @@ public class RentingAnOfficeNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 6,
-                nextId = 7,
+                nextId = 13,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
@@ -87,66 +87,66 @@ public class RentingAnOfficeNovel : VisualNovel
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
-            new VisualNovelEvent()
-            {
-                id = 7,
-                nextId = 8,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_OPINION_FEEDBACK_EVENT),
-                waitForUserConfirmation = false
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 7,
+            //     nextId = 8,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_OPINION_FEEDBACK_EVENT),
+            //     waitForUserConfirmation = false
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 8,
-                nextId = 9,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                opinionChoiceNumber = 1,
-                text = "Es ist in Ordnung, jetzt nervös zu sein. Räumlichlkeiten für das eigene Unternehmen " +
-                "anzumieten, ist ein weiterer wichtiger Schritt in die Verwirklichung der eigenen Pläne."
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 8,
+            //     nextId = 9,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+            //     waitForUserConfirmation = false,
+            //     opinionChoiceNumber = 1,
+            //     text = "Es ist in Ordnung, jetzt nervös zu sein. Räumlichlkeiten für das eigene Unternehmen " +
+            //     "anzumieten, ist ein weiterer wichtiger Schritt in die Verwirklichung der eigenen Pläne."
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 9,
-                nextId = 10,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                opinionChoiceNumber = 2,
-                text = "Jetzt ängstlich zu sein ist in Ordnung. Du stehst kurz davor, einen " +
-                "weiteren Schritt in die Selbstständigkeit zu beschreiten und von deiner Antwort " +
-                "kann abhängen, ob du die Bürofläche bekommen wirst."
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 9,
+            //     nextId = 10,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+            //     waitForUserConfirmation = false,
+            //     opinionChoiceNumber = 2,
+            //     text = "Jetzt ängstlich zu sein ist in Ordnung. Du stehst kurz davor, einen " +
+            //     "weiteren Schritt in die Selbstständigkeit zu beschreiten und von deiner Antwort " +
+            //     "kann abhängen, ob du die Bürofläche bekommen wirst."
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 10,
-                nextId = 11,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                opinionChoiceNumber = 3,
-                text = "Du stehst kurz davor, den nächsten Schritt zur Verwirklichung deiner Pläne zu " +
-                "tätigen und zu wissen, dass man diese Frage optimistisch beantworten kann ist ermutigend."
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 10,
+            //     nextId = 11,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+            //     waitForUserConfirmation = false,
+            //     opinionChoiceNumber = 3,
+            //     text = "Du stehst kurz davor, den nächsten Schritt zur Verwirklichung deiner Pläne zu " +
+            //     "tätigen und zu wissen, dass man diese Frage optimistisch beantworten kann ist ermutigend."
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 11,
-                nextId = 12,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                opinionChoiceNumber = 4,
-                text = "Es kann verärgern, dass einem unterstellt wird, dass das eigene Unternehmen " +
-                "nicht lange genug überleben wird, um die Miete konstant zahlen zu können."
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 11,
+            //     nextId = 12,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+            //     waitForUserConfirmation = false,
+            //     opinionChoiceNumber = 4,
+            //     text = "Es kann verärgern, dass einem unterstellt wird, dass das eigene Unternehmen " +
+            //     "nicht lange genug überleben wird, um die Miete konstant zahlen zu können."
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 12,
-                nextId = 13,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ASK_FOR_OPINION_EVENT),
-                waitForUserConfirmation = true,
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 12,
+            //     nextId = 13,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ASK_FOR_OPINION_EVENT),
+            //     waitForUserConfirmation = true,
+            // },
 
             new VisualNovelEvent()
             {

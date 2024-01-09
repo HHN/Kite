@@ -108,7 +108,7 @@ public class PressTalkNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 8,
-                nextId = 9,
+                nextId = 15,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Mayer",
@@ -117,65 +117,65 @@ public class PressTalkNovel : VisualNovel
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
-            new VisualNovelEvent()
-            {
-                id = 9,
-                nextId = 10,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_OPINION_FEEDBACK_EVENT),
-                waitForUserConfirmation = false
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 9,
+            //     nextId = 10,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_OPINION_FEEDBACK_EVENT),
+            //     waitForUserConfirmation = false
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 10,
-                nextId = 11,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                opinionChoiceNumber = 1,
-                text = "Nervosität während eines Interviews mit jemandem von der Presse ist verständlich. " +
-                "Es bringt Aufmerksamkeit für das eigene Unternehmen und auch mögliche Kund*innen."
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 10,
+            //     nextId = 11,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+            //     waitForUserConfirmation = false,
+            //     opinionChoiceNumber = 1,
+            //     text = "Nervosität während eines Interviews mit jemandem von der Presse ist verständlich. " +
+            //     "Es bringt Aufmerksamkeit für das eigene Unternehmen und auch mögliche Kund*innen."
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 11,
-                nextId = 12,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                opinionChoiceNumber = 2,
-                text = "Ängstlich zu sein ist in Ordnung. Du weißt nicht, was dein Gegenüber in dem " +
-                "Artikel schreiben wird und welche Auswirkungen der Artikel haben wird."
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 11,
+            //     nextId = 12,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+            //     waitForUserConfirmation = false,
+            //     opinionChoiceNumber = 2,
+            //     text = "Ängstlich zu sein ist in Ordnung. Du weißt nicht, was dein Gegenüber in dem " +
+            //     "Artikel schreiben wird und welche Auswirkungen der Artikel haben wird."
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 12,
-                nextId = 13,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                opinionChoiceNumber = 3,
-                text = "Jemand von der Zeitung ist auf dich aufmerksam geworden und das spornt an. " +
-                "Der Artikel kann dir mehr Beachtung und Kund*innen bringen."
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 12,
+            //     nextId = 13,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+            //     waitForUserConfirmation = false,
+            //     opinionChoiceNumber = 3,
+            //     text = "Jemand von der Zeitung ist auf dich aufmerksam geworden und das spornt an. " +
+            //     "Der Artikel kann dir mehr Beachtung und Kund*innen bringen."
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 13,
-                nextId = 14,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                opinionChoiceNumber = 4,
-                text = "An diesem Punkt des Gesprächs wirkt es, als würde dein Geschlecht für den Artikel " +
-                "mehr zählen als deine Geschäftsidee. Dies kann durchaus verärgern."
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 13,
+            //     nextId = 14,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+            //     waitForUserConfirmation = false,
+            //     opinionChoiceNumber = 4,
+            //     text = "An diesem Punkt des Gesprächs wirkt es, als würde dein Geschlecht für den Artikel " +
+            //     "mehr zählen als deine Geschäftsidee. Dies kann durchaus verärgern."
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 14,
-                nextId = 15,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ASK_FOR_OPINION_EVENT),
-                waitForUserConfirmation = true,
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 14,
+            //     nextId = 15,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ASK_FOR_OPINION_EVENT),
+            //     waitForUserConfirmation = true,
+            // },
             
             new VisualNovelEvent()
             {

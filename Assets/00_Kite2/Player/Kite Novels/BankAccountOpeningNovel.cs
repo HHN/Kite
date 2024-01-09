@@ -91,7 +91,7 @@ public class BankAccountOpeningNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 7,
-                nextId = 8,
+                nextId = 14,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
@@ -100,64 +100,64 @@ public class BankAccountOpeningNovel : VisualNovel
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
-            new VisualNovelEvent()
-            {
-                id = 8,
-                nextId = 9,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_OPINION_FEEDBACK_EVENT),
-                waitForUserConfirmation = false
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 8,
+            //     nextId = 9,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_OPINION_FEEDBACK_EVENT),
+            //     waitForUserConfirmation = false
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 9,
-                nextId = 10,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                opinionChoiceNumber = 1,
-                text = "Es ist in Ordnung, jetzt nervös zu sein. " +
-                "Das Geschäftskonto ist ein wesentlicher Teil für die Geschäftsgründung."
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 9,
+            //     nextId = 10,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+            //     waitForUserConfirmation = false,
+            //     opinionChoiceNumber = 1,
+            //     text = "Es ist in Ordnung, jetzt nervös zu sein. " +
+            //     "Das Geschäftskonto ist ein wesentlicher Teil für die Geschäftsgründung."
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 10,
-                nextId = 11,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                opinionChoiceNumber = 2,
-                text = "Jetzt ängstlich zu sein ist in Ordnung. Es scheint, als müsstest du jetzt deine " +
-                "Geschäftsidee verteidigen, um ein Firmenkonto eröffnen zu können."
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 10,
+            //     nextId = 11,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+            //     waitForUserConfirmation = false,
+            //     opinionChoiceNumber = 2,
+            //     text = "Jetzt ängstlich zu sein ist in Ordnung. Es scheint, als müsstest du jetzt deine " +
+            //     "Geschäftsidee verteidigen, um ein Firmenkonto eröffnen zu können."
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 11,
-                nextId = 12,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                opinionChoiceNumber = 3,
-                text = ""
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 11,
+            //     nextId = 12,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+            //     waitForUserConfirmation = false,
+            //     opinionChoiceNumber = 3,
+            //     text = ""
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 12,
-                nextId = 13,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                opinionChoiceNumber = 4,
-                text = "Jetzt verärgert zu sein ist verständlich. Ein Geschäftskonto ist wichtig für die " +
-                "Firmengründung und eine Ablehnung wäre ein herber Rückschlag."
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 12,
+            //     nextId = 13,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+            //     waitForUserConfirmation = false,
+            //     opinionChoiceNumber = 4,
+            //     text = "Jetzt verärgert zu sein ist verständlich. Ein Geschäftskonto ist wichtig für die " +
+            //     "Firmengründung und eine Ablehnung wäre ein herber Rückschlag."
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 13,
-                nextId = 14,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ASK_FOR_OPINION_EVENT),
-                waitForUserConfirmation = true,
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 13,
+            //     nextId = 14,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ASK_FOR_OPINION_EVENT),
+            //     waitForUserConfirmation = true,
+            // },
 
             new VisualNovelEvent()
             {

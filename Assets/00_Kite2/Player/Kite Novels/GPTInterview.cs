@@ -176,9 +176,8 @@ public class GPTInterview : VisualNovel
     {
         return "Du erhältst eine Liste von Visual Novels, die jeweils mit spezifischen Tags versehen sind. " +
         "Deine Aufgabe ist es, anhand einer gegebenen Antwort einer Person zu bewerten, wie relevant jede dieser Visual Novels für die Person ist. " +
-        "Die Relevanz soll in Prozent ausgedrückt werden. " +
-        "Deine Antwort sollte die Namen der Visual Novels und die entsprechenden Prozentzahlen in folgendem Format enthalten: '[Name der ersten Novel] : Prozentzahl | [Name der zweiten Novel] : Prozentzahl | ...'. " +
-        "Bitte führe diese Bewertung basierend auf der Antwort der Person durch und gib die Relevanz für jede Visual Novel an.";
+        "Deine Antwort sollte die Namen der maximal fünf am besten geeigneten Visual Novels enthalten. Nutze das Format: '[Name der am besten geeigneten Novel]; [Name der am zweitbesten geeigneten Novel]; [Name der am drittbesten geeigneten Novel]; ... '" +
+        "Bitte führe diese Bewertung basierend auf der Antwort der Person durch und gib die fünf relevantesten Visual Novels an. Sollten weniger als fünf Novels relevant sein, gib nur diese zurück.";
     }
 
     private string GetNovelSummary()

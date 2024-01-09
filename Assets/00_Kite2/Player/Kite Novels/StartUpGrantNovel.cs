@@ -78,7 +78,7 @@ public class StartUpGrantNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 6,
-                nextId = 7,
+                nextId = 13,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
@@ -87,65 +87,65 @@ public class StartUpGrantNovel : VisualNovel
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
-            new VisualNovelEvent()
-            {
-                id = 7,
-                nextId = 8,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_OPINION_FEEDBACK_EVENT),
-                waitForUserConfirmation = false
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 7,
+            //     nextId = 8,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_OPINION_FEEDBACK_EVENT),
+            //     waitForUserConfirmation = false
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 8,
-                nextId = 9,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                opinionChoiceNumber = 1,
-                text = "Es geht um einen Gründerzuschuss, der dir beim Aufbau deines Unternehmens " +
-                "helfen kann. Jetzt nervös zu sein ist vollkommen verständlich."
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 8,
+            //     nextId = 9,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+            //     waitForUserConfirmation = false,
+            //     opinionChoiceNumber = 1,
+            //     text = "Es geht um einen Gründerzuschuss, der dir beim Aufbau deines Unternehmens " +
+            //     "helfen kann. Jetzt nervös zu sein ist vollkommen verständlich."
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 9,
-                nextId = 10,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                opinionChoiceNumber = 2,
-                text = "Ängstlich zu sein ist in Ordnung. Dein Gegenüber fordert von dir Unterlagen, die " +
-                "du möglicherweise nicht hast und du weißt nicht, wie er darauf reagieren wird."
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 9,
+            //     nextId = 10,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+            //     waitForUserConfirmation = false,
+            //     opinionChoiceNumber = 2,
+            //     text = "Ängstlich zu sein ist in Ordnung. Dein Gegenüber fordert von dir Unterlagen, die " +
+            //     "du möglicherweise nicht hast und du weißt nicht, wie er darauf reagieren wird."
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 10,
-                nextId = 11,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                opinionChoiceNumber = 3,
-                text = "Du weißt, dass du die Kompetenzen besitzt und wie du sie beweisen kannst. " +
-                "Das ist sehr ermutigend."
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 10,
+            //     nextId = 11,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+            //     waitForUserConfirmation = false,
+            //     opinionChoiceNumber = 3,
+            //     text = "Du weißt, dass du die Kompetenzen besitzt und wie du sie beweisen kannst. " +
+            //     "Das ist sehr ermutigend."
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 11,
-                nextId = 12,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                opinionChoiceNumber = 4,
-                text = "Dein Gegenüber scheint dir vorzuwerfen, dass du nicht mit Zahlen umgehen kannst. " +
-                "Das kann verärgern."
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 11,
+            //     nextId = 12,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_OPINION_CHOICE_EVENT),
+            //     waitForUserConfirmation = false,
+            //     opinionChoiceNumber = 4,
+            //     text = "Dein Gegenüber scheint dir vorzuwerfen, dass du nicht mit Zahlen umgehen kannst. " +
+            //     "Das kann verärgern."
+            // },
 
-            new VisualNovelEvent()
-            {
-                id = 12,
-                nextId = 13,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ASK_FOR_OPINION_EVENT),
-                waitForUserConfirmation = true,
-            },
+            // new VisualNovelEvent()
+            // {
+            //     id = 12,
+            //     nextId = 13,
+            //     eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ASK_FOR_OPINION_EVENT),
+            //     waitForUserConfirmation = true,
+            // },
 
             new VisualNovelEvent()
             {
