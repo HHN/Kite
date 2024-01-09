@@ -18,14 +18,13 @@ public class Job13_GenerateTitle : PipelineJob
         }
         else
         {
-            Debug.Log("Failure with Completion: " + completion);
             return PipelineJobState.FAILED;
         }
     }
 
     public override void InitializePrompt()
     {
-        string story = this.pipeline.GetMemory()[GenerateNovelPipeline.GENERATED_LINEAR_NOVEL];
+        string story = this.pipeline.GetMemory()[GenerateNovelPipeline.SHORT_SUMMARY];
         prompt = "Ich gebe dir eine Geschichte, die sich um eine signifikante Interaktion oder ein wichtiges Gespräch zwischen Hauptcharakteren dreht. Der eine Hauptcharakter ist eine Gründerin. Der Kern der Geschichte liegt in dem Austausch zwischen der Gründerin und einer anderen Person, sei es ein beratendes Gespräch, eine hitzige Diskussion oder ein entscheidender Moment des Verständnisses. Bitte erstelle einen Titel, der kurz und prägnant ist. Wenn man den Titel liest, soll man wissen wer der Gesprächspartner der Gründerin ist. Alternativ soll man wissen wo die Gründern hingeht oder was die Gründerin macht. Bitte nicht mehr als 3 oder 4 Worte. Am besten aber nur ein Wort! Bitte gib mir das Ergebnis in eckigen Klammern, damit die Software damit umgehen kann\r\nGeschichte: " + story + ".\r\n";
     }
 }

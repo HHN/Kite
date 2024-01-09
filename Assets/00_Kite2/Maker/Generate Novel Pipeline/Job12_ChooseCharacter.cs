@@ -16,7 +16,6 @@ public class Job12_ChooseCharacter : PipelineJob
         }
         else
         {
-            Debug.Log("Failure with Completion: " + completion);
             return PipelineJobState.FAILED;
         }
     }

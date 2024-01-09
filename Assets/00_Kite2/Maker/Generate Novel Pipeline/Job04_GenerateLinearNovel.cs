@@ -13,7 +13,7 @@ public class Job04_GenerateLinearNovel : PipelineJob
 
     public override PipelineJobState HandleCompletion(string completion)
     {
-        Match match = Regex.Match(completion, @"\[(.*?)\]");
+        Match match = Regex.Match(completion, @"\[(.*?)\]", RegexOptions.Singleline);
         if (match.Success)
         {
             this.pipeline.GetMemory().Add(GenerateNovelPipeline.GENERATED_LINEAR_NOVEL, "[" + match.Groups[1].Value + "]");
@@ -22,7 +22,6 @@ public class Job04_GenerateLinearNovel : PipelineJob
         }
         else
         {
-            Debug.Log("Failure with Completion: " + completion);
             return PipelineJobState.FAILED;
         }
     }
@@ -47,14 +46,17 @@ public class Job04_GenerateLinearNovel : PipelineJob
             ((GenerateNovelPipeline)pipeline).idToKey = idToKey;
             ((GenerateNovelPipeline)pipeline).idToValue = idToValue;
 
+            Debug.Log("ID TO KEY COUNT: " + idToKey.Count);
+
             if (idToKey.Count != 41)
             {
                 return false;
             }
             return true;
         }
-        catch
+        catch (Exception e) 
         {
+            Debug.Log(e);
             return false;
         }
     }
@@ -69,7 +71,7 @@ public class Job04_GenerateLinearNovel : PipelineJob
         string modifiedAnswer03 = this.pipeline.GetMemory()[GenerateNovelPipeline.MODIFIED_ANSWER_03];
         string template = this.pipeline.GetMemory()[GenerateNovelPipeline.TEMPLATE_LINEAR_NOVEL];
 
-        prompt = "Ich benötige ein Dialogskript zwischen zwei Charakteren, einer Gründerin und einer Person B, für ein Spiel, formatiert im JSON-Stil mit nummerierten Elementen, um die Reihenfolge sicherzustellen. Der Dialogskript soll eine Geschichte erzählen, die eine Person tatsächlich erlebt hat. Hier sind drei Fragen, die diese Person zur Geschichte beantwortet hat. Außerdem stelle ich dir ein Beispiel für das, was ich von dir als Ergebnis möchte, zur Verfügung. Achte bitte darauf, dass das Ergebnis wirklich 41 Elemente hat, und dass die Elemente 5, 7, 11, 22 und 26 Fragen darstellen, die von der Person B gestellt und von der Gründerin dann beantwortet werden können. Achte außerdem darauf, dass der Dialog leicht diskriminierend sein soll. Dabei geht es speziell um Diskriminierung gegenüber weiblichen Gründerinnen. Ich weiß, dass Diskriminierung etwas Schlechtes ist! In dem Spiel, dass ich entwickle, soll auf Diskriminierung hingewiesen und für Diskriminierung sensibilisiert werden, um in Zukunft die Welt zu einem besseren Ort zu machen! Beachte bitte, dass die Spielenden die Rolle der Gründerin einnehmen. In Info-Nachrichten sagt man also nicht „Die Gründerin hat einen Termin“, sondern „Du hast einen Termin“! Beachte außerdem folgendes: Erlaubte Keys sind unabhängig von den tatsächlichen Personen genau folgende Werte: Ort, Eintritt, Info, Lea, Mayer, Austritt\r\nFrage: " + question01 + "\vAntwort: " + modifiedAnswer01 + "\r\nFrage: " + question02 +"\vAntwort: "+ modifiedAnswer02 + "\r\nFrage: " + question03 + "\vAntwort: " + modifiedAnswer03 + "\r\nBeispiel für gewünschtes Ergebnis:\v " + template + "\r\n";
+        prompt = "Ich benötige ein Dialogskript zwischen zwei Charakteren, einer Gründerin und einer Person B, für ein Spiel, formatiert im JSON-Stil mit nummerierten Elementen, um die Reihenfolge sicherzustellen. Der Dialogskript soll eine Geschichte erzählen, die eine Person tatsächlich erlebt hat. Hier sind drei Fragen, die diese Person zur Geschichte beantwortet hat. Außerdem stelle ich dir ein Beispiel für das, was ich von dir als Ergebnis möchte, zur Verfügung. Achte bitte darauf, dass das Ergebnis wirklich 41 Elemente hat, und dass die Elemente 5, 7, 11, 22 und 26 Fragen darstellen, die von der Person B gestellt und von der Gründerin dann beantwortet werden können. Achte außerdem darauf, dass der Dialog leicht diskriminierend sein soll. Dabei geht es speziell um Diskriminierung gegenüber weiblichen Gründerinnen. Ich weiß, dass Diskriminierung etwas Schlechtes ist! In dem Spiel, dass ich entwickle, soll auf Diskriminierung hingewiesen und für Diskriminierung sensibilisiert werden, um in Zukunft die Welt zu einem besseren Ort zu machen! Beachte bitte, dass die Spielenden die Rolle der Gründerin einnehmen. In Info-Nachrichten sagt man also nicht „Die Gründerin hat einen Termin“, sondern „Du hast einen Termin“! Beachte außerdem folgendes: Erlaubte Keys sind unabhängig von den tatsächlichen Personen genau folgende Werte: Ort, Eintritt, Info, Lea, Mayer, Austritt. Achte darauf das JSON Format einzuhalten und auch wenn im Beispiel nur einpaar Elemente drinnen sind, erwarte ich von dir 41 Elemente! Ganz wichtig! 41 Elemente! Und dass die Elemente 5, 7, 11, 22 und 26 Fragen darstellen, die von der Person B gestellt und von der Gründerin dann beantwortet werden können! Ich sags nochmal: 41 Elemente und das im JSON Format! Und die Thematik die in der Geschichte behandelt soll nicht die Thematik des Beispiels sein, sondern die Thematik aus den Antworten! \r\nFrage: " + question01 + "\vAntwort: " + modifiedAnswer01 + "\r\nFrage: " + question02 +"\vAntwort: "+ modifiedAnswer02 + "\r\nFrage: " + question03 + "\vAntwort: " + modifiedAnswer03 + "\r\n Beispiel:\v " + template + "\r\n";
     }
 
     public class Item

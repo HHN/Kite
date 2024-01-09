@@ -12,7 +12,7 @@ using System.Diagnostics;
 public class NovelExplorerSceneController : SceneController, OnSuccessHandler
 {
     public GameObject getNovelsServerCall;
-    public List<VisualNovel> userNovels = GeneratedNovelManager.Instance().GetUserNovels();
+    public List<VisualNovel> userNovels;
     public Dictionary<long, VisualNovel> userNovelsMap = new Dictionary<long, VisualNovel>();
     public int tabIndex;
     public ExplorerButtons explorerButtons;
@@ -23,6 +23,7 @@ public class NovelExplorerSceneController : SceneController, OnSuccessHandler
     void Start()
     {
         BackStackManager.Instance().Push(SceneNames.NOVEL_EXPLORER_SCENE);
+        userNovels = GeneratedNovelManager.Instance().GetUserNovels();
         InitMemory();
     }
 

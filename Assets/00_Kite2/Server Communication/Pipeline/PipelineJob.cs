@@ -16,8 +16,20 @@ public abstract class PipelineJob : MonoBehaviour, OnSuccessHandler, OnErrorHand
 
     public void StartJob()
     {
-        Debug.Log("Start Job with name: " + jobName);
+        InitializePrompt();
         state = PipelineJobState.JOB_RUNNING;
+        GetCompletionServerCall call = Instantiate(gptServercallPrefab).GetComponent<GetCompletionServerCall>();
+        call.sceneController = controller;
+        call.onSuccessHandler = this;
+        call.onErrorHandler = this;
+        call.prompt = prompt;
+        call.SendRequest();
+        DontDestroyOnLoad(call.gameObject);
+    }
+
+    public void TryAgain()
+    {
+        Debug.Log("Job failed, try again");
         GetCompletionServerCall call = Instantiate(gptServercallPrefab).GetComponent<GetCompletionServerCall>();
         call.sceneController = controller;
         call.onSuccessHandler = this;
@@ -30,7 +42,14 @@ public abstract class PipelineJob : MonoBehaviour, OnSuccessHandler, OnErrorHand
     public void OnSuccess(Response response)
     {
         state = HandleCompletion(response.completion);
-        pipeline.OnJobFinished(this);
+        if (state == PipelineJobState.FAILED)
+        {
+            TryAgain();
+        }
+        else
+        {
+            pipeline.OnJobFinished(this);
+        }
     }
 
     public abstract void InitializePrompt();

@@ -19,7 +19,6 @@ public class Job05_SummarizeNovel : PipelineJob
         }
         else
         {
-            Debug.Log("Failure with Completion: " + completion);
             return PipelineJobState.FAILED;
         }
     }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GeneratedNovelManager : MonoBehaviour
+public class GeneratedNovelManager
 {
     private static GeneratedNovelManager instance;
     private List<VisualNovel> novels;

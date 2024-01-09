@@ -51,7 +51,6 @@ public class Job15_ChooseDisplayImage : PipelineJob
         }
         else
         {
-            Debug.Log("Failure with Completion: " + completion);
             return PipelineJobState.FAILED;
         }
     }

@@ -50,14 +50,16 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
 
     void Update()
     {
-    //    if (Input.GetKeyDown(KeyCode.G))
-    //    {
-    //        if (generated == false)
-    //        {
-    //            generated = true;
-    //            pipeline.GenerateNovel();
-    //        }
-    //    }
+        /**
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            if (generated == false)
+            {
+                generated = true;
+                pipeline.GenerateNovel();
+            }
+        }
+        */
     }
 
     private void OnGuestMode()

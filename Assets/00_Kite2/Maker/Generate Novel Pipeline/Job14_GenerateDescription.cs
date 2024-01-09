@@ -18,7 +18,6 @@ public class Job14_GenerateDescription : PipelineJob
         }
         else
         {
-            Debug.Log("Failure with Completion: " + completion);
             return PipelineJobState.FAILED;
         }
     }

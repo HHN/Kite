@@ -18,7 +18,6 @@ public class Job02_ModifyAnswerTwo : PipelineJob
         }
         else
         {
-            Debug.Log("Failure with Completion: " + completion);
             return PipelineJobState.FAILED;
         }
     }
