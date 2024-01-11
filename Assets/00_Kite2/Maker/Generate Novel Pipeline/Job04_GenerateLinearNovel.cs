@@ -17,8 +17,13 @@ public class Job04_GenerateLinearNovel : PipelineJob
         if (match.Success)
         {
             this.pipeline.GetMemory().Add(GenerateNovelPipeline.GENERATED_LINEAR_NOVEL, "[" + match.Groups[1].Value + "]");
-            HandleValue("[" + match.Groups[1].Value + "]");
-            return PipelineJobState.COMPLETED;
+            bool result = HandleValue("[" + match.Groups[1].Value + "]");
+
+            if (result)
+            {
+                return PipelineJobState.COMPLETED;
+            }
+            return PipelineJobState.FAILED;
         }
         else
         {

@@ -60,7 +60,19 @@ public enum ResultCode
     SUCCESSFULLY_GOT_MONEY,
     FAILED_TO_GET_MONEY,
     SUCCESSFULLY_UPDATED_MONEY,
-    FAILED_TO_UPDATE_MONEY
+    FAILED_TO_UPDATE_MONEY,
+    SUCCESSFULLY_GOT_ALL_NOVEL_REVIEWS,
+    SUCCESSFULLY_ADDED_NOVEL_REVIEW,
+    SUCCESSFULLY_DELETED_NOVEL_REVIEW,
+    NO_SUCH_NOVEL_REVIEW,
+    SUCCESSFULLY_GOT_ALL_AI_REVIEWS,
+    SUCCESSFULLY_ADDED_AI_REVIEW,
+    SUCCESSFULLY_DELETED_AI_REVIEW,
+    NO_SUCH_AI_REVIEW,
+    SUCCESSFULLY_GOT_ALL_REVIEW_OBSERVER,
+    SUCCESSFULLY_ADDED_REVIEW_OBSERVER,
+    SUCCESSFULLY_DELETED_REVIEW_OBSERVER,
+    NO_SUCH_REVIEW_OBSERVER
 }
 
 public class ResultCodeHelper
@@ -129,6 +141,18 @@ public class ResultCodeHelper
             case ResultCode.FAILED_TO_GET_MONEY: { return 58; }
             case ResultCode.SUCCESSFULLY_UPDATED_MONEY: { return 59; }
             case ResultCode.FAILED_TO_UPDATE_MONEY: { return 60; }
+            case ResultCode.SUCCESSFULLY_GOT_ALL_NOVEL_REVIEWS: { return 61; }
+            case ResultCode.SUCCESSFULLY_ADDED_NOVEL_REVIEW: { return 62; }
+            case ResultCode.SUCCESSFULLY_DELETED_NOVEL_REVIEW: { return 63; }
+            case ResultCode.NO_SUCH_NOVEL_REVIEW: { return 64; }
+            case ResultCode.SUCCESSFULLY_GOT_ALL_AI_REVIEWS: { return 65; }
+            case ResultCode.SUCCESSFULLY_ADDED_AI_REVIEW: { return 66; }
+            case ResultCode.SUCCESSFULLY_DELETED_AI_REVIEW: { return 67; }
+            case ResultCode.NO_SUCH_AI_REVIEW: { return 68; }
+            case ResultCode.SUCCESSFULLY_GOT_ALL_REVIEW_OBSERVER: { return 69; }
+            case ResultCode.SUCCESSFULLY_ADDED_REVIEW_OBSERVER: { return 70; }
+            case ResultCode.SUCCESSFULLY_DELETED_REVIEW_OBSERVER: { return 71; }
+            case ResultCode.NO_SUCH_REVIEW_OBSERVER: { return 72; }
             default: { return -1; }
         }
     }
@@ -197,6 +221,18 @@ public class ResultCodeHelper
             case 58: { return ResultCode.FAILED_TO_GET_MONEY; }
             case 59: { return ResultCode.SUCCESSFULLY_UPDATED_MONEY; }
             case 60: { return ResultCode.FAILED_TO_UPDATE_MONEY; }
+            case 61: { return ResultCode.SUCCESSFULLY_GOT_ALL_NOVEL_REVIEWS; }
+            case 62: { return ResultCode.SUCCESSFULLY_ADDED_NOVEL_REVIEW; }
+            case 63: { return ResultCode.SUCCESSFULLY_DELETED_NOVEL_REVIEW; }
+            case 64: { return ResultCode.NO_SUCH_NOVEL_REVIEW; }
+            case 65: { return ResultCode.SUCCESSFULLY_GOT_ALL_AI_REVIEWS; }
+            case 66: { return ResultCode.SUCCESSFULLY_ADDED_AI_REVIEW; }
+            case 67: { return ResultCode.SUCCESSFULLY_DELETED_AI_REVIEW; }
+            case 68: { return ResultCode.NO_SUCH_AI_REVIEW; }
+            case 69: { return ResultCode.SUCCESSFULLY_GOT_ALL_REVIEW_OBSERVER; }
+            case 70: { return ResultCode.SUCCESSFULLY_ADDED_REVIEW_OBSERVER; }
+            case 71: { return ResultCode.SUCCESSFULLY_DELETED_REVIEW_OBSERVER; }
+            case 72: { return ResultCode.NO_SUCH_REVIEW_OBSERVER; }
             default: { return ResultCode.NONE; }
         }
     }

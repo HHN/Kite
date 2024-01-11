@@ -16,4 +16,7 @@ public class ConnectionLink
     public static readonly string NOVEL_LIKE_LINK = BASE_LINK + "novellike";
     public static readonly string SCORE_LINK = BASE_LINK + "score";
     public static readonly string MONEY_LINK = BASE_LINK + "money";
+    public static readonly string NOVEL_REVIEW_LINK = BASE_LINK + "novelreview";
+    public static readonly string AI_REVIEW_LINK = BASE_LINK + "aireview";
+    public static readonly string OBSERVER_LINK = BASE_LINK + "reviewobserver";
 }

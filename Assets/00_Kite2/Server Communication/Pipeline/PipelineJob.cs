@@ -17,6 +17,7 @@ public abstract class PipelineJob : MonoBehaviour, OnSuccessHandler, OnErrorHand
     public void StartJob()
     {
         InitializePrompt();
+        Debug.Log("Prompt: " + prompt);
         state = PipelineJobState.JOB_RUNNING;
         GetCompletionServerCall call = Instantiate(gptServercallPrefab).GetComponent<GetCompletionServerCall>();
         call.sceneController = controller;
@@ -48,6 +49,7 @@ public abstract class PipelineJob : MonoBehaviour, OnSuccessHandler, OnErrorHand
         }
         else
         {
+            Debug.Log("Completion: " + response.completion);
             pipeline.OnJobFinished(this);
         }
     }
