@@ -154,6 +154,7 @@ public class OptionsManager : MonoBehaviour
         if(sceneController != null)
         {
             sceneController.confirmArea.gameObject.SetActive(true);
+            sceneController.confirmArea2.gameObject.SetActive(true);
             sceneController.ShowAnswer(answer, displayAfterSelection);
             sceneController.SetWaitingForConfirmation(true);
             sceneController.SetNextEvent(nextEventID);

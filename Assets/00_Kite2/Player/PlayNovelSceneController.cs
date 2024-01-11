@@ -31,6 +31,7 @@ public class PlayNovelSceneController : SceneController
     public TypewriterCore currentTypeWriter;
     public SelectOptionContinueConversation selectOptionContinueConversation;
     public Button confirmArea;
+    public Button confirmArea2;
     public CharacterController currentTalkingCharacterController;
     public GameObject tapToContinueAnimation;
     private bool isTyping;
@@ -241,6 +242,7 @@ public class PlayNovelSceneController : SceneController
             case VisualNovelEventType.SHOW_CHOICES_EVENT:
                 {
                     confirmArea.gameObject.SetActive(false);
+                    confirmArea2.gameObject.SetActive(false);
                     HandleShowChoicesEvent(nextEventToPlay);
                     ScrollToBottom();
                     break;
@@ -253,6 +255,7 @@ public class PlayNovelSceneController : SceneController
             case VisualNovelEventType.ASK_FOR_OPINION_EVENT:
                 {
                     confirmArea.gameObject.SetActive(false);
+                    confirmArea2.gameObject.SetActive(false);
                     HandleAskForOpinionEvent(nextEventToPlay);
                     ScrollToBottom();
                     break;

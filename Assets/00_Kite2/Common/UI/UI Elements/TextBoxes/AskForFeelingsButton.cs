@@ -15,6 +15,7 @@ public class AskForFeelingsButton : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         controller.confirmArea.gameObject.SetActive(true);
+        controller.confirmArea2.gameObject.SetActive(true);
         controller.SetFeelingsPanelActive(true);
     }
 }
