@@ -42,9 +42,18 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler
     public void OnFinishButton()
     {
         AnalyticsServiceHandler.Instance().SendWaitedForAIFeedback();
-        BackStackManager.Instance().Clear(); // we go back to the explorer and don't want
-                                             // the back-button to bring us to the feedback scene aggain
-        SceneLoader.LoadNovelExplorerScene();
+
+        int userRole = FeedbackRoleManager.Instance.GetFeedbackRole();
+        if (userRole == 2 || userRole == 3 || userRole == 4 || userRole == 5)
+        {
+            SceneLoader.LoadReviewAiScene();
+        }
+        else
+        {
+            BackStackManager.Instance().Clear(); // we go back to the explorer and don't want
+                                                 // the back-button to bring us to the feedback scene aggain
+            SceneLoader.LoadNovelExplorerScene();
+        }
     }
 
     public void OnSuccess(Response response)

@@ -536,7 +536,16 @@ public class PlayNovelSceneController : SceneController
         AnalyticsServiceHandler.Instance().SendNovelPlayTime();
         AddScore(5);
         AddMoney(5);
-        SceneLoader.LoadFeedbackScene();
+
+        int userRole = FeedbackRoleManager.Instance.GetFeedbackRole();
+        if (userRole == 1 || userRole == 3 || userRole == 4 || userRole == 5)
+        {
+            SceneLoader.LoadReviewNovelScene();
+        } 
+        else
+        {
+            SceneLoader.LoadFeedbackScene();
+        }
     }
 
     public IEnumerator StartNextEventInOneSeconds(int second)
