@@ -21,4 +21,13 @@ public class SceneNames
     public const string FINISH_NOVEL_SCENE = "FinishNovelScene";
     public const string HELP_FOR_NOVEL_MAKER_SCENE = "HelpForNovelMakerScene";
     public const string NOVEL_PREVIEW_SCENE = "NovelPreviewScene";
+
+    // FEEDBACK SYSTEM
+    public const string ADD_OBSERVER_SCENE = "AddObserverScene";
+    public const string AI_REVIEW_EXPLORER_SCENE = "AiReviewExplorerScene";
+    public const string FEEDBACK_ROKE_MANAGEMENT_SCENE = "FeedbackRoleManagementScene";
+    public const string NOVEL_REVIEW_EXPLORER_SCENE = "NovelReviewExplorerScene";
+    public const string REVIEW_AI_SCENE = "ReviewAiScene";
+    public const string REVIEW_NOVEL_SCENE = "ReviewNovelScene";
+    public const string REVIEW_OBSERVER_EXPLORER_SCENE = "ReviewObserverExplorerScene";
 }

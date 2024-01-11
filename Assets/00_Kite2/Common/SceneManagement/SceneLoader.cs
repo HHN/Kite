@@ -91,6 +91,41 @@ public class SceneLoader
         LoadScene(SceneNames.INITIAL_TALK_SCENE);
     }
 
+    public static void LoadAddObserverScene()
+    {
+        LoadScene(SceneNames.ADD_OBSERVER_SCENE);
+    }
+
+    public static void LoadAiReviewExplorerScene()
+    {
+        LoadScene(SceneNames.AI_REVIEW_EXPLORER_SCENE);
+    }
+
+    public static void LoadFeedbackRoleManagementScene()
+    {
+        LoadScene(SceneNames.FEEDBACK_ROKE_MANAGEMENT_SCENE);
+    }
+
+    public static void LoadNovelReviewExplorerScene()
+    {
+        LoadScene(SceneNames.NOVEL_REVIEW_EXPLORER_SCENE);
+    }
+
+    public static void LoadReviewAiScene()
+    {
+        LoadScene(SceneNames.REVIEW_AI_SCENE);
+    }
+
+    public static void LoadReviewNovelScene()
+    {
+        LoadScene(SceneNames.REVIEW_NOVEL_SCENE);
+    }
+
+    public static void LoadReviewObserverExplorerScene()
+    {
+        LoadScene(SceneNames.REVIEW_OBSERVER_EXPLORER_SCENE);
+    }
+
     public static void LoadScene(string sceneName)
     {
         GameObject oldSceneControllerGameObject = GameObject.Find("Controller");

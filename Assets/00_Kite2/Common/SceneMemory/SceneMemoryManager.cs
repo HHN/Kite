@@ -21,6 +21,13 @@ public class SceneMemoryManager
     private HelpForNovelMakerSceneMemory helpForNovelMakerSceneMemory;
     private FinishNovelSceneMemory finishNovelSceneMemory;
     private NovelPreviewSceneMemory novelPreviewSceneMemory;
+    private AddObserverSceneMemory addObserverSceneMemory;
+    private AiReviewExplorerSceneMemory aiReviewExplorerSceneMemory;
+    private NovelReviewExplorerSceneMemory novelReviewExplorerSceneMemory;
+    private FeedbackRoleManagementSceneMemory feedbackRoleManagementSceneMemory;
+    private ReviewAiSceneMemory reviewAiSceneMemory;
+    private ReviewNovelSceneMemory reviewNovelSceneMemory;
+    private ReviewObserverExplorerSceneMemory reviewObserverExplorerSceneMemory;
 
     private SceneMemoryManager()
     {
@@ -121,6 +128,41 @@ public class SceneMemoryManager
         return this.novelPreviewSceneMemory;
     }
 
+    public AddObserverSceneMemory GetMemoryOfAddObserverScene()
+    {
+        return this.addObserverSceneMemory;
+    }
+
+    public AiReviewExplorerSceneMemory GetMemoryOfAiReviewExplorerScene()
+    {
+        return this.aiReviewExplorerSceneMemory;
+    }
+
+    public NovelReviewExplorerSceneMemory GetMemoryOfNovelReviewExplorerScene()
+    {
+        return this.novelReviewExplorerSceneMemory;
+    }
+
+    public FeedbackRoleManagementSceneMemory GetMemoryOfFeedbackRoleManagementScene()
+    {
+        return this.feedbackRoleManagementSceneMemory;
+    }
+
+    public ReviewAiSceneMemory GetMemoryOfReviewAiScene()
+    {
+        return this.reviewAiSceneMemory;
+    }
+
+    public ReviewNovelSceneMemory GetMemoryOfReviewNovelScene()
+    {
+        return this.reviewNovelSceneMemory;
+    }
+
+    public ReviewObserverExplorerSceneMemory GetMemoryOfReviewObserverExplorerScene()
+    {
+        return this.reviewObserverExplorerSceneMemory;
+    }
+
     public void SetMemoryOfSettingsScene(SettingsSceneMemory settingsSceneMemory)
     {
         this.settingsSceneMemory = settingsSceneMemory;
@@ -206,6 +248,41 @@ public class SceneMemoryManager
         this.novelPreviewSceneMemory = novelPreviewSceneMemory;
     }
 
+    public void GetMemoryOfAddObserverScene(AddObserverSceneMemory addObserverSceneMemory)
+    {
+        this.addObserverSceneMemory = addObserverSceneMemory;
+    }
+
+    public void GetMemoryOfAiReviewExplorerScene(AiReviewExplorerSceneMemory aiReviewExplorerSceneMemory)
+    {
+        this.aiReviewExplorerSceneMemory = aiReviewExplorerSceneMemory;
+    }
+
+    public void GetMemoryOfNovelReviewExplorerScene(NovelReviewExplorerSceneMemory novelReviewExplorerSceneMemory)
+    {
+        this.novelReviewExplorerSceneMemory = novelReviewExplorerSceneMemory;
+    }
+
+    public void GetMemoryOfFeedbackRoleManagementScene(FeedbackRoleManagementSceneMemory feedbackRoleManagementSceneMemory)
+    {
+        this.feedbackRoleManagementSceneMemory = feedbackRoleManagementSceneMemory;
+    }
+
+    public void GetMemoryOfReviewAiScene(ReviewAiSceneMemory reviewAiSceneMemory)
+    {
+        this.reviewAiSceneMemory = reviewAiSceneMemory;
+    }
+
+    public void GetMemoryOfReviewNovelScene(ReviewNovelSceneMemory reviewNovelSceneMemory)
+    {
+        this.reviewNovelSceneMemory = reviewNovelSceneMemory;
+    }
+
+    public void GetMemoryOfReviewObserverExplorerScene(ReviewObserverExplorerSceneMemory reviewObserverExplorerSceneMemory)
+    {
+        this.reviewObserverExplorerSceneMemory = reviewObserverExplorerSceneMemory;
+    }
+
     public void ClearMemory()
     {
         this.settingsSceneMemory = null;
@@ -225,5 +302,12 @@ public class SceneMemoryManager
         this.helpForNovelMakerSceneMemory = null;
         this.finishNovelSceneMemory = null;
         this.novelPreviewSceneMemory = null;
+        this.addObserverSceneMemory = null;
+        this.aiReviewExplorerSceneMemory = null;
+        this.novelReviewExplorerSceneMemory = null;
+        this.feedbackRoleManagementSceneMemory = null;
+        this.reviewAiSceneMemory = null;
+        this.reviewNovelSceneMemory = null;
+        this.reviewObserverExplorerSceneMemory = null;
     }
 }

@@ -62,4 +62,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_Kite2/Common/InfoScene.unity
     guid: 080ab86213d0b95438a8159fab784de5
+  - enabled: 1
+    path: Assets/00_Kite2/UserFeedback/AddObserverScene.unity
+    guid: 9aed3a9722fdd464eb47280815970b0b
+  - enabled: 1
+    path: Assets/00_Kite2/UserFeedback/AiReviewExplorerScene.unity
+    guid: 4a563744110811341a2cf794cb29d988
+  - enabled: 1
+    path: Assets/00_Kite2/UserFeedback/FeedbackRoleManagementScene.unity
+    guid: 7937d6c9fbbe1c748a62b61291331ed0
+  - enabled: 1
+    path: Assets/00_Kite2/UserFeedback/NovelReviewExplorerScene.unity
+    guid: 50f4b4d2898f37444ad7a6fb6aa1fa35
+  - enabled: 1
+    path: Assets/00_Kite2/UserFeedback/ReviewAiScene.unity
+    guid: d275f59ac2fa4334f831728cc88db2ac
+  - enabled: 1
+    path: Assets/00_Kite2/UserFeedback/ReviewNovelScene.unity
+    guid: e487af7df6edb424ea45d83cd542915b
+  - enabled: 1
+    path: Assets/00_Kite2/UserFeedback/ReviewObserverExplorerScene.unity
+    guid: d70e8ba20e043984fbfb89a14efb7163
   m_configObjects: {}

@@ -174,7 +174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1142041131289362116, guid: 1ae41ef0b36350c44a5251e44f8cd23a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 650
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1142041131289362116, guid: 1ae41ef0b36350c44a5251e44f8cd23a, type: 3}
       propertyPath: m_SizeDelta.y
@@ -210,7 +210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1142041131289362116, guid: 1ae41ef0b36350c44a5251e44f8cd23a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 325
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1142041131289362116, guid: 1ae41ef0b36350c44a5251e44f8cd23a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -429,7 +429,7 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  name: Generate title
+  jobName: Generate title
 --- !u!4 &184171210
 Transform:
   m_ObjectHideFlags: 0
@@ -479,7 +479,7 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  name: Generate Description
+  jobName: Generate Description
 --- !u!4 &321938898
 Transform:
   m_ObjectHideFlags: 0
@@ -641,7 +641,7 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  name: Generate Dialog Option 04
+  jobName: Generate Dialog Option 04
 --- !u!4 &617257219
 Transform:
   m_ObjectHideFlags: 0
@@ -691,7 +691,7 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  name: Generate Dialog Option 02
+  jobName: Generate Dialog Option 02
 --- !u!4 &641285808
 Transform:
   m_ObjectHideFlags: 0
@@ -753,6 +753,8 @@ MonoBehaviour:
   job13: {fileID: 184171209}
   job14: {fileID: 321938897}
   job15: {fileID: 677590164}
+  numberOfJobs: 0
+  numberOfCompletedJobs: 0
 --- !u!4 &667265768
 Transform:
   m_ObjectHideFlags: 0
@@ -802,7 +804,7 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  name: Choose Display Image
+  jobName: Choose Display Image
 --- !u!4 &677590165
 Transform:
   m_ObjectHideFlags: 0
@@ -1016,7 +1018,7 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  name: Modfiy Answer Two
+  jobName: Modfiy Answer Two
 --- !u!4 &826781686
 Transform:
   m_ObjectHideFlags: 0
@@ -1066,7 +1068,7 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  name: Generate Dialog Option 01
+  jobName: Generate Dialog Option 01
 --- !u!4 &924317151
 Transform:
   m_ObjectHideFlags: 0
@@ -1116,7 +1118,7 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  name: Modfiy Answer Three
+  jobName: Modfiy Answer Three
 --- !u!4 &964037660
 Transform:
   m_ObjectHideFlags: 0
@@ -1166,7 +1168,7 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  name: Summarize Novel
+  jobName: Summarize Novel
 --- !u!4 &1206214833
 Transform:
   m_ObjectHideFlags: 0
@@ -1216,7 +1218,7 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  name: Generate Dialog Option 03
+  jobName: Generate Dialog Option 03
 --- !u!4 &1346911536
 Transform:
   m_ObjectHideFlags: 0
@@ -1446,7 +1448,7 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  name: Generate Linear Novel
+  jobName: Generate Linear Novel
 --- !u!4 &1448449074
 Transform:
   m_ObjectHideFlags: 0
@@ -1608,7 +1610,7 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  name: Modfiy Answer One
+  jobName: Modfiy Answer One
 --- !u!4 &1565213037
 Transform:
   m_ObjectHideFlags: 0
@@ -1658,7 +1660,7 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  name: Choose Character
+  jobName: Choose Character
 --- !u!4 &1581598322
 Transform:
   m_ObjectHideFlags: 0
@@ -1922,7 +1924,7 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  name: Choose Location
+  jobName: Choose Location
 --- !u!4 &1874015881
 Transform:
   m_ObjectHideFlags: 0
@@ -2141,7 +2143,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 150, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1912650331
@@ -2250,7 +2252,7 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  name: Generate Dialog Option 05
+  jobName: Generate Dialog Option 05
 --- !u!4 &2143146054
 Transform:
   m_ObjectHideFlags: 0
@@ -3731,8 +3733,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 325, y: 0}
-  m_SizeDelta: {x: 650, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7968387007465432266
 MonoBehaviour:
