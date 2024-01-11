@@ -13,6 +13,7 @@ public class CallWithNotaryNovel : VisualNovel
         description = "Du triffst dich mit einer Notarin, um einen Termin für deine Gründung auszumachen.";
         image = 3;
         nameOfMainCharacter = "Lea";
+        context = "Es ist das Gespräch einer Gründerin, Lea, mit einer Notarin. Es geht um die Eintragung des Unternehmens der Gründerin ins Handelsregister. Die Gründerin hat sich gut vorbereitet und hofft einen Termin für ein Eintragung zu erhalten.";
         feedback = "";
         novelEvents = new List<VisualNovelEvent>()
         {

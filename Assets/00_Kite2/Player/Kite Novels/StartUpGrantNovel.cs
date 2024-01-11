@@ -10,6 +10,7 @@ public class StartUpGrantNovel : VisualNovel
         image = 7;
         nameOfMainCharacter = "Lea";
         feedback = "";
+        context = "Es ist das Gespräch einer Gründerin, Lea, mit einem Mitarbeiter des Arbeitsamtes. Es geht um die Beantragung eines Gründerzuschusses. Die Gründerin hat sich gut vorbereitet und hofft den Gründerzuschuss zu bekommen. ";
         novelEvents = new List<VisualNovelEvent>()
         {
             new VisualNovelEvent()

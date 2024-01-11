@@ -9,6 +9,7 @@ public class RentingAnOfficeNovel : VisualNovel
         title = "Anmietung eines Büros";
         description = "Du hast heute einen Termin für die Besichtigung von Büroräumen.";
         image = 5;
+        context = "Es ist das Gespräch einer Gründerin, Lea, mit einem Vermieter. Es geht um die Anmietung von Büro-Räumen. Die Gründerin hat sich gut vorbereitet und hofft, dass sie die Büroräume für ihr Unternehmen bekommt. ";
         nameOfMainCharacter = "Lea";
         feedback = "";
         novelEvents = new List<VisualNovelEvent>()

@@ -10,6 +10,7 @@ public class BankAppointmentNovel : VisualNovel
             "Informationen über einen Kredit zu erhalten und diesen darauf zu beantragen.";
         image = 4;
         nameOfMainCharacter = "Lea";
+        context = "Es ist das Gespräch einer Gründerin, Lea, mit einem Bank-Mitarbeiter. Es geht um einen Kredit. Die Gründerin hat sich gut vorbereitet und hofft Informationen über den Kredit zu erhalten.";
         feedback = "";
         novelEvents = new List<VisualNovelEvent>()
         {

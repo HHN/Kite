@@ -38,7 +38,7 @@ public class ReviewAiSceneController : SceneController, OnSuccessHandler
         novelID = novelToPlay.id;
         aiFeedbackString = novelToPlay.feedback;
         aiFeedback.text = aiFeedbackString;
-        prompt = PromptManager.Instance().GetPrompt();
+        prompt = PromptManager.Instance().GetPrompt(novelToPlay.context);
     }
 
     public void OnConfirmButton()

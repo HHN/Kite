@@ -11,6 +11,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
         image = 6;
         nameOfMainCharacter = "Lea";
         feedback = "";
+        context = "Es ist das Gespräch einer Gründerin, Lea, mit einer Förderberatungsstelle. Es geht um eine Gründungsförderung. Die Gründerin hat ein Ideenpapier erstellt und hofft, dass sie Informationen zu passenden Förderungen erhält. ";
         novelEvents = new List<VisualNovelEvent>()
         {
             new VisualNovelEvent()

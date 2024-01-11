@@ -12,6 +12,7 @@ public class BankAccountOpeningNovel : VisualNovel
         image = 0;
         nameOfMainCharacter = "Lea";
         feedback = "";
+        context = "Es ist das Gespräch einer Gründerin, Lea, mit einem Bank-Mitarbeiter. Es geht um die Eröffnung eines Bank-Kontos. Die Gründerin hat sich gut vorbereitet und hofft sich mit der Bank vertragseinig zu werden.";
         novelEvents = new List<VisualNovelEvent>()
         {
             new VisualNovelEvent()

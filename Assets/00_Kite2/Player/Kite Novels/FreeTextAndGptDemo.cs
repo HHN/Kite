@@ -10,6 +10,7 @@ public class FreeTextAndGptDemo : VisualNovel
         image = 0;
         nameOfMainCharacter = "Lea";
         feedback = "";
+        context = "";
         novelEvents = new List<VisualNovelEvent>()
         {
             new VisualNovelEvent()

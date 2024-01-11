@@ -8,6 +8,7 @@ public class BankTalkNovel : VisualNovel
         title = "Bankgespräch";
         description = "Du hast eine Einladung zu einem Bankgespräch erhalten, um mehr Informationen über einen Kredit zu erhalten und diesen darauf zu beantragen.";
         image = 0;
+        context = "Es ist das Gespräch einer Gründerin, Lea, mit einem Bank-Mitarbeiter. Es geht um einen Kredit. Die Gründerin hat sich gut vorbereitet und hofft Informationen über den Kredit zu erhalten.";
         nameOfMainCharacter = "Lea";
         feedback = "";
         novelEvents = new List<VisualNovelEvent>()

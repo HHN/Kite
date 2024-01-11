@@ -12,6 +12,7 @@ public class PressTalkNovel : VisualNovel
             "erhalten und zu networken. Nachdem du deine Geschäftsidee vor dem Publikum gepitcht hast, " +
             "stellst du dich an einen Tisch mit anderen Gästen, um mit ihnen zu reden.";
         image = 2;
+        context = "Es ist das Gespräch einer Gründerin, Lea, mit einer Journalistin. Die Journalistin hat die Gründerin angesprochen und möchte einen Artikel über sie und ihr Unternehmen schreiben. Die Gründerin freut sich über diese Gelegenheit und hofft auf einen schönen Artikel.";
         nameOfMainCharacter = "Lea";
         feedback = "";
         novelEvents = new List<VisualNovelEvent>()

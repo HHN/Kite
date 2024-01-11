@@ -12,6 +12,7 @@ public class ConversationWithAcquaintancesNovel : VisualNovel
         image = 8;
         nameOfMainCharacter = "Lea";
         feedback = "";
+        context = "Es ist das Gespräch einer Gründerin, Lea, mit einem Bekannten. Es ist ein zwangloses Gespräch, bei dem die beiden über ihre aktuellen beruflichen Situationen sprechen. Die Gründerin erzählt von ihrer Selbstständigkeit. ";
         novelEvents = new List<VisualNovelEvent>()
         {
             new VisualNovelEvent()

@@ -13,6 +13,7 @@ public class CallWithParentsNovel : VisualNovel
         image = 1;
         nameOfMainCharacter = "Lea";
         feedback = "";
+        context = "Es ist das Gespräch einer Gründerin, Lea, mit ihrer Mutter. Sie hat sich gründlich informiert und hat sich entschlossen, ein Unternehmen zu gründen. Sie ruft nun ihre Eltern an, um ihnen von dem Gründungsvorhaben zu berichten. ";
         novelEvents = new List<VisualNovelEvent>()
         {
             //TODO: Change CRITICAL to CONCERNED once available

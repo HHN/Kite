@@ -27,11 +27,18 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler
         favoriteButton.Init();
         if (string.IsNullOrEmpty(novelToPlay.feedback))
         {
+            VisualNovel novel = PlayManager.Instance().GetVisualNovelToPlay();
             feedbackText.SetText("Bitte warten, Feedback wird geladen...");
             GetCompletionServerCall call = Instantiate(gptServercallPrefab).GetComponent<GetCompletionServerCall>();
             call.sceneController = this;
             call.onSuccessHandler = this;
-            call.prompt = PromptManager.Instance().GetPrompt();
+            if (novel != null)
+            {
+                call.prompt = PromptManager.Instance().GetPrompt(novel.context);
+            } else
+            {
+                call.prompt = PromptManager.Instance().GetPrompt("");
+            }
             call.SendRequest();
             DontDestroyOnLoad(call.gameObject);
             return;

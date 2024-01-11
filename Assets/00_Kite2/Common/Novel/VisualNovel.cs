@@ -9,6 +9,7 @@ public class VisualNovel
     public long image;
     public string nameOfMainCharacter;
     public string feedback;
+    public string context;
     public List<VisualNovelEvent> novelEvents;
     public long id;
     public Dictionary<string, string> globalVariables;
