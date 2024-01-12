@@ -50,16 +50,17 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
 
     void Update()
     {
-        /**
         if (Input.GetKeyDown(KeyCode.G))
         {
             if (generated == false)
             {
+                string userAnswer01 = "Ich will mich selbstständig machen als Spiele-Entwicklerin und habe meiner Mutter davon erzählt. Sie war nicht sehr begeistert. Mein Entwicklungs-Studio heißt Knights Gambit Development Studio.";
+                string userAnswer02 = "Ich und meine Mutter. Ich bin eine Frau und möchte mich selbstständig machen. Dies habe ich meiner Mutter erzählt. Sie war nicht sehr begeistert davon und hatm ir empfohlen dass ich mich mit meinem Bruder zusammen tue.";
+                string userAnswer03 = "Meine Mutter war zunächst skeptisch und hat mir empfohlen, dass ich mich mit meinem Bruder zusammen tun sollte. Ihm traut sie die selbstständigkeit wohl er zu, weil er ein Mann ist. Ich habe ihr gesagt, dass ich das auch alleine packen kann und packen will. Am Ende hat sie doch gesagt, dass sie mich dabei unterstützt.";
                 generated = true;
-                pipeline.GenerateNovel();
+                pipeline.GenerateNovel(userAnswer01, userAnswer02, userAnswer03);
             }
         }
-        */
     }
 
     private void OnGuestMode()
