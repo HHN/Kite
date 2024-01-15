@@ -1,6 +1,6 @@
 public class ConnectionLink
 {
-    public static readonly string BASE_LINK = "http://localhost:8080/"; //"http://85.215.46.25:8080/";
+    public static readonly string BASE_LINK = "http://85.215.46.25:8080/";
     public static readonly string REGISTRATION_LINK = BASE_LINK + "registration";
     public static readonly string LOG_IN_LINK = BASE_LINK + "login";
     public static readonly string LOG_OUT_LINK = BASE_LINK + "userlogout";

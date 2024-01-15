@@ -6,11 +6,11 @@ public class StartUpGrantNovel : VisualNovel
     {
         id = -8;
         title = "Gründerzuschuss";
-        description = "Du bist heute bei deinem örtlichen Arbeitsamt, um einen Gründerzuschuss zu beantragen.";
+        description = "Du bist heute bei deiner örtlichen Agentur für Arbeit, um einen Gründerzuschuss zu beantragen.";
         image = 7;
         nameOfMainCharacter = "Lea";
         feedback = "";
-        context = "Es ist das Gespräch einer Gründerin, Lea, mit einem Mitarbeiter des Arbeitsamtes. Es geht um die Beantragung eines Gründerzuschusses. Die Gründerin hat sich gut vorbereitet und hofft den Gründerzuschuss zu bekommen. ";
+        context = "Es ist das Gespräch einer Gründerin, Lea, mit einem Mitarbeiter der Agentur für Arbeit. Es geht um die Beantragung eines Gründerzuschusses. Die Gründerin hat sich gut vorbereitet und hofft den Gründerzuschuss zu bekommen. ";
         novelEvents = new List<VisualNovelEvent>()
         {
             new VisualNovelEvent()
@@ -49,7 +49,7 @@ public class StartUpGrantNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Intro",
-                text = "Du bist heute bei deinem örtlichen Arbeitsamt, um einen Gründerzuschuss zu beantragen."
+                text = "Du bist heute bei deiner örtlichen Agentur für Arbeit, um einen Gründerzuschuss zu beantragen."
             },
 
             new VisualNovelEvent()

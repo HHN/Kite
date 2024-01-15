@@ -8,8 +8,7 @@ public class CallWithParentsNovel : VisualNovel
     {
         id = -2;
         title = "Telefonat mit den Eltern";
-        description = "Nachdem du dich gründlich informiert hast, hast du dich dazu entschlossen ein Unternehmen zu gründen. " + 
-        "Du hast dir auch schon die nächsten Schritte überlegt und rufst nun deine Eltern an, um ihnen von deinem Gründungsvorhaben zu berichten.";
+        description = "Nachdem du dich gründlich informiert hast, hast du dich dazu entschlossen ein Unternehmen zu gründen. Du hast dir auch schon die nächsten Schritte überlegt und rufst nun deine Eltern an, um ihnen von deinem Gründungsvorhaben zu berichten.";
         image = 1;
         nameOfMainCharacter = "Lea";
         feedback = "";

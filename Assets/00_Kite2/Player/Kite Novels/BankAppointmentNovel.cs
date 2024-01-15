@@ -6,8 +6,7 @@ public class BankAppointmentNovel : VisualNovel
     {
         id = -10;
         title = "Banktermin zur Kreditvergabe";
-        description = "Du hast eine Einladung zu einem Bankgespräch erhalten, um mehr " +
-            "Informationen über einen Kredit zu erhalten und diesen darauf zu beantragen.";
+        description = "Du hast eine Einladung zu einem Bankgespräch erhalten, um mehr Informationen über einen Kredit zu erhalten und diesen darauf zu beantragen.";
         image = 4;
         nameOfMainCharacter = "Lea";
         context = "Es ist das Gespräch einer Gründerin, Lea, mit einem Bank-Mitarbeiter. Es geht um einen Kredit. Die Gründerin hat sich gut vorbereitet und hofft Informationen über den Kredit zu erhalten.";

@@ -10,9 +10,12 @@ public class GenerateNovelPipeline : GPT_Pipeline
     public const string DESCRIPTION = "description";
     public const string IMAGE = "image";
     public const string NAME_OF_MAIN_CHARACTER = "nameOfMainCharacter";
+    public const string ROLE_OF_TALKING_PARTNER = "roleOfTalkingPartner";
     public const string NAME_OF_TALKING_PARTNER = "nameOfTalkingPartner";
     public const string CONTEXT = "context";
     public const string BACKGROUND_SPRITE = "backgroundSprite";
+    public const string LOCATION = "location";
+    public const string BIASES = "biases";
     public const string EXPRESSION_TYPE_WHILE_JOINING = "expressionTypeWhileJoining";
     public const string SPEAKER_01 = "speaker01";
     public const string MESSAGE_01 = "message01";

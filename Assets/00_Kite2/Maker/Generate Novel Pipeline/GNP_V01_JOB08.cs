@@ -8,7 +8,7 @@ public class GNP_V01_JOB08 : PipelineJob
 {
     public GNP_V01_JOB08()
     {
-        this.jobName = "Job08";
+        this.jobName = "Job08 - Generierung einer Beschreibung";
     }
 
     public override PipelineJobState HandleCompletion(string completion)
@@ -18,7 +18,7 @@ public class GNP_V01_JOB08 : PipelineJob
         {
             string result = match.Groups[1].Value;
 
-            // Use result for what ever
+            pipeline.GetMemory()[GenerateNovelPipeline.DESCRIPTION] = result;
 
             return PipelineJobState.COMPLETED;
         }
@@ -32,28 +32,22 @@ public class GNP_V01_JOB08 : PipelineJob
     {
         StringBuilder stringBuilder = new StringBuilder();
 
-        // Rolle
-        stringBuilder.Append("Deine Rolle: Du bist eine fortschrittliche KI, spezialisiert auf die Generierung von Visual Novels, die den Gründungsprozess von Unternehmerinnen thematisieren. Dein Hauptaugenmerk liegt dabei auf der authentischen Darstellung von Herausforderungen und Diskriminierungen, denen Frauen im Gründungsprozess begegnen. Ziel ist es, Bewusstsein und Verständnis für die spezifischen Hürden zu schaffen, die Gründerinnen aufgrund ihres Geschlechts überwinden müssen. Deine Visual Novels sollen nicht nur informieren, sondern auch inspirieren und zum Nachdenken anregen. Weiter unten in diesem Prompt findest du eine Liste mit Geschlechterbiasen im Gründungsprozess, was deine Wissensbasis darstellt.");
-        stringBuilder.AppendLine();
-
-        // Aufgabe
-        stringBuilder.Append("Deine Aufgabe: ");
-        stringBuilder.AppendLine();
-
-        // Kontext
-        stringBuilder.Append("Der Kontext deiner Aufgabe: " + this.pipeline.GetMemory()[GenerateNovelPipeline.CONTEXT]);
-        stringBuilder.AppendLine();
+        stringBuilder.Append("Deine Aufgabe ist es, eine kurze Beschreibung für die Visual Novel '");
+        stringBuilder.Append(pipeline.GetMemory()[GenerateNovelPipeline.TITLE]);
+        stringBuilder.Append("' zu generieren, in der die Hauptfigur ");
+        stringBuilder.Append(pipeline.GetMemory()[GenerateNovelPipeline.NAME_OF_MAIN_CHARACTER]);
+        stringBuilder.Append(", eine Gründerin, und ");
+        stringBuilder.Append(pipeline.GetMemory()[GenerateNovelPipeline.ROLE_OF_TALKING_PARTNER]);
+        stringBuilder.Append("eine Schlüsselinteraktion haben. Die Beschreibung sollte 3 bis 5 Sätze lang sein und in der 'Du'-Form formuliert werden, als ob du direkt mit der Gründerin sprichst. Die Beschreibung soll die Gedanken und Pläne der Gründerin vor dem Treffen darstellen, ohne Charakternamen und ohne Vorgreifen auf Ereignisse. Verwende keine Charaktereigenschaften und orientiere dich an dem Stil der Beispiel-beschreibungen, aber übernehme keine Inhalte daraus. Die Sprache der Beschreibung ist Deutsch. ");
 
         // Output Format
-        stringBuilder.Append("Das gewünschte Ergebnis: Bitte beachte, dass dein generiertes Ergebnis von einer speziellen Software weiterverarbeitet wird. Daher ist es entscheidend, dass du das Ergebnis in eckigen Klammern zurückgibst. Diese Formatierung ermöglicht eine reibungslose Integration und Verarbeitung deiner Ausgabe durch das nachgelagerte System.");
+        stringBuilder.Append("Das gewünschte Ergebnis:");
+        stringBuilder.AppendLine();
+        stringBuilder.Append("Bitte gib als Ergebnis genau die Beschreibung an, die du generiert hast. Bitte beachte, dass dein generiertes Ergebnis von einer speziellen Software weiterverarbeitet wird. Daher ist es entscheidend, dass du das Ergebnis in eckigen Klammern zurückgibst. Deine Antwort sollte direkt mit einer öffnenden eckigen Klammer '[' beginnen und mit einer schließenden eckigen Klammer ']' enden. Beispiel: [die von dir generierte Beschreibung]. Diese Formatierung ermöglicht eine reibungslose Integration und Verarbeitung deiner Ausgabe durch das nachgelagerte System.");
         stringBuilder.AppendLine();
 
-        // Wissens Basis
-        stringBuilder.Append("Deine Wissens Basis: Hier die Liste mit Geschlechterbiases im Gründungsprozess:\r\nFinanzielle und Geschäftliche Herausforderungen\r\n\r\nFinanzierungszugang\r\nBias Beschreibung: Schwierigkeiten von Frauen, Kapital für ihre Unternehmen zu beschaffen.\r\nGender Pay Gap\r\nBias Beschreibung: Lohnungleichheit zwischen Männern und Frauen.\r\nUnterbewertung weiblich geführter Unternehmen\r\nBias Beschreibung: Geringere Bewertung von Unternehmen, die von Frauen geführt werden.\r\nRisk Aversion Bias\r\nBias Beschreibung: Wahrnehmung von Frauen als risikoaverser.\r\nBestätigungsverzerrung\r\nBias Beschreibung: Tendenz, Informationen zu interpretieren, die bestehende Vorurteile bestätigen.\r\nTokenism\r\nBias Beschreibung: Wahrnehmung von Frauen in unternehmerischen Kreisen als Alibifiguren.\r\nBias in der Wahrnehmung von Führungsfähigkeiten\r\nBias Beschreibung: Infragestellung der Führungsfähigkeiten von Frauen.\r\nIntersektionale und spezifische Biases\r\n\r\nRassistische und ethnische Biases\r\nBias Beschreibung: Zusätzliche Vorurteile gegenüber Frauen aus Minderheitengruppen.\r\nSozioökonomische Biases\r\nBias Beschreibung: Größere Hindernisse für Frauen aus niedrigeren sozioökonomischen Schichten.\r\nAlter- und Generationen-Biases\r\nBias: Diskriminierung aufgrund von Altersstereotypen.\r\nSexualitätsbezogene Biases\r\nBias: Vorurteile gegenüber lesbischen, bisexuellen oder queeren Frauen.\r\nBiases gegenüber Frauen mit Behinderungen\r\nBias: Zusätzliche Herausforderungen für Frauen mit körperlichen oder geistigen Behinderungen.\r\nStereotype gegenüber Frauen in nicht-traditionellen Branchen\r\nBias: Widerstände gegen Frauen in männlich dominierten Feldern.\r\nKulturelle und religiöse Biases\r\nBias: Diskriminierung aufgrund kultureller oder religiöser Zugehörigkeit.\r\nBiases im Bereich der Rollen- und Familienwahrnehmung\r\n\r\nMaternal Bias\r\nBias: Annahmen über geringere Engagementbereitschaft von Müttern oder potenziellen Müttern.\r\nBiases gegenüber Frauen mit Kindern\r\nBias: Benachteiligung von Müttern, insbesondere Alleinerziehenden.\r\nErwartungshaltung bezüglich Familienplanung\r\nBias: Annahmen über zukünftige Familienplanung bei Frauen im gebärfähigen Alter.\r\nWork-Life-Balance-Erwartungen\r\nBias: Druck auf Frauen, ein Gleichgewicht zwischen Beruf und Familie zu finden.\r\nKarriereentwicklungs- und Wahrnehmungsbiases\r\n\r\nGeschlechtsspezifische Stereotypen\r\nBias: Annahmen über geringere Kompetenz von Frauen in bestimmten Bereichen.\r\nDoppelte Bindung (Tightrope Bias)\r\nBias: Konflikt zwischen der Wahrnehmung als zu weich oder zu aggressiv.\r\nMikroaggressionen\r\nBias: Subtile Formen der Diskriminierung gegenüber Frauen.\r\nLeistungsattributions-Bias\r\nBias: Externe Zuschreibung von Erfolgen von Frauen.\r\nBias in Medien und Werbung\r\nBias: Verzerrte Darstellung von Unternehmerinnen in den Medien.\r\nUnbewusste Bias in der Kommunikation\r\nBias: Herabsetzende Art und Weise, wie über Frauenunternehmen gesprochen wird.\r\nProve-it-Again-Bias\r\nBias: Anforderung an Frauen, insbesondere in technischen Bereichen, ihre Kompetenzen wiederholt zu beweisen.");
-        stringBuilder.AppendLine();
-
-        // Analyse Objekt
-        stringBuilder.Append("Dein Analyse Objekt:");
+        //
+        stringBuilder.Append("--Hier die Liste mit Beispielen für Beschreibungen--\r\n1. [Du hast eine Einladung zu einem Bankgespräch erhalten, um mehr Informationen über die Eröffnung eines Bankkontos zu erhalten und dieses darauf zu beantragen.]\r\n2. [Du hast eine Einladung zu einem Bankgespräch erhalten, um mehr Informationen über einen Kredit zu erhalten und diesen darauf zu beantragen.]\r\n3. [Du triffst dich mit einer Notarin, um einen Termin für deine Gründung auszumachen.]\r\n4. [Nachdem du dich gründlich informiert hast, hast du dich dazu entschlossen ein Unternehmen zu gründen. Du hast dir auch schon die nächsten Schritte überlegt und rufst nun deine Eltern an, um ihnen von deinem Gründungsvorhaben zu berichten.]\r\n5. [Du triffst dich mit einem*einer Bekannten, den*die du seit ein paar Jahren nicht mehr gesehen hast, in einem kleinen Café. Er*Sie hat dir soeben erzählt, wo er*sie zurzeit beruflich steht. Nun bist du an der Reihe.]\r\n6. [Du bist in Kontakt mit einem Kunden gekommen. Nachdem geklärt wurde, dass deine angebotenen Leistungen zu den Anforderungen deines Gegenübers passen, geht es nun um die Honorarverhandlung.]\r\n7. [Du wurdest zu einem Termin bei der Agentur für Arbeit eingeladen, wo du dich mit einem Berater über deine Geschäftsidee unterhalten kannst und hoffentlich Informationen zu passenden Förderungen erhalten wirst.]\r\n8. [Du befindest dich auf einer Veranstaltung, bei der Jungunternehmer*innen ihre Geschäftsidee vor einem Publikum präsentieren können, um Rückmeldung zu der Idee zu erhalten und zu networken. Nachdem du deine Geschäftsidee vor dem Publikum gepitcht hast, stellst du dich an einen Tisch mit anderen Gästen, um mit ihnen zu reden.]\r\n9. [Du hast heute einen Termin für die Besichtigung von Büroräumen.]\r\n10. [Du bist heute bei der örtlichen Agentur für Arbeit, um einen Gründerzuschuss zu beantragen.]\r\n--Liste Ende--");
         stringBuilder.AppendLine();
 
         prompt = stringBuilder.ToString();
