@@ -396,7 +396,7 @@ public class GenerateNovelPipeline : GPT_Pipeline
             wrapper.nameOfMainCharacter = this.memory[NAME_OF_MAIN_CHARACTER];
             wrapper.nameOfTalkingPartner = this.memory[NAME_OF_TALKING_PARTNER];
             wrapper.context = this.memory[CONTEXT];
-            wrapper.backgroundSprite = Int32.Parse(this.memory[BACKGROUND_SPRITE]);
+            wrapper.backgroundSprite = 0; // Int32.Parse(this.memory[BACKGROUND_SPRITE]);
             wrapper.expressionTypeWhileJoining = Int32.Parse(this.memory[EXPRESSION_TYPE_WHILE_JOINING]);
             wrapper.speaker01 = this.memory[SPEAKER_01];
             wrapper.message01 = this.memory[MESSAGE_01];
