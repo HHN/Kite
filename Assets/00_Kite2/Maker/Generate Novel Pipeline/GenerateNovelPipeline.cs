@@ -17,6 +17,9 @@ public class GenerateNovelPipeline : GPT_Pipeline
     public const string LOCATION = "location";
     public const string BIASES = "biases";
     public const string EXPRESSION_TYPE_WHILE_JOINING = "expressionTypeWhileJoining";
+    public const string FIRST_JSON_SCRIPT = "firstJsonScript";
+    public const string SECOND_JSON_SCRIPT = "secondJsonScript";
+    public const string THIRD_JSON_SCRIPT = "thirdJsonScript";
     public const string SPEAKER_01 = "speaker01";
     public const string MESSAGE_01 = "message01";
     public const string EXPRESSION_TYPE_01 = "expressionType01";

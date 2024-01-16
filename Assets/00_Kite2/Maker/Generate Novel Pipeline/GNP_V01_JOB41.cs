@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Text;
 using UnityEngine;
+using System;
 
 public class GNP_V01_JOB41 : PipelineJob
 {
     public GNP_V01_JOB41()
     {
-        this.jobName = "Job41";
+        this.jobName = "Job41 - Gesichtsausdruck Nachricht";
     }
 
     public override PipelineJobState HandleCompletion(string completion)
@@ -18,9 +19,20 @@ public class GNP_V01_JOB41 : PipelineJob
         {
             string result = match.Groups[1].Value;
 
-            // Use result for what ever
+            int intValue = 0;
 
-            return PipelineJobState.COMPLETED;
+            bool parseable = int.TryParse(result, out intValue);
+
+            if (parseable)
+            {
+                pipeline.GetMemory()[GenerateNovelPipeline.EXPRESSION_TYPE_30] = result;
+                return PipelineJobState.COMPLETED;
+            }
+            else
+            {
+                Console.WriteLine("Wrong returnvalue;");
+                return PipelineJobState.FAILED;
+            }
         }
         else
         {
@@ -33,27 +45,36 @@ public class GNP_V01_JOB41 : PipelineJob
         StringBuilder stringBuilder = new StringBuilder();
 
         // Rolle
-        stringBuilder.Append("Deine Rolle: Du bist eine fortschrittliche KI, spezialisiert auf die Generierung von Visual Novels, die den Gründungsprozess von Unternehmerinnen thematisieren. Dein Hauptaugenmerk liegt dabei auf der authentischen Darstellung von Herausforderungen und Diskriminierungen, denen Frauen im Gründungsprozess begegnen. Ziel ist es, Bewusstsein und Verständnis für die spezifischen Hürden zu schaffen, die Gründerinnen aufgrund ihres Geschlechts überwinden müssen. Deine Visual Novels sollen nicht nur informieren, sondern auch inspirieren und zum Nachdenken anregen. Weiter unten in diesem Prompt findest du eine Liste mit Geschlechterbiasen im Gründungsprozess, was deine Wissensbasis darstellt.");
+        stringBuilder.Append("Deine Rolle: Du bist eine fortschrittliche KI, spezialisiert auf die Generierung von Visual Novels, die den Gründungsprozess von Unternehmerinnen thematisieren. Dein Hauptaugenmerk liegt dabei auf der authentischen Darstellung von Herausforderungen und Diskriminierungen, denen Frauen im Gründungsprozess begegnen. Ziel ist es, Bewusstsein und Verständnis für die spezifischen Hürden zu schaffen, die Gründerinnen aufgrund ihres Geschlechts überwinden müssen. Deine Visual Novels sollen nicht nur informieren, sondern auch inspirieren und zum Nachdenken anregen. ");
         stringBuilder.AppendLine();
 
         // Aufgabe
-        stringBuilder.Append("Deine Aufgabe: ");
+        stringBuilder.Append("Ich gebe dir jetzt eine Dialog-Nachricht aus einem Dialog zwischen zwei Personen. ");
         stringBuilder.AppendLine();
 
-        // Kontext
-        stringBuilder.Append("Der Kontext deiner Aufgabe: " + this.pipeline.GetMemory()[GenerateNovelPipeline.CONTEXT]);
+        stringBuilder.Append("Die erste Person ist der Hauptcharakter und heißt " + pipeline.GetMemory()[GenerateNovelPipeline.NAME_OF_MAIN_CHARACTER] + ". ");
+        stringBuilder.Append("Der Hauptcharakter ist eine Gründerin. ");
+        stringBuilder.Append("Die zweite Person ist der zweite Hauptcharakter und Gesprächspartner der Gründerin und heißt: " + pipeline.GetMemory()[GenerateNovelPipeline.NAME_OF_TALKING_PARTNER] + ". ");
+        stringBuilder.Append("Der zweite Hauptcharakter hat folgende Rolle: " + pipeline.GetMemory()[GenerateNovelPipeline.ROLE_OF_TALKING_PARTNER] + ". ");
+        stringBuilder.Append(pipeline.GetMemory()[GenerateNovelPipeline.LOCATION]);
+        stringBuilder.Append("Die Geschichte hat folgenden Titel: " + pipeline.GetMemory()[GenerateNovelPipeline.TITLE] + ". ");
+        stringBuilder.Append("Das ist die Kurzbeschreibung der Geschichte: " + pipeline.GetMemory()[GenerateNovelPipeline.DESCRIPTION] + ". ");
+        stringBuilder.Append("In der Geschichte geht es um folgendes: " + pipeline.GetMemory()[GenerateNovelPipeline.CONTEXT] + ". ");
+
+        stringBuilder.AppendLine();
+        stringBuilder.Append("Ich gebe dir jetzt genau die eine Nachricht und dazu eine Liste von Gesichtsausdrücken die die sprechende Person gehabt haben könnte, während sie diese Nachricht aussprach. Bitte such den passenden Gesichtsausdruck aus.");
         stringBuilder.AppendLine();
 
         // Output Format
-        stringBuilder.Append("Das gewünschte Ergebnis: Bitte beachte, dass dein generiertes Ergebnis von einer speziellen Software weiterverarbeitet wird. Daher ist es entscheidend, dass du das Ergebnis in eckigen Klammern zurückgibst. Diese Formatierung ermöglicht eine reibungslose Integration und Verarbeitung deiner Ausgabe durch das nachgelagerte System.");
+        stringBuilder.Append("Das gewünschte Ergebnis:");
+        stringBuilder.AppendLine();
+        stringBuilder.Append("Bitte gib als Ergebnis genau die Zahl des Gesichtsausdruckes an, die du ausgesucht hast. Bitte beachte, dass dein generiertes Ergebnis von einer speziellen Software weiterverarbeitet wird. Daher ist es entscheidend, dass du das Ergebnis in eckigen Klammern zurückgibst. Deine Antwort sollte direkt mit einer öffnenden eckigen Klammer '[' beginnen und mit einer schließenden eckigen Klammer ']' enden. Beispiel: [Von dir ausgesuchte Zahl]. Diese Formatierung ermöglicht eine reibungslose Integration und Verarbeitung deiner Ausgabe durch das nachgelagerte System.");
         stringBuilder.AppendLine();
 
-        // Wissens Basis
-        stringBuilder.Append("Deine Wissens Basis: Hier die Liste mit Geschlechterbiases im Gründungsprozess:\r\nFinanzielle und Geschäftliche Herausforderungen\r\n\r\nFinanzierungszugang\r\nBias Beschreibung: Schwierigkeiten von Frauen, Kapital für ihre Unternehmen zu beschaffen.\r\nGender Pay Gap\r\nBias Beschreibung: Lohnungleichheit zwischen Männern und Frauen.\r\nUnterbewertung weiblich geführter Unternehmen\r\nBias Beschreibung: Geringere Bewertung von Unternehmen, die von Frauen geführt werden.\r\nRisk Aversion Bias\r\nBias Beschreibung: Wahrnehmung von Frauen als risikoaverser.\r\nBestätigungsverzerrung\r\nBias Beschreibung: Tendenz, Informationen zu interpretieren, die bestehende Vorurteile bestätigen.\r\nTokenism\r\nBias Beschreibung: Wahrnehmung von Frauen in unternehmerischen Kreisen als Alibifiguren.\r\nBias in der Wahrnehmung von Führungsfähigkeiten\r\nBias Beschreibung: Infragestellung der Führungsfähigkeiten von Frauen.\r\nIntersektionale und spezifische Biases\r\n\r\nRassistische und ethnische Biases\r\nBias Beschreibung: Zusätzliche Vorurteile gegenüber Frauen aus Minderheitengruppen.\r\nSozioökonomische Biases\r\nBias Beschreibung: Größere Hindernisse für Frauen aus niedrigeren sozioökonomischen Schichten.\r\nAlter- und Generationen-Biases\r\nBias: Diskriminierung aufgrund von Altersstereotypen.\r\nSexualitätsbezogene Biases\r\nBias: Vorurteile gegenüber lesbischen, bisexuellen oder queeren Frauen.\r\nBiases gegenüber Frauen mit Behinderungen\r\nBias: Zusätzliche Herausforderungen für Frauen mit körperlichen oder geistigen Behinderungen.\r\nStereotype gegenüber Frauen in nicht-traditionellen Branchen\r\nBias: Widerstände gegen Frauen in männlich dominierten Feldern.\r\nKulturelle und religiöse Biases\r\nBias: Diskriminierung aufgrund kultureller oder religiöser Zugehörigkeit.\r\nBiases im Bereich der Rollen- und Familienwahrnehmung\r\n\r\nMaternal Bias\r\nBias: Annahmen über geringere Engagementbereitschaft von Müttern oder potenziellen Müttern.\r\nBiases gegenüber Frauen mit Kindern\r\nBias: Benachteiligung von Müttern, insbesondere Alleinerziehenden.\r\nErwartungshaltung bezüglich Familienplanung\r\nBias: Annahmen über zukünftige Familienplanung bei Frauen im gebärfähigen Alter.\r\nWork-Life-Balance-Erwartungen\r\nBias: Druck auf Frauen, ein Gleichgewicht zwischen Beruf und Familie zu finden.\r\nKarriereentwicklungs- und Wahrnehmungsbiases\r\n\r\nGeschlechtsspezifische Stereotypen\r\nBias: Annahmen über geringere Kompetenz von Frauen in bestimmten Bereichen.\r\nDoppelte Bindung (Tightrope Bias)\r\nBias: Konflikt zwischen der Wahrnehmung als zu weich oder zu aggressiv.\r\nMikroaggressionen\r\nBias: Subtile Formen der Diskriminierung gegenüber Frauen.\r\nLeistungsattributions-Bias\r\nBias: Externe Zuschreibung von Erfolgen von Frauen.\r\nBias in Medien und Werbung\r\nBias: Verzerrte Darstellung von Unternehmerinnen in den Medien.\r\nUnbewusste Bias in der Kommunikation\r\nBias: Herabsetzende Art und Weise, wie über Frauenunternehmen gesprochen wird.\r\nProve-it-Again-Bias\r\nBias: Anforderung an Frauen, insbesondere in technischen Bereichen, ihre Kompetenzen wiederholt zu beweisen.");
+        stringBuilder.Append("Hier die fragliche Nachricht: " + pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_30]);
+        stringBuilder.Append("Die Nachricht wurde gesprochen von: " + pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_30]);
         stringBuilder.AppendLine();
-
-        // Analyse Objekt
-        stringBuilder.Append("Dein Analyse Objekt:");
+        stringBuilder.Append("--Hier die Liste mit Gesichtsausdrücken --1. entspannt; 2. staunend; 3.sich weigernd; 4. lächelnd; 5. freundlich; 6. lachend; 7. kritisch; 8.verneinend; 9.glücklich; 10. stolz; 11.erschrocken; 12.fragend; 13.besiegt;--Liste Ende--");
         stringBuilder.AppendLine();
 
         prompt = stringBuilder.ToString();
