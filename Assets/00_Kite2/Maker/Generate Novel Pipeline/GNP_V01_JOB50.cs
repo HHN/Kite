@@ -8,7 +8,7 @@ public class GNP_V01_JOB50 : PipelineJob
 {
     public GNP_V01_JOB50()
     {
-        this.jobName = "Job50";
+        this.jobName = "Job50 - Aussehen für den Gesprächspartner bestimmen";
     }
 
     public override PipelineJobState HandleCompletion(string completion)

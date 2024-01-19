@@ -25,7 +25,7 @@ public class GNP_V01_JOB47 : PipelineJob
 
             if (parseable)
             {
-                pipeline.GetMemory()[GenerateNovelPipeline.EXPRESSION_TYPE_36] = result;
+                //pipeline.GetMemory()[GenerateNovelPipeline.EXPRESSION_TYPE_36] = result;
                 return PipelineJobState.COMPLETED;
             }
             else
@@ -44,6 +44,8 @@ public class GNP_V01_JOB47 : PipelineJob
     {
         StringBuilder stringBuilder = new StringBuilder();
 
+        stringBuilder.Append("");
+        /**
         // Rolle
         stringBuilder.Append("Deine Rolle: Du bist eine fortschrittliche KI, spezialisiert auf die Generierung von Visual Novels, die den Gründungsprozess von Unternehmerinnen thematisieren. Dein Hauptaugenmerk liegt dabei auf der authentischen Darstellung von Herausforderungen und Diskriminierungen, denen Frauen im Gründungsprozess begegnen. Ziel ist es, Bewusstsein und Verständnis für die spezifischen Hürden zu schaffen, die Gründerinnen aufgrund ihres Geschlechts überwinden müssen. Deine Visual Novels sollen nicht nur informieren, sondern auch inspirieren und zum Nachdenken anregen. ");
         stringBuilder.AppendLine();
@@ -76,7 +78,7 @@ public class GNP_V01_JOB47 : PipelineJob
         stringBuilder.AppendLine();
         stringBuilder.Append("--Hier die Liste mit Gesichtsausdrücken --1. entspannt; 2. staunend; 3.sich weigernd; 4. lächelnd; 5. freundlich; 6. lachend; 7. kritisch; 8.verneinend; 9.glücklich; 10. stolz; 11.erschrocken; 12.fragend; 13.besiegt;--Liste Ende--");
         stringBuilder.AppendLine();
-
+        */
         prompt = stringBuilder.ToString();
     }
 }

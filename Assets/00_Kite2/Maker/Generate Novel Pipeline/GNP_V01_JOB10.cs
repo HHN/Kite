@@ -59,7 +59,7 @@ public class GNP_V01_JOB10 : PipelineJob
         stringBuilder.Append("Das gewünschte Ergebnis:");
         stringBuilder.AppendLine();
         stringBuilder.Append("Bitte beachte, dass dein generiertes Ergebnis von einer speziellen Software weiterverarbeitet wird. Daher ist es entscheidend, dass du das Ergebnis in eckigen Klammern zurückgibst. Deine Antwort sollte direkt mit einer öffnenden eckigen Klammer '[' beginnen und mit einer schließenden eckigen Klammer ']' enden. Beispiel: [Dein generiertes Ergebnis]. Diese Formatierung ermöglicht eine reibungslose Integration und Verarbeitung deiner Ausgabe durch das nachgelagerte System. ");
-        stringBuilder.Append("Ich benötige den Dialog im JSON-Stil. Der Dialog soll exakt 38 Elemente haben. Jedes Element soll dabei folgendermaßen aufgbaut sein: [\r\n{\"id\": \"NUMMER\", \"key\": \"KEY\", \"value\": \"TEXT\"},\r\n...,\r\n{\"id\": \"NUMMER\", \"key\": \"KEY\", \"value\": \"TEXT\"}\r\n]. Erlaubte Keys sind dabei entweder der exakte Name der ersten Hauptfigur, oder der exakte Name der zweiten Hauptfigur oder das Wort 'info'. Info-Nachrichten sollten sich dabei an den ersten Hauptcharakter wenden (die Gründerin) und in der Du-Form geschrieben sein. Die ID Nummer soll eine fortlaufende Nummerierung der ELemente sein, angefangen bei 1 und aufhörend bei 38. Achte außerdem darauf dass die Elemente nummer 3, 5, 9, 20 und 24 Fragen sein sollen, die die zweite Hauptfigur an die erste Hauptfigur stellt. Dementsprechend sollen die Elemente 4, 6, 10, 21 und 25 Antworten sein, die der Hauptcharakter (Die Gründerin) auf die Fragen gibt. ");
+        stringBuilder.Append("Ich benötige den Dialog im JSON-Stil. Der Dialog soll exakt 30 Elemente haben. Jedes Element soll dabei folgendermaßen aufgbaut sein: [\r\n{\"id\": \"NUMMER\", \"key\": \"KEY\", \"value\": \"TEXT\"},\r\n...,\r\n{\"id\": \"NUMMER\", \"key\": \"KEY\", \"value\": \"TEXT\"}\r\n]. Erlaubte Keys sind dabei entweder der exakte Name der ersten Hauptfigur, oder der exakte Name der zweiten Hauptfigur oder das Wort 'info'. Info-Nachrichten sollten sich dabei an den ersten Hauptcharakter wenden (die Gründerin) und in der Du-Form geschrieben sein. Die ID Nummer soll eine fortlaufende Nummerierung der ELemente sein, angefangen bei 1 und aufhörend bei 30. Achte außerdem darauf dass die Elemente nummer 3, 5, 9, 20 und 24 Fragen sein sollen, die die zweite Hauptfigur an die erste Hauptfigur stellt. Dementsprechend sollen die Elemente 4, 6, 10, 21 und 25 Antworten sein, die der Hauptcharakter (Die Gründerin) auf die Fragen gibt. ");
         stringBuilder.Append("Der Rede-Anteil der beiden Charaktere im Dialog sollte dabei ungefähr ausgeglichen sein.");
         stringBuilder.AppendLine();
 
@@ -79,7 +79,7 @@ public class GNP_V01_JOB10 : PipelineJob
         {
             var items = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Element>>(jsonString);
 
-            if (items.Count != 38)
+            if (items.Count != 30)
             {
                 Debug.Log("Not the right amount of elements in dialogue Generation. Count: " + items.Count);
                 return false;

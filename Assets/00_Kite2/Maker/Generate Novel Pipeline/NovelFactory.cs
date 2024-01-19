@@ -566,100 +566,12 @@ public class NovelFactory
             new VisualNovelEvent()
             {
                 id = 52,
-                nextId = 53,
+                nextId = 61,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = wrapper.speaker30,
                 text = wrapper.message30,
                 expressionType = wrapper.expressionType30
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 53,
-                nextId = 54,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = wrapper.speaker31,
-                text = wrapper.message31,
-                expressionType = wrapper.expressionType31
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 54,
-                nextId = 55,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = wrapper.speaker32,
-                text = wrapper.message32,
-                expressionType = wrapper.expressionType32
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 55,
-                nextId = 56,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = wrapper.speaker33,
-                text = wrapper.message33,
-                expressionType = wrapper.expressionType33
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 56,
-                nextId = 57,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = wrapper.speaker34,
-                text = wrapper.message34,
-                expressionType = wrapper.expressionType34
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 57,
-                nextId = 58,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = wrapper.speaker35,
-                text = wrapper.message35,
-                expressionType = wrapper.expressionType35
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 58,
-                nextId = 59,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = wrapper.speaker36,
-                text = wrapper.message36,
-                expressionType = wrapper.expressionType36
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 59,
-                nextId = 60,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = wrapper.speaker37,
-                text = wrapper.message37,
-                expressionType = wrapper.expressionType37
-            },
-
-            new VisualNovelEvent()
-            {
-             id = 60,
-             nextId = 61,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = wrapper.speaker38,
-                text = wrapper.message38,
-                expressionType = wrapper.expressionType38
             },
 
             new VisualNovelEvent()
@@ -820,38 +732,6 @@ public class NovelFactory
         public string speaker30;
         public string message30;
         public int expressionType30;
-
-        public string speaker31;
-        public string message31;
-        public int expressionType31;
-
-        public string speaker32;
-        public string message32;
-        public int expressionType32;
-
-        public string speaker33;
-        public string message33;
-        public int expressionType33;
-
-        public string speaker34;
-        public string message34;
-        public int expressionType34;
-
-        public string speaker35;
-        public string message35;
-        public int expressionType35;
-
-        public string speaker36;
-        public string message36;
-        public int expressionType36;
-
-        public string speaker37;
-        public string message37;
-        public int expressionType37;
-
-        public string speaker38;
-        public string message38;
-        public int expressionType38;
 
         public int expressionTypeWhileLeaving;
     }

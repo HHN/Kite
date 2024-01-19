@@ -1246,7 +1246,7 @@ MonoBehaviour:
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
   jobName: Job46
-  performJob: 1
+  performJob: 0
 --- !u!4 &330259548
 Transform:
   m_ObjectHideFlags: 0
@@ -1501,7 +1501,7 @@ MonoBehaviour:
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
   jobName: Job43
-  performJob: 1
+  performJob: 0
 --- !u!4 &408560563
 Transform:
   m_ObjectHideFlags: 0
@@ -3046,7 +3046,7 @@ MonoBehaviour:
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
   jobName: Job44
-  performJob: 1
+  performJob: 0
 --- !u!4 &853669179
 Transform:
   m_ObjectHideFlags: 0
@@ -3148,7 +3148,7 @@ MonoBehaviour:
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
   jobName: Job48
-  performJob: 1
+  performJob: 0
 --- !u!4 &910577898
 Transform:
   m_ObjectHideFlags: 0
@@ -3199,7 +3199,7 @@ MonoBehaviour:
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
   jobName: Job45
-  performJob: 1
+  performJob: 0
 --- !u!4 &916730391
 Transform:
   m_ObjectHideFlags: 0
@@ -3811,7 +3811,7 @@ MonoBehaviour:
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
   jobName: Job47
-  performJob: 1
+  performJob: 0
 --- !u!4 &1172171159
 Transform:
   m_ObjectHideFlags: 0
@@ -5796,7 +5796,7 @@ MonoBehaviour:
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
   jobName: Job49
-  performJob: 1
+  performJob: 0
 --- !u!4 &1840841466
 Transform:
   m_ObjectHideFlags: 0
@@ -6217,7 +6217,7 @@ MonoBehaviour:
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
   jobName: Job42
-  performJob: 1
+  performJob: 0
 --- !u!4 &1904140654
 Transform:
   m_ObjectHideFlags: 0

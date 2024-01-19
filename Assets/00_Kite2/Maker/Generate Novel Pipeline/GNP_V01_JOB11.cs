@@ -62,7 +62,7 @@ public class GNP_V01_JOB11 : PipelineJob
         stringBuilder.Append("Das gewünschte Ergebnis:");
         stringBuilder.AppendLine();
         stringBuilder.Append("Bitte beachte, dass der Dialog ein gewisses Format hat. Dieses sollte beibehalten werden. Hier Infos zum Format: dein generiertes Ergebnis von einer speziellen Software weiterverarbeitet wird. Daher ist es entscheidend, dass du das Ergebnis in eckigen Klammern zurückgibst. Deine Antwort sollte direkt mit einer öffnenden eckigen Klammer '[' beginnen und mit einer schließenden eckigen Klammer ']' enden. Beispiel: [Dein generiertes Ergebnis]. Diese Formatierung ermöglicht eine reibungslose Integration und Verarbeitung deiner Ausgabe durch das nachgelagerte System. ");
-        stringBuilder.Append("Ich benötige den Dialog im JSON-Stil. Der Dialog soll exakt 38 Elemente haben. Jedes Element soll dabei folgendermaßen aufgbaut sein: [\r\n{\"id\": \"NUMMER\", \"key\": \"KEY\", \"value\": \"TEXT\"},\r\n...,\r\n{\"id\": \"NUMMER\", \"key\": \"KEY\", \"value\": \"TEXT\"}\r\n]. Erlaubte Keys sind dabei entweder der exakte Name der ersten Hauptfigur, oder der exakte Name der zweiten Hauptfigur oder das Wort 'info'. Info-Nachrichten sollten sich dabei an den ersten Hauptcharakter wenden (die Gründerin) und in der Du-Form geschrieben sein. Die ID Nummer soll eine fortlaufende Nummerierung der ELemente sein, angefangen bei 1 und aufhörend bei 38. Achte außerdem darauf dass die Elemente nummer 3, 5, 9, 20 und 24 Fragen sein sollen, die die zweite Hauptfigur an die erste Hauptfigur stellt. Dementsprechend sollen die Elemente 4, 6, 10, 21 und 25 Antworten sein, die der Hauptcharakter (Die Gründerin) auf die Fragen gibt. ");
+        stringBuilder.Append("Ich benötige den Dialog im JSON-Stil. Der Dialog soll exakt 30 Elemente haben. Jedes Element soll dabei folgendermaßen aufgbaut sein: [\r\n{\"id\": \"NUMMER\", \"key\": \"KEY\", \"value\": \"TEXT\"},\r\n...,\r\n{\"id\": \"NUMMER\", \"key\": \"KEY\", \"value\": \"TEXT\"}\r\n]. Erlaubte Keys sind dabei entweder der exakte Name der ersten Hauptfigur, oder der exakte Name der zweiten Hauptfigur oder das Wort 'info'. Info-Nachrichten sollten sich dabei an den ersten Hauptcharakter wenden (die Gründerin) und in der Du-Form geschrieben sein. Die ID Nummer soll eine fortlaufende Nummerierung der ELemente sein, angefangen bei 1 und aufhörend bei 30. Achte außerdem darauf dass die Elemente nummer 3, 5, 9, 20 und 24 Fragen sein sollen, die die zweite Hauptfigur an die erste Hauptfigur stellt. Dementsprechend sollen die Elemente 4, 6, 10, 21 und 25 Antworten sein, die der Hauptcharakter (Die Gründerin) auf die Fragen gibt. ");
         stringBuilder.Append("Der Rede-Anteil der beiden Charaktere im Dialog sollte dabei ungefähr ausgeglichen sein.");
         stringBuilder.AppendLine();
 
@@ -86,7 +86,7 @@ public class GNP_V01_JOB11 : PipelineJob
         {
             var items = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Element>>(jsonString);
 
-            if (items.Count != 38)
+            if (items.Count != 30)
             {
                 Debug.Log("Not the right amount of elements in dialogue Generation. Count: " + items.Count);
                 return false;
@@ -359,62 +359,6 @@ public class GNP_V01_JOB11 : PipelineJob
                     this.pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_30] = value;
                     this.pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_30] = key;
                     this.pipeline.GetMemory()[GenerateNovelPipeline.EXPRESSION_TYPE_30] = defaultExpressionType;
-                    return true;
-                }
-            case 31:
-                {
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_31] = value;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_31] = key;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.EXPRESSION_TYPE_31] = defaultExpressionType;
-                    return true;
-                }
-            case 32:
-                {
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_32] = value;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_32] = key;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.EXPRESSION_TYPE_32] = defaultExpressionType;
-                    return true;
-                }
-            case 33:
-                {
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_33] = value;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_33] = key;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.EXPRESSION_TYPE_33] = defaultExpressionType;
-                    return true;
-                }
-            case 34:
-                {
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_34] = value;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_34] = key;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.EXPRESSION_TYPE_34] = defaultExpressionType;
-                    return true;
-                }
-            case 35:
-                {
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_35] = value;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_35] = key;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.EXPRESSION_TYPE_35] = defaultExpressionType;
-                    return true;
-                }
-            case 36:
-                {
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_36] = value;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_36] = key;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.EXPRESSION_TYPE_36] = defaultExpressionType;
-                    return true;
-                }
-            case 37:
-                {
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_37] = value;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_37] = key;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.EXPRESSION_TYPE_37] = defaultExpressionType;
-                    return true;
-                }
-            case 38:
-                {
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_38] = value;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_38] = key;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.EXPRESSION_TYPE_38] = defaultExpressionType;
                     return true;
                 }
         }
