@@ -483,7 +483,7 @@ public class NovelFactory
             {
                 id = 45,
                 nextId = 46,
-                onChoice = 48,
+                onChoice = 63,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = wrapper.nameOfMainCharacter,
@@ -494,7 +494,7 @@ public class NovelFactory
             {
                 id = 46,
                 nextId = 4601,
-                onChoice = 48,
+                onChoice = 68,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = wrapper.nameOfMainCharacter,
@@ -505,7 +505,7 @@ public class NovelFactory
             {
                 id = 4601,
                 nextId = 47,
-                onChoice = 48,
+                onChoice = 73,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = wrapper.nameOfMainCharacter,
@@ -519,15 +519,17 @@ public class NovelFactory
                 waitForUserConfirmation = true
             },
 
+            // Alternative 01 start
+
             new VisualNovelEvent()
             {
                 id = 48,
                 nextId = 49,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = wrapper.speaker26,
-                text = wrapper.message26,
-                expressionType = wrapper.expressionType26
+                name = wrapper.speaker26_Alternative01,
+                text = wrapper.message26_Alternative01,
+                expressionType = wrapper.expressionType26_Alternative01
             },
 
             new VisualNovelEvent()
@@ -536,9 +538,9 @@ public class NovelFactory
                 nextId = 50,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = wrapper.speaker27,
-                text = wrapper.message27,
-                expressionType = wrapper.expressionType27
+                name = wrapper.speaker27_Alternative01,
+                text = wrapper.message27_Alternative01,
+                expressionType = wrapper.expressionType27_Alternative01
             },
 
             new VisualNovelEvent()
@@ -547,9 +549,9 @@ public class NovelFactory
                 nextId = 51,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = wrapper.speaker28,
-                text = wrapper.message28,
-                expressionType = wrapper.expressionType28
+                name = wrapper.speaker28_Alternative01,
+                text = wrapper.message28_Alternative01,
+                expressionType = wrapper.expressionType28_Alternative01
             },
 
             new VisualNovelEvent()
@@ -558,9 +560,9 @@ public class NovelFactory
                 nextId = 52,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = wrapper.speaker29,
-                text = wrapper.message29,
-                expressionType = wrapper.expressionType29
+                name = wrapper.speaker29_Alternative01,
+                text = wrapper.message29_Alternative01,
+                expressionType = wrapper.expressionType29_Alternative01
             },
 
             new VisualNovelEvent()
@@ -569,10 +571,189 @@ public class NovelFactory
                 nextId = 61,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
-                name = wrapper.speaker30,
-                text = wrapper.message30,
-                expressionType = wrapper.expressionType30
+                name = wrapper.speaker30_Alternative01,
+                text = wrapper.message30_Alternative01,
+                expressionType = wrapper.expressionType30_Alternative01
             },
+
+            //ALternative01 ende
+
+            //Alternative02 Start
+
+            new VisualNovelEvent()
+            {
+                id = 63,
+                nextId = 64,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = wrapper.speaker26_Alternative02,
+                text = wrapper.message26_Alternative02,
+                expressionType = wrapper.expressionType26_Alternative02
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 64,
+                nextId = 65,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = wrapper.speaker27_Alternative02,
+                text = wrapper.message27_Alternative02,
+                expressionType = wrapper.expressionType27_Alternative02
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 65,
+                nextId = 66,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = wrapper.speaker28_Alternative02,
+                text = wrapper.message28_Alternative02,
+                expressionType = wrapper.expressionType28_Alternative02
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 66,
+                nextId = 67,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = wrapper.speaker29_Alternative02,
+                text = wrapper.message29_Alternative02,
+                expressionType = wrapper.expressionType29_Alternative02
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 67,
+                nextId = 61,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = wrapper.speaker30_Alternative02,
+                text = wrapper.message30_Alternative02,
+                expressionType = wrapper.expressionType30_Alternative02
+            },
+
+            //Alternative 02 Ende
+
+            //Alternative03 Start
+
+            new VisualNovelEvent()
+            {
+                id = 68,
+                nextId = 69,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = wrapper.speaker26_Alternative03,
+                text = wrapper.message26_Alternative03,
+                expressionType = wrapper.expressionType26_Alternative03
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 69,
+                nextId = 70,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = wrapper.speaker27_Alternative03,
+                text = wrapper.message27_Alternative03,
+                expressionType = wrapper.expressionType27_Alternative03
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 70,
+                nextId = 71,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = wrapper.speaker28_Alternative03,
+                text = wrapper.message28_Alternative03,
+                expressionType = wrapper.expressionType28_Alternative03
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 71,
+                nextId = 72,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = wrapper.speaker29_Alternative03,
+                text = wrapper.message29_Alternative03,
+                expressionType = wrapper.expressionType29_Alternative03
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 72,
+                nextId = 61,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = wrapper.speaker30_Alternative03,
+                text = wrapper.message30_Alternative03,
+                expressionType = wrapper.expressionType30_Alternative03
+            },
+
+            //Alternative 03 Ende
+
+            //Alternative 04 Start
+
+            new VisualNovelEvent()
+            {
+                id = 73,
+                nextId = 74,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = wrapper.speaker26_Alternative04,
+                text = wrapper.message26_Alternative04,
+                expressionType = wrapper.expressionType26_Alternative04
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 74,
+                nextId = 75,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = wrapper.speaker27_Alternative04,
+                text = wrapper.message27_Alternative04,
+                expressionType = wrapper.expressionType27_Alternative04
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 75,
+                nextId = 76,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = wrapper.speaker28_Alternative04,
+                text = wrapper.message28_Alternative04,
+                expressionType = wrapper.expressionType28_Alternative04
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 76,
+                nextId = 77,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = wrapper.speaker29_Alternative04,
+                text = wrapper.message29_Alternative04,
+                expressionType = wrapper.expressionType29_Alternative04
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 77,
+                nextId = 61,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = wrapper.speaker30_Alternative04,
+                text = wrapper.message30_Alternative04,
+                expressionType = wrapper.expressionType30_Alternative04
+            },
+
+            //Alternative 04 Ende
 
             new VisualNovelEvent()
             {
@@ -713,25 +894,85 @@ public class NovelFactory
         public string message25_Option03;
         public string message25_Option04;
 
-        public string speaker26;
-        public string message26;
-        public int expressionType26;
+        public string speaker26_Alternative01;
+        public string message26_Alternative01;
+        public int expressionType26_Alternative01;
 
-        public string speaker27;
-        public string message27;
-        public int expressionType27;
+        public string speaker27_Alternative01;
+        public string message27_Alternative01;
+        public int expressionType27_Alternative01;
 
-        public string speaker28;
-        public string message28;
-        public int expressionType28;
+        public string speaker28_Alternative01;
+        public string message28_Alternative01;
+        public int expressionType28_Alternative01;
 
-        public string speaker29;
-        public string message29;
-        public int expressionType29;
+        public string speaker29_Alternative01;
+        public string message29_Alternative01;
+        public int expressionType29_Alternative01;
 
-        public string speaker30;
-        public string message30;
-        public int expressionType30;
+        public string speaker30_Alternative01;
+        public string message30_Alternative01;
+        public int expressionType30_Alternative01;
+
+        public string speaker26_Alternative02;
+        public string message26_Alternative02;
+        public int expressionType26_Alternative02;
+
+        public string speaker27_Alternative02;
+        public string message27_Alternative02;
+        public int expressionType27_Alternative02;
+
+        public string speaker28_Alternative02;
+        public string message28_Alternative02;
+        public int expressionType28_Alternative02;
+
+        public string speaker29_Alternative02;
+        public string message29_Alternative02;
+        public int expressionType29_Alternative02;
+
+        public string speaker30_Alternative02;
+        public string message30_Alternative02;
+        public int expressionType30_Alternative02;
+
+        public string speaker26_Alternative03;
+        public string message26_Alternative03;
+        public int expressionType26_Alternative03;
+
+        public string speaker27_Alternative03;
+        public string message27_Alternative03;
+        public int expressionType27_Alternative03;
+
+        public string speaker28_Alternative03;
+        public string message28_Alternative03;
+        public int expressionType28_Alternative03;
+
+        public string speaker29_Alternative03;
+        public string message29_Alternative03;
+        public int expressionType29_Alternative03;
+
+        public string speaker30_Alternative03;
+        public string message30_Alternative03;
+        public int expressionType30_Alternative03;
+
+        public string speaker26_Alternative04;
+        public string message26_Alternative04;
+        public int expressionType26_Alternative04;
+
+        public string speaker27_Alternative04;
+        public string message27_Alternative04;
+        public int expressionType27_Alternative04;
+
+        public string speaker28_Alternative04;
+        public string message28_Alternative04;
+        public int expressionType28_Alternative04;
+
+        public string speaker29_Alternative04;
+        public string message29_Alternative04;
+        public int expressionType29_Alternative04;
+
+        public string speaker30_Alternative04;
+        public string message30_Alternative04;
+        public int expressionType30_Alternative04;
 
         public int expressionTypeWhileLeaving;
     }

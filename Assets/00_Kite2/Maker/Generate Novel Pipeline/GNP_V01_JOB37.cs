@@ -25,7 +25,7 @@ public class GNP_V01_JOB37 : PipelineJob
 
             if (parseable)
             {
-                pipeline.GetMemory()[GenerateNovelPipeline.EXPRESSION_TYPE_26] = result;
+                pipeline.GetMemory()[GenerateNovelPipeline.EXPRESSION_TYPE_26_ALTERNATIV_01] = result;
                 return PipelineJobState.COMPLETED;
             }
             else
@@ -71,8 +71,8 @@ public class GNP_V01_JOB37 : PipelineJob
         stringBuilder.Append("Bitte gib als Ergebnis genau die Zahl des Gesichtsausdruckes an, die du ausgesucht hast. Gib keinen zusätzlichen Text oder ähnliches dazu. Bitte beachte, dass dein generiertes Ergebnis von einer speziellen Software weiterverarbeitet wird. Daher ist es entscheidend, dass du das Ergebnis in eckigen Klammern zurückgibst. Deine Antwort sollte direkt mit einer öffnenden eckigen Klammer '[' beginnen und mit einer schließenden eckigen Klammer ']' enden. Beispiel: [Von dir ausgesuchte Zahl]. Diese Formatierung ermöglicht eine reibungslose Integration und Verarbeitung deiner Ausgabe durch das nachgelagerte System.");
         stringBuilder.AppendLine();
 
-        stringBuilder.Append("Hier die fragliche Nachricht: " + pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_26]);
-        stringBuilder.Append("Die Nachricht wurde gesprochen von: " + pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_26]);
+        stringBuilder.Append("Hier die fragliche Nachricht: " + pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_26_ALTERNATIV_01]);
+        stringBuilder.Append("Die Nachricht wurde gesprochen von: " + pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_26_ALTERNATIV_01]);
         stringBuilder.AppendLine();
         stringBuilder.Append("--Hier die Liste mit Gesichtsausdrücken --1. entspannt; 2. staunend; 3.sich weigernd; 4. lächelnd; 5. freundlich; 6. lachend; 7. kritisch; 8.verneinend; 9.glücklich; 10. stolz; 11.erschrocken; 12.fragend; 13.besiegt;--Liste Ende--");
         stringBuilder.AppendLine();

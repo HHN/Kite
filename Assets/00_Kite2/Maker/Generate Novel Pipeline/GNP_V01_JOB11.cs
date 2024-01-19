@@ -328,37 +328,37 @@ public class GNP_V01_JOB11 : PipelineJob
                 }
             case 26:
                 {
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_26] = value;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_26] = key;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.EXPRESSION_TYPE_26] = defaultExpressionType;
+                    this.pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_26_ALTERNATIV_01] = value;
+                    this.pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_26_ALTERNATIV_01] = key;
+                    this.pipeline.GetMemory()[GenerateNovelPipeline.EXPRESSION_TYPE_26_ALTERNATIV_01] = defaultExpressionType;
                     return true;
                 }
             case 27:
                 {
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_27] = value;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_27] = key;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.EXPRESSION_TYPE_27] = defaultExpressionType;
+                    this.pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_27_ALTERNATIV_01] = value;
+                    this.pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_27_ALTERNATIV_01] = key;
+                    this.pipeline.GetMemory()[GenerateNovelPipeline.EXPRESSION_TYPE_27_ALTERNATIV_01] = defaultExpressionType;
                     return true;
                 }
             case 28:
                 {
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_28] = value;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_28] = key;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.EXPRESSION_TYPE_28] = defaultExpressionType;
+                    this.pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_28_ALTERNATIV_01] = value;
+                    this.pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_28_ALTERNATIV_01] = key;
+                    this.pipeline.GetMemory()[GenerateNovelPipeline.EXPRESSION_TYPE_28_ALTERNATIV_01] = defaultExpressionType;
                     return true;
                 }
             case 29:
                 {
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_29] = value;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_29] = key;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.EXPRESSION_TYPE_29] = defaultExpressionType;
+                    this.pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_29_ALTERNATIV_01] = value;
+                    this.pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_29_ALTERNATIV_01] = key;
+                    this.pipeline.GetMemory()[GenerateNovelPipeline.EXPRESSION_TYPE_29_ALTERNATIV_01] = defaultExpressionType;
                     return true;
                 }
             case 30:
                 {
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_30] = value;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_30] = key;
-                    this.pipeline.GetMemory()[GenerateNovelPipeline.EXPRESSION_TYPE_30] = defaultExpressionType;
+                    this.pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_30_ALTERNATIV_01] = value;
+                    this.pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_30_ALTERNATIV_01] = key;
+                    this.pipeline.GetMemory()[GenerateNovelPipeline.EXPRESSION_TYPE_30_ALTERNATIV_01] = defaultExpressionType;
                     return true;
                 }
         }
