@@ -1,3 +1,5 @@
+using static System.Net.WebRequestMethods;
+
 public class ConnectionLink
 {
     public static readonly string BASE_LINK = "http://85.215.46.25:8080/"; // "http://localhost:8080/";

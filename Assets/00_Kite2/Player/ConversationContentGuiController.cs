@@ -66,7 +66,7 @@ public class ConversationContentGuiController : MonoBehaviour
         {
             newMessageBox = Instantiate(blueMessagePrefab, this.transform);
         }
-        else if (novelEvent.name == "Intro" || novelEvent.name == "Outro" || novelEvent.name == "Info")
+        else if (novelEvent.name == "Intro" || novelEvent.name == "Outro" || novelEvent.name == "Info" || novelEvent.name == "info")
         {
             newMessageBox = Instantiate(cottaMessagePrefab, this.transform);
         }

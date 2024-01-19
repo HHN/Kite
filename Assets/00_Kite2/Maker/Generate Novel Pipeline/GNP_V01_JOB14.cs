@@ -45,8 +45,6 @@ public class GNP_V01_JOB14 : PipelineJob
 
         // Aufgabe
         stringBuilder.Append("Ich gebe dir jetzt einen kurzen Dialog zwischen zwei Personen. ");
-        stringBuilder.AppendLine();
-
         stringBuilder.Append("Die erste Person ist der Hauptcharakter und heißt " + pipeline.GetMemory()[GenerateNovelPipeline.NAME_OF_MAIN_CHARACTER] + ". ");
         stringBuilder.Append("Der Hauptcharakter ist eine Gründerin. ");
         stringBuilder.Append("Die zweite Person ist der zweite Hauptcharakter und Gesprächspartner der Gründerin und heißt: " + pipeline.GetMemory()[GenerateNovelPipeline.NAME_OF_TALKING_PARTNER] + ". ");
@@ -56,16 +54,17 @@ public class GNP_V01_JOB14 : PipelineJob
         stringBuilder.Append("Das ist die Kurzbeschreibung der Geschichte: " + pipeline.GetMemory()[GenerateNovelPipeline.DESCRIPTION] + ". ");
         stringBuilder.Append("In der Geschichte geht es um folgendes: " + pipeline.GetMemory()[GenerateNovelPipeline.CONTEXT] + ". ");
 
-        stringBuilder.Append("Deine Aufgabe: Ich gebe dir jetzt einen kurzen Dialog zwischen " + pipeline.GetMemory()[GenerateNovelPipeline.NAME_OF_MAIN_CHARACTER] + " und " + pipeline.GetMemory()[GenerateNovelPipeline.NAME_OF_TALKING_PARTNER] + ". Dabei fragt zunächst " + pipeline.GetMemory()[GenerateNovelPipeline.NAME_OF_TALKING_PARTNER] + " die Gründerin etwas und die Gründerin antwortet darauf. Im Anschluss führt " + pipeline.GetMemory()[GenerateNovelPipeline.NAME_OF_TALKING_PARTNER] + " das Gespräch fort. Was ich von dir will ist, dass du dir alternative Antwort-Möglichkeiten der Gründerin überlegst. Liefere mir 3 weitere Antwort-Möglichkeiten! Formuliere die Antwort-Möglichkeiten so, dass das Gespräch trotzdem wie hier im Dialog zu sehen fortgeführt werden kann! Du sollst von den 3 Sätzen die ich dir gebe also nur für den mittleren Alternativen überlegen und der erste und der drite Satz müssen trotzdem zu deiner Alternative passen!");
-        // Output Format
-        stringBuilder.Append("Das gewünschte Ergebnis: Bitte beachte, dass dein generiertes Ergebnis von einer speziellen Software weiterverarbeitet wird. Daher ist es entscheidend, dass du das Ergebnis in eckigen Klammern zurückgibst. Diese Formatierung ermöglicht eine reibungslose Integration und Verarbeitung deiner Ausgabe durch das nachgelagerte System.");
+        stringBuilder.Append("Deine Aufgabe: Ich gebe dir jetzt einen kurzen Dialog zwischen " + pipeline.GetMemory()[GenerateNovelPipeline.NAME_OF_MAIN_CHARACTER] + " und " + pipeline.GetMemory()[GenerateNovelPipeline.NAME_OF_TALKING_PARTNER] + ". Dabei fragt zunächst " + pipeline.GetMemory()[GenerateNovelPipeline.NAME_OF_TALKING_PARTNER] + " die Gründerin etwas und die Gründerin antwortet darauf. Im Anschluss führt " + pipeline.GetMemory()[GenerateNovelPipeline.NAME_OF_TALKING_PARTNER] + " das Gespräch fort. Was ich von dir will ist, dass du dir alternative Antwort-Möglichkeiten der Gründerin überlegst. Liefere mir 3 weitere Antwort-Möglichkeiten! Formuliere die Antwort-Möglichkeiten so, dass das Gespräch trotzdem wie hier im Dialog zu sehen fortgeführt werden kann und Sinn macht! Du sollst von den 3 Sätzen die ich dir gebe also nur für den Satz Alternativen überlegen, der von der Gründerin gesprochen wird. Der Text der Gesprächspartnerin oder des Gesprächspartners darf nicht verändert werden und muss aber trotzdem zum Text der Gründerin passen!");
+        stringBuilder.Append("Wichtig: Die von dir formulierten Antwort-Möglichkeiten dürfen nicht einfach umformulierte Versionen der Ursprünglichen Antwortmöglichkeit sein! Es sollen tatsächlich auch Sinngemäß alternativen sein. Es ist denktbar dass eine Person in einem Gespräch auf verschiedene Arten reagiert, ohne den Verlauf des Gesprächs zwangsläufig zu beeinflussen!");
+        stringBuilder.Append("Möglicherweise kannst du die Alternativen erzeugen, in dem jeder Antwort eine andere Emotion zugrunde legst. Beispielsweise kann eine Antwort neutral sein, eine Antwort kann leicht genervt sein, eine Antwort kann witzig sein und eine Antwort kann zielstrebig sein. Du darfst dir auch andere Emotionen überlegen, die passen!");
+        stringBuilder.Append("Die Antworten sollen jeweils ca. einen Satz lang sein.");
         stringBuilder.AppendLine();
 
         // Output Format
         stringBuilder.Append("Das gewünschte Ergebnis:");
         stringBuilder.AppendLine();
         stringBuilder.Append("Dein generiertes Ergebnis von einer speziellen Software weiterverarbeitet wird. Daher ist es entscheidend, dass du das Ergebnis in eckigen Klammern zurückgibst. Deine Antwort sollte direkt mit einer öffnenden eckigen Klammer '[' beginnen und mit einer schließenden eckigen Klammer ']' enden. Beispiel: [Dein generiertes Ergebnis]. Diese Formatierung ermöglicht eine reibungslose Integration und Verarbeitung deiner Ausgabe durch das nachgelagerte System. ");
-        stringBuilder.Append("Ich benötige die Dialog-Optionen im JSON-Stil. Gib mir genau 3 weitere Antwort-Optionen. Jedes Element soll dabei folgendermaßen aufgbaut sein: [\r\n{\"id\": \"1\", \"value\": \"TEXT\"},{\"id\": \"2\", \"value\": \"TEXT\"},\r\n{\"id\": \"3\", \"value\": \"TEXT\"}\r\n]. Die erste Antwort-Option soll dabei einen negativen Charakter haben. Die zweite Antwort-Option soll einen aufgeregten Charakter haben. Die dritte Antwort-Option soll einen verwunderten Charakter haben.");
+        stringBuilder.Append("Ich benötige die Dialog-Optionen im JSON-Stil. Gib mir genau 3 weitere Antwort-Optionen. Jedes Element soll dabei folgendermaßen aufgbaut sein: [\r\n{\"id\": \"1\", \"value\": \"TEXT\"},{\"id\": \"2\", \"value\": \"TEXT\"},\r\n{\"id\": \"3\", \"value\": \"TEXT\"}\r\n].");
         stringBuilder.AppendLine();
 
         // Analyse Objekt
@@ -74,6 +73,16 @@ public class GNP_V01_JOB14 : PipelineJob
         stringBuilder.Append(pipeline.GetMemory()[GenerateNovelPipeline.NAME_OF_TALKING_PARTNER] + ": " + pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_09]);
         stringBuilder.Append(pipeline.GetMemory()[GenerateNovelPipeline.NAME_OF_MAIN_CHARACTER] + ": " + pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_10_OPTION_01]);
         stringBuilder.Append(pipeline.GetMemory()[GenerateNovelPipeline.NAME_OF_TALKING_PARTNER] + ": " + pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_11]);
+
+        stringBuilder.Append("Als Wissensbasis, stelle ich dir hier einen größeren Ausschnit des Dialoges zur Verfügung, damit du dein Analyse-Objekt besser einordnen kannst: ");
+        stringBuilder.AppendLine();
+        stringBuilder.Append(pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_07] + ": " + pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_07]);
+        stringBuilder.Append(pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_08] + ": " + pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_08]);
+        stringBuilder.Append(pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_09] + ": " + pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_09]);
+        stringBuilder.Append(pipeline.GetMemory()[GenerateNovelPipeline.NAME_OF_MAIN_CHARACTER] + ": " + pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_10_OPTION_01]);
+        stringBuilder.Append(pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_11] + ": " + pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_11]);
+        stringBuilder.Append(pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_12] + ": " + pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_12]);
+        stringBuilder.Append(pipeline.GetMemory()[GenerateNovelPipeline.SPEAKER_13] + ": " + pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_13]);
 
         prompt = stringBuilder.ToString();
     }

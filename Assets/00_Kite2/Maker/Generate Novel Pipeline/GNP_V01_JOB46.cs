@@ -68,7 +68,7 @@ public class GNP_V01_JOB46 : PipelineJob
         // Output Format
         stringBuilder.Append("Das gewünschte Ergebnis:");
         stringBuilder.AppendLine();
-        stringBuilder.Append("Bitte gib als Ergebnis genau die Zahl des Gesichtsausdruckes an, die du ausgesucht hast. Bitte beachte, dass dein generiertes Ergebnis von einer speziellen Software weiterverarbeitet wird. Daher ist es entscheidend, dass du das Ergebnis in eckigen Klammern zurückgibst. Deine Antwort sollte direkt mit einer öffnenden eckigen Klammer '[' beginnen und mit einer schließenden eckigen Klammer ']' enden. Beispiel: [Von dir ausgesuchte Zahl]. Diese Formatierung ermöglicht eine reibungslose Integration und Verarbeitung deiner Ausgabe durch das nachgelagerte System.");
+        stringBuilder.Append("Bitte gib als Ergebnis genau die Zahl des Gesichtsausdruckes an, die du ausgesucht hast. Gib keinen zusätzlichen Text oder ähnliches dazu. Bitte beachte, dass dein generiertes Ergebnis von einer speziellen Software weiterverarbeitet wird. Daher ist es entscheidend, dass du das Ergebnis in eckigen Klammern zurückgibst. Deine Antwort sollte direkt mit einer öffnenden eckigen Klammer '[' beginnen und mit einer schließenden eckigen Klammer ']' enden. Beispiel: [Von dir ausgesuchte Zahl]. Diese Formatierung ermöglicht eine reibungslose Integration und Verarbeitung deiner Ausgabe durch das nachgelagerte System.");
         stringBuilder.AppendLine();
 
         stringBuilder.Append("Hier die fragliche Nachricht: " + pipeline.GetMemory()[GenerateNovelPipeline.MESSAGE_35]);
