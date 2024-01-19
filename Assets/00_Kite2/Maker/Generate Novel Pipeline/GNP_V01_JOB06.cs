@@ -20,52 +20,52 @@ public class GNP_V01_JOB06 : PipelineJob
 
             if (result.Contains("10"))
             {
-                pipeline.GetMemory()[GenerateNovelPipeline.IMAGE] = "10";
+                pipeline.GetMemory()[GenerateNovelPipeline.IMAGE] = "9";
                 return PipelineJobState.COMPLETED;
             }
             if (result.Contains("9"))
             {
-                pipeline.GetMemory()[GenerateNovelPipeline.IMAGE] = "9";
+                pipeline.GetMemory()[GenerateNovelPipeline.IMAGE] = "8";
                 return PipelineJobState.COMPLETED;
             }
             if (result.Contains("8"))
             {
-                pipeline.GetMemory()[GenerateNovelPipeline.IMAGE] = "8";
+                pipeline.GetMemory()[GenerateNovelPipeline.IMAGE] = "7";
                 return PipelineJobState.COMPLETED;
             }
             if (result.Contains("7"))
             {
-                pipeline.GetMemory()[GenerateNovelPipeline.IMAGE] = "7";
+                pipeline.GetMemory()[GenerateNovelPipeline.IMAGE] = "6";
                 return PipelineJobState.COMPLETED;
             }
             if (result.Contains("6"))
             {
-                pipeline.GetMemory()[GenerateNovelPipeline.IMAGE] = "6";
+                pipeline.GetMemory()[GenerateNovelPipeline.IMAGE] = "5";
                 return PipelineJobState.COMPLETED;
             }
             if (result.Contains("5"))
             {
-                pipeline.GetMemory()[GenerateNovelPipeline.IMAGE] = "5";
+                pipeline.GetMemory()[GenerateNovelPipeline.IMAGE] = "4";
                 return PipelineJobState.COMPLETED;
             }
             if (result.Contains("4"))
             {
-                pipeline.GetMemory()[GenerateNovelPipeline.IMAGE] = "4";
+                pipeline.GetMemory()[GenerateNovelPipeline.IMAGE] = "3";
                 return PipelineJobState.COMPLETED;
             }
             if (result.Contains("3"))
             {
-                pipeline.GetMemory()[GenerateNovelPipeline.IMAGE] = "3";
+                pipeline.GetMemory()[GenerateNovelPipeline.IMAGE] = "2";
                 return PipelineJobState.COMPLETED;
             }
             if (result.Contains("2"))
             {
-                pipeline.GetMemory()[GenerateNovelPipeline.IMAGE] = "2";
+                pipeline.GetMemory()[GenerateNovelPipeline.IMAGE] = "1";
                 return PipelineJobState.COMPLETED;
             }
             if (result.Contains("1"))
             {
-                pipeline.GetMemory()[GenerateNovelPipeline.IMAGE] = "1";
+                pipeline.GetMemory()[GenerateNovelPipeline.IMAGE] = "0";
                 return PipelineJobState.COMPLETED;
             }
 
