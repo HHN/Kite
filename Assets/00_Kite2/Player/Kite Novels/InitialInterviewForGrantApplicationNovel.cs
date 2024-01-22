@@ -7,7 +7,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
     {
         id = -7;
         title = "Erstgespräch Förderantrag";
-        description = "Du wurdest zu einem Termin bei der Agentur für Arbeit eingeladen, wo du dich mit einem Berater über deine Geschäftsidee unterhalten kannst und hoffentlich Informationen zu passenden Förderungen erhalten wirst.";
+        description = "Du wurdest zu einem Termin eingeladen, wo du dich mit einem Berater über deine Geschäftsidee unterhalten kannst und hoffentlich Informationen zu passenden Förderungen erhalten wirst.";
         image = 6;
         nameOfMainCharacter = "Lea";
         feedback = "";
