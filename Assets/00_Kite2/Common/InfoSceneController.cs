@@ -22,6 +22,8 @@ public class InfoSceneController : SceneController
     private int clickCounter = 0;
 
     [SerializeField] private Button searchButton;
+    [SerializeField] private Sprite searchIcon;
+    [SerializeField] private Sprite xIcon;
     [SerializeField] private TMP_InputField searchInputField;
 
     // About the App Buttons
@@ -103,7 +105,7 @@ public class InfoSceneController : SceneController
         BackStackManager.Instance().Push(SceneNames.INFO_SCENE);
 
         hideButton.onClick.AddListener(delegate { OnHiddenButtonPressed(); });
-        searchButton.onClick.AddListener(delegate { OnSearchButtonPressed(); });
+        searchButton.onClick.AddListener(delegate { OnStopSearchButton(); });
 
         developmentHistoryButton.onClick.AddListener(delegate { OnDevelopmentHistoryButtonPressed(); });
         functionInformationButton.onClick.AddListener(delegate { OnFunctionInformationButtonPressed(); });
@@ -176,6 +178,36 @@ public class InfoSceneController : SceneController
         InitMemory();
     }
 
+    public void OnSearchValueChanged()
+    {
+        if (string.IsNullOrEmpty(searchInputField.text))
+        {
+            StopSearch();
+            return;
+        }
+        Search(searchInputField.text);
+    }
+
+    public void StopSearch()
+    {
+        searchButton.image.sprite = searchIcon;
+        searchInputField.text = string.Empty;
+    }
+
+    public void Search(string value)
+    {
+        searchButton.image.sprite = xIcon;
+    }
+
+    public void OnStopSearchButton()
+    {
+        if (string.IsNullOrEmpty(searchInputField.text))
+        {
+            return;
+        }
+        StopSearch();
+    }
+
     public void OnHiddenButtonPressed()
     {
         clickCounter++;
@@ -184,10 +216,6 @@ public class InfoSceneController : SceneController
             clickCounter = 0;
             LoadFeedbackRoleManagementScene();
         }
-    }
-
-    public void OnSearchButtonPressed()
-    {
     }
 
     private void LoadFeedbackRoleManagementScene()
@@ -634,6 +662,7 @@ public class InfoSceneController : SceneController
         intersectionalBiasesMenu.GetComponent<DropDownMenu>().SetMenuOpen(memory.isIntersectionalBiasesMenuOpen);
         roleMenu.GetComponent<DropDownMenu>().SetMenuOpen(memory.isRoleMenuOpen);
         carrerBiasesMenu.GetComponent<DropDownMenu>().SetMenuOpen(memory.isCarrerBiasesMenuOpen);
+        searchInputField.text = memory.searchString;
         scrollView.GetComponent<ScrollRect>().verticalNormalizedPosition = memory.scrollPosition;
         StartCoroutine(EnsureCorrectScrollPosition(memory.scrollPosition));
     }
@@ -662,6 +691,7 @@ public class InfoSceneController : SceneController
         memory.isRoleMenuOpen = roleMenu.GetComponent<DropDownMenu>().IsOpen();
         memory.isCarrerBiasesMenuOpen = carrerBiasesMenu.GetComponent<DropDownMenu>().IsOpen();
         memory.scrollPosition = scrollView.GetComponent<ScrollRect>().verticalNormalizedPosition;
+        memory.searchString = searchInputField.text;
         SceneMemoryManager.Instance().SetMemoryOfInfoScene(memory);
     }
 }

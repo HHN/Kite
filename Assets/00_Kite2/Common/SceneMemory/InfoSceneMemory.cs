@@ -12,4 +12,5 @@ public class InfoSceneMemory
     public bool isRoleMenuOpen;
     public bool isCarrerBiasesMenuOpen;
     public float scrollPosition;
+    public string searchString;
 }
