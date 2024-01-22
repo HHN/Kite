@@ -4379,7 +4379,7 @@ GameObject:
   - component: {fileID: 216358322}
   - component: {fileID: 216358321}
   m_Layer: 5
-  m_Name: Button (10)
+  m_Name: "Sexualit\xE4tsbezogene Biases"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16502,7 +16502,7 @@ GameObject:
   - component: {fileID: 971311871}
   - component: {fileID: 971311870}
   m_Layer: 5
-  m_Name: Button (7)
+  m_Name: Nutzungsbedingungen Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20686,6 +20686,69 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageBox: {fileID: 5629918238507184917, guid: 47c0a3038b673a24cb82a566be2abf20, type: 3}
   canvas: {fileID: 856301365}
+  hideButton: {fileID: 2014079747}
+  searchButton: {fileID: 1972775979}
+  searchInputField: {fileID: 1403945637}
+  developmentHistoryButton: {fileID: 1450723603}
+  functionInformationButton: {fileID: 603740398}
+  aboutTheTeamButton: {fileID: 2009806721}
+  faq_Button: {fileID: 119371859}
+  technicalDetailsButton: {fileID: 206935039}
+  updateInformationButton: {fileID: 837013095}
+  privacyInformationButton: {fileID: 577169905}
+  usingConditionsButton: {fileID: 971311871}
+  accessToFinancesButton: {fileID: 448901983}
+  genderPayGapButton: {fileID: 619796557}
+  badRatingForFemaleFoundersButton: {fileID: 441789538}
+  riskAversionBiasButton: {fileID: 2044656778}
+  confirmationBiasButton: {fileID: 2037429386}
+  tokenismButton: {fileID: 1004352096}
+  perceptionOfLeadershipBiasButton: {fileID: 61346791}
+  racismButton: {fileID: 166347350}
+  socioEconomicBiasButton: {fileID: 1506159766}
+  ageAndGenerationBiasButton: {fileID: 1825861936}
+  sexBiasButton: {fileID: 216358322}
+  biasAgainsDiasbledWomenButton: {fileID: 1444242364}
+  nonTraditionalAreaBiasButton: {fileID: 1191981339}
+  culturalBiasButton: {fileID: 602650311}
+  maternalBiasButton: {fileID: 622218815}
+  momBiasButton: {fileID: 1099598383}
+  familyBiasButton: {fileID: 2110574923}
+  workLifeBalancaBiasButton: {fileID: 167935196}
+  genderSpecificBiasButton: {fileID: 1704901490}
+  tightropeBiasButton: {fileID: 1265565030}
+  micoAggressionBiasButton: {fileID: 665443713}
+  performanceAttributionBiasButton: {fileID: 1927974512}
+  mediaAndMarketingBiasButton: {fileID: 1064014398}
+  communicationBiasButton: {fileID: 737279394}
+  proveItAgainBiasButton: {fileID: 837980991}
+  founder01: {fileID: 1896826361}
+  founder02: {fileID: 1603227731}
+  founder03: {fileID: 420633339}
+  founder04: {fileID: 1322619876}
+  founder05: {fileID: 296799753}
+  founder06: {fileID: 2061702844}
+  supportProgramsButton: {fileID: 1772913106}
+  communityButton: {fileID: 1209779983}
+  educationRessorucesButton: {fileID: 2138449404}
+  mentoringButton: {fileID: 1693246165}
+  toolsAndSoftwareButton: {fileID: 686603139}
+  legalAdviceButton: {fileID: 381173780}
+  antiDiscriminationLawButton: {fileID: 1304279916}
+  parentsLawButton: {fileID: 585713524}
+  sameRightsLawButton: {fileID: 900805036}
+  giveFeedbackButton: {fileID: 736064299}
+  discussionButton: {fileID: 549755363}
+  shareSuccessStoryButton: {fileID: 709894696}
+  communityEventsButton: {fileID: 1699677189}
+  userSurveyButton: {fileID: 201709641}
+  supportNetworkButton: {fileID: 1590185672}
+  currentResearchResultsButton: {fileID: 146713544}
+  statisticsButton: {fileID: 107112238}
+  caseResearchButton: {fileID: 191609023}
+  expertOpinionButton: {fileID: 366605380}
+  globalPerspectivesButton: {fileID: 108848140}
+  topicSpecificButton: {fileID: 1598265659}
 --- !u!4 &1237093066
 Transform:
   m_ObjectHideFlags: 0
@@ -32842,6 +32905,7 @@ GameObject:
   - component: {fileID: 2014079744}
   - component: {fileID: 2014079746}
   - component: {fileID: 2014079745}
+  - component: {fileID: 2014079747}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -32907,6 +32971,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2014079743}
   m_CullTransparentMesh: 1
+--- !u!114 &2014079747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014079743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 2014079745}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2024206781
 GameObject:
   m_ObjectHideFlags: 0
