@@ -16,6 +16,31 @@ public class DropDownMenu : MonoBehaviour
     void Start()
     {
         menuButton.onClick.AddListener(delegate { OnMenuButton(); });
+        InitiateMenu();
+    }
+
+    public bool IsOpen()
+    {
+        return isOpen;
+    }
+
+    public void InitiateMenu()
+    {
+        if (isOpen)
+        {
+            OpenMenu();
+            return;
+        }
+        CloseMenu();
+    }
+
+    public void SetMenuOpen(bool setOpen)
+    {
+        if (setOpen)
+        {
+            OpenMenu();
+            return;
+        }
         CloseMenu();
     }
 

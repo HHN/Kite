@@ -20686,6 +20686,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageBox: {fileID: 5629918238507184917, guid: 47c0a3038b673a24cb82a566be2abf20, type: 3}
   canvas: {fileID: 856301365}
+  aboutTheAppMenu: {fileID: 1814597283}
+  discriminationMenu: {fileID: 1892203921}
+  successStoryMenu: {fileID: 656964915}
+  ressourcesMenu: {fileID: 1490582396}
+  legalInformationMenu: {fileID: 1918477078}
+  feedbackMenu: {fileID: 203049007}
+  researchMenu: {fileID: 850768669}
+  financesMenu: {fileID: 864320543}
+  intersectionalBiasesMenu: {fileID: 1585504842}
+  roleMenu: {fileID: 1455634399}
+  carrerBiasesMenu: {fileID: 946696973}
+  scrollView: {fileID: 1747125571}
   hideButton: {fileID: 2014079747}
   searchButton: {fileID: 1972775979}
   searchInputField: {fileID: 1403945637}
@@ -32990,7 +33002,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}

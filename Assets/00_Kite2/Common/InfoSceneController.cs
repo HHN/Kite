@@ -1,9 +1,23 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class InfoSceneController : SceneController
 {
+    [SerializeField] private GameObject aboutTheAppMenu;
+    [SerializeField] private GameObject discriminationMenu;
+    [SerializeField] private GameObject successStoryMenu;
+    [SerializeField] private GameObject ressourcesMenu;
+    [SerializeField] private GameObject legalInformationMenu;
+    [SerializeField] private GameObject feedbackMenu;
+    [SerializeField] private GameObject researchMenu;
+    [SerializeField] private GameObject financesMenu;
+    [SerializeField] private GameObject intersectionalBiasesMenu;
+    [SerializeField] private GameObject roleMenu;
+    [SerializeField] private GameObject carrerBiasesMenu;
+    [SerializeField] private GameObject scrollView;
+
     [SerializeField] private Button hideButton;
     private int clickCounter = 0;
 
@@ -86,6 +100,8 @@ public class InfoSceneController : SceneController
 
     private void Start()
     {
+        BackStackManager.Instance().Push(SceneNames.INFO_SCENE);
+
         hideButton.onClick.AddListener(delegate { OnHiddenButtonPressed(); });
         searchButton.onClick.AddListener(delegate { OnSearchButtonPressed(); });
 
@@ -156,6 +172,8 @@ public class InfoSceneController : SceneController
         expertOpinionButton.onClick.AddListener(delegate { OnExpertOpinionButtonPressed(); });
         globalPerspectivesButton.onClick.AddListener(delegate { OnGlobalPerspectiveButtonPressed(); });
         topicSpecificButton.onClick.AddListener(delegate { OnTopicSpecificButtonPressed(); });
+
+        InitMemory();
     }
 
     public void OnHiddenButtonPressed()
@@ -179,241 +197,471 @@ public class InfoSceneController : SceneController
 
     public void OnDevelopmentHistoryButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Entwicklungsgeschichte");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnFunctionInformationButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Funktionsweise");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnAboutTheTeamButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Team und Mitwirkende");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnFaqButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Häufig gestellte Fragen (FAQ)");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnTechnicalDetailsButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Technische Details");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnUpdateInformationButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Zukünftige Updates und Pläne");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnPrivacyInformationButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Datenschutzerklärung");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnUsingConditionsButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Nutzungsbedingungen");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnAccessToFinancesButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Finanzierungszugang");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnGenderPayGapButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Gender Pay Gap");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnBadRatingForFemaleFoundersButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Unterbewertung weiblich geführter Unternehmen");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnRiskAversionBiasButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Risk Aversion Bias");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnConfirmationBiasButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Bestätigungsverzerrung");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnTokenismButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Tokenism");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnPerceptionOfLeadershipBiasButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Bias in der Wahrnehmung von Führungsfähigkeiten");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnRacismButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Rassistische und ethnische Biases");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnSocioEconomicBiasButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Sozioökonomische Biases");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnAgeAndGenerationButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Alter- und Generationen-Biases");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnSexBiasButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Sexualitätsbezogene Biases");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnBiasAgainstDisabledWomenButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Biases gegenüber Frauen mit Behinderungen");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnNonTraditionalAreaBiasButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Stereotype gegenüber Frauen in nicht-traditionellen Branchen");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnCulturalBiasButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Kulturelle und religiöse Biases");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnMaternalBiasButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Maternal Bias");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnMomBiasButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Biases gegenüber Frauen mit Kindern");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnFamilyBiasButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Erwartungshaltung bezüglich Familienplanung");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnWorkLifeBalanceBiasButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Work-Life-Balance-Erwartungen");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnGenderSpecificBiasButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Geschlechtsspezifische Stereotypen");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnTightropeBiasButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Doppelte Bindung (Tightrope Bias)");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnMicoAggressionBiasButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Mikroaggressionen");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnPerformanceAttributionBiasButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Leistungsattributions-Bias");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnMediaAndMarketingBiasButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Bias in Medien und Werbung");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnCommunicationBiasButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Unbewusste Bias in der Kommunikation");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnProveItAgainBiasButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Prove-it-Again-Bias");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnFounder01ButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Julia Schneider");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnFounder02ButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Lena Hoffmann");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnFounder03ButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Sarah Meyer");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnFounder04ButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Laura Weber");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnFounder05ButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Lisa Wagner");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnFounder06ButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Katharina Becker");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnSupportProgramButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Förderprogramme");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OncommunityButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Netzwerke und Communitys");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnEducationRessourcesButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Bildungsressourcen");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnMentoringButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Beratung und Mentoring");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnToolsAndSoftwareButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Tools und Software");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnLegalAdviceButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Rechtliche und finanzielle Beratung");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnAntiDiscriminationLawButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Gleichstellungs- und Antidiskriminierungsgesetze");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnParentsLawButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Mutterschutz und Elternzeit");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnSameRightsLawButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Gleichstellungsrichtlinien in der Wirtschaft");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnGiveFeedbackButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Feedback einreichen");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnDiscussionButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Diskussionsforum");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnSharSuccessStoryButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Erfolgsgeschichten teilen");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnCommunityEventsButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Community-Events");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnUserSurveyButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Nutzerumfragen");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnSupportNetworkButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Unterstützungsnetzwerk");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnCurrentResearchButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Aktuelle Forschungsergebnisse");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnStatisticsButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Statistiken und Daten");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnCaseResearchButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Fallstudien");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnExpertOpinionButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Expertinnenmeinungen");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnGlobalPerspectiveButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Globale Perspektiven");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
     }
 
     public void OnTopicSpecificButtonPressed()
     {
+        InfoTextManager.Instance.SetTextHead("Themenspezifische Vertiefungen");
+        InfoTextManager.Instance.SetTextBody("");
+        SceneLoader.LoadInfoTextScene();
+    }
+
+    public void InitMemory()
+    {
+        InfoSceneMemory memory = SceneMemoryManager.Instance().GetMemoryOfInfoScene();
+
+        if (memory == null)
+        {
+            return;
+        }
+        aboutTheAppMenu.GetComponent<DropDownMenu>().SetMenuOpen(memory.isAboutTheAppMenuOpen);
+        discriminationMenu.GetComponent<DropDownMenu>().SetMenuOpen(memory.isDiscriminationMenuOpen);
+        successStoryMenu.GetComponent<DropDownMenu>().SetMenuOpen(memory.isSuccessStoryMenuOpen);
+        ressourcesMenu.GetComponent<DropDownMenu>().SetMenuOpen(memory.isRessourcesMenuOpen);
+        legalInformationMenu.GetComponent<DropDownMenu>().SetMenuOpen(memory.isLegalInformationMenuOpen);
+        feedbackMenu.GetComponent<DropDownMenu>().SetMenuOpen(memory.isFeedbackMenuOpen);
+        researchMenu.GetComponent<DropDownMenu>().SetMenuOpen(memory.isResearchMenuOpen);
+        financesMenu.GetComponent<DropDownMenu>().SetMenuOpen(memory.isFinancesMenuOpen);
+        intersectionalBiasesMenu.GetComponent<DropDownMenu>().SetMenuOpen(memory.isIntersectionalBiasesMenuOpen);
+        roleMenu.GetComponent<DropDownMenu>().SetMenuOpen(memory.isRoleMenuOpen);
+        carrerBiasesMenu.GetComponent<DropDownMenu>().SetMenuOpen(memory.isCarrerBiasesMenuOpen);
+        scrollView.GetComponent<ScrollRect>().verticalNormalizedPosition = memory.scrollPosition;
+        StartCoroutine(EnsureCorrectScrollPosition(memory.scrollPosition));
+    }
+
+    public IEnumerator EnsureCorrectScrollPosition(float value)
+    {
+        yield return null;
+        Canvas.ForceUpdateCanvases();
+        scrollView.GetComponent<ScrollRect>().verticalNormalizedPosition = value;
+    }
+
+    public override void OnStop()
+    {
+        base.OnStop();
+
+        InfoSceneMemory memory = new InfoSceneMemory();
+        memory.isAboutTheAppMenuOpen = aboutTheAppMenu.GetComponent<DropDownMenu>().IsOpen();
+        memory.isDiscriminationMenuOpen = discriminationMenu.GetComponent<DropDownMenu>().IsOpen();
+        memory.isSuccessStoryMenuOpen = successStoryMenu.GetComponent<DropDownMenu>().IsOpen();
+        memory.isRessourcesMenuOpen = ressourcesMenu.GetComponent<DropDownMenu>().IsOpen();
+        memory.isLegalInformationMenuOpen = legalInformationMenu.GetComponent<DropDownMenu>().IsOpen();
+        memory.isFeedbackMenuOpen = feedbackMenu.GetComponent<DropDownMenu>().IsOpen();
+        memory.isResearchMenuOpen = researchMenu.GetComponent<DropDownMenu>().IsOpen();
+        memory.isFinancesMenuOpen = financesMenu.GetComponent<DropDownMenu>().IsOpen();
+        memory.isIntersectionalBiasesMenuOpen = intersectionalBiasesMenu.GetComponent<DropDownMenu>().IsOpen();
+        memory.isRoleMenuOpen = roleMenu.GetComponent<DropDownMenu>().IsOpen();
+        memory.isCarrerBiasesMenuOpen = carrerBiasesMenu.GetComponent<DropDownMenu>().IsOpen();
+        memory.scrollPosition = scrollView.GetComponent<ScrollRect>().verticalNormalizedPosition;
+        SceneMemoryManager.Instance().SetMemoryOfInfoScene(memory);
     }
 }

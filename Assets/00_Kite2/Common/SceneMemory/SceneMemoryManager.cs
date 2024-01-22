@@ -14,6 +14,7 @@ public class SceneMemoryManager
     private RegistrationSceneMemory registrationSceneMemory;
     private ResetPasswordSceneMemory resetPasswordSceneMemory;
     private InfoSceneMemory infoSceneMemory;
+    private InfoTextSceneMemory infoTextSceneMemory;
     private CommentSectionSceneMemory commentSectionSceneMemory;
     private NovelMakerSceneMemory novelMakerSceneMemory;
     private CharacterExplorerSceneMemory characterExplorerSceneMemory;
@@ -91,6 +92,11 @@ public class SceneMemoryManager
     public InfoSceneMemory GetMemoryOfInfoScene()
     {
         return this.infoSceneMemory;
+    }
+
+    public InfoTextSceneMemory GetMemoryOfInfoTextScene()
+    {
+        return this.infoTextSceneMemory;
     }
 
     public CommentSectionSceneMemory GetMemoryOfCommentSectionScene()
@@ -213,6 +219,11 @@ public class SceneMemoryManager
         this.infoSceneMemory = infoSceneMemory;
     }
 
+    public void SetMemoryOfInfoTextScene(InfoTextSceneMemory infoTextSceneMemory)
+    {
+        this.infoTextSceneMemory = infoTextSceneMemory;
+    }
+
     public void SetMemoryOfCommentSectionScene(CommentSectionSceneMemory commentSectionSceneMemory)
     {
         this.commentSectionSceneMemory = commentSectionSceneMemory;
@@ -295,6 +306,7 @@ public class SceneMemoryManager
         this.registrationSceneMemory = null;
         this.resetPasswordSceneMemory = null;
         this.infoSceneMemory = null;
+        this.infoTextSceneMemory = null;
         this.commentSectionSceneMemory = null;
         this.novelMakerSceneMemory = null;
         this.characterExplorerSceneMemory = null;
