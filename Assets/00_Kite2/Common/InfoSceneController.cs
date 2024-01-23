@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -192,11 +193,294 @@ public class InfoSceneController : SceneController
     {
         searchButton.image.sprite = searchIcon;
         searchInputField.text = string.Empty;
+
+        // About the App Buttons
+        developmentHistoryButton.gameObject.SetActive(true);
+        functionInformationButton.gameObject.SetActive(true);
+        aboutTheTeamButton.gameObject.SetActive(true);
+        faq_Button.gameObject.SetActive(true);
+        technicalDetailsButton.gameObject.SetActive(true);
+        updateInformationButton.gameObject.SetActive(true);
+        privacyInformationButton.gameObject.SetActive(true);
+        usingConditionsButton.gameObject.SetActive(true);
+
+        // Discrimination Buttons
+        accessToFinancesButton.gameObject.SetActive(true);
+        genderPayGapButton.gameObject.SetActive(true);
+        badRatingForFemaleFoundersButton.gameObject.SetActive(true);
+        riskAversionBiasButton.gameObject.SetActive(true);
+        confirmationBiasButton.gameObject.SetActive(true);
+        tokenismButton.gameObject.SetActive(true);
+        perceptionOfLeadershipBiasButton.gameObject.SetActive(true);
+        racismButton.gameObject.SetActive(true);
+        socioEconomicBiasButton.gameObject.SetActive(true);
+        ageAndGenerationBiasButton.gameObject.SetActive(true);
+        sexBiasButton.gameObject.SetActive(true);
+        biasAgainsDiasbledWomenButton.gameObject.SetActive(true);
+        nonTraditionalAreaBiasButton.gameObject.SetActive(true);
+        culturalBiasButton.gameObject.SetActive(true);
+        maternalBiasButton.gameObject.SetActive(true);
+        momBiasButton.gameObject.SetActive(true);
+        familyBiasButton.gameObject.SetActive(true);
+        workLifeBalancaBiasButton.gameObject.SetActive(true);
+        genderSpecificBiasButton.gameObject.SetActive(true);
+        tightropeBiasButton.gameObject.SetActive(true);
+        micoAggressionBiasButton.gameObject.SetActive(true);
+        performanceAttributionBiasButton.gameObject.SetActive(true);
+        mediaAndMarketingBiasButton.gameObject.SetActive(true);
+        communicationBiasButton.gameObject.SetActive(true);
+        proveItAgainBiasButton.gameObject.SetActive(true);
+
+        // Success Storys Buttons
+        founder01.gameObject.SetActive(true);
+        founder02.gameObject.SetActive(true);
+        founder03.gameObject.SetActive(true);
+        founder04.gameObject.SetActive(true);
+        founder05.gameObject.SetActive(true);
+        founder06.gameObject.SetActive(true);
+
+        // Ressources Buttons
+        supportProgramsButton.gameObject.SetActive(true);
+        communityButton.gameObject.SetActive(true);
+        educationRessorucesButton.gameObject.SetActive(true);
+        mentoringButton.gameObject.SetActive(true);
+        toolsAndSoftwareButton.gameObject.SetActive(true);
+        legalAdviceButton.gameObject.SetActive(true);
+
+        // Legal Infromation Buttons
+        antiDiscriminationLawButton.gameObject.SetActive(true);
+        parentsLawButton.gameObject.SetActive(true);
+        sameRightsLawButton.gameObject.SetActive(true);
+
+        // Community Buttons
+        giveFeedbackButton.gameObject.SetActive(true);
+        discussionButton.gameObject.SetActive(true);
+        shareSuccessStoryButton.gameObject.SetActive(true);
+        communityEventsButton.gameObject.SetActive(true);
+        userSurveyButton.gameObject.SetActive(true);
+        supportNetworkButton.gameObject.SetActive(true);
+
+        // Research Buttons
+        currentResearchResultsButton.gameObject.SetActive(true);
+        statisticsButton.gameObject.SetActive(true);
+        caseResearchButton.gameObject.SetActive(true);
+        expertOpinionButton.gameObject.SetActive(true);
+        globalPerspectivesButton.gameObject.SetActive(true);
+        topicSpecificButton.gameObject.SetActive(true);
+
+        // Menus
+         aboutTheAppMenu.SetActive(true);
+         discriminationMenu.SetActive(true);
+         successStoryMenu.SetActive(true);
+         ressourcesMenu.SetActive(true);
+         legalInformationMenu.SetActive(true);
+         feedbackMenu.SetActive(true);
+         researchMenu.SetActive(true);
+         financesMenu.SetActive(true);
+         intersectionalBiasesMenu.SetActive(true);
+         roleMenu.SetActive(true);
+         carrerBiasesMenu.SetActive(true);
+
+        aboutTheAppMenu.GetComponent<DropDownMenu>().SetMenuOpen(false);
+        discriminationMenu.GetComponent<DropDownMenu>().SetMenuOpen(false);
+        successStoryMenu.GetComponent<DropDownMenu>().SetMenuOpen(false);
+        ressourcesMenu.GetComponent<DropDownMenu>().SetMenuOpen(false);
+        legalInformationMenu.GetComponent<DropDownMenu>().SetMenuOpen(false);
+        feedbackMenu.GetComponent<DropDownMenu>().SetMenuOpen(false);
+        researchMenu.GetComponent<DropDownMenu>().SetMenuOpen(false);
+        financesMenu.GetComponent<DropDownMenu>().SetMenuOpen(false);
+        intersectionalBiasesMenu.GetComponent<DropDownMenu>().SetMenuOpen(false);
+        roleMenu.GetComponent<DropDownMenu>().SetMenuOpen(false);
+        carrerBiasesMenu.GetComponent<DropDownMenu>().SetMenuOpen(false);
     }
 
     public void Search(string value)
     {
         searchButton.image.sprite = xIcon;
+
+        // About the App Buttons
+        developmentHistoryButton.gameObject.SetActive(developmentHistoryButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        functionInformationButton.gameObject.SetActive(functionInformationButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        aboutTheTeamButton.gameObject.SetActive(aboutTheTeamButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        faq_Button.gameObject.SetActive(faq_Button.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        technicalDetailsButton.gameObject.SetActive(technicalDetailsButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        updateInformationButton.gameObject.SetActive(updateInformationButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        privacyInformationButton.gameObject.SetActive(privacyInformationButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        usingConditionsButton.gameObject.SetActive(usingConditionsButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+
+        // Discrimination Buttons
+        accessToFinancesButton.gameObject.SetActive(accessToFinancesButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        genderPayGapButton.gameObject.SetActive(genderPayGapButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        badRatingForFemaleFoundersButton.gameObject.SetActive(badRatingForFemaleFoundersButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        riskAversionBiasButton.gameObject.SetActive(riskAversionBiasButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        confirmationBiasButton.gameObject.SetActive(confirmationBiasButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        tokenismButton.gameObject.SetActive(tokenismButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        perceptionOfLeadershipBiasButton.gameObject.SetActive(perceptionOfLeadershipBiasButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        racismButton.gameObject.SetActive(racismButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        socioEconomicBiasButton.gameObject.SetActive(socioEconomicBiasButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        ageAndGenerationBiasButton.gameObject.SetActive(ageAndGenerationBiasButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        sexBiasButton.gameObject.SetActive(sexBiasButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        biasAgainsDiasbledWomenButton.gameObject.SetActive(biasAgainsDiasbledWomenButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        nonTraditionalAreaBiasButton.gameObject.SetActive(nonTraditionalAreaBiasButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        culturalBiasButton.gameObject.SetActive(culturalBiasButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        maternalBiasButton.gameObject.SetActive(maternalBiasButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        momBiasButton.gameObject.SetActive(momBiasButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        familyBiasButton.gameObject.SetActive(familyBiasButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        workLifeBalancaBiasButton.gameObject.SetActive(workLifeBalancaBiasButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        genderSpecificBiasButton.gameObject.SetActive(genderSpecificBiasButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        tightropeBiasButton.gameObject.SetActive(tightropeBiasButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        micoAggressionBiasButton.gameObject.SetActive(micoAggressionBiasButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        performanceAttributionBiasButton.gameObject.SetActive(performanceAttributionBiasButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        mediaAndMarketingBiasButton.gameObject.SetActive(mediaAndMarketingBiasButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        communicationBiasButton.gameObject.SetActive(communicationBiasButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        proveItAgainBiasButton.gameObject.SetActive(proveItAgainBiasButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+
+        // Success Storys Buttons
+        founder01.gameObject.SetActive(founder01.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        founder02.gameObject.SetActive(founder02.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        founder03.gameObject.SetActive(founder03.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        founder04.gameObject.SetActive(founder04.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        founder05.gameObject.SetActive(founder05.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        founder06.gameObject.SetActive(founder06.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+
+        // Ressources Buttons
+        supportProgramsButton.gameObject.SetActive(supportProgramsButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        communityButton.gameObject.SetActive(communityButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        educationRessorucesButton.gameObject.SetActive(educationRessorucesButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        mentoringButton.gameObject.SetActive(mentoringButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        toolsAndSoftwareButton.gameObject.SetActive(toolsAndSoftwareButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        legalAdviceButton.gameObject.SetActive(legalAdviceButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+
+        // Legal Infromation Buttons
+        antiDiscriminationLawButton.gameObject.SetActive(antiDiscriminationLawButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        parentsLawButton.gameObject.SetActive(parentsLawButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        sameRightsLawButton.gameObject.SetActive(sameRightsLawButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+
+        // Community Buttons
+        giveFeedbackButton.gameObject.SetActive(giveFeedbackButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        discussionButton.gameObject.SetActive(discussionButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        shareSuccessStoryButton.gameObject.SetActive(shareSuccessStoryButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        communityEventsButton.gameObject.SetActive(communityEventsButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        userSurveyButton.gameObject.SetActive(userSurveyButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        supportNetworkButton.gameObject.SetActive(supportNetworkButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+
+        // Research Buttons
+        currentResearchResultsButton.gameObject.SetActive(currentResearchResultsButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        statisticsButton.gameObject.SetActive(statisticsButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        caseResearchButton.gameObject.SetActive(caseResearchButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        expertOpinionButton.gameObject.SetActive(expertOpinionButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        globalPerspectivesButton.gameObject.SetActive(globalPerspectivesButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        topicSpecificButton.gameObject.SetActive(topicSpecificButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+
+        bool hasAboutTheAppMenuVisibleChildren = 
+            developmentHistoryButton.gameObject.activeSelf || 
+            functionInformationButton.gameObject.activeSelf ||
+            aboutTheTeamButton.gameObject.activeSelf ||
+            faq_Button.gameObject.activeSelf ||
+            technicalDetailsButton.gameObject.activeSelf ||
+            updateInformationButton.gameObject.activeSelf ||
+            privacyInformationButton.gameObject.activeSelf ||
+            usingConditionsButton.gameObject.activeSelf;
+
+        bool hasSuccesStoryMenuVisibleChildren =
+            founder01.gameObject.activeSelf ||
+            founder02.gameObject.activeSelf ||
+            founder03.gameObject.activeSelf ||
+            founder04.gameObject.activeSelf ||
+            founder05.gameObject.activeSelf ||
+            founder06.gameObject.activeSelf;
+
+        bool hasRessourcesMenuVisibleChildren =
+            supportProgramsButton.gameObject.activeSelf ||
+            communityButton.gameObject.activeSelf ||
+            educationRessorucesButton.gameObject.activeSelf ||
+            mentoringButton.gameObject.activeSelf ||
+            toolsAndSoftwareButton.gameObject.activeSelf ||
+            legalAdviceButton.gameObject.activeSelf;
+
+        bool hasLegalInformationMenuVisbleChildren =
+            antiDiscriminationLawButton.gameObject.activeSelf ||
+            parentsLawButton.gameObject.activeSelf ||
+            sameRightsLawButton.gameObject.activeSelf;
+
+        bool hasCommunityMenuVisibleChildren =
+            giveFeedbackButton.gameObject.activeSelf ||
+            discussionButton.gameObject.activeSelf ||
+            shareSuccessStoryButton.gameObject.activeSelf ||
+            communityEventsButton.gameObject.activeSelf ||
+            userSurveyButton.gameObject.activeSelf ||
+            supportNetworkButton.gameObject.activeSelf;
+
+        bool hasResearchMenuVisibleChildren =
+            currentResearchResultsButton.gameObject.activeSelf ||
+            statisticsButton.gameObject.activeSelf ||
+            caseResearchButton.gameObject.activeSelf ||
+            expertOpinionButton.gameObject.activeSelf ||
+            globalPerspectivesButton.gameObject.activeSelf ||
+            topicSpecificButton.gameObject.activeSelf;
+
+        bool hasFinancesMenuVisibleChildren =
+            accessToFinancesButton.gameObject.activeSelf ||
+            genderPayGapButton.gameObject.activeSelf ||
+            badRatingForFemaleFoundersButton.gameObject.activeSelf ||
+            riskAversionBiasButton.gameObject.activeSelf ||
+            confirmationBiasButton.gameObject.activeSelf ||
+            tokenismButton.gameObject.activeSelf ||
+            perceptionOfLeadershipBiasButton.gameObject.activeSelf;
+
+        bool hasIntersectionalBiasesMenuVisibleChildren =
+            racismButton.gameObject.activeSelf ||
+            socioEconomicBiasButton.gameObject.activeSelf ||
+            ageAndGenerationBiasButton.gameObject.activeSelf ||
+            sexBiasButton.gameObject.activeSelf ||
+            biasAgainsDiasbledWomenButton.gameObject.activeSelf ||
+            nonTraditionalAreaBiasButton.gameObject.activeSelf ||
+            culturalBiasButton.gameObject.activeSelf;
+
+        bool hasRoleMenuVisbleChildren =
+            maternalBiasButton.gameObject.activeSelf ||
+            momBiasButton.gameObject.activeSelf ||
+            familyBiasButton.gameObject.activeSelf ||
+            workLifeBalancaBiasButton.gameObject.activeSelf;
+
+        bool hasCarriereBiasesMenuVisibleChildren =
+            genderSpecificBiasButton.gameObject.activeSelf ||
+            tightropeBiasButton.gameObject.activeSelf ||
+            micoAggressionBiasButton.gameObject.activeSelf ||
+            performanceAttributionBiasButton.gameObject.activeSelf ||
+            mediaAndMarketingBiasButton.gameObject.activeSelf ||
+            communicationBiasButton.gameObject.activeSelf ||
+            proveItAgainBiasButton.gameObject.activeSelf;
+
+        bool hasDiscriminationMenuVisibleChildren =
+            hasFinancesMenuVisibleChildren ||
+            hasIntersectionalBiasesMenuVisibleChildren ||
+            hasRoleMenuVisbleChildren ||
+            hasCarriereBiasesMenuVisibleChildren;
+
+        aboutTheAppMenu.SetActive(hasAboutTheAppMenuVisibleChildren);
+        discriminationMenu.SetActive(hasDiscriminationMenuVisibleChildren);
+        successStoryMenu.SetActive(hasSuccesStoryMenuVisibleChildren);
+        ressourcesMenu.SetActive(hasRessourcesMenuVisibleChildren);
+        legalInformationMenu.SetActive(hasLegalInformationMenuVisbleChildren);
+        feedbackMenu.SetActive(hasCommunityMenuVisibleChildren);
+        researchMenu.SetActive(hasResearchMenuVisibleChildren);
+        financesMenu.SetActive(hasFinancesMenuVisibleChildren);
+        intersectionalBiasesMenu.SetActive(hasIntersectionalBiasesMenuVisibleChildren);
+        roleMenu.SetActive(hasRoleMenuVisbleChildren);
+        carrerBiasesMenu.SetActive(hasCarriereBiasesMenuVisibleChildren);
+
+        aboutTheAppMenu.GetComponent<DropDownMenu>().SetMenuOpen(true);
+        discriminationMenu.GetComponent<DropDownMenu>().SetMenuOpen(true);
+        successStoryMenu.GetComponent<DropDownMenu>().SetMenuOpen(true);
+        ressourcesMenu.GetComponent<DropDownMenu>().SetMenuOpen(true);
+        legalInformationMenu.GetComponent<DropDownMenu>().SetMenuOpen(true);
+        feedbackMenu.GetComponent<DropDownMenu>().SetMenuOpen(true);
+        researchMenu.GetComponent<DropDownMenu>().SetMenuOpen(true);
+        financesMenu.GetComponent<DropDownMenu>().SetMenuOpen(true);
+        intersectionalBiasesMenu.GetComponent<DropDownMenu>().SetMenuOpen(true);
+        roleMenu.GetComponent<DropDownMenu>().SetMenuOpen(true);
+        carrerBiasesMenu.GetComponent<DropDownMenu>().SetMenuOpen(true);
     }
 
     public void OnStopSearchButton()
