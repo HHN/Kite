@@ -8,15 +8,15 @@ public class SceneController : MonoBehaviour
 
     public MessageBox DisplayInfoMessage(string errorMessage)
     {
-        return DisplayMessage("INFORMATION", errorMessage);
+        return DisplayMessage("INFORMATION", errorMessage, false);
     }
 
     public MessageBox DisplayErrorMessage(string errorMessage)
     {
-        return DisplayMessage("FEHLER-MELDUNG", errorMessage);
+        return DisplayMessage("FEHLER-MELDUNG", errorMessage, true);
     }
 
-    private MessageBox DisplayMessage(string headline, string message)
+    private MessageBox DisplayMessage(string headline, string message, bool isError)
     {
         if (!DestroyValidator.IsNullOrDestroyed(messageObject))
         {
@@ -30,6 +30,7 @@ public class SceneController : MonoBehaviour
         messageObject = Instantiate(messageBox, canvas.transform).GetComponent<MessageBox>();
         messageObject.SetHeadline(headline);
         messageObject.SetBody(message);
+        messageObject.SetIsErrorMessage(isError);
         messageObject.Activate();
         return messageObject;
     }
