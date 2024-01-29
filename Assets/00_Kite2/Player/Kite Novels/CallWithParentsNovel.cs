@@ -60,11 +60,20 @@ public class CallWithParentsNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 4,
-                nextId = 5,
+                nextId = 4001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
+                waitForUserConfirmation = false,
                 name = "Intro",
                 text = "Freizeichen"
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 4001,
+                nextId = 5,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = true,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.TELEPHONE_CALL)
             },
 
             new VisualNovelEvent()

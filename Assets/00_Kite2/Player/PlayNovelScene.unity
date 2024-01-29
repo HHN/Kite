@@ -5490,6 +5490,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 8300000, guid: 6a2f896f4c76c7f44b538a4b04dad09e, type: 3}
   - {fileID: 8300000, guid: ce01bdabef904a744ab5943498b127b0, type: 3}
+  - {fileID: 8300000, guid: 3ad33f7f14e090e4cb5fc5e2ff3121b8, type: 3}
   novelAnimations:
   - {fileID: 0}
   - {fileID: 2451443837264726971, guid: 399db683e4364e449887b9f4d7120744, type: 3}
