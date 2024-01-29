@@ -18,6 +18,7 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
 
     [SerializeField] private GameObject getMoneyServerCallPrefab;
     [SerializeField] private GameObject getScoreServerCallPrefab;
+    [SerializeField] private GameObject buttonSoundPrefab;
 
     public bool generated = false;
     public GenerateNovelPipeline pipeline;
@@ -102,6 +103,10 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     {
         AnalyticsServiceHandler.Instance().SendMainMenuStatistics();
         AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("KITE NOVELS");
+
+        GameObject buttonSound = Instantiate(buttonSoundPrefab);
+        DontDestroyOnLoad(buttonSound);
+
         SceneLoader.LoadNovelExplorerScene();
     }
 

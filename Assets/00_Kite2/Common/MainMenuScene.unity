@@ -583,6 +583,7 @@ MonoBehaviour:
   loginLogoutImage: {fileID: 1483264654}
   getMoneyServerCallPrefab: {fileID: 623696648559894357, guid: 1af0a12477541f845bcd9c3c551b7cbc, type: 3}
   getScoreServerCallPrefab: {fileID: 6993262661767086549, guid: 76682334c74132547962cd57ceeef348, type: 3}
+  buttonSoundPrefab: {fileID: 5665505778772664329, guid: 15dd90c9a2a5f1a42bdb1dc00ef184f8, type: 3}
   generated: 0
   pipeline: {fileID: 667265767}
 --- !u!4 &110977352

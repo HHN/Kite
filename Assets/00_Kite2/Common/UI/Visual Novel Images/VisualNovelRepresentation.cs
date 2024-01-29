@@ -10,6 +10,7 @@ public class VisualNovelRepresentation : MonoBehaviour
     public GameObject privateHint;
     public GameObject modifiedHint; // Modified from KITE II Team
     public GameObject kiteOneHint;  // Novel from Kite I
+    [SerializeField] private GameObject buttonSoundPrefab;
 
     void Start()
     {
@@ -30,6 +31,8 @@ public class VisualNovelRepresentation : MonoBehaviour
     {
         AnalyticsServiceHandler.Instance().SendNovelExplorerStatistics(visualNovel.id);
         PlayManager.Instance().SetVisualNovelToPlay(visualNovel);
+        GameObject buttonSound = Instantiate(buttonSoundPrefab);
+        DontDestroyOnLoad(buttonSound);
         SceneLoader.LoadDetailsViewScene();
     }
 
