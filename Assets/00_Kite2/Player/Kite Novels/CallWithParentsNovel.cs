@@ -1365,7 +1365,7 @@ public class CallWithParentsNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Mama",
-                text = "Das alles zu stämmen, ist alles andere als leicht.",
+                text = "Das alles zu stemmen, ist alles andere als leicht.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.CRITICAL)
             },
 
