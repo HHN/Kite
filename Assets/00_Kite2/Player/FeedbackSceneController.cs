@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class FeedbackSceneController : SceneController, OnSuccessHandler
+public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErrorHandler
 {
     public TextMeshProUGUI feedbackText;
     public TextMeshProUGUI novelTitle;
@@ -11,6 +11,8 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler
     public FavoriteButton favoriteButton;
     private VisualNovel novelToPlay;
     [SerializeField] private RectTransform layout;
+    [SerializeField] private AudioSource waitingLoopMusic;
+    [SerializeField] private AudioSource resultMusic;
 
     private void Start()
     {
@@ -27,11 +29,13 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler
         favoriteButton.Init();
         if (string.IsNullOrEmpty(novelToPlay.feedback))
         {
+            StartWaitingMusic();
             VisualNovel novel = PlayManager.Instance().GetVisualNovelToPlay();
             feedbackText.SetText("Bitte warten, Feedback wird geladen...");
             GetCompletionServerCall call = Instantiate(gptServercallPrefab).GetComponent<GetCompletionServerCall>();
             call.sceneController = this;
             call.onSuccessHandler = this;
+            call.onErrorHandler = this;
             if (novel != null)
             {
                 call.prompt = PromptManager.Instance().GetPrompt(novel.context);
@@ -70,9 +74,32 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler
         {
             return;
         }
+        StopWaitingMusic();
         feedbackText.SetText(response.completion.Trim());
         novelToPlay.feedback = (response.completion.Trim());
         AnalyticsServiceHandler.Instance().SetWaitedForAiFeedbackTrue();
         LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
+        PlayResultMusic();
+    }
+
+    public void OnError(Response response)
+    {
+        StopWaitingMusic();
+        DisplayErrorMessage(ErrorMessages.UNEXPECTED_SERVER_ERROR);
+    }
+
+    public void StartWaitingMusic()
+    {
+        waitingLoopMusic.Play();
+    }
+
+    public void StopWaitingMusic()
+    {
+        waitingLoopMusic.Stop();
+    }
+
+    public void PlayResultMusic()
+    {
+        resultMusic.Play();
     }
 }
