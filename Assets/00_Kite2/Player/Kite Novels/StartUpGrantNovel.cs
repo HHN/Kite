@@ -195,7 +195,7 @@ public class StartUpGrantNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 17,
-                nextId = 20,
+                nextId = 20001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
@@ -207,7 +207,7 @@ public class StartUpGrantNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 18,
-                nextId = 20,
+                nextId = 20001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
@@ -219,12 +219,21 @@ public class StartUpGrantNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 19,
-                nextId = 20,
+                nextId = 20001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
                 text = "Wenn Sie das Zeugnis nachreichen, wird die Beantragung problemlos sein.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 20001,
+                nextId = 20,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.LEAVE_SCENE)
             },
 
             new VisualNovelEvent()

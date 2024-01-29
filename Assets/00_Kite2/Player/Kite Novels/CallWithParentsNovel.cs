@@ -641,12 +641,21 @@ public class CallWithParentsNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 65,
-                nextId = 199,
+                nextId = 65001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Mama",
                 text = "Bis dann.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.NONE)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 65001,
+                nextId = 199,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.LEAVE_SCENE)
             },
 
             new VisualNovelEvent()
@@ -1680,7 +1689,7 @@ public class CallWithParentsNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 159,
-                nextId = 199,
+                nextId = 65001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
@@ -1764,7 +1773,7 @@ public class CallWithParentsNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 168,
-                nextId = 199,
+                nextId = 65001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Mama",

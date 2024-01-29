@@ -180,7 +180,7 @@ public class BankAppointmentNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 16,
-                nextId = 17,
+                nextId = 16001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Winkler",
@@ -188,6 +188,15 @@ public class BankAppointmentNovel : VisualNovel
                 "Ich werde Ihnen dann meine Entscheidung in einer Mail mitteilen und je nachdem " +
                 "können wir noch einmal einen Termin ausmachen, um alles formelle zu klären.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 16001,
+                nextId = 17,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.LEAVE_SCENE)
             },
 
             new VisualNovelEvent()

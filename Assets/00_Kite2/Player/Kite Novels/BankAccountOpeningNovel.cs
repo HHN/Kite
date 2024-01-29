@@ -195,13 +195,22 @@ public class BankAccountOpeningNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 17,
-                nextId = 18,
+                nextId = 17001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
                 text = "In dem Fall werde ich den Businessplan noch einmal prüfen. " +
                 "Allerdings wird das etwas dauern.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 17001,
+                nextId = 18,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.LEAVE_SCENE)
             },
 
             new VisualNovelEvent()

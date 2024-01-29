@@ -543,7 +543,7 @@ public class RentingAnOfficeNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 46,
-                nextId = 401,
+                nextId = 401001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
@@ -1422,6 +1422,15 @@ public class RentingAnOfficeNovel : VisualNovel
                 id = 400,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_CHOICES_EVENT),
                 waitForUserConfirmation = true
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 401001,
+                nextId = 401,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.LEAVE_SCENE)
             },
 
             new VisualNovelEvent()

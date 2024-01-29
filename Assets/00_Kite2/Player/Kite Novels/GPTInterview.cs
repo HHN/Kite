@@ -110,7 +110,7 @@ public class GPTInterview : VisualNovel
             new VisualNovelEvent()
             {
                 id = 9,
-                nextId = 61,
+                nextId = 9001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
@@ -151,7 +151,14 @@ public class GPTInterview : VisualNovel
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.ASTONISHED)
             },
 
-            
+            new VisualNovelEvent()
+            {
+                id = 9001,
+                nextId = 61,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.LEAVE_SCENE)
+            },
 
             new VisualNovelEvent()
             {

@@ -312,6 +312,11 @@ public class PlayNovelSceneController : SceneController
             SetWaitingForConfirmation(true);
             return;
         }
+        if (novelEvent.audioClipToPlay == SoundEnumHelper.ToInt(SoundsEnum.LEAVE_SCENE))
+        {
+            StartCoroutine(StartNextEventInOneSeconds(2.5f));
+            return;
+        }
         StartCoroutine(StartNextEventInOneSeconds(1));
     }
 
@@ -544,14 +549,14 @@ public class PlayNovelSceneController : SceneController
         if (userRole == 1 || userRole == 3 || userRole == 4 || userRole == 5)
         {
             SceneLoader.LoadReviewNovelScene();
-        } 
+        }
         else
         {
             SceneLoader.LoadFeedbackScene();
         }
     }
 
-    public IEnumerator StartNextEventInOneSeconds(int second)
+    public IEnumerator StartNextEventInOneSeconds(float second)
     {
         yield return new WaitForSeconds(second);
         PlayNextEvent();

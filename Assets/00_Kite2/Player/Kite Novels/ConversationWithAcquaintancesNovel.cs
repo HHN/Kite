@@ -219,7 +219,7 @@ public class ConversationWithAcquaintancesNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 19,
-                nextId = 22,
+                nextId = 21001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lisa",
@@ -230,7 +230,7 @@ public class ConversationWithAcquaintancesNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 20,
-                nextId = 22,
+                nextId = 21001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lisa",
@@ -242,13 +242,22 @@ public class ConversationWithAcquaintancesNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 21,
-                nextId = 22,
+                nextId = 21001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lisa",
                 text = "Das klingt aber schon irgendwie als wäre es für Frauen anstrengender, " +
                 "wenn sie sich ständig gegen Sexismus wehren müssen.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 21001,
+                nextId = 22,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.LEAVE_SCENE)
             },
 
             new VisualNovelEvent()
