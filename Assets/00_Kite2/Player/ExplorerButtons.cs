@@ -27,6 +27,9 @@ public class ExplorerButtons : MonoBehaviour
     public float favoritesGaleryPosition = 1;
     public float filterGaleryPosition = 1;
     public GalleryType openGallery = GalleryType.NONE;
+    [SerializeField] private AudioSource swipeLeftAudio;
+    [SerializeField] private AudioSource swipeRightAudio;
+    [SerializeField] private int currentOpenGallery;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +44,11 @@ public class ExplorerButtons : MonoBehaviour
 
     public void OnKiteNovelsButton()
     {
+        if ((currentOpenGallery == 2) || (currentOpenGallery == 3) || (currentOpenGallery == 4) || (currentOpenGallery == 5))
+        {
+            swipeLeftAudio.Play();
+        }
+        currentOpenGallery = 1;
         AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("KITE NOVELS");
         SaveCurrentPosition();
         filter.SetActive(false);
@@ -62,6 +70,15 @@ public class ExplorerButtons : MonoBehaviour
 
     public void OnUserNovelsButton()
     {
+        if ((currentOpenGallery == 3) || (currentOpenGallery == 4) || (currentOpenGallery == 5))
+        {
+            swipeLeftAudio.Play();
+        } else if (currentOpenGallery == 1)
+        {
+            swipeRightAudio.Play();
+        }
+        currentOpenGallery = 2;
+
         AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("USER NOVELS");
         SaveCurrentPosition();
         filter.SetActive(false);
@@ -83,6 +100,16 @@ public class ExplorerButtons : MonoBehaviour
 
     public void OnAccountNovelsButton()
     {
+        if ((currentOpenGallery == 4) || (currentOpenGallery == 5))
+        {
+            swipeLeftAudio.Play();
+        }
+        else if ((currentOpenGallery == 1) || (currentOpenGallery == 2)) 
+        {
+            swipeRightAudio.Play();
+        }
+        currentOpenGallery = 3;
+
         AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("EIGENE NOVELS");
         SaveCurrentPosition();
         filter.SetActive(false);
@@ -104,6 +131,16 @@ public class ExplorerButtons : MonoBehaviour
 
     public void OnFavoritNovelsButton()
     {
+        if ((currentOpenGallery == 5))
+        {
+            swipeLeftAudio.Play();
+        }
+        else if ((currentOpenGallery == 1) || (currentOpenGallery == 2) || (currentOpenGallery == 3))
+        {
+            swipeRightAudio.Play();
+        }
+        currentOpenGallery = 4;
+
         AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("FAVORITEN");
         SaveCurrentPosition();
         filter.SetActive(false);
@@ -125,6 +162,12 @@ public class ExplorerButtons : MonoBehaviour
 
     public void OnFilterNovelsButton()
     {
+        if ((currentOpenGallery == 1) || (currentOpenGallery == 2) || (currentOpenGallery == 3) || (currentOpenGallery == 4))
+        {
+            swipeRightAudio.Play();
+        }
+        currentOpenGallery = 5;
+
         AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("FILTER SUCHE");
         SaveCurrentPosition();
         kiteNovelsUnterline.gameObject.SetActive(false);
