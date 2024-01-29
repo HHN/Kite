@@ -8,6 +8,7 @@ public abstract class PipelineJob : MonoBehaviour, OnSuccessHandler, OnErrorHand
     [SerializeField] protected GameObject gptServercallPrefab;
     [SerializeField] protected SceneController controller;
     [SerializeField] protected string jobName;
+    [SerializeField] protected bool performJob;
 
     public PipelineJob()
     {
@@ -16,6 +17,13 @@ public abstract class PipelineJob : MonoBehaviour, OnSuccessHandler, OnErrorHand
 
     public void StartJob()
     {
+        if (!performJob)
+        {
+            Debug.Log("Skip Job: " + jobName);
+            state = PipelineJobState.SKIPPED;
+            pipeline.OnJobFinished(this);
+            return;
+        }
         InitializePrompt();
         Debug.Log("Prompt: " + prompt);
         state = PipelineJobState.JOB_RUNNING;
@@ -43,13 +51,14 @@ public abstract class PipelineJob : MonoBehaviour, OnSuccessHandler, OnErrorHand
     public void OnSuccess(Response response)
     {
         state = HandleCompletion(response.completion);
+        Debug.Log("Completion: " + response.completion);
+
         if (state == PipelineJobState.FAILED)
         {
             TryAgain();
         }
         else
         {
-            Debug.Log("Completion: " + response.completion);
             pipeline.OnJobFinished(this);
         }
     }

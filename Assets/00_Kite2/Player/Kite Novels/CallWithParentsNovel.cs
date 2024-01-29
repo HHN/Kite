@@ -8,8 +8,7 @@ public class CallWithParentsNovel : VisualNovel
     {
         id = -2;
         title = "Telefonat mit den Eltern";
-        description = "Nachdem du dich gründlich informiert hast, hast du dich dazu entschlossen ein Unternehmen zu gründen. " + 
-        "Du hast dir auch schon die nächsten Schritte überlegt und rufst nun deine Eltern an, um ihnen von deinem Gründungsvorhaben zu berichten.";
+        description = "Nachdem du dich gründlich informiert hast, hast du dich dazu entschlossen ein Unternehmen zu gründen. Du hast dir auch schon die nächsten Schritte überlegt und rufst nun deine Eltern an, um ihnen von deinem Gründungsvorhaben zu berichten.";
         image = 1;
         nameOfMainCharacter = "Lea";
         feedback = "";
@@ -61,11 +60,20 @@ public class CallWithParentsNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 4,
-                nextId = 5,
+                nextId = 4001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
+                waitForUserConfirmation = false,
                 name = "Intro",
                 text = "Freizeichen"
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 4001,
+                nextId = 5,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = true,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.TELEPHONE_CALL)
             },
 
             new VisualNovelEvent()
@@ -642,12 +650,21 @@ public class CallWithParentsNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 65,
-                nextId = 199,
+                nextId = 65001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Mama",
                 text = "Bis dann.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.NONE)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 65001,
+                nextId = 199,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.LEAVE_SCENE)
             },
 
             new VisualNovelEvent()
@@ -1681,7 +1698,7 @@ public class CallWithParentsNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 159,
-                nextId = 199,
+                nextId = 65001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
@@ -1765,7 +1782,7 @@ public class CallWithParentsNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 168,
-                nextId = 199,
+                nextId = 65001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Mama",

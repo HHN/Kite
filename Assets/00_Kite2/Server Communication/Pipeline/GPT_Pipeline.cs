@@ -7,6 +7,8 @@ public abstract class GPT_Pipeline : MonoBehaviour
     [SerializeField] protected Queue<PipelineJob> jobs;
     [SerializeField] protected PipelineState state;
     [SerializeField] protected SceneController controller;
+    [SerializeField] protected int numberOfJobs;
+    [SerializeField] protected int numberOfCompletedJobs;
 
     public GPT_Pipeline() 
     { 

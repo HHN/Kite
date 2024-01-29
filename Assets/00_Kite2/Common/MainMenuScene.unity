@@ -174,7 +174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1142041131289362116, guid: 1ae41ef0b36350c44a5251e44f8cd23a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 650
       objectReference: {fileID: 0}
     - target: {fileID: 1142041131289362116, guid: 1ae41ef0b36350c44a5251e44f8cd23a, type: 3}
       propertyPath: m_SizeDelta.y
@@ -210,7 +210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1142041131289362116, guid: 1ae41ef0b36350c44a5251e44f8cd23a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 325
       objectReference: {fileID: 0}
     - target: {fileID: 1142041131289362116, guid: 1ae41ef0b36350c44a5251e44f8cd23a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -335,6 +335,210 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &37589290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 37589292}
+  - component: {fileID: 37589291}
+  m_Layer: 0
+  m_Name: Job (59)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &37589291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37589290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1985ee958fcf014fb1d4a8c19c06cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job59
+  performJob: 0
+--- !u!4 &37589292
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37589290}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 63
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &41452032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 41452034}
+  - component: {fileID: 41452033}
+  m_Layer: 0
+  m_Name: Job (36)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &41452033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41452032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 374680daae570be4db562937490f88f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job36
+  performJob: 1
+--- !u!4 &41452034
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41452032}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 40
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &42724776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 42724778}
+  - component: {fileID: 42724777}
+  m_Layer: 0
+  m_Name: Job (83)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &42724777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42724776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e34271632af696a4abeff1c5cb762947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job83
+  performJob: 0
+--- !u!4 &42724778
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42724776}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 87
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &102952382
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 102952384}
+  - component: {fileID: 102952383}
+  m_Layer: 0
+  m_Name: Job (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &102952383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102952382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac183e521286600429635de17577c42f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: 
+  performJob: 1
+--- !u!4 &102952384
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102952382}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &110977350
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,6 +549,7 @@ GameObject:
   m_Component:
   - component: {fileID: 110977352}
   - component: {fileID: 110977351}
+  - component: {fileID: 110977353}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -378,6 +583,7 @@ MonoBehaviour:
   loginLogoutImage: {fileID: 1483264654}
   getMoneyServerCallPrefab: {fileID: 623696648559894357, guid: 1af0a12477541f845bcd9c3c551b7cbc, type: 3}
   getScoreServerCallPrefab: {fileID: 6993262661767086549, guid: 76682334c74132547962cd57ceeef348, type: 3}
+  buttonSoundPrefab: {fileID: 5665505778772664329, guid: 15dd90c9a2a5f1a42bdb1dc00ef184f8, type: 3}
   generated: 0
   pipeline: {fileID: 667265767}
 --- !u!4 &110977352
@@ -395,7 +601,103 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &184171208
+--- !u!82 &110977353
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110977350}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ed8c0600ecc65c84c97279a18cafbe1c, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!1 &129546995
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -403,25 +705,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 184171210}
-  - component: {fileID: 184171209}
+  - component: {fileID: 129546997}
+  - component: {fileID: 129546996}
   m_Layer: 0
-  m_Name: Job (13)
+  m_Name: Job (55)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &184171209
+--- !u!114 &129546996
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 184171208}
+  m_GameObject: {fileID: 129546995}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4acc7deb7d67f894b9ebbc8149bbd9e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 16b29cc6fabd43c48bf7017a7343e015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pipeline: {fileID: 667265767}
@@ -429,23 +731,24 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  jobName: Generate title
---- !u!4 &184171210
+  jobName: Job55
+  performJob: 0
+--- !u!4 &129546997
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 184171208}
+  m_GameObject: {fileID: 129546995}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 59
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &321938896
+--- !u!1 &144003548
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -453,25 +756,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 321938898}
-  - component: {fileID: 321938897}
+  - component: {fileID: 144003550}
+  - component: {fileID: 144003549}
   m_Layer: 0
-  m_Name: Job (14)
+  m_Name: Job (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &321938897
+--- !u!114 &144003549
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 321938896}
+  m_GameObject: {fileID: 144003548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3809fef0968157458f664fe5f79dc5f, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a1d96404afa299468567445366a0012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pipeline: {fileID: 667265767}
@@ -479,21 +782,1297 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  jobName: Generate Description
---- !u!4 &321938898
+  jobName: Job18
+  performJob: 1
+--- !u!4 &144003550
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 321938896}
+  m_GameObject: {fileID: 144003548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &179194109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 179194111}
+  - component: {fileID: 179194110}
+  m_Layer: 0
+  m_Name: Job (92)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &179194110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179194109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f058f97a635e4e45a8116bd891c2f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job92
+  performJob: 0
+--- !u!4 &179194111
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179194109}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 96
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &183076509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 183076511}
+  - component: {fileID: 183076510}
+  m_Layer: 0
+  m_Name: Job (96)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &183076510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183076509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e954d03a304e3b47b1ebfc64bfe9cf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job96
+  performJob: 0
+--- !u!4 &183076511
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183076509}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 100
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &201768416
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 201768418}
+  - component: {fileID: 201768417}
+  m_Layer: 0
+  m_Name: Job (23)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &201768417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201768416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f89c09aa4e0794478d92a3c0960ca36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job23
+  performJob: 1
+--- !u!4 &201768418
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201768416}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 27
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &268082140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 268082142}
+  - component: {fileID: 268082141}
+  m_Layer: 0
+  m_Name: Job (52)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &268082141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268082140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4257800ed2a73594d8e6085f61f1a6b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job52
+  performJob: 1
+--- !u!4 &268082142
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268082140}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 56
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &283005005
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 283005007}
+  - component: {fileID: 283005006}
+  m_Layer: 0
+  m_Name: Job (26)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &283005006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283005005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76a571d5df379034181bd526c06d0223, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job26
+  performJob: 1
+--- !u!4 &283005007
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283005005}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 30
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &286177452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 286177454}
+  - component: {fileID: 286177453}
+  m_Layer: 0
+  m_Name: Job (85)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &286177453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286177452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91cf0ca6fc4d8094ba31199ebb0e391c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job85
+  performJob: 0
+--- !u!4 &286177454
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286177452}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 89
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &288783401
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 288783403}
+  - component: {fileID: 288783402}
+  m_Layer: 0
+  m_Name: Job (62)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &288783402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288783401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff7d58663c8d65a4f8912e7e6ae93238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job62
+  performJob: 0
+--- !u!4 &288783403
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288783401}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 66
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &296293981
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 296293983}
+  - component: {fileID: 296293982}
+  m_Layer: 0
+  m_Name: Job (81)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &296293982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296293981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfbafc3a4ed90754b9d2b1287533f5e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job81
+  performJob: 0
+--- !u!4 &296293983
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296293981}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 85
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &304537468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 304537470}
+  - component: {fileID: 304537469}
+  m_Layer: 0
+  m_Name: Job (39)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &304537469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304537468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5996b724ccb586649a95d10eae841ec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job39
+  performJob: 1
+--- !u!4 &304537470
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304537468}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 43
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &318772128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 318772130}
+  - component: {fileID: 318772129}
+  m_Layer: 0
+  m_Name: Job (32)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &318772129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318772128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8492df6547957cc4d81c6219b3b9d43b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job32
+  performJob: 1
+--- !u!4 &318772130
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318772128}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 36
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &330259546
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 330259548}
+  - component: {fileID: 330259547}
+  m_Layer: 0
+  m_Name: Job (46)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &330259547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330259546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f586a98fb596a44ad02be1811ba041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job46
+  performJob: 0
+--- !u!4 &330259548
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330259546}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 50
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &332420713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 332420715}
+  - component: {fileID: 332420714}
+  m_Layer: 0
+  m_Name: Job (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &332420714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332420713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cb509e837feb2a48b60c5161c823b2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: 
+  performJob: 1
+--- !u!4 &332420715
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332420713}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &332449523
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 332449525}
+  - component: {fileID: 332449524}
+  m_Layer: 0
+  m_Name: Job (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &332449524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332449523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c2afedd10980c941bd4ef620820a70e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: 
+  performJob: 1
+--- !u!4 &332449525
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332449523}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &349514197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 349514199}
+  - component: {fileID: 349514198}
+  m_Layer: 0
+  m_Name: Job (38)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &349514198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349514197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d98e821cd9c3e49bb29f5b7b3c2279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job38
+  performJob: 1
+--- !u!4 &349514199
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349514197}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 42
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &403360162
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 403360164}
+  - component: {fileID: 403360163}
+  m_Layer: 0
+  m_Name: Job (37)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &403360163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403360162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87f6b89201863174d8913c136095bd49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job37
+  performJob: 1
+--- !u!4 &403360164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403360162}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 41
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &408560561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 408560563}
+  - component: {fileID: 408560562}
+  m_Layer: 0
+  m_Name: Job (43)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &408560562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408560561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0c70133be626f548b4923cebad80ca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job43
+  performJob: 0
+--- !u!4 &408560563
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408560561}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 47
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &420809438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 420809440}
+  - component: {fileID: 420809439}
+  m_Layer: 0
+  m_Name: Job (20)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &420809439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420809438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0976a65e491c6945b4606dfdfb2f7ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job20
+  performJob: 1
+--- !u!4 &420809440
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420809438}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &431922676
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 431922678}
+  - component: {fileID: 431922677}
+  m_Layer: 0
+  m_Name: Job (76)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &431922677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431922676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d46373900b331394ca9ad04147e23db4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job76
+  performJob: 0
+--- !u!4 &431922678
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431922676}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 80
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &455573128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 455573130}
+  - component: {fileID: 455573129}
+  m_Layer: 0
+  m_Name: Job (34)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &455573129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455573128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da2597e078e81547bf34cd378f94d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job34
+  performJob: 1
+--- !u!4 &455573130
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455573128}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 38
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &476014804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 476014806}
+  - component: {fileID: 476014805}
+  m_Layer: 0
+  m_Name: Job (21)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &476014805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476014804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65e1687853285e408715406362b029b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job21
+  performJob: 1
+--- !u!4 &476014806
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476014804}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 25
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &478329345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 478329347}
+  - component: {fileID: 478329346}
+  m_Layer: 0
+  m_Name: Job (8)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &478329346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478329345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e8eea78931ca548a1a8fe8605ea300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: 
+  performJob: 1
+--- !u!4 &478329347
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478329345}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &483161079
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 483161081}
+  - component: {fileID: 483161080}
+  m_Layer: 0
+  m_Name: Job (72)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &483161080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483161079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde97a9d63120a044a57761e8b8ed2e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job72
+  performJob: 0
+--- !u!4 &483161081
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483161079}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 76
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &509573807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 509573809}
+  - component: {fileID: 509573808}
+  m_Layer: 0
+  m_Name: Job (30)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &509573808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509573807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c2b67b071b2364399a052b30d52d68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job30
+  performJob: 1
+--- !u!4 &509573809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509573807}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 34
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &541614704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 541614706}
+  - component: {fileID: 541614705}
+  m_Layer: 0
+  m_Name: Job (58)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &541614705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541614704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84aebc072cdba043993e1e2196aad7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job58
+  performJob: 0
+--- !u!4 &541614706
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541614704}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 62
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &549805473
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 549805475}
+  - component: {fileID: 549805474}
+  m_Layer: 0
+  m_Name: Job (19)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &549805474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549805473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8015e8b1924b62449912508e8e80ffa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job19
+  performJob: 1
+--- !u!4 &549805475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549805473}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &578356739
 GameObject:
@@ -607,7 +2186,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578356739}
   m_CullTransparentMesh: 1
---- !u!1 &617257217
+--- !u!1 &599977909
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -615,25 +2194,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 617257219}
-  - component: {fileID: 617257218}
+  - component: {fileID: 599977911}
+  - component: {fileID: 599977910}
   m_Layer: 0
-  m_Name: Job (9)
+  m_Name: Job (60)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &617257218
+--- !u!114 &599977910
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 617257217}
+  m_GameObject: {fileID: 599977909}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82f40962010c81243938e742b6b9ecd6, type: 3}
+  m_Script: {fileID: 11500000, guid: 62c4d53126bcb2b45878a9fedc8148a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pipeline: {fileID: 667265767}
@@ -641,23 +2220,24 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  jobName: Generate Dialog Option 04
---- !u!4 &617257219
+  jobName: Job60
+  performJob: 0
+--- !u!4 &599977911
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 617257217}
+  m_GameObject: {fileID: 599977909}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 64
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &641285806
+--- !u!1 &602441340
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -665,25 +2245,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 641285808}
-  - component: {fileID: 641285807}
+  - component: {fileID: 602441342}
+  - component: {fileID: 602441341}
   m_Layer: 0
-  m_Name: Job (7)
+  m_Name: Job (71)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &641285807
+--- !u!114 &602441341
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 641285806}
+  m_GameObject: {fileID: 602441340}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aca93d52532811147b9a0e20fe57ef40, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f7ca0158840adc43b8e76f08efbb8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pipeline: {fileID: 667265767}
@@ -691,21 +2271,328 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  jobName: Generate Dialog Option 02
---- !u!4 &641285808
+  jobName: Job71
+  performJob: 0
+--- !u!4 &602441342
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 641285806}
+  m_GameObject: {fileID: 602441340}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 75
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &611339039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 611339041}
+  - component: {fileID: 611339040}
+  m_Layer: 0
+  m_Name: Job (79)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &611339040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611339039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c026beef21e29f4b9fca9da7cbf7b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job79
+  performJob: 0
+--- !u!4 &611339041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611339039}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 83
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &611762524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 611762526}
+  - component: {fileID: 611762525}
+  m_Layer: 0
+  m_Name: Job (74)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &611762525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611762524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c742c03553b9504da35eda8f9906110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job74
+  performJob: 0
+--- !u!4 &611762526
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611762524}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 78
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &636989528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 636989530}
+  - component: {fileID: 636989529}
+  m_Layer: 0
+  m_Name: Job (94)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &636989529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636989528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afd083db42cda7b458831c62043b6c0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job94
+  performJob: 0
+--- !u!4 &636989530
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636989528}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 98
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &646012940
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 646012942}
+  - component: {fileID: 646012941}
+  m_Layer: 0
+  m_Name: Job (35)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &646012941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646012940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da6813aa10a5bf4ca7bd7eb0451c1af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job35
+  performJob: 1
+--- !u!4 &646012942
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646012940}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 39
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &654173399
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 654173401}
+  - component: {fileID: 654173400}
+  m_Layer: 0
+  m_Name: Job (98)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &654173400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654173399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1befb130940a13c42bf9c311f9581dca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job98
+  performJob: 0
+--- !u!4 &654173401
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654173399}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 102
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &664668026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 664668028}
+  - component: {fileID: 664668027}
+  m_Layer: 0
+  m_Name: Job (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &664668027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664668026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfb30b5f2202dbd48aa076c39f9c7bce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: 
+  performJob: 1
+--- !u!4 &664668028
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664668026}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &667265766
 GameObject:
@@ -738,23 +2625,107 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   controller: {fileID: 110977351}
-  job01: {fileID: 1565213036}
-  job02: {fileID: 826781685}
-  job03: {fileID: 964037659}
-  job04: {fileID: 1448449073}
-  job05: {fileID: 1206214832}
-  job06: {fileID: 924317150}
-  job07: {fileID: 641285807}
-  job08: {fileID: 1346911535}
-  job09: {fileID: 617257218}
-  job10: {fileID: 2143146053}
-  job11: {fileID: 1874015880}
-  job12: {fileID: 1581598321}
-  job13: {fileID: 184171209}
-  job14: {fileID: 321938897}
-  job15: {fileID: 677590164}
   numberOfJobs: 0
   numberOfCompletedJobs: 0
+  job01: {fileID: 1565213036}
+  job02: {fileID: 102952383}
+  job03: {fileID: 332420714}
+  job04: {fileID: 664668027}
+  job05: {fileID: 784724498}
+  job06: {fileID: 332449524}
+  job07: {fileID: 918570848}
+  job08: {fileID: 478329346}
+  job09: {fileID: 1490861719}
+  job10: {fileID: 1034097367}
+  job11: {fileID: 1549719257}
+  job12: {fileID: 1391643914}
+  job13: {fileID: 1163139526}
+  job14: {fileID: 1988289495}
+  job15: {fileID: 1413174077}
+  job16: {fileID: 1578710284}
+  job17: {fileID: 1877705171}
+  job18: {fileID: 144003549}
+  job19: {fileID: 549805474}
+  job20: {fileID: 420809439}
+  job21: {fileID: 476014805}
+  job22: {fileID: 1857607702}
+  job23: {fileID: 201768417}
+  job24: {fileID: 2013152832}
+  job25: {fileID: 1356089391}
+  job26: {fileID: 283005006}
+  job27: {fileID: 1974584919}
+  job28: {fileID: 801180051}
+  job29: {fileID: 1011847337}
+  job30: {fileID: 509573808}
+  job31: {fileID: 1051496653}
+  job32: {fileID: 318772129}
+  job33: {fileID: 1437524888}
+  job34: {fileID: 455573129}
+  job35: {fileID: 646012941}
+  job36: {fileID: 41452033}
+  job37: {fileID: 403360163}
+  job38: {fileID: 349514198}
+  job39: {fileID: 304537469}
+  job40: {fileID: 1537746964}
+  job41: {fileID: 1725776333}
+  job42: {fileID: 1904140653}
+  job43: {fileID: 408560562}
+  job44: {fileID: 853669178}
+  job45: {fileID: 916730390}
+  job46: {fileID: 330259547}
+  job47: {fileID: 1172171158}
+  job48: {fileID: 910577897}
+  job49: {fileID: 1840841465}
+  job50: {fileID: 699392382}
+  job51: {fileID: 1297602547}
+  job52: {fileID: 268082141}
+  job53: {fileID: 1895203989}
+  job54: {fileID: 1686111127}
+  job55: {fileID: 129546996}
+  job56: {fileID: 1768079925}
+  job57: {fileID: 1575563644}
+  job58: {fileID: 541614705}
+  job59: {fileID: 37589291}
+  job60: {fileID: 599977910}
+  job61: {fileID: 2076230538}
+  job62: {fileID: 288783402}
+  job63: {fileID: 1622686916}
+  job64: {fileID: 1154715966}
+  job65: {fileID: 1649482152}
+  job66: {fileID: 1608893263}
+  job67: {fileID: 1486850591}
+  job68: {fileID: 1059270881}
+  job69: {fileID: 1083158734}
+  job70: {fileID: 830922621}
+  job71: {fileID: 602441341}
+  job72: {fileID: 483161080}
+  job73: {fileID: 1903169809}
+  job74: {fileID: 611762525}
+  job75: {fileID: 1068500336}
+  job76: {fileID: 431922677}
+  job77: {fileID: 942522326}
+  job78: {fileID: 1634682460}
+  job79: {fileID: 611339040}
+  job80: {fileID: 2043354916}
+  job81: {fileID: 296293982}
+  job82: {fileID: 1963330442}
+  job83: {fileID: 42724777}
+  job84: {fileID: 1308938699}
+  job85: {fileID: 286177453}
+  job86: {fileID: 1008303213}
+  job87: {fileID: 1718961861}
+  job88: {fileID: 1281521402}
+  job89: {fileID: 879966507}
+  job90: {fileID: 1462874343}
+  job91: {fileID: 1331477542}
+  job92: {fileID: 179194110}
+  job93: {fileID: 1278599817}
+  job94: {fileID: 636989529}
+  job95: {fileID: 1818569312}
+  job96: {fileID: 183076510}
+  job97: {fileID: 1443362180}
+  job98: {fileID: 654173400}
+  job99: {fileID: 1716520793}
 --- !u!4 &667265768
 Transform:
   m_ObjectHideFlags: 0
@@ -770,7 +2741,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &677590163
+--- !u!1 &699392381
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -778,25 +2749,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 677590165}
-  - component: {fileID: 677590164}
+  - component: {fileID: 699392383}
+  - component: {fileID: 699392382}
   m_Layer: 0
-  m_Name: Job (15)
+  m_Name: Job (50)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &677590164
+--- !u!114 &699392382
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 677590163}
+  m_GameObject: {fileID: 699392381}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45f3ae538c724e64791fa985cce71548, type: 3}
+  m_Script: {fileID: 11500000, guid: af82c93df5f83104297abff19a4dced8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pipeline: {fileID: 667265767}
@@ -804,21 +2775,22 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  jobName: Choose Display Image
---- !u!4 &677590165
+  jobName: Job50
+  performJob: 1
+--- !u!4 &699392383
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 677590163}
+  m_GameObject: {fileID: 699392381}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 54
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &718446985
 GameObject:
@@ -900,6 +2872,108 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &784724497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 784724499}
+  - component: {fileID: 784724498}
+  m_Layer: 0
+  m_Name: Job (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &784724498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784724497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12019d18d414deb4fb419e9da0a496a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: 
+  performJob: 1
+--- !u!4 &784724499
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784724497}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &801180050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 801180052}
+  - component: {fileID: 801180051}
+  m_Layer: 0
+  m_Name: Job (28)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &801180051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801180050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bac4d282e22e4440bf9a0424e29476a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job28
+  performJob: 1
+--- !u!4 &801180052
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801180050}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 32
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &815715643
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,7 +3058,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &826781684
+--- !u!1 &830922620
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -992,25 +3066,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 826781686}
-  - component: {fileID: 826781685}
+  - component: {fileID: 830922622}
+  - component: {fileID: 830922621}
   m_Layer: 0
-  m_Name: Job (2)
+  m_Name: Job (70)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &826781685
+--- !u!114 &830922621
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 826781684}
+  m_GameObject: {fileID: 830922620}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65a8708a8bf70434ba8c80e9306dee1c, type: 3}
+  m_Script: {fileID: 11500000, guid: 281b7b27c3f00004ab95df8dbda97bb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pipeline: {fileID: 667265767}
@@ -1018,23 +3092,24 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  jobName: Modfiy Answer Two
---- !u!4 &826781686
+  jobName: Job70
+  performJob: 0
+--- !u!4 &830922622
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 826781684}
+  m_GameObject: {fileID: 830922620}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 74
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &924317149
+--- !u!1 &853669177
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1042,25 +3117,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 924317151}
-  - component: {fileID: 924317150}
+  - component: {fileID: 853669179}
+  - component: {fileID: 853669178}
   m_Layer: 0
-  m_Name: Job (6)
+  m_Name: Job (44)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &924317150
+--- !u!114 &853669178
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 924317149}
+  m_GameObject: {fileID: 853669177}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d493ac16e9468d648bbfb7c9d27c93a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 78893e4aed5e9c040ad40d6637c1a9d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pipeline: {fileID: 667265767}
@@ -1068,23 +3143,24 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  jobName: Generate Dialog Option 01
---- !u!4 &924317151
+  jobName: Job44
+  performJob: 0
+--- !u!4 &853669179
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 924317149}
+  m_GameObject: {fileID: 853669177}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 48
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &964037658
+--- !u!1 &879966506
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1092,25 +3168,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 964037660}
-  - component: {fileID: 964037659}
+  - component: {fileID: 879966508}
+  - component: {fileID: 879966507}
   m_Layer: 0
-  m_Name: Job (3)
+  m_Name: Job (89)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &964037659
+--- !u!114 &879966507
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 964037658}
+  m_GameObject: {fileID: 879966506}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a099616bfc48d6c49893203fcd7d0c3f, type: 3}
+  m_Script: {fileID: 11500000, guid: 750788327c30ccb47a445c94b2ce38e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pipeline: {fileID: 667265767}
@@ -1118,23 +3194,24 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  jobName: Modfiy Answer Three
---- !u!4 &964037660
+  jobName: Job89
+  performJob: 0
+--- !u!4 &879966508
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 964037658}
+  m_GameObject: {fileID: 879966506}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 93
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1206214831
+--- !u!1 &910577896
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1142,25 +3219,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1206214833}
-  - component: {fileID: 1206214832}
+  - component: {fileID: 910577898}
+  - component: {fileID: 910577897}
   m_Layer: 0
-  m_Name: Job (5)
+  m_Name: Job (48)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1206214832
+--- !u!114 &910577897
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1206214831}
+  m_GameObject: {fileID: 910577896}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77214822fe285464a8ad5193eb9d98c8, type: 3}
+  m_Script: {fileID: 11500000, guid: cdfaebbc52fbc974880d958b0fde050f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pipeline: {fileID: 667265767}
@@ -1168,23 +3245,24 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  jobName: Summarize Novel
---- !u!4 &1206214833
+  jobName: Job48
+  performJob: 0
+--- !u!4 &910577898
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1206214831}
+  m_GameObject: {fileID: 910577896}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 52
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1346911534
+--- !u!1 &916730389
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1192,25 +3270,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1346911536}
-  - component: {fileID: 1346911535}
+  - component: {fileID: 916730391}
+  - component: {fileID: 916730390}
   m_Layer: 0
-  m_Name: Job (8)
+  m_Name: Job (45)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1346911535
+--- !u!114 &916730390
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1346911534}
+  m_GameObject: {fileID: 916730389}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35d8ab5470280245a4b7dda4fe5f5d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c44e9f6ca351524e99060ab08991f08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pipeline: {fileID: 667265767}
@@ -1218,21 +3296,991 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  jobName: Generate Dialog Option 03
---- !u!4 &1346911536
+  jobName: Job45
+  performJob: 0
+--- !u!4 &916730391
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1346911534}
+  m_GameObject: {fileID: 916730389}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 49
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &918570847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 918570849}
+  - component: {fileID: 918570848}
+  m_Layer: 0
+  m_Name: Job (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &918570848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918570847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c0ee95c3734a8d4a99ee9dece163828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: 
+  performJob: 1
+--- !u!4 &918570849
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918570847}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &942522325
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 942522327}
+  - component: {fileID: 942522326}
+  m_Layer: 0
+  m_Name: Job (77)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &942522326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942522325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51bfcee4dce90bc4082e916d38b2e488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job77
+  performJob: 0
+--- !u!4 &942522327
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942522325}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 81
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1008303212
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1008303214}
+  - component: {fileID: 1008303213}
+  m_Layer: 0
+  m_Name: Job (86)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1008303213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008303212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9caf24c0bd30f04f84f8ec2092da510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job86
+  performJob: 0
+--- !u!4 &1008303214
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008303212}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 90
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1011847336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1011847338}
+  - component: {fileID: 1011847337}
+  m_Layer: 0
+  m_Name: Job (29)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1011847337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011847336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb6ee01a041b64948868d7663ca41e3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job29
+  performJob: 1
+--- !u!4 &1011847338
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011847336}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 33
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1034097366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1034097368}
+  - component: {fileID: 1034097367}
+  m_Layer: 0
+  m_Name: Job (10)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1034097367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034097366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b80a473d4a9d0ba458b3430141ceacd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: 
+  performJob: 1
+--- !u!4 &1034097368
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034097366}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1051496652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1051496654}
+  - component: {fileID: 1051496653}
+  m_Layer: 0
+  m_Name: Job (31)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1051496653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051496652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff307b447f3e96d4b859fe999e0dbbdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job31
+  performJob: 1
+--- !u!4 &1051496654
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051496652}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 35
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1059270880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1059270882}
+  - component: {fileID: 1059270881}
+  m_Layer: 0
+  m_Name: Job (68)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1059270881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059270880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a385a194d090140a28560e929abecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job68
+  performJob: 0
+--- !u!4 &1059270882
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059270880}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 72
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1068500335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1068500337}
+  - component: {fileID: 1068500336}
+  m_Layer: 0
+  m_Name: Job (75)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1068500336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068500335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dfc18187b4da0e418b046c424739f90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job75
+  performJob: 0
+--- !u!4 &1068500337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068500335}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 79
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1083158733
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1083158735}
+  - component: {fileID: 1083158734}
+  m_Layer: 0
+  m_Name: Job (69)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1083158734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083158733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b814abe9510a4842bb512c1d7171eb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job69
+  performJob: 0
+--- !u!4 &1083158735
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083158733}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 73
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1154715965
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1154715967}
+  - component: {fileID: 1154715966}
+  m_Layer: 0
+  m_Name: Job (64)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1154715966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154715965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a2f98d13737b1a4fb675e966136ed5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job64
+  performJob: 0
+--- !u!4 &1154715967
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154715965}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 68
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1163139525
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1163139527}
+  - component: {fileID: 1163139526}
+  m_Layer: 0
+  m_Name: Job (13)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1163139526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163139525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae79bd1dd052a6b4bbed5c347e5803d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: 
+  performJob: 1
+--- !u!4 &1163139527
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163139525}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1172171157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1172171159}
+  - component: {fileID: 1172171158}
+  m_Layer: 0
+  m_Name: Job (47)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1172171158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172171157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2be5c8137641b464585ebf9b93bdbe47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job47
+  performJob: 0
+--- !u!4 &1172171159
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172171157}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 51
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1278599816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1278599818}
+  - component: {fileID: 1278599817}
+  m_Layer: 0
+  m_Name: Job (93)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1278599817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278599816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03bb10f28bb83ca45a73a985bab3461e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job93
+  performJob: 0
+--- !u!4 &1278599818
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278599816}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 97
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1281521401
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1281521403}
+  - component: {fileID: 1281521402}
+  m_Layer: 0
+  m_Name: Job (88)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1281521402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281521401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 631514a3f9cbd364eaaa2c284bb5cee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job88
+  performJob: 0
+--- !u!4 &1281521403
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281521401}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 92
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1297602546
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1297602548}
+  - component: {fileID: 1297602547}
+  m_Layer: 0
+  m_Name: Job (51)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1297602547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297602546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca4a0787f03c3fb48923c4e2af3fe893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job51
+  performJob: 1
+--- !u!4 &1297602548
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297602546}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 55
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1308938698
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1308938700}
+  - component: {fileID: 1308938699}
+  m_Layer: 0
+  m_Name: Job (84)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1308938699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308938698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bdf37670b110c441ac472cef3521621, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job84
+  performJob: 0
+--- !u!4 &1308938700
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308938698}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 88
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1331477541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1331477543}
+  - component: {fileID: 1331477542}
+  m_Layer: 0
+  m_Name: Job (91)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1331477542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331477541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0529f3735bee2c44f84fc13c3ec2c642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job91
+  performJob: 0
+--- !u!4 &1331477543
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331477541}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 95
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1356089390
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1356089392}
+  - component: {fileID: 1356089391}
+  m_Layer: 0
+  m_Name: Job (25)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1356089391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356089390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe7f70c40093ae04aaea69e73dbd2f77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job25
+  performJob: 1
+--- !u!4 &1356089392
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356089390}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 29
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1391643913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1391643915}
+  - component: {fileID: 1391643914}
+  m_Layer: 0
+  m_Name: Job (12)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1391643914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391643913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c0368246961a40428d2d93108cbd668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: 
+  performJob: 1
+--- !u!4 &1391643915
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391643913}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1411983107
 GameObject:
@@ -1301,6 +4349,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1413174076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1413174078}
+  - component: {fileID: 1413174077}
+  m_Layer: 0
+  m_Name: Job (15)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1413174077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413174076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 417636eb2ab67cf428ee86d6bfb56333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job15
+  performJob: 1
+--- !u!4 &1413174078
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413174076}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1436275883
 GameObject:
@@ -1414,7 +4513,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1436275883}
   m_CullTransparentMesh: 1
---- !u!1 &1448449072
+--- !u!1 &1437524887
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1422,25 +4521,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1448449074}
-  - component: {fileID: 1448449073}
+  - component: {fileID: 1437524889}
+  - component: {fileID: 1437524888}
   m_Layer: 0
-  m_Name: Job (4)
+  m_Name: Job (33)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1448449073
+--- !u!114 &1437524888
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1448449072}
+  m_GameObject: {fileID: 1437524887}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f0fa88db0cf4394faf800dcd00482cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 0195c5e0193e0354c9481138e635bd93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pipeline: {fileID: 667265767}
@@ -1448,21 +4547,124 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  jobName: Generate Linear Novel
---- !u!4 &1448449074
+  jobName: Job33
+  performJob: 1
+--- !u!4 &1437524889
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1448449072}
+  m_GameObject: {fileID: 1437524887}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 37
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1443362179
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1443362181}
+  - component: {fileID: 1443362180}
+  m_Layer: 0
+  m_Name: Job (97)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1443362180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443362179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50b7b0957701d514f828b48a40ae1c65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job97
+  performJob: 0
+--- !u!4 &1443362181
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443362179}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 101
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1462874342
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1462874344}
+  - component: {fileID: 1462874343}
+  m_Layer: 0
+  m_Name: Job (90)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1462874343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462874342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e4f8f82b844a640aaa2bc5f06e7a64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job90
+  performJob: 0
+--- !u!4 &1462874344
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462874342}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 94
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1483264653
 GameObject:
@@ -1576,6 +4778,210 @@ RectTransform:
   m_AnchoredPosition: {x: 150, y: -115.9975}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1486850590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1486850592}
+  - component: {fileID: 1486850591}
+  m_Layer: 0
+  m_Name: Job (67)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1486850591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486850590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11caa1aed72f8424b890669c64701482, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job67
+  performJob: 0
+--- !u!4 &1486850592
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486850590}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 71
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1490861718
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1490861720}
+  - component: {fileID: 1490861719}
+  m_Layer: 0
+  m_Name: Job (9)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1490861719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490861718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a484971a94a2364c8e44405f8f7ad95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: 
+  performJob: 1
+--- !u!4 &1490861720
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490861718}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1537746963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1537746965}
+  - component: {fileID: 1537746964}
+  m_Layer: 0
+  m_Name: Job (40)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1537746964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537746963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ea83450ef69dc45a062f1c0861e382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job40
+  performJob: 1
+--- !u!4 &1537746965
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537746963}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 44
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1549719256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1549719258}
+  - component: {fileID: 1549719257}
+  m_Layer: 0
+  m_Name: Job (11)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1549719257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549719256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c468cb1ab4691444987e91664b0923c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: 
+  performJob: 1
+--- !u!4 &1549719258
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549719256}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1565213035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1602,7 +5008,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1565213035}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c346ea5ef4940c43abefe9cc82c5ec9, type: 3}
+  m_Script: {fileID: 11500000, guid: c71b6b7769dd3cb4ca3a8adf8c3e462d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pipeline: {fileID: 667265767}
@@ -1610,7 +5016,8 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  jobName: Modfiy Answer One
+  jobName: 
+  performJob: 1
 --- !u!4 &1565213037
 Transform:
   m_ObjectHideFlags: 0
@@ -1626,7 +5033,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1581598320
+--- !u!1 &1575563643
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1634,25 +5041,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1581598322}
-  - component: {fileID: 1581598321}
+  - component: {fileID: 1575563645}
+  - component: {fileID: 1575563644}
   m_Layer: 0
-  m_Name: Job (12)
+  m_Name: Job (57)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1581598321
+--- !u!114 &1575563644
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1581598320}
+  m_GameObject: {fileID: 1575563643}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba3ed5fe2148b7b438b5d504f8e024d0, type: 3}
+  m_Script: {fileID: 11500000, guid: ffc3ff4b420210446bd3e8754b4d6da2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pipeline: {fileID: 667265767}
@@ -1660,21 +5067,481 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  jobName: Choose Character
---- !u!4 &1581598322
+  jobName: Job57
+  performJob: 0
+--- !u!4 &1575563645
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1581598320}
+  m_GameObject: {fileID: 1575563643}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 61
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1578710283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1578710285}
+  - component: {fileID: 1578710284}
+  m_Layer: 0
+  m_Name: Job (16)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1578710284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578710283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b157d395dd98845964cb92852cf731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job16
+  performJob: 1
+--- !u!4 &1578710285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578710283}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1608893262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1608893264}
+  - component: {fileID: 1608893263}
+  m_Layer: 0
+  m_Name: Job (66)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1608893263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608893262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80fb644a41f17b54bb87cc031ea4fc7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job66
+  performJob: 0
+--- !u!4 &1608893264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608893262}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 70
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1622686915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1622686917}
+  - component: {fileID: 1622686916}
+  m_Layer: 0
+  m_Name: Job (63)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1622686916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622686915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b30f4288d7b33714b9914f56971b177d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job63
+  performJob: 0
+--- !u!4 &1622686917
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622686915}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 67
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1634682459
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1634682461}
+  - component: {fileID: 1634682460}
+  m_Layer: 0
+  m_Name: Job (78)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1634682460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634682459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8e7e152e81cd5340809efc75eef5170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job78
+  performJob: 0
+--- !u!4 &1634682461
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634682459}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 82
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1649482151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1649482153}
+  - component: {fileID: 1649482152}
+  m_Layer: 0
+  m_Name: Job (65)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1649482152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649482151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dce2fc5dcc3cf4241b52d78665032b95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job65
+  performJob: 0
+--- !u!4 &1649482153
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649482151}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 69
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1686111126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1686111128}
+  - component: {fileID: 1686111127}
+  m_Layer: 0
+  m_Name: Job (54)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1686111127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686111126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d95048b5956b43d4ba8fc1da156f2ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job54
+  performJob: 0
+--- !u!4 &1686111128
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686111126}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 58
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1716520792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1716520794}
+  - component: {fileID: 1716520793}
+  m_Layer: 0
+  m_Name: Job (99)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1716520793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716520792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ff25510c41911c4cbeb15b7ad11967b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job99
+  performJob: 0
+--- !u!4 &1716520794
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716520792}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 103
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1718961860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1718961862}
+  - component: {fileID: 1718961861}
+  m_Layer: 0
+  m_Name: Job (87)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1718961861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718961860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c7020c2c2dad94982f7bb48a0f102c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job87
+  performJob: 0
+--- !u!4 &1718961862
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718961860}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 91
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1725776332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1725776334}
+  - component: {fileID: 1725776333}
+  m_Layer: 0
+  m_Name: Job (41)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1725776333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725776332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5d217b23e6d3934b99e2afceb85f684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job41
+  performJob: 1
+--- !u!4 &1725776334
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725776332}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 45
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1748407828
 GameObject:
@@ -1778,6 +5645,108 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1768079924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1768079926}
+  - component: {fileID: 1768079925}
+  m_Layer: 0
+  m_Name: Job (56)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1768079925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768079924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39165fdaf93e68347aba5f5851774944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job56
+  performJob: 0
+--- !u!4 &1768079926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768079924}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 60
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1818569311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1818569313}
+  - component: {fileID: 1818569312}
+  m_Layer: 0
+  m_Name: Job (95)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1818569312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818569311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14e46372a3f0f3144ac19481f96664af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job95
+  performJob: 0
+--- !u!4 &1818569313
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818569311}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 99
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1826812402
 GameObject:
   m_ObjectHideFlags: 0
@@ -1890,7 +5859,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1826812402}
   m_CullTransparentMesh: 1
---- !u!1 &1874015879
+--- !u!1 &1840841464
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1898,25 +5867,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1874015881}
-  - component: {fileID: 1874015880}
+  - component: {fileID: 1840841466}
+  - component: {fileID: 1840841465}
   m_Layer: 0
-  m_Name: Job (11)
+  m_Name: Job (49)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1874015880
+--- !u!114 &1840841465
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1874015879}
+  m_GameObject: {fileID: 1840841464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0cb6fb68d7295b4dab1f6caa2cb5a7a, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c1a07734a16c0845acddd37acc81426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pipeline: {fileID: 667265767}
@@ -1924,21 +5893,124 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  jobName: Choose Location
---- !u!4 &1874015881
+  jobName: Job49
+  performJob: 0
+--- !u!4 &1840841466
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1874015879}
+  m_GameObject: {fileID: 1840841464}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 53
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1857607701
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1857607703}
+  - component: {fileID: 1857607702}
+  m_Layer: 0
+  m_Name: Job (22)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1857607702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857607701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4b4c15c542eea40a4cd91a8555472a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job22
+  performJob: 1
+--- !u!4 &1857607703
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857607701}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 26
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1877705170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1877705172}
+  - component: {fileID: 1877705171}
+  m_Layer: 0
+  m_Name: Job (17)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1877705171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877705170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 521deb3bbf04b6b4a8d5346a90f9f1ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job17
+  performJob: 1
+--- !u!4 &1877705172
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877705170}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1891601056
 PrefabInstance:
@@ -2106,6 +6178,159 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1364391345958252880, guid: 41c3dc0b81cfc11438c80b89bc1548f8, type: 3}
   m_PrefabInstance: {fileID: 1891601056}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1895203988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1895203990}
+  - component: {fileID: 1895203989}
+  m_Layer: 0
+  m_Name: Job (53)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1895203989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895203988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9223393f98af3b94b8aea67ddf75c662, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job53
+  performJob: 1
+--- !u!4 &1895203990
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895203988}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 57
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1903169808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1903169810}
+  - component: {fileID: 1903169809}
+  m_Layer: 0
+  m_Name: Job (73)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1903169809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903169808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68129220540b59848a09ff03a20d3314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job73
+  performJob: 0
+--- !u!4 &1903169810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903169808}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 77
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1904140652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1904140654}
+  - component: {fileID: 1904140653}
+  m_Layer: 0
+  m_Name: Job (42)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1904140653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904140652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 399d0ad4a614d5a438cbb6ed1bf8f92a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job42
+  performJob: 0
+--- !u!4 &1904140654
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904140652}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 46
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1912650329
 GameObject:
   m_ObjectHideFlags: 0
@@ -2143,7 +6368,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 150, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1912650331
@@ -2218,7 +6443,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1912650329}
   m_CullTransparentMesh: 1
---- !u!1 &2143146052
+--- !u!1 &1963330441
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2226,25 +6451,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2143146054}
-  - component: {fileID: 2143146053}
+  - component: {fileID: 1963330443}
+  - component: {fileID: 1963330442}
   m_Layer: 0
-  m_Name: Job (10)
+  m_Name: Job (82)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2143146053
+--- !u!114 &1963330442
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2143146052}
+  m_GameObject: {fileID: 1963330441}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee29b9d56dd1d8c4090621e860171af3, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f9bb8121d7477440aeb9f97ecb6ee71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pipeline: {fileID: 667265767}
@@ -2252,21 +6477,277 @@ MonoBehaviour:
   prompt: 
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   controller: {fileID: 110977351}
-  jobName: Generate Dialog Option 05
---- !u!4 &2143146054
+  jobName: Job82
+  performJob: 0
+--- !u!4 &1963330443
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2143146052}
+  m_GameObject: {fileID: 1963330441}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 86
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1974584918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1974584920}
+  - component: {fileID: 1974584919}
+  m_Layer: 0
+  m_Name: Job (27)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1974584919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974584918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36c73de5e2a61f043bcfef55a9485100, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job27
+  performJob: 1
+--- !u!4 &1974584920
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974584918}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 31
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1988289494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1988289496}
+  - component: {fileID: 1988289495}
+  m_Layer: 0
+  m_Name: Job (14)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1988289495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988289494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fda08f2961a001409a26abe861b0fd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job14
+  performJob: 1
+--- !u!4 &1988289496
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988289494}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2013152831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2013152833}
+  - component: {fileID: 2013152832}
+  m_Layer: 0
+  m_Name: Job (24)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2013152832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013152831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d6d14470cadad74a9678db62499be42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job24
+  performJob: 1
+--- !u!4 &2013152833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013152831}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 28
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2043354915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2043354917}
+  - component: {fileID: 2043354916}
+  m_Layer: 0
+  m_Name: Job (80)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2043354916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043354915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b8365fb314645442b6fc20e9567096c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job80
+  performJob: 0
+--- !u!4 &2043354917
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043354915}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 84
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2076230537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2076230539}
+  - component: {fileID: 2076230538}
+  m_Layer: 0
+  m_Name: Job (61)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2076230538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076230537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 150ee20b0dc508442a253f92fe145ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeline: {fileID: 667265767}
+  state: 0
+  prompt: 
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
+  controller: {fileID: 110977351}
+  jobName: Job61
+  performJob: 0
+--- !u!4 &2076230539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076230537}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5533, y: 856.29016, z: 85.81659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 65
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2003831897853452794
 GameObject:
@@ -3733,8 +8214,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 325, y: 0}
+  m_SizeDelta: {x: 650, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7968387007465432266
 MonoBehaviour:

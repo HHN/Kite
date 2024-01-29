@@ -7,10 +7,7 @@ public class PressTalkNovel : VisualNovel
     {
         id = -3;
         title = "Pressegespräch";
-        description = "Du befindest dich auf einer Veranstaltung, bei der Jungunternehmer*innen ihre " +
-            "Geschäftsidee vor einem Publikum präsentieren können, um Rückmeldung zu der Idee zu " +
-            "erhalten und zu networken. Nachdem du deine Geschäftsidee vor dem Publikum gepitcht hast, " +
-            "stellst du dich an einen Tisch mit anderen Gästen, um mit ihnen zu reden.";
+        description = "Du befindest dich auf einer Veranstaltung, bei der Jungunternehmer*innen ihre Geschäftsidee vor einem Publikum präsentieren können, um Rückmeldung zu der Idee zu erhalten und zu networken. Nachdem du deine Geschäftsidee vor dem Publikum gepitcht hast, stellst du dich an einen Tisch mit anderen Gästen, um mit ihnen zu reden.";
         image = 2;
         context = "Es ist das Gespräch einer Gründerin, Lea, mit einer Journalistin. Die Journalistin hat die Gründerin angesprochen und möchte einen Artikel über sie und ihr Unternehmen schreiben. Die Gründerin freut sich über diese Gelegenheit und hofft auf einen schönen Artikel.";
         nameOfMainCharacter = "Lea";
@@ -275,7 +272,7 @@ public class PressTalkNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 23,
-                nextId = 99,
+                nextId = 99001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
@@ -341,7 +338,7 @@ public class PressTalkNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 29,
-                nextId = 99,
+                nextId = 99001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -472,7 +469,7 @@ public class PressTalkNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 41,
-                nextId = 99,
+                nextId = 99001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Mayer",
@@ -572,7 +569,7 @@ public class PressTalkNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 50,
-                nextId = 99,
+                nextId = 99001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea", // TODO: chnage to narrator when implemented
@@ -605,7 +602,7 @@ public class PressTalkNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 53,
-                nextId = 99,
+                nextId = 99001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Mayer",
@@ -617,7 +614,7 @@ public class PressTalkNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 54,
-                nextId = 99,
+                nextId = 99001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
@@ -1115,6 +1112,15 @@ public class PressTalkNovel : VisualNovel
                 name = "Lea",
                 text = "Ich sehe, dass wir in dieser Angelegenheit keine Übereinstimmung finden werden. " + 
                 "Ich denke, es ist am besten, wenn wir das Gespräch hier beenden.Auf Wiedersehen."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 99001,
+                nextId = 99,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.LEAVE_SCENE)
             },
 
             new VisualNovelEvent()

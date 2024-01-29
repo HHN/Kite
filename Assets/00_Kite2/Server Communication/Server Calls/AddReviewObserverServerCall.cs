@@ -25,6 +25,11 @@ public class AddReviewObserverServerCall : ServerCall
                     onSuccessHandler.OnSuccess(response);
                     return;
                 }
+            case ResultCode.REVIEW_OBSERVER_ALREADY_EXISTS:
+                {
+                    sceneController.DisplayInfoMessage(ErrorMessages.REVIEW_OBSERVER_ALREADY_EXISTS);
+                    return;
+                }
             default:
                 {
                     sceneController.DisplayErrorMessage(ErrorMessages.UNEXPECTED_SERVER_ERROR);

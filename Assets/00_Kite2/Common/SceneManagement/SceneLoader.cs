@@ -51,6 +51,11 @@ public class SceneLoader
         LoadScene(SceneNames.INFO_SCENE);
     }
 
+    public static void LoadInfoTextScene()
+    {
+        LoadScene(SceneNames.INFO_TEXT_SCENE);
+    }
+
     public static void LoadCommentSectionScene()
     {
         LoadScene(SceneNames.COMMENT_SECTION_SCENE);

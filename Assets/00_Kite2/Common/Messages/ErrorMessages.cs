@@ -14,4 +14,5 @@ public class ErrorMessages
     public static readonly string WRONG_PASSWORD = "Das angegebene alte Passwort ist nicht korrekt.";
     public static readonly string USER_NOT_FOUND = "Der angegebene Benutzername oder die angegebene Email-Adresse ist nicht registriert.";
     public static readonly string NO_COMMENT_ENTERED = "Bitte gebe den Kommentar ein, den du posten möchtest!";
+    public static readonly string REVIEW_OBSERVER_ALREADY_EXISTS = "Die Email-Adresse wurde bereits als Beobachter hinzugefügt.";
 }

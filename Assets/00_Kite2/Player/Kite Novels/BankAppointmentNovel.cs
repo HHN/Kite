@@ -6,8 +6,7 @@ public class BankAppointmentNovel : VisualNovel
     {
         id = -10;
         title = "Banktermin zur Kreditvergabe";
-        description = "Du hast eine Einladung zu einem Bankgespräch erhalten, um mehr " +
-            "Informationen über einen Kredit zu erhalten und diesen darauf zu beantragen.";
+        description = "Du hast eine Einladung zu einem Bankgespräch erhalten, um mehr Informationen über einen Kredit zu erhalten und diesen darauf zu beantragen.";
         image = 4;
         nameOfMainCharacter = "Lea";
         context = "Es ist das Gespräch einer Gründerin, Lea, mit einem Bank-Mitarbeiter. Es geht um einen Kredit. Die Gründerin hat sich gut vorbereitet und hofft Informationen über den Kredit zu erhalten.";
@@ -181,7 +180,7 @@ public class BankAppointmentNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 16,
-                nextId = 17,
+                nextId = 16001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Winkler",
@@ -189,6 +188,15 @@ public class BankAppointmentNovel : VisualNovel
                 "Ich werde Ihnen dann meine Entscheidung in einer Mail mitteilen und je nachdem " +
                 "können wir noch einmal einen Termin ausmachen, um alles formelle zu klären.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 16001,
+                nextId = 17,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.LEAVE_SCENE)
             },
 
             new VisualNovelEvent()

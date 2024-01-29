@@ -6,9 +6,7 @@ public class FeeNegotiationNovel : VisualNovel
     {
         id = -11;
         title = "Honorarverhandlung mit Kundin";
-        description = "Du bist in Kontakt mit einem Kunden gekommen. Nachdem geklärt wurde, dass " +
-            "deine angebotenen Leistungen zu den Anforderungen deines Gegenübers passen, geht es " +
-            "nun um die Honorarverhandlung.";
+        description = "Du bist in Kontakt mit einem Kunden gekommen. Nachdem geklärt wurde, dass deine angebotenen Leistungen zu den Anforderungen deines Gegenübers passen, geht es nun um die Honorarverhandlung.";
         context = "Es ist das Gespräch einer Gründerin, Lea, mit einer Kundin. Es geht um die Verhandlung eines Preises. Die Gründerin ist bereit mit ihrem Unternehmen die gewünschte Leistung zu erbringen und hofft auf die Einigung auf eine angemessene Entlohnung. ";
         image = 9;
         nameOfMainCharacter = "Lea";
@@ -198,7 +196,7 @@ public class FeeNegotiationNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 17,
-                nextId = 20,
+                nextId = 19001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Winkler",
@@ -211,7 +209,7 @@ public class FeeNegotiationNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 18,
-                nextId = 20,
+                nextId = 19001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Winkler",
@@ -224,7 +222,7 @@ public class FeeNegotiationNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 19,
-                nextId = 20,
+                nextId = 19001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Winkler",
@@ -232,6 +230,15 @@ public class FeeNegotiationNovel : VisualNovel
                 "ihr Angebot schriftlich zu, damit ich das abklären kann. Die Tage werde ich mich " +
                 "bei Ihnen melden, zu welcher Entscheidung es kam.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 19001,
+                nextId = 20,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.LEAVE_SCENE)
             },
 
             new VisualNovelEvent()

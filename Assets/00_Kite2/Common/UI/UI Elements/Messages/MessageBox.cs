@@ -8,6 +8,9 @@ public class MessageBox : MonoBehaviour
     public TextMeshProUGUI messageBoxBody;
     public Button closeButton;
     public Button okButton;
+    [SerializeField] private AudioSource errorSound;
+    [SerializeField] private AudioSource infoSound;
+    [SerializeField] private bool isErrorMessage;
 
     void Start()
     {
@@ -27,6 +30,13 @@ public class MessageBox : MonoBehaviour
 
     public void Activate()
     {
+        if (this.isErrorMessage)
+        {
+            this.errorSound.Play();
+        } else
+        {
+            this.infoSound.Play();
+        }
         this.gameObject.SetActive(true);
     }
 
@@ -47,5 +57,10 @@ public class MessageBox : MonoBehaviour
             return;
         }
         Destroy(this.gameObject);
+    }
+
+    public void SetIsErrorMessage(bool isErrorMessage)
+    {
+        this.isErrorMessage = isErrorMessage;
     }
 }

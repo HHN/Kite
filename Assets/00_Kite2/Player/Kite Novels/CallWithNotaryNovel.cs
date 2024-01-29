@@ -645,7 +645,7 @@ public class CallWithNotaryNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 60,
-                nextId = 64,
+                nextId = 63001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
@@ -665,7 +665,7 @@ public class CallWithNotaryNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 62,
-                nextId = 64,
+                nextId = 63001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
@@ -675,12 +675,21 @@ public class CallWithNotaryNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 63,
-                nextId = 64,
+                nextId = 63001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Frau Mayer",
                 text = "Schönen Tag noch!",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 63001,
+                nextId = 64,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.LEAVE_SCENE)
             },
 
             new VisualNovelEvent()

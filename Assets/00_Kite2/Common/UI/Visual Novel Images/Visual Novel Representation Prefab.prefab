@@ -413,6 +413,7 @@ MonoBehaviour:
   privateHint: {fileID: 1816957967398021161}
   modifiedHint: {fileID: 2106329514649508319}
   kiteOneHint: {fileID: 6368463465194340676}
+  buttonSoundPrefab: {fileID: 5665505778772664329, guid: 0cf6b97a397eb0a499fcd91cb4e550d5, type: 3}
 --- !u!114 &7100618115170266032
 MonoBehaviour:
   m_ObjectHideFlags: 0

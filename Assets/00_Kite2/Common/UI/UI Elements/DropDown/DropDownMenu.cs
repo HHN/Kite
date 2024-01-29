@@ -1,0 +1,70 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class DropDownMenu : MonoBehaviour
+{
+    [SerializeField] private GameObject menuWrapper;
+    [SerializeField] private Button menuButton;
+    [SerializeField] private Image indicatorImage;
+    [SerializeField] private Sprite spriteWhileOpen;
+    [SerializeField] private Sprite spriteWhileClosed;
+    [SerializeField] private bool isOpen;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        menuButton.onClick.AddListener(delegate { OnMenuButton(); });
+        InitiateMenu();
+    }
+
+    public bool IsOpen()
+    {
+        return isOpen;
+    }
+
+    public void InitiateMenu()
+    {
+        if (isOpen)
+        {
+            OpenMenu();
+            return;
+        }
+        CloseMenu();
+    }
+
+    public void SetMenuOpen(bool setOpen)
+    {
+        if (setOpen)
+        {
+            OpenMenu();
+            return;
+        }
+        CloseMenu();
+    }
+
+    public void OnMenuButton()
+    {
+        if (isOpen)
+        {
+            CloseMenu();
+            return;
+        }
+        OpenMenu();
+    }
+
+    private void OpenMenu()
+    {
+        indicatorImage.sprite = spriteWhileOpen;
+        menuWrapper.SetActive(true);
+        isOpen = true;
+    }
+
+    private void CloseMenu()
+    {
+        indicatorImage.sprite = spriteWhileClosed;
+        menuWrapper.SetActive(false);
+        isOpen = false;
+    }
+}

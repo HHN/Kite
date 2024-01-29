@@ -7,7 +7,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
     {
         id = -7;
         title = "Erstgespräch Förderantrag";
-        description = "Du wurdest zu einem Termin bei der Agentur für Arbeit eingeladen, wo du dich mit einem Berater über deine Geschäftsidee unterhalten kannst und hoffentlich Informationen zu passenden Förderungen erhalten wirst.";
+        description = "Du wurdest zu einem Termin eingeladen, wo du dich mit einem Berater über deine Geschäftsidee unterhalten kannst und hoffentlich Informationen zu passenden Förderungen erhalten wirst.";
         image = 6;
         nameOfMainCharacter = "Lea";
         feedback = "";
@@ -587,7 +587,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 53,
-                nextId = 401,
+                nextId = 401001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
@@ -640,7 +640,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 58,
-                nextId = 401,
+                nextId = 401001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
@@ -1087,7 +1087,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 98,
-                nextId = 401,
+                nextId = 401001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
@@ -1817,7 +1817,7 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 166,
-                nextId = 401,
+                nextId = 401001,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
@@ -2040,8 +2040,14 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.NONE)
             },
 
-
-
+            new VisualNovelEvent()
+            {
+                id = 401001,
+                nextId = 401,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.LEAVE_SCENE)
+            },
 
             new VisualNovelEvent()
             {
