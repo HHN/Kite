@@ -84,11 +84,19 @@ public class AnalyticsServiceHandler
 
     public void SetFromWhereIsNovelSelected(string fromWhereIsNovelSelected)
     {
+        if(fromWhereIsNovelSelected == null || fromWhereIsNovelSelected == "")
+        {
+            return;
+        }
         this.fromWhereIsNovelSelected = fromWhereIsNovelSelected;
     }
 
     public void AddChoiceToList(string choice)
     {
+        if(choice == null || choice == "")
+        {
+            return;
+        }
         choiceList.Add(choice);
     }
 
@@ -113,11 +121,19 @@ public class AnalyticsServiceHandler
 
     public void AddFeelingToList(string feeling)
     {
+        if(feeling == null || feeling == "")
+        {
+            return;
+        }
         feelingList.Add(feeling);
     }
 
     private int GetChoiceIdByText(string text)
     {
+        if(text == null || text == "")
+        {
+            return -1;
+        }
         return choiceList.IndexOf(text);
     }
 
@@ -133,6 +149,10 @@ public class AnalyticsServiceHandler
 
     public void SetLastQuestionForChoice(string question)
     {
+        if(question == null || question == "")
+        {
+            return;
+        }
         lastQuestionForChoice = question;
     }
 

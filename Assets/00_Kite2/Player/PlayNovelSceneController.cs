@@ -155,14 +155,13 @@ public class PlayNovelSceneController : SceneController
 
     public void Initialize()
     {
-        AnalyticsServiceHandler.Instance().SetIdOfCurrentNovel(novelToPlay.id);
-
         PromptManager.Instance().InitializePrompt();
 
         if (novelToPlay == null)
         {
             return;
         }
+        AnalyticsServiceHandler.Instance().SetIdOfCurrentNovel(novelToPlay.id);
         novelToPlay.ClearGlobalVariables();
         novelToPlay.feedback = string.Empty;
 
