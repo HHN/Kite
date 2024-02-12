@@ -488,6 +488,11 @@ public class GPTInterview : VisualNovel
         string result = source.Remove(place, find.Length).Insert(place, replace);
         return result;
     }
+
+    private void WriteUserInputToFile(string inputType, string input)
+    {
+        FileService.Instance().WriteToFile(inputType, input);
+    }
     
 
 }
