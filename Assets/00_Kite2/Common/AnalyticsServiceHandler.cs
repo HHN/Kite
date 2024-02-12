@@ -46,7 +46,7 @@ public class AnalyticsServiceHandler
     {
         await UnityServices.InitializeAsync();
         AnalyticsService.Instance.StartDataCollection();    //TODO: show the player a UI element that asks for consent.
-        UnityEngine.Debug.Log("UserID: " + AnalyticsService.Instance.GetAnalyticsUserID());
+        // UnityEngine.Debug.Log("UserID: " + AnalyticsService.Instance.GetAnalyticsUserID());
         StartStopwatch();
         stopwatchSession = new Stopwatch();
         stopwatchSession.Start();
@@ -56,11 +56,11 @@ public class AnalyticsServiceHandler
         if(pauseStatus)
         {
             stopwatchSession.Stop();
-            UnityEngine.Debug.Log("Stopped session time");
+            // UnityEngine.Debug.Log("Stopped session time");
         } else 
         {
             stopwatchSession.Start();
-            UnityEngine.Debug.Log("Continued session time");
+            // UnityEngine.Debug.Log("Continued session time");
         }
     }
 
@@ -78,17 +78,25 @@ public class AnalyticsServiceHandler
     public long StopStopwatch()
     {
         stopwatch.Stop();
-        UnityEngine.Debug.Log("Zeit seit dem Start: " + stopwatch.ElapsedMilliseconds);
+        // UnityEngine.Debug.Log("Zeit seit dem Start: " + stopwatch.ElapsedMilliseconds);
         return stopwatch.ElapsedMilliseconds;
     }
 
     public void SetFromWhereIsNovelSelected(string fromWhereIsNovelSelected)
     {
+        if(fromWhereIsNovelSelected == null || fromWhereIsNovelSelected == "")
+        {
+            return;
+        }
         this.fromWhereIsNovelSelected = fromWhereIsNovelSelected;
     }
 
     public void AddChoiceToList(string choice)
     {
+        if(choice == null || choice == "")
+        {
+            return;
+        }
         choiceList.Add(choice);
     }
 
@@ -113,11 +121,19 @@ public class AnalyticsServiceHandler
 
     public void AddFeelingToList(string feeling)
     {
+        if(feeling == null || feeling == "")
+        {
+            return;
+        }
         feelingList.Add(feeling);
     }
 
     private int GetChoiceIdByText(string text)
     {
+        if(text == null || text == "")
+        {
+            return -1;
+        }
         return choiceList.IndexOf(text);
     }
 
@@ -133,6 +149,10 @@ public class AnalyticsServiceHandler
 
     public void SetLastQuestionForChoice(string question)
     {
+        if(question == null || question == "")
+        {
+            return;
+        }
         lastQuestionForChoice = question;
     }
 
@@ -173,7 +193,7 @@ public class AnalyticsServiceHandler
             {"millisecondsInNovelExplorer", stopwatch.ElapsedMilliseconds}
         };
         AnalyticsService.Instance.CustomData("novelExplorerStatistics", parameters);
-        UnityEngine.Debug.Log("fromWhereIsNovelSelected: " + fromWhereIsNovelSelected + "\n" + "novelID: " + visualNovelID);
+        // UnityEngine.Debug.Log("fromWhereIsNovelSelected: " + fromWhereIsNovelSelected + "\n" + "novelID: " + visualNovelID);
     }
 
     public void SendDetailViewStatistics(long visualNovelID)
@@ -186,7 +206,7 @@ public class AnalyticsServiceHandler
             {"millisecondsInDetailView", stopwatch.ElapsedMilliseconds}
         };
         AnalyticsService.Instance.CustomData("detailViewStatistics", parameters);
-        UnityEngine.Debug.Log("fromWhereIsNovelSelected: " + fromWhereIsNovelSelected + "\n" + "novelID: " + visualNovelID);
+        // UnityEngine.Debug.Log("fromWhereIsNovelSelected: " + fromWhereIsNovelSelected + "\n" + "novelID: " + visualNovelID);
     }
 
     public void SendPlayNovelFirstConfirmation()
@@ -196,14 +216,14 @@ public class AnalyticsServiceHandler
             {"millisecondsBeforePlayNovelFirstConfirmation", stopwatch.ElapsedMilliseconds}
         };
         AnalyticsService.Instance.CustomData("playNovelFirstConfirmation", parameters);
-        UnityEngine.Debug.Log("millisecondsBeforePlayNovelFirstConfirmation: " + stopwatch.ElapsedMilliseconds);
+        // UnityEngine.Debug.Log("millisecondsBeforePlayNovelFirstConfirmation: " + stopwatch.ElapsedMilliseconds);
         //TODO: Add position of confirmation. Maybe user thinks he/she has to click on the symbol...
     }
 
     public void SendPlayerChoice(int id)
     {
-        UnityEngine.Debug.Log("Length of choice: " + choiceList.Count);
-        UnityEngine.Debug.Log("ID: " + id);
+        // UnityEngine.Debug.Log("Length of choice: " + choiceList.Count);
+        // UnityEngine.Debug.Log("ID: " + id);
         var text = GetTextByChoiceId(id);
         Dictionary<string, object> parameters = new Dictionary<string, object>()
         {
@@ -214,11 +234,11 @@ public class AnalyticsServiceHandler
             {"lengthOfChoice", text.Length}
         };
         AnalyticsService.Instance.CustomData("playerChoice", parameters);
-        UnityEngine.Debug.Log("idOfCurrentNovel: " + idOfCurrentNovel + "\n" +
-        "question: " + lastQuestionForChoice + "\n" + 
-        "text: " + text + "\n" + 
-        "indexOfChoice: " + id + "\n" +
-        "lengthOfChoice: " + text.Length);
+        // UnityEngine.Debug.Log("idOfCurrentNovel: " + idOfCurrentNovel + "\n" +
+        // "question: " + lastQuestionForChoice + "\n" + 
+        // "text: " + text + "\n" + 
+        // "indexOfChoice: " + id + "\n" +
+        // "lengthOfChoice: " + text.Length);
         choiceId = -10;  // means no choice selected
         addedAllEntriesToChoiceList = false;
         choiceList.Clear();
@@ -241,10 +261,10 @@ public class AnalyticsServiceHandler
             {"chooseableFeelings", GetChoosableFeelings()}
         };
         AnalyticsService.Instance.CustomData("playerFeeling", parameters);
-        UnityEngine.Debug.Log("idOfCurrentNovel: " + idOfCurrentNovel + "\n" +
-        "text: " + text + "\n" + 
-        "indexOfFeeling: " + id + "\n" +
-        "chooseableFeelings: " + GetChoosableFeelings());
+        //UnityEngine.Debug.Log("idOfCurrentNovel: " + idOfCurrentNovel + "\n" +
+        // "text: " + text + "\n" + 
+        // "indexOfFeeling: " + id + "\n" +
+        // "chooseableFeelings: " + GetChoosableFeelings());
         feelingList.Clear();
     }
 
@@ -256,7 +276,7 @@ public class AnalyticsServiceHandler
             {"playTime", stopwatch.ElapsedMilliseconds}
         };
         AnalyticsService.Instance.CustomData("novelPlayTime", parameters);
-        UnityEngine.Debug.Log("Novel ended after: " + stopwatch.ElapsedMilliseconds);
+        //UnityEngine.Debug.Log("Novel ended after: " + stopwatch.ElapsedMilliseconds);
     }
 
     public void SendWaitedForAIFeedback()
@@ -266,7 +286,7 @@ public class AnalyticsServiceHandler
             {"waitForAIFeedback", waitForAIFeedback}
         };
         AnalyticsService.Instance.CustomData("waitForAIFeedback", parameters);
-        UnityEngine.Debug.Log("Did player waited for ai feedback? Answer: " + waitForAIFeedback);
+        //UnityEngine.Debug.Log("Did player waited for ai feedback? Answer: " + waitForAIFeedback);
         waitForAIFeedback = false;
     }
 
@@ -278,6 +298,6 @@ public class AnalyticsServiceHandler
             {"sessionTime", stopwatchSession.ElapsedMilliseconds}
         };
         AnalyticsService.Instance.CustomData("sessionStatistics", parameters);
-        UnityEngine.Debug.Log("Session ended after: " + stopwatchSession.ElapsedMilliseconds);
+        //UnityEngine.Debug.Log("Session ended after: " + stopwatchSession.ElapsedMilliseconds);
     }
 }

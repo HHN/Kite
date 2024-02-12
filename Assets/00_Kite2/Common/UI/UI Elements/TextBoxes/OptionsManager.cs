@@ -44,7 +44,7 @@ public class OptionsManager : MonoBehaviour
         }
         optionA.SetMessage(options[0].text);
         AnalyticsServiceHandler.Instance().AddChoiceToList(options[0].text);
-        Debug.Log("Added Choice A");
+        // Debug.Log("Added Choice A");
         idA = options[0].onChoice;
         stringA = options[0].text;
         displayAfterSelectionA = options[0].show;
@@ -60,7 +60,7 @@ public class OptionsManager : MonoBehaviour
         }
         optionB.SetMessage(options[1].text);
         AnalyticsServiceHandler.Instance().AddChoiceToList(options[1].text);
-        Debug.Log("Added Choice B");
+        // Debug.Log("Added Choice B");
         idB = options[1].onChoice;
         stringB = options[1].text;
         displayAfterSelectionB = options[1].show;
@@ -75,7 +75,7 @@ public class OptionsManager : MonoBehaviour
         }
         optionC.SetMessage(options[2].text);
         AnalyticsServiceHandler.Instance().AddChoiceToList(options[2].text);
-        Debug.Log("Added Choice C");
+        // Debug.Log("Added Choice C");
         idC = options[2].onChoice;
         stringC = options[2].text;
         displayAfterSelectionC = options[2].show;
@@ -89,7 +89,7 @@ public class OptionsManager : MonoBehaviour
         }
         optionD.SetMessage(options[3].text);
         AnalyticsServiceHandler.Instance().AddChoiceToList(options[3].text);
-        Debug.Log("Added Choice D");
+        // Debug.Log("Added Choice D");
         idD = options[3].onChoice;
         stringD = options[3].text;
         displayAfterSelectionD = options[3].show;
@@ -102,7 +102,7 @@ public class OptionsManager : MonoBehaviour
         }
         optionE.SetMessage(options[4].text);
         AnalyticsServiceHandler.Instance().AddChoiceToList(options[4].text);
-        Debug.Log("Added Choice E");
+        // Debug.Log("Added Choice E");
         idE = options[4].onChoice;
         stringE = options[4].text;
         displayAfterSelectionE = options[4].show;

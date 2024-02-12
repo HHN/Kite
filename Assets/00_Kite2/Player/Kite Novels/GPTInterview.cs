@@ -4,7 +4,7 @@ public class GPTInterview : VisualNovel
 {
     public GPTInterview()
     {
-        id = -1;
+        id = -13;
         title = "GPTInterview";
         description = "Beispiel Gespräch für den Start der App.";
         image = 0;
