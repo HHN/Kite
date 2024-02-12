@@ -286,7 +286,7 @@ public class AnalyticsServiceHandler
             {"waitForAIFeedback", waitForAIFeedback}
         };
         AnalyticsService.Instance.CustomData("waitForAIFeedback", parameters);
-        //UnityEngine.Debug.Log("Did player waited for ai feedback? Answer: " + waitForAIFeedback);
+        UnityEngine.Debug.Log("Did player waited for ai feedback? Answer: " + waitForAIFeedback);
         waitForAIFeedback = false;
     }
 
