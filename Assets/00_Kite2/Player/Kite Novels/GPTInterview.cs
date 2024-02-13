@@ -491,7 +491,7 @@ public class GPTInterview : VisualNovel
 
     private void WriteUserInputToFile(string inputType, string input)
     {
-        FileService.Instance().WriteToFile(inputType, input);
+        
     }
     
 
