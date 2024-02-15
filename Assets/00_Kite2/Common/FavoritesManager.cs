@@ -70,6 +70,7 @@ public class FavoritesManager
             };
         }
     }
+    
     public void Save()
     {
         string json = JsonUtility.ToJson(favorites);
