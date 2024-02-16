@@ -55,9 +55,9 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
         {
             if (generated == false)
             {
-                string userAnswer01 = "Ich will mich selbstst‰ndig machen als Spiele-Entwicklerin und habe meiner Mutter davon erz‰hlt. Sie war nicht sehr begeistert. Mein Entwicklungs-Studio heiﬂt Knights Gambit Development Studio.";
-                string userAnswer02 = "Ich und meine Mutter. Ich bin eine Frau und mˆchte mich selbstst‰ndig machen. Dies habe ich meiner Mutter erz‰hlt. Sie war nicht sehr begeistert davon und hatm ir empfohlen dass ich mich mit meinem Bruder zusammen tue.";
-                string userAnswer03 = "Meine Mutter war zun‰chst skeptisch und hat mir empfohlen, dass ich mich mit meinem Bruder zusammen tun sollte. Ihm traut sie die selbstst‰ndigkeit wohl er zu, weil er ein Mann ist. Ich habe ihr gesagt, dass ich das auch alleine packen kann und packen will. Am Ende hat sie doch gesagt, dass sie mich dabei unterst¸tzt.";
+                string userAnswer01 = "Ich will mich selbstst√§ndig machen als Spiele-Entwicklerin und habe meiner Mutter davon erz√§hlt. Sie war nicht sehr begeistert. Mein Entwicklungs-Studio hei√üt Knights Gambit Development Studio.";
+                string userAnswer02 = "Ich und meine Mutter. Ich bin eine Frau und m√∂chte mich selbstst√§ndig machen. Dies habe ich meiner Mutter erz√§hlt. Sie war nicht sehr begeistert davon und hatm ir empfohlen dass ich mich mit meinem Bruder zusammen tue.";
+                string userAnswer03 = "Meine Mutter war zun√§chst skeptisch und hat mir empfohlen, dass ich mich mit meinem Bruder zusammen tun sollte. Ihm traut sie die selbstst√§ndigkeit wohl er zu, weil er ein Mann ist. Ich habe ihr gesagt, dass ich das auch alleine packen kann und packen will. Am Ende hat sie doch gesagt, dass sie mich dabei unterst√ºtzt.";
                 generated = true;
                 pipeline.GenerateNovel(userAnswer01, userAnswer02, userAnswer03);
             }
