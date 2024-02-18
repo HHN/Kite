@@ -20,6 +20,8 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     [SerializeField] private GameObject getScoreServerCallPrefab;
     [SerializeField] private GameObject buttonSoundPrefab;
 
+    [SerializeField] private GameObject termsAndConditionPanel;
+
     public bool generated = false;
     public GenerateNovelPipeline pipeline;
 
@@ -39,6 +41,10 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
         settingsButton.onClick.AddListener(delegate { OnSettingsButton(); });
         kiteLogo.onClick.AddListener(delegate { OnKiteLogoButton(); });
  
+        if (PrivacyAndConditionManager.Instance().IsConditionsAccepted() && PrivacyAndConditionManager.Instance().IsPriavcyTermsAccepted())
+        {
+            termsAndConditionPanel.SetActive(false);
+        }
         if (string.IsNullOrEmpty(AuthenticationManager.Instance().GetAuthToken()))
         { 
             OnGuestMode();
