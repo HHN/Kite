@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class GPTInterview : VisualNovel
 {
@@ -45,7 +46,7 @@ public class GPTInterview : VisualNovel
             new VisualNovelEvent()
             {
                 id = 3,
-                nextId = 4,
+                nextId = 31,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
@@ -55,7 +56,7 @@ public class GPTInterview : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 3,
+                id = 31,
                 nextId = 4,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.FREE_TEXT_INPUT_EVENT),
                 waitForUserConfirmation = false,
@@ -489,9 +490,16 @@ public class GPTInterview : VisualNovel
         return result;
     }
 
-    private void WriteUserInputToFile(string inputType, string input)
+    private int WriteUserInputToFile(int id, string inputType, string input)
     {
-        
+        PlayerDataManager.Instance().SavePlayerData(inputType, input);
+        Debug.Log(inputType + ": " + input);
+        Debug.Log(PlayerDataManager.Instance().ReadPlayerData(inputType));
+        return id;
+    }
+
+    private void TestUserInput(){
+        Debug.Log(PlayerDataManager.Instance().ReadPlayerData("test"));
     }
     
 

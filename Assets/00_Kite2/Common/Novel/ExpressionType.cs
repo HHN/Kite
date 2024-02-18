@@ -15,7 +15,7 @@ public enum ExpressionType
     QUESTIONING,
     DEFEATED
 }
-
+ 
 public class ExpressionTypeHelper
 {
     public static int ToInt(ExpressionType expressionType)

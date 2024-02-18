@@ -1830,7 +1830,7 @@ public class CallWithParentsNovel : VisualNovel
 
     public int getRandomNumber(int lowerBound, int upperBound) 
     {
-        Debug.Log(System.DateTime.Now.Millisecond);
+        //Debug.Log(System.DateTime.Now.Millisecond);
         Random.InitState(System.DateTime.Now.Millisecond);
         return Random.Range(lowerBound, upperBound);
     }
