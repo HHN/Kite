@@ -53,13 +53,11 @@ public class AnalyticsServiceHandler
 
     public void CollectData()
     {
-        UnityEngine.Debug.Log("Start Data Collection");
         AnalyticsService.Instance.StartDataCollection();
     }
 
     public void DoNotCollectData()
     {
-        UnityEngine.Debug.Log("Stop Data Collection");
         AnalyticsService.Instance.StopDataCollection();
     }
 
