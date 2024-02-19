@@ -1,55 +1,96 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingsSceneController : SceneController, OnSuccessHandler
+public class SettingsSceneController : SceneController
 {
-    public Button deleteAccountButton;
-    public Button changePasswordButton;
-    public Button infoButton;
-    public GameObject deleteAccountServerCallPrefab;
+    [SerializeField] private RectTransform sublayout01;
+    [SerializeField] private RectTransform sublayout02;
+    [SerializeField] private RectTransform sublayout03;
+    [SerializeField] private RectTransform layout;
+
+    [SerializeField] private Button aboutKiteButton;
+    [SerializeField] private Button aboutKiteInfoButton;
+    [SerializeField] private Button toggleDataCollectionButton;
+    [SerializeField] private Button toggleDataCollectionInfoButton;
+    [SerializeField] private Button deleteCollectedDataButton;
+    [SerializeField] private Button deleteCollectedDataInfoButton;
 
     void Start()
     {
         BackStackManager.Instance().Push(SceneNames.SETTINGS_SCENE);
 
-        deleteAccountButton.onClick.AddListener(delegate { OnDeleteAccountButton(); });
-        changePasswordButton.onClick.AddListener(delegate { OnChangePasswordButton(); });
-        infoButton.onClick.AddListener(delegate { OnInfoButton(); });
+        aboutKiteButton.onClick.AddListener(delegate { OnAboutKiteButton(); });
+        aboutKiteInfoButton.onClick.AddListener(delegate { OnAboutKiteInfoButton(); });
+        toggleDataCollectionButton.onClick.AddListener(delegate { OnToggleDataCollectionButton(); });
+        toggleDataCollectionInfoButton.onClick.AddListener(delegate { OnToggleDataCollectionInfoButton(); });
+        deleteCollectedDataButton.onClick.AddListener(delegate { OnDeleteCollectedDataButton(); });
+        deleteCollectedDataInfoButton.onClick.AddListener(delegate { OnDeleteCollectedDataInfoButton(); });
 
-        if (GameManager.Instance().applicationMode == ApplicationModes.LOGGED_IN_USER_MODE)
-        {
-            deleteAccountButton.gameObject.SetActive(true);
-            changePasswordButton.gameObject.SetActive(true);
-        } else
-        {
-            deleteAccountButton.gameObject.SetActive(false);
-            changePasswordButton.gameObject.SetActive(false);
-        }
+        InitializeToggleDataCollectionButton();
+        LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout01);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout02);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout03);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
     }
 
-    public void OnDeleteAccountButton()
-    {
-        DeleteAccountServerCall call = Instantiate(deleteAccountServerCallPrefab)
-            .GetComponent<DeleteAccountServerCall>();
-        call.sceneController = this;
-        call.onSuccessHandler = this;
-        call.SendRequest();
-        DontDestroyOnLoad(call.gameObject);
-    }
-
-    public void OnChangePasswordButton()
-    {
-        SceneLoader.LoadChangePasswordSceneScene();
-    }
-
-    public void OnInfoButton()
+    public void OnAboutKiteButton()
     {
         SceneLoader.LoadInfoScene();
     }
 
-    public void OnSuccess(Response response)
+    public void OnAboutKiteInfoButton()
     {
-        GameManager.Instance().LogOut();
-        SceneLoader.LoadMainMenuScene();
+        DisplayInfoMessage(InfoMessages.EXPLANATION_ABOUT_US_BUTTON);
+    }
+
+    public void OnToggleDataCollectionButton()
+    {
+        if (PrivacyAndConditionManager.Instance().IsDataCollectionAccepted())
+        {
+            PrivacyAndConditionManager.Instance().UnacceptDataCollection();
+            DisplayInfoMessage(InfoMessages.STOPED_DATA_COLLECTION);
+        }
+        else
+        {
+            PrivacyAndConditionManager.Instance().AcceptDataCollection();
+            DisplayInfoMessage(InfoMessages.STARTED_DATA_COLLECTION);
+        }
+        InitializeToggleDataCollectionButton();
+    }
+
+    public void OnToggleDataCollectionInfoButton()
+    {
+        if (PrivacyAndConditionManager.Instance().IsDataCollectionAccepted())
+        {
+            DisplayInfoMessage(InfoMessages.EXPLANATION_STOP_DATA_BUTTON);
+        } 
+        else
+        {
+            DisplayInfoMessage(InfoMessages.EXPLANATION_COLLECT_DATA_BUTTON);
+        }
+    }
+
+    public void OnDeleteCollectedDataButton()
+    {
+        AnalyticsServiceHandler.Instance().DeleteCollectedData();
+        DisplayInfoMessage(InfoMessages.DELETED_DATA);
+    }
+
+    public void OnDeleteCollectedDataInfoButton()
+    {
+        DisplayInfoMessage(InfoMessages.EXPLANATION_DELETE_DATA_BUTTON);
+    }
+
+    public void InitializeToggleDataCollectionButton()
+    {
+        if (PrivacyAndConditionManager.Instance().IsDataCollectionAccepted())
+        {
+            toggleDataCollectionButton.GetComponentInChildren<TextMeshProUGUI>().text = "DATEN ERFASSUNG STOPPEN";
+        }
+        else
+        {
+            toggleDataCollectionButton.GetComponentInChildren<TextMeshProUGUI>().text = "DATEN ERFASSEN";
+        }
     }
 }

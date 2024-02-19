@@ -6,9 +6,9 @@ public class SceneController : MonoBehaviour
     public GameObject canvas;
     private MessageBox messageObject;
 
-    public MessageBox DisplayInfoMessage(string errorMessage)
+    public MessageBox DisplayInfoMessage(string infoMessage)
     {
-        return DisplayMessage("INFORMATION", errorMessage, false);
+        return DisplayMessage("INFORMATION", infoMessage, false);
     }
 
     public MessageBox DisplayErrorMessage(string errorMessage)
