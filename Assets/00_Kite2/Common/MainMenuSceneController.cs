@@ -53,6 +53,11 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
         {
             termsAndConditionPanel.SetActive(false);
             kiteAudioLogo.Play();
+
+            if (PrivacyAndConditionManager.Instance().IsDataCollectionAccepted())
+            {
+                AnalyticsServiceHandler.Instance().CollectData();
+            }
         }
         if (string.IsNullOrEmpty(AuthenticationManager.Instance().GetAuthToken()))
         { 

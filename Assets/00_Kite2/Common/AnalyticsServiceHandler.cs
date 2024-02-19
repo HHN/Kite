@@ -45,11 +45,27 @@ public class AnalyticsServiceHandler
     public async void StartAnalytics()
     {
         await UnityServices.InitializeAsync();
-        AnalyticsService.Instance.StartDataCollection();    //TODO: show the player a UI element that asks for consent.
         // UnityEngine.Debug.Log("UserID: " + AnalyticsService.Instance.GetAnalyticsUserID());
         StartStopwatch();
         stopwatchSession = new Stopwatch();
         stopwatchSession.Start();
+    }
+
+    public void CollectData()
+    {
+        UnityEngine.Debug.Log("Start Data Collection");
+        AnalyticsService.Instance.StartDataCollection();
+    }
+
+    public void DoNotCollectData()
+    {
+        UnityEngine.Debug.Log("Stop Data Collection");
+        AnalyticsService.Instance.StopDataCollection();
+    }
+
+    public void DeleteCollectedData()
+    {
+        AnalyticsService.Instance.RequestDataDeletion();
     }
 
     private void OnApplicationPause(bool pauseStatus) {
