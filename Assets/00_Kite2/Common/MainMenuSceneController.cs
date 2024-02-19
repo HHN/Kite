@@ -21,6 +21,13 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     [SerializeField] private GameObject buttonSoundPrefab;
 
     [SerializeField] private GameObject termsAndConditionPanel;
+    [SerializeField] private Button continuetermsAndConditionsButton;
+    [SerializeField] private Toggle termsOfUseToggle;
+    [SerializeField] private Toggle dataPrivacyToggle;
+    [SerializeField] private Toggle collectDataToggle;
+    [SerializeField] private TextMeshProUGUI infoTextTermsAndConditions;
+
+    [SerializeField] private AudioSource kiteAudioLogo;
 
     public bool generated = false;
     public GenerateNovelPipeline pipeline;
@@ -40,10 +47,12 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
         registerButton.onClick.AddListener(delegate { OnRegisterButton(); });
         settingsButton.onClick.AddListener(delegate { OnSettingsButton(); });
         kiteLogo.onClick.AddListener(delegate { OnKiteLogoButton(); });
- 
+        continuetermsAndConditionsButton.onClick.AddListener(delegate { OnContinueTermsAndConditionsButton(); });
+
         if (PrivacyAndConditionManager.Instance().IsConditionsAccepted() && PrivacyAndConditionManager.Instance().IsPriavcyTermsAccepted())
         {
             termsAndConditionPanel.SetActive(false);
+            kiteAudioLogo.Play();
         }
         if (string.IsNullOrEmpty(AuthenticationManager.Instance().GetAuthToken()))
         { 
@@ -57,17 +66,19 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            if (generated == false)
-            {
-                string userAnswer01 = "Ich will mich selbstständig machen als Spiele-Entwicklerin und habe meiner Mutter davon erzählt. Sie war nicht sehr begeistert. Mein Entwicklungs-Studio heißt Knights Gambit Development Studio.";
-                string userAnswer02 = "Ich und meine Mutter. Ich bin eine Frau und möchte mich selbstständig machen. Dies habe ich meiner Mutter erzählt. Sie war nicht sehr begeistert davon und hatm ir empfohlen dass ich mich mit meinem Bruder zusammen tue.";
-                string userAnswer03 = "Meine Mutter war zunächst skeptisch und hat mir empfohlen, dass ich mich mit meinem Bruder zusammen tun sollte. Ihm traut sie die selbstständigkeit wohl er zu, weil er ein Mann ist. Ich habe ihr gesagt, dass ich das auch alleine packen kann und packen will. Am Ende hat sie doch gesagt, dass sie mich dabei unterstützt.";
-                generated = true;
-                pipeline.GenerateNovel(userAnswer01, userAnswer02, userAnswer03);
-            }
-        }
+        // ---- Generate Novel Pipeline Code ----
+        // if (Input.GetKeyDown(KeyCode.G))
+        // {
+        //     if (generated == false)
+        //     {
+        //         string userAnswer01 = "Ich will mich selbstständig machen als Spiele-Entwicklerin und habe meiner Mutter davon erzählt. Sie war nicht sehr begeistert. Mein Entwicklungs-Studio heißt Knights Gambit Development Studio.";
+        //         string userAnswer02 = "Ich und meine Mutter. Ich bin eine Frau und möchte mich selbstständig machen. Dies habe ich meiner Mutter erzählt. Sie war nicht sehr begeistert davon und hatm ir empfohlen dass ich mich mit meinem Bruder zusammen tue.";
+        //         string userAnswer03 = "Meine Mutter war zunächst skeptisch und hat mir empfohlen, dass ich mich mit meinem Bruder zusammen tun sollte. Ihm traut sie die selbstständigkeit wohl er zu, weil er ein Mann ist. Ich habe ihr gesagt, dass ich das auch alleine packen kann und packen will. Am Ende hat sie doch gesagt, dass sie mich dabei unterstützt.";
+        //         generated = true;
+        //         pipeline.GenerateNovel(userAnswer01, userAnswer02, userAnswer03);
+        //     }
+        // }
+        // ---- Generate Novel Pipeline Code Ende ----
     }
 
     private void OnGuestMode()
@@ -154,6 +165,47 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     public void OnKiteLogoButton()
     {
         SceneLoader.LoadInfoScene();
+    }
+
+    public void OnContinueTermsAndConditionsButton()
+    {
+        bool acceptedTermsOfUse = termsOfUseToggle.isOn;
+        bool acceptedDataPrivacyTerms = dataPrivacyToggle.isOn;
+        bool acceptedDataCollection = collectDataToggle.isOn;
+
+        if (acceptedTermsOfUse)
+        {
+            PrivacyAndConditionManager.Instance().AcceptConditionsOfUssage();
+        } 
+        else
+        {
+            PrivacyAndConditionManager.Instance().UnacceptConditionsOfUssage();
+        }
+        if (acceptedDataPrivacyTerms)
+        {
+            PrivacyAndConditionManager.Instance().AcceptTermsOfPrivacy();
+        }
+        else
+        {
+            PrivacyAndConditionManager.Instance().UnacceptTermsOfPrivacy();
+        }
+        if (acceptedDataCollection)
+        {
+            PrivacyAndConditionManager.Instance().AcceptDataCollection();
+        }
+        else
+        {
+            PrivacyAndConditionManager.Instance().UnacceptDataCollection();
+        }
+
+        if (acceptedTermsOfUse && acceptedDataPrivacyTerms)
+        {
+            SceneLoader.LoadMainMenuScene();
+        } 
+        else
+        {
+            infoTextTermsAndConditions.gameObject.SetActive(true);
+        }
     }
 
     public class GetMoneySuccessHandler : OnSuccessHandler
