@@ -34,8 +34,6 @@ public class InfoSceneController : SceneController
     [SerializeField] private Button faq_Button;
     [SerializeField] private Button technicalDetailsButton;
     [SerializeField] private Button updateInformationButton;
-    [SerializeField] private Button privacyInformationButton;
-    [SerializeField] private Button usingConditionsButton;
 
     // Discrimination Buttons
     [SerializeField] private Button accessToFinancesButton;
@@ -63,6 +61,10 @@ public class InfoSceneController : SceneController
     [SerializeField] private Button mediaAndMarketingBiasButton;
     [SerializeField] private Button communicationBiasButton;
     [SerializeField] private Button proveItAgainBiasButton;
+
+    [SerializeField] private Button termsOfButton;
+    [SerializeField] private Button dataPrivacyButton;
+    [SerializeField] private Button imprintButton;
 
     // Success Storys Buttons
     [SerializeField] private Button founder01;
@@ -114,8 +116,6 @@ public class InfoSceneController : SceneController
         faq_Button.onClick.AddListener(delegate { OnFaqButtonPressed(); });
         technicalDetailsButton.onClick.AddListener(delegate { OnTechnicalDetailsButtonPressed(); });
         updateInformationButton.onClick.AddListener(delegate { OnUpdateInformationButtonPressed(); });
-        privacyInformationButton.onClick.AddListener(delegate { OnPrivacyInformationButtonPressed(); });
-        usingConditionsButton.onClick.AddListener(delegate { OnUsingConditionsButtonPressed(); });
 
         accessToFinancesButton.onClick.AddListener(delegate { OnAccessToFinancesButtonPressed(); });
         genderPayGapButton.onClick.AddListener(delegate { OnGenderPayGapButtonPressed(); });
@@ -176,7 +176,26 @@ public class InfoSceneController : SceneController
         globalPerspectivesButton.onClick.AddListener(delegate { OnGlobalPerspectiveButtonPressed(); });
         topicSpecificButton.onClick.AddListener(delegate { OnTopicSpecificButtonPressed(); });
 
+        termsOfButton.onClick.AddListener(delegate { OnTermsOfUseButton(); });
+        dataPrivacyButton.onClick.AddListener(delegate { OnDataPrivacyButton(); });
+        imprintButton.onClick.AddListener(delegate { OnImprintButton(); });
+
         InitMemory();
+    }
+
+    public void OnTermsOfUseButton()
+    {
+        SceneLoader.LoadTermsOfUseScene();
+    }
+
+    public void OnDataPrivacyButton()
+    {
+        SceneLoader.LoadPrivacyPolicyScene();
+    }
+
+    public void OnImprintButton()
+    {
+        SceneLoader.LoadImprintScene();
     }
 
     public void OnSearchValueChanged()
@@ -201,8 +220,6 @@ public class InfoSceneController : SceneController
         faq_Button.gameObject.SetActive(true);
         technicalDetailsButton.gameObject.SetActive(true);
         updateInformationButton.gameObject.SetActive(true);
-        privacyInformationButton.gameObject.SetActive(true);
-        usingConditionsButton.gameObject.SetActive(true);
 
         // Discrimination Buttons
         accessToFinancesButton.gameObject.SetActive(true);
@@ -280,6 +297,9 @@ public class InfoSceneController : SceneController
          intersectionalBiasesMenu.SetActive(true);
          roleMenu.SetActive(true);
          carrerBiasesMenu.SetActive(true);
+        dataPrivacyButton.gameObject.SetActive(true);
+        termsOfButton.gameObject.SetActive(true);
+        imprintButton.gameObject.SetActive(true);
 
         aboutTheAppMenu.GetComponent<DropDownMenu>().SetMenuOpen(false);
         discriminationMenu.GetComponent<DropDownMenu>().SetMenuOpen(false);
@@ -305,8 +325,6 @@ public class InfoSceneController : SceneController
         faq_Button.gameObject.SetActive(faq_Button.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
         technicalDetailsButton.gameObject.SetActive(technicalDetailsButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
         updateInformationButton.gameObject.SetActive(updateInformationButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
-        privacyInformationButton.gameObject.SetActive(privacyInformationButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
-        usingConditionsButton.gameObject.SetActive(usingConditionsButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
 
         // Discrimination Buttons
         accessToFinancesButton.gameObject.SetActive(accessToFinancesButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
@@ -372,15 +390,17 @@ public class InfoSceneController : SceneController
         globalPerspectivesButton.gameObject.SetActive(globalPerspectivesButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
         topicSpecificButton.gameObject.SetActive(topicSpecificButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
 
-        bool hasAboutTheAppMenuVisibleChildren = 
-            developmentHistoryButton.gameObject.activeSelf || 
+        termsOfButton.gameObject.SetActive(termsOfButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        dataPrivacyButton.gameObject.SetActive(dataPrivacyButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+        imprintButton.gameObject.SetActive(imprintButton.GetComponentInChildren<TMP_Text>().text.Contains(value, StringComparison.OrdinalIgnoreCase));
+
+        bool hasAboutTheAppMenuVisibleChildren =
+            developmentHistoryButton.gameObject.activeSelf ||
             functionInformationButton.gameObject.activeSelf ||
             aboutTheTeamButton.gameObject.activeSelf ||
             faq_Button.gameObject.activeSelf ||
             technicalDetailsButton.gameObject.activeSelf ||
-            updateInformationButton.gameObject.activeSelf ||
-            privacyInformationButton.gameObject.activeSelf ||
-            usingConditionsButton.gameObject.activeSelf;
+            updateInformationButton.gameObject.activeSelf;
 
         bool hasSuccesStoryMenuVisibleChildren =
             founder01.gameObject.activeSelf ||
