@@ -23,4 +23,7 @@ public class InfoMessages
     public static readonly string STOPED_DATA_COLLECTION = "Die Datenaufzeichnung wurde gestoppt.";
     public static readonly string STARTED_DATA_COLLECTION = "Die Datenaufzeichnung wurde gestartet.";
     public static readonly string DELETED_DATA = "Die Löschung der von dir aufgezeichneten Daten wurde veranlasst. Die Löschung wird innerhalb der nächsten 30 Tagen vorgenommen.";
+    public static readonly string EXPLANATION_TERMS_OF_USE_BUTTON = "Mit diesem Button kommst du auf die Nutzungsbedingungen unserer App.";
+    public static readonly string EXPLANATION_DATA_PRIVACY_BUTTON = "Mit diesem Button kommst du auf die Datenschutzerklärung unserer App.";
+    public static readonly string EXPLANATION_IMPRINT_BUTTON = "Mit diesem Button kommst du auf das Impressum unserer App.";
 }
