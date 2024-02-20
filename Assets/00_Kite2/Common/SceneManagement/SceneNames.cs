@@ -31,4 +31,9 @@ public class SceneNames
     public const string REVIEW_AI_SCENE = "ReviewAiScene";
     public const string REVIEW_NOVEL_SCENE = "ReviewNovelScene";
     public const string REVIEW_OBSERVER_EXPLORER_SCENE = "ReviewObserverExplorerScene";
+
+    // LEGAL INFORMATION
+    public const string IMPRINT_SCENE = "ImprintScene";
+    public const string PRIVACY_POLICY_SCENE = "PrivacyPolicyScene";
+    public const string TERMS_OF_USE_SCENE = "TermsOfUseScene";
 }

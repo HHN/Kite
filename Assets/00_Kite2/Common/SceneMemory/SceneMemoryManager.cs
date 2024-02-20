@@ -29,6 +29,9 @@ public class SceneMemoryManager
     private ReviewAiSceneMemory reviewAiSceneMemory;
     private ReviewNovelSceneMemory reviewNovelSceneMemory;
     private ReviewObserverExplorerSceneMemory reviewObserverExplorerSceneMemory;
+    private ImprintSceneMemory imprintSceneMemory;
+    private TermsOfUseSceneMemory termsOfUseSceneMemory;
+    private PrivacyPolicySceneMemory privacyPolicySceneMemory;
 
     private SceneMemoryManager()
     {
@@ -169,6 +172,21 @@ public class SceneMemoryManager
         return this.reviewObserverExplorerSceneMemory;
     }
 
+    public ImprintSceneMemory GetMemoryOfImprintScene()
+    {
+        return this.imprintSceneMemory;
+    }
+
+    public TermsOfUseSceneMemory GetMemoryOfTermsOfUseScene()
+    {
+        return this.termsOfUseSceneMemory;
+    }
+
+    public PrivacyPolicySceneMemory GetMemoryOfPrivacyPolicyScene()
+    {
+        return this.privacyPolicySceneMemory;
+    }
+
     public void SetMemoryOfSettingsScene(SettingsSceneMemory settingsSceneMemory)
     {
         this.settingsSceneMemory = settingsSceneMemory;
@@ -259,6 +277,21 @@ public class SceneMemoryManager
         this.novelPreviewSceneMemory = novelPreviewSceneMemory;
     }
 
+    public void SetMemoryOfImprintScene(ImprintSceneMemory imprintSceneMemory)
+    {
+        this.imprintSceneMemory = imprintSceneMemory;
+    }
+
+    public void SetMemoryOfTermsOfUseScene(TermsOfUseSceneMemory termsOfUseSceneMemory)
+    {
+        this.termsOfUseSceneMemory = termsOfUseSceneMemory;
+    }
+
+    public void SetMemoryOfPrivacyPolicyScene(PrivacyPolicySceneMemory privacyPolicySceneMemory)
+    {
+        this.privacyPolicySceneMemory = privacyPolicySceneMemory;
+    }
+
     public void GetMemoryOfAddObserverScene(AddObserverSceneMemory addObserverSceneMemory)
     {
         this.addObserverSceneMemory = addObserverSceneMemory;
@@ -321,5 +354,8 @@ public class SceneMemoryManager
         this.reviewAiSceneMemory = null;
         this.reviewNovelSceneMemory = null;
         this.reviewObserverExplorerSceneMemory = null;
+        this.termsOfUseSceneMemory = null;
+        this.imprintSceneMemory = null;
+        this.privacyPolicySceneMemory = null;
     }
 }

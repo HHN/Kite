@@ -86,4 +86,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_Kite2/Common/InfoTextScene.unity
     guid: df8eff83bf37a8f47a32eb4a3a1feeda
+  - enabled: 1
+    path: Assets/00_Kite2/Legal Information/ImprintScene.unity
+    guid: 6cc83a00483291949a84ef875a214283
+  - enabled: 1
+    path: Assets/00_Kite2/Legal Information/PrivacyPolicyScene.unity
+    guid: ddbe7e8a8014bc3448e660f6c031c8b3
+  - enabled: 1
+    path: Assets/00_Kite2/Legal Information/TermsOfUseScene.unity
+    guid: cfb79c9d3911af044b874ab3bb6cc553
   m_configObjects: {}

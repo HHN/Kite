@@ -131,6 +131,21 @@ public class SceneLoader
         LoadScene(SceneNames.REVIEW_OBSERVER_EXPLORER_SCENE);
     }
 
+    public static void LoadTermsOfUseScene()
+    {
+        LoadScene(SceneNames.TERMS_OF_USE_SCENE);
+    }
+
+    public static void LoadImprintScene()
+    {
+        LoadScene(SceneNames.IMPRINT_SCENE);
+    }
+
+    public static void LoadPrivacyPolicyScene()
+    {
+        LoadScene(SceneNames.PRIVACY_POLICY_SCENE);
+    }
+
     public static void LoadScene(string sceneName)
     {
         GameObject oldSceneControllerGameObject = GameObject.Find("Controller");
