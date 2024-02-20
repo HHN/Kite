@@ -174,7 +174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1142041131289362116, guid: 1ae41ef0b36350c44a5251e44f8cd23a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 650
       objectReference: {fileID: 0}
     - target: {fileID: 1142041131289362116, guid: 1ae41ef0b36350c44a5251e44f8cd23a, type: 3}
       propertyPath: m_SizeDelta.y
@@ -210,7 +210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1142041131289362116, guid: 1ae41ef0b36350c44a5251e44f8cd23a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 325
       objectReference: {fileID: 0}
     - target: {fileID: 1142041131289362116, guid: 1ae41ef0b36350c44a5251e44f8cd23a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -546,23 +546,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Das Hier ist ein beispiel Imressum.
-
-    Das Hier ist ein beispiel Imressum.
-
-    Das
-    Hier ist ein beispiel Imressum.
-
-    Das Hier ist ein beispiel Imressum.
-
-
-    Das
-    Hier ist ein beispiel Imressum.
-
-    Das Hier ist ein beispiel Imressum.
-
-    Das
-    Hier ist ein beispiel Imressum.'
+  m_text: "Diensteanbieter\r\nMergim Miftari \r\nFalkenweg 24 \r\n74395 Mundelsheim
+    \r\n\nKontaktm\xF6glichkeiten\r\nE-Mail-Adresse: mergim.miftari@hs-heilbronn.de
+    \r\nTelefon: 015205299169\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1803,7 +1789,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 515, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &303157671
@@ -2597,7 +2583,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 443, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &459510650
@@ -4406,7 +4392,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 492.5, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &725977896
@@ -5416,8 +5402,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 515, y: -468.49}
-  m_SizeDelta: {x: 1030, y: 536.98}
+  m_AnchoredPosition: {x: 515, y: -8714.995}
+  m_SizeDelta: {x: 1030, y: 17029.99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1053576382
 MonoBehaviour:
@@ -5690,11 +5676,249 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Das Hier sind beispiel Datenschutzerkl\xE4rungen. \n\nDas Hier sind beispiel
-    Datenschutzerkl\xE4rungen. Das Hier sind beispiel Datenschutzerkl\xE4rungen.
-    Das Hier sind beispiel Datenschutzerkl\xE4rungen. Das Hier sind beispiel Datenschutzerkl\xE4rungen.
-    Das Hier sind beispiel Datenschutzerkl\xE4rungen. Das Hier sind beispiel Datenschutzerkl\xE4rungen.
-    Das Hier sind beispiel Datenschutzerkl\xE4rungen. Das Hier sind beispiel Datenschutzerkl\xE4rungen. "
+  m_text: "Mit der folgenden Datenschutzerkl\xE4rung m\xF6chten wir Sie dar\xFCber
+    aufkl\xE4ren, welche Arten Ihrer personenbezogenen Daten (nachfolgend auch kurz
+    als \"Daten\" bezeichnet) wir zu welchen Zwecken und in welchem Umfang im Rahmen
+    der Bereitstellung unserer Applikation verarbeiten. Bei unserer Applikation handelt
+    es sich um die Kite II Mobile App (die \u201CApp\u201D, die \u201CDienste\u201D).
+    Die Website https://kite2.de/ wird in dieser Datenschutzerkl\xE4rung nicht ber\xFCcksichtigt
+    und verf\xFCgt \xFCber eine eigene Datenschutzerkl\xE4rung. Wir m\xF6chten auch
+    darauf hinweisen, dass die Kite II Mobile App nur im Rahmen von Externen Nutzertests
+    ver\xF6ffentlich wird und nur von Test-Personen zu nutzen ist. Die Entwicklung
+    der App, und somit auch die Testung der App, endet sp\xE4testens am 31.12.2025.
+    Somit ist auch diese Datenschutzerkl\xE4rung nur bis zu diesem Datum g\xFCltig.\r\n\r\nDie
+    verwendeten Begriffe sind nicht geschlechtsspezifisch.\r\n\r\nStand: 20. Februar
+    2024\r\n\r\n1) Allgemeines\r\nHinsichtlich der Dienste ist Mergim Miftari der
+    Verantwortliche im Sinne der Datenschutz- Grundverordnung (\u201CDSGVO\u201D).\r\n\r\nMergim
+    Miftari\r\nFalkenweg 24\r\n74395 Mundelsheim\r\nEmail: mergim.miftari@hs-heilbronn.de\r\n\r\nDiese
+    Datenschutzerkl\xE4rung informiert dar\xFCber, wie wir personenbezogenen Daten
+    im Zusammenhang mit unseren Diensten erheben und verarbeiten.\r\n\r\n2) Zugriff
+    auf und Speicherung von Informationen in Endger\xE4ten\r\nDurch die Nutzung unserer
+    App kann ein Zugriff auf Informationen (z.B. IP-Adresse) oder eine Speicherung
+    von Informationen (z.B. Cookies) in Ihren Endger\xE4ten erfolgen. Mit diesem
+    Zugriff bzw. dieser Speicherung kann eine weitere Verarbeitung personenbezogener
+    Daten im Sinne der DSGVO verbunden sein.\r\n\r\nIn den F\xE4llen, in denen ein
+    solcher Zugriff auf Informationen bzw. ein solches Speichern von Informationen
+    zur technisch fehlerfreien Bereitstellung unserer Dienste unbedingt erforderlich
+    ist, erfolgt dies auf Grundlage von \xA7 25 Abs. 1 S. 1, Abs. 2 Nr. 2 TTDSG.\r\n\r\n\r\nIn
+    den F\xE4llen, in denen ein solcher Vorgang anderen Zwecken (z.B. der bedarfsgerechten
+    Gestaltung unserer App) dient, erfolgt dieser auf Grundlage von \xA7 25 Abs.
+    1 TTDSG nur mit Ihrer Einwilligung gem\xE4\xDF Art. 6 Abs. 1 lit. a DSGVO. Die
+    Einwilligung ist jederzeit f\xFCr die Zukunft widerrufbar.\r\n\r\nWeitere Informationen
+    zur Verarbeitung Ihrer personenbezogenen Daten und den einschl\xE4gigen Rechtsgrundlagen
+    in diesem Zusammenhang k\xF6nnen Sie den nachfolgenden Abschnitten zu den konkreten
+    Verarbeitungst\xE4tigkeiten auf unserer Website entnehmen.\r\n\r\n3) Daten, die
+    wir erheben und verarbeiten\r\na.\tIn der Kite II App ist es nicht m\xF6glich
+    sich zu registrieren oder sich einen Account zu machen. Die Angabe von pers\xF6nlichen
+    Daten, wie etwa Name, E-Mail, Anschrift, Telefonnummer oder finanzieller Informationen,
+    ist weder erforderlich, noch erw\xFCnscht.\r\n\r\nb.\tZur Verbesserung unserer
+    Dienste erheben wir Daten zum Nutzerverhalten in der App. Dies wird ausschlie\xDFlich
+    mit Ihrer ausdr\xFCcklichen Einwilligung vollzogen. Innerhalb der App bieten
+    wir Ihnen die M\xF6glichkeit, Ihre Einwilligung hierf\xFCr zu erteilen und auch
+    zu widerrufen.\r\n\r\nc.\tZu Beginn Ihres Nutzungserlebnisses in der App f\xFChren
+    wir ein initiales Gespr\xE4ch in Form einer Visual Novel durch. Dabei werden
+    Ihnen verschiedene Fragen gestellt, auf die Sie mit Freitext-Antworten reagieren
+    k\xF6nnen. Es ist weder erforderlich, noch erw\xFCnscht, dass Sie in ihren Freitext-Antworten
+    personenbezogene Daten eingeben.\r\n\r\nd.\tW\xE4hrend des Spielens von Visual
+    Novels in der App werden Ihnen an verschiedenen Stellen geschichtsbezogene Fragen
+    gestellt, die Sie durch Freitext-Antworten beantworten k\xF6nnen. Auch hier ist
+    es weder notwendig noch erw\xFCnscht, personenbezogene Daten in Ihre Antworten
+    einzuf\xFCgen.\r\n\r\ne.\tZur F\xF6rderung der Barrierefreiheit und Verbesserung
+    des Nutzungserlebnisses verf\xFCgt die App \xFCber eine Diktierfunktion, mit
+    der Sie ihre Freitext-Antworten in Form von Spracheingaben abgeben k\xF6nnen.\r\n\r\nf.\tIn
+    der App gibt es eine Funktion, die das geben von Feedback erm\xF6glicht. Dies
+    Umfasst Feedback bez\xFCglich Geschichten oder KI-Leistung.\r\n\r\ng.\tDes Weiteren
+    nutzen wir die Daten, die Sie uns bei der Aus\xFCbung Ihrer Rechte zur Verf\xFCgung
+    stellen, damit wir Ihre Rechte umsetzen k\xF6nnen. Wenn Sie uns zum Beispiel
+    \xFCber Email kontaktieren, antworten wir Ihnen darauf und verarbeiten dabei
+    Ihre Kontaktdaten und den Inhalt Ihrer Email.\r\n\r\n4) Wie und wof\xFCr wir
+    Daten verarbeiten sowie die Rechtsgrundlage der Verarbeitung\r\na.\tWir legen
+    personenbezogene Daten, au\xDFer in den unten genannten F\xE4llen, nur dann und
+    nur insoweit offen, wie wir hierzu durch Gesetz oder aufgrund gerichtlicher oder
+    beh\xF6rdlicher Anordnung verpflichtet sind. Rechtsgrundlage hierf\xFCr ist Art.
+    6 Abs. 1 UAbs. 1 lit. c DSGVO (rechtliche Verpflichtung).\r\n\r\nb.\tDie Daten
+    zum Nutzerverhalten zeichnen wir auf, um die App kontinuierlich verbessern zu
+    k\xF6nnen. Dazu setzen wir Unity Analytics ein, einen Dienst von Unity Technologies.
+    Unser Ziel ist es, ein tieferes Verst\xE4ndnis daf\xFCr zu entwickeln, wie unsere
+    App verwendet wird, indem wir Informationen wie Nutzungsdauer, Betriebssystem,
+    Ger\xE4tetyp, Spielverhalten und Standortdaten erfassen. Wir beschr\xE4nken uns
+    dabei ausschlie\xDFlich auf Daten, die f\xFCr die Analyse und Verbesserung der
+    App relevant sind. Alle gesammelten Daten werden anonymisiert und verschl\xFCsselt
+    \xFCbermittelt. Die Datenerfassung erfolgt nur mit Ihrer ausdr\xFCcklichen Einwilligung,
+    die Sie beim ersten \xD6ffnen der App w\xE4hrend dem Akzeptieren der Nutzungsbedingungen
+    und Datenschutzrichtlinien erteilen k\xF6nnen. Diese Einwilligung kann jederzeit
+    in den App-Einstellungen angepasst oder widerrufen werden, wo Sie ebenfalls die
+    L\xF6schung Ihrer Daten veranlassen k\xF6nnen. Die L\xF6schung wird innerhalb
+    von 30 Tagen vollzogen. Falls Sie nicht m\xF6chten, dass Ihre Nutzungsdaten erfasst
+    werden, lehnen Sie bitte die Datenerfassung ab oder widerrufen Ihre Einwilligung.
+    Die rechtliche Grundlage f\xFCr die Erfassung und Verarbeitung der Nutzungsdaten
+    basiert auf Ihrer Einwilligung.\r\n\r\nc.\tDie w\xE4hrend des initialen Gespr\xE4chs
+    zu Beginn Ihres Spieleerlebnisses eingegebenen Daten werden genutzt, um Ihr Spielerlebnis
+    zu optimieren. Zum einen erfolgt dies durch eine Personalisierung Ihres Erlebnisses,
+    beispielsweise indem Sie gefragt werden, wie Sie angesprochen werden m\xF6chten.
+    Diese Pr\xE4ferenz wird auf Ihrem Endger\xE4t gespeichert, sodass Sie im weiteren
+    Spielverlauf entsprechend Ihrer W\xFCnsche angesprochen werden. Zum anderen dienen
+    die Daten aus dem initialen Gespr\xE4ch dazu, Ihre Interessen zu ermitteln, um
+    Ihnen f\xFCr Sie interessante Inhalte anzuzeigen. Die entsprechende Verarbeitung
+    wird durch die KI-Technologie von OpenAI, speziell GPT-4, erm\xF6glicht. Die
+    Daten, die Sie beim initialen Gespr\xE4ch in die Freitext-Antworten eingeben,
+    flie\xDFen also zu GPT-4. Es ist nicht vorgesehen, dass Sie beim initialen Gespr\xE4ch
+    personenbezogene Daten in die Freitext-Antworten einflie\xDFen lassen. Tun Sie
+    das bitte nicht. Ihre Angaben werden von uns in der Regel ausschlie\xDFlich auf
+    Ihrem Endger\xE4t gespeichert. In bestimmten F\xE4llen k\xF6nnen die Daten jedoch
+    auch anonym auf unserem Server gespeichert werden. Dies kann passieren, wenn
+    Sie eine Visual Novel spielen, die an Ihre Angaben aus dem initialen Gespr\xE4ch
+    angepasst wird, und sie zu der KI-Leistung im Spiele-Prozess Feedback \xFCber
+    die Feedback-Funktion geben. In diesem Fall wird n\xE4mlich ihr Feedback zusammen
+    mit den KI-Leistungen anonym in unserer Datenbank gespeichert. In den KI-Leistungen
+    k\xF6nnen dann eben Ihre Angaben aus dem initialen Gespr\xE4ch enthalten sein.
+    Die Rechtsgrundlage beim Verarbeiten ihrer Freitext-Antworten ist ihre Einwilligung
+    durch Eingabe. Au\xDFerdem fordern wir sie ausdr\xFCcklich dazu auf keine Personenbezogenen
+    Daten in die Freitext-Antworten einzugeben. Daher gehen wir davon aus, dass es
+    sich bei Ihren Freitext-Antworten nicht um personenbezogene Daten handelt.\r\n\r\nd.\tWenn
+    Sie w\xE4hrend dem spielen einer Visual Novel eine Frage gestellt bekommen und
+    diese mithilfe einer Freitext-Antwort beantworten k\xF6nnen, dann wird dies gemacht
+    um Ihr Nutzungserlebnis zu personalisieren. Auch hier erfolgt eine Verarbeitung
+    durch die KI-Technologie von OpenAI, speziell GPT-4. Die Daten, die Sie w\xE4hrend
+    dem Spielen von Visual Novels als Freitext-Antowrten eingeben, flie\xDFen also
+    zu GPT-4. Es ist nicht vorgesehen, dass Sie personenbezogene Daten in die Freitext-Antworten
+    einflie\xDFen lassen. Tun Sie das bitte nicht. Ihre Freitext-Antworten im Rahmen
+    der Visual Novels werden in der Regel nicht von uns gespeichert. In bestimmten
+    F\xE4llen k\xF6nnen die Daten jedoch anonym auf unserem Server gespeichert werden.
+    Dies kann passieren, wenn Sie zu der KI-Leistung im Spiele-Prozess Feedback \xFCber
+    die Feedback-Funktion geben. In diesem Fall wird n\xE4mlich ihr Feedback zusammen
+    mit den KI-Leistungen anonym in unserer Datenbank gespeichert. In den KI-Leistungen
+    k\xF6nnen dann eben Ihre Freitext-Antworten enthalten sein. Die Rechtsgrundlage
+    beim Verarbeiten ihrer Freitext-Antworten ist ihre Einwilligung durch Eingabe.
+    Au\xDFerdem fordern wir sie ausdr\xFCcklich dazu auf keine Personenbezogenen
+    Daten in die Freitext-Antworten einzugeben. Daher gehen wir davon aus, dass es
+    sich bei Ihren Freitext-Antworten nicht um personenbezogene Daten handelt.\r\n\r\ne.\tDie
+    Diktierfunktion in unserer App soll die Barrierefreiheit f\xF6rdern und die Usability
+    verbessern. Wenn sie die Diktierfunktion nutzen, werden jedoch ihre Spracheingaben
+    verarbeitet. Dies findet statt durch die KI-Technologie von OpenAI, speziell
+    Whisper. Ihre Spracheingaben werden also an Whisper gesendet. Wir speichern ihre
+    Spracheingaben nicht, weder auf Ihren Endger\xE4ten noch auf unserem Server.
+    Die Rechtsgrundlage beim Verarbeiten ihrer Spracheingaben ist ihr Einwilligung
+    durch Nutzung der Diktierfunktion. Wenn sie nicht w\xFCnschen, dass ihre Spracheingaben
+    an OpenAI gesendet werden, dann benutzen Sie bitte nicht die Diktierfunktion.
+    Wenn Sie die Diktierfunktion doch nutzen, dann achten Sie darauf keinen Personenbezogenen
+    Daten in die Spracheingabe miteinflie\xDFen zu lassen. Dies ist weder notwendig,
+    noch erw\xFCnscht.\r\n\r\nf.\tDie Daten, die Sie uns bei der Aus\xFCbung Ihrer
+    Rechte zur Verf\xFCgung stellen, verarbeiten wir, um Ihre Rechte umsetzen zu
+    k\xF6nnen. Wenn Sie uns eine Email schreiben, antworten wir darauf. Die Rechtsgrundlage
+    hier ist die Notwendigkeit zur Erf\xFCllung unseres Vertrages.\r\n\r\n5) Einsatz
+    von Analyse- und anderen Instrumenten von\r\nDrittanbietern\r\nWie erl\xE4utert
+    Nutzen wir Dienste von Unity Technologies und von OpenAI. Der Server der App
+    wird gehostet von Strato. Unsere Rechtsgrundlage zur Nutzung dieser Dienste ist
+    f\xFCr Unity und OpenAI ihre Einwilligung und f\xFCr Strato unser Berechtigte
+    Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO).\r\n\r\na.\tUnity Technologies\r\nUnity
+    Technologies setzt \u201ECookies\u201C, also Textdateien, ein, die auf Ihrem
+    Endger\xE4t gespeichert werden, um eine Wiedererkennung zu erm\xF6glichen. Eine
+    Wiedererkennung ist essenziell, um Nutzungsdaten auf geeignete Weise aufzeichnen
+    zu k\xF6nnen. Ihre personenbezogenen Daten k\xF6nnen weltweit in jedem Land gespeichert
+    und verarbeitet werden, in dem Unity Einrichtungen hat oder Dienstleister beauftragt,
+    wie etwa Google Cloud Platform oder Looker. Mit Ihrer Einwilligung zur Datenaufzeichnung
+    akzeptieren Sie, dass Ihre Daten in L\xE4nder au\xDFerhalb Ihres Wohnsitzlandes,
+    einschlie\xDFlich der USA, \xFCbertragen werden k\xF6nnen, wo m\xF6glicherweise
+    andere Datenschutzstandards gelten. In diesen L\xE4ndern k\xF6nnten Gerichte,
+    Strafverfolgungs- und Aufsichtsbeh\xF6rden sowie Sicherheitsbeh\xF6rden unter
+    bestimmten Umst\xE4nden Zugriff auf Ihre Daten erhalten. Unity Analytics erhebt
+    Daten in \xDCbereinstimmung mit seinen Datenschutzrichtlinien, die darauf abzielen,
+    den Datenschutz der Nutzer zu sch\xFCtzen. Diese Richtlinien k\xF6nnen Sie unter
+    dem angegebenen Link einsehen: https://unity.com/de/legal/game-player-and-app-user-privacy-policy.
+    Auf Ihren Wunsch hin f\xFChrt Unity Analytics die L\xF6schung Ihrer Nutzungsdaten
+    durch. Die L\xF6schung der Daten ist ein Prozess, der bis zu 30 Tage in Anspruch
+    nehmen kann. Einen entsprechenden L\xF6sch-Button finden Sie in den App-Einstellungen.
+    \r\n\r\nb.\tOpenAI\r\nWir nutzen KI-Technologie von OpenAI, n\xE4mlich GPT-4
+    und Whisper. Wir gehen davon aus, dass Sie keine personenbezogene Daten in Ihren
+    Freitext-Antworten innerhalb der App angeben. Daher gehen wir davon aus, dass
+    keine personenbezogene Daten durch GPT-4 verarbeitet werden. Whisper verarbeitet
+    Ihre Spracheingaben und somit eine Audio-Datei ihrer Stimme. Wir gehen davon
+    aus, dass der Inhalt Ihrer Spracheingaben keine Personenbezogenen Daten enth\xE4lt,
+    abgesehen von Ihrer Stimme an sich. Ihre personenbezogenen Daten k\xF6nnen weltweit
+    in jedem Land gespeichert und verarbeitet werden, in dem OpenAI Einrichtungen
+    hat oder Dienstleister beauftragt, wie etwa Google Cloud Platform. Mit Ihrer
+    Einwilligung zur Datenaufzeichnung akzeptieren Sie, dass Ihre Daten in L\xE4nder
+    au\xDFerhalb Ihres Wohnsitzlandes, einschlie\xDFlich der USA, \xFCbertragen werden
+    k\xF6nnen, wo m\xF6glicherweise andere Datenschutzstandards gelten. In diesen
+    L\xE4ndern k\xF6nnten Gerichte, Strafverfolgungs- und Aufsichtsbeh\xF6rden sowie
+    Sicherheitsbeh\xF6rden unter bestimmten Umst\xE4nden Zugriff auf Ihre Daten erhalten.\r\n\r\nc.\tStrato\r\nWir
+    nutzen einen Server, der von Strato gehostet wird. Dieser Server befindet sich
+    in Deutschland. Die Verarbeitung der Daten im Rahmen dieses Prozesses findet
+    im Einklang mit Stratos Datenschutzerkl\xE4rung statt, die sie unter folgendem
+    Link einsehen k\xF6nnen: https://www.strato.de/datenschutz/.\r\n\r\n6) Kontaktaufnahmen\r\nWenn
+    Sie uns per Email schreiben, werden Ihre anfallenden Daten zwecks Bearbeitung
+    der Anfrage und f\xFCr den Fall von Anschlussfragen bei uns gespeichert. Diese
+    Daten geben wir in keinem Fall ohne Ihre Einwilligung weiter. Rechtsgrundlage
+    f\xFCr die Verarbeitung der Daten ist unser berechtigtes Interesse an der Beantwortung
+    Ihres Anliegens. Ihre Daten werden nach abschlie\xDFender Bearbeitung Ihrer Anfrage
+    gel\xF6scht, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
+    Sie k\xF6nnen im Falle von Art. 6 Abs. 1 UAbs. 1 lit. f DSGVO gegen die Verarbeitung
+    Ihrer personenbezogenen Daten jederzeit Widerspruch einlegen.\r\n\r\n7) Technische
+    Implementierung von Drittanbietersoftware\r\nZum Teil nutzen wir Service Provider,
+    die personenbezogene Daten in unserem Auftrag verarbeiten, um die technische
+    Plattform f\xFCr die Dienste bereitzustellen. Diese Service Provider verarbeiten
+    entsprechende Daten ausschlie\xDFlich nach unseren Vorgaben (Auftragsverarbeitung).
+    Die in diesem Abschnitt 4 beschriebene rechtliche Basis f\xFCr die Datenverarbeitung
+    ist Art. 6 Abs. 1 UAbs. 1 lit. b DSGVO (Rechtm\xE4\xDFigkeit der Verarbeitung)
+    und Art. 28 DSGVO (Auftragsverarbeiter).\r\n\r\n8) Dauer der Speicherung personenbezogener
+    Daten\r\nSofern in der vorliegenden Datenschutzrichtlinie keine k\xFCrzere Speicherdauer
+    angegeben ist, speichern wir personenbezogene Daten so lange, (i) wie dies f\xFCr
+    die Erbringung der Dienstleistungen f\xFCr Sie erforderlich ist und/oder (ii)
+    dies im Hinblick auf die Vertragsbeziehung mit Ihnen erforderlich ist; anschlie\xDFend
+    werden die Daten nur dann und nur in dem Umfang gespeichert, in dem wir aufgrund
+    der gesetzlichen Aufbewahrungspflichten dazu verpflichtet sind. Falls wir die
+    entsprechenden personenbezogenen Daten nicht mehr zu den vorstehend beschriebenen
+    Zwecken ben\xF6tigen, werden diese personenbezogenen Daten nur f\xFCr die Dauer
+    der jeweiligen gesetzlichen Aufbewahrungspflichten gespeichert und nicht zu anderen
+    Zwecken verarbeitet.\r\n\r\n9) Ihre Rechte\r\nIhnen stehen folgende Rechte hinsichtlich
+    Ihrer personenbezogene Daten gegen\xFCber uns zu:\r\n\r\nAuskunftsrecht der betroffenen
+    Person\r\nSie haben uns gegen\xFCber das Recht, Auskunft dar\xFCber zu erhalten,
+    welche Daten wir zu Ihrer Person verarbeiten gem. Art. 15 DSGVO.\r\n\r\nRecht
+    auf Berichtigung\r\nSie haben uns gegen\xFCber das Recht auf Berichtigung gem.
+    Art. 16 DSGVO unrichtiger oder auf Vervollst\xE4ndigung unvollst\xE4ndiger Angaben,
+    sollten die Sie betreffenden Daten nicht richtig oder unvollst\xE4ndig sein.\r\n\r\nRecht
+    auf L\xF6schung (\u201CRecht auf Vergessenwerden\u201D)\r\nSie haben uns gegen\xFCber
+    das Recht auf L\xF6schung Ihrer personenbezogenen Daten unter den Voraussetzungen
+    des Art. 17 DSGVO. Dein Anspruch auf L\xF6schung kann nach dieser Vorschrift
+    aufgrund eines entgegenstehenden Interesses ausscheiden.\r\n\r\nRecht auf Einschr\xE4nkung
+    der Verarbeitung\r\nSie haben uns gegen\xFCber das Recht auf Einschr\xE4nkung
+    der Verarbeitung der Sie betreffenden personenbezogenen Daten unter den Voraussetzungen
+    des Art. 18 DSGVO.\r\n\r\nRecht auf Widerruf der erteilten Einwilligung\r\nSie
+    haben uns gegen\xFCber das Recht, eine erteilte Einwilligung zur Verarbeitung
+    Ihrer personenbezogenen Daten jederzeit zu widerrufen gem. Art 7 Abs. 3 DSGVO.\r\n\r\n\r\nRecht
+    auf Daten\xFCbertragbarkeit\r\nSie haben uns gegen\xFCber das Recht, unter den
+    Voraussetzungen des Art. 20 DSGVO die Sie betreffenden personenbezogenen Daten,
+    die Sie uns bereitgestellt haben, in einem strukturierten, g\xE4ngigen und maschinenlesbaren
+    Format zu erhalten, und Sie hast das Recht, diese Daten einem anderen Verantwortlichen
+    ohne Behinderung durch uns zu \xFCbermitteln.\r\n\r\n\r\nRecht auf Beschwerde
+    bei einer Aufsichtsbeh\xF6rde\r\nSie haben uns gegen\xFCber das Recht auf Beschwerde
+    bei einer Aufsichtsbeh\xF6rde gem. Art. 77 DSGVO, insbesondere in dem Mitgliedstaat
+    Ihres Aufenthaltsorts, Ihres Arbeitsplatzes oder des Orts des mutma\xDFlichen
+    Versto\xDFes, wenn Sie der Ansicht sind, dass die Verarbeitung der Sie betreffenden
+    personenbezogenen Daten gegen die DSGVO verst\xF6\xDFt.\r\n\r\n\r\nWiderspruchsrecht\r\nSofern
+    Ihre personenbezogenen Daten von uns auf Grundlage von berechtigten Interessen
+    gem\xE4\xDF Art. 6 Abs. 1 S. 1 lit. f DSGVO verarbeitet werden, haben Sie gem\xE4\xDF
+    Art. 21 DSGVO das Recht, Widerspruch gegen die Verarbeitung Ihrer personenbezogenen
+    Daten einzulegen, soweit dies aus Gr\xFCnden erfolgt, die sich aus Ihrer besonderen
+    Situation ergeben. Soweit sich der Widerspruch gegen die Verarbeitung personenbezogener
+    Daten zum Zwecke von Direktwerbung richtet, haben Sie ein generelles Widerspruchsrecht
+    ohne das Erfordernis der Angabe einer besonderen Situation.\r\n\r\n10) Kontakt;
+    Datenschutzbeauftragter\r\nZu allen Fragen bez\xFCglich des Datenschutzes bei
+    Kite II, k\xF6nnen Sie uns \xFCber die oben in Abschnitt 1 angegebene E-Mail
+    Adresse kontaktieren.\r\n\r\n11) Sicherung der Personenbezogenen Daten\r\nWir
+    legen gro\xDFen Wert auf die Sicherung aller mit der App oder deren Nutzung in
+    Verbindung stehender personenbezogener Daten. Wir haben Sicherheitsma\xDFnahmen
+    zur Vorbeugung von Verlust, Missbrauch und Ver\xE4nderung der von uns gespeicherten
+    Daten. Unsere Sicherheitsma\xDFnahmen und Datenschutzrichtlinie werden regelm\xE4\xDFig
+    \xFCberpr\xFCft und gegebenenfalls aktualisiert und verbessert, wenn dies angemessen
+    ist. Nur autorisierte Mitarbeiter haben Zugang zu personenbezogenen Daten. Wir
+    haben zus\xE4tzliche, umfangreiche Vorsichtsma\xDFnahmen betreffend der App und
+    ihres Gebrauchs getroffen. Unabh\xE4ngig davon sollte den Nutzenden bewusst sein,
+    dass, ungeachtet jeglicher Sicherheitsvorkehrungen, der Austausch von Informationen
+    \xFCber das Internet nie vollst\xE4ndig gesichert werden kann. Wir k\xF6nnen
+    die Sicherheit der Daten, die \xFCber die App \xFCbermittelt werden, nicht garantieren,
+    w\xE4hrend es \xFCber das Internet \xFCbertragen wird.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6059,8 +6283,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 515, y: -268.49}
-  m_SizeDelta: {x: 930, y: 536.98}
+  m_AnchoredPosition: {x: 515, y: -8464.995}
+  m_SizeDelta: {x: 930, y: 16929.99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1207215382
 MonoBehaviour:
@@ -6082,16 +6306,239 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Das Hier sind beispiel Benutzungsbedingungen
-
-
-    Das Hier sind beispiel
-    Benutzungsbedingungen. Das Hier sind beispiel Benutzungsbedingungen. Das Hier
-    sind beispiel Benutzungsbedingungen. Das Hier sind beispiel Benutzungsbedingungen.
-    Das Hier sind beispiel Benutzungsbedingungen. Das Hier sind beispiel Benutzungsbedingungen.
-    Das Hier sind beispiel Benutzungsbedingungen. Das Hier sind beispiel Benutzungsbedingungen.
-    Das Hier sind beispiel Benutzungsbedingungen. Das Hier sind beispiel Benutzungsbedingungen.
-    Das Hier sind beispiel Benutzungsbedingungen. '
+  m_text: "1. Allgemeines\r\n1.1\tDie vorliegenden Nutzungsbedingungen / Allgemeinen
+    Gesch\xE4ftsbedingungen (die \u201EBedingungen\u201C) gelten f\xFCr die Nutzung
+    der Kite II Mobile App (die \u201EApp\u201C, die \u201EDienste\u201C) durch Sie
+    (den \u201ENutzer\u201C, \u201ESie\u201C, \u201EIhr\u201C). Die Dienste werden
+    von Mergim Miftari, Falkenweg 24, 74395 Mundelsheim, Deutschland (\u201EKite
+    II\u201C, \u201Ewir\u201C, \u201Euns\u201C) erbracht.\r\n\r\n1.2\t Die Bedingungen
+    gelten nicht f\xFCr die Website https://kite2.de/. Die Website https://kite2.de/
+    kann ihre eigenen Nutzungsbedingungen / Allgemeinen Gesch\xE4ftsbedingungen haben.\r\n\r\n1.3\t
+    Der Zweck der App ist es die M\xF6glichkeit zu bieten, Resilienz gegen Diskriminierung
+    aufzubauen, in dem Sie im Rahmen von Visual Novels diskriminierende Situationen
+    simulieren und sich spielerisch damit auseinandersetzen. Au\xDFerdem k\xF6nnen
+    Sie Feedback und Informationen \xFCber diese diskriminierenden Situationen erhalten.
+    Weiterf\xFChrende Informationen \xFCber die App finden Sie auf der Webseite https://kite2.de/.
+    \r\n\r\n1.4\tDie App wird nur zu Test-Zwecken im Rahmen von \u201EExternen Nutzertests\u201C
+    ver\xF6ffentlicht und ist nur von Test-Personen zu nutzen. Die Entwicklung, und
+    damit die Nutzertests, wird sp\xE4testens am 31.12.2025 eingestellt. Die App
+    ist ab dem Zeitpunkt der Einstellung der Nutzertests nicht mehr zu benutzen.\r\n\r\n1.5\tDie
+    in den Bedingungen verwendeten Begriffe sind nicht geschlechtsspezifisch.\r\n\r\n2.
+    Nutzung der App\r\n2.1\tUm die App nutzen zu k\xF6nnen, m\xFCssen Sie die vorliegenden
+    Bedingungen beim ersten \xD6ffnen der App akzeptieren. Mit der Annahme der Nutzungsbedingungen
+    f\xFCr die App (im Allgemeinen durch Anklicken der entsprechenden Schaltfl\xE4che)
+    sendet der Nutzer ein Angebot zum Abschluss eines Nutzungsvertrags f\xFCr die
+    App (der \u201EVertrag\u201C). Kite II nimmt das Angebot des Nutzers an, indem
+    die entsprechenden App-Dienste f\xFCr den Nutzer erbracht werden. Kite II ist
+    jedoch nicht verpflichtet, einen entsprechenden Vertrag mit dem Nutzer abzuschlie\xDFen.\r\n\r\n2.2\tEs
+    k\xF6nnen nur Nutzer die App nutzen, die \xFCber 18 Jahre alt sind, sich in Deutschland
+    aufhalten, und als Test-Personen auftreten. Falls Sie unter 18 Jahre alt sind,
+    sind Sie nicht berechtigt, die App zu nutzen. Falls Sie sich nicht in Deutschland
+    aufhalten, sind Sie nicht berechtigt, die App zu nutzen. Falls Sie nicht als
+    Test-Person im Rahmen der Externen Nutzertests auftreten, sind Sie nicht berechtigt,
+    die App zu nutzen. Daneben ist die Nutzung der Dienste nur zul\xE4ssig f\xFCr
+    nicht kommerzielle Zwecke.\r\n\r\n2.3\tDie Nutzung der Dienste ist f\xFCr Sie
+    kostenlos.\r\n\r\n3. Recht auf Nutzung der App; unser Recht zur Nutzung Ihrer
+    Inhalte\r\n3.1\tNach Abschluss des Vertrags (siehe Paragraph 2.1) gew\xE4hrt
+    Ihnen Kite II \u2013 vorbehaltlich der Beschr\xE4nkungen in den Nutzungsbedingungen
+    (siehe insbesondere Paragraph 4 und 6) \u2013 ein eingeschr\xE4nktes, nicht exklusives,
+    nicht \xFCbertragbares, nicht lizenzierbares Recht auf Nutzung der App f\xFCr
+    den vorgesehenen Zweck der Externen Nutzertests und f\xFCr die Dauer des Vertrages.
+    Dies ist jedoch auf die ausschlie\xDFlich private und nichtkommerzielle Nutzung
+    der App beschr\xE4nkt.\r\n\r\n3.2\tSie erteilen uns Ihr Einverst\xE4ndnis zur
+    Nutzung der von Ihnen in der App eingegebenen Freitext-Antworten (\u201ENutzereingaben\u201C)
+    (insbesondere der Inhalte, die durch Rechte geistigen Eigentums gesch\xFCtzt
+    sind), um f\xFCr Sie die entsprechenden App-Dienste in der App zu erbringen (in
+    diesem Zusammenhang und f\xFCr diese Zwecke sind wir insbesondere berechtigt,
+    die Nutzereingaben darzustellen, zu nutzen, zu verteilen, zu ver\xE4ndern, auszuf\xFChren,
+    zu vervielf\xE4ltigen, zu kopieren, \xF6ffentlich aufzuf\xFChren oder auszustellen,
+    zu \xFCbersetzen oder abgeleitete Arbeiten zu erstellen (diese Nutzungsarten
+    werden zusammen als \u201ENutzungsrechte\u201C bezeichnet)). Die Lizenz im vorstehenden
+    Abschnitt wird uns kostenlos und zum Zweck der Erbringung der App-Dienste f\xFCr
+    Sie gew\xE4hrt.\r\n\r\n4. Beschr\xE4nkungen f\xFCr die Nutzung der Dienste\r\n4.1\tSie
+    d\xFCrfen die Dienste und die in der App bereitgestellten Dienste nur zu den
+    vorgesehenen Verwendungszwecken der Dienste nutzen. Jede andere Verwendung der
+    Dienste, die Ihnen nicht ausdr\xFCcklich in den vorliegenden Bedingungen gestattet
+    wurde, ist (i) nicht zul\xE4ssig und (ii) f\xE4llt in Bezug auf die App nicht
+    unter die Ihnen in Paragraph 3.1 gew\xE4hrte Lizenz. Sie m\xFCssen sich insbesondere
+    jederzeit an die Nutzungsbeschr\xE4nkungen und Pflichten aus Paragraph 4.2 bis
+    4.3 und 6 halten.\r\n\r\n4.2\tDer Nutzer stimmt zu, keine der nachstehend genannten
+    Inhalte in der App als Freitextantwort einzugeben:\r\n\u2022\tillegale oder rechtswidrige
+    Inhalte\r\n\u2022\tInhalte, die diffamierend, beleidigend, verleumderisch, moralisch
+    anst\xF6\xDFig, obsz\xF6n oder pornografisch sind, die eine Diskriminierung beinhalten;
+    \r\n\u2022\tInhalte, die eine Straftat darstellen oder/oder (i) Gewalt und/oder
+    (ii) Terrorismus und/oder (iii) Rassismus verherrlichen oder dazu aufrufen\r\n\u2022\tInhalte,
+    die Hassreden beinhalten\r\n\u2022\tInhalte, die personenbezogene Daten enthalten
+    oder Personen auf sonstige Weise identifizierbar machen.\r\n\u2022\tInhalte,
+    die geistige Eigentumsrechte Dritter verletzen (wie z. B. Urheberrechte, Warenzeichen)\r\n\u2022\tInhalte,
+    die Betriebsgeheimnisse von Drittparteien enthalten (zumindest, wenn die entsprechende
+    Offenlegung dieser Informationen gegen geltendes Recht verst\xF6\xDFt);\r\n\u2022\tFalschnachrichten
+    (\u201Cfake news\u201D)\r\n\r\n4.3\tMit der Nutzung der Dienste verpflichtet
+    sich der Nutzer:\r\n\u2022\tin den Diensten keine sch\xE4dlichen Programme zu
+    implementieren oder die Dienste und/oder die Nutzer der App auf andere Weise
+    mit (i) Daten anzugreifen, die Viren, W\xFCrmer, Trojaner oder andere Malware
+    und/oder (ii) keine Aktionen durchzuf\xFChren, die die Funktionsf\xE4higkeit
+    und/oder die Sicherheit der technischen Infrastruktur von Kite II f\xFCr die
+    Dienste gef\xE4hrden k\xF6nnten (insbesondere Aktionen, die die genannte Infrastruktur
+    \xFCberlasten) und/oder das Erscheinungsbild der Dienste beeintr\xE4chtigen k\xF6nnten\r\n\u2022\tohne
+    die ausdr\xFCckliche schriftliche Genehmigung von Kite II keine Drittparteien-Webseiten
+    (z.B. (Social Media) Fanseiten), Apps und Plattformen zu erstellen, bauen und/oder
+    betreiben, die vollst\xE4ndig oder zum Gro\xDFteil aus Kompilationen der Inhalte
+    bestehen, die in der App ver\xF6ffentlicht wurden. Falls Sie Interesse haben,
+    eine Drittparteien-Plattform zu betreiben (beispielsweise eine Kite II-Fanseite
+    oder eine \xE4hnliche Plattform), wenden Sie sich zwecks der Genehmigung an uns,
+    bevor Sie eine derartige Drittparteien-Plattform freischalten, da das Erstellen,
+    Bauen und/oder der Betrieb einer solchen Drittparteien-Plattform zur Folge haben
+    kann, dass gegen Sie (insbesondere) eine Unterlassungserkl\xE4rung und/oder Schadenersatzanspr\xFCche
+    von Kite II aufgrund des Versto\xDFes z. B. gegen geltendes (i) Urheberrecht
+    und/oder (ii) das Gesetz gegen unlauteren Wettbewerb gestellt werden k\xF6nnen)\r\n\u2022\tDrittparteien
+    nicht ohne ausdr\xFCckliche schriftliche Genehmigung von Kite II beim Erstellen,
+    Aufbau und/oder Betreiben von Drittparteien-Plattformen zu unterst\xFCtzen (wie
+    unter anderem die Bereitstellung von Inhalten an die Betreiber jeweiliger Plattformen
+    von Drittanbietern)\r\n\u2022\tden Quellcode der App nicht zu modifizieren, zu
+    ver\xE4ndern, zu \xFCbersetzen, zu rekonstruieren, zu dekompilieren, zu disassemblieren
+    oder auf andere Weise zu entschl\xFCsseln oder abgeleitete Werke auf Basis der
+    App zu erstellen (au\xDFer in dem Umfang, in dem derartige Aktionen nach geltendem
+    Recht zul\xE4ssig sind)\r\n\u2022\tkeine Automatisierungssysteme und/oder -software
+    einzusetzen, um Daten aus den Diensten zu extrahieren (einschlie\xDFlich Dienste-Inhalte
+    (siehe Definition in nachfolgendem Paragraph 6.1)), insbesondere, wenn diese
+    Daten zu kommerziellen Zwecken genutzt und/oder auf Drittparteien-Plattformen
+    ver\xF6ffentlicht werden\r\n\u2022\tDrittparteien nicht dabei zu unterst\xFCtzen,
+    Daten aus den Diensten zu extrahieren (einschlie\xDFlich Dienste-Inhalte (siehe
+    nachstehende Definition in Paragraph 6.1)), insbesondere, wenn diese Daten zu
+    kommerziellen Zwecken genutzt und/oder auf Drittparteien-Plattformen ver\xF6ffentlicht
+    werden\r\n\r\n5. Weitere Pflichten des Nutzers\r\n5.1\tSie sind verantwortlich
+    f\xFCr die Freitext-Antworten, die von Ihnen oder auf Ihrem Ger\xE4t erstellt
+    werden. Im Allgemeinen \xFCberpr\xFCfen wir nicht (proaktiv), ob die von einem
+    Nutzer eingegebenen Inhalte (i) personenbezogene Daten enthalten und/oder (ii)
+    gegen geltendes Recht versto\xDFen.\r\n\r\n5.2\tUm zu verhindern, dass Ihr Ger\xE4t
+    und/oder Ihr App-Konto durch Drittparteien kompromittiert wird (z. B. durch Malware),
+    m\xFCssen Sie alle angemessenen Sicherheitsma\xDFnahmen ergreifen, insbesondere
+    m\xFCssen Sie die aktuellen Updates f\xFCr (i) Ihr Ger\xE4t (insbesondere Updates
+    f\xFCr das Betriebssystem von Ger\xE4ten) und (ii) die App stets umgehend installieren.\r\n\r\n5.3\tFalls
+    Sie Kenntnis von Sicherheitsl\xFCcken in den Diensten oder von wesentlichen Verst\xF6\xDFen
+    gegen die vorliegenden Bedingungen durch andere Nutzer erlangen, sind wir dankbar,
+    wenn Sie dies unserem Support-Team melden (\xFCber die E-Mail-Adresse mergim.miftari@hs-heilbronn.de).\r\n\r\n6.
+    Geistiges Eigentum an den Diensten\r\n6.1\tDie \u201EDienste-Inhalte\u201C sind
+    unser Eigentum bzw. das Eigentum des jeweiligen Lizenzgebers und unterliegen
+    dem Schutz des Urheberrechts, Markenrechts und/oder anderer Bestimmungen zum
+    Schutz geistigen Eigentums (\u201EDienste-Inhalte\u201C im Sinne dieser Bedingungen
+    beinhaltet alle Komponenten der Dienste, d. h. Daten und Materialien, einschlie\xDFlich
+    Bilder, Grafiken, Abbildungen, Designs, Symbolen, Fotos, Texten und anderen Beschreibungen,
+    unter Ausschluss von Nutzer-Inhalten, und Drittparteien-Inhalten).\r\n\r\n6.2\tJegliche
+    Art der Nutzung und/oder Vervielf\xE4ltigung der Dienste-Inhalte ohne unsere
+    ausdr\xFCckliche vorherige Zustimmung stellt einen Versto\xDF gegen geltendes
+    Recht dar und ist gem\xE4\xDF den vorliegenden Bedingungen untersagt.\r\n\r\n7.
+    Verf\xFCgbarkeit / Systemausfall\r\nInsofern dies technisch machbar und wirtschaftlich
+    vertretbar ist, bem\xFChen wir uns, die Dienste rund um die Uhr zur Verf\xFCgung
+    zu stellen. Wir k\xF6nnen jedoch keine Gew\xE4hr f\xFCr die Verf\xFCgbarkeit
+    \xFCbernehmen. Die Nutzung kann gegebenenfalls aufgrund von Kapazit\xE4tsengp\xE4ssen,
+    aus Gr\xFCnden der Sicherheit oder Systemintegrit\xE4t oder zur Durchf\xFChrung
+    von technischen Wartungsarbeiten im Hinblick auf die ordnungsgem\xE4\xDFe und/oder
+    bessere Erbringung der Dienste vor\xFCbergehend eingeschr\xE4nkt werden. \r\n\r\n8.
+    Haftungsbeschr\xE4nkung\r\n8.1\tKite II haftet gegen\xFCber dem Nutzer gem\xE4\xDF
+    den Bestimmungen der geltenden Produkthaftungsgesetze, im Fall von Vorsatz und
+    grober Fahrl\xE4ssigkeit f\xFCr die Verletzung von Leben, K\xF6rper oder Gesundheit,
+    falls Kite II eine etwaige Garantie \xFCbernimmt, sowie in allen anderen F\xE4llen
+    zwingender gesetzlicher Haftung, in jedem Fall entsprechend den gesetzlichen
+    Bestimmungen.\r\n\r\n8.2\tBei einer Verletzung wesentlicher Vertragspflichten
+    (den so genannten \u201EKardinalpflichten\u201C) ist Kite II dem Nutzer gegen\xFCber
+    f\xFCr die entstehenden Sch\xE4den ersatzpflichtig. Kardinalpflichten sind Pflichten,
+    deren Verletzung das Erreichen des Vertragszwecks gef\xE4hrdet, sowie alle Pflichten,
+    deren Erf\xFCllung die ordnungsgem\xE4\xDF Durchf\xFChrung des Vertrags \xFCberhaupt
+    erst erm\xF6glicht und auf deren Einhaltung Sie im Allgemeinen vertrauen k\xF6nnen.
+    Kommt die Verletzung einer Kardinalpflicht jedoch lediglich durch eine leichte
+    Fahrl\xE4ssigkeit zustande und hat keine Verletzung von Leben, K\xF6rper oder
+    Gesundheit zur Folge, sind die Schadensersatzanspr\xFCche des Nutzers auf den
+    vertragstypischen vorhersehbaren Schaden begrenzt.\r\n\r\n8.3\tIn allen anderen
+    F\xE4llen sind Schadenersatzanspr\xFCche gegen Kite II \u2013 unabh\xE4ngig von
+    ihrer gesetzlichen Grundlage, insbesondere aufgrund der Verletzung einer vorvertraglichen
+    Pflicht oder von Verpflichtungen aus der Vertragsbeziehung zwischen dem Nutzer
+    und Kite II durch Kite II, seine gesetzlichen Vertreter, Mitarbeiter oder Erf\xFCllungsgehilfen
+    oder aufgrund von unerlaubten Handlungen \u2013 ausgeschlossen.\r\n\r\n8.4\tIn
+    dem Umfang, in dem die Haftung von Kite II gem\xE4\xDF Paragraph 8 beschr\xE4nkt
+    oder ausgeschlossen ist, gilt dies auch f\xFCr die pers\xF6nliche Haftung der
+    gesetzlichen Vertreter, Mitarbeiter und Erf\xFCllungsgehilfen von Kite II.\r\n\r\n8.5\tAlle
+    Haftungsprivilegien, z. B. gem\xE4\xDF Paragraph 8\u201311 des deutschen Telemediengesetzes
+    (TMG) oder Paragraph 598 des deutschen B\xFCrgerlichen Gesetzbuchs (BGB), bleiben
+    davon unber\xFChrt.\r\n\r\n8.6\tDie vorgenannten Bestimmungen aus Paragraph 8
+    bewirken keine \xC4nderung im Hinblick auf die Beweislast zum Nachteil des Nutzers.\r\n\r\n8.7\tSchadenersatzanspr\xFCche
+    des Nutzers verj\xE4hren nach Ablauf der gesetzlichen Verj\xE4hrungsfristen ab
+    dem gesetzlichen Verj\xE4hrungsbeginn.\r\n\r\n9. Entsch\xE4digung\r\nDer Nutzer
+    verpflichtet sich, Kite II f\xFCr alle Verluste, Auslagen, Haftungen, Sch\xE4den
+    und Anspr\xFCche (einschlie\xDFlich angemessener Rechtsanwaltskosten), die aus
+    einer schuldhaften Verletzung der Nutzerpflichten gem\xE4\xDF den vorliegenden
+    Bedingungen durch den Nutzer resultieren, zu entsch\xE4digen, zu verteidigen
+    und von der Haftung freizustellen.\r\n\r\n10. Verweise auf andere Webseiten /
+    Inhalte\r\nSoweit die Dienste Links und Verweise auf Drittparteien enthalten,
+    insbesondere auf die Webseiten Dritter, haben wir keinen Einfluss auf das aktuelle
+    und k\xFCnftige Design und die Inhalte der verlinkten Webseiten und k\xF6nnen
+    daher keine Haftung \xFCbernehmen. Die Nutzung der von Dritten zur Verf\xFCgung
+    gestellten Inhalte erfolgt auf eigenes Risiko. Sollten Sie feststellen, dass
+    wir Seiten mit illegalen oder fragw\xFCrdigen Inhalten verlinkt haben oder in
+    anderer Form darauf verweisen, teilen Sie uns dies bitte mit, damit wir den Link
+    schnellstm\xF6glich entfernen k\xF6nnen.\r\n\r\n11. Datenschutz\r\nWir erheben,
+    verarbeiten und nutzen personenbezogene Daten, soweit dies in \xDCbereinstimmung
+    mit unseren Datenschutzrichtlinien erforderlich ist.\r\n\r\n12. Sperrung der
+    Dienste f\xFCr Nutzer\r\nKite II kann die Nutzung der Dienste durch den Nutzer
+    (vor\xFCbergehend) verbieten, insbesondere\r\n\u2022\tim Fall des Missbrauchs
+    oder der betr\xFCgerischen Nutzung der Dienste durch den Nutzer oder bei begr\xFCndetem
+    Verdacht auf den Missbrauch oder die betr\xFCgerische Nutzung der Dienste durch
+    den Nutzer\r\n\u2022\tfalls sich der Nutzer nicht an die wesentlichen Bestimmungen
+    der vorliegenden Nutzungsbedingungen h\xE4lt (insbesondere an die Bestimmungen
+    im vorgenanntem Paragraph 4 und 6);\r\n\u2022\tfalls die App auf einem Smartphone
+    genutzt wird, auf dem Nutzungseinschr\xE4nkungen oder Sicherheitsfunktionen des
+    Herstellers au\xDFer Kraft gesetzt oder ansonsten gesperrte Funktionen aktiviert
+    wurden; und /oder\r\n\u2022\tfalls Kite II berechtigt ist, den Vertrag gem\xE4\xDF
+    vorstehendem Paragraph 13 zu k\xFCndigen.\r\nF\xFCr die Dauer des jeweiligen
+    Verbots, eines Nutzers, f\xFCr die Nutzung der App endet die dem Nutzer gem\xE4\xDF
+    Paragraph 3.1 gew\xE4hrte Lizenz.\r\n\r\n13. Vertragsaufl\xF6sung\r\nDer Vertrag
+    wird nur f\xFCr die Dauer der Externen Nutzungstests geschlossen. Diese Enden
+    aller sp\xE4testens am 31.12.2025, m\xF6glicherweise aber auch vorher. Der Vertrag
+    kann von jeder Partei jederzeit gek\xFCndigt werden. Der Vertrag wird automatisch
+    aufgel\xF6st, wenn der Nutzer die App von seinem mobilen Endger\xE4t l\xF6scht.\r\nDaneben
+    bleibt das Recht beider Parteien zur K\xFCndigung des Vertrags aus wichtigem
+    Grund unber\xFChrt. Kite II ist berechtigt, den Vertrag aus wichtigem Grund fristlos
+    zu k\xFCndigen, und zwar insbesondere: \r\n\u2022\tim Fall des Missbrauchs oder
+    der betr\xFCgerischen Nutzung der Dienste durch den Nutzer oder bei begr\xFCndetem
+    Verdacht auf den Missbrauch oder die betr\xFCgerische Nutzung der Dienste durch
+    den Nutzer, \r\n\u2022\tfalls sich der Nutzer nicht an die wesentlichen Bestimmungen
+    der vorliegenden Nutzungsbedingungen h\xE4lt (insbesondere an die Bestimmungen
+    in vorstehendem Paragraph 4 und 6); und/oder \r\n\u2022\tfalls die App auf einem
+    Smartphone genutzt wird, auf dem Nutzungseinschr\xE4nkungen oder Sicherheitsfunktionen
+    des Herstellers au\xDFer Kraft gesetzt oder ansonsten gesperrte Funktionen aktiviert
+    wurden.\r\n\r\n14. Kontakt\r\nF\xFCr Beschwerden, Feedback oder Fragen zu den
+    Diensten wenden Sie sich bitte an unser Support-Team (siehe Kontakt-Info in der
+    App).\r\n\r\n15. Verschiedenes\r\n15.1\tDie aktuelle Version der Nutzungsbedingungen
+    kann auf den Webseiten eingesehen, ausgedruckt und/oder als pdf-Datei heruntergeladen
+    werden.\r\n\r\n15.2\tUnter bestimmten Umst\xE4nden muss Kite II die vorliegenden
+    Nutzungsbedingungen gegebenenfalls \xE4ndern und/oder erg\xE4nzen (z. B. im Fall
+    von \xC4nderungen an den f\xFCr die App geltenden Rechtsvorschriften). In diesem
+    Fall wird Kite II den Nutzer in geeigneter Form \xFCber die entsprechenden \xC4nderungen
+    der Bedingungen informieren. Bei Nutzung der App erfolgt dies in der Regel, sobald
+    die App vom Nutzer (erneut) ge\xF6ffnet wird. Der Nutzer wird dann gebeten, den
+    ge\xE4nderten Bedingungen zuzustimmen. Falls der Nutzer nicht zustimmt oder die
+    Best\xE4tigung der ge\xE4nderten Bedingungen verweigert, (i) hat der Nutzer das
+    Recht auf fristlose K\xFCndigung aus wichtigem Grund gem\xE4\xDF vorstehendem
+    Paragraph 13, und (ii) Kite II hat das Recht auf (a) fristlose K\xFCndigung aus
+    wichtigem Grund gem\xE4\xDF vorstehendem Paragraph 13, vorausgesetzt dass die
+    entsprechende K\xFCndigung f\xFCr Kite II erforderlich erscheint und der Nutzer
+    hierdurch nicht wider Treu und Glauben benachteiligt wird, und (b) das Recht,
+    die Nutzung der App gem\xE4\xDF vorstehendem Paragraph 12 f\xFCr den Nutzer zu
+    sperren, vorausgesetzt dass Kite II die entsprechende Sperre erforderlich erscheint
+    und der Nutzer hierdurch nicht wider Treu und Glauben benachteiligt wird. Kite
+    II wird den Nutzer \xFCber die vorgenannten m\xF6glichen Konsequenzen einer Ablehnung
+    der ge\xE4nderten Nutzungsbedingungen durch den Nutzer informieren, wenn dem
+    Nutzer die entsprechenden ge\xE4nderten Bedingungen bekannt gegeben werden.\r\n\r\n15.3\tKite
+    II ist nicht bereit und nicht verpflichtet, an einem Streitbeilegungsverfahren
+    in einer Verbraucherschlichtungsstelle teilzunehmen.\r\n\r\n15.4\tF\xFCr die
+    vorliegenden Nutzungsbedingungen gelten die Gesetze der Bundesrepublik Deutschland.\r\n\r\n15.5\tSollten
+    einzelne Bestimmungen dieser Nutzungsbedingungen ganz oder teilweise ung\xFCltig
+    werden, bleibt die G\xFCltigkeit der \xFCbrigen Bestimmungen davon unber\xFChrt.
+    Die ung\xFCltige Bestimmung muss dann durch eine durchf\xFChrbare Bestimmung
+    ersetzt werden, die dem Zweck der ung\xFCltigen Bestimmung wirtschaftlich m\xF6glichst
+    nahe kommt. Gleiches gilt f\xFCr den Fall, dass die Nutzungsbedingungen Regelungsl\xFCcken
+    enthalten.\r\n\r\nStand: Februar 2024\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6302,7 +6749,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 480.5, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1262445873
@@ -7836,7 +8283,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 437, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1612674785
@@ -8051,7 +8498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7185633893947003523, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 515
       objectReference: {fileID: 0}
     - target: {fileID: 7185633893947003523, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -9859,7 +10306,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 150, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1912650331
@@ -10550,7 +10997,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 474.5, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2076260288
@@ -10647,7 +11094,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 455, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2086309802
@@ -12366,8 +12813,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 325, y: 0}
+  m_SizeDelta: {x: 650, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7968387007465432266
 MonoBehaviour:
