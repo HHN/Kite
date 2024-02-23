@@ -23,9 +23,9 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
 
     [SerializeField] private GameObject termsAndConditionPanel;
     [SerializeField] private Button continuetermsAndConditionsButton;
-    [SerializeField] private Toggle termsOfUseToggle;
-    [SerializeField] private Toggle dataPrivacyToggle;
-    [SerializeField] private Toggle collectDataToggle;
+    [SerializeField] private CustomToggle termsOfUseToggle;
+    [SerializeField] private CustomToggle dataPrivacyToggle;
+    [SerializeField] private CustomToggle collectDataToggle;
     [SerializeField] private TextMeshProUGUI infoTextTermsAndConditions;
 
     [SerializeField] private AudioSource kiteAudioLogo;
@@ -175,9 +175,9 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
 
     public void OnContinueTermsAndConditionsButton()
     {
-        bool acceptedTermsOfUse = termsOfUseToggle.isOn;
-        bool acceptedDataPrivacyTerms = dataPrivacyToggle.isOn;
-        bool acceptedDataCollection = collectDataToggle.isOn;
+        bool acceptedTermsOfUse = termsOfUseToggle.IsClicked();
+        bool acceptedDataPrivacyTerms = dataPrivacyToggle.IsClicked();
+        bool acceptedDataCollection = collectDataToggle.IsClicked();
 
         if (acceptedTermsOfUse)
         {
