@@ -13,10 +13,10 @@ public class KiteNovelManager : MonoBehaviour
         novels[-4] = new CallWithNotaryNovel();
         novels[-7] = new InitialInterviewForGrantApplicationNovel();
         novels[-6] = new RentingAnOfficeNovel();
+        novels[-5] = new BankAccountOpeningNovel();
 
         // not modified novels
         novels[-1] = new BankTalkNovel();
-        novels[-5] = new BankAccountOpeningNovel();
         novels[-8] = new StartUpGrantNovel();
         novels[-9] = new ConversationWithAcquaintancesNovel();
         novels[-10] = new BankAppointmentNovel();
