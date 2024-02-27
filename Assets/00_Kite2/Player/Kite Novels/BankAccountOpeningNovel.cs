@@ -519,7 +519,7 @@ public class BankAccountOpeningNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Ach so, ich versethe. Nun ja, ich möchte nochmal auf das Firmenkonto zu sprechen kommen."
+                text = "Ach so, ich verstehe. Nun ja, ich möchte nochmal auf das Firmenkonto zu sprechen kommen."
             },
 
             new VisualNovelEvent()
