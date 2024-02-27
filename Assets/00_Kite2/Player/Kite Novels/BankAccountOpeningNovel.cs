@@ -69,7 +69,7 @@ public class BankAccountOpeningNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 5,
-                nextId = 6,
+                nextId = 500,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Lea",
@@ -79,12 +79,21 @@ public class BankAccountOpeningNovel : VisualNovel
 
             new VisualNovelEvent()
             {
+                id = 500,
+                nextId = 6,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.PAPER_SOUND)
+            },
+
+            new VisualNovelEvent()
+            {
                 id = 6,
                 nextId = 7,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
-                text = "Vielen Dank. (Überfliegt Businessplan) Nach einer kurzen Überprüfung habe ich das Gefühl, dass Ihre Geschäftsidee in eine Risikobranche fällt, was wir nur ungern unterstützen.", //TODO: add noises from paper
+                text = "Vielen Dank. (Überfliegt Businessplan) Nach einer kurzen Überprüfung habe ich das Gefühl, dass Ihre Geschäftsidee in eine Risikobranche fällt, was wir nur ungern unterstützen.", 
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.QUESTIONING)
             },
 
@@ -113,11 +122,20 @@ public class BankAccountOpeningNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 9,
+                nextId = 501,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.PAPER_SOUND)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 501,
                 nextId = 12,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
-                text = "(Liest sich entsprechende Seiten nochmal durch) Jetzt nach erneutem Lesen, nehme ich meine Antwort zurück. Haben Sie das ganz alleine geschrieben? Das liest sich wirklich nicht schlecht.", //TODO: add noises from paper
+                text = "(Liest sich entsprechende Seiten nochmal durch) Jetzt nach erneutem Lesen, nehme ich meine Antwort zurück. Haben Sie das ganz alleine geschrieben? Das liest sich wirklich nicht schlecht.", 
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.ASTONISHED)
             },
 
@@ -169,7 +187,7 @@ public class BankAccountOpeningNovel : VisualNovel
             {
                 id = 14,
                 nextId = 400,
-                onChoice = 73,
+                onChoice = 520,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -323,7 +341,7 @@ public class BankAccountOpeningNovel : VisualNovel
             {
                 id = 28,
                 nextId = 29,
-                onChoice = 30,
+                onChoice = 508,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -343,12 +361,21 @@ public class BankAccountOpeningNovel : VisualNovel
 
             new VisualNovelEvent()
             {
+                id = 508,
+                nextId = 30,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.MAN_LAUGHING)
+            },
+
+            new VisualNovelEvent()
+            {
                 id = 30,
                 nextId = 31,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
-                text = "Das würde mich sehr freuen! Hier sind die Formulare, die Sie ausfüllen müssen. Sie können die dort am Tisch ausfüllen und vorne bei der Kollegin abgeben. Wir müssen danach noch eine Legitimationsprüfung durchführen. Nach erfolgreicher Prüfung und Abschluss der Formalitäten wird das Firmenkonto dann eingerichtet. In einigen Tagen erhalten Sie von uns einen Brief mit allen weiteren Unterlagen und Informationen.", //TODO: Add laughing sound
+                text = "Das würde mich sehr freuen! Hier sind die Formulare, die Sie ausfüllen müssen. Sie können die dort am Tisch ausfüllen und vorne bei der Kollegin abgeben. Wir müssen danach noch eine Legitimationsprüfung durchführen. Nach erfolgreicher Prüfung und Abschluss der Formalitäten wird das Firmenkonto dann eingerichtet. In einigen Tagen erhalten Sie von uns einen Brief mit allen weiteren Unterlagen und Informationen.", 
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.LAUGHING)
             },
 
@@ -432,7 +459,7 @@ public class BankAccountOpeningNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 39,
-                nextId = 40,
+                nextId = 41,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
@@ -805,13 +832,31 @@ public class BankAccountOpeningNovel : VisualNovel
 
             new VisualNovelEvent()
             {
+                id = 520,
+                nextId = 73,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.MAN_LAUGHING)
+            },
+
+            new VisualNovelEvent()
+            {
                 id = 73,
-                nextId = 16,
+                nextId = 509,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
-                text = "Ich meine, es ist doch ziemlich gut. Also für eine Frau ist das ja eine echte Leistung!",   //TODO: Add laughing sound
+                text = "Ich meine, es ist doch ziemlich gut. Also für eine Frau ist das ja eine echte Leistung!",   
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.LAUGHING),
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 509,
+                nextId = 74,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.MAN_LAUGHING)
             },
 
             new VisualNovelEvent()
@@ -821,7 +866,7 @@ public class BankAccountOpeningNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
-                text = "Ich meine, es ist doch ziemlich gut. Also für eine Frau ist das ja eine echte Leistung!",   //TODO: Add laughing sound
+                text = "Ich meine, es ist doch ziemlich gut. Also für eine Frau ist das ja eine echte Leistung!",  
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.LAUGHING),
             },
 
@@ -862,7 +907,7 @@ public class BankAccountOpeningNovel : VisualNovel
             {
                 id = 78,
                 nextId = 79,
-                onChoice = 80,
+                onChoice = 510,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -882,12 +927,21 @@ public class BankAccountOpeningNovel : VisualNovel
 
             new VisualNovelEvent()
             {
+                id = 510,
+                nextId = 80,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.MAN_LAUGHING)
+            },
+
+            new VisualNovelEvent()
+            {
                 id = 80,
                 nextId = 81,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
-                text = "Haha, Sie gefallen mir. Wissen Sie was? Ich habe sowieso noch etwas Zeit, dann schaue ich jetzt doch nochmal über Ihren Businessplan drüber.",   //TODO Add laughing sound
+                text = "Haha, Sie gefallen mir. Wissen Sie was? Ich habe sowieso noch etwas Zeit, dann schaue ich jetzt doch nochmal über Ihren Businessplan drüber.",  
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.LAUGHING),
             },
 
@@ -916,11 +970,11 @@ public class BankAccountOpeningNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 83,
-                nextId = 12,
+                nextId = 501,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
-                text = "(Papier raschelt) Jetzt nach erneutem Lesen, nehme ich meine Antwort zurück. Haben Sie das ganz alleine geschrieben? Das liest sich wirklich nicht schlecht.",   //TODO Add paper sound
+                text = "(Papier raschelt) Jetzt nach erneutem Lesen, nehme ich meine Antwort zurück. Haben Sie das ganz alleine geschrieben? Das liest sich wirklich nicht schlecht.",  
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.ASTONISHED),
             },
 
@@ -1224,11 +1278,11 @@ public class BankAccountOpeningNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 111,
-                nextId = 81,
+                nextId = 510,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
-                text = "Haha, das stimmt allerdings. Sie gefallen mir. Wissen Sie was? Ich habe sowieso noch etwas Zeit, dann schaue ich jetzt doch nochmal über Ihren Businessplan drüber.", //TODO: Add laughing sound
+                text = "Haha, das stimmt allerdings. Sie gefallen mir. Wissen Sie was? Ich habe sowieso noch etwas Zeit, dann schaue ich jetzt doch nochmal über Ihren Businessplan drüber.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.LAUGHING),
             },
 
@@ -1335,7 +1389,7 @@ public class BankAccountOpeningNovel : VisualNovel
             {
                 id = 121,
                 nextId = 400,
-                onChoice = 180,
+                onChoice = 504,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -1378,12 +1432,21 @@ public class BankAccountOpeningNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 125,
-                nextId = 126,
+                nextId = 502,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
                 text = "Natürlich. Wir haben festgestellt, dass Ihr Unternehmen möglicherweise einem höheren Risiko ausgesetzt ist, da es in einem stark umkämpften Markt tätig ist und regulatorischen Schwankungen unterliegen könnte.", 
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.CRITICAL),
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 502,
+                nextId = 126,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.PAPER_SOUND)
             },
 
             new VisualNovelEvent()
@@ -1394,7 +1457,7 @@ public class BankAccountOpeningNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
-                text = "Das Risiko ist sicherlich da, aber ich habe konkrete Maßnahmen ergriffen, um damit umzugehen. (Papier raschelt) Hier auf Seite 16 gehe ich konkret darauf ein." //TODO: Add paper sound
+                text = "Das Risiko ist sicherlich da, aber ich habe konkrete Maßnahmen ergriffen, um damit umzugehen. (Papier raschelt) Hier auf Seite 16 gehe ich konkret darauf ein." 
             },
 
             new VisualNovelEvent()
@@ -1423,7 +1486,7 @@ public class BankAccountOpeningNovel : VisualNovel
             {
                 id = 129,
                 nextId = 130,
-                onChoice = 131,
+                onChoice = 511,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -1443,12 +1506,21 @@ public class BankAccountOpeningNovel : VisualNovel
 
             new VisualNovelEvent()
             {
+                id = 511,
+                nextId = 131,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.MAN_LAUGHING)
+            },
+
+            new VisualNovelEvent()
+            {
                 id = 131,
                 nextId = 132,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
-                text = "Ich bin beeindruckt. Das ist für eine Frau eine ziemliche Leistung! Wer hätte das gedacht! Haha. ", //TODO Add laughing sound
+                text = "Ich bin beeindruckt. Das ist für eine Frau eine ziemliche Leistung! Wer hätte das gedacht! Haha. ", 
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.LAUGHING),
             },
 
@@ -1456,7 +1528,7 @@ public class BankAccountOpeningNovel : VisualNovel
             {
                 id = 132,
                 nextId = 133,
-                onChoice = 134,
+                onChoice = 512,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -1476,12 +1548,21 @@ public class BankAccountOpeningNovel : VisualNovel
 
             new VisualNovelEvent()
             {
+                id = 512,
+                nextId = 134,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.MAN_LAUGHING)
+            },
+
+            new VisualNovelEvent()
+            {
                 id = 134,
                 nextId = 20,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
-                text = "Haha, ja natürlich! Ich finde es auch wirklich toll, dass Sie dieses Projekt angehen. ", //TODO Add laughing sound
+                text = "Haha, ja natürlich! Ich finde es auch wirklich toll, dass Sie dieses Projekt angehen. ", 
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.LAUGHING),
             },
 
@@ -1500,7 +1581,7 @@ public class BankAccountOpeningNovel : VisualNovel
             {
                 id = 136,
                 nextId = 137,
-                onChoice = 139,
+                onChoice = 513,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -1511,7 +1592,7 @@ public class BankAccountOpeningNovel : VisualNovel
             {
                 id = 137,
                 nextId = 138,
-                onChoice = 139,
+                onChoice = 513,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -1531,12 +1612,21 @@ public class BankAccountOpeningNovel : VisualNovel
 
             new VisualNovelEvent()
             {
+                id = 513,
+                nextId = 139,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.MAN_LAUGHING)
+            },
+
+            new VisualNovelEvent()
+            {
                 id = 139,
                 nextId = 140,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
-                text = "Ach, jetzt stellen Sie sich nicht so an. Sie wissen doch, wie das gemeint war!",    //TODO: Add laughing sound
+                text = "Ach, jetzt stellen Sie sich nicht so an. Sie wissen doch, wie das gemeint war!", 
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.LAUGHING),
             },
 
@@ -1940,7 +2030,7 @@ public class BankAccountOpeningNovel : VisualNovel
             {
                 id = 176,
                 nextId = 177,
-                onChoice = 179,
+                onChoice = 505,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -1951,7 +2041,7 @@ public class BankAccountOpeningNovel : VisualNovel
             {
                 id = 177,
                 nextId = 178,
-                onChoice = 186,
+                onChoice = 507,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -1971,13 +2061,31 @@ public class BankAccountOpeningNovel : VisualNovel
 
             new VisualNovelEvent()
             {
+                id = 505,
+                nextId = 179,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.MAN_LAUGHING)
+            },
+
+            new VisualNovelEvent()
+            {
                 id = 179,
                 nextId = 129,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
-                text = "Ihre Beharrlichkeit ist bewundernswert, aber Sie müssen auch Ihre Grenzen kennen. Frauen neigen dazu, sich zu überschätzen und sollten ihre Ambitionen entsprechend anpassen.", //TODO: Add laughing and paper sound
+                text = "Ihre Beharrlichkeit ist bewundernswert, aber Sie müssen auch Ihre Grenzen kennen. Frauen neigen dazu, sich zu überschätzen und sollten ihre Ambitionen entsprechend anpassen.", 
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.LAUGHING),
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 504,
+                nextId = 180,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.PAPER_SOUND)
             },
 
             new VisualNovelEvent()
@@ -1987,7 +2095,7 @@ public class BankAccountOpeningNovel : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
-                text = "Nun gut, wenn Sie so sehr darauf bestehen. Aber wie gesagt, Ihre Geschäftsidee scheint in eine Risikobranche zu fallen, was wir nun mal ungern unterstützen. (Papier raschelt) Jetzt nach erneutem Lesen, nehme ich meine Antwort zurück. Haben Sie das ganz alleine geschrieben? Das liest sich wirklich nicht schlecht.", //TODO: Add paper sound
+                text = "Nun gut, wenn Sie so sehr darauf bestehen. Aber wie gesagt, Ihre Geschäftsidee scheint in eine Risikobranche zu fallen, was wir nun mal ungern unterstützen. (Papier raschelt) Jetzt nach erneutem Lesen, nehme ich meine Antwort zurück. Haben Sie das ganz alleine geschrieben? Das liest sich wirklich nicht schlecht.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.QUESTIONING),
             },
 
@@ -2039,7 +2147,7 @@ public class BankAccountOpeningNovel : VisualNovel
             {
                 id = 184,
                 nextId = 185,
-                onChoice = 180,
+                onChoice = 504,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
@@ -2059,12 +2167,21 @@ public class BankAccountOpeningNovel : VisualNovel
 
             new VisualNovelEvent()
             {
+                id = 507,
+                nextId = 186,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
+                waitForUserConfirmation = false,
+                audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.MAN_LAUGHING)
+            },
+
+            new VisualNovelEvent()
+            {
                 id = 186,
                 nextId = 187,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
-                text = "Ach was! Wenn das so wäre, würde es doch nicht so viele Männer geben, die Unternehmen führen.", //TODO: Add laughing sound
+                text = "Ach was! Wenn das so wäre, würde es doch nicht so viele Männer geben, die Unternehmen führen.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.LAUGHING),
             },
 
@@ -2278,11 +2395,11 @@ public class BankAccountOpeningNovel : VisualNovel
             new VisualNovelEvent()
             {
                 id = 205,
-                nextId = 12,
+                nextId = 501,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Müller",
-                text = "Das ist schön zu hören. Es scheint, als hätten Sie sich gründlich auf die Herausforderungen vorbereitet. Vielleicht können wir noch einige Details Ihres Plans besprechen, um sicherzustellen, dass Sie auf alle Eventualitäten vorbereitet sind. (Papier raschelt) Jetzt nach erneutem Lesen, muss ich sagen, das liest sich wirklich nciht schlecht.. Haben Sie das ganz alleine geschrieben?", //TODO: Add paper sounds
+                text = "Das ist schön zu hören. Es scheint, als hätten Sie sich gründlich auf die Herausforderungen vorbereitet. Vielleicht können wir noch einige Details Ihres Plans besprechen, um sicherzustellen, dass Sie auf alle Eventualitäten vorbereitet sind. (Papier raschelt) Jetzt nach erneutem Lesen, muss ich sagen, das liest sich wirklich nciht schlecht.. Haben Sie das ganz alleine geschrieben?", 
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.ASTONISHED),
             },
 
