@@ -50,7 +50,7 @@ public class GPTInterview : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Herzlich willkommen in der Welt von KITE, ich bin dein Assistentssystem!", // Geschlecht des Assistenten wählbar machen?
+                text = "Herzlich willkommen in der Welt von KITE! Ich bin eine KI und unterstütze dich dabei resilienter im Umgang mit diskriminierenden Erfahrungen im Gründungsprozess zu werden.", // Geschlecht des Assistenten wählbar machen?
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -71,7 +71,7 @@ public class GPTInterview : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Hallo [PlayerName], es freut mich dich begrüßen zu dürfen!", // Geschlecht des Assistenten wählbar machen?
+                text = "Schön dich kennenzulernen, [PlayerName]. Es freut mich dich begrüßen zu dürfen!", // Geschlecht des Assistenten wählbar machen?
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -129,23 +129,34 @@ public class GPTInterview : VisualNovel
             new VisualNovelEvent()
             {
                 id = 10,
-                nextId = 11,
+                nextId = 100,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Super! Ich freu mich darauf, dich im Gründungsprozess zu unterstützen!", 
+                text = "Super! Du hast jetzt die Wahl: Wir unterhalten uns noch etwas, dann finden wir konkret raus, wie ich dich am besten unterstützen kann (das ist natürlich optimal für alles weitere) oder du springst sofort in die App und spielst direkt die Novels, die wir für dich erstellt haben.", 
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
             new VisualNovelEvent()
             {
-                id = 11,
-                nextId = 12,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = "Herr Mayer",
-                text = "Ich helfe Dir herauszufinden 'Was brauche ich? Welche Hindernisse können sich mir in den Weg stellen? Welche Ressourcen brauche ich?'", 
-                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+                id = 100,
+                nextId = 101,
+                onChoice = 12,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                name = "Lea",
+                text = "Lass uns weiter unterhalten."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 101,
+                nextId = 8,
+                onChoice = 300,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                name = "Lea",
+                text = "Ich möchte direkt mit den Novels beginnen."
             },
 
             new VisualNovelEvent()
@@ -155,7 +166,7 @@ public class GPTInterview : VisualNovel
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Erzähl mal: Hast du dich auch schon für einen Firmennamen entschieden, [PlayerName]?", 
+                text = "Erzähl mal: Hast du dich auch schon für einen Firmennamen entschieden, [PlayerName]?",  //TODO Decide what to do if this gets skipped
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
@@ -187,7 +198,7 @@ public class GPTInterview : VisualNovel
                 nextId = 16,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.FREE_TEXT_INPUT_EVENT),
                 waitForUserConfirmation = false,
-                questionForFreeTextInput = "Welchen Namen hast du dir denn überlegt?",  
+                questionForFreeTextInput = "Welchen Namen hast du dir denn überlegt?",                      //TODO Decide what to do if this gets skipped
                 variablesName = "CompanyName"
             },
 
@@ -206,48 +217,113 @@ public class GPTInterview : VisualNovel
             {
                 id = 17,
                 nextId = 18,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.FREE_TEXT_INPUT_EVENT),
+                onChoice = 26,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
-                questionForFreeTextInput = "Worum geht's denn bei deinem Unternehmen? Mache am besten mal einen Elevator Pitch.",  
-                variablesName = "ElevatorPitch"
+                name = "Lea",
+                text = "Das möchte ich später erzählen."
             },
 
             new VisualNovelEvent()
             {
                 id = 18,
-                nextId = 21,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = "Herr Mayer",
-                text = "Das hört sich richtig gut an, [PlayerName]. [CompanyName] wird bestimmt ein voller Erfolg!", 
-                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 18,
-                nextId = 19,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = "Herr Mayer",
-                text = "Kein Problem! Erzähl mir doch aber gerne, worum es bei deinem Unternehmen gibt. Mache am besten mal einen Elevator Pitch.", 
-                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+                nextId = 8,
+                onChoice = 20,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                name = "Lea",
+                text = "Klar, hör gut zu:"
             },
 
             new VisualNovelEvent()
             {
                 id = 19,
-                nextId = 20,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.FREE_TEXT_INPUT_EVENT),
-                waitForUserConfirmation = false,
-                questionForFreeTextInput = "Worum geht's denn bei deinem Unternehmen? Mache am besten mal einen Elevator Pitch.",  
-                variablesName = "ElevatorPitch"
+                nextId = 23,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Herr Mayer",
+                text = "Kein Problem! Erzähl mir aber doch, worum es bei deinem Unternehmen gibt. Mache am besten mal einen Elevator Pitch.", 
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
             new VisualNovelEvent()
             {
                 id = 20,
                 nextId = 21,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.FREE_TEXT_INPUT_EVENT),
+                waitForUserConfirmation = false,
+                questionForFreeTextInput = "Worum geht's denn bei deinem Unternehmen? Mache am besten mal einen Elevator Pitch.",  
+                variablesName = "ElevatorPitch"
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 21,
+                nextId = 28,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Herr Mayer",
+                text = "Das hört sich richtig gut an, [PlayerName]. [CompanyName]  wird bestimmt ein voller Erfolg!", 
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 22,
+                nextId = 23,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.FREE_TEXT_INPUT_EVENT),
+                waitForUserConfirmation = false,
+                questionForFreeTextInput = "Worum geht's denn bei deinem Unternehmen? Mache am besten mal einen Elevator Pitch.",  
+                variablesName = "ElevatorPitch"
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 23,
+                nextId = 24,
+                onChoice = 26,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                name = "Lea",
+                text = "Das möchte ich später erzählen."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 24,
+                nextId = 8,
+                onChoice = 25,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                name = "Lea",
+                text = "Klar, hör gut zu:"
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 25,
+                nextId = 27,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.FREE_TEXT_INPUT_EVENT),
+                waitForUserConfirmation = false,
+                questionForFreeTextInput = "Worum geht's denn bei deinem Unternehmen? Mache am besten mal einen Elevator Pitch.",  
+                variablesName = "ElevatorPitch"
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 26,
+                nextId = 28,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Herr Mayer",
+                text = "Kein Problem.", 
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 27,
+                nextId = 28,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
@@ -257,42 +333,63 @@ public class GPTInterview : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 20,
-                nextId = 22,
+                id = 28,
+                nextId = 300,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Wir wollen Dich mit KITE bei deiner Gründung begleiten! Forschungen haben gezeigt, dass Gründerinnen häufig anderen Problemen gegenüberstehen als Gründer. In KITE kannst du einige Stationen im Gründungsprozess durchspielen und unterschiedliche Dialoge und Reaktionen für Dich in Ruhe austesten. Im Anschluss analysieren wir das Gespräch, damit du verschiedene Muster und Biases kennenlernst, denen du begegnet bist.", 
+                text = "Im Profilbereich kannst du die Angaben jederzeit ändern.", 
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
             new VisualNovelEvent()
             {
-                id = 21,
-                nextId = 22,
+                id = 300,
+                nextId = 301,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Wir wollen Gründerinnen mit KITE bei deren Gründungen begleiten! Forschungen haben gezeigt, dass Gründerinnen häufig anderen Problemen gegenüberstehen als Gründer. In KITE können einige Stationen im Gründungsprozess durchgespielt und unterschiedliche Dialoge und Reaktionen in Ruhe ausgetestet werden. Im Anschluss wird das Gespräch analysiert, damit verschiedene Muster und Biases kennengelernt werden können, welchen beim Spielen begegnet werden kann.", 
+                text = "Wenn du mir mitteilst, welche Szenarien dich besonders interessieren, suche ich dir passende Novels raus. Möchtest du dir direkt selbst alles anschauen oder ein paar Vorschläge haben?", 
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
             new VisualNovelEvent()
             {
-                id = 22,
-                nextId = 23,
+                id = 301,
+                nextId = 302,
+                onChoice = 304,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                name = "Lea",
+                text = "Schlag mir gerne vor, welche Novels am besten zu meinen Interessen passen."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 302,
+                nextId = 8,
+                onChoice = 303,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
+                waitForUserConfirmation = false,
+                name = "Lea",
+                text = "Ich werde schon alles alleine rausfinden. Lass mich direkt beginnen!"
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 303,
+                nextId = 400,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Um dir den Einstieg in die KITE-App zu erleichtern führe ich dich gerne einmal herum. " + 
-                "Möchtest du mir vorher kurz mitteilen welche Themen dich besonders interessieren? Dann suche ich dir die entsprechenden Inhalte schoneinmal raus.",
+                text = "Alles klar, dann wünsche ich dir viel Spaß beim Erkunden von KITE!", 
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
             new VisualNovelEvent()
             {
-                id = 23,
-                nextId = 24,
+                id = 304,
+                nextId = 305,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.FREE_TEXT_INPUT_EVENT),
                 waitForUserConfirmation = false,
                 questionForFreeTextInput = "Erzähle mir was dich aktuell am meisten interessiert und ich suche dir passende Inhalte dazu raus.",  
@@ -301,8 +398,8 @@ public class GPTInterview : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 24,
-                nextId = 25,
+                id = 305,
+                nextId = 306,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.GPT_PROMPT_EVENT),
                 waitForUserConfirmation = true,
                 gptPrompt = GetTaskPrompt() + " Dies ist die Liste von Visual Novels: " + GetNovelSummary() + " Dies ist die Antwort der Person: [Preverences]",
@@ -312,63 +409,47 @@ public class GPTInterview : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 25,
-                nextId = 26,
+                id = 306,
+                nextId = 307,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Sehr gut, ich suche dir die passenden Inhalte gleich raus. Solange kann ich dich kurz durch die App führen. Möchtest du das, oder solls gleich mit dem Spielen losgehen und du versuchst dich selbst zurecht zu finden?",
+                text = "Super, ich suche dir die passenden Novels raus. Eine Sache noch:", 
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
             new VisualNovelEvent()
             {
-                id = 26,
-                nextId = 27,
-                onChoice = 30, // Change id and add tutorial
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                name = "Lea",
-                text = "Ja, führe mich gerne einmal durch die Funktionen der App."
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 27,
-                nextId = 8,
-                onChoice = 28,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
-                waitForUserConfirmation = false,
-                name = "Lea",
-                text = "Ich werde schon alles alleine rausfinden. Lass mich direkt mit dem Spielen beginnen!"
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 28,
-                nextId = 29,
+                id = 307,
+                nextId = 308,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Dies sind die Inhalte, welche dich hoffentlich am meisten interessieren: [GPTAnswerForPreverences]",
+                text = "Wir wollen Dich mit KITE bei deiner Gründung begleiten! Forschungen haben gezeigt, dass Gründerinnen häufig anderen Problemen gegenüberstehen als Gründer. In KITE kannst du einige Stationen im Gründungsprozess durchspielen und unterschiedliche Dialoge und Reaktionen für Dich in Ruhe austesten. Im Anschluss analysieren wir das Gespräch, damit du verschiedene Muster und Biases kennenlernst, denen du begegnet bist.", 
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
             new VisualNovelEvent()
             {
-                id = 29,
-                nextId = 30,
+                id = 308,
+                nextId = 309,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Solltest du Fragen bezüglich KITE haben, sprich mich gerne einfach an.",
+                text = "Dies sind die Inhalte, welche dich hoffentlich am meisten interessieren: [GPTAnswerForPreverences].",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
-
-
-
-
+            new VisualNovelEvent()
+            {
+                id = 309,
+                nextId = 400,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Herr Mayer",
+                text = "Ich wünsche dir nun viel Spaß und Lernerfolg mit KITE und falls du fragen hast kannst du mich jederzeit aufsuchen!",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
 
 
 
@@ -378,8 +459,8 @@ public class GPTInterview : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 30,
-                nextId = 61,
+                id = 400,
+                nextId = 401,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.PLAY_SOUND_EVENT),
                 waitForUserConfirmation = false,
                 audioClipToPlay = SoundEnumHelper.ToInt(SoundsEnum.LEAVE_SCENE)
@@ -387,8 +468,8 @@ public class GPTInterview : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 61,
-                nextId = 62,
+                id = 401,
+                nextId = 402,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.CHARAKTER_EXIT_EVENT),
                 waitForUserConfirmation = false,
                 name = "Herr Mayer",
@@ -398,7 +479,7 @@ public class GPTInterview : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 62,
+                id = 402,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.END_NOVEL_EVENT),
                 waitForUserConfirmation = false
             }
