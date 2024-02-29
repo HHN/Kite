@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using Unity.Services.Analytics;
+using System.Net.Security;
+using System.Net;
 
 public class MainMenuSceneController : SceneController, OnSuccessHandler
 { 
@@ -38,7 +40,6 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
         // Analytics 
         var analytics = AnalyticsServiceHandler.Instance();
         analytics.StartAnalytics();
-        
 
         BackStackManager.Instance().Clear();
         SceneMemoryManager.Instance().ClearMemory();

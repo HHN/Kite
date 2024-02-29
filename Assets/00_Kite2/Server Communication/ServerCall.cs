@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 using System.Text;
+using UnityEditor.PackageManager.Requests;
 
 public abstract class ServerCall : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public abstract class ServerCall : MonoBehaviour
     {
         using (UnityWebRequest webRequest = CreateRequest())
         {
+            webRequest.certificateHandler = new CustomCertificateHandler();
             yield return webRequest.SendWebRequest();
             HandleWebRequestResult(webRequest);
         }
