@@ -546,9 +546,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Diensteanbieter\r\nMergim Miftari \r\nFalkenweg 24 \r\n74395 Mundelsheim
-    \r\n\nKontaktm\xF6glichkeiten\r\nE-Mail-Adresse: mergim.miftari@hs-heilbronn.de
-    \r\nTelefon: 015205299169\r"
+  m_text: "Impressum\r\n\nVerantwortlicher Appbetreiber\r\nHochschule Heilbronn\r\nK\xF6rperschaft
+    des \xF6ffentlichen Rechts\r\nVertreten durch den Rektor Professor Dr.-Ing. Oliver
+    Lenzen\r\nMax-Planck-Str. 39\r\n74081 Heilbronn\r\nTel.: 07131 / 504-0\r\nE-Mail:
+    info@hs-heilbronn.de\r\n\nZust\xE4ndige Aufsichtsbeh\xF6rde\r\nZust\xE4ndige
+    Aufsichtsbeh\xF6rde ist das Ministerium f\xFCr Wissenschaft, Forschung und Kunst\r\nBaden-W\xFCrttemberg\r\nK\xF6nigstra\xDFe
+    46\r\n70173 Stuttgart\r\n\nInhaltliche Verantwortung\r\nInhaltlich verantwortlich
+    f\xFCr redaktionelle Inhalte ist gem\xE4\xDF \xA7 55 Abs. 2\r\nRundfunkstaatsvertrag
+    (RSTV)\r\nHerr Professor Dr.-Ing. Oliver Lenzen\r\nMax-Planck-Str. 39\r\n74081
+    Heilbronn\r\nTel.: 07131 / 504-201\r\nE-Mail: rektor@hs-heilbronn.de\r\n\nUmsatzsteuer-Identifikationsnummer\r\nDE
+    811 275 936\r\n\nEORI-Nummer\r\nDE 4043847"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5478,24 +5485,25 @@ MonoBehaviour:
     der App, und somit auch die Testung der App, endet sp\xE4testens am 31.12.2025.
     Somit ist auch diese Datenschutzerkl\xE4rung nur bis zu diesem Datum g\xFCltig.\r\n\r\nDie
     verwendeten Begriffe sind nicht geschlechtsspezifisch.\r\n\r\nStand: 20. Februar
-    2024\r\n\r\n1) Allgemeines\r\nHinsichtlich der Dienste ist Mergim Miftari der
-    Verantwortliche im Sinne der Datenschutz- Grundverordnung (\u201CDSGVO\u201D).\r\n\r\nMergim
-    Miftari\r\nFalkenweg 24\r\n74395 Mundelsheim\r\nEmail: mergim.miftari@hs-heilbronn.de\r\n\r\nDiese
-    Datenschutzerkl\xE4rung informiert dar\xFCber, wie wir personenbezogenen Daten
-    im Zusammenhang mit unseren Diensten erheben und verarbeiten.\r\n\r\n2) Zugriff
-    auf und Speicherung von Informationen in Endger\xE4ten\r\nDurch die Nutzung unserer
-    App kann ein Zugriff auf Informationen (z.B. IP-Adresse) oder eine Speicherung
-    von Informationen (z.B. Cookies) in Ihren Endger\xE4ten erfolgen. Mit diesem
-    Zugriff bzw. dieser Speicherung kann eine weitere Verarbeitung personenbezogener
-    Daten im Sinne der DSGVO verbunden sein.\r\n\r\nIn den F\xE4llen, in denen ein
-    solcher Zugriff auf Informationen bzw. ein solches Speichern von Informationen
-    zur technisch fehlerfreien Bereitstellung unserer Dienste unbedingt erforderlich
-    ist, erfolgt dies auf Grundlage von \xA7 25 Abs. 1 S. 1, Abs. 2 Nr. 2 TTDSG.\r\n\r\n\r\nIn
-    den F\xE4llen, in denen ein solcher Vorgang anderen Zwecken (z.B. der bedarfsgerechten
-    Gestaltung unserer App) dient, erfolgt dieser auf Grundlage von \xA7 25 Abs.
-    1 TTDSG nur mit Ihrer Einwilligung gem\xE4\xDF Art. 6 Abs. 1 lit. a DSGVO. Die
-    Einwilligung ist jederzeit f\xFCr die Zukunft widerrufbar.\r\n\r\nWeitere Informationen
-    zur Verarbeitung Ihrer personenbezogenen Daten und den einschl\xE4gigen Rechtsgrundlagen
+    2024\r\n\r\n1) Allgemeines\r\nHinsichtlich der Dienste ist die Hochschule Heilbronn
+    der Verantwortliche im Sinne der\r\nDatenschutz- Grundverordnung (\u201CDSGVO\u201D).\r\nHochschule
+    Heilbronn\r\nK\xF6rperschaft des \xF6ffentlichen Rechts\r\nMax-Planck-Str. 39\r\n74081
+    Heilbronn\r\nTel.: 07131 / 504-0\r\nE-Mail: info@hs-heilbronn.de\r\nDiese Datenschutzerkl\xE4rung
+    informiert dar\xFCber, wie wir personenbezogenen Daten im\r\nZusammenhang mit
+    unseren Diensten erheben und verarbeiten.\n\r\n2) Zugriff auf und Speicherung
+    von Informationen in Endger\xE4ten\r\nDurch die Nutzung unserer App kann ein
+    Zugriff auf Informationen (z.B. IP-Adresse) oder eine Speicherung von Informationen
+    (z.B. Cookies) in Ihren Endger\xE4ten erfolgen. Mit diesem Zugriff bzw. dieser
+    Speicherung kann eine weitere Verarbeitung personenbezogener Daten im Sinne der
+    DSGVO verbunden sein.\r\n\r\nIn den F\xE4llen, in denen ein solcher Zugriff auf
+    Informationen bzw. ein solches Speichern von Informationen zur technisch fehlerfreien
+    Bereitstellung unserer Dienste unbedingt erforderlich ist, erfolgt dies auf Grundlage
+    von \xA7 25 Abs. 1 S. 1, Abs. 2 Nr. 2 TTDSG.\r\n\r\n\r\nIn den F\xE4llen, in
+    denen ein solcher Vorgang anderen Zwecken (z.B. der bedarfsgerechten Gestaltung
+    unserer App) dient, erfolgt dieser auf Grundlage von \xA7 25 Abs. 1 TTDSG nur
+    mit Ihrer Einwilligung gem\xE4\xDF Art. 6 Abs. 1 lit. a DSGVO. Die Einwilligung
+    ist jederzeit f\xFCr die Zukunft widerrufbar.\r\n\r\nWeitere Informationen zur
+    Verarbeitung Ihrer personenbezogenen Daten und den einschl\xE4gigen Rechtsgrundlagen
     in diesem Zusammenhang k\xF6nnen Sie den nachfolgenden Abschnitten zu den konkreten
     Verarbeitungst\xE4tigkeiten auf unserer Website entnehmen.\r\n\r\n3) Daten, die
     wir erheben und verarbeiten\r\na.\tIn der Kite II App ist es nicht m\xF6glich
@@ -6097,31 +6105,32 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "1. Allgemeines\r\n1.1\tDie vorliegenden Nutzungsbedingungen / Allgemeinen
-    Gesch\xE4ftsbedingungen (die \u201EBedingungen\u201C) gelten f\xFCr die Nutzung
-    der Kite II Mobile App (die \u201EApp\u201C, die \u201EDienste\u201C) durch Sie
-    (den \u201ENutzer\u201C, \u201ESie\u201C, \u201EIhr\u201C). Die Dienste werden
-    von Mergim Miftari, Falkenweg 24, 74395 Mundelsheim, Deutschland (\u201EKite
-    II\u201C, \u201Ewir\u201C, \u201Euns\u201C) erbracht.\r\n\r\n1.2\t Die Bedingungen
-    gelten nicht f\xFCr die Website https://kite2.de/. Die Website https://kite2.de/
-    kann ihre eigenen Nutzungsbedingungen / Allgemeinen Gesch\xE4ftsbedingungen haben.\r\n\r\n1.3\t
-    Der Zweck der App ist es die M\xF6glichkeit zu bieten, Resilienz gegen Diskriminierung
-    aufzubauen, in dem Sie im Rahmen von Visual Novels diskriminierende Situationen
-    simulieren und sich spielerisch damit auseinandersetzen. Au\xDFerdem k\xF6nnen
-    Sie Feedback und Informationen \xFCber diese diskriminierenden Situationen erhalten.
-    Weiterf\xFChrende Informationen \xFCber die App finden Sie auf der Webseite https://kite2.de/.
-    \r\n\r\n1.4\tDie App wird nur zu Test-Zwecken im Rahmen von \u201EExternen Nutzertests\u201C
-    ver\xF6ffentlicht und ist nur von Test-Personen zu nutzen. Die Entwicklung, und
-    damit die Nutzertests, wird sp\xE4testens am 31.12.2025 eingestellt. Die App
-    ist ab dem Zeitpunkt der Einstellung der Nutzertests nicht mehr zu benutzen.\r\n\r\n1.5\tDie
-    in den Bedingungen verwendeten Begriffe sind nicht geschlechtsspezifisch.\r\n\r\n2.
-    Nutzung der App\r\n2.1\tUm die App nutzen zu k\xF6nnen, m\xFCssen Sie die vorliegenden
-    Bedingungen beim ersten \xD6ffnen der App akzeptieren. Mit der Annahme der Nutzungsbedingungen
-    f\xFCr die App (im Allgemeinen durch Anklicken der entsprechenden Schaltfl\xE4che)
-    sendet der Nutzer ein Angebot zum Abschluss eines Nutzungsvertrags f\xFCr die
-    App (der \u201EVertrag\u201C). Kite II nimmt das Angebot des Nutzers an, indem
-    die entsprechenden App-Dienste f\xFCr den Nutzer erbracht werden. Kite II ist
-    jedoch nicht verpflichtet, einen entsprechenden Vertrag mit dem Nutzer abzuschlie\xDFen.\r\n\r\n2.2\tEs
-    k\xF6nnen nur Nutzer die App nutzen, die \xFCber 18 Jahre alt sind, sich in Deutschland
+    Gesch\xE4ftsbedingungen (die\r\n\u201EBedingungen\u201C) gelten f\xFCr die Nutzung
+    der Kite II Mobile App (die \u201EApp\u201C, die \u201EDienste\u201C)\r\ndurch
+    Sie (den \u201ENutzer\u201C, \u201ESie\u201C, \u201EIhr\u201C). Die Dienste werden
+    von der Hochschule\r\nHeilbronn, Max-Planck-Str. 39, 74081 Heilbronn, Deutschland
+    (\u201EKite II\u201C, \u201Ewir\u201C, \u201Euns\u201C)\r\nerbracht.\n\r\n1.2\t
+    Die Bedingungen gelten nicht f\xFCr die Website https://kite2.de/. Die Website
+    https://kite2.de/ kann ihre eigenen Nutzungsbedingungen / Allgemeinen Gesch\xE4ftsbedingungen
+    haben.\r\n\r\n1.3\t Der Zweck der App ist es die M\xF6glichkeit zu bieten, Resilienz
+    gegen Diskriminierung aufzubauen, in dem Sie im Rahmen von Visual Novels diskriminierende
+    Situationen simulieren und sich spielerisch damit auseinandersetzen. Au\xDFerdem
+    k\xF6nnen Sie Feedback und Informationen \xFCber diese diskriminierenden Situationen
+    erhalten. Weiterf\xFChrende Informationen \xFCber die App finden Sie auf der
+    Webseite https://kite2.de/. \r\n\r\n1.4\tDie App wird nur zu Test-Zwecken im
+    Rahmen von \u201EExternen Nutzertests\u201C ver\xF6ffentlicht und ist nur von
+    Test-Personen zu nutzen. Die Entwicklung, und damit die Nutzertests, wird sp\xE4testens
+    am 31.12.2025 eingestellt. Die App ist ab dem Zeitpunkt der Einstellung der Nutzertests
+    nicht mehr zu benutzen.\r\n\r\n1.5\tDie in den Bedingungen verwendeten Begriffe
+    sind nicht geschlechtsspezifisch.\r\n\r\n2. Nutzung der App\r\n2.1\tUm die App
+    nutzen zu k\xF6nnen, m\xFCssen Sie die vorliegenden Bedingungen beim ersten \xD6ffnen
+    der App akzeptieren. Mit der Annahme der Nutzungsbedingungen f\xFCr die App (im
+    Allgemeinen durch Anklicken der entsprechenden Schaltfl\xE4che) sendet der Nutzer
+    ein Angebot zum Abschluss eines Nutzungsvertrags f\xFCr die App (der \u201EVertrag\u201C).
+    Kite II nimmt das Angebot des Nutzers an, indem die entsprechenden App-Dienste
+    f\xFCr den Nutzer erbracht werden. Kite II ist jedoch nicht verpflichtet, einen
+    entsprechenden Vertrag mit dem Nutzer abzuschlie\xDFen.\r\n\r\n2.2\tEs k\xF6nnen
+    nur Nutzer die App nutzen, die \xFCber 18 Jahre alt sind, sich in Deutschland
     aufhalten, und als Test-Personen auftreten. Falls Sie unter 18 Jahre alt sind,
     sind Sie nicht berechtigt, die App zu nutzen. Falls Sie sich nicht in Deutschland
     aufhalten, sind Sie nicht berechtigt, die App zu nutzen. Falls Sie nicht als

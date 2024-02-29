@@ -510,9 +510,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Impressum der Kite II Mobile App\n\nDiensteanbieter\r\nMergim Miftari
-    \r\nFalkenweg 24 \r\n74395 Mundelsheim \r\n\nKontaktm\xF6glichkeiten\r\nE-Mail-Adresse:
-    mergim.miftari@hs-heilbronn.de \r\nTelefon: 015205299169\r"
+  m_text: "Impressum\r\n\nVerantwortlicher Appbetreiber\r\nHochschule Heilbronn\r\nK\xF6rperschaft
+    des \xF6ffentlichen Rechts\r\nVertreten durch den Rektor Professor Dr.-Ing. Oliver
+    Lenzen\r\nMax-Planck-Str. 39\r\n74081 Heilbronn\r\nTel.: 07131 / 504-0\r\nE-Mail:
+    info@hs-heilbronn.de\r\n\n\nZust\xE4ndige Aufsichtsbeh\xF6rde\r\nZust\xE4ndige
+    Aufsichtsbeh\xF6rde ist das Ministerium f\xFCr Wissenschaft, Forschung und Kunst\r\nBaden-W\xFCrttemberg\r\nK\xF6nigstra\xDFe
+    46\r\n70173 Stuttgart\r\n\n\nInhaltliche Verantwortung\r\nInhaltlich verantwortlich
+    f\xFCr redaktionelle Inhalte ist gem\xE4\xDF \xA7 55 Abs. 2\r\nRundfunkstaatsvertrag
+    (RSTV)\r\nHerr Professor Dr.-Ing. Oliver Lenzen\r\nMax-Planck-Str. 39\r\n74081
+    Heilbronn\r\nTel.: 07131 / 504-201\r\nE-Mail: rektor@hs-heilbronn.de\n\r\n\nUmsatzsteuer-Identifikationsnummer\r\nDE
+    811 275 936\r\n\n\nEORI-Nummer\r\nDE 4043847"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
