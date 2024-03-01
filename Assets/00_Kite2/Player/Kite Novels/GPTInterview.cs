@@ -6,7 +6,7 @@ public class GPTInterview : VisualNovel
     public GPTInterview()
     {
         id = -13;
-        title = "GPTInterview";
+        title = "Intro Novel";
         description = "Beispiel Gespräch für den Start der App.";
         image = 0;
         nameOfMainCharacter = "Lea";
