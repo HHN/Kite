@@ -1469,6 +1469,17 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 name = "Herr Müller",
                 text = "Was ist das für eine Unterstellung?",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.CRITICAL)
+            },         
+
+            new VisualNovelEvent()
+            {
+                id = 135,
+                nextId = 181,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Herr Müller",
+                text = "Es tut mir leid. So habe ich die Frage nicht gemeint. Natürlich müssen Sie die Frage nicht beantworten.",
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.DEFEATED)
             },
 
             new VisualNovelEvent()
@@ -1836,17 +1847,6 @@ public class InitialInterviewForGrantApplicationNovel : VisualNovel
                 text = "Nun ja, es wäre für uns aber sehr hilfreich, wenn Sie uns eine Antwort geben würden. " +
                 "Schließlich müssen wir abwägen, ob sich eine Förderung auch für uns rentiert.",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.CRITICAL)
-            },
-
-            new VisualNovelEvent()
-            {
-                id = 168,
-                nextId = 181,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = "Herr Müller",
-                text = "Es tut mir leid. So habe ich die Frage nicht gemeint. Natürlich müssen Sie die Frage nicht beantworten.",
-                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.DEFEATED)
             },
 
             new VisualNovelEvent()
