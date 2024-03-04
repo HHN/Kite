@@ -16,92 +16,30 @@ public class SearchFilter : MonoBehaviour
 
     private void Start()
     {
-        searchButton.onClick.AddListener(delegate { OnSearchButton(); });
+        inputField.onValueChanged.AddListener(delegate {SearchAfterValueChanged();});
     }
 
-    public void OnSearchButton()
+    public void SearchAfterValueChanged()
     {
         string searchText = inputField.text.Trim();
         List<VisualNovel> dataset = new List<VisualNovel>();
+        dataset = KiteNovelManager.GetAllKiteNovels();
 
-        if (radioButtonHandler.IsKiteNovelsOn())
-        {
-            dataset = KiteNovelManager.GetAllKiteNovels();
-        } 
-        else if (radioButtonHandler.IsUserNovelsOn())
-        {
-            dataset = sceneController.userNovels;
-        } 
-        else if (radioButtonHandler.IsAccountNovelsOn())
-        {
-            dataset = AccountNovelManager.Instance().GetAllAccountNovels();
-        } 
-        else if (radioButtonHandler.IsFavoritesOn())
-        {
-            dataset = explorerButtons.GetFavoriteNovels();
-        }
-        List<VisualNovel> results = FuzzySearch(dataset, searchText, 2);
+        List<VisualNovel> results = FuzzySearch(dataset, searchText);
         gallery.RemoveAll();
         gallery.AddNovelsToGallery(results);
-        filterView.SetActive(false);
+        //filterView.SetActive(false);
     }
 
-    public int LevenshteinDistance(string a, string b)
-    {
-        int m = a.Length;
-        int n = b.Length;
-        int[,] dp = new int[m + 1, n + 1];
-
-        // Initialize first row and column.
-        for (int i = 0; i <= m; i++)
-        {
-            dp[i, 0] = i;
-        }
-        for (int j = 0; j <= n; j++)
-        {
-            dp[0, j] = j;
-        }
-
-        // fill matrix
-        for (int i = 1; i <= m; i++)
-        {
-            for (int j = 1; j <= n; j++)
-            {
-                if (a[i - 1] == b[j - 1])
-                {
-                    dp[i, j] = dp[i - 1, j - 1];
-                }
-                else
-                {
-                    dp[i, j] = Math.Min(dp[i - 1, j - 1], Math.Min(dp[i - 1, j], dp[i, j - 1])) + 1;
-                }
-            }
-        }
-
-        return dp[m, n];
-    }
-
-    public List<VisualNovel> FuzzySearch(List<VisualNovel> dataset, string query, int threshold)
+    public List<VisualNovel> FuzzySearch(List<VisualNovel> dataset, string query)
     {
         List<VisualNovel> matches = new List<VisualNovel>();
 
         foreach (VisualNovel entry in dataset)
         {
-            int distance = LevenshteinDistance(query, entry.title);
-            if (distance <= threshold)
+            if (entry.title.IndexOf(query, StringComparison.OrdinalIgnoreCase) >= 0)
             {
                 matches.Add(entry);
-            }
-            else
-            {
-                long id;
-                if (long.TryParse(query, out id))
-                {
-                    if (id == entry.id)
-                    {
-                        matches.Add(entry);
-                    }
-                }
             }
         }
 

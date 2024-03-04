@@ -72,7 +72,7 @@ public class NovelExplorerSceneController : SceneController, OnSuccessHandler
 
         userNovels = memory.GetUserNovels();
         searchInputField.text = memory.GetSearchPhrase();
-        radioButtonHandler.SetIndex(memory.GetRadioButtonIndex());
+        //radioButtonHandler.SetIndex(memory.GetRadioButtonIndex());
         explorerButtons.kiteGaleryPosition = memory.GetScrollPositionOfKiteGallery();
         explorerButtons.userGaleryPosition = memory.GetScrollPositionOfUserGallery();
         explorerButtons.accountGaleryPosition = memory.GetScrollPositionOfAccountGallery();
@@ -94,7 +94,7 @@ public class NovelExplorerSceneController : SceneController, OnSuccessHandler
         memory.SetScrollPositionOfAccountGallery(explorerButtons.accountGaleryPosition);
         memory.SetScrollPositionOfFavoritesGallery(explorerButtons.favoritesGaleryPosition);
         memory.SetScrollPositionOfFilterGallery(explorerButtons.filterGaleryPosition);
-        memory.SetRadioButtonIndex(radioButtonHandler.GetIndex());
+        //memory.SetRadioButtonIndex(radioButtonHandler.GetIndex());
         memory.SetUserNovels(userNovels);
         SceneMemoryManager.Instance().SetMemoryOfNovelExplorerScene(memory);
     }

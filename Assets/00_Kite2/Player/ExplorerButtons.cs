@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class ExplorerButtons : MonoBehaviour
 {
@@ -19,8 +20,7 @@ public class ExplorerButtons : MonoBehaviour
     public TextMeshProUGUI contentInfoText;
     public VisualNovelGallery gallery;
     public NovelExplorerSceneController sceneController;
-    public GameObject filter;
-    public RadioButtonHandler radioButtonHandler;
+    public TMP_InputField inputField;
     public float kiteGaleryPosition = 1;
     public float userGaleryPosition = 1;
     public float accountGaleryPosition = 1;
@@ -40,6 +40,7 @@ public class ExplorerButtons : MonoBehaviour
         accountNovelsButton.onClick.AddListener(delegate { OnAccountNovelsButton(); });
         favoriteNovelsButton.onClick.AddListener(delegate { OnFavoritNovelsButton(); });
         filterNovelsButton.onClick.AddListener(delegate { OnFilterNovelsButton(); });
+        inputField.onValueChanged.AddListener(delegate {SearchAfterValueChanged();});
     }
 
     public void OnKiteNovelsButton()
@@ -51,7 +52,6 @@ public class ExplorerButtons : MonoBehaviour
         currentOpenGallery = 1;
         AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("KITE NOVELS");
         SaveCurrentPosition();
-        filter.SetActive(false);
         kiteNovelsUnterline.gameObject.SetActive(true);
         userNovelsUnterline.gameObject.SetActive(false);
         accountNovelsUnterline.gameObject.SetActive(false);
@@ -81,7 +81,6 @@ public class ExplorerButtons : MonoBehaviour
 
         AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("USER NOVELS");
         SaveCurrentPosition();
-        filter.SetActive(false);
         kiteNovelsUnterline.gameObject.SetActive(false);
         userNovelsUnterline.gameObject.SetActive(true);
         accountNovelsUnterline.gameObject.SetActive(false);
@@ -112,7 +111,6 @@ public class ExplorerButtons : MonoBehaviour
 
         AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("EIGENE NOVELS");
         SaveCurrentPosition();
-        filter.SetActive(false);
         kiteNovelsUnterline.gameObject.SetActive(false);
         userNovelsUnterline.gameObject.SetActive(false);
         accountNovelsUnterline.gameObject.SetActive(true);
@@ -143,7 +141,6 @@ public class ExplorerButtons : MonoBehaviour
 
         AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("FAVORITEN");
         SaveCurrentPosition();
-        filter.SetActive(false);
         kiteNovelsUnterline.gameObject.SetActive(false);
         userNovelsUnterline.gameObject.SetActive(false);
         accountNovelsUnterline.gameObject.SetActive(false);
@@ -181,7 +178,6 @@ public class ExplorerButtons : MonoBehaviour
         List<VisualNovel> visualNovels = new List<VisualNovel>();
         gallery.RemoveAll();
         gallery.AddNovelsToGallery(visualNovels);
-        filter.SetActive(true);
 
         openGallery = GalleryType.FILTER_GALLERY;
         StartCoroutine(gallery.EnsureCorrectScrollPosition(filterGaleryPosition));
@@ -204,6 +200,33 @@ public class ExplorerButtons : MonoBehaviour
             }
         }
         return favorites;
+    }
+
+    private void SearchAfterValueChanged()
+    {
+        string searchText = inputField.text.Trim();
+        List<VisualNovel> dataset = new List<VisualNovel>();
+        dataset = KiteNovelManager.GetAllKiteNovels();
+
+        List<VisualNovel> results = FuzzySearch(dataset, searchText);
+        gallery.RemoveAll();
+        gallery.AddNovelsToGallery(results);
+        //filterView.SetActive(false);
+    }
+
+    private List<VisualNovel> FuzzySearch(List<VisualNovel> dataset, string query)
+    {
+        List<VisualNovel> matches = new List<VisualNovel>();
+
+        foreach (VisualNovel entry in dataset)
+        {
+            if (entry.title.IndexOf(query, StringComparison.OrdinalIgnoreCase) >= 0)
+            {
+                matches.Add(entry);
+            }
+        }
+
+        return matches;
     }
 
     public void ActivateTabByIndex(int index)
@@ -233,8 +256,6 @@ public class ExplorerButtons : MonoBehaviour
             case 4:
                 {
                     OnFilterNovelsButton();
-                    radioButtonHandler.Init();
-                    filter.GetComponent<SearchFilter>().OnSearchButton();
                     return;
                 }
             default:
