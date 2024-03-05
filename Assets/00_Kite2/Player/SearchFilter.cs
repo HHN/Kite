@@ -11,7 +11,6 @@ public class SearchFilter : MonoBehaviour
     public VisualNovelGallery gallery;
     public RadioButtonHandler radioButtonHandler;
     public NovelExplorerSceneController sceneController;
-    public ExplorerButtons explorerButtons;
     public GameObject filterView;
 
     private void Start()

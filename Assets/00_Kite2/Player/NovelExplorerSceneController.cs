@@ -15,7 +15,6 @@ public class NovelExplorerSceneController : SceneController, OnSuccessHandler
     public List<VisualNovel> userNovels;
     public Dictionary<long, VisualNovel> userNovelsMap = new Dictionary<long, VisualNovel>();
     public int tabIndex;
-    public ExplorerButtons explorerButtons;
     public RadioButtonHandler radioButtonHandler;
     public TMP_InputField searchInputField;
     public VisualNovelGallery gallery;
@@ -58,13 +57,12 @@ public class NovelExplorerSceneController : SceneController, OnSuccessHandler
     public void InitMemory()
     {
         NovelExplorerSceneMemory memory = SceneMemoryManager.Instance().GetMemoryOfNovelExplorerScene();
+        List<VisualNovel> visualNovels = KiteNovelManager.GetAllKiteNovels();
+        gallery.RemoveAll();
+        gallery.AddNovelsToGallery(visualNovels);
+        searchInputField.onValueChanged.AddListener(delegate {SearchAfterValueChanged();});
         if (memory == null)
         {
-            // explorerButtons.OnKiteNovelsButton();
-            List<VisualNovel> visualNovels = KiteNovelManager.GetAllKiteNovels();
-            gallery.RemoveAll();
-            gallery.AddNovelsToGallery(visualNovels);
-            searchInputField.onValueChanged.AddListener(delegate {SearchAfterValueChanged();});
             return; // Server Call is not performed, because its a GET-call and has a body. Since iOS 13 GET-calls are not allowed to have a body.
 
             //GetNovelsServerCall call = Instantiate(getNovelsServerCall).GetComponent<GetNovelsServerCall>();
@@ -79,30 +77,19 @@ public class NovelExplorerSceneController : SceneController, OnSuccessHandler
         searchInputField.text = memory.GetSearchPhrase();
         openGallery = GalleryType.KITE_GALLERY;
         StartCoroutine(gallery.EnsureCorrectScrollPosition(kiteGaleryPosition));
-        explorerButtons.kiteGaleryPosition = memory.GetScrollPositionOfKiteGallery();
-        explorerButtons.userGaleryPosition = memory.GetScrollPositionOfUserGallery();
-        explorerButtons.accountGaleryPosition = memory.GetScrollPositionOfAccountGallery();
-        explorerButtons.favoritesGaleryPosition = memory.GetScrollPositionOfFavoritesGallery();
-        explorerButtons.filterGaleryPosition = memory.GetScrollPositionOfFilterGallery();
-        explorerButtons.ActivateTabByIndex(memory.GetTabIndex());
     }
 
     public override void OnStop()
     {
         base.OnStop();
-        
+        List<VisualNovel> visualNovels = KiteNovelManager.GetAllKiteNovels();
+        gallery.RemoveAll();
+        gallery.AddNovelsToGallery(visualNovels);
+        searchInputField.onValueChanged.AddListener(delegate {SearchAfterValueChanged();});
         NovelExplorerSceneMemory memory = new NovelExplorerSceneMemory();
         memory.SetTabIndex(tabIndex);
         memory.SetSearchPhrase(searchInputField.text);
         gallery.GetCurrentScrollPosition();
-        memory.SetScrollPositionOfKiteGallery(explorerButtons.kiteGaleryPosition);
-        memory.SetScrollPositionOfUserGallery(explorerButtons.userGaleryPosition);
-        memory.SetScrollPositionOfAccountGallery(explorerButtons.accountGaleryPosition);
-        memory.SetScrollPositionOfFavoritesGallery(explorerButtons.favoritesGaleryPosition);
-        memory.SetScrollPositionOfFilterGallery(explorerButtons.filterGaleryPosition);
-        List<VisualNovel> visualNovels = KiteNovelManager.GetAllKiteNovels();
-        gallery.RemoveAll();
-        gallery.AddNovelsToGallery(visualNovels);
         openGallery = GalleryType.KITE_GALLERY;
         StartCoroutine(gallery.EnsureCorrectScrollPosition(kiteGaleryPosition));
         memory.SetUserNovels(userNovels);
