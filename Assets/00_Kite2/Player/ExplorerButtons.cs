@@ -9,14 +9,14 @@ public class ExplorerButtons : MonoBehaviour
 {
     public Button kiteNovelsButton;
     public Image kiteNovelsUnterline;
-    public Button userNovelsButton;
-    public Image userNovelsUnterline;
-    public Button accountNovelsButton;
-    public Image accountNovelsUnterline;
-    public Button favoriteNovelsButton;
-    public Image favoriteNovelsUnterline;
-    public Button filterNovelsButton;
-    public Image filterNovelsUnterline;
+    // public Button userNovelsButton;
+    // public Image userNovelsUnterline;
+    // public Button accountNovelsButton;
+    // public Image accountNovelsUnterline;
+    // public Button favoriteNovelsButton;
+    // public Image favoriteNovelsUnterline;
+    // public Button filterNovelsButton;
+    // public Image filterNovelsUnterline;
     public TextMeshProUGUI contentInfoText;
     public VisualNovelGallery gallery;
     public NovelExplorerSceneController sceneController;
@@ -36,10 +36,10 @@ public class ExplorerButtons : MonoBehaviour
     {
         AnalyticsServiceHandler.Instance().StartStopwatch();
         kiteNovelsButton.onClick.AddListener(delegate { OnKiteNovelsButton(); });
-        userNovelsButton.onClick.AddListener(delegate { OnUserNovelsButton(); });
-        accountNovelsButton.onClick.AddListener(delegate { OnAccountNovelsButton(); });
-        favoriteNovelsButton.onClick.AddListener(delegate { OnFavoritNovelsButton(); });
-        filterNovelsButton.onClick.AddListener(delegate { OnFilterNovelsButton(); });
+        // userNovelsButton.onClick.AddListener(delegate { OnUserNovelsButton(); });
+        // accountNovelsButton.onClick.AddListener(delegate { OnAccountNovelsButton(); });
+        // favoriteNovelsButton.onClick.AddListener(delegate { OnFavoritNovelsButton(); });
+        // filterNovelsButton.onClick.AddListener(delegate { OnFilterNovelsButton(); });
         inputField.onValueChanged.AddListener(delegate {SearchAfterValueChanged();});
     }
 
@@ -52,11 +52,11 @@ public class ExplorerButtons : MonoBehaviour
         currentOpenGallery = 1;
         AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("KITE NOVELS");
         SaveCurrentPosition();
-        kiteNovelsUnterline.gameObject.SetActive(true);
-        userNovelsUnterline.gameObject.SetActive(false);
-        accountNovelsUnterline.gameObject.SetActive(false);
-        favoriteNovelsUnterline.gameObject.SetActive(false);
-        filterNovelsUnterline.gameObject.SetActive(false);
+        // kiteNovelsUnterline.gameObject.SetActive(true);
+        // userNovelsUnterline.gameObject.SetActive(false);
+        // accountNovelsUnterline.gameObject.SetActive(false);
+        // favoriteNovelsUnterline.gameObject.SetActive(false);
+        // filterNovelsUnterline.gameObject.SetActive(false);
         contentInfoText.SetText("KITE NOVELS");
         sceneController.tabIndex = 0;
 
@@ -68,120 +68,120 @@ public class ExplorerButtons : MonoBehaviour
         StartCoroutine(gallery.EnsureCorrectScrollPosition(kiteGaleryPosition));
     }
 
-    public void OnUserNovelsButton()
-    {
-        if ((currentOpenGallery == 3) || (currentOpenGallery == 4) || (currentOpenGallery == 5))
-        {
-            swipeLeftAudio.Play();
-        } else if (currentOpenGallery == 1)
-        {
-            swipeRightAudio.Play();
-        }
-        currentOpenGallery = 2;
+    // public void OnUserNovelsButton()
+    // {
+    //     if ((currentOpenGallery == 3) || (currentOpenGallery == 4) || (currentOpenGallery == 5))
+    //     {
+    //         swipeLeftAudio.Play();
+    //     } else if (currentOpenGallery == 1)
+    //     {
+    //         swipeRightAudio.Play();
+    //     }
+    //     currentOpenGallery = 2;
 
-        AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("USER NOVELS");
-        SaveCurrentPosition();
-        kiteNovelsUnterline.gameObject.SetActive(false);
-        userNovelsUnterline.gameObject.SetActive(true);
-        accountNovelsUnterline.gameObject.SetActive(false);
-        favoriteNovelsUnterline.gameObject.SetActive(false);
-        filterNovelsUnterline.gameObject.SetActive(false);
-        contentInfoText.SetText("USER NOVELS");
-        sceneController.tabIndex = 1;
+    //     AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("USER NOVELS");
+    //     SaveCurrentPosition();
+    //     kiteNovelsUnterline.gameObject.SetActive(false);
+    //     userNovelsUnterline.gameObject.SetActive(true);
+    //     accountNovelsUnterline.gameObject.SetActive(false);
+    //     favoriteNovelsUnterline.gameObject.SetActive(false);
+    //     filterNovelsUnterline.gameObject.SetActive(false);
+    //     contentInfoText.SetText("USER NOVELS");
+    //     sceneController.tabIndex = 1;
 
-        List<VisualNovel> visualNovels = sceneController.userNovels;
-        gallery.RemoveAll();
-        gallery.AddNovelsToGallery(visualNovels);
+    //     List<VisualNovel> visualNovels = sceneController.userNovels;
+    //     gallery.RemoveAll();
+    //     gallery.AddNovelsToGallery(visualNovels);
 
-        openGallery = GalleryType.USER_GALLERY;
-        StartCoroutine(gallery.EnsureCorrectScrollPosition(userGaleryPosition));
-    }
+    //     openGallery = GalleryType.USER_GALLERY;
+    //     StartCoroutine(gallery.EnsureCorrectScrollPosition(userGaleryPosition));
+    // }
 
-    public void OnAccountNovelsButton()
-    {
-        if ((currentOpenGallery == 4) || (currentOpenGallery == 5))
-        {
-            swipeLeftAudio.Play();
-        }
-        else if ((currentOpenGallery == 1) || (currentOpenGallery == 2)) 
-        {
-            swipeRightAudio.Play();
-        }
-        currentOpenGallery = 3;
+    // public void OnAccountNovelsButton()
+    // {
+    //     if ((currentOpenGallery == 4) || (currentOpenGallery == 5))
+    //     {
+    //         swipeLeftAudio.Play();
+    //     }
+    //     else if ((currentOpenGallery == 1) || (currentOpenGallery == 2)) 
+    //     {
+    //         swipeRightAudio.Play();
+    //     }
+    //     currentOpenGallery = 3;
 
-        AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("EIGENE NOVELS");
-        SaveCurrentPosition();
-        kiteNovelsUnterline.gameObject.SetActive(false);
-        userNovelsUnterline.gameObject.SetActive(false);
-        accountNovelsUnterline.gameObject.SetActive(true);
-        favoriteNovelsUnterline.gameObject.SetActive(false);
-        filterNovelsUnterline.gameObject.SetActive(false);
-        contentInfoText.SetText("EIGENE NOVELS");
-        sceneController.tabIndex = 2;
+    //     AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("EIGENE NOVELS");
+    //     SaveCurrentPosition();
+    //     kiteNovelsUnterline.gameObject.SetActive(false);
+    //     userNovelsUnterline.gameObject.SetActive(false);
+    //     accountNovelsUnterline.gameObject.SetActive(true);
+    //     favoriteNovelsUnterline.gameObject.SetActive(false);
+    //     filterNovelsUnterline.gameObject.SetActive(false);
+    //     contentInfoText.SetText("EIGENE NOVELS");
+    //     sceneController.tabIndex = 2;
 
-        List<VisualNovel> visualNovels = AccountNovelManager.Instance().GetAllAccountNovels();
-        gallery.RemoveAll();
-        gallery.AddNovelsToGallery(visualNovels);
+    //     List<VisualNovel> visualNovels = AccountNovelManager.Instance().GetAllAccountNovels();
+    //     gallery.RemoveAll();
+    //     gallery.AddNovelsToGallery(visualNovels);
 
-        openGallery = GalleryType.ACCOUNT_GALLERY;
-        StartCoroutine(gallery.EnsureCorrectScrollPosition(accountGaleryPosition));
-    }
+    //     openGallery = GalleryType.ACCOUNT_GALLERY;
+    //     StartCoroutine(gallery.EnsureCorrectScrollPosition(accountGaleryPosition));
+    // }
 
-    public void OnFavoritNovelsButton()
-    {
-        if ((currentOpenGallery == 5))
-        {
-            swipeLeftAudio.Play();
-        }
-        else if ((currentOpenGallery == 1) || (currentOpenGallery == 2) || (currentOpenGallery == 3))
-        {
-            swipeRightAudio.Play();
-        }
-        currentOpenGallery = 4;
+    // public void OnFavoritNovelsButton()
+    // {
+    //     if ((currentOpenGallery == 5))
+    //     {
+    //         swipeLeftAudio.Play();
+    //     }
+    //     else if ((currentOpenGallery == 1) || (currentOpenGallery == 2) || (currentOpenGallery == 3))
+    //     {
+    //         swipeRightAudio.Play();
+    //     }
+    //     currentOpenGallery = 4;
 
-        AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("FAVORITEN");
-        SaveCurrentPosition();
-        kiteNovelsUnterline.gameObject.SetActive(false);
-        userNovelsUnterline.gameObject.SetActive(false);
-        accountNovelsUnterline.gameObject.SetActive(false);
-        favoriteNovelsUnterline.gameObject.SetActive(true);
-        filterNovelsUnterline.gameObject.SetActive(false);
-        contentInfoText.SetText("FAVORITEN");
-        sceneController.tabIndex = 3;
+    //     AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("FAVORITEN");
+    //     SaveCurrentPosition();
+    //     kiteNovelsUnterline.gameObject.SetActive(false);
+    //     userNovelsUnterline.gameObject.SetActive(false);
+    //     accountNovelsUnterline.gameObject.SetActive(false);
+    //     favoriteNovelsUnterline.gameObject.SetActive(true);
+    //     filterNovelsUnterline.gameObject.SetActive(false);
+    //     contentInfoText.SetText("FAVORITEN");
+    //     sceneController.tabIndex = 3;
 
-        List<VisualNovel> visualNovels = GetFavoriteNovels();
-        gallery.RemoveAll();
-        gallery.AddNovelsToGallery(visualNovels);
+    //     List<VisualNovel> visualNovels = GetFavoriteNovels();
+    //     gallery.RemoveAll();
+    //     gallery.AddNovelsToGallery(visualNovels);
 
-        openGallery = GalleryType.FAVORITES_GALLERY;
-        StartCoroutine(gallery.EnsureCorrectScrollPosition(favoritesGaleryPosition));
-    }
+    //     openGallery = GalleryType.FAVORITES_GALLERY;
+    //     StartCoroutine(gallery.EnsureCorrectScrollPosition(favoritesGaleryPosition));
+    // }
 
-    public void OnFilterNovelsButton()
-    {
-        if ((currentOpenGallery == 1) || (currentOpenGallery == 2) || (currentOpenGallery == 3) || (currentOpenGallery == 4))
-        {
-            swipeRightAudio.Play();
-        }
-        currentOpenGallery = 5;
+    // public void OnFilterNovelsButton()
+    // {
+    //     if ((currentOpenGallery == 1) || (currentOpenGallery == 2) || (currentOpenGallery == 3) || (currentOpenGallery == 4))
+    //     {
+    //         swipeRightAudio.Play();
+    //     }
+    //     currentOpenGallery = 5;
 
-        AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("FILTER SUCHE");
-        SaveCurrentPosition();
-        kiteNovelsUnterline.gameObject.SetActive(false);
-        userNovelsUnterline.gameObject.SetActive(false);
-        accountNovelsUnterline.gameObject.SetActive(false);
-        favoriteNovelsUnterline.gameObject.SetActive(false);
-        filterNovelsUnterline.gameObject.SetActive(true);
-        contentInfoText.SetText("FILTER SUCHE");
-        sceneController.tabIndex = 4;
+    //     AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("FILTER SUCHE");
+    //     SaveCurrentPosition();
+    //     kiteNovelsUnterline.gameObject.SetActive(false);
+    //     userNovelsUnterline.gameObject.SetActive(false);
+    //     accountNovelsUnterline.gameObject.SetActive(false);
+    //     favoriteNovelsUnterline.gameObject.SetActive(false);
+    //     filterNovelsUnterline.gameObject.SetActive(true);
+    //     contentInfoText.SetText("FILTER SUCHE");
+    //     sceneController.tabIndex = 4;
 
-        List<VisualNovel> visualNovels = new List<VisualNovel>();
-        gallery.RemoveAll();
-        gallery.AddNovelsToGallery(visualNovels);
+    //     List<VisualNovel> visualNovels = new List<VisualNovel>();
+    //     gallery.RemoveAll();
+    //     gallery.AddNovelsToGallery(visualNovels);
 
-        openGallery = GalleryType.FILTER_GALLERY;
-        StartCoroutine(gallery.EnsureCorrectScrollPosition(filterGaleryPosition));
-    }
+    //     openGallery = GalleryType.FILTER_GALLERY;
+    //     StartCoroutine(gallery.EnsureCorrectScrollPosition(filterGaleryPosition));
+    // }
 
     public List<VisualNovel> GetFavoriteNovels()
     {
@@ -240,22 +240,22 @@ public class ExplorerButtons : MonoBehaviour
                 }
             case 1:
                 {
-                    OnUserNovelsButton();
+                    // OnUserNovelsButton();
                     return;
                 }
             case 2:
                 {
-                    OnAccountNovelsButton();
+                    // OnAccountNovelsButton();
                     return;
                 }
             case 3:
                 {
-                    OnFavoritNovelsButton();
+                    // OnFavoritNovelsButton();
                     return;
                 }
             case 4:
                 {
-                    OnFilterNovelsButton();
+                    // OnFilterNovelsButton();
                     return;
                 }
             default:
