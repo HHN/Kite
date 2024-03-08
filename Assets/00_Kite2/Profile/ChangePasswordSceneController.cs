@@ -4,10 +4,10 @@ using UnityEngine.UI;
 
 public class ChangePasswordSceneController : SceneController, OnSuccessHandler
 {
-    public TMP_InputField oldPasswordInputField;
-    public TMP_InputField newPasswordInputField;
-    public Button changePasswordButton;
-    public GameObject changePasswordServerCall;
+    [SerializeField] private TMP_InputField oldPasswordInputField;
+    [SerializeField] private TMP_InputField newPasswordInputField;
+    [SerializeField] private Button changePasswordButton;
+    [SerializeField] private GameObject changePasswordServerCall;
 
     void Start()
     {

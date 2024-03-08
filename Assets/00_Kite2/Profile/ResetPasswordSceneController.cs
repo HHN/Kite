@@ -4,9 +4,9 @@ using UnityEngine.UI;
 
 public class ResetPasswordSceneController : SceneController, OnSuccessHandler
 {
-    public TMP_InputField usernameInputField;
-    public Button resetPasswordButton;
-    public GameObject resetPasswordServerCallPrefab;
+    [SerializeField] private TMP_InputField usernameInputField;
+    [SerializeField] private Button resetPasswordButton;
+    [SerializeField] private GameObject resetPasswordServerCallPrefab;
 
     void Start()
     {

@@ -5,13 +5,13 @@ using System.Collections;
 
 public class DetailsViewSceneController : SceneController
 {
-    public Image novelImage;
-    public Button playButton;
-    public TextMeshProUGUI novelTitle;
-    public TextMeshProUGUI novelDescription;
-    public VisualNovel novelToDisplay;
-    public Sprite[] novelSprites;
-    public bool pressedPlayButton = false;
+    [SerializeField] private Image novelImage;
+    [SerializeField] private Button playButton;
+    [SerializeField] private TextMeshProUGUI novelTitle;
+    [SerializeField] private TextMeshProUGUI novelDescription;
+    [SerializeField] private VisualNovel novelToDisplay;
+    [SerializeField] private Sprite[] novelSprites;
+    [SerializeField] private bool pressedPlayButton = false;
     [SerializeField] private AudioSource playButtonSound;
 
     private void Start()

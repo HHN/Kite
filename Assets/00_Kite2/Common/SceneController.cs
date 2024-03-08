@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SceneController : MonoBehaviour
 {
-    public GameObject messageBox;
+    [SerializeField] private GameObject messageBox;
     public GameObject canvas;
     private MessageBox messageObject;
 

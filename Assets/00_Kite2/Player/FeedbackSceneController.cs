@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErrorHandler
 {
-    public TextMeshProUGUI feedbackText;
-    public TextMeshProUGUI novelTitle;
-    public GameObject gptServercallPrefab;
-    public FavoriteButton favoriteButton;
-    private VisualNovel novelToPlay;
+    [SerializeField] private TextMeshProUGUI feedbackText;
+    [SerializeField] private TextMeshProUGUI novelTitle;
+    [SerializeField] private GameObject gptServercallPrefab;
+    [SerializeField] private FavoriteButton favoriteButton;
+    [SerializeField] private VisualNovel novelToPlay;
     [SerializeField] private RectTransform layout;
     [SerializeField] private AudioSource waitingLoopMusic;
     [SerializeField] private AudioSource resultMusic;

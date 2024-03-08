@@ -5,17 +5,17 @@ using UnityEngine.UI;
 
 public class ConversationContentGuiController : MonoBehaviour
 {
-    public List<VisualNovelEvent> content = new List<VisualNovelEvent>();
-    public List<GameObject> guiContent = new List<GameObject>();
-    public List<VisualNovelEvent> options = new List<VisualNovelEvent>();
+    [SerializeField] private List<VisualNovelEvent> content = new List<VisualNovelEvent>();
+    [SerializeField] private List<GameObject> guiContent = new List<GameObject>();
+    [SerializeField] private List<VisualNovelEvent> options = new List<VisualNovelEvent>();
 
-    public GameObject blueMessagePrefab;
-    public GameObject greyMessagePrefab;
-    public GameObject turqouiseMessagePrefab;
-    public GameObject cottaMessagePrefab;
-    public GameObject optionsPrefab;
-    public GameObject askForFeelingsButton;
-    public GameObject blueMessagePrefabWithTrigger;
+    [SerializeField] private GameObject blueMessagePrefab;
+    [SerializeField] private GameObject greyMessagePrefab;
+    [SerializeField] private GameObject turqouiseMessagePrefab;
+    [SerializeField] private GameObject cottaMessagePrefab;
+    [SerializeField] private GameObject optionsPrefab;
+    [SerializeField] private GameObject askForFeelingsButton;
+    [SerializeField] private GameObject blueMessagePrefabWithTrigger;
 
     public void AddContent(VisualNovelEvent novelEvent, PlayNovelSceneController controller)
     {

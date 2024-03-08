@@ -4,13 +4,13 @@ using TMPro;
 
 public class SwitchButtonsController : MonoBehaviour
 {
-    public Button leftButton;
-    public Button rightButton;
-    public TextMeshProUGUI descriptionText;
-    public TextMeshProUGUI indexInfo;
-    public Sprite[] sprites;
-    public Image image;
-    public long index;
+    [SerializeField] private Button leftButton;
+    [SerializeField] private Button rightButton;
+    [SerializeField] private TextMeshProUGUI descriptionText;
+    [SerializeField] private TextMeshProUGUI indexInfo;
+    [SerializeField] private Sprite[] sprites;
+    [SerializeField] private Image image;
+    [SerializeField] private long index;
 
     void Start()
     {

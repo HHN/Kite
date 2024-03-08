@@ -4,11 +4,11 @@ using TMPro;
 
 public class LogInSceneController : SceneController, OnSuccessHandler
 {
-    public TMP_InputField usernameInputField;
-    public TMP_InputField passwordInputField;
-    public Button performLoginButton;
-    public Button forgotPasswordButton;
-    public GameObject loginServerCall;
+    [SerializeField] private TMP_InputField usernameInputField;
+    [SerializeField] private TMP_InputField passwordInputField;
+    [SerializeField] private Button performLoginButton;
+    [SerializeField] private Button forgotPasswordButton;
+    [SerializeField] private GameObject loginServerCall;
 
     void Start()
     {

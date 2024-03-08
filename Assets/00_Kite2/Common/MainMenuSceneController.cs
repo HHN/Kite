@@ -8,16 +8,16 @@ using System.Net;
 
 public class MainMenuSceneController : SceneController, OnSuccessHandler
 { 
-    public Button novelPlayerButton;
-    public Button novelMakerButton;
-    public Button logInLogOutButton;
-    public Button registerButton;
-    public Button settingsButton;
-    public Button kiteLogo;
-    public GameObject logoutServerCall;
-    public Sprite loginSprite;
-    public Sprite logoutSprite;
-    public Image loginLogoutImage;
+    [SerializeField] private Button novelPlayerButton;
+    [SerializeField] private Button novelMakerButton;
+    [SerializeField] private Button logInLogOutButton;
+    [SerializeField] private Button registerButton;
+    [SerializeField] private Button settingsButton;
+    [SerializeField] private Button kiteLogo;
+    [SerializeField] private GameObject logoutServerCall;
+    [SerializeField] private Sprite loginSprite;
+    [SerializeField] private Sprite logoutSprite;
+    [SerializeField] private Image loginLogoutImage;
 
     [SerializeField] private GameObject getMoneyServerCallPrefab;
     [SerializeField] private GameObject getScoreServerCallPrefab;

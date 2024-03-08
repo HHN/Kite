@@ -4,11 +4,11 @@ using TMPro;
 
 public class RegistrationSceneController : SceneController, OnSuccessHandler
 {
-    public TMP_InputField usernameInputField;
-    public TMP_InputField emailInputField;
-    public TMP_InputField passwordInputField;
-    public Button performRegistrationButton;
-    public GameObject registerServerCall;
+    [SerializeField] private TMP_InputField usernameInputField;
+    [SerializeField] private TMP_InputField emailInputField;
+    [SerializeField] private TMP_InputField passwordInputField;
+    [SerializeField] private Button performRegistrationButton;
+    [SerializeField] private GameObject registerServerCall;
 
     void Start()
     {
