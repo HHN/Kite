@@ -11,15 +11,15 @@ using System.Diagnostics;
 
 public class NovelExplorerSceneController : SceneController, OnSuccessHandler
 {
-    public GameObject getNovelsServerCall;
-    public List<VisualNovel> userNovels;
-    public Dictionary<long, VisualNovel> userNovelsMap = new Dictionary<long, VisualNovel>();
-    public int tabIndex;
-    public RadioButtonHandler radioButtonHandler;
-    public TMP_InputField searchInputField;
-    public VisualNovelGallery gallery;
-    public GalleryType openGallery = GalleryType.KITE_GALLERY;
-    public float kiteGaleryPosition = 1;
+    [SerializeField] private GameObject getNovelsServerCall;
+    [SerializeField] private List<VisualNovel> userNovels;
+    [SerializeField] private Dictionary<long, VisualNovel> userNovelsMap = new Dictionary<long, VisualNovel>();
+    [SerializeField] private int tabIndex;
+    [SerializeField] private RadioButtonHandler radioButtonHandler;
+    [SerializeField] private TMP_InputField searchInputField;
+    [SerializeField] private VisualNovelGallery gallery;
+    [SerializeField] private GalleryType openGallery = GalleryType.KITE_GALLERY;
+    [SerializeField] private float kiteGaleryPosition = 1;
 
     void Start()
     {

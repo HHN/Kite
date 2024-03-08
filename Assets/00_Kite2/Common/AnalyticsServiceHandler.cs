@@ -9,7 +9,7 @@ public class AnalyticsServiceHandler
 
     private static AnalyticsServiceHandler instance;
 
-    private Stopwatch stopwatch;
+    private Stopwatch stopwatch = null;
 
     private Stopwatch stopwatchSession;
 
@@ -28,6 +28,8 @@ public class AnalyticsServiceHandler
     private int choiceId = -10;
 
     private bool waitForAIFeedback = false;
+
+    private bool hasBeenInitialized = false;
 
     // Private Konstruktor, um direkte Instanziierung zu verhindern
     private AnalyticsServiceHandler() {}
@@ -49,6 +51,7 @@ public class AnalyticsServiceHandler
         StartStopwatch();
         stopwatchSession = new Stopwatch();
         stopwatchSession.Start();
+        hasBeenInitialized = true;
     }
 
     public void CollectData()
@@ -91,9 +94,13 @@ public class AnalyticsServiceHandler
 
     public long StopStopwatch()
     {
+        if(stopwatch != null)
+        {
         stopwatch.Stop();
         // UnityEngine.Debug.Log("Zeit seit dem Start: " + stopwatch.ElapsedMilliseconds);
-        return stopwatch.ElapsedMilliseconds;
+        return stopwatch.ElapsedMilliseconds; 
+        }
+        return -1;
     }
 
     public void SetFromWhereIsNovelSelected(string fromWhereIsNovelSelected)
@@ -187,131 +194,172 @@ public class AnalyticsServiceHandler
 
     public void SendMainMenuStatistics()
     {
-        StopStopwatch();
-        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        if(hasBeenInitialized)
         {
-            {"currentUserID", AnalyticsService.Instance.GetAnalyticsUserID()},
-            {"millisecondsInMainMenu", stopwatch.ElapsedMilliseconds}
-        };
-        AnalyticsService.Instance.CustomData("mainMenuStatistics", parameters);
-        // UnityEngine.Debug.Log("");
+            StopStopwatch();
+            if(stopwatch != null)
+            {
+                Dictionary<string, object> parameters = new Dictionary<string, object>()
+                {
+                    {"currentUserID", AnalyticsService.Instance.GetAnalyticsUserID()},
+                    {"millisecondsInMainMenu", stopwatch.ElapsedMilliseconds}
+                };
+                AnalyticsService.Instance.CustomData("mainMenuStatistics", parameters);
+                // UnityEngine.Debug.Log("");
+            }    
+        }
+        
     }
 
     public void SendNovelExplorerStatistics(long visualNovelID)
     {
-        StopStopwatch();
-        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        if(hasBeenInitialized)
         {
-            // {"fromWhereIsNovelSelected", fromWhereIsNovelSelected},
-            // {"novelID", visualNovelID},
-            {"millisecondsInNovelExplorer", stopwatch.ElapsedMilliseconds}
-        };
-        AnalyticsService.Instance.CustomData("novelExplorerStatistics", parameters);
-        // UnityEngine.Debug.Log("fromWhereIsNovelSelected: " + fromWhereIsNovelSelected + "\n" + "novelID: " + visualNovelID);
+            StopStopwatch();
+            if(stopwatch != null)
+            {
+                Dictionary<string, object> parameters = new Dictionary<string, object>()
+                {
+                    // {"fromWhereIsNovelSelected", fromWhereIsNovelSelected},
+                    // {"novelID", visualNovelID},
+                    {"millisecondsInNovelExplorer", stopwatch.ElapsedMilliseconds}
+                };
+                AnalyticsService.Instance.CustomData("novelExplorerStatistics", parameters);
+                // UnityEngine.Debug.Log("fromWhereIsNovelSelected: " + fromWhereIsNovelSelected + "\n" + "novelID: " + visualNovelID);
+            }    
+        }
+        
     }
 
     public void SendDetailViewStatistics(long visualNovelID)
     {
-        StopStopwatch();
-        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        if(hasBeenInitialized)
         {
-            {"fromWhereIsNovelSelected", fromWhereIsNovelSelected},
-            {"novelID", visualNovelID},
-            {"millisecondsInDetailView", stopwatch.ElapsedMilliseconds}
-        };
-        AnalyticsService.Instance.CustomData("detailViewStatistics", parameters);
-        // UnityEngine.Debug.Log("fromWhereIsNovelSelected: " + fromWhereIsNovelSelected + "\n" + "novelID: " + visualNovelID);
+            StopStopwatch();
+            if(stopwatch != null)
+            {
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+                {
+                    {"fromWhereIsNovelSelected", fromWhereIsNovelSelected},
+                    {"novelID", visualNovelID},
+                    {"millisecondsInDetailView", stopwatch.ElapsedMilliseconds}
+                };
+                AnalyticsService.Instance.CustomData("detailViewStatistics", parameters);
+                // UnityEngine.Debug.Log("fromWhereIsNovelSelected: " + fromWhereIsNovelSelected + "\n" + "novelID: " + visualNovelID); 
+            }    
+        }
     }
 
     public void SendPlayNovelFirstConfirmation()
     {
-        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        if(hasBeenInitialized)
         {
-            {"millisecondsBeforePlayNovelFirstConfirmation", stopwatch.ElapsedMilliseconds}
-        };
-        AnalyticsService.Instance.CustomData("playNovelFirstConfirmation", parameters);
-        // UnityEngine.Debug.Log("millisecondsBeforePlayNovelFirstConfirmation: " + stopwatch.ElapsedMilliseconds);
-        //TODO: Add position of confirmation. Maybe user thinks he/she has to click on the symbol...
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                {"millisecondsBeforePlayNovelFirstConfirmation", stopwatch.ElapsedMilliseconds}
+            };
+            AnalyticsService.Instance.CustomData("playNovelFirstConfirmation", parameters);
+            // UnityEngine.Debug.Log("millisecondsBeforePlayNovelFirstConfirmation: " + stopwatch.ElapsedMilliseconds);
+            //TODO: Add position of confirmation. Maybe user thinks he/she has to click on the symbol...    
+        } 
     }
 
     public void SendPlayerChoice(int id)
     {
-        // UnityEngine.Debug.Log("Length of choice: " + choiceList.Count);
-        // UnityEngine.Debug.Log("ID: " + id);
-        var text = GetTextByChoiceId(id);
-        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        if(hasBeenInitialized)
         {
-            {"novelID", idOfCurrentNovel},
-            {"question", lastQuestionForChoice},
-            {"text", text},
-            {"indexOfChoice", id},
-            {"lengthOfChoice", text.Length}
-        };
-        AnalyticsService.Instance.CustomData("playerChoice", parameters);
-        // UnityEngine.Debug.Log("idOfCurrentNovel: " + idOfCurrentNovel + "\n" +
-        // "question: " + lastQuestionForChoice + "\n" + 
-        // "text: " + text + "\n" + 
-        // "indexOfChoice: " + id + "\n" +
-        // "lengthOfChoice: " + text.Length);
-        choiceId = -10;  // means no choice selected
-        addedAllEntriesToChoiceList = false;
-        choiceList.Clear();
+            // UnityEngine.Debug.Log("Length of choice: " + choiceList.Count);
+            // UnityEngine.Debug.Log("ID: " + id);
+            var text = GetTextByChoiceId(id);
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                {"novelID", idOfCurrentNovel},
+                {"question", lastQuestionForChoice},
+                {"text", text},
+                {"indexOfChoice", id},
+                {"lengthOfChoice", text.Length}
+            };
+            AnalyticsService.Instance.CustomData("playerChoice", parameters);
+            // UnityEngine.Debug.Log("idOfCurrentNovel: " + idOfCurrentNovel + "\n" +
+            // "question: " + lastQuestionForChoice + "\n" + 
+            // "text: " + text + "\n" + 
+            // "indexOfChoice: " + id + "\n" +
+            // "lengthOfChoice: " + text.Length);
+            choiceId = -10;  // means no choice selected
+            addedAllEntriesToChoiceList = false;
+            choiceList.Clear();    
+        } 
     }
 
     public void SendPlayerFeeling(int id)
     {
-        var text = "";
-        if(feelingList.Count <= id)
+        if(hasBeenInitialized)
         {
-            text = "Skip";
-        } else {
-            text = GetTextByFeelingId(id);
+            var text = "";
+            if(feelingList.Count <= id)
+            {
+                text = "Skip";
+            } else {
+                text = GetTextByFeelingId(id);
+            }
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                {"novelID", idOfCurrentNovel},
+                {"text", text},
+                {"indexOfFeeling", id},
+                {"chooseableFeelings", GetChoosableFeelings()}
+            };
+            AnalyticsService.Instance.CustomData("playerFeeling", parameters);
+            //UnityEngine.Debug.Log("idOfCurrentNovel: " + idOfCurrentNovel + "\n" +
+            // "text: " + text + "\n" + 
+            // "indexOfFeeling: " + id + "\n" +
+            // "chooseableFeelings: " + GetChoosableFeelings());
+            feelingList.Clear();    
         }
-        Dictionary<string, object> parameters = new Dictionary<string, object>()
-        {
-            {"novelID", idOfCurrentNovel},
-            {"text", text},
-            {"indexOfFeeling", id},
-            {"chooseableFeelings", GetChoosableFeelings()}
-        };
-        AnalyticsService.Instance.CustomData("playerFeeling", parameters);
-        //UnityEngine.Debug.Log("idOfCurrentNovel: " + idOfCurrentNovel + "\n" +
-        // "text: " + text + "\n" + 
-        // "indexOfFeeling: " + id + "\n" +
-        // "chooseableFeelings: " + GetChoosableFeelings());
-        feelingList.Clear();
     }
 
     public void SendNovelPlayTime()
     {
-        stopwatch.Stop();
-        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        if(hasBeenInitialized)
         {
-            {"playTime", stopwatch.ElapsedMilliseconds}
-        };
-        AnalyticsService.Instance.CustomData("novelPlayTime", parameters);
-        //UnityEngine.Debug.Log("Novel ended after: " + stopwatch.ElapsedMilliseconds);
+            StopStopwatch();
+            if(stopwatch != null)
+            {
+                Dictionary<string, object> parameters = new Dictionary<string, object>()
+                {
+                    {"playTime", stopwatch.ElapsedMilliseconds}
+                };
+                AnalyticsService.Instance.CustomData("novelPlayTime", parameters);
+                //UnityEngine.Debug.Log("Novel ended after: " + stopwatch.ElapsedMilliseconds);
+            }    
+        }
     }
 
     public void SendWaitedForAIFeedback()
     {
-        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        if(hasBeenInitialized)
         {
-            {"waitForAIFeedback", waitForAIFeedback}
-        };
-        AnalyticsService.Instance.CustomData("waitForAIFeedback", parameters);
-        UnityEngine.Debug.Log("Did player waited for ai feedback? Answer: " + waitForAIFeedback);
-        waitForAIFeedback = false;
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                {"waitForAIFeedback", waitForAIFeedback}
+            };
+            AnalyticsService.Instance.CustomData("waitForAIFeedback", parameters);
+            UnityEngine.Debug.Log("Did player waited for ai feedback? Answer: " + waitForAIFeedback);
+            waitForAIFeedback = false;    
+        }
     }
 
     private void SendSessionStatistics ()
     {
-        stopwatchSession.Stop();
-        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        if(hasBeenInitialized)
         {
-            {"sessionTime", stopwatchSession.ElapsedMilliseconds}
-        };
-        AnalyticsService.Instance.CustomData("sessionStatistics", parameters);
-        //UnityEngine.Debug.Log("Session ended after: " + stopwatchSession.ElapsedMilliseconds);
+            stopwatchSession.Stop();
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                {"sessionTime", stopwatchSession.ElapsedMilliseconds}
+            };
+            AnalyticsService.Instance.CustomData("sessionStatistics", parameters);
+            //UnityEngine.Debug.Log("Session ended after: " + stopwatchSession.ElapsedMilliseconds);    
+        }
     }
 }
