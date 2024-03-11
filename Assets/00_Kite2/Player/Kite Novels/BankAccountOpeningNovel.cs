@@ -5,7 +5,7 @@ public class BankAccountOpeningNovel : VisualNovel
 {
     public BankAccountOpeningNovel()
     {
-        id = -5;
+        id = 5;
         title = "Bank Kontoeröffnung";
         description = "Du hast eine Einladung zu einem Bankgespräch erhalten, um mehr " +
             "Informationen über die Eröffnung eines Bankkontos zu erhalten und dieses darauf " +

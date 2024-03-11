@@ -4,7 +4,7 @@ public class FeeNegotiationNovel : VisualNovel
 {
     public FeeNegotiationNovel()
     {
-        id = -11;
+        id = 11;
         title = "Honorarverhandlung mit Kundin";
         description = "Du bist in Kontakt mit einem Kunden gekommen. Nachdem geklärt wurde, dass deine angebotenen Leistungen zu den Anforderungen deines Gegenübers passen, geht es nun um die Honorarverhandlung.";
         context = "Es ist das Gespräch einer Gründerin, Lea, mit einer Kundin. Es geht um die Verhandlung eines Preises. Die Gründerin ist bereit mit ihrem Unternehmen die gewünschte Leistung zu erbringen und hofft auf die Einigung auf eine angemessene Entlohnung. ";

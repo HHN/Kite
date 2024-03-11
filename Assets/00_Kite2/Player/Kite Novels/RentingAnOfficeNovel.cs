@@ -5,7 +5,7 @@ public class RentingAnOfficeNovel : VisualNovel
 {
     public RentingAnOfficeNovel()
     {
-        id = -6;
+        id = 6;
         title = "Anmietung eines Büros";
         description = "Du hast heute einen Termin für die Besichtigung von Büroräumen.";
         image = 5;
