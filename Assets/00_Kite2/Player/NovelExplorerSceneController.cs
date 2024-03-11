@@ -90,6 +90,7 @@ public class NovelExplorerSceneController : SceneController, OnSuccessHandler
         List<VisualNovel> dataset = new List<VisualNovel>();
         dataset = KiteNovelManager.GetAllKiteNovels();
         List<VisualNovel> results = SubStringSearch(dataset, searchText);
+        results.AddRange(IdSearch(dataset, searchText));
         gallery.RemoveAll();
         gallery.AddNovelsToGallery(results);
     }
@@ -103,6 +104,25 @@ public class NovelExplorerSceneController : SceneController, OnSuccessHandler
             if (entry.title.IndexOf(subString, StringComparison.OrdinalIgnoreCase) >= 0)
             {
                 matches.Add(entry);
+            }
+        }
+
+        return matches;
+    }
+
+    private List<VisualNovel> IdSearch(List<VisualNovel> dataset, string id)
+    {
+        List<VisualNovel> matches = new List<VisualNovel>();
+
+        foreach (VisualNovel entry in dataset)
+        {
+            float floatValue;
+            if(float.TryParse(id, out floatValue))
+            {
+                if (entry.id == floatValue)
+                    {
+                        matches.Add(entry);
+                    }
             }
         }
 
