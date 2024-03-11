@@ -22,6 +22,8 @@ public class NovelExplorerSceneController : SceneController, OnSuccessHandler
     {
         BackStackManager.Instance().Push(SceneNames.NOVEL_EXPLORER_SCENE);
         userNovels = GeneratedNovelManager.Instance().GetUserNovels();
+        searchInputField.onValueChanged.AddListener(delegate {SearchAfterValueChanged();});
+        clearSearchButton.onClick.AddListener(delegate {ClearSearch();});
         InitMemory();
     }
 
@@ -57,20 +59,10 @@ public class NovelExplorerSceneController : SceneController, OnSuccessHandler
         List<VisualNovel> visualNovels = KiteNovelManager.GetAllKiteNovels();
         gallery.RemoveAll();
         gallery.AddNovelsToGallery(visualNovels);
-        searchInputField.onValueChanged.AddListener(delegate {SearchAfterValueChanged();});
-        clearSearchButton.onClick.AddListener(delegate {ClearSearch();});
         if (memory == null)
         {
-            return; // Server Call is not performed, because its a GET-call and has a body. Since iOS 13 GET-calls are not allowed to have a body.
-
-            //GetNovelsServerCall call = Instantiate(getNovelsServerCall).GetComponent<GetNovelsServerCall>();
-            //call.sceneController = this;
-            //call.onSuccessHandler = this;
-            //call.SendRequest();
-            //DontDestroyOnLoad(call.gameObject);
-            //return;
+            return;
         }
-
         userNovels = memory.GetUserNovels();
         searchInputField.text = memory.GetSearchPhrase();
         StartCoroutine(gallery.EnsureCorrectScrollPosition(memory.GetScrollPositionOfKiteGallery()));
