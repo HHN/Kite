@@ -5,14 +5,14 @@ using static System.Net.Mime.MediaTypeNames;
 
 public class FeelingPanelController : MonoBehaviour
 {
-    public TextMeshProUGUI question;
-    public TextMeshProUGUI feedback;
-    public Button nervousButton;
-    public Button fearfullButton;
-    public Button encouragedButton;
-    public Button annoyedButton;
-    public Button skipButton;
-    public PlayNovelSceneController controller;
+    [SerializeField] private TextMeshProUGUI question;
+    [SerializeField] private TextMeshProUGUI feedback;
+    [SerializeField] private Button nervousButton;
+    [SerializeField] private Button fearfullButton;
+    [SerializeField] private Button encouragedButton;
+    [SerializeField] private Button annoyedButton;
+    [SerializeField] private Button skipButton;
+    [SerializeField] private PlayNovelSceneController controller;
  
     private string nervousFeedback;
     private string fearfullFeedback;

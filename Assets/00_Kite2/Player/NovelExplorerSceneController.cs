@@ -14,12 +14,8 @@ public class NovelExplorerSceneController : SceneController, OnSuccessHandler
     [SerializeField] private GameObject getNovelsServerCall;
     [SerializeField] private List<VisualNovel> userNovels;
     [SerializeField] private Dictionary<long, VisualNovel> userNovelsMap = new Dictionary<long, VisualNovel>();
-    [SerializeField] private int tabIndex;
-    [SerializeField] private RadioButtonHandler radioButtonHandler;
     [SerializeField] private TMP_InputField searchInputField;
     [SerializeField] private VisualNovelGallery gallery;
-    [SerializeField] private GalleryType openGallery = GalleryType.KITE_GALLERY;
-    [SerializeField] private float kiteGaleryPosition = 1;
 
     void Start()
     {
@@ -75,41 +71,17 @@ public class NovelExplorerSceneController : SceneController, OnSuccessHandler
 
         userNovels = memory.GetUserNovels();
         searchInputField.text = memory.GetSearchPhrase();
-        openGallery = GalleryType.KITE_GALLERY;
-        StartCoroutine(gallery.EnsureCorrectScrollPosition(kiteGaleryPosition));
+        StartCoroutine(gallery.EnsureCorrectScrollPosition(memory.GetScrollPositionOfKiteGallery()));
     }
 
     public override void OnStop()
     {
         base.OnStop();
-        List<VisualNovel> visualNovels = KiteNovelManager.GetAllKiteNovels();
-        gallery.RemoveAll();
-        gallery.AddNovelsToGallery(visualNovels);
-        searchInputField.onValueChanged.AddListener(delegate {SearchAfterValueChanged();});
         NovelExplorerSceneMemory memory = new NovelExplorerSceneMemory();
-        memory.SetTabIndex(tabIndex);
         memory.SetSearchPhrase(searchInputField.text);
-        gallery.GetCurrentScrollPosition();
-        openGallery = GalleryType.KITE_GALLERY;
-        StartCoroutine(gallery.EnsureCorrectScrollPosition(kiteGaleryPosition));
+        memory.SetScrollPositionOfKiteGallery(gallery.GetCurrentScrollPosition());
         memory.SetUserNovels(userNovels);
         SceneMemoryManager.Instance().SetMemoryOfNovelExplorerScene(memory);
-    }
-
-    public void SaveCurrentPosition()
-    {
-        switch (openGallery)
-        {
-            case GalleryType.KITE_GALLERY:
-                {
-                    kiteGaleryPosition = gallery.GetCurrentScrollPosition();
-                    return;
-                }
-            default:
-                {
-                    return;
-                }
-        }
     }
 
     private void SearchAfterValueChanged()
@@ -117,19 +89,18 @@ public class NovelExplorerSceneController : SceneController, OnSuccessHandler
         string searchText = searchInputField.text.Trim();
         List<VisualNovel> dataset = new List<VisualNovel>();
         dataset = KiteNovelManager.GetAllKiteNovels();
-
-        List<VisualNovel> results = FuzzySearch(dataset, searchText);
+        List<VisualNovel> results = SubStringSearch(dataset, searchText);
         gallery.RemoveAll();
         gallery.AddNovelsToGallery(results);
     }
 
-    private List<VisualNovel> FuzzySearch(List<VisualNovel> dataset, string query)
+    private List<VisualNovel> SubStringSearch(List<VisualNovel> dataset, string subString)
     {
         List<VisualNovel> matches = new List<VisualNovel>();
 
         foreach (VisualNovel entry in dataset)
         {
-            if (entry.title.IndexOf(query, StringComparison.OrdinalIgnoreCase) >= 0)
+            if (entry.title.IndexOf(subString, StringComparison.OrdinalIgnoreCase) >= 0)
             {
                 matches.Add(entry);
             }
