@@ -4,10 +4,6 @@ using TMPro;
 using UnityEngine.UI;
 using System;
 
-// Analytics
-using Unity.Services.Core;
-using Unity.Services.Analytics;
-using System.Diagnostics;
 
 public class NovelExplorerSceneController : SceneController
 {
