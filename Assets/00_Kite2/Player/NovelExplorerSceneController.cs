@@ -16,6 +16,7 @@ public class NovelExplorerSceneController : SceneController, OnSuccessHandler
     [SerializeField] private Dictionary<long, VisualNovel> userNovelsMap = new Dictionary<long, VisualNovel>();
     [SerializeField] private TMP_InputField searchInputField;
     [SerializeField] private VisualNovelGallery gallery;
+    [SerializeField] private Button clearSearchButton;
 
     void Start()
     {
@@ -57,6 +58,7 @@ public class NovelExplorerSceneController : SceneController, OnSuccessHandler
         gallery.RemoveAll();
         gallery.AddNovelsToGallery(visualNovels);
         searchInputField.onValueChanged.AddListener(delegate {SearchAfterValueChanged();});
+        clearSearchButton.onClick.AddListener(delegate {ClearSearch();});
         if (memory == null)
         {
             return; // Server Call is not performed, because its a GET-call and has a body. Since iOS 13 GET-calls are not allowed to have a body.
@@ -127,5 +129,10 @@ public class NovelExplorerSceneController : SceneController, OnSuccessHandler
         }
 
         return matches;
+    }
+
+    private void ClearSearch()
+    {
+        searchInputField.text = "";
     }
 }
