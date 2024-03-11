@@ -9,7 +9,7 @@ using Unity.Services.Core;
 using Unity.Services.Analytics;
 using System.Diagnostics;
 
-public class NovelExplorerSceneController : SceneController, OnSuccessHandler
+public class NovelExplorerSceneController : SceneController
 {
     [SerializeField] private GameObject getNovelsServerCall;
     [SerializeField] private List<VisualNovel> userNovels;
