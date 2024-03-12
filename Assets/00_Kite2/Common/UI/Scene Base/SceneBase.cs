@@ -8,7 +8,6 @@ public class SceneBase : MonoBehaviour
     public Button closeButton;
     public Button homeButton;
     public Button novelPlayerButton;
-    public Button novelMakerButton;
     public Button settingsButton;
 
     [SerializeField] private GameObject leaveGameAndGoToMainMenuMessageBox;
@@ -22,16 +21,8 @@ public class SceneBase : MonoBehaviour
         backButton.onClick.AddListener(delegate { OnBackButton(); });
         closeButton.onClick.AddListener(delegate { OnCloseButton(); });
         novelPlayerButton.onClick.AddListener(delegate { OnNovelPlayerButton(); });
-        novelMakerButton.onClick.AddListener(delegate { OnNovelMakerButton(); });
 
-        if (GameManager.Instance().applicationMode == ApplicationModes.GUEST_MODE)
-        {
-            OnGuestMode();
-        }
-        else
-        {
-            OnLoggedInUserMode();
-        }
+        OnGuestMode();
 
         if (SceneManager.GetActiveScene().name.Equals(SceneNames.PLAY_NOVEL_SCENE))
         {
@@ -46,10 +37,6 @@ public class SceneBase : MonoBehaviour
     }
 
     public void OnGuestMode()
-    {
-    }
-
-    public void OnLoggedInUserMode()
     {
     }
 
@@ -101,11 +88,6 @@ public class SceneBase : MonoBehaviour
     public void OnNovelPlayerButton()
     {
         SceneLoader.LoadNovelExplorerScene();
-    }
-
-    public void OnNovelMakerButton()
-    {
-        SceneLoader.LoadNovelMakerScene();
     }
 
     public void OnSettingsButton()

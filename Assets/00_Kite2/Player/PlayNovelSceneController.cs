@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Collections;
 using Febucci.UI.Core;
 using System;
-using System.Drawing;
 using System.Text.RegularExpressions;
 
 public class PlayNovelSceneController : SceneController
@@ -27,7 +26,6 @@ public class PlayNovelSceneController : SceneController
     private Dictionary<string, GameObject> currentCharacters = new Dictionary<string, GameObject>();
     [SerializeField] private ChatScrollView chatScroll;
     [SerializeField] private ImageScrollView imageScroll;
-    [SerializeField] private FeelingPanelController feelingPanelController;
     public TypewriterCore currentTypeWriter;
     public SelectOptionContinueConversation selectOptionContinueConversation;
     public Button confirmArea;
@@ -71,86 +69,6 @@ public class PlayNovelSceneController : SceneController
 
         novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
         Initialize();
-        InitializeMoneyAndScore();
-    }
-
-    private void Update()
-    {
-        /**
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            SetScreenContentColor(true, new UnityEngine.Color(0, 0, 0, 1));
-        } 
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            SetScreenContentColor(false, new UnityEngine.Color(0, 0, 0, 1));
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            SetImageAreaColor(true, new UnityEngine.Color(0, 0, 0, 1));
-        }
-        else if (Input.GetKeyDown(KeyCode.F))
-        {
-            SetImageAreaColor(false, new UnityEngine.Color(0, 0, 0, 1));
-        }
-        else if (Input.GetKeyDown(KeyCode.G))
-        {
-            SetBackgroundColor(true, new UnityEngine.Color(0, 0, 0, 1));
-        }
-        else if (Input.GetKeyDown(KeyCode.H))
-        {
-            SetBackgroundColor(false, new UnityEngine.Color(0, 0, 0, 1));
-        }
-        else if (Input.GetKeyDown(KeyCode.J))
-        {
-            SetScreenContentBlur(true);
-        }
-        else if (Input.GetKeyDown(KeyCode.K))
-        {
-            SetScreenContentBlur(false);
-        }
-        else if (Input.GetKeyDown(KeyCode.L))
-        {
-            SetImageAreaBlur(true);
-        }
-        else if (Input.GetKeyDown(KeyCode.M))
-        {
-            SetImageAreaBlur(false);
-        }
-        else if (Input.GetKeyDown(KeyCode.N))
-        {
-            SetBackGroundBlur(true);
-        }
-        else if (Input.GetKeyDown(KeyCode.B))
-        {
-            SetBackGroundBlur(false);
-        }
-        else if (Input.GetKeyDown(KeyCode.V))
-        {
-            SetCharacterBrither(true, "Herr Mayer");
-        }
-        else if (Input.GetKeyDown(KeyCode.C))
-        {
-            SetCharacterBrither(false, "Herr Mayer");
-        }
-        else if (Input.GetKeyDown(KeyCode.X))
-        {
-            SetCharacterBlur(true, "Herr Mayer");
-        }
-        else if (Input.GetKeyDown(KeyCode.Y))
-        {
-            SetCharacterBlur(false, "Herr Mayer");
-        }
-        */
-    }
-
-    public void InitializeMoneyAndScore()
-    {
-        long money = MoneyManager.Instance().GetMoney();
-        long score = ScoreManager.Instance().GetScore();
-
-       // moneyText.text = money.ToString();
-        scoreText.text = score.ToString();
     }
 
     public void Initialize()
@@ -244,24 +162,6 @@ public class PlayNovelSceneController : SceneController
                     confirmArea2.gameObject.SetActive(false);
                     HandleShowChoicesEvent(nextEventToPlay);
                     ScrollToBottom();
-                    break;
-                }
-            case VisualNovelEventType.ADD_OPINION_CHOICE_EVENT:
-                {
-                    HandleAddOpinionChoiceEvent(nextEventToPlay);
-                    break;
-                }
-            case VisualNovelEventType.ASK_FOR_OPINION_EVENT:
-                {
-                    confirmArea.gameObject.SetActive(false);
-                    confirmArea2.gameObject.SetActive(false);
-                    HandleAskForOpinionEvent(nextEventToPlay);
-                    ScrollToBottom();
-                    break;
-                }
-            case VisualNovelEventType.SHOW_OPINION_FEEDBACK_EVENT:
-                {
-                    HandleOpinionFeedbackEvent(nextEventToPlay);
                     break;
                 }
             case VisualNovelEventType.END_NOVEL_EVENT:
@@ -485,64 +385,9 @@ public class PlayNovelSceneController : SceneController
         conversationContent.AddContent(novelEvent, this);
     }
 
-    public void HandleAddOpinionChoiceEvent(VisualNovelEvent novelEvent)
-    {
-        long nextEventID = novelEvent.nextId;
-        nextEventToPlay = novelEvents[nextEventID];
-
-        switch (novelEvent.opinionChoiceNumber)
-        {
-            case 1:
-                {
-                    feelingPanelController.SetNervousFeedback(novelEvent.text);
-                    break;
-                }
-            case 2:
-                {
-                    feelingPanelController.SetFearfullFeedback(novelEvent.text);
-                    break;
-                }
-            case 3:
-                {
-                    feelingPanelController.SetEncouragedFeedback(novelEvent.text);
-                    break;
-                }
-            case 4:
-                {
-                    feelingPanelController.SetAnnoyedFeedback(novelEvent.text);
-                    break;
-                }
-            default:
-                {
-                    break;
-                }
-        }
-        PlayNextEvent();
-    }
-
-    public void HandleAskForOpinionEvent(VisualNovelEvent novelEvent)
-    {
-        long nextEventID = novelEvent.nextId;
-        nextEventToPlay = novelEvents[nextEventID];
-
-        this.feelingPanelController.Initialize();
-        conversationContent.AddContent(novelEvent, this);
-    }
-
-    public void HandleOpinionFeedbackEvent(VisualNovelEvent novelEvent)
-    {
-        long nextEventID = novelEvent.nextId;
-        nextEventToPlay = novelEvents[nextEventID];
-
-        feelingPanelController.CleanUp();
-        PlayNextEvent();
-    }
-
     public void HandleEndNovelEvent(VisualNovelEvent novelEvent)
     {
         AnalyticsServiceHandler.Instance().SendNovelPlayTime();
-        AddScore(5);
-        AddMoney(5);
 
         int userRole = FeedbackRoleManager.Instance.GetFeedbackRole();
         if (userRole == 1 || userRole == 3 || userRole == 4 || userRole == 5)
@@ -580,11 +425,6 @@ public class PlayNovelSceneController : SceneController
     public void ScrollToBottom()
     {
         StartCoroutine(chatScroll.ScrollToBottom());
-    }
-
-    public void SetFeelingsPanelActive(bool active)
-    {
-        feelingPanelController.gameObject.SetActive(active);
     }
 
     public void StartTalking()
@@ -630,38 +470,6 @@ public class PlayNovelSceneController : SceneController
         }
         tapToContinueAnimation.SetActive(false);
         tapToContinueAnimation.GetComponent<Animator>().enabled = false;
-    }
-
-    public void AddScore(long value)
-    {
-        scoreText.text = (ScoreManager.Instance().GetScore() + value).ToString();
-
-        if (GameManager.Instance().applicationMode != ApplicationModes.LOGGED_IN_USER_MODE || value == 0)
-        {
-            return;
-        }
-        AddScoreServerCall call = Instantiate(this.addScoreServerCallPrefab).GetComponent<AddScoreServerCall>();
-        call.sceneController = this;
-        call.onSuccessHandler = UpdateScoreAndMoneyManager.Instance();
-        call.value = value;
-        call.SendRequest();
-        DontDestroyOnLoad(call.gameObject);
-    }
-
-    public void AddMoney(long value)
-    {
-        //moneyText.text = (MoneyManager.Instance().GetMoney() + value).ToString();
-
-        if (GameManager.Instance().applicationMode != ApplicationModes.LOGGED_IN_USER_MODE || value == 0)
-        {
-            return;
-        }
-        AddMoneyServerCall call = Instantiate(this.addMoneyServerCallPrefab).GetComponent<AddMoneyServerCall>();
-        call.sceneController = this;
-        call.onSuccessHandler = UpdateScoreAndMoneyManager.Instance();
-        call.value = value;
-        call.SendRequest();
-        DontDestroyOnLoad(call.gameObject);
     }
 
     public void AnimationFinished()

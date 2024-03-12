@@ -8,7 +8,6 @@ using System;
 public class NovelExplorerSceneController : SceneController
 {
     [SerializeField] private GameObject getNovelsServerCall;
-    [SerializeField] private List<VisualNovel> userNovels;
     [SerializeField] private Dictionary<long, VisualNovel> userNovelsMap = new Dictionary<long, VisualNovel>();
     [SerializeField] private TMP_InputField searchInputField;
     [SerializeField] private VisualNovelGallery gallery;
@@ -17,36 +16,9 @@ public class NovelExplorerSceneController : SceneController
     void Start()
     {
         BackStackManager.Instance().Push(SceneNames.NOVEL_EXPLORER_SCENE);
-        userNovels = GeneratedNovelManager.Instance().GetUserNovels();
         searchInputField.onValueChanged.AddListener(delegate {SearchAfterValueChanged();});
         clearSearchButton.onClick.AddListener(delegate {ClearSearch();});
         InitMemory();
-    }
-
-    public void OnSuccess(Response response)
-    {
-        if (response.novels != null && response.novels.Count != 0)
-        {
-            userNovels = response.novels;
-            MapNovels(userNovels);
-        }
-    }
-
-    private void MapNovels(List<VisualNovel> novels)
-    {
-        foreach (VisualNovel novel in novels)
-        {
-            userNovelsMap[novel.id] = novel;
-        }
-    }
-
-    public VisualNovel GetUserNovelById(long id)
-    {
-        if (userNovelsMap.ContainsKey(id))
-        {
-            return userNovelsMap[id];
-        }
-        return null;
     }
 
     public void InitMemory()
@@ -59,7 +31,6 @@ public class NovelExplorerSceneController : SceneController
         {
             return;
         }
-        userNovels = memory.GetUserNovels();
         searchInputField.text = memory.GetSearchPhrase();
         StartCoroutine(gallery.EnsureCorrectScrollPosition(memory.GetScrollPositionOfKiteGallery()));
     }
@@ -70,7 +41,6 @@ public class NovelExplorerSceneController : SceneController
         NovelExplorerSceneMemory memory = new NovelExplorerSceneMemory();
         memory.SetSearchPhrase(searchInputField.text);
         memory.SetScrollPositionOfKiteGallery(gallery.GetCurrentScrollPosition());
-        memory.SetUserNovels(userNovels);
         SceneMemoryManager.Instance().SetMemoryOfNovelExplorerScene(memory);
     }
 

@@ -24,7 +24,7 @@ public class AddNovelReviewServerCall : ServerCall
 
     protected override void OnResponse(Response response)
     {
-        switch (ResultCodeHelper.ValueOf(response.resultCode))
+        switch (ResultCodeHelper.ValueOf(response.GetResultCode()))
         {
             case ResultCode.SUCCESSFULLY_ADDED_NOVEL_REVIEW:
                 {

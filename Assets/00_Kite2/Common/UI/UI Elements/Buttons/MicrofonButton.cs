@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class MicrofonButton : MonoBehaviour, OnSuccessHandler
+public class MicrofonButton : MonoBehaviour
 {   
     private bool isMicrofonConnected = false;
     private int minFreq;
@@ -14,7 +14,6 @@ public class MicrofonButton : MonoBehaviour, OnSuccessHandler
     public Sprite microfonImageWhite;
     public Sprite microfonImageRed;
     public TMP_InputField textField;
-    public GameObject whisperRequestPrefab;
     public SceneController sceneController;
 
     void Start()
@@ -40,13 +39,6 @@ public class MicrofonButton : MonoBehaviour, OnSuccessHandler
     private void VoiceToText(AudioClip userInput)
     {
         byte[] data = SaveWav.Save("input", userInput);
-
-        GetTextOfAudioServerCall call = Instantiate(whisperRequestPrefab).GetComponent<GetTextOfAudioServerCall>();
-        call.onSuccessHandler = this;
-        call.file = data;
-        call.sceneController = sceneController;
-        call.SendRequest();
-        DontDestroyOnLoad(call.gameObject);
     }
 
     public void OnButtonPressed()
@@ -95,10 +87,5 @@ public class MicrofonButton : MonoBehaviour, OnSuccessHandler
             Microphone.End(null); 
         }
         return result;
-    }
-
-    public void OnSuccess(Response response)
-    {
-        textField.text = response.completion;
     }
 }

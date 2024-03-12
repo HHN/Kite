@@ -2,7 +2,7 @@ public class GameManager
 {
     private static GameManager instance;
 
-    public ApplicationModes applicationMode;
+    private ApplicationModes applicationMode;
 
     private GameManager() { }
 
@@ -14,10 +14,14 @@ public class GameManager
         }
         return instance;
     }
-    
-    public void LogOut()
+
+    public void SetApplicationMode(ApplicationModes applicationMode)
     {
-        AuthenticationManager.Instance().RemoveAuthTokens();
-        this.applicationMode = ApplicationModes.GUEST_MODE;
+        this.applicationMode = applicationMode;
+    }
+
+    public ApplicationModes GetApplicationModes()
+    {
+        return applicationMode;
     }
 }

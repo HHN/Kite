@@ -15,7 +15,7 @@ public class GetReviewObserversServerCall : ServerCall
 
     protected override void OnResponse(Response response)
     {
-        switch (ResultCodeHelper.ValueOf(response.resultCode))
+        switch (ResultCodeHelper.ValueOf(response.GetResultCode()))
         {
             case ResultCode.SUCCESSFULLY_GOT_ALL_REVIEW_OBSERVER:
                 {

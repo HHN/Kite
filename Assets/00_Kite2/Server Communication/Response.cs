@@ -1,19 +1,74 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 [Serializable]
 public class Response
 {
-    public int resultCode;
-    public string resultText;
-    public string authToken;
-    public string refreshToken;
-    public string completion;
-    public List<VisualNovel> novels;
-    public List<Comment> comments;
-    public VisualNovel specifiedNovel;
-    public int numberOfNovelLikes;
-    public bool novelLikedByUser;
-    public long score;
-    public long money;
+    [SerializeField] private int resultCode;
+    [SerializeField] private string resultText;
+    [SerializeField] private string completion;
+    [SerializeField] private List<NovelReview> novelReviews;
+    [SerializeField] private List<AiReview> aiReviews;
+    [SerializeField] private List<ReviewObserver> reviewObservers;
+
+    public void SetResultCode(int resultCode)
+    {
+        this.resultCode = resultCode;
+    }
+
+    public int GetResultCode()
+    {
+        return this.resultCode;
+    }
+
+    public void SetResultText(string resultText)
+    {
+        this.resultText = resultText;
+    }
+
+    public string GetResultText()
+    {
+        return this.resultText;
+    }
+
+    public void SetCompletion(string completion)
+    {
+        this.completion = completion;
+    }
+
+    public string GetCompletion()
+    {
+        return this.completion;
+    }
+
+    public void SetNovelReviews(List<NovelReview> novelReviews)
+    {
+        this.novelReviews = novelReviews;
+    }
+
+    public List<NovelReview> GetNovelReviews()
+    {
+        return this.novelReviews;
+    }
+
+    public void SetAiReviews(List<AiReview> aiReviews)
+    {
+        this.aiReviews = aiReviews;
+    }
+
+    public List<AiReview> GetAiReviews()
+    {
+        return this.aiReviews;
+    }
+
+    public void SetReviewObserver(List<ReviewObserver> reviewObservers)
+    {
+        this.reviewObservers = reviewObservers;
+    }
+
+    public List<ReviewObserver> GetReviewObserver()
+    {
+        return this.reviewObservers;
+    }
 }

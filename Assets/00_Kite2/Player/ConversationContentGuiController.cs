@@ -46,12 +46,6 @@ public class ConversationContentGuiController : MonoBehaviour
                     options = new List<VisualNovelEvent>();
                     break;
                 }
-            case VisualNovelEventType.ASK_FOR_OPINION_EVENT:
-                {
-                    AskForFeelingsButton prefab = Instantiate(askForFeelingsButton, this.transform).GetComponent<AskForFeelingsButton>();
-                    prefab.controller = controller;
-                    break;
-                }
             default:
                 {
                     break;

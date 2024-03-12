@@ -20,7 +20,7 @@ public class DeleteReviewObserverServerCall : ServerCall
 
     protected override void OnResponse(Response response)
     {
-        switch (ResultCodeHelper.ValueOf(response.resultCode))
+        switch (ResultCodeHelper.ValueOf(response.GetResultCode()))
         {
             case ResultCode.SUCCESSFULLY_DELETED_REVIEW_OBSERVER:
                 {

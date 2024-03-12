@@ -5,7 +5,7 @@ public class GptRequestEventOnSuccessHandler : OnSuccessHandler
 
     public void OnSuccess(Response response)
     {
-        string completion = response.completion;
+        string completion = response.GetCompletion();
         string processedCompletion = completion;
 
         if (completionHandler != null)

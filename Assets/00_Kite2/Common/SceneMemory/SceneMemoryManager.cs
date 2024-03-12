@@ -9,19 +9,8 @@ public class SceneMemoryManager
     private FeedbackSceneMemory feedbackSceneMemory;
     private NovelExplorerSceneMemory novelExplorerSceneMemory;
     private PlayNovelSceneMemory playNovelSceneMemory;
-    private ChangePasswordSceneMemory changePasswordSceneMemory;
-    private LogInSceneMemory logInSceneMemory;
-    private RegistrationSceneMemory registrationSceneMemory;
-    private ResetPasswordSceneMemory resetPasswordSceneMemory;
     private InfoSceneMemory infoSceneMemory;
     private InfoTextSceneMemory infoTextSceneMemory;
-    private CommentSectionSceneMemory commentSectionSceneMemory;
-    private NovelMakerSceneMemory novelMakerSceneMemory;
-    private CharacterExplorerSceneMemory characterExplorerSceneMemory;
-    private EnvironmentExplorerSceneMemory environmentExplorerSceneMemory;
-    private HelpForNovelMakerSceneMemory helpForNovelMakerSceneMemory;
-    private FinishNovelSceneMemory finishNovelSceneMemory;
-    private NovelPreviewSceneMemory novelPreviewSceneMemory;
     private AddObserverSceneMemory addObserverSceneMemory;
     private AiReviewExplorerSceneMemory aiReviewExplorerSceneMemory;
     private NovelReviewExplorerSceneMemory novelReviewExplorerSceneMemory;
@@ -72,26 +61,6 @@ public class SceneMemoryManager
         return this.playNovelSceneMemory;
     }
 
-    public ChangePasswordSceneMemory GetMemoryOfChangePasswordScene()
-    {
-        return this.changePasswordSceneMemory;
-    }
-
-    public LogInSceneMemory GetMemoryOfLogInScene()
-    {
-        return this.logInSceneMemory;
-    }
-
-    public RegistrationSceneMemory GetMemoryOfRegistrationScene()
-    {
-        return this.registrationSceneMemory;
-    }
-
-    public ResetPasswordSceneMemory GetMemoryOfResetPasswordScene()
-    {
-        return this.resetPasswordSceneMemory;
-    }
-
     public InfoSceneMemory GetMemoryOfInfoScene()
     {
         return this.infoSceneMemory;
@@ -100,41 +69,6 @@ public class SceneMemoryManager
     public InfoTextSceneMemory GetMemoryOfInfoTextScene()
     {
         return this.infoTextSceneMemory;
-    }
-
-    public CommentSectionSceneMemory GetMemoryOfCommentSectionScene()
-    {
-        return this.commentSectionSceneMemory;
-    }
-
-    public NovelMakerSceneMemory GetMemoryOfNovelMakerScene()
-    {
-        return this.novelMakerSceneMemory;
-    }
-
-    public CharacterExplorerSceneMemory GetMemoryOfCharacterExplorerScene()
-    {
-        return this.characterExplorerSceneMemory;
-    }
-
-    public EnvironmentExplorerSceneMemory GetMemoryOfEnvironmentExplorerScene()
-    {
-        return this.environmentExplorerSceneMemory;
-    }
-
-    public HelpForNovelMakerSceneMemory GetMemoryOfHelpForNovelMakerScene()
-    {
-        return this.helpForNovelMakerSceneMemory;
-    }
-
-    public FinishNovelSceneMemory GetMemoryOfFinishNovelScene()
-    {
-        return this.finishNovelSceneMemory;
-    }
-
-    public NovelPreviewSceneMemory GetMemoryOfNovelPreviewScene()
-    {
-        return this.novelPreviewSceneMemory;
     }
 
     public AddObserverSceneMemory GetMemoryOfAddObserverScene()
@@ -212,26 +146,6 @@ public class SceneMemoryManager
         this.playNovelSceneMemory = playNovelSceneMemory;
     }
 
-    public void SetMemoryOfChangePasswordScene(ChangePasswordSceneMemory changePasswordSceneMemory)
-    {
-        this.changePasswordSceneMemory = changePasswordSceneMemory;
-    }
-
-    public void SetMemoryOfLogInScene(LogInSceneMemory logInSceneMemory)
-    {
-        this.logInSceneMemory = logInSceneMemory;
-    }
-
-    public void SetMemoryOfRegistrationScene(RegistrationSceneMemory registrationSceneMemory)
-    {
-        this.registrationSceneMemory = registrationSceneMemory;
-    }
-
-    public void SetMemoryOfResetPasswordScene(ResetPasswordSceneMemory resetPasswordSceneMemory)
-    {
-        this.resetPasswordSceneMemory = resetPasswordSceneMemory;
-    }
-
     public void SetMemoryOfInfoScene(InfoSceneMemory infoSceneMemory)
     {
         this.infoSceneMemory = infoSceneMemory;
@@ -240,41 +154,6 @@ public class SceneMemoryManager
     public void SetMemoryOfInfoTextScene(InfoTextSceneMemory infoTextSceneMemory)
     {
         this.infoTextSceneMemory = infoTextSceneMemory;
-    }
-
-    public void SetMemoryOfCommentSectionScene(CommentSectionSceneMemory commentSectionSceneMemory)
-    {
-        this.commentSectionSceneMemory = commentSectionSceneMemory;
-    }
-
-    public void SetMemoryOfNovelMakerScene(NovelMakerSceneMemory novelMakerSceneMemory)
-    {
-        this.novelMakerSceneMemory = novelMakerSceneMemory;
-    }
-
-    public void SetMemoryOfCharacterExplorerScene(CharacterExplorerSceneMemory characterExplorerSceneMemory)
-    {
-        this.characterExplorerSceneMemory = characterExplorerSceneMemory;
-    }
-
-    public void SetMemoryOfEnvironmentExplorerScene(EnvironmentExplorerSceneMemory environmentExplorerSceneMemory)
-    {
-        this.environmentExplorerSceneMemory = environmentExplorerSceneMemory;
-    }
-
-    public void SetMemoryOfHelpForNovelMakerScene(HelpForNovelMakerSceneMemory helpForNovelMakerSceneMemory)
-    {
-        this.helpForNovelMakerSceneMemory = helpForNovelMakerSceneMemory;
-    }
-
-    public void SetMemoryOfFinishNovelScene(FinishNovelSceneMemory finishNovelSceneMemory)
-    {
-        this.finishNovelSceneMemory = finishNovelSceneMemory;
-    }
-
-    public void SetMemoryOfNovelPreviewScene(NovelPreviewSceneMemory novelPreviewSceneMemory)
-    {
-        this.novelPreviewSceneMemory = novelPreviewSceneMemory;
     }
 
     public void SetMemoryOfImprintScene(ImprintSceneMemory imprintSceneMemory)
@@ -334,19 +213,8 @@ public class SceneMemoryManager
         this.feedbackSceneMemory = null;
         this.novelExplorerSceneMemory = null;
         this.playNovelSceneMemory = null;
-        this.changePasswordSceneMemory = null;
-        this.logInSceneMemory = null;
-        this.registrationSceneMemory = null;
-        this.resetPasswordSceneMemory = null;
         this.infoSceneMemory = null;
         this.infoTextSceneMemory = null;
-        this.commentSectionSceneMemory = null;
-        this.novelMakerSceneMemory = null;
-        this.characterExplorerSceneMemory = null;
-        this.environmentExplorerSceneMemory = null;
-        this.helpForNovelMakerSceneMemory = null;
-        this.finishNovelSceneMemory = null;
-        this.novelPreviewSceneMemory = null;
         this.addObserverSceneMemory = null;
         this.aiReviewExplorerSceneMemory = null;
         this.novelReviewExplorerSceneMemory = null;

@@ -75,8 +75,8 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
             return;
         }
         StopWaitingMusic();
-        feedbackText.SetText(response.completion.Trim());
-        novelToPlay.feedback = (response.completion.Trim());
+        feedbackText.SetText(response.GetCompletion().Trim());
+        novelToPlay.feedback = (response.GetCompletion().Trim());
         AnalyticsServiceHandler.Instance().SetWaitedForAiFeedbackTrue();
         LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
         PlayResultMusic();
