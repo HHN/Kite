@@ -1,91 +1,58 @@
+using LeastSquares.Undertone;
+using System.Linq;
+using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class MicrofonButton : MonoBehaviour
-{   
-    private bool isMicrofonConnected = false;
-    private int minFreq;
-    private int maxFreq;
-    private AudioClip clip;
-    private bool isRecording = false;
-
-    public Button microfonButton;
-    public Sprite microfonImageWhite;
-    public Sprite microfonImageRed;
-    public TMP_InputField textField;
-    public SceneController sceneController;
+{
+    [SerializeField] private SpeechEngine engine;
+    [SerializeField] private int maxRecordingTime;
+    [SerializeField] private AudioClip clip;
+    [SerializeField] private bool isRecording;
+    [SerializeField] private TMP_InputField textField;
+    [SerializeField] private Button microfonButton;
+    [SerializeField] private Sprite spriteWhileNotRecording;
+    [SerializeField] private Sprite spriteWhileRecording;
 
     void Start()
     {
-        if (Microphone.devices.Length <= 0)
-        {   
-            Debug.LogWarning("Microphone not connected!");
-        }
-        else 
-        {
-            isMicrofonConnected = true;
-            Microphone.GetDeviceCaps(null, out minFreq, out maxFreq);
-  
-            if (minFreq == 0 && maxFreq == 0)
-            {
-                maxFreq = 44100;
-            }
-        }
-
-        microfonButton.onClick.AddListener(OnButtonPressed);
+        maxRecordingTime = 30;
+        microfonButton.onClick.AddListener(OnClicked);
     }
 
-    private void VoiceToText(AudioClip userInput)
+    private async void OnClicked()
     {
-        byte[] data = SaveWav.Save("input", userInput);
-    }
+        if (!engine.Loaded) return;
 
-    public void OnButtonPressed()
-    {
-        if (isRecording)
+        if (!isRecording)
         {
-            AudioClip userInput = this.FinishRecording();
-            VoiceToText(userInput);
-            this.isRecording = false;
-            microfonButton.image.sprite = microfonImageWhite;
+            StartRecording();
+            isRecording = true;
+            microfonButton.image.sprite = spriteWhileRecording;
         }
         else
         {
-            this.StartRecording();
-            this.isRecording = true;
-            microfonButton.image.sprite = microfonImageRed;
+            microfonButton.interactable = false;
+            string transcription = await StopRecording();
+            textField.text = transcription;
+            microfonButton.interactable = true;
+            isRecording = false;
+            microfonButton.image.sprite = spriteWhileNotRecording;
         }
     }
 
     public void StartRecording()
     {
-        if (!isMicrofonConnected)
-        {
-            sceneController.DisplayErrorMessage(ErrorMessages.MICROFON_NOT_CONNECTED_ERROR);
-            return;
-        }
-        if (!Microphone.IsRecording(null))
-        {
-            clip = Microphone.Start(null, true, 20, maxFreq);
-        }
-
+        clip = Microphone.Start(null, false, maxRecordingTime, SpeechEngine.SampleFrequency);
     }
 
-    public AudioClip FinishRecording()
+    public async Task<string> StopRecording()
     {
-        AudioClip result = clip;
-        clip = null;
-        
-        if (!isMicrofonConnected)
-        {
-            sceneController.DisplayErrorMessage(ErrorMessages.MICROFON_NOT_CONNECTED_ERROR);
-            return null;
-        }
-        if (Microphone.IsRecording(null))
-        {
-            Microphone.End(null); 
-        }
-        return result;
+        var str = engine.TranscribeClip(clip, 0, Microphone.GetPosition(null));
+        Microphone.End(null);
+        var segments = await str;
+        return string.Join("\n", segments.Select(S => S.text).ToArray());
     }
 }
