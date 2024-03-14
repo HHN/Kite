@@ -12,13 +12,17 @@ public class NovelExplorerSceneController : SceneController
     [SerializeField] private TMP_InputField searchInputField;
     [SerializeField] private VisualNovelGallery gallery;
     [SerializeField] private Button clearSearchButton;
+    [SerializeField] private Sprite emptyFieldSprite;
+    [SerializeField] private Sprite nonEmptyFieldSprite;
 
     void Start()
     {
         BackStackManager.Instance().Push(SceneNames.NOVEL_EXPLORER_SCENE);
         searchInputField.onValueChanged.AddListener(delegate {SearchAfterValueChanged();});
+        searchInputField.onValueChanged.AddListener(delegate {UpdateButtonImage();});
         clearSearchButton.onClick.AddListener(delegate {ClearSearch();});
         InitMemory();
+        UpdateButtonImage();
     }
 
     public void InitMemory()
@@ -33,6 +37,22 @@ public class NovelExplorerSceneController : SceneController
         }
         searchInputField.text = memory.GetSearchPhrase();
         StartCoroutine(gallery.EnsureCorrectScrollPosition(memory.GetScrollPositionOfKiteGallery()));
+    }
+
+    private void UpdateButtonImage()
+    {
+        if (clearSearchButton == null || emptyFieldSprite == null || nonEmptyFieldSprite == null) return;
+
+        if (string.IsNullOrEmpty(searchInputField.text))
+        {
+            clearSearchButton.image.sprite = emptyFieldSprite;
+        }
+        else
+        {
+            clearSearchButton.image.sprite = nonEmptyFieldSprite;
+        }
+        RectTransform rectTransformSB = clearSearchButton.GetComponent<RectTransform>();
+        rectTransformSB.sizeDelta = new Vector2(66, 30);
     }
 
     public override void OnStop()
@@ -94,3 +114,4 @@ public class NovelExplorerSceneController : SceneController
         searchInputField.text = "";
     }
 }
+
