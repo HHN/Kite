@@ -67,7 +67,7 @@ public class GPTInterview : VisualNovel
             new VisualNovelEvent()
             {
                 id = 4,
-                nextId = 5,
+                nextId = 500,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
@@ -77,19 +77,8 @@ public class GPTInterview : VisualNovel
 
             new VisualNovelEvent()
             {
-                id = 5,
-                nextId = 500,
-                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
-                waitForUserConfirmation = true,
-                name = "Herr Mayer",
-                text = "Bist du eine Gründerin oder überlegst selbst zu gründen?", 
-                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
-            },
-
-            new VisualNovelEvent()
-            {
                 id = 500,
-                nextId = 6,
+                nextId = 5,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.METHODE_CALL_EVENT),
                 waitForUserConfirmation = false,
                 parameterList = new List<(string typ, object value)>
@@ -98,6 +87,17 @@ public class GPTInterview : VisualNovel
                     ("string", "[PlayerName]")
                 },
                 methodNameToCall = "WriteUserInputToFile"
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 5,
+                nextId = 6,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
+                waitForUserConfirmation = true,
+                name = "Herr Mayer",
+                text = "Bist du eine Gründerin oder überlegst selbst zu gründen?", 
+                expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
             },
 
             new VisualNovelEvent()
@@ -219,12 +219,26 @@ public class GPTInterview : VisualNovel
             new VisualNovelEvent()
             {
                 id = 16,
-                nextId = 17,
+                nextId = 501,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
                 text = "Dieser Name gefällt mir! Worum geht's denn bei deinem Unternehmen? Mache am besten mal einen Elevator Pitch.", 
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 501,
+                nextId = 17,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.METHODE_CALL_EVENT),
+                waitForUserConfirmation = false,
+                parameterList = new List<(string typ, object value)>
+                {
+                    ("string", "CompanyName"),
+                    ("string", "[CompanyName]")
+                },
+                methodNameToCall = "WriteUserInputToFile"
             },
 
             new VisualNovelEvent()
@@ -273,12 +287,26 @@ public class GPTInterview : VisualNovel
             new VisualNovelEvent()
             {
                 id = 21,
-                nextId = 28,
+                nextId = 502,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
                 text = "Das hört sich richtig gut an, [PlayerName]. [CompanyName]  wird bestimmt ein voller Erfolg!", 
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 502,
+                nextId = 28,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.METHODE_CALL_EVENT),
+                waitForUserConfirmation = false,
+                parameterList = new List<(string typ, object value)>
+                {
+                    ("string", "ElevatorPitch"),
+                    ("string", "[ElevatorPitch]")
+                },
+                methodNameToCall = "WriteUserInputToFile"
             },
 
             new VisualNovelEvent()
@@ -294,12 +322,26 @@ public class GPTInterview : VisualNovel
             new VisualNovelEvent()
             {
                 id = 23,
-                nextId = 24,
+                nextId = 503,
                 onChoice = 26,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT),
                 waitForUserConfirmation = false,
                 name = "Lea",
                 text = "Das möchte ich später erzählen."
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 503,
+                nextId = 24,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.METHODE_CALL_EVENT),
+                waitForUserConfirmation = false,
+                parameterList = new List<(string typ, object value)>
+                {
+                    ("string", "ElevatorPitch"),
+                    ("string", "[ElevatorPitch]")
+                },
+                methodNameToCall = "WriteUserInputToFile"
             },
 
             new VisualNovelEvent()
@@ -326,7 +368,7 @@ public class GPTInterview : VisualNovel
             new VisualNovelEvent()
             {
                 id = 26,
-                nextId = 28,
+                nextId = 502,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
@@ -413,12 +455,26 @@ public class GPTInterview : VisualNovel
             new VisualNovelEvent()
             {
                 id = 305,
-                nextId = 306,
+                nextId = 504,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.GPT_PROMPT_EVENT),
                 waitForUserConfirmation = true,
                 gptPrompt = GetTaskPrompt() + " Dies ist die Liste von Visual Novels: " + GetNovelSummary() + " Dies ist die Antwort der Person: [Preverences]",
                 variablesNameForGptPromp = "GPTAnswerForPreverences",
                 gptCompletionHandlerId = 0
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 504,
+                nextId = 306,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.METHODE_CALL_EVENT),
+                waitForUserConfirmation = false,
+                parameterList = new List<(string typ, object value)>
+                {
+                    ("string", "Preverences"),
+                    ("string", "[Preverences]")
+                },
+                methodNameToCall = "WriteUserInputToFile"
             },
 
             new VisualNovelEvent()
@@ -446,12 +502,26 @@ public class GPTInterview : VisualNovel
             new VisualNovelEvent()
             {
                 id = 308,
-                nextId = 309,
+                nextId = 505,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
-                text = "Dies sind die Inhalte, welche dich hoffentlich am meisten interessieren: [GPTAnswerForPreverences].",
+                text = "Dies sind die Inhalte, welche dich hoffentlich am meisten interessieren: [GPTAnswerForPreverences]",
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 505,
+                nextId = 309,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.METHODE_CALL_EVENT),
+                waitForUserConfirmation = false,
+                parameterList = new List<(string typ, object value)>
+                {
+                    ("string", "GPTAnswerForPreverences"),
+                    ("string", "[GPTAnswerForPreverences]")
+                },
+                methodNameToCall = "WriteUserInputToFile"
             },
 
             new VisualNovelEvent()

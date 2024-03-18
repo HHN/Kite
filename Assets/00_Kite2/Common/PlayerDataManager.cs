@@ -6,6 +6,8 @@ public class PlayerDataManager
 
     private PlayerDataWrapper playerData = new PlayerDataWrapper();
 
+    string[] keys = { "PlayerName", "CompanyName", "ElevatorPitch", "Preverences", "GPTAnswerForPreverences" };
+
     public static PlayerDataManager Instance()
     {
         if (instance == null)
@@ -36,6 +38,17 @@ public class PlayerDataManager
             // Gibt einen leeren String zurück, wenn der Schlüssel nicht existiert
             return "";
         }
+    }
+
+    public void PrintAllPlayerPrefsToConsole()
+    {
+        foreach (string key in keys)
+            {
+                if (PlayerPrefs.HasKey(key))
+                {
+                    Debug.Log(key + ": " + PlayerPrefs.GetString(key));
+                }
+            }
     }
 
 }

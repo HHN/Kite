@@ -307,8 +307,8 @@ public class PlayNovelSceneController : SceneController
     private void WriteUserInputToFile(string key, string content)
     {
         PlayerDataManager.Instance().SavePlayerData(key, content);
-        Debug.Log(key + ": " + content);
-        Debug.Log(PlayerDataManager.Instance().ReadPlayerData(key));
+        // Debug.Log(key + ": " + content);
+        // Debug.Log(PlayerDataManager.Instance().ReadPlayerData(key));
     }
 
     public void HandleBackgrundEvent(VisualNovelEvent novelEvent)
