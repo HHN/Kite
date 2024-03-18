@@ -26,4 +26,5 @@ public class InfoMessages
     public static readonly string EXPLANATION_TERMS_OF_USE_BUTTON = "Mit diesem Button kommst du auf die Nutzungsbedingungen unserer App.";
     public static readonly string EXPLANATION_DATA_PRIVACY_BUTTON = "Mit diesem Button kommst du auf die Datenschutzerklärung unserer App.";
     public static readonly string EXPLANATION_IMPRINT_BUTTON = "Mit diesem Button kommst du auf das Impressum unserer App.";
+    public static readonly string EXPLANATION_PLAYERPREFS_BUTTON = "Mit diesem Button kommst du auf die Übersichtsseite deiner Eingaben während der Intro-Novel.";
 }

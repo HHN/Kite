@@ -10,6 +10,7 @@ public class SettingsSceneController : SceneController
     [SerializeField] private RectTransform sublayout04;
     [SerializeField] private RectTransform sublayout05;
     [SerializeField] private RectTransform sublayout06;
+    [SerializeField] private RectTransform sublayout07;
     [SerializeField] private RectTransform layout;
 
     [SerializeField] private Button aboutKiteButton;
@@ -25,6 +26,8 @@ public class SettingsSceneController : SceneController
     [SerializeField] private Button dataPrivacyInfoButton;
     [SerializeField] private Button imprintButton;
     [SerializeField] private Button imprintInfoButton;
+    [SerializeField] private Button playerPrefsButton;
+    [SerializeField] private Button playerPrefsInfoButton;
 
     void Start()
     {
@@ -43,6 +46,8 @@ public class SettingsSceneController : SceneController
         dataPrivacyInfoButton.onClick.AddListener(delegate { OnDataPrivacyInfoButton(); });
         imprintButton.onClick.AddListener(delegate { OnImprintButton(); });
         imprintInfoButton.onClick.AddListener(delegate { OnImprintInfoButton(); });
+        playerPrefsButton.onClick.AddListener(delegate { OnPlayerPrefsButton(); });
+        playerPrefsInfoButton.onClick.AddListener(delegate { OnPlayerPrefsInfoButton(); });
 
         InitializeToggleDataCollectionButton();
         LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout01);
@@ -51,6 +56,7 @@ public class SettingsSceneController : SceneController
         LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout04);
         LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout05);
         LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout06);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout07);
         LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
     }
 
@@ -143,4 +149,16 @@ public class SettingsSceneController : SceneController
     {
         DisplayInfoMessage(InfoMessages.EXPLANATION_IMPRINT_BUTTON);
     }
+
+    private void OnPlayerPrefsButton()
+    {
+        SceneLoader.LoadPlayerPrefsScene();
+    }
+
+    private void OnPlayerPrefsInfoButton()
+    {
+        DisplayInfoMessage(InfoMessages.EXPLANATION_PLAYERPREFS_BUTTON);
+    }
+
+
 }

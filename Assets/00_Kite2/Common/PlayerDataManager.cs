@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerDataManager
 {
@@ -49,6 +50,19 @@ public class PlayerDataManager
                     Debug.Log(key + ": " + PlayerPrefs.GetString(key));
                 }
             }
+    }
+
+    public List<(string, string)> GetPlayerPrefsList()
+    {
+        List<(string, string)> playerPrefs = new List<(string, string)>();
+        foreach (string key in keys)
+            {
+                if (PlayerPrefs.HasKey(key))
+                {
+                    playerPrefs.Add((key, PlayerPrefs.GetString(key)));
+                }
+            }
+        return playerPrefs;
     }
 
 }

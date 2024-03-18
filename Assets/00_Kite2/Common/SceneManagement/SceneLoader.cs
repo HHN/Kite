@@ -146,6 +146,11 @@ public class SceneLoader
         LoadScene(SceneNames.PRIVACY_POLICY_SCENE);
     }
 
+    public static void LoadPlayerPrefsScene()
+    {
+        LoadScene(SceneNames.PLAYER_PREFS_SCENE);
+    }
+
     public static void LoadScene(string sceneName)
     {
         GameObject oldSceneControllerGameObject = GameObject.Find("Controller");
