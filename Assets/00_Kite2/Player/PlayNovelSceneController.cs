@@ -189,6 +189,11 @@ public class PlayNovelSceneController : SceneController
                     HandleGptPromptEvent(nextEventToPlay);
                     break;
                 }
+            case VisualNovelEventType.METHODE_CALL_EVENT:
+                {
+                    HandleMethodeCallEvent(nextEventToPlay);
+                    break;
+                }
             default:
                 {
                     break;
@@ -271,6 +276,39 @@ public class PlayNovelSceneController : SceneController
         DontDestroyOnLoad(call.gameObject);
 
         PlayNextEvent();
+    }
+
+    private void HandleMethodeCallEvent(VisualNovelEvent novelEvent)
+    {
+        long nextEventID = novelEvent.nextId;
+        nextEventToPlay = novelEvents[nextEventID];
+        if(novelEvent.methodNameToCall != null)
+        {
+            switch(novelEvent.methodNameToCall)
+            {
+                case "WriteUserInputToFile":
+                {
+                    WriteUserInputToFile((string)novelEvent.parameterList[0].value, ReplacePlaceholders((string)novelEvent.parameterList[1].value, novelToPlay.GetGlobalVariables()));
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
+            }
+
+        } else {
+            novelEvent.eventMethod?.Invoke();
+        }
+
+        PlayNextEvent();
+    }
+
+    private void WriteUserInputToFile(string key, string content)
+    {
+        PlayerDataManager.Instance().SavePlayerData(key, content);
+        Debug.Log(key + ": " + content);
+        Debug.Log(PlayerDataManager.Instance().ReadPlayerData(key));
     }
 
     public void HandleBackgrundEvent(VisualNovelEvent novelEvent)

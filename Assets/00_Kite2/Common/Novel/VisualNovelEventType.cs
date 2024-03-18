@@ -11,7 +11,8 @@ public enum VisualNovelEventType
     PLAY_SOUND_EVENT,
     PLAY_ANIMATION_EVENT,
     FREE_TEXT_INPUT_EVENT,
-    GPT_PROMPT_EVENT
+    GPT_PROMPT_EVENT,
+    METHODE_CALL_EVENT
 }
 
 public class VisualNovelEventTypeHelper
@@ -32,6 +33,7 @@ public class VisualNovelEventTypeHelper
             case VisualNovelEventType.PLAY_ANIMATION_EVENT: { return 12; }
             case VisualNovelEventType.FREE_TEXT_INPUT_EVENT: { return 13; }
             case VisualNovelEventType.GPT_PROMPT_EVENT: { return 14; }
+            case VisualNovelEventType.METHODE_CALL_EVENT: { return 15; }
 
             default: { return -1; }
         }
@@ -53,6 +55,7 @@ public class VisualNovelEventTypeHelper
             case 12: { return VisualNovelEventType.PLAY_ANIMATION_EVENT; }
             case 13: { return VisualNovelEventType.FREE_TEXT_INPUT_EVENT; }
             case 14: { return VisualNovelEventType.GPT_PROMPT_EVENT; }
+            case 15: { return VisualNovelEventType.METHODE_CALL_EVENT; }
             default: { return VisualNovelEventType.NONE; }
         }
     }

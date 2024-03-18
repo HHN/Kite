@@ -7,8 +7,6 @@ using System;
 
 public class NovelExplorerSceneController : SceneController
 {
-    [SerializeField] private GameObject getNovelsServerCall;
-    [SerializeField] private Dictionary<long, VisualNovel> userNovelsMap = new Dictionary<long, VisualNovel>();
     [SerializeField] private TMP_InputField searchInputField;
     [SerializeField] private VisualNovelGallery gallery;
     [SerializeField] private Button clearSearchButton;

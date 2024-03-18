@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class VisualNovelEvent
 {
+
     public int id;
     public int nextId;
     public int onChoice;
@@ -28,4 +30,8 @@ public class VisualNovelEvent
     public string gptPrompt;
     public string variablesNameForGptPromp;
     public int gptCompletionHandlerId;
+    [NonSerialized] // Da Action nicht serialisierbar ist und Probleme beim Speichern/ Laden verursachen kann.
+    public Action eventMethod;
+    public List<(string typ, object value)> parameterList;
+    public string methodNameToCall;
 }

@@ -78,12 +78,26 @@ public class GPTInterview : VisualNovel
             new VisualNovelEvent()
             {
                 id = 5,
-                nextId = 6,
+                nextId = 500,
                 eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SHOW_MESSAGE_EVENT),
                 waitForUserConfirmation = true,
                 name = "Herr Mayer",
                 text = "Bist du eine Gründerin oder überlegst selbst zu gründen?", 
                 expressionType = ExpressionTypeHelper.ToInt(ExpressionType.SMILING)
+            },
+
+            new VisualNovelEvent()
+            {
+                id = 500,
+                nextId = 6,
+                eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.METHODE_CALL_EVENT),
+                waitForUserConfirmation = false,
+                parameterList = new List<(string typ, object value)>
+                {
+                    ("string", "PlayerName"),
+                    ("string", "[PlayerName]")
+                },
+                methodNameToCall = "WriteUserInputToFile"
             },
 
             new VisualNovelEvent()
@@ -564,19 +578,19 @@ public class GPTInterview : VisualNovel
     {
         int place = source.LastIndexOf(find);
 
-        if (place == -1)
-        return source;
+        if (place == -1){
+            return source;
+        }
 
         string result = source.Remove(place, find.Length).Insert(place, replace);
         return result;
     }
 
-    private int WriteUserInputToFile(int id, string inputType, string input)
+    private void WriteUserInputToFile(string key, string content)
     {
-        PlayerDataManager.Instance().SavePlayerData(inputType, input);
-        Debug.Log(inputType + ": " + input);
-        Debug.Log(PlayerDataManager.Instance().ReadPlayerData(inputType));
-        return id;
+        PlayerDataManager.Instance().SavePlayerData(key, content);
+        Debug.Log(key + ": " + content);
+        Debug.Log(PlayerDataManager.Instance().ReadPlayerData(key));
     }
 
     private void TestUserInput(){
