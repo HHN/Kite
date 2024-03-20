@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FeedbackRoleManagementSceneController : SceneController
+public class FeedbackRoleManagementSceneController : SceneController, OnSuccessHandler
 {
     [SerializeField] private TextMeshProUGUI infoText;
     [SerializeField] private TMP_InputField inputField;
@@ -16,6 +13,7 @@ public class FeedbackRoleManagementSceneController : SceneController
     [SerializeField] private Button observerButton;
     [SerializeField] private GameObject buttonsToHide;
     [SerializeField] private RectTransform layout;
+    [SerializeField] private GameObject getUserRoleByCodeServerCallPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -42,12 +40,6 @@ public class FeedbackRoleManagementSceneController : SceneController
         observerButton.onClick.AddListener(delegate { OnObserverButton(); });
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void OnSubscribeButton()
     {
         SceneLoader.LoadAddObserverScene();
@@ -55,21 +47,14 @@ public class FeedbackRoleManagementSceneController : SceneController
 
     public void OnConfirmButton()
     {
-        string result = FeedbackRoleManager.Instance.SubmitCode(inputField.text.Trim());
-        this.DisplayInfoMessage(result);
+        string input = inputField.text.Trim();
         inputField.text = "";
-
-        infoText.text = "Aktuelle Rolle: " + FeedbackRoleManager.Instance.GetFeedbackRoleName();
-        int role = FeedbackRoleManager.Instance.GetFeedbackRole();
-
-        if (role == 4 || role == 5)
-        {
-            buttonsToHide.SetActive(true);
-        }
-        else
-        {
-            buttonsToHide.SetActive(false);
-        }
+        GetUserRoleByCodeServerCall call = Instantiate(getUserRoleByCodeServerCallPrefab).GetComponent<GetUserRoleByCodeServerCall>();
+        call.sceneController = this;
+        call.onSuccessHandler = this;
+        call.code = input;
+        call.SendRequest();
+        DontDestroyOnLoad(call.gameObject);
     }
 
     public void OnNovelReviewButton()
@@ -85,5 +70,23 @@ public class FeedbackRoleManagementSceneController : SceneController
     public void OnObserverButton()
     {
         SceneLoader.LoadReviewObserverExplorerScene();
+    }
+
+    public void OnSuccess(Response response)
+    {
+        string result = FeedbackRoleManager.Instance.SubmitCode(response.GetUserRole());
+        this.DisplayInfoMessage(result);
+
+        infoText.text = "Aktuelle Rolle: " + FeedbackRoleManager.Instance.GetFeedbackRoleName();
+        int role = FeedbackRoleManager.Instance.GetFeedbackRole();
+
+        if (role == 4 || role == 5)
+        {
+            buttonsToHide.SetActive(true);
+        }
+        else
+        {
+            buttonsToHide.SetActive(false);
+        }
     }
 }

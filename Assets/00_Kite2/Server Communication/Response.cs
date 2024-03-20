@@ -12,6 +12,7 @@ public class Response
     [SerializeField] private List<AiReview> aiReviews;
     [SerializeField] private List<ReviewObserver> reviewObservers;
     [SerializeField] private int version;
+    [SerializeField] private int userRole;
 
     public void SetResultCode(int resultCode)
     {
@@ -81,5 +82,15 @@ public class Response
     public int GetVersion()
     {
         return this.version;
+    }
+
+    public void SetUserRole(int userRole)
+    {
+        this.userRole = userRole;
+    }
+
+    public int GetUserRole()
+    {
+        return this.userRole;
     }
 }

@@ -5,13 +5,6 @@ public class FeedbackRoleManager
     private const string KEY = "FeedbackRole";
     private FeedbackRoleWrapper feedbackRole;
 
-    private const string CODE_STANDARD_USER = "2579713217761";
-    private const string CODE_NOVEL_TESTER = "09530779823";
-    private const string CODE_AI_TESTER = "93515608172734";
-    private const string CODE_TESTER = "6463423290";
-    private const string CODE_INTERN = "436937269687567";
-    private const string CODE_SUPER_USER = "602740213";
-
     private FeedbackRoleManager() 
     {
         feedbackRole = LoadFeedbackRole();
@@ -84,38 +77,41 @@ public class FeedbackRoleManager
         }
     }
 
-    public string SubmitCode(string code)
+    public string SubmitCode(int code)
     {
-        if (code.Equals(CODE_STANDARD_USER))
+        switch (code)
         {
-            SetFeedbackRole(0);
-            return "Rollen-Zuweisung erfolgreich! Neue Rolle: Standard Benutzer*in";
+            case (0):
+                {
+                    SetFeedbackRole(0);
+                    return "Rollen-Zuweisung erfolgreich! Neue Rolle: Standard Benutzer*in";
+                }
+            case (1):
+                {
+                    SetFeedbackRole(1);
+                    return "Rollen-Zuweisung erfolgreich! Neue Rolle: Novel-Tester*in";
+                }
+            case (2):
+                {
+                    SetFeedbackRole(2);
+                    return "Rollen-Zuweisung erfolgreich! Neue Rolle: KI-Tester*in";
+                }
+            case (3):
+                {
+                    SetFeedbackRole(3);
+                    return "Rollen-Zuweisung erfolgreich! Neue Rolle: Tester*in";
+                }
+            case (4):
+                {
+                    SetFeedbackRole(4);
+                    return "Rollen-Zuweisung erfolgreich! Neue Rolle: Mitarbeiter*in";
+                }
+            case (5):
+                {
+                    SetFeedbackRole(5);
+                    return "Rollen-Zuweisung erfolgreich! Neue Rolle: Administrator*in";
+                }
+            default: return "Code nicht erkannt!";
         }
-        if (code.Equals(CODE_NOVEL_TESTER))
-        {
-            SetFeedbackRole(1);
-            return "Rollen-Zuweisung erfolgreich! Neue Rolle: Novel-Tester*in";
-        }
-        if (code.Equals(CODE_AI_TESTER))
-        {
-            SetFeedbackRole(2);
-            return "Rollen-Zuweisung erfolgreich! Neue Rolle: KI-Tester*in";
-        }
-        if (code.Equals(CODE_TESTER))
-        {
-            SetFeedbackRole(3);
-            return "Rollen-Zuweisung erfolgreich! Neue Rolle: Tester*in";
-        }
-        if (code.Equals(CODE_INTERN))
-        {
-            SetFeedbackRole(4);
-            return "Rollen-Zuweisung erfolgreich! Neue Rolle: Mitarbeiter*in";
-        }
-        if (code.Equals(CODE_SUPER_USER))
-        {
-            SetFeedbackRole(5);
-            return "Rollen-Zuweisung erfolgreich! Neue Rolle: Administrator*in";
-        }
-        return "Code nicht erkannt!";
     }
 }
