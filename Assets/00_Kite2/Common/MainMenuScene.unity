@@ -656,6 +656,7 @@ MonoBehaviour:
   collectDataToggle: {fileID: 36329545890710094}
   infoTextTermsAndConditions: {fileID: 280828001}
   kiteAudioLogo: {fileID: 110977353}
+  getVersionServerCallPrefab: {fileID: 4259928301371937561, guid: 07199a4010e12194fa13e3204ec3e194, type: 3}
 --- !u!4 &110977352
 Transform:
   m_ObjectHideFlags: 0

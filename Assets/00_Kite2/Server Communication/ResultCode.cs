@@ -16,7 +16,8 @@ public enum ResultCode
     SUCCESSFULLY_ADDED_REVIEW_OBSERVER,
     SUCCESSFULLY_DELETED_REVIEW_OBSERVER,
     NO_SUCH_REVIEW_OBSERVER,
-    REVIEW_OBSERVER_ALREADY_EXISTS
+    REVIEW_OBSERVER_ALREADY_EXISTS,
+    SUCCESSFULLY_GOT_VERSION
 }
 
 public class ResultCodeHelper
@@ -41,6 +42,7 @@ public class ResultCodeHelper
             case ResultCode.SUCCESSFULLY_DELETED_REVIEW_OBSERVER: { return 14; }
             case ResultCode.NO_SUCH_REVIEW_OBSERVER: { return 15; }
             case ResultCode.REVIEW_OBSERVER_ALREADY_EXISTS: { return 16; }
+            case ResultCode.SUCCESSFULLY_GOT_VERSION: { return 17; }
             default: { return -1; }
         }
     }
@@ -65,6 +67,7 @@ public class ResultCodeHelper
             case 14: { return ResultCode.SUCCESSFULLY_DELETED_REVIEW_OBSERVER; }
             case 15: { return ResultCode.NO_SUCH_REVIEW_OBSERVER; }
             case 16: { return ResultCode.REVIEW_OBSERVER_ALREADY_EXISTS; }
+            case 17: { return ResultCode.SUCCESSFULLY_GOT_VERSION; }
             default: { return ResultCode.NONE; }
         }
     }

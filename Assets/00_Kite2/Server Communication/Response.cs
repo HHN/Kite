@@ -11,6 +11,7 @@ public class Response
     [SerializeField] private List<NovelReview> novelReviews;
     [SerializeField] private List<AiReview> aiReviews;
     [SerializeField] private List<ReviewObserver> reviewObservers;
+    [SerializeField] private int version;
 
     public void SetResultCode(int resultCode)
     {
@@ -70,5 +71,15 @@ public class Response
     public List<ReviewObserver> GetReviewObserver()
     {
         return this.reviewObservers;
+    }
+
+    public void SetVersion(int version)
+    {
+        this.version = version;
+    }
+
+    public int GetVersion()
+    {
+        return this.version;
     }
 }

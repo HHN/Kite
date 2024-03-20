@@ -6,4 +6,5 @@ public class ConnectionLink
     public static readonly string NOVEL_REVIEW_LINK = BASE_LINK + "novelreview";
     public static readonly string AI_REVIEW_LINK = BASE_LINK + "aireview";
     public static readonly string OBSERVER_LINK = BASE_LINK + "reviewobserver";
+    public static readonly string VERSION_LINK = BASE_LINK + "version";
 }

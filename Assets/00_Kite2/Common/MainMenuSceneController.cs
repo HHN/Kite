@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 
-public class MainMenuSceneController : SceneController
+public class MainMenuSceneController : SceneController, OnSuccessHandler
 { 
     [SerializeField] private Button novelPlayerButton;
     [SerializeField] private Button kiteLogo;
@@ -14,6 +15,8 @@ public class MainMenuSceneController : SceneController
     [SerializeField] private CustomToggle collectDataToggle;
     [SerializeField] private TextMeshProUGUI infoTextTermsAndConditions;
     [SerializeField] private AudioSource kiteAudioLogo;
+    [SerializeField] private GameObject getVersionServerCallPrefab;
+    [SerializeField] private static int COMPATIBLE_SERVER_VERSION_NUMBER = 2;
 
     void Start()
     {
@@ -37,6 +40,16 @@ public class MainMenuSceneController : SceneController
             {
                 AnalyticsServiceHandler.Instance().CollectData();
             }
+
+            if (ApplicationModeManager.Instance().IsOfflineModeActive())
+            {
+                return;
+            }
+            GetVersionServerCall call = Instantiate(getVersionServerCallPrefab).GetComponent<GetVersionServerCall>();
+            call.sceneController = this;
+            call.onSuccessHandler = this;
+            call.SendRequest();
+            DontDestroyOnLoad(call.gameObject);
         }
     }
 
@@ -99,6 +112,18 @@ public class MainMenuSceneController : SceneController
         else
         {
             infoTextTermsAndConditions.gameObject.SetActive(true);
+        }
+    }
+
+    public void OnSuccess(Response response)
+    {
+        if (response == null) 
+        { 
+            return; 
+        }
+        if (response.GetVersion() != COMPATIBLE_SERVER_VERSION_NUMBER)
+        {
+            DisplayInfoMessage(InfoMessages.UPDATE_AVAILABLE);
         }
     }
 }

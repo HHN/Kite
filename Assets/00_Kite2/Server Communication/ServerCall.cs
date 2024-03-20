@@ -31,8 +31,11 @@ public abstract class ServerCall : MonoBehaviour
         UnityWebRequest webRequest = CreateUnityWebRequestObject();
         webRequest.SetRequestHeader("Content-Type", "application/json; charset=utf-8");
         object req = CreateRequestObject();
-        string jsonData = JsonUtility.ToJson(req);
-        webRequest.uploadHandler = new UploadHandlerRaw(new UTF8Encoding(false).GetBytes(jsonData));
+        if (req != null)
+        {
+            string jsonData = JsonUtility.ToJson(req);
+            webRequest.uploadHandler = new UploadHandlerRaw(new UTF8Encoding(false).GetBytes(jsonData));
+        }
         return webRequest;
     }
 
