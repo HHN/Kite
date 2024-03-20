@@ -518,6 +518,10 @@ public class InfoSceneController : SceneController
         if (clickCounter == 10)
         {
             clickCounter = 0;
+
+            if (ApplicationModeManager.Instance().IsOfflineModeActive()) {
+                return;
+            }
             LoadFeedbackRoleManagementScene();
         }
     }

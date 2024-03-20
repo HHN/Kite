@@ -265,6 +265,11 @@ public class PlayNovelSceneController : SceneController
         {
             return;
         }
+        if (ApplicationModeManager.Instance().IsOfflineModeActive())
+        {
+            PlayNextEvent();
+            return;
+        }
         GetCompletionServerCall call = Instantiate(gptServercallPrefab).GetComponent<GetCompletionServerCall>();
         call.sceneController = this;
         GptRequestEventOnSuccessHandler onSuccessHandler = new GptRequestEventOnSuccessHandler();
@@ -428,7 +433,7 @@ public class PlayNovelSceneController : SceneController
         AnalyticsServiceHandler.Instance().SendNovelPlayTime();
 
         int userRole = FeedbackRoleManager.Instance.GetFeedbackRole();
-        if (userRole == 1 || userRole == 3 || userRole == 4 || userRole == 5)
+        if ((userRole == 1 || userRole == 3 || userRole == 4 || userRole == 5) && ApplicationModeManager.Instance().IsOnlineModeActive())
         {
             SceneLoader.LoadReviewNovelScene();
         }

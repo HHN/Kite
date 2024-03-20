@@ -27,6 +27,12 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
         novelTitle.SetText(novelToPlay.title);
         favoriteButton.novel = novelToPlay;
         favoriteButton.Init();
+
+        if (ApplicationModeManager.Instance().IsOfflineModeActive())
+        {
+            feedbackText.SetText("Sie befinden sich im Offline Modus. Es ist kein Feedback verfügbar.");
+            return;
+        }
         if (string.IsNullOrEmpty(novelToPlay.feedback))
         {
             StartWaitingMusic();
@@ -55,7 +61,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
         AnalyticsServiceHandler.Instance().SendWaitedForAIFeedback();
 
         int userRole = FeedbackRoleManager.Instance.GetFeedbackRole();
-        if (userRole == 2 || userRole == 3 || userRole == 4 || userRole == 5)
+        if ((userRole == 2 || userRole == 3 || userRole == 4 || userRole == 5) && ApplicationModeManager.Instance().IsOnlineModeActive())
         {
             SceneLoader.LoadReviewAiScene();
         }

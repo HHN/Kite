@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/00_Kite2/Common/MainMenuScene.unity
     guid: 3f684c50ceffa584480cfc12a815401b
   - enabled: 1
-    path: Assets/00_Kite2/Maker/NovelMakerScene.unity
-    guid: 95fa3dd3a6e4bf744a06c47b1f8c7800
-  - enabled: 1
     path: Assets/00_Kite2/Player/FeedbackScene.unity
     guid: b0393e03ad9357e4cafd694c35f17130
   - enabled: 1
@@ -21,44 +18,14 @@ EditorBuildSettings:
     path: Assets/00_Kite2/Player/NovelExplorerScene.unity
     guid: d7d598b8664f8e543ade9081a5e0ca74
   - enabled: 1
-    path: Assets/00_Kite2/Profile/LogInScene.unity
-    guid: 608ca49a8a7359c4991d58699f489b42
-  - enabled: 1
-    path: Assets/00_Kite2/Profile/RegistrationScene.unity
-    guid: 35eb9a7d06d8cbb489d037638fd78467
-  - enabled: 1
-    path: Assets/00_Kite2/Profile/ResetPasswordScene.unity
-    guid: 669afdb6622dd204896884180571c5f7
-  - enabled: 1
     path: Assets/00_Kite2/Common/SettingsScene.unity
     guid: 421e8bb45387ffd499ffc331477553c8
-  - enabled: 1
-    path: Assets/00_Kite2/Profile/ChangePasswordScene.unity
-    guid: 95d40f7a68c54894a9e2d52ded2ad6ba
   - enabled: 1
     path: Assets/00_Kite2/Player/DetailsViewScene.unity
     guid: e4fa8df32de503049944e76789231299
   - enabled: 1
     path: Assets/00_Kite2/Common/RoomScene.unity
     guid: b3399910d54a05240acd6262d79881a1
-  - enabled: 1
-    path: Assets/00_Kite2/Player/CommentSectionScene.unity
-    guid: f6ffedf9b58eaab42913d8c10f65a97c
-  - enabled: 1
-    path: Assets/00_Kite2/Maker/CharacterExplorerScene.unity
-    guid: 16ba193102f76474e981818a1350851f
-  - enabled: 1
-    path: Assets/00_Kite2/Maker/EnvironmentExplorerScene.unity
-    guid: a9c7ab1405334d2408b602829c6edf1d
-  - enabled: 1
-    path: Assets/00_Kite2/Maker/FinishNovelScene.unity
-    guid: fd9e2790e64aba74fbdd4a92607abafd
-  - enabled: 1
-    path: Assets/00_Kite2/Maker/HelpForNovelMakerScene.unity
-    guid: d7d4602f9e1153449ba3218eb46b3fd5
-  - enabled: 1
-    path: Assets/00_Kite2/Maker/NovelPreviewScene.unity
-    guid: 2c535f4c9d91c204784cc97b631df847
   - enabled: 1
     path: Assets/00_Kite2/Common/InfoScene.unity
     guid: 080ab86213d0b95438a8159fab784de5

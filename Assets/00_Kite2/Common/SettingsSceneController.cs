@@ -11,6 +11,7 @@ public class SettingsSceneController : SceneController
     [SerializeField] private RectTransform sublayout05;
     [SerializeField] private RectTransform sublayout06;
     [SerializeField] private RectTransform sublayout07;
+    [SerializeField] private RectTransform sublayout08;
     [SerializeField] private RectTransform layout;
 
     [SerializeField] private Button aboutKiteButton;
@@ -19,7 +20,6 @@ public class SettingsSceneController : SceneController
     [SerializeField] private Button toggleDataCollectionInfoButton;
     [SerializeField] private Button deleteCollectedDataButton;
     [SerializeField] private Button deleteCollectedDataInfoButton;
-
     [SerializeField] private Button termsOfUseButton;
     [SerializeField] private Button termsOfUseInfoButton;
     [SerializeField] private Button dataPrivacyButton;
@@ -28,6 +28,8 @@ public class SettingsSceneController : SceneController
     [SerializeField] private Button imprintInfoButton;
     [SerializeField] private Button playerPrefsButton;
     [SerializeField] private Button playerPrefsInfoButton;
+    [SerializeField] private Button applicationModeButton;
+    [SerializeField] private Button applicationModeInfoButton;
 
     void Start()
     {
@@ -39,7 +41,6 @@ public class SettingsSceneController : SceneController
         toggleDataCollectionInfoButton.onClick.AddListener(delegate { OnToggleDataCollectionInfoButton(); });
         deleteCollectedDataButton.onClick.AddListener(delegate { OnDeleteCollectedDataButton(); });
         deleteCollectedDataInfoButton.onClick.AddListener(delegate { OnDeleteCollectedDataInfoButton(); });
-
         termsOfUseButton.onClick.AddListener(delegate { OnTermsOfUseButton(); });
         termsOfUseInfoButton.onClick.AddListener(delegate { OnTermsOfUseInfoButton(); });
         dataPrivacyButton.onClick.AddListener(delegate { OnDataPrivacyButton(); });
@@ -48,8 +49,11 @@ public class SettingsSceneController : SceneController
         imprintInfoButton.onClick.AddListener(delegate { OnImprintInfoButton(); });
         playerPrefsButton.onClick.AddListener(delegate { OnPlayerPrefsButton(); });
         playerPrefsInfoButton.onClick.AddListener(delegate { OnPlayerPrefsInfoButton(); });
+        applicationModeButton.onClick.AddListener(delegate { OnApplicationModeButton(); });
+        applicationModeInfoButton.onClick.AddListener(delegate { OnApplicationModeInfoButton(); });
 
         InitializeToggleDataCollectionButton();
+        InitializeApplicationModeButton();
         LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout01);
         LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout02);
         LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout03);
@@ -57,6 +61,7 @@ public class SettingsSceneController : SceneController
         LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout05);
         LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout06);
         LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout07);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout08);
         LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
     }
 
@@ -120,6 +125,18 @@ public class SettingsSceneController : SceneController
         }
     }
 
+    public void InitializeApplicationModeButton()
+    {
+        if (ApplicationModeManager.Instance().IsOfflineModeActive())
+        {
+            applicationModeButton.GetComponentInChildren<TextMeshProUGUI>().text = "ONLINE GEHEN";
+        }
+        else
+        {
+            applicationModeButton.GetComponentInChildren<TextMeshProUGUI>().text = "OFFLINE GEHEN";
+        }
+    }
+
     public void OnTermsOfUseButton()
     {
         SceneLoader.LoadTermsOfUseScene();
@@ -160,5 +177,23 @@ public class SettingsSceneController : SceneController
         DisplayInfoMessage(InfoMessages.EXPLANATION_PLAYERPREFS_BUTTON);
     }
 
+    private void OnApplicationModeButton()
+    {
+        if (ApplicationModeManager.Instance().IsOfflineModeActive())
+        {
+            ApplicationModeManager.Instance().ActivateOnlineMode();
+            DisplayInfoMessage(InfoMessages.SWITCHED_TO_ONLINE_MODE);
+        }
+        else
+        {
+            ApplicationModeManager.Instance().ActivateOfflineMode();
+            DisplayInfoMessage(InfoMessages.SWITCHED_TO_OFFLINE_MODE);
+        }
+        InitializeApplicationModeButton();
+    }
 
+    private void OnApplicationModeInfoButton()
+    {
+        DisplayInfoMessage(InfoMessages.EXPLANATION_APPLICATION_MODE_BUTTON);
+    }
 }

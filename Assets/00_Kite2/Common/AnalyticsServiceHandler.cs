@@ -194,7 +194,11 @@ public class AnalyticsServiceHandler
 
     public void SendMainMenuStatistics()
     {
-        if(hasBeenInitialized)
+        if (ApplicationModeManager.Instance().IsOfflineModeActive())
+        {
+            return;
+        }
+        if (hasBeenInitialized)
         {
             StopStopwatch();
             if(stopwatch != null)
@@ -213,7 +217,11 @@ public class AnalyticsServiceHandler
 
     public void SendNovelExplorerStatistics(long visualNovelID)
     {
-        if(hasBeenInitialized)
+        if (ApplicationModeManager.Instance().IsOfflineModeActive())
+        {
+            return;
+        }
+        if (hasBeenInitialized)
         {
             StopStopwatch();
             if(stopwatch != null)
@@ -233,7 +241,11 @@ public class AnalyticsServiceHandler
 
     public void SendDetailViewStatistics(long visualNovelID)
     {
-        if(hasBeenInitialized)
+        if (ApplicationModeManager.Instance().IsOfflineModeActive())
+        {
+            return;
+        }
+        if (hasBeenInitialized)
         {
             StopStopwatch();
             if(stopwatch != null)
@@ -252,7 +264,11 @@ public class AnalyticsServiceHandler
 
     public void SendPlayNovelFirstConfirmation()
     {
-        if(hasBeenInitialized)
+        if (ApplicationModeManager.Instance().IsOfflineModeActive())
+        {
+            return;
+        }
+        if (hasBeenInitialized)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>()
             {
@@ -266,7 +282,11 @@ public class AnalyticsServiceHandler
 
     public void SendPlayerChoice(int id)
     {
-        if(hasBeenInitialized)
+        if (ApplicationModeManager.Instance().IsOfflineModeActive())
+        {
+            return;
+        }
+        if (hasBeenInitialized)
         {
             // UnityEngine.Debug.Log("Length of choice: " + choiceList.Count);
             // UnityEngine.Debug.Log("ID: " + id);
@@ -293,7 +313,11 @@ public class AnalyticsServiceHandler
 
     public void SendPlayerFeeling(int id)
     {
-        if(hasBeenInitialized)
+        if (ApplicationModeManager.Instance().IsOfflineModeActive())
+        {
+            return;
+        }
+        if (hasBeenInitialized)
         {
             var text = "";
             if(feelingList.Count <= id)
@@ -320,7 +344,11 @@ public class AnalyticsServiceHandler
 
     public void SendNovelPlayTime()
     {
-        if(hasBeenInitialized)
+        if (ApplicationModeManager.Instance().IsOfflineModeActive())
+        {
+            return;
+        }
+        if (hasBeenInitialized)
         {
             StopStopwatch();
             if(stopwatch != null)
@@ -337,7 +365,11 @@ public class AnalyticsServiceHandler
 
     public void SendWaitedForAIFeedback()
     {
-        if(hasBeenInitialized)
+        if (ApplicationModeManager.Instance().IsOfflineModeActive())
+        {
+            return;
+        }
+        if (hasBeenInitialized)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>()
             {
@@ -351,6 +383,10 @@ public class AnalyticsServiceHandler
 
     private void SendSessionStatistics ()
     {
+        if (ApplicationModeManager.Instance().IsOfflineModeActive())
+        {
+            return;
+        }
         if(hasBeenInitialized)
         {
             stopwatchSession.Stop();

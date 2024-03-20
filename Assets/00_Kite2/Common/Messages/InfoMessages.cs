@@ -27,4 +27,7 @@ public class InfoMessages
     public static readonly string EXPLANATION_DATA_PRIVACY_BUTTON = "Mit diesem Button kommst du auf die Datenschutzerklärung unserer App.";
     public static readonly string EXPLANATION_IMPRINT_BUTTON = "Mit diesem Button kommst du auf das Impressum unserer App.";
     public static readonly string EXPLANATION_PLAYERPREFS_BUTTON = "Mit diesem Button kommst du auf die Übersichtsseite deiner Eingaben während der Intro-Novel.";
+    public static readonly string EXPLANATION_APPLICATION_MODE_BUTTON = "Mit diesem Button kannst du zwischen Offline- und Online-Modus hin und her switchen.";
+    public static readonly string SWITCHED_TO_ONLINE_MODE = "Die App befindet sich jetzt im Online Modus.";
+    public static readonly string SWITCHED_TO_OFFLINE_MODE = "Die App befindet sich jetzt im Offline Modus.";
 }

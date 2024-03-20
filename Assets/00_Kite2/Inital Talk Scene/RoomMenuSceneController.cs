@@ -18,12 +18,6 @@ public class RoomMenuSceneController : SceneController
         leftChairButton1.onClick.AddListener(delegate {OnNovelPlayerButton();});
         leftChairButton2.onClick.AddListener(delegate {OnNovelPlayerButton();});
         bookButton.onClick.AddListener(delegate {OnSettingsButton();});
-        OnGuestMode();
-    }
-
-    private void OnGuestMode()
-    {
-        GameManager.Instance().SetApplicationMode(ApplicationModes.GUEST_MODE);
     }
 
     public void OnNovelPlayerButton()
