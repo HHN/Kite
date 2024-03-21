@@ -62,4 +62,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_Kite2/Legal Information/TermsOfUseScene.unity
     guid: cfb79c9d3911af044b874ab3bb6cc553
+  - enabled: 1
+    path: Assets/00_Kite2/Common/PlayerPrefsScene.unity
+    guid: fdfceeac0c3e28b4faabbf23eb644185
   m_configObjects: {}
