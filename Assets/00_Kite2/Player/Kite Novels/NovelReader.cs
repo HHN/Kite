@@ -15,25 +15,48 @@ public class NovelReader
             yield break; // Novels already loaded --> Stop here.
         }
 
+        bool isRunningOnIOS = false;
         string fullPath = Path.Combine(Application.streamingAssetsPath, "allnovels.txt");
-        UnityWebRequest www = UnityWebRequest.Get(fullPath);
-        yield return www.SendWebRequest();
-        
-        if ((www.result == UnityWebRequest.Result.ConnectionError) || (www.result == UnityWebRequest.Result.ProtocolError))
+
+#if UNITY_IOS
+            isRunningOnIOS = true;
+#endif
+
+        if (isRunningOnIOS)
         {
-            KiteNovelManager.Instance().SetAllKiteNovels(new List<VisualNovel>());
-        }
-        else
-        {
-            string jsonString = www.downloadHandler.text;
+            byte[] fileBytes = System.IO.File.ReadAllBytes(fullPath);
+            string jsonString = System.Text.Encoding.UTF8.GetString(fileBytes);
 
             if (string.IsNullOrEmpty(jsonString))
             {
                 KiteNovelManager.Instance().SetAllKiteNovels(new List<VisualNovel>());
             }
-            NovelWrapper novelWrapper = JsonUtility.FromJson<NovelWrapper>(jsonString);
-            KiteNovelManager.Instance().SetAllKiteNovels(novelWrapper.GetAllNovels());
+            else
+            {
+                NovelWrapper novelWrapper = JsonUtility.FromJson<NovelWrapper>(jsonString);
+                KiteNovelManager.Instance().SetAllKiteNovels(novelWrapper.GetAllNovels());
+            }
+        } 
+        else
+        {
+            UnityWebRequest www = UnityWebRequest.Get(fullPath);
+            yield return www.SendWebRequest();
+
+            if ((www.result == UnityWebRequest.Result.ConnectionError) || (www.result == UnityWebRequest.Result.ProtocolError))
+            {
+                KiteNovelManager.Instance().SetAllKiteNovels(new List<VisualNovel>());
+            }
+            else
+            {
+                string jsonString = www.downloadHandler.text;
+
+                if (string.IsNullOrEmpty(jsonString))
+                {
+                    KiteNovelManager.Instance().SetAllKiteNovels(new List<VisualNovel>());
+                }
+                NovelWrapper novelWrapper = JsonUtility.FromJson<NovelWrapper>(jsonString);
+                KiteNovelManager.Instance().SetAllKiteNovels(novelWrapper.GetAllNovels());
+            }
         }
     }
-
 }
