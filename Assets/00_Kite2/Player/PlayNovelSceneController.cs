@@ -303,7 +303,7 @@ public class PlayNovelSceneController : SceneController
             }
 
         } else {
-            novelEvent.eventMethod?.Invoke();
+            //novelEvent.eventMethod?.Invoke();
         }
 
         PlayNextEvent();

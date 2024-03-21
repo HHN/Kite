@@ -30,8 +30,7 @@ public class VisualNovelEvent
     public string gptPrompt;
     public string variablesNameForGptPromp;
     public int gptCompletionHandlerId;
-    [NonSerialized] // Da Action nicht serialisierbar ist und Probleme beim Speichern/ Laden verursachen kann.
-    public Action eventMethod;
+    public int eventMethod;
     public List<(string typ, object value)> parameterList;
     public string methodNameToCall;
 }

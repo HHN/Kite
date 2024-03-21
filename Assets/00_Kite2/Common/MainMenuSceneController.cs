@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEditor.Experimental.GraphView;
 
 public class MainMenuSceneController : SceneController, OnSuccessHandler
 { 
@@ -17,9 +16,12 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     [SerializeField] private AudioSource kiteAudioLogo;
     [SerializeField] private GameObject getVersionServerCallPrefab;
     [SerializeField] private static int COMPATIBLE_SERVER_VERSION_NUMBER = 1;
+    [SerializeField] private GameObject novelLoader;
 
     void Start()
     {
+        DontDestroyOnLoad(novelLoader);
+
         // Analytics 
         var analytics = AnalyticsServiceHandler.Instance();
         analytics.StartAnalytics();

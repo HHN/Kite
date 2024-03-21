@@ -26,7 +26,7 @@ public class NovelExplorerSceneController : SceneController
     public void InitMemory()
     {
         NovelExplorerSceneMemory memory = SceneMemoryManager.Instance().GetMemoryOfNovelExplorerScene();
-        List<VisualNovel> visualNovels = KiteNovelManager.GetAllKiteNovels();
+        List<VisualNovel> visualNovels = KiteNovelManager.Instance().GetAllKiteNovels();
         gallery.RemoveAll();
         gallery.AddNovelsToGallery(visualNovels);
         if (memory == null)
@@ -66,7 +66,7 @@ public class NovelExplorerSceneController : SceneController
     {
         string searchText = searchInputField.text.Trim();
         List<VisualNovel> dataset = new List<VisualNovel>();
-        dataset = KiteNovelManager.GetAllKiteNovels();
+        dataset = KiteNovelManager.Instance().GetAllKiteNovels();
         List<VisualNovel> results = SubStringSearch(dataset, searchText);
         results.AddRange(IdSearch(dataset, searchText));
         gallery.RemoveAll();

@@ -22,7 +22,7 @@ public class SearchFilter : MonoBehaviour
     {
         string searchText = inputField.text.Trim();
         List<VisualNovel> dataset = new List<VisualNovel>();
-        dataset = KiteNovelManager.GetAllKiteNovels();
+        dataset = KiteNovelManager.Instance().GetAllKiteNovels();
 
         List<VisualNovel> results = FuzzySearch(dataset, searchText);
         gallery.RemoveAll();
