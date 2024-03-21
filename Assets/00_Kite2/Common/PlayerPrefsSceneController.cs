@@ -7,34 +7,79 @@ using TMPro;
 public class PlayerPrefsSceneController : MonoBehaviour
 {
 
-    [SerializeField] private GameObject buttonPrefab;
     [SerializeField] private Transform listViewParent;
-    [SerializeField] private GameObject panel;
-    void Start()
+    [SerializeField] private Button playerNameConfirmButton;
+    [SerializeField] private Button companyNameConfirmButton;
+    [SerializeField] private Button elevatorPitchConfirmButton;
+    [SerializeField] private Button preverencesConfirmButton;
+    [SerializeField] private Button playerNameCancleButton;
+    [SerializeField] private Button companyNameCancleButton;
+    [SerializeField] private Button elevatorPitchCancleButton;
+    [SerializeField] private Button preverencesCancleButton;
+    [SerializeField] private TMP_InputField playerNameInputField; 
+    [SerializeField] private TMP_InputField companyNameInputField;
+    [SerializeField] private TMP_InputField elevatorPitchInputField;
+    [SerializeField] private TMP_InputField preverencesInputField;
+    [SerializeField] private TMP_InputField preverencesAnswerInputField;
+
+    private void Start()
     {
         Debug.Log("Start");
         BackStackManager.Instance().Push(SceneNames.PLAYER_PREFS_SCENE);
+        AddButtonListener();
         LoadPlayerPrefs();
-        panel.SetActive(false);
     }
 
-    void LoadPlayerPrefs()
+    private void AddButtonListener()
     {
-        Debug.Log("LoadPlayerPrefs");
-        List<(string key, string value)> prefs = PlayerDataManager.Instance().GetPlayerPrefsList();
-        Debug.Log(prefs.Count);
-
-        foreach (var pref in prefs)
-        {
-            Debug.Log(pref.value);
-            GameObject buttonGO = Instantiate(buttonPrefab, listViewParent);
-            buttonGO.GetComponentInChildren<TextMeshProUGUI>().text = pref.key + ": " + pref.value;
-            buttonGO.GetComponent<Button>().onClick.AddListener(() => OpenEditWindow(pref.key, pref.value));
-        }
+        playerNameConfirmButton.onClick.AddListener(delegate { playerNameConfirmButtonListener(); });
+        companyNameConfirmButton.onClick.AddListener(delegate { companyNameConfirmButtonListener(); });
+        elevatorPitchConfirmButton.onClick.AddListener(delegate { elevatorPitchConfirmButtonListener(); });
+        preverencesConfirmButton.onClick.AddListener(delegate { preverencesConfirmButtonListener(); });
+        playerNameCancleButton.onClick.AddListener(delegate { playerNameCancleButtonListener(); });
+        companyNameCancleButton.onClick.AddListener(delegate { companyNameCancleButtonListener(); });
+        elevatorPitchCancleButton.onClick.AddListener(delegate { elevatorPitchCancleButtonListener(); });
+        preverencesCancleButton.onClick.AddListener(delegate { preverencesCancleButtonListener(); });
     }
 
-    void OpenEditWindow(string key, string value)
+    private void playerNameConfirmButtonListener()
     {
-        // Logik zum Öffnen des Eingabefensters und Initialisieren mit dem aktuellen Wert
+        PlayerDataManager.Instance().SavePlayerData("PlayerName", playerNameInputField.text);
+    }
+    private void companyNameConfirmButtonListener()
+    {
+        PlayerDataManager.Instance().SavePlayerData("CompanyName", companyNameInputField.text);
+    }
+    private void elevatorPitchConfirmButtonListener()
+    {
+        PlayerDataManager.Instance().SavePlayerData("ElevatorPitch", elevatorPitchInputField.text);
+    }
+    private void preverencesConfirmButtonListener()
+    {
+        PlayerDataManager.Instance().SavePlayerData("Preverences", preverencesInputField.text);
+    }
+    private void playerNameCancleButtonListener()
+    {
+        playerNameInputField.text = PlayerDataManager.Instance().ReadPlayerData("PlayerName");
+    }
+    private void companyNameCancleButtonListener()
+    {
+        companyNameInputField.text = PlayerDataManager.Instance().ReadPlayerData("CompanyName");
+    }
+    private void elevatorPitchCancleButtonListener()
+    {
+        elevatorPitchInputField.text = PlayerDataManager.Instance().ReadPlayerData("ElevatorPitch");
+    }
+    private void preverencesCancleButtonListener()
+    {
+        preverencesInputField.text = PlayerDataManager.Instance().ReadPlayerData("Preverences");
+    }
+
+    private void LoadPlayerPrefs()
+    {
+        playerNameInputField.text = PlayerDataManager.Instance().ReadPlayerData("PlayerName");
+        companyNameInputField.text = PlayerDataManager.Instance().ReadPlayerData("CompanyName");
+        elevatorPitchInputField.text = PlayerDataManager.Instance().ReadPlayerData("ElevatorPitch");
+        preverencesInputField.text = PlayerDataManager.Instance().ReadPlayerData("Preverences");
     }
 }
