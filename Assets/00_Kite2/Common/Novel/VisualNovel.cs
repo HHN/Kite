@@ -4,14 +4,16 @@ using System.Collections.Generic;
 [Serializable]
 public class VisualNovel
 {
+    public long id;
+    public string folderName;
     public string title;
     public string description;
     public long image;
     public string nameOfMainCharacter;
     public string feedback;
     public string context;
+    public bool isKite2Novel;
     public List<VisualNovelEvent> novelEvents;
-    public long id;
     public Dictionary<string, string> globalVariables;
 
     public void AddGlobalVariable(string name, string value)

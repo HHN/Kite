@@ -1,0 +1,10 @@
+{
+  "idNumberOfNovel": 1,
+  "titleOfNovel": "Bankgespräch",
+  "descriptionOfNovel": "Du hast eine Einladung zu einem Bankgespräch erhalten, um mehr Informationen über einen Kredit zu erhalten und diesen darauf zu beantragen.",
+  "idNumberOfRepresentationImage": 0,
+  "nameOfMainCharacter": "Lea",
+  "contextForPrompt": "Es ist das Gespräch einer Gründerin, Lea, mit einem Bank-Mitarbeiter. Es geht um einen Kredit. Die Gründerin hat sich gut vorbereitet und hofft Informationen über den Kredit zu erhalten.",
+  "folderName": "Bankgespräch",
+  "isKite2Novel": false
+}

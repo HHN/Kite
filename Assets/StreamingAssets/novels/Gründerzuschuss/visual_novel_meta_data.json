@@ -1,0 +1,10 @@
+{
+  "idNumberOfNovel": 8,
+  "titleOfNovel": "Gründerzuschuss",
+  "descriptionOfNovel": "Du bist heute bei deiner örtlichen Agentur für Arbeit, um einen Gründerzuschuss zu beantragen.",
+  "idNumberOfRepresentationImage": 7,
+  "nameOfMainCharacter": "Lea",
+  "contextForPrompt": "Es ist das Gespräch einer Gründerin, Lea, mit einem Mitarbeiter der Agentur für Arbeit. Es geht um die Beantragung eines Gründerzuschusses. Die Gründerin hat sich gut vorbereitet und hofft den Gründerzuschuss zu bekommen. ",
+  "folderName": "Gründerzuschuss",
+  "isKite2Novel": false
+}

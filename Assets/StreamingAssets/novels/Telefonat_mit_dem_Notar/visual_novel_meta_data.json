@@ -1,0 +1,10 @@
+{
+  "idNumberOfNovel": 4,
+  "titleOfNovel": "Telefonat mit dem Notar",
+  "descriptionOfNovel": "Du triffst dich mit einer Notarin, um einen Termin für deine Gründung auszumachen.",
+  "idNumberOfRepresentationImage": 3,
+  "nameOfMainCharacter": "Lea",
+  "contextForPrompt": "Es ist das Gespräch einer Gründerin, Lea, mit einer Notarin. Es geht um die Eintragung des Unternehmens der Gründerin ins Handelsregister. Die Gründerin hat sich gut vorbereitet und hofft einen Termin für ein Eintragung zu erhalten.",
+  "folderName": "Telefonat_mit_dem_Notar",
+  "isKite2Novel": true
+}
