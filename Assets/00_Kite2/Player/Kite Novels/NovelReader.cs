@@ -16,7 +16,7 @@ public class NovelReader
         }
 
         bool isRunningOnIOS = false;
-        string fullPath = Path.Combine(Application.streamingAssetsPath, "novels", "list_of_novels.json");
+        string fullPath = Path.Combine(Application.streamingAssetsPath, "novels", "list_of_novels.txt");
         List<string> listOfAllNovelPaths = new List<string>();
 
 #if UNITY_IOS
@@ -66,8 +66,8 @@ public class NovelReader
 
         foreach (string pathOfNovel in listOfAllNovelPaths)
         {
-            string fullPathOfNovelMetaData = Path.Combine(Application.streamingAssetsPath, pathOfNovel, "visual_novel_meta_data.json");
-            string fullPathOfNovelEventList = Path.Combine(Application.streamingAssetsPath, pathOfNovel, "visual_novel_event_list.json");
+            string fullPathOfNovelMetaData = Path.Combine(Application.streamingAssetsPath, pathOfNovel, "visual_novel_meta_data.txt");
+            string fullPathOfNovelEventList = Path.Combine(Application.streamingAssetsPath, pathOfNovel, "visual_novel_event_list.txt");
 
             if (isRunningOnIOS)
             {

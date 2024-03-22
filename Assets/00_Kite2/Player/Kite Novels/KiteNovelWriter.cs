@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using Newtonsoft.Json;
 
 public class KiteNovelWriter
 {
@@ -29,16 +30,16 @@ public class KiteNovelWriter
         {
             string subfolderPath = Path.Combine(topLevelPath, folder.novelMetaData.folderName);
             Directory.CreateDirectory(subfolderPath);
-            string metaDataString = JsonUtility.ToJson(folder.novelMetaData);
-            string eventListString = JsonUtility.ToJson(folder.novelEventList);
-            File.WriteAllText(Path.Combine(subfolderPath, "visual_novel_meta_data.json"), metaDataString);
-            File.WriteAllText(Path.Combine(subfolderPath, "visual_novel_event_list.json"), eventListString);
+            string metaDataString = JsonConvert.SerializeObject(folder.novelMetaData, Formatting.Indented);
+            string eventListString = JsonConvert.SerializeObject(folder.novelEventList, Formatting.Indented);
+            File.WriteAllText(Path.Combine(subfolderPath, "visual_novel_meta_data.txt"), metaDataString);
+            File.WriteAllText(Path.Combine(subfolderPath, "visual_novel_event_list.txt"), eventListString);
 
             listOfNovels.Add(Path.Combine("novels", folder.novelMetaData.folderName));
         }
 
         novelList.visualNovels = listOfNovels;
-        string novelListJson = JsonUtility.ToJson(novelList);
-        File.WriteAllText(Path.Combine(Application.dataPath, "output", "list_of_novels.json"), novelListJson);
+        string novelListJson = JsonConvert.SerializeObject(novelList, Formatting.Indented);
+        File.WriteAllText(Path.Combine(Application.dataPath, "output", "list_of_novels.txt"), novelListJson);
     }
 }

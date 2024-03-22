@@ -55,6 +55,15 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
         }
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Debug.Log("Started writing Novels");
+            StartCoroutine(new KiteNovelWriter().SaveNovelsAsFiles());
+        }
+    }
+
     public void OnNovelPlayerButton()
     {
         AnalyticsServiceHandler.Instance().SendMainMenuStatistics();
