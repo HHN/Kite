@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System;
+using System.Collections;
 
 
 public class NovelExplorerSceneController : SceneController
@@ -25,16 +26,34 @@ public class NovelExplorerSceneController : SceneController
 
     public void InitMemory()
     {
+        LoadNovelsWhenReady();
         NovelExplorerSceneMemory memory = SceneMemoryManager.Instance().GetMemoryOfNovelExplorerScene();
-        List<VisualNovel> visualNovels = KiteNovelManager.Instance().GetAllKiteNovels();
-        gallery.RemoveAll();
-        gallery.AddNovelsToGallery(visualNovels);
+
         if (memory == null)
         {
             return;
         }
         searchInputField.text = memory.GetSearchPhrase();
         StartCoroutine(gallery.EnsureCorrectScrollPosition(memory.GetScrollPositionOfKiteGallery()));
+    }
+
+    public void LoadNovelsWhenReady()
+    {
+        gallery.RemoveAllAndDisplayEmpty();
+        List<VisualNovel> visualNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+
+        if (visualNovels == null || visualNovels.Count == 0)
+        {
+            StartCoroutine(LoadNovelsInQuarterSecond());
+            return;
+        }
+        gallery.AddNovelsToGallery(visualNovels);
+    }
+
+    public IEnumerator LoadNovelsInQuarterSecond()
+    {
+        yield return new WaitForSeconds(0.25f);
+        LoadNovelsWhenReady();
     }
 
     private void UpdateButtonImage()

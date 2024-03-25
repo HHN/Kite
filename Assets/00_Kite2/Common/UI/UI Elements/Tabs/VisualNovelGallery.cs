@@ -104,6 +104,18 @@ public class VisualNovelGallery : MonoBehaviour
         novelsInGallery = new List<VisualNovel>();
     }
 
+    public void RemoveAllAndDisplayEmpty()
+    {
+        foreach (Transform child in content.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        currentGalleryRow = Instantiate(galleryRowPrefab, content.transform);
+        currentNoNovelsInfo = Instantiate(placeHolder, currentGalleryRow.transform);
+        currentPlaceHolder = Instantiate(placeHolder, currentGalleryRow.transform);
+        novelsInGallery = new List<VisualNovel>();
+    }
+
     private Sprite FindSmalSpriteById(long id)
     {
         if (smalNovelSprites.Length <= id)
