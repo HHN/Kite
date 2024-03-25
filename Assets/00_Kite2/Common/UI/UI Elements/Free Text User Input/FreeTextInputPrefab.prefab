@@ -457,6 +457,7 @@ MonoBehaviour:
   inputfield: {fileID: 4611147249269663223}
   skipButton: {fileID: 5744927536523432267}
   submitButton: {fileID: 5744927538270794346}
+  controller: {fileID: 0}
 --- !u!1 &3171214583759870849
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,7 +1190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7185633893947003523, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 440
+      value: 542
       objectReference: {fileID: 0}
     - target: {fileID: 7185633893947003523, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1345,7 +1346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7185633893947003523, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 440
+      value: 542
       objectReference: {fileID: 0}
     - target: {fileID: 7185633893947003523, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}
       propertyPath: m_AnchoredPosition.y
