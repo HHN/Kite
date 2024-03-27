@@ -5,9 +5,9 @@ using System.Collections.Generic;
 public class VisualNovelEvent
 {
 
-    public int id;
-    public int nextId;
-    public int onChoice;
+    public string id;
+    public string nextId;
+    public string onChoice;
     public int eventType;
     public bool waitForUserConfirmation;
     public int skinSpriteId;

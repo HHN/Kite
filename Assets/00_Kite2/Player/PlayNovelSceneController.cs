@@ -17,7 +17,7 @@ public class PlayNovelSceneController : SceneController
     [SerializeField] private GameObject novelBackgroundPrefab;
     [SerializeField] private GameObject characterPrefab;
     private bool isWaitingForConfirmation = false;
-    private Dictionary<long, VisualNovelEvent> novelEvents = new Dictionary<long, VisualNovelEvent>();
+    private Dictionary<string, VisualNovelEvent> novelEvents = new Dictionary<string, VisualNovelEvent>();
     private VisualNovelEvent nextEventToPlay;
     [SerializeField] private GameObject backgroundContainer;
     [SerializeField] private GameObject[] backgroundPrefab;
@@ -203,7 +203,7 @@ public class PlayNovelSceneController : SceneController
 
     private void HandlePlaySoundEvent(VisualNovelEvent novelEvent)
     {
-        long nextEventID = novelEvent.nextId;
+        string nextEventID = novelEvent.nextId;
         nextEventToPlay = novelEvents[nextEventID];
 
         if (novelEvent.audioClipToPlay != 0) {
@@ -226,7 +226,7 @@ public class PlayNovelSceneController : SceneController
 
     private void HandlePlayAnimationEvent(VisualNovelEvent novelEvent)
     {
-        long nextEventID = novelEvent.nextId;
+        string nextEventID = novelEvent.nextId;
         nextEventToPlay = novelEvents[nextEventID];
 
         if (novelEvent.animationToPlay != 0)
@@ -237,7 +237,7 @@ public class PlayNovelSceneController : SceneController
 
     private void HandleFreeTextInputEvent(VisualNovelEvent novelEvent)
     {
-        long nextEventID = novelEvent.nextId;
+        string nextEventID = novelEvent.nextId;
         nextEventToPlay = novelEvents[nextEventID];
 
         if (novelEvent.questionForFreeTextInput == string.Empty 
@@ -255,7 +255,7 @@ public class PlayNovelSceneController : SceneController
 
     private void HandleGptPromptEvent(VisualNovelEvent novelEvent)
     {
-        long nextEventID = novelEvent.nextId;
+        string nextEventID = novelEvent.nextId;
         nextEventToPlay = novelEvents[nextEventID];
 
         if (novelEvent.gptPrompt == String.Empty 
@@ -274,7 +274,7 @@ public class PlayNovelSceneController : SceneController
         call.sceneController = this;
         GptRequestEventOnSuccessHandler onSuccessHandler = new GptRequestEventOnSuccessHandler();
         onSuccessHandler.variablesNameForGptPromp = novelEvent.variablesNameForGptPromp;
-        onSuccessHandler.completionHandler = GptCompletionHandlerManager.Instance().GetCompletionHandlerById(novelEvent.id);
+        onSuccessHandler.completionHandler = GptCompletionHandlerManager.Instance().GetCompletionHandlerById(novelEvent.gptCompletionHandlerId);
         call.onSuccessHandler = onSuccessHandler;
         call.prompt = ReplacePlaceholders(novelEvent.gptPrompt, novelToPlay.GetGlobalVariables());
         call.SendRequest();
@@ -285,7 +285,7 @@ public class PlayNovelSceneController : SceneController
 
     private void HandleMethodeCallEvent(VisualNovelEvent novelEvent)
     {
-        long nextEventID = novelEvent.nextId;
+        string nextEventID = novelEvent.nextId;
         nextEventToPlay = novelEvents[nextEventID];
         if(novelEvent.methodNameToCall != null)
         {
@@ -318,7 +318,7 @@ public class PlayNovelSceneController : SceneController
 
     public void HandleBackgrundEvent(VisualNovelEvent novelEvent)
     {
-        long nextEventID = novelEvent.nextId;
+        string nextEventID = novelEvent.nextId;
         nextEventToPlay = novelEvents[nextEventID];
 
         if (currentBackground != null)
@@ -338,7 +338,7 @@ public class PlayNovelSceneController : SceneController
 
     public void HandleCharacterJoinEvent(VisualNovelEvent novelEvent)
     {
-        long nextEventID = novelEvent.nextId;
+        string nextEventID = novelEvent.nextId;
         nextEventToPlay = novelEvents[nextEventID];
 
         GameObject character = Instantiate(characterPrefab, characterContainer.transform);
@@ -360,7 +360,7 @@ public class PlayNovelSceneController : SceneController
 
     public void HandleCharacterExitEvent(VisualNovelEvent novelEvent)
     {
-        long nextEventID = novelEvent.nextId;
+        string nextEventID = novelEvent.nextId;
         nextEventToPlay = novelEvents[nextEventID];
 
         GameObject character = currentCharacters[novelEvent.name];
@@ -379,7 +379,7 @@ public class PlayNovelSceneController : SceneController
     {
         novelEvent.text = ReplacePlaceholders(novelEvent.text, novelToPlay.GetGlobalVariables());
 
-        long nextEventID = novelEvent.nextId;
+        string nextEventID = novelEvent.nextId;
         nextEventToPlay = novelEvents[nextEventID];
 
         if (currentCharacters.ContainsKey(novelEvent.name))
@@ -408,7 +408,7 @@ public class PlayNovelSceneController : SceneController
 
     public void HandleAddChoiceEvent(VisualNovelEvent novelEvent)
     {
-        long nextEventID = novelEvent.nextId;
+        string nextEventID = novelEvent.nextId;
         nextEventToPlay = novelEvents[nextEventID];
 
         conversationContent.AddContent(novelEvent, this);
@@ -460,7 +460,7 @@ public class PlayNovelSceneController : SceneController
         ScrollToBottom();
     }
 
-    public void SetNextEvent(long id)
+    public void SetNextEvent(string id)
     {
         nextEventToPlay = novelEvents[id];
     }

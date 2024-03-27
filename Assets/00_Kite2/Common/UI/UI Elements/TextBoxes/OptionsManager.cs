@@ -10,11 +10,11 @@ public class OptionsManager : MonoBehaviour
     public ChatMessageBox optionD;
     public ChatMessageBox optionE;
 
-    private long idA;
-    private long idB;
-    private long idC;
-    private long idD;
-    private long idE;
+    private string idA;
+    private string idB;
+    private string idC;
+    private string idD;
+    private string idE;
 
     private bool displayAfterSelectionA;
     private bool displayAfterSelectionB;
@@ -140,7 +140,7 @@ public class OptionsManager : MonoBehaviour
         StartCoroutine(AfterSelection("Selected E", stringE, idE, displayAfterSelectionE));
     }
 
-    public IEnumerator AfterSelection(string parameterName, string answer, long nextEventID, bool displayAfterSelection)
+    public IEnumerator AfterSelection(string parameterName, string answer, string nextEventID, bool displayAfterSelection)
     {
         if (selected) { yield break; }
         selected = true;

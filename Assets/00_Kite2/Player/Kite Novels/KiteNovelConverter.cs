@@ -57,4 +57,11 @@ public class KiteNovelConverter
 
         return novels;
     }
+
+    public static KiteNovelEventList ConvertTextDocumentIntoEventList(string tweeFile)
+    {
+        KiteNovelEventList kiteNovelEventList = new KiteNovelEventList();
+
+        return kiteNovelEventList;
+    }
 }
