@@ -152,7 +152,7 @@ public class NovelReader
         }
 
         bool isRunningOnIOS = false;
-        string fullPath = Path.Combine(Application.streamingAssetsPath, "novels", "list_of_novels.txt");
+        string fullPath = Path.Combine(Application.streamingAssetsPath, "novels_twee", "list_of_novels.txt");
         List<string> listOfAllNovelPaths = new List<string>();
 
 #if UNITY_IOS

@@ -3,6 +3,6 @@ using System.Collections.Generic;
 public class TweePassage
 {
     public string label;
-    public string body;
+    public string passage;
     public List<TweeLink> links;
 }

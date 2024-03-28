@@ -1,0 +1,305 @@
+:: StoryTitle
+Büro Gespräch
+
+
+:: StoryData
+{
+  "ifid": "7D3B8EBE-F2AE-4289-9113-2AB527D4F9E6",
+  "format": "Harlowe",
+  "format-version": "3.3.8",
+  "start": "Buero",
+  "zoom": 1
+}
+
+
+:: Buero {"position":"1125,425","size":"100,100"}
+// BEISPIEL: Ort-Wechsel
+{
+  "event_art": "Ort",
+  "ort": "office"
+}
+
+[[Herr Mayer kommt]]
+
+
+:: Ende {"position":"1125,2975","size":"100,100"}
+// BEISPIEL: Beenden der Novel
+{
+  "event_art": "Ende"
+}
+
+
+:: Freitext {"position":"600,1400","size":"100,100"}
+// BEISPIEL: Freitext-Antwort
+{
+  "event_art": "freetext",
+  "frage_fuer_freitext": "Wie heißt du?",
+  "variablen_name_fuer_die_antwort": "Name"
+}
+
+[[Mayer02]]
+
+
+:: GPT {"position":"850,2300","size":"100,100"}
+// BEISPIEL: Prompt an ChatGPT
+{
+  "event_art": "gpt",
+  "prompt_fuer_gpt": "Wie heißt die Hauptstadt von Deutschland?",
+  "variablen_name_fuer_die_antwort": "STADT",
+  "id_nummer_des_completion_handlers": "1"
+}
+
+[[Mayer04]]
+
+
+:: Herr Mayer kommt {"position":"1125,575","size":"100,100"}
+// BEISPIEL: Charakter Kommt
+{
+  "event_art": "kommt",
+  "name_des_charakters": "Mayer",
+  "emotion_des_charakters": "RELAXED"
+}
+
+[[Intro]]
+
+
+:: Intro {"position":"1125,725","size":"100,100"}
+// BEISPIEL: Charakter Spricht
+{
+  "event_art": "spricht",
+  "name_des_charakters": "intro",
+  "dialog_nachricht": "Du hast eine Einladung zu einem Bankgespräch erhalten, um mehr Informationen über einen Kredit zu erhalten und diesen darauf zu beantragen.",
+  "emotion_des_charakters": ""
+}
+
+[[Lea01]]
+
+
+:: Lea01 {"position":"1125,875","size":"100,100"}
+// BEISPIEL: Charakter Spricht
+{
+  "event_art": "spricht",
+  "name_des_charakters": "Lea",
+  "dialog_nachricht": "Hallo. Schönen guten Tag.",
+  "emotion_des_charakters": "RELAXED"
+}
+
+[[Sound]]
+
+
+:: Lea02 {"position":"1150,2175","size":"100,100"}
+// BEISPIEL: Charakter Spricht
+{
+  "event_art": "spricht",
+  "name_des_charakters": "Lea",
+  "dialog_nachricht": "Ja.",
+  "emotion_des_charakters": "RELAXED"
+}
+
+[[GPT]]
+
+
+:: Lea03 {"position":"950,2650","size":"100,100"}
+// BEISPIEL: Charakter Spricht
+{
+  "event_art": "spricht",
+  "name_des_charakters": "Lea",
+  "dialog_nachricht": "Ja, das hat sehr gut geklappt. ich war ja schon mal hier in der Bank. Aber da noch nicht als Geschäftskunde.",
+  "emotion_des_charakters": "RELAXED"
+}
+
+[[Mayer05]]
+
+
+:: Lea04 {"position":"1325,2650","size":"100,100"}
+// BEISPIEL: Charakter Spricht
+{
+  "event_art": "spricht",
+  "name_des_charakters": "Lea",
+  "dialog_nachricht": "Ich habe leider ein wenig gebraucht, um das Büro zu finden.",
+  "emotion_des_charakters": "RELAXED"
+}
+
+[[Mayer05]]
+
+
+:: LeaJa {"position":"850,1275","size":"100,100"}
+// BEISPIEL: Charakter Spricht
+{
+  "event_art": "spricht",
+  "name_des_charakters": "Lea",
+  "dialog_nachricht": "Ja, gerne. Ein Wasser.",
+  "emotion_des_charakters": "RELAXED"
+}
+
+[[Freitext]]
+
+
+:: LeaJa02 {"position":"650,1800","size":"100,100"}
+// BEISPIEL: Charakter Spricht
+{
+  "event_art": "spricht",
+  "name_des_charakters": "Lea",
+  "dialog_nachricht": "Ja, gerne mit.",
+  "emotion_des_charakters": "RELAXED"
+}
+
+[[Wasser Animation]]
+
+
+:: LeaNein {"position":"1350,1325","size":"100,100"}
+// BEISPIEL: Charakter Spricht
+{
+  "event_art": "spricht",
+  "name_des_charakters": "Lea",
+  "dialog_nachricht": "Nein, Danke.",
+  "emotion_des_charakters": "RELAXED"
+}
+
+[[Mayer03]]
+
+
+:: LeaNein02 {"position":"975,1775","size":"100,100"}
+// BEISPIEL: Charakter Spricht
+{
+  "event_art": "spricht",
+  "name_des_charakters": "Lea",
+  "dialog_nachricht": "Bitte ohne Gas.",
+  "emotion_des_charakters": "RELAXED"
+}
+
+[[Wasser Animation]]
+
+
+:: Mayer01 {"position":"1125,1000","size":"100,100"}
+// BEISPIEL: Charakter Spricht
+{
+  "event_art": "spricht",
+  "name_des_charakters": "Mayer",
+  "dialog_nachricht": "Hallo. Guten Tag, setzen Sie sich. Kann ich Ihnen was zu trinken anbieten?.",
+  "emotion_des_charakters": "RELAXED"
+}
+
+[[Option01]]
+
+
+:: Mayer02 {"position":"850,1450","size":"100,100"}
+// BEISPIEL: Charakter Spricht
+{
+  "event_art": "spricht",
+  "name_des_charakters": "Mayer",
+  "dialog_nachricht": "Wasser. Mit Gas, ohne Gas? [Name]",
+  "emotion_des_charakters": "RELAXED"
+}
+
+[[Option02]]
+
+
+:: Mayer03 {"position":"1150,2050","size":"100,100"}
+// BEISPIEL: Charakter Spricht
+{
+  "event_art": "spricht",
+  "name_des_charakters": "Mayer",
+  "dialog_nachricht": "Verdammt kalt heute, nicht?",
+  "emotion_des_charakters": "RELAXED"
+}
+
+[[Lea02]]
+
+
+:: Mayer04 {"position":"1150,2325","size":"100,100"}
+// BEISPIEL: Charakter Spricht
+{
+  "event_art": "spricht",
+  "name_des_charakters": "Mayer",
+  "dialog_nachricht": "Haben Sie gut hergefunden? [STADT]",
+  "emotion_des_charakters": "RELAXED"
+}
+
+[[Option03]]
+
+
+:: Mayer05 {"position":"1125,2850","size":"100,100"}
+// BEISPIEL: Charakter Spricht
+{
+  "event_art": "spricht",
+  "name_des_charakters": "Mayer",
+  "dialog_nachricht": "Alles klar, danke! Bis bald. Tschüss!",
+  "emotion_des_charakters": "RELAXED"
+}
+
+[[Persistent]]
+
+
+:: Option01 {"position":"1125,1150","size":"100,100"}
+// BEISPIEL: Dialog-Optionen
+{
+  "event_art": "Optionen"
+}
+
+[[Ja, gerne. Ein Wasser.->LeaJa]]
+[[Nein, Danke.->LeaNein]]
+
+
+:: Option02 {"position":"825,1625","size":"100,100"}
+// BEISPIEL: Dialog-Optionen
+{
+  "event_art": "Optionen"
+}
+
+
+[[Ja, gerne mit.->LeaJa02]]
+[[Nein, Danke.->LeaNein02]]
+
+
+:: Option03 {"position":"1150,2500","size":"100,100"}
+// BEISPIEL: Dialog-Optionen
+{
+  "event_art": "Optionen"
+}
+
+[[Ja, das hat sehr gut geklappt. ich war ja schon mal hier in der Bank. Aber da noch nicht als Geschäftskunde.->Lea03]]
+[[Ich habe leider ein wenig gebraucht, um das Büro zu finden.->Lea04]]
+
+
+:: Persistent {"position":"925,2925","size":"100,100"}
+// BEISPIEL: Daten persistent speichern
+{
+  "event_art": "save",
+  "key": "PlayerName",
+  "value": "[Name]"
+}
+
+[[Ende]]
+
+
+:: Sound {"position":"775,900","size":"100,100"}
+// BEISPIEL: Sound abspielen
+{
+  "event_art": "Sound",
+  "audio_die_abgespielt_werden_soll": "TELEPHONE_CALL"
+}
+
+[[Mayer01]]
+
+
+:: Test01 {"position":"400,1150","size":"100,100"}
+(text-colour:yellow) Hallo
+
+[[Test02]]
+
+
+:: Test02 {"position":"350,1025","size":"100,100"}
+(text-colour:yellow) [Hallo]
+
+[[Option01]]
+
+
+:: Wasser Animation {"position":"800,1950","size":"100,100"}
+// BEISPIEL: Animation abspielen
+{
+  "event_art": "Animation",
+  "animation_die_abgespielt_werden_soll": "WATER_POURING"
+}
+
+[[Mayer03]]

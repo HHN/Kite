@@ -9,6 +9,5 @@ public class KiteNovelMetaData
     public long idNumberOfRepresentationImage;
     public string nameOfMainCharacter;
     public string contextForPrompt;
-    public string folderName;
     public bool isKite2Novel;
 }

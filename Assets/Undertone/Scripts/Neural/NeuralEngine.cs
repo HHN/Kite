@@ -25,13 +25,10 @@ namespace LeastSquares.Neural
         [MonoPInvokeCallback(typeof(NeuralNative.LogCallback))]
         static void HandleLog(IntPtr message)
         {
-            Debug.Log("Received log from neural: " + Marshal.PtrToStringAnsi(message));
         }
 
         public void Log(object text)
         {
-            if (_verbose)
-                Debug.Log(text);
         }
         
         public NeuralData Inference(NeuralModel model, NeuralData input)

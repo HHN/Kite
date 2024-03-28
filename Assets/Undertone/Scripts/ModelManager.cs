@@ -25,7 +25,6 @@ namespace LeastSquares.Undertone
         /// <returns>A fixed pointer to the heap-allocated memory containing the model data.</returns>
         public static FixedMemoryBlock LoadModelFromResources(string modelName)
         {
-            Debug.Log($"Loading model '{modelName}' from resources");
             var textAsset = Resources.Load<TextAsset>($"{modelName}");
             var files = new List<TextAsset>();
             if (textAsset != null)
@@ -46,7 +45,6 @@ namespace LeastSquares.Undertone
 
                 if (files.Count == 0)
                 {
-                    Debug.LogError($"Failed to find model '{modelName}' in the Resources folder.");
                     return null;
                 }
             }
@@ -113,14 +111,11 @@ namespace LeastSquares.Undertone
             NeuralModel context;
             var path = GetModelDirectory(selectedModel);
             var isEmbedded = false;
-            Debug.Log($"Is embedded: {isEmbedded}");
-            Debug.Log($"Looking for file {path}");
 #if (UNITY_ANDROID || UNITY_WEBGL) && !UNITY_EDITOR
             isEmbedded = true;
 #endif
             if (isEmbedded || !File.Exists(path))
             {
-                Debug.Log("Loading model from memory...");
                 FixedMemoryBlock model = null;
                 if (isEmbedded)
                 {
@@ -141,7 +136,6 @@ namespace LeastSquares.Undertone
             }
             else
             {
-                Debug.Log("Loading model from file...");
                 context = NeuralModel.FromFile(engine, path);
             }
 

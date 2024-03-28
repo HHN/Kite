@@ -24,7 +24,6 @@ public class PlayerPrefsSceneController : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Start");
         BackStackManager.Instance().Push(SceneNames.PLAYER_PREFS_SCENE);
         AddButtonListener();
         LoadPlayerPrefs();

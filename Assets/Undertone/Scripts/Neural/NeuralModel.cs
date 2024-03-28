@@ -51,7 +51,6 @@ namespace LeastSquares.Neural
         public void Dispose()
         {
             NeuralNative.neural_free_model(Data);
-            Debug.Log("Model disposed.");
         }
     }
 }

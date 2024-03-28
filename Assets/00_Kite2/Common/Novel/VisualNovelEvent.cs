@@ -4,7 +4,6 @@ using System.Collections.Generic;
 [Serializable]
 public class VisualNovelEvent
 {
-
     public string id;
     public string nextId;
     public string onChoice;
@@ -30,7 +29,7 @@ public class VisualNovelEvent
     public string gptPrompt;
     public string variablesNameForGptPromp;
     public int gptCompletionHandlerId;
-    public int eventMethod;
-    public List<(string typ, object value)> parameterList;
     public string methodNameToCall;
+    public string key;
+    public string value;
 }

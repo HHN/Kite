@@ -60,9 +60,6 @@ namespace LeastSquares.Undertone
                 yield break;
             }
 
-            Debug.Log(
-                $"Loading model with lang: {SelectedLanguage}, model: {SelectedModel}, translate: {TranslateToEnglish}");
-            
             lock (_lock)
             {
                 _engine = new NeuralEngine();
@@ -81,9 +78,6 @@ namespace LeastSquares.Undertone
 
             
             Loaded = true;
-            
-            if (_model != null)
-                Debug.Log("Loaded model correctly");
         }
         
         private static void OnSegmentCallback(int user_data, SpeechSegment segment)
@@ -267,8 +261,6 @@ namespace LeastSquares.Undertone
         
         private void LogIfVerbose(string text)
         {
-            if(Verbose)
-                Debug.Log(text);
         }
 
         // Called when the game object is destroyed

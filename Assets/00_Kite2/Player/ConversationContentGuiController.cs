@@ -56,11 +56,15 @@ public class ConversationContentGuiController : MonoBehaviour
     private void ShowMessage(VisualNovelEvent novelEvent)
     {
         GameObject newMessageBox;
-        if (PlayManager.Instance().GetVisualNovelToPlay().nameOfMainCharacter == novelEvent.name)
+        if ((!string.IsNullOrEmpty(PlayManager.Instance().GetVisualNovelToPlay().nameOfMainCharacter)) &&
+            (PlayManager.Instance().GetVisualNovelToPlay().nameOfMainCharacter.Contains(novelEvent.name, System.StringComparison.OrdinalIgnoreCase)))
         {
             newMessageBox = Instantiate(blueMessagePrefab, this.transform);
         }
-        else if (novelEvent.name == "Intro" || novelEvent.name == "Outro" || novelEvent.name == "Info" || novelEvent.name == "info")
+        else if ((novelEvent.name != null) && 
+            (novelEvent.name.Contains("Intro", System.StringComparison.OrdinalIgnoreCase) 
+            || novelEvent.name.Contains("Outro", System.StringComparison.OrdinalIgnoreCase) 
+            || novelEvent.name.Contains("Info", System.StringComparison.OrdinalIgnoreCase)))
         {
             newMessageBox = Instantiate(cottaMessagePrefab, this.transform);
         }
@@ -78,7 +82,6 @@ public class ConversationContentGuiController : MonoBehaviour
     {
         GameObject newMessageBox = Instantiate(blueMessagePrefabWithTrigger, this.transform);
         ChatMessageBox messageBox = newMessageBox.GetComponent<ChatMessageBox>();
-        // Debug.Log("Message: " + message);
         messageBox.SetMessage(message);
         guiContent.Add(newMessageBox);
         PromptManager.Instance().AddLineToPrompt(

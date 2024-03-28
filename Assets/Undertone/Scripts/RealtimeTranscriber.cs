@@ -58,7 +58,6 @@ namespace LeastSquares.Undertone
 				sum += Mathf.Abs(samples[i]);
 			}
 			float average = sum / samples.Length;
-			if (average > VADThreshold) Debug.Log("VAvg:"+average.ToString());
 			return average > VADThreshold;
 		}
 
@@ -126,7 +125,6 @@ namespace LeastSquares.Undertone
 		{
 			if (_isListening) return;
 			
-			Debug.Log("Recording started");
 			_isListening = true;
 			_lastSamplePosition = 0;
 			_alreadyTranscribedText = string.Empty;
@@ -139,7 +137,6 @@ namespace LeastSquares.Undertone
 		///</summary>
 		public void StopListening()
 		{
-			Debug.Log("Recording stopped");
 			_isListening = false;
 			Microphone.End(null);
 		}
@@ -174,7 +171,6 @@ namespace LeastSquares.Undertone
 			{
 				_stepSizeInSamples = (int) (((Engine.LastTranscriptionTime + 100) / 1000f) * SpeechEngine.SampleFrequency);
 				RecalculateWindowSize();
-				Debug.Log($"Step size adjusted to {_stepSizeInSamples} samples");
 			}
 		}
 

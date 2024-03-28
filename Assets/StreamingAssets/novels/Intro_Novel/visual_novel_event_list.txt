@@ -178,7 +178,9 @@
       "gptCompletionHandlerId": 0,
       "eventMethod": 0,
       "parameterList": null,
-      "methodNameToCall": "WriteUserInputToFile"
+      "methodNameToCall": "WriteUserInputToFile",
+      "key": "PlayerName",
+      "value" :"[PlayerName]"
     },
     {
       "id": 5,
@@ -598,7 +600,9 @@
       "gptCompletionHandlerId": 0,
       "eventMethod": 0,
       "parameterList": null,
-      "methodNameToCall": "WriteUserInputToFile"
+      "methodNameToCall": "WriteUserInputToFile",
+      "key": "CompanyName",
+      "value" :"[CompanyName]"
     },
     {
       "id": 17,
@@ -778,7 +782,9 @@
       "gptCompletionHandlerId": 0,
       "eventMethod": 0,
       "parameterList": null,
-      "methodNameToCall": "WriteUserInputToFile"
+      "methodNameToCall": "WriteUserInputToFile",
+      "key": "ElevatorPitch",
+      "value" :"[ElevatorPitch]"
     },
     {
       "id": 22,
@@ -868,7 +874,9 @@
       "gptCompletionHandlerId": 0,
       "eventMethod": 0,
       "parameterList": null,
-      "methodNameToCall": "WriteUserInputToFile"
+      "methodNameToCall": "WriteUserInputToFile",
+      "key": "ElevatorPitch",
+      "value" :"[ElevatorPitch]"
     },
     {
       "id": 24,
@@ -1228,7 +1236,9 @@
       "gptCompletionHandlerId": 0,
       "eventMethod": 0,
       "parameterList": null,
-      "methodNameToCall": "WriteUserInputToFile"
+      "methodNameToCall": "WriteUserInputToFile",
+      "key": "Preverences",
+      "value" :"[Preverences]"
     },
     {
       "id": 306,
@@ -1348,7 +1358,9 @@
       "gptCompletionHandlerId": 0,
       "eventMethod": 0,
       "parameterList": null,
-      "methodNameToCall": "WriteUserInputToFile"
+      "methodNameToCall": "WriteUserInputToFile",
+      "key": "GPTAnswerForPreverences",
+      "value" :"[GPTAnswerForPreverences]"
     },
     {
       "id": 309,

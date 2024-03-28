@@ -47,7 +47,6 @@ public class AnalyticsServiceHandler
     public async void StartAnalytics()
     {
         await UnityServices.InitializeAsync();
-        // UnityEngine.Debug.Log("UserID: " + AnalyticsService.Instance.GetAnalyticsUserID());
         StartStopwatch();
         stopwatchSession = new Stopwatch();
         stopwatchSession.Start();
@@ -73,11 +72,9 @@ public class AnalyticsServiceHandler
         if(pauseStatus)
         {
             stopwatchSession.Stop();
-            // UnityEngine.Debug.Log("Stopped session time");
         } else 
         {
             stopwatchSession.Start();
-            // UnityEngine.Debug.Log("Continued session time");
         }
     }
 
@@ -97,7 +94,6 @@ public class AnalyticsServiceHandler
         if(stopwatch != null)
         {
         stopwatch.Stop();
-        // UnityEngine.Debug.Log("Zeit seit dem Start: " + stopwatch.ElapsedMilliseconds);
         return stopwatch.ElapsedMilliseconds; 
         }
         return -1;
@@ -209,7 +205,6 @@ public class AnalyticsServiceHandler
                     {"millisecondsInMainMenu", stopwatch.ElapsedMilliseconds}
                 };
                 AnalyticsService.Instance.CustomData("mainMenuStatistics", parameters);
-                // UnityEngine.Debug.Log("");
             }    
         }
         
@@ -228,12 +223,9 @@ public class AnalyticsServiceHandler
             {
                 Dictionary<string, object> parameters = new Dictionary<string, object>()
                 {
-                    // {"fromWhereIsNovelSelected", fromWhereIsNovelSelected},
-                    // {"novelID", visualNovelID},
                     {"millisecondsInNovelExplorer", stopwatch.ElapsedMilliseconds}
                 };
                 AnalyticsService.Instance.CustomData("novelExplorerStatistics", parameters);
-                // UnityEngine.Debug.Log("fromWhereIsNovelSelected: " + fromWhereIsNovelSelected + "\n" + "novelID: " + visualNovelID);
             }    
         }
         
@@ -257,7 +249,6 @@ public class AnalyticsServiceHandler
                     {"millisecondsInDetailView", stopwatch.ElapsedMilliseconds}
                 };
                 AnalyticsService.Instance.CustomData("detailViewStatistics", parameters);
-                // UnityEngine.Debug.Log("fromWhereIsNovelSelected: " + fromWhereIsNovelSelected + "\n" + "novelID: " + visualNovelID); 
             }    
         }
     }
@@ -275,7 +266,6 @@ public class AnalyticsServiceHandler
                 {"millisecondsBeforePlayNovelFirstConfirmation", stopwatch.ElapsedMilliseconds}
             };
             AnalyticsService.Instance.CustomData("playNovelFirstConfirmation", parameters);
-            // UnityEngine.Debug.Log("millisecondsBeforePlayNovelFirstConfirmation: " + stopwatch.ElapsedMilliseconds);
             //TODO: Add position of confirmation. Maybe user thinks he/she has to click on the symbol...    
         } 
     }
@@ -288,8 +278,6 @@ public class AnalyticsServiceHandler
         }
         if (hasBeenInitialized)
         {
-            // UnityEngine.Debug.Log("Length of choice: " + choiceList.Count);
-            // UnityEngine.Debug.Log("ID: " + id);
             var text = GetTextByChoiceId(id);
             Dictionary<string, object> parameters = new Dictionary<string, object>()
             {
@@ -300,11 +288,6 @@ public class AnalyticsServiceHandler
                 {"lengthOfChoice", text.Length}
             };
             AnalyticsService.Instance.CustomData("playerChoice", parameters);
-            // UnityEngine.Debug.Log("idOfCurrentNovel: " + idOfCurrentNovel + "\n" +
-            // "question: " + lastQuestionForChoice + "\n" + 
-            // "text: " + text + "\n" + 
-            // "indexOfChoice: " + id + "\n" +
-            // "lengthOfChoice: " + text.Length);
             choiceId = -10;  // means no choice selected
             addedAllEntriesToChoiceList = false;
             choiceList.Clear();    
@@ -334,10 +317,6 @@ public class AnalyticsServiceHandler
                 {"chooseableFeelings", GetChoosableFeelings()}
             };
             AnalyticsService.Instance.CustomData("playerFeeling", parameters);
-            //UnityEngine.Debug.Log("idOfCurrentNovel: " + idOfCurrentNovel + "\n" +
-            // "text: " + text + "\n" + 
-            // "indexOfFeeling: " + id + "\n" +
-            // "chooseableFeelings: " + GetChoosableFeelings());
             feelingList.Clear();    
         }
     }
@@ -358,7 +337,6 @@ public class AnalyticsServiceHandler
                     {"playTime", stopwatch.ElapsedMilliseconds}
                 };
                 AnalyticsService.Instance.CustomData("novelPlayTime", parameters);
-                //UnityEngine.Debug.Log("Novel ended after: " + stopwatch.ElapsedMilliseconds);
             }    
         }
     }
@@ -376,7 +354,6 @@ public class AnalyticsServiceHandler
                 {"waitForAIFeedback", waitForAIFeedback}
             };
             AnalyticsService.Instance.CustomData("waitForAIFeedback", parameters);
-            UnityEngine.Debug.Log("Did player waited for ai feedback? Answer: " + waitForAIFeedback);
             waitForAIFeedback = false;    
         }
     }
@@ -395,7 +372,6 @@ public class AnalyticsServiceHandler
                 {"sessionTime", stopwatchSession.ElapsedMilliseconds}
             };
             AnalyticsService.Instance.CustomData("sessionStatistics", parameters);
-            //UnityEngine.Debug.Log("Session ended after: " + stopwatchSession.ElapsedMilliseconds);    
         }
     }
 }

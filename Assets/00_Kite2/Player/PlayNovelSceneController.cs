@@ -6,6 +6,8 @@ using System.Collections;
 using Febucci.UI.Core;
 using System;
 using System.Text.RegularExpressions;
+using System.Linq;
+using UnityEngine.Windows;
 
 public class PlayNovelSceneController : SceneController
 {
@@ -141,7 +143,6 @@ public class PlayNovelSceneController : SceneController
                 }
             case VisualNovelEventType.CHARAKTER_EXIT_EVENT:
                 {
-                    Debug.Log(GetPlayThroughHistoryAsString());
                     HandleCharacterExitEvent(nextEventToPlay);
                     break;
                 }
@@ -196,6 +197,9 @@ public class PlayNovelSceneController : SceneController
                 }
             default:
                 {
+                    string nextEventID = nextEventToPlay.nextId;
+                    nextEventToPlay = novelEvents[nextEventID];
+                    PlayNextEvent();
                     break;
                 }
         }
@@ -280,6 +284,11 @@ public class PlayNovelSceneController : SceneController
         call.SendRequest();
         DontDestroyOnLoad(call.gameObject);
 
+        if (novelEvent.waitForUserConfirmation)
+        {
+            SetWaitingForConfirmation(true);
+            return;
+        }
         PlayNextEvent();
     }
 
@@ -293,7 +302,7 @@ public class PlayNovelSceneController : SceneController
             {
                 case "WriteUserInputToFile":
                 {
-                    WriteUserInputToFile((string)novelEvent.parameterList[0].value, ReplacePlaceholders((string)novelEvent.parameterList[1].value, novelToPlay.GetGlobalVariables()));
+                    WriteUserInputToFile(novelEvent.key, ReplacePlaceholders(novelEvent.value, novelToPlay.GetGlobalVariables()));
                     break;
                 }
                 default:
@@ -302,8 +311,6 @@ public class PlayNovelSceneController : SceneController
                 }
             }
 
-        } else {
-            //novelEvent.eventMethod?.Invoke();
         }
 
         PlayNextEvent();
@@ -312,8 +319,6 @@ public class PlayNovelSceneController : SceneController
     private void WriteUserInputToFile(string key, string content)
     {
         PlayerDataManager.Instance().SavePlayerData(key, content);
-        // Debug.Log(key + ": " + content);
-        // Debug.Log(PlayerDataManager.Instance().ReadPlayerData(key));
     }
 
     public void HandleBackgrundEvent(VisualNovelEvent novelEvent)
@@ -363,9 +368,12 @@ public class PlayNovelSceneController : SceneController
         string nextEventID = novelEvent.nextId;
         nextEventToPlay = novelEvents[nextEventID];
 
-        GameObject character = currentCharacters[novelEvent.name];
-        currentCharacters.Remove(novelEvent.name);
-        Destroy(character);
+        // For the purpose of robust design against spelling mistakes
+        foreach (var character in currentCharacters.Values)
+        {
+            Destroy(character);
+        }
+        currentCharacters.Clear();
 
         if (novelEvent.waitForUserConfirmation)
         {

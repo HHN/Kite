@@ -45,7 +45,7 @@ public class FreeTextInputController : MonoBehaviour
 
         if (novelToPlay == null) 
         {
-            Debug.Log("Unexpected Error!");
+            Debug.LogError("Unexpected Error!");
             return; 
         }
         if (novelToPlay.IsVariableExistend(variablesName))
