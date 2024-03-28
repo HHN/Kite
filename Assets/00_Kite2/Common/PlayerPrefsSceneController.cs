@@ -80,5 +80,6 @@ public class PlayerPrefsSceneController : MonoBehaviour
         companyNameInputField.text = PlayerDataManager.Instance().ReadPlayerData("CompanyName");
         elevatorPitchInputField.text = PlayerDataManager.Instance().ReadPlayerData("ElevatorPitch");
         preverencesInputField.text = PlayerDataManager.Instance().ReadPlayerData("Preverences");
+        preverencesAnswerInputField.text = PlayerDataManager.Instance().ReadPlayerData("GPTAnswerForPreverences");
     }
 }
