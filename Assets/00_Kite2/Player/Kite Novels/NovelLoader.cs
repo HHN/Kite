@@ -5,6 +5,6 @@ public class NovelLoader : MonoBehaviour
 {
     void Start()
     {
-        StartCoroutine(new NovelReader().LoadAllNovelsWithJsonAproach());
+        StartCoroutine(new NovelReader().LoadAllNovelsWithTweeApproach());
     }
 }

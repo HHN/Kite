@@ -80,7 +80,18 @@ public class TweeProcessor
             return labelAndMetadata;
         }
         string label = labelAndMetadata.Substring(0, labelEndIndex).Trim();
+        label = RemoveLeadingBackslashSpace(label);
+        label = label.Trim();
         return label;
+    }
+
+    private static string RemoveLeadingBackslashSpace(string input)
+    {
+        if (input.StartsWith("\\ "))
+        {
+            return input.Substring(2);
+        }
+        return input;
     }
 
     private static List<TweeLink> GetTweeLinksOfPassage(string passage)

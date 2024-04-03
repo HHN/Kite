@@ -1,8 +1,6 @@
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using UnityEngine;
 
 public class KiteNovelConverter
 {
@@ -69,7 +67,7 @@ public class KiteNovelConverter
 
         foreach (TweePassage passage in passages)
         {
-            KiteNovelEventDTO dto = ExtractAndConvertToJson(passage.passage);
+            KiteNovelEventDTO dto = ExtractAndConvertToInformatonList(passage.passage);
 
             if ((dto == null) || (dto.event_art == null))
             {
@@ -324,35 +322,766 @@ public class KiteNovelConverter
         list.Add(novelEvent);
     }
 
-    public static KiteNovelEventDTO ExtractAndConvertToJson(string input)
+    public static KiteNovelEventDTO ExtractAndConvertToInformatonList(string input)
     {
-        Regex jsonRegex = new Regex(@"\{[^{}]*\}");
-        MatchCollection matches = jsonRegex.Matches(input);
+        KiteNovelEventDTO dto = ConvertListOfDataObjectsIntoKiteNovelEventDto(input);
 
-        foreach (Match match in matches)
+        if (dto == null)
         {
-            try
+            return dto;
+        }
+
+        input = RemoveTitleFromPassage(input);
+        input = RemoveTextInDoubleBrackets(input);
+        input = RemoveTextInCurlyBraces(input);
+        input = RemoveTextInParentheses(input);
+        input = RemoveTextInDoubleAngleBrackets(input);
+        input = RemoveTextInDoubleAngleBracketsOtherDirection(input);
+        input = RemoveSquareBrackets(input);
+        input = NormalizeSpaces(input);
+
+        if (dto.event_art.Contains("spricht", StringComparison.OrdinalIgnoreCase))
+        {
+            dto.dialog_nachricht = input;
+        }
+        else if (dto.event_art.Contains("freetext", StringComparison.OrdinalIgnoreCase))
+        {
+            string[] parts = input.Split(new[] { ':' }, 2);
+
+            if (parts.Length == 2)
             {
-                KiteNovelEventDTO dto = JsonConvert.DeserializeObject<KiteNovelEventDTO>(match.Value);
-                
-                if (dto.event_art != null)
-                {
-                    return dto;
-                }
-            }
-            catch
-            {
-                return null;
+                string key = parts[0];
+                string value = parts[1];
+
+                dto.variablen_name_fuer_die_antwort = key.Trim();
+                dto.frage_fuer_freitext = value.Trim();
             }
         }
-        return null;
+        else if (dto.event_art.Contains("gpt", StringComparison.OrdinalIgnoreCase))
+        {
+            string[] parts = input.Split(new[] { ':' }, 2);
+
+            if (parts.Length == 2)
+            {
+                string key = parts[0];
+                string value = parts[1];
+
+                dto.variablen_name_fuer_die_antwort = key.Trim();
+                dto.prompt_fuer_gpt = value.Trim();
+            }
+        }
+        else if (dto.event_art.Contains("save", StringComparison.OrdinalIgnoreCase))
+        {
+            string[] parts = input.Split(new[] { ':' }, 2);
+
+            if (parts.Length == 2)
+            {
+                string key = parts[0];
+                string value = parts[1];
+
+                dto.key = key.Trim();
+                dto.value = value.Trim();
+            }
+        }
+
+        return dto;
+    }
+
+    public static string RemoveTitleFromPassage(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return "";
+        }
+        var titlePattern = @"^\:\: [^\n]+";
+
+        var result = Regex.Replace(input, titlePattern, "").Trim();
+
+        return result;
+    }
+
+    public static string RemoveTextInDoubleBrackets(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return "";
+        }
+        var pattern = @"\[\[(.*?)\]\]";
+
+        var result = Regex.Replace(input, pattern, "");
+
+        return result;
+    }
+
+    public static string RemoveTextInCurlyBraces(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return "";
+        }
+        var pattern = @"\{(.*?)\}";
+
+        var result = Regex.Replace(input, pattern, "");
+
+        return result;
+    }
+    public static string RemoveTextInParentheses(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return "";
+        }
+
+        var pattern = @"\([^\)]*\)";
+
+        var result = Regex.Replace(input, pattern, "");
+
+        return result;
+    }
+
+    public static string RemoveTextInDoubleAngleBrackets(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return "";
+        }
+
+        var pattern = @"\<\<.*?\>\>";
+
+        var result = Regex.Replace(input, pattern, "");
+
+        return result;
+    }
+
+    public static string RemoveTextInDoubleAngleBracketsOtherDirection(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return "";
+        }
+
+        var pattern = @"\>\>.*?\<\<";
+
+        var result = Regex.Replace(input, pattern, "");
+
+        return result;
+    }
+
+    public static string RemoveSquareBrackets(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return "";
+        }
+        var result = input.Replace("[", "").Replace("]", "");
+        return result;
+    }
+
+    public static string NormalizeSpaces(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return "";
+        }
+        var pattern = @"\s+";
+
+        var result = Regex.Replace(input, pattern, " ");
+
+        return result;
+    }
+
+    private static KiteNovelEventDTO ConvertListOfDataObjectsIntoKiteNovelEventDto(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return null;
+        }
+        KiteNovelEventDTO kiteNovelEventDTO = new KiteNovelEventDTO();
+
+        if (input.Contains(">>go_to_office<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "ort",
+                ort = "office"
+            };
+        }
+        if (input.Contains(">>intro_mayer<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = "mayer"
+            };
+        }
+        if (input.Contains(">>intro_mayer_relaxed<<", StringComparison.OrdinalIgnoreCase)) 
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "relaxed"
+            };
+        }
+        if (input.Contains(">>intro_mayer_astonished<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "astonished"
+            };
+        }
+        if (input.Contains(">>intro_mayer_refusing<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "refusing"
+            };
+        }
+        if (input.Contains(">>intro_mayer_smiling<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "smiling"
+            };
+        }
+        if (input.Contains(">>intro_mayer_friendly<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "friendly"
+            };
+        }
+        if (input.Contains(">>intro_mayer_laughing<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "laughing"
+            };
+        }
+        if (input.Contains(">>intro_mayer_critical<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "critical"
+            };
+        }
+        if (input.Contains(">>intro_mayer_decision_no<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "decision_no"
+            };
+        }
+        if (input.Contains(">>intro_mayer_happy<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "happy"
+            };
+        }
+        if (input.Contains(">>intro_mayer_proud<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "proud"
+            };
+        }
+        if (input.Contains(">>intro_mayer_scared<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "scared"
+            };
+        }
+        if (input.Contains(">>intro_mayer_questioning<<", StringComparison.OrdinalIgnoreCase)) 
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "questioning"
+            };
+        }
+        if (input.Contains(">>intro_mayer_defeated<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "defeate"
+            };
+        }
+        if (input.Contains(">>mayer<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = "mayer"
+            };
+        }
+        if (input.Contains(">>mayer_relaxed<<", StringComparison.OrdinalIgnoreCase)) 
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "relaxed"
+            };
+        }
+        if (input.Contains(">>mayer_astonished<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "astonished"
+            };
+        }
+        if (input.Contains(">>mayer_refusing<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "refusing"
+            };
+        }
+        if (input.Contains(">>mayer_smiling<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "smiling"
+            };
+        }
+        if (input.Contains(">>mayer_friendly<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "friendly"
+            };
+        }
+        if (input.Contains(">>mayer_laughing<<", StringComparison.OrdinalIgnoreCase)) 
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "laughing"
+            };
+        }
+        if (input.Contains(">>mayer_critical<<", StringComparison.OrdinalIgnoreCase)) 
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "critical"
+            };
+        }
+        if (input.Contains(">>mayer_decision_no<<", StringComparison.OrdinalIgnoreCase)) 
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "decision_no"
+            };
+        }
+        if (input.Contains(">>mayer_happy<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "happy"
+            };
+        }
+        if (input.Contains(">>mayer_proud<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "proud"
+            };
+        }
+        if (input.Contains(">>mayer_scared<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "scared"
+            };
+        }
+        if (input.Contains(">>mayer_questioning<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "questioning"
+            };
+        }
+        if (input.Contains(">>mayer_defeated<<", StringComparison.OrdinalIgnoreCase)) 
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = "mayer",
+                emotion_des_charakters = "defeated"
+            };
+        }
+        if (input.Contains(">>lea<<", StringComparison.OrdinalIgnoreCase)) 
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = "lea"
+            };
+        }
+        if (input.Contains(">>info<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = "info"
+            };
+        }
+        if (input.Contains(">>sound_water_pouring<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "sound",
+                audio_die_abgespielt_werden_soll = "water_pouring"
+        };
+        }
+        if (input.Contains(">>sound_leave_scene<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "sound",
+                audio_die_abgespielt_werden_soll = "leave_scene"
+            };
+        }
+        if (input.Contains(">>sound_telephone_call<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "sound",
+                audio_die_abgespielt_werden_soll = "telephone_call"
+            };
+        }
+        if (input.Contains(">>sound_paper<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "sound",
+                audio_die_abgespielt_werden_soll = "paper_sound"
+            };
+        }
+        if (input.Contains(">>sound_man_laughing<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "sound",
+                audio_die_abgespielt_werden_soll = "man_laughing"
+            };
+        }
+        if (input.Contains(">>animation_water_pouring<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "animation",
+                animation_die_abgespielt_werden_soll = "water_pouring"
+            };
+        }
+        if (input.Contains(">>options<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "optionen"
+            };
+        }
+        if (input.Contains(">>end<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "end"
+            };
+        }
+        if (input.Contains(">>user_input<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "freetext"
+            };
+        }
+        if (input.Contains(">>ask_gpt_01<<", StringComparison.OrdinalIgnoreCase)) 
+        {
+                return new KiteNovelEventDTO()
+                {
+                    event_art = "gpt",
+                    id_nummer_des_completion_handlers = "DefaultCompletionHandler"
+                };
+            }
+        if (input.Contains(">>save<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "save"
+            };
+        }
+        if (input.Contains(">>bias_finanzierungszugang<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "bias",
+                key = "bias_finanzierungszugang",
+                value = "true"
+            };
+        }
+        if (input.Contains(">>bias_gender_pay_gap<<", StringComparison.OrdinalIgnoreCase)) 
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "bias",
+                key = "bias_gender_pay_gap",
+                value = "true"
+            };
+        }
+        if (input.Contains(">>bias_unterbewertung_weiblich_gefuehrter_unternehmen<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "bias",
+                key = "bias_unterbewertung_weiblich_gefuehrter_unternehmen",
+                value = "true"
+            };
+        }
+        if (input.Contains(">>bias_risk_aversion_bias<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "bias",
+                key = "bias_risk_aversion_bias",
+                value = "true"
+            };
+        }
+        if (input.Contains(">>bias_bestaetigungsverzerrung<<", StringComparison.OrdinalIgnoreCase)) 
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "bias",
+                key = "bias_bestaetigungsverzerrung",
+                value = "true"
+            };
+        }
+        if (input.Contains(">>bias_tokenism<<", StringComparison.OrdinalIgnoreCase)) 
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "bias",
+                key = "bias_tokenism",
+                value = "true"
+            };
+        }
+        if (input.Contains(">>bias_bias_in_der_wahrnehmung_von_fuehrungsfaehigkeiten<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "bias",
+                key = "bias_bias_in_der_wahrnehmung_von_fuehrungsfaehigkeiten",
+                value = "true"
+            };
+        }
+        if (input.Contains(">>bias_rassistische_und_ethnische_biases<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "bias",
+                key = "bias_rassistische_und_ethnische_biases",
+                value = "true"
+            };
+        }
+        if (input.Contains(">>bias_soziooekonomische_biases<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "bias",
+                key = "bias_soziooekonomische_biases",
+                value = "true"
+            };
+        }
+        if (input.Contains(">>bias_alter_und_generationen_biases<<", StringComparison.OrdinalIgnoreCase)) 
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "bias",
+                key = "bias_alter_und_generationen_biases",
+                value = "true"
+            };
+        }
+        if (input.Contains(">>bias_sexualitaetsbezogene_biases<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "bias",
+                key = "bias_sexualitaetsbezogene_biases",
+                value = "true"
+            };
+        }
+        if (input.Contains(">>bias_biases_gegenueber_frauen_mit_behinderungen<<", StringComparison.OrdinalIgnoreCase)) {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "bias",
+                key = "bias_biases_gegenueber_frauen_mit_behinderungen",
+                value = "true"
+            };
+        }
+        if (input.Contains(">>bias_stereotype_gegenueber_frauen_in_nicht_traditionellen_branchen<<", StringComparison.OrdinalIgnoreCase)) {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "bias",
+                key = "bias_stereotype_gegenueber_frauen_in_nicht_traditionellen_branchen",
+                value = "true"
+            };
+        }
+        if (input.Contains(">>bias_kulturelle_und_religioese_biases<<", StringComparison.OrdinalIgnoreCase)) {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "bias",
+                key = "bias_kulturelle_und_religioese_biases",
+                value = "true"
+            };
+        }
+        if (input.Contains(">>bias_maternal_bias<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "bias",
+                key = "bias_maternal_bias",
+                value = "true"
+            };
+        }
+        if (input.Contains(">>bias_biases_gegenueber_frauen_mit_kindern<<", StringComparison.OrdinalIgnoreCase)) {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "bias",
+                key = "bias_biases_gegenueber_frauen_mit_kindern",
+                value = "true"
+            };
+        }
+        if (input.Contains(">>bias_erwartungshaltung_bezueglich_familienplanung<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "bias",
+                key = "bias_erwartungshaltung_bezueglich_familienplanung",
+                value = "true"
+            };
+        }
+        if (input.Contains(">>bias_work_life_balance_erwartungen<<", StringComparison.OrdinalIgnoreCase)) {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "bias",
+                key = "bias_work_life_balance_erwartungen",
+                value = "true"
+            };
+        }
+        if (input.Contains(">>bias_geschlechtsspezifische_stereotypen<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "bias",
+                key = "bias_geschlechtsspezifische_stereotypen",
+                value = "true"
+            };
+        }
+        if (input.Contains(">>bias_tightrope_bias<<", StringComparison.OrdinalIgnoreCase)) {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "bias",
+                key = "bias_tightrope_bias",
+                value = "true"
+            };
+        }
+        if (input.Contains(">>bias_mikroaggressionen<<", StringComparison.OrdinalIgnoreCase)) {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "bias",
+                key = "bias_mikroaggressionen",
+                value = "true"
+            };
+        }
+        if (input.Contains(">>bias_leistungsattributions_bias<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "bias",
+                key = "bias_leistungsattributions_bias",
+                value = "true"
+            };
+        }
+        if (input.Contains(">>bias_bias_in_medien_und_werbung<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "bias",
+                key = "bias_bias_in_medien_und_werbung",
+                value = "true"
+            };
+        }
+        if (input.Contains(">>bias_unbewusste_bias_in_der_kommunikation<<", StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "bias",
+                key = "bias_unbewusste_bias_in_der_kommunikation",
+                value = "true"
+            };
+        }
+        if (input.Contains(">>bias_prove_it_again_bias<<", StringComparison.OrdinalIgnoreCase)) {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "bias",
+                key = "bias_prove_it_again_bias",
+                value = "true"
+            };
+        }
+
+        return kiteNovelEventDTO;
     }
 
     public static int ConvertStringIntoExpressionType(string expressionType)
     {
         if (expressionType == null)
         {
-            return 0;
+            return ExpressionTypeHelper.ToInt(ExpressionType.RELAXED);
         }
         if (expressionType.Contains("REL", StringComparison.OrdinalIgnoreCase))
         {
@@ -406,7 +1135,7 @@ public class KiteNovelConverter
         {
             return ExpressionTypeHelper.ToInt(ExpressionType.DEFEATED);
         }
-        return 0;
+        return ExpressionTypeHelper.ToInt(ExpressionType.RELAXED);
     }
 
     public static int GetCompletionHandlerIdOutOfString(string value)
