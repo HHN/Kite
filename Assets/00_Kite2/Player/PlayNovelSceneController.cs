@@ -61,11 +61,16 @@ public class PlayNovelSceneController : SceneController
 
     [SerializeField] private GameObject freeTextInputPrefab;
 
+    private Coroutine timerCoroutine; // Referenz zur laufenden Coroutine.
+    private float timerForHint = 5.0f;
+
     // Analytics
     private bool firstUserConfirmation = true;
 
     void Start()
     {
+        tapToContinueAnimation.SetActive(false);
+        tapToContinueAnimation.GetComponent<Animator>().enabled = false;
         AnalyticsServiceHandler.Instance().StartStopwatch();
         BackStackManager.Instance().Push(SceneNames.PLAY_NOVEL_SCENE);
 
@@ -505,8 +510,21 @@ public class PlayNovelSceneController : SceneController
 
     public void SetTypeToContinueAnimationActive(bool value)
     {
-        tapToContinueAnimation.SetActive(value);
-        tapToContinueAnimation.GetComponent<Animator>().enabled = value;
+        if (value)
+        {
+            timerCoroutine = StartCoroutine(SetAnimationToTrue()); // Startet die Coroutine neu.
+        } else {
+            StopCoroutine(timerCoroutine);
+            tapToContinueAnimation.SetActive(value);
+            tapToContinueAnimation.GetComponent<Animator>().enabled = value;
+        }
+    }
+
+    IEnumerator SetAnimationToTrue()
+    {
+        yield return new WaitForSeconds(timerForHint); // Wartet für die angegebene Zeit.
+        tapToContinueAnimation.SetActive(true);
+        tapToContinueAnimation.GetComponent<Animator>().enabled = true;
     }
 
     public void SetTyping(bool value)
@@ -515,8 +533,7 @@ public class PlayNovelSceneController : SceneController
 
         if (!isTyping && isWaitingForConfirmation)
         {
-            tapToContinueAnimation.SetActive(true);
-            tapToContinueAnimation.GetComponent<Animator>().enabled = true;
+            SetAnimationToTrue();
             return;
         }
         tapToContinueAnimation.SetActive(false);
