@@ -1,19 +1,23 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class ScrollPassThrough : MonoBehaviour, IScrollHandler
+public class ScrollPassThrough : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [SerializeField] private GameObject scrollView;
+    [SerializeField] private ScrollRect scrollRect;
 
-    public void OnScroll(PointerEventData eventData)
+    public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("TEST");
-        ExecuteEvents.ExecuteHierarchy(scrollView, eventData, ExecuteEvents.scrollHandler);
+        scrollRect.OnBeginDrag(eventData);
     }
 
-    public void OnScroll2()
+    public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("TEST");
-        // ExecuteEvents.ExecuteHierarchy(scrollView, eventData, ExecuteEvents.scrollHandler);
+        scrollRect.OnDrag(eventData);
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        scrollRect.OnEndDrag(eventData);
     }
 }
