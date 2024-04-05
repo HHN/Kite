@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using static UnityEngine.UI.Image;
 
 public class KiteNovelConverter
 {
@@ -365,6 +366,7 @@ public class KiteNovelConverter
         input = RemoveTextInDoubleAngleBrackets(input);
         input = RemoveTextInDoubleAngleBracketsOtherDirection(input);
         input = RemoveSquareBrackets(input);
+        input = RemoveKeyWords(input);
         input = NormalizeSpaces(input);
 
         if (dto.event_art.Contains("spricht", StringComparison.OrdinalIgnoreCase))
@@ -412,6 +414,19 @@ public class KiteNovelConverter
         }
 
         return dto;
+    }
+
+    private static string RemoveKeyWords(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return "";
+        }
+        foreach (string keyWord in NovelKeyWord.ALL_KEY_WORDS)
+        {
+            input = input.Replace(keyWord, "");
+        }
+        return input;
     }
 
     public static string RemoveTitleFromPassage(string input)
