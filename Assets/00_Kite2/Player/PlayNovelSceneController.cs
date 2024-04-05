@@ -6,42 +6,33 @@ using System.Collections;
 using Febucci.UI.Core;
 using System;
 using System.Text.RegularExpressions;
-using System.Linq;
-using UnityEngine.Windows;
 
 public class PlayNovelSceneController : SceneController
 {
-    private VisualNovel novelToPlay;
-    [SerializeField] private Slider progressbar;
+    [SerializeField] private VisualNovel novelToPlay;
     [SerializeField] private TextMeshProUGUI novelName;
     [SerializeField] private ConversationContentGuiController conversationContent;
     [SerializeField] private GameObject novelImageContainer;
     [SerializeField] private GameObject novelBackgroundPrefab;
     [SerializeField] private GameObject characterPrefab;
-    private bool isWaitingForConfirmation = false;
-    private Dictionary<string, VisualNovelEvent> novelEvents = new Dictionary<string, VisualNovelEvent>();
-    private VisualNovelEvent nextEventToPlay;
+    [SerializeField] private bool isWaitingForConfirmation = false;
+    [SerializeField] private Dictionary<string, VisualNovelEvent> novelEvents = new Dictionary<string, VisualNovelEvent>();
+    [SerializeField] private VisualNovelEvent nextEventToPlay;
     [SerializeField] private GameObject backgroundContainer;
     [SerializeField] private GameObject[] backgroundPrefab;
-    private GameObject currentBackground;
+    [SerializeField] private GameObject currentBackground;
     [SerializeField] private GameObject characterContainer;
-    private Dictionary<string, GameObject> currentCharacters = new Dictionary<string, GameObject>();
+    [SerializeField] private Dictionary<string, GameObject> currentCharacters = new Dictionary<string, GameObject>();
     [SerializeField] private ChatScrollView chatScroll;
     [SerializeField] private ImageScrollView imageScroll;
-    public TypewriterCore currentTypeWriter;
-    public SelectOptionContinueConversation selectOptionContinueConversation;
-    public Button confirmArea;
-    public Button confirmArea2;
+    [SerializeField] public TypewriterCore currentTypeWriter;
+    [SerializeField] public SelectOptionContinueConversation selectOptionContinueConversation;
+    [SerializeField] public Button confirmArea;
+    [SerializeField] public Button confirmArea2;
     [SerializeField] private CharacterController currentTalkingCharacterController;
     [SerializeField] private GameObject tapToContinueAnimation;
-    private bool isTyping;
-    private List<string> playThroughHistory = new List<string>();
-
-    [SerializeField] private TextMeshProUGUI scoreText;
-    //[SerializeField] private TextMeshProUGUI moneyText;
-
-    [SerializeField] private GameObject addScoreServerCallPrefab;
-    [SerializeField] private GameObject addMoneyServerCallPrefab;
+    [SerializeField] private bool isTyping;
+    [SerializeField] private List<string> playThroughHistory = new List<string>();
     [SerializeField] private GameObject gptServercallPrefab;
 
     [SerializeField] private AudioSource audioSource;
@@ -49,7 +40,7 @@ public class PlayNovelSceneController : SceneController
 
     [SerializeField] private GameObject[] novelAnimations;
     [SerializeField] private GameObject viewPortOfImages;
-    private GameObject currentAnimation;
+    [SerializeField] private GameObject currentAnimation;
 
     [SerializeField] private GameObject backgroundBlur;
     [SerializeField] private GameObject imageAreaBlur;
@@ -61,11 +52,11 @@ public class PlayNovelSceneController : SceneController
 
     [SerializeField] private GameObject freeTextInputPrefab;
 
-    private Coroutine timerCoroutine; // Referenz zur laufenden Coroutine.
-    private float timerForHint = 5.0f;
+    [SerializeField] private Coroutine timerCoroutine;
+    [SerializeField] private float timerForHint = 5.0f;
 
     // Analytics
-    private bool firstUserConfirmation = true;
+    [SerializeField] private bool firstUserConfirmation = true;
 
     void Start()
     {
@@ -665,7 +656,7 @@ public class PlayNovelSceneController : SceneController
 
     static string ReplacePlaceholders(string text, Dictionary<string, string> replacements)
     {
-        return Regex.Replace(text, @"\[(.*?)\]", match =>
+        return Regex.Replace(text, @"\>(.*?)\<", match =>
         {
             string key = match.Groups[1].Value;
             return replacements.TryGetValue(key, out string replacement) ? replacement : match.Value;

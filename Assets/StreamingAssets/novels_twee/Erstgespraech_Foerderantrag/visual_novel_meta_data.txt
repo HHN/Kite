@@ -1,0 +1,10 @@
+{
+  "idNumberOfNovel": 7,
+  "titleOfNovel": "Erstgespräch Förderantrag",
+  "descriptionOfNovel": "Du wurdest zu einem Termin eingeladen, wo du dich mit einem Berater über deine Geschäftsidee unterhalten kannst und hoffentlich Informationen zu passenden Förderungen erhalten wirst.",
+  "idNumberOfRepresentationImage": 6,
+  "nameOfMainCharacter": "Lea",
+  "contextForPrompt": "Es ist das Gespräch einer Gründerin, Lea, mit einer Förderberatungsstelle. Es geht um eine Gründungsförderung. Die Gründerin hat ein Ideenpapier erstellt und hofft, dass sie Informationen zu passenden Förderungen erhält. ",
+  "folderName": "Erstgespräch_Förderantrag",
+  "isKite2Novel": true
+}

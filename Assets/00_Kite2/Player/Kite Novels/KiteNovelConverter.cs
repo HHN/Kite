@@ -498,7 +498,7 @@ public class KiteNovelConverter
         }
         KiteNovelEventDTO kiteNovelEventDTO = new KiteNovelEventDTO();
 
-        if (input.Contains(">>go_to_office<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.SZENE_BUERO, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -506,7 +506,7 @@ public class KiteNovelConverter
                 ort = "office"
             };
         }
-        if (input.Contains(">>intro_mayer<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.EINTRITT_MAYER, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -514,7 +514,7 @@ public class KiteNovelConverter
                 name_des_charakters = "mayer"
             };
         }
-        if (input.Contains(">>intro_mayer_relaxed<<", StringComparison.OrdinalIgnoreCase)) 
+        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_RELAXED, StringComparison.OrdinalIgnoreCase)) 
         {
             return new KiteNovelEventDTO()
             {
@@ -523,7 +523,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "relaxed"
             };
         }
-        if (input.Contains(">>intro_mayer_astonished<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_ASTONISHED, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -532,7 +532,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "astonished"
             };
         }
-        if (input.Contains(">>intro_mayer_refusing<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_REFUSING, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -541,7 +541,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "refusing"
             };
         }
-        if (input.Contains(">>intro_mayer_smiling<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_SMILING, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -550,7 +550,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "smiling"
             };
         }
-        if (input.Contains(">>intro_mayer_friendly<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_FRIENDLY, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -559,7 +559,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "friendly"
             };
         }
-        if (input.Contains(">>intro_mayer_laughing<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_LAUGHING, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -568,7 +568,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "laughing"
             };
         }
-        if (input.Contains(">>intro_mayer_critical<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_CRITICAL, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -577,7 +577,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "critical"
             };
         }
-        if (input.Contains(">>intro_mayer_decision_no<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_DECISION_NO, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -586,7 +586,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "decision_no"
             };
         }
-        if (input.Contains(">>intro_mayer_happy<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_HAPPY, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -595,7 +595,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "happy"
             };
         }
-        if (input.Contains(">>intro_mayer_proud<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_PROUD, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -604,7 +604,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "proud"
             };
         }
-        if (input.Contains(">>intro_mayer_scared<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_SCARED, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -613,7 +613,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "scared"
             };
         }
-        if (input.Contains(">>intro_mayer_questioning<<", StringComparison.OrdinalIgnoreCase)) 
+        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_QUESTIONING, StringComparison.OrdinalIgnoreCase)) 
         {
             return new KiteNovelEventDTO()
             {
@@ -622,7 +622,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "questioning"
             };
         }
-        if (input.Contains(">>intro_mayer_defeated<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_DEFEATED, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -631,7 +631,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "defeate"
             };
         }
-        if (input.Contains(">>mayer<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -639,7 +639,7 @@ public class KiteNovelConverter
                 name_des_charakters = "mayer"
             };
         }
-        if (input.Contains(">>mayer_relaxed<<", StringComparison.OrdinalIgnoreCase)) 
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_RELAXED, StringComparison.OrdinalIgnoreCase)) 
         {
             return new KiteNovelEventDTO()
             {
@@ -648,7 +648,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "relaxed"
             };
         }
-        if (input.Contains(">>mayer_astonished<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_ASTONISHED, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -657,7 +657,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "astonished"
             };
         }
-        if (input.Contains(">>mayer_refusing<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_REFUSING, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -666,7 +666,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "refusing"
             };
         }
-        if (input.Contains(">>mayer_smiling<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_SMILING, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -675,7 +675,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "smiling"
             };
         }
-        if (input.Contains(">>mayer_friendly<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_FRIENDLY, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -684,7 +684,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "friendly"
             };
         }
-        if (input.Contains(">>mayer_laughing<<", StringComparison.OrdinalIgnoreCase)) 
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_LAUGHING, StringComparison.OrdinalIgnoreCase)) 
         {
             return new KiteNovelEventDTO()
             {
@@ -693,7 +693,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "laughing"
             };
         }
-        if (input.Contains(">>mayer_critical<<", StringComparison.OrdinalIgnoreCase)) 
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_CRITICAL, StringComparison.OrdinalIgnoreCase)) 
         {
             return new KiteNovelEventDTO()
             {
@@ -702,7 +702,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "critical"
             };
         }
-        if (input.Contains(">>mayer_decision_no<<", StringComparison.OrdinalIgnoreCase)) 
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_DECISION_NO, StringComparison.OrdinalIgnoreCase)) 
         {
             return new KiteNovelEventDTO()
             {
@@ -711,7 +711,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "decision_no"
             };
         }
-        if (input.Contains(">>mayer_happy<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_HAPPY, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -720,7 +720,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "happy"
             };
         }
-        if (input.Contains(">>mayer_proud<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_PROUD, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -729,7 +729,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "proud"
             };
         }
-        if (input.Contains(">>mayer_scared<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_SCARED, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -738,7 +738,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "scared"
             };
         }
-        if (input.Contains(">>mayer_questioning<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_QUESTIONING, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -747,7 +747,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "questioning"
             };
         }
-        if (input.Contains(">>mayer_defeated<<", StringComparison.OrdinalIgnoreCase)) 
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_DEFEATED, StringComparison.OrdinalIgnoreCase)) 
         {
             return new KiteNovelEventDTO()
             {
@@ -756,7 +756,7 @@ public class KiteNovelConverter
                 emotion_des_charakters = "defeated"
             };
         }
-        if (input.Contains(">>lea<<", StringComparison.OrdinalIgnoreCase)) 
+        if (input.Contains(NovelKeyWord.SPIELER_CHARAKTER_SPRICHT, StringComparison.OrdinalIgnoreCase)) 
         {
             return new KiteNovelEventDTO()
             {
@@ -764,7 +764,7 @@ public class KiteNovelConverter
                 name_des_charakters = "lea"
             };
         }
-        if (input.Contains(">>info<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.INFO_NACHRICHT_WIRD_ANGEZEIGT, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -772,7 +772,7 @@ public class KiteNovelConverter
                 name_des_charakters = "info"
             };
         }
-        if (input.Contains(">>sound_water_pouring<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.SOUND_ABSPIELEN_WATER_POURING, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -780,7 +780,7 @@ public class KiteNovelConverter
                 audio_die_abgespielt_werden_soll = "water_pouring"
         };
         }
-        if (input.Contains(">>sound_leave_scene<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.SOUND_ABSPIELEN_LEAVE_SCENE, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -788,7 +788,7 @@ public class KiteNovelConverter
                 audio_die_abgespielt_werden_soll = "leave_scene"
             };
         }
-        if (input.Contains(">>sound_telephone_call<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.SOUND_ABSPIELEN_TELEPHONE_CALL, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -796,7 +796,7 @@ public class KiteNovelConverter
                 audio_die_abgespielt_werden_soll = "telephone_call"
             };
         }
-        if (input.Contains(">>sound_paper<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.SOUND_ABSPIELEN_PAPER_SOUND, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -804,7 +804,7 @@ public class KiteNovelConverter
                 audio_die_abgespielt_werden_soll = "paper_sound"
             };
         }
-        if (input.Contains(">>sound_man_laughing<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.SOUND_ABSPIELEN_MAN_LAUGHING, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -812,7 +812,7 @@ public class KiteNovelConverter
                 audio_die_abgespielt_werden_soll = "man_laughing"
             };
         }
-        if (input.Contains(">>animation_water_pouring<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.ANIMATION_ABSPIELEN_WATER_POURING, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -820,28 +820,28 @@ public class KiteNovelConverter
                 animation_die_abgespielt_werden_soll = "water_pouring"
             };
         }
-        if (input.Contains(">>options<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.DIALOG_OPTIONEN, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "optionen"
             };
         }
-        if (input.Contains(">>end<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.ENDE, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "end"
             };
         }
-        if (input.Contains(">>user_input<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.FREITEXT_EINGABE, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "freetext"
             };
         }
-        if (input.Contains(">>ask_gpt_01<<", StringComparison.OrdinalIgnoreCase)) 
+        if (input.Contains(NovelKeyWord.GPT_PROMPT_MIT_DEFAULT_COMPLETION_HANDLER, StringComparison.OrdinalIgnoreCase)) 
         {
                 return new KiteNovelEventDTO()
                 {
@@ -849,14 +849,14 @@ public class KiteNovelConverter
                     id_nummer_des_completion_handlers = "DefaultCompletionHandler"
                 };
             }
-        if (input.Contains(">>save<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.PERSISTENTES_SPEICHERN, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "save"
             };
         }
-        if (input.Contains(">>bias_finanzierungszugang<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_FINANZIERUNGSZUGANG, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -865,7 +865,7 @@ public class KiteNovelConverter
                 value = "true"
             };
         }
-        if (input.Contains(">>bias_gender_pay_gap<<", StringComparison.OrdinalIgnoreCase)) 
+        if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_GENDER_PAY_GAP, StringComparison.OrdinalIgnoreCase)) 
         {
             return new KiteNovelEventDTO()
             {
@@ -874,7 +874,7 @@ public class KiteNovelConverter
                 value = "true"
             };
         }
-        if (input.Contains(">>bias_unterbewertung_weiblich_gefuehrter_unternehmen<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_UNTERBEWERTUNG_WEIBLICH_GEFUEHRTER_UNTERNEHMEN, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -883,7 +883,7 @@ public class KiteNovelConverter
                 value = "true"
             };
         }
-        if (input.Contains(">>bias_risk_aversion_bias<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_RISK_AVERSION_BIAS, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -892,7 +892,7 @@ public class KiteNovelConverter
                 value = "true"
             };
         }
-        if (input.Contains(">>bias_bestaetigungsverzerrung<<", StringComparison.OrdinalIgnoreCase)) 
+        if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_BESTAETIGUNGSVERZERRUNG, StringComparison.OrdinalIgnoreCase)) 
         {
             return new KiteNovelEventDTO()
             {
@@ -901,7 +901,7 @@ public class KiteNovelConverter
                 value = "true"
             };
         }
-        if (input.Contains(">>bias_tokenism<<", StringComparison.OrdinalIgnoreCase)) 
+        if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_TOKENISM, StringComparison.OrdinalIgnoreCase)) 
         {
             return new KiteNovelEventDTO()
             {
@@ -910,7 +910,7 @@ public class KiteNovelConverter
                 value = "true"
             };
         }
-        if (input.Contains(">>bias_bias_in_der_wahrnehmung_von_fuehrungsfaehigkeiten<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_BIAS_IN_DER_WAHRNEHMUNG_VON_FUEHRUNGSFAEHIGKEITEN, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -919,7 +919,7 @@ public class KiteNovelConverter
                 value = "true"
             };
         }
-        if (input.Contains(">>bias_rassistische_und_ethnische_biases<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_RASSISTISCHE_UND_ETHNISCHE_BIASES, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -928,7 +928,7 @@ public class KiteNovelConverter
                 value = "true"
             };
         }
-        if (input.Contains(">>bias_soziooekonomische_biases<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_SOZIOOEKONOMISCHE_BIASES, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -937,7 +937,7 @@ public class KiteNovelConverter
                 value = "true"
             };
         }
-        if (input.Contains(">>bias_alter_und_generationen_biases<<", StringComparison.OrdinalIgnoreCase)) 
+        if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_ALTER_UND_GENERATIONEN_BIASES, StringComparison.OrdinalIgnoreCase)) 
         {
             return new KiteNovelEventDTO()
             {
@@ -946,7 +946,7 @@ public class KiteNovelConverter
                 value = "true"
             };
         }
-        if (input.Contains(">>bias_sexualitaetsbezogene_biases<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_SEXUALITAETSBEZOGENE_BIASES, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -955,7 +955,7 @@ public class KiteNovelConverter
                 value = "true"
             };
         }
-        if (input.Contains(">>bias_biases_gegenueber_frauen_mit_behinderungen<<", StringComparison.OrdinalIgnoreCase)) {
+        if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_BIASES_GEGENUEBER_FRAUEN_MIT_BEHINDERUNGEN, StringComparison.OrdinalIgnoreCase)) {
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
@@ -963,7 +963,7 @@ public class KiteNovelConverter
                 value = "true"
             };
         }
-        if (input.Contains(">>bias_stereotype_gegenueber_frauen_in_nicht_traditionellen_branchen<<", StringComparison.OrdinalIgnoreCase)) {
+        if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_STEREOTYPE_GEGENUEBER_FRAUEN_IN_NICHT_TRADITIONELLEN_BRANCHEN, StringComparison.OrdinalIgnoreCase)) {
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
@@ -971,7 +971,7 @@ public class KiteNovelConverter
                 value = "true"
             };
         }
-        if (input.Contains(">>bias_kulturelle_und_religioese_biases<<", StringComparison.OrdinalIgnoreCase)) {
+        if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_KULTURELLE_UND_RELIGIOESE_BIASES, StringComparison.OrdinalIgnoreCase)) {
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
@@ -979,7 +979,7 @@ public class KiteNovelConverter
                 value = "true"
             };
         }
-        if (input.Contains(">>bias_maternal_bias<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_MATERNAL_BIAS, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -988,7 +988,7 @@ public class KiteNovelConverter
                 value = "true"
             };
         }
-        if (input.Contains(">>bias_biases_gegenueber_frauen_mit_kindern<<", StringComparison.OrdinalIgnoreCase)) {
+        if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_BIASES_GEGENUEBER_FRAUEN_MIT_KINDERN, StringComparison.OrdinalIgnoreCase)) {
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
@@ -996,7 +996,7 @@ public class KiteNovelConverter
                 value = "true"
             };
         }
-        if (input.Contains(">>bias_erwartungshaltung_bezueglich_familienplanung<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_ERWARTUNGSHALTUNG_BEZUEGLICH_FAMILIENPLANUNG, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -1005,7 +1005,7 @@ public class KiteNovelConverter
                 value = "true"
             };
         }
-        if (input.Contains(">>bias_work_life_balance_erwartungen<<", StringComparison.OrdinalIgnoreCase)) {
+        if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_WORK_LIFE_BALANCE_ERWARTUNGEN, StringComparison.OrdinalIgnoreCase)) {
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
@@ -1013,7 +1013,7 @@ public class KiteNovelConverter
                 value = "true"
             };
         }
-        if (input.Contains(">>bias_geschlechtsspezifische_stereotypen<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_GESCHLECHTSSPEZIFISCHE_STEREOTYPEN, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -1022,7 +1022,7 @@ public class KiteNovelConverter
                 value = "true"
             };
         }
-        if (input.Contains(">>bias_tightrope_bias<<", StringComparison.OrdinalIgnoreCase)) {
+        if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_TIGHTROPE_BIAS, StringComparison.OrdinalIgnoreCase)) {
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
@@ -1030,7 +1030,7 @@ public class KiteNovelConverter
                 value = "true"
             };
         }
-        if (input.Contains(">>bias_mikroaggressionen<<", StringComparison.OrdinalIgnoreCase)) {
+        if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_MIKROAGGRESSIONEN, StringComparison.OrdinalIgnoreCase)) {
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
@@ -1038,7 +1038,7 @@ public class KiteNovelConverter
                 value = "true"
             };
         }
-        if (input.Contains(">>bias_leistungsattributions_bias<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_LEISTUNGSATTRIBUTIONS_BIAS, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -1047,7 +1047,7 @@ public class KiteNovelConverter
                 value = "true"
             };
         }
-        if (input.Contains(">>bias_bias_in_medien_und_werbung<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_BIAS_IN_MEDIEN_UND_WERBUNG, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -1056,7 +1056,7 @@ public class KiteNovelConverter
                 value = "true"
             };
         }
-        if (input.Contains(">>bias_unbewusste_bias_in_der_kommunikation<<", StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_UNBEWUSSTE_BIAS_IN_DER_KOMMUNIKATION, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
@@ -1065,13 +1065,18 @@ public class KiteNovelConverter
                 value = "true"
             };
         }
-        if (input.Contains(">>bias_prove_it_again_bias<<", StringComparison.OrdinalIgnoreCase)) {
+        if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_PROVE_IT_AGAIN_BIAS, StringComparison.OrdinalIgnoreCase)) {
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
                 key = "bias_prove_it_again_bias",
                 value = "true"
             };
+        }
+
+        if (kiteNovelEventDTO.event_art == null)
+        {
+            return null;
         }
 
         return kiteNovelEventDTO;
