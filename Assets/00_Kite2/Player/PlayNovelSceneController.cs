@@ -64,8 +64,8 @@ public class PlayNovelSceneController : SceneController
         tapToContinueAnimation.GetComponent<Animator>().enabled = false;
         AnalyticsServiceHandler.Instance().StartStopwatch();
         BackStackManager.Instance().Push(SceneNames.PLAY_NOVEL_SCENE);
-
         novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
+        NovelBiasManager.Clear();
         Initialize();
     }
 
@@ -191,6 +191,11 @@ public class PlayNovelSceneController : SceneController
                     HandleMethodeCallEvent(nextEventToPlay);
                     break;
                 }
+            case VisualNovelEventType.MARK_BIAS:
+                {
+                    HandleMarkBiasEvent(nextEventToPlay);
+                    break;
+                }
             default:
                 {
                     string nextEventID = nextEventToPlay.nextId;
@@ -309,6 +314,14 @@ public class PlayNovelSceneController : SceneController
 
         }
 
+        PlayNextEvent();
+    }
+
+    private void HandleMarkBiasEvent(VisualNovelEvent novelEvent)
+    {
+        string nextEventID = novelEvent.nextId;
+        nextEventToPlay = novelEvents[nextEventID];
+        NovelBiasManager.Instance().MarkBiasAsRelevant(novelEvent.relevantBias);
         PlayNextEvent();
     }
 

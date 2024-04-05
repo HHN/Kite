@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 [Serializable]
 public class VisualNovelEvent
@@ -32,4 +31,5 @@ public class VisualNovelEvent
     public string methodNameToCall;
     public string key;
     public string value;
+    public string relevantBias;
 }

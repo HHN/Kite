@@ -16,4 +16,5 @@ public class KiteNovelEventDTO
     public string id_nummer_des_completion_handlers;
     public string key;
     public string value;
+    public string relevantBias;
 }

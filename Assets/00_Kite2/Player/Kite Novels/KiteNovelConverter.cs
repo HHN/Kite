@@ -127,6 +127,11 @@ public class KiteNovelConverter
                 HandleEndNovelEvent(passage, dto, kiteNovelEventList.novelEvents);
                 continue;
             }
+            if (dto.event_art.Contains("bia", StringComparison.OrdinalIgnoreCase))
+            {
+                HandleBiasEvent(passage, dto, kiteNovelEventList.novelEvents);
+                continue;
+            }
         }
 
         return kiteNovelEventList;
@@ -178,6 +183,21 @@ public class KiteNovelConverter
 
         novelEvent.name = GetNameOutOfString(dto.name_des_charakters);
         novelEvent.expressionType = ConvertStringIntoExpressionType(dto.emotion_des_charakters);
+        list.Add(novelEvent);
+    }
+
+    public static void HandleBiasEvent(TweePassage twee, KiteNovelEventDTO dto, List<VisualNovelEvent> list)
+    {
+        VisualNovelEvent novelEvent = new VisualNovelEvent();
+        novelEvent.id = twee.label;
+        novelEvent.eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.MARK_BIAS);
+
+        if (twee.links != null)
+        {
+            novelEvent.nextId = twee.links[0].target;
+        }
+
+        novelEvent.relevantBias = dto.relevantBias;
         list.Add(novelEvent);
     }
 
@@ -861,8 +881,7 @@ public class KiteNovelConverter
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
-                key = "bias_finanzierungszugang",
-                value = "true"
+                relevantBias = BiasName.ACCESS_TO_FUNDING
             };
         }
         if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_GENDER_PAY_GAP, StringComparison.OrdinalIgnoreCase)) 
@@ -870,8 +889,7 @@ public class KiteNovelConverter
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
-                key = "bias_gender_pay_gap",
-                value = "true"
+                relevantBias = BiasName.GENDER_PAY_GAP
             };
         }
         if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_UNTERBEWERTUNG_WEIBLICH_GEFUEHRTER_UNTERNEHMEN, StringComparison.OrdinalIgnoreCase))
@@ -879,8 +897,7 @@ public class KiteNovelConverter
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
-                key = "bias_unterbewertung_weiblich_gefuehrter_unternehmen",
-                value = "true"
+                relevantBias = BiasName.UNDERVALUATION_OF_WOMEN_LED_BUSINESSES
             };
         }
         if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_RISK_AVERSION_BIAS, StringComparison.OrdinalIgnoreCase))
@@ -888,8 +905,7 @@ public class KiteNovelConverter
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
-                key = "bias_risk_aversion_bias",
-                value = "true"
+                relevantBias = BiasName.RISK_AVERSION_BIAS
             };
         }
         if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_BESTAETIGUNGSVERZERRUNG, StringComparison.OrdinalIgnoreCase)) 
@@ -897,8 +913,7 @@ public class KiteNovelConverter
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
-                key = "bias_bestaetigungsverzerrung",
-                value = "true"
+                relevantBias = BiasName.CONFIRMATION_BIAS
             };
         }
         if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_TOKENISM, StringComparison.OrdinalIgnoreCase)) 
@@ -906,8 +921,7 @@ public class KiteNovelConverter
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
-                key = "bias_tokenism",
-                value = "true"
+                relevantBias = BiasName.TOKENISM
             };
         }
         if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_BIAS_IN_DER_WAHRNEHMUNG_VON_FUEHRUNGSFAEHIGKEITEN, StringComparison.OrdinalIgnoreCase))
@@ -915,8 +929,7 @@ public class KiteNovelConverter
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
-                key = "bias_bias_in_der_wahrnehmung_von_fuehrungsfaehigkeiten",
-                value = "true"
+                relevantBias = BiasName.IN_PERCEPTION_OF_LEADERSHIP_ABILITIES
             };
         }
         if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_RASSISTISCHE_UND_ETHNISCHE_BIASES, StringComparison.OrdinalIgnoreCase))
@@ -924,8 +937,7 @@ public class KiteNovelConverter
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
-                key = "bias_rassistische_und_ethnische_biases",
-                value = "true"
+                relevantBias = BiasName.RACIST_AND_ETHNIC_BIASES
             };
         }
         if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_SOZIOOEKONOMISCHE_BIASES, StringComparison.OrdinalIgnoreCase))
@@ -933,8 +945,7 @@ public class KiteNovelConverter
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
-                key = "bias_soziooekonomische_biases",
-                value = "true"
+                relevantBias = BiasName.SOCIOECONOMIC_BIASES
             };
         }
         if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_ALTER_UND_GENERATIONEN_BIASES, StringComparison.OrdinalIgnoreCase)) 
@@ -942,8 +953,7 @@ public class KiteNovelConverter
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
-                key = "bias_alter_und_generationen_biases",
-                value = "true"
+                relevantBias = BiasName.AGE_AND_GENERATIONAL_BIASES
             };
         }
         if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_SEXUALITAETSBEZOGENE_BIASES, StringComparison.OrdinalIgnoreCase))
@@ -951,32 +961,28 @@ public class KiteNovelConverter
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
-                key = "bias_sexualitaetsbezogene_biases",
-                value = "true"
+                relevantBias = BiasName.SEXUALITY_RELATED_BIASES
             };
         }
         if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_BIASES_GEGENUEBER_FRAUEN_MIT_BEHINDERUNGEN, StringComparison.OrdinalIgnoreCase)) {
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
-                key = "bias_biases_gegenueber_frauen_mit_behinderungen",
-                value = "true"
+                relevantBias = BiasName.AGAINST_WOMEN_WITH_DISABILITIES
             };
         }
         if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_STEREOTYPE_GEGENUEBER_FRAUEN_IN_NICHT_TRADITIONELLEN_BRANCHEN, StringComparison.OrdinalIgnoreCase)) {
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
-                key = "bias_stereotype_gegenueber_frauen_in_nicht_traditionellen_branchen",
-                value = "true"
+                relevantBias = BiasName.STEREOTYPES_AGAINST_WOMEN_IN_NON_TRADITIONAL_INDUSTRIES
             };
         }
         if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_KULTURELLE_UND_RELIGIOESE_BIASES, StringComparison.OrdinalIgnoreCase)) {
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
-                key = "bias_kulturelle_und_religioese_biases",
-                value = "true"
+                relevantBias = BiasName.CULTURAL_AND_RELIGIOUS_BIASES
             };
         }
         if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_MATERNAL_BIAS, StringComparison.OrdinalIgnoreCase))
@@ -984,16 +990,14 @@ public class KiteNovelConverter
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
-                key = "bias_maternal_bias",
-                value = "true"
+                relevantBias = BiasName.MATERNAL_BIAS
             };
         }
         if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_BIASES_GEGENUEBER_FRAUEN_MIT_KINDERN, StringComparison.OrdinalIgnoreCase)) {
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
-                key = "bias_biases_gegenueber_frauen_mit_kindern",
-                value = "true"
+                relevantBias = BiasName.AGAINST_WOMEN_WITH_CHILDREN
             };
         }
         if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_ERWARTUNGSHALTUNG_BEZUEGLICH_FAMILIENPLANUNG, StringComparison.OrdinalIgnoreCase))
@@ -1001,16 +1005,14 @@ public class KiteNovelConverter
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
-                key = "bias_erwartungshaltung_bezueglich_familienplanung",
-                value = "true"
+                relevantBias = BiasName.EXPECTATIONS_REGARDING_FAMILY_PLANNING
             };
         }
         if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_WORK_LIFE_BALANCE_ERWARTUNGEN, StringComparison.OrdinalIgnoreCase)) {
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
-                key = "bias_work_life_balance_erwartungen",
-                value = "true"
+                relevantBias = BiasName.WORK_LIFE_BALANCE_EXPECTATIONS
             };
         }
         if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_GESCHLECHTSSPEZIFISCHE_STEREOTYPEN, StringComparison.OrdinalIgnoreCase))
@@ -1018,24 +1020,21 @@ public class KiteNovelConverter
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
-                key = "bias_geschlechtsspezifische_stereotypen",
-                value = "true"
+                relevantBias = BiasName.GENDER_SPECIFIC_STEREOTYPES
             };
         }
         if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_TIGHTROPE_BIAS, StringComparison.OrdinalIgnoreCase)) {
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
-                key = "bias_tightrope_bias",
-                value = "true"
+                relevantBias = BiasName.TIGHTROPE_BIAS
             };
         }
         if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_MIKROAGGRESSIONEN, StringComparison.OrdinalIgnoreCase)) {
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
-                key = "bias_mikroaggressionen",
-                value = "true"
+                relevantBias = BiasName.MICROAGGRESSIONS
             };
         }
         if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_LEISTUNGSATTRIBUTIONS_BIAS, StringComparison.OrdinalIgnoreCase))
@@ -1043,8 +1042,7 @@ public class KiteNovelConverter
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
-                key = "bias_leistungsattributions_bias",
-                value = "true"
+                relevantBias = BiasName.PERFORMANCE_ATTRIBUTION_BIAS
             };
         }
         if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_BIAS_IN_MEDIEN_UND_WERBUNG, StringComparison.OrdinalIgnoreCase))
@@ -1052,8 +1050,7 @@ public class KiteNovelConverter
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
-                key = "bias_bias_in_medien_und_werbung",
-                value = "true"
+                relevantBias = BiasName.IN_MEDIA_AND_ADVERTISING
             };
         }
         if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_UNBEWUSSTE_BIAS_IN_DER_KOMMUNIKATION, StringComparison.OrdinalIgnoreCase))
@@ -1061,16 +1058,14 @@ public class KiteNovelConverter
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
-                key = "bias_unbewusste_bias_in_der_kommunikation",
-                value = "true"
+                relevantBias = BiasName.UNCONSCIOUS_BIAS_IN_COMMUNICATION
             };
         }
         if (input.Contains(NovelKeyWord.RELEVANTER_BIAS_PROVE_IT_AGAIN_BIAS, StringComparison.OrdinalIgnoreCase)) {
             return new KiteNovelEventDTO()
             {
                 event_art = "bias",
-                key = "bias_prove_it_again_bias",
-                value = "true"
+                relevantBias = BiasName.PROVE_IT_AGAIN_BIAS
             };
         }
 
