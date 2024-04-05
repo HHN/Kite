@@ -1289,6 +1289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23300eb9815f63e4c987fbe31bcdec7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  messageBox: {fileID: 5629918238507184917, guid: 48d465bbb617e07459c0e1db889bab27, type: 3}
+  canvas: {fileID: 632797008}
   listViewParent: {fileID: 428206786}
   playerNameConfirmButton: {fileID: 670312408}
   companyNameConfirmButton: {fileID: 1443939016}
