@@ -112,6 +112,12 @@ public class TweeProcessor
                 linkText = linkParts[0].Trim();
                 linkTarget = linkParts[1].Trim();
             }
+            else if (fullLinkText.Contains("|"))
+            {
+                var linkParts = fullLinkText.Split(new[] { "|" }, StringSplitOptions.None);
+                linkText = linkParts[0].Trim();
+                linkTarget = linkParts[1].Trim();
+            }
             else
             {
                 linkText = fullLinkText;
