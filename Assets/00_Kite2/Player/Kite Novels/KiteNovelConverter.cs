@@ -4,10 +4,11 @@ using System.Text.RegularExpressions;
 
 public class KiteNovelConverter
 {
+    public static int counterForNamingPurpose = 1;
     public static List<KiteNovelFolder> ConvertNovelsToFiles(List<VisualNovel> novels)
     {
         List<KiteNovelFolder> folders = new List<KiteNovelFolder>();
-
+        
         foreach (VisualNovel novel in novels)
         {
             KiteNovelFolder folder = new KiteNovelFolder();
@@ -68,76 +69,64 @@ public class KiteNovelConverter
         foreach (TweePassage passage in passages)
         {
             KiteNovelEventDTO dto = ExtractAndConvertToInformatonList(passage.passage);
+            VisualNovelEvent lastEventOfCurrentLoop = null;
 
             if ((dto == null) || (dto.event_art == null))
             {
-                continue;
+                // do nothing here
             }
-            if (dto.event_art == null)
+            else if (dto.event_art.Contains("ort", StringComparison.OrdinalIgnoreCase))
             {
-                continue;
+                lastEventOfCurrentLoop = HandleLocationEvent(passage, dto, kiteNovelEventList.novelEvents);
             }
-            if (dto.event_art.Contains("ort", StringComparison.OrdinalIgnoreCase))
+            else if (dto.event_art.Contains("kom", StringComparison.OrdinalIgnoreCase))
             {
-                HandleLocationEvent(passage, dto, kiteNovelEventList.novelEvents);
-                continue;
+                lastEventOfCurrentLoop = HandleCharacterComesEvent(passage, dto, kiteNovelEventList.novelEvents);
             }
-            if (dto.event_art.Contains("kom", StringComparison.OrdinalIgnoreCase))
+            else if (dto.event_art.Contains("spr", StringComparison.OrdinalIgnoreCase))
             {
-                HandleCharacterComesEvent(passage, dto, kiteNovelEventList.novelEvents);
-                continue;
+                lastEventOfCurrentLoop = HandleCharacterTalksEvent(passage, dto, kiteNovelEventList.novelEvents);
             }
-            if (dto.event_art.Contains("spr", StringComparison.OrdinalIgnoreCase))
+            else if (dto.event_art.Contains("sou", StringComparison.OrdinalIgnoreCase))
             {
-                HandleCharacterTalksEvent(passage, dto, kiteNovelEventList.novelEvents);
-                continue;
+                lastEventOfCurrentLoop = HandlePlaySoundEvent(passage, dto, kiteNovelEventList.novelEvents);
             }
-            if (dto.event_art.Contains("sou", StringComparison.OrdinalIgnoreCase))
+            else if (dto.event_art.Contains("ani", StringComparison.OrdinalIgnoreCase))
             {
-                HandlePlaySoundEvent(passage, dto, kiteNovelEventList.novelEvents);
-                continue;
+                lastEventOfCurrentLoop = HandlePlayAnimationEvent(passage, dto, kiteNovelEventList.novelEvents);
             }
-            if (dto.event_art.Contains("ani", StringComparison.OrdinalIgnoreCase))
+            else if (dto.event_art.Contains("fre", StringComparison.OrdinalIgnoreCase))
             {
-                HandlePlayAnimationEvent(passage, dto, kiteNovelEventList.novelEvents);
-                continue;
+                lastEventOfCurrentLoop = HandleFreeTextInputEvent(passage, dto, kiteNovelEventList.novelEvents);
             }
-            if (dto.event_art.Contains("fre", StringComparison.OrdinalIgnoreCase))
+            else if (dto.event_art.Contains("gpt", StringComparison.OrdinalIgnoreCase))
             {
-                HandleFreeTextInputEvent(passage, dto, kiteNovelEventList.novelEvents);
-                continue;
+                lastEventOfCurrentLoop = HandleGptRequestEvent(passage, dto, kiteNovelEventList.novelEvents);
             }
-            if (dto.event_art.Contains("gpt", StringComparison.OrdinalIgnoreCase))
+            else if (dto.event_art.Contains("sav", StringComparison.OrdinalIgnoreCase))
             {
-                HandleGptRequestEvent(passage, dto, kiteNovelEventList.novelEvents);
-                continue;
+                lastEventOfCurrentLoop = HandleSaveDataEvent(passage, dto, kiteNovelEventList.novelEvents);
             }
-            if (dto.event_art.Contains("opt", StringComparison.OrdinalIgnoreCase))
-            {
-                HandleDialogueOptionEvent(passage, dto, kiteNovelEventList.novelEvents);
-                continue;
-            }
-            if (dto.event_art.Contains("sav", StringComparison.OrdinalIgnoreCase))
-            {
-                HandleSaveDataEvent(passage, dto, kiteNovelEventList.novelEvents);
-                continue;
-            }
-            if (dto.event_art.Contains("end", StringComparison.OrdinalIgnoreCase))
+            else if (dto.event_art.Contains("end", StringComparison.OrdinalIgnoreCase))
             {
                 HandleEndNovelEvent(passage, dto, kiteNovelEventList.novelEvents);
-                continue;
             }
-            if (dto.event_art.Contains("bia", StringComparison.OrdinalIgnoreCase))
+            else if (dto.event_art.Contains("bia", StringComparison.OrdinalIgnoreCase))
             {
-                HandleBiasEvent(passage, dto, kiteNovelEventList.novelEvents);
+                lastEventOfCurrentLoop = HandleBiasEvent(passage, dto, kiteNovelEventList.novelEvents);
+            }
+
+            if (passage.links == null || passage.links.Count <= 1)
+            {
                 continue;
             }
+            HandleDialogueOptionEvent(passage, dto, kiteNovelEventList.novelEvents, lastEventOfCurrentLoop);
         }
 
         return kiteNovelEventList;
     }
 
-    public static void HandleLocationEvent(TweePassage twee, KiteNovelEventDTO dto, List<VisualNovelEvent> list)
+    public static VisualNovelEvent HandleLocationEvent(TweePassage twee, KiteNovelEventDTO dto, List<VisualNovelEvent> list)
     {
         VisualNovelEvent novelEvent = new VisualNovelEvent();
         novelEvent.id = twee.label;
@@ -150,9 +139,10 @@ public class KiteNovelConverter
 
         novelEvent.backgroundSpriteId = GetLocationIdOutOfString(dto.ort);
         list.Add(novelEvent);
+        return novelEvent;
     }
 
-    public static void HandleCharacterTalksEvent(TweePassage twee, KiteNovelEventDTO dto, List<VisualNovelEvent> list)
+    public static VisualNovelEvent HandleCharacterTalksEvent(TweePassage twee, KiteNovelEventDTO dto, List<VisualNovelEvent> list)
     {
         VisualNovelEvent novelEvent = new VisualNovelEvent();
         novelEvent.id = twee.label;
@@ -168,9 +158,10 @@ public class KiteNovelConverter
         novelEvent.expressionType = ConvertStringIntoExpressionType(dto.emotion_des_charakters);
         novelEvent.waitForUserConfirmation = true;
         list.Add(novelEvent);
+        return novelEvent;
     }
 
-    public static void HandleCharacterComesEvent(TweePassage twee, KiteNovelEventDTO dto, List<VisualNovelEvent> list)
+    public static VisualNovelEvent HandleCharacterComesEvent(TweePassage twee, KiteNovelEventDTO dto, List<VisualNovelEvent> list)
     {
         VisualNovelEvent novelEvent = new VisualNovelEvent();
         novelEvent.id = twee.label;
@@ -184,9 +175,10 @@ public class KiteNovelConverter
         novelEvent.name = GetNameOutOfString(dto.name_des_charakters);
         novelEvent.expressionType = ConvertStringIntoExpressionType(dto.emotion_des_charakters);
         list.Add(novelEvent);
+        return novelEvent;
     }
 
-    public static void HandleBiasEvent(TweePassage twee, KiteNovelEventDTO dto, List<VisualNovelEvent> list)
+    public static VisualNovelEvent HandleBiasEvent(TweePassage twee, KiteNovelEventDTO dto, List<VisualNovelEvent> list)
     {
         VisualNovelEvent novelEvent = new VisualNovelEvent();
         novelEvent.id = twee.label;
@@ -199,6 +191,7 @@ public class KiteNovelConverter
 
         novelEvent.relevantBias = dto.relevantBias;
         list.Add(novelEvent);
+        return novelEvent;
     }
 
     public static void HandleEndNovelEvent(TweePassage twee, KiteNovelEventDTO dto, List<VisualNovelEvent> list)
@@ -236,17 +229,26 @@ public class KiteNovelConverter
         list.Add(endEvent);
     }
 
-    public static void HandleDialogueOptionEvent(TweePassage twee, KiteNovelEventDTO dto, List<VisualNovelEvent> list)
+    public static void HandleDialogueOptionEvent(TweePassage twee, KiteNovelEventDTO dto, 
+        List<VisualNovelEvent> list, VisualNovelEvent lastEvent)
     {
-        string label = twee.label;
+        string label = "OptionsLabel" + counterForNamingPurpose;
+        counterForNamingPurpose++;
+
+        if (lastEvent != null)
+        {
+            lastEvent.nextId = label;
+        } else
+        {
+            label = twee.label;
+        }
 
         foreach (TweeLink link in twee.links)
         {
             VisualNovelEvent visualNovelEvent = new VisualNovelEvent();
-
             visualNovelEvent.eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.ADD_CHOICE_EVENT);
             visualNovelEvent.id = label;
-            label = label + "RandomString001";
+            label = label + label;
             visualNovelEvent.nextId = label;
             visualNovelEvent.text = link.text;
             visualNovelEvent.onChoice = link.target;
@@ -261,7 +263,7 @@ public class KiteNovelConverter
         list.Add(showChoicesEvent);
     }
 
-    public static void HandlePlaySoundEvent(TweePassage twee, KiteNovelEventDTO dto, List<VisualNovelEvent> list)
+    public static VisualNovelEvent HandlePlaySoundEvent(TweePassage twee, KiteNovelEventDTO dto, List<VisualNovelEvent> list)
     {
         VisualNovelEvent novelEvent = new VisualNovelEvent();
         novelEvent.id = twee.label;
@@ -273,9 +275,10 @@ public class KiteNovelConverter
             novelEvent.nextId = twee.links[0].target;
         }
         list.Add(novelEvent);
+        return novelEvent;
     }
 
-    public static void HandlePlayAnimationEvent(TweePassage twee, KiteNovelEventDTO dto, List<VisualNovelEvent> list)
+    public static VisualNovelEvent HandlePlayAnimationEvent(TweePassage twee, KiteNovelEventDTO dto, List<VisualNovelEvent> list)
     {
         VisualNovelEvent novelEvent = new VisualNovelEvent();
         novelEvent.id = twee.label;
@@ -288,9 +291,10 @@ public class KiteNovelConverter
 
         novelEvent.animationToPlay = GetAnimationTypeOutOfString(dto.animation_die_abgespielt_werden_soll);
         list.Add(novelEvent);
+        return novelEvent;
     }
 
-    public static void HandleFreeTextInputEvent(TweePassage twee, KiteNovelEventDTO dto, List<VisualNovelEvent> list)
+    public static VisualNovelEvent HandleFreeTextInputEvent(TweePassage twee, KiteNovelEventDTO dto, List<VisualNovelEvent> list)
     {
         VisualNovelEvent novelEvent = new VisualNovelEvent();
         novelEvent.id = twee.label;
@@ -305,9 +309,10 @@ public class KiteNovelConverter
         novelEvent.variablesName = dto.variablen_name_fuer_die_antwort;
         novelEvent.waitForUserConfirmation = true;
         list.Add(novelEvent);
+        return novelEvent;
     }
 
-    public static void HandleGptRequestEvent(TweePassage twee, KiteNovelEventDTO dto, List<VisualNovelEvent> list)
+    public static VisualNovelEvent HandleGptRequestEvent(TweePassage twee, KiteNovelEventDTO dto, List<VisualNovelEvent> list)
     {
         VisualNovelEvent novelEvent = new VisualNovelEvent();
         novelEvent.id = twee.label;
@@ -323,9 +328,10 @@ public class KiteNovelConverter
         novelEvent.gptCompletionHandlerId = GetCompletionHandlerIdOutOfString(dto.id_nummer_des_completion_handlers);
         novelEvent.waitForUserConfirmation = true;
         list.Add(novelEvent);
+        return novelEvent;
     }
 
-    public static void HandleSaveDataEvent(TweePassage twee, KiteNovelEventDTO dto, List<VisualNovelEvent> list)
+    public static VisualNovelEvent HandleSaveDataEvent(TweePassage twee, KiteNovelEventDTO dto, List<VisualNovelEvent> list)
     {
         VisualNovelEvent novelEvent = new VisualNovelEvent();
         novelEvent.id = twee.label;
@@ -340,6 +346,7 @@ public class KiteNovelConverter
         novelEvent.key = dto.key;
         novelEvent.value = dto.value;
         list.Add(novelEvent);
+        return novelEvent;
     }
 
     public static KiteNovelEventDTO ExtractAndConvertToInformatonList(string input)
@@ -838,13 +845,6 @@ public class KiteNovelConverter
             {
                 event_art = "animation",
                 animation_die_abgespielt_werden_soll = "water_pouring"
-            };
-        }
-        if (input.Contains(NovelKeyWord.DIALOG_OPTIONEN, StringComparison.OrdinalIgnoreCase))
-        {
-            return new KiteNovelEventDTO()
-            {
-                event_art = "optionen"
             };
         }
         if (input.Contains(NovelKeyWord.ENDE, StringComparison.OrdinalIgnoreCase))
