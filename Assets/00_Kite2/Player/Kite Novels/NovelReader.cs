@@ -84,6 +84,22 @@ public class NovelReader
                 }
 
                 KiteNovelMetaData kiteNovelMetaData = JsonUtility.FromJson<KiteNovelMetaData>(jsonStringOfMetaData);
+
+                if (kiteNovelMetaData == null)
+                {
+                    continue;
+                }
+
+                if (kiteNovelMetaData.wordsToReplace != null)
+                {
+                    foreach (WordPair wordPair in kiteNovelMetaData.wordsToReplace)
+                    {
+                        if (wordPair != null && wordPair.wordToReplace != null && wordPair.replaceByValue != null)
+                        {
+                            jsonStringOfEventList = jsonStringOfEventList.Replace(wordPair.wordToReplace, wordPair.replaceByValue);
+                        }
+                    }
+                }
                 KiteNovelEventList kiteNovelEventList = KiteNovelConverter.ConvertTextDocumentIntoEventList(jsonStringOfEventList, 
                     kiteNovelMetaData.isWithStartValues, kiteNovelMetaData.startLocation, 
                     kiteNovelMetaData.talkingPartner01, kiteNovelMetaData.startTalkingPartnerEmotion,
@@ -130,6 +146,16 @@ public class NovelReader
                     if (string.IsNullOrEmpty(jsonString))
                     {
                         continue;
+                    }
+                    if (kiteNovelMetaData.wordsToReplace != null)
+                    {
+                        foreach (WordPair wordPair in kiteNovelMetaData.wordsToReplace)
+                        {
+                            if (wordPair != null && wordPair.wordToReplace != null && wordPair.replaceByValue != null)
+                            {
+                                jsonString = jsonString.Replace(wordPair.wordToReplace, wordPair.replaceByValue);
+                            }
+                        }
                     }
                     kiteNovelEventList = KiteNovelConverter.ConvertTextDocumentIntoEventList(jsonString, 
                         kiteNovelMetaData.isWithStartValues, kiteNovelMetaData.startLocation, 

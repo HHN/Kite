@@ -66,6 +66,7 @@ public class KiteNovelConverter
     {
         KiteNovelEventList kiteNovelEventList = new KiteNovelEventList();
         kiteNovelEventList.novelEvents = new List<VisualNovelEvent>();
+        string startEventLabel = TweeProcessor.GetStartLabelFromTweeFile(tweeFile);
 
         if (isWithStartValues)
         {
@@ -79,7 +80,7 @@ public class KiteNovelConverter
             VisualNovelEvent initalCharacterJoinsEvent = new VisualNovelEvent();
             initalCharacterJoinsEvent.id = "initalCharakterJoinsEvent001";
             initalCharacterJoinsEvent.eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.CHARAKTER_JOIN_EVENT);
-            initalCharacterJoinsEvent.nextId = TweeProcessor.GetStartLabelFromTweeFile(tweeFile);
+            initalCharacterJoinsEvent.nextId = startEventLabel;
             initalCharacterJoinsEvent.name = GetNameOutOfString(startTalkingPartner);
             initalCharacterJoinsEvent.expressionType = ConvertStringIntoExpressionType(startTalkingPartnerEmotion);
             kiteNovelEventList.novelEvents.Add(initalCharacterJoinsEvent);
@@ -130,11 +131,19 @@ public class KiteNovelConverter
             }
             else if (dto.event_art.Contains("end", StringComparison.OrdinalIgnoreCase))
             {
-                HandleEndNovelEvent(passage, dto, kiteNovelEventList.novelEvents);
+                HandleEndNovelEvent(passage.label, kiteNovelEventList.novelEvents);
             }
             else if (dto.event_art.Contains("bia", StringComparison.OrdinalIgnoreCase))
             {
                 lastEventOfCurrentLoop = HandleBiasEvent(passage, dto, kiteNovelEventList.novelEvents);
+            }
+
+            if (lastEventOfCurrentLoop != null && lastEventOfCurrentLoop.nextId != null && lastEventOfCurrentLoop.nextId == startEventLabel)
+            {
+                string newLabel = "RandomEndNovelString" + counterForNamingPurpose;
+                counterForNamingPurpose++;
+                HandleEndNovelEvent(newLabel, kiteNovelEventList.novelEvents);
+                lastEventOfCurrentLoop.nextId = newLabel;
             }
 
             if (passage.links == null || passage.links.Count <= 1)
@@ -215,9 +224,9 @@ public class KiteNovelConverter
         return novelEvent;
     }
 
-    public static void HandleEndNovelEvent(TweePassage twee, KiteNovelEventDTO dto, List<VisualNovelEvent> list)
+    public static void HandleEndNovelEvent(string label, List<VisualNovelEvent> list)
     {
-        string label01 = twee.label;
+        string label01 = label;
         string label02 = label01 + "RandomString0012003";
         string label03 = label02 + "RandomRandom";
 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class KiteNovelMetaData
@@ -16,4 +17,5 @@ public class KiteNovelMetaData
     public string talkingPartner01;
     public string talkingPartner02;
     public string talkingPartner03;
+    public List<WordPair> wordsToReplace;
 }

@@ -61,10 +61,6 @@ Du hast eine Einladung zu einem Bankgespräch erhalten, um mehr Informationen ü
 [[Weiter->Lea01]]
 
 
-:: Ende {"position":"1000,6175","size":"100,100"}
->>Ende<<
-
-
 :: Lea01 {"position":"900,775","size":"100,100"}
 >>Spieler Charakter spricht:<<
 Hallo. Schönen guten Tag.
@@ -306,7 +302,7 @@ Ich denke mal im Laufe der nächsten 4 bis 5 Monate. Und ja, ich drück Ihnen di
 :: Mayer20 {"position":"1000,6050","size":"100,100"}
 >>Charakter 01 spricht:<<
 Alles Gute. Auf bald.
-[[Weiter->Ende]]
+[[Weiter->Buero]]
 
 
 :: Option02 {"position":"700,1400","size":"100,100"}

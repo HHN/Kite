@@ -11,5 +11,8 @@
   "isWithStartValues": true,
   "talkingPartner01" : "Mayer",
   "talkingPartner02" : "",
-  "talkingPartner03" : ""
+  "talkingPartner03" : "",
+  "wordsToReplace": [
+    {"wordToReplace": "This example string", "replaceByValue": "is replaced by this example string."}
+  ]
 }
