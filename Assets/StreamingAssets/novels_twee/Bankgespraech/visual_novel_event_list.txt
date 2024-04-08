@@ -54,27 +54,15 @@ Ja.
 [[Weiter->Mayer03]]
 
 
-:: Buero {"position":"900,400","size":"100,100"}
->>Szene: Buero<<
-
-[[Weiter->Intro Mayer]]
-
-
-:: Ende {"position":"1000,6175","size":"100,100"}
->>Ende<<
-
-
-:: Info Message 01 {"position":"900,650","size":"100,100"}
+:: Buero {"position":"900,650","size":"100,100"}
 >>Info Nachricht wird angezeigt:<<
 Du hast eine Einladung zu einem Bankgespräch erhalten, um mehr Informationen über einen Kredit zu erhalten und diesen darauf zu beantragen.
 
 [[Weiter->Lea01]]
 
 
-:: Intro Mayer {"position":"900,525","size":"100,100"}
->>Eintritt: Mayer<<
-
-[[Weiter|Info Message 01]]
+:: Ende {"position":"1000,6175","size":"100,100"}
+>>Ende<<
 
 
 :: Lea01 {"position":"900,775","size":"100,100"}

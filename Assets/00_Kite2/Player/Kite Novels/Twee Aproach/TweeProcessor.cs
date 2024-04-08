@@ -133,7 +133,7 @@ public class TweeProcessor
         return links;
     }
 
-    private static string GetStartLabelFromTweeFile(string tweeFileContent)
+    public static string GetStartLabelFromTweeFile(string tweeFileContent)
     {
         Regex storyDataRegex = new Regex(@":: StoryData\s*\n([\s\S]*?)\n::", RegexOptions.Multiline);
 

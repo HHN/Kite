@@ -10,4 +10,8 @@ public class KiteNovelMetaData
     public string nameOfMainCharacter;
     public string contextForPrompt;
     public bool isKite2Novel;
+    public string startLocation;
+    public string startTalkingPartner;
+    public bool isWithStartValues;
+    public string startTalkingPartnerEmotion;
 }

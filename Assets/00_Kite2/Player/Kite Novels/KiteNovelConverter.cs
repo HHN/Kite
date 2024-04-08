@@ -60,10 +60,29 @@ public class KiteNovelConverter
         return novels;
     }
 
-    public static KiteNovelEventList ConvertTextDocumentIntoEventList(string tweeFile)
+    public static KiteNovelEventList ConvertTextDocumentIntoEventList(string tweeFile, bool isWithStartValues, 
+        string startLocation, string startTalkingPartner, string startTalkingPartnerEmotion)
     {
         KiteNovelEventList kiteNovelEventList = new KiteNovelEventList();
         kiteNovelEventList.novelEvents = new List<VisualNovelEvent>();
+
+        if (isWithStartValues)
+        {
+            VisualNovelEvent initalLocationEvent = new VisualNovelEvent();
+            initalLocationEvent.id = "initalLocationEvent001";
+            initalLocationEvent.eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.SET_BACKGROUND_EVENT);
+            initalLocationEvent.nextId = "initalCharakterJoinsEvent001";
+            initalLocationEvent.backgroundSpriteId = GetLocationIdOutOfString(startLocation);
+            kiteNovelEventList.novelEvents.Add(initalLocationEvent);
+
+            VisualNovelEvent initalCharacterJoinsEvent = new VisualNovelEvent();
+            initalCharacterJoinsEvent.id = "initalCharakterJoinsEvent001";
+            initalCharacterJoinsEvent.eventType = VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.CHARAKTER_JOIN_EVENT);
+            initalCharacterJoinsEvent.nextId = TweeProcessor.GetStartLabelFromTweeFile(tweeFile);
+            initalCharacterJoinsEvent.name = GetNameOutOfString(startTalkingPartner);
+            initalCharacterJoinsEvent.expressionType = ConvertStringIntoExpressionType(startTalkingPartnerEmotion);
+            kiteNovelEventList.novelEvents.Add(initalCharacterJoinsEvent);
+        }
 
         List<TweePassage> passages = TweeProcessor.ProcessTweeFile(tweeFile);
 
