@@ -48,27 +48,39 @@ public class PlayerPrefsSceneController : SceneController
         companyNameInputField.onValueChanged.AddListener(delegate { OnInputFieldChangedCompanyName(); });
         elevatorPitchInputField.onValueChanged.AddListener(delegate { OnInputFieldChangedElevatorPitch(); });
         preverencesInputField.onValueChanged.AddListener(delegate { OnInputFieldChangedPreverences(); });
+        deactivatePlayerNameButtons();
+        deactivateCompanyNameButtons();
+        deactivateElevatorPitchButtons();
+        deactivatePreverencesButtons();
     }
 
     private void playerNameConfirmButtonListener()
     {
         PlayerDataManager.Instance().SavePlayerData("PlayerName", playerNameInputField.text);
         DisplayInfoMessage(InfoMessages.SAVED_SUCCESFULLY);
+        originalTextPlayerName = playerNameInputField.text;
+        deactivatePlayerNameButtons();
     }
     private void companyNameConfirmButtonListener()
     {
         PlayerDataManager.Instance().SavePlayerData("CompanyName", companyNameInputField.text);
         DisplayInfoMessage(InfoMessages.SAVED_SUCCESFULLY);
+        originalTextCompanyName = companyNameInputField.text;
+        deactivateCompanyNameButtons();
     }
     private void elevatorPitchConfirmButtonListener()
     {
         PlayerDataManager.Instance().SavePlayerData("ElevatorPitch", elevatorPitchInputField.text);
         DisplayInfoMessage(InfoMessages.SAVED_SUCCESFULLY);
+        originalTextElevatorPitch = elevatorPitchInputField.text; 
+        deactivateElevatorPitchButtons();
     }
     private void preverencesConfirmButtonListener()
     {
         PlayerDataManager.Instance().SavePlayerData("Preverences", preverencesInputField.text);
         DisplayInfoMessage(InfoMessages.SAVED_SUCCESFULLY);
+        originalTextPreverences = preverencesInputField.text;
+        deactivatePreverencesButtons();
     }
     private void playerNameCancleButtonListener()
     {
@@ -90,12 +102,11 @@ public class PlayerPrefsSceneController : SceneController
     void OnInputFieldChangedPlayerName()
     {
         bool textHasChanged = playerNameInputField.text != originalTextPlayerName;
-
         playerNameConfirmButton.interactable = textHasChanged;
         playerNameCancleButton.interactable = textHasChanged;
     }
 
-    void OnInputFieldChangedCompanyName()
+    private void OnInputFieldChangedCompanyName()
     {
         bool textHasChanged = companyNameInputField.text != originalTextCompanyName;
 
@@ -103,7 +114,7 @@ public class PlayerPrefsSceneController : SceneController
         companyNameCancleButton.interactable = textHasChanged;
     }
 
-    void OnInputFieldChangedElevatorPitch()
+    private void OnInputFieldChangedElevatorPitch()
     {
         bool textHasChanged = elevatorPitchInputField.text != originalTextElevatorPitch;
 
@@ -111,12 +122,36 @@ public class PlayerPrefsSceneController : SceneController
         elevatorPitchCancleButton.interactable = textHasChanged;
     }
 
-    void OnInputFieldChangedPreverences()
+    private void OnInputFieldChangedPreverences()
     {
         bool textHasChanged = preverencesInputField.text != originalTextPreverences;
 
         preverencesConfirmButton.interactable = textHasChanged;
         preverencesCancleButton.interactable = textHasChanged;
+    }
+
+    private void deactivatePlayerNameButtons()
+    {
+        playerNameConfirmButton.interactable = false;
+        playerNameCancleButton.interactable = false;
+    }
+    
+    private void deactivateCompanyNameButtons()
+    {
+        companyNameConfirmButton.interactable = false;
+        companyNameCancleButton.interactable = false;
+    }
+    
+    private void deactivateElevatorPitchButtons()
+    {
+        elevatorPitchConfirmButton.interactable = false;
+        elevatorPitchCancleButton.interactable = false;
+    }
+    
+    private void deactivatePreverencesButtons()
+    {
+        preverencesConfirmButton.interactable = false;
+        preverencesCancleButton.interactable = false;
     }
 
     private void LoadPlayerPrefs()
