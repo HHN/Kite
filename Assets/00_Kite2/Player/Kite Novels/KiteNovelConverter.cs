@@ -61,7 +61,8 @@ public class KiteNovelConverter
     }
 
     public static KiteNovelEventList ConvertTextDocumentIntoEventList(string tweeFile, bool isWithStartValues, 
-        string startLocation, string startTalkingPartner, string startTalkingPartnerEmotion)
+        string startLocation, string startTalkingPartner, string startTalkingPartnerEmotion, string charakter01,
+        string charakter02, string charakter03)
     {
         KiteNovelEventList kiteNovelEventList = new KiteNovelEventList();
         kiteNovelEventList.novelEvents = new List<VisualNovelEvent>();
@@ -88,7 +89,7 @@ public class KiteNovelConverter
 
         foreach (TweePassage passage in passages)
         {
-            KiteNovelEventDTO dto = ExtractAndConvertToInformatonList(passage.passage);
+            KiteNovelEventDTO dto = ExtractAndConvertToInformatonList(passage.passage, charakter01, charakter02, charakter03);
             VisualNovelEvent lastEventOfCurrentLoop = null;
 
             if ((dto == null) || (dto.event_art == null))
@@ -369,9 +370,9 @@ public class KiteNovelConverter
         return novelEvent;
     }
 
-    public static KiteNovelEventDTO ExtractAndConvertToInformatonList(string input)
+    public static KiteNovelEventDTO ExtractAndConvertToInformatonList(string input, string charakter01, string charakter02, string charakter03)
     {
-        KiteNovelEventDTO dto = ConvertListOfDataObjectsIntoKiteNovelEventDto(input);
+        KiteNovelEventDTO dto = ConvertListOfDataObjectsIntoKiteNovelEventDto(input, charakter01, charakter02, charakter03);
 
         if (dto == null)
         {
@@ -551,7 +552,7 @@ public class KiteNovelConverter
         return result;
     }
 
-    private static KiteNovelEventDTO ConvertListOfDataObjectsIntoKiteNovelEventDto(string input)
+    private static KiteNovelEventDTO ConvertListOfDataObjectsIntoKiteNovelEventDto(string input, string charakter01, string charakter02, string charakter03)
     {
         if (string.IsNullOrEmpty(input))
         {
@@ -567,253 +568,753 @@ public class KiteNovelConverter
                 ort = "office"
             };
         }
-        if (input.Contains(NovelKeyWord.EINTRITT_MAYER, StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_01, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "kom",
-                name_des_charakters = "mayer"
+                name_des_charakters = charakter01
             };
         }
-        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_RELAXED, StringComparison.OrdinalIgnoreCase)) 
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_RELAXED, StringComparison.OrdinalIgnoreCase)) 
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "kom",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
                 emotion_des_charakters = "relaxed"
             };
         }
-        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_ASTONISHED, StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_ASTONISHED, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "kom",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
                 emotion_des_charakters = "astonished"
             };
         }
-        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_REFUSING, StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_REFUSING, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "kom",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
                 emotion_des_charakters = "refusing"
             };
         }
-        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_SMILING, StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_SMILING, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "kom",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
                 emotion_des_charakters = "smiling"
             };
         }
-        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_FRIENDLY, StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_FRIENDLY, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "kom",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
                 emotion_des_charakters = "friendly"
             };
         }
-        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_LAUGHING, StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_LAUGHING, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "kom",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
                 emotion_des_charakters = "laughing"
             };
         }
-        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_CRITICAL, StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_CRITICAL, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "kom",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
                 emotion_des_charakters = "critical"
             };
         }
-        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_DECISION_NO, StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_DECISION_NO, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "kom",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
                 emotion_des_charakters = "decision_no"
             };
         }
-        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_HAPPY, StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_HAPPY, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "kom",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
                 emotion_des_charakters = "happy"
             };
         }
-        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_PROUD, StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_PROUD, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "kom",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
                 emotion_des_charakters = "proud"
             };
         }
-        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_SCARED, StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_SCARED, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "kom",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
                 emotion_des_charakters = "scared"
             };
         }
-        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_QUESTIONING, StringComparison.OrdinalIgnoreCase)) 
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_QUESTIONING, StringComparison.OrdinalIgnoreCase)) 
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "kom",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
                 emotion_des_charakters = "questioning"
             };
         }
-        if (input.Contains(NovelKeyWord.EINTRITT_MAYER_GESICHTSAUSDRUCK_DEFEATED, StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_DEFEATED, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "kom",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
                 emotion_des_charakters = "defeate"
             };
         }
-        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER, StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "spricht",
-                name_des_charakters = "mayer"
+                name_des_charakters = charakter01
             };
         }
-        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_RELAXED, StringComparison.OrdinalIgnoreCase)) 
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_RELAXED, StringComparison.OrdinalIgnoreCase)) 
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "spricht",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
                 emotion_des_charakters = "relaxed"
             };
         }
-        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_ASTONISHED, StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_ASTONISHED, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "spricht",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
                 emotion_des_charakters = "astonished"
             };
         }
-        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_REFUSING, StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_REFUSING, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "spricht",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
                 emotion_des_charakters = "refusing"
             };
         }
-        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_SMILING, StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_SMILING, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "spricht",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
                 emotion_des_charakters = "smiling"
             };
         }
-        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_FRIENDLY, StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_FRIENDLY, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "spricht",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
                 emotion_des_charakters = "friendly"
             };
         }
-        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_LAUGHING, StringComparison.OrdinalIgnoreCase)) 
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_LAUGHING, StringComparison.OrdinalIgnoreCase)) 
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "spricht",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
                 emotion_des_charakters = "laughing"
             };
         }
-        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_CRITICAL, StringComparison.OrdinalIgnoreCase)) 
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_CRITICAL, StringComparison.OrdinalIgnoreCase)) 
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "spricht",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
                 emotion_des_charakters = "critical"
             };
         }
-        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_DECISION_NO, StringComparison.OrdinalIgnoreCase)) 
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_DECISION_NO, StringComparison.OrdinalIgnoreCase)) 
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "spricht",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
                 emotion_des_charakters = "decision_no"
             };
         }
-        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_HAPPY, StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_HAPPY, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "spricht",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
                 emotion_des_charakters = "happy"
             };
         }
-        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_PROUD, StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_PROUD, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "spricht",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
                 emotion_des_charakters = "proud"
             };
         }
-        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_SCARED, StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_SCARED, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "spricht",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
                 emotion_des_charakters = "scared"
             };
         }
-        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_QUESTIONING, StringComparison.OrdinalIgnoreCase))
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_QUESTIONING, StringComparison.OrdinalIgnoreCase))
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "spricht",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
                 emotion_des_charakters = "questioning"
             };
         }
-        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_DEFEATED, StringComparison.OrdinalIgnoreCase)) 
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_DEFEATED, StringComparison.OrdinalIgnoreCase)) 
         {
             return new KiteNovelEventDTO()
             {
                 event_art = "spricht",
-                name_des_charakters = "mayer",
+                name_des_charakters = charakter01,
+                emotion_des_charakters = "defeated"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_02, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter02
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_RELAXED, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "relaxed"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_ASTONISHED, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "astonished"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_REFUSING, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "refusing"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_SMILING, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "smiling"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_FRIENDLY, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "friendly"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_LAUGHING, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "laughing"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_CRITICAL, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "critical"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_DECISION_NO, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "decision_no"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_HAPPY, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "happy"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_PROUD, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "proud"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_SCARED, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "scared"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_QUESTIONING, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "questioning"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_DEFEATED, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "defeate"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter02
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_RELAXED, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "relaxed"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_ASTONISHED, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "astonished"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_REFUSING, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "refusing"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_SMILING, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "smiling"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_FRIENDLY, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "friendly"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_LAUGHING, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "laughing"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_CRITICAL, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "critical"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_DECISION_NO, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "decision_no"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_HAPPY, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "happy"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_PROUD, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "proud"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_SCARED, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "scared"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_QUESTIONING, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "questioning"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_DEFEATED, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter02,
+                emotion_des_charakters = "defeated"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_03, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter03
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_RELAXED, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter03,
+                emotion_des_charakters = "relaxed"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_ASTONISHED, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter03,
+                emotion_des_charakters = "astonished"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_REFUSING, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter03,
+                emotion_des_charakters = "refusing"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_SMILING, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter03,
+                emotion_des_charakters = "smiling"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_FRIENDLY, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter03,
+                emotion_des_charakters = "friendly"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_LAUGHING, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter03,
+                emotion_des_charakters = "laughing"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_CRITICAL, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter03,
+                emotion_des_charakters = "critical"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_DECISION_NO, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter03,
+                emotion_des_charakters = "decision_no"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_HAPPY, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter03,
+                emotion_des_charakters = "happy"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_PROUD, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter03,
+                emotion_des_charakters = "proud"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_SCARED, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter03,
+                emotion_des_charakters = "scared"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_QUESTIONING, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter03,
+                emotion_des_charakters = "questioning"
+            };
+        }
+        if (input.Contains(NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_DEFEATED, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "kom",
+                name_des_charakters = charakter03,
+                emotion_des_charakters = "defeate"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter03
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_RELAXED, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter03,
+                emotion_des_charakters = "relaxed"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_ASTONISHED, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter03,
+                emotion_des_charakters = "astonished"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_REFUSING, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter03,
+                emotion_des_charakters = "refusing"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_SMILING, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter03,
+                emotion_des_charakters = "smiling"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_FRIENDLY, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter03,
+                emotion_des_charakters = "friendly"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_LAUGHING, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter03,
+                emotion_des_charakters = "laughing"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_CRITICAL, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter03,
+                emotion_des_charakters = "critical"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_DECISION_NO, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter03,
+                emotion_des_charakters = "decision_no"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_HAPPY, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter03,
+                emotion_des_charakters = "happy"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_PROUD, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter03,
+                emotion_des_charakters = "proud"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_SCARED, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter03,
+                emotion_des_charakters = "scared"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_QUESTIONING, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter03,
+                emotion_des_charakters = "questioning"
+            };
+        }
+        if (input.Contains(NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_DEFEATED, StringComparison.OrdinalIgnoreCase))
+        {
+            return new KiteNovelEventDTO()
+            {
+                event_art = "spricht",
+                name_des_charakters = charakter03,
                 emotion_des_charakters = "defeated"
             };
         }
