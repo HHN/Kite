@@ -105,27 +105,32 @@ public class TweeProcessor
             string fullLinkText = linkMatch.Groups[1].Value;
             string linkText;
             string linkTarget;
+            bool showAfterSelection;
 
             if (fullLinkText.Contains("->"))
             {
                 var linkParts = fullLinkText.Split(new[] { "->" }, StringSplitOptions.None);
                 linkText = linkParts[0].Trim();
                 linkTarget = linkParts[1].Trim();
+                showAfterSelection = true;
             }
             else if (fullLinkText.Contains("|"))
             {
                 var linkParts = fullLinkText.Split(new[] { "|" }, StringSplitOptions.None);
                 linkText = linkParts[0].Trim();
                 linkTarget = linkParts[1].Trim();
+                showAfterSelection = false;
             }
             else
             {
                 linkText = fullLinkText;
                 linkTarget = fullLinkText;
+                showAfterSelection = false;
             }
 
             link.text = linkText;
             link.target = linkTarget;
+            link.showAfterSelection = showAfterSelection;
 
             links.Add(link);
         }

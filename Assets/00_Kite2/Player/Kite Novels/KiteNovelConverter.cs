@@ -282,7 +282,7 @@ public class KiteNovelConverter
             visualNovelEvent.nextId = label;
             visualNovelEvent.text = link.text;
             visualNovelEvent.onChoice = link.target;
-            visualNovelEvent.show = false;
+            visualNovelEvent.show = link.showAfterSelection;
             list.Add(visualNovelEvent);
         }
 
