@@ -12,6 +12,7 @@ public class SettingsSceneController : SceneController
     [SerializeField] private RectTransform sublayout06;
     [SerializeField] private RectTransform sublayout07;
     [SerializeField] private RectTransform sublayout08;
+    [SerializeField] private RectTransform sublayout09;
     [SerializeField] private RectTransform layout;
 
     [SerializeField] private Button aboutKiteButton;
@@ -28,6 +29,8 @@ public class SettingsSceneController : SceneController
     [SerializeField] private Button imprintInfoButton;
     [SerializeField] private Button playerPrefsButton;
     [SerializeField] private Button playerPrefsInfoButton;
+    [SerializeField] private Button toggleTextToSpeechButton;
+    [SerializeField] private Button toggleTextToSpeechInfoButton;
     [SerializeField] private Button applicationModeButton;
     [SerializeField] private Button applicationModeInfoButton;
 
@@ -49,11 +52,14 @@ public class SettingsSceneController : SceneController
         imprintInfoButton.onClick.AddListener(delegate { OnImprintInfoButton(); });
         playerPrefsButton.onClick.AddListener(delegate { OnPlayerPrefsButton(); });
         playerPrefsInfoButton.onClick.AddListener(delegate { OnPlayerPrefsInfoButton(); });
+        toggleTextToSpeechButton.onClick.AddListener(delegate { OnToggleTextToSpeechButton(); });
+        toggleTextToSpeechInfoButton.onClick.AddListener(delegate { OnToggleTextToSpeechInfoButton(); });
         applicationModeButton.onClick.AddListener(delegate { OnApplicationModeButton(); });
         applicationModeInfoButton.onClick.AddListener(delegate { OnApplicationModeInfoButton(); });
 
         InitializeToggleDataCollectionButton();
         InitializeApplicationModeButton();
+        InitializeToggleTextToSpeechButton();
         LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout01);
         LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout02);
         LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout03);
@@ -62,6 +68,7 @@ public class SettingsSceneController : SceneController
         LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout06);
         LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout07);
         LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout08);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout09);
         LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
     }
 
@@ -137,6 +144,18 @@ public class SettingsSceneController : SceneController
         }
     }
 
+    public void InitializeToggleTextToSpeechButton()
+    {
+        if (TextToSpeechManager.Instance().IsTextToSpeechActivated())
+        {
+            toggleTextToSpeechButton.GetComponentInChildren<TextMeshProUGUI>().text = "TEXT VORLESEN";
+        }
+        else
+        {
+            toggleTextToSpeechButton.GetComponentInChildren<TextMeshProUGUI>().text = "TEXT NICHT VORLESEN";
+        }
+    }
+
     public void OnTermsOfUseButton()
     {
         SceneLoader.LoadTermsOfUseScene();
@@ -175,6 +194,27 @@ public class SettingsSceneController : SceneController
     private void OnPlayerPrefsInfoButton()
     {
         DisplayInfoMessage(InfoMessages.EXPLANATION_PLAYERPREFS_BUTTON);
+    }
+
+    private void OnToggleTextToSpeechButton()
+    {
+        if (TextToSpeechManager.Instance().IsTextToSpeechActivated())
+        {
+            TextToSpeechManager.Instance().DeactivateTextToSpeech();
+            DisplayInfoMessage(InfoMessages.STOPPED_TOGGLETEXTTOSPEECH_BUTTON);
+        }
+        else
+        {
+            TextToSpeechManager.Instance().ActivateTextToSpeech();
+            DisplayInfoMessage(InfoMessages.STARTED_TOGGLETEXTTOSPEECH_BUTTON);
+        }
+        InitializeToggleTextToSpeechButton();
+        // If more settings are decired this should lead to an extra scene
+    }
+
+    private void OnToggleTextToSpeechInfoButton()
+    {
+        DisplayInfoMessage(InfoMessages.EXPLANATION_TEXTTOSPEECH_BUTTON);
     }
 
     private void OnApplicationModeButton()
