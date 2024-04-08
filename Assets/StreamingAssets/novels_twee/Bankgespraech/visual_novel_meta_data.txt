@@ -7,7 +7,9 @@
   "contextForPrompt": "Es ist das Gespräch einer Gründerin, Lea, mit einem Bank-Mitarbeiter. Es geht um einen Kredit. Die Gründerin hat sich gut vorbereitet und hofft Informationen über den Kredit zu erhalten.",
   "isKite2Novel": false,
   "startLocation": "office",
-  "startTalkingPartner": "Mayer",
   "startTalkingPartnerEmotion": "relaxed",
-  "isWithStartValues": true
+  "isWithStartValues": true,
+  "talkingPartner01" : "Mayer",
+  "talkingPartner02" : "",
+  "talkingPartner03" : ""
 }

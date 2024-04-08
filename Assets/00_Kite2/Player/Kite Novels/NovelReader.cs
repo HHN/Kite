@@ -86,7 +86,8 @@ public class NovelReader
                 KiteNovelMetaData kiteNovelMetaData = JsonUtility.FromJson<KiteNovelMetaData>(jsonStringOfMetaData);
                 KiteNovelEventList kiteNovelEventList = KiteNovelConverter.ConvertTextDocumentIntoEventList(jsonStringOfEventList, 
                     kiteNovelMetaData.isWithStartValues, kiteNovelMetaData.startLocation, 
-                    kiteNovelMetaData.startTalkingPartner, kiteNovelMetaData.startTalkingPartnerEmotion);
+                    kiteNovelMetaData.talkingPartner01, kiteNovelMetaData.startTalkingPartnerEmotion,
+                    kiteNovelMetaData.talkingPartner01, kiteNovelMetaData.talkingPartner02, kiteNovelMetaData.talkingPartner03);
                 KiteNovelFolder folder = new KiteNovelFolder();
                 folder.novelMetaData = kiteNovelMetaData;
                 folder.novelEventList = kiteNovelEventList;
@@ -132,7 +133,8 @@ public class NovelReader
                     }
                     kiteNovelEventList = KiteNovelConverter.ConvertTextDocumentIntoEventList(jsonString, 
                         kiteNovelMetaData.isWithStartValues, kiteNovelMetaData.startLocation, 
-                        kiteNovelMetaData.startTalkingPartner, kiteNovelMetaData.startTalkingPartnerEmotion);
+                        kiteNovelMetaData.talkingPartner01, kiteNovelMetaData.startTalkingPartnerEmotion,
+                        kiteNovelMetaData.talkingPartner01, kiteNovelMetaData.talkingPartner02, kiteNovelMetaData.talkingPartner03);
                 }
                 KiteNovelFolder folder = new KiteNovelFolder();
                 folder.novelMetaData = kiteNovelMetaData;

@@ -4,35 +4,95 @@ public class NovelKeyWord
 {
     public static string SZENE_BUERO =                                                                      ">>Szene: Buero<<";
 
-    public static string EINTRITT_MAYER =                                                                   ">>Eintritt: Mayer<<";
-    public static string EINTRITT_MAYER_GESICHTSAUSDRUCK_RELAXED =                                          ">>Eintritt: Mayer, Gesichtsausdruck: relaxed<<";
-    public static string EINTRITT_MAYER_GESICHTSAUSDRUCK_ASTONISHED =                                       ">>Eintritt: Mayer, Gesichtsausdruck: astonished<<";
-    public static string EINTRITT_MAYER_GESICHTSAUSDRUCK_REFUSING =                                         ">>Eintritt: Mayer, Gesichtsausdruck: refusing<<";
-    public static string EINTRITT_MAYER_GESICHTSAUSDRUCK_SMILING =                                          ">>Eintritt: Mayer, Gesichtsausdruck: smiling<<";
-    public static string EINTRITT_MAYER_GESICHTSAUSDRUCK_FRIENDLY =                                         ">>Eintritt: Mayer, Gesichtsausdruck: friendly<<";
-    public static string EINTRITT_MAYER_GESICHTSAUSDRUCK_LAUGHING =                                         ">>Eintritt: Mayer, Gesichtsausdruck: laughing<<";
-    public static string EINTRITT_MAYER_GESICHTSAUSDRUCK_CRITICAL =                                         ">>Eintritt: Mayer, Gesichtsausdruck: critical<<";
-    public static string EINTRITT_MAYER_GESICHTSAUSDRUCK_DECISION_NO =                                      ">>Eintritt: Mayer, Gesichtsausdruck: decision no<<";
-    public static string EINTRITT_MAYER_GESICHTSAUSDRUCK_HAPPY =                                            ">>Eintritt: Mayer, Gesichtsausdruck: happy<<";
-    public static string EINTRITT_MAYER_GESICHTSAUSDRUCK_PROUD =                                            ">>Eintritt: Mayer, Gesichtsausdruck: proud<<";
-    public static string EINTRITT_MAYER_GESICHTSAUSDRUCK_SCARED =                                           ">>Eintritt: Mayer, Gesichtsausdruck: scared<<";
-    public static string EINTRITT_MAYER_GESICHTSAUSDRUCK_QUESTIONING =                                      ">>Eintritt: Mayer, Gesichtsausdruck: questioning<<";
-    public static string EINTRITT_MAYER_GESICHTSAUSDRUCK_DEFEATED =                                         ">>Eintritt: Mayer, Gesichtsausdruck: defeated<<";
+    public static string EINTRITT_CHARAKTER_01 =                                                            ">>Eintritt: Charakter 01<<";
+    public static string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_RELAXED =                                   ">>Eintritt: Charakter 01, Gesichtsausdruck: relaxed<<";
+    public static string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_ASTONISHED =                                ">>Eintritt: Charakter 01, Gesichtsausdruck: astonished<<";
+    public static string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_REFUSING =                                  ">>Eintritt: Charakter 01, Gesichtsausdruck: refusing<<";
+    public static string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_SMILING =                                   ">>Eintritt: Charakter 01, Gesichtsausdruck: smiling<<";
+    public static string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_FRIENDLY =                                  ">>Eintritt: Charakter 01, Gesichtsausdruck: friendly<<";
+    public static string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_LAUGHING =                                  ">>Eintritt: Charakter 01, Gesichtsausdruck: laughing<<";
+    public static string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_CRITICAL =                                  ">>Eintritt: Charakter 01, Gesichtsausdruck: critical<<";
+    public static string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_DECISION_NO =                               ">>Eintritt: Charakter 01, Gesichtsausdruck: decision no<<";
+    public static string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_HAPPY =                                     ">>Eintritt: Charakter 01, Gesichtsausdruck: happy<<";
+    public static string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_PROUD =                                     ">>Eintritt: Charakter 01, Gesichtsausdruck: proud<<";
+    public static string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_SCARED =                                    ">>Eintritt: Charakter 01, Gesichtsausdruck: scared<<";
+    public static string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_QUESTIONING =                               ">>Eintritt: Charakter 01, Gesichtsausdruck: questioning<<";
+    public static string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_DEFEATED =                                  ">>Eintritt: Charakter 01, Gesichtsausdruck: defeated<<";
 
-    public static string CHARAKTER_SPRICHT_MAYER =                                                          ">>Mayer spricht:<<";
-    public static string CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_RELAXED =                                 ">>Mayer spricht relaxed:<<";
-    public static string CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_ASTONISHED =                              ">>Mayer spricht astonished:<<";
-    public static string CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_REFUSING =                                ">>Mayer spricht refusing:<<";
-    public static string CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_SMILING =                                 ">>Mayer spricht smiling:<<";
-    public static string CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_FRIENDLY =                                ">>Mayer spricht friendly:<<";
-    public static string CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_LAUGHING =                                ">>Mayer spricht laughing:<<";
-    public static string CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_CRITICAL =                                ">>Mayer spricht critical:<<";
-    public static string CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_DECISION_NO =                             ">>Mayer spricht decision no:<<";
-    public static string CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_HAPPY =                                   ">>Mayer spricht happy:<<";
-    public static string CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_PROUD =                                   ">>Mayer spricht proud:<<";
-    public static string CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_SCARED =                                  ">>Mayer spricht scared:<<";
-    public static string CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_QUESTIONING =                             ">>Mayer spricht questioning:<<";
-    public static string CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_DEFEATED =                                ">>Mayer spricht defeated:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_01 =                                                   ">>Charakter 01 spricht:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_RELAXED =                          ">>Charakter 01 spricht relaxed:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_ASTONISHED =                       ">>Charakter 01 spricht astonished:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_REFUSING =                         ">>Charakter 01 spricht refusing:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_SMILING =                          ">>Charakter 01 spricht smiling:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_FRIENDLY =                         ">>Charakter 01 spricht friendly:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_LAUGHING =                         ">>Charakter 01 spricht laughing:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_CRITICAL =                         ">>Charakter 01 spricht critical:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_DECISION_NO =                      ">>Charakter 01 spricht decision no:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_HAPPY =                            ">>Charakter 01 spricht happy:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_PROUD =                            ">>Charakter 01 spricht proud:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_SCARED =                           ">>Charakter 01 spricht scared:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_QUESTIONING =                      ">>Charakter 01 spricht questioning:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_DEFEATED =                         ">>Charakter 01 spricht defeated:<<";
+
+    public static string EINTRITT_CHARAKTER_02 = ">>Eintritt: Charakter 02<<";
+    public static string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_RELAXED = ">>Eintritt: Charakter 02, Gesichtsausdruck: relaxed<<";
+    public static string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_ASTONISHED = ">>Eintritt: Charakter 02, Gesichtsausdruck: astonished<<";
+    public static string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_REFUSING = ">>Eintritt: Charakter 02, Gesichtsausdruck: refusing<<";
+    public static string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_SMILING = ">>Eintritt: Charakter 02, Gesichtsausdruck: smiling<<";
+    public static string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_FRIENDLY = ">>Eintritt: Charakter 02, Gesichtsausdruck: friendly<<";
+    public static string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_LAUGHING = ">>Eintritt: Charakter 02, Gesichtsausdruck: laughing<<";
+    public static string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_CRITICAL = ">>Eintritt: Charakter 02, Gesichtsausdruck: critical<<";
+    public static string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_DECISION_NO = ">>Eintritt: Charakter 02, Gesichtsausdruck: decision no<<";
+    public static string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_HAPPY = ">>Eintritt: Charakter 02, Gesichtsausdruck: happy<<";
+    public static string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_PROUD = ">>Eintritt: Charakter 02, Gesichtsausdruck: proud<<";
+    public static string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_SCARED = ">>Eintritt: Charakter 02, Gesichtsausdruck: scared<<";
+    public static string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_QUESTIONING = ">>Eintritt: Charakter 02, Gesichtsausdruck: questioning<<";
+    public static string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_DEFEATED = ">>Eintritt: Charakter 02, Gesichtsausdruck: defeated<<";
+
+    public static string CHARAKTER_SPRICHT_CHARAKTER_02 = ">>Charakter 02 spricht:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_RELAXED = ">>Charakter 02 spricht relaxed:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_ASTONISHED = ">>Charakter 02 spricht astonished:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_REFUSING = ">>Charakter 02 spricht refusing:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_SMILING = ">>Charakter 02 spricht smiling:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_FRIENDLY = ">>Charakter 02 spricht friendly:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_LAUGHING = ">>Charakter 02 spricht laughing:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_CRITICAL = ">>Charakter 02 spricht critical:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_DECISION_NO = ">>Charakter 02 spricht decision no:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_HAPPY = ">>Charakter 02 spricht happy:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_PROUD = ">>Charakter 02 spricht proud:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_SCARED = ">>Charakter 02 spricht scared:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_QUESTIONING = ">>Charakter 02 spricht questioning:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_DEFEATED = ">>Charakter 02 spricht defeated:<<";
+
+    public static string EINTRITT_CHARAKTER_03 = ">>Eintritt: Charakter 03<<";
+    public static string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_RELAXED = ">>Eintritt: Charakter 03, Gesichtsausdruck: relaxed<<";
+    public static string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_ASTONISHED = ">>Eintritt: Charakter 03, Gesichtsausdruck: astonished<<";
+    public static string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_REFUSING = ">>Eintritt: Charakter 03, Gesichtsausdruck: refusing<<";
+    public static string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_SMILING = ">>Eintritt: Charakter 03, Gesichtsausdruck: smiling<<";
+    public static string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_FRIENDLY = ">>Eintritt: Charakter 03, Gesichtsausdruck: friendly<<";
+    public static string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_LAUGHING = ">>Eintritt: Charakter 03, Gesichtsausdruck: laughing<<";
+    public static string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_CRITICAL = ">>Eintritt: Charakter 03, Gesichtsausdruck: critical<<";
+    public static string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_DECISION_NO = ">>Eintritt: Charakter 03, Gesichtsausdruck: decision no<<";
+    public static string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_HAPPY = ">>Eintritt: Charakter 03, Gesichtsausdruck: happy<<";
+    public static string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_PROUD = ">>Eintritt: Charakter 03, Gesichtsausdruck: proud<<";
+    public static string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_SCARED = ">>Eintritt: Charakter 03, Gesichtsausdruck: scared<<";
+    public static string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_QUESTIONING = ">>Eintritt: Charakter 03, Gesichtsausdruck: questioning<<";
+    public static string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_DEFEATED = ">>Eintritt: Charakter 03, Gesichtsausdruck: defeated<<";
+
+    public static string CHARAKTER_SPRICHT_CHARAKTER_03 = ">>Charakter 03 spricht:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_RELAXED = ">>Charakter 03 spricht relaxed:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_ASTONISHED = ">>Charakter 03 spricht astonished:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_REFUSING = ">>Charakter 03 spricht refusing:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_SMILING = ">>Charakter 03 spricht smiling:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_FRIENDLY = ">>Charakter 03 spricht friendly:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_LAUGHING = ">>Charakter 03 spricht laughing:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_CRITICAL = ">>Charakter 03 spricht critical:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_DECISION_NO = ">>Charakter 03 spricht decision no:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_HAPPY = ">>Charakter 03 spricht happy:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_PROUD = ">>Charakter 03 spricht proud:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_SCARED = ">>Charakter 03 spricht scared:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_QUESTIONING = ">>Charakter 03 spricht questioning:<<";
+    public static string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_DEFEATED = ">>Charakter 03 spricht defeated:<<";
 
     public static string SPIELER_CHARAKTER_SPRICHT =                                                        ">>Spieler Charakter spricht:<<";
 
@@ -85,34 +145,90 @@ public class NovelKeyWord
     public static List<string> ALL_KEY_WORDS = new List<string>
     {
         SZENE_BUERO,
-        EINTRITT_MAYER,
-        EINTRITT_MAYER_GESICHTSAUSDRUCK_RELAXED,
-        EINTRITT_MAYER_GESICHTSAUSDRUCK_ASTONISHED,
-        EINTRITT_MAYER_GESICHTSAUSDRUCK_REFUSING,
-        EINTRITT_MAYER_GESICHTSAUSDRUCK_SMILING,
-        EINTRITT_MAYER_GESICHTSAUSDRUCK_FRIENDLY,
-        EINTRITT_MAYER_GESICHTSAUSDRUCK_LAUGHING,
-        EINTRITT_MAYER_GESICHTSAUSDRUCK_CRITICAL,
-        EINTRITT_MAYER_GESICHTSAUSDRUCK_DECISION_NO,
-        EINTRITT_MAYER_GESICHTSAUSDRUCK_HAPPY,
-        EINTRITT_MAYER_GESICHTSAUSDRUCK_PROUD,
-        EINTRITT_MAYER_GESICHTSAUSDRUCK_SCARED,
-        EINTRITT_MAYER_GESICHTSAUSDRUCK_QUESTIONING,
-        EINTRITT_MAYER_GESICHTSAUSDRUCK_DEFEATED,
-        CHARAKTER_SPRICHT_MAYER,
-        CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_RELAXED,
-        CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_ASTONISHED,
-        CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_REFUSING,
-        CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_SMILING,
-        CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_FRIENDLY,
-        CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_LAUGHING,
-        CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_CRITICAL,
-        CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_DECISION_NO,
-        CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_HAPPY,
-        CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_PROUD,
-        CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_SCARED,
-        CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_QUESTIONING,
-        CHARAKTER_SPRICHT_MAYER_GESICHTSAUSDRUCK_DEFEATED,
+        EINTRITT_CHARAKTER_01,
+        EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_RELAXED,
+        EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_ASTONISHED,
+        EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_REFUSING,
+        EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_SMILING,
+        EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_FRIENDLY,
+        EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_LAUGHING,
+        EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_CRITICAL,
+        EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_DECISION_NO,
+        EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_HAPPY,
+        EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_PROUD,
+        EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_SCARED,
+        EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_QUESTIONING,
+        EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_DEFEATED,
+        CHARAKTER_SPRICHT_CHARAKTER_01,
+        CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_RELAXED,
+        CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_ASTONISHED,
+        CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_REFUSING,
+        CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_SMILING,
+        CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_FRIENDLY,
+        CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_LAUGHING,
+        CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_CRITICAL,
+        CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_DECISION_NO,
+        CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_HAPPY,
+        CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_PROUD,
+        CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_SCARED,
+        CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_QUESTIONING,
+        CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_DEFEATED,
+        EINTRITT_CHARAKTER_02,
+        EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_RELAXED,
+        EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_ASTONISHED,
+        EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_REFUSING,
+        EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_SMILING,
+        EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_FRIENDLY,
+        EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_LAUGHING,
+        EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_CRITICAL,
+        EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_DECISION_NO,
+        EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_HAPPY,
+        EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_PROUD,
+        EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_SCARED,
+        EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_QUESTIONING,
+        EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_DEFEATED,
+        CHARAKTER_SPRICHT_CHARAKTER_02,
+        CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_RELAXED,
+        CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_ASTONISHED,
+        CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_REFUSING,
+        CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_SMILING,
+        CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_FRIENDLY,
+        CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_LAUGHING,
+        CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_CRITICAL,
+        CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_DECISION_NO,
+        CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_HAPPY,
+        CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_PROUD,
+        CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_SCARED,
+        CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_QUESTIONING,
+        CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_DEFEATED,
+        EINTRITT_CHARAKTER_03,
+        EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_RELAXED,
+        EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_ASTONISHED,
+        EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_REFUSING,
+        EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_SMILING,
+        EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_FRIENDLY,
+        EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_LAUGHING,
+        EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_CRITICAL,
+        EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_DECISION_NO,
+        EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_HAPPY,
+        EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_PROUD,
+        EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_SCARED,
+        EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_QUESTIONING,
+        EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_DEFEATED,
+        CHARAKTER_SPRICHT_CHARAKTER_03,
+        CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_RELAXED,
+        CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_ASTONISHED,
+        CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_REFUSING,
+        CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_SMILING,
+        CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_FRIENDLY,
+        CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_LAUGHING,
+        CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_CRITICAL,
+        CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_DECISION_NO,
+        CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_HAPPY,
+        CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_PROUD,
+        CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_SCARED,
+        CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_QUESTIONING,
+        CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_DEFEATED,
         SPIELER_CHARAKTER_SPRICHT,
         INFO_NACHRICHT_WIRD_ANGEZEIGT,
         SOUND_ABSPIELEN_WATER_POURING,

@@ -186,7 +186,7 @@ Dankeschön.
 
 
 :: Mayer01 {"position":"900,900","size":"100,100"}
->>Mayer spricht:<<
+>>Charakter 01 spricht:<<
 Hallo. Guten Tag, setzen Sie sich. Kann ich Ihnen was zu trinken anbieten?
 
 [[Ja, gerne. Ein Wasser.->Lea02]]
@@ -194,117 +194,117 @@ Hallo. Guten Tag, setzen Sie sich. Kann ich Ihnen was zu trinken anbieten?
 
 
 :: Mayer02 {"position":"700,1275","size":"100,100"}
->>Mayer spricht:<<
+>>Charakter 01 spricht:<<
 Wasser. Mit Gas, ohne Gas?
 
 [[Weiter->Option02]]
 
 
 :: Mayer03 {"position":"1000,1800","size":"100,100"}
->>Mayer spricht:<<
+>>Charakter 01 spricht:<<
 Verdammt kalt heute, nicht?
 
 [[Weiter->Lea06]]
 
 
 :: Mayer04 {"position":"1000,2050","size":"100,100"}
->>Mayer spricht:<<
+>>Charakter 01 spricht:<<
 Haben Sie gut hergefunden?
 [[Weiter->Option03]]
 
 
 :: Mayer05 {"position":"1000,2425","size":"100,100"}
->>Mayer spricht:<<
+>>Charakter 01 spricht:<<
 Ja, was führt Sie zu mir?
 [[Weiter->Lea09]]
 
 
 :: Mayer06 {"position":"1000,2925","size":"100,100"}
->>Mayer spricht:<<
+>>Charakter 01 spricht:<<
 Verzeihung. könnten Sie mir nochmal kurz sagen worum es geht? Ich habe so viele Kunden, da komme ich ab und zu durcheinander.
 [[Weiter->Lea12]]
 
 
 :: Mayer07 {"position":"1000,3175","size":"100,100"}
->>Mayer spricht:<<
+>>Charakter 01 spricht:<<
 Ah ok.
 [[Weiter->Mayer08]]
 
 
 :: Mayer08 {"position":"1000,3300","size":"100,100"}
->>Mayer spricht:<<
+>>Charakter 01 spricht:<<
 Eine Frage, wenn es um Investitionen geht. Haben Sie einen Mann? Oder sind Sie verheiratet?
 [[Weiter->Lea13]]
 
 
 :: Mayer09 {"position":"1000,3550","size":"100,100"}
->>Mayer spricht:<<
+>>Charakter 01 spricht:<<
 Oder müssen Sie das jetzt alles alleine stemmen?
 [[Weiter->Option04]]
 
 
 :: Mayer10 {"position":"1000,3925","size":"100,100"}
->>Mayer spricht:<<
+>>Charakter 01 spricht:<<
 Ich möchte wissen, ob da jetzt ein größeres Startkapital auch vorhanden ist?
 [[Weiter->Lea18]]
 
 
 :: Mayer11 {"position":"1000,4175","size":"100,100"}
->>Mayer spricht:<<
+>>Charakter 01 spricht:<<
 Aha. Und haben Sie Kinder?
 [[Weiter->Option05]]
 
 
 :: Mayer12 {"position":"1000,4550","size":"100,100"}
->>Mayer spricht:<<
+>>Charakter 01 spricht:<<
 Es ist einfach nur wichtig zu wissen, weil ich schon Gründerinnen hier hatte, und da war dann der Kinderwunsch im Endeffekt größer.
 [[Weiter->Mayer13]]
 
 
 :: Mayer13 {"position":"1000,4675","size":"100,100"}
->>Mayer spricht:<<
+>>Charakter 01 spricht:<<
 Die haben dann den Kredit bekommen und plötzlich waren Kinder da und dann wurde das schwierig. Aber wie gesagt, das ist jetzt eigentlich gar nicht so wichtig.
 [[Weiter->Lea21]]
 
 
 :: Mayer14 {"position":"1000,5175","size":"100,100"}
->>Mayer spricht:<<
+>>Charakter 01 spricht:<<
 Also, prinzipiell ist es so, dass ich erst nochmal Rückfrage mit jemanden aus der Filialleitung halten muss, denn ich darf hier in so einem Fall gar keine Entscheidung treffen.
 [[Weiter->Mayer15]]
 
 
 :: Mayer15 {"position":"1000,5300","size":"100,100"}
->>Mayer spricht:<<
+>>Charakter 01 spricht:<<
 Wie gesagt, ich bin eigentlich nur hier um so ein bisschen rauszufinden, hat das Perspektive?
 [[Weiter->Mayer16]]
 
 
 :: Mayer16 {"position":"1000,5425","size":"100,100"}
->>Mayer spricht:<<
+>>Charakter 01 spricht:<<
 Kann das funktionieren? Kann ich mir das auch vorstellen? Die Frage ist ja auch, was gebe ich an Informationen weiter. Und was ich auf jeden Fall sehe, ist eine sehr selbstbewusste junge Frau.
 [[Weiter->Mayer17]]
 
 
 :: Mayer17 {"position":"1000,5550","size":"100,100"}
->>Mayer spricht:<<
+>>Charakter 01 spricht:<<
 Das ist ein sehr wichtiger Punkt, finde ich. Da denke ich haben sie sicher auch ganz gute Chancen.
 [[Weiter->Mayer18]]
 
 
 :: Mayer18 {"position":"1000,5675","size":"100,100"}
->>Mayer spricht:<<
+>>Charakter 01 spricht:<<
 Ich kann jetzt aber in dem Zustand hier noch keine Entscheidungen treffen. Ich würde mich auf jeden Fall bei Ihnen melden. Am besten machen wir noch einen weiteren Termin aus.
 [[Weiter->Mayer19]]
 
 
 :: Mayer19 {"position":"1000,5800","size":"100,100"}
->>Mayer spricht:<<
+>>Charakter 01 spricht:<<
 Ich denke mal im Laufe der nächsten 4 bis 5 Monate. Und ja, ich drück Ihnen die Daumen.
 [[Weiter->Lea24]]
 
 
 :: Mayer20 {"position":"1000,6050","size":"100,100"}
->>Mayer spricht:<<
+>>Charakter 01 spricht:<<
 Alles Gute. Auf bald.
 [[Weiter->Ende]]
 
