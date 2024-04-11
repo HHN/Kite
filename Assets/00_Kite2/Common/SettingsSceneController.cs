@@ -201,12 +201,12 @@ public class SettingsSceneController : SceneController
         if (TextToSpeechManager.Instance().IsTextToSpeechActivated())
         {
             TextToSpeechManager.Instance().DeactivateTextToSpeech();
-            DisplayInfoMessage(InfoMessages.STOPPED_TOGGLETEXTTOSPEECH_BUTTON);
+            DisplayInfoMessage(InfoMessages.STARTED_TOGGLETEXTTOSPEECH_BUTTON);
         }
         else
         {
             TextToSpeechManager.Instance().ActivateTextToSpeech();
-            DisplayInfoMessage(InfoMessages.STARTED_TOGGLETEXTTOSPEECH_BUTTON);
+            DisplayInfoMessage(InfoMessages.STOPPED_TOGGLETEXTTOSPEECH_BUTTON);
         }
         InitializeToggleTextToSpeechButton();
         // If more settings are decired this should lead to an extra scene

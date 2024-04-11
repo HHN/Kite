@@ -34,5 +34,5 @@ public class InfoMessages
     public static readonly string SAVED_SUCCESFULLY = "Deine Änderungen wurden gespeichert.";
     public static readonly string STARTED_TOGGLETEXTTOSPEECH_BUTTON = "Text wird dir nun vorgelesen.";
     public static readonly string STOPPED_TOGGLETEXTTOSPEECH_BUTTON = "Text wird dir nun nicht länger vorgelesen.";
-    public static readonly string EXPLANATION_TEXTTOSPEECH_BUTTON = "Wenn du diese Funktion aktivierst werden dir Textboxen vorgelesen, sobald du sie anklickst und auch innerhalb der Novel wird der Text vertont.";
+    public static readonly string EXPLANATION_TEXTTOSPEECH_BUTTON = "Dieser Knopf schaltet die Sprachausgabe an bzw. aus. Ist die Sprachausgabe aktiviert, werden die Novels vertont und der Text, auf welchen du innerhalb der App drückst, wird dir vorgelesen.";
 }
