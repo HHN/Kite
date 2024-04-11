@@ -2,10 +2,12 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using UnityEngine;
 
 public class TweeProcessor
 {
+    private static Regex storyDataRegex = new Regex(@":: StoryData\s*\n([\s\S]*?)\n::", RegexOptions.Multiline);
+    private static Regex linkRegex = new Regex(@"\[\[(.*?)\]\]");
+
     public static List<TweePassage> ProcessTweeFile(string tweeSource)
     {
         List<TweePassage> listOfPassages = new List<TweePassage>();
@@ -16,25 +18,22 @@ public class TweeProcessor
         foreach (string passage in passages)
         {
             string label = GetLabelOfPassage(passage);
-            List<TweeLink> links = GetTweeLinksOfPassage(passage);
-            
-            if ((string.IsNullOrEmpty(label)) || (label == "StoryTitle") || (label == "StoryData")) {
+            if (string.IsNullOrEmpty(label) || label == "StoryTitle" || label == "StoryData")
+            {
                 continue;
             }
 
-            TweePassage tweePassage = new TweePassage();
-            tweePassage.label = label;
-            tweePassage.passage = passage;
-            tweePassage.links = links;
-            dictionaryOfPassages[tweePassage.label] = tweePassage;
+            List<TweeLink> links = GetTweeLinksOfPassage(passage);
+            TweePassage tweePassage = new TweePassage(label, passage, links);
+            dictionaryOfPassages[tweePassage.Label] = tweePassage;
         }
 
         string startLabel = GetStartLabelFromTweeFile(tweeSource);
-
         if (!dictionaryOfPassages.ContainsKey(startLabel))
         {
             return listOfPassages;
         }
+
         TweePassage startObject = dictionaryOfPassages[startLabel];
         dictionaryOfPassages.Remove(startLabel);
 
@@ -46,18 +45,21 @@ public class TweeProcessor
 
     private static List<string> SplitTweeIntoPassages(string tweeText)
     {
-        string[] splitText = tweeText.StartsWith("::") ? tweeText.Substring(2).Split(new[] { "\n::" }, StringSplitOptions.None) : tweeText.Split(new[] { "\n::" }, StringSplitOptions.None);
+        List<string> passages = new List<string>(tweeText.Split(new[] { "\n::" }, StringSplitOptions.None));
 
-        List<string> passages = new List<string>();
-
-        foreach (var passage in splitText)
+        for (int i = 1; i < passages.Count; i++)
         {
-            string formattedPassage = tweeText.StartsWith("::") || passages.Count > 0 ? "::" + passage : passage;
-            passages.Add(formattedPassage);
+            passages[i] = "::" + passages[i];
+        }
+
+        if (!tweeText.StartsWith("::") && passages.Count > 0)
+        {
+            passages[0] = "::" + passages[0];
         }
 
         return passages;
     }
+
 
     private static string GetLabelOfPassage(string passage)
     {
@@ -97,15 +99,13 @@ public class TweeProcessor
     private static List<TweeLink> GetTweeLinksOfPassage(string passage)
     {
         List<TweeLink> links = new List<TweeLink>();
-        Regex linkRegex = new Regex(@"\[\[(.*?)\]\]");
 
         foreach (Match linkMatch in linkRegex.Matches(passage))
         {
-            TweeLink link = new TweeLink();
             string fullLinkText = linkMatch.Groups[1].Value;
-            string linkText;
-            string linkTarget;
-            bool showAfterSelection;
+            string linkText = fullLinkText;
+            string linkTarget = fullLinkText;
+            bool showAfterSelection = false;
 
             if (fullLinkText.Contains("->"))
             {
@@ -119,48 +119,31 @@ public class TweeProcessor
                 var linkParts = fullLinkText.Split(new[] { "|" }, StringSplitOptions.None);
                 linkText = linkParts[0].Trim();
                 linkTarget = linkParts[1].Trim();
-                showAfterSelection = false;
             }
-            else
-            {
-                linkText = fullLinkText;
-                linkTarget = fullLinkText;
-                showAfterSelection = false;
-            }
-
-            link.text = linkText;
-            link.target = linkTarget;
-            link.showAfterSelection = showAfterSelection;
-
-            links.Add(link);
+            links.Add(new TweeLink(linkText, linkTarget, showAfterSelection));
         }
-
         return links;
     }
 
     public static string GetStartLabelFromTweeFile(string tweeFileContent)
     {
-        Regex storyDataRegex = new Regex(@":: StoryData\s*\n([\s\S]*?)\n::", RegexOptions.Multiline);
-
         Match match = storyDataRegex.Match(tweeFileContent);
-        if (match.Success)
-        {
-            string jsonContent = match.Groups[1].Value;
 
-            try
-            {
-                var storyData = JsonConvert.DeserializeObject<StoryData>(jsonContent);
-                return storyData.start;
-            }
-            catch
-            {
-                return "";
-            }
+        if (!match.Success)
+        {
+            return null;
         }
-        return "";
+
+        string jsonContent = match.Groups[1].Value;
+
+        try
+        {
+            StoryDataPassage storyData = JsonConvert.DeserializeObject<StoryDataPassage>(jsonContent);
+            return storyData?.Start;
+        }
+        catch
+        {
+            return null;
+        }
     }
-}
-class StoryData
-{
-    public string start { get; set; }
 }

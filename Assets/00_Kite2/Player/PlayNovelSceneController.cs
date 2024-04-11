@@ -22,7 +22,7 @@ public class PlayNovelSceneController : SceneController
     [SerializeField] private GameObject[] backgroundPrefab;
     [SerializeField] private GameObject currentBackground;
     [SerializeField] private GameObject characterContainer;
-    [SerializeField] private Dictionary<string, GameObject> currentCharacters = new Dictionary<string, GameObject>();
+    [SerializeField] private Dictionary<Character, GameObject> currentCharacters = new Dictionary<Character, GameObject>();
     [SerializeField] private ChatScrollView chatScroll;
     [SerializeField] private ImageScrollView imageScroll;
     [SerializeField] public TypewriterCore currentTypeWriter;
@@ -186,12 +186,12 @@ public class PlayNovelSceneController : SceneController
                     HandleGptPromptEvent(nextEventToPlay);
                     break;
                 }
-            case VisualNovelEventType.METHODE_CALL_EVENT:
+            case VisualNovelEventType.SAVE_PERSISTENT_EVENT:
                 {
-                    HandleMethodeCallEvent(nextEventToPlay);
+                    HandleSavePersistentEvent(nextEventToPlay);
                     break;
                 }
-            case VisualNovelEventType.MARK_BIAS:
+            case VisualNovelEventType.MARK_BIAS_EVENT:
                 {
                     HandleMarkBiasEvent(nextEventToPlay);
                     break;
@@ -221,7 +221,7 @@ public class PlayNovelSceneController : SceneController
             SetWaitingForConfirmation(true);
             return;
         }
-        if (novelEvent.audioClipToPlay == SoundEnumHelper.ToInt(SoundsEnum.LEAVE_SCENE))
+        if (novelEvent.audioClipToPlay == KiteSoundHelper.ToInt(KiteSound.LEAVE_SCENE))
         {
             StartCoroutine(StartNextEventInOneSeconds(2.5f));
             return;
@@ -293,27 +293,11 @@ public class PlayNovelSceneController : SceneController
         PlayNextEvent();
     }
 
-    private void HandleMethodeCallEvent(VisualNovelEvent novelEvent)
+    private void HandleSavePersistentEvent(VisualNovelEvent novelEvent)
     {
         string nextEventID = novelEvent.nextId;
         nextEventToPlay = novelEvents[nextEventID];
-        if(novelEvent.methodNameToCall != null)
-        {
-            switch(novelEvent.methodNameToCall)
-            {
-                case "WriteUserInputToFile":
-                {
-                    WriteUserInputToFile(novelEvent.key, ReplacePlaceholders(novelEvent.value, novelToPlay.GetGlobalVariables()));
-                    break;
-                }
-                default:
-                {
-                    break;
-                }
-            }
-
-        }
-
+        WriteUserInputToFile(novelEvent.key, ReplacePlaceholders(novelEvent.value, novelToPlay.GetGlobalVariables()));
         PlayNextEvent();
     }
 
@@ -321,7 +305,7 @@ public class PlayNovelSceneController : SceneController
     {
         string nextEventID = novelEvent.nextId;
         nextEventToPlay = novelEvents[nextEventID];
-        NovelBiasManager.Instance().MarkBiasAsRelevant(novelEvent.relevantBias);
+        NovelBiasManager.Instance().MarkBiasAsRelevant(DiscriminationBiasHelper.ValueOf(novelEvent.relevantBias));
         PlayNextEvent();
     }
 
@@ -339,7 +323,7 @@ public class PlayNovelSceneController : SceneController
         {
             Destroy(currentBackground);
         }
-        currentBackground = Instantiate(backgroundPrefab[novelEvent.backgroundSpriteId], backgroundContainer.transform);
+        currentBackground = Instantiate(backgroundPrefab[(novelEvent.backgroundSpriteId-1)], backgroundContainer.transform);
         StartCoroutine(imageScroll.ScrollToPoint(0.5f, 1f));
 
         if (novelEvent.waitForUserConfirmation)
@@ -362,7 +346,7 @@ public class PlayNovelSceneController : SceneController
         controller.SetHairSprite(novelEvent.hairSpriteId);
         controller.SetFaceExpression(novelEvent.faceSpriteId);
 
-        currentCharacters.Add(novelEvent.name, character);
+        currentCharacters.Add(CharacterTypeHelper.ValueOf(novelEvent.character), character);
 
         if (novelEvent.waitForUserConfirmation)
         {
@@ -399,9 +383,9 @@ public class PlayNovelSceneController : SceneController
         string nextEventID = novelEvent.nextId;
         nextEventToPlay = novelEvents[nextEventID];
 
-        if (currentCharacters.ContainsKey(novelEvent.name))
+        if (currentCharacters.ContainsKey(CharacterTypeHelper.ValueOf(novelEvent.character)))
         {
-            GameObject character = currentCharacters[novelEvent.name];
+            GameObject character = currentCharacters[CharacterTypeHelper.ValueOf(novelEvent.character)];
             currentTalkingCharacterController = character.GetComponent<CharacterController>();
             currentTalkingCharacterController.SetFaceExpression(novelEvent.expressionType);
         }
@@ -409,7 +393,7 @@ public class PlayNovelSceneController : SceneController
         if(novelEvent.show){
             conversationContent.AddContent(novelEvent, this);
 
-            AddEntryToPlayThroughHistory(novelEvent.name, novelEvent.text);
+            AddEntryToPlayThroughHistory(CharacterTypeHelper.ValueOf(novelEvent.character), novelEvent.text);
             AnalyticsServiceHandler.Instance().SetLastQuestionForChoice(novelEvent.text);
         }
 
@@ -441,7 +425,7 @@ public class PlayNovelSceneController : SceneController
 
     public void HandleShowChoicesEvent(VisualNovelEvent novelEvent)
     { 
-        AddEntryToPlayThroughHistory(novelEvent.name, novelEvent.text);
+        AddEntryToPlayThroughHistory(CharacterTypeHelper.ValueOf(novelEvent.character), novelEvent.text);
         conversationContent.AddContent(novelEvent, this);
     }
 
@@ -472,7 +456,7 @@ public class PlayNovelSceneController : SceneController
         {
             return;
         }
-        AddEntryToPlayThroughHistory("Lea", message);
+        AddEntryToPlayThroughHistory(Character.PLAYER, message);
         conversationContent.ShowPlayerAnswer(message);
         ScrollToBottom();
     }
@@ -555,116 +539,8 @@ public class PlayNovelSceneController : SceneController
         Destroy(currentAnimation);
     }
 
-    public void SetBackGroundBlur(bool value)
-    {
-        if (backgroundBlur == null)
-        {
-            return;
-        }
-        backgroundBlur.SetActive(value);
-    }
-
-    public void SetImageAreaBlur(bool value)
-    {
-        if (backgroundBlur == null || imageAreaBlur == null)
-        {
-            return;
-        }
-        backgroundBlur.SetActive(false);
-        imageAreaBlur.SetActive(value);
-    }
-
-    public void SetScreenContentBlur(bool value)
-    {
-        if (backgroundBlur == null || imageAreaBlur == null || screenContentBlur == null)
-        {
-            return;
-        }
-        backgroundBlur.SetActive(false);
-        imageAreaBlur.SetActive(false);
-        screenContentBlur.SetActive(value);
-    }
-
-    public void SetBackgroundColor(bool value, UnityEngine.Color color)
-    {
-        if (backgroundColor == null)
-        {
-            return;
-        }
-        backgroundColor.SetActive(value);
-        color.a = (2f / 3f);
-        backgroundColor.GetComponent<Image>().color = color;
-    }
-
-    public void SetImageAreaColor(bool value, UnityEngine.Color color)
-    {
-        if (backgroundColor == null || imageAreaColor == null)
-        {
-            return;
-        }
-        backgroundColor.SetActive(false);
-        imageAreaColor.SetActive(value);
-        color.a = (2f / 3f);
-        imageAreaColor.GetComponent<Image>().color = color;
-    }
-
-    public void SetScreenContentColor(bool value, UnityEngine.Color color)
-    {
-        if (backgroundColor == null || imageAreaColor == null || screenContentColor == null)
-        {
-            return;
-        }
-        backgroundColor.SetActive(false);
-        imageAreaColor.SetActive(false);
-        screenContentColor.SetActive(value);
-        color.a = (2f / 3f);
-        screenContentColor.GetComponent<Image>().color = color;
-    }
-
-    public void SetCharacterBrither(bool value, string characterName)
-    {
-        if (!currentCharacters.ContainsKey(characterName))
-        {
-            return;
-        }
-
-        ShaderToggle shaderToogle = currentCharacters[characterName].GetComponent<ShaderToggle>();
-
-        if (shaderToogle == null)
-        {
-            return;
-        }
-
-        shaderToogle.SetCharacterBrightness(value);
-    }
-
-    public void SetCharacterBlur(bool value, string characterName)
-    {
-        if (!currentCharacters.ContainsKey(characterName))
-        {
-            return;
-        }
-
-        ShaderToggle shaderToogle = currentCharacters[characterName].GetComponent<ShaderToggle>();
-
-        if (shaderToogle == null)
-        {
-            return;
-        }
-
-        shaderToogle.SetCharacterBlur(value);
-    }
-
-    private void AddEntryToPlayThroughHistory(string name, string text){
-        playThroughHistory.Add(name + ": " + text);
-    }
-
-    private string GetPlayThroughHistoryAsString(){
-        var returnString = "";
-        foreach(string entry in playThroughHistory){
-            returnString += entry + "\n";
-        }
-        return returnString;
+    private void AddEntryToPlayThroughHistory(Character character, string text){
+        playThroughHistory.Add(CharacterTypeHelper.GetNameOfCharacter(character) + ": " + text);
     }
 
     static string ReplacePlaceholders(string text, Dictionary<string, string> replacements)

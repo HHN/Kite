@@ -12,8 +12,8 @@ public enum VisualNovelEventType
     PLAY_ANIMATION_EVENT,
     FREE_TEXT_INPUT_EVENT,
     GPT_PROMPT_EVENT,
-    METHODE_CALL_EVENT,
-    MARK_BIAS
+    SAVE_PERSISTENT_EVENT,
+    MARK_BIAS_EVENT
 }
 
 public class VisualNovelEventTypeHelper
@@ -34,8 +34,8 @@ public class VisualNovelEventTypeHelper
             case VisualNovelEventType.PLAY_ANIMATION_EVENT: { return 12; }
             case VisualNovelEventType.FREE_TEXT_INPUT_EVENT: { return 13; }
             case VisualNovelEventType.GPT_PROMPT_EVENT: { return 14; }
-            case VisualNovelEventType.METHODE_CALL_EVENT: { return 15; }
-            case VisualNovelEventType.MARK_BIAS: { return 16; }
+            case VisualNovelEventType.SAVE_PERSISTENT_EVENT: { return 15; }
+            case VisualNovelEventType.MARK_BIAS_EVENT: { return 16; }
 
             default: { return -1; }
         }
@@ -57,8 +57,8 @@ public class VisualNovelEventTypeHelper
             case 12: { return VisualNovelEventType.PLAY_ANIMATION_EVENT; }
             case 13: { return VisualNovelEventType.FREE_TEXT_INPUT_EVENT; }
             case 14: { return VisualNovelEventType.GPT_PROMPT_EVENT; }
-            case 15: { return VisualNovelEventType.METHODE_CALL_EVENT; }
-            case 16: { return VisualNovelEventType.MARK_BIAS; }
+            case 15: { return VisualNovelEventType.SAVE_PERSISTENT_EVENT; }
+            case 16: { return VisualNovelEventType.MARK_BIAS_EVENT; }
             default: { return VisualNovelEventType.NONE; }
         }
     }

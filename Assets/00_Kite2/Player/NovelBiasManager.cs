@@ -68,83 +68,83 @@ public class NovelBiasManager
         return instance;
     }
 
-    public void MarkBiasAsRelevant(string biasName)
+    public void MarkBiasAsRelevant(DiscriminationBias biasName)
     {
         switch (biasName)
         {
-            case BiasName.ACCESS_TO_FUNDING:
+            case DiscriminationBias.ACCESS_TO_FUNDING:
                 IsBiasAccessToFundingRelevant = true;
                 break;
-            case BiasName.GENDER_PAY_GAP:
+            case DiscriminationBias.GENDER_PAY_GAP:
                 IsBiasGenderPayGapRelevant = true;
                 break;
-            case BiasName.UNDERVALUATION_OF_WOMEN_LED_BUSINESSES:
+            case DiscriminationBias.UNDERVALUATION_OF_WOMEN_LED_BUSINESSES:
                 IsBiasUndervaluationOfWomenLedBusinessesRelevant = true;
                 break;
-            case BiasName.RISK_AVERSION_BIAS:
+            case DiscriminationBias.RISK_AVERSION_BIAS:
                 IsBiasRiskAversionBiasRelevant = true;
                 break;
-            case BiasName.CONFIRMATION_BIAS:
+            case DiscriminationBias.CONFIRMATION_BIAS:
                 IsBiasConfirmationBiasRelevant = true;
                 break;
-            case BiasName.TOKENISM:
+            case DiscriminationBias.TOKENISM:
                 IsBiasTokenismRelevant = true;
                 break;
-            case BiasName.IN_PERCEPTION_OF_LEADERSHIP_ABILITIES:
+            case DiscriminationBias.IN_PERCEPTION_OF_LEADERSHIP_ABILITIES:
                 IsBiasInPerceptionOfLeadershipAbilitiesRelevant = true;
                 break;
-            case BiasName.RACIST_AND_ETHNIC_BIASES:
+            case DiscriminationBias.RACIST_AND_ETHNIC_BIASES:
                 IsBiasRacistAndEthnicBiasesRelevant = true;
                 break;
-            case BiasName.SOCIOECONOMIC_BIASES:
+            case DiscriminationBias.SOCIOECONOMIC_BIASES:
                 IsBiasSocioeconomicBiasesRelevant = true;
                 break;
-            case BiasName.AGE_AND_GENERATIONAL_BIASES:
+            case DiscriminationBias.AGE_AND_GENERATIONAL_BIASES:
                 IsBiasAgeAndGenerationalBiasesRelevant = true;
                 break;
-            case BiasName.SEXUALITY_RELATED_BIASES:
+            case DiscriminationBias.SEXUALITY_RELATED_BIASES:
                 IsBiasSexualityRelatedBiasesRelevant = true;
                 break;
-            case BiasName.AGAINST_WOMEN_WITH_DISABILITIES:
+            case DiscriminationBias.AGAINST_WOMEN_WITH_DISABILITIES:
                 IsBiasAgainstWomenWithDisabilitiesRelevant = true;
                 break;
-            case BiasName.STEREOTYPES_AGAINST_WOMEN_IN_NON_TRADITIONAL_INDUSTRIES:
+            case DiscriminationBias.STEREOTYPES_AGAINST_WOMEN_IN_NON_TRADITIONAL_INDUSTRIES:
                 IsBiasStereotypesAgainstWomenInNonTraditionalIndustriesRelevant = true;
                 break;
-            case BiasName.CULTURAL_AND_RELIGIOUS_BIASES:
+            case DiscriminationBias.CULTURAL_AND_RELIGIOUS_BIASES:
                 IsBiasCulturalAndReligiousBiasesRelevant = true;
                 break;
-            case BiasName.MATERNAL_BIAS:
+            case DiscriminationBias.MATERNAL_BIAS:
                 IsBiasMaternalBiasRelevant = true;
                 break;
-            case BiasName.AGAINST_WOMEN_WITH_CHILDREN:
+            case DiscriminationBias.AGAINST_WOMEN_WITH_CHILDREN:
                 IsBiasAgainstWomenWithChildrenRelevant = true;
                 break;
-            case BiasName.EXPECTATIONS_REGARDING_FAMILY_PLANNING:
+            case DiscriminationBias.EXPECTATIONS_REGARDING_FAMILY_PLANNING:
                 IsBiasExpectationsRegardingFamilyPlanningRelevant = true;
                 break;
-            case BiasName.WORK_LIFE_BALANCE_EXPECTATIONS:
+            case DiscriminationBias.WORK_LIFE_BALANCE_EXPECTATIONS:
                 IsBiasWorkLifeBalanceExpectationsRelevant = true;
                 break;
-            case BiasName.GENDER_SPECIFIC_STEREOTYPES:
+            case DiscriminationBias.GENDER_SPECIFIC_STEREOTYPES:
                 IsBiasGenderSpecificStereotypesRelevant = true;
                 break;
-            case BiasName.TIGHTROPE_BIAS:
+            case DiscriminationBias.TIGHTROPE_BIAS:
                 IsBiasTightropeBiasRelevant = true;
                 break;
-            case BiasName.MICROAGGRESSIONS:
+            case DiscriminationBias.MICROAGGRESSIONS:
                 IsBiasMicroaggressionsRelevant = true;
                 break;
-            case BiasName.PERFORMANCE_ATTRIBUTION_BIAS:
+            case DiscriminationBias.PERFORMANCE_ATTRIBUTION_BIAS:
                 IsBiasPerformanceAttributionBiasRelevant = true;
                 break;
-            case BiasName.IN_MEDIA_AND_ADVERTISING:
+            case DiscriminationBias.IN_MEDIA_AND_ADVERTISING:
                 IsBiasInMediaAndAdvertisingRelevant = true;
                 break;
-            case BiasName.UNCONSCIOUS_BIAS_IN_COMMUNICATION:
+            case DiscriminationBias.UNCONSCIOUS_BIAS_IN_COMMUNICATION:
                 IsBiasUnconsciousBiasInCommunicationRelevant = true;
                 break;
-            case BiasName.PROVE_IT_AGAIN_BIAS:
+            case DiscriminationBias.PROVE_IT_AGAIN_BIAS:
                 IsBiasProveItAgainBiasRelevant = true;
                 break;
             default:

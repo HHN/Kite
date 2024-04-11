@@ -56,15 +56,14 @@ public class ConversationContentGuiController : MonoBehaviour
     private void ShowMessage(VisualNovelEvent novelEvent)
     {
         GameObject newMessageBox;
-        if ((!string.IsNullOrEmpty(PlayManager.Instance().GetVisualNovelToPlay().nameOfMainCharacter)) &&
-            (PlayManager.Instance().GetVisualNovelToPlay().nameOfMainCharacter.Contains(novelEvent.name, System.StringComparison.OrdinalIgnoreCase)))
+        if (novelEvent.character == CharacterTypeHelper.ToInt(Character.PLAYER))
         {
             newMessageBox = Instantiate(blueMessagePrefab, this.transform);
         }
-        else if ((novelEvent.name != null) && 
-            (novelEvent.name.Contains("Intro", System.StringComparison.OrdinalIgnoreCase) 
-            || novelEvent.name.Contains("Outro", System.StringComparison.OrdinalIgnoreCase) 
-            || novelEvent.name.Contains("Info", System.StringComparison.OrdinalIgnoreCase)))
+        else if ((novelEvent.character != 0) && 
+            (novelEvent.character == CharacterTypeHelper.ToInt(Character.INTRO)) 
+            || novelEvent.character == CharacterTypeHelper.ToInt(Character.OUTRO)
+            || novelEvent.character == CharacterTypeHelper.ToInt(Character.INFO))
         {
             newMessageBox = Instantiate(cottaMessagePrefab, this.transform);
         }
@@ -75,7 +74,7 @@ public class ConversationContentGuiController : MonoBehaviour
         ChatMessageBox messageBox = newMessageBox.GetComponent<ChatMessageBox>();
         messageBox.SetMessage(novelEvent.text);
         guiContent.Add(newMessageBox);
-        PromptManager.Instance().AddLineToPrompt(novelEvent.name + ": " + novelEvent.text);
+        PromptManager.Instance().AddLineToPrompt(CharacterTypeHelper.GetNameOfCharacter(novelEvent.character) + ": " + novelEvent.text);
     }
 
     public void ShowPlayerAnswer(string message)
@@ -85,6 +84,6 @@ public class ConversationContentGuiController : MonoBehaviour
         messageBox.SetMessage(message);
         guiContent.Add(newMessageBox);
         PromptManager.Instance().AddLineToPrompt(
-            PlayManager.Instance().GetVisualNovelToPlay().nameOfMainCharacter + ": " + message);
+            CharacterTypeHelper.GetNameOfCharacter(Character.PLAYER) + ": " + message);
     }
 }

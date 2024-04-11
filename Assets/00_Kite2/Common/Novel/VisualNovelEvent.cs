@@ -13,7 +13,7 @@ public class VisualNovelEvent
     public int hairSpriteId;
     public int faceSpriteId;
     public int backgroundSpriteId;
-    public string name;
+    public int character;
     public string text;
     public int animationType;
     public int expressionType;
@@ -28,8 +28,7 @@ public class VisualNovelEvent
     public string gptPrompt;
     public string variablesNameForGptPromp;
     public int gptCompletionHandlerId;
-    public string methodNameToCall;
     public string key;
     public string value;
-    public string relevantBias;
+    public int relevantBias;
 }

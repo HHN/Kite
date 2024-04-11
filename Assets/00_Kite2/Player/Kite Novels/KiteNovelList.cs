@@ -1,8 +1,22 @@
 using System.Collections.Generic;
-using System;
 
-[Serializable]
 public class KiteNovelList
 {
-    public List<string> visualNovels;
+    private List<string> visualNovels;
+
+    public KiteNovelList(List<string> visualNovels)
+    {
+        this.visualNovels = visualNovels;
+    }
+
+    public KiteNovelList()
+    {
+        visualNovels = new List<string>();
+    }
+
+    public List<string> VisualNovels
+    {
+        get { return visualNovels; }
+        set { visualNovels = value; }
+    }
 }

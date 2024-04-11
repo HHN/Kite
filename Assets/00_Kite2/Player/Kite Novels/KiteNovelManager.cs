@@ -28,4 +28,9 @@ public class KiteNovelManager
     {
         this.kiteNovels = kiteNovels;
     }
+
+    public bool AreNovelsLoaded()
+    {
+        return (kiteNovels != null && kiteNovels.Count > 0);
+    }
 }
