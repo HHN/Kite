@@ -146,4 +146,134 @@ public class TweeProcessor
             return null;
         }
     }
+
+    public static string ExtractMessageOutOfTweePassage(string text)
+    {
+        text = RemoveTitleFromPassage(text);
+        text = RemoveTextInDoubleBrackets(text);
+        text = RemoveTextInCurlyBraces(text);
+        text = RemoveTextInParentheses(text);
+        text = RemoveTextInDoubleAngleBrackets(text);
+        text = RemoveTextInDoubleAngleBracketsOtherDirection(text);
+        text = RemoveSquareBrackets(text);
+        text = RemoveKeyWords(text);
+        text = NormalizeSpaces(text);
+        return text;
+    }
+
+    private static string RemoveKeyWords(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return "";
+        }
+        foreach (string keyWord in NovelKeyWordValue.ALL_KEY_WORDS)
+        {
+            input = input.Replace(keyWord, "");
+        }
+        return input;
+    }
+
+    private static string RemoveTitleFromPassage(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return "";
+        }
+        var titlePattern = @"^\:\: [^\n]+";
+
+        var result = Regex.Replace(input, titlePattern, "").Trim();
+
+        return result;
+    }
+
+    private static string RemoveTextInDoubleBrackets(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return "";
+        }
+        var pattern = @"\[\[(.*?)\]\]";
+
+        var result = Regex.Replace(input, pattern, "");
+
+        return result;
+    }
+
+    private static string RemoveTextInCurlyBraces(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return "";
+        }
+        var pattern = @"\{(.*?)\}";
+
+        var result = Regex.Replace(input, pattern, "");
+
+        return result;
+    }
+    private static string RemoveTextInParentheses(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return "";
+        }
+
+        var pattern = @"\([^\)]*\)";
+
+        var result = Regex.Replace(input, pattern, "");
+
+        return result;
+    }
+
+    private static string RemoveTextInDoubleAngleBrackets(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return "";
+        }
+
+        var pattern = @"\<\<.*?\>\>";
+
+        var result = Regex.Replace(input, pattern, "");
+
+        return result;
+    }
+
+    private static string RemoveTextInDoubleAngleBracketsOtherDirection(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return "";
+        }
+
+        var pattern = @"\>\>.*?\<\<";
+
+        var result = Regex.Replace(input, pattern, "");
+
+        return result;
+    }
+
+    private static string RemoveSquareBrackets(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return "";
+        }
+        var result = input.Replace("[", "").Replace("]", "");
+        return result;
+    }
+
+    private static string NormalizeSpaces(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return "";
+        }
+        var pattern = @"\s+";
+
+        var result = Regex.Replace(input, pattern, " ");
+
+        return result;
+    }
 }
