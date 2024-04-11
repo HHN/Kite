@@ -32,4 +32,7 @@ public class InfoMessages
     public static readonly string SWITCHED_TO_OFFLINE_MODE = "Die App befindet sich jetzt im Offline Modus.";
     public static readonly string UPDATE_AVAILABLE = "Deine App-Version ist veraltet. Ein neues Update ist verfügbar. Bitte aktualisiere deine App, um Kompatibilitätsprobleme mit dem Server zu vermeiden und ein optimales Nutzungserlebnis zu gewährleisten.";
     public static readonly string SAVED_SUCCESFULLY = "Deine Änderungen wurden gespeichert.";
+    public static readonly string STARTED_TOGGLETEXTTOSPEECH_BUTTON = "Text wird dir nun vorgelesen.";
+    public static readonly string STOPPED_TOGGLETEXTTOSPEECH_BUTTON = "Text wird dir nun nicht länger vorgelesen.";
+    public static readonly string EXPLANATION_TEXTTOSPEECH_BUTTON = "Wenn du diese Funktion aktivierst werden dir Textboxen vorgelesen, sobald du sie anklickst und auch innerhalb der Novel wird der Text vertont.";
 }
