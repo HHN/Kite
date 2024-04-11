@@ -63,10 +63,12 @@ public class PlayNovelSceneController : SceneController
         tapToContinueAnimation.SetActive(false);
         tapToContinueAnimation.GetComponent<Animator>().enabled = false;
         AnalyticsServiceHandler.Instance().StartStopwatch();
+        TextToSpeechService.Instance().SetAudioSource(audioSource);
         BackStackManager.Instance().Push(SceneNames.PLAY_NOVEL_SCENE);
         novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
         NovelBiasManager.Clear();
         Initialize();
+        TextToSpeechService.Instance().SetNovelTitle(novelToPlay.title);
     }
 
     public void Initialize()
@@ -378,6 +380,8 @@ public class PlayNovelSceneController : SceneController
 
     public void HandleShowMessageEvent(VisualNovelEvent novelEvent)
     {
+        //Debug.Log(novelEvent.text);   // Needed to copy the text from the novel to AWS Polly
+        TextToSpeechService.Instance().TextToSpeech(novelToPlay.title+novelEvent.id);
         novelEvent.text = ReplacePlaceholders(novelEvent.text, novelToPlay.GetGlobalVariables());
 
         string nextEventID = novelEvent.nextId;
@@ -420,11 +424,14 @@ public class PlayNovelSceneController : SceneController
             return;
         }
         AnalyticsServiceHandler.Instance().AddChoiceToList(novelEvent.text);
+        TextToSpeechService.Instance().addChoiceToChoiceCollectionForTextToSpeech(novelEvent.onChoice);
         PlayNextEvent();
     }
 
     public void HandleShowChoicesEvent(VisualNovelEvent novelEvent)
-    { 
+    {
+        // TODO: Implement text to speech 
+        TextToSpeechService.Instance().TextToSpeech(novelToPlay.title + TextToSpeechService.Instance().returnChoicesForTextToSpeech());
         AddEntryToPlayThroughHistory(CharacterTypeHelper.ValueOf(novelEvent.character), novelEvent.text);
         conversationContent.AddContent(novelEvent, this);
     }
