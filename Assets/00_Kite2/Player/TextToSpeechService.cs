@@ -52,7 +52,7 @@ public class TextToSpeechService
     public string returnNameOfAudioFileFromTitelAndId(string titleAndId)
     {
         string returnstring = titleAndId.Replace("ä", "ae").Replace("ö", "oe").Replace("ü", "ue").Replace("ß", "ss");
-        Debug.Log(returnstring);
+        //Debug.Log(returnstring);
         return returnstring;
     }
 
