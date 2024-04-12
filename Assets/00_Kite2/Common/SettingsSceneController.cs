@@ -148,11 +148,11 @@ public class SettingsSceneController : SceneController
     {
         if (TextToSpeechManager.Instance().IsTextToSpeechActivated())
         {
-            toggleTextToSpeechButton.GetComponentInChildren<TextMeshProUGUI>().text = "TEXT VORLESEN";
+            toggleTextToSpeechButton.GetComponentInChildren<TextMeshProUGUI>().text = "TEXT NICHT VORLESEN";
         }
         else
         {
-            toggleTextToSpeechButton.GetComponentInChildren<TextMeshProUGUI>().text = "TEXT NICHT VORLESEN";
+            toggleTextToSpeechButton.GetComponentInChildren<TextMeshProUGUI>().text = "TEXT VORLESEN";
         }
     }
 
@@ -201,12 +201,12 @@ public class SettingsSceneController : SceneController
         if (TextToSpeechManager.Instance().IsTextToSpeechActivated())
         {
             TextToSpeechManager.Instance().DeactivateTextToSpeech();
-            DisplayInfoMessage(InfoMessages.STARTED_TOGGLETEXTTOSPEECH_BUTTON);
+            DisplayInfoMessage(InfoMessages.STOPPED_TOGGLETEXTTOSPEECH_BUTTON);
         }
         else
         {
             TextToSpeechManager.Instance().ActivateTextToSpeech();
-            DisplayInfoMessage(InfoMessages.STOPPED_TOGGLETEXTTOSPEECH_BUTTON);
+            DisplayInfoMessage(InfoMessages.STARTED_TOGGLETEXTTOSPEECH_BUTTON);
         }
         InitializeToggleTextToSpeechButton();
         // If more settings are decired this should lead to an extra scene

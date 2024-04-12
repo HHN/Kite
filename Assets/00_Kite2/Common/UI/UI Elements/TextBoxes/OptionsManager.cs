@@ -108,40 +108,30 @@ public class OptionsManager : MonoBehaviour
     public void OnOptionA()
     {
         AnalyticsServiceHandler.Instance().SetChoiceId(0);
-        Debug.Log(stringA);
-        TextToSpeechService.Instance().TextToSpeech(idA, true);
         StartCoroutine(AfterSelection("Selected A", stringA, idA, displayAfterSelectionA));
     }
 
     public void OnOptionB()
     {
         AnalyticsServiceHandler.Instance().SetChoiceId(1);
-        Debug.Log(stringB);
-        TextToSpeechService.Instance().TextToSpeech(idB, true);
         StartCoroutine(AfterSelection("Selected B", stringB, idB, displayAfterSelectionB));
     }
 
     public void OnOptionC()
     {
         AnalyticsServiceHandler.Instance().SetChoiceId(2);
-        Debug.Log(stringC);
-        TextToSpeechService.Instance().TextToSpeech(idC, true);
         StartCoroutine(AfterSelection("Selected C", stringC, idC, displayAfterSelectionC));
     }
 
     public void OnOptionD()
     {
         AnalyticsServiceHandler.Instance().SetChoiceId(3);
-        Debug.Log(stringD);
-        TextToSpeechService.Instance().TextToSpeech(idD, true);
         StartCoroutine(AfterSelection("Selected D", stringD, idD, displayAfterSelectionD));
     }
 
     public void OnOptionE()
     {
         AnalyticsServiceHandler.Instance().SetChoiceId(4);
-        Debug.Log(stringE);
-        TextToSpeechService.Instance().TextToSpeech(idE, true);
         StartCoroutine(AfterSelection("Selected E", stringE, idE, displayAfterSelectionE));
     }
 
