@@ -20,7 +20,7 @@ Bankgespraech
 
 :: Buero {"position":"900,650","size":"100,100"}
 >>Info Nachricht wird angezeigt:<<
-Du hast eine Einladung zu einem Bankgespräch erhalten, um mehr Informationen über einen Kredit zu erhalten und diesen darauf zu beantragen.
+Du hast eine Einladung zu einem Bankgespräch erhalten, um mehr Informationen über einen Kredit zu erhalten und diesen daraufhin zu beantragen.
 
 [[Weiter|Lea01]]
 
