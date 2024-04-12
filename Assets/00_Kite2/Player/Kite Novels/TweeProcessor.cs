@@ -158,7 +158,7 @@ public class TweeProcessor
         text = RemoveSquareBrackets(text);
         text = RemoveKeyWords(text);
         text = NormalizeSpaces(text);
-        return text;
+        return text.Trim();
     }
 
     private static string RemoveKeyWords(string input)

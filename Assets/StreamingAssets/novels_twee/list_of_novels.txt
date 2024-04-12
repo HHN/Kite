@@ -1,5 +1,6 @@
 {
   "visualNovels": [
+    "novels_twee\\Bank_Konto_Eroeffnung",
     "novels_twee\\Bankgespraech"
   ]
 }
