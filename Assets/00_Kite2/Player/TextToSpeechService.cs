@@ -30,21 +30,18 @@ public class TextToSpeechService
         this.novelTitle = novelTitle;
     }
 
-    public void TextToSpeech(string titleAndId, bool opendFromOptionsManager = false)
+    public void TextToSpeech(string titleAndId)
     {
-        if(opendFromOptionsManager)
-        {
-            audioSource.clip = Resources.Load<AudioClip>(returnNameOfAudioFileFromTitelAndId(novelTitle + titleAndId));
-        } else
+        if(TextToSpeechManager.Instance().IsTextToSpeechActivated())
         {
             audioSource.clip = Resources.Load<AudioClip>(returnNameOfAudioFileFromTitelAndId(titleAndId));
-        }
-        if(audioSource.clip != null)
-        {
-            audioSource.Play();
-        } else
-        {
-            Debug.LogError("AudioClip couldn't be found. Check the path.");
+            if(audioSource.clip != null)
+            {
+                audioSource.Play();
+            } else
+            {
+                Debug.LogError("AudioClip couldn't be found. Check the path.");
+            } 
         }
         choicesForTextToSpeech = "";
     }
