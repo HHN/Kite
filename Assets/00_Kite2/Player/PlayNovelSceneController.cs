@@ -343,10 +343,14 @@ public class PlayNovelSceneController : SceneController
 
         GameObject character = Instantiate(characterPrefab, characterContainer.transform);
         CharacterController controller = character.GetComponent<CharacterController>();
-        controller.SetSkinSprite(novelEvent.skinSpriteId);
-        controller.SetClotheSprite(novelEvent.clotheSpriteId);
-        controller.SetHairSprite(novelEvent.hairSpriteId);
-        controller.SetFaceExpression(novelEvent.faceSpriteId);
+
+        if (CharacterTypeHelper.ValueOf(novelEvent.character) == Character.MAYER)
+        {
+            controller.SetSkinSprite(0);
+            controller.SetClotheSprite(0);
+            controller.SetHairSprite(0);
+            controller.SetFaceExpression(0);
+        }
 
         currentCharacters.Add(CharacterTypeHelper.ValueOf(novelEvent.character), character);
 

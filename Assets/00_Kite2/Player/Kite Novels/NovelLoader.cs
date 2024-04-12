@@ -78,6 +78,7 @@ public class NovelLoader : MonoBehaviour
         }
         List<VisualNovel> visualNovels = KiteNovelConverter.ConvertFilesToNovels(allFolders);
         KiteNovelManager.Instance().SetAllKiteNovels(visualNovels);
+        NovelTester.TestNovels(visualNovels);
     }
 
     private IEnumerator LoadNovelPaths(string path, System.Action<List<string>> callback)

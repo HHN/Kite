@@ -12,7 +12,7 @@ Bank Kontoeröffnung 0.4
 }
 
 
-:: Allein verfasst {"position":"1700,925","size":"100,100"}
+:: Allein verfasst {"position":"1700,975","size":"100,100"}
 >>Charakter 01 spricht laughing:<<
 Ich bin beeindruckt. Das ist für eine Frau eine ziemliche Leistung!
 
@@ -31,7 +31,7 @@ Bei deinem Banktermin heute möchtest du ein Firmenkonto eröffnen. Du hast dein
 [[Weiter]]
 
 
-:: Danke, aber es wäre schön, wenn wir alle mehr auf unsere Wortwahl achten könnten. Schließlich haben Worte Macht, auch wenn Sie es nicht böse meinen. {"position":"1775,1750","size":"100,100"}
+:: Danke, aber es wäre schön, wenn wir alle mehr auf unsere Wortwahl achten könnten. Schließlich haben Worte Macht, auch wenn Sie es nicht böse meinen. {"position":"1625,1775","size":"100,100"}
 >>Charakter 01 spricht smiling:<<
 Ja, die Äußerung war wirklich nicht gut durchdacht. Jedenfalls freue ich mich darauf, mit Ihnen zusammenzuarbeiten und Ihre unternehmerischen Erfolge zu unterstützen.
 
@@ -42,6 +42,7 @@ Ja, die Äußerung war wirklich nicht gut durchdacht. Jedenfalls freue ich mich 
 
 
 :: Ende Negativ {"position":"3600,3225","size":"100,100"}
+>>Ende<<
 [[Anfang]]
 
 
@@ -53,6 +54,7 @@ Wie gesagt, habe ich das Gefühl, dass Ihre Geschäftsidee in eine Risikobranche
 
 
 :: Ende Neutral II {"position":"725,3525","size":"100,100"}
+>>Charakter 01 spricht:<<
 Gerne und auf Wiedersehen!
 
 [[Anfang]]

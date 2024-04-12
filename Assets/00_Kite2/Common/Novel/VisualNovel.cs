@@ -67,4 +67,34 @@ public class VisualNovel
     {
         globalVariables = new Dictionary<string, string>();
     }
+
+    public VisualNovel DeepCopy()
+    {
+        VisualNovel newNovel = new VisualNovel();
+
+        newNovel.id = id;
+        newNovel.folderName = folderName;
+        newNovel.title = title;
+        newNovel.description = description;
+        newNovel.image = image;
+        newNovel.feedback = feedback;
+        newNovel.context = context;
+        newNovel.isKite2Novel = isKite2Novel;
+
+        if (novelEvents != null)
+        {
+            newNovel.novelEvents = new List<VisualNovelEvent>();
+            foreach (VisualNovelEvent eventItem in novelEvents)
+            {
+                newNovel.novelEvents.Add(eventItem.DeepCopy()); // Stelle sicher, dass VisualNovelEvent eine DeepCopy-Methode hat
+            }
+        }
+
+        if (globalVariables != null)
+        {
+            newNovel.globalVariables = new Dictionary<string, string>(globalVariables);
+        }
+
+        return newNovel;
+    }
 }

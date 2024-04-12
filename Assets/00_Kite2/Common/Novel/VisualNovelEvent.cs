@@ -31,4 +31,40 @@ public class VisualNovelEvent
     public string key;
     public string value;
     public int relevantBias;
+
+    public VisualNovelEvent DeepCopy()
+    {
+        VisualNovelEvent newEvent = new VisualNovelEvent();
+
+        newEvent.id = id;
+        newEvent.nextId = nextId;
+        newEvent.onChoice = onChoice;
+        newEvent.eventType = eventType;
+        newEvent.waitForUserConfirmation = waitForUserConfirmation;
+        newEvent.skinSpriteId = skinSpriteId;
+        newEvent.clotheSpriteId = clotheSpriteId;
+        newEvent.hairSpriteId = hairSpriteId;
+        newEvent.faceSpriteId = faceSpriteId;
+        newEvent.backgroundSpriteId = backgroundSpriteId;
+        newEvent.character = character;
+        newEvent.text = text;
+        newEvent.animationType = animationType;
+        newEvent.expressionType = expressionType;
+        newEvent.xPosition = xPosition;
+        newEvent.yPosition = yPosition;
+        newEvent.opinionChoiceNumber = opinionChoiceNumber;
+        newEvent.audioClipToPlay = audioClipToPlay;
+        newEvent.animationToPlay = animationToPlay;
+        newEvent.show = show;
+        newEvent.questionForFreeTextInput = questionForFreeTextInput;
+        newEvent.variablesName = variablesName;
+        newEvent.gptPrompt = gptPrompt;
+        newEvent.variablesNameForGptPromp = variablesNameForGptPromp;
+        newEvent.gptCompletionHandlerId = gptCompletionHandlerId;
+        newEvent.key = key;
+        newEvent.value = value;
+        newEvent.relevantBias = relevantBias;
+
+        return newEvent;
+    }
 }
