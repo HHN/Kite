@@ -12,6 +12,6 @@
   "talkingPartner02" : "",
   "talkingPartner03" : "",
   "wordsToReplace": [
-    {"wordToReplace": "Hallo", "replaceByValue": "Tschüss"}
+    {"wordToReplace": "Ein Beispiel String der ersetzt wird durch einen Wert", "replaceByValue": "ein Wert"}
   ]
 }
