@@ -30,9 +30,10 @@ public class TextToSpeechService
         this.novelTitle = novelTitle;
     }
 
-    public void TextToSpeech(string titleAndId)
+    public void TextToSpeech(string titleAndId, bool readAnyway = false)
     {
-        if(TextToSpeechManager.Instance().IsTextToSpeechActivated())
+        //Debug.Log(titleAndId);
+        if(TextToSpeechManager.Instance().IsTextToSpeechActivated() || readAnyway)
         {
             audioSource.clip = Resources.Load<AudioClip>(returnNameOfAudioFileFromTitelAndId(titleAndId));
             if(audioSource.clip != null)

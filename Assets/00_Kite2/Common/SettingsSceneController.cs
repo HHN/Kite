@@ -33,10 +33,14 @@ public class SettingsSceneController : SceneController
     [SerializeField] private Button toggleTextToSpeechInfoButton;
     [SerializeField] private Button applicationModeButton;
     [SerializeField] private Button applicationModeInfoButton;
+    [SerializeField] private AudioSource audioSource;
 
     void Start()
     {
         BackStackManager.Instance().Push(SceneNames.SETTINGS_SCENE);
+
+        audioSource = GetComponent<AudioSource>();
+        TextToSpeechService.Instance().SetAudioSource(audioSource);
 
         aboutKiteButton.onClick.AddListener(delegate { OnAboutKiteButton(); });
         aboutKiteInfoButton.onClick.AddListener(delegate { OnAboutKiteInfoButton(); });
@@ -74,11 +78,13 @@ public class SettingsSceneController : SceneController
 
     public void OnAboutKiteButton()
     {
+        TextToSpeechService.Instance().TextToSpeech("ueberKITE");
         SceneLoader.LoadInfoScene();
     }
 
     public void OnAboutKiteInfoButton()
     {
+        TextToSpeechService.Instance().TextToSpeech("infoSeiteInfo");
         DisplayInfoMessage(InfoMessages.EXPLANATION_ABOUT_US_BUTTON);
     }
 
@@ -95,28 +101,38 @@ public class SettingsSceneController : SceneController
             DisplayInfoMessage(InfoMessages.STARTED_DATA_COLLECTION);
         }
         InitializeToggleDataCollectionButton();
+        if (PrivacyAndConditionManager.Instance().IsDataCollectionAccepted())
+        {
+            TextToSpeechService.Instance().TextToSpeech("startDatenaufzeichnung");
+        } else {
+            TextToSpeechService.Instance().TextToSpeech("stopDatenaufzeichnung");
+        }
     }
 
     public void OnToggleDataCollectionInfoButton()
     {
         if (PrivacyAndConditionManager.Instance().IsDataCollectionAccepted())
         {
+            TextToSpeechService.Instance().TextToSpeech("datenaufzeichnungAktiviert");
             DisplayInfoMessage(InfoMessages.EXPLANATION_STOP_DATA_BUTTON);
         } 
         else
         {
+            TextToSpeechService.Instance().TextToSpeech("datenaufzeichnungDeaktivieren");
             DisplayInfoMessage(InfoMessages.EXPLANATION_COLLECT_DATA_BUTTON);
         }
     }
 
     public void OnDeleteCollectedDataButton()
     {
+        TextToSpeechService.Instance().TextToSpeech("datenloeschungErfolgreichNotification");
         AnalyticsServiceHandler.Instance().DeleteCollectedData();
         DisplayInfoMessage(InfoMessages.DELETED_DATA);
     }
 
     public void OnDeleteCollectedDataInfoButton()
     {
+        TextToSpeechService.Instance().TextToSpeech("datenloeschungInfo");
         DisplayInfoMessage(InfoMessages.EXPLANATION_DELETE_DATA_BUTTON);
     }
 
@@ -158,41 +174,49 @@ public class SettingsSceneController : SceneController
 
     public void OnTermsOfUseButton()
     {
+        //TextToSpeechService.Instance().TextToSpeech("");
         SceneLoader.LoadTermsOfUseScene();
     }
 
     public void OnTermsOfUseInfoButton()
     {
+        TextToSpeechService.Instance().TextToSpeech("nutzungsbedingungenInfo");
         DisplayInfoMessage(InfoMessages.EXPLANATION_TERMS_OF_USE_BUTTON);
     }
 
     public void OnDataPrivacyButton()
     {
+        //TextToSpeechService.Instance().TextToSpeech("");
         SceneLoader.LoadPrivacyPolicyScene();
     }
 
     public void OnDataPrivacyInfoButton()
     {
+        TextToSpeechService.Instance().TextToSpeech("datenschutzerklaerungInfo");
         DisplayInfoMessage(InfoMessages.EXPLANATION_DATA_PRIVACY_BUTTON);
     }
 
     public void OnImprintButton()
     {
+        //TextToSpeechService.Instance().TextToSpeech("");
         SceneLoader.LoadImprintScene();
     }
 
     public void OnImprintInfoButton()
     {
+        TextToSpeechService.Instance().TextToSpeech("impressumInfo");
         DisplayInfoMessage(InfoMessages.EXPLANATION_IMPRINT_BUTTON);
     }
 
     private void OnPlayerPrefsButton()
     {
+        //TextToSpeechService.Instance().TextToSpeech("");
         SceneLoader.LoadPlayerPrefsScene();
     }
 
     private void OnPlayerPrefsInfoButton()
     {
+        TextToSpeechService.Instance().TextToSpeech("playerPrefsInfo");
         DisplayInfoMessage(InfoMessages.EXPLANATION_PLAYERPREFS_BUTTON);
     }
 
@@ -209,11 +233,18 @@ public class SettingsSceneController : SceneController
             DisplayInfoMessage(InfoMessages.STARTED_TOGGLETEXTTOSPEECH_BUTTON);
         }
         InitializeToggleTextToSpeechButton();
+        if (TextToSpeechManager.Instance().IsTextToSpeechActivated())
+        {
+            TextToSpeechService.Instance().TextToSpeech("textWirdVorgelesen");
+        } else {
+            TextToSpeechService.Instance().TextToSpeech("textWirdNichtMehrVorgelesen", true);
+        }
         // If more settings are decired this should lead to an extra scene
     }
 
     private void OnToggleTextToSpeechInfoButton()
     {
+        TextToSpeechService.Instance().TextToSpeech("textToSpeechInfo");
         DisplayInfoMessage(InfoMessages.EXPLANATION_TEXTTOSPEECH_BUTTON);
     }
 
@@ -230,10 +261,17 @@ public class SettingsSceneController : SceneController
             DisplayInfoMessage(InfoMessages.SWITCHED_TO_OFFLINE_MODE);
         }
         InitializeApplicationModeButton();
+        if (ApplicationModeManager.Instance().IsOfflineModeActive())
+        {
+            TextToSpeechService.Instance().TextToSpeech("offlineModus");
+        } else {
+            TextToSpeechService.Instance().TextToSpeech("onlineModus");
+        }
     }
 
     private void OnApplicationModeInfoButton()
     {
+        TextToSpeechService.Instance().TextToSpeech("onlineOfflineModusInfo");
         DisplayInfoMessage(InfoMessages.EXPLANATION_APPLICATION_MODE_BUTTON);
     }
 }
