@@ -53,7 +53,7 @@ public class PlayNovelSceneController : SceneController
     [SerializeField] private GameObject freeTextInputPrefab;
 
     [SerializeField] private Coroutine timerCoroutine;
-    [SerializeField] private float timerForHint = 5.0f;
+    [SerializeField] private float timerForHint = 12.0f; // Time after which the hint to tap on the screen is shown
 
     // Analytics
     [SerializeField] private bool firstUserConfirmation = true;
