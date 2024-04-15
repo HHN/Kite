@@ -8,23 +8,31 @@ public class NovelTester
     private VisualNovel objectUnderTest;
     private HashSet<Character> currentCharacters = new HashSet<Character>();
     private List<VisualNovelEvent> choices;
-    private List<string> alreadyPlayedEvents = new List<string>();
+    private HashSet<string> alreadyPlayedEvents = new HashSet<string>();
     private bool isOriginalTest = true;
     private int children = 0;
     private NovelTester parent = null;
     private bool isTestFinished = false;
+    private bool isTestSuccessfull = false;
 
-    public static void TestNovels(List<VisualNovel> novels)
+    public static List<NovelTester> TestNovels(List<VisualNovel> novels)
     {
+        List<NovelTester> tests = new List<NovelTester>();
+
         if (novels == null || novels.Count == 0)
         {
             Debug.LogWarning("No Novels to test.");
-            return;
+            return tests;
         }
+
         foreach (VisualNovel novel in novels) 
-        { 
-            new NovelTester().TestNovel(novel);
+        {
+            NovelTester tester = new NovelTester();
+            tester.TestNovel(novel);
+            tests.Add(tester);
+            
         }
+        return tests;
     }
 
     private void TestNovel(VisualNovel novelToTest)
@@ -33,8 +41,7 @@ public class NovelTester
 
         if (objectUnderTest == null)
         {
-            Debug.LogWarning("Novel under test is null.");
-            TestEndedEarly();
+            OnTestFailed("Novel under test is null.", "-", "-");
             return;
         }
         objectUnderTest.ClearGlobalVariables();
@@ -42,16 +49,16 @@ public class NovelTester
         novelEvents = new Dictionary<string, VisualNovelEvent>();
         currentCharacters = new HashSet<Character>();
         choices = new List<VisualNovelEvent>();
-        alreadyPlayedEvents = new List<string>();
+        alreadyPlayedEvents = new HashSet<string>();
 
         if (string.IsNullOrEmpty(objectUnderTest.title))
         {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): Title is null or empty.");
+            OnTestFailed("Novel title is null or empty.", "-", "-");
+            return;
         }
         if (objectUnderTest.novelEvents?.Count <= 0)
         {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): No novel-events found.");
-            TestEndedEarly();
+            OnTestFailed("No novel events found.", objectUnderTest.title, "-");
             return;
         }
         foreach (VisualNovelEvent novelEvent in objectUnderTest.novelEvents)
@@ -66,22 +73,20 @@ public class NovelTester
     {
         if (nextEventToTest == null)
         {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): Events are not correctly connected. Event to Play is null!");
-            TestEndedEarly();
+            OnTestFailed("Event to play is null!", objectUnderTest.title, "-");
             return;
         }
         VisualNovelEvent eventUnderTest = nextEventToTest;
 
         if (string.IsNullOrEmpty(eventUnderTest.id))
         {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): Event to play has an empty id! Event ID: " + eventUnderTest.id);
-            TestEndedEarly();
+            OnTestFailed("Event id is null or empty!", objectUnderTest.title, "-");
             return;
         }
         if (alreadyPlayedEvents.Contains(eventUnderTest.id))
         {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): Loop Detected! Event ID: " + eventUnderTest.id);
-            TestEndedEarly();
+            //OnTestFailed("Loop Detected!", objectUnderTest.title, eventUnderTest.id);
+            TestEndedSuccessfully();
             return;
         }
         alreadyPlayedEvents.Add(eventUnderTest.id);
@@ -90,30 +95,26 @@ public class NovelTester
            (VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) != VisualNovelEventType.SHOW_CHOICES_EVENT) &&
            (VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) != VisualNovelEventType.END_NOVEL_EVENT))
         {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): Next event to play has an empty id! Event ID: " + eventUnderTest.id);
-            TestEndedEarly();
+            OnTestFailed("Id of next event is null or empty!", objectUnderTest.title, eventUnderTest.id);
             return;
         }
         if (!novelEvents.ContainsKey(eventUnderTest.nextId) &&
            (VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) != VisualNovelEventType.SHOW_CHOICES_EVENT) &&
            (VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) != VisualNovelEventType.END_NOVEL_EVENT))
         {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): Next event to play not found! Event ID: " + eventUnderTest.id);
-            TestEndedEarly();
+            OnTestFailed("Next event to play not found!", objectUnderTest.title, eventUnderTest.id);
             return;
         }
         if ((VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) == VisualNovelEventType.ADD_CHOICE_EVENT) 
             && (string.IsNullOrEmpty(eventUnderTest.onChoice)))
         {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): On Choice Event has no OnChoice! Event ID: " + eventUnderTest.id);
-            TestEndedEarly();
+            OnTestFailed("Add Choice event without onChoice value!", objectUnderTest.title, eventUnderTest.id);
             return;
         }
         if ((VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) == VisualNovelEventType.ADD_CHOICE_EVENT) && 
             !novelEvents.ContainsKey(eventUnderTest.onChoice))
         {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): On Choice target not found! Event ID: " + eventUnderTest.id);
-            TestEndedEarly();
+            OnTestFailed("Add Choice event with on choice target that could not be found!", objectUnderTest.title, eventUnderTest.id);
             return;
         }
         VisualNovelEventType type = VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType);
@@ -194,8 +195,7 @@ public class NovelTester
                 }
             default:
                 {
-                    Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): Event without event type found!");
-                    TestEndedEarly();
+                    OnTestFailed("Event without event type!", objectUnderTest.title, eventUnderTest.id);
                     return;
                 }
         }
@@ -205,8 +205,7 @@ public class NovelTester
     {
         if (KiteSoundHelper.ValueOf(novelEvent.audioClipToPlay) == KiteSound.NONE)
         {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): Sound event without valid audio clip! Event ID: " + novelEvent.id);
-            TestEndedEarly();
+            OnTestFailed("Sound Event without audio clip!", objectUnderTest.title, novelEvent.id);
             return;
         }
         PlayNextEvent();
@@ -216,8 +215,7 @@ public class NovelTester
     {
         if (KiteAnimationHelper.ValueOf(novelEvent.animationToPlay) == KiteAnimation.NONE)
         {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): Animation event without valid animation! Event ID: " + novelEvent.id);
-            TestEndedEarly();
+            OnTestFailed("Animation Event without animation!", objectUnderTest.title, novelEvent.id);
             return;
         }
         PlayNextEvent();
@@ -227,14 +225,12 @@ public class NovelTester
     {
         if (string.IsNullOrEmpty(novelEvent.questionForFreeTextInput))
         {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): Question for free text input is null or empty! Event ID: " + novelEvent.id);
-            TestEndedEarly();
+            OnTestFailed("Freetext input Event without question!", objectUnderTest.title, novelEvent.id);
             return;
         }
         if (string.IsNullOrEmpty(novelEvent.variablesName))
         {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): Variables name for free text input is null or empty! Event ID: " + novelEvent.id);
-            TestEndedEarly();
+            OnTestFailed("Freetext input Event without variable!", objectUnderTest.title, novelEvent.id);
             return;
         }
         PlayNextEvent();
@@ -244,14 +240,12 @@ public class NovelTester
     {
         if (string.IsNullOrEmpty(novelEvent.gptPrompt))
         {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): Prompt for LLM is null or empty! Event ID: " + novelEvent.id);
-            TestEndedEarly();
+            OnTestFailed("GPT prompt event without prompt!", objectUnderTest.title, novelEvent.id);
             return;
         }
         if (string.IsNullOrEmpty(novelEvent.variablesNameForGptPromp))
         {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): Variables name for GPT Prompt is null or empty! Event ID: " + novelEvent.id);
-            TestEndedEarly();
+            OnTestFailed("GPT prompt event without variable!", objectUnderTest.title, novelEvent.id);
             return;
         }
         PlayNextEvent();
@@ -261,14 +255,12 @@ public class NovelTester
     {
         if (string.IsNullOrEmpty(novelEvent.key))
         {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): Save Persistent - Key is null or empty! Event ID: " + novelEvent.id);
-            TestEndedEarly();
+            OnTestFailed("Save persistent event without key!", objectUnderTest.title, novelEvent.id);
             return;
         }
         if (string.IsNullOrEmpty(novelEvent.value))
         {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): Save Persistent - Value is null or empty! Event ID: " + novelEvent.id);
-            TestEndedEarly();
+            OnTestFailed("Save persistent event without value!", objectUnderTest.title, novelEvent.id);
             return;
         }
         PlayNextEvent();
@@ -278,8 +270,7 @@ public class NovelTester
     {
         if (DiscriminationBiasHelper.ValueOf(novelEvent.relevantBias) == DiscriminationBias.NONE)
         {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): Discrimination Bias Event withut Discrimination Bias! Event ID: " + novelEvent.id);
-            TestEndedEarly();
+            OnTestFailed("Discrimation bias event without discrimation bias!", objectUnderTest.title, novelEvent.id);
             return;
         }
         PlayNextEvent();
@@ -289,8 +280,7 @@ public class NovelTester
     {
         if (LocationHelper.ValueOf(novelEvent.backgroundSpriteId) == Location.NONE)
         {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): Location Event without location! Event ID: " + novelEvent.id);
-            TestEndedEarly();
+            OnTestFailed("Location event without Location!", objectUnderTest.title, novelEvent.id);
             return;
         }
         PlayNextEvent();
@@ -300,8 +290,7 @@ public class NovelTester
     {
         if (CharacterTypeHelper.ValueOf(novelEvent.character) == Character.NONE)
         {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): Character Joins Event without Character! Event ID: " + novelEvent.id);
-            TestEndedEarly();
+            OnTestFailed("Character joins event without character!", objectUnderTest.title, novelEvent.id);
             return;
         }
         currentCharacters.Add(CharacterTypeHelper.ValueOf(novelEvent.character));
@@ -310,12 +299,15 @@ public class NovelTester
 
     private void HandleCharacterExitEvent(VisualNovelEvent novelEvent)
     {
-        if (CharacterTypeHelper.ValueOf(novelEvent.character) != Character.NONE)
+        if ((CharacterTypeHelper.ValueOf(novelEvent.character) != Character.NONE) &&
+            (CharacterTypeHelper.ValueOf(novelEvent.character) != Character.OUTRO) &&
+            (CharacterTypeHelper.ValueOf(novelEvent.character) != Character.INTRO) &&
+            (CharacterTypeHelper.ValueOf(novelEvent.character) != Character.INFO) &&
+            (CharacterTypeHelper.ValueOf(novelEvent.character) != Character.PLAYER)) 
         {
             if (!currentCharacters.Contains(CharacterTypeHelper.ValueOf(novelEvent.character)))
             {
-                Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): Character Exit Event with Character that is not in the scene! Event ID: " + novelEvent.id);
-                TestEndedEarly();
+                OnTestFailed("Character exit event with character that is not in the scene!", objectUnderTest.title, novelEvent.id);
                 return;
             } 
             else
@@ -334,8 +326,7 @@ public class NovelTester
     {
         if (string.IsNullOrEmpty(novelEvent.text))
         {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): Show Message Event - message is null or empty! Event ID: " + novelEvent.id);
-            TestEndedEarly();
+            OnTestFailed("Show message event without message!", objectUnderTest.title, novelEvent.id);
             return;
         }
         if (!currentCharacters.Contains(CharacterTypeHelper.ValueOf(novelEvent.character)) &&
@@ -344,14 +335,12 @@ public class NovelTester
             (CharacterTypeHelper.ValueOf(novelEvent.character) != Character.INFO) &&
             (CharacterTypeHelper.ValueOf(novelEvent.character) != Character.PLAYER))
         {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): Show Message Event - Speaking character is not in the scene! Event ID: " + novelEvent.id);
-            TestEndedEarly();
+            OnTestFailed("Show message event with speaking character that is not in the scene!", objectUnderTest.title, novelEvent.id);
             return;
         }
         if (CharacterExpressionHelper.ValueOf(novelEvent.expressionType) == CharacterExpression.NONE)
         {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): Show Message Event - without valid character-expression! Event ID: " + novelEvent.id);
-            TestEndedEarly();
+            OnTestFailed("Show message event without character expression!", objectUnderTest.title, novelEvent.id);
             return;
         }
         PlayNextEvent();
@@ -363,8 +352,7 @@ public class NovelTester
 
         if (string.IsNullOrEmpty(novelEvent.text))
         {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): Add Choice - message is null or empty! Event ID: " + novelEvent.id);
-            TestEndedEarly();
+            OnTestFailed("Add choice event without text!", objectUnderTest.title, novelEvent.id);
             return;
         }
         PlayNextEvent();
@@ -373,8 +361,7 @@ public class NovelTester
     private void HandleShowChoicesEvent(VisualNovelEvent novelEvent)
     {
         if (choices == null || choices.Count == 0) {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): Show choices event -  without choices! Event ID: " + novelEvent.id);
-            TestEndedEarly();
+            OnTestFailed("Show choices event without choices!", objectUnderTest.title, novelEvent.id);
             return;
         }
         foreach (VisualNovelEvent visualNovelEvent in choices)
@@ -388,8 +375,7 @@ public class NovelTester
     {
         if (visualNovelEvent == null)
         {
-            Debug.LogWarning("Novel under test (" + objectUnderTest.title + "): Show choices event -  Choice not found! Event ID: " + nextEventToTest.id);
-            TestEndedEarly();
+            OnTestFailed("On choice event with target that could not be found!", objectUnderTest.title, visualNovelEvent.id);
             return;
         }
         nextEventToTest = visualNovelEvent;
@@ -426,7 +412,7 @@ public class NovelTester
             newCopy.choices.Add(choice.DeepCopy());
         }
 
-        newCopy.alreadyPlayedEvents = new List<string>();
+        newCopy.alreadyPlayedEvents = new HashSet<string>();
 
         foreach (string alreadyPlayedEvent in this.alreadyPlayedEvents)
         {
@@ -449,7 +435,6 @@ public class NovelTester
         if (children == 0)
         {
             TestEndedSuccessfully();
-            isTestFinished = true;
         }
     }
 
@@ -465,31 +450,37 @@ public class NovelTester
 
     private void TestEndedSuccessfully()
     {
-        if (isOriginalTest)
-        {
-            Debug.Log("Successfully ended test for Novel: " + objectUnderTest.title);
-        } else
-        {
-            if (parent == null)
-            {
-                Debug.LogWarning("Unexprected Error while Testing Novel: Parent is null where it should not be null. ");
-            }
-            else
-            {
-                parent.SuccessfullyEndOfTestTriggerdByChildren();
-            }
-        }
+        isTestFinished = true;
+        isTestSuccessfull = true;
+        parent?.SuccessfullyEndOfTestTriggerdByChildren();
     }
 
     private void TestEndedEarly()
     {
         if (isOriginalTest)
         {
-            Debug.LogWarning("Ended Test early!");
+            Debug.LogError("Finished Test of Novel with Errors. Novel under Test: " + objectUnderTest.title + ";");
         }
         else
         {
-            parent.FailedEndOfTestTriggerdByChildren();
+            parent?.FailedEndOfTestTriggerdByChildren();
         }
+    }
+
+    private void OnTestFailed(string error, string visualNovelUnderTest, string eventUnderTest)
+    {
+        isTestFinished = true;
+        TestEndedEarly();
+        Debug.LogError("Error while testing novel. Novel under test: " + visualNovelUnderTest + "; Event under test: " + eventUnderTest + "; Error: " + error + ";");
+    }
+
+    public bool IsTestOver()
+    {
+        return isTestFinished;
+    }
+
+    public bool IsTestSuccessfull()
+    {
+        return isTestSuccessfull;
     }
 }

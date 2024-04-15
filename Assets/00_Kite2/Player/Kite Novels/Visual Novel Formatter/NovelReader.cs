@@ -5,15 +5,21 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class NovelLoader : MonoBehaviour 
+public class NovelReader : MonoBehaviour 
 {
-    private const string NovelListPath = "novels_twee/list_of_novels.txt";
+    private const string NovelListPath = "00_Kite2/novels_twee/list_of_novels.txt";
     private const string MetaDataFileName = "visual_novel_meta_data.txt";
     private const string EventListFileName = "visual_novel_event_list.txt";
+    private bool isFinished = false;
 
-    void Start()
+    public void ConvertNovelsFromTweeToJSON()
     {
         StartCoroutine(LoadAllNovelsWithTweeApproach());
+    }
+
+    public bool IsFinished()
+    {
+        return isFinished;
     }
 
     private IEnumerator LoadAllNovelsWithTweeApproach()
@@ -22,13 +28,13 @@ public class NovelLoader : MonoBehaviour
         {
             yield break;
         }
-        string fullPath = Path.Combine(Application.streamingAssetsPath, NovelListPath);
+        string fullPath = Path.Combine(Application.dataPath, NovelListPath);
 
         yield return StartCoroutine(LoadNovelPaths(fullPath, listOfAllNovelPaths =>
         {
             if (listOfAllNovelPaths == null || listOfAllNovelPaths.Count == 0)
             {
-                Debug.LogWarning("Loading Novels failed: No Novels found!");
+                Debug.LogWarning("Loading Novels failed: No Novels found! Path: " + fullPath);
                 KiteNovelManager.Instance().SetAllKiteNovels(new List<VisualNovel>());
                 return;
             }
@@ -43,8 +49,8 @@ public class NovelLoader : MonoBehaviour
 
         foreach (string pathOfNovel in listOfAllNovelPaths)
         {
-            string fullPathOfNovelMetaData = Path.Combine(Application.streamingAssetsPath, pathOfNovel, MetaDataFileName);
-            string fullPathOfNovelEventList = Path.Combine(Application.streamingAssetsPath, pathOfNovel, EventListFileName);
+            string fullPathOfNovelMetaData = Path.Combine(Application.dataPath, pathOfNovel, MetaDataFileName);
+            string fullPathOfNovelEventList = Path.Combine(Application.dataPath, pathOfNovel, EventListFileName);
 
             KiteNovelMetaData kiteNovelMetaData = null;
             string jsonStringOfEventList = null;
@@ -77,8 +83,8 @@ public class NovelLoader : MonoBehaviour
             allFolders.Add(new KiteNovelFolder(kiteNovelMetaData, kiteNovelEventList));
         }
         List<VisualNovel> visualNovels = KiteNovelConverter.ConvertFilesToNovels(allFolders);
-        KiteNovelManager.Instance().SetAllKiteNovels(visualNovels);
-        NovelTester.TestNovels(visualNovels);
+        
+        SaveToJson(new NovelListWrapper(visualNovels));
     }
 
     private IEnumerator LoadNovelPaths(string path, System.Action<List<string>> callback)
@@ -149,5 +155,14 @@ public class NovelLoader : MonoBehaviour
             }
         }
         return input;
+    }
+
+    private void SaveToJson(NovelListWrapper novelListWrapper)
+    {
+        string json = JsonUtility.ToJson(novelListWrapper, true);
+        string path = Path.Combine(Application.dataPath, "novels.json");
+        File.WriteAllText(path, json);
+        Debug.Log("Visual Novels have been successfully converted to JSON format and saved under the following path: " + path);
+        isFinished = true;
     }
 }
