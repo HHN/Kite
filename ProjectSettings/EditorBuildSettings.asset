@@ -9,11 +9,11 @@ EditorBuildSettings:
     path: Assets/00_Kite2/Common/MainMenuScene.unity
     guid: 3f684c50ceffa584480cfc12a815401b
   - enabled: 1
-    path: Assets/00_Kite2/Player/FeedbackScene.unity
-    guid: b0393e03ad9357e4cafd694c35f17130
-  - enabled: 1
     path: Assets/00_Kite2/Player/PlayNovelScene.unity
     guid: 945b72fd05426924f830464ef17543ec
+  - enabled: 1
+    path: Assets/00_Kite2/Player/FeedbackScene.unity
+    guid: b0393e03ad9357e4cafd694c35f17130
   - enabled: 1
     path: Assets/00_Kite2/Player/NovelExplorerScene.unity
     guid: d7d598b8664f8e543ade9081a5e0ca74
