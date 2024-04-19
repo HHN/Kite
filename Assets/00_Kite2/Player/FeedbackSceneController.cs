@@ -31,7 +31,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
 
         if (ApplicationModeManager.Instance().IsOfflineModeActive())
         {
-            feedbackText.SetText("Sie befinden sich im Offline Modus. Es ist kein Feedback verf�gbar.");
+            feedbackText.SetText("Sie befinden sich im Offline Modus. Es ist kein Feedback verfügbar.");
             return;
         }
         if (string.IsNullOrEmpty(novelToPlay.feedback))
