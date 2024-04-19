@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +10,7 @@ public class DropDownMenu : MonoBehaviour
     [SerializeField] private Sprite spriteWhileOpen;
     [SerializeField] private Sprite spriteWhileClosed;
     [SerializeField] private bool isOpen;
+    [SerializeField] private List<RectTransform> listOfObjectToUpdate;
 
     // Start is called before the first frame update
     void Start()
@@ -39,9 +39,11 @@ public class DropDownMenu : MonoBehaviour
         if (setOpen)
         {
             OpenMenu();
-            return;
         }
-        CloseMenu();
+        else
+        {
+            CloseMenu();
+        }
     }
 
     public void OnMenuButton()
@@ -49,9 +51,22 @@ public class DropDownMenu : MonoBehaviour
         if (isOpen)
         {
             CloseMenu();
+        } 
+        else
+        {
+            OpenMenu();
+
+        }
+
+        if (listOfObjectToUpdate == null)
+        {
             return;
         }
-        OpenMenu();
+
+        foreach (RectTransform rect in listOfObjectToUpdate)
+        {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(rect);
+        }
     }
 
     private void OpenMenu()
