@@ -64,4 +64,21 @@ public class TextToSpeechService
         return choicesForTextToSpeech;
     }
 
+    public void TextToSpeechReadLive(string text, bool readAnyway = false)
+    {
+        if(TextToSpeechManager.Instance().IsTextToSpeechActivated() || readAnyway)
+        {
+            // AudioClip clip = Overtone.GenerateAudio(text);
+            // yield return new WaitUntil(() => clip != null);
+            // audioSource.clip = Resources.Load<AudioClip>();
+            // if(audioSource.clip != null)
+            // {
+            //     audioSource.Play();
+            // } else
+            // {
+            //     Debug.LogError("There has been an error creating an audio clip.");
+            // } 
+        }
+    }
+
 }

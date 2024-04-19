@@ -13,6 +13,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
     [SerializeField] private RectTransform layout;
     [SerializeField] private AudioSource waitingLoopMusic;
     [SerializeField] private AudioSource resultMusic;
+    [SerializeField] private AudioSource textToSpeech;
 
     private void Start()
     {
@@ -30,7 +31,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
 
         if (ApplicationModeManager.Instance().IsOfflineModeActive())
         {
-            feedbackText.SetText("Sie befinden sich im Offline Modus. Es ist kein Feedback verfügbar.");
+            feedbackText.SetText("Sie befinden sich im Offline Modus. Es ist kein Feedback verfï¿½gbar.");
             return;
         }
         if (string.IsNullOrEmpty(novelToPlay.feedback))
@@ -81,6 +82,8 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
             return;
         }
         StopWaitingMusic();
+        TextToSpeechService.Instance().SetAudioSource(textToSpeech);
+        TextToSpeechService.Instance().TextToSpeechReadLive(response.GetCompletion().Trim());
         feedbackText.SetText(response.GetCompletion().Trim());
         novelToPlay.feedback = (response.GetCompletion().Trim());
         AnalyticsServiceHandler.Instance().SetWaitedForAiFeedbackTrue();
