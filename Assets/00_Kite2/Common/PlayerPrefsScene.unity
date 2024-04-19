@@ -1411,6 +1411,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 428206786}
     m_Modifications:
+    - target: {fileID: 2842724126761928113, guid: bf6dcfc49b4ebbc40800a426715caa5a, type: 3}
+      propertyPath: scrollRect
+      value: 
+      objectReference: {fileID: 678567736}
     - target: {fileID: 7042612463217586179, guid: bf6dcfc49b4ebbc40800a426715caa5a, type: 3}
       propertyPath: m_Name
       value: Container Player Prefs Prefab
