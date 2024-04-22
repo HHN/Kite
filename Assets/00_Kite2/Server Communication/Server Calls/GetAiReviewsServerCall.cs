@@ -4,8 +4,7 @@ public class GetAiReviewsServerCall : ServerCall
 {
     protected override object CreateRequestObject()
     {
-        GetAiReviewsRequest request = new GetAiReviewsRequest();
-        return request;
+        return null;
     }
 
     protected override UnityWebRequest CreateUnityWebRequestObject()

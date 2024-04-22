@@ -11,6 +11,7 @@ public class Response
     [SerializeField] private List<NovelReview> novelReviews;
     [SerializeField] private List<AiReview> aiReviews;
     [SerializeField] private List<ReviewObserver> reviewObservers;
+    [SerializeField] private List<DataObject> dataObjects;
     [SerializeField] private int version;
     [SerializeField] private int userRole;
 
@@ -72,6 +73,16 @@ public class Response
     public List<ReviewObserver> GetReviewObserver()
     {
         return this.reviewObservers;
+    }
+
+    public void SetDataObjects(List<DataObject> dataObjects)
+    {
+        this.dataObjects = dataObjects;
+    }
+
+    public List<DataObject> GetDataObjects()
+    {
+        return this.dataObjects;
     }
 
     public void SetVersion(int version)

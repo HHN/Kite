@@ -31,7 +31,7 @@ public class SceneNames
     public const string NOVEL_REVIEW_EXPLORER_SCENE = "NovelReviewExplorerScene";
     public const string REVIEW_AI_SCENE = "ReviewAiScene";
     public const string REVIEW_NOVEL_SCENE = "ReviewNovelScene";
-    public const string REVIEW_OBSERVER_EXPLORER_SCENE = "ReviewObserverExplorerScene";
+    public const string PROMPTS_AND_COMPLETIONS_EXPLORER_SCENE = "PromptsAndCompletionsExplorerScene";
 
     // LEGAL INFORMATION
     public const string IMPRINT_SCENE = "ImprintScene";

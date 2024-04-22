@@ -4,8 +4,7 @@ public class GetReviewObserversServerCall : ServerCall
 {
     protected override object CreateRequestObject()
     {
-        GetObserversRequest request = new GetObserversRequest();
-        return request;
+        return null;
     }
 
     protected override UnityWebRequest CreateUnityWebRequestObject()

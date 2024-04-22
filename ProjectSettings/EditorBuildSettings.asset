@@ -48,7 +48,7 @@ EditorBuildSettings:
     path: Assets/00_Kite2/UserFeedback/ReviewNovelScene.unity
     guid: e487af7df6edb424ea45d83cd542915b
   - enabled: 1
-    path: Assets/00_Kite2/UserFeedback/ReviewObserverExplorerScene.unity
+    path: Assets/00_Kite2/UserFeedback/PromptsAndCompletionsExplorerScene.unity
     guid: d70e8ba20e043984fbfb89a14efb7163
   - enabled: 1
     path: Assets/00_Kite2/Common/InfoTextScene.unity
