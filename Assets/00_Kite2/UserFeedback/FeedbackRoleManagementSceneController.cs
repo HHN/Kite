@@ -10,7 +10,7 @@ public class FeedbackRoleManagementSceneController : SceneController, OnSuccessH
     [SerializeField] private Button subscribeButton;
     [SerializeField] private Button novelReviewsButton;
     [SerializeField] private Button aiReviewsButton;
-    [SerializeField] private Button observerButton;
+    [SerializeField] private Button promptsAndCompletionsButton;
     [SerializeField] private GameObject buttonsToHide;
     [SerializeField] private RectTransform layout;
     [SerializeField] private GameObject getUserRoleByCodeServerCallPrefab;
@@ -37,7 +37,7 @@ public class FeedbackRoleManagementSceneController : SceneController, OnSuccessH
         subscribeButton.onClick.AddListener(delegate { OnSubscribeButton(); });
         novelReviewsButton.onClick.AddListener(delegate { OnNovelReviewButton(); });
         aiReviewsButton.onClick.AddListener(delegate { OnKiReviewButton(); });
-        observerButton.onClick.AddListener(delegate { OnObserverButton(); });
+        promptsAndCompletionsButton.onClick.AddListener(delegate { OnPromptsAndCompletionsButton(); });
     }
 
     public void OnSubscribeButton()
@@ -67,9 +67,9 @@ public class FeedbackRoleManagementSceneController : SceneController, OnSuccessH
         SceneLoader.LoadAiReviewExplorerScene();
     }
 
-    public void OnObserverButton()
+    public void OnPromptsAndCompletionsButton()
     {
-        SceneLoader.LoadReviewObserverExplorerScene();
+        SceneLoader.LoadPromptsAndCompletionsExplorerScene();
     }
 
     public void OnSuccess(Response response)

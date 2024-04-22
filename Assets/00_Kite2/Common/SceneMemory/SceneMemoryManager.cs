@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class SceneMemoryManager
 {
     private static SceneMemoryManager instance;
@@ -17,7 +15,7 @@ public class SceneMemoryManager
     private FeedbackRoleManagementSceneMemory feedbackRoleManagementSceneMemory;
     private ReviewAiSceneMemory reviewAiSceneMemory;
     private ReviewNovelSceneMemory reviewNovelSceneMemory;
-    private ReviewObserverExplorerSceneMemory reviewObserverExplorerSceneMemory;
+    private PromptsAndCompletionsExplorerSceneMemory promptsAndCompletionsExplorerSceneMemory;
     private ImprintSceneMemory imprintSceneMemory;
     private TermsOfUseSceneMemory termsOfUseSceneMemory;
     private PrivacyPolicySceneMemory privacyPolicySceneMemory;
@@ -101,9 +99,9 @@ public class SceneMemoryManager
         return this.reviewNovelSceneMemory;
     }
 
-    public ReviewObserverExplorerSceneMemory GetMemoryOfReviewObserverExplorerScene()
+    public PromptsAndCompletionsExplorerSceneMemory GetMemoryOfPromptsAndCompletionsExplorerScene()
     {
-        return this.reviewObserverExplorerSceneMemory;
+        return this.promptsAndCompletionsExplorerSceneMemory;
     }
 
     public ImprintSceneMemory GetMemoryOfImprintScene()
@@ -201,9 +199,9 @@ public class SceneMemoryManager
         this.reviewNovelSceneMemory = reviewNovelSceneMemory;
     }
 
-    public void GetMemoryOfReviewObserverExplorerScene(ReviewObserverExplorerSceneMemory reviewObserverExplorerSceneMemory)
+    public void GetMemoryOfPromptsAndCompletionsExplorerScene(PromptsAndCompletionsExplorerSceneMemory promptsAndCompletionsExplorerSceneMemory)
     {
-        this.reviewObserverExplorerSceneMemory = reviewObserverExplorerSceneMemory;
+        this.promptsAndCompletionsExplorerSceneMemory = promptsAndCompletionsExplorerSceneMemory;
     }
 
     public void ClearMemory()
@@ -221,7 +219,7 @@ public class SceneMemoryManager
         this.feedbackRoleManagementSceneMemory = null;
         this.reviewAiSceneMemory = null;
         this.reviewNovelSceneMemory = null;
-        this.reviewObserverExplorerSceneMemory = null;
+        this.promptsAndCompletionsExplorerSceneMemory = null;
         this.termsOfUseSceneMemory = null;
         this.imprintSceneMemory = null;
         this.privacyPolicySceneMemory = null;

@@ -18,7 +18,11 @@ public enum ResultCode
     NO_SUCH_REVIEW_OBSERVER,
     REVIEW_OBSERVER_ALREADY_EXISTS,
     SUCCESSFULLY_GOT_VERSION,
-    SUCCESSFULLY_GOT_USER_ROLE
+    SUCCESSFULLY_GOT_USER_ROLE,
+    SUCCESSFULLY_GOT_ALL_DATA_OBJECTS,
+    SUCCESSFULLY_ADDED_DATA_OBJECT,
+    SUCCESSFULLY_DELETED_DATA_OBJECT,
+    NO_SUCH_DATA_OBJECT
 }
 
 public class ResultCodeHelper
@@ -45,6 +49,10 @@ public class ResultCodeHelper
             case ResultCode.REVIEW_OBSERVER_ALREADY_EXISTS: { return 16; }
             case ResultCode.SUCCESSFULLY_GOT_VERSION: { return 17; }
             case ResultCode.SUCCESSFULLY_GOT_USER_ROLE: { return 18; }
+            case ResultCode.SUCCESSFULLY_GOT_ALL_DATA_OBJECTS: { return 19; }
+            case ResultCode.SUCCESSFULLY_ADDED_DATA_OBJECT: { return 20; }
+            case ResultCode.SUCCESSFULLY_DELETED_DATA_OBJECT: { return 21; }
+            case ResultCode.NO_SUCH_DATA_OBJECT: { return 22; }
             default: { return -1; }
         }
     }
@@ -71,6 +79,10 @@ public class ResultCodeHelper
             case 16: { return ResultCode.REVIEW_OBSERVER_ALREADY_EXISTS; }
             case 17: { return ResultCode.SUCCESSFULLY_GOT_VERSION; }
             case 18: { return ResultCode.SUCCESSFULLY_GOT_USER_ROLE; }
+            case 19: { return ResultCode.SUCCESSFULLY_GOT_ALL_DATA_OBJECTS; }
+            case 20: { return ResultCode.SUCCESSFULLY_ADDED_DATA_OBJECT; }
+            case 21: { return ResultCode.SUCCESSFULLY_DELETED_DATA_OBJECT; }
+            case 22: { return ResultCode.NO_SUCH_DATA_OBJECT;}
             default: { return ResultCode.NONE; }
         }
     }

@@ -126,9 +126,9 @@ public class SceneLoader
         LoadScene(SceneNames.REVIEW_NOVEL_SCENE);
     }
 
-    public static void LoadReviewObserverExplorerScene()
+    public static void LoadPromptsAndCompletionsExplorerScene()
     {
-        LoadScene(SceneNames.REVIEW_OBSERVER_EXPLORER_SCENE);
+        LoadScene(SceneNames.PROMPTS_AND_COMPLETIONS_EXPLORER_SCENE);
     }
 
     public static void LoadTermsOfUseScene()

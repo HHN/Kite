@@ -1,6 +1,6 @@
 using UnityEngine.Networking;
 
-public class GetNovelReviewsServerCall : ServerCall
+public class GetDataServerCall : ServerCall
 {
     protected override object CreateRequestObject()
     {
@@ -9,14 +9,14 @@ public class GetNovelReviewsServerCall : ServerCall
 
     protected override UnityWebRequest CreateUnityWebRequestObject()
     {
-        return UnityWebRequest.Get(ConnectionLink.NOVEL_REVIEW_LINK);
+        return UnityWebRequest.Get(ConnectionLink.DATA_LINK);
     }
 
     protected override void OnResponse(Response response)
     {
         switch (ResultCodeHelper.ValueOf(response.GetResultCode()))
         {
-            case ResultCode.SUCCESSFULLY_GOT_ALL_NOVEL_REVIEWS:
+            case ResultCode.SUCCESSFULLY_GOT_ALL_DATA_OBJECTS:
                 {
                     onSuccessHandler.OnSuccess(response);
                     return;
