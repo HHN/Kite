@@ -13,14 +13,15 @@ public class SceneBase : MonoBehaviour
     [SerializeField] private GameObject leaveGameAndGoToMainMenuMessageBox;
     [SerializeField] private GameObject leaveGameAndGoToSettingsMessageBox;
     [SerializeField] private GameObject leaveGameAndGoBackMessageBox;
+    [SerializeField] private GameObject leaveGameAndCloseMessageBox;
     [SerializeField] private LeaveNovelAndGoBackToMainmenuMessageBox leaveGameAndGoToMainMenuMessageBoxObject;
     [SerializeField] private LeaveNovelAndGoToSettingsMessageBox leaveGameAndGoToSettingsMessageBoxObject;
     [SerializeField] private LeaveNovelAndGoBackMessageBox leaveGameAndGoBackMessageBoxObject;
+    [SerializeField] private CloseNovelAndGoBackMessageBox leaveNovelAndCloseMessageBoxObject;
     [SerializeField] private Canvas canvas;
 
     void Start()
     {
-        closeButton.onClick.AddListener(delegate { OnCloseButton(); });
         novelPlayerButton.onClick.AddListener(delegate { OnNovelPlayerButton(); });
 
         OnGuestMode();
@@ -30,12 +31,14 @@ public class SceneBase : MonoBehaviour
             homeButton.onClick.AddListener(delegate { OnHomeButtonForNovelPlayer(); });
             settingsButton.onClick.AddListener(delegate { OnSettingsButtonForNovelPlayer(); });
             backButton.onClick.AddListener(delegate {OnBackButtonForNovelPlayer(); });
+            closeButton.onClick.AddListener(delegate { OnCloseButtonForNovelPlayer(); });
         } 
         else
         {
             homeButton.onClick.AddListener(delegate { OnHomeButton(); });
             settingsButton.onClick.AddListener(delegate { OnSettingsButton(); });
             backButton.onClick.AddListener(delegate { OnBackButton(); });
+            closeButton.onClick.AddListener(delegate { OnCloseButton(); });
         }
     }
 
@@ -81,6 +84,22 @@ public class SceneBase : MonoBehaviour
             return;
         }
         SceneLoader.LoadScene(lastScene);
+    }
+
+    public void OnCloseButtonForNovelPlayer()
+    {
+        if (!DestroyValidator.IsNullOrDestroyed(leaveNovelAndCloseMessageBoxObject))
+        {
+            leaveNovelAndCloseMessageBoxObject.CloseMessageBox();
+        }
+        if (DestroyValidator.IsNullOrDestroyed(canvas))
+        {
+            return;
+        }
+        leaveNovelAndCloseMessageBoxObject = null;
+        leaveNovelAndCloseMessageBoxObject = Instantiate(leaveGameAndCloseMessageBox, 
+            canvas.transform).GetComponent<CloseNovelAndGoBackMessageBox>();
+        leaveNovelAndCloseMessageBoxObject.Activate();
     }
 
     public void OnHomeButton()
