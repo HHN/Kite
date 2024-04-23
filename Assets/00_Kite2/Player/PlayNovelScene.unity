@@ -2368,10 +2368,10 @@ RectTransform:
   m_Father: {fileID: 2069162109}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 480, y: -302.5}
-  m_SizeDelta: {x: 960, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1655295461
 MonoBehaviour:
@@ -2665,6 +2665,10 @@ PrefabInstance:
       propertyPath: enableNovelPlayerButton
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7797249981855615906, guid: 41c3dc0b81cfc11438c80b89bc1548f8, type: 3}
+      propertyPath: leaveGameAndGoBackMessageBox
+      value: 
+      objectReference: {fileID: 5629918238507184917, guid: 52d64ed2a3cd0524ca7296e9ccb5ddca, type: 3}
     - target: {fileID: 7797249981855615906, guid: 41c3dc0b81cfc11438c80b89bc1548f8, type: 3}
       propertyPath: leaveGameAndGoToMainMenuMessageBox
       value: 
@@ -3024,15 +3028,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageBox: {fileID: 5629918238507184917, guid: 47c0a3038b673a24cb82a566be2abf20, type: 3}
   canvas: {fileID: 1048358123}
-  progressbar: {fileID: 0}
+  novelToPlay:
+    id: 0
+    folderName: 
+    title: 
+    description: 
+    image: 0
+    feedback: 
+    context: 
+    isKite2Novel: 0
+    novelEvents: []
   novelName: {fileID: 993531150}
   conversationContent: {fileID: 563275609}
   novelImageContainer: {fileID: 1655295459}
   novelBackgroundPrefab: {fileID: 8411936371333490823, guid: bd9e9565679ee6446be061db5b61e445, type: 3}
   characterPrefab: {fileID: 1465545687914413273, guid: aa2ae7c4c5e34ea48ba637f2c59e7998, type: 3}
+  isWaitingForConfirmation: 0
+  nextEventToPlay:
+    id: 
+    nextId: 
+    onChoice: 
+    eventType: 0
+    waitForUserConfirmation: 0
+    skinSpriteId: 0
+    clotheSpriteId: 0
+    hairSpriteId: 0
+    faceSpriteId: 0
+    backgroundSpriteId: 0
+    character: 0
+    text: 
+    animationType: 0
+    expressionType: 0
+    xPosition: 0
+    yPosition: 0
+    opinionChoiceNumber: 0
+    audioClipToPlay: 0
+    animationToPlay: 0
+    show: 1
+    questionForFreeTextInput: 
+    variablesName: 
+    gptPrompt: 
+    variablesNameForGptPromp: 
+    gptCompletionHandlerId: 0
+    key: 
+    value: 
+    relevantBias: 0
   backgroundContainer: {fileID: 1386174946}
   backgroundPrefab:
   - {fileID: 8411936371333490823, guid: bd9e9565679ee6446be061db5b61e445, type: 3}
+  currentBackground: {fileID: 0}
   characterContainer: {fileID: 1436698926}
   chatScroll: {fileID: 1164301132}
   imageScroll: {fileID: 144910133}
@@ -3042,9 +3086,8 @@ MonoBehaviour:
   confirmArea2: {fileID: 813272501}
   currentTalkingCharacterController: {fileID: 0}
   tapToContinueAnimation: {fileID: 1966865798}
-  scoreText: {fileID: 0}
-  addScoreServerCallPrefab: {fileID: 7160933486993280637, guid: ff0db1083a1a0e946a964b9aeb0c50cd, type: 3}
-  addMoneyServerCallPrefab: {fileID: 5571745016954355384, guid: 872fdb0cca16bb14dade1297f173bf4a, type: 3}
+  isTyping: 0
+  playThroughHistory: []
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   audioSource: {fileID: 2133875534}
   clips:
@@ -3058,6 +3101,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 2451443837264726971, guid: 399db683e4364e449887b9f4d7120744, type: 3}
   viewPortOfImages: {fileID: 2069162108}
+  currentAnimation: {fileID: 0}
   backgroundBlur: {fileID: 1421326877}
   imageAreaBlur: {fileID: 2014456651}
   screenContentBlur: {fileID: 1075057873}
@@ -3065,6 +3109,8 @@ MonoBehaviour:
   imageAreaColor: {fileID: 182827003}
   screenContentColor: {fileID: 1281647807}
   freeTextInputPrefab: {fileID: 3171214583603264105, guid: 59415a69fbe4f7e4a85431a77d1028fd, type: 3}
+  timerForHint: 12
+  firstUserConfirmation: 1
 --- !u!4 &2133875533
 Transform:
   m_ObjectHideFlags: 0

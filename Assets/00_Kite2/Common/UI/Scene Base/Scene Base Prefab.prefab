@@ -421,10 +421,14 @@ MonoBehaviour:
   homeButton: {fileID: 7797249982641883438}
   novelPlayerButton: {fileID: 7797249983160617427}
   settingsButton: {fileID: 7797249983907297049}
-  leaveGameAndGoToMainMenuMessageBox: {fileID: 0}
-  leaveGameAndGoToSettingsMessageBox: {fileID: 0}
+  leaveGameAndGoToMainMenuMessageBox: {fileID: 5629918238507184917, guid: 02336cf7844601448ad76ec2335ed21f, type: 3}
+  leaveGameAndGoToSettingsMessageBox: {fileID: 5629918238507184917, guid: 58ba1e2100f02dc4f8242962fbe84a48, type: 3}
+  leaveGameAndGoBackMessageBox: {fileID: 5629918238507184917, guid: 52d64ed2a3cd0524ca7296e9ccb5ddca, type: 3}
+  leaveGameAndCloseMessageBox: {fileID: 5629918238507184917, guid: f170eb85800905d4f856894470ab08b8, type: 3}
   leaveGameAndGoToMainMenuMessageBoxObject: {fileID: 0}
   leaveGameAndGoToSettingsMessageBoxObject: {fileID: 0}
+  leaveGameAndGoBackMessageBoxObject: {fileID: 0}
+  leaveNovelAndCloseMessageBoxObject: {fileID: 0}
   canvas: {fileID: 0}
 --- !u!1 &7797249982143773769
 GameObject:
@@ -909,7 +913,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 934606155765008324}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []

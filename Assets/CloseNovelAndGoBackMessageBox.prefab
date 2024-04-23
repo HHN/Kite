@@ -219,8 +219,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Bist du sicher, dass du zum Hauptmen\xFC zur\xFCckkehren m\xF6chtest?
-    \n\nAlle Fortschritte in der aktuellen Novel gehen verloren."
+  m_text: "Bist du sicher, dass du die Szene schlie\xDFen m\xF6chtest? \n\nAlle Fortschritte
+    in der aktuellen Novel gehen verloren."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
@@ -318,9 +318,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5629918238507184916}
-  - component: {fileID: 3785603064409756483}
+  - component: {fileID: 4778113736493218069}
   m_Layer: 5
-  m_Name: LeaveNovelAndGoBackToMainmenuMessageBox
+  m_Name: CloseNovelAndGoBackMessageBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -348,7 +348,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3785603064409756483
+--- !u!114 &4778113736493218069
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -357,7 +357,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5629918238507184917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0eb29dd0b1d0d345bf020de0dc00056, type: 3}
+  m_Script: {fileID: 11500000, guid: da4d53ea8c218bf4f8eb1f41b080795f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   messageBoxHeadline: {fileID: 5629918239078764577}
@@ -488,8 +488,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 804, y: 0}
-  m_SizeDelta: {x: 1508, y: 0}
+  m_AnchoredPosition: {x: 754, y: 0}
+  m_SizeDelta: {x: 1408, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5629918238945663070
 MonoBehaviour:
@@ -588,8 +588,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 724, y: 0}
-  m_SizeDelta: {x: 1448, y: 0}
+  m_AnchoredPosition: {x: 674, y: 0}
+  m_SizeDelta: {x: 1348, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5629918239078764576
 CanvasRenderer:
@@ -761,7 +761,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1488, y: 0}
+  m_AnchoredPosition: {x: 1388, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5629918239529746244
@@ -1024,8 +1024,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 804, y: 0}
-  m_SizeDelta: {x: 1508, y: 0}
+  m_AnchoredPosition: {x: 754, y: 0}
+  m_SizeDelta: {x: 1408, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5629918239756740151
 CanvasRenderer:
@@ -1270,7 +1270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7185633893947003523, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 754
+      value: 704
       objectReference: {fileID: 0}
     - target: {fileID: 7185633893947003523, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1454,7 +1454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7185633893947003523, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 754
+      value: 704
       objectReference: {fileID: 0}
     - target: {fileID: 7185633893947003523, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1478,7 +1478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7185633894973996858, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}
       propertyPath: m_text
-      value: ZUM HAUPTMENU
+      value: "BEST\xC4TIGEN"
       objectReference: {fileID: 0}
     - target: {fileID: 7185633894973996858, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}
       propertyPath: m_fontColor.b
