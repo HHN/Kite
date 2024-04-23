@@ -1,5 +1,5 @@
 :: StoryTitle
-Bankgespraech
+01 Bankgespraech
 
 
 :: StoryData
@@ -12,24 +12,22 @@ Bankgespraech
 }
 
 
-:: Animation01 {"position":"700,1650","size":"100,100"}
->>Animation abspielen: water pouring<<
-
-[[Weiter|Mayer03]]
-
-
-:: Buero {"position":"900,650","size":"100,100"}
+:: Buero {"position":"850,625","size":"100,100"}
 >>Info Nachricht wird angezeigt:<<
-Du hast eine Einladung zu einem Bankgespräch erhalten, um mehr Informationen über einen Kredit zu erhalten und diesen daraufhin zu beantragen.
+Du hast eine Einladung zu einem Bankgespräch erhalten, um mehr Informationen über einen Kredit zu erhalten und diesen darauf zu beantragen.
 
 [[Weiter|Lea01]]
 
 
-:: Lea01 {"position":"900,775","size":"100,100"}
+:: Lea01 {"position":"700,775","size":"100,100"}
 >>Spieler Charakter spricht:<<
 Hallo. Schönen guten Tag.
+>>--<<
+>>Charakter 01 spricht:<<
+Hallo. Guten Tag, setzen Sie sich. Kann ich Ihnen was zu trinken anbieten?
 
-[[Weiter|Mayer01]]
+[[Ja, gerne. Ein Wasser.|Lea02]]
+[[Nein, Danke.|Lea03]]
 
 
 :: Lea02 {"position":"700,1150","size":"100,100"}
@@ -41,7 +39,7 @@ Ja, gerne. Ein Wasser.
 
 
 
-:: Lea03 {"position":"1050,1150","size":"100,100"}
+:: Lea03 {"position":"900,1150","size":"100,100"}
 >>Spieler Charakter spricht:<<
 Nein, Danke.
 
@@ -51,15 +49,18 @@ Nein, Danke.
 :: Lea04 {"position":"575,1525","size":"100,100"}
 >>Spieler Charakter spricht:<<
 Ja, gerne mit. 
+>>--<<
+>>Animation abspielen: water pouring<<
 
-[[Weiter|Animation01]]
+[[Weiter|Mayer03]]
 
 
 :: Lea05 {"position":"825,1525","size":"100,100"}
 >>Spieler Charakter spricht:<<
 Bitte ohne Gas. 
+>>Animation abspielen: water pouring<<
 
-[[Weiter|Animation01]]
+[[Weiter|Mayer03]]
 
 
 :: Lea06 {"position":"1000,1925","size":"100,100"}
@@ -183,19 +184,17 @@ Dankeschön.
 [[Weiter|Mayer20]]
 
 
-:: Mayer01 {"position":"900,900","size":"100,100"}
->>Charakter 01 spricht:<<
-Hallo. Guten Tag, setzen Sie sich. Kann ich Ihnen was zu trinken anbieten?
+:: Mayer01 {"position":"400,925","size":"100,100"}
 
-[[Ja, gerne. Ein Wasser.|Lea02]]
 
-[[Nein, Danke.|Lea03]]
+
 
 
 :: Mayer02 {"position":"650,1325","size":"100,100"}
 >>Charakter 01 spricht:<<
 Wasser. Mit Gas, ohne Gas?
-
+>>--<<
+>>Relevanter Bias: Finanzierungszugang<<
 [[Weiter|Option02]]
 
 
@@ -308,7 +307,7 @@ Alles Gute. Auf bald.
 [[Replay|Buero]]
 
 
-:: Option02 {"position":"425,1450","size":"100,100"}
+:: Option02 {"position":"450,1425","size":"100,100"}
 
 [[Ja, gerne mit. |Lea04]]
 [[Bitte ohne Gas. |Lea05]]

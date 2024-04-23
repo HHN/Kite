@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class KiteNovelConverter
 {
     public static int counterForNamingPurpose = 1;
+    public const string EVENT_DEFINITION_SEPERATOR = ">>--<<";
 
     public static List<VisualNovel> ConvertFilesToNovels(List<KiteNovelFolder> folders)
     {
@@ -35,9 +37,9 @@ public class KiteNovelConverter
 
         foreach (TweePassage passage in passages)
         {
-            VisualNovelEvent createdEvent = CreateVisualNovelEvent(passage, kiteNovelMetaData, kiteNovelEventList);
-            HandleLoop(createdEvent, startEventLabel, kiteNovelEventList);
-            HandleDialogueOptionEvent(passage, kiteNovelEventList.NovelEvents, createdEvent);
+            VisualNovelEvent lastCreatedEvent = CreateVisualNovelEvents(passage, kiteNovelMetaData, kiteNovelEventList);
+            HandleLoop(lastCreatedEvent, startEventLabel, kiteNovelEventList);
+            HandleDialogueOptionEvent(passage, kiteNovelEventList.NovelEvents, lastCreatedEvent);
         }
         return kiteNovelEventList;
     }
@@ -134,7 +136,7 @@ public class KiteNovelConverter
         return novelEvent;
     }
 
-    public static void HandleEndNovelEvent(string label, List<VisualNovelEvent> list)
+    public static VisualNovelEvent HandleEndNovelEvent(string label, List<VisualNovelEvent> list)
     {
         string label01 = label;
         string label02 = label01 + "RandomString0012003";
@@ -148,6 +150,8 @@ public class KiteNovelConverter
         list.Add(soundEvent);
         list.Add(exitEvent);
         list.Add(endEvent);
+
+        return null;
     }
 
     public static void HandleDialogueOptionEvent(TweePassage twee, List<VisualNovelEvent> list, VisualNovelEvent lastEvent)
@@ -257,11 +261,56 @@ public class KiteNovelConverter
         return novelEvent;
     }
 
-    public static VisualNovelEvent CreateVisualNovelEvent(TweePassage passage, KiteNovelMetaData kiteNovelMetaData, KiteNovelEventList kiteNovelEventList)
+    public static VisualNovelEvent CreateVisualNovelEvents(TweePassage passage, KiteNovelMetaData kiteNovelMetaData, KiteNovelEventList kiteNovelEventList)
+    {
+        if (passage.Passage.Contains(EVENT_DEFINITION_SEPERATOR))
+        {
+            return CreateMultipleVisualNovelEvent(passage, kiteNovelMetaData, kiteNovelEventList);
+        } 
+        else
+        {
+            return CreateOneVisualNovelEvent(passage, kiteNovelMetaData, kiteNovelEventList);
+        }
+    }
+
+    public static VisualNovelEvent CreateOneVisualNovelEvent(TweePassage passage, KiteNovelMetaData kiteNovelMetaData, KiteNovelEventList kiteNovelEventList)
     {
         string message = TweeProcessor.ExtractMessageOutOfTweePassage(passage.Passage);
         VisualNovelEvent visualNovelEvent = ConvertListOfDataObjectsIntoKiteNovelEvent(passage, message, kiteNovelMetaData, kiteNovelEventList);
         return visualNovelEvent;
+    }
+
+    public static VisualNovelEvent CreateMultipleVisualNovelEvent(TweePassage passage, KiteNovelMetaData kiteNovelMetaData, KiteNovelEventList kiteNovelEventList)
+    {
+        List<VisualNovelEvent> createdEvents = new List<VisualNovelEvent>();
+        string[] eventDefinitions = passage?.Passage?.Split(new string[] { EVENT_DEFINITION_SEPERATOR }, StringSplitOptions.RemoveEmptyEntries);
+        string label = passage.Label;
+
+        foreach (string eventDefinition in eventDefinitions)
+        {
+            string nextLabel = label + "RandomSeperatorString1020304" + label;
+            List<TweeLink> links = new List<TweeLink> { new TweeLink(nextLabel, nextLabel, false) };
+            TweePassage newPassage = new TweePassage(label, eventDefinition, links);
+            label = nextLabel;
+            string message = TweeProcessor.ExtractMessageOutOfTweePassage(eventDefinition);
+            VisualNovelEvent visualNovelEvent = ConvertListOfDataObjectsIntoKiteNovelEvent(newPassage, message, kiteNovelMetaData, kiteNovelEventList);
+            createdEvents.Add(visualNovelEvent);
+        }
+        if (createdEvents.Count == 0)
+        {
+            return null;
+        }
+        VisualNovelEvent firstEvent = createdEvents[0];
+        if (firstEvent != null)
+        {
+            firstEvent.id = passage?.Label;
+        }
+        VisualNovelEvent lastEvent = createdEvents[createdEvents.Count - 1];
+        if (lastEvent != null)
+        {
+            lastEvent.nextId = passage?.Links?[0]?.Target;
+        }
+        return lastEvent;
     }
 
     private static VisualNovelEvent ConvertListOfDataObjectsIntoKiteNovelEvent(TweePassage passage, string message,
@@ -651,13 +700,11 @@ public class KiteNovelConverter
                 }
             case (NovelKeyWord.ANIMATION_ABSPIELEN_WATER_POURING):
                 {
-                    HandlePlayAnimationEvent(passage, KiteAnimation.WATER_POURING, kiteNovelEventList.NovelEvents);
-                    return null;
+                    return HandlePlayAnimationEvent(passage, KiteAnimation.WATER_POURING, kiteNovelEventList.NovelEvents);
                 }
             case (NovelKeyWord.ENDE):
                 {
-                    HandleEndNovelEvent(passage.Label, kiteNovelEventList.NovelEvents);
-                    return null;
+                    return HandleEndNovelEvent(passage.Label, kiteNovelEventList.NovelEvents);
                 }
             case (NovelKeyWord.FREITEXT_EINGABE):
                 {
