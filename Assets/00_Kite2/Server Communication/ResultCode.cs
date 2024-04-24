@@ -22,7 +22,17 @@ public enum ResultCode
     SUCCESSFULLY_GOT_ALL_DATA_OBJECTS,
     SUCCESSFULLY_ADDED_DATA_OBJECT,
     SUCCESSFULLY_DELETED_DATA_OBJECT,
-    NO_SUCH_DATA_OBJECT
+    NO_SUCH_DATA_OBJECT,
+    SUCCESSFULLY_POSTET_EXPERT_FEEDBACK_QUESTION,
+    SUCCESSFULLY_DELETED_EXPERT_FEEDBACK_QUESTION,
+    SUCCESSFULLY_FOUND_EXPERT_FEEDBACK_QUESTION,
+    NO_SUCH_EXPERT_FEEDBACK_QUESTION,
+    SUCCESSFULLY_POSTET_EXPERT_FEEDBACK_ANSWER,
+    SUCCESSFULLY_DELETED_EXPERT_FEEDBACK_ANSWER,
+    SUCCESSFULLY_FOUND_EXPERT_FEEDBACK_ANSWER,
+    NO_SUCH_EXPERT_FEEDBACK_ANSWER,
+    SUCCESSFULLY_GOT_ALL_EXPERT_FEEDBACK_QUESTIONS,
+    SUCCESSFULLY_GOT_ALL_EXPERT_FEEDBACK_ANSWERS
 }
 
 public class ResultCodeHelper
@@ -53,6 +63,16 @@ public class ResultCodeHelper
             case ResultCode.SUCCESSFULLY_ADDED_DATA_OBJECT: { return 20; }
             case ResultCode.SUCCESSFULLY_DELETED_DATA_OBJECT: { return 21; }
             case ResultCode.NO_SUCH_DATA_OBJECT: { return 22; }
+            case ResultCode.SUCCESSFULLY_POSTET_EXPERT_FEEDBACK_QUESTION: { return 23; }
+            case ResultCode.SUCCESSFULLY_DELETED_EXPERT_FEEDBACK_QUESTION: { return 24; }
+            case ResultCode.SUCCESSFULLY_FOUND_EXPERT_FEEDBACK_QUESTION: { return 25; }
+            case ResultCode.NO_SUCH_EXPERT_FEEDBACK_QUESTION: { return 26; }
+            case ResultCode.SUCCESSFULLY_POSTET_EXPERT_FEEDBACK_ANSWER: { return 27; }
+            case ResultCode.SUCCESSFULLY_DELETED_EXPERT_FEEDBACK_ANSWER: { return 28; }
+            case ResultCode.SUCCESSFULLY_FOUND_EXPERT_FEEDBACK_ANSWER: { return 29; }
+            case ResultCode.NO_SUCH_EXPERT_FEEDBACK_ANSWER: { return 30; }
+            case ResultCode.SUCCESSFULLY_GOT_ALL_EXPERT_FEEDBACK_QUESTIONS: { return 31; }
+            case ResultCode.SUCCESSFULLY_GOT_ALL_EXPERT_FEEDBACK_ANSWERS: { return 32; }
             default: { return -1; }
         }
     }
@@ -83,6 +103,16 @@ public class ResultCodeHelper
             case 20: { return ResultCode.SUCCESSFULLY_ADDED_DATA_OBJECT; }
             case 21: { return ResultCode.SUCCESSFULLY_DELETED_DATA_OBJECT; }
             case 22: { return ResultCode.NO_SUCH_DATA_OBJECT;}
+            case 23: { return ResultCode.SUCCESSFULLY_POSTET_EXPERT_FEEDBACK_QUESTION; }
+            case 24: { return ResultCode.SUCCESSFULLY_DELETED_EXPERT_FEEDBACK_QUESTION; }
+            case 25: { return ResultCode.SUCCESSFULLY_FOUND_EXPERT_FEEDBACK_QUESTION; }
+            case 26: { return ResultCode.NO_SUCH_EXPERT_FEEDBACK_QUESTION; }
+            case 27: { return ResultCode.SUCCESSFULLY_POSTET_EXPERT_FEEDBACK_ANSWER; }
+            case 28: { return ResultCode.SUCCESSFULLY_DELETED_EXPERT_FEEDBACK_ANSWER; }
+            case 29: { return ResultCode.SUCCESSFULLY_FOUND_EXPERT_FEEDBACK_ANSWER; }
+            case 30: { return ResultCode.NO_SUCH_EXPERT_FEEDBACK_ANSWER; }
+            case 31: { return ResultCode.SUCCESSFULLY_GOT_ALL_EXPERT_FEEDBACK_QUESTIONS; }
+            case 32: { return ResultCode.SUCCESSFULLY_GOT_ALL_EXPERT_FEEDBACK_ANSWERS; }
             default: { return ResultCode.NONE; }
         }
     }

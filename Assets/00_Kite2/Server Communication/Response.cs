@@ -14,6 +14,8 @@ public class Response
     [SerializeField] private List<DataObject> dataObjects;
     [SerializeField] private int version;
     [SerializeField] private int userRole;
+    [SerializeField] private List<ExpertFeedbackQuestion> expertFeedbackQuestions;
+    [SerializeField] private List<ExpertFeedbackAnswer> expertFeedbackAnswers;
 
     public void SetResultCode(int resultCode)
     {
@@ -103,5 +105,25 @@ public class Response
     public int GetUserRole()
     {
         return this.userRole;
+    }
+
+    public List<ExpertFeedbackQuestion> GetExpertFeedbackQuestions()
+    {
+        return expertFeedbackQuestions;
+    }
+
+    public void SetExpertFeedbackQuestions(List<ExpertFeedbackQuestion> expertFeedbackQuestions)
+    {
+        this.expertFeedbackQuestions = expertFeedbackQuestions;
+    }
+
+    public List<ExpertFeedbackAnswer> GetExpertFeedbackAnswers()
+    {
+        return expertFeedbackAnswers;
+    }
+
+    public void SetExpertFeedbackAnswers(List<ExpertFeedbackAnswer> expertFeedbackAnswers)
+    {
+        this.expertFeedbackAnswers = expertFeedbackAnswers;
     }
 }

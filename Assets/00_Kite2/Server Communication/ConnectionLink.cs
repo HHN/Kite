@@ -9,4 +9,6 @@ public class ConnectionLink
     public static readonly string VERSION_LINK = BASE_LINK + "version";
     public static readonly string USER_ROLE_LINK = BASE_LINK + "role";
     public static readonly string DATA_LINK = BASE_LINK + "data";
+    public static readonly string EXPERT_FEEDBACK_QUESTION = BASE_LINK + "expertfeedbackquestion";
+    public static readonly string EXPERT_FEEDBACK_ANSWER = BASE_LINK + "expertfeedbackanswer";
 }
