@@ -54,9 +54,12 @@ public class PlayNovelSceneController : SceneController
 
     [SerializeField] private Coroutine timerCoroutine;
     [SerializeField] private float timerForHint = 12.0f; // Time after which the hint to tap on the screen is shown
+    [SerializeField] private float timerForHintInitial = 3.0f;
 
     // Analytics
     [SerializeField] private bool firstUserConfirmation = true;
+
+    private bool tapedAlready = false;
 
     void Start()
     {
@@ -107,6 +110,7 @@ public class PlayNovelSceneController : SceneController
         if(firstUserConfirmation)
         {
             firstUserConfirmation = false;
+            tapedAlready = true;
             AnalyticsServiceHandler.Instance().SendPlayNovelFirstConfirmation(); 
         }
         SetWaitingForConfirmation(false);
@@ -521,7 +525,12 @@ public class PlayNovelSceneController : SceneController
 
     IEnumerator SetAnimationToTrue()
     {
-        yield return new WaitForSeconds(timerForHint); // Wartet für die angegebene Zeit.
+        if(!tapedAlready)
+        {
+            yield return new WaitForSeconds(timerForHintInitial); // Wartet für die angegebene Zeit.
+        } else {
+            yield return new WaitForSeconds(timerForHint); // Wartet für die angegebene Zeit.
+        }
         tapToContinueAnimation.SetActive(true);
         tapToContinueAnimation.GetComponent<Animator>().enabled = true;
     }
