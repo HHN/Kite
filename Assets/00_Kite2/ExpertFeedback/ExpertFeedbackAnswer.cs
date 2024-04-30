@@ -44,7 +44,7 @@ public class ExpertFeedbackAnswer
         return idOfExpertFeedbackQuestion;
     }
 
-    public void SetÍdOfExpertFeedbackQuestion(long idOfExpertFeedbackQuestion)
+    public void SetIdOfExpertFeedbackQuestion(long idOfExpertFeedbackQuestion)
     {
         this.idOfExpertFeedbackQuestion = idOfExpertFeedbackQuestion;
     }
