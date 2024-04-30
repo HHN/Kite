@@ -14,6 +14,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
     [SerializeField] private AudioSource waitingLoopMusic;
     [SerializeField] private AudioSource resultMusic;
     [SerializeField] private AudioSource textToSpeech;
+    [SerializeField] private Button requestExpertFeedbackButton;
 
     private void Start()
     {
@@ -89,6 +90,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
         AnalyticsServiceHandler.Instance().SetWaitedForAiFeedbackTrue();
         LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
         PlayResultMusic();
+        requestExpertFeedbackButton.interactable = true;
     }
 
     public void OnError(Response response)
@@ -110,5 +112,10 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
     public void PlayResultMusic()
     {
         resultMusic.Play();
+    }
+
+    public void DeactivateAskButton()
+    {
+        requestExpertFeedbackButton.interactable = false;
     }
 }

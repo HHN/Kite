@@ -19,6 +19,7 @@ public class SceneMemoryManager
     private ImprintSceneMemory imprintSceneMemory;
     private TermsOfUseSceneMemory termsOfUseSceneMemory;
     private PrivacyPolicySceneMemory privacyPolicySceneMemory;
+    private ExpertFeedbackSceneMemory expertFeedbackSceneMemory;
 
     private SceneMemoryManager()
     {
@@ -119,6 +120,11 @@ public class SceneMemoryManager
         return this.privacyPolicySceneMemory;
     }
 
+    public ExpertFeedbackSceneMemory GetMemoryOfExpertFeedbackScene()
+    {
+        return this.expertFeedbackSceneMemory;
+    }
+
     public void SetMemoryOfSettingsScene(SettingsSceneMemory settingsSceneMemory)
     {
         this.settingsSceneMemory = settingsSceneMemory;
@@ -169,37 +175,42 @@ public class SceneMemoryManager
         this.privacyPolicySceneMemory = privacyPolicySceneMemory;
     }
 
-    public void GetMemoryOfAddObserverScene(AddObserverSceneMemory addObserverSceneMemory)
+    public void SetMemoryOfExpertFeedbackScene(ExpertFeedbackSceneMemory expertFeedbackSceneMemory)
+    {
+        this.expertFeedbackSceneMemory = expertFeedbackSceneMemory;
+    }
+
+    public void SetMemoryOfAddObserverScene(AddObserverSceneMemory addObserverSceneMemory)
     {
         this.addObserverSceneMemory = addObserverSceneMemory;
     }
 
-    public void GetMemoryOfAiReviewExplorerScene(AiReviewExplorerSceneMemory aiReviewExplorerSceneMemory)
+    public void SetMemoryOfAiReviewExplorerScene(AiReviewExplorerSceneMemory aiReviewExplorerSceneMemory)
     {
         this.aiReviewExplorerSceneMemory = aiReviewExplorerSceneMemory;
     }
 
-    public void GetMemoryOfNovelReviewExplorerScene(NovelReviewExplorerSceneMemory novelReviewExplorerSceneMemory)
+    public void SetMemoryOfNovelReviewExplorerScene(NovelReviewExplorerSceneMemory novelReviewExplorerSceneMemory)
     {
         this.novelReviewExplorerSceneMemory = novelReviewExplorerSceneMemory;
     }
 
-    public void GetMemoryOfFeedbackRoleManagementScene(FeedbackRoleManagementSceneMemory feedbackRoleManagementSceneMemory)
+    public void SetMemoryOfFeedbackRoleManagementScene(FeedbackRoleManagementSceneMemory feedbackRoleManagementSceneMemory)
     {
         this.feedbackRoleManagementSceneMemory = feedbackRoleManagementSceneMemory;
     }
 
-    public void GetMemoryOfReviewAiScene(ReviewAiSceneMemory reviewAiSceneMemory)
+    public void SetMemoryOfReviewAiScene(ReviewAiSceneMemory reviewAiSceneMemory)
     {
         this.reviewAiSceneMemory = reviewAiSceneMemory;
     }
 
-    public void GetMemoryOfReviewNovelScene(ReviewNovelSceneMemory reviewNovelSceneMemory)
+    public void SetMemoryOfReviewNovelScene(ReviewNovelSceneMemory reviewNovelSceneMemory)
     {
         this.reviewNovelSceneMemory = reviewNovelSceneMemory;
     }
 
-    public void GetMemoryOfPromptsAndCompletionsExplorerScene(PromptsAndCompletionsExplorerSceneMemory promptsAndCompletionsExplorerSceneMemory)
+    public void SetMemoryOfPromptsAndCompletionsExplorerScene(PromptsAndCompletionsExplorerSceneMemory promptsAndCompletionsExplorerSceneMemory)
     {
         this.promptsAndCompletionsExplorerSceneMemory = promptsAndCompletionsExplorerSceneMemory;
     }
@@ -223,5 +234,6 @@ public class SceneMemoryManager
         this.termsOfUseSceneMemory = null;
         this.imprintSceneMemory = null;
         this.privacyPolicySceneMemory = null;
+        this.expertFeedbackSceneMemory = null;
     }
 }

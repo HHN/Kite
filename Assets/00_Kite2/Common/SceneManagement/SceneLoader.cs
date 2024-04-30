@@ -151,6 +151,11 @@ public class SceneLoader
         LoadScene(SceneNames.PLAYER_PREFS_SCENE);
     }
 
+    public static void LoadExpertFeedbackScene()
+    {
+        LoadScene(SceneNames.EXPERT_FEEDBACK_SCENE);
+    }
+
     public static void LoadScene(string sceneName)
     {
         GameObject oldSceneControllerGameObject = GameObject.Find("Controller");

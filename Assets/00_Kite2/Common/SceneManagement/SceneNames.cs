@@ -37,4 +37,7 @@ public class SceneNames
     public const string IMPRINT_SCENE = "ImprintScene";
     public const string PRIVACY_POLICY_SCENE = "PrivacyPolicyScene";
     public const string TERMS_OF_USE_SCENE = "TermsOfUseScene";
+
+    // EXPERT QUESTIONS
+    public const string EXPERT_FEEDBACK_SCENE = "ExpertFeedbackScene";
 }

@@ -28,6 +28,7 @@ public class InfoMessages
     public static readonly string EXPLANATION_IMPRINT_BUTTON = "Mit diesem Button kommst du auf das Impressum unserer App.";
     public static readonly string EXPLANATION_PLAYERPREFS_BUTTON = "Mit diesem Button kommst du auf die Übersichtsseite deiner Eingaben während der Intro-Novel.";
     public static readonly string EXPLANATION_APPLICATION_MODE_BUTTON = "Mit diesem Button kannst du zwischen Offline- und Online-Modus hin und her switchen.";
+    public static readonly string EXPLANATION_EXPERT_FEEDBACK_BUTTON = "Mit diesem Button kommst du auf eine Übersicht der Fragen, die du an unsere Experten gestellt hast, sowie den dazugehörigen Antworten.";
     public static readonly string SWITCHED_TO_ONLINE_MODE = "Die App befindet sich jetzt im Online Modus.";
     public static readonly string SWITCHED_TO_OFFLINE_MODE = "Die App befindet sich jetzt im Offline Modus.";
     public static readonly string UPDATE_AVAILABLE = "Deine App-Version ist veraltet. Ein neues Update ist verfügbar. Bitte aktualisiere deine App, um Kompatibilitätsprobleme mit dem Server zu vermeiden und ein optimales Nutzungserlebnis zu gewährleisten.";

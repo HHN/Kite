@@ -25,6 +25,11 @@ public class FindExpertFeedbackQuestionServerCall : ServerCall
                     onSuccessHandler.OnSuccess(response);
                     return;
                 }
+            case ResultCode.NO_SUCH_EXPERT_FEEDBACK_QUESTION:
+                {
+                    onSuccessHandler.OnSuccess(response);
+                    return;
+                }
             default:
                 {
                     sceneController.DisplayErrorMessage(ErrorMessages.UNEXPECTED_SERVER_ERROR);

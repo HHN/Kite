@@ -4,17 +4,6 @@ using UnityEngine.UI;
 
 public class SettingsSceneController : SceneController
 {
-    [SerializeField] private RectTransform sublayout01;
-    [SerializeField] private RectTransform sublayout02;
-    [SerializeField] private RectTransform sublayout03;
-    [SerializeField] private RectTransform sublayout04;
-    [SerializeField] private RectTransform sublayout05;
-    [SerializeField] private RectTransform sublayout06;
-    [SerializeField] private RectTransform sublayout07;
-    [SerializeField] private RectTransform sublayout08;
-    [SerializeField] private RectTransform sublayout09;
-    [SerializeField] private RectTransform layout;
-
     [SerializeField] private Button aboutKiteButton;
     [SerializeField] private Button aboutKiteInfoButton;
     [SerializeField] private Button toggleDataCollectionButton;
@@ -33,6 +22,8 @@ public class SettingsSceneController : SceneController
     [SerializeField] private Button toggleTextToSpeechInfoButton;
     [SerializeField] private Button applicationModeButton;
     [SerializeField] private Button applicationModeInfoButton;
+    [SerializeField] private Button expertFeedbackButton;
+    [SerializeField] private Button expertFeedbackInfoButton;
     [SerializeField] private AudioSource audioSource;
 
     void Start()
@@ -60,20 +51,12 @@ public class SettingsSceneController : SceneController
         toggleTextToSpeechInfoButton.onClick.AddListener(delegate { OnToggleTextToSpeechInfoButton(); });
         applicationModeButton.onClick.AddListener(delegate { OnApplicationModeButton(); });
         applicationModeInfoButton.onClick.AddListener(delegate { OnApplicationModeInfoButton(); });
+        expertFeedbackButton.onClick.AddListener(delegate { OnExpertFeedbackButton(); });
+        expertFeedbackInfoButton.onClick.AddListener(delegate { OnExpertFeedbackInfoButton(); });
 
         InitializeToggleDataCollectionButton();
         InitializeApplicationModeButton();
         InitializeToggleTextToSpeechButton();
-        LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout01);
-        LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout02);
-        LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout03);
-        LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout04);
-        LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout05);
-        LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout06);
-        LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout07);
-        LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout08);
-        LayoutRebuilder.ForceRebuildLayoutImmediate(sublayout09);
-        LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
     }
 
     public void OnAboutKiteButton()
@@ -273,5 +256,15 @@ public class SettingsSceneController : SceneController
     {
         TextToSpeechService.Instance().TextToSpeech("onlineOfflineModusInfo");
         DisplayInfoMessage(InfoMessages.EXPLANATION_APPLICATION_MODE_BUTTON);
+    }
+
+    private void OnExpertFeedbackButton()
+    {
+        SceneLoader.LoadExpertFeedbackScene();
+    }
+
+    private void OnExpertFeedbackInfoButton()
+    {
+        DisplayInfoMessage(InfoMessages.EXPLANATION_EXPERT_FEEDBACK_BUTTON);
     }
 }

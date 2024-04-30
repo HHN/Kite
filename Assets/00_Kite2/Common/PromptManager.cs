@@ -4,6 +4,7 @@ public class PromptManager
 {
     private static PromptManager instance;
     public StringBuilder prompt;
+    public StringBuilder dialog;
 
     private PromptManager() { }
 
@@ -27,9 +28,19 @@ public class PromptManager
         return prompString.Replace("{{Context}}", context);
     }
 
+    public string GetDialog()
+    {
+        if (dialog == null)
+        {
+            return "";
+        }
+        return dialog.ToString();
+    }
+
     public void InitializePrompt()
     {
         prompt = new StringBuilder();
+        dialog = new StringBuilder();
 
         //ROLLE
         prompt.Append("Du bist eine Geschlechterforscherin. ");
@@ -56,6 +67,11 @@ public class PromptManager
         {
             prompt = new StringBuilder();
         }
-        prompt.Append(line + " ");
+        if (dialog == null)
+        {
+            dialog = new StringBuilder();
+        }
+        prompt.AppendLine(line + " ");
+        dialog.AppendLine(line + " ");
     }
 }
