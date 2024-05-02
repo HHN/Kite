@@ -1,4 +1,5 @@
 using UnityEngine;
+using LeastSquares.Overtone;
 
 
 public class TextToSpeechService
@@ -64,10 +65,14 @@ public class TextToSpeechService
         return choicesForTextToSpeech;
     }
 
-    public void TextToSpeechReadLive(string text, bool readAnyway = false)
+    public async void TextToSpeechReadLive(string text, TTSEngine engine, bool readAnyway = false)
     {
         if(TextToSpeechManager.Instance().IsTextToSpeechActivated() || readAnyway)
         {
+            Debug.Log(text);
+            AudioClip audioClip = await engine.Speak(text, TTSVoiceNative.LoadVoiceFromResources("de-de-thorsten-high"));
+            audioSource.clip = audioClip;
+            audioSource.Play();
             // AudioClip clip = Overtone.GenerateAudio(text);
             // yield return new WaitUntil(() => clip != null);
             // audioSource.clip = Resources.Load<AudioClip>();
