@@ -68,4 +68,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_Kite2/ExpertFeedback/ExpertFeedbackScene.unity
     guid: 8f9da18389beb424489925c8936adc5b
+  - enabled: 1
+    path: Assets/00_Kite2/Player/FoundersBubbleScene.unity
+    guid: e6ba19ac2203fb24ea7256fc32f4c050
   m_configObjects: {}

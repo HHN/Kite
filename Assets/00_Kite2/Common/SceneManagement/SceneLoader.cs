@@ -154,6 +154,11 @@ public class SceneLoader
     public static void LoadExpertFeedbackScene()
     {
         LoadScene(SceneNames.EXPERT_FEEDBACK_SCENE);
+    }    
+    
+    public static void LoadFoundersBubbleScene()
+    {
+        LoadScene(SceneNames.FOUNDERS_BUBBLE_SCENE);
     }
 
     public static void LoadScene(string sceneName)

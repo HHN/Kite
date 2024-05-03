@@ -15,6 +15,7 @@ public class SceneNames
     public const string COMMENT_SECTION_SCENE = "CommentSectionScene";
     public const string INITIAL_TALK_SCENE = "InitialTalkScene";
     public const string PLAYER_PREFS_SCENE = "PlayerPrefsScene";
+    public const string FOUNDERS_BUBBLE_SCENE = "FoundersBubbleScene";
 
     // NOVEL MAKER
     public const string NOVEL_MAKER_SCENE = "NovelMakerScene";

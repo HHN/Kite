@@ -20,6 +20,7 @@ public class SceneMemoryManager
     private TermsOfUseSceneMemory termsOfUseSceneMemory;
     private PrivacyPolicySceneMemory privacyPolicySceneMemory;
     private ExpertFeedbackSceneMemory expertFeedbackSceneMemory;
+    private FoundersBubbleSceneMemory foundersBubbleSceneMemory;
 
     private SceneMemoryManager()
     {
@@ -123,6 +124,11 @@ public class SceneMemoryManager
     public ExpertFeedbackSceneMemory GetMemoryOfExpertFeedbackScene()
     {
         return this.expertFeedbackSceneMemory;
+    }    
+    
+    public FoundersBubbleSceneMemory GetMemoryOfFoundersBubbleScene()
+    {
+        return this.foundersBubbleSceneMemory;
     }
 
     public void SetMemoryOfSettingsScene(SettingsSceneMemory settingsSceneMemory)
@@ -213,6 +219,11 @@ public class SceneMemoryManager
     public void SetMemoryOfPromptsAndCompletionsExplorerScene(PromptsAndCompletionsExplorerSceneMemory promptsAndCompletionsExplorerSceneMemory)
     {
         this.promptsAndCompletionsExplorerSceneMemory = promptsAndCompletionsExplorerSceneMemory;
+    }    
+    
+    public void SetMemoryOfFoundersBubbleScene(FoundersBubbleSceneMemory foundersBubbleSceneMemory)
+    {
+        this.foundersBubbleSceneMemory = foundersBubbleSceneMemory;
     }
 
     public void ClearMemory()
@@ -235,5 +246,6 @@ public class SceneMemoryManager
         this.imprintSceneMemory = null;
         this.privacyPolicySceneMemory = null;
         this.expertFeedbackSceneMemory = null;
+        this.foundersBubbleSceneMemory = null;
     }
 }
