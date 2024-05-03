@@ -84,7 +84,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
         }
         StopWaitingMusic();
         TextToSpeechService.Instance().SetAudioSource(textToSpeech);
-        TextToSpeechService.Instance().TextToSpeechReadLive(response.GetCompletion().Trim());
+        //TextToSpeechService.Instance().TextToSpeechReadLive(response.GetCompletion().Trim());
         feedbackText.SetText(response.GetCompletion().Trim());
         novelToPlay.feedback = (response.GetCompletion().Trim());
         AnalyticsServiceHandler.Instance().SetWaitedForAiFeedbackTrue();

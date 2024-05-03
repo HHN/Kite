@@ -6,6 +6,7 @@ using System.Collections;
 using Febucci.UI.Core;
 using System;
 using System.Text.RegularExpressions;
+using LeastSquares.Overtone;
 
 public class PlayNovelSceneController : SceneController
 {
@@ -60,6 +61,8 @@ public class PlayNovelSceneController : SceneController
     [SerializeField] private bool firstUserConfirmation = true;
 
     private bool tapedAlready = false;
+
+    [SerializeField] private TTSEngine engine;
 
     void Start()
     {
@@ -390,6 +393,7 @@ public class PlayNovelSceneController : SceneController
     {
         //Debug.Log(novelEvent.text);   // Needed to copy the text from the novel to AWS Polly
         TextToSpeechService.Instance().TextToSpeech(novelToPlay.title+novelEvent.id);
+        TextToSpeechService.Instance().TextToSpeechReadLive(novelEvent.text, engine);
         novelEvent.text = ReplacePlaceholders(novelEvent.text, novelToPlay.GetGlobalVariables());
 
         string nextEventID = novelEvent.nextId;
