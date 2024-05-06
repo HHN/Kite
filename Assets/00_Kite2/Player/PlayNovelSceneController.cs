@@ -443,6 +443,7 @@ public class PlayNovelSceneController : SceneController
     public void HandleShowChoicesEvent(VisualNovelEvent novelEvent)
     {
         // TODO: Implement text to speech 
+        TextToSpeechService.Instance().TextToSpeechReadLive(novelEvent.text, engine);
         TextToSpeechService.Instance().TextToSpeech(novelToPlay.title + TextToSpeechService.Instance().returnChoicesForTextToSpeech());
         AddEntryToPlayThroughHistory(CharacterTypeHelper.ValueOf(novelEvent.character), novelEvent.text);
         conversationContent.AddContent(novelEvent, this);
