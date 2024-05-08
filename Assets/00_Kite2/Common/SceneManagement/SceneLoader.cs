@@ -159,6 +159,11 @@ public class SceneLoader
     public static void LoadFoundersBubbleScene()
     {
         LoadScene(SceneNames.FOUNDERS_BUBBLE_SCENE);
+    }    
+    
+    public static void LoadFoundersWellScene()
+    {
+        LoadScene(SceneNames.FOUNDERS_WELL_SCENE);
     }
 
     public static void LoadScene(string sceneName)

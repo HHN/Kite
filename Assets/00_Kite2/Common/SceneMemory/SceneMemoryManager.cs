@@ -21,6 +21,7 @@ public class SceneMemoryManager
     private PrivacyPolicySceneMemory privacyPolicySceneMemory;
     private ExpertFeedbackSceneMemory expertFeedbackSceneMemory;
     private FoundersBubbleSceneMemory foundersBubbleSceneMemory;
+    private FoundersWellSceneMemory foundersWellSceneMemory;
 
     private SceneMemoryManager()
     {
@@ -129,6 +130,11 @@ public class SceneMemoryManager
     public FoundersBubbleSceneMemory GetMemoryOfFoundersBubbleScene()
     {
         return this.foundersBubbleSceneMemory;
+    }    
+    
+    public FoundersWellSceneMemory GetMemoryOfFoundersWellScene()
+    {
+        return this.foundersWellSceneMemory;
     }
 
     public void SetMemoryOfSettingsScene(SettingsSceneMemory settingsSceneMemory)
@@ -224,6 +230,11 @@ public class SceneMemoryManager
     public void SetMemoryOfFoundersBubbleScene(FoundersBubbleSceneMemory foundersBubbleSceneMemory)
     {
         this.foundersBubbleSceneMemory = foundersBubbleSceneMemory;
+    }    
+    
+    public void SetMemoryOfFoundersWellScene(FoundersWellSceneMemory foundersWellSceneMemory)
+    {
+        this.foundersWellSceneMemory = foundersWellSceneMemory;
     }
 
     public void ClearMemory()
@@ -247,5 +258,6 @@ public class SceneMemoryManager
         this.privacyPolicySceneMemory = null;
         this.expertFeedbackSceneMemory = null;
         this.foundersBubbleSceneMemory = null;
+        this.foundersWellSceneMemory = null;
     }
 }

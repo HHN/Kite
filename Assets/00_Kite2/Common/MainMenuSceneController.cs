@@ -63,7 +63,7 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
         GameObject buttonSound = Instantiate(buttonSoundPrefab);
         DontDestroyOnLoad(buttonSound);
 
-        SceneLoader.LoadNovelExplorerScene();
+        SceneLoader.LoadFoundersBubbleScene();
     }
 
     public void OnSettingsButton()
