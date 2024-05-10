@@ -4,11 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class SceneBase : MonoBehaviour
 {
-    public Button backButton;
-    public Button closeButton;
-    public Button homeButton;
-    public Button novelPlayerButton;
-    public Button settingsButton;
+    // public Button backButton;
+    [SerializeField] private Button closeButton;
+    [SerializeField] private Button homeButton;
+    [SerializeField] private Button novelPlayerButton;
+    [SerializeField] private Button settingsButton;
 
     [SerializeField] private GameObject leaveGameAndGoToMainMenuMessageBox;
     [SerializeField] private GameObject leaveGameAndGoToSettingsMessageBox;
@@ -30,14 +30,14 @@ public class SceneBase : MonoBehaviour
         {
             homeButton.onClick.AddListener(delegate { OnHomeButtonForNovelPlayer(); });
             settingsButton.onClick.AddListener(delegate { OnSettingsButtonForNovelPlayer(); });
-            backButton.onClick.AddListener(delegate {OnBackButtonForNovelPlayer(); });
+            // backButton.onClick.AddListener(delegate {OnBackButtonForNovelPlayer(); });
             closeButton.onClick.AddListener(delegate { OnCloseButtonForNovelPlayer(); });
         } 
         else
         {
             homeButton.onClick.AddListener(delegate { OnHomeButton(); });
             settingsButton.onClick.AddListener(delegate { OnSettingsButton(); });
-            backButton.onClick.AddListener(delegate { OnBackButton(); });
+            // backButton.onClick.AddListener(delegate { OnBackButton(); });
             closeButton.onClick.AddListener(delegate { OnCloseButton(); });
         }
     }

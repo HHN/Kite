@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 144910131}
   - component: {fileID: 144910130}
   - component: {fileID: 144910133}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Scroll View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 182827004}
   - component: {fileID: 182827006}
   - component: {fileID: 182827005}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image Area Color Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 198210692}
   - component: {fileID: 198210691}
   - component: {fileID: 198210690}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Viewport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 221629288}
   - component: {fileID: 221629287}
   - component: {fileID: 221629290}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Confirm Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -577,7 +577,7 @@ GameObject:
   - component: {fileID: 286973478}
   - component: {fileID: 286973481}
   - component: {fileID: 286973480}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Tap Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -654,7 +654,7 @@ GameObject:
   - component: {fileID: 495153295}
   - component: {fileID: 495153294}
   - component: {fileID: 495153296}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Tap Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -811,7 +811,7 @@ GameObject:
   - component: {fileID: 563275609}
   - component: {fileID: 563275611}
   - component: {fileID: 563275610}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -993,7 +993,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 652604558}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1021,10 +1021,10 @@ RectTransform:
   m_Father: {fileID: 1089021934}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -541.9995, y: 304.49994}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &813272498
 GameObject:
@@ -1039,7 +1039,7 @@ GameObject:
   - component: {fileID: 813272502}
   - component: {fileID: 813272501}
   - component: {fileID: 813272500}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Confirm Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1444,7 +1444,7 @@ GameObject:
   - component: {fileID: 1033715451}
   - component: {fileID: 1033715453}
   - component: {fileID: 1033715452}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Background Color Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1624,7 +1624,7 @@ GameObject:
   - component: {fileID: 1075057876}
   - component: {fileID: 1075057875}
   - component: {fileID: 1075057877}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Screen Content Blur Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1721,7 +1721,7 @@ GameObject:
   - component: {fileID: 1089021937}
   - component: {fileID: 1089021936}
   - component: {fileID: 1089021935}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Viewport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1887,7 +1887,7 @@ GameObject:
   - component: {fileID: 1164301129}
   - component: {fileID: 1164301132}
   - component: {fileID: 1164301133}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Container for Conversation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1912,8 +1912,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -318.29}
-  m_SizeDelta: {x: 0, y: 636.58}
+  m_AnchoredPosition: {x: 0, y: -478.92664}
+  m_SizeDelta: {x: 0, y: 957.8532}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1164301129
 MonoBehaviour:
@@ -2027,7 +2027,7 @@ GameObject:
   - component: {fileID: 1281647810}
   - component: {fileID: 1281647809}
   - component: {fileID: 1281647811}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Screen Content Color Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2121,7 +2121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1386174947}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Background Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2146,7 +2146,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.00012207031, y: 0}
-  m_SizeDelta: {x: 0.00018310547, y: 0}
+  m_SizeDelta: {x: 0.00024414062, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1421326877
 GameObject:
@@ -2159,7 +2159,7 @@ GameObject:
   - component: {fileID: 1421326878}
   - component: {fileID: 1421326880}
   - component: {fileID: 1421326879}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Background Blur Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2233,7 +2233,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1436698927}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Character Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2257,8 +2257,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00012207031, y: 0}
-  m_SizeDelta: {x: 0.00018310547, y: 0}
+  m_AnchoredPosition: {x: -196, y: -832.5}
+  m_SizeDelta: {x: -840, y: -381}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1609170832
 GameObject:
@@ -2343,7 +2343,7 @@ GameObject:
   - component: {fileID: 1655295464}
   - component: {fileID: 1655295466}
   - component: {fileID: 1655295468}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Container for Novel Images
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2652,7 +2652,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1966865799}
   - component: {fileID: 1966865800}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Tap Animation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2710,7 +2710,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2012881027}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hint Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2750,7 +2750,7 @@ GameObject:
   - component: {fileID: 2014456652}
   - component: {fileID: 2014456654}
   - component: {fileID: 2014456653}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image Area Blur Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2824,8 +2824,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2069162109}
-  - component: {fileID: 2069162110}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2853,35 +2852,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 47.500023}
-  m_SizeDelta: {x: 0, y: -95}
+  m_AnchoredPosition: {x: 0, y: -45.932}
+  m_SizeDelta: {x: 0, y: -91.865}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2069162110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2069162108}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!1 &2133875531
 GameObject:
   m_ObjectHideFlags: 0
@@ -3121,7 +3094,7 @@ GameObject:
   - component: {fileID: 7752805090288089775}
   - component: {fileID: 7291551321577746737}
   - component: {fileID: 5286645539619877569}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3262,7 +3235,7 @@ GameObject:
   - component: {fileID: 5567823244635523681}
   - component: {fileID: 8478561915242588037}
   - component: {fileID: 8784910440115621230}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3410,7 +3383,7 @@ GameObject:
   - component: {fileID: 5110521737132932657}
   - component: {fileID: 1796509271814358663}
   - component: {fileID: 6791963387352411592}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Scene Headline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3428,7 +3401,7 @@ GameObject:
   - component: {fileID: 3517069993957223593}
   - component: {fileID: 4016194274400941822}
   - component: {fileID: 6123604734936358765}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3618,9 +3591,9 @@ RectTransform:
   m_Father: {fileID: 7797249983901933655}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 900, y: -47.5}
   m_SizeDelta: {x: 200, y: 95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7797249982180837313
@@ -3717,7 +3690,7 @@ GameObject:
   - component: {fileID: 7797249982180837315}
   - component: {fileID: 7797249982180837314}
   - component: {fileID: 7797249982180837313}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Settings Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3736,7 +3709,7 @@ GameObject:
   - component: {fileID: 7797249982373574925}
   - component: {fileID: 7797249982373574924}
   - component: {fileID: 7797249982373574923}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Novel Player Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3759,9 +3732,9 @@ RectTransform:
   m_Father: {fileID: 7797249983901933655}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 540, y: -47.5}
   m_SizeDelta: {x: 200, y: 95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7797249982373574923
@@ -3857,13 +3830,13 @@ GameObject:
   - component: {fileID: 7797249982781017769}
   - component: {fileID: 7797249982781017771}
   - component: {fileID: 7797249982781017770}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Header Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7797249982781017769
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3892,13 +3865,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7797249982781017768}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.022318223, g: 0, b: 0.6886792, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3935,7 +3908,7 @@ GameObject:
   - component: {fileID: 7797249983428950520}
   - component: {fileID: 7797249983428950518}
   - component: {fileID: 934606154976065308}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Home Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3958,9 +3931,9 @@ RectTransform:
   m_Father: {fileID: 7797249983901933655}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 180, y: -47.5}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7797249983428950518
@@ -4025,7 +3998,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1364391345464852872}
   - component: {fileID: 7797249983678610298}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Scene Base Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4044,7 +4017,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e86a95c5b08e464a94c6eca58f91b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backButton: {fileID: 0}
   closeButton: {fileID: 7797249983905540405}
   homeButton: {fileID: 7797249983428950518}
   novelPlayerButton: {fileID: 7797249982373574923}
@@ -4070,13 +4042,13 @@ GameObject:
   - component: {fileID: 7797249983901933657}
   - component: {fileID: 7797249983901933656}
   - component: {fileID: 2453866807183711172}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Footer Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7797249983901933655
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4150,7 +4122,7 @@ GameObject:
   - component: {fileID: 7797249983905540407}
   - component: {fileID: 7797249983905540405}
   - component: {fileID: 4837696789139121817}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Close Scene Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4249,7 +4221,7 @@ GameObject:
   - component: {fileID: 5388312968802877192}
   - component: {fileID: 4157949086665647110}
   - component: {fileID: 5465810309477373405}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
