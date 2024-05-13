@@ -20,8 +20,17 @@ public class PlayNovelSceneController : SceneController
     [SerializeField] private Dictionary<string, VisualNovelEvent> novelEvents = new Dictionary<string, VisualNovelEvent>();
     [SerializeField] private VisualNovelEvent nextEventToPlay;
     [SerializeField] private GameObject backgroundContainer;
+    [SerializeField] private GameObject deskContainer;
+    [SerializeField] private GameObject decoDeskContainer;
+    [SerializeField] private GameObject decoBackgroudContainer;
     [SerializeField] private GameObject[] backgroundPrefab;
+    [SerializeField] private GameObject[] deskPrefab;
+    [SerializeField] private GameObject[] decoDeskPrefab;
+    [SerializeField] private GameObject[] decoBackgroundPrefab;
     [SerializeField] private GameObject currentBackground;
+    [SerializeField] private GameObject currentDesk;
+    [SerializeField] private GameObject currentDecoDesk;
+    [SerializeField] private GameObject currentDecoBackgroud;
     [SerializeField] private GameObject characterContainer;
     [SerializeField] private Dictionary<Character, GameObject> currentCharacters = new Dictionary<Character, GameObject>();
     [SerializeField] private ChatScrollView chatScroll;
@@ -341,6 +350,55 @@ public class PlayNovelSceneController : SceneController
             return;
         }
         StartCoroutine(StartNextEventInOneSeconds(1));
+        HandleDeskImageEvent(novelEvent.backgroundSpriteId);
+        HandleDecoDeskImageEvent(novelEvent.backgroundSpriteId);
+        HandleDecoBackgroundImageEvent(novelEvent.backgroundSpriteId);
+    }
+
+    public void HandleDeskImageEvent(int backgroundSpriteId)
+    {
+
+        if (currentDesk != null)
+        {
+            Destroy(currentDesk);
+        }
+        currentDesk = Instantiate(deskPrefab[(getBackgroundContentIdByBackgroundSpriteId(backgroundSpriteId, BackgroundContentEnum.DESK))], deskContainer.transform);
+    }
+
+    public void HandleDecoDeskImageEvent(int backgroundSpriteId)
+    {
+
+        if (currentDecoDesk != null)
+        {
+            Destroy(currentDecoDesk);
+        }
+        currentDecoDesk = Instantiate(decoDeskPrefab[(getBackgroundContentIdByBackgroundSpriteId(backgroundSpriteId, BackgroundContentEnum.DECO_DESK))], decoDeskContainer.transform);
+    }
+
+    public void HandleDecoBackgroundImageEvent(int backgroundSpriteId)
+    {
+
+        if (currentDecoBackgroud != null)
+        {
+            Destroy(currentDecoBackgroud);
+        }
+        currentDecoBackgroud = Instantiate(decoBackgroundPrefab[(getBackgroundContentIdByBackgroundSpriteId(backgroundSpriteId, BackgroundContentEnum.DECO_BACKGROUND))], decoBackgroudContainer.transform);
+    }
+
+    private int getBackgroundContentIdByBackgroundSpriteId(int backgroundSpriteId, BackgroundContentEnum backgroundContent)
+    {
+        switch (backgroundSpriteId)
+        {
+            case 0:
+            switch (backgroundContent)
+            {
+                case BackgroundContentEnum.DESK: return 0;
+                case BackgroundContentEnum.DECO_DESK: return 0;
+                case BackgroundContentEnum.DECO_BACKGROUND: return 0;
+                default: return 0;
+            }
+            default: return 0;
+        }
     }
 
     public void HandleCharacterJoinEvent(VisualNovelEvent novelEvent)
