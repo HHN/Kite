@@ -1,49 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking.Types;
 using UnityEngine.UI;
 
 public class FoundersBubbleSceneController : SceneController
 {
-    public GameObject selectNovelSoundPrefab;
-
-    public Button foundersWellButton;
-
-    public GameObject bankkreditNovelTextBubble;
-    public GameObject bekannteTreffenNovelTextBubble;
-    public GameObject bankkontoNovelTextBubble;
-    public GameObject foerderantragNovelTextBubble;
-    public GameObject elternNovelTextBubble;
-    public GameObject notariatNovelTextBubble;
-    public GameObject presseNovelTextBubble;
-    public GameObject bueroNovelTextBubble;
-    public GameObject gruenderzuschussNovelTextBubble;
-    public GameObject honorarNovelTextBubble;
-    public GameObject lebenspartnerNovelTextBubble;
-    public GameObject introNovelTextBubble;
-
-    public GameObject currentOpenBubble;
+    [SerializeField] private GameObject novelDescriptionTextboxGameObject;
+    [SerializeField] private NovelDescriptionTextbox novelDescriptionTextbox;
+    [SerializeField] private InfinityScroll infinityScroll;
+    [SerializeField] private Button foundersWellButton;
 
     void Start()
     {
         BackStackManager.Instance().Push(SceneNames.FOUNDERS_BUBBLE_SCENE);
 
-        foundersWellButton.onClick.AddListener(delegate { OnFoundersWellButton(); });
-
-        bankkreditNovelTextBubble.SetActive(false);
-        bekannteTreffenNovelTextBubble.SetActive(false);
-        bankkontoNovelTextBubble.SetActive(false);
-        foerderantragNovelTextBubble.SetActive(false);
-        elternNovelTextBubble.SetActive(false); 
-        notariatNovelTextBubble.SetActive(false);
-        presseNovelTextBubble.SetActive(false);
-        bueroNovelTextBubble.SetActive(false);
-        gruenderzuschussNovelTextBubble.SetActive(false); 
-        honorarNovelTextBubble.SetActive(false);
-        lebenspartnerNovelTextBubble.SetActive(false);
-        introNovelTextBubble.SetActive(false);
-        currentOpenBubble = null;
-    }
+        foundersWellButton.onClick.AddListener(delegate { OnFoundersWellButton(); });    }
 
     public void OnFoundersWellButton()
     {
@@ -52,355 +24,96 @@ public class FoundersBubbleSceneController : SceneController
 
     public void OnBankkreditNovelButton()
     {
-        if (currentOpenBubble == bankkreditNovelTextBubble)
-        {
-            bankkreditNovelTextBubble.SetActive(false);
-            currentOpenBubble = null;
-            return;
-        }
-        bankkreditNovelTextBubble.SetActive(true);
-        bekannteTreffenNovelTextBubble.SetActive(false);
-        bankkontoNovelTextBubble.SetActive(false);
-        foerderantragNovelTextBubble.SetActive(false);
-        elternNovelTextBubble.SetActive(false);
-        notariatNovelTextBubble.SetActive(false);
-        presseNovelTextBubble.SetActive(false);
-        bueroNovelTextBubble.SetActive(false);
-        gruenderzuschussNovelTextBubble.SetActive(false);
-        honorarNovelTextBubble.SetActive(false);
-        lebenspartnerNovelTextBubble.SetActive(false);
-        introNovelTextBubble.SetActive(false);
-        currentOpenBubble = bankkreditNovelTextBubble;
-    }
-
-    public void OnPlayBankkreditNovelButton()
-    {
-        LoadNovel(10);
+        DisplayTextBoxForVisualNovel(VisualNovelNames.BANK_KREDIT_NOVEL);
+        infinityScroll.MoveToVisualNovel(VisualNovelNames.BANK_KREDIT_NOVEL);
     }
 
     public void OnBekannteTreffenNovelButton()
     {
-        if (currentOpenBubble == bekannteTreffenNovelTextBubble)
-        {
-            bekannteTreffenNovelTextBubble.SetActive(false);
-            currentOpenBubble = null;
-            return;
-        }
-        bankkreditNovelTextBubble.SetActive(false);
-        bekannteTreffenNovelTextBubble.SetActive(true);
-        bankkontoNovelTextBubble.SetActive(false);
-        foerderantragNovelTextBubble.SetActive(false);
-        elternNovelTextBubble.SetActive(false);
-        notariatNovelTextBubble.SetActive(false);
-        presseNovelTextBubble.SetActive(false);
-        bueroNovelTextBubble.SetActive(false);
-        gruenderzuschussNovelTextBubble.SetActive(false);
-        honorarNovelTextBubble.SetActive(false);
-        lebenspartnerNovelTextBubble.SetActive(false);
-        introNovelTextBubble.SetActive(false);
-        currentOpenBubble = bekannteTreffenNovelTextBubble;
-    }
-
-    public void OnPlayBekannteTreffenNovelButton()
-    {
-        LoadNovel(9);
+        DisplayTextBoxForVisualNovel(VisualNovelNames.BEKANNTE_TREFFEN_NOVEL);
+        infinityScroll.MoveToVisualNovel(VisualNovelNames.BEKANNTE_TREFFEN_NOVEL);
     }
 
     public void OnBankKontoNovelButton()
     {
-        if (currentOpenBubble == bankkontoNovelTextBubble)
-        {
-            bankkontoNovelTextBubble.SetActive(false);
-            currentOpenBubble = null;
-            return;
-        }
-        bankkreditNovelTextBubble.SetActive(false);
-        bekannteTreffenNovelTextBubble.SetActive(false);
-        bankkontoNovelTextBubble.SetActive(true);
-        foerderantragNovelTextBubble.SetActive(false);
-        elternNovelTextBubble.SetActive(false);
-        notariatNovelTextBubble.SetActive(false);
-        presseNovelTextBubble.SetActive(false);
-        bueroNovelTextBubble.SetActive(false);
-        gruenderzuschussNovelTextBubble.SetActive(false);
-        honorarNovelTextBubble.SetActive(false);
-        lebenspartnerNovelTextBubble.SetActive(false);
-        introNovelTextBubble.SetActive(false);
-        currentOpenBubble = bankkontoNovelTextBubble;
-    }
-
-    public void OnPlayBankKontoNovelButton()
-    {
-        LoadNovel(5);
+        DisplayTextBoxForVisualNovel(VisualNovelNames.BANK_KONTO_NOVEL);
+        infinityScroll.MoveToVisualNovel(VisualNovelNames.BANK_KONTO_NOVEL);
     }
 
     public void OnFoerderantragNovelButton()
     {
-        if (currentOpenBubble == foerderantragNovelTextBubble)
-        {
-            foerderantragNovelTextBubble.SetActive(false);
-            currentOpenBubble = null;
-            return;
-        }
-        bankkreditNovelTextBubble.SetActive(false);
-        bekannteTreffenNovelTextBubble.SetActive(false);
-        bankkontoNovelTextBubble.SetActive(false);
-        foerderantragNovelTextBubble.SetActive(true);
-        elternNovelTextBubble.SetActive(false);
-        notariatNovelTextBubble.SetActive(false);
-        presseNovelTextBubble.SetActive(false);
-        bueroNovelTextBubble.SetActive(false);
-        gruenderzuschussNovelTextBubble.SetActive(false);
-        honorarNovelTextBubble.SetActive(false);
-        lebenspartnerNovelTextBubble.SetActive(false);
-        introNovelTextBubble.SetActive(false);
-        currentOpenBubble = foerderantragNovelTextBubble;
-    }
-
-    public void OnPlayFoerderantragNovelButton()
-    {
-        LoadNovel(7);
+        DisplayTextBoxForVisualNovel(VisualNovelNames.FOERDERANTRAG_NOVEL);
+        infinityScroll.MoveToVisualNovel(VisualNovelNames.FOERDERANTRAG_NOVEL);
     }
 
     public void OnElternNovelButton()
     {
-        if (currentOpenBubble == elternNovelTextBubble)
-        {
-            elternNovelTextBubble.SetActive(false);
-            currentOpenBubble = null;
-            return;
-        }
-        bankkreditNovelTextBubble.SetActive(false);
-        bekannteTreffenNovelTextBubble.SetActive(false);
-        bankkontoNovelTextBubble.SetActive(false);
-        foerderantragNovelTextBubble.SetActive(false);
-        elternNovelTextBubble.SetActive(true);
-        notariatNovelTextBubble.SetActive(false);
-        presseNovelTextBubble.SetActive(false);
-        bueroNovelTextBubble.SetActive(false);
-        gruenderzuschussNovelTextBubble.SetActive(false);
-        honorarNovelTextBubble.SetActive(false);
-        lebenspartnerNovelTextBubble.SetActive(false);
-        introNovelTextBubble.SetActive(false);
-        currentOpenBubble = elternNovelTextBubble;
-    }
-
-    public void OnPlayElternNovelButton()
-    {
-        LoadNovel(2);
+        DisplayTextBoxForVisualNovel(VisualNovelNames.ELTERN_NOVEL);
+        infinityScroll.MoveToVisualNovel(VisualNovelNames.ELTERN_NOVEL);
     }
 
     public void OnNotariatNovelButton()
     {
-        if (currentOpenBubble == notariatNovelTextBubble)
-        {
-            notariatNovelTextBubble.SetActive(false);
-            currentOpenBubble = null;
-            return;
-        }
-        bankkreditNovelTextBubble.SetActive(false);
-        bekannteTreffenNovelTextBubble.SetActive(false);
-        bankkontoNovelTextBubble.SetActive(false);
-        foerderantragNovelTextBubble.SetActive(false);
-        elternNovelTextBubble.SetActive(false);
-        notariatNovelTextBubble.SetActive(true);
-        presseNovelTextBubble.SetActive(false);
-        bueroNovelTextBubble.SetActive(false);
-        gruenderzuschussNovelTextBubble.SetActive(false);
-        honorarNovelTextBubble.SetActive(false);
-        lebenspartnerNovelTextBubble.SetActive(false);
-        introNovelTextBubble.SetActive(false);
-        currentOpenBubble = notariatNovelTextBubble;
-    }
-
-    public void OnPlayNotariatNovelButton()
-    {
-        LoadNovel(4);
+        DisplayTextBoxForVisualNovel(VisualNovelNames.NOTARIAT_NOVEL);
+        infinityScroll.MoveToVisualNovel(VisualNovelNames.NOTARIAT_NOVEL);
     }
 
     public void OnPresseNovelButton()
     {
-        if (currentOpenBubble == presseNovelTextBubble)
-        {
-            presseNovelTextBubble.SetActive(false);
-            currentOpenBubble = null;
-            return;
-        }
-        bankkreditNovelTextBubble.SetActive(false);
-        bekannteTreffenNovelTextBubble.SetActive(false);
-        bankkontoNovelTextBubble.SetActive(false);
-        foerderantragNovelTextBubble.SetActive(false);
-        elternNovelTextBubble.SetActive(false);
-        notariatNovelTextBubble.SetActive(false);
-        presseNovelTextBubble.SetActive(true);
-        bueroNovelTextBubble.SetActive(false);
-        gruenderzuschussNovelTextBubble.SetActive(false);
-        honorarNovelTextBubble.SetActive(false);
-        lebenspartnerNovelTextBubble.SetActive(false);
-        introNovelTextBubble.SetActive(false);
-        currentOpenBubble = presseNovelTextBubble;
-    }
-
-    public void OnPlayPresseNovelButton()
-    {
-        LoadNovel(3);
+        DisplayTextBoxForVisualNovel(VisualNovelNames.PRESSE_NOVEL);
+        infinityScroll.MoveToVisualNovel(VisualNovelNames.PRESSE_NOVEL);
     }
 
     public void OnBueroNovelButton()
     {
-        if (currentOpenBubble == bueroNovelTextBubble)
-        {
-            bueroNovelTextBubble.SetActive(false);
-            currentOpenBubble = null;
-            return;
-        }
-        bankkreditNovelTextBubble.SetActive(false);
-        bekannteTreffenNovelTextBubble.SetActive(false);
-        bankkontoNovelTextBubble.SetActive(false);
-        foerderantragNovelTextBubble.SetActive(false);
-        elternNovelTextBubble.SetActive(false);
-        notariatNovelTextBubble.SetActive(false);
-        presseNovelTextBubble.SetActive(false);
-        bueroNovelTextBubble.SetActive(true);
-        gruenderzuschussNovelTextBubble.SetActive(false);
-        honorarNovelTextBubble.SetActive(false);
-        lebenspartnerNovelTextBubble.SetActive(false);
-        introNovelTextBubble.SetActive(false);
-        currentOpenBubble = bueroNovelTextBubble;
-    }
-
-    public void OnPlayBueroNovelButton()
-    {
-        LoadNovel(6);
+        DisplayTextBoxForVisualNovel(VisualNovelNames.BUERO_NOVEL);
+        infinityScroll.MoveToVisualNovel(VisualNovelNames.BUERO_NOVEL);
     }
 
     public void OnGruenderzuschussNovelButton()
     {
-        if (currentOpenBubble == gruenderzuschussNovelTextBubble)
-        {
-            gruenderzuschussNovelTextBubble.SetActive(false);
-            currentOpenBubble = null;
-            return;
-        }
-        bankkreditNovelTextBubble.SetActive(false);
-        bekannteTreffenNovelTextBubble.SetActive(false);
-        bankkontoNovelTextBubble.SetActive(false);
-        foerderantragNovelTextBubble.SetActive(false);
-        elternNovelTextBubble.SetActive(false);
-        notariatNovelTextBubble.SetActive(false);
-        presseNovelTextBubble.SetActive(false);
-        bueroNovelTextBubble.SetActive(false);
-        gruenderzuschussNovelTextBubble.SetActive(true);
-        honorarNovelTextBubble.SetActive(false);
-        lebenspartnerNovelTextBubble.SetActive(false);
-        introNovelTextBubble.SetActive(false);
-        currentOpenBubble = gruenderzuschussNovelTextBubble;
-    }
-
-    public void OnPlayGruenderzuschussNovelButton()
-    {
-        LoadNovel(8);
+        DisplayTextBoxForVisualNovel(VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL);
+        infinityScroll.MoveToVisualNovel(VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL);
     }
 
     public void OnHonorarNovelButton()
     {
-        if (currentOpenBubble == honorarNovelTextBubble)
-        {
-            honorarNovelTextBubble.SetActive(false);
-            currentOpenBubble = null;
-            return;
-        }
-        bankkreditNovelTextBubble.SetActive(false);
-        bekannteTreffenNovelTextBubble.SetActive(false);
-        bankkontoNovelTextBubble.SetActive(false);
-        foerderantragNovelTextBubble.SetActive(false);
-        elternNovelTextBubble.SetActive(false);
-        notariatNovelTextBubble.SetActive(false);
-        presseNovelTextBubble.SetActive(false);
-        bueroNovelTextBubble.SetActive(false);
-        gruenderzuschussNovelTextBubble.SetActive(false);
-        honorarNovelTextBubble.SetActive(true);
-        lebenspartnerNovelTextBubble.SetActive(false);
-        introNovelTextBubble.SetActive(false);
-        currentOpenBubble = honorarNovelTextBubble;
-    }
-
-    public void OnPlayHonorarNovelButton()
-    {
-        LoadNovel(11);
+        DisplayTextBoxForVisualNovel(VisualNovelNames.HONORAR_NOVEL);
+        infinityScroll.MoveToVisualNovel(VisualNovelNames.HONORAR_NOVEL);
     }
 
     public void OnLebenspartnerNovelButton()
     {
-        if (currentOpenBubble == lebenspartnerNovelTextBubble)
-        {
-            lebenspartnerNovelTextBubble.SetActive(false);
-            currentOpenBubble = null;
-            return;
-        }
-        bankkreditNovelTextBubble.SetActive(false);
-        bekannteTreffenNovelTextBubble.SetActive(false);
-        bankkontoNovelTextBubble.SetActive(false);
-        foerderantragNovelTextBubble.SetActive(false);
-        elternNovelTextBubble.SetActive(false);
-        notariatNovelTextBubble.SetActive(false);
-        presseNovelTextBubble.SetActive(false);
-        bueroNovelTextBubble.SetActive(false);
-        gruenderzuschussNovelTextBubble.SetActive(false);
-        honorarNovelTextBubble.SetActive(false);
-        lebenspartnerNovelTextBubble.SetActive(true);
-        introNovelTextBubble.SetActive(false);
-        currentOpenBubble = lebenspartnerNovelTextBubble;
-    }
-
-    public void OnPlayLebenspartnerNovelButton()
-    {
-        LoadNovel(-10);
+        DisplayTextBoxForVisualNovel(VisualNovelNames.LEBENSPARTNER_NOVEL);
+        infinityScroll.MoveToVisualNovel(VisualNovelNames.LEBENSPARTNER_NOVEL);
     }
 
     public void OnIntroNovelButton()
     {
-        if (currentOpenBubble == introNovelTextBubble)
-        {
-            introNovelTextBubble.SetActive(false);
-            currentOpenBubble = null;
-            return;
-        }
-        bankkreditNovelTextBubble.SetActive(false);
-        bekannteTreffenNovelTextBubble.SetActive(false);
-        bankkontoNovelTextBubble.SetActive(false);
-        foerderantragNovelTextBubble.SetActive(false);
-        elternNovelTextBubble.SetActive(false);
-        notariatNovelTextBubble.SetActive(false);
-        presseNovelTextBubble.SetActive(false);
-        bueroNovelTextBubble.SetActive(false);
-        gruenderzuschussNovelTextBubble.SetActive(false);
-        honorarNovelTextBubble.SetActive(false);
-        lebenspartnerNovelTextBubble.SetActive(false);
-        introNovelTextBubble.SetActive(true);
-        currentOpenBubble = introNovelTextBubble;
+        DisplayTextBoxForVisualNovel(VisualNovelNames.INTRO_NOVEL);
+        infinityScroll.MoveToVisualNovel(VisualNovelNames.INTRO_NOVEL);
     }
 
-    public void OnPlayIntroNovelButton()
+    public void DisplayTextBoxForVisualNovel(VisualNovelNames visualNovel)
     {
-        LoadNovel(13);
-    }
+        int novelId = VisualNovelNamesHelper.ToInt(visualNovel);
 
-    public void LoadNovel(int novelId)
-    {
         List<VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
 
         foreach (VisualNovel novel in allNovels)
         {
             if (novel.id == novelId)
             {
-                PlayManager.Instance().SetVisualNovelToPlay(novel);
-                GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
-                DontDestroyOnLoad(buttonSound);
-                SceneLoader.LoadDetailsViewScene();
-                return;
+                novelDescriptionTextboxGameObject.SetActive(true);
+                novelDescriptionTextbox.SetHead(FoundersBubbleMetaInformation.IsHighInGui(visualNovel));
+                novelDescriptionTextbox.SetVisualNovel(novel);
+                novelDescriptionTextbox.SetText(novel.description);
             }
         }
-        this.DisplayErrorMessage(ErrorMessages.NOVEL_NOT_FOUND);
+    }
+
+    public void MakeTextboxInvisible()
+    {
+        novelDescriptionTextboxGameObject.SetActive(false);
     }
 }

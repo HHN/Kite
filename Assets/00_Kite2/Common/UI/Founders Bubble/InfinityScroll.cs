@@ -12,22 +12,34 @@ public class InfinityScroll : MonoBehaviour
     [SerializeField] private bool isUpdated;
     [SerializeField] private float maxSpeed = 1000f;
     [SerializeField] private InfinityScroll secondScrollRect;
+    [SerializeField] private FoundersBubbleSceneController foundersBubbleSceneController;
 
     [SerializeField] public float widthBefore;
     [SerializeField] public float widthAfter;
 
+    [SerializeField] public bool isSnapped;
+    [SerializeField] public bool isTextboxVisible;
+    [SerializeField] public float snappingSpeed;
+    [SerializeField] public float snappingForce;
+    [SerializeField] public int currentTarget;
+
+    [SerializeField] public int itemsToAdd;
+
     void Start()
     {
+        snappingForce = 100f;
+        isSnapped = true;
+        snappingSpeed = 0f;
         isUpdated = false;
         oldVelocity = Vector2.zero;
-        int ItemsToAdd = Mathf.CeilToInt(viewPortTransform.rect.width / (itemList[0].rect.width + horizontalLayoutGroup.spacing));
+        itemsToAdd = Mathf.CeilToInt(viewPortTransform.rect.width / (itemList[0].rect.width + horizontalLayoutGroup.spacing));
 
-        for (int i = 0; i < ItemsToAdd; i++)
+        for (int i = 0; i < itemsToAdd; i++)
         {
             RectTransform RT = Instantiate(itemList[i % itemList.Length], contentPanelTransform);
             RT.SetAsLastSibling();
         }
-        for (int i = 0; i < ItemsToAdd; i++)
+        for (int i = 0; i < itemsToAdd; i++)
         {
             int num = itemList.Length - i - 1;
 
@@ -38,12 +50,12 @@ public class InfinityScroll : MonoBehaviour
             RectTransform RT = Instantiate(itemList[num], contentPanelTransform);
             RT.SetAsFirstSibling();
         }
-        contentPanelTransform.localPosition = new Vector3(0 - (itemList[0].rect.width + horizontalLayoutGroup.spacing) * ItemsToAdd,
+        contentPanelTransform.localPosition = new Vector3(0 - (itemList[0].rect.width + horizontalLayoutGroup.spacing) * itemsToAdd,
             contentPanelTransform.localPosition.y,
             contentPanelTransform.localPosition.z);
 
         widthBefore = (itemList[0].rect.width * itemList.Length) + ((itemList.Length - 1) * horizontalLayoutGroup.spacing) - (viewPortTransform.rect.width);
-        widthAfter = (itemList[0].rect.width * (itemList.Length + (2 * ItemsToAdd))) + ((itemList.Length + (2 * ItemsToAdd) - 1) * horizontalLayoutGroup.spacing) - (viewPortTransform.rect.width);
+        widthAfter = (itemList[0].rect.width * (itemList.Length + (2 * itemsToAdd))) + ((itemList.Length + (2 * itemsToAdd) - 1) * horizontalLayoutGroup.spacing) - (viewPortTransform.rect.width);
     }
 
     void Update()
@@ -52,8 +64,6 @@ public class InfinityScroll : MonoBehaviour
         {
             return;
         }
-        CalculateAndSetCurrentPositionForSecondScrollView();
-
         if (scollRect.velocity.magnitude > maxSpeed)
         {
             scollRect.velocity = scollRect.velocity.normalized * maxSpeed;
@@ -69,15 +79,57 @@ public class InfinityScroll : MonoBehaviour
             oldVelocity = scollRect.velocity;
             contentPanelTransform.localPosition -= new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
             isUpdated = true;
-            return;
+            currentTarget = currentTarget + 12;
         }
-        if (contentPanelTransform.localPosition.x < 0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
+        else if (contentPanelTransform.localPosition.x < 0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
         {
             Canvas.ForceUpdateCanvases();
             oldVelocity = scollRect.velocity;
             contentPanelTransform.localPosition += new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
             isUpdated = true;
+            currentTarget = currentTarget - 12;
+        }
+        SnapToItem();
+        CalculateAndSetCurrentPositionForSecondScrollView();
+    }
+    
+    public void SnapToItem()
+    {
+        float targetXPosition = 0 - ((currentTarget * (itemList[0].rect.width + horizontalLayoutGroup.spacing)) - (viewPortTransform.rect.width / 2) - (itemList[0].rect.width / 2) - horizontalLayoutGroup.spacing);
+
+        if (isSnapped)
+        {
+            if (isTextboxVisible && contentPanelTransform.localPosition.x != targetXPosition)
+            {
+                foundersBubbleSceneController.MakeTextboxInvisible();
+                isTextboxVisible = false;
+            }
             return;
+        }
+
+        scollRect.velocity = Vector2.zero;
+        snappingSpeed += snappingForce * Time.deltaTime;
+        contentPanelTransform.localPosition = new Vector3(
+            Mathf.MoveTowards(contentPanelTransform.localPosition.x, targetXPosition, snappingSpeed),
+            contentPanelTransform.localPosition.y,
+            contentPanelTransform.localPosition.z);
+
+        if (contentPanelTransform.localPosition.x == targetXPosition)
+        {
+            isSnapped = true;
+            isTextboxVisible = true;
+        }
+    }    
+
+    public void MoveToVisualNovel(VisualNovelNames visualNovelNames)
+    {
+        isSnapped = false;
+        snappingSpeed = 0;
+        currentTarget = FoundersBubbleMetaInformation.GetIndexOfNovel(visualNovelNames) + itemsToAdd;
+
+        if (IsCurrentlyInFirstHalf() && currentTarget > 12)
+        {
+            currentTarget = currentTarget - 12;
         }
     }
 
@@ -101,32 +153,11 @@ public class InfinityScroll : MonoBehaviour
             widthFromLeftOnSecondScrollViewAfter = widthFromLeftBeforeOnSecondScrollView + ((secondScrollRect.widthAfter - secondScrollRect.widthBefore) / 2);
             result = widthFromLeftOnSecondScrollViewAfter / secondScrollRect.widthAfter;
         }
-        secondScrollRect.scollRect.horizontalNormalizedPosition = result;    }
-
-    /**
-    public void CalculateAndSetCurrentPositionForSecondScrollView(bool print)
-    {
-        if (secondScrollRect == null)
-        {
-            return;
-        }
-        float widthFromLeftAfter = scollRect.horizontalNormalizedPosition * widthAfter;
-        float widthFromleftBefore = widthFromLeftAfter - ((widthAfter - widthBefore) / 2);
-        float currentPointOnFirstViewBefore = widthFromleftBefore / (widthBefore + viewPortTransform.rect.width + horizontalLayoutGroup.spacing);
-        float widthFromLeftBeforeOnSecondScrollView = currentPointOnFirstViewBefore * (secondScrollRect.widthBefore + secondScrollRect.viewPortTransform.rect.width + secondScrollRect.horizontalLayoutGroup.spacing);
-        float widthFromLeftOnSecondScrollViewAfter = widthFromLeftBeforeOnSecondScrollView + ((secondScrollRect.widthAfter - secondScrollRect.widthBefore) / 2);
-        float result = widthFromLeftOnSecondScrollViewAfter / secondScrollRect.widthAfter;
-
-        if (result < 0)
-        {
-            currentPointOnFirstViewBefore = 1 + currentPointOnFirstViewBefore;
-            widthFromLeftBeforeOnSecondScrollView = currentPointOnFirstViewBefore * secondScrollRect.widthBefore;
-            widthFromLeftOnSecondScrollViewAfter = widthFromLeftBeforeOnSecondScrollView + ((secondScrollRect.widthAfter - secondScrollRect.widthBefore) / 2);
-            result = (widthFromLeftOnSecondScrollViewAfter + viewPortTransform.rect.width) / secondScrollRect.widthAfter;
-        }
-        secondScrollRect.scollRect.horizontalNormalizedPosition = result;
-
-        if (print) { Debug.Log(widthFromLeftBeforeOnSecondScrollView); }
+        secondScrollRect.scollRect.horizontalNormalizedPosition = result;    
     }
-    */
+
+    public bool IsCurrentlyInFirstHalf()
+    {
+        return (contentPanelTransform.localPosition.x > (0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing))/2));
+    }
 }
