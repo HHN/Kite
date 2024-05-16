@@ -19,6 +19,7 @@ public class PlayNovelSceneController : SceneController
     [SerializeField] private bool isWaitingForConfirmation = false;
     [SerializeField] private Dictionary<string, VisualNovelEvent> novelEvents = new Dictionary<string, VisualNovelEvent>();
     [SerializeField] private VisualNovelEvent nextEventToPlay;
+    [SerializeField] private GameObject conversationViewport;
     [SerializeField] private GameObject backgroundContainer;
     [SerializeField] private GameObject deskContainer;
     [SerializeField] private GameObject decoDeskContainer;
@@ -105,6 +106,8 @@ public class PlayNovelSceneController : SceneController
             return;
         }
 
+        SetVisualElements();
+
         foreach (VisualNovelEvent novelEvent in novelToPlay.novelEvents)
         {
             novelEvents.Add(novelEvent.id, novelEvent);
@@ -127,6 +130,28 @@ public class PlayNovelSceneController : SceneController
         }
         SetWaitingForConfirmation(false);
         PlayNextEvent();
+    }
+
+    private void SetVisualElements()
+    {
+        // Bildschirmgröße abrufen
+        RectTransform canvasRect = canvas.GetComponent<RectTransform>();
+        Debug.Log("x. " + canvasRect.rect.width + " y: " + canvasRect.rect.height);
+        
+        RectTransform conversationViewportTransform = conversationViewport.GetComponent<RectTransform>();
+        RectTransform characterRectTransform = characterContainer.GetComponent<RectTransform>();
+        RectTransform decoDeskRectTransform = decoDeskContainer.GetComponent<RectTransform>();
+        RectTransform decoBackgroundRectTransform = decoBackgroudContainer.GetComponent<RectTransform>();
+            
+        conversationViewportTransform.anchoredPosition = new Vector2(0, -canvasRect.rect.height * 0.225f);
+        characterRectTransform.anchoredPosition = new Vector2(-canvasRect.rect.width * 0.15f, 0);
+        decoDeskRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.15f, canvasRect.rect.height * 0.1f);
+        decoBackgroundRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.42f, canvasRect.rect.height * 0.25f);
+
+        conversationViewportTransform.sizeDelta = new Vector2(0, canvasRect.rect.height * 0.45f);
+        characterRectTransform.sizeDelta = new Vector2(canvasRect.rect.width * 0.25f, canvasRect.rect.height * 1f);
+        decoDeskRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.075f, canvasRect.rect.height * 0.1f);
+        decoBackgroundRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.17f, canvasRect.rect.height * 0.25f);
     }
 
     public void PlayNextEvent()
