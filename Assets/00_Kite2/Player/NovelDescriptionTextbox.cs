@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class NovelDescriptionTextbox : MonoBehaviour
 {
+    [SerializeField] private Image image;
     [SerializeField] private GameObject smalHead;
     [SerializeField] private GameObject bigHead;
     [SerializeField] private TextMeshProUGUI text;
@@ -17,6 +18,13 @@ public class NovelDescriptionTextbox : MonoBehaviour
     {
         playButton.onClick.AddListener(delegate { OnPlayButton(); });
         bookMarkButton.onClick.AddListener(delegate { OnBookmarkButton(); });
+    }
+
+    public void SetColorOfImage(Color color)
+    {
+        image.color = color;
+        smalHead.GetComponent<Image>().color = color;
+        bigHead.GetComponent<Image>().color = color;
     }
 
     private void SetBigHead()

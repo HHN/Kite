@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking.Types;
 using UnityEngine.UI;
 
 public class FoundersBubbleSceneController : SceneController
@@ -108,6 +106,7 @@ public class FoundersBubbleSceneController : SceneController
                 novelDescriptionTextbox.SetHead(FoundersBubbleMetaInformation.IsHighInGui(visualNovel));
                 novelDescriptionTextbox.SetVisualNovel(novel);
                 novelDescriptionTextbox.SetText(novel.description);
+                novelDescriptionTextbox.SetColorOfImage(FoundersBubbleMetaInformation.GetColorOfNovel(visualNovel));
             }
         }
     }
