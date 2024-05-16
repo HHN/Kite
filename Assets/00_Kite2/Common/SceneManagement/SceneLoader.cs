@@ -166,6 +166,11 @@ public class SceneLoader
         LoadScene(SceneNames.FOUNDERS_WELL_SCENE);
     }
 
+    public static void LoadPlayInstructionScene()
+    {
+        LoadScene(SceneNames.PLAY_INSTRUCTION_SCENE);
+    }
+
     public static void LoadScene(string sceneName)
     {
         GameObject oldSceneControllerGameObject = GameObject.Find("Controller");

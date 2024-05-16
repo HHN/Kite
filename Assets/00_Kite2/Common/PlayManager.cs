@@ -1,7 +1,10 @@
+using UnityEngine;
+
 public class PlayManager
 {
     private static PlayManager instance;
     private VisualNovel novelToPlay;
+    private Color colorOfNovel;
 
     private PlayManager() { }
 
@@ -26,5 +29,19 @@ public class PlayManager
             return null;
         }
         return novelToPlay;
+    }
+
+    public void SetColorOfVisualNovelToPlay(Color colorOfNovel)
+    {
+        this.colorOfNovel = colorOfNovel;
+    }
+
+    public Color GetColorOfVisualNovelToPlay()
+    {
+        if (colorOfNovel == null)
+        {
+            return new Color(0, 0, 0);
+        }
+        return colorOfNovel;
     }
 }
