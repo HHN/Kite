@@ -74,4 +74,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_Kite2/Common/FoundersWellScene.unity
     guid: 8ca31de191b106d46bd1ab6bd3fbc873
+  - enabled: 1
+    path: Assets/00_Kite2/Player/PlayInstructionScene.unity
+    guid: 107de03954a699245be4e7689460de64
   m_configObjects: {}

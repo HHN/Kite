@@ -10,6 +10,7 @@ public class NovelDescriptionTextbox : MonoBehaviour
     [SerializeField] private GameObject bigHead;
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private VisualNovel visualNovelToDisplay;
+    [SerializeField] private VisualNovelNames visualNovelName;
     [SerializeField] private Button playButton;
     [SerializeField] private Button bookMarkButton;
     [SerializeField] private GameObject selectNovelSoundPrefab;
@@ -44,6 +45,11 @@ public class NovelDescriptionTextbox : MonoBehaviour
         this.text.text = text;
     }
 
+    public void SetVisualNovelName(VisualNovelNames visualNovelName)
+    {
+        this.visualNovelName = visualNovelName;
+    }
+
     public void SetVisualNovel(VisualNovel visualNovel)
     {
         this.visualNovelToDisplay = visualNovel;
@@ -52,9 +58,18 @@ public class NovelDescriptionTextbox : MonoBehaviour
     public void OnPlayButton()
     {
         PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
+        PlayManager.Instance().SetColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetColorOfNovel(visualNovelName));
         GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
         DontDestroyOnLoad(buttonSound);
-        SceneLoader.LoadDetailsViewScene();
+
+        if (ShowPlayInstructionManager.Instance().ShowInstruction())
+        {
+            SceneLoader.LoadPlayInstructionScene();
+
+        } else
+        {
+            SceneLoader.LoadPlayNovelScene();
+        }
         return;
     }
 
