@@ -79,7 +79,7 @@ public class InfinityScroll : MonoBehaviour
             oldVelocity = scollRect.velocity;
             contentPanelTransform.localPosition -= new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
             isUpdated = true;
-            currentTarget = currentTarget + 12;
+            currentTarget = currentTarget + FoundersBubbleMetaInformation.numerOfNovelsToDisplay;
         }
         else if (contentPanelTransform.localPosition.x < 0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
         {
@@ -87,7 +87,7 @@ public class InfinityScroll : MonoBehaviour
             oldVelocity = scollRect.velocity;
             contentPanelTransform.localPosition += new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
             isUpdated = true;
-            currentTarget = currentTarget - 12;
+            currentTarget = currentTarget - FoundersBubbleMetaInformation.numerOfNovelsToDisplay;
         }
         SnapToItem();
         CalculateAndSetCurrentPositionForSecondScrollView();
@@ -127,9 +127,9 @@ public class InfinityScroll : MonoBehaviour
         snappingSpeed = 0;
         currentTarget = FoundersBubbleMetaInformation.GetIndexOfNovel(visualNovelNames) + itemsToAdd;
 
-        if (IsCurrentlyInFirstHalf() && currentTarget > 12)
+        if (IsCurrentlyInFirstHalf() && currentTarget > FoundersBubbleMetaInformation.numerOfNovelsToDisplay)
         {
-            currentTarget = currentTarget - 12;
+            currentTarget = currentTarget - FoundersBubbleMetaInformation.numerOfNovelsToDisplay;
         }
     }
 
