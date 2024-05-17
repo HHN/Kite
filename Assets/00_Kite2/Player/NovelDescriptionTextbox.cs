@@ -58,7 +58,9 @@ public class NovelDescriptionTextbox : MonoBehaviour
     public void OnPlayButton()
     {
         PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-        PlayManager.Instance().SetColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
         GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
         DontDestroyOnLoad(buttonSound);
 

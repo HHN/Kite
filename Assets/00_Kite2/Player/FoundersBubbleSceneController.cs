@@ -108,7 +108,7 @@ public class FoundersBubbleSceneController : SceneController
                 novelDescriptionTextbox.SetVisualNovel(novel);
                 novelDescriptionTextbox.SetVisualNovelName(visualNovel);
                 novelDescriptionTextbox.SetText(novel.description);
-                novelDescriptionTextbox.SetColorOfImage(FoundersBubbleMetaInformation.GetColorOfNovel(visualNovel));
+                novelDescriptionTextbox.SetColorOfImage(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
             }
         }
     }

@@ -15,7 +15,7 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     [SerializeField] private TextMeshProUGUI infoTextTermsAndConditions;
     [SerializeField] private AudioSource kiteAudioLogo;
     [SerializeField] private GameObject getVersionServerCallPrefab;
-    [SerializeField] private static int COMPATIBLE_SERVER_VERSION_NUMBER = 5;
+    [SerializeField] private static int COMPATIBLE_SERVER_VERSION_NUMBER = 6;
     [SerializeField] private GameObject novelLoader;
 
     void Start()

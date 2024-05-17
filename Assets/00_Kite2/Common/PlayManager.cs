@@ -1,10 +1,13 @@
+using System;
 using UnityEngine;
 
 public class PlayManager
 {
     private static PlayManager instance;
     private VisualNovel novelToPlay;
-    private Color colorOfNovel;
+    private Color backgroundColorForNovel;
+    private Color foregroundColorForNovel;
+    private string displayName;
 
     private PlayManager() { }
 
@@ -31,17 +34,41 @@ public class PlayManager
         return novelToPlay;
     }
 
-    public void SetColorOfVisualNovelToPlay(Color colorOfNovel)
+    public void SetBackgroundColorOfVisualNovelToPlay(Color colorOfNovel)
     {
-        this.colorOfNovel = colorOfNovel;
+        this.backgroundColorForNovel = colorOfNovel;
     }
 
-    public Color GetColorOfVisualNovelToPlay()
+    public Color GetBackgroundColorOfVisualNovelToPlay()
     {
-        if (colorOfNovel == null)
+        if (backgroundColorForNovel == null)
         {
             return new Color(0, 0, 0);
         }
-        return colorOfNovel;
+        return backgroundColorForNovel;
+    }
+
+    public void SetForegroundColorOfVisualNovelToPlay(Color colorOfNovel)
+    {
+        this.foregroundColorForNovel = colorOfNovel;
+    }
+
+    public Color GetForegroundColorOfVisualNovelToPlay()
+    {
+        if (foregroundColorForNovel == null)
+        {
+            return new Color(0, 0, 0);
+        }
+        return foregroundColorForNovel;
+    }
+
+    public void SetDiplayNameOfNovelToPlay(string v)
+    {
+        this.displayName = v;
+    }
+
+    public string GetDisplayNameOfNovelToPlay()
+    {
+        return this.displayName;
     }
 }

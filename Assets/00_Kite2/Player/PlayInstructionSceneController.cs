@@ -19,10 +19,9 @@ public class PlayInstructionSceneController : SceneController
     void Start()
     {
         BackStackManager.Instance().Push(SceneNames.PLAY_INSTRUCTION_SCENE);
-        Color color = PlayManager.Instance().GetColorOfVisualNovelToPlay();
-        novelname.text = PlayManager.Instance().GetVisualNovelToPlay().title;
-        foregroundColor = color;
-        backgroundColor = new Color(color.r - (19 / 255f), color.g - (41 / 255f), color.b - (8 / 255f));
+        backgroundColor = PlayManager.Instance().GetBackgroundColorOfVisualNovelToPlay();
+        foregroundColor = PlayManager.Instance().GetForegroundColorOfVisualNovelToPlay();
+        novelname.text = PlayManager.Instance().GetDisplayNameOfNovelToPlay();
         background.color = backgroundColor;
         novelImage.color = foregroundColor;
         textBoxImage.color = foregroundColor;

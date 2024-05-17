@@ -220,7 +220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7185633894973996858, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}
       propertyPath: m_text
-      value: BEOBACHTER
+      value: BEOBACHTER*INNEN
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}

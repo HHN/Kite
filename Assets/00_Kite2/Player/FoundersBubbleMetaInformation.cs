@@ -65,7 +65,66 @@ public class FoundersBubbleMetaInformation : MonoBehaviour
         }
     }
 
-    internal static Color GetColorOfNovel(VisualNovelNames value)
+    internal static Color GetForegrundColorOfNovel(VisualNovelNames value)
+    {
+        switch (value)
+        {
+            case VisualNovelNames.ELTERN_NOVEL:
+                {
+                    return new Color(120 / 255f, 45 / 255f, 119 / 255f);
+                }
+            case VisualNovelNames.PRESSE_NOVEL:
+                {
+                    return new Color(76 / 255f, 114 / 255f, 42 / 255f);
+                }
+            case VisualNovelNames.NOTARIAT_NOVEL:
+                {
+                    return new Color(23 / 255f, 49 / 255f, 86 / 255f);
+                }
+            case VisualNovelNames.BANK_KONTO_NOVEL:
+                {
+                    return new Color(53 / 255f, 146 / 255f, 20 / 255f);
+                }
+            case VisualNovelNames.BUERO_NOVEL:
+                {
+                    return new Color(109 / 255f, 24 / 255f, 86 / 255f);
+                }
+            case VisualNovelNames.FOERDERANTRAG_NOVEL:
+                {
+                    return new Color(27 / 255f, 108 / 255f, 115 / 255f);
+                }
+            case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
+                {
+                    return new Color(86 / 255f, 70 / 255f, 23 / 255f);
+                }
+            case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                {
+                    return new Color(65 / 255f, 29 / 255f, 109 / 255f);
+                }
+            case VisualNovelNames.BANK_KREDIT_NOVEL:
+                {
+                    return new Color(23 / 255f, 49 / 255f, 86 / 255f);
+                }
+            case VisualNovelNames.HONORAR_NOVEL:
+                {
+                    return new Color(24 / 255f, 111 / 255f, 96 / 255f);
+                }
+            case VisualNovelNames.INTRO_NOVEL:
+                {
+                    return new Color(76 / 255f, 114 / 255f, 24 / 255f);
+                }
+            case VisualNovelNames.LEBENSPARTNER_NOVEL:
+                {
+                    return new Color(23 / 255f, 49 / 255f, 86 / 255f); 
+                }
+            default:
+                {
+                    return new Color(0 / 255f, 0 / 255f, 0 / 255f); 
+                }
+        }
+    }
+
+    internal static Color GetBackgroundColorOfNovel(VisualNovelNames value)
     {
         switch (value)
         {
@@ -120,6 +179,65 @@ public class FoundersBubbleMetaInformation : MonoBehaviour
             default:
                 {
                     return new Color(0 / 255f, 0 / 255f, 0 / 255f);
+                }
+        }
+    }
+
+    internal static string GetDisplayNameOfNovelToPlay(VisualNovelNames value)
+    {
+        switch (value)
+        {
+            case VisualNovelNames.ELTERN_NOVEL:
+                {
+                    return "Eltern";
+                }
+            case VisualNovelNames.PRESSE_NOVEL:
+                {
+                    return "Presse";
+                }
+            case VisualNovelNames.NOTARIAT_NOVEL:
+                {
+                    return "Notarin";
+                }
+            case VisualNovelNames.BANK_KONTO_NOVEL:
+                {
+                    return "Bankkonto";
+                }
+            case VisualNovelNames.BUERO_NOVEL:
+                {
+                    return "Büro";
+                }
+            case VisualNovelNames.FOERDERANTRAG_NOVEL:
+                {
+                    return "Förderantrag";
+                }
+            case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
+                {
+                    return "Gründungs-\r\nzuschuss";
+                }
+            case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                {
+                    return "Bekannte\r\ntreffen";
+                }
+            case VisualNovelNames.BANK_KREDIT_NOVEL:
+                {
+                    return "Bankkredit";
+                }
+            case VisualNovelNames.HONORAR_NOVEL:
+                {
+                    return "Honorar";
+                }
+            case VisualNovelNames.INTRO_NOVEL:
+                {
+                    return "Intro\r\nNovel";
+                }
+            case VisualNovelNames.LEBENSPARTNER_NOVEL:
+                {
+                    return "Lebens-\r\npartner*in";
+                }
+            default:
+                {
+                    return "";
                 }
         }
     }
