@@ -4141,6 +4141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e86a95c5b08e464a94c6eca58f91b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backButton: {fileID: 7797249983905540405}
   closeButton: {fileID: 7797249983905540405}
   homeButton: {fileID: 7797249983428950518}
   novelPlayerButton: {fileID: 7797249982373574923}

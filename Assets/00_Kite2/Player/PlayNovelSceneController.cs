@@ -136,7 +136,7 @@ public class PlayNovelSceneController : SceneController
     {
         // Bildschirmgröße abrufen
         RectTransform canvasRect = canvas.GetComponent<RectTransform>();
-        Debug.Log("x. " + canvasRect.rect.width + " y: " + canvasRect.rect.height);
+        // Debug.Log("x. " + canvasRect.rect.width + " y: " + canvasRect.rect.height);
         
         RectTransform conversationViewportTransform = conversationViewport.GetComponent<RectTransform>();
         RectTransform characterRectTransform = characterContainer.GetComponent<RectTransform>();
