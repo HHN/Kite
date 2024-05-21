@@ -84,19 +84,19 @@ public class PlayerPrefsSceneController : SceneController
     }
     private void playerNameCancleButtonListener()
     {
-        playerNameInputField.text = PlayerDataManager.Instance().ReadPlayerData("PlayerName");
+        playerNameInputField.text = PlayerDataManager.Instance().GetPlayerData("PlayerName");
     }
     private void companyNameCancleButtonListener()
     {
-        companyNameInputField.text = PlayerDataManager.Instance().ReadPlayerData("CompanyName");
+        companyNameInputField.text = PlayerDataManager.Instance().GetPlayerData("CompanyName");
     }
     private void elevatorPitchCancleButtonListener()
     {
-        elevatorPitchInputField.text = PlayerDataManager.Instance().ReadPlayerData("ElevatorPitch");
+        elevatorPitchInputField.text = PlayerDataManager.Instance().GetPlayerData("ElevatorPitch");
     }
     private void preverencesCancleButtonListener()
     {
-        preverencesInputField.text = PlayerDataManager.Instance().ReadPlayerData("Preverences");
+        preverencesInputField.text = PlayerDataManager.Instance().GetPlayerData("Preverences");
     }
 
     void OnInputFieldChangedPlayerName()
@@ -156,14 +156,14 @@ public class PlayerPrefsSceneController : SceneController
 
     private void LoadPlayerPrefs()
     {
-        originalTextPlayerName = PlayerDataManager.Instance().ReadPlayerData("PlayerName");
-        originalTextCompanyName = PlayerDataManager.Instance().ReadPlayerData("CompanyName"); 
-        originalTextElevatorPitch = PlayerDataManager.Instance().ReadPlayerData("ElevatorPitch"); 
-        originalTextPreverences = PlayerDataManager.Instance().ReadPlayerData("Preverences"); 
+        originalTextPlayerName = PlayerDataManager.Instance().GetPlayerData("PlayerName");
+        originalTextCompanyName = PlayerDataManager.Instance().GetPlayerData("CompanyName"); 
+        originalTextElevatorPitch = PlayerDataManager.Instance().GetPlayerData("ElevatorPitch"); 
+        originalTextPreverences = PlayerDataManager.Instance().GetPlayerData("Preverences"); 
         playerNameInputField.text = originalTextPlayerName;
         companyNameInputField.text = originalTextCompanyName;
         elevatorPitchInputField.text = originalTextElevatorPitch;
         preverencesInputField.text = originalTextPreverences;
-        preverencesAnswerInputField.text = PlayerDataManager.Instance().ReadPlayerData("GPTAnswerForPreverences");
+        preverencesAnswerInputField.text = PlayerDataManager.Instance().GetPlayerData("GPTAnswerForPreverences");
     }
 }

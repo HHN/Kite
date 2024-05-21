@@ -7,7 +7,9 @@ public class PlayerDataManager
 
     private PlayerDataWrapper playerData = new PlayerDataWrapper();
 
-    string[] keys = { "PlayerName", "CompanyName", "ElevatorPitch", "Preverences", "GPTAnswerForPreverences" };
+    private Dictionary<string, string> playerPrefs = new Dictionary<string, string>();
+
+    private List<string> keys = new List<string>();
 
     public static PlayerDataManager Instance()
     {
@@ -20,13 +22,64 @@ public class PlayerDataManager
 
     public void SavePlayerData(string key, string content)
     {
-        // Speichert den Inhalt unter dem angegebenen Schlüssel in PlayerPrefs
+        Debug.Log("Saved key: " + key + ", content: " + content);
         PlayerPrefs.SetString(key, content);
-        PlayerPrefs.Save(); // Stellt sicher, dass die Änderungen gespeichert werden
+        PlayerPrefs.Save();
+        AddKeyToKeyList(key);
     }
 
+    public void AddKeyToKeyList(string key)
+    {
+        if (!keys.Contains(key))
+        {
+            keys.Add(key);
+            SaveKeys();
+        }
+    }
 
-    public string ReadPlayerData(string key)
+    void SaveKeys()
+    {
+        PlayerPrefs.SetString("keys", string.Join(",", keys));
+        PlayerPrefs.Save();
+    }
+
+    public void LoadAllPlayerPrefs()
+    {
+        if (keys.Count == 0)
+        {
+            string keysString = PlayerPrefs.GetString("keys", "");
+            keys = new List<string>(keysString.Split(','));
+        }
+        foreach (string playerPref in keys)
+        {
+            playerPrefs.Add(playerPref, ReadPlayerData(playerPref));
+            Debug.Log("Added key: " + playerPref);
+        }
+    }
+    
+    public string GetPlayerData(string key)
+    {
+        if (playerPrefs.TryGetValue(key, out string value))
+        {
+            return value;
+        }
+        else
+        {
+            // Überprüft, ob ein Wert für den angegebenen Schlüssel existiert
+            if (PlayerPrefs.HasKey(key))
+            {
+            // Gibt den Wert zurück, der dem Schlüssel zugeordnet ist
+                return PlayerPrefs.GetString(key);
+            }
+            else
+            {
+            // Gibt einen leeren String zurück, wenn der Schlüssel nicht existiert
+                return "";
+            }
+        }
+    }
+
+    private string ReadPlayerData(string key)
     {
         // Überprüft, ob ein Wert für den angegebenen Schlüssel existiert
         if (PlayerPrefs.HasKey(key))

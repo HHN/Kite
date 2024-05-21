@@ -25,6 +25,7 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
         // Analytics 
         var analytics = AnalyticsServiceHandler.Instance();
         analytics.StartAnalytics();
+        PlayerDataManager.Instance().LoadAllPlayerPrefs();
 
         BackStackManager.Instance().Clear();
         SceneMemoryManager.Instance().ClearMemory();

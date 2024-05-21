@@ -1,0 +1,22 @@
+- Founders well fertigstellen (alle Ressourcen einsehbar)
+- Barrierefreiheit
+- Datenschutzrichlinien überarbeiten
+- Nutzungsbedingungen überarbeiten
+- Diese in der App einbinden und auf der HP hochladen
+- Founder bubble: Position speichern, damit zu dieser zurückgesprungen werden kann
+- Veränderte Icons nach Häufigkeit des Durchspielens (nochmal mit Claudia besprechen)
+- Gespielte Dialoge und Complitaions speichern und einsehbar machen
+- Bookmarks oder andere Kennzeichnungen (nochmal mit Nicola besprechen)
+- PlayerPrefs am Anfang laden und nur im Hintergrund speichern
+- Neue Biases hinzufügen
+- Neue Novels konvertieren und implementieren
+- Korrekturlesen sämtlicher Texte und auf korrekte Rechtschreibung und Gendergerechtigkeit achten
+- Banner im Novelplayer entfernen
+- Panoramabilder einbinden
+- X-Button konsistent halten
+- Bug entfernen, bei dem man im Novelexplorer landet
+- Info-Button im Hauptmenü deaktivieren, ohne, dass dieser sein Aussehen ändert
+- Expertenfragen-Funktion entfernen
+- Appgröße reduzieren, um auf Android deployen zu können
+- Button für das löschen der gespeicherten Nutzungsdaten hinzufügen (dieser soll mittels eines Dialogs das löschen noch einmal bestätigen)
+- Evtl. Backupfunktion für diesen Button
