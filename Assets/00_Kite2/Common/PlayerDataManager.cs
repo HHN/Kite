@@ -37,14 +37,14 @@ public class PlayerDataManager
         }
     }
 
-    void SaveKeys()
+    public void SaveKeys()
     {
         PlayerPrefs.SetString("keys", string.Join(",", keys));
         PlayerPrefs.Save();
     }
 
     public void LoadAllPlayerPrefs()
-{
+    {
     if (keys.Count == 0)
     {
         string keysString = PlayerPrefs.GetString("keys", "");
@@ -56,7 +56,7 @@ public class PlayerDataManager
         if (!playerPrefs.ContainsKey(playerPref))
         {
             playerPrefs.Add(playerPref, ReadPlayerData(playerPref));
-            //Debug.Log("Added key: " + playerPref);
+            Debug.Log("Added key: " + playerPref);
         }
         else
         {
@@ -90,7 +90,7 @@ public class PlayerDataManager
         }
     }
 
-    private string ReadPlayerData(string key)
+    public string ReadPlayerData(string key)
     {
         // Überprüft, ob ein Wert für den angegebenen Schlüssel existiert
         if (PlayerPrefs.HasKey(key))
@@ -103,5 +103,33 @@ public class PlayerDataManager
             // Gibt einen leeren String zurück, wenn der Schlüssel nicht existiert
             return "";
         }
+    }
+
+    public void SaveEvaluation(string novelName, string evaluation)
+    {
+        // Schlüssel für PlayerPrefs
+        string key = "evaluations";
+
+        // Alte Auswertungen laden
+        string existingEvaluations = PlayerPrefs.GetString(key, "");
+
+        // Trennzeichen definieren
+        string separator = "|";  // Trennt verschiedene Auswertungen
+        string subSeparator = "~"; // Trennt Novel-Namen von der Auswertung
+
+        // Neue Auswertung vorbereiten, indem der Name der Novel und die Auswertung mit einem Trennzeichen verbunden werden
+        string newEvaluation = novelName + subSeparator + evaluation;
+
+        // Neue Auswertung an bestehende anhängen
+        if (!string.IsNullOrEmpty(existingEvaluations))
+        {
+            existingEvaluations += separator;
+        }
+        existingEvaluations += newEvaluation;
+
+        // Alles zurück in PlayerPrefs speichern
+        PlayerPrefs.SetString(key, existingEvaluations);
+        PlayerPrefs.Save(); // Änderungen sichern
+        Debug.Log("Saved: " + existingEvaluations);
     }
 }

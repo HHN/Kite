@@ -20,7 +20,7 @@ namespace LeastSquares.Overtone
             lock (_lock)
             {
                 _context = TTSNative.OvertoneStart();
-                Debug.Log("Loaded speech model successfully");
+                // Debug.Log("Loaded speech model successfully");
                 Loaded = true;
             }
         }
@@ -136,7 +136,7 @@ namespace LeastSquares.Overtone
                 Disposed = true;
                 if (_context != IntPtr.Zero)
                     TTSNative.OvertoneFree(_context);
-                Debug.Log("Successfully cleaned up TTS Engine");
+                // Debug.Log("Successfully cleaned up TTS Engine");
             }
         }
     }

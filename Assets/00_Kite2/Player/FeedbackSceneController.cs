@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using LeastSquares.Overtone;
 
 public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErrorHandler
 {
@@ -13,8 +14,9 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
     [SerializeField] private RectTransform layout;
     [SerializeField] private AudioSource waitingLoopMusic;
     [SerializeField] private AudioSource resultMusic;
-    [SerializeField] private AudioSource textToSpeech;
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private Button requestExpertFeedbackButton;
+    [SerializeField] private TTSEngine engine;
 
     private void Start()
     {
@@ -83,10 +85,13 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
             return;
         }
         StopWaitingMusic();
-        TextToSpeechService.Instance().SetAudioSource(textToSpeech);
-        //TextToSpeechService.Instance().TextToSpeechReadLive(response.GetCompletion().Trim());
+        if(TextToSpeechManager.Instance().IsTextToSpeechActivated())
+        {
+            TextToSpeechService.Instance().TextToSpeechReadLive(response.GetCompletion().Trim(), engine);
+        }
         feedbackText.SetText(response.GetCompletion().Trim());
         novelToPlay.feedback = (response.GetCompletion().Trim());
+        PlayerDataManager.Instance().SaveEvaluation(novelToPlay.title ,response.GetCompletion().Trim());
         AnalyticsServiceHandler.Instance().SetWaitedForAiFeedbackTrue();
         LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
         PlayResultMusic();
