@@ -44,18 +44,28 @@ public class PlayerDataManager
     }
 
     public void LoadAllPlayerPrefs()
+{
+    if (keys.Count == 0)
     {
-        if (keys.Count == 0)
-        {
-            string keysString = PlayerPrefs.GetString("keys", "");
-            keys = new List<string>(keysString.Split(','));
-        }
-        foreach (string playerPref in keys)
+        string keysString = PlayerPrefs.GetString("keys", "");
+        keys = new List<string>(keysString.Split(','));
+    }
+    foreach (string playerPref in keys)
+    {
+        // Überprüfen, ob der Key bereits existiert
+        if (!playerPrefs.ContainsKey(playerPref))
         {
             playerPrefs.Add(playerPref, ReadPlayerData(playerPref));
-            Debug.Log("Added key: " + playerPref);
+            //Debug.Log("Added key: " + playerPref);
+        }
+        else
+        {
+            playerPrefs[playerPref] = ReadPlayerData(playerPref);
+            //Debug.Log("Updated key: " + playerPref);
         }
     }
+}
+
     
     public string GetPlayerData(string key)
     {
@@ -65,6 +75,7 @@ public class PlayerDataManager
         }
         else
         {
+            Debug.Log("Asked for key: " + key);
             // Überprüft, ob ein Wert für den angegebenen Schlüssel existiert
             if (PlayerPrefs.HasKey(key))
             {
