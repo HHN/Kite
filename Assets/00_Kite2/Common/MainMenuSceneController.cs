@@ -5,7 +5,6 @@ using TMPro;
 public class MainMenuSceneController : SceneController, OnSuccessHandler
 { 
     [SerializeField] private Button novelPlayerButton;
-    [SerializeField] private Button kiteLogo;
     [SerializeField] private GameObject buttonSoundPrefab;
     [SerializeField] private GameObject termsAndConditionPanel;
     [SerializeField] private Button continuetermsAndConditionsButton;
@@ -31,7 +30,6 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
         SceneMemoryManager.Instance().ClearMemory();
 
         novelPlayerButton.onClick.AddListener(delegate { OnNovelPlayerButton(); });
-        kiteLogo.onClick.AddListener(delegate { OnKiteLogoButton(); });
         continuetermsAndConditionsButton.onClick.AddListener(delegate { OnContinueTermsAndConditionsButton(); });
 
         if (PrivacyAndConditionManager.Instance().IsConditionsAccepted() && PrivacyAndConditionManager.Instance().IsPriavcyTermsAccepted())
@@ -70,11 +68,6 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     public void OnSettingsButton()
     {
         SceneLoader.LoadSettingsScene();
-    }
-
-    public void OnKiteLogoButton()
-    {
-        SceneLoader.LoadInfoScene();
     }
 
     public void OnContinueTermsAndConditionsButton()
