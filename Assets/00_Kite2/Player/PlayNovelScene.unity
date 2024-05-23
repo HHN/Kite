@@ -2999,8 +2999,8 @@ MonoBehaviour:
   messageBox: {fileID: 5629918238507184917, guid: 47c0a3038b673a24cb82a566be2abf20, type: 3}
   canvas: {fileID: 1048358123}
   closeButton: {fileID: 3756565419289851456}
-  leaveNovelAndCloseMessageBoxObject: {fileID: 0}
-  leaveGameAndCloseMessageBox: {fileID: 5629918238507184917, guid: f170eb85800905d4f856894470ab08b8, type: 3}
+  leaveGameAndGoBackMessageBoxObject: {fileID: 0}
+  leaveGameAndGoBackMessageBox: {fileID: 5629918238507184917, guid: 52d64ed2a3cd0524ca7296e9ccb5ddca, type: 3}
   novelToPlay:
     id: 0
     folderName: 

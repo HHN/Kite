@@ -11,8 +11,8 @@ using LeastSquares.Overtone;
 public class PlayNovelSceneController : SceneController
 {
     [SerializeField] private Button closeButton;
-    [SerializeField] private CloseNovelAndGoBackMessageBox leaveNovelAndCloseMessageBoxObject;
-    [SerializeField] private GameObject leaveGameAndCloseMessageBox;
+    [SerializeField] private LeaveNovelAndGoBackMessageBox leaveGameAndGoBackMessageBoxObject;
+    [SerializeField] private GameObject leaveGameAndGoBackMessageBox;
     [SerializeField] private VisualNovel novelToPlay;
     [SerializeField] private TextMeshProUGUI novelName;
     [SerializeField] private ConversationContentGuiController conversationContent;
@@ -92,18 +92,18 @@ public class PlayNovelSceneController : SceneController
 
     public void OnCloseButton()
     {
-        if (!DestroyValidator.IsNullOrDestroyed(leaveNovelAndCloseMessageBoxObject))
+        if (!DestroyValidator.IsNullOrDestroyed(leaveGameAndGoBackMessageBoxObject))
         {
-            leaveNovelAndCloseMessageBoxObject.CloseMessageBox();
+            leaveGameAndGoBackMessageBoxObject.CloseMessageBox();
         }
         if (DestroyValidator.IsNullOrDestroyed(canvas))
         {
             return;
         }
-        leaveNovelAndCloseMessageBoxObject = null;
-        leaveNovelAndCloseMessageBoxObject = Instantiate(leaveGameAndCloseMessageBox, 
-            canvas.transform).GetComponent<CloseNovelAndGoBackMessageBox>();
-        leaveNovelAndCloseMessageBoxObject.Activate();
+        leaveGameAndGoBackMessageBoxObject = null;
+        leaveGameAndGoBackMessageBoxObject = Instantiate(leaveGameAndGoBackMessageBox, 
+            canvas.transform).GetComponent<LeaveNovelAndGoBackMessageBox>();
+        leaveGameAndGoBackMessageBoxObject.Activate();
     }
 
     public void Initialize()
