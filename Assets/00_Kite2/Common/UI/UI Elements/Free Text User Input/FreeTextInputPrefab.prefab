@@ -163,7 +163,7 @@ MonoBehaviour:
   question: {fileID: 3171214584588528274}
   questionString: 
   variablesName: 
-  inputfield: {fileID: 0}
+  inputfield: {fileID: 7637853789095849880}
   skipButton: {fileID: 5744927536523432267}
   submitButton: {fileID: 5744927538270794346}
   controller: {fileID: 0}
@@ -1813,7 +1813,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2845073450423576719, guid: 87d1ac62995b3c94fa30e8b2441caf85, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 490
+      value: 718
       objectReference: {fileID: 0}
     - target: {fileID: 2845073450423576719, guid: 87d1ac62995b3c94fa30e8b2441caf85, type: 3}
       propertyPath: m_AnchoredPosition.y
