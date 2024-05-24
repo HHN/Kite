@@ -73,7 +73,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
         {
             BackStackManager.Instance().Clear(); // we go back to the explorer and don't want
                                                  // the back-button to bring us to the feedback scene aggain
-            SceneLoader.LoadNovelExplorerScene();
+            SceneLoader.LoadFoundersBubbleScene();
         }
     }
 
