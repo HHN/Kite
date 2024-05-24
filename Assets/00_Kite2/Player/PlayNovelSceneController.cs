@@ -558,6 +558,7 @@ public class PlayNovelSceneController : SceneController
         AnalyticsServiceHandler.Instance().SendNovelPlayTime();
 
         int userRole = FeedbackRoleManager.Instance.GetFeedbackRole();
+        PlayerDataManager.Instance().SetNovelHistory(playThroughHistory);
         if ((userRole == 1 || userRole == 3 || userRole == 4 || userRole == 5) && ApplicationModeManager.Instance().IsOnlineModeActive())
         {
             SceneLoader.LoadReviewNovelScene();

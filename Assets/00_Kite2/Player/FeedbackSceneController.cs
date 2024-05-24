@@ -91,7 +91,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
         }
         feedbackText.SetText(response.GetCompletion().Trim());
         novelToPlay.feedback = (response.GetCompletion().Trim());
-        PlayerDataManager.Instance().SaveEvaluation(novelToPlay.title ,response.GetCompletion().Trim());
+        PlayerDataManager.Instance().SaveEvaluation(novelToPlay.title, response.GetCompletion().Trim());
         AnalyticsServiceHandler.Instance().SetWaitedForAiFeedbackTrue();
         LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
         PlayResultMusic();

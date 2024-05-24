@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Text;
 
 public class PlayerDataManager
 {
@@ -11,6 +12,8 @@ public class PlayerDataManager
 
     private List<string> keys = new List<string>();
 
+    private List<string> novelHistory = new List<string>();
+
     public static PlayerDataManager Instance()
     {
         if (instance == null)
@@ -18,6 +21,11 @@ public class PlayerDataManager
             instance = new PlayerDataManager();
         }
         return instance;
+    }
+
+    public void SetNovelHistory(List<string> novelHistory)
+    {
+        this.novelHistory = novelHistory;
     }
 
     public void SavePlayerData(string key, string content)
@@ -112,18 +120,20 @@ public class PlayerDataManager
 
         // Alte Auswertungen laden
         string existingEvaluations = PlayerPrefs.GetString(key, "");
+        string novelHistoryString = CombineSentences(novelHistory);
 
         // Trennzeichen definieren
-        string separator = "|";  // Trennt verschiedene Auswertungen
-        string subSeparator = "~"; // Trennt Novel-Namen von der Auswertung
+        string mainSeparator = "|";   // Trennt verschiedene Auswertungen
+        string subSeparator = "~";    // Trennt Novel-Name von Ablauf und Bewertung
+        string flowSeparator = "^";   // Trennt Ablauf von der Bewertung
 
-        // Neue Auswertung vorbereiten, indem der Name der Novel und die Auswertung mit einem Trennzeichen verbunden werden
-        string newEvaluation = novelName + subSeparator + evaluation;
+        // Neue Auswertung vorbereiten, indem der Name der Novel, der Ablauf und die Auswertung mit Trennzeichen verbunden werden
+        string newEvaluation = novelName + subSeparator + novelHistoryString + flowSeparator + evaluation;
 
         // Neue Auswertung an bestehende anhängen
         if (!string.IsNullOrEmpty(existingEvaluations))
         {
-            existingEvaluations += separator;
+            existingEvaluations += mainSeparator;
         }
         existingEvaluations += newEvaluation;
 
@@ -131,5 +141,31 @@ public class PlayerDataManager
         PlayerPrefs.SetString(key, existingEvaluations);
         PlayerPrefs.Save(); // Änderungen sichern
         Debug.Log("Saved: " + existingEvaluations);
+    }
+
+    public string CombineSentences(List<string> sentences)
+    {
+        // Trennzeichen wählen, das sicher nicht in den Sätzen vorkommt
+        string separator = "##";
+
+        // StringBuilder verwenden, um Effizienz beim Zusammenfügen der Strings zu gewährleisten
+        StringBuilder combined = new StringBuilder();
+
+        // Alle Sätze durchlaufen
+        foreach (string sentence in sentences)
+        {
+            // Jeden Satz mit dem Trennzeichen anhängen
+            combined.Append(sentence);
+            combined.Append(separator);
+        }
+
+        // Das letzte Trennzeichen entfernen
+        if (combined.Length > 0)
+        {
+            combined.Remove(combined.Length - separator.Length, separator.Length);
+        }
+
+        // Den zusammengefügten String zurückgeben
+        return combined.ToString();
     }
 }
