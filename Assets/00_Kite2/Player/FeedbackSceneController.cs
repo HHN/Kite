@@ -95,7 +95,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
         AnalyticsServiceHandler.Instance().SetWaitedForAiFeedbackTrue();
         LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
         PlayResultMusic();
-        requestExpertFeedbackButton.interactable = true;
+        //requestExpertFeedbackButton.interactable = true;
     }
 
     public void OnError(Response response)
@@ -121,6 +121,6 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
 
     public void DeactivateAskButton()
     {
-        requestExpertFeedbackButton.interactable = false;
+        //requestExpertFeedbackButton.interactable = false;
     }
 }

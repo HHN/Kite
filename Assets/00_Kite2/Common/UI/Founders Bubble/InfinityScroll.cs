@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class InfinityScroll : MonoBehaviour
 {
@@ -56,6 +57,13 @@ public class InfinityScroll : MonoBehaviour
 
         widthBefore = (itemList[0].rect.width * itemList.Length) + ((itemList.Length - 1) * horizontalLayoutGroup.spacing) - (viewPortTransform.rect.width);
         widthAfter = (itemList[0].rect.width * (itemList.Length + (2 * itemsToAdd))) + ((itemList.Length + (2 * itemsToAdd) - 1) * horizontalLayoutGroup.spacing) - (viewPortTransform.rect.width);
+
+        FoundersBubbleSceneMemory memory = SceneMemoryManager.Instance().GetMemoryOfFoundersBubbleScene();
+
+        if (memory != null)
+        {
+            scollRect.horizontalNormalizedPosition = (float) memory.scrollPosition;
+        }
     }
 
     void Update()
@@ -159,5 +167,10 @@ public class InfinityScroll : MonoBehaviour
     public bool IsCurrentlyInFirstHalf()
     {
         return (contentPanelTransform.localPosition.x > (0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing))/2));
+    }
+
+    public float GetCurrentScrollPosition() 
+    {
+        return scollRect.horizontalNormalizedPosition;
     }
 }

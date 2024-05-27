@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +14,8 @@ public class FoundersBubbleSceneController : SceneController
     {
         BackStackManager.Instance().Push(SceneNames.FOUNDERS_BUBBLE_SCENE);
 
-        foundersWellButton.onClick.AddListener(delegate { OnFoundersWellButton(); });    }
+        foundersWellButton.onClick.AddListener(delegate { OnFoundersWellButton(); });
+    }
 
     public void OnFoundersWellButton()
     {
@@ -116,5 +118,13 @@ public class FoundersBubbleSceneController : SceneController
     public void MakeTextboxInvisible()
     {
         novelDescriptionTextboxGameObject.SetActive(false);
+    }
+
+    public override void OnStop()
+    {
+        base.OnStop();
+        FoundersBubbleSceneMemory memory = new FoundersBubbleSceneMemory();
+        memory.scrollPosition = infinityScroll.GetCurrentScrollPosition();
+        SceneMemoryManager.Instance().SetMemoryOfFoundersBubbleScene(memory);
     }
 }
