@@ -23,6 +23,7 @@ public class SceneMemoryManager
     private FoundersBubbleSceneMemory foundersBubbleSceneMemory;
     private FoundersWellSceneMemory foundersWellSceneMemory;
     private PlayInstructionSceneMemory playInstructionSceneMemory;
+    private NovelHistorySceneMemory novelHistorySceneMemory;
 
     private SceneMemoryManager()
     {
@@ -141,6 +142,11 @@ public class SceneMemoryManager
     public PlayInstructionSceneMemory GetMemoryOfPlayInstructionScene()
     {
         return this.playInstructionSceneMemory;
+    }    
+    
+    public NovelHistorySceneMemory GetMemoryOfNovelHistoryScene()
+    {
+        return this.novelHistorySceneMemory;
     }
 
     public void SetMemoryOfSettingsScene(SettingsSceneMemory settingsSceneMemory)
@@ -246,6 +252,11 @@ public class SceneMemoryManager
     public void SetMemoryOfPlayInstructionScene(PlayInstructionSceneMemory playInstructionSceneMemory)
     {
         this.playInstructionSceneMemory = playInstructionSceneMemory;
+    }    
+    
+    public void SetMemoryOfNovelHistoryScene(NovelHistorySceneMemory novelHistorySceneMemory)
+    {
+        this.novelHistorySceneMemory = novelHistorySceneMemory;
     }
 
     public void ClearMemory()
@@ -271,5 +282,6 @@ public class SceneMemoryManager
         this.foundersBubbleSceneMemory = null;
         this.foundersWellSceneMemory = null;
         this.playInstructionSceneMemory = null;
+        this.novelHistorySceneMemory = null;
     }
 }

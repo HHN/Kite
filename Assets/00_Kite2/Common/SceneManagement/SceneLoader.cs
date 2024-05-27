@@ -169,6 +169,11 @@ public class SceneLoader
     public static void LoadPlayInstructionScene()
     {
         LoadScene(SceneNames.PLAY_INSTRUCTION_SCENE);
+    }    
+    
+    public static void LoadNovelHistoryScene()
+    {
+        LoadScene(SceneNames.NOVEL_HISTORY_SCENE);
     }
 
     public static void LoadScene(string sceneName)
