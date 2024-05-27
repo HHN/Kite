@@ -29,6 +29,8 @@ public class NovelBiasManager
     public bool IsBiasInMediaAndAdvertisingRelevant { get; set; }
     public bool IsBiasUnconsciousBiasInCommunicationRelevant { get; set; }
     public bool IsBiasProveItAgainBiasRelevant { get; set; }
+    public bool IsBiasHeteronormativitaetBiasRelevant { get; set; }
+    public bool IsBiasBenevolenterSexismusBiasRelevant { get; set; }
 
     private NovelBiasManager()
     {
@@ -57,6 +59,8 @@ public class NovelBiasManager
         IsBiasInMediaAndAdvertisingRelevant = false;
         IsBiasUnconsciousBiasInCommunicationRelevant = false;
         IsBiasProveItAgainBiasRelevant = false;
+        IsBiasHeteronormativitaetBiasRelevant = false;
+        IsBiasBenevolenterSexismusBiasRelevant = false;
     }
 
     public static NovelBiasManager Instance()
@@ -146,6 +150,12 @@ public class NovelBiasManager
                 break;
             case DiscriminationBias.PROVE_IT_AGAIN_BIAS:
                 IsBiasProveItAgainBiasRelevant = true;
+                break;            
+            case DiscriminationBias.HETERONORMATIVITAET_BIAS:
+                IsBiasHeteronormativitaetBiasRelevant = true;
+                break;            
+            case DiscriminationBias.BENEVOLENTER_SEXISMUS_BIAS:
+                IsBiasBenevolenterSexismusBiasRelevant = true;
                 break;
             default:
                 Debug.LogWarning("Bias not Recognized: " + biasName);

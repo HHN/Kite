@@ -817,6 +817,14 @@ public class KiteNovelConverter
             case (NovelKeyWord.RELEVANTER_BIAS_PROVE_IT_AGAIN_BIAS):
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.PROVE_IT_AGAIN_BIAS, kiteNovelEventList.NovelEvents);
+                }            
+            case (NovelKeyWord.RELEVANTER_BIAS_HETERONORMATIVITAET_BIAS):
+                {
+                    return HandleBiasEvent(passage, DiscriminationBias.HETERONORMATIVITAET_BIAS, kiteNovelEventList.NovelEvents);
+                }            
+            case (NovelKeyWord.RELEVANTER_BIAS_BENEVOLENTER_SEXISMUS_BIAS):
+                {
+                    return HandleBiasEvent(passage, DiscriminationBias.BENEVOLENTER_SEXISMUS_BIAS, kiteNovelEventList.NovelEvents);
                 }
         }
         return null;

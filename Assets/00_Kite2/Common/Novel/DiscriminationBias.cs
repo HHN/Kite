@@ -25,7 +25,9 @@ public enum DiscriminationBias
     PERFORMANCE_ATTRIBUTION_BIAS,
     IN_MEDIA_AND_ADVERTISING,
     UNCONSCIOUS_BIAS_IN_COMMUNICATION,
-    PROVE_IT_AGAIN_BIAS
+    PROVE_IT_AGAIN_BIAS,
+    HETERONORMATIVITAET_BIAS,
+    BENEVOLENTER_SEXISMUS_BIAS
 }
 
 public class DiscriminationBiasHelper
@@ -60,6 +62,8 @@ public class DiscriminationBiasHelper
             case DiscriminationBias.IN_MEDIA_AND_ADVERTISING: return 23;
             case DiscriminationBias.UNCONSCIOUS_BIAS_IN_COMMUNICATION: return 24;
             case DiscriminationBias.PROVE_IT_AGAIN_BIAS: return 25;
+            case DiscriminationBias.HETERONORMATIVITAET_BIAS: return 26;
+            case DiscriminationBias.BENEVOLENTER_SEXISMUS_BIAS: return 27;
             default: return 0;
         }
     }
@@ -94,6 +98,8 @@ public class DiscriminationBiasHelper
             case 23: return DiscriminationBias.IN_MEDIA_AND_ADVERTISING;
             case 24: return DiscriminationBias.UNCONSCIOUS_BIAS_IN_COMMUNICATION;
             case 25: return DiscriminationBias.PROVE_IT_AGAIN_BIAS;
+            case 26: return DiscriminationBias.HETERONORMATIVITAET_BIAS;
+            case 27: return DiscriminationBias.BENEVOLENTER_SEXISMUS_BIAS;
             default: return DiscriminationBias.NONE;
         }
     }
