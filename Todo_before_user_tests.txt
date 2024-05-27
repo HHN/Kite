@@ -12,9 +12,7 @@
 - Neue Novels konvertieren und implementieren
 - Korrekturlesen sämtlicher Texte und auf korrekte Rechtschreibung und Gendergerechtigkeit achten
 - Banner im Novelplayer entfernen
-- Panoramabilder einbinden
 - X-Button konsistent halten
-- Bug entfernen, bei dem man im Novelexplorer landet
 - Info-Button im Hauptmenü deaktivieren, ohne, dass dieser sein Aussehen ändert
 - Expertenfragen-Funktion entfernen
 - Appgröße reduzieren, um auf Android deployen zu können

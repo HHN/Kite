@@ -53,16 +53,16 @@ public class ReviewAiSceneController : SceneController, OnSuccessHandler
         inputField.text = "";
         SendReviewToServer();
 
-        BackStackManager.Instance().Clear(); // we go back to the explorer and don't want
+        BackStackManager.Instance().Clear(); // we go back to the founders bubble and don't want
                                              // the back-button to bring us to the feedback scene aggain
-        SceneLoader.LoadNovelExplorerScene();
+        SceneLoader.LoadFoundersBubbleScene();
     }
 
     public void OnSkipButton()
     {
-        BackStackManager.Instance().Clear(); // we go back to the explorer and don't want
+        BackStackManager.Instance().Clear(); // we go back to the founders bubble and don't want
                                              // the back-button to bring us to the feedback scene aggain
-        SceneLoader.LoadNovelExplorerScene();
+        SceneLoader.LoadFoundersBubbleScene();
     }
 
     public void SendReviewToServer()

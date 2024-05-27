@@ -125,7 +125,7 @@ public class SceneBase : MonoBehaviour
 
     public void OnNovelPlayerButton()
     {
-        SceneLoader.LoadNovelExplorerScene();
+        SceneLoader.LoadFoundersBubbleScene();
     }
 
     public void OnSettingsButton()
