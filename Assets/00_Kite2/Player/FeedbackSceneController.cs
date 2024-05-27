@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using LeastSquares.Overtone;
+using System.Collections;
 
 public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErrorHandler
 {
@@ -96,6 +97,18 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
         LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
         PlayResultMusic();
         //requestExpertFeedbackButton.interactable = true;
+
+        Coroutine coroutine = StartCoroutine(SaveDialogToHistory(response));
+    }
+
+    public IEnumerator SaveDialogToHistory(Response response)
+    {
+        DialogHistoryEntry dialogHistoryEntry = new DialogHistoryEntry();
+        dialogHistoryEntry.SetNovelId(PlayManager.Instance().GetVisualNovelToPlay().id);
+        dialogHistoryEntry.SetDialog(PromptManager.Instance().GetDialog());
+        dialogHistoryEntry.SetCompletion(response.GetCompletion().Trim());
+        DialogHistoryManager.Instance().AddEntry(dialogHistoryEntry);
+        yield return null;
     }
 
     public void OnError(Response response)
