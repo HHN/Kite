@@ -57,4 +57,26 @@ public class VisualNovelTest
             yield return null;
         }
     }
+
+    [UnityTest]
+    public IEnumerator ConvertNovelsFromTweeToJsonAndSelectiveOverrideOldNovels()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneNames.MAIN_MENU_SCENE);
+
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+        GameObject converter = GameObject.Find("TweeToJsonConverter");
+
+        Assert.NotNull(converter);
+
+        NovelReader novelReader = converter.GetComponent<NovelReader>();
+        novelReader.ConvertNovelsFromTweeToJSONAndSelectiveOverrideOldNovels();
+
+        while (novelReader.IsFinished() == false)
+        {
+            yield return null;
+        }
+    }
 }

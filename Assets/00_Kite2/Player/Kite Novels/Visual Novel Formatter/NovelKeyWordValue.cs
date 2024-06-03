@@ -141,7 +141,7 @@ public class NovelKeyWordValue
     public const string RELEVANTER_BIAS_BIAS_IN_MEDIEN_UND_WERBUNG = ">>RelevanterBias:BiasInMedienUndWerbung<<";
     public const string RELEVANTER_BIAS_UNBEWUSSTE_BIAS_IN_DER_KOMMUNIKATION = ">>RelevanterBias:UnbewussteBiasInDerKommunikation<<";
     public const string RELEVANTER_BIAS_PROVE_IT_AGAIN_BIAS = ">>RelevanterBias:ProveItAgainBias<<";
-    public const string RELEVANTER_BIAS_HETERONORMATIVITAET_BIAS = ">>RelevanterBias:Heteronormaitvität<<";
+    public const string RELEVANTER_BIAS_HETERONORMATIVITAET_BIAS = ">>RelevanterBias:Heteronormativitaet<<";
     public const string RELEVANTER_BIAS_BENEVOLENTER_SEXISMUS_BIAS = ">>RelevanterBias:BenevolenterSexismus<<";
 
     public static List<string> ALL_KEY_WORDS = new List<string>

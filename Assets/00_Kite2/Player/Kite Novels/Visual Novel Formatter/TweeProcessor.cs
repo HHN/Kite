@@ -83,8 +83,18 @@ public class TweeProcessor
         }
         string label = labelAndMetadata.Substring(0, labelEndIndex).Trim();
         label = RemoveLeadingBackslashSpace(label);
+        label = RemoveBracketedTextAndTrim(label);
         label = label.Trim();
         return label;
+    }
+
+    public static string RemoveBracketedTextAndTrim(string input)
+    {
+        string withoutBrackets = Regex.Replace(input, @"\[.*?\]", "");
+
+        string trimmedResult = withoutBrackets.Trim();
+
+        return trimmedResult;
     }
 
     private static string RemoveLeadingBackslashSpace(string input)

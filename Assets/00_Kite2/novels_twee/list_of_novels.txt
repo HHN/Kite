@@ -1,6 +1,5 @@
 {
   "visualNovels": [
-    "00_Kite2\\novels_twee\\Bank_Konto_Eroeffnung",
-    "00_Kite2\\novels_twee\\Bankgespraech"
+    "00_Kite2\\novels_twee\\Banktermin_wegen_Kreditbeantragung"
   ]
 }

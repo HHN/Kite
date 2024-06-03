@@ -17,6 +17,11 @@ public class NovelReader : MonoBehaviour
         StartCoroutine(LoadAllNovelsWithTweeApproach());
     }
 
+    public void ConvertNovelsFromTweeToJSONAndSelectiveOverrideOldNovels()
+    {
+        StartCoroutine(LoadAllNovelsWithTweeApproachAndSelectiveOverrideOldNovels());
+    }
+
     public bool IsFinished()
     {
         return isFinished;
@@ -40,6 +45,27 @@ public class NovelReader : MonoBehaviour
             }
 
             StartCoroutine(ProcessNovels(listOfAllNovelPaths));
+        }));
+    }
+
+    private IEnumerator LoadAllNovelsWithTweeApproachAndSelectiveOverrideOldNovels()
+    {
+        if (KiteNovelManager.Instance().AreNovelsLoaded())
+        {
+            yield break;
+        }
+        string fullPath = Path.Combine(Application.dataPath, NovelListPath);
+
+        yield return StartCoroutine(LoadNovelPaths(fullPath, listOfAllNovelPaths =>
+        {
+            if (listOfAllNovelPaths == null || listOfAllNovelPaths.Count == 0)
+            {
+                Debug.LogWarning("Loading Novels failed: No Novels found! Path: " + fullPath);
+                KiteNovelManager.Instance().SetAllKiteNovels(new List<VisualNovel>());
+                return;
+            }
+
+            StartCoroutine(ProcessNovelsAndSelectiveOverrideOldNovels(listOfAllNovelPaths));
         }));
     }
 
@@ -85,6 +111,76 @@ public class NovelReader : MonoBehaviour
         List<VisualNovel> visualNovels = KiteNovelConverter.ConvertFilesToNovels(allFolders);
         
         SaveToJson(new NovelListWrapper(visualNovels));
+    }
+
+    private IEnumerator ProcessNovelsAndSelectiveOverrideOldNovels(List<string> listOfAllNovelPaths)
+    {
+        List<KiteNovelFolder> allFolders = new List<KiteNovelFolder>();
+
+        foreach (string pathOfNovel in listOfAllNovelPaths)
+        {
+            string fullPathOfNovelMetaData = Path.Combine(Application.dataPath, pathOfNovel, MetaDataFileName);
+            string fullPathOfNovelEventList = Path.Combine(Application.dataPath, pathOfNovel, EventListFileName);
+
+            KiteNovelMetaData kiteNovelMetaData = null;
+            string jsonStringOfEventList = null;
+
+            yield return StartCoroutine(LoadAndDeserialize<KiteNovelMetaData>(fullPathOfNovelMetaData, result =>
+            {
+                kiteNovelMetaData = result;
+            }));
+
+            if (kiteNovelMetaData == null)
+            {
+                Debug.LogWarning("Kite Novel Meta Data could not be loaded: " + pathOfNovel);
+                continue;
+            }
+            yield return StartCoroutine(LoadFileContent(fullPathOfNovelEventList, result =>
+            {
+                jsonStringOfEventList = result;
+            }));
+
+            if (string.IsNullOrEmpty(jsonStringOfEventList))
+            {
+                Debug.LogWarning("Kite Novel Event List could not be loaded: " + pathOfNovel);
+                continue;
+            }
+
+            jsonStringOfEventList = ReplaceWordsInString(jsonStringOfEventList, kiteNovelMetaData.WordsToReplace);
+
+            KiteNovelEventList kiteNovelEventList = KiteNovelConverter.ConvertTextDocumentIntoEventList(jsonStringOfEventList, kiteNovelMetaData);
+
+            allFolders.Add(new KiteNovelFolder(kiteNovelMetaData, kiteNovelEventList));
+        }
+        List<VisualNovel> visualNovels = KiteNovelConverter.ConvertFilesToNovels(allFolders);
+
+        while (KiteNovelManager.Instance().GetAllKiteNovels().Count == 0)
+        {
+            yield return new WaitForSeconds(1);
+        }
+
+        List<VisualNovel> oldNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+
+        List<VisualNovel> modifiedListOfNovels = new List<VisualNovel>();
+
+        foreach (VisualNovel visualNovel in oldNovels)
+        {
+            VisualNovel novel = visualNovel;
+
+            foreach (VisualNovel newNovel in visualNovels)
+            {
+                if (newNovel.id == novel.id)
+                {
+                    novel = newNovel;
+                    Debug.Log("Override Novel : " + newNovel.title);
+                    break;
+                }
+            }
+
+            modifiedListOfNovels.Add(novel);
+        }
+
+       SaveToJson(new NovelListWrapper(modifiedListOfNovels));
     }
 
     private IEnumerator LoadNovelPaths(string path, System.Action<List<string>> callback)

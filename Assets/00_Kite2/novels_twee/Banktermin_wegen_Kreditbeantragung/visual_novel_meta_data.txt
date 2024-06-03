@@ -1,0 +1,33 @@
+{
+  "idNumberOfNovel": 10,
+  "titleOfNovel": "Banktermin wegen Kreditbeantragung",
+  "descriptionOfNovel": "Du hast eine Einladung zu einem Bankgespräch erhalten, um mehr Informationen über einen Kredit zu erhalten und diesen darauf zu beantragen.",
+  "idNumberOfRepresentationImage": 4,
+  "nameOfMainCharacter": "Lea",
+  "contextForPrompt": "Es ist das Gespräch einer Gründerin, Lea, mit einem Bank-Mitarbeiter. Es geht um einen Kredit. Die Gründerin hat sich gut vorbereitet und hofft Informationen über den Kredit zu erhalten.",
+  "folderName": "Banktermin_wegen_Kreditbeantragung",
+  "isKite2Novel": true,
+  "startLocation": "Office",
+  "startTalkingPartnerEmotion": "Relaxed",
+  "isWithStartValues": true,
+  "talkingPartner01" : "Mayer",
+  "talkingPartner02" : "",
+  "talkingPartner03" : "",
+  "wordsToReplace": [
+	{"wordToReplace": ">>AngestellteSpricht:<<", "replaceByValue": ">>Charakter01Spricht:<<"},
+	{"wordToReplace": ">>AngestellteSprichtRelaxed:<<", "replaceByValue": ">>Charakter01SprichtRelaxed:<<"},
+	{"wordToReplace": ">>AngestellteSprichtAstonished:<<", "replaceByValue": ">>Charakter01SprichtAstonished:<<"},
+	{"wordToReplace": ">>AngestellteSprichtRefusing:<<", "replaceByValue": ">>Charakter01SprichtRefusing:<<"},
+	{"wordToReplace": ">>AngestellteSprichtSmiling:<<", "replaceByValue": ">>Charakter01SprichtSmiling:<<"},
+	{"wordToReplace": ">>AngestellteSprichtFriendly:<<", "replaceByValue": ">>Charakter01SprichtFriendly:<<"},
+	{"wordToReplace": ">>AngestellteSprichtLaughing:<<", "replaceByValue": ">>Charakter01SprichtLaughing:<<"},
+	{"wordToReplace": ">>AngestellteSprichtCritical:<<", "replaceByValue": ">>Charakter01SprichtCritical:<<"},
+	{"wordToReplace": ">>AngestellteSprichtDecisionNo:<<", "replaceByValue": ">>Charakter01SprichtDecisionNo:<<"},
+	{"wordToReplace": ">>AngestellteSprichtHappy:<<", "replaceByValue": ">>Charakter01SprichtHappy:<<"},
+	{"wordToReplace": ">>AngestellteSprichtProud:<<", "replaceByValue": ">>Charakter01SprichtProud:<<"},
+	{"wordToReplace": ">>AngestellteSprichtScared:<<", "replaceByValue": ">>Charakter01SprichtScared:<<"},
+	{"wordToReplace": ">>AngestellteSprichtQuestioning:<<", "replaceByValue": ">>Charakter01SprichtQuestioning:<<"},
+	{"wordToReplace": ">>AngestellteSprichtDefeated:<<", "replaceByValue": ">>Charakter01SprichtDefeated:<<"},
+	{"wordToReplace": ">>GründerinSpricht<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"}
+	]
+}

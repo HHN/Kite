@@ -294,7 +294,11 @@ public class KiteNovelConverter
             label = nextLabel;
             string message = TweeProcessor.ExtractMessageOutOfTweePassage(eventDefinition);
             VisualNovelEvent visualNovelEvent = ConvertListOfDataObjectsIntoKiteNovelEvent(newPassage, message, kiteNovelMetaData, kiteNovelEventList);
-            createdEvents.Add(visualNovelEvent);
+
+            if (visualNovelEvent != null)
+            {
+                createdEvents.Add(visualNovelEvent);
+            }
         }
         if (createdEvents.Count == 0)
         {
@@ -306,7 +310,7 @@ public class KiteNovelConverter
             firstEvent.id = passage?.Label;
         }
         VisualNovelEvent lastEvent = createdEvents[createdEvents.Count - 1];
-        if (lastEvent != null)
+        if (lastEvent != null && passage?.Links?.Count != 0)
         {
             lastEvent.nextId = passage?.Links?[0]?.Target;
         }
