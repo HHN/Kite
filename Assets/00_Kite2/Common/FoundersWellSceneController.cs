@@ -1,18 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class FoundersWellSceneController : SceneController
 {
-    // Start is called before the first frame update
+    [SerializeField] private RadialLayoutGroup radialLayoutGroup;
+
     void Start()
     {
         BackStackManager.Instance().Push(SceneNames.FOUNDERS_WELL_SCENE);
+        radialLayoutGroup.InitializeRadius();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyUp(KeyCode.P))
+        {
+            radialLayoutGroup.InitializeRadius();
+        }
     }
 }

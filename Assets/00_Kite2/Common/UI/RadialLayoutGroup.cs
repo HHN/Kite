@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.UI;
@@ -10,11 +8,37 @@ public class RadialLayoutGroup : LayoutGroup
 
     public enum RadialLayoutStart { top, left, right, bottom };
     public RadialLayoutStart StartFrom;
+    [SerializeField] private RectTransform content;
+    [SerializeField] private RectTransform canvas;
 
     public float Offset;
 
     public float Radius = 0.5f;
     public float Arc = 360.0f;
+
+    public void InitializeRadius()
+    {
+        if (canvas.rect.width < 1000)
+        {
+            float scaleFactor = Mathf.Min(1080 / canvas.rect.width, 1920 / canvas.rect.height); ;
+            float actualWidthOfCircle = 200 * scaleFactor;
+            Radius = ((canvas.rect.width / 2));
+            Vector2 size = content.sizeDelta;
+            size.y = (canvas.rect.height - (Radius * 2)) - 400;
+            content.sizeDelta = size;
+        } 
+        else
+        {
+            float scaleFactor = Mathf.Min(1080 / Screen.width, 1920 / Screen.height); ;
+            float actualWidthOfCircle = 200 * scaleFactor;
+            Radius = ((Screen.width / 2) - (actualWidthOfCircle / 2));
+            Vector2 size = content.sizeDelta;
+            size.y = (Screen.height - (Radius * 2)) - 400;
+            content.sizeDelta = size;
+        }
+
+        UpdateChildren();
+    }
 
     public override void SetLayoutHorizontal()
     {
@@ -37,7 +61,7 @@ public class RadialLayoutGroup : LayoutGroup
         UpdateChildren();
     }
 
-    void UpdateChildren()
+    public void UpdateChildren()
     {
 
         int i = 0;
