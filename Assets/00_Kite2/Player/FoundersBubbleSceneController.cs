@@ -20,7 +20,7 @@ public class FoundersBubbleSceneController : SceneController
     public void OnFoundersWellButton()
     {
         //SceneLoader.LoadFoundersWellScene();
-        SceneLoader.LoadSettingsScene();
+        SceneLoader.LoadFoundersWell2Scene();
     }
 
     public void OnBankkreditNovelButton()

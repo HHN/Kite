@@ -17,6 +17,7 @@ public class SceneNames
     public const string PLAYER_PREFS_SCENE = "PlayerPrefsScene";
     public const string FOUNDERS_BUBBLE_SCENE = "FoundersBubbleScene";
     public const string FOUNDERS_WELL_SCENE = "FoundersWellScene";
+    public const string FOUNDERS_WELL_2_SCENE = "FoundersWell2Scene";
     public const string PLAY_INSTRUCTION_SCENE = "PlayInstructionScene";
     public const string NOVEL_HISTORY_SCENE = "NovelHistoryScene";
 
@@ -44,4 +45,11 @@ public class SceneNames
 
     // EXPERT QUESTIONS
     public const string EXPERT_FEEDBACK_SCENE = "ExpertFeedbackScene";
+
+    // NEW PAGES
+    public const string BARRIEREFREIHEIT_SCENE = "BarrierefreiheitScene";
+    public const string DATENSCHUTZ_SCENE = "DatenschutzScene";
+    public const string IMPRESSUM_SCENE = "ImpressumScene";
+    public const string NUTZUNGSBEDINGUNGEN_SCENE = "NutzungsbedingungenScene";
+    public const string RESSOURCEN_SCENE = "RessourcenScene";
 }

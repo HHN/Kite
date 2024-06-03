@@ -80,4 +80,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_Kite2/Common/NovelHistoryScene.unity
     guid: 3d8065ad5dae4a248a0ba319ba324138
+  - enabled: 1
+    path: Assets/00_Kite2/Common/FoundersWell2Scene.unity
+    guid: ac8a450c55dc9c24995aba138454922e
+  - enabled: 1
+    path: Assets/00_Kite2/NewPages/BarrierefreiheitScene.unity
+    guid: b9704eff5730cc848b7e15173484a58e
+  - enabled: 1
+    path: Assets/00_Kite2/NewPages/DatenschutzScene.unity
+    guid: f5cb0b69189b695499b6182cfb78cebc
+  - enabled: 1
+    path: Assets/00_Kite2/NewPages/ImpressumScene.unity
+    guid: 5a81ee2b542eabd4f97ddd6faf0a64f5
+  - enabled: 1
+    path: Assets/00_Kite2/NewPages/NutzungsbedingungenScene.unity
+    guid: 621fc56954dac124db9d13e52918a77c
+  - enabled: 1
+    path: Assets/00_Kite2/NewPages/RessourcenScene.unity
+    guid: 13cfd61506123d946bf5196688dd9110
   m_configObjects: {}

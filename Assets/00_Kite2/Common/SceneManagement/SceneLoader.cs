@@ -164,6 +164,11 @@ public class SceneLoader
     public static void LoadFoundersWellScene()
     {
         LoadScene(SceneNames.FOUNDERS_WELL_SCENE);
+    }    
+    
+    public static void LoadFoundersWell2Scene()
+    {
+        LoadScene(SceneNames.FOUNDERS_WELL_2_SCENE);
     }
 
     public static void LoadPlayInstructionScene()
@@ -174,6 +179,31 @@ public class SceneLoader
     public static void LoadNovelHistoryScene()
     {
         LoadScene(SceneNames.NOVEL_HISTORY_SCENE);
+    }
+
+    public static void LoadRessourcenScene()
+    {
+        LoadScene(SceneNames.RESSOURCEN_SCENE);
+    }
+
+    public static void LoadBarrierefreiheitScene()
+    {
+        LoadScene(SceneNames.BARRIEREFREIHEIT_SCENE);
+    }
+
+    public static void LoadDatenschutzScene()
+    {
+        LoadScene(SceneNames.DATENSCHUTZ_SCENE);
+    }
+
+    public static void LoadImpressumScene()
+    {
+        LoadScene(SceneNames.IMPRESSUM_SCENE);
+    }
+
+    public static void LoadNutzungsbedingungenScene()
+    {
+        LoadScene(SceneNames.NUTZUNGSBEDINGUNGEN_SCENE);
     }
 
     public static void LoadScene(string sceneName)

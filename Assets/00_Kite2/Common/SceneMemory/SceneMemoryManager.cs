@@ -22,8 +22,15 @@ public class SceneMemoryManager
     private ExpertFeedbackSceneMemory expertFeedbackSceneMemory;
     private FoundersBubbleSceneMemory foundersBubbleSceneMemory;
     private FoundersWellSceneMemory foundersWellSceneMemory;
+    private FoundersWell2SceneMemory foundersWell2SceneMemory;
     private PlayInstructionSceneMemory playInstructionSceneMemory;
     private NovelHistorySceneMemory novelHistorySceneMemory;
+
+    private BarrierefreiheitSceneMemory barrierefreiheitSceneMemory;
+    private ImpressumSceneMemory impressumSceneMemory;
+    private DatenschutzSceneMemory datenschutzSceneMemory;
+    private NutzungsbedingungenSceneMemory nutzungsbedingungenSceneMemory;
+    private RessourcenSceneMemory ressourcenSceneMemory;
 
     private SceneMemoryManager()
     {
@@ -137,11 +144,41 @@ public class SceneMemoryManager
     public FoundersWellSceneMemory GetMemoryOfFoundersWellScene()
     {
         return this.foundersWellSceneMemory;
+    }       
+    
+    public FoundersWell2SceneMemory GetMemoryOfFoundersWell2Scene()
+    {
+        return this.foundersWell2SceneMemory;
     }    
     
     public PlayInstructionSceneMemory GetMemoryOfPlayInstructionScene()
     {
         return this.playInstructionSceneMemory;
+    }       
+    
+    public ImpressumSceneMemory GetMemoryOfImpressumScene()
+    {
+        return this.impressumSceneMemory;
+    }        
+    
+    public DatenschutzSceneMemory GetMemoryOfDatenschutzScene()
+    {
+        return this.datenschutzSceneMemory;
+    }       
+    
+    public NutzungsbedingungenSceneMemory GetMemoryOfNutzungsbedingungenScene()
+    {
+        return this.nutzungsbedingungenSceneMemory;
+    }      
+    
+    public BarrierefreiheitSceneMemory GetMemoryOfBarrierefreiheitScene()
+    {
+        return this.barrierefreiheitSceneMemory;
+    }       
+    
+    public RessourcenSceneMemory GetMemoryOfRessourcenScene()
+    {
+        return this.ressourcenSceneMemory;
     }    
     
     public NovelHistorySceneMemory GetMemoryOfNovelHistoryScene()
@@ -247,6 +284,11 @@ public class SceneMemoryManager
     public void SetMemoryOfFoundersWellScene(FoundersWellSceneMemory foundersWellSceneMemory)
     {
         this.foundersWellSceneMemory = foundersWellSceneMemory;
+    }      
+    
+    public void SetMemoryOfFoundersWell2Scene(FoundersWell2SceneMemory foundersWell2SceneMemory)
+    {
+        this.foundersWell2SceneMemory = foundersWell2SceneMemory;
     }    
     
     public void SetMemoryOfPlayInstructionScene(PlayInstructionSceneMemory playInstructionSceneMemory)
@@ -257,6 +299,31 @@ public class SceneMemoryManager
     public void SetMemoryOfNovelHistoryScene(NovelHistorySceneMemory novelHistorySceneMemory)
     {
         this.novelHistorySceneMemory = novelHistorySceneMemory;
+    }    
+    
+    public void SetMemoryOfDatenschutzScene(DatenschutzSceneMemory datenschutzSceneMemory)
+    {
+        this.datenschutzSceneMemory = datenschutzSceneMemory;
+    }    
+    
+    public void SetMemoryOfNutzungsbedingungenScene(NutzungsbedingungenSceneMemory nutzungsbedingungenSceneMemory)
+    {
+        this.nutzungsbedingungenSceneMemory = nutzungsbedingungenSceneMemory;
+    }    
+    
+    public void SetMemoryOfImpressumScene(ImpressumSceneMemory impressumSceneMemory)
+    {
+        this.impressumSceneMemory = impressumSceneMemory;
+    }    
+    
+    public void SetMemoryOfRessourcenScene(RessourcenSceneMemory ressourcenSceneMemory)
+    {
+        this.ressourcenSceneMemory = ressourcenSceneMemory;
+    }    
+    
+    public void SetMemoryOfBarrierefreiheit(BarrierefreiheitSceneMemory barrierefreiheitSceneMemory)
+    {
+        this.barrierefreiheitSceneMemory = barrierefreiheitSceneMemory;
     }
 
     public void ClearMemory()
@@ -281,7 +348,14 @@ public class SceneMemoryManager
         this.expertFeedbackSceneMemory = null;
         this.foundersBubbleSceneMemory = null;
         this.foundersWellSceneMemory = null;
+        this.foundersWell2SceneMemory = null;
         this.playInstructionSceneMemory = null;
         this.novelHistorySceneMemory = null;
+
+        this.barrierefreiheitSceneMemory = null;
+        this.ressourcenSceneMemory = null;
+        this.impressumSceneMemory = null;
+        this.datenschutzSceneMemory = null;
+        this.nutzungsbedingungenSceneMemory = null;
     }
 }
