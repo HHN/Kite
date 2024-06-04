@@ -7,14 +7,15 @@ public class BarrierefreiheitSceneController : SceneController
     [SerializeField] private Toggle toggleTextToSpeech;
     [SerializeField] private Button toggleTextToSpeechInfoButton;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private RectTransform layout;
     [SerializeField] private TTSEngine engine;
 
     void Start()
     {
         BackStackManager.Instance().Push(SceneNames.BARRIEREFREIHEIT_SCENE);
 
+        LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
         InitializeToggleTextToSpeech();
-
         toggleTextToSpeech.onValueChanged.AddListener(delegate { OnToggleTextToSpeech(toggleTextToSpeech); });
         toggleTextToSpeechInfoButton.onClick.AddListener(delegate { OnToggleTextToSpeechInfoButton(); });
     }

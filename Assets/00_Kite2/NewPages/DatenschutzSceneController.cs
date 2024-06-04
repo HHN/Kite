@@ -12,11 +12,13 @@ public class DatenschutzSceneController : SceneController
     [SerializeField] private Toggle applicationModeToggle;
     [SerializeField] private Button applicationModeInfoButton;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private RectTransform layout;
 
     void Start()
     {
         BackStackManager.Instance().Push(SceneNames.DATENSCHUTZ_SCENE);
 
+        LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
         audioSource = GetComponent<AudioSource>();
         TextToSpeechService.Instance().SetAudioSource(audioSource);
 
