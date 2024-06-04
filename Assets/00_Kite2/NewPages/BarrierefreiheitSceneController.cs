@@ -51,7 +51,7 @@ public class BarrierefreiheitSceneController : SceneController
 
     public void OnToggleTextToSpeechInfoButton()
     {
-        TextToSpeechService.Instance().TextToSpeech("textToSpeechInfo");
+        TextToSpeechService.Instance().TextToSpeechReadLive("textToSpeechInfo", engine);
         DisplayInfoMessage(InfoMessages.EXPLANATION_TEXTTOSPEECH_BUTTON);
     }
 }
