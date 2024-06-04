@@ -79,7 +79,7 @@ public class SettingsSceneController : SceneController
         if (PrivacyAndConditionManager.Instance().IsDataCollectionAccepted())
         {
             PrivacyAndConditionManager.Instance().UnacceptDataCollection();
-            DisplayInfoMessage(InfoMessages.STOPED_DATA_COLLECTION);
+            DisplayInfoMessage(InfoMessages.STOPPED_DATA_COLLECTION);
         }
         else
         {
