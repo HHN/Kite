@@ -67,23 +67,25 @@ public class TextToSpeechService
 
     public async void TextToSpeechReadLive(string text, TTSEngine engine, bool readAnyway = false)
     {
-        if(TextToSpeechManager.Instance().IsTextToSpeechActivated() || readAnyway)
+        if(audioSource != null)
         {
-            Debug.Log(text);
-            AudioClip audioClip = await engine.Speak(text, TTSVoiceNative.LoadVoiceFromResources("de-de-thorsten-high"));
-            audioSource.clip = audioClip;
-            audioSource.Play();
-            // AudioClip clip = Overtone.GenerateAudio(text);
-            // yield return new WaitUntil(() => clip != null);
-            // audioSource.clip = Resources.Load<AudioClip>();
-            // if(audioSource.clip != null)
-            // {
-            //     audioSource.Play();
-            // } else
-            // {
-            //     Debug.LogError("There has been an error creating an audio clip.");
-            // } 
-        }
+            if(TextToSpeechManager.Instance().IsTextToSpeechActivated() || readAnyway)
+                {
+                    Debug.Log(text);
+                    AudioClip audioClip = await engine.Speak(text, TTSVoiceNative.LoadVoiceFromResources("de-de-thorsten-high"));
+                    audioSource.clip = audioClip;
+                    audioSource.Play();
+                    // AudioClip clip = Overtone.GenerateAudio(text);
+                    // yield return new WaitUntil(() => clip != null);
+                    // audioSource.clip = Resources.Load<AudioClip>();
+                    // if(audioSource.clip != null)
+                    // {
+                    //     audioSource.Play();
+                    // } else
+                    // {
+                    //     Debug.LogError("There has been an error creating an audio clip.");
+                    // } 
+                }
+        }        
     }
-
 }
