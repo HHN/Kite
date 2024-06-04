@@ -8,6 +8,7 @@ public class FoundersWell2SceneController : SceneController
     [SerializeField] private Button nutzungsbedingungenButton;
     [SerializeField] private Button datenschutzButton;
     [SerializeField] private Button impressumButton;
+    [SerializeField] private Button playHistoryButton;
 
     void Start()
     {
@@ -18,11 +19,17 @@ public class FoundersWell2SceneController : SceneController
         nutzungsbedingungenButton.onClick.AddListener(delegate { OnNutzungsbedingungenButton(); });
         datenschutzButton.onClick.AddListener(delegate { OnDatenschutzButton(); });
         impressumButton.onClick.AddListener(delegate { OnImpressumButton(); });
+        playHistoryButton.onClick.AddListener(delegate { OnPlayHistoryButton(); });
     }
 
     public void OnRessourcenButton()
     {
         SceneLoader.LoadRessourcenScene();
+    }
+        
+    public void OnPlayHistoryButton()
+    {
+        SceneLoader.LoadNovelHistoryScene();
     }
 
     public void OnBarrierefreiheitButton()
