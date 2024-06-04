@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageBox: {fileID: 5629918238507184917, guid: 47c0a3038b673a24cb82a566be2abf20, type: 3}
   canvas: {fileID: 997989941}
+  layout: {fileID: 1138944065}
 --- !u!4 &58215941
 Transform:
   m_ObjectHideFlags: 0
