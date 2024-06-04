@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using LeastSquares.Overtone;
 
 public class SettingsSceneController : SceneController
 {
@@ -25,6 +26,8 @@ public class SettingsSceneController : SceneController
     [SerializeField] private Button expertFeedbackButton;
     [SerializeField] private Button expertFeedbackInfoButton;
     [SerializeField] private AudioSource audioSource;
+    
+    [SerializeField] private TTSEngine engine;
 
     void Start()
     {
@@ -61,13 +64,13 @@ public class SettingsSceneController : SceneController
 
     public void OnAboutKiteButton()
     {
-        TextToSpeechService.Instance().TextToSpeech("ueberKITE");
+        TextToSpeechService.Instance().TextToSpeechReadLive("ueberKITE", engine);
         SceneLoader.LoadInfoScene();
     }
 
     public void OnAboutKiteInfoButton()
     {
-        TextToSpeechService.Instance().TextToSpeech("infoSeiteInfo");
+        TextToSpeechService.Instance().TextToSpeechReadLive("infoSeiteInfo", engine);
         DisplayInfoMessage(InfoMessages.EXPLANATION_ABOUT_US_BUTTON);
     }
 
@@ -86,9 +89,9 @@ public class SettingsSceneController : SceneController
         InitializeToggleDataCollectionButton();
         if (PrivacyAndConditionManager.Instance().IsDataCollectionAccepted())
         {
-            TextToSpeechService.Instance().TextToSpeech("startDatenaufzeichnung");
+            TextToSpeechService.Instance().TextToSpeechReadLive("startDatenaufzeichnung", engine);
         } else {
-            TextToSpeechService.Instance().TextToSpeech("stopDatenaufzeichnung");
+            TextToSpeechService.Instance().TextToSpeechReadLive("stopDatenaufzeichnung", engine);
         }
     }
 
@@ -96,26 +99,26 @@ public class SettingsSceneController : SceneController
     {
         if (PrivacyAndConditionManager.Instance().IsDataCollectionAccepted())
         {
-            TextToSpeechService.Instance().TextToSpeech("datenaufzeichnungAktiviert");
+            TextToSpeechService.Instance().TextToSpeechReadLive("datenaufzeichnungAktiviert", engine);
             DisplayInfoMessage(InfoMessages.EXPLANATION_STOP_DATA_BUTTON);
         } 
         else
         {
-            TextToSpeechService.Instance().TextToSpeech("datenaufzeichnungDeaktivieren");
+            TextToSpeechService.Instance().TextToSpeechReadLive("datenaufzeichnungDeaktivieren", engine);
             DisplayInfoMessage(InfoMessages.EXPLANATION_COLLECT_DATA_BUTTON);
         }
     }
 
     public void OnDeleteCollectedDataButton()
     {
-        TextToSpeechService.Instance().TextToSpeech("datenloeschungErfolgreichNotification");
+        TextToSpeechService.Instance().TextToSpeechReadLive("datenloeschungErfolgreichNotification", engine);
         AnalyticsServiceHandler.Instance().DeleteCollectedData();
         DisplayInfoMessage(InfoMessages.DELETED_DATA);
     }
 
     public void OnDeleteCollectedDataInfoButton()
     {
-        TextToSpeechService.Instance().TextToSpeech("datenloeschungInfo");
+        TextToSpeechService.Instance().TextToSpeechReadLive("datenloeschungInfo", engine);
         DisplayInfoMessage(InfoMessages.EXPLANATION_DELETE_DATA_BUTTON);
     }
 
@@ -163,7 +166,7 @@ public class SettingsSceneController : SceneController
 
     public void OnTermsOfUseInfoButton()
     {
-        TextToSpeechService.Instance().TextToSpeech("nutzungsbedingungenInfo");
+        TextToSpeechService.Instance().TextToSpeechReadLive("nutzungsbedingungenInfo", engine);
         DisplayInfoMessage(InfoMessages.EXPLANATION_TERMS_OF_USE_BUTTON);
     }
 
@@ -175,7 +178,7 @@ public class SettingsSceneController : SceneController
 
     public void OnDataPrivacyInfoButton()
     {
-        TextToSpeechService.Instance().TextToSpeech("datenschutzerklaerungInfo");
+        TextToSpeechService.Instance().TextToSpeechReadLive("datenschutzerklaerungInfo", engine);
         DisplayInfoMessage(InfoMessages.EXPLANATION_DATA_PRIVACY_BUTTON);
     }
 
@@ -187,7 +190,7 @@ public class SettingsSceneController : SceneController
 
     public void OnImprintInfoButton()
     {
-        TextToSpeechService.Instance().TextToSpeech("impressumInfo");
+        TextToSpeechService.Instance().TextToSpeechReadLive("impressumInfo", engine);
         DisplayInfoMessage(InfoMessages.EXPLANATION_IMPRINT_BUTTON);
     }
 
@@ -199,7 +202,7 @@ public class SettingsSceneController : SceneController
 
     private void OnPlayerPrefsInfoButton()
     {
-        TextToSpeechService.Instance().TextToSpeech("playerPrefsInfo");
+        TextToSpeechService.Instance().TextToSpeechReadLive("playerPrefsInfo", engine);
         DisplayInfoMessage(InfoMessages.EXPLANATION_PLAYERPREFS_BUTTON);
     }
 
@@ -218,16 +221,16 @@ public class SettingsSceneController : SceneController
         InitializeToggleTextToSpeechButton();
         if (TextToSpeechManager.Instance().IsTextToSpeechActivated())
         {
-            TextToSpeechService.Instance().TextToSpeech("textWirdVorgelesen");
+            TextToSpeechService.Instance().TextToSpeechReadLive("textWirdVorgelesen", engine);
         } else {
-            TextToSpeechService.Instance().TextToSpeech("textWirdNichtMehrVorgelesen", true);
+            TextToSpeechService.Instance().TextToSpeechReadLive("textWirdNichtMehrVorgelesen", engine, true);
         }
         // If more settings are decired this should lead to an extra scene
     }
 
     private void OnToggleTextToSpeechInfoButton()
     {
-        TextToSpeechService.Instance().TextToSpeech("textToSpeechInfo");
+        TextToSpeechService.Instance().TextToSpeechReadLive("textToSpeechInfo", engine);
         DisplayInfoMessage(InfoMessages.EXPLANATION_TEXTTOSPEECH_BUTTON);
     }
 
@@ -246,15 +249,15 @@ public class SettingsSceneController : SceneController
         InitializeApplicationModeButton();
         if (ApplicationModeManager.Instance().IsOfflineModeActive())
         {
-            TextToSpeechService.Instance().TextToSpeech("offlineModus");
+            TextToSpeechService.Instance().TextToSpeechReadLive("offlineModus", engine);
         } else {
-            TextToSpeechService.Instance().TextToSpeech("onlineModus");
+            TextToSpeechService.Instance().TextToSpeechReadLive("onlineModus", engine);
         }
     }
 
     private void OnApplicationModeInfoButton()
     {
-        TextToSpeechService.Instance().TextToSpeech("onlineOfflineModusInfo");
+        TextToSpeechService.Instance().TextToSpeechReadLive("onlineOfflineModusInfo", engine);
         DisplayInfoMessage(InfoMessages.EXPLANATION_APPLICATION_MODE_BUTTON);
     }
 
