@@ -496,7 +496,7 @@ public class PlayNovelSceneController : SceneController
     public void HandleShowMessageEvent(VisualNovelEvent novelEvent)
     {
         //Debug.Log(novelEvent.text);   // Needed to copy the text from the novel to AWS Polly
-        TextToSpeechService.Instance().TextToSpeech(novelToPlay.title+novelEvent.id);
+        // TextToSpeechService.Instance().TextToSpeech(novelToPlay.title+novelEvent.id);
         TextToSpeechService.Instance().TextToSpeechReadLive(novelEvent.text, engine);
         novelEvent.text = ReplacePlaceholders(novelEvent.text, novelToPlay.GetGlobalVariables());
 
@@ -548,7 +548,7 @@ public class PlayNovelSceneController : SceneController
     {
         // TODO: Implement text to speech 
         TextToSpeechService.Instance().TextToSpeechReadLive(novelEvent.text, engine);
-        TextToSpeechService.Instance().TextToSpeech(novelToPlay.title + TextToSpeechService.Instance().returnChoicesForTextToSpeech());
+        // TextToSpeechService.Instance().TextToSpeech(novelToPlay.title + TextToSpeechService.Instance().returnChoicesForTextToSpeech());
         AddEntryToPlayThroughHistory(CharacterTypeHelper.ValueOf(novelEvent.character), novelEvent.text);
         conversationContent.AddContent(novelEvent, this);
     }
