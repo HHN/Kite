@@ -5,12 +5,10 @@ using LeastSquares.Overtone;
 public class TextToSpeechService
 {
     private static TextToSpeechService instance;
-
     private string choicesForTextToSpeech;
-
     private AudioSource audioSource;
-
     private string novelTitle;
+    private int optionCounter;
 
     public static TextToSpeechService Instance()
     {
@@ -57,6 +55,25 @@ public class TextToSpeechService
 
     public void addChoiceToChoiceCollectionForTextToSpeech(string choice)
     {
+        optionCounter++;
+        switch(optionCounter)
+        {
+            case 1:
+                choicesForTextToSpeech += "Erste Option: ";
+                break;
+            case 2:
+                choicesForTextToSpeech += "Zweite Option: ";
+                break;
+            case 3:
+                choicesForTextToSpeech += "Dritte Option: ";
+                break;
+            case 4:
+                choicesForTextToSpeech += "Vierte Option: ";
+                break;
+            case 5:
+                choicesForTextToSpeech += "Fünfte Option: ";
+                break;
+        }
         choicesForTextToSpeech += choice;
     }
 
