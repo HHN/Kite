@@ -19,6 +19,7 @@ public class PlayInstructionSceneController : SceneController
     void Start()
     {
         BackStackManager.Instance().Push(SceneNames.PLAY_INSTRUCTION_SCENE);
+
         backgroundColor = PlayManager.Instance().GetBackgroundColorOfVisualNovelToPlay();
         foregroundColor = PlayManager.Instance().GetForegroundColorOfVisualNovelToPlay();
         novelname.text = PlayManager.Instance().GetDisplayNameOfNovelToPlay();
@@ -28,9 +29,7 @@ public class PlayInstructionSceneController : SceneController
         buttonText.color = foregroundColor;
         toggle.isOn = false;
 
-        playButton.onClick.AddListener(delegate { OnPlayButton(); });
-        backButton.onClick.AddListener(delegate { OnBackButton(); });
-    }
+        playButton.onClick.AddListener(delegate { OnPlayButton(); });    }
 
     public void OnPlayButton()
     {

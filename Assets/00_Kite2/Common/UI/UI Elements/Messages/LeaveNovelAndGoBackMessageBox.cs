@@ -51,6 +51,12 @@ public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
             SceneLoader.LoadMainMenuScene();
             return;
         }
+        if (lastScene == SceneNames.PLAY_INSTRUCTION_SCENE.ToString())
+        {
+            SceneLoader.LoadScene(SceneNames.FOUNDERS_BUBBLE_SCENE.ToString());
+            BackStackManager.Instance().Pop();
+            return;
+        }
         SceneLoader.LoadScene(lastScene);
     }
 

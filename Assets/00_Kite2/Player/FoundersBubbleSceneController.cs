@@ -9,16 +9,33 @@ public class FoundersBubbleSceneController : SceneController
     [SerializeField] private NovelDescriptionTextbox novelDescriptionTextbox;
     [SerializeField] private InfinityScroll infinityScroll;
     [SerializeField] private Button foundersWellButton;
+    [SerializeField] private bool isPopupOpen;
+    [SerializeField] private VisualNovelNames currentlyOpenedVisualNovelPopup;
 
     void Start()
     {
         BackStackManager.Instance().Push(SceneNames.FOUNDERS_BUBBLE_SCENE);
 
         foundersWellButton.onClick.AddListener(delegate { OnFoundersWellButton(); });
+
+        currentlyOpenedVisualNovelPopup = VisualNovelNames.NONE;
+    }
+
+    public void OnBackgroundButton()
+    {
+        if (isPopupOpen)
+        {
+            MakeTextboxInvisible();
+        }
     }
 
     public void OnFoundersWellButton()
     {
+        if (isPopupOpen)
+        {
+            MakeTextboxInvisible();
+            return;
+        }
         //SceneLoader.LoadFoundersWellScene();
         SceneLoader.LoadFoundersWell2Scene();
     }
@@ -97,6 +114,11 @@ public class FoundersBubbleSceneController : SceneController
 
     public void DisplayTextBoxForVisualNovel(VisualNovelNames visualNovel)
     {
+        if (isPopupOpen && visualNovel == currentlyOpenedVisualNovelPopup)
+        {
+            MakeTextboxInvisible();
+            return;
+        }
         int novelId = VisualNovelNamesHelper.ToInt(visualNovel);
 
         List<VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
@@ -111,12 +133,17 @@ public class FoundersBubbleSceneController : SceneController
                 novelDescriptionTextbox.SetVisualNovelName(visualNovel);
                 novelDescriptionTextbox.SetText(novel.description);
                 novelDescriptionTextbox.SetColorOfImage(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
+
+                isPopupOpen = true;
+                currentlyOpenedVisualNovelPopup = visualNovel;
             }
         }
     }
 
     public void MakeTextboxInvisible()
     {
+        isPopupOpen = false;
+        currentlyOpenedVisualNovelPopup = VisualNovelNames.NONE;
         novelDescriptionTextboxGameObject.SetActive(false);
     }
 

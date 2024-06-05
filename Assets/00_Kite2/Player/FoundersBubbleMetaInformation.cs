@@ -229,7 +229,7 @@ public class FoundersBubbleMetaInformation : MonoBehaviour
                 }
             case VisualNovelNames.INTRO_NOVEL:
                 {
-                    return "Intro\r\nNovel";
+                    return "Intro-\r\nNovel";
                 }
             case VisualNovelNames.LEBENSPARTNER_NOVEL:
                 {

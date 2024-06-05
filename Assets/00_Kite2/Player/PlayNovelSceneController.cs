@@ -79,7 +79,6 @@ public class PlayNovelSceneController : SceneController
 
     void Start()
     {
-        closeButton.onClick.AddListener(delegate { OnCloseButton(); });
         tapToContinueAnimation.SetActive(false);
         tapToContinueAnimation.GetComponent<Animator>().enabled = false;
         AnalyticsServiceHandler.Instance().StartStopwatch();
@@ -171,8 +170,8 @@ public class PlayNovelSceneController : SceneController
         characterRectTransform.sizeDelta = new Vector2(canvasRect.rect.width * 0.25f, canvasRect.rect.height * 1f);
         decoDeskRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.075f, canvasRect.rect.height * 0.1f);
         decoBackgroundRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.17f, canvasRect.rect.height * 0.25f);
-        RectTransform closeButtonTransform = closeButton.GetComponent<RectTransform>();
-        closeButtonTransform.SetAsLastSibling();
+        //RectTransform closeButtonTransform = closeButton.GetComponent<RectTransform>();
+        //closeButtonTransform.SetAsLastSibling();
     }
 
     public void PlayNextEvent()
