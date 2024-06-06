@@ -99,8 +99,9 @@ public class InfinityScroll : MonoBehaviour
         }
         SnapToItem();
         CalculateAndSetCurrentPositionForSecondScrollView();
+        Canvas.ForceUpdateCanvases();
     }
-    
+
     public void SnapToItem()
     {
         float targetXPosition = 0 - ((currentTarget * (itemList[0].rect.width + horizontalLayoutGroup.spacing)) - (viewPortTransform.rect.width / 2) - (itemList[0].rect.width / 2) - horizontalLayoutGroup.spacing);
