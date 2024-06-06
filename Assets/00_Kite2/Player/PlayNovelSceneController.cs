@@ -161,12 +161,11 @@ public class PlayNovelSceneController : SceneController
         RectTransform decoDeskRectTransform = decoDeskContainer.GetComponent<RectTransform>();
         RectTransform decoBackgroundRectTransform = decoBackgroudContainer.GetComponent<RectTransform>();
             
-        // conversationViewportTransform.anchoredPosition = new Vector2(0, -canvasRect.rect.height * 0.225f);
         characterRectTransform.anchoredPosition = new Vector2(-canvasRect.rect.width * 0.15f, 0);
         decoDeskRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.15f, canvasRect.rect.height * 0.1f);
         decoBackgroundRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.42f, canvasRect.rect.height * 0.25f);
 
-        conversationViewportTransform.sizeDelta = new Vector2(0, -canvasRect.rect.height * 0.45f);
+        conversationViewportTransform.sizeDelta = new Vector2(0, -canvasRect.rect.height * 0.5f);
         characterRectTransform.sizeDelta = new Vector2(canvasRect.rect.width * 0.25f, canvasRect.rect.height * 1f);
         decoDeskRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.075f, canvasRect.rect.height * 0.1f);
         decoBackgroundRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.17f, canvasRect.rect.height * 0.25f);
