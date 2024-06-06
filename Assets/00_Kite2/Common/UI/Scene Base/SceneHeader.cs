@@ -38,6 +38,8 @@ public class SceneHeader : MonoBehaviour
 
             return;
         }
+        SceneLoader.LoadMainMenuScene();
+        return;
     }
 
     public void OnBackButton()
