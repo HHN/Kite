@@ -8,15 +8,13 @@ using System.Collections;
 public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErrorHandler
 {
     [SerializeField] private TextMeshProUGUI feedbackText;
-    [SerializeField] private TextMeshProUGUI novelTitle;
     [SerializeField] private GameObject gptServercallPrefab;
-    [SerializeField] private FavoriteButton favoriteButton;
     [SerializeField] private VisualNovel novelToPlay;
     [SerializeField] private RectTransform layout;
     [SerializeField] private AudioSource waitingLoopMusic;
     [SerializeField] private AudioSource resultMusic;
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private Button requestExpertFeedbackButton;
+    [SerializeField] private Button finishButton;
     [SerializeField] private TTSEngine engine;
 
     private void Start()
@@ -29,13 +27,11 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
         {
             return;
         }
-        novelTitle.SetText(novelToPlay.title);
-        favoriteButton.novel = novelToPlay;
-        favoriteButton.Init();
 
         if (ApplicationModeManager.Instance().IsOfflineModeActive())
         {
             feedbackText.SetText("Sie befinden sich im Offline Modus. Es ist kein Feedback verfügbar.");
+            finishButton.GetComponentInChildren<Text>().text = "ANALYSE BEENDEN";
             return;
         }
         if (string.IsNullOrEmpty(novelToPlay.feedback))
@@ -86,7 +82,8 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
             return;
         }
         StopWaitingMusic();
-        if(TextToSpeechManager.Instance().IsTextToSpeechActivated())
+        finishButton.GetComponentInChildren<TextMeshProUGUI>().text = "ANALYSE BEENDEN";
+        if (TextToSpeechManager.Instance().IsTextToSpeechActivated())
         {
             TextToSpeechService.Instance().TextToSpeechReadLive(response.GetCompletion().Trim(), engine);
         }
@@ -115,6 +112,8 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
     {
         StopWaitingMusic();
         DisplayErrorMessage(ErrorMessages.UNEXPECTED_SERVER_ERROR);
+        finishButton.GetComponentInChildren<Text>().text = "ANALYSE BEENDEN";
+        feedbackText.SetText("Leider ist aktuell keine KI-Analyse verfügbar.");
     }
 
     public void StartWaitingMusic()
