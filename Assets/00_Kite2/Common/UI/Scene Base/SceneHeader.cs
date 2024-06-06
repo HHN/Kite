@@ -8,7 +8,9 @@ public class SceneHeader : MonoBehaviour
     [SerializeField] private Button closeButton;
     [SerializeField] private Button backButton;
     [SerializeField] private GameObject warningMessageBox;
+    [SerializeField] private GameObject warningMessageBoxClose;
     [SerializeField] private LeaveNovelAndGoBackMessageBox warningMessageBoxObject;
+    [SerializeField] private LeaveNovelAndGoBackToMainmenuMessageBox warningMessageBoxObjectClose;
     [SerializeField] private Canvas canvas;
 
     void Start()
@@ -19,14 +21,23 @@ public class SceneHeader : MonoBehaviour
 
     public void OnCloseButton()
     {
-        string lastScene = SceneRouter.GetTargetSceneForCloseButton();
-
-        if (string.IsNullOrEmpty(lastScene))
+        if (warningMessageBoxClose != null)
         {
-            SceneLoader.LoadMainMenuScene();
+            if (!DestroyValidator.IsNullOrDestroyed(warningMessageBoxObjectClose))
+            {
+                warningMessageBoxObjectClose.CloseMessageBox();
+            }
+            if (DestroyValidator.IsNullOrDestroyed(canvas))
+            {
+                return;
+            }
+            warningMessageBoxObjectClose = null;
+            warningMessageBoxObjectClose = Instantiate(warningMessageBoxClose,
+                canvas.transform).GetComponent<LeaveNovelAndGoBackToMainmenuMessageBox>();
+            warningMessageBoxObjectClose.Activate();
+
             return;
         }
-        SceneLoader.LoadScene(lastScene);
     }
 
     public void OnBackButton()
