@@ -1,5 +1,8 @@
+using System.Collections;
 using UnityEngine;
 using LeastSquares.Overtone;
+using System.Threading;
+using System.Threading.Tasks;
 
 
 public class TextToSpeechService
@@ -9,6 +12,7 @@ public class TextToSpeechService
     private AudioSource audioSource;
     private string novelTitle;
     private int optionCounter;
+    private CancellationTokenSource cancellationTokenSource;
 
     public static TextToSpeechService Instance()
     {
@@ -82,27 +86,40 @@ public class TextToSpeechService
         return choicesForTextToSpeech;
     }
 
-    public async void TextToSpeechReadLive(string text, TTSEngine engine, bool readAnyway = false)
+    public async Task TextToSpeechReadLive(string text, TTSEngine engine, bool readAnyway = false)
     {
-        if(audioSource != null)
+        if (audioSource != null)
         {
-            if(TextToSpeechManager.Instance().IsTextToSpeechActivated() || readAnyway)
+            if (TextToSpeechManager.Instance().IsTextToSpeechActivated() || readAnyway)
+            {
+                //Debug.Log(text);
+                cancellationTokenSource = new CancellationTokenSource();
+                try
                 {
-                    Debug.Log(text);
                     AudioClip audioClip = await engine.Speak(text, TTSVoiceNative.LoadVoiceFromResources("de-de-thorsten-high"));
-                    audioSource.clip = audioClip;
-                    audioSource.Play();
-                    // AudioClip clip = Overtone.GenerateAudio(text);
-                    // yield return new WaitUntil(() => clip != null);
-                    // audioSource.clip = Resources.Load<AudioClip>();
-                    // if(audioSource.clip != null)
-                    // {
-                    //     audioSource.Play();
-                    // } else
-                    // {
-                    //     Debug.LogError("There has been an error creating an audio clip.");
-                    // } 
+                    if (audioSource != null && !cancellationTokenSource.IsCancellationRequested)
+                    {
+                        audioSource.clip = audioClip;
+                        audioSource.Play();
+                    }
                 }
-        }        
+                catch (TaskCanceledException)
+                {
+                    Debug.Log("Text-to-Speech operation was cancelled.");
+                }
+            }
+        }
+    }
+
+    public void CancelSpeechAndAudio()
+    {
+        if (cancellationTokenSource != null)
+        {
+            cancellationTokenSource.Cancel();
+        }
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
     }
 }

@@ -44,6 +44,7 @@ public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
 
     public void OnConfirmButton()
     {
+        TextToSpeechService.Instance().CancelSpeechAndAudio();
         string lastScene = SceneRouter.GetTargetSceneForBackButton();
 
         if (string.IsNullOrEmpty(lastScene))

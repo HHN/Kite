@@ -44,6 +44,7 @@ public class LeaveNovelAndGoToSettingsMessageBox : MonoBehaviour
 
     public void OnConfirmButton()
     {
+        TextToSpeechService.Instance().CancelSpeechAndAudio();
         SceneLoader.LoadSettingsScene();
     }
 

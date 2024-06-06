@@ -44,6 +44,7 @@ public class LeaveNovelAndGoBackToMainmenuMessageBox : MonoBehaviour
 
     public void OnConfirmButton()
     {
+        TextToSpeechService.Instance().CancelSpeechAndAudio();
         SceneLoader.LoadMainMenuScene();
     }
 
