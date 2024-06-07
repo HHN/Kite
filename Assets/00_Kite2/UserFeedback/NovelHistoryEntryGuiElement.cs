@@ -7,7 +7,6 @@ public class NovelHistoryEntryGuiElement : MonoBehaviour
     [SerializeField] private DropDownMenu dropDownDialog;
     [SerializeField] private DropDownMenu dropDownAiFeedback;
     [SerializeField] private TextMeshProUGUI headButtonText;
-    [SerializeField] private TextMeshProUGUI nameOfNovel;
     [SerializeField] private TextMeshProUGUI dialogText;
     [SerializeField] private TextMeshProUGUI aiFeedbackText;
     [SerializeField] private DialogHistoryEntry dialogHistoryEntry;
@@ -15,8 +14,7 @@ public class NovelHistoryEntryGuiElement : MonoBehaviour
     public void InitializeEntry(DialogHistoryEntry dialogHistoryEntry)
     {
         this.dialogHistoryEntry = dialogHistoryEntry;
-        headButtonText.text = "Gespielte Novel";
-        nameOfNovel.text = "Gespielte Novel: " + dialogHistoryEntry.GetNovelId();
+        headButtonText.text = VisualNovelNamesHelper.GetName(dialogHistoryEntry.GetNovelId()) + " (" + dialogHistoryEntry.GetDateAndTime() + ")";
         dialogText.text = dialogHistoryEntry.GetDialog();
         aiFeedbackText.text = dialogHistoryEntry.GetCompletion();
     }

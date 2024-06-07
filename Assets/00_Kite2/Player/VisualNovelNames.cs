@@ -76,6 +76,65 @@ public class VisualNovelNamesHelper
         }
     }
 
+    public static string GetName(long value)
+    {
+        switch (value)
+        {
+            case 2:
+                {
+                    return "Eltern";
+                }
+            case 3:
+                {
+                    return "Presse";
+                }
+            case 4:
+                {
+                    return "Notarin";
+                }
+            case 5:
+                {
+                    return "Bankkonto";
+                }
+            case 6:
+                {
+                    return "Büro";
+                }
+            case 7:
+                {
+                    return "Förderantrag";
+                }
+            case 8:
+                {
+                    return "Gründungs-zuschuss";
+                }
+            case 9:
+                {
+                    return "Bekannte treffen";
+                }
+            case 10:
+                {
+                    return "Bankkredit";
+                }
+            case 11:
+                {
+                    return "Honorar";
+                }
+            case 13:
+                {
+                    return "Intro-Novel";
+                }
+            case -10:
+                {
+                    return "Lebens-partner*in";
+                }
+            default:
+                {
+                    return "";
+                }
+        }
+    }
+
     public static int ToInt(VisualNovelNames value)
     {
         switch (value)
