@@ -207,6 +207,9 @@ MonoBehaviour:
   messageBoxBody: {fileID: 0}
   closeButton: {fileID: 5629918239529746242}
   okButton: {fileID: 3285660958884881377}
+  errorSound: {fileID: 0}
+  infoSound: {fileID: 0}
+  isErrorMessage: 0
 --- !u!1 &5629918238595982755
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,8 +342,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 688, y: 0}
-  m_SizeDelta: {x: 1276, y: 0}
+  m_AnchoredPosition: {x: 460, y: 0}
+  m_SizeDelta: {x: 820, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5629918238945663070
 MonoBehaviour:
@@ -439,8 +442,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 608, y: 0}
-  m_SizeDelta: {x: 1216, y: 0}
+  m_AnchoredPosition: {x: 386.2367, y: 0}
+  m_SizeDelta: {x: 772.4734, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5629918239078764576
 CanvasRenderer:
@@ -612,7 +615,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1256, y: 0}
+  m_AnchoredPosition: {x: 806.2367, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5629918239529746244
@@ -874,8 +877,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 688, y: 0}
-  m_SizeDelta: {x: 1276, y: 0}
+  m_AnchoredPosition: {x: 460, y: 0}
+  m_SizeDelta: {x: 820, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5629918239756740151
 CanvasRenderer:
@@ -1682,7 +1685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7185633893947003523, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 638
+      value: 410
       objectReference: {fileID: 0}
     - target: {fileID: 7185633893947003523, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}
       propertyPath: m_AnchoredPosition.y
