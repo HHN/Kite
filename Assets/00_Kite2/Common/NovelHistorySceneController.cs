@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NovelHistorySceneController : SceneController
 {
@@ -28,5 +29,7 @@ public class NovelHistorySceneController : SceneController
 
             dataObjectGuiElement.InitializeEntry(dataObject);
         }
+        RectTransform rectTransform = container.GetComponent<RectTransform>();
+        LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
     }
 }
