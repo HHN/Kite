@@ -136,6 +136,32 @@ public class PlayNovelSceneController : SceneController
 
     public void OnConfirm()
     {
+        Vector2 mousePosition = Input.mousePosition;
+        RectTransform decoDeskRectTransform = decoDeskContainer.GetComponent<RectTransform>();
+        RectTransform decoBackgroundRectTransform = decoBackgroudContainer.GetComponent<RectTransform>();
+
+        Vector3[] cornersDecoDesk = new Vector3[4];
+        decoDeskRectTransform.GetWorldCorners(cornersDecoDesk);
+        Vector3 bottomLeftDecoDesk = cornersDecoDesk[0];
+        Vector3 topRightDecoDesk = cornersDecoDesk[2];
+
+        Vector3[] cornersDecoBackground = new Vector3[4];
+        decoBackgroundRectTransform.GetWorldCorners(cornersDecoBackground);
+        Vector3 bottomLeftDecoBackground = cornersDecoBackground[0];
+        Vector3 topRightDecoBackground = cornersDecoBackground[2];
+
+        if (mousePosition.x >= bottomLeftDecoDesk.x && mousePosition.x <= topRightDecoDesk.x &&
+            mousePosition.y >= bottomLeftDecoDesk.y && mousePosition.y <= topRightDecoDesk.y)
+        {
+            OnDecoDeskButton();
+            return;
+        } 
+        else if (mousePosition.x >= bottomLeftDecoBackground.x && mousePosition.x <= topRightDecoBackground.x &&
+                   mousePosition.y >= bottomLeftDecoBackground.y && mousePosition.y <= topRightDecoBackground.y)
+        {
+            OnDecoBackgroundButton();
+            return;
+        }
         if (!isWaitingForConfirmation)
         {
             return;
@@ -148,6 +174,40 @@ public class PlayNovelSceneController : SceneController
         }
         SetWaitingForConfirmation(false);
         PlayNextEvent();
+    }
+
+    private void OnDecoDeskButton()
+    {
+        //TODO: Advance once there are more deco elements
+        if (audioSource != null)
+        {
+            audioSource.clip = Resources.Load<AudioClip>("waterGlas");
+            if (audioSource.clip != null)
+            {
+                audioSource.Play();
+            }else
+            {
+                Debug.LogError("AudioClip couldn't be found. Check the path.");
+            } 
+            audioSource.Play();
+        }
+    }
+
+    private void OnDecoBackgroundButton()
+    {
+        //TODO: Advance once there are more deco elements
+        if (audioSource != null)
+        {
+            audioSource.clip = Resources.Load<AudioClip>("plantSound");
+            if (audioSource.clip != null)
+            {
+                audioSource.Play();
+            }else
+            {
+                Debug.LogError("AudioClip couldn't be found. Check the path.");
+            } 
+            audioSource.Play();
+        }
     }
 
     private void SetVisualElements()
