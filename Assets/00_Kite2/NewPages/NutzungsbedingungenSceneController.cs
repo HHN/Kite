@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class NutzungsbedingungenSceneController : SceneController
 {
     [SerializeField] private RectTransform layout;
+    [SerializeField] private RectTransform layout02;
 
     void Start()
     {
         BackStackManager.Instance().Push(SceneNames.NUTZUNGSBEDINGUNGEN_SCENE);
-        LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(layout02);
     }
 }

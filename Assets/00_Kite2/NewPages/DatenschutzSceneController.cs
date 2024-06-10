@@ -14,6 +14,7 @@ public class DatenschutzSceneController : SceneController
     [SerializeField] private Button applicationModeInfoButton;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private RectTransform layout;
+    [SerializeField] private RectTransform layout02;
     [SerializeField] private TTSEngine engine;
 
     void Start()
@@ -21,6 +22,7 @@ public class DatenschutzSceneController : SceneController
         BackStackManager.Instance().Push(SceneNames.DATENSCHUTZ_SCENE);
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(layout02);
         audioSource = GetComponent<AudioSource>();
         TextToSpeechService.Instance().SetAudioSource(audioSource);
 
