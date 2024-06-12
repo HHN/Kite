@@ -56,6 +56,10 @@ public class SceneRouter
             case (SceneNames.BARRIEREFREIHEIT_SCENE):
                 {
                     return SceneNames.FOUNDERS_WELL_2_SCENE;
+                }            
+            case (SceneNames.PLAYER_PREFS_SCENE):
+                {
+                    return SceneNames.DATENSCHUTZ_SCENE;
                 }
 
             default: return SceneNames.MAIN_MENU_SCENE;
