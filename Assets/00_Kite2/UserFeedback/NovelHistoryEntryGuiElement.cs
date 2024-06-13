@@ -10,6 +10,8 @@ public class NovelHistoryEntryGuiElement : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogText;
     [SerializeField] private TextMeshProUGUI aiFeedbackText;
     [SerializeField] private DialogHistoryEntry dialogHistoryEntry;
+    [SerializeField] private BigTextPreViewController dialogPreview;
+    [SerializeField] private BigTextPreViewController aiFeedbackPreview;
 
     public void InitializeEntry(DialogHistoryEntry dialogHistoryEntry)
     {
@@ -17,6 +19,8 @@ public class NovelHistoryEntryGuiElement : MonoBehaviour
         headButtonText.text = VisualNovelNamesHelper.GetName(dialogHistoryEntry.GetNovelId()) + " (" + dialogHistoryEntry.GetDateAndTime() + ")";
         dialogText.text = dialogHistoryEntry.GetDialog();
         aiFeedbackText.text = dialogHistoryEntry.GetCompletion();
+        dialogPreview.OnValueEntered();
+        aiFeedbackPreview.OnValueEntered();
     }
 
     public void CloseAll()
