@@ -53,6 +53,11 @@ public class AnalyticsServiceHandler
         hasBeenInitialized = true;
     }
 
+    public bool IsAnalyticsInitialized()
+    {
+        return hasBeenInitialized;
+    }
+
     public void CollectData()
     {
         AnalyticsService.Instance.StartDataCollection();
@@ -65,6 +70,7 @@ public class AnalyticsServiceHandler
 
     public void DeleteCollectedData()
     {
+        hasBeenInitialized = false;
         AnalyticsService.Instance.RequestDataDeletion();
     }
 

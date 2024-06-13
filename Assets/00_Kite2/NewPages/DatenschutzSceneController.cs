@@ -16,6 +16,8 @@ public class DatenschutzSceneController : SceneController
     [SerializeField] private RectTransform layout;
     [SerializeField] private RectTransform layout02;
     [SerializeField] private TTSEngine engine;
+    [SerializeField] private DeleteUserDataConfirmation deleteUserDataConfirmDialogObject;
+    [SerializeField] private GameObject deleteUserDataConfirmDialog;
 
     void Start()
     {
@@ -86,9 +88,18 @@ public class DatenschutzSceneController : SceneController
 
     public void OnDeleteCollectedDataButton()
     {
-        TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.DELETED_DATA, engine);
-        AnalyticsServiceHandler.Instance().DeleteCollectedData();
-        DisplayInfoMessage(InfoMessages.DELETED_DATA);
+        if (!DestroyValidator.IsNullOrDestroyed(deleteUserDataConfirmDialogObject))
+        {
+            deleteUserDataConfirmDialogObject.CloseMessageBox();
+        }
+        if (DestroyValidator.IsNullOrDestroyed(canvas))
+        {
+            return;
+        }
+        deleteUserDataConfirmDialogObject = null;
+        deleteUserDataConfirmDialogObject = Instantiate(deleteUserDataConfirmDialog, 
+            canvas.transform).GetComponent<DeleteUserDataConfirmation>();
+        deleteUserDataConfirmDialogObject.Activate();
     }
 
     public void OnDeleteCollectedDataInfoButton()
