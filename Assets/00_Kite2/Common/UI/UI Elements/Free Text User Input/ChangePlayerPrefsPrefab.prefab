@@ -80,9 +80,10 @@ GameObject:
   - component: {fileID: 3171214583603264104}
   - component: {fileID: 3171214583603264106}
   - component: {fileID: 3171214583603264107}
-  - component: {fileID: 5386496732183025926}
+  - component: {fileID: 6479606925285442238}
+  - component: {fileID: 2238308996125314884}
   m_Layer: 5
-  m_Name: FreeTextInputPrefab
+  m_Name: ChangePlayerPrefsPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,7 +148,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5386496732183025926
+--- !u!114 &6479606925285442238
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,17 +157,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 3171214583603264105}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d74d2c569aa0f534ca997ce0ca25afec, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c35059312bd43a4d9ece989ff5f2f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wrapper: {fileID: 3171214583603264105}
-  question: {fileID: 3171214584588528274}
-  questionString: 
-  variablesName: 
-  inputfield: {fileID: 7637853789095849880}
-  skipButton: {fileID: 5744927536523432267}
-  submitButton: {fileID: 5744927538270794346}
+  root: {fileID: 3171214583603264105}
   controller: {fileID: 0}
+  headlineObject: {fileID: 3171214583759870850}
+  questionObject: {fileID: 3171214584588528274}
+  cancleButton: {fileID: 5744927538270794346}
+  confirmButton: {fileID: 5744927536523432267}
+  inputfield: {fileID: 7637853789095849880}
+  playerPrefsKey: 
+--- !u!114 &2238308996125314884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3171214583603264105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 1
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &3171214583759870849
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,8 +510,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Warum ... ?
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1001,9 +1022,9 @@ GameObject:
   - component: {fileID: 5744927536523432264}
   - component: {fileID: 5744927536523432267}
   - component: {fileID: 3171214582968550349}
-  - component: {fileID: 4210449663117681296}
+  - component: {fileID: 1581979516665840006}
   m_Layer: 5
-  m_Name: Skip Button
+  m_Name: Save Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1132,7 +1153,7 @@ MonoBehaviour:
   m_FlexibleWidth: 0
   m_FlexibleHeight: 0
   m_LayoutPriority: 1
---- !u!114 &4210449663117681296
+--- !u!114 &1581979516665840006
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1212,7 +1233,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "BEST\xC4TIGEN"
+  m_text: ABBRECHEN
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
   m_sharedMaterial: {fileID: 3127457962735927120, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
@@ -1347,7 +1368,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xDCBERSPRINGEN"
+  m_text: SPEICHERN
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
   m_sharedMaterial: {fileID: 3127457962735927120, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
@@ -1429,9 +1450,9 @@ GameObject:
   - component: {fileID: 5744927538270794345}
   - component: {fileID: 5744927538270794346}
   - component: {fileID: 3171214584711913708}
-  - component: {fileID: 4912830229884236347}
+  - component: {fileID: 4837861078871166185}
   m_Layer: 5
-  m_Name: Submit Button
+  m_Name: Cancle Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1560,7 +1581,7 @@ MonoBehaviour:
   m_FlexibleWidth: 0
   m_FlexibleHeight: 0
   m_LayoutPriority: 1
---- !u!114 &4912830229884236347
+--- !u!114 &4837861078871166185
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

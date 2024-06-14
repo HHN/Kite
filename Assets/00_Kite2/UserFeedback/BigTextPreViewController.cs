@@ -7,10 +7,12 @@ public class BigTextPreViewController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textObject;
     [SerializeField] private Button showMoreButton;
     [SerializeField] private string textString;
+    [SerializeField] private string previewText;
     [SerializeField] private bool previewDisplayed;
     [SerializeField] private RectTransform parentContainer;
     [SerializeField] private RectTransform parentParentContainer;
     [SerializeField] private RectTransform rootContainer;
+    [SerializeField] private bool initialized;
 
     void Start()
     {
@@ -25,22 +27,31 @@ public class BigTextPreViewController : MonoBehaviour
 
         if (textString.Length > 100)
         {
-            string truncatedString = textString.Substring(0, 100 - 17) + "... MEHR ANZEIGEN";
-            textObject.text = truncatedString;
-            showMoreButton.gameObject.SetActive(true);
+            previewText = textString.Substring(0, 100 - 17) + "... MEHR ANZEIGEN";
+            textObject.text = previewText;
             previewDisplayed = true;
+            initialized = true;
         }
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(parentContainer);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(parentParentContainer);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(rootContainer);
     }
 
     public void OnShowMoreButton()
     {
-        if (!previewDisplayed)
+        if (!initialized) { return; }
+
+        if (previewDisplayed)
         {
-            return;
+            textObject.text = textString;
+            previewDisplayed = false;
         }
-        showMoreButton.gameObject.SetActive(false);
-        textObject.text = textString;
-        previewDisplayed = false;
+        else
+        {
+            textObject.text = previewText;
+            previewDisplayed = true;
+        }
         LayoutRebuilder.ForceRebuildLayoutImmediate(parentContainer);
         LayoutRebuilder.ForceRebuildLayoutImmediate(parentParentContainer);
         LayoutRebuilder.ForceRebuildLayoutImmediate(rootContainer);

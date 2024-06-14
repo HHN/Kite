@@ -977,7 +977,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &384575862961663534
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1464,6 +1464,7 @@ MonoBehaviour:
   textObject: {fileID: 3933691998328244760}
   showMoreButton: {fileID: 15911394328030844}
   textString: 
+  previewText: 
   previewDisplayed: 0
   parentContainer: {fileID: 3353679504993872749}
   parentParentContainer: {fileID: 818020709910671086}
@@ -1585,6 +1586,7 @@ MonoBehaviour:
   textObject: {fileID: 2323008810687774695}
   showMoreButton: {fileID: 2798101312827337787}
   textString: 
+  previewText: 
   previewDisplayed: 0
   parentContainer: {fileID: 6116091875831766688}
   parentParentContainer: {fileID: 818020709910671086}
@@ -1745,7 +1747,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5499030077309581621
 RectTransform:
   m_ObjectHideFlags: 0
