@@ -1,0 +1,33 @@
+{
+  "idNumberOfNovel": 9,
+  "titleOfNovel": "Gespräch mit einem Bekannten",
+  "descriptionOfNovel": "Du triffst dich mit einem*einer Bekannten, den*die du seit ein paar Jahren nicht mehr gesehen hast, in einem kleinen Café. Er*Sie hat dir soeben erzählt, wo er*sie zurzeit beruflich steht. Nun bist du an der Reihe.",
+  "idNumberOfRepresentationImage": 8,
+  "nameOfMainCharacter": "Lea",
+  "contextForPrompt": "Es ist das Gespräch einer Gründerin, Lea, mit einem Bekannten. Es ist ein zwangloses Gespräch, bei dem die beiden über ihre aktuellen beruflichen Situationen sprechen. Die Gründerin erzählt von ihrer Selbstständigkeit.",
+  "folderName": "Banktermin_wegen_Kreditbeantragung",
+  "isKite2Novel": true,
+  "startLocation": "Office",
+  "startTalkingPartnerEmotion": "Relaxed",
+  "isWithStartValues": true,
+  "talkingPartner01" : "Mayer",
+  "talkingPartner02" : "",
+  "talkingPartner03" : "",
+  "wordsToReplace": [
+	{"wordToReplace": ">>BekannterSpricht:<<", "replaceByValue": ">>Charakter01Spricht:<<"},
+	{"wordToReplace": ">>BekannterSprichtRelaxed:<<", "replaceByValue": ">>Charakter01SprichtRelaxed:<<"},
+	{"wordToReplace": ">>BekannterSprichtAstonished:<<", "replaceByValue": ">>Charakter01SprichtAstonished:<<"},
+	{"wordToReplace": ">>BekannterSprichtRefusing:<<", "replaceByValue": ">>Charakter01SprichtRefusing:<<"},
+	{"wordToReplace": ">>BekannterSprichtSmiling:<<", "replaceByValue": ">>Charakter01SprichtSmiling:<<"},
+	{"wordToReplace": ">>BekannterSprichtFriendly:<<", "replaceByValue": ">>Charakter01SprichtFriendly:<<"},
+	{"wordToReplace": ">>BekannterSprichtLaughing:<<", "replaceByValue": ">>Charakter01SprichtLaughing:<<"},
+	{"wordToReplace": ">>BekannterSprichtCritical:<<", "replaceByValue": ">>Charakter01SprichtCritical:<<"},
+	{"wordToReplace": ">>BekannterSprichtDecisionNo:<<", "replaceByValue": ">>Charakter01SprichtDecisionNo:<<"},
+	{"wordToReplace": ">>BekannterSprichtHappy:<<", "replaceByValue": ">>Charakter01SprichtHappy:<<"},
+	{"wordToReplace": ">>BekannterSprichtProud:<<", "replaceByValue": ">>Charakter01SprichtProud:<<"},
+	{"wordToReplace": ">>BekannterSprichtScared:<<", "replaceByValue": ">>Charakter01SprichtScared:<<"},
+	{"wordToReplace": ">>BekannterSprichtQuestioning:<<", "replaceByValue": ">>Charakter01SprichtQuestioning:<<"},
+	{"wordToReplace": ">>BekannterSprichtDefeated:<<", "replaceByValue": ">>Charakter01SprichtDefeated:<<"},
+	{"wordToReplace": ">>GründerinSpricht<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"}
+	]
+}

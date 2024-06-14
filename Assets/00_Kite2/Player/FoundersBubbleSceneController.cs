@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking.Types;
 using UnityEngine.UI;
 
 public class FoundersBubbleSceneController : SceneController
