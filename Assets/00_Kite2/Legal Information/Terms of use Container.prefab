@@ -671,8 +671,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "6.1\tDie \u201EDienste-Inhalte\u201C sind unser Eigentum bzw. das Eigentum
-    des jeweiligen Lizenzgebers und unterliegen dem Schutz des Urheberrechts, Markenrechts
-    und/oder anderer Bestimmungen zum Schutz geistigen Eigentums (\u201EDienste-Inhalte\u201C
+    der*des jeweiligen Lizenzgebebenden und unterliegen dem Schutz des Urheberrechts,
+    Markenrechts und/oder anderer Bestimmungen zum Schutz geistigen Eigentums (\u201EDienste-Inhalte\u201C
     im Sinne dieser Bedingungen beinhaltet alle Komponenten der Dienste, d. h. Daten
     und Materialien, einschlie\xDFlich Bilder, Grafiken, Abbildungen, Designs, Symbolen,
     Fotos, Texten und anderen Beschreibungen, unter Ausschluss von Nutzenden-Inhalten,
@@ -1130,8 +1130,8 @@ MonoBehaviour:
     beim ersten \xD6ffnen der App akzeptieren. Mit der Annahme der Nutzungsbedingungen
     f\xFCr die App (im Allgemeinen durch Anklicken der entsprechenden Schaltfl\xE4che)
     senden die Nutzenden ein Angebot zum Abschluss eines Nutzungsvertrags f\xFCr
-    die App (der \u201EVertrag\u201C). Kite II nimmt das Angebot der Nutzenden an,
-    indem die entsprechenden App-Dienste f\xFCr die Nutzenden erbracht werden. Kite
+    die App (der \u201EVertrag\u201C). KITE II nimmt das Angebot der Nutzenden an,
+    indem die entsprechenden App-Dienste f\xFCr die Nutzenden erbracht werden. KITE
     II ist jedoch nicht verpflichtet, einen entsprechenden Vertrag mit den Nutzenden
     abzuschlie\xDFen."
   m_isRightToLeft: 0
@@ -1433,7 +1433,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Die Nutzende verpflichtet sich, Kite II f\xFCr alle Verluste, Auslagen,
+  m_text: "Die Nutzende verpflichtet sich, KITE II f\xFCr alle Verluste, Auslagen,
     Haftungen, Sch\xE4den und Anspr\xFCche (einschlie\xDFlich angemessener Rechtsanwaltskosten),
     die aus einer schuldhaften Verletzung der Nutzenden-Pflichten gem\xE4\xDF den
     vorliegenden Bedingungen durch den Nutzenden resultieren, zu entsch\xE4digen,
@@ -2037,23 +2037,23 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "15.2\tUnter bestimmten Umst\xE4nden muss Kite II die vorliegenden Nutzungsbedingungen
+  m_text: "15.2\tUnter bestimmten Umst\xE4nden muss KITE II die vorliegenden Nutzungsbedingungen
     gegebenenfalls \xE4ndern und/oder erg\xE4nzen (z. B. im Fall von \xC4nderungen
-    an den f\xFCr die App geltenden Rechtsvorschriften). In diesem Fall wird Kite
+    an den f\xFCr die App geltenden Rechtsvorschriften). In diesem Fall wird KITE
     II den Nutzenden in geeigneter Form \xFCber die entsprechenden \xC4nderungen
     der Bedingungen informieren. Bei Nutzung der App erfolgt dies in der Regel, sobald
     die App von Nutzenden (erneut) ge\xF6ffnet wird. Die Nutzenden werden dann gebeten,
-    den ge\xE4nderten Bedingungen zuzustimmen. Falls der Nutzenden nicht zustimmt
+    den ge\xE4nderten Bedingungen zuzustimmen. Falls die Nutzenden nicht zustimmt
     oder die Best\xE4tigung der ge\xE4nderten Bedingungen verweigert, (i) haben die
     Nutzenden das Recht auf fristlose K\xFCndigung aus wichtigem Grund gem\xE4\xDF
-    vorstehendem Paragraph 13, und (ii) Kite II hat das Recht auf (a) fristlose K\xFCndigung
-    aus wichtigem Grund gem\xE4\xDF vorstehendem Paragraph 13, vorausgesetzt dass
-    die entsprechende K\xFCndigung f\xFCr Kite II erforderlich erscheint und die
+    vorstehendem Paragraph 13, und (ii) KITE II hat das Recht auf (a) fristlose K\xFCndigung
+    aus wichtigem Grund gem\xE4\xDF vorstehendem Paragraph 13, vorausgesetzt, dass
+    die entsprechende K\xFCndigung f\xFCr KITE II erforderlich erscheint und die
     Nutzenden hierdurch nicht wider Treu und Glauben benachteiligt werden, und (b)
     das Recht, die Nutzung der App gem\xE4\xDF vorstehendem Paragraph 12 f\xFCr die
-    Nutzenden zu sperren, vorausgesetzt dass Kite II die entsprechende Sperre erforderlich
+    Nutzenden zu sperren, vorausgesetzt dass KITE II die entsprechende Sperre erforderlich
     erscheint und die Nutzenden hierdurch nicht wider Treu und Glauben benachteiligt
-    werden Kite II wird den Nutzenden \xFCber die vorgenannten m\xF6glichen Konsequenzen
+    werden KITE II wird den Nutzenden \xFCber die vorgenannten m\xF6glichen Konsequenzen
     einer Ablehnung der ge\xE4nderten Nutzungsbedingungen durch die Nutzenden informieren,
     wenn die Nutzenden die entsprechenden ge\xE4nderten Bedingungen bekannt gegeben
     werden."
@@ -2452,7 +2452,7 @@ GameObject:
   - component: {fileID: 7894395330497996378}
   - component: {fileID: 7894395330497996379}
   m_Layer: 5
-  m_Name: Terms of use Contain
+  m_Name: Terms of use Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6037,9 +6037,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "8.1\tKite II haftet gegen\xFCber den Nutzenden gem\xE4\xDF den Bestimmungen
+  m_text: "8.1\tKITE II haftet gegen\xFCber den Nutzenden gem\xE4\xDF den Bestimmungen
     der geltenden Produkthaftungsgesetze, im Fall von Vorsatz und grober Fahrl\xE4ssigkeit
-    f\xFCr die Verletzung von Leben, K\xF6rper oder Gesundheit, falls Kite II eine
+    f\xFCr die Verletzung von Leben, K\xF6rper oder Gesundheit, falls KITE II eine
     etwaige Garantie \xFCbernimmt, sowie in allen anderen F\xE4llen zwingender gesetzlicher
     Haftung, in jedem Fall entsprechend den gesetzlichen Bestimmungen."
   m_isRightToLeft: 0
@@ -6643,7 +6643,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "8.2\tBei einer Verletzung wesentlicher Vertragspflichten (den so genannten
-    \u201EKardinalpflichten\u201C) ist Kite II den Nutzenden gegen\xFCber f\xFCr
+    \u201EKardinalpflichten\u201C) ist KITE II den Nutzenden gegen\xFCber f\xFCr
     die entstehenden Sch\xE4den ersatzpflichtig. Kardinalpflichten sind Pflichten,
     deren Verletzung das Erreichen des Vertragszwecks gef\xE4hrdet, sowie alle Pflichten,
     deren Erf\xFCllung die ordnungsgem\xE4\xDF Durchf\xFChrung des Vertrags \xFCberhaupt
@@ -6802,7 +6802,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Der Vertrag wird nur f\xFCr die Dauer der Externen Nutzenden-Tests geschlossen.
-    Diese Enden aller sp\xE4testens am 31.12.2025, m\xF6glicherweise aber auch vorher.
+    Diese enden aller sp\xE4testens am 31.12.2025, m\xF6glicherweise aber auch vorher.
     Der Vertrag kann von jeder Partei jederzeit gek\xFCndigt werden. Der Vertrag
     wird automatisch aufgel\xF6st, wenn die Nutzenden die App von ihrem mobilen Endger\xE4t
     l\xF6schen."
@@ -6955,7 +6955,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Kite II kann die Nutzung der Dienste durch die Nutzenden (vor\xFCbergehend)
+  m_text: "KITE II kann die Nutzung der Dienste durch die Nutzenden (vor\xFCbergehend)
     verbieten, insbesondere"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
@@ -8307,10 +8307,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "8.3\tIn allen anderen F\xE4llen sind Schadenersatzanspr\xFCche gegen Kite
+  m_text: "8.3\tIn allen anderen F\xE4llen sind Schadenersatzanspr\xFCche gegen KITE
     II \u2013 unabh\xE4ngig von ihrer gesetzlichen Grundlage, insbesondere aufgrund
     der Verletzung einer vorvertraglichen Pflicht oder von Verpflichtungen aus der
-    Vertragsbeziehung zwischen den Nutzenden und Kite II durch Kite II, seine gesetzlichen
+    Vertragsbeziehung zwischen den Nutzenden und KITE II durch KITE II, seine gesetzlichen
     Vertretenden, Mitarbeitenden oder Erf\xFCllungsgehelfenden oder aufgrund von
     unerlaubten Handlungen \u2013 ausgeschlossen."
   m_isRightToLeft: 0
@@ -8466,7 +8466,7 @@ MonoBehaviour:
     in der App als Freitextantwort einzugeben:\r\n\u2022\tillegale oder rechtswidrige
     Inhalte\r\n\u2022\tInhalte, die diffamierend, beleidigend, verleumderisch, moralisch
     anst\xF6\xDFig, obsz\xF6n oder pornografisch sind, die eine Diskriminierung beinhalten;
-    \r\n\u2022\tInhalte, die eine Straftat darstellen oder/oder (i) Gewalt und/oder
+    \r\n\u2022\tInhalte, die eine Straftat darstellen und/oder (i) Gewalt und/oder
     (ii) Terrorismus und/oder (iii) Rassismus verherrlichen oder dazu aufrufen\r\n\u2022\tInhalte,
     die Hassreden beinhalten\r\n\u2022\tInhalte, die personenbezogene Daten enthalten
     oder Personen auf sonstige Weise identifizierbar machen.\r\n\u2022\tInhalte,
@@ -9379,12 +9379,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "2.2\tEs k\xF6nnen nur Nutzende die App nutzen, die \xFCber 18 Jahre alt
-    sind, sich in Deutschland aufhalten, und als Test-Personen auftreten. Falls Sie
+    sind, sich in Deutschland aufhalten, und als Testpersonen auftreten. Falls Sie
     unter 18 Jahre alt sind, sind Sie nicht berechtigt, die App zu nutzen. Falls
     Sie sich nicht in Deutschland aufhalten, sind Sie nicht berechtigt, die App zu
-    nutzen. Falls Sie nicht als Test-Person im Rahmen der Externen Nutzendentests
+    nutzen. Falls Sie nicht als Testperson im Rahmen der Externen Nutzendentests
     auftreten, sind Sie nicht berechtigt, die App zu nutzen. Daneben ist die Nutzung
-    der Dienste nur zul\xE4ssig f\xFCr nicht kommerzielle Zwecke.\r"
+    der Dienste nur zul\xE4ssig f\xFCr nicht-kommerzielle Zwecke.\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
@@ -10292,10 +10292,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "1.1\tDie vorliegenden Nutzungsbedingungen / Allgemeinen Gesch\xE4ftsbedingungen
-    (die \u201EBedingungen\u201C) gelten f\xFCr die Nutzung der Kite II Mobile App
+    (die \u201EBedingungen\u201C) gelten f\xFCr die Nutzung der KITE II Mobile App
     (die \u201EApp\u201C, die \u201EDienste\u201C) durch Sie (die \u201ENutzenden\u201C,
     \u201ESie\u201C, \u201EIhr\u201C). Die Dienste werden von der Hochschule Heilbronn,
-    Max-Planck-Str. 39, 74081 Heilbronn, Deutschland (\u201EKite II\u201C, \u201Ewir\u201C,
+    Max-Planck-Str. 39, 74081 Heilbronn, Deutschland (\u201EKITE II\u201C, \u201Ewir\u201C,
     \u201Euns\u201C) erbracht."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
@@ -10752,7 +10752,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Daneben bleibt das Recht beider Parteien zur K\xFCndigung des Vertrags
-    aus wichtigem Grund unber\xFChrt. Kite II ist berechtigt, den Vertrag aus wichtigem
+    aus wichtigem Grund unber\xFChrt. KITE II ist berechtigt, den Vertrag aus wichtigem
     Grund fristlos zu k\xFCndigen, und zwar insbesondere: "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
@@ -13765,7 +13765,7 @@ MonoBehaviour:
     h\xE4lt (insbesondere an die Bestimmungen im vorgenanntem Paragraph 4 und 6);\r\n\u2022\tfalls
     die App auf einem Smartphone genutzt wird, auf dem Nutzungseinschr\xE4nkungen
     oder Sicherheitsfunktionen der Herstellenden au\xDFer Kraft gesetzt oder ansonsten
-    gesperrte Funktionen aktiviert wurden; und /oder\r\n\u2022\tfalls Kite II berechtigt
+    gesperrte Funktionen aktiviert wurden; und/oder\r\n\u2022\tfalls KITE II berechtigt
     ist, den Vertrag gem\xE4\xDF vorstehendem Paragraph 13 zu k\xFCndigen.\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
@@ -14973,8 +14973,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "1.4\tDie App wird nur zu Test-Zwecken im Rahmen von \u201EExternen Nutzendentests\u201C
-    ver\xF6ffentlicht und ist nur von Test-Personen zu nutzen. Die Entwicklung, und
+  m_text: "1.4\tDie App wird nur zu Testzwecken im Rahmen von \u201EExternen Nutzendentests\u201C
+    ver\xF6ffentlicht und ist nur von Testpersonen zu nutzen. Die Entwicklung, und
     damit die Nutzendentests, werden sp\xE4testens am 31.12.2025 eingestellt. Die
     App ist ab dem Zeitpunkt der Einstellung der Nutzendentests nicht mehr zu benutzen."
   m_isRightToLeft: 0
@@ -15127,7 +15127,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "1.3\t Der Zweck der App ist es die M\xF6glichkeit zu bieten, Resilienz
-    gegen Diskriminierung aufzubauen, in dem Sie im Rahmen von Visual Novels diskriminierende
+    gegen Diskriminierung aufzubauen, indem Sie im Rahmen von Visual Novels diskriminierende
     Situationen simulieren und sich spielerisch damit auseinandersetzen. Au\xDFerdem
     k\xF6nnen Sie Feedback und Informationen \xFCber diese diskriminierenden Situationen
     erhalten. Weiterf\xFChrende Informationen \xFCber die App finden Sie auf der
@@ -15582,10 +15582,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "8.4\tIn dem Umfang, in dem die Haftung von Kite II gem\xE4\xDF Paragraph
+  m_text: "8.4\tIn dem Umfang, in dem die Haftung von KITE II gem\xE4\xDF Paragraph
     8 beschr\xE4nkt oder ausgeschlossen ist, gilt dies auch f\xFCr die pers\xF6nliche
     Haftung der gesetzlichen Vertretenden, Mitarbeitenden und Erf\xFCllungsgehelfenden
-    von Kite II."
+    von KITE II."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
@@ -16493,8 +16493,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "15.3\tKite II ist nicht bereit und nicht verpflichtet, an einem Streitbeilegungsverfahren
-    in einer Verbraucherschlichtungsstelle teilzunehmen."
+  m_text: "15.3\tKITE II ist nicht bereit und nicht verpflichtet, an einem Streitbeilegungsverfahren
+    in einer Verbrauchendenschlichtungsstelle teilzunehmen."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
@@ -16645,7 +16645,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "3.1\tNach Abschluss des Vertrags (siehe Paragraph 2.1) gew\xE4hrt Ihnen
-    Kite II \u2013 vorbehaltlich der Beschr\xE4nkungen in den Nutzungsbedingungen
+    KITE II \u2013 vorbehaltlich der Beschr\xE4nkungen in den Nutzungsbedingungen
     (siehe insbesondere Paragraph 4 und 6) \u2013 ein eingeschr\xE4nktes, nicht exklusives,
     nicht \xFCbertragbares, nicht lizenzierbares Recht auf Nutzung der App f\xFCr
     den vorgesehenen Zweck der Externen Nutzendentests und f\xFCr die Dauer des Vertrages.
@@ -16800,28 +16800,28 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "4.3\tMit der Nutzung der Dienste verpflichtet sich die Nutzenden:\r\n\u2022\tin
+  m_text: "4.3\tMit der Nutzung der Dienste verpflichten sich die Nutzenden:\r\n\u2022\tin
     den Diensten keine sch\xE4dlichen Programme zu implementieren oder die Dienste
     und/oder die Nutzenden der App auf andere Weise mit (i) Daten anzugreifen, die
     Viren, W\xFCrmer, Trojaner oder andere Malware und/oder (ii) keine Aktionen durchzuf\xFChren,
     die die Funktionsf\xE4higkeit und/oder die Sicherheit der technischen Infrastruktur
-    von Kite II f\xFCr die Dienste gef\xE4hrden k\xF6nnten (insbesondere Aktionen,
+    von KITE II f\xFCr die Dienste gef\xE4hrden k\xF6nnten (insbesondere Aktionen,
     die die genannte Infrastruktur \xFCberlasten) und/oder das Erscheinungsbild der
     Dienste beeintr\xE4chtigen k\xF6nnten\r\n\u2022\tohne die ausdr\xFCckliche schriftliche
-    Genehmigung von Kite II keine Drittparteien-Webseiten (z.B. (Social Media) Fanseiten),
+    Genehmigung von KITE II keine Drittparteien-Webseiten (z.B. (Social Media) Fanseiten),
     Apps und Plattformen zu erstellen, bauen und/oder betreiben, die vollst\xE4ndig
     oder zum Gro\xDFteil aus Kompilationen der Inhalte bestehen, die in der App ver\xF6ffentlicht
     wurden. Falls Sie Interesse haben, eine Drittparteien-Plattform zu betreiben
-    (beispielsweise eine Kite II-Fanseite oder eine \xE4hnliche Plattform), wenden
+    (beispielsweise eine KITE II-Fanseite oder eine \xE4hnliche Plattform), wenden
     Sie sich zwecks der Genehmigung an uns, bevor Sie eine derartige Drittparteien-Plattform
     freischalten, da das Erstellen, Bauen und/oder der Betrieb einer solchen Drittparteien-Plattform
     zur Folge haben kann, dass gegen Sie (insbesondere) eine Unterlassungserkl\xE4rung
-    und/oder Schadenersatzanspr\xFCche von Kite II aufgrund des Versto\xDFes z. B.
-    gegen geltendes (i) Urheberrecht und/oder (ii) das Gesetz gegen unlauteren Wettbewerb
-    gestellt werden k\xF6nnen)\r\n\u2022\tDrittparteien nicht ohne ausdr\xFCckliche
-    schriftliche Genehmigung von Kite II beim Erstellen, Aufbau und/oder Betreiben
+    und/oder Schadenersatzanspr\xFCche von KITE II aufgrund des Versto\xDFes z. B.
+    gegen geltendes (i) Urhebungsrecht und/oder (ii) das Gesetz gegen unlauteren
+    Wettbewerb gestellt werden k\xF6nnen)\r\n\u2022\tDrittparteien nicht ohne ausdr\xFCckliche
+    schriftliche Genehmigung von KITE II beim Erstellen, Aufbau und/oder Betreiben
     von Drittparteien-Plattformen zu unterst\xFCtzen (wie unter anderem die Bereitstellung
-    von Inhalten an die Betreiber jeweiliger Plattformen von Drittanbietern)\r\n\u2022\tden
+    von Inhalten an die Betreibenden jeweiliger Plattformen von Drittanbietern)\r\n\u2022\tden
     Quellcode der App nicht zu modifizieren, zu ver\xE4ndern, zu \xFCbersetzen, zu
     rekonstruieren, zu dekompilieren, zu disassemblieren oder auf andere Weise zu
     entschl\xFCsseln oder abgeleitete Werke auf Basis der App zu erstellen (au\xDFer
