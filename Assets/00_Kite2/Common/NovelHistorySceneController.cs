@@ -14,6 +14,11 @@ public class NovelHistorySceneController : SceneController
 
         List<DialogHistoryEntry> entries = DialogHistoryManager.Instance().GetEntries();
 
+        if (entries == null)
+        {
+            return;
+        }
+
         if (entries.Count == 0 )
         {
             return;

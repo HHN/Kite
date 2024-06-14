@@ -19,7 +19,7 @@ public class DeleteUserDataConfirmation : MonoBehaviour
     public void OnConfirmButton()
     {
         TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.DELETED_DATA, engine);
-        PlayerPrefs.DeleteAll();
+        PlayerDataManager.Instance().ClearRelevantUserdata();
         if(AnalyticsServiceHandler.Instance().IsAnalyticsInitialized())
         {
            AnalyticsServiceHandler.Instance().DeleteCollectedData(); 

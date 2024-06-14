@@ -52,6 +52,11 @@ public class DialogHistoryManager
         PlayerPrefs.SetString(KEY, json);
         PlayerPrefs.Save();
     }
+
+    public void ClearList()
+    {
+        entries = new DialogHistoryEntryList();
+    }
 }
 
 [System.Serializable]
