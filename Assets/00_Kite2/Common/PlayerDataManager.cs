@@ -168,4 +168,55 @@ public class PlayerDataManager
         // Den zusammengefügten String zurückgeben
         return combined.ToString();
     }
+
+    public void ClearEverything()
+    {
+        playerPrefs = new Dictionary<string, string>();
+        keys = new List<string>();
+        novelHistory = new List<string>();
+    }
+
+    public void ClearRelevantUserdata()
+    {
+        if (PlayerPrefs.HasKey("PlayerName"))
+        {
+            PlayerPrefs.DeleteKey("PlayerName");
+        }
+        if (PlayerPrefs.HasKey("CompanyName"))
+        {
+            PlayerPrefs.DeleteKey("CompanyName");
+        }
+        if (PlayerPrefs.HasKey("ElevatorPitch"))
+        {
+            PlayerPrefs.DeleteKey("ElevatorPitch");
+        }
+        if (PlayerPrefs.HasKey("Preverences"))
+        {
+            PlayerPrefs.DeleteKey("Preverences");
+        }
+        if (PlayerPrefs.HasKey("GPTAnswerForPreverences"))
+        {
+            PlayerPrefs.DeleteKey("GPTAnswerForPreverences");
+        }
+        if (playerPrefs.ContainsKey("PlayerName"))
+        {
+            playerPrefs.Remove("PlayerName");
+        }
+        if (playerPrefs.ContainsKey("CompanyName"))
+        {
+            playerPrefs.Remove("CompanyName");
+        }
+        if (playerPrefs.ContainsKey("ElevatorPitch"))
+        {
+            playerPrefs.Remove("ElevatorPitch");
+        }
+        if (playerPrefs.ContainsKey("Preverences"))
+        {
+            playerPrefs.Remove("Preverences");
+        }
+        if (playerPrefs.ContainsKey("GPTAnswerForPreverences"))
+        {
+            playerPrefs.Remove("GPTAnswerForPreverences");
+        }
+    }
 }
