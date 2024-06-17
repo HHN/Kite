@@ -24,9 +24,9 @@ public class FeedbackRoleManager
 
     public FeedbackRoleWrapper LoadFeedbackRole()
     {
-        if (PlayerPrefs.HasKey(KEY))
+        if (PlayerDataManager.Instance().HasKey(KEY))
         {
-            string json = PlayerPrefs.GetString(KEY);
+            string json = PlayerDataManager.Instance().GetPlayerData(KEY);
             return JsonUtility.FromJson<FeedbackRoleWrapper>(json);
         }
         else
@@ -52,8 +52,7 @@ public class FeedbackRoleManager
     public void Save()
     {
         string json = JsonUtility.ToJson(feedbackRole);
-        PlayerPrefs.SetString(KEY, json);
-        PlayerPrefs.Save();
+        PlayerDataManager.Instance().SavePlayerData(KEY, json);
     }
 
     public int GetFeedbackRole()

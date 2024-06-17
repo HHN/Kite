@@ -31,13 +31,12 @@ public class ExpertFeedbackQuestionManager
 
     private void SaveUUID(string uuid)
     {
-        PlayerPrefs.SetString("UUID", uuid);
-        PlayerPrefs.Save();
+        PlayerDataManager.Instance().SavePlayerData("UUID", uuid);
     }
 
     private void LoadUUID()
     {
-        string storedUUIDs = PlayerPrefs.GetString("UUID", "");
+        string storedUUIDs = PlayerDataManager.Instance().GetPlayerData("UUID");
 
         if (!string.IsNullOrEmpty(storedUUIDs))
         {

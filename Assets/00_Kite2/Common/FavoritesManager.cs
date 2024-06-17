@@ -74,8 +74,7 @@ public class FavoritesManager
     public void Save()
     {
         string json = JsonUtility.ToJson(favorites);
-        PlayerPrefs.SetString(key, json);
-        PlayerPrefs.Save();
+        PlayerDataManager.Instance().SavePlayerData(key, json);
     }
 
     public List<long> GetFavoritesIds()

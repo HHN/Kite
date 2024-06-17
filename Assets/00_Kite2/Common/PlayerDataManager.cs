@@ -23,6 +23,18 @@ public class PlayerDataManager
         return instance;
     }
 
+    public bool HasKey(string key)
+    {
+        if(playerPrefs.ContainsKey(key))
+        {
+            return true;
+        } else if (PlayerPrefs.HasKey(key))
+        {
+            return true;
+        }
+        return false;
+    }
+
     public void SetNovelHistory(List<string> novelHistory)
     {
         this.novelHistory = novelHistory;

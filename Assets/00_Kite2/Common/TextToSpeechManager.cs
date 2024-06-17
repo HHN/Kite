@@ -24,9 +24,9 @@ public class TextToSpeechManager {
 
     public TextToSpeechWrapper LoadTextToSpeechWrapper()
     {
-        if (PlayerPrefs.HasKey(key))
+        if (PlayerDataManager.Instance().HasKey(key))
         {
-            string json = PlayerPrefs.GetString(key);
+            string json = PlayerDataManager.Instance().GetPlayerData(key);
             return JsonUtility.FromJson<TextToSpeechWrapper>(json);
         }
         else
@@ -61,8 +61,7 @@ public class TextToSpeechManager {
     public void Save()
     {
         string json = JsonUtility.ToJson(wrapper);
-        PlayerPrefs.SetString(key, json);
-        PlayerPrefs.Save();
+        PlayerDataManager.Instance().SavePlayerData(key, json);
     }
 
     public bool IsTextToSpeechActivated()
