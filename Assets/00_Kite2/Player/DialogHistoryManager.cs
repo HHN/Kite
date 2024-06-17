@@ -37,6 +37,8 @@ public class DialogHistoryManager
 
     public void AddEntry(DialogHistoryEntry entry) 
     { 
+        string dialog = entry.GetDialog().Replace("Lea", "Du");
+        entry.SetDialog(dialog);
         entries.entries.Add(entry); 
         Save();
     }
