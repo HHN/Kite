@@ -34,9 +34,9 @@ public class ShowPlayInstructionManager
 
     public bool LoadValue()
     {
-        if (PlayerPrefs.HasKey(KEY))
+        if (PlayerDataManager.Instance().HasKey(KEY))
         {
-            string value = PlayerPrefs.GetString(KEY);
+            string value = PlayerDataManager.Instance().GetPlayerData(KEY);
             return bool.Parse(value);
         }
         else
@@ -47,7 +47,6 @@ public class ShowPlayInstructionManager
 
     public void Save()
     {
-        PlayerPrefs.SetString(KEY, showInstruction.ToString());
-        PlayerPrefs.Save();
+        PlayerDataManager.Instance().SavePlayerData(KEY, showInstruction.ToString());
     }
 }

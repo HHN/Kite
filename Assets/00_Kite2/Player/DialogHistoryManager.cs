@@ -24,9 +24,9 @@ public class DialogHistoryManager
 
     public DialogHistoryEntryList LoadEntries()
     {
-        if (PlayerPrefs.HasKey(KEY))
+        if (PlayerDataManager.Instance().HasKey(KEY))
         {
-            string json = PlayerPrefs.GetString(KEY);
+            string json = PlayerDataManager.Instance().GetPlayerData(KEY);
             return JsonUtility.FromJson<DialogHistoryEntryList>(json);
         }
         else
@@ -49,8 +49,7 @@ public class DialogHistoryManager
     public void Save()
     {
         string json = JsonUtility.ToJson(entries);
-        PlayerPrefs.SetString(KEY, json);
-        PlayerPrefs.Save();
+        PlayerDataManager.Instance().SavePlayerData(KEY, json);
     }
 
     public void ClearList()

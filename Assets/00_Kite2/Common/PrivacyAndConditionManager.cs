@@ -83,9 +83,9 @@ public class PrivacyAndConditionManager
 
     public PrivacyAndConditionWrapper LoadPrivacyAndConditionWrapper()
     {
-        if (PlayerPrefs.HasKey(key))
+        if (PlayerDataManager.Instance().HasKey(key))
         {
-            string json = PlayerPrefs.GetString(key);
+            string json = PlayerDataManager.Instance().GetPlayerData(key);
             return JsonUtility.FromJson<PrivacyAndConditionWrapper>(json);
         }
         else
@@ -102,8 +102,7 @@ public class PrivacyAndConditionManager
     public void Save()
     {
         string json = JsonUtility.ToJson(wrapper);
-        PlayerPrefs.SetString(key, json);
-        PlayerPrefs.Save();
+        PlayerDataManager.Instance().SavePlayerData(key, json);
     }
 
     public bool IsConditionsAccepted()
