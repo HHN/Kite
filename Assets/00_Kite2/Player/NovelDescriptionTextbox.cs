@@ -80,6 +80,12 @@ public class NovelDescriptionTextbox : MonoBehaviour
 
     }
 
+    public void SetButtonsActive(bool active)
+    {
+        playButton.gameObject.SetActive(active);
+        bookMarkButton.gameObject.SetActive(active);
+    }
+
     public void SetHead(bool isHigh)
     {
         if (isHigh)
