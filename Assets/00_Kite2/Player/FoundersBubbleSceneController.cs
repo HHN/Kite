@@ -176,6 +176,7 @@ public class FoundersBubbleSceneController : SceneController
 
                 isPopupOpen = true;
                 currentlyOpenedVisualNovelPopup = visualNovel;
+                NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
             }
         }
     }

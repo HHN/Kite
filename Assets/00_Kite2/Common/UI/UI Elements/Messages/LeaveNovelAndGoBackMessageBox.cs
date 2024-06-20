@@ -6,15 +6,32 @@ public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI messageBoxHeadline;
     [SerializeField] private TextMeshProUGUI messageBoxBody;
-    [SerializeField] private Button closeButton;
     [SerializeField] private Button cancelButton;
     [SerializeField] private Button confirmButton;
+    [SerializeField] private GameObject background;
+    [SerializeField] private GameObject backgroundLeave;
+    [SerializeField] private GameObject textStay;
+    [SerializeField] private GameObject person;
 
     void Start()
     {
-        closeButton.onClick.AddListener(delegate { OnCloseButton(); });
         cancelButton.onClick.AddListener(delegate { OnCancleButton(); });
         confirmButton.onClick.AddListener(delegate { OnConfirmButton(); });
+        InitUI();
+    }
+
+    private void InitUI()
+    {
+        background.GetComponent<Image>().color = NovelColorManager.Instance().GetColor();
+        backgroundLeave.GetComponent<Image>().color = NovelColorManager.Instance().GetColor();
+        textStay.GetComponent<TextMeshProUGUI>().color = NovelColorManager.Instance().GetColor();
+        RectTransform backgroundTransform = background.GetComponent<RectTransform>();
+        backgroundTransform.anchoredPosition = new Vector2(backgroundTransform.anchoredPosition.x, (NovelColorManager.Instance().GetCanvasHeight()/2)-(backgroundTransform.rect.height/2));
+        RectTransform personTransform = person.GetComponent<RectTransform>();
+        personTransform.anchoredPosition = new Vector2(backgroundTransform.anchoredPosition.x, (backgroundTransform.rect.width*0.9f)/2);
+        personTransform.anchorMin = new Vector2(0.5f, 0.55f);
+        personTransform.anchorMax = new Vector2(0.5f, 0.55f);
+        personTransform.sizeDelta = new Vector2(backgroundTransform.rect.width*0.9f, backgroundTransform.rect.width*0.9f);
     }
 
     public void SetHeadline(string headline)
@@ -30,11 +47,6 @@ public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
     public void Activate()
     {
         this.gameObject.SetActive(true);
-    }
-
-    public void OnCloseButton()
-    {
-        this.CloseMessageBox();
     }
 
     public void OnCancleButton()

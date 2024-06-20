@@ -229,6 +229,9 @@ public class PlayNovelSceneController : SceneController
         characterRectTransform.sizeDelta = new Vector2(canvasRect.rect.width * 0.25f, canvasRect.rect.height * 1f);
         decoDeskRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.075f, canvasRect.rect.height * 0.1f);
         decoBackgroundRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.17f, canvasRect.rect.height * 0.25f);
+
+        NovelColorManager.Instance().SetCanvasHeight(canvasRect.rect.height);
+        NovelColorManager.Instance().SetCanvasWidth(canvasRect.rect.width);
         //RectTransform closeButtonTransform = closeButton.GetComponent<RectTransform>();
         //closeButtonTransform.SetAsLastSibling();
     }
