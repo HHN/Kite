@@ -12,13 +12,15 @@ public class SceneHeader : MonoBehaviour
     [SerializeField] private LeaveNovelAndGoBackMessageBox warningMessageBoxObject;
     [SerializeField] private LeaveNovelAndGoBackToMainmenuMessageBox warningMessageBoxObjectClose;
     [SerializeField] private Canvas canvas;
+    [SerializeField] private bool isNovelScene;
 
     void Start()
     {
-        closeButton.onClick.AddListener(delegate { OnCloseButton(); });
+        closeButton.onClick.AddListener(delegate { OnBackButton(); });
         backButton.onClick.AddListener(delegate { OnBackButton(); });
     }
 
+//TODO: To delete
     public void OnCloseButton()
     {
         if (warningMessageBoxClose != null)
@@ -44,6 +46,17 @@ public class SceneHeader : MonoBehaviour
 
     public void OnBackButton()
     {
+        if (!this.isNovelScene)
+        {
+            string lastScene = SceneRouter.GetTargetSceneForBackButton();
+
+            if (string.IsNullOrEmpty(lastScene))
+            {
+                SceneLoader.LoadMainMenuScene();
+                return;
+            }
+            SceneLoader.LoadScene(lastScene);
+        }
         if (warningMessageBox != null)
         {
             if (!DestroyValidator.IsNullOrDestroyed(warningMessageBoxObject))
@@ -61,14 +74,5 @@ public class SceneHeader : MonoBehaviour
 
             return;
         }
-
-        string lastScene = SceneRouter.GetTargetSceneForBackButton();
-
-        if (string.IsNullOrEmpty(lastScene))
-        {
-            SceneLoader.LoadMainMenuScene();
-            return;
-        }
-        SceneLoader.LoadScene(lastScene);
     }
 }

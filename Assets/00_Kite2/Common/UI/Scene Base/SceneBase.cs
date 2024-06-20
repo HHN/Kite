@@ -31,14 +31,14 @@ public class SceneBase : MonoBehaviour
             homeButton.onClick.AddListener(delegate { OnHomeButtonForNovelPlayer(); });
             settingsButton.onClick.AddListener(delegate { OnSettingsButtonForNovelPlayer(); });
             backButton.onClick.AddListener(delegate {OnBackButtonForNovelPlayer(); });
-            closeButton.onClick.AddListener(delegate { OnCloseButtonForNovelPlayer(); });
+            closeButton.onClick.AddListener(delegate { OnBackButtonForNovelPlayer(); });
         } 
         else
         {
             homeButton.onClick.AddListener(delegate { OnHomeButton(); });
             settingsButton.onClick.AddListener(delegate { OnSettingsButton(); });
             backButton.onClick.AddListener(delegate { OnBackButton(); });
-            closeButton.onClick.AddListener(delegate { OnCloseButton(); });
+            closeButton.onClick.AddListener(delegate { OnBackButton(); });
         }
     }
 
@@ -74,6 +74,7 @@ public class SceneBase : MonoBehaviour
         leaveGameAndGoBackMessageBoxObject.Activate();
     }
 
+    //TODO: To delte
     public void OnCloseButton()
     {
         string lastScene = SceneRouter.GetTargetSceneForCloseButton();
@@ -86,6 +87,7 @@ public class SceneBase : MonoBehaviour
         SceneLoader.LoadScene(lastScene);
     }
 
+    //TODO: To delte
     public void OnCloseButtonForNovelPlayer()
     {
         if (!DestroyValidator.IsNullOrDestroyed(leaveNovelAndCloseMessageBoxObject))
