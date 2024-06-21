@@ -20,6 +20,10 @@ public class FoundersWell2SceneController : SceneController
         datenschutzButton.onClick.AddListener(delegate { OnDatenschutzButton(); });
         impressumButton.onClick.AddListener(delegate { OnImpressumButton(); });
         playHistoryButton.onClick.AddListener(delegate { OnPlayHistoryButton(); });
+        // Load Screen size for later use
+        RectTransform canvasRect = canvas.GetComponent<RectTransform>();
+        NovelColorManager.Instance().SetCanvasHeight(canvasRect.rect.height);
+        NovelColorManager.Instance().SetCanvasWidth(canvasRect.rect.width);
     }
 
     public void OnRessourcenButton()
