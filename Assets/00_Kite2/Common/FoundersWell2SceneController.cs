@@ -4,22 +4,19 @@ using UnityEngine.UI;
 public class FoundersWell2SceneController : SceneController
 {
     [SerializeField] private Button ressourcenButton;
-    [SerializeField] private Button barrierefreiheitButton;
-    [SerializeField] private Button nutzungsbedingungenButton;
-    [SerializeField] private Button datenschutzButton;
-    [SerializeField] private Button impressumButton;
     [SerializeField] private Button playHistoryButton;
+    [SerializeField] private Button gemerkteNovelsButton;
+    [SerializeField] private Button einstellungenButton;
 
     void Start()
     {
         BackStackManager.Instance().Push(SceneNames.FOUNDERS_WELL_2_SCENE);
 
         ressourcenButton.onClick.AddListener(delegate { OnRessourcenButton(); });
-        barrierefreiheitButton.onClick.AddListener(delegate { OnBarrierefreiheitButton(); });
-        nutzungsbedingungenButton.onClick.AddListener(delegate { OnNutzungsbedingungenButton(); });
-        datenschutzButton.onClick.AddListener(delegate { OnDatenschutzButton(); });
-        impressumButton.onClick.AddListener(delegate { OnImpressumButton(); });
         playHistoryButton.onClick.AddListener(delegate { OnPlayHistoryButton(); });
+        gemerkteNovelsButton.onClick.AddListener(delegate { OnGemerkteNovelsButton(); });
+        einstellungenButton.onClick.AddListener(delegate { OnEinstellungenButton(); });
+
         // Load Screen size for later use
         RectTransform canvasRect = canvas.GetComponent<RectTransform>();
         NovelColorManager.Instance().SetCanvasHeight(canvasRect.rect.height);
@@ -36,23 +33,13 @@ public class FoundersWell2SceneController : SceneController
         SceneLoader.LoadNovelHistoryScene();
     }
 
-    public void OnBarrierefreiheitButton()
+    public void OnGemerkteNovelsButton()
     {
-        SceneLoader.LoadBarrierefreiheitScene();
-    }
-
-    public void OnNutzungsbedingungenButton()
+        SceneLoader.LoadGemerkteNovelsScene();
+    }    
+    
+    public void OnEinstellungenButton()
     {
-        SceneLoader.LoadNutzungsbedingungenScene();
-    }
-
-    public void OnDatenschutzButton()
-    {
-        SceneLoader.LoadDatenschutzScene();
-    }
-
-    public void OnImpressumButton()
-    {
-        SceneLoader.LoadImpressumScene();
+        SceneLoader.LoadEinstellungenScene();
     }
 }

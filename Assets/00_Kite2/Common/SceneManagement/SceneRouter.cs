@@ -35,7 +35,7 @@ public class SceneRouter
                 }
             case (SceneNames.NUTZUNGSBEDINGUNGEN_SCENE):
                 {
-                    return SceneNames.FOUNDERS_WELL_2_SCENE;
+                    return SceneNames.EINSTELLUNGEN_SCENE;
                 }
             case (SceneNames.NOVEL_HISTORY_SCENE):
                 {
@@ -43,11 +43,11 @@ public class SceneRouter
                 }
             case (SceneNames.DATENSCHUTZ_SCENE):
                 {
-                    return SceneNames.FOUNDERS_WELL_2_SCENE;
+                    return SceneNames.EINSTELLUNGEN_SCENE;
                 }
             case (SceneNames.IMPRESSUM_SCENE):
                 {
-                    return SceneNames.FOUNDERS_WELL_2_SCENE;
+                    return SceneNames.EINSTELLUNGEN_SCENE;
                 }
             case (SceneNames.RESSOURCEN_SCENE):
                 {
@@ -55,7 +55,7 @@ public class SceneRouter
                 }
             case (SceneNames.BARRIEREFREIHEIT_SCENE):
                 {
-                    return SceneNames.FOUNDERS_WELL_2_SCENE;
+                    return SceneNames.EINSTELLUNGEN_SCENE;
                 }            
             case (SceneNames.PLAYER_PREFS_SCENE):
                 {

@@ -101,4 +101,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_Kite2/NewPages/EinstellungenScene.unity
     guid: 10175c04a1bfea24c972082d4b2d7942
+  - enabled: 1
+    path: Assets/00_Kite2/NewPages/GemerkteNovelsScene.unity
+    guid: 46df8111616ab4741b32e88ca04b2348
   m_configObjects: {}
