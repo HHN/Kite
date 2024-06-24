@@ -98,4 +98,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_Kite2/NewPages/RessourcenScene.unity
     guid: 13cfd61506123d946bf5196688dd9110
+  - enabled: 1
+    path: Assets/00_Kite2/NewPages/EinstellungenScene.unity
+    guid: 10175c04a1bfea24c972082d4b2d7942
   m_configObjects: {}

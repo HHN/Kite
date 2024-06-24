@@ -64,6 +64,10 @@ public class SceneRouter
             case (SceneNames.EINSTELLUNGEN_SCENE):
                 {
                     return SceneNames.FOUNDERS_WELL_2_SCENE;
+                }            
+            case (SceneNames.GEMERKTE_NOVELS_SCENE):
+                {
+                    return SceneNames.FOUNDERS_WELL_2_SCENE;
                 }
 
             default: return SceneNames.MAIN_MENU_SCENE;

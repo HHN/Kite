@@ -209,6 +209,11 @@ public class SceneLoader
     public static void LoadEinstellungenScene()
     {
         LoadScene(SceneNames.EINSTELLUNGEN_SCENE);
+    }    
+    
+    public static void LoadGemerkteNovelsScene()
+    {
+        LoadScene(SceneNames.GEMERKTE_NOVELS_SCENE);
     }
 
     public static void LoadScene(string sceneName)

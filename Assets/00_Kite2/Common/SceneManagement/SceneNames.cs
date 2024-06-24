@@ -53,4 +53,5 @@ public class SceneNames
     public const string NUTZUNGSBEDINGUNGEN_SCENE = "NutzungsbedingungenScene";
     public const string RESSOURCEN_SCENE = "RessourcenScene";
     public const string EINSTELLUNGEN_SCENE = "EinstellungenScene";
+    public const string GEMERKTE_NOVELS_SCENE = "GemerkteNovelsScene";
 }
