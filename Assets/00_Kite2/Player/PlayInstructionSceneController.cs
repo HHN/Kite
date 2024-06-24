@@ -7,6 +7,7 @@ public class PlayInstructionSceneController : SceneController
     [SerializeField] private Image background;
     [SerializeField] private Image novelImage;
     [SerializeField] private Image textBoxImage;
+    [SerializeField] private Image headerImage;
     [SerializeField] private TextMeshProUGUI novelname;
     [SerializeField] private TextMeshProUGUI buttonText;
     [SerializeField] private Color backgroundColor;
