@@ -52,4 +52,5 @@ public class SceneNames
     public const string IMPRESSUM_SCENE = "ImpressumScene";
     public const string NUTZUNGSBEDINGUNGEN_SCENE = "NutzungsbedingungenScene";
     public const string RESSOURCEN_SCENE = "RessourcenScene";
+    public const string EINSTELLUNGEN_SCENE = "EinstellungenScene";
 }

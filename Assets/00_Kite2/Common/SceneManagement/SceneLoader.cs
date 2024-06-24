@@ -204,6 +204,11 @@ public class SceneLoader
     public static void LoadNutzungsbedingungenScene()
     {
         LoadScene(SceneNames.NUTZUNGSBEDINGUNGEN_SCENE);
+    }    
+    
+    public static void LoadEinstellungenScene()
+    {
+        LoadScene(SceneNames.EINSTELLUNGEN_SCENE);
     }
 
     public static void LoadScene(string sceneName)
