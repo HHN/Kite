@@ -67,6 +67,7 @@ public class TextToSpeechManager {
     public bool IsTextToSpeechActivated()
     {
         TextToSpeechWrapper wrapper = LoadTextToSpeechWrapper();
+        Debug.Log(wrapper.activatedTextToSpeech);
         return wrapper.activatedTextToSpeech;
     }
 
