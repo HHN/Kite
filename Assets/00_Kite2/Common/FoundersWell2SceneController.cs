@@ -7,6 +7,8 @@ public class FoundersWell2SceneController : SceneController
     [SerializeField] private Button playHistoryButton;
     [SerializeField] private Button gemerkteNovelsButton;
     [SerializeField] private Button einstellungenButton;
+    [SerializeField] private Button foundersWellButton;
+    [SerializeField] private Button editButton;
 
     void Start()
     {
@@ -16,6 +18,8 @@ public class FoundersWell2SceneController : SceneController
         playHistoryButton.onClick.AddListener(delegate { OnPlayHistoryButton(); });
         gemerkteNovelsButton.onClick.AddListener(delegate { OnGemerkteNovelsButton(); });
         einstellungenButton.onClick.AddListener(delegate { OnEinstellungenButton(); });
+        foundersWellButton.onClick.AddListener(delegate { OnFoundersWellButton(); });
+        editButton.onClick.AddListener(delegate { OnEditButton(); });
 
         // Load Screen size for later use
         RectTransform canvasRect = canvas.GetComponent<RectTransform>();
@@ -41,5 +45,14 @@ public class FoundersWell2SceneController : SceneController
     public void OnEinstellungenButton()
     {
         SceneLoader.LoadEinstellungenScene();
+    }    
+    
+    public void OnFoundersWellButton()
+    {
+        SceneLoader.LoadFoundersBubbleScene();
+    }
+
+    public void OnEditButton()
+    {
     }
 }
