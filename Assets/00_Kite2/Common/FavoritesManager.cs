@@ -27,6 +27,11 @@ public class FavoritesManager
         return favorites.favorites.Contains(novel.id);
     }
 
+    public bool IsFavorite(long novel)
+    {
+        return favorites.favorites.Contains(novel);
+    }
+
     public void MarkAsFavorite(VisualNovel novel)
     {
         if (favorites == null)

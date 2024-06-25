@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,11 +15,28 @@ public class NovelDescriptionTextbox : MonoBehaviour
     [SerializeField] private Button playButton;
     [SerializeField] private Button bookMarkButton;
     [SerializeField] private GameObject selectNovelSoundPrefab;
+    [SerializeField] private TextMeshProUGUI bookmarkText;
+    [SerializeField] private Image bookmarkImage;
+    [SerializeField] private Sprite bookmarkSprite;
+    [SerializeField] private Sprite unBookmarkSprite;
 
     void Start()
     {
         playButton.onClick.AddListener(delegate { OnPlayButton(); });
         bookMarkButton.onClick.AddListener(delegate { OnBookmarkButton(); });
+    }
+
+
+    public void InitializeBookMarkButton(bool isFavorite)
+    {
+        if (isFavorite)
+        {
+            bookmarkText.text = "ENTFERNEN";
+            bookmarkImage.sprite = bookmarkSprite;
+            return;
+        }
+        bookmarkImage.sprite = unBookmarkSprite;
+        bookmarkText.text = "MERKEN";
     }
 
     public void SetColorOfImage(Color color)
@@ -53,8 +71,9 @@ public class NovelDescriptionTextbox : MonoBehaviour
     public void SetVisualNovel(VisualNovel visualNovel)
     {
         this.visualNovelToDisplay = visualNovel;
-    }
-
+        InitializeBookMarkButton(FavoritesManager.Instance().IsFavorite(visualNovel));
+    }    
+   
     public void OnPlayButton()
     {
         PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
@@ -77,7 +96,20 @@ public class NovelDescriptionTextbox : MonoBehaviour
 
     public void OnBookmarkButton()
     {
+        StartCoroutine(MarkAsFavorite(visualNovelToDisplay));
+    }
 
+    public IEnumerator MarkAsFavorite(VisualNovel visualNovel)
+    {
+        if (FavoritesManager.Instance().IsFavorite(visualNovel))
+        {
+            FavoritesManager.Instance().UnmarkAsFavorite(visualNovel);
+            InitializeBookMarkButton(false);
+            yield break;
+        }
+        FavoritesManager.Instance().MarkAsFavorite(visualNovel);
+        InitializeBookMarkButton(true);
+        yield return null;
     }
 
     public void SetButtonsActive(bool active)
