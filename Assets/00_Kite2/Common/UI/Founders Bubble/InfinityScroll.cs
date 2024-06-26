@@ -26,6 +26,8 @@ public class InfinityScroll : MonoBehaviour
 
     [SerializeField] public int itemsToAdd;
 
+    [SerializeField] public Vector2 lastPosition;
+
     void Start()
     {
         snappingForce = 100f;
@@ -64,6 +66,7 @@ public class InfinityScroll : MonoBehaviour
         {
             scollRect.horizontalNormalizedPosition = (float) memory.scrollPosition;
         }
+        lastPosition = scollRect.content.anchoredPosition;
     }
 
     void Update()
