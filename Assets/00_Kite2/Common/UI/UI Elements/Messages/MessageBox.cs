@@ -6,7 +6,6 @@ public class MessageBox : MonoBehaviour
 {
     public TextMeshProUGUI messageBoxHeadline;
     public TextMeshProUGUI messageBoxBody;
-    public Button closeButton;
     public Button okButton;
     [SerializeField] private AudioSource errorSound;
     [SerializeField] private AudioSource infoSound;
@@ -14,7 +13,6 @@ public class MessageBox : MonoBehaviour
 
     void Start()
     {
-        closeButton.onClick.AddListener(delegate { OnCloseButton(); });
         okButton.onClick.AddListener(delegate { OnOkButton(); });
     }
 
@@ -38,11 +36,6 @@ public class MessageBox : MonoBehaviour
             this.infoSound.Play();
         }
         this.gameObject.SetActive(true);
-    }
-
-    public void OnCloseButton()
-    {
-        this.CloseMessageBox();
     }
 
     public void OnOkButton()
