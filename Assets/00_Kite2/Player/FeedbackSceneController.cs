@@ -16,6 +16,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
     [SerializeField] private AudioSource resultMusic;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Button finishButton;
+    [SerializeField] private GameObject finishButtonContainer;
     [SerializeField] private TTSEngine engine;
 
     private void Start()
@@ -32,7 +33,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
         if (ApplicationModeManager.Instance().IsOfflineModeActive())
         {
             feedbackText.SetText("Sie befinden sich im Offline Modus. Es ist kein Feedback verfügbar.");
-            finishButton.GetComponentInChildren<Text>().text = "ANALYSE BEENDEN";
+            finishButtonContainer.SetActive(false);
             return;
         }
         if (string.IsNullOrEmpty(novelToPlay.feedback))
@@ -83,7 +84,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
             return;
         }
         StopWaitingMusic();
-        finishButton.GetComponentInChildren<TextMeshProUGUI>().text = "ANALYSE BEENDEN";
+        finishButtonContainer.SetActive(false);
         if (TextToSpeechManager.Instance().IsTextToSpeechActivated())
         {
             TextToSpeechService.Instance().TextToSpeechReadLive(response.GetCompletion().Trim(), engine);
@@ -114,7 +115,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
     {
         StopWaitingMusic();
         DisplayErrorMessage(ErrorMessages.UNEXPECTED_SERVER_ERROR);
-        finishButton.GetComponentInChildren<Text>().text = "ANALYSE BEENDEN";
+        finishButtonContainer.SetActive(false);
         feedbackText.SetText("Leider ist aktuell keine KI-Analyse verfügbar.");
     }
 
