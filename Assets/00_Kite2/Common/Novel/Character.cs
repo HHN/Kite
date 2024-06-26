@@ -5,7 +5,9 @@ public enum Character
     INTRO,
     OUTRO,
     INFO,
-    MAYER
+    MAYER,
+    REPORTERIN,
+    VERMIETER
 }
 public class CharacterTypeHelper
 {
@@ -14,6 +16,8 @@ public class CharacterTypeHelper
     public const string OUTRO = "Outro";
     public const string INFO = "Info";
     public const string MAYER = "Mayer";
+    public const string REPORTERIN = "Reporterin";
+    public const string VERMIETER = "Vermieter";
 
     public static int ToInt(Character character)
     {
@@ -25,6 +29,8 @@ public class CharacterTypeHelper
             case Character.OUTRO: { return 3; }
             case Character.INFO: { return 4; }
             case Character.MAYER: { return 5; }
+            case Character.REPORTERIN: { return 6; }
+            case Character.VERMIETER: { return 7; }
             default: { return 0; }
         }
     }
@@ -39,6 +45,8 @@ public class CharacterTypeHelper
             case 3: { return Character.OUTRO; }
             case 4: { return Character.INFO; }
             case 5: { return Character.MAYER; }
+            case 6: { return Character.REPORTERIN; }
+            case 7: { return Character.VERMIETER; }
             default: return Character.NONE;
         }
     }
@@ -53,6 +61,8 @@ public class CharacterTypeHelper
             case Character.OUTRO: { return OUTRO; }
             case Character.INFO: { return INFO; }
             case Character.MAYER: { return MAYER; }
+            case Character.REPORTERIN: { return REPORTERIN; }
+            case Character.VERMIETER: { return VERMIETER; }
             default: { return null; }
         }
     }
@@ -67,6 +77,8 @@ public class CharacterTypeHelper
             case 3: { return OUTRO; }
             case 4: { return INFO; }
             case 5: { return MAYER; }
+            case 6: { return REPORTERIN; }
+            case 7: { return VERMIETER; }
             default: return null;
         }
     }
@@ -81,6 +93,8 @@ public class CharacterTypeHelper
             case OUTRO: { return Character.OUTRO; }
             case INFO: { return Character.INFO; }
             case MAYER: { return Character.MAYER; }
+            case REPORTERIN: { return Character.REPORTERIN; }
+            case VERMIETER: { return Character.VERMIETER; }
             default: return Character.NONE;
         }
     }

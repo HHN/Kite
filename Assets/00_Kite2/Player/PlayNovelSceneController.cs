@@ -18,7 +18,9 @@ public class PlayNovelSceneController : SceneController
     [SerializeField] private ConversationContentGuiController conversationContent;
     [SerializeField] private GameObject novelImageContainer;
     [SerializeField] private GameObject novelBackgroundPrefab;
-    [SerializeField] private GameObject characterPrefab;
+    [SerializeField] private GameObject characterPrefabMayer;
+    [SerializeField] private GameObject characterPrefabReporterin;
+    [SerializeField] private GameObject characterPrefabVermieter;
     [SerializeField] private bool isWaitingForConfirmation = false;
     [SerializeField] private Dictionary<string, VisualNovelEvent> novelEvents = new Dictionary<string, VisualNovelEvent>();
     [SerializeField] private VisualNovelEvent nextEventToPlay;
@@ -512,6 +514,34 @@ public class PlayNovelSceneController : SceneController
     {
         string nextEventID = novelEvent.nextId;
         nextEventToPlay = novelEvents[nextEventID];
+
+        Character characterValue = CharacterTypeHelper.ValueOf(novelEvent.character);
+
+        GameObject characterPrefab = null;
+
+        switch (characterValue)
+        {
+            case Character.MAYER:
+                {
+                    characterPrefab = characterPrefabMayer;
+                    break;
+                }
+            case Character.REPORTERIN:
+                {
+                    characterPrefab = characterPrefabReporterin;
+                    break;
+                }
+            case Character.VERMIETER:
+                {
+                    characterPrefab = characterPrefabVermieter;
+                    break;
+                }
+            default:
+                {
+                    characterPrefab = characterPrefabMayer;
+                    break;
+                }
+        }
 
         GameObject character = Instantiate(characterPrefab, characterContainer.transform);
         CharacterController controller = character.GetComponent<CharacterController>();
