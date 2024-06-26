@@ -15,12 +15,6 @@ public class PlayerPrefsSceneController : SceneController
     [SerializeField] private Button editElevatorPitchButton;
     [SerializeField] private Button editInteressenButton;
 
-    [SerializeField] private BigTextPreViewController namePreviewController;
-    [SerializeField] private BigTextPreViewController firmenNamePreviewController;
-    [SerializeField] private BigTextPreViewController elevatorPitchPreviewController;
-    [SerializeField] private BigTextPreViewController interessenPreviewController;
-    [SerializeField] private BigTextPreViewController vorgeschlageneInhaltePreviewController;
-
     [SerializeField] private GameObject changePlayerPrefPrefab;
     [SerializeField] private GameObject root;
 
@@ -55,12 +49,6 @@ public class PlayerPrefsSceneController : SceneController
         elevatorPitchTextObject.text = elevatorPitch;
         interessenTextObject.text = interessen;
         vorgeschlageneInhalteTextObject.text = vorgeschlageneInhalte;
-
-        namePreviewController.OnValueEntered();
-        firmenNamePreviewController.OnValueEntered();
-        elevatorPitchPreviewController.OnValueEntered();
-        interessenPreviewController.OnValueEntered();
-        vorgeschlageneInhaltePreviewController.OnValueEntered();
     }
 
     public void InitializeButtons()
