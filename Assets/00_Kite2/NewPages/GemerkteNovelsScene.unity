@@ -487,6 +487,7 @@ MonoBehaviour:
   honorarNovel: {fileID: 632586683}
   lebenspartnerNovel: {fileID: 689054092}
   introNovel: {fileID: 1363038382}
+  selectNovelSoundPrefab: {fileID: 5665505778772664329, guid: 0cf6b97a397eb0a499fcd91cb4e550d5, type: 3}
 --- !u!1 &147866465
 GameObject:
   m_ObjectHideFlags: 0

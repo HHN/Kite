@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEngine;
+using UnityEngine.Networking.Types;
 using UnityEngine.UI;
 
 public class GemerkteNovelsSceneController : SceneController
@@ -19,6 +20,8 @@ public class GemerkteNovelsSceneController : SceneController
     [SerializeField] private Button honorarNovel;
     [SerializeField] private Button lebenspartnerNovel;
     [SerializeField] private Button introNovel;
+
+    [SerializeField] private GameObject selectNovelSoundPrefab;
 
     public void Start()
     {
@@ -224,61 +227,457 @@ public class GemerkteNovelsSceneController : SceneController
 
     public void OnBankkreditNovelButton()
     {
-        Debug.Log("OnBankkreditNovelButton");
+        VisualNovelNames visualNovelName = VisualNovelNames.BANK_KREDIT_NOVEL;
+        VisualNovel visualNovelToDisplay = null;
+
+        List<VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+
+        foreach (VisualNovel novel in allNovels)
+        {
+            if (novel.id == VisualNovelNamesHelper.ToInt(visualNovelName))
+            {
+                visualNovelToDisplay = novel;
+            }
+        }
+        if (visualNovelToDisplay == null)
+        {
+            DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
+            return;
+        }
+
+        PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
+        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+        GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
+        DontDestroyOnLoad(buttonSound);
+
+        if (ShowPlayInstructionManager.Instance().ShowInstruction())
+        {
+            SceneLoader.LoadPlayInstructionScene();
+
+        }
+        else
+        {
+            SceneLoader.LoadPlayNovelScene();
+        }
     }
 
     public void OnBekannteTreffenNovelButton()
     {
-        Debug.Log("OnBekannteTreffenNovelButton");
+        VisualNovelNames visualNovelName = VisualNovelNames.BEKANNTE_TREFFEN_NOVEL;
+        VisualNovel visualNovelToDisplay = null;
+
+        List<VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+
+        foreach (VisualNovel novel in allNovels)
+        {
+            if (novel.id == VisualNovelNamesHelper.ToInt(visualNovelName))
+            {
+                visualNovelToDisplay = novel;
+            }
+        }
+        if (visualNovelToDisplay == null)
+        {
+            DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
+            return;
+        }
+
+        PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
+        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+        GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
+        DontDestroyOnLoad(buttonSound);
+
+        if (ShowPlayInstructionManager.Instance().ShowInstruction())
+        {
+            SceneLoader.LoadPlayInstructionScene();
+
+        }
+        else
+        {
+            SceneLoader.LoadPlayNovelScene();
+        }
     }
 
     public void OnBankKontoNovelButton()
     {
-        Debug.Log("OnBankKontoNovelButton");
+        VisualNovelNames visualNovelName = VisualNovelNames.BANK_KONTO_NOVEL;
+        VisualNovel visualNovelToDisplay = null;
+
+        List<VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+
+        foreach (VisualNovel novel in allNovels)
+        {
+            if (novel.id == VisualNovelNamesHelper.ToInt(visualNovelName))
+            {
+                visualNovelToDisplay = novel;
+            }
+        }
+        if (visualNovelToDisplay == null)
+        {
+            DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
+            return;
+        }
+
+        PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
+        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+        GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
+        DontDestroyOnLoad(buttonSound);
+
+        if (ShowPlayInstructionManager.Instance().ShowInstruction())
+        {
+            SceneLoader.LoadPlayInstructionScene();
+
+        }
+        else
+        {
+            SceneLoader.LoadPlayNovelScene();
+        }
     }
 
     public void OnFoerderantragNovelButton()
     {
-        Debug.Log("OnFoerderantragNovelButton");
+        VisualNovelNames visualNovelName = VisualNovelNames.FOERDERANTRAG_NOVEL;
+        VisualNovel visualNovelToDisplay = null;
+
+        List<VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+
+        foreach (VisualNovel novel in allNovels)
+        {
+            if (novel.id == VisualNovelNamesHelper.ToInt(visualNovelName))
+            {
+                visualNovelToDisplay = novel;
+            }
+        }
+        if (visualNovelToDisplay == null)
+        {
+            DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
+            return;
+        }
+
+        PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
+        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+        GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
+        DontDestroyOnLoad(buttonSound);
+
+        if (ShowPlayInstructionManager.Instance().ShowInstruction())
+        {
+            SceneLoader.LoadPlayInstructionScene();
+
+        }
+        else
+        {
+            SceneLoader.LoadPlayNovelScene();
+        }
     }
 
     public void OnElternNovelButton()
     {
-        Debug.Log("OnElternNovelButton");
+        VisualNovelNames visualNovelName = VisualNovelNames.ELTERN_NOVEL;
+        VisualNovel visualNovelToDisplay = null;
+
+        List<VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+
+        foreach (VisualNovel novel in allNovels)
+        {
+            if (novel.id == VisualNovelNamesHelper.ToInt(visualNovelName))
+            {
+                visualNovelToDisplay = novel;
+            }
+        }
+        if (visualNovelToDisplay == null)
+        {
+            DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
+            return;
+        }
+
+        PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
+        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+        GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
+        DontDestroyOnLoad(buttonSound);
+
+        if (ShowPlayInstructionManager.Instance().ShowInstruction())
+        {
+            SceneLoader.LoadPlayInstructionScene();
+
+        }
+        else
+        {
+            SceneLoader.LoadPlayNovelScene();
+        }
     }
 
     public void OnNotariatNovelButton()
     {
-        Debug.Log("OnNotariatNovelButton");
+        VisualNovelNames visualNovelName = VisualNovelNames.NOTARIAT_NOVEL;
+        VisualNovel visualNovelToDisplay = null;
+
+        List<VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+
+        foreach (VisualNovel novel in allNovels)
+        {
+            if (novel.id == VisualNovelNamesHelper.ToInt(visualNovelName))
+            {
+                visualNovelToDisplay = novel;
+            }
+        }
+        if (visualNovelToDisplay == null)
+        {
+            DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
+            return;
+        }
+
+        PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
+        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+        GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
+        DontDestroyOnLoad(buttonSound);
+
+        if (ShowPlayInstructionManager.Instance().ShowInstruction())
+        {
+            SceneLoader.LoadPlayInstructionScene();
+
+        }
+        else
+        {
+            SceneLoader.LoadPlayNovelScene();
+        }
     }
 
     public void OnPresseNovelButton()
     {
-        Debug.Log("OnPresseNovelButton");
+        VisualNovelNames visualNovelName = VisualNovelNames.PRESSE_NOVEL;
+        VisualNovel visualNovelToDisplay = null;
+
+        List<VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+
+        foreach (VisualNovel novel in allNovels)
+        {
+            if (novel.id == VisualNovelNamesHelper.ToInt(visualNovelName))
+            {
+                visualNovelToDisplay = novel;
+            }
+        }
+        if (visualNovelToDisplay == null)
+        {
+            DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
+            return;
+        }
+
+        PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
+        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+        GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
+        DontDestroyOnLoad(buttonSound);
+
+        if (ShowPlayInstructionManager.Instance().ShowInstruction())
+        {
+            SceneLoader.LoadPlayInstructionScene();
+
+        }
+        else
+        {
+            SceneLoader.LoadPlayNovelScene();
+        }
     }
 
     public void OnBueroNovelButton()
     {
-        Debug.Log("OnBueroNovelButton");
+        VisualNovelNames visualNovelName = VisualNovelNames.BUERO_NOVEL;
+        VisualNovel visualNovelToDisplay = null;
+
+        List<VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+
+        foreach (VisualNovel novel in allNovels)
+        {
+            if (novel.id == VisualNovelNamesHelper.ToInt(visualNovelName))
+            {
+                visualNovelToDisplay = novel;
+            }
+        }
+        if (visualNovelToDisplay == null)
+        {
+            DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
+            return;
+        }
+
+        PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
+        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+        GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
+        DontDestroyOnLoad(buttonSound);
+
+        if (ShowPlayInstructionManager.Instance().ShowInstruction())
+        {
+            SceneLoader.LoadPlayInstructionScene();
+
+        }
+        else
+        {
+            SceneLoader.LoadPlayNovelScene();
+        }
     }
 
     public void OnGruenderzuschussNovelButton()
     {
-        Debug.Log("OnGruenderzuschussNovelButton");
+        VisualNovelNames visualNovelName = VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL;
+        VisualNovel visualNovelToDisplay = null;
+
+        List<VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+
+        foreach (VisualNovel novel in allNovels)
+        {
+            if (novel.id == VisualNovelNamesHelper.ToInt(visualNovelName))
+            {
+                visualNovelToDisplay = novel;
+            }
+        }
+        if (visualNovelToDisplay == null)
+        {
+            DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
+            return;
+        }
+
+        PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
+        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+        GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
+        DontDestroyOnLoad(buttonSound);
+
+        if (ShowPlayInstructionManager.Instance().ShowInstruction())
+        {
+            SceneLoader.LoadPlayInstructionScene();
+
+        }
+        else
+        {
+            SceneLoader.LoadPlayNovelScene();
+        }
     }
 
     public void OnHonorarNovelButton()
     {
-        Debug.Log("OnHonorarNovelButton");
+        VisualNovelNames visualNovelName = VisualNovelNames.HONORAR_NOVEL;
+        VisualNovel visualNovelToDisplay = null;
+
+        List<VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+
+        foreach (VisualNovel novel in allNovels)
+        {
+            if (novel.id == VisualNovelNamesHelper.ToInt(visualNovelName))
+            {
+                visualNovelToDisplay = novel;
+            }
+        }
+        if (visualNovelToDisplay == null)
+        {
+            DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
+            return;
+        }
+
+        PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
+        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+        GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
+        DontDestroyOnLoad(buttonSound);
+
+        if (ShowPlayInstructionManager.Instance().ShowInstruction())
+        {
+            SceneLoader.LoadPlayInstructionScene();
+
+        }
+        else
+        {
+            SceneLoader.LoadPlayNovelScene();
+        }
     }
 
     public void OnLebenspartnerNovelButton()
     {
-        Debug.Log("OnLebenspartnerNovelButton");
+        VisualNovelNames visualNovelName = VisualNovelNames.LEBENSPARTNER_NOVEL;
+        VisualNovel visualNovelToDisplay = null;
+
+        List<VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+
+        foreach (VisualNovel novel in allNovels)
+        {
+            if (novel.id == VisualNovelNamesHelper.ToInt(visualNovelName))
+            {
+                visualNovelToDisplay = novel;
+            }
+        }
+        if (visualNovelToDisplay == null)
+        {
+            DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
+            return;
+        }
+
+        PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
+        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+        GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
+        DontDestroyOnLoad(buttonSound);
+
+        if (ShowPlayInstructionManager.Instance().ShowInstruction())
+        {
+            SceneLoader.LoadPlayInstructionScene();
+
+        }
+        else
+        {
+            SceneLoader.LoadPlayNovelScene();
+        }
     }
 
     public void OnIntroNovelButton()
     {
-        Debug.Log("OnIntroNovelButton");
+        VisualNovelNames visualNovelName = VisualNovelNames.INTRO_NOVEL;
+        VisualNovel visualNovelToDisplay = null;
+
+        List<VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+
+        foreach (VisualNovel novel in allNovels)
+        {
+            if (novel.id == VisualNovelNamesHelper.ToInt(visualNovelName))
+            {
+                visualNovelToDisplay = novel;
+            }
+        }
+        if (visualNovelToDisplay == null)
+        {
+            DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
+            return;
+        }
+
+        PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
+        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+        GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
+        DontDestroyOnLoad(buttonSound);
+
+        if (ShowPlayInstructionManager.Instance().ShowInstruction())
+        {
+            SceneLoader.LoadPlayInstructionScene();
+
+        }
+        else
+        {
+            SceneLoader.LoadPlayNovelScene();
+        }
     }
 }
