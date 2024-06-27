@@ -26,8 +26,6 @@ public class InfinityScroll : MonoBehaviour
 
     [SerializeField] public int itemsToAdd;
 
-    [SerializeField] public Vector2 lastPosition;
-
     void Start()
     {
         snappingForce = 100f;
@@ -66,13 +64,31 @@ public class InfinityScroll : MonoBehaviour
         {
             scollRect.horizontalNormalizedPosition = (float) memory.scrollPosition;
         }
-        lastPosition = scollRect.content.anchoredPosition;
     }
 
     void Update()
     {
         if (secondScrollRect == null)
         {
+            if (isUpdated)
+            {
+                isUpdated = false;
+                scollRect.velocity = oldVelocity;
+            }
+            if (contentPanelTransform.localPosition.x >= 0)
+            {
+                Canvas.ForceUpdateCanvases();
+                oldVelocity = scollRect.velocity;
+                contentPanelTransform.localPosition -= new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
+                isUpdated = true;
+            }
+            else if (contentPanelTransform.localPosition.x < 0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
+            {
+                Canvas.ForceUpdateCanvases();
+                oldVelocity = scollRect.velocity;
+                contentPanelTransform.localPosition += new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
+                isUpdated = true;
+            }
             return;
         }
         if (scollRect.velocity.magnitude > maxSpeed)
@@ -151,21 +167,7 @@ public class InfinityScroll : MonoBehaviour
         {
             return;
         }
-        float widthFromLeftAfter = scollRect.horizontalNormalizedPosition * widthAfter;
-        float widthFromleftBefore = widthFromLeftAfter - ((widthAfter - widthBefore) / 2);
-        float currentPointOnFirstViewBefore = widthFromleftBefore / (widthBefore + viewPortTransform.rect.width + horizontalLayoutGroup.spacing);
-        float widthFromLeftBeforeOnSecondScrollView = currentPointOnFirstViewBefore * (secondScrollRect.widthBefore + secondScrollRect.viewPortTransform.rect.width + secondScrollRect.horizontalLayoutGroup.spacing);
-        float widthFromLeftOnSecondScrollViewAfter = widthFromLeftBeforeOnSecondScrollView + ((secondScrollRect.widthAfter - secondScrollRect.widthBefore) / 2);
-        float result = widthFromLeftOnSecondScrollViewAfter / secondScrollRect.widthAfter;
-
-        if (result < 0)
-        {
-            currentPointOnFirstViewBefore = 1 + currentPointOnFirstViewBefore;
-            widthFromLeftBeforeOnSecondScrollView = currentPointOnFirstViewBefore * (secondScrollRect.widthBefore + secondScrollRect.viewPortTransform.rect.width + secondScrollRect.horizontalLayoutGroup.spacing);
-            widthFromLeftOnSecondScrollViewAfter = widthFromLeftBeforeOnSecondScrollView + ((secondScrollRect.widthAfter - secondScrollRect.widthBefore) / 2);
-            result = widthFromLeftOnSecondScrollViewAfter / secondScrollRect.widthAfter;
-        }
-        secondScrollRect.scollRect.horizontalNormalizedPosition = result;    
+        secondScrollRect.scollRect.velocity = scollRect.velocity * 0.33f;
     }
 
     public bool IsCurrentlyInFirstHalf()
