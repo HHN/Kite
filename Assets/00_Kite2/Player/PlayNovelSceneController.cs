@@ -10,6 +10,8 @@ using LeastSquares.Overtone;
 
 public class PlayNovelSceneController : SceneController
 {
+    [SerializeField] private GameObject viewPort;
+    [SerializeField] private GameObject[] novelVisuals;
     [SerializeField] private Button closeButton;
     [SerializeField] private LeaveNovelAndGoBackMessageBox leaveGameAndGoBackMessageBoxObject;
     [SerializeField] private GameObject leaveGameAndGoBackMessageBox;
@@ -214,28 +216,48 @@ public class PlayNovelSceneController : SceneController
 
     private void SetVisualElements()
     {
-        // Bildschirmgröße abrufen
+        Debug.Log(novelToPlay.title);
         RectTransform canvasRect = canvas.GetComponent<RectTransform>();
-        // Debug.Log("x. " + canvasRect.rect.width + " y: " + canvasRect.rect.height);
         
         RectTransform conversationViewportTransform = conversationViewport.GetComponent<RectTransform>();
-        RectTransform characterRectTransform = characterContainer.GetComponent<RectTransform>();
-        RectTransform decoDeskRectTransform = decoDeskContainer.GetComponent<RectTransform>();
-        RectTransform decoBackgroundRectTransform = decoBackgroudContainer.GetComponent<RectTransform>();
-            
-        characterRectTransform.anchoredPosition = new Vector2(-canvasRect.rect.width * 0.15f, 0);
-        decoDeskRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.15f, canvasRect.rect.height * 0.1f);
-        decoBackgroundRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.42f, canvasRect.rect.height * 0.25f);
 
         conversationViewportTransform.sizeDelta = new Vector2(0, -canvasRect.rect.height * 0.5f);
-        characterRectTransform.sizeDelta = new Vector2(canvasRect.rect.width * 0.25f, canvasRect.rect.height * 1f);
-        decoDeskRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.075f, canvasRect.rect.height * 0.1f);
-        decoBackgroundRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.17f, canvasRect.rect.height * 0.25f);
-
-        NovelColorManager.Instance().SetCanvasHeight(canvasRect.rect.height);
-        NovelColorManager.Instance().SetCanvasWidth(canvasRect.rect.width);
-        //RectTransform closeButtonTransform = closeButton.GetComponent<RectTransform>();
-        //closeButtonTransform.SetAsLastSibling();
+        RectTransform viewPortTransform = viewPort.GetComponent<RectTransform>();
+        switch(novelToPlay.title)
+        {
+            case "Bank Kontoeröffnung":
+            {
+                GameObject novelImagesInstance = Instantiate(novelVisuals[0], viewPortTransform);
+                Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                BankNovelImageController novelImagesController = controllerTransform.GetComponent<BankNovelImageController>();
+                novelImagesController.SetVisualElements(canvasRect);
+                return;
+            }
+            case "Anmietung eines Büros":
+            {
+                GameObject novelImagesInstance = Instantiate(novelVisuals[1], viewPortTransform);
+                Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                BueroNovelImageController novelImagesController = controllerTransform.GetComponent<BueroNovelImageController>();
+                novelImagesController.SetVisualElements(canvasRect);
+                return;
+            }
+            case "Pressegespräch":
+            {
+                GameObject novelImagesInstance = Instantiate(novelVisuals[2], viewPortTransform);
+                Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                PresseNovelImageController novelImagesController = controllerTransform.GetComponent<PresseNovelImageController>();
+                novelImagesController.SetVisualElements(canvasRect);
+                return;
+            }
+            default:
+            {
+                GameObject novelImagesInstance = Instantiate(novelVisuals[0], viewPortTransform);
+                Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                BankNovelImageController novelImagesController = controllerTransform.GetComponent<BankNovelImageController>();
+                novelImagesController.SetVisualElements(canvasRect);
+                return;
+            }
+        }
     }
 
     public void PlayNextEvent()
