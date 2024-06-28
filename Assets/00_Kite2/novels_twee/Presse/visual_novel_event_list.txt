@@ -1,0 +1,170 @@
+:: StoryTitle
+Pressegespräch 0.3
+
+
+:: StoryData
+{
+  "ifid": "1B6A723E-C0FB-469B-BEBF-C1F1E50DB532",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "start": "Anfang",
+  "zoom": 0.6
+}
+
+
+:: Anfang {"position":"1050,325","size":"100,100"}
+>>InfoNachrichtWirdAngezeigt:<<
+Du befindest dich auf einer Veranstaltung, bei der Jungunternehmer*innen ihre Geschäftsidee vor einem Publikum präsentieren können, um Rückmeldung zu der Idee zu erhalten und um zu netzwerken. 
+
+
+[[Weiter]]
+
+
+:: Artikel Neutral-Positiv {"position":"1550,2350","size":"100,100"}
+>>SpielerCharakterSpricht:<<
+Ich verstehe, danke für Ihre Bemühung. Ich freue mich auf den Artikel.
+
+[[Weiter|Ende]]
+
+
+:: Artikel Positiv {"position":"1275,2325","size":"100,100"}
+>>SpielerCharakterSpricht:<<
+Danke, ich freue mich den Artikel zu lesen.
+
+[[Weiter|Ende]]
+
+
+:: Artikelerscheinung {"position":"1450,775","size":"100,100"}
+>>SpielerCharakterSpricht:<<
+Das wäre toll. Wann wird der Artikel erscheinen?
+
+[[Weiter|Neutral]]
+
+
+:: Dennoch Hauptfokus {"position":"1250,2125","size":"100,100"}
+>>Charakter01SprichtSmiling:<<
+Wir werden versuchen, einen ausgewogenen Artikel zu schreiben, der sowohl Ihre Geschäftsidee als auch Ihre Reise als Unternehmerin berücksichtigt.
+
+[[Weiter|Artikel Positiv]] 
+
+
+:: Ende {"position":"1700,2725","size":"100,100"}
+>>Ende<<
+
+
+:: Fokus: Geschäftsidee {"position":"1150,775","size":"100,100"}
+>>SpielerCharakterSpricht:<<
+Wäre es möglich, dass mein Geschlecht nicht allzu sehr in dem Artikel hervorgehoben wird? Ich möchte für mein Unternehmen Aufmerksamkeit bekommen und nicht, weil ich eine Frau bin.
+
+[[Positiv]]
+
+
+
+:: Fokus: Geschäftsidee Sanft {"position":"775,825","size":"100,100"}
+>>SpielerCharakterSpricht:<<
+Mir ist es wichtig, dass meine Geschäftsidee in dem Artikel betont wird. Ist das machbar?
+
+[[Positiv|Positiv]]
+
+
+:: Nachfrage Positiv {"position":"850,1625","size":"100,100"}
+>>SpielerCharakterSpricht:<<
+Wieso könnte es Leser*innen eher ansprechen, wenn der Fokus auf das Geschlecht gelegt wird? Können Sie mir das erklären?
+
+[[Weiter|Nachfrage Positiv II]]
+
+
+:: Nachfrage Positiv II {"position":"1075,1925","size":"100,100"}
+>>Charakter01SprichtSmiling:<<
+Geschichten über Frauen, die Unternehmen gründen, werden oft als inspirierend angesehen, weil sie Geschlechterstereotypen herausfordern und Frauen in unterrepräsentierten Branchen oder Positionen hervorheben. Dies kann Leser*innen ansprechen, die nach Vorbildern suchen. Es geht darum, Geschichten zu erzählen, die Menschen ermutigen und motivieren, Geschlechterbarrieren zu überwinden.
+
+[[Das verstehe ich und finde das toll.->Vorbild]]
+
+[[Dennoch möchte ich betonen, dass mein Hauptfokus auf meiner Geschäftsidee und meinen Leistungen liegt.->Dennoch Hauptfokus]]
+
+
+:: Neutral {"position":"1575,1225","size":"100,100"}
+>>Charakter01SprichtSmiling:<<
+Vielen Dank für die Beantwortung der Frage. Der Artikel wird am Sonntag erscheinen.
+
+[[Ich möchte noch weiter ausführen, warum mir das wichtig ist.|Weiter ausführen]]
+
+[[Ich möchte fragen, wieso es Leser*innen eher ansprechen könnte, wenn der Fokus auf das Geschlecht gelegt wird.|Nachfrage Positiv]]
+
+
+:: Positiv {"position":"950,1225","size":"100,100"}
+>>Charakter01SprichtSmiling:<<
+Aber natürlich! Ich verstehe, dass die Geschäftsidee im Vordergrund stehen soll. Vielen Dank für den Hinweis. Der Artikel wird nächsten Sonntag erscheinen.
+
+[[Ich möchte noch weiter ausführen, warum mir das wichtig ist.|Weiter ausführen]]
+
+[[Ich möchte fragen, wieso es Leser*innen eher ansprechen könnte, wenn der Fokus auf das Geschlecht gelegt wird.|Nachfrage Positiv]]
+
+
+:: Vorbild {"position":"1125,2125","size":"100,100"}
+>>Charakter01SprichtSmiling:<<
+Ich denke auch, dass Sie für viele ein Vorbild sein werden und andere Frauen dazu inspirieren werden auch zu gründen!
+
+[[Weiter|Artikel Positiv]] 
+
+
+:: Weiter {"position":"1275,375","size":"100,100"}
+>>InfoNachrichtWirdAngezeigt:<<
+Nachdem du deine Geschäftsidee vor einem Publikum gepitcht hast, stellst du dich an einen Tisch mit anderen Gästen, um mit ihnen zu reden. 
+
+Du wirst von jemanden angesprochen.
+
+[[Weiter|Weiter II]]
+
+
+:: Weiter II {"position":"1450,400","size":"100,100"}
+>>Charakter01SprichtSmiling:<<
+Hallo, das war ein sehr interessanter Pitch! Ich bin von der lokalen Presse und es würde mich freuen, wenn ich etwas über Ihre Geschäftsidee schreiben darf.
+
+[[Weiter|Weiter III]]
+
+
+:: Weiter III {"position":"1575,400","size":"100,100"}
+>>SpielerCharakterSpricht:<<
+Danke, das wäre toll! Haben Sie eine spezielle Frage für Ihren Artikel?
+
+[[Weiter|Weiter IV]]
+
+
+:: Weiter IV {"position":"1700,450","size":"100,100"}
+>>Charakter01SprichtRelaxed:<<
+Ja. Wann kamen Sie auf die Idee für Ihr Unternehmen?
+
+[[Weiter|Weiter V]]
+
+
+:: Weiter V {"position":"1575,525","size":"100,100"}
+>>SpielerCharakterSpricht:<<
+Die Idee kam mir vor zwei Jahren, als ich sah, wie viele Unternehmen mit ineffizienten Geschäftsprozessen kämpften. Mit meiner Erfahrung in der Softwareentwicklung entschied ich mich, Lösungen zu entwickeln, die diese Prozesse automatisieren und optimieren.
+
+[[Weiter|Weiter VI]]
+
+
+:: Weiter VI {"position":"1450,525","size":"100,100"}
+>>Charakter01SprichtSmiling:<<
+Das ist spannend. Eine Frau, die ein Unternehmen gründet. Das wird sicher viele Leser*innen interessieren.
+
+[[Das wäre toll. Wann wird der Artikel erscheinen?|Artikelerscheinung]]
+
+[[Mir ist es wichtig, dass meine Geschäftsidee in dem Artikel betont wird. Ist das machbar?|Fokus: Geschäftsidee Sanft]]
+
+[[Wäre es möglich, dass mein Geschlecht nicht allzu sehr in dem Artikel hervorgehoben wird? Ich möchte für mein Unternehmen Aufmerksamkeit bekommen und nicht, weil ich eine Frau bin.|Fokus: Geschäftsidee]]
+
+
+:: Weiter ausführen {"position":"1675,1675","size":"100,100"}
+>>SpielerCharakterSpricht:<<
+Es ist mir wichtig, dass der Fokus nicht auf meinem Geschlecht liegt, weil ich möchte, dass meine Gründung und meine Leistungen eigenständig betrachtet werden. Wenn der Artikel sich zu stark auf mein Geschlecht konzentriert, besteht die Gefahr, dass die Aufmerksamkeit von der eigentlichen Geschichte abgelenkt wird – nämlich meiner Geschäftsidee, ihrer Entwicklung und ihrem Einfluss.
+
+[[Weiter|Weiter ausführen II]]
+
+
+:: Weiter ausführen II {"position":"1675,1900","size":"100,100"}
+>>Charakter01SprichtSmiling:<<
+Ich werde versuchen sicherzustellen, dass wir uns im Artikel auf Ihre Geschäftsidee und Ihre Leistungen konzentrieren, wie von Ihnen gewünscht. Ich kann es Ihnen leider nicht versprechen, da es von der Redaktionsleitung abhängig ist.
+
+[[Weiter|Artikel Neutral-Positiv]] 

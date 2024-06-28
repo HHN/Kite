@@ -4,14 +4,12 @@ using UnityEngine.UI;
 
 public class PlayInstructionSceneController : SceneController
 {
-    [SerializeField] private Image background;
     [SerializeField] private Image novelImage;
     [SerializeField] private Image textBoxImage;
     [SerializeField] private Image headerImage;
     [SerializeField] private TextMeshProUGUI novelname;
     [SerializeField] private TextMeshProUGUI buttonText;
     [SerializeField] private Color backgroundColor;
-    [SerializeField] private Color foregroundColor;
 
     [SerializeField] private Button playButton;
     [SerializeField] private Button backButton;
@@ -22,12 +20,8 @@ public class PlayInstructionSceneController : SceneController
         BackStackManager.Instance().Push(SceneNames.PLAY_INSTRUCTION_SCENE);
 
         backgroundColor = PlayManager.Instance().GetBackgroundColorOfVisualNovelToPlay();
-        foregroundColor = PlayManager.Instance().GetForegroundColorOfVisualNovelToPlay();
         novelname.text = PlayManager.Instance().GetDisplayNameOfNovelToPlay();
-        background.color = backgroundColor;
-        novelImage.color = foregroundColor;
-        textBoxImage.color = foregroundColor;
-        buttonText.color = foregroundColor;
+        novelImage.color = backgroundColor;
         toggle.isOn = false;
 
         playButton.onClick.AddListener(delegate { OnPlayButton(); });    }

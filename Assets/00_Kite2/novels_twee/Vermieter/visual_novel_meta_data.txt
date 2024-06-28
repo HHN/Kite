@@ -1,0 +1,33 @@
+{
+  "idNumberOfNovel": 6,
+  "titleOfNovel": "Anmietung eines Büros",
+  "descriptionOfNovel": "Du hast heute einen Termin für die Besichtigung von Büroräumen.",
+  "idNumberOfRepresentationImage": 5,
+  "nameOfMainCharacter": "Lea",
+  "contextForPrompt": "Es ist das Gespräch einer Gründerin, Lea, mit einem Vermieter. Es geht um die Anmietung von Büro-Räumen. Die Gründerin hat sich gut vorbereitet und hofft, dass sie die Büroräume für ihr Unternehmen bekommt.",
+  "folderName": "Vermieter",
+  "isKite2Novel": true,
+  "startLocation": "Office",
+  "startTalkingPartnerEmotion": "Relaxed",
+  "isWithStartValues": true,
+  "talkingPartner01" : "Vermieter",
+  "talkingPartner02" : "",
+  "talkingPartner03" : "",
+  "wordsToReplace": [
+	{"wordToReplace": ">>BekannterSpricht:<<", "replaceByValue": ">>Charakter01Spricht:<<"},
+	{"wordToReplace": ">>BekannterSprichtRelaxed:<<", "replaceByValue": ">>Charakter01SprichtRelaxed:<<"},
+	{"wordToReplace": ">>BekannterSprichtAstonished:<<", "replaceByValue": ">>Charakter01SprichtAstonished:<<"},
+	{"wordToReplace": ">>BekannterSprichtRefusing:<<", "replaceByValue": ">>Charakter01SprichtRefusing:<<"},
+	{"wordToReplace": ">>BekannterSprichtSmiling:<<", "replaceByValue": ">>Charakter01SprichtSmiling:<<"},
+	{"wordToReplace": ">>BekannterSprichtFriendly:<<", "replaceByValue": ">>Charakter01SprichtFriendly:<<"},
+	{"wordToReplace": ">>BekannterSprichtLaughing:<<", "replaceByValue": ">>Charakter01SprichtLaughing:<<"},
+	{"wordToReplace": ">>BekannterSprichtCritical:<<", "replaceByValue": ">>Charakter01SprichtCritical:<<"},
+	{"wordToReplace": ">>BekannterSprichtDecisionNo:<<", "replaceByValue": ">>Charakter01SprichtDecisionNo:<<"},
+	{"wordToReplace": ">>BekannterSprichtHappy:<<", "replaceByValue": ">>Charakter01SprichtHappy:<<"},
+	{"wordToReplace": ">>BekannterSprichtProud:<<", "replaceByValue": ">>Charakter01SprichtProud:<<"},
+	{"wordToReplace": ">>BekannterSprichtScared:<<", "replaceByValue": ">>Charakter01SprichtScared:<<"},
+	{"wordToReplace": ">>BekannterSprichtQuestioning:<<", "replaceByValue": ">>Charakter01SprichtQuestioning:<<"},
+	{"wordToReplace": ">>BekannterSprichtDefeated:<<", "replaceByValue": ">>Charakter01SprichtDefeated:<<"},
+	{"wordToReplace": ">>GründerinSpricht<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"}
+	]
+}
