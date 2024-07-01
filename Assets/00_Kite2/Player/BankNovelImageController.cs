@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
+using UnityEngine.UI;
 
-public class BankNovelImageController : MonoBehaviour
+public class BankNovelImageController : NovelImageController
 {
     [SerializeField] private GameObject backgroundPrefab;
     [SerializeField] private GameObject backgroundContainer;
@@ -14,10 +16,12 @@ public class BankNovelImageController : MonoBehaviour
     [SerializeField] private GameObject decoBackgroundContainer;
     [SerializeField] private GameObject characterPrefab;
     [SerializeField] private GameObject characterContainer;
+    [SerializeField] private AudioClip decoDeskAudio;
+    [SerializeField] private AudioClip decoBackgroundAudio;
+    [SerializeField] private Sprite[] animationFrames;
 
-    public void SetVisualElements(RectTransform canvasRect)
+    public override void SetVisualElements(RectTransform canvasRect)
     {
-        Debug.Log(""+canvasRect.rect.width + "  " + canvasRect.rect.height);
         Instantiate(backgroundPrefab, backgroundContainer.transform);
         Instantiate(deskPrefab, deskContainer.transform);
         Instantiate(decoDeskPrefab, decoDeskContainer.transform);
@@ -30,7 +34,7 @@ public class BankNovelImageController : MonoBehaviour
             
         characterRectTransform.anchoredPosition = new Vector2(-canvasRect.rect.width * 0.15f, 0);
         decoDeskRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.15f, canvasRect.rect.height * 0.1f);
-        decoBackgroundRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.42f, canvasRect.rect.height * 0.25f);
+        decoBackgroundRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.38f, canvasRect.rect.height * 0.25f);
 
         characterRectTransform.sizeDelta = new Vector2(canvasRect.rect.width * 0.25f, canvasRect.rect.height * 1f);
         decoDeskRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.075f, canvasRect.rect.height * 0.1f);
@@ -38,5 +42,82 @@ public class BankNovelImageController : MonoBehaviour
 
         NovelColorManager.Instance().SetCanvasHeight(canvasRect.rect.height);
         NovelColorManager.Instance().SetCanvasWidth(canvasRect.rect.width);
+    }
+
+    public override bool HandleTouchEvent(float x, float y, AudioSource audioSource)
+    {
+        RectTransform decoDeskRectTransform = decoDeskContainer.GetComponent<RectTransform>();
+        RectTransform decoBackgroundRectTransform = decoBackgroundContainer.GetComponent<RectTransform>();
+
+        Vector3[] cornersDecoDesk = new Vector3[4];
+        decoDeskRectTransform.GetWorldCorners(cornersDecoDesk);
+        Vector3 bottomLeftDecoDesk = cornersDecoDesk[0];
+        Vector3 topRightDecoDesk = cornersDecoDesk[2];
+
+        Vector3[] cornersDecoBackground = new Vector3[4];
+        decoBackgroundRectTransform.GetWorldCorners(cornersDecoBackground);
+        Vector3 bottomLeftDecoBackground = cornersDecoBackground[0];
+        Vector3 topRightDecoBackground = cornersDecoBackground[2];
+
+
+
+        if (x >= bottomLeftDecoDesk.x && x <= topRightDecoDesk.x &&
+            y >= bottomLeftDecoDesk.y && y <= topRightDecoDesk.y)
+        {
+            // StartCoroutine(OnDecoDesk(audioSource));
+            return true;
+        } 
+        else if (x >= bottomLeftDecoBackground.x && x <= topRightDecoBackground.x &&
+                   y >= bottomLeftDecoBackground.y && y <= topRightDecoBackground.y)
+        {
+            StartCoroutine(OnDecoBackground(audioSource));
+            return true;
+        }
+        return false;
+    }
+
+    private IEnumerator OnDecoBackground(AudioSource audioSource)
+    {
+        if (audioSource != null)
+        {
+            audioSource.clip = decoBackgroundAudio;
+            if (audioSource.clip != null)
+            {
+                Debug.Log("Start Animation");
+                audioSource.Play();
+                Image image = decoBackgroundPrefab.GetComponent<Image>();
+                image.sprite = animationFrames[1];
+                Destroy(decoBackgroundContainer.transform.GetChild(0).gameObject);
+                Instantiate(decoBackgroundPrefab, decoBackgroundContainer.transform);
+                yield return new WaitForSeconds(0.5f);
+                image.sprite = animationFrames[2];
+                Destroy(decoBackgroundContainer.transform.GetChild(0).gameObject);
+                Instantiate(decoBackgroundPrefab, decoBackgroundContainer.transform);
+                yield return new WaitForSeconds(0.5f);
+                image.sprite = animationFrames[0];
+                Destroy(decoBackgroundContainer.transform.GetChild(0).gameObject);
+                Instantiate(decoBackgroundPrefab, decoBackgroundContainer.transform);
+            }
+            else
+            {
+                Debug.LogError("AudioClip couldn't be found.");
+            }
+        }
+        yield return new WaitForSeconds(0f);
+    }
+
+    private void OnDecoDesk(AudioSource audioSource)
+    {
+        if (audioSource != null)
+        {
+            audioSource.clip = decoBackgroundAudio;
+            if (audioSource.clip != null)
+            {
+                audioSource.Play();
+            }else
+            {
+                Debug.LogError("AudioClip couldn't be found.");
+            }
+        }
     }
 }

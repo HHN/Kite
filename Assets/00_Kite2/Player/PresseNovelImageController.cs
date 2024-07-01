@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PresseNovelImageController : MonoBehaviour
+public class PresseNovelImageController : NovelImageController
 {
     [SerializeField] private GameObject backgroundPrefab;
     [SerializeField] private GameObject backgroundContainer;
@@ -15,9 +16,8 @@ public class PresseNovelImageController : MonoBehaviour
     [SerializeField] private GameObject characterPrefab;
     [SerializeField] private GameObject characterContainer;
 
-    public void SetVisualElements(RectTransform canvasRect)
+    public override void SetVisualElements(RectTransform canvasRect)
     {
-        Debug.Log(""+canvasRect.rect.width + "  " + canvasRect.rect.height);
         Instantiate(backgroundPrefab, backgroundContainer.transform);
         Instantiate(deskPrefab, deskContainer.transform);
         Instantiate(decoDeskPrefab, decoDeskContainer.transform);
@@ -42,4 +42,8 @@ public class PresseNovelImageController : MonoBehaviour
         NovelColorManager.Instance().SetCanvasHeight(canvasRect.rect.height);
         NovelColorManager.Instance().SetCanvasWidth(canvasRect.rect.width);
     }
+
+    
 }
+
+    
