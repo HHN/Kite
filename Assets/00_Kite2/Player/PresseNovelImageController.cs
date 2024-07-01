@@ -19,6 +19,7 @@ public class PresseNovelImageController : NovelImageController
     [SerializeField] private AudioClip decoVaseAudio;
     [SerializeField] private Sprite[] animationFramesVase;
     [SerializeField] private Sprite[] animationFramesGlas;
+    [SerializeField] private Sprite[] faceSprites;    
 
     public override void SetVisualElements(RectTransform canvasRect)
     {
@@ -35,7 +36,7 @@ public class PresseNovelImageController : NovelImageController
             
         characterRectTransform.anchoredPosition = new Vector2(-canvasRect.rect.width * 0.1f, 0);
         decoVaseRectTransform.anchoredPosition = new Vector2(-canvasRect.rect.width * 0.1f, canvasRect.rect.height * 0.12f);
-        decoGlasRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.25f, canvasRect.rect.height * 0.08f);
+        decoGlasRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.21f, canvasRect.rect.height * 0.08f);
         deskRectTransform.anchoredPosition = new Vector2(0, -canvasRect.rect.height * 0.05f);
 
         characterRectTransform.sizeDelta = new Vector2(canvasRect.rect.width * 0.25f, canvasRect.rect.height * 1f);
