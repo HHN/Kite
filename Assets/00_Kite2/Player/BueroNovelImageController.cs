@@ -37,20 +37,20 @@ public class BueroNovelImageController : NovelImageController
     {
         RectTransform decoPlantRectTransform = decoPlantContainer.GetComponent<RectTransform>();
 
-        Vector3[] cornersDecoBackground = new Vector3[4];
-        decoPlantRectTransform.GetWorldCorners(cornersDecoBackground);
-        Vector3 bottomLeftDecoBackground = cornersDecoBackground[0];
-        Vector3 topRightDecoBackground = cornersDecoBackground[2];
-        if (x >= bottomLeftDecoBackground.x && x <= topRightDecoBackground.x &&
-            y >= bottomLeftDecoBackground.y && y <= topRightDecoBackground.y)
+        Vector3[] cornersDecoPlant = new Vector3[4];
+        decoPlantRectTransform.GetWorldCorners(cornersDecoPlant);
+        Vector3 bottomLeftDecoPlant = cornersDecoPlant[0];
+        Vector3 topRightDecoPlant = cornersDecoPlant[2];
+        if (x >= bottomLeftDecoPlant.x && x <= topRightDecoPlant.x &&
+            y >= bottomLeftDecoPlant.y && y <= topRightDecoPlant.y)
         {
-            StartCoroutine(OnDecoBackground(audioSource));
+            StartCoroutine(OnDecoPlant(audioSource));
             return true;
         }
         return false;
     }
 
-    private IEnumerator OnDecoBackground(AudioSource audioSource)
+    private IEnumerator OnDecoPlant(AudioSource audioSource)
     {
         if (audioSource != null)
         {

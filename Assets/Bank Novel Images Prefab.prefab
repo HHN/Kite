@@ -527,10 +527,17 @@ MonoBehaviour:
   characterContainer: {fileID: 4782255772119278625}
   decoGlasAudio: {fileID: 8300000, guid: e98f518e9e0c377449a3134fc81ebcc9, type: 3}
   decoPlantAudio: {fileID: 8300000, guid: 36685d5895c76de418eb8d96bdcbef80, type: 3}
-  animationFrames:
+  animationFramesPlant:
   - {fileID: 21300000, guid: f5eed5e52be07d641b798dbf6b915bb8, type: 3}
   - {fileID: 21300000, guid: a54589aa564f7244da0c42a701cbbaa6, type: 3}
   - {fileID: 21300000, guid: 315c8ad94b56ae343998e44a28346b0e, type: 3}
+  animationFramesGlas:
+  - {fileID: 21300000, guid: 4d1db428631932b4d812907be6956434, type: 3}
+  - {fileID: 21300000, guid: a8d967ae17f4c9e4284e3bebf1894a79, type: 3}
+  - {fileID: 21300000, guid: f3ae4e205b00e884abb8663c9162de1e, type: 3}
+  - {fileID: 21300000, guid: 00158b797f500ca498d255b7352d521e, type: 3}
+  - {fileID: 21300000, guid: 43e029753c0ce044590d3f63d8aef9d6, type: 3}
+  - {fileID: 21300000, guid: 9d987476a3f9e3647ae902413ee1316b, type: 3}
 --- !u!1 &5558045549636132440
 GameObject:
   m_ObjectHideFlags: 0
