@@ -18,7 +18,8 @@ public class BankNovelImageController : NovelImageController
     [SerializeField] private GameObject characterContainer;
     [SerializeField] private AudioClip decoGlasAudio;
     [SerializeField] private AudioClip decoPlantAudio;
-    [SerializeField] private Sprite[] animationFrames;
+    [SerializeField] private Sprite[] animationFramesPlant;
+    [SerializeField] private Sprite[] animationFramesGlas;
 
     public override void SetVisualElements(RectTransform canvasRect)
     {
@@ -85,15 +86,15 @@ public class BankNovelImageController : NovelImageController
             {
                 audioSource.Play();
                 Image image = decoPlantPrefab.GetComponent<Image>();
-                image.sprite = animationFrames[1];
+                image.sprite = animationFramesPlant[1];
                 Destroy(decoPlantContainer.transform.GetChild(0).gameObject);
                 Instantiate(decoPlantPrefab, decoPlantContainer.transform);
                 yield return new WaitForSeconds(0.5f);
-                image.sprite = animationFrames[2];
+                image.sprite = animationFramesPlant[2];
                 Destroy(decoPlantContainer.transform.GetChild(0).gameObject);
                 Instantiate(decoPlantPrefab, decoPlantContainer.transform);
                 yield return new WaitForSeconds(0.5f);
-                image.sprite = animationFrames[0];
+                image.sprite = animationFramesPlant[0];
                 Destroy(decoPlantContainer.transform.GetChild(0).gameObject);
                 Instantiate(decoPlantPrefab, decoPlantContainer.transform);
             }
@@ -113,7 +114,32 @@ public class BankNovelImageController : NovelImageController
             if (audioSource.clip != null)
             {
                 audioSource.Play();
-            }else
+                Image image = decoGlasPrefab.GetComponent<Image>();
+                image.sprite = animationFramesGlas[1];
+                Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+                Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+                yield return new WaitForSeconds(0.5f);
+                image.sprite = animationFramesGlas[2];
+                Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+                Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+                yield return new WaitForSeconds(0.5f);
+                image.sprite = animationFramesGlas[3];
+                Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+                Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+                yield return new WaitForSeconds(0.5f);
+                image.sprite = animationFramesGlas[4];
+                Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+                Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+                yield return new WaitForSeconds(0.5f);
+                image.sprite = animationFramesGlas[5];
+                Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+                Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+                yield return new WaitForSeconds(0.5f);
+                image.sprite = animationFramesGlas[0];
+                Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+                Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+            }
+            else
             {
                 Debug.LogError("AudioClip couldn't be found.");
             }

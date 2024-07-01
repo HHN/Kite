@@ -15,8 +15,10 @@ public class PresseNovelImageController : NovelImageController
     [SerializeField] private GameObject decoGlasContainer;
     [SerializeField] private GameObject characterPrefab;
     [SerializeField] private GameObject characterContainer;
+    [SerializeField] private AudioClip decoGlasAudio;
     [SerializeField] private AudioClip decoVaseAudio;
-    [SerializeField] private Sprite[] animationFrames;
+    [SerializeField] private Sprite[] animationFramesVase;
+    [SerializeField] private Sprite[] animationFramesGlas;
 
     public override void SetVisualElements(RectTransform canvasRect)
     {
@@ -48,16 +50,26 @@ public class PresseNovelImageController : NovelImageController
     public override bool HandleTouchEvent(float x, float y, AudioSource audioSource)
     {
         RectTransform decoVaseRectTransform = decoVaseContainer.GetComponent<RectTransform>();
+        RectTransform decoGlasRectTransform = decoGlasContainer.GetComponent<RectTransform>();
 
         Vector3[] cornersDecoVase = new Vector3[4];
         decoVaseRectTransform.GetWorldCorners(cornersDecoVase);
         Vector3 bottomLeftDecoVase = cornersDecoVase[0];
         Vector3 topRightDecoVase = cornersDecoVase[2];
+
+        Vector3[] cornersDecoGlas = new Vector3[4];
+        decoGlasRectTransform.GetWorldCorners(cornersDecoGlas);
+        Vector3 bottomLeftDecoGlas = cornersDecoGlas[0];
+        Vector3 topRightDecoGlas = cornersDecoGlas[2];
         if (x >= bottomLeftDecoVase.x && x <= topRightDecoVase.x &&
             y >= bottomLeftDecoVase.y && y <= topRightDecoVase.y)
         {
             StartCoroutine(OnDecoVase(audioSource));
             return true;
+        } else if ( x >= bottomLeftDecoGlas.x && x <= topRightDecoGlas.x &&
+                    y >= bottomLeftDecoGlas.y && y <= topRightDecoGlas.y)
+        {
+            StartCoroutine(OnDecoGlas(audioSource));
         }
         return false;
     }
@@ -71,17 +83,58 @@ public class PresseNovelImageController : NovelImageController
             {
                 audioSource.Play();
                 Image image = decoVasePrefab.GetComponent<Image>();
-                image.sprite = animationFrames[1];
+                image.sprite = animationFramesVase[1];
                 Destroy(decoVaseContainer.transform.GetChild(0).gameObject);
                 Instantiate(decoVasePrefab, decoVaseContainer.transform);
                 yield return new WaitForSeconds(0.5f);
-                image.sprite = animationFrames[2];
+                image.sprite = animationFramesVase[2];
                 Destroy(decoVaseContainer.transform.GetChild(0).gameObject);
                 Instantiate(decoVasePrefab, decoVaseContainer.transform);
                 yield return new WaitForSeconds(0.5f);
-                image.sprite = animationFrames[0];
+                image.sprite = animationFramesVase[0];
                 Destroy(decoVaseContainer.transform.GetChild(0).gameObject);
                 Instantiate(decoVasePrefab, decoVaseContainer.transform);
+            }
+            else
+            {
+                Debug.LogError("AudioClip couldn't be found.");
+            }
+        }
+        yield return new WaitForSeconds(0f);
+    }
+
+    private IEnumerator OnDecoGlas(AudioSource audioSource)
+    {
+        if (audioSource != null)
+        {
+            audioSource.clip = decoGlasAudio;
+            if (audioSource.clip != null)
+            {
+                audioSource.Play();
+                Image image = decoGlasPrefab.GetComponent<Image>();
+                image.sprite = animationFramesGlas[1];
+                Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+                Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+                yield return new WaitForSeconds(0.5f);
+                image.sprite = animationFramesGlas[2];
+                Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+                Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+                yield return new WaitForSeconds(0.5f);
+                image.sprite = animationFramesGlas[3];
+                Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+                Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+                yield return new WaitForSeconds(0.5f);
+                image.sprite = animationFramesGlas[4];
+                Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+                Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+                yield return new WaitForSeconds(0.5f);
+                image.sprite = animationFramesGlas[5];
+                Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+                Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+                yield return new WaitForSeconds(0.5f);
+                image.sprite = animationFramesGlas[0];
+                Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+                Instantiate(decoGlasPrefab, decoGlasContainer.transform);
             }
             else
             {
