@@ -525,6 +525,11 @@ MonoBehaviour:
   decoGlasContainer: {fileID: 5558045549636132440}
   characterPrefab: {fileID: 1465545687914413273, guid: 81edc9f9eabdbad40a81d9c419fd4022, type: 3}
   characterContainer: {fileID: 4782255772119278625}
+  decoVaseAudio: {fileID: 8300000, guid: 36685d5895c76de418eb8d96bdcbef80, type: 3}
+  animationFrames:
+  - {fileID: 21300000, guid: 3b6a23e979d597b4782a69ea4f5a51c1, type: 3}
+  - {fileID: 21300000, guid: 744b1c2dae89b6f43a01072d74f6c67b, type: 3}
+  - {fileID: 21300000, guid: c2b7968438f3b574fb90c9f4bec337a4, type: 3}
 --- !u!1 &5558045549636132440
 GameObject:
   m_ObjectHideFlags: 0
