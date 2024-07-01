@@ -9,10 +9,10 @@ public class PresseNovelImageController : NovelImageController
     [SerializeField] private GameObject backgroundContainer;
     [SerializeField] private GameObject deskPrefab;
     [SerializeField] private GameObject deskContainer;
-    [SerializeField] private GameObject decoDeskPrefab;
-    [SerializeField] private GameObject decoDeskContainer;
-    [SerializeField] private GameObject decoBackgroundPrefab;
-    [SerializeField] private GameObject decoBackgroundContainer;
+    [SerializeField] private GameObject decoVasePrefab;
+    [SerializeField] private GameObject decoVaseContainer;
+    [SerializeField] private GameObject decoGlasPrefab;
+    [SerializeField] private GameObject decoGlasContainer;
     [SerializeField] private GameObject characterPrefab;
     [SerializeField] private GameObject characterContainer;
 
@@ -20,23 +20,23 @@ public class PresseNovelImageController : NovelImageController
     {
         Instantiate(backgroundPrefab, backgroundContainer.transform);
         Instantiate(deskPrefab, deskContainer.transform);
-        Instantiate(decoDeskPrefab, decoDeskContainer.transform);
-        Instantiate(decoBackgroundPrefab, decoBackgroundContainer.transform);
+        Instantiate(decoVasePrefab, decoVaseContainer.transform);
+        Instantiate(decoGlasPrefab, decoGlasContainer.transform);
         Instantiate(characterPrefab, characterContainer.transform);
         
         RectTransform characterRectTransform = characterContainer.GetComponent<RectTransform>();
-        RectTransform decoDeskRectTransform = decoDeskContainer.GetComponent<RectTransform>();
-        RectTransform decoBackgroundRectTransform = decoBackgroundContainer.GetComponent<RectTransform>();
+        RectTransform decoVaseRectTransform = decoVaseContainer.GetComponent<RectTransform>();
+        RectTransform decoGlasRectTransform = decoGlasContainer.GetComponent<RectTransform>();
         RectTransform deskRectTransform = deskContainer.GetComponent<RectTransform>();
             
         characterRectTransform.anchoredPosition = new Vector2(-canvasRect.rect.width * 0.1f, 0);
-        decoDeskRectTransform.anchoredPosition = new Vector2(-canvasRect.rect.width * 0.1f, canvasRect.rect.height * 0.08f);
-        decoBackgroundRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.25f, canvasRect.rect.height * 0.08f);
+        decoVaseRectTransform.anchoredPosition = new Vector2(-canvasRect.rect.width * 0.1f, canvasRect.rect.height * 0.08f);
+        decoGlasRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.25f, canvasRect.rect.height * 0.08f);
         deskRectTransform.anchoredPosition = new Vector2(0, -canvasRect.rect.height * 0.05f);
 
         characterRectTransform.sizeDelta = new Vector2(canvasRect.rect.width * 0.25f, canvasRect.rect.height * 1f);
-        decoDeskRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.09f, canvasRect.rect.height * 0.265f);
-        decoBackgroundRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.064f, canvasRect.rect.height * 0.08f);
+        decoVaseRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.09f, canvasRect.rect.height * 0.265f);
+        decoGlasRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.064f, canvasRect.rect.height * 0.08f);
         deskRectTransform.sizeDelta = new Vector2(canvasRect.rect.width * 0.35f, canvasRect.rect.height * 0.25f);
 
         NovelColorManager.Instance().SetCanvasHeight(canvasRect.rect.height);

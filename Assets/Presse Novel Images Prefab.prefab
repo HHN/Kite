@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 3509890071655375629}
   - component: {fileID: 3946301427052792407}
   m_Layer: 3
-  m_Name: Deco desk Container
+  m_Name: Deco Vase Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -519,10 +519,10 @@ MonoBehaviour:
   backgroundContainer: {fileID: 4321828020364627261}
   deskPrefab: {fileID: 8411936371333490823, guid: b185656b0741c1643a4f669f2680c35e, type: 3}
   deskContainer: {fileID: 4467964754824672667}
-  decoDeskPrefab: {fileID: 8411936371333490823, guid: c6a744ea4acda9845859e692793b662b, type: 3}
-  decoDeskContainer: {fileID: 3234276313403849665}
-  decoBackgroundPrefab: {fileID: 8411936371333490823, guid: 5914556f3061294488bc5c9fd324c341, type: 3}
-  decoBackgroundContainer: {fileID: 5558045549636132440}
+  decoVasePrefab: {fileID: 8411936371333490823, guid: c6a744ea4acda9845859e692793b662b, type: 3}
+  decoVaseContainer: {fileID: 3234276313403849665}
+  decoGlasPrefab: {fileID: 8411936371333490823, guid: 5914556f3061294488bc5c9fd324c341, type: 3}
+  decoGlasContainer: {fileID: 5558045549636132440}
   characterPrefab: {fileID: 1465545687914413273, guid: 81edc9f9eabdbad40a81d9c419fd4022, type: 3}
   characterContainer: {fileID: 4782255772119278625}
 --- !u!1 &5558045549636132440
@@ -536,7 +536,7 @@ GameObject:
   - component: {fileID: 5869069278642351330}
   - component: {fileID: 1692021508203506289}
   m_Layer: 3
-  m_Name: Deco background Container
+  m_Name: Deco Glas Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
