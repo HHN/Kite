@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 3509890071655375629}
   - component: {fileID: 3946301427052792407}
   m_Layer: 3
-  m_Name: Deco desk Container
+  m_Name: Deco Glas Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -318,8 +318,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00012207031, y: 0}
-  m_SizeDelta: {x: 0.00024414062, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -3.2014214e-10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6704600108708975586
 CanvasRenderer:
@@ -519,12 +519,18 @@ MonoBehaviour:
   backgroundContainer: {fileID: 4321828020364627261}
   deskPrefab: {fileID: 8411936371333490823, guid: 3235113f3fdefd64e8bc42792fa1355b, type: 3}
   deskContainer: {fileID: 4467964754824672667}
-  decoDeskPrefab: {fileID: 8411936371333490823, guid: ee198f3e5cc9689469d14e822d4417e7, type: 3}
-  decoDeskContainer: {fileID: 3234276313403849665}
-  decoBackgroundPrefab: {fileID: 8411936371333490823, guid: 02334970db3300f4797dfc8a311a46c8, type: 3}
-  decoBackgroundContainer: {fileID: 5558045549636132440}
+  decoGlasPrefab: {fileID: 8411936371333490823, guid: ee198f3e5cc9689469d14e822d4417e7, type: 3}
+  decoGlasContainer: {fileID: 3234276313403849665}
+  decoPlantPrefab: {fileID: 8411936371333490823, guid: 02334970db3300f4797dfc8a311a46c8, type: 3}
+  decoPlantContainer: {fileID: 5558045549636132440}
   characterPrefab: {fileID: 1465545687914413273, guid: aa2ae7c4c5e34ea48ba637f2c59e7998, type: 3}
   characterContainer: {fileID: 4782255772119278625}
+  decoGlasAudio: {fileID: 8300000, guid: e98f518e9e0c377449a3134fc81ebcc9, type: 3}
+  decoPlantAudio: {fileID: 8300000, guid: 36685d5895c76de418eb8d96bdcbef80, type: 3}
+  animationFrames:
+  - {fileID: 21300000, guid: f5eed5e52be07d641b798dbf6b915bb8, type: 3}
+  - {fileID: 21300000, guid: a54589aa564f7244da0c42a701cbbaa6, type: 3}
+  - {fileID: 21300000, guid: 315c8ad94b56ae343998e44a28346b0e, type: 3}
 --- !u!1 &5558045549636132440
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,7 +542,7 @@ GameObject:
   - component: {fileID: 5869069278642351330}
   - component: {fileID: 1692021508203506289}
   m_Layer: 3
-  m_Name: Deco background Container
+  m_Name: Deco Plant Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
