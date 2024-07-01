@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NovelHistoryEntryGuiElement : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class NovelHistoryEntryGuiElement : MonoBehaviour
     public void InitializeEntry(DialogHistoryEntry dialogHistoryEntry)
     {
         this.dialogHistoryEntry = dialogHistoryEntry;
-        headButtonText.text = VisualNovelNamesHelper.GetName(dialogHistoryEntry.GetNovelId()) + " (" + dialogHistoryEntry.GetDateAndTime() + ")";
+        headButtonText.text = dialogHistoryEntry.GetDateAndTime();
         dialogText.text = dialogHistoryEntry.GetDialog();
         aiFeedbackText.text = dialogHistoryEntry.GetCompletion();
     }
@@ -24,5 +25,28 @@ public class NovelHistoryEntryGuiElement : MonoBehaviour
         dropdownContainer.SetMenuOpen(false);
         dropDownDialog.SetMenuOpen(false);
         dropDownAiFeedback.SetMenuOpen(false);
+    }
+
+    public void AddLayoutToUpdateOnChange(RectTransform rectTransform)
+    {
+        dropdownContainer.AddLayoutToUpdateOnChange(rectTransform);
+        dropDownDialog.AddLayoutToUpdateOnChange(rectTransform);
+        dropDownAiFeedback.AddLayoutToUpdateOnChange(rectTransform);
+    }
+
+    public void SetNovelHistorySceneController(NovelHistorySceneController novelHistorySceneController)
+    {
+        dropdownContainer.SetNovelHistorySceneController(novelHistorySceneController);
+        dropDownDialog.SetNovelHistorySceneController(novelHistorySceneController);
+        dropDownAiFeedback.SetNovelHistorySceneController(novelHistorySceneController);
+    }
+
+    public void RebuildLayout()
+    {
+        dropdownContainer.RebuildLayout();
+        dropDownDialog.RebuildLayout();
+        dropDownAiFeedback.RebuildLayout();
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 }

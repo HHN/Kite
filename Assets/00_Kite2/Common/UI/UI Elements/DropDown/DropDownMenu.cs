@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DropDownMenu : MonoBehaviour
 {
+    [SerializeField] private GameObject parent;
     [SerializeField] private GameObject menuWrapper;
     [SerializeField] private Button menuButton;
     [SerializeField] private Image indicatorImage;
@@ -11,6 +13,7 @@ public class DropDownMenu : MonoBehaviour
     [SerializeField] private Sprite spriteWhileClosed;
     [SerializeField] private bool isOpen;
     [SerializeField] private List<RectTransform> listOfObjectToUpdate;
+    [SerializeField] private NovelHistorySceneController novelHistorySceneController;
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +60,10 @@ public class DropDownMenu : MonoBehaviour
             OpenMenu();
 
         }
+        if (novelHistorySceneController != null)
+        {
+            novelHistorySceneController.RebuildLayout();
+        }
 
         if (listOfObjectToUpdate == null)
         {
@@ -69,10 +76,17 @@ public class DropDownMenu : MonoBehaviour
         }
     }
 
+    public void SetNovelHistorySceneController(NovelHistorySceneController novelHistorySceneController)
+    {
+        this.novelHistorySceneController = novelHistorySceneController;
+    }
+
     private void OpenMenu()
     {
         indicatorImage.sprite = spriteWhileOpen;
         menuWrapper.SetActive(true);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(menuWrapper.GetComponent<RectTransform>());
+        if (parent != null) { LayoutRebuilder.ForceRebuildLayoutImmediate(parent.GetComponent<RectTransform>()); }
         isOpen = true;
     }
 
@@ -80,6 +94,26 @@ public class DropDownMenu : MonoBehaviour
     {
         indicatorImage.sprite = spriteWhileClosed;
         menuWrapper.SetActive(false);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(menuWrapper.GetComponent<RectTransform>());
+        if (parent != null) { LayoutRebuilder.ForceRebuildLayoutImmediate(parent.GetComponent<RectTransform>()); }
         isOpen = false;
+    }
+
+    public void AddLayoutToUpdateOnChange(RectTransform rect)
+    {
+        listOfObjectToUpdate.Add(rect);
+    }
+
+    internal void RebuildLayout()
+    {
+        if (listOfObjectToUpdate == null)
+        {
+            return;
+        }
+
+        foreach (RectTransform rect in listOfObjectToUpdate)
+        {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(rect);
+        }
     }
 }

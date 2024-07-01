@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using LeastSquares.Overtone;
 using System.Collections;
 using System;
+using System.Globalization;
 
 public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErrorHandler
 {
@@ -106,8 +107,10 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
         dialogHistoryEntry.SetNovelId(PlayManager.Instance().GetVisualNovelToPlay().id);
         dialogHistoryEntry.SetDialog(PromptManager.Instance().GetDialog());
         dialogHistoryEntry.SetCompletion(response.GetCompletion().Trim());
-        dialogHistoryEntry.SetDateAndTime(DateTime.Now.ToString("dd.MM.yyyy, HH:mm"));
-        DialogHistoryManager.Instance().AddEntry(dialogHistoryEntry);
+        DateTime now = DateTime.Now;
+        CultureInfo culture = new CultureInfo("de-DE");
+        string formattedDateTime = now.ToString("dddd | dd.MM.yyyy | HH:mm", culture);
+        dialogHistoryEntry.SetDateAndTime(formattedDateTime); DialogHistoryManager.Instance().AddEntry(dialogHistoryEntry);
         yield return null;
     }
 
