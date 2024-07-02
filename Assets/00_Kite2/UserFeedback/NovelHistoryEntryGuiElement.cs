@@ -12,6 +12,13 @@ public class NovelHistoryEntryGuiElement : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogText;
     [SerializeField] private TextMeshProUGUI aiFeedbackText;
     [SerializeField] private DialogHistoryEntry dialogHistoryEntry;
+    [SerializeField] private Image image;
+    [SerializeField] private Image image01;
+    [SerializeField] private Image image02;
+    [SerializeField] private Image image03;
+    [SerializeField] private Image image04;
+    [SerializeField] private TextMeshProUGUI buttonText;
+    [SerializeField] private TextMeshProUGUI buttonText02;
 
     public void InitializeEntry(DialogHistoryEntry dialogHistoryEntry)
     {
@@ -49,5 +56,17 @@ public class NovelHistoryEntryGuiElement : MonoBehaviour
             dropDownDialog,
             dropDownAiFeedback
         };
+    }
+
+    public void SetVisualNovelColor(VisualNovelNames visualNovel)
+    {
+        Color color = FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel);
+        image.color = color;   
+        image01.color = color;   
+        image02.color = color;   
+        image03.color = color;   
+        image04.color = color;   
+        buttonText.color = color;
+        buttonText02.color = color;
     }
 }
