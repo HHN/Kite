@@ -293,8 +293,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 432, y: 0}
+  m_SizeDelta: {x: 864, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &62138493
 MonoBehaviour:
@@ -764,7 +764,6 @@ GameObject:
   - component: {fileID: 203507350}
   - component: {fileID: 203507349}
   - component: {fileID: 203507348}
-  - component: {fileID: 203507347}
   m_Layer: 5
   m_Name: Bankkonto
   m_TagString: Untagged
@@ -791,32 +790,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 432, y: 0}
+  m_SizeDelta: {x: 880, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &203507347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 203507345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ed2127447415d7488a452ffd7707d9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropdownContainer: {fileID: 1284719197}
-  dropDownDialog: {fileID: 0}
-  dropDownAiFeedback: {fileID: 0}
-  headButtonText: {fileID: 1586080837}
-  dialogText: {fileID: 0}
-  aiFeedbackText: {fileID: 0}
-  dialogHistoryEntry:
-    novelId: 0
-    dialog: 
-    completion: 
-    dateAndTime: 
 --- !u!114 &203507348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1122,7 +1098,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e482ec1f9369fb244bfb80e962b296af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
   menuWrapper: {fileID: 785423253}
   menuButton: {fileID: 289032710}
   indicatorImage: {fileID: 590647626}
@@ -1133,7 +1108,7 @@ MonoBehaviour:
   - {fileID: 785423254}
   - {fileID: 1000109953}
   - {fileID: 1067528252}
-  novelHistorySceneController: {fileID: 956368497}
+  childMenus: []
 --- !u!114 &289032709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1505,8 +1480,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 432, y: 0}
+  m_SizeDelta: {x: 864, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &356936096
 MonoBehaviour:
@@ -1688,7 +1663,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e482ec1f9369fb244bfb80e962b296af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
   menuWrapper: {fileID: 1919890242}
   menuButton: {fileID: 361567815}
   indicatorImage: {fileID: 1372220787}
@@ -1699,7 +1673,7 @@ MonoBehaviour:
   - {fileID: 1919890243}
   - {fileID: 519295635}
   - {fileID: 1067528252}
-  novelHistorySceneController: {fileID: 956368497}
+  childMenus: []
 --- !u!114 &361567814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1837,8 +1811,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 432, y: 0}
+  m_SizeDelta: {x: 864, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &413226295
 MonoBehaviour:
@@ -1911,7 +1885,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
+  m_AnchoredPosition: {x: 432, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &464315336
@@ -2021,8 +1995,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 432, y: 0}
+  m_SizeDelta: {x: 864, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &475043290
 MonoBehaviour:
@@ -2169,7 +2143,6 @@ GameObject:
   - component: {fileID: 519295639}
   - component: {fileID: 519295638}
   - component: {fileID: 519295637}
-  - component: {fileID: 519295636}
   m_Layer: 5
   m_Name: "B\xFCro"
   m_TagString: Untagged
@@ -2196,32 +2169,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 432, y: 0}
+  m_SizeDelta: {x: 880, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &519295636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519295634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ed2127447415d7488a452ffd7707d9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropdownContainer: {fileID: 361567813}
-  dropDownDialog: {fileID: 0}
-  dropDownAiFeedback: {fileID: 0}
-  headButtonText: {fileID: 857834275}
-  dialogText: {fileID: 0}
-  aiFeedbackText: {fileID: 0}
-  dialogHistoryEntry:
-    novelId: 0
-    dialog: 
-    completion: 
-    dateAndTime: 
 --- !u!114 &519295637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2352,7 +2302,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e482ec1f9369fb244bfb80e962b296af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
   menuWrapper: {fileID: 271380915}
   menuButton: {fileID: 523732541}
   indicatorImage: {fileID: 1401281527}
@@ -2363,7 +2312,7 @@ MonoBehaviour:
   - {fileID: 271380916}
   - {fileID: 1759595781}
   - {fileID: 1067528252}
-  novelHistorySceneController: {fileID: 956368497}
+  childMenus: []
 --- !u!114 &523732540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2805,8 +2754,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 432, y: 0}
+  m_SizeDelta: {x: 864, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &607388597
 MonoBehaviour:
@@ -2912,7 +2861,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e482ec1f9369fb244bfb80e962b296af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
   menuWrapper: {fileID: 1707488281}
   menuButton: {fileID: 663462339}
   indicatorImage: {fileID: 210567169}
@@ -2923,7 +2871,7 @@ MonoBehaviour:
   - {fileID: 1707488282}
   - {fileID: 1933131691}
   - {fileID: 1067528252}
-  novelHistorySceneController: {fileID: 956368497}
+  childMenus: []
 --- !u!114 &663462338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3061,8 +3009,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 432, y: 0}
+  m_SizeDelta: {x: 864, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &718533546
 MonoBehaviour:
@@ -3268,8 +3216,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 432, y: 0}
+  m_SizeDelta: {x: 864, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &750861755
 MonoBehaviour:
@@ -3574,8 +3522,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 432, y: 0}
+  m_SizeDelta: {x: 864, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &948405907
 MonoBehaviour:
@@ -3657,6 +3605,18 @@ MonoBehaviour:
   containerForHonorarNovel: {fileID: 1000109952}
   containerForLebenspartnerinNovel: {fileID: 1553965550}
   containerForIntroNovel: {fileID: 1338237166}
+  dropdownForBankkreditNovel: {fileID: 657247123254479140}
+  dropdownForBekannteTreffenNovel: {fileID: 1457782097}
+  dropdownForBankkontoNovel: {fileID: 1284719197}
+  dropdownForFoerderantragNovel: {fileID: 663462337}
+  dropdownForElternNovel: {fileID: 1543939245}
+  dropdownForNotarinNovel: {fileID: 1591834933}
+  dropdownForPresseeNovel: {fileID: 1175750298}
+  dropdownForBueroNovel: {fileID: 361567813}
+  dropdownForGruendungszuschussNovel: {fileID: 523732539}
+  dropdownForHonorarNovel: {fileID: 289032708}
+  dropdownForLebenspartnerinNovel: {fileID: 1578790500}
+  dropdownForIntroNovel: {fileID: 1851223889}
   spacingForBankkreditNovel: {fileID: 948405905}
   spacingForBekannteTreffenNovel: {fileID: 1355985734}
   spacingForBankkontoNovel: {fileID: 413226293}
@@ -3693,6 +3653,7 @@ MonoBehaviour:
   displayContainerForLebenspartnerinNovel: 0
   displayContainerForIntroNovel: 0
   displayNoDataObjectsHint: 0
+  novelHistoryEntries: []
 --- !u!4 &956368498
 Transform:
   m_ObjectHideFlags: 0
@@ -3720,7 +3681,6 @@ GameObject:
   - component: {fileID: 977517998}
   - component: {fileID: 977517997}
   - component: {fileID: 977517996}
-  - component: {fileID: 977517995}
   m_Layer: 5
   m_Name: Eltern
   m_TagString: Untagged
@@ -3747,32 +3707,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 432, y: 0}
+  m_SizeDelta: {x: 880, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &977517995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 977517993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ed2127447415d7488a452ffd7707d9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropdownContainer: {fileID: 1543939245}
-  dropDownDialog: {fileID: 0}
-  dropDownAiFeedback: {fileID: 0}
-  headButtonText: {fileID: 2039440089}
-  dialogText: {fileID: 0}
-  aiFeedbackText: {fileID: 0}
-  dialogHistoryEntry:
-    novelId: 0
-    dialog: 
-    completion: 
-    dateAndTime: 
 --- !u!114 &977517996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3845,7 +3782,6 @@ GameObject:
   - component: {fileID: 1000109957}
   - component: {fileID: 1000109956}
   - component: {fileID: 1000109955}
-  - component: {fileID: 1000109954}
   m_Layer: 5
   m_Name: Honorar
   m_TagString: Untagged
@@ -3872,32 +3808,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 432, y: 0}
+  m_SizeDelta: {x: 880, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1000109954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000109952}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ed2127447415d7488a452ffd7707d9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropdownContainer: {fileID: 289032708}
-  dropDownDialog: {fileID: 0}
-  dropDownAiFeedback: {fileID: 0}
-  headButtonText: {fileID: 42320915}
-  dialogText: {fileID: 0}
-  aiFeedbackText: {fileID: 0}
-  dialogHistoryEntry:
-    novelId: 0
-    dialog: 
-    completion: 
-    dateAndTime: 
 --- !u!114 &1000109955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3993,8 +3906,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 432, y: 0}
+  m_SizeDelta: {x: 864, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1009061740
 MonoBehaviour:
@@ -4328,7 +4241,6 @@ GameObject:
   - component: {fileID: 1122555532}
   - component: {fileID: 1122555531}
   - component: {fileID: 1122555530}
-  - component: {fileID: 1122555529}
   m_Layer: 5
   m_Name: Bekannte treffen
   m_TagString: Untagged
@@ -4355,32 +4267,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 432, y: 0}
+  m_SizeDelta: {x: 880, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1122555529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1122555527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ed2127447415d7488a452ffd7707d9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropdownContainer: {fileID: 1457782097}
-  dropDownDialog: {fileID: 0}
-  dropDownAiFeedback: {fileID: 0}
-  headButtonText: {fileID: 325985512}
-  dialogText: {fileID: 0}
-  aiFeedbackText: {fileID: 0}
-  dialogHistoryEntry:
-    novelId: 0
-    dialog: 
-    completion: 
-    dateAndTime: 
 --- !u!114 &1122555530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4610,7 +4499,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e482ec1f9369fb244bfb80e962b296af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
   menuWrapper: {fileID: 592913912}
   menuButton: {fileID: 1175750300}
   indicatorImage: {fileID: 1586829528}
@@ -4621,7 +4509,7 @@ MonoBehaviour:
   - {fileID: 592913913}
   - {fileID: 1559626569}
   - {fileID: 1067528252}
-  novelHistorySceneController: {fileID: 956368497}
+  childMenus: []
 --- !u!114 &1175750299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4903,8 +4791,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 432, y: 0}
+  m_SizeDelta: {x: 864, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1245389556
 MonoBehaviour:
@@ -5010,7 +4898,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e482ec1f9369fb244bfb80e962b296af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
   menuWrapper: {fileID: 512483126}
   menuButton: {fileID: 1284719199}
   indicatorImage: {fileID: 1685527306}
@@ -5021,7 +4908,7 @@ MonoBehaviour:
   - {fileID: 512483127}
   - {fileID: 203507346}
   - {fileID: 1067528252}
-  novelHistorySceneController: {fileID: 956368497}
+  childMenus: []
 --- !u!114 &1284719198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5136,7 +5023,6 @@ GameObject:
   - component: {fileID: 1338237171}
   - component: {fileID: 1338237170}
   - component: {fileID: 1338237169}
-  - component: {fileID: 1338237168}
   m_Layer: 5
   m_Name: Intro-Novel
   m_TagString: Untagged
@@ -5163,32 +5049,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 432, y: 0}
+  m_SizeDelta: {x: 880, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1338237168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1338237166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ed2127447415d7488a452ffd7707d9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropdownContainer: {fileID: 1851223889}
-  dropDownDialog: {fileID: 0}
-  dropDownAiFeedback: {fileID: 0}
-  headButtonText: {fileID: 2119219348}
-  dialogText: {fileID: 0}
-  aiFeedbackText: {fileID: 0}
-  dialogHistoryEntry:
-    novelId: 0
-    dialog: 
-    completion: 
-    dateAndTime: 
 --- !u!114 &1338237169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5284,8 +5147,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 432, y: 0}
+  m_SizeDelta: {x: 864, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1355985736
 MonoBehaviour:
@@ -5678,7 +5541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e482ec1f9369fb244bfb80e962b296af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
   menuWrapper: {fileID: 1135273643}
   menuButton: {fileID: 1457782099}
   indicatorImage: {fileID: 360574232}
@@ -5689,7 +5551,7 @@ MonoBehaviour:
   - {fileID: 1135273644}
   - {fileID: 1122555528}
   - {fileID: 1067528252}
-  novelHistorySceneController: {fileID: 956368497}
+  childMenus: []
 --- !u!114 &1457782098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6163,7 +6025,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e482ec1f9369fb244bfb80e962b296af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
   menuWrapper: {fileID: 321823154}
   menuButton: {fileID: 1543939247}
   indicatorImage: {fileID: 1188258318}
@@ -6174,7 +6035,7 @@ MonoBehaviour:
   - {fileID: 321823155}
   - {fileID: 977517994}
   - {fileID: 1067528252}
-  novelHistorySceneController: {fileID: 956368497}
+  childMenus: []
 --- !u!114 &1543939246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6289,7 +6150,6 @@ GameObject:
   - component: {fileID: 1553965555}
   - component: {fileID: 1553965554}
   - component: {fileID: 1553965553}
-  - component: {fileID: 1553965552}
   m_Layer: 5
   m_Name: Lebenspartner*in
   m_TagString: Untagged
@@ -6316,32 +6176,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 432, y: 0}
+  m_SizeDelta: {x: 880, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1553965552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1553965550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ed2127447415d7488a452ffd7707d9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropdownContainer: {fileID: 1578790500}
-  dropDownDialog: {fileID: 0}
-  dropDownAiFeedback: {fileID: 0}
-  headButtonText: {fileID: 1521993505}
-  dialogText: {fileID: 0}
-  aiFeedbackText: {fileID: 0}
-  dialogHistoryEntry:
-    novelId: 0
-    dialog: 
-    completion: 
-    dateAndTime: 
 --- !u!114 &1553965553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6414,7 +6251,6 @@ GameObject:
   - component: {fileID: 1559626573}
   - component: {fileID: 1559626572}
   - component: {fileID: 1559626571}
-  - component: {fileID: 1559626570}
   m_Layer: 5
   m_Name: Presse
   m_TagString: Untagged
@@ -6441,32 +6277,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 432, y: 0}
+  m_SizeDelta: {x: 880, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1559626570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1559626568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ed2127447415d7488a452ffd7707d9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropdownContainer: {fileID: 1175750298}
-  dropDownDialog: {fileID: 0}
-  dropDownAiFeedback: {fileID: 0}
-  headButtonText: {fileID: 1584539350}
-  dialogText: {fileID: 0}
-  aiFeedbackText: {fileID: 0}
-  dialogHistoryEntry:
-    novelId: 0
-    dialog: 
-    completion: 
-    dateAndTime: 
 --- !u!114 &1559626571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6597,7 +6410,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e482ec1f9369fb244bfb80e962b296af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
   menuWrapper: {fileID: 1608235919}
   menuButton: {fileID: 1578790502}
   indicatorImage: {fileID: 170099239}
@@ -6608,7 +6420,7 @@ MonoBehaviour:
   - {fileID: 1608235920}
   - {fileID: 1553965551}
   - {fileID: 1067528252}
-  novelHistorySceneController: {fileID: 956368497}
+  childMenus: []
 --- !u!114 &1578790501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7127,7 +6939,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e482ec1f9369fb244bfb80e962b296af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
   menuWrapper: {fileID: 1700279456}
   menuButton: {fileID: 1591834935}
   indicatorImage: {fileID: 119158436}
@@ -7138,7 +6949,7 @@ MonoBehaviour:
   - {fileID: 1700279457}
   - {fileID: 2050534267}
   - {fileID: 1067528252}
-  novelHistorySceneController: {fileID: 956368497}
+  childMenus: []
 --- !u!114 &1591834934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7748,8 +7559,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 432, y: 0}
+  m_SizeDelta: {x: 864, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1742568433
 MonoBehaviour:
@@ -7888,7 +7699,6 @@ GameObject:
   - component: {fileID: 1759595785}
   - component: {fileID: 1759595784}
   - component: {fileID: 1759595783}
-  - component: {fileID: 1759595782}
   m_Layer: 5
   m_Name: "Gr\xFCndungszuschuss"
   m_TagString: Untagged
@@ -7915,32 +7725,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 432, y: 0}
+  m_SizeDelta: {x: 880, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1759595782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1759595780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ed2127447415d7488a452ffd7707d9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropdownContainer: {fileID: 523732539}
-  dropDownDialog: {fileID: 0}
-  dropDownAiFeedback: {fileID: 0}
-  headButtonText: {fileID: 201168500}
-  dialogText: {fileID: 0}
-  aiFeedbackText: {fileID: 0}
-  dialogHistoryEntry:
-    novelId: 0
-    dialog: 
-    completion: 
-    dateAndTime: 
 --- !u!114 &1759595783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8206,7 +7993,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e482ec1f9369fb244bfb80e962b296af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
   menuWrapper: {fileID: 1599070045}
   menuButton: {fileID: 1851223891}
   indicatorImage: {fileID: 1022029525}
@@ -8217,7 +8003,7 @@ MonoBehaviour:
   - {fileID: 1599070046}
   - {fileID: 1338237167}
   - {fileID: 1067528252}
-  novelHistorySceneController: {fileID: 956368497}
+  childMenus: []
 --- !u!114 &1851223890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8533,7 +8319,6 @@ GameObject:
   - component: {fileID: 1933131695}
   - component: {fileID: 1933131694}
   - component: {fileID: 1933131693}
-  - component: {fileID: 1933131692}
   m_Layer: 5
   m_Name: "F\xF6rderantrag"
   m_TagString: Untagged
@@ -8560,32 +8345,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 432, y: 0}
+  m_SizeDelta: {x: 880, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1933131692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1933131690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ed2127447415d7488a452ffd7707d9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropdownContainer: {fileID: 663462337}
-  dropDownDialog: {fileID: 0}
-  dropDownAiFeedback: {fileID: 0}
-  headButtonText: {fileID: 721794356}
-  dialogText: {fileID: 0}
-  aiFeedbackText: {fileID: 0}
-  dialogHistoryEntry:
-    novelId: 0
-    dialog: 
-    completion: 
-    dateAndTime: 
 --- !u!114 &1933131693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8896,7 +8658,6 @@ GameObject:
   - component: {fileID: 2050534271}
   - component: {fileID: 2050534270}
   - component: {fileID: 2050534269}
-  - component: {fileID: 2050534268}
   m_Layer: 5
   m_Name: Notarin
   m_TagString: Untagged
@@ -8923,32 +8684,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 432, y: 0}
+  m_SizeDelta: {x: 880, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2050534268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2050534266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ed2127447415d7488a452ffd7707d9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropdownContainer: {fileID: 1591834933}
-  dropDownDialog: {fileID: 0}
-  dropDownAiFeedback: {fileID: 0}
-  headButtonText: {fileID: 1796901196}
-  dialogText: {fileID: 0}
-  aiFeedbackText: {fileID: 0}
-  dialogHistoryEntry:
-    novelId: 0
-    dialog: 
-    completion: 
-    dateAndTime: 
 --- !u!114 &2050534269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9434,7 +9172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e482ec1f9369fb244bfb80e962b296af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
   menuWrapper: {fileID: 657247122751064009}
   menuButton: {fileID: 657247123254479142}
   indicatorImage: {fileID: 657247123575315511}
@@ -9445,7 +9182,7 @@ MonoBehaviour:
   - {fileID: 657247122751064010}
   - {fileID: 3925250685610889223}
   - {fileID: 1067528252}
-  novelHistorySceneController: {fileID: 956368497}
+  childMenus: []
 --- !u!114 &657247123254479141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9683,8 +9420,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 432, y: 0}
+  m_SizeDelta: {x: 880, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6962933010311762813
 MonoBehaviour:
@@ -9700,29 +9437,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &7906977786062144492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8983526791303255357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ed2127447415d7488a452ffd7707d9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropdownContainer: {fileID: 657247123254479140}
-  dropDownDialog: {fileID: 0}
-  dropDownAiFeedback: {fileID: 0}
-  headButtonText: {fileID: 657247122555676862}
-  dialogText: {fileID: 0}
-  aiFeedbackText: {fileID: 0}
-  dialogHistoryEntry:
-    novelId: 0
-    dialog: 
-    completion: 
-    dateAndTime: 
 --- !u!114 &8323938374330980008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9755,7 +9469,6 @@ GameObject:
   - component: {fileID: 6962933010311762813}
   - component: {fileID: 2270555798294854511}
   - component: {fileID: 8323938374330980008}
-  - component: {fileID: 7906977786062144492}
   m_Layer: 5
   m_Name: Bankkredit
   m_TagString: Untagged

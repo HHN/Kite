@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,19 +35,19 @@ public class NovelHistoryEntryGuiElement : MonoBehaviour
         dropDownAiFeedback.AddLayoutToUpdateOnChange(rectTransform);
     }
 
-    public void SetNovelHistorySceneController(NovelHistorySceneController novelHistorySceneController)
-    {
-        dropdownContainer.SetNovelHistorySceneController(novelHistorySceneController);
-        dropDownDialog.SetNovelHistorySceneController(novelHistorySceneController);
-        dropDownAiFeedback.SetNovelHistorySceneController(novelHistorySceneController);
-    }
-
     public void RebuildLayout()
     {
-        dropdownContainer.RebuildLayout();
         dropDownDialog.RebuildLayout();
         dropDownAiFeedback.RebuildLayout();
+        dropdownContainer.RebuildLayout();
+    }
 
-        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
+    public List<DropDownMenu> GetDropDownMenus()
+    {
+        return new List<DropDownMenu>() {
+            dropdownContainer,
+            dropDownDialog,
+            dropDownAiFeedback
+        };
     }
 }

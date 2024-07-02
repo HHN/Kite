@@ -388,8 +388,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 720, y: 0}
+  m_SizeDelta: {x: 1440, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &818020709910671081
 MonoBehaviour:
@@ -608,7 +608,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e482ec1f9369fb244bfb80e962b296af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
   menuWrapper: {fileID: 818020709910671085}
   menuButton: {fileID: 818020710145449986}
   indicatorImage: {fileID: 818020708587173139}
@@ -616,11 +615,11 @@ MonoBehaviour:
   spriteWhileClosed: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
   isOpen: 0
   listOfObjectToUpdate:
-  - {fileID: 818020709910671086}
   - {fileID: 3353679504993872749}
   - {fileID: 6116091875831766688}
-  - {fileID: 0}
-  novelHistorySceneController: {fileID: 0}
+  - {fileID: 818020709910671086}
+  - {fileID: 3764017483529910563}
+  childMenus: []
 --- !u!1 &2098277713131069358
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,8 +657,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 980, y: 0}
+  m_AnchoredPosition: {x: 720, y: 0}
+  m_SizeDelta: {x: 1340, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2998250468673642712
 CanvasRenderer:
@@ -949,7 +948,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e482ec1f9369fb244bfb80e962b296af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 9146482380495600665}
   menuWrapper: {fileID: 5064940282291281271}
   menuButton: {fileID: 4507376702624538763}
   indicatorImage: {fileID: 8810046383926162823}
@@ -957,10 +955,11 @@ MonoBehaviour:
   spriteWhileClosed: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
   isOpen: 0
   listOfObjectToUpdate:
-  - {fileID: 818020709910671086}
-  - {fileID: 3353679504993872749}
   - {fileID: 6116091875831766688}
-  novelHistorySceneController: {fileID: 0}
+  - {fileID: 3353679504993872749}
+  - {fileID: 818020709910671086}
+  - {fileID: 3764017483529910563}
+  childMenus: []
 --- !u!1 &3987014431725233898
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,8 +997,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 980, y: 0}
+  m_AnchoredPosition: {x: 720, y: 0}
+  m_SizeDelta: {x: 1340, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6498969793213855426
 CanvasRenderer:
@@ -1245,8 +1244,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 720, y: 0}
+  m_SizeDelta: {x: 1440, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6132129795511818328
 MonoBehaviour:
@@ -1345,8 +1344,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchoredPosition: {x: 720, y: 0}
+  m_SizeDelta: {x: 1440, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &866473893090837496
 MonoBehaviour:
@@ -1702,7 +1701,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e482ec1f9369fb244bfb80e962b296af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 9146482380495600665}
   menuWrapper: {fileID: 4835431895195121097}
   menuButton: {fileID: 564656217790016310}
   indicatorImage: {fileID: 3114148162760620740}
@@ -1710,10 +1708,11 @@ MonoBehaviour:
   spriteWhileClosed: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
   isOpen: 0
   listOfObjectToUpdate:
-  - {fileID: 818020709910671086}
   - {fileID: 3353679504993872749}
   - {fileID: 6116091875831766688}
-  novelHistorySceneController: {fileID: 0}
+  - {fileID: 818020709910671086}
+  - {fileID: 3764017483529910563}
+  childMenus: []
 --- !u!1 &8961878646305562839
 GameObject:
   m_ObjectHideFlags: 0
@@ -1885,7 +1884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
-  m_MinWidth: -1
+  m_MinWidth: 600
   m_MinHeight: -1
   m_PreferredWidth: -1
   m_PreferredHeight: -1

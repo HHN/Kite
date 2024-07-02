@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,7 +21,20 @@ public class NovelHistorySceneController : SceneController
     [SerializeField] private GameObject containerForGruendungszuschussNovel;
     [SerializeField] private GameObject containerForHonorarNovel;
     [SerializeField] private GameObject containerForLebenspartnerinNovel;
-    [SerializeField] private GameObject containerForIntroNovel;        
+    [SerializeField] private GameObject containerForIntroNovel;    
+    
+    [SerializeField] private DropDownMenu dropdownForBankkreditNovel;
+    [SerializeField] private DropDownMenu dropdownForBekannteTreffenNovel;
+    [SerializeField] private DropDownMenu dropdownForBankkontoNovel;
+    [SerializeField] private DropDownMenu dropdownForFoerderantragNovel;
+    [SerializeField] private DropDownMenu dropdownForElternNovel;
+    [SerializeField] private DropDownMenu dropdownForNotarinNovel;
+    [SerializeField] private DropDownMenu dropdownForPresseeNovel;
+    [SerializeField] private DropDownMenu dropdownForBueroNovel;
+    [SerializeField] private DropDownMenu dropdownForGruendungszuschussNovel;
+    [SerializeField] private DropDownMenu dropdownForHonorarNovel;
+    [SerializeField] private DropDownMenu dropdownForLebenspartnerinNovel;
+    [SerializeField] private DropDownMenu dropdownForIntroNovel;        
     
     [SerializeField] private GameObject spacingForBankkreditNovel;
     [SerializeField] private GameObject spacingForBekannteTreffenNovel;
@@ -89,70 +103,33 @@ public class NovelHistorySceneController : SceneController
         }
 
         SetVisiibilityOfUiElements();
-        RebuildLayout();
+
+        StartCoroutine(RebuildLayout());
     }
 
-    public void RebuildLayout()
+    public IEnumerator RebuildLayout()
     {
-        foreach (NovelHistoryEntryGuiElement entry in novelHistoryEntries)
-        {
-            entry.RebuildLayout();
-        }
-        if (displayContainerForBankkreditNovel) 
-        { LayoutRebuilder.ForceRebuildLayoutImmediate(entryContainerForBankkreditNovel.GetComponent<RectTransform>()); 
-        }
-        if (displayContainerForBekannteTreffenNovel)
-        {
-            LayoutRebuilder.ForceRebuildLayoutImmediate(entryContainerForBekannteTreffenNovel.GetComponent<RectTransform>());
-        }
-        if (displayContainerForBankkontoNovel)
-        {
-            LayoutRebuilder.ForceRebuildLayoutImmediate(entryContainerForBankkontoNovel.GetComponent<RectTransform>());
-        }
-        if (displayContainerForFoerderantragNovel)
-        {
-            LayoutRebuilder.ForceRebuildLayoutImmediate(entryContainerForFoerderantragNovel.GetComponent<RectTransform>());
-        }
-        if (displayContainerForElternNovel)
-        {
-            LayoutRebuilder.ForceRebuildLayoutImmediate(entryContainerForElternNovel.GetComponent<RectTransform>());
-        }
-        if (displayContainerForNotarinNovel)
-        {
-            LayoutRebuilder.ForceRebuildLayoutImmediate(entryContainerForNotarinNovel.GetComponent<RectTransform>());
-        }
-        if (displayContainerForPresseeNovel)
-        {
-            LayoutRebuilder.ForceRebuildLayoutImmediate(entryContainerForPresseeNovel.GetComponent<RectTransform>());
-        }
-        if (displayContainerForBueroNovel)
-        {
-            LayoutRebuilder.ForceRebuildLayoutImmediate(entryContainerForBueroNovel.GetComponent<RectTransform>());
-        }
-        if (displayContainerForGruendungszuschussNovel)
-        {
-            LayoutRebuilder.ForceRebuildLayoutImmediate(entryContainerForGruendungszuschussNovel.GetComponent<RectTransform>());
-        }
-        if (displayContainerForHonorarNovel)
-        {
-            LayoutRebuilder.ForceRebuildLayoutImmediate(entryContainerForHonorarNovel.GetComponent<RectTransform>());
-        }
-        if (displayContainerForLebenspartnerinNovel)
-        {
-            LayoutRebuilder.ForceRebuildLayoutImmediate(entryContainerForLebenspartnerinNovel.GetComponent<RectTransform>());
-        }
-        if (displayContainerForIntroNovel)
-        {
-            LayoutRebuilder.ForceRebuildLayoutImmediate(entryContainerForIntroNovel.GetComponent<RectTransform>());
-        }
+        dropdownForBankkreditNovel.RebuildLayout();
+        dropdownForBekannteTreffenNovel.RebuildLayout();
+        dropdownForBankkontoNovel.RebuildLayout();
+        dropdownForFoerderantragNovel.RebuildLayout();
+        dropdownForElternNovel.RebuildLayout();
+        dropdownForNotarinNovel.RebuildLayout();
+        dropdownForPresseeNovel.RebuildLayout();
+        dropdownForBueroNovel.RebuildLayout();
+        dropdownForGruendungszuschussNovel.RebuildLayout();
+        dropdownForHonorarNovel.RebuildLayout();
+        dropdownForLebenspartnerinNovel.RebuildLayout();
+        dropdownForIntroNovel.RebuildLayout();
 
-        RectTransform rectTransform = container.GetComponent<RectTransform>();
-        LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
+        yield break;
     }
 
     private void AddEntry(DialogHistoryEntry entry)
     {
         GameObject container = GetEntyContainerById(entry.GetNovelId());
+        GameObject containerGameObject = GetContainerGameObjectById(entry.GetNovelId());
+        DropDownMenu dropDownMenu = GetDropDownMenuById(entry.GetNovelId());
 
         if (container == null) { return; }
 
@@ -163,8 +140,162 @@ public class NovelHistorySceneController : SceneController
     .GetComponent<NovelHistoryEntryGuiElement>();
 
         dataObjectGuiElement.InitializeEntry(entry);
-        dataObjectGuiElement.SetNovelHistorySceneController(this);
         novelHistoryEntries.Add(dataObjectGuiElement);
+        
+        foreach (DropDownMenu dropdown in dataObjectGuiElement.GetDropDownMenus())
+        {
+            dropDownMenu.AddChildMenu(dropdown);
+        }
+
+        dataObjectGuiElement.AddLayoutToUpdateOnChange(container.GetComponent<RectTransform>());
+        dataObjectGuiElement.AddLayoutToUpdateOnChange(containerGameObject.GetComponent<RectTransform>());
+        dataObjectGuiElement.AddLayoutToUpdateOnChange(this.container.GetComponent<RectTransform>());
+    }
+
+    private DropDownMenu GetDropDownMenuById(long novelId)
+    {
+        VisualNovelNames novelNames = VisualNovelNamesHelper.ValueOf((int)novelId);
+
+        switch (novelNames)
+        {
+            case VisualNovelNames.BANK_KREDIT_NOVEL:
+                {
+                    displayContainerForBankkreditNovel = true;
+                    return dropdownForBankkreditNovel;
+                }
+            case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                {
+                    displayContainerForBekannteTreffenNovel = true;
+                    return dropdownForBekannteTreffenNovel;
+                }
+            case VisualNovelNames.BANK_KONTO_NOVEL:
+                {
+                    displayContainerForBankkontoNovel = true;
+                    return dropdownForBankkontoNovel;
+                }
+            case VisualNovelNames.FOERDERANTRAG_NOVEL:
+                {
+                    displayContainerForFoerderantragNovel = true;
+                    return dropdownForFoerderantragNovel;
+                }
+            case VisualNovelNames.ELTERN_NOVEL:
+                {
+                    displayContainerForElternNovel = true;
+                    return dropdownForElternNovel;
+                }
+            case VisualNovelNames.NOTARIAT_NOVEL:
+                {
+                    displayContainerForNotarinNovel = true;
+                    return dropdownForNotarinNovel;
+                }
+            case VisualNovelNames.PRESSE_NOVEL:
+                {
+                    displayContainerForPresseeNovel = true;
+                    return dropdownForPresseeNovel;
+                }
+            case VisualNovelNames.BUERO_NOVEL:
+                {
+                    displayContainerForBueroNovel = true;
+                    return dropdownForBueroNovel;
+                }
+            case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
+                {
+                    displayContainerForGruendungszuschussNovel = true;
+                    return dropdownForGruendungszuschussNovel;
+                }
+            case VisualNovelNames.HONORAR_NOVEL:
+                {
+                    displayContainerForHonorarNovel = true;
+                    return dropdownForHonorarNovel;
+                }
+            case VisualNovelNames.LEBENSPARTNER_NOVEL:
+                {
+                    displayContainerForLebenspartnerinNovel = true;
+                    return dropdownForLebenspartnerinNovel;
+                }
+            case VisualNovelNames.INTRO_NOVEL:
+                {
+                    displayContainerForIntroNovel = true;
+                    return dropdownForIntroNovel;
+                }
+            default:
+                {
+                    return null;
+                }
+        }
+    }
+
+    private GameObject GetContainerGameObjectById(long novelId)
+    {
+        VisualNovelNames novelNames = VisualNovelNamesHelper.ValueOf((int)novelId);
+
+        switch (novelNames)
+        {
+            case VisualNovelNames.BANK_KREDIT_NOVEL:
+                {
+                    displayContainerForBankkreditNovel = true;
+                    return containerForBankkreditNovel;
+                }
+            case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                {
+                    displayContainerForBekannteTreffenNovel = true;
+                    return containerForBekannteTreffenNovel;
+                }
+            case VisualNovelNames.BANK_KONTO_NOVEL:
+                {
+                    displayContainerForBankkontoNovel = true;
+                    return containerForBankkontoNovel;
+                }
+            case VisualNovelNames.FOERDERANTRAG_NOVEL:
+                {
+                    displayContainerForFoerderantragNovel = true;
+                    return containerForFoerderantragNovel;
+                }
+            case VisualNovelNames.ELTERN_NOVEL:
+                {
+                    displayContainerForElternNovel = true;
+                    return containerForElternNovel;
+                }
+            case VisualNovelNames.NOTARIAT_NOVEL:
+                {
+                    displayContainerForNotarinNovel = true;
+                    return containerForNotarinNovel;
+                }
+            case VisualNovelNames.PRESSE_NOVEL:
+                {
+                    displayContainerForPresseeNovel = true;
+                    return containerForPresseeNovel;
+                }
+            case VisualNovelNames.BUERO_NOVEL:
+                {
+                    displayContainerForBueroNovel = true;
+                    return containerForBueroNovel;
+                }
+            case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
+                {
+                    displayContainerForGruendungszuschussNovel = true;
+                    return containerForGruendungszuschussNovel;
+                }
+            case VisualNovelNames.HONORAR_NOVEL:
+                {
+                    displayContainerForHonorarNovel = true;
+                    return containerForHonorarNovel;
+                }
+            case VisualNovelNames.LEBENSPARTNER_NOVEL:
+                {
+                    displayContainerForLebenspartnerinNovel = true;
+                    return containerForLebenspartnerinNovel;
+                }
+            case VisualNovelNames.INTRO_NOVEL:
+                {
+                    displayContainerForIntroNovel = true;
+                    return containerForIntroNovel;
+                }
+            default:
+                {
+                    return null;
+                }
+        }
     }
 
     private GameObject GetEntyContainerById(long novelId)
