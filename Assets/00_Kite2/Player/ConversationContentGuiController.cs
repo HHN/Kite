@@ -74,7 +74,7 @@ public class ConversationContentGuiController : MonoBehaviour
         ChatMessageBox messageBox = newMessageBox.GetComponent<ChatMessageBox>();
         messageBox.SetMessage(novelEvent.text);
         guiContent.Add(newMessageBox);
-        PromptManager.Instance().AddLineToPrompt(CharacterTypeHelper.GetNameOfCharacter(novelEvent.character) + ": " + novelEvent.text);
+        PromptManager.Instance().AddFormattedLineToPrompt(CharacterTypeHelper.GetNameOfCharacter(novelEvent.character), novelEvent.text);
     }
 
     public void ShowPlayerAnswer(string message)
@@ -83,7 +83,7 @@ public class ConversationContentGuiController : MonoBehaviour
         ChatMessageBox messageBox = newMessageBox.GetComponent<ChatMessageBox>();
         messageBox.SetMessage(message);
         guiContent.Add(newMessageBox);
-        PromptManager.Instance().AddLineToPrompt(
-            CharacterTypeHelper.GetNameOfCharacter(Character.PLAYER) + ": " + message);
+        PromptManager.Instance().AddFormattedLineToPrompt(
+            CharacterTypeHelper.GetNameOfCharacter(Character.PLAYER), message);
     }
 }

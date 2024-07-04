@@ -71,7 +71,13 @@ public class PromptManager
         {
             dialog = new StringBuilder();
         }
-        prompt.AppendLine(line + " ");
-        dialog.AppendLine(line + " ");
+        prompt.AppendLine(line);
+        dialog.AppendLine(line);
+    }
+
+    public void AddFormattedLineToPrompt(string characterName, string text)
+    {
+        string formattedLine = $"<b>{characterName}:</b> {text}";
+        AddLineToPrompt(formattedLine);
     }
 }

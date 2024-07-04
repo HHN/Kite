@@ -15,10 +15,12 @@ public class NovelDescriptionTextbox : MonoBehaviour
     [SerializeField] private Button playButton;
     [SerializeField] private Button bookMarkButton;
     [SerializeField] private GameObject selectNovelSoundPrefab;
+    [SerializeField] private TextMeshProUGUI playText;
     [SerializeField] private TextMeshProUGUI bookmarkText;
     [SerializeField] private Image bookmarkImage;
     [SerializeField] private Sprite bookmarkSprite;
     [SerializeField] private Sprite unBookmarkSprite;
+    [SerializeField] private Color colorOfText;
 
     void Start()
     {
@@ -29,18 +31,23 @@ public class NovelDescriptionTextbox : MonoBehaviour
 
     public void InitializeBookMarkButton(bool isFavorite)
     {
+        playText.color = colorOfText;
+
         if (isFavorite)
         {
-            bookmarkText.text = "ENTFERNEN";
+            bookmarkText.text = "GEMERKT";
             bookmarkImage.sprite = bookmarkSprite;
+            bookmarkText.color = Color.white;
             return;
         }
         bookmarkImage.sprite = unBookmarkSprite;
         bookmarkText.text = "MERKEN";
+        bookmarkText.color = colorOfText;
     }
 
     public void SetColorOfImage(Color color)
     {
+        colorOfText = color;
         image.color = color;
         smalHead.GetComponent<Image>().color = color;
         bigHead.GetComponent<Image>().color = color;

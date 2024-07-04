@@ -171,6 +171,8 @@ public class FoundersBubbleSceneController : SceneController
                 novelDescriptionTextbox.SetText(novel.description);
                 novelDescriptionTextbox.SetColorOfImage(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
                 novelDescriptionTextbox.SetButtonsActive(true);
+                novelDescriptionTextbox.InitializeBookMarkButton(FavoritesManager.Instance().IsFavorite(novel));
+
 
                 isPopupOpen = true;
                 currentlyOpenedVisualNovelPopup = visualNovel;
