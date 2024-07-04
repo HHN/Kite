@@ -178,34 +178,31 @@ public class PlayNovelSceneController : SceneController
                 GameObject novelImagesInstance = Instantiate(novelVisuals[0], viewPortTransform);
                 Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
                 novelImagesController = controllerTransform.GetComponent<BankNovelImageController>();
-                novelImagesController.SetVisualElements(canvasRect);
-                return;
+                break;
             }
             case "Anmietung eines Büros":
             {
                 GameObject novelImagesInstance = Instantiate(novelVisuals[1], viewPortTransform);
                 Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
                 novelImagesController = controllerTransform.GetComponent<BueroNovelImageController>();
-                novelImagesController.SetVisualElements(canvasRect);
-                return;
+                break;
             }
             case "Pressegespräch":
             {
                 GameObject novelImagesInstance = Instantiate(novelVisuals[2], viewPortTransform);
                 Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
                 novelImagesController = controllerTransform.GetComponent<PresseNovelImageController>();
-                novelImagesController.SetVisualElements(canvasRect);
-                return;
+                break;
             }
             default:
             {
                 GameObject novelImagesInstance = Instantiate(novelVisuals[0], viewPortTransform);
                 Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
                 novelImagesController = controllerTransform.GetComponent<BankNovelImageController>();
-                novelImagesController.SetVisualElements(canvasRect);
-                return;
+                break;
             }
         }
+        novelImagesController.SetCanvasRect(canvasRect);
     }
 
     public void PlayNextEvent()
@@ -226,7 +223,7 @@ public class PlayNovelSceneController : SceneController
         {
             case VisualNovelEventType.SET_BACKGROUND_EVENT:
                 {
-                    HandleBackgrundEvent(nextEventToPlay);
+                    HandleBackgroundEvent(nextEventToPlay);
                     break;
                 }
             case VisualNovelEventType.CHARAKTER_JOIN_EVENT:
@@ -305,8 +302,7 @@ public class PlayNovelSceneController : SceneController
 
     private void HandlePlaySoundEvent(VisualNovelEvent novelEvent)
     {
-        string nextEventID = novelEvent.nextId;
-        nextEventToPlay = novelEvents[nextEventID];
+        SetNextEvent(novelEvent);
 
         if (novelEvent.audioClipToPlay != 0) {
             audioSource.clip = clips[novelEvent.audioClipToPlay];
@@ -328,8 +324,7 @@ public class PlayNovelSceneController : SceneController
 
     private void HandlePlayAnimationEvent(VisualNovelEvent novelEvent)
     {
-        string nextEventID = novelEvent.nextId;
-        nextEventToPlay = novelEvents[nextEventID];
+        SetNextEvent(novelEvent);
 
         if (novelEvent.animationToPlay != 0)
         {
@@ -339,8 +334,7 @@ public class PlayNovelSceneController : SceneController
 
     private void HandleFreeTextInputEvent(VisualNovelEvent novelEvent)
     {
-        string nextEventID = novelEvent.nextId;
-        nextEventToPlay = novelEvents[nextEventID];
+        SetNextEvent(novelEvent);
 
         if (novelEvent.questionForFreeTextInput == string.Empty 
             || novelEvent.questionForFreeTextInput == "" 
@@ -357,8 +351,7 @@ public class PlayNovelSceneController : SceneController
 
     private void HandleGptPromptEvent(VisualNovelEvent novelEvent)
     {
-        string nextEventID = novelEvent.nextId;
-        nextEventToPlay = novelEvents[nextEventID];
+        SetNextEvent(novelEvent);
 
         if (novelEvent.gptPrompt == String.Empty 
             || novelEvent.gptPrompt == "" 
@@ -392,16 +385,14 @@ public class PlayNovelSceneController : SceneController
 
     private void HandleSavePersistentEvent(VisualNovelEvent novelEvent)
     {
-        string nextEventID = novelEvent.nextId;
-        nextEventToPlay = novelEvents[nextEventID];
+        SetNextEvent(novelEvent);
         WriteUserInputToFile(novelEvent.key, ReplacePlaceholders(novelEvent.value, novelToPlay.GetGlobalVariables()));
         PlayNextEvent();
     }
 
     private void HandleMarkBiasEvent(VisualNovelEvent novelEvent)
     {
-        string nextEventID = novelEvent.nextId;
-        nextEventToPlay = novelEvents[nextEventID];
+        SetNextEvent(novelEvent);
         NovelBiasManager.Instance().MarkBiasAsRelevant(DiscriminationBiasHelper.ValueOf(novelEvent.relevantBias));
         PlayNextEvent();
     }
@@ -411,112 +402,118 @@ public class PlayNovelSceneController : SceneController
         PlayerDataManager.Instance().SavePlayerData(key, content);
     }
 
-    public void HandleBackgrundEvent(VisualNovelEvent novelEvent)
+    public void HandleBackgroundEvent(VisualNovelEvent novelEvent)
     {
-        string nextEventID = novelEvent.nextId;
-        nextEventToPlay = novelEvents[nextEventID];
+        SetNextEvent(novelEvent);
+        // string nextEventID = novelEvent.nextId;
+        // nextEventToPlay = novelEvents[nextEventID];
 
-        if (currentBackground != null)
-        {
-            Destroy(currentBackground);
-        }
-        currentBackground = Instantiate(backgroundPrefab[(novelEvent.backgroundSpriteId-1)], backgroundContainer.transform);
+        // if (currentBackground != null)
+        // {
+        //     Destroy(currentBackground);
+        // }
+        // currentBackground = Instantiate(backgroundPrefab[(novelEvent.backgroundSpriteId-1)], backgroundContainer.transform);
+
+        novelImagesController.SetBackground();
         StartCoroutine(imageScroll.ScrollToPoint(0.5f, 1f));
 
-        if (novelEvent.waitForUserConfirmation)
-        {
-            SetWaitingForConfirmation(true);
-            return;
-        }
+        // if (novelEvent.waitForUserConfirmation)
+        // {
+        //     SetWaitingForConfirmation(true);
+        //     return;
+        // }
         StartCoroutine(StartNextEventInOneSeconds(1));
-        HandleDeskImageEvent(novelEvent.backgroundSpriteId);
-        HandleDecoDeskImageEvent(novelEvent.backgroundSpriteId);
-        HandleDecoBackgroundImageEvent(novelEvent.backgroundSpriteId);
+        // HandleDeskImageEvent(novelEvent.backgroundSpriteId);
+        // HandleDecoDeskImageEvent(novelEvent.backgroundSpriteId);
+        // HandleDecoBackgroundImageEvent(novelEvent.backgroundSpriteId);
     }
 
-    public void HandleDeskImageEvent(int backgroundSpriteId)
-    {
+    // public void HandleDeskImageEvent(int backgroundSpriteId)
+    // {
 
-        if (currentDesk != null)
-        {
-            Destroy(currentDesk);
-        }
-        currentDesk = Instantiate(deskPrefab[(getBackgroundContentIdByBackgroundSpriteId(backgroundSpriteId, BackgroundContentEnum.DESK))], deskContainer.transform);
-    }
+    //     if (currentDesk != null)
+    //     {
+    //         Destroy(currentDesk);
+    //     }
+    //     currentDesk = Instantiate(deskPrefab[(getBackgroundContentIdByBackgroundSpriteId(backgroundSpriteId, BackgroundContentEnum.DESK))], deskContainer.transform);
+    // }
 
-    public void HandleDecoDeskImageEvent(int backgroundSpriteId)
-    {
+    // public void HandleDecoDeskImageEvent(int backgroundSpriteId)
+    // {
 
-        if (currentDecoDesk != null)
-        {
-            Destroy(currentDecoDesk);
-        }
-        currentDecoDesk = Instantiate(decoDeskPrefab[(getBackgroundContentIdByBackgroundSpriteId(backgroundSpriteId, BackgroundContentEnum.DECO_DESK))], decoDeskContainer.transform);
-    }
+    //     if (currentDecoDesk != null)
+    //     {
+    //         Destroy(currentDecoDesk);
+    //     }
+    //     currentDecoDesk = Instantiate(decoDeskPrefab[(getBackgroundContentIdByBackgroundSpriteId(backgroundSpriteId, BackgroundContentEnum.DECO_DESK))], decoDeskContainer.transform);
+    // }
 
-    public void HandleDecoBackgroundImageEvent(int backgroundSpriteId)
-    {
+    // public void HandleDecoBackgroundImageEvent(int backgroundSpriteId)
+    // {
 
-        if (currentDecoBackgroud != null)
-        {
-            Destroy(currentDecoBackgroud);
-        }
-        currentDecoBackgroud = Instantiate(decoBackgroundPrefab[(getBackgroundContentIdByBackgroundSpriteId(backgroundSpriteId, BackgroundContentEnum.DECO_BACKGROUND))], decoBackgroudContainer.transform);
-    }
+    //     if (currentDecoBackgroud != null)
+    //     {
+    //         Destroy(currentDecoBackgroud);
+    //     }
+    //     currentDecoBackgroud = Instantiate(decoBackgroundPrefab[(getBackgroundContentIdByBackgroundSpriteId(backgroundSpriteId, BackgroundContentEnum.DECO_BACKGROUND))], decoBackgroudContainer.transform);
+    // }
 
-    private int getBackgroundContentIdByBackgroundSpriteId(int backgroundSpriteId, BackgroundContentEnum backgroundContent)
-    {
-        switch (backgroundSpriteId)
-        {
-            case 0:
-            switch (backgroundContent)
-            {
-                case BackgroundContentEnum.DESK: return 0;
-                case BackgroundContentEnum.DECO_DESK: return 0;
-                case BackgroundContentEnum.DECO_BACKGROUND: return 0;
-                default: return 0;
-            }
-            default: return 0;
-        }
-    }
+    // private int getBackgroundContentIdByBackgroundSpriteId(int backgroundSpriteId, BackgroundContentEnum backgroundContent)
+    // {
+    //     switch (backgroundSpriteId)
+    //     {
+    //         case 0:
+    //         switch (backgroundContent)
+    //         {
+    //             case BackgroundContentEnum.DESK: return 0;
+    //             case BackgroundContentEnum.DECO_DESK: return 0;
+    //             case BackgroundContentEnum.DECO_BACKGROUND: return 0;
+    //             default: return 0;
+    //         }
+    //         default: return 0;
+    //     }
+    // }
 
     public void HandleCharacterJoinEvent(VisualNovelEvent novelEvent)
     {
-        string nextEventID = novelEvent.nextId;
-        nextEventToPlay = novelEvents[nextEventID];
+        SetNextEvent(novelEvent);
+        // string nextEventID = novelEvent.nextId;
+        // nextEventToPlay = novelEvents[nextEventID];
 
-        Character characterValue = CharacterTypeHelper.ValueOf(novelEvent.character);
+        // Character characterValue = CharacterTypeHelper.ValueOf(novelEvent.character);
 
-        GameObject characterPrefab = null;
+        // GameObject characterPrefab = null;
 
-        switch (characterValue)
-        {
-            case Character.MAYER:
-                {
-                    characterPrefab = characterPrefabMayer;
-                    break;
-                }
-            case Character.REPORTERIN:
-                {
-                    characterPrefab = characterPrefabReporterin;
-                    break;
-                }
-            case Character.VERMIETER:
-                {
-                    characterPrefab = characterPrefabVermieter;
-                    break;
-                }
-            default:
-                {
-                    characterPrefab = characterPrefabMayer;
-                    break;
-                }
-        }
+        // switch (characterValue)
+        // {
+        //     case Character.MAYER:
+        //         {
+        //             characterPrefab = characterPrefabMayer;
+        //             break;
+        //         }
+        //     case Character.REPORTERIN:
+        //         {
+        //             characterPrefab = characterPrefabReporterin;
+        //             break;
+        //         }
+        //     case Character.VERMIETER:
+        //         {
+        //             characterPrefab = characterPrefabVermieter;
+        //             break;
+        //         }
+        //     default:
+        //         {
+        //             characterPrefab = characterPrefabMayer;
+        //             break;
+        //         }
+        // }
 
-        GameObject character = Instantiate(characterPrefab, characterContainer.transform);
-        CharacterController controller = character.GetComponent<CharacterController>();
+        // GameObject character = Instantiate(characterPrefab, characterContainer.transform);
+        // CharacterController controller = character.GetComponent<CharacterController>();
 
-        currentCharacters.Add(CharacterTypeHelper.ValueOf(novelEvent.character), character);
+        novelImagesController.SetCharacter();
+
+        // currentCharacters.Add(CharacterTypeHelper.ValueOf(novelEvent.character), character);
 
         if (novelEvent.waitForUserConfirmation)
         {
@@ -528,16 +525,18 @@ public class PlayNovelSceneController : SceneController
 
     public void HandleCharacterExitEvent(VisualNovelEvent novelEvent)
     {
-        string nextEventID = novelEvent.nextId;
-        nextEventToPlay = novelEvents[nextEventID];
+        SetNextEvent(novelEvent);
+        // string nextEventID = novelEvent.nextId;
+        // nextEventToPlay = novelEvents[nextEventID];
 
         // For the purpose of robust design against spelling mistakes
-        foreach (var character in currentCharacters.Values)
-        {
-            Destroy(character);
-        }
-        currentCharacters.Clear();
+        // foreach (var character in currentCharacters.Values)
+        // {
+        //     Destroy(character);
+        // }
+        // currentCharacters.Clear();
 
+        novelImagesController.DestroyCharacter();
         if (novelEvent.waitForUserConfirmation)
         {
             SetWaitingForConfirmation(true);
@@ -548,20 +547,19 @@ public class PlayNovelSceneController : SceneController
 
     public void HandleShowMessageEvent(VisualNovelEvent novelEvent)
     {
-        //Debug.Log(novelEvent.text);   // Needed to copy the text from the novel to AWS Polly
-        // TextToSpeechService.Instance().TextToSpeech(novelToPlay.title+novelEvent.id);
         TextToSpeechService.Instance().TextToSpeechReadLive(novelEvent.text, engine);
         novelEvent.text = ReplacePlaceholders(novelEvent.text, novelToPlay.GetGlobalVariables());
 
-        string nextEventID = novelEvent.nextId;
-        nextEventToPlay = novelEvents[nextEventID];
+        SetNextEvent(novelEvent);
 
-        if (currentCharacters.ContainsKey(CharacterTypeHelper.ValueOf(novelEvent.character)))
-        {
-            GameObject character = currentCharacters[CharacterTypeHelper.ValueOf(novelEvent.character)];
-            currentTalkingCharacterController = character.GetComponent<CharacterController>();
-            currentTalkingCharacterController.SetFaceExpression(novelEvent.expressionType);
-        }
+        novelImagesController.SetFaceExpression(novelEvent.expressionType);
+
+        // if (currentCharacters.ContainsKey(CharacterTypeHelper.ValueOf(novelEvent.character)))
+        // {
+        //     GameObject character = currentCharacters[CharacterTypeHelper.ValueOf(novelEvent.character)];
+        //     currentTalkingCharacterController = character.GetComponent<CharacterController>();
+        //     currentTalkingCharacterController.SetFaceExpression(novelEvent.expressionType);
+        // }
 
         if(novelEvent.show){
             conversationContent.AddContent(novelEvent, this);
@@ -582,8 +580,7 @@ public class PlayNovelSceneController : SceneController
 
     public void HandleAddChoiceEvent(VisualNovelEvent novelEvent)
     {
-        string nextEventID = novelEvent.nextId;
-        nextEventToPlay = novelEvents[nextEventID];
+        SetNextEvent(novelEvent);
 
         conversationContent.AddContent(novelEvent, this);
 
@@ -599,9 +596,7 @@ public class PlayNovelSceneController : SceneController
 
     public void HandleShowChoicesEvent(VisualNovelEvent novelEvent)
     {
-        // TODO: Implement text to speech 
         TextToSpeechService.Instance().TextToSpeechReadLive(TextToSpeechService.Instance().returnChoicesForTextToSpeech(), engine);
-        // TextToSpeechService.Instance().TextToSpeech(novelToPlay.title + TextToSpeechService.Instance().returnChoicesForTextToSpeech());
         AddEntryToPlayThroughHistory(CharacterTypeHelper.ValueOf(novelEvent.character), novelEvent.text);
         conversationContent.AddContent(novelEvent, this);
     }
@@ -644,6 +639,12 @@ public class PlayNovelSceneController : SceneController
         nextEventToPlay = novelEvents[id];
     }
 
+    private void SetNextEvent(VisualNovelEvent novelEvent)
+    {
+        string nextEventID = novelEvent.nextId;
+        nextEventToPlay = novelEvents[nextEventID];
+    }
+
     public void ScrollToBottom()
     {
         StartCoroutine(chatScroll.ScrollToBottom());
@@ -651,21 +652,23 @@ public class PlayNovelSceneController : SceneController
 
     public void StartTalking()
     {
-        if (currentTalkingCharacterController == null)
-        {
-            return;
-        }
-        currentTalkingCharacterController.StartTalking();
+        novelImagesController.StartCharacterTalking();
+        // if (currentTalkingCharacterController == null)
+        // {
+        //     return;
+        // }
+        // currentTalkingCharacterController.StartTalking();
     }
 
     public void StopTalking()
     {
-        if (currentTalkingCharacterController == null)
-        {
-            return;
-        }
-        currentTalkingCharacterController.StopTalking();
-        currentTalkingCharacterController = null;
+        novelImagesController.StopCharacterTalking();
+        // if (currentTalkingCharacterController == null)
+        // {
+        //     return;
+        // }
+        // currentTalkingCharacterController.StopTalking();
+        // currentTalkingCharacterController = null;
     }
 
     public void SetWaitingForConfirmation(bool value)

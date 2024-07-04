@@ -19,33 +19,53 @@ public class PresseNovelImageController : NovelImageController
     [SerializeField] private AudioClip decoVaseAudio;
     [SerializeField] private Sprite[] animationFramesVase;
     [SerializeField] private Sprite[] animationFramesGlas;
-    [SerializeField] private Sprite[] faceSprites;    
+    [SerializeField] private Sprite[] faceSprites;   
+    private GameObject background = null;
+    private GameObject desk = null;
+    private GameObject decoGlas = null;
+    private GameObject decoVase = null;
+    private GameObject character = null; 
 
-    public override void SetVisualElements(RectTransform canvasRect)
+    public override void SetBackground()
     {
-        Instantiate(backgroundPrefab, backgroundContainer.transform);
-        Instantiate(deskPrefab, deskContainer.transform);
-        Instantiate(decoVasePrefab, decoVaseContainer.transform);
-        Instantiate(decoGlasPrefab, decoGlasContainer.transform);
-        Instantiate(characterPrefab, characterContainer.transform);
+        DestroyBackground();
+        InstantiateBackground();
         
-        RectTransform characterRectTransform = characterContainer.GetComponent<RectTransform>();
         RectTransform decoVaseRectTransform = decoVaseContainer.GetComponent<RectTransform>();
-        RectTransform decoGlasRectTransform = decoGlasContainer.GetComponent<RectTransform>();
-        RectTransform deskRectTransform = deskContainer.GetComponent<RectTransform>();
-            
-        characterRectTransform.anchoredPosition = new Vector2(-canvasRect.rect.width * 0.1f, 0);
+        if (decoVaseRectTransform != null && canvasRect != null)
+        {
+            decoVaseRectTransform.anchoredPosition = new Vector2(-canvasRect.rect.width * 0.1f, canvasRect.rect.height * 0.12f);
+            decoVaseRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.09f, canvasRect.rect.height * 0.265f);
+        }
         decoVaseRectTransform.anchoredPosition = new Vector2(-canvasRect.rect.width * 0.1f, canvasRect.rect.height * 0.12f);
-        decoGlasRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.21f, canvasRect.rect.height * 0.08f);
-        deskRectTransform.anchoredPosition = new Vector2(0, -canvasRect.rect.height * 0.05f);
-
-        characterRectTransform.sizeDelta = new Vector2(canvasRect.rect.width * 0.25f, canvasRect.rect.height * 1f);
         decoVaseRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.09f, canvasRect.rect.height * 0.265f);
-        decoGlasRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.064f, canvasRect.rect.height * 0.08f);
-        deskRectTransform.sizeDelta = new Vector2(canvasRect.rect.width * 0.35f, canvasRect.rect.height * 0.25f);
 
+        RectTransform decoGlasRectTransform = decoGlasContainer.GetComponent<RectTransform>();
+        if (decoGlasRectTransform != null && canvasRect != null)
+        {
+            decoGlasRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.21f, canvasRect.rect.height * 0.08f);
+            decoGlasRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.064f, canvasRect.rect.height * 0.08f);
+        }
+
+        RectTransform deskRectTransform = deskContainer.GetComponent<RectTransform>();
+        if (deskRectTransform != null && canvasRect != null)
+        {
+            deskRectTransform.anchoredPosition = new Vector2(0, -canvasRect.rect.height * 0.05f);
+            deskRectTransform.sizeDelta = new Vector2(canvasRect.rect.width * 0.35f, canvasRect.rect.height * 0.25f);
+        }
+        
         NovelColorManager.Instance().SetCanvasHeight(canvasRect.rect.height);
         NovelColorManager.Instance().SetCanvasWidth(canvasRect.rect.width);
+    }
+
+    public override void SetCharacter()
+    {
+        DestroyCharacter();
+        character = Instantiate(characterPrefab, characterContainer.transform);
+        RectTransform characterRectTransform = characterContainer.GetComponent<RectTransform>();
+        characterRectTransform.anchoredPosition = new Vector2(-canvasRect.rect.width * 0.1f, 0);
+        characterRectTransform.sizeDelta = new Vector2(canvasRect.rect.width * 0.25f, canvasRect.rect.height * 1f);
+        characterController = character.GetComponent<CharacterController>();
     }
 
     public override bool HandleTouchEvent(float x, float y, AudioSource audioSource)
@@ -143,6 +163,43 @@ public class PresseNovelImageController : NovelImageController
             }
         }
         yield return new WaitForSeconds(0f);
+    }
+
+    private void DestroyBackground()
+    {
+        if (background != null)
+        {
+            Destroy(background);
+        }
+        if (desk != null)
+        {
+            Destroy(desk);
+        }
+        if (decoGlas != null)
+        {
+            Destroy(decoGlas);
+        }
+        if (decoVase != null)
+        {
+            Destroy(decoVase);
+        }
+    }
+
+    private void InstantiateBackground()
+    {
+        background = Instantiate(backgroundPrefab, backgroundContainer.transform);
+        desk = Instantiate(deskPrefab, deskContainer.transform);
+        decoGlas = Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+        decoVase = Instantiate(decoVasePrefab, decoVaseContainer.transform);
+    }
+
+    public override void DestroyCharacter()
+    {
+        if (character == null)
+        {
+            return;
+        }
+        Destroy(character);
     }
 
     

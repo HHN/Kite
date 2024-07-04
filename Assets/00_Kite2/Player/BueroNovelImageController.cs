@@ -13,24 +13,34 @@ public class BueroNovelImageController : NovelImageController
     [SerializeField] private GameObject characterContainer;
     [SerializeField] private AudioClip decoPlantAudio;
     [SerializeField] private Sprite[] animationFrames;
+    private GameObject background = null;
+    private GameObject decoPlant = null;
+    private GameObject character = null;
 
-    public override void SetVisualElements(RectTransform canvasRect)
+    public override void SetBackground()
     {
-        Instantiate(backgroundPrefab, backgroundContainer.transform);
-        Instantiate(decoPlantPrefab, decoPlantContainer.transform);
-        Instantiate(characterPrefab, characterContainer.transform);
-        
-        RectTransform characterRectTransform = characterContainer.GetComponent<RectTransform>();
-        RectTransform decoPlantRectTransform = decoPlantContainer.GetComponent<RectTransform>();
-            
-        characterRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.15f, 0);
-        decoPlantRectTransform.anchoredPosition = new Vector2(-canvasRect.rect.width * 0.38f, canvasRect.rect.height * 0.235f);
+        DestroyBackground();
+        InstantiateBackground();
 
-        characterRectTransform.sizeDelta = new Vector2(canvasRect.rect.width * 0.25f, canvasRect.rect.height * 1f);
-        decoPlantRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.17f, canvasRect.rect.height * 0.25f);
+        RectTransform decoPlantRectTransform = decoPlantContainer.GetComponent<RectTransform>();
+        if (decoPlantRectTransform != null && canvasRect != null)
+        {
+            decoPlantRectTransform.anchoredPosition = new Vector2(-canvasRect.rect.width * 0.38f, canvasRect.rect.height * 0.235f);
+            decoPlantRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.17f, canvasRect.rect.height * 0.25f);
+        }
 
         NovelColorManager.Instance().SetCanvasHeight(canvasRect.rect.height);
         NovelColorManager.Instance().SetCanvasWidth(canvasRect.rect.width);
+    }
+
+    public override void SetCharacter()
+    {
+        DestroyCharacter();
+        character = Instantiate(characterPrefab, characterContainer.transform);
+        RectTransform characterRectTransform = characterContainer.GetComponent<RectTransform>();
+        characterRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.15f, 0);
+        characterRectTransform.sizeDelta = new Vector2(canvasRect.rect.width * 0.25f, canvasRect.rect.height * 1f);
+        characterController = character.GetComponent<CharacterController>();
     }
 
     public override bool HandleTouchEvent(float x, float y, AudioSource audioSource)
@@ -77,5 +87,32 @@ public class BueroNovelImageController : NovelImageController
             }
         }
         yield return new WaitForSeconds(0f);
+    }
+
+    private void DestroyBackground()
+    {
+        if (background != null)
+        {
+            Destroy(background);
+        }
+        if (decoPlant != null)
+        {
+            Destroy(decoPlant);
+        }
+    }
+
+    private void InstantiateBackground()
+    {
+        background = Instantiate(backgroundPrefab, backgroundContainer.transform);
+        decoPlant = Instantiate(decoPlantPrefab, decoPlantContainer.transform);
+    }
+
+    public override void DestroyCharacter()
+    {
+        if (character == null)
+        {
+            return;
+        }
+        Destroy(character);
     }
 }
