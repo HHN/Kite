@@ -526,7 +526,7 @@ MonoBehaviour:
   characterPrefab: {fileID: 1465545687914413273, guid: 81edc9f9eabdbad40a81d9c419fd4022, type: 3}
   characterContainer: {fileID: 4782255772119278625}
   decoGlasAudio: {fileID: 8300000, guid: e98f518e9e0c377449a3134fc81ebcc9, type: 3}
-  decoVaseAudio: {fileID: 8300000, guid: 36685d5895c76de418eb8d96bdcbef80, type: 3}
+  decoVaseAudio: {fileID: 8300000, guid: ecf72a67e2af14d48a34393afc832546, type: 3}
   animationFramesVase:
   - {fileID: 21300000, guid: 3b6a23e979d597b4782a69ea4f5a51c1, type: 3}
   - {fileID: 21300000, guid: 744b1c2dae89b6f43a01072d74f6c67b, type: 3}
