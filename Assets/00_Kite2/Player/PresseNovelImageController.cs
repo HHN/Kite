@@ -91,6 +91,7 @@ public class PresseNovelImageController : NovelImageController
                     y >= bottomLeftDecoGlas.y && y <= topRightDecoGlas.y)
         {
             StartCoroutine(OnDecoGlas(audioSource));
+            return true;
         }
         return false;
     }
