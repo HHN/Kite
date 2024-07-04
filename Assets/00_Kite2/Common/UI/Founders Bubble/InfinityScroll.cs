@@ -167,7 +167,7 @@ public class InfinityScroll : MonoBehaviour
         {
             return;
         }
-        secondScrollRect.scollRect.velocity = scollRect.velocity * 0.33f;
+        secondScrollRect.scollRect.velocity = scollRect.velocity * 0.45f;
     }
 
     public bool IsCurrentlyInFirstHalf()
