@@ -1,5 +1,5 @@
 :: StoryTitle
-Büro anmieten 0.6
+Büro anmieten 0.7
 
 
 :: StoryData
@@ -45,7 +45,7 @@ Entschuldigen Sie bitte. So war das natürlich nicht gemeint. Ich denke natürli
 
 [[Ich schätze Ihre Entschuldigung.|Mietprozess]]
 
-[[Wie war es denn gemeint?|Ageism Nachfrage Alt]]
+[[Wie war es denn gemeint?->Ageism Nachfrage Alt]]
 
 
 :: Ageism Jung {"position":"1675,1900","size":"100,100"}
@@ -54,7 +54,7 @@ Entschuldigen Sie bitte. So war das natürlich nicht gemeint. Ich denke natürli
 
 [[Ich schätze Ihre Entschuldigung.|Mietprozess]]
 
-[[Wie war es denn gemeint?|Ageism Nachfrage Jung]]
+[[Wie war es denn gemeint?->Ageism Nachfrage Jung]]
 
 
 :: Ageism Nachfrage {"position":"1825,2150","size":"100,100"}
@@ -130,7 +130,7 @@ Du hast heute einen Termin für die Besichtigung von Büroräumen.
 Dort angekommen, wirst du von dem Vermieter angesprochen.
 
 
-[[Weiter]]
+[[Weiter]] 
 
 
 :: Anforderungen {"position":"2300,2050","size":"100,100"}
@@ -162,7 +162,7 @@ Ich bevorzuge es, geschäftliche Gespräche auf professionellem Niveau zu führe
 >>VermieterSprichtCritical:<<
 Es scheint mir oft, dass der Aufwand und die Kosten nicht im Verhältnis zur tatsächlichen Nutzung stehen.
 
-[[Ich verstehe, trotzdem ist mir dieser Aspekt der Inklusion wichtig.|Inklusion Termin]]
+[[Ich verstehe, trotzdem ist mir dieser Aspekt der Inklusion wichtig.->Inklusion Termin]]
 
 [[Bei der Barrierefreiheit geht es um Gleichberechtigung und Inklusion.|Inklusion Erklärung]]
 
@@ -176,7 +176,7 @@ Netzwerken, das ist der Schlüssel zum Erfolg! Gut, dass Sie daran gedacht haben
 
 :: Benevolenter Sexismus: Selbstbewusstsein {"position":"1700,4125","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
-Ich schätze Ihre Anerkennung meines Selbstbewusstseins, aber ich möchte klarstellen, dass ich in geschäftlichen Angelegenheiten auf eine professionelle und geschlechtsneutrale Betrachtung Wert lege. 
+Ich schätze Ihre Anerkennung meines Selbstbewusstseins, aber ich möchte klarstellen, dass ich in geschäftlichen Angelegenheiten auf eine professionelle und geschlechterneutrale Betrachtung Wert lege. 
 
 [[Benevolenter Sexismus: Selbstbewusstsein II]]
 
@@ -190,9 +190,9 @@ Der Kommentar "Schön, mal eine selbstbewusste Frau zu sehen!" impliziert nämli
 
 :: Benevolenter Sexismus: Selbstsicher {"position":"1525,4125","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
-Ich schätze Ihre Anerkennung meiner Selbstsicherheit, aber ich möchte klarstellen, dass ich in geschäftlichen Angelegenheiten auf eine professionelle und geschlechtsneutrale Betrachtung Wert lege. 
+Ich schätze Ihre Anerkennung meiner Selbstsicherheit, aber ich möchte klarstellen, dass ich in geschäftlichen Angelegenheiten auf eine professionelle und geschlechterneutrale Betrachtung Wert lege. 
 
-[[Benevolenter Sexismus: Selbstsicher II]]
+[[Benevolenter Sexismus: Selbstsicher II]] 
 
 
 :: Benevolenter Sexismus: Selbstsicher II {"position":"1525,4275","size":"100,100"}
@@ -237,7 +237,7 @@ Ach, ich bin mir sicher, dass Sie das mit Ihrer Frauenpower toll machen werden. 
 
 [[Stress gehört dazu und ich nehme gerne Herausforderungen an.|Selbstbewusst b]]
 
-[[Frauenpower ist oft positiv gemeint, aber ich bevorzuge, nicht auf Geschlechterstereotypen reduziert zu werden.->Frauenpower]]
+[[Frauenpower ist oft positiv gemeint, aber ich bevorzuge es, nicht auf Geschlechterstereotypen reduziert zu werden.->Frauenpower]]
 
 [[Ich habe Strategien, um damit umzugehen.|Strategien]]
 
@@ -270,7 +270,8 @@ Natürlich, da fällt mir etwas ein. Ein Freund von mir hat auch gegründet! Da 
 >>VermieterSprichtFriendly:<<
 Stimmt, gut, dass Sie so handeln! Aber Frauen haben manchmal zusätzliche Herausforderungen in der Geschäftswelt. 
 
-[[Freund Gründungsliteratur]]
+[[Freund Gründungsliteratur]] 
+
 
 
 :: Ende Neutral: Doubledown {"position":"1975,3825","size":"100,100"}
@@ -318,7 +319,6 @@ Es gibt noch andere, die sich beworben haben, aber es würde mich freuen, wenn S
 
 [[Ich mache auf den benevolenten Sexismus aufmerksam.|Benevolenter Sexismus: Selbstbewusstsein]]
 
-
 [[Ich bedanke mich und verabschiede mich.|Ende: Positiv-Neutral]]
 
 
@@ -336,7 +336,6 @@ Schön, mal eine selbstsichere Frau zu sehen! Ich habe erstmal keine weiteren Fr
 Es gibt noch andere, die sich beworben haben, aber es würde mich freuen, wenn Sie die Räumlichkeiten nehmen möchten.
 
 [[Ich mache auf den benevolenten Sexismus aufmerksam.|Benevolenter Sexismus: Selbstsicher]]
-
 
 [[Ich bedanke mich und verabschiede mich.|Ende: Positiv-Neutral]]
 
@@ -466,7 +465,6 @@ Was für eine Frage haben Sie denn? Sie scheinen sich ja schon richtig viele Ged
 >>SpielerinCharakterSpricht:<<
 Besteht die Möglichkeit, die Büroflächen nach den Bedürfnissen des Unternehmens anzupassen oder zu erweitern?
 >>--<<
-
 >>VermieterSprichtFriendly:<<
 Ja, das ist kein Problem. Die Vertragsgestaltung ist dann etwas komplexer. Vielleicht mögen Sie zur Abstimmung dann noch jemanden mitbringen, zum Beispiel Ihren Mann?
 >>--<<
@@ -490,7 +488,7 @@ Meine Qualifikationen und mein Engagement für mein Unternehmen sind entscheiden
 
 :: Freund Gründungsliteratur {"position":"900,1375","size":"100,100"}
 >>VermieterSprichtFriendly:<<
-Ein Freund von mir hat neulich auch gegründet, da habe ich einiges mitbekommen. Er erzählte mir zum Beispiel, dass es Gründungsliteratur- und Gründungsberatung extra für Frauen gibt.
+Ein Freund von mir hat neulich auch gegründet, da habe ich einiges mitbekommen. Er erzählte mir zum Beispiel, dass es Gründungsliteratur und -beratung extra für Frauen gibt.
 
 
 [[Danke für den Tipp.|Vorbereitung Danke]]
@@ -518,6 +516,8 @@ Ein Freund von mir hat neulich auch gegründet, da habe ich Einiges mitbekommen.
 >>VermieterSprichtCritical:<<
 Mein Freund betont außerdem immer wieder, wie wichtig Marktforschung ist. Sie haben ja schon auf Ihre Marktrecherche hingewiesen und hoffentlich die richtigen Methoden angewandt? Das kann wirklich den Unterschied machen.
 >>--<<
+>>RelevanterBias:BenevolenterSexismus<<
+>>--<<
 >>RelevanterBias:GeschlechtsspezifischeStereotypen<<
 
 [[Ich antworte selbstbewusst.|Selbstbewusst]]
@@ -534,6 +534,7 @@ Mein Freund betont außerdem immer wieder, wie wichtig Marktforschung ist. Sie h
 Marktforschung war eine grundlegende Komponente meines Vorbereitungsprozesses. Das hatte ich ja auch schon erwähnt. 
 
 [[Frustriert II]]
+
 
 
 :: Frustriert II {"position":"2300,3050","size":"100,100"}
@@ -617,7 +618,7 @@ Lassen Sie uns dafür einen separaten Termin ausmachen. Ich habe nämlich nicht 
 
 [[Ich nenne schonmal die wichtigsten Anforderungen.|Anforderungen]]
 
-[[Ja, lassen Sie uns einen neuen Termin ausmachen.|Neuer Termin]]
+[[Ja, lassen Sie uns einen neuen Termin ausmachen.->Neuer Termin]]
 
 
 :: Intention {"position":"2050,4100","size":"100,100"}
@@ -684,11 +685,11 @@ Sie sind gut vorbereitet. Es fällt mir immer wieder auf, dass Frauen sich detai
 >>--<<
 >>RelevanterBias:GeschlechtsspezifischeStereotypen<<
 
-[[Ich erkläre, dass eher eine gute Vorbereitung entscheidend ist.->Vorbereitung]]
+[[Ich erkläre, dass eher eine gute Vorbereitung entscheidend ist.|Vorbereitung]]
 
-[[Ich bedanke mich für das Kompliment.->Kompliment]]
+[[Ich bedanke mich für das Kompliment.|Kompliment]]
 
-[[Ich lenke das Gespräch auf die Büroflächen.->Umlenken a]]
+[[Ich lenke das Gespräch auf die Büroflächen.|Umlenken a]]
 
 
 :: Netzwerk {"position":"1500,1575","size":"100,100"}
@@ -733,7 +734,8 @@ Wie schön! Ich bin mir sicher, dass Sie das mit Ihrer Frauenpower toll machen w
 
 [[Stress gehört dazu und ich nehme gerne Herausforderungen an.|Selbstbewusst b]]
 
-[[Frauenpower ist oft positiv gemeint, aber ich bevorzuge, nicht auf Geschlechterstereotypen reduziert zu werden.->Frauenpower]]
+[[Frauenpower ist oft positiv gemeint, aber ich bevorzuge es, nicht auf Geschlechterstereotypen reduziert zu werden.->Frauenpower]]
+
 [[Ich habe Strategien, um damit umzugehen.|Strategien]]
 
 
@@ -759,6 +761,7 @@ Ich bin zuversichtlich, dass ich auf einem soliden Fundament stehe.
 Ach so, ja, das hatten Sie erwähnt. Gut, dass Sie sich Sachen besser merken können als ich, aber ich bin ja nicht so multitaskingfähig wie Sie als Frau. 
 
 [[Selbstbewusst III]]
+
 
 
 :: Selbstbewusst III {"position":"1900,3200","size":"100,100"}
@@ -919,7 +922,7 @@ Stimmt, da haben Sie selbstverständlich recht. Aber Frauen haben manchmal zusä
 [[Weiter|Freund Gründungsliteratur]]
 
 
-:: Vorbereitung Bekanntmachen {"position":"850,1600","size":"100,100"}
+:: Vorbereitung Bekanntmachen {"position":"850,1575","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Vielleicht könnten Sie uns bekannt machen? Ich bin immer interessiert daran, neue Kontakte zu knüpfen und von den Erfahrungen anderer zu lernen.
 
@@ -980,11 +983,11 @@ Oh, wie interessant! Wie in der Anzeige geschrieben, liegt der Mietpreis kalt be
 >>--<<
 >>RelevanterBias:Mikroaggressionen<<
 
-[[Natürlich! Ich erläutere das Ergebnis meiner Marktrecherche.->Natürlich]]
+[[Natürlich! Ich erläutere das Ergebnis meiner Marktrecherche.|Natürlich]]
 
-[[Das ist kein Problem.->Recherche]]
+[[Das ist kein Problem.|Recherche]]
 
-[[Ich erzähle von der Gründungsförderung.->Gründungsförderung]]
+[[Ich erzähle von der Gründungsförderung.|Gründungsförderung]]
 
 
 :: Wieso Mann {"position":"2425,1325","size":"100,100"}
@@ -1021,8 +1024,8 @@ Hm, ich dachte, Frauen würden mehr auf das Zwischenmenschliche setzen und auch 
 >>--<<
 >>RelevanterBias:Mikroaggressionen<<
 
-[[Ich gehe auf diesen Kommentar ein, um zu sensibilisieren.->Sensibilisieren]]
+[[Ich gehe auf diesen Kommentar ein, um zu sensibilisieren.|Sensibilisieren]]
 
-[[Ich antworte diplomatisch und ignoriere den Sexismus.->Diplomatisch]]
+[[Ich antworte diplomatisch und ignoriere den Sexismus.|Diplomatisch]]
 
-[[Ich konfrontiere ihn direkt und breche das Gespräch ab.->Abbruch]]
+[[Ich konfrontiere ihn direkt und breche das Gespräch ab.|Abbruch]]
