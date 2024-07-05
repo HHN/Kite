@@ -204,15 +204,15 @@ public class FoundersBubbleMetaInformation : MonoBehaviour
                 }
             case VisualNovelNames.BUERO_NOVEL:
                 {
-                    return "Büro";
+                    return "BÃ¼ro";
                 }
             case VisualNovelNames.FOERDERANTRAG_NOVEL:
                 {
-                    return "Förderantrag";
+                    return "FÃ¶rderantrag";
                 }
             case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
                 {
-                    return "Gründungs-\r\nzuschuss";
+                    return "GrÃ¼ndungs-\r\nzuschuss";
                 }
             case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
                 {

@@ -98,15 +98,15 @@ public class VisualNovelNamesHelper
                 }
             case 6:
                 {
-                    return "Büro";
+                    return "BÃ¼ro";
                 }
             case 7:
                 {
-                    return "Förderantrag";
+                    return "FÃ¶rderantrag";
                 }
             case 8:
                 {
-                    return "Gründungs-zuschuss";
+                    return "GrÃ¼ndungs-zuschuss";
                 }
             case 9:
                 {

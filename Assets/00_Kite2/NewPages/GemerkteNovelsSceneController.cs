@@ -239,7 +239,7 @@ public class GemerkteNovelsSceneController : SceneController
         }
         if (visualNovelToDisplay == null)
         {
-            DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
+            DisplayErrorMessage("Die gewÃ¼nschte Novel konnte nicht geladen werden.");
             return;
         }
 
@@ -277,7 +277,7 @@ public class GemerkteNovelsSceneController : SceneController
         }
         if (visualNovelToDisplay == null)
         {
-            DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
+            DisplayErrorMessage("Die gewÃ¼nschte Novel konnte nicht geladen werden.");
             return;
         }
 
@@ -315,7 +315,7 @@ public class GemerkteNovelsSceneController : SceneController
         }
         if (visualNovelToDisplay == null)
         {
-            DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
+            DisplayErrorMessage("Die gewÃ¼nschte Novel konnte nicht geladen werden.");
             return;
         }
 
@@ -353,7 +353,7 @@ public class GemerkteNovelsSceneController : SceneController
         }
         if (visualNovelToDisplay == null)
         {
-            DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
+            DisplayErrorMessage("Die gewÃ¼nschte Novel konnte nicht geladen werden.");
             return;
         }
 
@@ -391,7 +391,7 @@ public class GemerkteNovelsSceneController : SceneController
         }
         if (visualNovelToDisplay == null)
         {
-            DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
+            DisplayErrorMessage("Die gewÃ¼nschte Novel konnte nicht geladen werden.");
             return;
         }
 
@@ -429,7 +429,7 @@ public class GemerkteNovelsSceneController : SceneController
         }
         if (visualNovelToDisplay == null)
         {
-            DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
+            DisplayErrorMessage("Die gewÃ¼nschte Novel konnte nicht geladen werden.");
             return;
         }
 
@@ -467,7 +467,7 @@ public class GemerkteNovelsSceneController : SceneController
         }
         if (visualNovelToDisplay == null)
         {
-            DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
+            DisplayErrorMessage("Die gewÃ¼nschte Novel konnte nicht geladen werden.");
             return;
         }
 
@@ -505,7 +505,7 @@ public class GemerkteNovelsSceneController : SceneController
         }
         if (visualNovelToDisplay == null)
         {
-            DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
+            DisplayErrorMessage("Die gewÃ¼nschte Novel konnte nicht geladen werden.");
             return;
         }
 
@@ -543,7 +543,7 @@ public class GemerkteNovelsSceneController : SceneController
         }
         if (visualNovelToDisplay == null)
         {
-            DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
+            DisplayErrorMessage("Die gewÃ¼nschte Novel konnte nicht geladen werden.");
             return;
         }
 
@@ -581,7 +581,7 @@ public class GemerkteNovelsSceneController : SceneController
         }
         if (visualNovelToDisplay == null)
         {
-            DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
+            DisplayErrorMessage("Die gewÃ¼nschte Novel konnte nicht geladen werden.");
             return;
         }
 
@@ -619,7 +619,7 @@ public class GemerkteNovelsSceneController : SceneController
         }
         if (visualNovelToDisplay == null)
         {
-            DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
+            DisplayErrorMessage("Die gewÃ¼nschte Novel konnte nicht geladen werden.");
             return;
         }
 
@@ -657,7 +657,7 @@ public class GemerkteNovelsSceneController : SceneController
         }
         if (visualNovelToDisplay == null)
         {
-            DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
+            DisplayErrorMessage("Die gewÃ¼nschte Novel konnte nicht geladen werden.");
             return;
         }
 
