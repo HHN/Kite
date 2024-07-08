@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -62,7 +63,7 @@ public class InfinityScroll : MonoBehaviour
 
         if (memory != null)
         {
-            scollRect.horizontalNormalizedPosition = (float) memory.scrollPosition;
+            scollRect.horizontalNormalizedPosition = (float)memory.scrollPosition;
         }
     }
 

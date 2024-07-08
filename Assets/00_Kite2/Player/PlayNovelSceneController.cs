@@ -488,6 +488,7 @@ public class PlayNovelSceneController : SceneController
     public void HandleEndNovelEvent(VisualNovelEvent novelEvent)
     {
         AnalyticsServiceHandler.Instance().SendNovelPlayTime();
+        PlayRecordManager.Instance().IncrasePlayCounterForNovel(VisualNovelNamesHelper.ValueOf((int) novelToPlay.id));
 
         int userRole = FeedbackRoleManager.Instance.GetFeedbackRole();
         PlayerDataManager.Instance().SetNovelHistory(playThroughHistory);

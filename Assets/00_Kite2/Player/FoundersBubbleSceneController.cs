@@ -22,7 +22,9 @@ public class FoundersBubbleSceneController : SceneController
     [SerializeField] private bool isGruendungszuschussNovelInVersionContained;
     [SerializeField] private bool isHonorarNovelInVersionContained;
     [SerializeField] private bool isLebnenspartnerNovelInVersionContained;
-    [SerializeField] private bool isIntroNovelNovelInVersionContained;
+    [SerializeField] private bool isIntroNovelNovelInVersionContained;    
+
+    [SerializeField] private bool finishedInitialization;
 
     void Start()
     {
