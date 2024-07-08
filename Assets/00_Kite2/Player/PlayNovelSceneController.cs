@@ -439,7 +439,7 @@ public class PlayNovelSceneController : SceneController
     public void HandleShowMessageEvent(VisualNovelEvent novelEvent)
     {
         TextToSpeechService.Instance().TextToSpeechReadLive(novelEvent.text, engine);
-        novelEvent.text = ReplacePlaceholders(novelEvent.text, novelToPlay.GetGlobalVariables());
+        // novelEvent.text = ReplacePlaceholders(novelEvent.text, novelToPlay.GetGlobalVariables());
 
         SetNextEvent(novelEvent);
 
@@ -603,7 +603,7 @@ public class PlayNovelSceneController : SceneController
         playThroughHistory.Add(CharacterTypeHelper.GetNameOfCharacter(character) + ": " + text);
     }
 
-    static string ReplacePlaceholders(string text, Dictionary<string, string> replacements)
+    public static string ReplacePlaceholders(string text, Dictionary<string, string> replacements)
     {
         return Regex.Replace(text, @"\>(.*?)\<", match =>
         {

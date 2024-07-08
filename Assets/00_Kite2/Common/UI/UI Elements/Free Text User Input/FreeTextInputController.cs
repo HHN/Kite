@@ -33,7 +33,8 @@ public class FreeTextInputController : MonoBehaviour
     }
 
     private void SetVariablesName(string variablesName) 
-    { 
+    {
+        Debug.Log(variablesName);
         this.variablesName = variablesName; 
     }
 
@@ -53,6 +54,7 @@ public class FreeTextInputController : MonoBehaviour
             novelToPlay.RemoveGlobalVariable(variablesName);
         }
         novelToPlay.AddGlobalVariable(variablesName, input);
+        novelToPlay.SetGlobalVariable(variablesName, input);
 
         wrapper.SetActive(false);
         Destroy(wrapper);

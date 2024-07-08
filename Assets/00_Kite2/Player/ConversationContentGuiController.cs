@@ -72,7 +72,7 @@ public class ConversationContentGuiController : MonoBehaviour
             newMessageBox = Instantiate(greyMessagePrefab, this.transform);
         }
         ChatMessageBox messageBox = newMessageBox.GetComponent<ChatMessageBox>();
-        messageBox.SetMessage(novelEvent.text);
+        messageBox.SetMessage(PlayNovelSceneController.ReplacePlaceholders(novelEvent.text, PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables())); // TODO: Add replace
         guiContent.Add(newMessageBox);
         PromptManager.Instance().AddFormattedLineToPrompt(CharacterTypeHelper.GetNameOfCharacter(novelEvent.character), novelEvent.text);
     }

@@ -22,15 +22,22 @@ public class VisualNovel
         {  
             globalVariables = new Dictionary<string, string>(); 
         }
-        globalVariables[name] = value;
+        globalVariables.Add(name, value);
+    }
+
+    public void SetGlobalVariable(string varName, string value)
+    {
+        globalVariables[varName] = value;
     }
 
     public bool IsVariableExistend(string name)
     {
         if (globalVariables == null)
         {
+            Debug.Log("globalVariables == null");
             return false;
         }
+        Debug.Log(globalVariables.ContainsKey(name));
         return globalVariables.ContainsKey(name);
     }
 
@@ -42,6 +49,7 @@ public class VisualNovel
         }
         if (globalVariables.ContainsKey(name))
         {
+            Debug.Log("Removed var");
             globalVariables.Remove(name);
         }
     }
