@@ -1,5 +1,5 @@
 :: StoryTitle
-Pressegespräch 0.6
+Pressegespräch 0.7
 
 
 :: StoryData
@@ -34,14 +34,14 @@ Du befindest dich auf einer Veranstaltung, bei der Jungunternehmer*innen ihre Ge
 [[Weiter]]
 
 
-:: Ansonsten kein Artikel {"position":"675,2400","size":"100,100"}
+:: Ansonsten kein Artikel {"position":"800,2375","size":"100,100"}
 >>JournalistinSprichtFriendly:<<
 Ich verstehe. Vielen Dank, für das Gespräch und ich melde mich bei Ihnen. Ich wünsche Ihnen noch einen schönen Tag. Auf Wiedersehen.
 >>--<<
 >>Ende<<
 
 
-:: Artikel Neutral {"position":"800,2225","size":"100,100"}
+:: Artikel Neutral {"position":"925,2225","size":"100,100"}
 >>JournalistinSprichtFriendly:<<
 Schön. Vielen Dank, dass ich über Sie schreiben darf. Der Artikel wird am Sonntag erscheinen.
 >>--<<
@@ -98,7 +98,9 @@ Ich finde es bedauerlich, dass Sie nicht bereit sind, in dieser Angelegenheit fl
 So habe ich das nicht gemeint. Aber unsere Leser*innen finden es interessant, wenn eine so attraktive Frau wie Sie sich mit einer so spannenden Idee selbstständig macht.
 
 
-[[Es geht hier nicht um meine Attraktivität, sondern um meine Gründungsidee. Sie reduzieren mich hier auf mein Aussehen, das mache ich nicht mit. Mir doch lieber, wenn Sie keinen Artikel nicht schreiben.->Kein Artikel b]]
+[[Es geht hier nicht um meine Attraktivität, sondern um meine Gründungsidee. Sie reduzieren mich hier auf mein Aussehen, das mache ich nicht mit.->Kein Artikel b]]
+
+[[Es ist mir doch lieber, wenn Sie keinen Artikel nicht schreiben.->Kein Artikel]]
 
 
 :: Fokus: Geschäft {"position":"800,1550","size":"100,100"}
@@ -133,7 +135,7 @@ Du verlässt den Raum.
 >>Ende<<
 
 
-:: Kein Artikel Negativ b {"position":"1625,2225","size":"100,100"}
+:: Kein Artikel Negativ b {"position":"675,2225","size":"100,100"}
 >>InfoNachrichtWirdAngezeigt:<<
 Du verlässt den Raum.
 >>--<<
@@ -147,7 +149,7 @@ Ach so. Ich verstehe, vielen Dank, für das Gespräch. Dann verbleiben wir einfa
 >>Ende<<
 
 
-:: Kein Artikel Neutral-Negativ {"position":"1000,2225","size":"100,100"}
+:: Kein Artikel Neutral-Negativ {"position":"1050,2225","size":"100,100"}
 >>JournalistinSprichtFriendly:<<
 Auf Wiedersehen.
 >>--<<
@@ -177,16 +179,22 @@ Ach, wie schade! Und ich dachte, Ihre Geschichte könnte interessant sein. Aber 
 Ach, wie schade! Und ich dachte, Ihre Geschichte könnte interessant sein. Aber wenn Sie sich nicht für die Aufmerksamkeit interessieren, dann ist das eben so.
 
 
-[[Was hat mein Charme mit meiner Unternehmensgründung zu tun? Ich möchte Aufmerksamkeit für meine Gründungsidee und nicht für mein Aussehen. Das ist sexistisch!->Kein Artikel Negativ a]]
+[[Wenn Sie die Besonderheit hervorheben möchten, dass ich als Frau gründe, dann gehen Sie bitte auf die strukturellen Schwierigkeiten ein, mit denen Frauen als Gründerinnen auch heute noch zu kämpfen haben, dann bin ich damit einverstanden.->Strukturelle Gründe]]
 
-[[Vielen Dank für Ihr Verständnis. Ich habe meine Entscheidung getroffen. Auf Wiedersehen.->Kein Artikel Neutral-Negativ]]
+[[Ich habe meine Entscheidung getroffen. Auf Wiedersehen.->Kein Artikel Neutral-Negativ]]
 
 
 :: Kommentar {"position":"1625,1975","size":"100,100"}
 >>JournalistinSprichtCritical:<<
 Sie wissen anscheinend nicht so viel über Journalismus. Ich habe aber nun nicht die Zeit, um Sie aufzuklären.
-
-[[Ich sehe, dass wir in dieser Angelegenheit keine Übereinstimmung finden werden. Ich denke, es ist am besten, wenn wir das Gespräch hier beenden. Auf Wiedersehen.->Kein Artikel Negativ b]]
+>>--<<
+>>SpielerinCharakterSpricht:<<
+Ich sehe, dass wir in dieser Angelegenheit keine Übereinstimmung finden werden. Ich denke, es ist am besten, wenn wir das Gespräch hier beenden. Auf Wiedersehen.
+>>--<<
+>>InfoNachrichtWirdAngezeigt:<<
+Du verlässt den Raum.
+>>--<<
+>>Ende<<
 
 
 :: Kritik {"position":"1550,1750","size":"100,100"}
@@ -228,6 +236,8 @@ Geschichten über Frauen, die Unternehmen gründen, werden oft als inspirierend 
 Dies kann Leser*innen ansprechen, die nach Vorbildern suchen. Es geht darum, Geschichten zu erzählen, die Menschen ermutigen und motivieren, Geschlechterbarrieren zu überwinden.
 
 [[Okay, ich verstehe. Dann bin ich gespannt auf den Artikel.->Artikel Neutral]]
+
+[[Wenn Sie die Besonderheit hervorheben möchten, dass ich als Frau gründe, dann gehen Sie bitte auf die strukturellen Schwierigkeiten ein, mit denen Frauen als Gründerinnen auch heute noch zu kämpfen haben, dann bin ich damit einverstanden.->Strukturelle Gründe]]
 
 
 :: Nachfrage Positiv {"position":"575,1675","size":"100,100"}
@@ -295,7 +305,7 @@ Die Tatsache, dass Sie eine Frau sind, macht Ihre Geschichte doch viel interessa
 [[Ja, ich weiß, dass Geschichten über Frauen, die Unternehmen gründen, Aufmerksamkeit erregen. Aber das bedeutet nicht, dass es mir gefällt, wenn der Fokus auf mir als Frau liegt und das sensationell dargestellt wird. Es geht mir mehr um das, was ich aufgebaut habe.->Fokus: Geschäft]]
 
 
-:: Strukturelle Gründe {"position":"675,2225","size":"100,100"}
+:: Strukturelle Gründe {"position":"800,2225","size":"100,100"}
 >>JournalistinSprichtAstonished:<<
 Ach, so wichtig ist Ihnen das? Ich werde das abklären müssen und gebe Ihnen dann nochmal Bescheid?
 
@@ -373,7 +383,7 @@ Unternehmensideezeitpunkt: Wann kamen Sie auf die Idee für Ihr Unternehmen?
 
 :: Weiter IV {"position":"900,875","size":"100,100"}
 >>JournalistinSprichtLaughing:<<
-Das ist spannend. Eine Frau, die ein Unternehmen gründet. das wird sicher viele Leser*innen interessieren.
+Das ist spannend. Eine Frau, die ein Unternehmen gründet. Das wird sicher viele Leser*innen interessieren.
 >>--<<
 >>RelevanterBias:Tokenism<<
 

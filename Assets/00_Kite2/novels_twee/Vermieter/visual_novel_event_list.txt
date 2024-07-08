@@ -1,5 +1,5 @@
 :: StoryTitle
-Büro anmieten 0.7
+Büro anmieten 0.8
 
 
 :: StoryData
@@ -233,6 +233,8 @@ Wenn Sie Aspekte benennen können, die aus Ihrer Sicht für die Wahl dieses Stan
 >>VermieterSprichtLaughing:<<
 Ach, ich bin mir sicher, dass Sie das mit Ihrer Frauenpower toll machen werden. Ich hoffe nur, dass Sie sich mit so einem Unternehmen nicht doch zu viel Stress zumuten.
 >>--<<
+>>RelevanterBias:BenevolenterSexismus<<
+>>--<<
 >>RelevanterBias:UnbewussteBiasInDerKommunikation<<
 
 [[Stress gehört dazu und ich nehme gerne Herausforderungen an.|Selbstbewusst b]]
@@ -271,7 +273,6 @@ Natürlich, da fällt mir etwas ein. Ein Freund von mir hat auch gegründet! Da 
 Stimmt, gut, dass Sie so handeln! Aber Frauen haben manchmal zusätzliche Herausforderungen in der Geschäftswelt. 
 
 [[Freund Gründungsliteratur]] 
-
 
 
 :: Ende Neutral: Doubledown {"position":"1975,3825","size":"100,100"}
@@ -352,7 +353,7 @@ Alles klar, Ihnen auch noch einen schönen Tag. Auf Wiedersehen.
 
 :: Ende: Positiv-Neutral II {"position":"2050,4250","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
-Ich schätze eine bewusste und geschlechtsneutrale Kommunikation in geschäftlichen Angelegenheiten. Die Selbstauskunft schicke ich Ihnen so schnell wie möglich. Danke und noch einen schönen Tag.
+Ich schätze eine bewusste und geschlechterneutrale Kommunikation in geschäftlichen Angelegenheiten. Die Selbstauskunft schicke ich Ihnen so schnell wie möglich. Danke und noch einen schönen Tag.
 >>--<<
 >>VermieterSprichtFriendly:<<
 Alles klar, Ihnen auch noch einen schönen Tag. Auf Wiedersehen.
@@ -445,7 +446,7 @@ Oh, ach so. Das verstehe ich natürlich. Übrigens! Ein Freund von mir hat auch 
 
 :: Fokus: Positiv {"position":"1825,2500","size":"100,100"}
 >>VermieterSprichtFriendly:<<
-Ja, das wird er sicher. Übrigens, ein Freund  von mir hat auch gegründet! Da habe ich einiges mitbekommen.
+Ja, das wird er sicher. Übrigens, ein Freund von mir hat auch gegründet! Da habe ich einiges mitbekommen.
 
 [[Freund betont]]
 
@@ -513,7 +514,7 @@ Ein Freund von mir hat neulich auch gegründet, da habe ich Einiges mitbekommen.
 
 
 :: Freund betont {"position":"1700,2650","size":"100,100"}
->>VermieterSprichtCritical:<<
+>>VermieterSprichtLaughing:<<
 Mein Freund betont außerdem immer wieder, wie wichtig Marktforschung ist. Sie haben ja schon auf Ihre Marktrecherche hingewiesen und hoffentlich die richtigen Methoden angewandt? Das kann wirklich den Unterschied machen.
 >>--<<
 >>RelevanterBias:BenevolenterSexismus<<
@@ -543,6 +544,8 @@ Ich weiß, welche Schritte für eine Unternehmensgründung wichtig sind.
 >>--<<
 >>VermieterSprichtFriendly:<<
 Ach so, ja, das hatten Sie erwähnt. Gut, dass Sie sich Sachen besser merken können als ich, aber ich bin ja nicht so multitaskingfähig wie Sie als Frau. 
+>>--<<
+>>RelevanterBias:GeschlechtsspezifischeStereotypen<<
 
 [[Selbstbewusst III]]
 
@@ -730,6 +733,8 @@ Ja, Marktforschung ist integral für den Geschäftserfolg. Ich habe eine umfasse
 >>VermieterSprichtLaughing:<<
 Wie schön! Ich bin mir sicher, dass Sie das mit Ihrer Frauenpower toll machen werden. Ich hoffe nur, dass Sie sich mit so einem Unternehmen nicht doch zu viel Stress zumuten.
 >>--<<
+>>RelevanterBias:BenevolenterSexismus<<
+>>--<<
 >>RelevanterBias:UnbewussteBiasInDerKommunikation<<
 
 [[Stress gehört dazu und ich nehme gerne Herausforderungen an.|Selbstbewusst b]]
@@ -748,7 +753,7 @@ Ich habe schonmal Büroflächen gemietet und weiß, worauf ich achten muss.
 
 :: Selbstbewusst {"position":"1900,2900","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
-Ja, wie gesagt war Marktforschung  ein entscheidender Teil meiner Vorbereitung. Ich habe umfangreiche Analysen durchgeführt, um sicherzustellen, dass mein Unternehmen den Bedürfnissen des Marktes entspricht. 
+Ja, wie gesagt war Marktforschung ein entscheidender Teil meiner Vorbereitung. Ich habe umfangreiche Analysen durchgeführt, um sicherzustellen, dass mein Unternehmen den Bedürfnissen des Marktes entspricht. 
 
 [[Selbstbewusst II]]
 
@@ -759,6 +764,8 @@ Ich bin zuversichtlich, dass ich auf einem soliden Fundament stehe.
 >>--<<
 >>VermieterSprichtFriendly:<<
 Ach so, ja, das hatten Sie erwähnt. Gut, dass Sie sich Sachen besser merken können als ich, aber ich bin ja nicht so multitaskingfähig wie Sie als Frau. 
+>>--<<
+>>RelevanterBias:GeschlechtsspezifischeStereotypen<<
 
 [[Selbstbewusst III]]
 
@@ -858,14 +865,14 @@ Stressmanagement ist wichtig, und ich habe Strategien, um damit umzugehen. Aber 
 
 :: Termin ok {"position":"2100,2325","size":"100,100"}
 >>VermieterSprichtFriendly:<<
-Gut. Übrigens, ein Freund  von mir hat auch gegründet! Da habe ich einiges mitbekommen.
+Gut. Übrigens, ein Freund von mir hat auch gegründet! Da habe ich einiges mitbekommen.
 
 [[Freund betont]]
 
 
 :: Terminänderung {"position":"2225,2325","size":"100,100"}
 >>VermieterSprichtFriendly:<<
-Ja, das passt auch. Übrigens, ein Freund  von mir hat auch gegründet! Da habe ich einiges mitbekommen.
+Ja, das passt auch. Übrigens, ein Freund von mir hat auch gegründet! Da habe ich einiges mitbekommen.
 
 [[Freund betont]]
 

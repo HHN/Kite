@@ -5874,7 +5874,7 @@
                 },
                 {
                     "id": "Erklärung",
-                    "nextId": "Kein Artikel b",
+                    "nextId": "OptionsLabel4",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -5887,6 +5887,96 @@
                     "text": "So habe ich das nicht gemeint. Aber unsere Leser*innen finden es interessant, wenn eine so attraktive Frau wie Sie sich mit einer so spannenden Idee selbstständig macht.",
                     "animationType": 0,
                     "expressionType": 2,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 0
+                },
+                {
+                    "id": "OptionsLabel4",
+                    "nextId": "OptionsLabel4OptionsLabel4",
+                    "onChoice": "Kein Artikel b",
+                    "eventType": 5,
+                    "waitForUserConfirmation": false,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 0,
+                    "text": "Es geht hier nicht um meine Attraktivität, sondern um meine Gründungsidee. Sie reduzieren mich hier auf mein Aussehen, das mache ich nicht mit.",
+                    "animationType": 0,
+                    "expressionType": 0,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 0
+                },
+                {
+                    "id": "OptionsLabel4OptionsLabel4",
+                    "nextId": "OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4",
+                    "onChoice": "Kein Artikel",
+                    "eventType": 5,
+                    "waitForUserConfirmation": false,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 0,
+                    "text": "Es ist mir doch lieber, wenn Sie keinen Artikel nicht schreiben.",
+                    "animationType": 0,
+                    "expressionType": 0,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 0
+                },
+                {
+                    "id": "OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4",
+                    "nextId": "",
+                    "onChoice": "",
+                    "eventType": 6,
+                    "waitForUserConfirmation": true,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 0,
+                    "text": "",
+                    "animationType": 0,
+                    "expressionType": 0,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -5934,7 +6024,7 @@
                 },
                 {
                     "id": "Fokus: GeschäftRandomSeperatorString1020304Fokus: Geschäft",
-                    "nextId": "OptionsLabel4",
+                    "nextId": "OptionsLabel5",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -5963,8 +6053,8 @@
                     "relevantBias": 21
                 },
                 {
-                    "id": "OptionsLabel4",
-                    "nextId": "OptionsLabel4OptionsLabel4",
+                    "id": "OptionsLabel5",
+                    "nextId": "OptionsLabel5OptionsLabel5",
                     "onChoice": "Artikel Neutral",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -5993,8 +6083,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel4OptionsLabel4",
-                    "nextId": "OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4",
+                    "id": "OptionsLabel5OptionsLabel5",
+                    "nextId": "OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5",
                     "onChoice": "Kein Artikel",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -6023,8 +6113,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4",
-                    "nextId": "OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4",
+                    "id": "OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5",
+                    "nextId": "OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5",
                     "onChoice": "Erklärung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -6053,7 +6143,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4",
+                    "id": "OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -6084,7 +6174,7 @@
                 },
                 {
                     "id": "Kein Artikel",
-                    "nextId": "OptionsLabel5",
+                    "nextId": "OptionsLabel6",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -6113,8 +6203,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel5",
-                    "nextId": "OptionsLabel5OptionsLabel5",
+                    "id": "OptionsLabel6",
+                    "nextId": "OptionsLabel6OptionsLabel6",
                     "onChoice": "Keine Gründe",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -6143,8 +6233,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel5OptionsLabel5",
-                    "nextId": "OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5",
+                    "id": "OptionsLabel6OptionsLabel6",
+                    "nextId": "OptionsLabel6OptionsLabel6OptionsLabel6OptionsLabel6",
                     "onChoice": "Kein Artikel Neutral Gründe",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -6173,7 +6263,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5",
+                    "id": "OptionsLabel6OptionsLabel6OptionsLabel6OptionsLabel6",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -6714,7 +6804,7 @@
                 },
                 {
                     "id": "Kein Artikel b",
-                    "nextId": "OptionsLabel6",
+                    "nextId": "OptionsLabel7",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -6743,8 +6833,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel6",
-                    "nextId": "OptionsLabel6OptionsLabel6",
+                    "id": "OptionsLabel7",
+                    "nextId": "OptionsLabel7OptionsLabel7",
                     "onChoice": "Kein Artikel b II",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -6773,8 +6863,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel6OptionsLabel6",
-                    "nextId": "OptionsLabel6OptionsLabel6OptionsLabel6OptionsLabel6",
+                    "id": "OptionsLabel7OptionsLabel7",
+                    "nextId": "OptionsLabel7OptionsLabel7OptionsLabel7OptionsLabel7",
                     "onChoice": "Kein Artikel b II",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -6785,126 +6875,6 @@
                     "backgroundSpriteId": 0,
                     "character": 0,
                     "text": "Ja, ich bin mir meiner Sache sicher.",
-                    "animationType": 0,
-                    "expressionType": 0,
-                    "xPosition": 0,
-                    "yPosition": 0,
-                    "opinionChoiceNumber": 0,
-                    "audioClipToPlay": 0,
-                    "animationToPlay": 0,
-                    "show": true,
-                    "questionForFreeTextInput": "",
-                    "variablesName": "",
-                    "gptPrompt": "",
-                    "variablesNameForGptPromp": "",
-                    "gptCompletionHandlerId": 0,
-                    "key": "",
-                    "value": "",
-                    "relevantBias": 0
-                },
-                {
-                    "id": "OptionsLabel6OptionsLabel6OptionsLabel6OptionsLabel6",
-                    "nextId": "",
-                    "onChoice": "",
-                    "eventType": 6,
-                    "waitForUserConfirmation": true,
-                    "skinSpriteId": 0,
-                    "clotheSpriteId": 0,
-                    "hairSpriteId": 0,
-                    "faceSpriteId": 0,
-                    "backgroundSpriteId": 0,
-                    "character": 0,
-                    "text": "",
-                    "animationType": 0,
-                    "expressionType": 0,
-                    "xPosition": 0,
-                    "yPosition": 0,
-                    "opinionChoiceNumber": 0,
-                    "audioClipToPlay": 0,
-                    "animationToPlay": 0,
-                    "show": true,
-                    "questionForFreeTextInput": "",
-                    "variablesName": "",
-                    "gptPrompt": "",
-                    "variablesNameForGptPromp": "",
-                    "gptCompletionHandlerId": 0,
-                    "key": "",
-                    "value": "",
-                    "relevantBias": 0
-                },
-                {
-                    "id": "Kein Artikel b II",
-                    "nextId": "OptionsLabel7",
-                    "onChoice": "",
-                    "eventType": 4,
-                    "waitForUserConfirmation": true,
-                    "skinSpriteId": 0,
-                    "clotheSpriteId": 0,
-                    "hairSpriteId": 0,
-                    "faceSpriteId": 0,
-                    "backgroundSpriteId": 0,
-                    "character": 6,
-                    "text": "Ach, wie schade! Und ich dachte, Ihre Geschichte könnte interessant sein. Aber wenn Sie sich nicht für die Aufmerksamkeit interessieren, dann ist das eben so.",
-                    "animationType": 0,
-                    "expressionType": 13,
-                    "xPosition": 0,
-                    "yPosition": 0,
-                    "opinionChoiceNumber": 0,
-                    "audioClipToPlay": 0,
-                    "animationToPlay": 0,
-                    "show": true,
-                    "questionForFreeTextInput": "",
-                    "variablesName": "",
-                    "gptPrompt": "",
-                    "variablesNameForGptPromp": "",
-                    "gptCompletionHandlerId": 0,
-                    "key": "",
-                    "value": "",
-                    "relevantBias": 0
-                },
-                {
-                    "id": "OptionsLabel7",
-                    "nextId": "OptionsLabel7OptionsLabel7",
-                    "onChoice": "Kein Artikel Negativ b",
-                    "eventType": 5,
-                    "waitForUserConfirmation": false,
-                    "skinSpriteId": 0,
-                    "clotheSpriteId": 0,
-                    "hairSpriteId": 0,
-                    "faceSpriteId": 0,
-                    "backgroundSpriteId": 0,
-                    "character": 0,
-                    "text": "Ich sehe, dass wir in dieser Angelegenheit keine Übereinstimmung finden werden. Ich denke, es ist am besten, wenn wir das Gespräch hier beenden. Auf Wiedersehen.",
-                    "animationType": 0,
-                    "expressionType": 0,
-                    "xPosition": 0,
-                    "yPosition": 0,
-                    "opinionChoiceNumber": 0,
-                    "audioClipToPlay": 0,
-                    "animationToPlay": 0,
-                    "show": true,
-                    "questionForFreeTextInput": "",
-                    "variablesName": "",
-                    "gptPrompt": "",
-                    "variablesNameForGptPromp": "",
-                    "gptCompletionHandlerId": 0,
-                    "key": "",
-                    "value": "",
-                    "relevantBias": 0
-                },
-                {
-                    "id": "OptionsLabel7OptionsLabel7",
-                    "nextId": "OptionsLabel7OptionsLabel7OptionsLabel7OptionsLabel7",
-                    "onChoice": "Strukturelle Gründe",
-                    "eventType": 5,
-                    "waitForUserConfirmation": false,
-                    "skinSpriteId": 0,
-                    "clotheSpriteId": 0,
-                    "hairSpriteId": 0,
-                    "faceSpriteId": 0,
-                    "backgroundSpriteId": 0,
-                    "character": 0,
-                    "text": "Wenn Sie die Besonderheit hervorheben möchten, dass ich als Frau gründe, dann gehen Sie bitte auf die strukturellen Schwierigkeiten ein, mit denen Frauen als Gründerinnen auch heute noch zu kämpfen haben, dann bin ich damit einverstanden.",
                     "animationType": 0,
                     "expressionType": 0,
                     "xPosition": 0,
@@ -6953,7 +6923,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "Keine Gründe",
+                    "id": "Kein Artikel b II",
                     "nextId": "OptionsLabel8",
                     "onChoice": "",
                     "eventType": 4,
@@ -6985,7 +6955,7 @@
                 {
                     "id": "OptionsLabel8",
                     "nextId": "OptionsLabel8OptionsLabel8",
-                    "onChoice": "Kein Artikel Negativ a",
+                    "onChoice": "Kein Artikel Negativ b",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
                     "skinSpriteId": 0,
@@ -6994,7 +6964,7 @@
                     "faceSpriteId": 0,
                     "backgroundSpriteId": 0,
                     "character": 0,
-                    "text": "Was hat mein Charme mit meiner Unternehmensgründung zu tun? Ich möchte Aufmerksamkeit für meine Gründungsidee und nicht für mein Aussehen. Das ist sexistisch!",
+                    "text": "Ich sehe, dass wir in dieser Angelegenheit keine Übereinstimmung finden werden. Ich denke, es ist am besten, wenn wir das Gespräch hier beenden. Auf Wiedersehen.",
                     "animationType": 0,
                     "expressionType": 0,
                     "xPosition": 0,
@@ -7015,7 +6985,7 @@
                 {
                     "id": "OptionsLabel8OptionsLabel8",
                     "nextId": "OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8",
-                    "onChoice": "Kein Artikel Neutral-Negativ",
+                    "onChoice": "Strukturelle Gründe",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
                     "skinSpriteId": 0,
@@ -7024,7 +6994,7 @@
                     "faceSpriteId": 0,
                     "backgroundSpriteId": 0,
                     "character": 0,
-                    "text": "Vielen Dank für Ihr Verständnis. Ich habe meine Entscheidung getroffen. Auf Wiedersehen.",
+                    "text": "Wenn Sie die Besonderheit hervorheben möchten, dass ich als Frau gründe, dann gehen Sie bitte auf die strukturellen Schwierigkeiten ein, mit denen Frauen als Gründerinnen auch heute noch zu kämpfen haben, dann bin ich damit einverstanden.",
                     "animationType": 0,
                     "expressionType": 0,
                     "xPosition": 0,
@@ -7073,8 +7043,128 @@
                     "relevantBias": 0
                 },
                 {
+                    "id": "Keine Gründe",
+                    "nextId": "OptionsLabel9",
+                    "onChoice": "",
+                    "eventType": 4,
+                    "waitForUserConfirmation": true,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 6,
+                    "text": "Ach, wie schade! Und ich dachte, Ihre Geschichte könnte interessant sein. Aber wenn Sie sich nicht für die Aufmerksamkeit interessieren, dann ist das eben so.",
+                    "animationType": 0,
+                    "expressionType": 13,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 0
+                },
+                {
+                    "id": "OptionsLabel9",
+                    "nextId": "OptionsLabel9OptionsLabel9",
+                    "onChoice": "Strukturelle Gründe",
+                    "eventType": 5,
+                    "waitForUserConfirmation": false,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 0,
+                    "text": "Wenn Sie die Besonderheit hervorheben möchten, dass ich als Frau gründe, dann gehen Sie bitte auf die strukturellen Schwierigkeiten ein, mit denen Frauen als Gründerinnen auch heute noch zu kämpfen haben, dann bin ich damit einverstanden.",
+                    "animationType": 0,
+                    "expressionType": 0,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 0
+                },
+                {
+                    "id": "OptionsLabel9OptionsLabel9",
+                    "nextId": "OptionsLabel9OptionsLabel9OptionsLabel9OptionsLabel9",
+                    "onChoice": "Kein Artikel Neutral-Negativ",
+                    "eventType": 5,
+                    "waitForUserConfirmation": false,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 0,
+                    "text": "Ich habe meine Entscheidung getroffen. Auf Wiedersehen.",
+                    "animationType": 0,
+                    "expressionType": 0,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 0
+                },
+                {
+                    "id": "OptionsLabel9OptionsLabel9OptionsLabel9OptionsLabel9",
+                    "nextId": "",
+                    "onChoice": "",
+                    "eventType": 6,
+                    "waitForUserConfirmation": true,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 0,
+                    "text": "",
+                    "animationType": 0,
+                    "expressionType": 0,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 0
+                },
+                {
                     "id": "Kommentar",
-                    "nextId": "Kein Artikel Negativ b",
+                    "nextId": "KommentarRandomSeperatorString1020304Kommentar",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -7087,6 +7177,156 @@
                     "text": "Sie wissen anscheinend nicht so viel über Journalismus. Ich habe aber nun nicht die Zeit, um Sie aufzuklären.",
                     "animationType": 0,
                     "expressionType": 7,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 0
+                },
+                {
+                    "id": "KommentarRandomSeperatorString1020304Kommentar",
+                    "nextId": "KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304Kommentar",
+                    "onChoice": "",
+                    "eventType": 4,
+                    "waitForUserConfirmation": true,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 1,
+                    "text": "Ich sehe, dass wir in dieser Angelegenheit keine Übereinstimmung finden werden. Ich denke, es ist am besten, wenn wir das Gespräch hier beenden. Auf Wiedersehen.",
+                    "animationType": 0,
+                    "expressionType": 1,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 0
+                },
+                {
+                    "id": "KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304Kommentar",
+                    "nextId": "KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304Kommentar",
+                    "onChoice": "",
+                    "eventType": 4,
+                    "waitForUserConfirmation": true,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 4,
+                    "text": "Du verlässt den Raum.",
+                    "animationType": 0,
+                    "expressionType": 1,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 0
+                },
+                {
+                    "id": "KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304Kommentar",
+                    "nextId": "KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomString0012003",
+                    "onChoice": "",
+                    "eventType": 11,
+                    "waitForUserConfirmation": false,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 0,
+                    "text": "",
+                    "animationType": 0,
+                    "expressionType": 0,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 2,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 0
+                },
+                {
+                    "id": "KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomString0012003",
+                    "nextId": "KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomString0012003RandomRandom",
+                    "onChoice": "",
+                    "eventType": 3,
+                    "waitForUserConfirmation": false,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 0,
+                    "text": "",
+                    "animationType": 0,
+                    "expressionType": 0,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 0
+                },
+                {
+                    "id": "KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomSeperatorString1020304KommentarRandomString0012003RandomRandom",
+                    "nextId": "",
+                    "onChoice": "",
+                    "eventType": 10,
+                    "waitForUserConfirmation": false,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 0,
+                    "text": "",
+                    "animationType": 0,
+                    "expressionType": 0,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -7164,7 +7404,7 @@
                 },
                 {
                     "id": "KritikRandomSeperatorString1020304KritikRandomSeperatorString1020304KritikRandomSeperatorString1020304Kritik",
-                    "nextId": "OptionsLabel9",
+                    "nextId": "OptionsLabel10",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -7193,8 +7433,8 @@
                     "relevantBias": 23
                 },
                 {
-                    "id": "OptionsLabel9",
-                    "nextId": "OptionsLabel9OptionsLabel9",
+                    "id": "OptionsLabel10",
+                    "nextId": "OptionsLabel10OptionsLabel10",
                     "onChoice": "Kein Artikel Negativ a",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -7223,8 +7463,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel9OptionsLabel9",
-                    "nextId": "OptionsLabel9OptionsLabel9OptionsLabel9OptionsLabel9",
+                    "id": "OptionsLabel10OptionsLabel10",
+                    "nextId": "OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10",
                     "onChoice": "Kommentar",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -7253,7 +7493,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel9OptionsLabel9OptionsLabel9OptionsLabel9",
+                    "id": "OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -7284,7 +7524,7 @@
                 },
                 {
                     "id": "Nachfrage Fokus",
-                    "nextId": "OptionsLabel10",
+                    "nextId": "OptionsLabel11",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -7313,8 +7553,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel10",
-                    "nextId": "OptionsLabel10OptionsLabel10",
+                    "id": "OptionsLabel11",
+                    "nextId": "OptionsLabel11OptionsLabel11",
                     "onChoice": "Nachfrage Negativ",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -7343,8 +7583,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel10OptionsLabel10",
-                    "nextId": "OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10",
+                    "id": "OptionsLabel11OptionsLabel11",
+                    "nextId": "OptionsLabel11OptionsLabel11OptionsLabel11OptionsLabel11",
                     "onChoice": "Artikel Neutral",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -7373,7 +7613,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10",
+                    "id": "OptionsLabel11OptionsLabel11OptionsLabel11OptionsLabel11",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -7494,7 +7734,7 @@
                 },
                 {
                     "id": "Nachfrage Negativ II",
-                    "nextId": "Artikel Neutral",
+                    "nextId": "OptionsLabel12",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -7507,6 +7747,96 @@
                     "text": "Dies kann Leser*innen ansprechen, die nach Vorbildern suchen. Es geht darum, Geschichten zu erzählen, die Menschen ermutigen und motivieren, Geschlechterbarrieren zu überwinden.",
                     "animationType": 0,
                     "expressionType": 5,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 0
+                },
+                {
+                    "id": "OptionsLabel12",
+                    "nextId": "OptionsLabel12OptionsLabel12",
+                    "onChoice": "Artikel Neutral",
+                    "eventType": 5,
+                    "waitForUserConfirmation": false,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 0,
+                    "text": "Okay, ich verstehe. Dann bin ich gespannt auf den Artikel.",
+                    "animationType": 0,
+                    "expressionType": 0,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 0
+                },
+                {
+                    "id": "OptionsLabel12OptionsLabel12",
+                    "nextId": "OptionsLabel12OptionsLabel12OptionsLabel12OptionsLabel12",
+                    "onChoice": "Strukturelle Gründe",
+                    "eventType": 5,
+                    "waitForUserConfirmation": false,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 0,
+                    "text": "Wenn Sie die Besonderheit hervorheben möchten, dass ich als Frau gründe, dann gehen Sie bitte auf die strukturellen Schwierigkeiten ein, mit denen Frauen als Gründerinnen auch heute noch zu kämpfen haben, dann bin ich damit einverstanden.",
+                    "animationType": 0,
+                    "expressionType": 0,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 0
+                },
+                {
+                    "id": "OptionsLabel12OptionsLabel12OptionsLabel12OptionsLabel12",
+                    "nextId": "",
+                    "onChoice": "",
+                    "eventType": 6,
+                    "waitForUserConfirmation": true,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 0,
+                    "text": "",
+                    "animationType": 0,
+                    "expressionType": 0,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -7614,7 +7944,7 @@
                 },
                 {
                     "id": "Nachfrage Positiv II",
-                    "nextId": "OptionsLabel11",
+                    "nextId": "OptionsLabel13",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -7643,8 +7973,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel11",
-                    "nextId": "OptionsLabel11OptionsLabel11",
+                    "id": "OptionsLabel13",
+                    "nextId": "OptionsLabel13OptionsLabel13",
                     "onChoice": "Vorbild",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -7673,8 +8003,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel11OptionsLabel11",
-                    "nextId": "OptionsLabel11OptionsLabel11OptionsLabel11OptionsLabel11",
+                    "id": "OptionsLabel13OptionsLabel13",
+                    "nextId": "OptionsLabel13OptionsLabel13OptionsLabel13OptionsLabel13",
                     "onChoice": "Dennoch Hauptfokus",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -7703,7 +8033,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel11OptionsLabel11OptionsLabel11OptionsLabel11",
+                    "id": "OptionsLabel13OptionsLabel13OptionsLabel13OptionsLabel13",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -7734,7 +8064,7 @@
                 },
                 {
                     "id": "Nachvollziehbar",
-                    "nextId": "OptionsLabel12",
+                    "nextId": "OptionsLabel14",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -7763,8 +8093,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel12",
-                    "nextId": "OptionsLabel12OptionsLabel12",
+                    "id": "OptionsLabel14",
+                    "nextId": "OptionsLabel14OptionsLabel14",
                     "onChoice": "Weiter ausführen",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -7793,8 +8123,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel12OptionsLabel12",
-                    "nextId": "OptionsLabel12OptionsLabel12OptionsLabel12OptionsLabel12",
+                    "id": "OptionsLabel14OptionsLabel14",
+                    "nextId": "OptionsLabel14OptionsLabel14OptionsLabel14OptionsLabel14",
                     "onChoice": "Nachfrage Positiv",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -7823,7 +8153,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel12OptionsLabel12OptionsLabel12OptionsLabel12",
+                    "id": "OptionsLabel14OptionsLabel14OptionsLabel14OptionsLabel14",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -7854,7 +8184,7 @@
                 },
                 {
                     "id": "Neutral a",
-                    "nextId": "OptionsLabel13",
+                    "nextId": "OptionsLabel15",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -7883,8 +8213,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel13",
-                    "nextId": "OptionsLabel13OptionsLabel13",
+                    "id": "OptionsLabel15",
+                    "nextId": "OptionsLabel15OptionsLabel15",
                     "onChoice": "Weiter ausführen",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -7913,8 +8243,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel13OptionsLabel13",
-                    "nextId": "OptionsLabel13OptionsLabel13OptionsLabel13OptionsLabel13",
+                    "id": "OptionsLabel15OptionsLabel15",
+                    "nextId": "OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15",
                     "onChoice": "Nachfrage Positiv",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -7943,7 +8273,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel13OptionsLabel13OptionsLabel13OptionsLabel13",
+                    "id": "OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -8004,7 +8334,7 @@
                 },
                 {
                     "id": "Neutral b II",
-                    "nextId": "OptionsLabel14",
+                    "nextId": "OptionsLabel16",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -8033,8 +8363,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel14",
-                    "nextId": "OptionsLabel14OptionsLabel14",
+                    "id": "OptionsLabel16",
+                    "nextId": "OptionsLabel16OptionsLabel16",
                     "onChoice": "Betonung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -8063,8 +8393,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel14OptionsLabel14",
-                    "nextId": "OptionsLabel14OptionsLabel14OptionsLabel14OptionsLabel14",
+                    "id": "OptionsLabel16OptionsLabel16",
+                    "nextId": "OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16",
                     "onChoice": "Sensationalisierung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -8093,7 +8423,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel14OptionsLabel14OptionsLabel14OptionsLabel14",
+                    "id": "OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -8154,7 +8484,7 @@
                 },
                 {
                     "id": "SensationalisierungRandomSeperatorString1020304Sensationalisierung",
-                    "nextId": "OptionsLabel15",
+                    "nextId": "OptionsLabel17",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -8183,8 +8513,8 @@
                     "relevantBias": 6
                 },
                 {
-                    "id": "OptionsLabel15",
-                    "nextId": "OptionsLabel15OptionsLabel15",
+                    "id": "OptionsLabel17",
+                    "nextId": "OptionsLabel17OptionsLabel17",
                     "onChoice": "Nachvollziehbar",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -8213,8 +8543,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel15OptionsLabel15",
-                    "nextId": "OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15",
+                    "id": "OptionsLabel17OptionsLabel17",
+                    "nextId": "OptionsLabel17OptionsLabel17OptionsLabel17OptionsLabel17",
                     "onChoice": "Fokus: Geschäft",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -8225,246 +8555,6 @@
                     "backgroundSpriteId": 0,
                     "character": 0,
                     "text": "Ja, ich weiß, dass Geschichten über Frauen, die Unternehmen gründen, Aufmerksamkeit erregen. Aber das bedeutet nicht, dass es mir gefällt, wenn der Fokus auf mir als Frau liegt und das sensationell dargestellt wird. Es geht mir mehr um das, was ich aufgebaut habe.",
-                    "animationType": 0,
-                    "expressionType": 0,
-                    "xPosition": 0,
-                    "yPosition": 0,
-                    "opinionChoiceNumber": 0,
-                    "audioClipToPlay": 0,
-                    "animationToPlay": 0,
-                    "show": true,
-                    "questionForFreeTextInput": "",
-                    "variablesName": "",
-                    "gptPrompt": "",
-                    "variablesNameForGptPromp": "",
-                    "gptCompletionHandlerId": 0,
-                    "key": "",
-                    "value": "",
-                    "relevantBias": 0
-                },
-                {
-                    "id": "OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15",
-                    "nextId": "",
-                    "onChoice": "",
-                    "eventType": 6,
-                    "waitForUserConfirmation": true,
-                    "skinSpriteId": 0,
-                    "clotheSpriteId": 0,
-                    "hairSpriteId": 0,
-                    "faceSpriteId": 0,
-                    "backgroundSpriteId": 0,
-                    "character": 0,
-                    "text": "",
-                    "animationType": 0,
-                    "expressionType": 0,
-                    "xPosition": 0,
-                    "yPosition": 0,
-                    "opinionChoiceNumber": 0,
-                    "audioClipToPlay": 0,
-                    "animationToPlay": 0,
-                    "show": true,
-                    "questionForFreeTextInput": "",
-                    "variablesName": "",
-                    "gptPrompt": "",
-                    "variablesNameForGptPromp": "",
-                    "gptCompletionHandlerId": 0,
-                    "key": "",
-                    "value": "",
-                    "relevantBias": 0
-                },
-                {
-                    "id": "Strukturelle Gründe",
-                    "nextId": "OptionsLabel16",
-                    "onChoice": "",
-                    "eventType": 4,
-                    "waitForUserConfirmation": true,
-                    "skinSpriteId": 0,
-                    "clotheSpriteId": 0,
-                    "hairSpriteId": 0,
-                    "faceSpriteId": 0,
-                    "backgroundSpriteId": 0,
-                    "character": 6,
-                    "text": "Ach, so wichtig ist Ihnen das? Ich werde das abklären müssen und gebe Ihnen dann nochmal Bescheid?",
-                    "animationType": 0,
-                    "expressionType": 2,
-                    "xPosition": 0,
-                    "yPosition": 0,
-                    "opinionChoiceNumber": 0,
-                    "audioClipToPlay": 0,
-                    "animationToPlay": 0,
-                    "show": true,
-                    "questionForFreeTextInput": "",
-                    "variablesName": "",
-                    "gptPrompt": "",
-                    "variablesNameForGptPromp": "",
-                    "gptCompletionHandlerId": 0,
-                    "key": "",
-                    "value": "",
-                    "relevantBias": 0
-                },
-                {
-                    "id": "OptionsLabel16",
-                    "nextId": "OptionsLabel16OptionsLabel16",
-                    "onChoice": "Ansonsten kein Artikel",
-                    "eventType": 5,
-                    "waitForUserConfirmation": false,
-                    "skinSpriteId": 0,
-                    "clotheSpriteId": 0,
-                    "hairSpriteId": 0,
-                    "faceSpriteId": 0,
-                    "backgroundSpriteId": 0,
-                    "character": 0,
-                    "text": "Ja, mir ist das sehr wichtig. Es sollte nicht der Eindruck entstehen, dass die Schwierigkeiten vereinzelte individuelle Probleme sind.",
-                    "animationType": 0,
-                    "expressionType": 0,
-                    "xPosition": 0,
-                    "yPosition": 0,
-                    "opinionChoiceNumber": 0,
-                    "audioClipToPlay": 0,
-                    "animationToPlay": 0,
-                    "show": true,
-                    "questionForFreeTextInput": "",
-                    "variablesName": "",
-                    "gptPrompt": "",
-                    "variablesNameForGptPromp": "",
-                    "gptCompletionHandlerId": 0,
-                    "key": "",
-                    "value": "",
-                    "relevantBias": 0
-                },
-                {
-                    "id": "OptionsLabel16OptionsLabel16",
-                    "nextId": "OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16",
-                    "onChoice": "Ansonsten kein Artikel",
-                    "eventType": 5,
-                    "waitForUserConfirmation": false,
-                    "skinSpriteId": 0,
-                    "clotheSpriteId": 0,
-                    "hairSpriteId": 0,
-                    "faceSpriteId": 0,
-                    "backgroundSpriteId": 0,
-                    "character": 0,
-                    "text": "Das wäre toll. Sollte es nicht möglich sein, möchte ich lieber, dass kein Artikel geschrieben wird.",
-                    "animationType": 0,
-                    "expressionType": 0,
-                    "xPosition": 0,
-                    "yPosition": 0,
-                    "opinionChoiceNumber": 0,
-                    "audioClipToPlay": 0,
-                    "animationToPlay": 0,
-                    "show": true,
-                    "questionForFreeTextInput": "",
-                    "variablesName": "",
-                    "gptPrompt": "",
-                    "variablesNameForGptPromp": "",
-                    "gptCompletionHandlerId": 0,
-                    "key": "",
-                    "value": "",
-                    "relevantBias": 0
-                },
-                {
-                    "id": "OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16",
-                    "nextId": "",
-                    "onChoice": "",
-                    "eventType": 6,
-                    "waitForUserConfirmation": true,
-                    "skinSpriteId": 0,
-                    "clotheSpriteId": 0,
-                    "hairSpriteId": 0,
-                    "faceSpriteId": 0,
-                    "backgroundSpriteId": 0,
-                    "character": 0,
-                    "text": "",
-                    "animationType": 0,
-                    "expressionType": 0,
-                    "xPosition": 0,
-                    "yPosition": 0,
-                    "opinionChoiceNumber": 0,
-                    "audioClipToPlay": 0,
-                    "animationToPlay": 0,
-                    "show": true,
-                    "questionForFreeTextInput": "",
-                    "variablesName": "",
-                    "gptPrompt": "",
-                    "variablesNameForGptPromp": "",
-                    "gptCompletionHandlerId": 0,
-                    "key": "",
-                    "value": "",
-                    "relevantBias": 0
-                },
-                {
-                    "id": "Umentschieden",
-                    "nextId": "OptionsLabel17",
-                    "onChoice": "",
-                    "eventType": 4,
-                    "waitForUserConfirmation": true,
-                    "skinSpriteId": 0,
-                    "clotheSpriteId": 0,
-                    "hairSpriteId": 0,
-                    "faceSpriteId": 0,
-                    "backgroundSpriteId": 0,
-                    "character": 6,
-                    "text": "Schön, dass Sie sich umentschieden haben. Wir werden unser Bestes tun, um eine inspirierende Geschichte über Ihr Unternehmen zu erzählen.",
-                    "animationType": 0,
-                    "expressionType": 5,
-                    "xPosition": 0,
-                    "yPosition": 0,
-                    "opinionChoiceNumber": 0,
-                    "audioClipToPlay": 0,
-                    "animationToPlay": 0,
-                    "show": true,
-                    "questionForFreeTextInput": "",
-                    "variablesName": "",
-                    "gptPrompt": "",
-                    "variablesNameForGptPromp": "",
-                    "gptCompletionHandlerId": 0,
-                    "key": "",
-                    "value": "",
-                    "relevantBias": 0
-                },
-                {
-                    "id": "OptionsLabel17",
-                    "nextId": "OptionsLabel17OptionsLabel17",
-                    "onChoice": "Nachfrage Fokus",
-                    "eventType": 5,
-                    "waitForUserConfirmation": false,
-                    "skinSpriteId": 0,
-                    "clotheSpriteId": 0,
-                    "hairSpriteId": 0,
-                    "faceSpriteId": 0,
-                    "backgroundSpriteId": 0,
-                    "character": 0,
-                    "text": "Können Sie nicht trotzdem versuchen, darauf zu achten, dass Sie den Fokus auf das Unternehmen an sich legen?",
-                    "animationType": 0,
-                    "expressionType": 0,
-                    "xPosition": 0,
-                    "yPosition": 0,
-                    "opinionChoiceNumber": 0,
-                    "audioClipToPlay": 0,
-                    "animationToPlay": 0,
-                    "show": true,
-                    "questionForFreeTextInput": "",
-                    "variablesName": "",
-                    "gptPrompt": "",
-                    "variablesNameForGptPromp": "",
-                    "gptCompletionHandlerId": 0,
-                    "key": "",
-                    "value": "",
-                    "relevantBias": 0
-                },
-                {
-                    "id": "OptionsLabel17OptionsLabel17",
-                    "nextId": "OptionsLabel17OptionsLabel17OptionsLabel17OptionsLabel17",
-                    "onChoice": "Artikel Positiv",
-                    "eventType": 5,
-                    "waitForUserConfirmation": false,
-                    "skinSpriteId": 0,
-                    "clotheSpriteId": 0,
-                    "hairSpriteId": 0,
-                    "faceSpriteId": 0,
-                    "backgroundSpriteId": 0,
-                    "character": 0,
-                    "text": "Danke, ich freue mich den Artikel zu lesen.",
                     "animationType": 0,
                     "expressionType": 0,
                     "xPosition": 0,
@@ -8513,7 +8603,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "Verständnisvoll",
+                    "id": "Strukturelle Gründe",
                     "nextId": "OptionsLabel18",
                     "onChoice": "",
                     "eventType": 4,
@@ -8524,7 +8614,7 @@
                     "faceSpriteId": 0,
                     "backgroundSpriteId": 0,
                     "character": 6,
-                    "text": "Sind Sie sich sicher, dass Sie auf einen Artikel verzichten möchten?",
+                    "text": "Ach, so wichtig ist Ihnen das? Ich werde das abklären müssen und gebe Ihnen dann nochmal Bescheid?",
                     "animationType": 0,
                     "expressionType": 2,
                     "xPosition": 0,
@@ -8545,7 +8635,7 @@
                 {
                     "id": "OptionsLabel18",
                     "nextId": "OptionsLabel18OptionsLabel18",
-                    "onChoice": "Verzicht",
+                    "onChoice": "Ansonsten kein Artikel",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
                     "skinSpriteId": 0,
@@ -8554,7 +8644,7 @@
                     "faceSpriteId": 0,
                     "backgroundSpriteId": 0,
                     "character": 0,
-                    "text": "Ja, wenn der Fokus nicht auf meinem Unternehmen liegt, verzichte ich lieber.",
+                    "text": "Ja, mir ist das sehr wichtig. Es sollte nicht der Eindruck entstehen, dass die Schwierigkeiten vereinzelte individuelle Probleme sind.",
                     "animationType": 0,
                     "expressionType": 0,
                     "xPosition": 0,
@@ -8575,7 +8665,7 @@
                 {
                     "id": "OptionsLabel18OptionsLabel18",
                     "nextId": "OptionsLabel18OptionsLabel18OptionsLabel18OptionsLabel18",
-                    "onChoice": "Umentschieden",
+                    "onChoice": "Ansonsten kein Artikel",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
                     "skinSpriteId": 0,
@@ -8584,7 +8674,7 @@
                     "faceSpriteId": 0,
                     "backgroundSpriteId": 0,
                     "character": 0,
-                    "text": "Hm, ich fände es doch besser, wenn ein Artikel erscheinen würde.",
+                    "text": "Das wäre toll. Sollte es nicht möglich sein, möchte ich lieber, dass kein Artikel geschrieben wird.",
                     "animationType": 0,
                     "expressionType": 0,
                     "xPosition": 0,
@@ -8633,8 +8723,248 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "Verzicht",
+                    "id": "Umentschieden",
                     "nextId": "OptionsLabel19",
+                    "onChoice": "",
+                    "eventType": 4,
+                    "waitForUserConfirmation": true,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 6,
+                    "text": "Schön, dass Sie sich umentschieden haben. Wir werden unser Bestes tun, um eine inspirierende Geschichte über Ihr Unternehmen zu erzählen.",
+                    "animationType": 0,
+                    "expressionType": 5,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 0
+                },
+                {
+                    "id": "OptionsLabel19",
+                    "nextId": "OptionsLabel19OptionsLabel19",
+                    "onChoice": "Nachfrage Fokus",
+                    "eventType": 5,
+                    "waitForUserConfirmation": false,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 0,
+                    "text": "Können Sie nicht trotzdem versuchen, darauf zu achten, dass Sie den Fokus auf das Unternehmen an sich legen?",
+                    "animationType": 0,
+                    "expressionType": 0,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 0
+                },
+                {
+                    "id": "OptionsLabel19OptionsLabel19",
+                    "nextId": "OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19",
+                    "onChoice": "Artikel Positiv",
+                    "eventType": 5,
+                    "waitForUserConfirmation": false,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 0,
+                    "text": "Danke, ich freue mich den Artikel zu lesen.",
+                    "animationType": 0,
+                    "expressionType": 0,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 0
+                },
+                {
+                    "id": "OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19",
+                    "nextId": "",
+                    "onChoice": "",
+                    "eventType": 6,
+                    "waitForUserConfirmation": true,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 0,
+                    "text": "",
+                    "animationType": 0,
+                    "expressionType": 0,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 0
+                },
+                {
+                    "id": "Verständnisvoll",
+                    "nextId": "OptionsLabel20",
+                    "onChoice": "",
+                    "eventType": 4,
+                    "waitForUserConfirmation": true,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 6,
+                    "text": "Sind Sie sich sicher, dass Sie auf einen Artikel verzichten möchten?",
+                    "animationType": 0,
+                    "expressionType": 2,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 0
+                },
+                {
+                    "id": "OptionsLabel20",
+                    "nextId": "OptionsLabel20OptionsLabel20",
+                    "onChoice": "Verzicht",
+                    "eventType": 5,
+                    "waitForUserConfirmation": false,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 0,
+                    "text": "Ja, wenn der Fokus nicht auf meinem Unternehmen liegt, verzichte ich lieber.",
+                    "animationType": 0,
+                    "expressionType": 0,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 0
+                },
+                {
+                    "id": "OptionsLabel20OptionsLabel20",
+                    "nextId": "OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20",
+                    "onChoice": "Umentschieden",
+                    "eventType": 5,
+                    "waitForUserConfirmation": false,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 0,
+                    "text": "Hm, ich fände es doch besser, wenn ein Artikel erscheinen würde.",
+                    "animationType": 0,
+                    "expressionType": 0,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 0
+                },
+                {
+                    "id": "OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20",
+                    "nextId": "",
+                    "onChoice": "",
+                    "eventType": 6,
+                    "waitForUserConfirmation": true,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 0,
+                    "text": "",
+                    "animationType": 0,
+                    "expressionType": 0,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 0
+                },
+                {
+                    "id": "Verzicht",
+                    "nextId": "OptionsLabel21",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -8663,8 +8993,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel19",
-                    "nextId": "OptionsLabel19OptionsLabel19",
+                    "id": "OptionsLabel21",
+                    "nextId": "OptionsLabel21OptionsLabel21",
                     "onChoice": "Keine Gründe",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -8693,8 +9023,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel19OptionsLabel19",
-                    "nextId": "OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19",
+                    "id": "OptionsLabel21OptionsLabel21",
+                    "nextId": "OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21",
                     "onChoice": "Kein Artikel Neutral Gründe",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -8723,7 +9053,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19",
+                    "id": "OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -9094,7 +9424,7 @@
                     "faceSpriteId": 0,
                     "backgroundSpriteId": 0,
                     "character": 6,
-                    "text": "Das ist spannend. Eine Frau, die ein Unternehmen gründet. das wird sicher viele Leser*innen interessieren.",
+                    "text": "Das ist spannend. Eine Frau, die ein Unternehmen gründet. Das wird sicher viele Leser*innen interessieren.",
                     "animationType": 0,
                     "expressionType": 6,
                     "xPosition": 0,
@@ -9114,7 +9444,7 @@
                 },
                 {
                     "id": "Weiter IVRandomSeperatorString1020304Weiter IV",
-                    "nextId": "OptionsLabel20",
+                    "nextId": "OptionsLabel22",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -9143,8 +9473,8 @@
                     "relevantBias": 6
                 },
                 {
-                    "id": "OptionsLabel20",
-                    "nextId": "OptionsLabel20OptionsLabel20",
+                    "id": "OptionsLabel22",
+                    "nextId": "OptionsLabel22OptionsLabel22",
                     "onChoice": "Neutral a",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -9173,8 +9503,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel20OptionsLabel20",
-                    "nextId": "OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20",
+                    "id": "OptionsLabel22OptionsLabel22",
+                    "nextId": "OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22",
                     "onChoice": "Neutral b",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -9203,8 +9533,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20",
-                    "nextId": "OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20",
+                    "id": "OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22",
+                    "nextId": "OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22",
                     "onChoice": "Ablehnend",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -9233,7 +9563,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20",
+                    "id": "OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -16950,7 +17280,7 @@
                 },
                 {
                     "id": "AblehnendRandomSeperatorString1020304AblehnendRandomSeperatorString1020304AblehnendRandomSeperatorString1020304Ablehnend",
-                    "nextId": "OptionsLabel21",
+                    "nextId": "OptionsLabel23",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -16979,8 +17309,8 @@
                     "relevantBias": 22
                 },
                 {
-                    "id": "OptionsLabel21",
-                    "nextId": "OptionsLabel21OptionsLabel21",
+                    "id": "OptionsLabel23",
+                    "nextId": "OptionsLabel23OptionsLabel23",
                     "onChoice": "Ärgern",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -17009,8 +17339,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel21OptionsLabel21",
-                    "nextId": "OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21",
+                    "id": "OptionsLabel23OptionsLabel23",
+                    "nextId": "OptionsLabel23OptionsLabel23OptionsLabel23OptionsLabel23",
                     "onChoice": "Umlenken a",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -17039,8 +17369,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21",
-                    "nextId": "OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21",
+                    "id": "OptionsLabel23OptionsLabel23OptionsLabel23OptionsLabel23",
+                    "nextId": "OptionsLabel23OptionsLabel23OptionsLabel23OptionsLabel23OptionsLabel23OptionsLabel23OptionsLabel23OptionsLabel23",
                     "onChoice": "Sexismus",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -17069,7 +17399,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21",
+                    "id": "OptionsLabel23OptionsLabel23OptionsLabel23OptionsLabel23OptionsLabel23OptionsLabel23OptionsLabel23OptionsLabel23",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -17100,7 +17430,7 @@
                 },
                 {
                     "id": "Ageism Alt",
-                    "nextId": "OptionsLabel22",
+                    "nextId": "OptionsLabel24",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -17129,8 +17459,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel22",
-                    "nextId": "OptionsLabel22OptionsLabel22",
+                    "id": "OptionsLabel24",
+                    "nextId": "OptionsLabel24OptionsLabel24",
                     "onChoice": "Mietprozess",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -17159,8 +17489,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel22OptionsLabel22",
-                    "nextId": "OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22",
+                    "id": "OptionsLabel24OptionsLabel24",
+                    "nextId": "OptionsLabel24OptionsLabel24OptionsLabel24OptionsLabel24",
                     "onChoice": "Ageism Nachfrage Alt",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -17189,7 +17519,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22",
+                    "id": "OptionsLabel24OptionsLabel24OptionsLabel24OptionsLabel24",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -17220,7 +17550,7 @@
                 },
                 {
                     "id": "Ageism Jung",
-                    "nextId": "OptionsLabel23",
+                    "nextId": "OptionsLabel25",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -17249,8 +17579,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel23",
-                    "nextId": "OptionsLabel23OptionsLabel23",
+                    "id": "OptionsLabel25",
+                    "nextId": "OptionsLabel25OptionsLabel25",
                     "onChoice": "Mietprozess",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -17279,8 +17609,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel23OptionsLabel23",
-                    "nextId": "OptionsLabel23OptionsLabel23OptionsLabel23OptionsLabel23",
+                    "id": "OptionsLabel25OptionsLabel25",
+                    "nextId": "OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25",
                     "onChoice": "Ageism Nachfrage Jung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -17309,7 +17639,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel23OptionsLabel23OptionsLabel23OptionsLabel23",
+                    "id": "OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -17460,7 +17790,7 @@
                 },
                 {
                     "id": "Ageism Nachfrage II",
-                    "nextId": "OptionsLabel24",
+                    "nextId": "OptionsLabel26",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -17489,8 +17819,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel24",
-                    "nextId": "OptionsLabel24OptionsLabel24",
+                    "id": "OptionsLabel26",
+                    "nextId": "OptionsLabel26OptionsLabel26",
                     "onChoice": "Fokus: Positiv",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -17519,8 +17849,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel24OptionsLabel24",
-                    "nextId": "OptionsLabel24OptionsLabel24OptionsLabel24OptionsLabel24",
+                    "id": "OptionsLabel26OptionsLabel26",
+                    "nextId": "OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26",
                     "onChoice": "Fokus: Neutral",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -17549,8 +17879,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel24OptionsLabel24OptionsLabel24OptionsLabel24",
-                    "nextId": "OptionsLabel24OptionsLabel24OptionsLabel24OptionsLabel24OptionsLabel24OptionsLabel24OptionsLabel24OptionsLabel24",
+                    "id": "OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26",
+                    "nextId": "OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26",
                     "onChoice": "Fokus: Negativ",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -17579,7 +17909,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel24OptionsLabel24OptionsLabel24OptionsLabel24OptionsLabel24OptionsLabel24OptionsLabel24OptionsLabel24",
+                    "id": "OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -17790,7 +18120,7 @@
                 },
                 {
                     "id": "Alter IIRandomSeperatorString1020304Alter II",
-                    "nextId": "OptionsLabel25",
+                    "nextId": "OptionsLabel27",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -17819,8 +18149,8 @@
                     "relevantBias": 10
                 },
                 {
-                    "id": "OptionsLabel25",
-                    "nextId": "OptionsLabel25OptionsLabel25",
+                    "id": "OptionsLabel27",
+                    "nextId": "OptionsLabel27OptionsLabel27",
                     "onChoice": "Vorbereitung klarstellen",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -17849,8 +18179,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel25OptionsLabel25",
-                    "nextId": "OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25",
+                    "id": "OptionsLabel27OptionsLabel27",
+                    "nextId": "OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27",
                     "onChoice": "Ageism Jung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -17879,8 +18209,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25",
-                    "nextId": "OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25",
+                    "id": "OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27",
+                    "nextId": "OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27",
                     "onChoice": "Ageism Alt",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -17909,7 +18239,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25",
+                    "id": "OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -18060,7 +18390,7 @@
                 },
                 {
                     "id": "Aufwand",
-                    "nextId": "OptionsLabel26",
+                    "nextId": "OptionsLabel28",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -18089,8 +18419,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel26",
-                    "nextId": "OptionsLabel26OptionsLabel26",
+                    "id": "OptionsLabel28",
+                    "nextId": "OptionsLabel28OptionsLabel28",
                     "onChoice": "Inklusion Termin",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -18119,8 +18449,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel26OptionsLabel26",
-                    "nextId": "OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26",
+                    "id": "OptionsLabel28OptionsLabel28",
+                    "nextId": "OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28",
                     "onChoice": "Inklusion Erklärung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -18149,7 +18479,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26",
+                    "id": "OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -18510,7 +18840,37 @@
                 },
                 {
                     "id": "Dankbar IIRandomSeperatorString1020304Dankbar IIRandomSeperatorString1020304Dankbar IIRandomSeperatorString1020304Dankbar II",
-                    "nextId": "OptionsLabel27",
+                    "nextId": "Dankbar IIRandomSeperatorString1020304Dankbar IIRandomSeperatorString1020304Dankbar IIRandomSeperatorString1020304Dankbar IIRandomSeperatorString1020304Dankbar IIRandomSeperatorString1020304Dankbar IIRandomSeperatorString1020304Dankbar IIRandomSeperatorString1020304Dankbar II",
+                    "onChoice": "",
+                    "eventType": 16,
+                    "waitForUserConfirmation": false,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 0,
+                    "text": "",
+                    "animationType": 0,
+                    "expressionType": 0,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 27
+                },
+                {
+                    "id": "Dankbar IIRandomSeperatorString1020304Dankbar IIRandomSeperatorString1020304Dankbar IIRandomSeperatorString1020304Dankbar IIRandomSeperatorString1020304Dankbar IIRandomSeperatorString1020304Dankbar IIRandomSeperatorString1020304Dankbar IIRandomSeperatorString1020304Dankbar II",
+                    "nextId": "OptionsLabel29",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -18539,8 +18899,8 @@
                     "relevantBias": 24
                 },
                 {
-                    "id": "OptionsLabel27",
-                    "nextId": "OptionsLabel27OptionsLabel27",
+                    "id": "OptionsLabel29",
+                    "nextId": "OptionsLabel29OptionsLabel29",
                     "onChoice": "Selbstbewusst b",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -18569,8 +18929,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel27OptionsLabel27",
-                    "nextId": "OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27",
+                    "id": "OptionsLabel29OptionsLabel29",
+                    "nextId": "OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29",
                     "onChoice": "Frauenpower",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -18599,8 +18959,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27",
-                    "nextId": "OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27",
+                    "id": "OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29",
+                    "nextId": "OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29",
                     "onChoice": "Strategien",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -18629,7 +18989,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27",
+                    "id": "OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -18660,7 +19020,7 @@
                 },
                 {
                     "id": "Danke",
-                    "nextId": "OptionsLabel28",
+                    "nextId": "OptionsLabel30",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -18689,8 +19049,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel28",
-                    "nextId": "OptionsLabel28OptionsLabel28",
+                    "id": "OptionsLabel30",
+                    "nextId": "OptionsLabel30OptionsLabel30",
                     "onChoice": "Selbstbewusst",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -18719,8 +19079,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel28OptionsLabel28",
-                    "nextId": "OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28",
+                    "id": "OptionsLabel30OptionsLabel30",
+                    "nextId": "OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30",
                     "onChoice": "Dankbar",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -18749,8 +19109,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28",
-                    "nextId": "OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28",
+                    "id": "OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30",
+                    "nextId": "OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30",
                     "onChoice": "Sachlich",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -18779,8 +19139,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28",
-                    "nextId": "OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28",
+                    "id": "OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30",
+                    "nextId": "OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30",
                     "onChoice": "Frustriert",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -18809,7 +19169,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28",
+                    "id": "OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -18930,7 +19290,7 @@
                 },
                 {
                     "id": "Ende Neutral: Doubledown",
-                    "nextId": "OptionsLabel29",
+                    "nextId": "OptionsLabel31",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -18959,8 +19319,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel29",
-                    "nextId": "OptionsLabel29OptionsLabel29",
+                    "id": "OptionsLabel31",
+                    "nextId": "OptionsLabel31OptionsLabel31",
                     "onChoice": "Ende: Positiv-Neutral",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -18989,8 +19349,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel29OptionsLabel29",
-                    "nextId": "OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29",
+                    "id": "OptionsLabel31OptionsLabel31",
+                    "nextId": "OptionsLabel31OptionsLabel31OptionsLabel31OptionsLabel31",
                     "onChoice": "Intention",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -19019,7 +19379,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29",
+                    "id": "OptionsLabel31OptionsLabel31OptionsLabel31OptionsLabel31",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -19290,7 +19650,7 @@
                 },
                 {
                     "id": "Ende: Positiv Selbstbewusst II",
-                    "nextId": "OptionsLabel30",
+                    "nextId": "OptionsLabel32",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -19319,8 +19679,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel30",
-                    "nextId": "OptionsLabel30OptionsLabel30",
+                    "id": "OptionsLabel32",
+                    "nextId": "OptionsLabel32OptionsLabel32",
                     "onChoice": "Benevolenter Sexismus: Selbstbewusstsein",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -19349,8 +19709,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel30OptionsLabel30",
-                    "nextId": "OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30",
+                    "id": "OptionsLabel32OptionsLabel32",
+                    "nextId": "OptionsLabel32OptionsLabel32OptionsLabel32OptionsLabel32",
                     "onChoice": "Ende: Positiv-Neutral",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -19379,7 +19739,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30",
+                    "id": "OptionsLabel32OptionsLabel32OptionsLabel32OptionsLabel32",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -19470,7 +19830,7 @@
                 },
                 {
                     "id": "Ende: Positiv Selbstsicher II",
-                    "nextId": "OptionsLabel31",
+                    "nextId": "OptionsLabel33",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -19499,8 +19859,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel31",
-                    "nextId": "OptionsLabel31OptionsLabel31",
+                    "id": "OptionsLabel33",
+                    "nextId": "OptionsLabel33OptionsLabel33",
                     "onChoice": "Benevolenter Sexismus: Selbstsicher",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -19529,8 +19889,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel31OptionsLabel31",
-                    "nextId": "OptionsLabel31OptionsLabel31OptionsLabel31OptionsLabel31",
+                    "id": "OptionsLabel33OptionsLabel33",
+                    "nextId": "OptionsLabel33OptionsLabel33OptionsLabel33OptionsLabel33",
                     "onChoice": "Ende: Positiv-Neutral",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -19559,7 +19919,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel31OptionsLabel31OptionsLabel31OptionsLabel31",
+                    "id": "OptionsLabel33OptionsLabel33OptionsLabel33OptionsLabel33",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -19750,7 +20110,7 @@
                     "faceSpriteId": 0,
                     "backgroundSpriteId": 0,
                     "character": 1,
-                    "text": "Ich schätze eine bewusste und geschlechtsneutrale Kommunikation in geschäftlichen Angelegenheiten. Die Selbstauskunft schicke ich Ihnen so schnell wie möglich. Danke und noch einen schönen Tag.",
+                    "text": "Ich schätze eine bewusste und geschlechterneutrale Kommunikation in geschäftlichen Angelegenheiten. Die Selbstauskunft schicke ich Ihnen so schnell wie möglich. Danke und noch einen schönen Tag.",
                     "animationType": 0,
                     "expressionType": 1,
                     "xPosition": 0,
@@ -19950,7 +20310,7 @@
                 },
                 {
                     "id": "ErwartungRandomSeperatorString1020304Erwartung",
-                    "nextId": "OptionsLabel32",
+                    "nextId": "OptionsLabel34",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -19979,8 +20339,8 @@
                     "relevantBias": 19
                 },
                 {
-                    "id": "OptionsLabel32",
-                    "nextId": "OptionsLabel32OptionsLabel32",
+                    "id": "OptionsLabel34",
+                    "nextId": "OptionsLabel34OptionsLabel34",
                     "onChoice": "Vorbereitung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -20009,8 +20369,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel32OptionsLabel32",
-                    "nextId": "OptionsLabel32OptionsLabel32OptionsLabel32OptionsLabel32",
+                    "id": "OptionsLabel34OptionsLabel34",
+                    "nextId": "OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34",
                     "onChoice": "Kompliment",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -20039,8 +20399,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel32OptionsLabel32OptionsLabel32OptionsLabel32",
-                    "nextId": "OptionsLabel32OptionsLabel32OptionsLabel32OptionsLabel32OptionsLabel32OptionsLabel32OptionsLabel32OptionsLabel32",
+                    "id": "OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34",
+                    "nextId": "OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34",
                     "onChoice": "Umlenken a",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -20069,7 +20429,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel32OptionsLabel32OptionsLabel32OptionsLabel32OptionsLabel32OptionsLabel32OptionsLabel32OptionsLabel32",
+                    "id": "OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -20130,7 +20490,7 @@
                 },
                 {
                     "id": "FaktorenRandomSeperatorString1020304Faktoren",
-                    "nextId": "OptionsLabel33",
+                    "nextId": "OptionsLabel35",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -20159,8 +20519,8 @@
                     "relevantBias": 10
                 },
                 {
-                    "id": "OptionsLabel33",
-                    "nextId": "OptionsLabel33OptionsLabel33",
+                    "id": "OptionsLabel35",
+                    "nextId": "OptionsLabel35OptionsLabel35",
                     "onChoice": "Langfristig",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -20189,8 +20549,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel33OptionsLabel33",
-                    "nextId": "OptionsLabel33OptionsLabel33OptionsLabel33OptionsLabel33",
+                    "id": "OptionsLabel35OptionsLabel35",
+                    "nextId": "OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35",
                     "onChoice": "Besondere Umstände",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -20219,7 +20579,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel33OptionsLabel33OptionsLabel33OptionsLabel33",
+                    "id": "OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -20250,7 +20610,7 @@
                 },
                 {
                     "id": "Fokus",
-                    "nextId": "OptionsLabel34",
+                    "nextId": "OptionsLabel36",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -20279,8 +20639,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel34",
-                    "nextId": "OptionsLabel34OptionsLabel34",
+                    "id": "OptionsLabel36",
+                    "nextId": "OptionsLabel36OptionsLabel36",
                     "onChoice": "Fokus: Positiv",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -20309,8 +20669,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel34OptionsLabel34",
-                    "nextId": "OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34",
+                    "id": "OptionsLabel36OptionsLabel36",
+                    "nextId": "OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36",
                     "onChoice": "Fokus: Neutral",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -20339,8 +20699,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34",
-                    "nextId": "OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34",
+                    "id": "OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36",
+                    "nextId": "OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36",
                     "onChoice": "Fokus: Negativ",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -20369,7 +20729,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34",
+                    "id": "OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -20400,7 +20760,7 @@
                 },
                 {
                     "id": "Fokus a",
-                    "nextId": "OptionsLabel35",
+                    "nextId": "OptionsLabel37",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -20429,8 +20789,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel35",
-                    "nextId": "OptionsLabel35OptionsLabel35",
+                    "id": "OptionsLabel37",
+                    "nextId": "OptionsLabel37OptionsLabel37",
                     "onChoice": "Selbstbewusst",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -20459,8 +20819,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel35OptionsLabel35",
-                    "nextId": "OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35",
+                    "id": "OptionsLabel37OptionsLabel37",
+                    "nextId": "OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37",
                     "onChoice": "Dankbar",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -20489,8 +20849,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35",
-                    "nextId": "OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35",
+                    "id": "OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37",
+                    "nextId": "OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37",
                     "onChoice": "Sachlich",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -20519,8 +20879,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35",
-                    "nextId": "OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35",
+                    "id": "OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37",
+                    "nextId": "OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37",
                     "onChoice": "Frustriert",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -20549,7 +20909,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35",
+                    "id": "OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -20610,7 +20970,7 @@
                 },
                 {
                     "id": "Fokus: Negativ II",
-                    "nextId": "OptionsLabel36",
+                    "nextId": "OptionsLabel38",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -20639,8 +20999,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel36",
-                    "nextId": "OptionsLabel36OptionsLabel36",
+                    "id": "OptionsLabel38",
+                    "nextId": "OptionsLabel38OptionsLabel38",
                     "onChoice": "Selbstbewusst",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -20669,8 +21029,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel36OptionsLabel36",
-                    "nextId": "OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36",
+                    "id": "OptionsLabel38OptionsLabel38",
+                    "nextId": "OptionsLabel38OptionsLabel38OptionsLabel38OptionsLabel38",
                     "onChoice": "Sachlich",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -20699,8 +21059,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36",
-                    "nextId": "OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36",
+                    "id": "OptionsLabel38OptionsLabel38OptionsLabel38OptionsLabel38",
+                    "nextId": "OptionsLabel38OptionsLabel38OptionsLabel38OptionsLabel38OptionsLabel38OptionsLabel38OptionsLabel38OptionsLabel38",
                     "onChoice": "Frustriert",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -20729,7 +21089,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36",
+                    "id": "OptionsLabel38OptionsLabel38OptionsLabel38OptionsLabel38OptionsLabel38OptionsLabel38OptionsLabel38OptionsLabel38",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -20850,7 +21210,7 @@
                 },
                 {
                     "id": "FrageRandomSeperatorString1020304Frage",
-                    "nextId": "OptionsLabel37",
+                    "nextId": "OptionsLabel39",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -20879,8 +21239,8 @@
                     "relevantBias": 24
                 },
                 {
-                    "id": "OptionsLabel37",
-                    "nextId": "OptionsLabel37OptionsLabel37",
+                    "id": "OptionsLabel39",
+                    "nextId": "OptionsLabel39OptionsLabel39",
                     "onChoice": "Frage II",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -20909,8 +21269,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel37OptionsLabel37",
-                    "nextId": "OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37",
+                    "id": "OptionsLabel39OptionsLabel39",
+                    "nextId": "OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39",
                     "onChoice": "Erwartung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -20939,7 +21299,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel37OptionsLabel37OptionsLabel37OptionsLabel37",
+                    "id": "OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -21060,7 +21420,7 @@
                 },
                 {
                     "id": "Frage IIRandomSeperatorString1020304Frage IIRandomSeperatorString1020304Frage IIRandomSeperatorString1020304Frage IIRandomSeperatorString1020304Frage IIRandomSeperatorString1020304Frage IIRandomSeperatorString1020304Frage IIRandomSeperatorString1020304Frage II",
-                    "nextId": "OptionsLabel38",
+                    "nextId": "OptionsLabel40",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -21089,8 +21449,8 @@
                     "relevantBias": 26
                 },
                 {
-                    "id": "OptionsLabel38",
-                    "nextId": "OptionsLabel38OptionsLabel38",
+                    "id": "OptionsLabel40",
+                    "nextId": "OptionsLabel40OptionsLabel40",
                     "onChoice": "Ignorieren",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -21119,8 +21479,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel38OptionsLabel38",
-                    "nextId": "OptionsLabel38OptionsLabel38OptionsLabel38OptionsLabel38",
+                    "id": "OptionsLabel40OptionsLabel40",
+                    "nextId": "OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40",
                     "onChoice": "Wieso Mann",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -21149,8 +21509,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel38OptionsLabel38OptionsLabel38OptionsLabel38",
-                    "nextId": "OptionsLabel38OptionsLabel38OptionsLabel38OptionsLabel38OptionsLabel38OptionsLabel38OptionsLabel38OptionsLabel38",
+                    "id": "OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40",
+                    "nextId": "OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40",
                     "onChoice": "Eigenverantwortlich",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -21179,7 +21539,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel38OptionsLabel38OptionsLabel38OptionsLabel38OptionsLabel38OptionsLabel38OptionsLabel38OptionsLabel38",
+                    "id": "OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -21240,7 +21600,7 @@
                 },
                 {
                     "id": "Freund Gründungsliteratur",
-                    "nextId": "OptionsLabel39",
+                    "nextId": "OptionsLabel41",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -21269,8 +21629,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel39",
-                    "nextId": "OptionsLabel39OptionsLabel39",
+                    "id": "OptionsLabel41",
+                    "nextId": "OptionsLabel41OptionsLabel41",
                     "onChoice": "Vorbereitung Danke",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -21299,8 +21659,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel39OptionsLabel39",
-                    "nextId": "OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39",
+                    "id": "OptionsLabel41OptionsLabel41",
+                    "nextId": "OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41",
                     "onChoice": "Vorbereitung Bekanntmachen",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -21329,8 +21689,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39",
-                    "nextId": "OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39",
+                    "id": "OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41",
+                    "nextId": "OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41",
                     "onChoice": "Bereits informiert",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -21359,8 +21719,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39",
-                    "nextId": "OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39",
+                    "id": "OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41",
+                    "nextId": "OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41",
                     "onChoice": "Vorbereitung Sicher",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -21389,7 +21749,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39",
+                    "id": "OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -21420,7 +21780,7 @@
                 },
                 {
                     "id": "Freund Rat",
-                    "nextId": "OptionsLabel40",
+                    "nextId": "OptionsLabel42",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -21449,8 +21809,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel40",
-                    "nextId": "OptionsLabel40OptionsLabel40",
+                    "id": "OptionsLabel42",
+                    "nextId": "OptionsLabel42OptionsLabel42",
                     "onChoice": "Kompliment Danke",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -21479,8 +21839,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel40OptionsLabel40",
-                    "nextId": "OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40",
+                    "id": "OptionsLabel42OptionsLabel42",
+                    "nextId": "OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42",
                     "onChoice": "Bereits informiert",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -21509,8 +21869,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40",
-                    "nextId": "OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40",
+                    "id": "OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42",
+                    "nextId": "OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42",
                     "onChoice": "Sensibilisierung b",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -21539,7 +21899,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40",
+                    "id": "OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -21582,7 +21942,7 @@
                     "character": 7,
                     "text": "Mein Freund betont außerdem immer wieder, wie wichtig Marktforschung ist. Sie haben ja schon auf Ihre Marktrecherche hingewiesen und hoffentlich die richtigen Methoden angewandt? Das kann wirklich den Unterschied machen.",
                     "animationType": 0,
-                    "expressionType": 7,
+                    "expressionType": 6,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -21630,7 +21990,7 @@
                 },
                 {
                     "id": "Freund betontRandomSeperatorString1020304Freund betontRandomSeperatorString1020304Freund betontRandomSeperatorString1020304Freund betont",
-                    "nextId": "OptionsLabel41",
+                    "nextId": "OptionsLabel43",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -21659,8 +22019,8 @@
                     "relevantBias": 19
                 },
                 {
-                    "id": "OptionsLabel41",
-                    "nextId": "OptionsLabel41OptionsLabel41",
+                    "id": "OptionsLabel43",
+                    "nextId": "OptionsLabel43OptionsLabel43",
                     "onChoice": "Selbstbewusst",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -21689,8 +22049,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel41OptionsLabel41",
-                    "nextId": "OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41",
+                    "id": "OptionsLabel43OptionsLabel43",
+                    "nextId": "OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43",
                     "onChoice": "Dankbar",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -21719,8 +22079,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41",
-                    "nextId": "OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41",
+                    "id": "OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43",
+                    "nextId": "OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43",
                     "onChoice": "Sachlich",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -21749,8 +22109,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41",
-                    "nextId": "OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41",
+                    "id": "OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43",
+                    "nextId": "OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43",
                     "onChoice": "Frustriert",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -21779,7 +22139,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41",
+                    "id": "OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -21870,7 +22230,7 @@
                 },
                 {
                     "id": "Frustriert IIRandomSeperatorString1020304Frustriert II",
-                    "nextId": "Selbstbewusst III",
+                    "nextId": "Frustriert IIRandomSeperatorString1020304Frustriert IIRandomSeperatorString1020304Frustriert IIRandomSeperatorString1020304Frustriert II",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -21897,6 +22257,36 @@
                     "key": "",
                     "value": "",
                     "relevantBias": 0
+                },
+                {
+                    "id": "Frustriert IIRandomSeperatorString1020304Frustriert IIRandomSeperatorString1020304Frustriert IIRandomSeperatorString1020304Frustriert II",
+                    "nextId": "Selbstbewusst III",
+                    "onChoice": "",
+                    "eventType": 16,
+                    "waitForUserConfirmation": false,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 0,
+                    "text": "",
+                    "animationType": 0,
+                    "expressionType": 0,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 19
                 },
                 {
                     "id": "Gründungsförderung",
@@ -21930,7 +22320,7 @@
                 },
                 {
                     "id": "GründungsförderungRandomSeperatorString1020304Gründungsförderung",
-                    "nextId": "OptionsLabel42",
+                    "nextId": "OptionsLabel44",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -21959,8 +22349,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel42",
-                    "nextId": "OptionsLabel42OptionsLabel42",
+                    "id": "OptionsLabel44",
+                    "nextId": "OptionsLabel44OptionsLabel44",
                     "onChoice": "Erstes Mal",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -21989,8 +22379,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel42OptionsLabel42",
-                    "nextId": "OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42",
+                    "id": "OptionsLabel44OptionsLabel44",
+                    "nextId": "OptionsLabel44OptionsLabel44OptionsLabel44OptionsLabel44",
                     "onChoice": "Schonmal gemietet",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -22019,8 +22409,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42",
-                    "nextId": "OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42",
+                    "id": "OptionsLabel44OptionsLabel44OptionsLabel44OptionsLabel44",
+                    "nextId": "OptionsLabel44OptionsLabel44OptionsLabel44OptionsLabel44OptionsLabel44OptionsLabel44OptionsLabel44OptionsLabel44",
                     "onChoice": "Frage",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -22049,7 +22439,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42",
+                    "id": "OptionsLabel44OptionsLabel44OptionsLabel44OptionsLabel44OptionsLabel44OptionsLabel44OptionsLabel44OptionsLabel44",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -22110,7 +22500,7 @@
                 },
                 {
                     "id": "IgnorierenRandomSeperatorString1020304Ignorieren",
-                    "nextId": "OptionsLabel43",
+                    "nextId": "OptionsLabel45",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -22139,8 +22529,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel43",
-                    "nextId": "OptionsLabel43OptionsLabel43",
+                    "id": "OptionsLabel45",
+                    "nextId": "OptionsLabel45OptionsLabel45",
                     "onChoice": "Inklusion",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -22169,8 +22559,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel43OptionsLabel43",
-                    "nextId": "OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43",
+                    "id": "OptionsLabel45OptionsLabel45",
+                    "nextId": "OptionsLabel45OptionsLabel45OptionsLabel45OptionsLabel45",
                     "onChoice": "Inklusion Nachfrage",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -22199,7 +22589,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43",
+                    "id": "OptionsLabel45OptionsLabel45OptionsLabel45OptionsLabel45",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -22410,7 +22800,7 @@
                 },
                 {
                     "id": "Inklusion Termin II",
-                    "nextId": "OptionsLabel44",
+                    "nextId": "OptionsLabel46",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -22439,8 +22829,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel44",
-                    "nextId": "OptionsLabel44OptionsLabel44",
+                    "id": "OptionsLabel46",
+                    "nextId": "OptionsLabel46OptionsLabel46",
                     "onChoice": "Anforderungen",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -22469,8 +22859,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel44OptionsLabel44",
-                    "nextId": "OptionsLabel44OptionsLabel44OptionsLabel44OptionsLabel44",
+                    "id": "OptionsLabel46OptionsLabel46",
+                    "nextId": "OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46",
                     "onChoice": "Neuer Termin",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -22499,7 +22889,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel44OptionsLabel44OptionsLabel44OptionsLabel44",
+                    "id": "OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -22800,7 +23190,7 @@
                 },
                 {
                     "id": "MietprozessRandomSeperatorString1020304MietprozessRandomSeperatorString1020304MietprozessRandomSeperatorString1020304Mietprozess",
-                    "nextId": "OptionsLabel45",
+                    "nextId": "OptionsLabel47",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -22829,8 +23219,8 @@
                     "relevantBias": 24
                 },
                 {
-                    "id": "OptionsLabel45",
-                    "nextId": "OptionsLabel45OptionsLabel45",
+                    "id": "OptionsLabel47",
+                    "nextId": "OptionsLabel47OptionsLabel47",
                     "onChoice": "Selbstbewusst b",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -22859,8 +23249,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel45OptionsLabel45",
-                    "nextId": "OptionsLabel45OptionsLabel45OptionsLabel45OptionsLabel45",
+                    "id": "OptionsLabel47OptionsLabel47",
+                    "nextId": "OptionsLabel47OptionsLabel47OptionsLabel47OptionsLabel47",
                     "onChoice": "Frauenpower",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -22889,8 +23279,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel45OptionsLabel45OptionsLabel45OptionsLabel45",
-                    "nextId": "OptionsLabel45OptionsLabel45OptionsLabel45OptionsLabel45OptionsLabel45OptionsLabel45OptionsLabel45OptionsLabel45",
+                    "id": "OptionsLabel47OptionsLabel47OptionsLabel47OptionsLabel47",
+                    "nextId": "OptionsLabel47OptionsLabel47OptionsLabel47OptionsLabel47OptionsLabel47OptionsLabel47OptionsLabel47OptionsLabel47",
                     "onChoice": "Strategien",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -22919,7 +23309,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel45OptionsLabel45OptionsLabel45OptionsLabel45OptionsLabel45OptionsLabel45OptionsLabel45OptionsLabel45",
+                    "id": "OptionsLabel47OptionsLabel47OptionsLabel47OptionsLabel47OptionsLabel47OptionsLabel47OptionsLabel47OptionsLabel47",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -23010,7 +23400,7 @@
                 },
                 {
                     "id": "NatürlichRandomSeperatorString1020304NatürlichRandomSeperatorString1020304NatürlichRandomSeperatorString1020304Natürlich",
-                    "nextId": "OptionsLabel46",
+                    "nextId": "OptionsLabel48",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -23039,8 +23429,8 @@
                     "relevantBias": 19
                 },
                 {
-                    "id": "OptionsLabel46",
-                    "nextId": "OptionsLabel46OptionsLabel46",
+                    "id": "OptionsLabel48",
+                    "nextId": "OptionsLabel48OptionsLabel48",
                     "onChoice": "Vorbereitung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -23069,8 +23459,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel46OptionsLabel46",
-                    "nextId": "OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46",
+                    "id": "OptionsLabel48OptionsLabel48",
+                    "nextId": "OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48",
                     "onChoice": "Kompliment",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -23099,8 +23489,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46",
-                    "nextId": "OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46",
+                    "id": "OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48",
+                    "nextId": "OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48",
                     "onChoice": "Umlenken a",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -23129,7 +23519,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46",
+                    "id": "OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -23220,7 +23610,7 @@
                 },
                 {
                     "id": "Neuer Termin",
-                    "nextId": "OptionsLabel47",
+                    "nextId": "OptionsLabel49",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -23249,8 +23639,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel47",
-                    "nextId": "OptionsLabel47OptionsLabel47",
+                    "id": "OptionsLabel49",
+                    "nextId": "OptionsLabel49OptionsLabel49",
                     "onChoice": "Termin ok",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -23279,8 +23669,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel47OptionsLabel47",
-                    "nextId": "OptionsLabel47OptionsLabel47OptionsLabel47OptionsLabel47",
+                    "id": "OptionsLabel49OptionsLabel49",
+                    "nextId": "OptionsLabel49OptionsLabel49OptionsLabel49OptionsLabel49",
                     "onChoice": "Terminänderung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -23309,7 +23699,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel47OptionsLabel47OptionsLabel47OptionsLabel47",
+                    "id": "OptionsLabel49OptionsLabel49OptionsLabel49OptionsLabel49",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -23370,7 +23760,7 @@
                 },
                 {
                     "id": "RechercheRandomSeperatorString1020304Recherche",
-                    "nextId": "OptionsLabel48",
+                    "nextId": "OptionsLabel50",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -23399,8 +23789,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel48",
-                    "nextId": "OptionsLabel48OptionsLabel48",
+                    "id": "OptionsLabel50",
+                    "nextId": "OptionsLabel50OptionsLabel50",
                     "onChoice": "Ablehnend",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -23429,8 +23819,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel48OptionsLabel48",
-                    "nextId": "OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48",
+                    "id": "OptionsLabel50OptionsLabel50",
+                    "nextId": "OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50",
                     "onChoice": "Alles berücksichtigt",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -23459,7 +23849,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48",
+                    "id": "OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -23550,7 +23940,37 @@
                 },
                 {
                     "id": "SachlichRandomSeperatorString1020304SachlichRandomSeperatorString1020304SachlichRandomSeperatorString1020304Sachlich",
-                    "nextId": "OptionsLabel49",
+                    "nextId": "SachlichRandomSeperatorString1020304SachlichRandomSeperatorString1020304SachlichRandomSeperatorString1020304SachlichRandomSeperatorString1020304SachlichRandomSeperatorString1020304SachlichRandomSeperatorString1020304SachlichRandomSeperatorString1020304Sachlich",
+                    "onChoice": "",
+                    "eventType": 16,
+                    "waitForUserConfirmation": false,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 0,
+                    "text": "",
+                    "animationType": 0,
+                    "expressionType": 0,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 27
+                },
+                {
+                    "id": "SachlichRandomSeperatorString1020304SachlichRandomSeperatorString1020304SachlichRandomSeperatorString1020304SachlichRandomSeperatorString1020304SachlichRandomSeperatorString1020304SachlichRandomSeperatorString1020304SachlichRandomSeperatorString1020304Sachlich",
+                    "nextId": "OptionsLabel51",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -23579,8 +23999,8 @@
                     "relevantBias": 24
                 },
                 {
-                    "id": "OptionsLabel49",
-                    "nextId": "OptionsLabel49OptionsLabel49",
+                    "id": "OptionsLabel51",
+                    "nextId": "OptionsLabel51OptionsLabel51",
                     "onChoice": "Selbstbewusst b",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -23609,8 +24029,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel49OptionsLabel49",
-                    "nextId": "OptionsLabel49OptionsLabel49OptionsLabel49OptionsLabel49",
+                    "id": "OptionsLabel51OptionsLabel51",
+                    "nextId": "OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51",
                     "onChoice": "Frauenpower",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -23639,8 +24059,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel49OptionsLabel49OptionsLabel49OptionsLabel49",
-                    "nextId": "OptionsLabel49OptionsLabel49OptionsLabel49OptionsLabel49OptionsLabel49OptionsLabel49OptionsLabel49OptionsLabel49",
+                    "id": "OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51",
+                    "nextId": "OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51",
                     "onChoice": "Strategien",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -23669,7 +24089,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel49OptionsLabel49OptionsLabel49OptionsLabel49OptionsLabel49OptionsLabel49OptionsLabel49OptionsLabel49",
+                    "id": "OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -23790,7 +24210,7 @@
                 },
                 {
                     "id": "Selbstbewusst IIRandomSeperatorString1020304Selbstbewusst II",
-                    "nextId": "Selbstbewusst III",
+                    "nextId": "Selbstbewusst IIRandomSeperatorString1020304Selbstbewusst IIRandomSeperatorString1020304Selbstbewusst IIRandomSeperatorString1020304Selbstbewusst II",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -23817,6 +24237,36 @@
                     "key": "",
                     "value": "",
                     "relevantBias": 0
+                },
+                {
+                    "id": "Selbstbewusst IIRandomSeperatorString1020304Selbstbewusst IIRandomSeperatorString1020304Selbstbewusst IIRandomSeperatorString1020304Selbstbewusst II",
+                    "nextId": "Selbstbewusst III",
+                    "onChoice": "",
+                    "eventType": 16,
+                    "waitForUserConfirmation": false,
+                    "skinSpriteId": 0,
+                    "clotheSpriteId": 0,
+                    "hairSpriteId": 0,
+                    "faceSpriteId": 0,
+                    "backgroundSpriteId": 0,
+                    "character": 0,
+                    "text": "",
+                    "animationType": 0,
+                    "expressionType": 0,
+                    "xPosition": 0,
+                    "yPosition": 0,
+                    "opinionChoiceNumber": 0,
+                    "audioClipToPlay": 0,
+                    "animationToPlay": 0,
+                    "show": true,
+                    "questionForFreeTextInput": "",
+                    "variablesName": "",
+                    "gptPrompt": "",
+                    "variablesNameForGptPromp": "",
+                    "gptCompletionHandlerId": 0,
+                    "key": "",
+                    "value": "",
+                    "relevantBias": 19
                 },
                 {
                     "id": "Selbstbewusst III",
@@ -23850,7 +24300,7 @@
                 },
                 {
                     "id": "Selbstbewusst IIIRandomSeperatorString1020304Selbstbewusst III",
-                    "nextId": "OptionsLabel50",
+                    "nextId": "OptionsLabel52",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -23879,8 +24329,8 @@
                     "relevantBias": 21
                 },
                 {
-                    "id": "OptionsLabel50",
-                    "nextId": "OptionsLabel50OptionsLabel50",
+                    "id": "OptionsLabel52",
+                    "nextId": "OptionsLabel52OptionsLabel52",
                     "onChoice": "Selbstbewusst Mietprozess",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -23909,8 +24359,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel50OptionsLabel50",
-                    "nextId": "OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50",
+                    "id": "OptionsLabel52OptionsLabel52",
+                    "nextId": "OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52",
                     "onChoice": "Selbstbewusst c",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -23939,8 +24389,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50",
-                    "nextId": "OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50",
+                    "id": "OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52",
+                    "nextId": "OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52",
                     "onChoice": "Ansprechen",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -23969,8 +24419,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50",
-                    "nextId": "OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50",
+                    "id": "OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52",
+                    "nextId": "OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52",
                     "onChoice": "Abbruch",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -23999,7 +24449,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50",
+                    "id": "OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -24570,7 +25020,7 @@
                 },
                 {
                     "id": "Umlenken IIRandomSeperatorString1020304Umlenken IIRandomSeperatorString1020304Umlenken IIRandomSeperatorString1020304Umlenken II",
-                    "nextId": "OptionsLabel51",
+                    "nextId": "OptionsLabel53",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -24599,8 +25049,8 @@
                     "relevantBias": 4
                 },
                 {
-                    "id": "OptionsLabel51",
-                    "nextId": "OptionsLabel51OptionsLabel51",
+                    "id": "OptionsLabel53",
+                    "nextId": "OptionsLabel53OptionsLabel53",
                     "onChoice": "Sicher",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -24629,8 +25079,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel51OptionsLabel51",
-                    "nextId": "OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51",
+                    "id": "OptionsLabel53OptionsLabel53",
+                    "nextId": "OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53",
                     "onChoice": "Umlenken Fokus",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -24659,8 +25109,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51",
-                    "nextId": "OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51",
+                    "id": "OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53",
+                    "nextId": "OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53",
                     "onChoice": "Netzwerk",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -24689,7 +25139,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51",
+                    "id": "OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -25050,7 +25500,7 @@
                 },
                 {
                     "id": "Vorbereitung klarstelle IIRandomSeperatorString1020304Vorbereitung klarstelle II",
-                    "nextId": "OptionsLabel52",
+                    "nextId": "OptionsLabel54",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -25079,8 +25529,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel52",
-                    "nextId": "OptionsLabel52OptionsLabel52",
+                    "id": "OptionsLabel54",
+                    "nextId": "OptionsLabel54OptionsLabel54",
                     "onChoice": "Mietprozess",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -25109,8 +25559,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel52OptionsLabel52",
-                    "nextId": "OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52",
+                    "id": "OptionsLabel54OptionsLabel54",
+                    "nextId": "OptionsLabel54OptionsLabel54OptionsLabel54OptionsLabel54",
                     "onChoice": "Ageism Nachfrage",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -25139,7 +25589,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52",
+                    "id": "OptionsLabel54OptionsLabel54OptionsLabel54OptionsLabel54",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -25320,7 +25770,7 @@
                 },
                 {
                     "id": "Weiter IIRandomSeperatorString1020304Weiter II",
-                    "nextId": "OptionsLabel53",
+                    "nextId": "OptionsLabel55",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -25349,8 +25799,8 @@
                     "relevantBias": 21
                 },
                 {
-                    "id": "OptionsLabel53",
-                    "nextId": "OptionsLabel53OptionsLabel53",
+                    "id": "OptionsLabel55",
+                    "nextId": "OptionsLabel55OptionsLabel55",
                     "onChoice": "Natürlich",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -25379,8 +25829,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel53OptionsLabel53",
-                    "nextId": "OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53",
+                    "id": "OptionsLabel55OptionsLabel55",
+                    "nextId": "OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55",
                     "onChoice": "Recherche",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -25409,8 +25859,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53",
-                    "nextId": "OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53",
+                    "id": "OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55",
+                    "nextId": "OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55",
                     "onChoice": "Gründungsförderung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -25439,7 +25889,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53",
+                    "id": "OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -25500,7 +25950,7 @@
                 },
                 {
                     "id": "Wieso MannRandomSeperatorString1020304Wieso Mann",
-                    "nextId": "OptionsLabel54",
+                    "nextId": "OptionsLabel56",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -25529,8 +25979,8 @@
                     "relevantBias": 19
                 },
                 {
-                    "id": "OptionsLabel54",
-                    "nextId": "OptionsLabel54OptionsLabel54",
+                    "id": "OptionsLabel56",
+                    "nextId": "OptionsLabel56OptionsLabel56",
                     "onChoice": "Wieso Mann II",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -25559,8 +26009,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel54OptionsLabel54",
-                    "nextId": "OptionsLabel54OptionsLabel54OptionsLabel54OptionsLabel54",
+                    "id": "OptionsLabel56OptionsLabel56",
+                    "nextId": "OptionsLabel56OptionsLabel56OptionsLabel56OptionsLabel56",
                     "onChoice": "Umlenken b",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -25589,7 +26039,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel54OptionsLabel54OptionsLabel54OptionsLabel54",
+                    "id": "OptionsLabel56OptionsLabel56OptionsLabel56OptionsLabel56",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -25740,7 +26190,7 @@
                 },
                 {
                     "id": "ÄrgernRandomSeperatorString1020304ÄrgernRandomSeperatorString1020304ÄrgernRandomSeperatorString1020304Ärgern",
-                    "nextId": "OptionsLabel55",
+                    "nextId": "OptionsLabel57",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -25769,8 +26219,8 @@
                     "relevantBias": 21
                 },
                 {
-                    "id": "OptionsLabel55",
-                    "nextId": "OptionsLabel55OptionsLabel55",
+                    "id": "OptionsLabel57",
+                    "nextId": "OptionsLabel57OptionsLabel57",
                     "onChoice": "Sensibilisieren",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -25799,8 +26249,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel55OptionsLabel55",
-                    "nextId": "OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55",
+                    "id": "OptionsLabel57OptionsLabel57",
+                    "nextId": "OptionsLabel57OptionsLabel57OptionsLabel57OptionsLabel57",
                     "onChoice": "Diplomatisch",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -25829,8 +26279,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55",
-                    "nextId": "OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55",
+                    "id": "OptionsLabel57OptionsLabel57OptionsLabel57OptionsLabel57",
+                    "nextId": "OptionsLabel57OptionsLabel57OptionsLabel57OptionsLabel57OptionsLabel57OptionsLabel57OptionsLabel57OptionsLabel57",
                     "onChoice": "Abbruch",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -25859,7 +26309,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55",
+                    "id": "OptionsLabel57OptionsLabel57OptionsLabel57OptionsLabel57OptionsLabel57OptionsLabel57OptionsLabel57OptionsLabel57",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
