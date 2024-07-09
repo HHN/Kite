@@ -1,9 +1,10 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
-public class InfinityScroll : MonoBehaviour
+public class InfinityScroll : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] private ScrollRect scollRect;
     [SerializeField] private RectTransform viewPortTransform;
@@ -14,6 +15,7 @@ public class InfinityScroll : MonoBehaviour
     [SerializeField] private bool isUpdated;
     [SerializeField] private float maxSpeed = 1000f;
     [SerializeField] private InfinityScroll secondScrollRect;
+    [SerializeField] private InfinityScroll middleLayer;
     [SerializeField] private FoundersBubbleSceneController foundersBubbleSceneController;
 
     [SerializeField] public float widthBefore;
@@ -26,6 +28,10 @@ public class InfinityScroll : MonoBehaviour
     [SerializeField] public int currentTarget;
 
     [SerializeField] public int itemsToAdd;
+
+    [SerializeField] private Vector2 lastDragPosition;
+    [SerializeField] private Vector2 velocityDuringDrag;
+    [SerializeField] private float lastDragTime;
 
     void Start()
     {
@@ -169,6 +175,7 @@ public class InfinityScroll : MonoBehaviour
             return;
         }
         secondScrollRect.scollRect.velocity = scollRect.velocity * 0.45f;
+        middleLayer.scollRect.velocity = scollRect.velocity * 0.725f;
     }
 
     public bool IsCurrentlyInFirstHalf()
@@ -179,5 +186,39 @@ public class InfinityScroll : MonoBehaviour
     public float GetCurrentScrollPosition() 
     {
         return scollRect.horizontalNormalizedPosition;
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        lastDragPosition = eventData.position;
+        lastDragTime = Time.time;
+        velocityDuringDrag = Vector2.zero;
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        Vector2 newPosition = eventData.position;
+        float newTime = Time.time;
+
+        Vector2 deltaPosition = newPosition - lastDragPosition;
+        float deltaTime = newTime - lastDragTime;
+
+        if (deltaTime > 0)
+        {
+            velocityDuringDrag = deltaPosition / deltaTime;
+        }
+
+        lastDragPosition = newPosition;
+        lastDragTime = newTime;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        velocityDuringDrag = Vector2.zero;
+    }
+
+    public Vector2 GetCurrentVelocity()
+    {
+        return scollRect.velocity + velocityDuringDrag;
     }
 }

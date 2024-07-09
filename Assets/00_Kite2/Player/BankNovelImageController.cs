@@ -185,6 +185,10 @@ public class BankNovelImageController : NovelImageController
                 Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
                 Instantiate(decoGlasPrefab, decoGlasContainer.transform);
                 yield return new WaitForSeconds(0.5f);
+                image.sprite = animationFramesGlas[6];
+                Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+                Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+                yield return new WaitForSeconds(0.5f);
                 image.sprite = animationFramesGlas[0];
                 Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
                 Instantiate(decoGlasPrefab, decoGlasContainer.transform);
