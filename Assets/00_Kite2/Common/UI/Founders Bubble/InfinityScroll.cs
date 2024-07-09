@@ -174,8 +174,8 @@ public class InfinityScroll : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         {
             return;
         }
-        secondScrollRect.scollRect.velocity = scollRect.velocity * 0.45f;
-        middleLayer.scollRect.velocity = scollRect.velocity * 0.725f;
+        secondScrollRect.scollRect.velocity = GetCurrentVelocity() * 0.45f;
+        middleLayer.scollRect.velocity = GetCurrentVelocity() * 0.725f;
     }
 
     public bool IsCurrentlyInFirstHalf()
