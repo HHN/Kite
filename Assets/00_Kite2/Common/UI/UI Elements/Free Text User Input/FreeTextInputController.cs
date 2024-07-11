@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Reflection;
 
 public class FreeTextInputController : MonoBehaviour
 {
@@ -18,6 +19,15 @@ public class FreeTextInputController : MonoBehaviour
         skipButton.onClick.AddListener(delegate { OnSkipButton(); });
         submitButton.onClick.AddListener(delegate { OnSubmitButton(); });
         controller = GameObject.Find("Controller").GetComponent<PlayNovelSceneController>();
+    }
+
+    private void SetCarretVisible(int pos)
+    {
+        inputfield.caretPosition = pos; // desired cursor position
+
+        inputfield.GetType().GetField("m_AllowInput", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(inputfield, true);
+        inputfield.GetType().InvokeMember("SetCaretVisible", BindingFlags.NonPublic | BindingFlags.InvokeMethod | BindingFlags.Instance, null, inputfield, null);
+
     }
 
     public void Initialize(string question, string variablesName)
@@ -69,4 +79,8 @@ public class FreeTextInputController : MonoBehaviour
         this.controller.SetWaitingForConfirmation(true);
         this.controller.OnConfirm();
     }
+
+    /*inputfield.GetType().InvokeMember("SetCaretVisible",
+                BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.InvokeMethod,
+                null, inputfield, null);*/
 }
