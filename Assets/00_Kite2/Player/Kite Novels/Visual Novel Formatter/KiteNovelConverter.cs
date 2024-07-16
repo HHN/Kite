@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEngine;
 
 public class KiteNovelConverter
@@ -257,6 +258,69 @@ public class KiteNovelConverter
         string key = parts[0]?.Trim();
         string value = parts[1]?.Trim();
         VisualNovelEvent novelEvent = KiteNovelEventFactory.GetSavePersistentEvent(id, nextId, key, value);
+        list.Add(novelEvent);
+        return novelEvent;
+    }    
+    
+    public static VisualNovelEvent HandleSetVariableEvent(TweePassage twee, string message, List<VisualNovelEvent> list)
+    {
+        string[] parts = message.Split(new[] { ':' }, 2);
+
+        if (parts.Length != 2)
+        {
+            Debug.LogWarning("While creating Visual Novels: Save Variable Event could not be created.");
+            return null;
+        }
+        string id = twee?.Label;
+        string nextId = twee?.Links?[0]?.Target;
+        string key = parts[0]?.Trim();
+        string value = parts[1]?.Trim();
+        VisualNovelEvent novelEvent = KiteNovelEventFactory.GetSaveVariableEvent(id, nextId, key, value);
+        list.Add(novelEvent);
+        return novelEvent;
+    }      
+    
+    public static VisualNovelEvent HandleSetVariableFromBooleanExpressionEvent(TweePassage twee, string message, List<VisualNovelEvent> list)
+    {
+        string[] parts = message.Split(new[] { ':' }, 2);
+
+        if (parts.Length != 2)
+        {
+            Debug.LogWarning("While creating Visual Novels: Calculate Variable from boolean expression Event could not be created.");
+            return null;
+        }
+        string id = twee?.Label;
+        string nextId = twee?.Links?[0]?.Target;
+        string key = parts[0]?.Trim();
+        string value = parts[1]?.Trim();
+        VisualNovelEvent novelEvent = KiteNovelEventFactory.GetCalculateVariableFromBooleanExpressionEvent(id, nextId, key, value);
+        list.Add(novelEvent);
+        return novelEvent;
+    }    
+    
+    public static VisualNovelEvent HandleAddFeedbackUnderConditionEvent(TweePassage twee, string message, List<VisualNovelEvent> list)
+    {
+        string[] parts = message.Split(new[] { ':' }, 2);
+
+        if (parts.Length != 2)
+        {
+            Debug.LogWarning("While creating Visual Novels: Add Feedback Under Condition Event could not be created.");
+            return null;
+        }
+        string id = twee?.Label;
+        string nextId = twee?.Links?[0]?.Target;
+        string key = parts[0]?.Trim();
+        string value = parts[1]?.Trim();
+        VisualNovelEvent novelEvent = KiteNovelEventFactory.GetAddFeedbackUnderConditionEvent(id, nextId, key, value);
+        list.Add(novelEvent);
+        return novelEvent;
+    }
+
+    public static VisualNovelEvent HandleAddFeedbackEvent(TweePassage twee, string message, List<VisualNovelEvent> list)
+    {
+        string id = twee?.Label;
+        string nextId = twee?.Links?[0]?.Target;
+        VisualNovelEvent novelEvent = KiteNovelEventFactory.GetAddFeedbackEvent(id, nextId, message);
         list.Add(novelEvent);
         return novelEvent;
     }
@@ -721,6 +785,22 @@ public class KiteNovelConverter
             case (NovelKeyWord.PERSISTENTES_SPEICHERN):
                 {
                     return HandleSaveDataEvent(passage, message, kiteNovelEventList.NovelEvents);
+                }            
+            case (NovelKeyWord.VARIABLE_SETZEN):
+                {
+                    return HandleSetVariableEvent(passage, message, kiteNovelEventList.NovelEvents);
+                }               
+            case (NovelKeyWord.VARIABLE_AUS_BOOLSCHEM_AUSDRUCK_BESTIMMEN):
+                {
+                    return HandleSetVariableFromBooleanExpressionEvent(passage, message, kiteNovelEventList.NovelEvents);
+                }            
+            case (NovelKeyWord.FEEDBACK_HINZUFUEGEN):
+                {
+                    return HandleAddFeedbackEvent(passage, message, kiteNovelEventList.NovelEvents);
+                }            
+            case (NovelKeyWord.FEEDBACK_UNTER_BEDINGUNG_HINZUFUEGEN):
+                {
+                    return HandleAddFeedbackUnderConditionEvent(passage, message, kiteNovelEventList.NovelEvents);
                 }
             case (NovelKeyWord.RELEVANTER_BIAS_FINANZIERUNGSZUGANG):
                 {

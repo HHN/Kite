@@ -7,6 +7,7 @@ using Febucci.UI.Core;
 using System;
 using System.Text.RegularExpressions;
 using LeastSquares.Overtone;
+using System.Data;
 
 public class PlayNovelSceneController : SceneController
 {
@@ -91,6 +92,7 @@ public class PlayNovelSceneController : SceneController
         BackStackManager.Instance().Push(SceneNames.PLAY_NOVEL_SCENE);
         novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
         NovelBiasManager.Clear();
+        OfflineFeedbackManager.Instance().Clear();
         Initialize();
     }
 
@@ -283,10 +285,30 @@ public class PlayNovelSceneController : SceneController
                 {
                     HandleSavePersistentEvent(nextEventToPlay);
                     break;
+                }            
+            case VisualNovelEventType.SAVE_VARIABLE_EVENT:
+                {
+                    HandleSaveVariableEvent(nextEventToPlay);
+                    break;
+                }            
+            case VisualNovelEventType.ADD_FEEDBACK_EVENT:
+                {
+                    HandleAddFeedbackEvent(nextEventToPlay);
+                    break;
+                }            
+            case VisualNovelEventType.ADD_FEEDBACK_UNDER_CONDITION_EVENT:
+                {
+                    HandleAddFeedbackUnderConditionEvent(nextEventToPlay);
+                    break;
                 }
             case VisualNovelEventType.MARK_BIAS_EVENT:
                 {
                     HandleMarkBiasEvent(nextEventToPlay);
+                    break;
+                }            
+            case VisualNovelEventType.CALCULATE_VARIABLE_FROM_BOOLEAN_EXPRESSION_EVENT:
+                {
+                    HandleCalculateVariableFromBooleanExpressionEvent(nextEventToPlay);
                     break;
                 }
             default:
@@ -386,6 +408,63 @@ public class PlayNovelSceneController : SceneController
     {
         SetNextEvent(novelEvent);
         WriteUserInputToFile(novelEvent.key, ReplacePlaceholders(novelEvent.value, novelToPlay.GetGlobalVariables()));
+        PlayNextEvent();
+    }    
+    
+    private void HandleSaveVariableEvent(VisualNovelEvent novelEvent)
+    {
+        SetNextEvent(novelEvent);
+        novelToPlay.AddGlobalVariable(novelEvent.key, novelEvent.value);
+        PlayNextEvent();
+    }        
+    
+    private void HandleCalculateVariableFromBooleanExpressionEvent(VisualNovelEvent novelEvent)
+    {
+        SetNextEvent(novelEvent);
+        string booleanExpression = ReplacePlaceholders(novelEvent.value, novelToPlay.GetGlobalVariables());
+        novelToPlay.AddGlobalVariable(novelEvent.key, EvaluateBooleanExpression(booleanExpression).ToString());
+        PlayNextEvent();
+    }
+
+    private static bool EvaluateBooleanExpression(string expression)
+    {
+        if (string.IsNullOrWhiteSpace(expression))
+        {
+            return false;
+        }
+
+        expression = expression.Replace("true", "True").Replace("TRUE", "True").Replace("false", "False").Replace("FALSE", "False");
+        try
+        {
+            DataTable table = new DataTable();
+            table.Columns.Add("expression", typeof(bool), expression);
+            DataRow row = table.NewRow();
+            table.Rows.Add(row);
+            bool result = (bool)row["expression"];
+            return result;
+        }
+        catch (Exception ex)
+        {
+            Debug.LogWarning($"Error evaluating boolean expression: {ex.Message}");
+            return false;
+        }
+    }
+
+    private void HandleAddFeedbackEvent(VisualNovelEvent novelEvent)
+    {
+        SetNextEvent(novelEvent);
+        OfflineFeedbackManager.Instance().AddLineToPrompt(novelEvent.value);
+        PlayNextEvent();
+    }    
+    
+    private void HandleAddFeedbackUnderConditionEvent(VisualNovelEvent novelEvent)
+    {
+        SetNextEvent(novelEvent);
+
+        if (novelToPlay.IsVariableExistend(novelEvent.key) && novelToPlay.GetGlobalVariable(novelEvent.key) == "true")
+        {
+            OfflineFeedbackManager.Instance().AddLineToPrompt(novelEvent.value);
+        }
         PlayNextEvent();
     }
 

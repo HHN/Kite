@@ -60,6 +60,37 @@ public class KiteNovelEventFactory
         novelEvent.key = key;
         novelEvent.value = value;
         return novelEvent;
+    }    
+    
+    public static VisualNovelEvent GetSaveVariableEvent(string id, string nextId, string key, string value)
+    {
+        VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.SAVE_VARIABLE_EVENT, false);
+        novelEvent.key = key;
+        novelEvent.value = value;
+        return novelEvent;
+    }        
+    
+    public static VisualNovelEvent GetCalculateVariableFromBooleanExpressionEvent(string id, string nextId, string key, string value)
+    {
+        VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.CALCULATE_VARIABLE_FROM_BOOLEAN_EXPRESSION_EVENT, false);
+        novelEvent.key = key;
+        novelEvent.value = value;
+        return novelEvent;
+    }    
+    
+    public static VisualNovelEvent GetAddFeedbackEvent(string id, string nextId, string message)
+    {
+        VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.ADD_FEEDBACK_EVENT, false);
+        novelEvent.value = message;
+        return novelEvent;
+    }    
+    
+    public static VisualNovelEvent GetAddFeedbackUnderConditionEvent(string id, string nextId, string key, string value)
+    {
+        VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.ADD_FEEDBACK_UNDER_CONDITION_EVENT, false);
+        novelEvent.key = key;
+        novelEvent.value = value;
+        return novelEvent;
     }
 
     public static VisualNovelEvent GetEndNovelEvent(string id)

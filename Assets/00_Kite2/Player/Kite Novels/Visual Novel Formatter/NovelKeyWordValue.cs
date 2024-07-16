@@ -116,6 +116,14 @@ public class NovelKeyWordValue
 
     public const string PERSISTENTES_SPEICHERN = ">>PersistentesSpeichern<<";
 
+    public const string VARIABLE_SETZEN = ">>VariableSetzen<<";
+
+    public const string VARIABLE_AUS_BOOLSCHEM_AUSDRUCK_BESTIMMEN = ">>VariableAusBoolschemAusdruckBestimmen<<";
+
+    public const string FEEDBACK_HINZUFUEGEN = ">>FeedbackHinzufuegen<<";
+
+    public const string FEEDBACK_UNTER_BEDINGUNG_HINZUFUEGEN = ">>FeedbackUnterBedingungHinzufuegen<<";
+
     public const string RELEVANTER_BIAS_FINANZIERUNGSZUGANG = ">>RelevanterBias:Finanzierungszugang<<";
     public const string RELEVANTER_BIAS_GENDER_PAY_GAP = ">>RelevanterBias:GenderPayGap<<";
     public const string RELEVANTER_BIAS_UNTERBEWERTUNG_WEIBLICH_GEFUEHRTER_UNTERNEHMEN = ">>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<";
@@ -244,6 +252,10 @@ public class NovelKeyWordValue
         FREITEXT_EINGABE,
         GPT_PROMPT_MIT_DEFAULT_COMPLETION_HANDLER,
         PERSISTENTES_SPEICHERN,
+        VARIABLE_SETZEN,
+        VARIABLE_AUS_BOOLSCHEM_AUSDRUCK_BESTIMMEN,
+        FEEDBACK_HINZUFUEGEN,
+        FEEDBACK_UNTER_BEDINGUNG_HINZUFUEGEN,
         RELEVANTER_BIAS_FINANZIERUNGSZUGANG,
         RELEVANTER_BIAS_GENDER_PAY_GAP,
         RELEVANTER_BIAS_UNTERBEWERTUNG_WEIBLICH_GEFUEHRTER_UNTERNEHMEN,

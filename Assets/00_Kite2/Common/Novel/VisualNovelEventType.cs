@@ -13,7 +13,11 @@ public enum VisualNovelEventType
     FREE_TEXT_INPUT_EVENT,
     GPT_PROMPT_EVENT,
     SAVE_PERSISTENT_EVENT,
-    MARK_BIAS_EVENT
+    MARK_BIAS_EVENT,
+    SAVE_VARIABLE_EVENT,
+    ADD_FEEDBACK_EVENT,
+    ADD_FEEDBACK_UNDER_CONDITION_EVENT,
+    CALCULATE_VARIABLE_FROM_BOOLEAN_EXPRESSION_EVENT
 }
 
 public class VisualNovelEventTypeHelper
@@ -36,6 +40,10 @@ public class VisualNovelEventTypeHelper
             case VisualNovelEventType.GPT_PROMPT_EVENT: { return 14; }
             case VisualNovelEventType.SAVE_PERSISTENT_EVENT: { return 15; }
             case VisualNovelEventType.MARK_BIAS_EVENT: { return 16; }
+            case VisualNovelEventType.SAVE_VARIABLE_EVENT: { return 17; }
+            case VisualNovelEventType.ADD_FEEDBACK_EVENT: { return 18; }
+            case VisualNovelEventType.ADD_FEEDBACK_UNDER_CONDITION_EVENT: { return 19; }
+            case VisualNovelEventType.CALCULATE_VARIABLE_FROM_BOOLEAN_EXPRESSION_EVENT: { return 20; }
 
             default: { return -1; }
         }
@@ -59,6 +67,10 @@ public class VisualNovelEventTypeHelper
             case 14: { return VisualNovelEventType.GPT_PROMPT_EVENT; }
             case 15: { return VisualNovelEventType.SAVE_PERSISTENT_EVENT; }
             case 16: { return VisualNovelEventType.MARK_BIAS_EVENT; }
+            case 17: { return VisualNovelEventType.SAVE_VARIABLE_EVENT; }
+            case 18: { return VisualNovelEventType.ADD_FEEDBACK_EVENT; }
+            case 19: { return VisualNovelEventType.ADD_FEEDBACK_UNDER_CONDITION_EVENT; }
+            case 20: { return VisualNovelEventType.CALCULATE_VARIABLE_FROM_BOOLEAN_EXPRESSION_EVENT; }
             default: { return VisualNovelEventType.NONE; }
         }
     }
