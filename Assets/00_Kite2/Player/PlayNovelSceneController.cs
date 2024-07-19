@@ -461,7 +461,8 @@ public class PlayNovelSceneController : SceneController
     {
         SetNextEvent(novelEvent);
 
-        if (novelToPlay.IsVariableExistend(novelEvent.key) && novelToPlay.GetGlobalVariable(novelEvent.key) == "true")
+        if (novelToPlay.IsVariableExistend(novelEvent.key) && (novelToPlay.GetGlobalVariable(novelEvent.key) == "True"
+            || novelToPlay.GetGlobalVariable(novelEvent.key) == "true" || novelToPlay.GetGlobalVariable(novelEvent.key) == "TRUE"))
         {
             OfflineFeedbackManager.Instance().AddLineToPrompt(novelEvent.value);
         }
