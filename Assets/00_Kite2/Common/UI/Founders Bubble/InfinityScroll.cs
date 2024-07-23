@@ -70,9 +70,13 @@ public class InfinityScroll : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
         FoundersBubbleSceneMemory memory = SceneMemoryManager.Instance().GetMemoryOfFoundersBubbleScene();
 
-        if (memory != null)
+        if (memory != null && scollRect != null)
         {
             scollRect.horizontalNormalizedPosition = (float)memory.scrollPosition;
+        }
+        else if (memory != null && customScollRect != null)
+        {
+            customScollRect.horizontalNormalizedPosition = (float)memory.scrollPosition;
         }
     }
 
@@ -208,7 +212,13 @@ public class InfinityScroll : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             return;
         }
 
-        scollRect.velocity = Vector2.zero;
+        if (scollRect != null)
+        {
+            scollRect.velocity = Vector2.zero;
+        } else
+        {
+            customScollRect.velocity = Vector2.zero;
+        }
         snappingSpeed += snappingForce * Time.deltaTime;
         contentPanelTransform.localPosition = new Vector3(
             Mathf.MoveTowards(contentPanelTransform.localPosition.x, targetXPosition, snappingSpeed),
@@ -268,7 +278,12 @@ public class InfinityScroll : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public float GetCurrentScrollPosition() 
     {
-        return scollRect.horizontalNormalizedPosition;
+        if (scollRect != null)
+        {
+            return scollRect.horizontalNormalizedPosition;
+        }
+        return customScollRect.horizontalNormalizedPosition;
+
     }
 
     public void OnBeginDrag(PointerEventData eventData)
