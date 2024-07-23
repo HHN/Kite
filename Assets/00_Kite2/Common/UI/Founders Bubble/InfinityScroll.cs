@@ -1,12 +1,11 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class InfinityScroll : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] private ScrollRect scollRect;
+    [SerializeField] private CustomScrollRect customScollRect;
     [SerializeField] private RectTransform viewPortTransform;
     [SerializeField] private RectTransform contentPanelTransform;
     [SerializeField] private HorizontalLayoutGroup horizontalLayoutGroup;
@@ -17,6 +16,9 @@ public class InfinityScroll : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     [SerializeField] private InfinityScroll secondScrollRect;
     [SerializeField] private InfinityScroll middleLayer;
     [SerializeField] private FoundersBubbleSceneController foundersBubbleSceneController;
+
+    [SerializeField] private Vector2 lastPosition;
+    [SerializeField] private bool stoppedDragingManually;
 
     [SerializeField] public float widthBefore;
     [SerializeField] public float widthAfter;
@@ -35,6 +37,7 @@ public class InfinityScroll : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     void Start()
     {
+        lastDragPosition = Vector2.zero;
         snappingForce = 100f;
         isSnapped = true;
         snappingSpeed = 0f;
@@ -74,6 +77,16 @@ public class InfinityScroll : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     }
 
     void Update()
+    {
+        if (scollRect == null)
+        {
+            UpdateForCustomScrollRect();
+            return;
+        }
+        UpdateForScrollRect();
+    }
+
+    public void UpdateForScrollRect()
     {
         if (secondScrollRect == null)
         {
@@ -124,7 +137,60 @@ public class InfinityScroll : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             currentTarget = currentTarget - FoundersBubbleMetaInformation.numerOfNovelsToDisplay;
         }
         SnapToItem();
-        CalculateAndSetCurrentPositionForSecondScrollView();
+        Canvas.ForceUpdateCanvases();
+    }
+
+    public void UpdateForCustomScrollRect()
+    {
+        if (secondScrollRect == null)
+        {
+            if (isUpdated)
+            {
+                isUpdated = false;
+                customScollRect.velocity = oldVelocity;
+            }
+            if (contentPanelTransform.localPosition.x >= 0)
+            {
+                Canvas.ForceUpdateCanvases();
+                oldVelocity = customScollRect.velocity;
+                contentPanelTransform.localPosition -= new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
+                isUpdated = true;
+            }
+            else if (contentPanelTransform.localPosition.x < 0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
+            {
+                Canvas.ForceUpdateCanvases();
+                oldVelocity = customScollRect.velocity;
+                contentPanelTransform.localPosition += new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
+                isUpdated = true;
+            }
+            return;
+        }
+        if (customScollRect.velocity.magnitude > maxSpeed)
+        {
+            customScollRect.velocity = customScollRect.velocity.normalized * maxSpeed;
+        }
+        if (isUpdated)
+        {
+            isUpdated = false;
+            customScollRect.velocity = oldVelocity;
+        }
+        if (contentPanelTransform.localPosition.x >= 0)
+        {
+            Canvas.ForceUpdateCanvases();
+            oldVelocity = customScollRect.velocity;
+            contentPanelTransform.localPosition -= new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
+            isUpdated = true;
+            currentTarget = currentTarget + FoundersBubbleMetaInformation.numerOfNovelsToDisplay;
+        }
+        else if (contentPanelTransform.localPosition.x < 0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
+        {
+            Canvas.ForceUpdateCanvases();
+            oldVelocity = customScollRect.velocity;
+            contentPanelTransform.localPosition += new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
+            isUpdated = true;
+            currentTarget = currentTarget - FoundersBubbleMetaInformation.numerOfNovelsToDisplay;
+        }
+        SnapToItem();
         Canvas.ForceUpdateCanvases();
     }
 
@@ -168,15 +234,32 @@ public class InfinityScroll : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         }
     }
 
-    public void CalculateAndSetCurrentPositionForSecondScrollView()
+    public void CalculateAndSetCurrentPositionForSecondScrollView(Vector2 positionChange)
     {
         if (secondScrollRect == null)
         {
             return;
         }
-        secondScrollRect.scollRect.velocity = GetCurrentVelocity() * 0.45f;
-        middleLayer.scollRect.velocity = GetCurrentVelocity() * 0.725f;
+        if ((contentPanelTransform.localPosition.x >= 0 ||
+            contentPanelTransform.localPosition.x < 0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing))) &&
+            customScollRect.m_Dragging)
+        {
+            customScollRect.OnEndDrag(new PointerEventData(null) { button = 0 }) ;
+            stoppedDragingManually = true;
+            return;
+        }
+        if (stoppedDragingManually)
+        {
+            customScollRect.OnBeginDrag(customScollRect.lastDragBegin);
+            stoppedDragingManually = false;
+        }
+        Vector2 secondScrollViewChange = positionChange * 0.45f;
+        Vector2 middleLayerChange = positionChange * 0.725f;
+
+        secondScrollRect.scollRect.content.anchoredPosition += secondScrollViewChange;
+        middleLayer.scollRect.content.anchoredPosition += middleLayerChange;
     }
+
 
     public bool IsCurrentlyInFirstHalf()
     {
@@ -219,6 +302,7 @@ public class InfinityScroll : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public Vector2 GetCurrentVelocity()
     {
-        return scollRect.velocity + velocityDuringDrag;
+        if (customScollRect == null) { return Vector2.zero; }
+        return customScollRect.velocity + velocityDuringDrag;
     }
 }
