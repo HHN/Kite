@@ -123,6 +123,50 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &115539260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 115539262}
+  - component: {fileID: 115539261}
+  m_Layer: 0
+  m_Name: OfflineFeedbackLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &115539261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115539260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3a5c29f0613cbd409e3bbcc0d3bc975, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &115539262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115539260}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1743.9612, y: 1790.2512, z: -69.4184}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &205931718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1830,6 +1874,7 @@ MonoBehaviour:
   messageBox: {fileID: 5629918238507184917, guid: 47c0a3038b673a24cb82a566be2abf20, type: 3}
   canvas: {fileID: 229843872}
   feedbackText: {fileID: 922473493}
+  offlineFeedbackLoader: {fileID: 115539261}
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   novelToPlay:
     id: 0
@@ -1841,6 +1886,7 @@ MonoBehaviour:
     context: 
     isKite2Novel: 0
     novelEvents: []
+    listOfPlayedEvents: []
   layout: {fileID: 1408727317}
   waitingLoopMusic: {fileID: 1442633225}
   resultMusic: {fileID: 1881855072}

@@ -15,6 +15,7 @@ public class VisualNovel
     public bool isKite2Novel;
     public List<VisualNovelEvent> novelEvents;
     public Dictionary<string, string> globalVariables;
+    public List<VisualNovelEvent> listOfPlayedEvents;
 
     public void AddGlobalVariable(string name, string value)
     {
@@ -23,6 +24,38 @@ public class VisualNovel
             globalVariables = new Dictionary<string, string>(); 
         }
         globalVariables.Add(name, value);
+    }
+    
+    public void AddPlayedEvent(VisualNovelEvent visualNovelEvent)
+    {
+        if (listOfPlayedEvents == null)
+        {
+            listOfPlayedEvents = new List<VisualNovelEvent>();
+        }
+        listOfPlayedEvents.Add(visualNovelEvent);
+    }
+
+    public string GetBiasCombination()
+    {
+        string biasCombination = "";
+
+        foreach (VisualNovelEvent playedEvent in listOfPlayedEvents)
+        {
+            if (playedEvent.eventType == VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.MARK_BIAS_EVENT))
+            {
+                biasCombination = biasCombination + "<|Seperator|>" + playedEvent.id;
+            }
+        }
+        return biasCombination;
+    }
+
+    public List<VisualNovelEvent> GetPlayedEvents()
+    {
+        if (listOfPlayedEvents == null)
+        {
+            listOfPlayedEvents = new List<VisualNovelEvent>();
+        }
+        return listOfPlayedEvents;
     }
 
     public void SetGlobalVariable(string varName, string value)
@@ -75,6 +108,11 @@ public class VisualNovel
     public void ClearGlobalVariables()
     {
         globalVariables = new Dictionary<string, string>();
+    }
+
+    public void ClearPlayedEvents()
+    {
+        listOfPlayedEvents = new List<VisualNovelEvent>();
     }
 
     public VisualNovel DeepCopy()

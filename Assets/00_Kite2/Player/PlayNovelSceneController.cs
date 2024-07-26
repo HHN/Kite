@@ -122,6 +122,7 @@ public class PlayNovelSceneController : SceneController
         }
         AnalyticsServiceHandler.Instance().SetIdOfCurrentNovel(novelToPlay.id);
         novelToPlay.ClearGlobalVariables();
+        novelToPlay.ClearPlayedEvents();
         novelToPlay.feedback = string.Empty;
 
         novelName.text = novelToPlay.title;
@@ -218,6 +219,7 @@ public class PlayNovelSceneController : SceneController
             currentTypeWriter.SkipTypewriter(); // no check for isShowing necessary
             currentTypeWriter = null;
         }
+        novelToPlay.AddPlayedEvent(nextEventToPlay);
         VisualNovelEventType type = VisualNovelEventTypeHelper.ValueOf(nextEventToPlay.eventType);
 
         switch (type)
