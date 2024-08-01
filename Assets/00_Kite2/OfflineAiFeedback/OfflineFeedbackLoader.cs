@@ -29,6 +29,20 @@ public class OfflineFeedbackLoader : MonoBehaviour
         StartCoroutine(LoadOfflineFeedbackForNovelFromJson(visualNovel));
     }
 
+    public void SaveOfflineFeedbackForNovelInEditMode(VisualNovelNames visualNovel, FeedbackNodeList feedbackNodeList)
+    {
+        StartCoroutine(SaveOfflineFeedbackForNovelToJsonInEditMode(visualNovel, feedbackNodeList));
+    }
+
+    private IEnumerator SaveOfflineFeedbackForNovelToJsonInEditMode(VisualNovelNames visualNovel, FeedbackNodeList feedbackNodeList)
+    {
+        string json = JsonUtility.ToJson(feedbackNodeList, true);
+        string path = Path.Combine(Application.dataPath, FEEDBACK_PATHS[visualNovel]);
+        File.WriteAllText(path, json);
+        Debug.Log("FeedbackNodes have been successfully saved under the following path: " + path);
+        yield break;
+    }
+
     private IEnumerator LoadOfflineFeedbackForNovelFromJson(VisualNovelNames visualNovel)
     {
         if (PreGeneratedOfflineFeedbackManager.Instance().IsFeedbackLoaded(visualNovel))
@@ -47,7 +61,31 @@ public class OfflineFeedbackLoader : MonoBehaviour
 
             foreach (FeedbackNodeContainer node in listOfFeedbackNodes)
             {
-                feedback.Add(node.biasCombination, node);
+                feedback.Add(node.path, node);
+            }
+
+            PreGeneratedOfflineFeedbackManager.Instance().SetPreGeneratedOfflineFeedback(visualNovel, feedback);
+        }));
+    }    
+    
+    public IEnumerator LoadOfflineFeedbackForNovelFromJsonInEditMode(VisualNovelNames visualNovel)
+    {
+        if (PreGeneratedOfflineFeedbackManager.Instance().IsFeedbackLoaded(visualNovel))
+        {
+            yield break;
+        }
+        string fullPath = Path.Combine(Application.dataPath, FEEDBACK_PATHS[visualNovel]);
+
+        yield return StartCoroutine(LoadFeedbackInEditMode(fullPath, listOfFeedbackNodes =>
+        {
+            if (listOfFeedbackNodes == null || listOfFeedbackNodes.Count == 0)
+            {
+                return;
+            }
+            Dictionary<string, FeedbackNodeContainer> feedback = new Dictionary<string, FeedbackNodeContainer>();
+            foreach (FeedbackNodeContainer node in listOfFeedbackNodes)
+            {
+                feedback.Add(node.path, node);
             }
 
             PreGeneratedOfflineFeedbackManager.Instance().SetPreGeneratedOfflineFeedback(visualNovel, feedback);
@@ -57,6 +95,22 @@ public class OfflineFeedbackLoader : MonoBehaviour
     private IEnumerator LoadFeedback(string path, System.Action<List<FeedbackNodeContainer>> callback)
     {
         yield return StartCoroutine(LoadFileContent(path, jsonString =>
+        {
+            if (string.IsNullOrEmpty(jsonString))
+            {
+                callback(null);
+            }
+            else
+            {
+                FeedbackNodeList feedbackNodeList = JsonConvert.DeserializeObject<FeedbackNodeList>(jsonString);
+                callback(feedbackNodeList?.feedbackNodes);
+            }
+        }));
+    }    
+    
+    private IEnumerator LoadFeedbackInEditMode(string path, System.Action<List<FeedbackNodeContainer>> callback)
+    {
+        yield return StartCoroutine(LoadFileContentInEditMode(path, jsonString =>
         {
             if (string.IsNullOrEmpty(jsonString))
             {
@@ -86,6 +140,31 @@ public class OfflineFeedbackLoader : MonoBehaviour
                 if ((www.result == UnityWebRequest.Result.ConnectionError) || (www.result == UnityWebRequest.Result.ProtocolError))
                 {
                     Debug.LogError($"Error loading file at {path}: {www.error}");
+                    callback(null);
+                }
+                else
+                {
+                    callback(www.downloadHandler.text);
+                }
+            }
+        }
+    }
+
+    private IEnumerator LoadFileContentInEditMode(string path, System.Action<string> callback)
+    {
+        if (Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            string jsonString = File.ReadAllText(path);
+            callback(jsonString);
+        }
+        else
+        {
+            using (UnityWebRequest www = UnityWebRequest.Get(path))
+            {
+                yield return www.SendWebRequest();
+
+                if ((www.result == UnityWebRequest.Result.ConnectionError) || (www.result == UnityWebRequest.Result.ProtocolError))
+                {
                     callback(null);
                 }
                 else

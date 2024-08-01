@@ -133,13 +133,22 @@ public class VisualNovel
             newNovel.novelEvents = new List<VisualNovelEvent>();
             foreach (VisualNovelEvent eventItem in novelEvents)
             {
-                newNovel.novelEvents.Add(eventItem.DeepCopy()); // Stelle sicher, dass VisualNovelEvent eine DeepCopy-Methode hat
+                newNovel.novelEvents.Add(eventItem.DeepCopy());
             }
         }
 
         if (globalVariables != null)
         {
             newNovel.globalVariables = new Dictionary<string, string>(globalVariables);
+        }
+
+        if (listOfPlayedEvents != null)
+        {
+            newNovel.listOfPlayedEvents = new List<VisualNovelEvent>();
+            foreach (VisualNovelEvent eventItem in listOfPlayedEvents)
+            {
+                newNovel.novelEvents.Add(eventItem.DeepCopy());
+            }
         }
 
         return newNovel;
