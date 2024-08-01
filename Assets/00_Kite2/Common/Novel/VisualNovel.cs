@@ -15,7 +15,7 @@ public class VisualNovel
     public bool isKite2Novel;
     public List<VisualNovelEvent> novelEvents;
     public Dictionary<string, string> globalVariables;
-    public List<VisualNovelEvent> listOfPlayedEvents;
+    public string playedPath;
 
     public void AddGlobalVariable(string name, string value)
     {
@@ -25,37 +25,23 @@ public class VisualNovel
         }
         globalVariables.Add(name, value);
     }
+
+    public void AddToPath(int pathValue)
+    {
+        if (string.IsNullOrEmpty(playedPath))
+        {
+            playedPath = pathValue.ToString();
+
+        }
+        else
+        {
+            playedPath = playedPath + ":" + pathValue;
+        }
+    }
     
-    public void AddPlayedEvent(VisualNovelEvent visualNovelEvent)
+    public string GetPlayedPath()
     {
-        if (listOfPlayedEvents == null)
-        {
-            listOfPlayedEvents = new List<VisualNovelEvent>();
-        }
-        listOfPlayedEvents.Add(visualNovelEvent);
-    }
-
-    public string GetBiasCombination()
-    {
-        string biasCombination = "";
-
-        foreach (VisualNovelEvent playedEvent in listOfPlayedEvents)
-        {
-            if (playedEvent.eventType == VisualNovelEventTypeHelper.ToInt(VisualNovelEventType.MARK_BIAS_EVENT))
-            {
-                biasCombination = biasCombination + "<|Seperator|>" + playedEvent.id;
-            }
-        }
-        return biasCombination;
-    }
-
-    public List<VisualNovelEvent> GetPlayedEvents()
-    {
-        if (listOfPlayedEvents == null)
-        {
-            listOfPlayedEvents = new List<VisualNovelEvent>();
-        }
-        return listOfPlayedEvents;
+        return playedPath;
     }
 
     public void SetGlobalVariable(string varName, string value)
@@ -110,11 +96,6 @@ public class VisualNovel
         globalVariables = new Dictionary<string, string>();
     }
 
-    public void ClearPlayedEvents()
-    {
-        listOfPlayedEvents = new List<VisualNovelEvent>();
-    }
-
     public VisualNovel DeepCopy()
     {
         VisualNovel newNovel = new VisualNovel();
@@ -127,6 +108,7 @@ public class VisualNovel
         newNovel.feedback = feedback;
         newNovel.context = context;
         newNovel.isKite2Novel = isKite2Novel;
+        newNovel.playedPath = playedPath;
 
         if (novelEvents != null)
         {
@@ -140,15 +122,6 @@ public class VisualNovel
         if (globalVariables != null)
         {
             newNovel.globalVariables = new Dictionary<string, string>(globalVariables);
-        }
-
-        if (listOfPlayedEvents != null)
-        {
-            newNovel.listOfPlayedEvents = new List<VisualNovelEvent>();
-            foreach (VisualNovelEvent eventItem in listOfPlayedEvents)
-            {
-                newNovel.novelEvents.Add(eventItem.DeepCopy());
-            }
         }
 
         return newNovel;

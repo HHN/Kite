@@ -108,37 +108,38 @@ public class OptionsManager : MonoBehaviour
     public void OnOptionA()
     {
         AnalyticsServiceHandler.Instance().SetChoiceId(0);
-        StartCoroutine(AfterSelection("Selected A", stringA, idA, displayAfterSelectionA));
+        StartCoroutine(AfterSelection("Selected A", stringA, idA, displayAfterSelectionA, 0));
     }
 
     public void OnOptionB()
     {
         AnalyticsServiceHandler.Instance().SetChoiceId(1);
-        StartCoroutine(AfterSelection("Selected B", stringB, idB, displayAfterSelectionB));
+        StartCoroutine(AfterSelection("Selected B", stringB, idB, displayAfterSelectionB, 1));
     }
 
     public void OnOptionC()
     {
         AnalyticsServiceHandler.Instance().SetChoiceId(2);
-        StartCoroutine(AfterSelection("Selected C", stringC, idC, displayAfterSelectionC));
+        StartCoroutine(AfterSelection("Selected C", stringC, idC, displayAfterSelectionC, 2));
     }
 
     public void OnOptionD()
     {
         AnalyticsServiceHandler.Instance().SetChoiceId(3);
-        StartCoroutine(AfterSelection("Selected D", stringD, idD, displayAfterSelectionD));
+        StartCoroutine(AfterSelection("Selected D", stringD, idD, displayAfterSelectionD, 3));
     }
 
     public void OnOptionE()
     {
         AnalyticsServiceHandler.Instance().SetChoiceId(4);
-        StartCoroutine(AfterSelection("Selected E", stringE, idE, displayAfterSelectionE));
+        StartCoroutine(AfterSelection("Selected E", stringE, idE, displayAfterSelectionE, 4));
     }
 
-    public IEnumerator AfterSelection(string parameterName, string answer, string nextEventID, bool displayAfterSelection)
+    public IEnumerator AfterSelection(string parameterName, string answer, string nextEventID, bool displayAfterSelection, int index)
     {
         if (selected) { yield break; }
         selected = true;
+        sceneController.AddPathToNovel(index);
 
         GetComponent<Animator>().SetBool(parameterName, true);
         AudioSource audio = GetComponent<AudioSource>();

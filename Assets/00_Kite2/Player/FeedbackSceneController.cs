@@ -84,7 +84,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
         }
         Dictionary<string, FeedbackNodeContainer> feedbackDictionary = PreGeneratedOfflineFeedbackManager.Instance().GetPreGeneratedOfflineFeedback(visualNovelNames);
 
-        string feedback = feedbackDictionary[novelToPlay.GetBiasCombination()].completion;
+        string feedback = feedbackDictionary[novelToPlay.GetPlayedPath()].completion;
 
         StopWaitingMusic();
         finishButtonContainer.SetActive(false);

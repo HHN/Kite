@@ -45,8 +45,8 @@ public class NovelTester
             return;
         }
         objectUnderTest.ClearGlobalVariables();
-        objectUnderTest.ClearPlayedEvents();
         objectUnderTest.feedback = string.Empty;
+        objectUnderTest.playedPath = string.Empty;
         novelEvents = new Dictionary<string, VisualNovelEvent>();
         currentCharacters = new HashSet<Character>();
         choices = new List<VisualNovelEvent>();

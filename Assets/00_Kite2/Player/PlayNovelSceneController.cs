@@ -122,8 +122,8 @@ public class PlayNovelSceneController : SceneController
         }
         AnalyticsServiceHandler.Instance().SetIdOfCurrentNovel(novelToPlay.id);
         novelToPlay.ClearGlobalVariables();
-        novelToPlay.ClearPlayedEvents();
         novelToPlay.feedback = string.Empty;
+        novelToPlay.playedPath = string.Empty;
 
         novelName.text = novelToPlay.title;
 
@@ -219,7 +219,6 @@ public class PlayNovelSceneController : SceneController
             currentTypeWriter.SkipTypewriter(); // no check for isShowing necessary
             currentTypeWriter = null;
         }
-        novelToPlay.AddPlayedEvent(nextEventToPlay);
         VisualNovelEventType type = VisualNovelEventTypeHelper.ValueOf(nextEventToPlay.eventType);
 
         switch (type)
@@ -692,6 +691,11 @@ public class PlayNovelSceneController : SceneController
             string key = match.Groups[1].Value;
             return replacements.TryGetValue(key, out string replacement) ? replacement : match.Value;
         });
+    }
+
+    public void AddPathToNovel(int pathValue)
+    {
+        novelToPlay.AddToPath(pathValue);
     }
 }
 
