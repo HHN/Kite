@@ -1,6 +1,6 @@
 public class ConnectionLink
 {
-    public static readonly string BASE_LINK = "https://85.215.46.25/"; // "https://localhost/"; //
+    public static readonly string BASE_LINK = "https://85.215.46.25/"; //"https://localhost/"; // 
 
     public static readonly string COMPLETION_LINK = BASE_LINK + "ai";
     public static readonly string NOVEL_REVIEW_LINK = BASE_LINK + "novelreview";

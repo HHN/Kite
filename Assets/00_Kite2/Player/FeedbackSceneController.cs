@@ -35,12 +35,6 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
             return;
         }
 
-        if (VisualNovelNamesHelper.ValueOf((int) novelToPlay.id) == VisualNovelNames.BUERO_NOVEL)
-        {
-            StartCoroutine(LoadOnlineFeedback(VisualNovelNames.BUERO_NOVEL));
-            return;
-        }
-
         if (ApplicationModeManager.Instance().IsOfflineModeActive())
         {
             feedbackText.SetText("Sie befinden sich im Offline Modus. Es ist kein Feedback verfügbar.");
