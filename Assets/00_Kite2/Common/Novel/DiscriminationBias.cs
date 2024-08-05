@@ -1,3 +1,5 @@
+using System;
+
 public enum DiscriminationBias
 {
     NONE,
@@ -101,6 +103,42 @@ public class DiscriminationBiasHelper
             case 26: return DiscriminationBias.HETERONORMATIVITAET_BIAS;
             case 27: return DiscriminationBias.BENEVOLENTER_SEXISMUS_BIAS;
             default: return DiscriminationBias.NONE;
+        }
+    }
+
+    internal static string GetInformationString(DiscriminationBias discriminationBias)
+    {
+        switch (discriminationBias)
+        {
+            case DiscriminationBias.NONE: return "";
+            case DiscriminationBias.ACCESS_TO_FUNDING: return "Hier wird folgender Bias relevant: Finanzierungszugang";
+            case DiscriminationBias.GENDER_PAY_GAP: return "Hier wird folgender Bias relevant: Gender Pay Gap";
+            case DiscriminationBias.UNDERVALUATION_OF_WOMEN_LED_BUSINESSES: return "Hier wird folgender Bias relevant: Unterbewertung weiblich geführter Unternehmen";
+            case DiscriminationBias.RISK_AVERSION_BIAS: return "Hier wird folgender Bias relevant: Risk Aversion Bias";
+            case DiscriminationBias.CONFIRMATION_BIAS: return "Hier wird folgender Bias relevant: Bestätigungsverzerrung";
+            case DiscriminationBias.TOKENISM: return "Hier wird folgender Bias relevant: Tokenism";
+            case DiscriminationBias.IN_PERCEPTION_OF_LEADERSHIP_ABILITIES: return "Hier wird folgender Bias relevant: Bias in der Wahrnehmung von Führungsfähigkeiten";
+            case DiscriminationBias.RACIST_AND_ETHNIC_BIASES: return "Hier wird folgender Bias relevant: Rassistische und ethnische Biases";
+            case DiscriminationBias.SOCIOECONOMIC_BIASES: return "Hier wird folgender Bias relevant: Sozioökonomische Biases";
+            case DiscriminationBias.AGE_AND_GENERATIONAL_BIASES: return "Hier wird folgender Bias relevant: Alter- und Generationen-Biases";
+            case DiscriminationBias.SEXUALITY_RELATED_BIASES: return "Hier wird folgender Bias relevant: Sexualitätsbezogene Biases";
+            case DiscriminationBias.AGAINST_WOMEN_WITH_DISABILITIES: return "Hier wird folgender Bias relevant: Biases gegenüber Frauen mit Behinderungen";
+            case DiscriminationBias.STEREOTYPES_AGAINST_WOMEN_IN_NON_TRADITIONAL_INDUSTRIES: return "Hier wird folgender Bias relevant: Stereotype gegenüber Frauen in nicht-traditionellen Branchen";
+            case DiscriminationBias.CULTURAL_AND_RELIGIOUS_BIASES: return "Hier wird folgender Bias relevant: Kulturelle und religiöse Biases";
+            case DiscriminationBias.MATERNAL_BIAS: return "Hier wird folgender Bias relevant: Maternal Bias";
+            case DiscriminationBias.AGAINST_WOMEN_WITH_CHILDREN: return "Hier wird folgender Bias relevant: Biases gegenüber Frauen mit Kindern";
+            case DiscriminationBias.EXPECTATIONS_REGARDING_FAMILY_PLANNING: return "Hier wird folgender Bias relevant: Erwartungshaltung bezüglich Familienplanung";
+            case DiscriminationBias.WORK_LIFE_BALANCE_EXPECTATIONS: return "Hier wird folgender Bias relevant: Work-Life-Balance-Erwartungen";
+            case DiscriminationBias.GENDER_SPECIFIC_STEREOTYPES: return "Hier wird folgender Bias relevant: Geschlechtsspezifische Stereotypen";
+            case DiscriminationBias.TIGHTROPE_BIAS: return "Hier wird folgender Bias relevant: Doppelte Bindung (Tightrope Bias)";
+            case DiscriminationBias.MICROAGGRESSIONS: return "Hier wird folgender Bias relevant: Mikroaggressionen";
+            case DiscriminationBias.PERFORMANCE_ATTRIBUTION_BIAS: return "Hier wird folgender Bias relevant: Leistungsattributions-Bias";
+            case DiscriminationBias.IN_MEDIA_AND_ADVERTISING: return "Hier wird folgender Bias relevant: Bias in Medien und Werbung";
+            case DiscriminationBias.UNCONSCIOUS_BIAS_IN_COMMUNICATION: return "Hier wird folgender Bias relevant: Unbewusste Bias in der Kommunikation";
+            case DiscriminationBias.PROVE_IT_AGAIN_BIAS: return "Hier wird folgender Bias relevant: Prove-it-Again-Bias";
+            case DiscriminationBias.HETERONORMATIVITAET_BIAS: return "Hier wird folgender Bias relevant: Heteronormativität";
+            case DiscriminationBias.BENEVOLENTER_SEXISMUS_BIAS: return "Hier wird folgender Bias relevant: Benevolenter Sexismus";
+            default: return "";
         }
     }
 }
