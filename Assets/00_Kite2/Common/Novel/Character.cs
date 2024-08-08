@@ -7,7 +7,9 @@ public enum Character
     INFO,
     MAYER,
     REPORTERIN,
-    VERMIETER
+    VERMIETER,
+    VATER,
+    MUTTER
 }
 public class CharacterTypeHelper
 {
@@ -18,6 +20,8 @@ public class CharacterTypeHelper
     public const string MAYER = "Mayer";
     public const string REPORTERIN = "Reporterin";
     public const string VERMIETER = "Vermieter";
+    public const string VATER = "Vater";
+    public const string MUTTER = "Mutter";
 
     public static int ToInt(Character character)
     {
@@ -31,6 +35,8 @@ public class CharacterTypeHelper
             case Character.MAYER: { return 5; }
             case Character.REPORTERIN: { return 6; }
             case Character.VERMIETER: { return 7; }
+            case Character.VATER: { return 8; }
+            case Character.MUTTER: { return 9; }
             default: { return 0; }
         }
     }
@@ -47,6 +53,8 @@ public class CharacterTypeHelper
             case 5: { return Character.MAYER; }
             case 6: { return Character.REPORTERIN; }
             case 7: { return Character.VERMIETER; }
+            case 8: { return Character.VATER; }
+            case 9: { return Character.MUTTER; }
             default: return Character.NONE;
         }
     }
@@ -63,6 +71,8 @@ public class CharacterTypeHelper
             case Character.MAYER: { return MAYER; }
             case Character.REPORTERIN: { return REPORTERIN; }
             case Character.VERMIETER: { return VERMIETER; }
+            case Character.VATER: { return VATER; }
+            case Character.MUTTER: { return MUTTER; }
             default: { return null; }
         }
     }
@@ -79,6 +89,8 @@ public class CharacterTypeHelper
             case 5: { return MAYER; }
             case 6: { return REPORTERIN; }
             case 7: { return VERMIETER; }
+            case 8: { return VATER; }
+            case 9: { return MUTTER; }
             default: return null;
         }
     }
@@ -95,6 +107,8 @@ public class CharacterTypeHelper
             case MAYER: { return Character.MAYER; }
             case REPORTERIN: { return Character.REPORTERIN; }
             case VERMIETER: { return Character.VERMIETER; }
+            case VATER: { return Character.VATER; }
+            case MUTTER: { return Character.MUTTER; }
             default: return Character.NONE;
         }
     }

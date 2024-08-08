@@ -1,0 +1,19 @@
+{
+  "idNumberOfNovel": 2,
+  "titleOfNovel": "Telefonat mit den Eltern",
+  "descriptionOfNovel": "Nachdem du dich gründlich informiert hast, hast du dich dazu entschlossen ein Unternehmen zu gründen. Du hast dir auch schon die nächsten Schritte überlegt und rufst nun deine Eltern an, um ihnen von deinem Gründungsvorhaben zu berichten.",
+  "idNumberOfRepresentationImage": 1,
+  "nameOfMainCharacter": "Lea",
+  "contextForPrompt": "Es ist das Gespräch einer Gründerin, Lea, mit ihrer Mutter. Sie hat sich gründlich informiert und hat sich entschlossen, ein Unternehmen zu gründen. Sie ruft nun ihre Eltern an, um ihnen von dem Gründungsvorhaben zu berichten.",
+  "folderName": "Eltern",
+  "isKite2Novel": true,
+  "startLocation": "Office",
+  "startTalkingPartnerEmotion": "Relaxed",
+  "isWithStartValues": true,
+  "talkingPartner01" : "Vater",
+  "talkingPartner02" : "Mutter",
+  "talkingPartner03" : "",
+  "wordsToReplace": [
+	{"wordToReplace": ">>SpielerinCharakterSpricht:<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"}
+	]
+}

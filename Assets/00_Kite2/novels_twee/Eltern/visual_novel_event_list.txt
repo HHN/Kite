@@ -1,0 +1,545 @@
+:: StoryTitle
+Gespräch mit Eltern 0.7
+
+
+:: StoryData
+{
+  "ifid": "0C5BEB97-6FD6-4221-A123-7D8073DF6482",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "start": "Anfang",
+  "tag-colors": {
+    "Frage": "orange",
+    "Bias": "yellow"
+  },
+  "zoom": 0.6
+}
+
+
+:: Altes Denken [Bias] {"position":"2300,1325","size":"100,100"}
+>>Charakter01SprichtRefusing:<<
+Das ist doch etwas ganzes anderes.
+>>--<<
+>>Charakter02SprichtDefeated:<<
+Du wirst dich als Frau ja trotzdem mehr um die Kinder kümmern müssen – und es als Unternehmerin schwerer haben.
+>>--<<
+>>RelevanterBias:BiasesGegenueberFrauenMitKindern<<
+>>--<<
+>>RelevanterBias:WorkLifeBalanceErwartungen<<
+
+[[Aber solltet ihr mich dann nicht umso mehr unterstützen?->Besorgt-Negativ]]
+
+[[Ach, lassen wir das. Ich weiß schon, was ich tue.->Negativ]]
+
+
+:: Anfang {"position":"900,375","size":"100,100"}
+>>InfoNachrichtWirdAngezeigt:<<
+Nachdem du dich gründlich informiert hast, hast du dich dazu entschlossen ein Unternehmen zu gründen. Du hast dir auch schon die nächsten Schritte überlegt und rufst nun deine Eltern an, um ihnen von deinem Gründungsvorhaben zu berichten.
+>>--<<
+>>SoundAbspielen:telephoneCall<<
+
+[[Weiter]]
+
+
+:: Besorgt-Negativ [Bias] {"position":"1725,1550","size":"100,100"}
+>>Charakter01SprichtScared:<<
+Es ist wichtig, dass du realistisch über die Risiken nachdenkst. Außerdem musst du ja dann auch oft verhandeln. 
+>>--<<
+>>Charakter02SprichtFriendly:<<
+Vielleicht suchst du dir einen Geschäftspartner und überlässt dem diese schwierigen Verhandlungsgespräche?
+>>--<<
+>>RelevanterBias:GeschlechtsspezifischeStereotypen<<
+
+[[Das kriege ich auch selbst hin.->Neutral]]
+
+[[Ich überlege es mir, ob ich noch jemanden mit ins Boot hole.->Neutral]]
+
+[[Was soll das denn heißen? Als ob ich das nicht alleine hinkriegen würde!->Negativ]]
+
+
+:: Bruder [Bias] {"position":"2400,1550","size":"100,100"}
+>>Charakter01SprichtAstonished:<<
+Na ja, als Mann hat er ja einen besseren Geschäftssinn und kann sich bestimmt auch besser durchsetzen als du.
+>>--<<
+>>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<
+>>--<<
+>>RelevanterBias:BiasInDerWahrnehmungVonFuehrungsfaehigkeiten<<
+
+[[Ich kriege das auch ohne ihn hin.->Negativ]]
+
+[[Was ist denn das für eine Logik?->Negativ]]
+
+
+:: Eher Negativ [Bias] {"position":"2075,950","size":"100,100"}
+>>Charakter02SprichtRefusing:<<
+Wir machen uns Sorgen um dich, und du ignorierst komplett, was wir sagen. 
+>>--<<
+>>Charakter01SprichtCrirtical:<<
+Du wirst es bereuen, wenn du in diese Unternehmensgründung stolperst und alles verlierst.
+>>--<<
+>>RelevanterBias:BiasInDerWahrnehmungVonFuehrungsfaehigkeiten<<
+
+[[Ich habe mir bereits viele Gedanken darüber gemacht und werde das angehen. Ob es dir nun passt oder nicht.->Negativ]]
+
+[[Kannst du mich nicht einfach unterstützen und dich für mich freuen?->Besorgt-Negativ]]
+
+
+:: Ersparnis [Bias] {"position":"825,600","size":"100,100"}
+>>Charakter01SprichtCritical:<<
+Das ist vernünftig, aber denk daran, dass so eine Unternehmensgründung oft mehr kostet als erwartet. Was ist, wenn du nicht genug Finanzierung erhältst?
+>>--<<
+>>RelevanterBias:Finanzierungszugang<<
+
+[[Ich weiß, dass unerwartete Kosten auftreten könnten.->Ersparnis Positiv]]
+
+[[Diese Vorstellung macht mir ehrlich gesagt etwas Angst.->Ersparnis Besorgt-Negativ]]
+
+[[Ja, darüber habe ich mich auch schon etwas informiert und bin zuversichtlich, dass ich das mit der Finanzierung hinkriege.->Neutral-Positiv]]
+
+
+:: Ersparnis Besorgt-Negativ {"position":"825,750","size":"100,100"}
+>>SpielerinCharakterSpricht:<<
+Ich habe zwar darüber nachgedacht, was passieren könnte, wenn meine Finanzierung nicht ausreicht... Aber ich weiß nicht so genau, was ich tun würde.
+
+[[Besorgt-Negativ]]
+
+
+:: Ersparnis Positiv {"position":"675,750","size":"100,100"}
+>>SpielerinCharakterSpricht:<<
+Deshalb habe ich alternative Finanzierungsquellen und auch Backup-Pläne in Betracht gezogen. Ich werde schon dafür sorgen, dass mein Unternehmen auf Kurs bleibt. Auch wenn ich nicht sofort die gewünschte Finanzierung erhalten sollte.
+
+[[Positiv]]
+
+
+:: Herausforderung {"position":"2000,600","size":"100,100"}
+>>Charakter02SprichtCritical:<<
+Also wenn ich ehrlich bin, finde ich die Idee nicht so gut. Lass es lieber.
+
+[[Mit der richtigen Planung geht das schon. Es gibt ja auch Beratungsangebote, die ich annehmen kann.->Herausforderung Neutral]]
+
+[[Was? Warum?->Was? Warum?]]
+
+[[Ihr könnt mir das nicht verbieten.->Meine Entscheidung]]
+
+
+:: Herausforderung Neutral {"position":"1850,750","size":"100,100"}
+>>SpielerinCharakterSpricht:<<
+Ich werde bestimmt vor Herausforderungen stehen, aber ich denke, dass ich mit der richtigen Planung und Unterstützung die notwendigen Schritte schaffen kann.
+
+[[Neutral]]
+
+
+:: Kein Kind: Sexismus [Bias] {"position":"2300,1175","size":"100,100"}
+>>SpielerinCharakterSpricht:<<
+Als ob das schon feststehen würde. Außerdem spielt das überhaupt keine Rolle.
+>>--<<
+>>Charakter02SprichtAstonished:<<
+Natürlich spielt das eine Rolle. Schließlich nimmt die Kinderversorgung viel Zeit in Anspruch, das solltest du nicht unterschätzen.
+>>--<<
+>>RelevanterBias:BiasesGegenueberFrauenMitKindern<<
+>>--<<
+>>RelevanterBias:WorkLifeBalanceErwartungen<<
+
+[[Das ist doch veraltetes Denken! Würdet ihr das auch zu meinem Bruder sagen?->Altes Denken]]
+
+[[Ja, ich möchte zwar Kinder, aber natürlich nicht allein – und wir werden uns dann auf jeden Fall beide um die Kinder kümmern, so dass noch genügend Zeit für mein Unternehmen bleibt.->Kinder]]
+
+[[Na, wie gut, dass ich keine Kinder will.->Keine Kinder]]
+
+
+:: Keine Kinder [Bias] {"position":"2450,1325","size":"100,100"}
+>>Charakter02SprichtRefusing:<<
+Das denkst du jetzt. Warte noch ein paar Jahre, dann änderst du deine Meinung. Aber selbst ohne Kinder solltest du dir das nochmal überlegen. 
+>>--<<
+>>Charakter01SprichtLaughing:<<
+Ach, wie wäre es denn, wenn du mal mit deinem Bruder sprichst. Dann sind die Chancen bestimmt besser, dass dein Vorhaben erfolgreich wird.
+>>--<<
+>>RelevanterBias:GeschlechtsspezifischeStereotypen<<
+
+[[Wieso sollte das denn der Fall sein?->Bruder]]
+
+[[Ach, lassen wir das Thema.->Neutral]]
+
+
+:: Kind: Besorgt-Negativ {"position":"2050,1325","size":"100,100"}
+>>Charakter02SprichtDefeated:<<
+Wenn Kinder mit im Spiel sind, ist es nochmal ein anderes Risiko.
+
+[[Besorgt-Negativ]]
+
+
+:: Kind: Sexismus [Bias] {"position":"2150,1175","size":"100,100"}
+>>Charakter01SprichtAstonished:<<
+Nein, so war das nicht gemeint, aber wie stellst du es dir denn vor? Kinder haben und ein Unternehmen führen! 
+>>--<<
+>>Charakter02SprichtDefeated:<<
+Das alles zu stemmen, ist alles andere als leicht.
+>>--<<
+>>RelevanterBias:BiasesGegenueberFrauenMitKindern<<
+
+[[Das ist doch veraltetes Denken! Würdet ihr das auch zu meinem Bruder sagen?->Altes Denken]]
+
+[[Ja, ich möchte unbedingt Kinder, aber natürlich nicht allein – und wir werden uns dann auf jeden Fall beide um die Kinder kümmern, so dass noch genügend Zeit für mein Unternehmen bleibt.->Kinder]]
+
+[[Wieso sprechen wir denn überhaupt über Kinder? Das hat doch mit meiner Entscheidung gar nichts zu tun.->Kind: Besorgt-Negativ]]
+
+
+:: Kinder [Bias] {"position":"2175,1325","size":"100,100"}
+>>Charakter01SprichtDecisionNo:<<
+Wir haben gesehen, wie stressig es sein kann, ein Unternehmen zu führen. Ein Freund von uns hat es versucht und es war extrem anstrengend für die ganze Familie. 
+>>--<<
+>>Charakter02SprichtScared:<<
+Wir wollen nur, dass du das Beste für deine Zukunft hast.
+>>--<<
+>>RelevanterBias:WorkLifeBalanceErwartungen<<
+
+[[Es gibt viele Menschen, die erfolgreich ein Unternehmen gegründet haben und gleichzeitig eine Familie haben. Ich glaube, dass ich es auch schaffen kann.->Neutral]]
+
+[[Ich weiß, dass ihr es gut meint, aber ich brauche eure Unterstützung, nicht euren Pessimismus. Es ist meine Entscheidung und mein Leben. Ich werde das durchziehen, egal was ihr sagt.->Negativ]]
+
+[[Ich sehe diese Unternehmensgründung als einen wichtigen Schritt für meine langfristige Zukunft.->Neutral]]
+
+
+:: Kredit Negativ {"position":"1525,750","size":"100,100"}
+>>SpielerinCharakterSpricht:<<
+Ich möchte auch nicht direkt eine Option ausschließen, solange ich die Chancen auf Erfolg sehe. Das wird schon alles.
+
+[[Negativ]]
+
+
+:: Kredit Positiv {"position":"1225,750","size":"100,100"}
+>>SpielerinCharakterSpricht:<<
+Dann kann ich sicherstellen, dass ich das schaffe. Ansonsten kann ich mich um weitere Finanzierungsmöglichkeiten bemühen.
+
+[[Positiv]]
+
+
+:: Kredite [Bias] {"position":"1375,600","size":"100,100"}
+>>Charakter01SprichtCritical:<<
+Kredite könnten zwar eine Möglichkeit sein, aber vergiss nicht, dass du auch an die Zinsen und Rückzahlungspläne denken musst. Bist du denn sicher, dass du diese finanzielle Belastung stemmen kannst?
+>>--<<
+>>RelevanterBias:SoziooekonomischeBiases<<
+
+[[Ich werde mich gründlich über die verschiedenen Kreditoptionen informieren, bevor ich eine Entscheidung treffe.->Kredit Positiv]]
+
+[[Ja, das habe ich natürlich berücksichtigt und ich denke schon, dass ich das schaffe.->Kredite Neutral]]
+
+[[Da mache ich mir nicht so viele Sorgen.->Kredit Negativ]]
+
+
+:: Kredite Neutral {"position":"1375,750","size":"100,100"}
+>>SpielerinCharakterSpricht:<<
+Ich werde mir die Kreditmöglichkeiten noch einmal genauer anschauen, bevor ich mich für diese Finanzierungsmöglichkeit entscheide
+
+[[Neutral-Positiv]]
+
+
+:: Meine Entscheidung [Bias] {"position":"2150,750","size":"100,100"}
+>>SpielerinCharakterSpricht:<<
+Am Ende ist das immer noch meine Entscheidung!
+>>--<<
+>>Charakter01SprichtCrirtical:<<
+Glaubst du wirklich, du könntest ein Unternehmen führen? Du solltest realistischer sein und dir eine vernünftige Karriere suchen, anstatt diese Fantasie zu verfolgen. 
+>>--<<
+>>Charakter02SprichtQuestioning:<<
+Und was ist denn mit Familie? Du willst doch später Kinder haben, oder nicht?
+>>--<<
+>>RelevanterBias:ErwartungshaltungBezueglichFamilienplanung<<
+
+[[Ihr denkt also, dass ich unfähig bin, erfolgreich zu sein, weil ich mal Kinder haben will?->Kind: Sexismus]] 
+
+[[Wer sagt denn, dass ich überhaupt Kinder will?->Kein Kind: Sexismus]]
+
+
+:: Mentorin {"position":"2600,600","size":"100,100"}
+>>Charakter02SprichtFriendly:<<
+Gut, dass du dich vorbereitet hast und dass du Unterstützung haben wirst. Aber denk daran, dass nicht unbedingt alles nach Plan verläuft. 
+>>--<<
+>>Charakter01SprichtDefeated:<<
+Was machst du, wenn es mal Rückschläge gibt?
+
+[[Ich weiß, dass es nicht immer glatt laufen wird. Rückschläge gehören aber dazu, und ich werde daraus lernen.->Mentorin Positiv]]
+
+[[Ja, aber das sehe ich nicht als Hindernis.->Neutral-Negativ]]
+
+[[Ach, da mache ich mir nicht so viele Gedanken. Ich glaube, das wird schon alles gut gehen.->Negativ]]
+
+
+:: Mentorin Positiv {"position":"2450,750","size":"100,100"}
+>>SpielerinCharakterSpricht:<<
+Und ich kann mich auch an neue Situationen anpassen. Ich habe immerhin schon einen Plan und kann dann endlich das tun, was mir Spaß macht.
+
+[[Positiv]]
+
+
+:: Negativ [Bias] {"position":"2825,1475","size":"100,100"}
+>>Charakter01SprichtCritical:<<
+Denk lieber noch einmal darüber nach. Es ist naiv zu glauben, dass du ohne Erfahrung ein Unternehmen führen kannst.
+>>--<<
+>>Charakter02SprichtFriendly:<<
+Oder vielleicht übernimmst du den kreativen Teil und überlässt die technischen Geschäftsaspekte lieber einem Partner?
+>>--<<
+>>RelevanterBias:BiasInDerWahrnehmungVonFuehrungsfaehigkeiten<<
+
+[[Ich sage nichts.|Negativ II]]
+
+[[Ich weiß nicht genau, was Du mit kreativ und technisch meinst, aber ich bin gut in der Lage, mich um alle Aspekte meines Unternehmens zu kümmern – und da, wo ich an Grenzen stoße, beauftrage ich Fachleute. Aber lassen wir es einfach.|Negativ: Benevolenter Sexismus]]
+
+
+:: Negativ Ende {"position":"2825,1800","size":"100,100"}
+>>Charakter02SprichtFriendly:<<
+Wir können ja nochmal darüber sprechen.
+>>--<<
+>>SpielerinCharakterSpricht:<<
+Ja, mal schauen. Ich melde mich. Bis dann.
+>>--<<
+>>Charakter01SprichtFriendly:<<
+Tschüss.
+>>--<<
+>>Charakter02SprichtFriendly:<<
+Bis dann.
+>>--<<
+>>Ende<<
+
+
+:: Negativ II [Frage] {"position":"2750,1650","size":"100,100"}
+>>SpielerinCharakterSpricht:<<
+...
+>>--<<
+>>Charakter02SprichtDefeated:<<
+Na gut. Vielleicht solltest du noch eine Nacht darüber schlafen.
+>>--<<
+>>SpielerinCharakterSpricht:<<
+Dann erzähle ich lieber nicht, dass ich diese Woche noch einen Termin...
+
+[[... bei der Bank habe.->Negativ Ende]]
+
+[[... bei der Notarin habe.->Negativ Ende]]
+
+[[... für die Besichtigung von Büroräumen habe.->Negativ Ende]]
+
+
+:: Negativ: Benevolenter Sexismus {"position":"2900,1650","size":"100,100"}
+>>Charakter02SprichtDefeated:<<
+Na gut. Vielleicht solltest du noch eine Nacht darüber schlafen.
+>>--<<
+>>SpielerinCharakterSpricht:<<
+Dann erzähle ich lieber nicht, dass ich diese Woche noch einen Termin...
+
+[[... bei der Bank habe.->Negativ Ende]]
+
+[[... bei der Notarin habe.->Negativ Ende]]
+
+[[... für die Besichtigung von Büroräumen habe.->Negativ Ende]]
+
+
+:: Neutral {"position":"1325,1575","size":"100,100"}
+>>Charakter01SprichtCritical:<<
+Na ja, hoffentlich klappt das alles.
+>>--<<
+>>Charakter02SprichtFriendly:<<
+Wir drücken dir auf jeden Fall die Daumen.
+>>--<<
+>>SpielerinCharakterSpricht:<<
+Danke. Ah, was ich dir auch noch sagen wollte. Ich habe diese Woche noch einen Termin... 
+
+[[... bei der Bank.|Neutral-Termin]]
+
+[[... bei der Notarin.|Neutral-Termin]]
+
+[[... für die Besichtigung von Büroräumen.|Neutral-Termin]]
+
+
+:: Neutral Ende a {"position":"1250,1875","size":"100,100"}
+>>Charakter02SprichtFriendly:<<
+Alles klar, und besuch uns mal wieder. 
+>>--<<
+>>Charakter01SprichtFriendly:<<
+Bis dann.
+>>--<<
+>>Ende<<
+
+
+:: Neutral Ende b {"position":"1400,1875","size":"100,100"}
+>>SpielerinCharakterSpricht:<<
+Na ja, ich muss auch weiter. Bis dann.
+>>--<<
+>>Charakter02SprichtFriendly:<<
+Oh, so war das nicht gemeint! Besuch uns mal wieder. 
+>>--<<
+>>Charakter01SprichtFriendly:<<
+Bis dann.
+>>--<<
+>>Ende<<
+
+
+:: Neutral-Negativ {"position":"2600,750","size":"100,100"}
+>>Charakter02SprichtScared:<<
+Natürlich, aber ich mache mir einfach Sorgen und möchte, dass du an alles gedacht hast.
+
+[[Das verstehe ich, aber es wäre schön, wenn du dich auch einfach für mich freuen könntest.->Neutral]]
+
+[[Ja, habe ich und ich ziehe das jetzt durch.->Besorgt-Negativ]]
+
+
+:: Neutral-Positiv [Bias] {"position":"1100,925","size":"100,100"}
+>>Charakter01SprichtScared:<<
+Natürlich, aber wir machen uns einfach Sorgen um dich und möchte nur, dass du an alles gedacht hast.
+>>--<<
+>>Charakter02SprichtQuestioning:<<
+Und was ist mit Familie? Du willst doch später Kinder haben, oder nicht?
+>>--<<
+>>RelevanterBias:ErwartungshaltungBezueglichFamilienplanung<<
+
+[[Ihr denkt also, dass ich scheitern könnte, weil ich mal Kinder haben will?->Kind: Sexismus]] 
+
+[[Wer sagt denn, dass ich überhaupt Kinder will?->Kein Kind: Sexismus]]
+
+[[Das verstehe ich, aber es wäre schön, wenn ihr euch auch einfach für mich freuen könntet. Über Kinder mache ich mir noch keine Gedanken.->Neutral]]
+
+
+:: Neutral-Termin [Bias] {"position":"1325,1725","size":"100,100"}
+>>SpielerinCharakterSpricht:<<
+Mal schauen, wie das läuft. 
+>>--<<
+>>Charakter02SprichtFriendly:<<
+Da bin ich auch gespannt. Denk dran, die Leute werden sich wohler fühlen, mit dir zu arbeiten, wenn du freundlich und aufgeschlossen auftrittst. Versuch also nicht so dominant zu wirken.
+>>--<<
+>>RelevanterBias:TightropeBias<<
+
+[[Hm, ich muss dann auch weiter. Ich halte euch auf dem Laufenden. Bis dann.->Neutral Ende a]]
+
+[[Das würdest du jetzt nicht zu einem Mann sagen. Es ist okay zu zeigen, dass ich weiß, was ich will und vorbereitet bin.->Neutral Ende b]]
+
+
+:: Positiv {"position":"800,1100","size":"100,100"}
+>>Charakter01SprichtSmiling:<<
+Es ist echt schön, dass du so engagiert und vorbereitet bist.
+>>--<<
+>>Charakter02SprichtSmiling:<<
+Wir sind so stolz auf dich! Und denk daran, dass wir immer hier sind, um dir zu helfen, wenn du Unterstützung brauchst.
+>>--<<
+>>SpielerinCharakterSpricht:<<
+Danke, deine Unterstützung bedeutet mir sehr viel. Ach ja, ich habe diese Woche noch einen Termin... 
+
+[[... bei der Bank.->Positiv-Termin]]
+
+[[... bei der Notarin.->Positiv-Termin]]
+
+[[... für die Besichtigung von Büroräumen.->Positiv-Termin]]
+
+
+:: Positiv-Termin {"position":"800,1250","size":"100,100"}
+>>SpielerinCharakterSpricht:<<
+Ich bin schon total gespannt, wie das sein wird!
+>>--<<
+>>Charakter01SprichtSmiling:<<
+Wir freuen uns so für dich! Erzähl dann, wie es verlaufen ist, ja?
+
+[[Positiv: Benevolenter Sexismus]]
+
+
+:: Positiv-Termin Ende {"position":"900,1550","size":"100,100"}
+>>SpielerinCharakterSpricht:<<
+Klar, ich melde mich dann. Ich muss auch schon wieder weiter. Nochmal danke und bis dann.
+>>--<<
+>>Charakter02SprichtSmiling:<<
+Alles klar, besuch uns mal wieder!
+>>--<<
+>>Charakter01SprichtSmiling:<<
+Bis dann!
+>>--<<
+>>Ende<<
+
+
+:: Positiv: Benevolenter Sexismus [Bias] {"position":"800,1400","size":"100,100"}
+>>Charakter02SprichtSmiling:<<
+Und du kannst auch deinen weiblichen Charme nutzen! Dann helfen Leute dir noch viel lieber.
+>>--<<
+>>RelevanterBias:GeschlechtsspezifischeStereotypen<<
+
+[[Klar, ich melde mich dann. |Positiv-Termin Ende]]
+
+[[Also, das würdest du jetzt nicht zu einem Mann sagen. Was soll "weiblicher Charme" überhaupt bedeuten?->Positiv: Benevolenter Sexismus II]]
+
+
+:: Positiv: Benevolenter Sexismus II {"position":"700,1550","size":"100,100"}
+>>Charakter02SprichtAstonished:<<
+Du hast ja recht. Da habe ich nicht richtig darüber nachgedacht.
+>>--<<
+>>Charakter01SprichtFriendly:<<
+Melde dich einfach nach dem Termin, ja?
+
+[[Positiv-Termin Ende]]
+
+
+:: Was? Warum? {"position":"2000,750","size":"100,100"}
+>>Charakter02SprichtScared:<<
+Ich möchte nicht, dass du dich in etwas stürzt, das möglicherweise keine Zukunft hat. 
+>>--<<
+>>Charakter01SprichtCrirtical:<<
+Das ist so riskant und hört sich eher wie eine Schnapsidee an.
+
+[[Eine Schnapsidee also. Ihr denkt, ich schaffe das nicht.->Eher Negativ]]
+
+[[Könnt ihr mich nicht einfach unterstützen und euch für mich freuen?->Besorgt-Negativ]]
+
+
+:: Weiter {"position":"1050,375","size":"100,100"}
+>>Charakter01SprichtSmiling:<<
+Hallo! Schön, dass du anrufst. Wie geht es dir denn?
+
+[[Weiter1]]
+
+
+:: Weiter1 {"position":"1200,375","size":"100,100"}
+>>SpielerinCharakterSpricht:<<
+Hallo, Papa. Mir geht es gut. Ist Mama auch da? Ich rufe an, weil ich euch etwas Wichtiges mitteilen möchte.
+
+
+[[Weiter|Weiter2]]
+
+
+:: Weiter2 {"position":"1350,375","size":"100,100"}
+>>Charakter01SprichtSmiling:<<
+Warte kurz. Ich hole sie.
+>>--<<
+>>Eintritt:Charakter02<<
+>>--<<
+>>Charakter02SprichtSmiling:<<
+Hallo! WIr haben das Telefon auf laut gestellt. Papa hat schon erzählt, dass du uns etwas Wichtiges sagen möchtest. Worum geht's denn?
+[[Weiter3]]
+
+
+:: Weiter3 {"position":"1500,375","size":"100,100"}
+>>SpielerinCharakterSpricht:<<
+Ich habe beschlossen, mich selbstständig zu machen und mein eigenes Unternehmen zu gründen.
+>>--<<
+>>Charakter01SprichtAstonished:<<
+Oh, das sind ja Neuigkeiten!
+>>--<<
+>>Charakter02SprichtAstonished:<<
+Was für ein Unternehmen möchtest du denn gründen?
+>>--<<
+>>FreitextEingabe<<
+Unternehmensgruendung: Was für ein Unternehmen möchtest du denn gründen?
+>>--<<
+>>SpielerinCharakterSpricht:<<>Unternehmensgruendung<
+
+[[Weiter4]]
+
+
+:: Weiter4 {"position":"1700,500","size":"100,100"}
+>>Charakter01SprichtQuestioning:<<
+Das ist interessant und du hast sicher einen Geschäftsplan, aber wie willst du z. B. dein Vorhaben finanzieren?
+>>--<<
+>>Charakter02SprichtQuestioning:<<
+Und bist du sicher, dass das eine gute Idee ist? Ich meine es nur gut, aber es wäre vielleicht klug, noch einige Jahre in der Branche zu arbeiten und weitere Erfahrungen zu sammeln, bevor du diesen großen Schritt wagst.
+
+[[Ich habe vor, mit meinen Ersparnissen anzufangen und mich ium weitere Finanzierungsmöglichkeiten zu bemühen.->Ersparnis]]
+
+[[Ich werde einen Kredite beantragen und nach anderen Möglichkeiten suchen, um die Finanzierung zu sichern.->Kredite]]
+
+[[Ich verstehe eure Sorgen. Aber ich habe gründlich darüber nachgedacht und fühle mich bereit, diese Herausforderung anzunehmen.->Herausforderung]]
+
+[[Ich verstehe eure Bedenken, aber ich habe mich intensiv vorbereitet und werde auch eine Mentorin an meiner Seite haben.->Mentorin]]
