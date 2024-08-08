@@ -13,6 +13,7 @@ public class DeleteUserDataConfirmation : MonoBehaviour
     [SerializeField] private GameObject backgroundLeave;
     [SerializeField] private GameObject textCancle;
     [SerializeField] private GameObject person;
+    [SerializeField] private GameObject uiContainer;
 
     void Start()
     {
@@ -29,6 +30,11 @@ public class DeleteUserDataConfirmation : MonoBehaviour
         textCancle.GetComponent<TextMeshProUGUI>().color = color;
         RectTransform backgroundTransform = background.GetComponent<RectTransform>();
         backgroundTransform.anchoredPosition = new Vector2(backgroundTransform.anchoredPosition.x, (NovelColorManager.Instance().GetCanvasHeight()/2)-(backgroundTransform.rect.height/2));
+        RectTransform uiContainerTransform = uiContainer.GetComponent<RectTransform>();
+        uiContainerTransform.anchoredPosition = new Vector2(backgroundTransform.anchoredPosition.x, (NovelColorManager.Instance().GetCanvasHeight() / 2) - (backgroundTransform.rect.height / 2));
+        Vector2 anchoredPosition = uiContainerTransform.anchoredPosition;
+        anchoredPosition.y = 600;
+        uiContainerTransform.anchoredPosition = anchoredPosition;
         RectTransform personTransform = person.GetComponent<RectTransform>();
         personTransform.anchoredPosition = new Vector2(backgroundTransform.anchoredPosition.x, (backgroundTransform.rect.width*0.9f)/2);
         personTransform.anchorMin = new Vector2(0.5f, 0.55f);
