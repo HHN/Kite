@@ -636,26 +636,8 @@ public class PlayNovelSceneController : SceneController
 
     public void SetTypeToContinueAnimationActive(bool value)
     {
-        if (value)
-        {
-            timerCoroutine = StartCoroutine(SetAnimationToTrue()); // Startet die Coroutine neu.
-        } else {
-            StopCoroutine(timerCoroutine);
-            tapToContinueAnimation.SetActive(value);
-            tapToContinueAnimation.GetComponent<Animator>().enabled = value;
-        }
-    }
-
-    IEnumerator SetAnimationToTrue()
-    {
-        if(!tapedAlready)
-        {
-            yield return new WaitForSeconds(timerForHintInitial); // Wartet für die angegebene Zeit.
-        } else {
-            yield return new WaitForSeconds(timerForHint); // Wartet für die angegebene Zeit.
-        }
-        tapToContinueAnimation.SetActive(true);
-        tapToContinueAnimation.GetComponent<Animator>().enabled = true;
+        tapToContinueAnimation.SetActive(value);
+        tapToContinueAnimation.GetComponent<Animator>().enabled = value;
     }
 
     public void SetTyping(bool value)
@@ -664,7 +646,7 @@ public class PlayNovelSceneController : SceneController
 
         if (!isTyping && isWaitingForConfirmation)
         {
-            SetAnimationToTrue();
+            SetTypeToContinueAnimationActive(true);
             return;
         }
         tapToContinueAnimation.SetActive(false);
