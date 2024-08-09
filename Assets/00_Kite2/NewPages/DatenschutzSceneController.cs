@@ -103,6 +103,7 @@ public class DatenschutzSceneController : SceneController
         deleteUserDataConfirmDialogObject = null;
         deleteUserDataConfirmDialogObject = Instantiate(deleteUserDataConfirmDialog, 
             canvas.transform).GetComponent<DeleteUserDataConfirmation>();
+        deleteUserDataConfirmDialogObject.Initialize("delete");
         deleteUserDataConfirmDialogObject.Activate();
     }
 
@@ -125,13 +126,14 @@ public class DatenschutzSceneController : SceneController
         deleteUserDataConfirmDialogObject = null;
         deleteUserDataConfirmDialogObject = Instantiate(deleteUserDataConfirmDialog,
             canvas.transform).GetComponent<DeleteUserDataConfirmation>();
+        deleteUserDataConfirmDialogObject.Initialize("reset");
         deleteUserDataConfirmDialogObject.Activate();
     }
 
     public void OnResetAppInfoButton()
     {
-        TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.EXPLANATION_DELETE_DATA_BUTTON, engine);
-        DisplayInfoMessage(InfoMessages.EXPLANATION_DELETE_DATA_BUTTON);
+        TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.EXPLANATION_RESET_APP_BUTTON, engine);
+        DisplayInfoMessage(InfoMessages.EXPLANATION_RESET_APP_BUTTON);
     }
 
     public void InitializeToggleDataCollectionButton()

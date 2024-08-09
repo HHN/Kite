@@ -87,4 +87,9 @@ public class FavoritesManager
         FavoritesWrapper wrapper = LoadFavorites();
         return wrapper.favorites;
     }
+
+    public void ClearFavorites()
+    {
+        favorites.ResetFavorites();
+    }
 }

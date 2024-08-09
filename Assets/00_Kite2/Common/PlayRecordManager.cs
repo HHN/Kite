@@ -200,4 +200,9 @@ public class PlayRecordManager
         string json = JsonUtility.ToJson(wrapper);
         PlayerDataManager.Instance().SavePlayerData(key, json);
     }
+
+    public void ClearData()
+    {
+        wrapper.ClearData();
+    }
 }
