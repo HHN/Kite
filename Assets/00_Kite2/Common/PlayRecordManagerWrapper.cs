@@ -136,4 +136,20 @@ public class PlayRecordManagerWrapper
     {
         return numberOfPlaysForIntroNovel;
     }
+
+    public void ClearData()
+    {
+        numberOfPlaysForBankkreditNovel = 0;
+        numberOfPlaysForBekannteTreffenNovel = 0;
+        numberOfPlaysForBankkontoNovel = 0;
+        numberOfPlaysForFoerderantragNovel = 0;
+        numberOfPlaysForElternNovel = 0;
+        numberOfPlaysForNotarinNovel = 0;
+        numberOfPlaysForPresseNovel = 0;
+        numberOfPlaysForBueroNovel = 0;
+        numberOfPlaysForGruenungszuschussNovel = 0;
+        numberOfPlaysForHonorarNovel = 0;
+        numberOfPlaysForLebenspartnerNovel = 0;
+        numberOfPlaysForIntroNovel = 0;
+    }
 }

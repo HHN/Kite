@@ -13,37 +13,65 @@ public class DeleteUserDataConfirmation : MonoBehaviour
     [SerializeField] private GameObject backgroundLeave;
     [SerializeField] private GameObject textCancle;
     [SerializeField] private GameObject person;
+    [SerializeField] private GameObject uiContainer;
+    [SerializeField] private TextMeshProUGUI messageText;
+
+    private string origin;
+
+    public void Initialize(string origin)
+    {
+        this.origin = origin;
+    }
 
     void Start()
     {
         cancelButton.onClick.AddListener(delegate { OnCancleButton(); });
         confirmButton.onClick.AddListener(delegate { OnConfirmButton(); });
-        InitUI();
+        if (origin == "delete")
+        {
+            messageText.text = InfoMessages.DELETE_DATA_CONFIRMATION;
+        }
+        if (origin == "reset")
+        {
+            messageText.text = InfoMessages.RESET_APP_CONFIRMATION;
+        }
+        AdjustImageSize();
     }
 
-    private void InitUI()
+    private void AdjustImageSize()
     {
-        Color color = new Color(0.07450981f, 0.1254902f, 0.2039216f, 1.000f);
-        background.GetComponent<Image>().color = color;
-        backgroundLeave.GetComponent<Image>().color = color;
-        textCancle.GetComponent<TextMeshProUGUI>().color = color;
-        RectTransform backgroundTransform = background.GetComponent<RectTransform>();
-        backgroundTransform.anchoredPosition = new Vector2(backgroundTransform.anchoredPosition.x, (NovelColorManager.Instance().GetCanvasHeight()/2)-(backgroundTransform.rect.height/2));
-        RectTransform personTransform = person.GetComponent<RectTransform>();
-        personTransform.anchoredPosition = new Vector2(backgroundTransform.anchoredPosition.x, (backgroundTransform.rect.width*0.9f)/2);
-        personTransform.anchorMin = new Vector2(0.5f, 0.55f);
-        personTransform.anchorMax = new Vector2(0.5f, 0.55f);
-        personTransform.sizeDelta = new Vector2(backgroundTransform.rect.width*0.9f, backgroundTransform.rect.width*0.9f);
+        float backgroundWidth = background.GetComponent<RectTransform>().rect.width;
+
+        if (person.GetComponent<RectTransform>().rect.width > backgroundWidth)
+        {
+            person.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, backgroundWidth);
+            person.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, backgroundWidth);
+        }
     }
+
     public void OnConfirmButton()
     {
-        TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.DELETED_DATA, engine);
-        PlayerDataManager.Instance().ClearRelevantUserdata();
-        if(AnalyticsServiceHandler.Instance().IsAnalyticsInitialized())
+        if(origin == "delete")
         {
-           AnalyticsServiceHandler.Instance().DeleteCollectedData(); 
+            TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.DELETED_DATA, engine);
+            PlayerDataManager.Instance().ClearRelevantUserdata();
+            if(AnalyticsServiceHandler.Instance().IsAnalyticsInitialized())
+            {
+                AnalyticsServiceHandler.Instance().DeleteCollectedData(); 
+            }
+            CloseMessageBox();
         }
-        CloseMessageBox();
+        if (origin == "reset")
+        {
+            TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.RESET_APP, engine);
+            PlayerDataManager.Instance().ClearEverything();
+            PlayerPrefs.DeleteAll();
+            PlayerPrefs.Save();
+            FavoritesManager.Instance().ClearFavorites();
+            PlayRecordManager.Instance().ClearData();
+            ShowPlayInstructionManager.Instance().SetShowInstruction(true);
+            CloseMessageBox();
+        }
     }
 
     public void OnCancleButton()

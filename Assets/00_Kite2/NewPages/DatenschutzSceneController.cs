@@ -8,6 +8,8 @@ public class DatenschutzSceneController : SceneController
     [SerializeField] private Button toggleDataCollectionInfoButton;
     [SerializeField] private Button deleteCollectedDataButton;
     [SerializeField] private Button deleteCollectedDataInfoButton;
+    [SerializeField] private Button resetAppButton;
+    [SerializeField] private Button resetAppInfoButton;
     [SerializeField] private Button playerPrefsButton;
     [SerializeField] private Button playerPrefsInfoButton;
     [SerializeField] private Toggle applicationModeToggle;
@@ -34,6 +36,8 @@ public class DatenschutzSceneController : SceneController
         dataCollectionToggle.onValueChanged.AddListener(delegate { OnToggleDataCollection(dataCollectionToggle); }); toggleDataCollectionInfoButton.onClick.AddListener(delegate { OnToggleDataCollectionInfoButton(); });
         deleteCollectedDataButton.onClick.AddListener(delegate { OnDeleteCollectedDataButton(); });
         deleteCollectedDataInfoButton.onClick.AddListener(delegate { OnDeleteCollectedDataInfoButton(); });
+        resetAppButton.onClick.AddListener(delegate { OnResetAppButton(); });
+        resetAppInfoButton.onClick.AddListener(delegate { OnResetAppInfoButton(); });
         playerPrefsButton.onClick.AddListener(delegate { OnPlayerPrefsButton(); });
         playerPrefsInfoButton.onClick.AddListener(delegate { OnPlayerPrefsInfoButton(); });
         applicationModeToggle.onValueChanged.AddListener(delegate { OnApplicationModeToggle(applicationModeToggle); });
@@ -99,6 +103,7 @@ public class DatenschutzSceneController : SceneController
         deleteUserDataConfirmDialogObject = null;
         deleteUserDataConfirmDialogObject = Instantiate(deleteUserDataConfirmDialog, 
             canvas.transform).GetComponent<DeleteUserDataConfirmation>();
+        deleteUserDataConfirmDialogObject.Initialize("delete");
         deleteUserDataConfirmDialogObject.Activate();
     }
 
@@ -106,6 +111,29 @@ public class DatenschutzSceneController : SceneController
     {
         TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.EXPLANATION_DELETE_DATA_BUTTON, engine);
         DisplayInfoMessage(InfoMessages.EXPLANATION_DELETE_DATA_BUTTON);
+    }
+
+    public void OnResetAppButton()
+    {
+        if (!DestroyValidator.IsNullOrDestroyed(deleteUserDataConfirmDialogObject))
+        {
+            deleteUserDataConfirmDialogObject.CloseMessageBox();
+        }
+        if (DestroyValidator.IsNullOrDestroyed(canvas))
+        {
+            return;
+        }
+        deleteUserDataConfirmDialogObject = null;
+        deleteUserDataConfirmDialogObject = Instantiate(deleteUserDataConfirmDialog,
+            canvas.transform).GetComponent<DeleteUserDataConfirmation>();
+        deleteUserDataConfirmDialogObject.Initialize("reset");
+        deleteUserDataConfirmDialogObject.Activate();
+    }
+
+    public void OnResetAppInfoButton()
+    {
+        TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.EXPLANATION_RESET_APP_BUTTON, engine);
+        DisplayInfoMessage(InfoMessages.EXPLANATION_RESET_APP_BUTTON);
     }
 
     public void InitializeToggleDataCollectionButton()

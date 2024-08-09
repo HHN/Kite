@@ -5,4 +5,9 @@ using System.Collections.Generic;
 public class FavoritesWrapper
 {
     public List<long> favorites;
+
+    public void ResetFavorites()
+    {
+        favorites = new List<long>();
+    }
 }
