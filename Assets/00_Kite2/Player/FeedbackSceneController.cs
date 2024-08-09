@@ -6,7 +6,6 @@ using LeastSquares.Overtone;
 using System.Collections;
 using System;
 using System.Globalization;
-using System.Collections.Generic;
 
 public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErrorHandler
 {
@@ -49,7 +48,13 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
             feedbackText.SetText("Bitte warten, Feedback wird geladen...");
             GetCompletionServerCall call = Instantiate(gptServercallPrefab).GetComponent<GetCompletionServerCall>();
             call.sceneController = this;
-            call.onSuccessHandler = this;
+            FeedbackHandler feedbackHandler = new FeedbackHandler()
+            {
+                feedbackSceneController = this,
+                id = PlayManager.Instance().GetVisualNovelToPlay().id,
+                dialog = PromptManager.Instance().GetDialog()
+            };
+            call.onSuccessHandler = feedbackHandler;
             call.onErrorHandler = this;
             if (novel != null)
             {
@@ -63,39 +68,6 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
             return;
         }
         feedbackText.SetText(novelToPlay.feedback);
-    }
-
-    public IEnumerator LoadOnlineFeedback(VisualNovelNames visualNovelNames)
-    {
-        Debug.Log("Loading Offline Feedback");
-
-        feedbackText.SetText("Bitte warten, Feedback wird geladen...");
-        offlineFeedbackLoader.LoadOfflineFeedbackForNovel(visualNovelNames);
-        
-        while (!PreGeneratedOfflineFeedbackManager.Instance().IsFeedbackLoaded(visualNovelNames))
-        {
-            yield return new WaitForSeconds(0.5f);
-        }
-        Dictionary<string, FeedbackNodeContainer> feedbackDictionary = PreGeneratedOfflineFeedbackManager.Instance().GetPreGeneratedOfflineFeedback(visualNovelNames);
-
-        string feedback = feedbackDictionary[novelToPlay.GetPlayedPath()].completion;
-
-        StopWaitingMusic();
-        finishButtonContainer.SetActive(false);
-        finishButtonBottomContainer.SetActive(true);
-        if (TextToSpeechManager.Instance().IsTextToSpeechActivated())
-        {
-            TextToSpeechService.Instance().TextToSpeechReadLive(feedback, engine);
-        }
-        feedbackText.SetText(feedback.Trim());
-        novelToPlay.feedback = (feedback.Trim());
-        PlayerDataManager.Instance().SaveEvaluation(novelToPlay.title, feedback.Trim());
-        AnalyticsServiceHandler.Instance().SetWaitedForAiFeedbackTrue();
-        LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
-        PlayResultMusic();
-        //requestExpertFeedbackButton.interactable = true;
-
-        Coroutine coroutine = StartCoroutine(SaveDialogToHistory(feedback));
     }
 
     public void OnFinishButton()
@@ -136,8 +108,6 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
         LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
         PlayResultMusic();
         //requestExpertFeedbackButton.interactable = true;
-
-        Coroutine coroutine = StartCoroutine(SaveDialogToHistory(response.GetCompletion()));
     }
 
     public IEnumerator SaveDialogToHistory(string response)
@@ -180,5 +150,35 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
     public void DeactivateAskButton()
     {
         //requestExpertFeedbackButton.interactable = false;
+    }
+}
+
+public class FeedbackHandler : OnSuccessHandler
+{
+    public FeedbackSceneController feedbackSceneController;
+    public long id;
+    public string dialog;
+
+    public void OnSuccess(Response response)
+    {
+        SaveDialogToHistory(response.GetCompletion());
+
+        if (!DestroyValidator.IsNullOrDestroyed(feedbackSceneController))
+        {
+            feedbackSceneController.OnSuccess(response);
+        }
+    }
+
+    public void SaveDialogToHistory(string response)
+    {
+        DialogHistoryEntry dialogHistoryEntry = new DialogHistoryEntry();
+        dialogHistoryEntry.SetNovelId(id);
+        dialogHistoryEntry.SetDialog(dialog);
+        dialogHistoryEntry.SetCompletion(response.Trim());
+        DateTime now = DateTime.Now;
+        CultureInfo culture = new CultureInfo("de-DE");
+        string formattedDateTime = now.ToString("dddd | dd.MM.yyyy | HH:mm", culture);
+        dialogHistoryEntry.SetDateAndTime(formattedDateTime); DialogHistoryManager.Instance().AddEntry(dialogHistoryEntry);
+        Debug.Log("Feedback Saved in Novel Archive");
     }
 }
