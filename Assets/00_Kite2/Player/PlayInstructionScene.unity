@@ -388,7 +388,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nicht mehr anzeigen
+  m_Text: Info nicht mehr anzeigen
 --- !u!222 &75518713
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1101,7 +1101,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 500
+  m_PreferredWidth: 580
   m_PreferredHeight: 100
   m_FlexibleWidth: 0
   m_FlexibleHeight: 0
@@ -1776,6 +1776,7 @@ MonoBehaviour:
   buttonText: {fileID: 1741790488}
   backgroundColor: {r: 0, g: 0, b: 0, a: 0}
   playButton: {fileID: 1000955114}
+  playButton2: {fileID: 0}
   backButton: {fileID: 0}
   toggle: {fileID: 757202592}
 --- !u!4 &1157646775
