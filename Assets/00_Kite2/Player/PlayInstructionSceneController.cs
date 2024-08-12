@@ -12,6 +12,7 @@ public class PlayInstructionSceneController : SceneController
     [SerializeField] private Color backgroundColor;
 
     [SerializeField] private Button playButton;
+    [SerializeField] private Button playButton2;
     [SerializeField] private Button backButton;
     [SerializeField] private Toggle toggle;
 
@@ -24,9 +25,21 @@ public class PlayInstructionSceneController : SceneController
         novelImage.color = backgroundColor;
         toggle.isOn = false;
 
-        playButton.onClick.AddListener(delegate { OnPlayButton(); });    }
+        playButton.onClick.AddListener(delegate { OnPlayButton(); });   
+        playButton2.onClick.AddListener(delegate { OnPlayButton2(); });    
+    }
 
     public void OnPlayButton()
+    {
+        if (toggle.isOn)
+        {
+            NeverShowAgain();
+        }
+
+        SceneLoader.LoadPlayNovelScene();
+    }    
+
+public void OnPlayButton2()
     {
         if (toggle.isOn)
         {

@@ -22,6 +22,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
     [SerializeField] private GameObject finishButtonContainer;
     [SerializeField] private GameObject finishButtonBottomContainer;
     [SerializeField] private TTSEngine engine;
+    [SerializeField] private GameObject loadingAnimation;
 
     [SerializeField] private GameObject progressBarObject; // Das GameObject, das das Image enthält
     private Image progressBar;
@@ -43,6 +44,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
         if (ApplicationModeManager.Instance().IsOfflineModeActive())
         {
             feedbackText.SetText("Sie befinden sich im Offline Modus. Es ist kein Feedback verfügbar.");
+            loadingAnimation.SetActive(false);
             finishButtonContainer.SetActive(false);
             finishButtonBottomContainer.SetActive(true);
             return;
@@ -75,6 +77,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
             return;
         }
         feedbackText.SetText(novelToPlay.feedback);
+        loadingAnimation.SetActive(false);
     }
 
     private void GetProgressBarAndStartCoroutine()
@@ -150,6 +153,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
             TextToSpeechService.Instance().TextToSpeechReadLive(response.GetCompletion().Trim(), engine);
         }
         feedbackText.SetText(response.GetCompletion().Trim());
+        loadingAnimation.SetActive(false);
         novelToPlay.feedback = (response.GetCompletion().Trim());
         PlayerDataManager.Instance().SaveEvaluation(novelToPlay.title, response.GetCompletion().Trim());
         AnalyticsServiceHandler.Instance().SetWaitedForAiFeedbackTrue();
@@ -178,6 +182,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
         finishButtonContainer.SetActive(false);
         finishButtonBottomContainer.SetActive(true);
         feedbackText.SetText("Leider ist aktuell keine KI-Analyse verfügbar.");
+        loadingAnimation.SetActive(false);
     }
 
     private IEnumerator FillBarInstantly()
