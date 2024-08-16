@@ -24,12 +24,6 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
     [SerializeField] private TTSEngine engine;
     [SerializeField] private GameObject loadingAnimation;
 
-    [SerializeField] private GameObject progressBarObject; // Das GameObject, das das Image enthält
-    private Image progressBar;
-    private float fillDuration = 40f;
-    private bool responseReceived = false;
-    private Coroutine fillCoroutine;
-
     private void Start()
     {
         BackStackManager.Instance().Push(SceneNames.FEEDBACK_SCENE);
@@ -52,9 +46,8 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
         if (string.IsNullOrEmpty(novelToPlay.feedback))
         {
             StartWaitingMusic();
-            GetProgressBarAndStartCoroutine();
             VisualNovel novel = PlayManager.Instance().GetVisualNovelToPlay();
-            feedbackText.SetText("Bitte warten, Feedback wird geladen...");
+            feedbackText.SetText("Das Feedback wird gerade geladen. Dies dauert durchschnittlich zwischen 30 und 60 Sekunden. Solltest du nicht so lange warten wollen, kannst du dir das Feedback einfach im Archiv anschauen, sobald es fertig ist.");
             GetCompletionServerCall call = Instantiate(gptServercallPrefab).GetComponent<GetCompletionServerCall>();
             call.sceneController = this;
             FeedbackHandler feedbackHandler = new FeedbackHandler()
@@ -78,39 +71,6 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
         }
         feedbackText.SetText(novelToPlay.feedback);
         loadingAnimation.SetActive(false);
-    }
-
-    private void GetProgressBarAndStartCoroutine()
-    {
-        // Hole die Image-Komponente vom angegebenen GameObject
-        if (progressBarObject != null)
-        {
-            progressBar = progressBarObject.GetComponent<Image>();
-        }
-        if (progressBar == null)
-        {
-            Debug.LogError("Das angegebene GameObject enthält kein Image-Component.");
-            return;
-        }
-        fillCoroutine = StartCoroutine(FillProgressBar());
-    }
-
-    private IEnumerator FillProgressBar()
-    {
-        float elapsedTime = 0f;
-
-        while (elapsedTime < fillDuration && !responseReceived)
-        {
-            elapsedTime += Time.deltaTime;
-            float fillAmount = Mathf.Clamp01(elapsedTime / fillDuration);
-            progressBar.fillAmount = fillAmount;
-            yield return null;
-        }
-
-        if (!responseReceived)
-        {
-            progressBar.fillAmount = 0.99f;
-        }
     }
 
     public void OnFinishButton()
@@ -138,13 +98,6 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
             return;
         }
         StopWaitingMusic();
-
-        responseReceived = true;
-        if (fillCoroutine != null)
-        {
-            StopCoroutine(fillCoroutine);
-        }
-        StartCoroutine(FillBarInstantly());
 
         finishButtonContainer.SetActive(false);
         finishButtonBottomContainer.SetActive(true);
@@ -183,18 +136,6 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
         finishButtonBottomContainer.SetActive(true);
         feedbackText.SetText("Leider ist aktuell keine KI-Analyse verfügbar.");
         loadingAnimation.SetActive(false);
-    }
-
-    private IEnumerator FillBarInstantly()
-    {
-        float fillSpeed = 2f; // Geschwindigkeit des schnellen Füllens
-        while (progressBar.fillAmount < 1f)
-        {
-            progressBar.fillAmount += fillSpeed * Time.deltaTime;
-            yield return null;
-        }
-        yield return new WaitForSeconds(0.5f);
-        progressBarObject.SetActive(false);
     }
 
     public void StartWaitingMusic()
