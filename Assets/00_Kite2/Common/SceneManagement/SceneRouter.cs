@@ -39,7 +39,7 @@ public class SceneRouter
                 }
             case (SceneNames.NOVEL_HISTORY_SCENE):
                 {
-                    return SceneNames.FOUNDERS_WELL_2_SCENE;
+                    return SceneNames.FOUNDERS_BUBBLE_SCENE;
                 }
             case (SceneNames.DATENSCHUTZ_SCENE):
                 {
@@ -51,7 +51,7 @@ public class SceneRouter
                 }
             case (SceneNames.RESSOURCEN_SCENE):
                 {
-                    return SceneNames.FOUNDERS_WELL_2_SCENE;
+                    return SceneNames.FOUNDERS_BUBBLE_SCENE;
                 }
             case (SceneNames.BARRIEREFREIHEIT_SCENE):
                 {
@@ -63,11 +63,11 @@ public class SceneRouter
                 }            
             case (SceneNames.EINSTELLUNGEN_SCENE):
                 {
-                    return SceneNames.FOUNDERS_WELL_2_SCENE;
+                    return SceneNames.FOUNDERS_BUBBLE_SCENE;
                 }            
             case (SceneNames.GEMERKTE_NOVELS_SCENE):
                 {
-                    return SceneNames.FOUNDERS_WELL_2_SCENE;
+                    return SceneNames.FOUNDERS_BUBBLE_SCENE;
                 }
 
             default: return SceneNames.MAIN_MENU_SCENE;

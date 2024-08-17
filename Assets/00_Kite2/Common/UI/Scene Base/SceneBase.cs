@@ -38,7 +38,6 @@ public class SceneBase : MonoBehaviour
             homeButton.onClick.AddListener(delegate { OnHomeButton(); });
             settingsButton.onClick.AddListener(delegate { OnSettingsButton(); });
             backButton.onClick.AddListener(delegate { OnBackButton(); });
-            closeButton.onClick.AddListener(delegate { OnBackButton(); });
         }
     }
 
@@ -72,36 +71,6 @@ public class SceneBase : MonoBehaviour
         leaveGameAndGoBackMessageBoxObject = Instantiate(leaveGameAndGoBackMessageBox, 
             canvas.transform).GetComponent<LeaveNovelAndGoBackMessageBox>();
         leaveGameAndGoBackMessageBoxObject.Activate();
-    }
-
-    //TODO: To delte
-    public void OnCloseButton()
-    {
-        string lastScene = SceneRouter.GetTargetSceneForCloseButton();
-
-        if (string.IsNullOrEmpty(lastScene))
-        {
-            SceneLoader.LoadMainMenuScene();
-            return;
-        }
-        SceneLoader.LoadScene(lastScene);
-    }
-
-    //TODO: To delte
-    public void OnCloseButtonForNovelPlayer()
-    {
-        if (!DestroyValidator.IsNullOrDestroyed(leaveNovelAndCloseMessageBoxObject))
-        {
-            leaveNovelAndCloseMessageBoxObject.CloseMessageBox();
-        }
-        if (DestroyValidator.IsNullOrDestroyed(canvas))
-        {
-            return;
-        }
-        leaveNovelAndCloseMessageBoxObject = null;
-        leaveNovelAndCloseMessageBoxObject = Instantiate(leaveGameAndCloseMessageBox, 
-            canvas.transform).GetComponent<CloseNovelAndGoBackMessageBox>();
-        leaveNovelAndCloseMessageBoxObject.Activate();
     }
 
     public void OnHomeButton()

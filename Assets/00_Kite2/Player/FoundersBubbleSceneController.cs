@@ -26,6 +26,10 @@ public class FoundersBubbleSceneController : SceneController
 
     [SerializeField] private bool finishedInitialization;
 
+    [SerializeField] private Button novelListButton;
+    [SerializeField] private Button searchButton;
+    [SerializeField] private Button settingsButton;
+
     void Start()
     {
         BackStackManager.Instance().Push(SceneNames.FOUNDERS_BUBBLE_SCENE);
@@ -46,6 +50,10 @@ public class FoundersBubbleSceneController : SceneController
         isHonorarNovelInVersionContained = true;
         isLebnenspartnerNovelInVersionContained = true;
         isIntroNovelNovelInVersionContained = true;
+
+        novelListButton.onClick.AddListener(delegate { OnNovelListButton(); });
+        searchButton.onClick.AddListener(delegate { OnSearchButton(); });
+        settingsButton.onClick.AddListener(delegate { OnSettingsButton(); });
     }
 
     public void OnBackgroundButton()
@@ -138,6 +146,22 @@ public class FoundersBubbleSceneController : SceneController
         DisplayTextBoxForVisualNovel(VisualNovelNames.INTRO_NOVEL, isIntroNovelNovelInVersionContained);
         infinityScroll.MoveToVisualNovel(VisualNovelNames.INTRO_NOVEL);
     }
+
+    private void OnNovelListButton()
+    {
+        
+    }
+
+    private void OnSearchButton()
+    {
+        
+    }
+
+    private void OnSettingsButton()
+    {
+        SceneLoader.LoadEinstellungenScene();
+    }
+
 
     public void DisplayTextBoxForVisualNovel(VisualNovelNames visualNovel, bool isNovelContainedInVersion)
     {

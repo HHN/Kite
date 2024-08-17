@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class SceneHeader : MonoBehaviour
 {
-    [SerializeField] private Button closeButton;
     [SerializeField] private Button backButton;
     [SerializeField] private GameObject warningMessageBox;
     [SerializeField] private GameObject warningMessageBoxClose;
@@ -16,32 +15,7 @@ public class SceneHeader : MonoBehaviour
 
     void Start()
     {
-        closeButton.onClick.AddListener(delegate { OnBackButton(); });
         backButton.onClick.AddListener(delegate { OnBackButton(); });
-    }
-
-//TODO: To delete
-    public void OnCloseButton()
-    {
-        if (warningMessageBoxClose != null)
-        {
-            if (!DestroyValidator.IsNullOrDestroyed(warningMessageBoxObjectClose))
-            {
-                warningMessageBoxObjectClose.CloseMessageBox();
-            }
-            if (DestroyValidator.IsNullOrDestroyed(canvas))
-            {
-                return;
-            }
-            warningMessageBoxObjectClose = null;
-            warningMessageBoxObjectClose = Instantiate(warningMessageBoxClose,
-                canvas.transform).GetComponent<LeaveNovelAndGoBackToMainmenuMessageBox>();
-            warningMessageBoxObjectClose.Activate();
-
-            return;
-        }
-        SceneLoader.LoadMainMenuScene();
-        return;
     }
 
     public void OnBackButton()
