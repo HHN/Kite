@@ -68,6 +68,7 @@ public class GemerkteNovelsSceneController : SceneController
             index++;
         }
 
+
         if (index == 12)
         {
             visualNovelHolder.GetComponent<LayoutElement>().preferredHeight = 1300;
