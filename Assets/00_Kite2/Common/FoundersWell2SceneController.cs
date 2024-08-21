@@ -9,6 +9,7 @@ public class FoundersWell2SceneController : SceneController
     [SerializeField] private Button einstellungenButton;
     [SerializeField] private Button foundersWellButton;
     [SerializeField] private Button editButton;
+    [SerializeField] private Button profilePicture;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class FoundersWell2SceneController : SceneController
         einstellungenButton.onClick.AddListener(delegate { OnEinstellungenButton(); });
         foundersWellButton.onClick.AddListener(delegate { OnFoundersWellButton(); });
         editButton.onClick.AddListener(delegate { OnEditButton(); });
+        profilePicture.onClick.AddListener(delegate { OnProfilePicture(); });
 
         // Load Screen size for later use
         RectTransform canvasRect = canvas.GetComponent<RectTransform>();
@@ -54,5 +56,11 @@ public class FoundersWell2SceneController : SceneController
 
     public void OnEditButton()
     {
+        DisplayInfoMessage("Diese Funktionalitäten sind derzeit noch nicht verfügbar, da sich die App noch in der Entwicklung befindet. Wir arbeiten daran, die volle Funktionalität bald bereitzustellen.");
+    }
+
+    public void OnProfilePicture()
+    {
+        DisplayInfoMessage("Diese Funktionalitäten sind derzeit noch nicht verfügbar, da sich die App noch in der Entwicklung befindet. Wir arbeiten daran, die volle Funktionalität bald bereitzustellen.");
     }
 }
