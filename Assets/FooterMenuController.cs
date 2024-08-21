@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class FooterMenuController : MonoBehaviour
 {
@@ -28,6 +29,14 @@ public class FooterMenuController : MonoBehaviour
     [SerializeField] private Sprite profilButtonActiveImage;
     [SerializeField] private Sprite profilButtonInactiveImage;
 
+    [SerializeField] private TextMeshProUGUI startTextElement;
+    [SerializeField] private TextMeshProUGUI archivTextElement;
+    [SerializeField] private TextMeshProUGUI gemerktTextElement;
+    [SerializeField] private TextMeshProUGUI linkTextElement;
+    [SerializeField] private TextMeshProUGUI profilTextElement;
+
+
+
 
     void Start()
     {
@@ -37,6 +46,7 @@ public class FooterMenuController : MonoBehaviour
         linksButton.onClick.AddListener(delegate { OnLinksButton(); });
         profilButton.onClick.AddListener(delegate { OnProfilButton(); });
         SetButtonImagesInaktiv();
+        SetTextColorsInaktiv();
         SetImageForActivButton();
     }
 
@@ -47,18 +57,23 @@ public class FooterMenuController : MonoBehaviour
         {
             case SceneNames.FOUNDERS_BUBBLE_SCENE:
                 SetHomeButtonImage();
+                SetTextToActive(startTextElement);
                 break;
             case SceneNames.NOVEL_HISTORY_SCENE:
                 SetArchivButtonImage();
+                SetTextToActive(archivTextElement);
                 break;
             case SceneNames.GEMERKTE_NOVELS_SCENE:
                 SetBookmarkButtonImage();
+                SetTextToActive(gemerktTextElement);
                 break;
             case SceneNames.RESSOURCEN_SCENE:
                 SetLinksButtonImage();
+                SetTextToActive(linkTextElement);
                 break;
             case SceneNames.FOUNDERS_WELL_2_SCENE:
                 SetProfilButtonImage();
+                SetTextToActive(profilTextElement);
                 break;
         }
     }
@@ -95,6 +110,42 @@ public class FooterMenuController : MonoBehaviour
         bookmarkButton.image.sprite = bookmarkButtonInactiveImage;
         linksButton.image.sprite = linksButtonInactiveImage;
         profilButton.image.sprite = profilButtonInactiveImage;
+    }
+
+    private void SetTextColorsInaktiv()
+    {
+        string hexColor = "#B6BBC0";
+        if (startTextElement != null)
+        {
+            if (ColorUtility.TryParseHtmlString(hexColor, out Color newColor))
+            {
+                startTextElement.color = newColor;
+                archivTextElement.color = newColor;
+                gemerktTextElement.color = newColor;
+                linkTextElement.color = newColor;
+                profilTextElement.color = newColor;
+            }
+            else
+            {
+                Debug.LogWarning("Ungültiger Hex-Farbcode: " + hexColor);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("TextElement ist nicht gesetzt!");
+        }
+    }
+
+    private void SetTextToActive(TextMeshProUGUI textElement)
+    {
+        if (textElement != null)
+        {
+            textElement.color = Color.white;
+        }
+        else
+        {
+            Debug.LogWarning("TextElement ist nicht gesetzt!");
+        }
     }
 
     private void SetHomeButtonImage()
