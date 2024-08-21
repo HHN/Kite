@@ -35,6 +35,8 @@ public class FooterMenuController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI linkTextElement;
     [SerializeField] private TextMeshProUGUI profilTextElement;
 
+    [SerializeField] private string currentScene;
+
 
 
 
@@ -53,6 +55,7 @@ public class FooterMenuController : MonoBehaviour
     private void SetImageForActivButton()
     {
         string imageName = SceneManager.GetActiveScene().name;
+        currentScene = imageName;
         switch (imageName)
         {
             case SceneNames.FOUNDERS_BUBBLE_SCENE:
@@ -80,26 +83,46 @@ public class FooterMenuController : MonoBehaviour
 
     private void OnHomeButton()
     {
+        if (currentScene.Equals(SceneNames.FOUNDERS_BUBBLE_SCENE))
+        {
+            return;
+        }
         SceneLoader.LoadFoundersBubbleScene();
     }
 
     private void OnArchivButton()
     {
+        if (currentScene.Equals(SceneNames.NOVEL_HISTORY_SCENE))
+        {
+            return;
+        }
         SceneLoader.LoadNovelHistoryScene();
     }
 
     private void OnBookmarkButton()
     {
+        if (currentScene.Equals(SceneNames.GEMERKTE_NOVELS_SCENE))
+        {
+            return;
+        }
         SceneLoader.LoadGemerkteNovelsScene();
     }
 
     private void OnLinksButton()
     {
+        if (currentScene.Equals(SceneNames.RESSOURCEN_SCENE))
+        {
+            return;
+        }
         SceneLoader.LoadRessourcenScene();
     }
 
     private void OnProfilButton()
     {
+        if (currentScene.Equals(SceneNames.FOUNDERS_WELL_2_SCENE))
+        {
+            return;
+        }
         SceneLoader.LoadFoundersWell2Scene();
     }
 
