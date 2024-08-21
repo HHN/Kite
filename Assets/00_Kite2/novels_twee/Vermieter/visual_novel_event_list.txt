@@ -1,5 +1,5 @@
 :: StoryTitle
-Büro anmieten 0.8
+Büro anmieten 0.10
 
 
 :: StoryData
@@ -9,20 +9,22 @@ Büro anmieten 0.8
   "format-version": "3.3.9",
   "start": "Anfang",
   "tag-colors": {
-    "Alter": "red"
+    "Alter": "red",
+    "Variable": "purple",
+    "Bias": "yellow"
   },
-  "zoom": 0.6
+  "zoom": 0.3
 }
 
 
-:: Abbruch {"position":"2750,3500","size":"100,100"}
+:: Abbruch {"position":"2875,3425","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Ich erlebe Sie als unprofessionell und sexistisch. Für mich kommt eine Büroanmietung hier deshalb nicht mehr in Frage. 
 
 [[Konfrontation]]
 
 
-:: Ablehnend {"position":"3075,850","size":"100,100"}
+:: Ablehnend [Bias] {"position":"3075,850","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Das habe ich bereits und es wird keine finanziellen Probleme geben.
 >>--<<
@@ -67,7 +69,7 @@ Gewerbemietverträge haben bei mir eine Laufzeit von mindestens 5 Jahren. Da mus
 [[Ageism Nachfrage II]]
 
 
-:: Ageism Nachfrage Alt [Alter] {"position":"1925,2050","size":"100,100"}
+:: Ageism Nachfrage Alt [Alter Bias] {"position":"1925,2050","size":"100,100"}
 >>VermieterSprichtCritical:<<
 Gewerbemietverträge haben bei mir eine Laufzeit von mindestens 5 Jahren. Da muss ich einfach sichergehen, dass Sie das mit der Gründung ernst nehmen und nicht nur als Hobby betrachten. 
 >>--<<
@@ -87,7 +89,7 @@ Ich will Ihnen ja nur helfen, aber wenn Sie denken, dass Sie keine Hilfe benöti
 [[Ja, aber ich brauche von Ihnen keine Hilfe. Können wir uns bitte auf den Mietprozess konzentrieren?->Fokus: Negativ]]
 
 
-:: Ageism Nachfrage Jung [Alter] {"position":"1650,2050","size":"100,100"}
+:: Ageism Nachfrage Jung [Alter Bias] {"position":"1650,2050","size":"100,100"}
 >>VermieterSprichtCritical:<<
 Gewerbemietverträge haben bei mir eine Laufzeit von mindestens 5 Jahren. Da muss ich einfach sichergehen, dass Sie das mit der Gründung ernst nehmen und nicht bei der ersten Schwierigkeit abspringen. 
 >>--<<
@@ -95,14 +97,14 @@ Gewerbemietverträge haben bei mir eine Laufzeit von mindestens 5 Jahren. Da mus
 [[Ageism Nachfrage II]]
 
 
-:: Alles berücksichtigt {"position":"2550,850","size":"100,100"}
+:: Alles berücksichtigt {"position":"2500,875","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Ich habe bereits alle Kosten und Details berücksichtigt. Ich weiß, worauf ich achten muss. 
 
 [[Faktoren]]
 
 
-:: Alter [Alter] {"position":"1775,1525","size":"100,100"}
+:: Alter [Alter Bias] {"position":"1775,1525","size":"100,100"}
 >>VermieterSprichtLaughing:<<
 Ach, wissen Sie, jüngere Frauen hüpfen ja eher von einem zum nächsten Projekt und dann steht vielleicht auch die Familienplanung an. 
 >>--<<
@@ -111,7 +113,7 @@ Ach, wissen Sie, jüngere Frauen hüpfen ja eher von einem zum nächsten Projekt
 [[Alter II]]
 
 
-:: Alter II [Alter] {"position":"1775,1675","size":"100,100"}
+:: Alter II [Alter Bias] {"position":"1775,1675","size":"100,100"}
 >>VermieterSprichtFriendly:<<
 Bei älteren Frauen habe ich häufiger das Gefühl, dass sie ein Hobby brauchen und dann die Lust daran verlieren. Da habe ich mich gefragt, wie es bei Ihnen aussieht?
 >>--<<
@@ -130,7 +132,7 @@ Du hast heute einen Termin für die Besichtigung von Büroräumen.
 Dort angekommen, wirst du von dem Vermieter angesprochen.
 
 
-[[Weiter]] 
+[[Weiter]]
 
 
 :: Anforderungen {"position":"2300,2050","size":"100,100"}
@@ -192,7 +194,7 @@ Der Kommentar "Schön, mal eine selbstbewusste Frau zu sehen!" impliziert nämli
 >>SpielerinCharakterSpricht:<<
 Ich schätze Ihre Anerkennung meiner Selbstsicherheit, aber ich möchte klarstellen, dass ich in geschäftlichen Angelegenheiten auf eine professionelle und geschlechterneutrale Betrachtung Wert lege. 
 
-[[Benevolenter Sexismus: Selbstsicher II]] 
+[[Benevolenter Sexismus: Selbstsicher II]]
 
 
 :: Benevolenter Sexismus: Selbstsicher II {"position":"1525,4275","size":"100,100"}
@@ -226,7 +228,7 @@ Ich schätze Ihre Betonung der Marktforschung. Ich habe mein Bestes getan, um si
 [[Dankbar II]]
 
 
-:: Dankbar II {"position":"1500,3050","size":"100,100"}
+:: Dankbar II [Bias] {"position":"1500,3050","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Wenn Sie Aspekte benennen können, die aus Ihrer Sicht für die Wahl dieses Standortes sprechen, freue ich mich über Ihren Input.
 >>--<<
@@ -244,10 +246,11 @@ Ach, ich bin mir sicher, dass Sie das mit Ihrer Frauenpower toll machen werden. 
 [[Ich habe Strategien, um damit umzugehen.|Strategien]]
 
 
-:: Danke {"position":"925,1875","size":"100,100"}
+:: Danke [Bias] {"position":"925,1875","size":"100,100"}
 >>VermieterSprichtFriendly:<<
 Gerne, gerne. Ich helfe, wo ich kann. Der Freund, von dem ich gerade gesprochen habe, betont immer wieder, wie wichtig Marktforschung ist. Sie haben ja schon auf Ihre Marktrecherche hingewiesen und hoffentlich die richtigen Methoden angewandt? Das kann wirklich den Unterschied machen.
-
+>>--<<
+>>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<
 
 [[Ich antworte selbstbewusst.|Selbstbewusst]]
 
@@ -272,7 +275,7 @@ Natürlich, da fällt mir etwas ein. Ein Freund von mir hat auch gegründet! Da 
 >>VermieterSprichtFriendly:<<
 Stimmt, gut, dass Sie so handeln! Aber Frauen haben manchmal zusätzliche Herausforderungen in der Geschäftswelt. 
 
-[[Freund Gründungsliteratur]] 
+[[Freund Gründungsliteratur]]
 
 
 :: Ende Neutral: Doubledown {"position":"1975,3825","size":"100,100"}
@@ -285,13 +288,17 @@ Ach, so war das doch nicht gemeint, aber wenn Sie mir eine Selbstauskunft zuschi
 [[Auch Witze oder Aussagen ohne sexistische Intention, können sexistisch sein.|Intention]]
 
 
-:: Ende: Negativ {"position":"2750,3825","size":"100,100"}
+:: Ende der Novel {"position":"2425,5925","size":"100,100"}
+>>Ende<<
+
+
+:: Ende: Negativ {"position":"2500,4825","size":"100,100"}
 >>VermieterSprichtCritical:<<
 Aha. Ich weiß sowieso nicht, ob Sie die geeignete Mieterin sind, wenn Sie so emotional reagieren. Es gibt noch andere, die sich beworben haben, denen ich die Räumlichkeiten vermieten möchte. Ich wünsche Ihnen noch einen schönen Tag.
 >>--<<
 >>RelevanterBias:TightropeBias<<
->>--<<
->>Ende<<
+
+[[Feedback01]]
 
 
 :: Ende: Neutral {"position":"1650,4475","size":"100,100"}
@@ -301,11 +308,7 @@ Wenn Sie das sagen. Also, wenn Sie mir eine Selbstauskunft zuschicken, setze ich
 [[Ende: Positiv-Neutral]]
 
 
-:: Ende: Positiv {"position":"3000,1825","size":"100,100"}
-
-
-
-:: Ende: Positiv Selbstbewusst {"position":"1800,3825","size":"100,100"}
+:: Ende: Positiv Selbstbewusst [Bias] {"position":"1800,3825","size":"100,100"}
 >>VermieterSprichtLaughing:<<
 Schön, mal eine selbstbewusste Frau zu sehen! Ich bräuchte von Ihnen noch eine Selbstauskunft. 
 >>--<<
@@ -323,7 +326,7 @@ Es gibt noch andere, die sich beworben haben, aber es würde mich freuen, wenn S
 [[Ich bedanke mich und verabschiede mich.|Ende: Positiv-Neutral]]
 
 
-:: Ende: Positiv Selbstsicher {"position":"1650,3825","size":"100,100"}
+:: Ende: Positiv Selbstsicher [Bias] {"position":"1650,3825","size":"100,100"}
 >>VermieterSprichtLaughing:<<
 Schön, mal eine selbstsichere Frau zu sehen! Ich habe erstmal keine weiteren Fragen zu Ihren Unternehmensplänen. Ich bräuchte von Ihnen noch eine Selbstauskunft. 
 >>--<<
@@ -341,24 +344,24 @@ Es gibt noch andere, die sich beworben haben, aber es würde mich freuen, wenn S
 [[Ich bedanke mich und verabschiede mich.|Ende: Positiv-Neutral]]
 
 
-:: Ende: Positiv-Neutral {"position":"1875,4600","size":"100,100"}
+:: Ende: Positiv-Neutral {"position":"1675,4850","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Die schicke ich Ihnen so schnell wie möglich zu. Vielen Dank und noch einen schönen Tag.
 >>--<<
 >>VermieterSprichtFriendly:<<
 Alles klar, Ihnen auch noch einen schönen Tag. Auf Wiedersehen.
->>--<<
->>Ende<<
+
+[[Feedback01]]
 
 
-:: Ende: Positiv-Neutral II {"position":"2050,4250","size":"100,100"}
+:: Ende: Positiv-Neutral II {"position":"2150,4750","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Ich schätze eine bewusste und geschlechterneutrale Kommunikation in geschäftlichen Angelegenheiten. Die Selbstauskunft schicke ich Ihnen so schnell wie möglich. Danke und noch einen schönen Tag.
 >>--<<
 >>VermieterSprichtFriendly:<<
 Alles klar, Ihnen auch noch einen schönen Tag. Auf Wiedersehen.
->>--<<
->>Ende<<
+
+[[Feedback01]]
 
 
 :: Erstes Mal {"position":"1775,900","size":"100,100"}
@@ -368,7 +371,7 @@ Ja, ich miete zum ersten Mal und habe aber alles berücksichtigt.
 [[Faktoren]]
 
 
-:: Erwartung {"position":"2025,1150","size":"100,100"}
+:: Erwartung [Bias] {"position":"2025,1150","size":"100,100"}
 >>VermieterSprichtFriendly:<<
 Oh, das war vielleicht etwas ungeschickt ausgedrückt. Ich treffe oft auf Mietinteressent*innen, die nicht gut vorbereitet sind. Es fällt mir aber eigentlich auch immer wieder auf, dass Frauen sich detaillierter mit den Anforderungen auseinandersetzen.
 >>--<<
@@ -382,7 +385,7 @@ Oh, das war vielleicht etwas ungeschickt ausgedrückt. Ich treffe oft auf Mietin
 [[Was sind denn die nächsten Schritte?|Umlenken a]]
 
 
-:: Faktoren [Alter] {"position":"1775,1175","size":"100,100"}
+:: Faktoren [Alter Bias] {"position":"1775,1175","size":"100,100"}
 >>VermieterSprichtFriendly:<<
 Das freut mich zu hören, aber wir möchten sicherstellen, dass unsere Mietverhältnisse langfristig bestehen können – wie lange möchten Sie Ihr Unternehmen denn überhaupt noch weiterführen?
 >>--<<
@@ -392,6 +395,53 @@ Das freut mich zu hören, aber wir möchten sicherstellen, dass unsere Mietverh�
 [[Mein Ziel ist es, mein Unternehmen langfristig und nachhaltig zu führen.|Langfristig]] 
 
 [[Ich frage nach, was gemeint ist.|Besondere Umstände]]
+
+
+:: Feedback01 {"position":"2000,5100","size":"100,100"}
+>>FeedbackHinzufuegen<<
+Du hast gerade die Novel "Büro" gespielt.
+[[Feedback02]]
+
+
+:: Feedback02 {"position":"2000,5250","size":"100,100"}
+>>FeedbackUnterBedingungHinzufuegen<<
+SexistischUndUnprofessionell: Du hast den Vermieter als sexistisch und unprofessionell erlebt und dich dazu entschieden, das Gespräch abzubrechen.
+
+[[Feedback03]]
+
+
+:: Feedback03 {"position":"2000,5400","size":"100,100"}
+>>FeedbackUnterBedingungHinzufuegen<<
+FragwuerdigeAeusserungen: Nach fragwürdigen Äußerungen des Vermieters, hast du dich dazu entschieden, das Gespräch abzubrechen.
+
+[[Feedback04]]
+
+
+:: Feedback04 {"position":"2000,5525","size":"100,100"}
+>>FeedbackHinzufuegen<<
+Die Situation wurde nun durch die KI analysiert. Dies hier ist die KI-Analyse. Wir möchten darauf hinweisen, dass dein Verhalten in der Novel nicht richtig oder falsch war! Der Umgang mit Diskriminierung ist immer schwierig, und es ist nicht unser Ziel dir eine bestimmte Verhaltensweise anzutrainieren. Wir wollen stattdessen aufzeigen, wie die Situation durch Vorurteile verzerrt wurde.
+
+Bereits am Anfang des Gesprächs zweifelt der Vermieter, dass du die Mindestmietdauer bezahlen kannst.
+
+[[Feedback05]]
+
+
+:: Feedback05 {"position":"2000,5675","size":"100,100"}
+>>FeedbackUnterBedingungHinzufuegen<<
+FrauenDetaillierterErklaerung: Manche Aussagen beinhalten eine Verallgemeinerung über das Verhalten von Frauen im Vergleich zu Männern. Solche Aussagen können unbewusste Vorurteile (Unconscious Bias) verstärken und dazu beitragen, stereotype Vorstellungen über Geschlechterrollen zu verfestigen. 
+
+Du betonst die individuelle Leistung und Vorbereitung unabhängig vom Geschlecht und förderst eine wertschätzende Haltung gegenüber allen Beteiligten.
+
+[[Feedback06]]
+
+
+:: Feedback06 {"position":"2000,5825","size":"100,100"}
+>>FeedbackUnterBedingungHinzufuegen<<
+FrauenDetaillierterDanke: Manche Aussagen beinhalten eine Verallgemeinerung über das Verhalten von Frauen im Vergleich zu Männern. Solche Aussagen können unbewusste Vorurteile (Unconscious Bias) verstärken und dazu beitragen, stereotype Vorstellungen über Geschlechterrollen zu verfestigen. 
+
+Du antwortest diplomatisch, indem du dich für das vermeintliche Kompliment bedankst und den Fokus auf die eigenen Fähigkeiten und Ziele lenkst.
+
+[[Ende der Novel]]
 
 
 :: Fokus {"position":"2425,1900","size":"100,100"}
@@ -405,10 +455,11 @@ Ich will Ihnen ja nur helfen, aber wenn Sie denken, dass Sie keine Hilfe benöti
 [[Ja, aber ich brauche von Ihnen keine Hilfe. Können wir uns bitte auf den Mietprozess konzentrieren?->Fokus: Negativ]]
 
 
-:: Fokus a {"position":"2975,1325","size":"100,100"}
+:: Fokus a [Bias] {"position":"2975,1325","size":"100,100"}
 >>VermieterSprichtFriendly:<<
 Übrigens hat ein Freund von mir auch gegründet! Da habe ich einiges mitbekommen. Er betont immer wieder, wie wichtig Marktforschung ist. Haben Sie das richtig gemacht? Es könnte wirklich den Unterschied machen.
-
+>>--<<
+>>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<
 
 [[Ich antworte selbstbewusst.|Selbstbewusst]]
 
@@ -426,9 +477,13 @@ Wie Sie meinen. Ein Freund von mir hat neulich übrigens auch gegründet. Der wa
 [[Fokus: Negativ II]]
 
 
-:: Fokus: Negativ II {"position":"2225,2650","size":"100,100"}
+:: Fokus: Negativ II [Bias] {"position":"2225,2650","size":"100,100"}
 >>VermieterSprichtCritical:<<
 Er betont immer wieder, wie wichtig Marktforschung ist. Sie haben ja schon auf Ihre Marktrecherche hingewiesen und hoffentlich die richtigen Methoden angewandt? Das kann wirklich den Unterschied machen.
+>>--<<
+>>RelevanterBias:BenevolenterSexismus<<
+>>--<<
+>>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<
 
 [[Ich antworte selbstbewusst.|Selbstbewusst]]
 
@@ -451,7 +506,7 @@ Ja, das wird er sicher. Übrigens, ein Freund von mir hat auch gegründet! Da ha
 [[Freund betont]]
 
 
-:: Frage {"position":"2100,1000","size":"100,100"}
+:: Frage [Bias] {"position":"2100,1000","size":"100,100"}
 >>VermieterSprichtAstonished:<<
 Was für eine Frage haben Sie denn? Sie scheinen sich ja schon richtig viele Gedanken gemacht zu haben!
 >>--<<
@@ -462,7 +517,7 @@ Was für eine Frage haben Sie denn? Sie scheinen sich ja schon richtig viele Ged
 [[Überrascht Sie das?->Erwartung]]
 
 
-:: Frage II {"position":"2200,1150","size":"100,100"}
+:: Frage II [Bias] {"position":"2200,1150","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Besteht die Möglichkeit, die Büroflächen nach den Bedürfnissen des Unternehmens anzupassen oder zu erweitern?
 >>--<<
@@ -478,6 +533,26 @@ Ja, das ist kein Problem. Die Vertragsgestaltung ist dann etwas komplexer. Viell
 [[Wieso sollte ich meinen Mann mitbringen?->Wieso Mann]]
 
 [[Vielen Dank für das Angebot. Für geschäftliche Entscheidungen bin ich eigenverantwortlich.->Eigenverantwortlich]]
+
+
+:: FragwuerdigeAeuuserung [Variable] {"position":"3125,2700","size":"100,100"}
+>>VariableSetzen<<
+FragwuerdigeAeusserungen: True
+[[Abbruch]]
+
+
+:: Frauen Detaillierter Danke [Variable] {"position":"1050,1250","size":"100,100"}
+>>VariableSetzen<<
+FrauenDetaillierterDanke: True
+
+[[Freund Rat]]
+
+
+:: Frauen Detaillierter Erklärung [Variable] {"position":"750,1250","size":"100,100"}
+>>VariableSetzen<<
+FrauenDetaillierterErklaerung: True
+
+[[Freund Gründungsliteratur]]
 
 
 :: Frauenpower {"position":"1225,3275","size":"100,100"}
@@ -501,10 +576,11 @@ Ein Freund von mir hat neulich auch gegründet, da habe ich einiges mitbekommen.
 [[Das ist mir bewusst.|Vorbereitung Sicher]]
 
 
-:: Freund Rat {"position":"1200,1350","size":"100,100"}
+:: Freund Rat [Bias] {"position":"1200,1350","size":"100,100"}
 >>VermieterSprichtFriendly:<<
-Ein Freund von mir hat neulich auch gegründet, da habe ich Einiges mitbekommen. Wenn Sie also einen Rat brauchen, lassen Sie es mich wissen. Meiner Erfahrung nach können gerade Frauen zusätzliche Unterstützung gut gebrauchen.
-
+Ein Freund von mir hat neulich auch gegründet, da habe ich einiges mitbekommen. Wenn Sie also einen Rat brauchen, lassen Sie es mich wissen. Meiner Erfahrung nach können gerade Frauen zusätzliche Unterstützung gut gebrauchen.
+>>--<<
+>>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<
 
 [[Danke für Ihr Angebot.|Kompliment Danke]]
 
@@ -513,13 +589,13 @@ Ein Freund von mir hat neulich auch gegründet, da habe ich Einiges mitbekommen.
 [[Ich möchte bzgl. den letzten Satz sensibilisieren.|Sensibilisierung b]]
 
 
-:: Freund betont {"position":"1700,2650","size":"100,100"}
+:: Freund betont [Bias] {"position":"1700,2650","size":"100,100"}
 >>VermieterSprichtLaughing:<<
 Mein Freund betont außerdem immer wieder, wie wichtig Marktforschung ist. Sie haben ja schon auf Ihre Marktrecherche hingewiesen und hoffentlich die richtigen Methoden angewandt? Das kann wirklich den Unterschied machen.
 >>--<<
 >>RelevanterBias:BenevolenterSexismus<<
 >>--<<
->>RelevanterBias:GeschlechtsspezifischeStereotypen<<
+>>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<
 
 [[Ich antworte selbstbewusst.|Selbstbewusst]]
 
@@ -535,7 +611,6 @@ Mein Freund betont außerdem immer wieder, wie wichtig Marktforschung ist. Sie h
 Marktforschung war eine grundlegende Komponente meines Vorbereitungsprozesses. Das hatte ich ja auch schon erwähnt. 
 
 [[Frustriert II]]
-
 
 
 :: Frustriert II {"position":"2300,3050","size":"100,100"}
@@ -631,7 +706,7 @@ Ich danke Ihnen für die Klarstellung. Allerdings können selbst unbeabsichtigte
 [[Ende: Positiv-Neutral II]]
 
 
-:: Kompliment {"position":"1200,1150","size":"100,100"}
+:: Kompliment [Bias] {"position":"1200,1100","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Vielen Dank für das Kompliment. Ich schätze die positive Einschätzung meiner Vorbereitung. Ich bin fest entschlossen, die Büroflächen effektiv zu nutzen und mein Unternehmen erfolgreich zu führen.
 >>--<<
@@ -639,7 +714,7 @@ Vielen Dank für das Kompliment. Ich schätze die positive Einschätzung meiner 
 Das freut mich zu hören. Es ist wirklich großartig zu sehen, dass Sie sich das zutrauen! 
 >>--<<
 >>RelevanterBias:GeschlechtsspezifischeStereotypen<<
-[[Freund Rat]]
+[[Frauen Detaillierter Danke]]
 
 
 :: Kompliment Danke {"position":"1200,1575","size":"100,100"}
@@ -663,7 +738,7 @@ Mein Ziel ist es, mein Unternehmen langfristig und nachhaltig zu führen. Ich ha
 [[Alter]]
 
 
-:: Mietprozess {"position":"1700,2250","size":"100,100"}
+:: Mietprozess [Bias] {"position":"1700,2250","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Ich schätze Ihre Entschuldigung. Ich fände es gut, wenn wir uns darauf konzentrieren, wie wir den Mietprozess vorantreiben können.
 >>--<<
@@ -679,7 +754,7 @@ Danke für Ihr Verständnis. Ich bin mir sicher, dass Sie Ihr Unternehmen mit Ih
 [[Ich habe Strategien, um damit umzugehen.|Strategien]]
 
 
-:: Natürlich {"position":"1200,700","size":"100,100"}
+:: Natürlich [Bias] {"position":"1200,700","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Natürlich! Meine Marktrecherche hat ergeben, dass es eine hohe Nachfrage gibt und ich habe für die nächsten drei Jahre einen Finanzplan erstellt, der genug Einkommen prognostiziert.
 >>--<<
@@ -726,7 +801,7 @@ Ich schätze Ihre Zuversicht. Dennoch empfehle ich, die langfristige Finanzplanu
 [[Ich habe alle Details und Kosten berücksichtigt.|Alles berücksichtigt]]
 
 
-:: Sachlich {"position":"1100,2900","size":"100,100"}
+:: Sachlich [Bias] {"position":"1100,2900","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Ja, Marktforschung ist integral für den Geschäftserfolg. Ich habe eine umfassende Analyse durchgeführt und bin zuversichtlich, weil meine Strategien auf soliden Daten basieren.
 >>--<<
@@ -758,7 +833,7 @@ Ja, wie gesagt war Marktforschung ein entscheidender Teil meiner Vorbereitung. I
 [[Selbstbewusst II]]
 
 
-:: Selbstbewusst II {"position":"1900,3050","size":"100,100"}
+:: Selbstbewusst II [Bias] {"position":"1900,3050","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Ich bin zuversichtlich, dass ich auf einem soliden Fundament stehe.
 >>--<<
@@ -770,8 +845,7 @@ Ach so, ja, das hatten Sie erwähnt. Gut, dass Sie sich Sachen besser merken kö
 [[Selbstbewusst III]]
 
 
-
-:: Selbstbewusst III {"position":"1900,3200","size":"100,100"}
+:: Selbstbewusst III [Bias] {"position":"2075,3150","size":"100,100"}
 >>VermieterSprichtLaughing:<<
 Bestimmt haben Sie auch in der Beziehung die Hosen an, oder? 
 >>--<<
@@ -783,7 +857,7 @@ Bestimmt haben Sie auch in der Beziehung die Hosen an, oder?
 
 [[Ich möchte mich auf die Mietdetails konzentrieren und was Ihre Geschlechterklischees betrifft...|Ansprechen]]
 
-[[Ich erlebe Sie als sexistisch und unprofessionell, und eine Büroanmietung kommt nicht in Frage.|Abbruch]]
+[[Ich erlebe Sie als sexistisch und unprofessionell, und eine Büroanmietung kommt nicht in Frage.|Sexistisch und Unprofessionel]]
 
 
 :: Selbstbewusst Mietprozess {"position":"1825,3350","size":"100,100"}
@@ -845,6 +919,12 @@ Das war nur ein nett gemeintes Kompliment, aber ich glaube, ich verstehe, worauf
 [[Fokus a]]
 
 
+:: Sexistisch und Unprofessionel [Variable] {"position":"2350,3250","size":"100,100"}
+>>VariableSetzen<<
+SexistischUndUnprofessionell: True
+[[Abbruch]]
+
+
 :: Sicher {"position":"1400,1575","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Ich bin gut vorbereitet, deshalb fühle ich mich da sehr sicher.
@@ -884,7 +964,7 @@ Ich komme damit gut zurecht. Welche Standarddokumente benötigen Sie denn?
 [[Fokus]]
 
 
-:: Umlenken II {"position":"1500,1400","size":"100,100"}
+:: Umlenken II [Bias] {"position":"1500,1400","size":"100,100"}
 >>VermieterSprichtAstonished:<<
 Sind Sie gar nicht nervös oder unsicher, was Ihre Gründung betrifft?
 >>--<<
@@ -899,7 +979,7 @@ Sind Sie gar nicht nervös oder unsicher, was Ihre Gründung betrifft?
 [[Ich bin ein bisschen nervös, spreche aber mit anderen Gründer*innen darüber.|Netzwerk]]
 
 
-:: Umlenken a {"position":"1425,1175","size":"100,100"}
+:: Umlenken a {"position":"1425,1100","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Hm, wie sieht es denn eigentlich mit den nächsten Schritten aus, um den Mietprozess voranzutreiben? Benötigen Sie noch weitere Informationen?
 >>--<<
@@ -920,13 +1000,13 @@ Es gibt einige Standarddokumente, die wir benötigen, um den Mietprozess in Gang
 [[Umlenken II]]
 
 
-:: Vorbereitung {"position":"950,1150","size":"100,100"}
+:: Vorbereitung {"position":"950,1100","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Ich denke, eine gründliche Vorbereitung ist entscheidend, unabhängig vom Geschlecht. Alle, die ein Unternehmen gründen, sollten sich um Details kümmern, um erfolgreich zu sein. Vielen Dank für das Vertrauen in meine Fähigkeiten.
 >>--<<
 >>VermieterSprichtAstonished:<<
 Stimmt, da haben Sie selbstverständlich recht. Aber Frauen haben manchmal zusätzliche Herausforderungen in der Geschäftswelt. 
-[[Weiter|Freund Gründungsliteratur]]
+[[Frauen Detaillierter Erklärung]]
 
 
 :: Vorbereitung Bekanntmachen {"position":"850,1575","size":"100,100"}
@@ -984,9 +1064,9 @@ Unternehmensart: Welche Art von Unternehmen möchten Sie denn gründen?
 [[Weiter II]]
 
 
-:: Weiter II {"position":"1900,500","size":"100,100"}
+:: Weiter II [Bias] {"position":"1900,500","size":"100,100"}
 >>VermieterSprichtAstonished:<<
-Oh, wie interessant! Wie in der Anzeige geschrieben, liegt der Mietpreis kalt bei 8,11€ pro Quadratmeter. Die Mindestmietdauer beträgt 3 Jahre, sind Sie sicher, den Mietpreis über diesen Zeitraum bezahlen zu können?
+Oh, wie interessant! Wie in der Anzeige geschrieben, liegt der Mietpreis kalt bei 8,11€ pro Quadratmeter. Die Mindestmietdauer beträgt 5 Jahre, sind Sie sicher, den Mietpreis über diesen Zeitraum bezahlen zu können?
 >>--<<
 >>RelevanterBias:Mikroaggressionen<<
 
@@ -997,7 +1077,7 @@ Oh, wie interessant! Wie in der Anzeige geschrieben, liegt der Mietpreis kalt be
 [[Ich erzähle von der Gründungsförderung.|Gründungsförderung]]
 
 
-:: Wieso Mann {"position":"2425,1325","size":"100,100"}
+:: Wieso Mann [Bias] {"position":"2425,1325","size":"100,100"}
 >>VermieterSprichtFriendly:<<
 Nun ja, Männer haben ja oft mehr Übung in komplexen Verhandlungssachen und vier Ohren hören ja auch mehr als zwei.
 >>--<<
@@ -1022,7 +1102,7 @@ Die weiteren Details werden also wir beide besprechen.
 [[Fokus]]
 
 
-:: Ärgern {"position":"3150,1150","size":"100,100"}
+:: Ärgern [Bias] {"position":"3500,1575","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Soll das etwa ein Kompliment sein? Da fällt mir nichts mehr ein! Lassen Sie uns doch bitte einfach auf den Mietprozess konzentrieren, ich habe leider auch nicht mehr so viel Zeit.
 >>--<<
@@ -1035,4 +1115,4 @@ Hm, ich dachte, Frauen würden mehr auf das Zwischenmenschliche setzen und auch 
 
 [[Ich antworte diplomatisch und ignoriere den Sexismus.|Diplomatisch]]
 
-[[Ich konfrontiere ihn direkt und breche das Gespräch ab.|Abbruch]]
+[[Ich konfrontiere ihn direkt und breche das Gespräch ab.|FragwuerdigeAeuuserung]]

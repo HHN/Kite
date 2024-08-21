@@ -1,0 +1,1086 @@
+:: StoryTitle
+Banktermin wegen Kreditbeantragung 0.9
+
+
+:: StoryData
+{
+  "ifid": "02B60924-2F14-4263-9E80-B8D23E11C937",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "start": "Anfang",
+  "tag-colors": {
+    "Alter": "red",
+    "Altersbezogen": "red",
+    "Bias": "yellow",
+    "Sound": "blue"
+  },
+  "zoom": 0.6
+}
+
+
+:: Alleinige Gründerin {"position":"2300,2900","size":"100,100"}
+>>AngestellteSprichtCritical:<<
+Ja, das ist nur Teil der Risikoabwägung, die wir hier machen müssen. Was passiert, wenn Sie in eine Krise kommen? Also, Sie wissen ja, was Covid mit Selbstständigen gemacht hat. 
+
+
+[[Da sehe ich ehrlich gesagt kein Risiko, also...->Kein Risiko]]
+
+[[Ich habe eher realistischere Risiken ins Auge gefasst. Eine Pandemie erleben wir zum Glück nicht so oft.->Realistischere Risiken]]
+
+
+:: Anfang {"position":"2100,375","size":"100,100"}
+>>InfoNachrichtWirdAngezeigt:<<
+Bei deinem Banktermin heute möchtest du einen Kredit beantragen. Du hast deinen Businessplan und alle weiteren benötigten Dokumente bei dir.
+
+
+[[Weiter]]
+
+
+:: Anpassungsfähigkeit {"position":"2225,3350","size":"100,100"}
+>>AngestellteSprichtCritical:<<
+Verstehe. Aber wie stellen Sie sicher, dass Ihre Investitionen in Marktanalysen nicht zu einer übermäßigen Belastung Ihrer Ressourcen führen und sich negativ auf Ihre Rentabilität auswirken?
+
+[[Ich setze klare Budgets und Zeitrahmen für Marktanalysen fest, um sicherzustellen, dass die Ressourcen angemessen genutzt werden.->Nicht schlecht]]
+
+[[Geplant ist, Technologien wie Datenanalyse-Software und KI-gestützte Tools zu nutzen, um effizientere und kostengünstigere Marktanalysen durchzuführen, ohne die Qualität der Ergebnisse zu beeinträchtigen.->Nicht schlecht]]
+
+
+:: Aufgabenverteilung Nachfrage {"position":"2500,3500","size":"100,100"}
+>>AngestellteSprichtLaughing:<<
+Sie haben sich wirklich Mühe gegeben. Ich habe hier Frauen sitzen, die setzen eher auf ihr Aussehen.
+
+[[Ah, ich verstehe. Kommen wir doch zurück zum Kreditantrag, wie gehen wir nun damit um?->Ende Positiv]]
+
+[[Ich bin kein Fan davon abfällig über andere Frauen zu sprechen. Lassen Sie uns doch konstruktiv bleiben und uns auf den Kreditantrag konzentrieren.->Konsruktiv]]
+
+
+:: Bestimmter Ton [Bias] {"position":"2700,2550","size":"100,100"}
+>>AngestellteSprichtCritical:<<
+Sie tun es zwar wieder, aber okay. Sie haben mit einem Finanzberater gesprochen, aber ansonsten stehen Sie als Frau alleine in diesem Geschäft. Ja?
+>>--<<
+>>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<
+
+[[Ich bin die alleinige Gründerin, aber ich arbeite natürlich mit anderen zusammen.->Alleinige Gründerin]]
+
+[[Ich habe noch eine Geschäftspartnerin.->Geschäftspartnerin]]
+
+[[Ich habe noch einen Geschäftspartner.->Geschäftspartner]]
+
+
+:: Bestätigugnsverzerrung [Bias] {"position":"3100,2700","size":"100,100"}
+>>AngestellteSprichtQuestioning:<<
+Wenn Sie meinen. Also, was ich jetzt so höre, ist, dass Sie da alleine stehen als Frau in diesem Geschäft. Ja?
+>>--<<
+>>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<
+
+[[Ich bin die alleinige Gründerin, aber ich arbeite natürlich mit anderen zusammen.->Alleinige Gründerin]]
+
+[[Ich habe noch eine Geschäftspartnerin.->Geschäftspartnerin]]
+
+[[Ich habe noch einen Geschäftspartner.->Geschäftspartner]]
+
+
+:: Businessplan Risiken {"position":"2225,3200","size":"100,100"}
+>>AngestellteSprichtQuestioning:<<
+Nun gut, realistischere Risiken also. Was sehen Sie denn so als die größte Schwachstelle bei sich im Geschäft?
+
+
+[[Eine Schwachstelle könnte sein, wie ich von einem kleinen Unternehmen dann weiter expandiere. Also wenn es jetzt bestenfalls so ist, dass ich jetzt plötzlich ganz viele Aufträge bekomme oder ganz viele Bestellungen erhalte, wie ich damit umgehe.->Schwachstelle]]
+
+[[Die Anpassungsfähigkeit an sich verändernde Marktbedingungen könnte eine potenzielle Schwachstelle sein. Daher investiere ich in kontinuierliche Marktanalysen, um flexibel auf Veränderungen reagieren zu können.->Anpassungsfähigkeit]]
+
+
+:: Businessplan allein {"position":"2650,3200","size":"100,100"}
+>>AngestellteSprichtAstonished:<<
+Ist doch schön, Hilfe zu haben. Ich verstehe gar nicht, warum Sie sich aufregen?
+
+
+[[Ich bin nur verwundert über Ihre Annahme, dass da ein Mann mitgeschrieben haben muss.->Verwunderung]]
+
+[[Ich rege mich nicht auf und kann Ihnen nur zustimmen, dass Hilfe zu haben schön ist, aber mein Geschäftspartner und ich arbeiten gleichberechtigt. Dann fühlt sich das weniger schön an, wenn die eigene Arbeit jemand anderem zugeschrieben wird.->Verwunderung]]
+
+
+:: Businessplan befragen {"position":"2100,3650","size":"100,100"}
+>>AngestellteSprichtCritical:<<
+Ja, ich schaue da gerade nochmal durch...
+
+[[Businessplan solide]]
+
+
+:: Businessplan da [Bias] {"position":"2100,2550","size":"100,100"}
+>>AngestellteSprichtCritical:<<
+Gut, aber ansonsten stehen Sie als Frau alleine in diesem Geschäft. Ja?
+>>--<<
+>>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<
+
+[[Ich bin die alleinige Gründerin, aber ich arbeite natürlich mit anderen zusammen.->Alleinige Gründerin]]
+
+[[Ich habe noch eine Geschäftspartnerin.->Geschäftspartnerin]]
+
+[[Ich habe noch einen Geschäftspartner.->Geschäftspartner]]
+
+
+:: Businessplan solide {"position":"2100,3800","size":"100,100"}
+>>SoundAbspielen:paperSound<<
+>>--<<
+>>AngestellteSprichtFriendly:<<
+Ihr Businessplan ist an sich solide und Sie wirken so, als seien Sie sich Ihrer Sache sicher. Füllen Sie doch bitte diese Formulare aus und schicken Sie uns die zu, dann sollte alles passen.
+
+
+[[Das mache ich, vielen Dank für Ihre Zeit, einen schönen Tag noch.->Ende Positiv II]]
+
+[[Alles klar, danke Ihnen. Auf Wiedersehen.->Ende Positiv II]]
+
+
+:: Bürgschaft [Bias Altersbezogen] {"position":"2025,1550","size":"100,100"}
+>>AngestellteSprichtFriendly:<<
+Ah, wahrscheinlich Ihr Partner?
+>>--<<
+>>RelevanterBias:Heteronormativitaet<<
+
+[[Ja, mein Partner.->Bürgschaft Partner]]
+
+[[Nein, meine Partnerin.->Bürgschaft Annahme]]
+
+[[Nein, meine Mutter.->Bürgschaft Annahme]]
+
+[[Nein, mein Kind.->Bürgschaft Annahme]]
+
+
+:: Bürgschaft Annahme {"position":"1925,1850","size":"100,100"}
+>>AngestellteSprichtScared:<<
+Oh, ja natürlich. Tut mir leid, ich wollte nicht einfach annehmen, dass Ihr Partner das übernimmt oder dass Sie einen haben.
+
+
+[[Ist schon in Ordnung. Was sind denn die nächsten Schritte?->OK, weiter]]
+
+[[Das passiert. Wie gehen wir nun weiter vor?->OK, weiter]]
+
+[[Es wäre schön, wenn wir generell nicht davon ausgehen würden, dass Frauen im Allgemeinen einen Partner haben, der auch noch das Finanzielle übernimmt.->Heteronormativität]]
+
+
+:: Bürgschaft Partner [Bias] {"position":"1775,1850","size":"100,100"}
+>>AngestellteSprichtLaughing:<<
+Wie schön, dass Ihr Partner so an Sie glaubt und bereit ist, eine persönliche Bürgschaft zu übernehmen. Es ist immer gut, starke Männer an der Seite zu haben, die helfen, Ziele zu erreichen. Wir brauchen das dann nur noch in Schriftform.
+>>--<<
+>>RelevanterBias:Bestaetigungsverzerrung<<
+>>--<<
+>>RelevanterBias:GenderPayGap<<
+
+[[Ja, mein Partner ist eine wichtige Unterstützung für mich. Die schriftliche Bestätigung sende ich Ihnen zu. Was wären denn die nächsten Schritte für den Kreditantrag?->Nächste Schritte]]
+
+[[Ich denke, es ist immer gut Unterstützung zu haben, egal von welchem Geschlecht.->Geschlechtsunabhängig]]
+
+
+:: Coaching [Bias] {"position":"2600,2550","size":"100,100"}
+>>AngestellteSprichtCritical:<<
+Okay, wenn Sie jetzt so viel Geld von uns wollen... Also, das ist ja auch eine Verpflichtung, die Sie dann eingehen. Und was ich jetzt so höre, ist, dass Sie da alleine stehen als Frau in diesem Geschäft. Ja?
+>>--<<
+>>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<
+
+[[Ich bin die alleinige Gründerin, aber ich arbeite natürlich mit anderen zusammen.->Alleinige Gründerin]]
+
+[[Ich habe noch eine Geschäftspartnerin.->Geschäftspartnerin]]
+
+[[Ich habe noch einen Geschäftspartner.->Geschäftspartner]]
+
+
+:: Community {"position":"2425,2150","size":"100,100"}
+>>AngestellteSprichtCritical:<<
+Das heißt, Sie werden auf sozialen Medien aktiv sein und dort ebenfalls Marketing betreiben?
+
+
+[[Genau, das habe ich vor.->Community II]]
+
+[[Ich werde nicht ausschließlich soziale Medien nutzen, aber werde einen Fokus darauf legen.->Community II]]
+
+
+:: Community II {"position":"2400,2300","size":"100,100"}
+>>AngestellteSprichtCritical:<<
+Das ist eine verbreitete Strategie und die richtige Zielgruppe zu erreichen und zu halten, ist nicht einfach.
+
+
+[[Hierfür habe ich aber bereits eine Expertin ins Auge gefasst, um mit ihr zusammen über den Content und weitere Strategien zu sprechen.->Marketing-Expertin]]
+
+[[Es ist nicht einfach, aber machbar. Um mich dafür vorzubereiten, habe ich an einem Seminar der IHK zu diesem Thema teilgenommen.->Seminar]]
+
+
+:: Danke [Bias] {"position":"2800,2550","size":"100,100"}
+>>AngestellteSprichtFriendly:<<
+Gerne. So, Sie haben mit einem Finanzberater gesprochen, aber ansonsten stehen Sie als Frau alleine in diesem Geschäft. Ja?
+>>--<<
+>>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<
+
+[[Ich bin die alleinige Gründerin, aber ich arbeite natürlich mit anderen zusammen.->Alleinige Gründerin]]
+
+[[Ich habe noch eine Geschäftspartnerin.->Geschäftspartnerin]]
+
+[[Ich habe noch einen Geschäftspartner.->Geschäftspartner]]
+
+
+:: Dauer {"position":"1975,2450","size":"100,100"}
+>>AngestellteSprichtQuestioning:<<
+Also es sollte vor der Übernahme einer persönlichen Bürgschaft die Folgen einer Insolvenz beim Unternehmen sehr genau geprüft werden. Das können Sie dann aber Zuhause nochmal absprechen. Dann kann das bis zu vier Wochen dauern. Sie gründen alleine?
+
+
+[[Ich bin die alleinige Gründerin, aber ich arbeite natürlich mit anderen zusammen.->Alleinige Gründerin]]
+
+[[Ich habe noch eine Geschäftspartnerin.->Geschäftspartnerin]]
+
+[[Ich habe noch einen Geschäftspartner.->Geschäftspartner]]
+
+
+:: Ende Neutral {"position":"2425,3950","size":"100,100"}
+>>AngestellteSprichtCritical:<<
+Ich hoffe, Sie wissen, worauf Sie sich einlassen. Wir werden Ihren Antrag prüfen, aber ich kann Ihnen keine Garantie geben, dass das klappt.
+
+
+[[Okay, vielen Dank. Das werde ich tun.->Ende Neutral II]]
+
+[[Danke für Ihre Zeit, einen schönen Tag noch.->Ende Neutral II]]
+
+
+:: Ende Neutral Geschäftspartner {"position":"2575,3875","size":"100,100"}
+>>AngestellteSprichtCritical:<<
+Ja, also Ihr Businessplan ist an sich zwar gut, aber schärfen Sie trotzdem Ihr Exposé. Lassen Sie ruhig Ihren Geschäftspartner einen Blick darauf werfen. Wir werden Ihren Antrag prüfen, aber ich kann Ihnen keine Garantie geben, dass das klappt.
+
+[[Okay, vielen Dank. Das werde ich tun.->Ende Neutral II]]
+
+[[Danke für Ihre Zeit, einen schönen Tag noch.->Ende Neutral II]]
+
+
+:: Ende Neutral II {"position":"2500,4125","size":"100,100"}
+>>AngestellteSprichtFriendly:<<
+Gerne und auf Wiedersehen.
+>>--<<
+>>Ende<<
+
+
+:: Ende Positiv {"position":"2800,3875","size":"100,100"}
+>>AngestellteSprichtFriendly:<<
+Also Ihr Businessplan sieht gut aus. Mit einem Geschäftspartner habe ich auch ein besseres Gefühl bei der Sache. Füllen Sie bitte noch diese Formulare aus und schicken Sie uns die zu, dann sollte alles passen.
+
+
+[[Das mache ich, vielen Dank für Ihre Zeit, einen schönen Tag noch.->Ende Positiv II]]
+
+[[Alles klar, danke Ihnen. Auf Wiedersehen.->Ende Positiv II]]
+
+
+:: Ende Positiv II {"position":"2800,4125","size":"100,100"}
+>>AngestellteSprichtFriendly:<<
+Gerne und auf Wiedersehen.
+>>--<<
+>>Ende<<
+
+
+:: Entscheidungen Alleine [Bias] {"position":"2775,2300","size":"100,100"}
+>>AngestellteSprichtAstonished:<<
+Sie sagen das ja schon fast aggressiv? Also ein gut gemeinter Rat: Sprechen Sie vielleicht in einem freundlicheren Ton.
+>>--<<
+>>RelevanterBias:TightropeBias<<
+
+[[Ich habe das nicht aggressiv, sondern in einem bestimmten Ton gesagt.->Bestimmter Ton]]
+
+[[Danke für den Tipp.->Danke]]
+
+
+:: Erneuter Termin {"position":"1825,2450","size":"100,100"}
+>>AngestellteSprichtFriendly:<<
+Genau, also es sollte vor der Übernahme einer persönlichen Bürgschaft die Folgen einer Insolvenz beim Unternehmen sehr genau geprüft werden. Das können Sie dann aber Zuhause nochmal absprechen. 
+
+
+[[Das klingt gut.->Erneuter Termin II]]
+
+[[Das mache ich.->Erneuter Termin II]]
+
+
+:: Erneuter Termin II {"position":"1825,2650","size":"100,100"}
+>>AngestellteSprichtQuestioning:<<
+Und dann sehen wir uns vielleicht wieder. Ah, gründen Sie eigentlich alleine?
+
+
+[[Ich bin die alleinige Gründerin, aber ich arbeite natürlich mit anderen zusammen.->Alleinige Gründerin]]
+
+[[Ich habe noch eine Geschäftspartnerin.->Geschäftspartnerin]]
+
+[[Ich habe noch einen Geschäftspartner.->Geschäftspartner]]
+
+
+:: Experte ausreichen II {"position":"2900,2425","size":"100,100"}
+>>AngestellteSprichtCritical:<<
+Besonders bei Neugründungen in wirtschaftlich unsicheren Zeiten oder in Branchen mit hohem Wettbewerb ist es ratsam, zunächst mit einem kleineren Kredit zu starten, um die finanzielle Belastung zu minimieren und das Risiko eines Scheiterns zu reduzieren.
+
+[[Ich habe das Risiko berücksichtigt und bin zu dem Schluss gekommen, dass dieser Kredit für die Realisierung meiner Pläne notwendig ist.->Keine Sorge]]
+
+[[Deshalb habe ich mit einem Finanzberater gesprochen. Ich übernehme mich schon nicht.->Keine Sorge]]
+
+
+:: Experte ausreichend [Bias] {"position":"2900,2300","size":"100,100"}
+>>AngestellteSprichtDecisionNo:<<
+Nun gut. Vielleicht sollten Sie noch einmal darüber nachdenken, den Betrag zu reduzieren. Es könnte klüger sein, sich nicht zu übernehmen.
+>>--<<
+>>RelevanterBias:GeschlechtsspezifischeStereotypen<<
+[[Experte ausreichen II]]
+
+
+:: Faire Aufgabenaufteilung {"position":"2525,3050","size":"100,100"}
+>>AngestellteSprichtLaughing:<<
+Das ist ja interessant, dass Sie das so machen.
+
+[[Anders würde ich das gar nicht haben wollen.->Faire Aufgabenaufteilung II]]
+
+[[Wir sprechen uns da gut ab und geben uns gegenseitig Rückendeckung.->Faire Aufgabenaufteilung II]]
+
+
+:: Faire Aufgabenaufteilung II [Bias] {"position":"2525,3200","size":"100,100"}
+>>AngestellteSprichtFriendly:<<
+Schön zu hören, dass Sie tatsächlich aktiv mitarbeiten und nicht nur ein Aushängeschild sind.
+>>--<<
+>>RelevanterBias:Mikroaggressionen<<
+
+[[Was meinen Sie damit?->Aufgabenverteilung Nachfrage]]
+
+[[Wir sollten uns generell nicht auf irgendetwas ausruhen. Und wie verfahren wir nun mit dem Kreditantrag?->Ende Positiv]]
+
+
+:: Finanzangelegenheiten [Bias] {"position":"3150,2300","size":"100,100"}
+>>AngestellteSprichtRelaxed:<<
+Nun ja, Frauen haben oft nicht das nötige Verständnis für komplexe Finanzangelegenheiten. 
+>>--<<
+>>RelevanterBias:GeschlechtsspezifischeStereotypen<<
+
+[[Aber Sie sind doch eine Frau und arbeiten in einer Bank?->Nachfrage Internalisiert]]
+
+[[Das war jetzt schon eine sexistische Aussage.->Sexistisch]]
+
+
+:: Finanzberater {"position":"2825,2000","size":"100,100"}
+>>AngestellteSprichtQuestioning:<<
+Ah, verstehe. Und dieser Finanzberater, war das jemand aus Ihrem persönlichen Netzwerk oder eine professionelle Beratungsstelle?
+
+
+[[Es war ein professioneller Berater, den ich über eine Gründerinnen-Initiative gefunden habe. Sie spezialisieren sich darauf, Frauen in der Gründungsphase zu unterstützen.->Professionell]]
+
+[[Das war schon eine professionelle Beratungsstelle, keine Sorge.->Professionell II]]
+
+
+:: Finanzierung [Sound] {"position":"2850,1700","size":"100,100"}
+>>SoundAbspielen:paperSound<<
+>>--<<
+>>AngestellteSprichtQuestioning:<<
+Die ganze Finanzierung... haben Sie das selber durchgerechnet? Oder hatten Sie da Hilfe?
+
+
+[[Ich hatte Hilfe.->Hilfe]]
+
+[[Die habe ich selbst durchgerechnet.->Selbst]]
+
+
+:: Geplant [Sound] {"position":"2100,2300","size":"100,100"}
+>>SoundAbspielen:paperSound<<
+>>--<<
+>>AngestellteSprichtFriendly:<<
+Ah, ja. Gut, ich kann ja auch unmögliches alles im Kopf haben.
+
+
+[[Das stimmt, aber der Businessplan ist ja zum Glück da, wo alles nachgelesen werden kann.->Businessplan da]]
+
+[[Und deshalb habe ich den Businessplan mitgebracht.->Businessplan da]]
+
+
+:: Geschlechterstereotypen [Bias] {"position":"3300,2700","size":"100,100"}
+>>AngestellteSprichtQuestioning:<<
+Ja, an sich schon. Also, zu ihrem Kreditantrag. Was ich jetzt so höre, ist, dass Sie da alleine stehen als Frau in diesem Geschäft. Ja?
+>>--<<
+>>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<
+
+[[Ich bin die alleinige Gründerin, aber ich arbeite natürlich mit anderen zusammen.->Alleinige Gründerin]]
+
+[[Ich habe noch eine Geschäftspartnerin.->Geschäftspartnerin]]
+
+[[Ich habe noch einen Geschäftspartner.->Geschäftspartner]]
+
+
+:: Geschlechtsunabhängig {"position":"1675,2225","size":"100,100"}
+>>AngestellteSprichtAstonished:<<
+Ja, natürlich. Das war auch nur eine Redewendung und nicht böse gemeint.
+
+
+[[Davon gehe ich aus, aber ich denke, es ist gut, wenn wir auf eine geschlechtsneutrale Sprache achten können. Durch solche Redewendungen werden häufig stereotype Annahmen verankert.->Redewendung Erklärung]]
+
+[[Ja, das glaube ich Ihnen sofort. Ich wollte Sie nur kurz darauf aufmerksam machen. Wie sehen denn die nächsten Schritte aus?->Nächste Schritte]]
+
+
+:: Geschäftspartner [Bias] {"position":"2625,2900","size":"100,100"}
+>>AngestellteSprichtLaughing:<<
+Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.
+>>--<<
+>>RelevanterBias:GeschlechtsspezifischeStereotypen<<
+>>--<<
+>>RelevanterBias:BiasInDerWahrnehmungVonFuehrungsfaehigkeiten<<
+>>--<<
+>>RelevanterBias:Bestaetigungsverzerrung<<
+
+[[Was meinen Sie damit, dass Sie es sich gedacht haben?->Geschäftspartner Nachfrage]]
+
+[[Selbstverständlich teilen wir die Aufgaben fair auf. Wir sind schließlich gleichberechtigt.->Faire Aufgabenaufteilung]]
+
+
+:: Geschäftspartner Nachfrage {"position":"2700,3050","size":"100,100"}
+>>AngestellteSprichtLaughing:<<
+Na, der Businessplan ist ziemlich gut geschrieben und zeigt, dass ordentlich recherchiert wurde.
+
+
+[[Das erklärt nicht, wieso Sie denken, dass ich einen Geschäftspartner und keine Geschäftspartnerin habe.->Geschäftspartner Nachfrage II]]
+
+[[Und Sie denken, das hätte ich alleine nicht hingekriegt?->Businessplan allein]]
+
+
+:: Geschäftspartner Nachfrage II [Bias] {"position":"2750,3200","size":"100,100"}
+>>AngestellteSprichtAstonished:<<
+So ein reines Frauen-Team in der Geschäftsführung kann schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.
+>>--<<
+>>RelevanterBias:BiasInDerWahrnehmungVonFuehrungsfaehigkeiten<<
+>>--<<
+>>RelevanterBias:UnbewussteBiasInDerKommunikation<<
+
+[[Finden Sie nicht, dass das Vorurteile sind?->Vorurteil]]
+
+[[Unstimmigkeiten und Diskussionen sind in zwischenmenschlichen Beziehungen unumgänglich. Sexistische Klischees sind hier nicht hilfreich.->Sexistische Klischees]]
+
+
+:: Geschäftspartnerin [Bias] {"position":"2975,2900","size":"100,100"}
+>>AngestellteSprichtAstonished:<<
+Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.
+>>--<<
+>>RelevanterBias:BiasInDerWahrnehmungVonFuehrungsfaehigkeiten<<
+>>--<<
+>>RelevanterBias:UnbewussteBiasInDerKommunikation<<
+
+[[Wie meinen Sie das?->Geschäftspartnerin Nachfrage]]
+
+[[Wieso denn mutig?->Geschäftspartnerin Nachfrage]]
+
+
+:: Geschäftspartnerin Nachfrage [Bias] {"position":"2975,3050","size":"100,100"}
+>>AngestellteSprichtCritical:<<
+Ich denke, das kann in der Geschäftsführung schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.
+>>--<<
+>>RelevanterBias:BiasInDerWahrnehmungVonFuehrungsfaehigkeiten<<
+>>--<<
+>>RelevanterBias:UnbewussteBiasInDerKommunikation<<
+
+[[Finden Sie nicht, dass das Vorurteile sind?->Vorurteil]]
+
+[[Unstimmigkeiten und Diskussionen sind in zwischenmenschlichen Beziehungen unumgänglich. Sexistische Klischees sind hier nicht hilfreich.->Sexistische Klischees]]
+
+
+:: Herzensangelegenheit {"position":"2350,3200","size":"100,100"}
+>>AngestellteSprichtQuestioning:<<
+Und was wäre so eine Schwachstelle Ihres Herzensprojekt?
+
+
+[[Eine Schwachstelle könnte sein, wie ich von einem kleinen Unternehmen dann weiter expandiere. Also wenn es jetzt bestenfalls so ist, dass ich jetzt plötzlich ganz viel Aufträge bekomme oder ganz viele Bestellungen erhalte, wie ich damit umgehe.->Schwachstelle]]
+
+[[Die Anpassungsfähigkeit an sich verändernde Marktbedingungen könnte eine potenzielle Schwachstelle sein. Daher investiere ich in kontinuierliche Marktanalysen, um flexibel auf Veränderungen reagieren zu können.->Anpassungsfähigkeit]]
+
+
+:: Heteronormatitivät II {"position":"1950,2150","size":"100,100"}
+>>AngestellteSprichtFriendly:<<
+Genau! Und um nochmal auf den Kreditantrag zurückzukommen, da müssen Sie mir dann die schriftliche Bestätigung für die Bürgschaft zukommen lassen. Dann können wir weiter arbeiten.
+
+
+[[Alles klar. Benötigen Sie ansonsten weitere Unterlagen?->Nächste Schritte]]
+
+[[Die schicke ich Ihnen. Wie sehen dann die nächsten Schritte aus?->Nächste Schritte]]
+
+
+:: Heteronormativität {"position":"2000,2000","size":"100,100"}
+>>AngestellteSprichtFriendly:<<
+Vielen Dank, dass Sie das angesprochen haben. Es war nicht meine Absicht, stereotype Annahmen zu machen. 
+
+
+[[Das passiert uns allen, aber es ist ja schön, dass wir das ansprechen können.->Heteronormatitivät II]]
+
+[[Das passiert schneller als wir denken. Um nochmal auf den Kreditantrag zurückzukommen.->Zurück Kreditantrag]]
+
+
+:: Hilfe {"position":"2700,1850","size":"100,100"}
+>>AngestellteSprichtQuestioning:<<
+Wer hat Ihnen denn geholfen?
+
+[[Ich habe über ein Assessement-Center zwei Coachings gemacht. Marketing und Finanzcoaching. Und in diesem Assessement-Center haben sie eine Rechnung aufgestellt.->Coaching]]
+
+[[Ich habe mit einem Finanzberater zusammengearbeitet, der mir bei der Erstellung des Businessplans und der Finanzprognosen geholfen hat.->Finanzberater]]
+
+
+:: Internalisiert A {"position":"2850,3500","size":"100,100"}
+>>AngestellteSprichtCritical:<<
+Also, ich weiß ja nicht...
+
+[[Das passiert auch oft unbewusst, ohne dass wir es so meinen.->Internalisiert B]]
+
+[[Es gibt ganz viele Studien zu dem Thema. Darum geht's jetzt aber ja gar nicht. Wie sieht es denn mit dem Kreditantrag aus?->Ende Neutral Geschäftspartner]]
+
+
+:: Internalisiert B {"position":"3000,3500","size":"100,100"}
+>>AngestellteSprichtFriendly:<<
+Ja, also es war wirklich nicht böse gemeint.
+
+
+[[Das glaube ich Ihnen sofort. Wie verfahren wir denn mit dem Kreditantrag?->Ende Positiv]]
+
+[[Uns rutschen alle mal Sachen heraus, die nicht so toll sind, aber was machen wir nun mit dem Kreditantrag?->Ende Positiv]]
+
+
+:: Kaffee {"position":"2100,675","size":"100,100"}
+>>AngestellteSprichtSmiling:<<
+Möchten Sie dazu Zucker oder Milch?
+
+
+[[Gerne beides.->Weiter Getränk]]
+
+[[Zucker, bitte.->Weiter Getränk]]
+
+[[Milch, bitte.->Weiter Getränk]]
+
+[[Ich trinke den Kaffee schwarz.->Weiter Getränk]]
+
+
+:: Kein Risiko {"position":"2225,3050","size":"100,100"}
+>>AngestellteSprichtCritical:<<
+Das ist das Problem, dass Sie das offenbar gerade nicht sehen. Da müssen Sie sich schon auch ein bisschen vorbereiten.
+
+
+[[Bei einer solch großen unvorhergesehenen Krise wie Covid würde es nicht nur mich betreffen, sondern alle anderen ebenso. Deshalb habe ich mich in meinem Businessplan auf realistischere Risiken konzentriert, die Sie auf Seite 12 nachlesen können.->Businessplan Risiken]]
+
+[[Es ist unmöglich sich auf alles vorzubereiten, aber ich habe viel recherchiert und analysiert, um realistischere Risiken abzuwägen. Das Unternehmen zu gründen ist ja auch eine Herzensangelegenheit.->Herzensangelegenheit]]
+
+
+:: Keine Sorge [Bias] {"position":"2900,2550","size":"100,100"}
+>>AngestellteSprichtAstonished:<<
+Sie sind ja selbstbewusst.
+>>--<<
+>>RelevanterBias:UnbewussteBiasInDerKommunikation<<
+
+
+[[Ich bin ja auch von meiner Geschäftsidee überzeugt.->Selbstbewusst]]
+
+[[Selbstverständlich!->Selbstbewusst]]
+
+
+:: Konsruktiv {"position":"2500,3650","size":"100,100"}
+>>AngestellteSprichtRefusing:<<
+Also das war eigentlich ein Kompliment an Sie, aber nun gut. 
+
+[[So habe ich das nicht aufgefasst. Zum Kreditantrag:  Würde es helfen, wenn ich das Exposé bearbeite?->Ende Neutral Geschäftspartner]]
+
+[[Ach so. Und was machen wir nun mit dem Kreditantrag?->Ende Neutral Geschäftspartner]]
+
+
+:: Kreditantrag [Bias] {"position":"3000,2700","size":"100,100"}
+>>AngestellteSprichtQuestioning:<<
+Natürlich, also, was ich jetzt so höre, ist, dass Sie da alleine stehen als Frau in diesem Geschäft. Ja?
+>>--<<
+>>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<
+
+[[Ich bin die alleinige Gründerin, aber ich arbeite natürlich mit anderen zusammen.->Alleinige Gründerin]]
+
+[[Ich habe noch eine Geschäftspartnerin.->Geschäftspartnerin]]
+
+[[Ich habe noch einen Geschäftspartner.->Geschäftspartner]]
+
+
+:: Kreditantrag B [Bias] {"position":"3200,2700","size":"100,100"}
+>>AngestellteSprichtQuestioning:<<
+Also, gut, dass was ich jetzt so höre, ist, dass Sie da alleine stehen als Frau in diesem Geschäft. Ja?
+>>--<<
+>>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<
+
+[[Ich bin die alleinige Gründerin, aber ich arbeite natürlich mit anderen zusammen.->Alleinige Gründerin]]
+
+[[Ich habe noch eine Geschäftspartnerin.->Geschäftspartnerin]]
+
+[[Ich habe noch einen Geschäftspartner.->Geschäftspartner]]
+
+
+:: Loyalität {"position":"2500,2300","size":"100,100"}
+>>AngestellteSprichtFriendly:<<
+Ja, das klingt nicht schlecht. Das machen ja sowohl Cafés als auch Supermärkte mit so Stempelkarten oder Treuepunkte, die dann eingelöst werden können.
+
+
+[[Genau, und um das umzusetzen, habe ich mich bereits auch mit einer Marketing-Expertin zusammen gesetzt.->Marketing-Expertin]]
+
+[[Und um mich dafür vorzubereiten, habe ich an einem Seminar der IHK zu diesem Thema teilgenommen.->Seminar]]
+
+
+:: Marketing-Expertin [Bias] {"position":"2500,2550","size":"100,100"}
+>>AngestellteSprichtCritical:<<
+Okay, da haben Sie also zumindest dann eine Expertin an Ihrer Seite. Aber ansonsten stehen Sie als Frau alleine in diesem Geschäft. Ja?
+>>--<<
+>>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<
+
+[[Ich bin die alleinige Gründerin, aber ich arbeite natürlich mit anderen zusammen.->Alleinige Gründerin]]
+
+[[Ich habe noch eine Geschäftspartnerin.->Geschäftspartnerin]]
+
+[[Ich habe noch einen Geschäftspartner.->Geschäftspartner]]
+
+
+:: Möglichkeiten [Sound] {"position":"2325,3800","size":"100,100"}
+>>SoundAbspielen:paperSound<<
+>>--<<
+>>AngestellteSprichtCritical:<<
+Also, 20.000 € ist eine ordentliche Summe. Schauen Sie sich das nochmal an und schärfen Sie das Exposé nochmal.
+
+[[Das kann ich gerne machen.->Ende Neutral]]
+
+[[Das mache ich und schicke es Ihnen dann zu.->Ende Neutral]]
+
+
+:: Nachfrage {"position":"2250,3650","size":"100,100"}
+>>AngestellteSprichtRefusing:<<
+Wenn ich hier so in die Tabelle gucke, was es so für Möglichkeiten gibt... Zuschüsse, Darlehen, und so weiter und so fort. Im Moment sehe ich Sie da nicht. Also im Moment habe ich hier wenige Möglichkeiten. 
+
+
+[[Wenig heißt nicht keine.->Nicht keine]]
+
+[[Was für Möglichkeiten gibt es denn?->Möglichkeiten]]
+
+
+:: Nachfrage Internalisiert [Bias] {"position":"3050,2550","size":"100,100"}
+>>AngestellteSprichtFriendly:<<
+Ich muss mich auf oft doppelt so sehr anstrengen als Männer. Die haben oft mehr natürliche Begabung für Zahlen.
+>>--<<
+>>RelevanterBias:GeschlechtsspezifischeStereotypen<<
+>>--<<
+>>RelevanterBias:Bestaetigungsverzerrung<<
+
+[[Es kann ja sein, dass es Ihnen tatsächlich schwerer fällt, aber das können Sie doch nicht auf alle Frauen übertragen und daraus schließen, dass Männer begabt sind.->Bestätigugnsverzerrung]]
+
+[[Ich denke, das lässt sich nicht so pauschal auf alle übertragen, aber sprechen wir doch wieder über den Kreditantrag.->Kreditantrag]]
+
+
+:: Nebenberuflich {"position":"2250,1700","size":"100,100"}
+>>AngestellteSprichtFriendly:<<
+Verstehe, das ist gut. Es ist wichtig, dass Sie eine solide finanzielle Grundlage haben, um die Rückzahlung des Kredits zu gewährleisten. 
+
+
+[[Ja, darauf habe ich geachtet.->Nebenberuflich II]]
+
+[[Definitiv, das sehe ich genauso.->Nebenberuflich II]]
+
+
+:: Nebenberuflich II {"position":"2250,1850","size":"100,100"}
+>>AngestellteSprichtQuestioning:<<
+Haben Sie bereits Maßnahmen ergriffen, um sicherzustellen, dass Ihr Unternehmen langfristig erfolgreich sein wird?
+
+
+[[Ja, das habe ich auch im Businessplan berücksichtigt. Hier, da erläutere ich meinen Marketingplan, um Kundschaft zu gewinnen und zu binden.->Nebenberuflich III]]
+
+[[Definitiv. Ich habe bereits Beziehungen zu potenziellen Partner*innen aufgebaut, um sicherzustellen, dass ich die besten Konditionen für meine Produkte erhalte.->Produkte]]
+
+
+:: Nebenberuflich III [Sound] {"position":"2450,2000","size":"100,100"}
+>>SoundAbspielen:paperSound<<
+>>--<<
+>>AngestellteSprichtQuestioning:<<
+Kund*innenbindung ist ein gutes Stichwort. Wie genau wollen Sie das denn anstellen?
+
+
+[[Um die Kund*innenbindung sicherzustellen, plane ich, eine Community rund um meine Marke aufzubauen.->Community]]
+
+[[Ich plane Treueprogramme und Sonderangebote einzuführen, um wiederkehrende Kund*innen zu belohnen und ihre Loyalität zu stärken.->Loyalität]]
+
+
+:: Nicht ernst {"position":"2200,2300","size":"100,100"}
+>>AngestellteSprichtCritical:<<
+Ach so? Es wäre besser, wenn Sie einfach ernst antworten würden. 
+
+
+[[Ja, das verstehe ich.->Zustimmung]]
+
+[[Natürlich.->Zustimmung]]
+
+
+:: Nicht keine {"position":"2225,3800","size":"100,100"}
+>>AngestellteSprichtLaughing:<<
+Das stimmt!
+
+[[Nicht keine II]]
+
+
+:: Nicht keine II {"position":"2225,3950","size":"100,100"}
+>>AngestellteSprichtCritical:<<
+Trotzdem sind 20.000 € eine ordentliche Summe. Schauen Sie sich das nochmal an und schärfen Sie das Exposé nochmal. 
+
+[[Das kann ich gerne machen.->Ende Neutral]]
+
+[[Das mache ich und schicke es Ihnen dann zu.->Ende Neutral]]
+
+
+:: Nicht schlecht {"position":"1975,3650","size":"100,100"}
+>>AngestellteSprichtFriendly:<<
+Das hört sich wirklich nicht schlecht an.
+
+[[Businessplan solide]]
+
+
+:: Nächste Schritte {"position":"1900,2300","size":"100,100"}
+>>AngestellteSprichtFriendly:<<
+Sie müssen nur noch den Kreditantrag hier ausfüllen und nachdem wir eine Bonitätsprüfung gemacht haben, schicken wir Ihnen je nachdem ein Kreditangebot zu oder ein Schreiben, dass Ihr Antrag abgelehnt wurde. 
+
+
+[[Und dann sprechen wir uns eventuell nochmal?->Erneuter Termin]]
+
+[[Wie lange dauert das ungefähr?->Dauer]]
+
+
+:: OK, weiter {"position":"1775,2000","size":"100,100"}
+>>AngestellteSprichtFriendly:<<
+Also, Sie müssen mir dann noch die schriftliche Bestätigung für die Bürgschaft zukommen lassen.
+
+
+[[Benötigen Sie ansonsten weitere Unterlagen?->Nächste Schritte]]
+
+[[Die schicke ich Ihnen. Wie sehen dann die nächsten Schritte aus?->Nächste Schritte]]
+
+
+:: Planung {"position":"2350,3650","size":"100,100"}
+>>AngestellteSprichtCritical:<<
+Das stimmt, da müssten Sie einiges überdenken. Jetzt, so beim Durchschauen, was ihre angeforderte Summe betrifft...
+
+[[Möglichkeiten]]
+
+
+:: Produkte {"position":"2250,2000","size":"100,100"}
+>>AngestellteSprichtFriendly:<<
+Das klingt nach einem guten Schritt in Richtung Kostenoptimierung. Wie sieht es denn mit dem Umgang mit potenziellen Risiken wie Konkurrenz, Marktschwankungen oder Veränderungen in der Nachfrage aus?
+
+
+[[Das sind jetzt viele Fragen auf einmal.->Viele Fragen]]
+
+[[Also, ich habe da sowohl Maßnahmen zur Risikominderung wie auch eine Notfallreserve und eine flexible Betriebsstruktur eingeplant, um auf mögliche Marktveränderungen reagieren zu können. Hier steht das auch nochmal.->Geplant]]
+
+
+:: Professionell [Bias] {"position":"2775,2150","size":"100,100"}
+>>AngestellteSprichtCritical:<<
+Ah, ein professioneller Finanzberater also. Und was sagt Ihr Ehemann dazu?
+>>--<<
+>>RelevanterBias:UnbewussteBiasInDerKommunikation<<
+>>--<<
+>>RelevanterBias:Heteronormativitaet<<
+
+[[Mein Ehemann hat damit nichts zu tun. Ich treffe die Entscheidungen ohne ihn.->Entscheidungen Alleine]]
+
+[[Es reicht ja, wenn ich mich von einem Experten beraten lasse.->Experte ausreichend]]
+
+[[Wieso fragen Sie denn plötzlich nach meinem Ehemann?->Finanzangelegenheiten]]
+
+
+:: Professionell II [Bias] {"position":"2900,2150","size":"100,100"}
+>>AngestellteSprichtCritical:<<
+Kann ja sein, dass Sie einfach einen Freund gefragt haben, dass er ein paar Tipps gibt, aber gut, dass es jemand professionelles war. Und was sagt Ihr Ehemann dazu?
+>>--<<
+>>RelevanterBias:UnbewussteBiasInDerKommunikation<<
+>>--<<
+>>RelevanterBias:Heteronormativitaet<<
+
+[[Mein Ehemann hat damit nichts zu tun. Ich treffe die Entscheidungen ohne ihn.->Entscheidungen Alleine]]
+
+[[Es reicht ja, wenn ich mich von einem Experten beraten lasse.->Experte ausreichend]]
+
+[[Wieso fragen Sie denn plötzlich nach meinem Ehemann?->Finanzangelegenheiten]]
+
+
+:: Reaktion Businessplan [Bias] {"position":"2725,1550","size":"100,100"}
+>>AngestellteSprichtQuestioning:<<
+Es ist nur so, dass wir oft sehen, dass Frauen in der Unternehmenswelt es schwerer haben, sich finanziell zu behaupten. Haben Sie schon einmal darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.
+>>--<<
+>>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<
+>>--<<
+>>RelevanterBias:GeschlechtsspezifischeStereotypen<<
+
+[[Aus meiner Sicht ist die Kreditsumme unerlässlich, um die geplanten Wachstumsziele erfolgreich umzusetzen.->Finanzierung]]
+
+[[Dass Frauen es schwerer haben, liegt aber nicht an den Frauen selbst, sondern an den strukturellen und gesellschaftlichen Barrieren. Da ich nebenberuflich gründen möchte, habe ich dann regelmäßiges Einkommen, sodass ich den Kredit zurückzahlen kann.->Nebenberuflich]]
+
+
+:: Reaktion Zuversichtlich {"position":"2175,1250","size":"100,100"}
+>>AngestellteSprichtQuestioning:<<
+Aber es ist schon wichtig, realistisch zu sein. Eine Freundin wollte auch gründen und ich habe gesehen, wie schwierig es sein kann, als Frau in der Geschäftswelt Fuß zu fassen. Vielleicht sollten Sie einen kleineren Kredit beantragen, um das Risiko zu minimieren.
+
+
+[[Ich schätze Ihre Perspektive, aber ich bin fest davon überzeugt, dass mein Unternehmen erfolgreich sein wird, und ich habe meine Finanzplanung entsprechend gestaltet.->Sicherheiten]]
+
+[[Ich höre Bedenken von Ihnen, aber ich glaube fest daran, dass mein Geschäftsmodell solide genug ist, um den Kredit zurückzuzahlen.->Sicherheiten]]
+
+
+:: Realistischere Risiken {"position":"2350,3050","size":"100,100"}
+>>AngestellteSprichtQuestioning:<<
+Ja, das stimmt, aber Sie sind schon eher optimistisch unterwegs, nicht?
+
+
+[[Ich würde eher sagen realistisch. Ich habe ja auch viel recherchiert und analysiert, um das Unternehmen gründen zu können. Das ist schon eine Herzensangelegenheit.->Herzensangelegenheit]]
+
+[[Bei einer solch großen unvorhergesehenen Krise wie Covid würde es nicht nur mich betreffen, sondern alle anderen ebenso. Deshalb habe ich mich in meinem Businessplan auf realistischere Risiken konzentriert, die Sie auf Seite 12 nachlesen können.->Businessplan Risiken]]
+
+
+:: Redewendung Erklärung {"position":"1675,2375","size":"100,100"}
+>>AngestellteSprichtFriendly:<<
+Stimmt, das ist mir noch gar nicht so aufgefallen, aber um nochmal auf den Kreditantrag zu kommen. Sie müssen mir noch die schriftliche Bestätigung für die Bürgschaft zukommen lassen.
+
+
+[[Benötigen Sie ansonsten weitere Unterlagen?->Nächste Schritte]]
+
+[[Die schicke ich Ihnen. Wie sehen dann die nächsten Schritte aus?->Nächste Schritte]]
+
+
+:: Schwachpunkt {"position":"2175,3500","size":"100,100"}
+>>AngestellteSprichtCritical:<<
+Ja, wissen Sie, das ist alles jetzt nicht so einfach wie Sie sich das vorstellen. Wir müssten uns das schon nochmal ein bisschen genauer angucken. 
+
+[[Was meinen Sie damit?->Nachfrage]]
+
+[[Sie können mich gerne zum Businessplan befragen.->Businessplan befragen]]
+
+
+:: Schwachstelle {"position":"2350,3350","size":"100,100"}
+>>AngestellteSprichtAstonished:<<
+Das ist ja interessant. Weil ich fragte gerade nach einem Schwachpunkt und Sie sagen expandieren. Das wäre jetzt gar nicht so der Schwachpunkt für mich, aber okay.
+
+
+[[Ich meine damit auch, dass die Planung in so einem Fall eine ganz andere wäre.->Planung]]
+
+[[Was wäre denn für Sie der Schwachpunkt?->Schwachpunkt]]
+
+
+:: Selbst [Bias] {"position":"3000,1850","size":"100,100"}
+>>AngestellteSprichtAstonished:<<
+Alleine als Frau? Und da sind Sie sich sicher, dass das so alles in Ordnung ist?
+>>--<<
+>>RelevanterBias:Mikroaggressionen<<
+
+[[Ich habe zuerst über ein Assessement-Center zwei Coachings gemacht. Marketing und Finanzcoaching. Und so habe ich gelernt das auch alleine zu machen.->Coaching]]
+
+[[Wieso sollte das denn nicht in Ordnung sein?->Finanzangelegenheiten]]
+
+
+:: Selbstbewusst [Bias] {"position":"2900,2700","size":"100,100"}
+>>AngestellteSprichtQuestioning:<<
+Nun, gut, dass Sie sich mit einem Finanzberater zusammengesetzt haben. Aber was ich jetzt so höre, ist, dass Sie da alleine stehen als Frau in diesem Geschäft. Ja?
+>>--<<
+>>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<
+
+[[Ich bin die alleinige Gründerin, aber ich arbeite natürlich mit anderen zusammen.->Alleinige Gründerin]]
+
+[[Ich habe noch eine Geschäftspartnerin.->Geschäftspartnerin]]
+
+[[Ich habe noch einen Geschäftspartner.->Geschäftspartner]]
+
+
+:: Seminar [Bias] {"position":"2400,2550","size":"100,100"}
+>>AngestellteSprichtQuestioning:<<
+Gut, dass Sie sich da selbst um die Weiterbildung gekümmert haben. Aber was ich jetzt so höre, ist, dass Sie da alleine stehen als Frau in diesem Geschäft. Ja?
+>>--<<
+>>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<
+
+[[Ich bin die alleinige Gründerin, aber ich arbeite natürlich mit anderen zusammen.->Alleinige Gründerin]]
+
+[[Ich habe noch eine Geschäftspartnerin.->Geschäftspartnerin]]
+
+[[Ich habe noch einen Geschäftspartner.->Geschäftspartner]]
+
+
+:: Sexistisch [Bias] {"position":"3250,2550","size":"100,100"}
+>>AngestellteSprichtRefusing:<<
+Ich arbeite schon so lange in dieser Branche und habe diese Erfahrung gemacht. Ich denke nicht, dass meine Aussage sexistisch war.
+>>--<<
+>>RelevanterBias:Bestaetigungsverzerrung<<
+
+[[Vielleicht war die Aussage nicht absichtlich sexistisch, aber unbewusste Vorurteile und Stereotypen können Schaden anrichten. Es wäre doch schön, wenn wir uns alle gegen Geschlechterstereotypen einsetzen würden, oder nicht?->Geschlechterstereotypen]]
+
+[[Wir machen alle mal unbeabsichtigt sexistische Aussagen. Das müssen wir auch erstmal wieder entlernen. Letztendlich möchten wir doch Sexismus bekämpfen, oder?->Geschlechterstereotypen]]
+
+[[Bestimmt haben Sie das nicht so gemeint. Wie gehen wir denn eigentlich nun mit dem Kreditantrag weiter vor?->Kreditantrag B]]
+
+
+:: Sexistische Klischees {"position":"2925,3350","size":"100,100"}
+>>AngestellteSprichtRefusing:<<
+Ich bin doch selbst eine Frau! Da bin ich doch nicht sexistisch!
+
+
+[[Frauen können auch sexistisch sein. Das ist internalisierter Sexismus.->Internalisiert A]]
+
+[[Unabhängig vom eigenen Geschlecht können sich alle sexistisch verhalten. Das passiert auch oft unbewusst.->Internalisiert B]]
+
+
+:: Sicherheiten {"position":"2175,1400","size":"100,100"}
+>>AngestellteSprichtFriendly:<<
+Eigentlich ist es ganz schön, dass Sie so selbstbewusst sind. Aber welche Sicherheiten haben Sie, um einen solchen Kredit zurückzuzahlen?
+
+
+[[Hier, auf Seite 13 meines Businesplans habe ich das Potenzial meines Unternehmens und die Rentabilität detailliert dargestellt.->Verweis Businessplan]]
+
+[[Was wäre, wenn jemand für mich eine Bürgschaft übernehmen würde?->Bürgschaft]]
+
+
+:: Verweis Businessplan [Sound] {"position":"2375,1550","size":"100,100"}
+>>SoundAbspielen:paperSound<<
+>>--<<
+>>AngestellteSprichtCritical:<<
+Hmm, Sie benötigen den Kredit für Ihre Unternehmensgründung, richtig? Da haben wir keine Datengrundlagen, die uns die Gewissheit geben können, dass Sie in der Lage sind, den Kredit zurückzuzahlen.
+
+
+[[Es stimmt, dass ich den Kredit für die Unternehmensgründung nutzen möchte, aber da ich das zunächst nebenberuflich gründe, habe ich dennoch regelmäßiges Einkommen, sodass ich den Kredit zurückzahlen kann.->Nebenberuflich]]
+
+[[Hier an dieser Stelle meines Businessplans habe ich Prognosen aufgestellt und mein Businessplan ist auch solide. Die Rückzahlung sollte kein Problem darstellen.->Finanzierung]]
+
+
+:: Verwunderung [Bias] {"position":"2650,3350","size":"100,100"}
+>>AngestellteSprichtFriendly:<<
+Ach, Sie dürfen so etwas nicht so eng sehen und jedes Wort auf die Goldwaage legen. Sie sind da schon streng.
+>>--<<
+>>RelevanterBias:TightropeBias<<
+
+[[Es ist allerdings ein Problem, wenn dann die eigene Arbeit nicht anerkannt wird. Wie dem auch sei, wie fahren wir nun mit dem Kreditantrag fort?->Ende Neutral Geschäftspartner]]
+
+[[Manchmal müssen wir bestimmt sein. Mit reiner Freundlichkeit kommen wir nicht weit, oder? Wie machen wir das nun mit dem Kreditantrag?->Ende Neutral Geschäftspartner]]
+
+
+:: Viele Fragen {"position":"2300,2150","size":"100,100"}
+>>AngestellteSprichtCritical:<<
+Nun ja, das war jetzt eher eine kurze Aufzählung von Faktoren, die Sie berücksichtigen sollten. Wenn Sie das schon überfordert, bin ich mir nicht sicher, ob Sie tatsächlich ein Unternehmen gründen sollten.
+
+
+[[Das war nicht wirklich ernst gemeint.->Nicht ernst]]
+
+[[Ich meinte, das war etwas zu schnell aufgezählt, aber natürlich habe ich die bereits berücksichtigt. Hier, sehen Sie?->Viele Fragen II]]
+
+
+:: Viele Fragen II [Sound Bias] {"position":"2300,2550","size":"100,100"}
+>>SoundAbspielen:paperSound<<
+>>--<<
+>>AngestellteSprichtQuestioning:<<
+Gut, das sieht nicht schlecht aus. Aber was ich jetzt so höre, ist, dass Sie da alleine stehen als Frau in diesem Geschäft. Ja?
+>>--<<
+>>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<
+
+[[Ich bin die alleinige Gründerin, aber ich arbeite natürlich mit anderen zusammen.->Alleinige Gründerin]]
+
+[[Ich habe noch eine Geschäftspartnerin.->Geschäftspartnerin]]
+
+[[Ich habe noch einen Geschäftspartner.->Geschäftspartner]]
+
+
+:: Vorurteil [Bias] {"position":"2800,3350","size":"100,100"}
+>>AngestellteSprichtRefusing:<<
+Ach, wir Frauen können doch gar nicht anders. Ehrlich gesagt gibt es bei Frauen so oft Drama, dass ich deshalb auch nur mit Männern befreundet bin. Deutlich entspannter.
+>>--<<
+>>RelevanterBias:Mikroaggressionen<<
+
+[[Schön, dass Sie eine Lösung für sich gefunden haben und wie fahren wir nun mit dem Kreditantrag fort?->Ende Positiv]]
+
+[[Frauen sind nicht dramatischer als Männer, aber darum geht's hier ja auch gar nicht. Was machen wir nun mit dem Kreditantrag?->Ende Neutral Geschäftspartner]]
+
+
+:: Wasser {"position":"1950,675","size":"100,100"}
+>>AngestellteSprichtSmiling:<<
+Mit oder ohne Kohlensäure?
+
+
+[[Mit, bitte.->Weiter Getränk]]
+
+[[Ohne, bitte.->Weiter Getränk]]
+
+
+:: Weiter {"position":"2100,525","size":"100,100"}
+>>AngestellteSprichtFriendly:<<
+Willkommen. Schön, dass Sie da sind. Setzen Sie sich doch. Kann ich Ihnen etwas zum Trinken anbieten? Wasser, Kaffee?
+
+
+[[Ich nehme gerne ein Wasser.->Wasser]]
+
+[[Einen Kaffee, bitte.->Kaffee]]
+
+[[Nein, danke.->Weiter II]]
+
+
+:: Weiter Getränk [Sound] {"position":"2025,875","size":"100,100"}
+>>SoundAbspielen:waterPouring<<
+>>--<<
+>>AngestellteSprichtHappy:<<
+Hier, bitteschön. So, was führt Sie zu mir? Wie kann ich Ihnen heute helfen?
+
+
+[[Weiter|Weiter III]]
+
+
+:: Weiter II {"position":"2250,825","size":"100,100"}
+>>AngestellteSprichtFriendly:<<
+Okay, was führt Sie zu mir? Wie kann ich Ihnen heute helfen?
+
+
+[[Weiter|Weiter III]]
+
+
+:: Weiter III {"position":"2125,1025","size":"100,100"}
+>>GründerinSpricht<<
+Ich möchte gerne einen Kredit für mein Unternehmen beantragen.
+
+
+[[Weiter|Weiter IV]]
+
+
+:: Weiter IV {"position":"2275,1025","size":"100,100"}
+>>AngestellteSprichtFriendly:<<
+Okay. Haben Sie Ihren Businessplan und alle erforderlichen Unterlagen dabei?
+
+
+[[Ja, mein Businessplan ist hier, sowie alle erforderlichen Unterlagen für den Kreditantrag.->Weiter V]]
+
+[[Ja, hier sind sie.->Weiter V]]
+
+
+:: Weiter V {"position":"2425,1025","size":"100,100"}
+>>AngestellteSprichtAstonished:<<
+Vielen Dank. Lassen Sie mich kurz einen Blick darauf werfen. Ah, das sieht wirklich gut aus. Sie haben Ihre Ziele klar definiert und die Finanzprognosen sind überzeugend. In welcher Höhe möchten Sie denn den Kredit beantragen?
+
+
+[[Basierend auf meiner aktuellen Finanzplanung, plane ich einen Kredit in Höhe von 20.000 € zu beantragen.->Weiter VI]]
+
+[[Mein Kreditantrag wird voraussichtlich bei 20.000 € liegen, um die anstehenden Investitionen und Betriebskosten angemessen abzudecken.->Weiter VI]]
+
+
+:: Weiter VI {"position":"2575,1025","size":"100,100"}
+>>AngestellteSprichtCritical:<<
+Hmm... Das ist ein ziemlich hoher Kredit. Sind Sie sicher, den auch wieder zurückzahlen zu können? Viele Start-ups haben in den ersten Jahren mit unvorhergesehenen Ausgaben und geringeren Einnahmen zu kämpfen.
+
+
+[[Natürlich kann ich ihn zurückzahlen. Sehen Sie, hier in meinem Businessplan habe ich bereits damit gerechnet und habe genügend Einnahmen, um die Schulden zu tilgen.->Reaktion Businessplan]]
+
+[[Ich verstehe Ihre Bedenken, aber ich habe sorgfältig kalkuliert und bin zuversichtlich, dass mein Geschäftsmodell solide genug ist, um den Kredit zurückzuzahlen.->Reaktion Zuversichtlich]]
+
+
+:: Zurück Kreditantrag {"position":"2050,2150","size":"100,100"}
+>>AngestellteSprichtFriendly:<<
+Genau, also, Sie müssen mir dann nur die schriftliche Bestätigung für die Bürgschaft zukommen lassen. Dann können wir weiter arbeiten.
+
+
+[[Alles klar. Benötigen Sie ansonsten weitere Unterlagen?->Nächste Schritte]]
+
+[[Die schicke ich Ihnen. Wie sehen dann die nächsten Schritte aus?->Nächste Schritte]]
+
+
+:: Zustimmung [Bias] {"position":"2200,2550","size":"100,100"}
+>>AngestellteSprichtCritical:<<
+Ich kann die Sachen später im Businessplan nachlesen, aber ehrlich gesagt, machen Sie so jetzt keinen allzu guten Eindruck. Und ansonsten stehen Sie als Frau alleine in diesem Geschäft. Ja?
+
+>>--<<
+>>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<
+
+[[Ich bin die alleinige Gründerin, aber ich arbeite natürlich mit anderen zusammen.->Alleinige Gründerin]]
+
+[[Ich habe noch eine Geschäftspartnerin.->Geschäftspartnerin]]
+
+[[Ich habe noch einen Geschäftspartner.->Geschäftspartner]]

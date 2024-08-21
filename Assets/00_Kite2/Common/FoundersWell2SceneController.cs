@@ -56,7 +56,7 @@ public class FoundersWell2SceneController : SceneController
 
     public void OnEditButton()
     {
-        DisplayInfoMessage("Diese Funktionalitäten sind derzeit noch nicht verfügbar, da sich die App noch in der Entwicklung befindet. Wir arbeiten daran, die volle Funktionalität bald bereitzustellen.");
+        DisplayInfoMessage("Diese Funktionalitäten sind derzeit noch nicht verfügbar, da sich die App noch in der Entwicklung befindet. Wir arbeiten daran, die volle Funktionalität bald bereitzustellen."); DisplayInfoMessage("Diese Funktionalitäten sind derzeit noch nicht verfügbar, da sich die App noch in der Entwicklung befindet. Wir arbeiten daran, die volle Funktionalität bald bereitzustellen.");
     }
 
     public void OnProfilePicture()
