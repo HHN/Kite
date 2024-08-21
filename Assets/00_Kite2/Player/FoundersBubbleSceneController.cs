@@ -27,7 +27,6 @@ public class FoundersBubbleSceneController : SceneController
     [SerializeField] private bool finishedInitialization;
 
     [SerializeField] private Button novelListButton;
-    [SerializeField] private Button searchButton;
     [SerializeField] private Button settingsButton;
 
     void Start()
@@ -52,7 +51,6 @@ public class FoundersBubbleSceneController : SceneController
         isIntroNovelNovelInVersionContained = true;
 
         novelListButton.onClick.AddListener(delegate { OnNovelListButton(); });
-        searchButton.onClick.AddListener(delegate { OnSearchButton(); });
         settingsButton.onClick.AddListener(delegate { OnSettingsButton(); });
     }
 
@@ -149,12 +147,7 @@ public class FoundersBubbleSceneController : SceneController
 
     private void OnNovelListButton()
     {
-        
-    }
-
-    private void OnSearchButton()
-    {
-        
+        DisplayInfoMessage("Diese Funktionalitäten sind derzeit noch nicht verfügbar, da sich die App noch in der Entwicklung befindet. Wir arbeiten daran, die volle Funktionalität bald bereitzustellen.");
     }
 
     private void OnSettingsButton()
