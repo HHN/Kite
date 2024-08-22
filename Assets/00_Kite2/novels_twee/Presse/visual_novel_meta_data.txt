@@ -3,8 +3,8 @@
   "titleOfNovel": "Pressegespräch",
   "descriptionOfNovel": "Auf einer Veranstaltung stellst du deine Geschäftsidee vor und wirst danach von einer Journalistin angesprochen.",
   "idNumberOfRepresentationImage": 2,
-  "nameOfMainCharacter": "Lea",
-  "contextForPrompt": "Es ist das Gespräch einer Gründerin, Lea, mit einer Journalistin. Die Journalistin hat die Gründerin angesprochen und möchte einen Artikel über sie und ihr Unternehmen schreiben. Die Gründerin freut sich über diese Gelegenheit und hofft auf einen schönen Artikel.",
+  "nameOfMainCharacter": "Spielerin",
+  "contextForPrompt": "Es ist das Gespräch einer Gründerin, mit einer Journalistin. Die Journalistin hat die Gründerin angesprochen und möchte einen Artikel über sie und ihr Unternehmen schreiben. Die Gründerin freut sich über diese Gelegenheit und hofft auf einen schönen Artikel.",
   "folderName": "Presse",
   "isKite2Novel": true,
   "startLocation": "Office",
@@ -14,21 +14,7 @@
   "talkingPartner02" : "",
   "talkingPartner03" : "",
   "wordsToReplace": [
-	{"wordToReplace": ">>JournalistinSpricht:<<", "replaceByValue": ">>Charakter01Spricht:<<"},
-	{"wordToReplace": ">>JournalistinSprichtRelaxed:<<", "replaceByValue": ">>Charakter01SprichtRelaxed:<<"},
-	{"wordToReplace": ">>JournalistinSprichtAstonished:<<", "replaceByValue": ">>Charakter01SprichtAstonished:<<"},
-	{"wordToReplace": ">>JournalistinSprichtRefusing:<<", "replaceByValue": ">>Charakter01SprichtRefusing:<<"},
-	{"wordToReplace": ">>JournalistinSprichtSmiling:<<", "replaceByValue": ">>Charakter01SprichtSmiling:<<"},
 	{"wordToReplace": ">>JournalistinSprichtFriendly:<<", "replaceByValue": ">>Charakter01SprichtFriendly:<<"},
-	{"wordToReplace": ">>JournalistinSprichtLaughing:<<", "replaceByValue": ">>Charakter01SprichtLaughing:<<"},
-	{"wordToReplace": ">>JournalistinSprichtCritical:<<", "replaceByValue": ">>Charakter01SprichtCritical:<<"},
-	{"wordToReplace": ">>JournalistinSprichtDecisionNo:<<", "replaceByValue": ">>Charakter01SprichtDecisionNo:<<"},
-	{"wordToReplace": ">>JournalistinSprichtHappy:<<", "replaceByValue": ">>Charakter01SprichtHappy:<<"},
-	{"wordToReplace": ">>JournalistinSprichtProud:<<", "replaceByValue": ">>Charakter01SprichtProud:<<"},
-	{"wordToReplace": ">>JournalistinSprichtScared:<<", "replaceByValue": ">>Charakter01SprichtScared:<<"},
-	{"wordToReplace": ">>JournalistinSprichtQuestioning:<<", "replaceByValue": ">>Charakter01SprichtQuestioning:<<"},
-	{"wordToReplace": ">>JournalistinSprichtDefeated:<<", "replaceByValue": ">>Charakter01SprichtDefeated:<<"},
-	{"wordToReplace": ">>GründerinSpricht<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"},
-	{"wordToReplace": ">>SpielerinCharakterSpricht:<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"}
+	{"wordToReplace": ">>SpielerinCharakterSpricht:<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"}	
 	]
 }

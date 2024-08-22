@@ -12,7 +12,7 @@ Gespräch mit Eltern 0.7
     "Frage": "orange",
     "Bias": "yellow"
   },
-  "zoom": 0.6
+  "zoom": 0.3
 }
 
 
@@ -57,7 +57,7 @@ Vielleicht suchst du dir einen Geschäftspartner und überlässt dem diese schwi
 [[Was soll das denn heißen? Als ob ich das nicht alleine hinkriegen würde!->Negativ]]
 
 
-:: Bruder [Bias] {"position":"2400,1550","size":"100,100"}
+:: Bruder [Bias] {"position":"2450,1475","size":"100,100"}
 >>Charakter01SprichtAstonished:<<
 Na ja, als Mann hat er ja einen besseren Geschäftssinn und kann sich bestimmt auch besser durchsetzen als du.
 >>--<<
@@ -70,7 +70,7 @@ Na ja, als Mann hat er ja einen besseren Geschäftssinn und kann sich bestimmt a
 [[Was ist denn das für eine Logik?->Negativ]]
 
 
-:: Eher Negativ [Bias] {"position":"2075,950","size":"100,100"}
+:: Eher Negativ [Bias] {"position":"2050,1000","size":"100,100"}
 >>Charakter02SprichtRefusing:<<
 Wir machen uns Sorgen um dich, und du ignorierst komplett, was wir sagen. 
 >>--<<
@@ -504,8 +504,6 @@ Hallo, Papa. Mir geht es gut. Ist Mama auch da? Ich rufe an, weil ich euch etwas
 >>Charakter01SprichtSmiling:<<
 Warte kurz. Ich hole sie.
 >>--<<
->>Eintritt:Charakter02<<
->>--<<
 >>Charakter02SprichtSmiling:<<
 Hallo! WIr haben das Telefon auf laut gestellt. Papa hat schon erzählt, dass du uns etwas Wichtiges sagen möchtest. Worum geht's denn?
 [[Weiter3]]
@@ -529,7 +527,7 @@ Unternehmensgruendung: Was für ein Unternehmen möchtest du denn gründen?
 [[Weiter4]]
 
 
-:: Weiter4 {"position":"1700,500","size":"100,100"}
+:: Weiter4 {"position":"1650,375","size":"100,100"}
 >>Charakter01SprichtQuestioning:<<
 Das ist interessant und du hast sicher einen Geschäftsplan, aber wie willst du z. B. dein Vorhaben finanzieren?
 >>--<<

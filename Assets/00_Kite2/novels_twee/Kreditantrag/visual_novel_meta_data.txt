@@ -1,0 +1,30 @@
+{
+  "idNumberOfNovel": 10,
+  "titleOfNovel": "Banktermin wegen Kreditbeantragung",
+  "descriptionOfNovel": "Du hast heute einen Banktermin, um einen Kredit zu beantragen.",
+  "idNumberOfRepresentationImage": 4,
+  "nameOfMainCharacter": "Spielerin",
+  "contextForPrompt": "Es ist das Gespräch einer Gründerin, mit einem Bankmitarbeiter. Es geht um einen Kredit. Die Gründerin hat sich gut vorbereitet und hofft Informationen über den Kredit zu erhalten.",
+  "folderName": "Kreditantrag",
+  "isKite2Novel": true,
+  "startLocation": "Office",
+  "startTalkingPartnerEmotion": "Relaxed",
+  "isWithStartValues": true,
+  "talkingPartner01" : "Sachbearbeiter",
+  "talkingPartner02" : "",
+  "talkingPartner03" : "",
+  "wordsToReplace": [
+	{"wordToReplace": ">>AngestellteSprichtCritical:<<", "replaceByValue": ">>Charakter01SprichtCritical:<<"},
+	{"wordToReplace": ">>AngestellteSprichtLaughing:<<", "replaceByValue": ">>Charakter01SprichtLaughing:<<"},
+	{"wordToReplace": ">>AngestellteSprichtQuestioning:<<", "replaceByValue": ">>Charakter01SprichtQuestioning:<<"},
+	{"wordToReplace": ">>AngestellteSprichtAstonished:<<", "replaceByValue": ">>Charakter01SprichtAstonished:<<"},
+	{"wordToReplace": ">>AngestellteSprichtFriendly:<<", "replaceByValue": ">>Charakter01SprichtFriendly:<<"},
+	{"wordToReplace": ">>AngestellteSprichtScared:<<", "replaceByValue": ">>Charakter01SprichtScared:<<"},
+	{"wordToReplace": ">>AngestellteSprichtDecisionNo:<<", "replaceByValue": ">>Charakter01SprichtDecisionNo:<<"},
+	{"wordToReplace": ">>AngestellteSprichtRelaxed:<<", "replaceByValue": ">>Charakter01SprichtRelaxed:<<"},
+	{"wordToReplace": ">>AngestellteSprichtSmiling:<<", "replaceByValue": ">>Charakter01SprichtSmiling:<<"},
+	{"wordToReplace": ">>AngestellteSprichtRefusing:<<", "replaceByValue": ">>Charakter01SprichtRefusing:<<"},
+	{"wordToReplace": ">>AngestellteSprichtHappy:<<", "replaceByValue": ">>Charakter01SprichtHappy:<<"},
+	{"wordToReplace": ">>GründerinSpricht<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"}
+	]
+}

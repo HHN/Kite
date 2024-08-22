@@ -14,21 +14,11 @@
   "talkingPartner02" : "",
   "talkingPartner03" : "",
   "wordsToReplace": [
-	{"wordToReplace": ">>VermieterSpricht:<<", "replaceByValue": ">>Charakter01Spricht:<<"},
-	{"wordToReplace": ">>VermieterSprichtRelaxed:<<", "replaceByValue": ">>Charakter01SprichtRelaxed:<<"},
-	{"wordToReplace": ">>VermieterSprichtAstonished:<<", "replaceByValue": ">>Charakter01SprichtAstonished:<<"},
-	{"wordToReplace": ">>VermieterSprichtRefusing:<<", "replaceByValue": ">>Charakter01SprichtRefusing:<<"},
-	{"wordToReplace": ">>VermieterSprichtSmiling:<<", "replaceByValue": ">>Charakter01SprichtSmiling:<<"},
-	{"wordToReplace": ">>VermieterSprichtFriendly:<<", "replaceByValue": ">>Charakter01SprichtFriendly:<<"},
+	{"wordToReplace": ">>SpielerinCharakterSpricht:<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"},
 	{"wordToReplace": ">>VermieterSprichtLaughing:<<", "replaceByValue": ">>Charakter01SprichtLaughing:<<"},
+	{"wordToReplace": ">>VermieterSprichtAstonished:<<", "replaceByValue": ">>Charakter01SprichtAstonished:<<"},
 	{"wordToReplace": ">>VermieterSprichtCritical:<<", "replaceByValue": ">>Charakter01SprichtCritical:<<"},
-	{"wordToReplace": ">>VermieterSprichtDecisionNo:<<", "replaceByValue": ">>Charakter01SprichtDecisionNo:<<"},
-	{"wordToReplace": ">>VermieterSprichtHappy:<<", "replaceByValue": ">>Charakter01SprichtHappy:<<"},
-	{"wordToReplace": ">>VermieterSprichtProud:<<", "replaceByValue": ">>Charakter01SprichtProud:<<"},
-	{"wordToReplace": ">>VermieterSprichtScared:<<", "replaceByValue": ">>Charakter01SprichtScared:<<"},
-	{"wordToReplace": ">>VermieterSprichtQuestioning:<<", "replaceByValue": ">>Charakter01SprichtQuestioning:<<"},
-	{"wordToReplace": ">>VermieterSprichtDefeated:<<", "replaceByValue": ">>Charakter01SprichtDefeated:<<"},
-	{"wordToReplace": ">>GründerinSpricht<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"},
-	{"wordToReplace": ">>SpielerinCharakterSpricht:<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"}
+	{"wordToReplace": ">>VermieterSprichtFriendly:<<", "replaceByValue": ">>Charakter01SprichtFriendly:<<"},
+	{"wordToReplace": ">>VermieterSprichtDefeated:<<", "replaceByValue": ">>Charakter01SprichtDefeated:<<"}
 	]
 }

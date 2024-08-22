@@ -1,80 +1,46 @@
 :: StoryTitle
-Pressegespräch 0.7
+Pressegespräch 0.9
 
 
 :: StoryData
 {
-  "ifid": "9998467D-3E86-4642-B147-0AC4D8B6BC2A",
+  "ifid": "CDE49056-B892-4EE3-9E8D-898460D9C225",
   "format": "Harlowe",
   "format-version": "3.3.9",
   "start": "Anfang",
   "tag-colors": {
-    "Check": "yellow"
+    "Bias": "yellow",
+    "Frage": "orange"
   },
   "zoom": 0.6
 }
 
 
-:: Ablehnend {"position":"1350,1100","size":"100,100"}
->>JournalistinSprichtCritical:<<
-Das wird allerdings nicht so gut bei den Leser*innen ankommen. Ich denke, unter diesen Umständen wird sich die Redaktion für eine andere Story entscheiden.
->>--<<
->>RelevanterBias:BiasInMedienUndWerbung<<
-
-[[Dennoch ist es mir wichtig, meine Geschäftsidee und meine Leistungen angemessen darzustellen. Wenn sich die Gelegenheit ergibt, hoffe ich, dass wir die Geschichte in der gewünschten Weise erzählen können.->Verständnisvoll]]
-
-[[Ich verstehe Ihre Perspektive, aber ich bleibe bei meinem Standpunkt. Wenn die Redaktion eine andere Story bevorzugt, ist das schade. Mein Fokus liegt weiterhin auf der angemessenen Darstellung meiner Gründung und meiner Arbeit.->Enttäuscht]]
-
-
-:: Anfang {"position":"900,375","size":"100,100"}
+:: Anfang {"position":"1400,300","size":"100,100"}
 >>InfoNachrichtWirdAngezeigt:<<
 Du befindest dich auf einer Veranstaltung, bei der Jungunternehmer*innen ihre Geschäftsidee vor einem Publikum präsentieren können, um Rückmeldung zu der Idee zu erhalten und um zu netzwerken. 
 
 
-[[Weiter]]
+[[Angesprochen]]
 
 
-:: Ansonsten kein Artikel {"position":"800,2375","size":"100,100"}
+:: Angesprochen {"position":"1550,300","size":"100,100"}
+>>InfoNachrichtWirdAngezeigt:<<
+Nachdem du deine Geschäftsidee vor einem Publikum gepitcht hast, stellst du dich an einen Tisch mit anderen Gästen, um mit ihnen zu reden. 
+
+Du wirst von jemanden angesprochen.
+
+[[Journalistin]]
+
+
+:: Ansonsten kein Artikel {"position":"2000,1975","size":"100,100"}
 >>JournalistinSprichtFriendly:<<
 Ich verstehe. Vielen Dank, für das Gespräch und ich melde mich bei Ihnen. Ich wünsche Ihnen noch einen schönen Tag. Auf Wiedersehen.
 >>--<<
 >>Ende<<
 
 
-:: Artikel Neutral {"position":"925,2225","size":"100,100"}
->>JournalistinSprichtFriendly:<<
-Schön. Vielen Dank, dass ich über Sie schreiben darf. Der Artikel wird am Sonntag erscheinen.
->>--<<
->>Ende<<
-
-
-:: Artikel Positiv {"position":"1300,2225","size":"100,100"}
->>JournalistinSprichtFriendly:<<
-Danke für das Gespräch. Ich gebe Ihnen Bescheid, sobald dieser erscheint.
->>--<<
->>Ende<<
-
-
-:: Betonung {"position":"975,1400","size":"100,100"}
->>JournalistinSprichtFriendly:<<
-Wir werden uns auf die wichtigen Aspekte Ihrer Gründungsgeschichte konzentrieren.
->>--<<
->>SpielerinCharakterSpricht:<<
-Ich hoffe, wir können beides so darstellen, dass die Leser*innen einen umfassenden Einblick in meine Entwicklung als Unternehmerin bekommen.
-
-[[Betonung II]]
-
-
-:: Betonung II {"position":"975,1550","size":"100,100"}
->>JournalistinSprichtFriendly:<<
-Wie gesagt, ich kann es Ihnen nicht versprechen, aber werde mich darum bemühen.
-
-[[Danke für Ihre Mühe. Ich freue mich darauf ihn zu lesen.->Artikel Neutral]]
-
-[[Dann wäre es mir doch lieber, wenn Sie ihn nicht schreiben.->Kein Artikel]]
-
-
-:: Dennoch Hauptfokus {"position":"525,2225","size":"100,100"}
+:: Artikel Fokus Geschäftsidee {"position":"1550,1975","size":"100,100"}
 >>JournalistinSprichtFriendly:<<
 Wir werden versuchen, einen ausgewogenen Artikel zu schreiben, der sowohl Ihre Geschäftsidee, als auch Ihren Werdegang als Unternehmerin berücksichtigt.
 >>--<<
@@ -84,40 +50,164 @@ Danke, ich freue mich, den Artikel zu lesen.
 >>Ende<<
 
 
-:: Enttäuscht {"position":"1500,1450","size":"100,100"}
->>JournalistinSprichtDefeated:<<
-Ich finde es bedauerlich, dass Sie nicht bereit sind, in dieser Angelegenheit flexibler zu sein. Geschichten über Menschen, die in gewisser Weise herausragen, sind oft ansprechender für unsere Leser*innen.
-
-[[Wieso könnte es Leser*innen eher ansprechen, wenn der Fokus auf das Geschlecht gelegt wird? Können Sie mir das erklären?->Nachfrage Negativ]]
-
-[[Ich finde es eher bedauernswert, dass Geschichten über Menschen, die herausragen, sich zwangsläufig auf Stereotype stützen.->Kritik]]
+:: Artikel Neutral {"position":"2275,1075","size":"100,100"}
 
 
-:: Erklärung {"position":"775,1700","size":"100,100"}
->>JournalistinSprichtAstonished:<<
+
+:: Ausnahmeerscheinung {"position":"1125,1175","size":"100,100"}
+>>Charakter01SprichtFriendly:<<
+Es ist nicht mein Ziel, Ihre Leistungen zu schmälern, sondern die Realität zu reflektieren. Ihre Geschichte ist besonders, weil sie diese Hürden anschaulich macht.
+
+[[Dann fände ich es gut, wenn es eher um Empowerment als um Sensationalisierung gehen würde.->Empowerment]]
+
+[[Mir geht es auch darum, dass der Fokus nicht auf die Schwierigkeiten gelegt werden sollte.->Umsetzung]]
+
+
+:: Ausnahmefall [Bias] {"position":"1450,1500","size":"100,100"}
+>>Charakter01SprichtLaughing:<<
+Natürlich gibt es herausragende Frauen in der Branche, aber noch viel zu wenige, sodass ich Sie schon noch als Ausnahme bezeichnen würde. Ich will doch nur zeigen, dass Sie etwas Besonderes sind.
+>>--<<
+>>RelevanterBias:Tokenism<<
+
+[[Mir geht es auch darum, dass der Fokus nicht auf die Schwierigkeiten gelegt werden sollte.->Umsetzung]]
+
+[[Legen Sie den Fokus bitte dennoch auf meine Geschäftsidee und meine Leistung.->Artikel Fokus Geschäftsidee]]
+
+[[Ich habe nicht das Gefühl, dass Sie mich verstehen. Mir ist es doch lieber, dass Sie keinen Artikel über mich und mein Unternehmen schreiben.->Kein Artikel b II]]
+
+
+:: Betonung [Bias] {"position":"2300,675","size":"100,100"}
+>>Charakter01SprichtFriendly:<<
+Es ist nicht nur die Geschäftsidee, sondern auch Ihre Geschichte als Frau, die es geschafft hat, in dieser Männerdomäne Fuß zu fassen. 
+>>--<<
+>>Charakter01SprichtLaughing:<<
+Viele Leser*innen würden das unglaublich ermutigend finden. Und ehrlich gesagt, es macht den Artikel auch interessanter. Frauen als Gründerinnen – das ist etwas Besonderes.
+>>--<<
+>>RelevanterBias:Tokenism<<
+
+[[Ich verstehe, dass solche Geschichten oft ansprechend sind, aber mein Hauptanliegen ist immer noch meine Geschäftsidee. Wenn Sie einen Mittelweg finden könnten, wäre das großartig.->Nachvollziehbar]]
+
+[[Ja, ich weiß, dass Geschichten über Frauen, die Unternehmen gründen, Aufmerksamkeit erregen. Aber das bedeutet nicht, dass es mir gefällt, wenn der Fokus auf mir als Frau liegt und das sensationell dargestellt wird.->Fokus: Geschäft]]
+
+
+:: Durchsetzung [Bias Frage] {"position":"1900,1025","size":"100,100"}
+>>Charakter01SprichtSmiling:<<
+Aber wir hören ja oft, dass Frauen in Führungspositionen nicht dieselbe Durchsetzungsfähigkeit haben wie Männer. Sie scheinen das Gegenteil zu beweisen! Es wäre schön, wenn wir das im Artikel hervorheben könnten.
+>>--<<
+>>RelevanterBias:BiasInDerWahrnehmungVonFuehrungsfaehigkeiten<<
+
+[[Frauen müssen ständig beweisen, dass sie genauso kompetent sind wie Männer. Das sollte nicht der Maßstab sein. Ich möchte, dass meine Leistungen für sich sprechen, unabhängig von meinem Geschlecht.->Maßstab]]
+
+[[Der Artikel sollte nicht darüber gehen, ob Frauen genauso durchsetzungsfähig sind wie Männer, sondern über die innovative Arbeit, die ich leiste.->Innovative Arbeit]]
+
+[[Wenn es eher um Empowerment als um Sensationalisierung geht, wäre das für mich in Ordnung.->Empowerment]]
+
+
+:: Empowerment {"position":"1450,1350","size":"100,100"}
+>>Charakter01SprichtLaughing:<<
+Empowerment ist genau das, worum es geht! Viele Frauen würden es sicher hilfreich finden, zu wissen, wie Sie diese Hürde genommen haben.
+
+[[Mir ist es wichtig zu zeigen, dass meine Erfolge auf meiner Kompetenz, meiner Strategie und meinem Engagement basieren – und nicht nur darauf, wie ich als Frau besondere Hürden überwunden habe.->Umsetzung]]
+
+[[Bestimmt, ich möchte aber auch vermeiden, dass mein Erfolg als Ausnahmefall dargestellt wird.->Ausnahmefall]]
+
+
+:: Erklärung [Bias] {"position":"2150,1025","size":"100,100"}
+>>Charakter01SprichtAstonished:<<
 So habe ich das nicht gemeint. Aber unsere Leser*innen finden es interessant, wenn eine so attraktive Frau wie Sie sich mit einer so spannenden Idee selbstständig macht.
-
+>>--<<
+>>RelevanterBias:Mikroaggressionen<<
 
 [[Es geht hier nicht um meine Attraktivität, sondern um meine Gründungsidee. Sie reduzieren mich hier auf mein Aussehen, das mache ich nicht mit.->Kein Artikel b]]
 
 [[Es ist mir doch lieber, wenn Sie keinen Artikel nicht schreiben.->Kein Artikel]]
 
 
-:: Fokus: Geschäft {"position":"800,1550","size":"100,100"}
->>JournalistinSprichtLaughing:<<
+:: Fokus Geschäftsidee [Bias] {"position":"2000,500","size":"100,100"}
+>>Charakter01SprichtDecisionNo:<<
+Da kann ich leider nichts versprechen. Ich kann zwar beim Schreiben darauf achten, aber am Ende entscheidet die Redaktionsleitung, wie die Story erscheinen wird. 
+>>--<<
+>>Charakter01SprichtAstonished:<<
+Soll ich etwa nicht erwähnen, dass Sie eine Frau sind?
+>>--<<
+>>RelevanterBias:UnbewussteBiasInDerKommunikation<<
+
+
+[[Ich möchte nur sichergehen, dass die Betonung nicht auf meinem Geschlecht, sondern auf meiner Geschäftsidee liegt.->Betonung]]
+
+[[Ich möchte nicht, dass meine Gründung aufgrund meines Geschlechts als etwas Besonderes betrachtet wird, sondern aufgrund der Idee.->Sensationalisierung]]
+
+[[Haben Sie das Gefühl, dass meine Geschäftsidee weniger relevant wäre, wenn ich ein Mann wäre? Ich frage mich, warum mein Geschlecht eine so große Rolle spielt.->Was wenn Mann]]
+
+
+:: Fokus Unternehmen {"position":"1600,500","size":"100,100"}
+>>Charakter01SprichtFriendly:<<
+Wissen Sie, es ist eher selten, dass Frauen gründen. Es könnte anderen Frauen Mut machen! Ich denke, es wäre schön, das auch zu erwähnen.
+
+[[Ich würde mich wirklich freuen, wenn meine Geschäftsidee im Vordergrund steht. Wenn Leser*innen sehen, dass das Geschäft im Mittelpunkt steht, wird das auch eine starke Botschaft senden.->Sensationalisierung]]
+
+[[Vielleicht können wir erwähnen, dass es Frauen wie mich gibt, die Unternehmen gründen, aber den Großteil des Artikels wirklich meiner Geschäftsidee widmen?->Frauen gründen]]
+
+[[Haben Sie das Gefühl, dass meine Geschäftsidee weniger relevant wäre, wenn ich ein Mann wäre? Ich frage mich, warum mein Geschlecht eine so große Rolle spielt.->Was wenn Mann]]
+
+
+:: Fokus: Geschäft [Bias] {"position":"2000,875","size":"100,100"}
+>>Charakter01SprichtLaughing:<<
 Ach, nutzen Sie es doch aus und zeigen Sie ihren weiblichen Charme. So könnten Sie viel mehr Aufmerksamkeit erhalten!
 >>--<<
 >>RelevanterBias:Mikroaggressionen<<
 
-[[Nun gut. Was den Artikel betrifft, freue ich mich darauf, ihn zu lesen.->Artikel Neutral]]
+[[Es ist mir wichtig, dass der Fokus nicht auf meinem Geschlecht liegt. Ich möchte, dass meine Gründung und meine Leistungen eigenständig betrachtet werden.->Durchsetzung]]
 
 [[Mir wäre es doch lieber, wenn Sie keinen Artikel schreiben.->Kein Artikel]]
 
 [[Was hat mein Charme mit meiner Unternehmensgründung zu tun? Ich möchte Aufmerksamkeit für meine Gründungsidee und nicht für mein Aussehen. Das ist sexistisch!->Erklärung]]
 
 
-:: Kein Artikel {"position":"975,1700","size":"100,100"}
->>JournalistinSprichtAstonished:<<
+
+
+:: Frauen gründen [Bias] {"position":"1300,700","size":"100,100"}
+>>Charakter01SprichtFriendly:<<
+Aber sehen Sie, Frauen wie Sie sind wirklich etwas Besonderes. Es gibt noch so wenige Frauen, die den Mut haben, in dieser Branche ein Unternehmen zu gründen. Das ist es, was die Menschen inspiriert. 
+>>--<<
+>>Charakter01SprichtProud:<<
+Ihre Geschäftsidee ist natürlich wichtig, aber es ist Ihre Geschichte als Frau, die es geschafft hat, in dieser Männerdomäne Fuß zu fassen, die wirklich heraussticht.
+>>--<<
+>>RelevanterBias:BenevolenterSexismus<<
+>>--<<
+>>RelevanterBias:Tokenism<<
+
+[[Ich bin der Meinung, dass wir genau diese Art von Stereotypen aufbrechen müssen. Frauen können in jeder Branche erfolgreich sein, und das sollte normal sein, nicht außergewöhnlich.->Stereotype aufbrechen]]
+
+[[Ich verstehe, dass solche Geschichten oft ansprechend sind, aber mein Hauptanliegen ist immer noch meine Geschäftsidee. Wenn Sie einen Mittelweg finden könnten, wäre das großartig.->Nachvollziehbar]]
+
+
+:: Innovative Arbeit [Bias] {"position":"1900,1325","size":"100,100"}
+>>Charakter01SprichtProud:<<
+Stimmt. Es ist auch unglaublich, was Sie erreicht haben! Ich bin sicher, dass Sie dabei auch viele Unterstützer*innen hatten.
+>>--<<
+>>Charakter01SprichtSmiling:<<
+Vielleicht könnten wir im Artikel ein wenig darauf eingehen, wie Sie es geschafft haben, die richtigen Leute hinter sich zu versammeln, um Ihre Vision zu verwirklichen?
+>>--<<
+>>RelevanterBias:LeistungsattributionsBias<<
+
+[[Ich habe viel moralische Unterstützung erhalten und mich professionell beraten lassen, aber ich habe alleine an meiner Geschäftsidee gearbeitet und diese umgesetzt.->Umsetzung]]
+
+[[Natürlich hatte ich ein großartiges Team, aber es war meine Vision und meine Führung, die das Unternehmen dorthin gebracht haben, wo es heute steht. Der Artikel sollte das widerspiegeln.->Umsetzung]]
+
+
+:: Journalistin {"position":"1700,300","size":"100,100"}
+>>Charakter01SprichtLaughing:<<
+Hallo, das war ein sehr interessanter Pitch! Ich bin von der lokalen Presse und es würde mich freuen, wenn ich etwas über Ihre Geschäftsidee schreiben darf.
+>>--<<
+>>SpielerinCharakterSpricht:<<
+Danke, das wäre toll! Haben Sie eine spezielle Frage für Ihren Artikel?
+
+[[Unternehmensidee]]
+
+
+:: Kein Artikel {"position":"2050,1250","size":"100,100"}
+>>Charakter01SprichtAstonished:<<
 Oh, warum denn nicht?
 
 [[Ich bevorzuge es, keine weiteren Einzelheiten zu nennen oder zu diskutieren.->Keine Gründe]]
@@ -125,48 +215,40 @@ Oh, warum denn nicht?
 [[Ich habe Bedenken, dass der Artikel in eine Richtung gehen könnte, die mir unangenehm ist. Es ist wichtig für mich, dass meine Geschäftsidee und meine Erfolge im Vordergrund stehen, und ich befürchte, dass der Artikel einen anderen Fokus haben könnte.->Kein Artikel Neutral Gründe]]
 
 
-:: Kein Artikel Negativ a {"position":"1500,2225","size":"100,100"}
->>SpielerinCharakterSpricht:<<
-Es geht mir darum, dass ich sicherstellen möchte, dass meine Gründung und meine Arbeit im richtigen Licht dargestellt werden, ohne sensationalisiert zu werden. Da dies anscheinend bei Ihnen nicht möglich ist, möchte ich das Gespräch an dieser Stelle beenden. Auf Wiedersehen.
->>--<<
+:: Kein Artikel Negativ b {"position":"2200,1975","size":"100,100"}
 >>InfoNachrichtWirdAngezeigt:<<
 Du verlässt den Raum.
 >>--<<
 >>Ende<<
 
 
-:: Kein Artikel Negativ b {"position":"675,2225","size":"100,100"}
->>InfoNachrichtWirdAngezeigt:<<
-Du verlässt den Raum.
->>--<<
->>Ende<<
-
-
-:: Kein Artikel Neutral Gründe {"position":"1175,2225","size":"100,100"}
->>JournalistinSprichtFriendly:<<
+:: Kein Artikel Neutral Gründe {"position":"1700,1975","size":"100,100"}
+>>Charakter01SprichtFriendly:<<
 Ach so. Ich verstehe, vielen Dank, für das Gespräch. Dann verbleiben wir einfach so. Ich wünsche Ihnen noch einen schönen Tag. Auf Wiedersehen.
 >>--<<
 >>Ende<<
 
 
-:: Kein Artikel Neutral-Negativ {"position":"1050,2225","size":"100,100"}
->>JournalistinSprichtFriendly:<<
-Auf Wiedersehen.
+:: Kein Artikel Neutral-Negativ {"position":"1875,1975","size":"100,100"}
+>>Charakter01SprichtFriendly:<<
+Nun gut. Auf Wiedersehen.
 >>--<<
 >>Ende<<
 
 
-:: Kein Artikel b {"position":"775,1850","size":"100,100"}
->>JournalistinSprichtAstonished:<<
+:: Kein Artikel b {"position":"2200,1250","size":"100,100"}
+>>Charakter01SprichtAstonished:<<
 Sind Sie sich sicher, dass Sie auf einen Artikel verzichten möchten?
 
 [[Ja, wenn der Fokus nicht auf meinem Unternehmen liegt, verzichte ich lieber.->Kein Artikel b II]]
 
 [[Ja, ich bin mir meiner Sache sicher.->Kein Artikel b II]]
 
+[[Hm, vielleicht können wir mehr  in die Richtung Empowerment gehen?->Empowerment]]
 
-:: Kein Artikel b II {"position":"775,2000","size":"100,100"}
->>JournalistinSprichtDefeated:<<
+
+:: Kein Artikel b II {"position":"2200,1625","size":"100,100"}
+>>Charakter01SprichtDecisionNo:<<
 Ach, wie schade! Und ich dachte, Ihre Geschichte könnte interessant sein. Aber wenn Sie sich nicht für die Aufmerksamkeit interessieren, dann ist das eben so.
 
 [[Ich sehe, dass wir in dieser Angelegenheit keine Übereinstimmung finden werden. Ich denke, es ist am besten, wenn wir das Gespräch hier beenden. Auf Wiedersehen.->Kein Artikel Negativ b]]
@@ -174,237 +256,187 @@ Ach, wie schade! Und ich dachte, Ihre Geschichte könnte interessant sein. Aber 
 [[Wenn Sie die Besonderheit hervorheben möchten, dass ich als Frau gründe, dann gehen Sie bitte auf die strukturellen Schwierigkeiten ein, mit denen Frauen als Gründerinnen auch heute noch zu kämpfen haben, dann bin ich damit einverstanden.->Strukturelle Gründe]]
 
 
-:: Keine Gründe {"position":"1025,1875","size":"100,100"}
->>JournalistinSprichtDefeated:<<
+:: Keine Gründe {"position":"2000,1425","size":"100,100"}
+>>Charakter01SprichtDefeated:<<
 Ach, wie schade! Und ich dachte, Ihre Geschichte könnte interessant sein. Aber wenn Sie sich nicht für die Aufmerksamkeit interessieren, dann ist das eben so.
-
 
 [[Wenn Sie die Besonderheit hervorheben möchten, dass ich als Frau gründe, dann gehen Sie bitte auf die strukturellen Schwierigkeiten ein, mit denen Frauen als Gründerinnen auch heute noch zu kämpfen haben, dann bin ich damit einverstanden.->Strukturelle Gründe]]
 
 [[Ich habe meine Entscheidung getroffen. Auf Wiedersehen.->Kein Artikel Neutral-Negativ]]
 
 
-:: Kommentar {"position":"1625,1975","size":"100,100"}
->>JournalistinSprichtCritical:<<
-Sie wissen anscheinend nicht so viel über Journalismus. Ich habe aber nun nicht die Zeit, um Sie aufzuklären.
+:: Konfrontativ {"position":"1950,1625","size":"100,100"}
+>>Charakter01SprichtAstonished:<<
+Ach, tue ich das?
 >>--<<
->>SpielerinCharakterSpricht:<<
-Ich sehe, dass wir in dieser Angelegenheit keine Übereinstimmung finden werden. Ich denke, es ist am besten, wenn wir das Gespräch hier beenden. Auf Wiedersehen.
->>--<<
->>InfoNachrichtWirdAngezeigt:<<
-Du verlässt den Raum.
->>--<<
->>Ende<<
+>>Charakter01SprichtCritical:<<
+Ich meine es aber nur gut mit Ihnen. Schließlich bin ich diejenige, die weiß, was unsere Zielgruppe lesen möchte.
+
+[[Ich denke, wir kommen nicht auf einen gleichen Nenner. Mir ist es doch lieber, dass Sie keinen Artikel über mich und mein Unternehmen schreiben.->Kein Artikel b II]]
+
+[[Nun gut, aber legen Sie den Fokus bitte dennoch auf meine Geschäftsidee und meine Leistung.->Artikel Fokus Geschäftsidee]]
 
 
-:: Kritik {"position":"1550,1750","size":"100,100"}
->>JournalistinSprichtFriendly:<<
-Ihre Geschäftsidee ist sicherlich beeindruckend, aber lassen Sie uns ehrlich sein, die Leser*innen werden sich eher für Ihre äußere Erscheinung und Ihren Charme interessieren. Das ist nun mal die Realität.
+:: Maßstab {"position":"1725,1175","size":"100,100"}
+>>Charakter01SprichtCritical:<<
+Es gibt diese Maßstäbe nun mal. Und es wäre doch spannend für die Leser*innen zu erfahren, wie Sie sich als Frau gegen diese Maßstäbe behaupten.
+
+
+[[Indem wir diese Maßstäbe immer wieder erwähnen, verstärken wir sie nur. Warum konzentrieren wir uns nicht auf die innovativen Aspekte meines Unternehmens?->Innovative Arbeit]]
+
+[[Vielleicht wäre es an der Zeit, diese Maßstäbe zu hinterfragen, statt sie als gegeben hinzunehmen. Was meinen Sie?->Maßstäbe hinterfragen]]
+
+
+:: Maßstäbe hinterfragen [Bias] {"position":"1725,1325","size":"100,100"}
+>>Charakter01SprichtFriendly:<<
+Es ist schade, dass solche Maßstäbe existieren, aber sie prägen die Realität vieler Frauen. Ihre Darstellung, wie Sie diese Maßstäbe herausfordern und sich gegen sie behaupten, könnte inspirierend und aufschlussreich für unsere Leser*innen sein.
 >>--<<
->>RelevanterBias:Mikroaggressionen<<
+>>RelevanterBias:BenevolenterSexismus<<
+
+[[Ich habe nicht das Gefühl, dass Sie mich verstehen. Mir ist es doch lieber, dass Sie keinen Artikel über mich und mein Unternehmen schreiben.->Kein Artikel b II]]
+
+[[Mir geht es auch darum, dass der Fokus nicht auf die Schwierigkeiten gelegt werden sollte.->Umsetzung]]
+
+[[Nun gut, aber legen Sie den Fokus bitte dennoch auf meine Geschäftsidee und meine Leistung.->Artikel Fokus Geschäftsidee]]
+
+
+:: Mehr Sichtbarkeit für Gründerinnen [Bias] {"position":"2400,500","size":"100,100"}
+>>Charakter01SprichtCritical:<<
+Das wird allerdings nicht so gut bei den Leser*innen ankommen. Ich denke, unter diesen Umständen wird sich die Redaktion für eine andere Story entscheiden.
 >>--<<
 >>RelevanterBias:BiasInMedienUndWerbung<<
 
-[[Was hat mein Charme mit meiner Unternehmensgründung zu tun? Ich möchte Aufmerksamkeit für meine Gründungsidee und nicht für mein Aussehen. Das ist sexistisch!->Kein Artikel Negativ a]]
+[[Dennoch ist es mir wichtig, meine Geschäftsidee und meine Leistungen angemessen darzustellen. Wenn sich die Gelegenheit ergibt, hoffe ich, dass wir die Geschichte in der gewünschten Weise erzählen können.->Betonung]]
 
-[[Als Unternehmerin ist es meine Überzeugung, dass meine Arbeit und meine Ideen die Anerkennung verdienen sollten, und ich werde mich nicht damit abfinden, auf mein Äußeres oder meinen Charme reduziert zu werden.->Kommentar]]
+[[Ich würde mich wirklich freuen, wenn meine Geschäftsidee im Vordergrund steht. Wenn Leser*innen sehen, dass das Geschäft im Mittelpunkt steht, wird das auch eine starke Botschaft senden.->Sensationalisierung]]
 
-
-:: Nachfrage Fokus {"position":"1325,1550","size":"100,100"}
->>JournalistinSprichtCritical:<<
-Wie gesagt, das ist von der Redaktion abhängig, aber so würde es weniger Leser*innen ansprechen.
+[[Haben Sie das Gefühl, dass meine Geschäftsidee weniger relevant wäre, wenn ich ein Mann wäre? Ich frage mich, warum mein Geschlecht eine so große Rolle spielt.->Was wenn Mann]]
 
 
-[[Wieso könnte es Leser*innen eher ansprechen, wenn der Fokus auf das Geschlecht gelegt wird? Können Sie mir das erklären?->Nachfrage Negativ]]
-
-[[Okay, ich verstehe. Dann bin ich gespannt auf den Artikel.->Artikel Neutral]]
-
-
-:: Nachfrage Negativ {"position":"1400,1750","size":"100,100"}
->>JournalistinSprichtFriendly:<<
+:: Nachfrage Positiv [Frage Bias] {"position":"1600,1025","size":"100,100"}
+>>Charakter01SprichtFriendly:<<
 Geschichten über Frauen, die Unternehmen gründen, werden oft als inspirierend angesehen, weil sie Geschlechterstereotypen herausfordern und Frauen in unterrepräsentierten Branchen oder Positionen hervorheben. 
+>>--<<
+>>Charakter01SprichtFriendly:<<
+Dies kann Leser*innen ansprechen, die nach Vorbildern suchen. Es geht darum, Geschichten zu erzählen, die Menschen ermutigen und motivieren, Geschlechterbarrieren zu überwinden.
 >>--<<
 >>RelevanterBias:Tokenism<<
 >>--<<
 >>RelevanterBias:BiasInMedienUndWerbung<<
 
-[[Nachfrage Negativ II]]
+[[Das verstehe ich und fände es gut, wenn es eher um Empowerment als um Sensationalisierung gehen würde.->Empowerment]]
+
+[[Dennoch ist mir in einem Artikel wichtig, dass der Fokus auf meiner Geschäftsidee und meinen Leistungen liegt.->Artikel Fokus Geschäftsidee]]
+
+[[Mir wäre es doch lieber, wenn Sie keinen Artikel schreiben.->Kein Artikel]]
 
 
-:: Nachfrage Negativ II {"position":"1400,1925","size":"100,100"}
->>JournalistinSprichtFriendly:<<
-Dies kann Leser*innen ansprechen, die nach Vorbildern suchen. Es geht darum, Geschichten zu erzählen, die Menschen ermutigen und motivieren, Geschlechterbarrieren zu überwinden.
-
-[[Okay, ich verstehe. Dann bin ich gespannt auf den Artikel.->Artikel Neutral]]
-
-[[Wenn Sie die Besonderheit hervorheben möchten, dass ich als Frau gründe, dann gehen Sie bitte auf die strukturellen Schwierigkeiten ein, mit denen Frauen als Gründerinnen auch heute noch zu kämpfen haben, dann bin ich damit einverstanden.->Strukturelle Gründe]]
-
-
-:: Nachfrage Positiv {"position":"575,1675","size":"100,100"}
->>JournalistinSprichtFriendly:<<
-Geschichten über Frauen, die Unternehmen gründen, werden oft als inspirierend angesehen, weil sie Geschlechterstereotypen herausfordern und Frauen in unterrepräsentierten Branchen oder Positionen hervorheben. 
->>--<<
->>RelevanterBias:Tokenism<<
->>--<<
->>RelevanterBias:BiasInMedienUndWerbung<<
-
-[[Nachfrage Positiv II]]
-
-
-:: Nachfrage Positiv II {"position":"550,1825","size":"100,100"}
->>JournalistinSprichtFriendly:<<
-Dies kann Leser*innen ansprechen, die nach Vorbildern suchen. Es geht darum, Geschichten zu erzählen, die Menschen ermutigen und motivieren, Geschlechterbarrieren zu überwinden.
-
-[[Das verstehe ich und finde das toll.->Vorbild]]
-
-[[Dennoch ist mir in einem Artikel wichtig, dass der Fokus auf meiner Geschäftsidee und meinen Leistungen liegt.->Dennoch Hauptfokus]]
-
-
-:: Nachvollziehbar {"position":"650,1475","size":"100,100"}
->>JournalistinSprichtCritical:<<
+:: Nachvollziehbar {"position":"1800,875","size":"100,100"}
+>>Charakter01SprichtCritical:<<
 Nun ja, ich denke, wir werden sehen, wie es läuft. Ich werde versuchen, einen Kompromiss zu finden, aber seien Sie nicht überrascht, wenn das Geschlecht doch im Mittelpunkt steht.
 
-[[Es ist mir wichtig, dass der Fokus nicht auf meinem Geschlecht liegt. Ich möchte, dass meine Gründung und meine Leistungen eigenständig betrachtet werden.->Weiter ausführen]]
+[[Es ist mir wichtig, dass der Fokus nicht auf meinem Geschlecht liegt. Ich möchte, dass meine Gründung und meine Leistungen eigenständig betrachtet werden.->Durchsetzung]]
 
 [[Wieso könnte es Leser*innen eher ansprechen, wenn der Fokus auf das Geschlecht gelegt wird? Können Sie mir das erklären?->Nachfrage Positiv]]
 
 
-:: Neutral a {"position":"500,1100","size":"100,100"}
->>JournalistinSprichtFriendly:<<
-Vielen Dank für die Beantwortung der Frage. Der Artikel wird am Sonntag erscheinen.
-
-[[Es ist mir wichtig, dass der Fokus nicht auf meinem Geschlecht liegt. Ich möchte, dass meine Gründung und meine Leistungen eigenständig betrachtet werden.->Weiter ausführen]]
-
-[[Wieso könnte es Leser*innen eher ansprechen, wenn der Fokus auf das Geschlecht gelegt wird? Können Sie mir das erklären?->Nachfrage Positiv]]
-
-
-:: Neutral b {"position":"900,1100","size":"100,100"}
->>JournalistinSprichtDefeated:<<
-Da kann ich leider nichts versprechen. Ich kann zwar beim Schreiben darauf achten, aber am Ende entscheidet die Redaktionsleitung, wie die Story erscheinen wird. 
-
-[[Neutral b II]]
-
-
-:: Neutral b II {"position":"900,1250","size":"100,100"}
->>JournalistinSprichtAstonished:<<
-Soll ich etwa nicht erwähnen, dass Sie eine Frau sind?
-
-[[Ich möchte nur sichergehen, dass die Betonung nicht auf meinem Geschlecht, sondern auf meiner Geschäftsidee liegt.->Betonung]]
-
-[[Ich möchte nicht, dass meine Gründung aufgrund meines Geschlechts als etwas Besonderes betrachtet wird, sondern aufgrund der Idee.->Sensationalisierung]]
-
-
-:: Sensationalisierung {"position":"800,1400","size":"100,100"}
->>JournalistinSprichtAstonished:<<
+:: Sensationalisierung [Bias] {"position":"1800,700","size":"100,100"}
+>>Charakter01SprichtAstonished:<<
 Die Tatsache, dass Sie eine Frau sind, macht Ihre Geschichte doch viel interessanter. Die Leser*innen lieben solche Geschichten!
 >>--<<
 >>RelevanterBias:Tokenism<<
 
 [[Ich verstehe, dass solche Geschichten oft ansprechend sind, aber mein Hauptanliegen ist immer noch meine Geschäftsidee. Wenn Sie einen Mittelweg finden könnten, wäre das großartig.->Nachvollziehbar]]
 
-[[Ja, ich weiß, dass Geschichten über Frauen, die Unternehmen gründen, Aufmerksamkeit erregen. Aber das bedeutet nicht, dass es mir gefällt, wenn der Fokus auf mir als Frau liegt und das sensationell dargestellt wird. Es geht mir mehr um das, was ich aufgebaut habe.->Fokus: Geschäft]]
+[[Ja, ich weiß, dass Geschichten über Frauen, die Unternehmen gründen, Aufmerksamkeit erregen. Aber das bedeutet nicht, dass es mir gefällt, wenn der Fokus auf mir als Frau liegt und das sensationell dargestellt wird.->Fokus: Geschäft]]
 
 
-:: Strukturelle Gründe {"position":"800,2225","size":"100,100"}
->>JournalistinSprichtAstonished:<<
-Ach, so wichtig ist Ihnen das? Ich werde das abklären müssen und gebe Ihnen dann nochmal Bescheid?
+:: Stereotype aufbrechen [Bias] {"position":"1125,875","size":"100,100"}
+>>Charakter01SprichtFriendly:<<
+Genau, es ist noch nicht die Norm, dass Frauen in dieser Branche erfolgreich sind. Deshalb ist Ihre Geschichte besonders wichtig. Vielleicht inspiriert es andere Frauen, denselben Weg zu gehen. Ihre Geschäftsidee ist beeindruckend, aber es ist Ihre Reise als Frau, die den Unterschied macht.
+>>--<<
+>>RelevanterBias:Tokenism<<
+
+[[Es ist mir wichtig, dass der Fokus nicht auf meinem Geschlecht liegt. Ich möchte, dass meine Gründung und meine Leistungen eigenständig betrachtet werden.->Durchsetzung]]
+
+[[Ich denke, dass wir genau dadurch, dass wir Frauen als 'besonders' hervorheben, die Normalisierung behindern.->behindert Normalisierung]]
+
+[[Mir wäre es doch lieber, wenn Sie keinen Artikel schreiben.->Kein Artikel]]
+
+
+:: Strukturelle Gründe {"position":"2000,1825","size":"100,100"}
+>>Charakter01SprichtAstonished:<<
+Ach, so wichtig ist Ihnen das? Ich werde das abklären müssen und gebe Ihnen dann nochmal Bescheid.
 
 [[Ja, mir ist das sehr wichtig. Es sollte nicht der Eindruck entstehen, dass die Schwierigkeiten vereinzelte individuelle Probleme sind.->Ansonsten kein Artikel]]
 
 [[Das wäre toll. Sollte es nicht möglich sein, möchte ich lieber, dass kein Artikel geschrieben wird.->Ansonsten kein Artikel]]
 
 
-:: Umentschieden {"position":"1275,1400","size":"100,100"}
->>JournalistinSprichtFriendly:<<
-Schön, dass Sie sich umentschieden haben. Wir werden unser Bestes tun, um eine inspirierende Geschichte über Ihr Unternehmen zu erzählen.
+:: Subtil {"position":"1775,1625","size":"100,100"}
+>>Charakter01SprichtCritical:<<
+Natürlich, ich verstehe, dass Sie möchten, dass der Artikel sich auf Ihre Geschäftsidee konzentriert. Allerdings ist es auch wichtig, die Realität darzustellen, dass Frauen oft größere Hürden überwinden müssen, um erfolgreich zu sein.
 
-[[Können Sie nicht trotzdem versuchen, darauf zu achten, dass Sie den Fokus auf das Unternehmen an sich legen?->Nachfrage Fokus]]
+[[Wenn Sie die Besonderheit hervorheben möchten, dass ich als Frau gründe, dann gehen Sie bitte auf die strukturellen Schwierigkeiten ein, mit denen Frauen als Gründerinnen auch heute noch zu kämpfen haben, dann bin ich damit einverstanden.->Strukturelle Gründe]]
 
-[[Danke, ich freue mich den Artikel zu lesen.->Artikel Positiv]]
+[[Nun gut, aber legen Sie den Fokus bitte dennoch auf meine Geschäftsidee und meine Leistung.->Artikel Fokus Geschäftsidee]]
 
-
-:: Verständnisvoll {"position":"1200,1250","size":"100,100"}
->>JournalistinSprichtAstonished:<<
-Sind Sie sich sicher, dass Sie auf einen Artikel verzichten möchten?
-
-[[Ja, wenn der Fokus nicht auf meinem Unternehmen liegt, verzichte ich lieber.->Verzicht]]
-
-[[Hm, ich fände es doch besser, wenn ein Artikel erscheinen würde.->Umentschieden]]
+[[Wie gesagt, möchte ich nicht, dass es um Schwierigkeiten und Hürden geht, sondern rein um meine Geschäftsidee und meine Erfolge. Deswegen möchte ich lieber nicht, dass Sie einen Artikel schreiben.->Kein Artikel Neutral Gründe]]
 
 
-:: Verzicht {"position":"1125,1400","size":"100,100"}
->>JournalistinSprichtQuestioning:<<
-Wie können Sie nur keinen Artikel wollen?
-
-[[Ich bevorzuge es, keine weiteren Einzelheiten zu nennen oder zu diskutieren.->Keine Gründe]]
-
-[[Ich habe Bedenken, dass der Artikel in eine Richtung gehen könnte, die mir unangenehm ist. Es ist wichtig für mich, dass meine Geschäftsidee und meine Erfolge im Vordergrund stehen, und ich befürchte, dass der Artikel einen anderen Fokus haben könnte.->Kein Artikel Neutral Gründe]]
-
-
-:: Vorbild {"position":"400,2225","size":"100,100"}
->>JournalistinSprichtFriendly:<<
-Ich denke auch, dass Sie für viele ein Vorbild sein werden und andere Frauen dazu inspirieren werden auch zu gründen!
+:: Umsetzung [Bias] {"position":"1775,1475","size":"100,100"}
+>>Charakter01SprichtAstonished:<<
+Das überrascht mich ein wenig. Die meisten Frauen, mit denen ich gesprochen habe, betonen oft, wie wichtig es ist, die Schwierigkeiten zu zeigen, die sie überwunden haben.
 >>--<<
->>SpielerinCharakterSpricht:<<
-Danke, ich freue mich, den Artikel zu lesen.
->>--<<
->>Ende<<
+>>RelevanterBias:Bestaetigungsverzerrung<<
+
+[[Ich denke, das liegt an den Fragen, die Frauen gestellt werden. Diese fokussieren sich häufig auf die Hürden.->Subtil]]
+
+[[Nun, Sie drängen ja auch bspw. mich dazu den Fokus auf die Schwierigkeiten und mein Geschlecht zu legen.->Konfrontativ]]
 
 
-:: Weiter {"position":"900,500","size":"100,100"}
->>InfoNachrichtWirdAngezeigt:<<
-Nachdem du deine Geschäftsidee vor einem Publikum gepitcht hast, stellst du dich an einen Tisch mit anderen Gästen, um mit ihnen zu reden. 
-
-Du wirst von jemanden angesprochen.
-
-[[Weiter II]]
-
-
-:: Weiter II {"position":"900,625","size":"100,100"}
->>JournalistinSprichtLaughing:<<
-Hallo, das war ein sehr interessanter Pitch! Ich bin von der lokalen Presse und es würde mich freuen, wenn ich etwas über Ihre Geschäftsidee schreiben darf.
->>--<<
->>SpielerinCharakterSpricht:<<
-Danke, das wäre toll! Haben Sie eine spezielle Frage für Ihren Artikel?
-
-[[Weiter III]]
-
-
-:: Weiter III [Check] {"position":"900,750","size":"100,100"}
->>JournalistinSprichtFriendly:<<
+:: Unternehmensidee {"position":"1850,300","size":"100,100"}
+>>Charakter01SprichtFriendly:<<
 Ja. Wann kamen Sie auf die Idee für Ihr Unternehmen?
 >>--<<
 >>FreitextEingabe<<
 Unternehmensideezeitpunkt: Wann kamen Sie auf die Idee für Ihr Unternehmen?
 >>--<<
 >>SpielerinCharakterSpricht:<<>Unternehmensideezeitpunkt<
-[[Weiter IV]]
+
+[[Unternehmerin]]
 
 
-:: Weiter IV {"position":"900,875","size":"100,100"}
->>JournalistinSprichtLaughing:<<
+:: Unternehmerin {"position":"2000,300","size":"100,100"}
+>>Charakter01SprichtLaughing:<<
 Das ist spannend. Eine Frau, die ein Unternehmen gründet. Das wird sicher viele Leser*innen interessieren.
 >>--<<
 >>RelevanterBias:Tokenism<<
 
-[[Das wäre toll. Wann wird der Artikel erscheinen?->Neutral a]]
+[[Mir ist es wichtig, dass meine Geschäftsidee in dem Artikel betont wird. Ist das machbar?->Fokus Geschäftsidee]]
 
-[[Mir ist es wichtig, dass meine Geschäftsidee in dem Artikel betont wird. Ist das machbar?->Neutral b]]
+[[Wäre es möglich, dass mein Geschlecht nicht allzu sehr in dem Artikel hervorgehoben wird? Ich möchte für mein Unternehmen Aufmerksamkeit bekommen und nicht, weil ich eine Frau bin.->Fokus Unternehmen]]
 
-[[Wäre es möglich, dass mein Geschlecht nicht allzu sehr in dem Artikel hervorgehoben wird? Ich möchte für mein Unternehmen Aufmerksamkeit bekommen und nicht, weil ich eine Frau bin.->Ablehnend]]
-
-
-:: Weiter ausführen {"position":"400,1650","size":"100,100"}
->>JournalistinSprichtFriendly:<<
-Ich werde versuchen sicherzustellen, dass wir uns im Artikel auf Ihre Geschäftsidee und Ihre Leistungen konzentrieren, wie von Ihnen gewünscht. 
-[[Weiter ausführen II]]
+[[Es ist großartig, dass Frauen als Gründerinnen mehr Sichtbarkeit bekommen. Aber für mich ist es wichtig, dass meine Arbeit für sich selbst spricht. Können wir über meine Geschäftsidee sprechen?->Mehr Sichtbarkeit für Gründerinnen]]
 
 
-:: Weiter ausführen II {"position":"250,2225","size":"100,100"}
->>JournalistinSprichtFriendly:<<
-Ich kann es Ihnen leider nicht versprechen, da es von der Redaktionsleitung abhängig ist.
->>--<<
->>SpielerinCharakterSpricht:<<
-Ich verstehe, danke für Ihre Bemühung. Ich freue mich auf den Artikel.
->>--<<
->>Ende<<
+:: Verzicht {"position":"2325,875","size":"100,100"}
+
+
+
+:: Was wenn Mann {"position":"2000,700","size":"100,100"}
+>>Charakter01SprichtCritical:<<
+Es ist einfach selten, dass wir über Frauen in dieser Branche berichten. Ihre Geschichte als eine der wenigen Frauen, die es geschafft haben, könnte dem Artikel eine wertvolle Perspektive verleihen.
+
+[[Ich verstehe, dass Frauen in meiner Branche selten sind, aber der Wert meiner Geschäftsidee sollte unabhängig vom Geschlecht sichtbar sein. Vielleicht können wir uns darauf konzentrieren, was meine Idee einzigartig macht.->Nachvollziehbar]]
+
+[[Ich finde es wichtig, dass mein Geschlecht nicht die Hauptrolle im Artikel spielt. Der Erfolg meines Unternehmens basiert auf der Geschäftsidee und der Umsetzung.->Fokus: Geschäft]]
+
+
+:: behindert Normalisierung {"position":"1125,1025","size":"100,100"}
+>>Charakter01SprichtQuestioning:<<
+Wenn wir nicht darüber berichten, wie herausfordernd es ist, als Frau in einem männlich dominierten Bereich erfolgreich zu sein, ignorieren wir die Hürden, die Sie überwunden haben. Das kann nicht der richtige Weg sein.
+
+[[Es geht nicht darum, die Herausforderungen zu ignorieren, sondern darum, Frauen nicht ständig als Ausnahmeerscheinungen darzustellen.->Nachfrage Positiv]]
+
+[[Es geht nicht darum, die Herausforderungen zu ignorieren, sondern darum, Frauen nicht ständig als Ausnahmeerscheinungen darzustellen.->Ausnahmeerscheinung]]

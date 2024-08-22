@@ -42,7 +42,6 @@ public class PlayerDataManager
 
     public void SavePlayerData(string key, string content)
     {
-        Debug.Log("Saved key: " + key + ", content: " + content);
         PlayerPrefs.SetString(key, content);
         PlayerPrefs.Save();
         AddKeyToKeyList(key);
@@ -76,7 +75,6 @@ public class PlayerDataManager
         if (!playerPrefs.ContainsKey(playerPref))
         {
             playerPrefs.Add(playerPref, ReadPlayerData(playerPref));
-            Debug.Log("Added key: " + playerPref);
         }
         else
         {
@@ -95,7 +93,6 @@ public class PlayerDataManager
         }
         else
         {
-            Debug.Log("Asked for key: " + key);
             // Überprüft, ob ein Wert für den angegebenen Schlüssel existiert
             if (PlayerPrefs.HasKey(key))
             {
