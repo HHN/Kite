@@ -52,7 +52,7 @@ public class FoundersBubbleSceneController : SceneController
         isIntroNovelNovelInVersionContained = true;
 
         novelListButton.onClick.AddListener(delegate { OnNovelListButton(); });
-        searchButton.onClick.AddListener(delegate { OnSearchButton(); });
+        //searchButton.onClick.AddListener(delegate { OnSearchButton(); });
         settingsButton.onClick.AddListener(delegate { OnSettingsButton(); });
     }
 

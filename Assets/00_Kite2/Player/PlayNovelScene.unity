@@ -927,10 +927,10 @@ RectTransform:
   m_Father: {fileID: 563275608}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 540, y: -265}
+  m_SizeDelta: {x: 1080, y: 330}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &498441981
 MonoBehaviour:
@@ -3533,6 +3533,7 @@ MonoBehaviour:
   - {fileID: 781856241913721907, guid: 0befadf77118e9847b85864f275358d1, type: 3}
   - {fileID: 781856241913721907, guid: f5ab4b7480ff0a149a5da5fbdaab5936, type: 3}
   - {fileID: 781856241913721907, guid: dc6cfdb0bff4a3940905b72a1dd9c28e, type: 3}
+  - {fileID: 781856241913721907, guid: 5e38a25fb9fcff147bf0a55efe66d21b, type: 3}
   closeButton: {fileID: 0}
   leaveGameAndGoBackMessageBoxObject: {fileID: 0}
   leaveGameAndGoBackMessageBox: {fileID: 5629918238507184917, guid: 52d64ed2a3cd0524ca7296e9ccb5ddca, type: 3}
@@ -3554,6 +3555,8 @@ MonoBehaviour:
   characterPrefabMayer: {fileID: 1465545687914413273, guid: aa2ae7c4c5e34ea48ba637f2c59e7998, type: 3}
   characterPrefabReporterin: {fileID: 1465545687914413273, guid: 81edc9f9eabdbad40a81d9c419fd4022, type: 3}
   characterPrefabVermieter: {fileID: 1465545687914413273, guid: 83e08fc87f63f5148aa4638d1f30a6f2, type: 3}
+  characterPrefabMutter: {fileID: 1465545687914413273, guid: fe0cc47faafc1e948a15badc475ba62d, type: 3}
+  characterPrefabVater: {fileID: 1465545687914413273, guid: aee370a96d4a69c4fa663f6e1505d316, type: 3}
   isWaitingForConfirmation: 0
   nextEventToPlay:
     id: 

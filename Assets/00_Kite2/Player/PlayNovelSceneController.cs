@@ -24,6 +24,8 @@ public class PlayNovelSceneController : SceneController
     [SerializeField] private GameObject characterPrefabMayer;
     [SerializeField] private GameObject characterPrefabReporterin;
     [SerializeField] private GameObject characterPrefabVermieter;
+    [SerializeField] private GameObject characterPrefabMutter;
+    [SerializeField] private GameObject characterPrefabVater;
     [SerializeField] private bool isWaitingForConfirmation = false;
     [SerializeField] private Dictionary<string, VisualNovelEvent> novelEvents = new Dictionary<string, VisualNovelEvent>();
     [SerializeField] private VisualNovelEvent nextEventToPlay;
