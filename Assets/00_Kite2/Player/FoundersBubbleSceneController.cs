@@ -147,7 +147,7 @@ public class FoundersBubbleSceneController : SceneController
 
     private void OnNovelListButton()
     {
-        DisplayInfoMessage("Diese Funktionalit‰ten sind derzeit noch nicht verf¸gbar, da sich die App noch in der Entwicklung befindet. Wir arbeiten daran, die volle Funktionalit‰t bald bereitzustellen.");
+        DisplayInfoMessage("Diese Funktionalit√§ten sind derzeit noch nicht verf√ºgbar, da sich die App noch in der Entwicklung befindet. Wir arbeiten daran, die volle Funktionalit√§t bald bereitzustellen.");
     }
 
     private void OnSettingsButton()
