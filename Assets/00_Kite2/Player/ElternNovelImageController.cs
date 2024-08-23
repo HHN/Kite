@@ -17,95 +17,117 @@ public class ElternNovelImageController : NovelImageController
     [SerializeField] private GameObject decoKanneContainer;
     [SerializeField] private GameObject decoLampePrefab;
     [SerializeField] private GameObject decoLampeContainer;
-    [SerializeField] private GameObject characterPrefab;
-    [SerializeField] private GameObject characterContainer;
-    [SerializeField] private AudioClip decoGlasAudio;
-    [SerializeField] private AudioClip decoVaseAudio;
-    [SerializeField] private Sprite[] animationFramesVase;
-    [SerializeField] private Sprite[] animationFramesGlas;
-    [SerializeField] private Sprite[] faceSprites;   
-    private GameObject background = null;
-    private GameObject desk = null;
-    private GameObject decoGlas = null;
-    private GameObject decoVase = null;
-    private GameObject character = null; 
+    [SerializeField] private AudioClip decoTasseAudio;
+    [SerializeField] private AudioClip decoKanneAudio;
+    [SerializeField] private AudioClip decoLampeOnAudio;
+    [SerializeField] private AudioClip decoLampeOffAudio;
+    [SerializeField] private Sprite[] animationFramesTasse1;
+    [SerializeField] private Sprite[] animationFramesTasse2;
+    [SerializeField] private Sprite[] animationFramesKanne;
+    [SerializeField] private Sprite decoLampeOff;
+    [SerializeField] private Sprite decoLampeOn;
+    private bool decoLampeStatus = true;
 
     public override void SetBackground()
     {
-        DestroyBackground();
-        InstantiateBackground();
         
-        //RectTransform decoVaseRectTransform = decoVaseContainer.GetComponent<RectTransform>();
-        //if (decoVaseRectTransform != null && canvasRect != null)
-        //{
-        //    decoVaseRectTransform.anchoredPosition = new Vector2(-canvasRect.rect.width * 0.1f, canvasRect.rect.height * 0.12f);
-        //    decoVaseRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.09f, canvasRect.rect.height * 0.265f);
-        //}
-        //decoVaseRectTransform.anchoredPosition = new Vector2(-canvasRect.rect.width * 0.1f, canvasRect.rect.height * 0.12f);
-        //decoVaseRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.09f, canvasRect.rect.height * 0.265f);
-
-        //RectTransform decoGlasRectTransform = decoGlasContainer.GetComponent<RectTransform>();
-        //if (decoGlasRectTransform != null && canvasRect != null)
-        //{
-        //    decoGlasRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.21f, canvasRect.rect.height * 0.08f);
-        //    decoGlasRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.064f, canvasRect.rect.height * 0.08f);
-        //}
-
-        RectTransform deskRectTransform = deskContainer.GetComponent<RectTransform>();
-        if (deskRectTransform != null && canvasRect != null)
-        {
-            deskRectTransform.anchoredPosition = new Vector2(0, -canvasRect.rect.height * 0.05f);
-            deskRectTransform.sizeDelta = new Vector2(canvasRect.rect.width * 0.35f, canvasRect.rect.height * 0.25f);
-        }
         
         NovelColorManager.Instance().SetCanvasHeight(canvasRect.rect.height);
         NovelColorManager.Instance().SetCanvasWidth(canvasRect.rect.width);
     }
 
-    public override void SetCharacter()
-    {
-        DestroyCharacter();
-        character = Instantiate(characterPrefab, characterContainer.transform);
-        RectTransform characterRectTransform = characterContainer.GetComponent<RectTransform>();
-        characterRectTransform.anchoredPosition = new Vector2(-canvasRect.rect.width * 0.1f, 0);
-        characterRectTransform.sizeDelta = new Vector2(canvasRect.rect.width * 0.25f, canvasRect.rect.height * 1f);
-        characterController = character.GetComponent<CharacterController>();
-    }
+    
 
     public override bool HandleTouchEvent(float x, float y, AudioSource audioSource)
     {
-        //RectTransform decoVaseRectTransform = decoVaseContainer.GetComponent<RectTransform>();
-        //RectTransform decoGlasRectTransform = decoGlasContainer.GetComponent<RectTransform>();
+        RectTransform decoTasse1RectTransform = decoTasse1Container.GetComponent<RectTransform>();
+        RectTransform decoTasse2RectTransform = decoTasse2Container.GetComponent<RectTransform>();
+        RectTransform decoKanneRectTransform = decoKanneContainer.GetComponent<RectTransform>();
+        RectTransform decoLampeRectTransform = decoLampeContainer.GetComponent<RectTransform>();
 
-        //Vector3[] cornersDecoVase = new Vector3[4];
-        //decoVaseRectTransform.GetWorldCorners(cornersDecoVase);
-        //Vector3 bottomLeftDecoVase = cornersDecoVase[0];
-        //Vector3 topRightDecoVase = cornersDecoVase[2];
+        Vector3[] cornersDecoTasse1 = new Vector3[4];
+        decoTasse1RectTransform.GetWorldCorners(cornersDecoTasse1);
+        Vector3 bottomLeftDecoTasse1 = cornersDecoTasse1[0];
+        Vector3 topRightDecoTasse1 = cornersDecoTasse1[2];
 
-        //Vector3[] cornersDecoGlas = new Vector3[4];
-        //decoGlasRectTransform.GetWorldCorners(cornersDecoGlas);
-        //Vector3 bottomLeftDecoGlas = cornersDecoGlas[0];
-        //Vector3 topRightDecoGlas = cornersDecoGlas[2];
-        //if (x >= bottomLeftDecoVase.x && x <= topRightDecoVase.x &&
-        //    y >= bottomLeftDecoVase.y && y <= topRightDecoVase.y)
-        //{
-        //    StartCoroutine(OnDecoVase(audioSource));
-        //    return true;
-        //} else if ( x >= bottomLeftDecoGlas.x && x <= topRightDecoGlas.x &&
-        //            y >= bottomLeftDecoGlas.y && y <= topRightDecoGlas.y)
-        //{
-        //    StartCoroutine(OnDecoGlas(audioSource));
-        //    return true;
-        //}
+        Vector3[] cornersDecoTasse2 = new Vector3[4];
+        decoTasse2RectTransform.GetWorldCorners(cornersDecoTasse2);
+        Vector3 bottomLeftDecoTasse2 = cornersDecoTasse2[0];
+        Vector3 topRightDecoTasse2 = cornersDecoTasse2[2];
+
+        Vector3[] cornersDecoKanne = new Vector3[4];
+        decoKanneRectTransform.GetWorldCorners(cornersDecoKanne);
+        Vector3 bottomLeftDecoKanne = cornersDecoKanne[0];
+        Vector3 topRightDecoKanne = cornersDecoKanne[2];
+
+        Vector3[] cornersDecoLampe = new Vector3[4];
+        decoLampeRectTransform.GetWorldCorners(cornersDecoLampe);
+        Vector3 bottomLeftDecoLampe = cornersDecoLampe[0];
+        Vector3 topRightDecoLampe = cornersDecoLampe[2];
+
+        if (x >= bottomLeftDecoTasse1.x && x <= topRightDecoTasse1.x &&
+            y >= bottomLeftDecoTasse1.y && y <= topRightDecoTasse1.y)
+        {
+            StartCoroutine(OnDecoTasse1(audioSource));
+            return true;
+        }
+        else if (x >= bottomLeftDecoTasse2.x && x <= topRightDecoTasse2.x &&
+                 y >= bottomLeftDecoTasse2.y && y <= topRightDecoTasse2.y)
+        {
+            StartCoroutine(OnDecoTasse2(audioSource));
+            return true;
+        }
+        else if (x >= bottomLeftDecoKanne.x && x <= topRightDecoKanne.x &&
+                 y >= bottomLeftDecoKanne.y && y <= topRightDecoKanne.y)
+        {
+            StartCoroutine(OnDecoKanne(audioSource));
+            return true;
+        }
+        else if (x >= bottomLeftDecoLampe.x && x <= topRightDecoLampe.x &&
+                 y >= bottomLeftDecoLampe.y && y <= topRightDecoLampe.y)
+        {
+            StartCoroutine(OnDecoLampe(audioSource));
+            return true;
+        }
         return false;
     }
 
-    private IEnumerator OnDecoVase(AudioSource audioSource)
+    private IEnumerator OnDecoTasse1(AudioSource audioSource)
     {
         if (audioSource != null)
         {
+            audioSource.clip = decoTasseAudio;
             if (audioSource.clip != null)
             {
+                audioSource.Play();
+                Image image = decoTasse1Prefab.GetComponent<Image>();
+                image.sprite = animationFramesTasse1[1];
+                if (decoTasse1Container.transform.childCount > 0)
+                {
+                    Destroy(decoTasse1Container.transform.GetChild(0).gameObject);
+                }
+                Instantiate(decoTasse1Prefab, decoTasse1Container.transform);
+                yield return new WaitForSeconds(0.5f);
+                image.sprite = animationFramesTasse1[2];
+                if (decoTasse1Container.transform.childCount > 0)
+                {
+                    Destroy(decoTasse1Container.transform.GetChild(0).gameObject);
+                }
+                Instantiate(decoTasse1Prefab, decoTasse1Container.transform);
+                yield return new WaitForSeconds(0.5f);
+                image.sprite = animationFramesTasse1[3];
+                if (decoTasse1Container.transform.childCount > 0)
+                {
+                    Destroy(decoTasse1Container.transform.GetChild(0).gameObject);
+                }
+                Instantiate(decoTasse1Prefab, decoTasse1Container.transform);
+                yield return new WaitForSeconds(0.5f);
+                image.sprite = animationFramesTasse1[0];
+                if (decoTasse1Container.transform.childCount > 0)
+                {
+                    Destroy(decoTasse1Container.transform.GetChild(0).gameObject);
+                }
+                Instantiate(decoTasse1Prefab, decoTasse1Container.transform);
             }
             else
             {
@@ -115,12 +137,135 @@ public class ElternNovelImageController : NovelImageController
         yield return new WaitForSeconds(0f);
     }
 
-    private IEnumerator OnDecoGlas(AudioSource audioSource)
+    private IEnumerator OnDecoTasse2(AudioSource audioSource)
     {
         if (audioSource != null)
         {
+            audioSource.clip = decoTasseAudio;
             if (audioSource.clip != null)
             {
+                audioSource.Play();
+                Image image = decoTasse2Prefab.GetComponent<Image>();
+                image.sprite = animationFramesTasse2[1];
+                if (decoTasse2Container.transform.childCount > 0)
+                {
+                    Destroy(decoTasse2Container.transform.GetChild(0).gameObject);
+                }
+                Instantiate(decoTasse2Prefab, decoTasse2Container.transform);
+                yield return new WaitForSeconds(0.5f);
+                image.sprite = animationFramesTasse2[2];
+                if (decoTasse2Container.transform.childCount > 0)
+                {
+                    Destroy(decoTasse2Container.transform.GetChild(0).gameObject);
+                }
+                Instantiate(decoTasse2Prefab, decoTasse2Container.transform);
+                yield return new WaitForSeconds(0.5f);
+                image.sprite = animationFramesTasse2[3];
+                if (decoTasse2Container.transform.childCount > 0)
+                {
+                    Destroy(decoTasse2Container.transform.GetChild(0).gameObject);
+                }
+                Instantiate(decoTasse2Prefab, decoTasse2Container.transform);
+                yield return new WaitForSeconds(0.5f);
+                image.sprite = animationFramesTasse2[0];
+                if (decoTasse2Container.transform.childCount > 0)
+                {
+                    Destroy(decoTasse2Container.transform.GetChild(0).gameObject);
+                }
+                Instantiate(decoTasse2Prefab, decoTasse2Container.transform);
+            }
+            else
+            {
+                Debug.LogError("AudioClip couldn't be found.");
+            }
+        }
+        yield return new WaitForSeconds(0f);
+    }
+
+    private IEnumerator OnDecoKanne(AudioSource audioSource)
+    {
+        if (audioSource != null)
+        {
+            audioSource.clip = decoKanneAudio;
+            if (audioSource.clip != null)
+            {
+                audioSource.Play();
+                Image image = decoKannePrefab.GetComponent<Image>();
+                image.sprite = animationFramesKanne[1];
+                if (decoKanneContainer.transform.childCount > 0)
+                {
+                    Destroy(decoKanneContainer.transform.GetChild(0).gameObject);
+                }
+                Instantiate(decoKannePrefab, decoKanneContainer.transform);
+                yield return new WaitForSeconds(0.5f);
+                image.sprite = animationFramesKanne[2];
+                if (decoKanneContainer.transform.childCount > 0)
+                {
+                    Destroy(decoKanneContainer.transform.GetChild(0).gameObject);
+                }
+                Instantiate(decoKannePrefab, decoKanneContainer.transform);
+                yield return new WaitForSeconds(0.5f);
+                image.sprite = animationFramesKanne[3];
+                if (decoKanneContainer.transform.childCount > 0)
+                {
+                    Destroy(decoKanneContainer.transform.GetChild(0).gameObject);
+                }
+                Instantiate(decoKannePrefab, decoKanneContainer.transform);
+                yield return new WaitForSeconds(0.5f);
+                image.sprite = animationFramesKanne[0];
+                if (decoKanneContainer.transform.childCount > 0)
+                {
+                    Destroy(decoKanneContainer.transform.GetChild(0).gameObject);
+                }
+                Instantiate(decoKannePrefab, decoKanneContainer.transform);
+            }
+            else
+            {
+                Debug.LogError("AudioClip couldn't be found.");
+            }
+        }
+        yield return new WaitForSeconds(0f);
+    }
+
+    private IEnumerator OnDecoLampe(AudioSource audioSource)
+    {
+        if (audioSource != null)
+        {
+            if (decoLampeStatus)
+            {
+                audioSource.clip = decoLampeOffAudio;
+            }
+            else
+            {
+                audioSource.clip = decoLampeOnAudio;
+            }
+            if (audioSource.clip != null)
+            {
+                audioSource.Play();
+                if (decoLampeStatus)
+                {
+                    Image image = decoLampePrefab.GetComponent<Image>();
+                    image.sprite = decoLampeOff;
+                    if (decoLampeContainer.transform.childCount > 0)
+                    {
+                        Destroy(decoLampeContainer.transform.GetChild(0).gameObject);
+                    }
+                    Instantiate(decoLampePrefab, decoLampeContainer.transform);
+                    decoLampeStatus = false;
+                    yield return new WaitForSeconds(0.5f);
+                }
+                else
+                {
+                    Image image = decoLampePrefab.GetComponent<Image>();
+                    image.sprite = decoLampeOn;
+                    if (decoLampeContainer.transform.childCount > 0)
+                    {
+                        Destroy(decoLampeContainer.transform.GetChild(0).gameObject);
+                    }
+                    Instantiate(decoLampePrefab, decoLampeContainer.transform);
+                    decoLampeStatus = true;
+                    yield return new WaitForSeconds(0.5f);
+                }
                 
             }
             else
@@ -129,41 +274,6 @@ public class ElternNovelImageController : NovelImageController
             }
         }
         yield return new WaitForSeconds(0f);
-    }
-
-    private void DestroyBackground()
-    {
-        if (background != null)
-        {
-            Destroy(background);
-        }
-        if (desk != null)
-        {
-            Destroy(desk);
-        }
-        if (decoGlas != null)
-        {
-            Destroy(decoGlas);
-        }
-        if (decoVase != null)
-        {
-            Destroy(decoVase);
-        }
-    }
-
-    private void InstantiateBackground()
-    {
-        background = Instantiate(backgroundPrefab, backgroundContainer.transform);
-        desk = Instantiate(deskPrefab, deskContainer.transform);
-    }
-
-    public override void DestroyCharacter()
-    {
-        if (character == null)
-        {
-            return;
-        }
-        Destroy(character);
     }
 
     

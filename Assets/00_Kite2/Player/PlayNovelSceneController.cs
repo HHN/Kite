@@ -198,6 +198,13 @@ public class PlayNovelSceneController : SceneController
                 novelImagesController = controllerTransform.GetComponent<PresseNovelImageController>();
                 break;
             }
+            case "Telefonat mit den Eltern":
+                {
+                    GameObject novelImagesInstance = Instantiate(novelVisuals[3], viewPortTransform);
+                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                    novelImagesController = controllerTransform.GetComponent<ElternNovelImageController>();
+                    break;
+                }
             default:
             {
                 GameObject novelImagesInstance = Instantiate(novelVisuals[0], viewPortTransform);
