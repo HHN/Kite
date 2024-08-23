@@ -26,12 +26,15 @@ public class ElternNovelImageController : NovelImageController
     [SerializeField] private Sprite[] animationFramesKanne;
     [SerializeField] private Sprite decoLampeOff;
     [SerializeField] private Sprite decoLampeOn;
-    private bool decoLampeStatus = true;
+    private bool decoLampeStatus = false;
+
+    void Start()
+    {
+        SetInitialSpirtesForImages();
+    }
 
     public override void SetBackground()
     {
-        
-        
         NovelColorManager.Instance().SetCanvasHeight(canvasRect.rect.height);
         NovelColorManager.Instance().SetCanvasWidth(canvasRect.rect.width);
     }
@@ -274,6 +277,41 @@ public class ElternNovelImageController : NovelImageController
             }
         }
         yield return new WaitForSeconds(0f);
+    }
+
+    private void SetInitialSpirtesForImages()
+    {
+        Image image = decoTasse1Prefab.GetComponent<Image>();
+        image.sprite = animationFramesTasse1[0];
+        if (decoTasse1Container.transform.childCount > 0)
+        {
+            Destroy(decoTasse1Container.transform.GetChild(0).gameObject);
+        }
+        Instantiate(decoTasse1Prefab, decoTasse1Container.transform);
+
+        image = decoTasse2Prefab.GetComponent<Image>();
+        image.sprite = animationFramesTasse2[0];
+        if (decoTasse2Container.transform.childCount > 0)
+        {
+            Destroy(decoTasse2Container.transform.GetChild(0).gameObject);
+        }
+        Instantiate(decoTasse2Prefab, decoTasse2Container.transform);
+
+        image = decoKannePrefab.GetComponent<Image>();
+        image.sprite = animationFramesKanne[0];
+        if (decoKanneContainer.transform.childCount > 0)
+        {
+            Destroy(decoKanneContainer.transform.GetChild(0).gameObject);
+        }
+        Instantiate(decoKannePrefab, decoKanneContainer.transform);
+
+        image = decoLampePrefab.GetComponent<Image>();
+        image.sprite = decoLampeOff;
+        if (decoLampeContainer.transform.childCount > 0)
+        {
+            Destroy(decoLampeContainer.transform.GetChild(0).gameObject);
+        }
+        Instantiate(decoLampePrefab, decoLampeContainer.transform);
     }
 
     
