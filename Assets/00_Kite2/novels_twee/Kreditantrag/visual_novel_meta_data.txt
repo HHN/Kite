@@ -25,6 +25,7 @@
 	{"wordToReplace": ">>AngestellteSprichtSmiling:<<", "replaceByValue": ">>Charakter01SprichtSmiling:<<"},
 	{"wordToReplace": ">>AngestellteSprichtRefusing:<<", "replaceByValue": ">>Charakter01SprichtRefusing:<<"},
 	{"wordToReplace": ">>AngestellteSprichtHappy:<<", "replaceByValue": ">>Charakter01SprichtHappy:<<"},
-	{"wordToReplace": ">>GründerinSpricht<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"}
+	{"wordToReplace": ">>GründerinSpricht<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"},
+	{"wordToReplace": ">>SpielerinCharakterSpricht:<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"}
 	]
 }

@@ -1,5 +1,5 @@
 :: StoryTitle
-Telefonat Notarin 0.4
+Telefonat Notarin 0.5
 
 
 :: StoryData
@@ -12,7 +12,7 @@ Telefonat Notarin 0.4
     "Frage": "orange",
     "Bias": "yellow"
   },
-  "zoom": 0.6
+  "zoom": 0.3
 }
 
 
@@ -78,9 +78,9 @@ Guten Tag, bei einer Handelsregistereintragung muss als erstes immer ein Fragebo
 Also, ich kann Ihnen den Fragebogen zusenden und nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?
 
 
-[[Ja, das passt mir gut.|Termin Ja]]
+[[Ja, das passt mir gut.->Termin Ja]]
 
-[[Würde auch Freitag 14 Uhr gehen?|Terminänderung]]
+[[Würde auch Freitag 14 Uhr gehen?->Terminänderung]]
 
 
 :: Frustriert {"position":"1850,1025","size":"100,100"}
@@ -88,9 +88,9 @@ Also, ich kann Ihnen den Fragebogen zusenden und nächsten Donnerstag 15 Uhr hä
 Wie Sie meinen. Also, wie erwähnt, kan ich Ihnen den Fragebogen zuschicken und nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?
 
 
-[[Ja, das passt mir gut.|Termin Ja]]
+[[Ja, das passt mir gut.->Termin Ja]]
 
-[[Würde auch Freitag 14 Uhr gehen?|Terminänderung]]
+[[Würde auch Freitag 14 Uhr gehen?->Terminänderung]]
 
 [[Ich habe nicht das Gefühl, dass wir auf einen Nenner kommen und sehe mich doch lieber nach einer anderen Notarin um. Schönen Tag noch.->Gespräch beenden]]
 
@@ -197,7 +197,7 @@ Kommen wir zurück zu dem Fragebogen. Wie gesagt, sende ich Ihnen die benötigte
 [[Würde auch Freitag 14 Uhr gehen?->Terminänderung]]
 
 
-:: Selbstvorstellung [Frage] {"position":"1050,375","size":"100,100"}
+:: Selbstvorstellung {"position":"1050,375","size":"100,100"}
 >>FreitextEingabe<<
 SelbstvorstellungTelefonat: Guten Tag, mein Name ist...
 >>--<<
@@ -225,9 +225,9 @@ Schönen Tag noch!
 Wie erwähnt, kann ich Ihnen dann den Fragebogen zusenden und nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?
 
 
-[[Ja, das passt mir gut.|Termin Ja]]
+[[Ja, das passt mir gut.->Termin Ja]]
 
-[[Würde auch Freitag 14 Uhr gehen?|Terminänderung]]
+[[Würde auch Freitag 14 Uhr gehen?->Terminänderung]]
 
 
 :: Terminänderung {"position":"1125,1575","size":"100,100"}

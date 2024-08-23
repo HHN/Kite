@@ -1,5 +1,5 @@
 :: StoryTitle
-Büro anmieten 0.10
+Büro anmieten 0.11
 
 
 :: StoryData
@@ -152,7 +152,7 @@ Darüber können wir uns dann in Ruhe unterhalten.
 [[Neuer Termin]]
 
 
-:: Ansprechen {"position":"1950,3350","size":"100,100"}
+:: Ansprechen {"position":"2025,3325","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Ich bevorzuge es, geschäftliche Gespräche auf professionellem Niveau zu führen. Geschlechterklischees haben wenig Platz in meiner unternehmerischen Realität. Können wir uns auf die Mietdetails konzentrieren?]
 
@@ -176,28 +176,28 @@ Netzwerken, das ist der Schlüssel zum Erfolg! Gut, dass Sie daran gedacht haben
 [[Freund betont]]
 
 
-:: Benevolenter Sexismus: Selbstbewusstsein {"position":"1700,4125","size":"100,100"}
+:: Benevolenter Sexismus: Selbstbewusstsein {"position":"1675,3850","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Ich schätze Ihre Anerkennung meines Selbstbewusstseins, aber ich möchte klarstellen, dass ich in geschäftlichen Angelegenheiten auf eine professionelle und geschlechterneutrale Betrachtung Wert lege. 
 
 [[Benevolenter Sexismus: Selbstbewusstsein II]]
 
 
-:: Benevolenter Sexismus: Selbstbewusstsein II {"position":"1700,4275","size":"100,100"}
+:: Benevolenter Sexismus: Selbstbewusstsein II {"position":"1675,4000","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Der Kommentar "Schön, mal eine selbstbewusste Frau zu sehen!" impliziert nämlich, dass Frauen sonst kein Selbstbewusstsein haben, was wiederum eine Pauschalisierung ist.
 
 [[Ende: Neutral]]
 
 
-:: Benevolenter Sexismus: Selbstsicher {"position":"1525,4125","size":"100,100"}
+:: Benevolenter Sexismus: Selbstsicher {"position":"1500,3850","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Ich schätze Ihre Anerkennung meiner Selbstsicherheit, aber ich möchte klarstellen, dass ich in geschäftlichen Angelegenheiten auf eine professionelle und geschlechterneutrale Betrachtung Wert lege. 
 
 [[Benevolenter Sexismus: Selbstsicher II]]
 
 
-:: Benevolenter Sexismus: Selbstsicher II {"position":"1525,4275","size":"100,100"}
+:: Benevolenter Sexismus: Selbstsicher II {"position":"1500,4000","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Der Kommentar "Schön, mal eine selbstsichere Frau zu sehen!" impliziert nämlich, dass Frauen sonst unsicher sind.
 
@@ -278,7 +278,7 @@ Stimmt, gut, dass Sie so handeln! Aber Frauen haben manchmal zusätzliche Heraus
 [[Freund Gründungsliteratur]]
 
 
-:: Ende Neutral: Doubledown {"position":"1975,3825","size":"100,100"}
+:: Ende Neutral: Doubledown {"position":"1950,3550","size":"100,100"}
 >>VermieterSprichtFriendly:<<
 Ach, so war das doch nicht gemeint, aber wenn Sie mir eine Selbstauskunft zuschicken, setze ich Sie auf die Liste der positiven Bewerber*innen. In ein paar Tagen werde ich Ihnen Bescheid geben, ob Sie die Räumlichkeiten haben können.
 
@@ -288,27 +288,23 @@ Ach, so war das doch nicht gemeint, aber wenn Sie mir eine Selbstauskunft zuschi
 [[Auch Witze oder Aussagen ohne sexistische Intention, können sexistisch sein.|Intention]]
 
 
-:: Ende der Novel {"position":"2425,5925","size":"100,100"}
->>Ende<<
-
-
-:: Ende: Negativ {"position":"2500,4825","size":"100,100"}
+:: Ende: Negativ [Bias] {"position":"2550,4275","size":"100,100"}
 >>VermieterSprichtCritical:<<
 Aha. Ich weiß sowieso nicht, ob Sie die geeignete Mieterin sind, wenn Sie so emotional reagieren. Es gibt noch andere, die sich beworben haben, denen ich die Räumlichkeiten vermieten möchte. Ich wünsche Ihnen noch einen schönen Tag.
 >>--<<
 >>RelevanterBias:TightropeBias<<
+>>--<<
+>>Ende<<
 
-[[Feedback01]]
 
-
-:: Ende: Neutral {"position":"1650,4475","size":"100,100"}
+:: Ende: Neutral {"position":"1625,4200","size":"100,100"}
 >>VermieterSprichtFriendly:<<
 Wenn Sie das sagen. Also, wenn Sie mir eine Selbstauskunft zuschicken, setze ich Sie auf die Liste der positiven Bewerber*innen. In ein paar Tagen werde ich Ihnen Bescheid geben, ob Sie die Räumlichkeiten haben können.
 
 [[Ende: Positiv-Neutral]]
 
 
-:: Ende: Positiv Selbstbewusst [Bias] {"position":"1800,3825","size":"100,100"}
+:: Ende: Positiv Selbstbewusst [Bias] {"position":"1775,3550","size":"100,100"}
 >>VermieterSprichtLaughing:<<
 Schön, mal eine selbstbewusste Frau zu sehen! Ich bräuchte von Ihnen noch eine Selbstauskunft. 
 >>--<<
@@ -317,7 +313,7 @@ Schön, mal eine selbstbewusste Frau zu sehen! Ich bräuchte von Ihnen noch eine
 [[Ende: Positiv Selbstbewusst II]]
 
 
-:: Ende: Positiv Selbstbewusst II {"position":"1750,3975","size":"100,100"}
+:: Ende: Positiv Selbstbewusst II {"position":"1725,3700","size":"100,100"}
 >>VermieterSprichtFriendly:<<
 Es gibt noch andere, die sich beworben haben, aber es würde mich freuen, wenn Sie die Räumlichkeiten nehmen möchten.
 
@@ -326,7 +322,7 @@ Es gibt noch andere, die sich beworben haben, aber es würde mich freuen, wenn S
 [[Ich bedanke mich und verabschiede mich.|Ende: Positiv-Neutral]]
 
 
-:: Ende: Positiv Selbstsicher [Bias] {"position":"1650,3825","size":"100,100"}
+:: Ende: Positiv Selbstsicher [Bias] {"position":"1625,3550","size":"100,100"}
 >>VermieterSprichtLaughing:<<
 Schön, mal eine selbstsichere Frau zu sehen! Ich habe erstmal keine weiteren Fragen zu Ihren Unternehmensplänen. Ich bräuchte von Ihnen noch eine Selbstauskunft. 
 >>--<<
@@ -335,7 +331,7 @@ Schön, mal eine selbstsichere Frau zu sehen! Ich habe erstmal keine weiteren Fr
 [[Ende: Positiv Selbstsicher II]]
 
 
-:: Ende: Positiv Selbstsicher II {"position":"1525,3950","size":"100,100"}
+:: Ende: Positiv Selbstsicher II {"position":"1500,3675","size":"100,100"}
 >>VermieterSprichtFriendly:<<
 Es gibt noch andere, die sich beworben haben, aber es würde mich freuen, wenn Sie die Räumlichkeiten nehmen möchten.
 
@@ -344,24 +340,24 @@ Es gibt noch andere, die sich beworben haben, aber es würde mich freuen, wenn S
 [[Ich bedanke mich und verabschiede mich.|Ende: Positiv-Neutral]]
 
 
-:: Ende: Positiv-Neutral {"position":"1675,4850","size":"100,100"}
+:: Ende: Positiv-Neutral {"position":"1900,4175","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Die schicke ich Ihnen so schnell wie möglich zu. Vielen Dank und noch einen schönen Tag.
 >>--<<
 >>VermieterSprichtFriendly:<<
 Alles klar, Ihnen auch noch einen schönen Tag. Auf Wiedersehen.
+>>--<<
+>>Ende<<
 
-[[Feedback01]]
 
-
-:: Ende: Positiv-Neutral II {"position":"2150,4750","size":"100,100"}
+:: Ende: Positiv-Neutral II {"position":"2100,4175","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Ich schätze eine bewusste und geschlechterneutrale Kommunikation in geschäftlichen Angelegenheiten. Die Selbstauskunft schicke ich Ihnen so schnell wie möglich. Danke und noch einen schönen Tag.
 >>--<<
 >>VermieterSprichtFriendly:<<
 Alles klar, Ihnen auch noch einen schönen Tag. Auf Wiedersehen.
-
-[[Feedback01]]
+>>--<<
+>>Ende<<
 
 
 :: Erstes Mal {"position":"1775,900","size":"100,100"}
@@ -395,53 +391,6 @@ Das freut mich zu hören, aber wir möchten sicherstellen, dass unsere Mietverh�
 [[Mein Ziel ist es, mein Unternehmen langfristig und nachhaltig zu führen.|Langfristig]] 
 
 [[Ich frage nach, was gemeint ist.|Besondere Umstände]]
-
-
-:: Feedback01 {"position":"2000,5100","size":"100,100"}
->>FeedbackHinzufuegen<<
-Du hast gerade die Novel "Büro" gespielt.
-[[Feedback02]]
-
-
-:: Feedback02 {"position":"2000,5250","size":"100,100"}
->>FeedbackUnterBedingungHinzufuegen<<
-SexistischUndUnprofessionell: Du hast den Vermieter als sexistisch und unprofessionell erlebt und dich dazu entschieden, das Gespräch abzubrechen.
-
-[[Feedback03]]
-
-
-:: Feedback03 {"position":"2000,5400","size":"100,100"}
->>FeedbackUnterBedingungHinzufuegen<<
-FragwuerdigeAeusserungen: Nach fragwürdigen Äußerungen des Vermieters, hast du dich dazu entschieden, das Gespräch abzubrechen.
-
-[[Feedback04]]
-
-
-:: Feedback04 {"position":"2000,5525","size":"100,100"}
->>FeedbackHinzufuegen<<
-Die Situation wurde nun durch die KI analysiert. Dies hier ist die KI-Analyse. Wir möchten darauf hinweisen, dass dein Verhalten in der Novel nicht richtig oder falsch war! Der Umgang mit Diskriminierung ist immer schwierig, und es ist nicht unser Ziel dir eine bestimmte Verhaltensweise anzutrainieren. Wir wollen stattdessen aufzeigen, wie die Situation durch Vorurteile verzerrt wurde.
-
-Bereits am Anfang des Gesprächs zweifelt der Vermieter, dass du die Mindestmietdauer bezahlen kannst.
-
-[[Feedback05]]
-
-
-:: Feedback05 {"position":"2000,5675","size":"100,100"}
->>FeedbackUnterBedingungHinzufuegen<<
-FrauenDetaillierterErklaerung: Manche Aussagen beinhalten eine Verallgemeinerung über das Verhalten von Frauen im Vergleich zu Männern. Solche Aussagen können unbewusste Vorurteile (Unconscious Bias) verstärken und dazu beitragen, stereotype Vorstellungen über Geschlechterrollen zu verfestigen. 
-
-Du betonst die individuelle Leistung und Vorbereitung unabhängig vom Geschlecht und förderst eine wertschätzende Haltung gegenüber allen Beteiligten.
-
-[[Feedback06]]
-
-
-:: Feedback06 {"position":"2000,5825","size":"100,100"}
->>FeedbackUnterBedingungHinzufuegen<<
-FrauenDetaillierterDanke: Manche Aussagen beinhalten eine Verallgemeinerung über das Verhalten von Frauen im Vergleich zu Männern. Solche Aussagen können unbewusste Vorurteile (Unconscious Bias) verstärken und dazu beitragen, stereotype Vorstellungen über Geschlechterrollen zu verfestigen. 
-
-Du antwortest diplomatisch, indem du dich für das vermeintliche Kompliment bedankst und den Fokus auf die eigenen Fähigkeiten und Ziele lenkst.
-
-[[Ende der Novel]]
 
 
 :: Fokus {"position":"2425,1900","size":"100,100"}
@@ -533,26 +482,6 @@ Ja, das ist kein Problem. Die Vertragsgestaltung ist dann etwas komplexer. Viell
 [[Wieso sollte ich meinen Mann mitbringen?->Wieso Mann]]
 
 [[Vielen Dank für das Angebot. Für geschäftliche Entscheidungen bin ich eigenverantwortlich.->Eigenverantwortlich]]
-
-
-:: FragwuerdigeAeuuserung [Variable] {"position":"3125,2700","size":"100,100"}
->>VariableSetzen<<
-FragwuerdigeAeusserungen: True
-[[Abbruch]]
-
-
-:: Frauen Detaillierter Danke [Variable] {"position":"1050,1250","size":"100,100"}
->>VariableSetzen<<
-FrauenDetaillierterDanke: True
-
-[[Freund Rat]]
-
-
-:: Frauen Detaillierter Erklärung [Variable] {"position":"750,1250","size":"100,100"}
->>VariableSetzen<<
-FrauenDetaillierterErklaerung: True
-
-[[Freund Gründungsliteratur]]
 
 
 :: Frauenpower {"position":"1225,3275","size":"100,100"}
@@ -699,7 +628,7 @@ Lassen Sie uns dafür einen separaten Termin ausmachen. Ich habe nämlich nicht 
 [[Ja, lassen Sie uns einen neuen Termin ausmachen.->Neuer Termin]]
 
 
-:: Intention {"position":"2050,4100","size":"100,100"}
+:: Intention {"position":"2025,3825","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Ich danke Ihnen für die Klarstellung. Allerdings können selbst unbeabsichtigte Äußerungen geschlechtsbezogene Konnotationen haben. 
 
@@ -714,7 +643,7 @@ Vielen Dank für das Kompliment. Ich schätze die positive Einschätzung meiner 
 Das freut mich zu hören. Es ist wirklich großartig zu sehen, dass Sie sich das zutrauen! 
 >>--<<
 >>RelevanterBias:GeschlechtsspezifischeStereotypen<<
-[[Frauen Detaillierter Danke]]
+[[Freund Rat]]
 
 
 :: Kompliment Danke {"position":"1200,1575","size":"100,100"}
@@ -857,10 +786,10 @@ Bestimmt haben Sie auch in der Beziehung die Hosen an, oder?
 
 [[Ich möchte mich auf die Mietdetails konzentrieren und was Ihre Geschlechterklischees betrifft...|Ansprechen]]
 
-[[Ich erlebe Sie als sexistisch und unprofessionell, und eine Büroanmietung kommt nicht in Frage.|Sexistisch und Unprofessionel]]
+[[Ich erlebe Sie als sexistisch und unprofessionell, und eine Büroanmietung kommt nicht in Frage.|Abbruch]]
 
 
-:: Selbstbewusst Mietprozess {"position":"1825,3350","size":"100,100"}
+:: Selbstbewusst Mietprozess {"position":"1900,3325","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Interessanter Vergleich! Aber zurück zur Sache – ich bin sehr daran interessiert, wie der Mietprozess weitergeht. Haben Sie noch weitere Fragen zu meinen Unternehmensplänen?
 
@@ -875,7 +804,7 @@ Ich bin überzeugt, dass meine Qualifikationen und Fähigkeiten mich erfolgreich
 [[Weiter|Ende: Positiv Selbstbewusst]]
 
 
-:: Selbstbewusst c {"position":"2075,3350","size":"100,100"}
+:: Selbstbewusst c {"position":"2150,3325","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Nun, bei Unternehmensgründungen ist es weniger wichtig, wer die Hosen anhat. Es geht mehr darum, die richtigen Entscheidungen zu treffen.
 
@@ -917,12 +846,6 @@ Sie wissen schon, dass das sexistisch ist? Können wir uns bitte einfach auf den
 Das war nur ein nett gemeintes Kompliment, aber ich glaube, ich verstehe, worauf Sie hinaus möchten. 
 
 [[Fokus a]]
-
-
-:: Sexistisch und Unprofessionel [Variable] {"position":"2350,3250","size":"100,100"}
->>VariableSetzen<<
-SexistischUndUnprofessionell: True
-[[Abbruch]]
 
 
 :: Sicher {"position":"1400,1575","size":"100,100"}
@@ -1006,7 +929,7 @@ Ich denke, eine gründliche Vorbereitung ist entscheidend, unabhängig vom Gesch
 >>--<<
 >>VermieterSprichtAstonished:<<
 Stimmt, da haben Sie selbstverständlich recht. Aber Frauen haben manchmal zusätzliche Herausforderungen in der Geschäftswelt. 
-[[Frauen Detaillierter Erklärung]]
+[[Freund Gründungsliteratur]]
 
 
 :: Vorbereitung Bekanntmachen {"position":"850,1575","size":"100,100"}
@@ -1115,4 +1038,4 @@ Hm, ich dachte, Frauen würden mehr auf das Zwischenmenschliche setzen und auch 
 
 [[Ich antworte diplomatisch und ignoriere den Sexismus.|Diplomatisch]]
 
-[[Ich konfrontiere ihn direkt und breche das Gespräch ab.|FragwuerdigeAeuuserung]]
+[[Ich konfrontiere ihn direkt und breche das Gespräch ab.|Abbruch]]

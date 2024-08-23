@@ -8,7 +8,7 @@ Gespräch mit einem Bekannten 0.5
   "format": "Harlowe",
   "format-version": "3.3.9",
   "start": "Anfang",
-  "zoom": 0.6
+  "zoom": 0.3
 }
 
 

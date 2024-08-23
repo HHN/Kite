@@ -1,5 +1,5 @@
 :: StoryTitle
-Gespräch mit Eltern 0.7
+Gespräch mit Eltern 0.9
 
 
 :: StoryData
@@ -41,10 +41,16 @@ Nachdem du dich gründlich informiert hast, hast du dich dazu entschlossen ein U
 [[Weiter]]
 
 
-:: Besorgt-Negativ [Bias] {"position":"1725,1550","size":"100,100"}
+:: Besorgt-Negativ [Bias] {"position":"1725,1525","size":"100,100"}
 >>Charakter01SprichtScared:<<
 Es ist wichtig, dass du realistisch über die Risiken nachdenkst. Außerdem musst du ja dann auch oft verhandeln. 
 >>--<<
+>>RelevanterBias:GeschlechtsspezifischeStereotypen<<
+
+[[Besorgt-Negativ II]]
+
+
+:: Besorgt-Negativ II [Bias] {"position":"1725,1675","size":"100,100"}
 >>Charakter02SprichtFriendly:<<
 Vielleicht suchst du dir einen Geschäftspartner und überlässt dem diese schwierigen Verhandlungsgespräche?
 >>--<<
@@ -57,7 +63,7 @@ Vielleicht suchst du dir einen Geschäftspartner und überlässt dem diese schwi
 [[Was soll das denn heißen? Als ob ich das nicht alleine hinkriegen würde!->Negativ]]
 
 
-:: Bruder [Bias] {"position":"2450,1475","size":"100,100"}
+:: Bruder [Bias] {"position":"2575,1475","size":"100,100"}
 >>Charakter01SprichtAstonished:<<
 Na ja, als Mann hat er ja einen besseren Geschäftssinn und kann sich bestimmt auch besser durchsetzen als du.
 >>--<<
@@ -70,10 +76,14 @@ Na ja, als Mann hat er ja einen besseren Geschäftssinn und kann sich bestimmt a
 [[Was ist denn das für eine Logik?->Negativ]]
 
 
-:: Eher Negativ [Bias] {"position":"2050,1000","size":"100,100"}
+:: Eher Negativ {"position":"2050,1000","size":"100,100"}
 >>Charakter02SprichtRefusing:<<
 Wir machen uns Sorgen um dich, und du ignorierst komplett, was wir sagen. 
->>--<<
+
+[[Eher Negativ II]]
+
+
+:: Eher Negativ II [Bias] {"position":"1900,1150","size":"100,100"}
 >>Charakter01SprichtCrirtical:<<
 Du wirst es bereuen, wenn du in diese Unternehmensgründung stolperst und alles verlierst.
 >>--<<
@@ -109,6 +119,19 @@ Ich habe zwar darüber nachgedacht, was passieren könnte, wenn meine Finanzieru
 Deshalb habe ich alternative Finanzierungsquellen und auch Backup-Pläne in Betracht gezogen. Ich werde schon dafür sorgen, dass mein Unternehmen auf Kurs bleibt. Auch wenn ich nicht sofort die gewünschte Finanzierung erhalten sollte.
 
 [[Positiv]]
+
+
+:: Familie [Bias] {"position":"1100,1075","size":"100,100"}
+>>Charakter02SprichtQuestioning:<<
+Und was ist mit Familie? Du willst doch später Kinder haben, oder nicht?
+>>--<<
+>>RelevanterBias:ErwartungshaltungBezueglichFamilienplanung<<
+
+[[Ihr denkt also, dass ich scheitern könnte, weil ich mal Kinder haben will?->Kind: Sexismus]] 
+
+[[Wer sagt denn, dass ich überhaupt Kinder will?->Kein Kind: Sexismus]]
+
+[[Das verstehe ich, aber es wäre schön, wenn ihr euch auch einfach für mich freuen könntet. Über Kinder mache ich mir noch keine Gedanken.->Neutral]]
 
 
 :: Herausforderung {"position":"2000,600","size":"100,100"}
@@ -188,23 +211,17 @@ Das alles zu stemmen, ist alles andere als leicht.
 >>Charakter01SprichtDecisionNo:<<
 Wir haben gesehen, wie stressig es sein kann, ein Unternehmen zu führen. Ein Freund von uns hat es versucht und es war extrem anstrengend für die ganze Familie. 
 >>--<<
->>Charakter02SprichtScared:<<
-Wir wollen nur, dass du das Beste für deine Zukunft hast.
->>--<<
 >>RelevanterBias:WorkLifeBalanceErwartungen<<
 
-[[Es gibt viele Menschen, die erfolgreich ein Unternehmen gegründet haben und gleichzeitig eine Familie haben. Ich glaube, dass ich es auch schaffen kann.->Neutral]]
+[[Nur das Beste]]
 
-[[Ich weiß, dass ihr es gut meint, aber ich brauche eure Unterstützung, nicht euren Pessimismus. Es ist meine Entscheidung und mein Leben. Ich werde das durchziehen, egal was ihr sagt.->Negativ]]
-
-[[Ich sehe diese Unternehmensgründung als einen wichtigen Schritt für meine langfristige Zukunft.->Neutral]]
 
 
 :: Kredit Negativ {"position":"1525,750","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Ich möchte auch nicht direkt eine Option ausschließen, solange ich die Chancen auf Erfolg sehe. Das wird schon alles.
 
-[[Negativ]]
+[[Zu locker]]
 
 
 :: Kredit Positiv {"position":"1225,750","size":"100,100"}
@@ -241,10 +258,17 @@ Am Ende ist das immer noch meine Entscheidung!
 >>Charakter01SprichtCrirtical:<<
 Glaubst du wirklich, du könntest ein Unternehmen führen? Du solltest realistischer sein und dir eine vernünftige Karriere suchen, anstatt diese Fantasie zu verfolgen. 
 >>--<<
+>>RelevanterBias:BiasInDerWahrnehmungVonFuehrungsfaehigkeiten<<
+
+[[Meine Entscheidung II]]
+
+
+:: Meine Entscheidung II [Bias] {"position":"2150,900","size":"100,100"}
 >>Charakter02SprichtQuestioning:<<
 Und was ist denn mit Familie? Du willst doch später Kinder haben, oder nicht?
 >>--<<
 >>RelevanterBias:ErwartungshaltungBezueglichFamilienplanung<<
+
 
 [[Ihr denkt also, dass ich unfähig bin, erfolgreich zu sein, weil ich mal Kinder haben will?->Kind: Sexismus]] 
 
@@ -262,7 +286,7 @@ Was machst du, wenn es mal Rückschläge gibt?
 
 [[Ja, aber das sehe ich nicht als Hindernis.->Neutral-Negativ]]
 
-[[Ach, da mache ich mir nicht so viele Gedanken. Ich glaube, das wird schon alles gut gehen.->Negativ]]
+[[Ach, da mache ich mir nicht so viele Gedanken. Ich glaube, das wird schon alles gut gehen.->Zu locker]]
 
 
 :: Mentorin Positiv {"position":"2450,750","size":"100,100"}
@@ -283,7 +307,7 @@ Oder vielleicht übernimmst du den kreativen Teil und überlässt die technische
 
 [[Ich sage nichts.|Negativ II]]
 
-[[Ich weiß nicht genau, was Du mit kreativ und technisch meinst, aber ich bin gut in der Lage, mich um alle Aspekte meines Unternehmens zu kümmern – und da, wo ich an Grenzen stoße, beauftrage ich Fachleute. Aber lassen wir es einfach.|Negativ: Benevolenter Sexismus]]
+[[Ich weiß nicht genau, was du mit kreativ und technisch meinst, aber ich bin gut in der Lage, mich um alle Aspekte meines Unternehmens zu kümmern – und da, wo ich an Grenzen stoße, beauftrage ich Fachleute. Aber lassen wir es einfach.->Negativ: Benevolenter Sexismus]]
 
 
 :: Negativ Ende {"position":"2825,1800","size":"100,100"}
@@ -302,7 +326,7 @@ Bis dann.
 >>Ende<<
 
 
-:: Negativ II [Frage] {"position":"2750,1650","size":"100,100"}
+:: Negativ II {"position":"2750,1650","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 ...
 >>--<<
@@ -382,20 +406,11 @@ Natürlich, aber ich mache mir einfach Sorgen und möchte, dass du an alles geda
 [[Ja, habe ich und ich ziehe das jetzt durch.->Besorgt-Negativ]]
 
 
-:: Neutral-Positiv [Bias] {"position":"1100,925","size":"100,100"}
+:: Neutral-Positiv {"position":"1100,925","size":"100,100"}
 >>Charakter01SprichtScared:<<
 Natürlich, aber wir machen uns einfach Sorgen um dich und möchte nur, dass du an alles gedacht hast.
->>--<<
->>Charakter02SprichtQuestioning:<<
-Und was ist mit Familie? Du willst doch später Kinder haben, oder nicht?
->>--<<
->>RelevanterBias:ErwartungshaltungBezueglichFamilienplanung<<
 
-[[Ihr denkt also, dass ich scheitern könnte, weil ich mal Kinder haben will?->Kind: Sexismus]] 
-
-[[Wer sagt denn, dass ich überhaupt Kinder will?->Kein Kind: Sexismus]]
-
-[[Das verstehe ich, aber es wäre schön, wenn ihr euch auch einfach für mich freuen könntet. Über Kinder mache ich mir noch keine Gedanken.->Neutral]]
+[[Familie]]
 
 
 :: Neutral-Termin [Bias] {"position":"1325,1725","size":"100,100"}
@@ -410,6 +425,17 @@ Da bin ich auch gespannt. Denk dran, die Leute werden sich wohler fühlen, mit d
 [[Hm, ich muss dann auch weiter. Ich halte euch auf dem Laufenden. Bis dann.->Neutral Ende a]]
 
 [[Das würdest du jetzt nicht zu einem Mann sagen. Es ist okay zu zeigen, dass ich weiß, was ich will und vorbereitet bin.->Neutral Ende b]]
+
+
+:: Nur das Beste {"position":"2175,1450","size":"100,100"}
+>>Charakter02SprichtScared:<<
+Wir wollen nur, dass du das Beste für deine Zukunft hast.
+
+[[Es gibt viele Menschen, die erfolgreich ein Unternehmen gegründet haben und gleichzeitig eine Familie haben. Ich glaube, dass ich es auch schaffen kann.->Neutral]]
+
+[[Ich weiß, dass ihr es gut meint, aber ich brauche eure Unterstützung, nicht euren Pessimismus. Es ist meine Entscheidung und mein Leben. Ich werde das durchziehen, egal was ihr sagt.->Negativ]]
+
+[[Ich sehe diese Unternehmensgründung als einen wichtigen Schritt für meine langfristige Zukunft.->Neutral]]
 
 
 :: Positiv {"position":"800,1100","size":"100,100"}
@@ -541,3 +567,17 @@ Und bist du sicher, dass das eine gute Idee ist? Ich meine es nur gut, aber es w
 [[Ich verstehe eure Sorgen. Aber ich habe gründlich darüber nachgedacht und fühle mich bereit, diese Herausforderung anzunehmen.->Herausforderung]]
 
 [[Ich verstehe eure Bedenken, aber ich habe mich intensiv vorbereitet und werde auch eine Mentorin an meiner Seite haben.->Mentorin]]
+
+
+:: Zu locker [Bias] {"position":"2400,925","size":"100,100"}
+>>Charakter01SprichtCritical:<<
+Ich glaube, du gehst das ein bisschen zu locker an.
+>>--<<
+>>Charakter02SprichtQuestioning:<<
+Und hast du mal über deine Familienplanung nachgedacht? Du willst doch später Kinder haben, oder nicht?
+>>--<<
+>>RelevanterBias:ErwartungshaltungBezueglichFamilienplanung<<
+
+[[Ihr denkt also, dass ich unfähig bin, erfolgreich zu sein, weil ich mal Kinder haben will?->Kind: Sexismus]] 
+
+[[Wer sagt denn, dass ich überhaupt Kinder will?->Kein Kind: Sexismus]]
