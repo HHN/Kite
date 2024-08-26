@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class FoundersBubbleSceneController : SceneController
 {
@@ -31,6 +32,10 @@ public class FoundersBubbleSceneController : SceneController
 
     [SerializeField] private GameObject burgerMenu;
     [SerializeField] private bool isBurgerMenuOpen;
+
+    [SerializeField] private TMP_InputField inputField;
+    [SerializeField] private List<GameObject> buttonContainers;
+    private List<GameObject> originalOrder;
 
     [SerializeField] private Button bankkreditButtonFromBurgerMenu;
     [SerializeField] private Button elternButtonFromBurgerMenu;
@@ -72,6 +77,76 @@ public class FoundersBubbleSceneController : SceneController
         presseButtonFromBurgerMenu.onClick.AddListener(delegate { OnPresseButtonFromBurgerMenu(); });
         bueroButtonFromBurgerMenu.onClick.AddListener(delegate { OnBueroButtonFromBurgerMenu(); });
         introButtonFromBurgerMenu.onClick.AddListener(delegate { OnIntroButtonFromBurgerMenu(); });
+
+        if (inputField != null)
+        {
+            // Füge den Listener für Änderungen am Text des InputFields hinzu
+            inputField.onValueChanged.AddListener(OnInputValueChanged);
+        }
+        else
+        {
+            Debug.LogError("InputField ist nicht zugewiesen.");
+        }
+
+        if (buttonContainers != null && buttonContainers.Count > 0)
+        {
+            // Speichere die ursprüngliche Reihenfolge der Container
+            originalOrder = new List<GameObject>(buttonContainers);
+        }
+        else
+        {
+            Debug.LogError("Die Button-Container-Liste ist nicht zugewiesen oder leer.");
+        }
+    }
+
+    private void OnInputValueChanged(string input)
+    {
+        // Erstelle eine temporäre Liste, um die Container neu anzuordnen
+        List<GameObject> visibleContainers = new List<GameObject>();
+        List<GameObject> hiddenContainers = new List<GameObject>();
+
+        foreach (var container in originalOrder)
+        {
+            if (container != null)
+            {
+                // Hole den Button innerhalb des Containers
+                Button button = container.GetComponentInChildren<Button>();
+
+                if (button != null)
+                {
+                    // Hole den TextMeshPro-Text, der im Button enthalten ist
+                    TMP_Text buttonText = button.GetComponentInChildren<TMP_Text>();
+
+                    if (buttonText != null)
+                    {
+                        // Vergleiche den Button-Text mit dem Input
+                        if (buttonText.text.ToLower().Contains(input.ToLower()))
+                        {
+                            // Container sichtbar machen und zur Liste der sichtbaren Container hinzufügen
+                            container.SetActive(true);
+                            visibleContainers.Add(container);
+                        }
+                        else
+                        {
+                            // Container deaktivieren und zur Liste der versteckten Container hinzufügen
+                            container.SetActive(false);
+                            hiddenContainers.Add(container);
+                        }
+                    }
+                }
+            }
+        }
+
+        // Setze die Reihenfolge der Container in der Liste neu
+        buttonContainers.Clear();
+        buttonContainers.AddRange(visibleContainers);
+        buttonContainers.AddRange(hiddenContainers);
+
+        // Aktualisiere die Reihenfolge der Container in der UI
+        for (int i = 0; i < buttonContainers.Count; i++)
+        {
+            buttonContainers[i].transform.SetSiblingIndex(i + 1); // +1, um das InputField oben zu halten
+        }
     }
 
     public void OnBackgroundButton()
