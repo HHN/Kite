@@ -27,6 +27,7 @@ public class ElternNovelImageController : NovelImageController
     [SerializeField] private Sprite decoLampeOff;
     [SerializeField] private Sprite decoLampeOn;
     private bool decoLampeStatus = false;
+    private bool fixedAnchorePositionForLampeButton = false;
 
     void Start()
     {
@@ -64,9 +65,9 @@ public class ElternNovelImageController : NovelImageController
         Vector3 topRightDecoKanne = cornersDecoKanne[2];
 
         Vector3[] cornersDecoLampe = new Vector3[4];
-        decoLampeRectTransform.GetWorldCorners(cornersDecoLampe);
-        Vector3 bottomLeftDecoLampe = cornersDecoLampe[0];
-        Vector3 topRightDecoLampe = cornersDecoLampe[2];
+        Vector3 bottomLeftDecoLampe;
+        Vector3 topRightDecoLampe;
+        CalculatePointsFromBottomRightCorner(decoLampeRectTransform, 180, 348, out bottomLeftDecoLampe, out topRightDecoLampe);
 
         if (x >= bottomLeftDecoTasse1.x && x <= topRightDecoTasse1.x &&
             y >= bottomLeftDecoTasse1.y && y <= topRightDecoTasse1.y)
@@ -314,7 +315,21 @@ public class ElternNovelImageController : NovelImageController
         Instantiate(decoLampePrefab, decoLampeContainer.transform);
     }
 
-    
+    private void CalculatePointsFromBottomRightCorner(RectTransform rectTransform, float xOffset, float yOffset, out Vector3 resultingXPoint, out Vector3 resultingYPoint)
+    {
+        // Hol die Welt-Koordinaten der Ecken des RectTransforms
+        Vector3[] worldCorners = new Vector3[4];
+        rectTransform.GetWorldCorners(worldCorners);
+
+        // Rechte untere Ecke (Index 3 im Array)
+        Vector3 bottomRightCorner = worldCorners[3];
+
+        // Berechne den Punkt mit dem xOffset
+        resultingXPoint = new Vector3(bottomRightCorner.x - xOffset, bottomRightCorner.y, 0);
+
+        // Berechne den Punkt mit dem yOffset
+        resultingYPoint = new Vector3(bottomRightCorner.x, bottomRightCorner.y + yOffset, 0);
+    }
 }
 
     

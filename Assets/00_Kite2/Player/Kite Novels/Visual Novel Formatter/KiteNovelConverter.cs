@@ -87,6 +87,7 @@ public class KiteNovelConverter
             Debug.LogWarning("While loading " + kiteNovelMetaData?.TitleOfNovel + ": Initial Character not found!");
         }
         CharacterExpression expression = CharacterExpressionHelper.ValueOf(kiteNovelMetaData.StartTalkingPartnerEmotion);
+        Debug.Log(kiteNovelMetaData.StartTalkingPartnerEmotion);
         if (expression == CharacterExpression.NONE)
         {
             Debug.LogWarning("While loading " + kiteNovelMetaData?.TitleOfNovel + ": Initial Character-Expression not found!");
