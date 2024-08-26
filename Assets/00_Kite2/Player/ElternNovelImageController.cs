@@ -43,10 +43,10 @@ public class ElternNovelImageController : NovelImageController
 
     private void SetCharacterController()
     {
-        characterMutter = Instantiate(characterMutterPrefab, characterMutterContainer.transform);
-        characterController = characterMutter.GetComponent<CharacterController>();
-        characterVater = Instantiate(characterVaterPrefab, characterVaterContainer.transform);
-        characterController2 = characterVater.GetComponent<CharacterController>();
+     //   characterMutter = Instantiate(characterMutterPrefab, characterMutterContainer.transform);
+          characterController = characterMutterPrefab.GetComponent<CharacterController>();
+     //   characterVater = Instantiate(characterVaterPrefab, characterVaterContainer.transform);
+          characterController2 = characterVaterPrefab.GetComponent<CharacterController>();
     }
 
     public override void SetBackground()
