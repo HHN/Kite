@@ -1,5 +1,5 @@
 :: StoryTitle
-Telefonat Notarin 0.5
+Telefonat Notarin 0.6
 
 
 :: StoryData
@@ -12,7 +12,7 @@ Telefonat Notarin 0.5
     "Frage": "orange",
     "Bias": "yellow"
   },
-  "zoom": 0.3
+  "zoom": 0.6
 }
 
 
@@ -67,6 +67,8 @@ Ich sehe keinen Grund, das Geschlecht in den Vordergrund zu stellen. Es wäre ei
 Guten Tag, bei einer Handelsregistereintragung muss als erstes immer ein Fragebogen ausgefüllt werden, in dem die für den Eintrag zentralen Fragen beantwortet werden. Wichtig ist auch, dass der Geschäftsführer anwesend ist, weil seine Unterschrift essentiell ist. 
 >>--<<
 >>RelevanterBias:UnbewussteBiasInDerKommunikation<<
+>>--<<
+>>RelevanterBias:BiasInDerWahrnehmungVonFuehrungsfaehigkeiten<<
 
 [[Kein Problem, wie bereits erwähnt, ist es mein Unternehmen und ich bin die Geschäftsführerin.->Bereits erwähnt]]
 
