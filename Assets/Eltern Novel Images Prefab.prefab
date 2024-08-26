@@ -703,6 +703,10 @@ MonoBehaviour:
   decoKanneAudio: {fileID: 8300000, guid: 05ee5b1d0084a1547ba21302a47aff73, type: 3}
   decoLampeOnAudio: {fileID: 8300000, guid: 0e1a7e97f60b0ff4ab38f408fb7b7c09, type: 3}
   decoLampeOffAudio: {fileID: 8300000, guid: 130b268b5ccf0d448865ecd967e3fe00, type: 3}
+  characterMutterPrefab: {fileID: 4553460863386354253}
+  characterMutterContainer: {fileID: 4782255772119278625}
+  characterVaterPrefab: {fileID: 753279877017849915}
+  characterVaterContainer: {fileID: 7675889374818772154}
   animationFramesTasse1:
   - {fileID: 21300000, guid: eef29e5f7b3ae2144a46e1e0ca8b1eac, type: 3}
   - {fileID: 21300000, guid: 783a4558015fdba4e81928ebe45c621d, type: 3}
@@ -1728,6 +1732,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1465545687914413254, guid: aee370a96d4a69c4fa663f6e1505d316, type: 3}
   m_PrefabInstance: {fileID: 2171467326479084770}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &753279877017849915 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1465545687914413273, guid: aee370a96d4a69c4fa663f6e1505d316, type: 3}
+  m_PrefabInstance: {fileID: 2171467326479084770}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3127625208898780820
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1829,6 +1838,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe0cc47faafc1e948a15badc475ba62d, type: 3}
+--- !u!1 &4553460863386354253 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1465545687914413273, guid: fe0cc47faafc1e948a15badc475ba62d, type: 3}
+  m_PrefabInstance: {fileID: 3127625208898780820}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4553460863386354258 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1465545687914413254, guid: fe0cc47faafc1e948a15badc475ba62d, type: 3}

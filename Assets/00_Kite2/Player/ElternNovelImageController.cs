@@ -21,6 +21,10 @@ public class ElternNovelImageController : NovelImageController
     [SerializeField] private AudioClip decoKanneAudio;
     [SerializeField] private AudioClip decoLampeOnAudio;
     [SerializeField] private AudioClip decoLampeOffAudio;
+    [SerializeField] private GameObject characterMutterPrefab;
+    [SerializeField] private GameObject characterMutterContainer;
+    [SerializeField] private GameObject characterVaterPrefab;
+    [SerializeField] private GameObject characterVaterContainer;
     [SerializeField] private Sprite[] animationFramesTasse1;
     [SerializeField] private Sprite[] animationFramesTasse2;
     [SerializeField] private Sprite[] animationFramesKanne;
@@ -28,10 +32,21 @@ public class ElternNovelImageController : NovelImageController
     [SerializeField] private Sprite decoLampeOn;
     private bool decoLampeStatus = false;
     private bool fixedAnchorePositionForLampeButton = false;
+    private GameObject characterMutter = null;
+    private GameObject characterVater = null;
 
     void Start()
     {
         SetInitialSpirtesForImages();
+        SetCharacterController();
+    }
+
+    private void SetCharacterController()
+    {
+        characterMutter = Instantiate(characterMutterPrefab, characterMutterContainer.transform);
+        characterController = characterMutter.GetComponent<CharacterController>();
+        characterVater = Instantiate(characterVaterPrefab, characterVaterContainer.transform);
+        characterController2 = characterVater.GetComponent<CharacterController>();
     }
 
     public override void SetBackground()

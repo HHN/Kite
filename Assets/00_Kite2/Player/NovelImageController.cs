@@ -7,6 +7,7 @@ public class NovelImageController : MonoBehaviour
 
     protected RectTransform canvasRect = null;
     protected CharacterController characterController = null;
+    protected CharacterController characterController2 = null;
 
     public void SetCanvasRect(RectTransform canvasRect)
     {
