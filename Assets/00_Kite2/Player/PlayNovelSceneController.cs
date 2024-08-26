@@ -535,7 +535,7 @@ public class PlayNovelSceneController : SceneController
 
         SetNextEvent(novelEvent);
 
-        novelImagesController.SetFaceExpression(novelEvent.expressionType);
+        novelImagesController.SetFaceExpression(novelEvent.character, novelEvent.expressionType);
 
         if(novelEvent.show){
             conversationContent.AddContent(novelEvent, this);
