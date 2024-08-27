@@ -43,7 +43,7 @@ public class PresseNovelImageController : NovelImageController
         RectTransform decoGlasRectTransform = decoGlasContainer.GetComponent<RectTransform>();
         if (decoGlasRectTransform != null && canvasRect != null)
         {
-            decoGlasRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.21f, canvasRect.rect.height * 0.08f);
+            decoGlasRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.05f, canvasRect.rect.height * 0.08f);
             decoGlasRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.064f, canvasRect.rect.height * 0.08f);
         }
 
