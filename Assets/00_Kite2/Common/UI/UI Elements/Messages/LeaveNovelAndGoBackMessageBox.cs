@@ -27,12 +27,12 @@ public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
         backgroundLeave.GetComponent<Image>().color = NovelColorManager.Instance().GetColor();
         textStay.GetComponent<TextMeshProUGUI>().color = NovelColorManager.Instance().GetColor();
         RectTransform backgroundTransform = background.GetComponent<RectTransform>();
-        backgroundTransform.anchoredPosition = new Vector2(backgroundTransform.anchoredPosition.x, (NovelColorManager.Instance().GetCanvasHeight()/2)-(backgroundTransform.rect.height/2));
+        /*backgroundTransform.anchoredPosition = new Vector2(backgroundTransform.anchoredPosition.x, (NovelColorManager.Instance().GetCanvasHeight()/2)-(backgroundTransform.rect.height/2));
         RectTransform personTransform = person.GetComponent<RectTransform>();
         personTransform.anchoredPosition = new Vector2(backgroundTransform.anchoredPosition.x, (backgroundTransform.rect.width*0.9f)/2);
         personTransform.anchorMin = new Vector2(0.5f, 0.55f);
         personTransform.anchorMax = new Vector2(0.5f, 0.55f);
-        personTransform.sizeDelta = new Vector2(backgroundTransform.rect.width*0.9f, backgroundTransform.rect.width*0.9f);
+        personTransform.sizeDelta = new Vector2(backgroundTransform.rect.width*0.9f, backgroundTransform.rect.width*0.9f);*/
     }
 
     public void SetHeadline(string headline)
