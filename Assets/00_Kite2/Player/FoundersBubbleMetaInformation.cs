@@ -98,7 +98,7 @@ public class FoundersBubbleMetaInformation : MonoBehaviour
                 }
             case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
                 {
-                    return new Color(65 / 255f, 29 / 255f, 109 / 255f);
+                    return new Color(76 / 255f, 114 / 255f, 42 / 255f);
                 }
             case VisualNovelNames.BANK_KREDIT_NOVEL:
                 {
@@ -157,7 +157,7 @@ public class FoundersBubbleMetaInformation : MonoBehaviour
                 }
             case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
                 {
-                    return new Color(41 / 255f, 18 / 255f, 69 / 255f);
+                    return new Color(48 / 255f, 72 / 255f, 15 / 255f);
                 }
             case VisualNovelNames.BANK_KREDIT_NOVEL:
                 {
@@ -275,7 +275,7 @@ public class FoundersBubbleMetaInformation : MonoBehaviour
                 }
             case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
                 {
-                    return 2;
+                    return 6;
                 }
             case VisualNovelNames.BANK_KREDIT_NOVEL:
                 {
