@@ -212,6 +212,13 @@ public class PlayNovelSceneController : SceneController
                     novelImagesController = controllerTransform.GetComponent<NotarinNovelImageController>();
                     break;
                 }
+            case "Gespräch mit einem Bekannten":
+                {
+                    GameObject novelImagesInstance = Instantiate(novelVisuals[5], viewPortTransform);
+                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                    novelImagesController = controllerTransform.GetComponent<BekannterNovelImageController>();
+                    break;
+                }
             default:
             {
                 GameObject novelImagesInstance = Instantiate(novelVisuals[0], viewPortTransform);

@@ -230,13 +230,13 @@ AnimatorStateMachine:
     m_Position: {x: 970, y: 280, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8457324910512361413}
-    m_Position: {x: 1005, y: 345, z: 0}
+    m_Position: {x: 1000, y: 340, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6347512929351738502}
     m_Position: {x: 1040, y: 410, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7967470250977681703}
-    m_Position: {x: 1075, y: 475, z: 0}
+    m_Position: {x: 1080, y: 480, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -292,7 +292,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: bf10cb96c9c2b2d47b50a8133baf5a30, type: 2}
+  m_Motion: {fileID: 7400000, guid: 6aa9dbdffdb10524f8674847b7b3691f, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -304,7 +304,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Character Prefab Mayer
+  m_Name: Character Prefab Bekannter
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: isTalking
@@ -580,7 +580,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 6cda20f2015061a46a580396bd18615b, type: 2}
+  m_Motion: {fileID: 7400000, guid: 03ea2d5a2fb533c42b756066be9ac611, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
