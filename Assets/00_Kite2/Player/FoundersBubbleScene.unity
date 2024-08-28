@@ -2715,7 +2715,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Intro-Novel
+  m_text: Bekannte treffen
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
   m_sharedMaterial: {fileID: 3127457962735927120, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
@@ -10538,7 +10538,7 @@ MonoBehaviour:
   notarinButtonFromBurgerMenu: {fileID: 1239115883}
   presseButtonFromBurgerMenu: {fileID: 953273336}
   bueroButtonFromBurgerMenu: {fileID: 290222793}
-  introButtonFromBurgerMenu: {fileID: 522314577}
+  bekannteNovelButtonFromBurgerMenu: {fileID: 522314577}
   selectNovelSoundPrefab: {fileID: 5665505778772664329, guid: 0cf6b97a397eb0a499fcd91cb4e550d5, type: 3}
 --- !u!4 &1240231752
 Transform:
@@ -11638,7 +11638,7 @@ GameObject:
   - component: {fileID: 1497194261}
   - component: {fileID: 1497194260}
   m_Layer: 5
-  m_Name: IntroNovel
+  m_Name: Bekannte Novel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

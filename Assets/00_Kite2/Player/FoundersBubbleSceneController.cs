@@ -42,7 +42,7 @@ public class FoundersBubbleSceneController : SceneController
     [SerializeField] private Button notarinButtonFromBurgerMenu;
     [SerializeField] private Button presseButtonFromBurgerMenu;
     [SerializeField] private Button bueroButtonFromBurgerMenu;
-    [SerializeField] private Button introButtonFromBurgerMenu;
+    [SerializeField] private Button bekannteNovelButtonFromBurgerMenu;
 
     [SerializeField] private GameObject selectNovelSoundPrefab;
 
@@ -76,7 +76,7 @@ public class FoundersBubbleSceneController : SceneController
         notarinButtonFromBurgerMenu.onClick.AddListener(delegate { OnNotarinButtonFromBurgerMenu(); });
         presseButtonFromBurgerMenu.onClick.AddListener(delegate { OnPresseButtonFromBurgerMenu(); });
         bueroButtonFromBurgerMenu.onClick.AddListener(delegate { OnBueroButtonFromBurgerMenu(); });
-        introButtonFromBurgerMenu.onClick.AddListener(delegate { OnIntroButtonFromBurgerMenu(); });
+        bekannteNovelButtonFromBurgerMenu.onClick.AddListener(delegate { OnBekannteNovelButtonFromBurgerMenu(); });
 
         if (inputField != null)
         {
@@ -514,10 +514,10 @@ public class FoundersBubbleSceneController : SceneController
         return;
     }
 
-    public void OnIntroButtonFromBurgerMenu()
+    public void OnBekannteNovelButtonFromBurgerMenu()
     {
         VisualNovel visualNovelToDisplay = null;
-        VisualNovelNames visualNovelName = VisualNovelNames.INTRO_NOVEL;
+        VisualNovelNames visualNovelName = VisualNovelNames.BEKANNTE_TREFFEN_NOVEL;
 
         KiteNovelManager.Instance().GetAllKiteNovels().ForEach(kiteNovel =>
         {
