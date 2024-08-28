@@ -205,6 +205,13 @@ public class PlayNovelSceneController : SceneController
                     novelImagesController = controllerTransform.GetComponent<ElternNovelImageController>();
                     break;
                 }
+            case "Telefonat mit der Notarin":
+                {
+                    GameObject novelImagesInstance = Instantiate(novelVisuals[4], viewPortTransform);
+                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                    novelImagesController = controllerTransform.GetComponent<NotarinNovelImageController>();
+                    break;
+                }
             default:
             {
                 GameObject novelImagesInstance = Instantiate(novelVisuals[0], viewPortTransform);
