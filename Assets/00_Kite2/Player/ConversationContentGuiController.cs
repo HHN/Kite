@@ -74,7 +74,7 @@ public class ConversationContentGuiController : MonoBehaviour
         ChatMessageBox messageBox = newMessageBox.GetComponent<ChatMessageBox>();
         messageBox.SetMessage(PlayNovelSceneController.ReplacePlaceholders(novelEvent.text, PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables())); // TODO: Add replace
         guiContent.Add(newMessageBox);
-        PromptManager.Instance().AddFormattedLineToPrompt(CharacterTypeHelper.GetNameOfCharacter(novelEvent.character), novelEvent.text);
+        PromptManager.Instance().AddFormattedLineToPrompt(CharacterTypeHelper.GetNameOfCharacter(novelEvent.character), PlayNovelSceneController.ReplacePlaceholders(novelEvent.text, PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables()));
     }
 
     public void ShowPlayerAnswer(string message)
@@ -84,6 +84,6 @@ public class ConversationContentGuiController : MonoBehaviour
         messageBox.SetMessage(message);
         guiContent.Add(newMessageBox);
         PromptManager.Instance().AddFormattedLineToPrompt(
-            CharacterTypeHelper.GetNameOfCharacter(Character.PLAYER), message);
+            CharacterTypeHelper.GetNameOfCharacter(Character.PLAYER), PlayNovelSceneController.ReplacePlaceholders(message, PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables()));
     }
 }
