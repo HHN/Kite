@@ -5,42 +5,34 @@ using UnityEngine.UI;
 
 public class BueroNovelImageController : NovelImageController
 {
-    [SerializeField] private GameObject backgroundPrefab;
-    [SerializeField] private GameObject backgroundContainer;
     [SerializeField] private GameObject decoPlantPrefab;
     [SerializeField] private GameObject decoPlantContainer;
     [SerializeField] private GameObject characterPrefab;
-    [SerializeField] private GameObject characterContainer;
     [SerializeField] private AudioClip decoPlantAudio;
     [SerializeField] private Sprite[] animationFrames;
-    private GameObject background = null;
     private GameObject decoPlant = null;
     private GameObject character = null;
 
-    public override void SetBackground()
+    void Start()
     {
-        DestroyBackground();
-        InstantiateBackground();
+        SetInitialSpirtesForImages();
+    }
 
-        RectTransform decoPlantRectTransform = decoPlantContainer.GetComponent<RectTransform>();
-        if (decoPlantRectTransform != null && canvasRect != null)
+    private void SetInitialSpirtesForImages()
+    {
+
+        Image image = decoPlantPrefab.GetComponent<Image>();
+        image.sprite = animationFrames[0];
+        if (decoPlantContainer.transform.childCount > 0)
         {
-            decoPlantRectTransform.anchoredPosition = new Vector2(-canvasRect.rect.width * 0.38f, canvasRect.rect.height * 0.235f);
-            decoPlantRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.17f, canvasRect.rect.height * 0.25f);
+            Destroy(decoPlantContainer.transform.GetChild(0).gameObject);
         }
-
-        NovelColorManager.Instance().SetCanvasHeight(canvasRect.rect.height);
-        NovelColorManager.Instance().SetCanvasWidth(canvasRect.rect.width);
+        Instantiate(decoPlantPrefab, decoPlantContainer.transform);
     }
 
     public override void SetCharacter()
     {
-        DestroyCharacter();
-        character = Instantiate(characterPrefab, characterContainer.transform);
-        RectTransform characterRectTransform = characterContainer.GetComponent<RectTransform>();
-        characterRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.15f, 0);
-        characterRectTransform.sizeDelta = new Vector2(canvasRect.rect.width * 0.25f, canvasRect.rect.height * 1f);
-        characterController = character.GetComponent<CharacterController>();
+        characterController = characterPrefab.GetComponent<CharacterController>();
     }
 
     public override bool HandleTouchEvent(float x, float y, AudioSource audioSource)
@@ -87,32 +79,5 @@ public class BueroNovelImageController : NovelImageController
             }
         }
         yield return new WaitForSeconds(0f);
-    }
-
-    private void DestroyBackground()
-    {
-        if (background != null)
-        {
-            Destroy(background);
-        }
-        if (decoPlant != null)
-        {
-            Destroy(decoPlant);
-        }
-    }
-
-    private void InstantiateBackground()
-    {
-        background = Instantiate(backgroundPrefab, backgroundContainer.transform);
-        decoPlant = Instantiate(decoPlantPrefab, decoPlantContainer.transform);
-    }
-
-    public override void DestroyCharacter()
-    {
-        if (character == null)
-        {
-            return;
-        }
-        Destroy(character);
     }
 }
