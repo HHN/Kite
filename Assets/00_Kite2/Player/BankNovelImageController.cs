@@ -6,93 +6,47 @@ using UnityEngine.UI;
 
 public class BankNovelImageController : NovelImageController
 {
-    [SerializeField] private GameObject backgroundPrefab;
-    [SerializeField] private GameObject backgroundContainer;
-    [SerializeField] private GameObject deskPrefab;
-    [SerializeField] private GameObject deskContainer;
     [SerializeField] private GameObject decoGlasPrefab;
     [SerializeField] private GameObject decoGlasContainer;
     [SerializeField] private GameObject decoPlantPrefab;
     [SerializeField] private GameObject decoPlantContainer;
     [SerializeField] private GameObject characterPrefab;
-    [SerializeField] private GameObject characterContainer;
     [SerializeField] private AudioClip decoGlasAudio;
     [SerializeField] private AudioClip decoPlantAudio;
     [SerializeField] private Sprite[] animationFramesPlant;
     [SerializeField] private Sprite[] animationFramesGlas;
-    private GameObject background = null;
-    private GameObject desk = null;
     private GameObject decoGlas = null;
     private GameObject decoPlant = null;
     private GameObject character = null;
 
-    public override void SetBackground()
+    void Start()
     {
-        DestroyBackground();
-        InstantiateBackground();
-        RectTransform decoGlasRectTransform = decoGlasContainer.GetComponent<RectTransform>();
-        if (decoGlasRectTransform != null && canvasRect != null)
-        {
-            decoGlasRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.15f, canvasRect.rect.height * 0.1f);
-            decoGlasRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.075f, canvasRect.rect.height * 0.1f);
-        }
-        
-        RectTransform decoPlantRectTransform = decoPlantContainer.GetComponent<RectTransform>();
-        if (decoPlantRectTransform != null && canvasRect != null)
-        {
-            decoPlantRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.38f, canvasRect.rect.height * 0.25f);
-            decoPlantRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.17f, canvasRect.rect.height * 0.25f);
-        }
-
-        NovelColorManager.Instance().SetCanvasHeight(canvasRect.rect.height);
-        NovelColorManager.Instance().SetCanvasWidth(canvasRect.rect.width);
+        SetInitialSpirtesForImages();
     }
 
-    private void DestroyBackground()
+    private void SetInitialSpirtesForImages()
     {
-        if (background != null)
-        {
-            Destroy(background);
-        }
-        if (desk != null)
-        {
-            Destroy(desk);
-        }
-        if (decoGlas != null)
-        {
-            Destroy(decoGlas);
-        }
-        if (decoPlant != null)
-        {
-            Destroy(decoPlant);
-        }
-    }
 
-    private void InstantiateBackground()
-    {
-        background = Instantiate(backgroundPrefab, backgroundContainer.transform);
-        desk = Instantiate(deskPrefab, deskContainer.transform);
-        decoGlas = Instantiate(decoGlasPrefab, decoGlasContainer.transform);
-        decoPlant = Instantiate(decoPlantPrefab, decoPlantContainer.transform);
-    }
-
-    public override void DestroyCharacter()
-    {
-        if (character == null)
+        Image image = decoPlantPrefab.GetComponent<Image>();
+        image.sprite = animationFramesPlant[0];
+        if (decoPlantContainer.transform.childCount > 0)
         {
-            return;
+            Destroy(decoPlantContainer.transform.GetChild(0).gameObject);
         }
-        Destroy(character);
+        Instantiate(decoPlantPrefab, decoPlantContainer.transform);
+
+        image = decoGlasPrefab.GetComponent<Image>();
+        image.sprite = animationFramesGlas[0];
+        if (decoGlasContainer.transform.childCount > 0)
+        {
+            Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+        }
+        Instantiate(decoGlasPrefab, decoGlasContainer.transform);
     }
 
     public override void SetCharacter()
     {
-        DestroyCharacter();
-        character = Instantiate(characterPrefab, characterContainer.transform);
-        RectTransform characterRectTransform = characterContainer.GetComponent<RectTransform>();
-        characterRectTransform.anchoredPosition = new Vector2(-canvasRect.rect.width * 0.15f, 0);
-        characterRectTransform.sizeDelta = new Vector2(canvasRect.rect.width * 0.25f, canvasRect.rect.height * 1f);
-        characterController = character.GetComponent<CharacterController>();
+        characterController = characterPrefab.GetComponent<CharacterController>();
     }
 
     public override bool HandleTouchEvent(float x, float y, AudioSource audioSource)
