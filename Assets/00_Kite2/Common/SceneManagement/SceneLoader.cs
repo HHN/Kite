@@ -15,10 +15,6 @@ public class SceneLoader
         LoadScene(SceneNames.FEEDBACK_SCENE);
     }
 
-    public static void LoadNovelExplorerScene() {
-        LoadScene(SceneNames.NOVEL_EXPLORER_SCENE);
-    }
-
     public static void LoadLogInScene() {
         LoadScene(SceneNames.LOG_IN_SCENE);
     }
@@ -39,21 +35,6 @@ public class SceneLoader
     public static void LoadChangePasswordSceneScene()
     {
         LoadScene(SceneNames.CHANGE_PASSWORD_SCENE);
-    }
-
-    public static void LoadDetailsViewScene()
-    {
-        LoadScene(SceneNames.DETAILS_VIEW_SCENE);
-    }
-
-    public static void LoadInfoScene()
-    {
-        LoadScene(SceneNames.INFO_SCENE);
-    }
-
-    public static void LoadInfoTextScene()
-    {
-        LoadScene(SceneNames.INFO_TEXT_SCENE);
     }
 
     public static void LoadCommentSectionScene()

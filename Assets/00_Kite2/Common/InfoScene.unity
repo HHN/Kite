@@ -2517,6 +2517,8 @@ MonoBehaviour:
   spriteWhileOpen: {fileID: 21300000, guid: a7854d1fc3b545241865bb0778106334, type: 3}
   spriteWhileClosed: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
   isOpen: 0
+  listOfObjectToUpdate: []
+  childMenus: []
 --- !u!1 &206935036
 GameObject:
   m_ObjectHideFlags: 0
@@ -7207,6 +7209,8 @@ MonoBehaviour:
   spriteWhileOpen: {fileID: 21300000, guid: a7854d1fc3b545241865bb0778106334, type: 3}
   spriteWhileClosed: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
   isOpen: 0
+  listOfObjectToUpdate: []
+  childMenus: []
 --- !u!1 &658190652
 GameObject:
   m_ObjectHideFlags: 0
@@ -11001,6 +11005,8 @@ MonoBehaviour:
   spriteWhileOpen: {fileID: 21300000, guid: a7854d1fc3b545241865bb0778106334, type: 3}
   spriteWhileClosed: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
   isOpen: 0
+  listOfObjectToUpdate: []
+  childMenus: []
 --- !u!1 &856301365
 GameObject:
   m_ObjectHideFlags: 0
@@ -11384,6 +11390,8 @@ MonoBehaviour:
   spriteWhileOpen: {fileID: 21300000, guid: a7854d1fc3b545241865bb0778106334, type: 3}
   spriteWhileClosed: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
   isOpen: 0
+  listOfObjectToUpdate: []
+  childMenus: []
 --- !u!1 &874211797
 GameObject:
   m_ObjectHideFlags: 0
@@ -12095,6 +12103,8 @@ MonoBehaviour:
   spriteWhileOpen: {fileID: 21300000, guid: a7854d1fc3b545241865bb0778106334, type: 3}
   spriteWhileClosed: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
   isOpen: 0
+  listOfObjectToUpdate: []
+  childMenus: []
 --- !u!1 &952806309
 GameObject:
   m_ObjectHideFlags: 0
@@ -16493,6 +16503,8 @@ MonoBehaviour:
   spriteWhileOpen: {fileID: 21300000, guid: a7854d1fc3b545241865bb0778106334, type: 3}
   spriteWhileClosed: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
   isOpen: 0
+  listOfObjectToUpdate: []
+  childMenus: []
 --- !u!1 &1456704557
 GameObject:
   m_ObjectHideFlags: 0
@@ -17196,6 +17208,8 @@ MonoBehaviour:
   spriteWhileOpen: {fileID: 21300000, guid: a7854d1fc3b545241865bb0778106334, type: 3}
   spriteWhileClosed: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
   isOpen: 0
+  listOfObjectToUpdate: []
+  childMenus: []
 --- !u!1 &1506159763
 GameObject:
   m_ObjectHideFlags: 0
@@ -18248,6 +18262,8 @@ MonoBehaviour:
   spriteWhileOpen: {fileID: 21300000, guid: a7854d1fc3b545241865bb0778106334, type: 3}
   spriteWhileClosed: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
   isOpen: 0
+  listOfObjectToUpdate: []
+  childMenus: []
 --- !u!1 &1590185669
 GameObject:
   m_ObjectHideFlags: 0
@@ -20569,6 +20585,8 @@ MonoBehaviour:
   spriteWhileOpen: {fileID: 21300000, guid: a7854d1fc3b545241865bb0778106334, type: 3}
   spriteWhileClosed: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
   isOpen: 0
+  listOfObjectToUpdate: []
+  childMenus: []
 --- !u!1 &1819682829
 GameObject:
   m_ObjectHideFlags: 0
@@ -21535,6 +21553,8 @@ MonoBehaviour:
   spriteWhileOpen: {fileID: 21300000, guid: a7854d1fc3b545241865bb0778106334, type: 3}
   spriteWhileClosed: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
   isOpen: 0
+  listOfObjectToUpdate: []
+  childMenus: []
 --- !u!1 &1896826358
 GameObject:
   m_ObjectHideFlags: 0
@@ -21976,6 +21996,8 @@ MonoBehaviour:
   spriteWhileOpen: {fileID: 21300000, guid: a7854d1fc3b545241865bb0778106334, type: 3}
   spriteWhileClosed: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
   isOpen: 0
+  listOfObjectToUpdate: []
+  childMenus: []
 --- !u!1 &1927974509
 GameObject:
   m_ObjectHideFlags: 0

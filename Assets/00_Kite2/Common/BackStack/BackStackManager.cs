@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Used to hold the different scenes.
 public class BackStackManager
 {
     private static BackStackManager instance;

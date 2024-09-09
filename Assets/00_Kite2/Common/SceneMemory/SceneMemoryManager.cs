@@ -2,13 +2,8 @@ public class SceneMemoryManager
 {
     private static SceneMemoryManager instance;
 
-    private SettingsSceneMemory settingsSceneMemory;
-    private DetailsViewSceneMemory detailsViewSceneMemory;
     private FeedbackSceneMemory feedbackSceneMemory;
-    private NovelExplorerSceneMemory novelExplorerSceneMemory;
     private PlayNovelSceneMemory playNovelSceneMemory;
-    private InfoSceneMemory infoSceneMemory;
-    private InfoTextSceneMemory infoTextSceneMemory;
     private AddObserverSceneMemory addObserverSceneMemory;
     private AiReviewExplorerSceneMemory aiReviewExplorerSceneMemory;
     private NovelReviewExplorerSceneMemory novelReviewExplorerSceneMemory;
@@ -21,7 +16,6 @@ public class SceneMemoryManager
     private PrivacyPolicySceneMemory privacyPolicySceneMemory;
     private ExpertFeedbackSceneMemory expertFeedbackSceneMemory;
     private FoundersBubbleSceneMemory foundersBubbleSceneMemory;
-    private FoundersWellSceneMemory foundersWellSceneMemory;
     private FoundersWell2SceneMemory foundersWell2SceneMemory;
     private PlayInstructionSceneMemory playInstructionSceneMemory;
     private NovelHistorySceneMemory novelHistorySceneMemory;
@@ -46,39 +40,14 @@ public class SceneMemoryManager
         return instance;
     }
 
-    public SettingsSceneMemory GetMemoryOfSettingsScene()
-    {
-        return this.settingsSceneMemory;
-    }
-
-    public DetailsViewSceneMemory GetMemoryOfDetailsViewScene()
-    {
-        return this.detailsViewSceneMemory;
-    }
-
     public FeedbackSceneMemory GetMemoryOfFeedbackScene()
     {
         return this.feedbackSceneMemory;
     }
 
-    public NovelExplorerSceneMemory GetMemoryOfNovelExplorerScene()
-    {
-        return this.novelExplorerSceneMemory;
-    }
-
     public PlayNovelSceneMemory GetMemoryOfPlayNovelScene()
     {
         return this.playNovelSceneMemory;
-    }
-
-    public InfoSceneMemory GetMemoryOfInfoScene()
-    {
-        return this.infoSceneMemory;
-    }
-
-    public InfoTextSceneMemory GetMemoryOfInfoTextScene()
-    {
-        return this.infoTextSceneMemory;
     }
 
     public AddObserverSceneMemory GetMemoryOfAddObserverScene()
@@ -141,11 +110,6 @@ public class SceneMemoryManager
         return this.foundersBubbleSceneMemory;
     }    
     
-    public FoundersWellSceneMemory GetMemoryOfFoundersWellScene()
-    {
-        return this.foundersWellSceneMemory;
-    }       
-    
     public FoundersWell2SceneMemory GetMemoryOfFoundersWell2Scene()
     {
         return this.foundersWell2SceneMemory;
@@ -186,39 +150,14 @@ public class SceneMemoryManager
         return this.novelHistorySceneMemory;
     }
 
-    public void SetMemoryOfSettingsScene(SettingsSceneMemory settingsSceneMemory)
-    {
-        this.settingsSceneMemory = settingsSceneMemory;
-    }
-
-    public void SetMemoryOfDetailsViewScene(DetailsViewSceneMemory detailsViewSceneMemory)
-    {
-        this.detailsViewSceneMemory = detailsViewSceneMemory;
-    }
-
     public void SetMemoryOfFeedbackScene(FeedbackSceneMemory feedbackSceneMemory)
     {
         this.feedbackSceneMemory = feedbackSceneMemory;
     }
 
-    public void SetMemoryOfNovelExplorerScene(NovelExplorerSceneMemory novelExplorerSceneMemory)
-    {
-        this.novelExplorerSceneMemory = novelExplorerSceneMemory;
-    }
-
     public void SetMemoryOfPlayNovelScene(PlayNovelSceneMemory playNovelSceneMemory)
     {
         this.playNovelSceneMemory = playNovelSceneMemory;
-    }
-
-    public void SetMemoryOfInfoScene(InfoSceneMemory infoSceneMemory)
-    {
-        this.infoSceneMemory = infoSceneMemory;
-    }
-
-    public void SetMemoryOfInfoTextScene(InfoTextSceneMemory infoTextSceneMemory)
-    {
-        this.infoTextSceneMemory = infoTextSceneMemory;
     }
 
     public void SetMemoryOfImprintScene(ImprintSceneMemory imprintSceneMemory)
@@ -279,12 +218,7 @@ public class SceneMemoryManager
     public void SetMemoryOfFoundersBubbleScene(FoundersBubbleSceneMemory foundersBubbleSceneMemory)
     {
         this.foundersBubbleSceneMemory = foundersBubbleSceneMemory;
-    }    
-    
-    public void SetMemoryOfFoundersWellScene(FoundersWellSceneMemory foundersWellSceneMemory)
-    {
-        this.foundersWellSceneMemory = foundersWellSceneMemory;
-    }      
+    }        
     
     public void SetMemoryOfFoundersWell2Scene(FoundersWell2SceneMemory foundersWell2SceneMemory)
     {
@@ -328,13 +262,8 @@ public class SceneMemoryManager
 
     public void ClearMemory()
     {
-        this.settingsSceneMemory = null;
-        this.detailsViewSceneMemory = null;
         this.feedbackSceneMemory = null;
-        this.novelExplorerSceneMemory = null;
         this.playNovelSceneMemory = null;
-        this.infoSceneMemory = null;
-        this.infoTextSceneMemory = null;
         this.addObserverSceneMemory = null;
         this.aiReviewExplorerSceneMemory = null;
         this.novelReviewExplorerSceneMemory = null;
@@ -347,7 +276,6 @@ public class SceneMemoryManager
         this.privacyPolicySceneMemory = null;
         this.expertFeedbackSceneMemory = null;
         this.foundersBubbleSceneMemory = null;
-        this.foundersWellSceneMemory = null;
         this.foundersWell2SceneMemory = null;
         this.playInstructionSceneMemory = null;
         this.novelHistorySceneMemory = null;

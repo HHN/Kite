@@ -1942,8 +1942,12 @@ MonoBehaviour:
   settingsButton: {fileID: 6544983576623443192}
   leaveGameAndGoToMainMenuMessageBox: {fileID: 0}
   leaveGameAndGoToSettingsMessageBox: {fileID: 0}
+  leaveGameAndGoBackMessageBox: {fileID: 0}
+  leaveGameAndCloseMessageBox: {fileID: 0}
   leaveGameAndGoToMainMenuMessageBoxObject: {fileID: 0}
   leaveGameAndGoToSettingsMessageBoxObject: {fileID: 0}
+  leaveGameAndGoBackMessageBoxObject: {fileID: 0}
+  leaveNovelAndCloseMessageBoxObject: {fileID: 0}
   canvas: {fileID: 0}
 --- !u!1 &6544983575933527976
 GameObject:

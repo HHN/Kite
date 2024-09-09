@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class AlreadyPlayerUpdater : MonoBehaviour
+public class AlreadyPlayedUpdater : MonoBehaviour
 {
     [SerializeField] private VisualNovelNames visualNovel;
     [SerializeField] private TextMeshProUGUI number;
