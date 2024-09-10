@@ -1,11 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Collections.Generic;
-
 
 public class MainMenuSceneController : SceneController, OnSuccessHandler
-{ 
+{
     [SerializeField] private Button novelPlayerButton;
     [SerializeField] private GameObject buttonSoundPrefab;
     [SerializeField] private GameObject termsAndConditionPanel;
@@ -19,53 +17,71 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     [SerializeField] private static int COMPATIBLE_SERVER_VERSION_NUMBER = 32;
     [SerializeField] private GameObject novelLoader;
 
-    void Start()
+    private void Start()
+    {
+        InitializeScene();
+        SetupButtonListeners();
+        HandleTermsAndConditions();
+    }
+
+    private void InitializeScene()
     {
         DontDestroyOnLoad(novelLoader);
-
-        // Analytics 
-        var analytics = AnalyticsServiceHandler.Instance();
-        analytics.StartAnalytics();
+        AnalyticsServiceHandler.Instance().StartAnalytics();
         PlayerDataManager.Instance().LoadAllPlayerPrefs();
-
         BackStackManager.Instance().Clear();
         SceneMemoryManager.Instance().ClearMemory();
+    }
 
-        novelPlayerButton.onClick.AddListener(delegate { OnNovelPlayerButton(); });
-        continuetermsAndConditionsButton.onClick.AddListener(delegate { OnContinueTermsAndConditionsButton(); });
+    private void SetupButtonListeners()
+    {
+        novelPlayerButton.onClick.AddListener(OnNovelPlayerButton);
+        continuetermsAndConditionsButton.onClick.AddListener(OnContinueTermsAndConditionsButton);
+    }
 
-        if (PrivacyAndConditionManager.Instance().IsConditionsAccepted() && PrivacyAndConditionManager.Instance().IsPriavcyTermsAccepted())
+    private void HandleTermsAndConditions()
+    {
+        var privacyManager = PrivacyAndConditionManager.Instance();
+
+        if (privacyManager.IsConditionsAccepted() && privacyManager.IsPriavcyTermsAccepted())
         {
             termsAndConditionPanel.SetActive(false);
             kiteAudioLogo.Play();
 
-            if (PrivacyAndConditionManager.Instance().IsDataCollectionAccepted())
+            if (privacyManager.IsDataCollectionAccepted())
             {
                 AnalyticsServiceHandler.Instance().CollectData();
             }
 
-            if (ApplicationModeManager.Instance().IsOfflineModeActive())
+            if (!ApplicationModeManager.Instance().IsOfflineModeActive())
             {
-                return;
+                StartVersionCheck();
             }
-            GetVersionServerCall call = Instantiate(getVersionServerCallPrefab).GetComponent<GetVersionServerCall>();
-            call.sceneController = this;
-            call.onSuccessHandler = this;
-            call.SendRequest();
-            DontDestroyOnLoad(call.gameObject);
         }
+    }
+
+    private void StartVersionCheck()
+    {
+        var call = Instantiate(getVersionServerCallPrefab).GetComponent<GetVersionServerCall>();
+        call.sceneController = this;
+        call.onSuccessHandler = this;
+        call.SendRequest();
+        DontDestroyOnLoad(call.gameObject);
     }
 
     public void OnNovelPlayerButton()
     {
-        AnalyticsServiceHandler.Instance().SendMainMenuStatistics();
-        AnalyticsServiceHandler.Instance().SetFromWhereIsNovelSelected("KITE NOVELS");
+        var analytics = AnalyticsServiceHandler.Instance();
+        analytics.SendMainMenuStatistics();
+        analytics.SetFromWhereIsNovelSelected("KITE NOVELS");
 
+        // Instantiate the sound prefab and assign it to a variable
         GameObject buttonSound = Instantiate(buttonSoundPrefab);
-        DontDestroyOnLoad(buttonSound);
+        DontDestroyOnLoad(buttonSound);  // Correct usage of DontDestroyOnLoad
 
         SceneLoader.LoadFoundersBubbleScene();
     }
+
 
     public void OnSettingsButton()
     {
@@ -74,39 +90,48 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
 
     public void OnContinueTermsAndConditionsButton()
     {
+        UpdateTermsAcceptance();
+        ValidateTermsAndLoadScene();
+    }
+
+    private void UpdateTermsAcceptance()
+    {
+        var privacyManager = PrivacyAndConditionManager.Instance();
+
+        UpdateAcceptance(termsOfUseToggle.IsClicked(),
+                         privacyManager.AcceptConditionsOfUssage,
+                         privacyManager.UnacceptConditionsOfUssage);
+
+        UpdateAcceptance(dataPrivacyToggle.IsClicked(),
+                         privacyManager.AcceptTermsOfPrivacy,
+                         privacyManager.UnacceptTermsOfPrivacy);
+
+        UpdateAcceptance(collectDataToggle.IsClicked(),
+                         privacyManager.AcceptDataCollection,
+                         privacyManager.UnacceptDataCollection);
+    }
+
+    private void UpdateAcceptance(bool isAccepted, System.Action acceptAction, System.Action unacceptAction)
+    {
+        if (isAccepted)
+        {
+            acceptAction();
+        }
+        else
+        {
+            unacceptAction();
+        }
+    }
+
+    private void ValidateTermsAndLoadScene()
+    {
         bool acceptedTermsOfUse = termsOfUseToggle.IsClicked();
         bool acceptedDataPrivacyTerms = dataPrivacyToggle.IsClicked();
-        bool acceptedDataCollection = collectDataToggle.IsClicked();
-
-        if (acceptedTermsOfUse)
-        {
-            PrivacyAndConditionManager.Instance().AcceptConditionsOfUssage();
-        } 
-        else
-        {
-            PrivacyAndConditionManager.Instance().UnacceptConditionsOfUssage();
-        }
-        if (acceptedDataPrivacyTerms)
-        {
-            PrivacyAndConditionManager.Instance().AcceptTermsOfPrivacy();
-        }
-        else
-        {
-            PrivacyAndConditionManager.Instance().UnacceptTermsOfPrivacy();
-        }
-        if (acceptedDataCollection)
-        {
-            PrivacyAndConditionManager.Instance().AcceptDataCollection();
-        }
-        else
-        {
-            PrivacyAndConditionManager.Instance().UnacceptDataCollection();
-        }
 
         if (acceptedTermsOfUse && acceptedDataPrivacyTerms)
         {
             SceneLoader.LoadMainMenuScene();
-        } 
+        }
         else
         {
             infoTextTermsAndConditions.gameObject.SetActive(true);
@@ -115,10 +140,8 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
 
     public void OnSuccess(Response response)
     {
-        if (response == null) 
-        { 
-            return; 
-        }
+        if (response == null) return;
+
         if (response.GetVersion() != COMPATIBLE_SERVER_VERSION_NUMBER)
         {
             DisplayInfoMessage(InfoMessages.UPDATE_AVAILABLE);
