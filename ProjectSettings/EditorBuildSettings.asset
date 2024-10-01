@@ -21,9 +21,6 @@ EditorBuildSettings:
     path: Assets/00_Kite2/Common/SettingsScene.unity
     guid: 421e8bb45387ffd499ffc331477553c8
   - enabled: 1
-    path: Assets/00_Kite2/Player/DetailsViewScene.unity
-    guid: e4fa8df32de503049944e76789231299
-  - enabled: 1
     path: Assets/00_Kite2/Common/RoomScene.unity
     guid: b3399910d54a05240acd6262d79881a1
   - enabled: 1

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using LeastSquares.Overtone;
+using TMPro;
 
 public class BarrierefreiheitSceneController : SceneController
 {
@@ -9,6 +10,15 @@ public class BarrierefreiheitSceneController : SceneController
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private RectTransform layout;
     [SerializeField] private TTSEngine engine;
+    [SerializeField] private Button adjustFontSizeInfoButton;
+    [SerializeField] private Slider fontSizeSlider;
+    [SerializeField] private TMP_Text exampleText;
+    [SerializeField] private Button confirmButton;
+
+    private int minFontSize = 10;   // Minimale Schriftgröße
+    private int maxFontSize = 50;   // Maximale Schriftgröße
+
+    private int updatedFontSize = 0;
 
     void Start()
     {
@@ -17,7 +27,10 @@ public class BarrierefreiheitSceneController : SceneController
         LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
         InitializeToggleTextToSpeech();
         toggleTextToSpeech.onValueChanged.AddListener(delegate { OnToggleTextToSpeech(toggleTextToSpeech); });
-        toggleTextToSpeechInfoButton.onClick.AddListener(delegate { OnToggleTextToSpeechInfoButton(); });
+        toggleTextToSpeechInfoButton.onClick.AddListener(delegate { OnToggleTextToSpeechInfoButton(); }); 
+        adjustFontSizeInfoButton.onClick.AddListener(delegate { OnAdjustFontSizeInfoButton(); });
+        fontSizeSlider.onValueChanged.AddListener(UpdateFontSize);
+        confirmButton.onClick.AddListener(delegate { SetFontSize(); });
     }
 
     public void InitializeToggleTextToSpeech()
@@ -30,11 +43,10 @@ public class BarrierefreiheitSceneController : SceneController
         {
             toggleTextToSpeech.isOn = false;
         }
-    }    
-    
-    public void OnToggleTextToSpeech(Toggle toggle)
+    }
+
+    private void OnToggleTextToSpeech(Toggle toggle)
     {
-        Debug.Log("Button works");
         if (toggleTextToSpeech.isOn)
         {
             TextToSpeechManager.Instance().ActivateTextToSpeech();
@@ -49,9 +61,31 @@ public class BarrierefreiheitSceneController : SceneController
         }
     }
 
-    public void OnToggleTextToSpeechInfoButton()
+    private void OnAdjustFontSizeInfoButton()
+    {
+        DisplayInfoMessage(InfoMessages.EXPLANATION_ADJUST_FONT_SIZE_BUTTON);
+    }
+
+    private void OnToggleTextToSpeechInfoButton()
     {
         TextToSpeechService.Instance().TextToSpeechReadLive("textToSpeechInfo", engine);
         DisplayInfoMessage(InfoMessages.EXPLANATION_TEXTTOSPEECH_BUTTON);
+    }
+
+    private void UpdateFontSize(float sliderValue)
+    {
+        // Berechne die neue Schriftgröße basierend auf dem Slider-Wert
+        int newFontSize = Mathf.RoundToInt(Mathf.Lerp(minFontSize, maxFontSize, sliderValue));
+
+        // Falls du TextMeshPro verwendest, setze stattdessen die TMP_Text FontSize
+        exampleText.fontSize = newFontSize;
+
+        updatedFontSize = newFontSize;
+    }
+
+    public void SetFontSize()
+    {
+        FontSizeManager.Instance().SetFontSize(updatedFontSize);
+        DisplayInfoMessage(InfoMessages.CONFIRM_FONT_SIZE_ADJUSTMENT);
     }
 }
