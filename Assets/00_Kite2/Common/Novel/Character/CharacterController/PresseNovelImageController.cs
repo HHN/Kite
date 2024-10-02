@@ -51,29 +51,44 @@ public class PresseNovelImageController : NovelImageController
 
     public override bool HandleTouchEvent(float x, float y, AudioSource audioSource)
     {
+        // Check if animations are allowed to proceed, return false if disabled
+        if (AnimationFlagSingleton.Instance().GetFlag() == false)
+        {
+            return false;
+        }
+
+        // Get the RectTransforms of the objects to detect touch within their bounds
         RectTransform decoVaseRectTransform = decoVaseContainer.GetComponent<RectTransform>();
         RectTransform decoGlasRectTransform = decoGlasContainer.GetComponent<RectTransform>();
 
+        // Get the world corners of the vase decoration container
         Vector3[] cornersDecoVase = new Vector3[4];
         decoVaseRectTransform.GetWorldCorners(cornersDecoVase);
         Vector3 bottomLeftDecoVase = cornersDecoVase[0];
         Vector3 topRightDecoVase = cornersDecoVase[2];
 
+        // Get the world corners of the glass decoration container
         Vector3[] cornersDecoGlas = new Vector3[4];
         decoGlasRectTransform.GetWorldCorners(cornersDecoGlas);
         Vector3 bottomLeftDecoGlas = cornersDecoGlas[0];
         Vector3 topRightDecoGlas = cornersDecoGlas[2];
+
+        // Check if the touch coordinates are within the vase decoration bounds
         if (x >= bottomLeftDecoVase.x && x <= topRightDecoVase.x &&
             y >= bottomLeftDecoVase.y && y <= topRightDecoVase.y)
         {
             StartCoroutine(OnDecoVase(audioSource));
             return true;
-        } else if ( x >= bottomLeftDecoGlas.x && x <= topRightDecoGlas.x &&
+        }
+        // Check if the touch coordinates are within the glass decoration bounds
+        else if (x >= bottomLeftDecoGlas.x && x <= topRightDecoGlas.x &&
                     y >= bottomLeftDecoGlas.y && y <= topRightDecoGlas.y)
         {
             StartCoroutine(OnDecoGlas(audioSource));
             return true;
         }
+
+        // Return false if the touch is outside both bounds
         return false;
     }
 
@@ -152,4 +167,3 @@ public class PresseNovelImageController : NovelImageController
     }
 }
 
-    

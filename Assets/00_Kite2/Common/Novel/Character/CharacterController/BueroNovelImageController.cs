@@ -37,18 +37,30 @@ public class BueroNovelImageController : NovelImageController
 
     public override bool HandleTouchEvent(float x, float y, AudioSource audioSource)
     {
+        // Check if animations are allowed to proceed, return false if disabled
+        if (AnimationFlagSingleton.Instance().GetFlag() == false)
+        {
+            return false;
+        }
+
+        // Get the RectTransforms of the objects to detect touch within their bounds
         RectTransform decoPlantRectTransform = decoPlantContainer.GetComponent<RectTransform>();
 
+        // Get the world corners of the plant decoration container
         Vector3[] cornersDecoPlant = new Vector3[4];
         decoPlantRectTransform.GetWorldCorners(cornersDecoPlant);
         Vector3 bottomLeftDecoPlant = cornersDecoPlant[0];
         Vector3 topRightDecoPlant = cornersDecoPlant[2];
+
+        // Check if the touch coordinates are within the glass decoration bounds
         if (x >= bottomLeftDecoPlant.x && x <= topRightDecoPlant.x &&
             y >= bottomLeftDecoPlant.y && y <= topRightDecoPlant.y)
         {
-            StartCoroutine(OnDecoPlant(audioSource));
+            StartCoroutine(OnDecoPlant(audioSource));// Trigger the plant interaction
             return true;
         }
+
+        // Return false if the touch is outside both bounds
         return false;
     }
 

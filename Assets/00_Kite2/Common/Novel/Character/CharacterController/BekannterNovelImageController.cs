@@ -38,20 +38,30 @@ public class BekannterNovelImageController : NovelImageController
 
     public override bool HandleTouchEvent(float x, float y, AudioSource audioSource)
     {
+        // Check if animations are allowed to proceed, return false if disabled
+        if (AnimationFlagSingleton.Instance().GetFlag() == false)
+        {
+            return false;
+        }
+
+        // Get the RectTransforms of the object to detect touch within their bounds
         RectTransform decoPlantRectTransform = decoPlantContainer.GetComponent<RectTransform>();
 
+        // Get the world corners of the plant decoration container
         Vector3[] cornersDecoBackground = new Vector3[4];
         decoPlantRectTransform.GetWorldCorners(cornersDecoBackground);
         Vector3 bottomLeftDecoBackground = cornersDecoBackground[0];
         Vector3 topRightDecoBackground = cornersDecoBackground[2];
 
-
+        // Check if the touch coordinates are within the bounds of the plant decoration
         if (x >= bottomLeftDecoBackground.x && x <= topRightDecoBackground.x &&
-                   y >= bottomLeftDecoBackground.y && y <= topRightDecoBackground.y)
+            y >= bottomLeftDecoBackground.y && y <= topRightDecoBackground.y)
         {
-            StartCoroutine(OnDecoPlant(audioSource));
+            StartCoroutine(OnDecoPlant(audioSource)); // Trigger the plant interaction
             return true;
         }
+
+        // Return false if the touch is outside the bounds
         return false;
     }
 

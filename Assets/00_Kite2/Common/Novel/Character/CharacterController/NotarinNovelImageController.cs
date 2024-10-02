@@ -126,33 +126,44 @@ public class NotarinNovelImageController : NovelImageController
 
     public override bool HandleTouchEvent(float x, float y, AudioSource audioSource)
     {
+        // Check if animations are allowed to proceed, return false if disabled
+        if (AnimationFlagSingleton.Instance().GetFlag() == false)
+        {
+            return false;
+        }
+
+        // Get the RectTransforms of the objects to detect touch within their bounds
         RectTransform decoGlasRectTransform = decoGlasContainer.GetComponent<RectTransform>();
         RectTransform decoPlantRectTransform = decoPlantContainer.GetComponent<RectTransform>();
 
+        // Get the world corners of the glass decoration container
         Vector3[] cornersDecoDesk = new Vector3[4];
         decoGlasRectTransform.GetWorldCorners(cornersDecoDesk);
         Vector3 bottomLeftDecoDesk = cornersDecoDesk[0];
         Vector3 topRightDecoDesk = cornersDecoDesk[2];
 
+        // Get the world corners of the plant decoration container
         Vector3[] cornersDecoBackground = new Vector3[4];
         decoPlantRectTransform.GetWorldCorners(cornersDecoBackground);
         Vector3 bottomLeftDecoBackground = cornersDecoBackground[0];
         Vector3 topRightDecoBackground = cornersDecoBackground[2];
 
-
-
+        // Check if the touch coordinates are within the glass decoration bounds
         if (x >= bottomLeftDecoDesk.x && x <= topRightDecoDesk.x &&
             y >= bottomLeftDecoDesk.y && y <= topRightDecoDesk.y)
         {
             StartCoroutine(OnDecoGlas(audioSource));
             return true;
-        } 
+        }
+        // Check if the touch coordinates are within the plant decoration bounds
         else if (x >= bottomLeftDecoBackground.x && x <= topRightDecoBackground.x &&
                    y >= bottomLeftDecoBackground.y && y <= topRightDecoBackground.y)
         {
             StartCoroutine(OnDecoPlant(audioSource));
             return true;
         }
+
+        // Return false if the touch is outside both bounds
         return false;
     }
 
