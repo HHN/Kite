@@ -586,8 +586,16 @@ public class PlayNovelSceneController : SceneController
 
     public void HandleShowChoicesEvent(VisualNovelEvent novelEvent)
     {
+        // Enable animations when showing choices
+        AnimationFlagSingleton.Instance().SetFlag(true);
+
+        // Convert the available choices to speech for accessibility using Text-to-Speech (TTS)
         TextToSpeechService.Instance().TextToSpeechReadLive(TextToSpeechService.Instance().returnChoicesForTextToSpeech(), engine);
+
+        // Log the event to the playthrough history, including the character and their dialogue
         AddEntryToPlayThroughHistory(CharacterTypeHelper.ValueOf(novelEvent.character), novelEvent.text);
+
+        // Add the conversation content to the UI or dialogue system
         conversationContent.AddContent(novelEvent, this);
     }
 

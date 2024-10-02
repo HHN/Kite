@@ -137,28 +137,48 @@ public class OptionsManager : MonoBehaviour
 
     public IEnumerator AfterSelection(string parameterName, string answer, string nextEventID, bool displayAfterSelection, int index)
     {
+        // Disable animations after the selection
+        AnimationFlagSingleton.Instance().SetFlag(false);
+
+        // If already selected, exit the coroutine
         if (selected) { yield break; }
-        selected = true;
+        selected = true; // Mark as selected to prevent repeated selections
+
+        // Add the current path (selection) to the visual novel path history
         sceneController.AddPathToNovel(index);
 
+        // Trigger the animation associated with the parameter
         GetComponent<Animator>().SetBool(parameterName, true);
+
+        // Play the selection audio feedback
         AudioSource audio = GetComponent<AudioSource>();
         audio.clip = selectedSound;
         audio.Play();
+
+        // Wait for the audio and animation to complete
         yield return new WaitForSeconds(2f);
+
+        // Hide the current object after the selection
         gameObject.SetActive(false);
-        if(sceneController != null)
+
+        // If the scene controller is set, proceed with further actions
+        if (sceneController != null)
         {
+            // Show confirmation areas
             sceneController.confirmArea.gameObject.SetActive(true);
             sceneController.confirmArea2.gameObject.SetActive(true);
-            sceneController.ShowAnswer(answer, displayAfterSelection);
-            sceneController.SetWaitingForConfirmation(true);
-            sceneController.SetNextEvent(nextEventID);
 
+            // Display the selected answer and handle post-selection behavior
+            sceneController.ShowAnswer(answer, displayAfterSelection);
+            sceneController.SetWaitingForConfirmation(true); // Indicate that a confirmation is expected
+            sceneController.SetNextEvent(nextEventID); // Set the next event ID for the scene
+
+            // Automatically confirm if post-selection display is not required
             if (!displayAfterSelection)
             {
-                sceneController.OnConfirm();
+                sceneController.OnConfirm(); // Trigger confirmation if no further display is needed
             }
-        } 
+        }
     }
+
 }

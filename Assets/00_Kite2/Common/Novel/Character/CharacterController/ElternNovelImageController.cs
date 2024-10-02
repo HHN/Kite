@@ -43,10 +43,10 @@ public class ElternNovelImageController : NovelImageController
 
     private void SetCharacterController()
     {
-     //   characterMutter = Instantiate(characterMutterPrefab, characterMutterContainer.transform);
-          characterController = characterMutterPrefab.GetComponent<CharacterController>();
-     //   characterVater = Instantiate(characterVaterPrefab, characterVaterContainer.transform);
-          characterController2 = characterVaterPrefab.GetComponent<CharacterController>();
+        //   characterMutter = Instantiate(characterMutterPrefab, characterMutterContainer.transform);
+        characterController = characterMutterPrefab.GetComponent<CharacterController>();
+        //   characterVater = Instantiate(characterVaterPrefab, characterVaterContainer.transform);
+        characterController2 = characterVaterPrefab.GetComponent<CharacterController>();
     }
 
     public override void SetBackground()
@@ -55,59 +55,76 @@ public class ElternNovelImageController : NovelImageController
         NovelColorManager.Instance().SetCanvasWidth(canvasRect.rect.width);
     }
 
-    
+
 
     public override bool HandleTouchEvent(float x, float y, AudioSource audioSource)
     {
+        // Check if animations are allowed to proceed, return false if disabled
+        if (AnimationFlagSingleton.Instance().GetFlag() == false)
+        {
+            return false;
+        }
+
+        // Get the RectTransforms of the objects to detect touch within their bounds
         RectTransform decoTasse1RectTransform = decoTasse1Container.GetComponent<RectTransform>();
         RectTransform decoTasse2RectTransform = decoTasse2Container.GetComponent<RectTransform>();
         RectTransform decoKanneRectTransform = decoKanneContainer.GetComponent<RectTransform>();
         RectTransform decoLampeRectTransform = decoLampeContainer.GetComponent<RectTransform>();
 
+        // Get the world corners of the tasse1 decoration container
         Vector3[] cornersDecoTasse1 = new Vector3[4];
         decoTasse1RectTransform.GetWorldCorners(cornersDecoTasse1);
         Vector3 bottomLeftDecoTasse1 = cornersDecoTasse1[0];
         Vector3 topRightDecoTasse1 = cornersDecoTasse1[2];
 
+        // Get the world corners of the tasse2 decoration container
         Vector3[] cornersDecoTasse2 = new Vector3[4];
         decoTasse2RectTransform.GetWorldCorners(cornersDecoTasse2);
         Vector3 bottomLeftDecoTasse2 = cornersDecoTasse2[0];
         Vector3 topRightDecoTasse2 = cornersDecoTasse2[2];
 
+        // Get the world corners of the kanne decoration container
         Vector3[] cornersDecoKanne = new Vector3[4];
         decoKanneRectTransform.GetWorldCorners(cornersDecoKanne);
         Vector3 bottomLeftDecoKanne = cornersDecoKanne[0];
         Vector3 topRightDecoKanne = cornersDecoKanne[2];
 
+        // Get the world corners of the lampe decoration container
         Vector3[] cornersDecoLampe = new Vector3[4];
         Vector3 bottomLeftDecoLampe;
         Vector3 topRightDecoLampe;
         CalculatePointsFromBottomRightCorner(decoLampeRectTransform, 180, 348, out bottomLeftDecoLampe, out topRightDecoLampe);
 
+        // Check if the touch coordinates are within the tasse1 decoration bounds
         if (x >= bottomLeftDecoTasse1.x && x <= topRightDecoTasse1.x &&
             y >= bottomLeftDecoTasse1.y && y <= topRightDecoTasse1.y)
         {
             StartCoroutine(OnDecoTasse1(audioSource));
             return true;
         }
+        // Check if the touch coordinates are within the tasse2 decoration bounds
         else if (x >= bottomLeftDecoTasse2.x && x <= topRightDecoTasse2.x &&
                  y >= bottomLeftDecoTasse2.y && y <= topRightDecoTasse2.y)
         {
             StartCoroutine(OnDecoTasse2(audioSource));
             return true;
         }
+        // Check if the touch coordinates are within the kanne decoration bounds
         else if (x >= bottomLeftDecoKanne.x && x <= topRightDecoKanne.x &&
                  y >= bottomLeftDecoKanne.y && y <= topRightDecoKanne.y)
         {
             StartCoroutine(OnDecoKanne(audioSource));
             return true;
         }
+        // Check if the touch coordinates are within the lampe decoration bounds
         else if (x >= bottomLeftDecoLampe.x && x <= topRightDecoLampe.x &&
                  y >= bottomLeftDecoLampe.y && y <= topRightDecoLampe.y)
         {
             StartCoroutine(OnDecoLampe(audioSource));
             return true;
         }
+
+        // Return false if the touch is outside both bounds
         return false;
     }
 
@@ -285,7 +302,7 @@ public class ElternNovelImageController : NovelImageController
                     decoLampeStatus = true;
                     yield return new WaitForSeconds(0.5f);
                 }
-                
+
             }
             else
             {
@@ -347,4 +364,3 @@ public class ElternNovelImageController : NovelImageController
     }
 }
 
-    
