@@ -57,22 +57,34 @@ public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
 
     public void OnConfirmButton()
     {
+        // Disable animations after confirmation
+        AnimationFlagSingleton.Instance().SetFlag(false);
+
+        // Cancel any ongoing speech and audio from the Text-to-Speech service
         TextToSpeechService.Instance().CancelSpeechAndAudio();
+
+        // Retrieve the last scene for the back button functionality
         string lastScene = SceneRouter.GetTargetSceneForBackButton();
 
+        // Check if there is no last scene, and if so, load the main menu scene
         if (string.IsNullOrEmpty(lastScene))
         {
             SceneLoader.LoadMainMenuScene();
-            return;
+            return; // Exit the method after loading the main menu
         }
+
+        // If the last scene is the PLAY_INSTRUCTION_SCENE, load the FOUNDERS_BUBBLE_SCENE instead
         if (lastScene == SceneNames.PLAY_INSTRUCTION_SCENE.ToString())
         {
             SceneLoader.LoadScene(SceneNames.FOUNDERS_BUBBLE_SCENE.ToString());
-            BackStackManager.Instance().Pop();
-            return;
+            BackStackManager.Instance().Pop(); // Remove the instruction scene from the back stack
+            return; // Exit the method after loading the new scene
         }
+
+        // Load the last scene retrieved from the back button functionality
         SceneLoader.LoadScene(lastScene);
     }
+
 
     public void CloseMessageBox()
     {
