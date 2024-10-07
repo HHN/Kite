@@ -7,7 +7,8 @@ public class SceneLoader
         LoadScene(SceneNames.MAIN_MENU_SCENE);
     }
 
-    public static void LoadPlayNovelScene() {
+    public static void LoadPlayNovelScene()
+    {
         LoadScene(SceneNames.PLAY_NOVEL_SCENE);
     }
 

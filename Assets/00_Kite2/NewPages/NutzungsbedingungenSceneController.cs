@@ -12,5 +12,6 @@ public class NutzungsbedingungenSceneController : SceneController
     {
         BackStackManager.Instance().Push(SceneNames.NUTZUNGSBEDINGUNGEN_SCENE);
         LayoutRebuilder.ForceRebuildLayoutImmediate(layout02);
+        FontSizeManager.Instance().UpdateAllTextComponents();
     }
 }

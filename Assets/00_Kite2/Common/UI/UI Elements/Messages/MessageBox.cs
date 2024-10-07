@@ -14,6 +14,7 @@ public class MessageBox : MonoBehaviour
     void Start()
     {
         okButton.onClick.AddListener(delegate { OnOkButton(); });
+        FontSizeManager.Instance().UpdateAllTextComponents();
     }
 
     public void SetHeadline(string headline)

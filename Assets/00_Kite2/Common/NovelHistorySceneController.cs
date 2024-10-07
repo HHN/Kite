@@ -151,6 +151,7 @@ public class NovelHistorySceneController : SceneController
         dataObjectGuiElement.AddLayoutToUpdateOnChange(containerGameObject.GetComponent<RectTransform>());
         dataObjectGuiElement.AddLayoutToUpdateOnChange(this.container.GetComponent<RectTransform>());
         dataObjectGuiElement.SetVisualNovelColor(VisualNovelNamesHelper.ValueOf((int)entry.GetNovelId()));
+        FontSizeManager.Instance().UpdateAllTextComponents();
     }
 
     private DropDownMenu GetDropDownMenuById(long novelId)

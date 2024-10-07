@@ -262,6 +262,7 @@ public class FoundersBubbleSceneController : SceneController
         }
         isBurgerMenuOpen = true;
         this.burgerMenu.gameObject.SetActive(true);
+        FontSizeManager.Instance().UpdateAllTextComponents();
     }   
 
     private void OnSettingsButton()
@@ -272,6 +273,7 @@ public class FoundersBubbleSceneController : SceneController
 
     public void DisplayTextBoxForVisualNovel(VisualNovelNames visualNovel, bool isNovelContainedInVersion)
     {
+        Debug.Log("TEST");
         if (isBurgerMenuOpen)
         {
             this.burgerMenu.gameObject.SetActive(false);
@@ -317,6 +319,7 @@ public class FoundersBubbleSceneController : SceneController
                 NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
             }
         }
+        FontSizeManager.Instance().UpdateAllTextComponents();
     }
 
     public void MakeTextboxInvisible()

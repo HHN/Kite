@@ -26,11 +26,13 @@ public class BarrierefreiheitSceneController : SceneController
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
         InitializeToggleTextToSpeech();
+        InitializeFontSizeSlider();  // Neue Methode zum Initialisieren des Sliders und der Schriftgröße
         toggleTextToSpeech.onValueChanged.AddListener(delegate { OnToggleTextToSpeech(toggleTextToSpeech); });
-        toggleTextToSpeechInfoButton.onClick.AddListener(delegate { OnToggleTextToSpeechInfoButton(); }); 
+        toggleTextToSpeechInfoButton.onClick.AddListener(delegate { OnToggleTextToSpeechInfoButton(); });
         adjustFontSizeInfoButton.onClick.AddListener(delegate { OnAdjustFontSizeInfoButton(); });
         fontSizeSlider.onValueChanged.AddListener(UpdateFontSize);
         confirmButton.onClick.AddListener(delegate { SetFontSize(); });
+        FontSizeManager.Instance().UpdateAllTextComponents();
     }
 
     public void InitializeToggleTextToSpeech()
@@ -72,6 +74,22 @@ public class BarrierefreiheitSceneController : SceneController
         DisplayInfoMessage(InfoMessages.EXPLANATION_TEXTTOSPEECH_BUTTON);
     }
 
+    // Neue Methode zum Initialisieren des Sliders basierend auf der gespeicherten Schriftgröße
+    private void InitializeFontSizeSlider()
+    {
+        // Schriftgröße aus PlayerPrefs laden, Standardwert ist die minimale Schriftgröße
+        int savedFontSize = PlayerPrefs.GetInt("SavedFontSize", minFontSize);
+
+        // Berechne den Slider-Wert basierend auf der gespeicherten Schriftgröße
+        float sliderValue = (float)(savedFontSize - minFontSize) / (maxFontSize - minFontSize);
+
+        // Slider auf den entsprechenden Wert setzen
+        fontSizeSlider.value = sliderValue;
+
+        // Text sofort auf die gespeicherte Schriftgröße setzen
+        UpdateFontSize(sliderValue);
+    }
+
     private void UpdateFontSize(float sliderValue)
     {
         // Berechne die neue Schriftgröße basierend auf dem Slider-Wert
@@ -87,5 +105,6 @@ public class BarrierefreiheitSceneController : SceneController
     {
         FontSizeManager.Instance().SetFontSize(updatedFontSize);
         DisplayInfoMessage(InfoMessages.CONFIRM_FONT_SIZE_ADJUSTMENT);
+        Debug.Log("Set to: " + updatedFontSize);
     }
 }

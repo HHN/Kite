@@ -21,6 +21,7 @@ public class DeleteUserDataConfirmation : MonoBehaviour
     public void Initialize(string origin)
     {
         this.origin = origin;
+        FontSizeManager.Instance().UpdateAllTextComponents();
     }
 
     void Start()
@@ -36,6 +37,7 @@ public class DeleteUserDataConfirmation : MonoBehaviour
             messageText.text = InfoMessages.RESET_APP_CONFIRMATION;
         }
         AdjustImageSize();
+        FontSizeManager.Instance().UpdateAllTextComponents();
     }
 
     private void AdjustImageSize()

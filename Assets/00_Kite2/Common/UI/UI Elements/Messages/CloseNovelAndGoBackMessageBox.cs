@@ -15,6 +15,7 @@ public class CloseNovelAndGoBackMessageBox : MonoBehaviour
         closeButton.onClick.AddListener(delegate { OnCloseButton(); });
         cancelButton.onClick.AddListener(delegate { OnCancleButton(); });
         confirmButton.onClick.AddListener(delegate { OnConfirmButton(); });
+        FontSizeManager.Instance().UpdateAllTextComponents();
     }
 
     public void SetHeadline(string headline)

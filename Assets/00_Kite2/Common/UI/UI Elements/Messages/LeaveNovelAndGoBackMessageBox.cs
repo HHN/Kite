@@ -18,6 +18,7 @@ public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
         cancelButton.onClick.AddListener(delegate { OnCancleButton(); });
         confirmButton.onClick.AddListener(delegate { OnConfirmButton(); });
         InitUI();
+        FontSizeManager.Instance().UpdateAllTextComponents();
     }
 
     private void InitUI()

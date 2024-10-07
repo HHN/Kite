@@ -648,6 +648,7 @@ public class PlayNovelSceneController : SceneController
     public void ScrollToBottom()
     {
         StartCoroutine(chatScroll.ScrollToBottom());
+        FontSizeManager.Instance().UpdateAllTextComponents();
     }
 
     public void StartTalking()

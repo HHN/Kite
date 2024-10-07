@@ -28,6 +28,8 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
     {
         BackStackManager.Instance().Push(SceneNames.FEEDBACK_SCENE);
 
+        FontSizeManager.Instance().UpdateAllTextComponents();
+
         novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
 
         if (novelToPlay == null)
@@ -112,6 +114,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
         AnalyticsServiceHandler.Instance().SetWaitedForAiFeedbackTrue();
         LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
         PlayResultMusic();
+        FontSizeManager.Instance().UpdateAllTextComponents();
         //requestExpertFeedbackButton.interactable = true;
     }
 

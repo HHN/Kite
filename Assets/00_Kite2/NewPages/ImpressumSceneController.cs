@@ -11,5 +11,6 @@ public class ImpressumSceneController : SceneController
     {
         BackStackManager.Instance().Push(SceneNames.IMPRESSUM_SCENE);
         LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
+        FontSizeManager.Instance().UpdateAllTextComponents();
     }
 }

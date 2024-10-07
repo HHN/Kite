@@ -42,6 +42,7 @@ public class DatenschutzSceneController : SceneController
         playerPrefsInfoButton.onClick.AddListener(delegate { OnPlayerPrefsInfoButton(); });
         applicationModeToggle.onValueChanged.AddListener(delegate { OnApplicationModeToggle(applicationModeToggle); });
         applicationModeInfoButton.onClick.AddListener(delegate { OnApplicationModeInfoButton(); });
+        FontSizeManager.Instance().UpdateAllTextComponents();
     }
     public void OnToggleDataCollection(Toggle toggle)
     {
