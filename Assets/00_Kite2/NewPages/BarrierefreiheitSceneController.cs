@@ -15,7 +15,7 @@ public class BarrierefreiheitSceneController : SceneController
     [SerializeField] private TMP_Text exampleText;
     [SerializeField] private Button confirmButton;
 
-    private int minFontSize = 30;   // Minimale Schriftgröße
+    private int minFontSize = 35;   // Minimale Schriftgröße
     private int maxFontSize = 50;   // Maximale Schriftgröße
 
     private int updatedFontSize = 0;

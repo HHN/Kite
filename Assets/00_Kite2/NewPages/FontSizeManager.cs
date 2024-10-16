@@ -11,7 +11,7 @@ public class FontSizeManager : MonoBehaviour
     public int fontSize { get; private set; }
 
     // Werte für die minimal und maximal zulässige Schriftgröße
-    private int minFontSize = 10;
+    private int minFontSize = 35;
     private int maxFontSize = 50;
 
     // Privater Konstruktor, um Instanziierungen von außen zu verhindern

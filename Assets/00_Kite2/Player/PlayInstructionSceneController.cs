@@ -26,7 +26,9 @@ public class PlayInstructionSceneController : SceneController
         toggle.isOn = false;
 
         playButton.onClick.AddListener(delegate { OnPlayButton(); });   
-        playButton2.onClick.AddListener(delegate { OnPlayButton2(); });    
+        playButton2.onClick.AddListener(delegate { OnPlayButton2(); });
+
+        FontSizeManager.Instance().UpdateAllTextComponents();
     }
 
     public void OnPlayButton()
