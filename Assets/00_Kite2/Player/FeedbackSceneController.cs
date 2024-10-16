@@ -19,8 +19,11 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Button finishButton;
     [SerializeField] private Button finishButtonBottom;
+    [SerializeField] private Button copyButton;
     [SerializeField] private GameObject finishButtonContainer;
     [SerializeField] private GameObject finishButtonBottomContainer;
+    [SerializeField] private GameObject copyButtonContainer;
+    [SerializeField] private GameObject copyNotificationContainer;
     [SerializeField] private TTSEngine engine;
     [SerializeField] private GameObject loadingAnimation;
 
@@ -92,6 +95,24 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
         }
     }
 
+    public void OnCopyButton()
+    {
+        GUIUtility.systemCopyBuffer = feedbackText.text;
+        StartCoroutine(ShowCopyPopup());
+    }
+
+    private IEnumerator ShowCopyPopup()
+    {
+        // Popup aktivieren
+        copyNotificationContainer.SetActive(true);
+
+        // Warte die angegebene Zeit (z. B. 2 Sekunden)
+        yield return new WaitForSeconds(2);
+
+        // Popup ausblenden
+        copyNotificationContainer.SetActive(false);
+    }
+
     public void OnSuccess(Response response)
     {
         if (SceneManager.GetActiveScene().name != SceneNames.FEEDBACK_SCENE 
@@ -100,9 +121,9 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
             return;
         }
         StopWaitingMusic();
-
         finishButtonContainer.SetActive(false);
         finishButtonBottomContainer.SetActive(true);
+        copyButtonContainer.SetActive(true);
         if (TextToSpeechManager.Instance().IsTextToSpeechActivated())
         {
             TextToSpeechService.Instance().TextToSpeechReadLive(response.GetCompletion().Trim(), engine);

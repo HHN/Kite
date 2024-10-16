@@ -86,29 +86,32 @@ public class TextToSpeechService
         return choicesForTextToSpeech;
     }
 
-    public async Task TextToSpeechReadLive(string text, TTSEngine engine, bool readAnyway = false)
+    public async Task TextToSpeechReadLive(string text, bool readAnyway = false)
     {
-        if (audioSource != null)
-        {
-            if (TextToSpeechManager.Instance().IsTextToSpeechActivated() || readAnyway)
-            {
-                //Debug.Log(text);
-                cancellationTokenSource = new CancellationTokenSource();
-                try
-                {
-                    AudioClip audioClip = await engine.Speak(text, TTSVoiceNative.LoadVoiceFromResources("de-de-thorsten-high"));
-                    if (audioSource != null && !cancellationTokenSource.IsCancellationRequested)
-                    {
-                        audioSource.clip = audioClip;
-                        audioSource.Play();
-                    }
-                }
-                catch (TaskCanceledException)
-                {
-                    Debug.Log("Text-to-Speech operation was cancelled.");
-                }
-            }
-        }
+        UAP_AccessibilityManager.EnableAccessibility(true);
+        UAP_AccessibilityManager.Say(text);
+        Debug.Log("TALKING");
+        //if (audioSource != null)
+        //{
+        //    if (TextToSpeechManager.Instance().IsTextToSpeechActivated() || readAnyway)
+        //    {
+        //        //Debug.Log(text);
+        //        cancellationTokenSource = new CancellationTokenSource();
+        //        try
+        //        {
+        //            AudioClip audioClip = await engine.Speak(text, TTSVoiceNative.LoadVoiceFromResources("de-de-thorsten-high"));
+        //            if (audioSource != null && !cancellationTokenSource.IsCancellationRequested)
+        //            {
+        //                audioSource.clip = audioClip;
+        //                audioSource.Play();
+        //            }
+        //        }
+        //        catch (TaskCanceledException)
+        //        {
+        //            Debug.Log("Text-to-Speech operation was cancelled.");
+        //        }
+        //    }
+        //}
     }
 
     public void CancelSpeechAndAudio()

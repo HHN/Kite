@@ -15,7 +15,7 @@ public class BarrierefreiheitSceneController : SceneController
     [SerializeField] private TMP_Text exampleText;
     [SerializeField] private Button confirmButton;
 
-    private int minFontSize = 10;   // Minimale Schriftgröße
+    private int minFontSize = 30;   // Minimale Schriftgröße
     private int maxFontSize = 50;   // Maximale Schriftgröße
 
     private int updatedFontSize = 0;
@@ -53,13 +53,13 @@ public class BarrierefreiheitSceneController : SceneController
         {
             TextToSpeechManager.Instance().ActivateTextToSpeech();
             DisplayInfoMessage(InfoMessages.STARTED_TOGGLETEXTTOSPEECH_BUTTON);
-            TextToSpeechService.Instance().TextToSpeechReadLive("text wird nun vorgelesen", engine, true);
+            TextToSpeechService.Instance().TextToSpeechReadLive("text wird nun vorgelesen", true);
         }
         else
         {
             TextToSpeechManager.Instance().DeactivateTextToSpeech();
             DisplayInfoMessage(InfoMessages.STOPPED_TOGGLETEXTTOSPEECH_BUTTON);
-            TextToSpeechService.Instance().TextToSpeechReadLive("text wird nicht mehr vorgelesen", engine, true);
+            TextToSpeechService.Instance().TextToSpeechReadLive("text wird nicht mehr vorgelesen", true);
         }
     }
 
@@ -105,6 +105,5 @@ public class BarrierefreiheitSceneController : SceneController
     {
         FontSizeManager.Instance().SetFontSize(updatedFontSize);
         DisplayInfoMessage(InfoMessages.CONFIRM_FONT_SIZE_ADJUSTMENT);
-        Debug.Log("Set to: " + updatedFontSize);
     }
 }
