@@ -50,7 +50,7 @@ public class PlayNovelSceneController : SceneController
     [SerializeField] public Button confirmArea;
     [SerializeField] public Button confirmArea2;
     [SerializeField] private CharacterController currentTalkingCharacterController;
-    [SerializeField] private GameObject tapToContinueAnimation;
+    //[SerializeField] private GameObject tapToContinueAnimation;
     [SerializeField] private bool isTyping;
     [SerializeField] private List<string> playThroughHistory = new List<string>();
     [SerializeField] private GameObject gptServercallPrefab;
@@ -87,8 +87,8 @@ public class PlayNovelSceneController : SceneController
 
     void Start()
     {
-        tapToContinueAnimation.SetActive(false);
-        tapToContinueAnimation.GetComponent<Animator>().enabled = false;
+        //tapToContinueAnimation.SetActive(false);
+        //tapToContinueAnimation.GetComponent<Animator>().enabled = false;
         AnalyticsServiceHandler.Instance().StartStopwatch();
         TextToSpeechService.Instance().SetAudioSource(audioSource);
         BackStackManager.Instance().Push(SceneNames.PLAY_NOVEL_SCENE);
@@ -664,14 +664,14 @@ public class PlayNovelSceneController : SceneController
     public void SetWaitingForConfirmation(bool value)
     {
         this.isWaitingForConfirmation = value;
-        SetTypeToContinueAnimationActive(value);
+        //SetTypeToContinueAnimationActive(value);
     }
 
-    public void SetTypeToContinueAnimationActive(bool value)
-    {
-        tapToContinueAnimation.SetActive(value);
-        tapToContinueAnimation.GetComponent<Animator>().enabled = value;
-    }
+    //public void SetTypeToContinueAnimationActive(bool value)
+    //{
+    //    tapToContinueAnimation.SetActive(value);
+    //    tapToContinueAnimation.GetComponent<Animator>().enabled = value;
+    //}
 
     public void SetTyping(bool value)
     {
@@ -679,11 +679,11 @@ public class PlayNovelSceneController : SceneController
 
         if (!isTyping && isWaitingForConfirmation)
         {
-            SetTypeToContinueAnimationActive(true);
+            //SetTypeToContinueAnimationActive(true);
             return;
         }
-        tapToContinueAnimation.SetActive(false);
-        tapToContinueAnimation.GetComponent<Animator>().enabled = false;
+        //tapToContinueAnimation.SetActive(false);
+        //tapToContinueAnimation.GetComponent<Animator>().enabled = false;
     }
 
     public void AnimationFinished()
