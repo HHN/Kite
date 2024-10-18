@@ -85,6 +85,8 @@ public class PlayNovelSceneController : SceneController
 
     private NovelImageController novelImagesController = null;
 
+    private float waitingTime = 0.5f;
+
     void Start()
     {
         //tapToContinueAnimation.SetActive(false);
@@ -521,11 +523,12 @@ public class PlayNovelSceneController : SceneController
         SetNextEvent(novelEvent);
         novelImagesController.SetCharacter();
 
-        if (novelEvent.waitForUserConfirmation)
-        {
-            SetWaitingForConfirmation(true);
-            return;
-        }
+        //if (novelEvent.waitForUserConfirmation)
+        //{
+        //    SetWaitingForConfirmation(true);
+        //    return;
+        //}
+
         StartCoroutine(StartNextEventInOneSeconds(1));
     }
 
@@ -534,11 +537,13 @@ public class PlayNovelSceneController : SceneController
         SetNextEvent(novelEvent);
 
         novelImagesController.DestroyCharacter();
-        if (novelEvent.waitForUserConfirmation)
-        {
-            SetWaitingForConfirmation(true);
-            return;
-        }
+
+        //if (novelEvent.waitForUserConfirmation)
+        //{
+        //    SetWaitingForConfirmation(true);
+        //    return;
+        //}
+
         StartCoroutine(StartNextEventInOneSeconds(1));
     }
 
@@ -679,9 +684,11 @@ public class PlayNovelSceneController : SceneController
 
         if (!isTyping && isWaitingForConfirmation)
         {
-            //SetTypeToContinueAnimationActive(true);
+            SetWaitingForConfirmation(false);
+            StartCoroutine(StartNextEventInOneSeconds(waitingTime)); // Startet das nächste Event nach 0.5 Sekunden
             return;
         }
+
         //tapToContinueAnimation.SetActive(false);
         //tapToContinueAnimation.GetComponent<Animator>().enabled = false;
     }
