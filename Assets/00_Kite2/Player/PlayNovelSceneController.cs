@@ -86,6 +86,7 @@ public class PlayNovelSceneController : SceneController
     private NovelImageController novelImagesController = null;
 
     private float waitingTime = 0.5f;
+    private bool typingWasSkipped = false;
 
     void Start()
     {
@@ -154,18 +155,47 @@ public class PlayNovelSceneController : SceneController
         {
             return;
         }
+
+        //if (!isWaitingForConfirmation)
+        //{
+        //    return;
+        //}
+
+        //if(firstUserConfirmation)
+        //{
+        //    firstUserConfirmation = false;
+        //    tapedAlready = true;
+        //    AnalyticsServiceHandler.Instance().SendPlayNovelFirstConfirmation(); 
+        //}
+        //SetWaitingForConfirmation(false);
+        //PlayNextEvent();
+
+        if (isTyping)
+        {
+            // Überspringt den Typ-Effekt und zeigt den vollständigen Text an
+            if (currentTypeWriter != null)
+            {
+                currentTypeWriter.SkipTypewriter();
+                currentTypeWriter = null;
+            }
+
+            typingWasSkipped = true; // Flag setzen
+            SetTyping(false);
+
+            return; // Beendet die Methode, um nicht zum nächsten Event zu springen
+        }
+
+        // Optional: Wenn Sie möchten, dass ein Klick nach dem Tippen nichts tut, können Sie hier stoppen
+        // Wenn Sie möchten, dass der Klick nach dem Tippen zum nächsten Event führt, können Sie die folgenden Zeilen aktivieren
+
         if (!isWaitingForConfirmation)
         {
             return;
         }
-        if(firstUserConfirmation)
-        {
-            firstUserConfirmation = false;
-            tapedAlready = true;
-            AnalyticsServiceHandler.Instance().SendPlayNovelFirstConfirmation(); 
-        }
+
         SetWaitingForConfirmation(false);
         PlayNextEvent();
+        
     }
 
     private void SetVisualElements()
@@ -685,7 +715,15 @@ public class PlayNovelSceneController : SceneController
         if (!isTyping && isWaitingForConfirmation)
         {
             SetWaitingForConfirmation(false);
-            StartCoroutine(StartNextEventInOneSeconds(waitingTime)); // Startet das nächste Event nach 0.5 Sekunden
+
+            float delay = waitingTime;
+            if (typingWasSkipped)
+            {
+                delay = 0f; // Wartezeit überspringen
+                typingWasSkipped = false; // Flag zurücksetzen
+            }
+
+            StartCoroutine(StartNextEventInOneSeconds(delay));
             return;
         }
 
