@@ -41,6 +41,7 @@ public class CharacterController : MonoBehaviour
 
     public void SetFaceExpression(int expression)
     {
+        Debug.Log("ANIMATOR: " + expression);
         switch (expression)
         {
             case 1:
