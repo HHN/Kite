@@ -88,8 +88,6 @@ public class TextToSpeechService
 
     public async Task TextToSpeechReadLive(string text, bool readAnyway = false)
     {
-        UAP_AccessibilityManager.EnableAccessibility(true);
-        UAP_AccessibilityManager.Say(text);
         Debug.Log("TALKING");
         //if (audioSource != null)
         //{
