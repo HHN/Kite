@@ -42,4 +42,5 @@ public class InfoMessages
     public static readonly string EXPLANATION_TEXTTOSPEECH_BUTTON = "Dieser Button schaltet die Sprachausgabe an bzw. aus. Ist die Sprachausgabe aktiviert, werden die Novels vertont und der Text, auf welchen du innerhalb der App drückst, wird dir vorgelesen.";
     public static readonly string EXPLANATION_ADJUST_FONT_SIZE_BUTTON = "Mit dem Regler kannst du die Schriftgröße für die meisten Texte in der App anpassen. An dem Beispieltext kannst du sehen, wie groß die Texte angezeigt werden, sobald du bestätigst.";
     public static readonly string CONFIRM_FONT_SIZE_ADJUSTMENT = "Die Schriftgröße wurde angepasst.";
+    public static readonly string TTS_IS_CURRENTLY_DEACTIVATET = "Die Vorlesefunktion ist aktuell deaktiviert. Wir suchen nach einem besseren Modell, um diese umsetzen zu können.";
 }

@@ -55,18 +55,20 @@ public class BarrierefreiheitSceneController : SceneController
 
     private void OnToggleTextToSpeech(Toggle toggle)
     {
-        if (toggleTextToSpeech.isOn)
-        {
-            TextToSpeechManager.Instance().ActivateTextToSpeech();
-            DisplayInfoMessage(InfoMessages.STARTED_TOGGLETEXTTOSPEECH_BUTTON);
-            TextToSpeechService.Instance().TextToSpeechReadLive("Text wird nun vorgelesen", true);
-        }
-        else
-        {
-            TextToSpeechManager.Instance().DeactivateTextToSpeech();
-            DisplayInfoMessage(InfoMessages.STOPPED_TOGGLETEXTTOSPEECH_BUTTON);
-            TextToSpeechService.Instance().TextToSpeechReadLive("Text wird nicht mehr vorgelesen", true);
-        }
+        DisplayInfoMessage(InfoMessages.TTS_IS_CURRENTLY_DEACTIVATET);
+        toggleTextToSpeech.isOn = false;
+        //if (toggleTextToSpeech.isOn)
+        //{
+        //    TextToSpeechManager.Instance().ActivateTextToSpeech();
+        //    DisplayInfoMessage(InfoMessages.STARTED_TOGGLETEXTTOSPEECH_BUTTON);
+        //    TextToSpeechService.Instance().TextToSpeechReadLive("Text wird nun vorgelesen", true);
+        //}
+        //else
+        //{
+        //    TextToSpeechManager.Instance().DeactivateTextToSpeech();
+        //    DisplayInfoMessage(InfoMessages.STOPPED_TOGGLETEXTTOSPEECH_BUTTON);
+        //    TextToSpeechService.Instance().TextToSpeechReadLive("Text wird nicht mehr vorgelesen", true);
+        //}
     }
 
     private void OnAdjustFontSizeInfoButton()
@@ -76,7 +78,7 @@ public class BarrierefreiheitSceneController : SceneController
 
     private void OnToggleTextToSpeechInfoButton()
     {
-        TextToSpeechService.Instance().TextToSpeechReadLive("TextToSpeechInfo", engine);
+        //TextToSpeechService.Instance().TextToSpeechReadLive("TextToSpeechInfo", engine);
         DisplayInfoMessage(InfoMessages.EXPLANATION_TEXTTOSPEECH_BUTTON);
     }
 
