@@ -1,7 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
 
 public class NovelHistoryEntryGuiElement : MonoBehaviour
 {
@@ -19,6 +21,16 @@ public class NovelHistoryEntryGuiElement : MonoBehaviour
     [SerializeField] private Image image04;
     [SerializeField] private TextMeshProUGUI buttonText;
     [SerializeField] private TextMeshProUGUI buttonText02;
+    [SerializeField] private Button copyDialogButton;
+    [SerializeField] private Button copyFeedbackButton;
+    private GameObject copyNotificationContainer;
+
+    void Start()
+    {
+        copyDialogButton.onClick.AddListener(delegate { copyDialog(); });
+        copyFeedbackButton.onClick.AddListener(delegate { copyFeedback(); });
+        FontSizeManager.Instance().UpdateAllTextComponents();
+    }
 
     public void InitializeEntry(DialogHistoryEntry dialogHistoryEntry)
     {
@@ -69,4 +81,55 @@ public class NovelHistoryEntryGuiElement : MonoBehaviour
         buttonText.color = color;
         buttonText02.color = color;
     }
+
+    public void copyDialog()
+    {
+        Debug.Log("KOPIEREN");
+        string pattern = @"<\/?b>";
+        GUIUtility.systemCopyBuffer = Regex.Replace(dialogText.text, pattern, string.Empty);
+        StartCoroutine(ShowCopyPopup("Dialog"));
+    }
+
+    public void copyFeedback()
+    {
+        Debug.Log("KOPIEREN");
+        string pattern = @"<\/?b>";
+        GUIUtility.systemCopyBuffer = Regex.Replace(aiFeedbackText.text, pattern, string.Empty);
+        StartCoroutine(ShowCopyPopup("Feedback"));
+    }
+
+    private IEnumerator ShowCopyPopup(string whatWasCopied)
+    {
+        if (GameObjectManager.Instance().GetCopyNotification() == null)
+        {
+            Debug.Log("Kein GameObject mit dem Tag 'CopyNotification' gefunden.");
+            yield break; // Beende die Coroutine, wenn das Objekt nicht gefunden wurde.
+        }
+
+        // Zugriff auf die TextMeshPro-Komponente im Popup
+        TextMeshProUGUI textComponent = GameObjectManager.Instance().GetCopyNotification().GetComponentInChildren<TextMeshProUGUI>();
+        if (textComponent != null)
+        {
+            if(whatWasCopied == "Feedback")
+            {
+                // Setze den Text
+                textComponent.text = "Feedback wurde kopiert";
+            }
+            if (whatWasCopied == "Dialog")
+            {
+                // Setze den Text
+                textComponent.text = "Dialog wurde kopiert";
+            }
+        }
+
+        // Popup aktivieren
+        GameObjectManager.Instance().GetCopyNotification().SetActive(true);
+
+        // Warte die angegebene Zeit (z. B. 2 Sekunden)
+        yield return new WaitForSeconds(2);
+
+        // Popup ausblenden
+        GameObjectManager.Instance().GetCopyNotification().SetActive(false);
+    }
+
 }

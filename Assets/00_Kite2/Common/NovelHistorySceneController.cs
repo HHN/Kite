@@ -77,8 +77,16 @@ public class NovelHistorySceneController : SceneController
 
     [SerializeField] private List<NovelHistoryEntryGuiElement> novelHistoryEntries;
 
+    [SerializeField] private GameObject copyNotificationContainer;
+
     void Start()
     {
+        if (copyNotificationContainer != null)
+        {
+            // Das GameObject wurde gefunden, deaktiviere es
+            copyNotificationContainer.SetActive(false);
+            GameObjectManager.Instance().SetCopyNotification(copyNotificationContainer);
+        }
         BackStackManager.Instance().Push(SceneNames.NOVEL_HISTORY_SCENE);
         novelHistoryEntries = new List<NovelHistoryEntryGuiElement>();
 
