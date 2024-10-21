@@ -61,7 +61,6 @@ public class FontSizeManager : MonoBehaviour
 
     public void UpdateAllTextComponents()
     {
-        Debug.Log("Aktuelle Fontsize: " + fontSize);
         // TMP_Text-Komponenten finden und aktualisieren
         TMP_Text[] tmpTextComponents = GameObject.FindObjectsOfType<TMP_Text>();
         foreach (TMP_Text tmpTextComponent in tmpTextComponents)
@@ -88,7 +87,6 @@ public class FontSizeManager : MonoBehaviour
             }
             uiTextComponent.fontSize = fontSize;
         }
-        Debug.Log("Set Fontsize to: " + fontSize);
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 }

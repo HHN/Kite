@@ -136,4 +136,9 @@ public class NovelDescriptionTextbox : MonoBehaviour
             SetSmalHead();
         }
     }
+
+    public void UpdateSize()
+    {
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
+    }
 }
