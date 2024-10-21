@@ -50,7 +50,7 @@ public class PlayNovelSceneController : SceneController
     [SerializeField] public Button confirmArea;
     [SerializeField] public Button confirmArea2;
     [SerializeField] private CharacterController currentTalkingCharacterController;
-    [SerializeField] private GameObject tapToContinueAnimation;
+    //[SerializeField] private GameObject tapToContinueAnimation;
     [SerializeField] private bool isTyping;
     [SerializeField] private List<string> playThroughHistory = new List<string>();
     [SerializeField] private GameObject gptServercallPrefab;
@@ -85,10 +85,13 @@ public class PlayNovelSceneController : SceneController
 
     private NovelImageController novelImagesController = null;
 
+    private float waitingTime = 0.5f;
+    private bool typingWasSkipped = false;
+
     void Start()
     {
-        tapToContinueAnimation.SetActive(false);
-        tapToContinueAnimation.GetComponent<Animator>().enabled = false;
+        //tapToContinueAnimation.SetActive(false);
+        //tapToContinueAnimation.GetComponent<Animator>().enabled = false;
         AnalyticsServiceHandler.Instance().StartStopwatch();
         TextToSpeechService.Instance().SetAudioSource(audioSource);
         BackStackManager.Instance().Push(SceneNames.PLAY_NOVEL_SCENE);
@@ -152,18 +155,47 @@ public class PlayNovelSceneController : SceneController
         {
             return;
         }
+
+        //if (!isWaitingForConfirmation)
+        //{
+        //    return;
+        //}
+
+        //if(firstUserConfirmation)
+        //{
+        //    firstUserConfirmation = false;
+        //    tapedAlready = true;
+        //    AnalyticsServiceHandler.Instance().SendPlayNovelFirstConfirmation(); 
+        //}
+        //SetWaitingForConfirmation(false);
+        //PlayNextEvent();
+
+        if (isTyping)
+        {
+            // Überspringt den Typ-Effekt und zeigt den vollständigen Text an
+            if (currentTypeWriter != null)
+            {
+                currentTypeWriter.SkipTypewriter();
+                currentTypeWriter = null;
+            }
+
+            typingWasSkipped = true; // Flag setzen
+            SetTyping(false);
+
+            return; // Beendet die Methode, um nicht zum nächsten Event zu springen
+        }
+
+        // Optional: Wenn Sie möchten, dass ein Klick nach dem Tippen nichts tut, können Sie hier stoppen
+        // Wenn Sie möchten, dass der Klick nach dem Tippen zum nächsten Event führt, können Sie die folgenden Zeilen aktivieren
+
         if (!isWaitingForConfirmation)
         {
             return;
         }
-        if(firstUserConfirmation)
-        {
-            firstUserConfirmation = false;
-            tapedAlready = true;
-            AnalyticsServiceHandler.Instance().SendPlayNovelFirstConfirmation(); 
-        }
+
         SetWaitingForConfirmation(false);
         PlayNextEvent();
+        
     }
 
     private void SetVisualElements()
@@ -521,11 +553,12 @@ public class PlayNovelSceneController : SceneController
         SetNextEvent(novelEvent);
         novelImagesController.SetCharacter();
 
-        if (novelEvent.waitForUserConfirmation)
-        {
-            SetWaitingForConfirmation(true);
-            return;
-        }
+        //if (novelEvent.waitForUserConfirmation)
+        //{
+        //    SetWaitingForConfirmation(true);
+        //    return;
+        //}
+
         StartCoroutine(StartNextEventInOneSeconds(1));
     }
 
@@ -534,11 +567,13 @@ public class PlayNovelSceneController : SceneController
         SetNextEvent(novelEvent);
 
         novelImagesController.DestroyCharacter();
-        if (novelEvent.waitForUserConfirmation)
-        {
-            SetWaitingForConfirmation(true);
-            return;
-        }
+
+        //if (novelEvent.waitForUserConfirmation)
+        //{
+        //    SetWaitingForConfirmation(true);
+        //    return;
+        //}
+
         StartCoroutine(StartNextEventInOneSeconds(1));
     }
 
@@ -664,14 +699,14 @@ public class PlayNovelSceneController : SceneController
     public void SetWaitingForConfirmation(bool value)
     {
         this.isWaitingForConfirmation = value;
-        SetTypeToContinueAnimationActive(value);
+        //SetTypeToContinueAnimationActive(value);
     }
 
-    public void SetTypeToContinueAnimationActive(bool value)
-    {
-        tapToContinueAnimation.SetActive(value);
-        tapToContinueAnimation.GetComponent<Animator>().enabled = value;
-    }
+    //public void SetTypeToContinueAnimationActive(bool value)
+    //{
+    //    tapToContinueAnimation.SetActive(value);
+    //    tapToContinueAnimation.GetComponent<Animator>().enabled = value;
+    //}
 
     public void SetTyping(bool value)
     {
@@ -679,11 +714,21 @@ public class PlayNovelSceneController : SceneController
 
         if (!isTyping && isWaitingForConfirmation)
         {
-            SetTypeToContinueAnimationActive(true);
+            SetWaitingForConfirmation(false);
+
+            float delay = waitingTime;
+            if (typingWasSkipped)
+            {
+                delay = 0f; // Wartezeit überspringen
+                typingWasSkipped = false; // Flag zurücksetzen
+            }
+
+            StartCoroutine(StartNextEventInOneSeconds(delay));
             return;
         }
-        tapToContinueAnimation.SetActive(false);
-        tapToContinueAnimation.GetComponent<Animator>().enabled = false;
+
+        //tapToContinueAnimation.SetActive(false);
+        //tapToContinueAnimation.GetComponent<Animator>().enabled = false;
     }
 
     public void AnimationFinished()

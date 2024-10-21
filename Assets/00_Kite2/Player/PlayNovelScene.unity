@@ -929,8 +929,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 443.6019, y: 0}
-  m_SizeDelta: {x: 887.2038, y: 0}
+  m_AnchoredPosition: {x: 540, y: 0}
+  m_SizeDelta: {x: 1080, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &498441981
 MonoBehaviour:
@@ -3515,7 +3515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1966865799
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3831,7 +3831,6 @@ MonoBehaviour:
   confirmArea: {fileID: 221629287}
   confirmArea2: {fileID: 813272501}
   currentTalkingCharacterController: {fileID: 0}
-  tapToContinueAnimation: {fileID: 1966865798}
   isTyping: 0
   playThroughHistory: []
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
