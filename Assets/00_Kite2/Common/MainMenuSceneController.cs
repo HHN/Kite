@@ -71,6 +71,12 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
 
     public void OnNovelPlayerButton()
     {
+        Debug.Log("[MainMenuSceneController] - OnNovelPlayerButton");
+
+        /**
+         * Das muss dann wahrscheinlich in die neue Scene und hier muss dann die neue Scene mit der Einstiegsnovel aufgerufen werden
+         */
+
         var analytics = AnalyticsServiceHandler.Instance();
         analytics.SendMainMenuStatistics();
         analytics.SetFromWhereIsNovelSelected("KITE NOVELS");
