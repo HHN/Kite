@@ -605,6 +605,8 @@ public class PlayNovelSceneController : SceneController
 
     public void HandleAddChoiceEvent(VisualNovelEvent novelEvent)
     {
+        Debug.Log("[PlayNovelSceneController] - HandleAddChoiceEvent", this);
+
         SetNextEvent(novelEvent);
 
         conversationContent.AddContent(novelEvent, this);
@@ -621,6 +623,8 @@ public class PlayNovelSceneController : SceneController
 
     public void HandleShowChoicesEvent(VisualNovelEvent novelEvent)
     {
+        Debug.Log("[PlayNovelSceneController] - HandleShowChoicesEvent", this);
+
         // Enable animations when showing choices
         AnimationFlagSingleton.Instance().SetFlag(true);
 

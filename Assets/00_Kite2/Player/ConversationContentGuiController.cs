@@ -41,6 +41,8 @@ public class ConversationContentGuiController : MonoBehaviour
                 }
             case VisualNovelEventType.SHOW_CHOICES_EVENT:
                 {
+                    Debug.Log("[ConversationContentGuiController] - HandleNewContent - VisualNovelEventType.SHOW_CHOICES_EVENT", this);
+
                     OptionsManager prefab = Instantiate(optionsPrefab, this.transform).GetComponent<OptionsManager>();
                     prefab.Initialize(controller, options);
                     options = new List<VisualNovelEvent>();

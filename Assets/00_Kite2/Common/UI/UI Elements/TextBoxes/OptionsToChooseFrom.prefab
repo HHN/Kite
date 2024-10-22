@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.7394793, a: 0.392}
+  m_Color: {r: 0.04705883, g: 0.26666668, b: 0.49803925, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -299,9 +299,9 @@ RectTransform:
   m_Father: {fileID: 5121638205295232455}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 720, y: -44.004997}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 720, y: 0}
   m_SizeDelta: {x: 1300, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1638771511793664252
@@ -523,7 +523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.7394793, a: 0.392}
+  m_Color: {r: 0.04705883, g: 0.26666668, b: 0.49803925, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -762,9 +762,9 @@ RectTransform:
   m_Father: {fileID: 5121638205295232455}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 720, y: -476.04498}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 720, y: 0}
   m_SizeDelta: {x: 1300, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8951090190673443350
@@ -1119,7 +1119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.7394793, a: 0.392}
+  m_Color: {r: 0.04705883, g: 0.26666668, b: 0.49803925, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1195,9 +1195,9 @@ RectTransform:
   m_Father: {fileID: 5121638205295232455}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 720, y: -152.01498}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 720, y: 0}
   m_SizeDelta: {x: 1300, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4577096424517828488
@@ -1435,7 +1435,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281146128
+    rgba: 4294967295
   m_fontColor: {r: 0.0627451, g: 0.10588236, b: 0.1764706, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1561,9 +1561,9 @@ RectTransform:
   m_Father: {fileID: 5121638205295232455}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 720, y: -368.03497}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 720, y: 0}
   m_SizeDelta: {x: 1300, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5084195957652898478
@@ -1897,11 +1897,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5121638205295232455}
-  - component: {fileID: 5121638205295232448}
   - component: {fileID: 8132953579297726514}
   - component: {fileID: 7817814136942365934}
   - component: {fileID: -6069254304036180157}
   - component: {fileID: 2374042164487903390}
+  - component: {fileID: 5121638205295232448}
   m_Layer: 5
   m_Name: OptionsToChooseFrom
   m_TagString: Untagged
@@ -1935,24 +1935,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5121638205295232448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5121638205295232454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42fcb0b7f41dbf94689239b40ab7940e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  optionA: {fileID: 3984400525192513929}
-  optionB: {fileID: 2673064252666045060}
-  optionC: {fileID: 6347901107385117789}
-  optionD: {fileID: 8936164133167437146}
-  optionE: {fileID: 1319296400858032515}
-  selectedSound: {fileID: 8300000, guid: 06f5980a509b49847a26fcc20b050114, type: 3}
 --- !u!114 &8132953579297726514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2110,6 +2092,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5121638205295232448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5121638205295232454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42fcb0b7f41dbf94689239b40ab7940e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  optionA: {fileID: 3984400525192513929}
+  optionB: {fileID: 2673064252666045060}
+  optionC: {fileID: 6347901107385117789}
+  optionD: {fileID: 8936164133167437146}
+  optionE: {fileID: 1319296400858032515}
+  selectedSound: {fileID: 8300000, guid: 06f5980a509b49847a26fcc20b050114, type: 3}
 --- !u!1 &7198479507517336928
 GameObject:
   m_ObjectHideFlags: 0
@@ -2149,9 +2149,9 @@ RectTransform:
   m_Father: {fileID: 5121638205295232455}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 720, y: -260.025}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 720, y: 0}
   m_SizeDelta: {x: 1300, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7198479507517336932
@@ -2536,7 +2536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.7394793, a: 0.392}
+  m_Color: {r: 0.04705883, g: 0.26666668, b: 0.49803925, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2633,7 +2633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.7394793, a: 0.392}
+  m_Color: {r: 0.04705883, g: 0.26666668, b: 0.49803925, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

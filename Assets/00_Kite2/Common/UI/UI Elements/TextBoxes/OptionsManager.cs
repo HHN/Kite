@@ -10,6 +10,9 @@ public class OptionsManager : MonoBehaviour
     public ChatMessageBox optionD;
     public ChatMessageBox optionE;
 
+    // Neue Liste, die alle Optionen enthält
+    private List<ChatMessageBox> allOptions;
+
     private string idA;
     private string idB;
     private string idC;
@@ -37,11 +40,16 @@ public class OptionsManager : MonoBehaviour
     public void Initialize(PlayNovelSceneController sceneController, List<VisualNovelEvent> options)
     {
         this.sceneController = sceneController;
+
+        // Initialisiere die Liste aller Optionen
+        allOptions = new List<ChatMessageBox> { optionA, optionB, optionC, optionD, optionE };
+
         if (options.Count == 0)
         {
             gameObject.SetActive(false);
             return;
         }
+
         optionA.SetMessage(options[0].text);
         AnalyticsServiceHandler.Instance().AddChoiceToList(options[0].text);
         idA = options[0].onChoice;
@@ -57,6 +65,7 @@ public class OptionsManager : MonoBehaviour
             AnalyticsServiceHandler.Instance().AddedLastChoice();
             return;
         }
+
         optionB.SetMessage(options[1].text);
         AnalyticsServiceHandler.Instance().AddChoiceToList(options[1].text);
         idB = options[1].onChoice;
@@ -71,6 +80,7 @@ public class OptionsManager : MonoBehaviour
             AnalyticsServiceHandler.Instance().AddedLastChoice();
             return;
         }
+
         optionC.SetMessage(options[2].text);
         AnalyticsServiceHandler.Instance().AddChoiceToList(options[2].text);
         idC = options[2].onChoice;
@@ -84,6 +94,7 @@ public class OptionsManager : MonoBehaviour
             AnalyticsServiceHandler.Instance().AddedLastChoice();
             return;
         }
+
         optionD.SetMessage(options[3].text);
         AnalyticsServiceHandler.Instance().AddChoiceToList(options[3].text);
         idD = options[3].onChoice;
@@ -96,6 +107,7 @@ public class OptionsManager : MonoBehaviour
             AnalyticsServiceHandler.Instance().AddedLastChoice();
             return;
         }
+
         optionE.SetMessage(options[4].text);
         AnalyticsServiceHandler.Instance().AddChoiceToList(options[4].text);
         idE = options[4].onChoice;
