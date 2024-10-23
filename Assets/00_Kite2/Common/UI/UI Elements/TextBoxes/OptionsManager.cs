@@ -168,7 +168,7 @@ public class OptionsManager : MonoBehaviour
         audio.Play();
 
         // Wait for the audio and animation to complete
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         // Hide the current object after the selection
         gameObject.SetActive(false);
