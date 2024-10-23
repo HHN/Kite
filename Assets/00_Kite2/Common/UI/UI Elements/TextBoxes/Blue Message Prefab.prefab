@@ -420,10 +420,10 @@ GameObject:
   - component: {fileID: 7934107218342486493}
   - component: {fileID: 7934107218342486490}
   - component: {fileID: 7934107218342486492}
-  - component: {fileID: 2273867883580309113}
   - component: {fileID: 8760799182939561421}
   - component: {fileID: 8609253949331581577}
   - component: {fileID: 6635043255978302940}
+  - component: {fileID: 2273867883580309113}
   - component: {fileID: 178835769349145345}
   m_Layer: 5
   m_Name: Blue Message Prefab
@@ -475,19 +475,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &2273867883580309113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7934107218342486494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 199ea1b63f72435459e6fe922daa3dda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textBox: {fileID: 1510090948737186693}
 --- !u!114 &8760799182939561421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,6 +618,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2273867883580309113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7934107218342486494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 199ea1b63f72435459e6fe922daa3dda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textBox: {fileID: 1510090948737186693}
 --- !u!114 &178835769349145345
 MonoBehaviour:
   m_ObjectHideFlags: 0
