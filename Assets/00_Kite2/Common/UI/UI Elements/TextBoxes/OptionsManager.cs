@@ -150,22 +150,66 @@ public class OptionsManager : MonoBehaviour
     public IEnumerator AfterSelection(string parameterName, string answer, string nextEventID, bool displayAfterSelection, int index)
     {
         // Disable animations after the selection
-        AnimationFlagSingleton.Instance().SetFlag(false);
+        var animationFlagSingleton = AnimationFlagSingleton.Instance();
+        if (animationFlagSingleton != null)
+        {
+            animationFlagSingleton.SetFlag(false);
+        }
+        else
+        {
+            Debug.LogWarning("AnimationFlagSingleton.Instance() returned null.");
+        }
 
         // If already selected, exit the coroutine
         if (selected) { yield break; }
         selected = true; // Mark as selected to prevent repeated selections
 
         // Add the current path (selection) to the visual novel path history
-        sceneController.AddPathToNovel(index);
+        if (sceneController != null)
+        {
+            sceneController.AddPathToNovel(index);
+        }
+        else
+        {
+            Debug.LogWarning("sceneController is null. Cannot add path to novel.");
+        }
 
         // Trigger the animation associated with the parameter
-        GetComponent<Animator>().SetBool(parameterName, true);
+        Animator animator = GetComponent<Animator>();
+        if (animator != null && !string.IsNullOrEmpty(parameterName))
+        {
+            animator.SetBool(parameterName, true);
+        }
+        else
+        {
+            if (animator == null)
+            {
+                Debug.LogWarning("Animator component not found on GameObject.");
+            }
+            if (string.IsNullOrEmpty(parameterName))
+            {
+                Debug.LogWarning("parameterName is null or empty.");
+            }
+        }
 
         // Play the selection audio feedback
         AudioSource audio = GetComponent<AudioSource>();
-        audio.clip = selectedSound;
-        audio.Play();
+        if (audio != null)
+        {
+            if (selectedSound != null)
+            {
+                audio.clip = selectedSound;
+                audio.Play();
+            }
+            else
+            {
+                Debug.LogWarning("selectedSound is null. Cannot play audio clip.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("AudioSource component not found on GameObject.");
+        }
 
         // Wait for the audio and animation to complete
         yield return new WaitForSeconds(0.5f);
@@ -177,8 +221,23 @@ public class OptionsManager : MonoBehaviour
         if (sceneController != null)
         {
             // Show confirmation areas
-            sceneController.confirmArea.gameObject.SetActive(true);
-            sceneController.confirmArea2.gameObject.SetActive(true);
+            if (sceneController.confirmArea != null && sceneController.confirmArea.gameObject != null)
+            {
+                sceneController.confirmArea.gameObject.SetActive(true);
+            }
+            else
+            {
+                Debug.LogWarning("sceneController.confirmArea or its GameObject is null.");
+            }
+
+            if (sceneController.confirmArea2 != null && sceneController.confirmArea2.gameObject != null)
+            {
+                sceneController.confirmArea2.gameObject.SetActive(true);
+            }
+            else
+            {
+                Debug.LogWarning("sceneController.confirmArea2 or its GameObject is null.");
+            }
 
             // Display the selected answer and handle post-selection behavior
             sceneController.ShowAnswer(answer, displayAfterSelection);
@@ -191,6 +250,9 @@ public class OptionsManager : MonoBehaviour
                 sceneController.OnConfirm(); // Trigger confirmation if no further display is needed
             }
         }
+        else
+        {
+            Debug.LogWarning("sceneController is null.");
+        }
     }
-
 }
