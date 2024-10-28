@@ -927,10 +927,10 @@ RectTransform:
   m_Father: {fileID: 563275608}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 540, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 443.07693, y: -265}
+  m_SizeDelta: {x: 886.1539, y: 330}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &498441981
 MonoBehaviour:
@@ -1072,9 +1072,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 563275608}
-  - component: {fileID: 563275609}
   - component: {fileID: 563275611}
   - component: {fileID: 563275610}
+  - component: {fileID: 563275609}
   m_Layer: 6
   m_Name: Content
   m_TagString: Untagged
@@ -2216,9 +2216,9 @@ GameObject:
   - component: {fileID: 1164301131}
   - component: {fileID: 1164301130}
   - component: {fileID: 1164301129}
-  - component: {fileID: 1164301132}
   - component: {fileID: 1164301133}
   - component: {fileID: 1164301134}
+  - component: {fileID: 1164301132}
   m_Layer: 6
   m_Name: Container for Conversation
   m_TagString: Untagged

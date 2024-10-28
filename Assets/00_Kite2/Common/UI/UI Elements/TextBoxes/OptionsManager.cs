@@ -10,6 +10,9 @@ public class OptionsManager : MonoBehaviour
     public ChatMessageBox optionD;
     public ChatMessageBox optionE;
 
+    // Neue Liste, die alle Optionen enthält
+    private List<ChatMessageBox> allOptions;
+
     private string idA;
     private string idB;
     private string idC;
@@ -37,11 +40,16 @@ public class OptionsManager : MonoBehaviour
     public void Initialize(PlayNovelSceneController sceneController, List<VisualNovelEvent> options)
     {
         this.sceneController = sceneController;
+
+        // Initialisiere die Liste aller Optionen
+        allOptions = new List<ChatMessageBox> { optionA, optionB, optionC, optionD, optionE };
+
         if (options.Count == 0)
         {
             gameObject.SetActive(false);
             return;
         }
+
         optionA.SetMessage(options[0].text);
         AnalyticsServiceHandler.Instance().AddChoiceToList(options[0].text);
         idA = options[0].onChoice;
@@ -57,6 +65,7 @@ public class OptionsManager : MonoBehaviour
             AnalyticsServiceHandler.Instance().AddedLastChoice();
             return;
         }
+
         optionB.SetMessage(options[1].text);
         AnalyticsServiceHandler.Instance().AddChoiceToList(options[1].text);
         idB = options[1].onChoice;
@@ -71,6 +80,7 @@ public class OptionsManager : MonoBehaviour
             AnalyticsServiceHandler.Instance().AddedLastChoice();
             return;
         }
+
         optionC.SetMessage(options[2].text);
         AnalyticsServiceHandler.Instance().AddChoiceToList(options[2].text);
         idC = options[2].onChoice;
@@ -84,6 +94,7 @@ public class OptionsManager : MonoBehaviour
             AnalyticsServiceHandler.Instance().AddedLastChoice();
             return;
         }
+
         optionD.SetMessage(options[3].text);
         AnalyticsServiceHandler.Instance().AddChoiceToList(options[3].text);
         idD = options[3].onChoice;
@@ -96,6 +107,7 @@ public class OptionsManager : MonoBehaviour
             AnalyticsServiceHandler.Instance().AddedLastChoice();
             return;
         }
+
         optionE.SetMessage(options[4].text);
         AnalyticsServiceHandler.Instance().AddChoiceToList(options[4].text);
         idE = options[4].onChoice;
@@ -138,25 +150,69 @@ public class OptionsManager : MonoBehaviour
     public IEnumerator AfterSelection(string parameterName, string answer, string nextEventID, bool displayAfterSelection, int index)
     {
         // Disable animations after the selection
-        AnimationFlagSingleton.Instance().SetFlag(false);
+        var animationFlagSingleton = AnimationFlagSingleton.Instance();
+        if (animationFlagSingleton != null)
+        {
+            animationFlagSingleton.SetFlag(false);
+        }
+        else
+        {
+            Debug.LogWarning("AnimationFlagSingleton.Instance() returned null.");
+        }
 
         // If already selected, exit the coroutine
         if (selected) { yield break; }
         selected = true; // Mark as selected to prevent repeated selections
 
         // Add the current path (selection) to the visual novel path history
-        sceneController.AddPathToNovel(index);
+        if (sceneController != null)
+        {
+            sceneController.AddPathToNovel(index);
+        }
+        else
+        {
+            Debug.LogWarning("sceneController is null. Cannot add path to novel.");
+        }
 
         // Trigger the animation associated with the parameter
-        GetComponent<Animator>().SetBool(parameterName, true);
+        Animator animator = GetComponent<Animator>();
+        if (animator != null && !string.IsNullOrEmpty(parameterName))
+        {
+            animator.SetBool(parameterName, true);
+        }
+        else
+        {
+            if (animator == null)
+            {
+                Debug.LogWarning("Animator component not found on GameObject.");
+            }
+            if (string.IsNullOrEmpty(parameterName))
+            {
+                Debug.LogWarning("parameterName is null or empty.");
+            }
+        }
 
         // Play the selection audio feedback
         AudioSource audio = GetComponent<AudioSource>();
-        audio.clip = selectedSound;
-        audio.Play();
+        if (audio != null)
+        {
+            if (selectedSound != null)
+            {
+                audio.clip = selectedSound;
+                audio.Play();
+            }
+            else
+            {
+                Debug.LogWarning("selectedSound is null. Cannot play audio clip.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("AudioSource component not found on GameObject.");
+        }
 
         // Wait for the audio and animation to complete
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
 
         // Hide the current object after the selection
         gameObject.SetActive(false);
@@ -165,8 +221,23 @@ public class OptionsManager : MonoBehaviour
         if (sceneController != null)
         {
             // Show confirmation areas
-            sceneController.confirmArea.gameObject.SetActive(true);
-            sceneController.confirmArea2.gameObject.SetActive(true);
+            if (sceneController.confirmArea != null && sceneController.confirmArea.gameObject != null)
+            {
+                sceneController.confirmArea.gameObject.SetActive(true);
+            }
+            else
+            {
+                Debug.LogWarning("sceneController.confirmArea or its GameObject is null.");
+            }
+
+            if (sceneController.confirmArea2 != null && sceneController.confirmArea2.gameObject != null)
+            {
+                sceneController.confirmArea2.gameObject.SetActive(true);
+            }
+            else
+            {
+                Debug.LogWarning("sceneController.confirmArea2 or its GameObject is null.");
+            }
 
             // Display the selected answer and handle post-selection behavior
             sceneController.ShowAnswer(answer, displayAfterSelection);
@@ -179,6 +250,9 @@ public class OptionsManager : MonoBehaviour
                 sceneController.OnConfirm(); // Trigger confirmation if no further display is needed
             }
         }
+        else
+        {
+            Debug.LogWarning("sceneController is null.");
+        }
     }
-
 }

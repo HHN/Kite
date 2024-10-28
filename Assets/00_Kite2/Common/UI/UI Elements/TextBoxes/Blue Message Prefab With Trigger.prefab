@@ -318,10 +318,10 @@ RectTransform:
   m_Father: {fileID: 7934107218342486493}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 572.5, y: -104.005}
-  m_SizeDelta: {x: 945, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 752.5, y: 0}
+  m_SizeDelta: {x: 1305, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7179068350423566559
 CanvasRenderer:
@@ -445,11 +445,11 @@ GameObject:
   - component: {fileID: 7934107218342486493}
   - component: {fileID: 7934107218342486490}
   - component: {fileID: 7934107218342486492}
-  - component: {fileID: 2273867883580309113}
   - component: {fileID: 8760799182939561421}
   - component: {fileID: 8609253949331581577}
-  - component: {fileID: 2779883276843412586}
   - component: {fileID: 2866251365917516454}
+  - component: {fileID: 2273867883580309113}
+  - component: {fileID: 2779883276843412586}
   - component: {fileID: 3291617275411476496}
   m_Layer: 5
   m_Name: Blue Message Prefab With Trigger
@@ -501,19 +501,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &2273867883580309113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7934107218342486494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 199ea1b63f72435459e6fe922daa3dda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textBox: {fileID: 1510090948737186693}
 --- !u!114 &8760799182939561421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561,20 +548,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2779883276843412586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7934107218342486494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da19ba940a56734469596d4fc4cc2d60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alreadyPlayedNextEvent: 0
-  controller: {fileID: 0}
 --- !u!82 &2866251365917516454
 AudioSource:
   m_ObjectHideFlags: 0
@@ -671,6 +644,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2273867883580309113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7934107218342486494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 199ea1b63f72435459e6fe922daa3dda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textBox: {fileID: 1510090948737186693}
+--- !u!114 &2779883276843412586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7934107218342486494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da19ba940a56734469596d4fc4cc2d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alreadyPlayedNextEvent: 0
+  controller: {fileID: 0}
 --- !u!114 &3291617275411476496
 MonoBehaviour:
   m_ObjectHideFlags: 0

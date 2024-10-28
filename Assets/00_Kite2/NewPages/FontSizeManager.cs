@@ -65,7 +65,6 @@ public class FontSizeManager : MonoBehaviour
         TMP_Text[] tmpTextComponents = GameObject.FindObjectsOfType<TMP_Text>();
         foreach (TMP_Text tmpTextComponent in tmpTextComponents)
         {
-
             // Überprüfen, ob das Textobjekt den Tag "NoResize" hat, und überspringen
             if (tmpTextComponent.CompareTag("NoResize"))
             {
@@ -73,20 +72,32 @@ public class FontSizeManager : MonoBehaviour
             }
             tmpTextComponent.fontSize = fontSize;
             tmpTextComponent.ForceMeshUpdate(); // Erzwingt das Update des Textes (optional für TMP)
+
+            // **Layout für dieses Textobjekt neu erstellen**
+            RectTransform rectTransform = tmpTextComponent.GetComponent<RectTransform>();
+            if (rectTransform != null)
+            {
+                LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
+            }
         }
 
         // UI-Text-Komponenten finden und aktualisieren
         Text[] uiTextComponents = GameObject.FindObjectsOfType<Text>();
         foreach (Text uiTextComponent in uiTextComponents)
         {
-
             // Überprüfen, ob das Textobjekt den Tag "NoResize" hat, und überspringen
             if (uiTextComponent.CompareTag("NoResize"))
             {
                 continue;
             }
             uiTextComponent.fontSize = fontSize;
+
+            // **Layout für dieses Textobjekt neu erstellen**
+            RectTransform rectTransform = uiTextComponent.GetComponent<RectTransform>();
+            if (rectTransform != null)
+            {
+                LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
+            }
         }
-        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 }
