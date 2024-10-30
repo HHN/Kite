@@ -1,0 +1,159 @@
+:: StoryTitle
+Einstiegsdialog
+
+
+:: StoryData
+{
+  "ifid": "EBD23912-21C4-4E57-912D-47D3E720AD1A",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "start": "Willkommen",
+  "tag-colors": {
+    "Info": "green",
+    "Start": "blue"
+  },
+  "zoom": 0.6
+}
+
+
+:: Beispiel Spielsituation {"position":"800,300","size":"100,100"}
+>>SpielerinSpricht:<<
+Kannst du mir ein Beispiel für so eine Situation geben?
+>>--<<
+>>Charakter01SprichtFriendly:<<
+Stell dir vor, du sprichst mit der Bank, um einen Kredit zu beantragen. Der Berater äußert Zweifel, weil du eine Frau bist.
+>>--<<
+>>Charakter01SprichtSmiling:<<
+Du bekommst verschiedene Antwortmöglichkeiten, um zu reagieren. Die KI analysiert auch dein Verhalten und deine Reaktionen.
+
+[[Was wäre ein Beispiel für einen Bias?->Bias Beispiel]]
+[[Ich verstehe, lass uns loslegen.->Spielstart]]
+
+
+:: Bias Beispiel {"position":"1000,300","size":"100,100"}
+>>Charakter01SprichtFriendly:<<
+Zum Beispiel wird oft angenommen, dass Mütter oder potenzielle Mütter weniger engagiert sind. Solche Biases erkennen wir für dich.
+
+>>Charakter01SprichtFriendly:<<
+Ein weiteres Beispiel ist die Annahme, dass Frauen weniger technisches Verständnis haben oder dass sie emotionaler reagieren und deshalb weniger für Führungsrollen geeignet sind.
+
+[[Und was macht die App dann?->Noch eine Frage]]
+[[Ich verstehe, lass uns loslegen.->Spielstart]]
+
+
+:: Letzter Schritt {"position":"1800,300","size":"100,100"}
+>>Charakter01SprichtSmiling:<<
+Im nächsten Schritt landest du auf der Auswahlseite. Dort kannst du eine Gründungssituation auswählen, zum Beispiel ein Bankgespräch oder das Anmieten von Räumlichkeiten. Jede Entscheidung beeinflusst den Verlauf des Spiels.
+
+[[Los geht's!->Spielstart]]
+[[Ich möchte nochmal alle Informationen bekommen.->Mehr über die App]]
+
+
+:: Mehr Details {"position":"600,300","size":"100,100"}
+>>Charakter01SprichtFriendly:<<
+In KITE II trainierst du typische Gründungssituationen, wie Bankgespräche oder das Anmieten von Räumlichkeiten. Die KI analysiert die Dialoge und gibt dir Feedback.
+>>--<<
+>>Charakter01SprichtSmiling:<<
+Zu jedem Dialog bekommst du ein KI-generiertes Feedback, das dir zeigt, welche Biases oder Verzerrungen darin stecken.
+
+[[Gibt es ein Beispiel für so eine Situation?->Beispiel Spielsituation]]
+[[Ich bin bereit, lass uns starten.->Spielstart]]
+
+
+:: Mehr Funktionen {"position":"1200,300","size":"100,100"}
+>>Charakter01SprichtFriendly:<<
+Alle Dialoge und die KI-Analysen werden gespeichert. Du kannst sie im Archiv jederzeit wieder abrufen.
+>>--<<
+>>Charakter01SprichtSmiling:<<
+Du kannst dir auch Novels merken, die du später spielen möchtest, und sehen, wie oft du sie schon gespielt hast.
+
+[[Gibt es noch etwas, das ich wissen sollte?->Weitere Infos]]
+[[Dann los zum Spiel.->Spielstart]]
+
+
+:: Mehr über die App {"position":"400,300","size":"100,100"}
+>>Charakter01SprichtSmiling:<<
+KITE II ist eine KI-gestützte Anwendung, die dir hilft, besser mit diskriminierenden Erfahrungen im Gründungsprozess umzugehen.
+>>--<<
+Wir bieten dir realistische Dialoge, in denen du lernen kannst, auf Vorurteile zu reagieren.
+
+[[Okay, lass uns anfangen.->Spielstart]]
+[[Klingt interessant, erzähl mir mehr.->Mehr Details]]
+
+
+:: Nicht-Gründerin Details {"position":"525,700","size":"100,100"}
+>>Charakter01SprichtSmiling:<<
+Perspektivenübernahme hilft dir, die Erfahrungen einer Gründerin nachzuvollziehen. Achte darauf, wie du dich in bestimmten Situationen fühlst und was die Aussagen deines Gegenübers bei dir auslösen.
+>>--<<
+>>Charakter01SprichtFriendly:<<
+Diese Erfahrungen bieten dir wertvolle Lernmöglichkeiten, die dir helfen können, besser zu verstehen, welche Herausforderungen Gründerinnen bewältigen müssen.
+
+[[Wie geht es weiter?->Nicht-Gründerin Instruktionen]]
+[[Ich verstehe, lass uns loslegen.->Spielstart]]
+
+
+:: Nicht-Gründerin Einstieg {"position":"425,525","size":"100,100"}
+>>Charakter01SprichtSmiling:<<
+Das ist wunderbar! Bei KITE II hast du die Möglichkeit, dich in die Rolle einer Gründerin hineinzuversetzen. Das ermöglicht dir eine wertvolle Perspektivenübernahme.
+>>--<<
+>>Charakter01SprichtFriendly:<<
+In den Dialogen spielst du die Rolle einer Gründerin, die sich mit verschiedenen Herausforderungen auseinandersetzt. Es ist wichtig, dass du dich ganz auf diese Rolle einlässt.
+
+[[Klingt spannend, erzähl mir mehr.->Nicht-Gründerin Details]]
+[[Ich bin bereit, lass uns starten.->Spielstart]]
+
+
+:: Nicht-Gründerin Instruktionen {"position":"675,875","size":"100,100"}
+>>Charakter01SprichtFriendly:<<
+Versuche, dich bei den Dialogen auf die Sichtweise und Emotionen der Gründerin zu konzentrieren. Antworte deinem Gegenüber in der Rolle der Gründerin.
+
+[[Erzähl mir mehr über die Funktionen der App.->Mehr Details]]
+[[Ich bin bereit, lass uns starten.->Spielstart]]
+
+
+:: Noch eine Frage {"position":"1000,300","size":"100,100"}
+>>Charakter01SprichtFriendly:<<
+KITE II hilft dir, die Situation einzuschätzen und deine Stärken zu nutzen. Jede Situation bietet dir neue Möglichkeiten.
+>>--<<
+>>Charakter01SprichtSmiling:<<
+Die Dialoge verlaufen immer anders, je nachdem, wie du reagierst. So kannst du verschiedene Ansätze testen.
+
+[[Gibt es noch mehr Funktionen?->Mehr Funktionen]]
+[[Danke, ich bin bereit.->Spielstart]]
+
+
+:: Spielstart {"position":"1250,1050","size":"100,100"}
+>>Ende<<
+
+
+:: Weitere Infos {"position":"1400,300","size":"100,100"}
+>>Charakter01SprichtFriendly:<<
+Es gibt auch Links zu weiterführenden Informationen, falls du dich noch tiefer in bestimmte Themen einarbeiten möchtest.
+>>--<<
+>>Charakter01SprichtSmiling:<<
+Wir möchten, dass du dich rundum unterstützt fühlst und sicherer wirst im Umgang mit Diskriminierung.
+
+[[Danke für die Infos, lass uns anfangen.->Spielstart]]
+[[Kannst du mir alles nochmal zusammenfassen?->Zusammenfassung]]
+
+
+:: Willkommen {"position":"200,300","size":"100,100"}
+>>Charakter01SprichtFriendly:<<
+Hallo und herzlich willkommen bei KITE II! Schön, dass du hier bist.
+
+Möchtest du direkt loslegen oder möchtest du mehr darüber erfahren, wie wir dich unterstützen können?
+
+[[Ich möchte direkt loslegen.->Spielstart]]
+[[Erzähl mir mehr über die App.->Mehr über die App]]
+[[Ich spiele aus Interesse, nicht als Gründerin.->Nicht-Gründerin Einstieg]]
+
+
+:: Zusammenfassung {"position":"1600,300","size":"100,100"}
+>>Charakter01SprichtSmiling:<<
+KITE II hilft dir, resilienter zu werden. Du trainierst Gründungssituationen und erhältst Feedback, um Vorurteile zu erkennen.
+>>--<<
+>>Charakter01SprichtFriendly:<<
+Unsere KI unterstützt dich dabei, selbstbewusst aufzutreten und Herausforderungen zu meistern. Deine Reaktionen werden analysiert und helfen dir, immer besser zu werden.
+
+[[Danke, ich bin bereit.->Spielstart]]
+[[Wie geht es jetzt los?->Letzter Schritt]]

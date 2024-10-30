@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
+using System.Collections;
 
 public class MainMenuSceneController : SceneController, OnSuccessHandler
 {
@@ -18,10 +20,20 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     [SerializeField] private GameObject novelLoader;
 
     private void Start()
-    {
+    { 
         InitializeScene();
         SetupButtonListeners();
         HandleTermsAndConditions();
+
+        var privacyManager = PrivacyAndConditionManager.Instance();
+
+        //Debug.Log("privacyManager.IsConditionsAccepted(): " + privacyManager.IsConditionsAccepted());
+        //Debug.Log("privacyManager.IsPriavcyTermsAccepted(): " + privacyManager.IsPriavcyTermsAccepted());
+
+        if (privacyManager.IsConditionsAccepted() && privacyManager.IsPriavcyTermsAccepted())
+        {
+            SceneLoader.LoadIntroNovelScene();
+        }
     }
 
     private void InitializeScene()
@@ -42,9 +54,11 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     private void HandleTermsAndConditions()
     {
         var privacyManager = PrivacyAndConditionManager.Instance();
+        Debug.Log("Checking terms and conditions...");
 
         if (privacyManager.IsConditionsAccepted() && privacyManager.IsPriavcyTermsAccepted())
         {
+            Debug.Log("Terms already accepted.");
             termsAndConditionPanel.SetActive(false);
             kiteAudioLogo.Play();
 
@@ -71,23 +85,17 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
 
     public void OnNovelPlayerButton()
     {
-        Debug.Log("[MainMenuSceneController] - OnNovelPlayerButton");
-
-        /**
-         * Das muss dann wahrscheinlich in die neue Scene und hier muss dann die neue Scene mit der Einstiegsnovel aufgerufen werden
-         */
-
         var analytics = AnalyticsServiceHandler.Instance();
         analytics.SendMainMenuStatistics();
         analytics.SetFromWhereIsNovelSelected("KITE NOVELS");
 
         // Instantiate the sound prefab and assign it to a variable
         GameObject buttonSound = Instantiate(buttonSoundPrefab);
-        DontDestroyOnLoad(buttonSound);  // Correct usage of DontDestroyOnLoad
+        DontDestroyOnLoad(buttonSound);  // Correct usage of 
 
-        SceneLoader.LoadFoundersBubbleScene();
+        // Remove or comment out any additional scene loading calls that might override the PlayNovelScene
+        // SceneLoader.LoadFoundersBubbleScene(); // Comment this out
     }
-
 
     public void OnSettingsButton()
     {
@@ -136,7 +144,9 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
 
         if (acceptedTermsOfUse && acceptedDataPrivacyTerms)
         {
-            SceneLoader.LoadMainMenuScene();
+            //SceneLoader.LoadMainMenuScene();
+            Debug.Log("Both terms accepted, starting intro novel.");
+            StartCoroutine(StartIntroNovel());
         }
         else
         {
@@ -151,6 +161,40 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
         if (response.GetVersion() != COMPATIBLE_SERVER_VERSION_NUMBER)
         {
             DisplayInfoMessage(InfoMessages.UPDATE_AVAILABLE);
+        }
+    }
+
+    private IEnumerator StartIntroNovel()
+    {
+        yield return new WaitForSeconds(2.5f);
+
+        Debug.Log("What's here?");
+
+        List<VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+
+        Debug.Log(allNovels.Count);
+
+        foreach (var novel in allNovels)
+        {
+            if (novel.title == "Einstiegsdialog")
+            {
+                Debug.Log("Check");
+
+                VisualNovelNames novelNames = VisualNovelNamesHelper.ValueOf((int)novel.id);
+
+                PlayManager.Instance().SetVisualNovelToPlay(novel);
+                PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(novelNames));
+                PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(novelNames));
+                PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelNames));
+
+                if (ShowPlayInstructionManager.Instance().ShowInstruction())
+                {
+                    Debug.Log("Check 2");
+                    // Load the PlayNovelScene directly
+                    SceneLoader.LoadPlayNovelScene();
+                    //return; // Exit the loop after loading
+                }
+            }
         }
     }
 }

@@ -3,6 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader
 {
+    public static void LoadIntroNovelScene()
+    {
+        Debug.Log("LoadIntroNovelScene");
+        LoadScene(SceneNames.INTRO_NOVEL_SCENE);
+    }
+
     public static void LoadMainMenuScene() {
         LoadScene(SceneNames.MAIN_MENU_SCENE);
     }
