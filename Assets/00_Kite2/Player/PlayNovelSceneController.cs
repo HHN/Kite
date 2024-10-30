@@ -11,56 +11,16 @@ using System.Data;
 
 public class PlayNovelSceneController : SceneController
 {
+    [Header("UI-Komponenten")]
     [SerializeField] private GameObject viewPort;
-    [SerializeField] private GameObject[] novelVisuals;
+    [SerializeField] private GameObject conversationViewport;
     [SerializeField] private Button closeButton;
-    [SerializeField] private LeaveNovelAndGoBackMessageBox leaveGameAndGoBackMessageBoxObject;
-    [SerializeField] private GameObject leaveGameAndGoBackMessageBox;
-    [SerializeField] private VisualNovel novelToPlay;
     [SerializeField] private TextMeshProUGUI novelName;
     [SerializeField] private ConversationContentGuiController conversationContent;
-    [SerializeField] private GameObject novelImageContainer;
-    [SerializeField] private GameObject novelBackgroundPrefab;
-    [SerializeField] private GameObject characterPrefabMayer;
-    [SerializeField] private GameObject characterPrefabReporterin;
-    [SerializeField] private GameObject characterPrefabVermieter;
-    [SerializeField] private GameObject characterPrefabMutter;
-    [SerializeField] private GameObject characterPrefabVater;
-    [SerializeField] private bool isWaitingForConfirmation = false;
-    [SerializeField] private Dictionary<string, VisualNovelEvent> novelEvents = new Dictionary<string, VisualNovelEvent>();
-    [SerializeField] private VisualNovelEvent nextEventToPlay;
-    [SerializeField] private GameObject conversationViewport;
-    [SerializeField] private GameObject backgroundContainer;
-    [SerializeField] private GameObject deskContainer;
-    [SerializeField] private GameObject decoDeskContainer;
-    [SerializeField] private GameObject decoBackgroudContainer;
-    [SerializeField] private GameObject[] backgroundPrefab;
-    [SerializeField] private GameObject[] deskPrefab;
-    [SerializeField] private GameObject[] decoDeskPrefab;
-    [SerializeField] private GameObject[] decoBackgroundPrefab;
-    [SerializeField] private GameObject currentBackground;
-    [SerializeField] private GameObject currentDesk;
-    [SerializeField] private GameObject currentDecoDesk;
-    [SerializeField] private GameObject currentDecoBackgroud;
-    [SerializeField] private GameObject characterContainer;
-    [SerializeField] private ChatScrollView chatScroll;
-    [SerializeField] private ImageScrollView imageScroll;
-    [SerializeField] public TypewriterCore currentTypeWriter;
-    [SerializeField] public SelectOptionContinueConversation selectOptionContinueConversation;
     [SerializeField] public Button confirmArea;
     [SerializeField] public Button confirmArea2;
-    [SerializeField] private CharacterController currentTalkingCharacterController;
-    //[SerializeField] private GameObject tapToContinueAnimation;
-    [SerializeField] private bool isTyping;
-    [SerializeField] private List<string> playThroughHistory = new List<string>();
-    [SerializeField] private GameObject gptServercallPrefab;
-
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip[] clips;
-
-    [SerializeField] private GameObject[] novelAnimations;
-    [SerializeField] private GameObject viewPortOfImages;
-    [SerializeField] private GameObject currentAnimation;
+    [SerializeField] private ChatScrollView chatScroll;
+    [SerializeField] private ImageScrollView imageScroll;
 
     [SerializeField] private GameObject backgroundBlur;
     [SerializeField] private GameObject imageAreaBlur;
@@ -72,18 +32,76 @@ public class PlayNovelSceneController : SceneController
 
     [SerializeField] private GameObject freeTextInputPrefab;
 
+    [SerializeField] private GameObject headerImage;
+
+    [Header("GameObject-Referenzen und Prefabs")]
+    [SerializeField] private GameObject[] novelVisuals;
+    [SerializeField] private GameObject novelImageContainer;
+    [SerializeField] private GameObject novelBackgroundPrefab;
+
+    [SerializeField] private GameObject characterPrefabMayer;
+    [SerializeField] private GameObject characterPrefabReporterin;
+    [SerializeField] private GameObject characterPrefabVermieter;
+    [SerializeField] private GameObject characterPrefabMutter;
+    [SerializeField] private GameObject characterPrefabVater;
+    [SerializeField] private GameObject characterPrefabIntro;
+
+    [SerializeField] private GameObject backgroundContainer;
+    [SerializeField] private GameObject deskContainer;
+    [SerializeField] private GameObject decoDeskContainer;
+    [SerializeField] private GameObject decoBackgroudContainer;
+
+    [SerializeField] private GameObject[] backgroundPrefab;
+    [SerializeField] private GameObject[] deskPrefab;
+    [SerializeField] private GameObject[] decoDeskPrefab;
+    [SerializeField] private GameObject[] decoBackgroundPrefab;
+
+    [SerializeField] private GameObject currentBackground;
+    [SerializeField] private GameObject currentDesk;
+    [SerializeField] private GameObject currentDecoDesk;
+    [SerializeField] private GameObject currentDecoBackgroud;
+    [SerializeField] private GameObject characterContainer;
+
+    [SerializeField] private GameObject[] novelAnimations;
+    [SerializeField] private GameObject viewPortOfImages;
+    [SerializeField] private GameObject currentAnimation;
+
+    [SerializeField] private GameObject gptServercallPrefab;
+
+    [SerializeField] private LeaveNovelAndGoBackMessageBox leaveGameAndGoBackMessageBoxObject;
+    [SerializeField] private GameObject leaveGameAndGoBackMessageBox;
+
+    [Header("Skript- und Controller-Referenzen")]
+    [SerializeField] private VisualNovel novelToPlay;
+
+    [SerializeField] public TypewriterCore currentTypeWriter;
+
+    [SerializeField] public SelectOptionContinueConversation selectOptionContinueConversation;
+    [SerializeField] private CharacterController currentTalkingCharacterController;
+    //[SerializeField] private GameObject tapToContinueAnimation;
+    [SerializeField] private TTSEngine engine;
+    private NovelImageController novelImagesController = null;
+
+    [Header("Audio-Komponenten")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] clips;
+
+    [Header("Timing und Analytics")]
     [SerializeField] private Coroutine timerCoroutine;
     [SerializeField] private float timerForHint = 12.0f; // Time after which the hint to tap on the screen is shown
     [SerializeField] private float timerForHintInitial = 3.0f;
-
     // Analytics
     [SerializeField] private bool firstUserConfirmation = true;
 
+    [Header("Spielstatus und Logik")]
+    [SerializeField] private bool isWaitingForConfirmation = false;
+    [SerializeField] private Dictionary<string, VisualNovelEvent> novelEvents = new Dictionary<string, VisualNovelEvent>();
+    [SerializeField] private VisualNovelEvent nextEventToPlay;  
+    
+    [SerializeField] private bool isTyping;
+    [SerializeField] private List<string> playThroughHistory = new List<string>();
+
     private bool tapedAlready = false;
-
-    [SerializeField] private TTSEngine engine;
-
-    private NovelImageController novelImagesController = null;
 
     private float waitingTime = 0.5f;
     private bool typingWasSkipped = false;
@@ -139,6 +157,18 @@ public class PlayNovelSceneController : SceneController
 
         SetVisualElements();
 
+        // Check if the current novel is the introductory dialogue
+        if (novelToPlay.title == "Einstiegsdialog")
+        {
+            // Hide the header image, as it is not needed in the introductory dialogue
+            headerImage.SetActive(false);
+        }
+        else
+        {
+            // Show the header image for other novels
+            headerImage.SetActive(true);
+        }
+
         foreach (VisualNovelEvent novelEvent in novelToPlay.novelEvents)
         {
             novelEvents.Add(novelEvent.id, novelEvent);
@@ -185,17 +215,13 @@ public class PlayNovelSceneController : SceneController
             return; // Beendet die Methode, um nicht zum nächsten Event zu springen
         }
 
-        // Optional: Wenn Sie möchten, dass ein Klick nach dem Tippen nichts tut, können Sie hier stoppen
-        // Wenn Sie möchten, dass der Klick nach dem Tippen zum nächsten Event führt, können Sie die folgenden Zeilen aktivieren
-
         if (!isWaitingForConfirmation)
         {
             return;
         }
 
         SetWaitingForConfirmation(false);
-        PlayNextEvent();
-        
+        PlayNextEvent();        
     }
 
     private void SetVisualElements()
@@ -207,6 +233,7 @@ public class PlayNovelSceneController : SceneController
 
         conversationViewportTransform.sizeDelta = new Vector2(0, -canvasRect.rect.height * 0.5f);
         RectTransform viewPortTransform = viewPort.GetComponent<RectTransform>();
+
         switch(novelToPlay.title)
         {
             case "Bank Kontoeröffnung":
@@ -249,6 +276,13 @@ public class PlayNovelSceneController : SceneController
                     GameObject novelImagesInstance = Instantiate(novelVisuals[5], viewPortTransform);
                     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
                     novelImagesController = controllerTransform.GetComponent<BekannterNovelImageController>();
+                    break;
+                }
+            case "Einstiegsdialog":
+                {
+                    GameObject novelImagesInstance = Instantiate(novelVisuals[6], viewPortTransform);
+                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                    novelImagesController = controllerTransform.GetComponent<IntroNovelImageController>();
                     break;
                 }
             default:
@@ -641,17 +675,32 @@ public class PlayNovelSceneController : SceneController
     public void HandleEndNovelEvent(VisualNovelEvent novelEvent)
     {
         AnalyticsServiceHandler.Instance().SendNovelPlayTime();
-        PlayRecordManager.Instance().IncrasePlayCounterForNovel(VisualNovelNamesHelper.ValueOf((int) novelToPlay.id));
+
+        PlayRecordManager.Instance().IncrasePlayCounterForNovel(VisualNovelNamesHelper.ValueOf((int)novelToPlay.id));
+
         PlaythrouCounterAnimationManager.Instance().SetAnimation(true, VisualNovelNamesHelper.ValueOf((int)novelToPlay.id));
 
         int userRole = FeedbackRoleManager.Instance.GetFeedbackRole();
+
         PlayerDataManager.Instance().SetNovelHistory(playThroughHistory);
+
+        // Check if the current novel is the introductory dialogue
+        if (novelToPlay.title == "Einstiegsdialog")
+        {
+            // Load the FoundersBubbleScene to navigate there after the introductory dialogue
+            SceneLoader.LoadFoundersBubbleScene();
+            return; // Exit the method to prevent further scenes from being loaded
+        }
+
+        // Check if the user has a specific role and if the app is in online mode
         if ((userRole == 1 || userRole == 3 || userRole == 4 || userRole == 5) && ApplicationModeManager.Instance().IsOnlineModeActive())
         {
+            // Load the ReviewNovelScene where the user can rate or review what they've read
             SceneLoader.LoadReviewNovelScene();
         }
         else
         {
+            // If the conditions are not met, load the FeedbackScene
             SceneLoader.LoadFeedbackScene();
         }
     }
@@ -763,6 +812,4 @@ public class PlayNovelSceneController : SceneController
     {
         novelToPlay.AddToPath(pathValue);
     }
-}
-
-    
+}   

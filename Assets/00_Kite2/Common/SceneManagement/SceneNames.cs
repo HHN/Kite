@@ -1,5 +1,6 @@
 public class SceneNames
 {
+    public const string INTRO_NOVEL_SCENE = "IntroNovelScene";
     public const string MAIN_MENU_SCENE = "MainMenuScene";
     public const string PLAY_NOVEL_SCENE = "PlayNovelScene";
     public const string FEEDBACK_SCENE = "FeedbackScene";
