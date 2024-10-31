@@ -32,6 +32,7 @@ public class FoundersBubbleSceneController : SceneController
 
     [SerializeField] private GameObject burgerMenu;
     [SerializeField] private bool isBurgerMenuOpen;
+    [SerializeField] private Button burgerMenuBackground;
 
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] private List<GameObject> buttonContainers;
@@ -68,7 +69,6 @@ public class FoundersBubbleSceneController : SceneController
         isIntroNovelNovelInVersionContained = true;
 
         novelListButton.onClick.AddListener(delegate { OnNovelListButton(); });
-        //searchButton.onClick.AddListener(delegate { OnSearchButton(); });
         settingsButton.onClick.AddListener(delegate { OnSettingsButton(); });
 
         bankkreditButtonFromBurgerMenu.onClick.AddListener(delegate { OnBankkreditButtonFromBurgerMenu(); });
@@ -77,6 +77,7 @@ public class FoundersBubbleSceneController : SceneController
         presseButtonFromBurgerMenu.onClick.AddListener(delegate { OnPresseButtonFromBurgerMenu(); });
         bueroButtonFromBurgerMenu.onClick.AddListener(delegate { OnBueroButtonFromBurgerMenu(); });
         bekannteNovelButtonFromBurgerMenu.onClick.AddListener(delegate { OnBekannteNovelButtonFromBurgerMenu(); });
+        burgerMenuBackground.onClick.AddListener(delegate { OnBackgroundButton(); });
 
         if (inputField != null)
         {
@@ -151,12 +152,8 @@ public class FoundersBubbleSceneController : SceneController
 
     public void OnBackgroundButton()
     {
-        if (isBurgerMenuOpen)
-        {
-            this.burgerMenu.gameObject.SetActive(false);
-            isBurgerMenuOpen = false;
-            return;
-        }
+        CloseBurgerMenuIfOpen();
+
         if (isPopupOpen)
         {
             MakeTextboxInvisible();
@@ -336,6 +333,22 @@ public class FoundersBubbleSceneController : SceneController
         FoundersBubbleSceneMemory memory = new FoundersBubbleSceneMemory();
         memory.scrollPosition = infinityScroll.GetCurrentScrollPosition();
         SceneMemoryManager.Instance().SetMemoryOfFoundersBubbleScene(memory);
+    }
+
+    private void ToggleBurgerMenu()
+    {
+        isBurgerMenuOpen = !isBurgerMenuOpen;
+        burgerMenu.SetActive(isBurgerMenuOpen); // Zeige oder verstecke das Burger-Menü
+        FontSizeManager.Instance().UpdateAllTextComponents();
+    }
+
+    private void CloseBurgerMenuIfOpen()
+    {
+        if (isBurgerMenuOpen)
+        {
+            burgerMenu.SetActive(false); // Verstecke das Burger-Menü
+            isBurgerMenuOpen = false;
+        }
     }
 
     public void OnBankkreditButtonFromBurgerMenu()
