@@ -270,7 +270,6 @@ public class FoundersBubbleSceneController : SceneController
 
     public void DisplayTextBoxForVisualNovel(VisualNovelNames visualNovel, bool isNovelContainedInVersion)
     {
-        Debug.Log("TEST");
         if (isBurgerMenuOpen)
         {
             this.burgerMenu.gameObject.SetActive(false);
@@ -369,6 +368,7 @@ public class FoundersBubbleSceneController : SceneController
             return;
         }
         PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
+        NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(VisualNovelNamesHelper.ValueOf((int)visualNovelToDisplay.id)));
         PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
         PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
         PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
@@ -405,6 +405,7 @@ public class FoundersBubbleSceneController : SceneController
             return;
         }
         PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
+        NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(VisualNovelNamesHelper.ValueOf((int)visualNovelToDisplay.id)));
         PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
         PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
         PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
@@ -441,6 +442,7 @@ public class FoundersBubbleSceneController : SceneController
             return;
         }
         PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
+        NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(VisualNovelNamesHelper.ValueOf((int)visualNovelToDisplay.id)));
         PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
         PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
         PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
@@ -477,6 +479,7 @@ public class FoundersBubbleSceneController : SceneController
             return;
         }
         PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
+        NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(VisualNovelNamesHelper.ValueOf((int)visualNovelToDisplay.id)));
         PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
         PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
         PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
@@ -513,6 +516,7 @@ public class FoundersBubbleSceneController : SceneController
             return;
         }
         PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
+        NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(VisualNovelNamesHelper.ValueOf((int)visualNovelToDisplay.id)));
         PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
         PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
         PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
@@ -549,6 +553,7 @@ public class FoundersBubbleSceneController : SceneController
             return;
         }
         PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
+        NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(VisualNovelNamesHelper.ValueOf((int)visualNovelToDisplay.id)));
         PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
         PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
         PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
