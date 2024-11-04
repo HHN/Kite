@@ -142,7 +142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d2e4bf6839cc9e84d9ddd802008fffbc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f853289c7e87d0944b761c787b3b972d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -332,7 +332,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 64c290a3fa513714f87e0485c0a7a0a6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7bff183e81331ae46b1fe85abba55a32, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -687,7 +687,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1730521920158149235
 RectTransform:
   m_ObjectHideFlags: 0
@@ -903,7 +903,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7478515935858238552
 RectTransform:
   m_ObjectHideFlags: 0
@@ -923,7 +923,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: -131, y: 149.94}
-  m_SizeDelta: {x: 156.3463, y: 0}
+  m_SizeDelta: {x: 156.3463, y: 192.03404}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &45771814214393442
 MonoBehaviour:
@@ -1144,11 +1144,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1465545687914413254, guid: 3d4497c8617ec474aafda8860421d3eb, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 111
       objectReference: {fileID: 0}
     - target: {fileID: 1465545687914413254, guid: 3d4497c8617ec474aafda8860421d3eb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 577
+      value: 594
       objectReference: {fileID: 0}
     - target: {fileID: 1465545687914413254, guid: 3d4497c8617ec474aafda8860421d3eb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1165,6 +1165,10 @@ PrefabInstance:
     - target: {fileID: 1465545687914413273, guid: 3d4497c8617ec474aafda8860421d3eb, type: 3}
       propertyPath: m_Name
       value: Character Prefab Intro
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253796331781111194, guid: 3d4497c8617ec474aafda8860421d3eb, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d4497c8617ec474aafda8860421d3eb, type: 3}

@@ -59,11 +59,9 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
     private void HandleTermsAndConditions()
     {
         var privacyManager = PrivacyAndConditionManager.Instance();
-        Debug.Log("Checking terms and conditions...");
 
         if (privacyManager.IsConditionsAccepted() && privacyManager.IsPriavcyTermsAccepted())
         {
-            Debug.Log("Terms already accepted.");
             termsAndConditionPanel.SetActive(false);
             kiteAudioLogo.Play();
 

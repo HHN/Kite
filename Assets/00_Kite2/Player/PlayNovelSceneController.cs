@@ -174,7 +174,8 @@ public class PlayNovelSceneController : SceneController
             novelEvents.Add(novelEvent.id, novelEvent);
         }
         nextEventToPlay = novelToPlay.novelEvents[0];
-        StartCoroutine(StartNextEventInOneSeconds(1));
+        //StartCoroutine(StartNextEventInOneSeconds(0));
+        PlayNextEvent();
     }
 
     public void OnConfirm()
