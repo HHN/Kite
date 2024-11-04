@@ -12,8 +12,12 @@ public class PlayInstructionSceneController : SceneController
     [SerializeField] private Color backgroundColor;
 
     [SerializeField] private Button playButton;
+    [SerializeField] private Button playButton2;
     [SerializeField] private Button backButton;
     [SerializeField] private Toggle toggle;
+    [SerializeField] private Toggle toggle2;
+
+    private bool isSyncing = false;
 
     void Start()
     {
@@ -23,10 +27,24 @@ public class PlayInstructionSceneController : SceneController
         novelname.text = PlayManager.Instance().GetDisplayNameOfNovelToPlay();
         novelImage.color = backgroundColor;
         toggle.isOn = false;
+        toggle2.isOn = false;
 
-        playButton.onClick.AddListener(delegate { OnPlayButton(); });   
+        playButton.onClick.AddListener(delegate { OnPlayButton(); });
+        playButton2.onClick.AddListener(delegate { OnPlayButton(); });
+
+        toggle.onValueChanged.AddListener((value) => SyncToggles(toggle, toggle2, value));
+        toggle2.onValueChanged.AddListener((value) => SyncToggles(toggle2, toggle, value));
 
         FontSizeManager.Instance().UpdateAllTextComponents();
+    }
+
+    private void SyncToggles(Toggle changedToggle, Toggle otherToggle, bool isOn)
+    {
+        if (isSyncing) return; // Prevent recursive calls
+
+        isSyncing = true; // Start syncing
+        otherToggle.isOn = isOn; // Update the other toggle to match the changed one
+        isSyncing = false; // End syncing
     }
 
     public void OnPlayButton()
