@@ -10,7 +10,7 @@
   "startLocation": "Office",
   "startTalkingPartnerEmotion": "Friendly",
   "isWithStartValues": true,
-  "talkingPartner01" : "Coach",
+  "talkingPartner01" : "Sachbearbeiter",
   "talkingPartner02" : "",
   "talkingPartner03" : "",
   "wordsToReplace": []

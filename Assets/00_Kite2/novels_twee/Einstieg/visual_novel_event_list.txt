@@ -17,9 +17,6 @@ Einstiegsdialog
 
 
 :: Beispiel Spielsituation {"position":"800,300","size":"100,100"}
->>SpielerinSpricht:<<
-Kannst du mir ein Beispiel für so eine Situation geben?
->>--<<
 >>Charakter01SprichtFriendly:<<
 Stell dir vor, du sprichst mit der Bank, um einen Kredit zu beantragen. Der Berater äußert Zweifel, weil du eine Frau bist.
 >>--<<
@@ -43,7 +40,10 @@ Ein weiteres Beispiel ist die Annahme, dass Frauen weniger technisches Verständ
 
 :: Letzter Schritt {"position":"1800,300","size":"100,100"}
 >>Charakter01SprichtSmiling:<<
-Im nächsten Schritt landest du auf der Auswahlseite. Dort kannst du eine Gründungssituation auswählen, zum Beispiel ein Bankgespräch oder das Anmieten von Räumlichkeiten. Jede Entscheidung beeinflusst den Verlauf des Spiels.
+Im nächsten Schritt landest du auf der Auswahlseite. Dort kannst du eine Gründungssituation auswählen. 
+>>--<<
+Charakter01SprichtFriendly
+Zum Beispiel ein Bankgespräch oder das Anmieten von Räumlichkeiten. Jede Entscheidung beeinflusst den Verlauf des Spiels.
 
 [[Los geht's!->Spielstart]]
 [[Ich möchte nochmal alle Informationen bekommen.->Mehr über die App]]
