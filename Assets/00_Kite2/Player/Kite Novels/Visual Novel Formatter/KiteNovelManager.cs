@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class KiteNovelManager
 {
@@ -26,7 +27,9 @@ public class KiteNovelManager
 
     public void SetAllKiteNovels(List<VisualNovel> kiteNovels)
     {
+        Debug.Log("Setting all novels...");
         this.kiteNovels = kiteNovels;
+        Debug.Log("Novels set: " + this.kiteNovels.Count);
     }
 
     public bool AreNovelsLoaded()

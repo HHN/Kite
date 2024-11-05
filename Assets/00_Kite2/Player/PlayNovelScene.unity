@@ -927,10 +927,10 @@ RectTransform:
   m_Father: {fileID: 563275608}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 443.07693, y: -265}
-  m_SizeDelta: {x: 886.1539, y: 330}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &498441981
 MonoBehaviour:
@@ -1930,19 +1930,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61b8ed8a1982c3745b6fb7dd1a6cce2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PopUp: 0
-  m_AllowExternalJoining: 0
-  m_AutoRead: 0
-  m_Priority: 0
-  m_ContainerName: 
-  m_IsLocalizationKey: 0
-  m_2DNavigation: 0
-  m_ConstrainToContainerUp: 0
-  m_ConstrainToContainerDown: 0
-  m_ConstrainToContainerLeft: 0
-  m_ConstrainToContainerRight: 0
-  m_AllowTouchExplore: 1
-  m_DoubleCheckUIElementsPositions: 1
 --- !u!1 &1075057873
 GameObject:
   m_ObjectHideFlags: 0
@@ -3024,6 +3011,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 280254954194880203, guid: f06932513849a4444b16dbe594485619, type: 3}
   m_PrefabInstance: {fileID: 1574087965}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1574087967 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 280254954194880202, guid: f06932513849a4444b16dbe594485619, type: 3}
+  m_PrefabInstance: {fileID: 1574087965}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1609170832
 GameObject:
   m_ObjectHideFlags: 0
@@ -3746,6 +3738,22 @@ MonoBehaviour:
   messageBox: {fileID: 5629918238507184917, guid: 47c0a3038b673a24cb82a566be2abf20, type: 3}
   canvas: {fileID: 1048358123}
   viewPort: {fileID: 1089021933}
+  conversationViewport: {fileID: 198210688}
+  closeButton: {fileID: 0}
+  novelName: {fileID: 993531150}
+  conversationContent: {fileID: 563275609}
+  confirmArea: {fileID: 221629287}
+  confirmArea2: {fileID: 813272501}
+  chatScroll: {fileID: 1164301132}
+  imageScroll: {fileID: 144910133}
+  backgroundBlur: {fileID: 1421326877}
+  imageAreaBlur: {fileID: 2014456651}
+  screenContentBlur: {fileID: 1075057873}
+  backgroundColor: {fileID: 1033715450}
+  imageAreaColor: {fileID: 182827003}
+  screenContentColor: {fileID: 1281647807}
+  freeTextInputPrefab: {fileID: 3171214583603264105, guid: 59415a69fbe4f7e4a85431a77d1028fd, type: 3}
+  headerImage: {fileID: 1574087967}
   novelVisuals:
   - {fileID: 781856241913721907, guid: 0befadf77118e9847b85864f275358d1, type: 3}
   - {fileID: 781856241913721907, guid: f5ab4b7480ff0a149a5da5fbdaab5936, type: 3}
@@ -3753,7 +3761,38 @@ MonoBehaviour:
   - {fileID: 781856241913721907, guid: 5e38a25fb9fcff147bf0a55efe66d21b, type: 3}
   - {fileID: 781856241913721907, guid: ae3fdc487eb3f454a9558e9328bb970d, type: 3}
   - {fileID: 781856241913721907, guid: 821483aaec5e17b4b8a7aeaf08fc726e, type: 3}
-  closeButton: {fileID: 0}
+  - {fileID: 781856241913721907, guid: 42c263b3ce0e2d24bbb694a032ccd4ef, type: 3}
+  novelImageContainer: {fileID: 1655295459}
+  novelBackgroundPrefab: {fileID: 8411936371333490823, guid: bd9e9565679ee6446be061db5b61e445, type: 3}
+  characterPrefabMayer: {fileID: 1465545687914413273, guid: aa2ae7c4c5e34ea48ba637f2c59e7998, type: 3}
+  characterPrefabReporterin: {fileID: 1465545687914413273, guid: 81edc9f9eabdbad40a81d9c419fd4022, type: 3}
+  characterPrefabVermieter: {fileID: 1465545687914413273, guid: 83e08fc87f63f5148aa4638d1f30a6f2, type: 3}
+  characterPrefabMutter: {fileID: 1465545687914413273, guid: fe0cc47faafc1e948a15badc475ba62d, type: 3}
+  characterPrefabVater: {fileID: 1465545687914413273, guid: aee370a96d4a69c4fa663f6e1505d316, type: 3}
+  characterPrefabIntro: {fileID: 0}
+  backgroundContainer: {fileID: 1386174946}
+  deskContainer: {fileID: 641773708}
+  decoDeskContainer: {fileID: 1714175714}
+  decoBackgroudContainer: {fileID: 137340085}
+  backgroundPrefab:
+  - {fileID: 8411936371333490823, guid: bd9e9565679ee6446be061db5b61e445, type: 3}
+  deskPrefab:
+  - {fileID: 8411936371333490823, guid: 6650c11e61f08f842ae57d97a463ce89, type: 3}
+  decoDeskPrefab:
+  - {fileID: 8411936371333490823, guid: 8f037253dc10526448e09433b5ecdc7f, type: 3}
+  decoBackgroundPrefab:
+  - {fileID: 8411936371333490823, guid: 3b4a0021871999348878261431cfb6c0, type: 3}
+  currentBackground: {fileID: 0}
+  currentDesk: {fileID: 0}
+  currentDecoDesk: {fileID: 0}
+  currentDecoBackgroud: {fileID: 0}
+  characterContainer: {fileID: 1436698926}
+  novelAnimations:
+  - {fileID: 0}
+  - {fileID: 2451443837264726971, guid: 399db683e4364e449887b9f4d7120744, type: 3}
+  viewPortOfImages: {fileID: 2069162108}
+  currentAnimation: {fileID: 0}
+  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   leaveGameAndGoBackMessageBoxObject: {fileID: 0}
   leaveGameAndGoBackMessageBox: {fileID: 5629918238507184917, guid: 52d64ed2a3cd0524ca7296e9ccb5ddca, type: 3}
   novelToPlay:
@@ -3767,15 +3806,21 @@ MonoBehaviour:
     isKite2Novel: 0
     novelEvents: []
     playedPath: 
-  novelName: {fileID: 993531150}
-  conversationContent: {fileID: 563275609}
-  novelImageContainer: {fileID: 1655295459}
-  novelBackgroundPrefab: {fileID: 8411936371333490823, guid: bd9e9565679ee6446be061db5b61e445, type: 3}
-  characterPrefabMayer: {fileID: 1465545687914413273, guid: aa2ae7c4c5e34ea48ba637f2c59e7998, type: 3}
-  characterPrefabReporterin: {fileID: 1465545687914413273, guid: 81edc9f9eabdbad40a81d9c419fd4022, type: 3}
-  characterPrefabVermieter: {fileID: 1465545687914413273, guid: 83e08fc87f63f5148aa4638d1f30a6f2, type: 3}
-  characterPrefabMutter: {fileID: 1465545687914413273, guid: fe0cc47faafc1e948a15badc475ba62d, type: 3}
-  characterPrefabVater: {fileID: 1465545687914413273, guid: aee370a96d4a69c4fa663f6e1505d316, type: 3}
+  currentTypeWriter: {fileID: 0}
+  selectOptionContinueConversation: {fileID: 0}
+  currentTalkingCharacterController: {fileID: 0}
+  engine: {fileID: 1668871518}
+  audioSource: {fileID: 2133875534}
+  clips:
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 6a2f896f4c76c7f44b538a4b04dad09e, type: 3}
+  - {fileID: 8300000, guid: ce01bdabef904a744ab5943498b127b0, type: 3}
+  - {fileID: 8300000, guid: 3ad33f7f14e090e4cb5fc5e2ff3121b8, type: 3}
+  - {fileID: 8300000, guid: 540791ccaa3d1014b9ab91ffc610e3f1, type: 3}
+  - {fileID: 8300000, guid: 8df96fe7e03644a468c7445614a32f21, type: 3}
+  timerForHint: 12
+  timerForHintInitial: 3
+  firstUserConfirmation: 1
   isWaitingForConfirmation: 0
   nextEventToPlay:
     id: 
@@ -3806,58 +3851,8 @@ MonoBehaviour:
     key: 
     value: 
     relevantBias: 0
-  conversationViewport: {fileID: 198210688}
-  backgroundContainer: {fileID: 1386174946}
-  deskContainer: {fileID: 641773708}
-  decoDeskContainer: {fileID: 1714175714}
-  decoBackgroudContainer: {fileID: 137340085}
-  backgroundPrefab:
-  - {fileID: 8411936371333490823, guid: bd9e9565679ee6446be061db5b61e445, type: 3}
-  deskPrefab:
-  - {fileID: 8411936371333490823, guid: 6650c11e61f08f842ae57d97a463ce89, type: 3}
-  decoDeskPrefab:
-  - {fileID: 8411936371333490823, guid: 8f037253dc10526448e09433b5ecdc7f, type: 3}
-  decoBackgroundPrefab:
-  - {fileID: 8411936371333490823, guid: 3b4a0021871999348878261431cfb6c0, type: 3}
-  currentBackground: {fileID: 0}
-  currentDesk: {fileID: 0}
-  currentDecoDesk: {fileID: 0}
-  currentDecoBackgroud: {fileID: 0}
-  characterContainer: {fileID: 1436698926}
-  chatScroll: {fileID: 1164301132}
-  imageScroll: {fileID: 144910133}
-  currentTypeWriter: {fileID: 0}
-  selectOptionContinueConversation: {fileID: 0}
-  confirmArea: {fileID: 221629287}
-  confirmArea2: {fileID: 813272501}
-  currentTalkingCharacterController: {fileID: 0}
   isTyping: 0
   playThroughHistory: []
-  gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
-  audioSource: {fileID: 2133875534}
-  clips:
-  - {fileID: 0}
-  - {fileID: 8300000, guid: 6a2f896f4c76c7f44b538a4b04dad09e, type: 3}
-  - {fileID: 8300000, guid: ce01bdabef904a744ab5943498b127b0, type: 3}
-  - {fileID: 8300000, guid: 3ad33f7f14e090e4cb5fc5e2ff3121b8, type: 3}
-  - {fileID: 8300000, guid: 540791ccaa3d1014b9ab91ffc610e3f1, type: 3}
-  - {fileID: 8300000, guid: 8df96fe7e03644a468c7445614a32f21, type: 3}
-  novelAnimations:
-  - {fileID: 0}
-  - {fileID: 2451443837264726971, guid: 399db683e4364e449887b9f4d7120744, type: 3}
-  viewPortOfImages: {fileID: 2069162108}
-  currentAnimation: {fileID: 0}
-  backgroundBlur: {fileID: 1421326877}
-  imageAreaBlur: {fileID: 2014456651}
-  screenContentBlur: {fileID: 1075057873}
-  backgroundColor: {fileID: 1033715450}
-  imageAreaColor: {fileID: 182827003}
-  screenContentColor: {fileID: 1281647807}
-  freeTextInputPrefab: {fileID: 3171214583603264105, guid: 59415a69fbe4f7e4a85431a77d1028fd, type: 3}
-  timerForHint: 12
-  timerForHintInitial: 3
-  firstUserConfirmation: 1
-  engine: {fileID: 1668871518}
 --- !u!4 &2133875533
 Transform:
   m_ObjectHideFlags: 0

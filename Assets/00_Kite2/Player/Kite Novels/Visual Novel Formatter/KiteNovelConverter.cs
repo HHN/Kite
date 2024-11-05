@@ -95,8 +95,6 @@ public class KiteNovelConverter
 
         VisualNovelEvent initalCharacterJoinsEvent = KiteNovelEventFactory.GetCharacterJoinsEvent(id, nextId, chracter, expression);
         kiteNovelEventList.NovelEvents.Add(initalCharacterJoinsEvent);
-
-
     }
 
     public static VisualNovelEvent HandleLocationEvent(TweePassage twee, Location location, List<VisualNovelEvent> list)

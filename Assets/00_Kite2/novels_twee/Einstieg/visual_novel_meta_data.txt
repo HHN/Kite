@@ -1,0 +1,17 @@
+{
+  "idNumberOfNovel": 13,
+  "titleOfNovel": "Einstiegsdialog",
+  "descriptionOfNovel": "",
+  "idNumberOfRepresentationImage": 8,
+  "nameOfMainCharacter": "Spielerin",
+  "contextForPrompt": "",
+  "folderName": "Einstieg",
+  "isKite2Novel": true,
+  "startLocation": "Office",
+  "startTalkingPartnerEmotion": "Friendly",
+  "isWithStartValues": true,
+  "talkingPartner01" : "Sachbearbeiter",
+  "talkingPartner02" : "",
+  "talkingPartner03" : "",
+  "wordsToReplace": []
+}
