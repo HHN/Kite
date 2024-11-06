@@ -113,12 +113,12 @@ public class NovelHistoryEntryGuiElement : MonoBehaviour
             if(whatWasCopied == "Feedback")
             {
                 // Setze den Text
-                textComponent.text = "Feedback wurde kopiert";
+                textComponent.text = "Das Feedback wurde in die\r\nZwischenablage kopiert.";
             }
             if (whatWasCopied == "Dialog")
             {
                 // Setze den Text
-                textComponent.text = "Dialog wurde kopiert";
+                textComponent.text = "Der Dialog wurde in die\r\nZwischenablage kopiert.";
             }
         }
 
