@@ -96,8 +96,8 @@ public class PlayNovelSceneController : SceneController
     [Header("Spielstatus und Logik")]
     [SerializeField] private bool isWaitingForConfirmation = false;
     [SerializeField] private Dictionary<string, VisualNovelEvent> novelEvents = new Dictionary<string, VisualNovelEvent>();
-    [SerializeField] private VisualNovelEvent nextEventToPlay;  
-    
+    [SerializeField] private VisualNovelEvent nextEventToPlay;
+
     [SerializeField] private bool isTyping;
     [SerializeField] private List<string> playThroughHistory = new List<string>();
 
@@ -106,8 +106,15 @@ public class PlayNovelSceneController : SceneController
     private float waitingTime = 0.5f;
     private bool typingWasSkipped = false;
 
+    [SerializeField] private List<VisualNovelEvent> eventHistory = new List<VisualNovelEvent>();
+    private string[] optionsId = new string[2];
+
+    private ConversationContentGuiController conversationContentGuiController;
+
     void Start()
     {
+        conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
+
         //tapToContinueAnimation.SetActive(false);
         //tapToContinueAnimation.GetComponent<Animator>().enabled = false;
         AnalyticsServiceHandler.Instance().StartStopwatch();
@@ -130,7 +137,7 @@ public class PlayNovelSceneController : SceneController
             return;
         }
         leaveGameAndGoBackMessageBoxObject = null;
-        leaveGameAndGoBackMessageBoxObject = Instantiate(leaveGameAndGoBackMessageBox, 
+        leaveGameAndGoBackMessageBoxObject = Instantiate(leaveGameAndGoBackMessageBox,
             canvas.transform).GetComponent<LeaveNovelAndGoBackMessageBox>();
         leaveGameAndGoBackMessageBoxObject.Activate();
     }
@@ -182,24 +189,10 @@ public class PlayNovelSceneController : SceneController
     {
         Vector2 mousePosition = Input.mousePosition;
 
-        if(novelImagesController.HandleTouchEvent(mousePosition.x, mousePosition.y, audioSource))
+        if (novelImagesController.HandleTouchEvent(mousePosition.x, mousePosition.y, audioSource))
         {
             return;
         }
-
-        //if (!isWaitingForConfirmation)
-        //{
-        //    return;
-        //}
-
-        //if(firstUserConfirmation)
-        //{
-        //    firstUserConfirmation = false;
-        //    tapedAlready = true;
-        //    AnalyticsServiceHandler.Instance().SendPlayNovelFirstConfirmation(); 
-        //}
-        //SetWaitingForConfirmation(false);
-        //PlayNextEvent();
 
         if (isTyping)
         {
@@ -222,42 +215,41 @@ public class PlayNovelSceneController : SceneController
         }
 
         SetWaitingForConfirmation(false);
-        PlayNextEvent();        
+        PlayNextEvent();
     }
 
     private void SetVisualElements()
     {
-        Debug.Log(novelToPlay.title);
         RectTransform canvasRect = canvas.GetComponent<RectTransform>();
-        
+
         RectTransform conversationViewportTransform = conversationViewport.GetComponent<RectTransform>();
 
         conversationViewportTransform.sizeDelta = new Vector2(0, -canvasRect.rect.height * 0.5f);
         RectTransform viewPortTransform = viewPort.GetComponent<RectTransform>();
 
-        switch(novelToPlay.title)
+        switch (novelToPlay.title)
         {
             case "Bank Kontoeröffnung":
-            {
-                GameObject novelImagesInstance = Instantiate(novelVisuals[0], viewPortTransform);
-                Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                novelImagesController = controllerTransform.GetComponent<BankNovelImageController>();
-                break;
-            }
+                {
+                    GameObject novelImagesInstance = Instantiate(novelVisuals[0], viewPortTransform);
+                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                    novelImagesController = controllerTransform.GetComponent<BankNovelImageController>();
+                    break;
+                }
             case "Anmietung eines Büros":
-            {
-                GameObject novelImagesInstance = Instantiate(novelVisuals[1], viewPortTransform);
-                Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                novelImagesController = controllerTransform.GetComponent<BueroNovelImageController>();
-                break;
-            }
+                {
+                    GameObject novelImagesInstance = Instantiate(novelVisuals[1], viewPortTransform);
+                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                    novelImagesController = controllerTransform.GetComponent<BueroNovelImageController>();
+                    break;
+                }
             case "Pressegespräch":
-            {
-                GameObject novelImagesInstance = Instantiate(novelVisuals[2], viewPortTransform);
-                Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                novelImagesController = controllerTransform.GetComponent<PresseNovelImageController>();
-                break;
-            }
+                {
+                    GameObject novelImagesInstance = Instantiate(novelVisuals[2], viewPortTransform);
+                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                    novelImagesController = controllerTransform.GetComponent<PresseNovelImageController>();
+                    break;
+                }
             case "Telefonat mit den Eltern":
                 {
                     GameObject novelImagesInstance = Instantiate(novelVisuals[3], viewPortTransform);
@@ -287,12 +279,12 @@ public class PlayNovelSceneController : SceneController
                     break;
                 }
             default:
-            {
-                GameObject novelImagesInstance = Instantiate(novelVisuals[0], viewPortTransform);
-                Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                novelImagesController = controllerTransform.GetComponent<BankNovelImageController>();
-                break;
-            }
+                {
+                    GameObject novelImagesInstance = Instantiate(novelVisuals[0], viewPortTransform);
+                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                    novelImagesController = controllerTransform.GetComponent<BankNovelImageController>();
+                    break;
+                }
         }
         novelImagesController.SetCanvasRect(canvasRect);
     }
@@ -304,11 +296,32 @@ public class PlayNovelSceneController : SceneController
             selectOptionContinueConversation.alreadyPlayedNextEvent = true;
             selectOptionContinueConversation = null;
         }
-        if (currentTypeWriter != null) 
+
+        if (currentTypeWriter != null)
         {
             currentTypeWriter.SkipTypewriter(); // no check for isShowing necessary
             currentTypeWriter = null;
         }
+
+        // Überprüfen, ob der Event den Bedingungen entspricht
+        if (nextEventToPlay.id.StartsWith("OptionsLabel"))
+        {
+
+            // Schneide "OptionsLabel" ab und speichere den Rest
+            string numericPart = nextEventToPlay.id.Substring("OptionsLabel".Length);
+
+            // Prüfe, ob der Rest eine Zahl ist
+            if (int.TryParse(numericPart, out int result))
+            {
+                // Wenn der Rest eine Zahl ist, speichere das Event
+                optionsId[0] = optionsId[1];  // Verschiebe das letzte Event
+                optionsId[1] = nextEventToPlay.id; // Speichere das aktuelle Event
+            }
+        }
+
+        // Save the current event in the eventHistory list
+        eventHistory.Add(nextEventToPlay);
+
         VisualNovelEventType type = VisualNovelEventTypeHelper.ValueOf(nextEventToPlay.eventType);
 
         switch (type)
@@ -376,17 +389,17 @@ public class PlayNovelSceneController : SceneController
                 {
                     HandleSavePersistentEvent(nextEventToPlay);
                     break;
-                }            
+                }
             case VisualNovelEventType.SAVE_VARIABLE_EVENT:
                 {
                     HandleSaveVariableEvent(nextEventToPlay);
                     break;
-                }            
+                }
             case VisualNovelEventType.ADD_FEEDBACK_EVENT:
                 {
                     HandleAddFeedbackEvent(nextEventToPlay);
                     break;
-                }            
+                }
             case VisualNovelEventType.ADD_FEEDBACK_UNDER_CONDITION_EVENT:
                 {
                     HandleAddFeedbackUnderConditionEvent(nextEventToPlay);
@@ -396,7 +409,7 @@ public class PlayNovelSceneController : SceneController
                 {
                     HandleMarkBiasEvent(nextEventToPlay);
                     break;
-                }            
+                }
             case VisualNovelEventType.CALCULATE_VARIABLE_FROM_BOOLEAN_EXPRESSION_EVENT:
                 {
                     HandleCalculateVariableFromBooleanExpressionEvent(nextEventToPlay);
@@ -416,7 +429,8 @@ public class PlayNovelSceneController : SceneController
     {
         SetNextEvent(novelEvent);
 
-        if (novelEvent.audioClipToPlay != 0) {
+        if (novelEvent.audioClipToPlay != 0)
+        {
             audioSource.clip = clips[novelEvent.audioClipToPlay];
             audioSource.Play();
         }
@@ -448,9 +462,9 @@ public class PlayNovelSceneController : SceneController
     {
         SetNextEvent(novelEvent);
 
-        if (novelEvent.questionForFreeTextInput == string.Empty 
-            || novelEvent.questionForFreeTextInput == "" 
-            || novelEvent.variablesName == string.Empty 
+        if (novelEvent.questionForFreeTextInput == string.Empty
+            || novelEvent.questionForFreeTextInput == ""
+            || novelEvent.variablesName == string.Empty
             || novelEvent.variablesName == "")
         {
             return;
@@ -465,9 +479,9 @@ public class PlayNovelSceneController : SceneController
     {
         SetNextEvent(novelEvent);
 
-        if (novelEvent.gptPrompt == String.Empty 
-            || novelEvent.gptPrompt == "" 
-            || novelEvent.variablesNameForGptPromp == String.Empty 
+        if (novelEvent.gptPrompt == String.Empty
+            || novelEvent.gptPrompt == ""
+            || novelEvent.variablesNameForGptPromp == String.Empty
             || novelEvent.variablesNameForGptPromp == "")
         {
             return;
@@ -500,15 +514,15 @@ public class PlayNovelSceneController : SceneController
         SetNextEvent(novelEvent);
         WriteUserInputToFile(novelEvent.key, ReplacePlaceholders(novelEvent.value, novelToPlay.GetGlobalVariables()));
         PlayNextEvent();
-    }    
-    
+    }
+
     private void HandleSaveVariableEvent(VisualNovelEvent novelEvent)
     {
         SetNextEvent(novelEvent);
         novelToPlay.AddGlobalVariable(novelEvent.key, novelEvent.value);
         PlayNextEvent();
-    }        
-    
+    }
+
     private void HandleCalculateVariableFromBooleanExpressionEvent(VisualNovelEvent novelEvent)
     {
         SetNextEvent(novelEvent);
@@ -546,8 +560,8 @@ public class PlayNovelSceneController : SceneController
         SetNextEvent(novelEvent);
         OfflineFeedbackManager.Instance().AddLineToPrompt(novelEvent.value);
         PlayNextEvent();
-    }    
-    
+    }
+
     private void HandleAddFeedbackUnderConditionEvent(VisualNovelEvent novelEvent)
     {
         SetNextEvent(novelEvent);
@@ -621,26 +635,25 @@ public class PlayNovelSceneController : SceneController
 
         novelImagesController.SetFaceExpression(novelEvent.character, novelEvent.expressionType);
 
-        if(novelEvent.show){
+        if (novelEvent.show)
+        {
             conversationContent.AddContent(novelEvent, this);
 
             AddEntryToPlayThroughHistory(CharacterTypeHelper.ValueOf(novelEvent.character), novelEvent.text);
             AnalyticsServiceHandler.Instance().SetLastQuestionForChoice(novelEvent.text);
         }
 
-        
-
         if (novelEvent.waitForUserConfirmation)
         {
             SetWaitingForConfirmation(true);
             return;
         }
+
         StartCoroutine(StartNextEventInOneSeconds(1));
     }
 
     public void HandleAddChoiceEvent(VisualNovelEvent novelEvent)
     {
-        Debug.Log("[PlayNovelSceneController] - HandleAddChoiceEvent", this);
 
         SetNextEvent(novelEvent);
 
@@ -651,6 +664,7 @@ public class PlayNovelSceneController : SceneController
             SetWaitingForConfirmation(true);
             return;
         }
+
         AnalyticsServiceHandler.Instance().AddChoiceToList(novelEvent.text);
         TextToSpeechService.Instance().addChoiceToChoiceCollectionForTextToSpeech(novelEvent.text);
         PlayNextEvent();
@@ -658,8 +672,6 @@ public class PlayNovelSceneController : SceneController
 
     public void HandleShowChoicesEvent(VisualNovelEvent novelEvent)
     {
-        Debug.Log("[PlayNovelSceneController] - HandleShowChoicesEvent", this);
-
         // Enable animations when showing choices
         AnimationFlagSingleton.Instance().SetFlag(true);
 
@@ -714,10 +726,11 @@ public class PlayNovelSceneController : SceneController
 
     public void ShowAnswer(string message, bool show)
     {
-        if (!show) 
+        if (!show)
         {
             return;
         }
+
         AddEntryToPlayThroughHistory(Character.PLAYER, message);
         conversationContent.ShowPlayerAnswer(message);
         ScrollToBottom();
@@ -796,7 +809,8 @@ public class PlayNovelSceneController : SceneController
         Destroy(currentAnimation);
     }
 
-    private void AddEntryToPlayThroughHistory(Character character, string text){
+    private void AddEntryToPlayThroughHistory(Character character, string text)
+    {
         playThroughHistory.Add(CharacterTypeHelper.GetNameOfCharacter(character) + ": " + text);
     }
 
@@ -813,4 +827,57 @@ public class PlayNovelSceneController : SceneController
     {
         novelToPlay.AddToPath(pathValue);
     }
-}   
+
+    public void RestoreChoice()
+    {
+        // Check if there is a previous choice to restore
+        if (!string.IsNullOrEmpty(optionsId[0]))
+        {
+            // The ID of the event we want to restore to
+            string eventIdToRestore = optionsId[0];
+
+            // Find the index of the event in the eventHistory list
+            int indexToRestore = eventHistory.FindIndex(e => e.id == eventIdToRestore);
+
+            if (indexToRestore != -1) // If the event is found in the history
+            {
+                // Remove the event and all events after it
+                eventHistory.RemoveRange(indexToRestore, eventHistory.Count - indexToRestore);
+
+                // Now update playThroughHistory
+                // Search from back to front for the second occurrence of ":"
+                int colonCount = 0;
+                int indexToRemoveFrom = -1;
+
+                // Traverse the list backwards
+                for (int i = playThroughHistory.Count - 1; i >= 0; i--)
+                {
+                    if (playThroughHistory[i].Trim() == ":")
+                    {
+                        colonCount++;
+                        if (colonCount == 2)
+                        {
+                            indexToRemoveFrom = i;
+                            break;
+                        }
+                    }
+                }
+
+                if (indexToRemoveFrom != -1)
+                {
+                    // Remove all entries from the found index onwards
+                    playThroughHistory.RemoveRange(indexToRemoveFrom, playThroughHistory.Count - indexToRemoveFrom);
+
+                    conversationContentGuiController.ClearUIAfter(indexToRemoveFrom);
+                }
+
+                // Set the previous event as the next event to play, if present
+                if (indexToRestore > 0)
+                {
+                    SetNextEvent(eventIdToRestore);
+                    PlayNextEvent();
+                }
+            }
+        }
+    }
+}

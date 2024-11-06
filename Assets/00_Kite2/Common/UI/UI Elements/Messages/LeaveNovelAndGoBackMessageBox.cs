@@ -23,7 +23,6 @@ public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
 
     private void InitUI()
     {
-        Debug.Log(NovelColorManager.Instance().GetColor());
         background.GetComponent<Image>().color = NovelColorManager.Instance().GetColor();
         backgroundLeave.GetComponent<Image>().color = NovelColorManager.Instance().GetColor();
         textStay.GetComponent<TextMeshProUGUI>().color = NovelColorManager.Instance().GetColor();
