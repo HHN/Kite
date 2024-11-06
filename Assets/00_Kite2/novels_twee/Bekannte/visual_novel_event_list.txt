@@ -1,5 +1,5 @@
 :: StoryTitle
-Gespräch mit einem Bekannten 0.5
+Novel_Bekannter
 
 
 :: StoryData
@@ -8,7 +8,7 @@ Gespräch mit einem Bekannten 0.5
   "format": "Harlowe",
   "format-version": "3.3.9",
   "start": "Anfang",
-  "zoom": 0.3
+  "zoom": 0.6
 }
 
 
@@ -21,7 +21,7 @@ Bis bald und viel Erfolg mit deiner Gründung!
 
 :: Abschied II {"position":"2100,3050","size":"100,100"}
 >>BekannterSprichtLaughing:<<
-Bis dann!
+Mach's gut!
 >>--<<
 >>Ende<<
 
@@ -40,34 +40,31 @@ Und irgendwann wirst du dann auch andere unterstützen können.
 >>BekannterSprichtSmiling:<<
 Du hast ja auch Erfahrung und ich bin mir sicher, dass andere sehr dankbar für deine Tipps sein werden.
 
+[[Das ist lieb von dir, danke. Ich gebe mir Mühe, so viel wie möglich zu lernen und etwas zurückzugeben.->Andere unterstützen II]]
 
-[[Das ist lieb von dir, danke. Ich versuche einfach, so viel wie möglich zu lernen und auch etwas zurückzugeben.->Andere unterstützen II]]
-
-[[Ja, wir wachsen gemeinsam und lernen auch alle voneinander.->Andere unterstützen II]]
+[[Ja, wir lernen ja alle voneinander und wachsen gemeinsam.->Andere unterstützen II]]
 
 
 :: Andere unterstützen II {"position":"2625,2400","size":"100,100"}
 >>BekannterSprichtFriendly:<<
-Und es ist auch schön zu sehen, wie andere erfolgreich werden und ihre Ziele erreichen.
+Es ist auch einfach schön zu sehen, wie andere Erfolg haben und ihre Ziele erreichen.
 
-[[Genau, geht mir genauso! Jetzt geht es mir schon deutlich besser, nachdem ich all das mal rauslassen konnte.->Deutlich besser]]
+[[Genau, geht mir genauso! Jetzt fühl ich mich echt besser, nachdem ich das alles mal loswerden konnte.->Deutlich besser]]
 
-[[Oh ja, das stimmt! Danke fürs Zuhören und dass ich den Stress mal loswerden konnte.->Deutlich besser]]
-
+[[Oh ja, total! Danke, dass du zugehört hast und ich den ganzen Stress loswerden konnte.->Deutlich besser]]
 
 :: Anfang {"position":"1600,400","size":"100,100"}
 >>InfoNachrichtWirdAngezeigt:<<
-Du triffst dich mit einem Bekannten, den du seit ein paar Jahren nicht mehr gesehen hast, in einem kleinen Café. Er hat dir soeben erzählt, wo er zurzeit beruflich steht. Nun bist du an der Reihe.
+Du triffst dich mit einem Bekannten, den du seit ein paar Jahren nicht mehr gesehen hast, in einem kleinen Café. Er hat dir gerade  erzählt, wo er momentan beruflich steht. Nun bist du an der Reihe.
 
 [[Weiter]]
 
 
 :: Angebot wahrgeonmmen {"position":"2425,1975","size":"100,100"}
 >>BekannterSprichtFriendly:<<
-Ich muss sagen, dass ich das so von mir selbst kenne, dass es manchmal gar nicht so einfach ist, Hilfe anzunehmen. Manchmal fühlt es sich dann so an, als hätte ich etwas nicht alleine geschafft.
+Ich kenne das von mir auch, dass es manchmal echt schwer ist, Hilfe anzunehmen. Manchmal fühlt es sich dann so an, als hätte ich etwas nicht alleine geschafft.
 
-
-[[Ich weiß, was du meinst. Dabei ist es doch normal und auch notwendig Hilfe und Unterstützung von anderen anzunehmen. Dafür müssen wir uns nun wirklich nicht schämen.->Schambehaftet]]
+[[Ich weiß, was du meinst. Dabei ist es normal und auch notwendig Hilfe von anderen anzunehmen. Dafür müssen wir uns nicht schämen.->Schambehaftet]]
 
 [[Wie meinst du das?->Erklärung]]
 
@@ -76,14 +73,13 @@ Ich muss sagen, dass ich das so von mir selbst kenne, dass es manchmal gar nicht
 >>BekannterSprichtCritical:<<
 Es ist doch unglaublich, dass solche Annahmen immer noch gemacht werden. Als ob es nur Frauen betreffen würde und Männer keine Verantwortung für Kinder hätten.
 
-[[Genau, und es ist so frustrierend, weil es vom eigentlichen Thema ablenkt und mich in eine Position bringt, in der ich mich rechtfertigen muss.->Annahme: Kinder II]]
+[[Genau, und es ist so frustrierend, weil es vom eigentlichen Thema ablenkt und ich mich ständig rechtfertigen muss.->Annahme: Kinder II]]
 
-[[Ja, es ist wirklich an der Zeit, dass sich diese Denkmuster ändern. Ich habe das Gefühl, ich müsste jedes Mal Aufklärung betreiben.->Aufklärungsarbeit]]
-
+[[Ja, es wird echt Zeit, dass sich das ändert. Ich hab das Gefühl, ich muss jedes Mal wieder von vorne erklären.->Aufklärungsarbeit]]
 
 :: Annahme: Kinder II {"position":"1775,1225","size":"100,100"}
 >>BekannterSprichtDefeated:<<
-Ich habe vor einigen Jahren Elternzeit genommen und du glaubst nicht, was da für Kommentare teilweise kamen.
+Ich habe vor einigen Jahren Elternzeit genommen und du glaubst nicht, was da für Kommentare kamen.
 
 [[Oh je, was für welche denn?->Elternzeit: Kommentare]]
 
@@ -94,83 +90,75 @@ Ich habe vor einigen Jahren Elternzeit genommen und du glaubst nicht, was da fü
 >>BekannterSprichtSmiling:<<
 Hast du denn Unterstützung oder ein Netzwerk, das dir hilft, mit diesen Herausforderungen umzugehen?
 
+[[Ja, zum Glück bin ich in einem Mentoring-Netzwerk. Das hilft mir enorm.->Mentoring]]
 
-[[Ja, ich bin zum Glück in einem Mentoring-Netzwerk drin. Das hilft mir enorm.->Mentoring]]
-
-[[Ich habe Freund*innen mit denen ich über Manches spreche, aber wenn sie nicht auch selbständig sind, ist es manchmal schwierig, mehr darüber zu sprechen.->Kein Netzwerk]]
-
+[[Ich spreche mit einigen Freund*innen darüber, aber wenn sie nicht auch selbständig sind, ist das manchmal nicht so leicht, da tiefer einzusteigen.->Kein Netzwerk]]
 
 :: Aufklärungsarbeit {"position":"1650,1225","size":"100,100"}
 >>BekannterSprichtLaughing:<<
-Die sollten dich für diese Aufklärungsarbeit bezahlen! Es sollte doch selbstverständlich sein, dass Frauen genauso gut Unternehmen gründen können wie Männer.
+Die sollten dich für diese Aufklärungsarbeit bezahlen! Eigentlich sollte es doch klar sein, dass Frauen genauso gut Firmen gründen wie Männer.
 
-[[Ja. und die Boston Consulting Group hat schon 2018 herausgefunden, dass Frauen mit ihren eigenen Firmen im Schnitt besser abschneiden als Männer. Die machen aus jedem investierten Euro mehr als doppelt so viel Gewinn.->Aufklärungsarbeit II]]
+[[Ja, die Boston Consulting Group hat schon 2018 gezeigt, dass Firme von Frauen oft besser abschneiden als Männer und mehr als doppelt so viel Gewinn pro investiertem Euro machen.->Aufklärungsarbeit II]]
 
-[[Tja, aber oft dreht sich dann alles um meine Work-Life-Balance, wobei "Life" auf Kinder reduziert wird. Du warst doch in Elternzeit. Da hast du wahrscheinlich auch einige unschöne Kommentare zu hören bekommen.->Elternzeit: Kommentare]]
-
+[[Tja, aber oft geht's nur um meine Work-Life-Balance, wobei "Life" auf Kinder reduziert wird. Da du in Elternzeit warst, hast du sicher auch Kommentare zu hören bekommen.->Elternzeit: Kommentare]]
 
 :: Aufklärungsarbeit II {"position":"1650,1375","size":"100,100"}
 >>BekannterSprichtAstonished:<<
 Doppelt so viel? Ich frage mich, warum solche Informationen nicht allgemein bekannt sind.
 
-[[Das ist eine gute Frage. Von Frauen geführte Unternehmen wachsen vielleicht langsamer, aber die gehen auch viel seltener pleite. Das sollte doch auch ein wichtiger Faktor sein.->Aufklärungsarbeit III]]
+[[Gute Frage. Firmen von Frauen wachsen vielleicht langsamer, aber sie gehen auch viel seltener pleite. Das müsste doch auch zählen.->Aufklärungsarbeit III]]
 
-[[Wahrscheinlich sind Vorurteile über Frauen zu stark verankert? Ich weiß es nicht.->Aufklärungsarbeit III]]
+[[Wahrscheinlich sitzen die Vorurteile gegen Frauen einfach zu tief? Keine Ahnung.->Aufklärungsarbeit III]]
 
 
 :: Aufklärungsarbeit III {"position":"1650,1525","size":"100,100"}
 >>BekannterSprichtSmiling:<<
-Das muss echt frustrierend sein. Ich habe auch erst vor kurzem etwas zu der sogenannten "Gläsernen Decke" gelesen. Aber bin mir nicht mehr so ganz sicher, was es damit auf sich hat. Eine unsichtbare Grenze, die Frauen nicht durchbrechen können, oder?
+Das muss echt frustrierend sein. Ich habe neulich etwas zur "Gläsernen Decke" gelesen. Aber bin mir nicht mehr so ganz sicher, was das war. Irgendwie eine unsichtbare Grenze, die Frauen nicht durchbrechen, oder?
 
-[[Genau, und egal wie qualifiziert wir sind oder wie hart wir arbeiten. Es sind die unbewussten Vorurteile und systemischen Hürden, die uns daran hindern, Führungspositionen zu erreichen.->Gläserne Decke]]
+[[Genau, egal wie qualifiziert oder fleißig wir sind, unbewussten Vorurteile und systemischen Hürden hindern uns daran, in Führungspositionen zu kommen.->Gläserne Decke]]
 
-[[Richtig, es geht um diese unsichtbare Barriere, die Frauen davon abhält, an die Spitze zu kommen. Trotz gleicher Qualifikationen und Fähigkeiten stoßen Frauen oft auf Widerstände, die Männer nicht in der gleichen Weise erleben.->Gläserne Decke]]
-
+[[Richtig, diese unsichtbare Barriere hält Frauen davon ab, an die Spitze zu kommen. Obwohl wir gleich qualifiziert sind, stoßen wir auf Widerstände, die Männer so nicht erleben.->Gläserne Decke]]
 
 :: Austausch {"position":"2550,1675","size":"100,100"}
 >>BekannterSprichtSmiling:<<
 Das klingt toll! Was für Netzwerke gibt es da denn?
 
-[[Also die bundesweite gründerinnenagentur ist bspw. eine zentrale Anlaufstelle in Deutschland. Da kann ich mich auch individuell beraten lassen.->bga]]
+[[Es gibt zum Beispiel eine zentrale Anlaufstelle in Deutschland, bei der ich mich individuell beraten lassen kann.->Zentrale Anlaufstelle]]
 
-[[Da gibt es so einige Netzwerke, wo ich drin bin. Nushu ist eines davon, das ist ein Karrierenetzwerk für Frauen, worüber ich mich mit anderen austauschen kann.->Karrierenetzwerk]]
-
+[[Da gibt es so einige, wo ich drin bin. Eines davon ist ein Karrierenetzwerk für Frauen, worüber ich mich mit anderen austauschen kann.->Karrierenetzwerk]]
 
 :: Businessplan {"position":"2650,1675","size":"100,100"}
 >>BekannterSprichtSmiling:<<
 Toll, wie du dich da reinhängst, aber natürlich bedauerlich, dass deine Eltern da eher skeptisch sind. Kannst du dich zumindest mit Gleichgesinnten austauschen?
 
-[[Also die bundesweite gründerinnenagentur ist bspw. eine zentrale Anlaufstelle in Deutschland. Da gibt es auch tolle Mentoring-Programme.->bga]]
+[[Es gibt zum Beispiel eine zentrale Anlaufstelle in Deutschland, bei der ich mich individuell beraten lassen kann.->Zentrale Anlaufstelle]]
 
-[[Da gibt es so einige Netzwerke, wo ich drin bin. Nushu ist eines davon, das ist ein Karrierenetzwerk für Frauen, worüber ich mich mit anderen austauschen kann.->Karrierenetzwerk]]
+[[Da gibt es ein Karrierenetzwerk für Frauen, worüber ich mich mit anderen austauschen kann.->Karrierenetzwerk]]
 
 
 :: Coaching {"position":"2525,1975","size":"100,100"}
 >>BekannterSprichtLaughing:<<
-Super, dass dir das Coaching auch wirklich etwas gebracht hat! Gibt es weitere, die dich noch interessieren?
+Cool, dass dir das Coaching was gebracht hat! Gibt's noch andere Sachen, die dich interessieren?
 
-[[Es gibt da ein Business-Coaching, das spannend klingt. Das kommt dann aber erst nach der Gründung.->Coaching II]]
+[[Es gibt da ein Business-Coaching, das spannend klingt.->Coaching II]]
 
-[[Mich interessiert noch der Workshop zum Thema Verhandlungsführung. Ich finde es ab und zu schwierig mit Kundschaft zu verhandeln.->Coaching II]]
-
+[[Mich interessiert noch der Workshop zu Verhandlungsführung.->Coaching II]]
 
 :: Coaching II {"position":"2525,2300","size":"100,100"}
 >>BekannterSprichtFriendly:<<
-Das klingt total interessant, erzähl mir dann, wie das war, wenn du dann teilgenommen hast!
+Das klingt total interessant, erzähl mir dann, wie das war, wenn du teilgenommen hast!
 
-[[Das werde ich. Jetzt geht es mir schon deutlich besser, nachdem ich all das mal rauslassen konnte. Danke!->Deutlich besser]]
+[[Mach ich! Mir geht’s jetzt schon viel besser, nachdem ich alles mal loswerden konnte. Danke dir!->Deutlich besser]]
 
-[[Oh ja, ich freue mich da auch schon darauf. Danke fürs Zuhören und dass ich den Stress mal loswerden konnte.->Deutlich besser]]
-
+[[Oh ja, ich freu mich auch schon drauf. Danke, dass du mir zugehört hast und ich den Stress mal loswerden konnte.->Deutlich besser]]
 
 :: Deutlich besser {"position":"2275,2600","size":"100,100"}
 >>BekannterSprichtLaughing:<<
 Gerne. Ich finde es toll, wie leidenschaftlich du arbeitest. Ich bin sicher, dass du es schaffen wirst.
 
+[[Danke dir! Wollen wir uns in ein paar Wochen mal wieder treffen?->Erneutes Treffen]]
 
-[[Danke dir! Vielleicht können wir uns in ein paar Wochen nochmal treffen?->Erneutes Treffen]]
-
-[[Danke. Wir können vielleicht mal miteinander telefonieren?->Telefonat]]
+[[Danke. Vielleicht können wir ja mal telefonieren?->Telefonat]]
 
 
 :: Einige Probleme {"position":"2350,900","size":"100,100"}
@@ -180,7 +168,7 @@ Ich kann mir vorstellen, wie schwer das sein muss. Vielleicht kann ich dir irgen
 
 [[Das ist lieb von dir. Im Moment bin ich einfach froh, jemanden zum Reden zu haben.->Reden]]
 
-[[Ach, ich habe das Gefühl, ich müsste einfach mal Dampf ablassen.->Reden]]
+[[Ach, ich habe das Gefühl, ich muss einfach mal richtig Dampf ablassen.->Reden]]
 
 
 :: Eltern {"position":"2500,1225","size":"100,100"}
@@ -195,7 +183,7 @@ Und wie haben sie reagiert?
 
 :: Elternzeit: Kommentare {"position":"1775,1375","size":"100,100"}
 >>BekannterSprichtSmiling:<<
-Ach, da gab es einige. Zum Beispiel: 'Na, genießt du deine Auszeit vom echten Arbeitsleben?' oder 'Und was macht deine Frau?'
+Ach, da gab es einige. Zum Beispiel: "Na, genießt du deine Auszeit vom echten Arbeitsleben?" oder ein verwirrtes "Und was macht deine Frau?"
 
 
 [[Wow...->Elternzeit: Kommentare II]]
@@ -207,14 +195,13 @@ Ach, da gab es einige. Zum Beispiel: 'Na, genießt du deine Auszeit vom echten A
 >>BekannterSprichtSmiling:<<
 Ja, absolut. Auch diese Annahme, wie bei dir, dass Kindererziehung die Aufgabe der Frau ist.
 
-[[Ich wünschte, es wäre einfach "normal", dass nicht nur die Frau sich um Kinder kümmern muss oder überhaupt Kinder haben muss.->Elternzeit: Kommentare III]]
+[[Es wäre schön, wenn es "normal" wäre, dass nicht nur Frauen sich um Kinder kümmern müssen.->Elternzeit: Kommentare III]]
 
-[[Genau, und ich freue mich für dich, dass du befördert wurdest, aber ehrlich gesagt, vermute ich, dass es bei einer Frau tendenziell nicht so schnell gehen würde.->Elternzeit: Kommentare IIIb]]
-
+[[Freut mich echt für dich, aber vermutlich wäre das bei einer Frau wohl nicht so schnell passiert.->Elternzeit: Kommentare IIIb]]
 
 :: Elternzeit: Kommentare III {"position":"1850,1675","size":"100,100"}
 >>BekannterSprichtLaughing:<<
-Da kann ich dir nur zustimmen. Ich erzähle natürlich auch auf der Arbeit von meinem Kind und wie gut uns die Elternzeit getan hat. Einige Männer haben mich später angesprochen und meinten, dass sie auch darüber nachdenken, Elternzeit zu nehmen.
+Da kann ich dir nur zustimmen. Ich erzähle auch auf der Arbeit von meinem Kind und wie gut uns die Elternzeit getan hat. Danach kamen ein paar Kollegen und meinten, sie überlegen auch, Elternzeit zu nehmen.
 
 [[Das ist eine schöne Entwicklung.->Elternzeit: Kommentare IV]]
 
@@ -223,61 +210,54 @@ Da kann ich dir nur zustimmen. Ich erzähle natürlich auch auf der Arbeit von m
 
 :: Elternzeit: Kommentare IIIb {"position":"1725,1675","size":"100,100"}
 >>BekannterSprichtSmiling:<<
-Alles gut, verstehe ich total. Ich habe auch erst vor kurzem etwas zu der sogenannten "Gläsernen Decke" gelesen. Aber bin mir nicht mehr so ganz sicher, was es damit auf sich hat. Eine unsichtbare Grenze, die Frauen nicht durchbrechen können, oder?
+Alles gut, verstehe ich total. Ich habe auch neulich etwas zur "Gläsernen Decke" gelesen. Das ist so eine unsichtbare Grenze, die Frauen nicht durchbrechen können, oder?
 
-[[Genau, und egal wie qualifiziert wir sind oder wie hart wir arbeiten. Es sind die unbewussten Vorurteile und systemischen Hürden, die uns daran hindern, Führungspositionen zu erreichen.->Gläserne Decke]]
+[[Genau, egal wie qualifiziert oder fleißig wir sind, unbewussten Vorurteile und systemischen Hürden hindern uns daran, in Führungspositionen zu kommen.->Gläserne Decke]]
 
-[[Richtig, es geht um diese unsichtbare Barriere, die Frauen davon abhält, an die Spitze zu kommen. Trotz gleicher Qualifikationen und Fähigkeiten stoßen Frauen oft auf Widerstände, die Männer nicht in der gleichen Weise erleben.->Gläserne Decke]]
-
+[[Richtig, diese unsichtbare Barriere hält Frauen davon ab, an die Spitze zu kommen. Obwohl wir gleich qualifiziert sind, stoßen wir auf Widerstände, die Männer so nicht erleben.->Gläserne Decke]]
 
 :: Elternzeit: Kommentare IV {"position":"1800,1825","size":"100,100"}
 >>BekannterSprichtSmiling:<<
-Bei dir ist es ja quasi das Gegenteil. Hast du Unterstützung oder ein Netzwerk, das dir hilft, mit diesen Herausforderungen umzugehen?
-
+Bei dir ist es ja quasi das Gegenteil. Hast du Unterstützung oder ein Netzwerk, das dir bei den Herausforderungen hilft?
 
 [[Ja, ich bin zum Glück in einem Mentoring-Netzwerk drin. Das hilft mir enorm.->Mentoring]]
 
-[[Ich habe Freund*innen mit denen ich über Manches spreche, aber wenn sie nicht auch selbständig sind, ist es manchmal schwierig, mehr darüber zu sprechen.->Kein Netzwerk]]
-
+[[Ich rede mit Freund*innen darüber, aber wenn sie nicht auch selbständig sind, ist es manchmal schwierig, tiefer einzusteigen.->Kein Netzwerk]]
 
 :: Erfahrungsgewinn {"position":"2450,1675","size":"100,100"}
 >>BekannterSprichtSmiling:<<
 Toll! Du bist bestimmt auch schon in Netzwerken mit drin oder kennst Anlaufstellen, und tauscht dich mit anderen Gründerinnen aus, oder?
 
 
-[[Ja, also die bundesweite gründerinnenagentur ist bspw. eine zentrale Anlaufstelle in Deutschland. Da kann ich mich auch individuell beraten lassen.->bga]]
+[[Es gibt zum Beispiel eine zentrale Anlaufstelle in Deutschland, bei der ich mich individuell beraten lassen kann.->Zentrale Anlaufstelle]]
 
-[[Genau, da gibt es so einige Netzwerke, wo ich drin bin. Nushu ist eines davon, das ist ein Karrierenetzwerk für Frauen, worüber ich mich mit anderen austauschen kann.->Karrierenetzwerk]]
-
+[[Da gibt es so einige Netzwerke, wo ich drin bin. Eines davon ist ein Karrierenetzwerk für Frauen, worüber ich mich mit anderen austauschen kann.->Karrierenetzwerk]]
 
 :: Erklärung {"position":"2450,2125","size":"100,100"}
 >>BekannterSprichtDefeated:<<
-Ich fühle mich manchmal wie so ein Impostor. Weißt du, diese Leute, die das Gefühl haben, den Erfolg nicht verdient zu haben und ständig Angst haben, als Betrüger*in entlarvt zu werden. 
+Ich fühle mich manchmal wie so ein Impostor. Weißt schon, die Leute, die das Gefühl haben, den Erfolg nicht verdient zu haben und ständig Angst haben, dass jemand sie als Betrüger*in enttarnt.
 
-[[Oh, da kenne ich selbst zu gut. Aber ich sage mir dann selbst, Hilfe zu suchen zeigt Stärke und den Wunsch, sich weiterzuentwickeln.->Impostor]]
+[[Oh, da kenne ich selbst zu gut. Ich sag mir dann immer, Hilfe zu suchen zeigt Stärke und den Wunsch, sich weiterzuentwickeln.->Impostor]]
 
-[[Das verstehe ich. Es ist wichtig zu erkennen, dass diese Gefühle nicht die Realität widerspiegeln. Du hast großartige Fähigkeiten und Ideen!->Impostor]]
-
+[[Das verstehe ich. Es ist wichtig zu erkennen, dass das nicht die Realität ist. Du hast echt was drauf und super Ideen!->Impostor]]
 
 :: Erneutes Treffen {"position":"1900,2900","size":"100,100"}
 >>BekannterSprichtSmiling:<<
-Das klingt gut. Wir können ja nochmal miteinander schreiben, um einen festen Tag auszumachen.
+Das klingt gut. Lass uns nochmal schreiben, um einen festen Tag auszumachen.
 
 
-[[Ja, ich melde mich. Noch einen schönen Tag!->Abschied]]
+[[Ja, ich melde mich. Dir noch einen schönen Tag!->Abschied]]
 
-[[Ja, schreib mir einfach. Schönen Tag noch und bis dann!->Abschied]]
+[[Ja, schreib mir einfach. Schönen Tag noch, bis dann!->Abschied]]
 
 
 :: Fokus {"position":"2200,1975","size":"100,100"}
 >>BekannterSprichtAstonished:<<
-Stimmt. Das ist mir nie aufgefallen, dass Frauen total oft Fragen gestellt werden, die sie quasi dazu zwingen, in eine Art Defensive zu gehen.
+Stimmt. Das ist mir nie aufgefallen, dass Frauen oft Fragen kriegen, die sie quasi direkt in die Defensive drängen.
 
+[[Ich würde auch gerne über große Träume und die Zukunft reden, aber meist geht's dann darum, wie ich überhaupt hierhin gekommen bin.->Fokus II]]
 
-[[Ich würde auch gerne von so großen Träumen und der Zukunft sprechen, aber meist geht's dann doch darum, wie ich es überhaupt bis zu diesem Punkt geschafft habe.->Fokus II]]
-
-[[Ich habe echt das Gefühl, dass es oft darum geht, Kundschaft überhaupt erstmal zu halten anstatt größer zu werden.->Fokus II]]
-
+[[Ich habe echt das Gefühl, es geht oft nur darum, Kundschaft überhaupt zu halten, statt größer zu wachsen.->Fokus II]]
 
 :: Fokus II {"position":"2200,2125","size":"100,100"}
 >>BekannterSprichtCritical:<<
@@ -286,15 +266,14 @@ Wie ärgerlich. Und wie gehst du damit um?
 
 [[Ich versuche das Gespräch auf den eigentlichen Fokus, also die Geschäftsidee und zukünftige Pläne zu lenken.->Fokus III]]
 
-[[Wenn ich merke, dass meine Gesprächspartner*innen nicht das gleiche wollen wie ich, breche ich auch schonmal Gespräche ab.->Gesprächsabbruch]]
-
+[[Wenn ich merke, dass die Leute nicht das gleiche wie ich wollen, breche ich auch schonmal Gespräche ab.->Gesprächsabbruch]]
 
 :: Fokus III {"position":"2275,2300","size":"100,100"}
 >>BekannterSprichtSmiling:<<
 Das ist super. Muss ja nicht sein, dass der eigentliche Fokus an den Rand gerückt wird.
 
 
-[[Genau. Jetzt geht es mir schon deutlich besser, nachdem ich all das mal rauslassen konnte. Danke!->Deutlich besser]]
+[[Genau. Mir geht's jetzt echt besser, nachdem ich das mal alles rauslassen konnte. Danke!->Deutlich besser]]
 
 [[Eben. Danke fürs Zuhören und dass ich den Stress mal loswerden konnte.->Deutlich besser]]
 
@@ -303,27 +282,25 @@ Das ist super. Muss ja nicht sein, dass der eigentliche Fokus an den Rand gerüc
 >>BekannterSprichtProud:<<
 Das ist großartig! Glückwunsch zur Förderung. Wie hast du das geschafft?
 
-[[Danke! Es war eine Menge Arbeit. Ich habe an verschiedenen Wettbewerben teilgenommen und mich für mehrere Förderprogramme beworben. Zum Glück hat eins davon geklappt.->Wettbewerb]]
+[[Danke! Es war viel Arbeit. Ich habe an mehreren Wettbewerben teilgenommen und mich für einige Förderprogramme beworben. Eins geklappt!->Wettbewerb]]
 
 [[Danke! Ich habe auch schon über die nächsten großen Schritte nachgedacht.->Nächste Schritte]]
 
 
 :: Förderungsprogramme {"position":"1550,2125","size":"100,100"}
 >>BekannterSprichtSmiling:<<
-Eine Kollegin hat mal von der bundesweiten gründerinnenagentur ist gesprochen und dass die viele Infos dazu haben. Die Kollegin ist auch dabei nebenberuflich zu gründen. Wenn du magst, kann ich euch auch miteinander vernetzen.
-
+Eine Kollegin hat mal von einer Anlaufstelle gesprochen, die viele Infos dazu haben. Sie ist auch dabei, nebenberuflich zu gründen. Wenn du magst, kann ich euch auch miteinander vernetzen.
 
 [[Das wäre toll, danke dir!->Vernetzung]]
 
-[[Das ist lieb, ich schaue mir aber erstmal an, was die bga so anbietet und melde mich dann nochmal diesbezüglich.->Kein Interesse]]
-
+[[Danke dir, ich schau mir erstmal an, was die so anbieten und melde mich dann.->Kein Interesse]]
 
 :: Geschäftsabbruch II {"position":"2000,2600","size":"100,100"}
 >>BekannterSprichtFriendly:<<
 Das glaube ich dir sofort. Ich finde es toll, wie leidenschaftlich du arbeitest. Ich bin sicher, dass du es schaffen wirst.
 
 
-[[Danke dir! Vielleicht können wir uns in ein paar Wochen nochmal treffen?->Erneutes Treffen]]
+[[Danke dir! Wollen wir uns in ein paar Wochen nochmal treffen?->Erneutes Treffen]]
 
 [[Danke. Wir können vielleicht mal miteinander telefonieren?->Telefonat]]
 
@@ -343,26 +320,24 @@ Toll, dass du da so klare Linien ziehst! Da gehört auch schon eine Portion Mut 
 Das ist ja mehr als frustrierend. Und was kann da gemacht werden, um diese gläserne Decke zu durchbrechen? 
 
 
-[[Da gibt es zum Glück mehrere Möglichkeiten, aber das funktioniert leider nicht von heute auf morgen. Der Aufbau von Netzwerken kann da total hilfreich sein, um sich gegenseitig zu unterstützen.->Aufbau von Netzwerk]]
+[[Da gibt es zum Glück mehrere Möglichkeiten, aber das geht leider nicht von heute auf morgen. Netzwerke aufbauen hilft da echt, um sich gegenseitig zu pushen.->Aufbau von Netzwerk]]
 
-[[Es gibt Förderungsprogramme, die explizit Unternehmerinnen unterstützen, weil sie sich der vielen Hürden bewusst sind.->Förderungsprogramme]]
+[[Es gibt Förderprogramme, die speziell Unternehmerinnen unterstützen, weil die wissen, wie viele Hürden da sind.->Förderungsprogramme]]
 
 
 :: Gründungserfahrung {"position":"2400,1525","size":"100,100"}
 >>BekannterSprichtAstonished:<<
 Dann hast du ja sogar Erfahrung! Woran könnte es liegen, dass deine Eltern dir das nicht zutrauen?
 
-
-[[Na ja, ich habe bei der vorherigen Gründung Fehler gemacht, woraus ich aber lernen konnte und möchte diese Erfahrung eben neu anwenden.->Erfahrungsgewinn]]
+[[Na ja, ich hab bei der letzten Gründung Fehler gemacht, aber daraus gelernt und will das jetzt besser machen.->Erfahrungsgewinn]]
 
 [[Ich verstehe es auch nicht. Es lief gut und ich habe gemerkt, dass ich es mag neue Projekte zu starten, weshalb ich nochmal gründen möchte.->Leidenschaft]]
-
 
 :: Gut zurechtkommen {"position":"1050,925","size":"100,100"}
 >>BekannterSprichtSmiling:<<
 Das freut mich zu hören. Was sind denn die größten Herausforderungen, die du bisher meistern musstest?
 
-[[Eine große Herausforderung ist tatsächlich Sexismus. Viele haben einfach noch Biases im Kopf und nehmen mich nicht ernst oder zweifeln an meinen Fähigkeiten.->Sexismus]]
+[[Eine große Herausforderung ist tatsächlich Sexismus. Viele haben einfach noch Vorurteile im Kopf, nehmen mich nicht ernst oder zweifeln an meinen Fähigkeiten.->Sexismus]]
 
 [[Ich habe meinen Eltern von der Unternehmensgründung erzählt.->Eltern]]
 
@@ -371,19 +346,19 @@ Das freut mich zu hören. Was sind denn die größten Herausforderungen, die du 
 
 :: Impostor {"position":"2400,2300","size":"100,100"}
 >>BekannterSprichtLaughing:<<
-Jetzt hast du mir eher Mut zugesprochen statt andersherum. Jedenfalls finde ich es toll, wie leidenschaftlich du arbeitest. Ich bin sicher, dass du das mit der Gründung schaffen wirst.
+Jetzt hast eher du mir Mut zugesprochen, statt andersherum. Jedenfalls finde ich es toll, wie leidenschaftlich du arbeitest. Ich bin sicher, dass du das mit der Gründung schaffen wirst.
 
 
-[[Danke dir! Wir können uns ja gegenseitig Mut zusprechen. Vielleicht können wir uns in ein paar Wochen nochmal treffen?->Erneutes Treffen]]
+[[Danke dir! Wir können uns ja gegenseitig Mut machen. Lass uns doch in ein paar Wochen nochmal treffen?->Erneutes Treffen]]
 
-[[Ach, mir geht es deutlich besser, nachdem ich etwas darüber sprechen konnte. Danke dir. Wir können vielleicht mal miteinander telefonieren?->Telefonat]]
+[[Ach, mir geht es viel besser, nachdem ich darüber sprechen konnte. Danke dir. Lass uns mal telefonieren?->Telefonat]]
 
 
 :: Influencer*innen {"position":"975,1600","size":"100,100"}
 >>BekannterSprichtSmiling:<<
-Richtig gut! Influencer-Marketing kann sehr effektiv sein. Hast du schon bestimmte Influencer*innen im Blick?
+Richtig gut! Marketing mit Influencer*innen kann sehr effektiv sein. Hast du schon bestimmte im Blick?
 
-[[Ja, ich habe eine Liste von einigen Mikro-Influencer*innen erstellt, die gut zu unserer Marke passen und eine engagierte Community haben. Ich denke, ihre Authentizität könnte wirklich gut ankommen.->Influencer*innen II]]
+[[Ja, ich habe eine Liste von Influencer*innen, die zu uns passen könnten und eine engagierte Community haben. Ihre Authentizität könnte gut ankommen.->Influencer*innen II]]
 
 [[Ich bin mir da noch etwas unsicher und will mich da noch weiter informieren.->Vorschläge]]
 
@@ -395,17 +370,16 @@ Das klingt super. Vielleicht willst du dich weiter mit anderen austauschen, um �
 
 [[Hast du Vorschläge an wen ich mich da wenden kann?->Vorschläge]]
 
-[[Ich wollte mich sowieso noch bei der bga informieren, ob ich mich da individuell beraten lassen kann.->bga Coaching]]
-
+[[Ich wollte mich sowieso noch bei einer Anlaufstelle informieren, ob ich mich da individuell beraten lassen kann.->Anlaufstelle Coaching]]
 
 :: Interview {"position":"2250,1225","size":"100,100"}
 >>BekannterSprichtAstonished:<<
 Ein Interview! Das klingt super!
 
 
-[[Ja, aber leider will die Redaktion den Fokus eher darauf legen, dass ich als Frau gründe und was für eine Sensation das sei.->Sensation]]
+[[Ja, aber leider wollen sie mehr darüber reden, dass ich als Frau gründe, und wie sensationell das sei.->Sensation]]
 
-[[Wäre an sich auch toll, aber da geht es nicht wirklich um das Unternehmen, sondern mehr um mein Geschlecht.->Sensation]]
+[[Wäre an sich auch toll, aber da geht es nicht um das Unternehmen, sondern mehr um mein Geschlecht.->Sensation]]
 
 
 :: Karrierenetzwerk {"position":"2600,1825","size":"100,100"}
@@ -413,7 +387,7 @@ Ein Interview! Das klingt super!
 Das klingt richtig gut. Ich glaube, das wird teilweise auch unterschätzt, wie viel so ein Netzwerk helfen kann.
 
 
-[[Ja, ich war anfangs auch unsicher, weil ich dachte, ich kann selbst ja nichts bieten, aber alle sind so nett und hilfsbereit.->Alle hilfsbereit]]
+[[Ja, anfangs war ich unsicher, dachte, ich hab nichts zu bieten, aber alle sind echt nett und hilfsbereit.->Alle hilfsbereit]]
 
 [[Total. Ich bin einfach froh, dass alle wirklich einander unterstützen möchten.->Alle hilfsbereit]]
 
@@ -423,19 +397,18 @@ Das klingt richtig gut. Ich glaube, das wird teilweise auch unterschätzt, wie v
 Gib einfach Bescheid. 
 
 
-[[Mache ich. Jetzt geht es mir schon deutlich besser, nachdem ich all das mal rauslassen konnte. Danke!->Deutlich besser]]
+[[Mach ich. Mir geht's schon viel besser, nachdem ich alles loswerden konnte. Danke!->Deutlich besser]]
 
-[[Werde ich. Danke fürs Zuhören und dass ich den Stress mal loswerden konnte.->Deutlich besser]]
+[[Werde ich. Danke für's Zuhören und dass ich den Stress mal loswerden konnte.->Deutlich besser]]
 
 
 :: Kein Netzwerk {"position":"1900,1975","size":"100,100"}
 >>BekannterSprichtAstonished:<<
-Kennst du nicht die bundesweite gründerinnenagentur?
-
+Kennst du nicht diese zentrale Anlaufstelle für Gründerinnen in Deutschland?
 
 [[Doch klar, darüber habe ich schon an Coaching-Programmen teilgenommen.->Programm]]
 
-[[Nicht wirklich?->bga Erklärung]]
+[[Nicht wirklich?->Anlaufstelle Erklärung]]
 
 
 :: Keine Veröffentlichung {"position":"2275,1825","size":"100,100"}
@@ -443,19 +416,18 @@ Kennst du nicht die bundesweite gründerinnenagentur?
 Ist doch okay. Du wirst bestimmt noch von anderen angesprochen, die dich nicht auf dein Geschlecht reduzieren. 
 
 
-[[Ja, das denke ich mir auch. Ansonsten kann ich auch auf Zeitungen und Magazine zugehen, die mir auch eher zusagen.->Keine Veröffentlichung II]]
+[[Ja, das denke ich mir auch. Zur Not gehe ich auf Medien zu, die mehr zu mir passen.->Keine Veröffentlichung II]]
 
-[[Ja, ich möchte eigentlich gar nicht ständig über die Hürden sprechen, sondern auch mal nur über das Unternehmen an sich.->Fokus]]
-
+[[Ja, ich möchte nicht ständig über die Hürden sprechen, sondern mal über das Unternehmen an sich.->Fokus]]
 
 :: Keine Veröffentlichung II {"position":"2325,1975","size":"100,100"}
 >>BekannterSprichtSmiling:<<
 Genau, ich denke auch, dass es da bestimmt Journalist*innen und Redaktionen gibt, die ehrlich an deinem Unternehmen interessiert sind und nicht nur daran, dass du eine Frau bist.
 
 
-[[Ja, ich sehe es ja auch bei anderen Gründerinnen, dass immer die gleichen stereotypen Fragen gestellt werden.->Fokus II]]
+[[Ja, bei anderen Gründerinnen seh ich das auch, immer dieselben Klischeefragen.->Fokus II]]
 
-[[Das denke ich auch. Wäre schön, wenn es sich nicht nur um Herausforderungen und Hürden drehen würde. Die gehören dazu, aber eben nicht nur.->Fokus II]]
+[[Ja, genau. Herausforderungen gehören dazu, aber sie sind halt nicht alles.->Fokus II]]
 
 
 :: Leidenschaft {"position":"2350,1675","size":"100,100"}
@@ -463,26 +435,25 @@ Genau, ich denke auch, dass es da bestimmt Journalist*innen und Redaktionen gibt
 Total schön, dass du deine Leidenschaft für dich entdeckt hast, aber natürlich trotzdem schade, dass deine Eltern da so viele Sorgen haben. Kannst du dich denn zumindest mit Gleichgesinnten austauschen?
 
 
-[[Also die bundesweite gründerinnenagentur ist bspw. eine zentrale Anlaufstelle in Deutschland. Da gibt es auch tolle Mentoring-Programme.->bga]]
+[[Es gibt zum Beispiel eine zentrale Anlaufstelle in Deutschland, die auch Mentoring-Programme anbietet.->Zentrale Anlaufstelle]]
 
-[[Da gibt es so einige Netzwerke, wo ich drin bin. Nushu ist eines davon, das ist ein Karrierenetzwerk für Frauen, worüber ich mich mit anderen austauschen kann.->Karrierenetzwerk]]
-
+[[Da gibt es so einige Netzwerke, wo ich drin bin. Eines davon ist ein Karrierenetzwerk für Frauen, worüber ich mich mit anderen austauschen kann.->Karrierenetzwerk]]
 
 :: Live-Stream {"position":"775,1600","size":"100,100"}
 >>BekannterSprichtAstonished:<<
 Sogar Live-Streams? Das klingt aber nach richtig viel Arbeit und da bin ich mir nie so sicher, ob sich das auch lohnt.
 
 
-[[Ja, deswegen bin ich da noch am überlegen. Bisher ist das auch nur eine der vielen Ideen.->Nur Idee]]
+[[[Ja, genau deshalb bin ich noch am Überlegen. Ist bisher nur eine von vielen Ideen.->Nur Idee]]
 
-[[Ich denke, das würde schon zur Marke passen und da meine Zielgruppe auch eher jünger ist, kann das schon sinnvoll sein.->Sinnvoll]]
+[[Ich denke, das passt zur Marke und meine Zielgruppe ist eher jünger, könnte also schon sinnvoll sein.->Sinnvoll]]
 
 
 :: Marketing {"position":"875,1225","size":"100,100"}
 >>BekannterSprichtProud:<<
 Das ist großartig zu hören! Wie hast du es geschafft, so viel Aufmerksamkeit auf Social Media zu bekommen?
 
-[[Ich habe viel Zeit in die Planung und Umsetzung kreativer Inhalte investiert. Dabei habe ich mich auf Storytelling konzentriert und versucht, die Zielgruppe emotional zu erreichen.->Social Media]]
+[[Ich hab viel Zeit in kreative Inhalte gesteckt, Storytelling war der Schlüssel, um die Zielgruppe emotional zu erreichen.->Social Media]]
 
 [[Ich habe mich da beraten lassen und habe es geschafft mit einer Werbekampagne viral zu gehen.->Social Media]]
 
@@ -491,11 +462,9 @@ Das ist großartig zu hören! Wie hast du es geschafft, so viel Aufmerksamkeit a
 >>BekannterSprichtSmiling:<<
 Das klingt nach einer klugen Investition. Hast du auch vor, dein Team zu vergrößern, um das Wachstum zu unterstützen?
 
+[[Ich will mindestens zwei Leute einstellen, eine fürs Marketing und eine für den Vertrieb. Wird Zeit, dass die Arbeit sich besser verteilt und frischer Wind reinkommt.->Team-Vergrößerung]]
 
-[[Ich plane, in den nächsten Monaten mindestens zwei Leute einzustellen – eine Person für Marketing und eine Person für den Vertrieb. Es ist an der Zeit, die Arbeitslast zu verteilen und frische Ideen ins Unternehmen zu bringen.->Team-Vergrößerung]]
-
-[[Erstmal nicht. Ich möchte erst sicherstellen, dass unsere Prozesse optimiert sind und die neuen Investitionen sich vollständig auszahlen, bevor ich über eine Erweiterung nachdenke.->Prozessoptmierung]]
-
+[[Erstmal nicht. Ich möchte erst sicherstellen, alles rundläuft und sich die Investitionen auszahlen, bevor ich das Team erweitere.->Prozessoptmierung]]
 
 :: Mehr Unterstützung {"position":"2600,1525","size":"100,100"}
 >>BekannterSprichtSmiling:<<
@@ -503,64 +472,60 @@ Verstehe. So ein bisschen mehr Vertrauen wäre schön gewesen. Du hast dir ja au
 
 [[Genau, sogar meinen Businessplan habe ich schon geschrieben. Ich stehe also nicht am Anfang.->Businessplan]]
 
-[[Eben. Ich bin auch gut vernetzt und kann mich mit anderen Gründerinnen austauschen, sodass wir voneinander lernen können.->Austausch]]
+[[Eben. Ich bin auch gut vernetzt und tausche mich mit anderen Gründerinnen aus.->Austausch]]
 
 
 :: Mentoring {"position":"1675,2125","size":"100,100"}
 >>BekannterSprichtSmiling:<<
-Ich kenne noch die bundesweite gründerinnenagentur über eine Kollegin, die gerade auch nebenberuflich gründet. Wenn du magst, kann ich euch auch miteinander vernetzen.
-
+Ich kenne noch eine Anlaufstelle über eine Kollegin, die gerade auch nebenberuflich gründet. Wenn du magst, kann ich euch auch miteinander vernetzen.
 
 [[Das wäre toll, danke dir!->Vernetzung]]
 
-[[Ich bin mehr an den Programmen und Angeboten der bga interessiert und würde mich aber nochmal melden, wenn ich mich doch vernetzen möchte.->Kein Interesse]]
+[[Schon in Ordnung. Ich melde mich nochmal, wenn ich mich doch vernetzen möchte.->Kein Interesse]]
 
 
 :: Motivation {"position":"2075,1825","size":"100,100"}
 >>BekannterSprichtFriendly:<<
-Ja, du hast dich bestimmt richtig entschieden, auch wenn ich mir vorstellen kann, dass es echt nervig ist, wenn ständig gefragt wird, wie du das als Frau schaffst... Ich werde ja auch nicht gefragt, wie das so ist als Mann mit Kind.
+Ja, das war sicher die richtige Entscheidung. Aber ich kann mir vorstellen, wie nervig es sein muss, wenn dauernd gefragt wird, wie du das als Frau hinbekommst... Mich fragt ja auch keiner, wie das als Vater mit Kind so läuft.
 
+[[Eben! Viele denken wahrscheinlich, dass deine Frau sich schon darum kümmert.->Rollenklischees]]
 
-[[Eben! Da denken wahrscheinlich viele, dass deine Frau sich schon darum kümmert.->Rollenklischees]]
-
-[[Ja, ich möchte eigentlich gar nicht ständig über die Hürden sprechen, sondern auch mal nur über das Unternehmen an sich.->Fokus]]
+[[Ja, ich möchte gar nicht ständig über Hürden sprechen, sondern auch über das Unternehmen an sich.->Fokus]]
 
 
 :: Netzwerk umhören {"position":"1150,1750","size":"100,100"}
 >>BekannterSprichtSmiling:<<
-Du kennst dann wahrscheinlich auch schon die  bundesweite gründerinnenagentur?
+Kennst du nicht diese zentrale Anlaufstelle für Gründerinnen in Deutschland?
 
 [[Klar, darüber habe ich schon an Workshops teilgenommen.->Programm]]
 
-[[Nicht wirklich? Ich kenne sie nur vom Namen her.->bga Erklärung]]
+[[Nicht wirklich?->Anlaufstelle Erklärung]]
 
 
 :: Nicht gut {"position":"2600,1375","size":"100,100"}
 >>BekannterSprichtCritical:<<
 Das ist natürlich demotivierend. Du gründest zum ersten Mal, oder?
 
-[[Ja, ich gründe zum ersten Mal und klar, sie sind ja meine Eltern und wollen mich vor schlechten Erfahrungen bewahren, aber so ein bisschen mehr Unterstützung wäre schön.->Mehr Unterstützung]]
+[[Ja, ist es, und klar, meine Eltern wollen mich vor schlechten Erfahrungen bewahren, aber ein bisschen mehr Unterstützung wäre echt schön.->Mehr Unterstützung]]
 
 [[Das ist es ja, ich gründe nicht zum ersten Mal und trotzdem wird mir da so wenig zugetraut.->Gründungserfahrung]]
 
 
 :: Nur Idee {"position":"725,1750","size":"100,100"}
 >>BekannterSprichtSmiling:<<
-Also ich will es dir nicht absprechen, aber ich wollte eine Zeit lang Streamer werden und alleine das Geld für das ganze Equipment hat mich zumindest damals ziemlich abgeschreckt.
+Nicht, dass ich dir das madig machen will, aber ich wollte mal Streamer werden, und alleine das Geld für das Equipment hat mich damals ordentlich abgeschreckt.
 
+[[Ja, ich will mich sowieso erst noch genauer informieren, bevor ich etwas entscheide.->Kein Netzwerk]]
 
-[[Ja, ich wollte sowieso erst noch schauen, wo ich mich weiter informieren kann, bevor ich eine Entscheidung fälle.->Kein Netzwerk]]
-
-[[Das stimmt. Technisches Equipment kann schnell ziemlich teuer werden. Aber bevor ich etwas umsetze, wollte ich sowieso noch bei der bga ein Coaching machen.->bga Coaching]]
-
+[[Stimmt, Technik kann echt teuer werden. Aber bevor ich loslege, will ich eh noch ein Coaching bei der Anlaufstelle machen.->Anlaufstelle Coaching]]
 
 :: Nächste Schritte {"position":"1150,1375","size":"100,100"}
 >>BekannterSprichtSmiling:<<
 Und wie sehen die aus?
 
-[[Ich plane, in den nächsten Monaten mindestens zwei Leute einzustellen – eine Person für Marketing und eine Person für den Vertrieb. Es ist an der Zeit, die Arbeitslast zu verteilen und frische Ideen ins Unternehmen zu bringen.->Team-Vergrößerung]]
+[[Ich will mindestens zwei Leute einstellen, eine fürs Marketing und eine für den Vertrieb. Es wird Zeit, die Arbeit zu verteilen und neue Ideen ins Team zu holen.->Team-Vergrößerung]]
 
-[[Ich werde in eine professionelle Website investieren, sodass mein Online-Auftritt modern und ansprechend ist, um potenzielle Kundschaft besser anzusprechen.->Website]]
+[[Ich werde in eine professionelle Website investieren, damit mein Online-Auftritt modern ist, um potenzielle Kundschaft besser anzusprechen.->Website]]
 
 
 :: Positives {"position":"1050,1075","size":"100,100"}
@@ -568,46 +533,44 @@ Und wie sehen die aus?
 Verständlich! Dann erzähl mal, was lief denn bisher richtig gut und was für große Pläne hast du?
 
 
-[[Einer der größten Erfolge war, dass ich eine Förderung für mein Projekt bekommen habe. Das hat mir viel finanziellen Spielraum verschafft.->Förderung]]
+[[Einer der größten Erfolge war, dass ich eine Förderung für mein Projekt bekommen habe. Das hat mir finanziellen Spielraum verschafft.->Förderung]]
 
-[[Bisher lief das Marketing überraschend gut. Ich habe viel positive Resonanz auf unsere Social-Media-Kampagnen bekommen.->Marketing]]
+[[Bisher lief das Marketing echt gut. Ich habe viel positive Resonanz auf unsere Social-Media-Kampagnen bekommen.->Marketing]]
 
 
 :: Problem: Finanzierung {"position":"1600,925","size":"100,100"}
 >>BekannterSprichtFriendly:<<
 Ich kann mir vorstellen, wie anstrengend das sein muss. Was macht die Finanzierung denn so schwierig?
 
-[[Ein großer Teil des Problems ist tatsächlich Sexismus. Viele haben einfach noch Biases im Kopf und nehmen mich nicht ernst oder zweifeln an meinen Fähigkeiten.->Sexismus]]
+[[Ein großer Teil des Problems ist Sexismus. Viele haben noch Vorurteile im Kopf, nehmen mich nicht ernst oder zweifeln an meinen Fähigkeiten.->Sexismus]]
 
-[[Häufig dreht sich das Gespräch dann um Kinder bzw. Kinderwunsch und mir wird unterstellt, dass es ja quasi unmöglich ist mit Kindern selbstständig zu sein. Dabei ist es egal, ob ich tatsächlich welche habe oder nicht.->Annahme: Kinder]]
+[[Oft dreht sich das Gespräch dann um Kinder und mir wird unterstellt, dass das mit Kindern und Selbstständigkeit nicht hinhauen kann. Egal, ob ich welche habe oder nicht.->Annahme: Kinder]]
 
-[[Es gibt so viele Hürden – von den hohen Anforderungen der Investor*innen bis hin zu den bürokratischen Hürden bei Förderanträgen.->Viele Hürden]]
+[[Es gibt so viele Hürden. Von den hohen Anforderungen der Investor*innen bis hin zu den bürokratischen Hürden bei Förderanträgen.->Viele Hürden]]
 
 
 :: Programm {"position":"1975,2125","size":"100,100"}
 >>BekannterSprichtSmiling:<<
-Ich kenne die bga nur über eine Kollegin, die gerade auch nebenberuflich gründet. Wenn du magst, kann ich euch miteinander vernetzen.
-
+Ich kenne eine zentrale Anlaufstelle nur über eine Kollegin, die gerade auch nebenberuflich gründet. Wenn du magst, kann ich euch miteinander vernetzen.
 
 [[Das wäre toll, danke dir!->Vernetzung]]
 
-[[Ich bin mehr an den Programmen und Angeboten der bga interessiert und würde mich aber nochmal melden, wenn ich mich doch vernetzen möchte.->Kein Interesse]]
-
+[[Ich bin mehr an den Programmen und Angeboten der Anlaufstelle interessiert und würde mich nochmal melden, wenn ich mich doch vernetzen möchte.->Kein Interesse]]
 
 :: Prozessoptmierung {"position":"1400,1675","size":"100,100"}
 >>BekannterSprichtLaughing:<<
 Das ist verständlich. Es ist wichtig, die Basis zu festigen, bevor man expandiert, aber es ist ja nie zu früh zum Träumen.
 
-[[Das stimmt, so ein bisschen habe ich mir natürlich schon Gedanken gemacht.->Träume]]
+[[Das stimmt, so ein bisschen habe ich natürlich schon drüber nachgedacht.->Träume]]
 
-[[Ja, aber so wirklich realisieren werde ich das erst, wenn ich vorherige Schritte richtig abgeklärt habe.->Träume]]
+[[Ja, aber so richtig konkret wird das erst, wenn ich die anderen Schritte geklärt hab.->Träume]]
 
 
 :: Reden {"position":"2350,1075","size":"100,100"}
 >>BekannterSprichtSmiling:<<
 Verstehe ich. Manchmal muss alles einfach mal raus. Worüber möchtest du gerne sprechen?
 
-[[Ich wurde von einer Journalistin gefragt, ob ich zu meiner Unternehmensgründung interviewt werden möchte.->Interview]]
+[[Eine Journalistin hat mich gefragt, ob ich ein Interview zu meiner Gründung machen will.->Interview]]
 
 [[Ich habe meinen Eltern von der Unternehmensgründung erzählt.->Eltern]]
 
@@ -621,7 +584,7 @@ Oh ja, und ich werde auch für jede Kleinigkeit gelobt, die ich für das Kind tu
 
 [[Ja, und Frauen werden dann ständig gefragt, wie Arbeit und Kind zusammen überhaupt funktionieren soll.->Fokus II]]
 
-[[Unglaublich, wie stark diese Rollenklischees verfestigt sind. Frauen wird direkt die Mutterrolle aufgedrückt und so viele Fragen gehen in diese Richtung.->Fokus II]]
+[[Unglaublich, wie fest diese Rollenklischees sitzen. Frauen wird sofort die Mutterrolle zugeschoben, und viele Fragen gehen dann direkt in die Richtung.->Fokus II]]
 
 
 :: Sarkasmus {"position":"1525,1375","size":"100,100"}
@@ -660,17 +623,15 @@ Und das im 21. Jahrhundert! Wahrscheinlich werden dir noch Fragen gestellt, die 
 
 [[Ja! Und natürlich muss ich eine Familie haben wollen. Ich bin ja schließlich eine Frau!->Sarkasmus]]
 
-[[Total schlimm. Ich habe das Gefühl, dass ich manchmal bei diesen Gesprächen Aufklärung betreiben muss, dass Frauen heutzutage ebenfalls Unternehmen gründen.->Aufklärungsarbeit]]
-
+[[Total schlimm. Manchmal hab ich das Gefühl, ich muss echt erklären, dass Frauen heutzutage auch Unternehmen gründen.->Aufklärungsarbeit]]
 
 :: Sinnvoll {"position":"850,1750","size":"100,100"}
 >>BekannterSprichtSmiling:<<
 Stimmt, bei einer jüngeren Zielgruppe passt das natürlich super. Hast du eigentlich Unterstützung oder ein Netzwerk, das dir hilft, mit Fragen umzugehen oder größere Pläne zu verwirklichen? 
 
-
 [[Ja, ich bin in einem Mentoring-Netzwerk drin. Das hilft mir enorm.->Mentoring]]
 
-[[Ich habe Freund*innen mit denen ich über Manches spreche, aber wenn sie nicht auch selbständig sind, ist es manchmal schwierig, mehr darüber zu sprechen.->Kein Netzwerk]]
+[[Ich rede mit einigen Freund*innen darüber, aber wenn sie nicht auch selbstständig sind, ist es manchmal schwer, tiefer ins Thema zu gehen.->Kein Netzwerk]]
 
 
 :: Social Media {"position":"875,1375","size":"100,100"}
@@ -679,17 +640,16 @@ Klingt, als hättest du einen guten Plan. Was sind deine nächsten Schritte im M
 
 [[Ich plane, mehr Video-Content zu produzieren und mit Live-Streams zu experimentieren, um noch mehr mit der Community zu interagieren.->Live-Stream]]
 
-[[Ich bin am Überlegen, ob ich nicht Kampagnen mit Influencer*innen starten soll, um die Zielgruppe zu erweitern.->Influencer*innen]]
-
+[[Ich überlege, ob ich nicht Kampagnen mit Influencer*innen machen soll, um meine Zielgruppe zu erweitern.->Influencer*innen]]
 
 :: Team-Vergrößerung {"position":"1150,1600","size":"100,100"}
 >>BekannterSprichtLaughing:<<
 Das klingt nach einem soliden Plan. Hast du schon bestimmte Leute im Blick?
 
 
-[[Noch nicht konkret, aber ich werde demnächst Stellenanzeigen schalten und mich in meinen Netzwerken umhören. Ich suche nach Menschen, die meine Vision teilen und motiviert sind, etwas aufzubauen.->Netzwerk umhören]]
+[[Noch nicht konkret, aber ich werde Stellenanzeigen schalten und mich in Netzwerken umhören. Ich suche nach Menschen, die meine Vision teilen.->Netzwerk umhören]]
 
-[[Ja, aber ich möchte mich da noch nicht so einschränken und werde zusätzlich zum gezielten Anschreiben auch Stellenanzeigen schalten.->Netzwerk umhören]]
+[[Ja, aber ich möchte mich da nicht so einschränken und werde zusätzlich auch Stellenanzeigen schalten.->Netzwerk umhören]]
 
 
 :: Telefonat {"position":"2100,2900","size":"100,100"}
@@ -703,11 +663,11 @@ Sehr gerne, lass uns das auf jeden Fall machen. Halte mich auf dem Laufenden, wi
 
 :: Träume {"position":"1400,1825","size":"100,100"}
 >>BekannterSprichtSmiling:<<
-Du kennst sie wahrscheinlich schon, aber ich denke, dass die bundesweite gründerinnenagentur dich bestimmt bei der Verwirklichung von Träumen unterstützen kann.
+Du kennst sie wahrscheinlich schon, aber ich denke, dass eine zentrale Anlaufstelle in Deutschland dich bestimmt bei der Verwirklichung von Träumen unterstützen kann.
 
-[[Die bga ist mir schon bekannt. Ich habe schon an einem Workshop von ihnen teilgenommen, das war echt toll.->Programm]]
+[[Die Anlaufstelle ist mir schon bekannt. Ich habe schon an einem Workshop von ihnen teilgenommen, das war echt toll.->Programm]]
 
-[[Nicht wirklich? Ich kenne sie nur vom Namen her.->bga Erklärung]]
+[[Ich kenne sie nicht.->Anlaufstelle Erklärung]]
 
 
 :: Unsicherheit {"position":"2175,1825","size":"100,100"}
@@ -715,17 +675,16 @@ Du kennst sie wahrscheinlich schon, aber ich denke, dass die bundesweite gründe
 Ach, ich denke, du kannst da ruhig deinen Instinkten vertrauen. Hört sich ja auch so an, als würdest du nicht ständig die gleichen Fragen beantworten wollen.
 
 
-[[Ja, ich würde gerne von großen Träumen und der Zukunft sprechen, aber meist geht's dann doch eher darum, wie ich es überhaupt bis zu diesem Punkt geschafft habe.->Fokus II]]
+[[Ja, ich würde gern über große Träume und die Zukunft reden, aber meistens geht's darum, wie ich überhaupt hierher gekommen bin.->Fokus II]]
 
-[[Ich habe echt das Gefühl, dass es oft darum geht, Kundschaft überhaupt erstmal zu halten anstatt größer zu werden.->Fokus II]]
-
+[[Ich habe echt das Gefühl, dass es oft darum geht, Kundschaft überhaupt zu halten, statt größer zu werden.->Fokus II]]
 
 :: Vernetzung {"position":"1725,2400","size":"100,100"}
 >>BekannterSprichtLaughing:<<
 Dilara heißt sie und hatte schon gesagt, dass ich ihre Kontaktdaten einfach an weitere Unternehmerinnen weitergeben kann. Ich schicke sie dir gleich rüber.
 
 
-[[Klasse, danke dir. Jetzt geht es mir schon deutlich besser, nachdem ich all das mal rauslassen konnte.->Deutlich besser]]
+[[Toll, danke dir. Mir geht's jetzt echt besser, nachdem ich das mal loswerden konnte.->Deutlich besser]]
 
 [[Super, danke. Danke auch fürs Zuhören und dass ich den Stress mal loswerden konnte.->Deutlich besser]]
 
@@ -735,7 +694,7 @@ Dilara heißt sie und hatte schon gesagt, dass ich ihre Kontaktdaten einfach an 
 Und der Artikel wurde dann so veröffentlicht?
 
 
-[[Na ja, ich habe mich dann dazu entschieden, den Artikel doch nicht schreiben zu lassen.->Keine Veröffentlichung]]
+[[Na ja, ich habe mich dazu entschieden, den Artikel doch nicht schreiben zu lassen.->Keine Veröffentlichung]]
 
 [[Ja, ich dachte mir, etwas Werbung ist besser als keine Werbung?->Werbung]]
 
@@ -744,9 +703,9 @@ Und der Artikel wurde dann so veröffentlicht?
 >>BekannterSprichtCritical:<<
 Das klingt nach viel Arbeit. Ich habe gehört, dass Frauen oft anders behandelt werden, wenn es um Unternehmensfinanzierung geht. Hast du das auch erlebt?
 
-[[Ja, leider. Oft werde ich nicht ernst genommen oder es wird angenommen, dass ich weniger kompetent bin, nur weil ich eine Frau bin. Und das ist wirklich frustrierend.->Sexismus]]
+[[Ja, leider. Viele haben noch Vorurteile im Kopf, nehmen mich nicht ernst oder zweifeln an meinen Fähigkeiten. Das nervt.->Sexismus]]
 
-[[Ja, total schlimm. Ich habe das Gefühl, dass ich manchmal bei diesen Gesprächen Aufklärung betreiben muss, dass Frauen heutzutage ebenfalls Unternehmen gründen.->Aufklärungsarbeit]]
+[[Ja, total schlimm. Ich habe das Gefühl, dass ich bei diesen Gesprächen erklären muss, dass Frauen heutzutage auch Unternehmen gründen.->Aufklärungsarbeit]]
 
 
 :: Viele Sorgen {"position":"2400,1375","size":"100,100"}
@@ -754,28 +713,27 @@ Das klingt nach viel Arbeit. Ich habe gehört, dass Frauen oft anders behandelt 
 Verständlich. Du gründest zum ersten Mal, oder? Vermutlich wollen sie dich irgendwie schützen.
 
 
-[[Ja, ich gründe zum ersten Mal und klar, sie sind ja meine Eltern und wollen mich vor schlechten Erfahrungen bewahren, aber so ein bisschen mehr Unterstützung wäre schön.->Mehr Unterstützung]]
+[[Ja, und klar, meine Eltern wollen mich vor schlechten Erfahrungen bewahren, aber ein bisschen mehr Unterstützung wäre echt schön.->Mehr Unterstützung]]
 
 [[Das ist es ja, ich gründe nicht zum ersten Mal und trotzdem wird mir da so wenig zugetraut.->Gründungserfahrung]]
 
 
 :: Vorschläge {"position":"1050,1875","size":"100,100"}
 >>BekannterSprichtSmiling:<<
-Kennst du schon die bundesweite gründerinnenagentur?
+Kennst du schon diese zentrale Anlaufstelle für Gründerinnen?
 
 [[Klar, darüber habe ich schon an Coaching-Programmen teilgenommen.->Programm]]
 
-[[Nicht wirklich?->bga Erklärung]]
+[[Nicht wirklich?->Anlaufstelle Erklärung]]
 
 
 :: Website {"position":"1275,1525","size":"100,100"}
 >>BekannterSprichtSmiling:<<
 Gute Idee. Die Website ist ja quasi deine Visitenkarte, dein Aushängeschild. Wenn das schon nicht ansprechend ist, wirst du wahrscheinlich erst gar nicht kontaktiert. Hast du auch schon über eine Marketing-Kampagne nachgedacht?
 
-[[Ich plane schon, mehr Video-Content zu produzieren und mit Live-Streams zu experimentieren, um noch mehr mit der Community zu interagieren.->Live-Stream]]
+[[Ich plane schon, mehr Video-Content zu produzieren und mit Live-Streams zu experimentieren, um mehr mit der Community zu interagieren.->Live-Stream]]
 
-[[Ich bin am Überlegen, ob ich nicht Kampagnen mit Influencer*innen starten soll, um die Zielgruppe zu erweitern.->Influencer*innen]]
-
+[[Ich überlege gerade, ob ich mit Influencer*innen zusammenarbeite soll, um meine Zielgruppe zu vergrößern.->Influencer*innen]]
 
 :: Weiter {"position":"1600,525","size":"100,100"}
 >>BekannterSprichtLaughing:<<
@@ -807,7 +765,7 @@ Das klingt echt spannend. Und wie läuft es so?
 
 [[Die Finanzierung ist schwierig und es gibt viele unerwartete Herausforderungen. Aber ich gebe nicht auf.->Problem: Finanzierung]]
 
-[[Es läuft nicht so wie geplant. Es gibt einige Probleme und ich frage mich manchmal, ob ich die richtige Entscheidung getroffen habe.->Einige Probleme]]
+[[Es läuft nicht so wie geplant. Es gibt einige Probleme und ich frage mich manchmal, ob das die richtige Entscheidung war.->Einige Probleme]]
 
 
 :: Werbung {"position":"2125,1675","size":"100,100"}
@@ -815,7 +773,7 @@ Das klingt echt spannend. Und wie läuft es so?
 Ja, es ist echt nicht einfach, Aufmerksamkeit für ein neues Unternehmen zu bekommen.
 
 
-[[Letztendlich bin ich auch ganz froh, den Artikel trotzdem veröffentlicht zu haben. Immerhin könnte das auch andere Frauen motivieren zu gründen.->Motivation]]
+[[Am Ende bin ich trotzdem froh, den Artikel veröffentlicht zu haben. Vielleicht motiviert das ja auch andere Frauen, zu gründen.->Motivation]]
 
 [[Das stimmt. Trotzdem bin ich unsicher, ob das die richtige Entscheidung war.->Unsicherheit]]
 
@@ -826,33 +784,29 @@ Beeindruckend. Was hast du mit der Förderung als Erstes gemacht?
 
 [[Ich habe in bessere Ausrüstung und Materialien investiert, um die Qualität meines Produkts zu verbessern.->Material]]
  
-[[Ich habe erstmal in eine professionelle Website investiert. Ich wollte sicherstellen, dass mein Online-Auftritt modern und ansprechend ist, um potenzielle Kundschaft besser anzusprechen.->Website]]
+[[Ich habe erstmal in eine professionelle Website investiert. So ist mein Online-Auftritt modern und für potenzielle Kundschaft  ansprechender.->Website]]
 
-
-:: bga {"position":"2450,1825","size":"100,100"}
+:: Zentrale Anlaufstelle {"position":"2450,1825","size":"100,100"}
 >>BekannterSprichtLaughing:<<
-Von der bga habe ich schon gehört! Sie haben Informationen zu Finanzierungsmöglichkeiten und können auch Kontakte vermitteln.
-
+Von einer zentralen Anlaufstelle habe ich schon gehört! Sie haben Informationen zu Finanzierungsmöglichkeiten und können auch Kontakte vermitteln.
 
 [[Ja, ich habe diese Angebote auch schon wahrgenommen. Das hat einiges leichter gemacht.->Angebot wahrgeonmmen]]
 
 [[Ja, ich habe auch schon bei einem Coaching mitgemacht. So konnte ich mein Exposé auch nochmal schärfen.->Coaching]]
 
 
-:: bga Coaching {"position":"775,2000","size":"100,100"}
+:: Anlaufstelle Coaching {"position":"775,2000","size":"100,100"}
 >>BekannterSprichtSmiling:<<
-Ah, die bundesweite gründerinnenagentur! Eine Kollegin ist dabei nebenberuflich zu gründen und hatte mal über die bga gesprochen. Wenn du magst, kann ich euch auch miteinander vernetzen.
+Ah, gute Idee sich an eine Anlaufstelle zu wenden! Eine Kollegin ist dabei nebenberuflich zu gründen und hatte mal eine erwähnt. Wenn du magst, kann ich euch auch miteinander vernetzen.
 
 [[Das wäre toll, danke dir!->Vernetzung]]
 
-[[Ich bin mehr an den Programmen und Angeboten der bga interessiert und würde mich aber nochmal melden, wenn ich mich doch vernetzen möchte.->Kein Interesse]]
+[[Ich bin mehr an den Programmen und Angeboten der Anlaufstelle interessiert und würde mich aber nochmal melden, wenn ich mich doch vernetzen möchte.->Kein Interesse]]
 
-
-:: bga Erklärung {"position":"1825,2125","size":"100,100"}
+:: Anlaufstelle Erklärung {"position":"1825,2125","size":"100,100"}
 >>BekannterSprichtSmiling:<<
-Eine Kollegin ist dabei nebenberuflich zu gründen und hatte mal über die bga gesprochen. Wenn du magst, kann ich euch auch miteinander vernetzen? Die bga ist eine zentrale Anlaufstelle in Deutschland, wo es viele Infos und Unterstützung gibt.
-
+Eine Kollegin ist dabei, nebenberuflich zu gründen, und hatte mal über eine zentrale Anlaufstelle gesprochen. Wenn du magst, kann ich euch auch miteinander vernetzen?
 
 [[Das wäre toll, danke dir!->Vernetzung]]
 
-[[Das ist lieb, ich schaue mir aber erstmal an, was die bga so anbietet und melde mich dann nochmal diesbezüglich.->Kein Interesse]]
+[[Das ist lieb, ich schaue mir aber erstmal an, was die Anlaufstelle so anbietet und melde mich dann nochmal diesbezüglich.->Kein Interesse]]

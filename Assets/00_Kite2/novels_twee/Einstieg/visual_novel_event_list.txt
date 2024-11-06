@@ -140,7 +140,7 @@ Wir möchten, dass du dich rundum unterstützt fühlst und sicherer wirst im Umg
 :: Willkommen {"position":"200,300","size":"100,100"}
 >>Charakter01SprichtFriendly:<<
 Hallo und herzlich willkommen bei KITE II! Schön, dass du hier bist.
-
+>>--<<
 Möchtest du direkt loslegen oder möchtest du mehr darüber erfahren, wie wir dich unterstützen können?
 
 [[Ich möchte direkt loslegen.->Spielstart]]
