@@ -36,7 +36,6 @@ public class NovelImageController : MonoBehaviour
 
     public void SetFaceExpression(int characterId, int expressionType)
     {
-        Debug.Log("Character ID: " + characterId);
         /*case Character.NONE: { return 0; }
         case Character.PLAYER: { return 1; }
         case Character.INTRO: { return 2; }

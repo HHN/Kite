@@ -35,7 +35,6 @@ public class TextToSpeechService
 
     public void TextToSpeech(string titleAndId, bool readAnyway = false)
     {
-        //Debug.Log(titleAndId);
         if(TextToSpeechManager.Instance().IsTextToSpeechActivated() || readAnyway)
         {
             audioSource.clip = Resources.Load<AudioClip>(returnNameOfAudioFileFromTitelAndId(titleAndId));
@@ -53,7 +52,6 @@ public class TextToSpeechService
     public string returnNameOfAudioFileFromTitelAndId(string titleAndId)
     {
         string returnstring = titleAndId.Replace("ä", "ae").Replace("ö", "oe").Replace("ü", "ue").Replace("ß", "ss");
-        //Debug.Log(returnstring);
         return returnstring;
     }
 
@@ -88,7 +86,6 @@ public class TextToSpeechService
 
     public async Task TextToSpeechReadLive(string text, bool readAnyway = false)
     {
-        Debug.Log("TALKING");
         //if (audioSource != null)
         //{
         //    if (TextToSpeechManager.Instance().IsTextToSpeechActivated() || readAnyway)
