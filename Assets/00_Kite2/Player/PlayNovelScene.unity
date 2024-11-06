@@ -929,8 +929,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 454.73682, y: 0}
-  m_SizeDelta: {x: 909.47363, y: 0}
+  m_AnchoredPosition: {x: 443.07693, y: 0}
+  m_SizeDelta: {x: 886.1539, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &498441981
 MonoBehaviour:
@@ -1122,9 +1122,11 @@ MonoBehaviour:
   greyMessagePrefab: {fileID: 7934107218342486494, guid: a88e32b2455c5f240a7e179d522f710d, type: 3}
   turqouiseMessagePrefab: {fileID: 7934107218342486494, guid: 77440337cbcc6c84cb66acb6676efbd2, type: 3}
   cottaMessagePrefab: {fileID: 7934107218342486494, guid: cf02915dd022dcf4b89016bb02761657, type: 3}
+  blueMessagePrefabWithTrigger: {fileID: 7934107218342486494, guid: 836e83615683cb14aa78d493ea2caf2c, type: 3}
   optionsPrefab: {fileID: 5121638205295232454, guid: f5112ae07ee1f9a4ebe2c92f58693096, type: 3}
   askForFeelingsButton: {fileID: 9071931096445139848, guid: 7f599cbb71ea21548a1f24adc0874029, type: 3}
-  blueMessagePrefabWithTrigger: {fileID: 7934107218342486494, guid: 836e83615683cb14aa78d493ea2caf2c, type: 3}
+  undoChoiceMessageBoxObject: {fileID: -828433229948948858, guid: 6eac7ad9ffbf22b498b4cd87da2998d6, type: 3}
+  undoChoiceMessageBox: {fileID: 5629918238507184917, guid: 6eac7ad9ffbf22b498b4cd87da2998d6, type: 3}
 --- !u!114 &563275610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3665,6 +3667,7 @@ MonoBehaviour:
     relevantBias: 0
   isTyping: 0
   playThroughHistory: []
+  eventHistory: []
 --- !u!4 &2133875533
 Transform:
   m_ObjectHideFlags: 0
