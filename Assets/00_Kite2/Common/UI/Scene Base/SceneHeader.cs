@@ -13,13 +13,31 @@ public class SceneHeader : MonoBehaviour
     [SerializeField] private Canvas canvas;
     [SerializeField] private bool isNovelScene;
 
+    private PlayNovelSceneController playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
+
     void Start()
     {
+        GameObject controllerObject = GameObject.Find("Controller");
+        if (controllerObject != null)
+        {
+            playNovelSceneController = controllerObject.GetComponent<PlayNovelSceneController>();
+        }
+
+        if (playNovelSceneController == null && isNovelScene)
+        {
+            Debug.LogWarning("PlayNovelSceneController not found in the scene. Make sure this script is attached to the correct scene.");
+        }
+
         backButton.onClick.AddListener(delegate { OnBackButton(); });
     }
 
     public void OnBackButton()
     {
+        if (isNovelScene && playNovelSceneController != null)
+        {
+            playNovelSceneController.isPaused = true; // Pause the novel progression
+        }
+
         if (!this.isNovelScene)
         {
             string lastScene = SceneRouter.GetTargetSceneForBackButton();
@@ -42,8 +60,7 @@ public class SceneHeader : MonoBehaviour
                 return;
             }
             warningMessageBoxObject = null;
-            warningMessageBoxObject = Instantiate(warningMessageBox,
-                canvas.transform).GetComponent<LeaveNovelAndGoBackMessageBox>();
+            warningMessageBoxObject = Instantiate(warningMessageBox, canvas.transform).GetComponent<LeaveNovelAndGoBackMessageBox>();
             warningMessageBoxObject.Activate();
 
             return;

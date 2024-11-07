@@ -1,38 +1,47 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
+using UnityEngine.TextCore.Text;
 
 public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI messageBoxHeadline;
     [SerializeField] private TextMeshProUGUI messageBoxBody;
-    [SerializeField] private Button cancelButton;
-    [SerializeField] private Button confirmButton;
-    [SerializeField] private GameObject background;
-    [SerializeField] private GameObject backgroundLeave;
+    [SerializeField] private Button continueButton; // Continue with the novel
+    [SerializeField] private Button cancelButton; // Cancel the novel
+    [SerializeField] private Button endButton; // End the novel and mark it as completed
+    [SerializeField] private GameObject backgroundContinue;
+    [SerializeField] private GameObject backgroundCancel;
+    [SerializeField] private GameObject backgroundEnd;
     [SerializeField] private GameObject textStay;
     [SerializeField] private GameObject person;
 
+    private PlayNovelSceneController playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
+
     void Start()
     {
-        cancelButton.onClick.AddListener(delegate { OnCancleButton(); });
-        confirmButton.onClick.AddListener(delegate { OnConfirmButton(); });
+        continueButton.onClick.AddListener(delegate { OnContinueButton(); });
+        cancelButton.onClick.AddListener(delegate { OnCancelButton(); });
+        endButton.onClick.AddListener(delegate { OnEndButton(); });
+
         InitUI();
         FontSizeManager.Instance().UpdateAllTextComponents();
+
+        // Find and assign the PlayNovelSceneController component for novel control actions
+        playNovelSceneController = GameObject.Find("Controller").GetComponent<PlayNovelSceneController>();
     }
 
     private void InitUI()
     {
-        background.GetComponent<Image>().color = NovelColorManager.Instance().GetColor();
-        backgroundLeave.GetComponent<Image>().color = NovelColorManager.Instance().GetColor();
-        textStay.GetComponent<TextMeshProUGUI>().color = NovelColorManager.Instance().GetColor();
-        RectTransform backgroundTransform = background.GetComponent<RectTransform>();
-        /*backgroundTransform.anchoredPosition = new Vector2(backgroundTransform.anchoredPosition.x, (NovelColorManager.Instance().GetCanvasHeight()/2)-(backgroundTransform.rect.height/2));
-        RectTransform personTransform = person.GetComponent<RectTransform>();
-        personTransform.anchoredPosition = new Vector2(backgroundTransform.anchoredPosition.x, (backgroundTransform.rect.width*0.9f)/2);
-        personTransform.anchorMin = new Vector2(0.5f, 0.55f);
-        personTransform.anchorMax = new Vector2(0.5f, 0.55f);
-        personTransform.sizeDelta = new Vector2(backgroundTransform.rect.width*0.9f, backgroundTransform.rect.width*0.9f);*/
+        // Retrieve the colour from the NovelColorManager instance
+        Color colour = NovelColorManager.Instance().GetColor();
+
+        backgroundContinue.GetComponent<Image>().color = colour;
+        backgroundCancel.GetComponent<Image>().color = colour;
+        backgroundEnd.GetComponent<Image>().color = colour;
+
+        textStay.GetComponent<TextMeshProUGUI>().color = colour;
     }
 
     public void SetHeadline(string headline)
@@ -50,12 +59,16 @@ public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
         this.gameObject.SetActive(true);
     }
 
-    public void OnCancleButton()
+    public void OnContinueButton()
     {
+        playNovelSceneController.isPaused = false; // Resume the novel progression
+
         this.CloseMessageBox();
+
+        playNovelSceneController.PlayNextEvent();
     }
 
-    public void OnConfirmButton()
+    public void OnCancelButton()
     {
         // Disable animations after confirmation
         AnimationFlagSingleton.Instance().SetFlag(false);
@@ -85,6 +98,12 @@ public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
         SceneLoader.LoadScene(lastScene);
     }
 
+    public void OnEndButton()
+    {
+        playNovelSceneController.playThroughHistory.Add("Das Gespräch wurde vorzeitig beendet.");
+
+        playNovelSceneController.HandleEndNovelEvent();
+    }
 
     public void CloseMessageBox()
     {

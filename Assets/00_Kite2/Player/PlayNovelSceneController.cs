@@ -11,6 +11,9 @@ using System.Data;
 
 public class PlayNovelSceneController : SceneController
 {
+    [SerializeField] private VisualNovelEventType type;
+    public bool isPaused = false;
+
     [Header("UI-Komponenten")]
     [SerializeField] private GameObject viewPort;
     [SerializeField] private GameObject conversationViewport;
@@ -99,7 +102,7 @@ public class PlayNovelSceneController : SceneController
     [SerializeField] private VisualNovelEvent nextEventToPlay;
 
     [SerializeField] private bool isTyping;
-    [SerializeField] private List<string> playThroughHistory = new List<string>();
+    public List<string> playThroughHistory = new List<string>();
 
     private bool tapedAlready = false;
 
@@ -126,21 +129,32 @@ public class PlayNovelSceneController : SceneController
         Initialize();
     }
 
-    public void OnCloseButton()
-    {
-        if (!DestroyValidator.IsNullOrDestroyed(leaveGameAndGoBackMessageBoxObject))
-        {
-            leaveGameAndGoBackMessageBoxObject.CloseMessageBox();
-        }
-        if (DestroyValidator.IsNullOrDestroyed(canvas))
-        {
-            return;
-        }
-        leaveGameAndGoBackMessageBoxObject = null;
-        leaveGameAndGoBackMessageBoxObject = Instantiate(leaveGameAndGoBackMessageBox,
-            canvas.transform).GetComponent<LeaveNovelAndGoBackMessageBox>();
-        leaveGameAndGoBackMessageBoxObject.Activate();
-    }
+    //public void OnCloseButton()
+    //{
+    //    Debug.Log("OnCloseButton: Method called"); // Initial debug statement
+
+    //    isPaused = true; // Pause the novel progression
+    //    Debug.Log("OnCloseButton: Set isPaused to true");
+
+    //    if (!DestroyValidator.IsNullOrDestroyed(leaveGameAndGoBackMessageBoxObject))
+    //    {
+    //        Debug.Log("OnCloseButton: leaveGameAndGoBackMessageBoxObject is valid, closing message box");
+    //        leaveGameAndGoBackMessageBoxObject.CloseMessageBox();
+    //    }
+
+    //    if (DestroyValidator.IsNullOrDestroyed(canvas))
+    //    {
+    //        Debug.Log("OnCloseButton: Canvas is null or destroyed, exiting method");
+    //        return;
+    //    }
+
+    //    Debug.Log("OnCloseButton: Instantiating leaveGameAndGoBackMessageBox");
+    //    leaveGameAndGoBackMessageBoxObject = null;
+    //    leaveGameAndGoBackMessageBoxObject = Instantiate(leaveGameAndGoBackMessageBox, canvas.transform).GetComponent<LeaveNovelAndGoBackMessageBox>();
+    //    leaveGameAndGoBackMessageBoxObject.Activate();
+    //    Debug.Log("OnCloseButton: leaveGameAndGoBackMessageBox activated");
+    //}
+
 
     public void Initialize()
     {
@@ -291,6 +305,12 @@ public class PlayNovelSceneController : SceneController
 
     public void PlayNextEvent()
     {
+        // Stop if paused
+        if (isPaused)
+        {
+            return;
+        }
+
         if (selectOptionContinueConversation != null)
         {
             selectOptionContinueConversation.alreadyPlayedNextEvent = true;
@@ -322,7 +342,7 @@ public class PlayNovelSceneController : SceneController
         // Save the current event in the eventHistory list
         eventHistory.Add(nextEventToPlay);
 
-        VisualNovelEventType type = VisualNovelEventTypeHelper.ValueOf(nextEventToPlay.eventType);
+        type = VisualNovelEventTypeHelper.ValueOf(nextEventToPlay.eventType);
 
         switch (type)
         {
@@ -362,7 +382,7 @@ public class PlayNovelSceneController : SceneController
                 }
             case VisualNovelEventType.END_NOVEL_EVENT:
                 {
-                    HandleEndNovelEvent(nextEventToPlay);
+                    HandleEndNovelEvent();
                     break;
                 }
             case VisualNovelEventType.PLAY_SOUND_EVENT:
@@ -685,7 +705,7 @@ public class PlayNovelSceneController : SceneController
         conversationContent.AddContent(novelEvent, this);
     }
 
-    public void HandleEndNovelEvent(VisualNovelEvent novelEvent)
+    public void HandleEndNovelEvent()
     {
         AnalyticsServiceHandler.Instance().SendNovelPlayTime();
 

@@ -149,7 +149,7 @@ public class PlayerDataManager
         // Alles zurück in PlayerPrefs speichern
         PlayerPrefs.SetString(key, existingEvaluations);
         PlayerPrefs.Save(); // Änderungen sichern
-        Debug.Log("Saved: " + existingEvaluations);
+        //Debug.Log("Saved: " + existingEvaluations);
     }
 
     public string CombineSentences(List<string> sentences)
