@@ -88,10 +88,10 @@ Okay, dann mal ehrlich, was sehen Sie denn so als die größte Schwachstelle in 
 
 [[Die Anpassung an Marktveränderungen könnte ein Schwachpunkt sein. Deswegen investiere ich in regelmäßige Marktanalysen, um flexibel zu bleiben.->Anpassungsfähigkeit]]
 
+
 :: Businessplan allein {"position":"2650,3200","size":"100,100"}
 >>Charakter01SprichtAstonished:<<
 Ist doch schön, Hilfe zu haben. Warum regen Sie sich da so auf?
-
 
 [[Ich bin nur verwundert über Ihre Annahme, dass da ein Mann mitgeschrieben haben muss.->Verwunderung]]
 
@@ -310,7 +310,6 @@ Genau, vor der Übernahme einer persönlichen Bürgschaft sollten die Folgen ein
 >>Charakter01SprichtQuestioning:<<
 Und dann sehen wir uns vielleicht wieder. Ah, gründen Sie eigentlich alleine?
 
-
 [[Ich habe das Unternehmen gegründet, arbeite aber mit anderen zusammen.->Alleinige Gründerin]]
 
 [[Ich habe noch eine Geschäftspartnerin.->Geschäftspartnerin]]
@@ -332,6 +331,7 @@ Besonders bei Neugründungen in wirtschaftlich unsicheren Zeiten oder in Branche
 Nun gut. Vielleicht sollten Sie noch einmal darüber nachdenken, den Betrag zu reduzieren. Es könnte klüger sein, sich nicht zu übernehmen.
 >>--<<
 >>RelevanterBias:GeschlechtsspezifischeStereotypen<<
+
 [[Experte ausreichen II]]
 
 
@@ -394,7 +394,6 @@ Die ganze Finanzierung... haben Sie das selber durchgerechnet? Oder hatten Sie d
 >>Charakter01SprichtFriendly:<<
 Ah, ja. Gut, ich kann ja auch unmögliches alles im Kopf haben.
 
-
 [[Stimmt, aber der Businessplan ist zum Glück da, wo alles nachgelesen werden kann.->Businessplan da]]
 
 [[Deshalb habe ich den Businessplan mitgebracht.->Businessplan da]]
@@ -416,7 +415,6 @@ Ja, an sich schon. Also, zu ihrem Kreditantrag. Was ich jetzt so höre, ist, das
 :: Geschlechtsunabhängig {"position":"1675,2225","size":"100,100"}
 >>Charakter01SprichtAstonished:<<
 Ja, natürlich. Das war auch nur eine Redewendung und nicht böse gemeint.
-
 
 [[Davon gehe ich aus, aber wir sollten auf geschlechterneutrale Sprache achten. So etwas festigt oft Stereotypen.->Redewendung Erklärung]]
 
@@ -441,7 +439,6 @@ Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten
 :: Geschäftspartner Nachfrage {"position":"2700,3050","size":"100,100"}
 >>Charakter01SprichtLaughing:<<
 Na, der Businessplan ist ziemlich gut geschrieben und zeigt, dass ordentlich recherchiert wurde.
-
 
 [[Aber warum glauben Sie, dass ich einen Geschäftspartner und keine Geschäftspartnerin habe.->Geschäftspartner Nachfrage II]]
 
@@ -557,7 +554,6 @@ Also, ich weiß ja nicht...
 >>Charakter01SprichtFriendly:<<
 Ja, also es war wirklich nicht böse gemeint.
 
-
 [[Das glaube ich Ihnen sofort. Wie verfahren wir denn mit dem Kreditantrag?->Ende Positiv Geschäftspartnerin]]
 
 [[Uns rutschen alle mal Sachen heraus, die nicht so toll sind, aber was machen wir nun mit dem Kreditantrag?->Ende Positiv Geschäftspartnerin]]
@@ -581,7 +577,6 @@ Möchten Sie dazu Zucker oder Milch?
 >>Charakter01SprichtCritical:<<
 Das ist das Problem, dass Sie das offenbar nicht sehen. Da müssen Sie sich schon auch ein bisschen vorbereiten.
 
-
 [[So eine Krise wie Covid würde ja alle betreffen, nicht nur mich. Deshalb habe ich auf wahrscheinliche Risiken geschaut, die stehen auf Seite 12.->Businessplan Risiken]]
 
 [[Es ist unmöglich sich auf alles vorzubereiten, aber ich habe recherchiert und analysiert. Das Unternehmen liegt mir einfach am Herzen.->Herzensangelegenheit]]
@@ -592,7 +587,6 @@ Das ist das Problem, dass Sie das offenbar nicht sehen. Da müssen Sie sich scho
 Sie sind ja selbstbewusst.
 >>--<<
 >>RelevanterBias:UnbewussteBiasInDerKommunikation<<
-
 
 [[Ich bin ja auch von meiner Geschäftsidee überzeugt.->Selbstbewusst]]
 
@@ -659,7 +653,7 @@ Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein 
 >>SoundAbspielen:paperSound<<
 >>--<<
 >>Charakter01SprichtCritical:<<
-20.000 € ist schon eine Hausnummer. Schauen Sie sich das nochmal an und schärfen Sie das Exposé nochmal.
+70.000 € ist schon eine Hausnummer. Schauen Sie sich das nochmal an und schärfen Sie das Exposé nochmal.
 
 [[Das kann ich gerne machen.->Ende Neutral]]
 
@@ -684,7 +678,9 @@ Männer und Frauen gehen Dinge oft anders an. Männer haben oft eine natürliche
 >>RelevanterBias:Bestaetigungsverzerrung<<
 
 [[Mag ja sein, dass es manchen Frauen schwerer fällt, aber Sie können doch nicht daraus schließen, dass Männer begabter sind.->Bestätigugnsverzerrung]]
+
 [[Das lässt sich nicht so pauschal auf alle übertragen, aber sprechen wir doch über den Kreditantrag.->Kreditantrag]]
+
 
 :: Nebenberuflich {"position":"2250,1700","size":"100,100"}
 >>Charakter01SprichtFriendly:<<
@@ -702,6 +698,7 @@ Und, haben Sie schon etwas unternommen, um den langfristigen Erfolg sicherzustel
 [[Ja, das steht auch im Businessplan. Hier erkläre ich, wie ich Kundschaft gewinnen und binden will.->Nebenberuflich III]]
 [[Definitiv. Ich habe bereits Beziehungen zu potenziellen Partner*innen aufgebaut, um die besten Konditionen für meine Produkte zu bekommen.->Produkte]]
 
+
 :: Nebenberuflich III [Sound] {"position":"2450,2000","size":"100,100"}
 >>SoundAbspielen:paperSound<<
 >>--<<
@@ -713,10 +710,10 @@ Kund*innenbindung ist ein gutes Stichwort. Wie genau wollen Sie das denn anstell
 
 [[Ich werde Treueprogramme und Angebote nutzen, um Kund*innen zu belohnen und zu halten.->Loyalität]]
 
+
 :: Nicht ernst {"position":"2200,2300","size":"100,100"}
 >>Charakter01SprichtCritical:<<
 Ach so? Es wäre besser, wenn Sie einfach ernst antworten würden. 
-
 
 [[Ja, das verstehe ich.->Zustimmung]]
 
@@ -732,7 +729,7 @@ Das stimmt!
 
 :: Nicht keine II {"position":"2225,3950","size":"100,100"}
 >>Charakter01SprichtCritical:<<
-Trotzdem sind 20.000 € eine ordentliche Summe. Schauen Sie sich das nochmal an und schärfen Sie das Exposé nochmal. 
+Trotzdem sind 70.000 € eine ordentliche Summe. Schauen Sie sich das nochmal an und schärfen Sie das Exposé nochmal. 
 
 [[Das kann ich gerne machen.->Ende Neutral]]
 
@@ -778,8 +775,8 @@ Das klingt nach einem guten Schritt in Richtung Kostenoptimierung. Wie gehen Sie
 
 [[Das sind jetzt viele Fragen auf einmal.->Viele Fragen]]
 
-[[Ich habe da sowohl Maßnahmen zur Risikominderung wie auch eine Notfallreserve und eine flexible Betriebsstruktur eingeplant, um auf mögliche Marktveränderungen reagieren zu können. Hier steht das auch nochmal.->Geplant]]
-Ich habe Maßnahmen für Risiken, eine Notfallreserve und Flexibilität eingeplant. Hier ist das alles.->Geplant]]
+[[Ich habe Maßnahmen für Risiken, eine Notfallreserve und Flexibilität eingeplant. Hier ist das alles.->Geplant]]
+
 
 :: Professionell [Bias] {"position":"2775,2150","size":"100,100"}
 >>Charakter01SprichtCritical:<<
@@ -822,14 +819,17 @@ Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzu
 [[Aus meiner Sicht ist die Kreditsumme unerlässlich, um die geplanten Wachstumsziele erfolgreich umzusetzen.->Finanzierung]]
 
 [[Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.->Nebenberuflich]]
-                                                                                                          
-:                                                                                                                             : Reaktion Zuversichtlich {"position":"2175,1250","size":"100,100"}
+
+
+:: Reaktion Zuversichtlich {"position":"2175,1250","size":"100,100"}
 >>Charakter01SprichtQuestioning:<<
-Aber es ist schon wichtig, realistisch zu bleiben. Eine Freundin hatte es schwer beim Gründen. Vielleicht sollten Sie einen kleineren Kredit beantragen, um das Risiko zu senken.
+Aber es ist schon wichtig, realistisch zu sein. Eine Freundin wollte auch gründen und ich habe gesehen, wie schwierig es sein kann, als Frau in der Geschäftswelt Fuß zu fassen. Vielleicht sollten Sie einen kleineren Kredit beantragen, um das Risiko zu minimieren.
+
 
 [[Ich schätze Ihre Perspektive, aber ich bin fest davon überzeugt, dass mein Unternehmen erfolgreich sein wird, und ich habe meine Finanzplanung entsprechend gestaltet.->Sicherheiten]]
 
-[[Ich höre Bedenken von Ihnen, aber mein Geschäftsmodell ist solide genug, um den Kredit zurückzuzahlen.->Sicherheiten]]
+[[Ich höre Bedenken von Ihnen, aber ich glaube fest daran, dass mein Geschäftsmodell solide genug ist, um den Kredit zurückzuzahlen.->Sicherheiten]]
+
 
 :: Realistischere Risiken {"position":"2350,3050","size":"100,100"}
 >>Charakter01SprichtQuestioning:<<
@@ -838,13 +838,12 @@ Ja, das stimmt, aber Sie sind schon eher optimistisch unterwegs, nicht?
 
 [[Ich würde eher sagen realistisch. Ich habe ja auch viel recherchiert und analysiert, um das Unternehmen gründen zu können. Das ist schon eine Herzensangelegenheit.->Herzensangelegenheit]]
 
-[[Bei einer solch großen unvorhergesehenen Krise wie Covid würde es nicht nur mich betreffen, sondern alle anderen ebenso. Deshalb habe ich mich in meinem Businessplan auf realistischere Risiken konzentriert, die Sie auf Seite 12 nachlesen können.->Businessplan Risiken]]
+[[Bei einer solch großen unvorhergesehenen Krise wie Covid würde es nicht nur mich betreffen, sondern alle anderen ebenso. Deshalb habe ich mich im Businessplan auf realistischere Risiken konzentriert, die Sie auf Seite 12 nachlesen können.->Businessplan Risiken]]
 
 
 :: Redewendung Erklärung {"position":"1675,2375","size":"100,100"}
 >>Charakter01SprichtFriendly:<<
 Stimmt, das ist mir noch gar nicht so aufgefallen, aber um nochmal auf den Kreditantrag zu kommen. Sie müssen mir noch die schriftliche Bestätigung für die Bürgschaft zukommen lassen.
-
 
 [[Benötigen Sie ansonsten weitere Unterlagen?->Nächste Schritte]]
 
@@ -919,6 +918,7 @@ Ich bin schon lange in dieser Branche und habe meine Erfahrungen gemacht. Ich gl
 
 [[War sicher nicht so gemeint. Wie machen wir denn jetzt mit dem Kreditantrag weiter?->Kreditantrag B]]
 
+
 :: Sexistische Klischees Geschäftspartner {"position":"2850,3350","size":"100,100"}
 >>Charakter01SprichtRefusing:<<
 Ich bin mit vielen Frauen befreundet! Da bin ich doch nicht sexistisch!
@@ -932,7 +932,6 @@ Ich bin mit vielen Frauen befreundet! Da bin ich doch nicht sexistisch!
 :: Sexistische Klischees Geschäftspartnerin {"position":"3200,3350","size":"100,100"}
 >>Charakter01SprichtRefusing:<<
 Ich bin mit vielen Frauen befreundet! Da bin ich doch nicht sexistisch!
-
 
 [[Nur weil man mit Frauen befreundet ist, bedeutet das nicht, dass man frei von Vorurteilen ist. ->Internalisiert Geschäftspartner A]]
 
@@ -958,6 +957,7 @@ Hm, Sie benötigen den Kredit für Ihre Unternehmensgründung, oder? Da haben wi
 
 [[Mein Businessplan ist durchdacht und ich habe Prognosen gemacht. Die Rückzahlung ist kein Problem.->Finanzierung]]
 
+
 :: Verwunderung [Bias] {"position":"2650,3350","size":"100,100"}
 >>Charakter01SprichtFriendly:<<
 Ach, Sie dürfen so etwas nicht so eng sehen und jedes Wort auf die Goldwaage legen. Sie sind da schon streng.
@@ -972,6 +972,7 @@ Ach, Sie dürfen so etwas nicht so eng sehen und jedes Wort auf die Goldwaage le
 :: Viele Fragen {"position":"2300,2150","size":"100,100"}
 >>Charakter01SprichtCritical:<<
 Das war jetzt eine kurze Liste an Punkten, die Sie beachten sollten. Wenn das schon zu viel ist, sollten Sie sich fragen, ob eine Firmengründung das Richtige ist.
+
 [[Das war nicht wirklich ernst gemeint.->Nicht ernst]]
 
 [[Ich meinte, das war etwas zu schnell aufgezählt, aber natürlich habe ich die bereits berücksichtigt. Hier, sehen Sie?->Viele Fragen II]]
@@ -1012,6 +1013,7 @@ Ach, Frauen können doch gar nicht anders. Ich höre auch immer wieder, dass sie
 [[Vielleicht sollten wir Menschen als Individuen sehen, statt sie in Schubladen zu stecken. Wie geht's denn jetzt weiter mit dem Kreditantrag?->Ende Positiv Geschäftspartner]]
 
 [[Frauen sind nicht dramatischer als Männer, aber das ist hier nicht das Thema. Was machen wir nun mit dem Kreditantrag?->Ende Neutral Geschäftspartnerin]]
+
 
 :: Wasser {"position":"1950,675","size":"100,100"}
 >>Charakter01SprichtSmiling:<<
@@ -1076,9 +1078,9 @@ Vielen Dank. Lassen Sie mich kurz einen Blick darauf werfen. Ah, das sieht wirkl
 >>Charakter01SprichtSmiling:<<
 In Ihrem Businessplan haben Sie Ihre Ziele klar definiert und die Finanzprognosen sind überzeugend. In welcher Höhe möchten Sie denn den Kredit beantragen?
 
-[[Basierend auf meiner aktuellen Finanzplanung, plane ich einen Kredit in Höhe von 20.000 € zu beantragen.->Weiter VI]]
+[[Basierend auf meiner aktuellen Finanzplanung, plane ich einen Kredit in Höhe von 70.000 € zu beantragen.->Weiter VI]]
 
-[[Mein Kreditantrag wird voraussichtlich bei 20.000 € liegen, um die anstehenden Investitionen und Betriebskosten angemessen abzudecken.->Weiter VI]]
+[[Mein Kreditantrag wird voraussichtlich bei 70.000 € liegen, um die anstehenden Investitionen und Betriebskosten angemessen abzudecken.->Weiter VI]]
 
 
 :: Weiter VI {"position":"2575,1025","size":"100,100"}

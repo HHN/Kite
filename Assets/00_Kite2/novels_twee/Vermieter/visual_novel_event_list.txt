@@ -212,7 +212,7 @@ Ach, so war das doch nicht gemeint, aber schicken Sie mir einfach die Selbstausk
 
 [[Die schicke ich Ihnen so schnell wie möglich zu. Vielen Dank und noch einen schönen Tag.->Ende: Positiv-Neutral]]
 
-[[Danke für die Klarstellung. Selbst unabsichtlich, können solche Aussagen geschlechtsspezifisch wirken. Mir ist eine geschlechterneutrale Kommunikation wichtig. Die Selbstauskunft schicke ich Ihnen gleich zu. Danke und einen schönen Tag.->Ende: Positiv-Neutral II]]
+[[Danke für die Klarstellung. Auch unabsichtlich können solche Aussagen geschlechtsspezifisch wirken. Mir ist eine faire Kommunikation wichtig. Die Selbstauskunft schicke ich Ihnen gleich zu. Danke und einen schönen Tag.->Ende: Positiv-Neutral II]]
 
 :: Ende der Novel {"position":"2925,5750","size":"100,100"}
 

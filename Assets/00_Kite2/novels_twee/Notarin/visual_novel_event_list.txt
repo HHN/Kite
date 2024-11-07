@@ -33,7 +33,7 @@ Ah, okay. Das Formular sende ich Ihnen zu. Nächsten Donnerstag 15 Uhr hätte ic
 
 [[Würde auch Freitag 14 Uhr gehen?->Terminänderung]]
 
-[[Könnten Sie bitte bestätigen, dass ich als Geschäftsführerin eingetragen ist? Für den Handelsregistereintrag ist das ja wichtig.->Bestätigung]]
+[[Könnten Sie bitte bestätigen, dass ich als Geschäftsführerin eingetragen bin? Für den Handelsregistereintrag ist das ja wichtig.->Bestätigung]]
 
 :: Bestätigung [Bias] {"position":"775,725","size":"100,100"}
 >>Charakter01SprichtRelaxed:<<
