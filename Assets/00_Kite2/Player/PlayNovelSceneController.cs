@@ -114,6 +114,8 @@ public class PlayNovelSceneController : SceneController
 
     private ConversationContentGuiController conversationContentGuiController;
 
+    private int novelCharacter = -1;
+
     void Start()
     {
         conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
@@ -654,6 +656,7 @@ public class PlayNovelSceneController : SceneController
         SetNextEvent(novelEvent);
 
         novelImagesController.SetFaceExpression(novelEvent.character, novelEvent.expressionType);
+        novelCharacter = novelEvent.character;
 
         if (novelEvent.show)
         {
@@ -692,6 +695,7 @@ public class PlayNovelSceneController : SceneController
 
     public void HandleShowChoicesEvent(VisualNovelEvent novelEvent)
     {
+        novelImagesController.SetFaceExpression(novelCharacter, 5);
         // Enable animations when showing choices
         AnimationFlagSingleton.Instance().SetFlag(true);
 
