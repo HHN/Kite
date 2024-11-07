@@ -21,7 +21,7 @@ public class NovelHistorySceneController : SceneController
     [SerializeField] private GameObject containerForGruendungszuschussNovel;
     [SerializeField] private GameObject containerForHonorarNovel;
     [SerializeField] private GameObject containerForLebenspartnerinNovel;
-    [SerializeField] private GameObject containerForIntroNovel;    
+    //[SerializeField] private GameObject containerForIntroNovel;    
     
     [SerializeField] private DropDownMenu dropdownForBankkreditNovel;
     [SerializeField] private DropDownMenu dropdownForBekannteTreffenNovel;
@@ -34,7 +34,7 @@ public class NovelHistorySceneController : SceneController
     [SerializeField] private DropDownMenu dropdownForGruendungszuschussNovel;
     [SerializeField] private DropDownMenu dropdownForHonorarNovel;
     [SerializeField] private DropDownMenu dropdownForLebenspartnerinNovel;
-    [SerializeField] private DropDownMenu dropdownForIntroNovel;        
+    //[SerializeField] private DropDownMenu dropdownForIntroNovel;        
     
     [SerializeField] private GameObject spacingForBankkreditNovel;
     [SerializeField] private GameObject spacingForBekannteTreffenNovel;
@@ -59,7 +59,7 @@ public class NovelHistorySceneController : SceneController
     [SerializeField] private GameObject entryContainerForGruendungszuschussNovel;
     [SerializeField] private GameObject entryContainerForHonorarNovel;
     [SerializeField] private GameObject entryContainerForLebenspartnerinNovel;
-    [SerializeField] private GameObject entryContainerForIntroNovel;
+    //[SerializeField] private GameObject entryContainerForIntroNovel;
 
     [SerializeField] private bool displayContainerForBankkreditNovel;
     [SerializeField] private bool displayContainerForBekannteTreffenNovel;
@@ -72,7 +72,7 @@ public class NovelHistorySceneController : SceneController
     [SerializeField] private bool displayContainerForGruendungszuschussNovel;
     [SerializeField] private bool displayContainerForHonorarNovel;
     [SerializeField] private bool displayContainerForLebenspartnerinNovel;
-    [SerializeField] private bool displayContainerForIntroNovel;
+    //[SerializeField] private bool displayContainerForIntroNovel;
     [SerializeField] private bool displayNoDataObjectsHint;
 
     [SerializeField] private List<NovelHistoryEntryGuiElement> novelHistoryEntries;
@@ -128,7 +128,7 @@ public class NovelHistorySceneController : SceneController
         dropdownForGruendungszuschussNovel.RebuildLayout();
         dropdownForHonorarNovel.RebuildLayout();
         dropdownForLebenspartnerinNovel.RebuildLayout();
-        dropdownForIntroNovel.RebuildLayout();
+        //dropdownForIntroNovel.RebuildLayout();
 
         yield break;
     }
@@ -223,11 +223,11 @@ public class NovelHistorySceneController : SceneController
                     displayContainerForLebenspartnerinNovel = true;
                     return dropdownForLebenspartnerinNovel;
                 }
-            case VisualNovelNames.INTRO_NOVEL:
-                {
-                    displayContainerForIntroNovel = true;
-                    return dropdownForIntroNovel;
-                }
+            //case VisualNovelNames.INTRO_NOVEL:
+            //    {
+            //        displayContainerForIntroNovel = true;
+            //        return dropdownForIntroNovel;
+            //    }
             default:
                 {
                     return null;
@@ -296,11 +296,11 @@ public class NovelHistorySceneController : SceneController
                     displayContainerForLebenspartnerinNovel = true;
                     return containerForLebenspartnerinNovel;
                 }
-            case VisualNovelNames.INTRO_NOVEL:
-                {
-                    displayContainerForIntroNovel = true;
-                    return containerForIntroNovel;
-                }
+            //case VisualNovelNames.INTRO_NOVEL:
+            //    {
+            //        displayContainerForIntroNovel = true;
+            //        return containerForIntroNovel;
+            //    }
             default:
                 {
                     return null;
@@ -369,11 +369,11 @@ public class NovelHistorySceneController : SceneController
                     displayContainerForLebenspartnerinNovel = true;
                     return entryContainerForLebenspartnerinNovel;
                 }
-            case VisualNovelNames.INTRO_NOVEL:
-                {
-                    displayContainerForIntroNovel = true;
-                    return entryContainerForIntroNovel;
-                }
+            //case VisualNovelNames.INTRO_NOVEL:
+            //    {
+            //        displayContainerForIntroNovel = true;
+            //        return entryContainerForIntroNovel;
+            //    }
             default:
                 {
                     return null;
@@ -394,7 +394,7 @@ public class NovelHistorySceneController : SceneController
         displayContainerForGruendungszuschussNovel = false;
         displayContainerForHonorarNovel = false;
         displayContainerForLebenspartnerinNovel = false;
-        displayContainerForIntroNovel = false;
+        //displayContainerForIntroNovel = false;
         displayNoDataObjectsHint = true;
     }
 
@@ -422,7 +422,7 @@ public class NovelHistorySceneController : SceneController
         spacingForHonorarNovel.SetActive(displayContainerForHonorarNovel);
         containerForLebenspartnerinNovel.SetActive(displayContainerForLebenspartnerinNovel);
         spacingForLebenspartnerinNovel.SetActive(displayContainerForLebenspartnerinNovel);
-        containerForIntroNovel.SetActive(displayContainerForIntroNovel);
+        //containerForIntroNovel.SetActive(displayContainerForIntroNovel);
         noDataObjectsHint.SetActive(displayNoDataObjectsHint);
     }
 }

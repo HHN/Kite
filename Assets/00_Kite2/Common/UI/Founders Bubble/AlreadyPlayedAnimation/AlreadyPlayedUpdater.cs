@@ -19,7 +19,6 @@ public class AlreadyPlayedUpdater : MonoBehaviour
 
         if (PlaythrouCounterAnimationManager.Instance().IsAnimationTrue(visualNovel))
         {
-            Debug.Log("Played Animation");
             StartCoroutine(SetValueIn90Frames(numberOfPlays));
         } 
         else

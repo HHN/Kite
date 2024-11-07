@@ -2734,6 +2734,34 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 280254953071386967, guid: f06932513849a4444b16dbe594485619, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 280254953071386967, guid: f06932513849a4444b16dbe594485619, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 280254953071386967, guid: f06932513849a4444b16dbe594485619, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2133875532}
+    - target: {fileID: 280254953071386967, guid: f06932513849a4444b16dbe594485619, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 280254953071386967, guid: f06932513849a4444b16dbe594485619, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnCloseButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 280254953071386967, guid: f06932513849a4444b16dbe594485619, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayNovelSceneController, Main
+      objectReference: {fileID: 0}
+    - target: {fileID: 280254953071386967, guid: f06932513849a4444b16dbe594485619, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 280254954194880202, guid: f06932513849a4444b16dbe594485619, type: 3}
       propertyPath: m_Name
       value: Header Image
@@ -3551,6 +3579,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageBox: {fileID: 5629918238507184917, guid: 47c0a3038b673a24cb82a566be2abf20, type: 3}
   canvas: {fileID: 1048358123}
+  type: 0
+  isPaused: 0
   viewPort: {fileID: 1089021933}
   conversationViewport: {fileID: 198210688}
   closeButton: {fileID: 0}

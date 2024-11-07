@@ -50,8 +50,6 @@ public class NovelLoader : MonoBehaviour
 
     private IEnumerator LoadFileContent(string path, System.Action<string> callback)
     {
-        Debug.Log("LoadFileContent");
-
         if (Application.platform == RuntimePlatform.IPhonePlayer)
         {
             string jsonString = File.ReadAllText(path);
