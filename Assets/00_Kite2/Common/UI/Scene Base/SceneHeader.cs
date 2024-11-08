@@ -35,7 +35,7 @@ public class SceneHeader : MonoBehaviour
     {
         if (isNovelScene && playNovelSceneController != null)
         {
-            playNovelSceneController.isPaused = true; // Pause the novel progression
+            playNovelSceneController.IsPaused = true; // Pause the novel progression
         }
 
         if (!this.isNovelScene)

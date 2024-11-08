@@ -191,4 +191,21 @@ public class ConversationContentGuiController : MonoBehaviour
         }
     }
 
+    public List<VisualNovelEvent> Content
+    {
+        get => content;
+        set => content = value;
+    }
+
+    public List<GameObject> GuiContent
+    {
+        get => guiContent;
+        set => guiContent = value;
+    }
+
+    public List<VisualNovelEvent> Options
+    {
+        get => options;
+        set => options = value;
+    }
 }

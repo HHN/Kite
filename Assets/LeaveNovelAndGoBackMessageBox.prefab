@@ -1234,9 +1234,11 @@ MonoBehaviour:
   messageBoxHeadline: {fileID: 0}
   messageBoxBody: {fileID: 3848575813395555248}
   continueButton: {fileID: 6562710602367021554}
+  pauseButton: {fileID: 6929025635829163343}
   cancelButton: {fileID: 874562493124907554}
   endButton: {fileID: 8420040251429306207}
   backgroundContinue: {fileID: 8785210853069638850}
+  backgroundPause: {fileID: 7316506671787095408}
   backgroundCancel: {fileID: 3929935758887651547}
   backgroundEnd: {fileID: 4468842358832531003}
   textStay: {fileID: 8427982865217399632}
@@ -1550,7 +1552,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1635623057434198030
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1571,7 +1573,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 195, y: 80}
-  m_SizeDelta: {x: 350, y: 95}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9073710820535073530
 CanvasRenderer:

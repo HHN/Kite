@@ -3,33 +3,46 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using UnityEngine.TextCore.Text;
+using System.IO;
 
 public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
 {
+    [Header("Message Box Text Components")]
     [SerializeField] private TextMeshProUGUI messageBoxHeadline;
     [SerializeField] private TextMeshProUGUI messageBoxBody;
-    [SerializeField] private Button continueButton; // Continue with the novel
-    [SerializeField] private Button cancelButton; // Cancel the novel
-    [SerializeField] private Button endButton; // End the novel and mark it as completed
+
+    [Header("Action Buttons")]
+    [SerializeField] private Button continueButton;  // Continue with the novel
+    [SerializeField] private Button pauseButton;     // Pause the novel
+    [SerializeField] private Button cancelButton;    // Cancel the novel
+    [SerializeField] private Button endButton;       // End the novel and mark it as completed
+
+    [Header("Background Elements")]
     [SerializeField] private GameObject backgroundContinue;
+    [SerializeField] private GameObject backgroundPause;
     [SerializeField] private GameObject backgroundCancel;
     [SerializeField] private GameObject backgroundEnd;
+
+    [Header("Miscellaneous Elements")]
     [SerializeField] private GameObject textStay;
     [SerializeField] private GameObject person;
 
     private PlayNovelSceneController playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
+    private ConversationContentGuiController conversationContentGuiController; // Reference to the PlayNovelSceneController to manage novel actions
+
 
     void Start()
     {
         continueButton.onClick.AddListener(delegate { OnContinueButton(); });
+        pauseButton.onClick.AddListener(delegate { OnPauseButton(); });
         cancelButton.onClick.AddListener(delegate { OnCancelButton(); });
         endButton.onClick.AddListener(delegate { OnEndButton(); });
 
         InitUI();
         FontSizeManager.Instance().UpdateAllTextComponents();
 
-        // Find and assign the PlayNovelSceneController component for novel control actions
-        playNovelSceneController = GameObject.Find("Controller").GetComponent<PlayNovelSceneController>();
+        playNovelSceneController = FindAnyObjectByType<PlayNovelSceneController>();
+        conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
     }
 
     private void InitUI()
@@ -38,6 +51,7 @@ public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
         Color colour = NovelColorManager.Instance().GetColor();
 
         backgroundContinue.GetComponent<Image>().color = colour;
+        backgroundPause.GetComponent<Image>().color = colour;
         backgroundCancel.GetComponent<Image>().color = colour;
         backgroundEnd.GetComponent<Image>().color = colour;
 
@@ -61,11 +75,23 @@ public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
 
     public void OnContinueButton()
     {
-        playNovelSceneController.isPaused = false; // Resume the novel progression
+        playNovelSceneController.IsPaused = false; // Resume the novel progression
 
         this.CloseMessageBox();
 
         playNovelSceneController.PlayNextEvent();
+    }
+
+    public void OnPauseButton()
+    {
+        Debug.Log("OnPauseButton");
+
+        // PlaythroughHistory speichern
+
+        // nextEventId speichern
+
+        // Speichere den Spielstand über den SaveLoadManager
+        SaveLoadManager.SaveNovelData(playNovelSceneController, conversationContentGuiController);
     }
 
     public void OnCancelButton()

@@ -11,9 +11,6 @@ using System.Data;
 
 public class PlayNovelSceneController : SceneController
 {
-    [SerializeField] private VisualNovelEventType type;
-    public bool isPaused = false;
-
     [Header("UI-Komponenten")]
     [SerializeField] private GameObject viewPort;
     [SerializeField] private GameObject conversationViewport;
@@ -24,61 +21,52 @@ public class PlayNovelSceneController : SceneController
     [SerializeField] public Button confirmArea2;
     [SerializeField] private ChatScrollView chatScroll;
     [SerializeField] private ImageScrollView imageScroll;
-
     [SerializeField] private GameObject backgroundBlur;
     [SerializeField] private GameObject imageAreaBlur;
     [SerializeField] private GameObject screenContentBlur;
-
     [SerializeField] private GameObject backgroundColor;
     [SerializeField] private GameObject imageAreaColor;
     [SerializeField] private GameObject screenContentColor;
-
     [SerializeField] private GameObject freeTextInputPrefab;
-
     [SerializeField] private GameObject headerImage;
 
-    [Header("GameObject-Referenzen und Prefabs")]
+    [Header("Novel-Visuals und Prefabs")]
     [SerializeField] private GameObject[] novelVisuals;
     [SerializeField] private GameObject novelImageContainer;
     [SerializeField] private GameObject novelBackgroundPrefab;
-
     [SerializeField] private GameObject characterPrefabMayer;
     [SerializeField] private GameObject characterPrefabReporterin;
     [SerializeField] private GameObject characterPrefabVermieter;
     [SerializeField] private GameObject characterPrefabMutter;
     [SerializeField] private GameObject characterPrefabVater;
     [SerializeField] private GameObject characterPrefabIntro;
-
     [SerializeField] private GameObject backgroundContainer;
     [SerializeField] private GameObject deskContainer;
     [SerializeField] private GameObject decoDeskContainer;
     [SerializeField] private GameObject decoBackgroudContainer;
-
     [SerializeField] private GameObject[] backgroundPrefab;
     [SerializeField] private GameObject[] deskPrefab;
     [SerializeField] private GameObject[] decoDeskPrefab;
     [SerializeField] private GameObject[] decoBackgroundPrefab;
-
     [SerializeField] private GameObject currentBackground;
     [SerializeField] private GameObject currentDesk;
     [SerializeField] private GameObject currentDecoDesk;
     [SerializeField] private GameObject currentDecoBackgroud;
     [SerializeField] private GameObject characterContainer;
-
     [SerializeField] private GameObject[] novelAnimations;
     [SerializeField] private GameObject viewPortOfImages;
     [SerializeField] private GameObject currentAnimation;
 
+    [Header("GPT und MessageBox")]
     [SerializeField] private GameObject gptServercallPrefab;
-
     [SerializeField] private LeaveNovelAndGoBackMessageBox leaveGameAndGoBackMessageBoxObject;
     [SerializeField] private GameObject leaveGameAndGoBackMessageBox;
+    [SerializeField] private HintForSavegameMessageBox hintForSavegameMessageBoxObject;
+    [SerializeField] private GameObject hintForSavegameMessageBox;
 
     [Header("Skript- und Controller-Referenzen")]
     [SerializeField] private VisualNovel novelToPlay;
-
     [SerializeField] public TypewriterCore currentTypeWriter;
-
     [SerializeField] public SelectOptionContinueConversation selectOptionContinueConversation;
     [SerializeField] private CharacterController currentTalkingCharacterController;
     //[SerializeField] private GameObject tapToContinueAnimation;
@@ -93,28 +81,22 @@ public class PlayNovelSceneController : SceneController
     [SerializeField] private Coroutine timerCoroutine;
     [SerializeField] private float timerForHint = 12.0f; // Time after which the hint to tap on the screen is shown
     [SerializeField] private float timerForHintInitial = 3.0f;
-    // Analytics
-    [SerializeField] private bool firstUserConfirmation = true;
+    [SerializeField] private bool firstUserConfirmation = true; // Analytics flag for first confirmation
 
     [Header("Spielstatus und Logik")]
     [SerializeField] private bool isWaitingForConfirmation = false;
     [SerializeField] private Dictionary<string, VisualNovelEvent> novelEvents = new Dictionary<string, VisualNovelEvent>();
     [SerializeField] private VisualNovelEvent nextEventToPlay;
-
     [SerializeField] private bool isTyping;
-    public List<string> playThroughHistory = new List<string>();
-
-    private bool tapedAlready = false;
-
-    private float waitingTime = 0.5f;
+    [SerializeField] private List<string> playThroughHistory = new List<string>();
+    private readonly float waitingTime = 0.5f;
     private bool typingWasSkipped = false;
-
     [SerializeField] private List<VisualNovelEvent> eventHistory = new List<VisualNovelEvent>();
-    private string[] optionsId = new string[2];
-
+    private readonly string[] optionsId = new string[2];
     private ConversationContentGuiController conversationContentGuiController;
-
     private int novelCharacter = -1;
+    private bool isPaused = false;
+
 
     void Start()
     {
@@ -131,35 +113,36 @@ public class PlayNovelSceneController : SceneController
         Initialize();
     }
 
-    //public void OnCloseButton()
-    //{
-    //    Debug.Log("OnCloseButton: Method called"); // Initial debug statement
-
-    //    isPaused = true; // Pause the novel progression
-    //    Debug.Log("OnCloseButton: Set isPaused to true");
-
-    //    if (!DestroyValidator.IsNullOrDestroyed(leaveGameAndGoBackMessageBoxObject))
-    //    {
-    //        Debug.Log("OnCloseButton: leaveGameAndGoBackMessageBoxObject is valid, closing message box");
-    //        leaveGameAndGoBackMessageBoxObject.CloseMessageBox();
-    //    }
-
-    //    if (DestroyValidator.IsNullOrDestroyed(canvas))
-    //    {
-    //        Debug.Log("OnCloseButton: Canvas is null or destroyed, exiting method");
-    //        return;
-    //    }
-
-    //    Debug.Log("OnCloseButton: Instantiating leaveGameAndGoBackMessageBox");
-    //    leaveGameAndGoBackMessageBoxObject = null;
-    //    leaveGameAndGoBackMessageBoxObject = Instantiate(leaveGameAndGoBackMessageBox, canvas.transform).GetComponent<LeaveNovelAndGoBackMessageBox>();
-    //    leaveGameAndGoBackMessageBoxObject.Activate();
-    //    Debug.Log("OnCloseButton: leaveGameAndGoBackMessageBox activated");
-    //}
-
-
     public void Initialize()
     {
+        // Prüfe, ob ein passender Speicherstand für die aktuelle Novel vorhanden ist
+        NovelSaveData savedData = SaveLoadManager.Load(novelToPlay.id.ToString());
+
+        if (savedData != null)
+        {
+            // Wenn ein passender Speicherstand gefunden wurde, zeige das Hint-Popup
+            if (hintForSavegameMessageBox != null)
+            {
+                if (!DestroyValidator.IsNullOrDestroyed(hintForSavegameMessageBoxObject))
+                {
+                    hintForSavegameMessageBoxObject.CloseMessageBox();
+                }
+                if (DestroyValidator.IsNullOrDestroyed(canvas))
+                {
+                    return;
+                }
+                hintForSavegameMessageBoxObject = null;
+                hintForSavegameMessageBoxObject = Instantiate(hintForSavegameMessageBox, canvas.transform).GetComponent<HintForSavegameMessageBox>();
+                hintForSavegameMessageBoxObject.Activate();
+                return;
+            }
+
+            // Optional: Lese und setze den Spielstatus, falls das Popup akzeptiert wird.
+            // NovelToPlay = GetNovelById(savedData.novelId); // Beispiel: Methode, um Novel anhand der ID zu laden
+            // NextEventToPlay = GetEventById(savedData.currentEventId); // Methode, um das Event anhand der ID zu laden
+            // PlayThroughHistory = savedData.playThroughHistory;
+        }
+
         PromptManager.Instance().InitializePrompt();
 
         if (novelToPlay == null)
@@ -344,7 +327,7 @@ public class PlayNovelSceneController : SceneController
         // Save the current event in the eventHistory list
         eventHistory.Add(nextEventToPlay);
 
-        type = VisualNovelEventTypeHelper.ValueOf(nextEventToPlay.eventType);
+        VisualNovelEventType type = VisualNovelEventTypeHelper.ValueOf(nextEventToPlay.eventType);
 
         switch (type)
         {
@@ -841,6 +824,11 @@ public class PlayNovelSceneController : SceneController
         playThroughHistory.Add(CharacterTypeHelper.GetNameOfCharacter(character) + ": " + text);
     }
 
+    public void AddEntryToPlayThroughHistory(string entry)
+    {
+        playThroughHistory.Add(entry);
+    }
+
     public static string ReplacePlaceholders(string text, Dictionary<string, string> replacements)
     {
         return Regex.Replace(text, @"\>(.*?)\<", match =>
@@ -905,6 +893,64 @@ public class PlayNovelSceneController : SceneController
                     PlayNextEvent();
                 }
             }
+        }
+    }
+
+    public bool IsPaused
+    {
+        get => isPaused;
+        set
+        {
+            isPaused = value;
+        }
+    }
+
+    public VisualNovel NovelToPlay
+    {
+        get => novelToPlay;
+        set => novelToPlay = value;
+    }
+
+    public VisualNovelEvent NextEventToPlay
+    {
+        get => nextEventToPlay;
+        set => nextEventToPlay = value;
+    }
+
+    public List<string> PlayThroughHistory
+    {
+        get => playThroughHistory;
+        set => playThroughHistory = value;
+    }
+
+    public void LoadGame()
+    {
+        // Prüfe, ob ein passender Speicherstand für die aktuelle Novel vorhanden ist
+        NovelSaveData savedData = SaveLoadManager.Load(novelToPlay.id.ToString());
+
+        if (savedData != null)
+        {
+            // Wenn ein passender Speicherstand gefunden wurde, zeige das Hint-Popup
+            if (hintForSavegameMessageBox != null)
+            {
+                if (!DestroyValidator.IsNullOrDestroyed(hintForSavegameMessageBoxObject))
+                {
+                    hintForSavegameMessageBoxObject.CloseMessageBox();
+                }
+                if (DestroyValidator.IsNullOrDestroyed(canvas))
+                {
+                    return;
+                }
+                hintForSavegameMessageBoxObject = null;
+                hintForSavegameMessageBoxObject = Instantiate(hintForSavegameMessageBox, canvas.transform).GetComponent<HintForSavegameMessageBox>();
+                hintForSavegameMessageBoxObject.Activate();
+                return;
+            }
+
+            // Optional: Lese und setze den Spielstatus, falls das Popup akzeptiert wird.
+            // NovelToPlay = GetNovelById(savedData.novelId); // Beispiel: Methode, um Novel anhand der ID zu laden
+            // NextEventToPlay = GetEventById(savedData.currentEventId); // Methode, um das Event anhand der ID zu laden
+            // PlayThroughHistory = savedData.playThroughHistory;
         }
     }
 }
