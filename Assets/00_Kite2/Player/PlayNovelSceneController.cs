@@ -8,6 +8,7 @@ using System;
 using System.Text.RegularExpressions;
 using LeastSquares.Overtone;
 using System.Data;
+using UnityEngine.Networking.Types;
 
 public class PlayNovelSceneController : SceneController
 {
@@ -97,6 +98,9 @@ public class PlayNovelSceneController : SceneController
     private int novelCharacter = -1;
     private bool isPaused = false;
 
+    private VisualNovelEvent savedEventToResume; // Speichert das letzte Ereignis für das Fortsetzen
+    private bool isSaveLoaded = false; // Gibt an, ob ein gespeicherter Spielstand geladen wurde
+
 
     void Start()
     {
@@ -110,39 +114,19 @@ public class PlayNovelSceneController : SceneController
         novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
         NovelBiasManager.Clear();
         OfflineFeedbackManager.Instance().Clear();
-        Initialize();
+
+        Initialize(); // Szene im allgemeinen Startzustand initialisieren
+
+        // Falls es einen gespeicherten Stand gibt, diesen im Hintergrund laden
+        if (GameManager.Instance.IsNovelSaved(novelToPlay.title.ToString()))
+        {
+            Debug.Log("Lade gespeicherten Fortschritt im Hintergrund...");
+            LoadGameStateSilently(); // Lädt den Spielstand im Hintergrund
+        }
     }
 
     public void Initialize()
     {
-        // Prüfe, ob ein passender Speicherstand für die aktuelle Novel vorhanden ist
-        NovelSaveData savedData = SaveLoadManager.Load(novelToPlay.id.ToString());
-
-        if (savedData != null)
-        {
-            // Wenn ein passender Speicherstand gefunden wurde, zeige das Hint-Popup
-            if (hintForSavegameMessageBox != null)
-            {
-                if (!DestroyValidator.IsNullOrDestroyed(hintForSavegameMessageBoxObject))
-                {
-                    hintForSavegameMessageBoxObject.CloseMessageBox();
-                }
-                if (DestroyValidator.IsNullOrDestroyed(canvas))
-                {
-                    return;
-                }
-                hintForSavegameMessageBoxObject = null;
-                hintForSavegameMessageBoxObject = Instantiate(hintForSavegameMessageBox, canvas.transform).GetComponent<HintForSavegameMessageBox>();
-                hintForSavegameMessageBoxObject.Activate();
-                return;
-            }
-
-            // Optional: Lese und setze den Spielstatus, falls das Popup akzeptiert wird.
-            // NovelToPlay = GetNovelById(savedData.novelId); // Beispiel: Methode, um Novel anhand der ID zu laden
-            // NextEventToPlay = GetEventById(savedData.currentEventId); // Methode, um das Event anhand der ID zu laden
-            // PlayThroughHistory = savedData.playThroughHistory;
-        }
-
         PromptManager.Instance().InitializePrompt();
 
         if (novelToPlay == null)
@@ -179,9 +163,28 @@ public class PlayNovelSceneController : SceneController
         {
             novelEvents.Add(novelEvent.id, novelEvent);
         }
-        nextEventToPlay = novelToPlay.novelEvents[0];
-        //StartCoroutine(StartNextEventInOneSeconds(0));
-        PlayNextEvent();
+
+        if (GameManager.Instance.IsNovelSaved(novelToPlay.title.ToString()))
+        {
+            Debug.Log("Gespeicherter Fortschritt wird wiederhergestellt.");
+
+            NovelSaveData savedData = SaveLoadManager.Load(novelToPlay.id.ToString());
+
+            // Setze die Novel und den Event zum Fortsetzen
+            nextEventToPlay = novelEvents[savedData.currentEventId];
+
+            // Füge den bisherigen Verlauf hinzu
+            playThroughHistory = new List<string>(savedData.playThroughHistory);
+
+            // Starte ab dem gespeicherten Event
+            PlayNextEvent();
+        }
+        else
+        {
+            nextEventToPlay = novelToPlay.novelEvents[0];
+
+            PlayNextEvent();
+        }            
     }
 
     public void OnConfirm()
@@ -899,10 +902,7 @@ public class PlayNovelSceneController : SceneController
     public bool IsPaused
     {
         get => isPaused;
-        set
-        {
-            isPaused = value;
-        }
+        set => isPaused = value;
     }
 
     public VisualNovel NovelToPlay
@@ -923,34 +923,124 @@ public class PlayNovelSceneController : SceneController
         set => playThroughHistory = value;
     }
 
-    public void LoadGame()
+    //public void LoadGame()
+    //{
+    //    // Prüfe, ob ein passender Speicherstand für die aktuelle Novel vorhanden ist
+    //    NovelSaveData savedData = SaveLoadManager.Load(novelToPlay.id.ToString());
+
+    //    if (savedData != null)
+    //    {
+    //        // Wenn ein passender Speicherstand gefunden wurde, zeige das Hint-Popup
+    //        if (hintForSavegameMessageBox != null)
+    //        {
+    //            if (!DestroyValidator.IsNullOrDestroyed(hintForSavegameMessageBoxObject))
+    //            {
+    //                hintForSavegameMessageBoxObject.CloseMessageBox();
+    //            }
+    //            if (DestroyValidator.IsNullOrDestroyed(canvas))
+    //            {
+    //                return;
+    //            }
+    //            hintForSavegameMessageBoxObject = null;
+    //            hintForSavegameMessageBoxObject = Instantiate(hintForSavegameMessageBox, canvas.transform).GetComponent<HintForSavegameMessageBox>();
+    //            hintForSavegameMessageBoxObject.Activate();
+    //            return;
+    //        }
+
+    //        // Optional: Lese und setze den Spielstatus, falls das Popup akzeptiert wird.
+    //        // NovelToPlay = GetNovelById(savedData.novelId); // Beispiel: Methode, um Novel anhand der ID zu laden
+    //        // NextEventToPlay = GetEventById(savedData.currentEventId); // Methode, um das Event anhand der ID zu laden
+    //        // PlayThroughHistory = savedData.playThroughHistory;
+    //    }
+    //}
+
+    public void RestoreGameState(VisualNovel savedNovel)
     {
-        // Prüfe, ob ein passender Speicherstand für die aktuelle Novel vorhanden ist
+        NovelSaveData savedData = SaveLoadManager.Load(savedNovel.id.ToString());
+
+        if (savedData != null)
+        {
+            Debug.Log("Gespeicherter Fortschritt wird wiederhergestellt.");
+
+            // Setze die Novel und den Event zum Fortsetzen
+            novelToPlay = savedNovel;
+            nextEventToPlay = novelEvents[savedData.currentEventId];
+
+            // Füge den bisherigen Verlauf hinzu
+            playThroughHistory = new List<string>(savedData.playThroughHistory);
+
+            // Starte ab dem gespeicherten Event
+            PlayNextEvent();
+        }
+        else
+        {
+            Debug.LogWarning("Kein Speicherstand vorhanden, Spiel wird von Beginn an gestartet.");
+            Initialize();
+        }
+    }
+
+    // Methode für das stille Laden des Spielstands
+    private void LoadGameStateSilently()
+    {
         NovelSaveData savedData = SaveLoadManager.Load(novelToPlay.id.ToString());
 
         if (savedData != null)
         {
-            // Wenn ein passender Speicherstand gefunden wurde, zeige das Hint-Popup
-            if (hintForSavegameMessageBox != null)
-            {
-                if (!DestroyValidator.IsNullOrDestroyed(hintForSavegameMessageBoxObject))
-                {
-                    hintForSavegameMessageBoxObject.CloseMessageBox();
-                }
-                if (DestroyValidator.IsNullOrDestroyed(canvas))
-                {
-                    return;
-                }
-                hintForSavegameMessageBoxObject = null;
-                hintForSavegameMessageBoxObject = Instantiate(hintForSavegameMessageBox, canvas.transform).GetComponent<HintForSavegameMessageBox>();
-                hintForSavegameMessageBoxObject.Activate();
-                return;
-            }
-
-            // Optional: Lese und setze den Spielstatus, falls das Popup akzeptiert wird.
-            // NovelToPlay = GetNovelById(savedData.novelId); // Beispiel: Methode, um Novel anhand der ID zu laden
-            // NextEventToPlay = GetEventById(savedData.currentEventId); // Methode, um das Event anhand der ID zu laden
-            // PlayThroughHistory = savedData.playThroughHistory;
+            // Speicher das gespeicherte Ereignis und die Historie ohne die UI zu aktualisieren
+            savedEventToResume = novelEvents[savedData.currentEventId];
+            playThroughHistory = new List<string>(savedData.playThroughHistory);
+            isSaveLoaded = true; // Spielstand erfolgreich geladen
         }
     }
+
+    // Startet das Spiel vom gespeicherten Punkt, wenn "Fortsetzen" gewählt wird
+    public void ResumeFromSavedState()
+    {
+        if (isSaveLoaded && savedEventToResume != null)
+        {
+            Debug.Log("Fortsetzen des gespeicherten Spiels...");
+            nextEventToPlay = savedEventToResume;
+            PlayNextEvent(); // Führt das gespeicherte Ereignis weiter
+        }
+    }
+
+    // Methode zum Neustarten (bei Auswahl "Neustarten" im Dialog)
+    public void RestartNovel()
+    {
+        Debug.Log("Spiel wird neu gestartet.");
+        Initialize(); // Führt die Novel neu im Standardzustand aus
+    }
+
+    public void LoadGame()
+    {
+        //// Prüfe, ob ein passender Speicherstand für die aktuelle Novel vorhanden ist
+        //NovelSaveData savedData = SaveLoadManager.Load(novelId.ToString());
+
+        //if (savedData != null)
+        //{
+        //    // Wenn ein passender Speicherstand gefunden wurde, zeige das Hint-Popup
+        //    if (hintForSavegameMessageBox != null)
+        //    {
+        //        if (!DestroyValidator.IsNullOrDestroyed(hintForSavegameMessageBoxObject))
+        //        {
+        //            hintForSavegameMessageBoxObject.CloseMessageBox();
+        //        }
+
+        //        if (DestroyValidator.IsNullOrDestroyed(canvas))
+        //        {
+        //            return;
+        //        }
+
+        //        hintForSavegameMessageBoxObject = null;
+        //        hintForSavegameMessageBoxObject = Instantiate(hintForSavegameMessageBox, canvas.transform).GetComponent<HintForSavegameMessageBox>();
+        //        hintForSavegameMessageBoxObject.Activate();
+        //        return;
+        //    }
+        //}
+        //else
+        //{
+        //    novelDescriptionTextbox.StartNovel();
+        //}
+    }
+
 }

@@ -22,8 +22,12 @@ public class NovelDescriptionTextbox : MonoBehaviour
     [SerializeField] private Sprite unBookmarkSprite;
     [SerializeField] private Color colorOfText;
 
+    private FoundersBubbleSceneController foundersBubbleSceneController; 
+
     void Start()
     {
+        foundersBubbleSceneController = FindAnyObjectByType<FoundersBubbleSceneController>();
+
         playButton.onClick.AddListener(delegate { OnPlayButton(); });
         bookMarkButton.onClick.AddListener(delegate { OnBookmarkButton(); });
     }
@@ -83,6 +87,8 @@ public class NovelDescriptionTextbox : MonoBehaviour
    
     public void OnPlayButton()
     {
+        //foundersBubbleSceneController.LoadGame();
+
         PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
         PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
         PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
@@ -94,7 +100,29 @@ public class NovelDescriptionTextbox : MonoBehaviour
         {
             SceneLoader.LoadPlayInstructionScene();
 
-        } else
+        }
+        else
+        {
+            SceneLoader.LoadPlayNovelScene();
+        }
+        return;
+    }
+
+    public void StartNovel()
+    {
+        PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
+        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+        GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
+        DontDestroyOnLoad(buttonSound);
+
+        if (ShowPlayInstructionManager.Instance().ShowInstruction())
+        {
+            SceneLoader.LoadPlayInstructionScene();
+
+        }
+        else
         {
             SceneLoader.LoadPlayNovelScene();
         }
@@ -140,5 +168,24 @@ public class NovelDescriptionTextbox : MonoBehaviour
     public void UpdateSize()
     {
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
+    }
+
+
+    public VisualNovel NovelToPlay
+    {
+        get => visualNovelToDisplay;
+        set => visualNovelToDisplay = value;
+    }
+
+    public VisualNovelNames NovelName
+    {
+        get => visualNovelName;
+        set => visualNovelName = value;
+    }
+
+    public GameObject SelectNovelSoundPrefab
+    {
+        get => selectNovelSoundPrefab;
+        set => selectNovelSoundPrefab = value;
     }
 }

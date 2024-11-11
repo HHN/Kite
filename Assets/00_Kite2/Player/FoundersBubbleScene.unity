@@ -10662,6 +10662,8 @@ MonoBehaviour:
   bueroButtonFromBurgerMenu: {fileID: 290222793}
   bekannteNovelButtonFromBurgerMenu: {fileID: 522314577}
   selectNovelSoundPrefab: {fileID: 5665505778772664329, guid: 0cf6b97a397eb0a499fcd91cb4e550d5, type: 3}
+  hintForSavegameMessageBoxObject: {fileID: -7886966643122889469, guid: 19371ec5265175b4285038aaf97af918, type: 3}
+  hintForSavegameMessageBox: {fileID: 5629918238507184917, guid: 19371ec5265175b4285038aaf97af918, type: 3}
 --- !u!4 &1240231752
 Transform:
   m_ObjectHideFlags: 0

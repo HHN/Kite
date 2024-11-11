@@ -13,6 +13,8 @@ public class HintForSavegameMessageBox : MonoBehaviour
     [SerializeField] private GameObject person; // GameObject representing the person or character related to the message
 
     private PlayNovelSceneController playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
+    private FoundersBubbleSceneController foundersBubbleSceneController;
+    private NovelDescriptionTextbox novelDescriptionTextbox;
 
     void Start()
     {
@@ -28,6 +30,9 @@ public class HintForSavegameMessageBox : MonoBehaviour
 
         // Find and assign the PlayNovelSceneController component for novel control actions
         playNovelSceneController = GameObject.Find("Controller").GetComponent<PlayNovelSceneController>();
+
+        //foundersBubbleSceneController = FindAnyObjectByType<FoundersBubbleSceneController>();
+        //novelDescriptionTextbox = FindAnyObjectByType<NovelDescriptionTextbox>();
     }
 
     /// <summary>
@@ -77,8 +82,16 @@ public class HintForSavegameMessageBox : MonoBehaviour
     /// </summary>
     public void OnContinueButton()
     {
-        Debug.Log("[HintForSavegameMessageBox] - [OnContinueButton] - Continue the novel.");
-        // Logic to continue with the novel can be added here
+        //Debug.Log("[HintForSavegameMessageBox] - [OnContinueButton] - Continue the novel.");
+
+        //// Beispiel: Überprüfen und Setzen des Flags für eine bestimmte Novel
+        //GameManager.Instance.SetNovelSavedFlag(novelDescriptionTextbox.NovelToPlay.title.ToString(), true);
+
+        //LoadNovelScene();
+
+        Debug.Log("Fortsetzen an der letzten gespeicherten Stelle.");
+        playNovelSceneController.ResumeFromSavedState();
+        CloseMessageBox();
     }
 
     /// <summary>
@@ -86,8 +99,15 @@ public class HintForSavegameMessageBox : MonoBehaviour
     /// </summary>
     public void OnRestartButton()
     {
-        Debug.Log("[HintForSavegameMessageBox] - [OnRestartButton] - Restart the novel.");
-        // Logic to restart the novel can be added here
+        //Debug.Log("[HintForSavegameMessageBox] - [OnRestartButton] - Restart the novel.");
+
+        //GameManager.Instance.SetNovelSavedFlag(novelDescriptionTextbox.NovelToPlay.title.ToString(), false);
+
+        //LoadNovelScene();
+
+        Debug.Log("Neustart der Novel.");
+        playNovelSceneController.RestartNovel();
+        CloseMessageBox();
     }
 
     /// <summary>
@@ -100,6 +120,28 @@ public class HintForSavegameMessageBox : MonoBehaviour
         {
             return;
         }
+
         Destroy(this.gameObject);
+    }
+
+    private void LoadNovelScene()
+    {
+        PlayManager.Instance().SetVisualNovelToPlay(novelDescriptionTextbox.NovelToPlay);
+        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(novelDescriptionTextbox.NovelName));
+        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(novelDescriptionTextbox.NovelName));
+        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelDescriptionTextbox.NovelName));
+        GameObject buttonSound = Instantiate(novelDescriptionTextbox.SelectNovelSoundPrefab);
+        DontDestroyOnLoad(buttonSound);
+
+        if (ShowPlayInstructionManager.Instance().ShowInstruction())
+        {
+            SceneLoader.LoadPlayInstructionScene();
+
+        }
+        else
+        {
+            SceneLoader.LoadPlayNovelScene();
+        }
+        return;
     }
 }

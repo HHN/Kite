@@ -1,3 +1,5 @@
+using System;
+
 public enum VisualNovelNames
 {
     NONE,
@@ -192,5 +194,21 @@ public class VisualNovelNamesHelper
                     return 0;
                 }
         }
+    }
+
+    public static VisualNovelNames GetVisualNovelNameFromString(string title)
+    {
+        return title switch
+        {
+            "Banktermin wegen Kreditbeantragung" => VisualNovelNames.BANK_KONTO_NOVEL,
+            "Anmietung eines Büros" => VisualNovelNames.BUERO_NOVEL,
+            "Pressegespräch" => VisualNovelNames.PRESSE_NOVEL,
+            "Telefonat mit den Eltern" => VisualNovelNames.ELTERN_NOVEL,
+            "Telefonat mit der Notarin" => VisualNovelNames.NOTARIAT_NOVEL,
+            "Gespräch mit einem Bekannten" => VisualNovelNames.BEKANNTE_TREFFEN_NOVEL,
+            "Einstiegsdialog" => VisualNovelNames.INTRO_NOVEL,
+            // Füge hier weitere Titel-zu-Enum-Zuordnungen hinzu
+            _ => throw new ArgumentException("Unrecognized novel title: " + title),
+        };
     }
 }

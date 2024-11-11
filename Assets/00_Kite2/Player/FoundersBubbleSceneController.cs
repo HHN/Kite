@@ -47,6 +47,8 @@ public class FoundersBubbleSceneController : SceneController
 
     [SerializeField] private GameObject selectNovelSoundPrefab;
 
+    int novelId;
+
     void Start()
     {
         BackStackManager.Instance().Push(SceneNames.FOUNDERS_BUBBLE_SCENE);
@@ -292,7 +294,8 @@ public class FoundersBubbleSceneController : SceneController
             currentlyOpenedVisualNovelPopup = visualNovel;
             return;
         }
-        int novelId = VisualNovelNamesHelper.ToInt(visualNovel);
+
+        novelId = VisualNovelNamesHelper.ToInt(visualNovel);
 
         List<VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
 
@@ -352,193 +355,37 @@ public class FoundersBubbleSceneController : SceneController
 
     public void OnBankkreditButtonFromBurgerMenu()
     {
-        VisualNovel visualNovelToDisplay = null;
-        VisualNovelNames visualNovelName = VisualNovelNames.BANK_KREDIT_NOVEL;
-
-        KiteNovelManager.Instance().GetAllKiteNovels().ForEach(kiteNovel =>
-        {
-            if (VisualNovelNamesHelper.ValueOf((int) kiteNovel.id) == visualNovelName)
-            {
-                visualNovelToDisplay = kiteNovel;
-            }
-        });
-
-        if (visualNovelToDisplay == null)
-        {
-            return;
-        }
-        PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-        NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(VisualNovelNamesHelper.ValueOf((int)visualNovelToDisplay.id)));
-        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
-        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
-        GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
-        DontDestroyOnLoad(buttonSound);
-
-        if (ShowPlayInstructionManager.Instance().ShowInstruction())
-        {
-            SceneLoader.LoadPlayInstructionScene();
-
-        }
-        else
-        {
-            SceneLoader.LoadPlayNovelScene();
-        }
-        return;
+        DisplayNovelFromMenu(VisualNovelNames.BANK_KREDIT_NOVEL);
     }
 
     public void OnElternButtonFromBurgerMenu()
     {
-        VisualNovel visualNovelToDisplay = null;
-        VisualNovelNames visualNovelName = VisualNovelNames.ELTERN_NOVEL;
-
-        KiteNovelManager.Instance().GetAllKiteNovels().ForEach(kiteNovel =>
-        {
-            if (VisualNovelNamesHelper.ValueOf((int)kiteNovel.id) == visualNovelName)
-            {
-                visualNovelToDisplay = kiteNovel;
-            }
-        });
-
-        if (visualNovelToDisplay == null)
-        {
-            return;
-        }
-        PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-        NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(VisualNovelNamesHelper.ValueOf((int)visualNovelToDisplay.id)));
-        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
-        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
-        GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
-        DontDestroyOnLoad(buttonSound);
-
-        if (ShowPlayInstructionManager.Instance().ShowInstruction())
-        {
-            SceneLoader.LoadPlayInstructionScene();
-
-        }
-        else
-        {
-            SceneLoader.LoadPlayNovelScene();
-        }
-        return;
+        DisplayNovelFromMenu(VisualNovelNames.ELTERN_NOVEL);
     }
 
     public void OnNotarinButtonFromBurgerMenu()
     {
-        VisualNovel visualNovelToDisplay = null;
-        VisualNovelNames visualNovelName = VisualNovelNames.NOTARIAT_NOVEL;
-
-        KiteNovelManager.Instance().GetAllKiteNovels().ForEach(kiteNovel =>
-        {
-            if (VisualNovelNamesHelper.ValueOf((int)kiteNovel.id) == visualNovelName)
-            {
-                visualNovelToDisplay = kiteNovel;
-            }
-        });
-
-        if (visualNovelToDisplay == null)
-        {
-            return;
-        }
-        PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-        NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(VisualNovelNamesHelper.ValueOf((int)visualNovelToDisplay.id)));
-        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
-        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
-        GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
-        DontDestroyOnLoad(buttonSound);
-
-        if (ShowPlayInstructionManager.Instance().ShowInstruction())
-        {
-            SceneLoader.LoadPlayInstructionScene();
-
-        }
-        else
-        {
-            SceneLoader.LoadPlayNovelScene();
-        }
-        return;
+        DisplayNovelFromMenu(VisualNovelNames.NOTARIAT_NOVEL);
     }
 
     public void OnPresseButtonFromBurgerMenu()
     {
-        VisualNovel visualNovelToDisplay = null;
-        VisualNovelNames visualNovelName = VisualNovelNames.PRESSE_NOVEL;
-
-        KiteNovelManager.Instance().GetAllKiteNovels().ForEach(kiteNovel =>
-        {
-            if (VisualNovelNamesHelper.ValueOf((int)kiteNovel.id) == visualNovelName)
-            {
-                visualNovelToDisplay = kiteNovel;
-            }
-        });
-
-        if (visualNovelToDisplay == null)
-        {
-            return;
-        }
-        PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-        NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(VisualNovelNamesHelper.ValueOf((int)visualNovelToDisplay.id)));
-        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
-        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
-        GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
-        DontDestroyOnLoad(buttonSound);
-
-        if (ShowPlayInstructionManager.Instance().ShowInstruction())
-        {
-            SceneLoader.LoadPlayInstructionScene();
-
-        }
-        else
-        {
-            SceneLoader.LoadPlayNovelScene();
-        }
-        return;
+        DisplayNovelFromMenu(VisualNovelNames.PRESSE_NOVEL);
     }
 
     public void OnBueroButtonFromBurgerMenu()
     {
-        VisualNovel visualNovelToDisplay = null;
-        VisualNovelNames visualNovelName = VisualNovelNames.BUERO_NOVEL;
-
-        KiteNovelManager.Instance().GetAllKiteNovels().ForEach(kiteNovel =>
-        {
-            if (VisualNovelNamesHelper.ValueOf((int)kiteNovel.id) == visualNovelName)
-            {
-                visualNovelToDisplay = kiteNovel;
-            }
-        });
-
-        if (visualNovelToDisplay == null)
-        {
-            return;
-        }
-        PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-        NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(VisualNovelNamesHelper.ValueOf((int)visualNovelToDisplay.id)));
-        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
-        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
-        GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
-        DontDestroyOnLoad(buttonSound);
-
-        if (ShowPlayInstructionManager.Instance().ShowInstruction())
-        {
-            SceneLoader.LoadPlayInstructionScene();
-
-        }
-        else
-        {
-            SceneLoader.LoadPlayNovelScene();
-        }
-        return;
+        DisplayNovelFromMenu(VisualNovelNames.BUERO_NOVEL);
     }
 
     public void OnBekannteNovelButtonFromBurgerMenu()
     {
+        DisplayNovelFromMenu(VisualNovelNames.BEKANNTE_TREFFEN_NOVEL);
+    }
+
+    private void DisplayNovelFromMenu(VisualNovelNames visualNovelName)
+    {
         VisualNovel visualNovelToDisplay = null;
-        VisualNovelNames visualNovelName = VisualNovelNames.BEKANNTE_TREFFEN_NOVEL;
 
         KiteNovelManager.Instance().GetAllKiteNovels().ForEach(kiteNovel =>
         {
