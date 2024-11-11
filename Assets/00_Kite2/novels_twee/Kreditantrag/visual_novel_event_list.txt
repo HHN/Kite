@@ -121,7 +121,7 @@ Okay, aber abgesehen davon machen Sie das als Frau allein, oder?
 :: Businessplan solide {"position":"2100,3800","size":"100,100"}
 >>SoundAbspielen:paperSound<<
 >>--<<
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Ihr Plan sieht gut aus, und Sie wirken sehr überzeugt. Füllen Sie einfach die Formulare aus und schicken Sie sie uns, dann passt alles.
 
 [[Das mache ich, vielen Dank für Ihre Zeit, einen schönen Tag noch.->Ende Positiv II]]
@@ -130,7 +130,7 @@ Ihr Plan sieht gut aus, und Sie wirken sehr überzeugt. Füllen Sie einfach die 
 
 
 :: Bürgschaft [Bias Altersbezogen] {"position":"2025,1550","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Ah, wahrscheinlich Ihr Partner?
 >>--<<
 >>RelevanterBias:Heteronormativitaet<<
@@ -201,7 +201,7 @@ Das ist eine verbreitete Strategie, aber die richtige Zielgruppe zu finden und z
 
 
 :: Danke [Bias] {"position":"2800,2550","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Gerne. So, Sie haben mit einem Finanzberater gesprochen, aber ansonsten stehen Sie als Frau alleine in diesem Geschäft. Ja?
 >>--<<
 >>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<
@@ -253,14 +253,14 @@ Ja, der Businessplan ist okay, aber feilen Sie noch am Exposé. Lassen Sie Ihre 
 
 
 :: Ende Neutral II {"position":"2500,4125","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Gerne und auf Wiedersehen.
 >>--<<
 >>Ende<<
 
 
 :: Ende Positiv Geschäftspartner {"position":"2800,3875","size":"100,100"}
->>AngestellteSprichtFriendly:<<
+>>AngestellteSprichtSmiling:<<
 Also Ihr Businessplan sieht gut aus. Mit einem Partner an Ihrer Seite fühle ich mich auch besser. Bitte die Formulare ausfüllen und uns schicken, dann passt das.
 
 
@@ -270,7 +270,7 @@ Also Ihr Businessplan sieht gut aus. Mit einem Partner an Ihrer Seite fühle ich
 
 
 :: Ende Positiv Geschäftspartnerin {"position":"3250,3850","size":"100,100"}
->>AngestellteSprichtFriendly:<<
+>>AngestellteSprichtSmiling:<<
 Also Ihr Businessplan sieht gut aus. Mit einer Geschäftspartnerin habe ich auch ein besseres Gefühl bei der Sache. Füllen Sie bitte noch diese Formulare aus und schicken Sie uns die zu, dann sollte alles passen.
 
 
@@ -280,7 +280,7 @@ Also Ihr Businessplan sieht gut aus. Mit einer Geschäftspartnerin habe ich auch
 
 
 :: Ende Positiv II {"position":"2800,4125","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Gerne und auf Wiedersehen.
 >>--<<
 >>Ende<<
@@ -298,7 +298,7 @@ Klingt fast ein bisschen aggressiv? Mein Rat: Versuchen Sie es doch mal mit eine
 
 
 :: Erneuter Termin {"position":"1825,2450","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Genau, vor der Übernahme einer persönlichen Bürgschaft sollten die Folgen einer Insolvenz beim Unternehmen genau geprüft werden. Das können Sie dann aber zuhause nochmal besprechen. 
 
 [[Das klingt gut.->Erneuter Termin II]]
@@ -345,7 +345,7 @@ Das ist ja interessant, dass Sie das so machen.
 
 
 :: Faire Aufgabenaufteilung II [Bias] {"position":"2525,3200","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Schön zu hören, dass Sie tatsächlich aktiv mitarbeiten und nicht nur ein Aushängeschild sind.
 >>--<<
 >>RelevanterBias:Mikroaggressionen<<
@@ -391,7 +391,7 @@ Die ganze Finanzierung... haben Sie das selber durchgerechnet? Oder hatten Sie d
 :: Geplant [Sound] {"position":"2100,2300","size":"100,100"}
 >>SoundAbspielen:paperSound<<
 >>--<<
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Ah, ja. Gut, ich kann ja auch unmögliches alles im Kopf haben.
 
 [[Stimmt, aber der Businessplan ist zum Glück da, wo alles nachgelesen werden kann.->Businessplan da]]
@@ -494,7 +494,7 @@ Und was könnte bei Ihrem Herzensprojekt so ein Schwachpunkt sein?
 
 
 :: Heteronormatitivät II {"position":"1950,2150","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Und zum Kreditantrag: Ich brauche dann noch die schriftliche Bestätigung für die Bürgschaft. Dann können wir weitermachen.
 
 
@@ -504,7 +504,7 @@ Und zum Kreditantrag: Ich brauche dann noch die schriftliche Bestätigung für d
 
 
 :: Heteronormativität {"position":"2000,2000","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Vielen Dank, dass Sie das angesprochen haben. Es war nicht meine Absicht, stereotype Annahmen zu machen. 
 
 
@@ -532,7 +532,7 @@ Also, ich weiß ja nicht...
 
 
 :: Internalisiert Geschäftspartner B {"position":"2925,3525","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Ja, also es war wirklich nicht böse gemeint.
 
 
@@ -551,7 +551,7 @@ Also, ich weiß ja nicht...
 
 
 :: Internalisiert Geschäftspartnerin B {"position":"3275,3500","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Ja, also es war wirklich nicht böse gemeint.
 
 [[Das glaube ich Ihnen sofort. Wie verfahren wir denn mit dem Kreditantrag?->Ende Positiv Geschäftspartnerin]]
@@ -629,7 +629,7 @@ Okay, dass was ich jetzt so höre, ist, dass da als Frau allein in der Branche u
 
 
 :: Loyalität {"position":"2500,2300","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Nicht schlecht, das läuft ja bei Cafés und Supermärkten auch gut mit Treuepunkten oder Stempelkarten.
 
 [[Genau, und um das umzusetzen, habe ich mich bereits mit einer Marketing-Expertin zusammen gesetzt.->Marketing-Expertin]]
@@ -670,7 +670,7 @@ Wenn ich hier so in die Tabelle gucke, was es so gibt... Zuschüsse, Darlehen, u
 
 
 :: Nachfrage Internalisiert [Bias] {"position":"3050,2550","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Männer und Frauen gehen Dinge oft anders an. Männer haben oft eine natürliche Begabung für Zahlen.
 >>--<<
 >>RelevanterBias:GeschlechtsspezifischeStereotypen<<
@@ -683,7 +683,7 @@ Männer und Frauen gehen Dinge oft anders an. Männer haben oft eine natürliche
 
 
 :: Nebenberuflich {"position":"2250,1700","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Gut, das klingt vernünftig. Eine solide finanzielle Basis ist wichtig, um den Kredit zurückzahlen zu können.
 
 [[Ja, darauf habe ich geachtet.->Nebenberuflich II]]
@@ -737,14 +737,14 @@ Trotzdem sind 70.000 € eine ordentliche Summe. Schauen Sie sich das nochmal an
 
 
 :: Nicht schlecht {"position":"1975,3650","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Das hört sich wirklich nicht schlecht an.
 
 [[Businessplan solide]]
 
 
 :: Nächste Schritte {"position":"1900,2300","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Füllen Sie einfach den Kreditantrag aus. Nach der Bonitätsprüfung bekommen Sie entweder ein Angebot oder eine Ablehnung.
 
 [[Und dann sprechen wir uns eventuell nochmal?->Erneuter Termin]]
@@ -753,7 +753,7 @@ Füllen Sie einfach den Kreditantrag aus. Nach der Bonitätsprüfung bekommen Si
 
 
 :: OK, weiter {"position":"1775,2000","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Also, Sie müssen mir dann noch die schriftliche Bestätigung für die Bürgschaft zukommen lassen.
 
 
@@ -770,7 +770,7 @@ Da müssten Sie nochmal genauer ran, vor allem wegen der Summe.
 
 
 :: Produkte {"position":"2250,2000","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Das klingt nach einem guten Schritt in Richtung Kostenoptimierung. Wie gehen Sie mit Risiken wie Konkurrenz oder Marktschwankungen um?
 
 [[Das sind jetzt viele Fragen auf einmal.->Viele Fragen]]
@@ -842,7 +842,7 @@ Ja, das stimmt, aber Sie sind schon eher optimistisch unterwegs, nicht?
 
 
 :: Redewendung Erklärung {"position":"1675,2375","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Stimmt, das ist mir noch gar nicht so aufgefallen, aber um nochmal auf den Kreditantrag zu kommen. Sie müssen mir noch die schriftliche Bestätigung für die Bürgschaft zukommen lassen.
 
 [[Benötigen Sie ansonsten weitere Unterlagen?->Nächste Schritte]]
@@ -939,7 +939,7 @@ Ich bin mit vielen Frauen befreundet! Da bin ich doch nicht sexistisch!
 
 
 :: Sicherheiten {"position":"2175,1400","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Eigentlich ist es ganz schön, dass Sie so selbstbewusst sind. Aber was genau haben Sie als Sicherheit, um den Kredit zurückzuzahlen?
 
 [[Hier, auf Seite 13 meines Businessplans habe ich das Potenzial meines Unternehmens und die Rentabilität detailliert dargestellt.->Verweis Businessplan]]
@@ -959,7 +959,7 @@ Hm, Sie benötigen den Kredit für Ihre Unternehmensgründung, oder? Da haben wi
 
 
 :: Verwunderung [Bias] {"position":"2650,3350","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Ach, Sie dürfen so etwas nicht so eng sehen und jedes Wort auf die Goldwaage legen. Sie sind da schon streng.
 >>--<<
 >>RelevanterBias:TightropeBias<<
@@ -1026,7 +1026,7 @@ Mit oder ohne Kohlensäure?
 
 
 :: Weiter {"position":"2100,525","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Willkommen. Schön, dass Sie da sind. Setzen Sie sich doch. Kann ich Ihnen etwas zum Trinken anbieten? Wasser, Kaffee?
 
 
@@ -1048,7 +1048,7 @@ Hier, bitteschön. So, was kann ich für Sie tun?
 
 
 :: Weiter II {"position":"2250,825","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Okay, was kann ich heute für Sie tun?
 
 
@@ -1063,7 +1063,7 @@ Ich würde gern einen Kredit für mein Unternehmen beantragen. Den Businessplan 
 
 
 :: Weiter IV {"position":"2275,1025","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Alles klar. Ja, ich habe den Businessplan. Haben Sie auch die restlichen Unterlagen dabei?
 >>--<<
 >>SpielerinCharakterSpricht:<<
@@ -1073,7 +1073,7 @@ Ja, hier sind sie.
 
 
 :: Weiter V {"position":"2425,1025","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Vielen Dank. Lassen Sie mich kurz einen Blick darauf werfen. Ah, das sieht wirklich gut aus. 
 >>Charakter01SprichtSmiling:<<
 In Ihrem Businessplan haben Sie Ihre Ziele klar definiert und die Finanzprognosen sind überzeugend. In welcher Höhe möchten Sie denn den Kredit beantragen?
@@ -1097,7 +1097,7 @@ Glauben Sie, dass Sie sich gegen die Konkurrenz durchsetzen können? In Ihrem Be
 
 
 :: Zurück Kreditantrag {"position":"2050,2150","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Genau, also, Sie müssen mir dann nur die schriftliche Bestätigung für die Bürgschaft zukommen lassen. Dann können wir weiter arbeiten.
 
 

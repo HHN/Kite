@@ -124,7 +124,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
         finishButtonContainer.SetActive(false);
         finishButtonBottomContainer.SetActive(true);
         copyButtonContainer.SetActive(true);
-        if (TextToSpeechManager.Instance().IsTextToSpeechActivated())
+        if (TextToSpeechManager.Instance.IsTextToSpeechActivated())
         {
             TextToSpeechService.Instance().TextToSpeechReadLive(response.GetCompletion().Trim(), engine);
         }

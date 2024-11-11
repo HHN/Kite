@@ -650,7 +650,10 @@ public class PlayNovelSceneController : SceneController
 
     public void HandleShowMessageEvent(VisualNovelEvent novelEvent)
     {
-        TextToSpeechService.Instance().TextToSpeechReadLive(novelEvent.text, engine);
+        //TextToSpeechManager.Instance.Speak(novelEvent.text);
+
+
+        //TextToSpeechService.Instance().TextToSpeechReadLive(novelEvent.text, engine); --> TODO: Überall entfernen
         // novelEvent.text = ReplacePlaceholders(novelEvent.text, novelToPlay.GetGlobalVariables());
 
         SetNextEvent(novelEvent);

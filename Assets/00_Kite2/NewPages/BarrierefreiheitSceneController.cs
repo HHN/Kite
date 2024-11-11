@@ -43,7 +43,7 @@ public class BarrierefreiheitSceneController : SceneController
 
     public void InitializeToggleTextToSpeech()
     {
-        if (TextToSpeechManager.Instance().IsTextToSpeechActivated())
+        if (TextToSpeechManager.Instance.IsTextToSpeechActivated())
         {
             toggleTextToSpeech.isOn = true;
         }

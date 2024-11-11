@@ -45,7 +45,7 @@ Du hast ja auch Erfahrung und ich bin mir sicher, dass andere sehr dankbar für 
 
 
 :: Andere unterstützen II {"position":"2625,2400","size":"100,100"}
->>BekannterSprichtFriendly:<<
+>>BekannterSprichtSmiling:<<
 Es ist auch einfach schön zu sehen, wie andere Erfolg haben und ihre Ziele erreichen.
 
 [[Genau, geht mir genauso! Jetzt fühl ich mich echt besser, nachdem ich das alles mal loswerden konnte.->Deutlich besser]]
@@ -61,7 +61,7 @@ Du triffst dich mit einem Bekannten, den du seit ein paar Jahren nicht mehr gese
 
 
 :: Angebot wahrgeonmmen {"position":"2425,1975","size":"100,100"}
->>BekannterSprichtFriendly:<<
+>>BekannterSprichtSmiling:<<
 Ich kenne das von mir auch, dass es manchmal echt schwer ist, Hilfe anzunehmen. Manchmal fühlt es sich dann so an, als hätte ich etwas nicht alleine geschafft.
 
 [[Ich weiß, was du meinst. Dabei ist es normal und auch notwendig Hilfe von anderen anzunehmen. Dafür müssen wir uns nicht schämen.->Schambehaftet]]
@@ -169,7 +169,7 @@ Cool, dass dir das Coaching was gebracht hat! Gibt's noch andere Sachen, die dic
 
 
 :: Coaching II {"position":"2525,2300","size":"100,100"}
->>BekannterSprichtFriendly:<<
+>>BekannterSprichtSmiling:<<
 Das klingt total interessant, erzähl mir dann, wie das war, wenn du teilgenommen hast!
 
 [[Mach ich! Mir geht’s jetzt schon viel besser, nachdem ich alles mal loswerden konnte. Danke dir!->Deutlich besser]]
@@ -187,7 +187,7 @@ Gerne. Ich finde es toll, wie leidenschaftlich du arbeitest. Ich bin sicher, das
 
 
 :: Einige Probleme {"position":"2350,900","size":"100,100"}
->>BekannterSprichtFriendly:<<
+>>BekannterSprichtSmiling:<<
 Ich kann mir vorstellen, wie schwer das sein muss. Vielleicht kann ich dir irgendwie helfen?
 
 
@@ -197,7 +197,7 @@ Ich kann mir vorstellen, wie schwer das sein muss. Vielleicht kann ich dir irgen
 
 
 :: Eltern {"position":"2500,1225","size":"100,100"}
->>BekannterSprichtFriendly:<<
+>>BekannterSprichtSmiling:<<
 Und wie haben sie reagiert?
 
 [[Ganz gut, aber ich habe gemerkt, dass sie sich ziemliche Sorgen machen.->Viele Sorgen]]
@@ -324,7 +324,7 @@ Eine Kollegin hat mal von einer Anlaufstelle gesprochen, die viele Infos dazu ha
 
 
 :: Geschäftsabbruch II {"position":"2000,2600","size":"100,100"}
->>BekannterSprichtFriendly:<<
+>>BekannterSprichtSmiling:<<
 Das glaube ich dir sofort. Ich finde es toll, wie leidenschaftlich du arbeitest. Ich bin sicher, dass du es schaffen wirst.
 
 [[Danke dir! Wollen wir uns in ein paar Wochen nochmal treffen?->Erneutes Treffen]]
@@ -407,7 +407,7 @@ Ein Interview! Das klingt super!
 
 
 :: Karrierenetzwerk {"position":"2600,1825","size":"100,100"}
->>BekannterSprichtFriendly:<<
+>>BekannterSprichtSmiling:<<
 Das klingt richtig gut. Ich glaube, das wird teilweise auch unterschätzt, wie viel so ein Netzwerk helfen kann.
 
 [[Ja, anfangs war ich unsicher, dachte, ich hab nichts zu bieten, aber alle sind echt nett und hilfsbereit.->Alle hilfsbereit]]
@@ -416,7 +416,7 @@ Das klingt richtig gut. Ich glaube, das wird teilweise auch unterschätzt, wie v
 
 
 :: Kein Interesse {"position":"1875,2400","size":"100,100"}
->>BekannterSprichtFriendly:<<
+>>BekannterSprichtSmiling:<<
 Gib einfach Bescheid. 
 
 [[Mach ich. Mir geht's schon viel besser, nachdem ich alles loswerden konnte. Danke!->Deutlich besser]]
@@ -434,7 +434,7 @@ Kennst du nicht diese zentrale Anlaufstelle für Gründerinnen in Deutschland?
 
 
 :: Keine Veröffentlichung {"position":"2275,1825","size":"100,100"}
->>BekannterSprichtFriendly:<<
+>>BekannterSprichtSmiling:<<
 Ist doch okay. Du wirst bestimmt noch von anderen angesprochen, die dich nicht auf dein Geschlecht reduzieren. 
 
 [[Ja, das denke ich mir auch. Zur Not gehe ich auf Medien zu, die mehr zu mir passen.->Keine Veröffentlichung II]]
@@ -506,7 +506,7 @@ Ich kenne noch eine Anlaufstelle über eine Kollegin, die gerade auch nebenberuf
 
 
 :: Motivation {"position":"2075,1825","size":"100,100"}
->>BekannterSprichtFriendly:<<
+>>BekannterSprichtSmiling:<<
 Ja, das war sicher die richtige Entscheidung. Aber ich kann mir vorstellen, wie nervig es sein muss, wenn dauernd gefragt wird, wie du das als Frau hinbekommst... Mich fragt ja auch keiner, wie das als Vater mit Kind so läuft.
 
 [[Eben! Viele denken wahrscheinlich, dass deine Frau sich schon darum kümmert.->Rollenklischees]]
@@ -560,7 +560,7 @@ Verständlich! Dann erzähl mal, was lief denn bisher richtig gut und was für g
 
 
 :: Problem: Finanzierung {"position":"1600,925","size":"100,100"}
->>BekannterSprichtFriendly:<<
+>>BekannterSprichtSmiling:<<
 Ich kann mir vorstellen, wie anstrengend das sein muss. Was macht die Finanzierung denn so schwierig?
 
 [[Ein großer Teil des Problems ist Sexismus. Viele haben noch Vorurteile im Kopf, nehmen mich nicht ernst oder zweifeln an meinen Fähigkeiten.->Sexismus]]
@@ -691,7 +691,7 @@ Du kennst sie wahrscheinlich schon, aber ich denke, dass eine zentrale Anlaufste
 
 
 :: Unsicherheit {"position":"2175,1825","size":"100,100"}
->>BekannterSprichtFriendly:<<
+>>BekannterSprichtSmiling:<<
 Ach, ich denke, du kannst da ruhig deinen Instinkten vertrauen. Hört sich ja auch so an, als würdest du nicht ständig die gleichen Fragen beantworten wollen.
 
 [[Ja, ich würde gern über große Träume und die Zukunft reden, aber meistens geht's darum, wie ich überhaupt hierher gekommen bin.->Fokus II]]
@@ -727,7 +727,7 @@ Das klingt nach viel Arbeit. Ich habe gehört, dass Frauen oft anders behandelt 
 
 
 :: Viele Sorgen {"position":"2400,1375","size":"100,100"}
->>BekannterSprichtFriendly:<<
+>>BekannterSprichtSmiling:<<
 Verständlich. Du gründest zum ersten Mal, oder? Vermutlich wollen sie dich irgendwie schützen.
 
 [[Ja, und klar, meine Eltern wollen mich vor schlechten Erfahrungen bewahren, aber ein bisschen mehr Unterstützung wäre echt schön.->Mehr Unterstützung]]
@@ -774,7 +774,7 @@ Oh, wow! Das klingt echt spannend. Und wie läuft es so?
 
 
 :: Werbung {"position":"2125,1675","size":"100,100"}
->>BekannterSprichtFriendly:<<
+>>BekannterSprichtSmiling:<<
 Ja, es ist echt nicht einfach, Aufmerksamkeit für ein neues Unternehmen zu bekommen.
 
 [[Am Ende bin ich trotzdem froh, den Artikel veröffentlicht zu haben. Vielleicht motiviert das ja auch andere Frauen, zu gründen.->Motivation]]

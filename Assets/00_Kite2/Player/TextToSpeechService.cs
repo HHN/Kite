@@ -35,7 +35,7 @@ public class TextToSpeechService
 
     public void TextToSpeech(string titleAndId, bool readAnyway = false)
     {
-        if(TextToSpeechManager.Instance().IsTextToSpeechActivated() || readAnyway)
+        if(TextToSpeechManager.Instance.IsTextToSpeechActivated() || readAnyway)
         {
             audioSource.clip = Resources.Load<AudioClip>(returnNameOfAudioFileFromTitelAndId(titleAndId));
             if(audioSource.clip != null)

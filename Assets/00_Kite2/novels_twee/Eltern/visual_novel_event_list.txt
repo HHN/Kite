@@ -51,7 +51,7 @@ Wichtig ist, dass du die Risiken im Blick hast. Du musst dann ja auch oft verhan
 
 
 :: Besorgt-Negativ II [Bias] {"position":"1725,1675","size":"100,100"}
->>Charakter02SprichtFriendly:<<
+>>Charakter02SprichtSmiling:<<
 Vielleicht suchst du dir einen Geschäftspartner und überlässt dem diese harten Verhandlungsgespräche?
 >>--<<
 >>RelevanterBias:GeschlechtsspezifischeStereotypen<<
@@ -228,7 +228,7 @@ Und was ist denn mit Familie? Du willst doch später Kinder haben, oder nicht?
 [[Wer sagt denn, dass ich Kinder will, und selbst wenn, was soll's?->Kein Kind: Sexismus]]
 
 :: Mentorin {"position":"2600,600","size":"100,100"}
->>Charakter02SprichtFriendly:<<
+>>Charakter02SprichtSmiling:<<
 Gut, dass du vorbereitet bist und Unterstützung hast. Aber denk daran, dass nicht unbedingt alles nach Plan verläuft.
 >>--<<
 >>Charakter01SprichtDefeated:<<
@@ -245,7 +245,7 @@ Was machst du, wenn es mal Rückschläge gibt?
 >>Charakter01SprichtCritical:<<
 Denk lieber noch einmal darüber nach. Es ist naiv zu glauben, dass du ohne Erfahrung ein Unternehmen führen kannst.
 >>--<<
->>Charakter02SprichtFriendly:<<
+>>Charakter02SprichtSmiling:<<
 Oder vielleicht übernimmst du den kreativen Teil und überlässt die technischen Geschäftsaspekte lieber einem Partner?
 >>--<<
 >>RelevanterBias:BiasInDerWahrnehmungVonFuehrungsfaehigkeiten<<
@@ -255,16 +255,16 @@ Oder vielleicht übernimmst du den kreativen Teil und überlässt die technische
 [[Ich kriege das schon hin und hole bei Bedarf Fachleute dazu. Lass uns das einfach so stehen lassen.->Negativ: Benevolenter Sexismus]]
 
 :: Negativ Ende {"position":"2825,1800","size":"100,100"}
->>Charakter02SprichtFriendly:<<
+>>Charakter02SprichtSmiling:<<
 Wir können ja nochmal darüber sprechen.
 >>--<<
 >>SpielerinCharakterSpricht:<<
 Ja, mal schauen. Ich melde mich. Bis dann.
 >>--<<
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Tschüss.
 >>--<<
->>Charakter02SprichtFriendly:<<
+>>Charakter02SprichtSmiling:<<
 Mach's gut.
 >>--<<
 >>Ende<<
@@ -301,7 +301,7 @@ Dann erzähle ich lieber nicht, dass ich diese Woche noch einen Termin...
 >>Charakter01SprichtCritical:<<
 Na ja, hoffentlich klappt das alles.
 >>--<<
->>Charakter02SprichtFriendly:<<
+>>Charakter02SprichtSmiling:<<
 Wir drücken dir auf jeden Fall die Daumen.
 >>--<<
 >>SpielerinCharakterSpricht:<<
@@ -315,20 +315,20 @@ Danke. Ah, was ich dir auch noch sagen wollte. Ich habe diese Woche noch einen T
 
 
 :: Neutral Ende a {"position":"1250,1875","size":"100,100"}
->>Charakter02SprichtFriendly:<<
+>>Charakter02SprichtSmiling:<<
 Alles klar, und besuch uns mal wieder. 
 >>--<<
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Bis dann.
 >>--<<
 >>Ende<<
 
 
 :: Neutral Ende b {"position":"1400,1875","size":"100,100"}
->>Charakter02SprichtFriendly:<<
+>>Charakter02SprichtSmiling:<<
 Oh, so war das nicht gemeint! Besuch uns mal wieder. 
 >>--<<
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Ja, komm doch wieder mal vorbei. Mach's gut!
 >>--<<
 >>Ende<<
@@ -344,7 +344,7 @@ Natürlich, aber ich mache mir einfach Sorgen und möchte, dass du an alles geda
 
 
 :: Neutral-Termin [Bias] {"position":"1325,1725","size":"100,100"}
->>Charakter02SprichtFriendly:<<
+>>Charakter02SprichtSmiling:<<
 Da bin ich gespannt. Denk dran, die Leute werden sich wohler fühlen, mit dir zu arbeiten, wenn du freundlich und aufgeschlossen auftrittst. Versuch also nicht so dominant zu wirken.
 >>--<<
 >>RelevanterBias:TightropeBias<<
@@ -416,7 +416,7 @@ Und du kannst auch deinen weiblichen Charme nutzen! Dann helfen Leute dir noch v
 >>Charakter02SprichtAstonished:<<
 Du hast ja recht. Da habe ich nicht richtig darüber nachgedacht.
 >>--<<
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtSmiling:<<
 Melde dich einfach nach dem Termin, ja?
 
 [[Klar, ich melde mich dann. Ich muss auch schon wieder weiter.->Positiv-Termin Ende]]
@@ -476,7 +476,7 @@ Und bist du sicher, dass das eine gute Idee ist? Ich meine es nur gut, aber es w
 
 [[Ich fange mit meinen Ersparnissen an und bemühe mich um weitere Finanzierungsmöglichkeiten.->Ersparnis]]
 
-[[Ich werde einen Kredite beantragen und nach weiteren Wegen suchen, das Ganze zu finanzieren.->Kredite]]
+[[Ich werde einen Kredit beantragen und nach weiteren Wegen suchen, das Ganze zu finanzieren.->Kredite]]
 
 [[Ich versteh eure Sorgen, aber ich hab lange drüber nachgedacht und bin bereit, die Herausforderung anzugehen.->Herausforderung]]
 
