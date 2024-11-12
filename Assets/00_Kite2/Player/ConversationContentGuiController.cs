@@ -8,7 +8,8 @@ public class ConversationContentGuiController : MonoBehaviour
     [Header("Event Data")]
     [SerializeField] private List<VisualNovelEvent> content = new List<VisualNovelEvent>();
     [SerializeField] private List<GameObject> guiContent = new List<GameObject>();
-    [SerializeField] private List<VisualNovelEvent> options = new List<VisualNovelEvent>();
+    [SerializeField] private List<VisualNovelEvent> visualNovelEvents = new List<VisualNovelEvent>();
+    private List<VisualNovelEvent> options = new List<VisualNovelEvent>();
 
     [Header("Message Prefabs")]
     [SerializeField] private GameObject blueMessagePrefab;
@@ -46,6 +47,7 @@ public class ConversationContentGuiController : MonoBehaviour
         {
             case VisualNovelEventType.SHOW_MESSAGE_EVENT :
                 {
+                    visualNovelEvents.Add(novelEvent);
                     ShowMessage(novelEvent);
                     break;
                 }
@@ -56,7 +58,6 @@ public class ConversationContentGuiController : MonoBehaviour
                 }
             case VisualNovelEventType.SHOW_CHOICES_EVENT:
                 {
-
                     // Instantiate the options prefab and add it to the guiContent list
                     GameObject optionsObject = Instantiate(optionsPrefab, this.transform);
                     OptionsManager prefab = optionsObject.GetComponent<OptionsManager>();
@@ -208,4 +209,56 @@ public class ConversationContentGuiController : MonoBehaviour
         get => options;
         set => options = value;
     }
+
+    public List<VisualNovelEvent> VisualNovelEvents
+    {
+        get => visualNovelEvents;
+        set => visualNovelEvents = value;
+    }
+
+    public void ReconstructGuiContent(List<VisualNovelEvent> visualNovelEvents)
+    {
+        // Entferne alle aktuellen GUI-Elemente in der Szene
+        foreach (GameObject guiElement in guiContent)
+        {
+            if (guiElement != null)
+            {
+                Destroy(guiElement);
+            }
+        }
+        guiContent.Clear();
+
+        // Durchlaufe jedes Event in visualNovelEvents und erstelle das entsprechende GUI-Element
+        foreach (VisualNovelEvent novelEvent in visualNovelEvents)
+        {
+            GameObject newMessageBox = null;
+
+            // Bestimme den Typ des Prefabs basierend auf dem Charaktertyp und dem Ereignistyp
+            if (novelEvent.character == CharacterTypeHelper.ToInt(Character.PLAYER))
+            {
+                newMessageBox = Instantiate(blueMessagePrefab, this.transform);
+            }
+            else if (novelEvent.character == CharacterTypeHelper.ToInt(Character.INTRO) ||
+                     novelEvent.character == CharacterTypeHelper.ToInt(Character.OUTRO) ||
+                     novelEvent.character == CharacterTypeHelper.ToInt(Character.INFO))
+            {
+                newMessageBox = Instantiate(cottaMessagePrefab, this.transform);
+            }
+            else
+            {
+                newMessageBox = Instantiate(greyMessagePrefab, this.transform);
+            }
+
+            // Setze die Nachricht im ChatMessageBox-Skript
+            if (newMessageBox != null)
+            {
+                ChatMessageBox messageBox = newMessageBox.GetComponent<ChatMessageBox>();
+                messageBox.SetMessage(PlayNovelSceneController.ReplacePlaceholders(novelEvent.text, PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables()));
+
+                // Füge das neu erstellte GameObject der guiContent-Liste hinzu
+                guiContent.Add(newMessageBox);
+            }
+        }
+    }
+
 }

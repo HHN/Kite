@@ -13,8 +13,12 @@ public class HintForSavegameMessageBox : MonoBehaviour
     [SerializeField] private GameObject person; // GameObject representing the person or character related to the message
 
     private PlayNovelSceneController playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
-    private FoundersBubbleSceneController foundersBubbleSceneController;
-    private NovelDescriptionTextbox novelDescriptionTextbox;
+
+    private void Awake()
+    {
+        // Find and assign the PlayNovelSceneController component for novel control actions
+        playNovelSceneController = FindObjectOfType<PlayNovelSceneController>();
+    }
 
     void Start()
     {
@@ -27,12 +31,6 @@ public class HintForSavegameMessageBox : MonoBehaviour
 
         // Update all text components with the proper font size
         FontSizeManager.Instance().UpdateAllTextComponents();
-
-        // Find and assign the PlayNovelSceneController component for novel control actions
-        playNovelSceneController = GameObject.Find("Controller").GetComponent<PlayNovelSceneController>();
-
-        //foundersBubbleSceneController = FindAnyObjectByType<FoundersBubbleSceneController>();
-        //novelDescriptionTextbox = FindAnyObjectByType<NovelDescriptionTextbox>();
     }
 
     /// <summary>
@@ -40,9 +38,6 @@ public class HintForSavegameMessageBox : MonoBehaviour
     /// </summary>
     private void InitUI()
     {
-        // Log the current color from the NovelColorManager instance to the console
-        Debug.Log("NovelColorManager.Instance().GetColor(): " + NovelColorManager.Instance().GetColor());
-
         // Retrieve the color from the NovelColorManager instance
         Color color = NovelColorManager.Instance().GetColor();
 
@@ -124,24 +119,24 @@ public class HintForSavegameMessageBox : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private void LoadNovelScene()
-    {
-        PlayManager.Instance().SetVisualNovelToPlay(novelDescriptionTextbox.NovelToPlay);
-        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(novelDescriptionTextbox.NovelName));
-        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(novelDescriptionTextbox.NovelName));
-        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelDescriptionTextbox.NovelName));
-        GameObject buttonSound = Instantiate(novelDescriptionTextbox.SelectNovelSoundPrefab);
-        DontDestroyOnLoad(buttonSound);
+    //private void LoadNovelScene()
+    //{
+    //    PlayManager.Instance().SetVisualNovelToPlay(novelDescriptionTextbox.NovelToPlay);
+    //    PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(novelDescriptionTextbox.NovelName));
+    //    PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(novelDescriptionTextbox.NovelName));
+    //    PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelDescriptionTextbox.NovelName));
+    //    GameObject buttonSound = Instantiate(novelDescriptionTextbox.SelectNovelSoundPrefab);
+    //    DontDestroyOnLoad(buttonSound);
 
-        if (ShowPlayInstructionManager.Instance().ShowInstruction())
-        {
-            SceneLoader.LoadPlayInstructionScene();
+    //    if (ShowPlayInstructionManager.Instance().ShowInstruction())
+    //    {
+    //        SceneLoader.LoadPlayInstructionScene();
 
-        }
-        else
-        {
-            SceneLoader.LoadPlayNovelScene();
-        }
-        return;
-    }
+    //    }
+    //    else
+    //    {
+    //        SceneLoader.LoadPlayNovelScene();
+    //    }
+    //    return;
+    //}
 }

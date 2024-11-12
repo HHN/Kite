@@ -8,6 +8,7 @@ public class NovelSaveData
     public string novelId; // Einzigartige ID der Novel
     public string currentEventId; // Aktuelles Event
     public List<string> playThroughHistory; // Verlauf der gewählten Aktionen oder Dialoge
+    public List<VisualNovelEvent> visualNovelEvents;
 
     // GUI-relevante Daten (IDs statt GameObjects)
     //public List<string> guiContent;
