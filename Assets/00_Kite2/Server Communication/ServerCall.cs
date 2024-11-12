@@ -51,6 +51,9 @@ public abstract class ServerCall : MonoBehaviour
                     }
                     Response response = JsonUtility.FromJson<Response>(webRequest.downloadHandler.text);
                     OnResponse(response);
+
+                    //Debug.Log("response.GetResultText(): " + response.GetResultText());
+                    //Debug.Log("response.GetCompletion(): " + response.GetCompletion());
                     break;
                 }
             default:

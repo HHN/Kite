@@ -48,6 +48,7 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
             finishButtonBottomContainer.SetActive(true);
             return;
         }
+
         if (string.IsNullOrEmpty(novelToPlay.feedback))
         {
             StartWaitingMusic();
@@ -55,25 +56,36 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
             feedbackText.SetText("Das Feedback wird gerade geladen. Dies dauert durchschnittlich zwischen 30 und 60 Sekunden. Solltest du nicht so lange warten wollen, kannst du dir das Feedback einfach im Archiv anschauen, sobald es fertig ist.");
             GetCompletionServerCall call = Instantiate(gptServercallPrefab).GetComponent<GetCompletionServerCall>();
             call.sceneController = this;
+
             FeedbackHandler feedbackHandler = new FeedbackHandler()
             {
                 feedbackSceneController = this,
                 id = PlayManager.Instance().GetVisualNovelToPlay().id,
                 dialog = PromptManager.Instance().GetDialog()
             };
+
+            //Debug.Log("feedbackHandler.dialog: " + feedbackHandler.dialog);
+
             call.onSuccessHandler = feedbackHandler;
             call.onErrorHandler = this;
+
             if (novel != null)
             {
+                //Debug.Log("novel.context: " + novel.context);
                 call.prompt = PromptManager.Instance().GetPrompt(novel.context);
-            } else
+                //Debug.Log("call.prompt: " + call.prompt);
+            } 
+            else
             {
                 call.prompt = PromptManager.Instance().GetPrompt("");
             }
+
             call.SendRequest();
             DontDestroyOnLoad(call.gameObject);
             return;
         }
+
+        //Debug.Log("novelToPlay.feedback: " + novelToPlay.feedback);
         feedbackText.SetText(novelToPlay.feedback);
         loadingAnimation.SetActive(false);
     }

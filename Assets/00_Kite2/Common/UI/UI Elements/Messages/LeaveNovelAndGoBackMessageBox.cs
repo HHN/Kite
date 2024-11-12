@@ -100,7 +100,9 @@ public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
 
     public void OnEndButton()
     {
-        playNovelSceneController.playThroughHistory.Add("Das Gespräch wurde vorzeitig beendet.");
+        //playNovelSceneController.playThroughHistory.Add("Das Gespräch wurde vorzeitig beendet. Bitte beachte, dass kein Teil des Dialogs in das Feedback darf.");
+
+        PromptManager.Instance().AddLineToPrompt("Das Gespräch wurde vorzeitig beendet. Bitte beachte, dass kein Teil des Dialogs in das Feedback darf.");
 
         playNovelSceneController.HandleEndNovelEvent();
     }
