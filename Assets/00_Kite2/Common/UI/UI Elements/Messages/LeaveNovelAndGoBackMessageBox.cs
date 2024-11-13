@@ -6,40 +6,43 @@ public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
 {
     [Header("Message Box Text Components")]
     [SerializeField] private TextMeshProUGUI messageBoxHeadline;
+
     [SerializeField] private TextMeshProUGUI messageBoxBody;
 
     [Header("Action Buttons")]
     [SerializeField] private Button continueButton;  // Continue with the novel
+
     [SerializeField] private Button pauseButton;     // Pause the novel
     [SerializeField] private Button cancelButton;    // Cancel the novel
     [SerializeField] private Button endButton;       // End the novel and mark it as completed
 
     [Header("Background Elements")]
     [SerializeField] private GameObject backgroundContinue;
+
     [SerializeField] private GameObject backgroundPause;
     [SerializeField] private GameObject backgroundCancel;
     [SerializeField] private GameObject backgroundEnd;
 
     [Header("Miscellaneous Elements")]
     [SerializeField] private GameObject textStay;
+
     [SerializeField] private GameObject person;
+    private ConversationContentGuiController _conversationContentGuiController; // Reference to the PlayNovelSceneController to manage novel actions
 
-    private PlayNovelSceneController playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
-    private ConversationContentGuiController conversationContentGuiController; // Reference to the PlayNovelSceneController to manage novel actions
+    private PlayNovelSceneController _playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
 
-
-    void Start()
+    private void Start()
     {
-        continueButton.onClick.AddListener(delegate { OnContinueButton(); });
-        pauseButton.onClick.AddListener(delegate { OnPauseButton(); });
-        cancelButton.onClick.AddListener(delegate { OnCancelButton(); });
-        endButton.onClick.AddListener(delegate { OnEndButton(); });
+        continueButton.onClick.AddListener(OnContinueButton);
+        pauseButton.onClick.AddListener(OnPauseButton);
+        cancelButton.onClick.AddListener(OnCancelButton);
+        endButton.onClick.AddListener(OnEndButton);
 
         InitUI();
         FontSizeManager.Instance().UpdateAllTextComponents();
 
-        playNovelSceneController = FindAnyObjectByType<PlayNovelSceneController>();
-        conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
+        _playNovelSceneController = FindAnyObjectByType<PlayNovelSceneController>();
+        _conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
     }
 
     private void InitUI()
@@ -55,36 +58,26 @@ public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
         textStay.GetComponent<TextMeshProUGUI>().color = colour;
     }
 
-    public void SetHeadline(string headline)
-    {
-        messageBoxHeadline.text = headline;
-    }
-
-    public void SetBody(string headline)
-    {
-        messageBoxBody.text = headline;
-    }
-
     public void Activate()
     {
         this.gameObject.SetActive(true);
     }
 
-    public void OnContinueButton()
+    private void OnContinueButton()
     {
-        playNovelSceneController.IsPaused = false; // Resume the novel progression
+        _playNovelSceneController.IsPaused = false; // Resume the novel progression
 
         this.CloseMessageBox();
 
-        playNovelSceneController.PlayNextEvent();
+        _playNovelSceneController.PlayNextEvent();
     }
 
-    public void OnPauseButton()
+    private void OnPauseButton()
     {
-        SaveLoadManager.SaveNovelData(playNovelSceneController, conversationContentGuiController);
+        SaveLoadManager.SaveNovelData(_playNovelSceneController, _conversationContentGuiController);
     }
 
-    public void OnCancelButton()
+    private void OnCancelButton()
     {
         // Disable animations after confirmation
         AnimationFlagSingleton.Instance().SetFlag(false);
@@ -103,9 +96,9 @@ public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
         }
 
         // If the last scene is the PLAY_INSTRUCTION_SCENE, load the FOUNDERS_BUBBLE_SCENE instead
-        if (lastScene == SceneNames.PLAY_INSTRUCTION_SCENE.ToString())
+        if (lastScene == SceneNames.PLAY_INSTRUCTION_SCENE)
         {
-            SceneLoader.LoadScene(SceneNames.FOUNDERS_BUBBLE_SCENE.ToString());
+            SceneLoader.LoadScene(SceneNames.FOUNDERS_BUBBLE_SCENE);
             BackStackManager.Instance().Pop(); // Remove the instruction scene from the back stack
             return; // Exit the method after loading the new scene
         }
@@ -114,18 +107,16 @@ public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
         SceneLoader.LoadScene(lastScene);
     }
 
-    public void OnEndButton()
+    private void OnEndButton()
     {
-        //playNovelSceneController.playThroughHistory.Add("Das Gespr‰ch wurde vorzeitig beendet. Bitte beachte, dass kein Teil des Dialogs in das Feedback darf.");
+        PromptManager.Instance().AddLineToPrompt("Das Gespr√§ch wurde vorzeitig beendet. Bitte beachte, dass kein Teil des Dialogs in das Feedback darf.");
 
-        PromptManager.Instance().AddLineToPrompt("Das Gespr‰ch wurde vorzeitig beendet. Bitte beachte, dass kein Teil des Dialogs in das Feedback darf.");
-
-        playNovelSceneController.HandleEndNovelEvent();
+        _playNovelSceneController.HandleEndNovelEvent();
     }
 
     public void CloseMessageBox()
     {
-        if (DestroyValidator.IsNullOrDestroyed(this) || DestroyValidator.IsNullOrDestroyed(this.gameObject))
+        if (this.IsNullOrDestroyed() || this.gameObject.IsNullOrDestroyed())
         {
             return;
         }

@@ -10,21 +10,24 @@ public class HintForSavegameMessageBox : MonoBehaviour
     [SerializeField] private Button restartButton; // Button to restart the novel
     [SerializeField] private GameObject textContinue; // GameObject containing the "Continue" text
     [SerializeField] private GameObject textRestart; // GameObject containing the "Restart" text
-    [SerializeField] private GameObject person; // GameObject representing the person or character related to the message
 
-    private PlayNovelSceneController playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
+    [SerializeField]
+    private GameObject person; // GameObject representing the person or character related to the message
+
+    private PlayNovelSceneController
+        _playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
 
     private void Awake()
     {
         // Find and assign the PlayNovelSceneController component for novel control actions
-        playNovelSceneController = FindObjectOfType<PlayNovelSceneController>();
+        _playNovelSceneController = FindObjectOfType<PlayNovelSceneController>();
     }
 
     void Start()
     {
         // Attach listeners to buttons to handle click events
-        continueButton.onClick.AddListener(delegate { OnContinueButton(); });
-        restartButton.onClick.AddListener(delegate { OnRestartButton(); });
+        continueButton.onClick.AddListener(OnContinueButton);
+        restartButton.onClick.AddListener(OnRestartButton);
 
         // Initialize UI settings
         InitUI();
@@ -47,24 +50,6 @@ public class HintForSavegameMessageBox : MonoBehaviour
     }
 
     /// <summary>
-    /// Set the headline text for the message box.
-    /// </summary>
-    /// <param name="headline">The headline text to be displayed in the message box.</param>
-    public void SetHeadline(string headline)
-    {
-        messageBoxHeadline.text = headline;
-    }
-
-    /// <summary>
-    /// Set the body text for the message box.
-    /// </summary>
-    /// <param name="body">The body text to be displayed in the message box.</param>
-    public void SetBody(string body)
-    {
-        messageBoxBody.text = body;
-    }
-
-    /// <summary>
     /// Activate the message box to make it visible on the screen.
     /// </summary>
     public void Activate()
@@ -75,18 +60,18 @@ public class HintForSavegameMessageBox : MonoBehaviour
     /// <summary>
     /// Handle the event when the continue button is clicked.
     /// </summary>
-    public void OnContinueButton()
+    private void OnContinueButton()
     {
-        playNovelSceneController.ResumeFromSavedState();
+        _playNovelSceneController.ResumeFromSavedState();
         CloseMessageBox();
     }
 
     /// <summary>
     /// Handle the event when the restart button is clicked.
     /// </summary>
-    public void OnRestartButton()
+    private void OnRestartButton()
     {
-        playNovelSceneController.RestartNovel();
+        _playNovelSceneController.RestartNovel();
         CloseMessageBox();
     }
 
@@ -96,7 +81,7 @@ public class HintForSavegameMessageBox : MonoBehaviour
     public void CloseMessageBox()
     {
         // Ensure the object is not null or destroyed before attempting to destroy it
-        if (DestroyValidator.IsNullOrDestroyed(this) || DestroyValidator.IsNullOrDestroyed(this.gameObject))
+        if (this.IsNullOrDestroyed() || this.gameObject.IsNullOrDestroyed())
         {
             return;
         }

@@ -9,9 +9,15 @@ using System.Text.RegularExpressions;
 // Manages saving and loading game data for a visual novel-style game
 public class SaveLoadManager : MonoBehaviour
 {
-    private static string saveFilePath = Application.persistentDataPath + "/novelSaveData.json";
+    private static readonly string SaveFilePath = Application.persistentDataPath + "/novelSaveData.json";
 
-    public static void SaveNovelData(PlayNovelSceneController playNovelSceneController, ConversationContentGuiController conversationContentGuiController)
+    /// <summary>
+    /// Speichert die aktuellen Daten einer Novel.
+    /// </summary>
+    /// <param name="playNovelSceneController">Der Controller der aktuellen Spielszenen.</param>
+    /// <param name="conversationContentGuiController">Der Controller für den Konversationsinhalt.</param>
+    public static void SaveNovelData(PlayNovelSceneController playNovelSceneController,
+        ConversationContentGuiController conversationContentGuiController)
     {
         // Lade alle gespeicherten Daten als Dictionary
         Dictionary<string, NovelSaveData> allSaveData = LoadAllSaveData();
@@ -41,7 +47,6 @@ public class SaveLoadManager : MonoBehaviour
         {
             //novelId = currentNovelId,
             currentEvent = formattedId,
-            nextEventToPlayId = nextEventToPlayId,
             playThroughHistory = playNovelSceneController.PlayThroughHistory,
             visualNovelEvents = conversationContentGuiController.VisualNovelEvents,
         };
@@ -52,37 +57,38 @@ public class SaveLoadManager : MonoBehaviour
         // Serialisiere das Dictionary und speichere es im Pretty-Format
         string json = JsonConvert.SerializeObject(allSaveData, Formatting.Indented);
 
-        File.WriteAllText(saveFilePath, json, Encoding.UTF8);
+        File.WriteAllText(SaveFilePath, json, Encoding.UTF8);
 
         GameManager.Instance.UpdateNovelSaveStatus(currentNovelId, true);
     }
 
-    // Lädt die Daten einer bestimmten Novel
+    /// <summary>
+    /// Lädt die Daten einer bestimmten Novel.
+    /// </summary>
+    /// <param name="currentNovelId">Die eindeutige ID der zu ladenden Novel.</param>
+    /// <returns>Gibt die gespeicherten Daten der Novel zurück, oder <c>null</c>, wenn keine Daten gefunden wurden.</returns>
     public static NovelSaveData Load(string currentNovelId)
     {
         // Lade alle gespeicherten Daten
         Dictionary<string, NovelSaveData> allSaveData = LoadAllSaveData();
 
         // Suche nach einem Speicherstand mit passender novelId
-        if (allSaveData.TryGetValue(currentNovelId, out NovelSaveData saveData))
-        {
-            return saveData;
-        }
-        else
-        {
-            return null;
-        }
+        return allSaveData.GetValueOrDefault(currentNovelId);
     }
 
-    // Lädt alle gespeicherten Daten aus der JSON-Datei
+    /// <summary>
+    /// Lädt alle gespeicherten Daten aus der JSON-Datei.
+    /// </summary>
+    /// <returns>Ein Dictionary mit allen gespeicherten Noveldaten, wobei der Schlüssel die Novel-ID ist.</returns>
     private static Dictionary<string, NovelSaveData> LoadAllSaveData()
     {
-        if (File.Exists(saveFilePath))
+        if (File.Exists(SaveFilePath))
         {
             try
             {
-                string json = File.ReadAllText(saveFilePath);
-                Dictionary<string, NovelSaveData> allSaveData = JsonConvert.DeserializeObject<Dictionary<string, NovelSaveData>>(json);
+                string json = File.ReadAllText(SaveFilePath);
+                Dictionary<string, NovelSaveData> allSaveData =
+                    JsonConvert.DeserializeObject<Dictionary<string, NovelSaveData>>(json);
                 return allSaveData ?? new Dictionary<string, NovelSaveData>();
             }
             catch (Exception ex)
@@ -97,6 +103,10 @@ public class SaveLoadManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Löscht die gespeicherten Daten einer bestimmten Novel.
+    /// </summary>
+    /// <param name="novelId">Die eindeutige ID der zu löschenden Novel.</param>
     public static void DeleteNovelSaveData(string novelId)
     {
         // Lade alle gespeicherten Daten
@@ -109,7 +119,7 @@ public class SaveLoadManager : MonoBehaviour
         {
             // Überschreibe die Datei nur, wenn die Löschung erfolgreich war
             string json = JsonConvert.SerializeObject(allSaveData, Formatting.Indented);
-            File.WriteAllText(saveFilePath, json, Encoding.UTF8);
+            File.WriteAllText(SaveFilePath, json, Encoding.UTF8);
         }
         else
         {
@@ -117,6 +127,9 @@ public class SaveLoadManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Löscht alle gespeicherten Noveldaten.
+    /// </summary>
     public static void ClearAllSaveData()
     {
         // Leeres Dictionary erstellen
@@ -124,13 +137,6 @@ public class SaveLoadManager : MonoBehaviour
 
         // Serialisiere das leere Dictionary und überschreibe die Datei
         string json = JsonConvert.SerializeObject(emptySaveData, Formatting.Indented);
-        File.WriteAllText(saveFilePath, json, Encoding.UTF8);
-    }
-
-    // Wrapper-Klasse zum Speichern der Liste als JSON
-    [Serializable]
-    private class SaveDataListWrapper
-    {
-        public Dictionary<string, NovelSaveData> allSaveData = new Dictionary<string, NovelSaveData>();
+        File.WriteAllText(SaveFilePath, json, Encoding.UTF8);
     }
 }
