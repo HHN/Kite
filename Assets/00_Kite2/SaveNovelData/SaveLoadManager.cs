@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
+using System.Text.RegularExpressions;
 
 // Manages saving and loading game data for a visual novel-style game
 public class SaveLoadManager : MonoBehaviour
@@ -13,108 +13,103 @@ public class SaveLoadManager : MonoBehaviour
 
     public static void SaveNovelData(PlayNovelSceneController playNovelSceneController, ConversationContentGuiController conversationContentGuiController)
     {
-        List<NovelSaveData> allSaveData = LoadAllSaveData();
+        // Lade alle gespeicherten Daten als Dictionary
+        Dictionary<string, NovelSaveData> allSaveData = LoadAllSaveData();
 
         // Aktuelle Novel-Daten
         string currentNovelId = playNovelSceneController.NovelToPlay.id.ToString();
+        string nextEventToPlayId = playNovelSceneController.NextEventToPlay.id;
+
+        VisualNovelEvent currentEvent = playNovelSceneController.GetCurrentEvent();
+
+        // Definiere ein neues Event-ID-Format
+        string formattedId = currentEvent.id;
+
+        if (currentEvent.id.StartsWith("OptionsLabel"))
+        {
+            // Verwende Regex, um "OptionsLabel" gefolgt von Zahlen zu extrahieren
+            Match match = Regex.Match(currentEvent.id, @"^OptionsLabel(\d+)");
+            if (match.Success)
+            {
+                // Extrahiere die Zahl nach "OptionsLabel"
+                string numericPart = match.Groups[1].Value;
+                formattedId = "OptionsLabel" + numericPart;
+            }
+        }
+
         NovelSaveData saveData = new NovelSaveData
         {
-            novelId = currentNovelId,
-            currentEventId = playNovelSceneController.NextEventToPlay.id,
+            //novelId = currentNovelId,
+            currentEvent = formattedId,
+            nextEventToPlayId = nextEventToPlayId,
             playThroughHistory = playNovelSceneController.PlayThroughHistory,
             visualNovelEvents = conversationContentGuiController.VisualNovelEvents,
         };
 
-        // Überprüfe, ob die Novel bereits in der Liste existiert
-        int existingIndex = allSaveData.FindIndex(data => data.novelId == currentNovelId);
-        if (existingIndex >= 0)
-        {
-            // Überschreibe den bisherigen Speicherstand für diese Novel
-            allSaveData[existingIndex] = saveData;
-        }
-        else
-        {
-            // Neue Novel speichern
-            allSaveData.Add(saveData);
-        }
+        // Speichere oder aktualisiere die Novel im Dictionary
+        allSaveData[currentNovelId] = saveData;
 
-        // Serialisiere die gesamte Liste und speichere sie im Pretty-Format
-        var wrapper = new SaveDataListWrapper { allSaveData = allSaveData };
-        string json = JsonConvert.SerializeObject(wrapper, Formatting.Indented);
+        // Serialisiere das Dictionary und speichere es im Pretty-Format
+        string json = JsonConvert.SerializeObject(allSaveData, Formatting.Indented);
 
         File.WriteAllText(saveFilePath, json, Encoding.UTF8);
 
-        //Debug.Log("Spielstand gespeichert für Novel ID: " + currentNovelId);
-
-        SaveLoadManager.SaveNovelData(playNovelSceneController, conversationContentGuiController);
         GameManager.Instance.UpdateNovelSaveStatus(currentNovelId, true);
-
     }
 
     // Lädt die Daten einer bestimmten Novel
     public static NovelSaveData Load(string currentNovelId)
     {
-        //Debug.Log("Versuche, Novel mit ID zu laden: " + currentNovelId);
-
         // Lade alle gespeicherten Daten
-        List<NovelSaveData> allSaveData = LoadAllSaveData();
+        Dictionary<string, NovelSaveData> allSaveData = LoadAllSaveData();
 
         // Suche nach einem Speicherstand mit passender novelId
-        NovelSaveData saveData = allSaveData.FirstOrDefault(data => data.novelId == currentNovelId);
-        if (saveData != null)
+        if (allSaveData.TryGetValue(currentNovelId, out NovelSaveData saveData))
         {
-            //Debug.Log("Daten erfolgreich geladen für Novel ID: " + currentNovelId);
             return saveData;
         }
         else
         {
-            //Debug.LogWarning("Kein Speicherstand für Novel ID: " + currentNovelId);
             return null;
         }
     }
 
     // Lädt alle gespeicherten Daten aus der JSON-Datei
-    private static List<NovelSaveData> LoadAllSaveData()
+    private static Dictionary<string, NovelSaveData> LoadAllSaveData()
     {
         if (File.Exists(saveFilePath))
         {
             try
             {
                 string json = File.ReadAllText(saveFilePath);
-                //Debug.Log("Geladener JSON-Inhalt: " + json);
-                SaveDataListWrapper wrapper = JsonUtility.FromJson<SaveDataListWrapper>(json);
-                //Debug.Log("Anzahl der geladenen Einträge: " + wrapper.allSaveData.Count);
-                return wrapper.allSaveData;
+                Dictionary<string, NovelSaveData> allSaveData = JsonConvert.DeserializeObject<Dictionary<string, NovelSaveData>>(json);
+                return allSaveData ?? new Dictionary<string, NovelSaveData>();
             }
             catch (Exception ex)
             {
                 Debug.LogError("Fehler beim Laden der Daten: " + ex.Message);
-                return new List<NovelSaveData>();
+                return new Dictionary<string, NovelSaveData>();
             }
         }
         else
         {
-            //Debug.LogWarning("Speicherdatei nicht gefunden.");
-            return new List<NovelSaveData>();
+            return new Dictionary<string, NovelSaveData>();
         }
     }
 
     public static void DeleteNovelSaveData(string novelId)
     {
         // Lade alle gespeicherten Daten
-        List<NovelSaveData> allSaveData = LoadAllSaveData();
+        Dictionary<string, NovelSaveData> allSaveData = LoadAllSaveData();
 
-        // Suche und entferne den Speicherstand für die gegebene novelId
-        int indexToRemove = allSaveData.FindIndex(data => data.novelId == novelId);
-        if (indexToRemove >= 0)
+        // Versuche, das Element zu löschen
+        bool removed = allSaveData.Remove(novelId);
+
+        if (removed)
         {
-            allSaveData.RemoveAt(indexToRemove);
-
-            // Speichere die aktualisierte Liste zurück in die Datei
-            string json = JsonUtility.ToJson(new SaveDataListWrapper { allSaveData = allSaveData });
-            File.WriteAllText(saveFilePath, json);
-
-            Debug.Log($"Spielstand für Novel ID {novelId} gelöscht.");
+            // Überschreibe die Datei nur, wenn die Löschung erfolgreich war
+            string json = JsonConvert.SerializeObject(allSaveData, Formatting.Indented);
+            File.WriteAllText(saveFilePath, json, Encoding.UTF8);
         }
         else
         {
@@ -122,11 +117,20 @@ public class SaveLoadManager : MonoBehaviour
         }
     }
 
+    public static void ClearAllSaveData()
+    {
+        // Leeres Dictionary erstellen
+        Dictionary<string, NovelSaveData> emptySaveData = new Dictionary<string, NovelSaveData>();
+
+        // Serialisiere das leere Dictionary und überschreibe die Datei
+        string json = JsonConvert.SerializeObject(emptySaveData, Formatting.Indented);
+        File.WriteAllText(saveFilePath, json, Encoding.UTF8);
+    }
 
     // Wrapper-Klasse zum Speichern der Liste als JSON
     [Serializable]
     private class SaveDataListWrapper
     {
-        public List<NovelSaveData> allSaveData = new List<NovelSaveData>();
+        public Dictionary<string, NovelSaveData> allSaveData = new Dictionary<string, NovelSaveData>();
     }
 }

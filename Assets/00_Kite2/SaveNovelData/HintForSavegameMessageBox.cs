@@ -77,14 +77,6 @@ public class HintForSavegameMessageBox : MonoBehaviour
     /// </summary>
     public void OnContinueButton()
     {
-        //Debug.Log("[HintForSavegameMessageBox] - [OnContinueButton] - Continue the novel.");
-
-        //// Beispiel: Überprüfen und Setzen des Flags für eine bestimmte Novel
-        //GameManager.Instance.SetNovelSavedFlag(novelDescriptionTextbox.NovelToPlay.title.ToString(), true);
-
-        //LoadNovelScene();
-
-        Debug.Log("Fortsetzen an der letzten gespeicherten Stelle.");
         playNovelSceneController.ResumeFromSavedState();
         CloseMessageBox();
     }
@@ -94,13 +86,6 @@ public class HintForSavegameMessageBox : MonoBehaviour
     /// </summary>
     public void OnRestartButton()
     {
-        //Debug.Log("[HintForSavegameMessageBox] - [OnRestartButton] - Restart the novel.");
-
-        //GameManager.Instance.SetNovelSavedFlag(novelDescriptionTextbox.NovelToPlay.title.ToString(), false);
-
-        //LoadNovelScene();
-
-        Debug.Log("Neustart der Novel.");
         playNovelSceneController.RestartNovel();
         CloseMessageBox();
     }
@@ -118,25 +103,4 @@ public class HintForSavegameMessageBox : MonoBehaviour
 
         Destroy(this.gameObject);
     }
-
-    //private void LoadNovelScene()
-    //{
-    //    PlayManager.Instance().SetVisualNovelToPlay(novelDescriptionTextbox.NovelToPlay);
-    //    PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(novelDescriptionTextbox.NovelName));
-    //    PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(novelDescriptionTextbox.NovelName));
-    //    PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelDescriptionTextbox.NovelName));
-    //    GameObject buttonSound = Instantiate(novelDescriptionTextbox.SelectNovelSoundPrefab);
-    //    DontDestroyOnLoad(buttonSound);
-
-    //    if (ShowPlayInstructionManager.Instance().ShowInstruction())
-    //    {
-    //        SceneLoader.LoadPlayInstructionScene();
-
-    //    }
-    //    else
-    //    {
-    //        SceneLoader.LoadPlayNovelScene();
-    //    }
-    //    return;
-    //}
 }

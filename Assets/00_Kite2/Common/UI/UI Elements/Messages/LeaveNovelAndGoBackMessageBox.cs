@@ -1,9 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Collections.Generic;
-using UnityEngine.TextCore.Text;
-using System.IO;
 
 public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
 {
@@ -84,13 +81,6 @@ public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
 
     public void OnPauseButton()
     {
-        Debug.Log("OnPauseButton");
-
-        // PlaythroughHistory speichern
-
-        // nextEventId speichern
-
-        // Speichere den Spielstand über den SaveLoadManager
         SaveLoadManager.SaveNovelData(playNovelSceneController, conversationContentGuiController);
     }
 

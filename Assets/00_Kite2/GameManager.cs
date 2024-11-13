@@ -129,9 +129,6 @@ public class GameManager : MonoBehaviour
     // Neue Methode zum Abrufen des Speicherstatus einer bestimmten Novel
     public bool HasSavedProgress(string novelId)
     {
-        foreach(var id in novelSaveStatus.Keys)
-        {
-        }
         // Hier wird geprüft, ob der Speicherstand für die Novel im Dictionary vorhanden ist und `true` ist
         return novelSaveStatus.ContainsKey(novelId) && novelSaveStatus[novelId];
     }

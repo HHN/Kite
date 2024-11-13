@@ -216,7 +216,7 @@ public class ConversationContentGuiController : MonoBehaviour
         set => visualNovelEvents = value;
     }
 
-    public void ReconstructGuiContent(List<VisualNovelEvent> visualNovelEvents)
+    public void ReconstructGuiContent(NovelSaveData savedData)
     {
         // Entferne alle aktuellen GUI-Elemente in der Szene
         foreach (GameObject guiElement in guiContent)
@@ -229,7 +229,7 @@ public class ConversationContentGuiController : MonoBehaviour
         guiContent.Clear();
 
         // Durchlaufe jedes Event in visualNovelEvents und erstelle das entsprechende GUI-Element
-        foreach (VisualNovelEvent novelEvent in visualNovelEvents)
+        foreach (VisualNovelEvent novelEvent in savedData.visualNovelEvents)
         {
             GameObject newMessageBox = null;
 

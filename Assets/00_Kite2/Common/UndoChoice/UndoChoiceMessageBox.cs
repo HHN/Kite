@@ -62,9 +62,6 @@ public class UndoChoiceMessageBox : MonoBehaviour
 
     public void OnConfirmButton()
     {
-        Debug.Log("Rückgängig machen!");
-
-        // Rufe hier die Wiederherstellungslogik auf
         CloseMessageBox();
         playNovelSceneController.RestoreChoice();
     }

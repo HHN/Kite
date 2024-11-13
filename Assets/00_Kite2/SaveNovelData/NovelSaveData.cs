@@ -5,8 +5,8 @@ using UnityEngine;
 [Serializable]
 public class NovelSaveData
 {
-    public string novelId; // Einzigartige ID der Novel
-    public string currentEventId; // Aktuelles Event
+    public string currentEvent;
+    public string nextEventToPlayId;
     public List<string> playThroughHistory; // Verlauf der gewählten Aktionen oder Dialoge
     public List<VisualNovelEvent> visualNovelEvents;
 

@@ -65,6 +65,8 @@ public class DeleteUserDataConfirmation : MonoBehaviour
         }
         if (origin == "reset")
         {
+            SaveLoadManager.ClearAllSaveData();
+
             TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.RESET_APP, engine);
             PlayerDataManager.Instance().ClearEverything();
             PlayerPrefs.DeleteAll();
