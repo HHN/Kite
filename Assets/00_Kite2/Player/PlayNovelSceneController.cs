@@ -928,31 +928,6 @@ public class PlayNovelSceneController : SceneController
         set => playThroughHistory = value;
     }
 
-    //public void RestoreGameState(VisualNovel savedNovel)
-    //{
-    //    NovelSaveData savedData = SaveLoadManager.Load(savedNovel.id.ToString());
-
-    //    if (savedData != null)
-    //    {
-    //        Debug.Log("Gespeicherter Fortschritt wird wiederhergestellt.");
-
-    //        // Setze die Novel und den Event zum Fortsetzen
-    //        novelToPlay = savedNovel;
-    //        nextEventToPlay = novelEvents[savedData.currentEventId];
-
-    //        // Füge den bisherigen Verlauf hinzu
-    //        playThroughHistory = new List<string>(savedData.playThroughHistory);
-
-    //        // Starte ab dem gespeicherten Event
-    //        PlayNextEvent();
-    //    }
-    //    else
-    //    {
-    //        Debug.LogWarning("Kein Speicherstand vorhanden, Spiel wird von Beginn an gestartet.");
-    //        Initialize();
-    //    }
-    //}
-
     // Methode für das stille Laden des Spielstands
     private void LoadGameStateSilently()
     {
@@ -961,7 +936,7 @@ public class PlayNovelSceneController : SceneController
         if (savedData != null)
         {
             // Speicher das gespeicherte Ereignis und die Historie ohne die UI zu aktualisieren
-            savedEventToResume = novelEvents[savedData.currentEventId];
+            savedEventToResume.eventType = int.Parse(savedData.currentEventType);
             playThroughHistory = new List<string>(savedData.playThroughHistory);
             isSaveLoaded = true; // Spielstand erfolgreich geladen
         }
@@ -990,24 +965,37 @@ public class PlayNovelSceneController : SceneController
     // Startet das Spiel vom gespeicherten Punkt, wenn "Fortsetzen" gewählt wird
     public void ResumeFromSavedState()
     {
-        //if (isSaveLoaded && savedEventToResume != null)
-        //{
-        //    Debug.Log("Fortsetzen des gespeicherten Spiels...");
-        //    nextEventToPlay = savedEventToResume;
-        //    PlayNextEvent(); // Führt das gespeicherte Ereignis weiter
-        //}
-
         string novelId = NovelToPlay.id.ToString();
         NovelSaveData savedData = SaveLoadManager.Load(novelId);
 
-        // Speicher das gespeicherte Ereignis und die Historie ohne die UI zu aktualisieren
-        nextEventToPlay = novelEvents[savedData.currentEventId];
+        if (savedData == null)
+        {
+            Debug.LogWarning("No saved data found for the novel.");
+            return;
+        }
+
+        Debug.Log("Attempting to load event with ID: " + savedData.currentEventType);
+
+        // Überprüfe, ob der gespeicherte Event-Typ im Dictionary vorhanden ist
+        if (novelEvents.ContainsKey(savedData.currentEventType))
+        {
+            nextEventToPlay = novelEvents[savedData.currentEventType];
+        }
+        else
+        {
+            Debug.LogWarning($"Event ID '{savedData.currentEventType}' not found in novelEvents. Starting from the first event.");
+            nextEventToPlay = novelToPlay.novelEvents[0]; // Setze das erste Event als Standard
+        }
+
+        // Speichere den bisherigen Verlauf
         playThroughHistory = new List<string>(savedData.playThroughHistory);
 
+        // Wiederherstellung des GUI-Inhalts
         conversationContentGuiController.ReconstructGuiContent(savedData.visualNovelEvents);
 
         PlayNextEvent();
     }
+
 
     // Methode zum Neustarten (bei Auswahl "Neustarten" im Dialog)
     public void RestartNovel()
