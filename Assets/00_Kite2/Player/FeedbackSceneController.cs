@@ -57,14 +57,17 @@ public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErro
             GetCompletionServerCall call = Instantiate(gptServercallPrefab).GetComponent<GetCompletionServerCall>();
             call.sceneController = this;
 
+            string dialog = PromptManager.Instance().GetDialog();
+            dialog = dialog.Replace("Bitte beachte, dass kein Teil des Dialogs in das Feedback darf.", "");
+
             FeedbackHandler feedbackHandler = new FeedbackHandler()
             {
                 feedbackSceneController = this,
                 id = PlayManager.Instance().GetVisualNovelToPlay().id,
-                dialog = PromptManager.Instance().GetDialog()
+                dialog = dialog
             };
 
-            //Debug.Log("feedbackHandler.dialog: " + feedbackHandler.dialog);
+            Debug.Log("feedbackHandler.dialog: " + feedbackHandler.dialog);
 
             call.onSuccessHandler = feedbackHandler;
             call.onErrorHandler = this;
