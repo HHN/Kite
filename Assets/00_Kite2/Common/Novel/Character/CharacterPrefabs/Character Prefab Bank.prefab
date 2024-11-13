@@ -176,10 +176,10 @@ MonoBehaviour:
   defaultMaterial: {fileID: 0}
   brightnessMaterial: {fileID: 2100000, guid: 08ff6e5fe6883ce48b8dae7920229ecc, type: 2}
   blurrMaterial: {fileID: 2100000, guid: 295578efd6536c54fa24c2a1d5308f69, type: 2}
-  characterImageFace: {fileID: 0}
-  characterImageHair: {fileID: 0}
-  characterImageCloths: {fileID: 0}
-  characterImageSkin: {fileID: 0}
+  characterImageFace: {fileID: 574019088309126247}
+  characterImageHair: {fileID: 6416909304724813844}
+  characterImageCloths: {fileID: 3658774889944424753}
+  characterImageSkin: {fileID: 2519114203800372224}
 --- !u!1 &1708395814580537654
 GameObject:
   m_ObjectHideFlags: 0
