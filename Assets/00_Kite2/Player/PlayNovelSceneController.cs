@@ -110,25 +110,11 @@ public class PlayNovelSceneController : SceneController
 
     public bool IsPaused { get; set; }
 
-    public VisualNovel NovelToPlay
-    {
-        get => novelToPlay;
-        set => novelToPlay = value;
-    }
+    public VisualNovel NovelToPlay => novelToPlay;
+    public VisualNovelEvent NextEventToPlay => nextEventToPlay;
+    public List<string> PlayThroughHistory => playThroughHistory;
 
-    public VisualNovelEvent NextEventToPlay
-    {
-        get => nextEventToPlay;
-        set => nextEventToPlay = value;
-    }
-
-    public List<string> PlayThroughHistory
-    {
-        get => playThroughHistory;
-        set => playThroughHistory = value;
-    }
-
-    void Start()
+    private void Start()
     {
         _conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
 
@@ -335,7 +321,7 @@ public class PlayNovelSceneController : SceneController
         eventHistory.Add(nextEventToPlay);
 
         VisualNovelEventType type = VisualNovelEventTypeHelper.ValueOf(nextEventToPlay.eventType);
-
+        
         switch (type)
         {
             case VisualNovelEventType.SET_BACKGROUND_EVENT:
@@ -965,7 +951,6 @@ public class PlayNovelSceneController : SceneController
         // Speichere den bisherigen Verlauf
         playThroughHistory = new List<string>(savedData.playThroughHistory);
 
-        // Wiederherstellung des GUI-Inhalts
         _conversationContentGuiController.ReconstructGuiContent(savedData);
 
         //Lösche den zugehörigen Speicherstand
@@ -981,10 +966,10 @@ public class PlayNovelSceneController : SceneController
         // Lösche den zugehörigen Speicherstand
         SaveLoadManager.DeleteNovelSaveData(novelToPlay.id.ToString());
 
-        foreach (VisualNovelEvent novelEvent in novelToPlay.novelEvents)
-        {
-            _novelEvents.Add(novelEvent.id, novelEvent);
-        }
+        // foreach (VisualNovelEvent novelEvent in novelToPlay.novelEvents)
+        // {
+        //     _novelEvents.Add(novelEvent.id, novelEvent);
+        // }
 
         nextEventToPlay = novelToPlay.novelEvents[0];
 

@@ -12,7 +12,17 @@ public class TypeWriterRegistrator : MonoBehaviour
 
     public void OnStartTyping()
     {
+        Debug.Log("OnStartTyping");
         TypewriterCore typewriterCore = GetComponent<TypewriterCore>();
+        
+        // typewriterCore.SkipTypewriter();
+        
+        if (GameManager.Instance.calledFromReload)
+        {
+            Debug.Log("OnStartTyping called from Reload");
+            typewriterCore.SkipTypewriter();
+        }
+        
         controller.currentTypeWriter = typewriterCore;
         controller.StartTalking();
     }

@@ -1,4 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Febucci.UI.Core;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,22 +35,10 @@ public class ConversationContentGuiController : MonoBehaviour
 
     private PlayNovelSceneController _sceneController;
 
-    public List<VisualNovelEvent> Content
-    {
-        get => content;
-        set => content = value;
-    }
-
     public List<GameObject> GuiContent
     {
         get => guiContent;
         set => guiContent = value;
-    }
-
-    public List<VisualNovelEvent> Options
-    {
-        get => _options;
-        set => _options = value;
     }
 
     public List<VisualNovelEvent> VisualNovelEvents
@@ -119,7 +110,7 @@ public class ConversationContentGuiController : MonoBehaviour
 
         ChatMessageBox messageBox = newMessageBox.GetComponent<ChatMessageBox>();
         messageBox.SetMessage(PlayNovelSceneController.ReplacePlaceholders(novelEvent.text,
-            PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables())); // TODO: Add replace
+            PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables()));
         guiContent.Add(newMessageBox);
         PromptManager.Instance().AddFormattedLineToPrompt(CharacterTypeHelper.GetNameOfCharacter(novelEvent.character),
             PlayNovelSceneController.ReplacePlaceholders(novelEvent.text,
@@ -158,7 +149,7 @@ public class ConversationContentGuiController : MonoBehaviour
     private void DisableButtonClick(GameObject messageBox)
     {
         if (messageBox.name.Contains(blueMessagePrefabWithTrigger
-                .name)) // Prüfe, ob es sich um das spezifische Prefab handelt
+                .name)) // Prï¿½fe, ob es sich um das spezifische Prefab handelt
         {
             Button button = messageBox.GetComponent<Button>();
             if (button != null)
@@ -169,13 +160,13 @@ public class ConversationContentGuiController : MonoBehaviour
         }
     }
 
-    // Methode zum Aktivieren des Button-Klicks für die neue Nachrichtbox
+    // Methode zum Aktivieren des Button-Klicks fï¿½r die neue Nachrichtbox
     private void EnableButtonClick(GameObject messageBox)
     {
         Button button = messageBox.GetComponent<Button>();
         if (button != null)
         {
-            button.interactable = true; // Aktiviere Interaktion für den neuen Button
+            button.interactable = true; // Aktiviere Interaktion fï¿½r den neuen Button
             button.onClick.AddListener(OnBlueMessageButtonClick);
         }
     }
@@ -204,18 +195,18 @@ public class ConversationContentGuiController : MonoBehaviour
 
     public void ClearUIAfter(int index)
     {
-        // Überprüfe, ob der Index gültig ist
+        // ï¿½berprï¿½fe, ob der Index gï¿½ltig ist
         if (index > guiContent.Count || index < 0)
         {
             return;
         }
 
-        // Lösche alle UI-Elemente, die nach dem entsprechenden Index angezeigt wurden
+        // Lï¿½sche alle UI-Elemente, die nach dem entsprechenden Index angezeigt wurden
         for (int i = guiContent.Count - 1; i >= index; i--)
         {
-            if (guiContent[i] != null) // Prüfe, ob das UI-Element nicht bereits null ist
+            if (guiContent[i] != null) // Prï¿½fe, ob das UI-Element nicht bereits null ist
             {
-                Destroy(guiContent[i]); // Löscht das GameObject aus der Szene
+                Destroy(guiContent[i]); // Lï¿½scht das GameObject aus der Szene
             }
 
             guiContent.RemoveAt(i); // Entfernt das Element aus der Liste, selbst wenn es null ist
@@ -225,29 +216,35 @@ public class ConversationContentGuiController : MonoBehaviour
     public void ReconstructGuiContent(NovelSaveData savedData)
     {
         // Entferne alle aktuellen GUI-Elemente in der Szene
-        foreach (GameObject guiElement in guiContent)
+        foreach (var guiElement in guiContent.Where(guiElement => guiElement != null))
         {
-            if (guiElement != null)
-            {
-                Destroy(guiElement);
-            }
+            Destroy(guiElement);
         }
 
         guiContent.Clear();
+        
+        GameManager.Instance.calledFromReload = true;
 
         // Durchlaufe jedes Event in visualNovelEvents und erstelle das entsprechende GUI-Element
-        foreach (VisualNovelEvent novelEvent in savedData.visualNovelEvents)
+        for (int i = 0; i < savedData.visualNovelEvents.Count; i++)
         {
+            VisualNovelEvent visualNovelEvent = savedData.visualNovelEvents[i];
+
             GameObject newMessageBox;
 
+            if (savedData.messageType[i].Contains("Blue Message Prefab With Trigger(Clone)"))
+            {
+                newMessageBox = Instantiate(blueMessagePrefabWithTrigger, this.transform);
+            }
+
             // Bestimme den Typ des Prefabs basierend auf dem Charaktertyp und dem Ereignistyp
-            if (novelEvent.character == CharacterTypeHelper.ToInt(Character.PLAYER))
+            else if (visualNovelEvent.character == CharacterTypeHelper.ToInt(Character.PLAYER))
             {
                 newMessageBox = Instantiate(blueMessagePrefab, this.transform);
             }
-            else if (novelEvent.character == CharacterTypeHelper.ToInt(Character.INTRO) ||
-                     novelEvent.character == CharacterTypeHelper.ToInt(Character.OUTRO) ||
-                     novelEvent.character == CharacterTypeHelper.ToInt(Character.INFO))
+            else if (visualNovelEvent.character == CharacterTypeHelper.ToInt(Character.INTRO) ||
+                     visualNovelEvent.character == CharacterTypeHelper.ToInt(Character.OUTRO) ||
+                     visualNovelEvent.character == CharacterTypeHelper.ToInt(Character.INFO))
             {
                 newMessageBox = Instantiate(cottaMessagePrefab, this.transform);
             }
@@ -255,17 +252,28 @@ public class ConversationContentGuiController : MonoBehaviour
             {
                 newMessageBox = Instantiate(greyMessagePrefab, this.transform);
             }
-
-            // Setze die Nachricht im ChatMessageBox-Skript
-            if (newMessageBox != null)
-            {
-                ChatMessageBox messageBox = newMessageBox.GetComponent<ChatMessageBox>();
-                messageBox.SetMessage(PlayNovelSceneController.ReplacePlaceholders(novelEvent.text,
-                    PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables()));
-
-                // Füge das neu erstellte GameObject der guiContent-Liste hinzu
-                guiContent.Add(newMessageBox);
-            }
+            
+            SetText(newMessageBox, visualNovelEvent.text);
         }
+
+        // GameManager.Instance.calledFromReload = false;
+    }
+
+    private void SetText(GameObject messageBox, string text)
+    {
+        // Setze das MessageBox-GameObject zunÃ¤chst auf unsichtbar
+        messageBox.SetActive(false);
+        guiContent.Add(messageBox);
+            
+        // Setze den Text in der MessageBox und starte den Typewriter-Effekt
+        ChatMessageBox chatMessageBox = messageBox.GetComponent<ChatMessageBox>();
+        if (messageBox != null)
+        {
+            chatMessageBox.textBox.text = ""; // Stelle sicher, dass der Text leer ist
+            chatMessageBox.textBox.text = text;
+        }
+            
+        // Aktiviere die MessageBox, nachdem der Text vollstÃ¤ndig angezeigt wurde
+        messageBox.SetActive(true);
     }
 }

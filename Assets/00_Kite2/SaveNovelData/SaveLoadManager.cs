@@ -43,12 +43,22 @@ public class SaveLoadManager : MonoBehaviour
             }
         }
 
+        List<string> messageBoxesNames = new List<string>();
+        foreach (var messageBox in conversationContentGuiController.GuiContent)
+        {
+            if (!messageBox.name.Contains("OptionsToChooseFrom(Clone)"))
+            {
+                messageBoxesNames.Add(messageBox.name);
+            } 
+        }
+
         NovelSaveData saveData = new NovelSaveData
         {
             //novelId = currentNovelId,
             currentEvent = formattedId,
             playThroughHistory = playNovelSceneController.PlayThroughHistory,
-            visualNovelEvents = conversationContentGuiController.VisualNovelEvents,
+            visualNovelEvents = conversationContentGuiController.VisualNovelEvents, // Brauch ich hier auch die eventHistory von playNovelSceneControllerﬂ
+            messageType = messageBoxesNames,
         };
 
         // Speichere oder aktualisiere die Novel im Dictionary

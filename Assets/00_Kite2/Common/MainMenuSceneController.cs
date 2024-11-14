@@ -176,8 +176,15 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
             yield return new WaitForSeconds(0.5f); // Wait half a second and check again
         }
 
-        // Call the method to start the introductory novel and pass the loaded novel list
-        StartIntroNovel(allNovels);
+        if (!GameManager.Instance.SkipIntroNovel)
+        {
+            // Call the method to start the introductory novel and pass the loaded novel list
+            StartIntroNovel(allNovels);
+        }
+        else
+        {
+            SceneLoader.LoadFoundersBubbleScene();
+        }
     }
 
     // Method to start the introductory novel

@@ -36,10 +36,12 @@ public class OptionsManager : MonoBehaviour
     public AudioClip selectedSound;
 
     private PlayNovelSceneController sceneController;
+    private ConversationContentGuiController _conversationContentGuiController;
 
     public void Initialize(PlayNovelSceneController sceneController, List<VisualNovelEvent> options)
     {
         this.sceneController = sceneController;
+        _conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
 
         // Initialisiere die Liste aller Optionen
         allOptions = new List<ChatMessageBox> { optionA, optionB, optionC, optionD, optionE };
@@ -114,7 +116,6 @@ public class OptionsManager : MonoBehaviour
         stringE = options[4].text;
         displayAfterSelectionE = options[4].show;
         AnalyticsServiceHandler.Instance().AddedLastChoice();
-        return;
     }
 
     public void OnOptionA()
@@ -149,6 +150,8 @@ public class OptionsManager : MonoBehaviour
 
     public IEnumerator AfterSelection(string parameterName, string answer, string nextEventID, bool displayAfterSelection, int index)
     {
+        GameManager.Instance.calledFromReload = false;
+        
         // Disable animations after the selection
         var animationFlagSingleton = AnimationFlagSingleton.Instance();
         if (animationFlagSingleton != null)
@@ -167,6 +170,13 @@ public class OptionsManager : MonoBehaviour
         // Add the current path (selection) to the visual novel path history
         if (sceneController != null)
         {
+            for (int i = 0; i < sceneController.NovelToPlay.novelEvents.Count; i++)
+            {
+                if (sceneController.NovelToPlay.novelEvents[i].text == answer)
+                {
+                    _conversationContentGuiController.VisualNovelEvents.Add(sceneController.NovelToPlay.novelEvents[i]);
+                }
+            }
             sceneController.AddPathToNovel(index);
         }
         else

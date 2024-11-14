@@ -8,6 +8,7 @@ public class NovelSaveData
     public string currentEvent;
     public List<string> playThroughHistory; // Verlauf der gewählten Aktionen oder Dialoge
     public List<VisualNovelEvent> visualNovelEvents;
+    public List<string> messageType;
 
     /// <summary>
     /// Konvertiert diese Instanz in einen JSON-String.

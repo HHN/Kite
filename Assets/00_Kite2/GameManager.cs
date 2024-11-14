@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Febucci.UI.Core;
 using UnityEngine;
 
 [Serializable]
@@ -17,6 +18,9 @@ public class GameManager : MonoBehaviour
 
     // Liste zur Anzeige im Inspector (nur f�r Debugging, nicht direkt genutzt)
     [SerializeField] private List<NovelSaveStatus> novelSaveStatusList = new();
+    
+    public TypewriterCore typewriterCore;
+    public bool calledFromReload = true;
 
     // Dictionary zur dynamischen Verwaltung des Speicherstatus jeder Novel
     private readonly Dictionary<string, bool> _novelSaveStatus = new();
@@ -27,6 +31,11 @@ public class GameManager : MonoBehaviour
         get => skipIntroNovel;
         set => skipIntroNovel = value;
     }
+
+    // public void CallFromReload()
+    // {
+    //     
+    // }
 
     private void Awake()
     {
