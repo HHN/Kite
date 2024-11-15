@@ -93,7 +93,7 @@ Ach, wissen Sie, jüngere Frauen hüpfen ja eher von einem zum nächsten Projekt
 
 
 :: Alter II [Alter Bias] {"position":"1775,1675","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Bei älteren Frauen habe ich häufiger das Gefühl, dass sie ein Hobby brauchen und dann die Lust daran verlieren. Da habe ich mich gefragt, wie es bei Ihnen aussieht?
 >>--<<
 >>RelevanterBias:AlterUndGenerationenBiases<<
@@ -134,7 +134,7 @@ Es scheint mir oft, dass der Aufwand und die Kosten nicht im Verhältnis zur tat
 [[Ich verstehe, was Sie meinen, aber Barrierefreiheit geht über die Nutzung hinaus. Es geht um Gleichberechtigung und Inklusion. Es zeigt, dass wir alle respektieren, egal welche Bedürfnisse sie haben.->Inklusion Termin]]
 
 :: Bekanntmachen {"position":"1125,1825","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Netzwerken, das ist der Schlüssel zum Erfolg! Gut, dass Sie daran gedacht haben. Ich schicke Ihnen später seine Kontaktdaten. Sagen Sie ihm gerne, dass ich Sie geschickt habe. 
 
 [[Freund betont]]
@@ -157,7 +157,7 @@ Netzwerken, das ist der Schlüssel zum Erfolg! Gut, dass Sie daran gedacht haben
 
 
 :: Bereits informiert {"position":"1075,1575","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Netzwerken, das ist der Schlüssel zum Erfolg! Gut, dass Sie schon Leute kennen. 
 
 [[Freund betont]]
@@ -178,7 +178,7 @@ Ach, ich bin mir sicher, dass Sie das mit Ihrer Frauenpower toll machen werden. 
 [[Stressmanagement habe ich im Griff. Wie geht’s denn mit der Miete weiter? Gibt es noch Fragen zu meinen Plänen?->Ende: Positiv Selbstsicher]]
 
 :: Danke [Bias] {"position":"925,1875","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Klar, ich helfe, wo ich kann. Der Freund, von dem ich gerade gesprochen habe, sagt immer, Marktforschung ist superwichtig. Sie haben ja schon recherchiert und hoffentlich die passenden Methoden genutzt? Das macht echt den Unterschied.
 >>--<<
 >>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<
@@ -193,21 +193,21 @@ Klar, ich helfe, wo ich kann. Der Freund, von dem ich gerade gesprochen habe, sa
 
 
 :: Diplomatisch {"position":"3000,1650","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Natürlich, da fällt mir etwas ein. Ein Freund von mir hat auch gegründet! Da habe ich einiges mitbekommen.
 
 [[Freund betont]]
 
 
 :: Eigenverantwortlich {"position":"2000,1325","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Stimmt, gut, dass Sie so handeln! Aber Frauen haben manchmal zusätzliche Herausforderungen in der Geschäftswelt. 
 
 [[Freund Gründungsliteratur]]
 
 
 :: Ende Neutral: Doubledown {"position":"1950,3550","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Ach, so war das doch nicht gemeint, aber schicken Sie mir einfach die Selbstauskunft, und ich setze Sie auf die Liste der guten Bewerber*innen. Ich melde mich in ein paar Tagen, ob es klappt.
 
 [[Die schicke ich Ihnen so schnell wie möglich zu. Vielen Dank und noch einen schönen Tag.->Ende: Positiv-Neutral]]
@@ -228,7 +228,7 @@ Aha. Ich weiß sowieso nicht, ob Sie die geeignete Mieterin sind, wenn Sie so em
 
 
 :: Ende: Neutral {"position":"1625,4200","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Wenn Sie das sagen. Also, wenn Sie mir eine Selbstauskunft zuschicken, setze ich Sie auf die Liste der positiven Bewerber*innen. Ich melde mich in ein paar Tagen, ob es klappt.
 
 [[Die schicke ich Ihnen so schnell wie möglich zu. Vielen Dank und noch einen schönen Tag.->Ende: Positiv-Neutral]]
@@ -244,7 +244,7 @@ Schön, mal eine selbstbewusste Frau zu sehen! Ich bräuchte von Ihnen noch eine
 
 
 :: Ende: Positiv Selbstbewusst II {"position":"1725,3700","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Es gibt noch andere, die sich beworben haben, aber es würde mich freuen, wenn Sie die Räumlichkeiten nehmen möchten.
 
 [[Ich schätze Ihre Anerkennung meines Selbstbewusstseins, aber ich lege Wert darauf, dass geschäftlich professionell und geschlechterneutral kommuniziert wird. Der Kommentar "Schön, mal eine selbstbewusste Frau zu sehen!" klingt nach Pauschalisierung.->Ende: Neutral]]
@@ -262,7 +262,7 @@ Schön, mal eine selbstsichere Frau zu sehen! Ich habe erstmal keine weiteren Fr
 
 
 :: Ende: Positiv Selbstsicher II {"position":"1500,3675","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Es gibt noch andere, die sich beworben haben, aber es würde mich freuen, wenn Sie die Räumlichkeiten nehmen möchten.
 
 [[Ich schätze Ihre Anerkennung meines Selbstbewusstseins, aber ich lege Wert darauf, dass geschäftlich professionell und geschlechterneutral kommuniziert wird. Der Kommentar "Schön, mal eine selbstsichere Frau zu sehen!" klingt nach Pauschalisierung.->Ende: Neutral]]
@@ -271,21 +271,21 @@ Es gibt noch andere, die sich beworben haben, aber es würde mich freuen, wenn S
 
 
 :: Ende: Positiv-Neutral {"position":"1900,4175","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Alles klar, Ihnen auch noch einen schönen Tag. Auf Wiedersehen.
 >>--<<
 >>Ende<<
 
 
 :: Ende: Positiv-Neutral II {"position":"2100,4175","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Alles klar, Ihnen auch noch einen schönen Tag. Auf Wiedersehen.
 >>--<<
 >>Ende<<
 
 
 :: Erwartung [Bias] {"position":"2025,1150","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Oh, das war vielleicht etwas ungeschickt ausgedrückt. Ich treffe oft auf Mietinteressent*innen, die nicht gut vorbereitet sind. Es fällt mir aber eigentlich auch immer wieder auf, dass Frauen sich detaillierter mit den Anforderungen auseinandersetzen.
 >>--<<
 >>RelevanterBias:GeschlechtsspezifischeStereotypen<<
@@ -298,7 +298,7 @@ Oh, das war vielleicht etwas ungeschickt ausgedrückt. Ich treffe oft auf Mietin
 [[Wie geht's denn weiter? Gibt's noch Infos, die Sie brauchen, um mit dem Mietprozess voranzukommen?->Umlenken]]
 
 :: Faktoren [Alter Bias] {"position":"1775,1175","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Das freut mich zu hören, aber wir möchten sicherstellen, dass unsere Mietverhältnisse langfristig bestehen können. Wie lange möchten Sie Ihr Unternehmen denn überhaupt weiterführen?
 
 >>--<<
@@ -345,7 +345,7 @@ Ich will Ihnen ja nur helfen, aber wenn Sie denken, dass Sie keine Hilfe benöti
 
 
 :: Fokus a [Bias] {"position":"2975,1325","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Übrigens hat ein Freund von mir auch gegründet! Da habe ich einiges mitbekommen. Er betont immer wieder, wie wichtig Marktforschung ist. Haben Sie das richtig gemacht? Es könnte wirklich den Unterschied machen.
 >>--<<
 >>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<
@@ -389,7 +389,7 @@ Oh, ach so. Das verstehe ich natürlich. Übrigens! Ein Freund von mir hat auch 
 
 
 :: Fokus: Positiv {"position":"1825,2500","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Ja, das wird er sicher. Übrigens, ein Freund von mir hat auch gegründet! Da habe ich einiges mitbekommen.
 
 [[Freund betont]]
@@ -407,7 +407,7 @@ Was für eine Frage haben Sie denn? Sie scheinen sich ja schon richtig viele Ged
 
 
 :: Frage II [Bias] {"position":"2200,1150","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Ja, das ist kein Problem. Die Vertragsgestaltung ist dann etwas komplexer. Vielleicht mögen Sie zur Abstimmung dann noch jemanden mitbringen, zum Beispiel Ihren Mann?
 >>--<<
 >>RelevanterBias:GeschlechtsspezifischeStereotypen<<
@@ -422,7 +422,7 @@ Ja, das ist kein Problem. Die Vertragsgestaltung ist dann etwas komplexer. Viell
 
 
 :: Freund Gründungsliteratur {"position":"900,1375","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Ein Freund von mir hat neulich auch gegründet, da habe ich einiges mitbekommen. Er erzählte mir zum Beispiel, dass es Gründungsliteratur und -beratung extra für Frauen gibt.
 
 
@@ -436,7 +436,7 @@ Ein Freund von mir hat neulich auch gegründet, da habe ich einiges mitbekommen.
 
 
 :: Freund Rat [Bias] {"position":"1200,1350","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Ein Freund von mir hat neulich auch gegründet, da habe ich einiges mitbekommen. Wenn Sie also einen Rat brauchen, lassen Sie es mich wissen. Meiner Erfahrung nach können gerade Frauen zusätzliche Unterstützung gut gebrauchen.
 >>--<<
 >>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<
@@ -464,7 +464,7 @@ Mein Freund betont außerdem immer wieder, wie wichtig Marktforschung ist. Sie h
 [[Marktforschung war ein wichtiger Teil meiner Vorbereitung, das hatte ich ja gesagt. Ich weiß, was ich tun muss.->Frustriert]]
 
 :: Frustriert {"position":"2300,2900","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Ach so, ja, das hatten Sie erwähnt. Gut, dass Sie sich Sachen besser merken können als ich, aber ich bin ja nicht so multitaskingfähig wie Sie als Frau. 
 >>--<<
 >>RelevanterBias:GeschlechtsspezifischeStereotypen<<
@@ -473,7 +473,7 @@ Ach so, ja, das hatten Sie erwähnt. Gut, dass Sie sich Sachen besser merken kö
 
 
 :: Gründungsförderung {"position":"1900,700","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Gut, dass Sie gut vorbereitet sind. Mieten Sie zum ersten Mal Büroflächen? Haben Sie alle Details und Kosten berücksichtigt?
 
 [[Ja, ich miete zum ersten Mal und habe aber alles berücksichtigt.->Faktoren]]
@@ -515,7 +515,7 @@ Wenn Sie meinen. Da es so wichtig für Sie und Ihr Unternehmen ist, sollten wir 
 
 
 :: Inklusion Termin II {"position":"2225,1900","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Lassen Sie uns dafür einen separaten Termin ausmachen. Ich habe nämlich nicht so viel Zeit eingeplant und muss auch bald weiter.
 
 [[Klingt gut! Mir sind barrierefreie Zugänge, breitere Türen und rollstuhlgerechte WCs wichtig. Auch visuelle und taktile Leitsysteme für sehbehinderte Personen wären super.->Anforderungen]]
@@ -544,7 +544,7 @@ Das freut mich zu hören. Es ist wirklich großartig zu sehen, dass Sie sich das
 
 
 :: Mietprozess [Bias] {"position":"1700,2250","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Danke für Ihr Verständnis. Ich bin mir sicher, dass Sie Ihr Unternehmen mit Ihrer Frauenpower toll leiten werden. Ich hoffe nur, dass Sie sich nicht doch zu viel Stress zumuten.
 >>--<<
 >>RelevanterBias:UnbewussteBiasInDerKommunikation<<
@@ -569,14 +569,14 @@ Sie sind gut vorbereitet. Es fällt mir immer wieder auf, dass Frauen sich detai
 [[Hm, wie sieht es denn mit den nächsten Schritten aus, um den Mietprozess voranzutreiben? Benötigen Sie noch weitere Informationen?->Umlenken]]
 
 :: Netzwerk {"position":"1500,1575","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Netzwerken, das ist der Schlüssel zum Erfolg! Gut, dass Sie schon Leute kennen. Ein Freund von mir hat auch gegründet! Da habe ich einiges mitbekommen. 
 
 [[Freund betont]]
 
 
 :: Neuer Termin {"position":"2150,2200","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Dann schlage ich nächste Woche Mittwoch 16 Uhr vor?
 
 [[Das passt mir gut.->Termin ok]]
@@ -609,7 +609,7 @@ Wie schön! Ich bin mir sicher, dass Sie das mit Ihrer Frauenpower toll machen w
 
 
 :: Selbstbewusst [Bias] {"position":"1900,2900","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Ach so, ja, das hatten Sie erwähnt. Gut, dass Sie sich Sachen besser merken können als ich, aber ich bin ja nicht so multitaskingfähig wie Sie als Frau. 
 >>--<<
 >>RelevanterBias:GeschlechtsspezifischeStereotypen<<
@@ -640,7 +640,7 @@ Bestimmt haben Sie auch in der Beziehung die Hosen an, oder?
 
 
 :: Sensibilisieren {"position":"3150,1850","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Natürlich, da kann ich Ihnen nur zustimmen. Da fällt mir etwas ein. Ein Freund von mir hat auch gegründet! Da habe ich einiges mitbekommen.
 
 [[Freund betont]]
@@ -668,21 +668,21 @@ Oh, ach so. Dann ist ja gut. Ein Freund von mir hat auch gegründet! Da habe ich
 
 
 :: Termin ok {"position":"2100,2350","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Gut. Übrigens, ein Freund von mir hat auch gegründet! Da habe ich einiges mitbekommen.
 
 [[Freund betont]]
 
 
 :: Terminänderung {"position":"2225,2350","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Ja, das passt auch. Übrigens, ein Freund von mir hat auch gegründet! Da habe ich einiges mitbekommen.
 
 [[Freund betont]]
 
 
 :: Umlenken {"position":"1500,1175","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Es gibt einige Standarddokumente, die wir benötigen, um den Mietprozess in Gang zu setzen. Aber wissen Sie, die Geschäftswelt kann manchmal hart sein, besonders für Frauen. 
 
 [[Umlenken II]]
@@ -739,7 +739,7 @@ Entschuldigen Sie bitte. So war das natürlich nicht gemeint.
 
 
 :: Weiter {"position":"1900,375","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Guten Tag. Dies sind also die zur Verfügung stehenden Räumlichkeiten. Und Sie sind dabei ein Unternehmen zu gründen?
 
 [[Genau, ich bin nun so weit, dass ich mich nach Büroräumen umsehen kann->Weiter II]]
@@ -761,7 +761,7 @@ Oh, wie interessant! Wie in der Anzeige geschrieben, liegt der Mietpreis kalt be
 
 
 :: Wieso Mann [Bias] {"position":"2425,1325","size":"100,100"}
->>VermieterSprichtSmiling:<<
+>>VermieterSprichtFriendly:<<
 Nun ja, Männer haben ja oft mehr Übung in komplexen Verhandlungssachen und vier Ohren hören ja auch mehr als zwei.
 >>--<<
 >>RelevanterBias:GeschlechtsspezifischeStereotypen<<
