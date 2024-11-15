@@ -1,3 +1,4 @@
+using _00_Kite2.Player;
 using Febucci.UI.Core;
 using UnityEngine;
 
@@ -12,7 +13,6 @@ public class TypeWriterRegistrator : MonoBehaviour
 
     public void OnStartTyping()
     {
-        Debug.Log("OnStartTyping");
         TypewriterCore typewriterCore = GetComponent<TypewriterCore>();
         
         // typewriterCore.SkipTypewriter();

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using _00_Kite2.Player;
 using Febucci.UI.Core;
 using UnityEngine;
 using UnityEngine.UI;
@@ -35,6 +36,12 @@ public class ConversationContentGuiController : MonoBehaviour
 
     private PlayNovelSceneController _sceneController;
 
+    public List<VisualNovelEvent> Content
+    {
+        get => content;
+        set => content = value;
+    }
+    
     public List<GameObject> GuiContent
     {
         get => guiContent;
@@ -222,6 +229,9 @@ public class ConversationContentGuiController : MonoBehaviour
         }
 
         guiContent.Clear();
+
+        content = savedData.content;
+        visualNovelEvents = savedData.visualNovelEvents;
         
         GameManager.Instance.calledFromReload = true;
 
@@ -255,8 +265,9 @@ public class ConversationContentGuiController : MonoBehaviour
             
             SetText(newMessageBox, visualNovelEvent.text);
         }
-
+        
         // GameManager.Instance.calledFromReload = false;
+        Debug.Log("Ende");
     }
 
     private void SetText(GameObject messageBox, string text)
@@ -274,6 +285,10 @@ public class ConversationContentGuiController : MonoBehaviour
         }
             
         // Aktiviere die MessageBox, nachdem der Text vollständig angezeigt wurde
-        messageBox.SetActive(true);
+        // messageBox.SetActive(true);
+        
+        // TypewriterCore typewriterCore = messageBox.GetComponentInChildren<TypewriterCore>();
+        // typewriterCore.IsShowingText = true;
+        // typewriterCore.SkipTypewriter();
     }
 }

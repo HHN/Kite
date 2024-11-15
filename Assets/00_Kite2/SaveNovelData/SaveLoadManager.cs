@@ -5,6 +5,7 @@ using UnityEngine;
 using System.Text;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
+using _00_Kite2.Player;
 
 // Manages saving and loading game data for a visual novel-style game
 public class SaveLoadManager : MonoBehaviour
@@ -57,7 +58,8 @@ public class SaveLoadManager : MonoBehaviour
             //novelId = currentNovelId,
             currentEvent = formattedId,
             playThroughHistory = playNovelSceneController.PlayThroughHistory,
-            visualNovelEvents = conversationContentGuiController.VisualNovelEvents, // Brauch ich hier auch die eventHistory von playNovelSceneControllerﬂ
+            content = conversationContentGuiController.Content, // Brauch ich hier auch die eventHistory von playNovelSceneController
+            visualNovelEvents = conversationContentGuiController.VisualNovelEvents, // Brauch ich hier auch die eventHistory von playNovelSceneController
             messageType = messageBoxesNames,
         };
 

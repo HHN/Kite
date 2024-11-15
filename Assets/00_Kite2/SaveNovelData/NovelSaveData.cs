@@ -8,6 +8,7 @@ public class NovelSaveData
     public string currentEvent;
     public List<string> playThroughHistory; // Verlauf der gewählten Aktionen oder Dialoge
     public List<VisualNovelEvent> visualNovelEvents;
+    public List<VisualNovelEvent> content;
     public List<string> messageType;
 
     /// <summary>
