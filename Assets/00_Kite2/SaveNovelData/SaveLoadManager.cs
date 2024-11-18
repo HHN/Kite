@@ -5,6 +5,7 @@ using UnityEngine;
 using System.Text;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
+using _00_Kite2;
 using _00_Kite2.Player;
 
 // Manages saving and loading game data for a visual novel-style game

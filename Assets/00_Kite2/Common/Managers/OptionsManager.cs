@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using _00_Kite2;
 using _00_Kite2.Player;
 using UnityEngine;
 
@@ -151,7 +152,7 @@ public class OptionsManager : MonoBehaviour
 
     public IEnumerator AfterSelection(string parameterName, string answer, string nextEventID, bool displayAfterSelection, int index)
     {
-        GameManager.Instance.calledFromReload = false;
+        // GameManager.Instance.calledFromReload = false;
         
         // Disable animations after the selection
         var animationFlagSingleton = AnimationFlagSingleton.Instance();

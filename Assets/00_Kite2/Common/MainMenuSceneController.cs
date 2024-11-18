@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using System.Collections;
+using _00_Kite2;
 
 public class MainMenuSceneController : SceneController, OnSuccessHandler
 {

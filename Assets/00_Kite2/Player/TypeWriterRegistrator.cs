@@ -1,3 +1,4 @@
+using _00_Kite2;
 using _00_Kite2.Player;
 using Febucci.UI.Core;
 using UnityEngine;
@@ -15,16 +16,22 @@ public class TypeWriterRegistrator : MonoBehaviour
     {
         TypewriterCore typewriterCore = GetComponent<TypewriterCore>();
         
-        // typewriterCore.SkipTypewriter();
+        controller.currentTypeWriter = typewriterCore;
+        
+        Debug.Log("OnStartTyping");
         
         if (GameManager.Instance.calledFromReload)
         {
             Debug.Log("OnStartTyping called from Reload");
             typewriterCore.SkipTypewriter();
         }
+        else
+        {
+            controller.StartTalking();
+        }
         
-        controller.currentTypeWriter = typewriterCore;
-        controller.StartTalking();
+
+
     }
 
     public void OnStopTyping()

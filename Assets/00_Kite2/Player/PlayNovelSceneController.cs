@@ -286,9 +286,6 @@ namespace _00_Kite2.Player
 
         public void PlayNextEvent()
         {
-            Debug.Log("PlayNextEvent");
-            Debug.Log("GameManager.Instance.calledFromReload: " + GameManager.Instance.calledFromReload);
-        
             // Stop if paused
             if (IsPaused)
             {
@@ -310,7 +307,6 @@ namespace _00_Kite2.Player
             // Überprüfen, ob der Event den Bedingungen entspricht
             if (nextEventToPlay.id.StartsWith("OptionsLabel") && !GameManager.Instance.calledFromReload)
             {
-                Debug.Log("Test");
                 // Schneide "OptionsLabel" ab und speichere den Rest
                 string numericPart = nextEventToPlay.id.Substring("OptionsLabel".Length);
 
@@ -771,7 +767,7 @@ namespace _00_Kite2.Player
             nextEventToPlay = _novelEvents[nextEventID];
         }
 
-        private void ScrollToBottom()
+        public void ScrollToBottom()
         {
             StartCoroutine(chatScroll.ScrollToBottom());
             FontSizeManager.Instance().UpdateAllTextComponents();
@@ -960,27 +956,16 @@ namespace _00_Kite2.Player
             // Aufruf von ReconstructGuiContent und Prüfung des Rückgabewertes
             conversationContent.ReconstructGuiContent(savedData);
 
-            Debug.Log("UI-Inhalt wurde erfolgreich rekonstruiert. Fortsetzen des Spiels...");
-
-            //Lösche den zugehörigen Speicherstand
-            //SaveLoadManager.DeleteNovelSaveData(novelToPlay.id.ToString());
-
-            StartCoroutine(StartNextEventInOneSeconds(1));
-            
             ActivateMessageBoxes();
+            
+            PlayNextEvent();
         }
-
 
         // Methode zum Neustarten (bei Auswahl "Neustarten" im Dialog)
         public void RestartNovel()
         {
             // Lösche den zugehörigen Speicherstand
             SaveLoadManager.DeleteNovelSaveData(novelToPlay.id.ToString());
-
-            // foreach (VisualNovelEvent novelEvent in novelToPlay.novelEvents)
-            // {
-            //     _novelEvents.Add(novelEvent.id, novelEvent);
-            // }
 
             nextEventToPlay = novelToPlay.novelEvents[0];
 
