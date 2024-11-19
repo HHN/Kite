@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace Febucci.UI.Examples
@@ -7,7 +8,7 @@ namespace Febucci.UI.Examples
     /// Extra example class for the TextAnimator plugin, used to add sounds to the TextAnimatorPlayer.
     /// </summary>
     [AddComponentMenu("Febucci/TextAnimator/SoundWriter")]
-    [RequireComponent(typeof(Core.TypewriterCore))]
+    [RequireComponent(typeof(TypewriterCore))]
     public class TAnimSoundWriter : MonoBehaviour
     {
 
@@ -34,7 +35,7 @@ namespace Febucci.UI.Examples
             Assert.IsNotNull(source, "TAnimSoundWriter: Typewriter Audio Source reference is null");
             Assert.IsNotNull(sounds, "TAnimSoundWriter: Sounds clips array is null in the");
             Assert.IsTrue(sounds.Length > 0, "TAnimSoundWriter: Sounds clips array is empty");
-            Assert.IsNotNull(GetComponent<Core.TypewriterCore>(), "TAnimSoundWriter: Component TAnimPlayerBase is not present");
+            Assert.IsNotNull(GetComponent<TypewriterCore>(), "TAnimSoundWriter: Component TAnimPlayerBase is not present");
 
 
             //Prevents subscribing the event if the component has not been set correctly
@@ -45,7 +46,7 @@ namespace Febucci.UI.Examples
             source.playOnAwake = false;
             source.loop = false;
 
-            GetComponent<Core.TypewriterCore>()?.onCharacterVisible.AddListener(OnCharacter);
+            GetComponent<TypewriterCore>()?.onCharacterVisible.AddListener(OnCharacter);
 
             clipIndex = randomSequence ? Random.Range(0, sounds.Length) : 0;
         }

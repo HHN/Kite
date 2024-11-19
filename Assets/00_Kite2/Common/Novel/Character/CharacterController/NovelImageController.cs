@@ -50,17 +50,19 @@ public class NovelImageController : MonoBehaviour
         case Character.SACHBEARBEITER: { return 11; }*/
         if (characterController == null)
         {
-            Debug.Log("characterController == null");
             return;
         }
         else if (characterId == 5)
         {
-            Debug.Log("REPORTERIN");
             characterController.SetFaceExpression(expressionType);
         }
         else if (characterId == 6)
         {
             characterController.SetFaceExpression(expressionType);
+        }
+        else if (characterId == 7)
+        {
+            characterController2.SetFaceExpression(expressionType);
         }
         else if (characterId == 8)
         {
@@ -81,10 +83,6 @@ public class NovelImageController : MonoBehaviour
         else if (characterController2 == null)
         {
             return;
-        }
-        else if (characterId == 7)
-        {
-            characterController2.SetFaceExpression(expressionType);
         }
     }
 

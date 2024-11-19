@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -6,45 +5,64 @@ using UnityEngine.UI;
 
 public class NovelDescriptionTextbox : MonoBehaviour
 {
-    [SerializeField] private Image image;
+    private const string BookmarkedText = "GEMERKT";
+    private const string UnbookmarkedText = "MERKEN";
+
+    [Header("UI Elemente")] [SerializeField]
+    private Image image;
+
     [SerializeField] private GameObject smalHead;
     [SerializeField] private GameObject bigHead;
     [SerializeField] private TextMeshProUGUI text;
-    [SerializeField] private VisualNovel visualNovelToDisplay;
-    [SerializeField] private VisualNovelNames visualNovelName;
     [SerializeField] private Button playButton;
     [SerializeField] private Button bookMarkButton;
-    [SerializeField] private GameObject selectNovelSoundPrefab;
     [SerializeField] private TextMeshProUGUI playText;
     [SerializeField] private TextMeshProUGUI bookmarkText;
     [SerializeField] private Image bookmarkImage;
     [SerializeField] private Sprite bookmarkSprite;
     [SerializeField] private Sprite unBookmarkSprite;
-    [SerializeField] private Color colorOfText;
+    [SerializeField] private GameObject selectNovelSoundPrefab;
 
-    void Start()
+    [Header("Visual Novel Daten")] [SerializeField]
+    private VisualNovel visualNovelToDisplay;
+
+    [SerializeField] private VisualNovelNames visualNovelName;
+
+    [Header("Erscheinungsbild")] [SerializeField]
+    private Color colorOfText;
+
+    private void Start()
     {
-        playButton.onClick.AddListener(delegate { OnPlayButton(); });
-        bookMarkButton.onClick.AddListener(delegate { OnBookmarkButton(); });
+        playButton.onClick.AddListener(OnPlayButton);
+        bookMarkButton.onClick.AddListener(OnBookmarkButton);
     }
 
-
+    /// <summary>
+    /// Initialisiert den Lesezeichen-Button basierend darauf, ob die Visual Novel favorisiert ist.
+    /// </summary>
+    /// <param name="isFavorite">Gibt an, ob die Visual Novel favorisiert ist.</param>
     public void InitializeBookMarkButton(bool isFavorite)
     {
         playText.color = colorOfText;
 
         if (isFavorite)
         {
-            bookmarkText.text = "GEMERKT";
+            bookmarkText.text = BookmarkedText;
             bookmarkImage.sprite = bookmarkSprite;
             bookmarkText.color = Color.white;
-            return;
         }
-        bookmarkImage.sprite = unBookmarkSprite;
-        bookmarkText.text = "MERKEN";
-        bookmarkText.color = colorOfText;
+        else
+        {
+            bookmarkText.text = UnbookmarkedText;
+            bookmarkImage.sprite = unBookmarkSprite;
+            bookmarkText.color = colorOfText;
+        }
     }
 
+    /// <summary>
+    /// Setzt die Farbe des Bildes und der Kopf-Icons.
+    /// </summary>
+    /// <param name="color">Die zu setzende Farbe.</param>
     public void SetColorOfImage(Color color)
     {
         colorOfText = color;
@@ -53,60 +71,74 @@ public class NovelDescriptionTextbox : MonoBehaviour
         bigHead.GetComponent<Image>().color = color;
     }
 
-    private void SetBigHead()
-    {
-        bigHead.SetActive(true);
-        smalHead.SetActive(false);
-    }
-
-    private void SetSmalHead()
-    {
-        bigHead.SetActive(false);
-        smalHead.SetActive(true);
-    }
-
+    /// <summary>
+    /// Setzt den angezeigten Text.
+    /// </summary>
+    /// <param name="text">Der anzuzeigende Text.</param>
     public void SetText(string text)
     {
         this.text.text = text;
     }
 
+    /// <summary>
+    /// Setzt den Namen der Visual Novel.
+    /// </summary>
+    /// <param name="visualNovelName">Der Name der Visual Novel.</param>
     public void SetVisualNovelName(VisualNovelNames visualNovelName)
     {
         this.visualNovelName = visualNovelName;
     }
 
+    /// <summary>
+    /// Legt die anzuzeigende Visual Novel fest.
+    /// </summary>
+    /// <param name="visualNovel">Die Visual Novel.</param>
     public void SetVisualNovel(VisualNovel visualNovel)
     {
         this.visualNovelToDisplay = visualNovel;
         InitializeBookMarkButton(FavoritesManager.Instance().IsFavorite(visualNovel));
-    }    
-   
-    public void OnPlayButton()
+    }
+
+    /// <summary>
+    /// Wird aufgerufen, wenn der Play-Button gedrückt wird.
+    /// </summary>
+    private void OnPlayButton()
     {
         PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
-        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+        PlayManager.Instance()
+            .SetForegroundColorOfVisualNovelToPlay(
+                FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
+        PlayManager.Instance()
+            .SetBackgroundColorOfVisualNovelToPlay(
+                FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+        PlayManager.Instance()
+            .SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
         GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
         DontDestroyOnLoad(buttonSound);
 
         if (ShowPlayInstructionManager.Instance().ShowInstruction())
         {
             SceneLoader.LoadPlayInstructionScene();
-
-        } else
+        }
+        else
         {
             SceneLoader.LoadPlayNovelScene();
         }
-        return;
     }
 
-    public void OnBookmarkButton()
+    /// <summary>
+    /// Wird aufgerufen, wenn der Lesezeichen-Button gedrückt wird.
+    /// </summary>
+    private void OnBookmarkButton()
     {
         StartCoroutine(MarkAsFavorite(visualNovelToDisplay));
     }
 
-    public IEnumerator MarkAsFavorite(VisualNovel visualNovel)
+    /// <summary>
+    /// Markiert oder entmarkiert die Visual Novel als Favorit.
+    /// </summary>
+    /// <param name="visualNovel">Die Visual Novel.</param>
+    private IEnumerator MarkAsFavorite(VisualNovel visualNovel)
     {
         if (FavoritesManager.Instance().IsFavorite(visualNovel))
         {
@@ -114,29 +146,35 @@ public class NovelDescriptionTextbox : MonoBehaviour
             InitializeBookMarkButton(false);
             yield break;
         }
+
         FavoritesManager.Instance().MarkAsFavorite(visualNovel);
         InitializeBookMarkButton(true);
         yield return null;
     }
 
+    /// <summary>
+    /// Setzt die Aktivität der Buttons.
+    /// </summary>
+    /// <param name="active">Aktiviert oder deaktiviert die Buttons.</param>
     public void SetButtonsActive(bool active)
     {
         playButton.gameObject.SetActive(active);
         bookMarkButton.gameObject.SetActive(active);
     }
 
+    /// <summary>
+    /// Setzt den angezeigten Kopf basierend auf der Höhe.
+    /// </summary>
+    /// <param name="isHigh">True für großen Kopf, False für kleinen Kopf.</param>
     public void SetHead(bool isHigh)
     {
-        if (isHigh)
-        {
-            SetBigHead();
-        }
-        else
-        {
-            SetSmalHead();
-        }
+        bigHead.SetActive(isHigh);
+        smalHead.SetActive(!isHigh);
     }
 
+    /// <summary>
+    /// Aktualisiert die Größe des Layouts.
+    /// </summary>
     public void UpdateSize()
     {
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());

@@ -1,3 +1,4 @@
+using _00_Kite2.SaveNovelData;
 using UnityEngine;
 using UnityEngine.UI;
 using LeastSquares.Overtone;
@@ -65,6 +66,8 @@ public class DeleteUserDataConfirmation : MonoBehaviour
         }
         if (origin == "reset")
         {
+            SaveLoadManager.ClearAllSaveData();
+
             TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.RESET_APP, engine);
             PlayerDataManager.Instance().ClearEverything();
             PlayerPrefs.DeleteAll();

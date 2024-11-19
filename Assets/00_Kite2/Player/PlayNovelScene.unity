@@ -929,8 +929,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 443.07693, y: 0}
-  m_SizeDelta: {x: 886.1539, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &498441981
 MonoBehaviour:
@@ -3579,8 +3579,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageBox: {fileID: 5629918238507184917, guid: 47c0a3038b673a24cb82a566be2abf20, type: 3}
   canvas: {fileID: 1048358123}
-  type: 0
-  isPaused: 0
   viewPort: {fileID: 1089021933}
   conversationViewport: {fileID: 198210688}
   closeButton: {fileID: 0}
@@ -3639,6 +3637,8 @@ MonoBehaviour:
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   leaveGameAndGoBackMessageBoxObject: {fileID: 0}
   leaveGameAndGoBackMessageBox: {fileID: 5629918238507184917, guid: 52d64ed2a3cd0524ca7296e9ccb5ddca, type: 3}
+  hintForSavegameMessageBoxObject: {fileID: 0}
+  hintForSavegameMessageBox: {fileID: 5629918238507184917, guid: 19371ec5265175b4285038aaf97af918, type: 3}
   novelToPlay:
     id: 0
     folderName: 

@@ -1,3 +1,4 @@
+using _00_Kite2.Player;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -62,9 +63,6 @@ public class UndoChoiceMessageBox : MonoBehaviour
 
     public void OnConfirmButton()
     {
-        Debug.Log("Rückgängig machen!");
-
-        // Rufe hier die Wiederherstellungslogik auf
         CloseMessageBox();
         playNovelSceneController.RestoreChoice();
     }

@@ -1,24 +1,25 @@
-using Febucci.UI.Core;
-using System.Collections;
-using System.Collections.Generic;
+using _00_Kite2.Player;
 using UnityEngine;
 
-public class TapToContinueHintActivator : MonoBehaviour
+namespace _00_Kite2.Common.UI.UI_Elements.TextBoxes
 {
-    private PlayNovelSceneController controller;
-
-    private void Start()
+    public class TapToContinueHintActivator : MonoBehaviour
     {
-        controller = GameObject.Find("Controller").GetComponent<PlayNovelSceneController>();
-    }
+        private PlayNovelSceneController _controller;
 
-    public void OnStartTyping()
-    {
-        controller.SetTyping(true);
-    }
+        private void Start()
+        {
+            _controller = FindObjectOfType<PlayNovelSceneController>();
+        }
 
-    public void OnStopTyping()
-    {
-        controller.SetTyping(false);
+        public void OnStartTyping()
+        {
+            _controller.SetTyping(true);
+        }
+
+        public void OnStopTyping()
+        {
+            _controller.SetTyping(false);
+        }
     }
 }

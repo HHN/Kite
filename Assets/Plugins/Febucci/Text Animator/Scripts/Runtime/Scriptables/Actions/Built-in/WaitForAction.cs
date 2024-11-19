@@ -1,5 +1,6 @@
 using Febucci.UI.Core;
 using Febucci.UI.Core.Parsing;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 
 namespace Febucci.UI.Actions
 {

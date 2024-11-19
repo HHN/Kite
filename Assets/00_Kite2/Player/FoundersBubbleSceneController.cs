@@ -5,14 +5,22 @@ using TMPro;
 
 public class FoundersBubbleSceneController : SceneController
 {
-    [SerializeField] private GameObject novelDescriptionTextboxGameObject;
+    [Header("Novel Description Textbox")] [SerializeField]
+    private GameObject novelDescriptionTextboxGameObject;
+
     [SerializeField] private NovelDescriptionTextbox novelDescriptionTextbox;
-    [SerializeField] private InfinityScroll infinityScroll;
-    [SerializeField] private Button foundersWellButton;
     [SerializeField] private bool isPopupOpen;
     [SerializeField] private VisualNovelNames currentlyOpenedVisualNovelPopup;
 
-    [SerializeField] private bool isBankkreditNovelInVersionContained;
+    [Header("Infinity Scroll")] [SerializeField]
+    private InfinityScroll infinityScroll;
+
+    [Header("Founder's Well Button")] [SerializeField]
+    private Button foundersWellButton;
+
+    [Header("Novels Contained in Version")] [SerializeField]
+    private bool isBankkreditNovelInVersionContained;
+
     [SerializeField] private bool isBekannteTreffenNovelInVersionContained;
     [SerializeField] private bool isBankkontoNovelInVersionContained;
     [SerializeField] private bool isFoerderantragNovelInVersionContained;
@@ -23,35 +31,47 @@ public class FoundersBubbleSceneController : SceneController
     [SerializeField] private bool isGruendungszuschussNovelInVersionContained;
     [SerializeField] private bool isHonorarNovelInVersionContained;
     [SerializeField] private bool isLebnenspartnerNovelInVersionContained;
-    [SerializeField] private bool isIntroNovelNovelInVersionContained;    
+    [SerializeField] private bool isIntroNovelNovelInVersionContained;
 
-    [SerializeField] private bool finishedInitialization;
+    [Header("General Buttons")] [SerializeField]
+    private Button novelListButton;
 
-    [SerializeField] private Button novelListButton;
     [SerializeField] private Button settingsButton;
 
-    [SerializeField] private GameObject burgerMenu;
+    [Header("Burger Menu")] [SerializeField]
+    private GameObject burgerMenu;
+
     [SerializeField] private bool isBurgerMenuOpen;
     [SerializeField] private Button burgerMenuBackground;
 
-    [SerializeField] private TMP_InputField inputField;
-    [SerializeField] private List<GameObject> buttonContainers;
-    private List<GameObject> originalOrder;
+    [Header("Burger Menu Buttons")] [SerializeField]
+    private Button bankkreditButtonFromBurgerMenu;
 
-    [SerializeField] private Button bankkreditButtonFromBurgerMenu;
     [SerializeField] private Button elternButtonFromBurgerMenu;
     [SerializeField] private Button notarinButtonFromBurgerMenu;
     [SerializeField] private Button presseButtonFromBurgerMenu;
     [SerializeField] private Button bueroButtonFromBurgerMenu;
     [SerializeField] private Button bekannteNovelButtonFromBurgerMenu;
 
-    [SerializeField] private GameObject selectNovelSoundPrefab;
+    [Header("Search Input and Button Containers")] [SerializeField]
+    private TMP_InputField inputField;
 
-    void Start()
+    [SerializeField] private List<GameObject> buttonContainers;
+
+    [Header("Sound Prefab")] [SerializeField]
+    private GameObject selectNovelSoundPrefab;
+
+    [Header("Other Variables")] [SerializeField]
+    private bool finishedInitialization;
+
+    private int _novelId;
+    private List<GameObject> _originalOrder;
+
+    private void Start()
     {
         BackStackManager.Instance().Push(SceneNames.FOUNDERS_BUBBLE_SCENE);
 
-        foundersWellButton.onClick.AddListener(delegate { OnFoundersWellButton(); });
+        foundersWellButton.onClick.AddListener(OnFoundersWellButton);
 
         currentlyOpenedVisualNovelPopup = VisualNovelNames.NONE;
 
@@ -68,16 +88,16 @@ public class FoundersBubbleSceneController : SceneController
         isLebnenspartnerNovelInVersionContained = true;
         isIntroNovelNovelInVersionContained = true;
 
-        novelListButton.onClick.AddListener(delegate { OnNovelListButton(); });
-        settingsButton.onClick.AddListener(delegate { OnSettingsButton(); });
+        novelListButton.onClick.AddListener(OnNovelListButton);
+        settingsButton.onClick.AddListener(OnSettingsButton);
 
-        bankkreditButtonFromBurgerMenu.onClick.AddListener(delegate { OnBankkreditButtonFromBurgerMenu(); });
-        elternButtonFromBurgerMenu.onClick.AddListener(delegate { OnElternButtonFromBurgerMenu(); });
-        notarinButtonFromBurgerMenu.onClick.AddListener(delegate { OnNotarinButtonFromBurgerMenu(); });
-        presseButtonFromBurgerMenu.onClick.AddListener(delegate { OnPresseButtonFromBurgerMenu(); });
-        bueroButtonFromBurgerMenu.onClick.AddListener(delegate { OnBueroButtonFromBurgerMenu(); });
-        bekannteNovelButtonFromBurgerMenu.onClick.AddListener(delegate { OnBekannteNovelButtonFromBurgerMenu(); });
-        burgerMenuBackground.onClick.AddListener(delegate { OnBackgroundButton(); });
+        bankkreditButtonFromBurgerMenu.onClick.AddListener(OnBankkreditButtonFromBurgerMenu);
+        elternButtonFromBurgerMenu.onClick.AddListener(OnElternButtonFromBurgerMenu);
+        notarinButtonFromBurgerMenu.onClick.AddListener(OnNotarinButtonFromBurgerMenu);
+        presseButtonFromBurgerMenu.onClick.AddListener(OnPresseButtonFromBurgerMenu);
+        bueroButtonFromBurgerMenu.onClick.AddListener(OnBueroButtonFromBurgerMenu);
+        bekannteNovelButtonFromBurgerMenu.onClick.AddListener(OnBekannteNovelButtonFromBurgerMenu);
+        burgerMenuBackground.onClick.AddListener(OnBackgroundButton);
 
         if (inputField != null)
         {
@@ -92,7 +112,7 @@ public class FoundersBubbleSceneController : SceneController
         if (buttonContainers != null && buttonContainers.Count > 0)
         {
             // Speichere die ursprüngliche Reihenfolge der Container
-            originalOrder = new List<GameObject>(buttonContainers);
+            _originalOrder = new List<GameObject>(buttonContainers);
         }
         else
         {
@@ -106,7 +126,7 @@ public class FoundersBubbleSceneController : SceneController
         List<GameObject> visibleContainers = new List<GameObject>();
         List<GameObject> hiddenContainers = new List<GameObject>();
 
-        foreach (var container in originalOrder)
+        foreach (var container in _originalOrder)
         {
             if (container != null)
             {
@@ -160,7 +180,7 @@ public class FoundersBubbleSceneController : SceneController
         }
     }
 
-    public void OnFoundersWellButton()
+    private void OnFoundersWellButton()
     {
         if (isBurgerMenuOpen)
         {
@@ -168,11 +188,13 @@ public class FoundersBubbleSceneController : SceneController
             isBurgerMenuOpen = false;
             return;
         }
+
         if (isPopupOpen)
         {
             MakeTextboxInvisible();
             return;
         }
+
         //SceneLoader.LoadFoundersWellScene();
         SceneLoader.LoadFoundersWell2Scene();
     }
@@ -227,7 +249,8 @@ public class FoundersBubbleSceneController : SceneController
 
     public void OnGruenderzuschussNovelButton()
     {
-        DisplayTextBoxForVisualNovel(VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL, isGruendungszuschussNovelInVersionContained);
+        DisplayTextBoxForVisualNovel(VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL,
+            isGruendungszuschussNovelInVersionContained);
         infinityScroll.MoveToVisualNovel(VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL);
     }
 
@@ -257,55 +280,61 @@ public class FoundersBubbleSceneController : SceneController
             isBurgerMenuOpen = false;
             return;
         }
+
         isBurgerMenuOpen = true;
         this.burgerMenu.gameObject.SetActive(true);
         FontSizeManager.Instance().UpdateAllTextComponents();
-    }   
+    }
 
     private void OnSettingsButton()
     {
         SceneLoader.LoadEinstellungenScene();
     }
 
-
-    public void DisplayTextBoxForVisualNovel(VisualNovelNames visualNovel, bool isNovelContainedInVersion)
+    private void DisplayTextBoxForVisualNovel(VisualNovelNames visualNovel, bool isNovelContainedInVersion)
     {
         if (isBurgerMenuOpen)
         {
             this.burgerMenu.gameObject.SetActive(false);
             isBurgerMenuOpen = false;
         }
+
         if (isPopupOpen && visualNovel == currentlyOpenedVisualNovelPopup)
         {
             MakeTextboxInvisible();
             return;
         }
+
         if (!isNovelContainedInVersion)
         {
             novelDescriptionTextboxGameObject.SetActive(true);
             novelDescriptionTextbox.SetHead(FoundersBubbleMetaInformation.IsHighInGui(visualNovel));
             novelDescriptionTextbox.SetVisualNovelName(visualNovel);
-            novelDescriptionTextbox.SetText("Leider ist diese Novel nicht in der Testversion enthalten. Bitte spiele eine andere Novel.");
-            novelDescriptionTextbox.SetColorOfImage(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
+            novelDescriptionTextbox.SetText(
+                "Leider ist diese Novel nicht in der Testversion enthalten. Bitte spiele eine andere Novel.");
+            novelDescriptionTextbox.SetColorOfImage(
+                FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
             novelDescriptionTextbox.SetButtonsActive(false);
             isPopupOpen = true;
             currentlyOpenedVisualNovelPopup = visualNovel;
             return;
         }
-        int novelId = VisualNovelNamesHelper.ToInt(visualNovel);
+
+        _novelId = VisualNovelNamesHelper.ToInt(visualNovel);
 
         List<VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
 
         foreach (VisualNovel novel in allNovels)
         {
-            if (novel.id == novelId)
+            if (novel.id == _novelId)
             {
                 novelDescriptionTextboxGameObject.SetActive(true);
                 novelDescriptionTextbox.SetHead(FoundersBubbleMetaInformation.IsHighInGui(visualNovel));
                 novelDescriptionTextbox.SetVisualNovel(novel);
                 novelDescriptionTextbox.SetVisualNovelName(visualNovel);
                 novelDescriptionTextbox.SetText(novel.description);
-                novelDescriptionTextbox.SetColorOfImage(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
+                novelDescriptionTextbox.SetColorOfImage(
+                    FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
                 novelDescriptionTextbox.SetButtonsActive(true);
                 novelDescriptionTextbox.InitializeBookMarkButton(FavoritesManager.Instance().IsFavorite(novel));
                 novelDescriptionTextbox.UpdateSize();
@@ -313,9 +342,11 @@ public class FoundersBubbleSceneController : SceneController
 
                 isPopupOpen = true;
                 currentlyOpenedVisualNovelPopup = visualNovel;
-                NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
+                NovelColorManager.Instance()
+                    .SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
             }
         }
+
         FontSizeManager.Instance().UpdateAllTextComponents();
     }
 
@@ -329,8 +360,10 @@ public class FoundersBubbleSceneController : SceneController
     public override void OnStop()
     {
         base.OnStop();
-        FoundersBubbleSceneMemory memory = new FoundersBubbleSceneMemory();
-        memory.scrollPosition = infinityScroll.GetCurrentScrollPosition();
+        FoundersBubbleSceneMemory memory = new FoundersBubbleSceneMemory
+        {
+            scrollPosition = infinityScroll.GetCurrentScrollPosition()
+        };
         SceneMemoryManager.Instance().SetMemoryOfFoundersBubbleScene(memory);
     }
 
@@ -350,47 +383,39 @@ public class FoundersBubbleSceneController : SceneController
         }
     }
 
-    public void OnBankkreditButtonFromBurgerMenu()
+    private void OnBankkreditButtonFromBurgerMenu()
     {
-        VisualNovel visualNovelToDisplay = null;
-        VisualNovelNames visualNovelName = VisualNovelNames.BANK_KREDIT_NOVEL;
-
-        KiteNovelManager.Instance().GetAllKiteNovels().ForEach(kiteNovel =>
-        {
-            if (VisualNovelNamesHelper.ValueOf((int) kiteNovel.id) == visualNovelName)
-            {
-                visualNovelToDisplay = kiteNovel;
-            }
-        });
-
-        if (visualNovelToDisplay == null)
-        {
-            return;
-        }
-        PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-        NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(VisualNovelNamesHelper.ValueOf((int)visualNovelToDisplay.id)));
-        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
-        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
-        GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
-        DontDestroyOnLoad(buttonSound);
-
-        if (ShowPlayInstructionManager.Instance().ShowInstruction())
-        {
-            SceneLoader.LoadPlayInstructionScene();
-
-        }
-        else
-        {
-            SceneLoader.LoadPlayNovelScene();
-        }
-        return;
+        DisplayNovelFromMenu(VisualNovelNames.BANK_KREDIT_NOVEL);
     }
 
-    public void OnElternButtonFromBurgerMenu()
+    private void OnElternButtonFromBurgerMenu()
+    {
+        DisplayNovelFromMenu(VisualNovelNames.ELTERN_NOVEL);
+    }
+
+    private void OnNotarinButtonFromBurgerMenu()
+    {
+        DisplayNovelFromMenu(VisualNovelNames.NOTARIAT_NOVEL);
+    }
+
+    private void OnPresseButtonFromBurgerMenu()
+    {
+        DisplayNovelFromMenu(VisualNovelNames.PRESSE_NOVEL);
+    }
+
+    private void OnBueroButtonFromBurgerMenu()
+    {
+        DisplayNovelFromMenu(VisualNovelNames.BUERO_NOVEL);
+    }
+
+    private void OnBekannteNovelButtonFromBurgerMenu()
+    {
+        DisplayNovelFromMenu(VisualNovelNames.BEKANNTE_TREFFEN_NOVEL);
+    }
+
+    private void DisplayNovelFromMenu(VisualNovelNames visualNovelName)
     {
         VisualNovel visualNovelToDisplay = null;
-        VisualNovelNames visualNovelName = VisualNovelNames.ELTERN_NOVEL;
 
         KiteNovelManager.Instance().GetAllKiteNovels().ForEach(kiteNovel =>
         {
@@ -404,171 +429,29 @@ public class FoundersBubbleSceneController : SceneController
         {
             return;
         }
+
         PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-        NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(VisualNovelNamesHelper.ValueOf((int)visualNovelToDisplay.id)));
-        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
-        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+        NovelColorManager.Instance()
+            .SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(
+                VisualNovelNamesHelper.ValueOf((int)visualNovelToDisplay.id)));
+        PlayManager.Instance()
+            .SetForegroundColorOfVisualNovelToPlay(
+                FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
+        PlayManager.Instance()
+            .SetBackgroundColorOfVisualNovelToPlay(
+                FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+        PlayManager.Instance()
+            .SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
         GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
         DontDestroyOnLoad(buttonSound);
 
         if (ShowPlayInstructionManager.Instance().ShowInstruction())
         {
             SceneLoader.LoadPlayInstructionScene();
-
         }
         else
         {
             SceneLoader.LoadPlayNovelScene();
         }
-        return;
-    }
-
-    public void OnNotarinButtonFromBurgerMenu()
-    {
-        VisualNovel visualNovelToDisplay = null;
-        VisualNovelNames visualNovelName = VisualNovelNames.NOTARIAT_NOVEL;
-
-        KiteNovelManager.Instance().GetAllKiteNovels().ForEach(kiteNovel =>
-        {
-            if (VisualNovelNamesHelper.ValueOf((int)kiteNovel.id) == visualNovelName)
-            {
-                visualNovelToDisplay = kiteNovel;
-            }
-        });
-
-        if (visualNovelToDisplay == null)
-        {
-            return;
-        }
-        PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-        NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(VisualNovelNamesHelper.ValueOf((int)visualNovelToDisplay.id)));
-        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
-        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
-        GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
-        DontDestroyOnLoad(buttonSound);
-
-        if (ShowPlayInstructionManager.Instance().ShowInstruction())
-        {
-            SceneLoader.LoadPlayInstructionScene();
-
-        }
-        else
-        {
-            SceneLoader.LoadPlayNovelScene();
-        }
-        return;
-    }
-
-    public void OnPresseButtonFromBurgerMenu()
-    {
-        VisualNovel visualNovelToDisplay = null;
-        VisualNovelNames visualNovelName = VisualNovelNames.PRESSE_NOVEL;
-
-        KiteNovelManager.Instance().GetAllKiteNovels().ForEach(kiteNovel =>
-        {
-            if (VisualNovelNamesHelper.ValueOf((int)kiteNovel.id) == visualNovelName)
-            {
-                visualNovelToDisplay = kiteNovel;
-            }
-        });
-
-        if (visualNovelToDisplay == null)
-        {
-            return;
-        }
-        PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-        NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(VisualNovelNamesHelper.ValueOf((int)visualNovelToDisplay.id)));
-        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
-        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
-        GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
-        DontDestroyOnLoad(buttonSound);
-
-        if (ShowPlayInstructionManager.Instance().ShowInstruction())
-        {
-            SceneLoader.LoadPlayInstructionScene();
-
-        }
-        else
-        {
-            SceneLoader.LoadPlayNovelScene();
-        }
-        return;
-    }
-
-    public void OnBueroButtonFromBurgerMenu()
-    {
-        VisualNovel visualNovelToDisplay = null;
-        VisualNovelNames visualNovelName = VisualNovelNames.BUERO_NOVEL;
-
-        KiteNovelManager.Instance().GetAllKiteNovels().ForEach(kiteNovel =>
-        {
-            if (VisualNovelNamesHelper.ValueOf((int)kiteNovel.id) == visualNovelName)
-            {
-                visualNovelToDisplay = kiteNovel;
-            }
-        });
-
-        if (visualNovelToDisplay == null)
-        {
-            return;
-        }
-        PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-        NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(VisualNovelNamesHelper.ValueOf((int)visualNovelToDisplay.id)));
-        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
-        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
-        GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
-        DontDestroyOnLoad(buttonSound);
-
-        if (ShowPlayInstructionManager.Instance().ShowInstruction())
-        {
-            SceneLoader.LoadPlayInstructionScene();
-
-        }
-        else
-        {
-            SceneLoader.LoadPlayNovelScene();
-        }
-        return;
-    }
-
-    public void OnBekannteNovelButtonFromBurgerMenu()
-    {
-        VisualNovel visualNovelToDisplay = null;
-        VisualNovelNames visualNovelName = VisualNovelNames.BEKANNTE_TREFFEN_NOVEL;
-
-        KiteNovelManager.Instance().GetAllKiteNovels().ForEach(kiteNovel =>
-        {
-            if (VisualNovelNamesHelper.ValueOf((int)kiteNovel.id) == visualNovelName)
-            {
-                visualNovelToDisplay = kiteNovel;
-            }
-        });
-
-        if (visualNovelToDisplay == null)
-        {
-            return;
-        }
-        PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-        NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(VisualNovelNamesHelper.ValueOf((int)visualNovelToDisplay.id)));
-        PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
-        PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-        PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
-        GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
-        DontDestroyOnLoad(buttonSound);
-
-        if (ShowPlayInstructionManager.Instance().ShowInstruction())
-        {
-            SceneLoader.LoadPlayInstructionScene();
-
-        }
-        else
-        {
-            SceneLoader.LoadPlayNovelScene();
-        }
-        return;
     }
 }

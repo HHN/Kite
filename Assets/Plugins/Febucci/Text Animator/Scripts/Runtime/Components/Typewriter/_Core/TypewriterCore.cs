@@ -1,10 +1,11 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using Febucci.UI;
+using Febucci.UI.Core;
 using Febucci.UI.Core.Parsing;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Febucci.UI.Core
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core
 {
     /// <summary>
     /// Base class for all Typewriters. <br/>
@@ -17,7 +18,7 @@ namespace Febucci.UI.Core
     /// Manual: <see href="https://www.febucci.com/text-animator-unity/docs/writing-custom-typewriters-c-sharp/">Writing Custom Typewriters (C#)</see>
     /// </remarks>
     [DisallowMultipleComponent]
-    [RequireComponent(typeof(Core.TAnimCore))]
+    [RequireComponent(typeof(global::Febucci.UI.Core.TAnimCore))]
     public abstract class TypewriterCore : MonoBehaviour
     {
         [System.Flags]
@@ -200,10 +201,10 @@ namespace Febucci.UI.Core
         /// </remarks>
         public void SkipTypewriter()
         {
-            if (isShowingText)
+            if (IsShowingText)
             {
                 StopAllCoroutines();
-                isShowingText = false;
+                IsShowingText = false;
                 
                 TextAnimator.SetVisibilityEntireText(true, !hideAppearancesOnSkip);
                 
@@ -227,7 +228,7 @@ namespace Febucci.UI.Core
         /// <summary>
         /// True if the typewriter is currently showing letters
         /// </summary>
-        public bool isShowingText { get; private set; }
+        public bool IsShowingText { get; set; }
 
         /// <summary>
         /// Starts showing letters dynamically
@@ -243,7 +244,7 @@ namespace Febucci.UI.Core
                 return;
             }
 
-            if (isShowingText)
+            if (IsShowingText)
             {
                 StopShowingText();
             }
@@ -256,7 +257,7 @@ namespace Febucci.UI.Core
             }
 
             if (resetTypingSpeedAtStartup) internalSpeed = 1;
-            isShowingText = true;
+            IsShowingText = true;
             showRoutine = StartCoroutine(ShowTextRoutine());
         }
 
@@ -268,7 +269,7 @@ namespace Febucci.UI.Core
         float GetDeltaTime(TypingInfo typingInfo) => TextAnimator.time.deltaTime * internalSpeed * typingInfo.speed;
         IEnumerator ShowTextRoutine()
         {
-            isShowingText = true;
+            IsShowingText = true;
             
             // --- INITIALIZATION ---
             TypingInfo typingInfo = new TypingInfo();
@@ -348,7 +349,7 @@ namespace Febucci.UI.Core
 
             // --- CALLBACKS ---
             onTextShowed?.Invoke();
-            isShowingText = false;
+            IsShowingText = false;
         }
 
         /// <summary>
@@ -360,8 +361,8 @@ namespace Febucci.UI.Core
             if (!Application.isPlaying) //prevents from firing in edit mode from the context menu
                 return;
 #endif
-            if(!isShowingText) return;
-            isShowingText = false;
+            if(!IsShowingText) return;
+            IsShowingText = false;
             
             if(showRoutine!=null) StopCoroutine(showRoutine);
             if(nestedActionRoutine!=null) StopCoroutine(nestedActionRoutine);
@@ -382,7 +383,7 @@ namespace Febucci.UI.Core
         [ContextMenu("Start Disappearing Text")]
         public void StartDisappearingText()
         {
-            if (disappearanceOrientation == DisappearanceOrientation.Inverted && isShowingText)
+            if (disappearanceOrientation == DisappearanceOrientation.Inverted && IsShowingText)
             {
                 Debug.LogWarning("TextAnimatorPlayer: Can't start disappearance routine in the opposite direction of the typewriter, because you're still showing the text! (the typewriter might get stuck trying to show and override letters that keep disappearing)");
                 return;
@@ -611,7 +612,7 @@ namespace Febucci.UI.Core
         }
 
         [System.Obsolete("Please use 'isShowingText' instead")]
-        protected bool isBaseInsideRoutine => isShowingText;
+        protected bool isBaseInsideRoutine => IsShowingText;
         
         
         [System.Obsolete("Please use 'TextAnimator' instead")]

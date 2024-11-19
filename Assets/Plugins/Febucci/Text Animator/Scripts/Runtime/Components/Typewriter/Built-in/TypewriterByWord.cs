@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Febucci.UI
@@ -6,12 +7,12 @@ namespace Febucci.UI
     /// <summary>
     /// Built-in typewriter, which shows letters dynamically word after word.<br/>
     /// To enable it, add this component near a <see cref="Febucci.UI.Core.TAnimCore"/> one<br/>
-    /// - Base class: <see cref="Febucci.UI.Core.TypewriterCore"/><br/>
+    /// - Base class: <see cref="TypewriterCore"/><br/>
     /// - Manual: <see href="https://www.febucci.com/text-animator-unity/docs/typewriters/">TextAnimatorPlayers</see>
     /// </summary>
     [HelpURL("https://www.febucci.com/text-animator-unity/docs/typewriters/")]
     [AddComponentMenu("Febucci/TextAnimator/Typewriter - By Word")]
-    public class TypewriterByWord: Core.TypewriterCore
+    public class TypewriterByWord: TypewriterCore
     {
         [SerializeField, Attributes.CharsDisplayTime] public float waitForNormalWord = 0.3f;
         [FormerlySerializedAs("waitForWordWithPuntuaction")] [SerializeField, Attributes.CharsDisplayTime] public float waitForWordWithPunctuation = 0.5f;

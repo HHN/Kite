@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
+using UnityEditor;
 using UnityEngine;
 
 namespace Febucci.UI.Core.Editors

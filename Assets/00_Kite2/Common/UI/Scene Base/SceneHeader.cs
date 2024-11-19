@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using _00_Kite2.Common.UI.UI_Elements.Messages;
+using _00_Kite2.Player;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,7 +37,7 @@ public class SceneHeader : MonoBehaviour
     {
         if (isNovelScene && playNovelSceneController != null)
         {
-            playNovelSceneController.isPaused = true; // Pause the novel progression
+            playNovelSceneController.IsPaused = true; // Pause the novel progression
         }
 
         if (!this.isNovelScene)
