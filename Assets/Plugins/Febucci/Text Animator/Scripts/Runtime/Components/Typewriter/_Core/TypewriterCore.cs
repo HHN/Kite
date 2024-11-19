@@ -1,10 +1,11 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using Febucci.UI;
+using Febucci.UI.Core;
 using Febucci.UI.Core.Parsing;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Febucci.UI.Core
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core
 {
     /// <summary>
     /// Base class for all Typewriters. <br/>
@@ -17,7 +18,7 @@ namespace Febucci.UI.Core
     /// Manual: <see href="https://www.febucci.com/text-animator-unity/docs/writing-custom-typewriters-c-sharp/">Writing Custom Typewriters (C#)</see>
     /// </remarks>
     [DisallowMultipleComponent]
-    [RequireComponent(typeof(Core.TAnimCore))]
+    [RequireComponent(typeof(global::Febucci.UI.Core.TAnimCore))]
     public abstract class TypewriterCore : MonoBehaviour
     {
         [System.Flags]
@@ -202,8 +203,6 @@ namespace Febucci.UI.Core
         {
             if (IsShowingText)
             {
-                Debug.Log("SkipTypewriter");
-                
                 StopAllCoroutines();
                 IsShowingText = false;
                 

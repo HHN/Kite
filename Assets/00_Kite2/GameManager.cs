@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using _00_Kite2.SaveNovelData;
 using UnityEngine;
 
 namespace _00_Kite2
@@ -17,7 +18,7 @@ namespace _00_Kite2
 
         [SerializeField] private bool isIntroNovelSaved;
 
-        // Liste zur Anzeige im Inspector (nur f�r Debugging, nicht direkt genutzt)
+        // Liste zur Anzeige im Inspector (nur für Debugging, nicht direkt genutzt)
         [SerializeField] private List<NovelSaveStatus> novelSaveStatusList = new();
 
         public bool calledFromReload = true;
@@ -31,11 +32,6 @@ namespace _00_Kite2
             get => skipIntroNovel;
             set => skipIntroNovel = value;
         }
-
-        // public void CallFromReload()
-        // {
-        //     
-        // }
 
         private void Awake()
         {

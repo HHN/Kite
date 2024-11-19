@@ -1,5 +1,6 @@
 using Febucci.UI.Core;
 using Febucci.UI.Effects;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using UnityEngine;
 
 namespace Febucci.UI.Examples

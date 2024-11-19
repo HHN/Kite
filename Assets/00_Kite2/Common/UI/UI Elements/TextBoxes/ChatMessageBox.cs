@@ -1,4 +1,5 @@
 using Febucci.UI.Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;

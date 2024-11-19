@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using _00_Kite2.Common.Managers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +18,7 @@ namespace _00_Kite2.Player
         private GameObject blueMessagePrefab;
 
         [SerializeField] private GameObject greyMessagePrefab;
-        [SerializeField] private GameObject turqouiseMessagePrefab;
+        [SerializeField] private GameObject turquoiseMessagePrefab;
         [SerializeField] private GameObject cottaMessagePrefab;
         [SerializeField] private GameObject blueMessagePrefabWithTrigger;
         [SerializeField] private GameObject optionsPrefab;
@@ -210,12 +211,12 @@ namespace _00_Kite2.Player
                 return;
             }
 
-            // L�sche alle UI-Elemente, die nach dem entsprechenden Index angezeigt wurden
+            // Lösche alle UI-Elemente, die nach dem entsprechenden Index angezeigt wurden
             for (int i = guiContent.Count - 1; i >= index; i--)
             {
                 if (guiContent[i] != null) // Pr�fe, ob das UI-Element nicht bereits null ist
                 {
-                    Destroy(guiContent[i]); // L�scht das GameObject aus der Szene
+                    Destroy(guiContent[i]); // Löscht das GameObject aus der Szene
                 }
 
                 guiContent.RemoveAt(i); // Entfernt das Element aus der Liste, selbst wenn es null ist
@@ -268,14 +269,11 @@ namespace _00_Kite2.Player
                     newMessageBox = Instantiate(greyMessagePrefab, this.transform);
                     newMessageBox.SetActive(false);
                 }
-                Debug.Log("GameManager.Instance.calledFromReload: " + GameManager.Instance.calledFromReload);
                 SetText(newMessageBox, visualNovelEvent.text);
             }
         
-            Debug.Log("Ende");
-        
             _sceneController.ScrollToBottom();
-            GameManager.Instance.calledFromReload = false;
+            // GameManager.Instance.calledFromReload = false;
         }
 
         private void SetText(GameObject messageBox, string text)
@@ -291,11 +289,6 @@ namespace _00_Kite2.Player
                 chatMessageBox.textBox.text = ""; // Stelle sicher, dass der Text leer ist
                 chatMessageBox.textBox.text = text;
             }
-
-            
-            // TypewriterCore typewriterCore = chatMessageBox.GetComponentInChildren<TypewriterCore>();
-            // typewriterCore.IsShowingText = true;
-            // typewriterCore.Skip();
         }
     }
 }

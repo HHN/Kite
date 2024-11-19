@@ -1,3 +1,4 @@
+using _00_Kite2.SaveNovelData;
 using UnityEngine;
 using UnityEngine.UI;
 using LeastSquares.Overtone;

@@ -1,4 +1,5 @@
 ﻿using Febucci.UI.Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using UnityEngine;
 
 namespace Febucci.UI
@@ -11,7 +12,7 @@ namespace Febucci.UI
     /// </summary>
     [HelpURL("https://www.febucci.com/text-animator-unity/docs/typewriters/")]
     [AddComponentMenu("Febucci/TextAnimator/Typewriter - By Character")]
-    public class TypewriterByCharacter : Core.TypewriterCore
+    public class TypewriterByCharacter : TypewriterCore
     {
         [SerializeField, Attributes.CharsDisplayTime, Tooltip("Wait time for normal letters")] public float waitForNormalChars = .03f;
         [SerializeField, Attributes.CharsDisplayTime, Tooltip("Wait time for ! ? .")] public float waitLong = .6f;

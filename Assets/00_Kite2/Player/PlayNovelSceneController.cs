@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Febucci.UI.Core;
+using _00_Kite2.Common.UI.UI_Elements.Messages;
+using _00_Kite2.SaveNovelData;
 using LeastSquares.Overtone;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -856,75 +858,69 @@ namespace _00_Kite2.Player
         public void RestoreChoice()
         {
             // Check if there is a previous choice to restore
-            if (!string.IsNullOrEmpty(_optionsId[0]))
+            if (string.IsNullOrEmpty(_optionsId[0])) return;
+            
+            // The ID of the event we want to restore to
+            string eventIdToRestore = _optionsId[0];
+
+            // Find the index of the event in the eventHistory list
+            int indexToRestore = eventHistory.FindIndex(e => e.id == eventIdToRestore);
+
+            if (indexToRestore == -1) return; // If the event is found in the history
+            
+            // Remove the event and all events after it
+            eventHistory.RemoveRange(indexToRestore, eventHistory.Count - indexToRestore);
+
+            // Now update playThroughHistory
+            // Search from back to front for the second occurrence of ":"
+            int colonCount = 0;
+            int indexToRemoveFrom = -1;
+
+            // Traverse the list backwards
+            for (int i = playThroughHistory.Count - 1; i >= 0; i--)
             {
-                // The ID of the event we want to restore to
-                string eventIdToRestore = _optionsId[0];
-
-                // Find the index of the event in the eventHistory list
-                int indexToRestore = eventHistory.FindIndex(e => e.id == eventIdToRestore);
-
-                if (indexToRestore != -1) // If the event is found in the history
-                {
-                    // Remove the event and all events after it
-                    eventHistory.RemoveRange(indexToRestore, eventHistory.Count - indexToRestore);
-
-                    // Now update playThroughHistory
-                    // Search from back to front for the second occurrence of ":"
-                    int colonCount = 0;
-                    int indexToRemoveFrom = -1;
-
-                    // Traverse the list backwards
-                    for (int i = playThroughHistory.Count - 1; i >= 0; i--)
-                    {
-                        if (playThroughHistory[i].Trim() == ":")
-                        {
-                            colonCount++;
-                            if (colonCount == 2)
-                            {
-                                indexToRemoveFrom = i;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (indexToRemoveFrom != -1)
-                    {
-                        // Remove all entries from the found index onwards
-                        playThroughHistory.RemoveRange(indexToRemoveFrom, playThroughHistory.Count - indexToRemoveFrom);
-
-                        _conversationContentGuiController.ClearUIAfter(indexToRemoveFrom);
-                    }
-
-                    // Set the previous event as the next event to play, if present
-                    if (indexToRestore > 0)
-                    {
-                        SetNextEvent(eventIdToRestore);
-                        PlayNextEvent();
-                    }
-                }
+                if (playThroughHistory[i].Trim() != ":") continue;
+                
+                colonCount++;
+                
+                if (colonCount != 2) continue;
+                
+                indexToRemoveFrom = i;
+                break;
             }
+
+            if (indexToRemoveFrom != -1)
+            {
+                // Remove all entries from the found index onwards
+                playThroughHistory.RemoveRange(indexToRemoveFrom, playThroughHistory.Count - indexToRemoveFrom);
+
+                _conversationContentGuiController.ClearUIAfter(indexToRemoveFrom);
+            }
+
+            // Set the previous event as the next event to play, if present
+            if (indexToRestore <= 0) return;
+            
+            SetNextEvent(eventIdToRestore);
+            PlayNextEvent();
         }
 
         // Methode zum Anzeigen der HintForSavegameMessageBox
         private void ShowHintForSavegameMessageBox()
         {
-            if (hintForSavegameMessageBox != null)
+            if (hintForSavegameMessageBox == null) return;
+            
+            // Überprüfen, ob die HintForSavegameMessageBox bereits geladen ist und schließe sie gegebenenfalls
+            if (!hintForSavegameMessageBoxObject.IsNullOrDestroyed())
             {
-                // Überprüfen, ob die HintForSavegameMessageBox bereits geladen ist und schließe sie gegebenenfalls
-                if (!hintForSavegameMessageBoxObject.IsNullOrDestroyed())
-                {
-                    hintForSavegameMessageBoxObject.CloseMessageBox();
-                }
-
-                // Instanziere und aktiviere die HintForSavegameMessageBox, falls das Canvas nicht null ist
-                if (!canvas.IsNullOrDestroyed())
-                {
-                    hintForSavegameMessageBoxObject = Instantiate(hintForSavegameMessageBox, canvas.transform)
-                        .GetComponent<HintForSavegameMessageBox>();
-                    hintForSavegameMessageBoxObject.Activate();
-                }
+                hintForSavegameMessageBoxObject.CloseMessageBox();
             }
+
+            // Instanziere und aktiviere die HintForSavegameMessageBox, falls das Canvas nicht null ist
+            if (canvas.IsNullOrDestroyed()) return;
+            
+            hintForSavegameMessageBoxObject = Instantiate(hintForSavegameMessageBox, canvas.transform)
+                .GetComponent<HintForSavegameMessageBox>();
+            hintForSavegameMessageBoxObject.Activate();
         }
 
         // Startet das Spiel vom gespeicherten Punkt, wenn "Fortsetzen" gewählt wird
@@ -979,8 +975,6 @@ namespace _00_Kite2.Player
         
         private void ActivateMessageBoxes()
         {
-            Debug.Log("Aktiviere MessageBoxes...");
-
             foreach (var messageBox in conversationContent.GuiContent)
             {
                 if (messageBox != null && !messageBox.activeSelf)
