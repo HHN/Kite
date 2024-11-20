@@ -13,7 +13,7 @@ public class GetUserRoleByCodeServerCall : ServerCall
 
     protected override UnityWebRequest CreateUnityWebRequestObject()
     {
-        return UnityWebRequest.Post(ConnectionLink.USER_ROLE_LINK, string.Empty);
+        return UnityWebRequest.PostWwwForm(ConnectionLink.USER_ROLE_LINK, string.Empty);
     }
 
     protected override void OnResponse(Response response)

@@ -205,6 +205,8 @@ namespace _00_Kite2.Player
 
         public void ClearUIAfter(int index)
         {
+            int optionsToChooseFromCount = 0;
+            
             // �berpr�fe, ob der Index g�ltig ist
             if (index > guiContent.Count || index < 0)
             {
@@ -216,10 +218,20 @@ namespace _00_Kite2.Player
             {
                 if (guiContent[i] != null) // Pr�fe, ob das UI-Element nicht bereits null ist
                 {
+                    if(guiContent[i].name.Contains("OptionsToChooseFrom")) optionsToChooseFromCount++;
+                    
+                    Debug.Log(guiContent[i].name);
                     Destroy(guiContent[i]); // Löscht das GameObject aus der Szene
                 }
 
                 guiContent.RemoveAt(i); // Entfernt das Element aus der Liste, selbst wenn es null ist
+            }
+            
+            Debug.Log("optionsToChooseFromCount: " + optionsToChooseFromCount);
+            // Lösche alle UI-Elemente, die nach dem entsprechenden Index angezeigt wurden
+            for (int i = visualNovelEvents.Count - 1; i > index - optionsToChooseFromCount; i--)
+            {
+                visualNovelEvents.RemoveAt(i); // Entfernt das Element aus der Liste, selbst wenn es null ist
             }
         }
 
@@ -237,6 +249,9 @@ namespace _00_Kite2.Player
             visualNovelEvents = savedData.visualNovelEvents;
         
             GameManager.Instance.calledFromReload = true;
+            
+            Debug.Log("savedData.visualNovelEvents.Count: " + savedData.visualNovelEvents.Count);
+            Debug.Log("savedData.messageType.Count: " + savedData.messageType.Count);
 
             // Durchlaufe jedes Event in visualNovelEvents und erstelle das entsprechende GUI-Element
             for (int i = 0; i < savedData.visualNovelEvents.Count; i++)

@@ -5,57 +5,57 @@ using UnityEngine.UI;
 public class FontSizeManager : MonoBehaviour
 {
     // Statische Instanz
-    private static FontSizeManager instance;
+    private static FontSizeManager _instance;
 
-    // Schriftgrößen-Variablen
-    public int fontSize { get; private set; }
+    // SchriftgrÃ¶ÃŸen-Variablen
+    public int FontSize { get; private set; }
 
-    // Werte für die minimal und maximal zulässige Schriftgröße
-    private int minFontSize = 35;
-    private int maxFontSize = 50;
+    // Werte fï¿½r die minimal und maximal zulï¿½ssige Schriftgrï¿½ï¿½e
+    private int _minFontSize = 35;
+    private int _maxFontSize = 50;
 
-    // Privater Konstruktor, um Instanziierungen von außen zu verhindern
+    // Privater Konstruktor, um Instanziierungen von auï¿½en zu verhindern
     private FontSizeManager()
     {
-        // Standard-Schriftgröße kann hier initialisiert werden, z.B. mittlerer Wert zwischen min und max
-        fontSize = minFontSize;
+        // Standard-Schriftgrï¿½ï¿½e kann hier initialisiert werden, z.B. mittlerer Wert zwischen min und max
+        FontSize = _minFontSize;
     }
 
-    // Öffentliche Methode zum Abrufen der Instanz
+    // Ã–ffentliche Methode zum Abrufen der Instanz
     public static FontSizeManager Instance()
     {
-        if (instance == null)
+        if (_instance == null)
         {
-            instance = FindObjectOfType<FontSizeManager>();
-            if (instance == null)
+            _instance = FindObjectOfType<FontSizeManager>();
+            if (_instance == null)
             {
                 GameObject obj = new GameObject("FontSizeManager");
-                instance = obj.AddComponent<FontSizeManager>();
+                _instance = obj.AddComponent<FontSizeManager>();
                 DontDestroyOnLoad(obj);
             }
         }
-        return instance;
+        return _instance;
     }
 
-    void Awake()
+    private void Awake()
     {
-        // Schriftgröße aus PlayerPrefs laden (Standard: minFontSize)
-        fontSize = PlayerPrefs.GetInt("SavedFontSize", minFontSize);
+        // Schriftgrï¿½ï¿½e aus PlayerPrefs laden (Standard: minFontSize)
+        FontSize = PlayerPrefs.GetInt("SavedFontSize", _minFontSize);
     }
 
-    // Methode, um die Schriftgröße zu setzen, dabei wird sichergestellt, dass die Größe im zulässigen Bereich bleibt
+    // Methode, um die Schriftgrï¿½ï¿½e zu setzen, dabei wird sichergestellt, dass die Grï¿½ï¿½e im zulï¿½ssigen Bereich bleibt
     public void SetFontSize(int newFontSize)
     {
-        fontSize = Mathf.Clamp(newFontSize, minFontSize, maxFontSize);
-        PlayerPrefs.SetInt("SavedFontSize", fontSize);
+        FontSize = Mathf.Clamp(newFontSize, _minFontSize, _maxFontSize);
+        PlayerPrefs.SetInt("SavedFontSize", FontSize);
         UpdateAllTextComponents();
     }
 
-    // Methode, um die Schriftgröße direkt auf einen Slider-Wert anzupassen (0 = min, 1 = max)
+    // Methode, um die Schriftgrï¿½ï¿½e direkt auf einen Slider-Wert anzupassen (0 = min, 1 = max)
     public void SetFontSizeFromSlider(float sliderValue)
     {
-        fontSize = Mathf.RoundToInt(Mathf.Lerp(minFontSize, maxFontSize, sliderValue));
-        PlayerPrefs.SetInt("SavedFontSize", fontSize);
+        FontSize = Mathf.RoundToInt(Mathf.Lerp(_minFontSize, _maxFontSize, sliderValue));
+        PlayerPrefs.SetInt("SavedFontSize", FontSize);
         UpdateAllTextComponents();
     }
 
@@ -65,15 +65,15 @@ public class FontSizeManager : MonoBehaviour
         TMP_Text[] tmpTextComponents = GameObject.FindObjectsOfType<TMP_Text>();
         foreach (TMP_Text tmpTextComponent in tmpTextComponents)
         {
-            // Überprüfen, ob das Textobjekt den Tag "NoResize" hat, und überspringen
+            // ï¿½berprï¿½fen, ob das Textobjekt den Tag "NoResize" hat, und ï¿½berspringen
             if (tmpTextComponent.CompareTag("NoResize"))
             {
                 continue;
             }
-            tmpTextComponent.fontSize = fontSize;
-            tmpTextComponent.ForceMeshUpdate(); // Erzwingt das Update des Textes (optional für TMP)
+            tmpTextComponent.fontSize = FontSize;
+            tmpTextComponent.ForceMeshUpdate(); // Erzwingt das Update des Textes (optional fï¿½r TMP)
 
-            // **Layout für dieses Textobjekt neu erstellen**
+            // **Layout fï¿½r dieses Textobjekt neu erstellen**
             RectTransform rectTransform = tmpTextComponent.GetComponent<RectTransform>();
             if (rectTransform != null)
             {
@@ -85,14 +85,14 @@ public class FontSizeManager : MonoBehaviour
         Text[] uiTextComponents = GameObject.FindObjectsOfType<Text>();
         foreach (Text uiTextComponent in uiTextComponents)
         {
-            // Überprüfen, ob das Textobjekt den Tag "NoResize" hat, und überspringen
+            // ï¿½berprï¿½fen, ob das Textobjekt den Tag "NoResize" hat, und ï¿½berspringen
             if (uiTextComponent.CompareTag("NoResize"))
             {
                 continue;
             }
-            uiTextComponent.fontSize = fontSize;
+            uiTextComponent.fontSize = FontSize;
 
-            // **Layout für dieses Textobjekt neu erstellen**
+            // **Layout fï¿½r dieses Textobjekt neu erstellen**
             RectTransform rectTransform = uiTextComponent.GetComponent<RectTransform>();
             if (rectTransform != null)
             {

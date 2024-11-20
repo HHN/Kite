@@ -25,7 +25,7 @@ public class AddExpertFeedbackQuestionServerCall : ServerCall
 
     protected override UnityWebRequest CreateUnityWebRequestObject()
     {
-        return UnityWebRequest.Post(ConnectionLink.EXPERT_FEEDBACK_QUESTION, string.Empty);
+        return UnityWebRequest.PostWwwForm(ConnectionLink.EXPERT_FEEDBACK_QUESTION, string.Empty);
     }
 
     protected override void OnResponse(Response response)

@@ -19,7 +19,7 @@ public class AddNovelReviewServerCall : ServerCall
 
     protected override UnityWebRequest CreateUnityWebRequestObject()
     {
-        return UnityWebRequest.Post(ConnectionLink.NOVEL_REVIEW_LINK, string.Empty);
+        return UnityWebRequest.PostWwwForm(ConnectionLink.NOVEL_REVIEW_LINK, string.Empty);
     }
 
     protected override void OnResponse(Response response)

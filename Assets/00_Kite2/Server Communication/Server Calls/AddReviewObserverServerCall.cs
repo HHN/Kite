@@ -13,7 +13,7 @@ public class AddReviewObserverServerCall : ServerCall
 
     protected override UnityWebRequest CreateUnityWebRequestObject()
     {
-        return UnityWebRequest.Post(ConnectionLink.OBSERVER_LINK, string.Empty);
+        return UnityWebRequest.PostWwwForm(ConnectionLink.OBSERVER_LINK, string.Empty);
     }
 
     protected override void OnResponse(Response response)

@@ -16,8 +16,8 @@ public class BarrierefreiheitSceneController : SceneController
     [SerializeField] private Button confirmButton;
     [SerializeField] private RectTransform layoutGroupContainer; // Container mit der Vertical Layout Group
 
-    private int minFontSize = 35;   // Minimale Schriftgröße
-    private int maxFontSize = 50;   // Maximale Schriftgröße
+    private int minFontSize = 35;   // Minimale Schriftgrï¿½ï¿½e
+    private int maxFontSize = 50;   // Maximale Schriftgrï¿½ï¿½e
 
     // Entsprechendes minimales und maximales Spacing
     private float minSpacing = 30f;   // Minimales Spacing
@@ -31,14 +31,14 @@ public class BarrierefreiheitSceneController : SceneController
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
         InitializeToggleTextToSpeech();
-        InitializeFontSizeSlider();  // Neue Methode zum Initialisieren des Sliders und der Schriftgröße
+        InitializeFontSizeSlider();  // Neue Methode zum Initialisieren des Sliders und der Schriftgrï¿½ï¿½e
         toggleTextToSpeech.onValueChanged.AddListener(delegate { OnToggleTextToSpeech(toggleTextToSpeech); });
         toggleTextToSpeechInfoButton.onClick.AddListener(delegate { OnToggleTextToSpeechInfoButton(); });
         adjustFontSizeInfoButton.onClick.AddListener(delegate { OnAdjustFontSizeInfoButton(); });
         fontSizeSlider.onValueChanged.AddListener(UpdateFontSize);
         confirmButton.onClick.AddListener(delegate { SetFontSize(); });
         FontSizeManager.Instance().UpdateAllTextComponents();
-        AdjustSpacing(FontSizeManager.Instance().fontSize);
+        AdjustSpacing(FontSizeManager.Instance().FontSize);
     }
 
     public void InitializeToggleTextToSpeech()
@@ -82,25 +82,25 @@ public class BarrierefreiheitSceneController : SceneController
         DisplayInfoMessage(InfoMessages.EXPLANATION_TEXTTOSPEECH_BUTTON);
     }
 
-    // Neue Methode zum Initialisieren des Sliders basierend auf der gespeicherten Schriftgröße
+    // Neue Methode zum Initialisieren des Sliders basierend auf der gespeicherten Schriftgrï¿½ï¿½e
     private void InitializeFontSizeSlider()
     {
-        // Schriftgröße aus PlayerPrefs laden, Standardwert ist die minimale Schriftgröße
+        // Schriftgrï¿½ï¿½e aus PlayerPrefs laden, Standardwert ist die minimale Schriftgrï¿½ï¿½e
         int savedFontSize = PlayerPrefs.GetInt("SavedFontSize", minFontSize);
 
-        // Berechne den Slider-Wert basierend auf der gespeicherten Schriftgröße
+        // Berechne den Slider-Wert basierend auf der gespeicherten Schriftgrï¿½ï¿½e
         float sliderValue = (float)(savedFontSize - minFontSize) / (maxFontSize - minFontSize);
 
         // Slider auf den entsprechenden Wert setzen
         fontSizeSlider.value = sliderValue;
 
-        // Text sofort auf die gespeicherte Schriftgröße setzen
+        // Text sofort auf die gespeicherte Schriftgrï¿½ï¿½e setzen
         UpdateFontSize(sliderValue);
     }
 
     private void UpdateFontSize(float sliderValue)
     {
-        // Berechne die neue Schriftgröße basierend auf dem Slider-Wert
+        // Berechne die neue Schriftgrï¿½ï¿½e basierend auf dem Slider-Wert
         int newFontSize = Mathf.RoundToInt(Mathf.Lerp(minFontSize, maxFontSize, sliderValue));
 
         // Falls du TextMeshPro verwendest, setze stattdessen die TMP_Text FontSize
@@ -118,13 +118,13 @@ public class BarrierefreiheitSceneController : SceneController
 
     private void AdjustSpacing(int fontSize)
     {
-        // Schriftgröße zwischen minFontSize und maxFontSize begrenzen
+        // Schriftgrï¿½ï¿½e zwischen minFontSize und maxFontSize begrenzen
         fontSize = Mathf.Clamp(fontSize, minFontSize, maxFontSize);
 
-        // Verhältnis der Schriftgröße innerhalb des Bereichs berechnen
+        // Verhï¿½ltnis der Schriftgrï¿½ï¿½e innerhalb des Bereichs berechnen
         float ratio = (float)(fontSize - minFontSize) / (float)(maxFontSize - minFontSize);
 
-        // Neues Spacing basierend auf dem Verhältnis berechnen
+        // Neues Spacing basierend auf dem Verhï¿½ltnis berechnen
         float newSpacing = minSpacing + ratio * (maxSpacing - minSpacing);
 
         // Spacing in der Layout Group aktualisieren

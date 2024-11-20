@@ -21,7 +21,7 @@ public class AddAiReviewServerCall : ServerCall
 
     protected override UnityWebRequest CreateUnityWebRequestObject()
     {
-        return UnityWebRequest.Post(ConnectionLink.AI_REVIEW_LINK, string.Empty);
+        return UnityWebRequest.PostWwwForm(ConnectionLink.AI_REVIEW_LINK, string.Empty);
     }
 
     protected override void OnResponse(Response response)
