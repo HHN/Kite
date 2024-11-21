@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Serialization;
 
 public class FoundersBubbleSceneController : SceneController
 {
@@ -51,7 +52,7 @@ public class FoundersBubbleSceneController : SceneController
     [SerializeField] private Button notarinButtonFromBurgerMenu;
     [SerializeField] private Button presseButtonFromBurgerMenu;
     [SerializeField] private Button bueroButtonFromBurgerMenu;
-    [SerializeField] private Button bekannteNovelButtonFromBurgerMenu;
+    [SerializeField] private Button bekanntenNovelButtonFromBurgerMenu;
 
     [Header("Search Input and Button Containers")] [SerializeField]
     private TMP_InputField inputField;
@@ -96,12 +97,12 @@ public class FoundersBubbleSceneController : SceneController
         notarinButtonFromBurgerMenu.onClick.AddListener(OnNotarinButtonFromBurgerMenu);
         presseButtonFromBurgerMenu.onClick.AddListener(OnPresseButtonFromBurgerMenu);
         bueroButtonFromBurgerMenu.onClick.AddListener(OnBueroButtonFromBurgerMenu);
-        bekannteNovelButtonFromBurgerMenu.onClick.AddListener(OnBekannteNovelButtonFromBurgerMenu);
+        bekanntenNovelButtonFromBurgerMenu.onClick.AddListener(OnBekannteNovelButtonFromBurgerMenu);
         burgerMenuBackground.onClick.AddListener(OnBackgroundButton);
 
         if (inputField != null)
         {
-            // Füge den Listener für Änderungen am Text des InputFields hinzu
+            // Fï¿½ge den Listener fï¿½r ï¿½nderungen am Text des InputFields hinzu
             inputField.onValueChanged.AddListener(OnInputValueChanged);
         }
         else
@@ -111,7 +112,7 @@ public class FoundersBubbleSceneController : SceneController
 
         if (buttonContainers != null && buttonContainers.Count > 0)
         {
-            // Speichere die ursprüngliche Reihenfolge der Container
+            // Speichere die ursprï¿½ngliche Reihenfolge der Container
             _originalOrder = new List<GameObject>(buttonContainers);
         }
         else
@@ -122,7 +123,7 @@ public class FoundersBubbleSceneController : SceneController
 
     private void OnInputValueChanged(string input)
     {
-        // Erstelle eine temporäre Liste, um die Container neu anzuordnen
+        // Erstelle eine temporï¿½re Liste, um die Container neu anzuordnen
         List<GameObject> visibleContainers = new List<GameObject>();
         List<GameObject> hiddenContainers = new List<GameObject>();
 
@@ -143,13 +144,13 @@ public class FoundersBubbleSceneController : SceneController
                         // Vergleiche den Button-Text mit dem Input
                         if (buttonText.text.ToLower().Contains(input.ToLower()))
                         {
-                            // Container sichtbar machen und zur Liste der sichtbaren Container hinzufügen
+                            // Container sichtbar machen und zur Liste der sichtbaren Container hinzufï¿½gen
                             container.SetActive(true);
                             visibleContainers.Add(container);
                         }
                         else
                         {
-                            // Container deaktivieren und zur Liste der versteckten Container hinzufügen
+                            // Container deaktivieren und zur Liste der versteckten Container hinzufï¿½gen
                             container.SetActive(false);
                             hiddenContainers.Add(container);
                         }
@@ -370,7 +371,7 @@ public class FoundersBubbleSceneController : SceneController
     private void ToggleBurgerMenu()
     {
         isBurgerMenuOpen = !isBurgerMenuOpen;
-        burgerMenu.SetActive(isBurgerMenuOpen); // Zeige oder verstecke das Burger-Menü
+        burgerMenu.SetActive(isBurgerMenuOpen); // Zeige oder verstecke das Burger-Menï¿½
         FontSizeManager.Instance().UpdateAllTextComponents();
     }
 
@@ -378,7 +379,7 @@ public class FoundersBubbleSceneController : SceneController
     {
         if (isBurgerMenuOpen)
         {
-            burgerMenu.SetActive(false); // Verstecke das Burger-Menü
+            burgerMenu.SetActive(false); // Verstecke das Burger-Menï¿½
             isBurgerMenuOpen = false;
         }
     }
