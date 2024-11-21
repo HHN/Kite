@@ -1,39 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RessourcenSceneController : SceneController
+namespace _00_Kite2.NewPages
 {
-    [SerializeField] private RectTransform layout;
-
-    [SerializeField] private Button bgaButton;
-    [SerializeField] private Button hhnButton;
-    [SerializeField] private Button kite2Button;
-
-    void Start()
+    public class RessourcenSceneController : SceneController
     {
-        BackStackManager.Instance().Push(SceneNames.RESSOURCEN_SCENE);
-        LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
+        [SerializeField] private RectTransform layout;
 
-        bgaButton.onClick.AddListener(delegate { OnBgaButton(); });
-        hhnButton.onClick.AddListener(delegate { OnHhnButton(); });
-        kite2Button.onClick.AddListener(delegate { OnKite2Button(); });
-    }
+        [SerializeField] private Button bgaButton;
+        [SerializeField] private Button hhnButton;
+        [SerializeField] private Button kite2Button;
 
+        private void Start()
+        {
+            BackStackManager.Instance().Push(SceneNames.RESSOURCEN_SCENE);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
 
-    public void OnBgaButton()
-    {
-        Application.OpenURL("https://www.existenzgruendungsportal.de/Navigation/DE/Netzwerke/Gruenderinnen/gruenderinnen-im-fokus.html");
-    }
+            bgaButton.onClick.AddListener(OnBgaButton);
+            hhnButton.onClick.AddListener(OnHhnButton);
+            kite2Button.onClick.AddListener(OnKite2Button);
+        }
 
-    public void OnHhnButton()
-    {
-        Application.OpenURL("https://www.hs-heilbronn.de/de/lab-sozioinformatik");
-    }
+        private void OnBgaButton()
+        {
+            Application.OpenURL("https://www.gruenderinnenagentur.de/home");
+        }
 
-    public void OnKite2Button()
-    {
-        Application.OpenURL("https://kite2.de/");
+        private void OnHhnButton()
+        {
+            Application.OpenURL("https://www.hs-heilbronn.de/de/lab-sozioinformatik");
+        }
+
+        private void OnKite2Button()
+        {
+            Application.OpenURL("https://kite2.de/");
+        }
     }
 }
