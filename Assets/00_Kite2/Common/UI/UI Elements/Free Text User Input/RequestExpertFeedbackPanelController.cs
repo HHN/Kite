@@ -1,3 +1,4 @@
+using _00_Kite2.Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
