@@ -1,51 +1,54 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public class DialogHistoryEntry
+namespace _00_Kite2.Player
 {
-    [SerializeField] private long novelId;
-    [SerializeField] private string dialog;
-    [SerializeField] private string completion;
-    [SerializeField] private string dateAndTime;
-
-    public long GetNovelId() 
-    { 
-        return novelId; 
-    }
-
-    public void SetNovelId(long novelId)
+    [Serializable]
+    public class DialogHistoryEntry
     {
-        this.novelId = novelId;
-    }
+        [SerializeField] private long novelId;
+        [SerializeField] private string dialog;
+        [SerializeField] private string completion;
+        [SerializeField] private string dateAndTime;
 
-    public string GetDialog() 
-    { 
-        return dialog; 
-    }
+        public long GetNovelId() 
+        { 
+            return novelId; 
+        }
 
-    public void SetDialog(string dialog)
-    {
-        this.dialog = dialog;
-    }
+        public void SetNovelId(long novelId)
+        {
+            this.novelId = novelId;
+        }
 
-    public string GetDateAndTime()
-    {
-        return dateAndTime;
-    }
+        public string GetDialog() 
+        { 
+            return dialog; 
+        }
 
-    public void SetDateAndTime(string dateAndTime)
-    {
-        this.dateAndTime = dateAndTime;
-    }
+        public void SetDialog(string dialog)
+        {
+            this.dialog = dialog;
+        }
 
-    public string GetCompletion() 
-    { 
-        return completion; 
-    }
+        public string GetDateAndTime()
+        {
+            return dateAndTime;
+        }
 
-    public void SetCompletion(string completion)
-    {
-        this .completion = completion;
+        public void SetDateAndTime(string dateAndTime)
+        {
+            this.dateAndTime = dateAndTime;
+        }
+
+        public string GetCompletion() 
+        { 
+            return completion; 
+        }
+
+        public void SetCompletion(string completion)
+        {
+            this .completion = completion;
+        }
     }
 }
