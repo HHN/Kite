@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using _00_Kite2.Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -104,7 +105,7 @@ namespace _00_Kite2.Common
             SceneLoader.LoadSettingsScene();
         }
 
-        public void OnContinueTermsAndConditionsButton()
+        private void OnContinueTermsAndConditionsButton()
         {
             UpdateTermsAcceptance();
             ValidateTermsAndLoadScene();
@@ -127,7 +128,7 @@ namespace _00_Kite2.Common
                 privacyManager.UnacceptDataCollection);
         }
 
-        private void UpdateAcceptance(bool isAccepted, System.Action acceptAction, System.Action unacceptAction)
+        private void UpdateAcceptance(bool isAccepted, System.Action acceptAction, System.Action deniedAction)
         {
             if (isAccepted)
             {
@@ -135,7 +136,7 @@ namespace _00_Kite2.Common
             }
             else
             {
-                unacceptAction();
+                deniedAction();
             }
         }
 
@@ -198,11 +199,13 @@ namespace _00_Kite2.Common
                 // Check if the current novel has the title "Einstiegsdialog" (introductory dialogue)
                 if (novel.title == "Einstiegsdialog")
                 {
+                    GameManager.Instance.IsIntroNovelLoadedFromMainMenu = true;
+                    
                     // Convert the novel ID to the corresponding enum
                     VisualNovelNames novelNames = VisualNovelNamesHelper.ValueOf((int)novel.id);
 
                     PlayManager.Instance().SetVisualNovelToPlay(novel); // Set the novel to be played in the PlayManager          
-                    PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(novelNames)); // Set the foreground color for the novel
+                    PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegroundColorOfNovel(novelNames)); // Set the foreground color for the novel
                     PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(novelNames)); // Set the background color for the novel
                     PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelNames)); // Set the display name for the novel
 

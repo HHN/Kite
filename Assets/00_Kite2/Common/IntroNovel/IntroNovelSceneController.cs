@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using _00_Kite2.Player;
 using UnityEngine;
 
 public class IntroNovelSceneController : MonoBehaviour
@@ -28,7 +29,7 @@ public class IntroNovelSceneController : MonoBehaviour
                 VisualNovelNames novelNames = VisualNovelNamesHelper.ValueOf((int)novel.id);
 
                 PlayManager.Instance().SetVisualNovelToPlay(novel);
-                PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegrundColorOfNovel(novelNames));
+                PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegroundColorOfNovel(novelNames));
                 PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(novelNames));
                 PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelNames));
 

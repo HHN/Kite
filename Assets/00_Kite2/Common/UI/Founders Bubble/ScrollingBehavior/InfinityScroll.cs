@@ -133,7 +133,7 @@ namespace _00_Kite2.Common.UI.Founders_Bubble.ScrollingBehavior
                 oldVelocity = scrollRect.velocity;
                 contentPanelTransform.localPosition -= new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
                 isUpdated = true;
-                currentTarget = currentTarget + FoundersBubbleMetaInformation.numerOfNovelsToDisplay;
+                currentTarget = currentTarget + FoundersBubbleMetaInformation.NumberOfNovelsToDisplay;
             }
             else if (contentPanelTransform.localPosition.x < 0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
             {
@@ -141,7 +141,7 @@ namespace _00_Kite2.Common.UI.Founders_Bubble.ScrollingBehavior
                 oldVelocity = scrollRect.velocity;
                 contentPanelTransform.localPosition += new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
                 isUpdated = true;
-                currentTarget = currentTarget - FoundersBubbleMetaInformation.numerOfNovelsToDisplay;
+                currentTarget = currentTarget - FoundersBubbleMetaInformation.NumberOfNovelsToDisplay;
             }
             SnapToItem();
             Canvas.ForceUpdateCanvases();
@@ -187,7 +187,7 @@ namespace _00_Kite2.Common.UI.Founders_Bubble.ScrollingBehavior
                 oldVelocity = customScrollRect.velocity;
                 contentPanelTransform.localPosition -= new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
                 isUpdated = true;
-                currentTarget = currentTarget + FoundersBubbleMetaInformation.numerOfNovelsToDisplay;
+                currentTarget = currentTarget + FoundersBubbleMetaInformation.NumberOfNovelsToDisplay;
             }
             else if (contentPanelTransform.localPosition.x < 0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
             {
@@ -195,7 +195,7 @@ namespace _00_Kite2.Common.UI.Founders_Bubble.ScrollingBehavior
                 oldVelocity = customScrollRect.velocity;
                 contentPanelTransform.localPosition += new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
                 isUpdated = true;
-                currentTarget = currentTarget - FoundersBubbleMetaInformation.numerOfNovelsToDisplay;
+                currentTarget = currentTarget - FoundersBubbleMetaInformation.NumberOfNovelsToDisplay;
             }
             SnapToItem();
             Canvas.ForceUpdateCanvases();
@@ -240,10 +240,13 @@ namespace _00_Kite2.Common.UI.Founders_Bubble.ScrollingBehavior
             isSnapped = false;
             snappingSpeed = 0;
             currentTarget = FoundersBubbleMetaInformation.GetIndexOfNovel(visualNovelNames) + itemsToAdd;
+            
+            Debug.Log("visualNovelNames.ToString(): " + visualNovelNames.ToString());
+            Debug.Log("FoundersBubbleMetaInformation.GetIndexOfNovel(visualNovelNames): " + FoundersBubbleMetaInformation.GetIndexOfNovel(visualNovelNames));
 
-            if (IsCurrentlyInFirstHalf() && currentTarget > FoundersBubbleMetaInformation.numerOfNovelsToDisplay)
+            if (IsCurrentlyInFirstHalf() && currentTarget > FoundersBubbleMetaInformation.NumberOfNovelsToDisplay)
             {
-                currentTarget = currentTarget - FoundersBubbleMetaInformation.numerOfNovelsToDisplay;
+                currentTarget = currentTarget - FoundersBubbleMetaInformation.NumberOfNovelsToDisplay;
             }
         }
 

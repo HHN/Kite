@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Text;
+using _00_Kite2.Player;
 using UnityEngine;
 
 public class NovelAnalyserHelper

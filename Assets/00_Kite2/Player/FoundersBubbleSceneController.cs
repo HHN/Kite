@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using _00_Kite2.Common.UI.Founders_Bubble.ScrollingBehavior;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace _00_Kite2.Player
@@ -391,6 +390,7 @@ namespace _00_Kite2.Player
         
         private void OnIntroButtonFromBurgerMenu()
         {
+            GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
             DisplayNovelFromMenu(VisualNovelNames.INTRO_NOVEL);
         }
 
@@ -452,7 +452,7 @@ namespace _00_Kite2.Player
                     VisualNovelNamesHelper.ValueOf((int)visualNovelToDisplay.id)));
             PlayManager.Instance()
                 .SetForegroundColorOfVisualNovelToPlay(
-                    FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
+                    FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
             PlayManager.Instance()
                 .SetBackgroundColorOfVisualNovelToPlay(
                     FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
