@@ -1,4 +1,5 @@
 using System.Collections;
+using _00_Kite2.Player;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;

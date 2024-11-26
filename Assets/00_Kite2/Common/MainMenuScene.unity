@@ -2544,8 +2544,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e66148b76347274899c8e1d51bc6705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipIntroNovel: 0
+  skipIntroNovel: 1
   isIntroNovelSaved: 0
+  introNovelLoadedFromMainMenu: 1
   novelSaveStatusList: []
   calledFromReload: 0
 --- !u!4 &1193876631
@@ -5556,8 +5557,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backButton: {fileID: 7797249983478380267}
   warningMessageBox: {fileID: 5629918238507184917, guid: 52d64ed2a3cd0524ca7296e9ccb5ddca, type: 3}
+  warningMessageBoxIntro: {fileID: 0}
   warningMessageBoxClose: {fileID: 5629918238507184917, guid: 02336cf7844601448ad76ec2335ed21f, type: 3}
   warningMessageBoxObject: {fileID: 0}
+  warningMessageBoxObjectIntro: {fileID: 0}
   warningMessageBoxObjectClose: {fileID: 0}
   canvas: {fileID: 0}
   isNovelScene: 0

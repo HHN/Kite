@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _00_Kite2.Player;
 
 public class PreGeneratedOfflineFeedbackManager
 {

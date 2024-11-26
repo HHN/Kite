@@ -24,7 +24,6 @@ namespace _00_Kite2.Player
         [Header("Novels Contained in Version")] 
         [SerializeField] private bool isIntroNovelNovelInVersionContained;
         [SerializeField] private bool isBankkreditNovelInVersionContained;
-        [SerializeField] private bool isBekannteTreffenNovelInVersionContained;
         [SerializeField] private bool isBankkontoNovelInVersionContained;
         [SerializeField] private bool isFoerderantragNovelInVersionContained;
         [SerializeField] private bool isElternNovelInVersionContained;
@@ -34,6 +33,7 @@ namespace _00_Kite2.Player
         [SerializeField] private bool isGruendungszuschussNovelInVersionContained;
         [SerializeField] private bool isHonorarNovelInVersionContained;
         [SerializeField] private bool isLebenspartnerNovelInVersionContained;
+        [SerializeField] private bool isBekanntenTreffenNovelInVersionContained;
 
         [Header("General Buttons")] [SerializeField]
         private Button novelListButton;
@@ -45,14 +45,15 @@ namespace _00_Kite2.Player
 
         [SerializeField] private bool isBurgerMenuOpen;
         [SerializeField] private Button burgerMenuBackground;
-
+        
         [Header("Burger Menu Buttons")] 
-        [SerializeField] private Button einstiegsNovelButtonFromBurgerMenu;
-        [SerializeField] private Button bankkreditButtonFromBurgerMenu;
-        [SerializeField] private Button elternButtonFromBurgerMenu;
-        [SerializeField] private Button notarinButtonFromBurgerMenu;
-        [SerializeField] private Button presseButtonFromBurgerMenu;
-        [SerializeField] private Button bueroButtonFromBurgerMenu;
+        [SerializeField] private Button introNovelButtonFromBurgerMenu;
+        [SerializeField] private Button bankkreditNovelButtonFromBurgerMenu;
+        [SerializeField] private Button elternNovelButtonFromBurgerMenu;
+        [SerializeField] private Button notarinNovelButtonFromBurgerMenu;
+        [SerializeField] private Button presseNovelButtonFromBurgerMenu;
+        [SerializeField] private Button bueroNovelButtonFromBurgerMenu;
+        [SerializeField] private Button honorarNovelButtonFromBurgerMenu;
         [SerializeField] private Button bekanntenNovelButtonFromBurgerMenu;
 
         [Header("Search Input and Button Containers")] [SerializeField]
@@ -79,7 +80,6 @@ namespace _00_Kite2.Player
 
             isIntroNovelNovelInVersionContained = true;
             isBankkreditNovelInVersionContained = true;
-            isBekannteTreffenNovelInVersionContained = true;
             isBankkontoNovelInVersionContained = true;
             isFoerderantragNovelInVersionContained = true;
             isElternNovelInVersionContained = true;
@@ -89,17 +89,19 @@ namespace _00_Kite2.Player
             isGruendungszuschussNovelInVersionContained = true;
             isHonorarNovelInVersionContained = true;
             isLebenspartnerNovelInVersionContained = true;
+            isBekanntenTreffenNovelInVersionContained = true;
 
             novelListButton.onClick.AddListener(OnNovelListButton);
             settingsButton.onClick.AddListener(OnSettingsButton);
 
-            einstiegsNovelButtonFromBurgerMenu.onClick.AddListener(OnIntroButtonFromBurgerMenu);
-            bankkreditButtonFromBurgerMenu.onClick.AddListener(OnBankkreditButtonFromBurgerMenu);
-            elternButtonFromBurgerMenu.onClick.AddListener(OnElternButtonFromBurgerMenu);
-            notarinButtonFromBurgerMenu.onClick.AddListener(OnNotarinButtonFromBurgerMenu);
-            presseButtonFromBurgerMenu.onClick.AddListener(OnPresseButtonFromBurgerMenu);
-            bueroButtonFromBurgerMenu.onClick.AddListener(OnBueroButtonFromBurgerMenu);
+            introNovelButtonFromBurgerMenu.onClick.AddListener(OnIntroButtonFromBurgerMenu);
+            bankkreditNovelButtonFromBurgerMenu.onClick.AddListener(OnBankkreditButtonFromBurgerMenu);
+            elternNovelButtonFromBurgerMenu.onClick.AddListener(OnElternButtonFromBurgerMenu);
+            notarinNovelButtonFromBurgerMenu.onClick.AddListener(OnNotarinButtonFromBurgerMenu);
+            presseNovelButtonFromBurgerMenu.onClick.AddListener(OnPresseButtonFromBurgerMenu);
+            bueroNovelButtonFromBurgerMenu.onClick.AddListener(OnBueroButtonFromBurgerMenu);
             bekanntenNovelButtonFromBurgerMenu.onClick.AddListener(OnBekannteNovelButtonFromBurgerMenu);
+            honorarNovelButtonFromBurgerMenu.onClick.AddListener(OnHonorarNovelButtonFromBurgerMenu);
             burgerMenuBackground.onClick.AddListener(OnBackgroundButton);
 
             if (inputField != null)
@@ -210,7 +212,7 @@ namespace _00_Kite2.Player
 
         public void OnBekannteTreffenNovelButton()
         {
-            DisplayTextBoxForVisualNovel(VisualNovelNames.BEKANNTE_TREFFEN_NOVEL, isBekannteTreffenNovelInVersionContained);
+            DisplayTextBoxForVisualNovel(VisualNovelNames.BEKANNTE_TREFFEN_NOVEL, isBekanntenTreffenNovelInVersionContained);
             infinityScroll.MoveToVisualNovel(VisualNovelNames.BEKANNTE_TREFFEN_NOVEL);
         }
 
@@ -388,6 +390,7 @@ namespace _00_Kite2.Player
         
         private void OnIntroButtonFromBurgerMenu()
         {
+            GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
             DisplayNovelFromMenu(VisualNovelNames.INTRO_NOVEL);
         }
 
@@ -414,6 +417,11 @@ namespace _00_Kite2.Player
         private void OnBueroButtonFromBurgerMenu()
         {
             DisplayNovelFromMenu(VisualNovelNames.BUERO_NOVEL);
+        }
+        
+        private void OnHonorarNovelButtonFromBurgerMenu()
+        {
+            DisplayNovelFromMenu(VisualNovelNames.HONORAR_NOVEL);
         }
 
         private void OnBekannteNovelButtonFromBurgerMenu()
@@ -444,7 +452,7 @@ namespace _00_Kite2.Player
                     VisualNovelNamesHelper.ValueOf((int)visualNovelToDisplay.id)));
             PlayManager.Instance()
                 .SetForegroundColorOfVisualNovelToPlay(
-                    FoundersBubbleMetaInformation.GetForegrundColorOfNovel(visualNovelName));
+                    FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
             PlayManager.Instance()
                 .SetBackgroundColorOfVisualNovelToPlay(
                     FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));

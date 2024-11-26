@@ -52,7 +52,7 @@ namespace _00_Kite2.Player
         [SerializeField] private GameObject backgroundContainer;
         [SerializeField] private GameObject deskContainer;
         [SerializeField] private GameObject decoDeskContainer;
-        [SerializeField] private GameObject decoBackgroudContainer;
+        [SerializeField] private GameObject decoBackgroundContainer;
         [SerializeField] private GameObject[] backgroundPrefab;
         [SerializeField] private GameObject[] deskPrefab;
         [SerializeField] private GameObject[] decoDeskPrefab;
@@ -60,7 +60,7 @@ namespace _00_Kite2.Player
         [SerializeField] private GameObject currentBackground;
         [SerializeField] private GameObject currentDesk;
         [SerializeField] private GameObject currentDecoDesk;
-        [SerializeField] private GameObject currentDecoBackgroud;
+        [SerializeField] private GameObject currentDecoBackground;
         [SerializeField] private GameObject characterContainer;
         [SerializeField] private GameObject[] novelAnimations;
         [SerializeField] private GameObject viewPortOfImages;
@@ -159,7 +159,19 @@ namespace _00_Kite2.Player
 
             // Check if the current novel is the introductory dialogue
             // Hide the header image, as it is not needed in the introductory dialogue
-            headerImage.SetActive(novelToPlay.title != "Einstiegsdialog");
+
+            if (novelToPlay.title != "Einstiegsdialog")
+            {
+                headerImage.SetActive(true);
+            } 
+            else if (novelToPlay.title == "Einstiegsdialog" && GameManager.Instance.IsIntroNovelLoadedFromMainMenu == false)
+            {
+                headerImage.SetActive(true);
+            }
+            else
+            {
+                headerImage.SetActive(false);
+            }
 
             // Show the header image for other novels
             foreach (VisualNovelEvent novelEvent in novelToPlay.novelEvents)
@@ -915,7 +927,7 @@ namespace _00_Kite2.Player
                 hintForSavegameMessageBoxObject.CloseMessageBox();
             }
 
-            // Instanziere und aktiviere die HintForSavegameMessageBox, falls das Canvas nicht null ist
+            // Instanziiere und aktiviere die HintForSavegameMessageBox, falls das Canvas nicht null ist
             if (canvas.IsNullOrDestroyed()) return;
             
             hintForSavegameMessageBoxObject = Instantiate(hintForSavegameMessageBox, canvas.transform)
