@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
+using _00_Kite2.Common.Novel.Character.CharacterController;
 using UnityEngine.UI;
+using CharacterController = _00_Kite2.Common.Novel.Character.CharacterController.CharacterController;
 
 public class BekannterNovelImageController : NovelImageController
 {
@@ -33,7 +35,7 @@ public class BekannterNovelImageController : NovelImageController
 
     public override void SetCharacter()
     {
-        characterController = characterPrefab.GetComponent<CharacterController>();
+        CharacterController = characterPrefab.GetComponent<CharacterController>();
     }
 
     public override bool HandleTouchEvent(float x, float y, AudioSource audioSource)

@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using _00_Kite2.Common.Novel.Character.CharacterController;
 using UnityEngine;
 using UnityEngine.UI;
+using CharacterController = _00_Kite2.Common.Novel.Character.CharacterController.CharacterController;
 
 public class PresseNovelImageController : NovelImageController
 {
@@ -46,7 +48,7 @@ public class PresseNovelImageController : NovelImageController
 
     public override void SetCharacter()
     {
-        characterController = characterPrefab.GetComponent<CharacterController>();
+        CharacterController = characterPrefab.GetComponent<CharacterController>();
     }
 
     public override bool HandleTouchEvent(float x, float y, AudioSource audioSource)

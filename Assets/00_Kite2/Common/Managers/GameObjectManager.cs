@@ -1,48 +1,49 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class GameObjectManager : MonoBehaviour
+namespace _00_Kite2.Common.Managers
 {
-    private GameObject copyNotification;
-
-    private static GameObjectManager instance;
-
-    public static GameObjectManager Instance()
+    public class GameObjectManager : MonoBehaviour
     {
-        if (instance == null)
-        {
-            // Suche nach einer vorhandenen Instanz in der Szene
-            instance = FindObjectOfType<GameObjectManager>();
+        private GameObject _copyNotification;
 
-            // Wenn keine Instanz gefunden wurde, erstelle eine neue
-            if (instance == null)
+        private static GameObjectManager _instance;
+
+        public static GameObjectManager Instance()
+        {
+            if (_instance == null)
             {
-                GameObject singletonObject = new GameObject("GameObjectManager");
-                instance = singletonObject.AddComponent<GameObjectManager>();
-                DontDestroyOnLoad(singletonObject); // Optional: Beibehalten, wenn die Szene wechselt
+                // Suche nach einer vorhandenen Instanz in der Szene
+                _instance = FindObjectOfType<GameObjectManager>();
+
+                // Wenn keine Instanz gefunden wurde, erstelle eine neue
+                if (_instance == null)
+                {
+                    GameObject singletonObject = new GameObject("GameObjectManager");
+                    _instance = singletonObject.AddComponent<GameObjectManager>();
+                    DontDestroyOnLoad(singletonObject); // Optional: Beibehalten, wenn die Szene wechselt
+                }
+            }
+            return _instance;
+        }
+
+        // Setter-Methode
+        public void SetCopyNotification(GameObject value)
+        {
+            _copyNotification = value;
+            if (_copyNotification != null)
+            {
+                Debug.Log("copyNotification has been set");
             }
         }
-        return instance;
-    }
 
-    // Setter-Methode
-    public void SetCopyNotification(GameObject value)
-    {
-        copyNotification = value;
-        if (copyNotification != null)
+        // Getter-Methode
+        public GameObject GetCopyNotification()
         {
-            Debug.Log("copyNotification has been set");
+            if (_copyNotification != null)
+            {
+                Debug.Log("copyNotification is NOT null");
+            }
+            return _copyNotification;
         }
-    }
-
-    // Getter-Methode
-    public GameObject GetCopyNotification()
-    {
-        if (copyNotification != null)
-        {
-            Debug.Log("copyNotification is NOT null");
-        }
-        return copyNotification;
     }
 }

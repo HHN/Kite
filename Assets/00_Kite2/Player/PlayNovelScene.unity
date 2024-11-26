@@ -1112,7 +1112,7 @@ MonoBehaviour:
   visualNovelEvents: []
   blueMessagePrefab: {fileID: 7934107218342486494, guid: 371e8f258e3e70f40aa33d74a459ffd7, type: 3}
   greyMessagePrefab: {fileID: 7934107218342486494, guid: a88e32b2455c5f240a7e179d522f710d, type: 3}
-  turquoiseMessagePrefab: {fileID: 0}
+  turquoiseMessagePrefab: {fileID: 7934107218342486494, guid: 77440337cbcc6c84cb66acb6676efbd2, type: 3}
   cottaMessagePrefab: {fileID: 7934107218342486494, guid: cf02915dd022dcf4b89016bb02761657, type: 3}
   blueMessagePrefabWithTrigger: {fileID: 7934107218342486494, guid: 836e83615683cb14aa78d493ea2caf2c, type: 3}
   optionsPrefab: {fileID: 5121638205295232454, guid: f5112ae07ee1f9a4ebe2c92f58693096, type: 3}

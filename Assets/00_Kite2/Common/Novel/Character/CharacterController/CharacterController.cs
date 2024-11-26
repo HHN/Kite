@@ -1,192 +1,195 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterController : MonoBehaviour
+namespace _00_Kite2.Common.Novel.Character.CharacterController
 {
-    [SerializeField] private Image skinImage;
-    [SerializeField] private Image clotheImage;
-    [SerializeField] private Image hairImage;
-    [SerializeField] private Image faceImage;
-
-    [SerializeField] private Sprite[] skinSprites;
-    [SerializeField] private Sprite[] clotheSprites;
-    [SerializeField] private Sprite[] hairSprites;
-    [SerializeField] private Animator animator;
-
-
-
-    public void SetSkinSprite(int skinSpriteIndex)
+    public class CharacterController : MonoBehaviour
     {
-        if ((skinSprites.Length > skinSpriteIndex) && (skinSpriteIndex >= 0))
+        [SerializeField] private Image skinImage;
+        [SerializeField] private Image clotheImage;
+        [SerializeField] private Image hairImage;
+        [SerializeField] private Image faceImage;
+
+        [SerializeField] private Sprite[] skinSprites;
+        [SerializeField] private Sprite[] clotheSprites;
+        [SerializeField] private Sprite[] hairSprites;
+        [SerializeField] private Animator animator;
+
+        private static readonly int IsTalking = Animator.StringToHash("isTalking");
+
+        public void SetSkinSprite(int skinSpriteIndex)
         {
-            skinImage.sprite = skinSprites[skinSpriteIndex];
+            if ((skinSprites.Length > skinSpriteIndex) && (skinSpriteIndex >= 0))
+            {
+                skinImage.sprite = skinSprites[skinSpriteIndex];
+            }
         }
-    }
 
-    public void SetClotheSprite(int clotheSpriteIndex)
-    {
-        if ((clotheSprites.Length > clotheSpriteIndex) && (clotheSpriteIndex >= 0))
+        public void SetClotheSprite(int clotheSpriteIndex)
         {
-            clotheImage.sprite = clotheSprites[clotheSpriteIndex];
+            if ((clotheSprites.Length > clotheSpriteIndex) && (clotheSpriteIndex >= 0))
+            {
+                clotheImage.sprite = clotheSprites[clotheSpriteIndex];
+            }
         }
-    }
 
-    public void SetHairSprite(int hairSpriteIndex)
-    {
-        if ((hairSprites.Length > hairSpriteIndex) && (hairSpriteIndex >= 0))
+        public void SetHairSprite(int hairSpriteIndex)
         {
-            hairImage.sprite = hairSprites[hairSpriteIndex];
+            if ((hairSprites.Length > hairSpriteIndex) && (hairSpriteIndex >= 0))
+            {
+                hairImage.sprite = hairSprites[hairSpriteIndex];
+            }
         }
-    }
 
-    public void SetFaceExpression(int expression)
-    {
-        switch (expression)
+        public void SetFaceExpression(int expression)
         {
-            case 1:
+            switch (expression)
+            {
+                case 1:
                 {
                     PlayRelaxedAnimation();
                     return;
                 }
-            case 2:
+                case 2:
                 {
                     PlayAstonishedAnimation();
                     return;
                 }
-            case 3:
+                case 3:
                 {
                     PlayRefusingAnimation();
                     return;
                 }
-            case 4:
+                case 4:
                 {
                     PlaySmileAnimation();
                     return;
                 }
-            case 5:
+                case 5:
                 {
                     PlayFriendlyAnimation();
                     return;
                 }
-            case 6:
+                case 6:
                 {
                     PlayLaughingAnimation();
                     return;
                 }
-            case 7:
+                case 7:
                 {
                     PlayCriticalAnimation();
                     return;
                 }
-            case 8:
+                case 8:
                 {
                     PlayNoDealAnimation();
                     return;
                 }
-            case 9:
+                case 9:
                 {
                     PlayHappyAnimation();
                     return;
                 }
-            case 10:
+                case 10:
                 {
                     PlayProudAnimation();
                     return;
                 }
-            case 11:
+                case 11:
                 {
                     PlayScaredAnimation();
                     return;
                 }
-            case 12:
+                case 12:
                 {
                     PlayQuestioningAnimation();
                     return;
                 }
-            case 13:
+                case 13:
                 {
                     PlayDefeatedAnimation();
                     return;
                 }
-            default:
+                default:
                 {
                     return;
                 }
+            }
         }
-    }
 
-    public void PlayDefeatedAnimation()
-    {
-        animator.Play("defeated");
-    }
+        private void PlayDefeatedAnimation()
+        {
+            animator.Play("defeated");
+        }
 
-    public void PlayQuestioningAnimation()
-    {
-        animator.Play("questioning");
-    }
+        private void PlayQuestioningAnimation()
+        {
+            animator.Play("questioning");
+        }
 
-    public void PlayScaredAnimation()
-    {
-        animator.Play("scared");
-    }
+        private void PlayScaredAnimation()
+        {
+            animator.Play("scared");
+        }
 
-    public void PlayProudAnimation()
-    {
-        animator.Play("proud");
-    }
+        private void PlayProudAnimation()
+        {
+            animator.Play("proud");
+        }
 
-    public void PlayHappyAnimation()
-    {
-        animator.Play("happy");
-    }
+        private void PlayHappyAnimation()
+        {
+            animator.Play("happy");
+        }
 
-    public void PlayRelaxedAnimation()
-    {
-        animator.Play("relaxed");
-    }
+        private void PlayRelaxedAnimation()
+        {
+            animator.Play("relaxed");
+        }
 
-    public void PlayCriticalAnimation()
-    {
-        animator.Play("critical");
-    }
+        private void PlayCriticalAnimation()
+        {
+            animator.Play("critical");
+        }
 
-    public void PlayFriendlyAnimation()
-    {
-        animator.Play("neutral");
-    }
+        private void PlayFriendlyAnimation()
+        {
+            animator.Play("neutral");
+        }
 
-    public void PlaySmileAnimation()
-    {
-        animator.Play("Smile");
-    }
+        private void PlaySmileAnimation()
+        {
+            animator.Play("Smile");
+        }
 
-    public void PlayNoDealAnimation()
-    {
-        animator.Play("no_deal");
-    }
+        private void PlayNoDealAnimation()
+        {
+            animator.Play("no_deal");
+        }
 
-    public void PlayRefusingAnimation()
-    {
-        animator.Play("refusing");
-    }
+        private void PlayRefusingAnimation()
+        {
+            animator.Play("refusing");
+        }
 
-    public void PlayLaughingAnimation()
-    {
-        animator.Play("laughing");
-    }
+        private void PlayLaughingAnimation()
+        {
+            animator.Play("laughing");
+        }
 
-    public void PlayAstonishedAnimation()
-    {
-        animator.Play("surprised");
-    }
+        private void PlayAstonishedAnimation()
+        {
+            animator.Play("surprised");
+        }
 
-    public void StartTalking()
-    {
-        animator.SetBool("isTalking", true);
-    }
+        public void StartTalking()
+        {
+            animator.SetBool(IsTalking, true);
+        }
 
-    public void StopTalking()
-    {
-        animator.SetBool("isTalking", false);
+        public void StopTalking()
+        {
+            animator.SetBool(IsTalking, false);
+        }
     }
 }
