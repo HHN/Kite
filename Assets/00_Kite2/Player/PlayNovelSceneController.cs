@@ -111,12 +111,15 @@ namespace _00_Kite2.Player
 
         [Header("Timing und Analytics")] private Coroutine _timerCoroutine;
         private bool _typingWasSkipped;
+        private int _optionsCount;
 
         public bool IsPaused { get; set; }
 
         public VisualNovel NovelToPlay => novelToPlay;
         public VisualNovelEvent NextEventToPlay => nextEventToPlay;
         public List<string> PlayThroughHistory => playThroughHistory;
+        public string[] OptionsId => _optionsId;
+        public List<VisualNovelEvent> EventHistory => eventHistory;
 
         private void Start()
         {
@@ -877,6 +880,11 @@ namespace _00_Kite2.Player
 
             // Find the index of the event in the eventHistory list
             int indexToRestore = eventHistory.FindIndex(e => e.id == eventIdToRestore);
+            
+            if (_optionsCount != 0)
+            {
+                indexToRestore -= _optionsCount;
+            }
 
             if (indexToRestore == -1) return; // If the event is found in the history
             
@@ -906,8 +914,10 @@ namespace _00_Kite2.Player
                 // Remove all entries from the found index onwards
                 playThroughHistory.RemoveRange(indexToRemoveFrom, playThroughHistory.Count - indexToRemoveFrom);
 
-                _conversationContentGuiController.ClearUIAfter(indexToRemoveFrom);
+                _conversationContentGuiController.ClearUIAfter(indexToRemoveFrom, _optionsCount);
             }
+            
+            _optionsCount = 0;
 
             // Set the previous event as the next event to play, if present
             if (indexToRestore <= 0) return;
@@ -960,6 +970,11 @@ namespace _00_Kite2.Player
 
             // Speichere den bisherigen Verlauf
             playThroughHistory = new List<string>(savedData.playThroughHistory);
+            _optionsId[0] = savedData.optionsId[1];
+            _optionsCount = savedData.optionCount;
+            
+            // Wiederherstellen des Eventverlaufs
+            eventHistory = savedData.eventHistory;
 
             // Aufruf von ReconstructGuiContent und Prüfung des Rückgabewertes
             conversationContent.ReconstructGuiContent(savedData);

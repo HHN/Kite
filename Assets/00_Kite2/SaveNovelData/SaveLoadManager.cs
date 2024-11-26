@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using _00_Kite2.Player;
@@ -13,12 +14,13 @@ namespace _00_Kite2.SaveNovelData
     public class SaveLoadManager : MonoBehaviour
     {
         private static readonly string SaveFilePath = Application.persistentDataPath + "/novelSaveData.json";
+        private static int _count;
 
         /// <summary>
         /// Speichert die aktuellen Daten einer Novel.
         /// </summary>
         /// <param name="playNovelSceneController">Der Controller der aktuellen Spielszenen.</param>
-        /// <param name="conversationContentGuiController">Der Controller für den Konversationsinhalt.</param>
+        /// <param name="conversationContentGuiController">Der Controller fï¿½r den Konversationsinhalt.</param>
         public static void SaveNovelData(PlayNovelSceneController playNovelSceneController,
             ConversationContentGuiController conversationContentGuiController)
         {
@@ -51,8 +53,13 @@ namespace _00_Kite2.SaveNovelData
             {
                 if (!messageBox.name.Contains("OptionsToChooseFrom(Clone)"))
                 {
+                    if (messageBox.name.Contains("Blue Message Prefab With Trigger(Clone)"))
+                    {
+                        _count++;
+                    }
+                    
                     messageBoxesNames.Add(messageBox.name);
-                } 
+                }
             }
 
             NovelSaveData saveData = new NovelSaveData
@@ -60,9 +67,12 @@ namespace _00_Kite2.SaveNovelData
                 //novelId = currentNovelId,
                 currentEvent = formattedId,
                 playThroughHistory = playNovelSceneController.PlayThroughHistory,
+                optionsId = playNovelSceneController.OptionsId.ToArray(),
+                eventHistory = playNovelSceneController.EventHistory,
                 content = conversationContentGuiController.Content, // Brauch ich hier auch die eventHistory von playNovelSceneController
                 visualNovelEvents = conversationContentGuiController.VisualNovelEvents, // Brauch ich hier auch die eventHistory von playNovelSceneController
                 messageType = messageBoxesNames,
+                optionCount = _count,
             };
 
             // Speichere oder aktualisiere die Novel im Dictionary
@@ -77,10 +87,10 @@ namespace _00_Kite2.SaveNovelData
         }
 
         /// <summary>
-        /// Lädt die Daten einer bestimmten Novel.
+        /// Lï¿½dt die Daten einer bestimmten Novel.
         /// </summary>
         /// <param name="currentNovelId">Die eindeutige ID der zu ladenden Novel.</param>
-        /// <returns>Gibt die gespeicherten Daten der Novel zurück, oder <c>null</c>, wenn keine Daten gefunden wurden.</returns>
+        /// <returns>Gibt die gespeicherten Daten der Novel zurï¿½ck, oder <c>null</c>, wenn keine Daten gefunden wurden.</returns>
         public static NovelSaveData Load(string currentNovelId)
         {
             // Lade alle gespeicherten Daten
@@ -91,9 +101,9 @@ namespace _00_Kite2.SaveNovelData
         }
 
         /// <summary>
-        /// Lädt alle gespeicherten Daten aus der JSON-Datei.
+        /// Lï¿½dt alle gespeicherten Daten aus der JSON-Datei.
         /// </summary>
-        /// <returns>Ein Dictionary mit allen gespeicherten Noveldaten, wobei der Schlüssel die Novel-ID ist.</returns>
+        /// <returns>Ein Dictionary mit allen gespeicherten Noveldaten, wobei der SchlÃ¼ssel die Novel-ID ist.</returns>
         private static Dictionary<string, NovelSaveData> LoadAllSaveData()
         {
             if (File.Exists(SaveFilePath))
@@ -118,38 +128,38 @@ namespace _00_Kite2.SaveNovelData
         }
 
         /// <summary>
-        /// Löscht die gespeicherten Daten einer bestimmten Novel.
+        /// LÃ¶scht die gespeicherten Daten einer bestimmten Novel.
         /// </summary>
-        /// <param name="novelId">Die eindeutige ID der zu löschenden Novel.</param>
+        /// <param name="novelId">Die eindeutige ID der zu lÃ¶schenden Novel.</param>
         public static void DeleteNovelSaveData(string novelId)
         {
             // Lade alle gespeicherten Daten
             Dictionary<string, NovelSaveData> allSaveData = LoadAllSaveData();
 
-            // Versuche, das Element zu löschen
+            // Versuche, das Element zu lÃ¶schen
             bool removed = allSaveData.Remove(novelId);
 
             if (removed)
             {
-                // Überschreibe die Datei nur, wenn die Löschung erfolgreich war
+                // Ãœberschreibe die Datei nur, wenn die LÃ¶schung erfolgreich war
                 string json = JsonConvert.SerializeObject(allSaveData, Formatting.Indented);
                 File.WriteAllText(SaveFilePath, json, Encoding.UTF8);
             }
             else
             {
-                Debug.LogWarning($"Kein Spielstand für Novel ID {novelId} gefunden.");
+                Debug.LogWarning($"Kein Spielstand fï¿½r Novel ID {novelId} gefunden.");
             }
         }
 
         /// <summary>
-        /// Löscht alle gespeicherten Noveldaten.
+        /// LÃ¶scht alle gespeicherten Noveldaten.
         /// </summary>
         public static void ClearAllSaveData()
         {
             // Leeres Dictionary erstellen
             Dictionary<string, NovelSaveData> emptySaveData = new Dictionary<string, NovelSaveData>();
 
-            // Serialisiere das leere Dictionary und überschreibe die Datei
+            // Serialisiere das leere Dictionary und Ãœberschreibe die Datei
             string json = JsonConvert.SerializeObject(emptySaveData, Formatting.Indented);
             File.WriteAllText(SaveFilePath, json, Encoding.UTF8);
         }
