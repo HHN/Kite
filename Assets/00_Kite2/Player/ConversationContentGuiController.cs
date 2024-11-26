@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using _00_Kite2.Common.Managers;
+using _00_Kite2.SaveNovelData;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -146,11 +147,11 @@ namespace _00_Kite2.Player
                 DisableButtonClick(_lastBlueMessagePrefabWithTrigger);
             }
 
-            // Setze die neue Nachrichtbox als die aktuell aktive
+            // Setze die neue MessageBox als die aktuell aktive
             _lastBlueMessagePrefabWithTrigger =
                 newMessageBox; // Speichere die Referenz auf die letzte blueMessagePrefabWithTrigger
 
-            // Stelle sicher, dass der Button der neuen Nachrichtbox aktiv ist
+            // Stelle sicher, dass der Button der neuen MessageBox aktiv ist
             EnableButtonClick(newMessageBox);
         }
 
@@ -170,7 +171,7 @@ namespace _00_Kite2.Player
             }
         }
 
-        // Methode zum Aktivieren des Button-Klicks f�r die neue Nachrichtbox
+        // Methode zum Aktivieren des Button-Klicks für die neue MessageBox
         private void EnableButtonClick(GameObject messageBox)
         {
             Button button = messageBox.GetComponent<Button>();
@@ -203,31 +204,42 @@ namespace _00_Kite2.Player
             //lastBlueMessagePrefabWithTrigger.GetComponent<Animator>().SetTrigger("isBlueMessagePrefabWithTrigger");
         }
 
-        public void ClearUIAfter(int index)
+        public void ClearUIAfter(int index, int count)
         {
             int optionsToChooseFromCount = 0;
             
-            // �berpr�fe, ob der Index g�ltig ist
+            // Überprüfe, ob der Index gültig ist
             if (index > guiContent.Count || index < 0)
             {
                 return;
             }
 
+            int guiIndex;
+
+            if (count != 0)
+            {
+                guiIndex = index - count;
+            }
+            else
+            {
+                guiIndex = index;
+            }
+
             // Lösche alle UI-Elemente, die nach dem entsprechenden Index angezeigt wurden
-            for (int i = guiContent.Count - 1; i >= index; i--)
+            for (int i = guiContent.Count - 1; i > guiIndex; i--)
             {
                 if (guiContent[i] != null) // Pr�fe, ob das UI-Element nicht bereits null ist
                 {
                     if(guiContent[i].name.Contains("OptionsToChooseFrom")) optionsToChooseFromCount++;
                     
-                    Debug.Log(guiContent[i].name);
                     Destroy(guiContent[i]); // Löscht das GameObject aus der Szene
                 }
 
                 guiContent.RemoveAt(i); // Entfernt das Element aus der Liste, selbst wenn es null ist
             }
+
+            if (count != 0) optionsToChooseFromCount = count;
             
-            Debug.Log("optionsToChooseFromCount: " + optionsToChooseFromCount);
             // Lösche alle UI-Elemente, die nach dem entsprechenden Index angezeigt wurden
             for (int i = visualNovelEvents.Count - 1; i > index - optionsToChooseFromCount; i--)
             {
@@ -249,9 +261,6 @@ namespace _00_Kite2.Player
             visualNovelEvents = savedData.visualNovelEvents;
         
             GameManager.Instance.calledFromReload = true;
-            
-            Debug.Log("savedData.visualNovelEvents.Count: " + savedData.visualNovelEvents.Count);
-            Debug.Log("savedData.messageType.Count: " + savedData.messageType.Count);
 
             // Durchlaufe jedes Event in visualNovelEvents und erstelle das entsprechende GUI-Element
             for (int i = 0; i < savedData.visualNovelEvents.Count; i++)
@@ -264,6 +273,19 @@ namespace _00_Kite2.Player
                 {
                     newMessageBox = Instantiate(blueMessagePrefabWithTrigger, this.transform);
                     newMessageBox.SetActive(false);
+                    
+                    // Deaktiviere den Button der vorherigen blueMessagePrefabWithTrigger (falls vorhanden)
+                    if (_lastBlueMessagePrefabWithTrigger != null)
+                    {
+                        DisableButtonClick(_lastBlueMessagePrefabWithTrigger);
+                    }
+
+                    // Setze die neue MessageBox als die aktuell aktive
+                    _lastBlueMessagePrefabWithTrigger =
+                        newMessageBox; // Speichere die Referenz auf die letzte blueMessagePrefabWithTrigger
+
+                    // Stelle sicher, dass der Button der neuen MessageBox aktiv ist
+                    EnableButtonClick(newMessageBox);
                 }
 
                 // Bestimme den Typ des Prefabs basierend auf dem Charaktertyp und dem Ereignistyp
