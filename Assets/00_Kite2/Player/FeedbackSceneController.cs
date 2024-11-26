@@ -20,9 +20,11 @@ namespace _00_Kite2.Player
         [SerializeField] private AudioSource resultMusic;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private Button finishButton;
+        [SerializeField] private Button finishButtonTop;
         [SerializeField] private Button finishButtonBottom;
         [SerializeField] private Button copyButton;
         [SerializeField] private GameObject finishButtonContainer;
+        [SerializeField] private GameObject finishButtonTopContainer;
         [SerializeField] private GameObject finishButtonBottomContainer;
         [SerializeField] private GameObject copyButtonContainer;
         [SerializeField] private GameObject copyNotificationContainer;
@@ -47,6 +49,7 @@ namespace _00_Kite2.Player
                 feedbackText.SetText("Sie befinden sich im Offline Modus. Es ist kein Feedback verfügbar.");
                 loadingAnimation.SetActive(false);
                 finishButtonContainer.SetActive(false);
+                finishButtonTopContainer.SetActive(true);
                 finishButtonBottomContainer.SetActive(true);
                 return;
             }
@@ -139,6 +142,7 @@ namespace _00_Kite2.Player
             }
             StopWaitingMusic();
             finishButtonContainer.SetActive(false);
+            finishButtonTopContainer.SetActive(true);
             finishButtonBottomContainer.SetActive(true);
             copyButtonContainer.SetActive(true);
             if (TextToSpeechManager.Instance.IsTextToSpeechActivated())
@@ -174,6 +178,7 @@ namespace _00_Kite2.Player
             StopWaitingMusic();
             DisplayErrorMessage(ErrorMessages.UNEXPECTED_SERVER_ERROR);
             finishButtonContainer.SetActive(false);
+            finishButtonTopContainer.SetActive(true);
             finishButtonBottomContainer.SetActive(true);
             feedbackText.SetText("Leider ist aktuell keine KI-Analyse verfügbar.");
             loadingAnimation.SetActive(false);
