@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using _00_Kite2.Player;
 using UnityEngine;
 using UnityEngine.UI;
 

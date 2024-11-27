@@ -1,3 +1,4 @@
+using _00_Kite2;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,6 +15,9 @@ public class SceneLoader
 
     public static void LoadPlayNovelScene()
     {
+        // Überprüfen, ob ein Speicherstand für die nächste Szene existiert
+        GameManager.Instance.CheckAndSetAllNovelsStatus();
+
         LoadScene(SceneNames.PLAY_NOVEL_SCENE);
     }
 

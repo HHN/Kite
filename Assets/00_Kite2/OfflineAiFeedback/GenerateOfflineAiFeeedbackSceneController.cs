@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using _00_Kite2.Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,7 +11,7 @@ public class GenerateOfflineAiFeeedbackSceneController : SceneController
 
     private const string PREPARE_GENERATION_TEXT = "Generierung von Offline Feedback vorbereiten";
     private const string START_GENERATION_TEXT = "Generierung von Offline Feedback starten";
-    private const string CONTINUE_GENERATION_TEXT = "Generierung von Offline Feedback fortführen";
+    private const string CONTINUE_GENERATION_TEXT = "Generierung von Offline Feedback fortfï¿½hren";
     public bool novelsLoaded;
     public bool feedbackLoaded;
     public Sprite positiveSprite;
@@ -119,7 +120,7 @@ public class GenerateOfflineAiFeeedbackSceneController : SceneController
             yield break;
         }
         Debug.Log("Analysierte Novel: " + novel.title);
-        Debug.Log("Anzahl möglicher Pfade: " + novelAnalyser.GetNumberOfPossiblePaths());
+        Debug.Log("Anzahl mï¿½glicher Pfade: " + novelAnalyser.GetNumberOfPossiblePaths());
 
         yield return offlineFeedbackLoader.LoadOfflineFeedbackForNovelFromJsonInEditMode(VisualNovelNamesHelper.ValueOf((int) novel.id));
 
@@ -192,7 +193,7 @@ public class GenerateOfflineAiFeeedbackSceneController : SceneController
                     {
                         elternNovelAvailableIndicator.sprite = positiveSprite;
                         elternNovelAvailableIndicator.color = green;
-                        elternNovelAvailableIndicatorText.text = "Verfügbar!";
+                        elternNovelAvailableIndicatorText.text = "Verfï¿½gbar!";
                         elternNovelAnalyseButton.interactable = true;
                         break;
                     }
@@ -200,7 +201,7 @@ public class GenerateOfflineAiFeeedbackSceneController : SceneController
                     {
                         presseNovelAvailableIndicator.sprite = positiveSprite;
                         presseNovelAvailableIndicator.color = green;
-                        presseNovelAvailableIndicatorText.text = "Verfügbar!";
+                        presseNovelAvailableIndicatorText.text = "Verfï¿½gbar!";
                         presseNovelAnalyseButton.interactable = true;
                         break;
                     }
@@ -208,7 +209,7 @@ public class GenerateOfflineAiFeeedbackSceneController : SceneController
                     {
                         notarinNovelAvailableIndicator.sprite = positiveSprite;
                         notarinNovelAvailableIndicator.color = green;
-                        notarinNovelAvailableIndicatorText.text = "Verfügbar!";
+                        notarinNovelAvailableIndicatorText.text = "Verfï¿½gbar!";
                         notarinNovelAnalyseButton.interactable = true;
                         break;
                     }
@@ -216,7 +217,7 @@ public class GenerateOfflineAiFeeedbackSceneController : SceneController
                     {
                         bankkontoNovelAvailableIndicator.sprite = positiveSprite;
                         bankkontoNovelAvailableIndicator.color = green;
-                        bankkontoNovelAvailableIndicatorText.text = "Verfügbar!";
+                        bankkontoNovelAvailableIndicatorText.text = "Verfï¿½gbar!";
                         bankkontoNovelAnalyseButton.interactable = true;
                         break;
                     }
@@ -224,7 +225,7 @@ public class GenerateOfflineAiFeeedbackSceneController : SceneController
                     {
                         bueroNovelAvailableIndicator.sprite = positiveSprite;
                         bueroNovelAvailableIndicator.color = green;
-                        bueroNovelAvailableIndicatorText.text = "Verfügbar!";
+                        bueroNovelAvailableIndicatorText.text = "Verfï¿½gbar!";
                         bueroNovelAnalyseButton.interactable = true; 
                         break;
                     }
@@ -232,7 +233,7 @@ public class GenerateOfflineAiFeeedbackSceneController : SceneController
                     {
                         foerderantragNovelAvailableIndicator.sprite = positiveSprite;
                         foerderantragNovelAvailableIndicator.color = green;
-                        foerderantragNovelAvailableIndicatorText.text = "Verfügbar!";
+                        foerderantragNovelAvailableIndicatorText.text = "Verfï¿½gbar!";
                         foerderantragNovelAnalyseButton.interactable = true;
                         break;
                     }
@@ -240,7 +241,7 @@ public class GenerateOfflineAiFeeedbackSceneController : SceneController
                     {
                         gruendungszuschussNovelAvailableIndicator.sprite = positiveSprite;
                         gruendungszuschussNovelAvailableIndicator.color = green;
-                        gruendungszuschussNovelAvailableIndicatorText.text = "Verfügbar!";
+                        gruendungszuschussNovelAvailableIndicatorText.text = "Verfï¿½gbar!";
                         gruendungszuschussNovelAnalyseButton.interactable = true;
                         break;
                     }
@@ -248,7 +249,7 @@ public class GenerateOfflineAiFeeedbackSceneController : SceneController
                     {
                         bekannteTreffenNovelAvailableIndicator.sprite = positiveSprite;
                         bekannteTreffenNovelAvailableIndicator.color = green;
-                        bekannteTreffenNovelAvailableIndicatorText.text = "Verfügbar!";
+                        bekannteTreffenNovelAvailableIndicatorText.text = "Verfï¿½gbar!";
                         bekannteTreffenNovelAnalyseButton.interactable = true;
                         break;
                     }
@@ -256,7 +257,7 @@ public class GenerateOfflineAiFeeedbackSceneController : SceneController
                     {
                         bankKreditNovelAvailableIndicator.sprite = positiveSprite;
                         bankKreditNovelAvailableIndicator.color = green;
-                        bankKreditNovelAvailableIndicatorText.text = "Verfügbar!";
+                        bankKreditNovelAvailableIndicatorText.text = "Verfï¿½gbar!";
                         bankKreditNovelAnalyseButton.interactable = true;
                         break;
                     }
@@ -264,7 +265,7 @@ public class GenerateOfflineAiFeeedbackSceneController : SceneController
                     {
                         honorarNovelAvailableIndicator.sprite = positiveSprite;
                         honorarNovelAvailableIndicator.color = green;
-                        honorarNovelAvailableIndicatorText.text = "Verfügbar!";
+                        honorarNovelAvailableIndicatorText.text = "Verfï¿½gbar!";
                         honorarNovelAnalyseButton.interactable = true;
                         break;
                     }
@@ -272,7 +273,7 @@ public class GenerateOfflineAiFeeedbackSceneController : SceneController
                     {
                         introNovelAvailableIndicator.sprite = positiveSprite;
                         introNovelAvailableIndicator.color = green;
-                        introNovelAvailableIndicatorText.text = "Verfügbar!";
+                        introNovelAvailableIndicatorText.text = "Verfï¿½gbar!";
                         introNovelAnalyseButton.interactable = true;
                         break;
                     }
@@ -280,7 +281,7 @@ public class GenerateOfflineAiFeeedbackSceneController : SceneController
                     {
                         lebenspartnerNovelAvailableIndicator.sprite = positiveSprite;
                         lebenspartnerNovelAvailableIndicator.color = green;
-                        lebenspartnerNovelAvailableIndicatorText.text = "Verfügbar!";
+                        lebenspartnerNovelAvailableIndicatorText.text = "Verfï¿½gbar!";
                         lebenspartnerNovelAnalyseButton.interactable = true;
                         break;
                     }

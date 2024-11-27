@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using _00_Kite2.Common.Novel.Character.CharacterController;
 using UnityEngine;
 using UnityEngine.UI;
+using CharacterController = _00_Kite2.Common.Novel.Character.CharacterController.CharacterController;
 
 public class ElternNovelImageController : NovelImageController
 {
@@ -44,15 +46,15 @@ public class ElternNovelImageController : NovelImageController
     private void SetCharacterController()
     {
         //   characterMutter = Instantiate(characterMutterPrefab, characterMutterContainer.transform);
-        characterController = characterMutterPrefab.GetComponent<CharacterController>();
+        CharacterController = characterMutterPrefab.GetComponent<CharacterController>();
         //   characterVater = Instantiate(characterVaterPrefab, characterVaterContainer.transform);
-        characterController2 = characterVaterPrefab.GetComponent<CharacterController>();
+        CharacterController2 = characterVaterPrefab.GetComponent<CharacterController>();
     }
 
     public override void SetBackground()
     {
-        NovelColorManager.Instance().SetCanvasHeight(canvasRect.rect.height);
-        NovelColorManager.Instance().SetCanvasWidth(canvasRect.rect.width);
+        NovelColorManager.Instance().SetCanvasHeight(CanvasRect.rect.height);
+        NovelColorManager.Instance().SetCanvasWidth(CanvasRect.rect.width);
     }
 
 

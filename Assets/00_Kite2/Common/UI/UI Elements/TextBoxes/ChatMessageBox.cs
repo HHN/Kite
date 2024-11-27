@@ -1,3 +1,5 @@
+using Febucci.UI.Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -5,6 +7,14 @@ using TMPro;
 public class ChatMessageBox : MonoBehaviour
 {
     public TextMeshProUGUI textBox;
+    // public TypewriterCore typewriter;
+    // public bool calledFromReload = false;
+
+    public ChatMessageBox(TypewriterCore typewriter, bool calledFromReload)
+    {
+        typewriter = typewriter;
+        calledFromReload = calledFromReload;
+    }
 
     public void SetMessage(string message)
     {
@@ -13,6 +23,11 @@ public class ChatMessageBox : MonoBehaviour
         if (!active) { return; }
  
         textBox.text = message;
+
+        // if (calledFromReload)
+        // {
+        //     typewriter.SkipTypewriter();
+        // }
     }
 
     public bool SetInactiveIfMessageIsNull(string message)

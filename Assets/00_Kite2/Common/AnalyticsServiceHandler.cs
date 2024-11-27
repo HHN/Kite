@@ -1,4 +1,3 @@
-using UnityEngine;
 using Unity.Services.Core;
 using Unity.Services.Analytics;
 using System.Diagnostics;
@@ -7,55 +6,58 @@ using System.Collections.Generic;
 public class AnalyticsServiceHandler 
 {
 
-    private static AnalyticsServiceHandler instance;
+    private static AnalyticsServiceHandler _instance;
 
-    private Stopwatch stopwatch = null;
+    private Stopwatch _stopwatch;
 
-    private Stopwatch stopwatchSession;
+    private Stopwatch _stopwatchSession;
 
-    private string fromWhereIsNovelSelected = "";
+    private string _fromWhereIsNovelSelected = "";
 
-    private List<string> choiceList = new List<string>();
+    private readonly List<string> _choiceList = new List<string>();
 
-    private List<string> feelingList = new List<string>();
+    private readonly List<string> _feelingList = new List<string>();
 
-    private string lastQuestionForChoice;
+    private string _lastQuestionForChoice;
 
-    private long idOfCurrentNovel;
+    private long _idOfCurrentNovel;
 
-    private bool addedAllEntriesToChoiceList = false;
+    private bool _addedAllEntriesToChoiceList;
 
-    private int choiceId = -10;
+    private int _choiceId = -10;
 
-    private bool waitForAIFeedback = false;
+    private bool _waitForAIFeedback;
 
-    private bool hasBeenInitialized = false;
+    private bool _hasBeenInitialized;
 
     // Private Konstruktor, um direkte Instanziierung zu verhindern
-    private AnalyticsServiceHandler() {}
+    private AnalyticsServiceHandler()
+    {
+        _hasBeenInitialized = false;
+    }
 
 
     public static AnalyticsServiceHandler Instance()
     {
-        if (instance == null)
+        if (_instance == null)
         {
-            instance = new AnalyticsServiceHandler();
+            _instance = new AnalyticsServiceHandler();
         }
-        return instance;
+        return _instance;
     }
  
     public async void StartAnalytics()
     {
         await UnityServices.InitializeAsync();
         StartStopwatch();
-        stopwatchSession = new Stopwatch();
-        stopwatchSession.Start();
-        hasBeenInitialized = true;
+        _stopwatchSession = new Stopwatch();
+        _stopwatchSession.Start();
+        _hasBeenInitialized = true;
     }
 
     public bool IsAnalyticsInitialized()
     {
-        return hasBeenInitialized;
+        return _hasBeenInitialized;
     }
 
     public void CollectData()
@@ -70,17 +72,17 @@ public class AnalyticsServiceHandler
 
     public void DeleteCollectedData()
     {
-        hasBeenInitialized = false;
+        _hasBeenInitialized = false;
         AnalyticsService.Instance.RequestDataDeletion();
     }
 
     private void OnApplicationPause(bool pauseStatus) {
         if(pauseStatus)
         {
-            stopwatchSession.Stop();
+            _stopwatchSession.Stop();
         } else 
         {
-            stopwatchSession.Start();
+            _stopwatchSession.Start();
         }
     }
 
@@ -91,16 +93,16 @@ public class AnalyticsServiceHandler
 
     public void StartStopwatch()
     {
-        stopwatch = new Stopwatch();
-        stopwatch.Start();
+        _stopwatch = new Stopwatch();
+        _stopwatch.Start();
     }
 
-    public long StopStopwatch()
+    private long StopStopwatch()
     {
-        if(stopwatch != null)
+        if(_stopwatch != null)
         {
-        stopwatch.Stop();
-        return stopwatch.ElapsedMilliseconds; 
+            _stopwatch.Stop();
+        return _stopwatch.ElapsedMilliseconds; 
         }
         return -1;
     }
@@ -111,7 +113,7 @@ public class AnalyticsServiceHandler
         {
             return;
         }
-        this.fromWhereIsNovelSelected = fromWhereIsNovelSelected;
+        this._fromWhereIsNovelSelected = fromWhereIsNovelSelected;
     }
 
     public void AddChoiceToList(string choice)
@@ -120,25 +122,25 @@ public class AnalyticsServiceHandler
         {
             return;
         }
-        choiceList.Add(choice);
+        _choiceList.Add(choice);
     }
 
     public void AddedLastChoice ()
     {
-        addedAllEntriesToChoiceList = true;
-        if(choiceId >= 0)
+        _addedAllEntriesToChoiceList = true;
+        if(_choiceId >= 0)
         {
-            SendPlayerChoice(choiceId);
+            SendPlayerChoice(_choiceId);
         }
     }
 
     public void SetChoiceId(int choiceId)
     {
-        if(addedAllEntriesToChoiceList)
+        if(_addedAllEntriesToChoiceList)
         {
             SendPlayerChoice(choiceId);
         } else {
-            this.choiceId = choiceId;
+            this._choiceId = choiceId;
         }
     }
 
@@ -148,7 +150,7 @@ public class AnalyticsServiceHandler
         {
             return;
         }
-        feelingList.Add(feeling);
+        _feelingList.Add(feeling);
     }
 
     private int GetChoiceIdByText(string text)
@@ -157,17 +159,17 @@ public class AnalyticsServiceHandler
         {
             return -1;
         }
-        return choiceList.IndexOf(text);
+        return _choiceList.IndexOf(text);
     }
 
     private string GetTextByChoiceId(int id)
     {
-        return choiceList[id];
+        return _choiceList[id];
     }
 
     private string GetTextByFeelingId(int id)
     {
-        return feelingList[id];
+        return _feelingList[id];
     }
 
     public void SetLastQuestionForChoice(string question)
@@ -176,22 +178,22 @@ public class AnalyticsServiceHandler
         {
             return;
         }
-        lastQuestionForChoice = question;
+        _lastQuestionForChoice = question;
     }
 
     public void SetIdOfCurrentNovel(long id)
     {
-        idOfCurrentNovel = id;
+        _idOfCurrentNovel = id;
     }
 
     private string GetChoosableFeelings()
     {
-        return string.Join(",", feelingList);
+        return string.Join(",", _feelingList);
     }
 
     public void SetWaitedForAiFeedbackTrue()
     {
-        waitForAIFeedback = true;
+        _waitForAIFeedback = true;
     }
 
     public void SendMainMenuStatistics()
@@ -200,17 +202,17 @@ public class AnalyticsServiceHandler
         {
             return;
         }
-        if (hasBeenInitialized)
+        if (_hasBeenInitialized)
         {
             StopStopwatch();
-            if(stopwatch != null)
+            if(_stopwatch != null)
             {
                 Dictionary<string, object> parameters = new Dictionary<string, object>()
                 {
                     {"currentUserID", AnalyticsService.Instance.GetAnalyticsUserID()},
-                    {"millisecondsInMainMenu", stopwatch.ElapsedMilliseconds}
+                    {"millisecondsInMainMenu", _stopwatch.ElapsedMilliseconds}
                 };
-                AnalyticsService.Instance.CustomData("mainMenuStatistics", parameters);
+                // AnalyticsService.Instance.CustomData("mainMenuStatistics", parameters);
             }    
         }
         
@@ -222,16 +224,16 @@ public class AnalyticsServiceHandler
         {
             return;
         }
-        if (hasBeenInitialized)
+        if (_hasBeenInitialized)
         {
             StopStopwatch();
-            if(stopwatch != null)
+            if(_stopwatch != null)
             {
                 Dictionary<string, object> parameters = new Dictionary<string, object>()
                 {
-                    {"millisecondsInNovelExplorer", stopwatch.ElapsedMilliseconds}
+                    {"millisecondsInNovelExplorer", _stopwatch.ElapsedMilliseconds}
                 };
-                AnalyticsService.Instance.CustomData("novelExplorerStatistics", parameters);
+                // AnalyticsService.Instance.CustomData("novelExplorerStatistics", parameters);
             }    
         }
         
@@ -243,18 +245,18 @@ public class AnalyticsServiceHandler
         {
             return;
         }
-        if (hasBeenInitialized)
+        if (_hasBeenInitialized)
         {
             StopStopwatch();
-            if(stopwatch != null)
+            if(_stopwatch != null)
             {
-            Dictionary<string, object> parameters = new Dictionary<string, object>()
+                Dictionary<string, object> parameters = new Dictionary<string, object>()
                 {
-                    {"fromWhereIsNovelSelected", fromWhereIsNovelSelected},
+                    {"fromWhereIsNovelSelected", _fromWhereIsNovelSelected},
                     {"novelID", visualNovelID},
-                    {"millisecondsInDetailView", stopwatch.ElapsedMilliseconds}
+                    {"millisecondsInDetailView", _stopwatch.ElapsedMilliseconds}
                 };
-                AnalyticsService.Instance.CustomData("detailViewStatistics", parameters);
+                // AnalyticsService.Instance.CustomData("detailViewStatistics", parameters);
             }    
         }
     }
@@ -265,38 +267,38 @@ public class AnalyticsServiceHandler
         {
             return;
         }
-        if (hasBeenInitialized)
+        if (_hasBeenInitialized)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>()
             {
-                {"millisecondsBeforePlayNovelFirstConfirmation", stopwatch.ElapsedMilliseconds}
+                {"millisecondsBeforePlayNovelFirstConfirmation", _stopwatch.ElapsedMilliseconds}
             };
-            AnalyticsService.Instance.CustomData("playNovelFirstConfirmation", parameters);
+            // AnalyticsService.Instance.CustomData("playNovelFirstConfirmation", parameters);
             //TODO: Add position of confirmation. Maybe user thinks he/she has to click on the symbol...    
         } 
     }
 
-    public void SendPlayerChoice(int id)
+    private void SendPlayerChoice(int id)
     {
         if (ApplicationModeManager.Instance().IsOfflineModeActive())
         {
             return;
         }
-        if (hasBeenInitialized)
+        if (_hasBeenInitialized)
         {
             var text = GetTextByChoiceId(id);
             Dictionary<string, object> parameters = new Dictionary<string, object>()
             {
-                {"novelID", idOfCurrentNovel},
-                {"question", lastQuestionForChoice},
+                {"novelID", _idOfCurrentNovel},
+                {"question", _lastQuestionForChoice},
                 {"text", text},
                 {"indexOfChoice", id},
                 {"lengthOfChoice", text.Length}
             };
-            AnalyticsService.Instance.CustomData("playerChoice", parameters);
-            choiceId = -10;  // means no choice selected
-            addedAllEntriesToChoiceList = false;
-            choiceList.Clear();    
+            // AnalyticsService.Instance.CustomData("playerChoice", parameters);
+            _choiceId = -10;  // means no choice selected
+            _addedAllEntriesToChoiceList = false;
+            _choiceList.Clear();    
         } 
     }
 
@@ -306,10 +308,10 @@ public class AnalyticsServiceHandler
         {
             return;
         }
-        if (hasBeenInitialized)
+        if (_hasBeenInitialized)
         {
-            var text = "";
-            if(feelingList.Count <= id)
+            string text;
+            if(_feelingList.Count <= id)
             {
                 text = "Skip";
             } else {
@@ -317,13 +319,13 @@ public class AnalyticsServiceHandler
             }
             Dictionary<string, object> parameters = new Dictionary<string, object>()
             {
-                {"novelID", idOfCurrentNovel},
+                {"novelID", _idOfCurrentNovel},
                 {"text", text},
                 {"indexOfFeeling", id},
                 {"chooseableFeelings", GetChoosableFeelings()}
             };
-            AnalyticsService.Instance.CustomData("playerFeeling", parameters);
-            feelingList.Clear();    
+            // AnalyticsService.Instance.CustomData("playerFeeling", parameters);
+            _feelingList.Clear();    
         }
     }
 
@@ -333,16 +335,16 @@ public class AnalyticsServiceHandler
         {
             return;
         }
-        if (hasBeenInitialized)
+        if (_hasBeenInitialized)
         {
             StopStopwatch();
-            if(stopwatch != null)
+            if(_stopwatch != null)
             {
                 Dictionary<string, object> parameters = new Dictionary<string, object>()
                 {
-                    {"playTime", stopwatch.ElapsedMilliseconds}
+                    {"playTime", _stopwatch.ElapsedMilliseconds}
                 };
-                AnalyticsService.Instance.CustomData("novelPlayTime", parameters);
+                // AnalyticsService.Instance.CustomData("novelPlayTime", parameters);
             }    
         }
     }
@@ -353,14 +355,14 @@ public class AnalyticsServiceHandler
         {
             return;
         }
-        if (hasBeenInitialized)
+        if (_hasBeenInitialized)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>()
             {
-                {"waitForAIFeedback", waitForAIFeedback}
+                {"waitForAIFeedback", _waitForAIFeedback}
             };
-            AnalyticsService.Instance.CustomData("waitForAIFeedback", parameters);
-            waitForAIFeedback = false;    
+            // AnalyticsService.Instance.CustomData("waitForAIFeedback", parameters);
+            _waitForAIFeedback = false;    
         }
     }
 
@@ -370,14 +372,14 @@ public class AnalyticsServiceHandler
         {
             return;
         }
-        if(hasBeenInitialized)
+        if(_hasBeenInitialized)
         {
-            stopwatchSession.Stop();
+            _stopwatchSession.Stop();
             Dictionary<string, object> parameters = new Dictionary<string, object>()
             {
-                {"sessionTime", stopwatchSession.ElapsedMilliseconds}
+                {"sessionTime", _stopwatchSession.ElapsedMilliseconds}
             };
-            AnalyticsService.Instance.CustomData("sessionStatistics", parameters);
+            // AnalyticsService.Instance.CustomData("sessionStatistics", parameters);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Text;
 using Febucci.UI.Actions;
 using Febucci.UI.Core.Parsing;
 using Febucci.UI.Effects;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using UnityEngine;
 using UnityEngine.Serialization;
 
