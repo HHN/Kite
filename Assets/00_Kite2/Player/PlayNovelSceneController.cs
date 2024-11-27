@@ -129,47 +129,47 @@ namespace _00_Kite2.Player
         {
             _conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
 
-        //tapToContinueAnimation.SetActive(false);
-        //tapToContinueAnimation.GetComponent<Animator>().enabled = false;
-        AnalyticsServiceHandler.Instance().StartStopwatch();
-        TextToSpeechService.Instance().SetAudioSource(audioSource);
-        BackStackManager.Instance().Push(SceneNames.PLAY_NOVEL_SCENE);
-        novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
-        NovelBiasManager.Clear();
-        OfflineFeedbackManager.Instance().Clear();
-        Initialize();
-    }
+            //tapToContinueAnimation.SetActive(false);
+            //tapToContinueAnimation.GetComponent<Animator>().enabled = false;
+            AnalyticsServiceHandler.Instance().StartStopwatch();
+            TextToSpeechService.Instance().SetAudioSource(audioSource);
+            BackStackManager.Instance().Push(SceneNames.PLAY_NOVEL_SCENE);
+            novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
+            NovelBiasManager.Clear();
+            OfflineFeedbackManager.Instance().Clear();
+            Initialize();
+        }
 
-    //public void OnCloseButton()
-    //{
-    //    Debug.Log("OnCloseButton: Method called"); // Initial debug statement
+        //public void OnCloseButton()
+        //{
+        //    Debug.Log("OnCloseButton: Method called"); // Initial debug statement
 
-    //    isPaused = true; // Pause the novel progression
-    //    Debug.Log("OnCloseButton: Set isPaused to true");
+        //    isPaused = true; // Pause the novel progression
+        //    Debug.Log("OnCloseButton: Set isPaused to true");
 
-    //    if (!DestroyValidator.IsNullOrDestroyed(leaveGameAndGoBackMessageBoxObject))
-    //    {
-    //        Debug.Log("OnCloseButton: leaveGameAndGoBackMessageBoxObject is valid, closing message box");
-    //        leaveGameAndGoBackMessageBoxObject.CloseMessageBox();
-    //    }
+        //    if (!DestroyValidator.IsNullOrDestroyed(leaveGameAndGoBackMessageBoxObject))
+        //    {
+        //        Debug.Log("OnCloseButton: leaveGameAndGoBackMessageBoxObject is valid, closing message box");
+        //        leaveGameAndGoBackMessageBoxObject.CloseMessageBox();
+        //    }
 
-    //    if (DestroyValidator.IsNullOrDestroyed(canvas))
-    //    {
-    //        Debug.Log("OnCloseButton: Canvas is null or destroyed, exiting method");
-    //        return;
-    //    }
+        //    if (DestroyValidator.IsNullOrDestroyed(canvas))
+        //    {
+        //        Debug.Log("OnCloseButton: Canvas is null or destroyed, exiting method");
+        //        return;
+        //    }
 
-    //    Debug.Log("OnCloseButton: Instantiating leaveGameAndGoBackMessageBox");
-    //    leaveGameAndGoBackMessageBoxObject = null;
-    //    leaveGameAndGoBackMessageBoxObject = Instantiate(leaveGameAndGoBackMessageBox, canvas.transform).GetComponent<LeaveNovelAndGoBackMessageBox>();
-    //    leaveGameAndGoBackMessageBoxObject.Activate();
-    //    Debug.Log("OnCloseButton: leaveGameAndGoBackMessageBox activated");
-    //}
+        //    Debug.Log("OnCloseButton: Instantiating leaveGameAndGoBackMessageBox");
+        //    leaveGameAndGoBackMessageBoxObject = null;
+        //    leaveGameAndGoBackMessageBoxObject = Instantiate(leaveGameAndGoBackMessageBox, canvas.transform).GetComponent<LeaveNovelAndGoBackMessageBox>();
+        //    leaveGameAndGoBackMessageBoxObject.Activate();
+        //    Debug.Log("OnCloseButton: leaveGameAndGoBackMessageBox activated");
+        //}
 
 
-    public void Initialize()
-    {
-        PromptManager.Instance().InitializePrompt();
+        public void Initialize()
+        {
+            PromptManager.Instance().InitializePrompt();
 
             if (novelToPlay == null)
             {
@@ -196,8 +196,9 @@ namespace _00_Kite2.Player
             if (novelToPlay.title != "Einstiegsdialog")
             {
                 headerImage.SetActive(true);
-            } 
-            else if (novelToPlay.title == "Einstiegsdialog" && GameManager.Instance.IsIntroNovelLoadedFromMainMenu == false)
+            }
+            else if (novelToPlay.title == "Einstiegsdialog" &&
+                     GameManager.Instance.IsIntroNovelLoadedFromMainMenu == false)
             {
                 headerImage.SetActive(true);
             }
@@ -226,10 +227,10 @@ namespace _00_Kite2.Player
             }
         }
 
-    public void OnConfirm()
-    {
-        SkipSpeaking();
-        Vector2 mousePosition = Input.mousePosition;
+        public void OnConfirm()
+        {
+            SkipSpeaking();
+            Vector2 mousePosition = Input.mousePosition;
 
             if (_novelImagesController.HandleTouchEvent(mousePosition.x, mousePosition.y, audioSource))
             {
@@ -245,20 +246,21 @@ namespace _00_Kite2.Player
                     currentTypeWriter = null;
                 }
 
-            typingWasSkipped = true; // Flag setzen
-            SetTyping(false);
-            SkipSpeaking();
+                _typingWasSkipped = true; // Flag setzen
+                SetTyping(false);
+                SkipSpeaking();
 
                 return; // Beendet die Methode, um nicht zum nächsten Event zu springen
             }
 
-        if (!isWaitingForConfirmation)
-        {
-            return;
+            if (!isWaitingForConfirmation)
+            {
+                return;
+            }
+
+            SetWaitingForConfirmation(false);
+            StartCoroutine(PlayNextEvent());
         }
-        SetWaitingForConfirmation(false);
-        StartCoroutine(PlayNextEvent());
-    }
 
         private void SetVisualElements()
         {
@@ -332,42 +334,43 @@ namespace _00_Kite2.Player
             _novelImagesController.SetCanvasRect(canvasRect);
         }
 
-    public IEnumerator PlayNextEvent()
-    {
-        Debug.Log("!!!PLAY NEXT EVENT");
-        //if (!TextToSpeechManager.Instance.WasPaused())
-        //{
+        public IEnumerator PlayNextEvent()
+        {
+            Debug.Log("!!!PLAY NEXT EVENT");
+            //if (!TextToSpeechManager.Instance.WasPaused())
+            //{
             if (TextToSpeechManager.Instance.IsTextToSpeechActivated())
             {
                 // Warten, bis die Sprachausgabe abgeschlossen oder übersprungen wurde
                 if (speakingCoroutine != null)
+                {
+                    Debug.Log("TTS");
+                    Debug.Log("TextToSpeechManager.Instance.IsSpeaking() == " +
+                              TextToSpeechManager.Instance.IsSpeaking());
+                    if (Application.platform == RuntimePlatform.Android)
                     {
-                        Debug.Log("TTS");
-                        Debug.Log("TextToSpeechManager.Instance.IsSpeaking() == " + TextToSpeechManager.Instance.IsSpeaking());
-                        if (Application.platform == RuntimePlatform.Android)
+                        // Auf Android-Geräten: Auf den Abschluss der Coroutine warten
+                        while (TextToSpeechManager.Instance.IsSpeaking())
                         {
-                            // Auf Android-Geräten: Auf den Abschluss der Coroutine warten
-                            while (TextToSpeechManager.Instance.IsSpeaking())
-                            {
-                                //yield return StartCoroutine(speakingCoroutine);
-                                Debug.Log("??? " + TextToSpeechManager.Instance.IsSpeaking());
-                                yield return null;
-                            }
+                            //yield return StartCoroutine(speakingCoroutine);
+                            Debug.Log("??? " + TextToSpeechManager.Instance.IsSpeaking());
+                            yield return null;
                         }
                     }
+                }
             }
-        //}
+            //}
 
-        Debug.Log("!!!1nextEventToPlay.text: " + nextEventToPlay.text);
-        Debug.Log("!!!isPaused: " + isPaused);
+            Debug.Log("!!!1nextEventToPlay.text: " + nextEventToPlay.text);
+            Debug.Log("!!!isPaused: " + IsPaused);
 
-        // Stop if paused
-        if (isPaused)
-        {
-            yield break;
-        }
+            // Stop if paused
+            if (IsPaused)
+            {
+                yield break;
+            }
 
-        Debug.Log("!!!2nextEventToPlay.text: " + nextEventToPlay.text);
+            Debug.Log("!!!2nextEventToPlay.text: " + nextEventToPlay.text);
 
             if (selectOptionContinueConversation != null)
             {
@@ -400,7 +403,7 @@ namespace _00_Kite2.Player
             eventHistory.Add(nextEventToPlay);
 
             VisualNovelEventType type = VisualNovelEventTypeHelper.ValueOf(nextEventToPlay.eventType);
-        
+
             switch (type)
             {
                 case VisualNovelEventType.SET_BACKGROUND_EVENT:
@@ -495,12 +498,12 @@ namespace _00_Kite2.Player
                 default:
                 {
                     string nextEventID = nextEventToPlay.nextId;
-                    nextEventToPlay = novelEvents[nextEventID];
+                    nextEventToPlay = _novelEvents[nextEventID];
                     yield return StartCoroutine(PlayNextEvent()); // Rekursiver Coroutine-Aufruf
                     break;
                 }
+            }
         }
-    }
 
         private void HandlePlaySoundEvent(VisualNovelEvent novelEvent)
         {
@@ -585,35 +588,37 @@ namespace _00_Kite2.Player
             call.SendRequest();
             DontDestroyOnLoad(call.gameObject);
 
-        if (novelEvent.waitForUserConfirmation)
-        {
-            SetWaitingForConfirmation(true);
-            return;
+            if (novelEvent.waitForUserConfirmation)
+            {
+                SetWaitingForConfirmation(true);
+                return;
+            }
+
+            StartCoroutine(PlayNextEvent());
         }
-        StartCoroutine(PlayNextEvent());
-    }
 
-    private void HandleSavePersistentEvent(VisualNovelEvent novelEvent)
-    {
-        SetNextEvent(novelEvent);
-        WriteUserInputToFile(novelEvent.key, ReplacePlaceholders(novelEvent.value, novelToPlay.GetGlobalVariables()));
-        StartCoroutine(PlayNextEvent());
-    }
+        private void HandleSavePersistentEvent(VisualNovelEvent novelEvent)
+        {
+            SetNextEvent(novelEvent);
+            WriteUserInputToFile(novelEvent.key,
+                ReplacePlaceholders(novelEvent.value, novelToPlay.GetGlobalVariables()));
+            StartCoroutine(PlayNextEvent());
+        }
 
-    private void HandleSaveVariableEvent(VisualNovelEvent novelEvent)
-    {
-        SetNextEvent(novelEvent);
-        novelToPlay.AddGlobalVariable(novelEvent.key, novelEvent.value);
-        StartCoroutine(PlayNextEvent());
-    }
+        private void HandleSaveVariableEvent(VisualNovelEvent novelEvent)
+        {
+            SetNextEvent(novelEvent);
+            novelToPlay.AddGlobalVariable(novelEvent.key, novelEvent.value);
+            StartCoroutine(PlayNextEvent());
+        }
 
-    private void HandleCalculateVariableFromBooleanExpressionEvent(VisualNovelEvent novelEvent)
-    {
-        SetNextEvent(novelEvent);
-        string booleanExpression = ReplacePlaceholders(novelEvent.value, novelToPlay.GetGlobalVariables());
-        novelToPlay.AddGlobalVariable(novelEvent.key, EvaluateBooleanExpression(booleanExpression).ToString());
-        StartCoroutine(PlayNextEvent());
-    }
+        private void HandleCalculateVariableFromBooleanExpressionEvent(VisualNovelEvent novelEvent)
+        {
+            SetNextEvent(novelEvent);
+            string booleanExpression = ReplacePlaceholders(novelEvent.value, novelToPlay.GetGlobalVariables());
+            novelToPlay.AddGlobalVariable(novelEvent.key, EvaluateBooleanExpression(booleanExpression).ToString());
+            StartCoroutine(PlayNextEvent());
+        }
 
         private static bool EvaluateBooleanExpression(string expression)
         {
@@ -640,33 +645,38 @@ namespace _00_Kite2.Player
             }
         }
 
-    private void HandleAddFeedbackEvent(VisualNovelEvent novelEvent)
-    {
-        SetNextEvent(novelEvent);
-        OfflineFeedbackManager.Instance().AddLineToPrompt(novelEvent.value);
-        StartCoroutine(PlayNextEvent());
-    }
+        private void HandleAddFeedbackEvent(VisualNovelEvent novelEvent)
+        {
+            SetNextEvent(novelEvent);
+            OfflineFeedbackManager.Instance().AddLineToPrompt(novelEvent.value);
+            StartCoroutine(PlayNextEvent());
+        }
 
         private void HandleAddFeedbackUnderConditionEvent(VisualNovelEvent novelEvent)
         {
             SetNextEvent(novelEvent);
 
-        if (novelToPlay.IsVariableExistend(novelEvent.key) && (novelToPlay.GetGlobalVariable(novelEvent.key) == "True"
-            || novelToPlay.GetGlobalVariable(novelEvent.key) == "true" || novelToPlay.GetGlobalVariable(novelEvent.key) == "TRUE"))
-        {
-            OfflineFeedbackManager.Instance().AddLineToPrompt(novelEvent.value);
-        }
-        StartCoroutine(PlayNextEvent());
-    }
+            if (novelToPlay.IsVariableExistend(novelEvent.key) &&
+                (novelToPlay.GetGlobalVariable(novelEvent.key) == "True"
+                 || novelToPlay.GetGlobalVariable(novelEvent.key) == "true" ||
+                 novelToPlay.GetGlobalVariable(novelEvent.key) == "TRUE"))
+            {
+                OfflineFeedbackManager.Instance().AddLineToPrompt(novelEvent.value);
+            }
 
-    private void HandleMarkBiasEvent(VisualNovelEvent novelEvent)
-    {
-        SetNextEvent(novelEvent);
-        string biasInformation = DiscriminationBiasHelper.GetInformationString(DiscriminationBiasHelper.ValueOf(novelEvent.relevantBias));
-        PromptManager.Instance().AddFormattedLineToPrompt("Hinweis", biasInformation);
-        NovelBiasManager.Instance().MarkBiasAsRelevant(DiscriminationBiasHelper.ValueOf(novelEvent.relevantBias));
-        StartCoroutine(PlayNextEvent());
-    }
+            StartCoroutine(PlayNextEvent());
+        }
+
+        private void HandleMarkBiasEvent(VisualNovelEvent novelEvent)
+        {
+            SetNextEvent(novelEvent);
+            string biasInformation =
+                DiscriminationBiasHelper.GetInformationString(
+                    DiscriminationBiasHelper.ValueOf(novelEvent.relevantBias));
+            PromptManager.Instance().AddFormattedLineToPrompt("Hinweis", biasInformation);
+            NovelBiasManager.Instance().MarkBiasAsRelevant(DiscriminationBiasHelper.ValueOf(novelEvent.relevantBias));
+            StartCoroutine(PlayNextEvent());
+        }
 
         private void WriteUserInputToFile(string key, string content)
         {
@@ -711,10 +721,10 @@ namespace _00_Kite2.Player
             StartCoroutine(StartNextEventInOneSeconds(1));
         }
 
-    public void HandleShowMessageEvent(VisualNovelEvent novelEvent)
-    {
-        Debug.Log("TextToSpeechManager.Instance.Speak(novelEvent.text): " + novelEvent.text);
-        CreateSpeakingCoroutine(novelEvent.text);
+        public void HandleShowMessageEvent(VisualNovelEvent novelEvent)
+        {
+            Debug.Log("TextToSpeechManager.Instance.Speak(novelEvent.text): " + novelEvent.text);
+            CreateSpeakingCoroutine(novelEvent.text);
 
 
             //TextToSpeechService.Instance().TextToSpeechReadLive(novelEvent.text, engine); --> TODO: Überall entfernen
@@ -754,10 +764,10 @@ namespace _00_Kite2.Player
                 return;
             }
 
-        AnalyticsServiceHandler.Instance().AddChoiceToList(novelEvent.text);
-        TextToSpeechManager.Instance.AddChoiceToChoiceCollectionForTextToSpeech(novelEvent.text);
-        StartCoroutine(PlayNextEvent());
-    }
+            AnalyticsServiceHandler.Instance().AddChoiceToList(novelEvent.text);
+            TextToSpeechManager.Instance.AddChoiceToChoiceCollectionForTextToSpeech(novelEvent.text);
+            StartCoroutine(PlayNextEvent());
+        }
 
         private void HandleShowChoicesEvent(VisualNovelEvent novelEvent)
         {
@@ -776,7 +786,8 @@ namespace _00_Kite2.Player
         {
             AnalyticsServiceHandler.Instance().SendNovelPlayTime();
 
-            PlayRecordManager.Instance().IncrasePlayCounterForNovel(VisualNovelNamesHelper.ValueOf((int)novelToPlay.id));
+            PlayRecordManager.Instance()
+                .IncrasePlayCounterForNovel(VisualNovelNamesHelper.ValueOf((int)novelToPlay.id));
 
             PlaythrouCounterAnimationManager.Instance()
                 .SetAnimation(true, VisualNovelNamesHelper.ValueOf((int)novelToPlay.id));
@@ -807,11 +818,11 @@ namespace _00_Kite2.Player
             }
         }
 
-    public IEnumerator StartNextEventInOneSeconds(float second)
-    {
-        yield return new WaitForSeconds(second);
-        StartCoroutine(PlayNextEvent());
-    }
+        public IEnumerator StartNextEventInOneSeconds(float second)
+        {
+            yield return new WaitForSeconds(second);
+            StartCoroutine(PlayNextEvent());
+        }
 
         public void ShowAnswer(string message, bool show)
         {
@@ -926,20 +937,20 @@ namespace _00_Kite2.Player
         {
             // Check if there is a previous choice to restore
             if (string.IsNullOrEmpty(_optionsId[0])) return;
-            
+
             // The ID of the event we want to restore to
             string eventIdToRestore = _optionsId[0];
 
             // Find the index of the event in the eventHistory list
             int indexToRestore = eventHistory.FindIndex(e => e.id == eventIdToRestore);
-            
+
             if (_optionsCount != 0)
             {
                 indexToRestore -= _optionsCount;
             }
 
             if (indexToRestore == -1) return; // If the event is found in the history
-            
+
             // Remove the event and all events after it
             eventHistory.RemoveRange(indexToRestore, eventHistory.Count - indexToRestore);
 
@@ -952,11 +963,11 @@ namespace _00_Kite2.Player
             for (int i = playThroughHistory.Count - 1; i >= 0; i--)
             {
                 if (playThroughHistory[i].Trim() != ":") continue;
-                
+
                 colonCount++;
-                
+
                 if (colonCount != 2) continue;
-                
+
                 indexToRemoveFrom = i;
                 break;
             }
@@ -968,12 +979,12 @@ namespace _00_Kite2.Player
 
                 _conversationContentGuiController.ClearUIAfter(indexToRemoveFrom, _optionsCount);
             }
-            
+
             _optionsCount = 0;
 
             // Set the previous event as the next event to play, if present
             if (indexToRestore <= 0) return;
-            
+
             SetNextEvent(eventIdToRestore);
             PlayNextEvent();
         }
@@ -996,7 +1007,7 @@ namespace _00_Kite2.Player
         private void ShowHintForSavegameMessageBox()
         {
             if (hintForSavegameMessageBox == null) return;
-            
+
             // Überprüfen, ob die HintForSavegameMessageBox bereits geladen ist und schließe sie gegebenenfalls
             if (!hintForSavegameMessageBoxObject.IsNullOrDestroyed())
             {
@@ -1005,7 +1016,7 @@ namespace _00_Kite2.Player
 
             // Instanziiere und aktiviere die HintForSavegameMessageBox, falls das Canvas nicht null ist
             if (canvas.IsNullOrDestroyed()) return;
-            
+
             hintForSavegameMessageBoxObject = Instantiate(hintForSavegameMessageBox, canvas.transform)
                 .GetComponent<HintForSavegameMessageBox>();
             hintForSavegameMessageBoxObject.Activate();
@@ -1038,7 +1049,7 @@ namespace _00_Kite2.Player
             playThroughHistory = new List<string>(savedData.playThroughHistory);
             _optionsId[0] = savedData.optionsId[1];
             _optionsCount = savedData.optionCount;
-            
+
             // Wiederherstellen des Eventverlaufs
             eventHistory = savedData.eventHistory;
 
@@ -1046,7 +1057,7 @@ namespace _00_Kite2.Player
             conversationContent.ReconstructGuiContent(savedData);
 
             ActivateMessageBoxes();
-            
+
             PlayNextEvent();
         }
 
@@ -1065,7 +1076,7 @@ namespace _00_Kite2.Player
         {
             return nextEventToPlay;
         }
-        
+
         private void ActivateMessageBoxes()
         {
             foreach (var messageBox in conversationContent.GuiContent)

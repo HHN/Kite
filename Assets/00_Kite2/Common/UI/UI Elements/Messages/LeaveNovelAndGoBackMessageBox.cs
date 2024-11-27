@@ -8,32 +8,35 @@ namespace _00_Kite2.Common.UI.UI_Elements.Messages
 {
     public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
     {
-        [Header("Message Box Text Components")]
-        [SerializeField] private TextMeshProUGUI messageBoxHeadline;
+        [Header("Message Box Text Components")] [SerializeField]
+        private TextMeshProUGUI messageBoxHeadline;
 
         [SerializeField] private TextMeshProUGUI messageBoxBody;
 
-        [Header("Action Buttons")]
-        [SerializeField] private Button continueButton;  // Continue with the novel
+        [Header("Action Buttons")] [SerializeField]
+        private Button continueButton; // Continue with the novel
 
-        [SerializeField] private Button pauseButton;     // Pause the novel
-        [SerializeField] private Button cancelButton;    // Cancel the novel
-        [SerializeField] private Button endButton;       // End the novel and mark it as completed
+        [SerializeField] private Button pauseButton; // Pause the novel
+        [SerializeField] private Button cancelButton; // Cancel the novel
+        [SerializeField] private Button endButton; // End the novel and mark it as completed
 
-        [Header("Background Elements")]
-        [SerializeField] private GameObject backgroundContinue;
+        [Header("Background Elements")] [SerializeField]
+        private GameObject backgroundContinue;
 
         [SerializeField] private GameObject backgroundPause;
         [SerializeField] private GameObject backgroundCancel;
         [SerializeField] private GameObject backgroundEnd;
 
-        [Header("Miscellaneous Elements")]
-        [SerializeField] private GameObject textStay;
+        [Header("Miscellaneous Elements")] [SerializeField]
+        private GameObject textStay;
 
         [SerializeField] private GameObject person;
-        private ConversationContentGuiController _conversationContentGuiController; // Reference to the PlayNovelSceneController to manage novel actions
 
-        private PlayNovelSceneController _playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
+        private ConversationContentGuiController
+            _conversationContentGuiController; // Reference to the PlayNovelSceneController to manage novel actions
+
+        private PlayNovelSceneController
+            _playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
 
         private void Start()
         {
@@ -45,12 +48,11 @@ namespace _00_Kite2.Common.UI.UI_Elements.Messages
             InitUI();
             FontSizeManager.Instance().UpdateAllTextComponents();
 
-        // Find and assign the PlayNovelSceneController component for novel control actions
-        playNovelSceneController = GameObject.Find("Controller").GetComponent<PlayNovelSceneController>();
-        TextToSpeechManager.Instance.CancelSpeak();
-    }
+            // Find and assign the PlayNovelSceneController component for novel control actions
             _playNovelSceneController = FindAnyObjectByType<PlayNovelSceneController>();
             _conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
+
+            TextToSpeechManager.Instance.CancelSpeak();
         }
 
         private void InitUI()
@@ -76,20 +78,21 @@ namespace _00_Kite2.Common.UI.UI_Elements.Messages
             _playNovelSceneController.IsPaused = false; // Resume the novel progression
 
             this.CloseMessageBox();
-        //TextToSpeechManager.Instance.SetWasPaused(true);
-        TextToSpeechManager.Instance.RepeatLastMessage();
-        //TextToSpeechManager.Instance.SetIsSpeaking(false);
+            //TextToSpeechManager.Instance.SetWasPaused(true);
+            TextToSpeechManager.Instance.RepeatLastMessage();
+            //TextToSpeechManager.Instance.SetIsSpeaking(false);
 
-        Debug.Log("Ruft PlayNextEvent auf");
-        StartCoroutine(playNovelSceneController.PlayNextEvent());
-    }
-
-    public void OnCancelButton()
-    {
-        // Disable animations after confirmation
-        AnimationFlagSingleton.Instance().SetFlag(false);
-            _playNovelSceneController.PlayNextEvent();
+            Debug.Log("Ruft PlayNextEvent auf");
+            AnimationFlagSingleton.Instance().SetFlag(false);
+            StartCoroutine(_playNovelSceneController.PlayNextEvent());
         }
+
+        // private void OnCancelButton()
+        // {
+        //     // Disable animations after confirmation
+        //     AnimationFlagSingleton.Instance().SetFlag(false);
+        //     _playNovelSceneController.PlayNextEvent();
+        // }
 
         private void OnPauseButton()
         {
@@ -104,7 +107,9 @@ namespace _00_Kite2.Common.UI.UI_Elements.Messages
 
         private void OnEndButton()
         {
-            PromptManager.Instance().AddLineToPrompt("Das Gespräch wurde vorzeitig beendet. Bitte beachte, dass kein Teil des Dialogs in das Feedback darf.");
+            PromptManager.Instance()
+                .AddLineToPrompt(
+                    "Das Gespräch wurde vorzeitig beendet. Bitte beachte, dass kein Teil des Dialogs in das Feedback darf.");
 
             _playNovelSceneController.HandleEndNovelEvent();
         }
@@ -115,9 +120,10 @@ namespace _00_Kite2.Common.UI.UI_Elements.Messages
             {
                 return;
             }
+
             Destroy(this.gameObject);
         }
-    
+
         private static void LeaveNovel()
         {
             // Disable animations after confirmation
@@ -148,3 +154,4 @@ namespace _00_Kite2.Common.UI.UI_Elements.Messages
             SceneLoader.LoadScene(lastScene);
         }
     }
+}
