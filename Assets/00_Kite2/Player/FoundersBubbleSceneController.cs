@@ -8,10 +8,11 @@ namespace _00_Kite2.Player
 {
     public class FoundersBubbleSceneController : SceneController
     {
-        [Header("Novel Description Textbox")] [SerializeField]
-        private GameObject novelDescriptionTextboxGameObject;
-
+        [Header("Novel Description Textbox")] 
+        [SerializeField] private GameObject novelDescriptionTextboxGameObject;
         [SerializeField] private NovelDescriptionTextbox novelDescriptionTextbox;
+        [SerializeField] private GameObject novelDescriptionTextboxIntroGameObject;
+        [SerializeField] private NovelDescriptionTextbox novelDescriptionTextboxIntro;
         [SerializeField] private bool isPopupOpen;
         [SerializeField] private VisualNovelNames currentlyOpenedVisualNovelPopup;
 
@@ -333,22 +334,39 @@ namespace _00_Kite2.Player
             {
                 if (novel.id == _novelId)
                 {
-                    novelDescriptionTextboxGameObject.SetActive(true);
-                    novelDescriptionTextbox.SetHead(FoundersBubbleMetaInformation.IsHighInGui(visualNovel));
-                    novelDescriptionTextbox.SetVisualNovel(novel);
-                    novelDescriptionTextbox.SetVisualNovelName(visualNovel);
-                    novelDescriptionTextbox.SetText(novel.description);
-                    novelDescriptionTextbox.SetColorOfImage(
-                        FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
-                    novelDescriptionTextbox.SetButtonsActive(true);
-                    novelDescriptionTextbox.InitializeBookMarkButton(FavoritesManager.Instance().IsFavorite(novel));
-                    novelDescriptionTextbox.UpdateSize();
+                    if (novel.id == 13)
+                    {
+                        novelDescriptionTextboxGameObject.SetActive(false);
+                        novelDescriptionTextboxIntroGameObject.SetActive(true);
+                        novelDescriptionTextboxIntro.SetHead(FoundersBubbleMetaInformation.IsHighInGui(visualNovel));
+                        novelDescriptionTextboxIntro.SetVisualNovel(novel);
+                        novelDescriptionTextboxIntro.SetVisualNovelName(visualNovel);
+                        novelDescriptionTextboxIntro.SetText("Hier kannst du den Einstiegs-Dialog erneut spielen.");
+                        novelDescriptionTextboxIntro.SetColorOfImage(
+                            FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
+                        novelDescriptionTextboxIntro.SetButtonsActive(true);
+                        novelDescriptionTextboxIntro.UpdateSize();
+                    }
+                    else
+                    {
+                        novelDescriptionTextboxIntroGameObject.SetActive(false);
+                        novelDescriptionTextboxGameObject.SetActive(true);
+                        novelDescriptionTextbox.SetHead(FoundersBubbleMetaInformation.IsHighInGui(visualNovel));
+                        novelDescriptionTextbox.SetVisualNovel(novel);
+                        novelDescriptionTextbox.SetVisualNovelName(visualNovel);
+                        novelDescriptionTextbox.SetText(novel.description);
+                        novelDescriptionTextbox.SetColorOfImage(
+                            FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
+                        novelDescriptionTextbox.SetButtonsActive(true);
+                        novelDescriptionTextbox.InitializeBookMarkButton(FavoritesManager.Instance().IsFavorite(novel));
+                        novelDescriptionTextbox.UpdateSize();
+                    }
+
 
 
                     isPopupOpen = true;
                     currentlyOpenedVisualNovelPopup = visualNovel;
-                    NovelColorManager.Instance()
-                        .SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
+                    NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
                 }
             }
 
