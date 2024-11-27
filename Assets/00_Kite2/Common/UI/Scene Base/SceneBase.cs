@@ -1,123 +1,121 @@
 using _00_Kite2.Common.UI.UI_Elements.Messages;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class SceneBase : MonoBehaviour
+namespace _00_Kite2.Common.UI.Scene_Base
 {
-    [SerializeField] private Button backButton;
-    [SerializeField] private Button closeButton;
-    [SerializeField] private Button homeButton;
-    [SerializeField] private Button novelPlayerButton;
-    [SerializeField] private Button settingsButton;
-
-    [SerializeField] private GameObject leaveGameAndGoToMainMenuMessageBox;
-    [SerializeField] private GameObject leaveGameAndGoToSettingsMessageBox;
-    [SerializeField] private GameObject leaveGameAndGoBackMessageBox;
-    [SerializeField] private GameObject leaveGameAndCloseMessageBox;
-    [SerializeField] private LeaveNovelAndGoBackToMainmenuMessageBox leaveGameAndGoToMainMenuMessageBoxObject;
-    [SerializeField] private LeaveNovelAndGoToSettingsMessageBox leaveGameAndGoToSettingsMessageBoxObject;
-    [SerializeField] private LeaveNovelAndGoBackMessageBox leaveGameAndGoBackMessageBoxObject;
-    [SerializeField] private CloseNovelAndGoBackMessageBox leaveNovelAndCloseMessageBoxObject;
-    [SerializeField] private Canvas canvas;
-
-    void Start()
+    public class SceneBase : MonoBehaviour
     {
-        novelPlayerButton.onClick.AddListener(delegate { OnNovelPlayerButton(); });
+        [SerializeField] private Button backButton;
+        [SerializeField] private Button closeButton;
+        [SerializeField] private Button homeButton;
+        [SerializeField] private Button settingsButton;
 
-        OnGuestMode();
+        [SerializeField] private GameObject leaveGameAndGoToMainMenuMessageBox;
+        [SerializeField] private GameObject leaveGameAndGoToSettingsMessageBox;
+        [SerializeField] private GameObject leaveGameAndGoBackMessageBox;
+        [SerializeField] private GameObject leaveGameAndCloseMessageBox;
+        [SerializeField] private LeaveNovelAndGoBackToMainmenuMessageBox leaveGameAndGoToMainMenuMessageBoxObject;
+        [SerializeField] private LeaveNovelAndGoToSettingsMessageBox leaveGameAndGoToSettingsMessageBoxObject;
+        [SerializeField] private LeaveNovelAndGoBackMessageBox leaveGameAndGoBackMessageBoxObject;
+        [SerializeField] private CloseNovelAndGoBackMessageBox leaveNovelAndCloseMessageBoxObject;
+        [SerializeField] private Canvas canvas;
 
-        if (SceneManager.GetActiveScene().name.Equals(SceneNames.PLAY_NOVEL_SCENE))
+        void Start()
         {
-            homeButton.onClick.AddListener(delegate { OnHomeButtonForNovelPlayer(); });
-            settingsButton.onClick.AddListener(delegate { OnSettingsButtonForNovelPlayer(); });
-            backButton.onClick.AddListener(delegate {OnBackButtonForNovelPlayer(); });
-            closeButton.onClick.AddListener(delegate { OnBackButtonForNovelPlayer(); });
-        } 
-        else
-        {
-            homeButton.onClick.AddListener(delegate { OnHomeButton(); });
-            settingsButton.onClick.AddListener(delegate { OnSettingsButton(); });
-            backButton.onClick.AddListener(delegate { OnBackButton(); });
+            OnGuestMode();
+
+            if (SceneManager.GetActiveScene().name.Equals(SceneNames.PLAY_NOVEL_SCENE))
+            {
+                homeButton.onClick.AddListener(OnHomeButtonForNovelPlayer);
+                settingsButton.onClick.AddListener(OnSettingsButtonForNovelPlayer);
+                backButton.onClick.AddListener(OnBackButtonForNovelPlayer);
+                closeButton.onClick.AddListener(OnBackButtonForNovelPlayer);
+            } 
+            else if (SceneManager.GetActiveScene().name.Equals(SceneNames.MAIN_MENU_SCENE))
+            {
+            } 
+            else
+            {
+                homeButton.onClick.AddListener(OnHomeButton);
+                settingsButton.onClick.AddListener(OnSettingsButton);
+                backButton.onClick.AddListener(OnBackButton);
+            }
         }
-    }
 
-    public void OnGuestMode()
-    {
-    }
+        private void OnGuestMode()
+        {
+        }
 
-    public void OnBackButton()
-    {
-        string lastScene = SceneRouter.GetTargetSceneForBackButton();
+        private void OnBackButton()
+        {
+            string lastScene = SceneRouter.GetTargetSceneForBackButton();
 
-        if (string.IsNullOrEmpty(lastScene))
+            if (string.IsNullOrEmpty(lastScene))
+            {
+                SceneLoader.LoadMainMenuScene();
+                return;
+            }
+            SceneLoader.LoadScene(lastScene);
+        }
+
+        private void OnBackButtonForNovelPlayer()
+        {
+            if (!DestroyValidator.IsNullOrDestroyed(leaveGameAndGoBackMessageBoxObject))
+            {
+                leaveGameAndGoBackMessageBoxObject.CloseMessageBox();
+            }
+            if (DestroyValidator.IsNullOrDestroyed(canvas))
+            {
+                return;
+            }
+            leaveGameAndGoBackMessageBoxObject = null;
+            leaveGameAndGoBackMessageBoxObject = Instantiate(leaveGameAndGoBackMessageBox, 
+                canvas.transform).GetComponent<LeaveNovelAndGoBackMessageBox>();
+            leaveGameAndGoBackMessageBoxObject.Activate();
+        }
+
+        private void OnHomeButton()
         {
             SceneLoader.LoadMainMenuScene();
-            return;
         }
-        SceneLoader.LoadScene(lastScene);
-    }
 
-    public void OnBackButtonForNovelPlayer()
-    {
-        if (!DestroyValidator.IsNullOrDestroyed(leaveGameAndGoBackMessageBoxObject))
+        private void OnHomeButtonForNovelPlayer()
         {
-            leaveGameAndGoBackMessageBoxObject.CloseMessageBox();
+            if (!DestroyValidator.IsNullOrDestroyed(leaveGameAndGoToMainMenuMessageBoxObject))
+            {
+                leaveGameAndGoToMainMenuMessageBoxObject.CloseMessageBox();
+            }
+            if (DestroyValidator.IsNullOrDestroyed(canvas))
+            {
+                return;
+            }
+            leaveGameAndGoToMainMenuMessageBoxObject = null;
+            leaveGameAndGoToMainMenuMessageBoxObject = Instantiate(leaveGameAndGoToMainMenuMessageBox, 
+                canvas.transform).GetComponent<LeaveNovelAndGoBackToMainmenuMessageBox>();
+            leaveGameAndGoToMainMenuMessageBoxObject.Activate();
         }
-        if (DestroyValidator.IsNullOrDestroyed(canvas))
-        {
-            return;
-        }
-        leaveGameAndGoBackMessageBoxObject = null;
-        leaveGameAndGoBackMessageBoxObject = Instantiate(leaveGameAndGoBackMessageBox, 
-            canvas.transform).GetComponent<LeaveNovelAndGoBackMessageBox>();
-        leaveGameAndGoBackMessageBoxObject.Activate();
-    }
 
-    public void OnHomeButton()
-    {
-        SceneLoader.LoadMainMenuScene();
-    }
-
-    public void OnHomeButtonForNovelPlayer()
-    {
-        if (!DestroyValidator.IsNullOrDestroyed(leaveGameAndGoToMainMenuMessageBoxObject))
+        private void OnSettingsButton()
         {
-            leaveGameAndGoToMainMenuMessageBoxObject.CloseMessageBox();
+            SceneLoader.LoadSettingsScene();
         }
-        if (DestroyValidator.IsNullOrDestroyed(canvas))
-        {
-            return;
-        }
-        leaveGameAndGoToMainMenuMessageBoxObject = null;
-        leaveGameAndGoToMainMenuMessageBoxObject = Instantiate(leaveGameAndGoToMainMenuMessageBox, 
-            canvas.transform).GetComponent<LeaveNovelAndGoBackToMainmenuMessageBox>();
-        leaveGameAndGoToMainMenuMessageBoxObject.Activate();
-    }
 
-    public void OnNovelPlayerButton()
-    {
-        SceneLoader.LoadFoundersBubbleScene();
-    }
-
-    public void OnSettingsButton()
-    {
-        SceneLoader.LoadSettingsScene();
-    }
-
-    public void OnSettingsButtonForNovelPlayer()
-    {
-        if (!DestroyValidator.IsNullOrDestroyed(leaveGameAndGoToSettingsMessageBoxObject))
+        private void OnSettingsButtonForNovelPlayer()
         {
-            leaveGameAndGoToSettingsMessageBoxObject.CloseMessageBox();
+            if (!DestroyValidator.IsNullOrDestroyed(leaveGameAndGoToSettingsMessageBoxObject))
+            {
+                leaveGameAndGoToSettingsMessageBoxObject.CloseMessageBox();
+            }
+            if (DestroyValidator.IsNullOrDestroyed(canvas))
+            {
+                return;
+            }
+            leaveGameAndGoToSettingsMessageBoxObject = null;
+            leaveGameAndGoToSettingsMessageBoxObject = Instantiate(leaveGameAndGoToSettingsMessageBox,
+                canvas.transform).GetComponent<LeaveNovelAndGoToSettingsMessageBox>();
+            leaveGameAndGoToSettingsMessageBoxObject.Activate();
         }
-        if (DestroyValidator.IsNullOrDestroyed(canvas))
-        {
-            return;
-        }
-        leaveGameAndGoToSettingsMessageBoxObject = null;
-        leaveGameAndGoToSettingsMessageBoxObject = Instantiate(leaveGameAndGoToSettingsMessageBox,
-            canvas.transform).GetComponent<LeaveNovelAndGoToSettingsMessageBox>();
-        leaveGameAndGoToSettingsMessageBoxObject.Activate();
     }
 }
