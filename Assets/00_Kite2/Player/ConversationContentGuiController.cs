@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using _00_Kite2.Common.Managers;
 using _00_Kite2.SaveNovelData;
+using Febucci.UI;
+using Febucci.UI.Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -260,7 +263,7 @@ namespace _00_Kite2.Player
             content = savedData.content;
             visualNovelEvents = savedData.visualNovelEvents;
         
-            GameManager.Instance.calledFromReload = true;
+            // GameManager.Instance.calledFromReload = true;
 
             // Durchlaufe jedes Event in visualNovelEvents und erstelle das entsprechende GUI-Element
             for (int i = 0; i < savedData.visualNovelEvents.Count; i++)
@@ -323,8 +326,11 @@ namespace _00_Kite2.Player
             ChatMessageBox chatMessageBox = messageBox.GetComponent<ChatMessageBox>();
             if (messageBox != null)
             {
-                chatMessageBox.textBox.text = ""; // Stelle sicher, dass der Text leer ist
-                chatMessageBox.textBox.text = text;
+                // chatMessageBox.GetComponent<TAnimCore>().SetText(text);
+                chatMessageBox.GetComponentInChildren<TAnimCore>().SetText(text);
+                chatMessageBox.GetComponentInChildren<TypewriterByCharacter>().useTypeWriter = false;
+                // chatMessageBox.textBox.text = ""; // Stelle sicher, dass der Text leer ist
+                // chatMessageBox.textBox.text = text;
             }
         }
     }

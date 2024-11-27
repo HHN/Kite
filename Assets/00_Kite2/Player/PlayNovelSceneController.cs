@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text.RegularExpressions;
+using _00_Kite2.Common.Novel.Character.CharacterController;
 using _00_Kite2.Common.UI.UI_Elements.Messages;
 using _00_Kite2.SaveNovelData;
 using LeastSquares.Overtone;
@@ -11,6 +12,7 @@ using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using CharacterController = _00_Kite2.Common.Novel.Character.CharacterController.CharacterController;
 
 namespace _00_Kite2.Player
 {

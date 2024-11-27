@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
+using _00_Kite2.Common.Novel.Character.CharacterController;
 using UnityEngine.UI;
+using CharacterController = _00_Kite2.Common.Novel.Character.CharacterController.CharacterController;
 
 public class NotarinNovelImageController : NovelImageController
 {
@@ -121,7 +123,7 @@ public class NotarinNovelImageController : NovelImageController
         characterRectTransform.anchoredPosition = new Vector2(-canvasRect.rect.width * 0.15f, 0);
         characterRectTransform.sizeDelta = new Vector2(canvasRect.rect.width * 0.25f, canvasRect.rect.height * 1f);
         */
-        characterController = characterPrefab.GetComponent<CharacterController>();
+        CharacterController = characterPrefab.GetComponent<CharacterController>();
     }
 
     public override bool HandleTouchEvent(float x, float y, AudioSource audioSource)

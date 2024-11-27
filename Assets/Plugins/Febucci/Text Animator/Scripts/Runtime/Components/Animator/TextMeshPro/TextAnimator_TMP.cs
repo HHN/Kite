@@ -3,7 +3,7 @@ using Febucci.UI.Core.Parsing;
 using TMPro;
 using UnityEngine;
 
-namespace Febucci.UI
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Animator.TextMeshPro
 {
     /// <summary>
     /// Animates a TMP text component, both UI or World.
