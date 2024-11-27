@@ -36,7 +36,7 @@ namespace _00_Kite2.Player
         private void Start()
         {
             playButton.onClick.AddListener(OnPlayButton);
-            bookMarkButton.onClick.AddListener(OnBookmarkButton);
+            if(bookMarkButton != null) bookMarkButton.onClick.AddListener(OnBookmarkButton);
         }
 
         /// <summary>
@@ -98,7 +98,8 @@ namespace _00_Kite2.Player
         public void SetVisualNovel(VisualNovel visualNovel)
         {
             this.visualNovelToDisplay = visualNovel;
-            InitializeBookMarkButton(FavoritesManager.Instance().IsFavorite(visualNovel));
+            
+            if(bookMarkButton != null) InitializeBookMarkButton(FavoritesManager.Instance().IsFavorite(visualNovel));
         }
 
         /// <summary>
@@ -161,7 +162,7 @@ namespace _00_Kite2.Player
         public void SetButtonsActive(bool active)
         {
             playButton.gameObject.SetActive(active);
-            bookMarkButton.gameObject.SetActive(active);
+            if(bookMarkButton != null) bookMarkButton.gameObject.SetActive(active);
         }
 
         /// <summary>
