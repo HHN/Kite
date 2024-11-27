@@ -21,6 +21,8 @@ public class MainMenuSceneController : SceneController, OnSuccessHandler
 
     private void Start()
     {
+        // Initialisiere den TextToSpeechManager
+        TextToSpeechManager ttsManager = TextToSpeechManager.Instance;
         // Initialisiere die Szene und setze grundlegende Einstellungen
         InitializeScene();
 

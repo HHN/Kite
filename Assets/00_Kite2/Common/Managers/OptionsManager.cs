@@ -149,6 +149,7 @@ public class OptionsManager : MonoBehaviour
 
     public IEnumerator AfterSelection(string parameterName, string answer, string nextEventID, bool displayAfterSelection, int index)
     {
+        TextToSpeechManager.Instance.CancelSpeak();
         // Disable animations after the selection
         var animationFlagSingleton = AnimationFlagSingleton.Instance();
         if (animationFlagSingleton != null)

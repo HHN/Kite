@@ -30,6 +30,7 @@ public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
 
         // Find and assign the PlayNovelSceneController component for novel control actions
         playNovelSceneController = GameObject.Find("Controller").GetComponent<PlayNovelSceneController>();
+        TextToSpeechManager.Instance.CancelSpeak();
     }
 
     private void InitUI()
@@ -64,17 +65,18 @@ public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
         playNovelSceneController.isPaused = false; // Resume the novel progression
 
         this.CloseMessageBox();
+        //TextToSpeechManager.Instance.SetWasPaused(true);
+        TextToSpeechManager.Instance.RepeatLastMessage();
+        //TextToSpeechManager.Instance.SetIsSpeaking(false);
 
-        playNovelSceneController.PlayNextEvent();
+        Debug.Log("Ruft PlayNextEvent auf");
+        StartCoroutine(playNovelSceneController.PlayNextEvent());
     }
 
     public void OnCancelButton()
     {
         // Disable animations after confirmation
         AnimationFlagSingleton.Instance().SetFlag(false);
-
-        // Cancel any ongoing speech and audio from the Text-to-Speech service
-        TextToSpeechService.Instance().CancelSpeechAndAudio();
 
         // Retrieve the last scene for the back button functionality
         string lastScene = SceneRouter.GetTargetSceneForBackButton();

@@ -55,20 +55,20 @@ public class BarrierefreiheitSceneController : SceneController
 
     private void OnToggleTextToSpeech(Toggle toggle)
     {
-        DisplayInfoMessage(InfoMessages.TTS_IS_CURRENTLY_DEACTIVATET);
-        toggleTextToSpeech.isOn = false;
-        //if (toggleTextToSpeech.isOn)
-        //{
-        //    TextToSpeechManager.Instance().ActivateTextToSpeech();
-        //    DisplayInfoMessage(InfoMessages.STARTED_TOGGLETEXTTOSPEECH_BUTTON);
-        //    TextToSpeechService.Instance().TextToSpeechReadLive("Text wird nun vorgelesen", true);
-        //}
-        //else
-        //{
-        //    TextToSpeechManager.Instance().DeactivateTextToSpeech();
-        //    DisplayInfoMessage(InfoMessages.STOPPED_TOGGLETEXTTOSPEECH_BUTTON);
-        //    TextToSpeechService.Instance().TextToSpeechReadLive("Text wird nicht mehr vorgelesen", true);
-        //}
+        //DisplayInfoMessage(InfoMessages.TTS_IS_CURRENTLY_DEACTIVATET);
+        //toggleTextToSpeech.isOn = false;
+        if (toggleTextToSpeech.isOn)
+        {
+            TextToSpeechManager.Instance.ActivateTTS();
+            DisplayInfoMessage(InfoMessages.STARTED_TOGGLETEXTTOSPEECH_BUTTON);
+            StartCoroutine(TextToSpeechManager.Instance.Speak("Text wird nun vorgelesen"));
+        }
+        else
+        {
+            StartCoroutine(TextToSpeechManager.Instance.Speak("Text wird nicht mehr vorgelesen"));
+            TextToSpeechManager.Instance.DeactivateTTS();
+            DisplayInfoMessage(InfoMessages.STOPPED_TOGGLETEXTTOSPEECH_BUTTON);
+        }
     }
 
     private void OnAdjustFontSizeInfoButton()

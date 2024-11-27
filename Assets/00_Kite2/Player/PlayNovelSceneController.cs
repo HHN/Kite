@@ -116,6 +116,8 @@ public class PlayNovelSceneController : SceneController
 
     private int novelCharacter = -1;
 
+    private IEnumerator speakingCoroutine;
+
     void Start()
     {
         conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
@@ -123,40 +125,13 @@ public class PlayNovelSceneController : SceneController
         //tapToContinueAnimation.SetActive(false);
         //tapToContinueAnimation.GetComponent<Animator>().enabled = false;
         AnalyticsServiceHandler.Instance().StartStopwatch();
-        TextToSpeechService.Instance().SetAudioSource(audioSource);
+        //TextToSpeechService.Instance().SetAudioSource(audioSource);
         BackStackManager.Instance().Push(SceneNames.PLAY_NOVEL_SCENE);
         novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
         NovelBiasManager.Clear();
         OfflineFeedbackManager.Instance().Clear();
         Initialize();
     }
-
-    //public void OnCloseButton()
-    //{
-    //    Debug.Log("OnCloseButton: Method called"); // Initial debug statement
-
-    //    isPaused = true; // Pause the novel progression
-    //    Debug.Log("OnCloseButton: Set isPaused to true");
-
-    //    if (!DestroyValidator.IsNullOrDestroyed(leaveGameAndGoBackMessageBoxObject))
-    //    {
-    //        Debug.Log("OnCloseButton: leaveGameAndGoBackMessageBoxObject is valid, closing message box");
-    //        leaveGameAndGoBackMessageBoxObject.CloseMessageBox();
-    //    }
-
-    //    if (DestroyValidator.IsNullOrDestroyed(canvas))
-    //    {
-    //        Debug.Log("OnCloseButton: Canvas is null or destroyed, exiting method");
-    //        return;
-    //    }
-
-    //    Debug.Log("OnCloseButton: Instantiating leaveGameAndGoBackMessageBox");
-    //    leaveGameAndGoBackMessageBoxObject = null;
-    //    leaveGameAndGoBackMessageBoxObject = Instantiate(leaveGameAndGoBackMessageBox, canvas.transform).GetComponent<LeaveNovelAndGoBackMessageBox>();
-    //    leaveGameAndGoBackMessageBoxObject.Activate();
-    //    Debug.Log("OnCloseButton: leaveGameAndGoBackMessageBox activated");
-    //}
-
 
     public void Initialize()
     {
@@ -198,11 +173,12 @@ public class PlayNovelSceneController : SceneController
         }
         nextEventToPlay = novelToPlay.novelEvents[0];
         //StartCoroutine(StartNextEventInOneSeconds(0));
-        PlayNextEvent();
+        StartCoroutine(PlayNextEvent());
     }
 
     public void OnConfirm()
     {
+        SkipSpeaking();
         Vector2 mousePosition = Input.mousePosition;
 
         if (novelImagesController.HandleTouchEvent(mousePosition.x, mousePosition.y, audioSource))
@@ -221,6 +197,7 @@ public class PlayNovelSceneController : SceneController
 
             typingWasSkipped = true; // Flag setzen
             SetTyping(false);
+            SkipSpeaking();
 
             return; // Beendet die Methode, um nicht zum nächsten Event zu springen
         }
@@ -229,9 +206,8 @@ public class PlayNovelSceneController : SceneController
         {
             return;
         }
-
         SetWaitingForConfirmation(false);
-        PlayNextEvent();
+        StartCoroutine(PlayNextEvent());
     }
 
     private void SetVisualElements()
@@ -305,13 +281,42 @@ public class PlayNovelSceneController : SceneController
         novelImagesController.SetCanvasRect(canvasRect);
     }
 
-    public void PlayNextEvent()
+    public IEnumerator PlayNextEvent()
     {
+        Debug.Log("!!!PLAY NEXT EVENT");
+        //if (!TextToSpeechManager.Instance.WasPaused())
+        //{
+            if (TextToSpeechManager.Instance.IsTextToSpeechActivated())
+            {
+                // Warten, bis die Sprachausgabe abgeschlossen oder übersprungen wurde
+                if (speakingCoroutine != null)
+                    {
+                        Debug.Log("TTS");
+                        Debug.Log("TextToSpeechManager.Instance.IsSpeaking() == " + TextToSpeechManager.Instance.IsSpeaking());
+                        if (Application.platform == RuntimePlatform.Android)
+                        {
+                            // Auf Android-Geräten: Auf den Abschluss der Coroutine warten
+                            while (TextToSpeechManager.Instance.IsSpeaking())
+                            {
+                                //yield return StartCoroutine(speakingCoroutine);
+                                Debug.Log("??? " + TextToSpeechManager.Instance.IsSpeaking());
+                                yield return null;
+                            }
+                        }
+                    }
+            }
+        //}
+
+        Debug.Log("!!!1nextEventToPlay.text: " + nextEventToPlay.text);
+        Debug.Log("!!!isPaused: " + isPaused);
+
         // Stop if paused
         if (isPaused)
         {
-            return;
+            yield break;
         }
+
+        Debug.Log("!!!2nextEventToPlay.text: " + nextEventToPlay.text);
 
         if (selectOptionContinueConversation != null)
         {
@@ -328,7 +333,6 @@ public class PlayNovelSceneController : SceneController
         // Überprüfen, ob der Event den Bedingungen entspricht
         if (nextEventToPlay.id.StartsWith("OptionsLabel"))
         {
-
             // Schneide "OptionsLabel" ab und speichere den Rest
             string numericPart = nextEventToPlay.id.Substring("OptionsLabel".Length);
 
@@ -345,6 +349,8 @@ public class PlayNovelSceneController : SceneController
         eventHistory.Add(nextEventToPlay);
 
         type = VisualNovelEventTypeHelper.ValueOf(nextEventToPlay.eventType);
+
+        //TextToSpeechManager.Instance.SetWasPaused(false);
 
         switch (type)
         {
@@ -441,11 +447,12 @@ public class PlayNovelSceneController : SceneController
                 {
                     string nextEventID = nextEventToPlay.nextId;
                     nextEventToPlay = novelEvents[nextEventID];
-                    PlayNextEvent();
+                    yield return StartCoroutine(PlayNextEvent()); // Rekursiver Coroutine-Aufruf
                     break;
                 }
         }
     }
+
 
     private void HandlePlaySoundEvent(VisualNovelEvent novelEvent)
     {
@@ -510,7 +517,7 @@ public class PlayNovelSceneController : SceneController
         }
         if (ApplicationModeManager.Instance().IsOfflineModeActive())
         {
-            PlayNextEvent();
+            StartCoroutine(PlayNextEvent());
             return;
         }
         GetCompletionServerCall call = Instantiate(gptServercallPrefab).GetComponent<GetCompletionServerCall>();
@@ -528,21 +535,21 @@ public class PlayNovelSceneController : SceneController
             SetWaitingForConfirmation(true);
             return;
         }
-        PlayNextEvent();
+        StartCoroutine(PlayNextEvent());
     }
 
     private void HandleSavePersistentEvent(VisualNovelEvent novelEvent)
     {
         SetNextEvent(novelEvent);
         WriteUserInputToFile(novelEvent.key, ReplacePlaceholders(novelEvent.value, novelToPlay.GetGlobalVariables()));
-        PlayNextEvent();
+        StartCoroutine(PlayNextEvent());
     }
 
     private void HandleSaveVariableEvent(VisualNovelEvent novelEvent)
     {
         SetNextEvent(novelEvent);
         novelToPlay.AddGlobalVariable(novelEvent.key, novelEvent.value);
-        PlayNextEvent();
+        StartCoroutine(PlayNextEvent());
     }
 
     private void HandleCalculateVariableFromBooleanExpressionEvent(VisualNovelEvent novelEvent)
@@ -550,7 +557,7 @@ public class PlayNovelSceneController : SceneController
         SetNextEvent(novelEvent);
         string booleanExpression = ReplacePlaceholders(novelEvent.value, novelToPlay.GetGlobalVariables());
         novelToPlay.AddGlobalVariable(novelEvent.key, EvaluateBooleanExpression(booleanExpression).ToString());
-        PlayNextEvent();
+        StartCoroutine(PlayNextEvent());
     }
 
     private static bool EvaluateBooleanExpression(string expression)
@@ -581,7 +588,7 @@ public class PlayNovelSceneController : SceneController
     {
         SetNextEvent(novelEvent);
         OfflineFeedbackManager.Instance().AddLineToPrompt(novelEvent.value);
-        PlayNextEvent();
+        StartCoroutine(PlayNextEvent());
     }
 
     private void HandleAddFeedbackUnderConditionEvent(VisualNovelEvent novelEvent)
@@ -593,7 +600,7 @@ public class PlayNovelSceneController : SceneController
         {
             OfflineFeedbackManager.Instance().AddLineToPrompt(novelEvent.value);
         }
-        PlayNextEvent();
+        StartCoroutine(PlayNextEvent());
     }
 
     private void HandleMarkBiasEvent(VisualNovelEvent novelEvent)
@@ -602,7 +609,7 @@ public class PlayNovelSceneController : SceneController
         string biasInformation = DiscriminationBiasHelper.GetInformationString(DiscriminationBiasHelper.ValueOf(novelEvent.relevantBias));
         PromptManager.Instance().AddFormattedLineToPrompt("Hinweis", biasInformation);
         NovelBiasManager.Instance().MarkBiasAsRelevant(DiscriminationBiasHelper.ValueOf(novelEvent.relevantBias));
-        PlayNextEvent();
+        StartCoroutine(PlayNextEvent());
     }
 
     private void WriteUserInputToFile(string key, string content)
@@ -650,7 +657,8 @@ public class PlayNovelSceneController : SceneController
 
     public void HandleShowMessageEvent(VisualNovelEvent novelEvent)
     {
-        //TextToSpeechManager.Instance.Speak(novelEvent.text);
+        Debug.Log("TextToSpeechManager.Instance.Speak(novelEvent.text): " + novelEvent.text);
+        CreateSpeakingCoroutine(novelEvent.text);
 
 
         //TextToSpeechService.Instance().TextToSpeechReadLive(novelEvent.text, engine); --> TODO: Überall entfernen
@@ -692,8 +700,8 @@ public class PlayNovelSceneController : SceneController
         }
 
         AnalyticsServiceHandler.Instance().AddChoiceToList(novelEvent.text);
-        TextToSpeechService.Instance().addChoiceToChoiceCollectionForTextToSpeech(novelEvent.text);
-        PlayNextEvent();
+        TextToSpeechManager.Instance.AddChoiceToChoiceCollectionForTextToSpeech(novelEvent.text);
+        StartCoroutine(PlayNextEvent());
     }
 
     public void HandleShowChoicesEvent(VisualNovelEvent novelEvent)
@@ -703,7 +711,7 @@ public class PlayNovelSceneController : SceneController
         AnimationFlagSingleton.Instance().SetFlag(true);
 
         // Convert the available choices to speech for accessibility using Text-to-Speech (TTS)
-        TextToSpeechService.Instance().TextToSpeechReadLive(TextToSpeechService.Instance().returnChoicesForTextToSpeech(), engine);
+        CoroutineManger.Instance.SetSpeakingCoroutine(StartCoroutine(TextToSpeechManager.Instance.ReadChoice()));
 
         // Log the event to the playthrough history, including the character and their dialogue
         AddEntryToPlayThroughHistory(CharacterTypeHelper.ValueOf(novelEvent.character), novelEvent.text);
@@ -748,7 +756,7 @@ public class PlayNovelSceneController : SceneController
     public IEnumerator StartNextEventInOneSeconds(float second)
     {
         yield return new WaitForSeconds(second);
-        PlayNextEvent();
+        StartCoroutine(PlayNextEvent());
     }
 
     public void ShowAnswer(string message, bool show)
@@ -902,9 +910,23 @@ public class PlayNovelSceneController : SceneController
                 if (indexToRestore > 0)
                 {
                     SetNextEvent(eventIdToRestore);
-                    PlayNextEvent();
+                    StartCoroutine(PlayNextEvent());
                 }
             }
         }
+    }
+
+    private void CreateSpeakingCoroutine(string text)
+    {
+        speakingCoroutine = TextToSpeechManager.Instance.Speak(text);
+        StartCoroutine(speakingCoroutine);
+    }
+
+    private void SkipSpeaking()
+    {
+        Debug.Log("SkipSpeaking");
+        TextToSpeechManager.Instance.CancelSpeak();
+        //TextToSpeechManager.Instance.StopSpeaking();
+        //CoroutineManger.Instance.StopSpeakingCoroutine();
     }
 }
