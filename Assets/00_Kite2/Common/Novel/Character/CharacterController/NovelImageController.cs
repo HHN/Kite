@@ -4,10 +4,9 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 {
     public class NovelImageController : MonoBehaviour
     {
-
         protected RectTransform CanvasRect;
-        protected global::_00_Kite2.Common.Novel.Character.CharacterController.CharacterController CharacterController = null;
-        protected global::_00_Kite2.Common.Novel.Character.CharacterController.CharacterController CharacterController2 = null;
+        protected CharacterController CharacterController = null;
+        protected CharacterController CharacterController2 = null;
 
         public void SetCanvasRect(RectTransform canvasRect)
         {
@@ -36,18 +35,19 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         public void SetFaceExpression(int characterId, int expressionType)
         {
-            /*case Character.NONE: { return 0; }
-        case Character.PLAYER: { return 1; }
-        case Character.INTRO: { return 2; }
-        case Character.OUTRO: { return 3; }
-        case Character.INFO: { return 4; }
-        case Character.REPORTERIN: { return 5; }
-        case Character.VERMIETER: { return 6; }
-        case Character.VATER: { return 7; }
-        case Character.MUTTER: { return 8; }
-        case Character.BEKANNTER: { return 9; }
-        case Character.NOTARIN: { return 10; }
-        case Character.SACHBEARBEITER: { return 11; }*/
+            // case Character.NONE: { return 0; }
+            // case Character.PLAYER: { return 1; }
+            // case Character.INTRO: { return 2; }
+            // case Character.OUTRO: { return 3; }
+            // case Character.INFO: { return 4; }
+            // case Character.REPORTERIN: { return 5; }
+            // case Character.VERMIETER: { return 6; }
+            // case Character.VATER: { return 7; }
+            // case Character.MUTTER: { return 8; }
+            // case Character.BEKANNTER: { return 9; }
+            // case Character.NOTARIN: { return 10; }
+            // case Character.SACHBEARBEITER: { return 11; }
+            
             if (CharacterController == null)
             {
             }
