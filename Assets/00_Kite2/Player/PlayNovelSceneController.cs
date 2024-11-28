@@ -271,6 +271,7 @@ namespace _00_Kite2.Player
             conversationViewportTransform.sizeDelta = new Vector2(0, -canvasRect.rect.height * 0.5f);
             RectTransform viewPortTransform = viewPort.GetComponent<RectTransform>();
 
+            Debug.Log("novelToPlay.title: " + novelToPlay.title);
             switch (novelToPlay.title)
             {
                 case "Bank Kontoeröffnung":

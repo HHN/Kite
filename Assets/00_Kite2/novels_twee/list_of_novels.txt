@@ -1,11 +1,5 @@
 {
   "visualNovels": [
-    "00_Kite2\\novels_twee\\Einstieg",
-    "00_Kite2\\novels_twee\\Bekannte",
-    "00_Kite2\\novels_twee\\Eltern",
-    "00_Kite2\\novels_twee\\Kreditantrag",
-    "00_Kite2\\novels_twee\\Notarin",
-    "00_Kite2\\novels_twee\\Vermieter",
-    "00_Kite2\\novels_twee\\Presse"
+    "00_Kite2\\novels_twee\\Einstieg"
   ]
 }
