@@ -1,7 +1,7 @@
 {
   "idNumberOfNovel": 13,
   "titleOfNovel": "Einstiegsdialog",
-  "descriptionOfNovel": "",
+  "descriptionOfNovel": "Hier kannst du den Einstiegs-Dialog erneut spielen.",
   "idNumberOfRepresentationImage": 8,
   "nameOfMainCharacter": "Spielerin",
   "contextForPrompt": "",
@@ -10,8 +10,10 @@
   "startLocation": "Office",
   "startTalkingPartnerEmotion": "Friendly",
   "isWithStartValues": true,
-  "talkingPartner01" : "Sachbearbeiter",
+  "talkingPartner01" : "Intro",
   "talkingPartner02" : "",
   "talkingPartner03" : "",
-  "wordsToReplace": []
+  "wordsToReplace": [
+    {"wordToReplace": ">>Charakter01SprichtFriendly:<<", "replaceByValue": ">>Charakter01SprichtSmiling:<<"},
+  ]
 }

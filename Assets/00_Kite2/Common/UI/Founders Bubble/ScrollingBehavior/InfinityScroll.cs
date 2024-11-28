@@ -240,9 +240,6 @@ namespace _00_Kite2.Common.UI.Founders_Bubble.ScrollingBehavior
             isSnapped = false;
             snappingSpeed = 0;
             currentTarget = FoundersBubbleMetaInformation.GetIndexOfNovel(visualNovelNames) + itemsToAdd;
-            
-            Debug.Log("visualNovelNames.ToString(): " + visualNovelNames.ToString());
-            Debug.Log("FoundersBubbleMetaInformation.GetIndexOfNovel(visualNovelNames): " + FoundersBubbleMetaInformation.GetIndexOfNovel(visualNovelNames));
 
             if (IsCurrentlyInFirstHalf() && currentTarget > FoundersBubbleMetaInformation.NumberOfNovelsToDisplay)
             {

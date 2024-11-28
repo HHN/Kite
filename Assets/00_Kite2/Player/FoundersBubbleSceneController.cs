@@ -334,6 +334,9 @@ namespace _00_Kite2.Player
             {
                 if (novel.id == _novelId)
                 {
+                    Debug.Log("title: " + novel.title);
+                    Debug.Log("description: " + novel.description);
+                    
                     if (novel.id == 13)
                     {
                         novelDescriptionTextboxGameObject.SetActive(false);
@@ -341,7 +344,7 @@ namespace _00_Kite2.Player
                         novelDescriptionTextboxIntro.SetHead(FoundersBubbleMetaInformation.IsHighInGui(visualNovel));
                         novelDescriptionTextboxIntro.SetVisualNovel(novel);
                         novelDescriptionTextboxIntro.SetVisualNovelName(visualNovel);
-                        novelDescriptionTextboxIntro.SetText("Hier kannst du den Einstiegs-Dialog erneut spielen.");
+                        novelDescriptionTextboxIntro.SetText(novel.description);
                         novelDescriptionTextboxIntro.SetColorOfImage(
                             FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
                         novelDescriptionTextboxIntro.SetButtonsActive(true);
@@ -361,8 +364,6 @@ namespace _00_Kite2.Player
                         novelDescriptionTextbox.InitializeBookMarkButton(FavoritesManager.Instance().IsFavorite(novel));
                         novelDescriptionTextbox.UpdateSize();
                     }
-
-
 
                     isPopupOpen = true;
                     currentlyOpenedVisualNovelPopup = visualNovel;
