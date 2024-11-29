@@ -123,7 +123,7 @@ namespace _00_Kite2.Player
         public string[] OptionsId => _optionsId;
         public List<VisualNovelEvent> EventHistory => eventHistory;
 
-        private IEnumerator speakingCoroutine;
+        private IEnumerator _speakingCoroutine;
 
         private void Start()
         {
@@ -166,8 +166,7 @@ namespace _00_Kite2.Player
         //    Debug.Log("OnCloseButton: leaveGameAndGoBackMessageBox activated");
         //}
 
-
-        public void Initialize()
+        private void Initialize()
         {
             PromptManager.Instance().InitializePrompt();
 
@@ -192,7 +191,6 @@ namespace _00_Kite2.Player
 
             // Check if the current novel is the introductory dialogue
             // Hide the header image, as it is not needed in the introductory dialogue
-
             if (novelToPlay.title != "Einstiegsdialog")
             {
                 headerImage.SetActive(true);
@@ -271,7 +269,6 @@ namespace _00_Kite2.Player
             conversationViewportTransform.sizeDelta = new Vector2(0, -canvasRect.rect.height * 0.5f);
             RectTransform viewPortTransform = viewPort.GetComponent<RectTransform>();
 
-            Debug.Log("novelToPlay.title: " + novelToPlay.title);
             switch (novelToPlay.title)
             {
                 case "Bank Kontoeröffnung":
@@ -343,7 +340,7 @@ namespace _00_Kite2.Player
             if (TextToSpeechManager.Instance.IsTextToSpeechActivated())
             {
                 // Warten, bis die Sprachausgabe abgeschlossen oder übersprungen wurde
-                if (speakingCoroutine != null)
+                if (_speakingCoroutine != null)
                 {
                     Debug.Log("TTS");
                     Debug.Log("TextToSpeechManager.Instance.IsSpeaking() == " +
@@ -722,7 +719,7 @@ namespace _00_Kite2.Player
             StartCoroutine(StartNextEventInOneSeconds(1));
         }
 
-        public void HandleShowMessageEvent(VisualNovelEvent novelEvent)
+        private void HandleShowMessageEvent(VisualNovelEvent novelEvent)
         {
             Debug.Log("TextToSpeechManager.Instance.Speak(novelEvent.text): " + novelEvent.text);
             CreateSpeakingCoroutine(novelEvent.text);
@@ -819,7 +816,7 @@ namespace _00_Kite2.Player
             }
         }
 
-        public IEnumerator StartNextEventInOneSeconds(float second)
+        private IEnumerator StartNextEventInOneSeconds(float second)
         {
             yield return new WaitForSeconds(second);
             StartCoroutine(PlayNextEvent());
@@ -992,8 +989,8 @@ namespace _00_Kite2.Player
 
         private void CreateSpeakingCoroutine(string text)
         {
-            speakingCoroutine = TextToSpeechManager.Instance.Speak(text);
-            StartCoroutine(speakingCoroutine);
+            _speakingCoroutine = TextToSpeechManager.Instance.Speak(text);
+            StartCoroutine(_speakingCoroutine);
         }
 
         private void SkipSpeaking()

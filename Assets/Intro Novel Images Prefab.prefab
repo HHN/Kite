@@ -343,25 +343,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd4028cf850b62488fe15c320a535d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decoGlasPrefab: {fileID: 8411936371333490823, guid: ee198f3e5cc9689469d14e822d4417e7, type: 3}
-  decoGlasContainer: {fileID: 0}
-  decoPlantPrefab: {fileID: 8411936371333490823, guid: 02334970db3300f4797dfc8a311a46c8, type: 3}
-  decoPlantContainer: {fileID: 0}
-  characterPrefab: {fileID: 8474044745093499903}
-  decoGlasAudio: {fileID: 8300000, guid: e98f518e9e0c377449a3134fc81ebcc9, type: 3}
-  decoPlantAudio: {fileID: 8300000, guid: 36685d5895c76de418eb8d96bdcbef80, type: 3}
-  animationFramesPlant:
-  - {fileID: 21300000, guid: f5eed5e52be07d641b798dbf6b915bb8, type: 3}
-  - {fileID: 21300000, guid: a54589aa564f7244da0c42a701cbbaa6, type: 3}
-  - {fileID: 21300000, guid: 315c8ad94b56ae343998e44a28346b0e, type: 3}
-  animationFramesGlas:
-  - {fileID: 21300000, guid: 10e10e3354d9ea640bf7a5ae785ae96a, type: 3}
-  - {fileID: 21300000, guid: 4d1db428631932b4d812907be6956434, type: 3}
-  - {fileID: 21300000, guid: a8d967ae17f4c9e4284e3bebf1894a79, type: 3}
-  - {fileID: 21300000, guid: f3ae4e205b00e884abb8663c9162de1e, type: 3}
-  - {fileID: 21300000, guid: 00158b797f500ca498d255b7352d521e, type: 3}
-  - {fileID: 21300000, guid: 43e029753c0ce044590d3f63d8aef9d6, type: 3}
-  - {fileID: 21300000, guid: 9d987476a3f9e3647ae902413ee1316b, type: 3}
+  characterContainer: {fileID: 3669613035356320353}
+  characterPrefabs:
+  - {fileID: 1465545687914413273, guid: 3d4497c8617ec474aafda8860421d3eb, type: 3}
 --- !u!1 &7545688216486579158
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1465545687914413254, guid: 3d4497c8617ec474aafda8860421d3eb, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 1200.3395
       objectReference: {fileID: 0}
     - target: {fileID: 1465545687914413254, guid: 3d4497c8617ec474aafda8860421d3eb, type: 3}
       propertyPath: m_SizeDelta.y
@@ -496,6 +480,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character Prefab Intro
       objectReference: {fileID: 0}
+    - target: {fileID: 1465545687914413273, guid: 3d4497c8617ec474aafda8860421d3eb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4253796331781111194, guid: 3d4497c8617ec474aafda8860421d3eb, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -508,10 +496,5 @@ PrefabInstance:
 --- !u!224 &8474044745093499872 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1465545687914413254, guid: 3d4497c8617ec474aafda8860421d3eb, type: 3}
-  m_PrefabInstance: {fileID: 7047975935553713958}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8474044745093499903 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1465545687914413273, guid: 3d4497c8617ec474aafda8860421d3eb, type: 3}
   m_PrefabInstance: {fileID: 7047975935553713958}
   m_PrefabAsset: {fileID: 0}
