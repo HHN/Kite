@@ -1,231 +1,248 @@
-using UnityEngine;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 
-public class PlayerDataManager
+namespace _00_Kite2.Common.Managers
 {
-    private static PlayerDataManager instance;
-
-    private PlayerDataWrapper playerData = new PlayerDataWrapper();
-
-    private Dictionary<string, string> playerPrefs = new Dictionary<string, string>();
-
-    private List<string> keys = new List<string>();
-
-    private List<string> novelHistory = new List<string>();
-
-    public static PlayerDataManager Instance()
+    public class PlayerDataManager
     {
-        if (instance == null)
+        private static PlayerDataManager _instance;
+
+        private PlayerDataWrapper _playerData = new PlayerDataWrapper();
+
+        private Dictionary<string, string> _playerPrefs = new Dictionary<string, string>();
+
+        private List<string> _keys = new List<string>();
+
+        private List<string> _novelHistory = new List<string>();
+
+        public static PlayerDataManager Instance()
         {
-            instance = new PlayerDataManager();
+            if (_instance == null)
+            {
+                _instance = new PlayerDataManager();
+            }
+
+            return _instance;
         }
-        return instance;
-    }
 
-    public bool HasKey(string key)
-    {
-        if(playerPrefs.ContainsKey(key))
+        public bool HasKey(string key)
         {
-            return true;
-        } else if (PlayerPrefs.HasKey(key))
-        {
-            return true;
+            if (_playerPrefs.ContainsKey(key))
+            {
+                return true;
+            }
+            else if (PlayerPrefs.HasKey(key))
+            {
+                return true;
+            }
+
+            return false;
         }
-        return false;
-    }
 
-    public void SetNovelHistory(List<string> novelHistory)
-    {
-        this.novelHistory = novelHistory;
-    }
-
-    public void SavePlayerData(string key, string content)
-    {
-        PlayerPrefs.SetString(key, content);
-        PlayerPrefs.Save();
-        AddKeyToKeyList(key);
-    }
-
-    public void AddKeyToKeyList(string key)
-    {
-        if (!keys.Contains(key))
+        public void SetNovelHistory(List<string> novelHistory)
         {
-            keys.Add(key);
-            SaveKeys();
+            this._novelHistory = novelHistory;
         }
-    }
 
-    public void SaveKeys()
-    {
-        PlayerPrefs.SetString("keys", string.Join(",", keys));
-        PlayerPrefs.Save();
-    }
+        public void SavePlayerData(string key, string content)
+        {
+            PlayerPrefs.SetString(key, content);
+            PlayerPrefs.Save();
+            AddKeyToKeyList(key);
+        }
 
-    public void LoadAllPlayerPrefs()
-    {
-    if (keys.Count == 0)
-    {
-        string keysString = PlayerPrefs.GetString("keys", "");
-        keys = new List<string>(keysString.Split(','));
-    }
-    foreach (string playerPref in keys)
-    {
-        // Überprüfen, ob der Key bereits existiert
-        if (!playerPrefs.ContainsKey(playerPref))
+        private void AddKeyToKeyList(string key)
         {
-            playerPrefs.Add(playerPref, ReadPlayerData(playerPref));
+            if (!_keys.Contains(key))
+            {
+                _keys.Add(key);
+                SaveKeys();
+            }
         }
-        else
-        {
-            playerPrefs[playerPref] = ReadPlayerData(playerPref);
-            //Debug.Log("Updated key: " + playerPref);
-        }
-    }
-}
 
-    
-    public string GetPlayerData(string key)
-    {
-        if (playerPrefs.TryGetValue(key, out string value))
+        private void SaveKeys()
         {
-            return value;
+            PlayerPrefs.SetString("keys", string.Join(",", _keys));
+            PlayerPrefs.Save();
         }
-        else
+
+        public void LoadAllPlayerPrefs()
+        {
+            if (_keys.Count == 0)
+            {
+                string keysString = PlayerPrefs.GetString("keys", "");
+                _keys = new List<string>(keysString.Split(','));
+            }
+
+            foreach (string playerPref in _keys)
+            {
+                // Überprüfen, ob der Key bereits existiert
+                if (!_playerPrefs.ContainsKey(playerPref))
+                {
+                    _playerPrefs.Add(playerPref, ReadPlayerData(playerPref));
+                }
+                else
+                {
+                    _playerPrefs[playerPref] = ReadPlayerData(playerPref);
+                    //Debug.Log("Updated key: " + playerPref);
+                }
+            }
+        }
+
+
+        public string GetPlayerData(string key)
+        {
+            if (_playerPrefs.TryGetValue(key, out string value))
+            {
+                return value;
+            }
+            else
+            {
+                // Überprüft, ob ein Wert für den angegebenen Schlüssel existiert
+                if (PlayerPrefs.HasKey(key))
+                {
+                    // Gibt den Wert zurück, der dem Schlüssel zugeordnet ist
+                    return PlayerPrefs.GetString(key);
+                }
+                else
+                {
+                    // Gibt einen leeren String zurück, wenn der Schlüssel nicht existiert
+                    return "";
+                }
+            }
+        }
+
+        private string ReadPlayerData(string key)
         {
             // Überprüft, ob ein Wert für den angegebenen Schlüssel existiert
             if (PlayerPrefs.HasKey(key))
             {
-            // Gibt den Wert zurück, der dem Schlüssel zugeordnet ist
+                // Gibt den Wert zurück, der dem Schlüssel zugeordnet ist
                 return PlayerPrefs.GetString(key);
             }
             else
             {
-            // Gibt einen leeren String zurück, wenn der Schlüssel nicht existiert
+                // Gibt einen leeren String zurück, wenn der Schlüssel nicht existiert
                 return "";
             }
         }
-    }
 
-    public string ReadPlayerData(string key)
-    {
-        // Überprüft, ob ein Wert für den angegebenen Schlüssel existiert
-        if (PlayerPrefs.HasKey(key))
+        public void SaveEvaluation(string novelName, string evaluation)
         {
-            // Gibt den Wert zurück, der dem Schlüssel zugeordnet ist
-            return PlayerPrefs.GetString(key);
-        }
-        else
-        {
-            // Gibt einen leeren String zurück, wenn der Schlüssel nicht existiert
-            return "";
-        }
-    }
+            // Schlüssel für PlayerPrefs
+            string key = "evaluations";
 
-    public void SaveEvaluation(string novelName, string evaluation)
-    {
-        // Schlüssel für PlayerPrefs
-        string key = "evaluations";
+            // Alte Auswertungen laden
+            string existingEvaluations = PlayerPrefs.GetString(key, "");
+            string novelHistoryString = CombineSentences(_novelHistory);
 
-        // Alte Auswertungen laden
-        string existingEvaluations = PlayerPrefs.GetString(key, "");
-        string novelHistoryString = CombineSentences(novelHistory);
+            // Trennzeichen definieren
+            string mainSeparator = "|"; // Trennt verschiedene Auswertungen
+            string subSeparator = "~"; // Trennt Novel-Name von Ablauf und Bewertung
+            string flowSeparator = "^"; // Trennt Ablauf von der Bewertung
 
-        // Trennzeichen definieren
-        string mainSeparator = "|";   // Trennt verschiedene Auswertungen
-        string subSeparator = "~";    // Trennt Novel-Name von Ablauf und Bewertung
-        string flowSeparator = "^";   // Trennt Ablauf von der Bewertung
+            // Neue Auswertung vorbereiten, indem der Name der Novel, der Ablauf und die Auswertung mit Trennzeichen verbunden werden
+            string newEvaluation = novelName + subSeparator + novelHistoryString + flowSeparator + evaluation;
 
-        // Neue Auswertung vorbereiten, indem der Name der Novel, der Ablauf und die Auswertung mit Trennzeichen verbunden werden
-        string newEvaluation = novelName + subSeparator + novelHistoryString + flowSeparator + evaluation;
+            // Neue Auswertung an bestehende anhängen
+            if (!string.IsNullOrEmpty(existingEvaluations))
+            {
+                existingEvaluations += mainSeparator;
+            }
 
-        // Neue Auswertung an bestehende anhängen
-        if (!string.IsNullOrEmpty(existingEvaluations))
-        {
-            existingEvaluations += mainSeparator;
-        }
-        existingEvaluations += newEvaluation;
+            existingEvaluations += newEvaluation;
 
-        // Alles zurück in PlayerPrefs speichern
-        PlayerPrefs.SetString(key, existingEvaluations);
-        PlayerPrefs.Save(); // Änderungen sichern
-        //Debug.Log("Saved: " + existingEvaluations);
-    }
-
-    public string CombineSentences(List<string> sentences)
-    {
-        // Trennzeichen wählen, das sicher nicht in den Sätzen vorkommt
-        string separator = "##";
-
-        // StringBuilder verwenden, um Effizienz beim Zusammenfügen der Strings zu gewährleisten
-        StringBuilder combined = new StringBuilder();
-
-        // Alle Sätze durchlaufen
-        foreach (string sentence in sentences)
-        {
-            // Jeden Satz mit dem Trennzeichen anhängen
-            combined.Append(sentence);
-            combined.Append(separator);
+            // Alles zurück in PlayerPrefs speichern
+            PlayerPrefs.SetString(key, existingEvaluations);
+            PlayerPrefs.Save(); // Änderungen sichern
+            //Debug.Log("Saved: " + existingEvaluations);
         }
 
-        // Das letzte Trennzeichen entfernen
-        if (combined.Length > 0)
+        private string CombineSentences(List<string> sentences)
         {
-            combined.Remove(combined.Length - separator.Length, separator.Length);
+            // Trennzeichen wählen, das sicher nicht in den Sätzen vorkommt
+            string separator = "##";
+
+            // StringBuilder verwenden, um Effizienz beim Zusammenfügen der Strings zu gewährleisten
+            StringBuilder combined = new StringBuilder();
+
+            // Alle Sätze durchlaufen
+            foreach (string sentence in sentences)
+            {
+                // Jeden Satz mit dem Trennzeichen anhängen
+                combined.Append(sentence);
+                combined.Append(separator);
+            }
+
+            // Das letzte Trennzeichen entfernen
+            if (combined.Length > 0)
+            {
+                combined.Remove(combined.Length - separator.Length, separator.Length);
+            }
+
+            // Den zusammengefügten String zurückgeben
+            return combined.ToString();
         }
 
-        // Den zusammengefügten String zurückgeben
-        return combined.ToString();
-    }
+        public void ClearEverything()
+        {
+            _playerPrefs = new Dictionary<string, string>();
+            _keys = new List<string>();
+            _novelHistory = new List<string>();
+        }
 
-    public void ClearEverything()
-    {
-        playerPrefs = new Dictionary<string, string>();
-        keys = new List<string>();
-        novelHistory = new List<string>();
-    }
+        public void ClearRelevantUserdata()
+        {
+            if (PlayerPrefs.HasKey("PlayerName"))
+            {
+                PlayerPrefs.DeleteKey("PlayerName");
+            }
 
-    public void ClearRelevantUserdata()
-    {
-        if (PlayerPrefs.HasKey("PlayerName"))
-        {
-            PlayerPrefs.DeleteKey("PlayerName");
-        }
-        if (PlayerPrefs.HasKey("CompanyName"))
-        {
-            PlayerPrefs.DeleteKey("CompanyName");
-        }
-        if (PlayerPrefs.HasKey("ElevatorPitch"))
-        {
-            PlayerPrefs.DeleteKey("ElevatorPitch");
-        }
-        if (PlayerPrefs.HasKey("Preverences"))
-        {
-            PlayerPrefs.DeleteKey("Preverences");
-        }
-        if (PlayerPrefs.HasKey("GPTAnswerForPreverences"))
-        {
-            PlayerPrefs.DeleteKey("GPTAnswerForPreverences");
-        }
-        if (playerPrefs.ContainsKey("PlayerName"))
-        {
-            playerPrefs.Remove("PlayerName");
-        }
-        if (playerPrefs.ContainsKey("CompanyName"))
-        {
-            playerPrefs.Remove("CompanyName");
-        }
-        if (playerPrefs.ContainsKey("ElevatorPitch"))
-        {
-            playerPrefs.Remove("ElevatorPitch");
-        }
-        if (playerPrefs.ContainsKey("Preverences"))
-        {
-            playerPrefs.Remove("Preverences");
-        }
-        if (playerPrefs.ContainsKey("GPTAnswerForPreverences"))
-        {
-            playerPrefs.Remove("GPTAnswerForPreverences");
+            if (PlayerPrefs.HasKey("CompanyName"))
+            {
+                PlayerPrefs.DeleteKey("CompanyName");
+            }
+
+            if (PlayerPrefs.HasKey("ElevatorPitch"))
+            {
+                PlayerPrefs.DeleteKey("ElevatorPitch");
+            }
+
+            if (PlayerPrefs.HasKey("Preverences"))
+            {
+                PlayerPrefs.DeleteKey("Preverences");
+            }
+
+            if (PlayerPrefs.HasKey("GPTAnswerForPreverences"))
+            {
+                PlayerPrefs.DeleteKey("GPTAnswerForPreverences");
+            }
+
+            if (_playerPrefs.ContainsKey("PlayerName"))
+            {
+                _playerPrefs.Remove("PlayerName");
+            }
+
+            if (_playerPrefs.ContainsKey("CompanyName"))
+            {
+                _playerPrefs.Remove("CompanyName");
+            }
+
+            if (_playerPrefs.ContainsKey("ElevatorPitch"))
+            {
+                _playerPrefs.Remove("ElevatorPitch");
+            }
+
+            if (_playerPrefs.ContainsKey("Preverences"))
+            {
+                _playerPrefs.Remove("Preverences");
+            }
+
+            if (_playerPrefs.ContainsKey("GPTAnswerForPreverences"))
+            {
+                _playerPrefs.Remove("GPTAnswerForPreverences");
+            }
         }
     }
 }

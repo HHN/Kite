@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using _00_Kite2.Common.Managers;
 using UnityEngine;
 using UnityEngine.Networking;
 

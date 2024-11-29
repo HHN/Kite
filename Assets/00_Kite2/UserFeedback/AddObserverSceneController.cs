@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using _00_Kite2.Common.Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -81,7 +82,7 @@ public class AddObserverServalCallSuccessHandler : OnSuccessHandler
     public void OnSuccess(Response response)
     {
         addObserverSceneController.InitializeObserverList();
-        addObserverSceneController.DisplayInfoMessage("Email-Adresse erfolgreich hinzugefügt!");
+        addObserverSceneController.DisplayInfoMessage("Email-Adresse erfolgreich hinzugefï¿½gt!");
     }
 }
 

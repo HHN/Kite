@@ -1,234 +1,235 @@
 using System.Collections.Generic;
 using _00_Kite2.Player;
 
-public class PreGeneratedOfflineFeedbackManager
+namespace _00_Kite2.Common.Managers
 {
-    private static PreGeneratedOfflineFeedbackManager instance;
-
-    private Dictionary<string, FeedbackNodeContainer> feedbackForBankKreditNovel;
-    private Dictionary<string, FeedbackNodeContainer> feedbackForBekannteTreffenNovel;
-    private Dictionary<string, FeedbackNodeContainer> feedbackForBankKontoNovel;
-    private Dictionary<string, FeedbackNodeContainer> feedbackForFoerderantragNovel;
-    private Dictionary<string, FeedbackNodeContainer> feedbackForElternNovel;
-    private Dictionary<string, FeedbackNodeContainer> feedbackForNotariatNovel;
-    private Dictionary<string, FeedbackNodeContainer> feedbackForPresseNovel;
-    private Dictionary<string, FeedbackNodeContainer> feedbackForBueroNovel;
-    private Dictionary<string, FeedbackNodeContainer> feedbackForGruenderZuschussNovel;
-    private Dictionary<string, FeedbackNodeContainer> feedbackForHonorarNovel;
-    private Dictionary<string, FeedbackNodeContainer> feedbackForLebenspartnerNovel;
-    private Dictionary<string, FeedbackNodeContainer> feedbackForIntroNovel;
-
-    private PreGeneratedOfflineFeedbackManager()
+    public class PreGeneratedOfflineFeedbackManager
     {
-        this.feedbackForBankKreditNovel = null;
-        this.feedbackForBekannteTreffenNovel = null;
-        this.feedbackForBankKontoNovel = null;
-        this.feedbackForFoerderantragNovel = null;
-        this.feedbackForElternNovel = null;
-        this.feedbackForNotariatNovel = null;
-        this.feedbackForPresseNovel = null;
-        this.feedbackForBueroNovel = null;
-        this.feedbackForGruenderZuschussNovel = null;
-        this.feedbackForHonorarNovel = null;
-        this.feedbackForLebenspartnerNovel = null;
-        this.feedbackForIntroNovel = null;
-    }
+        private static PreGeneratedOfflineFeedbackManager _instance;
 
-    public static PreGeneratedOfflineFeedbackManager Instance()
-    {
-        if (instance == null)
+        private Dictionary<string, FeedbackNodeContainer> _feedbackForBankKreditNovel;
+        private Dictionary<string, FeedbackNodeContainer> _feedbackForBekannteTreffenNovel;
+        private Dictionary<string, FeedbackNodeContainer> _feedbackForBankKontoNovel;
+        private Dictionary<string, FeedbackNodeContainer> _feedbackForFoerderantragNovel;
+        private Dictionary<string, FeedbackNodeContainer> _feedbackForElternNovel;
+        private Dictionary<string, FeedbackNodeContainer> _feedbackForNotariatNovel;
+        private Dictionary<string, FeedbackNodeContainer> _feedbackForPresseNovel;
+        private Dictionary<string, FeedbackNodeContainer> _feedbackForBueroNovel;
+        private Dictionary<string, FeedbackNodeContainer> _feedbackForGruendungszuschussNovel;
+        private Dictionary<string, FeedbackNodeContainer> _feedbackForHonorarNovel;
+        private Dictionary<string, FeedbackNodeContainer> _feedbackForLebenspartnerNovel;
+        private Dictionary<string, FeedbackNodeContainer> _feedbackForIntroNovel;
+
+        private PreGeneratedOfflineFeedbackManager()
         {
-            instance = new PreGeneratedOfflineFeedbackManager();
+            this._feedbackForBankKreditNovel = null;
+            this._feedbackForBekannteTreffenNovel = null;
+            this._feedbackForBankKontoNovel = null;
+            this._feedbackForFoerderantragNovel = null;
+            this._feedbackForElternNovel = null;
+            this._feedbackForNotariatNovel = null;
+            this._feedbackForPresseNovel = null;
+            this._feedbackForBueroNovel = null;
+            this._feedbackForGruendungszuschussNovel = null;
+            this._feedbackForHonorarNovel = null;
+            this._feedbackForLebenspartnerNovel = null;
+            this._feedbackForIntroNovel = null;
         }
-        return instance;
-    }
 
-    public Dictionary<string, FeedbackNodeContainer> GetPreGeneratedOfflineFeedback(VisualNovelNames visualNovel)
-    {
-        switch (visualNovel)
+        public static PreGeneratedOfflineFeedbackManager Instance()
         {
-            case VisualNovelNames.ELTERN_NOVEL:
+            if (_instance == null)
+            {
+                _instance = new PreGeneratedOfflineFeedbackManager();
+            }
+
+            return _instance;
+        }
+
+        public Dictionary<string, FeedbackNodeContainer> GetPreGeneratedOfflineFeedback(VisualNovelNames visualNovel)
+        {
+            switch (visualNovel)
+            {
+                case VisualNovelNames.ELTERN_NOVEL:
                 {
-                    return feedbackForElternNovel;
+                    return _feedbackForElternNovel;
                 }
-            case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PRESSE_NOVEL:
                 {
-                    return feedbackForPresseNovel;
+                    return _feedbackForPresseNovel;
                 }
-            case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NOTARIAT_NOVEL:
                 {
-                    return feedbackForNotariatNovel;
+                    return _feedbackForNotariatNovel;
                 }
-            case VisualNovelNames.BANK_KONTO_NOVEL:
+                case VisualNovelNames.BANK_KONTO_NOVEL:
                 {
-                    return feedbackForBankKontoNovel;
+                    return _feedbackForBankKontoNovel;
                 }
-            case VisualNovelNames.BUERO_NOVEL:
+                case VisualNovelNames.BUERO_NOVEL:
                 {
-                    return feedbackForBueroNovel;
+                    return _feedbackForBueroNovel;
                 }
-            case VisualNovelNames.FOERDERANTRAG_NOVEL:
+                case VisualNovelNames.FOERDERANTRAG_NOVEL:
                 {
-                    return feedbackForFoerderantragNovel;
+                    return _feedbackForFoerderantragNovel;
                 }
-            case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
+                case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
                 {
-                    return feedbackForGruenderZuschussNovel;
+                    return _feedbackForGruendungszuschussNovel;
                 }
-            case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
                 {
-                    return feedbackForBekannteTreffenNovel;
+                    return _feedbackForBekannteTreffenNovel;
                 }
-            case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BANK_KREDIT_NOVEL:
                 {
-                    return feedbackForBankKreditNovel;
+                    return _feedbackForBankKreditNovel;
                 }
-            case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HONORAR_NOVEL:
                 {
-                    return feedbackForHonorarNovel;
+                    return _feedbackForHonorarNovel;
                 }
-            case VisualNovelNames.INTRO_NOVEL:
+                case VisualNovelNames.INTRO_NOVEL:
                 {
-                    return feedbackForIntroNovel;
+                    return _feedbackForIntroNovel;
                 }
-            case VisualNovelNames.LEBENSPARTNER_NOVEL:
+                case VisualNovelNames.LEBENSPARTNER_NOVEL:
                 {
-                    return feedbackForLebenspartnerNovel;
+                    return _feedbackForLebenspartnerNovel;
                 }
-            default:
+                default:
                 {
                     return null;
                 }
+            }
         }
-    }
 
-    public void SetPreGeneratedOfflineFeedback(VisualNovelNames visualNovel, Dictionary<string, FeedbackNodeContainer> feedback)
-    {
-        switch (visualNovel)
+        public void SetPreGeneratedOfflineFeedback(VisualNovelNames visualNovel,
+            Dictionary<string, FeedbackNodeContainer> feedback)
         {
-            case VisualNovelNames.ELTERN_NOVEL:
+            switch (visualNovel)
+            {
+                case VisualNovelNames.ELTERN_NOVEL:
                 {
-                    feedbackForElternNovel = feedback;
+                    _feedbackForElternNovel = feedback;
                     break;
                 }
-            case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PRESSE_NOVEL:
                 {
-                    feedbackForPresseNovel = feedback;
+                    _feedbackForPresseNovel = feedback;
                     break;
                 }
-            case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NOTARIAT_NOVEL:
                 {
-                    feedbackForNotariatNovel = feedback;
+                    _feedbackForNotariatNovel = feedback;
                     break;
                 }
-            case VisualNovelNames.BANK_KONTO_NOVEL:
+                case VisualNovelNames.BANK_KONTO_NOVEL:
                 {
-                    feedbackForBankKontoNovel = feedback;
+                    _feedbackForBankKontoNovel = feedback;
                     break;
                 }
-            case VisualNovelNames.BUERO_NOVEL:
+                case VisualNovelNames.BUERO_NOVEL:
                 {
-                    feedbackForBueroNovel = feedback;
+                    _feedbackForBueroNovel = feedback;
                     break;
                 }
-            case VisualNovelNames.FOERDERANTRAG_NOVEL:
+                case VisualNovelNames.FOERDERANTRAG_NOVEL:
                 {
-                    feedbackForFoerderantragNovel = feedback;
+                    _feedbackForFoerderantragNovel = feedback;
                     break;
                 }
-            case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
+                case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
                 {
-                    feedbackForGruenderZuschussNovel = feedback;
+                    _feedbackForGruendungszuschussNovel = feedback;
                     break;
                 }
-            case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
                 {
-                    feedbackForBekannteTreffenNovel = feedback;
+                    _feedbackForBekannteTreffenNovel = feedback;
                     break;
                 }
-            case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BANK_KREDIT_NOVEL:
                 {
-                    feedbackForBankKreditNovel = feedback;
+                    _feedbackForBankKreditNovel = feedback;
                     break;
                 }
-            case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HONORAR_NOVEL:
                 {
-                    feedbackForHonorarNovel = feedback;
+                    _feedbackForHonorarNovel = feedback;
                     break;
                 }
-            case VisualNovelNames.INTRO_NOVEL:
+                case VisualNovelNames.INTRO_NOVEL:
                 {
-                    feedbackForIntroNovel = feedback;
+                    _feedbackForIntroNovel = feedback;
                     break;
                 }
-            case VisualNovelNames.LEBENSPARTNER_NOVEL:
+                case VisualNovelNames.LEBENSPARTNER_NOVEL:
                 {
-                    feedbackForLebenspartnerNovel = feedback;
+                    _feedbackForLebenspartnerNovel = feedback;
                     break;
                 }
-            default:
-                {
-                    break;
-                }
+            }
         }
-    }
 
-    public bool IsFeedbackLoaded(VisualNovelNames visualNovel)
-    {
-        switch (visualNovel)
+        public bool IsFeedbackLoaded(VisualNovelNames visualNovel)
         {
-            case VisualNovelNames.ELTERN_NOVEL:
+            switch (visualNovel)
+            {
+                case VisualNovelNames.ELTERN_NOVEL:
                 {
-                    return (feedbackForElternNovel != null && feedbackForElternNovel.Count > 0);
+                    return _feedbackForElternNovel is { Count: > 0 };
                 }
-            case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PRESSE_NOVEL:
                 {
-                    return (feedbackForPresseNovel != null && feedbackForPresseNovel.Count > 0);
+                    return _feedbackForPresseNovel is { Count: > 0 };
                 }
-            case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NOTARIAT_NOVEL:
                 {
-                    return (feedbackForNotariatNovel != null && feedbackForNotariatNovel.Count > 0);
+                    return _feedbackForNotariatNovel is { Count: > 0 };
                 }
-            case VisualNovelNames.BANK_KONTO_NOVEL:
+                case VisualNovelNames.BANK_KONTO_NOVEL:
                 {
-                    return (feedbackForBankKontoNovel != null && feedbackForBankKontoNovel.Count > 0);
+                    return _feedbackForBankKontoNovel is { Count: > 0 };
                 }
-            case VisualNovelNames.BUERO_NOVEL:
+                case VisualNovelNames.BUERO_NOVEL:
                 {
-                    return (feedbackForBueroNovel != null && feedbackForBueroNovel.Count > 0);
+                    return _feedbackForBueroNovel is { Count: > 0 };
                 }
-            case VisualNovelNames.FOERDERANTRAG_NOVEL:
+                case VisualNovelNames.FOERDERANTRAG_NOVEL:
                 {
-                    return (feedbackForFoerderantragNovel != null && feedbackForFoerderantragNovel.Count > 0);
+                    return _feedbackForFoerderantragNovel is { Count: > 0 };
                 }
-            case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
+                case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
                 {
-                    return (feedbackForGruenderZuschussNovel != null && feedbackForGruenderZuschussNovel.Count > 0);
+                    return _feedbackForGruendungszuschussNovel is { Count: > 0 };
                 }
-            case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
                 {
-                    return (feedbackForBekannteTreffenNovel != null && feedbackForBekannteTreffenNovel.Count > 0);
+                    return _feedbackForBekannteTreffenNovel is { Count: > 0 };
                 }
-            case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BANK_KREDIT_NOVEL:
                 {
-                    return (feedbackForBankKreditNovel != null && feedbackForBankKreditNovel.Count > 0);
+                    return _feedbackForBankKreditNovel is { Count: > 0 };
                 }
-            case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HONORAR_NOVEL:
                 {
-                    return (feedbackForHonorarNovel != null && feedbackForHonorarNovel.Count > 0);
+                    return _feedbackForHonorarNovel is { Count: > 0 };
                 }
-            case VisualNovelNames.INTRO_NOVEL:
+                case VisualNovelNames.INTRO_NOVEL:
                 {
-                    return (feedbackForIntroNovel != null && feedbackForIntroNovel.Count > 0);
+                    return _feedbackForIntroNovel is { Count: > 0 };
                 }
-            case VisualNovelNames.LEBENSPARTNER_NOVEL:
+                case VisualNovelNames.LEBENSPARTNER_NOVEL:
                 {
-                    return (feedbackForLebenspartnerNovel != null && feedbackForLebenspartnerNovel.Count > 0);
+                    return _feedbackForLebenspartnerNovel is { Count: > 0 };
                 }
-            default:
+                default:
                 {
                     return false;
                 }
+            }
         }
     }
 }

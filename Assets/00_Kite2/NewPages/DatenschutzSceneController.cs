@@ -1,3 +1,4 @@
+using _00_Kite2.Common.Managers;
 using UnityEngine;
 using UnityEngine.UI;
 using LeastSquares.Overtone;
@@ -54,7 +55,7 @@ public class DatenschutzSceneController : SceneController
         }
         else
         {
-            PrivacyAndConditionManager.Instance().UnacceptDataCollection();
+            PrivacyAndConditionManager.Instance().UnaccepedDataCollection();
             DisplayInfoMessage(InfoMessages.STOPPED_DATA_COLLECTION);
             TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.STOPPED_DATA_COLLECTION, engine);
 

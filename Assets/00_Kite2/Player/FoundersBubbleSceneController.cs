@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _00_Kite2.Common.Managers;
 using _00_Kite2.Common.UI.Founders_Bubble.ScrollingBehavior;
 using TMPro;
 using UnityEngine;
@@ -476,7 +477,7 @@ namespace _00_Kite2.Player
                 .SetBackgroundColorOfVisualNovelToPlay(
                     FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
             PlayManager.Instance()
-                .SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+                .SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
 

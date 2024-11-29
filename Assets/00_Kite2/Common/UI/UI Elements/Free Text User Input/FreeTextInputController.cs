@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Reflection;
+using _00_Kite2.Common.Managers;
 using _00_Kite2.Player;
 
 public class FreeTextInputController : MonoBehaviour

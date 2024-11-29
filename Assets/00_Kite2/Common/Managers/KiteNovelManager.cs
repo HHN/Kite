@@ -1,37 +1,40 @@
 using System.Collections.Generic;
-using UnityEngine;
 
-public class KiteNovelManager
+namespace _00_Kite2.Common.Managers
 {
-    private static KiteNovelManager instance;
-    private List<VisualNovel> kiteNovels;
-
-    private KiteNovelManager() 
+    public class KiteNovelManager
     {
-        this.kiteNovels = new List<VisualNovel>();
-    }
+        private static KiteNovelManager _instance;
+        private List<VisualNovel> _kiteNovels;
 
-    public static KiteNovelManager Instance()
-    {
-        if (instance == null)
+        private KiteNovelManager()
         {
-            instance = new KiteNovelManager();
+            this._kiteNovels = new List<VisualNovel>();
         }
-        return instance;
-    }
 
-    public List<VisualNovel> GetAllKiteNovels()
-    {
-        return kiteNovels;
-    }
+        public static KiteNovelManager Instance()
+        {
+            if (_instance == null)
+            {
+                _instance = new KiteNovelManager();
+            }
 
-    public void SetAllKiteNovels(List<VisualNovel> kiteNovels)
-    {
-        this.kiteNovels = kiteNovels;
-    }
+            return _instance;
+        }
 
-    public bool AreNovelsLoaded()
-    {
-        return (kiteNovels != null && kiteNovels.Count > 0);
+        public List<VisualNovel> GetAllKiteNovels()
+        {
+            return _kiteNovels;
+        }
+
+        public void SetAllKiteNovels(List<VisualNovel> kiteNovels)
+        {
+            this._kiteNovels = kiteNovels;
+        }
+
+        public bool AreNovelsLoaded()
+        {
+            return (_kiteNovels != null && _kiteNovels.Count > 0);
+        }
     }
 }

@@ -1,56 +1,61 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-// Used to hold the different scenes.
-public class BackStackManager
+namespace _00_Kite2.Common.Managers
 {
-    private static BackStackManager instance;
-    private Stack<string> backStack;
-
-    private BackStackManager() 
-    { 
-        backStack = new Stack<string>();
-    }  
-
-    public static BackStackManager Instance() 
-    { 
-        if (instance == null)
-        {
-            instance = new BackStackManager();
-        }
-        return instance; 
-    }
-
-    public void Push(string sceneName)
+    // Used to hold the different scenes.
+    public class BackStackManager
     {
-        if (Peek() == sceneName)
-        {
-            return;
-        }
-        backStack.Push(sceneName);
-    }
+        private static BackStackManager _instance;
+        private Stack<string> _backStack;
 
-    public string Pop()
-    {
-        if (backStack.Count == 0)
+        private BackStackManager()
         {
-            return "";
+            _backStack = new Stack<string>();
         }
-        return backStack.Pop();
-    }
 
-    public string Peek()
-    {
-        if (backStack.Count == 0)
+        public static BackStackManager Instance()
         {
-            return "";
-        }
-        return backStack.Peek();
-    }
+            if (_instance == null)
+            {
+                _instance = new BackStackManager();
+            }
 
-    public void Clear() 
-    { 
-        backStack.Clear(); 
+            return _instance;
+        }
+
+        public void Push(string sceneName)
+        {
+            if (Peek() == sceneName)
+            {
+                return;
+            }
+
+            _backStack.Push(sceneName);
+        }
+
+        public string Pop()
+        {
+            if (_backStack.Count == 0)
+            {
+                return "";
+            }
+
+            return _backStack.Pop();
+        }
+
+        private string Peek()
+        {
+            if (_backStack.Count == 0)
+            {
+                return "";
+            }
+
+            return _backStack.Peek();
+        }
+
+        public void Clear()
+        {
+            _backStack.Clear();
+        }
     }
 }

@@ -2,67 +2,71 @@ using System.Collections.Generic;
 using _00_Kite2.Player;
 using UnityEngine;
 
-public class DialogHistoryManager
+namespace _00_Kite2.Common.Managers
 {
-    private static DialogHistoryManager instance;
-    private DialogHistoryEntryList entries;
-    private const string KEY = "DialogueHistoryEntries";
-
-
-    private DialogHistoryManager()
+    public class DialogHistoryManager
     {
-        entries = LoadEntries();
-    }
+        private static DialogHistoryManager _instance;
+        private DialogHistoryEntryList _entries;
+        private const string Key = "DialogueHistoryEntries";
 
-    public static DialogHistoryManager Instance()
-    {
-        if (instance == null)
+
+        private DialogHistoryManager()
         {
-            instance = new DialogHistoryManager();
+            _entries = LoadEntries();
         }
-        return instance;
-    }
 
-    public DialogHistoryEntryList LoadEntries()
-    {
-        if (PlayerDataManager.Instance().HasKey(KEY))
+        public static DialogHistoryManager Instance()
         {
-            string json = PlayerDataManager.Instance().GetPlayerData(KEY);
-            return JsonUtility.FromJson<DialogHistoryEntryList>(json);
+            if (_instance == null)
+            {
+                _instance = new DialogHistoryManager();
+            }
+
+            return _instance;
         }
-        else
+
+        private DialogHistoryEntryList LoadEntries()
         {
-            return new DialogHistoryEntryList() { entries = new List<DialogHistoryEntry>() };
+            if (PlayerDataManager.Instance().HasKey(Key))
+            {
+                string json = PlayerDataManager.Instance().GetPlayerData(Key);
+                return JsonUtility.FromJson<DialogHistoryEntryList>(json);
+            }
+            else
+            {
+                return new DialogHistoryEntryList() { entries = new List<DialogHistoryEntry>() };
+            }
+        }
+
+        public void AddEntry(DialogHistoryEntry entry)
+        {
+            string dialog = entry.GetDialog().Replace("Lea", "Du");
+            entry.SetDialog(dialog);
+            _entries.entries.Add(entry);
+            Save();
+        }
+
+        public List<DialogHistoryEntry> GetEntries()
+        {
+            return _entries.entries;
+        }
+
+        private void Save()
+        {
+            string json = JsonUtility.ToJson(_entries);
+            PlayerDataManager.Instance().SavePlayerData(Key, json);
+        }
+
+        public void ClearList()
+        {
+            _entries = new DialogHistoryEntryList();
         }
     }
 
-    public void AddEntry(DialogHistoryEntry entry) 
-    { 
-        string dialog = entry.GetDialog().Replace("Lea", "Du");
-        entry.SetDialog(dialog);
-        entries.entries.Add(entry); 
-        Save();
-    }
-
-    public List<DialogHistoryEntry> GetEntries()
+    [System.Serializable]
+    public class DialogHistoryEntryList
     {
-        return entries.entries;
+        public List<DialogHistoryEntry> entries;
     }
-
-    public void Save()
-    {
-        string json = JsonUtility.ToJson(entries);
-        PlayerDataManager.Instance().SavePlayerData(KEY, json);
-    }
-
-    public void ClearList()
-    {
-        entries = new DialogHistoryEntryList();
-    }
-}
-
-[System.Serializable]
-public class DialogHistoryEntryList
-{
-    public List<DialogHistoryEntry> entries;
 }

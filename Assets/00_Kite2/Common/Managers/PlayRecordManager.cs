@@ -1,209 +1,214 @@
 using _00_Kite2.Player;
 using UnityEngine;
 
-public class PlayRecordManager
+namespace _00_Kite2.Common.Managers
 {
-    private static PlayRecordManager instance;
-
-    private PlayRecordManagerWrapper wrapper;
-    private const string key = "PlayRecordManagerWrapper";
-
-    private PlayRecordManager() { }
-
-    public static PlayRecordManager Instance()
+    public class PlayRecordManager
     {
-        if (instance == null)
-        {
-            instance = new PlayRecordManager();
-        }
-        return instance;
-    }
+        private static PlayRecordManager _instance;
 
-    public void IncrasePlayCounterForNovel(VisualNovelNames playedNovel)
-    {
-        if (wrapper == null)
-        {
-            wrapper = LoadPlayRecordManagerWrapper();
-        }
-        switch (playedNovel)
-        {
-            case VisualNovelNames.ELTERN_NOVEL:
-                {
-                    int numberOfPlays = wrapper.GetNumberOfPlaysForElternNovel();
-                    numberOfPlays++;
-                    wrapper.SetNumberOfPlaysForElternNovel(numberOfPlays);
-                    break;
-                }
-            case VisualNovelNames.PRESSE_NOVEL:
-                {
-                    int numberOfPlays = wrapper.GetNumberOfPlaysForPresseNovel();
-                    numberOfPlays++;
-                    wrapper.SetNumberOfPlaysForPresseNovel(numberOfPlays);
-                    break;
-                }
-            case VisualNovelNames.NOTARIAT_NOVEL:
-                {
-                    int numberOfPlays = wrapper.GetNumberOfPlaysForNotarinNovel();
-                    numberOfPlays++;
-                    wrapper.SetNumberOfPlaysForNotarinNovel(numberOfPlays);
-                    break;
-                }
-            case VisualNovelNames.BANK_KONTO_NOVEL:
-                {
-                    int numberOfPlays = wrapper.GetNumberOfPlaysForBankkontoNovel();
-                    numberOfPlays++;
-                    wrapper.SetNumberOfPlaysForBankkontoNovel(numberOfPlays);
-                    break;
-                }
-            case VisualNovelNames.BUERO_NOVEL:
-                {
-                    int numberOfPlays = wrapper.GetNumberOfPlaysForBueroNovel();
-                    numberOfPlays++;
-                    wrapper.SetNumberOfPlaysForBueroNovel(numberOfPlays);
-                    break;
-                }
-            case VisualNovelNames.FOERDERANTRAG_NOVEL:
-                {
-                    int numberOfPlays = wrapper.GetNumberOfPlaysForFoerderantragNovel();
-                    numberOfPlays++;
-                    wrapper.SetNumberOfPlaysForFoerderantragNovel(numberOfPlays);
-                    break;
-                }
-            case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
-                {
-                    int numberOfPlays = wrapper.GetNumberOfPlaysForGruenungszuschussNovel();
-                    numberOfPlays++;
-                    wrapper.SetNumberOfPlaysForGruenungszuschussNovel(numberOfPlays);
-                    break;
-                }
-            case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
-                {
-                    int numberOfPlays = wrapper.GetNumberOfPlaysForBekannteTreffenNovel();
-                    numberOfPlays++;
-                    wrapper.SetNumberOfPlaysForBekannteTreffenNovel(numberOfPlays);
-                    break;
-                }
-            case VisualNovelNames.BANK_KREDIT_NOVEL:
-                {
-                    int numberOfPlays = wrapper.GetNumberOfPlaysForBankkreditNovel();
-                    numberOfPlays++;
-                    wrapper.SetNumberOfPlaysForBankkreditNovel(numberOfPlays);
-                    break;
-                }
-            case VisualNovelNames.HONORAR_NOVEL:
-                {
-                    int numberOfPlays = wrapper.GetNumberOfPlaysForHonorarNovel();
-                    numberOfPlays++;
-                    wrapper.SetNumberOfPlaysForHonorarNovel(numberOfPlays);
-                    break;
-                }
-            case VisualNovelNames.INTRO_NOVEL:
-                {
-                    int numberOfPlays = wrapper.GetNumberOfPlaysForIntroNovel();
-                    numberOfPlays++;
-                    wrapper.SetNumberOfPlaysForIntroNovel(numberOfPlays);
-                    break;
-                }
-            case VisualNovelNames.LEBENSPARTNER_NOVEL:
-                {
-                    int numberOfPlays = wrapper.GetNumberOfPlaysForLebenspartnerNovel();
-                    numberOfPlays++;
-                    wrapper.SetNumberOfPlaysForLebenspartnerNovel(numberOfPlays);
-                    break;
-                }
-            default:
-                {
-                    break;
-                }
-        }
-        Save();
-    }
+        private PlayRecordManagerWrapper _wrapper;
+        private const string Key = "PlayRecordManagerWrapper";
 
-    public int GetNumberOfPlaysForNovel(VisualNovelNames novel)
-    {
-        if (wrapper == null)
+        private PlayRecordManager()
         {
-            wrapper = LoadPlayRecordManagerWrapper();
         }
-        switch (novel)
+
+        public static PlayRecordManager Instance()
         {
-            case VisualNovelNames.ELTERN_NOVEL:
+            if (_instance == null)
+            {
+                _instance = new PlayRecordManager();
+            }
+
+            return _instance;
+        }
+
+        public void IncreasePlayCounterForNovel(VisualNovelNames playedNovel)
+        {
+            if (_wrapper == null)
+            {
+                _wrapper = LoadPlayRecordManagerWrapper();
+            }
+
+            switch (playedNovel)
+            {
+                case VisualNovelNames.ELTERN_NOVEL:
                 {
-                    return wrapper.GetNumberOfPlaysForElternNovel();
+                    int numberOfPlays = _wrapper.GetNumberOfPlaysForElternNovel();
+                    numberOfPlays++;
+                    _wrapper.SetNumberOfPlaysForElternNovel(numberOfPlays);
+                    break;
                 }
-            case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PRESSE_NOVEL:
                 {
-                    return wrapper.GetNumberOfPlaysForPresseNovel();
+                    int numberOfPlays = _wrapper.GetNumberOfPlaysForPresseNovel();
+                    numberOfPlays++;
+                    _wrapper.SetNumberOfPlaysForPresseNovel(numberOfPlays);
+                    break;
                 }
-            case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NOTARIAT_NOVEL:
                 {
-                    return wrapper.GetNumberOfPlaysForNotarinNovel();
+                    int numberOfPlays = _wrapper.GetNumberOfPlaysForNotarinNovel();
+                    numberOfPlays++;
+                    _wrapper.SetNumberOfPlaysForNotarinNovel(numberOfPlays);
+                    break;
                 }
-            case VisualNovelNames.BANK_KONTO_NOVEL:
+                case VisualNovelNames.BANK_KONTO_NOVEL:
                 {
-                    return wrapper.GetNumberOfPlaysForBankkontoNovel();
+                    int numberOfPlays = _wrapper.GetNumberOfPlaysForBankkontoNovel();
+                    numberOfPlays++;
+                    _wrapper.SetNumberOfPlaysForBankkontoNovel(numberOfPlays);
+                    break;
                 }
-            case VisualNovelNames.BUERO_NOVEL:
+                case VisualNovelNames.BUERO_NOVEL:
                 {
-                    return wrapper.GetNumberOfPlaysForBueroNovel();
+                    int numberOfPlays = _wrapper.GetNumberOfPlaysForBueroNovel();
+                    numberOfPlays++;
+                    _wrapper.SetNumberOfPlaysForBueroNovel(numberOfPlays);
+                    break;
                 }
-            case VisualNovelNames.FOERDERANTRAG_NOVEL:
+                case VisualNovelNames.FOERDERANTRAG_NOVEL:
                 {
-                    return wrapper.GetNumberOfPlaysForFoerderantragNovel();
+                    int numberOfPlays = _wrapper.GetNumberOfPlaysForFoerderantragNovel();
+                    numberOfPlays++;
+                    _wrapper.SetNumberOfPlaysForFoerderantragNovel(numberOfPlays);
+                    break;
                 }
-            case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
+                case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
                 {
-                    return wrapper.GetNumberOfPlaysForGruenungszuschussNovel();
+                    int numberOfPlays = _wrapper.GetNumberOfPlaysForGruenungszuschussNovel();
+                    numberOfPlays++;
+                    _wrapper.SetNumberOfPlaysForGruendungszuschussNovel(numberOfPlays);
+                    break;
                 }
-            case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
                 {
-                    return wrapper.GetNumberOfPlaysForBekannteTreffenNovel();
+                    int numberOfPlays = _wrapper.GetNumberOfPlaysForBekannteTreffenNovel();
+                    numberOfPlays++;
+                    _wrapper.SetNumberOfPlaysForBekannteTreffenNovel(numberOfPlays);
+                    break;
                 }
-            case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BANK_KREDIT_NOVEL:
                 {
-                    return wrapper.GetNumberOfPlaysForBankkreditNovel();
+                    int numberOfPlays = _wrapper.GetNumberOfPlaysForBankkreditNovel();
+                    numberOfPlays++;
+                    _wrapper.SetNumberOfPlaysForBankkreditNovel(numberOfPlays);
+                    break;
                 }
-            case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HONORAR_NOVEL:
                 {
-                    return wrapper.GetNumberOfPlaysForHonorarNovel();
+                    int numberOfPlays = _wrapper.GetNumberOfPlaysForHonorarNovel();
+                    numberOfPlays++;
+                    _wrapper.SetNumberOfPlaysForHonorarNovel(numberOfPlays);
+                    break;
                 }
-            case VisualNovelNames.INTRO_NOVEL:
+                case VisualNovelNames.INTRO_NOVEL:
                 {
-                    return wrapper.GetNumberOfPlaysForIntroNovel();
+                    int numberOfPlays = _wrapper.GetNumberOfPlaysForIntroNovel();
+                    numberOfPlays++;
+                    _wrapper.SetNumberOfPlaysForIntroNovel(numberOfPlays);
+                    break;
                 }
-            case VisualNovelNames.LEBENSPARTNER_NOVEL:
+                case VisualNovelNames.LEBENSPARTNER_NOVEL:
                 {
-                    return wrapper.GetNumberOfPlaysForLebenspartnerNovel();
+                    int numberOfPlays = _wrapper.GetNumberOfPlaysForLebenspartnerNovel();
+                    numberOfPlays++;
+                    _wrapper.SetNumberOfPlaysForLebenspartnerNovel(numberOfPlays);
+                    break;
                 }
-            default:
+            }
+
+            Save();
+        }
+
+        public int GetNumberOfPlaysForNovel(VisualNovelNames novel)
+        {
+            if (_wrapper == null)
+            {
+                _wrapper = LoadPlayRecordManagerWrapper();
+            }
+
+            switch (novel)
+            {
+                case VisualNovelNames.ELTERN_NOVEL:
+                {
+                    return _wrapper.GetNumberOfPlaysForElternNovel();
+                }
+                case VisualNovelNames.PRESSE_NOVEL:
+                {
+                    return _wrapper.GetNumberOfPlaysForPresseNovel();
+                }
+                case VisualNovelNames.NOTARIAT_NOVEL:
+                {
+                    return _wrapper.GetNumberOfPlaysForNotarinNovel();
+                }
+                case VisualNovelNames.BANK_KONTO_NOVEL:
+                {
+                    return _wrapper.GetNumberOfPlaysForBankkontoNovel();
+                }
+                case VisualNovelNames.BUERO_NOVEL:
+                {
+                    return _wrapper.GetNumberOfPlaysForBueroNovel();
+                }
+                case VisualNovelNames.FOERDERANTRAG_NOVEL:
+                {
+                    return _wrapper.GetNumberOfPlaysForFoerderantragNovel();
+                }
+                case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
+                {
+                    return _wrapper.GetNumberOfPlaysForGruenungszuschussNovel();
+                }
+                case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                {
+                    return _wrapper.GetNumberOfPlaysForBekannteTreffenNovel();
+                }
+                case VisualNovelNames.BANK_KREDIT_NOVEL:
+                {
+                    return _wrapper.GetNumberOfPlaysForBankkreditNovel();
+                }
+                case VisualNovelNames.HONORAR_NOVEL:
+                {
+                    return _wrapper.GetNumberOfPlaysForHonorarNovel();
+                }
+                case VisualNovelNames.INTRO_NOVEL:
+                {
+                    return _wrapper.GetNumberOfPlaysForIntroNovel();
+                }
+                case VisualNovelNames.LEBENSPARTNER_NOVEL:
+                {
+                    return _wrapper.GetNumberOfPlaysForLebenspartnerNovel();
+                }
+                default:
                 {
                     return -1;
                 }
+            }
         }
-    }
 
-    public PlayRecordManagerWrapper LoadPlayRecordManagerWrapper()
-    {
-        if (PlayerDataManager.Instance().HasKey(key))
+        private PlayRecordManagerWrapper LoadPlayRecordManagerWrapper()
         {
-            string json = PlayerDataManager.Instance().GetPlayerData(key);
-            return JsonUtility.FromJson<PlayRecordManagerWrapper>(json);
+            if (PlayerDataManager.Instance().HasKey(Key))
+            {
+                string json = PlayerDataManager.Instance().GetPlayerData(Key);
+                return JsonUtility.FromJson<PlayRecordManagerWrapper>(json);
+            }
+            else
+            {
+                PlayRecordManagerWrapper wrapper = new PlayRecordManagerWrapper();
+                return wrapper;
+            }
         }
-        else
+
+        private void Save()
         {
-            PlayRecordManagerWrapper wrapper = new PlayRecordManagerWrapper();
-            return wrapper;
+            string json = JsonUtility.ToJson(_wrapper);
+            PlayerDataManager.Instance().SavePlayerData(Key, json);
         }
-    }
 
-    public void Save()
-    {
-        string json = JsonUtility.ToJson(wrapper);
-        PlayerDataManager.Instance().SavePlayerData(key, json);
-    }
-
-    public void ClearData()
-    {
-        wrapper.ClearData();
+        public void ClearData()
+        {
+            _wrapper.ClearData();
+        }
     }
 }

@@ -1,3 +1,5 @@
+using _00_Kite2.Audio_Resources.Resources;
+
 public class KiteNovelEventFactory
 {      
     public static VisualNovelEvent GetBiasEvent(string id, string nextId, DiscriminationBias relevantBias)

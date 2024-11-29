@@ -1,50 +1,52 @@
-using UnityEngine;
 using System;
 
-public class ExpertFeedbackQuestionManager
+namespace _00_Kite2.Common.Managers
 {
-    private static ExpertFeedbackQuestionManager instance;
-
-    public static ExpertFeedbackQuestionManager Instance
+    public class ExpertFeedbackQuestionManager
     {
-        get
+        private static ExpertFeedbackQuestionManager _instance;
+        private string _uuid;
+
+        public static ExpertFeedbackQuestionManager Instance
         {
-            if (instance == null)
+            get
             {
-                instance = new ExpertFeedbackQuestionManager();
+                if (_instance == null)
+                {
+                    _instance = new ExpertFeedbackQuestionManager();
+                }
+
+                return _instance;
             }
-            return instance;
         }
-    }
 
-    private string uuid;
-
-    private ExpertFeedbackQuestionManager()
-    {
-        LoadUUID();
-    }
-
-    public string GetUUID()
-    {
-        return uuid;
-    }
-
-    private void SaveUUID(string uuid)
-    {
-        PlayerDataManager.Instance().SavePlayerData("UUID", uuid);
-    }
-
-    private void LoadUUID()
-    {
-        string storedUUIDs = PlayerDataManager.Instance().GetPlayerData("UUID");
-
-        if (!string.IsNullOrEmpty(storedUUIDs))
+        private ExpertFeedbackQuestionManager()
         {
-            Guid newGuid = Guid.NewGuid();
-            storedUUIDs = newGuid.ToString();
-            SaveUUID(storedUUIDs);
+            LoadUUID();
         }
 
-        uuid = storedUUIDs;
+        public string GetUUID()
+        {
+            return _uuid;
+        }
+
+        private void SaveUUID(string uuid)
+        {
+            PlayerDataManager.Instance().SavePlayerData("UUID", uuid);
+        }
+
+        private void LoadUUID()
+        {
+            string storedUUIDs = PlayerDataManager.Instance().GetPlayerData("UUID");
+
+            if (!string.IsNullOrEmpty(storedUUIDs))
+            {
+                Guid newGuid = Guid.NewGuid();
+                storedUUIDs = newGuid.ToString();
+                SaveUUID(storedUUIDs);
+            }
+
+            _uuid = storedUUIDs;
+        }
     }
 }

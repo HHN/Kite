@@ -1,48 +1,52 @@
 using System.Collections;
+using _00_Kite2.Common.Managers;
 using _00_Kite2.Player;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
-public class AlreadyPlayedUpdater : MonoBehaviour
+namespace _00_Kite2.Common.UI.Founders_Bubble.AlreadyPlayedAnimation
 {
-    [SerializeField] private VisualNovelNames visualNovel;
-    [SerializeField] private TextMeshProUGUI number;
-    [SerializeField] private Animator animator;
-    private bool startedAnimation = false;
-
-    void Update()
+    public class AlreadyPlayedUpdater : MonoBehaviour
     {
-        int numberOfPlays = PlayRecordManager.Instance().GetNumberOfPlaysForNovel(visualNovel);
-        bool value = (PlayRecordManager.Instance().GetNumberOfPlaysForNovel(visualNovel) > 0);
-        this.gameObject.GetComponent<Image>().enabled = value;
-        number.gameObject.SetActive(value);
+        [SerializeField] private VisualNovelNames visualNovel;
+        [SerializeField] private TextMeshProUGUI number;
+        [SerializeField] private Animator animator;
+        private bool startedAnimation = false;
 
-        if (PlaythrouCounterAnimationManager.Instance().IsAnimationTrue(visualNovel))
+        void Update()
         {
-            StartCoroutine(SetValueIn90Frames(numberOfPlays));
-        } 
-        else
+            int numberOfPlays = PlayRecordManager.Instance().GetNumberOfPlaysForNovel(visualNovel);
+            bool value = (PlayRecordManager.Instance().GetNumberOfPlaysForNovel(visualNovel) > 0);
+            this.gameObject.GetComponent<Image>().enabled = value;
+            number.gameObject.SetActive(value);
+
+            if (PlayThroughCounterAnimationManager.Instance().IsAnimationTrue(visualNovel))
+            {
+                StartCoroutine(SetValueIn90Frames(numberOfPlays));
+            } 
+            else
+            {
+                animator.enabled = false;
+                number.text = numberOfPlays.ToString();
+            }
+        }
+
+        public IEnumerator SetValueIn90Frames(int numberOfPlays)
         {
-            animator.enabled = false;
+            if (startedAnimation)
+            {
+                yield break;
+            }
+            startedAnimation = true;
+            animator.enabled = true;
+            number.text = (numberOfPlays - 1).ToString();
+            animator.Play("increase");
+            yield return new WaitForSeconds(1.5f);
             number.text = numberOfPlays.ToString();
+            PlayThroughCounterAnimationManager.Instance().SetAnimation(false, visualNovel);
+            animator.enabled = false;
+            startedAnimation = false;
         }
-    }
-
-    public IEnumerator SetValueIn90Frames(int numberOfPlays)
-    {
-        if (startedAnimation)
-        {
-            yield break;
-        }
-        startedAnimation = true;
-        animator.enabled = true;
-        number.text = (numberOfPlays - 1).ToString();
-        animator.Play("increase");
-        yield return new WaitForSeconds(1.5f);
-        number.text = numberOfPlays.ToString();
-        PlaythrouCounterAnimationManager.Instance().SetAnimation(false, visualNovel);
-        animator.enabled = false;
-        startedAnimation = false;
     }
 }

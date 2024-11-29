@@ -1,52 +1,54 @@
-using UnityEngine;
-
-public class ShowPlayInstructionManager
+namespace _00_Kite2.Common.Managers
 {
-    private static ShowPlayInstructionManager instance;
-
-    private bool showInstruction;
-    private const string KEY = "ShowPlayInstruction";
-
-    private ShowPlayInstructionManager()
+    public class ShowPlayInstructionManager
     {
-        showInstruction = LoadValue();
-    }
+        private static ShowPlayInstructionManager _instance;
 
-    public static ShowPlayInstructionManager Instance()
-    {
-        if (instance == null)
+        private bool _showInstruction;
+        private const string Key = "ShowPlayInstruction";
+
+        private ShowPlayInstructionManager()
         {
-            instance = new ShowPlayInstructionManager();
+            _showInstruction = LoadValue();
         }
-        return instance;
-    }
 
-    public bool ShowInstruction()
-    {
-        return showInstruction;
-    }
-
-    public void SetShowInstruction(bool value)
-    {
-        showInstruction = value;
-        Save();
-    }
-
-    public bool LoadValue()
-    {
-        if (PlayerDataManager.Instance().HasKey(KEY))
+        public static ShowPlayInstructionManager Instance()
         {
-            string value = PlayerDataManager.Instance().GetPlayerData(KEY);
-            return bool.Parse(value);
-        }
-        else
-        {
-            return true;
-        }
-    }
+            if (_instance == null)
+            {
+                _instance = new ShowPlayInstructionManager();
+            }
 
-    public void Save()
-    {
-        PlayerDataManager.Instance().SavePlayerData(KEY, showInstruction.ToString());
+            return _instance;
+        }
+
+        public bool ShowInstruction()
+        {
+            return _showInstruction;
+        }
+
+        public void SetShowInstruction(bool value)
+        {
+            _showInstruction = value;
+            Save();
+        }
+
+        private bool LoadValue()
+        {
+            if (PlayerDataManager.Instance().HasKey(Key))
+            {
+                string value = PlayerDataManager.Instance().GetPlayerData(Key);
+                return bool.Parse(value);
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private void Save()
+        {
+            PlayerDataManager.Instance().SavePlayerData(Key, _showInstruction.ToString());
+        }
     }
 }

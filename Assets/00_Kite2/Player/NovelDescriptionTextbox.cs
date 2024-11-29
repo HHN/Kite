@@ -1,4 +1,5 @@
 using System.Collections;
+using _00_Kite2.Common.Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -115,7 +116,7 @@ namespace _00_Kite2.Player
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
             PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
             PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+            PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
 
