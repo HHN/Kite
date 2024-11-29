@@ -1,3 +1,5 @@
+using _00_Kite2.Common.Managers;
+
 public class TermsOfUseSceneController : SceneController
 {
     void Start()

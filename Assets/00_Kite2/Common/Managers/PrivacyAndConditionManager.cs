@@ -1,125 +1,135 @@
 using UnityEngine;
 
-public class PrivacyAndConditionManager
+namespace _00_Kite2.Common.Managers
 {
-    private static PrivacyAndConditionManager instance;
-
-    private PrivacyAndConditionWrapper wrapper;
-    private const string key = "PrivacyAndConditionWrapper";
-
-    private PrivacyAndConditionManager()
+    public class PrivacyAndConditionManager
     {
-        wrapper = LoadPrivacyAndConditionWrapper();
-    }
+        private static PrivacyAndConditionManager _instance;
 
-    public static PrivacyAndConditionManager Instance()
-    {
-        if (instance == null)
+        private PrivacyAndConditionWrapper _wrapper;
+        private const string Key = "PrivacyAndConditionWrapper";
+
+        private PrivacyAndConditionManager()
         {
-            instance = new PrivacyAndConditionManager();
+            _wrapper = LoadPrivacyAndConditionWrapper();
         }
-        return instance;
-    }
 
-    public void AcceptConditionsOfUssage()
-    {
-        if (wrapper == null)
+        public static PrivacyAndConditionManager Instance()
         {
-            wrapper = LoadPrivacyAndConditionWrapper();
-        }
-        wrapper.acceptedConditions = true;
-        Save();
-    }
-
-    public void AcceptTermsOfPrivacy()
-    {
-        if (wrapper == null)
-        {
-            wrapper = LoadPrivacyAndConditionWrapper();
-        }
-        wrapper.acceptedPrivacyTerms = true;
-        Save();
-    }
-
-    public void AcceptDataCollection()
-    {
-        if (wrapper == null)
-        {
-            wrapper = LoadPrivacyAndConditionWrapper();
-        }
-        wrapper.acceptedDataCollection = true;
-        Save();
-    }
-
-    public void UnacceptConditionsOfUssage()
-    {
-        if (wrapper == null)
-        {
-            wrapper = LoadPrivacyAndConditionWrapper();
-        }
-        wrapper.acceptedConditions = false;
-        Save();
-    }
-
-    public void UnacceptTermsOfPrivacy()
-    {
-        if (wrapper == null)
-        {
-            wrapper = LoadPrivacyAndConditionWrapper();
-        }
-        wrapper.acceptedPrivacyTerms = false;
-        Save();
-    }
-
-    public void UnacceptDataCollection()
-    {
-        if (wrapper == null)
-        {
-            wrapper = LoadPrivacyAndConditionWrapper();
-        }
-        wrapper.acceptedDataCollection = false;
-        Save();
-    }
-
-    public PrivacyAndConditionWrapper LoadPrivacyAndConditionWrapper()
-    {
-        if (PlayerDataManager.Instance().HasKey(key))
-        {
-            string json = PlayerDataManager.Instance().GetPlayerData(key);
-            return JsonUtility.FromJson<PrivacyAndConditionWrapper>(json);
-        }
-        else
-        {
-            return new PrivacyAndConditionWrapper()
+            if (_instance == null)
             {
-                acceptedConditions = false,
-                acceptedPrivacyTerms = false,
-                acceptedDataCollection = false
-            };
+                _instance = new PrivacyAndConditionManager();
+            }
+
+            return _instance;
         }
-    }
 
-    public void Save()
-    {
-        string json = JsonUtility.ToJson(wrapper);
-        PlayerDataManager.Instance().SavePlayerData(key, json);
-    }
+        public void AcceptConditionsOfUsage()
+        {
+            if (_wrapper == null)
+            {
+                _wrapper = LoadPrivacyAndConditionWrapper();
+            }
 
-    public bool IsConditionsAccepted()
-    {
-        PrivacyAndConditionWrapper wrapper = LoadPrivacyAndConditionWrapper();
-        return wrapper.acceptedConditions;
-    }
+            _wrapper.acceptedConditions = true;
+            Save();
+        }
 
-    public bool IsPriavcyTermsAccepted()
-    {
-        PrivacyAndConditionWrapper wrapper = LoadPrivacyAndConditionWrapper();
-        return wrapper.acceptedPrivacyTerms;
-    }
+        public void AcceptTermsOfPrivacy()
+        {
+            if (_wrapper == null)
+            {
+                _wrapper = LoadPrivacyAndConditionWrapper();
+            }
 
-    public bool IsDataCollectionAccepted()
-    {
-        PrivacyAndConditionWrapper wrapper = LoadPrivacyAndConditionWrapper();
-        return wrapper.acceptedDataCollection;
+            _wrapper.acceptedPrivacyTerms = true;
+            Save();
+        }
+
+        public void AcceptDataCollection()
+        {
+            if (_wrapper == null)
+            {
+                _wrapper = LoadPrivacyAndConditionWrapper();
+            }
+
+            _wrapper.acceptedDataCollection = true;
+            Save();
+        }
+
+        public void UnaccepedConditionsOfUsage()
+        {
+            if (_wrapper == null)
+            {
+                _wrapper = LoadPrivacyAndConditionWrapper();
+            }
+
+            _wrapper.acceptedConditions = false;
+            Save();
+        }
+
+        public void UnaccepedTermsOfPrivacy()
+        {
+            if (_wrapper == null)
+            {
+                _wrapper = LoadPrivacyAndConditionWrapper();
+            }
+
+            _wrapper.acceptedPrivacyTerms = false;
+            Save();
+        }
+
+        public void UnaccepedDataCollection()
+        {
+            if (_wrapper == null)
+            {
+                _wrapper = LoadPrivacyAndConditionWrapper();
+            }
+
+            _wrapper.acceptedDataCollection = false;
+            Save();
+        }
+
+        private PrivacyAndConditionWrapper LoadPrivacyAndConditionWrapper()
+        {
+            if (PlayerDataManager.Instance().HasKey(Key))
+            {
+                string json = PlayerDataManager.Instance().GetPlayerData(Key);
+                return JsonUtility.FromJson<PrivacyAndConditionWrapper>(json);
+            }
+            else
+            {
+                return new PrivacyAndConditionWrapper()
+                {
+                    acceptedConditions = false,
+                    acceptedPrivacyTerms = false,
+                    acceptedDataCollection = false
+                };
+            }
+        }
+
+        private void Save()
+        {
+            string json = JsonUtility.ToJson(_wrapper);
+            PlayerDataManager.Instance().SavePlayerData(Key, json);
+        }
+
+        public bool IsConditionsAccepted()
+        {
+            PrivacyAndConditionWrapper wrapper = LoadPrivacyAndConditionWrapper();
+            return wrapper.acceptedConditions;
+        }
+
+        public bool IsPrivacyTermsAccepted()
+        {
+            PrivacyAndConditionWrapper wrapper = LoadPrivacyAndConditionWrapper();
+            return wrapper.acceptedPrivacyTerms;
+        }
+
+        public bool IsDataCollectionAccepted()
+        {
+            PrivacyAndConditionWrapper wrapper = LoadPrivacyAndConditionWrapper();
+            return wrapper.acceptedDataCollection;
+        }
     }
 }

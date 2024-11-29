@@ -2,6 +2,7 @@ using Unity.Services.Core;
 using Unity.Services.Analytics;
 using System.Diagnostics;
 using System.Collections.Generic;
+using _00_Kite2.Common.Managers;
 
 public class AnalyticsServiceHandler 
 {

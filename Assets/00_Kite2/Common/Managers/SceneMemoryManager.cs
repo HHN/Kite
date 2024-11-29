@@ -1,289 +1,295 @@
-public class SceneMemoryManager
+namespace _00_Kite2.Common.Managers
 {
-    private static SceneMemoryManager instance;
-
-    private FeedbackSceneMemory feedbackSceneMemory;
-    private PlayNovelSceneMemory playNovelSceneMemory;
-    private AddObserverSceneMemory addObserverSceneMemory;
-    private AiReviewExplorerSceneMemory aiReviewExplorerSceneMemory;
-    private NovelReviewExplorerSceneMemory novelReviewExplorerSceneMemory;
-    private FeedbackRoleManagementSceneMemory feedbackRoleManagementSceneMemory;
-    private ReviewAiSceneMemory reviewAiSceneMemory;
-    private ReviewNovelSceneMemory reviewNovelSceneMemory;
-    private PromptsAndCompletionsExplorerSceneMemory promptsAndCompletionsExplorerSceneMemory;
-    private ImprintSceneMemory imprintSceneMemory;
-    private TermsOfUseSceneMemory termsOfUseSceneMemory;
-    private PrivacyPolicySceneMemory privacyPolicySceneMemory;
-    private ExpertFeedbackSceneMemory expertFeedbackSceneMemory;
-    private FoundersBubbleSceneMemory foundersBubbleSceneMemory;
-    private FoundersWell2SceneMemory foundersWell2SceneMemory;
-    private PlayInstructionSceneMemory playInstructionSceneMemory;
-    private NovelHistorySceneMemory novelHistorySceneMemory;
-
-    private BarrierefreiheitSceneMemory barrierefreiheitSceneMemory;
-    private ImpressumSceneMemory impressumSceneMemory;
-    private DatenschutzSceneMemory datenschutzSceneMemory;
-    private NutzungsbedingungenSceneMemory nutzungsbedingungenSceneMemory;
-    private RessourcenSceneMemory ressourcenSceneMemory;
-
-    private SceneMemoryManager()
+    public class SceneMemoryManager
     {
-        ClearMemory();
-    }
+        private static SceneMemoryManager _instance;
 
-    public static SceneMemoryManager Instance()
-    {
-        if (instance == null)
+        private FeedbackSceneMemory _feedbackSceneMemory;
+        private PlayNovelSceneMemory _playNovelSceneMemory;
+        private AddObserverSceneMemory _addObserverSceneMemory;
+        private AiReviewExplorerSceneMemory _aiReviewExplorerSceneMemory;
+        private NovelReviewExplorerSceneMemory _novelReviewExplorerSceneMemory;
+        private FeedbackRoleManagementSceneMemory _feedbackRoleManagementSceneMemory;
+        private ReviewAiSceneMemory _reviewAiSceneMemory;
+        private ReviewNovelSceneMemory _reviewNovelSceneMemory;
+        private PromptsAndCompletionsExplorerSceneMemory _promptsAndCompletionsExplorerSceneMemory;
+        private ImprintSceneMemory _imprintSceneMemory;
+        private TermsOfUseSceneMemory _termsOfUseSceneMemory;
+        private PrivacyPolicySceneMemory _privacyPolicySceneMemory;
+        private ExpertFeedbackSceneMemory _expertFeedbackSceneMemory;
+        private FoundersBubbleSceneMemory _foundersBubbleSceneMemory;
+        private FoundersWell2SceneMemory _foundersWell2SceneMemory;
+        private PlayInstructionSceneMemory _playInstructionSceneMemory;
+        private NovelHistorySceneMemory _novelHistorySceneMemory;
+
+        private BarrierefreiheitSceneMemory _barrierefreiheitSceneMemory;
+        private ImpressumSceneMemory _impressumSceneMemory;
+        private DatenschutzSceneMemory _datenschutzSceneMemory;
+        private NutzungsbedingungenSceneMemory _nutzungsbedingungenSceneMemory;
+        private RessourcenSceneMemory _ressourcenSceneMemory;
+
+        private SceneMemoryManager()
         {
-            instance = new SceneMemoryManager();
+            ClearMemory();
         }
-        return instance;
-    }
 
-    public FeedbackSceneMemory GetMemoryOfFeedbackScene()
-    {
-        return this.feedbackSceneMemory;
-    }
+        public static SceneMemoryManager Instance()
+        {
+            if (_instance == null)
+            {
+                _instance = new SceneMemoryManager();
+            }
 
-    public PlayNovelSceneMemory GetMemoryOfPlayNovelScene()
-    {
-        return this.playNovelSceneMemory;
-    }
+            return _instance;
+        }
 
-    public AddObserverSceneMemory GetMemoryOfAddObserverScene()
-    {
-        return this.addObserverSceneMemory;
-    }
+        public FeedbackSceneMemory GetMemoryOfFeedbackScene()
+        {
+            return this._feedbackSceneMemory;
+        }
 
-    public AiReviewExplorerSceneMemory GetMemoryOfAiReviewExplorerScene()
-    {
-        return this.aiReviewExplorerSceneMemory;
-    }
+        public PlayNovelSceneMemory GetMemoryOfPlayNovelScene()
+        {
+            return this._playNovelSceneMemory;
+        }
 
-    public NovelReviewExplorerSceneMemory GetMemoryOfNovelReviewExplorerScene()
-    {
-        return this.novelReviewExplorerSceneMemory;
-    }
+        public AddObserverSceneMemory GetMemoryOfAddObserverScene()
+        {
+            return this._addObserverSceneMemory;
+        }
 
-    public FeedbackRoleManagementSceneMemory GetMemoryOfFeedbackRoleManagementScene()
-    {
-        return this.feedbackRoleManagementSceneMemory;
-    }
+        public AiReviewExplorerSceneMemory GetMemoryOfAiReviewExplorerScene()
+        {
+            return this._aiReviewExplorerSceneMemory;
+        }
 
-    public ReviewAiSceneMemory GetMemoryOfReviewAiScene()
-    {
-        return this.reviewAiSceneMemory;
-    }
+        public NovelReviewExplorerSceneMemory GetMemoryOfNovelReviewExplorerScene()
+        {
+            return this._novelReviewExplorerSceneMemory;
+        }
 
-    public ReviewNovelSceneMemory GetMemoryOfReviewNovelScene()
-    {
-        return this.reviewNovelSceneMemory;
-    }
+        public FeedbackRoleManagementSceneMemory GetMemoryOfFeedbackRoleManagementScene()
+        {
+            return this._feedbackRoleManagementSceneMemory;
+        }
 
-    public PromptsAndCompletionsExplorerSceneMemory GetMemoryOfPromptsAndCompletionsExplorerScene()
-    {
-        return this.promptsAndCompletionsExplorerSceneMemory;
-    }
+        public ReviewAiSceneMemory GetMemoryOfReviewAiScene()
+        {
+            return this._reviewAiSceneMemory;
+        }
 
-    public ImprintSceneMemory GetMemoryOfImprintScene()
-    {
-        return this.imprintSceneMemory;
-    }
+        public ReviewNovelSceneMemory GetMemoryOfReviewNovelScene()
+        {
+            return this._reviewNovelSceneMemory;
+        }
 
-    public TermsOfUseSceneMemory GetMemoryOfTermsOfUseScene()
-    {
-        return this.termsOfUseSceneMemory;
-    }
+        public PromptsAndCompletionsExplorerSceneMemory GetMemoryOfPromptsAndCompletionsExplorerScene()
+        {
+            return this._promptsAndCompletionsExplorerSceneMemory;
+        }
 
-    public PrivacyPolicySceneMemory GetMemoryOfPrivacyPolicyScene()
-    {
-        return this.privacyPolicySceneMemory;
-    }
+        public ImprintSceneMemory GetMemoryOfImprintScene()
+        {
+            return this._imprintSceneMemory;
+        }
 
-    public ExpertFeedbackSceneMemory GetMemoryOfExpertFeedbackScene()
-    {
-        return this.expertFeedbackSceneMemory;
-    }    
-    
-    public FoundersBubbleSceneMemory GetMemoryOfFoundersBubbleScene()
-    {
-        return this.foundersBubbleSceneMemory;
-    }    
-    
-    public FoundersWell2SceneMemory GetMemoryOfFoundersWell2Scene()
-    {
-        return this.foundersWell2SceneMemory;
-    }    
-    
-    public PlayInstructionSceneMemory GetMemoryOfPlayInstructionScene()
-    {
-        return this.playInstructionSceneMemory;
-    }       
-    
-    public ImpressumSceneMemory GetMemoryOfImpressumScene()
-    {
-        return this.impressumSceneMemory;
-    }        
-    
-    public DatenschutzSceneMemory GetMemoryOfDatenschutzScene()
-    {
-        return this.datenschutzSceneMemory;
-    }       
-    
-    public NutzungsbedingungenSceneMemory GetMemoryOfNutzungsbedingungenScene()
-    {
-        return this.nutzungsbedingungenSceneMemory;
-    }      
-    
-    public BarrierefreiheitSceneMemory GetMemoryOfBarrierefreiheitScene()
-    {
-        return this.barrierefreiheitSceneMemory;
-    }       
-    
-    public RessourcenSceneMemory GetMemoryOfRessourcenScene()
-    {
-        return this.ressourcenSceneMemory;
-    }    
-    
-    public NovelHistorySceneMemory GetMemoryOfNovelHistoryScene()
-    {
-        return this.novelHistorySceneMemory;
-    }
+        public TermsOfUseSceneMemory GetMemoryOfTermsOfUseScene()
+        {
+            return this._termsOfUseSceneMemory;
+        }
 
-    public void SetMemoryOfFeedbackScene(FeedbackSceneMemory feedbackSceneMemory)
-    {
-        this.feedbackSceneMemory = feedbackSceneMemory;
-    }
+        public PrivacyPolicySceneMemory GetMemoryOfPrivacyPolicyScene()
+        {
+            return this._privacyPolicySceneMemory;
+        }
 
-    public void SetMemoryOfPlayNovelScene(PlayNovelSceneMemory playNovelSceneMemory)
-    {
-        this.playNovelSceneMemory = playNovelSceneMemory;
-    }
+        public ExpertFeedbackSceneMemory GetMemoryOfExpertFeedbackScene()
+        {
+            return this._expertFeedbackSceneMemory;
+        }
 
-    public void SetMemoryOfImprintScene(ImprintSceneMemory imprintSceneMemory)
-    {
-        this.imprintSceneMemory = imprintSceneMemory;
-    }
+        public FoundersBubbleSceneMemory GetMemoryOfFoundersBubbleScene()
+        {
+            return this._foundersBubbleSceneMemory;
+        }
 
-    public void SetMemoryOfTermsOfUseScene(TermsOfUseSceneMemory termsOfUseSceneMemory)
-    {
-        this.termsOfUseSceneMemory = termsOfUseSceneMemory;
-    }
+        public FoundersWell2SceneMemory GetMemoryOfFoundersWell2Scene()
+        {
+            return this._foundersWell2SceneMemory;
+        }
 
-    public void SetMemoryOfPrivacyPolicyScene(PrivacyPolicySceneMemory privacyPolicySceneMemory)
-    {
-        this.privacyPolicySceneMemory = privacyPolicySceneMemory;
-    }
+        public PlayInstructionSceneMemory GetMemoryOfPlayInstructionScene()
+        {
+            return this._playInstructionSceneMemory;
+        }
 
-    public void SetMemoryOfExpertFeedbackScene(ExpertFeedbackSceneMemory expertFeedbackSceneMemory)
-    {
-        this.expertFeedbackSceneMemory = expertFeedbackSceneMemory;
-    }
+        public ImpressumSceneMemory GetMemoryOfImpressumScene()
+        {
+            return this._impressumSceneMemory;
+        }
 
-    public void SetMemoryOfAddObserverScene(AddObserverSceneMemory addObserverSceneMemory)
-    {
-        this.addObserverSceneMemory = addObserverSceneMemory;
-    }
+        public DatenschutzSceneMemory GetMemoryOfDatenschutzScene()
+        {
+            return this._datenschutzSceneMemory;
+        }
 
-    public void SetMemoryOfAiReviewExplorerScene(AiReviewExplorerSceneMemory aiReviewExplorerSceneMemory)
-    {
-        this.aiReviewExplorerSceneMemory = aiReviewExplorerSceneMemory;
-    }
+        public NutzungsbedingungenSceneMemory GetMemoryOfNutzungsbedingungenScene()
+        {
+            return this._nutzungsbedingungenSceneMemory;
+        }
 
-    public void SetMemoryOfNovelReviewExplorerScene(NovelReviewExplorerSceneMemory novelReviewExplorerSceneMemory)
-    {
-        this.novelReviewExplorerSceneMemory = novelReviewExplorerSceneMemory;
-    }
+        public BarrierefreiheitSceneMemory GetMemoryOfBarrierefreiheitScene()
+        {
+            return this._barrierefreiheitSceneMemory;
+        }
 
-    public void SetMemoryOfFeedbackRoleManagementScene(FeedbackRoleManagementSceneMemory feedbackRoleManagementSceneMemory)
-    {
-        this.feedbackRoleManagementSceneMemory = feedbackRoleManagementSceneMemory;
-    }
+        public RessourcenSceneMemory GetMemoryOfRessourcenScene()
+        {
+            return this._ressourcenSceneMemory;
+        }
 
-    public void SetMemoryOfReviewAiScene(ReviewAiSceneMemory reviewAiSceneMemory)
-    {
-        this.reviewAiSceneMemory = reviewAiSceneMemory;
-    }
+        public NovelHistorySceneMemory GetMemoryOfNovelHistoryScene()
+        {
+            return this._novelHistorySceneMemory;
+        }
 
-    public void SetMemoryOfReviewNovelScene(ReviewNovelSceneMemory reviewNovelSceneMemory)
-    {
-        this.reviewNovelSceneMemory = reviewNovelSceneMemory;
-    }
+        public void SetMemoryOfFeedbackScene(FeedbackSceneMemory feedbackSceneMemory)
+        {
+            this._feedbackSceneMemory = feedbackSceneMemory;
+        }
 
-    public void SetMemoryOfPromptsAndCompletionsExplorerScene(PromptsAndCompletionsExplorerSceneMemory promptsAndCompletionsExplorerSceneMemory)
-    {
-        this.promptsAndCompletionsExplorerSceneMemory = promptsAndCompletionsExplorerSceneMemory;
-    }    
-    
-    public void SetMemoryOfFoundersBubbleScene(FoundersBubbleSceneMemory foundersBubbleSceneMemory)
-    {
-        this.foundersBubbleSceneMemory = foundersBubbleSceneMemory;
-    }        
-    
-    public void SetMemoryOfFoundersWell2Scene(FoundersWell2SceneMemory foundersWell2SceneMemory)
-    {
-        this.foundersWell2SceneMemory = foundersWell2SceneMemory;
-    }    
-    
-    public void SetMemoryOfPlayInstructionScene(PlayInstructionSceneMemory playInstructionSceneMemory)
-    {
-        this.playInstructionSceneMemory = playInstructionSceneMemory;
-    }    
-    
-    public void SetMemoryOfNovelHistoryScene(NovelHistorySceneMemory novelHistorySceneMemory)
-    {
-        this.novelHistorySceneMemory = novelHistorySceneMemory;
-    }    
-    
-    public void SetMemoryOfDatenschutzScene(DatenschutzSceneMemory datenschutzSceneMemory)
-    {
-        this.datenschutzSceneMemory = datenschutzSceneMemory;
-    }    
-    
-    public void SetMemoryOfNutzungsbedingungenScene(NutzungsbedingungenSceneMemory nutzungsbedingungenSceneMemory)
-    {
-        this.nutzungsbedingungenSceneMemory = nutzungsbedingungenSceneMemory;
-    }    
-    
-    public void SetMemoryOfImpressumScene(ImpressumSceneMemory impressumSceneMemory)
-    {
-        this.impressumSceneMemory = impressumSceneMemory;
-    }    
-    
-    public void SetMemoryOfRessourcenScene(RessourcenSceneMemory ressourcenSceneMemory)
-    {
-        this.ressourcenSceneMemory = ressourcenSceneMemory;
-    }    
-    
-    public void SetMemoryOfBarrierefreiheit(BarrierefreiheitSceneMemory barrierefreiheitSceneMemory)
-    {
-        this.barrierefreiheitSceneMemory = barrierefreiheitSceneMemory;
-    }
+        public void SetMemoryOfPlayNovelScene(PlayNovelSceneMemory playNovelSceneMemory)
+        {
+            this._playNovelSceneMemory = playNovelSceneMemory;
+        }
 
-    public void ClearMemory()
-    {
-        this.feedbackSceneMemory = null;
-        this.playNovelSceneMemory = null;
-        this.addObserverSceneMemory = null;
-        this.aiReviewExplorerSceneMemory = null;
-        this.novelReviewExplorerSceneMemory = null;
-        this.feedbackRoleManagementSceneMemory = null;
-        this.reviewAiSceneMemory = null;
-        this.reviewNovelSceneMemory = null;
-        this.promptsAndCompletionsExplorerSceneMemory = null;
-        this.termsOfUseSceneMemory = null;
-        this.imprintSceneMemory = null;
-        this.privacyPolicySceneMemory = null;
-        this.expertFeedbackSceneMemory = null;
-        this.foundersBubbleSceneMemory = null;
-        this.foundersWell2SceneMemory = null;
-        this.playInstructionSceneMemory = null;
-        this.novelHistorySceneMemory = null;
+        public void SetMemoryOfImprintScene(ImprintSceneMemory imprintSceneMemory)
+        {
+            this._imprintSceneMemory = imprintSceneMemory;
+        }
 
-        this.barrierefreiheitSceneMemory = null;
-        this.ressourcenSceneMemory = null;
-        this.impressumSceneMemory = null;
-        this.datenschutzSceneMemory = null;
-        this.nutzungsbedingungenSceneMemory = null;
+        public void SetMemoryOfTermsOfUseScene(TermsOfUseSceneMemory termsOfUseSceneMemory)
+        {
+            this._termsOfUseSceneMemory = termsOfUseSceneMemory;
+        }
+
+        public void SetMemoryOfPrivacyPolicyScene(PrivacyPolicySceneMemory privacyPolicySceneMemory)
+        {
+            this._privacyPolicySceneMemory = privacyPolicySceneMemory;
+        }
+
+        public void SetMemoryOfExpertFeedbackScene(ExpertFeedbackSceneMemory expertFeedbackSceneMemory)
+        {
+            this._expertFeedbackSceneMemory = expertFeedbackSceneMemory;
+        }
+
+        public void SetMemoryOfAddObserverScene(AddObserverSceneMemory addObserverSceneMemory)
+        {
+            this._addObserverSceneMemory = addObserverSceneMemory;
+        }
+
+        public void SetMemoryOfAiReviewExplorerScene(AiReviewExplorerSceneMemory aiReviewExplorerSceneMemory)
+        {
+            this._aiReviewExplorerSceneMemory = aiReviewExplorerSceneMemory;
+        }
+
+        public void SetMemoryOfNovelReviewExplorerScene(NovelReviewExplorerSceneMemory novelReviewExplorerSceneMemory)
+        {
+            this._novelReviewExplorerSceneMemory = novelReviewExplorerSceneMemory;
+        }
+
+        public void SetMemoryOfFeedbackRoleManagementScene(
+            FeedbackRoleManagementSceneMemory feedbackRoleManagementSceneMemory)
+        {
+            this._feedbackRoleManagementSceneMemory = feedbackRoleManagementSceneMemory;
+        }
+
+        public void SetMemoryOfReviewAiScene(ReviewAiSceneMemory reviewAiSceneMemory)
+        {
+            this._reviewAiSceneMemory = reviewAiSceneMemory;
+        }
+
+        public void SetMemoryOfReviewNovelScene(ReviewNovelSceneMemory reviewNovelSceneMemory)
+        {
+            this._reviewNovelSceneMemory = reviewNovelSceneMemory;
+        }
+
+        public void SetMemoryOfPromptsAndCompletionsExplorerScene(
+            PromptsAndCompletionsExplorerSceneMemory promptsAndCompletionsExplorerSceneMemory)
+        {
+            this._promptsAndCompletionsExplorerSceneMemory = promptsAndCompletionsExplorerSceneMemory;
+        }
+
+        public void SetMemoryOfFoundersBubbleScene(FoundersBubbleSceneMemory foundersBubbleSceneMemory)
+        {
+            this._foundersBubbleSceneMemory = foundersBubbleSceneMemory;
+        }
+
+        public void SetMemoryOfFoundersWell2Scene(FoundersWell2SceneMemory foundersWell2SceneMemory)
+        {
+            this._foundersWell2SceneMemory = foundersWell2SceneMemory;
+        }
+
+        public void SetMemoryOfPlayInstructionScene(PlayInstructionSceneMemory playInstructionSceneMemory)
+        {
+            this._playInstructionSceneMemory = playInstructionSceneMemory;
+        }
+
+        public void SetMemoryOfNovelHistoryScene(NovelHistorySceneMemory novelHistorySceneMemory)
+        {
+            this._novelHistorySceneMemory = novelHistorySceneMemory;
+        }
+
+        public void SetMemoryOfDatenschutzScene(DatenschutzSceneMemory datenschutzSceneMemory)
+        {
+            this._datenschutzSceneMemory = datenschutzSceneMemory;
+        }
+
+        public void SetMemoryOfNutzungsbedingungenScene(NutzungsbedingungenSceneMemory nutzungsbedingungenSceneMemory)
+        {
+            this._nutzungsbedingungenSceneMemory = nutzungsbedingungenSceneMemory;
+        }
+
+        public void SetMemoryOfImpressumScene(ImpressumSceneMemory impressumSceneMemory)
+        {
+            this._impressumSceneMemory = impressumSceneMemory;
+        }
+
+        public void SetMemoryOfRessourcenScene(RessourcenSceneMemory ressourcenSceneMemory)
+        {
+            this._ressourcenSceneMemory = ressourcenSceneMemory;
+        }
+
+        public void SetMemoryOfBarrierefreiheit(BarrierefreiheitSceneMemory barrierefreiheitSceneMemory)
+        {
+            this._barrierefreiheitSceneMemory = barrierefreiheitSceneMemory;
+        }
+
+        public void ClearMemory()
+        {
+            this._feedbackSceneMemory = null;
+            this._playNovelSceneMemory = null;
+            this._addObserverSceneMemory = null;
+            this._aiReviewExplorerSceneMemory = null;
+            this._novelReviewExplorerSceneMemory = null;
+            this._feedbackRoleManagementSceneMemory = null;
+            this._reviewAiSceneMemory = null;
+            this._reviewNovelSceneMemory = null;
+            this._promptsAndCompletionsExplorerSceneMemory = null;
+            this._termsOfUseSceneMemory = null;
+            this._imprintSceneMemory = null;
+            this._privacyPolicySceneMemory = null;
+            this._expertFeedbackSceneMemory = null;
+            this._foundersBubbleSceneMemory = null;
+            this._foundersWell2SceneMemory = null;
+            this._playInstructionSceneMemory = null;
+            this._novelHistorySceneMemory = null;
+
+            this._barrierefreiheitSceneMemory = null;
+            this._ressourcenSceneMemory = null;
+            this._impressumSceneMemory = null;
+            this._datenschutzSceneMemory = null;
+            this._nutzungsbedingungenSceneMemory = null;
+        }
     }
 }

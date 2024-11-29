@@ -1,31 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class GptCompletionHandlerManager
+namespace _00_Kite2.Common.Managers
 {
-    private static GptCompletionHandlerManager instance;
-
-    private GptCompletionHandlerManager()
+    public class GptCompletionHandlerManager
     {
-    }
+        private static GptCompletionHandlerManager _instance;
 
-    public static GptCompletionHandlerManager Instance()
-    {
-        if (instance == null)
+        private GptCompletionHandlerManager()
         {
-            instance = new GptCompletionHandlerManager();
         }
-        return instance;
-    }
 
-    public GptCompletionHandler GetCompletionHandlerById(int id)
-    {
-        switch (id)
+        public static GptCompletionHandlerManager Instance()
         {
-            case 1: { return new DefaultGptCompletionHandler(); }
+            if (_instance == null)
+            {
+                _instance = new GptCompletionHandlerManager();
+            }
 
-            default: { return new DefaultGptCompletionHandler(); }
+            return _instance;
+        }
+
+        public GptCompletionHandler GetCompletionHandlerById(int id)
+        {
+            switch (id)
+            {
+                case 1:
+                {
+                    return new DefaultGptCompletionHandler();
+                }
+
+                default:
+                {
+                    return new DefaultGptCompletionHandler();
+                }
+            }
         }
     }
 }

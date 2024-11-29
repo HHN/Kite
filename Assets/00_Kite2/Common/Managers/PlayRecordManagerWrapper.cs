@@ -1,155 +1,158 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public class PlayRecordManagerWrapper
+namespace _00_Kite2.Common.Managers
 {
-    [SerializeField] private int numberOfPlaysForBankkreditNovel;
-    [SerializeField] private int numberOfPlaysForBekannteTreffenNovel;
-    [SerializeField] private int numberOfPlaysForBankkontoNovel;
-    [SerializeField] private int numberOfPlaysForFoerderantragNovel;
-    [SerializeField] private int numberOfPlaysForElternNovel;
-    [SerializeField] private int numberOfPlaysForNotarinNovel;
-    [SerializeField] private int numberOfPlaysForPresseNovel;
-    [SerializeField] private int numberOfPlaysForBueroNovel;
-    [SerializeField] private int numberOfPlaysForGruenungszuschussNovel;
-    [SerializeField] private int numberOfPlaysForHonorarNovel;
-    [SerializeField] private int numberOfPlaysForLebenspartnerNovel;
-    [SerializeField] private int numberOfPlaysForIntroNovel;
-
-    public void SetNumberOfPlaysForBankkreditNovel(int numberOfPlaysForBankkreditNovel)
+    [Serializable]
+    public class PlayRecordManagerWrapper
     {
-        this.numberOfPlaysForBankkreditNovel = numberOfPlaysForBankkreditNovel;
-    }
+        [SerializeField] private int numberOfPlaysForBankkreditNovel;
+        [SerializeField] private int numberOfPlaysForBekannteTreffenNovel;
+        [SerializeField] private int numberOfPlaysForBankkontoNovel;
+        [SerializeField] private int numberOfPlaysForFoerderantragNovel;
+        [SerializeField] private int numberOfPlaysForElternNovel;
+        [SerializeField] private int numberOfPlaysForNotarinNovel;
+        [SerializeField] private int numberOfPlaysForPresseNovel;
+        [SerializeField] private int numberOfPlaysForBueroNovel;
+        [SerializeField] private int numberOfPlaysForGruendungszuschussNovel;
+        [SerializeField] private int numberOfPlaysForHonorarNovel;
+        [SerializeField] private int numberOfPlaysForLebenspartnerNovel;
+        [SerializeField] private int numberOfPlaysForIntroNovel;
 
-    public int GetNumberOfPlaysForBankkreditNovel()
-    {
-        return numberOfPlaysForBankkreditNovel;
-    }
+        public void SetNumberOfPlaysForBankkreditNovel(int numberOfPlaysForBankkreditNovel)
+        {
+            this.numberOfPlaysForBankkreditNovel = numberOfPlaysForBankkreditNovel;
+        }
 
-    public void SetNumberOfPlaysForBekannteTreffenNovel(int numberOfPlaysForBekannteTreffenNovel)
-    {
-        this.numberOfPlaysForBekannteTreffenNovel = numberOfPlaysForBekannteTreffenNovel;
-    }
+        public int GetNumberOfPlaysForBankkreditNovel()
+        {
+            return numberOfPlaysForBankkreditNovel;
+        }
 
-    public int GetNumberOfPlaysForBekannteTreffenNovel()
-    {
-        return numberOfPlaysForBekannteTreffenNovel;
-    }
+        public void SetNumberOfPlaysForBekannteTreffenNovel(int numberOfPlaysForBekannteTreffenNovel)
+        {
+            this.numberOfPlaysForBekannteTreffenNovel = numberOfPlaysForBekannteTreffenNovel;
+        }
 
-    public void SetNumberOfPlaysForBankkontoNovel(int numberOfPlaysForBankkontoNovel)
-    {
-        this.numberOfPlaysForBankkontoNovel = numberOfPlaysForBankkontoNovel;
-    }
+        public int GetNumberOfPlaysForBekannteTreffenNovel()
+        {
+            return numberOfPlaysForBekannteTreffenNovel;
+        }
 
-    public int GetNumberOfPlaysForBankkontoNovel()
-    {
-        return numberOfPlaysForBankkontoNovel;
-    }
+        public void SetNumberOfPlaysForBankkontoNovel(int numberOfPlaysForBankkontoNovel)
+        {
+            this.numberOfPlaysForBankkontoNovel = numberOfPlaysForBankkontoNovel;
+        }
 
-    public void SetNumberOfPlaysForFoerderantragNovel(int numberOfPlaysForFoerderantragNovel)
-    {
-        this.numberOfPlaysForFoerderantragNovel = numberOfPlaysForFoerderantragNovel;
-    }
+        public int GetNumberOfPlaysForBankkontoNovel()
+        {
+            return numberOfPlaysForBankkontoNovel;
+        }
 
-    public int GetNumberOfPlaysForFoerderantragNovel()
-    {
-        return numberOfPlaysForFoerderantragNovel;
-    }
+        public void SetNumberOfPlaysForFoerderantragNovel(int numberOfPlaysForFoerderantragNovel)
+        {
+            this.numberOfPlaysForFoerderantragNovel = numberOfPlaysForFoerderantragNovel;
+        }
 
-    public void SetNumberOfPlaysForElternNovel(int numberOfPlaysForElternNovel)
-    {
-        this.numberOfPlaysForElternNovel = numberOfPlaysForElternNovel;
-    }
+        public int GetNumberOfPlaysForFoerderantragNovel()
+        {
+            return numberOfPlaysForFoerderantragNovel;
+        }
 
-    public int GetNumberOfPlaysForElternNovel()
-    {
-        return numberOfPlaysForElternNovel;
-    }
+        public void SetNumberOfPlaysForElternNovel(int numberOfPlaysForElternNovel)
+        {
+            this.numberOfPlaysForElternNovel = numberOfPlaysForElternNovel;
+        }
 
-    public void SetNumberOfPlaysForNotarinNovel(int numberOfPlaysForNotarinNovel)
-    {
-        this.numberOfPlaysForNotarinNovel = numberOfPlaysForNotarinNovel;
-    }
+        public int GetNumberOfPlaysForElternNovel()
+        {
+            return numberOfPlaysForElternNovel;
+        }
 
-    public int GetNumberOfPlaysForNotarinNovel()
-    {
-        return numberOfPlaysForNotarinNovel;
-    }
+        public void SetNumberOfPlaysForNotarinNovel(int numberOfPlaysForNotarinNovel)
+        {
+            this.numberOfPlaysForNotarinNovel = numberOfPlaysForNotarinNovel;
+        }
 
-    public void SetNumberOfPlaysForPresseNovel(int numberOfPlaysForPresseNovel)
-    {
-        this.numberOfPlaysForPresseNovel = numberOfPlaysForPresseNovel;
-    }
+        public int GetNumberOfPlaysForNotarinNovel()
+        {
+            return numberOfPlaysForNotarinNovel;
+        }
 
-    public int GetNumberOfPlaysForPresseNovel()
-    {
-        return numberOfPlaysForPresseNovel;
-    }
+        public void SetNumberOfPlaysForPresseNovel(int numberOfPlaysForPresseNovel)
+        {
+            this.numberOfPlaysForPresseNovel = numberOfPlaysForPresseNovel;
+        }
 
-    public void SetNumberOfPlaysForBueroNovel(int numberOfPlaysForBueroNovel)
-    {
-        this.numberOfPlaysForBueroNovel = numberOfPlaysForBueroNovel;
-    }
+        public int GetNumberOfPlaysForPresseNovel()
+        {
+            return numberOfPlaysForPresseNovel;
+        }
 
-    public int GetNumberOfPlaysForBueroNovel()
-    {
-        return numberOfPlaysForBueroNovel;
-    }
+        public void SetNumberOfPlaysForBueroNovel(int numberOfPlaysForBueroNovel)
+        {
+            this.numberOfPlaysForBueroNovel = numberOfPlaysForBueroNovel;
+        }
 
-    public void SetNumberOfPlaysForGruenungszuschussNovel(int numberOfPlaysForGruenungszuschussNovel)
-    {
-        this.numberOfPlaysForGruenungszuschussNovel = numberOfPlaysForGruenungszuschussNovel;
-    }
+        public int GetNumberOfPlaysForBueroNovel()
+        {
+            return numberOfPlaysForBueroNovel;
+        }
 
-    public int GetNumberOfPlaysForGruenungszuschussNovel()
-    {
-        return numberOfPlaysForGruenungszuschussNovel;
-    }
+        public void SetNumberOfPlaysForGruendungszuschussNovel(int numberOfPlaysForGruendungszuschussNovel)
+        {
+            this.numberOfPlaysForGruendungszuschussNovel = numberOfPlaysForGruendungszuschussNovel;
+        }
 
-    public void SetNumberOfPlaysForHonorarNovel(int numberOfPlaysForHonorarNovel)
-    {
-        this.numberOfPlaysForHonorarNovel = numberOfPlaysForHonorarNovel;
-    }
+        public int GetNumberOfPlaysForGruenungszuschussNovel()
+        {
+            return numberOfPlaysForGruendungszuschussNovel;
+        }
 
-    public int GetNumberOfPlaysForHonorarNovel()
-    {
-        return numberOfPlaysForHonorarNovel;
-    }
+        public void SetNumberOfPlaysForHonorarNovel(int numberOfPlaysForHonorarNovel)
+        {
+            this.numberOfPlaysForHonorarNovel = numberOfPlaysForHonorarNovel;
+        }
 
-    public void SetNumberOfPlaysForLebenspartnerNovel(int numberOfPlaysForLebenspartnerNovel)
-    {
-        this.numberOfPlaysForLebenspartnerNovel = numberOfPlaysForLebenspartnerNovel;
-    }
+        public int GetNumberOfPlaysForHonorarNovel()
+        {
+            return numberOfPlaysForHonorarNovel;
+        }
 
-    public int GetNumberOfPlaysForLebenspartnerNovel()
-    {
-        return numberOfPlaysForLebenspartnerNovel;
-    }
+        public void SetNumberOfPlaysForLebenspartnerNovel(int numberOfPlaysForLebenspartnerNovel)
+        {
+            this.numberOfPlaysForLebenspartnerNovel = numberOfPlaysForLebenspartnerNovel;
+        }
 
-    public void SetNumberOfPlaysForIntroNovel(int numberOfPlaysForIntroNovel)
-    {
-        this.numberOfPlaysForIntroNovel = numberOfPlaysForIntroNovel;
-    }
+        public int GetNumberOfPlaysForLebenspartnerNovel()
+        {
+            return numberOfPlaysForLebenspartnerNovel;
+        }
 
-    public int GetNumberOfPlaysForIntroNovel()
-    {
-        return numberOfPlaysForIntroNovel;
-    }
+        public void SetNumberOfPlaysForIntroNovel(int numberOfPlaysForIntroNovel)
+        {
+            this.numberOfPlaysForIntroNovel = numberOfPlaysForIntroNovel;
+        }
 
-    public void ClearData()
-    {
-        numberOfPlaysForBankkreditNovel = 0;
-        numberOfPlaysForBekannteTreffenNovel = 0;
-        numberOfPlaysForBankkontoNovel = 0;
-        numberOfPlaysForFoerderantragNovel = 0;
-        numberOfPlaysForElternNovel = 0;
-        numberOfPlaysForNotarinNovel = 0;
-        numberOfPlaysForPresseNovel = 0;
-        numberOfPlaysForBueroNovel = 0;
-        numberOfPlaysForGruenungszuschussNovel = 0;
-        numberOfPlaysForHonorarNovel = 0;
-        numberOfPlaysForLebenspartnerNovel = 0;
-        numberOfPlaysForIntroNovel = 0;
+        public int GetNumberOfPlaysForIntroNovel()
+        {
+            return numberOfPlaysForIntroNovel;
+        }
+
+        public void ClearData()
+        {
+            numberOfPlaysForBankkreditNovel = 0;
+            numberOfPlaysForBekannteTreffenNovel = 0;
+            numberOfPlaysForBankkontoNovel = 0;
+            numberOfPlaysForFoerderantragNovel = 0;
+            numberOfPlaysForElternNovel = 0;
+            numberOfPlaysForNotarinNovel = 0;
+            numberOfPlaysForPresseNovel = 0;
+            numberOfPlaysForBueroNovel = 0;
+            numberOfPlaysForGruendungszuschussNovel = 0;
+            numberOfPlaysForHonorarNovel = 0;
+            numberOfPlaysForLebenspartnerNovel = 0;
+            numberOfPlaysForIntroNovel = 0;
+        }
     }
 }

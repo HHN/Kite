@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using _00_Kite2.Common.Managers;
 using _00_Kite2.Player;
 using TMPro;
 using UnityEngine;
@@ -39,7 +40,7 @@ namespace _00_Kite2.Common
             var privacyManager = PrivacyAndConditionManager.Instance();
 
             // �berpr�fe, ob die Nutzungsbedingungen und Datenschutzrichtlinien akzeptiert wurden
-            if (privacyManager.IsConditionsAccepted() && privacyManager.IsPriavcyTermsAccepted())
+            if (privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted())
             {
                 // Starte eine Coroutine, die darauf wartet, dass die Novels geladen sind
                 StartCoroutine(WaitForNovelsToLoad());
@@ -65,7 +66,7 @@ namespace _00_Kite2.Common
         {
             var privacyManager = PrivacyAndConditionManager.Instance();
 
-            if (privacyManager.IsConditionsAccepted() && privacyManager.IsPriavcyTermsAccepted())
+            if (privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted())
             {
                 termsAndConditionPanel.SetActive(false);
                 kiteAudioLogo.Play();
@@ -118,16 +119,16 @@ namespace _00_Kite2.Common
             var privacyManager = PrivacyAndConditionManager.Instance();
 
             UpdateAcceptance(termsOfUseToggle.IsClicked(),
-                privacyManager.AcceptConditionsOfUssage,
-                privacyManager.UnacceptConditionsOfUssage);
+                privacyManager.AcceptConditionsOfUsage,
+                privacyManager.UnaccepedConditionsOfUsage);
 
             UpdateAcceptance(dataPrivacyToggle.IsClicked(),
                 privacyManager.AcceptTermsOfPrivacy,
-                privacyManager.UnacceptTermsOfPrivacy);
+                privacyManager.UnaccepedTermsOfPrivacy);
 
             UpdateAcceptance(collectDataToggle.IsClicked(),
                 privacyManager.AcceptDataCollection,
-                privacyManager.UnacceptDataCollection);
+                privacyManager.UnaccepedDataCollection);
         }
 
         private void UpdateAcceptance(bool isAccepted, System.Action acceptAction, System.Action deniedAction)
@@ -209,7 +210,7 @@ namespace _00_Kite2.Common
                     PlayManager.Instance().SetVisualNovelToPlay(novel); // Set the novel to be played in the PlayManager          
                     PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegroundColorOfNovel(novelNames)); // Set the foreground color for the novel
                     PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(novelNames)); // Set the background color for the novel
-                    PlayManager.Instance().SetDiplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelNames)); // Set the display name for the novel
+                    PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelNames)); // Set the display name for the novel
 
                     // Load the PlayNovelScene
                     SceneLoader.LoadPlayNovelScene();

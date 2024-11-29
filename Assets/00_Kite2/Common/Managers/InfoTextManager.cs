@@ -1,47 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class InfoTextManager
+namespace _00_Kite2.Common.Managers
 {
-    private string textHead;
-    private string textBody;
-
-    private static InfoTextManager instance;
-
-    private InfoTextManager()
+    public class InfoTextManager
     {
-    }
+        private string _textHead;
+        private string _textBody;
 
-    public static InfoTextManager Instance
-    {
-        get
+        private static InfoTextManager _instance;
+
+        private InfoTextManager()
         {
-            if (instance == null)
-            {
-                instance = new InfoTextManager();
-            }
-            return instance;
         }
-    }
 
-    public void SetTextHead(string textHead)
-    {
-        this.textHead = textHead;
-    }
+        public static InfoTextManager Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new InfoTextManager();
+                }
 
-    public string GetTextHead()
-    {
-        return textHead;
-    }
+                return _instance;
+            }
+        }
 
-    public void SetTextBody(string textBody)
-    {
-        this.textBody = textBody;
-    }
+        public void SetTextHead(string textHead)
+        {
+            this._textHead = textHead;
+        }
 
-    public string GetTextBody()
-    {
-        return textBody;
+        public string GetTextHead()
+        {
+            return _textHead;
+        }
+
+        public void SetTextBody(string textBody)
+        {
+            this._textBody = textBody;
+        }
+
+        public string GetTextBody()
+        {
+            return _textBody;
+        }
     }
 }

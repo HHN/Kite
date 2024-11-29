@@ -1,74 +1,82 @@
-using System;
 using UnityEngine;
 
-public class PlayManager
+namespace _00_Kite2.Common.Managers
 {
-    private static PlayManager instance;
-    private VisualNovel novelToPlay;
-    private Color backgroundColorForNovel;
-    private Color foregroundColorForNovel;
-    private string displayName;
-
-    private PlayManager() { }
-
-    public static PlayManager Instance()
+    public class PlayManager
     {
-        if (instance == null)
+        private static PlayManager _instance;
+        private VisualNovel _novelToPlay;
+        private Color _backgroundColorForNovel;
+        private Color _foregroundColorForNovel;
+        private string _displayName;
+
+        private PlayManager()
         {
-            instance = new PlayManager();
         }
-        return instance;
-    }
 
-    public void SetVisualNovelToPlay(VisualNovel novelToPlay)
-    {
-        this.novelToPlay = novelToPlay;
-    }
-
-    public VisualNovel GetVisualNovelToPlay()
-    {
-        if (novelToPlay == null)
+        public static PlayManager Instance()
         {
-            return null;
+            if (_instance == null)
+            {
+                _instance = new PlayManager();
+            }
+
+            return _instance;
         }
-        return novelToPlay;
-    }
 
-    public void SetBackgroundColorOfVisualNovelToPlay(Color colorOfNovel)
-    {
-        this.backgroundColorForNovel = colorOfNovel;
-    }
-
-    public Color GetBackgroundColorOfVisualNovelToPlay()
-    {
-        if (backgroundColorForNovel == null)
+        public void SetVisualNovelToPlay(VisualNovel novelToPlay)
         {
-            return new Color(0, 0, 0);
+            this._novelToPlay = novelToPlay;
         }
-        return backgroundColorForNovel;
-    }
 
-    public void SetForegroundColorOfVisualNovelToPlay(Color colorOfNovel)
-    {
-        this.foregroundColorForNovel = colorOfNovel;
-    }
-
-    public Color GetForegroundColorOfVisualNovelToPlay()
-    {
-        if (foregroundColorForNovel == null)
+        public VisualNovel GetVisualNovelToPlay()
         {
-            return new Color(0, 0, 0);
+            if (_novelToPlay == null)
+            {
+                return null;
+            }
+
+            return _novelToPlay;
         }
-        return foregroundColorForNovel;
-    }
 
-    public void SetDiplayNameOfNovelToPlay(string v)
-    {
-        this.displayName = v;
-    }
+        public void SetBackgroundColorOfVisualNovelToPlay(Color colorOfNovel)
+        {
+            this._backgroundColorForNovel = colorOfNovel;
+        }
 
-    public string GetDisplayNameOfNovelToPlay()
-    {
-        return this.displayName;
+        public Color GetBackgroundColorOfVisualNovelToPlay()
+        {
+            if (_backgroundColorForNovel == null)
+            {
+                return new Color(0, 0, 0);
+            }
+
+            return _backgroundColorForNovel;
+        }
+
+        public void SetForegroundColorOfVisualNovelToPlay(Color colorOfNovel)
+        {
+            this._foregroundColorForNovel = colorOfNovel;
+        }
+
+        public Color GetForegroundColorOfVisualNovelToPlay()
+        {
+            if (_foregroundColorForNovel == null)
+            {
+                return new Color(0, 0, 0);
+            }
+
+            return _foregroundColorForNovel;
+        }
+
+        public void SetDisplayNameOfNovelToPlay(string v)
+        {
+            this._displayName = v;
+        }
+
+        public string GetDisplayNameOfNovelToPlay()
+        {
+            return this._displayName;
+        }
     }
 }

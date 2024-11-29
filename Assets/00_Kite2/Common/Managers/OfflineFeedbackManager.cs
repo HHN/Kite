@@ -1,41 +1,49 @@
 using System.Text;
 
-public class OfflineFeedbackManager
+namespace _00_Kite2.Common.Managers
 {
-    private static OfflineFeedbackManager instance;
-    public StringBuilder offlineFeedback;
-
-    private OfflineFeedbackManager() { }
-
-    public static OfflineFeedbackManager Instance()
+    public class OfflineFeedbackManager
     {
-        if (instance == null)
+        private static OfflineFeedbackManager _instance;
+        private StringBuilder _offlineFeedback;
+
+        private OfflineFeedbackManager()
         {
-            instance = new OfflineFeedbackManager();
         }
-        return instance;
-    }
 
-    public string GetOfflineFeedback()
-    {
-        if (offlineFeedback == null)
+        public static OfflineFeedbackManager Instance()
         {
-            return "";
-        }
-        return offlineFeedback.ToString().Trim();
-    }
+            if (_instance == null)
+            {
+                _instance = new OfflineFeedbackManager();
+            }
 
-    public void AddLineToPrompt(string line)
-    {
-        if (offlineFeedback == null)
+            return _instance;
+        }
+
+        public string GetOfflineFeedback()
         {
-            offlineFeedback = new StringBuilder();
-        }
-        offlineFeedback.AppendLine(line);
-    }
+            if (_offlineFeedback == null)
+            {
+                return "";
+            }
 
-    public void Clear()
-    {
-        offlineFeedback = null;
+            return _offlineFeedback.ToString().Trim();
+        }
+
+        public void AddLineToPrompt(string line)
+        {
+            if (_offlineFeedback == null)
+            {
+                _offlineFeedback = new StringBuilder();
+            }
+
+            _offlineFeedback.AppendLine(line);
+        }
+
+        public void Clear()
+        {
+            _offlineFeedback = null;
+        }
     }
 }

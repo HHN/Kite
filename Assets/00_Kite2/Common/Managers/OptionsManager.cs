@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using _00_Kite2.Player;
 using UnityEngine;
 
@@ -145,11 +146,12 @@ namespace _00_Kite2.Common.Managers
             StartCoroutine(AfterSelection("Selected E", _stringE, _idE, _displayAfterSelectionE, 4));
         }
 
-        private IEnumerator AfterSelection(string parameterName, string answer, string nextEventID, bool displayAfterSelection, int index)
+        private IEnumerator AfterSelection(string parameterName, string answer, string nextEventID,
+            bool displayAfterSelection, int index)
         {
-        TextToSpeechManager.Instance.CancelSpeak();
+            TextToSpeechManager.Instance.CancelSpeak();
             GameManager.Instance.calledFromReload = false;
-        
+
             // Disable animations after the selection
             var animationFlagSingleton = AnimationFlagSingleton.Instance();
             if (animationFlagSingleton != null)
@@ -162,19 +164,23 @@ namespace _00_Kite2.Common.Managers
             }
 
             // If already selected, exit the coroutine
-            if (_selected) { yield break; }
+            if (_selected)
+            {
+                yield break;
+            }
+
             _selected = true; // Mark as selected to prevent repeated selections
 
             // Add the current path (selection) to the visual novel path history
             if (_sceneController != null)
             {
-                for (int i = 0; i < _sceneController.NovelToPlay.novelEvents.Count; i++)
+                foreach (var novelEvent in _sceneController.NovelToPlay.novelEvents.Where(novelEvent =>
+                             novelEvent.text == answer))
                 {
-                    if (_sceneController.NovelToPlay.novelEvents[i].text == answer)
-                    {
-                        _conversationContentGuiController.VisualNovelEvents.Add(_sceneController.NovelToPlay.novelEvents[i]);
-                    }
+                    _conversationContentGuiController.VisualNovelEvents.Add(
+                        novelEvent);
                 }
+
                 _sceneController.AddPathToNovel(index);
             }
             else
@@ -194,6 +200,7 @@ namespace _00_Kite2.Common.Managers
                 {
                     Debug.LogWarning("Animator component not found on GameObject.");
                 }
+
                 if (string.IsNullOrEmpty(parameterName))
                 {
                     Debug.LogWarning("parameterName is null or empty.");

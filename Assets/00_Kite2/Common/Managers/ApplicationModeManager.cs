@@ -1,77 +1,84 @@
 using UnityEngine;
 
-public class ApplicationModeManager
+namespace _00_Kite2.Common.Managers
 {
-    private static ApplicationModeManager instance;
-
-    private ApplicationModeWrapper wrapper;
-    private const string key = "ApplicationModeWrapper";
-
-    private ApplicationModeManager() {}
-
-    public static ApplicationModeManager Instance()
+    public class ApplicationModeManager
     {
-        if (instance == null)
+        private static ApplicationModeManager _instance;
+
+        private ApplicationModeWrapper _wrapper;
+        private const string Key = "ApplicationModeWrapper";
+
+        private ApplicationModeManager()
         {
-            instance = new ApplicationModeManager();
         }
-        return instance;
-    }
 
-    private void SetApplicationMode(ApplicationModes applicationMode)
-    {
-        if (wrapper == null)
+        public static ApplicationModeManager Instance()
         {
-            wrapper = LoadApplicationModeWrapper();
+            if (_instance == null)
+            {
+                _instance = new ApplicationModeManager();
+            }
+
+            return _instance;
         }
-        wrapper.SetApplicationMode(ApplicationModeHelper.ToInt(applicationMode));
-        Save();
-    }
 
-    public void ActivateOfflineMode()
-    {
-        SetApplicationMode(ApplicationModes.OFFLINE_MODE);
-    }
-
-    public void ActivateOnlineMode()
-    {
-        SetApplicationMode(ApplicationModes.ONLINE_MODE);
-    }
-
-    private ApplicationModes GetApplicationMode()
-    {
-        ApplicationModeWrapper wrapper = LoadApplicationModeWrapper();
-        return ApplicationModeHelper.ValueOf(wrapper.GetApplicationMode());
-    }
-
-    public bool IsOfflineModeActive()
-    {
-        return GetApplicationMode() == ApplicationModes.OFFLINE_MODE;
-    }
-
-    public bool IsOnlineModeActive()
-    {
-        return GetApplicationMode() == ApplicationModes.ONLINE_MODE;
-    }
-
-    public ApplicationModeWrapper LoadApplicationModeWrapper()
-    {
-        if (PlayerDataManager.Instance().HasKey(key))
+        private void SetApplicationMode(ApplicationModes applicationMode)
         {
-            string json = PlayerDataManager.Instance().GetPlayerData(key);
-            return JsonUtility.FromJson<ApplicationModeWrapper>(json);
-        }
-        else
-        {
-            ApplicationModeWrapper wrapper = new ApplicationModeWrapper();
-            wrapper.SetApplicationMode(ApplicationModeHelper.ToInt(ApplicationModes.ONLINE_MODE));
-            return wrapper;
-        }
-    }
+            if (_wrapper == null)
+            {
+                _wrapper = LoadApplicationModeWrapper();
+            }
 
-    public void Save()
-    {
-        string json = JsonUtility.ToJson(wrapper);
-        PlayerDataManager.Instance().SavePlayerData(key, json);
+            _wrapper.SetApplicationMode(ApplicationModeHelper.ToInt(applicationMode));
+            Save();
+        }
+
+        public void ActivateOfflineMode()
+        {
+            SetApplicationMode(ApplicationModes.OFFLINE_MODE);
+        }
+
+        public void ActivateOnlineMode()
+        {
+            SetApplicationMode(ApplicationModes.ONLINE_MODE);
+        }
+
+        private ApplicationModes GetApplicationMode()
+        {
+            ApplicationModeWrapper wrapper = LoadApplicationModeWrapper();
+            return ApplicationModeHelper.ValueOf(wrapper.GetApplicationMode());
+        }
+
+        public bool IsOfflineModeActive()
+        {
+            return GetApplicationMode() == ApplicationModes.OFFLINE_MODE;
+        }
+
+        public bool IsOnlineModeActive()
+        {
+            return GetApplicationMode() == ApplicationModes.ONLINE_MODE;
+        }
+
+        private ApplicationModeWrapper LoadApplicationModeWrapper()
+        {
+            if (PlayerDataManager.Instance().HasKey(Key))
+            {
+                string json = PlayerDataManager.Instance().GetPlayerData(Key);
+                return JsonUtility.FromJson<ApplicationModeWrapper>(json);
+            }
+            else
+            {
+                ApplicationModeWrapper wrapper = new ApplicationModeWrapper();
+                wrapper.SetApplicationMode(ApplicationModeHelper.ToInt(ApplicationModes.ONLINE_MODE));
+                return wrapper;
+            }
+        }
+
+        private void Save()
+        {
+            string json = JsonUtility.ToJson(_wrapper);
+            PlayerDataManager.Instance().SavePlayerData(Key, json);
+        }
     }
 }

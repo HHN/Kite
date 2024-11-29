@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text.RegularExpressions;
+using _00_Kite2.Audio_Resources.Resources;
+using _00_Kite2.Common.Managers;
 using _00_Kite2.Common.Novel.Character.CharacterController;
 using _00_Kite2.Common.UI.UI_Elements.Messages;
 using _00_Kite2.SaveNovelData;
@@ -785,9 +787,9 @@ namespace _00_Kite2.Player
             AnalyticsServiceHandler.Instance().SendNovelPlayTime();
 
             PlayRecordManager.Instance()
-                .IncrasePlayCounterForNovel(VisualNovelNamesHelper.ValueOf((int)novelToPlay.id));
-
-            PlaythrouCounterAnimationManager.Instance()
+                .IncreasePlayCounterForNovel(VisualNovelNamesHelper.ValueOf((int)novelToPlay.id));
+            
+            PlayThroughCounterAnimationManager.Instance()
                 .SetAnimation(true, VisualNovelNamesHelper.ValueOf((int)novelToPlay.id));
 
             int userRole = FeedbackRoleManager.Instance.GetFeedbackRole();

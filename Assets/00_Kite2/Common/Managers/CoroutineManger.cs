@@ -1,44 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CoroutineManger : MonoBehaviour
+namespace _00_Kite2.Common.Managers
 {
-
-    private static CoroutineManger instance;
-
-    private Coroutine speakingCoroutine;
-
-    public static CoroutineManger Instance
+    public class CoroutineManger : MonoBehaviour
     {
-        get
+        private static CoroutineManger _instance;
+
+        private Coroutine _speakingCoroutine;
+
+        public static CoroutineManger Instance
         {
-            if (instance == null)
+            get
             {
-                instance = FindObjectOfType<CoroutineManger>();
-                if (instance == null)
+                if (_instance == null)
                 {
-                    GameObject obj = new GameObject("CoroutineManger");
-                    instance = obj.AddComponent<CoroutineManger>();
-                    DontDestroyOnLoad(obj);
+                    _instance = FindObjectOfType<CoroutineManger>();
+                    if (_instance == null)
+                    {
+                        GameObject obj = new GameObject("CoroutineManger");
+                        _instance = obj.AddComponent<CoroutineManger>();
+                        DontDestroyOnLoad(obj);
+                    }
                 }
+
+                return _instance;
             }
-            return instance;
         }
-    }
 
-    public void SetSpeakingCoroutine(Coroutine coroutine)
-    {
-        speakingCoroutine = coroutine;
-    }
+        public void SetSpeakingCoroutine(Coroutine coroutine)
+        {
+            _speakingCoroutine = coroutine;
+        }
 
-    public Coroutine GetSpeakingCoroutine()
-    {
-        return speakingCoroutine;
-    }
+        public Coroutine GetSpeakingCoroutine()
+        {
+            return _speakingCoroutine;
+        }
 
-    public void StopSpeakingCoroutine()
-    {
-        StopCoroutine(speakingCoroutine);
+        public void StopSpeakingCoroutine()
+        {
+            StopCoroutine(_speakingCoroutine);
+        }
     }
 }

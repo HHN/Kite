@@ -1,3 +1,5 @@
+using _00_Kite2.Common.Managers;
+
 public class FoundersWell2SceneMemory
 {
     void Start()
