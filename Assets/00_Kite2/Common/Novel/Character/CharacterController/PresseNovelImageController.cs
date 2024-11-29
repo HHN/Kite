@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,27 +10,35 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         [SerializeField] private GameObject decoVasePrefab;
         [SerializeField] private GameObject decoVaseContainer;
         [SerializeField] private GameObject decoGlasPrefab;
+
         [SerializeField] private GameObject decoGlasContainer;
-        [SerializeField] private GameObject characterPrefab;
+
+        // [SerializeField] private GameObject characterPrefab;
         [SerializeField] private AudioClip decoGlasAudio;
         [SerializeField] private AudioClip decoVaseAudio;
         [SerializeField] private Sprite[] animationFramesVase;
         [SerializeField] private Sprite[] animationFramesGlas;
 
+        [SerializeField] private Transform characterContainer;
+        [SerializeField] private List<GameObject> characterPrefabs;
+
+        private GameObject _instantiatedCharacter;
+
         private void Start()
         {
             SetInitialSpritesForImages();
+            SetInitialCharacters();
         }
 
         private void SetInitialSpritesForImages()
         {
-
             Image image = decoVasePrefab.GetComponent<Image>();
             image.sprite = animationFramesVase[0];
             if (decoVaseContainer.transform.childCount > 0)
             {
                 Destroy(decoVaseContainer.transform.GetChild(0).gameObject);
             }
+
             Instantiate(decoVasePrefab, decoVaseContainer.transform);
 
             image = decoGlasPrefab.GetComponent<Image>();
@@ -38,13 +47,42 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             {
                 Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
             }
+
             Instantiate(decoGlasPrefab, decoGlasContainer.transform);
         }
 
+        private void SetInitialCharacters()
+        {
+            if (characterPrefabs.Count > 0)
+            {
+                int randomIndex = Random.Range(0, characterPrefabs.Count);
+                GameObject randomGameObject = characterPrefabs[randomIndex];
+
+                _instantiatedCharacter = Instantiate(randomGameObject, characterContainer, false);
+                RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
+                if (rectTransform != null)
+                {
+                    rectTransform.anchorMin = new Vector2(0.5f, 0);
+                    rectTransform.anchorMax = new Vector2(0.5f, 1);
+
+                    rectTransform.pivot = new Vector2(0.5f, 0.5f);
+
+                    rectTransform.anchoredPosition = new Vector2(0, 0);
+
+                    rectTransform.sizeDelta = new Vector2(1200.339f, 0);
+
+                    rectTransform.localPosition = new Vector3(0, 0, 0);
+
+                    rectTransform.localScale = new Vector3(1, 1, 1);
+
+                    rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
+                }
+            }
+        }
 
         public override void SetCharacter()
         {
-            CharacterController = characterPrefab.GetComponent<CharacterController>();
+            CharacterController = _instantiatedCharacter.GetComponent<CharacterController>();
         }
 
         public override bool HandleTouchEvent(float x, float y, AudioSource audioSource)
@@ -116,6 +154,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     Debug.LogError("AudioClip couldn't be found.");
                 }
             }
+
             yield return new WaitForSeconds(0f);
         }
 
@@ -161,8 +200,8 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     Debug.LogError("AudioClip couldn't be found.");
                 }
             }
+
             yield return new WaitForSeconds(0f);
         }
     }
 }
-

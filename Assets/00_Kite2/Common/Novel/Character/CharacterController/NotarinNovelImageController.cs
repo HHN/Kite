@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,16 +15,21 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         [SerializeField] private GameObject decoGlasContainer;
         [SerializeField] private GameObject decoPlantPrefab;
         [SerializeField] private GameObject decoPlantContainer;
-        [SerializeField] private GameObject characterPrefab;
+        // [SerializeField] private GameObject characterPrefab;
         [SerializeField] private AudioClip decoGlasAudio;
         [SerializeField] private AudioClip decoPlantAudio;
         [SerializeField] private Sprite[] animationFramesPlant;
         [SerializeField] private Sprite[] animationFramesGlas;
-        private GameObject _character = null;
+
+        [SerializeField] private Transform characterContainer;
+        [SerializeField] private List<GameObject> characterPrefabs;
+
+        private GameObject _instantiatedCharacter;
 
         private void Start()
         {
             SetInitialSpritesForImages();
+            SetInitialCharacters();
         }
 
         private void SetInitialSpritesForImages()
@@ -34,6 +40,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             {
                 Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
             }
+
             Instantiate(decoGlasPrefab, decoGlasContainer.transform);
 
             image = decoPlantPrefab.GetComponent<Image>();
@@ -42,7 +49,37 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             {
                 Destroy(decoPlantContainer.transform.GetChild(0).gameObject);
             }
+
             Instantiate(decoPlantPrefab, decoPlantContainer.transform);
+        }
+
+        private void SetInitialCharacters()
+        {
+            if (characterPrefabs.Count > 0)
+            {
+                int randomIndex = Random.Range(0, characterPrefabs.Count);
+                GameObject randomGameObject = characterPrefabs[randomIndex];
+
+                _instantiatedCharacter = Instantiate(randomGameObject, characterContainer, false);
+                RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
+                if (rectTransform != null)
+                {
+                    rectTransform.anchorMin = new Vector2(0.5f, 0);
+                    rectTransform.anchorMax = new Vector2(0.5f, 1);
+
+                    rectTransform.pivot = new Vector2(0.5f, 0.5f);
+
+                    rectTransform.anchoredPosition = new Vector2(0, 0);
+
+                    rectTransform.sizeDelta = new Vector2(1200.339f, 0);
+
+                    rectTransform.localPosition = new Vector3(0, 0, 0);
+
+                    rectTransform.localScale = new Vector3(1, 1, 1);
+
+                    rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
+                }
+            }
         }
 
         public override void SetBackground()
@@ -56,7 +93,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             decoGlasRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.15f, canvasRect.rect.height * 0.1f);
             decoGlasRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.075f, canvasRect.rect.height * 0.1f);
         }
-        
+
         RectTransform decoPlantRectTransform = decoPlantContainer.GetComponent<RectTransform>();
         if (decoPlantRectTransform != null && canvasRect != null)
         {
@@ -71,11 +108,12 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         public override void DestroyCharacter()
         {
-            if (_character == null)
+            if (_instantiatedCharacter == null)
             {
                 return;
             }
-            Destroy(_character);
+
+            Destroy(_instantiatedCharacter);
         }
 
         public override void SetCharacter()
@@ -87,7 +125,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         characterRectTransform.anchoredPosition = new Vector2(-canvasRect.rect.width * 0.15f, 0);
         characterRectTransform.sizeDelta = new Vector2(canvasRect.rect.width * 0.25f, canvasRect.rect.height * 1f);
         */
-            CharacterController = characterPrefab.GetComponent<CharacterController>();
+            CharacterController = _instantiatedCharacter.GetComponent<CharacterController>();
         }
 
         public override bool HandleTouchEvent(float x, float y, AudioSource audioSource)
@@ -159,6 +197,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     Debug.LogError("AudioClip couldn't be found.");
                 }
             }
+
             yield return new WaitForSeconds(0f);
         }
 
@@ -204,6 +243,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     Debug.LogError("AudioClip couldn't be found.");
                 }
             }
+
             yield return new WaitForSeconds(0f);
         }
     }

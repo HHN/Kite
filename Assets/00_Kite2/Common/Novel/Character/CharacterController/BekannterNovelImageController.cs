@@ -8,7 +8,9 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
     public class BekannterNovelImageController : NovelImageController
     {
         [SerializeField] private GameObject decoPlantPrefab;
+
         [SerializeField] private GameObject decoPlantContainer;
+
         // [SerializeField] private GameObject characterPrefab;
         [SerializeField] private AudioClip decoPlantAudio;
         [SerializeField] private Sprite[] animationFramesPlant;
@@ -17,7 +19,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         [SerializeField] private List<GameObject> characterPrefabs;
 
         private GameObject _instantiatedCharacter;
-        
+
         private void Start()
         {
             SetInitialSpritesForImages();
@@ -26,42 +28,42 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         private void SetInitialSpritesForImages()
         {
-
             Image image = decoPlantPrefab.GetComponent<Image>();
             image.sprite = animationFramesPlant[0];
             if (decoPlantContainer.transform.childCount > 0)
             {
                 Destroy(decoPlantContainer.transform.GetChild(0).gameObject);
             }
+
             Instantiate(decoPlantPrefab, decoPlantContainer.transform);
         }
-        
+
         private void SetInitialCharacters()
         {
-            int randomIndex = Random.Range(0, characterPrefabs.Count);
-            GameObject randomGameObject = characterPrefabs[randomIndex];
-            
-            // 1. Prefab instanziieren
-            _instantiatedCharacter = Instantiate(randomGameObject, characterContainer, false);
-
-            RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
-
-            if (rectTransform != null)
+            if (characterPrefabs.Count > 0)
             {
-                rectTransform.anchorMin = new Vector2(0.5f, 0);
-                rectTransform.anchorMax = new Vector2(0.5f, 1);
+                int randomIndex = Random.Range(0, characterPrefabs.Count);
+                GameObject randomGameObject = characterPrefabs[randomIndex];
+                
+                _instantiatedCharacter = Instantiate(randomGameObject, characterContainer, false);
+                RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
+                if (rectTransform != null)
+                {
+                    rectTransform.anchorMin = new Vector2(0.5f, 0);
+                    rectTransform.anchorMax = new Vector2(0.5f, 1);
 
-                rectTransform.pivot = new Vector2(0.5f, 0.5f);
+                    rectTransform.pivot = new Vector2(0.5f, 0.5f);
 
-                rectTransform.anchoredPosition = new Vector2(0, 0);
+                    rectTransform.anchoredPosition = new Vector2(0, 0);
 
-                rectTransform.sizeDelta = new Vector2(1200.339f, 0);
+                    rectTransform.sizeDelta = new Vector2(1200.339f, 0);
 
-                rectTransform.localPosition = new Vector3(0, 0, 0);
+                    rectTransform.localPosition = new Vector3(0, 0, 0);
 
-                rectTransform.localScale = new Vector3(1, 1, 1);
+                    rectTransform.localScale = new Vector3(1, 1, 1);
 
-                rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
+                    rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
+                }
             }
         }
 
@@ -125,6 +127,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     Debug.LogError("AudioClip couldn't be found.");
                 }
             }
+
             yield return new WaitForSeconds(0f);
         }
     }

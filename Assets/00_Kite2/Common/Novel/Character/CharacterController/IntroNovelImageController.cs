@@ -1,14 +1,54 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace _00_Kite2.Common.Novel.Character.CharacterController
 {
     public class IntroNovelImageController : NovelImageController
     {
-        [SerializeField] private GameObject characterPrefab;
+        // [SerializeField] private GameObject characterPrefab;
+        
+        [SerializeField] private Transform characterContainer;
+        [SerializeField] private List<GameObject> characterPrefabs;
+
+        private GameObject _instantiatedCharacter;
     
+        private void Start()
+        {
+            SetInitialCharacters();
+        }
+        
+        private void SetInitialCharacters()
+        {
+            if (characterPrefabs.Count > 0)
+            {
+                int randomIndex = Random.Range(0, characterPrefabs.Count);
+                GameObject randomGameObject = characterPrefabs[randomIndex];
+                
+                _instantiatedCharacter = Instantiate(randomGameObject, characterContainer, false);
+                RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
+                if (rectTransform != null)
+                {
+                    rectTransform.anchorMin = new Vector2(0.5f, 0);
+                    rectTransform.anchorMax = new Vector2(0.5f, 1);
+
+                    rectTransform.pivot = new Vector2(0.5f, 0.5f);
+
+                    rectTransform.anchoredPosition = new Vector2(111, 594);
+
+                    rectTransform.sizeDelta = new Vector2(1200.339f, 0);
+
+                    rectTransform.localPosition = new Vector3(111, 594, 0);
+
+                    rectTransform.localScale = new Vector3(1, 1, 1);
+
+                    rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
+                }
+            }
+        }
+        
         public override void SetCharacter()
         {
-            CharacterController = characterPrefab.GetComponent<CharacterController>();
+            CharacterController = _instantiatedCharacter.GetComponent<CharacterController>();
         }
 
         public override bool HandleTouchEvent(float x, float y, AudioSource audioSource)

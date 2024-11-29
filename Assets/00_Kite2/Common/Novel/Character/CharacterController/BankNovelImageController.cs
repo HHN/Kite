@@ -10,16 +10,18 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         [SerializeField] private GameObject decoGlasPrefab;
         [SerializeField] private GameObject decoGlasContainer;
         [SerializeField] private GameObject decoPlantPrefab;
+
         [SerializeField] private GameObject decoPlantContainer;
+
         // [SerializeField] private GameObject characterPrefab;
         [SerializeField] private AudioClip decoGlasAudio;
         [SerializeField] private AudioClip decoPlantAudio;
         [SerializeField] private Sprite[] animationFramesPlant;
         [SerializeField] private Sprite[] animationFramesGlas;
-        
+
         [SerializeField] private Transform characterContainer;
         [SerializeField] private List<GameObject> characterPrefabs;
-        
+
         private GameObject _instantiatedCharacter;
 
         private void Start()
@@ -36,6 +38,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             {
                 Destroy(decoPlantContainer.transform.GetChild(0).gameObject);
             }
+
             Instantiate(decoPlantPrefab, decoPlantContainer.transform);
 
             image = decoGlasPrefab.GetComponent<Image>();
@@ -44,35 +47,36 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             {
                 Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
             }
+
             Instantiate(decoGlasPrefab, decoGlasContainer.transform);
         }
 
         private void SetInitialCharacters()
         {
-            int randomIndex = Random.Range(0, characterPrefabs.Count);
-            GameObject randomGameObject = characterPrefabs[randomIndex];
-            
-            // 1. Prefab instanziieren
-            _instantiatedCharacter = Instantiate(randomGameObject, characterContainer, false);
-
-            RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
-
-            if (rectTransform != null)
+            if (characterPrefabs.Count > 0)
             {
-                rectTransform.anchorMin = new Vector2(0.5f, 0);
-                rectTransform.anchorMax = new Vector2(0.5f, 1);
+                int randomIndex = Random.Range(0, characterPrefabs.Count);
+                GameObject randomGameObject = characterPrefabs[randomIndex];
+                
+                _instantiatedCharacter = Instantiate(randomGameObject, characterContainer, false);
+                RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
+                if (rectTransform != null)
+                {
+                    rectTransform.anchorMin = new Vector2(0.5f, 0);
+                    rectTransform.anchorMax = new Vector2(0.5f, 1);
 
-                rectTransform.pivot = new Vector2(0.5f, 0.5f);
+                    rectTransform.pivot = new Vector2(0.5f, 0.5f);
 
-                rectTransform.anchoredPosition = new Vector2(0, -699);
+                    rectTransform.anchoredPosition = new Vector2(0, -699);
 
-                rectTransform.sizeDelta = new Vector2(1200.339f, 0);
+                    rectTransform.sizeDelta = new Vector2(1200.339f, 0);
 
-                rectTransform.localPosition = new Vector3(0, 699, 0);
+                    rectTransform.localPosition = new Vector3(0, 699, 0);
 
-                rectTransform.localScale = new Vector3(1, 1, 1);
+                    rectTransform.localScale = new Vector3(1, 1, 1);
 
-                rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
+                    rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
+                }
             }
         }
 
@@ -151,6 +155,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     Debug.LogError("AudioClip couldn't be found.");
                 }
             }
+
             yield return new WaitForSeconds(0f);
         }
 
@@ -196,6 +201,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     Debug.LogError("AudioClip couldn't be found.");
                 }
             }
+
             yield return new WaitForSeconds(0f);
         }
     }

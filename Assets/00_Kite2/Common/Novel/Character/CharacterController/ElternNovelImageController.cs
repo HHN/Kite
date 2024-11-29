@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,30 +22,134 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         [SerializeField] private AudioClip decoTasseAudio;
         [SerializeField] private AudioClip decoKanneAudio;
         [SerializeField] private AudioClip decoLampeOnAudio;
+
         [SerializeField] private AudioClip decoLampeOffAudio;
-        [SerializeField] private GameObject characterMutterPrefab;
-        [SerializeField] private GameObject characterMutterContainer;
-        [SerializeField] private GameObject characterVaterPrefab;
-        [SerializeField] private GameObject characterVaterContainer;
+
+        // [SerializeField] private GameObject characterMutterPrefab;
+        // [SerializeField] private GameObject characterMutterContainer;
+        // [SerializeField] private GameObject characterVaterPrefab;
+        // [SerializeField] private GameObject characterVaterContainer;
         [SerializeField] private Sprite[] animationFramesTasse1;
         [SerializeField] private Sprite[] animationFramesTasse2;
         [SerializeField] private Sprite[] animationFramesKanne;
         [SerializeField] private Sprite decoLampeOff;
         [SerializeField] private Sprite decoLampeOn;
+
+        [SerializeField] private Transform motherCharacterContainer;
+        [SerializeField] private Transform fatherCharacterContainer;
+        [SerializeField] private List<GameObject> motherCharacterPrefabs;
+        [SerializeField] private List<GameObject> fatherCharacterPrefabs;
+
         private bool _decoLampeStatus;
+
+        private GameObject _instantiatedMotherCharacter;
+        private GameObject _instantiatedFatherCharacter;
 
         private void Start()
         {
             SetInitialSpritesForImages();
+            SetInitialCharacters();
             SetCharacterController();
+        }
+
+        private void SetInitialSpritesForImages()
+        {
+            Image image = decoTasse1Prefab.GetComponent<Image>();
+            image.sprite = animationFramesTasse1[0];
+            if (decoTasse1Container.transform.childCount > 0)
+            {
+                Destroy(decoTasse1Container.transform.GetChild(0).gameObject);
+            }
+
+            Instantiate(decoTasse1Prefab, decoTasse1Container.transform);
+
+            image = decoTasse2Prefab.GetComponent<Image>();
+            image.sprite = animationFramesTasse2[0];
+            if (decoTasse2Container.transform.childCount > 0)
+            {
+                Destroy(decoTasse2Container.transform.GetChild(0).gameObject);
+            }
+
+            Instantiate(decoTasse2Prefab, decoTasse2Container.transform);
+
+            image = decoKannePrefab.GetComponent<Image>();
+            image.sprite = animationFramesKanne[0];
+            if (decoKanneContainer.transform.childCount > 0)
+            {
+                Destroy(decoKanneContainer.transform.GetChild(0).gameObject);
+            }
+
+            Instantiate(decoKannePrefab, decoKanneContainer.transform);
+
+            image = decoLampePrefab.GetComponent<Image>();
+            image.sprite = decoLampeOff;
+            if (decoLampeContainer.transform.childCount > 0)
+            {
+                Destroy(decoLampeContainer.transform.GetChild(0).gameObject);
+            }
+
+            Instantiate(decoLampePrefab, decoLampeContainer.transform);
+        }
+
+        private void SetInitialCharacters()
+        {
+            if (motherCharacterPrefabs.Count > 0)
+            {
+                int randomIndex = Random.Range(0, motherCharacterPrefabs.Count);
+                GameObject randomGameObject = motherCharacterPrefabs[randomIndex];
+
+                _instantiatedMotherCharacter = Instantiate(randomGameObject, motherCharacterContainer, false);
+                RectTransform rectTransform = _instantiatedMotherCharacter.GetComponent<RectTransform>();
+                if (rectTransform != null)
+                {
+                    rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+                    rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+
+                    rectTransform.pivot = new Vector2(0.5f, 0.5f);
+
+                    rectTransform.anchoredPosition = new Vector2(-315, -597);
+
+                    rectTransform.sizeDelta = new Vector2(1200.339f, 1044);
+
+                    rectTransform.localPosition = new Vector3(-315, -597, 0);
+
+                    rectTransform.localScale = new Vector3(1, 1, 1);
+
+                    rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
+                }
+            }
+
+            if (fatherCharacterPrefabs.Count > 0)
+            {
+                int randomIndex = Random.Range(0, fatherCharacterPrefabs.Count);
+                GameObject randomGameObject = fatherCharacterPrefabs[randomIndex];
+
+                _instantiatedFatherCharacter = Instantiate(randomGameObject, fatherCharacterContainer, false);
+                RectTransform rectTransform = _instantiatedFatherCharacter.GetComponent<RectTransform>();
+                if (rectTransform != null)
+                {
+                    rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+                    rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+
+                    rectTransform.pivot = new Vector2(0.5f, 0.5f);
+
+                    rectTransform.anchoredPosition = new Vector2(204, -610);
+
+                    rectTransform.sizeDelta = new Vector2(1200.339f, 1044);
+
+                    rectTransform.localPosition = new Vector3(204, -610, 0);
+
+                    rectTransform.localScale = new Vector3(1, 1, 1);
+
+                    rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
+                }
+            }
         }
 
         private void SetCharacterController()
         {
-            //   characterMutter = Instantiate(characterMutterPrefab, characterMutterContainer.transform);
-            CharacterController = characterMutterPrefab.GetComponent<CharacterController>();
-            //   characterVater = Instantiate(characterVaterPrefab, characterVaterContainer.transform);
-            CharacterController2 = characterVaterPrefab.GetComponent<CharacterController>();
+            CharacterController = _instantiatedMotherCharacter.GetComponent<CharacterController>();
+            CharacterController2 = _instantiatedFatherCharacter.GetComponent<CharacterController>();
         }
 
         public override void SetBackground()
@@ -52,8 +157,6 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             NovelColorManager.Instance().SetCanvasHeight(CanvasRect.rect.height);
             NovelColorManager.Instance().SetCanvasWidth(CanvasRect.rect.width);
         }
-
-
 
         public override bool HandleTouchEvent(float x, float y, AudioSource audioSource)
         {
@@ -88,7 +191,8 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             Vector3 topRightDecoKanne = cornersDecoKanne[2];
 
             // Get the world corners of the lampe decoration container
-            CalculatePointsFromBottomRightCorner(decoLampeRectTransform, 180, 348, out var bottomLeftDecoLampe, out var topRightDecoLampe);
+            CalculatePointsFromBottomRightCorner(decoLampeRectTransform, 180, 348, out var bottomLeftDecoLampe,
+                out var topRightDecoLampe);
 
             // Check if the touch coordinates are within the tasse1 decoration bounds
             if (x >= bottomLeftDecoTasse1.x && x <= topRightDecoTasse1.x &&
@@ -97,23 +201,26 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                 StartCoroutine(OnDecoTasse1(audioSource));
                 return true;
             }
+
             // Check if the touch coordinates are within the tasse2 decoration bounds
-            else if (x >= bottomLeftDecoTasse2.x && x <= topRightDecoTasse2.x &&
-                     y >= bottomLeftDecoTasse2.y && y <= topRightDecoTasse2.y)
+            if (x >= bottomLeftDecoTasse2.x && x <= topRightDecoTasse2.x &&
+                y >= bottomLeftDecoTasse2.y && y <= topRightDecoTasse2.y)
             {
                 StartCoroutine(OnDecoTasse2(audioSource));
                 return true;
             }
+
             // Check if the touch coordinates are within the kanne decoration bounds
-            else if (x >= bottomLeftDecoKanne.x && x <= topRightDecoKanne.x &&
-                     y >= bottomLeftDecoKanne.y && y <= topRightDecoKanne.y)
+            if (x >= bottomLeftDecoKanne.x && x <= topRightDecoKanne.x &&
+                y >= bottomLeftDecoKanne.y && y <= topRightDecoKanne.y)
             {
                 StartCoroutine(OnDecoKanne(audioSource));
                 return true;
             }
+
             // Check if the touch coordinates are within the lampe decoration bounds
-            else if (x >= bottomLeftDecoLampe.x && x <= topRightDecoLampe.x &&
-                     y >= bottomLeftDecoLampe.y && y <= topRightDecoLampe.y)
+            if (x >= bottomLeftDecoLampe.x && x <= topRightDecoLampe.x &&
+                y >= bottomLeftDecoLampe.y && y <= topRightDecoLampe.y)
             {
                 StartCoroutine(OnDecoLampe(audioSource));
                 return true;
@@ -131,12 +238,14 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                 if (audioSource.clip != null)
                 {
                     audioSource.Play();
+
                     Image image = decoTasse1Prefab.GetComponent<Image>();
                     image.sprite = animationFramesTasse1[1];
                     if (decoTasse1Container.transform.childCount > 0)
                     {
                         Destroy(decoTasse1Container.transform.GetChild(0).gameObject);
                     }
+
                     Instantiate(decoTasse1Prefab, decoTasse1Container.transform);
                     yield return new WaitForSeconds(0.5f);
                     image.sprite = animationFramesTasse1[2];
@@ -144,6 +253,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     {
                         Destroy(decoTasse1Container.transform.GetChild(0).gameObject);
                     }
+
                     Instantiate(decoTasse1Prefab, decoTasse1Container.transform);
                     yield return new WaitForSeconds(0.5f);
                     image.sprite = animationFramesTasse1[3];
@@ -151,6 +261,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     {
                         Destroy(decoTasse1Container.transform.GetChild(0).gameObject);
                     }
+
                     Instantiate(decoTasse1Prefab, decoTasse1Container.transform);
                     yield return new WaitForSeconds(0.5f);
                     image.sprite = animationFramesTasse1[0];
@@ -158,6 +269,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     {
                         Destroy(decoTasse1Container.transform.GetChild(0).gameObject);
                     }
+
                     Instantiate(decoTasse1Prefab, decoTasse1Container.transform);
                 }
                 else
@@ -165,6 +277,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     Debug.LogError("AudioClip couldn't be found.");
                 }
             }
+
             yield return new WaitForSeconds(0f);
         }
 
@@ -182,6 +295,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     {
                         Destroy(decoTasse2Container.transform.GetChild(0).gameObject);
                     }
+
                     Instantiate(decoTasse2Prefab, decoTasse2Container.transform);
                     yield return new WaitForSeconds(0.5f);
                     image.sprite = animationFramesTasse2[2];
@@ -189,6 +303,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     {
                         Destroy(decoTasse2Container.transform.GetChild(0).gameObject);
                     }
+
                     Instantiate(decoTasse2Prefab, decoTasse2Container.transform);
                     yield return new WaitForSeconds(0.5f);
                     image.sprite = animationFramesTasse2[3];
@@ -196,6 +311,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     {
                         Destroy(decoTasse2Container.transform.GetChild(0).gameObject);
                     }
+
                     Instantiate(decoTasse2Prefab, decoTasse2Container.transform);
                     yield return new WaitForSeconds(0.5f);
                     image.sprite = animationFramesTasse2[0];
@@ -203,6 +319,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     {
                         Destroy(decoTasse2Container.transform.GetChild(0).gameObject);
                     }
+
                     Instantiate(decoTasse2Prefab, decoTasse2Container.transform);
                 }
                 else
@@ -210,6 +327,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     Debug.LogError("AudioClip couldn't be found.");
                 }
             }
+
             yield return new WaitForSeconds(0f);
         }
 
@@ -227,6 +345,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     {
                         Destroy(decoKanneContainer.transform.GetChild(0).gameObject);
                     }
+
                     Instantiate(decoKannePrefab, decoKanneContainer.transform);
                     yield return new WaitForSeconds(0.5f);
                     image.sprite = animationFramesKanne[2];
@@ -234,6 +353,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     {
                         Destroy(decoKanneContainer.transform.GetChild(0).gameObject);
                     }
+
                     Instantiate(decoKannePrefab, decoKanneContainer.transform);
                     yield return new WaitForSeconds(0.5f);
                     image.sprite = animationFramesKanne[3];
@@ -241,6 +361,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     {
                         Destroy(decoKanneContainer.transform.GetChild(0).gameObject);
                     }
+
                     Instantiate(decoKannePrefab, decoKanneContainer.transform);
                     yield return new WaitForSeconds(0.5f);
                     image.sprite = animationFramesKanne[0];
@@ -248,6 +369,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     {
                         Destroy(decoKanneContainer.transform.GetChild(0).gameObject);
                     }
+
                     Instantiate(decoKannePrefab, decoKanneContainer.transform);
                 }
                 else
@@ -255,6 +377,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     Debug.LogError("AudioClip couldn't be found.");
                 }
             }
+
             yield return new WaitForSeconds(0f);
         }
 
@@ -275,6 +398,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                         {
                             Destroy(decoLampeContainer.transform.GetChild(0).gameObject);
                         }
+
                         Instantiate(decoLampePrefab, decoLampeContainer.transform);
                         _decoLampeStatus = false;
                         yield return new WaitForSeconds(0.5f);
@@ -287,56 +411,23 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                         {
                             Destroy(decoLampeContainer.transform.GetChild(0).gameObject);
                         }
+
                         Instantiate(decoLampePrefab, decoLampeContainer.transform);
                         _decoLampeStatus = true;
                         yield return new WaitForSeconds(0.5f);
                     }
-
                 }
                 else
                 {
                     Debug.LogError("AudioClip couldn't be found.");
                 }
             }
+
             yield return new WaitForSeconds(0f);
         }
 
-        private void SetInitialSpritesForImages()
-        {
-            Image image = decoTasse1Prefab.GetComponent<Image>();
-            image.sprite = animationFramesTasse1[0];
-            if (decoTasse1Container.transform.childCount > 0)
-            {
-                Destroy(decoTasse1Container.transform.GetChild(0).gameObject);
-            }
-            Instantiate(decoTasse1Prefab, decoTasse1Container.transform);
-
-            image = decoTasse2Prefab.GetComponent<Image>();
-            image.sprite = animationFramesTasse2[0];
-            if (decoTasse2Container.transform.childCount > 0)
-            {
-                Destroy(decoTasse2Container.transform.GetChild(0).gameObject);
-            }
-            Instantiate(decoTasse2Prefab, decoTasse2Container.transform);
-
-            image = decoKannePrefab.GetComponent<Image>();
-            image.sprite = animationFramesKanne[0];
-            if (decoKanneContainer.transform.childCount > 0)
-            {
-                Destroy(decoKanneContainer.transform.GetChild(0).gameObject);
-            }
-            Instantiate(decoKannePrefab, decoKanneContainer.transform);
-
-            image = decoLampePrefab.GetComponent<Image>();
-            image.sprite = decoLampeOff;
-            if (decoLampeContainer.transform.childCount > 0)
-            {
-                Destroy(decoLampeContainer.transform.GetChild(0).gameObject);
-            }
-            Instantiate(decoLampePrefab, decoLampeContainer.transform);
-        }
-
-        private void CalculatePointsFromBottomRightCorner(RectTransform rectTransform, float xOffset, float yOffset, out Vector3 resultingXPoint, out Vector3 resultingYPoint)
+        private void CalculatePointsFromBottomRightCorner(RectTransform rectTransform, float xOffset, float yOffset,
+            out Vector3 resultingXPoint, out Vector3 resultingYPoint)
         {
             // Hol die Welt-Koordinaten der Ecken des RectTransforms
             Vector3[] worldCorners = new Vector3[4];
@@ -353,4 +444,3 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         }
     }
 }
-
