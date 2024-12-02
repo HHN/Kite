@@ -64,6 +64,16 @@ public class TextToSpeechManager : MonoBehaviour
         }
     }
 
+    public void SetLastMessage(string message)
+    {
+        lastMessage = message;
+    }
+
+    public string GetLastMessage()
+    {
+        return lastMessage;
+    }
+
     public void SetIsSpeaking(bool boolValue)
     {
         isSpeaking = boolValue;

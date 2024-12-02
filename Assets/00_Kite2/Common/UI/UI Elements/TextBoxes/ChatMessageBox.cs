@@ -7,8 +7,6 @@ using TMPro;
 public class ChatMessageBox : MonoBehaviour
 {
     public TextMeshProUGUI textBox;
-    // public TypewriterCore typewriter;
-    // public bool calledFromReload = false;
 
     public ChatMessageBox(TypewriterCore typewriter, bool calledFromReload)
     {
@@ -23,11 +21,6 @@ public class ChatMessageBox : MonoBehaviour
         if (!active) { return; }
  
         textBox.text = message;
-
-        // if (calledFromReload)
-        // {
-        //     typewriter.SkipTypewriter();
-        // }
     }
 
     public bool SetInactiveIfMessageIsNull(string message)

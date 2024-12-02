@@ -142,32 +142,6 @@ namespace _00_Kite2.Player
             Initialize();
         }
 
-        //public void OnCloseButton()
-        //{
-        //    Debug.Log("OnCloseButton: Method called"); // Initial debug statement
-
-        //    isPaused = true; // Pause the novel progression
-        //    Debug.Log("OnCloseButton: Set isPaused to true");
-
-        //    if (!DestroyValidator.IsNullOrDestroyed(leaveGameAndGoBackMessageBoxObject))
-        //    {
-        //        Debug.Log("OnCloseButton: leaveGameAndGoBackMessageBoxObject is valid, closing message box");
-        //        leaveGameAndGoBackMessageBoxObject.CloseMessageBox();
-        //    }
-
-        //    if (DestroyValidator.IsNullOrDestroyed(canvas))
-        //    {
-        //        Debug.Log("OnCloseButton: Canvas is null or destroyed, exiting method");
-        //        return;
-        //    }
-
-        //    Debug.Log("OnCloseButton: Instantiating leaveGameAndGoBackMessageBox");
-        //    leaveGameAndGoBackMessageBoxObject = null;
-        //    leaveGameAndGoBackMessageBoxObject = Instantiate(leaveGameAndGoBackMessageBox, canvas.transform).GetComponent<LeaveNovelAndGoBackMessageBox>();
-        //    leaveGameAndGoBackMessageBoxObject.Activate();
-        //    Debug.Log("OnCloseButton: leaveGameAndGoBackMessageBox activated");
-        //}
-
         private void Initialize()
         {
             PromptManager.Instance().InitializePrompt();
@@ -334,11 +308,17 @@ namespace _00_Kite2.Player
             _novelImagesController.SetCanvasRect(canvasRect);
         }
 
+        public IEnumerator ReadLast()
+        {
+            Debug.Log("??? ReadLast");
+            StartCoroutine(TextToSpeechManager.Instance.Speak(TextToSpeechManager.Instance.GetLastMessage()));
+            Debug.Log("$$$$ TTS fertig. Ruft PlayNextEvent auf");
+            yield return StartCoroutine(PlayNextEvent());
+        }
+
         public IEnumerator PlayNextEvent()
         {
             Debug.Log("!!!PLAY NEXT EVENT");
-            //if (!TextToSpeechManager.Instance.WasPaused())
-            //{
             if (TextToSpeechManager.Instance.IsTextToSpeechActivated())
             {
                 // Warten, bis die Sprachausgabe abgeschlossen oder übersprungen wurde
@@ -352,14 +332,11 @@ namespace _00_Kite2.Player
                         // Auf Android-Geräten: Auf den Abschluss der Coroutine warten
                         while (TextToSpeechManager.Instance.IsSpeaking())
                         {
-                            //yield return StartCoroutine(speakingCoroutine);
-                            Debug.Log("??? " + TextToSpeechManager.Instance.IsSpeaking());
                             yield return null;
                         }
                     }
                 }
             }
-            //}
 
             Debug.Log("!!!1nextEventToPlay.text: " + nextEventToPlay.text);
             Debug.Log("!!!isPaused: " + IsPaused);
@@ -697,12 +674,6 @@ namespace _00_Kite2.Player
             SetNextEvent(novelEvent);
             _novelImagesController.SetCharacter();
 
-            //if (novelEvent.waitForUserConfirmation)
-            //{
-            //    SetWaitingForConfirmation(true);
-            //    return;
-            //}
-
             StartCoroutine(StartNextEventInOneSeconds(1));
         }
 
@@ -712,12 +683,6 @@ namespace _00_Kite2.Player
 
             _novelImagesController.DestroyCharacter();
 
-            //if (novelEvent.waitForUserConfirmation)
-            //{
-            //    SetWaitingForConfirmation(true);
-            //    return;
-            //}
-
             StartCoroutine(StartNextEventInOneSeconds(1));
         }
 
@@ -725,10 +690,6 @@ namespace _00_Kite2.Player
         {
             Debug.Log("TextToSpeechManager.Instance.Speak(novelEvent.text): " + novelEvent.text);
             CreateSpeakingCoroutine(novelEvent.text);
-
-
-            //TextToSpeechService.Instance().TextToSpeechReadLive(novelEvent.text, engine); --> TODO: Überall entfernen
-            // novelEvent.text = ReplacePlaceholders(novelEvent.text, novelToPlay.GetGlobalVariables());
 
             SetNextEvent(novelEvent);
 
@@ -869,12 +830,6 @@ namespace _00_Kite2.Player
             //SetTypeToContinueAnimationActive(value);
         }
 
-        //public void SetTypeToContinueAnimationActive(bool value)
-        //{
-        //    tapToContinueAnimation.SetActive(value);
-        //    tapToContinueAnimation.GetComponent<Animator>().enabled = value;
-        //}
-
         public void SetTyping(bool value)
         {
             isTyping = value;
@@ -892,9 +847,6 @@ namespace _00_Kite2.Player
 
                 StartCoroutine(StartNextEventInOneSeconds(delay));
             }
-
-            //tapToContinueAnimation.SetActive(false);
-            //tapToContinueAnimation.GetComponent<Animator>().enabled = false;
         }
 
         public void AnimationFinished()
@@ -999,8 +951,6 @@ namespace _00_Kite2.Player
         {
             Debug.Log("SkipSpeaking");
             TextToSpeechManager.Instance.CancelSpeak();
-            //TextToSpeechManager.Instance.StopSpeaking();
-            //CoroutineManger.Instance.StopSpeakingCoroutine();
         }
 
         // Methode zum Anzeigen der HintForSavegameMessageBox
