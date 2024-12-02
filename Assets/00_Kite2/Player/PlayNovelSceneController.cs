@@ -310,23 +310,17 @@ namespace _00_Kite2.Player
 
         public IEnumerator ReadLast()
         {
-            Debug.Log("??? ReadLast");
             StartCoroutine(TextToSpeechManager.Instance.Speak(TextToSpeechManager.Instance.GetLastMessage()));
-            Debug.Log("$$$$ TTS fertig. Ruft PlayNextEvent auf");
             yield return StartCoroutine(PlayNextEvent());
         }
 
         public IEnumerator PlayNextEvent()
         {
-            Debug.Log("!!!PLAY NEXT EVENT");
             if (TextToSpeechManager.Instance.IsTextToSpeechActivated())
             {
                 // Warten, bis die Sprachausgabe abgeschlossen oder übersprungen wurde
                 if (_speakingCoroutine != null)
                 {
-                    Debug.Log("TTS");
-                    Debug.Log("TextToSpeechManager.Instance.IsSpeaking() == " +
-                              TextToSpeechManager.Instance.IsSpeaking());
                     if (Application.platform == RuntimePlatform.Android)
                     {
                         // Auf Android-Geräten: Auf den Abschluss der Coroutine warten
@@ -338,16 +332,11 @@ namespace _00_Kite2.Player
                 }
             }
 
-            Debug.Log("!!!1nextEventToPlay.text: " + nextEventToPlay.text);
-            Debug.Log("!!!isPaused: " + IsPaused);
-
             // Stop if paused
             if (IsPaused)
             {
                 yield break;
             }
-
-            Debug.Log("!!!2nextEventToPlay.text: " + nextEventToPlay.text);
 
             if (selectOptionContinueConversation != null)
             {
@@ -732,6 +721,7 @@ namespace _00_Kite2.Player
 
         private void HandleShowChoicesEvent(VisualNovelEvent novelEvent)
         {
+            StartCoroutine(TextToSpeechManager.Instance.ReadChoice());
             _novelImagesController.SetFaceExpression(_novelCharacter, 5);
             // Enable animations when showing choices
             AnimationFlagSingleton.Instance().SetFlag(true);
