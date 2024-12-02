@@ -4,6 +4,7 @@ using _00_Kite2.SaveNovelData;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 namespace _00_Kite2.Common.UI.UI_Elements.Messages
 {
@@ -38,6 +39,8 @@ namespace _00_Kite2.Common.UI.UI_Elements.Messages
 
         private PlayNovelSceneController
             _playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
+
+        [SerializeField] private GameObject messageBox;
 
         private void Start()
         {
@@ -76,16 +79,21 @@ namespace _00_Kite2.Common.UI.UI_Elements.Messages
 
         private void OnContinueButton()
         {
-            _playNovelSceneController.IsPaused = false; // Resume the novel progression
+            StartCoroutine(OnContinueButtonCoroutine());
+        }
 
-            this.CloseMessageBox();
+        private IEnumerator OnContinueButtonCoroutine()
+        {
+            _playNovelSceneController.IsPaused = false; // Resume the novel progression
+            SetOpacityToFull(messageBox);
             //TextToSpeechManager.Instance.SetWasPaused(true);
-            TextToSpeechManager.Instance.RepeatLastMessage();
+            yield return StartCoroutine(TextToSpeechManager.Instance.RepeatLastMessage());
             //TextToSpeechManager.Instance.SetIsSpeaking(false);
 
-            Debug.Log("Ruft PlayNextEvent auf");
+            Debug.Log("!!!!!!!!!!!!Ruft PlayNextEvent auf");
             AnimationFlagSingleton.Instance().SetFlag(false);
-            StartCoroutine(_playNovelSceneController.PlayNextEvent());
+            yield return StartCoroutine(_playNovelSceneController.PlayNextEvent());
+            this.CloseMessageBox();
         }
 
         // private void OnCancelButton()
@@ -153,6 +161,39 @@ namespace _00_Kite2.Common.UI.UI_Elements.Messages
 
             // Load the last scene retrieved from the back button functionality
             SceneLoader.LoadScene(lastScene);
+        }
+
+        private void SetOpacityToFull(GameObject targetObject)
+        {
+            if (targetObject == null)
+            {
+                Debug.LogError("Target object is null.");
+                return;
+            }
+
+            // Hole alle Renderer-Komponenten (z. B. MeshRenderer, SpriteRenderer) des Zielobjekts und seiner Kinder
+            Renderer[] renderers = targetObject.GetComponentsInChildren<Renderer>();
+
+            foreach (Renderer renderer in renderers)
+            {
+                foreach (Material material in renderer.materials)
+                {
+                    // Setze den Rendering Mode auf Opaque (vollständig sichtbar)
+                    material.SetFloat("_Mode", 3); 
+                    material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+                    material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
+                    material.SetInt("_ZWrite", 1);
+                    material.DisableKeyword("_ALPHATEST_ON");
+                    material.DisableKeyword("_ALPHABLEND_ON");
+                    material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+                    material.renderQueue = -1;
+
+                    // Setze die Deckkraft (Alpha-Wert) auf 100%
+                    Color color = material.color;
+                    color.a = 0.0f;
+                    material.color = color;
+                }
+            }
         }
     }
 }
