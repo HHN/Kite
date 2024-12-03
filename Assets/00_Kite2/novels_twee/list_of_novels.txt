@@ -1,5 +1,5 @@
 {
   "visualNovels": [
-    "00_Kite2\\novels_twee\\Einstieg"
+    "00_Kite2\\novels_twee\\Eltern"
   ]
 }
