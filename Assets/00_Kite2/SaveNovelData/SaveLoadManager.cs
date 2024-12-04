@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using _00_Kite2.Common.Novel;
 using _00_Kite2.Player;
 using Newtonsoft.Json;
 using UnityEngine;

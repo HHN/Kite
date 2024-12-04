@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using _00_Kite2.Common.Novel;
 using _00_Kite2.Player;
 using UnityEngine;
 

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Text;
 using _00_Kite2.Audio_Resources.Resources;
+using _00_Kite2.Common.Novel;
 using _00_Kite2.Player;
 using UnityEngine;
 
@@ -331,7 +332,7 @@ public class NovelAnalyserHelper
             OnAnalysationFailed("GPT prompt event without prompt!", objectUnderAnalyse.title, novelEvent.id);
             return;
         }
-        if (string.IsNullOrEmpty(novelEvent.variablesNameForGptPromp))
+        if (string.IsNullOrEmpty(novelEvent.variablesNameForGptPrompt))
         {
             OnAnalysationFailed("GPT prompt event without variable!", objectUnderAnalyse.title, novelEvent.id);
             return;
