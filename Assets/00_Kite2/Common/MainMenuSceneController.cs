@@ -20,7 +20,7 @@ namespace _00_Kite2.Common
         [SerializeField] private TextMeshProUGUI infoTextTermsAndConditions;
         [SerializeField] private AudioSource kiteAudioLogo;
         [SerializeField] private GameObject getVersionServerCallPrefab;
-        [SerializeField] private static int COMPATIBLE_SERVER_VERSION_NUMBER = 9;
+        [SerializeField] private static int COMPATIBLE_SERVER_VERSION_NUMBER = 10;
         [SerializeField] private GameObject novelLoader;
 
     private void Start()

@@ -64,6 +64,16 @@ public class TextToSpeechManager : MonoBehaviour
         }
     }
 
+    public void SetLastMessage(string message)
+    {
+        lastMessage = message;
+    }
+
+    public string GetLastMessage()
+    {
+        return lastMessage;
+    }
+
     public void SetIsSpeaking(bool boolValue)
     {
         isSpeaking = boolValue;
@@ -89,7 +99,6 @@ public class TextToSpeechManager : MonoBehaviour
         ttsIsActive = true;
         PlayerPrefs.SetInt("TTS", 1);
         PlayerPrefs.Save();
-        Debug.Log("ttsIsActive: " + ttsIsActive);
     }
 
     public void DeactivateTTS()
@@ -97,7 +106,6 @@ public class TextToSpeechManager : MonoBehaviour
         ttsIsActive = false;
         PlayerPrefs.SetInt("TTS", 0);
         PlayerPrefs.Save();
-        Debug.Log("ttsIsActive: " + ttsIsActive);
     }
 
     public bool IsTextToSpeechActivated()
@@ -134,7 +142,7 @@ public class TextToSpeechManager : MonoBehaviour
             {
                 ttsManager.isInitialized = true;
                 ttsManager.SetLanguage();
-                Debug.Log("TextToSpeech successfully initialized.");
+                //Debug.Log("TextToSpeech successfully initialized.");
             }
             else
             {
@@ -150,7 +158,7 @@ public class TextToSpeechManager : MonoBehaviour
         locale = new AndroidJavaObject("java.util.Locale", "de", "DE");
 
         int result = ttsObject.Call<int>("setLanguage", locale);
-        Debug.Log("setLanguage return value: " + result);
+        //Debug.Log("setLanguage return value: " + result);
 
         if (result == -2) // LANG_MISSING_DATA
         {
@@ -162,7 +170,7 @@ public class TextToSpeechManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Language set successfully.");
+            //Debug.Log("Language set successfully.");
         }
     }
 
@@ -233,7 +241,7 @@ public class TextToSpeechManager : MonoBehaviour
     {
         if (ttsIsActive)
         {
-            Debug.Log("TTS with: " + message);
+            //Debug.Log("TTS with: " + message);
 
             // Wait until the TTS engine is initialized
             while (!isInitialized)
@@ -273,7 +281,7 @@ public class TextToSpeechManager : MonoBehaviour
                     float estimatedDuration = message.Length * 0.05f; // Adjustable based on speech rate
                     yield return new WaitForSeconds(estimatedDuration);
                 }
-                Debug.Log("!!!Setze IsSpeaking auf false!!!");
+                //Debug.Log("!!!Setze IsSpeaking auf false!!!");
                 isSpeaking = false;
             }
             else
@@ -301,9 +309,9 @@ public class TextToSpeechManager : MonoBehaviour
         }
     }
 
-    public void RepeatLastMessage()
+    public IEnumerator RepeatLastMessage()
     {
-        StartCoroutine(Speak(lastMessage));
+        yield return StartCoroutine(Speak(lastMessage));
     }
 
     int GetAndroidSDKVersion()

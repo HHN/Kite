@@ -101,7 +101,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_Kite2/NewPages/GemerkteNovelsScene.unity
     guid: 46df8111616ab4741b32e88ca04b2348
-  - enabled: 1
+  - enabled: 0
     path: Assets/00_Kite2/Common/IntroNovel/IntroNovelScene.unity
     guid: e26e8e9193e22d840a8ed81066131f25
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0

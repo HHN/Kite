@@ -4,6 +4,7 @@ using _00_Kite2.SaveNovelData;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 namespace _00_Kite2.Common.UI.UI_Elements.Messages
 {
@@ -38,6 +39,8 @@ namespace _00_Kite2.Common.UI.UI_Elements.Messages
 
         private PlayNovelSceneController
             _playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
+
+        [SerializeField] private GameObject messageBox;
 
         private void Start()
         {
@@ -77,23 +80,10 @@ namespace _00_Kite2.Common.UI.UI_Elements.Messages
         private void OnContinueButton()
         {
             _playNovelSceneController.IsPaused = false; // Resume the novel progression
-
-            this.CloseMessageBox();
-            //TextToSpeechManager.Instance.SetWasPaused(true);
-            TextToSpeechManager.Instance.RepeatLastMessage();
-            //TextToSpeechManager.Instance.SetIsSpeaking(false);
-
-            Debug.Log("Ruft PlayNextEvent auf");
+            StartCoroutine(_playNovelSceneController.ReadLast());
             AnimationFlagSingleton.Instance().SetFlag(false);
-            StartCoroutine(_playNovelSceneController.PlayNextEvent());
+            this.CloseMessageBox();
         }
-
-        // private void OnCancelButton()
-        // {
-        //     // Disable animations after confirmation
-        //     AnimationFlagSingleton.Instance().SetFlag(false);
-        //     _playNovelSceneController.PlayNextEvent();
-        // }
 
         private void OnPauseButton()
         {
