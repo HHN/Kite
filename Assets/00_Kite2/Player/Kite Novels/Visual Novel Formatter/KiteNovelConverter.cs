@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using _00_Kite2.Audio_Resources.Resources;
+using _00_Kite2.Common.Novel;
 using UnityEngine;
 
 public class KiteNovelConverter

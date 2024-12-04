@@ -1503,6 +1503,7 @@ MonoBehaviour:
   backgroundEnd: {fileID: 4100240129520118232}
   textStay: {fileID: 2071798968850960864}
   person: {fileID: 3452399019805254143}
+  messageBox: {fileID: 0}
 --- !u!1 &5823951422607028233
 GameObject:
   m_ObjectHideFlags: 0

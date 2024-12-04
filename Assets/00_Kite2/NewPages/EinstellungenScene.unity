@@ -153,8 +153,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 443.07693, y: -980}
-  m_SizeDelta: {x: 686.1539, y: 0}
+  m_AnchoredPosition: {x: 447.6684, y: -980}
+  m_SizeDelta: {x: 695.3368, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &16240627
 MonoBehaviour:
@@ -336,7 +336,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 30
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -414,8 +414,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 443.07693, y: -907.5}
-  m_SizeDelta: {x: 686.1539, y: 0}
+  m_AnchoredPosition: {x: 447.6684, y: -907.5}
+  m_SizeDelta: {x: 695.3368, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &176068750
 MonoBehaviour:
@@ -734,7 +734,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 30
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -1010,8 +1010,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 443.07693, y: -617.5}
-  m_SizeDelta: {x: 686.1539, y: 0}
+  m_AnchoredPosition: {x: 447.6684, y: -617.5}
+  m_SizeDelta: {x: 695.3368, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &327074105
 MonoBehaviour:
@@ -1257,8 +1257,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 443.07693, y: -762.5}
-  m_SizeDelta: {x: 686.1539, y: 0}
+  m_AnchoredPosition: {x: 447.6684, y: -762.5}
+  m_SizeDelta: {x: 695.3368, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &434348563
 MonoBehaviour:
@@ -1862,6 +1862,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 1476355461243221266, guid: f06932513849a4444b16dbe594485619, type: 3}
+      propertyPath: m_lineSpacing
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1906,8 +1910,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 443.07693, y: -835}
-  m_SizeDelta: {x: 686.1539, y: 0}
+  m_AnchoredPosition: {x: 447.6684, y: -835}
+  m_SizeDelta: {x: 695.3368, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1045656893
 MonoBehaviour:
@@ -2039,7 +2043,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 30
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -2222,7 +2226,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 443.07693, y: -250}
+  m_AnchoredPosition: {x: 447.6684, y: -250}
   m_SizeDelta: {x: 300, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1272155757
@@ -2331,8 +2335,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 443.07693, y: -515}
-  m_SizeDelta: {x: 686.1539, y: 0}
+  m_AnchoredPosition: {x: 447.6684, y: -515}
+  m_SizeDelta: {x: 695.3368, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1354371487
 MonoBehaviour:
@@ -2406,8 +2410,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 443.07693, y: -1052.5}
-  m_SizeDelta: {x: 686.1539, y: 0}
+  m_AnchoredPosition: {x: 447.6684, y: -1052.5}
+  m_SizeDelta: {x: 695.3368, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1403007951
 MonoBehaviour:
@@ -2623,7 +2627,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 30
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -2759,7 +2763,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 30
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -2920,8 +2924,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 443.07693, y: -690}
-  m_SizeDelta: {x: 686.1539, y: 0}
+  m_AnchoredPosition: {x: 447.6684, y: -690}
+  m_SizeDelta: {x: 695.3368, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2126624003
 MonoBehaviour:

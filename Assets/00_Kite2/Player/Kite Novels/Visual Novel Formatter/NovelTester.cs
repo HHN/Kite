@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using _00_Kite2.Audio_Resources.Resources;
+using _00_Kite2.Common.Novel;
 using UnityEngine;
 
 public class NovelTester
@@ -245,7 +246,7 @@ public class NovelTester
             OnTestFailed("GPT prompt event without prompt!", objectUnderTest.title, novelEvent.id);
             return;
         }
-        if (string.IsNullOrEmpty(novelEvent.variablesNameForGptPromp))
+        if (string.IsNullOrEmpty(novelEvent.variablesNameForGptPrompt))
         {
             OnTestFailed("GPT prompt event without variable!", objectUnderTest.title, novelEvent.id);
             return;
