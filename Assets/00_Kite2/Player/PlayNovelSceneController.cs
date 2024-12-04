@@ -297,6 +297,13 @@ namespace _00_Kite2.Player
                     _novelImagesController = controllerTransform.GetComponent<IntroNovelImageController>();
                     break;
                 }
+                case "Honorarverhandlung mit Kundin":
+                {
+                    GameObject novelImagesInstance = Instantiate(novelVisuals[7], viewPortTransform);
+                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                    _novelImagesController = controllerTransform.GetComponent<VerhandlungNovelImageController>();
+                    break;
+                }
                 default:
                 {
                     GameObject novelImagesInstance = Instantiate(novelVisuals[0], viewPortTransform);
