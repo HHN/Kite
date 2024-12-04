@@ -291,6 +291,7 @@ Ach nein, da bleiben wir lieber bei Ihnen und Ihrem Unternehmen. Außer es hat k
 >>Ende<<
 
 
+
 :: Folgegespräch {"position":"3075,750","size":"100,100"}
 >>Charakter01SprichtLaughing:<<
 Ein Folgegespräch klingt gut, aber auch beim ersten Mal wäre eine Geste schön. Gerade bei Unternehmerinnen freuen wir uns über flexiblere Angebote.
@@ -341,6 +342,7 @@ Wissen Sie, oft habe ich bei Gründerinnen den Eindruck, dass ein kooperativer A
 [[Kooperation bedeutet für mich eine faire Bezahlung und Wertschätzung meiner Expertise.->Wertschätzung]]
 
 
+
 :: Geschlechtsunabhängig 2 [Bias] {"position":"2775,2025","size":"100,100"}
 >>Charakter01SprichtRelaxed:<<
 Wissen Sie, oft habe ich bei Gründerinnen den Eindruck, dass ein kooperativer Ansatz erfolgreicher ist. Könnten wir uns nicht entgegenkommen?
@@ -350,6 +352,7 @@ Wissen Sie, oft habe ich bei Gründerinnen den Eindruck, dass ein kooperativer A
 [[Ich bin Ihnen ja bereits mit einem Paketpreis entgegengekommen. Mehr ist nicht möglich.->Nicht im Paketpreis 2]]
 
 [[Kooperation bedeutet für mich eine faire Bezahlung und Wertschätzung meiner Expertise.->Wertschätzung 2]]
+
 
 
 :: Gute Arbeit {"position":"3125,3625","size":"100,100"}
