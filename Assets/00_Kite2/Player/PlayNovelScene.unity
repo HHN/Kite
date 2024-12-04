@@ -920,8 +920,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 443.07693, y: -265}
-  m_SizeDelta: {x: 886.1539, y: 0}
+  m_AnchoredPosition: {x: 447.6684, y: -265}
+  m_SizeDelta: {x: 895.3368, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &498441981
 MonoBehaviour:
@@ -1002,7 +1002,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 30
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -1696,7 +1696,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 30
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -3678,7 +3678,7 @@ MonoBehaviour:
     questionForFreeTextInput: 
     variablesName: 
     gptPrompt: 
-    variablesNameForGptPromp: 
+    variablesNameForGptPrompt: 
     gptCompletionHandlerId: 0
     key: 
     value: 
