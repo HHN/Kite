@@ -335,8 +335,8 @@ namespace _00_Kite2.Player
             {
                 if (novel.id == _novelId)
                 {
-                    Debug.Log("title: " + novel.title);
-                    Debug.Log("description: " + novel.description);
+                    //Debug.Log("title: " + novel.title);
+                    //Debug.Log("description: " + novel.description);
                     
                     if (novel.id == 13)
                     {
