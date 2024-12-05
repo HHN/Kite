@@ -1,12 +1,10 @@
 using UnityEngine;
 using System.Collections;
+using System.Runtime.InteropServices;
 
 public class TextToSpeechManager : MonoBehaviour
 {
     private static TextToSpeechManager instance;
-
-    private AndroidJavaObject ttsObject;
-    private AndroidJavaObject locale;
 
     private bool ttsIsActive = true;
 
@@ -16,11 +14,24 @@ public class TextToSpeechManager : MonoBehaviour
 
     private bool isSpeaking = false;
 
-    private bool isInitialized = false;
-
     private string lastMessage = "";
 
     private bool wasPaused = false;
+
+    // iOS native methods
+#if UNITY_IOS
+    [DllImport("__Internal")]
+    private static extern void _InitializeTTS();
+
+    [DllImport("__Internal")]
+    private static extern void _Speak(string message);
+
+    [DllImport("__Internal")]
+    private static extern void _StopSpeaking();
+
+    [DllImport("__Internal")]
+    private static extern bool _IsSpeaking();
+#endif
 
     public static TextToSpeechManager Instance
     {
@@ -57,11 +68,16 @@ public class TextToSpeechManager : MonoBehaviour
     {
         ttsIsActive = PlayerPrefs.GetInt("TTS", 0) != 0;
 
+#if UNITY_ANDROID
         if (Application.platform == RuntimePlatform.Android)
         {
-            // Initialize the TTS engine
-            StartCoroutine(InitializeTTS());
+            // Initialize the TTS engine for Android
+            StartCoroutine(InitializeTTSAndroid());
         }
+#elif UNITY_IOS
+        // Initialize the TTS engine for iOS
+        _InitializeTTS();
+#endif
     }
 
     public void SetLastMessage(string message)
@@ -81,7 +97,13 @@ public class TextToSpeechManager : MonoBehaviour
 
     public bool IsSpeaking()
     {
+#if UNITY_ANDROID
         return isSpeaking;
+#elif UNITY_IOS
+        return _IsSpeaking();
+#else
+        return false;
+#endif
     }
 
     public void SetWasPaused(bool boolValue)
@@ -111,67 +133,6 @@ public class TextToSpeechManager : MonoBehaviour
     public bool IsTextToSpeechActivated()
     {
         return ttsIsActive;
-    }
-
-    IEnumerator InitializeTTS()
-    {
-        yield return new WaitForSeconds(0.1f);
-
-        using (AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
-        {
-            AndroidJavaObject unityActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
-
-            // Create the TTS instance with a listener
-            ttsObject = new AndroidJavaObject("android.speech.tts.TextToSpeech", unityActivity, new OnInitListener(this));
-        }
-    }
-
-    // OnInitListener class to handle TTS initialization
-    private class OnInitListener : AndroidJavaProxy
-    {
-        private TextToSpeechManager ttsManager;
-
-        public OnInitListener(TextToSpeechManager manager) : base("android.speech.tts.TextToSpeech$OnInitListener")
-        {
-            ttsManager = manager;
-        }
-
-        public void onInit(int status)
-        {
-            if (status == 0) // SUCCESS
-            {
-                ttsManager.isInitialized = true;
-                ttsManager.SetLanguage();
-                //Debug.Log("TextToSpeech successfully initialized.");
-            }
-            else
-            {
-                Debug.LogError("Error initializing TextToSpeech.");
-            }
-        }
-    }
-
-    private void SetLanguage()
-    {
-        // Use the desired locale
-        AndroidJavaClass localeClass = new AndroidJavaClass("java.util.Locale");
-        locale = new AndroidJavaObject("java.util.Locale", "de", "DE");
-
-        int result = ttsObject.Call<int>("setLanguage", locale);
-        //Debug.Log("setLanguage return value: " + result);
-
-        if (result == -2) // LANG_MISSING_DATA
-        {
-            Debug.LogError("The selected language is not available (LANG_MISSING_DATA).");
-        }
-        else if (result == -1) // LANG_NOT_SUPPORTED
-        {
-            Debug.LogError("The selected language is not supported (LANG_NOT_SUPPORTED).");
-        }
-        else
-        {
-            //Debug.Log("Language set successfully.");
-        }
     }
 
     public void AddChoiceToChoiceCollectionForTextToSpeech(string choice)
@@ -206,6 +167,7 @@ public class TextToSpeechManager : MonoBehaviour
 
     public void CancelSpeak()
     {
+#if UNITY_ANDROID
         if (ttsObject != null)
         {
             StartEmptySpeech();
@@ -215,35 +177,21 @@ public class TextToSpeechManager : MonoBehaviour
         {
             Debug.LogError("ttsObject is null. Cannot cancel speech.");
         }
-    }
-
-    private void StartEmptySpeech()
-    {
-        string emptyMessage = "";
-        string utteranceId = "UniqueID_" + System.Guid.NewGuid().ToString();
-        int apiLevel = GetAndroidSDKVersion();
-
-        if (apiLevel >= 21)
-        {
-            AndroidJavaObject bundleParams = new AndroidJavaObject("android.os.Bundle");
-            bundleParams.Call("putString", "utteranceId", utteranceId);
-            ttsObject.Call<int>("speak", emptyMessage, 0, bundleParams, utteranceId);
-        }
-        else
-        {
-            AndroidJavaObject hashMapParams = new AndroidJavaObject("java.util.HashMap");
-            hashMapParams.Call<AndroidJavaObject>("put", "utteranceId", utteranceId);
-            ttsObject.Call<int>("speak", emptyMessage, 0, hashMapParams);
-        }
+#elif UNITY_IOS
+        _StopSpeaking();
+        isSpeaking = false;
+#endif
     }
 
     public IEnumerator Speak(string message)
     {
         if (ttsIsActive)
         {
-            //Debug.Log("TTS with: " + message);
+            lastMessage = message;
+            isSpeaking = true;
 
-            // Wait until the TTS engine is initialized
+#if UNITY_ANDROID
+            // Android implementation
             while (!isInitialized)
             {
                 yield return null;
@@ -251,9 +199,6 @@ public class TextToSpeechManager : MonoBehaviour
 
             if (ttsObject != null)
             {
-                lastMessage = message;
-                isSpeaking = true;
-
                 string utteranceId = "UniqueID_" + System.Guid.NewGuid().ToString();
 
                 int apiLevel = GetAndroidSDKVersion();
@@ -281,13 +226,23 @@ public class TextToSpeechManager : MonoBehaviour
                     float estimatedDuration = message.Length * 0.05f; // Adjustable based on speech rate
                     yield return new WaitForSeconds(estimatedDuration);
                 }
-                //Debug.Log("!!!Setze IsSpeaking auf false!!!");
-                isSpeaking = false;
             }
             else
             {
                 Debug.LogError("TextToSpeech is not initialized.");
             }
+
+#elif UNITY_IOS
+            // iOS implementation
+            _Speak(message);
+
+            // Wait until the speech is finished
+            while (_IsSpeaking())
+            {
+                yield return null;
+            }
+#endif
+            isSpeaking = false;
         }
         else
         {
@@ -298,6 +253,7 @@ public class TextToSpeechManager : MonoBehaviour
 
     public void StopSpeaking()
     {
+#if UNITY_ANDROID
         if (ttsObject != null)
         {
             StartEmptySpeech();
@@ -307,11 +263,97 @@ public class TextToSpeechManager : MonoBehaviour
         {
             Debug.LogError("ttsObject is null. Cannot stop speaking.");
         }
+#elif UNITY_IOS
+        _StopSpeaking();
+        isSpeaking = false;
+#endif
     }
 
     public IEnumerator RepeatLastMessage()
     {
         yield return StartCoroutine(Speak(lastMessage));
+    }
+
+#if UNITY_ANDROID
+    // Android-specific fields and methods
+    private AndroidJavaObject ttsObject;
+    private AndroidJavaObject locale;
+
+    private bool isInitialized = false;
+
+    IEnumerator InitializeTTSAndroid()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        using (AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+        {
+            AndroidJavaObject unityActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
+
+            // Create the TTS instance with a listener
+            ttsObject = new AndroidJavaObject("android.speech.tts.TextToSpeech", unityActivity, new OnInitListener(this));
+        }
+    }
+
+    // OnInitListener class to handle TTS initialization
+    private class OnInitListener : AndroidJavaProxy
+    {
+        private TextToSpeechManager ttsManager;
+
+        public OnInitListener(TextToSpeechManager manager) : base("android.speech.tts.TextToSpeech$OnInitListener")
+        {
+            ttsManager = manager;
+        }
+
+        public void onInit(int status)
+        {
+            if (status == 0) // SUCCESS
+            {
+                ttsManager.isInitialized = true;
+                ttsManager.SetLanguage();
+            }
+            else
+            {
+                Debug.LogError("Error initializing TextToSpeech.");
+            }
+        }
+    }
+
+    private void SetLanguage()
+    {
+        // Use the desired locale
+        AndroidJavaClass localeClass = new AndroidJavaClass("java.util.Locale");
+        locale = new AndroidJavaObject("java.util.Locale", "de", "DE");
+
+        int result = ttsObject.Call<int>("setLanguage", locale);
+
+        if (result == -2) // LANG_MISSING_DATA
+        {
+            Debug.LogError("The selected language is not available (LANG_MISSING_DATA).");
+        }
+        else if (result == -1) // LANG_NOT_SUPPORTED
+        {
+            Debug.LogError("The selected language is not supported (LANG_NOT_SUPPORTED).");
+        }
+    }
+
+    private void StartEmptySpeech()
+    {
+        string emptyMessage = "";
+        string utteranceId = "UniqueID_" + System.Guid.NewGuid().ToString();
+        int apiLevel = GetAndroidSDKVersion();
+
+        if (apiLevel >= 21)
+        {
+            AndroidJavaObject bundleParams = new AndroidJavaObject("android.os.Bundle");
+            bundleParams.Call("putString", "utteranceId", utteranceId);
+            ttsObject.Call<int>("speak", emptyMessage, 0, bundleParams, utteranceId);
+        }
+        else
+        {
+            AndroidJavaObject hashMapParams = new AndroidJavaObject("java.util.HashMap");
+            hashMapParams.Call<AndroidJavaObject>("put", "utteranceId", utteranceId);
+            ttsObject.Call<int>("speak", emptyMessage, 0, hashMapParams);
+        }
     }
 
     int GetAndroidSDKVersion()
@@ -329,4 +371,5 @@ public class TextToSpeechManager : MonoBehaviour
             ttsObject = null;
         }
     }
+#endif
 }
