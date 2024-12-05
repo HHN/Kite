@@ -1,183 +1,187 @@
 using _00_Kite2.Common.Managers;
+using LeastSquares.Overtone;
 using UnityEngine;
 using UnityEngine.UI;
-using LeastSquares.Overtone;
 
-public class DatenschutzSceneController : SceneController
+namespace _00_Kite2.NewPages
 {
-    [SerializeField] private Toggle dataCollectionToggle;
-    [SerializeField] private Button toggleDataCollectionInfoButton;
-    [SerializeField] private Button deleteCollectedDataButton;
-    [SerializeField] private Button deleteCollectedDataInfoButton;
-    [SerializeField] private Button resetAppButton;
-    [SerializeField] private Button resetAppInfoButton;
-    [SerializeField] private Button playerPrefsButton;
-    [SerializeField] private Button playerPrefsInfoButton;
-    [SerializeField] private Toggle applicationModeToggle;
-    [SerializeField] private Button applicationModeInfoButton;
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private RectTransform layout;
-    [SerializeField] private RectTransform layout02;
-    [SerializeField] private TTSEngine engine;
-    [SerializeField] private DeleteUserDataConfirmation deleteUserDataConfirmDialogObject;
-    [SerializeField] private GameObject deleteUserDataConfirmDialog;
-
-    void Start()
+    public class DatenschutzSceneController : SceneController
     {
-        BackStackManager.Instance().Push(SceneNames.DATENSCHUTZ_SCENE);
+        [SerializeField] private Toggle dataCollectionToggle;
+        [SerializeField] private Button toggleDataCollectionInfoButton;
+        [SerializeField] private Button deleteCollectedDataButton;
+        [SerializeField] private Button deleteCollectedDataInfoButton;
+        [SerializeField] private Button resetAppButton;
+        [SerializeField] private Button resetAppInfoButton;
+        [SerializeField] private Button playerPrefsButton;
+        [SerializeField] private Button playerPrefsInfoButton;
+        [SerializeField] private Toggle applicationModeToggle;
+        [SerializeField] private Button applicationModeInfoButton;
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private RectTransform layout;
+        [SerializeField] private RectTransform layout02;
+        [SerializeField] private TTSEngine engine;
+        [SerializeField] private DeleteUserDataConfirmation deleteUserDataConfirmDialogObject;
+        [SerializeField] private GameObject deleteUserDataConfirmDialog;
 
-        LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
-        LayoutRebuilder.ForceRebuildLayoutImmediate(layout02);
-        audioSource = GetComponent<AudioSource>();
-        TextToSpeechService.Instance().SetAudioSource(audioSource);
-
-        InitializeToggleDataCollectionButton();
-        InitializeApplicationModeButton();
-
-        dataCollectionToggle.onValueChanged.AddListener(delegate { OnToggleDataCollection(dataCollectionToggle); }); toggleDataCollectionInfoButton.onClick.AddListener(delegate { OnToggleDataCollectionInfoButton(); });
-        deleteCollectedDataButton.onClick.AddListener(delegate { OnDeleteCollectedDataButton(); });
-        deleteCollectedDataInfoButton.onClick.AddListener(delegate { OnDeleteCollectedDataInfoButton(); });
-        resetAppButton.onClick.AddListener(delegate { OnResetAppButton(); });
-        resetAppInfoButton.onClick.AddListener(delegate { OnResetAppInfoButton(); });
-        playerPrefsButton.onClick.AddListener(delegate { OnPlayerPrefsButton(); });
-        playerPrefsInfoButton.onClick.AddListener(delegate { OnPlayerPrefsInfoButton(); });
-        applicationModeToggle.onValueChanged.AddListener(delegate { OnApplicationModeToggle(applicationModeToggle); });
-        applicationModeInfoButton.onClick.AddListener(delegate { OnApplicationModeInfoButton(); });
-        FontSizeManager.Instance().UpdateAllTextComponents();
-    }
-    public void OnToggleDataCollection(Toggle toggle)
-    {
-        if (toggle.isOn)
+        void Start()
         {
-            PrivacyAndConditionManager.Instance().AcceptDataCollection();
-            DisplayInfoMessage(InfoMessages.STARTED_DATA_COLLECTION);
-            TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.STARTED_DATA_COLLECTION, engine);
-        }
-        else
-        {
-            PrivacyAndConditionManager.Instance().UnaccepedDataCollection();
-            DisplayInfoMessage(InfoMessages.STOPPED_DATA_COLLECTION);
-            TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.STOPPED_DATA_COLLECTION, engine);
+            BackStackManager.Instance().Push(SceneNames.DATENSCHUTZ_SCENE);
 
-        }
-    }
+            LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(layout02);
+            audioSource = GetComponent<AudioSource>();
+            TextToSpeechService.Instance().SetAudioSource(audioSource);
 
-    public void OnApplicationModeToggle(Toggle toggle)
-    {
-        if (toggle.isOn)
-        {
-            ApplicationModeManager.Instance().ActivateOnlineMode();
-            DisplayInfoMessage(InfoMessages.SWITCHED_TO_ONLINE_MODE);
-            TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.SWITCHED_TO_ONLINE_MODE, engine);
-        }
-        else
-        {
-            ApplicationModeManager.Instance().ActivateOfflineMode();
-            DisplayInfoMessage(InfoMessages.SWITCHED_TO_OFFLINE_MODE);
-            TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.SWITCHED_TO_OFFLINE_MODE, engine);
-        }
-    }
+            InitializeToggleDataCollectionButton();
+            InitializeApplicationModeButton();
 
-    public void OnToggleDataCollectionInfoButton()
-    {
-        if (PrivacyAndConditionManager.Instance().IsDataCollectionAccepted())
-        {
-            TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.EXPLANATION_STOP_DATA_BUTTON, engine);
-            DisplayInfoMessage(InfoMessages.EXPLANATION_STOP_DATA_BUTTON);
+            dataCollectionToggle.onValueChanged.AddListener(delegate { OnToggleDataCollection(dataCollectionToggle); }); toggleDataCollectionInfoButton.onClick.AddListener(OnToggleDataCollectionInfoButton);
+            deleteCollectedDataButton.onClick.AddListener(OnDeleteCollectedDataButton);
+            deleteCollectedDataInfoButton.onClick.AddListener(OnDeleteCollectedDataInfoButton);
+            resetAppButton.onClick.AddListener(OnResetAppButton);
+            resetAppInfoButton.onClick.AddListener(OnResetAppInfoButton);
+            playerPrefsButton.onClick.AddListener(OnPlayerPrefsButton);
+            playerPrefsInfoButton.onClick.AddListener(OnPlayerPrefsInfoButton);
+            applicationModeToggle.onValueChanged.AddListener(delegate { OnApplicationModeToggle(applicationModeToggle); });
+            applicationModeInfoButton.onClick.AddListener(OnApplicationModeInfoButton);
+            FontSizeManager.Instance().UpdateAllTextComponents();
         }
-        else
+
+        private void OnToggleDataCollection(Toggle toggle)
         {
-            TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.EXPLANATION_COLLECT_DATA_BUTTON, engine);
-            DisplayInfoMessage(InfoMessages.EXPLANATION_COLLECT_DATA_BUTTON);
-        }
-    }
+            if (toggle.isOn)
+            {
+                PrivacyAndConditionManager.Instance().AcceptDataCollection();
+                DisplayInfoMessage(InfoMessages.STARTED_DATA_COLLECTION);
+                TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.STARTED_DATA_COLLECTION, engine);
+            }
+            else
+            {
+                PrivacyAndConditionManager.Instance().UnaccepedDataCollection();
+                DisplayInfoMessage(InfoMessages.STOPPED_DATA_COLLECTION);
+                TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.STOPPED_DATA_COLLECTION, engine);
 
-    public void OnDeleteCollectedDataButton()
-    {
-        if (!DestroyValidator.IsNullOrDestroyed(deleteUserDataConfirmDialogObject))
+            }
+        }
+
+        private void OnApplicationModeToggle(Toggle toggle)
         {
-            deleteUserDataConfirmDialogObject.CloseMessageBox();
+            if (toggle.isOn)
+            {
+                ApplicationModeManager.Instance().ActivateOnlineMode();
+                DisplayInfoMessage(InfoMessages.SWITCHED_TO_ONLINE_MODE);
+                TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.SWITCHED_TO_ONLINE_MODE, engine);
+            }
+            else
+            {
+                ApplicationModeManager.Instance().ActivateOfflineMode();
+                DisplayInfoMessage(InfoMessages.SWITCHED_TO_OFFLINE_MODE);
+                TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.SWITCHED_TO_OFFLINE_MODE, engine);
+            }
         }
-        if (DestroyValidator.IsNullOrDestroyed(canvas))
+
+        private void OnToggleDataCollectionInfoButton()
         {
-            return;
+            if (PrivacyAndConditionManager.Instance().IsDataCollectionAccepted())
+            {
+                TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.EXPLANATION_STOP_DATA_BUTTON, engine);
+                DisplayInfoMessage(InfoMessages.EXPLANATION_STOP_DATA_BUTTON);
+            }
+            else
+            {
+                TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.EXPLANATION_COLLECT_DATA_BUTTON, engine);
+                DisplayInfoMessage(InfoMessages.EXPLANATION_COLLECT_DATA_BUTTON);
+            }
         }
-        deleteUserDataConfirmDialogObject = null;
-        deleteUserDataConfirmDialogObject = Instantiate(deleteUserDataConfirmDialog, 
-            canvas.transform).GetComponent<DeleteUserDataConfirmation>();
-        deleteUserDataConfirmDialogObject.Initialize("delete");
-        deleteUserDataConfirmDialogObject.Activate();
-    }
 
-    public void OnDeleteCollectedDataInfoButton()
-    {
-        TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.EXPLANATION_DELETE_DATA_BUTTON, engine);
-        DisplayInfoMessage(InfoMessages.EXPLANATION_DELETE_DATA_BUTTON);
-    }
-
-    public void OnResetAppButton()
-    {
-        if (!DestroyValidator.IsNullOrDestroyed(deleteUserDataConfirmDialogObject))
+        private void OnDeleteCollectedDataButton()
         {
-            deleteUserDataConfirmDialogObject.CloseMessageBox();
+            if (!DestroyValidator.IsNullOrDestroyed(deleteUserDataConfirmDialogObject))
+            {
+                deleteUserDataConfirmDialogObject.CloseMessageBox();
+            }
+            if (DestroyValidator.IsNullOrDestroyed(canvas))
+            {
+                return;
+            }
+            deleteUserDataConfirmDialogObject = null;
+            deleteUserDataConfirmDialogObject = Instantiate(deleteUserDataConfirmDialog, 
+                canvas.transform).GetComponent<DeleteUserDataConfirmation>();
+            deleteUserDataConfirmDialogObject.Initialize("delete");
+            deleteUserDataConfirmDialogObject.Activate();
         }
-        if (DestroyValidator.IsNullOrDestroyed(canvas))
+
+        private void OnDeleteCollectedDataInfoButton()
         {
-            return;
+            TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.EXPLANATION_DELETE_DATA_BUTTON, engine);
+            DisplayInfoMessage(InfoMessages.EXPLANATION_DELETE_DATA_BUTTON);
         }
-        deleteUserDataConfirmDialogObject = null;
-        deleteUserDataConfirmDialogObject = Instantiate(deleteUserDataConfirmDialog,
-            canvas.transform).GetComponent<DeleteUserDataConfirmation>();
-        deleteUserDataConfirmDialogObject.Initialize("reset");
-        deleteUserDataConfirmDialogObject.Activate();
-    }
 
-    public void OnResetAppInfoButton()
-    {
-        TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.EXPLANATION_RESET_APP_BUTTON, engine);
-        DisplayInfoMessage(InfoMessages.EXPLANATION_RESET_APP_BUTTON);
-    }
-
-    public void InitializeToggleDataCollectionButton()
-    {
-        if (PrivacyAndConditionManager.Instance().IsDataCollectionAccepted())
+        private void OnResetAppButton()
         {
-            dataCollectionToggle.isOn = true;
+            if (!DestroyValidator.IsNullOrDestroyed(deleteUserDataConfirmDialogObject))
+            {
+                deleteUserDataConfirmDialogObject.CloseMessageBox();
+            }
+            if (DestroyValidator.IsNullOrDestroyed(canvas))
+            {
+                return;
+            }
+            deleteUserDataConfirmDialogObject = null;
+            deleteUserDataConfirmDialogObject = Instantiate(deleteUserDataConfirmDialog,
+                canvas.transform).GetComponent<DeleteUserDataConfirmation>();
+            deleteUserDataConfirmDialogObject.Initialize("reset");
+            deleteUserDataConfirmDialogObject.Activate();
         }
-        else
+
+        private void OnResetAppInfoButton()
         {
-            dataCollectionToggle.isOn = false;
+            TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.EXPLANATION_RESET_APP_BUTTON, engine);
+            DisplayInfoMessage(InfoMessages.EXPLANATION_RESET_APP_BUTTON);
         }
-    }
 
-    public void InitializeApplicationModeButton()
-    {
-        if (ApplicationModeManager.Instance().IsOfflineModeActive())
+        private void InitializeToggleDataCollectionButton()
         {
-            applicationModeToggle.isOn = false;
+            if (PrivacyAndConditionManager.Instance().IsDataCollectionAccepted())
+            {
+                dataCollectionToggle.isOn = true;
+            }
+            else
+            {
+                dataCollectionToggle.isOn = false;
+            }
         }
-        else
+
+        private void InitializeApplicationModeButton()
         {
-            applicationModeToggle.isOn = true;
+            if (ApplicationModeManager.Instance().IsOfflineModeActive())
+            {
+                applicationModeToggle.isOn = false;
+            }
+            else
+            {
+                applicationModeToggle.isOn = true;
+            }
         }
-    }
 
-    private void OnPlayerPrefsButton()
-    {
-        //TextToSpeechService.Instance().TextToSpeech("");
-        SceneLoader.LoadPlayerPrefsScene();
-    }
+        private void OnPlayerPrefsButton()
+        {
+            //TextToSpeechService.Instance().TextToSpeech("");
+            SceneLoader.LoadPlayerPrefsScene();
+        }
 
-    private void OnPlayerPrefsInfoButton()
-    {
-        TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.EXPLANATION_PLAYERPREFS_BUTTON, engine);
-        DisplayInfoMessage(InfoMessages.EXPLANATION_PLAYERPREFS_BUTTON);
-    }
+        private void OnPlayerPrefsInfoButton()
+        {
+            TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.EXPLANATION_PLAYERPREFS_BUTTON, engine);
+            DisplayInfoMessage(InfoMessages.EXPLANATION_PLAYERPREFS_BUTTON);
+        }
 
 
-    private void OnApplicationModeInfoButton()
-    {
-        TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.EXPLANATION_APPLICATION_MODE_BUTTON, engine);
-        DisplayInfoMessage(InfoMessages.EXPLANATION_APPLICATION_MODE_BUTTON);
+        private void OnApplicationModeInfoButton()
+        {
+            TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.EXPLANATION_APPLICATION_MODE_BUTTON, engine);
+            DisplayInfoMessage(InfoMessages.EXPLANATION_APPLICATION_MODE_BUTTON);
+        }
     }
 }
