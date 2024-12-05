@@ -1,90 +1,93 @@
 using _00_Kite2.Common.Managers;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
-public class PlayerPrefsSceneController : SceneController
+namespace _00_Kite2.Common
 {
-    [SerializeField] private TextMeshProUGUI nameTextObject;
-    [SerializeField] private TextMeshProUGUI firmenNameTextObject;
-    [SerializeField] private TextMeshProUGUI elevatorPitchTextObject;
-    [SerializeField] private TextMeshProUGUI interessenTextObject;
-    [SerializeField] private TextMeshProUGUI vorgeschlageneInhalteTextObject;
-
-    [SerializeField] private Button editNameButton;
-    [SerializeField] private Button editFirmenNameButton;
-    [SerializeField] private Button editElevatorPitchButton;
-    [SerializeField] private Button editInteressenButton;
-
-    [SerializeField] private GameObject changePlayerPrefPrefab;
-    [SerializeField] private GameObject root;
-
-    [SerializeField] private string userName;
-    [SerializeField] private string firmenName;
-    [SerializeField] private string elevatorPitch;
-    [SerializeField] private string interessen;
-    [SerializeField] private string vorgeschlageneInhalte;
-
-    void Start()
+    public class PlayerPrefsSceneController : SceneController
     {
-        InitializeValues();
-        InitializeButtons();
-    }
+        [SerializeField] private TextMeshProUGUI nameTextObject;
+        [SerializeField] private TextMeshProUGUI firmenNameTextObject;
+        [SerializeField] private TextMeshProUGUI elevatorPitchTextObject;
+        [SerializeField] private TextMeshProUGUI interessenTextObject;
+        [SerializeField] private TextMeshProUGUI vorgeschlageneInhalteTextObject;
 
-    public void InitializeValues()
-    {
-        userName = PlayerDataManager.Instance().GetPlayerData("PlayerName");
-        firmenName = PlayerDataManager.Instance().GetPlayerData("CompanyName");
-        elevatorPitch = PlayerDataManager.Instance().GetPlayerData("ElevatorPitch");
-        interessen = PlayerDataManager.Instance().GetPlayerData("Preverences");
-        vorgeschlageneInhalte = PlayerDataManager.Instance().GetPlayerData("GPTAnswerForPreverences");
+        [SerializeField] private Button editNameButton;
+        [SerializeField] private Button editFirmenNameButton;
+        [SerializeField] private Button editElevatorPitchButton;
+        [SerializeField] private Button editInteressenButton;
 
-        if (string.IsNullOrEmpty(userName)) { userName = "Es wurde noch kein Name gespeichert."; }
-        if (string.IsNullOrEmpty(firmenName)) { firmenName = "Es wurde noch kein Firmenname gespeichert."; }
-        if (string.IsNullOrEmpty(elevatorPitch)) { elevatorPitch = "Es wurde noch kein Elevatorpitch gespeichert."; }
-        if (string.IsNullOrEmpty(interessen)) { interessen = "Es wurden noch keine Interessen gespeichert."; }
-        if (string.IsNullOrEmpty(vorgeschlageneInhalte)) { vorgeschlageneInhalte = "Es wurden noch keine Vorschläge ermittelt"; }
+        [SerializeField] private GameObject changePlayerPrefPrefab;
+        [SerializeField] private GameObject root;
 
-        nameTextObject.text = userName;
-        firmenNameTextObject.text = firmenName;
-        elevatorPitchTextObject.text = elevatorPitch;
-        interessenTextObject.text = interessen;
-        vorgeschlageneInhalteTextObject.text = vorgeschlageneInhalte;
-    }
+        [SerializeField] private string userName;
+        [SerializeField] private string firmenName;
+        [SerializeField] private string elevatorPitch;
+        [SerializeField] private string interessen;
+        [SerializeField] private string vorgeschlageneInhalte;
 
-    public void InitializeButtons()
-    {
-        editNameButton.onClick.AddListener(delegate { OnEditNameButton(); });
-        editFirmenNameButton.onClick.AddListener(delegate { OnEditFirmenNameButton(); });
-        editElevatorPitchButton.onClick.AddListener(delegate { OnEditElevatorPitchButton(); });
-        editInteressenButton.onClick.AddListener(delegate { OnEditInteressenButton(); });
-    }
+        private void Start()
+        {
+            InitializeValues();
+            InitializeButtons();
+        }
 
-    public void OnEditNameButton()
-    {
-        ChangePlayerPrefsController changePlayerPrefsController = Instantiate(this.changePlayerPrefPrefab, root.transform)
-        .GetComponent<ChangePlayerPrefsController>();
-        changePlayerPrefsController.Initialize("PlayerName", userName, "Namen ändern", "Wie möchtest du genannt werden?", this);
-    }
+        public void InitializeValues()
+        {
+            userName = PlayerDataManager.Instance().GetPlayerData("PlayerName");
+            firmenName = PlayerDataManager.Instance().GetPlayerData("CompanyName");
+            elevatorPitch = PlayerDataManager.Instance().GetPlayerData("ElevatorPitch");
+            interessen = PlayerDataManager.Instance().GetPlayerData("Preverences");
+            vorgeschlageneInhalte = PlayerDataManager.Instance().GetPlayerData("GPTAnswerForPreverences");
 
-    public void OnEditFirmenNameButton()
-    {
-        ChangePlayerPrefsController changePlayerPrefsController = Instantiate(this.changePlayerPrefPrefab, root.transform)
-        .GetComponent<ChangePlayerPrefsController>();
-        changePlayerPrefsController.Initialize("CompanyName", firmenName, "Firmennamen ändern", "Wie möchtest du deine Firma nennen?", this);
-    }
+            if (string.IsNullOrEmpty(userName)) { userName = "Es wurde noch kein Name gespeichert."; }
+            if (string.IsNullOrEmpty(firmenName)) { firmenName = "Es wurde noch kein Firmenname gespeichert."; }
+            if (string.IsNullOrEmpty(elevatorPitch)) { elevatorPitch = "Es wurde noch kein Elevatorpitch gespeichert."; }
+            if (string.IsNullOrEmpty(interessen)) { interessen = "Es wurden noch keine Interessen gespeichert."; }
+            if (string.IsNullOrEmpty(vorgeschlageneInhalte)) { vorgeschlageneInhalte = "Es wurden noch keine Vorschläge ermittelt."; }
 
-    public void OnEditElevatorPitchButton()
-    {
-        ChangePlayerPrefsController changePlayerPrefsController = Instantiate(this.changePlayerPrefPrefab, root.transform)
-        .GetComponent<ChangePlayerPrefsController>();
-        changePlayerPrefsController.Initialize("ElevatorPitch", elevatorPitch, "Elevatorpitch ändern", "Was für ein Unternehmen führst du?", this);
-    }
+            nameTextObject.text = userName;
+            firmenNameTextObject.text = firmenName;
+            elevatorPitchTextObject.text = elevatorPitch;
+            interessenTextObject.text = interessen;
+            vorgeschlageneInhalteTextObject.text = vorgeschlageneInhalte;
+        }
 
-    public void OnEditInteressenButton()
-    {
-        ChangePlayerPrefsController changePlayerPrefsController = Instantiate(this.changePlayerPrefPrefab, root.transform)
-        .GetComponent<ChangePlayerPrefsController>();
-        changePlayerPrefsController.Initialize("Preverences", interessen, "Interessen ändern", "Was sind deine Interessen?", this);
+        private void InitializeButtons()
+        {
+            editNameButton.onClick.AddListener(OnEditNameButton);
+            editFirmenNameButton.onClick.AddListener(OnEditFirmenNameButton);
+            editElevatorPitchButton.onClick.AddListener(OnEditElevatorPitchButton);
+            editInteressenButton.onClick.AddListener(OnEditInteressenButton);
+        }
+
+        private void OnEditNameButton()
+        {
+            ChangePlayerPrefsController changePlayerPrefsController = Instantiate(this.changePlayerPrefPrefab, root.transform)
+                .GetComponent<ChangePlayerPrefsController>();
+            changePlayerPrefsController.Initialize("PlayerName", userName, "Namen ändern", "Wie möchtest du genannt werden?", this);
+        }
+
+        private void OnEditFirmenNameButton()
+        {
+            ChangePlayerPrefsController changePlayerPrefsController = Instantiate(this.changePlayerPrefPrefab, root.transform)
+                .GetComponent<ChangePlayerPrefsController>();
+            changePlayerPrefsController.Initialize("CompanyName", firmenName, "Firmennamen ändern", "Wie möchtest du deine Firma nennen?", this);
+        }
+
+        private void OnEditElevatorPitchButton()
+        {
+            ChangePlayerPrefsController changePlayerPrefsController = Instantiate(this.changePlayerPrefPrefab, root.transform)
+                .GetComponent<ChangePlayerPrefsController>();
+            changePlayerPrefsController.Initialize("ElevatorPitch", elevatorPitch, "Elevatorpitch ändern", "Was für ein Unternehmen führst du?", this);
+        }
+
+        private void OnEditInteressenButton()
+        {
+            ChangePlayerPrefsController changePlayerPrefsController = Instantiate(this.changePlayerPrefPrefab, root.transform)
+                .GetComponent<ChangePlayerPrefsController>();
+            changePlayerPrefsController.Initialize("Preverences", interessen, "Interessen ändern", "Was sind deine Interessen?", this);
+        }
     }
 }
