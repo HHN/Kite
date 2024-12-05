@@ -39,7 +39,7 @@ namespace _00_Kite2.Common
             // Hole die Instanz des PrivacyManagers, um den aktuellen Status der Datenschutzakzeptanz zu �berpr�fen
             var privacyManager = PrivacyAndConditionManager.Instance();
 
-            // �berpr�fe, ob die Nutzungsbedingungen und Datenschutzrichtlinien akzeptiert wurden
+            // Überprüfe, ob die Nutzungsbedingungen und Datenschutzrichtlinien akzeptiert wurden
             if (privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted())
             {
                 // Starte eine Coroutine, die darauf wartet, dass die Novels geladen sind
