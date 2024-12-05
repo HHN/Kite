@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using _00_Kite2.Audio_Resources.Resources;
 using _00_Kite2.Common.Managers;
+using _00_Kite2.Common.Novel;
 using _00_Kite2.Common.Novel.Character.CharacterController;
 using _00_Kite2.Common.UI.UI_Elements.Messages;
 using _00_Kite2.SaveNovelData;
@@ -321,7 +322,7 @@ namespace _00_Kite2.Player
             yield return StartCoroutine(PlayNextEvent());
         }
 
-        public IEnumerator PlayNextEvent()
+        private IEnumerator PlayNextEvent()
         {
             if (TextToSpeechManager.Instance.IsTextToSpeechActivated())
             {
@@ -536,8 +537,8 @@ namespace _00_Kite2.Player
 
             if (novelEvent.gptPrompt == String.Empty
                 || novelEvent.gptPrompt == ""
-                || novelEvent.variablesNameForGptPromp == String.Empty
-                || novelEvent.variablesNameForGptPromp == "")
+                || novelEvent.variablesNameForGptPrompt == String.Empty
+                || novelEvent.variablesNameForGptPrompt == "")
             {
                 return;
             }
@@ -552,7 +553,7 @@ namespace _00_Kite2.Player
             call.sceneController = this;
             GptRequestEventOnSuccessHandler onSuccessHandler = new GptRequestEventOnSuccessHandler
             {
-                variablesNameForGptPromp = novelEvent.variablesNameForGptPromp,
+                variablesNameForGptPromp = novelEvent.variablesNameForGptPrompt,
                 completionHandler = GptCompletionHandlerManager.Instance()
                     .GetCompletionHandlerById(novelEvent.gptCompletionHandlerId)
             };

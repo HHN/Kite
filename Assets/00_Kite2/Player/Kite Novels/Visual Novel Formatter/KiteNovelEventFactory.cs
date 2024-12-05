@@ -1,4 +1,5 @@
 using _00_Kite2.Audio_Resources.Resources;
+using _00_Kite2.Common.Novel;
 
 public class KiteNovelEventFactory
 {      
@@ -51,7 +52,7 @@ public class KiteNovelEventFactory
     {
         VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.GPT_PROMPT_EVENT, false);
         novelEvent.gptPrompt = prompt;
-        novelEvent.variablesNameForGptPromp = variablesName;
+        novelEvent.variablesNameForGptPrompt = variablesName;
         novelEvent.gptCompletionHandlerId = CompletionHandlerHelper.ToInt(completionHandlerId);
         return novelEvent;
     }
