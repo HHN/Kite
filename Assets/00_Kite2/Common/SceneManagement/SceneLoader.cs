@@ -4,18 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader
 {
-    public static void LoadIntroNovelScene()
-    {
-        LoadScene(SceneNames.INTRO_NOVEL_SCENE);
-    }
-
     public static void LoadMainMenuScene() {
         LoadScene(SceneNames.MAIN_MENU_SCENE);
     }
 
     public static void LoadPlayNovelScene()
     {
-        // Überprüfen, ob ein Speicherstand für die nächste Szene existiert
+        // ï¿½berprï¿½fen, ob ein Speicherstand fï¿½r die nï¿½chste Szene existiert
         GameManager.Instance.CheckAndSetAllNovelsStatus();
 
         LoadScene(SceneNames.PLAY_NOVEL_SCENE);
