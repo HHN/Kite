@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Serialization;
 
 namespace _00_Kite2.Common.UI.UI_Elements.Messages
 {
@@ -22,15 +23,15 @@ namespace _00_Kite2.Common.UI.UI_Elements.Messages
         [SerializeField] private Button cancelButton; // Cancel the novel
         [SerializeField] private Button endButton; // End the novel and mark it as completed
 
-        [Header("Background Elements")] [SerializeField]
-        private GameObject backgroundContinue;
-
+        [Header("Background Elements")] 
+        [SerializeField] private GameObject backgroundMessageBox;
+        [SerializeField] private GameObject backgroundContinue;
         [SerializeField] private GameObject backgroundPause;
         [SerializeField] private GameObject backgroundCancel;
         [SerializeField] private GameObject backgroundEnd;
 
         [Header("Miscellaneous Elements")] [SerializeField]
-        private GameObject textStay;
+        private GameObject textContinueButton;
 
         [SerializeField] private GameObject person;
 
@@ -63,13 +64,23 @@ namespace _00_Kite2.Common.UI.UI_Elements.Messages
         {
             // Retrieve the colour from the NovelColorManager instance
             Color colour = NovelColorManager.Instance().GetColor();
+            Debug.Log("colour: " + colour);
+            
+            pauseButton.image.color = colour;
+            
+            // backgroundContinue.GetComponent<Image>().color = Color.white;
 
-            backgroundContinue.GetComponent<Image>().color = colour;
-            backgroundPause.GetComponent<Image>().color = colour;
-            backgroundCancel.GetComponent<Image>().color = colour;
-            backgroundEnd.GetComponent<Image>().color = colour;
+            backgroundMessageBox.GetComponent<Image>().color = colour;
+            // backgroundPause.GetComponent<Image>().color = colour;
+            // backgroundCancel.GetComponent<Image>().color = colour;
+            // backgroundEnd.GetComponent<Image>().color = colour;
+            
+            // backgroundMessageBox.GetComponent<Image>().color = Color.white;
+            backgroundPause.GetComponent<Image>().color = Color.white;
+            backgroundCancel.GetComponent<Image>().color = Color.white;
+            backgroundEnd.GetComponent<Image>().color = Color.white;
 
-            textStay.GetComponent<TextMeshProUGUI>().color = colour;
+            textContinueButton.GetComponent<TextMeshProUGUI>().color = colour;
         }
 
         public void Activate()
