@@ -329,13 +329,9 @@ namespace _00_Kite2.Player
                 // Warten, bis die Sprachausgabe abgeschlossen oder übersprungen wurde
                 if (_speakingCoroutine != null)
                 {
-                    if (Application.platform == RuntimePlatform.Android)
+                    while (TextToSpeechManager.Instance.IsSpeaking())
                     {
-                        // Auf Android-Geräten: Auf den Abschluss der Coroutine warten
-                        while (TextToSpeechManager.Instance.IsSpeaking())
-                        {
-                            yield return null;
-                        }
+                        yield return null;
                     }
                 }
             }
