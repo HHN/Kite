@@ -8022,7 +8022,7 @@ MonoBehaviour:
   m_text: Hier kannst du nach bestimmten Novels suchen
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
-  m_sharedMaterial: {fileID: 7453642021753212536, guid: 1ffb8c3515fb6dc4688eff5a7e48200f, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8054,7 +8054,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 2
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -8087,7 +8087,7 @@ MonoBehaviour:
   m_margin: {x: 20, y: 10, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &972761091
