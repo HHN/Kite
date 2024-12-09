@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 25802658}
   - component: {fileID: 25802659}
   m_Layer: 5
-  m_Name: Intro Novel
+  m_Name: Einstieg Novel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1729,7 +1729,7 @@ GameObject:
   - component: {fileID: 198828818}
   - component: {fileID: 198828820}
   m_Layer: 5
-  m_Name: Intro Novel
+  m_Name: Einstieg Novel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4738,7 +4738,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Intro-Novel
+  m_text: Einstieg
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
   m_sharedMaterial: {fileID: 3127457962735927120, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
@@ -4989,7 +4989,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Intro
+  m_text: Einstieg
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
   m_sharedMaterial: {fileID: 3127457962735927120, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
@@ -13959,7 +13959,7 @@ GameObject:
   - component: {fileID: 1681754292}
   - component: {fileID: 1681754291}
   m_Layer: 5
-  m_Name: Intronovel
+  m_Name: EinstiegNovel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14416,7 +14416,7 @@ GameObject:
   - component: {fileID: 1764672784}
   - component: {fileID: 1764672783}
   m_Layer: 5
-  m_Name: Intro Button
+  m_Name: Einstieg Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
