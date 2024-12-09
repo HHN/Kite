@@ -541,7 +541,7 @@ namespace _00_Kite2.Player
 
             if (ApplicationModeManager.Instance().IsOfflineModeActive())
             {
-                PlayNextEvent();
+                StartCoroutine(PlayNextEvent());
                 return;
             }
 
@@ -932,7 +932,7 @@ namespace _00_Kite2.Player
             if (indexToRestore <= 0) return;
 
             SetNextEvent(eventIdToRestore);
-            PlayNextEvent();
+            StartCoroutine(PlayNextEvent());
         }
 
         private void CreateSpeakingCoroutine(string text)
@@ -1002,7 +1002,7 @@ namespace _00_Kite2.Player
 
             ActivateMessageBoxes();
 
-            PlayNextEvent();
+            StartCoroutine(PlayNextEvent());
         }
 
         // Methode zum Neustarten (bei Auswahl "Neustarten" im Dialog)
