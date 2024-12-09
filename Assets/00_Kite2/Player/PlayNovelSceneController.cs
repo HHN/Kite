@@ -373,6 +373,8 @@ namespace _00_Kite2.Player
             eventHistory.Add(nextEventToPlay);
 
             VisualNovelEventType type = VisualNovelEventTypeHelper.ValueOf(nextEventToPlay.eventType);
+            
+            Debug.Log("type: " + type);
 
             switch (type)
             {
