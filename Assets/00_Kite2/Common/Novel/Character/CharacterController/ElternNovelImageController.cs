@@ -23,13 +23,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         [SerializeField] private AudioClip decoTasseAudio;
         [SerializeField] private AudioClip decoKanneAudio;
         [SerializeField] private AudioClip decoLampeOnAudio;
-
         [SerializeField] private AudioClip decoLampeOffAudio;
-
-        // [SerializeField] private GameObject characterMutterPrefab;
-        // [SerializeField] private GameObject characterMutterContainer;
-        // [SerializeField] private GameObject characterVaterPrefab;
-        // [SerializeField] private GameObject characterVaterContainer;
         [SerializeField] private Sprite[] animationFramesTasse1;
         [SerializeField] private Sprite[] animationFramesTasse2;
         [SerializeField] private Sprite[] animationFramesKanne;
@@ -38,8 +32,11 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         [SerializeField] private Transform motherCharacterContainer;
         [SerializeField] private Transform fatherCharacterContainer;
-        [SerializeField] private List<GameObject> motherCharacterPrefabs;
-        [SerializeField] private List<GameObject> fatherCharacterPrefabs;
+        [SerializeField] private List<GameObject> characterMutterPrefabs;
+
+        [SerializeField] private List<GameObject> characterVaterPrefabs;
+        // [SerializeField] private GameObject characterMutterPrefab;
+        // [SerializeField] private GameObject characterVaterPrefab;
 
         private bool _decoLampeStatus;
 
@@ -50,7 +47,6 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         {
             SetInitialSpritesForImages();
             SetInitialCharacters();
-            SetCharacterController();
         }
 
         private void SetInitialSpritesForImages()
@@ -94,63 +90,111 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         private void SetInitialCharacters()
         {
-            if (motherCharacterPrefabs.Count > 0)
+            // if (characterMutterPrefab == null || characterVaterPrefab == null) return;
+            //
+            //     _instantiatedMotherCharacter = Instantiate(characterMutterPrefab, motherCharacterContainer, false);
+            //     RectTransform rectTransformMutter = _instantiatedMotherCharacter.GetComponent<RectTransform>();
+            //     if (rectTransformMutter != null)
+            //     {
+            //         rectTransformMutter.anchorMin = new Vector2(0.5f, 0.5f);
+            //         rectTransformMutter.anchorMax = new Vector2(0.5f, 0.5f);
+            //
+            //         rectTransformMutter.pivot = new Vector2(0.5f, 0.5f);
+            //
+            //         rectTransformMutter.anchoredPosition = new Vector2(-315, -597);
+            //
+            //         rectTransformMutter.sizeDelta = new Vector2(1200.339f, 1044);
+            //
+            //         rectTransformMutter.localPosition = new Vector3(-315, -597, 0);
+            //
+            //         rectTransformMutter.localScale = new Vector3(1, 1, 1);
+            //
+            //         rectTransformMutter.localRotation = Quaternion.Euler(0, 0, 0);
+            //     }
+            //
+            //     _instantiatedFatherCharacter = Instantiate(characterVaterPrefab, fatherCharacterContainer, false);
+            //     RectTransform rectTransformVater = _instantiatedFatherCharacter.GetComponent<RectTransform>();
+            //     
+            //     if (rectTransformVater != null)
+            //     {
+            //         rectTransformVater.anchorMin = new Vector2(0.5f, 0.5f);
+            //         rectTransformVater.anchorMax = new Vector2(0.5f, 0.5f);
+            //
+            //         rectTransformVater.pivot = new Vector2(0.5f, 0.5f);
+            //
+            //         rectTransformVater.anchoredPosition = new Vector2(204, -610);
+            //
+            //         rectTransformVater.sizeDelta = new Vector2(1200.339f, 1044);
+            //
+            //         rectTransformVater.localPosition = new Vector3(204, -610, 0);
+            //
+            //         rectTransformVater.localScale = new Vector3(1, 1, 1);
+            //
+            //         rectTransformVater.localRotation = Quaternion.Euler(0, 0, 0);
+            //     }
+
+            if (characterMutterPrefabs.Count <= 0 || characterVaterPrefabs.Count <= 0) return;
+
+            int randomIndexMutter = Random.Range(0, characterMutterPrefabs.Count);
+            GameObject randomGameObjectMutter = characterMutterPrefabs[randomIndexMutter];
+
+            _instantiatedMotherCharacter = Instantiate(randomGameObjectMutter, motherCharacterContainer, false);
+            RectTransform rectTransformMutter = _instantiatedMotherCharacter.GetComponent<RectTransform>();
+            if (rectTransformMutter != null)
             {
-                int randomIndex = Random.Range(0, motherCharacterPrefabs.Count);
-                GameObject randomGameObject = motherCharacterPrefabs[randomIndex];
+                rectTransformMutter.anchorMin = new Vector2(0.5f, 0.5f);
+                rectTransformMutter.anchorMax = new Vector2(0.5f, 0.5f);
 
-                _instantiatedMotherCharacter = Instantiate(randomGameObject, motherCharacterContainer, false);
-                RectTransform rectTransform = _instantiatedMotherCharacter.GetComponent<RectTransform>();
-                if (rectTransform != null)
-                {
-                    rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
-                    rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+                rectTransformMutter.pivot = new Vector2(0.5f, 0.5f);
 
-                    rectTransform.pivot = new Vector2(0.5f, 0.5f);
+                rectTransformMutter.anchoredPosition = new Vector2(-315, -597);
 
-                    rectTransform.anchoredPosition = new Vector2(-315, -597);
+                rectTransformMutter.sizeDelta = new Vector2(1200.339f, 1044);
 
-                    rectTransform.sizeDelta = new Vector2(1200.339f, 1044);
+                rectTransformMutter.localPosition = new Vector3(-315, -597, 0);
 
-                    rectTransform.localPosition = new Vector3(-315, -597, 0);
+                rectTransformMutter.localScale = new Vector3(1, 1, 1);
 
-                    rectTransform.localScale = new Vector3(1, 1, 1);
-
-                    rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
-                }
+                rectTransformMutter.localRotation = Quaternion.Euler(0, 0, 0);
             }
 
-            if (fatherCharacterPrefabs.Count > 0)
+            int randomIndexVater = Random.Range(0, characterVaterPrefabs.Count);
+            GameObject randomGameObjectVater = characterVaterPrefabs[randomIndexVater];
+
+            _instantiatedFatherCharacter = Instantiate(randomGameObjectVater, fatherCharacterContainer, false);
+            RectTransform rectTransformVater = _instantiatedFatherCharacter.GetComponent<RectTransform>();
+
+            if (rectTransformVater != null)
             {
-                int randomIndex = Random.Range(0, fatherCharacterPrefabs.Count);
-                GameObject randomGameObject = fatherCharacterPrefabs[randomIndex];
+                rectTransformVater.anchorMin = new Vector2(0.5f, 0.5f);
+                rectTransformVater.anchorMax = new Vector2(0.5f, 0.5f);
 
-                _instantiatedFatherCharacter = Instantiate(randomGameObject, fatherCharacterContainer, false);
-                RectTransform rectTransform = _instantiatedFatherCharacter.GetComponent<RectTransform>();
-                if (rectTransform != null)
-                {
-                    rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
-                    rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+                rectTransformVater.pivot = new Vector2(0.5f, 0.5f);
 
-                    rectTransform.pivot = new Vector2(0.5f, 0.5f);
+                rectTransformVater.anchoredPosition = new Vector2(204, -610);
 
-                    rectTransform.anchoredPosition = new Vector2(204, -610);
+                rectTransformVater.sizeDelta = new Vector2(1200.339f, 1044);
 
-                    rectTransform.sizeDelta = new Vector2(1200.339f, 1044);
+                rectTransformVater.localPosition = new Vector3(204, -610, 0);
 
-                    rectTransform.localPosition = new Vector3(204, -610, 0);
+                rectTransformVater.localScale = new Vector3(1, 1, 1);
 
-                    rectTransform.localScale = new Vector3(1, 1, 1);
-
-                    rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
-                }
+                rectTransformVater.localRotation = Quaternion.Euler(0, 0, 0);
             }
         }
 
-        private void SetCharacterController()
+        public override void SetCharacter()
         {
             CharacterController = _instantiatedMotherCharacter.GetComponent<CharacterController>();
             CharacterController2 = _instantiatedFatherCharacter.GetComponent<CharacterController>();
+            
+            // CharacterController.SetSkinSprite();
+            // CharacterController.SetClotheSprite();
+            // CharacterController.SetHairSprite();
+            
+            // CharacterController2.SetSkinSprite();
+            // CharacterController2.SetClotheSprite();
+            // CharacterController2.SetHairSprite();
         }
 
         public override void SetBackground()
