@@ -5,8 +5,8 @@ using System.Text.RegularExpressions;
 
 public class TweeProcessor
 {
-    private static Regex storyDataRegex = new Regex(@":: StoryData\s*\n([\s\S]*?)\n::", RegexOptions.Multiline);
-    private static Regex linkRegex = new Regex(@"\[\[(.*?)\]\]");
+    private static Regex _storyDataRegex = new Regex(@":: StoryData\s*\n([\s\S]*?)\n::", RegexOptions.Multiline);
+    private static Regex _linkRegex = new Regex(@"\[\[(.*?)\]\]");
 
     public static List<TweePassage> ProcessTweeFile(string tweeSource)
     {
@@ -88,7 +88,7 @@ public class TweeProcessor
         return label;
     }
 
-    public static string RemoveBracketedTextAndTrim(string input)
+    private static string RemoveBracketedTextAndTrim(string input)
     {
         string withoutBrackets = Regex.Replace(input, @"\[.*?\]", "");
 
@@ -110,7 +110,7 @@ public class TweeProcessor
     {
         List<TweeLink> links = new List<TweeLink>();
 
-        foreach (Match linkMatch in linkRegex.Matches(passage))
+        foreach (Match linkMatch in _linkRegex.Matches(passage))
         {
             string fullLinkText = linkMatch.Groups[1].Value;
             string linkText = fullLinkText;
@@ -137,7 +137,7 @@ public class TweeProcessor
 
     public static string GetStartLabelFromTweeFile(string tweeFileContent)
     {
-        Match match = storyDataRegex.Match(tweeFileContent);
+        Match match = _storyDataRegex.Match(tweeFileContent);
 
         if (!match.Success)
         {

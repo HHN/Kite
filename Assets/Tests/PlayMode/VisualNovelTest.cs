@@ -33,7 +33,7 @@ public class VisualNovelTest
                 yield return null;
             }
 
-            Assert.IsTrue(test.IsTestSuccessfull());
+            Assert.IsTrue(test.IsTestSuccessful());
         }
     }
 
