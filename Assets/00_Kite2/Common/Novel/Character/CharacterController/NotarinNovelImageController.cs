@@ -15,7 +15,6 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         [SerializeField] private GameObject decoGlasContainer;
         [SerializeField] private GameObject decoPlantPrefab;
         [SerializeField] private GameObject decoPlantContainer;
-        // [SerializeField] private GameObject characterPrefab;
         [SerializeField] private AudioClip decoGlasAudio;
         [SerializeField] private AudioClip decoPlantAudio;
         [SerializeField] private Sprite[] animationFramesPlant;
@@ -23,6 +22,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         [SerializeField] private Transform characterContainer;
         [SerializeField] private List<GameObject> characterPrefabs;
+        // [SerializeField] private GameObject characterPrefab;
 
         private GameObject _instantiatedCharacter;
 
@@ -55,55 +55,61 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         private void SetInitialCharacters()
         {
-            if (characterPrefabs.Count > 0)
-            {
-                int randomIndex = Random.Range(0, characterPrefabs.Count);
-                GameObject randomGameObject = characterPrefabs[randomIndex];
+            // if (characterPrefab == null) return;
+            //
+            // _instantiatedCharacter = Instantiate(characterPrefab, characterContainer, false);
+            // RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
+            //
+            // if (rectTransform == null) return;
+            //
+            // rectTransform.anchorMin = new Vector2(0.5f, 0);
+            // rectTransform.anchorMax = new Vector2(0.5f, 1);
+            //
+            // rectTransform.pivot = new Vector2(0.5f, 0.5f);
+            //
+            // rectTransform.anchoredPosition = new Vector2(0, 0);
+            //
+            // rectTransform.sizeDelta = new Vector2(1200.339f, 0);
+            //
+            // rectTransform.localPosition = new Vector3(0, 0, 0);
+            //
+            // rectTransform.localScale = new Vector3(1, 1, 1);
+            //
+            // rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
 
-                _instantiatedCharacter = Instantiate(randomGameObject, characterContainer, false);
-                RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
-                if (rectTransform != null)
-                {
-                    rectTransform.anchorMin = new Vector2(0.5f, 0);
-                    rectTransform.anchorMax = new Vector2(0.5f, 1);
+            if (characterPrefabs.Count <= 0) return;
 
-                    rectTransform.pivot = new Vector2(0.5f, 0.5f);
+            int randomIndex = Random.Range(0, characterPrefabs.Count);
+            GameObject randomGameObject = characterPrefabs[randomIndex];
 
-                    rectTransform.anchoredPosition = new Vector2(0, 0);
+            _instantiatedCharacter = Instantiate(randomGameObject, characterContainer, false);
+            RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
 
-                    rectTransform.sizeDelta = new Vector2(1200.339f, 0);
+            if (rectTransform == null) return;
 
-                    rectTransform.localPosition = new Vector3(0, 0, 0);
+            rectTransform.anchorMin = new Vector2(0.5f, 0);
+            rectTransform.anchorMax = new Vector2(0.5f, 1);
 
-                    rectTransform.localScale = new Vector3(1, 1, 1);
+            rectTransform.pivot = new Vector2(0.5f, 0.5f);
 
-                    rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
-                }
-            }
+            rectTransform.anchoredPosition = new Vector2(0, 0);
+
+            rectTransform.sizeDelta = new Vector2(1200.339f, 0);
+
+            rectTransform.localPosition = new Vector3(0, 0, 0);
+
+            rectTransform.localScale = new Vector3(1, 1, 1);
+
+            rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
         }
 
-        public override void SetBackground()
+        public override void SetCharacter()
         {
-            /*
-        DestroyBackground();
-        InstantiateBackground();
-        RectTransform decoGlasRectTransform = decoGlasContainer.GetComponent<RectTransform>();
-        if (decoGlasRectTransform != null && canvasRect != null)
-        {
-            decoGlasRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.15f, canvasRect.rect.height * 0.1f);
-            decoGlasRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.075f, canvasRect.rect.height * 0.1f);
-        }
-
-        RectTransform decoPlantRectTransform = decoPlantContainer.GetComponent<RectTransform>();
-        if (decoPlantRectTransform != null && canvasRect != null)
-        {
-            decoPlantRectTransform.anchoredPosition = new Vector2(canvasRect.rect.width * 0.38f, canvasRect.rect.height * 0.25f);
-            decoPlantRectTransform.sizeDelta = new Vector2(canvasRect.rect.height * 0.17f, canvasRect.rect.height * 0.25f);
-        }
-
-        NovelColorManager.Instance().SetCanvasHeight(canvasRect.rect.height);
-        NovelColorManager.Instance().SetCanvasWidth(canvasRect.rect.width);
-        */
+            CharacterController = _instantiatedCharacter.GetComponent<CharacterController>();
+            
+            // CharacterController.SetSkinSprite();
+            // CharacterController.SetClotheSprite();
+            // CharacterController.SetHairSprite();
         }
 
         public override void DestroyCharacter()
@@ -114,18 +120,6 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             }
 
             Destroy(_instantiatedCharacter);
-        }
-
-        public override void SetCharacter()
-        {
-            /*
-        DestroyCharacter();
-        character = Instantiate(characterPrefab, characterContainer.transform);
-        RectTransform characterRectTransform = characterContainer.GetComponent<RectTransform>();
-        characterRectTransform.anchoredPosition = new Vector2(-canvasRect.rect.width * 0.15f, 0);
-        characterRectTransform.sizeDelta = new Vector2(canvasRect.rect.width * 0.25f, canvasRect.rect.height * 1f);
-        */
-            CharacterController = _instantiatedCharacter.GetComponent<CharacterController>();
         }
 
         public override bool HandleTouchEvent(float x, float y, AudioSource audioSource)

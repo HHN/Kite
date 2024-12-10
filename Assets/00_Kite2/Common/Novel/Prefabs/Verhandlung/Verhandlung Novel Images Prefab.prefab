@@ -635,6 +635,10 @@ MonoBehaviour:
   characterContainer: {fileID: 3669613035356320353}
   characterPrefabs:
   - {fileID: 1465545687914413273, guid: 8c1acbda2949bf74a825ff93cd14ebc8, type: 3}
+  - {fileID: 1465545687914413273, guid: 6500c9bc7a51b5047b26953af9258dd5, type: 3}
+  - {fileID: 1465545687914413273, guid: e03454caec97c464cbe8bb8ae6de4164, type: 3}
+  - {fileID: 1465545687914413273, guid: 2e72e7a1ee2c818419950e3a88fdd3f9, type: 3}
+  - {fileID: 1465545687914413273, guid: d602141625fdaa741b6b4ade5b8687ed, type: 3}
 --- !u!1 &6178494739774191856
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4253796331781111194}
   - component: {fileID: 2571110113651146512}
   m_Layer: 5
-  m_Name: Character Prefab Verhandlung
+  m_Name: Character Prefab Verhandlung 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,16 +76,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce19c46472896824fb0a14726030f762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skinImage: {fileID: 0}
-  clotheImage: {fileID: 0}
-  hairImage: {fileID: 0}
+  skinImage: {fileID: 2519114203800372224}
+  clotheImage: {fileID: 3658774889944424753}
+  hairImage: {fileID: 6416909304724813844}
   faceImage: {fileID: 0}
   skinSprites:
-  - {fileID: 21300000, guid: 05cbbd121a7d8ac47b5b3212464ee1cd, type: 3}
+  - {fileID: 21300000, guid: c66b2a1e318c20148835bebbd7d8e02e, type: 3}
+  - {fileID: 21300000, guid: be944bcb1c2d4574faf4cf2258e99432, type: 3}
+  - {fileID: 21300000, guid: 5d48ed87887b74a4d8f93cc1fe0d529c, type: 3}
   clotheSprites:
-  - {fileID: 21300000, guid: 9aaa60e2d4effa64f8d45d4e29b8855e, type: 3}
+  - {fileID: 21300000, guid: 3c6d10ce84949d64f89aeb46957c9a92, type: 3}
+  - {fileID: 21300000, guid: 62bdb90ba36c48d46a94acbca8207539, type: 3}
+  - {fileID: 21300000, guid: 212ec7cd55e276940a9ad4b377216c6b, type: 3}
   hairSprites:
-  - {fileID: 21300000, guid: 3efe2b7ef95dcc542bab304d24940b25, type: 3}
+  - {fileID: 21300000, guid: 63206ab6ef021e646a345d4ee5f5be4e, type: 3}
+  - {fileID: 21300000, guid: 4110234725670dc419028c1cbcd3e4b1, type: 3}
+  - {fileID: 21300000, guid: 1a182ce78f184c945bdb5e926f989498, type: 3}
   animator: {fileID: 6155688656520349526}
 --- !u!95 &6155688656520349526
 Animator:
@@ -97,7 +103,7 @@ Animator:
   m_GameObject: {fileID: 1465545687914413273}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 832bc03e6b4beeb4db3129dcd832aa4b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0b0c9ee6380bcae4ea96688dfe7bee32, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

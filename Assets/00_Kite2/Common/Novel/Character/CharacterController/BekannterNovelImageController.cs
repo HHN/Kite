@@ -8,15 +8,13 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
     public class BekannterNovelImageController : NovelImageController
     {
         [SerializeField] private GameObject decoPlantPrefab;
-
         [SerializeField] private GameObject decoPlantContainer;
-
-        // [SerializeField] private GameObject characterPrefab;
         [SerializeField] private AudioClip decoPlantAudio;
         [SerializeField] private Sprite[] animationFramesPlant;
 
         [SerializeField] private Transform characterContainer;
         [SerializeField] private List<GameObject> characterPrefabs;
+        // [SerializeField] private GameObject characterPrefab;
 
         private GameObject _instantiatedCharacter;
 
@@ -40,36 +38,61 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         private void SetInitialCharacters()
         {
-            if (characterPrefabs.Count > 0)
-            {
-                int randomIndex = Random.Range(0, characterPrefabs.Count);
-                GameObject randomGameObject = characterPrefabs[randomIndex];
-                
-                _instantiatedCharacter = Instantiate(randomGameObject, characterContainer, false);
-                RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
-                if (rectTransform != null)
-                {
-                    rectTransform.anchorMin = new Vector2(0.5f, 0);
-                    rectTransform.anchorMax = new Vector2(0.5f, 1);
+            // if (characterPrefab == null) return;
+            //     
+            // _instantiatedCharacter = Instantiate(characterPrefab, characterContainer, false);
+            // RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
+            //
+            // if (rectTransform == null) return;
+            //
+            // rectTransform.anchorMin = new Vector2(0.5f, 0);
+            // rectTransform.anchorMax = new Vector2(0.5f, 1);
+            //
+            // rectTransform.pivot = new Vector2(0.5f, 0.5f);
+            //
+            // rectTransform.anchoredPosition = new Vector2(0, 0);
+            //
+            // rectTransform.sizeDelta = new Vector2(1200.339f, 0);
+            //
+            // rectTransform.localPosition = new Vector3(0, 0, 0);
+            //
+            // rectTransform.localScale = new Vector3(1, 1, 1);
+            //
+            // rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
 
-                    rectTransform.pivot = new Vector2(0.5f, 0.5f);
+            if (characterPrefabs.Count <= 0) return;
 
-                    rectTransform.anchoredPosition = new Vector2(0, 0);
+            int randomIndex = Random.Range(0, characterPrefabs.Count);
+            GameObject randomGameObject = characterPrefabs[randomIndex];
 
-                    rectTransform.sizeDelta = new Vector2(1200.339f, 0);
+            _instantiatedCharacter = Instantiate(randomGameObject, characterContainer, false);
+            RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
 
-                    rectTransform.localPosition = new Vector3(0, 0, 0);
+            if (rectTransform == null) return;
 
-                    rectTransform.localScale = new Vector3(1, 1, 1);
+            rectTransform.anchorMin = new Vector2(0.5f, 0);
+            rectTransform.anchorMax = new Vector2(0.5f, 1);
 
-                    rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
-                }
-            }
+            rectTransform.pivot = new Vector2(0.5f, 0.5f);
+
+            rectTransform.anchoredPosition = new Vector2(0, 0);
+
+            rectTransform.sizeDelta = new Vector2(1200.339f, 0);
+
+            rectTransform.localPosition = new Vector3(0, 0, 0);
+
+            rectTransform.localScale = new Vector3(1, 1, 1);
+
+            rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
         }
 
         public override void SetCharacter()
         {
             CharacterController = _instantiatedCharacter.GetComponent<CharacterController>();
+            
+            // CharacterController.SetSkinSprite();
+            // CharacterController.SetClotheSprite();
+            // CharacterController.SetHairSprite();
         }
 
         public override bool HandleTouchEvent(float x, float y, AudioSource audioSource)
