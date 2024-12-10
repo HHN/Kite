@@ -86,7 +86,7 @@ public class ReviewNovelSceneController : SceneController, OnSuccessHandler
     {
         AddNovelReviewServerCall call = Instantiate(addNovelReviewServerCallPrefab).GetComponent<AddNovelReviewServerCall>();
         call.sceneController = this;
-        call.onSuccessHandler = this;
+        call.OnSuccessHandler = this;
         call.novelId = novelID;
         call.novelName = novelName;
         call.rating = rating;

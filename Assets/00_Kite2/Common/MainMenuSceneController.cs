@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using _00_Kite2.Common.Managers;
+using _00_Kite2.Common.Messages;
 using _00_Kite2.Player;
 using TMPro;
 using UnityEngine;
@@ -87,7 +88,7 @@ namespace _00_Kite2.Common
         {
             var call = Instantiate(getVersionServerCallPrefab).GetComponent<GetVersionServerCall>();
             call.sceneController = this;
-            call.onSuccessHandler = this;
+            call.OnSuccessHandler = this;
             call.SendRequest();
             DontDestroyOnLoad(call.gameObject);
         }

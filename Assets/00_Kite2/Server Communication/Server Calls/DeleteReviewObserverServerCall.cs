@@ -1,3 +1,5 @@
+using _00_Kite2.Common.Messages;
+using _00_Kite2.Server_Communication;
 using UnityEngine.Networking;
 
 public class DeleteReviewObserverServerCall : ServerCall
@@ -24,7 +26,7 @@ public class DeleteReviewObserverServerCall : ServerCall
         {
             case ResultCode.SUCCESSFULLY_DELETED_REVIEW_OBSERVER:
                 {
-                    onSuccessHandler.OnSuccess(response);
+                    OnSuccessHandler.OnSuccess(response);
                     return;
                 }
             default:

@@ -555,7 +555,7 @@ namespace _00_Kite2.Player
                 completionHandler = GptCompletionHandlerManager.Instance()
                     .GetCompletionHandlerById(novelEvent.gptCompletionHandlerId)
             };
-            call.onSuccessHandler = onSuccessHandler;
+            call.OnSuccessHandler = onSuccessHandler;
             call.prompt = ReplacePlaceholders(novelEvent.gptPrompt, novelToPlay.GetGlobalVariables());
             call.SendRequest();
             DontDestroyOnLoad(call.gameObject);

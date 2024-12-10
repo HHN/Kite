@@ -1,7 +1,10 @@
-public enum BackgroundContentEnum
+namespace _00_Kite2.Common.Novel
 {
-    NONE,
-    DESK,
-    DECO_DESK,
-    DECO_BACKGROUND
+    public enum BackgroundContentEnum
+    {
+        NONE,
+        DESK,
+        DECO_DESK,
+        DECO_BACKGROUND
+    }
 }

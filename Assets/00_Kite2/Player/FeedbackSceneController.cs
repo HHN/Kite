@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Globalization;
 using _00_Kite2.Common.Managers;
+using _00_Kite2.Common.Messages;
 using LeastSquares.Overtone;
 using TMPro;
 using UnityEngine;
@@ -75,8 +76,8 @@ namespace _00_Kite2.Player
 
                 Debug.Log("feedbackHandler.dialog: " + feedbackHandler.Dialog);
 
-                call.onSuccessHandler = feedbackHandler;
-                call.onErrorHandler = this;
+                call.OnSuccessHandler = feedbackHandler;
+                call.OnErrorHandler = this;
 
                 if (novel != null)
                 {

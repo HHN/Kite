@@ -1,3 +1,5 @@
+using _00_Kite2.Common.Messages;
+using _00_Kite2.Server_Communication;
 using UnityEngine.Networking;
 using UnityEngine;
 
@@ -23,14 +25,14 @@ public class GetCompletionServerCall : ServerCall
         {
             case ResultCode.SUCCESSFULLY_GOT_COMPLETION:
                 {
-                    onSuccessHandler.OnSuccess(response);
+                    OnSuccessHandler.OnSuccess(response);
                     return;
                 }
             default:
                 {
-                    if (onErrorHandler != null)
+                    if (OnErrorHandler != null)
                     {
-                        onErrorHandler.OnError(response);
+                        OnErrorHandler.OnError(response);
                     } 
                     else
                     {

@@ -14,7 +14,7 @@ public class PromptsAndCompletionsExplorerSceneController : SceneController, OnS
 
         GetDataServerCall call = Instantiate(getDataServerCallPrefab).GetComponent<GetDataServerCall>();
         call.sceneController = this;
-        call.onSuccessHandler = this;
+        call.OnSuccessHandler = this;
         call.SendRequest();
     }
 

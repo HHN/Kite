@@ -1,3 +1,5 @@
+using _00_Kite2.Common.Messages;
+using _00_Kite2.Server_Communication;
 using UnityEngine.Networking;
 
 public class AddReviewObserverServerCall : ServerCall
@@ -22,7 +24,7 @@ public class AddReviewObserverServerCall : ServerCall
         {
             case ResultCode.SUCCESSFULLY_ADDED_REVIEW_OBSERVER:
                 {
-                    onSuccessHandler.OnSuccess(response);
+                    OnSuccessHandler.OnSuccess(response);
                     return;
                 }
             case ResultCode.REVIEW_OBSERVER_ALREADY_EXISTS:

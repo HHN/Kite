@@ -1,3 +1,5 @@
+using _00_Kite2.Common.Messages;
+using _00_Kite2.Server_Communication;
 using UnityEngine.Networking;
 
 public class GetNovelReviewsServerCall : ServerCall
@@ -18,7 +20,7 @@ public class GetNovelReviewsServerCall : ServerCall
         {
             case ResultCode.SUCCESSFULLY_GOT_ALL_NOVEL_REVIEWS:
                 {
-                    onSuccessHandler.OnSuccess(response);
+                    OnSuccessHandler.OnSuccess(response);
                     return;
                 }
             default:

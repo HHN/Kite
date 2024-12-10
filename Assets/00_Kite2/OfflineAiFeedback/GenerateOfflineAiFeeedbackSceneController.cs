@@ -316,8 +316,8 @@ public class GenerateOfflineAiFeeedbackSceneController : SceneController
             HandleCompletionRequestResult handler = new HandleCompletionRequestResult(visualNovelName, this, updatePossibility, item);
             GetCompletionServerCall call = Instantiate(getCompletionServerCall).GetComponent<GetCompletionServerCall>();
             call.sceneController = this;
-            call.onSuccessHandler = handler;
-            call.onErrorHandler = handler;
+            call.OnSuccessHandler = handler;
+            call.OnErrorHandler = handler;
             call.prompt = item.prompt;
             call.SendRequest();
             yield return new WaitForSeconds(5f);

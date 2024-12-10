@@ -27,7 +27,7 @@ public class AddObserverSceneController : SceneController
     {
         GetReviewObserversServerCall call = Instantiate(getObserverServerCallPrefab).GetComponent<GetReviewObserversServerCall>();
         call.sceneController = this;
-        call.onSuccessHandler = new GetObserversServerCallSuccessHandler(this);
+        call.OnSuccessHandler = new GetObserversServerCallSuccessHandler(this);
         call.SendRequest();
     }
 
@@ -40,7 +40,7 @@ public class AddObserverSceneController : SceneController
         }
         AddReviewObserverServerCall call = Instantiate(addObserverServerCallPrefab).GetComponent<AddReviewObserverServerCall>();
         call.sceneController = this;
-        call.onSuccessHandler = new AddObserverServalCallSuccessHandler(this);
+        call.OnSuccessHandler = new AddObserverServalCallSuccessHandler(this);
         call.email = inputField.text.Trim();
         call.SendRequest();
         DontDestroyOnLoad(call.gameObject);

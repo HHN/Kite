@@ -70,7 +70,7 @@ public class ReviewAiSceneController : SceneController, OnSuccessHandler
     {
         AddAiReviewServerCall call = Instantiate(addAiReviewServerCallPrefab).GetComponent<AddAiReviewServerCall>();
         call.sceneController = this;
-        call.onSuccessHandler = this;
+        call.OnSuccessHandler = this;
         call.novelId = novelID;
         call.novelName = novelName;
         call.reviewText = reviewText;

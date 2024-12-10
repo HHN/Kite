@@ -52,7 +52,7 @@ public class FeedbackRoleManagementSceneController : SceneController, OnSuccessH
         inputField.text = "";
         GetUserRoleByCodeServerCall call = Instantiate(getUserRoleByCodeServerCallPrefab).GetComponent<GetUserRoleByCodeServerCall>();
         call.sceneController = this;
-        call.onSuccessHandler = this;
+        call.OnSuccessHandler = this;
         call.code = input;
         call.SendRequest();
         DontDestroyOnLoad(call.gameObject);

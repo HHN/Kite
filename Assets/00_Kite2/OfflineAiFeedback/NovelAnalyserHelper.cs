@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Text;
 using _00_Kite2.Audio_Resources.Resources;
 using _00_Kite2.Common.Novel;
+using _00_Kite2.Common.Novel.Event_Animations;
 using _00_Kite2.Player;
 using UnityEngine;
 

@@ -28,7 +28,7 @@ public class AiReviewExplorerSceneController : SceneController, OnSuccessHandler
 
         GetAiReviewsServerCall call = Instantiate(GetAiReviewServerCallPrefab).GetComponent<GetAiReviewsServerCall>();
         call.sceneController = this;
-        call.onSuccessHandler = this;
+        call.OnSuccessHandler = this;
         call.SendRequest();
     }
 

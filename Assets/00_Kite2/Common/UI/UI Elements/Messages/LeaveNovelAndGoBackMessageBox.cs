@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using _00_Kite2.Common.Novel.Character.CharacterController;
 using UnityEngine.Serialization;
 
 namespace _00_Kite2.Common.UI.UI_Elements.Messages

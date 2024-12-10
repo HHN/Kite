@@ -27,7 +27,7 @@ public class ExpertFeedbackSceneController : SceneController, OnSuccessHandler
 
         FindExpertFeedbackQuestionServerCall call = Instantiate(getExpertFeedbackQuestionsServerCallPrefab).GetComponent<FindExpertFeedbackQuestionServerCall>();
         call.sceneController = this;
-        call.onSuccessHandler = this;
+        call.OnSuccessHandler = this;
         call.userUuid = ExpertFeedbackQuestionManager.Instance.GetUUID();
         call.SendRequest();
     }

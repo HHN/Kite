@@ -1,3 +1,5 @@
+using _00_Kite2.Common.Messages;
+using _00_Kite2.Server_Communication;
 using UnityEngine.Networking;
 
 public class AddNovelReviewServerCall : ServerCall
@@ -28,7 +30,7 @@ public class AddNovelReviewServerCall : ServerCall
         {
             case ResultCode.SUCCESSFULLY_ADDED_NOVEL_REVIEW:
                 {
-                    onSuccessHandler.OnSuccess(response);
+                    OnSuccessHandler.OnSuccess(response);
                     return;
                 }
             default:

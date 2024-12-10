@@ -28,7 +28,7 @@ public class NovelReviewExplorerSceneController : SceneController, OnSuccessHand
 
         GetNovelReviewsServerCall call = Instantiate(GetNovelReviewServerCallPrefab).GetComponent<GetNovelReviewsServerCall>();
         call.sceneController = this;
-        call.onSuccessHandler = this;
+        call.OnSuccessHandler = this;
         call.SendRequest();
     }
 

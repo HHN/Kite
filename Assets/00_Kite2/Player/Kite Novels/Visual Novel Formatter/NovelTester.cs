@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using _00_Kite2.Audio_Resources.Resources;
 using _00_Kite2.Common.Novel;
+using _00_Kite2.Common.Novel.Event_Animations;
 using UnityEngine;
 
 public class NovelTester

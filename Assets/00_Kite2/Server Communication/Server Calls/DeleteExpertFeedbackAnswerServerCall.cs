@@ -1,3 +1,5 @@
+using _00_Kite2.Common.Messages;
+using _00_Kite2.Server_Communication;
 using UnityEngine.Networking;
 
 public class DeleteExpertFeedbackAnswerServerCall : ServerCall
@@ -24,7 +26,7 @@ public class DeleteExpertFeedbackAnswerServerCall : ServerCall
         {
             case ResultCode.SUCCESSFULLY_DELETED_EXPERT_FEEDBACK_ANSWER:
                 {
-                    onSuccessHandler.OnSuccess(response);
+                    OnSuccessHandler.OnSuccess(response);
                     return;
                 }
             default:

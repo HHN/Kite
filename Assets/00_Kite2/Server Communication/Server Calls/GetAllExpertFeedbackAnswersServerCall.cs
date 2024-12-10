@@ -1,3 +1,5 @@
+using _00_Kite2.Common.Messages;
+using _00_Kite2.Server_Communication;
 using UnityEngine.Networking;
 
 public class GetAllExpertFeedbackAnswersServerCall : ServerCall
@@ -18,7 +20,7 @@ public class GetAllExpertFeedbackAnswersServerCall : ServerCall
         {
             case ResultCode.SUCCESSFULLY_GOT_ALL_EXPERT_FEEDBACK_ANSWERS:
                 {
-                    onSuccessHandler.OnSuccess(response);
+                    OnSuccessHandler.OnSuccess(response);
                     return;
                 }
             default:

@@ -32,7 +32,7 @@ public class RequestExpertFeedbackPanelController : MonoBehaviour, OnSuccessHand
 
         AddExpertFeedbackQuestionServerCall call = Instantiate(requestExpertFeedbackServerCall).GetComponent<AddExpertFeedbackQuestionServerCall>();
         call.sceneController = controller;
-        call.onSuccessHandler = this;
+        call.OnSuccessHandler = this;
 
         VisualNovel novel = PlayManager.Instance().GetVisualNovelToPlay();
 
