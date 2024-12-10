@@ -51,6 +51,10 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             if (CharacterController == null)
             {
             }
+            else if (characterId == 2)
+            {
+                CharacterController.SetFaceExpression(expressionType);
+            }
             else if (characterId == 5)
             {
                 CharacterController.SetFaceExpression(expressionType);
