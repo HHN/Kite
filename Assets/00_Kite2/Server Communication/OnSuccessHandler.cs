@@ -1,4 +1,7 @@
-public interface OnSuccessHandler
+namespace _00_Kite2.Server_Communication
 {
-    void OnSuccess(Response response);
+    public interface OnSuccessHandler
+    {
+        void OnSuccess(Response response);
+    }
 }

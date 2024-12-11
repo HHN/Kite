@@ -61,7 +61,7 @@ Ich sehe keinen Grund, das Geschlecht in den Vordergrund zu stellen. Es wäre ei
 [[Wenn ich sage, dass es eine Geschäftsführerin und kein Geschäftsführer ist, stelle ich das Geschlecht nicht in den Vordergrund.->Frustriert]]
 
 :: Fragebogen [Bias] {"position":"1200,375","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtFriendly:<<
 Guten Tag, für den Handelsregistereintrag muss erstmal ein Fragebogen ausgefüllt werden. Wichtig ist, dass der Geschäftsführer dabei ist, weil seine Unterschrift nötig ist.
 >>--<<
 >>RelevanterBias:UnbewussteBiasInDerKommunikation<<
@@ -93,7 +93,7 @@ Wie Sie meinen. Also, wie erwähnt, kann ich Ihnen den Fragebogen zuschicken und
 [[Ich glaube nicht, dass wir auf einen Nenner kommen, und ich suche mir lieber eine andere Notarin. Schönen Tag noch.->Gespräch beenden]]
 
 :: Geschlechtsannahme [Bias] {"position":"1575,875","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtFriendly:<<
 Ich verstehe Ihren Punkt und werde zukünftig darauf achten. In meiner Erfahrung übernehmen hauptsächlich Männer die Geschäftsführung.
 >>--<<
 >>RelevanterBias:Bestaetigungsverzerrung<<
@@ -191,19 +191,19 @@ Kommen wir zurück zu dem Fragebogen. Wie gesagt, sende ich Ihnen die benötigte
 
 :: Selbstvorstellung {"position":"1050,375","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
-Guten Tag, ich rufe an, weil ich mein Unternehmen gerne ins Handelregister eintragen lassen möchte.
+Guten Tag, ich rufe an, weil ich mein Unternehmen gerne ins Handelsregister eintragen lassen möchte.
 
 [[Fragebogen]]
 
 
 :: Termin Ja {"position":"1325,1575","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtFriendly:<<
 Schön, bringen Sie dann das Formular bitte ausgefüllt wieder mit.
 >>--<<
 >>SpielerinCharakterSpricht:<<
 Das werde ich. Vielen Dank und bis dann!
 >>--<<
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtFriendly:<<
 Schönen Tag noch!
 >>--<<
 >>Ende<<
@@ -220,13 +220,13 @@ Wie erwähnt, kann ich Ihnen dann den Fragebogen zusenden und nächsten Donnerst
 
 
 :: Terminänderung {"position":"1125,1575","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtFriendly:<<
 Ja, das würde auch passen. Bringen Sie dann das Formular bitte ausgefüllt wieder mit.
 >>--<<
 >>SpielerinCharakterSpricht:<<
 Das werde ich. Danke und bis dann!
 >>--<<
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtFriendly:<<
 Schönen Tag noch!
 >>--<<
 >>Ende<<

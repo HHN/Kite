@@ -241,7 +241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a23bb3d06214c94498e632fed65502c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filePath: C:\Users\student\Downloads\Tester\Novel_Bankkredit.twee
+  filePathNovel: C:\Users\student\WorkProjectsKiteII\Kite2Client\Assets\00_Kite2\novels_twee\Notarin\visual_novel_event_list.txt
+  filePathMeta: C:\Users\student\WorkProjectsKiteII\Kite2Client\Assets\00_Kite2\novels_twee\Notarin\visual_novel_meta_data.txt
 --- !u!4 &2074922530
 Transform:
   m_ObjectHideFlags: 0

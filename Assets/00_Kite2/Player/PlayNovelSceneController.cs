@@ -10,6 +10,7 @@ using _00_Kite2.Common.Novel;
 using _00_Kite2.Common.Novel.Character.CharacterController;
 using _00_Kite2.Common.UI.UI_Elements.Messages;
 using _00_Kite2.SaveNovelData;
+using _00_Kite2.Server_Communication.Server_Calls;
 using LeastSquares.Overtone;
 using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using TMPro;
@@ -373,8 +374,6 @@ namespace _00_Kite2.Player
             eventHistory.Add(nextEventToPlay);
 
             VisualNovelEventType type = VisualNovelEventTypeHelper.ValueOf(nextEventToPlay.eventType);
-            
-            Debug.Log("type: " + type);
 
             switch (type)
             {
@@ -683,7 +682,7 @@ namespace _00_Kite2.Player
 
         private void HandleShowMessageEvent(VisualNovelEvent novelEvent)
         {
-            Debug.Log("TextToSpeechManager.Instance.Speak(novelEvent.text): " + novelEvent.text);
+            // Debug.Log("TextToSpeechManager.Instance.Speak(novelEvent.text): " + novelEvent.text);
             CreateSpeakingCoroutine(novelEvent.text);
 
             SetNextEvent(novelEvent);
@@ -695,6 +694,7 @@ namespace _00_Kite2.Player
             {
                 conversationContent.AddContent(novelEvent, this);
 
+                Debug.Log("novelEvent.character: " + novelEvent.character);
                 AddEntryToPlayThroughHistory(CharacterTypeHelper.ValueOf(novelEvent.character), novelEvent.text);
                 AnalyticsServiceHandler.Instance().SetLastQuestionForChoice(novelEvent.text);
             }
@@ -945,7 +945,7 @@ namespace _00_Kite2.Player
 
         private void SkipSpeaking()
         {
-            Debug.Log("SkipSpeaking");
+            // Debug.Log("SkipSpeaking");
             TextToSpeechManager.Instance.CancelSpeak();
         }
 
@@ -976,7 +976,7 @@ namespace _00_Kite2.Player
 
             if (savedData == null)
             {
-                Debug.LogWarning("No saved data found for the novel.");
+                // Debug.LogWarning("No saved data found for the novel.");
                 return;
             }
 

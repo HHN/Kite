@@ -1,7 +1,10 @@
 using System;
 
-[Serializable]
-public class GptRequest
+namespace _00_Kite2.Server_Communication.Request_Objects
 {
-    public string prompt;
+    [Serializable]
+    public class GptRequest
+    {
+        public string prompt;
+    }
 }

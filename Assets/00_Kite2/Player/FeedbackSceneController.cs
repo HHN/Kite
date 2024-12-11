@@ -3,6 +3,8 @@ using System.Collections;
 using System.Globalization;
 using _00_Kite2.Common.Managers;
 using _00_Kite2.Common.Messages;
+using _00_Kite2.Server_Communication;
+using _00_Kite2.Server_Communication.Server_Calls;
 using LeastSquares.Overtone;
 using TMPro;
 using UnityEngine;
@@ -74,28 +76,20 @@ namespace _00_Kite2.Player
                     Dialog = dialog
                 };
 
-                Debug.Log("feedbackHandler.dialog: " + feedbackHandler.Dialog);
+                // Debug.Log("feedbackHandler.dialog: " + feedbackHandler.Dialog);
 
                 call.OnSuccessHandler = feedbackHandler;
                 call.OnErrorHandler = this;
 
-                if (novel != null)
-                {
-                    //Debug.Log("novel.context: " + novel.context);
-                    call.prompt = PromptManager.Instance().GetPrompt(novel.context);
-                    //Debug.Log("call.prompt: " + call.prompt);
-                } 
-                else
-                {
-                    call.prompt = PromptManager.Instance().GetPrompt("");
-                }
+                call.prompt = PromptManager.Instance().GetPrompt(novel != null ? novel.context : "");
+                
+                // Debug.Log("call.prompt: " + call.prompt);
 
                 call.SendRequest();
                 DontDestroyOnLoad(call.gameObject);
                 return;
             }
 
-            //Debug.Log("novelToPlay.feedback: " + novelToPlay.feedback);
             feedbackText.SetText(novelToPlay.feedback);
             loadingAnimation.SetActive(false);
         }
@@ -105,14 +99,13 @@ namespace _00_Kite2.Player
             AnalyticsServiceHandler.Instance().SendWaitedForAIFeedback();
 
             int userRole = FeedbackRoleManager.Instance.GetFeedbackRole();
-            if ((userRole == 2 || userRole == 3 || userRole == 4 || userRole == 5) && ApplicationModeManager.Instance().IsOnlineModeActive())
+            if (userRole is 2 or 3 or 4 or 5 && ApplicationModeManager.Instance().IsOnlineModeActive())
             {
                 SceneLoader.LoadReviewAiScene();
             }
             else
             {
-                BackStackManager.Instance().Clear(); // we go back to the explorer and don't want
-                // the back-button to bring us to the feedback scene again
+                BackStackManager.Instance().Clear(); // we go back to the explorer and don't want the back-button to bring us to the feedback scene again
                 SceneLoader.LoadFoundersBubbleScene();
             }
         }

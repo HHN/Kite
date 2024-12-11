@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using _00_Kite2.Common.Managers;
 using _00_Kite2.Player;
+using _00_Kite2.Server_Communication;
+using _00_Kite2.Server_Communication.Server_Calls;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

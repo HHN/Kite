@@ -7,36 +7,44 @@ namespace _00_Kite2.Test
     public class Tester : MonoBehaviour
     {
         // Pfad zur Twee-Datei (relativ oder absolut)
-        [SerializeField] private string filePath = "Assets/YourTweeFile.twee";
+        [SerializeField] private string filePathNovel = "Assets/YourNovelFile.txt";
+        [SerializeField] private string filePathMeta = "Assets/YourMetaFile.txt";
 
         private void Start()
         {
             TweePathCalculator calculator = new TweePathCalculator();
 
-            // try
-            // {
-                // Dateiinhalt lesen und parsen
-                string tweeContent = calculator.ReadTweeFile(filePath);
-                calculator.ParseTweeFile(tweeContent);
-                calculator.PrintGraph();
+            try
+            {
+                string metaContent = calculator.ReadTweeFile(filePathMeta);
+                string novelContent = calculator.ReadTweeFile(filePathNovel);
+
+                calculator.ParseMetaTweeFile(metaContent);
+                calculator.ParseTweeFile(novelContent);
+                
+                // Novel-Datei lesen und parsen
+                // string novelContent = calculator.ReadNovelTweeFile(filePathNovel);
+                // calculator.ParseTweeFile(novelContent);
+
+                // Meta-Datei lesen und verarbeiten
+                // string metaContent = calculator.ReadNovelTweeFile(filePathMeta);
+                // calculator.ParseMetaTweeFile(metaContent);
+                
+                // Ausgabe der Meta-Daten
+                // calculator.PrintMetaData();
 
                 // Alle Pfade ab "Anfang" berechnen
                 List<List<string>> allPaths = calculator.GetAllPaths("Anfang");
 
-                // Pfade ausgeben
-                calculator.PrintPaths(allPaths);
-            
+                // Pfade als Gespräch und reinen Pfad ausgeben
+                calculator.PrintPathsAsConversationAndPath(allPaths);
+
                 Debug.Log("Fertig");
-            // }
-            // catch (Exception ex)
-            // {
-            //     Debug.Log($"Fehler: {ex.Message}");
-            // }
-        
-            // // Beispiel in deinem Hauptskript
-            // GameObject visualizerObject = new GameObject("GraphVisualizer");
-            // GraphVisualizer visualizer = visualizerObject.AddComponent<GraphVisualizer>();
-            // visualizer.SetGraph(calculator.Graph); // Übergib den Graphen
+            }
+            catch (Exception ex)
+            {
+                Debug.Log($"Fehler: {ex.Message}");
+            }
         }
     }
 }
