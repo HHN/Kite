@@ -21,17 +21,6 @@ namespace _00_Kite2.Test
 
                 calculator.ParseMetaTweeFile(metaContent);
                 calculator.ParseTweeFile(novelContent);
-                
-                // Novel-Datei lesen und parsen
-                // string novelContent = calculator.ReadNovelTweeFile(filePathNovel);
-                // calculator.ParseTweeFile(novelContent);
-
-                // Meta-Datei lesen und verarbeiten
-                // string metaContent = calculator.ReadNovelTweeFile(filePathMeta);
-                // calculator.ParseMetaTweeFile(metaContent);
-                
-                // Ausgabe der Meta-Daten
-                // calculator.PrintMetaData();
 
                 // Alle Pfade ab "Anfang" berechnen
                 List<List<string>> allPaths = calculator.GetAllPaths("Anfang");

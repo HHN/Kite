@@ -15,7 +15,7 @@ namespace _00_Kite2.Test
         private Dictionary<string, string> MetaData = new Dictionary<string, string>();
         private HashSet<string> Speakers = new HashSet<string>();
         private Dictionary<string, string> CharacterToSpeakerMap = new Dictionary<string, string>();
-        
+
         /// <summary>
         /// Liest eine Twee-Datei von der angegebenen Datei und gibt den Inhalt als String zurück.
         /// </summary>
@@ -39,29 +39,6 @@ namespace _00_Kite2.Test
             }
         }
 
-        /// <summary>
-        /// Liest eine Twee-Datei von der angegebenen Datei und gibt den Inhalt als String zurück.
-        /// </summary>
-        /// <param name="filePath">Pfad zur Twee-Datei</param>
-        /// <returns>Inhalt der Twee-Datei als String</returns>
-        public string ReadNovelTweeFile(string filePath)
-        {
-            if (!File.Exists(filePath))
-            {
-                throw new FileNotFoundException($"Die Datei wurde nicht gefunden: {filePath}");
-            }
-
-            try
-            {
-                // Dateiinhalt einlesen und als String zurückgeben
-                return File.ReadAllText(filePath);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Fehler beim Lesen der Datei: {ex.Message}");
-            }
-        }
-        
         public void ParseMetaTweeFile(string tweeContent)
         {
             string metaPattern = @"""(talkingPartner\d+)""\s*:\s*""([^""]*)""";
@@ -77,28 +54,35 @@ namespace _00_Kite2.Test
                 if (!string.IsNullOrEmpty(value))
                 {
                     // Dynamisch alle möglichen `Charakter01Spricht...` zuordnen
-                    string dynamicPattern = $@"Charakter{numberMatch}\w*:";
-                    string pattern = $@"Charakter\d+\w*:";
-                    // Debug.Log($"Mapping Pattern {dynamicPattern} to {value}");
+                    string dynamicPattern = $@"Charakter{numberMatch}";
 
-                    if (!CharacterToSpeakerMap.ContainsKey(pattern))
+                    if (!CharacterToSpeakerMap.ContainsKey(dynamicPattern))
                     {
-                        CharacterToSpeakerMap[pattern] = value;
+                        CharacterToSpeakerMap[dynamicPattern] = value;
                     }
                 }
             }
 
+            // Statische Zuordnungen
+            CharacterToSpeakerMap[@"InfoNachrichtWirdAngezeigt"] = "Info";
+            CharacterToSpeakerMap[@"SpielerinCharakterSpricht"] = "Spielerin";
+
+            Debug.Log("CharacterToSpeakerMap Inhalt:");
             foreach (var entry in CharacterToSpeakerMap)
             {
-                Debug.Log($"Character: {entry.Key}, Speaker: {entry.Value}");
+                Debug.Log($"Key: {entry.Key}, Value: {entry.Value}");
             }
         }
 
         public void ParseTweeFile(string tweeContent)
         {
             string nodePattern = @"::\s*([^\n\{\[\|]+).*?\n((?:.|\n)*?)(?=(::|$))";
-            string linkPattern = @"\[\[(?:.*?(?:\||->))?([^\]]+)\]\]";
-            // string speakerPattern = @">>Charakter\d+\w*:<<"; // Dynamisches Pattern für CharakterXX...
+            // string linkPattern = @"\[\[(?:.*?(?:\||->))?([^\]]+)\]\]";
+            // string linkPattern = @"\[\[(.*?)\s*(?:\||->)\s*(.*?)\]\]";
+            // string linkPattern = @"\[\[(.*?)(?:\s*(\||->)\s*(.*?))?\]\]";
+            // string linkPattern = @"\[\[(?:(.*?)(?:\s*(?:\||->)\s*(.*?))|([^|\]]+))\]\]";
+            string linkPattern = @"\[\[(?:(.*?)(?:\s*(?:\||->)\s*(.*?))|([^|\]]+))\]\]";
+
             string speakerPattern = @">>([^\s<>]+):<<"; // Fängt jeden Sprecher ein, der mit >> beginnt und :<< endet
 
             MatchCollection matches = Regex.Matches(tweeContent, nodePattern);
@@ -107,83 +91,107 @@ namespace _00_Kite2.Test
             {
                 string nodeName = match.Groups[1].Value.Trim();
                 string nodeBody = match.Groups[2].Value;
-                string speaker = "Unbekannt";
 
-                // Finde den Sprechenden
-                Match speakerMatch = Regex.Match(nodeBody, speakerPattern);
-                if (speakerMatch.Success)
+                List<string> links = new List<string>();
+                List<(string Speaker, string Text)> conversations = new List<(string Speaker, string Text)>();
+
+                // Sprecher extrahieren
+                MatchCollection speakerMatches = Regex.Matches(nodeBody, speakerPattern);
+                int lastIndex = 0;
+                foreach (Match speakerMatch in speakerMatches)
                 {
-                    string rawSpeaker = speakerMatch.Groups[0].Value.Trim();
-                    Debug.Log("rawSpeaker: " + rawSpeaker);
-
-                    string mappedSpeaker = null;
+                    string speaker = speakerMatch.Groups[1].Value.Trim();
+                    Debug.Log("speaker: " + speaker);
                     
-                    // 1. Direkte Ersetzung für spezifische Muster wie InfoNachrichtWirdAngezeigt
-                    if (rawSpeaker == ">>InfoNachrichtWirdAngezeigt:<<")
+                    // Prüfe, ob der Sprecher in der CharacterToSpeakerMap enthalten ist
+                    foreach (var characterToSpeaker in CharacterToSpeakerMap)
                     {
-                        mappedSpeaker = "Info";
-                    }
-                    else if (rawSpeaker == ">>SpielerinCharakterSpricht:<<")
-                    {
-                        mappedSpeaker = "Spielerin";
-                    }
-                    else
-                    {
-                        // 2. Allgemeines Mapping basierend auf der CharacterToSpeakerMap
-                        foreach (var pair in CharacterToSpeakerMap)
+                        Debug.Log("characterToSpeaker: " + characterToSpeaker.Key + " " + characterToSpeaker.Value);
+                        if (speaker.Contains(characterToSpeaker.Key))
                         {
-                            string regexPattern = pair.Key;
-                            string mappedValue = pair.Value;
-
-                            // Prüfe, ob der rawSpeaker mit dem regulären Ausdruck übereinstimmt
-                            if (Regex.IsMatch(rawSpeaker, regexPattern))
-                            {
-                                mappedSpeaker = mappedValue;
-                                break; // Sobald ein Match gefunden wurde, beenden
-                            }
+                            speaker = characterToSpeaker.Value; // Ersetze durch den gemappten Sprecher
+                            Debug.Log("speaker new: " + speaker);
                         }
+                        // else
+                        // {
+                        //     Debug.LogWarning($"Sprecher '{speaker}' nicht in CharacterToSpeakerMap gefunden!");
+                        // }
                     }
 
-                    if (!string.IsNullOrEmpty(mappedSpeaker))
+                    int startIndex = speakerMatch.Index + speakerMatch.Length;
+                    int endIndex = nodeBody.IndexOf(">>", startIndex);
+                    endIndex = endIndex == -1 ? nodeBody.Length : endIndex;
+
+                    string text = nodeBody.Substring(startIndex, endIndex - startIndex).Trim();
+                    conversations.Add((speaker, text));
+                    lastIndex = endIndex;
+                }
+
+                // Füge verbleibenden Text als Teil der letzten Sprecher-Phase hinzu
+                if (lastIndex < nodeBody.Length)
+                {
+                    string remainingText = nodeBody.Substring(lastIndex).Trim();
+                    if (!string.IsNullOrEmpty(remainingText))
                     {
-                        speaker = mappedSpeaker;
-                    }
-                    else
-                    {
-                        Debug.LogWarning($"Kein Mapping gefunden für: {rawSpeaker}");
+                        conversations.Add(("Unbekannt", remainingText));
                     }
                 }
 
-                List<string> links = new List<string>();
-
-                // Suche nach Links
+                // Links und Gesprächsteile extrahieren
                 MatchCollection linkMatches = Regex.Matches(nodeBody, linkPattern);
                 foreach (Match linkMatch in linkMatches)
                 {
-                    string linkTarget = linkMatch.Groups[1].Value.Trim();
-                    links.Add(linkTarget);
+                    string targetText = null;
+                    string targetLink = null;
+
+                    if (!string.IsNullOrEmpty(linkMatch.Groups[2].Value)) // Zieltext nach | oder ->
+                    {
+                        targetText = linkMatch.Groups[1].Value.Trim(); // Text vor | oder ->
+                        targetLink = linkMatch.Groups[2].Value.Trim(); // Text nach | oder ->
+                    }
+                    else if (!string.IsNullOrEmpty(linkMatch.Groups[3].Value)) // Alleinstehender Text
+                    {
+                        targetLink = linkMatch.Groups[3].Value.Trim(); // Alleinstehender Text als Link
+                        targetText = ""; // Kein separater Text, also dasselbe wie targetLink
+                    }
+
+                    Debug.Log($"Gefunden: targetText='{targetText}', targetLink='{targetLink}'");
+
+                    // Füge den Gesprächsteil zur Konversation hinzu
+                    if (targetText != null)
+                    {
+                        conversations.Add(("Unbekannt", targetText));
+                        Debug.Log($"Gesprächsteil hinzugefügt: Speaker='Unbekannt', Text='{targetText}'");
+                    }
+                    
+                    // Füge den Zielknoten als Link hinzu
+                    if (!string.IsNullOrEmpty(targetLink))
+                    {
+                        links.Add(targetLink);
+                    }
+                }
+
+                // Prüfe auf den >>Ende<<-Marker
+                if (nodeBody.Contains(">>Ende<<") && !links.Contains("Ende"))
+                {
+                    links.Add("Ende");
                 }
 
                 if (!Graph.ContainsKey(nodeName))
                 {
-                    Graph[nodeName] = (new List<string>(), nodeBody.Trim(), speaker);
+                    Graph[nodeName] = (links, string.Join("\n", conversations.Select(c => $"{c.Speaker}: {c.Text}")), "Unbekannt");
+                    Debug.Log($"Node: {nodeName}, Conversations: {string.Join(", ", conversations.Select(c => $"{c.Speaker}: {c.Text}"))}");
                 }
-
-                Graph[nodeName].Links.AddRange(links);
+                else
+                {
+                    Graph[nodeName].Links.AddRange(links);
+                }
             }
 
+            // Stelle sicher, dass "Ende" im Graph existiert
             if (!Graph.ContainsKey("Ende"))
             {
-                Graph["Ende"] = (new List<string>(), string.Empty, string.Empty);
-            }
-        }
-
-        public void PrintMetaData()
-        {
-            Debug.Log("Meta-Daten:");
-            foreach (var meta in MetaData)
-            {
-                Debug.Log($"{meta.Key}: {meta.Value}");
+                Graph["Ende"] = (new List<string>(), string.Empty, "Unbekannt");
             }
         }
 
@@ -194,28 +202,22 @@ namespace _00_Kite2.Test
 
             void DFS(string node)
             {
-                // // Überprüfen, ob der Knoten bereits besucht wurde
-                // if (visited.Contains(node))
-                // {
-                //     return; // Beende die Rekursion
-                // }
-
                 if (!Graph.ContainsKey(node))
                 {
                     Debug.LogError($"Knoten {node} existiert nicht im Graphen!");
                     return;
                 }
 
-                // Füge den aktuellen Knoten zum Pfad hinzu und markiere ihn als besucht
+                // Füge den aktuellen Knoten zum Pfad hinzu
                 currentPath.Add(node);
-                // visited.Add(node);
 
-                var (links, body, speaker) = Graph[node];
+                // var (links, body, speaker) = Graph[node];
+
+                var (links, _, _) = Graph[node];
 
                 // Wenn Endknoten erreicht
                 if (links.Count == 0 || node == "Ende")
                 {
-                    // Debug.Log($"Knoten: {node}, Inhalt: {body}");
                     allPaths.Add(new List<string>(currentPath));
                 }
                 else
@@ -240,47 +242,47 @@ namespace _00_Kite2.Test
             foreach (var path in paths)
             {
                 string conversation = "Gespräch:\n";
-                string purePath = "Pfad: ";
 
-                for (int i = 0; i < path.Count; i++)
+                foreach (string nodeName in path)
                 {
-                    string nodeName = path[i];
-                    purePath += nodeName; // Füge den Knoten-Namen zum Pfad hinzu
-
-                    if (i < path.Count - 1)
-                    {
-                        purePath += " -> "; // Pfeil zwischen den Knoten
-                    }
-
                     if (Graph.ContainsKey(nodeName))
                     {
-                        var (links, body, speaker) = Graph[nodeName];
+                        var (_, body, _) = Graph[nodeName];
 
-                        // Bereinige den Body, um Metainformationen wie >>...<< und [[...]] zu entfernen
-                        string cleanedBody = Regex.Replace(body, @">>.*?<<", "").Trim();
-                        cleanedBody = Regex.Replace(cleanedBody, @"\[\[.*?\]\]", "").Trim();
-
-                        // Füge den bereinigten Body hinzu, falls er nicht leer ist
-                        if (!string.IsNullOrEmpty(cleanedBody))
+                        // Verarbeitung des Node-Bodies für die Ausgabe
+                        string[] lines = body.Split('\n');
+                        foreach (var line in lines)
                         {
-                            conversation += $"{speaker}: {cleanedBody}\n\n";
-                        }
-
-                        // Extrahiere nur die tatsächlich gewählte Antwort für den nächsten Knoten
-                        if (i < path.Count - 1)
-                        {
-                            string nextNode = path[i + 1];
-                            string linkText = ExtractLinkText(body, nextNode);
-
-                            if (!string.IsNullOrEmpty(linkText))
+                            // Entferne Meta-Informationen wie >>--<<, Links und leere Zeilen
+                            if (line.Trim().StartsWith(">>") || string.IsNullOrWhiteSpace(line))
                             {
-                                string nextSpeaker = "Unbekannt";
-                                if (Graph.ContainsKey(nextNode) && !string.IsNullOrEmpty(Graph[nextNode].Speaker))
+                                continue;
+                            }
+
+                            // Extrahiere Sprecher und Text
+                            int colonIndex = line.IndexOf(":");
+                            if (colonIndex > -1)
+                            {
+                                string speaker = line.Substring(0, colonIndex).Trim();
+                                string text = line.Substring(colonIndex + 1).Trim();
+
+                                // Vereinheitliche Sprecher basierend auf Mapping in `CharacterToSpeakerMap`
+                                if (CharacterToSpeakerMap.TryGetValue(speaker, out string mappedSpeaker))
                                 {
-                                    nextSpeaker = Graph[nextNode].Speaker;
+                                    speaker = mappedSpeaker; // Ersetze mit dem Namen aus der Meta-Datei
+                                }
+                                else
+                                {
+                                    Debug.LogWarning($"Sprecher '{speaker}' nicht in CharacterToSpeakerMap gefunden!");
                                 }
 
-                                conversation += $"{nextSpeaker}: {linkText}\n\n";
+                                // Füge die bereinigte Zeile zur Konversation hinzu
+                                conversation += $"{speaker}: {text}\n\n";
+                            }
+                            else
+                            {
+                                // Falls kein Sprecher erkennbar ist, füge die Zeile ohne Änderungen hinzu
+                                conversation += line.Trim() + "\n\n";
                             }
                         }
                     }
@@ -290,11 +292,8 @@ namespace _00_Kite2.Test
                     }
                 }
 
-                // Ausgabe des Gesprächs
-                Debug.Log(conversation);
-
-                // Ausgabe des reinen Pfads
-                Debug.Log(purePath);
+                // Ausgabe der bereinigten Konversation
+                Debug.Log(conversation.Trim());
             }
         }
 
