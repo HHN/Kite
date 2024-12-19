@@ -1,33 +1,35 @@
 using _00_Kite2.Common.Messages;
-using _00_Kite2.Server_Communication;
+using _00_Kite2.Server_Communication.Request_Objects;
 using UnityEngine.Networking;
 
-public class GetUserRoleByCodeServerCall : ServerCall
+namespace _00_Kite2.Server_Communication.Server_Calls
 {
-    public string code;
-
-    protected override object CreateRequestObject()
+    public class GetUserRoleByCodeServerCall : ServerCall
     {
-        GetUserRoleByCodeRequest call = new GetUserRoleByCodeRequest();
-        call.code = code;
-        return call;
-    }
+        public string code;
 
-    protected override UnityWebRequest CreateUnityWebRequestObject()
-    {
-        return UnityWebRequest.PostWwwForm(ConnectionLink.USER_ROLE_LINK, string.Empty);
-    }
-
-    protected override void OnResponse(Response response)
-    {
-        switch (ResultCodeHelper.ValueOf(response.GetResultCode()))
+        protected override object CreateRequestObject()
         {
-            case ResultCode.SUCCESSFULLY_GOT_USER_ROLE:
+            GetUserRoleByCodeRequest call = new GetUserRoleByCodeRequest();
+            call.code = code;
+            return call;
+        }
+
+        protected override UnityWebRequest CreateUnityWebRequestObject()
+        {
+            return UnityWebRequest.PostWwwForm(ConnectionLink.USER_ROLE_LINK, string.Empty);
+        }
+
+        protected override void OnResponse(Response response)
+        {
+            switch (ResultCodeHelper.ValueOf(response.GetResultCode()))
+            {
+                case ResultCode.SUCCESSFULLY_GOT_USER_ROLE:
                 {
                     OnSuccessHandler.OnSuccess(response);
                     return;
                 }
-            default:
+                default:
                 {
                     if (OnErrorHandler != null)
                     {
@@ -37,8 +39,10 @@ public class GetUserRoleByCodeServerCall : ServerCall
                     {
                         sceneController.DisplayErrorMessage(ErrorMessages.UNEXPECTED_SERVER_ERROR);
                     }
+
                     return;
                 }
+            }
         }
     }
 }

@@ -1,3 +1,6 @@
-public class PrivacyPolicySceneMemory
+namespace _00_Kite2.Common.SceneMemory
 {
+    public abstract class PrivacyPolicySceneMemory
+    {
+    }
 }

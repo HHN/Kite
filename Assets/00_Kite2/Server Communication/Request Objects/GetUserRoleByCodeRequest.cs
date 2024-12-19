@@ -1,7 +1,10 @@
 using System;
 
-[Serializable]
-public class GetUserRoleByCodeRequest
+namespace _00_Kite2.Server_Communication.Request_Objects
 {
-    public string code;
+    [Serializable]
+    public class GetUserRoleByCodeRequest
+    {
+        public string code;
+    }
 }

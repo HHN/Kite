@@ -1,4 +1,3 @@
-using Febucci.UI.Core;
 using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using UnityEngine;
 
@@ -16,9 +15,9 @@ namespace _00_Kite2.Player
         public void OnStartTyping()
         {
             TypewriterCore typewriterCore = GetComponent<TypewriterCore>();
-        
+
             _controller.currentTypeWriter = typewriterCore;
-        
+
             if (GameManager.Instance.calledFromReload)
             {
                 typewriterCore.SkipTypewriter();

@@ -1,11 +1,14 @@
 using System;
 
-[Serializable]
-public class AddAiReviewRequest
+namespace _00_Kite2.Server_Communication.Request_Objects
 {
-    public long novelId;
-    public string novelName;
-    public string prompt;
-    public string aiFeedback;
-    public string reviewText;
+    [Serializable]
+    public class AddAiReviewRequest
+    {
+        public long novelId;
+        public string novelName;
+        public string prompt;
+        public string aiFeedback;
+        public string reviewText;
+    }
 }

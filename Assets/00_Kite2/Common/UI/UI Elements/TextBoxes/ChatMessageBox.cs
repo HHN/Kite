@@ -1,39 +1,43 @@
-using Febucci.UI.Core;
 using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 
-public class ChatMessageBox : MonoBehaviour
+namespace _00_Kite2.Common.UI.UI_Elements.TextBoxes
 {
-    public TextMeshProUGUI textBox;
-
-    public ChatMessageBox(TypewriterCore typewriter, bool calledFromReload)
+    public class ChatMessageBox : MonoBehaviour
     {
-        typewriter = typewriter;
-        calledFromReload = calledFromReload;
-    }
+        public TextMeshProUGUI textBox;
 
-    public void SetMessage(string message)
-    {
-        bool active = SetInactiveIfMessageIsNull(message);
-
-        if (!active) { return; }
- 
-        textBox.text = message;
-    }
-
-    public bool SetInactiveIfMessageIsNull(string message)
-    {
-        if (string.IsNullOrEmpty(message))
+        public ChatMessageBox(TypewriterCore typewriter, bool calledFromReload)
         {
-            this.gameObject.SetActive(false);
-            return false;
+            typewriter = typewriter;
+            calledFromReload = calledFromReload;
         }
-        else
+
+        public void SetMessage(string message)
         {
-            this.gameObject.SetActive(true);
-            return true;
+            bool active = SetInactiveIfMessageIsNull(message);
+
+            if (!active)
+            {
+                return;
+            }
+
+            textBox.text = message;
+        }
+
+        private bool SetInactiveIfMessageIsNull(string message)
+        {
+            if (string.IsNullOrEmpty(message))
+            {
+                this.gameObject.SetActive(false);
+                return false;
+            }
+            else
+            {
+                this.gameObject.SetActive(true);
+                return true;
+            }
         }
     }
 }

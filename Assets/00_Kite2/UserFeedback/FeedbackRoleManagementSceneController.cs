@@ -1,93 +1,102 @@
+using _00_Kite2.Common;
 using _00_Kite2.Common.Managers;
+using _00_Kite2.Common.SceneManagement;
+using _00_Kite2.Server_Communication;
+using _00_Kite2.Server_Communication.Server_Calls;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FeedbackRoleManagementSceneController : SceneController, OnSuccessHandler
+namespace _00_Kite2.UserFeedback
 {
-    [SerializeField] private TextMeshProUGUI infoText;
-    [SerializeField] private TMP_InputField inputField;
-    [SerializeField] private Button confirmCodeButton;
-    [SerializeField] private Button subscribeButton;
-    [SerializeField] private Button novelReviewsButton;
-    [SerializeField] private Button aiReviewsButton;
-    [SerializeField] private Button promptsAndCompletionsButton;
-    [SerializeField] private GameObject buttonsToHide;
-    [SerializeField] private RectTransform layout;
-    [SerializeField] private GameObject getUserRoleByCodeServerCallPrefab;
-
-    // Start is called before the first frame update
-    void Start()
+    public class FeedbackRoleManagementSceneController : SceneController, IOnSuccessHandler
     {
-        LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
+        [SerializeField] private TextMeshProUGUI infoText;
+        [SerializeField] private TMP_InputField inputField;
+        [SerializeField] private Button confirmCodeButton;
+        [SerializeField] private Button subscribeButton;
+        [SerializeField] private Button novelReviewsButton;
+        [SerializeField] private Button aiReviewsButton;
+        [SerializeField] private Button promptsAndCompletionsButton;
+        [SerializeField] private GameObject buttonsToHide;
+        [SerializeField] private RectTransform layout;
+        [SerializeField] private GameObject getUserRoleByCodeServerCallPrefab;
 
-        BackStackManager.Instance().Push(SceneNames.FEEDBACK_ROKE_MANAGEMENT_SCENE);
-
-        infoText.text = "Aktuelle Rolle: " + FeedbackRoleManager.Instance.GetFeedbackRoleName();
-        int role = FeedbackRoleManager.Instance.GetFeedbackRole();
-
-        if (role == 4 || role == 5)
+        // Start is called before the first frame update
+        private void Start()
         {
-            buttonsToHide.SetActive(true);
-        } else
-        {
-            buttonsToHide.SetActive(false);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
+
+            BackStackManager.Instance().Push(SceneNames.FEEDBACK_ROKE_MANAGEMENT_SCENE);
+
+            infoText.text = "Aktuelle Rolle: " + Common.Managers.FeedbackRoleManager.Instance.GetFeedbackRoleName();
+            int role = Common.Managers.FeedbackRoleManager.Instance.GetFeedbackRole();
+
+            if (role == 4 || role == 5)
+            {
+                buttonsToHide.SetActive(true);
+            }
+            else
+            {
+                buttonsToHide.SetActive(false);
+            }
+
+            confirmCodeButton.onClick.AddListener(OnConfirmButton);
+            subscribeButton.onClick.AddListener(OnSubscribeButton);
+            novelReviewsButton.onClick.AddListener(OnNovelReviewButton);
+            aiReviewsButton.onClick.AddListener(OnKiReviewButton);
+            promptsAndCompletionsButton.onClick.AddListener(OnPromptsAndCompletionsButton);
         }
 
-        confirmCodeButton.onClick.AddListener(delegate { OnConfirmButton(); });
-        subscribeButton.onClick.AddListener(delegate { OnSubscribeButton(); });
-        novelReviewsButton.onClick.AddListener(delegate { OnNovelReviewButton(); });
-        aiReviewsButton.onClick.AddListener(delegate { OnKiReviewButton(); });
-        promptsAndCompletionsButton.onClick.AddListener(delegate { OnPromptsAndCompletionsButton(); });
-    }
-
-    public void OnSubscribeButton()
-    {
-        SceneLoader.LoadAddObserverScene();
-    }
-
-    public void OnConfirmButton()
-    {
-        string input = inputField.text.Trim();
-        inputField.text = "";
-        GetUserRoleByCodeServerCall call = Instantiate(getUserRoleByCodeServerCallPrefab).GetComponent<GetUserRoleByCodeServerCall>();
-        call.sceneController = this;
-        call.OnSuccessHandler = this;
-        call.code = input;
-        call.SendRequest();
-        DontDestroyOnLoad(call.gameObject);
-    }
-
-    public void OnNovelReviewButton()
-    {
-        SceneLoader.LoadNovelReviewExplorerScene();
-    }
-
-    public void OnKiReviewButton()
-    {
-        SceneLoader.LoadAiReviewExplorerScene();
-    }
-
-    public void OnPromptsAndCompletionsButton()
-    {
-        SceneLoader.LoadPromptsAndCompletionsExplorerScene();
-    }
-
-    public void OnSuccess(Response response)
-    {
-        string result = FeedbackRoleManager.Instance.SubmitCode(response.GetUserRole());
-        this.DisplayInfoMessage(result);
-
-        infoText.text = "Aktuelle Rolle: " + FeedbackRoleManager.Instance.GetFeedbackRoleName();
-        int role = FeedbackRoleManager.Instance.GetFeedbackRole();
-
-        if (role == 4 || role == 5)
+        private void OnSubscribeButton()
         {
-            buttonsToHide.SetActive(true);
+            SceneLoader.LoadAddObserverScene();
         }
-        else
+
+        private void OnConfirmButton()
         {
-            buttonsToHide.SetActive(false);
+            string input = inputField.text.Trim();
+            inputField.text = "";
+            GetUserRoleByCodeServerCall call = Instantiate(getUserRoleByCodeServerCallPrefab)
+                .GetComponent<GetUserRoleByCodeServerCall>();
+            call.sceneController = this;
+            call.OnSuccessHandler = this;
+            call.code = input;
+            call.SendRequest();
+            DontDestroyOnLoad(call.gameObject);
+        }
+
+        private void OnNovelReviewButton()
+        {
+            SceneLoader.LoadNovelReviewExplorerScene();
+        }
+
+        private void OnKiReviewButton()
+        {
+            SceneLoader.LoadAiReviewExplorerScene();
+        }
+
+        private void OnPromptsAndCompletionsButton()
+        {
+            SceneLoader.LoadPromptsAndCompletionsExplorerScene();
+        }
+
+        public void OnSuccess(Response response)
+        {
+            string result = Common.Managers.FeedbackRoleManager.Instance.SubmitCode(response.GetUserRole());
+            this.DisplayInfoMessage(result);
+
+            infoText.text = "Aktuelle Rolle: " + Common.Managers.FeedbackRoleManager.Instance.GetFeedbackRoleName();
+            int role = Common.Managers.FeedbackRoleManager.Instance.GetFeedbackRole();
+
+            if (role == 4 || role == 5)
+            {
+                buttonsToHide.SetActive(true);
+            }
+            else
+            {
+                buttonsToHide.SetActive(false);
+            }
         }
     }
 }

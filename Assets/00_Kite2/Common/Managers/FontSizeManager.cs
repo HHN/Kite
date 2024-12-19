@@ -13,14 +13,14 @@ namespace _00_Kite2.Common.Managers
         public int FontSize { get; private set; }
 
         // Werte f�r die minimal und maximal zulässige Schriftgröße
-        private int _minFontSize = 35;
-        private int _maxFontSize = 50;
+        private const int MinFontSize = 35;
+        private const int MaxFontSize = 50;
 
         // Privater Konstruktor, um Instanziierungen von au�en zu verhindern
         private FontSizeManager()
         {
             // Standard-Schriftgröße kann hier initialisiert werden, z.B. mittlerer Wert zwischen min und max
-            FontSize = _minFontSize;
+            FontSize = MinFontSize;
         }
 
         // Öffentliche Methode zum Abrufen der Instanz
@@ -43,13 +43,13 @@ namespace _00_Kite2.Common.Managers
         private void Awake()
         {
             // Schriftgröße aus PlayerPrefs laden (Standard: minFontSize)
-            FontSize = PlayerPrefs.GetInt("SavedFontSize", _minFontSize);
+            FontSize = PlayerPrefs.GetInt("SavedFontSize", MinFontSize);
         }
 
         // Methode, um die Schriftgröße zu setzen, dabei wird sichergestellt, dass die Gr��e im zulässigen Bereich bleibt
         public void SetFontSize(int newFontSize)
         {
-            FontSize = Mathf.Clamp(newFontSize, _minFontSize, _maxFontSize);
+            FontSize = Mathf.Clamp(newFontSize, MinFontSize, MaxFontSize);
             PlayerPrefs.SetInt("SavedFontSize", FontSize);
             UpdateAllTextComponents();
         }
@@ -57,7 +57,7 @@ namespace _00_Kite2.Common.Managers
         // Methode, um die Schriftgröße direkt auf einen Slider-Wert anzupassen (0 = min, 1 = max)
         public void SetFontSizeFromSlider(float sliderValue)
         {
-            FontSize = Mathf.RoundToInt(Mathf.Lerp(_minFontSize, _maxFontSize, sliderValue));
+            FontSize = Mathf.RoundToInt(Mathf.Lerp(MinFontSize, MaxFontSize, sliderValue));
             PlayerPrefs.SetInt("SavedFontSize", FontSize);
             UpdateAllTextComponents();
         }

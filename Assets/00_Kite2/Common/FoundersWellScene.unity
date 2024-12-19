@@ -1726,7 +1726,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 270538288}
         m_TargetAssemblyTypeName: RadialLayoutGroup, Main
-        m_MethodName: OnImpressumgButton
+        m_MethodName: OnImpressumButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

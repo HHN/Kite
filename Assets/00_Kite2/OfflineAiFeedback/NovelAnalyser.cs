@@ -1,73 +1,77 @@
 using System.Collections;
 using System.Collections.Generic;
+using _00_Kite2.Common.Novel;
 using _00_Kite2.Player;
 using UnityEngine;
 
-public class NovelAnalyser
+namespace _00_Kite2.OfflineAiFeedback
 {
-    private VisualNovel objectToAnalyse;
-    private bool isAnalysed;
-    private bool loopDetected;
-    private List<FeedbackNodeContainer> allPossiblePaths;
-    private int numberOfAllPossiblePaths;
-
-    public NovelAnalyser()
+    public class NovelAnalyser
     {
-        allPossiblePaths = new List<FeedbackNodeContainer>();
-        numberOfAllPossiblePaths = 0;
-    }
+        private VisualNovel _objectToAnalyse;
+        private bool _isAnalysed;
+        private bool _loopDetected;
+        private List<FeedbackNodeContainer> _allPossiblePaths;
+        private int _numberOfAllPossiblePaths;
 
-    public IEnumerator AnalyseNovel(VisualNovel visualNovel)
-    {
-        objectToAnalyse = visualNovel;
-        isAnalysed = true;
-
-        List<FeedbackNodeContainer> allPossiblePaths = new List<FeedbackNodeContainer>();
-
-        NovelAnalyserHelper novelAnalyserHelper = new NovelAnalyserHelper(visualNovel);
-        novelAnalyserHelper.AnalyseNovel();
-
-        while (!novelAnalyserHelper.IsAnalysationOver())
+        public NovelAnalyser()
         {
-            yield return new WaitForSeconds(0.5f);
+            _allPossiblePaths = new List<FeedbackNodeContainer>();
+            _numberOfAllPossiblePaths = 0;
         }
 
-        VisualNovelNames name = VisualNovelNamesHelper.ValueOf((int) visualNovel.id);
-
-        List<NovelAnalyserHelper> analysers = NovelAnalyserHelper.GetAllPossibleNovelAnalyserHelpers(name);
-
-        foreach (NovelAnalyserHelper helper in analysers)
+        public IEnumerator AnalyseNovel(VisualNovel visualNovel)
         {
-            FeedbackNodeContainer feedbackNodeContainer = new FeedbackNodeContainer();
-            feedbackNodeContainer.novel = visualNovel.id;
-            feedbackNodeContainer.path = helper.GetPath();
-            feedbackNodeContainer.prompt = helper.GetPrompt();
-            feedbackNodeContainer.completion = "";
-            allPossiblePaths.Add(feedbackNodeContainer);
+            _objectToAnalyse = visualNovel;
+            _isAnalysed = true;
+
+            List<FeedbackNodeContainer> allPossiblePaths = new List<FeedbackNodeContainer>();
+
+            NovelAnalyserHelper novelAnalyserHelper = new NovelAnalyserHelper(visualNovel);
+            novelAnalyserHelper.AnalyseNovel();
+
+            while (!novelAnalyserHelper.IsAnalysisOver())
+            {
+                yield return new WaitForSeconds(0.5f);
+            }
+
+            VisualNovelNames name = VisualNovelNamesHelper.ValueOf((int)visualNovel.id);
+
+            List<NovelAnalyserHelper> analysers = NovelAnalyserHelper.GetAllPossibleNovelAnalyserHelpers(name);
+
+            foreach (NovelAnalyserHelper helper in analysers)
+            {
+                FeedbackNodeContainer feedbackNodeContainer = new FeedbackNodeContainer();
+                feedbackNodeContainer.novel = visualNovel.id;
+                feedbackNodeContainer.path = helper.GetPath();
+                feedbackNodeContainer.prompt = helper.GetPrompt();
+                feedbackNodeContainer.completion = "";
+                allPossiblePaths.Add(feedbackNodeContainer);
+            }
+
+            this._loopDetected = novelAnalyserHelper.LoopDetected;
+            this._allPossiblePaths = allPossiblePaths;
+            this._numberOfAllPossiblePaths = allPossiblePaths.Count;
         }
 
-        this.loopDetected = novelAnalyserHelper.loopDetected;
-        this.allPossiblePaths = allPossiblePaths;
-        this.numberOfAllPossiblePaths = allPossiblePaths.Count;
-    }
+        public bool IsAnalysed()
+        {
+            return _isAnalysed;
+        }
 
-    public bool IsAnalysed() 
-    { 
-        return isAnalysed; 
-    }
+        public bool LoopDetected()
+        {
+            return _loopDetected;
+        }
 
-    public bool LoopDetected()
-    {
-        return loopDetected;
-    }
+        public List<FeedbackNodeContainer> GetAllPossiblePaths()
+        {
+            return _allPossiblePaths;
+        }
 
-    public List<FeedbackNodeContainer> GetAllPossiblePaths() 
-    {
-        return allPossiblePaths;
-    }
-
-    public int GetNumberOfPossiblePaths()
-    {
-        return numberOfAllPossiblePaths;
+        public int GetNumberOfPossiblePaths()
+        {
+            return _numberOfAllPossiblePaths;
+        }
     }
 }

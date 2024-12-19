@@ -1,20 +1,22 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RequestExpertFeedbackButton : MonoBehaviour
+namespace _00_Kite2.Player
 {
-    [SerializeField] private Button requestExpertFeedbackButton;
-    [SerializeField] private GameObject requestExpertFeedbackPanel;
-    [SerializeField] private GameObject container;
-
-    void Start()
+    public class RequestExpertFeedbackButton : MonoBehaviour
     {
-        requestExpertFeedbackButton.onClick.AddListener(delegate { OnRequestExpertFeedbackButton(); });
+        [SerializeField] private Button requestExpertFeedbackButton;
+        [SerializeField] private GameObject requestExpertFeedbackPanel;
+        [SerializeField] private GameObject container;
 
-    }
+        private void Start()
+        {
+            requestExpertFeedbackButton.onClick.AddListener(OnRequestExpertFeedbackButton);
+        }
 
-    public void OnRequestExpertFeedbackButton()
-    {
-        Instantiate(requestExpertFeedbackPanel, container.transform);
+        private void OnRequestExpertFeedbackButton()
+        {
+            Instantiate(requestExpertFeedbackPanel, container.transform);
+        }
     }
 }

@@ -1,5 +1,9 @@
 using System.Collections.Generic;
+using _00_Kite2.Common;
 using _00_Kite2.Common.Managers;
+using _00_Kite2.Common.Novel;
+using _00_Kite2.Common.SceneManagement;
+using _00_Kite2.Common.SceneMemory;
 using _00_Kite2.Common.UI.Founders_Bubble.ScrollingBehavior;
 using TMPro;
 using UnityEngine;
@@ -9,8 +13,9 @@ namespace _00_Kite2.Player
 {
     public class FoundersBubbleSceneController : SceneController
     {
-        [Header("Novel Description Textbox")] 
-        [SerializeField] private GameObject novelDescriptionTextboxGameObject;
+        [Header("Novel Description Textbox")] [SerializeField]
+        private GameObject novelDescriptionTextboxGameObject;
+
         [SerializeField] private NovelDescriptionTextbox novelDescriptionTextbox;
         [SerializeField] private GameObject novelDescriptionTextboxIntroGameObject;
         [SerializeField] private NovelDescriptionTextbox novelDescriptionTextboxIntro;
@@ -23,8 +28,9 @@ namespace _00_Kite2.Player
         [Header("Founder's Well Button")] [SerializeField]
         private Button foundersWellButton;
 
-        [Header("Novels Contained in Version")] 
-        [SerializeField] private bool isIntroNovelNovelInVersionContained;
+        [Header("Novels Contained in Version")] [SerializeField]
+        private bool isIntroNovelNovelInVersionContained;
+
         [SerializeField] private bool isBankkreditNovelInVersionContained;
         [SerializeField] private bool isBankkontoNovelInVersionContained;
         [SerializeField] private bool isFoerderantragNovelInVersionContained;
@@ -47,9 +53,10 @@ namespace _00_Kite2.Player
 
         [SerializeField] private bool isBurgerMenuOpen;
         [SerializeField] private Button burgerMenuBackground;
-        
-        [Header("Burger Menu Buttons")] 
-        [SerializeField] private Button introNovelButtonFromBurgerMenu;
+
+        [Header("Burger Menu Buttons")] [SerializeField]
+        private Button introNovelButtonFromBurgerMenu;
+
         [SerializeField] private Button bankkreditNovelButtonFromBurgerMenu;
         [SerializeField] private Button elternNovelButtonFromBurgerMenu;
         [SerializeField] private Button notarinNovelButtonFromBurgerMenu;
@@ -214,7 +221,8 @@ namespace _00_Kite2.Player
 
         public void OnBekannteTreffenNovelButton()
         {
-            DisplayTextBoxForVisualNovel(VisualNovelNames.BEKANNTE_TREFFEN_NOVEL, isBekanntenTreffenNovelInVersionContained);
+            DisplayTextBoxForVisualNovel(VisualNovelNames.BEKANNTE_TREFFEN_NOVEL,
+                isBekanntenTreffenNovelInVersionContained);
             infinityScroll.MoveToVisualNovel(VisualNovelNames.BEKANNTE_TREFFEN_NOVEL);
         }
 
@@ -337,7 +345,7 @@ namespace _00_Kite2.Player
                 {
                     //Debug.Log("title: " + novel.title);
                     //Debug.Log("description: " + novel.description);
-                    
+
                     if (novel.id == 13)
                     {
                         novelDescriptionTextboxGameObject.SetActive(false);
@@ -368,7 +376,8 @@ namespace _00_Kite2.Player
 
                     isPopupOpen = true;
                     currentlyOpenedVisualNovelPopup = visualNovel;
-                    NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
+                    NovelColorManager.Instance()
+                        .SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
                 }
             }
 
@@ -387,7 +396,7 @@ namespace _00_Kite2.Player
             base.OnStop();
             FoundersBubbleSceneMemory memory = new FoundersBubbleSceneMemory
             {
-                scrollPosition = infinityScroll.GetCurrentScrollPosition()
+                ScrollPosition = infinityScroll.GetCurrentScrollPosition()
             };
             SceneMemoryManager.Instance().SetMemoryOfFoundersBubbleScene(memory);
         }
@@ -407,7 +416,7 @@ namespace _00_Kite2.Player
                 isBurgerMenuOpen = false;
             }
         }
-        
+
         private void OnIntroButtonFromBurgerMenu()
         {
             GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
@@ -438,7 +447,7 @@ namespace _00_Kite2.Player
         {
             DisplayNovelFromMenu(VisualNovelNames.BUERO_NOVEL);
         }
-        
+
         private void OnHonorarNovelButtonFromBurgerMenu()
         {
             DisplayNovelFromMenu(VisualNovelNames.HONORAR_NOVEL);
@@ -477,11 +486,13 @@ namespace _00_Kite2.Player
                 .SetBackgroundColorOfVisualNovelToPlay(
                     FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
             PlayManager.Instance()
-                .SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+                .SetDisplayNameOfNovelToPlay(
+                    FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
 
-            if (ShowPlayInstructionManager.Instance().ShowInstruction() && visualNovelToDisplay.title != "Einstiegsdialog")
+            if (ShowPlayInstructionManager.Instance().ShowInstruction() &&
+                visualNovelToDisplay.title != "Einstiegsdialog")
             {
                 SceneLoader.LoadPlayInstructionScene();
             }

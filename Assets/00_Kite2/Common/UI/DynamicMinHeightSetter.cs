@@ -1,17 +1,20 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DynamicMinHeightSetter : MonoBehaviour
+namespace _00_Kite2.Common.UI
 {
-    private LayoutElement layoutElement;
-
-    void Awake()
+    public class DynamicMinHeightSetter : MonoBehaviour
     {
-        layoutElement = GetComponent<LayoutElement>();
-    }
+        private LayoutElement _layoutElement;
 
-    void Update()
-    {
-        layoutElement.minHeight = GetComponent<RectTransform>().rect.height;
+        private void Awake()
+        {
+            _layoutElement = GetComponent<LayoutElement>();
+        }
+
+        private void Update()
+        {
+            _layoutElement.minHeight = GetComponent<RectTransform>().rect.height;
+        }
     }
 }

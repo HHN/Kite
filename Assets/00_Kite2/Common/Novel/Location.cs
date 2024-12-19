@@ -1,36 +1,40 @@
-public enum Location
+namespace _00_Kite2.Common.Novel
 {
-    NONE,
-    OFFICE
-}
-
-public class LocationHelper
-{
-    public const string OFFICE = "Office";
-    public static int ToInt(Location location)
+    public enum Location
     {
-        switch (location)
-        {
-            case Location.OFFICE: return 1;
-            default: return -1;
-        }
+        NONE,
+        OFFICE
     }
 
-    public static Location ValueOf(int location)
+    internal class LocationHelper
     {
-        switch (location)
-        {
-            case 1: return Location.OFFICE;
-            default: return Location.NONE;
-        }
-    }
+        private const string OFFICE = "Office";
 
-    public static Location ValueOf(string location)
-    {
-        switch (location)
+        public static int ToInt(Location location)
         {
-            case OFFICE: return Location.OFFICE;
-            default: return Location.NONE;
+            switch (location)
+            {
+                case Location.OFFICE: return 1;
+                default: return -1;
+            }
+        }
+
+        public static Location ValueOf(int location)
+        {
+            switch (location)
+            {
+                case 1: return Location.OFFICE;
+                default: return Location.NONE;
+            }
+        }
+
+        public static Location ValueOf(string location)
+        {
+            switch (location)
+            {
+                case OFFICE: return Location.OFFICE;
+                default: return Location.NONE;
+            }
         }
     }
 }

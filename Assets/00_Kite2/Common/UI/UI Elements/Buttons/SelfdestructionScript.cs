@@ -1,9 +1,12 @@
 using UnityEngine;
 
-public class SelfdestructionScript : MonoBehaviour
+namespace _00_Kite2.Common.UI.UI_Elements.Buttons
 {
-    void Start()
+    public class SelfdestructionScript : MonoBehaviour
     {
-        Destroy(gameObject, 5f);
+        private void Start()
+        {
+            Destroy(gameObject, 5f);
+        }
     }
 }

@@ -1,3 +1,4 @@
+using _00_Kite2.Common.Novel;
 using UnityEngine;
 
 namespace _00_Kite2.Common.Managers
@@ -46,11 +47,6 @@ namespace _00_Kite2.Common.Managers
 
         public Color GetBackgroundColorOfVisualNovelToPlay()
         {
-            if (_backgroundColorForNovel == null)
-            {
-                return new Color(0, 0, 0);
-            }
-
             return _backgroundColorForNovel;
         }
 
@@ -61,11 +57,6 @@ namespace _00_Kite2.Common.Managers
 
         public Color GetForegroundColorOfVisualNovelToPlay()
         {
-            if (_foregroundColorForNovel == null)
-            {
-                return new Color(0, 0, 0);
-            }
-
             return _foregroundColorForNovel;
         }
 

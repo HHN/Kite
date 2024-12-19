@@ -1,17 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
+using _00_Kite2.Common;
 using _00_Kite2.Common.Managers;
+using _00_Kite2.Common.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ImpressumSceneController : SceneController
+namespace _00_Kite2.NewPages
 {
-    [SerializeField] private RectTransform layout;
-
-    void Start()
+    public class ImpressumSceneController : SceneController
     {
-        BackStackManager.Instance().Push(SceneNames.IMPRESSUM_SCENE);
-        LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
-        FontSizeManager.Instance().UpdateAllTextComponents();
+        [SerializeField] private RectTransform layout;
+
+        private void Start()
+        {
+            BackStackManager.Instance().Push(SceneNames.IMPRESSUM_SCENE);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
+            FontSizeManager.Instance().UpdateAllTextComponents();
+        }
     }
 }

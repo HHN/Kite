@@ -1,38 +1,43 @@
+using _00_Kite2.Common;
+using _00_Kite2.Common.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EinstellungenSceneController : SceneController
+namespace _00_Kite2.NewPages
 {
-    [SerializeField] private Button barrierefreiheitButton;
-    [SerializeField] private Button impressumButton;
-    [SerializeField] private Button nutzungsbedingungenButton;
-    [SerializeField] private Button datenschutzButton;
-
-    public void Start()
+    public class EinstellungenSceneController : SceneController
     {
-        barrierefreiheitButton.onClick.AddListener(delegate { OnBarrierefreiheitButton(); });
-        impressumButton.onClick.AddListener(delegate { OnImpressumButton(); });
-        nutzungsbedingungenButton.onClick.AddListener(delegate { OnNutzungsbedingungenButton(); });
-        datenschutzButton.onClick.AddListener(delegate { OnDatenschutzButton(); });
-    }
+        [SerializeField] private Button barrierefreiheitButton;
+        [SerializeField] private Button impressumButton;
+        [SerializeField] private Button nutzungsbedingungenButton;
+        [SerializeField] private Button datenschutzButton;
 
-    public void OnBarrierefreiheitButton()
-    {
-        SceneLoader.LoadBarrierefreiheitScene();
-    }
+        public void Start()
+        {
+            barrierefreiheitButton.onClick.AddListener(OnBarrierefreiheitButton);
+            impressumButton.onClick.AddListener(OnImpressumButton);
+            nutzungsbedingungenButton.onClick.AddListener(OnNutzungsbedingungenButton);
+            datenschutzButton.onClick.AddListener(OnDatenschutzButton);
+        }
 
-    public void OnImpressumButton()
-    {
-        SceneLoader.LoadImpressumScene();
-    }
+        private void OnBarrierefreiheitButton()
+        {
+            SceneLoader.LoadBarrierefreiheitScene();
+        }
 
-    public void OnNutzungsbedingungenButton()
-    {
-        SceneLoader.LoadNutzungsbedingungenScene();
-    }
+        private void OnImpressumButton()
+        {
+            SceneLoader.LoadImpressumScene();
+        }
 
-    public void OnDatenschutzButton()
-    {
-        SceneLoader.LoadDatenschutzScene();
+        private void OnNutzungsbedingungenButton()
+        {
+            SceneLoader.LoadNutzungsbedingungenScene();
+        }
+
+        private void OnDatenschutzButton()
+        {
+            SceneLoader.LoadDatenschutzScene();
+        }
     }
 }

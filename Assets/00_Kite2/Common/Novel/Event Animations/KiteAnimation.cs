@@ -12,9 +12,18 @@ namespace _00_Kite2.Common.Novel.Event_Animations
         {
             switch (sound)
             {
-                case KiteAnimation.NONE: { return 0; }
-                case KiteAnimation.WATER_POURING: { return 1; }
-                default: { return -1; }
+                case KiteAnimation.NONE:
+                {
+                    return 0;
+                }
+                case KiteAnimation.WATER_POURING:
+                {
+                    return 1;
+                }
+                default:
+                {
+                    return -1;
+                }
             }
         }
 
@@ -22,9 +31,18 @@ namespace _00_Kite2.Common.Novel.Event_Animations
         {
             switch (i)
             {
-                case 0: { return KiteAnimation.NONE; }
-                case 1: { return KiteAnimation.WATER_POURING; }
-                default: { return KiteAnimation.NONE; }
+                case 0:
+                {
+                    return KiteAnimation.NONE;
+                }
+                case 1:
+                {
+                    return KiteAnimation.WATER_POURING;
+                }
+                default:
+                {
+                    return KiteAnimation.NONE;
+                }
             }
         }
     }

@@ -1,40 +1,43 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public class DataObject
+namespace _00_Kite2.UserFeedback
 {
-    [SerializeField] private string prompt;
-    [SerializeField] private string completion;
-    [SerializeField] private long id;
-
-    public void SetPrompt(string prompt)
+    [Serializable]
+    public class DataObject
     {
-        this.prompt = prompt;
-    }
+        [SerializeField] private string prompt;
+        [SerializeField] private string completion;
+        [SerializeField] private long id;
 
-    public string GetPrompt()
-    {
-        return this.prompt;
-    }
+        public void SetPrompt(string prompt)
+        {
+            this.prompt = prompt;
+        }
 
-    public void SetCompletion(string completion)
-    {
-        this.completion = completion;
-    }
+        public string GetPrompt()
+        {
+            return this.prompt;
+        }
 
-    public string GetCompletion()
-    {
-        return this.completion;
-    }
+        public void SetCompletion(string completion)
+        {
+            this.completion = completion;
+        }
 
-    public void SetId(long id)
-    {
-        this.id = id;
-    }
+        public string GetCompletion()
+        {
+            return this.completion;
+        }
 
-    public long GetId()
-    {
-        return this.id;
+        public void SetId(long id)
+        {
+            this.id = id;
+        }
+
+        public long GetId()
+        {
+            return this.id;
+        }
     }
 }

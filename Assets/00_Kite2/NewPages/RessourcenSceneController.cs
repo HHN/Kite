@@ -1,4 +1,6 @@
+using _00_Kite2.Common;
 using _00_Kite2.Common.Managers;
+using _00_Kite2.Common.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 

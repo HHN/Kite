@@ -1,22 +1,26 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CloseButton : MonoBehaviour
+namespace _00_Kite2.Common.UI.UI_Elements.Buttons
 {
-    public Button button;
-    public GameObject gameObjectToHide;
-
-    private void Start()
+    public class CloseButton : MonoBehaviour
     {
-        button.onClick.AddListener(delegate { OnClick(); });
-    }
+        public Button button;
+        public GameObject gameObjectToHide;
 
-    public void OnClick()
-    {
-        if (gameObjectToHide == null)
+        private void Start()
         {
-            return;
+            button.onClick.AddListener(OnClick);
         }
-        gameObjectToHide.SetActive(false);
+
+        public void OnClick()
+        {
+            if (gameObjectToHide == null)
+            {
+                return;
+            }
+
+            gameObjectToHide.SetActive(false);
+        }
     }
 }

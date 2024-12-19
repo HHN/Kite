@@ -2,58 +2,68 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BigTextPreViewController : MonoBehaviour
+namespace _00_Kite2.UserFeedback
 {
-    [SerializeField] private TextMeshProUGUI textObject;
-    [SerializeField] private Button showMoreButton;
-    [SerializeField] private string textString;
-    [SerializeField] private string previewText;
-    [SerializeField] private bool previewDisplayed;
-    [SerializeField] private RectTransform parentContainer;
-    [SerializeField] private RectTransform parentParentContainer;
-    [SerializeField] private RectTransform rootContainer;
-    [SerializeField] private bool initialized;
-
-    void Start()
+    public class BigTextPreViewController : MonoBehaviour
     {
-        showMoreButton.onClick.AddListener(delegate { OnShowMoreButton(); });
-    }
+        [SerializeField] private TextMeshProUGUI textObject;
+        [SerializeField] private Button showMoreButton;
+        [SerializeField] private string textString;
+        [SerializeField] private string previewText;
+        [SerializeField] private bool previewDisplayed;
+        [SerializeField] private RectTransform parentContainer;
+        [SerializeField] private RectTransform parentParentContainer;
+        [SerializeField] private RectTransform rootContainer;
+        [SerializeField] private bool initialized;
 
-    public void OnValueEntered()
-    {
-        if (textObject == null) { return; }
-
-        textString = textObject.text;
-
-        if (textString.Length > 100)
+        private void Start()
         {
-            previewText = textString.Substring(0, 100 - 17) + "... MEHR ANZEIGEN";
-            textObject.text = previewText;
-            previewDisplayed = true;
-            initialized = true;
+            showMoreButton.onClick.AddListener(OnShowMoreButton);
         }
 
-        LayoutRebuilder.ForceRebuildLayoutImmediate(parentContainer);
-        LayoutRebuilder.ForceRebuildLayoutImmediate(parentParentContainer);
-        LayoutRebuilder.ForceRebuildLayoutImmediate(rootContainer);
-    }
-
-    public void OnShowMoreButton()
-    {
-        if (!initialized) { return; }
-
-        if (previewDisplayed)
+        public void OnValueEntered()
         {
-            textObject.text = textString;
-            previewDisplayed = false;
+            if (textObject == null)
+            {
+                return;
+            }
+
+            textString = textObject.text;
+
+            if (textString.Length > 100)
+            {
+                previewText = textString.Substring(0, 100 - 17) + "... MEHR ANZEIGEN";
+                textObject.text = previewText;
+                previewDisplayed = true;
+                initialized = true;
+            }
+
+            LayoutRebuilder.ForceRebuildLayoutImmediate(parentContainer);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(parentParentContainer);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(rootContainer);
         }
-        else
+
+        private void OnShowMoreButton()
         {
-            textObject.text = previewText;
-            previewDisplayed = true;
+            if (!initialized)
+            {
+                return;
+            }
+
+            if (previewDisplayed)
+            {
+                textObject.text = textString;
+                previewDisplayed = false;
+            }
+            else
+            {
+                textObject.text = previewText;
+                previewDisplayed = true;
+            }
+
+            LayoutRebuilder.ForceRebuildLayoutImmediate(parentContainer);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(parentParentContainer);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(rootContainer);
         }
-        LayoutRebuilder.ForceRebuildLayoutImmediate(parentContainer);
-        LayoutRebuilder.ForceRebuildLayoutImmediate(parentParentContainer);
-        LayoutRebuilder.ForceRebuildLayoutImmediate(rootContainer);
     }
 }

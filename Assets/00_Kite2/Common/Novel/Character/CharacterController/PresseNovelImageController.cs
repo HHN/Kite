@@ -74,15 +74,15 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             // rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
 
             if (characterPrefabs.Count <= 0) return;
-            
+
             int randomIndex = Random.Range(0, characterPrefabs.Count);
             GameObject randomGameObject = characterPrefabs[randomIndex];
-            
+
             _instantiatedCharacter = Instantiate(randomGameObject, characterContainer, false);
             RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
 
             if (rectTransform == null) return;
-            
+
             rectTransform.anchorMin = new Vector2(0.5f, 0);
             rectTransform.anchorMax = new Vector2(0.5f, 1);
 
@@ -102,7 +102,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         public override void SetCharacter()
         {
             CharacterController = _instantiatedCharacter.GetComponent<CharacterController>();
-            
+
             // CharacterController.SetSkinSprite();
             // CharacterController.SetClotheSprite();
             // CharacterController.SetHairSprite();

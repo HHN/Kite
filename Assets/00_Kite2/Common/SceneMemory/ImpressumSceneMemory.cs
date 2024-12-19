@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ImpressumSceneMemory
+namespace _00_Kite2.Common.SceneMemory
 {
+    public abstract class ImpressumSceneMemory
+    {
+    }
 }

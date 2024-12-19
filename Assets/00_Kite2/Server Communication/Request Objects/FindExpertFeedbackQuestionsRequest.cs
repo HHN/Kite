@@ -1,7 +1,10 @@
 using System;
 
-[Serializable]
-public class FindExpertFeedbackQuestionsRequest
+namespace _00_Kite2.Server_Communication.Request_Objects
 {
-    public string userUuid;
+    [Serializable]
+    public class FindExpertFeedbackQuestionsRequest
+    {
+        public string userUuid;
+    }
 }

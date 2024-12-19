@@ -1,43 +1,46 @@
 using _00_Kite2.Common.Messages;
-using _00_Kite2.Server_Communication;
+using _00_Kite2.Server_Communication.Request_Objects;
 using UnityEngine.Networking;
 
-public class AddNovelReviewServerCall : ServerCall
+namespace _00_Kite2.Server_Communication.Server_Calls
 {
-    public long novelId;
-    public string novelName;
-    public long rating;
-    public string reviewText;
-
-    protected override object CreateRequestObject()
+    public class AddNovelReviewServerCall : ServerCall
     {
-        AddNovelReviewRequest request = new AddNovelReviewRequest();
-        request.novelId = novelId;
-        request.novelName = novelName;
-        request.rating = rating;
-        request.reviewText = reviewText;
-        return request;
-    }
+        public long novelId;
+        public string novelName;
+        public long rating;
+        public string reviewText;
 
-    protected override UnityWebRequest CreateUnityWebRequestObject()
-    {
-        return UnityWebRequest.PostWwwForm(ConnectionLink.NOVEL_REVIEW_LINK, string.Empty);
-    }
-
-    protected override void OnResponse(Response response)
-    {
-        switch (ResultCodeHelper.ValueOf(response.GetResultCode()))
+        protected override object CreateRequestObject()
         {
-            case ResultCode.SUCCESSFULLY_ADDED_NOVEL_REVIEW:
+            AddNovelReviewRequest request = new AddNovelReviewRequest();
+            request.novelId = novelId;
+            request.novelName = novelName;
+            request.rating = rating;
+            request.reviewText = reviewText;
+            return request;
+        }
+
+        protected override UnityWebRequest CreateUnityWebRequestObject()
+        {
+            return UnityWebRequest.PostWwwForm(ConnectionLink.NOVEL_REVIEW_LINK, string.Empty);
+        }
+
+        protected override void OnResponse(Response response)
+        {
+            switch (ResultCodeHelper.ValueOf(response.GetResultCode()))
+            {
+                case ResultCode.SUCCESSFULLY_ADDED_NOVEL_REVIEW:
                 {
                     OnSuccessHandler.OnSuccess(response);
                     return;
                 }
-            default:
+                default:
                 {
                     sceneController.DisplayErrorMessage(ErrorMessages.UNEXPECTED_SERVER_ERROR);
                     return;
                 }
+            }
         }
     }
 }

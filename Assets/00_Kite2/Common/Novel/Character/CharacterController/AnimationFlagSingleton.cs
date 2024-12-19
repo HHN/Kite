@@ -22,6 +22,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     _instance ??= new AnimationFlagSingleton();
                 }
             }
+
             return _instance;
         }
 

@@ -1,37 +1,40 @@
 using _00_Kite2.Common.Messages;
-using _00_Kite2.Server_Communication;
+using _00_Kite2.Server_Communication.Request_Objects;
 using UnityEngine.Networking;
 
-public class FindExpertFeedbackAnswerServerCall : ServerCall
+namespace _00_Kite2.Server_Communication.Server_Calls
 {
-    public long id;
-
-    protected override object CreateRequestObject()
+    public class FindExpertFeedbackAnswerServerCall : ServerCall
     {
-        FindExpertFeedbackAnswerRequest request = new FindExpertFeedbackAnswerRequest();
-        request.id = id;
-        return request;
-    }
+        public long id;
 
-    protected override UnityWebRequest CreateUnityWebRequestObject()
-    {
-        return UnityWebRequest.Put(ConnectionLink.EXPERT_FEEDBACK_ANSWER, string.Empty);
-    }
-
-    protected override void OnResponse(Response response)
-    {
-        switch (ResultCodeHelper.ValueOf(response.GetResultCode()))
+        protected override object CreateRequestObject()
         {
-            case ResultCode.SUCCESSFULLY_FOUND_EXPERT_FEEDBACK_ANSWER:
+            FindExpertFeedbackAnswerRequest request = new FindExpertFeedbackAnswerRequest();
+            request.id = id;
+            return request;
+        }
+
+        protected override UnityWebRequest CreateUnityWebRequestObject()
+        {
+            return UnityWebRequest.Put(ConnectionLink.EXPERT_FEEDBACK_ANSWER, string.Empty);
+        }
+
+        protected override void OnResponse(Response response)
+        {
+            switch (ResultCodeHelper.ValueOf(response.GetResultCode()))
+            {
+                case ResultCode.SUCCESSFULLY_FOUND_EXPERT_FEEDBACK_ANSWER:
                 {
                     OnSuccessHandler.OnSuccess(response);
                     return;
                 }
-            default:
+                default:
                 {
                     sceneController.DisplayErrorMessage(ErrorMessages.UNEXPECTED_SERVER_ERROR);
                     return;
                 }
+            }
         }
     }
 }

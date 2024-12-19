@@ -115,11 +115,11 @@ namespace _00_Kite2.Player
                 }
                 case VisualNovelNames.LEBENSPARTNER_NOVEL:
                 {
-                    return new Color(23 / 255f, 49 / 255f, 86 / 255f); 
+                    return new Color(23 / 255f, 49 / 255f, 86 / 255f);
                 }
                 default:
                 {
-                    return new Color(0 / 255f, 0 / 255f, 0 / 255f); 
+                    return new Color(0 / 255f, 0 / 255f, 0 / 255f);
                 }
             }
         }

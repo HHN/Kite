@@ -23,6 +23,7 @@ namespace _00_Kite2.Common.Managers
                     DontDestroyOnLoad(singletonObject); // Optional: Beibehalten, wenn die Szene wechselt
                 }
             }
+
             return _instance;
         }
 
@@ -30,10 +31,6 @@ namespace _00_Kite2.Common.Managers
         public void SetCopyNotification(GameObject value)
         {
             _copyNotification = value;
-            if (_copyNotification != null)
-            {
-                Debug.Log("copyNotification has been set");
-            }
         }
 
         // Getter-Methode
@@ -43,6 +40,7 @@ namespace _00_Kite2.Common.Managers
             {
                 Debug.Log("copyNotification is NOT null");
             }
+
             return _copyNotification;
         }
     }

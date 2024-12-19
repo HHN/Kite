@@ -1,74 +1,78 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
-public class SwitchButtonsController : MonoBehaviour
+namespace _00_Kite2.Common.UI.UI_Elements.SwitchButton
 {
-    [SerializeField] private Button leftButton;
-    [SerializeField] private Button rightButton;
-    [SerializeField] private TextMeshProUGUI descriptionText;
-    [SerializeField] private TextMeshProUGUI indexInfo;
-    [SerializeField] private Sprite[] sprites;
-    [SerializeField] private Image image;
-    [SerializeField] private long index;
-
-    void Start()
+    public class SwitchButtonsController : MonoBehaviour
     {
-        leftButton.onClick.AddListener(delegate { OnLeftButton(); });
-        rightButton.onClick.AddListener(delegate { OnRightButton(); });
-        SetIndex(0);
-    }
+        [SerializeField] private Button leftButton;
+        [SerializeField] private Button rightButton;
+        [SerializeField] private TextMeshProUGUI descriptionText;
+        [SerializeField] private TextMeshProUGUI indexInfo;
+        [SerializeField] private Sprite[] sprites;
+        [SerializeField] private Image image;
+        [SerializeField] private long index;
 
-    public void Select(long index)
-    {
-        if (index < 0 || index >= sprites.Length)
+        private void Start()
         {
-            return;
+            leftButton.onClick.AddListener(OnLeftButton);
+            rightButton.onClick.AddListener(OnRightButton);
+            SetIndex(0);
         }
-        image.sprite = sprites[index];
-        this.index = index;
 
-        if (index < 9)
+        private void Select(long index)
         {
-            this.indexInfo.text = "0" + (index + 1) + " / " + (sprites.Length);
-        }
-        else
-        {
-            this.indexInfo.text = (index + 1) + " / " + (sprites.Length);
-        }
-    }
+            if (index < 0 || index >= sprites.Length)
+            {
+                return;
+            }
 
-    public void OnLeftButton()
-    {
-        if (index > 0)
-        {
-            Select(index - 1);
-        }
-        else
-        {
-            Select(sprites.Length - 1);
-        }
-    }
+            image.sprite = sprites[index];
+            this.index = index;
 
-    public void OnRightButton()
-    {
-        if (index < (sprites.Length - 1))
-        {
-            Select(index + 1);
+            if (index < 9)
+            {
+                this.indexInfo.text = "0" + (index + 1) + " / " + (sprites.Length);
+            }
+            else
+            {
+                this.indexInfo.text = (index + 1) + " / " + (sprites.Length);
+            }
         }
-        else
+
+        private void OnLeftButton()
         {
-            Select(0);
+            if (index > 0)
+            {
+                Select(index - 1);
+            }
+            else
+            {
+                Select(sprites.Length - 1);
+            }
         }
-    }
 
-    public long GetIndex()
-    {
-        return index;
-    }
+        private void OnRightButton()
+        {
+            if (index < (sprites.Length - 1))
+            {
+                Select(index + 1);
+            }
+            else
+            {
+                Select(0);
+            }
+        }
 
-    public void SetIndex(long index)
-    {
-        Select(index);
+        public long GetIndex()
+        {
+            return index;
+        }
+
+        private void SetIndex(long index)
+        {
+            Select(index);
+        }
     }
 }

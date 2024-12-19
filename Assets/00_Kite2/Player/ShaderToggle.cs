@@ -1,57 +1,60 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShaderToggle : MonoBehaviour
+namespace _00_Kite2.Player
 {
-    [SerializeField] private Material defaultMaterial;
-    [SerializeField] private Material brightnessMaterial;
-    [SerializeField] private Material blurrMaterial;
-    [SerializeField] private Image characterImageFace;
-    [SerializeField] private Image characterImageHair;
-    [SerializeField] private Image characterImageCloths;
-    [SerializeField] private Image characterImageSkin;
-
-    private void Awake()
+    public class ShaderToggle : MonoBehaviour
     {
-        characterImageFace.material = defaultMaterial;
-        characterImageHair.material = defaultMaterial;
-        characterImageCloths.material = defaultMaterial;
-        characterImageSkin.material = defaultMaterial;
-    }
+        [SerializeField] private Material defaultMaterial;
+        [SerializeField] private Material brightnessMaterial;
+        [SerializeField] private Material blurMaterial;
+        [SerializeField] private Image characterImageFace;
+        [SerializeField] private Image characterImageHair;
+        [SerializeField] private Image characterImageCloths;
+        [SerializeField] private Image characterImageSkin;
 
-    public void SetCharacterBrightness(bool value)
-    {
-        if (!value)
+        private void Awake()
         {
             characterImageFace.material = defaultMaterial;
             characterImageHair.material = defaultMaterial;
             characterImageCloths.material = defaultMaterial;
             characterImageSkin.material = defaultMaterial;
         }
-        else
-        {
-            characterImageFace.material = brightnessMaterial;
-            characterImageHair.material = brightnessMaterial;
-            characterImageCloths.material = brightnessMaterial;
-            characterImageSkin.material = brightnessMaterial;
-        }
-    }
 
-    public void SetCharacterBlur(bool value)
-    {
-        if (!value)
+        public void SetCharacterBrightness(bool value)
         {
-            characterImageFace.material = defaultMaterial;
-            characterImageHair.material = defaultMaterial;
-            characterImageCloths.material = defaultMaterial;
-            characterImageSkin.material = defaultMaterial;
+            if (!value)
+            {
+                characterImageFace.material = defaultMaterial;
+                characterImageHair.material = defaultMaterial;
+                characterImageCloths.material = defaultMaterial;
+                characterImageSkin.material = defaultMaterial;
+            }
+            else
+            {
+                characterImageFace.material = brightnessMaterial;
+                characterImageHair.material = brightnessMaterial;
+                characterImageCloths.material = brightnessMaterial;
+                characterImageSkin.material = brightnessMaterial;
+            }
         }
-        else
+
+        public void SetCharacterBlur(bool value)
         {
-            characterImageFace.material = blurrMaterial;
-            characterImageHair.material = blurrMaterial;
-            characterImageCloths.material = blurrMaterial;
-            characterImageSkin.material = blurrMaterial;
+            if (!value)
+            {
+                characterImageFace.material = defaultMaterial;
+                characterImageHair.material = defaultMaterial;
+                characterImageCloths.material = defaultMaterial;
+                characterImageSkin.material = defaultMaterial;
+            }
+            else
+            {
+                characterImageFace.material = blurMaterial;
+                characterImageHair.material = blurMaterial;
+                characterImageCloths.material = blurMaterial;
+                characterImageSkin.material = blurMaterial;
+            }
         }
     }
 }

@@ -1,39 +1,46 @@
+using _00_Kite2.Common;
 using _00_Kite2.Common.Managers;
+using _00_Kite2.Common.SceneManagement;
+using _00_Kite2.Server_Communication;
+using _00_Kite2.Server_Communication.Server_Calls;
 using UnityEngine;
 
-public class PromptsAndCompletionsExplorerSceneController : SceneController, OnSuccessHandler
+namespace _00_Kite2.UserFeedback
 {
-    [SerializeField] private GameObject getDataServerCallPrefab;
-    [SerializeField] private GameObject dataObjectPrefab;
-    [SerializeField] private GameObject container;
-    [SerializeField] private GameObject noDataObjectsHint;
-
-    void Start()
+    public class PromptsAndCompletionsExplorerSceneController : SceneController, IOnSuccessHandler
     {
-        BackStackManager.Instance().Push(SceneNames.PROMPTS_AND_COMPLETIONS_EXPLORER_SCENE);
+        [SerializeField] private GameObject getDataServerCallPrefab;
+        [SerializeField] private GameObject dataObjectPrefab;
+        [SerializeField] private GameObject container;
+        [SerializeField] private GameObject noDataObjectsHint;
 
-        GetDataServerCall call = Instantiate(getDataServerCallPrefab).GetComponent<GetDataServerCall>();
-        call.sceneController = this;
-        call.OnSuccessHandler = this;
-        call.SendRequest();
-    }
-
-    public void OnSuccess(Response response)
-    {
-        if (response?.GetDataObjects() == null || response?.GetDataObjects().Count == 0)
+        private void Start()
         {
-            noDataObjectsHint.SetActive(true);
-            return;
+            BackStackManager.Instance().Push(SceneNames.PROMPTS_AND_COMPLETIONS_EXPLORER_SCENE);
+
+            GetDataServerCall call = Instantiate(getDataServerCallPrefab).GetComponent<GetDataServerCall>();
+            call.sceneController = this;
+            call.OnSuccessHandler = this;
+            call.SendRequest();
         }
-        noDataObjectsHint.SetActive(false);
 
-        foreach (DataObject dataObject in response.GetDataObjects())
+        public void OnSuccess(Response response)
         {
-            DataObjectGuiElement dataObjectGuiElement =
-                Instantiate(dataObjectPrefab, container.transform)
-                .GetComponent<DataObjectGuiElement>();
+            if (response?.GetDataObjects() == null || response?.GetDataObjects().Count == 0)
+            {
+                noDataObjectsHint.SetActive(true);
+                return;
+            }
+            noDataObjectsHint.SetActive(false);
 
-            dataObjectGuiElement.InitializeDataObject(dataObject);
+            foreach (DataObject dataObject in response.GetDataObjects())
+            {
+                DataObjectGuiElement dataObjectGuiElement =
+                    Instantiate(dataObjectPrefab, container.transform)
+                        .GetComponent<DataObjectGuiElement>();
+
+                dataObjectGuiElement.InitializeDataObject(dataObject);
+            }
         }
     }
 }
