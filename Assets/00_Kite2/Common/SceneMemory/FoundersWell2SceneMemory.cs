@@ -1,9 +1,13 @@
 using _00_Kite2.Common.Managers;
+using _00_Kite2.Common.SceneManagement;
 
-public class FoundersWell2SceneMemory
+namespace _00_Kite2.Common.SceneMemory
 {
-    void Start()
+    public abstract class FoundersWell2SceneMemory
     {
-        BackStackManager.Instance().Push(SceneNames.FOUNDERS_WELL_2_SCENE);
+        private void Start()
+        {
+            BackStackManager.Instance().Push(SceneNames.FOUNDERS_WELL_2_SCENE);
+        }
     }
 }

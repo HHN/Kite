@@ -1,33 +1,35 @@
 using _00_Kite2.Common.Messages;
-using _00_Kite2.Server_Communication;
 using UnityEngine.Networking;
 
-public class GetAllExpertFeedbackAnswersServerCall : ServerCall
+namespace _00_Kite2.Server_Communication.Server_Calls
 {
-    protected override object CreateRequestObject()
+    public class GetAllExpertFeedbackAnswersServerCall : ServerCall
     {
-        return null;
-    }
-
-    protected override UnityWebRequest CreateUnityWebRequestObject()
-    {
-        return UnityWebRequest.Get(ConnectionLink.EXPERT_FEEDBACK_ANSWER);
-    }
-
-    protected override void OnResponse(Response response)
-    {
-        switch (ResultCodeHelper.ValueOf(response.GetResultCode()))
+        protected override object CreateRequestObject()
         {
-            case ResultCode.SUCCESSFULLY_GOT_ALL_EXPERT_FEEDBACK_ANSWERS:
+            return null;
+        }
+
+        protected override UnityWebRequest CreateUnityWebRequestObject()
+        {
+            return UnityWebRequest.Get(ConnectionLink.EXPERT_FEEDBACK_ANSWER);
+        }
+
+        protected override void OnResponse(Response response)
+        {
+            switch (ResultCodeHelper.ValueOf(response.GetResultCode()))
+            {
+                case ResultCode.SUCCESSFULLY_GOT_ALL_EXPERT_FEEDBACK_ANSWERS:
                 {
                     OnSuccessHandler.OnSuccess(response);
                     return;
                 }
-            default:
+                default:
                 {
                     sceneController.DisplayErrorMessage(ErrorMessages.UNEXPECTED_SERVER_ERROR);
                     return;
                 }
+            }
         }
     }
 }

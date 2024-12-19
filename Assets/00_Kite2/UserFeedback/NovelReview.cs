@@ -1,62 +1,65 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public class NovelReview
+namespace _00_Kite2.UserFeedback
 {
-    [SerializeField] private long id;
-    [SerializeField] private long novelId;
-    [SerializeField] private string novelName;
-    [SerializeField] private long rating;
-    [SerializeField] private string reviewText;
-
-    public void SetId(long id)
+    [Serializable]
+    public class NovelReview
     {
-        this.id = id;
-    }
+        [SerializeField] private long id;
+        [SerializeField] private long novelId;
+        [SerializeField] private string novelName;
+        [SerializeField] private long rating;
+        [SerializeField] private string reviewText;
 
-    public long GetId()
-    {
-        return id;
-    }
+        public void SetId(long id)
+        {
+            this.id = id;
+        }
 
-    public void SetNovelId(long novelId)
-    {
-        this.novelId = novelId;
-    }
+        public long GetId()
+        {
+            return id;
+        }
 
-    public long GetNovelId()
-    {
-        return novelId;
-    }
+        public void SetNovelId(long novelId)
+        {
+            this.novelId = novelId;
+        }
 
-    public void SetNovelName(string novelName)
-    {
-        this.novelName = novelName;
-    }
+        public long GetNovelId()
+        {
+            return novelId;
+        }
 
-    public string GetNovelName()
-    {
-        return novelName;
-    }
+        public void SetNovelName(string novelName)
+        {
+            this.novelName = novelName;
+        }
 
-    public void SetRating(long rating)
-    {
-        this.rating = rating;
-    }
+        public string GetNovelName()
+        {
+            return novelName;
+        }
 
-    public long GetRating()
-    {
-        return rating;
-    }
+        public void SetRating(long rating)
+        {
+            this.rating = rating;
+        }
 
-    public void SetReviewText(string reviewText)
-    {
-        this.reviewText = reviewText;
-    }
+        public long GetRating()
+        {
+            return rating;
+        }
 
-    public string GetReviewText()
-    {
-        return reviewText;
+        public void SetReviewText(string reviewText)
+        {
+            this.reviewText = reviewText;
+        }
+
+        public string GetReviewText()
+        {
+            return reviewText;
+        }
     }
 }

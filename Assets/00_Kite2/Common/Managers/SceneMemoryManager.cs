@@ -1,3 +1,5 @@
+using _00_Kite2.Common.SceneMemory;
+
 namespace _00_Kite2.Common.Managers
 {
     public class SceneMemoryManager

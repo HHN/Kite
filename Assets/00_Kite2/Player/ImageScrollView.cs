@@ -2,12 +2,15 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ImageScrollView : MonoBehaviour
+namespace _00_Kite2.Player
 {
-    public IEnumerator ScrollToPoint(float x, float y)
+    public class ImageScrollView : MonoBehaviour
     {
-        yield return null;
-        Canvas.ForceUpdateCanvases();
-        GetComponent<ScrollRect>().normalizedPosition = new Vector2(x, y);
+        public IEnumerator ScrollToPoint(float x, float y)
+        {
+            yield return null;
+            Canvas.ForceUpdateCanvases();
+            GetComponent<ScrollRect>().normalizedPosition = new Vector2(x, y);
+        }
     }
 }

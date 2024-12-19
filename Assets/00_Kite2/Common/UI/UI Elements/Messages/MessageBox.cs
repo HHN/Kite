@@ -1,61 +1,68 @@
 using _00_Kite2.Common.Managers;
+using _00_Kite2.Common.Utilities;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
-public class MessageBox : MonoBehaviour
+namespace _00_Kite2.Common.UI.UI_Elements.Messages
 {
-    public TextMeshProUGUI messageBoxHeadline;
-    public TextMeshProUGUI messageBoxBody;
-    public Button okButton;
-    [SerializeField] private AudioSource errorSound;
-    [SerializeField] private AudioSource infoSound;
-    [SerializeField] private bool isErrorMessage;
-
-    void Start()
+    public class MessageBox : MonoBehaviour
     {
-        okButton.onClick.AddListener(delegate { OnOkButton(); });
-        FontSizeManager.Instance().UpdateAllTextComponents();
-    }
+        public TextMeshProUGUI messageBoxHeadline;
+        public TextMeshProUGUI messageBoxBody;
+        public Button okButton;
+        [SerializeField] private AudioSource errorSound;
+        [SerializeField] private AudioSource infoSound;
+        [SerializeField] private bool isErrorMessage;
 
-    public void SetHeadline(string headline)
-    {
-        messageBoxHeadline.text = headline;
-    }
-
-    public void SetBody(string headline)
-    {
-        messageBoxBody.text = headline;
-    }
-
-    public void Activate()
-    {
-        if (this.isErrorMessage)
+        private void Start()
         {
-            this.errorSound.Play();
-        } else
-        {
-            this.infoSound.Play();
+            okButton.onClick.AddListener(OnOkButton);
+            FontSizeManager.Instance().UpdateAllTextComponents();
         }
-        this.gameObject.SetActive(true);
-    }
 
-    public void OnOkButton()
-    {
-        this.CloseMessageBox();
-    }
-
-    public void CloseMessageBox()
-    {
-        if (DestroyValidator.IsNullOrDestroyed(this) || DestroyValidator.IsNullOrDestroyed(this.gameObject))
+        public void SetHeadline(string headline)
         {
-            return;
+            messageBoxHeadline.text = headline;
         }
-        Destroy(this.gameObject);
-    }
 
-    public void SetIsErrorMessage(bool isErrorMessage)
-    {
-        this.isErrorMessage = isErrorMessage;
+        public void SetBody(string headline)
+        {
+            messageBoxBody.text = headline;
+        }
+
+        public void Activate()
+        {
+            if (this.isErrorMessage)
+            {
+                this.errorSound.Play();
+            }
+            else
+            {
+                this.infoSound.Play();
+            }
+
+            this.gameObject.SetActive(true);
+        }
+
+        private void OnOkButton()
+        {
+            this.CloseMessageBox();
+        }
+
+        public void CloseMessageBox()
+        {
+            if (this.IsNullOrDestroyed() || this.gameObject.IsNullOrDestroyed())
+            {
+                return;
+            }
+
+            Destroy(this.gameObject);
+        }
+
+        public void SetIsErrorMessage(bool isErrorMessage)
+        {
+            this.isErrorMessage = isErrorMessage;
+        }
     }
 }

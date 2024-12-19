@@ -1,50 +1,58 @@
+using _00_Kite2.Common.UI.UI_Elements.Messages;
+using _00_Kite2.Common.Utilities;
 using UnityEngine;
 
-public class SceneController : MonoBehaviour
+namespace _00_Kite2.Common
 {
-    [SerializeField] private GameObject messageBox;
-    public GameObject canvas;
-    private MessageBox messageObject;
-
-    public MessageBox DisplayInfoMessage(string infoMessage)
+    public class SceneController : MonoBehaviour
     {
-        return DisplayMessage("INFORMATION", infoMessage, false);
-    }
+        [SerializeField] private GameObject messageBox;
+        public GameObject canvas;
+        private MessageBox _messageObject;
 
-    public MessageBox DisplayErrorMessage(string errorMessage)
-    {
-        return DisplayMessage("FEHLER-MELDUNG", errorMessage, true);
-    }
-
-    private MessageBox DisplayMessage(string headline, string message, bool isError)
-    {
-        if (!DestroyValidator.IsNullOrDestroyed(messageObject))
+        public MessageBox DisplayInfoMessage(string infoMessage)
         {
-            messageObject.CloseMessageBox();
+            return DisplayMessage("INFORMATION", infoMessage, false);
         }
-        if (DestroyValidator.IsNullOrDestroyed(canvas))
-        {
-            return null;
-        }
-        messageObject = null;
-        messageObject = Instantiate(messageBox, canvas.transform).GetComponent<MessageBox>();
-        messageObject.SetHeadline(headline);
-        messageObject.SetBody(message);
-        messageObject.SetIsErrorMessage(isError);
-        messageObject.Activate();
-        return messageObject;
-    }
 
-    public virtual void OnStop()
-    {
-    }
-
-    public void CloseMessageBox()
-    {
-        if (messageObject == null)
+        public MessageBox DisplayErrorMessage(string errorMessage)
         {
-            return;
+            return DisplayMessage("FEHLER-MELDUNG", errorMessage, true);
         }
-        messageObject.CloseMessageBox();
+
+        private MessageBox DisplayMessage(string headline, string message, bool isError)
+        {
+            if (!_messageObject.IsNullOrDestroyed())
+            {
+                _messageObject.CloseMessageBox();
+            }
+
+            if (canvas.IsNullOrDestroyed())
+            {
+                return null;
+            }
+
+            _messageObject = null;
+            _messageObject = Instantiate(messageBox, canvas.transform).GetComponent<MessageBox>();
+            _messageObject.SetHeadline(headline);
+            _messageObject.SetBody(message);
+            _messageObject.SetIsErrorMessage(isError);
+            _messageObject.Activate();
+            return _messageObject;
+        }
+
+        public virtual void OnStop()
+        {
+        }
+
+        public void CloseMessageBox()
+        {
+            if (_messageObject == null)
+            {
+                return;
+            }
+
+            _messageObject.CloseMessageBox();
+        }
     }
 }

@@ -1,22 +1,19 @@
 using System.Collections.Generic;
 
-public class KiteNovelList
+namespace _00_Kite2.Player.Kite_Novels.Visual_Novel_Formatter
 {
-    private List<string> visualNovels;
-
-    public KiteNovelList(List<string> visualNovels)
+    public class KiteNovelList
     {
-        this.visualNovels = visualNovels;
-    }
+        public KiteNovelList(List<string> visualNovels)
+        {
+            this.VisualNovels = visualNovels;
+        }
 
-    public KiteNovelList()
-    {
-        visualNovels = new List<string>();
-    }
+        public KiteNovelList()
+        {
+            VisualNovels = new List<string>();
+        }
 
-    public List<string> VisualNovels
-    {
-        get { return visualNovels; }
-        set { visualNovels = value; }
+        public List<string> VisualNovels { get; set; }
     }
 }

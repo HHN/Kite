@@ -187,11 +187,11 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         {
             CharacterController = _instantiatedMotherCharacter.GetComponent<CharacterController>();
             CharacterController2 = _instantiatedFatherCharacter.GetComponent<CharacterController>();
-            
+
             // CharacterController.SetSkinSprite();
             // CharacterController.SetClotheSprite();
             // CharacterController.SetHairSprite();
-            
+
             // CharacterController2.SetSkinSprite();
             // CharacterController2.SetClotheSprite();
             // CharacterController2.SetHairSprite();

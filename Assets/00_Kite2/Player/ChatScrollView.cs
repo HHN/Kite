@@ -2,12 +2,15 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChatScrollView : MonoBehaviour
+namespace _00_Kite2.Player
 {
-    public IEnumerator ScrollToBottom()
+    public class ChatScrollView : MonoBehaviour
     {
-        yield return null;
-        Canvas.ForceUpdateCanvases();
-        GetComponent<ScrollRect>().normalizedPosition = new Vector2(0, 0);
+        public IEnumerator ScrollToBottom()
+        {
+            yield return null;
+            Canvas.ForceUpdateCanvases();
+            GetComponent<ScrollRect>().normalizedPosition = new Vector2(0, 0);
+        }
     }
 }

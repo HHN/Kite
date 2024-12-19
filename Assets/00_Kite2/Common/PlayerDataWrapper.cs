@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
 
-[Serializable]
-public class PlayerDataWrapper
+namespace _00_Kite2.Common
 {
-    public List<string> playerData;
+    [Serializable]
+    public class PlayerDataWrapper
+    {
+        public List<string> playerData;
+    }
 }

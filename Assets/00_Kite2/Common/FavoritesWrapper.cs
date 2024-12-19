@@ -1,13 +1,16 @@
 using System;
 using System.Collections.Generic;
 
-[Serializable]
-public class FavoritesWrapper
+namespace _00_Kite2.Common
 {
-    public List<long> favorites;
-
-    public void ResetFavorites()
+    [Serializable]
+    public class FavoritesWrapper
     {
-        favorites = new List<long>();
+        public List<long> favorites;
+
+        public void ResetFavorites()
+        {
+            favorites = new List<long>();
+        }
     }
 }

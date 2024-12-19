@@ -1,9 +1,14 @@
+using _00_Kite2.Common;
 using _00_Kite2.Common.Managers;
+using _00_Kite2.Common.SceneManagement;
 
-public class TermsOfUseSceneController : SceneController
+namespace _00_Kite2.Legal_Information
 {
-    void Start()
+    public class TermsOfUseSceneController : SceneController
     {
-        BackStackManager.Instance().Push(SceneNames.TERMS_OF_USE_SCENE);
+        private void Start()
+        {
+            BackStackManager.Instance().Push(SceneNames.TERMS_OF_USE_SCENE);
+        }
     }
 }

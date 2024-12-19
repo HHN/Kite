@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using _00_Kite2.Common.Managers;
+using _00_Kite2.Common.SceneManagement;
+using _00_Kite2.Common.UI.UI_Elements.DropDown;
 using _00_Kite2.Player;
 using _00_Kite2.UserFeedback;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace _00_Kite2.Common
 {
@@ -26,7 +27,7 @@ namespace _00_Kite2.Common
         [SerializeField] private GameObject containerForHonorarNovel;
         [SerializeField] private GameObject containerForLebenspartnerinNovel;
         //[SerializeField] private GameObject containerForIntroNovel;    
-    
+
         [SerializeField] private DropDownMenu dropdownForBankkreditNovel;
         [SerializeField] private DropDownMenu dropdownForBekannteTreffenNovel;
         [SerializeField] private DropDownMenu dropdownForBankkontoNovel;
@@ -39,7 +40,7 @@ namespace _00_Kite2.Common
         [SerializeField] private DropDownMenu dropdownForHonorarNovel;
         [SerializeField] private DropDownMenu dropdownForLebenspartnerinNovel;
         //[SerializeField] private DropDownMenu dropdownForIntroNovel;        
-    
+
         [SerializeField] private GameObject spacingForBankkreditNovel;
         [SerializeField] private GameObject spacingForBekannteTreffenNovel;
         [SerializeField] private GameObject spacingForBankkontoNovel;
@@ -51,7 +52,7 @@ namespace _00_Kite2.Common
         [SerializeField] private GameObject spacingForGruendungszuschussNovel;
         [SerializeField] private GameObject spacingForHonorarNovel;
         [SerializeField] private GameObject spacingForLebenspartnerinNovel;
-    
+
         [SerializeField] private GameObject entryContainerForBankkreditNovel;
         [SerializeField] private GameObject entryContainerForBekannteTreffenNovel;
         [SerializeField] private GameObject entryContainerForBankkontoNovel;
@@ -75,7 +76,9 @@ namespace _00_Kite2.Common
         [SerializeField] private bool displayContainerForBueroNovel;
         [SerializeField] private bool displayContainerForGruendungszuschussNovel;
         [SerializeField] private bool displayContainerForHonorarNovel;
+
         [SerializeField] private bool displayContainerForLebenspartnerinNovel;
+
         //[SerializeField] private bool displayContainerForIntroNovel;
         [SerializeField] private bool displayNoDataObjectsHint;
 
@@ -91,6 +94,7 @@ namespace _00_Kite2.Common
                 copyNotificationContainer.SetActive(false);
                 GameObjectManager.Instance().SetCopyNotification(copyNotificationContainer);
             }
+
             BackStackManager.Instance().Push(SceneNames.NOVEL_HISTORY_SCENE);
             novelHistoryEntries = new List<NovelHistoryEntryGuiElement>();
 
@@ -104,11 +108,12 @@ namespace _00_Kite2.Common
                 return;
             }
 
-            if (entries.Count == 0 )
+            if (entries.Count == 0)
             {
                 SetVisibilityOfUiElements();
                 return;
             }
+
             foreach (DialogHistoryEntry dataObject in entries)
             {
                 AddEntry(dataObject);
@@ -143,7 +148,10 @@ namespace _00_Kite2.Common
             GameObject containerGameObject = GetContainerGameObjectById(entry.GetNovelId());
             DropDownMenu dropDownMenu = GetDropDownMenuById(entry.GetNovelId());
 
-            if (container == null) { return; }
+            if (container == null)
+            {
+                return;
+            }
 
             displayNoDataObjectsHint = false;
 
@@ -153,7 +161,7 @@ namespace _00_Kite2.Common
 
             dataObjectGuiElement.InitializeEntry(entry);
             novelHistoryEntries.Add(dataObjectGuiElement);
-        
+
             foreach (DropDownMenu dropdown in dataObjectGuiElement.GetDropDownMenus())
             {
                 dropDownMenu.AddChildMenu(dropdown);
@@ -314,7 +322,7 @@ namespace _00_Kite2.Common
 
         private GameObject GetEntryContainerById(long novelId)
         {
-            VisualNovelNames novelNames = VisualNovelNamesHelper.ValueOf((int) novelId);
+            VisualNovelNames novelNames = VisualNovelNamesHelper.ValueOf((int)novelId);
 
             switch (novelNames)
             {
@@ -332,7 +340,7 @@ namespace _00_Kite2.Common
                 {
                     displayContainerForBankkontoNovel = true;
                     return entryContainerForBankkontoNovel;
-                }           
+                }
                 case VisualNovelNames.FOERDERANTRAG_NOVEL:
                 {
                     displayContainerForFoerderantragNovel = true;

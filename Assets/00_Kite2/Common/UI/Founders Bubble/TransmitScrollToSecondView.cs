@@ -1,23 +1,26 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-
-public class TransmitScrollToSecondView : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+namespace _00_Kite2.Common.UI.Founders_Bubble
 {
-    [SerializeField] private ScrollRect SecondScrollToTransmitTo;
+    public class TransmitScrollToSecondView : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+    {
+        [SerializeField] private ScrollRect secondScrollToTransmitTo;
 
-    public void OnDrag(PointerEventData data)
-    {
-        SecondScrollToTransmitTo.OnDrag(data);
-    }
-    public void OnBeginDrag(PointerEventData data)
-    {
-        SecondScrollToTransmitTo.OnBeginDrag(data);
-    }
+        public void OnDrag(PointerEventData data)
+        {
+            secondScrollToTransmitTo.OnDrag(data);
+        }
 
-    public void OnEndDrag(PointerEventData data)
-    {
-        SecondScrollToTransmitTo.OnEndDrag(data);
+        public void OnBeginDrag(PointerEventData data)
+        {
+            secondScrollToTransmitTo.OnBeginDrag(data);
+        }
+
+        public void OnEndDrag(PointerEventData data)
+        {
+            secondScrollToTransmitTo.OnEndDrag(data);
+        }
     }
 }

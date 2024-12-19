@@ -10,7 +10,7 @@ namespace _00_Kite2.Server_Communication.Server_Calls
 
         protected override object CreateRequestObject()
         {
-            GptRequest call = new GptRequest(); 
+            GptRequest call = new GptRequest();
             call.prompt = prompt;
             return call;
         }
@@ -34,11 +34,12 @@ namespace _00_Kite2.Server_Communication.Server_Calls
                     if (OnErrorHandler != null)
                     {
                         OnErrorHandler.OnError(response);
-                    } 
+                    }
                     else
                     {
                         sceneController.DisplayErrorMessage(ErrorMessages.UNEXPECTED_SERVER_ERROR);
                     }
+
                     return;
                 }
             }

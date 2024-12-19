@@ -2,10 +2,12 @@ using System.Collections.Generic;
 using System.Linq;
 using _00_Kite2.Common.Managers;
 using _00_Kite2.Common.Novel;
+using _00_Kite2.Common.UI.UI_Elements.TextBoxes;
+using _00_Kite2.Common.UndoChoice;
+using _00_Kite2.Common.Utilities;
 using _00_Kite2.SaveNovelData;
 using Febucci.UI;
 using Febucci.UI.Core;
-using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -36,7 +38,9 @@ namespace _00_Kite2.Player
 
         [SerializeField] private GameObject undoChoiceMessageBox;
 
-        [Header("Choice Tracking")] private GameObject _lastBlueMessagePrefabWithTrigger; // To track the last added prefab
+        [Header("Choice Tracking")]
+        private GameObject _lastBlueMessagePrefabWithTrigger; // To track the last added prefab
+
         private List<VisualNovelEvent> _options = new();
 
         private PlayNovelSceneController _sceneController;
@@ -46,7 +50,7 @@ namespace _00_Kite2.Player
             get => content;
             set => content = value;
         }
-    
+
         public List<GameObject> GuiContent
         {
             get => guiContent;
@@ -107,14 +111,14 @@ namespace _00_Kite2.Player
         private void ShowMessage(VisualNovelEvent novelEvent)
         {
             GameObject newMessageBox;
-            if (novelEvent.character == CharacterTypeHelper.ToInt(Character.PLAYER))
+            if (novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.PLAYER))
             {
                 newMessageBox = Instantiate(blueMessagePrefab, this.transform);
             }
             else if ((novelEvent.character != 0) &&
-                     (novelEvent.character == CharacterTypeHelper.ToInt(Character.INTRO))
-                     || novelEvent.character == CharacterTypeHelper.ToInt(Character.OUTRO)
-                     || novelEvent.character == CharacterTypeHelper.ToInt(Character.INFO))
+                     (novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.INTRO))
+                     || novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.OUTRO)
+                     || novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.INFO))
             {
                 newMessageBox = Instantiate(cottaMessagePrefab, this.transform);
             }
@@ -127,7 +131,8 @@ namespace _00_Kite2.Player
             messageBox.SetMessage(PlayNovelSceneController.ReplacePlaceholders(novelEvent.text,
                 PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables()));
             guiContent.Add(newMessageBox);
-            PromptManager.Instance().AddFormattedLineToPrompt(CharacterTypeHelper.GetNameOfCharacter(novelEvent.character),
+            PromptManager.Instance().AddFormattedLineToPrompt(
+                CharacterTypeHelper.GetNameOfCharacter(novelEvent.character),
                 PlayNovelSceneController.ReplacePlaceholders(novelEvent.text,
                     PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables()));
         }
@@ -141,7 +146,7 @@ namespace _00_Kite2.Player
             guiContent.Add(newMessageBox);
 
             PromptManager.Instance().AddFormattedLineToPrompt(
-                CharacterTypeHelper.GetNameOfCharacter(Character.PLAYER),
+                CharacterTypeHelper.GetNameOfCharacter(CharacterRole.PLAYER),
                 PlayNovelSceneController.ReplacePlaceholders(message,
                     PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables()));
 
@@ -211,7 +216,7 @@ namespace _00_Kite2.Player
         public void ClearUIAfter(int index, int count)
         {
             int optionsToChooseFromCount = 0;
-            
+
             // Überprüfe, ob der Index gültig ist
             if (index > guiContent.Count || index < 0)
             {
@@ -234,8 +239,8 @@ namespace _00_Kite2.Player
             {
                 if (guiContent[i] != null) // Pr�fe, ob das UI-Element nicht bereits null ist
                 {
-                    if(guiContent[i].name.Contains("OptionsToChooseFrom")) optionsToChooseFromCount++;
-                    
+                    if (guiContent[i].name.Contains("OptionsToChooseFrom")) optionsToChooseFromCount++;
+
                     Destroy(guiContent[i]); // Löscht das GameObject aus der Szene
                 }
 
@@ -243,7 +248,7 @@ namespace _00_Kite2.Player
             }
 
             if (count != 0) optionsToChooseFromCount = count;
-            
+
             // Lösche alle UI-Elemente, die nach dem entsprechenden Index angezeigt wurden
             for (int i = visualNovelEvents.Count - 1; i > index - optionsToChooseFromCount; i--)
             {
@@ -263,7 +268,7 @@ namespace _00_Kite2.Player
 
             content = savedData.content;
             visualNovelEvents = savedData.visualNovelEvents;
-        
+
             // GameManager.Instance.calledFromReload = true;
 
             // Durchlaufe jedes Event in visualNovelEvents und erstelle das entsprechende GUI-Element
@@ -277,7 +282,7 @@ namespace _00_Kite2.Player
                 {
                     newMessageBox = Instantiate(blueMessagePrefabWithTrigger, this.transform);
                     newMessageBox.SetActive(false);
-                    
+
                     // Deaktiviere den Button der vorherigen blueMessagePrefabWithTrigger (falls vorhanden)
                     if (_lastBlueMessagePrefabWithTrigger != null)
                     {
@@ -293,14 +298,14 @@ namespace _00_Kite2.Player
                 }
 
                 // Bestimme den Typ des Prefabs basierend auf dem Charaktertyp und dem Ereignistyp
-                else if (visualNovelEvent.character == CharacterTypeHelper.ToInt(Character.PLAYER))
+                else if (visualNovelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.PLAYER))
                 {
                     newMessageBox = Instantiate(blueMessagePrefab, this.transform);
                     newMessageBox.SetActive(false);
                 }
-                else if (visualNovelEvent.character == CharacterTypeHelper.ToInt(Character.INTRO) ||
-                         visualNovelEvent.character == CharacterTypeHelper.ToInt(Character.OUTRO) ||
-                         visualNovelEvent.character == CharacterTypeHelper.ToInt(Character.INFO))
+                else if (visualNovelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.INTRO) ||
+                         visualNovelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.OUTRO) ||
+                         visualNovelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.INFO))
                 {
                     newMessageBox = Instantiate(cottaMessagePrefab, this.transform);
                     newMessageBox.SetActive(false);
@@ -310,9 +315,10 @@ namespace _00_Kite2.Player
                     newMessageBox = Instantiate(greyMessagePrefab, this.transform);
                     newMessageBox.SetActive(false);
                 }
+
                 SetText(newMessageBox, visualNovelEvent.text);
             }
-        
+
             _sceneController.ScrollToBottom();
             // GameManager.Instance.calledFromReload = false;
         }
@@ -322,7 +328,7 @@ namespace _00_Kite2.Player
             // Setze das MessageBox-GameObject zunächst auf unsichtbar
             messageBox.SetActive(false);
             guiContent.Add(messageBox);
-            
+
             // Setze den Text in der MessageBox und starte den Typewriter-Effekt
             ChatMessageBox chatMessageBox = messageBox.GetComponent<ChatMessageBox>();
             if (messageBox != null)

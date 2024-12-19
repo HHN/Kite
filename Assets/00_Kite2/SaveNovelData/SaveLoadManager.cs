@@ -30,7 +30,6 @@ namespace _00_Kite2.SaveNovelData
 
             // Aktuelle Novel-Daten
             string currentNovelId = playNovelSceneController.NovelToPlay.id.ToString();
-            string nextEventToPlayId = playNovelSceneController.NextEventToPlay.id;
 
             VisualNovelEvent currentEvent = playNovelSceneController.GetCurrentEvent();
 
@@ -58,7 +57,7 @@ namespace _00_Kite2.SaveNovelData
                     {
                         _count++;
                     }
-                    
+
                     messageBoxesNames.Add(messageBox.name);
                 }
             }
@@ -70,8 +69,11 @@ namespace _00_Kite2.SaveNovelData
                 playThroughHistory = playNovelSceneController.PlayThroughHistory,
                 optionsId = playNovelSceneController.OptionsId.ToArray(),
                 eventHistory = playNovelSceneController.EventHistory,
-                content = conversationContentGuiController.Content, // Brauch ich hier auch die eventHistory von playNovelSceneController
-                visualNovelEvents = conversationContentGuiController.VisualNovelEvents, // Brauch ich hier auch die eventHistory von playNovelSceneController
+                content = conversationContentGuiController
+                    .Content, // Brauch ich hier auch die eventHistory von playNovelSceneController
+                visualNovelEvents =
+                    conversationContentGuiController
+                        .VisualNovelEvents, // Brauch ich hier auch die eventHistory von playNovelSceneController
                 messageType = messageBoxesNames,
                 optionCount = _count,
             };

@@ -163,22 +163,5 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
             yield return new WaitForSeconds(0f);
         }
-
-        private void CalculatePointsFromBottomRightCorner(RectTransform rectTransform, float xOffset, float yOffset,
-            out Vector3 resultingXPoint, out Vector3 resultingYPoint)
-        {
-            // Hol die Welt-Koordinaten der Ecken des RectTransforms
-            Vector3[] worldCorners = new Vector3[4];
-            rectTransform.GetWorldCorners(worldCorners);
-
-            // Rechte untere Ecke (Index 3 im Array)
-            Vector3 bottomRightCorner = worldCorners[3];
-
-            // Berechne den Punkt mit dem xOffset
-            resultingXPoint = new Vector3(bottomRightCorner.x - xOffset, bottomRightCorner.y, 0);
-
-            // Berechne den Punkt mit dem yOffset
-            resultingYPoint = new Vector3(bottomRightCorner.x, bottomRightCorner.y + yOffset, 0);
-        }
     }
 }

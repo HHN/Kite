@@ -1,103 +1,115 @@
-using System;
 using System.Collections.Generic;
+using _00_Kite2.Common;
 using _00_Kite2.Common.Managers;
+using _00_Kite2.Common.SceneManagement;
 using _00_Kite2.Server_Communication;
+using _00_Kite2.Server_Communication.Server_Calls;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class AddObserverSceneController : SceneController
+namespace _00_Kite2.UserFeedback
 {
-    [SerializeField] private RectTransform layout;
-    [SerializeField] private Button confirmButton;
-    [SerializeField] private TMP_InputField inputField;
-    [SerializeField] private GameObject addObserverServerCallPrefab;
-    [SerializeField] private GameObject getObserverServerCallPrefab;
-    [SerializeField] private GameObject observerRepresntationPrefab;
-    [SerializeField] private GameObject oberserverContainer;
-
-    void Start()
+    public class AddObserverSceneController : SceneController
     {
-        LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
-        BackStackManager.Instance().Push(SceneNames.ADD_OBSERVER_SCENE);
-        confirmButton.onClick.AddListener(delegate { OnConfirmButton(); });
-        InitializeObserverList();
-    }
+        [SerializeField] private RectTransform layout;
+        [SerializeField] private Button confirmButton;
+        [SerializeField] private TMP_InputField inputField;
+        [SerializeField] private GameObject addObserverServerCallPrefab;
+        [SerializeField] private GameObject getObserverServerCallPrefab;
+        [SerializeField] private GameObject observerRepresentationPrefab;
+        [SerializeField] private GameObject oberserverContainer;
 
-    public void InitializeObserverList()
-    {
-        GetReviewObserversServerCall call = Instantiate(getObserverServerCallPrefab).GetComponent<GetReviewObserversServerCall>();
-        call.sceneController = this;
-        call.OnSuccessHandler = new GetObserversServerCallSuccessHandler(this);
-        call.SendRequest();
-    }
-
-    public void OnConfirmButton()
-    {
-        if (string.IsNullOrEmpty(inputField.text.Trim()))
+        private void Start()
         {
-            this.DisplayInfoMessage("Bitte Email-Adresse angeben!");
-            return;
+            LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
+            BackStackManager.Instance().Push(SceneNames.ADD_OBSERVER_SCENE);
+            confirmButton.onClick.AddListener(OnConfirmButton);
+            InitializeObserverList();
         }
-        AddReviewObserverServerCall call = Instantiate(addObserverServerCallPrefab).GetComponent<AddReviewObserverServerCall>();
-        call.sceneController = this;
-        call.OnSuccessHandler = new AddObserverServalCallSuccessHandler(this);
-        call.email = inputField.text.Trim();
-        call.SendRequest();
-        DontDestroyOnLoad(call.gameObject);
-        inputField.text = "";
-    }
 
-    public void InitializeObservers(List<ReviewObserver> observers)
-    {
-        foreach (Transform child in oberserverContainer.transform)
+        public void InitializeObserverList()
         {
-            Destroy(child.gameObject);
+            GetReviewObserversServerCall call = Instantiate(getObserverServerCallPrefab)
+                .GetComponent<GetReviewObserversServerCall>();
+            call.sceneController = this;
+            call.OnSuccessHandler = new GetObserversServerCallSuccessHandler(this);
+            call.SendRequest();
         }
-        if (observers == null || observers.Count == 0)
+
+        private void OnConfirmButton()
         {
-            TextMeshProUGUI observerGuiElement =
-            Instantiate(observerRepresntationPrefab, oberserverContainer.transform)
-            .GetComponent<TextMeshProUGUI>();
-            observerGuiElement.text = "Keine Beobachter gefunden!";
-            return;
+            if (string.IsNullOrEmpty(inputField.text.Trim()))
+            {
+                this.DisplayInfoMessage("Bitte Email-Adresse angeben!");
+                return;
+            }
+
+            AddReviewObserverServerCall call = Instantiate(addObserverServerCallPrefab)
+                .GetComponent<AddReviewObserverServerCall>();
+            call.sceneController = this;
+            call.OnSuccessHandler = new AddObserverServerCallSuccessHandler(this);
+            call.email = inputField.text.Trim();
+            call.SendRequest();
+            DontDestroyOnLoad(call.gameObject);
+            inputField.text = "";
         }
-        foreach (ReviewObserver observer in observers)
+
+        public void InitializeObservers(List<ReviewObserver> observers)
         {
-            TextMeshProUGUI observerGuiElement = 
-                Instantiate(observerRepresntationPrefab, oberserverContainer.transform)
-                .GetComponent<TextMeshProUGUI>();
-            observerGuiElement.text = observer.GetEmail();
+            foreach (Transform child in oberserverContainer.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
+            if (observers == null || observers.Count == 0)
+            {
+                TextMeshProUGUI observerGuiElement =
+                    Instantiate(observerRepresentationPrefab, oberserverContainer.transform)
+                        .GetComponent<TextMeshProUGUI>();
+                observerGuiElement.text = "Keine Beobachter gefunden!";
+                return;
+            }
+
+            foreach (ReviewObserver observer in observers)
+            {
+                TextMeshProUGUI observerGuiElement =
+                    Instantiate(observerRepresentationPrefab, oberserverContainer.transform)
+                        .GetComponent<TextMeshProUGUI>();
+                observerGuiElement.text = observer.GetEmail();
+            }
         }
     }
-}
-public class AddObserverServalCallSuccessHandler : OnSuccessHandler 
-{
-    private AddObserverSceneController addObserverSceneController;
 
-    public AddObserverServalCallSuccessHandler(AddObserverSceneController addObserverSceneController)
+    public class AddObserverServerCallSuccessHandler : IOnSuccessHandler
     {
-        this.addObserverSceneController = addObserverSceneController;
+        private readonly AddObserverSceneController _addObserverSceneController;
+
+        public AddObserverServerCallSuccessHandler(AddObserverSceneController addObserverSceneController)
+        {
+            this._addObserverSceneController = addObserverSceneController;
+        }
+
+        public void OnSuccess(Response response)
+        {
+            _addObserverSceneController.InitializeObserverList();
+            _addObserverSceneController.DisplayInfoMessage("Email-Adresse erfolgreich hinzugefügt!");
+        }
     }
 
-    public void OnSuccess(Response response)
+    public class GetObserversServerCallSuccessHandler : IOnSuccessHandler
     {
-        addObserverSceneController.InitializeObserverList();
-        addObserverSceneController.DisplayInfoMessage("Email-Adresse erfolgreich hinzugef�gt!");
-    }
-}
+        private readonly AddObserverSceneController _addObserverSceneController;
 
-public class GetObserversServerCallSuccessHandler : OnSuccessHandler
-{
-    private AddObserverSceneController addObserverSceneController;
+        public GetObserversServerCallSuccessHandler(AddObserverSceneController addObserverSceneController)
+        {
+            this._addObserverSceneController = addObserverSceneController;
+        }
 
-    public GetObserversServerCallSuccessHandler(AddObserverSceneController addObserverSceneController)
-    {
-        this.addObserverSceneController = addObserverSceneController;
-    }
-
-    public void OnSuccess(Response response)
-    {
-        addObserverSceneController.InitializeObservers(response.GetReviewObserver());
+        public void OnSuccess(Response response)
+        {
+            _addObserverSceneController.InitializeObservers(response.GetReviewObserver());
+        }
     }
 }

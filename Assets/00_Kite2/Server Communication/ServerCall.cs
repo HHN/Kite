@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Text;
+using _00_Kite2.Common;
 using _00_Kite2.Common.Messages;
+using _00_Kite2.Common.Utilities;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -8,8 +10,8 @@ namespace _00_Kite2.Server_Communication
 {
     public abstract class ServerCall : MonoBehaviour
     {
-        public OnSuccessHandler OnSuccessHandler;
-        public OnErrorHandler OnErrorHandler;
+        public IOnSuccessHandler OnSuccessHandler;
+        public IOnErrorHandler OnErrorHandler;
         public SceneController sceneController;
         private Coroutine _serverCallCoroutine;
 
@@ -50,7 +52,7 @@ namespace _00_Kite2.Server_Communication
             {
                 case UnityWebRequest.Result.Success:
                 {
-                    if (DestroyValidator.IsNullOrDestroyed(OnSuccessHandler))
+                    if (OnSuccessHandler.IsNullOrDestroyed())
                     {
                         break;
                     }

@@ -1,61 +1,68 @@
 using _00_Kite2.Common.Managers;
+using _00_Kite2.Common.SceneManagement;
+using _00_Kite2.Common.Utilities;
+using _00_Kite2.Player;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
-public class LeaveNovelAndGoToSettingsMessageBox : MonoBehaviour
+namespace _00_Kite2.Common.UI.UI_Elements.Messages
 {
-    [SerializeField] private TextMeshProUGUI messageBoxHeadline;
-    [SerializeField] private TextMeshProUGUI messageBoxBody;
-    [SerializeField] private Button closeButton;
-    [SerializeField] private Button cancelButton;
-    [SerializeField] private Button confirmButton;
-
-    void Start()
+    public class LeaveNovelAndGoToSettingsMessageBox : MonoBehaviour
     {
-        closeButton.onClick.AddListener(delegate { OnCloseButton(); });
-        cancelButton.onClick.AddListener(delegate { OnCancleButton(); });
-        confirmButton.onClick.AddListener(delegate { OnConfirmButton(); });
-        FontSizeManager.Instance().UpdateAllTextComponents();
-    }
+        [SerializeField] private TextMeshProUGUI messageBoxHeadline;
+        [SerializeField] private TextMeshProUGUI messageBoxBody;
+        [SerializeField] private Button closeButton;
+        [SerializeField] private Button cancelButton;
+        [SerializeField] private Button confirmButton;
 
-    public void SetHeadline(string headline)
-    {
-        messageBoxHeadline.text = headline;
-    }
-
-    public void SetBody(string headline)
-    {
-        messageBoxBody.text = headline;
-    }
-
-    public void Activate()
-    {
-        this.gameObject.SetActive(true);
-    }
-
-    public void OnCloseButton()
-    {
-        this.CloseMessageBox();
-    }
-
-    public void OnCancleButton()
-    {
-        this.CloseMessageBox();
-    }
-
-    public void OnConfirmButton()
-    {
-        TextToSpeechService.Instance().CancelSpeechAndAudio();
-        SceneLoader.LoadSettingsScene();
-    }
-
-    public void CloseMessageBox()
-    {
-        if (DestroyValidator.IsNullOrDestroyed(this) || DestroyValidator.IsNullOrDestroyed(this.gameObject))
+        private void Start()
         {
-            return;
+            closeButton.onClick.AddListener(OnCloseButton);
+            cancelButton.onClick.AddListener(OnCancelButton);
+            confirmButton.onClick.AddListener(OnConfirmButton);
+            FontSizeManager.Instance().UpdateAllTextComponents();
         }
-        Destroy(this.gameObject);
+
+        public void SetHeadline(string headline)
+        {
+            messageBoxHeadline.text = headline;
+        }
+
+        public void SetBody(string headline)
+        {
+            messageBoxBody.text = headline;
+        }
+
+        public void Activate()
+        {
+            this.gameObject.SetActive(true);
+        }
+
+        public void OnCloseButton()
+        {
+            this.CloseMessageBox();
+        }
+
+        private void OnCancelButton()
+        {
+            this.CloseMessageBox();
+        }
+
+        private void OnConfirmButton()
+        {
+            TextToSpeechService.Instance().CancelSpeechAndAudio();
+            SceneLoader.LoadSettingsScene();
+        }
+
+        public void CloseMessageBox()
+        {
+            if (this.IsNullOrDestroyed() || this.gameObject.IsNullOrDestroyed())
+            {
+                return;
+            }
+
+            Destroy(this.gameObject);
+        }
     }
 }

@@ -1,23 +1,20 @@
 using System.Collections.Generic;
 using _00_Kite2.Common.Novel;
 
-public class KiteNovelEventList
+namespace _00_Kite2.Player.Kite_Novels.Visual_Novel_Formatter
 {
-    private List<VisualNovelEvent> novelEvents;
-
-    public KiteNovelEventList()
+    public class KiteNovelEventList
     {
-        novelEvents = new List<VisualNovelEvent>();
-    }
+        public KiteNovelEventList()
+        {
+            NovelEvents = new List<VisualNovelEvent>();
+        }
 
-    public KiteNovelEventList(List<VisualNovelEvent> novelEvents)
-    {
-        this.novelEvents = novelEvents;
-    }
+        public KiteNovelEventList(List<VisualNovelEvent> novelEvents)
+        {
+            this.NovelEvents = novelEvents;
+        }
 
-    public List<VisualNovelEvent> NovelEvents
-    {
-        get { return novelEvents; }
-        set { novelEvents = value; }
+        public List<VisualNovelEvent> NovelEvents { get; set; }
     }
 }

@@ -1,29 +1,21 @@
-public class WordPair
+namespace _00_Kite2.Player.Kite_Novels.Visual_Novel_Formatter
 {
-    private string wordToReplace;
-    private string replaceByValue;
-
-    public WordPair(string wordToReplace, string replaceByValue)
+    public abstract class WordPair
     {
-        WordToReplace = wordToReplace;
-        ReplaceByValue = replaceByValue;
-    }
+        protected WordPair(string wordToReplace, string replaceByValue)
+        {
+            WordToReplace = wordToReplace;
+            ReplaceByValue = replaceByValue;
+        }
 
-    public WordPair()
-    {
-        WordToReplace = "";
-        ReplaceByValue = "";
-    }
+        protected WordPair()
+        {
+            WordToReplace = "";
+            ReplaceByValue = "";
+        }
 
-    public string WordToReplace
-    {
-        get { return wordToReplace; }
-        set { wordToReplace = value; }
-    }
+        public string WordToReplace { get; set; }
 
-    public string ReplaceByValue
-    {
-        get { return replaceByValue; }
-        set { replaceByValue = value; }
+        public string ReplaceByValue { get; set; }
     }
 }

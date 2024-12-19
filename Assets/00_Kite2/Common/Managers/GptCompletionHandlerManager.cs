@@ -1,3 +1,5 @@
+using _00_Kite2.Player;
+
 namespace _00_Kite2.Common.Managers
 {
     public class GptCompletionHandlerManager
@@ -18,7 +20,7 @@ namespace _00_Kite2.Common.Managers
             return _instance;
         }
 
-        public GptCompletionHandler GetCompletionHandlerById(int id)
+        public IGptCompletionHandler GetCompletionHandlerById(int id)
         {
             switch (id)
             {

@@ -4,9 +4,9 @@ using _00_Kite2.SaveNovelData;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 using _00_Kite2.Common.Novel.Character.CharacterController;
-using UnityEngine.Serialization;
+using _00_Kite2.Common.SceneManagement;
+using _00_Kite2.Common.Utilities;
 
 namespace _00_Kite2.Common.UI.UI_Elements.Messages
 {
@@ -65,7 +65,6 @@ namespace _00_Kite2.Common.UI.UI_Elements.Messages
         {
             // Retrieve the colour from the NovelColorManager instance
             Color colour = NovelColorManager.Instance().GetColor();
-            Debug.Log("colour: " + colour);
             
             pauseButton.image.color = colour;
             

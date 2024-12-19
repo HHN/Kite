@@ -1,51 +1,54 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public class ExpertFeedbackAnswer
+namespace _00_Kite2.ExpertFeedback
 {
-    [SerializeField] private long id;
-    [SerializeField] private string expertName;
-    [SerializeField] private string expertFeedbackAnswer;
-    [SerializeField] private long idOfExpertFeedbackQuestion;
-
-    public long GetId()
+    [Serializable]
+    public class ExpertFeedbackAnswer
     {
-        return id;
-    }
+        [SerializeField] private long id;
+        [SerializeField] private string expertName;
+        [SerializeField] private string expertFeedbackAnswer;
+        [SerializeField] private long idOfExpertFeedbackQuestion;
 
-    public void SetId(long id)
-    {
-        this.id = id;
-    }
+        public long GetId()
+        {
+            return id;
+        }
 
-    public string GetExpertName()
-    {
-        return expertName;
-    }
+        public void SetId(long id)
+        {
+            this.id = id;
+        }
 
-    public void SetExpertName(string expertName)
-    {
-        this.expertName = expertName;
-    }
+        public string GetExpertName()
+        {
+            return expertName;
+        }
 
-    public string GetExpertFeedbackAnswer()
-    {
-        return expertFeedbackAnswer;
-    }
+        public void SetExpertName(string expertName)
+        {
+            this.expertName = expertName;
+        }
 
-    public void SetExpertFeedbackAnswer(string expertFeedbackAnswer)
-    {
-        this.expertFeedbackAnswer = expertFeedbackAnswer;
-    }
+        public string GetExpertFeedbackAnswer()
+        {
+            return expertFeedbackAnswer;
+        }
 
-    public long GetIdOfExpertFeedbackQuestion()
-    {
-        return idOfExpertFeedbackQuestion;
-    }
+        public void SetExpertFeedbackAnswer(string expertFeedbackAnswer)
+        {
+            this.expertFeedbackAnswer = expertFeedbackAnswer;
+        }
 
-    public void SetIdOfExpertFeedbackQuestion(long idOfExpertFeedbackQuestion)
-    {
-        this.idOfExpertFeedbackQuestion = idOfExpertFeedbackQuestion;
+        public long GetIdOfExpertFeedbackQuestion()
+        {
+            return idOfExpertFeedbackQuestion;
+        }
+
+        public void SetIdOfExpertFeedbackQuestion(long idOfExpertFeedbackQuestion)
+        {
+            this.idOfExpertFeedbackQuestion = idOfExpertFeedbackQuestion;
+        }
     }
 }

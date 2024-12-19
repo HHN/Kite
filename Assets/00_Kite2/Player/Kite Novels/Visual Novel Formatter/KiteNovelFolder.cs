@@ -1,29 +1,21 @@
-public class KiteNovelFolder
+namespace _00_Kite2.Player.Kite_Novels.Visual_Novel_Formatter
 {
-    private KiteNovelMetaData novelMetaData;
-    private KiteNovelEventList novelEventList;
-
-    public KiteNovelFolder(KiteNovelMetaData novelMetaData, KiteNovelEventList novelEventList)
+    public class KiteNovelFolder
     {
-        this.novelMetaData = novelMetaData;
-        this.novelEventList = novelEventList;
-    }
+        public KiteNovelFolder(KiteNovelMetaData novelMetaData, KiteNovelEventList novelEventList)
+        {
+            this.NovelMetaData = novelMetaData;
+            this.NovelEventList = novelEventList;
+        }
 
-    public KiteNovelFolder()
-    {
-        this.NovelMetaData = null;
-        this.NovelEventList = null;
-    }
+        public KiteNovelFolder()
+        {
+            this.NovelMetaData = null;
+            this.NovelEventList = null;
+        }
 
-    public KiteNovelMetaData NovelMetaData
-    {
-        get { return novelMetaData; }
-        set { novelMetaData = value; }
-    }
+        public KiteNovelMetaData NovelMetaData { get; set; }
 
-    public KiteNovelEventList NovelEventList
-    {
-        get { return novelEventList; }
-        set { novelEventList = value; }
+        public KiteNovelEventList NovelEventList { get; set; }
     }
 }

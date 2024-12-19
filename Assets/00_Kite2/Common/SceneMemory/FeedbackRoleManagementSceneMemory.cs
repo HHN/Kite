@@ -1,3 +1,6 @@
-public class FeedbackRoleManagementSceneMemory
+namespace _00_Kite2.Common.SceneMemory
 {
+    public abstract class FeedbackRoleManagementSceneMemory
+    {
+    }
 }

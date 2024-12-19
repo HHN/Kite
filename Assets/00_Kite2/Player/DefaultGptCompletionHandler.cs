@@ -1,8 +1,10 @@
-
-public class DefaultGptCompletionHandler : GptCompletionHandler
+namespace _00_Kite2.Player
 {
-    public string ProcessCompletion(string completion)
+    public class DefaultGptCompletionHandler : IGptCompletionHandler
     {
-        return completion.Trim();
+        public string ProcessCompletion(string completion)
+        {
+            return completion.Trim();
+        }
     }
 }

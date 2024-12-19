@@ -1,9 +1,14 @@
+using _00_Kite2.Common;
 using _00_Kite2.Common.Managers;
+using _00_Kite2.Common.SceneManagement;
 
-public class ImprintSceneController : SceneController
+namespace _00_Kite2.Legal_Information
 {
-    void Start()
+    public class ImprintSceneController : SceneController
     {
-        BackStackManager.Instance().Push(SceneNames.IMPRINT_SCENE);
+        private void Start()
+        {
+            BackStackManager.Instance().Push(SceneNames.IMPRINT_SCENE);
+        }
     }
 }

@@ -1,102 +1,115 @@
 using _00_Kite2.Common.Managers;
 using _00_Kite2.Common.Messages;
+using _00_Kite2.Common.Utilities;
+using _00_Kite2.Player;
 using _00_Kite2.SaveNovelData;
-using UnityEngine;
-using UnityEngine.UI;
 using LeastSquares.Overtone;
 using TMPro;
+using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
-public class DeleteUserDataConfirmation : MonoBehaviour
+namespace _00_Kite2.Common.UI.UI_Elements.Buttons
 {
-
-    [SerializeField] private TTSEngine engine;
-    [SerializeField] private Button cancelButton;
-    [SerializeField] private Button confirmButton;
-    [SerializeField] private GameObject background;
-    [SerializeField] private GameObject backgroundLeave;
-    [SerializeField] private GameObject textCancle;
-    [SerializeField] private GameObject person;
-    [SerializeField] private GameObject uiContainer;
-    [SerializeField] private TextMeshProUGUI messageText;
-
-    private string origin;
-
-    public void Initialize(string origin)
+    public class DeleteUserDataConfirmation : MonoBehaviour
     {
-        this.origin = origin;
-        FontSizeManager.Instance().UpdateAllTextComponents();
-    }
+        [SerializeField] private TTSEngine engine;
+        [SerializeField] private Button cancelButton;
+        [SerializeField] private Button confirmButton;
+        [SerializeField] private GameObject background;
+        [SerializeField] private GameObject backgroundLeave;
+        [SerializeField] private GameObject textCancel;
+        [SerializeField] private GameObject person;
+        [SerializeField] private GameObject uiContainer;
+        [SerializeField] private TextMeshProUGUI messageText;
 
-    void Start()
-    {
-        cancelButton.onClick.AddListener(delegate { OnCancleButton(); });
-        confirmButton.onClick.AddListener(delegate { OnConfirmButton(); });
-        if (origin == "delete")
+        private string _origin;
+
+        public void Initialize(string origin)
         {
-            messageText.text = InfoMessages.DELETE_DATA_CONFIRMATION;
+            this._origin = origin;
+            FontSizeManager.Instance().UpdateAllTextComponents();
         }
-        if (origin == "reset")
-        {
-            messageText.text = InfoMessages.RESET_APP_CONFIRMATION;
-        }
-        AdjustImageSize();
-        FontSizeManager.Instance().UpdateAllTextComponents();
-    }
 
-    private void AdjustImageSize()
-    {
-        float backgroundWidth = background.GetComponent<RectTransform>().rect.width;
-
-        if (person.GetComponent<RectTransform>().rect.width > backgroundWidth)
+        private void Start()
         {
-            person.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, backgroundWidth);
-            person.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, backgroundWidth);
-        }
-    }
+            cancelButton.onClick.AddListener(OnCancelButton);
+            confirmButton.onClick.AddListener(OnConfirmButton);
 
-    public void OnConfirmButton()
-    {
-        if(origin == "delete")
-        {
-            TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.DELETED_DATA, engine);
-            PlayerDataManager.Instance().ClearRelevantUserdata();
-            if(AnalyticsServiceHandler.Instance().IsAnalyticsInitialized())
+            if (_origin == "delete")
             {
-                AnalyticsServiceHandler.Instance().DeleteCollectedData(); 
+                messageText.text = InfoMessages.DELETE_DATA_CONFIRMATION;
             }
+
+            if (_origin == "reset")
+            {
+                messageText.text = InfoMessages.RESET_APP_CONFIRMATION;
+            }
+
+            AdjustImageSize();
+            FontSizeManager.Instance().UpdateAllTextComponents();
+        }
+
+        private void AdjustImageSize()
+        {
+            float backgroundWidth = background.GetComponent<RectTransform>().rect.width;
+
+            if (person.GetComponent<RectTransform>().rect.width > backgroundWidth)
+            {
+                person.GetComponent<RectTransform>()
+                    .SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, backgroundWidth);
+                person.GetComponent<RectTransform>()
+                    .SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, backgroundWidth);
+            }
+        }
+
+        private void OnConfirmButton()
+        {
+            if (_origin == "delete")
+            {
+                TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.DELETED_DATA, engine);
+                PlayerDataManager.Instance().ClearRelevantUserdata();
+                if (AnalyticsServiceHandler.Instance().IsAnalyticsInitialized())
+                {
+                    AnalyticsServiceHandler.Instance().DeleteCollectedData();
+                }
+
+                CloseMessageBox();
+            }
+
+            if (_origin == "reset")
+            {
+                SaveLoadManager.ClearAllSaveData();
+
+                TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.RESET_APP, engine);
+                PlayerDataManager.Instance().ClearEverything();
+                PlayerPrefs.DeleteAll();
+                PlayerPrefs.Save();
+                FavoritesManager.Instance().ClearFavorites();
+                PlayRecordManager.Instance().ClearData();
+                ShowPlayInstructionManager.Instance().SetShowInstruction(true);
+                CloseMessageBox();
+            }
+        }
+
+        private void OnCancelButton()
+        {
             CloseMessageBox();
         }
-        if (origin == "reset")
+
+        public void Activate()
         {
-            SaveLoadManager.ClearAllSaveData();
-
-            TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.RESET_APP, engine);
-            PlayerDataManager.Instance().ClearEverything();
-            PlayerPrefs.DeleteAll();
-            PlayerPrefs.Save();
-            FavoritesManager.Instance().ClearFavorites();
-            PlayRecordManager.Instance().ClearData();
-            ShowPlayInstructionManager.Instance().SetShowInstruction(true);
-            CloseMessageBox();
+            this.gameObject.SetActive(true);
         }
-    }
 
-    public void OnCancleButton()
-    {
-        CloseMessageBox();
-    }
-
-    public void Activate()
-    {
-        this.gameObject.SetActive(true);
-    }
-
-    public void CloseMessageBox()
-    {
-        if (DestroyValidator.IsNullOrDestroyed(this) || DestroyValidator.IsNullOrDestroyed(this.gameObject))
+        public void CloseMessageBox()
         {
-            return;
+            if (this.IsNullOrDestroyed() || this.gameObject.IsNullOrDestroyed())
+            {
+                return;
+            }
+
+            Destroy(this.gameObject);
         }
-        Destroy(this.gameObject);
     }
 }

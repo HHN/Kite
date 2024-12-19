@@ -1,20 +1,17 @@
-public class StoryDataPassage
+namespace _00_Kite2.Player.Kite_Novels.Visual_Novel_Formatter
 {
-    private string start;
-
-    public StoryDataPassage(string start)
+    public class StoryDataPassage
     {
-        this.start = start;
-    }
+        public StoryDataPassage(string start)
+        {
+            this.Start = start;
+        }
 
-    public StoryDataPassage()
-    {
-        this.start = "";
-    }
+        public StoryDataPassage()
+        {
+            this.Start = "";
+        }
 
-    public string Start
-    {
-        get { return start; }
-        set { start = value; }
+        public string Start { get; set; }
     }
 }

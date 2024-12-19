@@ -1,3 +1,6 @@
-public class NovelReviewExplorerSceneMemory 
+namespace _00_Kite2.Common.SceneMemory
 {
+    public abstract class NovelReviewExplorerSceneMemory
+    {
+    }
 }

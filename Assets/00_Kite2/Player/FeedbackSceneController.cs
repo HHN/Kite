@@ -1,8 +1,13 @@
 using System;
 using System.Collections;
 using System.Globalization;
+using _00_Kite2.Common;
 using _00_Kite2.Common.Managers;
 using _00_Kite2.Common.Messages;
+using _00_Kite2.Common.Novel;
+using _00_Kite2.Common.SceneManagement;
+using _00_Kite2.Common.Utilities;
+using _00_Kite2.OfflineAiFeedback;
 using _00_Kite2.Server_Communication;
 using _00_Kite2.Server_Communication.Server_Calls;
 using LeastSquares.Overtone;
@@ -13,7 +18,7 @@ using UnityEngine.UI;
 
 namespace _00_Kite2.Player
 {
-    public class FeedbackSceneController : SceneController, OnSuccessHandler, OnErrorHandler
+    public class FeedbackSceneController : SceneController, IOnSuccessHandler, IOnErrorHandler
     {
         [SerializeField] private TextMeshProUGUI feedbackText;
         [SerializeField] private OfflineFeedbackLoader offlineFeedbackLoader;
@@ -62,7 +67,8 @@ namespace _00_Kite2.Player
             {
                 StartWaitingMusic();
                 VisualNovel novel = PlayManager.Instance().GetVisualNovelToPlay();
-                feedbackText.SetText("Das Feedback wird gerade geladen. Dies dauert durchschnittlich zwischen 30 und 60 Sekunden. Solltest du nicht so lange warten wollen, kannst du dir das Feedback einfach im Archiv anschauen, sobald es fertig ist.");
+                feedbackText.SetText(
+                    "Das Feedback wird gerade geladen. Dies dauert durchschnittlich zwischen 30 und 60 Sekunden. Solltest du nicht so lange warten wollen, kannst du dir das Feedback einfach im Archiv anschauen, sobald es fertig ist.");
                 GetCompletionServerCall call = Instantiate(gptServercallPrefab).GetComponent<GetCompletionServerCall>();
                 call.sceneController = this;
 
@@ -82,7 +88,7 @@ namespace _00_Kite2.Player
                 call.OnErrorHandler = this;
 
                 call.prompt = PromptManager.Instance().GetPrompt(novel != null ? novel.context : "");
-                
+
                 // Debug.Log("call.prompt: " + call.prompt);
 
                 call.SendRequest();
@@ -105,7 +111,8 @@ namespace _00_Kite2.Player
             }
             else
             {
-                BackStackManager.Instance().Clear(); // we go back to the explorer and don't want the back-button to bring us to the feedback scene again
+                BackStackManager.Instance()
+                    .Clear(); // we go back to the explorer and don't want the back-button to bring us to the feedback scene again
                 SceneLoader.LoadFoundersBubbleScene();
             }
         }
@@ -130,11 +137,12 @@ namespace _00_Kite2.Player
 
         public void OnSuccess(Response response)
         {
-            if (SceneManager.GetActiveScene().name != SceneNames.FEEDBACK_SCENE 
+            if (SceneManager.GetActiveScene().name != SceneNames.FEEDBACK_SCENE
                 && SceneManager.GetActiveScene().name != SceneNames.COMMENT_SECTION_SCENE)
             {
                 return;
             }
+
             StopWaitingMusic();
             finishButtonContainer.SetActive(false);
             finishButtonTopContainer.SetActive(true);
@@ -144,6 +152,7 @@ namespace _00_Kite2.Player
             {
                 TextToSpeechService.Instance().TextToSpeechReadLive(response.GetCompletion().Trim(), engine);
             }
+
             feedbackText.SetText(response.GetCompletion().Trim());
             loadingAnimation.SetActive(false);
             novelToPlay.feedback = (response.GetCompletion().Trim());
@@ -164,7 +173,8 @@ namespace _00_Kite2.Player
             DateTime now = DateTime.Now;
             CultureInfo culture = new CultureInfo("de-DE");
             string formattedDateTime = now.ToString("ddd | dd.MM.yyyy | HH:mm", culture);
-            dialogHistoryEntry.SetDateAndTime(formattedDateTime); DialogHistoryManager.Instance().AddEntry(dialogHistoryEntry);
+            dialogHistoryEntry.SetDateAndTime(formattedDateTime);
+            DialogHistoryManager.Instance().AddEntry(dialogHistoryEntry);
             yield return null;
         }
 
@@ -200,7 +210,7 @@ namespace _00_Kite2.Player
         }
     }
 
-    public class FeedbackHandler : OnSuccessHandler
+    public class FeedbackHandler : IOnSuccessHandler
     {
         public FeedbackSceneController FeedbackSceneController;
         public long ID;
@@ -210,7 +220,7 @@ namespace _00_Kite2.Player
         {
             SaveDialogToHistory(response.GetCompletion());
 
-            if (!DestroyValidator.IsNullOrDestroyed(FeedbackSceneController))
+            if (!FeedbackSceneController.IsNullOrDestroyed())
             {
                 FeedbackSceneController.OnSuccess(response);
             }
@@ -225,7 +235,8 @@ namespace _00_Kite2.Player
             DateTime now = DateTime.Now;
             CultureInfo culture = new CultureInfo("de-DE");
             string formattedDateTime = now.ToString("ddd | dd.MM.yyyy | HH:mm", culture);
-            dialogHistoryEntry.SetDateAndTime(formattedDateTime); DialogHistoryManager.Instance().AddEntry(dialogHistoryEntry);
+            dialogHistoryEntry.SetDateAndTime(formattedDateTime);
+            DialogHistoryManager.Instance().AddEntry(dialogHistoryEntry);
             Debug.Log("Feedback Saved in Novel Archive");
         }
     }

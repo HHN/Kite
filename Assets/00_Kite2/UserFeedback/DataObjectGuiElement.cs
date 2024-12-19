@@ -1,21 +1,25 @@
+using _00_Kite2.Common.UI.UI_Elements.DropDown;
 using TMPro;
 using UnityEngine;
 
-public class DataObjectGuiElement : MonoBehaviour
+namespace _00_Kite2.UserFeedback
 {
-    [SerializeField] private DropDownMenu dropdownContainer;
-    [SerializeField] private DropDownMenu dropDownPrompt;
-    [SerializeField] private DropDownMenu dropDownCompletion;
-    [SerializeField] private TextMeshProUGUI headButtonText;
-    [SerializeField] private TextMeshProUGUI promptText;
-    [SerializeField] private TextMeshProUGUI completionText;
-    [SerializeField] private DataObject dataObject;
-
-    public void InitializeDataObject(DataObject dataObject)
+    public class DataObjectGuiElement : MonoBehaviour
     {
-        this.dataObject = dataObject;
-        headButtonText.text = "Prompt und Completion (ID:" + dataObject.GetId() + ")";
-        promptText.text = dataObject.GetPrompt();
-        completionText.text = dataObject.GetCompletion();
+        [SerializeField] private DropDownMenu dropdownContainer;
+        [SerializeField] private DropDownMenu dropDownPrompt;
+        [SerializeField] private DropDownMenu dropDownCompletion;
+        [SerializeField] private TextMeshProUGUI headButtonText;
+        [SerializeField] private TextMeshProUGUI promptText;
+        [SerializeField] private TextMeshProUGUI completionText;
+        [SerializeField] private DataObject dataObject;
+
+        public void InitializeDataObject(DataObject dataObject)
+        {
+            this.dataObject = dataObject;
+            headButtonText.text = "Prompt und Completion (ID:" + dataObject.GetId() + ")";
+            promptText.text = dataObject.GetPrompt();
+            completionText.text = dataObject.GetCompletion();
+        }
     }
 }

@@ -1,39 +1,42 @@
 using _00_Kite2.Common.Messages;
-using _00_Kite2.Server_Communication;
+using _00_Kite2.Server_Communication.Request_Objects;
 using UnityEngine.Networking;
 
-public class DeleteAiReviewServerCall : ServerCall
+namespace _00_Kite2.Server_Communication.Server_Calls
 {
-    public long id;
-
-    protected override object CreateRequestObject()
+    public class DeleteAiReviewServerCall : ServerCall
     {
-        DeleteAiReviewRequest request = new DeleteAiReviewRequest();
-        request.id = id;
-        return request;
-    }
+        public long id;
 
-    protected override UnityWebRequest CreateUnityWebRequestObject()
-    {
-        UnityWebRequest request = UnityWebRequest.Delete(ConnectionLink.AI_REVIEW_LINK);
-        request.downloadHandler = new DownloadHandlerBuffer();
-        return request;
-    }
-
-    protected override void OnResponse(Response response)
-    {
-        switch (ResultCodeHelper.ValueOf(response.GetResultCode()))
+        protected override object CreateRequestObject()
         {
-            case ResultCode.SUCCESSFULLY_DELETED_AI_REVIEW:
+            DeleteAiReviewRequest request = new DeleteAiReviewRequest();
+            request.id = id;
+            return request;
+        }
+
+        protected override UnityWebRequest CreateUnityWebRequestObject()
+        {
+            UnityWebRequest request = UnityWebRequest.Delete(ConnectionLink.AI_REVIEW_LINK);
+            request.downloadHandler = new DownloadHandlerBuffer();
+            return request;
+        }
+
+        protected override void OnResponse(Response response)
+        {
+            switch (ResultCodeHelper.ValueOf(response.GetResultCode()))
+            {
+                case ResultCode.SUCCESSFULLY_DELETED_AI_REVIEW:
                 {
                     OnSuccessHandler.OnSuccess(response);
                     return;
                 }
-            default:
+                default:
                 {
                     sceneController.DisplayErrorMessage(ErrorMessages.UNEXPECTED_SERVER_ERROR);
                     return;
                 }
+            }
         }
     }
 }

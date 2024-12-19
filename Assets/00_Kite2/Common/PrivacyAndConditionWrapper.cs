@@ -1,9 +1,12 @@
 using System;
 
-[Serializable]
-public class PrivacyAndConditionWrapper
+namespace _00_Kite2.Common
 {
-    public bool acceptedConditions;
-    public bool acceptedPrivacyTerms;
-    public bool acceptedDataCollection;
+    [Serializable]
+    public class PrivacyAndConditionWrapper
+    {
+        public bool acceptedConditions;
+        public bool acceptedPrivacyTerms;
+        public bool acceptedDataCollection;
+    }
 }

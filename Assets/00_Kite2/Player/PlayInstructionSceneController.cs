@@ -1,77 +1,83 @@
+using _00_Kite2.Common;
 using _00_Kite2.Common.Managers;
+using _00_Kite2.Common.SceneManagement;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayInstructionSceneController : SceneController
+namespace _00_Kite2.Player
 {
-    [SerializeField] private Image novelImage;
-    [SerializeField] private Image textBoxImage;
-    [SerializeField] private Image headerImage;
-    [SerializeField] private TextMeshProUGUI novelname;
-    [SerializeField] private TextMeshProUGUI buttonText;
-    [SerializeField] private Color backgroundColor;
-
-    [SerializeField] private Button playButton;
-    [SerializeField] private Button playButton2;
-    [SerializeField] private Button backButton;
-    [SerializeField] private Toggle toggle;
-    [SerializeField] private Toggle toggle2;
-
-    private bool isSyncing = false;
-
-    void Start()
+    public class PlayInstructionSceneController : SceneController
     {
-        BackStackManager.Instance().Push(SceneNames.PLAY_INSTRUCTION_SCENE);
+        [SerializeField] private Image novelImage;
+        [SerializeField] private Image textBoxImage;
+        [SerializeField] private Image headerImage;
+        [SerializeField] private TextMeshProUGUI novelName;
+        [SerializeField] private TextMeshProUGUI buttonText;
+        [SerializeField] private Color backgroundColor;
 
-        backgroundColor = PlayManager.Instance().GetBackgroundColorOfVisualNovelToPlay();
-        novelname.text = PlayManager.Instance().GetDisplayNameOfNovelToPlay();
-        novelImage.color = backgroundColor;
-        toggle.isOn = false;
-        toggle2.isOn = false;
+        [SerializeField] private Button playButton;
+        [SerializeField] private Button playButton2;
+        [SerializeField] private Button backButton;
+        [SerializeField] private Toggle toggle;
+        [SerializeField] private Toggle toggle2;
 
-        playButton.onClick.AddListener(delegate { OnPlayButton(); });
-        playButton2.onClick.AddListener(delegate { OnPlayButton(); });
+        private bool _isSyncing;
 
-        toggle.onValueChanged.AddListener((value) => SyncToggles(toggle, toggle2, value));
-        toggle2.onValueChanged.AddListener((value) => SyncToggles(toggle2, toggle, value));
-
-        FontSizeManager.Instance().UpdateAllTextComponents();
-    }
-
-    private void SyncToggles(Toggle changedToggle, Toggle otherToggle, bool isOn)
-    {
-        if (isSyncing) return; // Prevent recursive calls
-
-        isSyncing = true; // Start syncing
-        otherToggle.isOn = isOn; // Update the other toggle to match the changed one
-        isSyncing = false; // End syncing
-    }
-
-    public void OnPlayButton()
-    {
-        if (toggle.isOn)
+        private void Start()
         {
-            NeverShowAgain();
+            BackStackManager.Instance().Push(SceneNames.PLAY_INSTRUCTION_SCENE);
+
+            backgroundColor = PlayManager.Instance().GetBackgroundColorOfVisualNovelToPlay();
+            novelName.text = PlayManager.Instance().GetDisplayNameOfNovelToPlay();
+            novelImage.color = backgroundColor;
+            toggle.isOn = false;
+            toggle2.isOn = false;
+
+            playButton.onClick.AddListener(OnPlayButton);
+            playButton2.onClick.AddListener(OnPlayButton);
+
+            toggle.onValueChanged.AddListener((value) => SyncToggles(toggle, toggle2, value));
+            toggle2.onValueChanged.AddListener((value) => SyncToggles(toggle2, toggle, value));
+
+            FontSizeManager.Instance().UpdateAllTextComponents();
         }
 
-        SceneLoader.LoadPlayNovelScene();
-    }
-
-    public void NeverShowAgain()
-    {
-        ShowPlayInstructionManager.Instance().SetShowInstruction(false);
-    }
-
-    public void OnBackButton()
-    {
-        string lastScene = SceneRouter.GetTargetSceneForBackButton();
-
-        if (string.IsNullOrEmpty(lastScene))
+        private void SyncToggles(Toggle changedToggle, Toggle otherToggle, bool isOn)
         {
-            SceneLoader.LoadMainMenuScene();
-            return;
+            if (_isSyncing) return; // Prevent recursive calls
+
+            _isSyncing = true; // Start syncing
+            otherToggle.isOn = isOn; // Update the other toggle to match the changed one
+            _isSyncing = false; // End syncing
         }
-        SceneLoader.LoadScene(lastScene);
+
+        private void OnPlayButton()
+        {
+            if (toggle.isOn)
+            {
+                NeverShowAgain();
+            }
+
+            SceneLoader.LoadPlayNovelScene();
+        }
+
+        private void NeverShowAgain()
+        {
+            ShowPlayInstructionManager.Instance().SetShowInstruction(false);
+        }
+
+        public void OnBackButton()
+        {
+            string lastScene = SceneRouter.GetTargetSceneForBackButton();
+
+            if (string.IsNullOrEmpty(lastScene))
+            {
+                SceneLoader.LoadMainMenuScene();
+                return;
+            }
+
+            SceneLoader.LoadScene(lastScene);
+        }
     }
 }

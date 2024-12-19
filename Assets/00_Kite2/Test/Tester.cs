@@ -24,9 +24,10 @@ namespace _00_Kite2.Test
 
                 // Alle Pfade ab "Anfang" berechnen
                 List<List<string>> allPaths = calculator.GetAllPaths("Anfang");
+                calculator.PrintPathsAndSpeakers(allPaths);
 
                 // Pfade als Gespräch und reinen Pfad ausgeben
-                calculator.PrintPathsAsConversationAndPath(allPaths);
+                // calculator.PrintPathsAsConversationAndPath(allPaths);
 
                 Debug.Log("Fertig");
             }

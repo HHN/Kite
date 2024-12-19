@@ -229,7 +229,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 2779883276843412586}
         m_TargetAssemblyTypeName: SelectOptionContinueConversation, Assembly-CSharp
-        m_MethodName: OnTypwritingStart
+        m_MethodName: OnTypewritingStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -1,24 +1,30 @@
 using _00_Kite2.Common.Managers;
 using _00_Kite2.Server_Communication;
 
-public class GptRequestEventOnSuccessHandler : OnSuccessHandler
+namespace _00_Kite2.Player
 {
-    public string variablesNameForGptPromp;
-    public GptCompletionHandler completionHandler;
-
-    public void OnSuccess(Response response)
+    public class GptRequestEventOnSuccessHandler : IOnSuccessHandler
     {
-        string completion = response.GetCompletion();
-        string processedCompletion = completion;
+        public string VariablesNameForGptPrompt;
+        public IGptCompletionHandler CompletionHandler;
 
-        if (completionHandler != null)
+        public void OnSuccess(Response response)
         {
-            processedCompletion = completionHandler.ProcessCompletion(completion);
+            string completion = response.GetCompletion();
+            string processedCompletion = completion;
+
+            if (CompletionHandler != null)
+            {
+                processedCompletion = CompletionHandler.ProcessCompletion(completion);
+            }
+
+            if (PlayManager.Instance().GetVisualNovelToPlay().IsVariableExistent(VariablesNameForGptPrompt))
+            {
+                PlayManager.Instance().GetVisualNovelToPlay().RemoveGlobalVariable(VariablesNameForGptPrompt);
+            }
+
+            PlayManager.Instance().GetVisualNovelToPlay()
+                .AddGlobalVariable(VariablesNameForGptPrompt, processedCompletion);
         }
-        if (PlayManager.Instance().GetVisualNovelToPlay().IsVariableExistend(variablesNameForGptPromp))
-        {
-            PlayManager.Instance().GetVisualNovelToPlay().RemoveGlobalVariable(variablesNameForGptPromp);
-        }
-        PlayManager.Instance().GetVisualNovelToPlay().AddGlobalVariable(variablesNameForGptPromp, processedCompletion);
     }
 }

@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using _00_Kite2.Common.Managers;
 using _00_Kite2.Common.Messages;
+using _00_Kite2.Common.Novel;
+using _00_Kite2.Common.SceneManagement;
+using _00_Kite2.Common.UI.UI_Elements.Toggle;
 using _00_Kite2.Player;
 using _00_Kite2.Server_Communication;
+using _00_Kite2.Server_Communication.Server_Calls;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace _00_Kite2.Common
 {
-    public class MainMenuSceneController : SceneController, OnSuccessHandler
+    public class MainMenuSceneController : SceneController, IOnSuccessHandler
     {
         [SerializeField] private Button novelPlayerButton;
         [SerializeField] private GameObject buttonSoundPrefab;
@@ -22,15 +26,15 @@ namespace _00_Kite2.Common
         [SerializeField] private TextMeshProUGUI infoTextTermsAndConditions;
         [SerializeField] private AudioSource kiteAudioLogo;
         [SerializeField] private GameObject getVersionServerCallPrefab;
-        [SerializeField] private static int COMPATIBLE_SERVER_VERSION_NUMBER = 10;
         [SerializeField] private GameObject novelLoader;
+        private static int COMPATIBLE_SERVER_VERSION_NUMBER = 10;
 
-    private void Start()
-    {
-        // Initialisiere den TextToSpeechManager
-        TextToSpeechManager ttsManager = TextToSpeechManager.Instance;
-        // Initialisiere die Szene und setze grundlegende Einstellungen
-        InitializeScene();
+        private void Start()
+        {
+            // Initialisiere den TextToSpeechManager
+            TextToSpeechManager ttsManager = TextToSpeechManager.Instance;
+            // Initialisiere die Szene und setze grundlegende Einstellungen
+            InitializeScene();
 
             // Richte die Button-Listener ein, um auf Benutzereingaben zu reagieren
             SetupButtonListeners();
@@ -38,7 +42,7 @@ namespace _00_Kite2.Common
             // Behandle die Nutzungsbedingungen und Datenschutzrichtlinien
             HandleTermsAndConditions();
 
-            // Hole die Instanz des PrivacyManagers, um den aktuellen Status der Datenschutzakzeptanz zu �berpr�fen
+            // Hole die Instanz des PrivacyManagers, um den aktuellen Status der Datenschutzakzeptanz zu überprüfen
             var privacyManager = PrivacyAndConditionManager.Instance();
 
             // Überprüfe, ob die Nutzungsbedingungen und Datenschutzrichtlinien akzeptiert wurden
@@ -102,7 +106,7 @@ namespace _00_Kite2.Common
 
             // Instantiate the sound prefab and assign it to a variable
             GameObject buttonSound = Instantiate(buttonSoundPrefab);
-            DontDestroyOnLoad(buttonSound);  // Correct usage of 
+            DontDestroyOnLoad(buttonSound); // Correct usage of 
         }
 
         public void OnSettingsButton()
@@ -205,14 +209,24 @@ namespace _00_Kite2.Common
                 if (novel.title == "Einstiegsdialog")
                 {
                     GameManager.Instance.IsIntroNovelLoadedFromMainMenu = true;
-                    
+
                     // Convert the novel ID to the corresponding enum
                     VisualNovelNames novelNames = VisualNovelNamesHelper.ValueOf((int)novel.id);
 
-                    PlayManager.Instance().SetVisualNovelToPlay(novel); // Set the novel to be played in the PlayManager          
-                    PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegroundColorOfNovel(novelNames)); // Set the foreground color for the novel
-                    PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(novelNames)); // Set the background color for the novel
-                    PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelNames)); // Set the display name for the novel
+                    PlayManager.Instance()
+                        .SetVisualNovelToPlay(novel); // Set the novel to be played in the PlayManager          
+                    PlayManager.Instance()
+                        .SetForegroundColorOfVisualNovelToPlay(
+                            FoundersBubbleMetaInformation
+                                .GetForegroundColorOfNovel(novelNames)); // Set the foreground color for the novel
+                    PlayManager.Instance()
+                        .SetBackgroundColorOfVisualNovelToPlay(
+                            FoundersBubbleMetaInformation
+                                .GetBackgroundColorOfNovel(novelNames)); // Set the background color for the novel
+                    PlayManager.Instance()
+                        .SetDisplayNameOfNovelToPlay(
+                            FoundersBubbleMetaInformation
+                                .GetDisplayNameOfNovelToPlay(novelNames)); // Set the display name for the novel
 
                     // Load the PlayNovelScene
                     SceneLoader.LoadPlayNovelScene();

@@ -1,5 +1,8 @@
 using System.Collections.Generic;
+using _00_Kite2.Common;
 using _00_Kite2.Common.Managers;
+using _00_Kite2.Common.Novel;
+using _00_Kite2.Common.SceneManagement;
 using _00_Kite2.Player;
 using UnityEngine;
 using UnityEngine.UI;
@@ -75,7 +78,7 @@ namespace _00_Kite2.NewPages
             if (index == 12)
             {
                 visualNovelHolder.GetComponent<LayoutElement>().preferredHeight = 1300;
-            } 
+            }
             else if (index >= 10)
             {
                 visualNovelHolder.GetComponent<LayoutElement>().preferredHeight = 1200;
@@ -241,6 +244,7 @@ namespace _00_Kite2.NewPages
                     visualNovelToDisplay = novel;
                 }
             }
+
             if (visualNovelToDisplay == null)
             {
                 DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
@@ -248,16 +252,21 @@ namespace _00_Kite2.NewPages
             }
 
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-            PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+            PlayManager.Instance()
+                .SetForegroundColorOfVisualNovelToPlay(
+                    FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
+            PlayManager.Instance()
+                .SetBackgroundColorOfVisualNovelToPlay(
+                    FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+            PlayManager.Instance()
+                .SetDisplayNameOfNovelToPlay(
+                    FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
 
             if (ShowPlayInstructionManager.Instance().ShowInstruction())
             {
                 SceneLoader.LoadPlayInstructionScene();
-
             }
             else
             {
@@ -279,6 +288,7 @@ namespace _00_Kite2.NewPages
                     visualNovelToDisplay = novel;
                 }
             }
+
             if (visualNovelToDisplay == null)
             {
                 DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
@@ -286,16 +296,21 @@ namespace _00_Kite2.NewPages
             }
 
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-            PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+            PlayManager.Instance()
+                .SetForegroundColorOfVisualNovelToPlay(
+                    FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
+            PlayManager.Instance()
+                .SetBackgroundColorOfVisualNovelToPlay(
+                    FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+            PlayManager.Instance()
+                .SetDisplayNameOfNovelToPlay(
+                    FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
 
             if (ShowPlayInstructionManager.Instance().ShowInstruction())
             {
                 SceneLoader.LoadPlayInstructionScene();
-
             }
             else
             {
@@ -317,6 +332,7 @@ namespace _00_Kite2.NewPages
                     visualNovelToDisplay = novel;
                 }
             }
+
             if (visualNovelToDisplay == null)
             {
                 DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
@@ -324,16 +340,21 @@ namespace _00_Kite2.NewPages
             }
 
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-            PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+            PlayManager.Instance()
+                .SetForegroundColorOfVisualNovelToPlay(
+                    FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
+            PlayManager.Instance()
+                .SetBackgroundColorOfVisualNovelToPlay(
+                    FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+            PlayManager.Instance()
+                .SetDisplayNameOfNovelToPlay(
+                    FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
 
             if (ShowPlayInstructionManager.Instance().ShowInstruction())
             {
                 SceneLoader.LoadPlayInstructionScene();
-
             }
             else
             {
@@ -355,6 +376,7 @@ namespace _00_Kite2.NewPages
                     visualNovelToDisplay = novel;
                 }
             }
+
             if (visualNovelToDisplay == null)
             {
                 DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
@@ -362,16 +384,21 @@ namespace _00_Kite2.NewPages
             }
 
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-            PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+            PlayManager.Instance()
+                .SetForegroundColorOfVisualNovelToPlay(
+                    FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
+            PlayManager.Instance()
+                .SetBackgroundColorOfVisualNovelToPlay(
+                    FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+            PlayManager.Instance()
+                .SetDisplayNameOfNovelToPlay(
+                    FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
 
             if (ShowPlayInstructionManager.Instance().ShowInstruction())
             {
                 SceneLoader.LoadPlayInstructionScene();
-
             }
             else
             {
@@ -393,6 +420,7 @@ namespace _00_Kite2.NewPages
                     visualNovelToDisplay = novel;
                 }
             }
+
             if (visualNovelToDisplay == null)
             {
                 DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
@@ -400,16 +428,21 @@ namespace _00_Kite2.NewPages
             }
 
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-            PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+            PlayManager.Instance()
+                .SetForegroundColorOfVisualNovelToPlay(
+                    FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
+            PlayManager.Instance()
+                .SetBackgroundColorOfVisualNovelToPlay(
+                    FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+            PlayManager.Instance()
+                .SetDisplayNameOfNovelToPlay(
+                    FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
 
             if (ShowPlayInstructionManager.Instance().ShowInstruction())
             {
                 SceneLoader.LoadPlayInstructionScene();
-
             }
             else
             {
@@ -431,6 +464,7 @@ namespace _00_Kite2.NewPages
                     visualNovelToDisplay = novel;
                 }
             }
+
             if (visualNovelToDisplay == null)
             {
                 DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
@@ -438,16 +472,21 @@ namespace _00_Kite2.NewPages
             }
 
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-            PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+            PlayManager.Instance()
+                .SetForegroundColorOfVisualNovelToPlay(
+                    FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
+            PlayManager.Instance()
+                .SetBackgroundColorOfVisualNovelToPlay(
+                    FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+            PlayManager.Instance()
+                .SetDisplayNameOfNovelToPlay(
+                    FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
 
             if (ShowPlayInstructionManager.Instance().ShowInstruction())
             {
                 SceneLoader.LoadPlayInstructionScene();
-
             }
             else
             {
@@ -469,6 +508,7 @@ namespace _00_Kite2.NewPages
                     visualNovelToDisplay = novel;
                 }
             }
+
             if (visualNovelToDisplay == null)
             {
                 DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
@@ -476,16 +516,21 @@ namespace _00_Kite2.NewPages
             }
 
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-            PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+            PlayManager.Instance()
+                .SetForegroundColorOfVisualNovelToPlay(
+                    FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
+            PlayManager.Instance()
+                .SetBackgroundColorOfVisualNovelToPlay(
+                    FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+            PlayManager.Instance()
+                .SetDisplayNameOfNovelToPlay(
+                    FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
 
             if (ShowPlayInstructionManager.Instance().ShowInstruction())
             {
                 SceneLoader.LoadPlayInstructionScene();
-
             }
             else
             {
@@ -507,6 +552,7 @@ namespace _00_Kite2.NewPages
                     visualNovelToDisplay = novel;
                 }
             }
+
             if (visualNovelToDisplay == null)
             {
                 DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
@@ -514,16 +560,21 @@ namespace _00_Kite2.NewPages
             }
 
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-            PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+            PlayManager.Instance()
+                .SetForegroundColorOfVisualNovelToPlay(
+                    FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
+            PlayManager.Instance()
+                .SetBackgroundColorOfVisualNovelToPlay(
+                    FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+            PlayManager.Instance()
+                .SetDisplayNameOfNovelToPlay(
+                    FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
 
             if (ShowPlayInstructionManager.Instance().ShowInstruction())
             {
                 SceneLoader.LoadPlayInstructionScene();
-
             }
             else
             {
@@ -545,6 +596,7 @@ namespace _00_Kite2.NewPages
                     visualNovelToDisplay = novel;
                 }
             }
+
             if (visualNovelToDisplay == null)
             {
                 DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
@@ -552,16 +604,21 @@ namespace _00_Kite2.NewPages
             }
 
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-            PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+            PlayManager.Instance()
+                .SetForegroundColorOfVisualNovelToPlay(
+                    FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
+            PlayManager.Instance()
+                .SetBackgroundColorOfVisualNovelToPlay(
+                    FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+            PlayManager.Instance()
+                .SetDisplayNameOfNovelToPlay(
+                    FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
 
             if (ShowPlayInstructionManager.Instance().ShowInstruction())
             {
                 SceneLoader.LoadPlayInstructionScene();
-
             }
             else
             {
@@ -583,6 +640,7 @@ namespace _00_Kite2.NewPages
                     visualNovelToDisplay = novel;
                 }
             }
+
             if (visualNovelToDisplay == null)
             {
                 DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
@@ -590,16 +648,21 @@ namespace _00_Kite2.NewPages
             }
 
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-            PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+            PlayManager.Instance()
+                .SetForegroundColorOfVisualNovelToPlay(
+                    FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
+            PlayManager.Instance()
+                .SetBackgroundColorOfVisualNovelToPlay(
+                    FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+            PlayManager.Instance()
+                .SetDisplayNameOfNovelToPlay(
+                    FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
 
             if (ShowPlayInstructionManager.Instance().ShowInstruction())
             {
                 SceneLoader.LoadPlayInstructionScene();
-
             }
             else
             {
@@ -621,6 +684,7 @@ namespace _00_Kite2.NewPages
                     visualNovelToDisplay = novel;
                 }
             }
+
             if (visualNovelToDisplay == null)
             {
                 DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
@@ -628,16 +692,21 @@ namespace _00_Kite2.NewPages
             }
 
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-            PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+            PlayManager.Instance()
+                .SetForegroundColorOfVisualNovelToPlay(
+                    FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
+            PlayManager.Instance()
+                .SetBackgroundColorOfVisualNovelToPlay(
+                    FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+            PlayManager.Instance()
+                .SetDisplayNameOfNovelToPlay(
+                    FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
 
             if (ShowPlayInstructionManager.Instance().ShowInstruction())
             {
                 SceneLoader.LoadPlayInstructionScene();
-
             }
             else
             {
@@ -659,6 +728,7 @@ namespace _00_Kite2.NewPages
                     visualNovelToDisplay = novel;
                 }
             }
+
             if (visualNovelToDisplay == null)
             {
                 DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
@@ -666,16 +736,21 @@ namespace _00_Kite2.NewPages
             }
 
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-            PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+            PlayManager.Instance()
+                .SetForegroundColorOfVisualNovelToPlay(
+                    FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
+            PlayManager.Instance()
+                .SetBackgroundColorOfVisualNovelToPlay(
+                    FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+            PlayManager.Instance()
+                .SetDisplayNameOfNovelToPlay(
+                    FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
 
             if (ShowPlayInstructionManager.Instance().ShowInstruction())
             {
                 SceneLoader.LoadPlayInstructionScene();
-
             }
             else
             {

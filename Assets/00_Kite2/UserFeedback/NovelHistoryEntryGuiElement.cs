@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using _00_Kite2.Common.Managers;
+using _00_Kite2.Common.UI.UI_Elements.DropDown;
 using _00_Kite2.Player;
 using TMPro;
 using UnityEngine;
@@ -67,7 +68,8 @@ namespace _00_Kite2.UserFeedback
 
         public List<DropDownMenu> GetDropDownMenus()
         {
-            return new List<DropDownMenu>() {
+            return new List<DropDownMenu>()
+            {
                 dropdownContainer,
                 dropDownDialog,
                 dropDownAiFeedback
@@ -77,11 +79,11 @@ namespace _00_Kite2.UserFeedback
         public void SetVisualNovelColor(VisualNovelNames visualNovel)
         {
             Color color = FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel);
-            image.color = color;   
-            image01.color = color;   
-            image02.color = color;   
-            image03.color = color;   
-            image04.color = color;   
+            image.color = color;
+            image01.color = color;
+            image02.color = color;
+            image03.color = color;
+            image04.color = color;
             buttonText.color = color;
             buttonText02.color = color;
         }
@@ -111,14 +113,16 @@ namespace _00_Kite2.UserFeedback
             }
 
             // Zugriff auf die TextMeshPro-Komponente im Popup
-            TextMeshProUGUI textComponent = GameObjectManager.Instance().GetCopyNotification().GetComponentInChildren<TextMeshProUGUI>();
+            TextMeshProUGUI textComponent = GameObjectManager.Instance().GetCopyNotification()
+                .GetComponentInChildren<TextMeshProUGUI>();
             if (textComponent != null)
             {
-                if(whatWasCopied == "Feedback")
+                if (whatWasCopied == "Feedback")
                 {
                     // Setze den Text
                     textComponent.text = "Das Feedback wurde in die\r\nZwischenablage kopiert.";
                 }
+
                 if (whatWasCopied == "Dialog")
                 {
                     // Setze den Text
@@ -135,6 +139,5 @@ namespace _00_Kite2.UserFeedback
             // Popup ausblenden
             GameObjectManager.Instance().GetCopyNotification().SetActive(false);
         }
-
     }
 }

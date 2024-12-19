@@ -1,9 +1,12 @@
 using System;
 
-[Serializable]
-public class TextToSpeechWrapper
+namespace _00_Kite2.Common
 {
-    public bool activatedTextToSpeech;
-    // public int speakerId; add this if functionality is desired
-    // public int mode; add this if functionality is desired. Can be used to toggle where text to speech is activated. For example: "everywhere", "only in menu" or "only in novel".
+    [Serializable]
+    public class TextToSpeechWrapper
+    {
+        public bool activatedTextToSpeech;
+        // public int speakerId; add this if functionality is desired
+        // public int mode; add this if functionality is desired. Can be used to toggle where text to speech is activated. For example: "everywhere", "only in menu" or "only in novel".
+    }
 }

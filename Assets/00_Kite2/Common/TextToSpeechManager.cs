@@ -1,24 +1,25 @@
-using UnityEngine;
 using System.Collections;
-using System.Runtime.InteropServices;
+using UnityEngine;
 
-public class TextToSpeechManager : MonoBehaviour
+namespace _00_Kite2.Common
 {
-    private static TextToSpeechManager instance;
+    public class TextToSpeechManager : MonoBehaviour
+    {
+        private static TextToSpeechManager _instance;
 
-    private bool ttsIsActive = true;
+        private bool _ttsIsActive = true;
 
-    private string ttsString = "Folgende Antwortmöglichkeiten stehen dir zur Auswahl: ";
+        private string _ttsString = "Folgende AntwortmÃ¶glichkeiten stehen dir zur Auswahl: ";
 
-    private int optionCounter = 0;
+        private int _optionCounter;
 
-    private bool isSpeaking = false;
+        private bool _isSpeaking;
 
-    private string lastMessage = "";
+        private string _lastMessage = "";
 
-    private bool wasPaused = false;
+        private bool _wasPaused;
 
-    // iOS native methods
+        // iOS native methods
 #if UNITY_IOS
     [DllImport("__Internal")]
     private static extern void _InitializeTTS();
@@ -33,40 +34,41 @@ public class TextToSpeechManager : MonoBehaviour
     private static extern bool _IsSpeaking();
 #endif
 
-    public static TextToSpeechManager Instance
-    {
-        get
+        public static TextToSpeechManager Instance
         {
-            if (instance == null)
+            get
             {
-                instance = FindObjectOfType<TextToSpeechManager>();
-                if (instance == null)
+                if (_instance == null)
                 {
-                    GameObject obj = new GameObject("TextToSpeechManager");
-                    instance = obj.AddComponent<TextToSpeechManager>();
-                    DontDestroyOnLoad(obj);
+                    _instance = FindObjectOfType<TextToSpeechManager>();
+                    if (_instance == null)
+                    {
+                        GameObject obj = new GameObject("TextToSpeechManager");
+                        _instance = obj.AddComponent<TextToSpeechManager>();
+                        DontDestroyOnLoad(obj);
+                    }
                 }
+
+                return _instance;
             }
-            return instance;
         }
-    }
 
-    void Awake()
-    {
-        if (instance == null)
+        void Awake()
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
+            if (_instance == null)
+            {
+                _instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else if (_instance != this)
+            {
+                Destroy(gameObject);
+            }
         }
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-        }
-    }
 
-    void Start()
-    {
-        ttsIsActive = PlayerPrefs.GetInt("TTS", 0) != 0;
+        void Start()
+        {
+            _ttsIsActive = PlayerPrefs.GetInt("TTS", 0) != 0;
 
 #if UNITY_ANDROID
         if (Application.platform == RuntimePlatform.Android)
@@ -78,95 +80,95 @@ public class TextToSpeechManager : MonoBehaviour
         // Initialize the TTS engine for iOS
         _InitializeTTS();
 #endif
-    }
+        }
 
-    public void SetLastMessage(string message)
-    {
-        lastMessage = message;
-    }
+        public void SetLastMessage(string message)
+        {
+            _lastMessage = message;
+        }
 
-    public string GetLastMessage()
-    {
-        return lastMessage;
-    }
+        public string GetLastMessage()
+        {
+            return _lastMessage;
+        }
 
-    public void SetIsSpeaking(bool boolValue)
-    {
-        isSpeaking = boolValue;
-    }
+        public void SetIsSpeaking(bool boolValue)
+        {
+            _isSpeaking = boolValue;
+        }
 
-    public bool IsSpeaking()
-    {
+        public bool IsSpeaking()
+        {
 #if UNITY_ANDROID
         return isSpeaking;
 #elif UNITY_IOS
         return _IsSpeaking();
 #else
-        return false;
+            return false;
 #endif
-    }
-
-    public void SetWasPaused(bool boolValue)
-    {
-        wasPaused = boolValue;
-    }
-
-    public bool WasPaused()
-    {
-        return wasPaused;
-    }
-
-    public void ActivateTTS()
-    {
-        ttsIsActive = true;
-        PlayerPrefs.SetInt("TTS", 1);
-        PlayerPrefs.Save();
-    }
-
-    public void DeactivateTTS()
-    {
-        ttsIsActive = false;
-        PlayerPrefs.SetInt("TTS", 0);
-        PlayerPrefs.Save();
-    }
-
-    public bool IsTextToSpeechActivated()
-    {
-        return ttsIsActive;
-    }
-
-    public void AddChoiceToChoiceCollectionForTextToSpeech(string choice)
-    {
-        optionCounter++;
-        switch (optionCounter)
-        {
-            case 1:
-                ttsString += "Erste Option: " + choice + ". ";
-                break;
-            case 2:
-                ttsString += "Zweite Option: " + choice + ". ";
-                break;
-            case 3:
-                ttsString += "Dritte Option: " + choice + ". ";
-                break;
-            case 4:
-                ttsString += "Vierte Option: " + choice + ". ";
-                break;
-            case 5:
-                ttsString += "Fünfte Option: " + choice + ". ";
-                break;
         }
-    }
 
-    public IEnumerator ReadChoice()
-    {
-        yield return Speak(ttsString);
-        ttsString = "Folgende Antwortmöglichkeiten stehen dir zur Auswahl: ";
-        optionCounter = 0;
-    }
+        public void SetWasPaused(bool boolValue)
+        {
+            _wasPaused = boolValue;
+        }
 
-    public void CancelSpeak()
-    {
+        public bool WasPaused()
+        {
+            return _wasPaused;
+        }
+
+        public void ActivateTTS()
+        {
+            _ttsIsActive = true;
+            PlayerPrefs.SetInt("TTS", 1);
+            PlayerPrefs.Save();
+        }
+
+        public void DeactivateTTS()
+        {
+            _ttsIsActive = false;
+            PlayerPrefs.SetInt("TTS", 0);
+            PlayerPrefs.Save();
+        }
+
+        public bool IsTextToSpeechActivated()
+        {
+            return _ttsIsActive;
+        }
+
+        public void AddChoiceToChoiceCollectionForTextToSpeech(string choice)
+        {
+            _optionCounter++;
+            switch (_optionCounter)
+            {
+                case 1:
+                    _ttsString += "Erste Option: " + choice + ". ";
+                    break;
+                case 2:
+                    _ttsString += "Zweite Option: " + choice + ". ";
+                    break;
+                case 3:
+                    _ttsString += "Dritte Option: " + choice + ". ";
+                    break;
+                case 4:
+                    _ttsString += "Vierte Option: " + choice + ". ";
+                    break;
+                case 5:
+                    _ttsString += "FÃ¼nfte Option: " + choice + ". ";
+                    break;
+            }
+        }
+
+        public IEnumerator ReadChoice()
+        {
+            yield return Speak(_ttsString);
+            _ttsString = "Folgende AntwortmÃ¶glichkeiten stehen dir zur Auswahl: ";
+            _optionCounter = 0;
+        }
+
+        public void CancelSpeak()
+        {
 #if UNITY_ANDROID
         if (ttsObject != null)
         {
@@ -181,14 +183,14 @@ public class TextToSpeechManager : MonoBehaviour
         _StopSpeaking();
         isSpeaking = false;
 #endif
-    }
+        }
 
-    public IEnumerator Speak(string message)
-    {
-        if (ttsIsActive)
+        public IEnumerator Speak(string message)
         {
-            lastMessage = message;
-            isSpeaking = true;
+            if (_ttsIsActive)
+            {
+                _lastMessage = message;
+                _isSpeaking = true;
 
 #if UNITY_ANDROID
             // Android implementation
@@ -242,17 +244,17 @@ public class TextToSpeechManager : MonoBehaviour
                 yield return null;
             }
 #endif
-            isSpeaking = false;
+                _isSpeaking = false;
+            }
+            else
+            {
+                // If TTS is not active, proceed immediately
+                yield break;
+            }
         }
-        else
-        {
-            // If TTS is not active, proceed immediately
-            yield break;
-        }
-    }
 
-    public void StopSpeaking()
-    {
+        public void StopSpeaking()
+        {
 #if UNITY_ANDROID
         if (ttsObject != null)
         {
@@ -267,12 +269,12 @@ public class TextToSpeechManager : MonoBehaviour
         _StopSpeaking();
         isSpeaking = false;
 #endif
-    }
+        }
 
-    public IEnumerator RepeatLastMessage()
-    {
-        yield return StartCoroutine(Speak(lastMessage));
-    }
+        public IEnumerator RepeatLastMessage()
+        {
+            yield return StartCoroutine(Speak(_lastMessage));
+        }
 
 #if UNITY_ANDROID
     // Android-specific fields and methods
@@ -290,7 +292,8 @@ public class TextToSpeechManager : MonoBehaviour
             AndroidJavaObject unityActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
 
             // Create the TTS instance with a listener
-            ttsObject = new AndroidJavaObject("android.speech.tts.TextToSpeech", unityActivity, new OnInitListener(this));
+            ttsObject =
+ new AndroidJavaObject("android.speech.tts.TextToSpeech", unityActivity, new OnInitListener(this));
         }
     }
 
@@ -372,4 +375,5 @@ public class TextToSpeechManager : MonoBehaviour
         }
     }
 #endif
+    }
 }

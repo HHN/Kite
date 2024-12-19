@@ -8,8 +8,6 @@ namespace _00_Kite2.Common.Managers
     {
         private static PlayerDataManager _instance;
 
-        private PlayerDataWrapper _playerData = new PlayerDataWrapper();
-
         private Dictionary<string, string> _playerPrefs = new Dictionary<string, string>();
 
         private List<string> _keys = new List<string>();

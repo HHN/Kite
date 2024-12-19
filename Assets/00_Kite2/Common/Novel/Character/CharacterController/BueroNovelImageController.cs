@@ -89,7 +89,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         public override void SetCharacter()
         {
             CharacterController = _instantiatedCharacter.GetComponent<CharacterController>();
-            
+
             // CharacterController.SetSkinSprite();
             // CharacterController.SetClotheSprite();
             // CharacterController.SetHairSprite();

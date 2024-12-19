@@ -1,23 +1,24 @@
-using _00_Kite2.Player;
 using UnityEngine;
 
-public class SelectOptionContinueConversation : MonoBehaviour
+namespace _00_Kite2.Player
 {
-    public bool alreadyPlayedNextEvent = false;
-    public PlayNovelSceneController controller;
-
-    public void OnMessageShowed()
+    public class SelectOptionContinueConversation : MonoBehaviour
     {
-        if (alreadyPlayedNextEvent)
+        public bool alreadyPlayedNextEvent;
+        public PlayNovelSceneController controller;
+
+        public void OnMessageShowed()
         {
-            return;
+            if (alreadyPlayedNextEvent)
+            {
+            }
+            //controller.PlayNextEvent();
         }
-        //controller.PlayNextEvent();
-    }
 
-    public void OnTypwritingStart()
-    {
-        controller = GameObject.Find("Controller").GetComponent<PlayNovelSceneController>();
-        controller.selectOptionContinueConversation = this;
+        public void OnTypewritingStart()
+        {
+            controller = GameObject.Find("Controller").GetComponent<PlayNovelSceneController>();
+            controller.selectOptionContinueConversation = this;
+        }
     }
 }

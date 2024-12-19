@@ -1,20 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using _00_Kite2.Common.Managers;
+using _00_Kite2.Common.Novel;
 using UnityEngine;
 
-public class PrivateHint : MonoBehaviour
+namespace _00_Kite2.Common.UI.Visual_Novel_Images
 {
-    public GameObject privateHint;
-
-    void Start()
+    public class PrivateHint : MonoBehaviour
     {
-        VisualNovel visualNovel = PlayManager.Instance().GetVisualNovelToPlay();
+        public GameObject privateHint;
 
-        if (visualNovel == null)
+        private void Start()
         {
-            return;
+            VisualNovel visualNovel = PlayManager.Instance().GetVisualNovelToPlay();
+
+            if (visualNovel == null)
+            {
+                return;
+            }
+
+            privateHint.SetActive(visualNovel.id == 0);
         }
-        privateHint.SetActive(visualNovel.id == 0);
     }
 }

@@ -1,4 +1,6 @@
+using _00_Kite2.Common.SceneManagement;
 using _00_Kite2.Common.UI.UI_Elements.Messages;
+using _00_Kite2.Common.Utilities;
 using _00_Kite2.Player;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,11 +15,12 @@ namespace _00_Kite2.Common.UI.Scene_Base
         [SerializeField] private GameObject warningMessageBoxClose;
         [SerializeField] private LeaveNovelAndGoBackMessageBox warningMessageBoxObject;
         [SerializeField] private LeaveNovelAndGoBackMessageBox warningMessageBoxObjectIntro;
-        [SerializeField] private LeaveNovelAndGoBackToMainmenuMessageBox warningMessageBoxObjectClose;
+        [SerializeField] private LeaveNovelAndGoBackToMainMenuMessageBox warningMessageBoxObjectClose;
         [SerializeField] private Canvas canvas;
         [SerializeField] private bool isNovelScene;
 
-        private PlayNovelSceneController _playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
+        private PlayNovelSceneController
+            _playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
 
         private void Start()
         {
@@ -29,7 +32,8 @@ namespace _00_Kite2.Common.UI.Scene_Base
 
             if (_playNovelSceneController == null && isNovelScene)
             {
-                Debug.LogWarning("PlayNovelSceneController not found in the scene. Make sure this script is attached to the correct scene.");
+                Debug.LogWarning(
+                    "PlayNovelSceneController not found in the scene. Make sure this script is attached to the correct scene.");
             }
 
             backButton.onClick.AddListener(OnBackButton);
@@ -51,6 +55,7 @@ namespace _00_Kite2.Common.UI.Scene_Base
                     SceneLoader.LoadMainMenuScene();
                     return;
                 }
+
                 SceneLoader.LoadScene(lastScene);
             }
 
@@ -58,16 +63,19 @@ namespace _00_Kite2.Common.UI.Scene_Base
             {
                 if (warningMessageBoxIntro != null)
                 {
-                    if (!DestroyValidator.IsNullOrDestroyed(warningMessageBoxObjectIntro))
+                    if (!warningMessageBoxObjectIntro.IsNullOrDestroyed())
                     {
                         warningMessageBoxObjectIntro.CloseMessageBox();
                     }
-                    if (DestroyValidator.IsNullOrDestroyed(canvas))
+
+                    if (canvas.IsNullOrDestroyed())
                     {
                         return;
                     }
+
                     warningMessageBoxObjectIntro = null;
-                    warningMessageBoxObjectIntro = Instantiate(warningMessageBoxIntro, canvas.transform).GetComponent<LeaveNovelAndGoBackMessageBox>();
+                    warningMessageBoxObjectIntro = Instantiate(warningMessageBoxIntro, canvas.transform)
+                        .GetComponent<LeaveNovelAndGoBackMessageBox>();
                     warningMessageBoxObjectIntro.Activate();
                 }
             }
@@ -75,20 +83,22 @@ namespace _00_Kite2.Common.UI.Scene_Base
             {
                 if (warningMessageBox != null)
                 {
-                    if (!DestroyValidator.IsNullOrDestroyed(warningMessageBoxObject))
+                    if (!warningMessageBoxObject.IsNullOrDestroyed())
                     {
                         warningMessageBoxObject.CloseMessageBox();
                     }
-                    if (DestroyValidator.IsNullOrDestroyed(canvas))
+
+                    if (canvas.IsNullOrDestroyed())
                     {
                         return;
                     }
+
                     warningMessageBoxObject = null;
-                    warningMessageBoxObject = Instantiate(warningMessageBox, canvas.transform).GetComponent<LeaveNovelAndGoBackMessageBox>();
+                    warningMessageBoxObject = Instantiate(warningMessageBox, canvas.transform)
+                        .GetComponent<LeaveNovelAndGoBackMessageBox>();
                     warningMessageBoxObject.Activate();
                 }
             }
-
         }
     }
 }

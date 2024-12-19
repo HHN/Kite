@@ -2,74 +2,78 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using _00_Kite2.Common.Managers;
+using _00_Kite2.Common.Novel;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
-using Newtonsoft.Json;
 
-public class NovelLoader : MonoBehaviour
+namespace _00_Kite2.Player.Kite_Novels.Visual_Novel_Loader
 {
-    private const string NOVELS_PATH = "novels.json";
-
-    void Start()
+    public class NovelLoader : MonoBehaviour
     {
-        StartCoroutine(LoadAllNovelsFromJson());
-    }
+        private const string NOVELS_PATH = "novels.json";
 
-    private IEnumerator LoadAllNovelsFromJson()
-    {
-        if (KiteNovelManager.Instance().AreNovelsLoaded())
+        private void Start()
         {
-            yield break;
+            StartCoroutine(LoadAllNovelsFromJson());
         }
-        string fullPath = Path.Combine(Application.streamingAssetsPath, NOVELS_PATH);
 
-        yield return StartCoroutine(LoadNovels(fullPath, listOfAllNovel =>
+        private IEnumerator LoadAllNovelsFromJson()
         {
-            if (listOfAllNovel == null || listOfAllNovel.Count == 0)
+            if (KiteNovelManager.Instance().AreNovelsLoaded())
             {
-                Debug.LogWarning("Loading Novels failed: No Novels found! Path: " + fullPath);
+                yield break;
             }
-            KiteNovelManager.Instance().SetAllKiteNovels(listOfAllNovel);
-        }));
-    }
+            string fullPath = Path.Combine(Application.streamingAssetsPath, NOVELS_PATH);
 
-    private IEnumerator LoadNovels(string path, System.Action<List<VisualNovel>> callback)
-    {
-        yield return StartCoroutine(LoadFileContent(path, jsonString =>
-        {
-            if (string.IsNullOrEmpty(jsonString))
+            yield return StartCoroutine(LoadNovels(fullPath, listOfAllNovel =>
             {
-                callback(null);
-            }
-            else
-            {
-                NovelListWrapper kiteNovelList = JsonConvert.DeserializeObject<NovelListWrapper>(jsonString);
-                callback(kiteNovelList?.VisualNovels);
-            }
-        }));
-    }
-
-    private IEnumerator LoadFileContent(string path, System.Action<string> callback)
-    {
-        if (Application.platform == RuntimePlatform.IPhonePlayer)
-        {
-            string jsonString = File.ReadAllText(path);
-            callback(jsonString);
-        }
-        else
-        {
-            using (UnityWebRequest www = UnityWebRequest.Get(path))
-            {
-                yield return www.SendWebRequest();
-
-                if ((www.result == UnityWebRequest.Result.ConnectionError) || (www.result == UnityWebRequest.Result.ProtocolError))
+                if (listOfAllNovel == null || listOfAllNovel.Count == 0)
                 {
-                    Debug.LogError($"Error loading file at {path}: {www.error}");
+                    Debug.LogWarning("Loading Novels failed: No Novels found! Path: " + fullPath);
+                }
+                KiteNovelManager.Instance().SetAllKiteNovels(listOfAllNovel);
+            }));
+        }
+
+        private IEnumerator LoadNovels(string path, System.Action<List<VisualNovel>> callback)
+        {
+            yield return StartCoroutine(LoadFileContent(path, jsonString =>
+            {
+                if (string.IsNullOrEmpty(jsonString))
+                {
                     callback(null);
                 }
                 else
                 {
-                    callback(www.downloadHandler.text);
+                    NovelListWrapper kiteNovelList = JsonConvert.DeserializeObject<NovelListWrapper>(jsonString);
+                    callback(kiteNovelList?.VisualNovels);
+                }
+            }));
+        }
+
+        private IEnumerator LoadFileContent(string path, System.Action<string> callback)
+        {
+            if (Application.platform == RuntimePlatform.IPhonePlayer)
+            {
+                string jsonString = File.ReadAllText(path);
+                callback(jsonString);
+            }
+            else
+            {
+                using (UnityWebRequest www = UnityWebRequest.Get(path))
+                {
+                    yield return www.SendWebRequest();
+
+                    if ((www.result == UnityWebRequest.Result.ConnectionError) || (www.result == UnityWebRequest.Result.ProtocolError))
+                    {
+                        Debug.LogError($"Error loading file at {path}: {www.error}");
+                        callback(null);
+                    }
+                    else
+                    {
+                        callback(www.downloadHandler.text);
+                    }
                 }
             }
         }

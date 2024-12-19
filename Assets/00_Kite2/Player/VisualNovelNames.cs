@@ -23,7 +23,7 @@ namespace _00_Kite2.Player
         {
             switch (value)
             {
-                case 2: 
+                case 2:
                 {
                     return VisualNovelNames.ELTERN_NOVEL;
                 }

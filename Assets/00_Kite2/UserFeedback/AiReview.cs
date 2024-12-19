@@ -1,73 +1,76 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public class AiReview
+namespace _00_Kite2.UserFeedback
 {
-    [SerializeField] private long id;
-    [SerializeField] private long novelId;
-    [SerializeField] private string novelName;
-    [SerializeField] private string prompt;
-    [SerializeField] private string aiFeedback;
-    [SerializeField] private string reviewText;
-
-    public void SetId(long id)
+    [Serializable]
+    public class AiReview
     {
-        this.id = id;
-    }
+        [SerializeField] private long id;
+        [SerializeField] private long novelId;
+        [SerializeField] private string novelName;
+        [SerializeField] private string prompt;
+        [SerializeField] private string aiFeedback;
+        [SerializeField] private string reviewText;
 
-    public long GetId()
-    {
-        return id;
-    }
+        public void SetId(long id)
+        {
+            this.id = id;
+        }
 
-    public void SetNovelId(long novelId)
-    {
-        this.novelId = novelId;
-    }
+        public long GetId()
+        {
+            return id;
+        }
 
-    public long GetNovelId()
-    {
-        return novelId;
-    }
+        public void SetNovelId(long novelId)
+        {
+            this.novelId = novelId;
+        }
 
-    public void SetNovelName(string novelName)
-    {
-        this.novelName = novelName;
-    }
+        public long GetNovelId()
+        {
+            return novelId;
+        }
 
-    public string GetNovelName()
-    {
-        return novelName;
-    }
+        public void SetNovelName(string novelName)
+        {
+            this.novelName = novelName;
+        }
 
-    public void SetPrompt(string prompt)
-    {
-        this.prompt = prompt;
-    }
+        public string GetNovelName()
+        {
+            return novelName;
+        }
 
-    public string GetPrompt()
-    {
-        return prompt;
-    }
+        public void SetPrompt(string prompt)
+        {
+            this.prompt = prompt;
+        }
 
-    public void SetAiFeedback(string aiFeedback)
-    {
-        this.aiFeedback = aiFeedback;
-    }
+        public string GetPrompt()
+        {
+            return prompt;
+        }
 
-    public string GetAiFeedback()
-    {
-        return aiFeedback;
-    }
+        public void SetAiFeedback(string aiFeedback)
+        {
+            this.aiFeedback = aiFeedback;
+        }
 
-    public void SetReviewText(string reviewText)
-    {
-        this.reviewText = reviewText;
-    }
+        public string GetAiFeedback()
+        {
+            return aiFeedback;
+        }
 
-    public string GetReviewText()
-    {
-        return reviewText;
+        public void SetReviewText(string reviewText)
+        {
+            this.reviewText = reviewText;
+        }
+
+        public string GetReviewText()
+        {
+            return reviewText;
+        }
     }
 }

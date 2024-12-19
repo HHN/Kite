@@ -1,5 +1,10 @@
+using _00_Kite2.Common;
 using _00_Kite2.Common.Managers;
 using _00_Kite2.Common.Messages;
+using _00_Kite2.Common.SceneManagement;
+using _00_Kite2.Common.UI.UI_Elements.Buttons;
+using _00_Kite2.Common.Utilities;
+using _00_Kite2.Player;
 using LeastSquares.Overtone;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,7 +30,7 @@ namespace _00_Kite2.NewPages
         [SerializeField] private DeleteUserDataConfirmation deleteUserDataConfirmDialogObject;
         [SerializeField] private GameObject deleteUserDataConfirmDialog;
 
-        void Start()
+        private void Start()
         {
             BackStackManager.Instance().Push(SceneNames.DATENSCHUTZ_SCENE);
 
@@ -37,14 +42,18 @@ namespace _00_Kite2.NewPages
             InitializeToggleDataCollectionButton();
             InitializeApplicationModeButton();
 
-            dataCollectionToggle.onValueChanged.AddListener(delegate { OnToggleDataCollection(dataCollectionToggle); }); toggleDataCollectionInfoButton.onClick.AddListener(OnToggleDataCollectionInfoButton);
+            dataCollectionToggle.onValueChanged.AddListener(delegate { OnToggleDataCollection(dataCollectionToggle); });
+            toggleDataCollectionInfoButton.onClick.AddListener(OnToggleDataCollectionInfoButton);
             deleteCollectedDataButton.onClick.AddListener(OnDeleteCollectedDataButton);
             deleteCollectedDataInfoButton.onClick.AddListener(OnDeleteCollectedDataInfoButton);
             resetAppButton.onClick.AddListener(OnResetAppButton);
             resetAppInfoButton.onClick.AddListener(OnResetAppInfoButton);
             playerPrefsButton.onClick.AddListener(OnPlayerPrefsButton);
             playerPrefsInfoButton.onClick.AddListener(OnPlayerPrefsInfoButton);
-            applicationModeToggle.onValueChanged.AddListener(delegate { OnApplicationModeToggle(applicationModeToggle); });
+            applicationModeToggle.onValueChanged.AddListener(delegate
+            {
+                OnApplicationModeToggle(applicationModeToggle);
+            });
             applicationModeInfoButton.onClick.AddListener(OnApplicationModeInfoButton);
             FontSizeManager.Instance().UpdateAllTextComponents();
         }
@@ -62,7 +71,6 @@ namespace _00_Kite2.NewPages
                 PrivacyAndConditionManager.Instance().UnaccepedDataCollection();
                 DisplayInfoMessage(InfoMessages.STOPPED_DATA_COLLECTION);
                 TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.STOPPED_DATA_COLLECTION, engine);
-
             }
         }
 
@@ -91,23 +99,26 @@ namespace _00_Kite2.NewPages
             }
             else
             {
-                TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.EXPLANATION_COLLECT_DATA_BUTTON, engine);
+                TextToSpeechService.Instance()
+                    .TextToSpeechReadLive(InfoMessages.EXPLANATION_COLLECT_DATA_BUTTON, engine);
                 DisplayInfoMessage(InfoMessages.EXPLANATION_COLLECT_DATA_BUTTON);
             }
         }
 
         private void OnDeleteCollectedDataButton()
         {
-            if (!DestroyValidator.IsNullOrDestroyed(deleteUserDataConfirmDialogObject))
+            if (!deleteUserDataConfirmDialogObject.IsNullOrDestroyed())
             {
                 deleteUserDataConfirmDialogObject.CloseMessageBox();
             }
-            if (DestroyValidator.IsNullOrDestroyed(canvas))
+
+            if (canvas.IsNullOrDestroyed())
             {
                 return;
             }
+
             deleteUserDataConfirmDialogObject = null;
-            deleteUserDataConfirmDialogObject = Instantiate(deleteUserDataConfirmDialog, 
+            deleteUserDataConfirmDialogObject = Instantiate(deleteUserDataConfirmDialog,
                 canvas.transform).GetComponent<DeleteUserDataConfirmation>();
             deleteUserDataConfirmDialogObject.Initialize("delete");
             deleteUserDataConfirmDialogObject.Activate();
@@ -121,14 +132,16 @@ namespace _00_Kite2.NewPages
 
         private void OnResetAppButton()
         {
-            if (!DestroyValidator.IsNullOrDestroyed(deleteUserDataConfirmDialogObject))
+            if (!deleteUserDataConfirmDialogObject.IsNullOrDestroyed())
             {
                 deleteUserDataConfirmDialogObject.CloseMessageBox();
             }
-            if (DestroyValidator.IsNullOrDestroyed(canvas))
+
+            if (canvas.IsNullOrDestroyed())
             {
                 return;
             }
+
             deleteUserDataConfirmDialogObject = null;
             deleteUserDataConfirmDialogObject = Instantiate(deleteUserDataConfirmDialog,
                 canvas.transform).GetComponent<DeleteUserDataConfirmation>();
@@ -181,7 +194,8 @@ namespace _00_Kite2.NewPages
 
         private void OnApplicationModeInfoButton()
         {
-            TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.EXPLANATION_APPLICATION_MODE_BUTTON, engine);
+            TextToSpeechService.Instance()
+                .TextToSpeechReadLive(InfoMessages.EXPLANATION_APPLICATION_MODE_BUTTON, engine);
             DisplayInfoMessage(InfoMessages.EXPLANATION_APPLICATION_MODE_BUTTON);
         }
     }
