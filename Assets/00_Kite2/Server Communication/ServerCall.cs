@@ -19,7 +19,10 @@ public abstract class ServerCall : MonoBehaviour
     {
         using (UnityWebRequest webRequest = CreateRequest())
         {
-            webRequest.certificateHandler = new CustomCertificateHandler();
+            // Hier wird der Custom-CertificateHandler zugewiesen:
+            webRequest.certificateHandler = new BypassCertificate();
+            Debug.Log("RequestRegistration");
+
             yield return webRequest.SendWebRequest();
             HandleWebRequestResult(webRequest);
         }
@@ -41,6 +44,9 @@ public abstract class ServerCall : MonoBehaviour
 
     protected void HandleWebRequestResult(UnityWebRequest webRequest)
     {
+        Debug.Log("UnityWebRequest Result: " + webRequest.result);
+        Debug.Log("UnityWebRequest Error: " + webRequest.error);
+        Debug.Log("WebRequest URL: " + webRequest.url);
         switch (webRequest.result)
         {
             case UnityWebRequest.Result.Success:
@@ -51,9 +57,6 @@ public abstract class ServerCall : MonoBehaviour
                     }
                     Response response = JsonUtility.FromJson<Response>(webRequest.downloadHandler.text);
                     OnResponse(response);
-
-                    //Debug.Log("response.GetResultText(): " + response.GetResultText());
-                    //Debug.Log("response.GetCompletion(): " + response.GetCompletion());
                     break;
                 }
             default:
@@ -84,9 +87,7 @@ public abstract class ServerCall : MonoBehaviour
     }
 
     protected abstract UnityWebRequest CreateUnityWebRequestObject();
-
     protected abstract object CreateRequestObject();
-
     protected abstract void OnResponse(Response response);
 
     private IEnumerator DestroyInSeconds(long seconds)
