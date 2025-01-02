@@ -1,3 +1,4 @@
+using _00_Kite2.Common.Novel;
 using UnityEngine;
 
 namespace _00_Kite2.Common.Managers

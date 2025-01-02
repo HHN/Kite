@@ -1,289 +1,308 @@
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
-public class TweeProcessor
+namespace _00_Kite2.Player.Kite_Novels.Visual_Novel_Formatter
 {
-    private static Regex storyDataRegex = new Regex(@":: StoryData\s*\n([\s\S]*?)\n::", RegexOptions.Multiline);
-    private static Regex linkRegex = new Regex(@"\[\[(.*?)\]\]");
-
-    public static List<TweePassage> ProcessTweeFile(string tweeSource)
+    public abstract class TweeProcessor
     {
-        List<TweePassage> listOfPassages = new List<TweePassage>();
-        Dictionary<string, TweePassage> dictionaryOfPassages = new Dictionary<string, TweePassage>();
+        private static readonly Regex StoryDataRegex =
+            new Regex(@":: StoryData\s*\n([\s\S]*?)\n::", RegexOptions.Multiline);
 
-        List<string> passages = SplitTweeIntoPassages(tweeSource);
+        private static readonly Regex LinkRegex = new Regex(@"\[\[(.*?)\]\]");
 
-        foreach (string passage in passages)
+        public static List<TweePassage> ProcessTweeFile(string tweeSource)
         {
-            string label = GetLabelOfPassage(passage);
-            if (string.IsNullOrEmpty(label) || label == "StoryTitle" || label == "StoryData")
+            List<TweePassage> listOfPassages = new List<TweePassage>();
+            Dictionary<string, TweePassage> dictionaryOfPassages = new Dictionary<string, TweePassage>();
+
+            List<string> passages = SplitTweeIntoPassages(tweeSource);
+
+            foreach (string passage in passages)
             {
-                continue;
+                string label = GetLabelOfPassage(passage);
+                if (string.IsNullOrEmpty(label) || label == "StoryTitle" || label == "StoryData")
+                {
+                    continue;
+                }
+
+                List<TweeLink> links = GetTweeLinksOfPassage(passage);
+                TweePassage tweePassage = new TweePassage(label, passage, links);
+                dictionaryOfPassages[tweePassage.Label] = tweePassage;
             }
 
-            List<TweeLink> links = GetTweeLinksOfPassage(passage);
-            TweePassage tweePassage = new TweePassage(label, passage, links);
-            dictionaryOfPassages[tweePassage.Label] = tweePassage;
-        }
+            string startLabel = GetStartLabelFromTweeFile(tweeSource);
+            if (!dictionaryOfPassages.ContainsKey(startLabel))
+            {
+                return listOfPassages;
+            }
 
-        string startLabel = GetStartLabelFromTweeFile(tweeSource);
-        if (!dictionaryOfPassages.ContainsKey(startLabel))
-        {
+            TweePassage startObject = dictionaryOfPassages[startLabel];
+            dictionaryOfPassages.Remove(startLabel);
+
+            listOfPassages.AddRange(dictionaryOfPassages.Values);
+            listOfPassages.Insert(0, startObject);
+
             return listOfPassages;
         }
 
-        TweePassage startObject = dictionaryOfPassages[startLabel];
-        dictionaryOfPassages.Remove(startLabel);
-
-        listOfPassages.AddRange(dictionaryOfPassages.Values);
-        listOfPassages.Insert(0, startObject);
-
-        return listOfPassages;
-    }
-
-    private static List<string> SplitTweeIntoPassages(string tweeText)
-    {
-        List<string> passages = new List<string>(tweeText.Split(new[] { "\n::" }, StringSplitOptions.None));
-
-        for (int i = 1; i < passages.Count; i++)
+        private static List<string> SplitTweeIntoPassages(string tweeText)
         {
-            passages[i] = "::" + passages[i];
-        }
+            List<string> passages = new List<string>(tweeText.Split(new[] { "\n::" }, StringSplitOptions.None));
 
-        if (!tweeText.StartsWith("::") && passages.Count > 0)
-        {
-            passages[0] = "::" + passages[0];
-        }
-
-        return passages;
-    }
-
-
-    private static string GetLabelOfPassage(string passage)
-    {
-        if (!passage.StartsWith("::"))
-        {
-            return "";
-        }
-        string passageContent = passage.Substring(2);
-        int contentStartIndex = passageContent.IndexOf('\n');
-
-        if (contentStartIndex == -1)
-        {
-            return passageContent.Trim();
-        }
-        string labelAndMetadata = passageContent.Substring(0, contentStartIndex).Trim();
-        int labelEndIndex = labelAndMetadata.IndexOf(" {");
-
-        if (labelEndIndex == -1)
-        {
-            return labelAndMetadata;
-        }
-        string label = labelAndMetadata.Substring(0, labelEndIndex).Trim();
-        label = RemoveLeadingBackslashSpace(label);
-        label = RemoveBracketedTextAndTrim(label);
-        label = label.Trim();
-        return label;
-    }
-
-    public static string RemoveBracketedTextAndTrim(string input)
-    {
-        string withoutBrackets = Regex.Replace(input, @"\[.*?\]", "");
-
-        string trimmedResult = withoutBrackets.Trim();
-
-        return trimmedResult;
-    }
-
-    private static string RemoveLeadingBackslashSpace(string input)
-    {
-        if (input.StartsWith("\\ "))
-        {
-            return input.Substring(2);
-        }
-        return input;
-    }
-
-    private static List<TweeLink> GetTweeLinksOfPassage(string passage)
-    {
-        List<TweeLink> links = new List<TweeLink>();
-
-        foreach (Match linkMatch in linkRegex.Matches(passage))
-        {
-            string fullLinkText = linkMatch.Groups[1].Value;
-            string linkText = fullLinkText;
-            string linkTarget = fullLinkText;
-            bool showAfterSelection = false;
-
-            if (fullLinkText.Contains("->"))
+            for (int i = 1; i < passages.Count; i++)
             {
-                var linkParts = fullLinkText.Split(new[] { "->" }, StringSplitOptions.None);
-                linkText = linkParts[0].Trim();
-                linkTarget = linkParts[1].Trim();
-                showAfterSelection = true;
+                passages[i] = "::" + passages[i];
             }
-            else if (fullLinkText.Contains("|"))
+
+            if (!tweeText.StartsWith("::") && passages.Count > 0)
             {
-                var linkParts = fullLinkText.Split(new[] { "|" }, StringSplitOptions.None);
-                linkText = linkParts[0].Trim();
-                linkTarget = linkParts[1].Trim();
+                passages[0] = "::" + passages[0];
             }
-            links.Add(new TweeLink(linkText, linkTarget, showAfterSelection));
+
+            return passages;
         }
-        return links;
-    }
 
-    public static string GetStartLabelFromTweeFile(string tweeFileContent)
-    {
-        Match match = storyDataRegex.Match(tweeFileContent);
 
-        if (!match.Success)
+        private static string GetLabelOfPassage(string passage)
         {
-            return null;
+            if (!passage.StartsWith("::"))
+            {
+                return "";
+            }
+
+            string passageContent = passage.Substring(2);
+            int contentStartIndex = passageContent.IndexOf('\n');
+
+            if (contentStartIndex == -1)
+            {
+                return passageContent.Trim();
+            }
+
+            string labelAndMetadata = passageContent.Substring(0, contentStartIndex).Trim();
+            int labelEndIndex = labelAndMetadata.IndexOf(" {");
+
+            if (labelEndIndex == -1)
+            {
+                return labelAndMetadata;
+            }
+
+            string label = labelAndMetadata.Substring(0, labelEndIndex).Trim();
+            label = RemoveLeadingBackslashSpace(label);
+            label = RemoveBracketedTextAndTrim(label);
+            label = label.Trim();
+            return label;
         }
 
-        string jsonContent = match.Groups[1].Value;
-
-        try
+        private static string RemoveBracketedTextAndTrim(string input)
         {
-            StoryDataPassage storyData = JsonConvert.DeserializeObject<StoryDataPassage>(jsonContent);
-            return storyData?.Start;
+            string withoutBrackets = Regex.Replace(input, @"\[.*?\]", "");
+
+            string trimmedResult = withoutBrackets.Trim();
+
+            return trimmedResult;
         }
-        catch
+
+        private static string RemoveLeadingBackslashSpace(string input)
         {
-            return null;
+            if (input.StartsWith("\\ "))
+            {
+                return input.Substring(2);
+            }
+
+            return input;
         }
-    }
 
-    public static string ExtractMessageOutOfTweePassage(string text)
-    {
-        text = RemoveTitleFromPassage(text);
-        text = RemoveTextInDoubleBrackets(text);
-        text = RemoveTextInCurlyBraces(text);
-        text = RemoveTextInParentheses(text);
-        text = RemoveTextInDoubleAngleBrackets(text);
-        text = RemoveTextInDoubleAngleBracketsOtherDirection(text);
-        text = RemoveSquareBrackets(text);
-        text = RemoveKeyWords(text);
-        text = NormalizeSpaces(text);
-        return text.Trim();
-    }
-
-    private static string RemoveKeyWords(string input)
-    {
-        if (string.IsNullOrEmpty(input))
+        private static List<TweeLink> GetTweeLinksOfPassage(string passage)
         {
-            return "";
+            List<TweeLink> links = new List<TweeLink>();
+
+            foreach (Match linkMatch in LinkRegex.Matches(passage))
+            {
+                string fullLinkText = linkMatch.Groups[1].Value;
+                string linkText = fullLinkText;
+                string linkTarget = fullLinkText;
+                bool showAfterSelection = false;
+
+                if (fullLinkText.Contains("->"))
+                {
+                    var linkParts = fullLinkText.Split(new[] { "->" }, StringSplitOptions.None);
+                    linkText = linkParts[0].Trim();
+                    linkTarget = linkParts[1].Trim();
+                    showAfterSelection = true;
+                }
+                else if (fullLinkText.Contains("|"))
+                {
+                    var linkParts = fullLinkText.Split(new[] { "|" }, StringSplitOptions.None);
+                    linkText = linkParts[0].Trim();
+                    linkTarget = linkParts[1].Trim();
+                }
+
+                links.Add(new TweeLink(linkText, linkTarget, showAfterSelection));
+            }
+
+            return links;
         }
-        foreach (string keyWord in NovelKeyWordValue.ALL_KEY_WORDS)
+
+        public static string GetStartLabelFromTweeFile(string tweeFileContent)
         {
-            input = input.Replace(keyWord, "");
-        }
-        return input;
-    }
+            Match match = StoryDataRegex.Match(tweeFileContent);
 
-    private static string RemoveTitleFromPassage(string input)
-    {
-        if (string.IsNullOrEmpty(input))
+            if (!match.Success)
+            {
+                return null;
+            }
+
+            string jsonContent = match.Groups[1].Value;
+
+            try
+            {
+                StoryDataPassage storyData = JsonConvert.DeserializeObject<StoryDataPassage>(jsonContent);
+                return storyData?.Start;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static string ExtractMessageOutOfTweePassage(string text)
         {
-            return "";
+            text = RemoveTitleFromPassage(text);
+            text = RemoveTextInDoubleBrackets(text);
+            text = RemoveTextInCurlyBraces(text);
+            text = RemoveTextInParentheses(text);
+            text = RemoveTextInDoubleAngleBrackets(text);
+            text = RemoveTextInDoubleAngleBracketsOtherDirection(text);
+            text = RemoveSquareBrackets(text);
+            text = RemoveKeyWords(text);
+            text = NormalizeSpaces(text);
+            return text.Trim();
         }
-        var titlePattern = @"^\:\: [^\n]+";
 
-        var result = Regex.Replace(input, titlePattern, "").Trim();
-
-        return result;
-    }
-
-    private static string RemoveTextInDoubleBrackets(string input)
-    {
-        if (string.IsNullOrEmpty(input))
+        private static string RemoveKeyWords(string input)
         {
-            return "";
+            if (string.IsNullOrEmpty(input))
+            {
+                return "";
+            }
+
+            foreach (string keyWord in NovelKeyWordValue.ALL_KEY_WORDS)
+            {
+                input = input.Replace(keyWord, "");
+            }
+
+            return input;
         }
-        var pattern = @"\[\[(.*?)\]\]";
 
-        var result = Regex.Replace(input, pattern, "");
-
-        return result;
-    }
-
-    private static string RemoveTextInCurlyBraces(string input)
-    {
-        if (string.IsNullOrEmpty(input))
+        private static string RemoveTitleFromPassage(string input)
         {
-            return "";
+            if (string.IsNullOrEmpty(input))
+            {
+                return "";
+            }
+
+            var titlePattern = @"^\:\: [^\n]+";
+
+            var result = Regex.Replace(input, titlePattern, "").Trim();
+
+            return result;
         }
-        var pattern = @"\{(.*?)\}";
 
-        var result = Regex.Replace(input, pattern, "");
-
-        return result;
-    }
-    private static string RemoveTextInParentheses(string input)
-    {
-        if (string.IsNullOrEmpty(input))
+        private static string RemoveTextInDoubleBrackets(string input)
         {
-            return "";
+            if (string.IsNullOrEmpty(input))
+            {
+                return "";
+            }
+
+            var pattern = @"\[\[(.*?)\]\]";
+
+            var result = Regex.Replace(input, pattern, "");
+
+            return result;
         }
 
-        var pattern = @"\([^\)]*\)";
-
-        var result = Regex.Replace(input, pattern, "");
-
-        return result;
-    }
-
-    private static string RemoveTextInDoubleAngleBrackets(string input)
-    {
-        if (string.IsNullOrEmpty(input))
+        private static string RemoveTextInCurlyBraces(string input)
         {
-            return "";
+            if (string.IsNullOrEmpty(input))
+            {
+                return "";
+            }
+
+            var pattern = @"\{(.*?)\}";
+
+            var result = Regex.Replace(input, pattern, "");
+
+            return result;
         }
 
-        var pattern = @"\<\<.*?\>\>";
-
-        var result = Regex.Replace(input, pattern, "");
-
-        return result;
-    }
-
-    private static string RemoveTextInDoubleAngleBracketsOtherDirection(string input)
-    {
-        if (string.IsNullOrEmpty(input))
+        private static string RemoveTextInParentheses(string input)
         {
-            return "";
+            if (string.IsNullOrEmpty(input))
+            {
+                return "";
+            }
+
+            var pattern = @"\([^\)]*\)";
+
+            var result = Regex.Replace(input, pattern, "");
+
+            return result;
         }
 
-        var pattern = @"\>\>.*?\<\<";
-
-        var result = Regex.Replace(input, pattern, "");
-
-        return result;
-    }
-
-    private static string RemoveSquareBrackets(string input)
-    {
-        if (string.IsNullOrEmpty(input))
+        private static string RemoveTextInDoubleAngleBrackets(string input)
         {
-            return "";
-        }
-        var result = input.Replace("[", "").Replace("]", "");
-        return result;
-    }
+            if (string.IsNullOrEmpty(input))
+            {
+                return "";
+            }
 
-    private static string NormalizeSpaces(string input)
-    {
-        if (string.IsNullOrEmpty(input))
+            var pattern = @"\<\<.*?\>\>";
+
+            var result = Regex.Replace(input, pattern, "");
+
+            return result;
+        }
+
+        private static string RemoveTextInDoubleAngleBracketsOtherDirection(string input)
         {
-            return "";
+            if (string.IsNullOrEmpty(input))
+            {
+                return "";
+            }
+
+            var pattern = @"\>\>.*?\<\<";
+
+            var result = Regex.Replace(input, pattern, "");
+
+            return result;
         }
-        var pattern = @"\s+";
 
-        var result = Regex.Replace(input, pattern, " ");
+        private static string RemoveSquareBrackets(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                return "";
+            }
 
-        return result;
+            var result = input.Replace("[", "").Replace("]", "");
+            return result;
+        }
+
+        private static string NormalizeSpaces(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                return "";
+            }
+
+            var pattern = @"\s+";
+
+            var result = Regex.Replace(input, pattern, " ");
+
+            return result;
+        }
     }
 }

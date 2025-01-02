@@ -1,50 +1,54 @@
-using _00_Kite2.Common;
 using _00_Kite2.Common.Managers;
+using _00_Kite2.Common.Messages;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChangePlayerPrefsController : MonoBehaviour
+namespace _00_Kite2.Common.UI.UI_Elements.Free_Text_User_Input
 {
-    [SerializeField] private GameObject root;
-    [SerializeField] private PlayerPrefsSceneController controller;
-
-    [SerializeField] private TextMeshProUGUI headlineObject;
-    [SerializeField] private TextMeshProUGUI questionObject;
-
-    [SerializeField] private Button cancleButton;
-    [SerializeField] private Button confirmButton;
-
-    [SerializeField] private TMP_InputField inputfield;
-    [SerializeField] private string playerPrefsKey;
-
-    void Start()
+    public class ChangePlayerPrefsController : MonoBehaviour
     {
-        cancleButton.onClick.AddListener(delegate { OnCancleButton(); });
-        confirmButton.onClick.AddListener(delegate { OnConfirmButton(); });
-    }
+        [SerializeField] private GameObject root;
+        [SerializeField] private PlayerPrefsSceneController controller;
 
-    public void Initialize(string playerPrefsKey, string currentValue, string headline, string question, PlayerPrefsSceneController controller)
-    {
-        this.headlineObject.text = headline;
-        this.questionObject.text = question;
-        this.playerPrefsKey = playerPrefsKey;
-        this.inputfield.text = currentValue;
-        this.controller = controller;
-    }
+        [SerializeField] private TextMeshProUGUI headlineObject;
+        [SerializeField] private TextMeshProUGUI questionObject;
 
-    public void OnCancleButton()
-    {
-        root.SetActive(false);
-        Destroy(root);
-    }
+        [SerializeField] private Button cancelButton;
+        [SerializeField] private Button confirmButton;
 
-    public void OnConfirmButton()
-    {
-        PlayerDataManager.Instance().SavePlayerData(playerPrefsKey, inputfield.text.Trim());
-        controller.DisplayInfoMessage(InfoMessages.SAVED_SUCCESFULLY);
-        controller.InitializeValues();
-        root.SetActive(false);
-        Destroy(root);
+        [SerializeField] private TMP_InputField inputField;
+        [SerializeField] private string playerPrefsKey;
+
+        private void Start()
+        {
+            cancelButton.onClick.AddListener(OnCancelButton);
+            confirmButton.onClick.AddListener(OnConfirmButton);
+        }
+
+        public void Initialize(string playerPrefsKey, string currentValue, string headline, string question,
+            PlayerPrefsSceneController controller)
+        {
+            this.headlineObject.text = headline;
+            this.questionObject.text = question;
+            this.playerPrefsKey = playerPrefsKey;
+            this.inputField.text = currentValue;
+            this.controller = controller;
+        }
+
+        private void OnCancelButton()
+        {
+            root.SetActive(false);
+            Destroy(root);
+        }
+
+        private void OnConfirmButton()
+        {
+            PlayerDataManager.Instance().SavePlayerData(playerPrefsKey, inputField.text.Trim());
+            controller.DisplayInfoMessage(InfoMessages.SAVED_SUCCESFULLY);
+            controller.InitializeValues();
+            root.SetActive(false);
+            Destroy(root);
+        }
     }
 }

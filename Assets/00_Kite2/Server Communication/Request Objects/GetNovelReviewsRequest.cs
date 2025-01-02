@@ -1,6 +1,9 @@
 using System;
 
-[Serializable]
-public class GetNovelReviewsRequest
+namespace _00_Kite2.Server_Communication.Request_Objects
 {
+    [Serializable]
+    public class GetNovelReviewsRequest
+    {
+    }
 }

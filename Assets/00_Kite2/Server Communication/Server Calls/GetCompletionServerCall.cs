@@ -1,43 +1,48 @@
+using _00_Kite2.Common.Messages;
+using _00_Kite2.Server_Communication.Request_Objects;
 using UnityEngine.Networking;
-using UnityEngine;
 
-public class GetCompletionServerCall : ServerCall
+namespace _00_Kite2.Server_Communication.Server_Calls
 {
-    public string prompt;
-
-    protected override object CreateRequestObject()
+    public class GetCompletionServerCall : ServerCall
     {
-        GptRequest call = new GptRequest(); 
-        call.prompt = prompt;
-        return call;
-    }
+        public string prompt;
 
-    protected override UnityWebRequest CreateUnityWebRequestObject()
-    {
-        return UnityWebRequest.PostWwwForm(ConnectionLink.COMPLETION_LINK, string.Empty);
-    }
-
-    protected override void OnResponse(Response response)
-    {
-        switch (ResultCodeHelper.ValueOf(response.GetResultCode()))
+        protected override object CreateRequestObject()
         {
-            case ResultCode.SUCCESSFULLY_GOT_COMPLETION:
+            GptRequest call = new GptRequest();
+            call.prompt = prompt;
+            return call;
+        }
+
+        protected override UnityWebRequest CreateUnityWebRequestObject()
+        {
+            return UnityWebRequest.PostWwwForm(ConnectionLink.COMPLETION_LINK, string.Empty);
+        }
+
+        protected override void OnResponse(Response response)
+        {
+            switch (ResultCodeHelper.ValueOf(response.GetResultCode()))
+            {
+                case ResultCode.SUCCESSFULLY_GOT_COMPLETION:
                 {
-                    onSuccessHandler.OnSuccess(response);
+                    OnSuccessHandler.OnSuccess(response);
                     return;
                 }
-            default:
+                default:
                 {
-                    if (onErrorHandler != null)
+                    if (OnErrorHandler != null)
                     {
-                        onErrorHandler.OnError(response);
-                    } 
+                        OnErrorHandler.OnError(response);
+                    }
                     else
                     {
                         sceneController.DisplayErrorMessage(ErrorMessages.UNEXPECTED_SERVER_ERROR);
                     }
+
                     return;
                 }
+            }
         }
     }
 }

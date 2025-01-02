@@ -1,118 +1,120 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DropDownMenu : MonoBehaviour
+namespace _00_Kite2.Common.UI.UI_Elements.DropDown
 {
-    [SerializeField] private GameObject menuWrapper;
-    [SerializeField] private Button menuButton;
-    [SerializeField] private Image indicatorImage;
-    [SerializeField] private Sprite spriteWhileOpen;
-    [SerializeField] private Sprite spriteWhileClosed;
-    [SerializeField] private bool isOpen;
-    [SerializeField] private List<RectTransform> listOfObjectToUpdate;
-    [SerializeField] private List<DropDownMenu> childMenus;
-
-    // Start is called before the first frame update
-    void Start()
+    public class DropDownMenu : MonoBehaviour
     {
-        menuButton.onClick.AddListener(delegate { OnMenuButton(); });
-        InitiateMenu();
-    }
+        [SerializeField] private GameObject menuWrapper;
+        [SerializeField] private Button menuButton;
+        [SerializeField] private Image indicatorImage;
+        [SerializeField] private Sprite spriteWhileOpen;
+        [SerializeField] private Sprite spriteWhileClosed;
+        [SerializeField] private bool isOpen;
+        [SerializeField] private List<RectTransform> listOfObjectToUpdate;
+        [SerializeField] private List<DropDownMenu> childMenus;
 
-    public bool IsOpen()
-    {
-        return isOpen;
-    }
-
-    public void InitiateMenu()
-    {
-        if (isOpen)
+        // Start is called before the first frame update
+        private void Start()
         {
-            OpenMenu();
-            return;
-        }
-        CloseMenu();
-    }
-
-    public void SetMenuOpen(bool setOpen)
-    {
-        if (setOpen)
-        {
-            OpenMenu();
-        }
-        else
-        {
-            CloseMenu();
-        }
-    }
-
-    public void OnMenuButton()
-    {
-        if (isOpen)
-        {
-            CloseMenu();
-        } 
-        else
-        {
-            OpenMenu();
-
+            menuButton.onClick.AddListener(OnMenuButton);
+            InitiateMenu();
         }
 
-        StartCoroutine(RebuildLayout());
-    }
-
-    private void OpenMenu()
-    {
-        indicatorImage.sprite = spriteWhileOpen;
-        menuWrapper.SetActive(true);
-        LayoutRebuilder.ForceRebuildLayoutImmediate(menuWrapper.GetComponent<RectTransform>());
-        isOpen = true;
-    }
-
-    private void CloseMenu()
-    {
-        indicatorImage.sprite = spriteWhileClosed;
-        menuWrapper.SetActive(false);
-        LayoutRebuilder.ForceRebuildLayoutImmediate(menuWrapper.GetComponent<RectTransform>());
-        isOpen = false;
-    }
-
-    public void AddLayoutToUpdateOnChange(RectTransform rect)
-    {
-        listOfObjectToUpdate.Add(rect);
-    }
-
-    public IEnumerator RebuildLayout()
-    {
-        yield return new WaitForEndOfFrame();
-
-        if (childMenus != null)
+        public bool IsOpen()
         {
-            foreach (DropDownMenu menu in childMenus)
+            return isOpen;
+        }
+
+        private void InitiateMenu()
+        {
+            if (isOpen)
             {
-                menu.RebuildLayout();
+                OpenMenu();
+                return;
+            }
+
+            CloseMenu();
+        }
+
+        public void SetMenuOpen(bool setOpen)
+        {
+            if (setOpen)
+            {
+                OpenMenu();
+            }
+            else
+            {
+                CloseMenu();
             }
         }
 
-        if (listOfObjectToUpdate != null)
+        private void OnMenuButton()
         {
-            foreach (RectTransform rect in listOfObjectToUpdate)
+            if (isOpen)
             {
-                LayoutRebuilder.ForceRebuildLayoutImmediate(rect);
+                CloseMenu();
+            }
+            else
+            {
+                OpenMenu();
+            }
+
+            StartCoroutine(RebuildLayout());
+        }
+
+        private void OpenMenu()
+        {
+            indicatorImage.sprite = spriteWhileOpen;
+            menuWrapper.SetActive(true);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(menuWrapper.GetComponent<RectTransform>());
+            isOpen = true;
+        }
+
+        private void CloseMenu()
+        {
+            indicatorImage.sprite = spriteWhileClosed;
+            menuWrapper.SetActive(false);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(menuWrapper.GetComponent<RectTransform>());
+            isOpen = false;
+        }
+
+        public void AddLayoutToUpdateOnChange(RectTransform rect)
+        {
+            listOfObjectToUpdate.Add(rect);
+        }
+
+        public IEnumerator RebuildLayout()
+        {
+            yield return new WaitForEndOfFrame();
+
+            if (childMenus != null)
+            {
+                foreach (DropDownMenu menu in childMenus)
+                {
+                    menu.RebuildLayout();
+                }
+            }
+
+            if (listOfObjectToUpdate != null)
+            {
+                foreach (RectTransform rect in listOfObjectToUpdate)
+                {
+                    LayoutRebuilder.ForceRebuildLayoutImmediate(rect);
+                }
             }
         }
-        yield break;
-    }
 
-    public void AddChildMenu(DropDownMenu menu)
-    {
-        if (childMenus == null)
+        public void AddChildMenu(DropDownMenu menu)
         {
-            childMenus = new List<DropDownMenu>();
+            if (childMenus == null)
+            {
+                childMenus = new List<DropDownMenu>();
+            }
+
+            childMenus.Add(menu);
         }
-        childMenus.Add(menu);
     }
 }

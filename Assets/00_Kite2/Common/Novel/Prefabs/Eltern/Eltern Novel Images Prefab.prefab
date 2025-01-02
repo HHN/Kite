@@ -729,9 +729,9 @@ MonoBehaviour:
   decoLampeOn: {fileID: 21300000, guid: f9b3b12d991328d4db33b5d1f747759f, type: 3}
   motherCharacterContainer: {fileID: 3669613035356320353}
   fatherCharacterContainer: {fileID: 3780887922587301350}
-  motherCharacterPrefabs:
+  characterMutterPrefabs:
   - {fileID: 1465545687914413273, guid: fe0cc47faafc1e948a15badc475ba62d, type: 3}
-  fatherCharacterPrefabs:
+  characterVaterPrefabs:
   - {fileID: 1465545687914413273, guid: aee370a96d4a69c4fa663f6e1505d316, type: 3}
 --- !u!1 &5558045549636132440
 GameObject:
@@ -1743,6 +1743,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1465545687914413273, guid: aee370a96d4a69c4fa663f6e1505d316, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253796331781111194, guid: aee370a96d4a69c4fa663f6e1505d316, type: 3}
+      propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

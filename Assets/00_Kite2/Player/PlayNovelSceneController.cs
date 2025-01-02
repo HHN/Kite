@@ -5,11 +5,16 @@ using System.Data;
 using System.Linq;
 using System.Text.RegularExpressions;
 using _00_Kite2.Audio_Resources.Resources;
+using _00_Kite2.Common;
 using _00_Kite2.Common.Managers;
 using _00_Kite2.Common.Novel;
 using _00_Kite2.Common.Novel.Character.CharacterController;
+using _00_Kite2.Common.SceneManagement;
+using _00_Kite2.Common.UI.UI_Elements.Free_Text_User_Input;
 using _00_Kite2.Common.UI.UI_Elements.Messages;
+using _00_Kite2.Common.Utilities;
 using _00_Kite2.SaveNovelData;
+using _00_Kite2.Server_Communication.Server_Calls;
 using LeastSquares.Overtone;
 using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using TMPro;
@@ -541,7 +546,7 @@ namespace _00_Kite2.Player
 
             if (ApplicationModeManager.Instance().IsOfflineModeActive())
             {
-                PlayNextEvent();
+                StartCoroutine(PlayNextEvent());
                 return;
             }
 
@@ -549,11 +554,11 @@ namespace _00_Kite2.Player
             call.sceneController = this;
             GptRequestEventOnSuccessHandler onSuccessHandler = new GptRequestEventOnSuccessHandler
             {
-                variablesNameForGptPromp = novelEvent.variablesNameForGptPrompt,
-                completionHandler = GptCompletionHandlerManager.Instance()
+                VariablesNameForGptPrompt = novelEvent.variablesNameForGptPrompt,
+                CompletionHandler = GptCompletionHandlerManager.Instance()
                     .GetCompletionHandlerById(novelEvent.gptCompletionHandlerId)
             };
-            call.onSuccessHandler = onSuccessHandler;
+            call.OnSuccessHandler = onSuccessHandler;
             call.prompt = ReplacePlaceholders(novelEvent.gptPrompt, novelToPlay.GetGlobalVariables());
             call.SendRequest();
             DontDestroyOnLoad(call.gameObject);
@@ -626,7 +631,7 @@ namespace _00_Kite2.Player
         {
             SetNextEvent(novelEvent);
 
-            if (novelToPlay.IsVariableExistend(novelEvent.key) &&
+            if (novelToPlay.IsVariableExistent(novelEvent.key) &&
                 (novelToPlay.GetGlobalVariable(novelEvent.key) == "True"
                  || novelToPlay.GetGlobalVariable(novelEvent.key) == "true" ||
                  novelToPlay.GetGlobalVariable(novelEvent.key) == "TRUE"))
@@ -681,7 +686,7 @@ namespace _00_Kite2.Player
 
         private void HandleShowMessageEvent(VisualNovelEvent novelEvent)
         {
-            Debug.Log("TextToSpeechManager.Instance.Speak(novelEvent.text): " + novelEvent.text);
+            // Debug.Log("TextToSpeechManager.Instance.Speak(novelEvent.text): " + novelEvent.text);
             CreateSpeakingCoroutine(novelEvent.text);
 
             SetNextEvent(novelEvent);
@@ -743,7 +748,7 @@ namespace _00_Kite2.Player
 
             PlayRecordManager.Instance()
                 .IncreasePlayCounterForNovel(VisualNovelNamesHelper.ValueOf((int)novelToPlay.id));
-            
+
             PlayThroughCounterAnimationManager.Instance()
                 .SetAnimation(true, VisualNovelNamesHelper.ValueOf((int)novelToPlay.id));
 
@@ -786,7 +791,7 @@ namespace _00_Kite2.Player
                 return;
             }
 
-            AddEntryToPlayThroughHistory(Character.PLAYER, message);
+            AddEntryToPlayThroughHistory(CharacterRole.PLAYER, message);
             conversationContent.ShowPlayerAnswer(message);
             ScrollToBottom();
         }
@@ -855,9 +860,9 @@ namespace _00_Kite2.Player
             Destroy(currentAnimation);
         }
 
-        private void AddEntryToPlayThroughHistory(Character character, string text)
+        private void AddEntryToPlayThroughHistory(CharacterRole characterRole, string text)
         {
-            playThroughHistory.Add(CharacterTypeHelper.GetNameOfCharacter(character) + ": " + text);
+            playThroughHistory.Add(CharacterTypeHelper.GetNameOfCharacter(characterRole) + ": " + text);
         }
 
         public void AddEntryToPlayThroughHistory(string entry)
@@ -932,7 +937,7 @@ namespace _00_Kite2.Player
             if (indexToRestore <= 0) return;
 
             SetNextEvent(eventIdToRestore);
-            PlayNextEvent();
+            StartCoroutine(PlayNextEvent());
         }
 
         private void CreateSpeakingCoroutine(string text)
@@ -943,7 +948,7 @@ namespace _00_Kite2.Player
 
         private void SkipSpeaking()
         {
-            Debug.Log("SkipSpeaking");
+            // Debug.Log("SkipSpeaking");
             TextToSpeechManager.Instance.CancelSpeak();
         }
 
@@ -974,7 +979,7 @@ namespace _00_Kite2.Player
 
             if (savedData == null)
             {
-                Debug.LogWarning("No saved data found for the novel.");
+                // Debug.LogWarning("No saved data found for the novel.");
                 return;
             }
 
@@ -1002,7 +1007,7 @@ namespace _00_Kite2.Player
 
             ActivateMessageBoxes();
 
-            PlayNextEvent();
+            StartCoroutine(PlayNextEvent());
         }
 
         // Methode zum Neustarten (bei Auswahl "Neustarten" im Dialog)

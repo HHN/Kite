@@ -1,106 +1,109 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public class ExpertFeedbackQuestion
+namespace _00_Kite2.ExpertFeedback
 {
-    [SerializeField] private long id;
-    [SerializeField] private long novelId;
-    [SerializeField] private string novelName;
-    [SerializeField] private string userUuid;
-    [SerializeField] private string prompt;
-    [SerializeField] private string aiFeedback;
-    [SerializeField] private string dialogue;
-    [SerializeField] private string expertFeedbackQuestion;
-    [SerializeField] private ExpertFeedbackAnswer expertFeedbackAnswer;
-
-    public long GetId()
+    [Serializable]
+    public class ExpertFeedbackQuestion
     {
-        return id;
-    }
+        [SerializeField] private long id;
+        [SerializeField] private long novelId;
+        [SerializeField] private string novelName;
+        [SerializeField] private string userUuid;
+        [SerializeField] private string prompt;
+        [SerializeField] private string aiFeedback;
+        [SerializeField] private string dialogue;
+        [SerializeField] private string expertFeedbackQuestion;
+        [SerializeField] private ExpertFeedbackAnswer expertFeedbackAnswer;
 
-    public void SetId(long id)
-    {
-        this.id = id;
-    }
+        public long GetId()
+        {
+            return id;
+        }
 
-    public long GetNovelId()
-    {
-        return novelId;
-    }
+        public void SetId(long id)
+        {
+            this.id = id;
+        }
 
-    public void SetNovelId(long novelId)
-    {
-        this.novelId = novelId;
-    }
+        public long GetNovelId()
+        {
+            return novelId;
+        }
 
-    public string GetNovelName()
-    {
-        return novelName;
-    }
+        public void SetNovelId(long novelId)
+        {
+            this.novelId = novelId;
+        }
 
-    public void SetNovelName(string novelName)
-    {
-        this.novelName = novelName;
-    }
+        public string GetNovelName()
+        {
+            return novelName;
+        }
 
-    public string GetUserUuid()
-    {
-        return userUuid;
-    }
+        public void SetNovelName(string novelName)
+        {
+            this.novelName = novelName;
+        }
 
-    public void SetUserUuid(string userUuid)
-    {
-        this.userUuid = userUuid;
-    }
+        public string GetUserUuid()
+        {
+            return userUuid;
+        }
 
-    public string GetPrompt()
-    {
-        return prompt;
-    }
+        public void SetUserUuid(string userUuid)
+        {
+            this.userUuid = userUuid;
+        }
 
-    public void SetPrompt(string prompt)
-    {
-        this.prompt = prompt;
-    }
+        public string GetPrompt()
+        {
+            return prompt;
+        }
 
-    public string GetAiFeedback()
-    {
-        return aiFeedback;
-    }
+        public void SetPrompt(string prompt)
+        {
+            this.prompt = prompt;
+        }
 
-    public void SetAiFeedback(string aiFeedback)
-    {
-        this.aiFeedback = aiFeedback;
-    }
+        public string GetAiFeedback()
+        {
+            return aiFeedback;
+        }
 
-    public string GetDialogue()
-    {
-        return dialogue;
-    }
+        public void SetAiFeedback(string aiFeedback)
+        {
+            this.aiFeedback = aiFeedback;
+        }
 
-    public void SetDialogue(string dialogue)
-    {
-        this.dialogue = dialogue;
-    }
+        public string GetDialogue()
+        {
+            return dialogue;
+        }
 
-    public string GetExpertFeedbackQuestion()
-    {
-        return expertFeedbackQuestion;
-    }
+        public void SetDialogue(string dialogue)
+        {
+            this.dialogue = dialogue;
+        }
 
-    public void SetExpertFeedbackQuestion(string expertFeedbackQuestion)
-    {
-        this.expertFeedbackQuestion = expertFeedbackQuestion;
-    }
+        public string GetExpertFeedbackQuestion()
+        {
+            return expertFeedbackQuestion;
+        }
 
-    public ExpertFeedbackAnswer GetExpertFeedbackAnswer()
-    {
-        return expertFeedbackAnswer;
-    }
+        public void SetExpertFeedbackQuestion(string expertFeedbackQuestion)
+        {
+            this.expertFeedbackQuestion = expertFeedbackQuestion;
+        }
 
-    public void SetExpertFeedbackAnswer(ExpertFeedbackAnswer expertFeedbackAnswer)
-    {
-        this.expertFeedbackAnswer = expertFeedbackAnswer;
+        public ExpertFeedbackAnswer GetExpertFeedbackAnswer()
+        {
+            return expertFeedbackAnswer;
+        }
+
+        public void SetExpertFeedbackAnswer(ExpertFeedbackAnswer expertFeedbackAnswer)
+        {
+            this.expertFeedbackAnswer = expertFeedbackAnswer;
+        }
     }
 }

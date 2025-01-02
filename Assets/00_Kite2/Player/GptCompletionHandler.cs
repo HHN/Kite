@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface GptCompletionHandler
+namespace _00_Kite2.Player
 {
-    string ProcessCompletion(string completion);
+    public interface IGptCompletionHandler
+    {
+        string ProcessCompletion(string completion);
+    }
 }

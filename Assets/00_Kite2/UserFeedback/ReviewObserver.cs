@@ -1,29 +1,32 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public class ReviewObserver
+namespace _00_Kite2.UserFeedback
 {
-    [SerializeField] private long id;
-    [SerializeField] private string email;
-
-    public void SetId(long id)
+    [Serializable]
+    public class ReviewObserver
     {
-        this.id = id;
-    }
+        [SerializeField] private long id;
+        [SerializeField] private string email;
 
-    public long GetId()
-    {
-        return id;
-    }
+        public void SetId(long id)
+        {
+            this.id = id;
+        }
 
-    public void SetEmail(string email)
-    {
-        this.email = email;
-    }
+        public long GetId()
+        {
+            return id;
+        }
 
-    public string GetEmail()
-    {
-        return email;
+        public void SetEmail(string email)
+        {
+            this.email = email;
+        }
+
+        public string GetEmail()
+        {
+            return email;
+        }
     }
 }

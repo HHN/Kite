@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _00_Kite2.OfflineAiFeedback;
 using _00_Kite2.Player;
 
 namespace _00_Kite2.Common.Managers

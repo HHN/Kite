@@ -1,7 +1,10 @@
 using System;
 
-[Serializable]
-public class FindExpertFeedbackAnswerRequest
+namespace _00_Kite2.Server_Communication.Request_Objects
 {
-    public long id;
+    [Serializable]
+    public class FindExpertFeedbackAnswerRequest
+    {
+        public long id;
+    }
 }

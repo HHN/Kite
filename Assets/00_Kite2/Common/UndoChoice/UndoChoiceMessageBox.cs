@@ -1,75 +1,78 @@
 using _00_Kite2.Common.Managers;
 using _00_Kite2.Player;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
-public class UndoChoiceMessageBox : MonoBehaviour
+namespace _00_Kite2.Common.UndoChoice
 {
-    [SerializeField] private TextMeshProUGUI messageBoxBody;
-    [SerializeField] private Button cancelButton;
-    [SerializeField] private Button confirmButton;
-    [SerializeField] private GameObject background;
-    [SerializeField] private GameObject backgroundLeave;
-    [SerializeField] private GameObject textStay;
-    [SerializeField] private GameObject person;
-
-    private Color novelColor;
-    private PlayNovelSceneController playNovelSceneController;
-
-    void Start()
+    public class UndoChoiceMessageBox : MonoBehaviour
     {
-        playNovelSceneController = FindAnyObjectByType<PlayNovelSceneController>();
+        [SerializeField] private TextMeshProUGUI messageBoxBody;
+        [SerializeField] private Button cancelButton;
+        [SerializeField] private Button confirmButton;
+        [SerializeField] private GameObject background;
+        [SerializeField] private GameObject backgroundLeave;
+        [SerializeField] private GameObject textStay;
+        [SerializeField] private GameObject person;
 
-        cancelButton.onClick.AddListener(OnCancelButton);
-        confirmButton.onClick.AddListener(OnConfirmButton);
+        private Color _novelColor;
+        private PlayNovelSceneController _playNovelSceneController;
 
-        InitUI();
-        FontSizeManager.Instance().UpdateAllTextComponents();
-    }
-
-    private void InitUI()
-    {
-        // Retrieve the color once and assign it to all necessary elements
-        novelColor = NovelColorManager.Instance().GetColor();
-
-        ApplyColorToUI(background, novelColor);
-        ApplyColorToUI(backgroundLeave, novelColor);
-        textStay.GetComponent<TextMeshProUGUI>().color = novelColor;
-    }
-
-    // Method for applying color to reduce redundancy
-    private void ApplyColorToUI(GameObject uiElement, Color color)
-    {
-        if (uiElement != null && uiElement.TryGetComponent<Image>(out Image image))
+        private void Start()
         {
-            image.color = color;
+            _playNovelSceneController = FindAnyObjectByType<PlayNovelSceneController>();
+
+            cancelButton.onClick.AddListener(OnCancelButton);
+            confirmButton.onClick.AddListener(OnConfirmButton);
+
+            InitUI();
+            FontSizeManager.Instance().UpdateAllTextComponents();
         }
-    }
 
-    public void SetBody(string headline)
-    {
-        messageBoxBody.text = headline;
-    }
+        private void InitUI()
+        {
+            // Retrieve the color once and assign it to all necessary elements
+            _novelColor = NovelColorManager.Instance().GetColor();
 
-    public void Activate()
-    {
-        this.gameObject.SetActive(true);
-    }
+            ApplyColorToUI(background, _novelColor);
+            ApplyColorToUI(backgroundLeave, _novelColor);
+            textStay.GetComponent<TextMeshProUGUI>().color = _novelColor;
+        }
 
-    public void OnCancelButton()
-    {
-        this.CloseMessageBox();
-    }
+        // Method for applying color to reduce redundancy
+        private void ApplyColorToUI(GameObject uiElement, Color color)
+        {
+            if (uiElement != null && uiElement.TryGetComponent(out Image image))
+            {
+                image.color = color;
+            }
+        }
 
-    public void OnConfirmButton()
-    {
-        CloseMessageBox();
-        playNovelSceneController.RestoreChoice();
-    }
+        public void SetBody(string headline)
+        {
+            messageBoxBody.text = headline;
+        }
 
-    public void CloseMessageBox()
-    {
-        gameObject.SetActive(false); // Only deactivate instead of destroying
+        public void Activate()
+        {
+            this.gameObject.SetActive(true);
+        }
+
+        private void OnCancelButton()
+        {
+            this.CloseMessageBox();
+        }
+
+        private void OnConfirmButton()
+        {
+            CloseMessageBox();
+            _playNovelSceneController.RestoreChoice();
+        }
+
+        public void CloseMessageBox()
+        {
+            gameObject.SetActive(false); // Only deactivate instead of destroying
+        }
     }
 }

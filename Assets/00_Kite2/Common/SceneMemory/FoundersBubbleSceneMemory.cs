@@ -1,4 +1,7 @@
-public class FoundersBubbleSceneMemory
+namespace _00_Kite2.Common.SceneMemory
 {
-    public float scrollPosition;
+    public class FoundersBubbleSceneMemory
+    {
+        public float ScrollPosition;
+    }
 }

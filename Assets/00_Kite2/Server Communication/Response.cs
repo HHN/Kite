@@ -1,129 +1,134 @@
 using System;
 using System.Collections.Generic;
+using _00_Kite2.ExpertFeedback;
+using _00_Kite2.UserFeedback;
 using UnityEngine;
 
-[Serializable]
-public class Response
+namespace _00_Kite2.Server_Communication
 {
-    [SerializeField] private int resultCode;
-    [SerializeField] private string resultText;
-    [SerializeField] private string completion;
-    [SerializeField] private List<NovelReview> novelReviews;
-    [SerializeField] private List<AiReview> aiReviews;
-    [SerializeField] private List<ReviewObserver> reviewObservers;
-    [SerializeField] private List<DataObject> dataObjects;
-    [SerializeField] private int version;
-    [SerializeField] private int userRole;
-    [SerializeField] private List<ExpertFeedbackQuestion> expertFeedbackQuestions;
-    [SerializeField] private List<ExpertFeedbackAnswer> expertFeedbackAnswers;
-
-    public void SetResultCode(int resultCode)
+    [Serializable]
+    public class Response
     {
-        this.resultCode = resultCode;
-    }
+        [SerializeField] private int resultCode;
+        [SerializeField] private string resultText;
+        [SerializeField] private string completion;
+        [SerializeField] private List<NovelReview> novelReviews;
+        [SerializeField] private List<AiReview> aiReviews;
+        [SerializeField] private List<ReviewObserver> reviewObservers;
+        [SerializeField] private List<DataObject> dataObjects;
+        [SerializeField] private int version;
+        [SerializeField] private int userRole;
+        [SerializeField] private List<ExpertFeedbackQuestion> expertFeedbackQuestions;
+        [SerializeField] private List<ExpertFeedbackAnswer> expertFeedbackAnswers;
 
-    public int GetResultCode()
-    {
-        return this.resultCode;
-    }
+        public void SetResultCode(int resultCode)
+        {
+            this.resultCode = resultCode;
+        }
 
-    public void SetResultText(string resultText)
-    {
-        this.resultText = resultText;
-    }
+        public int GetResultCode()
+        {
+            return this.resultCode;
+        }
 
-    public string GetResultText()
-    {
-        return this.resultText;
-    }
+        public void SetResultText(string resultText)
+        {
+            this.resultText = resultText;
+        }
 
-    public void SetCompletion(string completion)
-    {
-        this.completion = completion;
-    }
+        public string GetResultText()
+        {
+            return this.resultText;
+        }
 
-    public string GetCompletion()
-    {
-        return this.completion;
-    }
+        public void SetCompletion(string completion)
+        {
+            this.completion = completion;
+        }
 
-    public void SetNovelReviews(List<NovelReview> novelReviews)
-    {
-        this.novelReviews = novelReviews;
-    }
+        public string GetCompletion()
+        {
+            return this.completion;
+        }
 
-    public List<NovelReview> GetNovelReviews()
-    {
-        return this.novelReviews;
-    }
+        public void SetNovelReviews(List<NovelReview> novelReviews)
+        {
+            this.novelReviews = novelReviews;
+        }
 
-    public void SetAiReviews(List<AiReview> aiReviews)
-    {
-        this.aiReviews = aiReviews;
-    }
+        public List<NovelReview> GetNovelReviews()
+        {
+            return this.novelReviews;
+        }
 
-    public List<AiReview> GetAiReviews()
-    {
-        return this.aiReviews;
-    }
+        public void SetAiReviews(List<AiReview> aiReviews)
+        {
+            this.aiReviews = aiReviews;
+        }
 
-    public void SetReviewObserver(List<ReviewObserver> reviewObservers)
-    {
-        this.reviewObservers = reviewObservers;
-    }
+        public List<AiReview> GetAiReviews()
+        {
+            return this.aiReviews;
+        }
 
-    public List<ReviewObserver> GetReviewObserver()
-    {
-        return this.reviewObservers;
-    }
+        public void SetReviewObserver(List<ReviewObserver> reviewObservers)
+        {
+            this.reviewObservers = reviewObservers;
+        }
 
-    public void SetDataObjects(List<DataObject> dataObjects)
-    {
-        this.dataObjects = dataObjects;
-    }
+        public List<ReviewObserver> GetReviewObserver()
+        {
+            return this.reviewObservers;
+        }
 
-    public List<DataObject> GetDataObjects()
-    {
-        return this.dataObjects;
-    }
+        public void SetDataObjects(List<DataObject> dataObjects)
+        {
+            this.dataObjects = dataObjects;
+        }
 
-    public void SetVersion(int version)
-    {
-        this.version = version;
-    }
+        public List<DataObject> GetDataObjects()
+        {
+            return this.dataObjects;
+        }
 
-    public int GetVersion()
-    {
-        return this.version;
-    }
+        public void SetVersion(int version)
+        {
+            this.version = version;
+        }
 
-    public void SetUserRole(int userRole)
-    {
-        this.userRole = userRole;
-    }
+        public int GetVersion()
+        {
+            return this.version;
+        }
 
-    public int GetUserRole()
-    {
-        return this.userRole;
-    }
+        public void SetUserRole(int userRole)
+        {
+            this.userRole = userRole;
+        }
 
-    public List<ExpertFeedbackQuestion> GetExpertFeedbackQuestions()
-    {
-        return expertFeedbackQuestions;
-    }
+        public int GetUserRole()
+        {
+            return this.userRole;
+        }
 
-    public void SetExpertFeedbackQuestions(List<ExpertFeedbackQuestion> expertFeedbackQuestions)
-    {
-        this.expertFeedbackQuestions = expertFeedbackQuestions;
-    }
+        public List<ExpertFeedbackQuestion> GetExpertFeedbackQuestions()
+        {
+            return expertFeedbackQuestions;
+        }
 
-    public List<ExpertFeedbackAnswer> GetExpertFeedbackAnswers()
-    {
-        return expertFeedbackAnswers;
-    }
+        public void SetExpertFeedbackQuestions(List<ExpertFeedbackQuestion> expertFeedbackQuestions)
+        {
+            this.expertFeedbackQuestions = expertFeedbackQuestions;
+        }
 
-    public void SetExpertFeedbackAnswers(List<ExpertFeedbackAnswer> expertFeedbackAnswers)
-    {
-        this.expertFeedbackAnswers = expertFeedbackAnswers;
+        public List<ExpertFeedbackAnswer> GetExpertFeedbackAnswers()
+        {
+            return expertFeedbackAnswers;
+        }
+
+        public void SetExpertFeedbackAnswers(List<ExpertFeedbackAnswer> expertFeedbackAnswers)
+        {
+            this.expertFeedbackAnswers = expertFeedbackAnswers;
+        }
     }
 }

@@ -1,11 +1,14 @@
-public static class DestroyValidator
+namespace _00_Kite2.Common.Utilities
 {
-    public static bool IsNullOrDestroyed(this System.Object obj)
+    public static class DestroyValidator
     {
-        if (object.ReferenceEquals(obj, null)) return true;
+        public static bool IsNullOrDestroyed(this System.Object obj)
+        {
+            if (ReferenceEquals(obj, null)) return true;
 
-        if (obj is UnityEngine.Object) return (obj as UnityEngine.Object) == null;
+            if (obj is UnityEngine.Object) return (obj as UnityEngine.Object) == null;
 
-        return false;
+            return false;
+        }
     }
 }

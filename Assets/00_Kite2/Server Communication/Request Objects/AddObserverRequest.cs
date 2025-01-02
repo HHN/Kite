@@ -1,7 +1,10 @@
 using System;
 
-[Serializable]
-public class AddObserverRequest
+namespace _00_Kite2.Server_Communication.Request_Objects
 {
-    public string email;
+    [Serializable]
+    public class AddObserverRequest
+    {
+        public string email;
+    }
 }

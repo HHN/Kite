@@ -1,9 +1,12 @@
 using System;
 
-[Serializable]
-public class AddExpertFeedbackAnswerRequest
+namespace _00_Kite2.Server_Communication.Request_Objects
 {
-    public string expertName;
-    public string expertFeedbackAnswer;
-    public long idOfExpertFeedbackQuestion;
+    [Serializable]
+    public class AddExpertFeedbackAnswerRequest
+    {
+        public string expertName;
+        public string expertFeedbackAnswer;
+        public long idOfExpertFeedbackQuestion;
+    }
 }

@@ -1,99 +1,102 @@
 using UnityEngine;
-using UnityEngine.UI;
 
-public class RadioButtonHandler : MonoBehaviour
+namespace _00_Kite2.Common.UI.UI_Elements.Radio_Button
 {
-    public Toggle kiteNovelsToggle;
-    public Toggle userNovelsToggle;
-    public Toggle accountNovelsToggle;
-    public Toggle Favorites;
-    private int indexToActivateOnStart = 0;
-
-    private void Start()
+    public class RadioButtonHandler : MonoBehaviour
     {
-        Init();
-    }
+        public UnityEngine.UI.Toggle kiteNovelsToggle;
+        public UnityEngine.UI.Toggle userNovelsToggle;
+        public UnityEngine.UI.Toggle accountNovelsToggle;
+        public UnityEngine.UI.Toggle favorites;
+        private int _indexToActivateOnStart;
 
-    public void Init()
-    {
-        ActivateIndex(indexToActivateOnStart);
-    }
-
-    public bool IsKiteNovelsOn()
-    {
-        return kiteNovelsToggle.isOn; 
-    }
-
-    public bool IsUserNovelsOn()
-    {
-        return userNovelsToggle.isOn;
-    }
-
-    public bool IsAccountNovelsOn()
-    {
-        return accountNovelsToggle.isOn;
-    }
-
-    public bool IsFavoritesOn()
-    {
-        return Favorites.isOn;
-    }
-
-    public int GetIndex()
-    {
-        if (IsKiteNovelsOn())
+        private void Start()
         {
-            return 0;
-        } 
-        else if (IsUserNovelsOn())
-        {
-            return 1;
-        } 
-        else if (IsAccountNovelsOn())
-        {
-            return 2;
-        } 
-        else if (IsFavoritesOn())
-        {
-            return 3;
+            Init();
         }
-        return 0;
-    }
 
-    public void SetIndex(int index)
-    {
-        this.indexToActivateOnStart = index;
-    }
-
-    private void ActivateIndex(int index)
-    {
-        switch (index)
+        private void Init()
         {
-            case 0:
+            ActivateIndex(_indexToActivateOnStart);
+        }
+
+        private bool IsKiteNovelsOn()
+        {
+            return kiteNovelsToggle.isOn;
+        }
+
+        private bool IsUserNovelsOn()
+        {
+            return userNovelsToggle.isOn;
+        }
+
+        private bool IsAccountNovelsOn()
+        {
+            return accountNovelsToggle.isOn;
+        }
+
+        private bool IsFavoritesOn()
+        {
+            return favorites.isOn;
+        }
+
+        public int GetIndex()
+        {
+            if (IsKiteNovelsOn())
+            {
+                return 0;
+            }
+            else if (IsUserNovelsOn())
+            {
+                return 1;
+            }
+            else if (IsAccountNovelsOn())
+            {
+                return 2;
+            }
+            else if (IsFavoritesOn())
+            {
+                return 3;
+            }
+
+            return 0;
+        }
+
+        public void SetIndex(int index)
+        {
+            this._indexToActivateOnStart = index;
+        }
+
+        private void ActivateIndex(int index)
+        {
+            switch (index)
+            {
+                case 0:
                 {
                     kiteNovelsToggle.isOn = true;
                     return;
                 }
-            case 1:
+                case 1:
                 {
                     userNovelsToggle.isOn = true;
                     return;
                 }
-            case 2:
+                case 2:
                 {
                     accountNovelsToggle.isOn = true;
                     return;
                 }
-            case 3:
+                case 3:
                 {
-                    Favorites.isOn = true;
+                    favorites.isOn = true;
                     return;
                 }
-            default:
+                default:
                 {
-                    kiteNovelsToggle.isOn = true; 
+                    kiteNovelsToggle.isOn = true;
                     return;
                 }
+            }
         }
     }
 }

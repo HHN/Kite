@@ -2,6 +2,8 @@ using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using _00_Kite2.Common.Managers;
+using _00_Kite2.Common.SceneManagement;
+using _00_Kite2.Player.Kite_Novels.Visual_Novel_Formatter;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
@@ -33,7 +35,7 @@ public class VisualNovelTest
                 yield return null;
             }
 
-            Assert.IsTrue(test.IsTestSuccessfull());
+            Assert.IsTrue(test.IsTestSuccessful());
         }
     }
 

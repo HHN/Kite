@@ -1,24 +1,26 @@
-using _00_Kite2.Player;
 using UnityEngine;
 
-public class FinishAnimation : StateMachineBehaviour
+namespace _00_Kite2.Player
 {
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public class FinishAnimation : StateMachineBehaviour
     {
-        GameObject controller = GameObject.Find("Controller");
-
-        if (controller == null)
+        public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            return;
+            GameObject controller = GameObject.Find("Controller");
+
+            if (controller == null)
+            {
+                return;
+            }
+
+            PlayNovelSceneController novelSceneController = controller.GetComponent<PlayNovelSceneController>();
+
+            if (novelSceneController == null)
+            {
+                return;
+            }
+
+            novelSceneController.AnimationFinished();
         }
-
-        PlayNovelSceneController novelSceneController = controller.GetComponent<PlayNovelSceneController>();
-
-        if (novelSceneController == null)
-        {
-            return;
-        }
-
-        novelSceneController.AnimationFinished();
     }
 }

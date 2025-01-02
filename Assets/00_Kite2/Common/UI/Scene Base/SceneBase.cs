@@ -1,4 +1,6 @@
+using _00_Kite2.Common.SceneManagement;
 using _00_Kite2.Common.UI.UI_Elements.Messages;
+using _00_Kite2.Common.Utilities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,7 +18,7 @@ namespace _00_Kite2.Common.UI.Scene_Base
         [SerializeField] private GameObject leaveGameAndGoToSettingsMessageBox;
         [SerializeField] private GameObject leaveGameAndGoBackMessageBox;
         [SerializeField] private GameObject leaveGameAndCloseMessageBox;
-        [SerializeField] private LeaveNovelAndGoBackToMainmenuMessageBox leaveGameAndGoToMainMenuMessageBoxObject;
+        [SerializeField] private LeaveNovelAndGoBackToMainMenuMessageBox leaveGameAndGoToMainMenuMessageBoxObject;
         [SerializeField] private LeaveNovelAndGoToSettingsMessageBox leaveGameAndGoToSettingsMessageBoxObject;
         [SerializeField] private LeaveNovelAndGoBackMessageBox leaveGameAndGoBackMessageBoxObject;
         [SerializeField] private CloseNovelAndGoBackMessageBox leaveNovelAndCloseMessageBoxObject;
@@ -32,10 +34,10 @@ namespace _00_Kite2.Common.UI.Scene_Base
                 settingsButton.onClick.AddListener(OnSettingsButtonForNovelPlayer);
                 backButton.onClick.AddListener(OnBackButtonForNovelPlayer);
                 closeButton.onClick.AddListener(OnBackButtonForNovelPlayer);
-            } 
+            }
             else if (SceneManager.GetActiveScene().name.Equals(SceneNames.MAIN_MENU_SCENE))
             {
-            } 
+            }
             else
             {
                 homeButton.onClick.AddListener(OnHomeButton);
@@ -57,21 +59,24 @@ namespace _00_Kite2.Common.UI.Scene_Base
                 SceneLoader.LoadMainMenuScene();
                 return;
             }
+
             SceneLoader.LoadScene(lastScene);
         }
 
         private void OnBackButtonForNovelPlayer()
         {
-            if (!DestroyValidator.IsNullOrDestroyed(leaveGameAndGoBackMessageBoxObject))
+            if (!leaveGameAndGoBackMessageBoxObject.IsNullOrDestroyed())
             {
                 leaveGameAndGoBackMessageBoxObject.CloseMessageBox();
             }
-            if (DestroyValidator.IsNullOrDestroyed(canvas))
+
+            if (canvas.IsNullOrDestroyed())
             {
                 return;
             }
+
             leaveGameAndGoBackMessageBoxObject = null;
-            leaveGameAndGoBackMessageBoxObject = Instantiate(leaveGameAndGoBackMessageBox, 
+            leaveGameAndGoBackMessageBoxObject = Instantiate(leaveGameAndGoBackMessageBox,
                 canvas.transform).GetComponent<LeaveNovelAndGoBackMessageBox>();
             leaveGameAndGoBackMessageBoxObject.Activate();
         }
@@ -83,17 +88,19 @@ namespace _00_Kite2.Common.UI.Scene_Base
 
         private void OnHomeButtonForNovelPlayer()
         {
-            if (!DestroyValidator.IsNullOrDestroyed(leaveGameAndGoToMainMenuMessageBoxObject))
+            if (!leaveGameAndGoToMainMenuMessageBoxObject.IsNullOrDestroyed())
             {
                 leaveGameAndGoToMainMenuMessageBoxObject.CloseMessageBox();
             }
-            if (DestroyValidator.IsNullOrDestroyed(canvas))
+
+            if (canvas.IsNullOrDestroyed())
             {
                 return;
             }
+
             leaveGameAndGoToMainMenuMessageBoxObject = null;
-            leaveGameAndGoToMainMenuMessageBoxObject = Instantiate(leaveGameAndGoToMainMenuMessageBox, 
-                canvas.transform).GetComponent<LeaveNovelAndGoBackToMainmenuMessageBox>();
+            leaveGameAndGoToMainMenuMessageBoxObject = Instantiate(leaveGameAndGoToMainMenuMessageBox,
+                canvas.transform).GetComponent<LeaveNovelAndGoBackToMainMenuMessageBox>();
             leaveGameAndGoToMainMenuMessageBoxObject.Activate();
         }
 
@@ -104,14 +111,16 @@ namespace _00_Kite2.Common.UI.Scene_Base
 
         private void OnSettingsButtonForNovelPlayer()
         {
-            if (!DestroyValidator.IsNullOrDestroyed(leaveGameAndGoToSettingsMessageBoxObject))
+            if (!leaveGameAndGoToSettingsMessageBoxObject.IsNullOrDestroyed())
             {
                 leaveGameAndGoToSettingsMessageBoxObject.CloseMessageBox();
             }
-            if (DestroyValidator.IsNullOrDestroyed(canvas))
+
+            if (canvas.IsNullOrDestroyed())
             {
                 return;
             }
+
             leaveGameAndGoToSettingsMessageBoxObject = null;
             leaveGameAndGoToSettingsMessageBoxObject = Instantiate(leaveGameAndGoToSettingsMessageBox,
                 canvas.transform).GetComponent<LeaveNovelAndGoToSettingsMessageBox>();

@@ -1,123 +1,130 @@
-using System.Collections;
-using UnityEngine;
-using LeastSquares.Overtone;
 using System.Threading;
 using System.Threading.Tasks;
+using _00_Kite2.Common;
+using UnityEngine;
 
-
-public class TextToSpeechService
+namespace _00_Kite2.Player
 {
-    private static TextToSpeechService instance;
-    private string choicesForTextToSpeech;
-    private AudioSource audioSource;
-    private string novelTitle;
-    private int optionCounter;
-    private CancellationTokenSource cancellationTokenSource;
-
-    public static TextToSpeechService Instance()
+    public class TextToSpeechService
     {
-        if (instance == null)
+        private static TextToSpeechService _instance;
+        private string _choicesForTextToSpeech;
+        private AudioSource _audioSource;
+        private string _novelTitle;
+        private int _optionCounter;
+        private CancellationTokenSource _cancellationTokenSource;
+
+        public static TextToSpeechService Instance()
         {
-            instance = new TextToSpeechService();
-        }
-        return instance;
-    }
-
-    public void SetAudioSource(AudioSource audioSource)
-    {
-        this.audioSource = audioSource;
-    }
-
-    public void SetNovelTitle(string novelTitle)
-    {
-        this.novelTitle = novelTitle;
-    }
-
-    public void TextToSpeech(string titleAndId, bool readAnyway = false)
-    {
-        if(TextToSpeechManager.Instance.IsTextToSpeechActivated() || readAnyway)
-        {
-            audioSource.clip = Resources.Load<AudioClip>(returnNameOfAudioFileFromTitelAndId(titleAndId));
-            if(audioSource.clip != null)
+            if (_instance == null)
             {
-                audioSource.Play();
-            } else
+                _instance = new TextToSpeechService();
+            }
+
+            return _instance;
+        }
+
+        public void SetAudioSource(AudioSource audioSource)
+        {
+            this._audioSource = audioSource;
+        }
+
+        public void SetNovelTitle(string novelTitle)
+        {
+            this._novelTitle = novelTitle;
+        }
+
+        public void TextToSpeech(string titleAndId, bool readAnyway = false)
+        {
+            if (TextToSpeechManager.Instance.IsTextToSpeechActivated() || readAnyway)
             {
-                Debug.LogError("AudioClip couldn't be found. Check the path.");
-            } 
+                _audioSource.clip = Resources.Load<AudioClip>(ReturnNameOfAudioFileFromTitelAndId(titleAndId));
+                if (_audioSource.clip != null)
+                {
+                    _audioSource.Play();
+                }
+                else
+                {
+                    Debug.LogError("AudioClip couldn't be found. Check the path.");
+                }
+            }
+
+            _choicesForTextToSpeech = "";
         }
-        choicesForTextToSpeech = "";
-    }
 
-    public string returnNameOfAudioFileFromTitelAndId(string titleAndId)
-    {
-        string returnstring = titleAndId.Replace("ä", "ae").Replace("ö", "oe").Replace("ü", "ue").Replace("ß", "ss");
-        return returnstring;
-    }
-
-    public void addChoiceToChoiceCollectionForTextToSpeech(string choice)
-    {
-        optionCounter++;
-        switch(optionCounter)
+        private string ReturnNameOfAudioFileFromTitelAndId(string titleAndId)
         {
-            case 1:
-                choicesForTextToSpeech += "Erste Option: ";
-                break;
-            case 2:
-                choicesForTextToSpeech += "Zweite Option: ";
-                break;
-            case 3:
-                choicesForTextToSpeech += "Dritte Option: ";
-                break;
-            case 4:
-                choicesForTextToSpeech += "Vierte Option: ";
-                break;
-            case 5:
-                choicesForTextToSpeech += "Fünfte Option: ";
-                break;
+            string returnString =
+                titleAndId.Replace("ä", "ae").Replace("ö", "oe").Replace("ü", "ue").Replace("ß", "ss");
+            return returnString;
         }
-        choicesForTextToSpeech += choice;
-    }
 
-    public string returnChoicesForTextToSpeech()
-    {
-        return choicesForTextToSpeech;
-    }
-
-    public async Task TextToSpeechReadLive(string text, bool readAnyway = false)
-    {
-        //if (audioSource != null)
-        //{
-        //    if (TextToSpeechManager.Instance().IsTextToSpeechActivated() || readAnyway)
-        //    {
-        //        //Debug.Log(text);
-        //        cancellationTokenSource = new CancellationTokenSource();
-        //        try
-        //        {
-        //            AudioClip audioClip = await engine.Speak(text, TTSVoiceNative.LoadVoiceFromResources("de-de-thorsten-high"));
-        //            if (audioSource != null && !cancellationTokenSource.IsCancellationRequested)
-        //            {
-        //                audioSource.clip = audioClip;
-        //                audioSource.Play();
-        //            }
-        //        }
-        //        catch (TaskCanceledException)
-        //        {
-        //            Debug.Log("Text-to-Speech operation was cancelled.");
-        //        }
-        //    }
-        //}
-    }
-
-    public void CancelSpeechAndAudio()
-    {
-        if (cancellationTokenSource != null)
+        public void AddChoiceToChoiceCollectionForTextToSpeech(string choice)
         {
-            cancellationTokenSource.Cancel();
+            _optionCounter++;
+            switch (_optionCounter)
+            {
+                case 1:
+                    _choicesForTextToSpeech += "Erste Option: ";
+                    break;
+                case 2:
+                    _choicesForTextToSpeech += "Zweite Option: ";
+                    break;
+                case 3:
+                    _choicesForTextToSpeech += "Dritte Option: ";
+                    break;
+                case 4:
+                    _choicesForTextToSpeech += "Vierte Option: ";
+                    break;
+                case 5:
+                    _choicesForTextToSpeech += "Fünfte Option: ";
+                    break;
+            }
+
+            _choicesForTextToSpeech += choice;
         }
-        if (audioSource != null && audioSource.isPlaying)
+
+        public string ReturnChoicesForTextToSpeech()
         {
-            audioSource.Stop();
+            return _choicesForTextToSpeech;
+        }
+
+        public async Task TextToSpeechReadLive(string text, bool readAnyway = false)
+        {
+            //if (audioSource != null)
+            //{
+            //    if (TextToSpeechManager.Instance().IsTextToSpeechActivated() || readAnyway)
+            //    {
+            //        //Debug.Log(text);
+            //        cancellationTokenSource = new CancellationTokenSource();
+            //        try
+            //        {
+            //            AudioClip audioClip = await engine.Speak(text, TTSVoiceNative.LoadVoiceFromResources("de-de-thorsten-high"));
+            //            if (audioSource != null && !cancellationTokenSource.IsCancellationRequested)
+            //            {
+            //                audioSource.clip = audioClip;
+            //                audioSource.Play();
+            //            }
+            //        }
+            //        catch (TaskCanceledException)
+            //        {
+            //            Debug.Log("Text-to-Speech operation was cancelled.");
+            //        }
+            //    }
+            //}
+        }
+
+        public void CancelSpeechAndAudio()
+        {
+            if (_cancellationTokenSource != null)
+            {
+                _cancellationTokenSource.Cancel();
+            }
+
+            if (_audioSource != null && _audioSource.isPlaying)
+            {
+                _audioSource.Stop();
+            }
         }
     }
 }

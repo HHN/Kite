@@ -12,9 +12,9 @@ namespace _00_Kite2.Common.UI.Founders_Bubble.AlreadyPlayedAnimation
         [SerializeField] private VisualNovelNames visualNovel;
         [SerializeField] private TextMeshProUGUI number;
         [SerializeField] private Animator animator;
-        private bool startedAnimation = false;
+        private bool _startedAnimation;
 
-        void Update()
+        private void Update()
         {
             int numberOfPlays = PlayRecordManager.Instance().GetNumberOfPlaysForNovel(visualNovel);
             bool value = (PlayRecordManager.Instance().GetNumberOfPlaysForNovel(visualNovel) > 0);
@@ -24,7 +24,7 @@ namespace _00_Kite2.Common.UI.Founders_Bubble.AlreadyPlayedAnimation
             if (PlayThroughCounterAnimationManager.Instance().IsAnimationTrue(visualNovel))
             {
                 StartCoroutine(SetValueIn90Frames(numberOfPlays));
-            } 
+            }
             else
             {
                 animator.enabled = false;
@@ -32,13 +32,14 @@ namespace _00_Kite2.Common.UI.Founders_Bubble.AlreadyPlayedAnimation
             }
         }
 
-        public IEnumerator SetValueIn90Frames(int numberOfPlays)
+        private IEnumerator SetValueIn90Frames(int numberOfPlays)
         {
-            if (startedAnimation)
+            if (_startedAnimation)
             {
                 yield break;
             }
-            startedAnimation = true;
+
+            _startedAnimation = true;
             animator.enabled = true;
             number.text = (numberOfPlays - 1).ToString();
             animator.Play("increase");
@@ -46,7 +47,7 @@ namespace _00_Kite2.Common.UI.Founders_Bubble.AlreadyPlayedAnimation
             number.text = numberOfPlays.ToString();
             PlayThroughCounterAnimationManager.Instance().SetAnimation(false, visualNovel);
             animator.enabled = false;
-            startedAnimation = false;
+            _startedAnimation = false;
         }
     }
 }

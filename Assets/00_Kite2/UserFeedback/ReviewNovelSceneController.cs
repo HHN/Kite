@@ -1,152 +1,163 @@
+using _00_Kite2.Common;
 using _00_Kite2.Common.Managers;
+using _00_Kite2.Common.Novel;
+using _00_Kite2.Common.SceneManagement;
+using _00_Kite2.Server_Communication;
+using _00_Kite2.Server_Communication.Server_Calls;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
-public class ReviewNovelSceneController : SceneController, OnSuccessHandler
+namespace _00_Kite2.UserFeedback
 {
-    [SerializeField] private Button skipButton;
-    [SerializeField] private Button confirmButton;
-    [SerializeField] private TextMeshProUGUI headline;
-    [SerializeField] private TextMeshProUGUI instruction;
-    [SerializeField] private string novelName;
-    [SerializeField] private long novelID;
-    [SerializeField] private long rating;
-    [SerializeField] private string reviewText;
-
-    [SerializeField] private TMP_InputField inputField;
-    [SerializeField] private Button star_01;
-    [SerializeField] private Button star_02;
-    [SerializeField] private Button star_03;
-    [SerializeField] private Button star_04;
-    [SerializeField] private Button star_05;
-
-    [SerializeField] private Sprite starFullSprite;
-    [SerializeField] private Sprite starEmptySprite;
-
-    [SerializeField] private GameObject addNovelReviewServerCallPrefab;
-    [SerializeField] private RectTransform layout;
-
-    void Start()
+    public class ReviewNovelSceneController : SceneController, IOnSuccessHandler
     {
-        LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
-        BackStackManager.Instance().Push(SceneNames.REVIEW_NOVEL_SCENE);
-        skipButton.onClick.AddListener(delegate { OnSkipButton(); });
-        confirmButton.onClick.AddListener(delegate { OnConfirmButton(); });
-        star_01.onClick.AddListener(delegate { OnStar01Button(); });
-        star_02.onClick.AddListener(delegate { OnStar02Button(); });
-        star_03.onClick.AddListener(delegate { OnStar03Button(); });
-        star_04.onClick.AddListener(delegate { OnStar04Button(); });
-        star_05.onClick.AddListener(delegate { OnStar05Button(); });
+        [SerializeField] private Button skipButton;
+        [SerializeField] private Button confirmButton;
+        [SerializeField] private TextMeshProUGUI headline;
+        [SerializeField] private TextMeshProUGUI instruction;
+        [SerializeField] private string novelName;
+        [SerializeField] private long novelID;
+        [SerializeField] private long rating;
+        [SerializeField] private string reviewText;
 
-        VisualNovel novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
+        [SerializeField] private TMP_InputField inputField;
+        [SerializeField] private Button star01;
+        [SerializeField] private Button star02;
+        [SerializeField] private Button star03;
+        [SerializeField] private Button star04;
+        [SerializeField] private Button star05;
 
-        if (novelToPlay == null )
+        [SerializeField] private Sprite starFullSprite;
+        [SerializeField] private Sprite starEmptySprite;
+
+        [SerializeField] private GameObject addNovelReviewServerCallPrefab;
+        [SerializeField] private RectTransform layout;
+
+        private void Start()
         {
-            return;
+            LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
+            BackStackManager.Instance().Push(SceneNames.REVIEW_NOVEL_SCENE);
+            skipButton.onClick.AddListener(OnSkipButton);
+            confirmButton.onClick.AddListener(OnConfirmButton);
+            star01.onClick.AddListener(OnStar01Button);
+            star02.onClick.AddListener(OnStar02Button);
+            star03.onClick.AddListener(OnStar03Button);
+            star04.onClick.AddListener(OnStar04Button);
+            star05.onClick.AddListener(OnStar05Button);
+
+            VisualNovel novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
+
+            if (novelToPlay == null)
+            {
+                return;
+            }
+
+            novelName = novelToPlay.title;
+            novelID = novelToPlay.id;
+            InitializeHeadline();
+
+            rating = 1;
+            star01.image.sprite = starFullSprite;
+            star02.image.sprite = starEmptySprite;
+            star03.image.sprite = starEmptySprite;
+            star04.image.sprite = starEmptySprite;
+            star05.image.sprite = starEmptySprite;
         }
-        novelName = novelToPlay.title;
-        novelID = novelToPlay.id;
-        InitializeHeadline();
 
-        rating = 1;
-        star_01.image.sprite = starFullSprite;
-        star_02.image.sprite = starEmptySprite;
-        star_03.image.sprite = starEmptySprite;
-        star_04.image.sprite = starEmptySprite;
-        star_05.image.sprite = starEmptySprite;
-    }
-
-    public void InitializeHeadline()
-    {
-        headline.text = "Gespielte Novel: " + novelName;
-        instruction.text = "Bitte teile uns deine Meinung zu der eben gespielten Novel mit!";
-    }
-
-    public void OnSkipButton()
-    {
-        SceneLoader.LoadFeedbackScene();
-    }
-
-    public void OnConfirmButton()
-    {
-        VisualNovel novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
-
-        if (novelToPlay == null || string.IsNullOrEmpty(inputField.text))
+        private void InitializeHeadline()
         {
-            return;
+            headline.text = "Gespielte Novel: " + novelName;
+            instruction.text = "Bitte teile uns deine Meinung zu der eben gespielten Novel mit!";
         }
-        reviewText = inputField.text.Trim();
-        inputField.text = "";
-        SendReviewToServer();
-        SceneLoader.LoadFeedbackScene();
-    }
 
-    public void SendReviewToServer()
-    {
-        AddNovelReviewServerCall call = Instantiate(addNovelReviewServerCallPrefab).GetComponent<AddNovelReviewServerCall>();
-        call.sceneController = this;
-        call.onSuccessHandler = this;
-        call.novelId = novelID;
-        call.novelName = novelName;
-        call.rating = rating;
-        call.reviewText = reviewText;
-        call.SendRequest();
-        DontDestroyOnLoad(call.gameObject);
-    }
+        private void OnSkipButton()
+        {
+            SceneLoader.LoadFeedbackScene();
+        }
 
-    public void OnStar01Button()
-    {
-        rating = 1;
-        star_01.image.sprite = starFullSprite;
-        star_02.image.sprite = starEmptySprite;
-        star_03.image.sprite = starEmptySprite;
-        star_04.image.sprite = starEmptySprite;
-        star_05.image.sprite = starEmptySprite;
-    }
+        private void OnConfirmButton()
+        {
+            VisualNovel novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
 
-    public void OnStar02Button()
-    {
-        rating = 2;
-        star_01.image.sprite = starFullSprite;
-        star_02.image.sprite = starFullSprite;
-        star_03.image.sprite = starEmptySprite;
-        star_04.image.sprite = starEmptySprite;
-        star_05.image.sprite = starEmptySprite;
-    }
+            if (novelToPlay == null || string.IsNullOrEmpty(inputField.text))
+            {
+                return;
+            }
 
-    public void OnStar03Button()
-    {
-        rating = 3;
-        star_01.image.sprite = starFullSprite;
-        star_02.image.sprite = starFullSprite;
-        star_03.image.sprite = starFullSprite;
-        star_04.image.sprite = starEmptySprite;
-        star_05.image.sprite = starEmptySprite;
-    }
+            reviewText = inputField.text.Trim();
+            inputField.text = "";
+            SendReviewToServer();
+            SceneLoader.LoadFeedbackScene();
+        }
 
-    public void OnStar04Button()
-    {
-        rating = 4;
-        star_01.image.sprite = starFullSprite;
-        star_02.image.sprite = starFullSprite;
-        star_03.image.sprite = starFullSprite;
-        star_04.image.sprite = starFullSprite;
-        star_05.image.sprite = starEmptySprite;
-    }
+        private void SendReviewToServer()
+        {
+            AddNovelReviewServerCall call = Instantiate(addNovelReviewServerCallPrefab)
+                .GetComponent<AddNovelReviewServerCall>();
+            call.sceneController = this;
+            call.OnSuccessHandler = this;
+            call.novelId = novelID;
+            call.novelName = novelName;
+            call.rating = rating;
+            call.reviewText = reviewText;
+            call.SendRequest();
+            DontDestroyOnLoad(call.gameObject);
+        }
 
-    public void OnStar05Button()
-    {
-        rating = 5;
-        star_01.image.sprite = starFullSprite;
-        star_02.image.sprite = starFullSprite;
-        star_03.image.sprite = starFullSprite;
-        star_04.image.sprite = starFullSprite;
-        star_05.image.sprite = starFullSprite;
-    }
+        private void OnStar01Button()
+        {
+            rating = 1;
+            star01.image.sprite = starFullSprite;
+            star02.image.sprite = starEmptySprite;
+            star03.image.sprite = starEmptySprite;
+            star04.image.sprite = starEmptySprite;
+            star05.image.sprite = starEmptySprite;
+        }
 
-    public void OnSuccess(Response response)
-    {
-        // nothing to do here
+        private void OnStar02Button()
+        {
+            rating = 2;
+            star01.image.sprite = starFullSprite;
+            star02.image.sprite = starFullSprite;
+            star03.image.sprite = starEmptySprite;
+            star04.image.sprite = starEmptySprite;
+            star05.image.sprite = starEmptySprite;
+        }
+
+        private void OnStar03Button()
+        {
+            rating = 3;
+            star01.image.sprite = starFullSprite;
+            star02.image.sprite = starFullSprite;
+            star03.image.sprite = starFullSprite;
+            star04.image.sprite = starEmptySprite;
+            star05.image.sprite = starEmptySprite;
+        }
+
+        private void OnStar04Button()
+        {
+            rating = 4;
+            star01.image.sprite = starFullSprite;
+            star02.image.sprite = starFullSprite;
+            star03.image.sprite = starFullSprite;
+            star04.image.sprite = starFullSprite;
+            star05.image.sprite = starEmptySprite;
+        }
+
+        private void OnStar05Button()
+        {
+            rating = 5;
+            star01.image.sprite = starFullSprite;
+            star02.image.sprite = starFullSprite;
+            star03.image.sprite = starFullSprite;
+            star04.image.sprite = starFullSprite;
+            star05.image.sprite = starFullSprite;
+        }
+
+        public void OnSuccess(Response response)
+        {
+            // nothing to do here
+        }
     }
 }

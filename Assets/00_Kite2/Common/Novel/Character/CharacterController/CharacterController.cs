@@ -17,28 +17,49 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         private static readonly int IsTalking = Animator.StringToHash("isTalking");
 
-        public void SetSkinSprite(int skinSpriteIndex)
+        public void SetSkinSprite( /*int skinSpriteIndex*/)
         {
-            if ((skinSprites.Length > skinSpriteIndex) && (skinSpriteIndex >= 0))
-            {
-                skinImage.sprite = skinSprites[skinSpriteIndex];
-            }
+            // if ((skinSprites.Length > skinSpriteIndex) && (skinSpriteIndex >= 0))
+            // {
+            //     skinImage.sprite = skinSprites[skinSpriteIndex];
+            // }
+
+            if (skinSprites == null) return;
+
+            int randomIndex = Random.Range(0, skinSprites.Length);
+            Sprite randomSkinImage = skinSprites[randomIndex];
+
+            skinImage.sprite = randomSkinImage;
         }
 
-        public void SetClotheSprite(int clotheSpriteIndex)
+        public void SetClotheSprite( /*int clotheSpriteIndex*/)
         {
-            if ((clotheSprites.Length > clotheSpriteIndex) && (clotheSpriteIndex >= 0))
-            {
-                clotheImage.sprite = clotheSprites[clotheSpriteIndex];
-            }
+            // if ((clotheSprites.Length > clotheSpriteIndex) && (clotheSpriteIndex >= 0))
+            // {
+            //     clotheImage.sprite = clotheSprites[clotheSpriteIndex];
+            // }
+
+            if (clotheSprites == null) return;
+
+            int randomIndex = Random.Range(0, clotheSprites.Length);
+            Sprite randomSkinImage = clotheSprites[randomIndex];
+
+            clotheImage.sprite = randomSkinImage;
         }
 
-        public void SetHairSprite(int hairSpriteIndex)
+        public void SetHairSprite( /*int hairSpriteIndex*/)
         {
-            if ((hairSprites.Length > hairSpriteIndex) && (hairSpriteIndex >= 0))
-            {
-                hairImage.sprite = hairSprites[hairSpriteIndex];
-            }
+            // if ((hairSprites.Length > hairSpriteIndex) && (hairSpriteIndex >= 0))
+            // {
+            //     hairImage.sprite = hairSprites[hairSpriteIndex];
+            // }
+
+            if (hairSprites == null) return;
+
+            int randomIndex = Random.Range(0, hairSprites.Length);
+            Sprite randomSkinImage = hairSprites[randomIndex];
+
+            hairImage.sprite = randomSkinImage;
         }
 
         public void SetFaceExpression(int expression)

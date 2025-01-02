@@ -1,18 +1,21 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public class ApplicationModeWrapper
+namespace _00_Kite2.Common
 {
-    [SerializeField] private int applicationMode;
-
-    public void SetApplicationMode(int applicationMode)
+    [Serializable]
+    public class ApplicationModeWrapper
     {
-        this.applicationMode = applicationMode;
-    }
+        [SerializeField] private int applicationMode;
 
-    public int GetApplicationMode()
-    {
-        return this.applicationMode;
+        public void SetApplicationMode(int applicationMode)
+        {
+            this.applicationMode = applicationMode;
+        }
+
+        public int GetApplicationMode()
+        {
+            return this.applicationMode;
+        }
     }
 }

@@ -1,16 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using _00_Kite2.Common.Managers;
 using _00_Kite2.Player;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BookmarkUpdater : MonoBehaviour
+namespace _00_Kite2.Common.UI.Founders_Bubble.Bookmarks
 {
-    [SerializeField] private VisualNovelNames visualNovel;
-
-    void Update()
+    public class BookmarkUpdater : MonoBehaviour
     {
-        this.gameObject.GetComponent<Image>().enabled =FavoritesManager.Instance().IsFavorite(VisualNovelNamesHelper.ToInt(visualNovel));
+        [SerializeField] private VisualNovelNames visualNovel;
+
+        private void Update()
+        {
+            this.gameObject.GetComponent<Image>().enabled =
+                FavoritesManager.Instance().IsFavorite(VisualNovelNamesHelper.ToInt(visualNovel));
+        }
     }
 }

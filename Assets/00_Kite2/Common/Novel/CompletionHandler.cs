@@ -1,26 +1,29 @@
-public enum CompletionHandler
+namespace _00_Kite2.Common.Novel
 {
-    NONE,
-    DEFAULT_COMPLETION_HANDLER
-}
-
-public class CompletionHandlerHelper
-{
-    public static int ToInt(CompletionHandler completionHandler)
+    public enum CompletionHandler
     {
-        switch (completionHandler)
-        {
-            case CompletionHandler.DEFAULT_COMPLETION_HANDLER: return 1;
-            default: return 0;
-        }
+        NONE,
+        DEFAULT_COMPLETION_HANDLER
     }
 
-    public static CompletionHandler ValueOf(int completionHandler)
+    public class CompletionHandlerHelper
     {
-        switch (completionHandler)
+        public static int ToInt(CompletionHandler completionHandler)
         {
-            case 1: return CompletionHandler.DEFAULT_COMPLETION_HANDLER;
-            default: return CompletionHandler.NONE;
+            switch (completionHandler)
+            {
+                case CompletionHandler.DEFAULT_COMPLETION_HANDLER: return 1;
+                default: return 0;
+            }
+        }
+
+        public static CompletionHandler ValueOf(int completionHandler)
+        {
+            switch (completionHandler)
+            {
+                case 1: return CompletionHandler.DEFAULT_COMPLETION_HANDLER;
+                default: return CompletionHandler.NONE;
+            }
         }
     }
 }

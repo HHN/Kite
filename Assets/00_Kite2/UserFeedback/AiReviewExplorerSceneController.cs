@@ -1,97 +1,109 @@
 using System;
 using System.Collections.Generic;
+using _00_Kite2.Common;
 using _00_Kite2.Common.Managers;
+using _00_Kite2.Common.SceneManagement;
+using _00_Kite2.Server_Communication;
+using _00_Kite2.Server_Communication.Server_Calls;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AiReviewExplorerSceneController : SceneController, OnSuccessHandler
+namespace _00_Kite2.UserFeedback
 {
-    [SerializeField] private List<AiReviewGuiElement> reviews;
-    [SerializeField] private TMP_InputField searchInputField;
-    [SerializeField] private GameObject aiReviewGuiPrefab;
-    [SerializeField] private GameObject GetAiReviewServerCallPrefab;
-    [SerializeField] private GameObject NoReviewsFoundHint;
-    [SerializeField] private GameObject SearchBar;
-    [SerializeField] private GameObject reviewsContainer;
-    [SerializeField] private Button searchButton;
-    [SerializeField] private Sprite searchIcon;
-    [SerializeField] private Sprite xIcon;
-
-    // Start is called before the first frame update
-    void Start()
+    public class AiReviewExplorerSceneController : SceneController, IOnSuccessHandler
     {
-        BackStackManager.Instance().Push(SceneNames.AI_REVIEW_EXPLORER_SCENE);
+        [SerializeField] private List<AiReviewGuiElement> reviews;
+        [SerializeField] private TMP_InputField searchInputField;
+        [SerializeField] private GameObject aiReviewGuiPrefab;
+        [SerializeField] private GameObject getAiReviewServerCallPrefab;
+        [SerializeField] private GameObject noReviewsFoundHint;
+        [SerializeField] private GameObject searchBar;
+        [SerializeField] private GameObject reviewsContainer;
+        [SerializeField] private Button searchButton;
+        [SerializeField] private Sprite searchIcon;
+        [SerializeField] private Sprite xIcon;
 
-        reviews = new List<AiReviewGuiElement>();
-        searchButton.onClick.AddListener(delegate { OnStopSearchButton(); });
-
-        GetAiReviewsServerCall call = Instantiate(GetAiReviewServerCallPrefab).GetComponent<GetAiReviewsServerCall>();
-        call.sceneController = this;
-        call.onSuccessHandler = this;
-        call.SendRequest();
-    }
-
-    public void OnSuccess(Response response)
-    {
-        if (response?.GetAiReviews() == null || response?.GetAiReviews().Count == 0)
+        // Start is called before the first frame update
+        private void Start()
         {
-            SearchBar.SetActive(false);
-            NoReviewsFoundHint.SetActive(true);
-            return;
+            BackStackManager.Instance().Push(SceneNames.AI_REVIEW_EXPLORER_SCENE);
+
+            reviews = new List<AiReviewGuiElement>();
+            searchButton.onClick.AddListener(OnStopSearchButton);
+
+            GetAiReviewsServerCall call = Instantiate(getAiReviewServerCallPrefab)
+                .GetComponent<GetAiReviewsServerCall>();
+            call.sceneController = this;
+            call.OnSuccessHandler = this;
+            call.SendRequest();
         }
-        SearchBar.SetActive(true);
-        NoReviewsFoundHint.SetActive(false);
 
-        foreach (AiReview review in response.GetAiReviews())
+        public void OnSuccess(Response response)
         {
-            AiReviewGuiElement aiReviewGuiElement =
-                Instantiate(aiReviewGuiPrefab, reviewsContainer.transform)
-                .GetComponent<AiReviewGuiElement>();
+            if (response?.GetAiReviews() == null || response?.GetAiReviews().Count == 0)
+            {
+                searchBar.SetActive(false);
+                noReviewsFoundHint.SetActive(true);
+                return;
+            }
 
-            aiReviewGuiElement.InitializeReview(review);
-            reviews.Add(aiReviewGuiElement);
+            searchBar.SetActive(true);
+            noReviewsFoundHint.SetActive(false);
+
+            foreach (AiReview review in response.GetAiReviews())
+            {
+                AiReviewGuiElement aiReviewGuiElement =
+                    Instantiate(aiReviewGuiPrefab, reviewsContainer.transform)
+                        .GetComponent<AiReviewGuiElement>();
+
+                aiReviewGuiElement.InitializeReview(review);
+                reviews.Add(aiReviewGuiElement);
+            }
         }
-    }
 
-    public void OnSearchValueChanged()
-    {
-        if (string.IsNullOrEmpty(searchInputField.text))
+        public void OnSearchValueChanged()
         {
+            if (string.IsNullOrEmpty(searchInputField.text))
+            {
+                StopSearch();
+                return;
+            }
+
+            Search(searchInputField.text);
+        }
+
+        private void StopSearch()
+        {
+            searchButton.image.sprite = searchIcon;
+            searchInputField.text = string.Empty;
+
+            foreach (AiReviewGuiElement guiElement in reviews)
+            {
+                guiElement.gameObject.SetActive(true);
+            }
+        }
+
+        private void Search(string value)
+        {
+            searchButton.image.sprite = xIcon;
+
+            foreach (AiReviewGuiElement guiElement in reviews)
+            {
+                guiElement.gameObject.SetActive(guiElement.GetNovelName()
+                    .Contains(value, StringComparison.OrdinalIgnoreCase));
+                guiElement.CloseAll();
+            }
+        }
+
+        private void OnStopSearchButton()
+        {
+            if (string.IsNullOrEmpty(searchInputField.text))
+            {
+                return;
+            }
+
             StopSearch();
-            return;
         }
-        Search(searchInputField.text);
-    }
-
-    public void StopSearch()
-    {
-        searchButton.image.sprite = searchIcon;
-        searchInputField.text = string.Empty;
-
-        foreach (AiReviewGuiElement guiElement in reviews)
-        {
-            guiElement.gameObject.SetActive(true);
-        }
-    }
-
-    public void Search(string value)
-    {
-        searchButton.image.sprite = xIcon;
-
-        foreach (AiReviewGuiElement guiElement in reviews)
-        {
-            guiElement.gameObject.SetActive(guiElement.GetNovelName().Contains(value, StringComparison.OrdinalIgnoreCase));
-            guiElement.CloseAll();
-        }
-    }
-
-    public void OnStopSearchButton()
-    {
-        if (string.IsNullOrEmpty(searchInputField.text))
-        {
-            return;
-        }
-        StopSearch();
     }
 }

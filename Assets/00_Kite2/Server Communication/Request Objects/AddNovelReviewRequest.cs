@@ -1,10 +1,13 @@
 using System;
 
-[Serializable]
-public class AddNovelReviewRequest
+namespace _00_Kite2.Server_Communication.Request_Objects
 {
-    public long novelId;
-    public string novelName;
-    public long rating;
-    public string reviewText;
+    [Serializable]
+    public class AddNovelReviewRequest
+    {
+        public long novelId;
+        public string novelName;
+        public long rating;
+        public string reviewText;
+    }
 }

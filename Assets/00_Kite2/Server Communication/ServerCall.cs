@@ -1,19 +1,24 @@
 using System.Collections;
+using System.Text;
+using _00_Kite2.Common;
+using _00_Kite2.Common.Messages;
+using _00_Kite2.Common.Utilities;
 using UnityEngine;
 using UnityEngine.Networking;
-using System.Text;
 
-public abstract class ServerCall : MonoBehaviour
+namespace _00_Kite2.Server_Communication
 {
-    public OnSuccessHandler onSuccessHandler;
-    public OnErrorHandler onErrorHandler;
-    public SceneController sceneController;
-    private Coroutine serverCallCoroutine;
-
-    public void SendRequest()
+    public abstract class ServerCall : MonoBehaviour
     {
-        serverCallCoroutine = StartCoroutine(RequestRegistration());
-    }
+        public IOnSuccessHandler OnSuccessHandler;
+        public IOnErrorHandler OnErrorHandler;
+        public SceneController sceneController;
+        private Coroutine _serverCallCoroutine;
+
+        public void SendRequest()
+        {
+            _serverCallCoroutine = StartCoroutine(RequestRegistration());
+        }
 
     private IEnumerator RequestRegistration()
     {
@@ -29,18 +34,19 @@ public abstract class ServerCall : MonoBehaviour
         serverCallCoroutine = null;
     }
 
-    private UnityWebRequest CreateRequest()
-    {
-        UnityWebRequest webRequest = CreateUnityWebRequestObject();
-        webRequest.SetRequestHeader("Content-Type", "application/json; charset=utf-8");
-        object req = CreateRequestObject();
-        if (req != null)
+        private UnityWebRequest CreateRequest()
         {
-            string jsonData = JsonUtility.ToJson(req);
-            webRequest.uploadHandler = new UploadHandlerRaw(new UTF8Encoding(false).GetBytes(jsonData));
+            UnityWebRequest webRequest = CreateUnityWebRequestObject();
+            webRequest.SetRequestHeader("Content-Type", "application/json; charset=utf-8");
+            object req = CreateRequestObject();
+            if (req != null)
+            {
+                string jsonData = JsonUtility.ToJson(req);
+                webRequest.uploadHandler = new UploadHandlerRaw(new UTF8Encoding(false).GetBytes(jsonData));
+            }
+
+            return webRequest;
         }
-        return webRequest;
-    }
 
     protected void HandleWebRequestResult(UnityWebRequest webRequest)
     {
@@ -50,11 +56,17 @@ public abstract class ServerCall : MonoBehaviour
         switch (webRequest.result)
         {
             case UnityWebRequest.Result.Success:
+        private void HandleWebRequestResult(UnityWebRequest webRequest)
+        {
+            switch (webRequest.result)
+            {
+                case UnityWebRequest.Result.Success:
                 {
-                    if (DestroyValidator.IsNullOrDestroyed(onSuccessHandler))
+                    if (OnSuccessHandler.IsNullOrDestroyed())
                     {
                         break;
                     }
+
                     Response response = JsonUtility.FromJson<Response>(webRequest.downloadHandler.text);
                     OnResponse(response);
                     break;
@@ -67,32 +79,36 @@ public abstract class ServerCall : MonoBehaviour
                     }
                     else
                     {
-                        sceneController.DisplayErrorMessage(ErrorMessages.UNEXPECTED_SERVER_ERROR);
+                        sceneController.DisplayErrorMessage($"Unerwarteter Fehler: {webRequest.error}");
                     }
+
                     break;
                 }
-        }
-        StartCoroutine(DestroyInSeconds(5));
-    }
+            }
 
-    public bool StopWebRequest()
-    {
-        if (serverCallCoroutine != null)
-        {
-            StopCoroutine(serverCallCoroutine);
-            serverCallCoroutine = null;
-            return true;
+            StartCoroutine(DestroyInSeconds(5));
         }
-        return false;
-    }
+
+        public bool StopWebRequest()
+        {
+            if (_serverCallCoroutine != null)
+            {
+                StopCoroutine(_serverCallCoroutine);
+                _serverCallCoroutine = null;
+                return true;
+            }
+
+            return false;
+        }
 
     protected abstract UnityWebRequest CreateUnityWebRequestObject();
     protected abstract object CreateRequestObject();
     protected abstract void OnResponse(Response response);
 
-    private IEnumerator DestroyInSeconds(long seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-        Destroy(this.gameObject);
+        private IEnumerator DestroyInSeconds(long seconds)
+        {
+            yield return new WaitForSeconds(seconds);
+            Destroy(this.gameObject);
+        }
     }
 }

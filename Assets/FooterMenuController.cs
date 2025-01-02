@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using _00_Kite2.Common.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -150,7 +151,7 @@ public class FooterMenuController : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("Ungültiger Hex-Farbcode: " + hexColor);
+                Debug.LogWarning("Ungï¿½ltiger Hex-Farbcode: " + hexColor);
             }
         }
         else

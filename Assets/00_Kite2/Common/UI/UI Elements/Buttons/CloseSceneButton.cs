@@ -1,24 +1,29 @@
+using _00_Kite2.Common.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CloseSceneButton : MonoBehaviour
+namespace _00_Kite2.Common.UI.UI_Elements.Buttons
 {
-    public Button button;
-
-    void Start()
+    public class CloseSceneButton : MonoBehaviour
     {
-        button.onClick.AddListener(delegate { OnCloseButton(); });
-    }
+        public Button button;
 
-    public void OnCloseButton()
-    {
-        string lastScene = SceneRouter.GetTargetSceneForCloseButton();
-
-        if (string.IsNullOrEmpty(lastScene))
+        private void Start()
         {
-            SceneLoader.LoadMainMenuScene();
-            return;
+            button.onClick.AddListener(OnCloseButton);
         }
-        SceneLoader.LoadScene(lastScene);
+
+        public void OnCloseButton()
+        {
+            string lastScene = SceneRouter.GetTargetSceneForCloseButton();
+
+            if (string.IsNullOrEmpty(lastScene))
+            {
+                SceneLoader.LoadMainMenuScene();
+                return;
+            }
+
+            SceneLoader.LoadScene(lastScene);
+        }
     }
 }

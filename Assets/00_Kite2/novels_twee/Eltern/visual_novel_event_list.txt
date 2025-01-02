@@ -153,6 +153,7 @@ Natürlich spielt das eine Rolle. Schließlich nimmt die Kinderversorgung viel Z
 :: Keine Kinder [Bias] {"position":"2450,1325","size":"100,100"}
 >>Charakter02SprichtRefusing:<<
 Das denkst du jetzt. Warte noch ein paar Jahre, dann änderst du deine Meinung. Aber selbst ohne Kinder solltest du dir das nochmal überlegen. 
+
 >>--<<
 >>Charakter01SprichtLaughing:<<
 Ach, wie wäre es denn, wenn du mal mit deinem Bruder sprichst. Dann sind die Chancen bestimmt besser, dass dein Vorhaben erfolgreich wird.
@@ -174,6 +175,7 @@ Wenn Kinder mit im Spiel sind, ist es nochmal ein anderes Risiko.
 :: Kind: Sexismus [Bias] {"position":"2150,1175","size":"100,100"}
 >>Charakter01SprichtAstonished:<<
 Nein, so war das nicht gemeint, aber wie stellst du es dir denn vor? Kinder haben und ein Unternehmen führen! 
+
 >>--<<
 >>Charakter02SprichtDefeated:<<
 Das alles unter einen Hut zu bringen, ist echt nicht leicht.
@@ -409,6 +411,7 @@ Bis dann!
 :: Positiv: Benevolenter Sexismus [Bias] {"position":"800,1400","size":"100,100"}
 >>Charakter02SprichtSmiling:<<
 Und du kannst auch deinen weiblichen Charme nutzen! Dann helfen Leute dir noch viel lieber.
+
 >>--<<
 >>RelevanterBias:GeschlechtsspezifischeStereotypen<<
 

@@ -1,38 +1,25 @@
-public class TweeLink
+namespace _00_Kite2.Player.Kite_Novels.Visual_Novel_Formatter
 {
-    private string text;
-    private string target;
-    private bool showAfterSelection;
-
-    public TweeLink(string text, string target, bool showAfterSelection)
+    public class TweeLink
     {
-        this.Text = text;
-        this.Target = target;
-        this.ShowAfterSelection = showAfterSelection;
-    }
+        public TweeLink(string text, string target, bool showAfterSelection)
+        {
+            this.Text = text;
+            this.Target = target;
+            this.ShowAfterSelection = showAfterSelection;
+        }
 
-    public TweeLink() 
-    {
-        this.Text = "";
-        this.Target = "";
-        this.ShowAfterSelection = false;
-    }
+        public TweeLink()
+        {
+            this.Text = "";
+            this.Target = "";
+            this.ShowAfterSelection = false;
+        }
 
-    public string Text
-    {
-        get { return text; }
-        set { text = value; }
-    }
+        public string Text { get; set; }
 
-    public string Target
-    {
-        get { return target; }
-        set { target = value; }
-    }
+        public string Target { get; set; }
 
-    public bool ShowAfterSelection
-    {
-        get { return showAfterSelection; }
-        set { showAfterSelection = value; }
+        public bool ShowAfterSelection { get; set; }
     }
 }

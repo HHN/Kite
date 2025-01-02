@@ -6,7 +6,7 @@ namespace _00_Kite2.Common.Managers
     public class BackStackManager
     {
         private static BackStackManager _instance;
-        private Stack<string> _backStack;
+        private readonly Stack<string> _backStack;
 
         private BackStackManager()
         {

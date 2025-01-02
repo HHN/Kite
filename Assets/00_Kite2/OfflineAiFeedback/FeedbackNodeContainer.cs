@@ -1,11 +1,14 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public class FeedbackNodeContainer
+namespace _00_Kite2.OfflineAiFeedback
 {
-    [SerializeField] public long novel;
-    [SerializeField] public string path;
-    [SerializeField] public string prompt;
-    [SerializeField] public string completion;
+    [Serializable]
+    public class FeedbackNodeContainer
+    {
+        [SerializeField] public long novel;
+        [SerializeField] public string path;
+        [SerializeField] public string prompt;
+        [SerializeField] public string completion;
+    }
 }

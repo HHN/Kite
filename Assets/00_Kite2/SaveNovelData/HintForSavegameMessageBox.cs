@@ -1,4 +1,5 @@
 using _00_Kite2.Common.Managers;
+using _00_Kite2.Common.Utilities;
 using _00_Kite2.Player;
 using TMPro;
 using UnityEngine;
@@ -8,7 +9,9 @@ namespace _00_Kite2.SaveNovelData
 {
     public class HintForSavegameMessageBox : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI messageBoxHeadline; // Text component for the headline of the message box
+        [SerializeField]
+        private TextMeshProUGUI messageBoxHeadline; // Text component for the headline of the message box
+
         [SerializeField] private TextMeshProUGUI messageBoxBody; // Text component for the body of the message box
         [SerializeField] private Button continueButton; // Button to continue with the novel
         [SerializeField] private Button restartButton; // Button to restart the novel
@@ -27,7 +30,7 @@ namespace _00_Kite2.SaveNovelData
             _playNovelSceneController = FindObjectOfType<PlayNovelSceneController>();
         }
 
-        void Start()
+        private void Start()
         {
             // Attach listeners to buttons to handle click events
             continueButton.onClick.AddListener(OnContinueButton);

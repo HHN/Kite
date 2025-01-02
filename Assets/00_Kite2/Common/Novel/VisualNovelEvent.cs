@@ -1,5 +1,4 @@
 using System;
-using UnityEngine.Serialization;
 
 namespace _00_Kite2.Common.Novel
 {

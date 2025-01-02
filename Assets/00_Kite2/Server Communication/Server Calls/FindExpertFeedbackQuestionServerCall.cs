@@ -1,40 +1,45 @@
+using _00_Kite2.Common.Messages;
+using _00_Kite2.Server_Communication.Request_Objects;
 using UnityEngine.Networking;
 
-public class FindExpertFeedbackQuestionServerCall : ServerCall
+namespace _00_Kite2.Server_Communication.Server_Calls
 {
-    public string userUuid;
-
-    protected override object CreateRequestObject()
+    public class FindExpertFeedbackQuestionServerCall : ServerCall
     {
-        FindExpertFeedbackQuestionsRequest request = new FindExpertFeedbackQuestionsRequest();
-        request.userUuid = userUuid;
-        return request;
-    }
+        public string userUuid;
 
-    protected override UnityWebRequest CreateUnityWebRequestObject()
-    {
-        return UnityWebRequest.Put(ConnectionLink.EXPERT_FEEDBACK_QUESTION, string.Empty);
-    }
-
-    protected override void OnResponse(Response response)
-    {
-        switch (ResultCodeHelper.ValueOf(response.GetResultCode()))
+        protected override object CreateRequestObject()
         {
-            case ResultCode.SUCCESSFULLY_FOUND_EXPERT_FEEDBACK_QUESTION:
+            FindExpertFeedbackQuestionsRequest request = new FindExpertFeedbackQuestionsRequest();
+            request.userUuid = userUuid;
+            return request;
+        }
+
+        protected override UnityWebRequest CreateUnityWebRequestObject()
+        {
+            return UnityWebRequest.Put(ConnectionLink.EXPERT_FEEDBACK_QUESTION, string.Empty);
+        }
+
+        protected override void OnResponse(Response response)
+        {
+            switch (ResultCodeHelper.ValueOf(response.GetResultCode()))
+            {
+                case ResultCode.SUCCESSFULLY_FOUND_EXPERT_FEEDBACK_QUESTION:
                 {
-                    onSuccessHandler.OnSuccess(response);
+                    OnSuccessHandler.OnSuccess(response);
                     return;
                 }
-            case ResultCode.NO_SUCH_EXPERT_FEEDBACK_QUESTION:
+                case ResultCode.NO_SUCH_EXPERT_FEEDBACK_QUESTION:
                 {
-                    onSuccessHandler.OnSuccess(response);
+                    OnSuccessHandler.OnSuccess(response);
                     return;
                 }
-            default:
+                default:
                 {
                     sceneController.DisplayErrorMessage(ErrorMessages.UNEXPECTED_SERVER_ERROR);
                     return;
                 }
+            }
         }
     }
 }
