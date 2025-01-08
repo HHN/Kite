@@ -66,69 +66,82 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         {
             switch (expression)
             {
-                case 1:
+                case 1: // Erschrocken
                 {
-                    PlayRelaxedAnimation();
+                    PlayErschrockenAnimation();
+                    // PlayRelaxedAnimation();
                     return;
                 }
-                case 2:
+                case 2: // Genervt
                 {
-                    PlayAstonishedAnimation();
+                    PlayGenervtAnimation();
+                    // PlayAstonishedAnimation();
                     return;
                 }
-                case 3:
+                case 3: // Unzufrieden
                 {
-                    PlayRefusingAnimation();
+                    PlayUnzufriedenAnimation();
+                    // PlayRefusingAnimation();
                     return;
                 }
-                case 4:
+                case 4: // Ablehnend
                 {
-                    PlaySmileAnimation();
+                    PlayAblehnendAnimation();
+                    // PlaySmileAnimation();
                     return;
                 }
-                case 5:
+                case 5: // Erstaunt
                 {
-                    PlayFriendlyAnimation();
+                    PlayErstauntAnimation();
+                    // PlayFriendlyAnimation();
                     return;
                 }
-                case 6:
+                case 6: // Fragend
                 {
-                    PlayLaughingAnimation();
+                    PlayFragendAnimation();
+                    // PlayLaughingAnimation();
                     return;
                 }
-                case 7:
+                case 7: // Kritisch
                 {
-                    PlayCriticalAnimation();
+                    PlayKritischAnimation();
+                    // PlayCriticalAnimation();
                     return;
                 }
-                case 8:
+                case 8: // Lächeln_Groß
                 {
-                    PlayNoDealAnimation();
+                    PlayLaechelnGrossAnimation();
+                    // PlayNoDealAnimation();
                     return;
                 }
-                case 9:
+                case 9: // Lachend
                 {
-                    PlayHappyAnimation();
+                    PlayLachendAnimation();
+                    // PlayHappyAnimation();
                     return;
                 }
-                case 10:
+                case 10:    // Lächeln
                 {
-                    PlayProudAnimation();
+                    PlayLaechelnAnimation();
+                    // PlayProudAnimation();
                     return;
                 }
-                case 11:
+                case 11:    // Neutral_Entspannt
                 {
-                    PlayScaredAnimation();
+                    PlayNeutralEntspanntAnimation();
+                    // PlayScaredAnimation();
                     return;
                 }
-                case 12:
+                case 12:    // Neutral
                 {
-                    PlayQuestioningAnimation();
+                    PlayNeutralAnimation();
+                    // PlayQuestioningAnimation();
                     return;
                 }
-                case 13:
+                case 13:    // Stolz
                 {
-                    PlayDefeatedAnimation();
+                    PlayStolzAnimation();
+                    // PlayDefeatedAnimation();
                     return;
                 }
                 default:
@@ -136,6 +149,71 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     return;
                 }
             }
+        }
+
+        private void PlayErschrockenAnimation()
+        {
+            animator.Play("erschrocken");
+        }
+        
+        private void PlayGenervtAnimation()
+        {
+            animator.Play("genervt");
+        }
+        
+        private void PlayUnzufriedenAnimation()
+        {
+            animator.Play("unzufrieden");
+        }
+        
+        private void PlayAblehnendAnimation()
+        {
+            animator.Play("ablehnend");
+        }
+        
+        private void PlayErstauntAnimation()
+        {
+            animator.Play("erstaunt");
+        }
+
+        private void PlayFragendAnimation()
+        {
+            animator.Play("fragend");
+        }
+        
+        private void PlayKritischAnimation()
+        {
+            animator.Play("kritisch");
+        }
+        
+        private void PlayLaechelnGrossAnimation()
+        {
+            animator.Play("laecheln_gross");
+        }
+        
+        private void PlayLachendAnimation()
+        {
+            animator.Play("lachend");
+        }
+        
+        private void PlayLaechelnAnimation()
+        {
+            animator.Play("laecheln");
+        }
+        
+        private void PlayNeutralEntspanntAnimation()
+        {
+            animator.Play("neutral_entspannt");
+        }
+        
+        private void PlayNeutralAnimation()
+        {
+            animator.Play("neutral");
+        }
+        
+        private void PlayStolzAnimation()
+        {
+            animator.Play("stolz");
         }
 
         private void PlayDefeatedAnimation()

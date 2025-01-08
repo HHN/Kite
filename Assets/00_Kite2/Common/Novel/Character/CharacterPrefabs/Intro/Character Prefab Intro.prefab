@@ -97,7 +97,7 @@ Animator:
   m_GameObject: {fileID: 1465545687914413273}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 832bc03e6b4beeb4db3129dcd832aa4b, type: 2}
+  m_Controller: {fileID: 9100000, guid: fac65ed25bc45c64fa32b0248de2f2bb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMaterial: {fileID: 0}
   brightnessMaterial: {fileID: 2100000, guid: 08ff6e5fe6883ce48b8dae7920229ecc, type: 2}
-  blurrMaterial: {fileID: 2100000, guid: 295578efd6536c54fa24c2a1d5308f69, type: 2}
+  blurMaterial: {fileID: 0}
   characterImageFace: {fileID: 574019088309126247}
   characterImageHair: {fileID: 6416909304724813844}
   characterImageCloths: {fileID: 3658774889944424753}
