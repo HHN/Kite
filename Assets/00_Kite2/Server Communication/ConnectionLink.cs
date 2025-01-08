@@ -1,6 +1,8 @@
 namespace _00_Kite2.Server_Communication
 {
-    public static readonly string BASE_LINK = "https://kite2.site/"; // "https://localhost/"; //
+    public static class ConnectionLink
+    {
+        private static readonly string BASE_LINK = "https://kite2.site/"; // "https://localhost/"; //
 
         public static readonly string COMPLETION_LINK = BASE_LINK + "ai";
         public static readonly string NOVEL_REVIEW_LINK = BASE_LINK + "novelreview";

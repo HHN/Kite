@@ -20,19 +20,20 @@ namespace _00_Kite2.Server_Communication
             _serverCallCoroutine = StartCoroutine(RequestRegistration());
         }
 
-    private IEnumerator RequestRegistration()
-    {
-        using (UnityWebRequest webRequest = CreateRequest())
+        private IEnumerator RequestRegistration()
         {
-            // Hier wird der Custom-CertificateHandler zugewiesen:
-            webRequest.certificateHandler = new BypassCertificate();
-            Debug.Log("RequestRegistration");
+            using (UnityWebRequest webRequest = CreateRequest())
+            {
+                // Hier wird der Custom-CertificateHandler zugewiesen:
+                webRequest.certificateHandler = new BypassCertificate();
+                Debug.Log("RequestRegistration");
 
-            yield return webRequest.SendWebRequest();
-            HandleWebRequestResult(webRequest);
+                yield return webRequest.SendWebRequest();
+                HandleWebRequestResult(webRequest);
+            }
+
+            _serverCallCoroutine = null;
         }
-        serverCallCoroutine = null;
-    }
 
         private UnityWebRequest CreateRequest()
         {
@@ -48,16 +49,12 @@ namespace _00_Kite2.Server_Communication
             return webRequest;
         }
 
-    protected void HandleWebRequestResult(UnityWebRequest webRequest)
-    {
-        Debug.Log("UnityWebRequest Result: " + webRequest.result);
-        Debug.Log("UnityWebRequest Error: " + webRequest.error);
-        Debug.Log("WebRequest URL: " + webRequest.url);
-        switch (webRequest.result)
+        protected void HandleWebRequestResult(UnityWebRequest webRequest)
         {
-            case UnityWebRequest.Result.Success:
-        private void HandleWebRequestResult(UnityWebRequest webRequest)
-        {
+            Debug.Log("UnityWebRequest Result: " + webRequest.result);
+            Debug.Log("UnityWebRequest Error: " + webRequest.error);
+            Debug.Log("WebRequest URL: " + webRequest.url);
+
             switch (webRequest.result)
             {
                 case UnityWebRequest.Result.Success:
@@ -71,7 +68,7 @@ namespace _00_Kite2.Server_Communication
                     OnResponse(response);
                     break;
                 }
-            default:
+                default:
                 {
                     if (Application.internetReachability == NetworkReachability.NotReachable)
                     {
@@ -101,9 +98,9 @@ namespace _00_Kite2.Server_Communication
             return false;
         }
 
-    protected abstract UnityWebRequest CreateUnityWebRequestObject();
-    protected abstract object CreateRequestObject();
-    protected abstract void OnResponse(Response response);
+        protected abstract UnityWebRequest CreateUnityWebRequestObject();
+        protected abstract object CreateRequestObject();
+        protected abstract void OnResponse(Response response);
 
         private IEnumerator DestroyInSeconds(long seconds)
         {
