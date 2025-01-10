@@ -227,7 +227,7 @@ Ja, das würde auch passen. Bringen Sie dann das Formular bitte ausgefüllt wied
 >>SpielerinCharakterSpricht:<<
 Das werde ich. Danke und bis dann!
 >>--<<
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtLaecheln:<<
 Schönen Tag noch!
 >>--<<
 >>Ende<<

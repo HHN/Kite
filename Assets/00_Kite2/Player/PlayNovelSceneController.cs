@@ -691,6 +691,9 @@ namespace _00_Kite2.Player
 
             SetNextEvent(novelEvent);
 
+            Debug.Log("novel.id: " + novelEvent.id);
+            Debug.Log("novelEvent.character: " + novelEvent.character);
+            Debug.Log("novelEvent.expressionType: " + novelEvent.expressionType);
             _novelImagesController.SetFaceExpression(novelEvent.character, novelEvent.expressionType);
             _novelCharacter = novelEvent.character;
 
