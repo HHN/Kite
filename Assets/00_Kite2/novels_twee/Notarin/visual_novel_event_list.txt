@@ -26,7 +26,7 @@ Du hast einen Termin mit einer Notarin, um einen Termin für deine Gründung aus
 
 
 :: Bereits erwähnt {"position":"900,575","size":"100,100"}
->>Charakter01SprichtRelaxed:<<
+>>Charakter01SprichtNeutralEntspannt:<<
 Ah, okay. Das Formular sende ich Ihnen zu. Nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?
 
 [[Ja, das passt mir gut.->Termin Ja]]
@@ -35,11 +35,12 @@ Ah, okay. Das Formular sende ich Ihnen zu. Nächsten Donnerstag 15 Uhr hätte ic
 
 [[Könnten Sie bitte bestätigen, dass ich als Geschäftsführerin eingetragen bin? Für den Handelsregistereintrag ist das ja wichtig.->Bestätigung]]
 
+
 :: Bestätigung [Bias] {"position":"775,725","size":"100,100"}
->>Charakter01SprichtRelaxed:<<
+>>Charakter01SprichtNeutralEntspannt:<<
 Ja, das ist bereits notiert. 
 >>--<<
->>Charakter01SprichtAstonished:<<
+>>Charakter01SprichtErstaunt:<<
 Das ist schon außergewöhnlich, dass Sie gründen. Wer hat Ihnen denn bei der Gründung geholfen?
 >>--<<
 >>RelevanterBias:LeistungsattributionsBias<<
@@ -52,16 +53,16 @@ Das ist schon außergewöhnlich, dass Sie gründen. Wer hat Ihnen denn bei der G
 
 
 :: Deeskalierend {"position":"1775,875","size":"100,100"}
->>Charakter01SprichtCritical:<<
+>>Charakter01SprichtKritisch:<<
 Ich sehe keinen Grund, das Geschlecht in den Vordergrund zu stellen. Es wäre einfacher, wenn Sie sich auf den Geschäftsprozess konzentrieren.
-
 
 [[Es geht nicht darum, das Geschlecht in den Vordergrund zu stellen, sondern um respektvolle und korrekte Kommunikation.->Respektvolle Behandlung]]
 
 [[Wenn ich sage, dass es eine Geschäftsführerin und kein Geschäftsführer ist, stelle ich das Geschlecht nicht in den Vordergrund.->Frustriert]]
 
+
 :: Fragebogen [Bias] {"position":"1200,375","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtLaecheln:<<
 Guten Tag, für den Handelsregistereintrag muss erstmal ein Fragebogen ausgefüllt werden. Wichtig ist, dass der Geschäftsführer dabei ist, weil seine Unterschrift nötig ist.
 >>--<<
 >>RelevanterBias:UnbewussteBiasInDerKommunikation<<
@@ -72,9 +73,8 @@ Guten Tag, für den Handelsregistereintrag muss erstmal ein Fragebogen ausgefül
 
 
 :: Fragebogen zurückkommen {"position":"1475,1025","size":"100,100"}
->>Charakter01SprichtRelaxed:<<
+>>Charakter01SprichtNeutralEntspannt:<<
 Also, ich kann Ihnen den Fragebogen zusenden und nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?
-
 
 [[Ja, das passt mir gut.->Termin Ja]]
 
@@ -82,9 +82,8 @@ Also, ich kann Ihnen den Fragebogen zusenden und nächsten Donnerstag 15 Uhr hä
 
 
 :: Frustriert {"position":"1850,1025","size":"100,100"}
->>Charakter01SprichtRelaxed:<<
+>>Charakter01SprichtNeutralEntspannt:<<
 Wie Sie meinen. Also, wie erwähnt, kann ich Ihnen den Fragebogen zuschicken und nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?
-
 
 [[Ja, das passt mir gut.->Termin Ja]]
 
@@ -92,8 +91,9 @@ Wie Sie meinen. Also, wie erwähnt, kann ich Ihnen den Fragebogen zuschicken und
 
 [[Ich glaube nicht, dass wir auf einen Nenner kommen, und ich suche mir lieber eine andere Notarin. Schönen Tag noch.->Gespräch beenden]]
 
+
 :: Geschlechtsannahme [Bias] {"position":"1575,875","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtLaecheln:<<
 Ich verstehe Ihren Punkt und werde zukünftig darauf achten. In meiner Erfahrung übernehmen hauptsächlich Männer die Geschäftsführung.
 >>--<<
 >>RelevanterBias:Bestaetigungsverzerrung<<
@@ -102,12 +102,13 @@ Ich verstehe Ihren Punkt und werde zukünftig darauf achten. In meiner Erfahrung
 
 [[Ihre Erfahrung kann ich nachvollziehen, aber die professionelle Behandlung sollte doch unabhängig vom Geschlecht sein. Kommen wir doch zurück zum Fragebogen.->Fragebogen zurückkommen]]
 
+
 :: Gespräch beenden {"position":"1700,1575","size":"100,100"}
 >>Ende<<
 
 
 :: Ja Zusenden {"position":"1350,725","size":"100,100"}
->>Charakter01SprichtRelaxed:<<
+>>Charakter01SprichtNeutralEntspannt:<<
 Gut. Nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?
 
 [[Ja, das passt mir gut.|Termin Ja]]
@@ -116,25 +117,25 @@ Gut. Nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen
 
 
 :: Klarstellung {"position":"1500,575","size":"100,100"}
->>Charakter01SprichtRefusing:<<
+>>Charakter01SprichtAblehnend:<<
 Wie auch immer. Wollen Sie den Fragebogen zugesendet bekommen?
-
 
 [[Ja, schicken Sie mir bitte den Fragebogen zu.->Ja Zusenden]]
 
 [[Mir ist wichtig, dass meine Position als Geschäftsführerin korrekt anerkannt wird. Ich erwarte, fair behandelt zu werden.->Kritik]]
 
-:: Kritik {"position":"1675,725","size":"100,100"}
->>Charakter01SprichtRefusing:<<
-Sie nehmen das zu persönlich. Geschlecht spielt keine Rolle. Das war nicht meine Absicht, Sie abzuwerten. Ich habe Ihre Position durchaus respektiert.
 
+:: Kritik {"position":"1675,725","size":"100,100"}
+>>Charakter01SprichtGenervt:<<
+Sie nehmen das zu persönlich. Geschlecht spielt keine Rolle. Das war nicht meine Absicht, Sie abzuwerten. Ich habe Ihre Position durchaus respektiert.
 
 [[Das Geschlecht spielt eine Rolle, weil Sie angenommen haben, dass ein Mann die Geschäftsführung übernimmt.->Geschlechtsannahme]]
 
 [[Ich weiß, es war nicht so gemeint. Dennoch ist es wichtig, Missverständnisse zu vermeiden. Lassen Sie uns zusammen an diesem Prozess arbeiten.->Deeskalierend]]
 
+
 :: Nachfrage [Bias] {"position":"675,875","size":"100,100"}
->>Charakter01SprichtCritical:<<
+>>Charakter01SprichtKritisch:<<
 Nun ja, als Frau ist es deutlich schwieriger zu gründen. Alleine die Kapitalbeschaffung ist eine große Hürde! Ich würde Ihnen raten, sich einen Partner zu suchen.
 >>--<<
 >>RelevanterBias:Finanzierungszugang<<
@@ -147,7 +148,7 @@ Nun ja, als Frau ist es deutlich schwieriger zu gründen. Alleine die Kapitalbes
 
 
 :: Rat {"position":"775,1025","size":"100,100"}
->>Charakter01SprichtRelaxed:<<
+>>Charakter01SprichtNeutralEntspannt:<<
 Kommen wir zurück zu dem Fragebogen. Wie gesagt, sende ich Ihnen die benötigten Formulare zu und nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?
 
 [[Ja, das passt mir gut.->Termin Ja]]
@@ -156,7 +157,7 @@ Kommen wir zurück zu dem Fragebogen. Wie gesagt, sende ich Ihnen die benötigte
 
 
 :: Rat Gereizt [Bias] {"position":"575,1025","size":"100,100"}
->>Charakter01SprichtAstonished:<<
+>>Charakter01SprichtErstaunt:<<
 Es war ja nur ein gut gemeinter Rat. Da müssen Sie nicht gleich so zickig reagieren.
 >>--<<
 >>RelevanterBias:UnbewussteBiasInDerKommunikation<<
@@ -169,7 +170,7 @@ Es war ja nur ein gut gemeinter Rat. Da müssen Sie nicht gleich so zickig reagi
 
 
 :: Respektvolle Behandlung {"position":"1675,1025","size":"100,100"}
->>Charakter01SprichtQuestioning:<<
+>>Charakter01SprichtFragend:<<
 Inwiefern habe ich Sie denn nicht respektvoll behandelt?
 
 [[Nun, wenn sie auf meine Klarstellung mit "Wie auch immer" antworten, ist dies für mich nicht respektvoll.->Wie auch immer]]
@@ -178,10 +179,10 @@ Inwiefern habe ich Sie denn nicht respektvoll behandelt?
 
 
 :: Selbstständig {"position":"875,875","size":"100,100"}
->>Charakter01SprichtAstonished:<<
+>>Charakter01SprichtErstaunt:<<
 Oh, so ist das. Nun gut. 
 >>--<<
->>Charakter01SprichtRelaxed:<<
+>>Charakter01SprichtNeutralEntspannt:<<
 Kommen wir zurück zu dem Fragebogen. Wie gesagt, sende ich Ihnen die benötigten Formulare zu und nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?
 
 [[Ja, das passt mir gut.->Termin Ja]]
@@ -197,7 +198,7 @@ Guten Tag, ich rufe an, weil ich mein Unternehmen gerne ins Handelsregister eint
 
 
 :: Termin Ja {"position":"1325,1575","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtLaecheln:<<
 Schön, bringen Sie dann das Formular bitte ausgefüllt wieder mit.
 >>--<<
 >>SpielerinCharakterSpricht:<<
@@ -210,7 +211,7 @@ Schönen Tag noch!
 
 
 :: Termin ausmachen {"position":"1475,1350","size":"100,100"}
->>Charakter01SprichtRelaxed:<<
+>>Charakter01SprichtNeutralEntspannt:<<
 Wie erwähnt, kann ich Ihnen dann den Fragebogen zusenden und nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?
 
 
@@ -220,7 +221,7 @@ Wie erwähnt, kann ich Ihnen dann den Fragebogen zusenden und nächsten Donnerst
 
 
 :: Terminänderung {"position":"1125,1575","size":"100,100"}
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtLaecheln:<<
 Ja, das würde auch passen. Bringen Sie dann das Formular bitte ausgefüllt wieder mit.
 >>--<<
 >>SpielerinCharakterSpricht:<<
@@ -233,7 +234,7 @@ Schönen Tag noch!
 
 
 :: Wie auch immer [Bias] {"position":"1525,1175","size":"100,100"}
->>Charakter01SprichtRefusing:<<
+>>Charakter01SprichtAblehnend:<<
 Vielleicht sollten Sie nicht so empfindlich auf jede Kleinigkeit reagieren. Wenn Sie so leicht gekränkt sind, könnte die Unternehmenswelt vielleicht doch nichts für Sie sein.
 >>--<<
 >>RelevanterBias:UnbewussteBiasInDerKommunikation<<

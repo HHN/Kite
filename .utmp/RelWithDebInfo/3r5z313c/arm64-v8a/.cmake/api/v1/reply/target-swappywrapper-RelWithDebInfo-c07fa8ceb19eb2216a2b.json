@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "C:/Users/JL/Documents/Code/Kite2Client/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/Debug/1ft133s6/obj/arm64-v8a/libswappywrapper.so"
+			"path" : "C:/Users/JL/Documents/Code/Kite2Client/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3r5z313c/obj/arm64-v8a/libswappywrapper.so"
 		}
 	],
 	"backtrace" : 1,
@@ -56,7 +56,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -fexceptions -frtti -stdlib=libc++ -Wall -Wextra -pedantic -Werror -g  -fno-limit-debug-info -fPIC"
+					"fragment" : "-DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -fexceptions -frtti -stdlib=libc++ -Wall -Wextra -pedantic -Werror -O2 -g -DNDEBUG -fPIC"
 				}
 			],
 			"defines" : 
@@ -88,7 +88,7 @@
 			],
 			"sysroot" : 
 			{
-				"path" : "C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot"
+				"path" : "C:/Program Files/Unity/Hub/Editor/6000.0.30f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot"
 			}
 		}
 	],
@@ -124,7 +124,7 @@
 		"language" : "CXX",
 		"sysroot" : 
 		{
-			"path" : "C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot"
+			"path" : "C:/Program Files/Unity/Hub/Editor/6000.0.30f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot"
 		}
 	},
 	"name" : "swappywrapper",

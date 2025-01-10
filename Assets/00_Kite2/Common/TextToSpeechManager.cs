@@ -100,7 +100,7 @@ namespace _00_Kite2.Common
         public bool IsSpeaking()
         {
 #if UNITY_ANDROID
-        return isSpeaking;
+        return _isSpeaking;
 #elif UNITY_IOS
         return _IsSpeaking();
 #else
@@ -173,7 +173,7 @@ namespace _00_Kite2.Common
         if (ttsObject != null)
         {
             StartEmptySpeech();
-            isSpeaking = false;
+            _isSpeaking = false;
         }
         else
         {
@@ -259,7 +259,7 @@ namespace _00_Kite2.Common
         if (ttsObject != null)
         {
             StartEmptySpeech();
-            isSpeaking = false;
+            _isSpeaking = false;
         }
         else
         {

@@ -10,7 +10,7 @@
 					[
 						1
 					],
-					"jsonFile" : "directory-.-RelWithDebInfo-d0094a50bb2071803777.json",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.6.0"
@@ -20,7 +20,7 @@
 				},
 				{
 					"build" : "FramePacing",
-					"jsonFile" : "directory-FramePacing-RelWithDebInfo-7f9c8865fd027a154c90.json",
+					"jsonFile" : "directory-FramePacing-Debug-7f9c8865fd027a154c90.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.4.1"
@@ -34,7 +34,7 @@
 					]
 				}
 			],
-			"name" : "RelWithDebInfo",
+			"name" : "Debug",
 			"projects" : 
 			[
 				{
@@ -66,7 +66,7 @@
 				{
 					"directoryIndex" : 1,
 					"id" : "swappywrapper::@7e25bd1f32ce224db4e9",
-					"jsonFile" : "target-swappywrapper-RelWithDebInfo-a63b2e7c47eebe955b4b.json",
+					"jsonFile" : "target-swappywrapper-Debug-00fdf66e702b7aeacebc.json",
 					"name" : "swappywrapper",
 					"projectIndex" : 1
 				}
@@ -76,7 +76,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/JL/Documents/Code/Kite2Client/.utmp/RelWithDebInfo/3r5z313c/arm64-v8a",
+		"build" : "C:/Users/JL/Documents/Code/Kite2Client/.utmp/Debug/1ft133s6/arm64-v8a",
 		"source" : "C:/Users/JL/Documents/Code/Kite2Client/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp"
 	},
 	"version" : 
