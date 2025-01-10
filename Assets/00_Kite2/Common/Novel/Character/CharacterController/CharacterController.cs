@@ -64,81 +64,160 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         public void SetFaceExpression(int expression)
         {
+            Debug.Log(expression);
             switch (expression)
             {
-                case 1: // Erschrocken
+                case 1: // Schaut Erschrocken
+                {
+                    ShowErschrockenAnimation();
+                    // PlayRelaxedAnimation();
+                    return;
+                }
+                case 2: // Schaut Genervt
+                {
+                    ShowGenervtAnimation();
+                    // PlayAstonishedAnimation();
+                    return;
+                }
+                case 3: // Schaut Unzufrieden
+                {
+                    ShowUnzufriedenAnimation();
+                    // PlayRefusingAnimation();
+                    return;
+                }
+                case 4: // Schaut Ablehnend
+                {
+                    ShowAblehnendAnimation();
+                    // PlaySmileAnimation();
+                    return;
+                }
+                case 5: // Schaut Erstaunt
+                {
+                    ShowErstauntAnimation();
+                    // PlayFriendlyAnimation();
+                    return;
+                }
+                case 6: // Schaut Fragend
+                {
+                    ShowFragendAnimation();
+                    // PlayLaughingAnimation();
+                    return;
+                }
+                case 7: // Schaut Kritisch
+                {
+                    ShowKritischAnimation();
+                    // PlayCriticalAnimation();
+                    return;
+                }
+                case 8: // Schaut Lächeln_Groß
+                {
+                    ShowLaechelnGrossAnimation();
+                    // PlayNoDealAnimation();
+                    return;
+                }
+                case 9: // Schaut Lachend
+                {
+                    ShowLachendAnimation();
+                    // PlayHappyAnimation();
+                    return;
+                }
+                case 10:    // Schaut Lächeln
+                {
+                    ShowLaechelnAnimation();
+                    // PlayProudAnimation();
+                    return;
+                }
+                case 11:    // Schaut Neutral_Entspannt
+                {
+                    ShowNeutralEntspanntAnimation();
+                    // PlayScaredAnimation();
+                    return;
+                }
+                case 12:    // Schaut Neutral
+                {
+                    ShowNeutralAnimation();
+                    // PlayQuestioningAnimation();
+                    return;
+                }
+                case 13:    // Schaut Stolz
+                {
+                    ShowStolzAnimation();
+                    // PlayDefeatedAnimation();
+                    return;
+                }
+                case 14: // Spricht Erschrocken
                 {
                     PlayErschrockenAnimation();
                     // PlayRelaxedAnimation();
                     return;
                 }
-                case 2: // Genervt
+                case 15: // Spricht Genervt
                 {
                     PlayGenervtAnimation();
                     // PlayAstonishedAnimation();
                     return;
                 }
-                case 3: // Unzufrieden
+                case 16: // Spricht Unzufrieden
                 {
                     PlayUnzufriedenAnimation();
                     // PlayRefusingAnimation();
                     return;
                 }
-                case 4: // Ablehnend
+                case 17: // Spricht Ablehnend
                 {
                     PlayAblehnendAnimation();
                     // PlaySmileAnimation();
                     return;
                 }
-                case 5: // Erstaunt
+                case 18: // Spricht Erstaunt
                 {
-                    PlayErstauntAnimation();
+                    ShowErstauntAnimation();
                     // PlayFriendlyAnimation();
                     return;
                 }
-                case 6: // Fragend
+                case 19: // Spricht Fragend
                 {
                     PlayFragendAnimation();
                     // PlayLaughingAnimation();
                     return;
                 }
-                case 7: // Kritisch
+                case 20: // Spricht Kritisch
                 {
                     PlayKritischAnimation();
                     // PlayCriticalAnimation();
                     return;
                 }
-                case 8: // Lächeln_Groß
+                case 21: // Spricht Lächeln_Groß
                 {
                     PlayLaechelnGrossAnimation();
                     // PlayNoDealAnimation();
                     return;
                 }
-                case 9: // Lachend
+                case 22: // Spricht Lachend
                 {
                     PlayLachendAnimation();
                     // PlayHappyAnimation();
                     return;
                 }
-                case 10:    // Lächeln
+                case 23:    // Spricht Lächeln
                 {
                     PlayLaechelnAnimation();
                     // PlayProudAnimation();
                     return;
                 }
-                case 11:    // Neutral_Entspannt
+                case 24:    // Spricht Neutral_Entspannt
                 {
                     PlayNeutralEntspanntAnimation();
                     // PlayScaredAnimation();
                     return;
                 }
-                case 12:    // Neutral
+                case 25:    // Spricht Neutral
                 {
                     PlayNeutralAnimation();
                     // PlayQuestioningAnimation();
                     return;
                 }
-                case 13:    // Stolz
+                case 26:    // Spricht Stolz
                 {
                     PlayStolzAnimation();
                     // PlayDefeatedAnimation();
@@ -150,70 +229,135 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                 }
             }
         }
-
-        private void PlayErschrockenAnimation()
+        
+        private void ShowErschrockenAnimation()
         {
             animator.Play("erschrocken");
         }
         
-        private void PlayGenervtAnimation()
+        private void ShowGenervtAnimation()
         {
             animator.Play("genervt");
         }
         
-        private void PlayUnzufriedenAnimation()
+        private void ShowUnzufriedenAnimation()
         {
             animator.Play("unzufrieden");
         }
         
-        private void PlayAblehnendAnimation()
+        private void ShowAblehnendAnimation()
         {
             animator.Play("ablehnend");
         }
         
-        private void PlayErstauntAnimation()
+        private void ShowErstauntAnimation()
         {
             animator.Play("erstaunt");
         }
 
-        private void PlayFragendAnimation()
+        private void ShowFragendAnimation()
         {
             animator.Play("fragend");
         }
         
-        private void PlayKritischAnimation()
+        private void ShowKritischAnimation()
         {
             animator.Play("kritisch");
         }
         
-        private void PlayLaechelnGrossAnimation()
+        private void ShowLaechelnGrossAnimation()
         {
             animator.Play("laecheln_gross");
         }
         
-        private void PlayLachendAnimation()
+        private void ShowLachendAnimation()
         {
             animator.Play("lachend");
         }
         
-        private void PlayLaechelnAnimation()
+        private void ShowLaechelnAnimation()
         {
             animator.Play("laecheln");
         }
         
-        private void PlayNeutralEntspanntAnimation()
+        private void ShowNeutralEntspanntAnimation()
         {
             animator.Play("neutral_entspannt");
         }
         
-        private void PlayNeutralAnimation()
+        private void ShowNeutralAnimation()
         {
             animator.Play("neutral");
         }
         
-        private void PlayStolzAnimation()
+        private void ShowStolzAnimation()
         {
             animator.Play("stolz");
+        }
+
+        private void PlayErschrockenAnimation()
+        {
+            animator.Play("erschrocken_sprechen");
+        }
+        
+        private void PlayGenervtAnimation()
+        {
+            animator.Play("genervt_sprechen");
+        }
+        
+        private void PlayUnzufriedenAnimation()
+        {
+            animator.Play("unzufrieden_sprechen");
+        }
+        
+        private void PlayAblehnendAnimation()
+        {
+            animator.Play("ablehnend_sprechen");
+        }
+        
+        private void PlayErstauntAnimation()
+        {
+            animator.Play("erstaunt_sprechen");
+        }
+
+        private void PlayFragendAnimation()
+        {
+            animator.Play("fragend_sprechen");
+        }
+        
+        private void PlayKritischAnimation()
+        {
+            animator.Play("kritisch_sprechen");
+        }
+        
+        private void PlayLaechelnGrossAnimation()
+        {
+            animator.Play("laecheln_gross_sprechen");
+        }
+        
+        private void PlayLachendAnimation()
+        {
+            animator.Play("lachend_sprechen");
+        }
+        
+        private void PlayLaechelnAnimation()
+        {
+            animator.Play("laecheln_sprechen");
+        }
+        
+        private void PlayNeutralEntspanntAnimation()
+        {
+            animator.Play("neutral_entspannt_sprechen");
+        }
+        
+        private void PlayNeutralAnimation()
+        {
+            animator.Play("neutral_sprechen");
+        }
+        
+        private void PlayStolzAnimation()
+        {
+            animator.Play("stolz_sprechen");
         }
 
         private void PlayDefeatedAnimation()

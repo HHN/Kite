@@ -13087,7 +13087,7 @@
             "isKite2Novel": true,
             "novelEvents": [
                 {
-                    "id": "initalLocationEvent001",
+                    "id": "initialLocationEvent001",
                     "nextId": "initalCharakterJoinsEvent001",
                     "onChoice": "",
                     "eventType": 1,
@@ -13130,7 +13130,7 @@
                     "character": 10,
                     "text": "",
                     "animationType": 0,
-                    "expressionType": 1,
+                    "expressionType": 11,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -13160,7 +13160,7 @@
                     "character": 4,
                     "text": "Du hast einen Termin mit einer Notarin, um einen Termin für deine Gründung auszumachen.",
                     "animationType": 0,
-                    "expressionType": 1,
+                    "expressionType": 11,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -13208,7 +13208,7 @@
                 },
                 {
                     "id": "Bereits erwähnt",
-                    "nextId": "OptionsLabel217",
+                    "nextId": "OptionsLabel1",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -13220,7 +13220,7 @@
                     "character": 10,
                     "text": "Ah, okay. Das Formular sende ich Ihnen zu. Nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?",
                     "animationType": 0,
-                    "expressionType": 1,
+                    "expressionType": 24,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -13237,8 +13237,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel217",
-                    "nextId": "OptionsLabel217OptionsLabel217",
+                    "id": "OptionsLabel1",
+                    "nextId": "OptionsLabel1OptionsLabel1",
                     "onChoice": "Termin Ja",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -13267,8 +13267,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel217OptionsLabel217",
-                    "nextId": "OptionsLabel217OptionsLabel217OptionsLabel217OptionsLabel217",
+                    "id": "OptionsLabel1OptionsLabel1",
+                    "nextId": "OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1",
                     "onChoice": "Terminänderung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -13297,8 +13297,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel217OptionsLabel217OptionsLabel217OptionsLabel217",
-                    "nextId": "OptionsLabel217OptionsLabel217OptionsLabel217OptionsLabel217OptionsLabel217OptionsLabel217OptionsLabel217OptionsLabel217",
+                    "id": "OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1",
+                    "nextId": "OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1",
                     "onChoice": "Bestätigung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -13327,7 +13327,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel217OptionsLabel217OptionsLabel217OptionsLabel217OptionsLabel217OptionsLabel217OptionsLabel217OptionsLabel217",
+                    "id": "OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -13370,7 +13370,7 @@
                     "character": 10,
                     "text": "Ja, das ist bereits notiert.",
                     "animationType": 0,
-                    "expressionType": 1,
+                    "expressionType": 24,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -13400,7 +13400,7 @@
                     "character": 10,
                     "text": "Das ist schon außergewöhnlich, dass Sie gründen. Wer hat Ihnen denn bei der Gründung geholfen?",
                     "animationType": 0,
-                    "expressionType": 2,
+                    "expressionType": 18,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -13418,7 +13418,7 @@
                 },
                 {
                     "id": "BestätigungRandomSeperatorString1020304BestätigungRandomSeperatorString1020304BestätigungRandomSeperatorString1020304Bestätigung",
-                    "nextId": "OptionsLabel218",
+                    "nextId": "OptionsLabel2",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -13447,8 +13447,8 @@
                     "relevantBias": 22
                 },
                 {
-                    "id": "OptionsLabel218",
-                    "nextId": "OptionsLabel218OptionsLabel218",
+                    "id": "OptionsLabel2",
+                    "nextId": "OptionsLabel2OptionsLabel2",
                     "onChoice": "Selbstständig",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -13477,8 +13477,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel218OptionsLabel218",
-                    "nextId": "OptionsLabel218OptionsLabel218OptionsLabel218OptionsLabel218",
+                    "id": "OptionsLabel2OptionsLabel2",
+                    "nextId": "OptionsLabel2OptionsLabel2OptionsLabel2OptionsLabel2",
                     "onChoice": "Selbstständig",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -13507,8 +13507,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel218OptionsLabel218OptionsLabel218OptionsLabel218",
-                    "nextId": "OptionsLabel218OptionsLabel218OptionsLabel218OptionsLabel218OptionsLabel218OptionsLabel218OptionsLabel218OptionsLabel218",
+                    "id": "OptionsLabel2OptionsLabel2OptionsLabel2OptionsLabel2",
+                    "nextId": "OptionsLabel2OptionsLabel2OptionsLabel2OptionsLabel2OptionsLabel2OptionsLabel2OptionsLabel2OptionsLabel2",
                     "onChoice": "Nachfrage",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -13537,7 +13537,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel218OptionsLabel218OptionsLabel218OptionsLabel218OptionsLabel218OptionsLabel218OptionsLabel218OptionsLabel218",
+                    "id": "OptionsLabel2OptionsLabel2OptionsLabel2OptionsLabel2OptionsLabel2OptionsLabel2OptionsLabel2OptionsLabel2",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -13568,7 +13568,7 @@
                 },
                 {
                     "id": "Deeskalierend",
-                    "nextId": "OptionsLabel219",
+                    "nextId": "OptionsLabel3",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -13580,7 +13580,7 @@
                     "character": 10,
                     "text": "Ich sehe keinen Grund, das Geschlecht in den Vordergrund zu stellen. Es wäre einfacher, wenn Sie sich auf den Geschäftsprozess konzentrieren.",
                     "animationType": 0,
-                    "expressionType": 7,
+                    "expressionType": 20,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -13597,8 +13597,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel219",
-                    "nextId": "OptionsLabel219OptionsLabel219",
+                    "id": "OptionsLabel3",
+                    "nextId": "OptionsLabel3OptionsLabel3",
                     "onChoice": "Respektvolle Behandlung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -13627,8 +13627,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel219OptionsLabel219",
-                    "nextId": "OptionsLabel219OptionsLabel219OptionsLabel219OptionsLabel219",
+                    "id": "OptionsLabel3OptionsLabel3",
+                    "nextId": "OptionsLabel3OptionsLabel3OptionsLabel3OptionsLabel3",
                     "onChoice": "Frustriert",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -13657,7 +13657,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel219OptionsLabel219OptionsLabel219OptionsLabel219",
+                    "id": "OptionsLabel3OptionsLabel3OptionsLabel3OptionsLabel3",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -13700,7 +13700,7 @@
                     "character": 10,
                     "text": "Guten Tag, für den Handelsregistereintrag muss erstmal ein Fragebogen ausgefüllt werden. Wichtig ist, dass der Geschäftsführer dabei ist, weil seine Unterschrift nötig ist.",
                     "animationType": 0,
-                    "expressionType": 4,
+                    "expressionType": 23,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -13718,7 +13718,7 @@
                 },
                 {
                     "id": "FragebogenRandomSeperatorString1020304Fragebogen",
-                    "nextId": "OptionsLabel220",
+                    "nextId": "OptionsLabel4",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -13747,8 +13747,8 @@
                     "relevantBias": 24
                 },
                 {
-                    "id": "OptionsLabel220",
-                    "nextId": "OptionsLabel220OptionsLabel220",
+                    "id": "OptionsLabel4",
+                    "nextId": "OptionsLabel4OptionsLabel4",
                     "onChoice": "Bereits erwähnt",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -13777,8 +13777,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel220OptionsLabel220",
-                    "nextId": "OptionsLabel220OptionsLabel220OptionsLabel220OptionsLabel220",
+                    "id": "OptionsLabel4OptionsLabel4",
+                    "nextId": "OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4",
                     "onChoice": "Klarstellung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -13807,7 +13807,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel220OptionsLabel220OptionsLabel220OptionsLabel220",
+                    "id": "OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -13838,7 +13838,7 @@
                 },
                 {
                     "id": "Fragebogen zurückkommen",
-                    "nextId": "OptionsLabel221",
+                    "nextId": "OptionsLabel5",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -13850,7 +13850,7 @@
                     "character": 10,
                     "text": "Also, ich kann Ihnen den Fragebogen zusenden und nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?",
                     "animationType": 0,
-                    "expressionType": 1,
+                    "expressionType": 24,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -13867,8 +13867,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel221",
-                    "nextId": "OptionsLabel221OptionsLabel221",
+                    "id": "OptionsLabel5",
+                    "nextId": "OptionsLabel5OptionsLabel5",
                     "onChoice": "Termin Ja",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -13897,8 +13897,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel221OptionsLabel221",
-                    "nextId": "OptionsLabel221OptionsLabel221OptionsLabel221OptionsLabel221",
+                    "id": "OptionsLabel5OptionsLabel5",
+                    "nextId": "OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5",
                     "onChoice": "Terminänderung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -13927,7 +13927,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel221OptionsLabel221OptionsLabel221OptionsLabel221",
+                    "id": "OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -13958,7 +13958,7 @@
                 },
                 {
                     "id": "Frustriert",
-                    "nextId": "OptionsLabel222",
+                    "nextId": "OptionsLabel6",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -13970,7 +13970,7 @@
                     "character": 10,
                     "text": "Wie Sie meinen. Also, wie erwähnt, kann ich Ihnen den Fragebogen zuschicken und nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?",
                     "animationType": 0,
-                    "expressionType": 1,
+                    "expressionType": 24,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -13987,8 +13987,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel222",
-                    "nextId": "OptionsLabel222OptionsLabel222",
+                    "id": "OptionsLabel6",
+                    "nextId": "OptionsLabel6OptionsLabel6",
                     "onChoice": "Termin Ja",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -14017,8 +14017,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel222OptionsLabel222",
-                    "nextId": "OptionsLabel222OptionsLabel222OptionsLabel222OptionsLabel222",
+                    "id": "OptionsLabel6OptionsLabel6",
+                    "nextId": "OptionsLabel6OptionsLabel6OptionsLabel6OptionsLabel6",
                     "onChoice": "Terminänderung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -14047,8 +14047,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel222OptionsLabel222OptionsLabel222OptionsLabel222",
-                    "nextId": "OptionsLabel222OptionsLabel222OptionsLabel222OptionsLabel222OptionsLabel222OptionsLabel222OptionsLabel222OptionsLabel222",
+                    "id": "OptionsLabel6OptionsLabel6OptionsLabel6OptionsLabel6",
+                    "nextId": "OptionsLabel6OptionsLabel6OptionsLabel6OptionsLabel6OptionsLabel6OptionsLabel6OptionsLabel6OptionsLabel6",
                     "onChoice": "Gespräch beenden",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -14077,7 +14077,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel222OptionsLabel222OptionsLabel222OptionsLabel222OptionsLabel222OptionsLabel222OptionsLabel222OptionsLabel222",
+                    "id": "OptionsLabel6OptionsLabel6OptionsLabel6OptionsLabel6OptionsLabel6OptionsLabel6OptionsLabel6OptionsLabel6",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -14120,7 +14120,7 @@
                     "character": 10,
                     "text": "Ich verstehe Ihren Punkt und werde zukünftig darauf achten. In meiner Erfahrung übernehmen hauptsächlich Männer die Geschäftsführung.",
                     "animationType": 0,
-                    "expressionType": 4,
+                    "expressionType": 23,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -14138,7 +14138,7 @@
                 },
                 {
                     "id": "GeschlechtsannahmeRandomSeperatorString1020304Geschlechtsannahme",
-                    "nextId": "OptionsLabel223",
+                    "nextId": "OptionsLabel7",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -14167,8 +14167,8 @@
                     "relevantBias": 5
                 },
                 {
-                    "id": "OptionsLabel223",
-                    "nextId": "OptionsLabel223OptionsLabel223",
+                    "id": "OptionsLabel7",
+                    "nextId": "OptionsLabel7OptionsLabel7",
                     "onChoice": "Respektvolle Behandlung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -14197,8 +14197,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel223OptionsLabel223",
-                    "nextId": "OptionsLabel223OptionsLabel223OptionsLabel223OptionsLabel223",
+                    "id": "OptionsLabel7OptionsLabel7",
+                    "nextId": "OptionsLabel7OptionsLabel7OptionsLabel7OptionsLabel7",
                     "onChoice": "Fragebogen zurückkommen",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -14227,7 +14227,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel223OptionsLabel223OptionsLabel223OptionsLabel223",
+                    "id": "OptionsLabel7OptionsLabel7OptionsLabel7OptionsLabel7",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -14348,7 +14348,7 @@
                 },
                 {
                     "id": "Ja Zusenden",
-                    "nextId": "OptionsLabel224",
+                    "nextId": "OptionsLabel8",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -14360,7 +14360,7 @@
                     "character": 10,
                     "text": "Gut. Nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?",
                     "animationType": 0,
-                    "expressionType": 1,
+                    "expressionType": 24,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -14377,8 +14377,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel224",
-                    "nextId": "OptionsLabel224OptionsLabel224",
+                    "id": "OptionsLabel8",
+                    "nextId": "OptionsLabel8OptionsLabel8",
                     "onChoice": "Termin Ja",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -14407,8 +14407,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel224OptionsLabel224",
-                    "nextId": "OptionsLabel224OptionsLabel224OptionsLabel224OptionsLabel224",
+                    "id": "OptionsLabel8OptionsLabel8",
+                    "nextId": "OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8",
                     "onChoice": "Terminänderung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -14437,7 +14437,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel224OptionsLabel224OptionsLabel224OptionsLabel224",
+                    "id": "OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -14468,7 +14468,7 @@
                 },
                 {
                     "id": "Klarstellung",
-                    "nextId": "OptionsLabel225",
+                    "nextId": "OptionsLabel9",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -14480,7 +14480,7 @@
                     "character": 10,
                     "text": "Wie auch immer. Wollen Sie den Fragebogen zugesendet bekommen?",
                     "animationType": 0,
-                    "expressionType": 3,
+                    "expressionType": 17,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -14497,8 +14497,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel225",
-                    "nextId": "OptionsLabel225OptionsLabel225",
+                    "id": "OptionsLabel9",
+                    "nextId": "OptionsLabel9OptionsLabel9",
                     "onChoice": "Ja Zusenden",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -14527,8 +14527,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel225OptionsLabel225",
-                    "nextId": "OptionsLabel225OptionsLabel225OptionsLabel225OptionsLabel225",
+                    "id": "OptionsLabel9OptionsLabel9",
+                    "nextId": "OptionsLabel9OptionsLabel9OptionsLabel9OptionsLabel9",
                     "onChoice": "Kritik",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -14557,7 +14557,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel225OptionsLabel225OptionsLabel225OptionsLabel225",
+                    "id": "OptionsLabel9OptionsLabel9OptionsLabel9OptionsLabel9",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -14588,7 +14588,7 @@
                 },
                 {
                     "id": "Kritik",
-                    "nextId": "OptionsLabel226",
+                    "nextId": "OptionsLabel10",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -14600,7 +14600,7 @@
                     "character": 10,
                     "text": "Sie nehmen das zu persönlich. Geschlecht spielt keine Rolle. Das war nicht meine Absicht, Sie abzuwerten. Ich habe Ihre Position durchaus respektiert.",
                     "animationType": 0,
-                    "expressionType": 3,
+                    "expressionType": 15,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -14617,8 +14617,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel226",
-                    "nextId": "OptionsLabel226OptionsLabel226",
+                    "id": "OptionsLabel10",
+                    "nextId": "OptionsLabel10OptionsLabel10",
                     "onChoice": "Geschlechtsannahme",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -14647,8 +14647,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel226OptionsLabel226",
-                    "nextId": "OptionsLabel226OptionsLabel226OptionsLabel226OptionsLabel226",
+                    "id": "OptionsLabel10OptionsLabel10",
+                    "nextId": "OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10",
                     "onChoice": "Deeskalierend",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -14677,7 +14677,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel226OptionsLabel226OptionsLabel226OptionsLabel226",
+                    "id": "OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -14720,7 +14720,7 @@
                     "character": 10,
                     "text": "Nun ja, als Frau ist es deutlich schwieriger zu gründen. Alleine die Kapitalbeschaffung ist eine große Hürde! Ich würde Ihnen raten, sich einen Partner zu suchen.",
                     "animationType": 0,
-                    "expressionType": 7,
+                    "expressionType": 20,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -14768,7 +14768,7 @@
                 },
                 {
                     "id": "NachfrageRandomSeperatorString1020304NachfrageRandomSeperatorString1020304NachfrageRandomSeperatorString1020304Nachfrage",
-                    "nextId": "OptionsLabel227",
+                    "nextId": "OptionsLabel11",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -14797,8 +14797,8 @@
                     "relevantBias": 3
                 },
                 {
-                    "id": "OptionsLabel227",
-                    "nextId": "OptionsLabel227OptionsLabel227",
+                    "id": "OptionsLabel11",
+                    "nextId": "OptionsLabel11OptionsLabel11",
                     "onChoice": "Rat Gereizt",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -14827,8 +14827,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel227OptionsLabel227",
-                    "nextId": "OptionsLabel227OptionsLabel227OptionsLabel227OptionsLabel227",
+                    "id": "OptionsLabel11OptionsLabel11",
+                    "nextId": "OptionsLabel11OptionsLabel11OptionsLabel11OptionsLabel11",
                     "onChoice": "Rat",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -14857,7 +14857,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel227OptionsLabel227OptionsLabel227OptionsLabel227",
+                    "id": "OptionsLabel11OptionsLabel11OptionsLabel11OptionsLabel11",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -14888,7 +14888,7 @@
                 },
                 {
                     "id": "Rat",
-                    "nextId": "OptionsLabel228",
+                    "nextId": "OptionsLabel12",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -14900,7 +14900,7 @@
                     "character": 10,
                     "text": "Kommen wir zurück zu dem Fragebogen. Wie gesagt, sende ich Ihnen die benötigten Formulare zu und nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?",
                     "animationType": 0,
-                    "expressionType": 1,
+                    "expressionType": 24,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -14917,8 +14917,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel228",
-                    "nextId": "OptionsLabel228OptionsLabel228",
+                    "id": "OptionsLabel12",
+                    "nextId": "OptionsLabel12OptionsLabel12",
                     "onChoice": "Termin Ja",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -14947,8 +14947,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel228OptionsLabel228",
-                    "nextId": "OptionsLabel228OptionsLabel228OptionsLabel228OptionsLabel228",
+                    "id": "OptionsLabel12OptionsLabel12",
+                    "nextId": "OptionsLabel12OptionsLabel12OptionsLabel12OptionsLabel12",
                     "onChoice": "Terminänderung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -14977,7 +14977,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel228OptionsLabel228OptionsLabel228OptionsLabel228",
+                    "id": "OptionsLabel12OptionsLabel12OptionsLabel12OptionsLabel12",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -15020,7 +15020,7 @@
                     "character": 10,
                     "text": "Es war ja nur ein gut gemeinter Rat. Da müssen Sie nicht gleich so zickig reagieren.",
                     "animationType": 0,
-                    "expressionType": 2,
+                    "expressionType": 18,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -15068,7 +15068,7 @@
                 },
                 {
                     "id": "Rat GereiztRandomSeperatorString1020304Rat GereiztRandomSeperatorString1020304Rat GereiztRandomSeperatorString1020304Rat Gereizt",
-                    "nextId": "OptionsLabel229",
+                    "nextId": "OptionsLabel13",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -15097,8 +15097,8 @@
                     "relevantBias": 20
                 },
                 {
-                    "id": "OptionsLabel229",
-                    "nextId": "OptionsLabel229OptionsLabel229",
+                    "id": "OptionsLabel13",
+                    "nextId": "OptionsLabel13OptionsLabel13",
                     "onChoice": "Termin ausmachen",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -15127,8 +15127,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel229OptionsLabel229",
-                    "nextId": "OptionsLabel229OptionsLabel229OptionsLabel229OptionsLabel229",
+                    "id": "OptionsLabel13OptionsLabel13",
+                    "nextId": "OptionsLabel13OptionsLabel13OptionsLabel13OptionsLabel13",
                     "onChoice": "Gespräch beenden",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -15157,7 +15157,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel229OptionsLabel229OptionsLabel229OptionsLabel229",
+                    "id": "OptionsLabel13OptionsLabel13OptionsLabel13OptionsLabel13",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -15188,7 +15188,7 @@
                 },
                 {
                     "id": "Respektvolle Behandlung",
-                    "nextId": "OptionsLabel230",
+                    "nextId": "OptionsLabel14",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -15200,7 +15200,7 @@
                     "character": 10,
                     "text": "Inwiefern habe ich Sie denn nicht respektvoll behandelt?",
                     "animationType": 0,
-                    "expressionType": 12,
+                    "expressionType": 19,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -15217,8 +15217,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel230",
-                    "nextId": "OptionsLabel230OptionsLabel230",
+                    "id": "OptionsLabel14",
+                    "nextId": "OptionsLabel14OptionsLabel14",
                     "onChoice": "Wie auch immer",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -15247,8 +15247,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel230OptionsLabel230",
-                    "nextId": "OptionsLabel230OptionsLabel230OptionsLabel230OptionsLabel230",
+                    "id": "OptionsLabel14OptionsLabel14",
+                    "nextId": "OptionsLabel14OptionsLabel14OptionsLabel14OptionsLabel14",
                     "onChoice": "Gespräch beenden",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -15277,7 +15277,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel230OptionsLabel230OptionsLabel230OptionsLabel230",
+                    "id": "OptionsLabel14OptionsLabel14OptionsLabel14OptionsLabel14",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -15320,7 +15320,7 @@
                     "character": 10,
                     "text": "Oh, so ist das. Nun gut.",
                     "animationType": 0,
-                    "expressionType": 2,
+                    "expressionType": 18,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -15338,7 +15338,7 @@
                 },
                 {
                     "id": "SelbstständigRandomSeperatorString1020304Selbstständig",
-                    "nextId": "OptionsLabel231",
+                    "nextId": "OptionsLabel15",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -15350,7 +15350,7 @@
                     "character": 10,
                     "text": "Kommen wir zurück zu dem Fragebogen. Wie gesagt, sende ich Ihnen die benötigten Formulare zu und nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?",
                     "animationType": 0,
-                    "expressionType": 1,
+                    "expressionType": 24,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -15367,8 +15367,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel231",
-                    "nextId": "OptionsLabel231OptionsLabel231",
+                    "id": "OptionsLabel15",
+                    "nextId": "OptionsLabel15OptionsLabel15",
                     "onChoice": "Termin Ja",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -15397,8 +15397,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel231OptionsLabel231",
-                    "nextId": "OptionsLabel231OptionsLabel231OptionsLabel231OptionsLabel231",
+                    "id": "OptionsLabel15OptionsLabel15",
+                    "nextId": "OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15",
                     "onChoice": "Terminänderung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -15427,7 +15427,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel231OptionsLabel231OptionsLabel231OptionsLabel231",
+                    "id": "OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -15468,9 +15468,9 @@
                     "faceSpriteId": 0,
                     "backgroundSpriteId": 0,
                     "character": 1,
-                    "text": "Guten Tag, ich rufe an, weil ich mein Unternehmen gerne ins Handelregister eintragen lassen möchte.",
+                    "text": "Guten Tag, ich rufe an, weil ich mein Unternehmen gerne ins Handelsregister eintragen lassen möchte.",
                     "animationType": 0,
-                    "expressionType": 1,
+                    "expressionType": 11,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -15500,7 +15500,7 @@
                     "character": 10,
                     "text": "Schön, bringen Sie dann das Formular bitte ausgefüllt wieder mit.",
                     "animationType": 0,
-                    "expressionType": 4,
+                    "expressionType": 23,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -15530,37 +15530,7 @@
                     "character": 1,
                     "text": "Das werde ich. Vielen Dank und bis dann!",
                     "animationType": 0,
-                    "expressionType": 1,
-                    "xPosition": 0,
-                    "yPosition": 0,
-                    "opinionChoiceNumber": 0,
-                    "audioClipToPlay": 0,
-                    "animationToPlay": 0,
-                    "show": true,
-                    "questionForFreeTextInput": "",
-                    "variablesName": "",
-                    "gptPrompt": "",
-                    "variablesNameForGptPrompt": "",
-                    "gptCompletionHandlerId": 0,
-                    "key": "",
-                    "value": "",
-                    "relevantBias": 0
-                },
-                {
-                    "id": "Termin JaRandomSeperatorString1020304Termin JaRandomSeperatorString1020304Termin JaRandomSeperatorString1020304Termin Ja",
-                    "nextId": "Termin JaRandomSeperatorString1020304Termin JaRandomSeperatorString1020304Termin JaRandomSeperatorString1020304Termin JaRandomSeperatorString1020304Termin JaRandomSeperatorString1020304Termin JaRandomSeperatorString1020304Termin JaRandomSeperatorString1020304Termin Ja",
-                    "onChoice": "",
-                    "eventType": 4,
-                    "waitForUserConfirmation": true,
-                    "skinSpriteId": 0,
-                    "clotheSpriteId": 0,
-                    "hairSpriteId": 0,
-                    "faceSpriteId": 0,
-                    "backgroundSpriteId": 0,
-                    "character": 10,
-                    "text": "Schönen Tag noch!",
-                    "animationType": 0,
-                    "expressionType": 4,
+                    "expressionType": 11,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -15668,7 +15638,7 @@
                 },
                 {
                     "id": "Termin ausmachen",
-                    "nextId": "OptionsLabel232",
+                    "nextId": "OptionsLabel16",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -15680,7 +15650,7 @@
                     "character": 10,
                     "text": "Wie erwähnt, kann ich Ihnen dann den Fragebogen zusenden und nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?",
                     "animationType": 0,
-                    "expressionType": 1,
+                    "expressionType": 24,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -15697,8 +15667,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel232",
-                    "nextId": "OptionsLabel232OptionsLabel232",
+                    "id": "OptionsLabel16",
+                    "nextId": "OptionsLabel16OptionsLabel16",
                     "onChoice": "Termin Ja",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -15727,8 +15697,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel232OptionsLabel232",
-                    "nextId": "OptionsLabel232OptionsLabel232OptionsLabel232OptionsLabel232",
+                    "id": "OptionsLabel16OptionsLabel16",
+                    "nextId": "OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16",
                     "onChoice": "Terminänderung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -15757,7 +15727,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel232OptionsLabel232OptionsLabel232OptionsLabel232",
+                    "id": "OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -15800,7 +15770,7 @@
                     "character": 10,
                     "text": "Ja, das würde auch passen. Bringen Sie dann das Formular bitte ausgefüllt wieder mit.",
                     "animationType": 0,
-                    "expressionType": 4,
+                    "expressionType": 23,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -15830,37 +15800,7 @@
                     "character": 1,
                     "text": "Das werde ich. Danke und bis dann!",
                     "animationType": 0,
-                    "expressionType": 1,
-                    "xPosition": 0,
-                    "yPosition": 0,
-                    "opinionChoiceNumber": 0,
-                    "audioClipToPlay": 0,
-                    "animationToPlay": 0,
-                    "show": true,
-                    "questionForFreeTextInput": "",
-                    "variablesName": "",
-                    "gptPrompt": "",
-                    "variablesNameForGptPrompt": "",
-                    "gptCompletionHandlerId": 0,
-                    "key": "",
-                    "value": "",
-                    "relevantBias": 0
-                },
-                {
-                    "id": "TerminänderungRandomSeperatorString1020304TerminänderungRandomSeperatorString1020304TerminänderungRandomSeperatorString1020304Terminänderung",
-                    "nextId": "TerminänderungRandomSeperatorString1020304TerminänderungRandomSeperatorString1020304TerminänderungRandomSeperatorString1020304TerminänderungRandomSeperatorString1020304TerminänderungRandomSeperatorString1020304TerminänderungRandomSeperatorString1020304TerminänderungRandomSeperatorString1020304Terminänderung",
-                    "onChoice": "",
-                    "eventType": 4,
-                    "waitForUserConfirmation": true,
-                    "skinSpriteId": 0,
-                    "clotheSpriteId": 0,
-                    "hairSpriteId": 0,
-                    "faceSpriteId": 0,
-                    "backgroundSpriteId": 0,
-                    "character": 10,
-                    "text": "Schönen Tag noch!",
-                    "animationType": 0,
-                    "expressionType": 4,
+                    "expressionType": 11,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -15980,7 +15920,7 @@
                     "character": 10,
                     "text": "Vielleicht sollten Sie nicht so empfindlich auf jede Kleinigkeit reagieren. Wenn Sie so leicht gekränkt sind, könnte die Unternehmenswelt vielleicht doch nichts für Sie sein.",
                     "animationType": 0,
-                    "expressionType": 3,
+                    "expressionType": 17,
                     "xPosition": 0,
                     "yPosition": 0,
                     "opinionChoiceNumber": 0,
@@ -16028,7 +15968,7 @@
                 },
                 {
                     "id": "Wie auch immerRandomSeperatorString1020304Wie auch immerRandomSeperatorString1020304Wie auch immerRandomSeperatorString1020304Wie auch immer",
-                    "nextId": "OptionsLabel233",
+                    "nextId": "OptionsLabel17",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -16057,8 +15997,8 @@
                     "relevantBias": 7
                 },
                 {
-                    "id": "OptionsLabel233",
-                    "nextId": "OptionsLabel233OptionsLabel233",
+                    "id": "OptionsLabel17",
+                    "nextId": "OptionsLabel17OptionsLabel17",
                     "onChoice": "Termin ausmachen",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -16087,8 +16027,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel233OptionsLabel233",
-                    "nextId": "OptionsLabel233OptionsLabel233OptionsLabel233OptionsLabel233",
+                    "id": "OptionsLabel17OptionsLabel17",
+                    "nextId": "OptionsLabel17OptionsLabel17OptionsLabel17OptionsLabel17",
                     "onChoice": "Gespräch beenden",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -16117,7 +16057,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel233OptionsLabel233OptionsLabel233OptionsLabel233",
+                    "id": "OptionsLabel17OptionsLabel17OptionsLabel17OptionsLabel17",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,

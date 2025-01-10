@@ -1559,6 +1559,28 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 280254954194880203, guid: f06932513849a4444b16dbe594485619, type: 3}
   m_PrefabInstance: {fileID: 906974694}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &906974696 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 280254953071386967, guid: f06932513849a4444b16dbe594485619, type: 3}
+  m_PrefabInstance: {fileID: 906974694}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &906974697 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 280254954194880200, guid: f06932513849a4444b16dbe594485619, type: 3}
+  m_PrefabInstance: {fileID: 906974694}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &927080151
 GameObject:
   m_ObjectHideFlags: 0
@@ -1977,13 +1999,13 @@ MonoBehaviour:
   canvas: {fileID: 1681350940}
   novelImage: {fileID: 2050128747}
   textBoxImage: {fileID: 1639550166}
-  headerImage: {fileID: 0}
-  novelname: {fileID: 733446594}
+  headerImage: {fileID: 906974697}
+  novelName: {fileID: 733446594}
   buttonText: {fileID: 0}
   backgroundColor: {r: 0, g: 0, b: 0, a: 0}
   playButton: {fileID: 1054731372}
   playButton2: {fileID: 1464309564}
-  backButton: {fileID: 0}
+  backButton: {fileID: 906974696}
   toggle: {fileID: 1183852791}
   toggle2: {fileID: 757202592}
 --- !u!4 &1157646775

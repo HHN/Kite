@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace _00_Kite2.Player.Kite_Novels.Visual_Novel_Formatter
 {
-    public abstract class KiteNovelMetaData
+    public class KiteNovelMetaData
     {
         public long IdNumberOfNovel { get; set; } = 0;
 

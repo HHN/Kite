@@ -731,7 +731,7 @@ namespace _00_Kite2.Player
         private void HandleShowChoicesEvent(VisualNovelEvent novelEvent)
         {
             StartCoroutine(TextToSpeechManager.Instance.ReadChoice());
-            _novelImagesController.SetFaceExpression(_novelCharacter, 5);
+            _novelImagesController.SetFaceExpression(_novelCharacter, 11);
             // Enable animations when showing choices
             AnimationFlagSingleton.Instance().SetFlag(true);
 
