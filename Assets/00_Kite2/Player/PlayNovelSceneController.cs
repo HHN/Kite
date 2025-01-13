@@ -137,6 +137,9 @@ namespace _00_Kite2.Player
 
         private IEnumerator _speakingCoroutine;
 
+        private int _lastExpressionType = 0;
+        private VisualNovelEvent _currentNovelEvent = null;
+
         private void Start()
         {
             _conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
@@ -695,9 +698,9 @@ namespace _00_Kite2.Player
 
             SetNextEvent(novelEvent);
 
-            Debug.Log("novel.id: " + novelEvent.id);
-            Debug.Log("novelEvent.character: " + novelEvent.character);
-            Debug.Log("novelEvent.expressionType: " + novelEvent.expressionType);
+            _lastExpressionType = novelEvent.expressionType;
+            _currentNovelEvent = novelEvent;
+            
             _novelImagesController.SetFaceExpression(novelEvent.character, novelEvent.expressionType);
             _novelCharacter = novelEvent.character;
 
@@ -714,7 +717,7 @@ namespace _00_Kite2.Player
                 SetWaitingForConfirmation(true);
                 return;
             }
-
+            
             StartCoroutine(StartNextEventInOneSeconds(1));
         }
 
@@ -738,7 +741,7 @@ namespace _00_Kite2.Player
         private void HandleShowChoicesEvent(VisualNovelEvent novelEvent)
         {
             StartCoroutine(TextToSpeechManager.Instance.ReadChoice());
-            _novelImagesController.SetFaceExpression(_novelCharacter, 11);
+            // _novelImagesController.SetFaceExpression(_novelCharacter, 11);
             // Enable animations when showing choices
             AnimationFlagSingleton.Instance().SetFlag(true);
 
@@ -788,6 +791,9 @@ namespace _00_Kite2.Player
         private IEnumerator StartNextEventInOneSeconds(float second)
         {
             yield return new WaitForSeconds(second);
+            
+            if(_currentNovelEvent != null) _novelImagesController.SetFaceExpression(_currentNovelEvent.character, _currentNovelEvent.expressionType - 13);
+            
             StartCoroutine(PlayNextEvent());
         }
 
