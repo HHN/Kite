@@ -6,14 +6,18 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
     public class CharacterController : MonoBehaviour
     {
         [SerializeField] private Image skinImage;
+        [SerializeField] private Image handImage;
         [SerializeField] private Image clotheImage;
         [SerializeField] private Image hairImage;
         [SerializeField] private Image faceImage;
 
         [SerializeField] private Sprite[] skinSprites;
+        [SerializeField] private Sprite[] handSprites;
         [SerializeField] private Sprite[] clotheSprites;
         [SerializeField] private Sprite[] hairSprites;
         [SerializeField] private Animator animator;
+
+        private int _skinColour;
 
         private static readonly int IsTalking = Animator.StringToHash("isTalking");
 
@@ -25,11 +29,42 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             // }
 
             if (skinSprites == null) return;
-
+        
             int randomIndex = Random.Range(0, skinSprites.Length);
             Sprite randomSkinImage = skinSprites[randomIndex];
-
+        
             skinImage.sprite = randomSkinImage;
+
+            if (randomSkinImage.name.Contains("a"))
+            {
+                _skinColour = 2;
+            }
+            else if (randomSkinImage.name.Contains("b"))
+            {
+                _skinColour = 1;
+            }
+            else if (randomSkinImage.name.Contains("c"))
+            {
+                _skinColour = 0;
+            }
+            else if (randomSkinImage.name.Contains("d"))
+            {
+                _skinColour = 3;
+            }
+        }
+        
+        public void SetHandSprite( /*int handSpriteIndex*/)
+        {
+            // if ((skinSprites.Length > handSpriteIndex) && (handSpriteIndex >= 0))
+            // {
+            //     skinImage.sprite = skinSprites[handSpriteIndex];
+            // }
+
+            if (handSprites == null) return;
+
+            Sprite randomHandImage = handSprites[_skinColour];
+
+            handImage.sprite = randomHandImage;
         }
 
         public void SetClotheSprite( /*int clotheSpriteIndex*/)

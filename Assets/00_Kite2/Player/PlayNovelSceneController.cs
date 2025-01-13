@@ -19,6 +19,7 @@ using LeastSquares.Overtone;
 using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using CharacterController = _00_Kite2.Common.Novel.Character.CharacterController.CharacterController;
 
@@ -53,12 +54,15 @@ namespace _00_Kite2.Player
 
         [SerializeField] private GameObject novelImageContainer;
         [SerializeField] private GameObject novelBackgroundPrefab;
-        [SerializeField] private GameObject characterPrefabMayer;
-        [SerializeField] private GameObject characterPrefabReporterin;
-        [SerializeField] private GameObject characterPrefabVermieter;
+        [SerializeField] private GameObject characterPrefabBank;
+        [SerializeField] private GameObject characterPrefabBekannter;
+        [SerializeField] private GameObject characterPrefabBuero;
         [SerializeField] private GameObject characterPrefabMutter;
         [SerializeField] private GameObject characterPrefabVater;
         [SerializeField] private GameObject characterPrefabIntro;
+        [SerializeField] private GameObject characterPrefabNotarin;
+        [SerializeField] private GameObject characterPrefabPresse;
+        [SerializeField] private GameObject characterPrefabVerhandlung;
         [SerializeField] private GameObject backgroundContainer;
         [SerializeField] private GameObject deskContainer;
         [SerializeField] private GameObject decoDeskContainer;
