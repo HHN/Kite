@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -59,3 +60,4 @@ namespace _00_Kite2.Test
         }
     }
 }
+#endif

@@ -24,7 +24,10 @@ namespace _00_Kite2.Server_Communication
         {
             using (UnityWebRequest webRequest = CreateRequest())
             {
-                webRequest.certificateHandler = new CustomCertificateHandler();
+                // Hier wird der Custom-CertificateHandler zugewiesen:
+                webRequest.certificateHandler = new BypassCertificate();
+                Debug.Log("RequestRegistration");
+
                 yield return webRequest.SendWebRequest();
                 HandleWebRequestResult(webRequest);
             }
@@ -46,8 +49,12 @@ namespace _00_Kite2.Server_Communication
             return webRequest;
         }
 
-        private void HandleWebRequestResult(UnityWebRequest webRequest)
+        protected void HandleWebRequestResult(UnityWebRequest webRequest)
         {
+            Debug.Log("UnityWebRequest Result: " + webRequest.result);
+            Debug.Log("UnityWebRequest Error: " + webRequest.error);
+            Debug.Log("WebRequest URL: " + webRequest.url);
+
             switch (webRequest.result)
             {
                 case UnityWebRequest.Result.Success:
@@ -59,40 +66,6 @@ namespace _00_Kite2.Server_Communication
 
                     Response response = JsonUtility.FromJson<Response>(webRequest.downloadHandler.text);
                     OnResponse(response);
-
-                    //Debug.Log("response.GetResultText(): " + response.GetResultText());
-                    //Debug.Log("response.GetCompletion(): " + response.GetCompletion());
-                    break;
-                }
-                case UnityWebRequest.Result.ConnectionError:
-                {
-                    sceneController.DisplayErrorMessage("Connection Error: " + webRequest.error);
-                    break;
-                }
-                case UnityWebRequest.Result.DataProcessingError:
-                {
-                    sceneController.DisplayErrorMessage("Data Processing Error: " + webRequest.error);
-                    break;
-                }
-                case UnityWebRequest.Result.ProtocolError:
-                {
-                    // Versuche, die HTTP-Statuscodes für genauere Fehlermeldungen zu nutzen
-                    string errorMessage = $"Protocol Error ({webRequest.responseCode}): {webRequest.error}";
-                    switch (webRequest.responseCode)
-                    {
-                        case 404:
-                            errorMessage = "Error 404: Resource not found.";
-                            break;
-                        case 500:
-                            errorMessage = "Error 500: Internal server error.";
-                            break;
-                        // Weitere Statuscodes und spezifische Nachrichten hier hinzufügen
-                        default:
-                            errorMessage += "\nServer Response: " + webRequest.downloadHandler.text;
-                            break;
-                    }
-
-                    sceneController.DisplayErrorMessage(errorMessage);
                     break;
                 }
                 default:
@@ -126,9 +99,7 @@ namespace _00_Kite2.Server_Communication
         }
 
         protected abstract UnityWebRequest CreateUnityWebRequestObject();
-
         protected abstract object CreateRequestObject();
-
         protected abstract void OnResponse(Response response);
 
         private IEnumerator DestroyInSeconds(long seconds)
