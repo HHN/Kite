@@ -32,7 +32,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         public void SetFaceExpression(int characterId, int expressionType)
         {
-            Debug.Log("SetFaceExpression: " + expressionType);
+            Debug.Log("SetFaceExpression: characterId - " + characterId + " expressionType - " + expressionType);
             // case CharacterRole.NONE: { return 0; }
             // case CharacterRole.PLAYER: { return 1; }
             // case CharacterRole.INTRO: { return 2; }

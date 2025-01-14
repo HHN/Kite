@@ -99,7 +99,6 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         public void SetFaceExpression(int expression)
         {
-            Debug.Log(expression);
             switch (expression)
             {
                 case 1: // Schaut Erschrocken

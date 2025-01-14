@@ -139,6 +139,7 @@ namespace _00_Kite2.Player
 
         private int _lastExpressionType = 0;
         private VisualNovelEvent _currentNovelEvent = null;
+        public VisualNovelEvent CurrentNovelEvent => _currentNovelEvent;
 
         private void Start()
         {
@@ -701,6 +702,7 @@ namespace _00_Kite2.Player
             _lastExpressionType = novelEvent.expressionType;
             _currentNovelEvent = novelEvent;
             
+            Debug.Log("ExpressionType: " + CharacterExpressionHelper.ValueOf(_currentNovelEvent.expressionType));
             _novelImagesController.SetFaceExpression(novelEvent.character, novelEvent.expressionType);
             _novelCharacter = novelEvent.character;
 
@@ -791,8 +793,11 @@ namespace _00_Kite2.Player
         private IEnumerator StartNextEventInOneSeconds(float second)
         {
             yield return new WaitForSeconds(second);
-            
-            if(_currentNovelEvent != null) _novelImagesController.SetFaceExpression(_currentNovelEvent.character, _currentNovelEvent.expressionType - 13);
+
+            if (_currentNovelEvent is { expressionType: > 13 })
+            {
+                _novelImagesController.SetFaceExpression(_currentNovelEvent.character, _currentNovelEvent.expressionType - 13);
+            }
             
             StartCoroutine(PlayNextEvent());
         }
@@ -1017,6 +1022,8 @@ namespace _00_Kite2.Player
 
             // Aufruf von ReconstructGuiContent und Prüfung des Rückgabewertes
             conversationContent.ReconstructGuiContent(savedData);
+            
+            _novelImagesController.SetFaceExpression(savedData.currentNovelEventCharacter, savedData.currentNovelEventExpressionType);
 
             ActivateMessageBoxes();
 

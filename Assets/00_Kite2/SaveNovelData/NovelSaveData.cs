@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using _00_Kite2.Common.Novel;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _00_Kite2.SaveNovelData
 {
@@ -16,6 +17,8 @@ namespace _00_Kite2.SaveNovelData
         public List<VisualNovelEvent> content;
         public List<string> messageType;
         public int optionCount;
+        public int currentNovelEventCharacter;
+        public int currentNovelEventExpressionType;
 
         /// <summary>
         /// Konvertiert diese Instanz in einen JSON-String.
