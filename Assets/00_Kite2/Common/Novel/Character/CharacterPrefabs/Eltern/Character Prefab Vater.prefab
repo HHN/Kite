@@ -153,11 +153,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinImage: {fileID: 6553579731152782210}
+  handImage: {fileID: 0}
   clotheImage: {fileID: 2735791881534372737}
   hairImage: {fileID: 3816683545305009484}
   faceImage: {fileID: 5629460200802205328}
   skinSprites:
   - {fileID: 21300000, guid: 05cbbd121a7d8ac47b5b3212464ee1cd, type: 3}
+  handSprites: []
   clotheSprites:
   - {fileID: 21300000, guid: 9aaa60e2d4effa64f8d45d4e29b8855e, type: 3}
   hairSprites:
@@ -441,6 +443,7 @@ RectTransform:
   - {fileID: 8721691660771487528}
   - {fileID: 6438940700170831803}
   - {fileID: 3702708503349398441}
+  - {fileID: 8012601279144934901}
   m_Father: {fileID: 1465545687914413254}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
@@ -477,8 +480,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8012601279144934901}
+  m_Children: []
   m_Father: {fileID: 4110506590062096476}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
@@ -610,6 +612,8 @@ GameObject:
   - component: {fileID: 8012601279144934901}
   - component: {fileID: 90758082465366800}
   - component: {fileID: 4415155395869795256}
+  - component: {fileID: 3240926843459046976}
+  - component: {fileID: 8563635142416262725}
   m_Layer: 5
   m_Name: EyeImage
   m_TagString: Untagged
@@ -629,11 +633,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3702708503349398441}
+  m_Father: {fileID: 4110506590062096476}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -1024}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 731, y: 2048}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &90758082465366800
@@ -674,3 +678,39 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &3240926843459046976
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8838913206432409184}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ca6559057e1e0934c8c0c29ea88214ba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8563635142416262725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8838913206432409184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a1b0c35b29bfe543a25019b126d0a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minBlinkTime: 3
+  maxBlinkTime: 5
