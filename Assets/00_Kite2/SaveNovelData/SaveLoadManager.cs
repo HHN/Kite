@@ -8,6 +8,7 @@ using _00_Kite2.Common.Novel;
 using _00_Kite2.Player;
 using Newtonsoft.Json;
 using UnityEngine;
+using CharacterController = _00_Kite2.Common.Novel.Character.CharacterController.CharacterController;
 
 // Manages saving and loading game data for a visual novel-style game
 namespace _00_Kite2.SaveNovelData
@@ -16,6 +17,7 @@ namespace _00_Kite2.SaveNovelData
     {
         private static readonly string SaveFilePath = Application.persistentDataPath + "/novelSaveData.json";
         private static int _count;
+        private static Dictionary<string, GameObject> _characterPrefabs;
 
         /// <summary>
         /// Speichert die aktuellen Daten einer Novel.
@@ -62,6 +64,61 @@ namespace _00_Kite2.SaveNovelData
                 }
             }
 
+            // var entry = playNovelSceneController.CharacterPrefabEntries.FirstOrDefault(e => e.novelId == playNovelSceneController.NovelToPlay.title);
+            // GameObject[] characterPrefabs = entry?.characterPrefabs;
+            //
+            // var characterPrefabData = new Dictionary<string, int[]>();
+            //
+            // if (characterPrefabs != null)
+            // {
+            //     foreach (var characterPrefab in characterPrefabs)
+            //     {
+            //         var characterController = characterPrefab.GetComponent<CharacterController>();
+            //         if (characterController != null)
+            //         {
+            //             Debug.Log(characterController.skinIndex);
+            //             Debug.Log(characterController.handIndex);
+            //             Debug.Log(characterController.clotheIndex);
+            //             Debug.Log(characterController.hairIndex);
+            //             
+            //             // Verwende den Prefab-Namen als Schlüssel und die Attribute als Werte
+            //             characterPrefabData[characterPrefab.name] = new[]
+            //             {
+            //                 characterController.skinIndex,
+            //                 characterController.handIndex,
+            //                 characterController.clotheIndex,
+            //                 characterController.hairIndex
+            //             };
+            //         }
+            //     }
+            // }
+
+            List<int[]> characterPrefabData = new List<int[]>();
+
+            if (playNovelSceneController.NovelImageController != null)
+            {
+                var characterController = playNovelSceneController.NovelImageController.CharacterControllerPublic;
+                if (characterController != null)
+                {
+                    foreach (var characterData in GameManager.CharacterDataList)
+                    {
+                        Debug.Log(characterData.skinIndex);
+                        Debug.Log(characterData.handIndex);
+                        Debug.Log(characterData.clotheIndex);
+                        Debug.Log(characterData.hairIndex);
+                        
+                        // Verwende den Prefab-Namen als Schlüssel und die Attribute als Werte
+                        characterPrefabData.Add(new int[]
+                        {
+                            characterData.skinIndex,
+                            characterData.handIndex,
+                            characterData.clotheIndex,
+                            characterData.hairIndex
+                        });
+                    }
+                }
+            }
+
             NovelSaveData saveData = new NovelSaveData
             {
                 //novelId = currentNovelId,
@@ -76,7 +133,8 @@ namespace _00_Kite2.SaveNovelData
                         .VisualNovelEvents, // Brauch ich hier auch die eventHistory von playNovelSceneController
                 messageType = messageBoxesNames,
                 optionCount = _count,
-                CharacterExpressions = playNovelSceneController.CharacterExpressions
+                CharacterExpressions = playNovelSceneController.CharacterExpressions,
+                CharacterPrefabData = characterPrefabData
             };
 
             // Speichere oder aktualisiere die Novel im Dictionary

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,6 +22,8 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         [SerializeField] private GameObject characterPrefab;
 
         private GameObject _instantiatedCharacter;
+        
+        public GameObject CharacterPrefab => characterPrefab;
 
         private void Start()
         {
@@ -33,6 +36,17 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             CharacterController.SetHandSprite();
             CharacterController.SetClotheSprite();
             CharacterController.SetHairSprite();
+
+            GameManager.CharacterDataList = new List<CharacterData>
+            {
+                new()
+                {
+                    skinIndex = CharacterController.skinIndex,
+                    handIndex = CharacterController.handIndex,
+                    clotheIndex = CharacterController.clotheIndex,
+                    hairIndex = CharacterController.hairIndex,
+                }
+            };
         }
 
         private void SetInitialSpritesForImages()

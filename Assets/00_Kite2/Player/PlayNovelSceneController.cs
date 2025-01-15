@@ -51,15 +51,8 @@ namespace _00_Kite2.Player
         [SerializeField] private GameObject[] novelVisuals;
         [SerializeField] private GameObject novelImageContainer;
         [SerializeField] private GameObject novelBackgroundPrefab;
-        [SerializeField] private GameObject characterPrefabBank;
-        [SerializeField] private GameObject characterPrefabBekannter;
-        [SerializeField] private GameObject characterPrefabBuero;
-        [SerializeField] private GameObject characterPrefabMutter;
-        [SerializeField] private GameObject characterPrefabVater;
-        [SerializeField] private GameObject characterPrefabIntro;
-        [SerializeField] private GameObject characterPrefabNotarin;
-        [SerializeField] private GameObject characterPrefabPresse;
-        [SerializeField] private GameObject characterPrefabVerhandlung;
+        [SerializeField] private List<CharacterPrefabEntry> characterPrefabEntries;
+        [SerializeField] private List<CharacterPrefabEntry> characterPrefabEntriesTest = new List<CharacterPrefabEntry>();
         [SerializeField] private GameObject backgroundContainer;
         [SerializeField] private GameObject deskContainer;
         [SerializeField] private GameObject decoDeskContainer;
@@ -126,6 +119,8 @@ namespace _00_Kite2.Player
         public List<string> PlayThroughHistory => playThroughHistory;
         public string[] OptionsId => _optionsId;
         public List<VisualNovelEvent> EventHistory => eventHistory;
+        public List<CharacterPrefabEntry> CharacterPrefabEntries => characterPrefabEntries;
+        public NovelImageController NovelImageController => _novelImagesController;
 
         private void Start()
         {
@@ -190,8 +185,6 @@ namespace _00_Kite2.Player
             foreach (var characterId in characters)
             {
                 CharacterExpressions[characterId] = -1;
-                
-                Debug.Log("CharacterId: " + characterId + ": " + CharacterExpressions[characterId]);
             }
 
             // Show the header image for other novels
@@ -260,7 +253,7 @@ namespace _00_Kite2.Player
 
             switch (novelToPlay.title)
             {
-                case "Bank Kontoeröffnung":
+                case "Banktermin wegen Kreditbeantragung":
                 {
                     GameObject novelImagesInstance = Instantiate(novelVisuals[0], viewPortTransform);
                     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
@@ -808,10 +801,6 @@ namespace _00_Kite2.Player
                     _novelImagesController.SetFaceExpression(_novelCharacter, CharacterExpressions[_novelCharacter]);
                 }
             }
-            else
-            {
-                Debug.LogWarning($"Character with ID {_novelCharacter} not found in CharacterExpressions.");
-            }
             
             StartCoroutine(PlayNextEvent());
         }
@@ -1036,6 +1025,33 @@ namespace _00_Kite2.Player
 
             // Aufruf von ReconstructGuiContent und Prüfung des Rückgabewertes
             conversationContent.ReconstructGuiContent(savedData);
+            
+            if (savedData.CharacterPrefabData != null)
+            {
+                for (int i = 0; i < savedData.CharacterPrefabData.Count; i++)
+                {
+                    int[] attributes = savedData.CharacterPrefabData[i];
+
+                    // Hol das zugehörige CharacterPrefab
+                    var entry = characterPrefabEntries.ElementAtOrDefault(i);
+                    if (entry != null)
+                    {
+                        var characterPrefab = entry.characterPrefabs.FirstOrDefault();
+                        if (characterPrefab != null)
+                        {
+                            var characterController = characterPrefab.GetComponent<CharacterController>();
+                            if (characterController != null)
+                            {
+                                // Setze die Attribute
+                                characterController.SetSkinSprite(attributes[0]);
+                                characterController.SetHandSprite(attributes[1]);
+                                characterController.SetClotheSprite(attributes[2]);
+                                characterController.SetHairSprite(attributes[3]);
+                            }
+                        }
+                    }
+                }
+            }
             
             foreach (var kvp in savedData.CharacterExpressions)
             {

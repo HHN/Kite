@@ -18,6 +18,7 @@ namespace _00_Kite2.SaveNovelData
         public List<string> messageType;
         public int optionCount;
         public Dictionary<int, int> CharacterExpressions = new();
+        public List<int[]> CharacterPrefabData;
 
         /// <summary>
         /// Konvertiert diese Instanz in einen JSON-String.

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _00_Kite2.Player;
 using _00_Kite2.SaveNovelData;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _00_Kite2
 {
@@ -11,6 +12,15 @@ namespace _00_Kite2
     {
         public string novelId;
         public bool isSaved;
+    }
+    
+    [Serializable]
+    public class CharacterData
+    {
+        public int skinIndex;
+        public int handIndex;
+        public int clotheIndex;
+        public int hairIndex;
     }
 
     public class GameManager : MonoBehaviour
@@ -28,6 +38,8 @@ namespace _00_Kite2
         // Dictionary zur dynamischen Verwaltung des Speicherstatus jeder Novel
         private readonly Dictionary<string, bool> _novelSaveStatus = new();
         public static GameManager Instance { get; private set; }
+        
+        public static List<CharacterData> CharacterDataList = new List<CharacterData>();
 
         public bool SkipIntroNovel
         {
