@@ -17,8 +17,7 @@ namespace _00_Kite2.SaveNovelData
         public List<VisualNovelEvent> content;
         public List<string> messageType;
         public int optionCount;
-        public int currentNovelEventCharacter;
-        public int currentNovelEventExpressionType;
+        public Dictionary<int, int> CharacterExpressions = new();
 
         /// <summary>
         /// Konvertiert diese Instanz in einen JSON-String.

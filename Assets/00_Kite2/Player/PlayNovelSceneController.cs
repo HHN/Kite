@@ -19,7 +19,6 @@ using LeastSquares.Overtone;
 using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using CharacterController = _00_Kite2.Common.Novel.Character.CharacterController.CharacterController;
 
@@ -29,9 +28,8 @@ namespace _00_Kite2.Player
     {
         private const float WaitingTime = 0.5f;
 
-        [Header("UI-Komponenten")] [SerializeField]
-        private GameObject viewPort;
-
+        [Header("UI-Komponenten")] 
+        [SerializeField] private GameObject viewPort;
         [SerializeField] private GameObject conversationViewport;
         [SerializeField] private Button closeButton;
         [SerializeField] private TextMeshProUGUI novelName;
@@ -49,9 +47,8 @@ namespace _00_Kite2.Player
         [SerializeField] private GameObject freeTextInputPrefab;
         [SerializeField] private GameObject headerImage;
 
-        [Header("Novel-Visuals und Prefabs")] [SerializeField]
-        private GameObject[] novelVisuals;
-
+        [Header("Novel-Visuals und Prefabs")] 
+        [SerializeField] private GameObject[] novelVisuals;
         [SerializeField] private GameObject novelImageContainer;
         [SerializeField] private GameObject novelBackgroundPrefab;
         [SerializeField] private GameObject characterPrefabBank;
@@ -80,66 +77,55 @@ namespace _00_Kite2.Player
         [SerializeField] private GameObject viewPortOfImages;
         [SerializeField] private GameObject currentAnimation;
 
-        [Header("GPT und MessageBox")] [SerializeField]
-        private GameObject gptServercallPrefab;
-
+        [Header("GPT und MessageBox")] 
+        [SerializeField] private GameObject gptServercallPrefab;
         [SerializeField] private LeaveNovelAndGoBackMessageBox leaveGameAndGoBackMessageBoxObject;
         [SerializeField] private GameObject leaveGameAndGoBackMessageBox;
         [SerializeField] private HintForSavegameMessageBox hintForSavegameMessageBoxObject;
         [SerializeField] private GameObject hintForSavegameMessageBox;
 
-        [Header("Skript- und Controller-Referenzen")] [SerializeField]
-        private VisualNovel novelToPlay;
-
+        [Header("Skript- und Controller-Referenzen")] 
+        [SerializeField] private VisualNovel novelToPlay;
         [SerializeField] public TypewriterCore currentTypeWriter;
         [SerializeField] public SelectOptionContinueConversation selectOptionContinueConversation;
-
         [SerializeField] private CharacterController currentTalkingCharacterController;
-
         //[SerializeField] private GameObject tapToContinueAnimation;
         [SerializeField] private TTSEngine engine;
 
-        [Header("Audio-Komponenten")] [SerializeField]
-        private AudioSource audioSource;
-
+        [Header("Audio-Komponenten")] 
+        [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip[] clips;
+        
+        [Header("Timing und Analytics")]
         [SerializeField] private float timerForHint = 12.0f; // Time after which the hint to tap on the screen is shown
         [SerializeField] private float timerForHintInitial = 3.0f;
         [SerializeField] private bool firstUserConfirmation = true; // Analytics flag for first confirmation
 
-        [Header("Spielstatus und Logik")] [SerializeField]
-        private bool isWaitingForConfirmation;
-
+        [Header("Spielstatus und Logik")] 
+        [SerializeField] private bool isWaitingForConfirmation;
         [SerializeField] private VisualNovelEvent nextEventToPlay;
         [SerializeField] private bool isTyping;
         [SerializeField] private List<string> playThroughHistory = new();
         [SerializeField] private List<VisualNovelEvent> eventHistory = new();
-
         private readonly Dictionary<string, VisualNovelEvent> _novelEvents = new();
         private readonly string[] _optionsId = new string[2];
         private ConversationContentGuiController _conversationContentGuiController;
         private int _novelCharacter = -1;
         private NovelImageController _novelImagesController;
-
         private VisualNovelEvent _savedEventToResume; // Speichert das letzte Ereignis für das Fortsetzen
-
-        [Header("Timing und Analytics")] private Coroutine _timerCoroutine;
+        private Coroutine _timerCoroutine;
         private bool _typingWasSkipped;
         private int _optionsCount;
+        private IEnumerator _speakingCoroutine;
+
+        // Character Expressions
+        public Dictionary<int, int> CharacterExpressions { get; } = new();
 
         public bool IsPaused { get; set; }
-
         public VisualNovel NovelToPlay => novelToPlay;
-        public VisualNovelEvent NextEventToPlay => nextEventToPlay;
         public List<string> PlayThroughHistory => playThroughHistory;
         public string[] OptionsId => _optionsId;
         public List<VisualNovelEvent> EventHistory => eventHistory;
-
-        private IEnumerator _speakingCoroutine;
-
-        private int _lastExpressionType = 0;
-        private VisualNovelEvent _currentNovelEvent = null;
-        public VisualNovelEvent CurrentNovelEvent => _currentNovelEvent;
 
         private void Start()
         {
@@ -193,6 +179,19 @@ namespace _00_Kite2.Player
             else
             {
                 headerImage.SetActive(false);
+            }
+            
+            List<int> characters = novelToPlay.novelEvents
+                .Select(e => e.character)      // Wähle das `character`-Feld aus
+                .Where(c => c != 0 && c != 1 && c != 4) // Schließe die Werte 0, 1 und 4 aus
+                .Distinct()                    // Optional: Entfernt Duplikate
+                .ToList();                     // Konvertiere das Ergebnis in eine Liste
+
+            foreach (var characterId in characters)
+            {
+                CharacterExpressions[characterId] = -1;
+                
+                Debug.Log("CharacterId: " + characterId + ": " + CharacterExpressions[characterId]);
             }
 
             // Show the header image for other novels
@@ -699,12 +698,19 @@ namespace _00_Kite2.Player
 
             SetNextEvent(novelEvent);
 
-            _lastExpressionType = novelEvent.expressionType;
-            _currentNovelEvent = novelEvent;
-            
-            Debug.Log("ExpressionType: " + CharacterExpressionHelper.ValueOf(_currentNovelEvent.expressionType));
-            _novelImagesController.SetFaceExpression(novelEvent.character, novelEvent.expressionType);
             _novelCharacter = novelEvent.character;
+            
+            if (!CharacterExpressions.ContainsKey(_novelCharacter) && _novelCharacter != 0 && _novelCharacter != 1 && _novelCharacter != 4)
+            {
+                Debug.LogWarning($"Character ID {_novelCharacter} is not registered.");
+                return;
+            }
+            
+            // Speichere die neue Gesichtsanimation
+            CharacterExpressions[_novelCharacter] = novelEvent.expressionType;
+            
+            Debug.Log("ExpressionType: " + CharacterExpressionHelper.ValueOf(CharacterExpressions[_novelCharacter]));
+            _novelImagesController.SetFaceExpression(_novelCharacter, CharacterExpressions[_novelCharacter]);
 
             if (novelEvent.show)
             {
@@ -743,7 +749,7 @@ namespace _00_Kite2.Player
         private void HandleShowChoicesEvent(VisualNovelEvent novelEvent)
         {
             StartCoroutine(TextToSpeechManager.Instance.ReadChoice());
-            // _novelImagesController.SetFaceExpression(_novelCharacter, 11);
+            
             // Enable animations when showing choices
             AnimationFlagSingleton.Instance().SetFlag(true);
 
@@ -794,9 +800,17 @@ namespace _00_Kite2.Player
         {
             yield return new WaitForSeconds(second);
 
-            if (_currentNovelEvent is { expressionType: > 13 })
+            if (_novelCharacter != -1 && CharacterExpressions.ContainsKey(_novelCharacter))
             {
-                _novelImagesController.SetFaceExpression(_currentNovelEvent.character, _currentNovelEvent.expressionType - 13);
+                if (CharacterExpressions[_novelCharacter] > 13)
+                {
+                    CharacterExpressions[_novelCharacter] -= 13;
+                    _novelImagesController.SetFaceExpression(_novelCharacter, CharacterExpressions[_novelCharacter]);
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"Character with ID {_novelCharacter} not found in CharacterExpressions.");
             }
             
             StartCoroutine(PlayNextEvent());
@@ -1023,7 +1037,11 @@ namespace _00_Kite2.Player
             // Aufruf von ReconstructGuiContent und Prüfung des Rückgabewertes
             conversationContent.ReconstructGuiContent(savedData);
             
-            _novelImagesController.SetFaceExpression(savedData.currentNovelEventCharacter, savedData.currentNovelEventExpressionType);
+            foreach (var kvp in savedData.CharacterExpressions)
+            {
+                Debug.Log($"Key: {kvp.Key}, Value: {kvp.Value}");
+                _novelImagesController.SetFaceExpression(kvp.Key, kvp.Value);
+            }
 
             ActivateMessageBoxes();
 

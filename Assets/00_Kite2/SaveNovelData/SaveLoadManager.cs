@@ -76,8 +76,7 @@ namespace _00_Kite2.SaveNovelData
                         .VisualNovelEvents, // Brauch ich hier auch die eventHistory von playNovelSceneController
                 messageType = messageBoxesNames,
                 optionCount = _count,
-                currentNovelEventCharacter = playNovelSceneController.CurrentNovelEvent.character,
-                currentNovelEventExpressionType = playNovelSceneController.CurrentNovelEvent.expressionType,
+                CharacterExpressions = playNovelSceneController.CharacterExpressions
             };
 
             // Speichere oder aktualisiere die Novel im Dictionary
