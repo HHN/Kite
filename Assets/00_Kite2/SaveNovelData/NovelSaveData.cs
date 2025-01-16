@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using _00_Kite2.Common.Novel;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace _00_Kite2.SaveNovelData
 {
@@ -18,7 +17,7 @@ namespace _00_Kite2.SaveNovelData
         public List<string> messageType;
         public int optionCount;
         public Dictionary<int, int> CharacterExpressions = new();
-        public List<int[]> CharacterPrefabData;
+        public Dictionary<long, int[]> CharacterPrefabData;
 
         /// <summary>
         /// Konvertiert diese Instanz in einen JSON-String.

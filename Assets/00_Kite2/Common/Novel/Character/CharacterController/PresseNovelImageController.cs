@@ -22,11 +22,40 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         private GameObject _instantiatedCharacter;
 
+        public CharacterController characterController;
+
         private void Start()
         {
             SetInitialSpritesForImages();
             SetInitialCharacters();
         }
+
+        // private void Start()
+        // {
+        //     // SetInitialSpritesForImages();
+        //     // SetInitialCharacters();
+        //     
+        //     characterController = characterContainer.GetComponentInChildren<CharacterController>();
+        //
+        //     characterController.SetSkinSprite();
+        //     characterController.SetHandSprite();
+        //     characterController.SetClotheSprite();
+        //     characterController.SetHairSprite();
+        //
+        //     GameManager.CharacterDataList = new Dictionary<long, CharacterData>
+        //     {
+        //         {
+        //             3, // Schlüssel für den Eintrag
+        //             new CharacterData
+        //             {
+        //                 skinIndex = characterController.skinIndex,
+        //                 handIndex = characterController.handIndex,
+        //                 clotheIndex = characterController.clotheIndex,
+        //                 hairIndex = characterController.hairIndex
+        //             }
+        //         }
+        //     };
+        // }
 
         private void SetInitialSpritesForImages()
         {

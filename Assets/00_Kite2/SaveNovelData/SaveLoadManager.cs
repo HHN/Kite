@@ -8,7 +8,6 @@ using _00_Kite2.Common.Novel;
 using _00_Kite2.Player;
 using Newtonsoft.Json;
 using UnityEngine;
-using CharacterController = _00_Kite2.Common.Novel.Character.CharacterController.CharacterController;
 
 // Manages saving and loading game data for a visual novel-style game
 namespace _00_Kite2.SaveNovelData
@@ -64,56 +63,30 @@ namespace _00_Kite2.SaveNovelData
                 }
             }
 
-            // var entry = playNovelSceneController.CharacterPrefabEntries.FirstOrDefault(e => e.novelId == playNovelSceneController.NovelToPlay.title);
-            // GameObject[] characterPrefabs = entry?.characterPrefabs;
-            //
-            // var characterPrefabData = new Dictionary<string, int[]>();
-            //
-            // if (characterPrefabs != null)
-            // {
-            //     foreach (var characterPrefab in characterPrefabs)
-            //     {
-            //         var characterController = characterPrefab.GetComponent<CharacterController>();
-            //         if (characterController != null)
-            //         {
-            //             Debug.Log(characterController.skinIndex);
-            //             Debug.Log(characterController.handIndex);
-            //             Debug.Log(characterController.clotheIndex);
-            //             Debug.Log(characterController.hairIndex);
-            //             
-            //             // Verwende den Prefab-Namen als Schlüssel und die Attribute als Werte
-            //             characterPrefabData[characterPrefab.name] = new[]
-            //             {
-            //                 characterController.skinIndex,
-            //                 characterController.handIndex,
-            //                 characterController.clotheIndex,
-            //                 characterController.hairIndex
-            //             };
-            //         }
-            //     }
-            // }
-
-            List<int[]> characterPrefabData = new List<int[]>();
+            Dictionary<long, int[]> characterPrefabData = new Dictionary<long, int[]>();
 
             if (playNovelSceneController.NovelImageController != null)
             {
-                var characterController = playNovelSceneController.NovelImageController.CharacterControllerPublic;
+                var characterController = playNovelSceneController.NovelImageController;
                 if (characterController != null)
                 {
                     foreach (var characterData in GameManager.CharacterDataList)
                     {
-                        Debug.Log(characterData.skinIndex);
-                        Debug.Log(characterData.handIndex);
-                        Debug.Log(characterData.clotheIndex);
-                        Debug.Log(characterData.hairIndex);
+                        long key = characterData.Key; // Schlüssel aus dem Dictionary
+                        CharacterData value = characterData.Value; // Wert aus dem Dictionary
                         
-                        // Verwende den Prefab-Namen als Schlüssel und die Attribute als Werte
-                        characterPrefabData.Add(new int[]
+                        // Füge die Daten in das Dictionary ein
+                        characterPrefabData.Add(key, new[]
                         {
-                            characterData.skinIndex,
-                            characterData.handIndex,
-                            characterData.clotheIndex,
-                            characterData.hairIndex
+                            value.skinIndex,
+                            value.handIndex,
+                            value.clotheIndex,
+                            value.hairIndex,
+                            
+                            value.skinIndex2,
+                            value.handIndex2,
+                            value.clotheIndex2,
+                            value.hairIndex2,
                         });
                     }
                 }

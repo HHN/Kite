@@ -70,8 +70,6 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             Sprite randomHandImage = handSprites[handIndex];
 
             handImage.sprite = randomHandImage;
-            
-            Debug.Log("SetHandSprite: " + handIndex);
         }
 
         public void SetClotheSprite( /*int clotheSpriteIndex*/)
@@ -87,8 +85,6 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             Sprite randomSkinImage = clotheSprites[clotheIndex];
 
             clotheImage.sprite = randomSkinImage;
-            
-            Debug.Log("SetClotheSprite: " + clotheIndex);
         }
 
         public void SetHairSprite( /*int hairSpriteIndex*/)
@@ -104,8 +100,6 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             Sprite randomSkinImage = hairSprites[hairIndex];
 
             hairImage.sprite = randomSkinImage;
-            
-            Debug.Log("SetHairSprite: " + hairIndex);
         }
         
         public void SetSkinSprite(int skinSpriteIndex)
@@ -244,7 +238,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                 }
                 case 18: // Spricht Erstaunt
                 {
-                    ShowErstauntAnimation();
+                    PlayErstauntAnimation();
                     // PlayFriendlyAnimation();
                     return;
                 }
@@ -431,71 +425,6 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         private void PlayStolzAnimation()
         {
             animator.Play("stolz_sprechen");
-        }
-
-        private void PlayDefeatedAnimation()
-        {
-            animator.Play("defeated");
-        }
-
-        private void PlayQuestioningAnimation()
-        {
-            animator.Play("questioning");
-        }
-
-        private void PlayScaredAnimation()
-        {
-            animator.Play("scared");
-        }
-
-        private void PlayProudAnimation()
-        {
-            animator.Play("proud");
-        }
-
-        private void PlayHappyAnimation()
-        {
-            animator.Play("happy");
-        }
-
-        private void PlayRelaxedAnimation()
-        {
-            animator.Play("relaxed");
-        }
-
-        private void PlayCriticalAnimation()
-        {
-            animator.Play("critical");
-        }
-
-        private void PlayFriendlyAnimation()
-        {
-            animator.Play("neutral");
-        }
-
-        private void PlaySmileAnimation()
-        {
-            animator.Play("Smile");
-        }
-
-        private void PlayNoDealAnimation()
-        {
-            animator.Play("no_deal");
-        }
-
-        private void PlayRefusingAnimation()
-        {
-            animator.Play("refusing");
-        }
-
-        private void PlayLaughingAnimation()
-        {
-            animator.Play("laughing");
-        }
-
-        private void PlayAstonishedAnimation()
-        {
-            animator.Play("surprised");
         }
 
         public void StartTalking()

@@ -23,28 +23,31 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         private GameObject _instantiatedCharacter;
         
-        public GameObject CharacterPrefab => characterPrefab;
+        public CharacterController characterController;
 
         private void Start()
         {
             // SetInitialSpritesForImages();
             // SetInitialCharacters();
             
-            CharacterController = characterContainer.GetComponentInChildren<CharacterController>();
+            characterController = characterContainer.GetComponentInChildren<CharacterController>();
 
-            CharacterController.SetSkinSprite();
-            CharacterController.SetHandSprite();
-            CharacterController.SetClotheSprite();
-            CharacterController.SetHairSprite();
+            characterController.SetSkinSprite();
+            characterController.SetHandSprite();
+            characterController.SetClotheSprite();
+            characterController.SetHairSprite();
 
-            GameManager.CharacterDataList = new List<CharacterData>
+            GameManager.CharacterDataList = new Dictionary<long, CharacterData>
             {
-                new()
                 {
-                    skinIndex = CharacterController.skinIndex,
-                    handIndex = CharacterController.handIndex,
-                    clotheIndex = CharacterController.clotheIndex,
-                    hairIndex = CharacterController.hairIndex,
+                    10, // Schlüssel für den Eintrag
+                    new CharacterData
+                    {
+                        skinIndex = characterController.skinIndex,
+                        handIndex = characterController.handIndex,
+                        clotheIndex = characterController.clotheIndex,
+                        hairIndex = characterController.hairIndex
+                    }
                 }
             };
         }

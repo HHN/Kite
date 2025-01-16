@@ -7,9 +7,6 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         protected RectTransform CanvasRect;
         protected CharacterController CharacterController = null;
         protected CharacterController CharacterController2 = null;
-        
-        public CharacterController CharacterControllerPublic => CharacterController;
-        public CharacterController CharacterController2Public => CharacterController2;
 
         public void SetCanvasRect(RectTransform canvasRect)
         {

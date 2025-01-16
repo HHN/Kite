@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using _00_Kite2.Player;
 using _00_Kite2.SaveNovelData;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace _00_Kite2
 {
@@ -21,6 +20,11 @@ namespace _00_Kite2
         public int handIndex;
         public int clotheIndex;
         public int hairIndex;
+        
+        public int skinIndex2;
+        public int handIndex2;
+        public int clotheIndex2;
+        public int hairIndex2;
     }
 
     public class GameManager : MonoBehaviour
@@ -39,7 +43,7 @@ namespace _00_Kite2
         private readonly Dictionary<string, bool> _novelSaveStatus = new();
         public static GameManager Instance { get; private set; }
         
-        public static List<CharacterData> CharacterDataList = new List<CharacterData>();
+        public static Dictionary<long, CharacterData> CharacterDataList = new Dictionary<long, CharacterData>();
 
         public bool SkipIntroNovel
         {

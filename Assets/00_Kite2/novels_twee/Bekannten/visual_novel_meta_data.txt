@@ -5,7 +5,7 @@
   "idNumberOfRepresentationImage": 8,
   "nameOfMainCharacter": "Spielerin",
   "contextForPrompt": "Es ist das Gespräch einer Gründerin, mit einem Bekannten. Es ist ein zwangloses Gespräch, bei dem die beiden über ihre aktuellen beruflichen Situationen sprechen. Die Gründerin erzählt von ihrer Selbstständigkeit.",
-  "folderName": "Bekannte",
+  "folderName": "Bekannten",
   "isKite2Novel": true,
   "startLocation": "Office",
   "startTalkingPartnerEmotion": "Schaut neutral entspannt",
