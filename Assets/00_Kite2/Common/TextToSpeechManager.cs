@@ -175,10 +175,6 @@ namespace _00_Kite2.Common
             StartEmptySpeech();
             _isSpeaking = false;
         }
-        else
-        {
-            Debug.LogError("ttsObject is null. Cannot cancel speech.");
-        }
 #elif UNITY_IOS
         _StopSpeaking();
         isSpeaking = false;
