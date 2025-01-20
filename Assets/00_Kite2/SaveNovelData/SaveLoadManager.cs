@@ -19,31 +19,31 @@ namespace _00_Kite2.SaveNovelData
         private static Dictionary<string, GameObject> _characterPrefabs;
 
         /// <summary>
-        /// Speichert die aktuellen Daten einer Novel.
+        /// Saves the current data of a novel.
         /// </summary>
-        /// <param name="playNovelSceneController">Der Controller der aktuellen Spielszenen.</param>
-        /// <param name="conversationContentGuiController">Der Controller f�r den Konversationsinhalt.</param>
+        /// <param name="playNovelSceneController">The controller for the current play scene.</param>
+        /// <param name="conversationContentGuiController">The controller for the conversation content.</param>
         public static void SaveNovelData(PlayNovelSceneController playNovelSceneController,
             ConversationContentGuiController conversationContentGuiController)
         {
-            // Lade alle gespeicherten Daten als Dictionary
+            // Load all saved data as a dictionary
             Dictionary<string, NovelSaveData> allSaveData = LoadAllSaveData();
 
-            // Aktuelle Novel-Daten
+            // Current novel data
             string currentNovelId = playNovelSceneController.NovelToPlay.id.ToString();
 
             VisualNovelEvent currentEvent = playNovelSceneController.GetCurrentEvent();
 
-            // Definiere ein neues Event-ID-Format
+            // Define a new event ID format
             string formattedId = currentEvent.id;
 
             if (currentEvent.id.StartsWith("OptionsLabel"))
             {
-                // Verwende Regex, um "OptionsLabel" gefolgt von Zahlen zu extrahieren
+                // Use Regex to extract "OptionsLabel" followed by numbers
                 Match match = Regex.Match(currentEvent.id, @"^OptionsLabel(\d+)");
                 if (match.Success)
                 {
-                    // Extrahiere die Zahl nach "OptionsLabel"
+                    // Extract the number after "OptionsLabel"
                     string numericPart = match.Groups[1].Value;
                     formattedId = "OptionsLabel" + numericPart;
                 }
@@ -72,10 +72,10 @@ namespace _00_Kite2.SaveNovelData
                 {
                     foreach (var characterData in GameManager.CharacterDataList)
                     {
-                        long key = characterData.Key; // Schlüssel aus dem Dictionary
-                        CharacterData value = characterData.Value; // Wert aus dem Dictionary
+                        long key = characterData.Key; // Key from the dictionary
+                        CharacterData value = characterData.Value; // Value from the dictionary
                         
-                        // Füge die Daten in das Dictionary ein
+                        // Add the data to the dictionary
                         characterPrefabData.Add(key, new[]
                         {
                             value.skinIndex,
@@ -99,21 +99,18 @@ namespace _00_Kite2.SaveNovelData
                 playThroughHistory = playNovelSceneController.PlayThroughHistory,
                 optionsId = playNovelSceneController.OptionsId.ToArray(),
                 eventHistory = playNovelSceneController.EventHistory,
-                content = conversationContentGuiController
-                    .Content, // Brauch ich hier auch die eventHistory von playNovelSceneController
-                visualNovelEvents =
-                    conversationContentGuiController
-                        .VisualNovelEvents, // Brauch ich hier auch die eventHistory von playNovelSceneController
+                content = conversationContentGuiController.Content,
+                visualNovelEvents = conversationContentGuiController.VisualNovelEvents,
                 messageType = messageBoxesNames,
                 optionCount = _count,
                 CharacterExpressions = playNovelSceneController.CharacterExpressions,
                 CharacterPrefabData = characterPrefabData
             };
 
-            // Speichere oder aktualisiere die Novel im Dictionary
+            // Save or update the novel in the dictionary
             allSaveData[currentNovelId] = saveData;
 
-            // Serialisiere das Dictionary und speichere es im Pretty-Format
+            // Serialize the dictionary and save it in pretty format
             string json = JsonConvert.SerializeObject(allSaveData, Formatting.Indented);
 
             File.WriteAllText(SaveFilePath, json, Encoding.UTF8);
@@ -122,23 +119,22 @@ namespace _00_Kite2.SaveNovelData
         }
 
         /// <summary>
-        /// L�dt die Daten einer bestimmten Novel.
+        /// Loads the data for a specific novel.
         /// </summary>
-        /// <param name="currentNovelId">Die eindeutige ID der zu ladenden Novel.</param>
-        /// <returns>Gibt die gespeicherten Daten der Novel zur�ck, oder <c>null</c>, wenn keine Daten gefunden wurden.</returns>
+        /// <param name="currentNovelId">The unique ID of the novel to load.</param>
+        /// <returns>Returns the saved data of the novel, or <c>null</c> if no data is found.</returns>
         public static NovelSaveData Load(string currentNovelId)
         {
-            // Lade alle gespeicherten Daten
+            // Load all saved data
             Dictionary<string, NovelSaveData> allSaveData = LoadAllSaveData();
 
-            // Suche nach einem Speicherstand mit passender novelId
+            // Look for a save file with the matching novel ID
             return allSaveData.GetValueOrDefault(currentNovelId);
         }
-
         /// <summary>
-        /// L�dt alle gespeicherten Daten aus der JSON-Datei.
+        /// Loads all saved data from the JSON file.
         /// </summary>
-        /// <returns>Ein Dictionary mit allen gespeicherten Noveldaten, wobei der Schlüssel die Novel-ID ist.</returns>
+        /// <returns>A dictionary containing all saved novel data, where the key is the novel ID.</returns>
         private static Dictionary<string, NovelSaveData> LoadAllSaveData()
         {
             if (File.Exists(SaveFilePath))
@@ -163,20 +159,20 @@ namespace _00_Kite2.SaveNovelData
         }
 
         /// <summary>
-        /// Löscht die gespeicherten Daten einer bestimmten Novel.
+        /// Deletes the saved data for a specific novel.
         /// </summary>
-        /// <param name="novelId">Die eindeutige ID der zu löschenden Novel.</param>
+        /// <param name="novelId">The unique ID of the novel to delete.</param>
         public static void DeleteNovelSaveData(string novelId)
         {
-            // Lade alle gespeicherten Daten
+            // Load all saved data
             Dictionary<string, NovelSaveData> allSaveData = LoadAllSaveData();
 
-            // Versuche, das Element zu löschen
+            // Try to remove the item
             bool removed = allSaveData.Remove(novelId);
 
             if (removed)
             {
-                // Überschreibe die Datei nur, wenn die Löschung erfolgreich war
+                // Overwrite the file only if the deletion was successful
                 string json = JsonConvert.SerializeObject(allSaveData, Formatting.Indented);
                 File.WriteAllText(SaveFilePath, json, Encoding.UTF8);
             }
@@ -185,16 +181,16 @@ namespace _00_Kite2.SaveNovelData
                 Debug.LogWarning($"Kein Spielstand f�r Novel ID {novelId} gefunden.");
             }
         }
-
+        
         /// <summary>
-        /// Löscht alle gespeicherten Noveldaten.
+        /// Deletes all saved novel data.
         /// </summary>
         public static void ClearAllSaveData()
         {
-            // Leeres Dictionary erstellen
+            // Create an empty dictionary
             Dictionary<string, NovelSaveData> emptySaveData = new Dictionary<string, NovelSaveData>();
 
-            // Serialisiere das leere Dictionary und Überschreibe die Datei
+            // Serialize the empty dictionary and overwrite the file
             string json = JsonConvert.SerializeObject(emptySaveData, Formatting.Indented);
             File.WriteAllText(SaveFilePath, json, Encoding.UTF8);
         }
