@@ -46,7 +46,7 @@ namespace _00_Kite2.Common.UI.Scene_Base
                 _playNovelSceneController.IsPaused = true; // Pause the novel progression
             }
 
-            if (!this.isNovelScene)
+            if (!isNovelScene)
             {
                 string lastScene = SceneRouter.GetTargetSceneForBackButton();
 
@@ -59,7 +59,8 @@ namespace _00_Kite2.Common.UI.Scene_Base
                 SceneLoader.LoadScene(lastScene);
             }
 
-            if (_playNovelSceneController.NovelToPlay.id == 13)
+
+            if (isNovelScene && _playNovelSceneController.NovelToPlay.id == 13)
             {
                 if (warningMessageBoxIntro != null)
                 {

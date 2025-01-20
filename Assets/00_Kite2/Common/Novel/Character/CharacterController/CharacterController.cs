@@ -54,8 +54,6 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             {
                 handIndex = 3;
             }
-            
-            Debug.Log("SetSkinSprite: " + skinIndex);
         }
         
         public void SetHandSprite( /*int handSpriteIndex*/)
