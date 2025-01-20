@@ -128,7 +128,8 @@ namespace _00_Kite2.Player
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
 
-            if (ShowPlayInstructionManager.Instance().ShowInstruction())
+            if (ShowPlayInstructionManager.Instance().ShowInstruction() &&
+                visualNovelToDisplay.title != "Einstiegsdialog")
             {
                 SceneLoader.LoadPlayInstructionScene();
             }

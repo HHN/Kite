@@ -112,7 +112,7 @@ namespace _00_Kite2.Player
                 }
                 case 9:
                 {
-                    return "Bekannte treffen";
+                    return "Bekannten treffen";
                 }
                 case 10:
                 {

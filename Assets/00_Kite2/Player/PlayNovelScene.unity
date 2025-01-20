@@ -3595,12 +3595,33 @@ MonoBehaviour:
   - {fileID: 781856241913721907, guid: dda9927ec9a0b6343b88a2621d1fe5d9, type: 3}
   novelImageContainer: {fileID: 1655295459}
   novelBackgroundPrefab: {fileID: 8411936371333490823, guid: bd9e9565679ee6446be061db5b61e445, type: 3}
-  characterPrefabMayer: {fileID: 1465545687914413273, guid: aa2ae7c4c5e34ea48ba637f2c59e7998, type: 3}
-  characterPrefabReporterin: {fileID: 1465545687914413273, guid: 81edc9f9eabdbad40a81d9c419fd4022, type: 3}
-  characterPrefabVermieter: {fileID: 1465545687914413273, guid: 83e08fc87f63f5148aa4638d1f30a6f2, type: 3}
-  characterPrefabMutter: {fileID: 1465545687914413273, guid: fe0cc47faafc1e948a15badc475ba62d, type: 3}
-  characterPrefabVater: {fileID: 1465545687914413273, guid: aee370a96d4a69c4fa663f6e1505d316, type: 3}
-  characterPrefabIntro: {fileID: 0}
+  characterPrefabEntries:
+  - novelId: Banktermin wegen Kreditbeantragung
+    characterPrefabs:
+    - {fileID: 1465545687914413273, guid: b7726decdf73039408e8c47d83f08b1f, type: 3}
+  - novelId: "Gespr\xE4ch mit einem Bekannten"
+    characterPrefabs:
+    - {fileID: 1465545687914413273, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
+  - novelId: "Anmietung eines B\xFCros"
+    characterPrefabs:
+    - {fileID: 1465545687914413273, guid: f0ce20ce584d58b4695d64ab6c6bccf9, type: 3}
+  - novelId: Telefonat mit den Eltern
+    characterPrefabs:
+    - {fileID: 1465545687914413273, guid: fe0cc47faafc1e948a15badc475ba62d, type: 3}
+    - {fileID: 1465545687914413273, guid: aee370a96d4a69c4fa663f6e1505d316, type: 3}
+  - novelId: Einstiegsdialog
+    characterPrefabs:
+    - {fileID: 1465545687914413273, guid: 3d4497c8617ec474aafda8860421d3eb, type: 3}
+  - novelId: Telefonat mit der Notarin
+    characterPrefabs:
+    - {fileID: 1465545687914413273, guid: 007f6e56dbdaee343967827de74e46f4, type: 3}
+  - novelId: "Pressegespr\xE4ch"
+    characterPrefabs:
+    - {fileID: 1465545687914413273, guid: e6259436c6c867c42bad191121365efb, type: 3}
+  - novelId: Honorarverhandlung mit Kundin
+    characterPrefabs:
+    - {fileID: 1465545687914413273, guid: 8c1acbda2949bf74a825ff93cd14ebc8, type: 3}
+  characterPrefabEntriesTest: []
   backgroundContainer: {fileID: 1386174946}
   deskContainer: {fileID: 641773708}
   decoDeskContainer: {fileID: 1714175714}

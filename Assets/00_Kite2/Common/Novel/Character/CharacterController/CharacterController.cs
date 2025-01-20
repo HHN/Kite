@@ -6,17 +6,24 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
     public class CharacterController : MonoBehaviour
     {
         [SerializeField] private Image skinImage;
+        [SerializeField] private Image handImage;
         [SerializeField] private Image clotheImage;
         [SerializeField] private Image hairImage;
         [SerializeField] private Image faceImage;
 
         [SerializeField] private Sprite[] skinSprites;
+        [SerializeField] private Sprite[] handSprites;
         [SerializeField] private Sprite[] clotheSprites;
         [SerializeField] private Sprite[] hairSprites;
         [SerializeField] private Animator animator;
 
         private static readonly int IsTalking = Animator.StringToHash("isTalking");
 
+        public int skinIndex;
+        public int handIndex;
+        public int clotheIndex;
+        public int hairIndex;
+        
         public void SetSkinSprite( /*int skinSpriteIndex*/)
         {
             // if ((skinSprites.Length > skinSpriteIndex) && (skinSpriteIndex >= 0))
@@ -25,11 +32,44 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             // }
 
             if (skinSprites == null) return;
-
-            int randomIndex = Random.Range(0, skinSprites.Length);
-            Sprite randomSkinImage = skinSprites[randomIndex];
-
+        
+            skinIndex = Random.Range(0, skinSprites.Length);
+            Sprite randomSkinImage = skinSprites[skinIndex];
+        
             skinImage.sprite = randomSkinImage;
+
+            if (randomSkinImage.name.Contains("a"))
+            {
+                handIndex = 2;
+            }
+            else if (randomSkinImage.name.Contains("b"))
+            {
+                handIndex = 1;
+            }
+            else if (randomSkinImage.name.Contains("c"))
+            {
+                handIndex = 0;
+            }
+            else if (randomSkinImage.name.Contains("d"))
+            {
+                handIndex = 3;
+            }
+            
+            Debug.Log("SetSkinSprite: " + skinIndex);
+        }
+        
+        public void SetHandSprite( /*int handSpriteIndex*/)
+        {
+            // if ((skinSprites.Length > handSpriteIndex) && (handSpriteIndex >= 0))
+            // {
+            //     skinImage.sprite = skinSprites[handSpriteIndex];
+            // }
+
+            if (handSprites == null) return;
+
+            Sprite randomHandImage = handSprites[handIndex];
+
+            handImage.sprite = randomHandImage;
         }
 
         public void SetClotheSprite( /*int clotheSpriteIndex*/)
@@ -41,8 +81,8 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
             if (clotheSprites == null) return;
 
-            int randomIndex = Random.Range(0, clotheSprites.Length);
-            Sprite randomSkinImage = clotheSprites[randomIndex];
+            clotheIndex = Random.Range(0, clotheSprites.Length);
+            Sprite randomSkinImage = clotheSprites[clotheIndex];
 
             clotheImage.sprite = randomSkinImage;
         }
@@ -56,79 +96,198 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
             if (hairSprites == null) return;
 
-            int randomIndex = Random.Range(0, hairSprites.Length);
-            Sprite randomSkinImage = hairSprites[randomIndex];
+            hairIndex = Random.Range(0, hairSprites.Length);
+            Sprite randomSkinImage = hairSprites[hairIndex];
 
             hairImage.sprite = randomSkinImage;
+        }
+        
+        public void SetSkinSprite(int skinSpriteIndex)
+        {
+            if (skinSprites == null) return;
+        
+            skinImage.sprite = skinSprites[skinSpriteIndex];
+        }
+        
+        public void SetHandSprite(int handSpriteIndex)
+        {
+            if (handSprites == null) return;
+
+            handImage.sprite = handSprites[handSpriteIndex];
+        }
+
+        public void SetClotheSprite(int clotheSpriteIndex)
+        {
+            if (clotheSprites == null) return;
+
+            clotheImage.sprite = clotheSprites[clotheSpriteIndex];
+        }
+
+        public void SetHairSprite(int hairSpriteIndex)
+        {
+            if (hairSprites == null) return;
+
+            hairImage.sprite = hairSprites[hairSpriteIndex];
         }
 
         public void SetFaceExpression(int expression)
         {
             switch (expression)
             {
-                case 1:
+                case 1: // Schaut Erschrocken
                 {
-                    PlayRelaxedAnimation();
+                    ShowErschrockenAnimation();
+                    // PlayRelaxedAnimation();
                     return;
                 }
-                case 2:
+                case 2: // Schaut Genervt
                 {
-                    PlayAstonishedAnimation();
+                    ShowGenervtAnimation();
+                    // PlayAstonishedAnimation();
                     return;
                 }
-                case 3:
+                case 3: // Schaut Unzufrieden
                 {
-                    PlayRefusingAnimation();
+                    ShowUnzufriedenAnimation();
+                    // PlayRefusingAnimation();
                     return;
                 }
-                case 4:
+                case 4: // Schaut Ablehnend
                 {
-                    PlaySmileAnimation();
+                    ShowAblehnendAnimation();
+                    // PlaySmileAnimation();
                     return;
                 }
-                case 5:
+                case 5: // Schaut Erstaunt
                 {
-                    PlayFriendlyAnimation();
+                    ShowErstauntAnimation();
+                    // PlayFriendlyAnimation();
                     return;
                 }
-                case 6:
+                case 6: // Schaut Fragend
                 {
-                    PlayLaughingAnimation();
+                    ShowFragendAnimation();
+                    // PlayLaughingAnimation();
                     return;
                 }
-                case 7:
+                case 7: // Schaut Kritisch
                 {
-                    PlayCriticalAnimation();
+                    ShowKritischAnimation();
+                    // PlayCriticalAnimation();
                     return;
                 }
-                case 8:
+                case 8: // Schaut Lächeln_Groß
                 {
-                    PlayNoDealAnimation();
+                    ShowLaechelnGrossAnimation();
+                    // PlayNoDealAnimation();
                     return;
                 }
-                case 9:
+                case 9: // Schaut Lachend
                 {
-                    PlayHappyAnimation();
+                    ShowLachendAnimation();
+                    // PlayHappyAnimation();
                     return;
                 }
-                case 10:
+                case 10:    // Schaut Lächeln
                 {
-                    PlayProudAnimation();
+                    ShowLaechelnAnimation();
+                    // PlayProudAnimation();
                     return;
                 }
-                case 11:
+                case 11:    // Schaut Neutral_Entspannt
                 {
-                    PlayScaredAnimation();
+                    ShowNeutralEntspanntAnimation();
+                    // PlayScaredAnimation();
                     return;
                 }
-                case 12:
+                case 12:    // Schaut Neutral
                 {
-                    PlayQuestioningAnimation();
+                    ShowNeutralAnimation();
+                    // PlayQuestioningAnimation();
                     return;
                 }
-                case 13:
+                case 13:    // Schaut Stolz
                 {
-                    PlayDefeatedAnimation();
+                    ShowStolzAnimation();
+                    // PlayDefeatedAnimation();
+                    return;
+                }
+                case 14: // Spricht Erschrocken
+                {
+                    PlayErschrockenAnimation();
+                    // PlayRelaxedAnimation();
+                    return;
+                }
+                case 15: // Spricht Genervt
+                {
+                    PlayGenervtAnimation();
+                    // PlayAstonishedAnimation();
+                    return;
+                }
+                case 16: // Spricht Unzufrieden
+                {
+                    PlayUnzufriedenAnimation();
+                    // PlayRefusingAnimation();
+                    return;
+                }
+                case 17: // Spricht Ablehnend
+                {
+                    PlayAblehnendAnimation();
+                    // PlaySmileAnimation();
+                    return;
+                }
+                case 18: // Spricht Erstaunt
+                {
+                    PlayErstauntAnimation();
+                    // PlayFriendlyAnimation();
+                    return;
+                }
+                case 19: // Spricht Fragend
+                {
+                    PlayFragendAnimation();
+                    // PlayLaughingAnimation();
+                    return;
+                }
+                case 20: // Spricht Kritisch
+                {
+                    PlayKritischAnimation();
+                    // PlayCriticalAnimation();
+                    return;
+                }
+                case 21: // Spricht Lächeln_Groß
+                {
+                    PlayLaechelnGrossAnimation();
+                    // PlayNoDealAnimation();
+                    return;
+                }
+                case 22: // Spricht Lachend
+                {
+                    PlayLachendAnimation();
+                    // PlayHappyAnimation();
+                    return;
+                }
+                case 23:    // Spricht Lächeln
+                {
+                    PlayLaechelnAnimation();
+                    // PlayProudAnimation();
+                    return;
+                }
+                case 24:    // Spricht Neutral_Entspannt
+                {
+                    PlayNeutralEntspanntAnimation();
+                    // PlayScaredAnimation();
+                    return;
+                }
+                case 25:    // Spricht Neutral
+                {
+                    PlayNeutralAnimation();
+                    // PlayQuestioningAnimation();
+                    return;
+                }
+                case 26:    // Spricht Stolz
+                {
+                    PlayStolzAnimation();
+                    // PlayDefeatedAnimation();
                     return;
                 }
                 default:
@@ -137,70 +296,135 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                 }
             }
         }
-
-        private void PlayDefeatedAnimation()
+        
+        private void ShowErschrockenAnimation()
         {
-            animator.Play("defeated");
+            animator.Play("erschrocken");
+        }
+        
+        private void ShowGenervtAnimation()
+        {
+            animator.Play("genervt");
+        }
+        
+        private void ShowUnzufriedenAnimation()
+        {
+            animator.Play("unzufrieden");
+        }
+        
+        private void ShowAblehnendAnimation()
+        {
+            animator.Play("ablehnend");
+        }
+        
+        private void ShowErstauntAnimation()
+        {
+            animator.Play("erstaunt");
         }
 
-        private void PlayQuestioningAnimation()
+        private void ShowFragendAnimation()
         {
-            animator.Play("questioning");
+            animator.Play("fragend");
         }
-
-        private void PlayScaredAnimation()
+        
+        private void ShowKritischAnimation()
         {
-            animator.Play("scared");
+            animator.Play("kritisch");
         }
-
-        private void PlayProudAnimation()
+        
+        private void ShowLaechelnGrossAnimation()
         {
-            animator.Play("proud");
+            animator.Play("laecheln_gross");
         }
-
-        private void PlayHappyAnimation()
+        
+        private void ShowLachendAnimation()
         {
-            animator.Play("happy");
+            animator.Play("lachend");
         }
-
-        private void PlayRelaxedAnimation()
+        
+        private void ShowLaechelnAnimation()
         {
-            animator.Play("relaxed");
+            animator.Play("laecheln");
         }
-
-        private void PlayCriticalAnimation()
+        
+        private void ShowNeutralEntspanntAnimation()
         {
-            animator.Play("critical");
+            animator.Play("neutral_entspannt");
         }
-
-        private void PlayFriendlyAnimation()
+        
+        private void ShowNeutralAnimation()
         {
             animator.Play("neutral");
         }
-
-        private void PlaySmileAnimation()
+        
+        private void ShowStolzAnimation()
         {
-            animator.Play("Smile");
+            animator.Play("stolz");
         }
 
-        private void PlayNoDealAnimation()
+        private void PlayErschrockenAnimation()
         {
-            animator.Play("no_deal");
+            animator.Play("erschrocken_sprechen");
+        }
+        
+        private void PlayGenervtAnimation()
+        {
+            animator.Play("genervt_sprechen");
+        }
+        
+        private void PlayUnzufriedenAnimation()
+        {
+            animator.Play("unzufrieden_sprechen");
+        }
+        
+        private void PlayAblehnendAnimation()
+        {
+            animator.Play("ablehnend_sprechen");
+        }
+        
+        private void PlayErstauntAnimation()
+        {
+            animator.Play("erstaunt_sprechen");
         }
 
-        private void PlayRefusingAnimation()
+        private void PlayFragendAnimation()
         {
-            animator.Play("refusing");
+            animator.Play("fragend_sprechen");
         }
-
-        private void PlayLaughingAnimation()
+        
+        private void PlayKritischAnimation()
         {
-            animator.Play("laughing");
+            animator.Play("kritisch_sprechen");
         }
-
-        private void PlayAstonishedAnimation()
+        
+        private void PlayLaechelnGrossAnimation()
         {
-            animator.Play("surprised");
+            animator.Play("laecheln_gross_sprechen");
+        }
+        
+        private void PlayLachendAnimation()
+        {
+            animator.Play("lachend_sprechen");
+        }
+        
+        private void PlayLaechelnAnimation()
+        {
+            animator.Play("laecheln_sprechen");
+        }
+        
+        private void PlayNeutralEntspanntAnimation()
+        {
+            animator.Play("neutral_entspannt_sprechen");
+        }
+        
+        private void PlayNeutralAnimation()
+        {
+            animator.Play("neutral_sprechen");
+        }
+        
+        private void PlayStolzAnimation()
+        {
+            animator.Play("stolz_sprechen");
         }
 
         public void StartTalking()

@@ -1,6 +1,6 @@
 namespace _00_Kite2.Player.Kite_Novels.Visual_Novel_Formatter
 {
-    public abstract class WordPair
+    public class WordPair
     {
         protected WordPair(string wordToReplace, string replaceByValue)
         {

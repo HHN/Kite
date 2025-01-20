@@ -43,11 +43,52 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         private GameObject _instantiatedMotherCharacter;
         private GameObject _instantiatedFatherCharacter;
 
+        public CharacterController characterController;
+        public CharacterController characterController2;
+
         private void Start()
         {
             SetInitialSpritesForImages();
             SetInitialCharacters();
         }
+
+        // private void Start()
+        // {
+        //     // SetInitialSpritesForImages();
+        //     // SetInitialCharacters();
+        //     
+        //     characterController = motherCharacterContainer.GetComponentInChildren<CharacterController>();
+        //     characterController2 = fatherCharacterContainer.GetComponentInChildren<CharacterController>();
+        //
+        //     characterController.SetSkinSprite();
+        //     characterController.SetHandSprite();
+        //     characterController.SetClotheSprite();
+        //     characterController.SetHairSprite();
+        //     
+        //     characterController2.SetSkinSprite();
+        //     characterController2.SetHandSprite();
+        //     characterController2.SetClotheSprite();
+        //     characterController2.SetHairSprite();
+        //
+        //     GameManager.CharacterDataList = new Dictionary<long, CharacterData>
+        //     {
+        //         {
+        //             2, // Schlüssel für den Eintrag
+        //             new CharacterData
+        //             {
+        //                 skinIndex = characterController.skinIndex,
+        //                 handIndex = characterController.handIndex,
+        //                 clotheIndex = characterController.clotheIndex,
+        //                 hairIndex = characterController.hairIndex,
+        //                 
+        //                 skinIndex2 = characterController2.skinIndex,
+        //                 handIndex2 = characterController2.handIndex,
+        //                 clotheIndex2 = characterController2.clotheIndex,
+        //                 hairIndex2 = characterController2.hairIndex
+        //             }
+        //         }
+        //     };
+        // }
 
         private void SetInitialSpritesForImages()
         {

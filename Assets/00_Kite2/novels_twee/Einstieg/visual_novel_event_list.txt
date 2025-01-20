@@ -27,6 +27,7 @@ Im Vorgängerprojekt KITE haben wir gezeigt, wie wichtig gezielter Kompetenzaufb
 [[Und welche Rolle spielt KI?->KI Rolle]]
 
 
+
 :: Beispiel Spielsituation {"position":"950,575","size":"100,100"}
 >>Charakter01SprichtSmiling:<<
 Stell dir vor, du sprichst mit der Bank, um einen Kredit zu beantragen. Der Berater äußert Zweifel, weil du eine Frau bist.
@@ -57,6 +58,8 @@ Die KI gibt dir Feedback und hilft, deine Stärken zu erkennen. Sie zeigt dir, w
 [[Ich möchte nochmal alle Informationen bekommen.->Mehr über die App]]
 
 
+
+
 :: KI Rolle {"position":"1325,250","size":"100,100"}
 >>Charakter01SprichtSmiling:<<
 Die KI in KITE II analysiert die Dialoge, um Vorurteile zu erkennen. So kannst du lernen, wie du besser auf solche Muster reagierst.
@@ -66,6 +69,8 @@ Statt in KI-Modellen nach Verzerrungen zu suchen, nutzen wir die KI, um Diskrimi
 
 [[Was ist das Ziel von KITE II?->Projekt Ziel]]
 [[Ich bin bereit, lass uns starten.->Spielstart]]
+
+
 
 
 :: Letzter Schritt {"position":"1950,575","size":"100,100"}
@@ -156,6 +161,7 @@ Sie können ihre eigenen Vorurteile reflektieren und lernen, besser zu unterstü
 [[Was sagen die Zahlen?->Statistik]]
 
 
+
 :: Noch eine Frage {"position":"1150,575","size":"100,100"}
 >>Charakter01SprichtSmiling:<<
 KITE II hilft dir, die Situation einzuschätzen und deine Stärken zu nutzen. Jede Situation bietet dir neue Möglichkeiten.
@@ -184,6 +190,7 @@ Mit KITE II wollen wir die Gründungswelt gerechter machen. Unsere Vision ist, d
 [[Okay, jetzt möchte ich losspielen.->Spielstart]]
 
 
+
 :: Spielstart {"position":"1400,1325","size":"100,100"}
 >>Ende<<
 
@@ -199,6 +206,7 @@ Deshalb ist es wichtig, Frauen zu stärken, damit sie Vorurteile erkennen und ü
 
 [[Wie unterstützt die KI bei der Resilienz?->KI Resilienz]]
 [[Lass mich loslegen.->Spielstart]]
+
 
 
 :: Was ist KITEII {"position":"875,250","size":"100,100"}
@@ -233,6 +241,7 @@ Wir arbeiten mit vielen Partner*innen zusammen, wie der bundesweiten gründerinn
 [[Welche Rolle spielt KI in der App?->KI Rolle]]
 [[Wofür steht eigentlich "KITE"?->Abkuerzung]]
 [[Lass uns das Spiel starten.->Spielstart]]
+
 
 
 :: Willkommen {"position":"350,575","size":"100,100"}

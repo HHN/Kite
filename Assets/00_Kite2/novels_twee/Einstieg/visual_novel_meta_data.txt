@@ -8,7 +8,7 @@
   "folderName": "Einstieg",
   "isKite2Novel": true,
   "startLocation": "Office",
-  "startTalkingPartnerEmotion": "Friendly",
+  "startTalkingPartnerEmotion": "Schaut neutral entspannt",
   "isWithStartValues": true,
   "talkingPartner01" : "Intro",
   "talkingPartner02" : "",

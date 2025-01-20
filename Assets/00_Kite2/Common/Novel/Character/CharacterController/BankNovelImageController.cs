@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,15 +18,38 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         [SerializeField] private Sprite[] animationFramesGlas;
 
         [SerializeField] private Transform characterContainer;
-        [SerializeField] private List<GameObject> characterPrefabs;
-        // [SerializeField] private GameObject characterPrefab;
+        // [SerializeField] private List<GameObject> characterPrefabs;
+        [SerializeField] private GameObject characterPrefab;
 
         private GameObject _instantiatedCharacter;
+        
+        public CharacterController characterController;
 
         private void Start()
         {
-            SetInitialSpritesForImages();
-            SetInitialCharacters();
+            // SetInitialSpritesForImages();
+            // SetInitialCharacters();
+            
+            characterController = characterContainer.GetComponentInChildren<CharacterController>();
+
+            characterController.SetSkinSprite();
+            characterController.SetHandSprite();
+            characterController.SetClotheSprite();
+            characterController.SetHairSprite();
+
+            GameManager.CharacterDataList = new Dictionary<long, CharacterData>
+            {
+                {
+                    10, // Schlüssel für den Eintrag
+                    new CharacterData
+                    {
+                        skinIndex = characterController.skinIndex,
+                        handIndex = characterController.handIndex,
+                        clotheIndex = characterController.clotheIndex,
+                        hairIndex = characterController.hairIndex
+                    }
+                }
+            };
         }
 
         private void SetInitialSpritesForImages()
@@ -51,9 +75,34 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         private void SetInitialCharacters()
         {
-            // if (characterPrefab == null) return;
+            if (characterPrefab == null) return;
+            
+            _instantiatedCharacter = Instantiate(characterPrefab, characterContainer, false);
+            RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
+            
+            if (rectTransform == null) return;
+            
+            rectTransform.anchorMin = new Vector2(0.5f, 0);
+            rectTransform.anchorMax = new Vector2(0.5f, 1);
+            
+            rectTransform.pivot = new Vector2(0.5f, 0.5f);
+            
+            rectTransform.anchoredPosition = new Vector2(0, -699);
+            
+            rectTransform.sizeDelta = new Vector2(1200.339f, 0);
+            
+            rectTransform.localPosition = new Vector3(0, 699, 0);
+            
+            rectTransform.localScale = new Vector3(1, 1, 1);
+            
+            rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
+
+            // if (characterPrefabs.Count <= 0) return;
             //
-            // _instantiatedCharacter = Instantiate(characterPrefab, characterContainer, false);
+            // int randomIndex = Random.Range(0, characterPrefabs.Count);
+            // GameObject randomGameObject = characterPrefabs[randomIndex];
+            //
+            // _instantiatedCharacter = Instantiate(randomGameObject, characterContainer, false);
             // RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
             //
             // if (rectTransform == null) return;
@@ -72,40 +121,11 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             // rectTransform.localScale = new Vector3(1, 1, 1);
             //
             // rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
-
-            if (characterPrefabs.Count <= 0) return;
-
-            int randomIndex = Random.Range(0, characterPrefabs.Count);
-            GameObject randomGameObject = characterPrefabs[randomIndex];
-
-            _instantiatedCharacter = Instantiate(randomGameObject, characterContainer, false);
-            RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
-
-            if (rectTransform == null) return;
-
-            rectTransform.anchorMin = new Vector2(0.5f, 0);
-            rectTransform.anchorMax = new Vector2(0.5f, 1);
-
-            rectTransform.pivot = new Vector2(0.5f, 0.5f);
-
-            rectTransform.anchoredPosition = new Vector2(0, -699);
-
-            rectTransform.sizeDelta = new Vector2(1200.339f, 0);
-
-            rectTransform.localPosition = new Vector3(0, 699, 0);
-
-            rectTransform.localScale = new Vector3(1, 1, 1);
-
-            rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
         }
 
         public override void SetCharacter()
         {
-            CharacterController = _instantiatedCharacter.GetComponent<CharacterController>();
-
-            // CharacterController.SetSkinSprite();
-            // CharacterController.SetClotheSprite();
-            // CharacterController.SetHairSprite();
+            // CharacterController = _instantiatedCharacter.GetComponent<CharacterController>();
         }
 
         public override bool HandleTouchEvent(float x, float y, AudioSource audioSource)

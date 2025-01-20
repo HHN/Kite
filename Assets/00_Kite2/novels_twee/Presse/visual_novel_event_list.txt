@@ -33,14 +33,14 @@ Du wirst von jemanden angesprochen.
 
 
 :: Ansonsten kein Artikel {"position":"1975,2500","size":"100,100"}
->>JournalistinSprichtSmiling:<<
+>>JournalistinSprichtFriendly:<<
 Danke für das Gespräch, ich melde mich bei Ihnen. Einen schönen Tag noch und auf Wiedersehen.
 >>--<<
 >>Ende<<
 
 
 :: Artikel Ende {"position":"950,2500","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtFriendly:<<
 Danke für das Gespräch und Ihre Zeit. Ich freue mich auf Ihre Rückmeldung und melde mich, sobald der Artikel fertig ist.
 >>--<<
 >>SpielerinCharakterSpricht:<<
@@ -69,7 +69,7 @@ Klar, es gibt tolle Frauen in der Branche, aber es sind leider noch nicht viele.
 
 
 :: Bedenken äußern {"position":"950,2050","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtFriendly:<<
 Keine Sorge, der Artikel wird ausgewogen. Es geht um Ihre Idee und Ihre Rolle als Gründerin. Wir zeigen das Gesamtbild.
 
 [[Das beruhigt mich, danke Ihnen.->Positiv]]
@@ -85,7 +85,7 @@ Das hängt von der Redaktion ab. Ich spreche es mal an, aber versprechen kann ic
 
 
 :: Betonung [Bias] {"position":"2325,550","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtFriendly:<<
 Es geht nicht nur um Ihre Geschäftsidee, sondern auch darum, dass Sie als eine der wenigen Frauen gründen. 
 
 >>--<<
@@ -125,7 +125,7 @@ Genau, Empowerment ist das Stichwort! Viele Frauen würden es bestimmt inspirier
 
 
 :: Ende Positiv {"position":"1075,2500","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtFriendly:<<
 Vielen Dank für das Gespräch und Ihre Zeit. Ich melde mich, sobald der Artikel raus ist.
 >>--<<
 >>SpielerinCharakterSpricht:<<
@@ -147,7 +147,7 @@ So habe ich das nicht gemeint. Aber unsere Leserinnen und Leser finden es intere
 
 
 :: Ermutigung [Bias] {"position":"1625,525","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtFriendly:<<
 Sehr ermutigend für andere Frauen. Und Sie haben ja auch wirklich Glück, dass Sie genau die richtige Nische gefunden haben, in der Sie gründen können.
 
 >>--<<
@@ -177,7 +177,7 @@ Soll ich etwa nicht erwähnen, dass Sie eine Frau sind?
 
 
 :: Fokus Unternehmen {"position":"1600,250","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtFriendly:<<
 Es ist ja schon eher selten, dass Frauen gründen. Das könnte anderen Mut machen! Ich finde, das sollte wir erwähnen.
 
 [[Mir ist es wichtig, dass meine Idee im Vordergrund steht. Das sendet auch eine starke Botschaft.->Sensationalisierung]]
@@ -201,7 +201,7 @@ Ach, nutzen Sie es doch aus und zeigen Sie ihren weiblichen Charme. So könnten 
 
 
 :: Frauen gründen [Bias] {"position":"1225,575","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtFriendly:<<
 Aber sehen Sie, Frauen wie Sie sind wirklich etwas Besonderes. Nicht viele Frauen trauen sich in dieser Branche zu gründen. Genau das inspiriert Leute.
 >>--<<
 >>Charakter01SprichtProud:<<
@@ -277,7 +277,7 @@ Du verlässt den Raum.
 
 
 :: Kein Artikel Neutral Gründe {"position":"1625,2500","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtFriendly:<<
 Ach so. Ich verstehe, vielen Dank, für das Gespräch. Dann verbleiben wir einfach so. Ich wünsche Ihnen noch einen schönen Tag. Auf Wiedersehen.
 
 >>--<<
@@ -356,7 +356,7 @@ Diese Maßstäbe gibt es halt. Wäre doch spannend zu zeigen, wie Sie als Frau d
 
 
 :: Maßstäbe hinterfragen [Bias] {"position":"1675,1425","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtFriendly:<<
 Es ist schade, dass solche Maßstäbe existieren, aber sie prägen die Realität vieler Frauen. Wie Sie dagegen ankämpfen, könnte unsere Leserinnen inspirieren.
 >>--<<
 >>RelevanterBias:BenevolenterSexismus<<
@@ -383,10 +383,10 @@ Aber es ist toll, dass Sie als Frau gründen. Das sollten wir prominent platzier
 
 
 :: Nachfrage Positiv {"position":"650,1350","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtFriendly:<<
 Gründerinnen-Geschichten sind oft inspirierend, weil sie Stereotypen aufbrechen und Frauen in weniger besetzten Bereichen zeigen.
 >>--<<
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtFriendly:<<
 Das kann Leserinnen motivieren, die nach Vorbildern suchen. Es geht um Geschichten, die Menschen ermutigen und motivieren, Geschlechterbarrieren zu überwinden.
 >>--<<
 >>RelevanterBias:Tokenism<<
@@ -412,7 +412,7 @@ Mal sehen, ich versuche einen Mittelweg zu finden. Aber seien Sie nicht überras
 
 
 :: Positiv {"position":"775,2100","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtFriendly:<<
 Aber klar, das mache ich. Und wenn Sie noch Infos oder Fotos haben, die wir einfügen sollen, sagen Sie einfach Bescheid.
 
 [[Danke! Ich werde Ihnen alles zukommen lassen.->Ende Positiv]]
@@ -441,7 +441,7 @@ Die Tatsache, dass Sie eine Frau sind, macht Ihre Geschichte doch viel interessa
 
 
 :: Stereotype aufbrechen [Bias] {"position":"725,825","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtFriendly:<<
 Genau, es ist noch selten, dass Frauen in der Branche Erfolg haben. Ihre Geschichte könnte andere inspirieren. Die Idee ist super, aber Ihre Reise als Frau macht den Unterschied.
 >>--<<
 >>RelevanterBias:Tokenism<<
@@ -489,7 +489,7 @@ Das wundert mich. Viele Frauen finden es wichtig, über die Schwierigkeiten zu s
 
 
 :: Unternehmensidee {"position":"1300,50","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtFriendly:<<
 Ja. Wollten Sie schon immer Ihr eigenes Unternehmen haben?
 
 [[Ja, ich hatte schon als Kind den Traum, meine eigene Chefin zu sein.->Unternehmerin]]
@@ -513,7 +513,7 @@ Spannend! Eine Frau, die ein Unternehmen gründet – das wird sicher viele Leut
 
 
 :: Verlinken {"position":"675,2375","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtFriendly:<<
 Ja, das können wir gerne machen. Schicken Sie mir einfach den Link.
 
 [[Perfekt, vielen Dank!->Artikel Ende]]

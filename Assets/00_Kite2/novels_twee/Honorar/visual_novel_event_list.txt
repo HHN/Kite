@@ -16,10 +16,10 @@ Novel_Verhandlung
 
 
 :: 2.200 € {"position":"3400,3775","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Okay, danke, dass Sie uns entgegenkommen. Ich schicke Ihnen die Vertragsdetails zur Durchsicht. 
 >>--<<
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaechelnGross:<<
 Ich freue mich auf die Zusammenarbeit und darauf, Sie bei unserer Veranstaltung willkommen zu heißen.
 
 [[Danke, das wünsche ich Ihnen auch. Auf Wiedersehen.->Ende]]
@@ -28,10 +28,10 @@ Ich freue mich auf die Zusammenarbeit und darauf, Sie bei unserer Veranstaltung 
 
 
 :: 2.200 € 2 {"position":"2400,3775","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Okay, danke, dass Sie uns entgegenkommen. Ich schicke Ihnen die Vertragsdetails zur Durchsicht. 
 >>--<<
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaechelnGross:<<
 Ich freue mich auf die Zusammenarbeit und darauf, Sie bei unserer Veranstaltung willkommen zu heißen.
 
 [[Danke, das wünsche ich Ihnen auch. Auf Wiedersehen.->Ende]]
@@ -40,7 +40,7 @@ Ich freue mich auf die Zusammenarbeit und darauf, Sie bei unserer Veranstaltung 
 
 
 :: Abbruch {"position":"2975,3775","size":"100,100"}
->>Charakter01SprichtRelaxed:<<
+>>Charakter01SprichtNeutral:<<
 Nun gut, dann wünsche ich Ihnen alles Gute für die Zukunft. Vielleicht kommen wir trotzdem mal zusammen.
 
 [[Danke. Ihnen auch alles Gute.->Ende]]
@@ -49,7 +49,7 @@ Nun gut, dann wünsche ich Ihnen alles Gute für die Zukunft. Vielleicht kommen 
 
 
 :: Abbruch 2 {"position":"2900,3775","size":"100,100"}
->>Charakter01SprichtRelaxed:<<
+>>Charakter01SprichtNeutral:<<
 Nun gut, dann wünsche ich Ihnen alles Gute für die Zukunft. Vielleicht kommen wir trotzdem mal zusammen.
 
 [[Danke. Ihnen auch alles Gute.->Ende]]
@@ -58,7 +58,7 @@ Nun gut, dann wünsche ich Ihnen alles Gute für die Zukunft. Vielleicht kommen 
 
 
 :: Abschied {"position":"3550,3775","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Dann wünsche ich Ihnen noch einen schönen Tag. Auf Wiedersehen.
 
 [[Danke, das wünsche ich Ihnen auch. Auf Wiedersehen.->Ende]]
@@ -67,7 +67,7 @@ Dann wünsche ich Ihnen noch einen schönen Tag. Auf Wiedersehen.
 
 
 :: Abschied 2 {"position":"2800,3775","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Dann wünsche ich Ihnen noch einen schönen Tag. Auf Wiedersehen.
 
 [[Danke, das wünsche ich Ihnen auch. Auf Wiedersehen.->Ende]]
@@ -79,14 +79,14 @@ Dann wünsche ich Ihnen noch einen schönen Tag. Auf Wiedersehen.
 >>InfoNachrichtWirdAngezeigt:<<
 Du wurdest angefragt bei einer Veranstaltung als Speakerin aufzutreten und über deine Expertise als Gründerin zu sprechen. Nachdem bestätigt wurde, dass deine Expertise den Erwartungen entspricht, steht nun die Honorarverhandlung an.
 >>--<<
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Es freut uns, dass Sie uns unterstützen können. Nun stellt sich uns natürlich die Frage, wie viel Sie verlangen.
 
 [[Frage nach Honorar]]
 
 
 :: Anpassungsfähigkeit {"position":"3375,2625","size":"100,100"}
->>Charakter01SprichtRelaxed:<<
+>>Charakter01SprichtNeutralEntspannt:<<
 Gut, dann bespreche ich mich nochmal und melde mich bei Ihnen.
 
 [[Das klingt gut. Ich freue mich auf Ihre Rückmeldung.->Abschied]]
@@ -95,7 +95,7 @@ Gut, dann bespreche ich mich nochmal und melde mich bei Ihnen.
 
 
 :: Anpassungsfähigkeit 2 {"position":"2800,2625","size":"100,100"}
->>Charakter01SprichtRelaxed:<<
+>>Charakter01SprichtNeutralEntspannt:<<
 Gut, dann bespreche ich mich nochmal und melde mich bei Ihnen.
 
 [[Das klingt gut. Ich freue mich auf Ihre Rückmeldung.->Abschied 2]]
@@ -104,8 +104,11 @@ Gut, dann bespreche ich mich nochmal und melde mich bei Ihnen.
 
 
 :: Arbeit {"position":"2850,900","size":"100,100"}
->>Charakter01SprichtSmiling:<<
-Aber sehen Sie es nicht auch als Gelegenheit, für Ihr Unternehmen etwas Sichtbarkeit zu gewinnen? Manchmal zählt eben die Investition.
+>>Charakter01SprichtFragend:<<
+Aber sehen Sie es nicht auch als Gelegenheit, für Ihr Unternehmen etwas Sichtbarkeit zu gewinnen?
+>>--<<
+>>Charakter01SprichtLaecheln:<<
+Manchmal zählt eben die Investition.
 
 [[Sichtbarkeit allein deckt die Vorbereitungskosten nicht. Der Preis bleibt bei 2.500 € zzgl. USt.->Honorar]]
 
@@ -113,7 +116,7 @@ Aber sehen Sie es nicht auch als Gelegenheit, für Ihr Unternehmen etwas Sichtba
 
 
 :: Ausnahme [Bias] {"position":"3250,3125","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Das meine ich ja! Männer fallen da eher aus dem Rahmen, während bei Frauen die Emotionen eben etwas natürlicher sind.
 >>--<<
 >>RelevanterBias:GeschlechtsspezifischeStereotypen<<
@@ -124,7 +127,7 @@ Das meine ich ja! Männer fallen da eher aus dem Rahmen, während bei Frauen die
 
 
 :: Ausnahme 2 [Bias] {"position":"2800,3125","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Das meine ich ja! Männer fallen da eher aus dem Rahmen, während bei Frauen die Emotionen eben etwas natürlicher sind.
 >>--<<
 >>RelevanterBias:GeschlechtsspezifischeStereotypen<<
@@ -135,7 +138,7 @@ Das meine ich ja! Männer fallen da eher aus dem Rahmen, während bei Frauen die
 
 
 :: Betonung [Bias] {"position":"3250,2775","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Ach, verstehen Sie mich nicht falsch! Es ist nur, dass Frauen oft etwas emotionaler an solche Verhandlungen herangehen. Ein Vertrag kann da Missverständnisse vorbeugen, finden Sie nicht?
 >>--<<
 >>RelevanterBias:GeschlechtsspezifischeStereotypen<<
@@ -146,7 +149,7 @@ Ach, verstehen Sie mich nicht falsch! Es ist nur, dass Frauen oft etwas emotiona
 
 
 :: Betonung 2 [Bias] {"position":"2600,2775","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Ach, verstehen Sie mich nicht falsch! Es ist nur, dass Frauen oft etwas emotionaler an solche Verhandlungen herangehen. Ein Vertrag kann da Missverständnisse vorbeugen, finden Sie nicht?
 >>--<<
 >>RelevanterBias:GeschlechtsspezifischeStereotypen<<
@@ -157,7 +160,7 @@ Ach, verstehen Sie mich nicht falsch! Es ist nur, dass Frauen oft etwas emotiona
 
 
 :: Briefing {"position":"3025,1725","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Ein Briefing klingt gut, aber ich hoffe, dass das nicht weitere Kosten bedeutet? Sie wissen ja, wie knapp Budgets sind.
 
 [[Das wäre inbegriffen.->Vertrag]]
@@ -166,7 +169,7 @@ Ein Briefing klingt gut, aber ich hoffe, dass das nicht weitere Kosten bedeutet?
 
 
 :: Briefing 2 {"position":"2900,1725","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Ein Briefing klingt gut, aber ich hoffe, dass das nicht weitere Kosten bedeutet? Sie wissen ja, wie knapp Budgets sind.
 
 [[Das wäre inbegriffen.->Vertrag 2]]
@@ -175,7 +178,7 @@ Ein Briefing klingt gut, aber ich hoffe, dass das nicht weitere Kosten bedeutet?
 
 
 :: Briefing regulär {"position":"3250,2300","size":"100,100"}
->>Charakter01SprichtAstonished:<<
+>>Charakter01SprichtErstaunt:<<
 Weitere 200 €! Da muss ich das erstmal absprechen. Ich hätte nicht erwartet, dass Sie so streng verhandeln.
 
 [[Strenge Verhandlungen sind Teil des Geschäftlichen, genauso wie klare Konditionen.->Teil des Geschäftlichen]]
@@ -183,8 +186,8 @@ Weitere 200 €! Da muss ich das erstmal absprechen. Ich hätte nicht erwartet, 
 [[Ich nehme das mal als Kompliment. Klare Grenzen machen doch das Leben einfacher.->Klare Grenzen]]
 
 
-:: Briefing regulär 2 {"position":"2675,2325","size":"100,100"}
->>Charakter01SprichtAstonished:<<
+:: Briefing regulär 2 {"position":"2675,2300","size":"100,100"}
+>>Charakter01SprichtErstaunt:<<
 Weitere 200 €! Da muss ich das erstmal absprechen. Ich hätte nicht erwartet, dass Sie so streng verhandeln.
 
 [[Strenge Verhandlungen sind Teil des Geschäftlichen, genauso wie klare Konditionen.->Teil des Geschäftlichen 2]]
@@ -193,7 +196,7 @@ Weitere 200 €! Da muss ich das erstmal absprechen. Ich hätte nicht erwartet, 
 
 
 :: Buchbar [Bias] {"position":"3175,1875","size":"100,100"}
->>Charakter01SprichtAstonished:<<
+>>Charakter01SprichtErstaunt:<<
 Ach, ein Extra? Männer bieten sowas meist gleich mit an, ohne Aufpreis. Ich dachte, als Gründerin wären Sie flexibler.
 >>--<<
 >>RelevanterBias:Mikroaggressionen<<
@@ -204,7 +207,7 @@ Ach, ein Extra? Männer bieten sowas meist gleich mit an, ohne Aufpreis. Ich dac
 
 
 :: Buchbar 2 [Bias] {"position":"2725,1875","size":"100,100"}
->>Charakter01SprichtAstonished:<<
+>>Charakter01SprichtErstaunt:<<
 Ach, ein Extra? Männer bieten sowas meist gleich mit an, ohne Aufpreis. Ich dachte, als Gründerin wären Sie flexibler.
 >>--<<
 >>RelevanterBias:Mikroaggressionen<<
@@ -215,7 +218,7 @@ Ach, ein Extra? Männer bieten sowas meist gleich mit an, ohne Aufpreis. Ich dac
 
 
 :: Details [Bias] {"position":"3100,1050","size":"100,100"}
->>Charakter01SprichtCritical:<<
+>>Charakter01SprichtKritisch:<<
 Ja, aber Frauen neigen ja dazu, sich schnell in Details zu verlieren. Ich mache mir Sorgen, dass Sie zu detailorientiert arbeiten und dann das Honorar dadurch steigt.
 >>--<<
 >>RelevanterBias:GeschlechtsspezifischeStereotypen<<
@@ -226,7 +229,7 @@ Ja, aber Frauen neigen ja dazu, sich schnell in Details zu verlieren. Ich mache 
 
 
 :: Direkt zwei Vorträge [Bias] {"position":"2625,3425","size":"100,100"}
->>Charakter01SprichtCritical:<<
+>>Charakter01SprichtKritisch:<<
 Hmm, 2.200 € pro Vortrag ist ja immer noch eine Stange Geld. Gerade als Frau in einer Männerdomäne müssen Sie Ihre Preise ja etwas anpassen, um konkurrenzfähig zu bleiben, finden Sie nicht?
 >>--<<
 >>RelevanterBias:StereotypeGegenueberFrauenInNichtTraditionellenBranchen<<
@@ -237,7 +240,7 @@ Hmm, 2.200 € pro Vortrag ist ja immer noch eine Stange Geld. Gerade als Frau i
 
 
 :: Drei Vorträge {"position":"3175,3450","size":"100,100"}
->>Charakter01SprichtCritical:<<
+>>Charakter01SprichtKritisch:<<
 Hmm, 2.200 € pro Vortrag ist ja immer noch eine Stange Geld. Gerade als Frau in einer Männerdomäne müssen Sie Ihre Preise ja etwas anpassen, um konkurrenzfähig zu bleiben, finden Sie nicht?
 >>--<<
 >>RelevanterBias:StereotypeGegenueberFrauenInNichtTraditionellenBranchen<<
@@ -248,7 +251,7 @@ Hmm, 2.200 € pro Vortrag ist ja immer noch eine Stange Geld. Gerade als Frau i
 
 
 :: Emotional [Bias] {"position":"3250,2950","size":"100,100"}
->>Charakter01SprichtLaughing:<<
+>>Charakter01SprichtLachend:<<
 Natürlich. Ich hatte selbst mal einen Kollegen, der war so emotional! Wirklich schlimmer als jede Frau.
 >>--<<
 >>RelevanterBias:Mikroaggressionen<<
@@ -259,7 +262,7 @@ Natürlich. Ich hatte selbst mal einen Kollegen, der war so emotional! Wirklich 
 
 
 :: Emotional 2 [Bias] {"position":"2700,2925","size":"100,100"}
->>Charakter01SprichtLaughing:<<
+>>Charakter01SprichtLachend:<<
 Natürlich. Ich hatte selbst mal einen Kollegen, der war so emotional! Wirklich schlimmer als jede Frau.
 >>--<<
 >>RelevanterBias:Mikroaggressionen<<
@@ -270,7 +273,7 @@ Natürlich. Ich hatte selbst mal einen Kollegen, der war so emotional! Wirklich 
 
 
 :: Emotionen {"position":"3125,3275","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Ach nein, da bleiben wir lieber bei Ihnen und Ihrem Unternehmen. Außer es hat konkreten Bezug zu Ihrer Gründungsgeschichte?
 
 [[Nein, ich schlage vor, wir gehen nochmal zum Honorar zurück.->Wesentliche]]
@@ -279,7 +282,7 @@ Ach nein, da bleiben wir lieber bei Ihnen und Ihrem Unternehmen. Außer es hat k
 
 
 :: Emotionen 2 {"position":"2800,3275","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Ach nein, da bleiben wir lieber bei Ihnen und Ihrem Unternehmen. Außer es hat konkreten Bezug zu Ihrer Gründungsgeschichte?
 
 [[Nein, ich schlage vor, wir gehen nochmal zum Honorar zurück.->Wesentliche 2]]
@@ -291,9 +294,8 @@ Ach nein, da bleiben wir lieber bei Ihnen und Ihrem Unternehmen. Außer es hat k
 >>Ende<<
 
 
-
 :: Folgegespräch {"position":"3075,750","size":"100,100"}
->>Charakter01SprichtLaughing:<<
+>>Charakter01SprichtLachend:<<
 Ein Folgegespräch klingt gut, aber auch beim ersten Mal wäre eine Geste schön. Gerade bei Unternehmerinnen freuen wir uns über flexiblere Angebote.
 
 [[Ich finde Ihre Veranstaltung gut und wichtig. Deshalb bin ich auch bereit als Speakerin aufzutreten. Mein Honorar ist nicht verhandelbar.->Nicht verhandelbar]]
@@ -305,7 +307,7 @@ Ein Folgegespräch klingt gut, aber auch beim ersten Mal wäre eine Geste schön
 >>SpielerinCharakterSpricht:<<
 Mein Honorar liegt bei 2.500 € zzgl. USt.
 >>--<<
->>Charakter01SprichtAstonished:<<
+>>Charakter01SprichtErstaunt:<<
 2.500 €? Das ist schon eine Hausnummer. Könnten Sie uns da nicht entgegenkommen?
 
 [[Qualität und Expertise haben ihren Preis, und ich möchte meinen Wert nicht unterordnen.->Qualität]]
@@ -314,7 +316,7 @@ Mein Honorar liegt bei 2.500 € zzgl. USt.
 
 
 :: Geregelter Rahmen {"position":"2975,2950","size":"100,100"}
->>Charakter01SprichtAstonished:<<
+>>Charakter01SprichtErstaunt:<<
 Natürlich, ich wollte nur betonen, dass wir bei so einer Kooperation alles in Ihrem Interesse gestalten möchten. 
 
 [[Ich verstehe. Lassen Sie uns doch auf das Wesentliche fokussieren: die Vereinbarung meines Honorars.->Wesentliche]]
@@ -323,7 +325,7 @@ Natürlich, ich wollte nur betonen, dass wir bei so einer Kooperation alles in I
 
 
 :: Geregelter Rahmen 2 {"position":"2425,2925","size":"100,100"}
->>Charakter01SprichtAstonished:<<
+>>Charakter01SprichtErstaunt:<<
 Natürlich, ich wollte nur betonen, dass wir bei so einer Kooperation alles in Ihrem Interesse gestalten möchten. 
 
 [[Ich verstehe. Lassen Sie uns doch auf das Wesentliche fokussieren: die Vereinbarung meines Honorars.->Wesentliche 2]]
@@ -332,7 +334,7 @@ Natürlich, ich wollte nur betonen, dass wir bei so einer Kooperation alles in I
 
 
 :: Geschlechtsunabhängig [Bias] {"position":"3250,2025","size":"100,100"}
->>Charakter01SprichtRelaxed:<<
+>>Charakter01SprichtKritisch:<<
 Wissen Sie, oft habe ich bei Gründerinnen den Eindruck, dass ein kooperativer Ansatz erfolgreicher ist. Könnten wir uns nicht entgegenkommen?
 >>--<<
 >>RelevanterBias:Bestaetigungsverzerrung<<
@@ -342,9 +344,8 @@ Wissen Sie, oft habe ich bei Gründerinnen den Eindruck, dass ein kooperativer A
 [[Kooperation bedeutet für mich eine faire Bezahlung und Wertschätzung meiner Expertise.->Wertschätzung]]
 
 
-
 :: Geschlechtsunabhängig 2 [Bias] {"position":"2775,2025","size":"100,100"}
->>Charakter01SprichtRelaxed:<<
+>>Charakter01SprichtKritisch:<<
 Wissen Sie, oft habe ich bei Gründerinnen den Eindruck, dass ein kooperativer Ansatz erfolgreicher ist. Könnten wir uns nicht entgegenkommen?
 >>--<<
 >>RelevanterBias:Bestaetigungsverzerrung<<
@@ -354,9 +355,8 @@ Wissen Sie, oft habe ich bei Gründerinnen den Eindruck, dass ein kooperativer A
 [[Kooperation bedeutet für mich eine faire Bezahlung und Wertschätzung meiner Expertise.->Wertschätzung 2]]
 
 
-
 :: Gute Arbeit {"position":"3125,3625","size":"100,100"}
->>Charakter01SprichtLaughing:<<
+>>Charakter01SprichtLachend:<<
 Das stimmt! Gut, dann verbleiben wir so und halten das vertraglich fest. Danke, dass Sie uns entgegenkommen. 
 
 [[Ja, wir können uns gerne nächste Woche nochmal treffen, um konkreter über die Inhalte zu sprechen.->Nächste Woche]]
@@ -365,7 +365,7 @@ Das stimmt! Gut, dann verbleiben wir so und halten das vertraglich fest. Danke, 
 
 
 :: Gute Arbeit 2 {"position":"2550,3600","size":"100,100"}
->>Charakter01SprichtLaughing:<<
+>>Charakter01SprichtLachend:<<
 Das stimmt! Gut, dann verbleiben wir so und halten das vertraglich fest. Danke, dass Sie uns entgegenkommen. 
 
 [[Ja, wir können uns gerne nächste Woche nochmal treffen, um konkreter über die Inhalte zu sprechen.->Nächste Woche 2]]
@@ -374,7 +374,7 @@ Das stimmt! Gut, dann verbleiben wir so und halten das vertraglich fest. Danke, 
 
 
 :: Honorar {"position":"2800,1200","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Sie hatten vorhin von einem Folgegespräch gesprochen. Wäre dann ein Rabatt möglich, wenn wir Sie für nächstes Jahr direkt wieder buchen?
 
 [[Je nachdem wie oft Sie mich buchen, bin ich bereit mit dem Preis runterzugehen.->Mehrmals buchen]]
@@ -383,7 +383,7 @@ Sie hatten vorhin von einem Folgegespräch gesprochen. Wäre dann ein Rabatt mö
 
 
 :: Honorar II {"position":"2950,1200","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Schön zu hören. Sie hatten vorhin von einem Folgegespräch gesprochen. Wäre dann ein Rabatt möglich, wenn wir Sie für nächstes Jahr direkt wieder buchen?
 
 [[Je nachdem wie oft Sie mich buchen, bin ich bereit mit dem Preis runterzugehen.->Mehrmals buchen]]
@@ -392,7 +392,7 @@ Schön zu hören. Sie hatten vorhin von einem Folgegespräch gesprochen. Wäre d
 
 
 :: Honorar III {"position":"3300,1200","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Ich verstehe. Sie hatten vorhin von einem Folgegespräch gesprochen. Wäre dann ein Rabatt möglich, wenn wir Sie für nächstes Jahr direkt wieder buchen?
 
 [[Je nachdem wie oft Sie mich buchen, bin ich bereit mit dem Preis runterzugehen.->Mehrmals buchen]]
@@ -401,7 +401,7 @@ Ich verstehe. Sie hatten vorhin von einem Folgegespräch gesprochen. Wäre dann 
 
 
 :: Klare Grenzen [Bias] {"position":"3325,2450","size":"100,100"}
->>Charakter01SprichtRelaxed:<<
+>>Charakter01SprichtNeutralEntspannt:<<
 Ein wenig weniger strikte Linien können aber auch manchmal den Spielraum erweitern. Gerade als Frau ist doch Anpassungsfähigkeit oft von Vorteil.
 >>--<<
 >>RelevanterBias:Bestaetigungsverzerrung<<
@@ -412,7 +412,7 @@ Ein wenig weniger strikte Linien können aber auch manchmal den Spielraum erweit
 
 
 :: Klare Grenzen 2 [Bias] {"position":"2750,2450","size":"100,100"}
->>Charakter01SprichtRelaxed:<<
+>>Charakter01SprichtNeutralEntspannt:<<
 Ein wenig weniger strikte Linien können aber auch manchmal den Spielraum erweitern. Gerade als Frau ist doch Anpassungsfähigkeit oft von Vorteil.
 >>--<<
 >>RelevanterBias:Bestaetigungsverzerrung<<
@@ -423,7 +423,7 @@ Ein wenig weniger strikte Linien können aber auch manchmal den Spielraum erweit
 
 
 :: Mehr trauen [Bias] {"position":"3350,1725","size":"100,100"}
->>Charakter01SprichtLaughing:<<
+>>Charakter01SprichtLachend:<<
 Das stimmt. Ich hätte nur ehrlich gesagt erwartet, dass Sie etwas zurückhaltender wären.
 >>--<<
 >>RelevanterBias:RiskAversionBias<<
@@ -434,7 +434,7 @@ Das stimmt. Ich hätte nur ehrlich gesagt erwartet, dass Sie etwas zurückhalten
 
 
 :: Mehr trauen 2 [Bias] {"position":"2550,1725","size":"100,100"}
->>Charakter01SprichtLaughing:<<
+>>Charakter01SprichtLachend:<<
 Das stimmt. Ich hätte nur ehrlich gesagt erwartet, dass Sie etwas zurückhaltender wären.
 >>--<<
 >>RelevanterBias:RiskAversionBias<<
@@ -445,10 +445,10 @@ Das stimmt. Ich hätte nur ehrlich gesagt erwartet, dass Sie etwas zurückhalten
 
 
 :: Mehrmals buchen {"position":"3175,1425","size":"100,100"}
->>Charakter01SprichtAstonished:<<
+>>Charakter01SprichtErstaunt:<<
 Sie scheinen ja recht selbstbewusst zu sein, wenn es um Ihr Honorar geht. 
 >>--<<
->>Charakter01SprichtCritical:<<
+>>Charakter01SprichtKritisch:<<
 Was wenn wir Sie nun mehrmals buchen und nach dem ersten Auftritt feststellen, dass es doch nicht passt?
 
 [[Ich bin zuversichtlich, dass meine Arbeit überzeugt, sonst hätten Sie mich ja nicht kontaktiert.->Zuversicht]]
@@ -457,7 +457,7 @@ Was wenn wir Sie nun mehrmals buchen und nach dem ersten Auftritt feststellen, d
 
 
 :: Nicht Auftreten {"position":"2975,3125","size":"100,100"}
->>Charakter01SprichtCritical:<<
+>>Charakter01SprichtKritisch:<<
 Wie? Also, das wirkt auf mich nun wirklich wie eine emotionale Entscheidung. Denken Sie nicht, dass das etwas impulsiv ist?
 >>--<<
 >>RelevanterBias:GeschlechtsspezifischeStereotypen<<
@@ -468,7 +468,7 @@ Wie? Also, das wirkt auf mich nun wirklich wie eine emotionale Entscheidung. Den
 
 
 :: Nicht Auftreten 2 {"position":"2425,3125","size":"100,100"}
->>Charakter01SprichtCritical:<<
+>>Charakter01SprichtKritisch:<<
 Wie? Also, das wirkt auf mich nun wirklich wie eine emotionale Entscheidung. Denken Sie nicht, dass das etwas impulsiv ist?
 >>--<<
 >>RelevanterBias:GeschlechtsspezifischeStereotypen<<
@@ -479,7 +479,7 @@ Wie? Also, das wirkt auf mich nun wirklich wie eine emotionale Entscheidung. Den
 
 
 :: Nicht im Paketpreis {"position":"3150,2175","size":"100,100"}
->>Charakter01SprichtQuestioning:<<
+>>Charakter01SprichtFragend:<<
 Nun gut, und wie viel würde das Briefing kosten?
 
 [[200 €.->Briefing regulär]]
@@ -488,7 +488,7 @@ Nun gut, und wie viel würde das Briefing kosten?
 
 
 :: Nicht im Paketpreis 2 {"position":"2625,2175","size":"100,100"}
->>Charakter01SprichtQuestioning:<<
+>>Charakter01SprichtFragend:<<
 Nun gut, und wie viel würde das Briefing kosten?
 
 [[200 €.->Briefing regulär 2]]
@@ -497,10 +497,10 @@ Nun gut, und wie viel würde das Briefing kosten?
 
 
 :: Nicht niedriger {"position":"3275,3775","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLachend:<<
 Ich verstehe. Dann lassen Sie uns so verbleiben.  Danke, dass Sie uns entgegenkommen.  Ich schicke Ihnen die Vertragsdetails zur Durchsicht. 
 >>--<<
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaechelnGross:<<
 Ich freue mich auf die Zusammenarbeit und darauf, Sie bei unserer Veranstaltung willkommen zu heißen.
 
 [[Danke, das wünsche ich Ihnen auch. Auf Wiedersehen.->Ende]]
@@ -512,7 +512,7 @@ Ich freue mich auf die Zusammenarbeit und darauf, Sie bei unserer Veranstaltung 
 >>Charakter01SprichtSmiling:<<
 Ich verstehe. Dann lassen Sie uns so verbleiben.  Danke, dass Sie uns entgegenkommen.  Ich schicke Ihnen die Vertragsdetails zur Durchsicht. 
 >>--<<
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaechelnGross:<<
 Ich freue mich auf die Zusammenarbeit und darauf, Sie bei unserer Veranstaltung willkommen zu heißen.
 
 [[Danke, das wünsche ich Ihnen auch. Auf Wiedersehen.->Ende]]
@@ -521,7 +521,7 @@ Ich freue mich auf die Zusammenarbeit und darauf, Sie bei unserer Veranstaltung 
 
 
 :: Nicht verhandelbar {"position":"3025,900","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Das ist natürlich Ihr gutes Recht. Aber ich dachte, es wäre für Sie eine schöne Chance, Ihr Netzwerk auszubauen. Wir könnten das Honorar als symbolischen Beitrag ansetzen?
 
 [[Wie meinen Sie das?->Sichtbarkeit Nachfrage]]
@@ -530,7 +530,7 @@ Das ist natürlich Ihr gutes Recht. Aber ich dachte, es wäre für Sie eine sch�
 
 
 :: Nächste Woche {"position":"3075,3775","size":"100,100"}
->>Charakter01SprichtHappy:<<
+>>Charakter01SprichtLaechelnGross:<<
 Das klingt gut. Dann wünsche ich Ihnen noch einen schönen Tag.
 
 [[Danke, das wünsche ich Ihnen auch. Auf Wiedersehen.->Ende]]
@@ -539,7 +539,7 @@ Das klingt gut. Dann wünsche ich Ihnen noch einen schönen Tag.
 
 
 :: Nächste Woche 2 {"position":"2500,3775","size":"100,100"}
->>Charakter01SprichtHappy:<<
+>>Charakter01SprichtLaechelnGross:<<
 Das klingt gut. Dann wünsche ich Ihnen noch einen schönen Tag.
 
 [[Danke, das wünsche ich Ihnen auch. Auf Wiedersehen.->Ende]]
@@ -548,7 +548,7 @@ Das klingt gut. Dann wünsche ich Ihnen noch einen schönen Tag.
 
 
 :: Paketpreis [Bias] {"position":"3250,2625","size":"100,100"}
->>Charakter01SprichtLaughing:<<
+>>Charakter01SprichtLachend:<<
 Das stimmt. Ach, wissen Sie was? Ich nehme Ihr Angebot an. Lassen Sie uns doch die Details am besten auch im Vertrag festhalten. Sie wissen ja, bei Frauen ist es oft besser, alles klar zu regeln.
 >>--<<
 >>RelevanterBias:Mikroaggressionen<<
@@ -559,7 +559,7 @@ Das stimmt. Ach, wissen Sie was? Ich nehme Ihr Angebot an. Lassen Sie uns doch d
 
 
 :: Paketpreis 2 [Bias] {"position":"2625,2625","size":"100,100"}
->>Charakter01SprichtLaughing:<<
+>>Charakter01SprichtLachend:<<
 Das stimmt. Ach, wissen Sie was? Ich nehme Ihr Angebot an. Lassen Sie uns doch die Details am besten auch im Vertrag festhalten. Sie wissen ja, bei Frauen ist es oft besser, alles klar zu regeln.
 >>--<<
 >>RelevanterBias:Mikroaggressionen<<
@@ -570,7 +570,7 @@ Das stimmt. Ach, wissen Sie was? Ich nehme Ihr Angebot an. Lassen Sie uns doch d
 
 
 :: Q&A [Bias] {"position":"3275,900","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Das wäre zwar informativ, aber wir haben erwartet, dass Gründerinnen flexibler beim Honorar sind.
 >>--<<
 >>RelevanterBias:GenderPayGap<<
@@ -581,7 +581,7 @@ Das wäre zwar informativ, aber wir haben erwartet, dass Gründerinnen flexibler
 
 
 :: Qualität {"position":"2725,450","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Natürlich, aber es wäre schön, wenn wir da eine Frauensolidarität spüren könnten. Könnten Sie uns dennoch entgegenkommen?
 
 [[Frauen müssen oft mehr leisten, um ernst genommen zu werden. Daher lege ich besonderen Wert darauf, dass meine Preise die Qualität meiner Arbeit widerspiegeln.->Qualität widerspiegeln]]
@@ -590,8 +590,11 @@ Natürlich, aber es wäre schön, wenn wir da eine Frauensolidarität spüren k�
 
 
 :: Qualität widerspiegeln {"position":"2825,600","size":"100,100"}
->>Charakter01SprichtSmiling:<<
-Ich hätte jetzt erwartet, dass Sie so nett wären und mir als Frau einen kleinen Rabatt einräumen. Wir müssen doch zusammenhalten, oder?
+>>Charakter01SprichtUnzufrieden:<<
+Ich hätte jetzt erwartet, dass Sie so nett wären und mir als Frau einen kleinen Rabatt einräumen.
+>>--<<
+>>Charakter01SprichtLaecheln:<<
+Wir müssen doch zusammenhalten, oder?
 
 [[Solidarität heißt auch, den Wert anderer Frauen anzuerkennen. Deshalb bleibe ich bei meinen Konditionen.->Reduzierung nicht möglich]]
 
@@ -599,7 +602,7 @@ Ich hätte jetzt erwartet, dass Sie so nett wären und mir als Frau einen kleine
 
 
 :: Rabatt {"position":"3400,3450","size":"100,100"}
->>Charakter01SprichtCritical:<<
+>>Charakter01SprichtKritisch:<<
 Hmm, ich hätte erwartet, dass auch die erste Veranstaltung etwas günstiger wird. Gerade als Frau in einer Männerdomäne müssen Sie Ihre Preise ja etwas anpassen, um konkurrenzfähig zu bleiben, finden Sie nicht?
 >>--<<
 >>RelevanterBias:StereotypeGegenueberFrauenInNichtTraditionellenBranchen<<
@@ -610,7 +613,7 @@ Hmm, ich hätte erwartet, dass auch die erste Veranstaltung etwas günstiger wir
 
 
 :: Rabatt 2 [Bias] {"position":"2400,3425","size":"100,100"}
->>Charakter01SprichtCritical:<<
+>>Charakter01SprichtKritisch:<<
 Hmm, ich hätte erwartet, dass auch die erste Veranstaltung etwas günstiger wird. Gerade als Frau in einer Männerdomäne müssen Sie Ihre Preise ja etwas anpassen, um konkurrenzfähig zu bleiben, finden Sie nicht?
 >>--<<
 >>RelevanterBias:StereotypeGegenueberFrauenInNichtTraditionellenBranchen<<
@@ -621,7 +624,7 @@ Hmm, ich hätte erwartet, dass auch die erste Veranstaltung etwas günstiger wir
 
 
 :: Rabatt II {"position":"3400,3625","size":"100,100"}
->>Charakter01SprichtQuestioning:<<
+>>Charakter01SprichtFragend:<<
 Nun gut. Wie viel verlangen Sie denn für die anderen zwei Vorträge?
 
 [[Pro Vortrag 2.200 € zzgl. USt.->2.200 €]]
@@ -630,7 +633,7 @@ Nun gut. Wie viel verlangen Sie denn für die anderen zwei Vorträge?
 
 
 :: Rabatt II 2 {"position":"2400,3600","size":"100,100"}
->>Charakter01SprichtQuestioning:<<
+>>Charakter01SprichtFragend:<<
 Nun gut. Wie viel verlangen Sie denn für den anderen Vortrag?
 
 [[Für den anderen Vortrag nehme ich 2.200 € zzgl. USt.->2.200 € 2]]
@@ -639,7 +642,7 @@ Nun gut. Wie viel verlangen Sie denn für den anderen Vortrag?
 
 
 :: Reduzierung nicht möglich {"position":"3000,600","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Klar, aber wir hätten gedacht, Sie sehen den Auftritt auch als Chance. Gerade für Gründerinnen kann das doch hilfreich sein.
 
 [[Solche Auftritte sind nicht nur Chancen, sondern auch Arbeit, die angemessen vergütet werden sollte.->Arbeit]]
@@ -648,7 +651,7 @@ Klar, aber wir hätten gedacht, Sie sehen den Auftritt auch als Chance. Gerade f
 
 
 :: Schubladendenken II [Bias] {"position":"3075,3125","size":"100,100"}
->>Charakter01SprichtLaughing:<<
+>>Charakter01SprichtLachend:<<
 Ich hatte mal einen Kollegen, der war dermaßen emotional! Wirklich schlimmer als jede Frau.
 >>--<<
 >>RelevanterBias:Mikroaggressionen<<
@@ -659,7 +662,7 @@ Ich hatte mal einen Kollegen, der war dermaßen emotional! Wirklich schlimmer al
 
 
 :: Schubladendenken II 2 [Bias] {"position":"2675,3125","size":"100,100"}
->>Charakter01SprichtLaughing:<<
+>>Charakter01SprichtLachend:<<
 Ich hatte mal einen Kollegen, der war dermaßen emotional! Wirklich schlimmer als jede Frau.
 >>--<<
 >>RelevanterBias:Mikroaggressionen<<
@@ -670,21 +673,21 @@ Ich hatte mal einen Kollegen, der war dermaßen emotional! Wirklich schlimmer al
 
 
 :: Schubladenkdenken {"position":"3075,2950","size":"100,100"}
->>Charakter01SprichtAstonished:<<
+>>Charakter01SprichtErstaunt:<<
 Ach nein! Ich bin doch selbst eine Frau und möchte andere Frauen nur unterstützen. Ich weiß, dass auch Männer bspw. auch emotional sein können.
 
 [[Schubladendenken II]]
 
 
 :: Schubladenkdenken 2 {"position":"2550,2925","size":"100,100"}
->>Charakter01SprichtAstonished:<<
+>>Charakter01SprichtErstaunt:<<
 Ach nein! Ich bin doch selbst eine Frau und möchte andere Frauen nur unterstützen. Ich weiß, dass auch Männer bspw. auch emotional sein können.
 
 [[Schubladendenken II 2]]
 
 
 :: Selbstbewusstsein Nachfrage [Bias] {"position":"3200,1725","size":"100,100"}
->>Charakter01SprichtLaughing:<<
+>>Charakter01SprichtLaechelnGross:<<
 Nun, ich meine nur, dass es oft besser ankommt, wenn Frauen ihre Erfolge bescheiden präsentieren. Das wirkt sympathischer, finden Sie nicht?
 >>--<<
 >>RelevanterBias:TightropeBias<<
@@ -695,7 +698,7 @@ Nun, ich meine nur, dass es oft besser ankommt, wenn Frauen ihre Erfolge beschei
 
 
 :: Selbstbewusstsein Nachfrage 2 [Bias] {"position":"2725,1725","size":"100,100"}
->>Charakter01SprichtLaughing:<<
+>>Charakter01SprichtLaechelnGross:<<
 Nun, ich meine nur, dass es oft besser ankommt, wenn Frauen ihre Erfolge bescheiden präsentieren. Das wirkt sympathischer, finden Sie nicht?
 >>--<<
 >>RelevanterBias:TightropeBias<<
@@ -706,7 +709,7 @@ Nun, ich meine nur, dass es oft besser ankommt, wenn Frauen ihre Erfolge beschei
 
 
 :: Sichtbarkeit Nachfrage {"position":"2950,1050","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Ihr Unternehmen ist ja noch nicht so groß und wir würden Sie auf Social Media bewerben und im Programmflyer nennen. Das ist für Sie doch auch Werbung.
 
 [[Mein Honorar steht fest. Ich sehe den Auftritt als Arbeit, nicht als Werbung für mein Unternehmen.->Honorar]]
@@ -715,7 +718,7 @@ Ihr Unternehmen ist ja noch nicht so groß und wir würden Sie auf Social Media 
 
 
 :: Sponsoring {"position":"3125,450","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Da kümmern wir uns bereits darum und ein reduziertes Honorar von Ihnen wäre auch eine tolle Geste der Unterstützung.
 
 [[Es ist wichtig, dass die Qualität meiner Arbeit honoriert wird. Ein reduziertes Honorar ist nicht möglich.->Reduzierung nicht möglich]]
@@ -724,7 +727,7 @@ Da kümmern wir uns bereits darum und ein reduziertes Honorar von Ihnen wäre au
 
 
 :: Teil des Geschäftlichen [Bias] {"position":"3200,2450","size":"100,100"}
->>Charakter01SprichtRelaxed:<<
+>>Charakter01SprichtNeutralEntspannt:<<
 Gerade als Frau ist doch Anpassungsfähigkeit oft von Vorteil.
 >>--<<
 >>RelevanterBias:Mikroaggressionen<<
@@ -735,7 +738,7 @@ Gerade als Frau ist doch Anpassungsfähigkeit oft von Vorteil.
 
 
 :: Teil des Geschäftlichen 2 [Bias] {"position":"2625,2450","size":"100,100"}
->>Charakter01SprichtRelaxed:<<
+>>Charakter01SprichtNeutralEntspannt:<<
 Gerade als Frau ist doch Anpassungsfähigkeit oft von Vorteil.
 >>--<<
 >>RelevanterBias:Mikroaggressionen<<
@@ -746,7 +749,7 @@ Gerade als Frau ist doch Anpassungsfähigkeit oft von Vorteil.
 
 
 :: Transparent {"position":"3075,2025","size":"100,100"}
->>Charakter01SprichtCritical:<<
+>>Charakter01SprichtKritisch:<<
 Transparent, ja… Aber Flexibilität zeigt doch auch Orientierung an der Kundschaft. Wollen Sie das Briefing nicht als Service verstehen?
 
 [[Nun, da Sie mich häufiger buchen möchten, biete ich das Briefing diesmal gern ohne Aufpreis an.->Vertrag]]
@@ -755,7 +758,7 @@ Transparent, ja… Aber Flexibilität zeigt doch auch Orientierung an der Kundsc
 
 
 :: Transparent 2 {"position":"2650,2025","size":"100,100"}
->>Charakter01SprichtCritical:<<
+>>Charakter01SprichtKritisch:<<
 Transparent, ja… Aber Flexibilität zeigt doch auch Orientierung an der Kundschaft. Wollen Sie das Briefing nicht als Service verstehen?
 
 [[Nun, da Sie mich häufiger buchen möchten, biete ich das Briefing diesmal gern ohne Aufpreis an.->Vertrag 2]]
@@ -764,7 +767,7 @@ Transparent, ja… Aber Flexibilität zeigt doch auch Orientierung an der Kundsc
 
 
 :: Vertrag [Bias] {"position":"3000,2500","size":"100,100"}
->>Charakter01SprichtLaughing:<<
+>>Charakter01SprichtLachend:<<
 Super, dann halten wir die Details am besten auch im Vertrag fest. Sie wissen ja, bei Frauen ist es oft besser, alles klar zu regeln.
 >>--<<
 >>RelevanterBias:Mikroaggressionen<<
@@ -775,7 +778,7 @@ Super, dann halten wir die Details am besten auch im Vertrag fest. Sie wissen ja
 
 
 :: Vertrag 2 [Bias] {"position":"2325,2500","size":"100,100"}
->>Charakter01SprichtLaughing:<<
+>>Charakter01SprichtLachend:<<
 Super, dann halten wir die Details am besten auch im Vertrag fest. Sie wissen ja, bei Frauen ist es oft besser, alles klar zu regeln.
 >>--<<
 >>RelevanterBias:Mikroaggressionen<<
@@ -786,7 +789,7 @@ Super, dann halten wir die Details am besten auch im Vertrag fest. Sie wissen ja
 
 
 :: Vertrag Mail {"position":"3175,3775","size":"100,100"}
->>Charakter01SprichtHappy:<<
+>>Charakter01SprichtLaechelnGross:<<
 Das mache ich. Dann wünsche ich Ihnen noch einen schönen Tag.
 
 [[Danke, das wünsche ich Ihnen auch. Auf Wiedersehen.->Ende]]
@@ -795,7 +798,7 @@ Das mache ich. Dann wünsche ich Ihnen noch einen schönen Tag.
 
 
 :: Vertrag Mail 2 {"position":"2600,3775","size":"100,100"}
->>Charakter01SprichtHappy:<<
+>>Charakter01SprichtLaechelnGross:<<
 Das mache ich. Dann wünsche ich Ihnen noch einen schönen Tag.
 
 [[Danke, das wünsche ich Ihnen auch. Auf Wiedersehen.->Ende]]
@@ -804,7 +807,7 @@ Das mache ich. Dann wünsche ich Ihnen noch einen schönen Tag.
 
 
 :: Vertrag Nachfrage [Bias] {"position":"3025,2775","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Sie als Unternehmerin wissen ja selbst, wie wichtig ein guter Rahmen ist. Frauen brauchen eben oft die nötige Unterstützung, um sich voll entfalten zu können.
 >>--<<
 >>RelevanterBias:GeschlechtsspezifischeStereotypen<<
@@ -815,7 +818,7 @@ Sie als Unternehmerin wissen ja selbst, wie wichtig ein guter Rahmen ist. Frauen
 
 
 :: Vertrag Nachfrage 2 [Bias] {"position":"2425,2775","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Sie als Unternehmerin wissen ja selbst, wie wichtig ein guter Rahmen ist. Frauen brauchen eben oft die nötige Unterstützung, um sich voll entfalten zu können.
 >>--<<
 >>RelevanterBias:GeschlechtsspezifischeStereotypen<<
@@ -826,7 +829,7 @@ Sie als Unternehmerin wissen ja selbst, wie wichtig ein guter Rahmen ist. Frauen
 
 
 :: Wertschätzung {"position":"3350,2175","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Selbstverständlich! Nun gut, und wie viel würde das Briefing kosten?
 
 [[200 €.->Briefing regulär]]
@@ -835,7 +838,7 @@ Selbstverständlich! Nun gut, und wie viel würde das Briefing kosten?
 
 
 :: Wertschätzung 2 {"position":"2775,2175","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Selbstverständlich! Nun gut, und wie viel würde das Briefing kosten?
 
 [[200 €.->Briefing regulär 2]]
@@ -844,7 +847,7 @@ Selbstverständlich! Nun gut, und wie viel würde das Briefing kosten?
 
 
 :: Wesentliche {"position":"3300,3275","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Natürlich. Also, ich würde Sie dann gerne für diese Veranstaltung und schonmal für zwei weitere nächstes Jahr buchen. Wie würde denn da das Honorar aussehen?
 
 [[Ja, also wenn Sie direkt drei Vorträge bei mir buchen, würde ich insgesamt 6.600 € zzgl. USt. berechnen. Also 2.200 € pro Vortrag.->Drei Vorträge]]
@@ -853,7 +856,7 @@ Natürlich. Also, ich würde Sie dann gerne für diese Veranstaltung und schonma
 
 
 :: Wesentliche 2 {"position":"2500,3275","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Natürlich. Also, ich würde Sie dann gerne für diese Veranstaltung und schonmal für zwei weitere nächstes Jahr buchen. Wie würde denn da das Honorar aussehen?
 
 [[Ja, also wenn Sie direkt zwei Vorträge bei mir buchen, würde ich insgesamt 4.400 € zzgl. USt. berechnen. Also 2.200 € pro Vortrag.->Direkt zwei Vorträge]]
@@ -862,11 +865,11 @@ Natürlich. Also, ich würde Sie dann gerne für diese Veranstaltung und schonma
 
 
 :: Zielgerichtet {"position":"3125,1200","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Das klingt vernünftig. Es ist nur so, ich habe den Eindruck, dass Sie sich viel Mühe geben, was ich sehr schätze. 
 >>--<<
->>Charakter01SprichtQuestioning:<<
-Doch denken Sie, Sie können diese Qualität bei zunehmendem Druck beibehalten?
+>>Charakter01SprichtFragend:<<
+Aber denken Sie, Sie können diese Qualität bei zunehmendem Druck beibehalten?
 
 [[Mit meiner Erfahrung als Speakerin gehe ich souverän mit solchen Anforderungen um.->Honorar II]]
 
@@ -874,8 +877,8 @@ Doch denken Sie, Sie können diese Qualität bei zunehmendem Druck beibehalten?
 
 
 :: Zuversicht [Bias] {"position":"3275,1575","size":"100,100"}
->>Charakter01SprichtSmiling:<<
-Natürlich. Wir schätzen auch Ihr Selbstbewusstsein. Doch wissen Sie, Selbstbewusstsein kann leicht als "zu fordernd" wirken, besonders bei Frauen.
+>>Charakter01SprichtLaecheln:<<
+Natürlich. Wir schätzen auch Ihr Selbstbewusstsein. Aber Selbstbewusstsein kann leicht als "zu fordernd" wirken, besonders bei Frauen.
 >>--<<
 >>RelevanterBias:TightropeBias<<
 
@@ -884,9 +887,9 @@ Natürlich. Wir schätzen auch Ihr Selbstbewusstsein. Doch wissen Sie, Selbstbew
 [[Ich denke, wir Frauen können uns ruhig mehr trauen.->Mehr trauen]]
 
 
-:: Zuversicht 2 [Bias] {"position":"2750,1550","size":"100,100"}
->>Charakter01SprichtSmiling:<<
-Natürlich. Wir schätzen auch Ihr Selbstbewusstsein. Doch wissen Sie, Selbstbewusstsein kann leicht als "zu fordernd" wirken, besonders bei Frauen.
+:: Zuversicht 2 [Bias] {"position":"2750,1575","size":"100,100"}
+>>Charakter01SprichtLaecheln:<<
+Natürlich. Wir schätzen auch Ihr Selbstbewusstsein. Aber Selbstbewusstsein kann leicht als "zu fordernd" wirken, besonders bei Frauen.
 >>--<<
 >>RelevanterBias:TightropeBias<<
 
@@ -896,10 +899,10 @@ Natürlich. Wir schätzen auch Ihr Selbstbewusstsein. Doch wissen Sie, Selbstbew
 
 
 :: Zwei Vorträge {"position":"2800,1425","size":"100,100"}
->>Charakter01SprichtAstonished:<<
+>>Charakter01SprichtErstaunt:<<
 Sie scheinen ja recht selbstbewusst zu sein, wenn es um Ihr Honorar geht. 
 >>--<<
->>Charakter01SprichtCritical:<<
+>>Charakter01SprichtKritisch:<<
 Was wenn wir Sie nun zwei Mal buchen und nach dem ersten Auftritt feststellen, dass es doch nicht passt?
 
 [[Ich bin zuversichtlich, dass meine Arbeit überzeugt, sonst hätten Sie mich ja nicht kontaktiert.->Zuversicht 2]]
