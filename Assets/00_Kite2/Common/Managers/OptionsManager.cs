@@ -152,6 +152,11 @@ namespace _00_Kite2.Common.Managers
         private IEnumerator AfterSelection(string parameterName, string answer, string nextEventID,
             bool displayAfterSelection, int index)
         {
+#if UNITY_ANDROID
+        TextToSpeechManager.Instance.CancelSpeak();
+#elif UNITY_IOS
+        TextToSpeechManager.Instance.CancelSpeak();
+#endif
             TextToSpeechManager.Instance.CancelSpeak();
             GameManager.Instance.calledFromReload = false;
 
