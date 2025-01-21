@@ -9,32 +9,52 @@ namespace _00_Kite2
     [Serializable]
     public class NovelSaveStatus
     {
-        public string novelId;
-        public bool isSaved;
+        public string novelId; // Unique identifier for the novel
+        public bool isSaved;   // Whether the novel has been saved
+    }
+    
+    [Serializable]
+    public class CharacterData
+    {
+        // Indices for character customization (set 1 and set 2)
+        public int skinIndex;
+        public int handIndex;
+        public int clotheIndex;
+        public int hairIndex;
+        
+        public int skinIndex2;
+        public int handIndex2;
+        public int clotheIndex2;
+        public int hairIndex2;
     }
 
     public class GameManager : MonoBehaviour
     {
-        [SerializeField] private bool skipIntroNovel;
+        [SerializeField] private bool skipIntroNovel; // Whether to skip the introduction novel
 
-        [SerializeField] private bool isIntroNovelSaved;
-        [SerializeField] private bool introNovelLoadedFromMainMenu = true;
+        [SerializeField] private bool isIntroNovelSaved; // Tracks if the intro novel is saved
+        [SerializeField] private bool introNovelLoadedFromMainMenu = true; // Whether the intro novel was loaded from the main menu
 
-        // Liste zur Anzeige im Inspector (nur für Debugging, nicht direkt genutzt)
+        // List to display in the Inspector (only for debugging, not used directly)
         [SerializeField] private List<NovelSaveStatus> novelSaveStatusList = new();
 
-        public bool calledFromReload = true;
+        public bool calledFromReload = true; // Flag to check if the scene is being reloaded
 
-        // Dictionary zur dynamischen Verwaltung des Speicherstatus jeder Novel
+        // Dictionary to dynamically manage the save status of each novel
         private readonly Dictionary<string, bool> _novelSaveStatus = new();
         public static GameManager Instance { get; private set; }
+        
+        // Static dictionary to store character data globally
+        public static Dictionary<long, CharacterData> CharacterDataList = new Dictionary<long, CharacterData>();
 
+        // Property to get or set the skipIntroNovel flag
         public bool SkipIntroNovel
         {
             get => skipIntroNovel;
             set => skipIntroNovel = value;
         }
 
+        // Property to get or set the introNovelLoadedFromMainMenu flag
         public bool IsIntroNovelLoadedFromMainMenu
         {
             get => introNovelLoadedFromMainMenu;
@@ -43,57 +63,61 @@ namespace _00_Kite2
         
         private void Awake()
         {
+            // Singleton pattern to ensure a single instance of GameManager exists
             if (Instance != null && Instance != this)
             {
-                Destroy(gameObject);
+                Destroy(gameObject); // Destroy duplicate GameManager instances
                 return;
             }
 
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Bleibt beim Szenenwechsel bestehen
+            DontDestroyOnLoad(gameObject); // Ensure this object persists across scene changes
 
-            // Überprüfe und setze den Speicherstatus f�r alle Novels beim Start
+            // Check and set the save status for all novels at startup
             CheckAndSetAllNovelsStatus();
         }
 
         /// <summary>
-        /// Überprüft und setzt den Speicherstatus für alle Novels.
+        /// Checks and sets the save status for all novels.
         /// </summary>
         public void CheckAndSetAllNovelsStatus()
         {
-            _novelSaveStatus.Clear();
-            novelSaveStatusList.Clear();
+            _novelSaveStatus.Clear(); // Clear the current dictionary
+            novelSaveStatusList.Clear(); // Clear the Inspector list
 
+            // Iterate through all VisualNovelNames (enums) and check their save status
             foreach (VisualNovelNames novelName in Enum.GetValues(typeof(VisualNovelNames)))
             {
                 string novelId = VisualNovelNamesHelper.ToInt(novelName).ToString();
 
+                // Check if a save exists for the novel
                 bool isSaved = SaveLoadManager.Load(novelId) != null;
                 _novelSaveStatus[novelId] = isSaved;
 
-                // Aktualisiert die Liste f�r den Inspector
+                // Add the save status to the Inspector list for debugging
                 novelSaveStatusList.Add(new NovelSaveStatus { novelId = novelId, isSaved = isSaved });
             }
         }
 
         /// <summary>
-        /// Überprüft, ob ein gespeicherter Fortschritt für eine bestimmte Novel vorhanden ist.
+        /// Checks whether saved progress exists for a specific novel.
         /// </summary>
-        /// <param name="novelId">Die eindeutige ID der Novel.</param>
-        /// <returns>Gibt <c>true</c> zurück, wenn ein Speicherstand vorhanden ist; andernfalls <c>false</c>.</returns>
+        /// <param name="novelId">The unique ID of the novel.</param>
+        /// <returns>Returns <c>true</c> if a save exists; otherwise, <c>false</c>.</returns>
         public bool HasSavedProgress(string novelId)
         {
-            // Hier wird geprüft, ob der Speicherstand f�r die Novel im Dictionary vorhanden ist und `true` ist
+            // Here it checks if the save status for the novel exists in the dictionary and is `true`
             return _novelSaveStatus.ContainsKey(novelId) && _novelSaveStatus[novelId];
         }
 
         /// <summary>
-        /// Aktualisiert den Speicherstatus einer Novel, z.B. nach einem Speichervorgang.
+        /// Updates the save status of a novel, e.g., after a save operation.
         /// </summary>
-        /// <param name="novelId">Die eindeutige ID der Novel.</param>
-        /// <param name="isSaved">Der neue Speicherstatus der Novel.</param>
+        /// <param name="novelId">The unique ID of the novel.</param>
+        /// <param name="isSaved">The new save status of the novel.</param>
         public void UpdateNovelSaveStatus(string novelId, bool isSaved)
         {
+            // Update the dictionary if the novel ID exists
             if (_novelSaveStatus.ContainsKey(novelId))
             {
                 _novelSaveStatus[novelId] = isSaved;

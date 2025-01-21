@@ -8,7 +8,7 @@
   "folderName": "Vermieter",
   "isKite2Novel": true,
   "startLocation": "Office",
-  "startTalkingPartnerEmotion": "Relaxed",
+  "startTalkingPartnerEmotion": "Schaut neutral entspannt",
   "isWithStartValues": true,
   "talkingPartner01" : "Vermieter",
   "talkingPartner02" : "",

@@ -8,13 +8,13 @@
   "folderName": "Presse",
   "isKite2Novel": true,
   "startLocation": "Office",
-  "startTalkingPartnerEmotion": "Relaxed",
+  "startTalkingPartnerEmotion": "Schaut neutral entspannt",
   "isWithStartValues": true,
   "talkingPartner01" : "Journalistin",
   "talkingPartner02" : "",
   "talkingPartner03" : "",
   "wordsToReplace": [
-	{"wordToReplace": ">>JournalistinSprichtFriendly:<<", "replaceByValue": ">>Charakter01SprichtFriendly:<<"},
+	{"wordToReplace": ">>JournalistinSprichtFriendly:<<", "replaceByValue": ">>Charakter01SprichtLaecheln:<<"},
 	{"wordToReplace": ">>SpielerinCharakterSpricht:<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"}	
 	]
 }

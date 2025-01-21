@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace _00_Kite2.Player.Kite_Novels.Visual_Novel_Formatter
 {

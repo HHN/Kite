@@ -217,7 +217,7 @@ namespace _00_Kite2.Player
                 }
                 case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
                 {
-                    return "Bekannte\r\ntreffen";
+                    return "Bekannten\r\ntreffen";
                 }
                 case VisualNovelNames.BANK_KREDIT_NOVEL:
                 {

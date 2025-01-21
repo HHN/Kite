@@ -8,12 +8,12 @@
   "folderName": "Einstieg",
   "isKite2Novel": true,
   "startLocation": "Office",
-  "startTalkingPartnerEmotion": "Friendly",
+  "startTalkingPartnerEmotion": "Schaut neutral entspannt",
   "isWithStartValues": true,
   "talkingPartner01" : "Intro",
   "talkingPartner02" : "",
   "talkingPartner03" : "",
   "wordsToReplace": [
-    {"wordToReplace": ">>Charakter01SprichtFriendly:<<", "replaceByValue": ">>Charakter01SprichtSmiling:<<"},
+    {"wordToReplace": ">>Charakter01SprichtFriendly:<<", "replaceByValue": ">>Charakter01Laecheln:<<"},
   ]
 }

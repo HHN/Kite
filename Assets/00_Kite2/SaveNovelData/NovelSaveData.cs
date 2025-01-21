@@ -2,13 +2,14 @@ using System;
 using System.Collections.Generic;
 using _00_Kite2.Common.Novel;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _00_Kite2.SaveNovelData
 {
     [Serializable]
     public class NovelSaveData
     {
-        public string currentEvent;
+        public string currentEventId;
         public List<string> playThroughHistory; // Verlauf der gewählten Aktionen oder Dialoge
         public string[] optionsId;
         public List<VisualNovelEvent> eventHistory;
@@ -16,6 +17,9 @@ namespace _00_Kite2.SaveNovelData
         public List<VisualNovelEvent> content;
         public List<string> messageType;
         public int optionCount;
+        public int currentCharacter;
+        public Dictionary<int, int> CharacterExpressions = new();
+        public Dictionary<long, int[]> CharacterPrefabData;
 
         /// <summary>
         /// Konvertiert diese Instanz in einen JSON-String.

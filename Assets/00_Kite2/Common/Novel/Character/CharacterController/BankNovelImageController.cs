@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,15 +18,38 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         [SerializeField] private Sprite[] animationFramesGlas;
 
         [SerializeField] private Transform characterContainer;
-        [SerializeField] private List<GameObject> characterPrefabs;
-        // [SerializeField] private GameObject characterPrefab;
+        // [SerializeField] private List<GameObject> characterPrefabs;
+        [SerializeField] private GameObject characterPrefab;
 
         private GameObject _instantiatedCharacter;
+        
+        public CharacterController characterController;
 
         private void Start()
         {
-            SetInitialSpritesForImages();
-            SetInitialCharacters();
+            // SetInitialSpritesForImages();
+            // SetInitialCharacters();
+            
+            characterController = characterContainer.GetComponentInChildren<CharacterController>();
+
+            characterController.SetSkinSprite();
+            characterController.SetHandSprite();
+            characterController.SetClotheSprite();
+            characterController.SetHairSprite();
+
+            GameManager.CharacterDataList = new Dictionary<long, CharacterData>
+            {
+                {
+                    10, // Schlüssel für den Eintrag
+                    new CharacterData
+                    {
+                        skinIndex = characterController.skinIndex,
+                        handIndex = characterController.handIndex,
+                        clotheIndex = characterController.clotheIndex,
+                        hairIndex = characterController.hairIndex
+                    }
+                }
+            };
         }
 
         private void SetInitialSpritesForImages()

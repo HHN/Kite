@@ -33,14 +33,14 @@ Du wirst von jemanden angesprochen.
 
 
 :: Ansonsten kein Artikel {"position":"1975,2500","size":"100,100"}
->>JournalistinSprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Danke für das Gespräch, ich melde mich bei Ihnen. Einen schönen Tag noch und auf Wiedersehen.
 >>--<<
 >>Ende<<
 
 
 :: Artikel Ende {"position":"950,2500","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Danke für das Gespräch und Ihre Zeit. Ich freue mich auf Ihre Rückmeldung und melde mich, sobald der Artikel fertig ist.
 >>--<<
 >>SpielerinCharakterSpricht:<<
@@ -50,7 +50,7 @@ Ich freue mich auch. Danke, dass Sie sich die Zeit genommen haben, und bis bald!
 
 
 :: Ausnahmeerscheinung {"position":"825,1050","size":"100,100"}
->>Charakter01SprichtCritical:<<
+>>Charakter01SprichtKritisch:<<
 Ich will Ihre Leistungen nicht kleinreden, sondern einfach zeigen, wie beeindruckend es ist, dass Sie diese Hürden gemeistert haben.
 
 [[Dann fände ich es gut, wenn es mehr um Empowerment als um Sensationalisierung gehen würde.->Empowerment]]
@@ -58,7 +58,7 @@ Ich will Ihre Leistungen nicht kleinreden, sondern einfach zeigen, wie beeindruc
 
 
 :: Ausnahmefall [Bias] {"position":"1575,1550","size":"100,100"}
->>Charakter01SprichtLaughing:<<
+>>Charakter01SprichtLachend:<<
 Klar, es gibt tolle Frauen in der Branche, aber es sind leider noch nicht viele. Sie sind da wirklich eine Ausnahme. Ich will doch nur zeigen, dass Sie echt was drauf haben.
 >>--<<
 >>RelevanterBias:Tokenism<<
@@ -69,7 +69,7 @@ Klar, es gibt tolle Frauen in der Branche, aber es sind leider noch nicht viele.
 
 
 :: Bedenken äußern {"position":"950,2050","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Keine Sorge, der Artikel wird ausgewogen. Es geht um Ihre Idee und Ihre Rolle als Gründerin. Wir zeigen das Gesamtbild.
 
 [[Das beruhigt mich, danke Ihnen.->Positiv]]
@@ -77,7 +77,7 @@ Keine Sorge, der Artikel wird ausgewogen. Es geht um Ihre Idee und Ihre Rolle al
 
 
 :: Beschleunigen {"position":"675,1950","size":"100,100"}
->>Charakter01SprichtCritical:<<
+>>Charakter01SprichtKritisch:<<
 Das hängt von der Redaktion ab. Ich spreche es mal an, aber versprechen kann ich nichts.
 
 [[Danke, das wäre toll. Ich hoffe, es klappt.->Positiv]]
@@ -85,11 +85,11 @@ Das hängt von der Redaktion ab. Ich spreche es mal an, aber versprechen kann ic
 
 
 :: Betonung [Bias] {"position":"2325,550","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Es geht nicht nur um Ihre Geschäftsidee, sondern auch darum, dass Sie als eine der wenigen Frauen gründen. 
 
 >>--<<
->>Charakter01SprichtLaughing:<<
+>>Charakter01SprichtLachend:<<
 Das würde sicher viele Leserinnen inspirieren. Und ehrlich gesagt, es macht den Artikel auch interessanter. Frauen als Gründerinnen ist etwas Besonderes.
 
 >>--<<
@@ -100,7 +100,7 @@ Das würde sicher viele Leserinnen inspirieren. Und ehrlich gesagt, es macht den
 
 
 :: Durchsetzung [Bias Frage] {"position":"1850,1100","size":"100,100"}
->>Charakter01SprichtAstonished:<<
+>>Charakter01SprichtErschrocken:<<
 Es heißt ja oft, Frauen wären nicht so durchsetzungsfähig wie Männer. Bei Ihnen sieht das ganz anders aus! Wäre spannend, das im Artikel zu erwähnen, oder?
 >>--<<
 >>RelevanterBias:BiasInDerWahrnehmungVonFuehrungsfaehigkeiten<<
@@ -115,7 +115,7 @@ Es heißt ja oft, Frauen wären nicht so durchsetzungsfähig wie Männer. Bei Ih
 
 
 :: Empowerment {"position":"1375,1500","size":"100,100"}
->>Charakter01SprichtLaughing:<<
+>>Charakter01SprichtLachend:<<
 Genau, Empowerment ist das Stichwort! Viele Frauen würden es bestimmt inspirierend finden, zu sehen, wie Sie das geschafft haben.
 [[Prima. Wann erscheint der Artikel?->Vorfreude Artikel]]
 
@@ -125,7 +125,7 @@ Genau, Empowerment ist das Stichwort! Viele Frauen würden es bestimmt inspirier
 
 
 :: Ende Positiv {"position":"1075,2500","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Vielen Dank für das Gespräch und Ihre Zeit. Ich melde mich, sobald der Artikel raus ist.
 >>--<<
 >>SpielerinCharakterSpricht:<<
@@ -135,7 +135,7 @@ Danke Ihnen! Bis bald.
 
 
 :: Erklärung [Bias] {"position":"2150,950","size":"100,100"}
->>Charakter01SprichtAstonished:<<
+>>Charakter01SprichtErschrocken:<<
 So habe ich das nicht gemeint. Aber unsere Leserinnen und Leser finden es interessant, wenn eine so attraktive Frau wie Sie sich mit einer so spannenden Idee selbstständig macht.
 >>--<<
 >>RelevanterBias:Mikroaggressionen<<
@@ -147,7 +147,7 @@ So habe ich das nicht gemeint. Aber unsere Leserinnen und Leser finden es intere
 
 
 :: Ermutigung [Bias] {"position":"1625,525","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Sehr ermutigend für andere Frauen. Und Sie haben ja auch wirklich Glück, dass Sie genau die richtige Nische gefunden haben, in der Sie gründen können.
 
 >>--<<
@@ -161,10 +161,10 @@ Sehr ermutigend für andere Frauen. Und Sie haben ja auch wirklich Glück, dass 
 
 
 :: Fokus Geschäftsidee [Bias] {"position":"2000,250","size":"100,100"}
->>Charakter01SprichtDecisionNo:<<
+>>Charakter01SprichtUnzufrieden:<<
 Da kann ich leider nichts versprechen. Ich kann zwar beim Schreiben darauf achten, aber am Ende entscheidet die Redaktionsleitung, wie die Story erscheint.
 >>--<<
->>Charakter01SprichtAstonished:<<
+>>Charakter01SprichtErschrocken:<<
 Soll ich etwa nicht erwähnen, dass Sie eine Frau sind?
 >>--<<
 >>RelevanterBias:UnbewussteBiasInDerKommunikation<<
@@ -177,7 +177,7 @@ Soll ich etwa nicht erwähnen, dass Sie eine Frau sind?
 
 
 :: Fokus Unternehmen {"position":"1600,250","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Es ist ja schon eher selten, dass Frauen gründen. Das könnte anderen Mut machen! Ich finde, das sollte wir erwähnen.
 
 [[Mir ist es wichtig, dass meine Idee im Vordergrund steht. Das sendet auch eine starke Botschaft.->Sensationalisierung]]
@@ -188,7 +188,7 @@ Es ist ja schon eher selten, dass Frauen gründen. Das könnte anderen Mut mache
 
 
 :: Fokus: Geschäft [Bias] {"position":"2000,875","size":"100,100"}
->>Charakter01SprichtLaughing:<<
+>>Charakter01SprichtLachend:<<
 Ach, nutzen Sie es doch aus und zeigen Sie ihren weiblichen Charme. So könnten Sie viel mehr Aufmerksamkeit erhalten!
 >>--<<
 >>RelevanterBias:Mikroaggressionen<<
@@ -201,10 +201,10 @@ Ach, nutzen Sie es doch aus und zeigen Sie ihren weiblichen Charme. So könnten 
 
 
 :: Frauen gründen [Bias] {"position":"1225,575","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Aber sehen Sie, Frauen wie Sie sind wirklich etwas Besonderes. Nicht viele Frauen trauen sich in dieser Branche zu gründen. Genau das inspiriert Leute.
 >>--<<
->>Charakter01SprichtProud:<<
+>>Charakter01SprichtStolz:<<
 Ihre Idee zählt natürlich, aber Ihre Geschichte als Frau, die es geschafft hat, in dieser Männerdomäne Fuß zu fassen, sticht heraus.
 >>--<<
 >>RelevanterBias:BenevolenterSexismus<<
@@ -217,7 +217,7 @@ Ihre Idee zählt natürlich, aber Ihre Geschichte als Frau, die es geschafft hat
 
 
 :: Glück {"position":"1650,850","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Ja. Aber natürlich ist es nie nur Glück, sondern Sie haben auch hart gearbeitet.
 
 [[Stimmt. Aber warum betonen Sie eigentlich so oft, dass ich eine Frau bin?->Nachfrage Positiv]]
@@ -226,7 +226,7 @@ Ja. Aber natürlich ist es nie nur Glück, sondern Sie haben auch hart gearbeite
 
 
 :: Harte Arbeit {"position":"1500,800","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Ja, absolut. Sie haben das alles vor allem sich selbst zuzuschreiben.
 
 [[Stimmt. Aber warum betonen Sie eigentlich so oft, dass ich eine Frau bin?->Nachfrage Positiv]]
@@ -235,10 +235,10 @@ Ja, absolut. Sie haben das alles vor allem sich selbst zuzuschreiben.
 
 
 :: Innovative Arbeit [Bias] {"position":"1850,1325","size":"100,100"}
->>Charakter01SprichtProud:<<
+>>Charakter01SprichtStolz:<<
 Klar, was Sie geschafft haben, ist echt beeindruckend! Sie hatten bestimmt einige, die Ihnen geholfen haben, oder?
 >>--<<
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Vielleicht könnten wir im Artikel erzählen, wie Sie es geschafft haben, die richtigen Leute an Bord zu holen?
 >>--<<
 >>RelevanterBias:LeistungsattributionsBias<<
@@ -251,7 +251,7 @@ Vielleicht könnten wir im Artikel erzählen, wie Sie es geschafft haben, die ri
 
 
 :: Journalistin {"position":"1100,50","size":"100,100"}
->>Charakter01SprichtLaughing:<<
+>>Charakter01SprichtLachend:<<
 Hey, das war ein richtig guter Pitch! Ich bin von der Presse und würde gern über Ihre Geschäftsidee schreiben.
 >>--<<
 >>SpielerinCharakterSpricht:<<
@@ -261,7 +261,7 @@ Danke, das klingt super! Haben Sie schon eine konkrete Frage für den Artikel?
 
 
 :: Kein Artikel {"position":"2025,1325","size":"100,100"}
->>Charakter01SprichtAstonished:<<
+>>Charakter01SprichtErschrocken:<<
 Oh, warum denn nicht?
 
 [[Ich will einfach nicht.->Keine Gründe]]
@@ -277,7 +277,7 @@ Du verlässt den Raum.
 
 
 :: Kein Artikel Neutral Gründe {"position":"1625,2500","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Ach so. Ich verstehe, vielen Dank, für das Gespräch. Dann verbleiben wir einfach so. Ich wünsche Ihnen noch einen schönen Tag. Auf Wiedersehen.
 
 >>--<<
@@ -285,14 +285,14 @@ Ach so. Ich verstehe, vielen Dank, für das Gespräch. Dann verbleiben wir einfa
 
 
 :: Kein Artikel Neutral-Negativ {"position":"1800,2500","size":"100,100"}
->>Charakter01SprichtDecisionNo:<<
+>>Charakter01SprichtUnzufrieden:<<
 Nun gut. Auf Wiedersehen.
 >>--<<
 >>Ende<<
 
 
 :: Kein Artikel b {"position":"2175,1175","size":"100,100"}
->>Charakter01SprichtAstonished:<<
+>>Charakter01SprichtErschrocken:<<
 Sind Sie sich sicher, dass Sie auf einen Artikel verzichten möchten?
 
 [[Ja, wenn der Fokus nicht auf meinem Unternehmen liegt, verzichte ich lieber.->Kein Artikel b II]]
@@ -303,7 +303,7 @@ Sind Sie sich sicher, dass Sie auf einen Artikel verzichten möchten?
 
 
 :: Kein Artikel b II {"position":"2200,1900","size":"100,100"}
->>Charakter01SprichtDecisionNo:<<
+>>Charakter01SprichtUnzufrieden:<<
 Ach, wie schade! Und ich dachte, Ihre Geschichte könnte interessant sein. Aber wenn Sie sich nicht für die Aufmerksamkeit interessieren, dann ist das eben so.
 
 [[Es scheint, dass wir hier nicht zusammenkommen. Ich denke, wir sollten das Gespräch beenden. Auf Wiedersehen. ->Kein Artikel Negativ b]]
@@ -323,7 +323,7 @@ Ach, wie schade! Und ich dachte, Ihre Geschichte könnte interessant sein. Aber 
 
 
 :: Klärung {"position":"850,2275","size":"100,100"}
->>Charakter01SprichtCritical:<<
+>>Charakter01SprichtKritisch:<<
 Verstanden, Sie können das gerne nochmal anschauen. Ich schicke Ihnen den Artikel, sobald er fertig ist.
 
 [[Das klingt nach einem guten Plan. Ich freue mich darauf, Ihren Artikel zu lesen.->Artikel Ende]]
@@ -331,10 +331,10 @@ Verstanden, Sie können das gerne nochmal anschauen. Ich schicke Ihnen den Artik
 
 
 :: Konfrontativ {"position":"1825,1950","size":"100,100"}
->>Charakter01SprichtAstonished:<<
+>>Charakter01SprichtErschrocken:<<
 Ach, tue ich das?
 >>--<<
->>Charakter01SprichtCritical:<<
+>>Charakter01SprichtKritisch:<<
 Ich meine es aber nur gut mit Ihnen. Schließlich bin ich diejenige, die weiß, was unsere Zielgruppe lesen möchte.
 
 [[Ich glaube, wir finden keinen gemeinsamen Nenner. Lassen Sie den Artikel bitte weg.->Kein Artikel b II]]
@@ -345,7 +345,7 @@ Ich meine es aber nur gut mit Ihnen. Schließlich bin ich diejenige, die weiß, 
 
 
 :: Maßstab {"position":"1600,1100","size":"100,100"}
->>Charakter01SprichtCritical:<<
+>>Charakter01SprichtKritisch:<<
 Diese Maßstäbe gibt es halt. Wäre doch spannend zu zeigen, wie Sie als Frau dagegen ankämpfen, oder?
 
 [[Ja, stimmt auch. Okay. Wann wird der Artikel denn erscheinen?->Vorfreude Artikel]]
@@ -356,7 +356,7 @@ Diese Maßstäbe gibt es halt. Wäre doch spannend zu zeigen, wie Sie als Frau d
 
 
 :: Maßstäbe hinterfragen [Bias] {"position":"1675,1425","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Es ist schade, dass solche Maßstäbe existieren, aber sie prägen die Realität vieler Frauen. Wie Sie dagegen ankämpfen, könnte unsere Leserinnen inspirieren.
 >>--<<
 >>RelevanterBias:BenevolenterSexismus<<
@@ -369,7 +369,7 @@ Es ist schade, dass solche Maßstäbe existieren, aber sie prägen die Realität
 
 
 :: Mehr Sichtbarkeit für Gründerinnen [Bias] {"position":"2400,250","size":"100,100"}
->>Charakter01SprichtLaughing:<<
+>>Charakter01SprichtLachend:<<
 Aber es ist toll, dass Sie als Frau gründen. Das sollten wir prominent platzieren. Sonst befürchte ich, dass die Redaktion das nicht druckt.
 
 >>--<<
@@ -383,10 +383,10 @@ Aber es ist toll, dass Sie als Frau gründen. Das sollten wir prominent platzier
 
 
 :: Nachfrage Positiv {"position":"650,1350","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Gründerinnen-Geschichten sind oft inspirierend, weil sie Stereotypen aufbrechen und Frauen in weniger besetzten Bereichen zeigen.
 >>--<<
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Das kann Leserinnen motivieren, die nach Vorbildern suchen. Es geht um Geschichten, die Menschen ermutigen und motivieren, Geschlechterbarrieren zu überwinden.
 >>--<<
 >>RelevanterBias:Tokenism<<
@@ -401,7 +401,7 @@ Das kann Leserinnen motivieren, die nach Vorbildern suchen. Es geht um Geschicht
 
 
 :: Nachvollziehbar {"position":"1800,875","size":"100,100"}
->>Charakter01SprichtCritical:<<
+>>Charakter01SprichtKritisch:<<
 Mal sehen, ich versuche einen Mittelweg zu finden. Aber seien Sie nicht überrascht, wenn das Geschlecht trotzdem im Fokus steht.
 
 [[Es ist mir wichtig, dass mein Geschlecht nicht im Mittelpunkt steht. Meine Gründung und Leistung sollen für sich sprechen.->Durchsetzung]]
@@ -412,7 +412,7 @@ Mal sehen, ich versuche einen Mittelweg zu finden. Aber seien Sie nicht überras
 
 
 :: Positiv {"position":"775,2100","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Aber klar, das mache ich. Und wenn Sie noch Infos oder Fotos haben, die wir einfügen sollen, sagen Sie einfach Bescheid.
 
 [[Danke! Ich werde Ihnen alles zukommen lassen.->Ende Positiv]]
@@ -420,7 +420,7 @@ Aber klar, das mache ich. Und wenn Sie noch Infos oder Fotos haben, die wir einf
 
 
 :: Rückfrage Glück {"position":"1350,800","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Oh, Entschuldigen Sie. Ich wollte Ihren Anteil nicht schmälern.
 
 [[Na gut. Aber warum ist Ihnen das so wichtig, dass ich eine Frau bin?->Nachfrage Positiv]]
@@ -429,7 +429,7 @@ Oh, Entschuldigen Sie. Ich wollte Ihren Anteil nicht schmälern.
 
 
 :: Sensationalisierung [Bias] {"position":"1775,425","size":"100,100"}
->>Charakter01SprichtAstonished:<<
+>>Charakter01SprichtErschrocken:<<
 Die Tatsache, dass Sie eine Frau sind, macht Ihre Geschichte doch viel interessanter. Die Menschen lieben solche Geschichten!
 
 >>--<<
@@ -441,7 +441,7 @@ Die Tatsache, dass Sie eine Frau sind, macht Ihre Geschichte doch viel interessa
 
 
 :: Stereotype aufbrechen [Bias] {"position":"725,825","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Genau, es ist noch selten, dass Frauen in der Branche Erfolg haben. Ihre Geschichte könnte andere inspirieren. Die Idee ist super, aber Ihre Reise als Frau macht den Unterschied.
 >>--<<
 >>RelevanterBias:Tokenism<<
@@ -454,7 +454,7 @@ Genau, es ist noch selten, dass Frauen in der Branche Erfolg haben. Ihre Geschic
 
 
 :: Strukturelle Gründe {"position":"1950,2225","size":"100,100"}
->>Charakter01SprichtAstonished:<<
+>>Charakter01SprichtErschrocken:<<
 Ob wir einen Artikel über Hürden und Diskriminierung schreiben, muss ich abklären. Ich gebe Ihnen dann nochmal Bescheid.
 
 [[Okay. Es sollte aber nicht so wirken, als wären das nur individuelle Probleme.->Ansonsten kein Artikel]]
@@ -465,7 +465,7 @@ Ob wir einen Artikel über Hürden und Diskriminierung schreiben, muss ich abkl�
 
 
 :: Subtil {"position":"1475,2150","size":"100,100"}
->>Charakter01SprichtCritical:<<
+>>Charakter01SprichtKritisch:<<
 Klar, ich verstehe. Sie möchten, dass der Artikel sich auf Ihre Geschäftsidee konzentriert. Aber es ist auch wichtig zu zeigen, dass Frauen oft größere Hürden haben.
 
 [[Ja, wenn Sie auf die Hürden und die Diskriminierung eingehen, wäre das gut.->Strukturelle Gründe]]
@@ -476,7 +476,7 @@ Klar, ich verstehe. Sie möchten, dass der Artikel sich auf Ihre Geschäftsidee 
 
 
 :: Umsetzung [Bias] {"position":"1650,1725","size":"100,100"}
->>Charakter01SprichtAstonished:<<
+>>Charakter01SprichtErschrocken:<<
 Das wundert mich. Viele Frauen finden es wichtig, über die Schwierigkeiten zu sprechen.
 >>--<<
 >>RelevanterBias:Bestaetigungsverzerrung<<
@@ -489,7 +489,7 @@ Das wundert mich. Viele Frauen finden es wichtig, über die Schwierigkeiten zu s
 
 
 :: Unternehmensidee {"position":"1300,50","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Ja. Wollten Sie schon immer Ihr eigenes Unternehmen haben?
 
 [[Ja, ich hatte schon als Kind den Traum, meine eigene Chefin zu sein.->Unternehmerin]]
@@ -498,7 +498,7 @@ Ja. Wollten Sie schon immer Ihr eigenes Unternehmen haben?
 
 
 :: Unternehmerin {"position":"2000,50","size":"100,100"}
->>Charakter01SprichtLaughing:<<
+>>Charakter01SprichtLachend:<<
 Spannend! Eine Frau, die ein Unternehmen gründet – das wird sicher viele Leute interessieren.
 >>--<<
 >>RelevanterBias:Tokenism<<
@@ -513,7 +513,7 @@ Spannend! Eine Frau, die ein Unternehmen gründet – das wird sicher viele Leut
 
 
 :: Verlinken {"position":"675,2375","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Ja, das können wir gerne machen. Schicken Sie mir einfach den Link.
 
 [[Perfekt, vielen Dank!->Artikel Ende]]
@@ -524,7 +524,7 @@ Ja, das können wir gerne machen. Schicken Sie mir einfach den Link.
 
 
 :: Vorfreude Artikel {"position":"750,1725","size":"100,100"}
->>Charakter01SprichtLaughing:<<
+>>Charakter01SprichtLachend:<<
 Wir planen, den Artikel in der nächsten Ausgabe zu bringen. Das dürfte so in zwei Wochen sein. Ich gebe Ihnen gerne Bescheid, sobald das genaue Datum feststeht.
 
 [[Perfekt. Könnten Sie mir einen Link schicken, wenn der Artikel online ist? Dann teile ich ihn gerne auf unseren Social-Media-Kanälen.->Positiv]]
@@ -537,7 +537,7 @@ Wir planen, den Artikel in der nächsten Ausgabe zu bringen. Das dürfte so in z
 
 
 :: Was wenn Mann {"position":"2025,575","size":"100,100"}
->>Charakter01SprichtCritical:<<
+>>Charakter01SprichtKritisch:<<
 Es ist selten, dass wir über Frauen in der Branche berichten. Ihre Geschichte wäre eine besondere Perspektive.
 
 [[Ich verstehe. Aber können wir uns bitte darauf konzentrieren, was meine Idee einzigartig macht.->Nachvollziehbar]]
@@ -546,7 +546,7 @@ Es ist selten, dass wir über Frauen in der Branche berichten. Ihre Geschichte w
 
 
 :: behindert Normalisierung {"position":"600,1000","size":"100,100"}
->>Charakter01SprichtCritical:<<
+>>Charakter01SprichtKritisch:<<
 Wenn wir nicht zeigen, wie schwer es als Frau in einer Männerdomäne ist, ignorieren wir Ihre Hürden. Das wäre doch falsch.
 
 [[Das stimmt auch. Aber warum wollen alle immer Geschichten über Frauen? ->Nachfrage Positiv]]
@@ -555,7 +555,7 @@ Wenn wir nicht zeigen, wie schwer es als Frau in einer Männerdomäne ist, ignor
 
 
 :: Überlegen {"position":"675,2250","size":"100,100"}
->>Charakter01SprichtSmiling:<<
+>>Charakter01SprichtLaecheln:<<
 Klar, lassen Sie sich ruhig Zeit. Schreiben Sie mir einfach, wenn Sie bereit sind.
 
 [[Perfekt, vielen Dank!->Artikel Ende]]
