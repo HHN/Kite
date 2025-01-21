@@ -70,6 +70,10 @@ namespace _00_Kite2.Common.SceneManagement
                 {
                     return SceneNames.FOUNDERS_BUBBLE_SCENE;
                 }
+                case (SceneNames.SOUNDEINSTELLUNG_SCENE):
+                {
+                    return SceneNames.EINSTELLUNGEN_SCENE;
+                }
 
                 default: return SceneNames.MAIN_MENU_SCENE;
             }

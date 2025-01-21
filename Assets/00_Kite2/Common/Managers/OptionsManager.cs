@@ -11,11 +11,12 @@ namespace _00_Kite2.Common.Managers
 {
     public class OptionsManager : MonoBehaviour
     {
-        public ChatMessageBox optionA;
-        public ChatMessageBox optionB;
-        public ChatMessageBox optionC;
-        public ChatMessageBox optionD;
-        public ChatMessageBox optionE;
+        [SerializeField] private ChatMessageBox optionA;
+        [SerializeField] private ChatMessageBox optionB;
+        [SerializeField] private ChatMessageBox optionC;
+        [SerializeField] private ChatMessageBox optionD;
+        [SerializeField] private ChatMessageBox optionE;
+        [SerializeField] private AudioClip decisionSound;
 
         private string _idA;
         private string _idB;
@@ -37,7 +38,7 @@ namespace _00_Kite2.Common.Managers
 
         private bool _selected;
 
-        public AudioClip selectedSound;
+        [SerializeField] private AudioClip selectedSound;
 
         private PlayNovelSceneController _sceneController;
         private ConversationContentGuiController _conversationContentGuiController;
@@ -46,6 +47,8 @@ namespace _00_Kite2.Common.Managers
         {
             this._sceneController = sceneController;
             _conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
+
+            GlobalVolumeManager.Instance.PlaySound(selectedSound);
 
             if (options.Count == 0)
             {
@@ -149,6 +152,11 @@ namespace _00_Kite2.Common.Managers
             StartCoroutine(AfterSelection("Selected E", _stringE, _idE, _displayAfterSelectionE, 4));
         }
 
+        public void PlayDecisionSound()
+        {
+            GlobalVolumeManager.Instance.PlaySound(decisionSound);
+        }
+
         private IEnumerator AfterSelection(string parameterName, string answer, string nextEventID,
             bool displayAfterSelection, int index)
         {
@@ -214,24 +222,14 @@ namespace _00_Kite2.Common.Managers
                     Debug.LogWarning("parameterName is null or empty.");
                 }
             }
-
-            // Play the selection audio feedback
-            AudioSource audio = GetComponent<AudioSource>();
-            if (audio != null)
+            
+            if (selectedSound != null)
             {
-                if (selectedSound != null)
-                {
-                    audio.clip = selectedSound;
-                    audio.Play();
-                }
-                else
-                {
-                    Debug.LogWarning("selectedSound is null. Cannot play audio clip.");
-                }
+                GlobalVolumeManager.Instance.PlaySound(selectedSound);
             }
             else
             {
-                Debug.LogWarning("AudioSource component not found on GameObject.");
+                Debug.LogWarning("selectedSound is null. Cannot play audio clip.");
             }
 
             // Wait for the audio and animation to complete

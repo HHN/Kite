@@ -11,8 +11,8 @@ namespace _00_Kite2.Common.UI.UI_Elements.Messages
         public TextMeshProUGUI messageBoxHeadline;
         public TextMeshProUGUI messageBoxBody;
         public Button okButton;
-        [SerializeField] private AudioSource errorSound;
-        [SerializeField] private AudioSource infoSound;
+        [SerializeField] private AudioClip errorSound;
+        [SerializeField] private AudioClip infoSound;
         [SerializeField] private bool isErrorMessage;
 
         private void Start()
@@ -35,11 +35,11 @@ namespace _00_Kite2.Common.UI.UI_Elements.Messages
         {
             if (this.isErrorMessage)
             {
-                this.errorSound.Play();
+                GlobalVolumeManager.Instance.PlaySound(errorSound);
             }
             else
             {
-                this.infoSound.Play();
+                GlobalVolumeManager.Instance.PlaySound(infoSound);
             }
 
             this.gameObject.SetActive(true);

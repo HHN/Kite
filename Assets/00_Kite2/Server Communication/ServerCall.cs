@@ -26,7 +26,7 @@ namespace _00_Kite2.Server_Communication
             {
                 // Hier wird der Custom-CertificateHandler zugewiesen:
                 webRequest.certificateHandler = new BypassCertificate();
-                Debug.Log("RequestRegistration");
+                //Debug.Log("RequestRegistration");
 
                 yield return webRequest.SendWebRequest();
                 HandleWebRequestResult(webRequest);
@@ -51,9 +51,9 @@ namespace _00_Kite2.Server_Communication
 
         protected void HandleWebRequestResult(UnityWebRequest webRequest)
         {
-            Debug.Log("UnityWebRequest Result: " + webRequest.result);
-            Debug.Log("UnityWebRequest Error: " + webRequest.error);
-            Debug.Log("WebRequest URL: " + webRequest.url);
+            //Debug.Log("UnityWebRequest Result: " + webRequest.result);
+            //Debug.Log("UnityWebRequest Error: " + webRequest.error);
+            //Debug.Log("WebRequest URL: " + webRequest.url);
 
             switch (webRequest.result)
             {

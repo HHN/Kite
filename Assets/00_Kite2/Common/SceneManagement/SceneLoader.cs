@@ -208,6 +208,11 @@ namespace _00_Kite2.Common.SceneManagement
             LoadScene(SceneNames.GEMERKTE_NOVELS_SCENE);
         }
 
+        public static void SoundeinstellungScene()
+        {
+            LoadScene(SceneNames.SOUNDEINSTELLUNG_SCENE);
+        }
+
         public static void LoadScene(string sceneName)
         {
             GameObject oldSceneControllerGameObject = GameObject.Find("Controller");

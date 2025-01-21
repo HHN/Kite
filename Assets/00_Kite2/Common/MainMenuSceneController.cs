@@ -75,7 +75,7 @@ namespace _00_Kite2.Common
             if (privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted())
             {
                 termsAndConditionPanel.SetActive(false);
-                kiteAudioLogo.Play();
+                
 
                 if (privacyManager.IsDataCollectionAccepted())
                 {

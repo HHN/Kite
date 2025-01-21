@@ -2,7 +2,6 @@ using _00_Kite2.Common;
 using _00_Kite2.Common.Managers;
 using _00_Kite2.Common.Messages;
 using _00_Kite2.Common.SceneManagement;
-using LeastSquares.Overtone;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,11 +14,11 @@ namespace _00_Kite2.NewPages
         [SerializeField] private Button toggleTextToSpeechInfoButton;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private RectTransform layout;
-        [SerializeField] private TTSEngine engine;
         [SerializeField] private Button adjustFontSizeInfoButton;
         [SerializeField] private Slider fontSizeSlider;
         [SerializeField] private TMP_Text exampleText;
         [SerializeField] private Button confirmButton;
+        [SerializeField] private GameObject checkMarkTTS;
         [SerializeField] private RectTransform layoutGroupContainer; // Container mit der Vertical Layout Group
 
         private const int MinFontSize = 35; // Minimale Schriftgröße
@@ -52,10 +51,12 @@ namespace _00_Kite2.NewPages
             if (TextToSpeechManager.Instance.IsTextToSpeechActivated())
             {
                 toggleTextToSpeech.isOn = true;
+                ToggleVisibilityCheckmarkTTS(true);
             }
             else
             {
                 toggleTextToSpeech.isOn = false;
+                ToggleVisibilityCheckmarkTTS(false);
             }
         }
 
@@ -68,12 +69,14 @@ namespace _00_Kite2.NewPages
                 TextToSpeechManager.Instance.ActivateTTS();
                 DisplayInfoMessage(InfoMessages.STARTED_TOGGLETEXTTOSPEECH_BUTTON);
                 StartCoroutine(TextToSpeechManager.Instance.Speak("Text wird nun vorgelesen"));
+                ToggleVisibilityCheckmarkTTS(true);
             }
             else
             {
                 StartCoroutine(TextToSpeechManager.Instance.Speak("Text wird nicht mehr vorgelesen"));
                 TextToSpeechManager.Instance.DeactivateTTS();
                 DisplayInfoMessage(InfoMessages.STOPPED_TOGGLETEXTTOSPEECH_BUTTON);
+                ToggleVisibilityCheckmarkTTS(false);
             }
         }
 
@@ -152,6 +155,11 @@ namespace _00_Kite2.NewPages
             {
                 Debug.LogWarning("layoutGroupContainer ist nicht zugewiesen.");
             }
+        }
+
+        private void ToggleVisibilityCheckmarkTTS(bool show)
+        {
+            checkMarkTTS.SetActive(show);
         }
     }
 }

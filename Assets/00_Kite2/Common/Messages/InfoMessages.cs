@@ -42,8 +42,11 @@ namespace _00_Kite2.Common.Messages
         public static readonly string STARTED_TOGGLETEXTTOSPEECH_BUTTON = "Text wird dir nun vorgelesen.";
         public static readonly string STOPPED_TOGGLETEXTTOSPEECH_BUTTON = "Text wird dir nun nicht länger vorgelesen.";
         public static readonly string EXPLANATION_TEXTTOSPEECH_BUTTON = "Dieser Button schaltet die Sprachausgabe an bzw. aus. Ist die Sprachausgabe aktiviert, werden die Novels vertont und der Text, auf welchen du innerhalb der App drückst, wird dir vorgelesen.";
+        public static readonly string EXPLANATION_SOUNDEFFECTS_BUTTON = "Dieser Button schaltet die Soundeffekte an bzw. aus. Dies beinhaltet sämtliche Geräusche der App, außer der Vorlesefunktion.";
         public static readonly string EXPLANATION_ADJUST_FONT_SIZE_BUTTON = "Mit dem Regler kannst du die Schriftgröße für die meisten Texte in der App anpassen. An dem Beispieltext kannst du sehen, wie groß die Texte angezeigt werden, sobald du bestätigst.";
         public static readonly string CONFIRM_FONT_SIZE_ADJUSTMENT = "Die Schriftgröße wurde angepasst.";
         public static readonly string TTS_IS_CURRENTLY_DEACTIVATET = "Die Vorlesefunktion ist aktuell deaktiviert. Wir suchen nach einem besseren Modell, um diese umsetzen zu können.";
+        public static readonly string ACTIVATED_SOUNDEFFECTS_BUTTON = "Sämtliche Soundeffekte der App wurden aktiviert. Dies ist unabhängig von der Vorlesefunktion.";
+        public static readonly string DEACTIVATED_SOUNDEFFECTS_BUTTON = "Sämtliche Soundeffekte der App wurden deaktiviert. Dies ist unabhängig von der Vorlesefunktion.";
     }
 }

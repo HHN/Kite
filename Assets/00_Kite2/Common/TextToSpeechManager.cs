@@ -9,6 +9,8 @@ namespace _00_Kite2.Common
 
         private bool _ttsIsActive = true;
 
+        private bool _soundeffectsIsActive = true;
+
         private string _ttsString = "Folgende Antwortmöglichkeiten stehen dir zur Auswahl: ";
 
         private int _optionCounter;
@@ -69,6 +71,8 @@ namespace _00_Kite2.Common
         void Start()
         {
             _ttsIsActive = PlayerPrefs.GetInt("TTS", 0) != 0;
+            _soundeffectsIsActive = PlayerPrefs.GetInt("Soundeffects", 0) != 0;
+
 
 #if UNITY_ANDROID
         if (Application.platform == RuntimePlatform.Android)
@@ -80,6 +84,14 @@ namespace _00_Kite2.Common
         // Initialize the TTS engine for iOS
         _InitializeTTS();
 #endif
+        }
+
+
+
+        // Soundeffects:
+        public bool IsSoundeffectsActivated()
+        {
+            return _soundeffectsIsActive;
         }
 
         public void SetLastMessage(string message)
@@ -183,6 +195,10 @@ namespace _00_Kite2.Common
 
         public IEnumerator Speak(string message)
         {
+            #if UNITY_EDITOR
+// Im Unity-Editor sofort die Coroutine beenden
+    yield break;
+#endif
             if (_ttsIsActive)
             {
                 _lastMessage = message;
@@ -241,6 +257,7 @@ namespace _00_Kite2.Common
             }
 #endif
                 _isSpeaking = false;
+                yield return null;
             }
             else
             {

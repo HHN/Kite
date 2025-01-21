@@ -13,7 +13,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             this.CanvasRect = canvasRect;
         }
 
-        public virtual bool HandleTouchEvent(float x, float y, AudioSource audioSource)
+        public virtual bool HandleTouchEvent(float x, float y)
         {
             return false;
         }

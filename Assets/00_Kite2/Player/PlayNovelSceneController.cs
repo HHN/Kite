@@ -93,10 +93,9 @@ namespace _00_Kite2.Player
         [SerializeField] private CharacterController currentTalkingCharacterController;
 
         //[SerializeField] private GameObject tapToContinueAnimation;
-        [SerializeField] private TTSEngine engine;
+        
 
-        [Header("Audio-Komponenten")] [SerializeField]
-        private AudioSource audioSource;
+        [Header("Audio-Komponenten")] 
 
         [SerializeField] private AudioClip[] clips;
         [SerializeField] private float timerForHint = 12.0f; // Time after which the hint to tap on the screen is shown
@@ -137,10 +136,8 @@ namespace _00_Kite2.Player
         {
             _conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
 
-            //tapToContinueAnimation.SetActive(false);
-            //tapToContinueAnimation.GetComponent<Animator>().enabled = false;
             AnalyticsServiceHandler.Instance().StartStopwatch();
-            TextToSpeechService.Instance().SetAudioSource(audioSource);
+            //TextToSpeechService.Instance().SetAudioSource(audioSource);
             BackStackManager.Instance().Push(SceneNames.PLAY_NOVEL_SCENE);
             novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
             NovelBiasManager.Clear();
@@ -212,7 +209,7 @@ namespace _00_Kite2.Player
             SkipSpeaking();
             Vector2 mousePosition = Input.mousePosition;
 
-            if (_novelImagesController.HandleTouchEvent(mousePosition.x, mousePosition.y, audioSource))
+            if (_novelImagesController.HandleTouchEvent(mousePosition.x, mousePosition.y))
             {
                 return;
             }
@@ -486,8 +483,7 @@ namespace _00_Kite2.Player
 
             if (novelEvent.audioClipToPlay != 0)
             {
-                audioSource.clip = clips[novelEvent.audioClipToPlay];
-                audioSource.Play();
+                GlobalVolumeManager.Instance.PlaySound(clips[novelEvent.audioClipToPlay]);
             }
 
             if (novelEvent.waitForUserConfirmation)

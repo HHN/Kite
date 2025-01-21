@@ -25,9 +25,8 @@ namespace _00_Kite2.Player
         [SerializeField] private GameObject gptServercallPrefab;
         [SerializeField] private VisualNovel novelToPlay;
         [SerializeField] private RectTransform layout;
-        [SerializeField] private AudioSource waitingLoopMusic;
-        [SerializeField] private AudioSource resultMusic;
-        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip waitingLoopMusic;
+        [SerializeField] private AudioClip resultMusic;
         [SerializeField] private Button finishButton;
         [SerializeField] private Button finishButtonTop;
         [SerializeField] private Button finishButtonBottom;
@@ -191,17 +190,17 @@ namespace _00_Kite2.Player
 
         private void StartWaitingMusic()
         {
-            waitingLoopMusic.Play();
+            GlobalVolumeManager.Instance.PlaySound(waitingLoopMusic, true);
         }
 
         private void StopWaitingMusic()
         {
-            waitingLoopMusic.Stop();
+            GlobalVolumeManager.Instance.StopSound();
         }
 
         private void PlayResultMusic()
         {
-            resultMusic.Play();
+            GlobalVolumeManager.Instance.PlaySound(resultMusic);
         }
 
         public void DeactivateAskButton()

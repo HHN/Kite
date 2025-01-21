@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_Kite2/Player/NovelExplorerScene.unity
     guid: d7d598b8664f8e543ade9081a5e0ca74
-  - enabled: 1
+  - enabled: 0
     path: Assets/00_Kite2/Common/SettingsScene.unity
     guid: 421e8bb45387ffd499ffc331477553c8
   - enabled: 1
@@ -104,5 +104,8 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/00_Kite2/Common/IntroNovel/IntroNovelScene.unity
     guid: e26e8e9193e22d840a8ed81066131f25
+  - enabled: 1
+    path: Assets/00_Kite2/NewPages/SoundeinstellungScene.unity
+    guid: ad834cd147064c242810f7f44030a821
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

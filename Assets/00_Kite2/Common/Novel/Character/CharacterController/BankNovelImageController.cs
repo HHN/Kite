@@ -51,28 +51,6 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         private void SetInitialCharacters()
         {
-            // if (characterPrefab == null) return;
-            //
-            // _instantiatedCharacter = Instantiate(characterPrefab, characterContainer, false);
-            // RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
-            //
-            // if (rectTransform == null) return;
-            //
-            // rectTransform.anchorMin = new Vector2(0.5f, 0);
-            // rectTransform.anchorMax = new Vector2(0.5f, 1);
-            //
-            // rectTransform.pivot = new Vector2(0.5f, 0.5f);
-            //
-            // rectTransform.anchoredPosition = new Vector2(0, -699);
-            //
-            // rectTransform.sizeDelta = new Vector2(1200.339f, 0);
-            //
-            // rectTransform.localPosition = new Vector3(0, 699, 0);
-            //
-            // rectTransform.localScale = new Vector3(1, 1, 1);
-            //
-            // rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
-
             if (characterPrefabs.Count <= 0) return;
 
             int randomIndex = Random.Range(0, characterPrefabs.Count);
@@ -102,13 +80,9 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         public override void SetCharacter()
         {
             CharacterController = _instantiatedCharacter.GetComponent<CharacterController>();
-
-            // CharacterController.SetSkinSprite();
-            // CharacterController.SetClotheSprite();
-            // CharacterController.SetHairSprite();
         }
 
-        public override bool HandleTouchEvent(float x, float y, AudioSource audioSource)
+        public override bool HandleTouchEvent(float x, float y)
         {
             // Check if animations are allowed to proceed, return false if disabled
             if (AnimationFlagSingleton.Instance().GetFlag() == false)
@@ -136,14 +110,14 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             if (x >= bottomLeftDecoDesk.x && x <= topRightDecoDesk.x &&
                 y >= bottomLeftDecoDesk.y && y <= topRightDecoDesk.y)
             {
-                StartCoroutine(OnDecoGlas(audioSource)); // Trigger the glass interaction
+                StartCoroutine(OnDecoGlas()); // Trigger the glass interaction
                 return true;
             }
             // Check if the touch coordinates are within the plant decoration bounds
             else if (x >= bottomLeftDecoBackground.x && x <= topRightDecoBackground.x &&
                      y >= bottomLeftDecoBackground.y && y <= topRightDecoBackground.y)
             {
-                StartCoroutine(OnDecoPlant(audioSource)); // Trigger the plant interaction
+                StartCoroutine(OnDecoPlant()); // Trigger the plant interaction
                 return true;
             }
 
@@ -152,78 +126,55 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         }
 
 
-        private IEnumerator OnDecoPlant(AudioSource audioSource)
+        private IEnumerator OnDecoPlant()
         {
-            if (audioSource != null)
-            {
-                audioSource.clip = decoPlantAudio;
-                if (audioSource.clip != null)
-                {
-                    audioSource.Play();
-                    Image image = decoPlantPrefab.GetComponent<Image>();
-                    image.sprite = animationFramesPlant[1];
-                    Destroy(decoPlantContainer.transform.GetChild(0).gameObject);
-                    Instantiate(decoPlantPrefab, decoPlantContainer.transform);
-                    yield return new WaitForSeconds(0.5f);
-                    image.sprite = animationFramesPlant[2];
-                    Destroy(decoPlantContainer.transform.GetChild(0).gameObject);
-                    Instantiate(decoPlantPrefab, decoPlantContainer.transform);
-                    yield return new WaitForSeconds(0.5f);
-                    image.sprite = animationFramesPlant[0];
-                    Destroy(decoPlantContainer.transform.GetChild(0).gameObject);
-                    Instantiate(decoPlantPrefab, decoPlantContainer.transform);
-                }
-                else
-                {
-                    Debug.LogError("AudioClip couldn't be found.");
-                }
-            }
-
+            GlobalVolumeManager.Instance.PlaySound(decoPlantAudio);
+            Image image = decoPlantPrefab.GetComponent<Image>();
+            image.sprite = animationFramesPlant[1];
+            Destroy(decoPlantContainer.transform.GetChild(0).gameObject);
+            Instantiate(decoPlantPrefab, decoPlantContainer.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFramesPlant[2];
+            Destroy(decoPlantContainer.transform.GetChild(0).gameObject);
+            Instantiate(decoPlantPrefab, decoPlantContainer.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFramesPlant[0];
+            Destroy(decoPlantContainer.transform.GetChild(0).gameObject);
+            Instantiate(decoPlantPrefab, decoPlantContainer.transform);
             yield return new WaitForSeconds(0f);
         }
 
-        private IEnumerator OnDecoGlas(AudioSource audioSource)
+        private IEnumerator OnDecoGlas()
         {
-            if (audioSource != null)
-            {
-                audioSource.clip = decoGlasAudio;
-                if (audioSource.clip != null)
-                {
-                    audioSource.Play();
-                    Image image = decoGlasPrefab.GetComponent<Image>();
-                    image.sprite = animationFramesGlas[1];
-                    Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
-                    Instantiate(decoGlasPrefab, decoGlasContainer.transform);
-                    yield return new WaitForSeconds(0.5f);
-                    image.sprite = animationFramesGlas[2];
-                    Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
-                    Instantiate(decoGlasPrefab, decoGlasContainer.transform);
-                    yield return new WaitForSeconds(0.5f);
-                    image.sprite = animationFramesGlas[3];
-                    Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
-                    Instantiate(decoGlasPrefab, decoGlasContainer.transform);
-                    yield return new WaitForSeconds(0.5f);
-                    image.sprite = animationFramesGlas[4];
-                    Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
-                    Instantiate(decoGlasPrefab, decoGlasContainer.transform);
-                    yield return new WaitForSeconds(0.5f);
-                    image.sprite = animationFramesGlas[5];
-                    Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
-                    Instantiate(decoGlasPrefab, decoGlasContainer.transform);
-                    yield return new WaitForSeconds(0.5f);
-                    image.sprite = animationFramesGlas[6];
-                    Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
-                    Instantiate(decoGlasPrefab, decoGlasContainer.transform);
-                    yield return new WaitForSeconds(0.5f);
-                    image.sprite = animationFramesGlas[0];
-                    Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
-                    Instantiate(decoGlasPrefab, decoGlasContainer.transform);
-                }
-                else
-                {
-                    Debug.LogError("AudioClip couldn't be found.");
-                }
-            }
+            GlobalVolumeManager.Instance.PlaySound(decoGlasAudio);
+            Image image = decoGlasPrefab.GetComponent<Image>();
+            image.sprite = animationFramesGlas[1];
+            Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+            Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFramesGlas[2];
+            Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+            Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFramesGlas[3];
+            Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+            Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFramesGlas[4];
+            Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+            Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFramesGlas[5];
+            Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+            Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFramesGlas[6];
+            Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+            Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFramesGlas[0];
+            Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+            Instantiate(decoGlasPrefab, decoGlasContainer.transform);
 
             yield return new WaitForSeconds(0f);
         }

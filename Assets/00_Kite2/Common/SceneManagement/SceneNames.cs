@@ -52,5 +52,6 @@ namespace _00_Kite2.Common.SceneManagement
         public const string RESSOURCEN_SCENE = "RessourcenScene";
         public const string EINSTELLUNGEN_SCENE = "EinstellungenScene";
         public const string GEMERKTE_NOVELS_SCENE = "GemerkteNovelsScene";
+        public const string SOUNDEINSTELLUNG_SCENE = "SoundeinstellungScene";
     }
 }
