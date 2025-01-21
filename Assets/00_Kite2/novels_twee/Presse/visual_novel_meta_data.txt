@@ -14,7 +14,7 @@
   "talkingPartner02" : "",
   "talkingPartner03" : "",
   "wordsToReplace": [
-	{"wordToReplace": ">>JournalistinSprichtFriendly:<<", "replaceByValue": ">>Charakter01SprichtFriendly:<<"},
+	{"wordToReplace": ">>JournalistinSprichtFriendly:<<", "replaceByValue": ">>Charakter01SprichtLaecheln:<<"},
 	{"wordToReplace": ">>SpielerinCharakterSpricht:<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"}	
 	]
 }

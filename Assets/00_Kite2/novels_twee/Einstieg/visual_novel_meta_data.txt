@@ -14,6 +14,6 @@
   "talkingPartner02" : "",
   "talkingPartner03" : "",
   "wordsToReplace": [
-    {"wordToReplace": ">>Charakter01SprichtFriendly:<<", "replaceByValue": ">>Charakter01SprichtSmiling:<<"},
+    {"wordToReplace": ">>Charakter01SprichtFriendly:<<", "replaceByValue": ">>Charakter01Laecheln:<<"},
   ]
 }
