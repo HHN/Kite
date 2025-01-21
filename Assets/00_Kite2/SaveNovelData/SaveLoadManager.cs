@@ -92,10 +92,16 @@ namespace _00_Kite2.SaveNovelData
                 }
             }
 
+            Debug.Log("playNovelSceneController.PlayThroughHistory: ");
+            foreach (var s in playNovelSceneController.PlayThroughHistory)
+            {
+                Debug.Log(s);
+            }
+            
             NovelSaveData saveData = new NovelSaveData
             {
                 //novelId = currentNovelId,
-                currentEvent = formattedId,
+                currentEventId = formattedId,
                 playThroughHistory = playNovelSceneController.PlayThroughHistory,
                 optionsId = playNovelSceneController.OptionsId.ToArray(),
                 eventHistory = playNovelSceneController.EventHistory,
@@ -103,6 +109,7 @@ namespace _00_Kite2.SaveNovelData
                 visualNovelEvents = conversationContentGuiController.VisualNovelEvents,
                 messageType = messageBoxesNames,
                 optionCount = _count,
+                currentCharacter = currentEvent.character,
                 CharacterExpressions = playNovelSceneController.CharacterExpressions,
                 CharacterPrefabData = characterPrefabData
             };
@@ -164,6 +171,8 @@ namespace _00_Kite2.SaveNovelData
         /// <param name="novelId">The unique ID of the novel to delete.</param>
         public static void DeleteNovelSaveData(string novelId)
         {
+            Debug.Log("DeleteNovelSaveData: " + novelId);
+            
             // Load all saved data
             Dictionary<string, NovelSaveData> allSaveData = LoadAllSaveData();
 
@@ -172,6 +181,7 @@ namespace _00_Kite2.SaveNovelData
 
             if (removed)
             {
+                Debug.Log(novelId + " wurde gefunden.");
                 // Overwrite the file only if the deletion was successful
                 string json = JsonConvert.SerializeObject(allSaveData, Formatting.Indented);
                 File.WriteAllText(SaveFilePath, json, Encoding.UTF8);

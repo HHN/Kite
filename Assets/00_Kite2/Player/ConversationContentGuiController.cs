@@ -275,6 +275,11 @@ namespace _00_Kite2.Player
             for (int i = 0; i < savedData.visualNovelEvents.Count; i++)
             {
                 VisualNovelEvent visualNovelEvent = savedData.visualNovelEvents[i];
+                
+                PromptManager.Instance().AddFormattedLineToPrompt(
+                    CharacterTypeHelper.GetNameOfCharacter(visualNovelEvent.character),
+                    PlayNovelSceneController.ReplacePlaceholders(visualNovelEvent.text,
+                        PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables()));
 
                 GameObject newMessageBox;
 

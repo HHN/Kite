@@ -8,6 +8,7 @@ using _00_Kite2.Common.Novel;
 using _00_Kite2.Common.SceneManagement;
 using _00_Kite2.Common.Utilities;
 using _00_Kite2.OfflineAiFeedback;
+using _00_Kite2.SaveNovelData;
 using _00_Kite2.Server_Communication;
 using _00_Kite2.Server_Communication.Server_Calls;
 using LeastSquares.Overtone;
@@ -73,6 +74,8 @@ namespace _00_Kite2.Player
                 call.sceneController = this;
 
                 string dialog = PromptManager.Instance().GetDialog();
+                Debug.Log("Dialog: " + dialog);
+                
                 dialog = dialog.Replace("Bitte beachte, dass kein Teil des Dialogs in das Feedback darf.", "");
 
                 FeedbackHandler feedbackHandler = new FeedbackHandler()
@@ -82,7 +85,7 @@ namespace _00_Kite2.Player
                     Dialog = dialog
                 };
 
-                // Debug.Log("feedbackHandler.dialog: " + feedbackHandler.Dialog);
+                Debug.Log("feedbackHandler.dialog: " + feedbackHandler.Dialog);
 
                 call.OnSuccessHandler = feedbackHandler;
                 call.OnErrorHandler = this;
@@ -95,6 +98,17 @@ namespace _00_Kite2.Player
                 DontDestroyOnLoad(call.gameObject);
                 return;
             }
+            
+            string novelId = novelToPlay.id.ToString();
+            NovelSaveData savedData = SaveLoadManager.Load(novelId);
+
+            if (savedData == null)
+            {
+                Debug.LogWarning("No saved data found for the novel.");
+                return;
+            }
+            
+            SaveLoadManager.DeleteNovelSaveData(novelId);
 
             feedbackText.SetText(novelToPlay.feedback);
             loadingAnimation.SetActive(false);
