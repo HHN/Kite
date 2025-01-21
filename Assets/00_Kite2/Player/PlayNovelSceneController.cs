@@ -683,7 +683,7 @@ namespace _00_Kite2.Player
 
         private void HandleShowMessageEvent(VisualNovelEvent novelEvent)
         {
-            // Debug.Log("TextToSpeechManager.Instance.Speak(novelEvent.text): " + novelEvent.text);
+            Debug.Log("TextToSpeechManager.Instance.Speak(novelEvent.text): " + novelEvent.text);
             CreateSpeakingCoroutine(novelEvent.text);
 
             SetNextEvent(novelEvent);
@@ -965,7 +965,6 @@ namespace _00_Kite2.Player
 
         private void SkipSpeaking()
         {
-            // Debug.Log("SkipSpeaking");
             TextToSpeechManager.Instance.CancelSpeak();
         }
 
@@ -1001,10 +1000,17 @@ namespace _00_Kite2.Player
             }
 
             // Suche den gespeicherten Event in der Liste
-            nextEventToPlay = novelToPlay.novelEvents.FirstOrDefault(e => e.id == savedData.currentEvent)
+            nextEventToPlay = novelToPlay.novelEvents.FirstOrDefault(e => e.id == savedData.currentEventId)
                               ?? novelToPlay.novelEvents[0];
-
+            
             playThroughHistory = new List<string>(savedData.playThroughHistory);
+            
+            // Debug.Log("playThroughHistory: ");
+            // foreach (var s in playThroughHistory)
+            // {
+            //     Debug.Log(s);
+            // }
+            
             _optionsId[0] = savedData.optionsId[1];
             _optionsCount = savedData.optionCount;
             eventHistory = savedData.eventHistory;
@@ -1231,7 +1237,6 @@ namespace _00_Kite2.Player
         {
             foreach (var kvp in savedData.CharacterExpressions)
             {
-                Debug.Log($"Restoring Expression - Key: {kvp.Key}, Value: {kvp.Value}");
                 _novelImagesController.SetFaceExpression(kvp.Key, kvp.Value);
             }
         }
