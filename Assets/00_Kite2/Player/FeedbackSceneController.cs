@@ -74,7 +74,6 @@ namespace _00_Kite2.Player
                 call.sceneController = this;
 
                 string dialog = PromptManager.Instance().GetDialog();
-                Debug.Log("Dialog: " + dialog);
                 
                 dialog = dialog.Replace("Bitte beachte, dass kein Teil des Dialogs in das Feedback darf.", "");
 
@@ -85,30 +84,27 @@ namespace _00_Kite2.Player
                     Dialog = dialog
                 };
 
-                Debug.Log("feedbackHandler.dialog: " + feedbackHandler.Dialog);
-
                 call.OnSuccessHandler = feedbackHandler;
                 call.OnErrorHandler = this;
 
                 call.prompt = PromptManager.Instance().GetPrompt(novel != null ? novel.context : "");
 
-                // Debug.Log("call.prompt: " + call.prompt);
-
                 call.SendRequest();
                 DontDestroyOnLoad(call.gameObject);
-                return;
-            }
-            
-            string novelId = novelToPlay.id.ToString();
-            NovelSaveData savedData = SaveLoadManager.Load(novelId);
+                
+                string novelId = novelToPlay.id.ToString();
+                NovelSaveData savedData = SaveLoadManager.Load(novelId);
 
-            if (savedData == null)
-            {
-                Debug.LogWarning("No saved data found for the novel.");
+                if (savedData == null)
+                {
+                    Debug.LogWarning("No saved data found for the novel.");
+                    return;
+                }
+            
+                SaveLoadManager.DeleteNovelSaveData(novelId);
+                
                 return;
             }
-            
-            SaveLoadManager.DeleteNovelSaveData(novelId);
 
             feedbackText.SetText(novelToPlay.feedback);
             loadingAnimation.SetActive(false);
@@ -251,6 +247,7 @@ namespace _00_Kite2.Player
             string formattedDateTime = now.ToString("ddd | dd.MM.yyyy | HH:mm", culture);
             dialogHistoryEntry.SetDateAndTime(formattedDateTime);
             DialogHistoryManager.Instance().AddEntry(dialogHistoryEntry);
+            
             Debug.Log("Feedback Saved in Novel Archive");
         }
     }

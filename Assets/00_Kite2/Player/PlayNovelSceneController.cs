@@ -1005,12 +1005,6 @@ namespace _00_Kite2.Player
             
             playThroughHistory = new List<string>(savedData.playThroughHistory);
             
-            // Debug.Log("playThroughHistory: ");
-            // foreach (var s in playThroughHistory)
-            // {
-            //     Debug.Log(s);
-            // }
-            
             _optionsId[0] = savedData.optionsId[1];
             _optionsCount = savedData.optionCount;
             eventHistory = savedData.eventHistory;

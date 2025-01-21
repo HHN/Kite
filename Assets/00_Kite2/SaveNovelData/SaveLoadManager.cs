@@ -91,12 +91,6 @@ namespace _00_Kite2.SaveNovelData
                     }
                 }
             }
-
-            Debug.Log("playNovelSceneController.PlayThroughHistory: ");
-            foreach (var s in playNovelSceneController.PlayThroughHistory)
-            {
-                Debug.Log(s);
-            }
             
             NovelSaveData saveData = new NovelSaveData
             {
@@ -171,8 +165,6 @@ namespace _00_Kite2.SaveNovelData
         /// <param name="novelId">The unique ID of the novel to delete.</param>
         public static void DeleteNovelSaveData(string novelId)
         {
-            Debug.Log("DeleteNovelSaveData: " + novelId);
-            
             // Load all saved data
             Dictionary<string, NovelSaveData> allSaveData = LoadAllSaveData();
 
@@ -181,14 +173,13 @@ namespace _00_Kite2.SaveNovelData
 
             if (removed)
             {
-                Debug.Log(novelId + " wurde gefunden.");
                 // Overwrite the file only if the deletion was successful
                 string json = JsonConvert.SerializeObject(allSaveData, Formatting.Indented);
                 File.WriteAllText(SaveFilePath, json, Encoding.UTF8);
             }
             else
             {
-                Debug.LogWarning($"Kein Spielstand f�r Novel ID {novelId} gefunden.");
+                Debug.LogWarning($"Kein Spielstand für Novel ID {novelId} gefunden.");
             }
         }
         
