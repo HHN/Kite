@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: ec9be9a51ec50c84baffc6dff89027fe
+guid: 1d277f06df4b6f640818be46d3ee96df
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4471276239800632595
-    second: 0_Haende_Banker2_0
+      213: 1995677794186996103
+    second: Presse-Haare1_0
   - first:
-      213: -6249281158431239517
-    second: 0_Haende_Banker2_1
+      213: -8878753269720584694
+    second: Presse-Haare1_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -181,13 +181,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 0_Haende_Banker2_0
+      name: Presse-Haare1_0
       rect:
         serializedVersion: 2
-        x: 205
-        y: 1128
-        width: 211
-        height: 247
+        x: 262
+        y: 2209
+        width: 438
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,20 +196,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 31506fddc0a2d0e30800000000000000
-      internalID: 4471276239800632595
+      spriteID: 789a6a8516212bb10800000000000000
+      internalID: 1995677794186996103
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0_Haende_Banker2_1
+      name: Presse-Haare1_1
       rect:
         serializedVersion: 2
-        x: 660
-        y: 1109
-        width: 170
-        height: 249
+        x: 593
+        y: 2237
+        width: 121
+        height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,8 +218,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3a21a2285e71649a0800000000000000
-      internalID: -6249281158431239517
+      spriteID: a0e67fd51f458c480800000000000000
+      internalID: -8878753269720584694
       vertices: []
       indices: 
       edges: []
@@ -238,8 +238,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      0_Haende_Banker2_0: 4471276239800632595
-      0_Haende_Banker2_1: -6249281158431239517
+      Presse-Haare1_0: 1995677794186996103
+      Presse-Haare1_1: -8878753269720584694
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
