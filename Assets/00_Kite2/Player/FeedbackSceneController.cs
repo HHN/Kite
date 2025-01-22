@@ -157,14 +157,14 @@ namespace _00_Kite2.Player
             finishButtonTopContainer.SetActive(true);
             finishButtonBottomContainer.SetActive(true);
             copyButtonContainer.SetActive(true);
-            if (TextToSpeechManager.Instance.IsTextToSpeechActivated())
-            {
-                TextToSpeechService.Instance().TextToSpeechReadLive(response.GetCompletion().Trim(), engine);
-            }
 
-            feedbackText.SetText(response.GetCompletion().Trim());
+            string completion = response.GetCompletion().Replace("#", "").Replace("*", "").Trim();
+
+            StartCoroutine(TextToSpeechManager.Instance.Speak(completion));
+
+            feedbackText.SetText(completion);
             loadingAnimation.SetActive(false);
-            novelToPlay.feedback = (response.GetCompletion().Trim());
+            novelToPlay.feedback = (completion);
             //PlayerDataManager.Instance().SaveEvaluation(novelToPlay.title, response.GetCompletion().Trim());
             AnalyticsServiceHandler.Instance().SetWaitedForAiFeedbackTrue();
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout);

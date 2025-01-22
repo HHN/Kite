@@ -124,7 +124,6 @@ namespace _00_Kite2.Player
             _conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
 
             AnalyticsServiceHandler.Instance().StartStopwatch();
-            //TextToSpeechService.Instance().SetAudioSource(audioSource);
             BackStackManager.Instance().Push(SceneNames.PLAY_NOVEL_SCENE);
             novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
             NovelBiasManager.Clear();
@@ -680,7 +679,6 @@ namespace _00_Kite2.Player
 
         private void HandleShowMessageEvent(VisualNovelEvent novelEvent)
         {
-            Debug.Log("TextToSpeechManager.Instance.Speak(novelEvent.text): " + novelEvent.text);
             CreateSpeakingCoroutine(novelEvent.text);
 
             SetNextEvent(novelEvent);

@@ -37,7 +37,6 @@ namespace _00_Kite2.NewPages
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout02);
             audioSource = GetComponent<AudioSource>();
-            TextToSpeechService.Instance().SetAudioSource(audioSource);
 
             InitializeToggleDataCollectionButton();
             InitializeApplicationModeButton();
@@ -64,13 +63,13 @@ namespace _00_Kite2.NewPages
             {
                 PrivacyAndConditionManager.Instance().AcceptDataCollection();
                 DisplayInfoMessage(InfoMessages.STARTED_DATA_COLLECTION);
-                TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.STARTED_DATA_COLLECTION, engine);
+                StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.STARTED_DATA_COLLECTION));
             }
             else
             {
                 PrivacyAndConditionManager.Instance().UnaccepedDataCollection();
                 DisplayInfoMessage(InfoMessages.STOPPED_DATA_COLLECTION);
-                TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.STOPPED_DATA_COLLECTION, engine);
+                StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.STOPPED_DATA_COLLECTION));
             }
         }
 
@@ -80,13 +79,13 @@ namespace _00_Kite2.NewPages
             {
                 ApplicationModeManager.Instance().ActivateOnlineMode();
                 DisplayInfoMessage(InfoMessages.SWITCHED_TO_ONLINE_MODE);
-                TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.SWITCHED_TO_ONLINE_MODE, engine);
+                StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.SWITCHED_TO_ONLINE_MODE));
             }
             else
             {
                 ApplicationModeManager.Instance().ActivateOfflineMode();
                 DisplayInfoMessage(InfoMessages.SWITCHED_TO_OFFLINE_MODE);
-                TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.SWITCHED_TO_OFFLINE_MODE, engine);
+                StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.SWITCHED_TO_OFFLINE_MODE));
             }
         }
 
@@ -94,13 +93,12 @@ namespace _00_Kite2.NewPages
         {
             if (PrivacyAndConditionManager.Instance().IsDataCollectionAccepted())
             {
-                TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.EXPLANATION_STOP_DATA_BUTTON, engine);
+                StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.EXPLANATION_STOP_DATA_BUTTON));
                 DisplayInfoMessage(InfoMessages.EXPLANATION_STOP_DATA_BUTTON);
             }
             else
             {
-                TextToSpeechService.Instance()
-                    .TextToSpeechReadLive(InfoMessages.EXPLANATION_COLLECT_DATA_BUTTON, engine);
+                StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.EXPLANATION_COLLECT_DATA_BUTTON));
                 DisplayInfoMessage(InfoMessages.EXPLANATION_COLLECT_DATA_BUTTON);
             }
         }
@@ -126,7 +124,7 @@ namespace _00_Kite2.NewPages
 
         private void OnDeleteCollectedDataInfoButton()
         {
-            TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.EXPLANATION_DELETE_DATA_BUTTON, engine);
+            StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.EXPLANATION_DELETE_DATA_BUTTON));
             DisplayInfoMessage(InfoMessages.EXPLANATION_DELETE_DATA_BUTTON);
         }
 
@@ -151,7 +149,7 @@ namespace _00_Kite2.NewPages
 
         private void OnResetAppInfoButton()
         {
-            TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.EXPLANATION_RESET_APP_BUTTON, engine);
+            StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.EXPLANATION_RESET_APP_BUTTON));
             DisplayInfoMessage(InfoMessages.EXPLANATION_RESET_APP_BUTTON);
         }
 
@@ -181,21 +179,19 @@ namespace _00_Kite2.NewPages
 
         private void OnPlayerPrefsButton()
         {
-            //TextToSpeechService.Instance().TextToSpeech("");
             SceneLoader.LoadPlayerPrefsScene();
         }
 
         private void OnPlayerPrefsInfoButton()
         {
-            TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.EXPLANATION_PLAYERPREFS_BUTTON, engine);
+            StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.EXPLANATION_PLAYERPREFS_BUTTON));
             DisplayInfoMessage(InfoMessages.EXPLANATION_PLAYERPREFS_BUTTON);
         }
 
 
         private void OnApplicationModeInfoButton()
         {
-            TextToSpeechService.Instance()
-                .TextToSpeechReadLive(InfoMessages.EXPLANATION_APPLICATION_MODE_BUTTON, engine);
+            StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.EXPLANATION_APPLICATION_MODE_BUTTON));
             DisplayInfoMessage(InfoMessages.EXPLANATION_APPLICATION_MODE_BUTTON);
         }
     }

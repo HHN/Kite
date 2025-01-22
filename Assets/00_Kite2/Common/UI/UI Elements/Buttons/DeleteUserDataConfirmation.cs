@@ -67,7 +67,7 @@ namespace _00_Kite2.Common.UI.UI_Elements.Buttons
         {
             if (_origin == "delete")
             {
-                TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.DELETED_DATA, engine);
+                StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.DELETED_DATA));
                 PlayerDataManager.Instance().ClearRelevantUserdata();
                 if (AnalyticsServiceHandler.Instance().IsAnalyticsInitialized())
                 {
@@ -81,7 +81,7 @@ namespace _00_Kite2.Common.UI.UI_Elements.Buttons
             {
                 SaveLoadManager.ClearAllSaveData();
 
-                TextToSpeechService.Instance().TextToSpeechReadLive(InfoMessages.RESET_APP, engine);
+                StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.RESET_APP));
                 PlayerDataManager.Instance().ClearEverything();
                 PlayerPrefs.DeleteAll();
                 PlayerPrefs.Save();

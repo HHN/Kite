@@ -75,12 +75,9 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         private void SetInitialCharacters()
         {
-            if (characterPrefabs.Count <= 0) return;
+            if (characterPrefab == null) return;
 
-            int randomIndex = Random.Range(0, characterPrefabs.Count);
-            GameObject randomGameObject = characterPrefabs[randomIndex];
-
-            _instantiatedCharacter = Instantiate(randomGameObject, characterContainer, false);
+            _instantiatedCharacter = Instantiate(characterPrefab, characterContainer, false);
             RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
 
             if (rectTransform == null) return;

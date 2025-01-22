@@ -132,7 +132,7 @@ namespace _00_Kite2.Common.UI.UI_Elements.Messages
             AnimationFlagSingleton.Instance().SetFlag(false);
 
             // Cancel any ongoing speech and audio from the Text-to-Speech service
-            TextToSpeechService.Instance().CancelSpeechAndAudio();
+            TextToSpeechManager.Instance.CancelSpeak();
 
             // Retrieve the last scene for the back button functionality
             string lastScene = SceneRouter.GetTargetSceneForBackButton();

@@ -51,7 +51,6 @@ namespace _00_Kite2.Common.UI.UI_Elements.Messages
 
         private void OnConfirmButton()
         {
-            TextToSpeechService.Instance().CancelSpeechAndAudio();
             SceneLoader.LoadMainMenuScene();
         }
 

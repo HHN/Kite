@@ -17,12 +17,11 @@ namespace _00_Kite2.NewPages
         [SerializeField] private Button toggleSoundEffectsInfoButton;
         [SerializeField] private Slider tTSVolumeSlider;
         [SerializeField] private Slider soundEffectsVolumeSlider;
-        [SerializeField] private Button testVolumeTTS;
         [SerializeField] private Button testVolumeSoundEffects;
         [SerializeField] private GameObject checkMarkTTS;
         [SerializeField] private GameObject checkMarkSoundeffects;
-        [SerializeField] private SliderEventHandler soundEffectsSliderHandler; 
-        //[SerializeField] private SliderEventHandler ttsSliderHandler;
+        [SerializeField] private SliderEventHandler soundEffectsSliderHandler;
+        [SerializeField] private AudioClip soundCheckClip;
         private float tTSVolume = 100;
         private float soundeffectsVolume = 100;
         private bool ignoreNextValueChange = false;
@@ -34,19 +33,18 @@ namespace _00_Kite2.NewPages
             InitializeToggleTextToSpeech();
             InitializeToggleSoundeffects();
 
-            InitializeTTSSlider();
             InitializeSoundeffectSlider();
 
             soundEffectsSliderHandler.OnSliderReleasedEvent += HandleSoundEffectsSliderReleased;
-            //ttsSliderHandler.OnSliderReleasedEvent += HandleTTSVolumeSliderReleased;
 
             toggleTextToSpeech.onValueChanged.AddListener(delegate { OnToggleTextToSpeech(); });
             toggleSoundEffects.onValueChanged.AddListener(delegate { OnToggleSoundEffects(); });
 
+            testVolumeSoundEffects.onClick.AddListener(delegate {  TestVolumeSoundEffects(); });
+
             toggleTextToSpeechInfoButton.onClick.AddListener(OnToggleTextToSpeechInfoButton);
             toggleSoundEffectsInfoButton.onClick.AddListener(OnToggleSoundEffectsInfoButton);
 
-            tTSVolumeSlider.onValueChanged.AddListener(UpdateTTSVolume);
             soundEffectsVolumeSlider.onValueChanged.AddListener(UpdateSoundeffectsVolume);
         }
 
@@ -54,6 +52,11 @@ namespace _00_Kite2.NewPages
         {
             soundEffectsSliderHandler.OnSliderReleasedEvent -= HandleSoundEffectsSliderReleased;
             //ttsSliderHandler.OnSliderReleasedEvent -= HandleTTSVolumeSliderReleased;
+        }
+
+        private void TestVolumeSoundEffects()
+        {
+            GlobalVolumeManager.Instance.PlaySound(soundCheckClip);
         }
 
         private void HandleTTSVolumeSliderReleased(float value)
@@ -107,20 +110,13 @@ namespace _00_Kite2.NewPages
             }
         }
 
-        private void InitializeTTSSlider()
-        {
-            float savedTTSVolume = PlayerPrefs.GetFloat("SavedTTSVolume", 100);
-            tTSVolume = savedTTSVolume;
-            tTSVolumeSlider.value = tTSVolume;
-        }
-
         private void InitializeSoundeffectSlider()
         {
-            float savedSoundeffectsVolume = PlayerPrefs.GetFloat("SavedSoundeffectsVolume", 100);
-            soundeffectsVolume = savedSoundeffectsVolume / 100; // Konvertiere zu einem Wert zwischen 0.0 und 1.0
+            float savedSoundeffectsVolume = PlayerPrefs.GetFloat("LastSoundeffectsVolume", 1);
+            soundeffectsVolume = savedSoundeffectsVolume;
             soundEffectsVolumeSlider.value = soundeffectsVolume;
+            Debug.Log("InitializeSoundeffectSlider: " + soundeffectsVolume);
             GlobalVolumeManager.Instance.SetGlobalVolume(soundeffectsVolume);
-            Debug.Log("MasterVolume: " + soundeffectsVolume);
         }
 
         private void OnToggleTextToSpeech()
@@ -151,14 +147,20 @@ namespace _00_Kite2.NewPages
         {
             if (toggleSoundEffects.isOn)
             {
-                soundeffectsVolume = PlayerPrefs.GetFloat("SavedSoundeffectsVolume", 100) / 100;
+                soundeffectsVolume = PlayerPrefs.GetFloat("SavedSoundeffectsVolume", 1);
+                Debug.Log("OnToggleSoundEffects: " + soundeffectsVolume);
+                soundEffectsVolumeSlider.value = soundeffectsVolume;
                 GlobalVolumeManager.Instance.SetGlobalVolume(soundeffectsVolume);
                 DisplayInfoMessage(InfoMessages.ACTIVATED_SOUNDEFFECTS_BUTTON);
                 ToggleVisibilityCheckmarkSoundeffects(true);
             }
             else
             {
-                GlobalVolumeManager.Instance.SetGlobalVolume(0f); // Setze Lautstärke auf 0
+                PlayerPrefs.SetFloat("SavedSoundeffectsVolume", soundeffectsVolume);
+                GlobalVolumeManager.Instance.SetGlobalVolume(0f);
+                soundeffectsVolume = 0f;
+                PlayerPrefs.GetFloat("LastSoundeffectsVolume", soundeffectsVolume);
+                soundEffectsVolumeSlider.value = soundeffectsVolume;
                 DisplayInfoMessage(InfoMessages.DEACTIVATED_SOUNDEFFECTS_BUTTON);
                 ToggleVisibilityCheckmarkSoundeffects(false);
             }
@@ -183,8 +185,8 @@ namespace _00_Kite2.NewPages
 
         private void UpdateSoundeffectsVolume(float sliderValue)
         {
-            soundeffectsVolume = sliderValue / 100; 
-            PlayerPrefs.SetFloat("SavedSoundeffectsVolume", soundeffectsVolume * 100);
+            soundeffectsVolume = sliderValue; 
+            PlayerPrefs.SetFloat("LastSoundeffectsVolume", soundeffectsVolume);
             Debug.Log("sliderValue: " + sliderValue);
 
             GlobalVolumeManager.Instance.SetGlobalVolume(soundeffectsVolume);
