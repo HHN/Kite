@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 3d31aff35df955f4fbe05cdf974ef493
+guid: 5cd8b065bcbde48469ad81ff2f23740f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4419966089896894853
-    second: 0_Haende_Banker3_0
-  - first:
-      213: -2137996159186118053
-    second: 0_Haende_Banker3_1
+      213: 5785295727670736515
+    second: Presse_Kleidung_2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -181,13 +178,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 0_Haende_Banker3_0
+      name: Presse_Kleidung_2_0
       rect:
         serializedVersion: 2
-        x: 205
-        y: 1135
-        width: 212
-        height: 247
+        x: 107
+        y: 1395
+        width: 842
+        height: 854
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,30 +193,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 581a393adbfd65d30800000000000000
-      internalID: 4419966089896894853
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 0_Haende_Banker3_1
-      rect:
-        serializedVersion: 2
-        x: 660
-        y: 1117
-        width: 170
-        height: 248
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b5adf8022df4452e0800000000000000
-      internalID: -2137996159186118053
+      spriteID: 386366000df794050800000000000000
+      internalID: 5785295727670736515
       vertices: []
       indices: 
       edges: []
@@ -238,8 +213,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      0_Haende_Banker3_0: 4419966089896894853
-      0_Haende_Banker3_1: -2137996159186118053
+      Presse_Kleidung_2_0: 5785295727670736515
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

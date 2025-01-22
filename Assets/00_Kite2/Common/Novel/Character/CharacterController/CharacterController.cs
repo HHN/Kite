@@ -40,7 +40,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
             if (randomSkinImage.name.Contains("a"))
             {
-                handIndex = 2;
+                handIndex = 0;
             }
             else if (randomSkinImage.name.Contains("b"))
             {
@@ -48,7 +48,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             }
             else if (randomSkinImage.name.Contains("c"))
             {
-                handIndex = 0;
+                handIndex = 2;
             }
             else if (randomSkinImage.name.Contains("d"))
             {
