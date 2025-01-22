@@ -46,45 +46,6 @@ namespace _00_Kite2.Player.Kite_Novels.Visual_Novel_Formatter
 
         public const string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_STOLZ =
             ">>Eintritt:Charakter01,Gesichtsausdruck:stolz<<";
-
-        // public const string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_RELAXED =
-        //     ">>Eintritt:Charakter01,Gesichtsausdruck:relaxed<<";
-        //
-        // public const string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_ASTONISHED =
-        //     ">>Eintritt:Charakter01,Gesichtsausdruck:astonished<<";
-        //
-        // public const string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_REFUSING =
-        //     ">>Eintritt:Charakter01,Gesichtsausdruck:refusing<<";
-        //
-        // public const string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_SMILING =
-        //     ">>Eintritt:Charakter01,Gesichtsausdruck:smiling<<";
-        //
-        // public const string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_FRIENDLY =
-        //     ">>Eintritt:Charakter01,Gesichtsausdruck:friendly<<";
-        //
-        // public const string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_LAUGHING =
-        //     ">>Eintritt:Charakter01,Gesichtsausdruck:laughing<<";
-        //
-        // public const string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_CRITICAL =
-        //     ">>Eintritt:Charakter01,Gesichtsausdruck:critical<<";
-        //
-        // public const string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_DECISION_NO =
-        //     ">>Eintritt:Charakter01,Gesichtsausdruck:decisionNo<<";
-        //
-        // public const string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_HAPPY =
-        //     ">>Eintritt:Charakter01,Gesichtsausdruck:happy<<";
-        //
-        // public const string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_PROUD =
-        //     ">>Eintritt:Charakter01,Gesichtsausdruck:proud<<";
-        //
-        // public const string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_SCARED =
-        //     ">>Eintritt:Charakter01,Gesichtsausdruck:scared<<";
-        //
-        // public const string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_QUESTIONING =
-        //     ">>Eintritt:Charakter01,Gesichtsausdruck:questioning<<";
-        //
-        // public const string EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_DEFEATED =
-        //     ">>Eintritt:Charakter01,Gesichtsausdruck:defeated<<";
         
         public const string CHARAKTER_01_SCHAUT = ">>Charakter01Schaut:<<";
         
@@ -169,38 +130,6 @@ namespace _00_Kite2.Player.Kite_Novels.Visual_Novel_Formatter
         
         public const string CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_STOLZ = 
             ">>Charakter01SprichtStolz:<<";
-        
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_RELAXED = ">>Charakter01SprichtRelaxed:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_ASTONISHED =
-        //     ">>Charakter01SprichtAstonished:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_REFUSING =
-        //     ">>Charakter01SprichtRefusing:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_SMILING = ">>Charakter01SprichtSmiling:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_FRIENDLY =
-        //     ">>Charakter01SprichtFriendly:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_LAUGHING =
-        //     ">>Charakter01SprichtLaughing:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_CRITICAL =
-        //     ">>Charakter01SprichtCritical:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_DECISION_NO =
-        //     ">>Charakter01SprichtDecisionNo:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_HAPPY = ">>Charakter01SprichtHappy:<<";
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_PROUD = ">>Charakter01SprichtProud:<<";
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_SCARED = ">>Charakter01SprichtScared:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_QUESTIONING =
-        //     ">>Charakter01SprichtQuestioning:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_DEFEATED =
-        //     ">>Charakter01SprichtDefeated:<<";
 
         public const string EINTRITT_CHARAKTER_02 = ">>Eintritt:Charakter02<<";
         
@@ -242,45 +171,6 @@ namespace _00_Kite2.Player.Kite_Novels.Visual_Novel_Formatter
 
         public const string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_STOLZ =
             ">>Eintritt:Charakter02,Gesichtsausdruck:stolz<<";
-
-        // public const string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_RELAXED =
-        //     ">>Eintritt:Charakter02,Gesichtsausdruck:relaxed<<";
-        //
-        // public const string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_ASTONISHED =
-        //     ">>Eintritt:Charakter02,Gesichtsausdruck:astonished<<";
-        //
-        // public const string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_REFUSING =
-        //     ">>Eintritt:Charakter02,Gesichtsausdruck:refusing<<";
-        //
-        // public const string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_SMILING =
-        //     ">>Eintritt:Charakter02,Gesichtsausdruck:smiling<<";
-        //
-        // public const string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_FRIENDLY =
-        //     ">>Eintritt:Charakter02,Gesichtsausdruck:friendly<<";
-        //
-        // public const string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_LAUGHING =
-        //     ">>Eintritt:Charakter02,Gesichtsausdruck:laughing<<";
-        //
-        // public const string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_CRITICAL =
-        //     ">>Eintritt:Charakter02,Gesichtsausdruck:critical<<";
-        //
-        // public const string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_DECISION_NO =
-        //     ">>Eintritt:Charakter02,Gesichtsausdruck:decisionNo<<";
-        //
-        // public const string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_HAPPY =
-        //     ">>Eintritt:Charakter02,Gesichtsausdruck:happy<<";
-        //
-        // public const string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_PROUD =
-        //     ">>Eintritt:Charakter02,Gesichtsausdruck:proud<<";
-        //
-        // public const string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_SCARED =
-        //     ">>Eintritt:Charakter02,Gesichtsausdruck:scared<<";
-        //
-        // public const string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_QUESTIONING =
-        //     ">>Eintritt:Charakter02,Gesichtsausdruck:questioning<<";
-        //
-        // public const string EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_DEFEATED =
-        //     ">>Eintritt:Charakter02,Gesichtsausdruck:defeated<<";
         
         public const string CHARAKTER_02_SCHAUT = ">>Charakter02Schaut:<<";
         
@@ -365,38 +255,6 @@ namespace _00_Kite2.Player.Kite_Novels.Visual_Novel_Formatter
         
         public const string CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_STOLZ = 
             ">>Charakter02SprichtStolz:<<";
-        
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_RELAXED = ">>Charakter02SprichtRelaxed:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_ASTONISHED =
-        //     ">>Charakter02SprichtAstonished:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_REFUSING =
-        //     ">>Charakter02SprichtRefusing:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_SMILING = ">>Charakter02SprichtSmiling:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_FRIENDLY =
-        //     ">>Charakter02SprichtFriendly:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_LAUGHING =
-        //     ">>Charakter02SprichtLaughing:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_CRITICAL =
-        //     ">>Charakter02SprichtCritical:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_DECISION_NO =
-        //     ">>Charakter02SprichtDecisionNo:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_HAPPY = ">>Charakter02SprichtHappy:<<";
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_PROUD = ">>Charakter02SprichtProud:<<";
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_SCARED = ">>Charakter02SprichtScared:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_QUESTIONING =
-        //     ">>Charakter02SprichtQuestioning:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_DEFEATED =
-        //     ">>Charakter02SprichtDefeated:<<";
 
         public const string EINTRITT_CHARAKTER_03 = ">>Eintritt:Charakter03<<";
         
@@ -438,45 +296,6 @@ namespace _00_Kite2.Player.Kite_Novels.Visual_Novel_Formatter
 
         public const string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_STOLZ =
             ">>Eintritt:Charakter03,Gesichtsausdruck:stolz<<";
-
-        // public const string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_RELAXED =
-        //     ">>Eintritt:Charakter03,Gesichtsausdruck:relaxed<<";
-        //
-        // public const string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_ASTONISHED =
-        //     ">>Eintritt:Charakter03,Gesichtsausdruck:astonished<<";
-        //
-        // public const string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_REFUSING =
-        //     ">>Eintritt:Charakter03,Gesichtsausdruck:refusing<<";
-        //
-        // public const string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_SMILING =
-        //     ">>Eintritt:Charakter03,Gesichtsausdruck:smiling<<";
-        //
-        // public const string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_FRIENDLY =
-        //     ">>Eintritt:Charakter03,Gesichtsausdruck:friendly<<";
-        //
-        // public const string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_LAUGHING =
-        //     ">>Eintritt:Charakter03,Gesichtsausdruck:laughing<<";
-        //
-        // public const string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_CRITICAL =
-        //     ">>Eintritt:Charakter03,Gesichtsausdruck:critical<<";
-        //
-        // public const string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_DECISION_NO =
-        //     ">>Eintritt:Charakter03,Gesichtsausdruck:decisionNo<<";
-        //
-        // public const string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_HAPPY =
-        //     ">>Eintritt:Charakter03,Gesichtsausdruck:happy<<";
-        //
-        // public const string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_PROUD =
-        //     ">>Eintritt:Charakter03,Gesichtsausdruck:proud<<";
-        //
-        // public const string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_SCARED =
-        //     ">>Eintritt:Charakter03,Gesichtsausdruck:scared<<";
-        //
-        // public const string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_QUESTIONING =
-        //     ">>Eintritt:Charakter03,Gesichtsausdruck:questioning<<";
-        //
-        // public const string EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_DEFEATED =
-        //     ">>Eintritt:Charakter03,Gesichtsausdruck:defeated<<";
         
         public const string CHARAKTER_03_SCHAUT = ">>Charakter03Schaut:<<";
         
@@ -561,38 +380,6 @@ namespace _00_Kite2.Player.Kite_Novels.Visual_Novel_Formatter
         
         public const string CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_STOLZ = 
             ">>Charakter03SprichtStolz:<<";
-        
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_RELAXED = ">>Charakter03SprichtRelaxed:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_ASTONISHED =
-        //     ">>Charakter03SprichtAstonished:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_REFUSING =
-        //     ">>Charakter03SprichtRefusing:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_SMILING = ">>Charakter03SprichtSmiling:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_FRIENDLY =
-        //     ">>Charakter03SprichtFriendly:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_LAUGHING =
-        //     ">>Charakter03SprichtLaughing:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_CRITICAL =
-        //     ">>Charakter03SprichtCritical:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_DECISION_NO =
-        //     ">>Charakter03SprichtDecisionNo:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_HAPPY = ">>Charakter03SprichtHappy:<<";
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_PROUD = ">>Charakter03SprichtProud:<<";
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_SCARED = ">>Charakter03SprichtScared:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_QUESTIONING =
-        //     ">>Charakter03SprichtQuestioning:<<";
-        //
-        // public const string CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_DEFEATED =
-        //     ">>Charakter03SprichtDefeated:<<";
 
         public const string SPIELER_CHARAKTER_SPRICHT = ">>SpielerCharakterSpricht:<<";
 
@@ -701,19 +488,6 @@ namespace _00_Kite2.Player.Kite_Novels.Visual_Novel_Formatter
             EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_NEUTRAL_ENTSPANNT,
             EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_NEUTRAL,
             EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_STOLZ,
-            // EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_RELAXED,
-            // EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_ASTONISHED,
-            // EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_REFUSING,
-            // EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_SMILING,
-            // EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_FRIENDLY,
-            // EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_LAUGHING,
-            // EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_CRITICAL,
-            // EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_DECISION_NO,
-            // EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_HAPPY,
-            // EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_PROUD,
-            // EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_SCARED,
-            // EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_QUESTIONING,
-            // EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_DEFEATED,
             
             CHARAKTER_01_SCHAUT,
             CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_ERSCHROCKEN,
@@ -744,19 +518,6 @@ namespace _00_Kite2.Player.Kite_Novels.Visual_Novel_Formatter
             CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_NEUTRAL_ENTSPANNT,
             CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_NEUTRAL,
             CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_STOLZ,
-            // CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_RELAXED,
-            // CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_ASTONISHED,
-            // CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_REFUSING,
-            // CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_SMILING,
-            // CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_FRIENDLY,
-            // CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_LAUGHING,
-            // CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_CRITICAL,
-            // CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_DECISION_NO,
-            // CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_HAPPY,
-            // CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_PROUD,
-            // CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_SCARED,
-            // CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_QUESTIONING,
-            // CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_DEFEATED,
             
             EINTRITT_CHARAKTER_02,
             EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_ERSCHROCKEN,
@@ -772,19 +533,6 @@ namespace _00_Kite2.Player.Kite_Novels.Visual_Novel_Formatter
             EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_NEUTRAL_ENTSPANNT,
             EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_NEUTRAL,
             EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_STOLZ,
-            // EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_RELAXED,
-            // EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_ASTONISHED,
-            // EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_REFUSING,
-            // EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_SMILING,
-            // EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_FRIENDLY,
-            // EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_LAUGHING,
-            // EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_CRITICAL,
-            // EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_DECISION_NO,
-            // EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_HAPPY,
-            // EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_PROUD,
-            // EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_SCARED,
-            // EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_QUESTIONING,
-            // EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_DEFEATED,
             
             CHARAKTER_02_SCHAUT,
             CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_ERSCHROCKEN,
@@ -815,19 +563,6 @@ namespace _00_Kite2.Player.Kite_Novels.Visual_Novel_Formatter
             CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_NEUTRAL_ENTSPANNT,
             CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_NEUTRAL,
             CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_STOLZ,
-            // CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_RELAXED,
-            // CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_ASTONISHED,
-            // CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_REFUSING,
-            // CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_SMILING,
-            // CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_FRIENDLY,
-            // CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_LAUGHING,
-            // CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_CRITICAL,
-            // CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_DECISION_NO,
-            // CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_HAPPY,
-            // CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_PROUD,
-            // CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_SCARED,
-            // CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_QUESTIONING,
-            // CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_DEFEATED,
             
             EINTRITT_CHARAKTER_03,
             EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_ERSCHROCKEN,
@@ -843,19 +578,6 @@ namespace _00_Kite2.Player.Kite_Novels.Visual_Novel_Formatter
             EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_NEUTRAL_ENTSPANNT,
             EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_NEUTRAL,
             EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_STOLZ,
-            // EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_RELAXED,
-            // EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_ASTONISHED,
-            // EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_REFUSING,
-            // EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_SMILING,
-            // EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_FRIENDLY,
-            // EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_LAUGHING,
-            // EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_CRITICAL,
-            // EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_DECISION_NO,
-            // EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_HAPPY,
-            // EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_PROUD,
-            // EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_SCARED,
-            // EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_QUESTIONING,
-            // EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_DEFEATED,
             
             CHARAKTER_03_SCHAUT,
             CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_ERSCHROCKEN,
@@ -886,19 +608,6 @@ namespace _00_Kite2.Player.Kite_Novels.Visual_Novel_Formatter
             CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_NEUTRAL_ENTSPANNT,
             CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_NEUTRAL,
             CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_STOLZ,
-            // CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_RELAXED,
-            // CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_ASTONISHED,
-            // CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_REFUSING,
-            // CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_SMILING,
-            // CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_FRIENDLY,
-            // CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_LAUGHING,
-            // CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_CRITICAL,
-            // CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_DECISION_NO,
-            // CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_HAPPY,
-            // CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_PROUD,
-            // CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_SCARED,
-            // CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_QUESTIONING,
-            // CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_DEFEATED,
             
             SPIELER_CHARAKTER_SPRICHT,
             INFO_NACHRICHT_WIRD_ANGEZEIGT,
