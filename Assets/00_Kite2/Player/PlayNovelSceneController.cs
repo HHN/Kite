@@ -72,7 +72,7 @@ namespace _00_Kite2.Player
         [SerializeField] private GameObject gptServercallPrefab;
         [SerializeField] private LeaveNovelAndGoBackMessageBox leaveGameAndGoBackMessageBoxObject;
         [SerializeField] private GameObject leaveGameAndGoBackMessageBox;
-        [SerializeField] private HintForSavegameMessageBox hintForSavegameMessageBoxObject;
+        private GameObject hintForSavegameMessageBoxObject;
         [SerializeField] private GameObject hintForSavegameMessageBox;
 
         [Header("Skript- und Controller-Referenzen")] 
@@ -969,15 +969,14 @@ namespace _00_Kite2.Player
             // Überprüfen, ob die HintForSavegameMessageBox bereits geladen ist und schließe sie gegebenenfalls
             if (!hintForSavegameMessageBoxObject.IsNullOrDestroyed())
             {
-                hintForSavegameMessageBoxObject.CloseMessageBox();
+                hintForSavegameMessageBoxObject.GetComponent<HintForSavegameMessageBox>().CloseMessageBox();
             }
 
             // Instanziiere und aktiviere die HintForSavegameMessageBox, falls das Canvas nicht null ist
             if (canvas.IsNullOrDestroyed()) return;
 
-            hintForSavegameMessageBoxObject = Instantiate(hintForSavegameMessageBox, canvas.transform)
-                .GetComponent<HintForSavegameMessageBox>();
-            hintForSavegameMessageBoxObject.Activate();
+            hintForSavegameMessageBoxObject = Instantiate(hintForSavegameMessageBox, canvas.transform);
+            hintForSavegameMessageBoxObject.GetComponent<HintForSavegameMessageBox>().Activate();
         }
 
         /// <summary>
