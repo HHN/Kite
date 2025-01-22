@@ -80,11 +80,8 @@ namespace _00_Kite2.Player
         [SerializeField] public TypewriterCore currentTypeWriter;
         [SerializeField] public SelectOptionContinueConversation selectOptionContinueConversation;
         [SerializeField] private CharacterController currentTalkingCharacterController;
-        //[SerializeField] private GameObject tapToContinueAnimation;
         
-
         [Header("Audio-Komponenten")] 
-
         [SerializeField] private AudioClip[] clips;
         
         [Header("Timing und Analytics")]
@@ -838,7 +835,6 @@ namespace _00_Kite2.Player
         public void SetWaitingForConfirmation(bool value)
         {
             this.isWaitingForConfirmation = value;
-            //SetTypeToContinueAnimationActive(value);
         }
 
         public void SetTyping(bool value)
@@ -963,7 +959,9 @@ namespace _00_Kite2.Player
             TextToSpeechManager.Instance.CancelSpeak();
         }
 
-        // Methode zum Anzeigen der HintForSavegameMessageBox
+        /// <summary>
+        /// Methode zum Anzeigen der HintForSavegameMessageBox
+        /// </summary> 
         private void ShowHintForSavegameMessageBox()
         {
             if (hintForSavegameMessageBox == null) return;
@@ -982,7 +980,9 @@ namespace _00_Kite2.Player
             hintForSavegameMessageBoxObject.Activate();
         }
 
-        // Startet das Spiel vom gespeicherten Punkt, wenn "Fortsetzen" gewählt wird
+        /// <summary>
+        /// Startet das Spiel vom gespeicherten Punkt, wenn "Fortsetzen" gewählt wird
+        /// </summary>
         public void ResumeFromSavedState()
         {
             string novelId = NovelToPlay.id.ToString();
@@ -1230,7 +1230,9 @@ namespace _00_Kite2.Player
             }
         }
 
-        // Methode zum Neustarten (bei Auswahl "Neustarten" im Dialog)
+        /// <summary>
+        /// Methode zum Neustarten (bei Auswahl "Neustarten" im Dialog)
+        /// </summary>
         public void RestartNovel()
         {
             // Lösche den zugehörigen Speicherstand

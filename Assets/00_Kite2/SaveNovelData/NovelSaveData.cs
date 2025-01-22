@@ -23,7 +23,7 @@ namespace _00_Kite2.SaveNovelData
 
         /// <summary>
         /// Konvertiert diese Instanz in einen JSON-String.
-        /// Hilfsmethode f�r den SaveManager.
+        /// Hilfsmethode für den SaveManager.
         /// </summary>
         /// <returns>Ein JSON-formatierter String, der diese Instanz repräsentiert.</returns>
         public string ToJson()
