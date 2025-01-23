@@ -161,9 +161,9 @@ MonoBehaviour:
   controller: {fileID: 0}
   headlineObject: {fileID: 3171214583759870850}
   questionObject: {fileID: 3171214584588528274}
-  cancleButton: {fileID: 5744927538270794346}
+  cancelButton: {fileID: 5744927538270794346}
   confirmButton: {fileID: 5744927536523432267}
-  inputfield: {fileID: 7637853789095849880}
+  inputField: {fileID: 7637853789095849880}
   playerPrefsKey: 
 --- !u!114 &2238308996125314884
 MonoBehaviour:
