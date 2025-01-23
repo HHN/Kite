@@ -26,14 +26,14 @@ namespace _00_Kite2.Common.UI.UI_Elements.Free_Text_User_Input
             confirmButton.onClick.AddListener(OnConfirmButton);
         }
 
-        public void Initialize(string playerPrefsKey, string currentValue, string headline, string question,
-            PlayerPrefsSceneController controller)
+        public void Initialize(string key, string currentValue, string headline, string question,
+            PlayerPrefsSceneController playerPrefsSceneController)
         {
             this.headlineObject.text = headline;
             this.questionObject.text = question;
-            this.playerPrefsKey = playerPrefsKey;
+            this.playerPrefsKey = key;
             this.inputField.text = currentValue;
-            this.controller = controller;
+            this.controller = playerPrefsSceneController;
         }
 
         private void OnCancelButton()
