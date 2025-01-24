@@ -204,7 +204,7 @@ Schön, bringen Sie dann das Formular bitte ausgefüllt wieder mit.
 >>SpielerinCharakterSpricht:<<
 Das werde ich. Vielen Dank und bis dann!
 >>--<<
->>Charakter01SprichtFriendly:<<
+>>Charakter01SprichtLaecheln:<<
 Schönen Tag noch!
 >>--<<
 >>Ende<<
