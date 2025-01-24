@@ -190,7 +190,7 @@ namespace _00_Kite2.Common
         }
 #elif UNITY_IOS
         _StopSpeaking();
-        isSpeaking = false;
+        _isSpeaking = false;
 #endif
         }
 
@@ -281,7 +281,7 @@ namespace _00_Kite2.Common
         }
 #elif UNITY_IOS
         _StopSpeaking();
-        isSpeaking = false;
+        _isSpeaking = false;
 #endif
         }
 
