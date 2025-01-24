@@ -812,9 +812,6 @@ namespace _00_Kite2.Player
 
         private void SetNextEvent(VisualNovelEvent novelEvent)
         {
-            Debug.Log(novelEvent.id);
-            Debug.Log(novelEvent.nextId);
-            
             string nextEventID = novelEvent.nextId;
             nextEventToPlay = _novelEvents[nextEventID];
         }

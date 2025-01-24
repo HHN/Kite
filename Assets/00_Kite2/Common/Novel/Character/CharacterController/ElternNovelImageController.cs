@@ -51,13 +51,13 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             SetInitialSpritesForImages();
             SetInitialCharacters();
             
-            characterController = motherCharacterContainer.GetComponentInChildren<CharacterController>();
+            CharacterController = motherCharacterContainer.GetComponentInChildren<CharacterController>();
             // characterController2 = fatherCharacterContainer.GetComponentInChildren<CharacterController>();
         
-            characterController.SetSkinSprite();
-            characterController.SetHandSprite();
-            characterController.SetClotheSprite();
-            characterController.SetHairSprite();
+            CharacterController.SetSkinSprite();
+            CharacterController.SetHandSprite();
+            CharacterController.SetClotheSprite();
+            CharacterController.SetHairSprite();
             
             // characterController2.SetSkinSprite();
             // characterController2.SetHandSprite();
@@ -70,10 +70,10 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     2, // Schlüssel für den Eintrag
                     new CharacterData
                     {
-                        skinIndex = characterController.skinIndex,
-                        handIndex = characterController.handIndex,
-                        clotheIndex = characterController.clotheIndex,
-                        hairIndex = characterController.hairIndex,
+                        skinIndex = CharacterController.skinIndex,
+                        handIndex = CharacterController.handIndex,
+                        clotheIndex = CharacterController.clotheIndex,
+                        hairIndex = CharacterController.hairIndex,
                         
                         // skinIndex2 = characterController2.skinIndex,
                         // handIndex2 = characterController2.handIndex,
