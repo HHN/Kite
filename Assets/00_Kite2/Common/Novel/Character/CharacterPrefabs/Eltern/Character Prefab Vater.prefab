@@ -140,7 +140,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c0829861ed7cf4041980c3a9de4e2cc4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinImage: {fileID: 6553579731152782210}
+  glassImage: {fileID: 0}
   handImage: {fileID: 1553583922394988508}
   clotheImage: {fileID: 2735791881534372737}
   hairImage: {fileID: 3816683545305009484}
@@ -248,6 +249,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f0cd2a41e164db74fb5801502b18f8eb, type: 3}
   - {fileID: 21300000, guid: df333ac9d5c83b444bf27c2070c934e8, type: 3}
   - {fileID: 21300000, guid: b2e298bcabca56342b5b9cf26725d87f, type: 3}
+  glassSprites:
+  - {fileID: 21300000, guid: 5764f22cf80f5564183b58d58d5a8feb, type: 3}
   handSprites: []
   clotheSprites:
   - {fileID: 21300000, guid: c0829861ed7cf4041980c3a9de4e2cc4, type: 3}
@@ -261,6 +264,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 84aab08cad17a674aa2fcdb4289b7233, type: 3}
   animator: {fileID: 6155688656520349526}
   skinIndex: 0
+  glassIndex: 0
   handIndex: 0
   clotheIndex: 0
   hairIndex: 0

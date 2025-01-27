@@ -6,12 +6,14 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
     public class Kite2CharacterController : MonoBehaviour
     {
         [SerializeField] private Image skinImage;
+        [SerializeField] private Image glassImage;
         [SerializeField] private Image handImage;
         [SerializeField] private Image clotheImage;
         [SerializeField] private Image hairImage;
         [SerializeField] private Image faceImage;
 
         [SerializeField] private Sprite[] skinSprites;
+        [SerializeField] private Sprite[] glassSprites;
         [SerializeField] private Sprite[] handSprites;
         [SerializeField] private Sprite[] clotheSprites;
         [SerializeField] private Sprite[] hairSprites;
@@ -20,6 +22,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         private static readonly int IsTalking = Animator.StringToHash("isTalking");
 
         public int skinIndex;
+        public int glassIndex;
         public int handIndex;
         public int clotheIndex;
         public int hairIndex;
@@ -54,6 +57,20 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             {
                 handIndex = 3;
             }
+        }
+        
+        public void SetGlassesSprite( /*int glassesSpriteIndex*/)
+        {
+            // if ((skinSprites.Length > glassesSpriteIndex) && (glassesSpriteIndex >= 0))
+            // {
+            //     skinImage.sprite = skinSprites[glassesSpriteIndex];
+            // }
+
+            if (glassSprites == null) return;
+
+            Sprite randomGlassImage = handSprites[glassIndex];
+
+            handImage.sprite = randomGlassImage;
         }
         
         public void SetHandSprite( /*int handSpriteIndex*/)
