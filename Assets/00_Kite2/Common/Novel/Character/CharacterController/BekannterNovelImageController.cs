@@ -30,12 +30,12 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         //     // SetInitialSpritesForImages();
         //     // SetInitialCharacters();
         //     
-        //     characterController = characterContainer.GetComponentInChildren<CharacterController>();
+        //     novelCharacterController = characterContainer.GetComponentInChildren<CharacterController>();
         //
-        //     characterController.SetSkinSprite();
-        //     characterController.SetHandSprite();
-        //     characterController.SetClotheSprite();
-        //     characterController.SetHairSprite();
+        //     novelCharacterController.SetSkinSprite();
+        //     novelCharacterController.SetHandSprite();
+        //     novelCharacterController.SetClotheSprite();
+        //     novelCharacterController.SetHairSprite();
         //
         //     GameManager.CharacterDataList = new Dictionary<long, CharacterData>
         //     {
@@ -43,10 +43,10 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         //             9, // Schlüssel für den Eintrag
         //             new CharacterData
         //             {
-        //                 skinIndex = characterController.skinIndex,
-        //                 handIndex = characterController.handIndex,
-        //                 clotheIndex = characterController.clotheIndex,
-        //                 hairIndex = characterController.hairIndex
+        //                 skinIndex = novelCharacterController.skinIndex,
+        //                 handIndex = novelCharacterController.handIndex,
+        //                 clotheIndex = novelCharacterController.clotheIndex,
+        //                 hairIndex = novelCharacterController.hairIndex
         //             }
         //         }
         //     };
@@ -94,7 +94,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         public override void SetCharacter()
         {
-            CharacterController = _instantiatedCharacter.GetComponent<CharacterController>();
+            base.novelCharacterController = _instantiatedCharacter.GetComponent<CharacterController>();
         }
 
         public override bool HandleTouchEvent(float x, float y)

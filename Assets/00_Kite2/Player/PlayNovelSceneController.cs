@@ -28,8 +28,9 @@ namespace _00_Kite2.Player
     {
         private const float WaitingTime = 0.5f;
 
-        [Header("UI-Komponenten")] 
-        [SerializeField] private GameObject viewPort;
+        [Header("UI-Komponenten")] [SerializeField]
+        private GameObject viewPort;
+
         [SerializeField] private GameObject conversationViewport;
         [SerializeField] private Button closeButton;
         [SerializeField] private TextMeshProUGUI novelName;
@@ -47,8 +48,9 @@ namespace _00_Kite2.Player
         [SerializeField] private GameObject freeTextInputPrefab;
         [SerializeField] private GameObject headerImage;
 
-        [Header("Novel-Visuals und Prefabs")] 
-        [SerializeField] private GameObject[] novelVisuals;
+        [Header("Novel-Visuals und Prefabs")] [SerializeField]
+        private GameObject[] novelVisuals;
+
         [SerializeField] private GameObject novelImageContainer;
         [SerializeField] private GameObject novelBackgroundPrefab;
         [SerializeField] private GameObject backgroundContainer;
@@ -68,29 +70,33 @@ namespace _00_Kite2.Player
         [SerializeField] private GameObject viewPortOfImages;
         [SerializeField] private GameObject currentAnimation;
 
-        [Header("GPT und MessageBox")] 
-        [SerializeField] private GameObject gptServercallPrefab;
+        [Header("GPT und MessageBox")] [SerializeField]
+        private GameObject gptServercallPrefab;
+
         [SerializeField] private LeaveNovelAndGoBackMessageBox leaveGameAndGoBackMessageBoxObject;
         [SerializeField] private GameObject leaveGameAndGoBackMessageBox;
         private GameObject hintForSavegameMessageBoxObject;
         [SerializeField] private GameObject hintForSavegameMessageBox;
 
-        [Header("Skript- und Controller-Referenzen")] 
-        [SerializeField] private VisualNovel novelToPlay;
+        [Header("Skript- und Controller-Referenzen")] [SerializeField]
+        private VisualNovel novelToPlay;
+
         [SerializeField] public TypewriterCore currentTypeWriter;
         [SerializeField] public SelectOptionContinueConversation selectOptionContinueConversation;
         [SerializeField] private CharacterController currentTalkingCharacterController;
-        
-        [Header("Audio-Komponenten")] 
-        [SerializeField] private AudioClip[] clips;
-        
-        [Header("Timing und Analytics")]
-        [SerializeField] private float timerForHint = 12.0f; // Time after which the hint to tap on the screen is shown
+
+        [Header("Audio-Komponenten")] [SerializeField]
+        private AudioClip[] clips;
+
+        [Header("Timing und Analytics")] [SerializeField]
+        private float timerForHint = 12.0f; // Time after which the hint to tap on the screen is shown
+
         [SerializeField] private float timerForHintInitial = 3.0f;
         [SerializeField] private bool firstUserConfirmation = true; // Analytics flag for first confirmation
 
-        [Header("Spielstatus und Logik")] 
-        [SerializeField] private bool isWaitingForConfirmation;
+        [Header("Spielstatus und Logik")] [SerializeField]
+        private bool isWaitingForConfirmation;
+
         [SerializeField] private VisualNovelEvent nextEventToPlay;
         [SerializeField] private bool isTyping;
         [SerializeField] private List<string> playThroughHistory = new();
@@ -166,12 +172,12 @@ namespace _00_Kite2.Player
             {
                 headerImage.SetActive(false);
             }
-            
+
             List<int> characters = novelToPlay.novelEvents
-                .Select(e => e.character)      // Wähle das `character`-Feld aus
+                .Select(e => e.character) // Wähle das `character`-Feld aus
                 .Where(c => c != 0 && c != 1 && c != 4) // Schließe die Werte 0, 1 und 4 aus
-                .Distinct()                    // Optional: Entfernt Duplikate
-                .ToList();                     // Konvertiere das Ergebnis in eine Liste
+                .Distinct() // Optional: Entfernt Duplikate
+                .ToList(); // Konvertiere das Ergebnis in eine Liste
 
             foreach (var characterId in characters)
             {
@@ -681,16 +687,17 @@ namespace _00_Kite2.Player
             SetNextEvent(novelEvent);
 
             _novelCharacter = novelEvent.character;
-            
-            if (!CharacterExpressions.ContainsKey(_novelCharacter) && _novelCharacter != 0 && _novelCharacter != 1 && _novelCharacter != 4)
+
+            if (!CharacterExpressions.ContainsKey(_novelCharacter) && _novelCharacter != 0 && _novelCharacter != 1 &&
+                _novelCharacter != 4)
             {
                 Debug.LogWarning($"Character ID {_novelCharacter} is not registered.");
                 return;
             }
-            
+
             // Speichere die neue Gesichtsanimation
             CharacterExpressions[_novelCharacter] = novelEvent.expressionType;
-            
+
             _novelImagesController.SetFaceExpression(_novelCharacter, CharacterExpressions[_novelCharacter]);
 
             if (novelEvent.show)
@@ -706,7 +713,7 @@ namespace _00_Kite2.Player
                 SetWaitingForConfirmation(true);
                 return;
             }
-            
+
             StartCoroutine(StartNextEventInOneSeconds(1));
         }
 
@@ -730,7 +737,7 @@ namespace _00_Kite2.Player
         private void HandleShowChoicesEvent(VisualNovelEvent novelEvent)
         {
             StartCoroutine(TextToSpeechManager.Instance.ReadChoice());
-            
+
             // Enable animations when showing choices
             AnimationFlagSingleton.Instance().SetFlag(true);
 
@@ -789,7 +796,7 @@ namespace _00_Kite2.Player
                     _novelImagesController.SetFaceExpression(_novelCharacter, CharacterExpressions[_novelCharacter]);
                 }
             }
-            
+
             StartCoroutine(PlayNextEvent());
         }
 
@@ -996,9 +1003,9 @@ namespace _00_Kite2.Player
             // Suche den gespeicherten Event in der Liste
             nextEventToPlay = novelToPlay.novelEvents.FirstOrDefault(e => e.id == savedData.currentEventId)
                               ?? novelToPlay.novelEvents[0];
-            
+
             playThroughHistory = new List<string>(savedData.playThroughHistory);
-            
+
             _optionsId[0] = savedData.optionsId[1];
             _optionsCount = savedData.optionCount;
             eventHistory = savedData.eventHistory;
@@ -1013,8 +1020,9 @@ namespace _00_Kite2.Player
                 case 1:
                     break;
                 case 2:
-                    ElternNovelImageController elternNovelImageController = FindObjectsOfType<ElternNovelImageController>().FirstOrDefault();
-                    
+                    ElternNovelImageController elternNovelImageController =
+                        FindObjectsOfType<ElternNovelImageController>().FirstOrDefault();
+
                     if (elternNovelImageController != null)
                     {
                         if (savedData.CharacterPrefabData != null)
@@ -1023,7 +1031,8 @@ namespace _00_Kite2.Player
                             {
                                 if (kvp.Key == searchId)
                                 {
-                                    int[] attributes = kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
+                                    int[] attributes =
+                                        kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
 
                                     // Setze die Attribute basierend auf den gespeicherten Werten
                                     elternNovelImageController.characterController.SetSkinSprite(attributes[0]);
@@ -1034,11 +1043,12 @@ namespace _00_Kite2.Player
                             }
                         }
                     }
-                    
+
                     break;
                 case 3:
-                    PresseNovelImageController presseNovelImageController = FindObjectsOfType<PresseNovelImageController>().FirstOrDefault();
-                    
+                    PresseNovelImageController presseNovelImageController =
+                        FindObjectsOfType<PresseNovelImageController>().FirstOrDefault();
+
                     if (presseNovelImageController != null)
                     {
                         if (savedData.CharacterPrefabData != null)
@@ -1047,7 +1057,8 @@ namespace _00_Kite2.Player
                             {
                                 if (kvp.Key == searchId)
                                 {
-                                    int[] attributes = kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
+                                    int[] attributes =
+                                        kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
 
                                     // Setze die Attribute basierend auf den gespeicherten Werten
                                     presseNovelImageController.characterController.SetSkinSprite(attributes[0]);
@@ -1058,11 +1069,12 @@ namespace _00_Kite2.Player
                             }
                         }
                     }
-                    
+
                     break;
                 case 4:
-                    NotarinNovelImageController notarinNovelImageController = FindObjectsOfType<NotarinNovelImageController>().FirstOrDefault();
-                    
+                    NotarinNovelImageController notarinNovelImageController =
+                        FindObjectsOfType<NotarinNovelImageController>().FirstOrDefault();
+
                     if (notarinNovelImageController != null)
                     {
                         if (savedData.CharacterPrefabData != null)
@@ -1071,7 +1083,8 @@ namespace _00_Kite2.Player
                             {
                                 if (kvp.Key == searchId)
                                 {
-                                    int[] attributes = kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
+                                    int[] attributes =
+                                        kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
 
                                     // Setze die Attribute basierend auf den gespeicherten Werten
                                     notarinNovelImageController.characterController.SetSkinSprite(attributes[0]);
@@ -1082,13 +1095,14 @@ namespace _00_Kite2.Player
                             }
                         }
                     }
-                    
+
                     break;
                 case 5:
                     break;
                 case 6:
-                    BueroNovelImageController bueroNovelImageController = FindObjectsOfType<BueroNovelImageController>().FirstOrDefault();
-                    
+                    BueroNovelImageController bueroNovelImageController =
+                        FindObjectsOfType<BueroNovelImageController>().FirstOrDefault();
+
                     if (bueroNovelImageController != null)
                     {
                         if (savedData.CharacterPrefabData != null)
@@ -1097,7 +1111,8 @@ namespace _00_Kite2.Player
                             {
                                 if (kvp.Key == searchId)
                                 {
-                                    int[] attributes = kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
+                                    int[] attributes =
+                                        kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
 
                                     // Setze die Attribute basierend auf den gespeicherten Werten
                                     bueroNovelImageController.characterController.SetSkinSprite(attributes[0]);
@@ -1108,15 +1123,16 @@ namespace _00_Kite2.Player
                             }
                         }
                     }
-                    
+
                     break;
                 case 7:
                     break;
                 case 8:
                     break;
                 case 9:
-                    BekannterNovelImageController bekannterNovelImageController = FindObjectsOfType<BekannterNovelImageController>().FirstOrDefault();
-                                        
+                    BekannterNovelImageController bekannterNovelImageController =
+                        FindObjectsOfType<BekannterNovelImageController>().FirstOrDefault();
+
                     if (bekannterNovelImageController != null)
                     {
                         if (savedData.CharacterPrefabData != null)
@@ -1125,7 +1141,8 @@ namespace _00_Kite2.Player
                             {
                                 if (kvp.Key == searchId)
                                 {
-                                    int[] attributes = kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
+                                    int[] attributes =
+                                        kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
 
                                     // Setze die Attribute basierend auf den gespeicherten Werten
                                     bekannterNovelImageController.characterController.SetSkinSprite(attributes[0]);
@@ -1136,11 +1153,12 @@ namespace _00_Kite2.Player
                             }
                         }
                     }
-                    
+
                     break;
                 case 10:
-                    BankNovelImageController bankNovelImageController = FindObjectsOfType<BankNovelImageController>().FirstOrDefault();
-                                                           
+                    BankNovelImageController bankNovelImageController =
+                        FindObjectsOfType<BankNovelImageController>().FirstOrDefault();
+
                     if (bankNovelImageController != null)
                     {
                         if (savedData.CharacterPrefabData != null)
@@ -1149,22 +1167,29 @@ namespace _00_Kite2.Player
                             {
                                 if (kvp.Key == searchId)
                                 {
-                                    int[] attributes = kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
+                                    int[] attributes =
+                                        kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
+
+                                    foreach (var attribute in attributes)
+                                    {
+                                        Debug.Log(attribute);
+                                    }
 
                                     // Setze die Attribute basierend auf den gespeicherten Werten
-                                    bankNovelImageController.characterController.SetSkinSprite(attributes[0]);
-                                    bankNovelImageController.characterController.SetHandSprite(attributes[1]);
-                                    bankNovelImageController.characterController.SetClotheSprite(attributes[2]);
-                                    bankNovelImageController.characterController.SetHairSprite(attributes[3]);
+                                    bankNovelImageController.novelCharacterController.SetSkinSprite(attributes[0]);
+                                    bankNovelImageController.novelCharacterController.SetHandSprite(attributes[1]);
+                                    bankNovelImageController.novelCharacterController.SetClotheSprite(attributes[2]);
+                                    bankNovelImageController.novelCharacterController.SetHairSprite(attributes[3]);
                                 }
                             }
                         }
                     }
-                    
+
                     break;
                 case 11:
-                    VerhandlungNovelImageController verhandlungNovelImageController = FindObjectsOfType<VerhandlungNovelImageController>().FirstOrDefault();
-                                                                    
+                    VerhandlungNovelImageController verhandlungNovelImageController =
+                        FindObjectsOfType<VerhandlungNovelImageController>().FirstOrDefault();
+
                     if (verhandlungNovelImageController != null)
                     {
                         if (savedData.CharacterPrefabData != null)
@@ -1173,7 +1198,8 @@ namespace _00_Kite2.Player
                             {
                                 if (kvp.Key == searchId)
                                 {
-                                    int[] attributes = kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
+                                    int[] attributes =
+                                        kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
 
                                     // Setze die Attribute basierend auf den gespeicherten Werten
                                     verhandlungNovelImageController.characterController.SetSkinSprite(attributes[0]);
@@ -1184,13 +1210,14 @@ namespace _00_Kite2.Player
                             }
                         }
                     }
-                    
+
                     break;
                 case 12:
                     break;
                 case 13:
-                    IntroNovelImageController introNovelImageController = FindObjectsOfType<IntroNovelImageController>().FirstOrDefault();
-                                                                                  
+                    IntroNovelImageController introNovelImageController =
+                        FindObjectsOfType<IntroNovelImageController>().FirstOrDefault();
+
                     if (introNovelImageController != null)
                     {
                         if (savedData.CharacterPrefabData != null)
@@ -1199,7 +1226,8 @@ namespace _00_Kite2.Player
                             {
                                 if (kvp.Key == searchId)
                                 {
-                                    int[] attributes = kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
+                                    int[] attributes =
+                                        kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
 
                                     // Setze die Attribute basierend auf den gespeicherten Werten
                                     introNovelImageController.characterController.SetSkinSprite(attributes[0]);
@@ -1210,17 +1238,17 @@ namespace _00_Kite2.Player
                             }
                         }
                     }
-                    
+
                     break;
             }
-            
+
             RestoreCharacterExpressions(savedData);
 
             ActivateMessageBoxes();
 
             StartCoroutine(PlayNextEvent());
         }
-        
+
         private void RestoreCharacterExpressions(NovelSaveData savedData)
         {
             foreach (var kvp in savedData.CharacterExpressions)

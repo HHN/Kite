@@ -25,12 +25,12 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         private void Start()
         {
-            CharacterController = characterContainer.GetComponentInChildren<CharacterController>();
+            base.novelCharacterController = characterContainer.GetComponentInChildren<CharacterController>();
         
-            CharacterController.SetSkinSprite();
-            CharacterController.SetHandSprite();
-            CharacterController.SetClotheSprite();
-            CharacterController.SetHairSprite();
+            base.novelCharacterController.SetSkinSprite();
+            base.novelCharacterController.SetHandSprite();
+            base.novelCharacterController.SetClotheSprite();
+            base.novelCharacterController.SetHairSprite();
         
             GameManager.CharacterDataList = new Dictionary<long, CharacterData>
             {
@@ -38,10 +38,10 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     3, // Schlüssel für den Eintrag
                     new CharacterData
                     {
-                        skinIndex = CharacterController.skinIndex,
-                        handIndex = CharacterController.handIndex,
-                        clotheIndex = CharacterController.clotheIndex,
-                        hairIndex = CharacterController.hairIndex
+                        skinIndex = base.novelCharacterController.skinIndex,
+                        handIndex = base.novelCharacterController.handIndex,
+                        clotheIndex = base.novelCharacterController.clotheIndex,
+                        hairIndex = base.novelCharacterController.hairIndex
                     }
                 }
             };

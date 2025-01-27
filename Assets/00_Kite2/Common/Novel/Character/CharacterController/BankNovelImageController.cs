@@ -21,17 +21,15 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         [SerializeField] private GameObject characterPrefab;
 
         private GameObject _instantiatedCharacter;
-        
-        public CharacterController characterController;
 
         private void Start()
         {
-            CharacterController = characterContainer.GetComponentInChildren<CharacterController>();
+            novelCharacterController = characterContainer.GetComponentInChildren<CharacterController>();
 
-            CharacterController.SetSkinSprite();
-            CharacterController.SetHandSprite();
-            CharacterController.SetClotheSprite();
-            CharacterController.SetHairSprite();
+            novelCharacterController.SetSkinSprite();
+            novelCharacterController.SetHandSprite();
+            novelCharacterController.SetClotheSprite();
+            novelCharacterController.SetHairSprite();
 
             GameManager.CharacterDataList = new Dictionary<long, CharacterData>
             {
@@ -39,15 +37,15 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     10, // Schlüssel für den Eintrag
                     new CharacterData
                     {
-                        skinIndex = CharacterController.skinIndex,
-                        handIndex = CharacterController.handIndex,
-                        clotheIndex = CharacterController.clotheIndex,
-                        hairIndex = CharacterController.hairIndex
+                        skinIndex = novelCharacterController.skinIndex,
+                        handIndex = novelCharacterController.handIndex,
+                        clotheIndex = novelCharacterController.clotheIndex,
+                        hairIndex = novelCharacterController.hairIndex
                     }
                 }
             };
             
-            // CharacterController = characterController;
+            // CharacterController = novelCharacterController;
         }
 
         private void SetInitialSpritesForImages()

@@ -51,18 +51,18 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             SetInitialSpritesForImages();
             SetInitialCharacters();
             
-            CharacterController = motherCharacterContainer.GetComponentInChildren<CharacterController>();
-            // characterController2 = fatherCharacterContainer.GetComponentInChildren<CharacterController>();
+            base.novelCharacterController = motherCharacterContainer.GetComponentInChildren<CharacterController>();
+            // novelCharacterController2 = fatherCharacterContainer.GetComponentInChildren<CharacterController>();
         
-            CharacterController.SetSkinSprite();
-            CharacterController.SetHandSprite();
-            CharacterController.SetClotheSprite();
-            CharacterController.SetHairSprite();
+            base.novelCharacterController.SetSkinSprite();
+            base.novelCharacterController.SetHandSprite();
+            base.novelCharacterController.SetClotheSprite();
+            base.novelCharacterController.SetHairSprite();
             
-            // characterController2.SetSkinSprite();
-            // characterController2.SetHandSprite();
-            // characterController2.SetClotheSprite();
-            // characterController2.SetHairSprite();
+            // novelCharacterController2.SetSkinSprite();
+            // novelCharacterController2.SetHandSprite();
+            // novelCharacterController2.SetClotheSprite();
+            // novelCharacterController2.SetHairSprite();
         
             GameManager.CharacterDataList = new Dictionary<long, CharacterData>
             {
@@ -70,15 +70,15 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     2, // Schlüssel für den Eintrag
                     new CharacterData
                     {
-                        skinIndex = CharacterController.skinIndex,
-                        handIndex = CharacterController.handIndex,
-                        clotheIndex = CharacterController.clotheIndex,
-                        hairIndex = CharacterController.hairIndex,
+                        skinIndex = base.novelCharacterController.skinIndex,
+                        handIndex = base.novelCharacterController.handIndex,
+                        clotheIndex = base.novelCharacterController.clotheIndex,
+                        hairIndex = base.novelCharacterController.hairIndex,
                         
-                        // skinIndex2 = characterController2.skinIndex,
-                        // handIndex2 = characterController2.handIndex,
-                        // clotheIndex2 = characterController2.clotheIndex,
-                        // hairIndex2 = characterController2.hairIndex
+                        // skinIndex2 = novelCharacterController2.skinIndex,
+                        // handIndex2 = novelCharacterController2.handIndex,
+                        // clotheIndex2 = novelCharacterController2.clotheIndex,
+                        // hairIndex2 = novelCharacterController2.hairIndex
                     }
                 }
             };
@@ -178,7 +178,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         public override void SetCharacter()
         {
             // CharacterController = _instantiatedMotherCharacter.GetComponent<CharacterController>();
-            CharacterController2 = _instantiatedFatherCharacter.GetComponent<CharacterController>();
+            base.novelCharacterController2 = _instantiatedFatherCharacter.GetComponent<CharacterController>();
         }
 
         public override void SetBackground()
