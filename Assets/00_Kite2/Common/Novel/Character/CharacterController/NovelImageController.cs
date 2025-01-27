@@ -6,8 +6,8 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
     public class NovelImageController : MonoBehaviour
     {
         protected RectTransform CanvasRect;
-        [FormerlySerializedAs("novelCharacterController")] public Kite2CharacterController novelKite2CharacterController;
-        [FormerlySerializedAs("novelCharacterController2")] public Kite2CharacterController novelKite2CharacterController2;
+        public Kite2CharacterController novelKite2CharacterController;
+        public Kite2CharacterController novelKite2CharacterController2;
 
         public void SetCanvasRect(RectTransform canvasRect)
         {

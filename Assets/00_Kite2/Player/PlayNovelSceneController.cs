@@ -1035,10 +1035,15 @@ namespace _00_Kite2.Player
                                         kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
 
                                     // Setze die Attribute basierend auf den gespeicherten Werten
-                                    elternNovelImageController.kite2CharacterController.SetSkinSprite(attributes[0]);
-                                    elternNovelImageController.kite2CharacterController.SetHandSprite(attributes[1]);
-                                    elternNovelImageController.kite2CharacterController.SetClotheSprite(attributes[2]);
-                                    elternNovelImageController.kite2CharacterController.SetHairSprite(attributes[3]);
+                                    elternNovelImageController.novelKite2CharacterController.SetSkinSprite(attributes[0]);
+                                    elternNovelImageController.novelKite2CharacterController.SetHandSprite(attributes[1]);
+                                    elternNovelImageController.novelKite2CharacterController.SetClotheSprite(attributes[2]);
+                                    elternNovelImageController.novelKite2CharacterController.SetHairSprite(attributes[3]);
+                                    
+                                    elternNovelImageController.novelKite2CharacterController2.SetSkinSprite(attributes[4]);
+                                    elternNovelImageController.novelKite2CharacterController2.SetHandSprite(attributes[5]);
+                                    elternNovelImageController.novelKite2CharacterController2.SetClotheSprite(attributes[6]);
+                                    elternNovelImageController.novelKite2CharacterController2.SetHairSprite(attributes[7]);
                                 }
                             }
                         }
