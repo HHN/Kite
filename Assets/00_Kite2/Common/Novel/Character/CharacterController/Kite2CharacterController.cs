@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace _00_Kite2.Common.Novel.Character.CharacterController
 {
-    public class CharacterController : MonoBehaviour
+    public class Kite2CharacterController : MonoBehaviour
     {
         [SerializeField] private Image skinImage;
         [SerializeField] private Image handImage;
@@ -76,10 +76,16 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             // {
             //     clotheImage.sprite = clotheSprites[clotheSpriteIndex];
             // }
+            
 
             if (clotheSprites == null) return;
 
             clotheIndex = Random.Range(0, clotheSprites.Length);
+            
+            Debug.Log("clotheIndex: " + clotheIndex);
+            
+            Debug.Log("SetClotheSprite: " + clotheSprites[clotheIndex]);
+            
             Sprite randomSkinImage = clotheSprites[clotheIndex];
 
             clotheImage.sprite = randomSkinImage;

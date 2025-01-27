@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using _00_Kite2.Common.Managers;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace _00_Kite2.Common.Novel.Character.CharacterController
@@ -32,37 +33,31 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         [SerializeField] private Transform motherCharacterContainer;
         [SerializeField] private Transform fatherCharacterContainer;
-        [SerializeField] private List<GameObject> characterMutterPrefabs;
-
-        [SerializeField] private List<GameObject> characterVaterPrefabs;
-        // [SerializeField] private GameObject characterMutterPrefab;
-        // [SerializeField] private GameObject characterVaterPrefab;
+        [SerializeField] private GameObject characterMutterPrefab;
+        [SerializeField] private GameObject characterVaterPrefab;
 
         private bool _decoLampeStatus;
 
         private GameObject _instantiatedMotherCharacter;
         private GameObject _instantiatedFatherCharacter;
 
-        public CharacterController characterController;
-        public CharacterController characterController2;
-
         private void Start()
         {
-            SetInitialSpritesForImages();
-            SetInitialCharacters();
+            // SetInitialSpritesForImages();
+            // SetInitialCharacters();
             
-            base.novelCharacterController = motherCharacterContainer.GetComponentInChildren<CharacterController>();
-            // novelCharacterController2 = fatherCharacterContainer.GetComponentInChildren<CharacterController>();
+            novelKite2CharacterController = motherCharacterContainer.GetComponentInChildren<Kite2CharacterController>();
+            novelKite2CharacterController2 = fatherCharacterContainer.GetComponentInChildren<Kite2CharacterController>();
         
-            base.novelCharacterController.SetSkinSprite();
-            base.novelCharacterController.SetHandSprite();
-            base.novelCharacterController.SetClotheSprite();
-            base.novelCharacterController.SetHairSprite();
+            novelKite2CharacterController.SetSkinSprite();
+            novelKite2CharacterController.SetHandSprite();
+            novelKite2CharacterController.SetClotheSprite();
+            novelKite2CharacterController.SetHairSprite();
             
-            // novelCharacterController2.SetSkinSprite();
-            // novelCharacterController2.SetHandSprite();
-            // novelCharacterController2.SetClotheSprite();
-            // novelCharacterController2.SetHairSprite();
+            novelKite2CharacterController2.SetSkinSprite();
+            // novelKite2CharacterController2.SetHandSprite();
+            novelKite2CharacterController2.SetClotheSprite();
+            novelKite2CharacterController2.SetHairSprite();
         
             GameManager.CharacterDataList = new Dictionary<long, CharacterData>
             {
@@ -70,15 +65,15 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     2, // Schlüssel für den Eintrag
                     new CharacterData
                     {
-                        skinIndex = base.novelCharacterController.skinIndex,
-                        handIndex = base.novelCharacterController.handIndex,
-                        clotheIndex = base.novelCharacterController.clotheIndex,
-                        hairIndex = base.novelCharacterController.hairIndex,
+                        skinIndex = novelKite2CharacterController.skinIndex,
+                        handIndex = novelKite2CharacterController.handIndex,
+                        clotheIndex = novelKite2CharacterController.clotheIndex,
+                        hairIndex = novelKite2CharacterController.hairIndex,
                         
-                        // skinIndex2 = novelCharacterController2.skinIndex,
-                        // handIndex2 = novelCharacterController2.handIndex,
-                        // clotheIndex2 = novelCharacterController2.clotheIndex,
-                        // hairIndex2 = novelCharacterController2.hairIndex
+                        skinIndex2 = novelKite2CharacterController2.skinIndex,
+                        // handIndex2 = novelKite2CharacterController2.handIndex,
+                        clotheIndex2 = novelKite2CharacterController2.clotheIndex,
+                        hairIndex2 = novelKite2CharacterController2.hairIndex
                     }
                 }
             };
@@ -125,60 +120,54 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         private void SetInitialCharacters()
         {
-            // if (characterMutterPrefabs.Count <= 0 || characterVaterPrefabs.Count <= 0) return;
-            //
-            // int randomIndexMutter = Random.Range(0, characterMutterPrefabs.Count);
-            // GameObject randomGameObjectMutter = characterMutterPrefabs[randomIndexMutter];
-            //
-            // _instantiatedMotherCharacter = Instantiate(randomGameObjectMutter, motherCharacterContainer, false);
-            // RectTransform rectTransformMutter = _instantiatedMotherCharacter.GetComponent<RectTransform>();
-            // if (rectTransformMutter != null)
-            // {
-            //     rectTransformMutter.anchorMin = new Vector2(0.5f, 0.5f);
-            //     rectTransformMutter.anchorMax = new Vector2(0.5f, 0.5f);
-            //
-            //     rectTransformMutter.pivot = new Vector2(0.5f, 0.5f);
-            //
-            //     rectTransformMutter.anchoredPosition = new Vector2(-315, -597);
-            //
-            //     rectTransformMutter.sizeDelta = new Vector2(1200.339f, 1044);
-            //
-            //     rectTransformMutter.localPosition = new Vector3(-315, -597, 0);
-            //
-            //     rectTransformMutter.localScale = new Vector3(1, 1, 1);
-            //
-            //     rectTransformMutter.localRotation = Quaternion.Euler(0, 0, 0);
-            // }
-
-            int randomIndexVater = Random.Range(0, characterVaterPrefabs.Count);
-            GameObject randomGameObjectVater = characterVaterPrefabs[randomIndexVater];
-
-            _instantiatedFatherCharacter = Instantiate(randomGameObjectVater, fatherCharacterContainer, false);
+            if (characterMutterPrefab == null || characterVaterPrefab == null) return;
+            
+            _instantiatedMotherCharacter = Instantiate(characterMutterPrefab, motherCharacterContainer, false);
+            RectTransform rectTransformMutter = _instantiatedMotherCharacter.GetComponent<RectTransform>();
+            if (rectTransformMutter != null)
+            {
+                rectTransformMutter.anchorMin = new Vector2(0.5f, 0.5f);
+                rectTransformMutter.anchorMax = new Vector2(0.5f, 0.5f);
+            
+                rectTransformMutter.pivot = new Vector2(0.5f, 0.5f);
+            
+                rectTransformMutter.anchoredPosition = new Vector2(-315, -597);
+            
+                rectTransformMutter.sizeDelta = new Vector2(1200.339f, 1044);
+            
+                rectTransformMutter.localPosition = new Vector3(-315, -597, 0);
+            
+                rectTransformMutter.localScale = new Vector3(1, 1, 1);
+            
+                rectTransformMutter.localRotation = Quaternion.Euler(0, 0, 0);
+            }
+            
+            _instantiatedFatherCharacter = Instantiate(characterVaterPrefab, fatherCharacterContainer, false);
             RectTransform rectTransformVater = _instantiatedFatherCharacter.GetComponent<RectTransform>();
-
+            
             if (rectTransformVater != null)
             {
                 rectTransformVater.anchorMin = new Vector2(0.5f, 0.5f);
                 rectTransformVater.anchorMax = new Vector2(0.5f, 0.5f);
-
+            
                 rectTransformVater.pivot = new Vector2(0.5f, 0.5f);
-
+            
                 rectTransformVater.anchoredPosition = new Vector2(204, -610);
-
+            
                 rectTransformVater.sizeDelta = new Vector2(1200.339f, 1044);
-
+            
                 rectTransformVater.localPosition = new Vector3(204, -610, 0);
-
+            
                 rectTransformVater.localScale = new Vector3(1, 1, 1);
-
+            
                 rectTransformVater.localRotation = Quaternion.Euler(0, 0, 0);
             }
         }
 
         public override void SetCharacter()
         {
-            // CharacterController = _instantiatedMotherCharacter.GetComponent<CharacterController>();
-            base.novelCharacterController2 = _instantiatedFatherCharacter.GetComponent<CharacterController>();
+            // novelKite2CharacterController = _instantiatedMotherCharacter.GetComponent<Kite2CharacterController>();
+            // novelKite2CharacterController2 = _instantiatedFatherCharacter.GetComponent<Kite2CharacterController>();
         }
 
         public override void SetBackground()

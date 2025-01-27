@@ -6,8 +6,8 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
     public class NovelImageController : MonoBehaviour
     {
         protected RectTransform CanvasRect;
-        public CharacterController novelCharacterController;
-        public CharacterController novelCharacterController2;
+        public Kite2CharacterController novelKite2CharacterController;
+        public Kite2CharacterController novelKite2CharacterController2;
 
         public void SetCanvasRect(RectTransform canvasRect)
         {
@@ -46,80 +46,80 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             // case CharacterRole.NOTARIN: { return 10; }
             // case CharacterRole.SACHBEARBEITER: { return 11; }
 
-            if (novelCharacterController == null)
+            if (novelKite2CharacterController == null)
             {
             }
             else if (characterId == 0)
             {
-                novelCharacterController.SetFaceExpression(expressionType);
+                novelKite2CharacterController.SetFaceExpression(expressionType);
             }
             else if (characterId == 1)
             {
-                novelCharacterController.SetFaceExpression(expressionType);
+                novelKite2CharacterController.SetFaceExpression(expressionType);
             }
             else if (characterId == 2)
             {
-                novelCharacterController.SetFaceExpression(expressionType);
+                novelKite2CharacterController.SetFaceExpression(expressionType);
             }
             else if (characterId == 3)
             {
-                novelCharacterController.SetFaceExpression(expressionType);
+                novelKite2CharacterController.SetFaceExpression(expressionType);
             }
             else if (characterId == 4)
             {
-                novelCharacterController.SetFaceExpression(expressionType);
+                novelKite2CharacterController.SetFaceExpression(expressionType);
             }
             else if (characterId == 5)
             {
-                novelCharacterController.SetFaceExpression(expressionType);
+                novelKite2CharacterController.SetFaceExpression(expressionType);
             }
             else if (characterId == 6)
             {
-                novelCharacterController.SetFaceExpression(expressionType);
+                novelKite2CharacterController.SetFaceExpression(expressionType);
             }
             else if (characterId == 7)
             {
-                novelCharacterController2.SetFaceExpression(expressionType);
+                novelKite2CharacterController2.SetFaceExpression(expressionType);
             }
             else if (characterId == 8)
             {
-                novelCharacterController.SetFaceExpression(expressionType);
+                novelKite2CharacterController.SetFaceExpression(expressionType);
             }
             else if (characterId == 9)
             {
-                novelCharacterController.SetFaceExpression(expressionType);
+                novelKite2CharacterController.SetFaceExpression(expressionType);
             }
             else if (characterId == 10)
             {
-                novelCharacterController.SetFaceExpression(expressionType);
+                novelKite2CharacterController.SetFaceExpression(expressionType);
             }
             else if (characterId == 11)
             {
-                novelCharacterController.SetFaceExpression(expressionType);
+                novelKite2CharacterController.SetFaceExpression(expressionType);
             }
-            else if (novelCharacterController2 == null)
+            else if (novelKite2CharacterController2 == null)
             {
             }
         }
 
         public virtual void StartCharacterTalking()
         {
-            if (novelCharacterController == null)
+            if (novelKite2CharacterController == null)
             {
                 return;
             }
 
-            novelCharacterController.StartTalking();
+            novelKite2CharacterController.StartTalking();
         }
 
         public virtual void StopCharacterTalking()
         {
-            if (novelCharacterController == null)
+            if (novelKite2CharacterController == null)
             {
                 return;
             }
 
-            novelCharacterController.StopTalking();
+            novelKite2CharacterController.StopTalking();
         }
     }
 }

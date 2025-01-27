@@ -19,8 +19,8 @@ using LeastSquares.Overtone;
 using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
-using CharacterController = _00_Kite2.Common.Novel.Character.CharacterController.CharacterController;
 
 namespace _00_Kite2.Player
 {
@@ -83,7 +83,7 @@ namespace _00_Kite2.Player
 
         [SerializeField] public TypewriterCore currentTypeWriter;
         [SerializeField] public SelectOptionContinueConversation selectOptionContinueConversation;
-        [SerializeField] private CharacterController currentTalkingCharacterController;
+        [FormerlySerializedAs("currentTalkingCharacterController")] [SerializeField] private Kite2CharacterController currentTalkingKite2CharacterController;
 
         [Header("Audio-Komponenten")] [SerializeField]
         private AudioClip[] clips;
@@ -1035,10 +1035,15 @@ namespace _00_Kite2.Player
                                         kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
 
                                     // Setze die Attribute basierend auf den gespeicherten Werten
-                                    elternNovelImageController.characterController.SetSkinSprite(attributes[0]);
-                                    elternNovelImageController.characterController.SetHandSprite(attributes[1]);
-                                    elternNovelImageController.characterController.SetClotheSprite(attributes[2]);
-                                    elternNovelImageController.characterController.SetHairSprite(attributes[3]);
+                                    elternNovelImageController.novelKite2CharacterController.SetSkinSprite(attributes[0]);
+                                    elternNovelImageController.novelKite2CharacterController.SetHandSprite(attributes[1]);
+                                    elternNovelImageController.novelKite2CharacterController.SetClotheSprite(attributes[2]);
+                                    elternNovelImageController.novelKite2CharacterController.SetHairSprite(attributes[3]);
+                                    
+                                    elternNovelImageController.novelKite2CharacterController2.SetSkinSprite(attributes[4]);
+                                    elternNovelImageController.novelKite2CharacterController2.SetHandSprite(attributes[5]);
+                                    elternNovelImageController.novelKite2CharacterController2.SetClotheSprite(attributes[6]);
+                                    elternNovelImageController.novelKite2CharacterController2.SetHairSprite(attributes[7]);
                                 }
                             }
                         }
@@ -1061,10 +1066,10 @@ namespace _00_Kite2.Player
                                         kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
 
                                     // Setze die Attribute basierend auf den gespeicherten Werten
-                                    presseNovelImageController.characterController.SetSkinSprite(attributes[0]);
-                                    presseNovelImageController.characterController.SetHandSprite(attributes[1]);
-                                    presseNovelImageController.characterController.SetClotheSprite(attributes[2]);
-                                    presseNovelImageController.characterController.SetHairSprite(attributes[3]);
+                                    presseNovelImageController.kite2CharacterController.SetSkinSprite(attributes[0]);
+                                    presseNovelImageController.kite2CharacterController.SetHandSprite(attributes[1]);
+                                    presseNovelImageController.kite2CharacterController.SetClotheSprite(attributes[2]);
+                                    presseNovelImageController.kite2CharacterController.SetHairSprite(attributes[3]);
                                 }
                             }
                         }
@@ -1087,10 +1092,10 @@ namespace _00_Kite2.Player
                                         kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
 
                                     // Setze die Attribute basierend auf den gespeicherten Werten
-                                    notarinNovelImageController.characterController.SetSkinSprite(attributes[0]);
-                                    notarinNovelImageController.characterController.SetHandSprite(attributes[1]);
-                                    notarinNovelImageController.characterController.SetClotheSprite(attributes[2]);
-                                    notarinNovelImageController.characterController.SetHairSprite(attributes[3]);
+                                    notarinNovelImageController.kite2CharacterController.SetSkinSprite(attributes[0]);
+                                    notarinNovelImageController.kite2CharacterController.SetHandSprite(attributes[1]);
+                                    notarinNovelImageController.kite2CharacterController.SetClotheSprite(attributes[2]);
+                                    notarinNovelImageController.kite2CharacterController.SetHairSprite(attributes[3]);
                                 }
                             }
                         }
@@ -1115,10 +1120,10 @@ namespace _00_Kite2.Player
                                         kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
 
                                     // Setze die Attribute basierend auf den gespeicherten Werten
-                                    bueroNovelImageController.characterController.SetSkinSprite(attributes[0]);
-                                    bueroNovelImageController.characterController.SetHandSprite(attributes[1]);
-                                    bueroNovelImageController.characterController.SetClotheSprite(attributes[2]);
-                                    bueroNovelImageController.characterController.SetHairSprite(attributes[3]);
+                                    bueroNovelImageController.kite2CharacterController.SetSkinSprite(attributes[0]);
+                                    bueroNovelImageController.kite2CharacterController.SetHandSprite(attributes[1]);
+                                    bueroNovelImageController.kite2CharacterController.SetClotheSprite(attributes[2]);
+                                    bueroNovelImageController.kite2CharacterController.SetHairSprite(attributes[3]);
                                 }
                             }
                         }
@@ -1145,10 +1150,10 @@ namespace _00_Kite2.Player
                                         kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
 
                                     // Setze die Attribute basierend auf den gespeicherten Werten
-                                    bekannterNovelImageController.characterController.SetSkinSprite(attributes[0]);
-                                    bekannterNovelImageController.characterController.SetHandSprite(attributes[1]);
-                                    bekannterNovelImageController.characterController.SetClotheSprite(attributes[2]);
-                                    bekannterNovelImageController.characterController.SetHairSprite(attributes[3]);
+                                    bekannterNovelImageController.kite2CharacterController.SetSkinSprite(attributes[0]);
+                                    bekannterNovelImageController.kite2CharacterController.SetHandSprite(attributes[1]);
+                                    bekannterNovelImageController.kite2CharacterController.SetClotheSprite(attributes[2]);
+                                    bekannterNovelImageController.kite2CharacterController.SetHairSprite(attributes[3]);
                                 }
                             }
                         }
@@ -1170,16 +1175,11 @@ namespace _00_Kite2.Player
                                     int[] attributes =
                                         kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
 
-                                    foreach (var attribute in attributes)
-                                    {
-                                        Debug.Log(attribute);
-                                    }
-
                                     // Setze die Attribute basierend auf den gespeicherten Werten
-                                    bankNovelImageController.novelCharacterController.SetSkinSprite(attributes[0]);
-                                    bankNovelImageController.novelCharacterController.SetHandSprite(attributes[1]);
-                                    bankNovelImageController.novelCharacterController.SetClotheSprite(attributes[2]);
-                                    bankNovelImageController.novelCharacterController.SetHairSprite(attributes[3]);
+                                    bankNovelImageController.novelKite2CharacterController.SetSkinSprite(attributes[0]);
+                                    bankNovelImageController.novelKite2CharacterController.SetHandSprite(attributes[1]);
+                                    bankNovelImageController.novelKite2CharacterController.SetClotheSprite(attributes[2]);
+                                    bankNovelImageController.novelKite2CharacterController.SetHairSprite(attributes[3]);
                                 }
                             }
                         }
@@ -1202,10 +1202,10 @@ namespace _00_Kite2.Player
                                         kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
 
                                     // Setze die Attribute basierend auf den gespeicherten Werten
-                                    verhandlungNovelImageController.characterController.SetSkinSprite(attributes[0]);
-                                    verhandlungNovelImageController.characterController.SetHandSprite(attributes[1]);
-                                    verhandlungNovelImageController.characterController.SetClotheSprite(attributes[2]);
-                                    verhandlungNovelImageController.characterController.SetHairSprite(attributes[3]);
+                                    verhandlungNovelImageController.kite2CharacterController.SetSkinSprite(attributes[0]);
+                                    verhandlungNovelImageController.kite2CharacterController.SetHandSprite(attributes[1]);
+                                    verhandlungNovelImageController.kite2CharacterController.SetClotheSprite(attributes[2]);
+                                    verhandlungNovelImageController.kite2CharacterController.SetHairSprite(attributes[3]);
                                 }
                             }
                         }
@@ -1230,10 +1230,10 @@ namespace _00_Kite2.Player
                                         kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
 
                                     // Setze die Attribute basierend auf den gespeicherten Werten
-                                    introNovelImageController.characterController.SetSkinSprite(attributes[0]);
-                                    introNovelImageController.characterController.SetHandSprite(attributes[1]);
-                                    introNovelImageController.characterController.SetClotheSprite(attributes[2]);
-                                    introNovelImageController.characterController.SetHairSprite(attributes[3]);
+                                    introNovelImageController.kite2CharacterController.SetSkinSprite(attributes[0]);
+                                    introNovelImageController.kite2CharacterController.SetHandSprite(attributes[1]);
+                                    introNovelImageController.kite2CharacterController.SetClotheSprite(attributes[2]);
+                                    introNovelImageController.kite2CharacterController.SetHairSprite(attributes[3]);
                                 }
                             }
                         }

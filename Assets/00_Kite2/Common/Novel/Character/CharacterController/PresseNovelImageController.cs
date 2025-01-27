@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace _00_Kite2.Common.Novel.Character.CharacterController
@@ -21,16 +22,16 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         private GameObject _instantiatedCharacter;
 
-        public CharacterController characterController;
+        [FormerlySerializedAs("characterController")] public Kite2CharacterController kite2CharacterController;
 
         private void Start()
         {
-            base.novelCharacterController = characterContainer.GetComponentInChildren<CharacterController>();
+            base.novelKite2CharacterController = characterContainer.GetComponentInChildren<Kite2CharacterController>();
         
-            base.novelCharacterController.SetSkinSprite();
-            base.novelCharacterController.SetHandSprite();
-            base.novelCharacterController.SetClotheSprite();
-            base.novelCharacterController.SetHairSprite();
+            base.novelKite2CharacterController.SetSkinSprite();
+            base.novelKite2CharacterController.SetHandSprite();
+            base.novelKite2CharacterController.SetClotheSprite();
+            base.novelKite2CharacterController.SetHairSprite();
         
             GameManager.CharacterDataList = new Dictionary<long, CharacterData>
             {
@@ -38,10 +39,10 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     3, // Schlüssel für den Eintrag
                     new CharacterData
                     {
-                        skinIndex = base.novelCharacterController.skinIndex,
-                        handIndex = base.novelCharacterController.handIndex,
-                        clotheIndex = base.novelCharacterController.clotheIndex,
-                        hairIndex = base.novelCharacterController.hairIndex
+                        skinIndex = base.novelKite2CharacterController.skinIndex,
+                        handIndex = base.novelKite2CharacterController.handIndex,
+                        clotheIndex = base.novelKite2CharacterController.clotheIndex,
+                        hairIndex = base.novelKite2CharacterController.hairIndex
                     }
                 }
             };
@@ -95,7 +96,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         public override void SetCharacter()
         {
-            // CharacterController = _instantiatedCharacter.GetComponent<CharacterController>();
+            // Kite2CharacterController = _instantiatedCharacter.GetComponent<Kite2CharacterController>();
         }
 
         public override bool HandleTouchEvent(float x, float y)
