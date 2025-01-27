@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using _00_Kite2.Common.Managers;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace _00_Kite2.Common.Novel.Character.CharacterController
@@ -43,26 +44,26 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         private GameObject _instantiatedMotherCharacter;
         private GameObject _instantiatedFatherCharacter;
 
-        public CharacterController characterController;
-        public CharacterController characterController2;
+        [FormerlySerializedAs("characterController")] public Kite2CharacterController kite2CharacterController;
+        [FormerlySerializedAs("characterController2")] public Kite2CharacterController kite2CharacterController2;
 
         private void Start()
         {
             SetInitialSpritesForImages();
             SetInitialCharacters();
             
-            base.novelCharacterController = motherCharacterContainer.GetComponentInChildren<CharacterController>();
-            // novelCharacterController2 = fatherCharacterContainer.GetComponentInChildren<CharacterController>();
+            base.novelKite2CharacterController = motherCharacterContainer.GetComponentInChildren<Kite2CharacterController>();
+            // novelKite2CharacterController2 = fatherCharacterContainer.GetComponentInChildren<Kite2CharacterController>();
         
-            base.novelCharacterController.SetSkinSprite();
-            base.novelCharacterController.SetHandSprite();
-            base.novelCharacterController.SetClotheSprite();
-            base.novelCharacterController.SetHairSprite();
+            base.novelKite2CharacterController.SetSkinSprite();
+            base.novelKite2CharacterController.SetHandSprite();
+            base.novelKite2CharacterController.SetClotheSprite();
+            base.novelKite2CharacterController.SetHairSprite();
             
-            // novelCharacterController2.SetSkinSprite();
-            // novelCharacterController2.SetHandSprite();
-            // novelCharacterController2.SetClotheSprite();
-            // novelCharacterController2.SetHairSprite();
+            // novelKite2CharacterController2.SetSkinSprite();
+            // novelKite2CharacterController2.SetHandSprite();
+            // novelKite2CharacterController2.SetClotheSprite();
+            // novelKite2CharacterController2.SetHairSprite();
         
             GameManager.CharacterDataList = new Dictionary<long, CharacterData>
             {
@@ -70,15 +71,15 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     2, // Schlüssel für den Eintrag
                     new CharacterData
                     {
-                        skinIndex = base.novelCharacterController.skinIndex,
-                        handIndex = base.novelCharacterController.handIndex,
-                        clotheIndex = base.novelCharacterController.clotheIndex,
-                        hairIndex = base.novelCharacterController.hairIndex,
+                        skinIndex = base.novelKite2CharacterController.skinIndex,
+                        handIndex = base.novelKite2CharacterController.handIndex,
+                        clotheIndex = base.novelKite2CharacterController.clotheIndex,
+                        hairIndex = base.novelKite2CharacterController.hairIndex,
                         
-                        // skinIndex2 = novelCharacterController2.skinIndex,
-                        // handIndex2 = novelCharacterController2.handIndex,
-                        // clotheIndex2 = novelCharacterController2.clotheIndex,
-                        // hairIndex2 = novelCharacterController2.hairIndex
+                        // skinIndex2 = novelKite2CharacterController2.skinIndex,
+                        // handIndex2 = novelKite2CharacterController2.handIndex,
+                        // clotheIndex2 = novelKite2CharacterController2.clotheIndex,
+                        // hairIndex2 = novelKite2CharacterController2.hairIndex
                     }
                 }
             };
@@ -177,8 +178,8 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         public override void SetCharacter()
         {
-            // CharacterController = _instantiatedMotherCharacter.GetComponent<CharacterController>();
-            base.novelCharacterController2 = _instantiatedFatherCharacter.GetComponent<CharacterController>();
+            // Kite2CharacterController = _instantiatedMotherCharacter.GetComponent<Kite2CharacterController>();
+            base.novelKite2CharacterController2 = _instantiatedFatherCharacter.GetComponent<Kite2CharacterController>();
         }
 
         public override void SetBackground()

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace _00_Kite2.Common.Novel.Character.CharacterController
 {
-    public class CharacterController : MonoBehaviour
+    public class Kite2CharacterController : MonoBehaviour
     {
         [SerializeField] private Image skinImage;
         [SerializeField] private Image handImage;
