@@ -1,8 +1,26 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace _00_Kite2.Common.Novel.Character.CharacterController
 {
+    [Serializable] // Ermöglicht Anzeige im Inspector
+    public class HandSprites
+    {
+        public Sprite[] handColorA; // z.B. "a", "b", "c"
+        public Sprite[] handColorB; // z.B. "a", "b", "c"
+        public Sprite[] handColorC; // z.B. "a", "b", "c"
+        public Sprite[] handColorD; // z.B. "a", "b", "c"
+    }
+    
+    [Serializable]
+    public class HandSpriteIndex
+    {
+        public int colorIndex;  // z.B. 0 für "A", 1 für "B"
+        public int spriteIndex; // Der spezifische Index im Hand-Sprite-Array (z.B. handColorA[0])
+    }
+    
     public class Kite2CharacterController : MonoBehaviour
     {
         [SerializeField] private Image skinImage;
@@ -13,8 +31,8 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         [SerializeField] private Image faceImage;
 
         [SerializeField] private Sprite[] skinSprites;
-        [SerializeField] private Sprite[] glassSprites;
-        [SerializeField] private Sprite[] handSprites;
+        [SerializeField] private Sprite[] glassesSprites;
+        [SerializeField] private HandSprites handSprites;
         [SerializeField] private Sprite[] clotheSprites;
         [SerializeField] private Sprite[] hairSprites;
         [SerializeField] private Animator animator;
@@ -23,18 +41,15 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         public int skinIndex;
         public int glassIndex;
-        public int handIndex;
+        public int[] handIndex;
         public int clotheIndex;
         public int hairIndex;
         
-        public void SetSkinSprite( /*int skinSpriteIndex*/)
+        public void SetSkinSprite()
         {
-            // if ((skinSprites.Length > skinSpriteIndex) && (skinSpriteIndex >= 0))
-            // {
-            //     skinImage.sprite = skinSprites[skinSpriteIndex];
-            // }
-
             if (skinSprites == null) return;
+            
+            handIndex = new int[2];
         
             skinIndex = Random.Range(0, skinSprites.Length);
             Sprite randomSkinImage = skinSprites[skinIndex];
@@ -43,84 +58,84 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
             if (randomSkinImage.name.Contains("a"))
             {
-                handIndex = 0;
+                handIndex[0] = 0;
             }
             else if (randomSkinImage.name.Contains("b"))
             {
-                handIndex = 1;
+                handIndex[0] = 1;
             }
             else if (randomSkinImage.name.Contains("c"))
             {
-                handIndex = 2;
+                handIndex[0] = 2;
             }
             else if (randomSkinImage.name.Contains("d"))
             {
-                handIndex = 3;
+                handIndex[0] = 3;
             }
         }
         
-        public void SetGlassesSprite( /*int glassesSpriteIndex*/)
+        public void SetGlassesSprite()
         {
-            // if ((skinSprites.Length > glassesSpriteIndex) && (glassesSpriteIndex >= 0))
-            // {
-            //     skinImage.sprite = skinSprites[glassesSpriteIndex];
-            // }
+            if (glassesSprites == null) return;
 
-            if (glassSprites == null) return;
+            glassIndex = Random.Range(0, glassesSprites.Length);
+            Sprite randomGlassImage = glassesSprites[glassIndex];
 
-            Sprite randomGlassImage = handSprites[glassIndex];
-
-            handImage.sprite = randomGlassImage;
+            glassImage.sprite = randomGlassImage;
         }
         
-        public void SetHandSprite( /*int handSpriteIndex*/)
+        public void SetHandSprite()
         {
-            // if ((skinSprites.Length > handSpriteIndex) && (handSpriteIndex >= 0))
-            // {
-            //     skinImage.sprite = skinSprites[handSpriteIndex];
-            // }
-
             if (handSprites == null) return;
 
-            Sprite randomHandImage = handSprites[handIndex];
-
-            handImage.sprite = randomHandImage;
+            if (handIndex[0] == 0)
+            {
+                int randomIndex = Random.Range(0, handSprites.handColorA.Length);
+                handImage.sprite = handSprites.handColorA[randomIndex];
+                
+                handIndex[1] = randomIndex;
+            }
+            else if (handIndex[0] == 1)
+            {
+                int randomIndex = Random.Range(0, handSprites.handColorB.Length);
+                handImage.sprite = handSprites.handColorB[randomIndex];
+                
+                handIndex[1] = randomIndex;
+            }
+            else if (handIndex[0] == 2)
+            {
+                int randomIndex = Random.Range(0, handSprites.handColorC.Length);
+                handImage.sprite = handSprites.handColorC[randomIndex];
+                
+                handIndex[1] = randomIndex;
+            }
+            else if (handIndex[0] == 3)
+            {
+                int randomIndex = Random.Range(0, handSprites.handColorD.Length);
+                handImage.sprite = handSprites.handColorD[randomIndex];
+                
+                handIndex[1] = randomIndex;
+            }
         }
 
-        public void SetClotheSprite( /*int clotheSpriteIndex*/)
+        public void SetClotheSprite()
         {
-            // if ((clotheSprites.Length > clotheSpriteIndex) && (clotheSpriteIndex >= 0))
-            // {
-            //     clotheImage.sprite = clotheSprites[clotheSpriteIndex];
-            // }
-            
-
             if (clotheSprites == null) return;
 
             clotheIndex = Random.Range(0, clotheSprites.Length);
-            
-            Debug.Log("clotheIndex: " + clotheIndex);
-            
-            Debug.Log("SetClotheSprite: " + clotheSprites[clotheIndex]);
-            
-            Sprite randomSkinImage = clotheSprites[clotheIndex];
+            Sprite randomClotheImage = clotheSprites[clotheIndex];
 
-            clotheImage.sprite = randomSkinImage;
+            clotheImage.sprite = randomClotheImage;
         }
 
-        public void SetHairSprite( /*int hairSpriteIndex*/)
+        public void SetHairSprite()
         {
-            // if ((hairSprites.Length > hairSpriteIndex) && (hairSpriteIndex >= 0))
-            // {
-            //     hairImage.sprite = hairSprites[hairSpriteIndex];
-            // }
-
             if (hairSprites == null) return;
 
             hairIndex = Random.Range(0, hairSprites.Length);
-            Sprite randomSkinImage = hairSprites[hairIndex];
+            Sprite randomHairImage = hairSprites[hairIndex];
 
-            hairImage.sprite = randomSkinImage;
+            hairImage.sprite = randomHairImage;
         }
         
         public void SetSkinSprite(int skinSpriteIndex)
@@ -130,11 +145,33 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             skinImage.sprite = skinSprites[skinSpriteIndex];
         }
         
-        public void SetHandSprite(int handSpriteIndex)
+        public void SetGlassesSprite(int glassesSpriteIndex)
+        {
+            if (glassesSprites == null) return;
+        
+            glassImage.sprite = glassesSprites[glassesSpriteIndex];
+        }
+        
+        public void SetHandSprite(HandSpriteIndex handSpriteIndex)
         {
             if (handSprites == null) return;
-
-            handImage.sprite = handSprites[handSpriteIndex];
+            
+            if (handSpriteIndex.colorIndex == 0)
+            {
+                handImage.sprite = handSprites.handColorA[handSpriteIndex.spriteIndex];
+            }
+            else if (handSpriteIndex.colorIndex == 1)
+            {
+                handImage.sprite = handSprites.handColorB[handSpriteIndex.spriteIndex];
+            }
+            else if (handSpriteIndex.colorIndex == 2)
+            {
+                handImage.sprite = handSprites.handColorC[handSpriteIndex.spriteIndex];
+            }
+            else if (handSpriteIndex.colorIndex == 3)
+            {
+                handImage.sprite = handSprites.handColorD[handSpriteIndex.spriteIndex];
+            }
         }
 
         public void SetClotheSprite(int clotheSpriteIndex)

@@ -39,7 +39,7 @@ namespace _00_Kite2.Common.UI.UI_Elements.Messages
         private ConversationContentGuiController
             _conversationContentGuiController; // Reference to the PlayNovelSceneController to manage novel actions
 
-        private PlayNovelSceneController
+        private static PlayNovelSceneController
             _playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
 
         [SerializeField] private GameObject messageBox;
@@ -104,6 +104,9 @@ namespace _00_Kite2.Common.UI.UI_Elements.Messages
 
         private void OnCancelButton()
         {
+            // Lösche den zugehörigen Speicherstand
+            SaveLoadManager.DeleteNovelSaveData(_playNovelSceneController.NovelToPlay.id.ToString());
+            
             LeaveNovel();
         }
 

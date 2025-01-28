@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinImage: {fileID: 6553579731152782210}
-  glassImage: {fileID: 0}
+  glassImage: {fileID: 1002170370448650271}
   handImage: {fileID: 1553583922394988508}
   clotheImage: {fileID: 2735791881534372737}
   hairImage: {fileID: 3816683545305009484}
@@ -249,7 +249,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f0cd2a41e164db74fb5801502b18f8eb, type: 3}
   - {fileID: 21300000, guid: df333ac9d5c83b444bf27c2070c934e8, type: 3}
   - {fileID: 21300000, guid: b2e298bcabca56342b5b9cf26725d87f, type: 3}
-  glassSprites:
+  glassesSprites:
   - {fileID: 21300000, guid: 5764f22cf80f5564183b58d58d5a8feb, type: 3}
   handSprites: []
   clotheSprites:
