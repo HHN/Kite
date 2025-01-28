@@ -133,6 +133,7 @@ namespace _00_Kite2.Player
                 Debug.LogError("Die Button-Container-Liste ist nicht zugewiesen oder leer.");
             }
             StartCoroutine(TextToSpeechManager.Instance.Speak(" "));
+            GlobalVolumeManager.Instance.StopSound();
         }
 
         private void OnInputValueChanged(string input)
