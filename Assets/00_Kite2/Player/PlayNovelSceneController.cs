@@ -15,7 +15,7 @@ using _00_Kite2.Common.UI.UI_Elements.Messages;
 using _00_Kite2.Common.Utilities;
 using _00_Kite2.SaveNovelData;
 using _00_Kite2.Server_Communication.Server_Calls;
-using LeastSquares.Overtone;
+//using LeastSquares.Overtone;
 using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using TMPro;
 using UnityEngine;

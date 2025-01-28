@@ -5,7 +5,7 @@ using _00_Kite2.Common.SceneManagement;
 using _00_Kite2.Common.UI.UI_Elements.Buttons;
 using _00_Kite2.Common.Utilities;
 using _00_Kite2.Player;
-using LeastSquares.Overtone;
+//using LeastSquares.Overtone;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,7 +26,7 @@ namespace _00_Kite2.NewPages
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private RectTransform layout;
         [SerializeField] private RectTransform layout02;
-        [SerializeField] private TTSEngine engine;
+        //[SerializeField] private TTSEngine engine;
         [SerializeField] private DeleteUserDataConfirmation deleteUserDataConfirmDialogObject;
         [SerializeField] private GameObject deleteUserDataConfirmDialog;
 

@@ -3,7 +3,7 @@ using _00_Kite2.Common.Messages;
 using _00_Kite2.Common.Utilities;
 using _00_Kite2.Player;
 using _00_Kite2.SaveNovelData;
-using LeastSquares.Overtone;
+//using LeastSquares.Overtone;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -13,7 +13,7 @@ namespace _00_Kite2.Common.UI.UI_Elements.Buttons
 {
     public class DeleteUserDataConfirmation : MonoBehaviour
     {
-        [SerializeField] private TTSEngine engine;
+        //[SerializeField] private TTSEngine engine;
         [SerializeField] private Button cancelButton;
         [SerializeField] private Button confirmButton;
         [SerializeField] private GameObject background;

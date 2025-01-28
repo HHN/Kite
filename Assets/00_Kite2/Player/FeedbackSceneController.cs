@@ -11,7 +11,7 @@ using _00_Kite2.OfflineAiFeedback;
 using _00_Kite2.SaveNovelData;
 using _00_Kite2.Server_Communication;
 using _00_Kite2.Server_Communication.Server_Calls;
-using LeastSquares.Overtone;
+//using LeastSquares.Overtone;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -37,7 +37,7 @@ namespace _00_Kite2.Player
         [SerializeField] private GameObject finishButtonBottomContainer;
         [SerializeField] private GameObject copyButtonContainer;
         [SerializeField] private GameObject copyNotificationContainer;
-        [SerializeField] private TTSEngine engine;
+        //[SerializeField] private TTSEngine engine;
         [SerializeField] private GameObject loadingAnimation;
 
         private void Start()
