@@ -132,6 +132,7 @@ namespace _00_Kite2.Player
             {
                 Debug.LogError("Die Button-Container-Liste ist nicht zugewiesen oder leer.");
             }
+            StartCoroutine(TextToSpeechManager.Instance.Speak(" "));
         }
 
         private void OnInputValueChanged(string input)
