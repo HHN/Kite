@@ -83,7 +83,9 @@ namespace _00_Kite2.Player
 
         [SerializeField] public TypewriterCore currentTypeWriter;
         [SerializeField] public SelectOptionContinueConversation selectOptionContinueConversation;
-        [FormerlySerializedAs("currentTalkingCharacterController")] [SerializeField] private Kite2CharacterController currentTalkingKite2CharacterController;
+
+        [FormerlySerializedAs("currentTalkingCharacterController")] [SerializeField]
+        private Kite2CharacterController currentTalkingKite2CharacterController;
 
         [Header("Audio-Komponenten")] [SerializeField]
         private AudioClip[] clips;
@@ -1022,30 +1024,21 @@ namespace _00_Kite2.Player
                 case 2:
                     ElternNovelImageController elternNovelImageController =
                         FindObjectsOfType<ElternNovelImageController>().FirstOrDefault();
-
-                    if (elternNovelImageController != null)
+                    
+                    if (elternNovelImageController != null && savedData.CharacterPrefabData != null)
                     {
-                        if (savedData.CharacterPrefabData != null)
+                        if (savedData.CharacterPrefabData.TryGetValue(searchId, out CharacterData characterData))
                         {
-                            foreach (var kvp in savedData.CharacterPrefabData)
-                            {
-                                if (kvp.Key == searchId)
-                                {
-                                    int[] attributes =
-                                        kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
-
-                                    // Setze die Attribute basierend auf den gespeicherten Werten
-                                    elternNovelImageController.novelKite2CharacterController.SetSkinSprite(attributes[0]);
-                                    elternNovelImageController.novelKite2CharacterController.SetHandSprite(attributes[1]);
-                                    elternNovelImageController.novelKite2CharacterController.SetClotheSprite(attributes[2]);
-                                    elternNovelImageController.novelKite2CharacterController.SetHairSprite(attributes[3]);
-                                    
-                                    elternNovelImageController.novelKite2CharacterController2.SetSkinSprite(attributes[4]);
-                                    elternNovelImageController.novelKite2CharacterController2.SetHandSprite(attributes[5]);
-                                    elternNovelImageController.novelKite2CharacterController2.SetClotheSprite(attributes[6]);
-                                    elternNovelImageController.novelKite2CharacterController2.SetHairSprite(attributes[7]);
-                                }
-                            }
+                            // Setze die Attribute basierend auf den gespeicherten Werten
+                            elternNovelImageController.novelKite2CharacterController.SetSkinSprite(characterData.skinIndex);
+                            elternNovelImageController.novelKite2CharacterController.SetHandSprite(characterData.handIndex);
+                            elternNovelImageController.novelKite2CharacterController.SetClotheSprite(characterData.clotheIndex);
+                            elternNovelImageController.novelKite2CharacterController.SetHairSprite(characterData.hairIndex);
+                
+                            elternNovelImageController.novelKite2CharacterController2.SetSkinSprite(characterData.skinIndex2);
+                            elternNovelImageController.novelKite2CharacterController2.SetGlassesSprite(characterData.glassIndex2);
+                            elternNovelImageController.novelKite2CharacterController2.SetClotheSprite(characterData.clotheIndex2);
+                            elternNovelImageController.novelKite2CharacterController2.SetHairSprite(characterData.hairIndex2);
                         }
                     }
 
@@ -1053,25 +1046,16 @@ namespace _00_Kite2.Player
                 case 3:
                     PresseNovelImageController presseNovelImageController =
                         FindObjectsOfType<PresseNovelImageController>().FirstOrDefault();
-
-                    if (presseNovelImageController != null)
+                    
+                    if (presseNovelImageController != null && savedData.CharacterPrefabData != null)
                     {
-                        if (savedData.CharacterPrefabData != null)
+                        if (savedData.CharacterPrefabData.TryGetValue(searchId, out CharacterData characterData))
                         {
-                            foreach (var kvp in savedData.CharacterPrefabData)
-                            {
-                                if (kvp.Key == searchId)
-                                {
-                                    int[] attributes =
-                                        kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
-
-                                    // Setze die Attribute basierend auf den gespeicherten Werten
-                                    presseNovelImageController.kite2CharacterController.SetSkinSprite(attributes[0]);
-                                    presseNovelImageController.kite2CharacterController.SetHandSprite(attributes[1]);
-                                    presseNovelImageController.kite2CharacterController.SetClotheSprite(attributes[2]);
-                                    presseNovelImageController.kite2CharacterController.SetHairSprite(attributes[3]);
-                                }
-                            }
+                            // Setze die Attribute basierend auf den gespeicherten Werten
+                            presseNovelImageController.kite2CharacterController.SetSkinSprite(characterData.skinIndex);
+                            presseNovelImageController.kite2CharacterController.SetHandSprite(characterData.handIndex);
+                            presseNovelImageController.kite2CharacterController.SetClotheSprite(characterData.clotheIndex);
+                            presseNovelImageController.kite2CharacterController.SetHairSprite(characterData.hairIndex);
                         }
                     }
 
@@ -1080,24 +1064,15 @@ namespace _00_Kite2.Player
                     NotarinNovelImageController notarinNovelImageController =
                         FindObjectsOfType<NotarinNovelImageController>().FirstOrDefault();
 
-                    if (notarinNovelImageController != null)
+                    if (notarinNovelImageController != null && savedData.CharacterPrefabData != null)
                     {
-                        if (savedData.CharacterPrefabData != null)
+                        if (savedData.CharacterPrefabData.TryGetValue(searchId, out CharacterData characterData))
                         {
-                            foreach (var kvp in savedData.CharacterPrefabData)
-                            {
-                                if (kvp.Key == searchId)
-                                {
-                                    int[] attributes =
-                                        kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
-
-                                    // Setze die Attribute basierend auf den gespeicherten Werten
-                                    notarinNovelImageController.kite2CharacterController.SetSkinSprite(attributes[0]);
-                                    notarinNovelImageController.kite2CharacterController.SetHandSprite(attributes[1]);
-                                    notarinNovelImageController.kite2CharacterController.SetClotheSprite(attributes[2]);
-                                    notarinNovelImageController.kite2CharacterController.SetHairSprite(attributes[3]);
-                                }
-                            }
+                            // Setze die Attribute basierend auf den gespeicherten Werten
+                            notarinNovelImageController.kite2CharacterController.SetSkinSprite(characterData.skinIndex);
+                            notarinNovelImageController.kite2CharacterController.SetHandSprite(characterData.handIndex);
+                            notarinNovelImageController.kite2CharacterController.SetClotheSprite(characterData.clotheIndex);
+                            notarinNovelImageController.kite2CharacterController.SetHairSprite(characterData.hairIndex);
                         }
                     }
 
@@ -1108,24 +1083,15 @@ namespace _00_Kite2.Player
                     BueroNovelImageController bueroNovelImageController =
                         FindObjectsOfType<BueroNovelImageController>().FirstOrDefault();
 
-                    if (bueroNovelImageController != null)
+                    if (bueroNovelImageController != null && savedData.CharacterPrefabData != null)
                     {
-                        if (savedData.CharacterPrefabData != null)
+                        if (savedData.CharacterPrefabData.TryGetValue(searchId, out CharacterData characterData))
                         {
-                            foreach (var kvp in savedData.CharacterPrefabData)
-                            {
-                                if (kvp.Key == searchId)
-                                {
-                                    int[] attributes =
-                                        kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
-
-                                    // Setze die Attribute basierend auf den gespeicherten Werten
-                                    bueroNovelImageController.kite2CharacterController.SetSkinSprite(attributes[0]);
-                                    bueroNovelImageController.kite2CharacterController.SetHandSprite(attributes[1]);
-                                    bueroNovelImageController.kite2CharacterController.SetClotheSprite(attributes[2]);
-                                    bueroNovelImageController.kite2CharacterController.SetHairSprite(attributes[3]);
-                                }
-                            }
+                            // Setze die Attribute basierend auf den gespeicherten Werten
+                            bueroNovelImageController.kite2CharacterController.SetSkinSprite(characterData.skinIndex);
+                            bueroNovelImageController.kite2CharacterController.SetHandSprite(characterData.handIndex);
+                            bueroNovelImageController.kite2CharacterController.SetClotheSprite(characterData.clotheIndex);
+                            bueroNovelImageController.kite2CharacterController.SetHairSprite(characterData.hairIndex);
                         }
                     }
 
@@ -1138,24 +1104,15 @@ namespace _00_Kite2.Player
                     BekannterNovelImageController bekannterNovelImageController =
                         FindObjectsOfType<BekannterNovelImageController>().FirstOrDefault();
 
-                    if (bekannterNovelImageController != null)
+                    if (bekannterNovelImageController != null && savedData.CharacterPrefabData != null)
                     {
-                        if (savedData.CharacterPrefabData != null)
+                        if (savedData.CharacterPrefabData.TryGetValue(searchId, out CharacterData characterData))
                         {
-                            foreach (var kvp in savedData.CharacterPrefabData)
-                            {
-                                if (kvp.Key == searchId)
-                                {
-                                    int[] attributes =
-                                        kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
-
-                                    // Setze die Attribute basierend auf den gespeicherten Werten
-                                    bekannterNovelImageController.kite2CharacterController.SetSkinSprite(attributes[0]);
-                                    bekannterNovelImageController.kite2CharacterController.SetHandSprite(attributes[1]);
-                                    bekannterNovelImageController.kite2CharacterController.SetClotheSprite(attributes[2]);
-                                    bekannterNovelImageController.kite2CharacterController.SetHairSprite(attributes[3]);
-                                }
-                            }
+                            // Setze die Attribute basierend auf den gespeicherten Werten
+                            bekannterNovelImageController.kite2CharacterController.SetSkinSprite(characterData.skinIndex);
+                            bekannterNovelImageController.kite2CharacterController.SetHandSprite(characterData.handIndex);
+                            bekannterNovelImageController.kite2CharacterController.SetClotheSprite(characterData.clotheIndex);
+                            bekannterNovelImageController.kite2CharacterController.SetHairSprite(characterData.hairIndex);
                         }
                     }
 
@@ -1164,24 +1121,15 @@ namespace _00_Kite2.Player
                     BankNovelImageController bankNovelImageController =
                         FindObjectsOfType<BankNovelImageController>().FirstOrDefault();
 
-                    if (bankNovelImageController != null)
+                    if (bankNovelImageController != null && savedData.CharacterPrefabData != null)
                     {
-                        if (savedData.CharacterPrefabData != null)
+                        if (savedData.CharacterPrefabData.TryGetValue(searchId, out CharacterData characterData))
                         {
-                            foreach (var kvp in savedData.CharacterPrefabData)
-                            {
-                                if (kvp.Key == searchId)
-                                {
-                                    int[] attributes =
-                                        kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
-
-                                    // Setze die Attribute basierend auf den gespeicherten Werten
-                                    bankNovelImageController.novelKite2CharacterController.SetSkinSprite(attributes[0]);
-                                    bankNovelImageController.novelKite2CharacterController.SetHandSprite(attributes[1]);
-                                    bankNovelImageController.novelKite2CharacterController.SetClotheSprite(attributes[2]);
-                                    bankNovelImageController.novelKite2CharacterController.SetHairSprite(attributes[3]);
-                                }
-                            }
+                            // Setze die Attribute basierend auf den gespeicherten Werten
+                            bankNovelImageController.novelKite2CharacterController.SetSkinSprite(characterData.skinIndex);
+                            bankNovelImageController.novelKite2CharacterController.SetHandSprite(characterData.handIndex);
+                            bankNovelImageController.novelKite2CharacterController.SetClotheSprite(characterData.clotheIndex);
+                            bankNovelImageController.novelKite2CharacterController.SetHairSprite(characterData.hairIndex);
                         }
                     }
 
@@ -1190,24 +1138,15 @@ namespace _00_Kite2.Player
                     VerhandlungNovelImageController verhandlungNovelImageController =
                         FindObjectsOfType<VerhandlungNovelImageController>().FirstOrDefault();
 
-                    if (verhandlungNovelImageController != null)
+                    if (verhandlungNovelImageController != null && savedData.CharacterPrefabData != null)
                     {
-                        if (savedData.CharacterPrefabData != null)
+                        if (savedData.CharacterPrefabData.TryGetValue(searchId, out CharacterData characterData))
                         {
-                            foreach (var kvp in savedData.CharacterPrefabData)
-                            {
-                                if (kvp.Key == searchId)
-                                {
-                                    int[] attributes =
-                                        kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
-
-                                    // Setze die Attribute basierend auf den gespeicherten Werten
-                                    verhandlungNovelImageController.kite2CharacterController.SetSkinSprite(attributes[0]);
-                                    verhandlungNovelImageController.kite2CharacterController.SetHandSprite(attributes[1]);
-                                    verhandlungNovelImageController.kite2CharacterController.SetClotheSprite(attributes[2]);
-                                    verhandlungNovelImageController.kite2CharacterController.SetHairSprite(attributes[3]);
-                                }
-                            }
+                            // Setze die Attribute basierend auf den gespeicherten Werten
+                            verhandlungNovelImageController.kite2CharacterController.SetSkinSprite(characterData.skinIndex);
+                            verhandlungNovelImageController.kite2CharacterController.SetHandSprite(characterData.handIndex);
+                            verhandlungNovelImageController.kite2CharacterController.SetClotheSprite(characterData.clotheIndex);
+                            verhandlungNovelImageController.kite2CharacterController.SetHairSprite(characterData.hairIndex);
                         }
                     }
 
@@ -1218,24 +1157,15 @@ namespace _00_Kite2.Player
                     IntroNovelImageController introNovelImageController =
                         FindObjectsOfType<IntroNovelImageController>().FirstOrDefault();
 
-                    if (introNovelImageController != null)
+                    if (introNovelImageController != null && savedData.CharacterPrefabData != null)
                     {
-                        if (savedData.CharacterPrefabData != null)
+                        if (savedData.CharacterPrefabData.TryGetValue(searchId, out CharacterData characterData))
                         {
-                            foreach (var kvp in savedData.CharacterPrefabData)
-                            {
-                                if (kvp.Key == searchId)
-                                {
-                                    int[] attributes =
-                                        kvp.Value; // Die Attribute [skinIndex, handIndex, clotheIndex, hairIndex]
-
-                                    // Setze die Attribute basierend auf den gespeicherten Werten
-                                    introNovelImageController.kite2CharacterController.SetSkinSprite(attributes[0]);
-                                    introNovelImageController.kite2CharacterController.SetHandSprite(attributes[1]);
-                                    introNovelImageController.kite2CharacterController.SetClotheSprite(attributes[2]);
-                                    introNovelImageController.kite2CharacterController.SetHairSprite(attributes[3]);
-                                }
-                            }
+                            // Setze die Attribute basierend auf den gespeicherten Werten
+                            introNovelImageController.kite2CharacterController.SetSkinSprite(characterData.skinIndex);
+                            introNovelImageController.kite2CharacterController.SetHandSprite(characterData.handIndex);
+                            introNovelImageController.kite2CharacterController.SetClotheSprite(characterData.clotheIndex);
+                            introNovelImageController.kite2CharacterController.SetHairSprite(characterData.hairIndex);
                         }
                     }
 

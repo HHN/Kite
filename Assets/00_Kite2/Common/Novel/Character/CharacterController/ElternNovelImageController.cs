@@ -55,10 +55,16 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             novelKite2CharacterController.SetHairSprite();
             
             novelKite2CharacterController2.SetSkinSprite();
-            // novelKite2CharacterController2.SetHandSprite();
             novelKite2CharacterController2.SetClotheSprite();
             novelKite2CharacterController2.SetHairSprite();
+            novelKite2CharacterController2.SetGlassesSprite();
         
+            HandSpriteIndex handSpriteIndex = new HandSpriteIndex
+            {
+                colorIndex = novelKite2CharacterController.handIndex[0],
+                spriteIndex = novelKite2CharacterController.handIndex[1],
+            };
+
             GameManager.CharacterDataList = new Dictionary<long, CharacterData>
             {
                 {
@@ -66,14 +72,14 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     new CharacterData
                     {
                         skinIndex = novelKite2CharacterController.skinIndex,
-                        handIndex = novelKite2CharacterController.handIndex,
+                        handIndex = handSpriteIndex,
                         clotheIndex = novelKite2CharacterController.clotheIndex,
                         hairIndex = novelKite2CharacterController.hairIndex,
                         
                         skinIndex2 = novelKite2CharacterController2.skinIndex,
-                        // handIndex2 = novelKite2CharacterController2.handIndex,
                         clotheIndex2 = novelKite2CharacterController2.clotheIndex,
-                        hairIndex2 = novelKite2CharacterController2.hairIndex
+                        hairIndex2 = novelKite2CharacterController2.hairIndex,
+                        glassIndex2 = novelKite2CharacterController2.glassIndex
                     }
                 }
             };

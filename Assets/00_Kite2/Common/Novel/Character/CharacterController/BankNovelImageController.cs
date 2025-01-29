@@ -30,6 +30,12 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             novelKite2CharacterController.SetHandSprite();
             novelKite2CharacterController.SetClotheSprite();
             novelKite2CharacterController.SetHairSprite();
+            
+            HandSpriteIndex handSpriteIndex = new HandSpriteIndex
+            {
+                colorIndex = novelKite2CharacterController.handIndex[0],
+                spriteIndex = novelKite2CharacterController.handIndex[1],
+            };
 
             GameManager.CharacterDataList = new Dictionary<long, CharacterData>
             {
@@ -38,7 +44,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     new CharacterData
                     {
                         skinIndex = novelKite2CharacterController.skinIndex,
-                        handIndex = novelKite2CharacterController.handIndex,
+                        handIndex = handSpriteIndex,
                         clotheIndex = novelKite2CharacterController.clotheIndex,
                         hairIndex = novelKite2CharacterController.hairIndex
                     }

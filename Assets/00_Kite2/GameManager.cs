@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using _00_Kite2.Common.Novel.Character.CharacterController;
 using _00_Kite2.Player;
 using _00_Kite2.SaveNovelData;
 using UnityEngine;
@@ -18,12 +19,14 @@ namespace _00_Kite2
     {
         // Indices for character customization (set 1 and set 2)
         public int skinIndex;
-        public int handIndex;
+        public int glassIndex;
+        public HandSpriteIndex handIndex;
         public int clotheIndex;
         public int hairIndex;
         
         public int skinIndex2;
-        public int handIndex2;
+        public int glassIndex2;
+        public HandSpriteIndex handIndex2;
         public int clotheIndex2;
         public int hairIndex2;
     }

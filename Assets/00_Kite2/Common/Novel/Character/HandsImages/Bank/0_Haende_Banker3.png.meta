@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 3ce18464215a9ba45bac3892d245156a
+guid: 723b86f0fd30dd34d91ccd187b0826e7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 825079539187887188
-    second: 0_Haende_Banker_c_0
+      213: 4419966089896894853
+    second: 0_Haende_Banker3_0
   - first:
-      213: -7291641050604659649
-    second: 0_Haende_Banker_c_1
+      213: -2137996159186118053
+    second: 0_Haende_Banker3_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -181,12 +181,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 0_Haende_Banker_c_0
+      name: 0_Haende_Banker3_0
       rect:
         serializedVersion: 2
         x: 205
-        y: 1128
-        width: 211
+        y: 1135
+        width: 212
         height: 247
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -196,18 +196,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 45cacbc2875437b00800000000000000
-      internalID: 825079539187887188
+      spriteID: 581a393adbfd65d30800000000000000
+      internalID: 4419966089896894853
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0_Haende_Banker_c_1
+      name: 0_Haende_Banker3_1
       rect:
         serializedVersion: 2
-        x: 659
-        y: 1110
+        x: 660
+        y: 1117
         width: 170
         height: 248
       alignment: 0
@@ -218,8 +218,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f3c9d05e813eeca90800000000000000
-      internalID: -7291641050604659649
+      spriteID: b5adf8022df4452e0800000000000000
+      internalID: -2137996159186118053
       vertices: []
       indices: 
       edges: []
@@ -238,8 +238,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      0_Haende_Banker_c_0: 825079539187887188
-      0_Haende_Banker_c_1: -7291641050604659649
+      0_Haende_Banker3_0: 4419966089896894853
+      0_Haende_Banker3_1: -2137996159186118053
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

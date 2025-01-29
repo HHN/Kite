@@ -63,7 +63,7 @@ namespace _00_Kite2.SaveNovelData
                 }
             }
 
-            Dictionary<long, int[]> characterPrefabData = new Dictionary<long, int[]>();
+            Dictionary<long, CharacterData> characterPrefabData = new Dictionary<long, CharacterData>();
 
             if (playNovelSceneController.NovelImageController != null)
             {
@@ -72,24 +72,29 @@ namespace _00_Kite2.SaveNovelData
                 {
                     foreach (var characterData in GameManager.CharacterDataList)
                     {
-                        long key = characterData.Key; // Key from the dictionary
-                        CharacterData value = characterData.Value; // Value from the dictionary
-                        
                         // Add the data to the dictionary
-                        characterPrefabData.Add(key, new[]
-                        {
-                            value.skinIndex,
-                            value.handIndex,
-                            value.clotheIndex,
-                            value.hairIndex,
-                            
-                            value.skinIndex2,
-                            value.handIndex2,
-                            value.clotheIndex2,
-                            value.hairIndex2,
-                        });
-                    }
+                        characterPrefabData.Add(characterData.Key, characterData.Value);
+                    } 
                 }
+            }
+            
+            foreach (var characterData in characterPrefabData)
+            {
+                // Holen des Values (CharacterData)
+                CharacterData character = characterData.Value;
+
+                // Ausgabe der Eigenschaften
+                // Debug.Log("Character Skin Index 1: " + character.skinIndex);
+                // Debug.Log("Character Glass Index 1: " + character.glassIndex);
+                // Debug.Log("Character Hand Index 1: " + character.handIndex);
+                // Debug.Log("Character Clothe Index 1: " + character.clotheIndex);
+                // Debug.Log("Character Hair Index 1: " + character.hairIndex);
+    
+                // Debug.Log("Character Skin Index 2: " + character.skinIndex2);
+                // Debug.Log("Character Glass Index 2: " + character.glassIndex2);
+                // Debug.Log("Character Hand Index 2: " + character.handIndex2);
+                // Debug.Log("Character Clothe Index 2: " + character.clotheIndex2);
+                // Debug.Log("Character Hair Index 2: " + character.hairIndex2);
             }
             
             NovelSaveData saveData = new NovelSaveData
