@@ -15,7 +15,6 @@ using _00_Kite2.Common.UI.UI_Elements.Messages;
 using _00_Kite2.Common.Utilities;
 using _00_Kite2.SaveNovelData;
 using _00_Kite2.Server_Communication.Server_Calls;
-//using LeastSquares.Overtone;
 using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using TMPro;
 using UnityEngine;
@@ -48,8 +47,8 @@ namespace _00_Kite2.Player
         [SerializeField] private GameObject freeTextInputPrefab;
         [SerializeField] private GameObject headerImage;
 
-        [Header("Novel-Visuals und Prefabs")] [SerializeField]
-        private GameObject[] novelVisuals;
+        [Header("Novel-Visuals und Prefabs")] 
+        [SerializeField] private GameObject[] novelVisuals;
 
         [SerializeField] private GameObject novelImageContainer;
         [SerializeField] private GameObject novelBackgroundPrefab;
@@ -75,7 +74,7 @@ namespace _00_Kite2.Player
 
         [SerializeField] private LeaveNovelAndGoBackMessageBox leaveGameAndGoBackMessageBoxObject;
         [SerializeField] private GameObject leaveGameAndGoBackMessageBox;
-        private GameObject hintForSavegameMessageBoxObject;
+        private GameObject _hintForSavegameMessageBoxObject;
         [SerializeField] private GameObject hintForSavegameMessageBox;
 
         [Header("Skript- und Controller-Referenzen")] [SerializeField]
@@ -131,8 +130,10 @@ namespace _00_Kite2.Player
             AnalyticsServiceHandler.Instance().StartStopwatch();
             BackStackManager.Instance().Push(SceneNames.PLAY_NOVEL_SCENE);
             novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
+            
             NovelBiasManager.Clear();
             OfflineFeedbackManager.Instance().Clear();
+            
             Initialize();
         }
 
@@ -140,10 +141,7 @@ namespace _00_Kite2.Player
         {
             PromptManager.Instance().InitializePrompt();
 
-            if (novelToPlay == null)
-            {
-                return;
-            }
+            if (novelToPlay == null) return; 
 
             AnalyticsServiceHandler.Instance().SetIdOfCurrentNovel(novelToPlay.id);
             novelToPlay.ClearGlobalVariables();
@@ -152,102 +150,21 @@ namespace _00_Kite2.Player
 
             novelName.text = novelToPlay.title;
 
-            if (novelToPlay.novelEvents.Count <= 0)
-            {
-                return;
-            }
+            if (novelToPlay.novelEvents.Count <= 0) return;
 
             SetVisualElements();
-
-            // Check if the current novel is the introductory dialogue
-            // Hide the header image, as it is not needed in the introductory dialogue
-            if (novelToPlay.title != "Einstiegsdialog")
-            {
-                headerImage.SetActive(true);
-            }
-            else if (novelToPlay.title == "Einstiegsdialog" &&
-                     GameManager.Instance.IsIntroNovelLoadedFromMainMenu == false)
-            {
-                headerImage.SetActive(true);
-            }
-            else
-            {
-                headerImage.SetActive(false);
-            }
-
-            List<int> characters = novelToPlay.novelEvents
-                .Select(e => e.character) // Wähle das `character`-Feld aus
-                .Where(c => c != 0 && c != 1 && c != 4) // Schließe die Werte 0, 1 und 4 aus
-                .Distinct() // Optional: Entfernt Duplikate
-                .ToList(); // Konvertiere das Ergebnis in eine Liste
-
-            foreach (var characterId in characters)
-            {
-                CharacterExpressions[characterId] = -1;
-            }
-
-            // Show the header image for other novels
-            foreach (VisualNovelEvent novelEvent in novelToPlay.novelEvents)
-            {
-                _novelEvents.Add(novelEvent.id, novelEvent);
-            }
-
-            // Überprüfung, ob es einen Speicherstand gibt, direkt über den GameManager
-            string novelId = novelToPlay.id.ToString();
-            if (GameManager.Instance.HasSavedProgress(novelId))
-            {
-                ShowHintForSavegameMessageBox();
-            }
-            else
-            {
-                nextEventToPlay = novelToPlay.novelEvents[0];
-
-                StartCoroutine(PlayNextEvent());
-            }
-        }
-
-        public void OnConfirm()
-        {
-            SkipSpeaking();
-            Vector2 mousePosition = Input.mousePosition;
-
-            if (_novelImagesController.HandleTouchEvent(mousePosition.x, mousePosition.y))
-            {
-                return;
-            }
-
-            if (isTyping)
-            {
-                // Überspringt den Typ-Effekt und zeigt den vollständigen Text an
-                if (currentTypeWriter != null)
-                {
-                    currentTypeWriter.SkipTypewriter();
-                    currentTypeWriter = null;
-                }
-
-                _typingWasSkipped = true; // Flag setzen
-                SetTyping(false);
-                SkipSpeaking();
-
-                return; // Beendet die Methode, um nicht zum nächsten Event zu springen
-            }
-
-            if (!isWaitingForConfirmation)
-            {
-                return;
-            }
-
-            SetWaitingForConfirmation(false);
-            StartCoroutine(PlayNextEvent());
+            HandleHeaderImage();
+            InitializeCharacterExpressions();
+            InitializeNovelEvents();
+            CheckForSavegame();
         }
 
         private void SetVisualElements()
         {
             RectTransform canvasRect = canvas.GetComponent<RectTransform>();
-
             RectTransform conversationViewportTransform = conversationViewport.GetComponent<RectTransform>();
-
             conversationViewportTransform.sizeDelta = new Vector2(0, -canvasRect.rect.height * 0.5f);
+            
             RectTransform viewPortTransform = viewPort.GetComponent<RectTransform>();
 
             switch (novelToPlay.title)
@@ -318,6 +235,87 @@ namespace _00_Kite2.Player
             }
 
             _novelImagesController.SetCanvasRect(canvasRect);
+        }
+        
+        private void HandleHeaderImage()
+        {
+            // Hide the header image, as it is not needed in the introductory dialogue
+            bool isIntro = novelToPlay.title == "Einstiegsdialog";
+            bool isIntroFromMainMenu = GameManager.Instance.IsIntroNovelLoadedFromMainMenu;
+            
+            headerImage.SetActive(!isIntro || !isIntroFromMainMenu);
+        }
+        
+        private void InitializeCharacterExpressions()
+        {
+            List<int> characters = novelToPlay.novelEvents
+                .Select(e => e.character) // Wähle das `character`-Feld aus
+                .Where(c => c != 0 && c != 1 && c != 4) // Schließe die Werte 0, 1 und 4 aus
+                .Distinct() // Optional: Entfernt Duplikate
+                .ToList(); // Konvertiere das Ergebnis in eine Liste
+
+            foreach (var characterId in characters)
+            {
+                CharacterExpressions[characterId] = -1;
+            }
+        }
+
+        private void InitializeNovelEvents()
+        {
+            foreach (VisualNovelEvent novelEvent in novelToPlay.novelEvents)
+            {
+                _novelEvents.Add(novelEvent.id, novelEvent);
+            }
+        }
+
+        private void CheckForSavegame()
+        {
+            string novelId = novelToPlay.id.ToString();
+            if (GameManager.Instance.HasSavedProgress(novelId))
+            {
+                ShowHintForSavegameMessageBox();
+            }
+            else
+            {
+                nextEventToPlay = novelToPlay.novelEvents[0];
+
+                StartCoroutine(PlayNextEvent());
+            }
+        }
+
+        public void OnConfirm()
+        {
+            SkipSpeaking();
+            Vector2 mousePosition = Input.mousePosition;
+
+            if (_novelImagesController.HandleTouchEvent(mousePosition.x, mousePosition.y))
+            {
+                return;
+            }
+
+            if (isTyping)
+            {
+                // Überspringt den Typ-Effekt und zeigt den vollständigen Text an
+                if (currentTypeWriter != null)
+                {
+                    currentTypeWriter.SkipTypewriter();
+                    currentTypeWriter = null;
+                }
+
+                _typingWasSkipped = true; // Flag setzen
+                SetTyping(false);
+                SkipSpeaking();
+
+                return; // Beendet die Methode, um nicht zum nächsten Event zu springen
+            }
+
+            if (!isWaitingForConfirmation)
+            {
+                return;
+            }
+
+            SetWaitingForConfirmation(false);
+            StartCoroutine(PlayNextEvent());
         }
 
         public IEnumerator ReadLast()
@@ -976,16 +974,16 @@ namespace _00_Kite2.Player
             if (hintForSavegameMessageBox == null) return;
 
             // Überprüfen, ob die HintForSavegameMessageBox bereits geladen ist und schließe sie gegebenenfalls
-            if (!hintForSavegameMessageBoxObject.IsNullOrDestroyed())
+            if (!_hintForSavegameMessageBoxObject.IsNullOrDestroyed())
             {
-                hintForSavegameMessageBoxObject.GetComponent<HintForSavegameMessageBox>().CloseMessageBox();
+                _hintForSavegameMessageBoxObject.GetComponent<HintForSavegameMessageBox>().CloseMessageBox();
             }
 
             // Instanziiere und aktiviere die HintForSavegameMessageBox, falls das Canvas nicht null ist
             if (canvas.IsNullOrDestroyed()) return;
 
-            hintForSavegameMessageBoxObject = Instantiate(hintForSavegameMessageBox, canvas.transform);
-            hintForSavegameMessageBoxObject.GetComponent<HintForSavegameMessageBox>().Activate();
+            _hintForSavegameMessageBoxObject = Instantiate(hintForSavegameMessageBox, canvas.transform);
+            _hintForSavegameMessageBoxObject.GetComponent<HintForSavegameMessageBox>().Activate();
         }
 
         /// <summary>
@@ -1017,159 +1015,31 @@ namespace _00_Kite2.Player
 
             long searchId = novelToPlay.id;
 
-            switch (searchId)
+            // Dictionary mit Zuordnung von searchId zu Controller-Typ
+            Dictionary<long, Type> novelControllerMap = new Dictionary<long, Type>
             {
-                case 1:
-                    break;
-                case 2:
-                    ElternNovelImageController elternNovelImageController =
-                        FindObjectsOfType<ElternNovelImageController>().FirstOrDefault();
-                    
-                    if (elternNovelImageController != null && savedData.CharacterPrefabData != null)
+                { 2, typeof(ElternNovelImageController) },
+                { 3, typeof(PresseNovelImageController) },
+                { 4, typeof(NotarinNovelImageController) },
+                { 6, typeof(BueroNovelImageController) },
+                { 9, typeof(BekannterNovelImageController) },
+                { 10, typeof(BankNovelImageController) },
+                { 11, typeof(VerhandlungNovelImageController) },
+                { 13, typeof(IntroNovelImageController) }
+            };
+
+            // Falls die ID in der Map existiert, versuche den Controller zu finden
+            if (novelControllerMap.TryGetValue(searchId, out Type controllerType))
+            {
+                var controller = FindObjectsOfType(controllerType).FirstOrDefault() as MonoBehaviour;
+                if (controller != null && savedData.CharacterPrefabData != null)
+                {
+                    if (savedData.CharacterPrefabData.TryGetValue(searchId, out CharacterData characterData))
                     {
-                        if (savedData.CharacterPrefabData.TryGetValue(searchId, out CharacterData characterData))
-                        {
-                            // Setze die Attribute basierend auf den gespeicherten Werten
-                            elternNovelImageController.novelKite2CharacterController.SetSkinSprite(characterData.skinIndex);
-                            elternNovelImageController.novelKite2CharacterController.SetHandSprite(characterData.handIndex);
-                            elternNovelImageController.novelKite2CharacterController.SetClotheSprite(characterData.clotheIndex);
-                            elternNovelImageController.novelKite2CharacterController.SetHairSprite(characterData.hairIndex);
-                
-                            elternNovelImageController.novelKite2CharacterController2.SetSkinSprite(characterData.skinIndex2);
-                            elternNovelImageController.novelKite2CharacterController2.SetGlassesSprite(characterData.glassIndex2);
-                            elternNovelImageController.novelKite2CharacterController2.SetClotheSprite(characterData.clotheIndex2);
-                            elternNovelImageController.novelKite2CharacterController2.SetHairSprite(characterData.hairIndex2);
-                        }
+                        // Setzt die Charakterattribute basierend auf dem gefundenen Controller
+                        ApplyCharacterData(controller, characterData);
                     }
-
-                    break;
-                case 3:
-                    PresseNovelImageController presseNovelImageController =
-                        FindObjectsOfType<PresseNovelImageController>().FirstOrDefault();
-                    
-                    if (presseNovelImageController != null && savedData.CharacterPrefabData != null)
-                    {
-                        if (savedData.CharacterPrefabData.TryGetValue(searchId, out CharacterData characterData))
-                        {
-                            // Setze die Attribute basierend auf den gespeicherten Werten
-                            presseNovelImageController.kite2CharacterController.SetSkinSprite(characterData.skinIndex);
-                            presseNovelImageController.kite2CharacterController.SetHandSprite(characterData.handIndex);
-                            presseNovelImageController.kite2CharacterController.SetClotheSprite(characterData.clotheIndex);
-                            presseNovelImageController.kite2CharacterController.SetHairSprite(characterData.hairIndex);
-                        }
-                    }
-
-                    break;
-                case 4:
-                    NotarinNovelImageController notarinNovelImageController =
-                        FindObjectsOfType<NotarinNovelImageController>().FirstOrDefault();
-
-                    if (notarinNovelImageController != null && savedData.CharacterPrefabData != null)
-                    {
-                        if (savedData.CharacterPrefabData.TryGetValue(searchId, out CharacterData characterData))
-                        {
-                            // Setze die Attribute basierend auf den gespeicherten Werten
-                            notarinNovelImageController.kite2CharacterController.SetSkinSprite(characterData.skinIndex);
-                            notarinNovelImageController.kite2CharacterController.SetHandSprite(characterData.handIndex);
-                            notarinNovelImageController.kite2CharacterController.SetClotheSprite(characterData.clotheIndex);
-                            notarinNovelImageController.kite2CharacterController.SetHairSprite(characterData.hairIndex);
-                        }
-                    }
-
-                    break;
-                case 5:
-                    break;
-                case 6:
-                    BueroNovelImageController bueroNovelImageController =
-                        FindObjectsOfType<BueroNovelImageController>().FirstOrDefault();
-
-                    if (bueroNovelImageController != null && savedData.CharacterPrefabData != null)
-                    {
-                        if (savedData.CharacterPrefabData.TryGetValue(searchId, out CharacterData characterData))
-                        {
-                            // Setze die Attribute basierend auf den gespeicherten Werten
-                            bueroNovelImageController.kite2CharacterController.SetSkinSprite(characterData.skinIndex);
-                            bueroNovelImageController.kite2CharacterController.SetHandSprite(characterData.handIndex);
-                            bueroNovelImageController.kite2CharacterController.SetClotheSprite(characterData.clotheIndex);
-                            bueroNovelImageController.kite2CharacterController.SetHairSprite(characterData.hairIndex);
-                        }
-                    }
-
-                    break;
-                case 7:
-                    break;
-                case 8:
-                    break;
-                case 9:
-                    BekannterNovelImageController bekannterNovelImageController =
-                        FindObjectsOfType<BekannterNovelImageController>().FirstOrDefault();
-
-                    if (bekannterNovelImageController != null && savedData.CharacterPrefabData != null)
-                    {
-                        if (savedData.CharacterPrefabData.TryGetValue(searchId, out CharacterData characterData))
-                        {
-                            // Setze die Attribute basierend auf den gespeicherten Werten
-                            bekannterNovelImageController.kite2CharacterController.SetSkinSprite(characterData.skinIndex);
-                            bekannterNovelImageController.kite2CharacterController.SetHandSprite(characterData.handIndex);
-                            bekannterNovelImageController.kite2CharacterController.SetClotheSprite(characterData.clotheIndex);
-                            bekannterNovelImageController.kite2CharacterController.SetHairSprite(characterData.hairIndex);
-                        }
-                    }
-
-                    break;
-                case 10:
-                    BankNovelImageController bankNovelImageController =
-                        FindObjectsOfType<BankNovelImageController>().FirstOrDefault();
-
-                    if (bankNovelImageController != null && savedData.CharacterPrefabData != null)
-                    {
-                        if (savedData.CharacterPrefabData.TryGetValue(searchId, out CharacterData characterData))
-                        {
-                            // Setze die Attribute basierend auf den gespeicherten Werten
-                            bankNovelImageController.novelKite2CharacterController.SetSkinSprite(characterData.skinIndex);
-                            bankNovelImageController.novelKite2CharacterController.SetHandSprite(characterData.handIndex);
-                            bankNovelImageController.novelKite2CharacterController.SetClotheSprite(characterData.clotheIndex);
-                            bankNovelImageController.novelKite2CharacterController.SetHairSprite(characterData.hairIndex);
-                        }
-                    }
-
-                    break;
-                case 11:
-                    VerhandlungNovelImageController verhandlungNovelImageController =
-                        FindObjectsOfType<VerhandlungNovelImageController>().FirstOrDefault();
-
-                    if (verhandlungNovelImageController != null && savedData.CharacterPrefabData != null)
-                    {
-                        if (savedData.CharacterPrefabData.TryGetValue(searchId, out CharacterData characterData))
-                        {
-                            // Setze die Attribute basierend auf den gespeicherten Werten
-                            verhandlungNovelImageController.kite2CharacterController.SetSkinSprite(characterData.skinIndex);
-                            verhandlungNovelImageController.kite2CharacterController.SetHandSprite(characterData.handIndex);
-                            verhandlungNovelImageController.kite2CharacterController.SetClotheSprite(characterData.clotheIndex);
-                            verhandlungNovelImageController.kite2CharacterController.SetHairSprite(characterData.hairIndex);
-                        }
-                    }
-
-                    break;
-                case 12:
-                    break;
-                case 13:
-                    IntroNovelImageController introNovelImageController =
-                        FindObjectsOfType<IntroNovelImageController>().FirstOrDefault();
-
-                    if (introNovelImageController != null && savedData.CharacterPrefabData != null)
-                    {
-                        if (savedData.CharacterPrefabData.TryGetValue(searchId, out CharacterData characterData))
-                        {
-                            // Setze die Attribute basierend auf den gespeicherten Werten
-                            introNovelImageController.kite2CharacterController.SetSkinSprite(characterData.skinIndex);
-                            introNovelImageController.kite2CharacterController.SetHandSprite(characterData.handIndex);
-                            introNovelImageController.kite2CharacterController.SetClotheSprite(characterData.clotheIndex);
-                            introNovelImageController.kite2CharacterController.SetHairSprite(characterData.hairIndex);
-                        }
-                    }
-
-                    break;
+                }
             }
 
             RestoreCharacterExpressions(savedData);
@@ -1177,6 +1047,86 @@ namespace _00_Kite2.Player
             ActivateMessageBoxes();
 
             StartCoroutine(PlayNextEvent());
+        }
+
+        private void ApplyCharacterData(MonoBehaviour controller, CharacterData characterData)
+        {
+            if (controller is ElternNovelImageController elternController)
+            {
+                // Setze die Attribute basierend auf den gespeicherten Werten
+                elternController.novelKite2CharacterController.SetSkinSprite(characterData.skinIndex);
+                elternController.novelKite2CharacterController.SetHandSprite(characterData.handIndex);
+                elternController.novelKite2CharacterController.SetClotheSprite(characterData.clotheIndex);
+                elternController.novelKite2CharacterController.SetHairSprite(characterData.hairIndex);
+
+                elternController.novelKite2CharacterController2.SetSkinSprite(characterData.skinIndex2);
+                elternController.novelKite2CharacterController2.SetGlassesSprite(characterData.glassIndex2);
+                elternController.novelKite2CharacterController2.SetClotheSprite(characterData.clotheIndex2);
+                elternController.novelKite2CharacterController2.SetHairSprite(characterData.hairIndex2);
+            }
+
+            if (controller is PresseNovelImageController presseController)
+            {
+                // Setze die Attribute basierend auf den gespeicherten Werten
+                presseController.kite2CharacterController.SetSkinSprite(characterData.skinIndex);
+                presseController.kite2CharacterController.SetHandSprite(characterData.handIndex);
+                presseController.kite2CharacterController.SetClotheSprite(characterData.clotheIndex);
+                presseController.kite2CharacterController.SetHairSprite(characterData.hairIndex);
+            }
+
+            if (controller is NotarinNovelImageController notarinController)
+            {
+                // Setze die Attribute basierend auf den gespeicherten Werten
+                notarinController.kite2CharacterController.SetSkinSprite(characterData.skinIndex);
+                notarinController.kite2CharacterController.SetHandSprite(characterData.handIndex);
+                notarinController.kite2CharacterController.SetClotheSprite(characterData.clotheIndex);
+                notarinController.kite2CharacterController.SetHairSprite(characterData.hairIndex);
+            }
+
+            if (controller is BueroNovelImageController bueroController)
+            {
+                // Setze die Attribute basierend auf den gespeicherten Werten
+                bueroController.kite2CharacterController.SetSkinSprite(characterData.skinIndex);
+                bueroController.kite2CharacterController.SetHandSprite(characterData.handIndex);
+                bueroController.kite2CharacterController.SetClotheSprite(characterData.clotheIndex);
+                bueroController.kite2CharacterController.SetHairSprite(characterData.hairIndex);
+            }
+
+            if (controller is BekannterNovelImageController bekannterController)
+            {
+                // Setze die Attribute basierend auf den gespeicherten Werten
+                bekannterController.kite2CharacterController.SetSkinSprite(characterData.skinIndex);
+                bekannterController.kite2CharacterController.SetHandSprite(characterData.handIndex);
+                bekannterController.kite2CharacterController.SetClotheSprite(characterData.clotheIndex);
+                bekannterController.kite2CharacterController.SetHairSprite(characterData.hairIndex);
+            }
+
+            if (controller is BankNovelImageController bankController)
+            {
+                // Setze die Attribute basierend auf den gespeicherten Werten
+                bankController.novelKite2CharacterController.SetSkinSprite(characterData.skinIndex);
+                bankController.novelKite2CharacterController.SetHandSprite(characterData.handIndex);
+                bankController.novelKite2CharacterController.SetClotheSprite(characterData.clotheIndex);
+                bankController.novelKite2CharacterController.SetHairSprite(characterData.hairIndex);
+            }
+
+            if (controller is VerhandlungNovelImageController verhandlungController)
+            {
+                // Setze die Attribute basierend auf den gespeicherten Werten
+                verhandlungController.kite2CharacterController.SetSkinSprite(characterData.skinIndex);
+                verhandlungController.kite2CharacterController.SetHandSprite(characterData.handIndex);
+                verhandlungController.kite2CharacterController.SetClotheSprite(characterData.clotheIndex);
+                verhandlungController.kite2CharacterController.SetHairSprite(characterData.hairIndex);
+            }
+
+            if (controller is IntroNovelImageController introController)
+            {
+                // Setze die Attribute basierend auf den gespeicherten Werten
+                introController.kite2CharacterController.SetSkinSprite(characterData.skinIndex);
+                introController.kite2CharacterController.SetHandSprite(characterData.handIndex);
+                introController.kite2CharacterController.SetClotheSprite(characterData.clotheIndex);
+                introController.kite2CharacterController.SetHairSprite(characterData.hairIndex);
+            }
         }
 
         private void RestoreCharacterExpressions(NovelSaveData savedData)
