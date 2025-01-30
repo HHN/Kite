@@ -285,7 +285,8 @@ namespace _00_Kite2.Player
 
         public void OnConfirm()
         {
-            SkipSpeaking();
+            TextToSpeechManager.Instance.CancelSpeak();
+            
             Vector2 mousePosition = Input.mousePosition;
 
             if (_novelImagesController.HandleTouchEvent(mousePosition.x, mousePosition.y))
@@ -304,7 +305,8 @@ namespace _00_Kite2.Player
 
                 _typingWasSkipped = true; // Flag setzen
                 SetTyping(false);
-                SkipSpeaking();
+                
+                TextToSpeechManager.Instance.CancelSpeak();
 
                 return; // Beendet die Methode, um nicht zum nächsten Event zu springen
             }
@@ -328,14 +330,7 @@ namespace _00_Kite2.Player
         {
             if (TextToSpeechManager.Instance.IsTextToSpeechActivated())
             {
-                // Warten, bis die Sprachausgabe abgeschlossen oder übersprungen wurde
-                if (_speakingCoroutine != null)
-                {
-                    while (TextToSpeechManager.Instance.IsSpeaking())
-                    {
-                        yield return null;
-                    }
-                }
+                yield return WaitForSpeechToFinish();
             }
 
             // Stop if paused
@@ -344,32 +339,7 @@ namespace _00_Kite2.Player
                 yield break;
             }
 
-            if (selectOptionContinueConversation != null)
-            {
-                selectOptionContinueConversation.alreadyPlayedNextEvent = true;
-                selectOptionContinueConversation = null;
-            }
-
-            if (currentTypeWriter != null)
-            {
-                currentTypeWriter.SkipTypewriter(); // no check for isShowing necessary
-                currentTypeWriter = null;
-            }
-
-            // Überprüfen, ob der Event den Bedingungen entspricht
-            if (nextEventToPlay.id.StartsWith("OptionsLabel") && !GameManager.Instance.calledFromReload)
-            {
-                // Schneide "OptionsLabel" ab und speichere den Rest
-                string numericPart = nextEventToPlay.id.Substring("OptionsLabel".Length);
-
-                // Prüfe, ob der Rest eine Zahl ist
-                if (int.TryParse(numericPart, out _))
-                {
-                    // Wenn der Rest eine Zahl ist, speichere das Event
-                    _optionsId[0] = _optionsId[1]; // Verschiebe das letzte Event
-                    _optionsId[1] = nextEventToPlay.id; // Speichere das aktuelle Event
-                }
-            }
+            HandleEventPreparation();
 
             // Save the current event in the eventHistory list
             eventHistory.Add(nextEventToPlay);
@@ -473,6 +443,47 @@ namespace _00_Kite2.Player
                     nextEventToPlay = _novelEvents[nextEventID];
                     yield return StartCoroutine(PlayNextEvent()); // Rekursiver Coroutine-Aufruf
                     break;
+                }
+            }
+        }
+
+        private IEnumerator WaitForSpeechToFinish()
+        {
+            if (_speakingCoroutine != null)
+            {
+                while (TextToSpeechManager.Instance.IsSpeaking())
+                {
+                    yield return null;
+                }
+            }
+        }
+        
+        private void HandleEventPreparation()
+        {
+            if (selectOptionContinueConversation != null)
+            {
+                selectOptionContinueConversation.alreadyPlayedNextEvent = true;
+                selectOptionContinueConversation = null;
+            }
+
+            if (currentTypeWriter != null)
+            {
+                currentTypeWriter.SkipTypewriter(); // no check for isShowing necessary
+                currentTypeWriter = null;
+            }
+
+            // Überprüfen, ob der Event den Bedingungen entspricht
+            if (nextEventToPlay.id.StartsWith("OptionsLabel") && !GameManager.Instance.calledFromReload)
+            {
+                // Schneide "OptionsLabel" ab und speichere den Rest
+                string numericPart = nextEventToPlay.id.Substring("OptionsLabel".Length);
+
+                // Prüfe, ob der Rest eine Zahl ist
+                if (int.TryParse(numericPart, out _))
+                {
+                    // Wenn der Rest eine Zahl ist, speichere das Event
+                    _optionsId[0] = _optionsId[1]; // Verschiebe das letzte Event
+                    _optionsId[1] = nextEventToPlay.id; // Speichere das aktuelle Event
                 }
             }
         }
@@ -593,10 +604,7 @@ namespace _00_Kite2.Player
 
         private static bool EvaluateBooleanExpression(string expression)
         {
-            if (string.IsNullOrWhiteSpace(expression))
-            {
-                return false;
-            }
+            if (string.IsNullOrWhiteSpace(expression)) return false;
 
             expression = expression.Replace("true", "True").Replace("TRUE", "True").Replace("false", "False")
                 .Replace("FALSE", "False");
@@ -802,10 +810,7 @@ namespace _00_Kite2.Player
 
         public void ShowAnswer(string message, bool show)
         {
-            if (!show)
-            {
-                return;
-            }
+            if (!show) return;
 
             AddEntryToPlayThroughHistory(CharacterRole.PLAYER, message);
             conversationContent.ShowPlayerAnswer(message);
@@ -867,10 +872,7 @@ namespace _00_Kite2.Player
         {
             SetWaitingForConfirmation(true);
 
-            if (currentAnimation.IsNullOrDestroyed())
-            {
-                return;
-            }
+            if (currentAnimation.IsNullOrDestroyed()) return;
 
             Destroy(currentAnimation);
         }
@@ -878,11 +880,6 @@ namespace _00_Kite2.Player
         private void AddEntryToPlayThroughHistory(CharacterRole characterRole, string text)
         {
             playThroughHistory.Add(CharacterTypeHelper.GetNameOfCharacter(characterRole) + ": " + text);
-        }
-
-        public void AddEntryToPlayThroughHistory(string entry)
-        {
-            playThroughHistory.Add(entry);
         }
 
         public static string ReplacePlaceholders(string text, Dictionary<string, string> replacements)
@@ -909,16 +906,18 @@ namespace _00_Kite2.Player
 
             // Find the index of the event in the eventHistory list
             int indexToRestore = eventHistory.FindIndex(e => e.id == eventIdToRestore);
+            if (indexToRestore == -1) return; // If the event is found in the history
 
             if (_optionsCount != 0)
             {
                 indexToRestore -= _optionsCount;
             }
-
-            if (indexToRestore == -1) return; // If the event is found in the history
-
-            // Remove the event and all events after it
-            eventHistory.RemoveRange(indexToRestore, eventHistory.Count - indexToRestore);
+            
+            // Entfernen des Events und aller nachfolgenden Events aus der Historie
+            if (indexToRestore >= 0)
+            {
+                eventHistory.RemoveRange(indexToRestore, eventHistory.Count - indexToRestore);
+            }
 
             // Now update playThroughHistory
             // Search from back to front for the second occurrence of ":"
@@ -961,26 +960,18 @@ namespace _00_Kite2.Player
             StartCoroutine(_speakingCoroutine);
         }
 
-        private void SkipSpeaking()
-        {
-            TextToSpeechManager.Instance.CancelSpeak();
-        }
-
         /// <summary>
         /// Methode zum Anzeigen der HintForSavegameMessageBox
         /// </summary> 
         private void ShowHintForSavegameMessageBox()
         {
-            if (hintForSavegameMessageBox == null) return;
+            if (hintForSavegameMessageBox == null || canvas.IsNullOrDestroyed()) return;
 
             // Überprüfen, ob die HintForSavegameMessageBox bereits geladen ist und schließe sie gegebenenfalls
-            if (!_hintForSavegameMessageBoxObject.IsNullOrDestroyed())
+            if (_hintForSavegameMessageBoxObject != null && !_hintForSavegameMessageBoxObject.IsNullOrDestroyed())
             {
                 _hintForSavegameMessageBoxObject.GetComponent<HintForSavegameMessageBox>().CloseMessageBox();
             }
-
-            // Instanziiere und aktiviere die HintForSavegameMessageBox, falls das Canvas nicht null ist
-            if (canvas.IsNullOrDestroyed()) return;
 
             _hintForSavegameMessageBoxObject = Instantiate(hintForSavegameMessageBox, canvas.transform);
             _hintForSavegameMessageBoxObject.GetComponent<HintForSavegameMessageBox>().Activate();
