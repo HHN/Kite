@@ -84,13 +84,17 @@ MonoBehaviour:
   faceImage: {fileID: 8722988004786373907}
   skinSprites: []
   glassesSprites: []
-  handSprites: []
+  handSprites:
+    handColorA: []
+    handColorB: []
+    handColorC: []
+    handColorD: []
   clotheSprites: []
   hairSprites: []
   animator: {fileID: 6155688656520349526}
   skinIndex: 0
   glassIndex: 0
-  handIndex: 0
+  handIndex: 
   clotheIndex: 0
   hairIndex: 0
 --- !u!95 &6155688656520349526
@@ -442,7 +446,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e51dfa126fe7a8c42afe491be4c1683f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 72ed6b058846fee418f085c0e6fe4a36, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -731,7 +735,7 @@ GameObject:
   - component: {fileID: 2084217448141452050}
   - component: {fileID: 6183954683827931753}
   m_Layer: 5
-  m_Name: "H\xE4nde"
+  m_Name: Haende
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
