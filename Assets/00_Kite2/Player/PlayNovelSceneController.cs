@@ -879,6 +879,7 @@ namespace _00_Kite2.Player
 
         private void AddEntryToPlayThroughHistory(CharacterRole characterRole, string text)
         {
+            Debug.Log("characterRole: " + characterRole);
             playThroughHistory.Add(CharacterTypeHelper.GetNameOfCharacter(characterRole) + ": " + text);
         }
 
