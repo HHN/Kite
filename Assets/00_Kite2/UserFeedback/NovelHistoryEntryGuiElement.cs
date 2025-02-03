@@ -42,7 +42,7 @@ namespace _00_Kite2.UserFeedback
             this.dialogHistoryEntry = dialogHistoryEntry;
             headButtonText.text = dialogHistoryEntry.GetDateAndTime();
             dialogText.text = dialogHistoryEntry.GetDialog();
-            aiFeedbackText.text = dialogHistoryEntry.GetCompletion();
+            aiFeedbackText.text = dialogHistoryEntry.GetCompletion().Replace("#", "").Replace("*", "").Trim();
         }
 
         public void CloseAll()
