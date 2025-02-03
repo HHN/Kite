@@ -155,9 +155,7 @@ namespace _00_Kite2.Common
 
             displayNoDataObjectsHint = false;
 
-            NovelHistoryEntryGuiElement dataObjectGuiElement =
-                Instantiate(dataObjectPrefab, container.transform)
-                    .GetComponent<NovelHistoryEntryGuiElement>();
+            NovelHistoryEntryGuiElement dataObjectGuiElement = Instantiate(dataObjectPrefab, container.transform).GetComponent<NovelHistoryEntryGuiElement>();
 
             dataObjectGuiElement.InitializeEntry(entry);
             novelHistoryEntries.Add(dataObjectGuiElement);
