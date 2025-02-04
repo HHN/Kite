@@ -23,7 +23,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         private GameObject _instantiatedCharacter;
 
-        [FormerlySerializedAs("characterController")] public Kite2CharacterController kite2CharacterController;
+        public Kite2CharacterController kite2CharacterController;
 
         private void Start()
         {

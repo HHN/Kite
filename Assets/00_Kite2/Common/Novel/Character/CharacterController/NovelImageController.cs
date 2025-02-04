@@ -97,6 +97,10 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             {
                 novelKite2CharacterController.SetFaceExpression(expressionType);
             }
+            else if (characterId == 12)
+            {
+                novelKite2CharacterController.SetFaceExpression(expressionType);
+            }
             else if (novelKite2CharacterController2 == null)
             {
             }
