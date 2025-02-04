@@ -6,6 +6,7 @@ using _00_Kite2.Common.UI.UI_Elements.DropDown;
 using _00_Kite2.Player;
 using _00_Kite2.UserFeedback;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _00_Kite2.Common
 {
@@ -16,7 +17,7 @@ namespace _00_Kite2.Common
         [SerializeField] private GameObject noDataObjectsHint;
 
         [SerializeField] private GameObject containerForBankkreditNovel;
-        [SerializeField] private GameObject containerForBekannteTreffenNovel;
+        [SerializeField] private GameObject containerForBekanntenTreffenNovel;
         [SerializeField] private GameObject containerForBankkontoNovel;
         [SerializeField] private GameObject containerForFoerderantragNovel;
         [SerializeField] private GameObject containerForElternNovel;
@@ -29,7 +30,7 @@ namespace _00_Kite2.Common
         //[SerializeField] private GameObject containerForIntroNovel;    
 
         [SerializeField] private DropDownMenu dropdownForBankkreditNovel;
-        [SerializeField] private DropDownMenu dropdownForBekannteTreffenNovel;
+        [SerializeField] private DropDownMenu dropdownForBekanntenTreffenNovel;
         [SerializeField] private DropDownMenu dropdownForBankkontoNovel;
         [SerializeField] private DropDownMenu dropdownForFoerderantragNovel;
         [SerializeField] private DropDownMenu dropdownForElternNovel;
@@ -42,7 +43,7 @@ namespace _00_Kite2.Common
         //[SerializeField] private DropDownMenu dropdownForIntroNovel;        
 
         [SerializeField] private GameObject spacingForBankkreditNovel;
-        [SerializeField] private GameObject spacingForBekannteTreffenNovel;
+        [SerializeField] private GameObject spacingForBekanntenTreffenNovel;
         [SerializeField] private GameObject spacingForBankkontoNovel;
         [SerializeField] private GameObject spacingForFoerderantragNovel;
         [SerializeField] private GameObject spacingForElternNovel;
@@ -54,7 +55,7 @@ namespace _00_Kite2.Common
         [SerializeField] private GameObject spacingForLebenspartnerinNovel;
 
         [SerializeField] private GameObject entryContainerForBankkreditNovel;
-        [SerializeField] private GameObject entryContainerForBekannteTreffenNovel;
+        [SerializeField] private GameObject entryContainerForBekanntenTreffenNovel;
         [SerializeField] private GameObject entryContainerForBankkontoNovel;
         [SerializeField] private GameObject entryContainerForFoerderantragNovel;
         [SerializeField] private GameObject entryContainerForElternNovel;
@@ -67,7 +68,7 @@ namespace _00_Kite2.Common
         //[SerializeField] private GameObject entryContainerForIntroNovel;
 
         [SerializeField] private bool displayContainerForBankkreditNovel;
-        [SerializeField] private bool displayContainerForBekannteTreffenNovel;
+        [SerializeField] private bool displayContainerForBekanntenTreffenNovel;
         [SerializeField] private bool displayContainerForBankkontoNovel;
         [SerializeField] private bool displayContainerForFoerderantragNovel;
         [SerializeField] private bool displayContainerForElternNovel;
@@ -127,7 +128,7 @@ namespace _00_Kite2.Common
         private IEnumerator RebuildLayout()
         {
             dropdownForBankkreditNovel.RebuildLayout();
-            dropdownForBekannteTreffenNovel.RebuildLayout();
+            dropdownForBekanntenTreffenNovel.RebuildLayout();
             dropdownForBankkontoNovel.RebuildLayout();
             dropdownForFoerderantragNovel.RebuildLayout();
             dropdownForElternNovel.RebuildLayout();
@@ -183,10 +184,10 @@ namespace _00_Kite2.Common
                     displayContainerForBankkreditNovel = true;
                     return dropdownForBankkreditNovel;
                 }
-                case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
                 {
-                    displayContainerForBekannteTreffenNovel = true;
-                    return dropdownForBekannteTreffenNovel;
+                    displayContainerForBekanntenTreffenNovel = true;
+                    return dropdownForBekanntenTreffenNovel;
                 }
                 case VisualNovelNames.BANK_KONTO_NOVEL:
                 {
@@ -256,10 +257,10 @@ namespace _00_Kite2.Common
                     displayContainerForBankkreditNovel = true;
                     return containerForBankkreditNovel;
                 }
-                case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
                 {
-                    displayContainerForBekannteTreffenNovel = true;
-                    return containerForBekannteTreffenNovel;
+                    displayContainerForBekanntenTreffenNovel = true;
+                    return containerForBekanntenTreffenNovel;
                 }
                 case VisualNovelNames.BANK_KONTO_NOVEL:
                 {
@@ -329,10 +330,10 @@ namespace _00_Kite2.Common
                     displayContainerForBankkreditNovel = true;
                     return entryContainerForBankkreditNovel;
                 }
-                case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
                 {
-                    displayContainerForBekannteTreffenNovel = true;
-                    return entryContainerForBekannteTreffenNovel;
+                    displayContainerForBekanntenTreffenNovel = true;
+                    return entryContainerForBekanntenTreffenNovel;
                 }
                 case VisualNovelNames.BANK_KONTO_NOVEL:
                 {
@@ -394,7 +395,7 @@ namespace _00_Kite2.Common
         private void InitializeBooleans()
         {
             displayContainerForBankkreditNovel = false;
-            displayContainerForBekannteTreffenNovel = false;
+            displayContainerForBekanntenTreffenNovel = false;
             displayContainerForBankkontoNovel = false;
             displayContainerForFoerderantragNovel = false;
             displayContainerForElternNovel = false;
@@ -412,8 +413,8 @@ namespace _00_Kite2.Common
         {
             containerForBankkreditNovel.SetActive(displayContainerForBankkreditNovel);
             spacingForBankkreditNovel.SetActive(displayContainerForBankkreditNovel);
-            containerForBekannteTreffenNovel.SetActive(displayContainerForBekannteTreffenNovel);
-            spacingForBekannteTreffenNovel.SetActive(displayContainerForBekannteTreffenNovel);
+            containerForBekanntenTreffenNovel.SetActive(displayContainerForBekanntenTreffenNovel);
+            spacingForBekanntenTreffenNovel.SetActive(displayContainerForBekanntenTreffenNovel);
             containerForBankkontoNovel.SetActive(displayContainerForBankkontoNovel);
             spacingForBankkontoNovel.SetActive(displayContainerForBankkontoNovel);
             containerForFoerderantragNovel.SetActive(displayContainerForFoerderantragNovel);

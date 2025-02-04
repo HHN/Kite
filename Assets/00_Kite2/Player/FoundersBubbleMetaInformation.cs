@@ -38,7 +38,7 @@ namespace _00_Kite2.Player
                 {
                     return true;
                 }
-                case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
                 {
                     return false;
                 }
@@ -97,7 +97,7 @@ namespace _00_Kite2.Player
                 {
                     return new Color(86 / 255f, 70 / 255f, 23 / 255f);
                 }
-                case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
                 {
                     return new Color(76 / 255f, 114 / 255f, 42 / 255f);
                 }
@@ -156,7 +156,7 @@ namespace _00_Kite2.Player
                 {
                     return new Color(46 / 255f, 37 / 255f, 12 / 255f);
                 }
-                case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
                 {
                     return new Color(48 / 255f, 72 / 255f, 15 / 255f);
                 }
@@ -215,7 +215,7 @@ namespace _00_Kite2.Player
                 {
                     return "Gründungs-\r\nzuschuss";
                 }
-                case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
                 {
                     return "Bekannten\r\ntreffen";
                 }
@@ -274,7 +274,7 @@ namespace _00_Kite2.Player
                 {
                     return 7;
                 }
-                case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
                 {
                     return 6;
                 }

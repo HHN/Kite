@@ -14,7 +14,7 @@ namespace _00_Kite2.OfflineAiFeedback
         private static Dictionary<VisualNovelNames, string> FEEDBACK_PATHS = new Dictionary<VisualNovelNames, string>()
         {
             { VisualNovelNames.BANK_KREDIT_NOVEL, "bank_kredit_feedback.json" },
-            { VisualNovelNames.BEKANNTE_TREFFEN_NOVEL, "bekannte_treffen_feedback.json" },
+            { VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL, "bekannte_treffen_feedback.json" },
             { VisualNovelNames.BANK_KONTO_NOVEL, "bank_konto_feedback.json" },
             { VisualNovelNames.FOERDERANTRAG_NOVEL, "foerderantrag_feedback.json" },
             { VisualNovelNames.ELTERN_NOVEL, "eltern_feedback.json" },

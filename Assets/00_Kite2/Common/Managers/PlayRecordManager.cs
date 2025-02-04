@@ -82,7 +82,7 @@ namespace _00_Kite2.Common.Managers
                     _wrapper.SetNumberOfPlaysForGruendungszuschussNovel(numberOfPlays);
                     break;
                 }
-                case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
                 {
                     int numberOfPlays = _wrapper.GetNumberOfPlaysForBekannteTreffenNovel();
                     numberOfPlays++;
@@ -159,7 +159,7 @@ namespace _00_Kite2.Common.Managers
                 {
                     return _wrapper.GetNumberOfPlaysForGruenungszuschussNovel();
                 }
-                case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
                 {
                     return _wrapper.GetNumberOfPlaysForBekannteTreffenNovel();
                 }

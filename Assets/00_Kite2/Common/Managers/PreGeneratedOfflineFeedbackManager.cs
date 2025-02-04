@@ -79,7 +79,7 @@ namespace _00_Kite2.Common.Managers
                 {
                     return _feedbackForGruendungszuschussNovel;
                 }
-                case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
                 {
                     return _feedbackForBekannteTreffenNovel;
                 }
@@ -146,7 +146,7 @@ namespace _00_Kite2.Common.Managers
                     _feedbackForGruendungszuschussNovel = feedback;
                     break;
                 }
-                case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
                 {
                     _feedbackForBekannteTreffenNovel = feedback;
                     break;
@@ -206,7 +206,7 @@ namespace _00_Kite2.Common.Managers
                 {
                     return _feedbackForGruendungszuschussNovel is { Count: > 0 };
                 }
-                case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
                 {
                     return _feedbackForBekannteTreffenNovel is { Count: > 0 };
                 }
