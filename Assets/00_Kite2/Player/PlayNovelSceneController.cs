@@ -794,8 +794,6 @@ namespace _00_Kite2.Player
 
         private IEnumerator StartNextEventInOneSeconds(float second)
         {
-            yield return new WaitForSeconds(second);
-
             if (_novelCharacter != -1 && CharacterExpressions.ContainsKey(_novelCharacter))
             {
                 if (CharacterExpressions[_novelCharacter] > 13)
@@ -804,6 +802,8 @@ namespace _00_Kite2.Player
                     _novelImagesController.SetFaceExpression(_novelCharacter, CharacterExpressions[_novelCharacter]);
                 }
             }
+            
+            yield return new WaitForSeconds(second);
 
             StartCoroutine(PlayNextEvent());
         }
