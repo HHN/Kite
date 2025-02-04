@@ -705,7 +705,7 @@ namespace _00_Kite2.Player
 
             // Speichere die neue Gesichtsanimation
             CharacterExpressions[_novelCharacter] = novelEvent.expressionType;
-
+            
             _novelImagesController.SetFaceExpression(_novelCharacter, CharacterExpressions[_novelCharacter]);
 
             if (novelEvent.show)
@@ -879,7 +879,6 @@ namespace _00_Kite2.Player
 
         private void AddEntryToPlayThroughHistory(CharacterRole characterRole, string text)
         {
-            Debug.Log("characterRole: " + characterRole);
             playThroughHistory.Add(CharacterTypeHelper.GetNameOfCharacter(characterRole) + ": " + text);
         }
 
