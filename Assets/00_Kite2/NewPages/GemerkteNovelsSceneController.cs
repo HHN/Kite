@@ -202,7 +202,7 @@ namespace _00_Kite2.NewPages
                 {
                     return gruenderzuschussNovel.gameObject;
                 }
-                case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
                 {
                     return bekannteTreffenNovel.gameObject;
                 }
@@ -276,7 +276,7 @@ namespace _00_Kite2.NewPages
 
         private void OnBekannteTreffenNovelButton()
         {
-            VisualNovelNames visualNovelName = VisualNovelNames.BEKANNTE_TREFFEN_NOVEL;
+            VisualNovelNames visualNovelName = VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL;
             VisualNovel visualNovelToDisplay = null;
 
             List<VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels();

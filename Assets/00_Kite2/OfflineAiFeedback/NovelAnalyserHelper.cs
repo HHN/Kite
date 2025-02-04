@@ -44,7 +44,7 @@ namespace _00_Kite2.OfflineAiFeedback
             {
                 _numberOfPossiblePaths = new Dictionary<VisualNovelNames, int>();
                 _numberOfPossiblePaths[VisualNovelNames.BANK_KREDIT_NOVEL] = 0;
-                _numberOfPossiblePaths[VisualNovelNames.BEKANNTE_TREFFEN_NOVEL] = 0;
+                _numberOfPossiblePaths[VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL] = 0;
                 _numberOfPossiblePaths[VisualNovelNames.BANK_KONTO_NOVEL] = 0;
                 _numberOfPossiblePaths[VisualNovelNames.FOERDERANTRAG_NOVEL] = 0;
                 _numberOfPossiblePaths[VisualNovelNames.ELTERN_NOVEL] = 0;
@@ -61,7 +61,7 @@ namespace _00_Kite2.OfflineAiFeedback
             {
                 _allPossibleNovelAnalyserHelpers = new Dictionary<VisualNovelNames, List<NovelAnalyserHelper>>();
                 _allPossibleNovelAnalyserHelpers[VisualNovelNames.BANK_KREDIT_NOVEL] = new List<NovelAnalyserHelper>();
-                _allPossibleNovelAnalyserHelpers[VisualNovelNames.BEKANNTE_TREFFEN_NOVEL] =
+                _allPossibleNovelAnalyserHelpers[VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL] =
                     new List<NovelAnalyserHelper>();
                 _allPossibleNovelAnalyserHelpers[VisualNovelNames.BANK_KONTO_NOVEL] = new List<NovelAnalyserHelper>();
                 _allPossibleNovelAnalyserHelpers[VisualNovelNames.FOERDERANTRAG_NOVEL] =
@@ -82,7 +82,7 @@ namespace _00_Kite2.OfflineAiFeedback
             {
                 _allPossibleBiasCombinations = new Dictionary<VisualNovelNames, List<NovelAnalyserHelper>>();
                 _allPossibleBiasCombinations[VisualNovelNames.BANK_KREDIT_NOVEL] = new List<NovelAnalyserHelper>();
-                _allPossibleBiasCombinations[VisualNovelNames.BEKANNTE_TREFFEN_NOVEL] = new List<NovelAnalyserHelper>();
+                _allPossibleBiasCombinations[VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL] = new List<NovelAnalyserHelper>();
                 _allPossibleBiasCombinations[VisualNovelNames.BANK_KONTO_NOVEL] = new List<NovelAnalyserHelper>();
                 _allPossibleBiasCombinations[VisualNovelNames.FOERDERANTRAG_NOVEL] = new List<NovelAnalyserHelper>();
                 _allPossibleBiasCombinations[VisualNovelNames.ELTERN_NOVEL] = new List<NovelAnalyserHelper>();

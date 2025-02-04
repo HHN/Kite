@@ -260,7 +260,7 @@ namespace _00_Kite2.OfflineAiFeedback
                         gruendungszuschussNovelAnalyseButton.interactable = true;
                         break;
                     }
-                    case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                    case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
                     {
                         bekannteTreffenNovelAvailableIndicator.sprite = positiveSprite;
                         bekannteTreffenNovelAvailableIndicator.color = green;
@@ -528,10 +528,10 @@ namespace _00_Kite2.OfflineAiFeedback
         {
             bekannteTreffenNovelAnalyseButton.interactable = false;
 
-            if (_generatedFeedbackNodes.ContainsKey(VisualNovelNames.BEKANNTE_TREFFEN_NOVEL))
+            if (_generatedFeedbackNodes.ContainsKey(VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL))
             {
-                StartCoroutine(StartGeneratingAiFeedback(VisualNovelNames.BEKANNTE_TREFFEN_NOVEL,
-                    _generatedFeedbackNodes[VisualNovelNames.BEKANNTE_TREFFEN_NOVEL], elternNovelNumberOfPaths));
+                StartCoroutine(StartGeneratingAiFeedback(VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL,
+                    _generatedFeedbackNodes[VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL], elternNovelNumberOfPaths));
                 return;
             }
 
@@ -541,7 +541,7 @@ namespace _00_Kite2.OfflineAiFeedback
             {
                 switch (VisualNovelNamesHelper.ValueOf((int)novel.id))
                 {
-                    case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                    case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
                     {
                         StartCoroutine(AnalyseNovel(novel, bekannteTreffenNovelNumberOfPaths,
                             bekannteTreffenNovelAnalyseButton));
