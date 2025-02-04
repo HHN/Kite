@@ -140,6 +140,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         
         public void SetSkinSprite(int skinSpriteIndex)
         {
+            Debug.Log("skinSprite: " + skinSpriteIndex);
             if (skinSprites == null) return;
         
             skinImage.sprite = skinSprites[skinSpriteIndex];

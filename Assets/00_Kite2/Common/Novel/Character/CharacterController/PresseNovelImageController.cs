@@ -22,16 +22,16 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         private GameObject _instantiatedCharacter;
 
-        [FormerlySerializedAs("characterController")] public Kite2CharacterController kite2CharacterController;
+        // public Kite2CharacterController kite2CharacterController;
 
         private void Start()
         {
-            base.novelKite2CharacterController = characterContainer.GetComponentInChildren<Kite2CharacterController>();
+            novelKite2CharacterController = characterContainer.GetComponentInChildren<Kite2CharacterController>();
         
-            base.novelKite2CharacterController.SetSkinSprite();
-            base.novelKite2CharacterController.SetHandSprite();
-            base.novelKite2CharacterController.SetClotheSprite();
-            base.novelKite2CharacterController.SetHairSprite();
+            novelKite2CharacterController.SetSkinSprite();
+            novelKite2CharacterController.SetHandSprite();
+            novelKite2CharacterController.SetClotheSprite();
+            novelKite2CharacterController.SetHairSprite();
             
             HandSpriteIndex handSpriteIndex = new HandSpriteIndex
             {

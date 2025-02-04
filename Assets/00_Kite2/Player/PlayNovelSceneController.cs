@@ -1023,6 +1023,7 @@ namespace _00_Kite2.Player
             if (novelControllerMap.TryGetValue(searchId, out Type controllerType))
             {
                 var controller = FindObjectsOfType(controllerType).FirstOrDefault() as MonoBehaviour;
+ 
                 if (controller != null && savedData.CharacterPrefabData != null)
                 {
                     if (savedData.CharacterPrefabData.TryGetValue(searchId, out CharacterData characterData))
@@ -1055,14 +1056,14 @@ namespace _00_Kite2.Player
                 elternController.novelKite2CharacterController2.SetClotheSprite(characterData.clotheIndex2);
                 elternController.novelKite2CharacterController2.SetHairSprite(characterData.hairIndex2);
             }
-
+            
             if (controller is PresseNovelImageController presseController)
             {
                 // Setze die Attribute basierend auf den gespeicherten Werten
-                presseController.kite2CharacterController.SetSkinSprite(characterData.skinIndex);
-                presseController.kite2CharacterController.SetHandSprite(characterData.handIndex);
-                presseController.kite2CharacterController.SetClotheSprite(characterData.clotheIndex);
-                presseController.kite2CharacterController.SetHairSprite(characterData.hairIndex);
+                presseController.novelKite2CharacterController.SetSkinSprite(characterData.skinIndex);
+                presseController.novelKite2CharacterController.SetHandSprite(characterData.handIndex);
+                presseController.novelKite2CharacterController.SetClotheSprite(characterData.clotheIndex);
+                presseController.novelKite2CharacterController.SetHairSprite(characterData.hairIndex);
             }
 
             if (controller is NotarinNovelImageController notarinController)
