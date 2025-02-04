@@ -121,6 +121,10 @@ namespace _00_Kite2.Player
             }
             else
             {
+                #if UNITY_IOS
+                        TextToSpeechManager.Instance().Speak("");
+                #endif
+                
                 BackStackManager.Instance()
                     .Clear(); // we go back to the explorer and don't want the back-button to bring us to the feedback scene again
                 SceneLoader.LoadFoundersBubbleScene();
