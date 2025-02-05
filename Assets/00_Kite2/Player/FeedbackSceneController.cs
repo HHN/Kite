@@ -122,7 +122,7 @@ namespace _00_Kite2.Player
             else
             {
                 #if UNITY_IOS
-                        TextToSpeechManager.Instance().Speak("");
+                        TextToSpeechManager.Instance.CancelSpeak();
                 #endif
                 
                 BackStackManager.Instance()

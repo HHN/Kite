@@ -18,6 +18,7 @@ namespace _00_Kite2.Common.UI.Scene_Base
         [SerializeField] private LeaveNovelAndGoBackToMainMenuMessageBox warningMessageBoxObjectClose;
         [SerializeField] private Canvas canvas;
         [SerializeField] private bool isNovelScene;
+        private bool isFeedbackScene;
 
         private PlayNovelSceneController
             _playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
@@ -56,9 +57,12 @@ namespace _00_Kite2.Common.UI.Scene_Base
                     return;
                 }
 
+                #if UNITY_IOS
+                    TextToSpeechManager.Instance.CancelSpeak();
+                #endif
+
                 SceneLoader.LoadScene(lastScene);
             }
-
 
             if (isNovelScene && _playNovelSceneController.NovelToPlay.id == 13)
             {
