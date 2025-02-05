@@ -27,18 +27,6 @@ Ich freue mich auf die Zusammenarbeit und darauf, Sie bei unserer Veranstaltung 
 [[Vielen Dank und ich wünsche Ihnen auch einen schönen Tag. Ich freue mich auf unsere zukünftigen Gespräche!->Ende]]
 
 
-:: 2.200 € 2 {"position":"2400,3775","size":"100,100"}
->>Charakter01SprichtLaecheln:<<
-Okay, danke, dass Sie uns entgegenkommen. Ich schicke Ihnen die Vertragsdetails zur Durchsicht. 
->>--<<
->>Charakter01SprichtLaechelnGross:<<
-Ich freue mich auf die Zusammenarbeit und darauf, Sie bei unserer Veranstaltung willkommen zu heißen.
-
-[[Danke, das wünsche ich Ihnen auch. Auf Wiedersehen.->Ende]]
-
-[[Vielen Dank und ich wünsche Ihnen auch einen schönen Tag. Ich freue mich auf unsere zukünftigen Gespräche!->Ende]]
-
-
 :: Abbruch {"position":"2975,3775","size":"100,100"}
 >>Charakter01SprichtNeutral:<<
 Nun gut, dann wünsche ich Ihnen alles Gute für die Zukunft. Vielleicht kommen wir trotzdem mal zusammen.
@@ -636,9 +624,9 @@ Nun gut. Wie viel verlangen Sie denn für die anderen zwei Vorträge?
 >>Charakter01SprichtFragend:<<
 Nun gut. Wie viel verlangen Sie denn für den anderen Vortrag?
 
-[[Für den anderen Vortrag nehme ich 2.200 € zzgl. USt.->2.200 € 2]]
+[[Für den anderen Vortrag nehme ich 2.200 € zzgl. USt.->Vertragsdetails 2]]
 
-[[Da liegt mein Honorar bei 2.200 € zzgl. USt. für den Vortrag.->2.200 € 2]]
+[[Wenn Sie beide Veranstaltungen zusammen buchen, liegt mein Honorar bei insgesamt 4.500 € zzgl. USt.->Vertragsdetails 2]]
 
 
 :: Reduzierung nicht möglich {"position":"3000,600","size":"100,100"}
@@ -814,7 +802,7 @@ Sie als Unternehmerin wissen ja selbst, wie wichtig ein guter Rahmen ist. Frauen
 
 [[Ein geregelter Rahmen ist für alle Beteiligten von Vorteil, unabhängig vom Geschlecht.->Geregelter Rahmen]]
 
-[[Ehrlich gesagt, habe ich das Gefühl ich, dass Sie in Schubladen denken.->Schubladenkdenken]]
+[[Ehrlich gesagt, habe ich das Gefühl, dass Sie in Schubladen denken.->Schubladenkdenken]]
 
 
 :: Vertrag Nachfrage 2 [Bias] {"position":"2425,2775","size":"100,100"}
@@ -826,6 +814,18 @@ Sie als Unternehmerin wissen ja selbst, wie wichtig ein guter Rahmen ist. Frauen
 [[Ein geregelter Rahmen ist für alle Beteiligten von Vorteil, unabhängig vom Geschlecht.->Geregelter Rahmen 2]]
 
 [[Ehrlich gesagt, habe ich das Gefühl ich, dass Sie in Schubladen denken.->Schubladenkdenken 2]]
+
+
+:: Vertragsdetails 2 {"position":"2400,3775","size":"100,100"}
+>>Charakter01SprichtLaecheln:<<
+Okay, danke, dass Sie uns entgegenkommen. Ich schicke Ihnen die Vertragsdetails zur Durchsicht. 
+>>--<<
+>>Charakter01SprichtLaechelnGross:<<
+Ich freue mich auf die Zusammenarbeit und darauf, Sie bei unserer Veranstaltung willkommen zu heißen.
+
+[[Danke, das wünsche ich Ihnen auch. Auf Wiedersehen.->Ende]]
+
+[[Vielen Dank und ich wünsche Ihnen auch einen schönen Tag. Ich freue mich auf unsere zukünftigen Gespräche!->Ende]]
 
 
 :: Wertschätzung {"position":"3350,2175","size":"100,100"}
@@ -857,7 +857,7 @@ Natürlich. Also, ich würde Sie dann gerne für diese Veranstaltung und schonma
 
 :: Wesentliche 2 {"position":"2500,3275","size":"100,100"}
 >>Charakter01SprichtLaecheln:<<
-Natürlich. Also, ich würde Sie dann gerne für diese Veranstaltung und schonmal für zwei weitere nächstes Jahr buchen. Wie würde denn da das Honorar aussehen?
+Natürlich. Also, ich würde Sie dann gerne für diese Veranstaltung und ein weiteres Mal für nächstes Jahr buchen. Wie würde denn da das Honorar aussehen?
 
 [[Ja, also wenn Sie direkt zwei Vorträge bei mir buchen, würde ich insgesamt 4.400 € zzgl. USt. berechnen. Also 2.200 € pro Vortrag.->Direkt zwei Vorträge]]
 
