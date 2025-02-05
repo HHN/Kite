@@ -17,7 +17,6 @@ namespace _00_Kite2.SaveNovelData
         public List<VisualNovelEvent> content;
         public List<string> messageType;
         public int optionCount;
-        public int currentCharacter;
         public Dictionary<int, int> CharacterExpressions = new();
         public Dictionary<long, CharacterData> CharacterPrefabData;
 

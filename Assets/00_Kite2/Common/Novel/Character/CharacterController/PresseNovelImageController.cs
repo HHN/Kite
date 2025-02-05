@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace _00_Kite2.Common.Novel.Character.CharacterController
@@ -21,8 +20,6 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         [SerializeField] private GameObject characterPrefab;
 
         private GameObject _instantiatedCharacter;
-
-        // public Kite2CharacterController kite2CharacterController;
 
         private void Start()
         {
