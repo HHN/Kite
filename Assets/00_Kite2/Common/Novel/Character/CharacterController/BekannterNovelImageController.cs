@@ -14,44 +14,39 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         [SerializeField] private Sprite[] animationFramesPlant;
 
         [SerializeField] private Transform characterContainer;
-        [SerializeField] private List<GameObject> characterPrefabs;
-        // [SerializeField] private GameObject characterPrefab;
+        [SerializeField] private GameObject characterPrefab;
 
         private GameObject _instantiatedCharacter;
-        [FormerlySerializedAs("characterController")] public Kite2CharacterController kite2CharacterController;
-
+        
         private void Start()
         {
-            SetInitialSpritesForImages();
-            SetInitialCharacters();
-        }
+            novelKite2CharacterController = characterContainer.GetComponentInChildren<Kite2CharacterController>();
         
-        // private void Start()
-        // {
-        //     // SetInitialSpritesForImages();
-        //     // SetInitialCharacters();
-        //     
-        //     novelKite2CharacterController = characterContainer.GetComponentInChildren<Kite2CharacterController>();
-        //
-        //     novelKite2CharacterController.SetSkinSprite();
-        //     novelKite2CharacterController.SetHandSprite();
-        //     novelKite2CharacterController.SetClotheSprite();
-        //     novelKite2CharacterController.SetHairSprite();
-        //
-        //     GameManager.CharacterDataList = new Dictionary<long, CharacterData>
-        //     {
-        //         {
-        //             9, // Schlüssel für den Eintrag
-        //             new CharacterData
-        //             {
-        //                 skinIndex = novelKite2CharacterController.skinIndex,
-        //                 handIndex = novelKite2CharacterController.handIndex,
-        //                 clotheIndex = novelKite2CharacterController.clotheIndex,
-        //                 hairIndex = novelKite2CharacterController.hairIndex
-        //             }
-        //         }
-        //     };
-        // }
+            novelKite2CharacterController.SetSkinSprite();
+            // novelKite2CharacterController.SetHandSprite();
+            novelKite2CharacterController.SetClotheSprite();
+            novelKite2CharacterController.SetHairSprite();
+            
+            HandSpriteIndex handSpriteIndex = new HandSpriteIndex
+            {
+                colorIndex = novelKite2CharacterController.handIndex[0],
+                spriteIndex = novelKite2CharacterController.handIndex[1],
+            };
+        
+            GameManager.CharacterDataList = new Dictionary<long, CharacterData>
+            {
+                {
+                    9, // Schlüssel für den Eintrag
+                    new CharacterData
+                    {
+                        skinIndex = novelKite2CharacterController.skinIndex,
+                        // handIndex = handSpriteIndex,
+                        clotheIndex = novelKite2CharacterController.clotheIndex,
+                        hairIndex = novelKite2CharacterController.hairIndex
+                    }
+                }
+            };
+        }
 
         private void SetInitialSpritesForImages()
         {
@@ -67,12 +62,9 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         private void SetInitialCharacters()
         {
-            if (characterPrefabs.Count <= 0) return;
+            if (characterPrefab == null) return;
 
-            int randomIndex = Random.Range(0, characterPrefabs.Count);
-            GameObject randomGameObject = characterPrefabs[randomIndex];
-
-            _instantiatedCharacter = Instantiate(randomGameObject, characterContainer, false);
+            _instantiatedCharacter = Instantiate(characterPrefab, characterContainer, false);
             RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
 
             if (rectTransform == null) return;
@@ -95,7 +87,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         public override void SetCharacter()
         {
-            base.novelKite2CharacterController = _instantiatedCharacter.GetComponent<Kite2CharacterController>();
+            // base.novelKite2CharacterController = _instantiatedCharacter.GetComponent<Kite2CharacterController>();
         }
 
         public override bool HandleTouchEvent(float x, float y)

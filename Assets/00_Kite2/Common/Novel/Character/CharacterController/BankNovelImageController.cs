@@ -50,8 +50,6 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                     }
                 }
             };
-            
-            // Kite2CharacterController = novelKite2CharacterController;
         }
 
         private void SetInitialSpritesForImages()

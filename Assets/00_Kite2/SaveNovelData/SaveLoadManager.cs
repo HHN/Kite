@@ -78,24 +78,55 @@ namespace _00_Kite2.SaveNovelData
                 }
             }
             
-            foreach (var characterData in characterPrefabData)
-            {
-                // Holen des Values (CharacterData)
-                CharacterData character = characterData.Value;
-
-                // Ausgabe der Eigenschaften
-                // Debug.Log("Character Skin Index 1: " + character.skinIndex);
-                // Debug.Log("Character Glass Index 1: " + character.glassIndex);
-                // Debug.Log("Character Hand Index 1: " + character.handIndex);
-                // Debug.Log("Character Clothe Index 1: " + character.clotheIndex);
-                // Debug.Log("Character Hair Index 1: " + character.hairIndex);
-    
-                // Debug.Log("Character Skin Index 2: " + character.skinIndex2);
-                // Debug.Log("Character Glass Index 2: " + character.glassIndex2);
-                // Debug.Log("Character Hand Index 2: " + character.handIndex2);
-                // Debug.Log("Character Clothe Index 2: " + character.clotheIndex2);
-                // Debug.Log("Character Hair Index 2: " + character.hairIndex2);
-            }
+            // VisualNovelEvent currentNovelEvent = new VisualNovelEvent();
+            // if (currentEvent.id.StartsWith("OptionsLabel"))
+            // {
+            //     int index = playNovelSceneController.EventHistory.Count - 1;
+            //
+            //     while (index >= 0 && playNovelSceneController.EventHistory[index].id.StartsWith("OptionsLabel"))
+            //     {
+            //         index--;
+            //     }
+            //
+            //     if (index >= 0) // Falls eine gültige ID gefunden wurde
+            //     {
+            //         string id = playNovelSceneController.EventHistory[index].id;
+            //         
+            //         foreach (var novelEvent in playNovelSceneController.NovelToPlay.novelEvents)
+            //         {
+            //             if (novelEvent.id == id)
+            //             {
+            //                 currentEvent = novelEvent;
+            //             }
+            //         }
+            //     }
+            // }
+            //
+            // Debug.Log(currentNovelEvent.character + " " + currentEvent.expressionType);
+            
+            // foreach (var characterData in characterPrefabData)
+            // {
+            //     // Holen des Values (CharacterData)
+            //     CharacterData character = characterData.Value;
+            //
+            //     // Ausgabe der Eigenschaften
+            //     Debug.Log("Character Skin Index 1: " + character.skinIndex);
+            //     Debug.Log("Character Glass Index 1: " + character.glassIndex);
+            //     Debug.Log("Character Hand Index 1: " + character.handIndex);
+            //     Debug.Log("Character Clothe Index 1: " + character.clotheIndex);
+            //     Debug.Log("Character Hair Index 1: " + character.hairIndex);
+            //
+            //     Debug.Log("Character Skin Index 2: " + character.skinIndex2);
+            //     Debug.Log("Character Glass Index 2: " + character.glassIndex2);
+            //     Debug.Log("Character Hand Index 2: " + character.handIndex2);
+            //     Debug.Log("Character Clothe Index 2: " + character.clotheIndex2);
+            //     Debug.Log("Character Hair Index 2: " + character.hairIndex2);
+            // }
+            
+            // foreach (var expression in playNovelSceneController.CharacterExpressions)
+            // {
+            //     Debug.Log("Save: " + expression.Key + " : " + expression.Value);
+            // }
             
             NovelSaveData saveData = new NovelSaveData
             {
@@ -108,7 +139,6 @@ namespace _00_Kite2.SaveNovelData
                 visualNovelEvents = conversationContentGuiController.VisualNovelEvents,
                 messageType = messageBoxesNames,
                 optionCount = _count,
-                currentCharacter = currentEvent.character,
                 CharacterExpressions = playNovelSceneController.CharacterExpressions,
                 CharacterPrefabData = characterPrefabData
             };

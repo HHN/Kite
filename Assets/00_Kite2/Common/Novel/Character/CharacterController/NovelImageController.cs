@@ -33,6 +33,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         public void SetFaceExpression(int characterId, int expressionType)
         {
+            Debug.Log("SetFaceExpression: " + characterId + " : " + expressionType);
             // case CharacterRole.NONE: { return 0; }
             // case CharacterRole.PLAYER: { return 1; }
             // case CharacterRole.INTRO: { return 2; }
@@ -48,6 +49,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
             if (novelKite2CharacterController == null)
             {
+                Debug.Log("novelKite2CharacterController is null");
             }
             else if (characterId == 0)
             {

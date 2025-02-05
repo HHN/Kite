@@ -622,6 +622,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7725fe153f9424b4aa8c7c2167c3f98e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  novelKite2CharacterController: {fileID: 0}
+  novelKite2CharacterController2: {fileID: 0}
   backgroundContainer: {fileID: 4321828020364627261}
   decoDeskContainer: {fileID: 4467964754824672667}
   decoKommodeContainer: {fileID: 2204003879144595292}
@@ -633,12 +635,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 744b1c2dae89b6f43a01072d74f6c67b, type: 3}
   - {fileID: 21300000, guid: c2b7968438f3b574fb90c9f4bec337a4, type: 3}
   characterContainer: {fileID: 3669613035356320353}
-  characterPrefabs:
-  - {fileID: 1465545687914413273, guid: 8c1acbda2949bf74a825ff93cd14ebc8, type: 3}
-  - {fileID: 1465545687914413273, guid: 6500c9bc7a51b5047b26953af9258dd5, type: 3}
-  - {fileID: 1465545687914413273, guid: e03454caec97c464cbe8bb8ae6de4164, type: 3}
-  - {fileID: 1465545687914413273, guid: 2e72e7a1ee2c818419950e3a88fdd3f9, type: 3}
-  - {fileID: 1465545687914413273, guid: d602141625fdaa741b6b4ade5b8687ed, type: 3}
+  characterPrefab: {fileID: 0}
 --- !u!1 &6178494739774191856
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,7 +900,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1465545687914413254, guid: 8c1acbda2949bf74a825ff93cd14ebc8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1767.4689
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1465545687914413254, guid: 8c1acbda2949bf74a825ff93cd14ebc8, type: 3}
       propertyPath: m_SizeDelta.y
@@ -963,7 +960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1465545687914413273, guid: 8c1acbda2949bf74a825ff93cd14ebc8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4253796331781111194, guid: 8c1acbda2949bf74a825ff93cd14ebc8, type: 3}
       propertyPath: m_SortingLayer

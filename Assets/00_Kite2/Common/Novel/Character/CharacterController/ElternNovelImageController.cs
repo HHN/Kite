@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using _00_Kite2.Common.Managers;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace _00_Kite2.Common.Novel.Character.CharacterController
@@ -43,9 +42,6 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         private void Start()
         {
-            // SetInitialSpritesForImages();
-            // SetInitialCharacters();
-            
             novelKite2CharacterController = motherCharacterContainer.GetComponentInChildren<Kite2CharacterController>();
             novelKite2CharacterController2 = fatherCharacterContainer.GetComponentInChildren<Kite2CharacterController>();
         
