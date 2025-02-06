@@ -46,7 +46,12 @@ namespace _00_Kite2.SaveNovelData
                     // Extract the number after "OptionsLabel"
                     string numericPart = match.Groups[1].Value;
                     formattedId = "OptionsLabel" + numericPart;
-                }
+                    
+                    // if (playNovelSceneController.PlayThroughHistory[^1].Equals(": "))
+                    // {
+                    //     playNovelSceneController.PlayThroughHistory[^1] = "Spielerin: ";
+                    // }
+                }            
             }
 
             List<string> messageBoxesNames = new List<string>();
@@ -127,11 +132,6 @@ namespace _00_Kite2.SaveNovelData
             // {
             //     Debug.Log("Save: " + expression.Key + " : " + expression.Value);
             // }
-
-            if (playNovelSceneController.PlayThroughHistory[^1].Equals(": "))
-            {
-                playNovelSceneController.PlayThroughHistory[^1] = "Spielerin: ";
-            }
             
             NovelSaveData saveData = new NovelSaveData
             {
