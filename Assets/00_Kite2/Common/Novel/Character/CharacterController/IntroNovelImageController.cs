@@ -12,8 +12,6 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         private GameObject _instantiatedCharacter;
 
-        public Kite2CharacterController kite2CharacterController;
-
         private void Start()
         {
             SetInitialCharacters();

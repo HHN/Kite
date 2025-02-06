@@ -1113,15 +1113,6 @@ namespace _00_Kite2.Player
                 verhandlungController.novelKite2CharacterController.SetClotheSprite(characterData.clotheIndex);
                 verhandlungController.novelKite2CharacterController.SetHairSprite(characterData.hairIndex);
             }
-
-            if (controller is IntroNovelImageController introController)
-            {
-                // Setze die Attribute basierend auf den gespeicherten Werten
-                introController.novelKite2CharacterController.SetSkinSprite(characterData.skinIndex);
-                introController.novelKite2CharacterController.SetHandSprite(characterData.handIndex);
-                introController.novelKite2CharacterController.SetClotheSprite(characterData.clotheIndex);
-                introController.novelKite2CharacterController.SetHairSprite(characterData.hairIndex);
-            }
         }
 
         private void RestoreCharacterExpressions(NovelSaveData savedData)
