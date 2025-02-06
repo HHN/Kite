@@ -81,8 +81,6 @@ namespace _00_Kite2.Player
                     ID = PlayManager.Instance().GetVisualNovelToPlay().id,
                     Dialog = dialog
                 };
-                
-                Debug.Log(dialog);
 
                 call.OnSuccessHandler = feedbackHandler;
                 call.OnErrorHandler = this;

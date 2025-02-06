@@ -148,12 +148,6 @@ namespace _00_Kite2.SaveNovelData
                 CharacterPrefabData = characterPrefabData
             };
 
-            // Debug.Log("PlayThroughHistory");
-            // foreach (var text in playNovelSceneController.PlayThroughHistory)
-            // {
-            //     Debug.Log(text);
-            // }
-
             // Save or update the novel in the dictionary
             allSaveData[currentNovelId] = saveData;
 

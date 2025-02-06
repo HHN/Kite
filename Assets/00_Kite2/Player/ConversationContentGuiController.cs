@@ -275,7 +275,12 @@ namespace _00_Kite2.Player
             for (int i = 0; i < savedData.visualNovelEvents.Count; i++)
             {
                 VisualNovelEvent visualNovelEvent = savedData.visualNovelEvents[i];
-                
+
+                if (visualNovelEvent.id.Contains("OptionsLabel") && visualNovelEvent.character == 0)
+                {
+                    visualNovelEvent.character = 1;
+                }
+
                 PromptManager.Instance().AddFormattedLineToPrompt(
                     CharacterTypeHelper.GetNameOfCharacter(visualNovelEvent.character),
                     PlayNovelSceneController.ReplacePlaceholders(visualNovelEvent.text,
