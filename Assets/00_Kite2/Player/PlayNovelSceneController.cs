@@ -1109,7 +1109,7 @@ namespace _00_Kite2.Player
             {
                 // Setze die Attribute basierend auf den gespeicherten Werten
                 verhandlungController.novelKite2CharacterController.SetSkinSprite(characterData.skinIndex);
-                verhandlungController.novelKite2CharacterController.SetHandSprite(characterData.handIndex);
+                // verhandlungController.novelKite2CharacterController.SetHandSprite(characterData.handIndex);
                 verhandlungController.novelKite2CharacterController.SetClotheSprite(characterData.clotheIndex);
                 verhandlungController.novelKite2CharacterController.SetHairSprite(characterData.hairIndex);
             }
