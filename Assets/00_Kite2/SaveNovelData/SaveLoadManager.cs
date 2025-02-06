@@ -127,6 +127,11 @@ namespace _00_Kite2.SaveNovelData
             // {
             //     Debug.Log("Save: " + expression.Key + " : " + expression.Value);
             // }
+
+            if (playNovelSceneController.PlayThroughHistory[^1].Equals(": "))
+            {
+                playNovelSceneController.PlayThroughHistory[^1] = "Spielerin: ";
+            }
             
             NovelSaveData saveData = new NovelSaveData
             {
@@ -142,6 +147,12 @@ namespace _00_Kite2.SaveNovelData
                 CharacterExpressions = playNovelSceneController.CharacterExpressions,
                 CharacterPrefabData = characterPrefabData
             };
+
+            // Debug.Log("PlayThroughHistory");
+            // foreach (var text in playNovelSceneController.PlayThroughHistory)
+            // {
+            //     Debug.Log(text);
+            // }
 
             // Save or update the novel in the dictionary
             allSaveData[currentNovelId] = saveData;
