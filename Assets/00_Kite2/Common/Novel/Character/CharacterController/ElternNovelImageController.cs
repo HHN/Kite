@@ -43,42 +43,40 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         private void Start()
         {
             novelKite2CharacterController = motherCharacterContainer.GetComponentInChildren<Kite2CharacterController>();
-            novelKite2CharacterController2 = fatherCharacterContainer.GetComponentInChildren<Kite2CharacterController>();
-        
+            novelKite2CharacterController2 =
+                fatherCharacterContainer.GetComponentInChildren<Kite2CharacterController>();
+
             novelKite2CharacterController.SetSkinSprite();
             novelKite2CharacterController.SetHandSprite();
             novelKite2CharacterController.SetClotheSprite();
             novelKite2CharacterController.SetHairSprite();
-            
+
             novelKite2CharacterController2.SetSkinSprite();
             novelKite2CharacterController2.SetClotheSprite();
             novelKite2CharacterController2.SetHairSprite();
             novelKite2CharacterController2.SetGlassesSprite();
-        
+
             HandSpriteIndex handSpriteIndex = new HandSpriteIndex
             {
                 colorIndex = novelKite2CharacterController.handIndex[0],
                 spriteIndex = novelKite2CharacterController.handIndex[1],
             };
 
-            GameManager.CharacterDataList = new Dictionary<long, CharacterData>
-            {
+            GameManager.Instance.AddCharacterData(
+                2, // Schlüssel für den Eintrag
+                new CharacterData
                 {
-                    2, // Schlüssel für den Eintrag
-                    new CharacterData
-                    {
-                        skinIndex = novelKite2CharacterController.skinIndex,
-                        handIndex = handSpriteIndex,
-                        clotheIndex = novelKite2CharacterController.clotheIndex,
-                        hairIndex = novelKite2CharacterController.hairIndex,
-                        
-                        skinIndex2 = novelKite2CharacterController2.skinIndex,
-                        clotheIndex2 = novelKite2CharacterController2.clotheIndex,
-                        hairIndex2 = novelKite2CharacterController2.hairIndex,
-                        glassIndex2 = novelKite2CharacterController2.glassIndex
-                    }
+                    skinIndex = novelKite2CharacterController.skinIndex,
+                    handIndex = handSpriteIndex,
+                    clotheIndex = novelKite2CharacterController.clotheIndex,
+                    hairIndex = novelKite2CharacterController.hairIndex,
+
+                    skinIndex2 = novelKite2CharacterController2.skinIndex,
+                    clotheIndex2 = novelKite2CharacterController2.clotheIndex,
+                    hairIndex2 = novelKite2CharacterController2.hairIndex,
+                    glassIndex2 = novelKite2CharacterController2.glassIndex
                 }
-            };
+            );
         }
 
         private void SetInitialSpritesForImages()
@@ -123,45 +121,45 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         private void SetInitialCharacters()
         {
             if (characterMutterPrefab == null || characterVaterPrefab == null) return;
-            
+
             _instantiatedMotherCharacter = Instantiate(characterMutterPrefab, motherCharacterContainer, false);
             RectTransform rectTransformMutter = _instantiatedMotherCharacter.GetComponent<RectTransform>();
             if (rectTransformMutter != null)
             {
                 rectTransformMutter.anchorMin = new Vector2(0.5f, 0.5f);
                 rectTransformMutter.anchorMax = new Vector2(0.5f, 0.5f);
-            
+
                 rectTransformMutter.pivot = new Vector2(0.5f, 0.5f);
-            
+
                 rectTransformMutter.anchoredPosition = new Vector2(-315, -597);
-            
+
                 rectTransformMutter.sizeDelta = new Vector2(1200.339f, 1044);
-            
+
                 rectTransformMutter.localPosition = new Vector3(-315, -597, 0);
-            
+
                 rectTransformMutter.localScale = new Vector3(1, 1, 1);
-            
+
                 rectTransformMutter.localRotation = Quaternion.Euler(0, 0, 0);
             }
-            
+
             _instantiatedFatherCharacter = Instantiate(characterVaterPrefab, fatherCharacterContainer, false);
             RectTransform rectTransformVater = _instantiatedFatherCharacter.GetComponent<RectTransform>();
-            
+
             if (rectTransformVater != null)
             {
                 rectTransformVater.anchorMin = new Vector2(0.5f, 0.5f);
                 rectTransformVater.anchorMax = new Vector2(0.5f, 0.5f);
-            
+
                 rectTransformVater.pivot = new Vector2(0.5f, 0.5f);
-            
+
                 rectTransformVater.anchoredPosition = new Vector2(204, -610);
-            
+
                 rectTransformVater.sizeDelta = new Vector2(1200.339f, 1044);
-            
+
                 rectTransformVater.localPosition = new Vector3(204, -610, 0);
-            
+
                 rectTransformVater.localScale = new Vector3(1, 1, 1);
-            
+
                 rectTransformVater.localRotation = Quaternion.Euler(0, 0, 0);
             }
         }
@@ -285,123 +283,123 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             }
 
             Instantiate(decoTasse1Prefab, decoTasse1Container.transform);
-        
+
 
             yield return new WaitForSeconds(0f);
         }
 
         private IEnumerator OnDecoTasse2()
         {
-                GlobalVolumeManager.Instance.PlaySound(decoTasseAudio);
+            GlobalVolumeManager.Instance.PlaySound(decoTasseAudio);
 
-                Image image = decoTasse2Prefab.GetComponent<Image>();
-                image.sprite = animationFramesTasse2[1];
-                if (decoTasse2Container.transform.childCount > 0)
-                {
-                    Destroy(decoTasse2Container.transform.GetChild(0).gameObject);
-                }
+            Image image = decoTasse2Prefab.GetComponent<Image>();
+            image.sprite = animationFramesTasse2[1];
+            if (decoTasse2Container.transform.childCount > 0)
+            {
+                Destroy(decoTasse2Container.transform.GetChild(0).gameObject);
+            }
 
-                Instantiate(decoTasse2Prefab, decoTasse2Container.transform);
-                yield return new WaitForSeconds(0.5f);
-                image.sprite = animationFramesTasse2[2];
-                if (decoTasse2Container.transform.childCount > 0)
-                {
-                    Destroy(decoTasse2Container.transform.GetChild(0).gameObject);
-                }
+            Instantiate(decoTasse2Prefab, decoTasse2Container.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFramesTasse2[2];
+            if (decoTasse2Container.transform.childCount > 0)
+            {
+                Destroy(decoTasse2Container.transform.GetChild(0).gameObject);
+            }
 
-                Instantiate(decoTasse2Prefab, decoTasse2Container.transform);
-                yield return new WaitForSeconds(0.5f);
-                image.sprite = animationFramesTasse2[3];
-                if (decoTasse2Container.transform.childCount > 0)
-                {
-                    Destroy(decoTasse2Container.transform.GetChild(0).gameObject);
-                }
+            Instantiate(decoTasse2Prefab, decoTasse2Container.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFramesTasse2[3];
+            if (decoTasse2Container.transform.childCount > 0)
+            {
+                Destroy(decoTasse2Container.transform.GetChild(0).gameObject);
+            }
 
-                Instantiate(decoTasse2Prefab, decoTasse2Container.transform);
-                yield return new WaitForSeconds(0.5f);
-                image.sprite = animationFramesTasse2[0];
-                if (decoTasse2Container.transform.childCount > 0)
-                {
-                    Destroy(decoTasse2Container.transform.GetChild(0).gameObject);
-                }
+            Instantiate(decoTasse2Prefab, decoTasse2Container.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFramesTasse2[0];
+            if (decoTasse2Container.transform.childCount > 0)
+            {
+                Destroy(decoTasse2Container.transform.GetChild(0).gameObject);
+            }
 
-                Instantiate(decoTasse2Prefab, decoTasse2Container.transform);
-            
+            Instantiate(decoTasse2Prefab, decoTasse2Container.transform);
+
 
             yield return new WaitForSeconds(0f);
         }
 
         private IEnumerator OnDecoKanne()
         {
-                GlobalVolumeManager.Instance.PlaySound(decoKanneAudio);
+            GlobalVolumeManager.Instance.PlaySound(decoKanneAudio);
 
-                Image image = decoKannePrefab.GetComponent<Image>();
-                image.sprite = animationFramesKanne[1];
-                if (decoKanneContainer.transform.childCount > 0)
-                {
-                    Destroy(decoKanneContainer.transform.GetChild(0).gameObject);
-                }
+            Image image = decoKannePrefab.GetComponent<Image>();
+            image.sprite = animationFramesKanne[1];
+            if (decoKanneContainer.transform.childCount > 0)
+            {
+                Destroy(decoKanneContainer.transform.GetChild(0).gameObject);
+            }
 
-                Instantiate(decoKannePrefab, decoKanneContainer.transform);
-                yield return new WaitForSeconds(0.5f);
-                image.sprite = animationFramesKanne[2];
-                if (decoKanneContainer.transform.childCount > 0)
-                {
-                    Destroy(decoKanneContainer.transform.GetChild(0).gameObject);
-                }
+            Instantiate(decoKannePrefab, decoKanneContainer.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFramesKanne[2];
+            if (decoKanneContainer.transform.childCount > 0)
+            {
+                Destroy(decoKanneContainer.transform.GetChild(0).gameObject);
+            }
 
-                Instantiate(decoKannePrefab, decoKanneContainer.transform);
-                yield return new WaitForSeconds(0.5f);
-                image.sprite = animationFramesKanne[3];
-                if (decoKanneContainer.transform.childCount > 0)
-                {
-                    Destroy(decoKanneContainer.transform.GetChild(0).gameObject);
-                }
+            Instantiate(decoKannePrefab, decoKanneContainer.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFramesKanne[3];
+            if (decoKanneContainer.transform.childCount > 0)
+            {
+                Destroy(decoKanneContainer.transform.GetChild(0).gameObject);
+            }
 
-                Instantiate(decoKannePrefab, decoKanneContainer.transform);
-                yield return new WaitForSeconds(0.5f);
-                image.sprite = animationFramesKanne[0];
-                if (decoKanneContainer.transform.childCount > 0)
-                {
-                    Destroy(decoKanneContainer.transform.GetChild(0).gameObject);
-                }
+            Instantiate(decoKannePrefab, decoKanneContainer.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFramesKanne[0];
+            if (decoKanneContainer.transform.childCount > 0)
+            {
+                Destroy(decoKanneContainer.transform.GetChild(0).gameObject);
+            }
 
-                Instantiate(decoKannePrefab, decoKanneContainer.transform);
+            Instantiate(decoKannePrefab, decoKanneContainer.transform);
 
             yield return new WaitForSeconds(0f);
         }
 
         private IEnumerator OnDecoLampe()
         {
-                AudioClip clip = _decoLampeStatus ? decoLampeOffAudio : decoLampeOnAudio;
-                GlobalVolumeManager.Instance.PlaySound(clip);
+            AudioClip clip = _decoLampeStatus ? decoLampeOffAudio : decoLampeOnAudio;
+            GlobalVolumeManager.Instance.PlaySound(clip);
 
-                if (_decoLampeStatus)
+            if (_decoLampeStatus)
+            {
+                Image image = decoLampePrefab.GetComponent<Image>();
+                image.sprite = decoLampeOff;
+                if (decoLampeContainer.transform.childCount > 0)
                 {
-                    Image image = decoLampePrefab.GetComponent<Image>();
-                    image.sprite = decoLampeOff;
-                    if (decoLampeContainer.transform.childCount > 0)
-                    {
-                        Destroy(decoLampeContainer.transform.GetChild(0).gameObject);
-                    }
-
-                    Instantiate(decoLampePrefab, decoLampeContainer.transform);
-                    _decoLampeStatus = false;
-                    yield return new WaitForSeconds(0.5f);
+                    Destroy(decoLampeContainer.transform.GetChild(0).gameObject);
                 }
-                else
+
+                Instantiate(decoLampePrefab, decoLampeContainer.transform);
+                _decoLampeStatus = false;
+                yield return new WaitForSeconds(0.5f);
+            }
+            else
+            {
+                Image image = decoLampePrefab.GetComponent<Image>();
+                image.sprite = decoLampeOn;
+                if (decoLampeContainer.transform.childCount > 0)
                 {
-                    Image image = decoLampePrefab.GetComponent<Image>();
-                    image.sprite = decoLampeOn;
-                    if (decoLampeContainer.transform.childCount > 0)
-                    {
-                        Destroy(decoLampeContainer.transform.GetChild(0).gameObject);
-                    }
-
-                    Instantiate(decoLampePrefab, decoLampeContainer.transform);
-                    _decoLampeStatus = true;
-                    yield return new WaitForSeconds(0.5f);
+                    Destroy(decoLampeContainer.transform.GetChild(0).gameObject);
                 }
+
+                Instantiate(decoLampePrefab, decoLampeContainer.transform);
+                _decoLampeStatus = true;
+                yield return new WaitForSeconds(0.5f);
+            }
 
             yield return new WaitForSeconds(0f);
         }

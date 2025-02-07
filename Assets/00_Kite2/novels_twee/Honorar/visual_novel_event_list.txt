@@ -472,7 +472,7 @@ Nun gut, und wie viel würde das Briefing kosten?
 
 [[200 €.->Briefing regulär]]
 
-[[Ich berechne regulär 200 € für das Briefing, aber für Sie reduziere ich es auf 100 €->Vertrag]]
+[[Ich berechne regulär 200 € für das Briefing, aber für Sie reduziere ich es auf 100 €.->Vertrag]]
 
 
 :: Nicht im Paketpreis 2 {"position":"2625,2175","size":"100,100"}
@@ -481,7 +481,7 @@ Nun gut, und wie viel würde das Briefing kosten?
 
 [[200 €.->Briefing regulär 2]]
 
-[[Ich berechne regulär 200 € für das Briefing, aber für Sie reduziere ich es auf 100 €->Vertrag 2]]
+[[Ich berechne regulär 200 € für das Briefing, aber für Sie reduziere ich es auf 100 €.->Vertrag 2]]
 
 
 :: Nicht niedriger {"position":"3275,3775","size":"100,100"}
@@ -871,7 +871,7 @@ Das klingt vernünftig. Es ist nur so, ich habe den Eindruck, dass Sie sich viel
 >>Charakter01SprichtFragend:<<
 Aber denken Sie, Sie können diese Qualität bei zunehmendem Druck beibehalten?
 
-[[Mit meiner Erfahrung als Speakerin gehe ich souverän mit solchen Anforderungen um.->Honorar II]]
+[[Dank meiner Erfahrung als Speakerin gehe ich souverän mit solchen Anforderungen um.->Honorar II]]
 
 [[Druck gehört in meinem Beruf dazu. Ich bin erfahren darin, auch unter solchen Bedingungen meine Ziele zu erreichen.->Honorar II]]
 

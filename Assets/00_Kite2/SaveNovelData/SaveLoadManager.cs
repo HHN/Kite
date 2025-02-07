@@ -75,7 +75,7 @@ namespace _00_Kite2.SaveNovelData
                 var characterController = playNovelSceneController.NovelImageController;
                 if (characterController != null)
                 {
-                    foreach (var characterData in GameManager.CharacterDataList)
+                    foreach (var characterData in GameManager.Instance.GetCharacterDataDictionary())
                     {
                         // Add the data to the dictionary
                         characterPrefabData.Add(characterData.Key, characterData.Value);
