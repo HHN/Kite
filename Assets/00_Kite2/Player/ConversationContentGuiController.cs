@@ -272,7 +272,7 @@ namespace _00_Kite2.Player
             // GameManager.Instance.calledFromReload = true;
 
             // Durchlaufe jedes Event in visualNovelEvents und erstelle das entsprechende GUI-Element
-            for (int i = 0; i < savedData.visualNovelEvents.Count; i++)
+            for (int i = 0; i <= savedData.visualNovelEvents.Count - 1; i++)
             {
                 VisualNovelEvent visualNovelEvent = savedData.visualNovelEvents[i];
 

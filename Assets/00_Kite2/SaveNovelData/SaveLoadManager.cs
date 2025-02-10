@@ -32,39 +32,113 @@ namespace _00_Kite2.SaveNovelData
             // Current novel data
             string currentNovelId = playNovelSceneController.NovelToPlay.id.ToString();
 
+            // Speichern an der Stelle von OnChoice
+            // Alles danach verwerfen, sodass man wieder beim Auswahlverfahren beginnt
             VisualNovelEvent currentEvent = playNovelSceneController.GetCurrentEvent();
 
             // Define a new event ID format
             string formattedId = currentEvent.id;
 
-            if (currentEvent.id.StartsWith("OptionsLabel"))
+            // Use Regex to extract "OptionsLabel" followed by numbers
+            Match match = Regex.Match(currentEvent.id, @"^OptionsLabel(\d+)");
+            bool noMatch = false;
+
+            // Falls ein passendes Muster gefunden wurde, formatierte ID setzen
+            if (match.Success)
             {
-                // Use Regex to extract "OptionsLabel" followed by numbers
-                Match match = Regex.Match(currentEvent.id, @"^OptionsLabel(\d+)");
-                if (match.Success)
+                formattedId = "OptionsLabel" + match.Groups[1].Value;
+            }
+            else if (!match.Success) // Falls kein Treffer, durchlaufe die Liste rückwärts
+            {
+                for (int i = conversationContentGuiController.Content.Count - 1; i >= 0; i--)
                 {
-                    // Extract the number after "OptionsLabel"
-                    string numericPart = match.Groups[1].Value;
-                    formattedId = "OptionsLabel" + numericPart;
-                    
-                    // if (playNovelSceneController.PlayThroughHistory[^1].Equals(": "))
-                    // {
-                    //     playNovelSceneController.PlayThroughHistory[^1] = "Spielerin: ";
-                    // }
-                }            
+                    match = Regex.Match(conversationContentGuiController.Content[i].id, @"^OptionsLabel(\d+)");
+                    if (match.Success)
+                    {
+                        formattedId = "OptionsLabel" + match.Groups[1].Value;
+                        noMatch = true;
+                        break;
+                    }
+                }
             }
 
-            List<string> messageBoxesNames = new List<string>();
-            foreach (var messageBox in conversationContentGuiController.GuiContent)
-            {
-                if (!messageBox.name.Contains("OptionsToChooseFrom(Clone)"))
-                {
-                    if (messageBox.name.Contains("Blue Message Prefab With Trigger(Clone)"))
-                    {
-                        _count++;
-                    }
+            // List<string> messageBoxesNames = new List<string>();
+            // foreach (var messageBox in conversationContentGuiController.GuiContent)
+            // {
+            //     if (!messageBox.name.Contains("OptionsToChooseFrom(Clone)"))
+            //     {
+            //         if (messageBox.name.Contains("Blue Message Prefab With Trigger(Clone)"))
+            //         {
+            //             _count++;
+            //         }
+            //
+            //         messageBoxesNames.Add(messageBox.name);
+            //     }
+            // }
 
-                    messageBoxesNames.Add(messageBox.name);
+            List<string> messageBoxesNames = new List<string>();
+            int index = 0;
+
+            if (noMatch) // Falls vorher kein Match gefunden wurde, auch hier rückwärts durchsuchen
+            {
+                for (int i = conversationContentGuiController.GuiContent.Count - 1; i >= 0; i--)
+                {
+                    var messageBox = conversationContentGuiController.GuiContent[i];
+
+                    // Wenn "OptionsToChooseFrom(Clone)" gefunden wird, brich ab
+                    if (messageBox.name.Contains("OptionsToChooseFrom(Clone)"))
+                    {
+                        index = i;
+                        break;
+                    }
+                }
+
+                // Hier wird der GuiContent nur bis zum gefundenen Index durchlaufen
+                for (int i = 0; i < index; i++)
+                {
+                    var messageBox = conversationContentGuiController.GuiContent[i];
+
+                    if (!messageBox.name.Contains("OptionsToChooseFrom(Clone)"))
+                    {
+                        if (messageBox.name.Contains("Blue Message Prefab With Trigger(Clone)"))
+                        {
+                            _count++;
+                        }
+
+                        messageBoxesNames.Add(messageBox.name);
+                    }
+                }
+
+                int indexToRemoveUpTo = -1;
+                for (int i = conversationContentGuiController.VisualNovelEvents.Count - 1; i >= 0; i--)
+                {
+                    if (conversationContentGuiController.VisualNovelEvents[i].id.Contains(formattedId))
+                    {
+                        indexToRemoveUpTo = i;
+                        break; // Element gefunden, Schleife verlassen
+                    }
+                }
+
+                // Wenn ein Element gefunden wurde, lösche alles von hinten bis zu diesem Index
+                if (indexToRemoveUpTo != -1)
+                {
+                    // Entfernt alle Elemente von indexToRemoveUpTo bis zum Ende der Liste
+                    conversationContentGuiController.VisualNovelEvents.RemoveRange(indexToRemoveUpTo, conversationContentGuiController.VisualNovelEvents.Count - indexToRemoveUpTo);
+                }
+            }
+            else // Falls vorher ein Match gefunden wurde, normal durchlaufen
+            {
+                foreach (var messageBox in conversationContentGuiController.GuiContent)
+                {
+                    if (!messageBox.name.Contains("OptionsToChooseFrom(Clone)"))
+                    {
+                        if (messageBox.name.Contains("Blue Message Prefab With Trigger(Clone)"))
+                        {
+                            _count++;
+                        }
+
+                        messageBoxesNames.Add(messageBox.name);
+                    }
                 }
             }
 
@@ -79,65 +153,15 @@ namespace _00_Kite2.SaveNovelData
                     {
                         // Add the data to the dictionary
                         characterPrefabData.Add(characterData.Key, characterData.Value);
-                    } 
+                    }
                 }
             }
-            
-            // VisualNovelEvent currentNovelEvent = new VisualNovelEvent();
-            // if (currentEvent.id.StartsWith("OptionsLabel"))
-            // {
-            //     int index = playNovelSceneController.EventHistory.Count - 1;
-            //
-            //     while (index >= 0 && playNovelSceneController.EventHistory[index].id.StartsWith("OptionsLabel"))
-            //     {
-            //         index--;
-            //     }
-            //
-            //     if (index >= 0) // Falls eine gültige ID gefunden wurde
-            //     {
-            //         string id = playNovelSceneController.EventHistory[index].id;
-            //         
-            //         foreach (var novelEvent in playNovelSceneController.NovelToPlay.novelEvents)
-            //         {
-            //             if (novelEvent.id == id)
-            //             {
-            //                 currentEvent = novelEvent;
-            //             }
-            //         }
-            //     }
-            // }
-            //
-            // Debug.Log(currentNovelEvent.character + " " + currentEvent.expressionType);
-            
-            // foreach (var characterData in characterPrefabData)
-            // {
-            //     // Holen des Values (CharacterData)
-            //     CharacterData character = characterData.Value;
-            //
-            //     // Ausgabe der Eigenschaften
-            //     Debug.Log("Character Skin Index 1: " + character.skinIndex);
-            //     Debug.Log("Character Glass Index 1: " + character.glassIndex);
-            //     Debug.Log("Character Hand Index 1: " + character.handIndex);
-            //     Debug.Log("Character Clothe Index 1: " + character.clotheIndex);
-            //     Debug.Log("Character Hair Index 1: " + character.hairIndex);
-            //
-            //     Debug.Log("Character Skin Index 2: " + character.skinIndex2);
-            //     Debug.Log("Character Glass Index 2: " + character.glassIndex2);
-            //     Debug.Log("Character Hand Index 2: " + character.handIndex2);
-            //     Debug.Log("Character Clothe Index 2: " + character.clotheIndex2);
-            //     Debug.Log("Character Hair Index 2: " + character.hairIndex2);
-            // }
-            
-            // foreach (var expression in playNovelSceneController.CharacterExpressions)
-            // {
-            //     Debug.Log("Save: " + expression.Key + " : " + expression.Value);
-            // }
 
             if (playNovelSceneController.PlayThroughHistory[^1].Equals(": "))
             {
                 playNovelSceneController.PlayThroughHistory[^1] = "Spielerin: ";
             }
-            
+
             NovelSaveData saveData = new NovelSaveData
             {
                 //novelId = currentNovelId,
@@ -153,12 +177,7 @@ namespace _00_Kite2.SaveNovelData
                 CharacterPrefabData = characterPrefabData
             };
 
-            // Debug.Log("PlayThroughHistory");
-            // foreach (var text in playNovelSceneController.PlayThroughHistory)
-            // {
-            //     Debug.Log(text);
-            // }
-
+            DeleteNovelSaveData(currentNovelId);
             // Save or update the novel in the dictionary
             allSaveData[currentNovelId] = saveData;
 
@@ -183,6 +202,7 @@ namespace _00_Kite2.SaveNovelData
             // Look for a save file with the matching novel ID
             return allSaveData.GetValueOrDefault(currentNovelId);
         }
+
         /// <summary>
         /// Loads all saved data from the JSON file.
         /// </summary>
@@ -233,7 +253,7 @@ namespace _00_Kite2.SaveNovelData
                 Debug.LogWarning($"Kein Spielstand für Novel ID {novelId} gefunden.");
             }
         }
-        
+
         /// <summary>
         /// Deletes all saved novel data.
         /// </summary>
