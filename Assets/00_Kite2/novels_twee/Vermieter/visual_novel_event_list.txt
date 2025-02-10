@@ -454,7 +454,7 @@ Ach so, ja, das hatten Sie erwähnt. Gut, dass Sie sich Sachen besser merken kö
 >>Charakter01SprichtLaecheln:<<
 Gut, dass Sie gut vorbereitet sind. Mieten Sie zum ersten Mal Büroflächen? Haben Sie alle Details und Kosten berücksichtigt?
 
-[[Ja, ich miete zum ersten Mal und habe aber alles berücksichtigt.->Faktoren]]
+[[Ja, ich miete zum ersten Mal, habe aber alles berücksichtigt->Faktoren]]
 
 [[Ich habe schonmal Büroflächen gemietet und weiß, worauf ich achten muss.->Faktoren]]
 

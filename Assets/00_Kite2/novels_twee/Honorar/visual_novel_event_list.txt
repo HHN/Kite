@@ -396,7 +396,7 @@ Ein wenig weniger strikte Linien können aber auch manchmal den Spielraum erweit
 
 [[Anpassungsfähigkeit heißt für mich, den besten Service zu bieten, ohne die Preise zu verbiegen.->Anpassungsfähigkeit]]
 
-[[Ich bin Ihnen ja bereits mit einem Paketpreis entgegengekommen. Mehr ist nicht möglich.->Paketpreis]]
+[[In Verhandlungen geht es um klare Konditionen, nicht um Geschlechterklischees.->Klare Konditionen]]
 
 
 :: Klare Grenzen 2 [Bias] {"position":"2750,2450","size":"100,100"}
@@ -407,7 +407,7 @@ Ein wenig weniger strikte Linien können aber auch manchmal den Spielraum erweit
 
 [[Anpassungsfähigkeit heißt für mich, den besten Service zu bieten, ohne die Preise zu verbiegen.->Anpassungsfähigkeit 2]]
 
-[[Ich bin Ihnen ja bereits mit einem Paketpreis entgegengekommen. Mehr ist nicht möglich.->Paketpreis 2]]
+[[In Verhandlungen geht es um klare Konditionen, nicht um Geschlechterklischees.->Klare Konditionen 2]]
 
 
 :: Mehr trauen [Bias] {"position":"3350,1725","size":"100,100"}
@@ -535,7 +535,7 @@ Das klingt gut. Dann wünsche ich Ihnen noch einen schönen Tag.
 [[Vielen Dank und ich wünsche Ihnen auch einen schönen Tag. Ich freue mich auf unsere zukünftigen Gespräche!->Ende]]
 
 
-:: Paketpreis [Bias] {"position":"3250,2625","size":"100,100"}
+:: Klare Konditionen [Bias] {"position":"3250,2625","size":"100,100"}
 >>Charakter01SprichtLachend:<<
 Das stimmt. Ach, wissen Sie was? Ich nehme Ihr Angebot an. Lassen Sie uns doch die Details am besten auch im Vertrag festhalten. Sie wissen ja, bei Frauen ist es oft besser, alles klar zu regeln.
 >>--<<
@@ -546,7 +546,7 @@ Das stimmt. Ach, wissen Sie was? Ich nehme Ihr Angebot an. Lassen Sie uns doch d
 [[Interessant, dass Sie das extra betonen. Ich denke, klare Verträge sind generell sinnvoll, unabhängig vom Geschlecht.->Betonung]]
 
 
-:: Paketpreis 2 [Bias] {"position":"2625,2625","size":"100,100"}
+:: Klare Konditionen 2 [Bias] {"position":"2625,2625","size":"100,100"}
 >>Charakter01SprichtLachend:<<
 Das stimmt. Ach, wissen Sie was? Ich nehme Ihr Angebot an. Lassen Sie uns doch die Details am besten auch im Vertrag festhalten. Sie wissen ja, bei Frauen ist es oft besser, alles klar zu regeln.
 >>--<<
@@ -722,7 +722,7 @@ Gerade als Frau ist doch Anpassungsfähigkeit oft von Vorteil.
 
 [[Anpassungsfähigkeit heißt für mich, den besten Service zu bieten, ohne die Preise zu verbiegen.->Anpassungsfähigkeit]]
 
-[[Ich bin Ihnen ja bereits mit einem Paketpreis entgegengekommen. Mehr ist nicht möglich.->Paketpreis]]
+[[Wie gesagt, in Verhandlungen geht es um klare Konditionen, nicht um Geschlechterklischees.->Klare Konditionen]]
 
 
 :: Teil des Geschäftlichen 2 [Bias] {"position":"2625,2450","size":"100,100"}
@@ -733,7 +733,7 @@ Gerade als Frau ist doch Anpassungsfähigkeit oft von Vorteil.
 
 [[Anpassungsfähigkeit heißt für mich, den besten Service zu bieten, ohne die Preise zu verbiegen.->Anpassungsfähigkeit 2]]
 
-[[Ich bin Ihnen ja bereits mit einem Paketpreis entgegengekommen. Mehr ist nicht möglich.->Paketpreis 2]]
+[[Wie gesagt, in Verhandlungen geht es um klare Konditionen, nicht um Geschlechterklischees.->Klare Konditionen 2]]
 
 
 :: Transparent {"position":"3075,2025","size":"100,100"}
