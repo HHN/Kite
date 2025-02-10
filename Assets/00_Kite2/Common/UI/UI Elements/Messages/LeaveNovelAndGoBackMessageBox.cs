@@ -99,6 +99,7 @@ namespace _00_Kite2.Common.UI.UI_Elements.Messages
         private void OnPauseButton()
         {
             SaveLoadManager.SaveNovelData(_playNovelSceneController, _conversationContentGuiController);
+            GameManager.Instance.CheckAndSetAllNovelsStatus();
             LeaveNovel();
         }
 
@@ -106,7 +107,7 @@ namespace _00_Kite2.Common.UI.UI_Elements.Messages
         {
             // Lösche den zugehörigen Speicherstand
             SaveLoadManager.DeleteNovelSaveData(_playNovelSceneController.NovelToPlay.id.ToString());
-            
+            GameManager.Instance.CheckAndSetAllNovelsStatus();
             LeaveNovel();
         }
 

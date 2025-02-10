@@ -125,6 +125,8 @@ namespace _00_Kite2.Player
 
         private void Start()
         {
+            GameManager.Instance.CheckAndSetAllNovelsStatus();
+            
             _conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
 
             AnalyticsServiceHandler.Instance().StartStopwatch();

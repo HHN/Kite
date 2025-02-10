@@ -79,6 +79,7 @@ namespace _00_Kite2.SaveNovelData
         private void OnRestartButton()
         {
             _playNovelSceneController.RestartNovel();
+            GameManager.Instance.CheckAndSetAllNovelsStatus();
             CloseMessageBox();
         }
 

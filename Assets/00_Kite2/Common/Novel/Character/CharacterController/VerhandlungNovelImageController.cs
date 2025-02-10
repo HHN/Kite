@@ -30,17 +30,30 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
             // novelKite2CharacterController.SetHandSprite();
             novelKite2CharacterController.SetClotheSprite();
             novelKite2CharacterController.SetHairSprite();
-
-            GameManager.Instance.AddCharacterData(
-                11, // Schlüssel für den Eintrag
-                new CharacterData
+            
+            foreach (var novelStatus in GameManager.Instance.NovelSaveStatusList)
+            {
+                // Wenn das Novel die gesuchte ID hat, setze den isSaved Wert
+                int.TryParse(novelStatus.novelId, out int number);
+                if (number == 10)
                 {
-                    skinIndex = novelKite2CharacterController.skinIndex,
-                    // handIndex = novelKite2CharacterController.handIndex,
-                    clotheIndex = novelKite2CharacterController.clotheIndex,
-                    hairIndex = novelKite2CharacterController.hairIndex
+                    if (!novelStatus.isSaved)
+                    {
+                        GameManager.Instance.AddCharacterData(
+                            11, // Schlüssel für den Eintrag
+                            new CharacterData
+                            {
+                                skinIndex = novelKite2CharacterController.skinIndex,
+                                // handIndex = novelKite2CharacterController.handIndex,
+                                clotheIndex = novelKite2CharacterController.clotheIndex,
+                                hairIndex = novelKite2CharacterController.hairIndex
+                            }
+                        );
+                    }
+
+                    break; // Keine Notwendigkeit mehr weiterzusuchen
                 }
-            );
+            }
         }
 
         private void SetInitialSpritesForImages()

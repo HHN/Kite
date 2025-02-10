@@ -57,6 +57,8 @@ namespace _00_Kite2
         // Static dictionary to store character data globally
         [SerializeField] private List<CharacterDataEntry> characterDataList = new();
         private Dictionary<long, CharacterData> characterDataDictionary = new();
+        
+        public List<NovelSaveStatus> NovelSaveStatusList => novelSaveStatusList;
 
         // Property to get or set the skipIntroNovel flag
         public bool SkipIntroNovel

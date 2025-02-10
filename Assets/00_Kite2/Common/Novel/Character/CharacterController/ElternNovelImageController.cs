@@ -61,22 +61,35 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                 colorIndex = novelKite2CharacterController.handIndex[0],
                 spriteIndex = novelKite2CharacterController.handIndex[1],
             };
-
-            GameManager.Instance.AddCharacterData(
-                2, // Schlüssel für den Eintrag
-                new CharacterData
+            
+            foreach (var novelStatus in GameManager.Instance.NovelSaveStatusList)
+            {
+                // Wenn das Novel die gesuchte ID hat, setze den isSaved Wert
+                int.TryParse(novelStatus.novelId, out int number);
+                if (number == 10)
                 {
-                    skinIndex = novelKite2CharacterController.skinIndex,
-                    handIndex = handSpriteIndex,
-                    clotheIndex = novelKite2CharacterController.clotheIndex,
-                    hairIndex = novelKite2CharacterController.hairIndex,
+                    if (!novelStatus.isSaved)
+                    {
+                        GameManager.Instance.AddCharacterData(
+                            2, // Schlüssel für den Eintrag
+                            new CharacterData
+                            {
+                                skinIndex = novelKite2CharacterController.skinIndex,
+                                handIndex = handSpriteIndex,
+                                clotheIndex = novelKite2CharacterController.clotheIndex,
+                                hairIndex = novelKite2CharacterController.hairIndex,
 
-                    skinIndex2 = novelKite2CharacterController2.skinIndex,
-                    clotheIndex2 = novelKite2CharacterController2.clotheIndex,
-                    hairIndex2 = novelKite2CharacterController2.hairIndex,
-                    glassIndex2 = novelKite2CharacterController2.glassIndex
+                                skinIndex2 = novelKite2CharacterController2.skinIndex,
+                                clotheIndex2 = novelKite2CharacterController2.clotheIndex,
+                                hairIndex2 = novelKite2CharacterController2.hairIndex,
+                                glassIndex2 = novelKite2CharacterController2.glassIndex
+                            }
+                        );
+                    }
+
+                    break; // Keine Notwendigkeit mehr weiterzusuchen
                 }
-            );
+            }
         }
 
         private void SetInitialSpritesForImages()
