@@ -67,15 +67,9 @@ namespace _00_Kite2.Common.UI.UI_Elements.Messages
             Color colour = NovelColorManager.Instance().GetColor();
             
             pauseButton.image.color = colour;
-            
-            // backgroundContinue.GetComponent<Image>().color = Color.white;
 
             backgroundMessageBox.GetComponent<Image>().color = colour;
-            // backgroundPause.GetComponent<Image>().color = colour;
-            // backgroundCancel.GetComponent<Image>().color = colour;
-            // backgroundEnd.GetComponent<Image>().color = colour;
             
-            // backgroundMessageBox.GetComponent<Image>().color = Color.white;
             backgroundPause.GetComponent<Image>().color = Color.white;
             backgroundCancel.GetComponent<Image>().color = Color.white;
             backgroundEnd.GetComponent<Image>().color = Color.white;
@@ -93,7 +87,7 @@ namespace _00_Kite2.Common.UI.UI_Elements.Messages
             _playNovelSceneController.IsPaused = false; // Resume the novel progression
             StartCoroutine(_playNovelSceneController.ReadLast());
             AnimationFlagSingleton.Instance().SetFlag(false);
-            this.CloseMessageBox();
+            CloseMessageBox();
         }
 
         private void OnPauseButton()
@@ -122,12 +116,12 @@ namespace _00_Kite2.Common.UI.UI_Elements.Messages
 
         public void CloseMessageBox()
         {
-            if (this.IsNullOrDestroyed() || this.gameObject.IsNullOrDestroyed())
+            if (this.IsNullOrDestroyed() || gameObject.IsNullOrDestroyed())
             {
                 return;
             }
 
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
         private static void LeaveNovel()

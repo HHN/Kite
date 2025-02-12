@@ -15,15 +15,13 @@ namespace _00_Kite2.Player
 {
     public class ConversationContentGuiController : MonoBehaviour
     {
-        [Header("Event Data")] [SerializeField]
-        private List<VisualNovelEvent> content = new();
-
+        [Header("Event Data")] 
+        [SerializeField] private List<VisualNovelEvent> content = new();
         [SerializeField] private List<GameObject> guiContent = new();
         [SerializeField] private List<VisualNovelEvent> visualNovelEvents = new();
 
-        [Header("Message Prefabs")] [SerializeField]
-        private GameObject blueMessagePrefab;
-
+        [Header("Message Prefabs")] 
+        [SerializeField] private GameObject blueMessagePrefab;
         [SerializeField] private GameObject greyMessagePrefab;
         [SerializeField] private GameObject turquoiseMessagePrefab;
         [SerializeField] private GameObject cottaMessagePrefab;
@@ -45,23 +43,9 @@ namespace _00_Kite2.Player
 
         private PlayNovelSceneController _sceneController;
 
-        public List<VisualNovelEvent> Content
-        {
-            get => content;
-            set => content = value;
-        }
-
-        public List<GameObject> GuiContent
-        {
-            get => guiContent;
-            set => guiContent = value;
-        }
-
-        public List<VisualNovelEvent> VisualNovelEvents
-        {
-            get => visualNovelEvents;
-            set => visualNovelEvents = value;
-        }
+        public List<VisualNovelEvent> Content { get => content; set => content = value; }
+        public List<GameObject> GuiContent { get => guiContent; set => guiContent = value; }
+        public List<VisualNovelEvent> VisualNovelEvents { get => visualNovelEvents; set => visualNovelEvents = value; }
 
         private void Start()
         {
@@ -76,9 +60,7 @@ namespace _00_Kite2.Player
 
         private void HandleNewContent(VisualNovelEvent novelEvent)
         {
-            VisualNovelEventType type = VisualNovelEventTypeHelper.ValueOf(novelEvent.eventType);
-
-            switch (type)
+            switch (VisualNovelEventTypeHelper.ValueOf(novelEvent.eventType))
             {
                 case VisualNovelEventType.SHOW_MESSAGE_EVENT:
                 {
@@ -94,13 +76,11 @@ namespace _00_Kite2.Player
                 case VisualNovelEventType.SHOW_CHOICES_EVENT:
                 {
                     // Instantiate the options prefab and add it to the guiContent list
-                    GameObject optionsObject = Instantiate(optionsPrefab, this.transform);
-                    OptionsManager prefab = optionsObject.GetComponent<OptionsManager>();
-                    prefab.Initialize(_sceneController, _options);
+                    GameObject optionsObject = Instantiate(optionsPrefab, transform);
+                    optionsObject.GetComponent<OptionsManager>().Initialize(_sceneController, _options);
 
                     _options = new List<VisualNovelEvent>();
 
-                    // Add the optionsObject to the guiContent list
                     guiContent.Add(optionsObject);
 
                     break;
@@ -110,31 +90,14 @@ namespace _00_Kite2.Player
 
         private void ShowMessage(VisualNovelEvent novelEvent)
         {
-            GameObject newMessageBox;
-            if (novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.PLAYER))
-            {
-                newMessageBox = Instantiate(blueMessagePrefab, this.transform);
-            }
-            else if ((novelEvent.character != 0) &&
-                     (novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.INTRO))
-                     || novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.OUTRO)
-                     || novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.INFO))
-            {
-                newMessageBox = Instantiate(cottaMessagePrefab, this.transform);
-            }
-            else
-            {
-                newMessageBox = Instantiate(greyMessagePrefab, this.transform);
-            }
+            var newMessageBox = GetMessagePrefab(novelEvent);
 
             ChatMessageBox messageBox = newMessageBox.GetComponent<ChatMessageBox>();
             messageBox.SetMessage(PlayNovelSceneController.ReplacePlaceholders(novelEvent.text,
                 PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables()));
+            
             guiContent.Add(newMessageBox);
-            PromptManager.Instance().AddFormattedLineToPrompt(
-                CharacterTypeHelper.GetNameOfCharacter(novelEvent.character),
-                PlayNovelSceneController.ReplacePlaceholders(novelEvent.text,
-                    PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables()));
+            AddFormattedPromptLine(novelEvent.character, novelEvent.text);
         }
 
         public void ShowPlayerAnswer(string message)
@@ -145,15 +108,12 @@ namespace _00_Kite2.Player
             messageBox.SetMessage(message);
             guiContent.Add(newMessageBox);
 
-            PromptManager.Instance().AddFormattedLineToPrompt(
-                CharacterTypeHelper.GetNameOfCharacter(CharacterRole.PLAYER),
-                PlayNovelSceneController.ReplacePlaceholders(message,
-                    PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables()));
+            AddFormattedPromptLine(CharacterTypeHelper.ToInt(CharacterRole.PLAYER), message);
 
             // Deaktiviere den Button der vorherigen blueMessagePrefabWithTrigger (falls vorhanden)
             if (_lastBlueMessagePrefabWithTrigger != null)
             {
-                DisableButtonClick(_lastBlueMessagePrefabWithTrigger);
+                SetButtonState(_lastBlueMessagePrefabWithTrigger, false);
             }
 
             // Setze die neue MessageBox als die aktuell aktive
@@ -161,33 +121,22 @@ namespace _00_Kite2.Player
                 newMessageBox; // Speichere die Referenz auf die letzte blueMessagePrefabWithTrigger
 
             // Stelle sicher, dass der Button der neuen MessageBox aktiv ist
-            EnableButtonClick(newMessageBox);
+            SetButtonState(newMessageBox, true);
         }
 
-
         // Methode zum Deaktivieren des Button-Klicks, wobei das Prefab aktiv bleibt
-        private void DisableButtonClick(GameObject messageBox)
+        private void SetButtonState(GameObject messageBox, bool enable)
         {
-            if (messageBox.name.Contains(blueMessagePrefabWithTrigger
-                    .name)) // Pr�fe, ob es sich um das spezifische Prefab handelt
+            // Pr�fe, ob es sich um das spezifische Prefab handelt
+            if (messageBox.name.Contains(blueMessagePrefabWithTrigger.name)) 
             {
                 Button button = messageBox.GetComponent<Button>();
                 if (button != null)
                 {
-                    button.interactable = false; // Deaktiviere Interaktion, aber lasse den Button sichtbar
-                    button.onClick.RemoveListener(OnBlueMessageButtonClick);
+                    button.interactable = enable; 
+                    button.onClick.RemoveAllListeners();
+                    if (enable) button.onClick.AddListener(OnBlueMessageButtonClick);
                 }
-            }
-        }
-
-        // Methode zum Aktivieren des Button-Klicks für die neue MessageBox
-        private void EnableButtonClick(GameObject messageBox)
-        {
-            Button button = messageBox.GetComponent<Button>();
-            if (button != null)
-            {
-                button.interactable = true; // Aktiviere Interaktion f�r den neuen Button
-                button.onClick.AddListener(OnBlueMessageButtonClick);
             }
         }
 
@@ -208,9 +157,6 @@ namespace _00_Kite2.Player
             undoChoiceMessageBoxObject = Instantiate(undoChoiceMessageBox, _sceneController.canvas.transform)
                 .GetComponent<UndoChoiceMessageBox>();
             undoChoiceMessageBoxObject.Activate();
-
-
-            //lastBlueMessagePrefabWithTrigger.GetComponent<Animator>().SetTrigger("isBlueMessagePrefabWithTrigger");
         }
 
         public void ClearUIAfter(int index, int count)
@@ -218,21 +164,9 @@ namespace _00_Kite2.Player
             int optionsToChooseFromCount = 0;
 
             // Überprüfe, ob der Index gültig ist
-            if (index > guiContent.Count || index < 0)
-            {
-                return;
-            }
+            if (index > guiContent.Count || index < 0) return;
 
-            int guiIndex;
-
-            if (count != 0)
-            {
-                guiIndex = index - count;
-            }
-            else
-            {
-                guiIndex = index;
-            }
+            int guiIndex = (count != 0) ? index - count : index;
 
             // Lösche alle UI-Elemente, die nach dem entsprechenden Index angezeigt wurden
             for (int i = guiContent.Count - 1; i > guiIndex; i--)
@@ -269,8 +203,6 @@ namespace _00_Kite2.Player
             content = savedData.content;
             visualNovelEvents = savedData.visualNovelEvents;
 
-            // GameManager.Instance.calledFromReload = true;
-
             // Durchlaufe jedes Event in visualNovelEvents und erstelle das entsprechende GUI-Element
             for (int i = 0; i <= savedData.visualNovelEvents.Count - 1; i++)
             {
@@ -280,23 +212,20 @@ namespace _00_Kite2.Player
                 {
                     visualNovelEvent.character = 1;
                 }
-
-                PromptManager.Instance().AddFormattedLineToPrompt(
-                    CharacterTypeHelper.GetNameOfCharacter(visualNovelEvent.character),
-                    PlayNovelSceneController.ReplacePlaceholders(visualNovelEvent.text,
-                        PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables()));
+                
+                AddFormattedPromptLine(visualNovelEvent.character, visualNovelEvent.text);
 
                 GameObject newMessageBox;
 
                 if (savedData.messageType[i].Contains("Blue Message Prefab With Trigger(Clone)"))
                 {
-                    newMessageBox = Instantiate(blueMessagePrefabWithTrigger, this.transform);
+                    newMessageBox = Instantiate(blueMessagePrefabWithTrigger, transform);
                     newMessageBox.SetActive(false);
 
                     // Deaktiviere den Button der vorherigen blueMessagePrefabWithTrigger (falls vorhanden)
                     if (_lastBlueMessagePrefabWithTrigger != null)
                     {
-                        DisableButtonClick(_lastBlueMessagePrefabWithTrigger);
+                        SetButtonState(_lastBlueMessagePrefabWithTrigger, false);
                     }
 
                     // Setze die neue MessageBox als die aktuell aktive
@@ -304,33 +233,19 @@ namespace _00_Kite2.Player
                         newMessageBox; // Speichere die Referenz auf die letzte blueMessagePrefabWithTrigger
 
                     // Stelle sicher, dass der Button der neuen MessageBox aktiv ist
-                    EnableButtonClick(newMessageBox);
+                    SetButtonState(newMessageBox, true);
                 }
 
-                // Bestimme den Typ des Prefabs basierend auf dem Charaktertyp und dem Ereignistyp
-                else if (visualNovelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.PLAYER))
-                {
-                    newMessageBox = Instantiate(blueMessagePrefab, this.transform);
-                    newMessageBox.SetActive(false);
-                }
-                else if (visualNovelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.INTRO) ||
-                         visualNovelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.OUTRO) ||
-                         visualNovelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.INFO))
-                {
-                    newMessageBox = Instantiate(cottaMessagePrefab, this.transform);
-                    newMessageBox.SetActive(false);
-                }
                 else
                 {
-                    newMessageBox = Instantiate(greyMessagePrefab, this.transform);
-                    newMessageBox.SetActive(false);
+                    newMessageBox = GetMessagePrefab(visualNovelEvent);
+                    newMessageBox.SetActive(true);
                 }
 
                 SetText(newMessageBox, visualNovelEvent.text);
             }
 
             _sceneController.ScrollToBottom();
-            // GameManager.Instance.calledFromReload = false;
         }
 
         private void SetText(GameObject messageBox, string text)
@@ -343,12 +258,39 @@ namespace _00_Kite2.Player
             ChatMessageBox chatMessageBox = messageBox.GetComponent<ChatMessageBox>();
             if (messageBox != null)
             {
-                // chatMessageBox.GetComponent<TAnimCore>().SetText(text);
                 chatMessageBox.GetComponentInChildren<TAnimCore>().SetText(text);
                 chatMessageBox.GetComponentInChildren<TypewriterByCharacter>().useTypeWriter = false;
-                // chatMessageBox.textBox.text = ""; // Stelle sicher, dass der Text leer ist
-                // chatMessageBox.textBox.text = text;
             }
+        }
+        
+        private static void AddFormattedPromptLine(int character, string message)
+        {
+            PromptManager.Instance().AddFormattedLineToPrompt(
+                CharacterTypeHelper.GetNameOfCharacter(character),
+                PlayNovelSceneController.ReplacePlaceholders(message,
+                    PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables()));
+        }
+        
+        private GameObject GetMessagePrefab(VisualNovelEvent novelEvent)
+        {
+            GameObject newMessageBox;
+            if (novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.PLAYER))
+            {
+                newMessageBox = Instantiate(blueMessagePrefab, transform);
+            }
+            else if (novelEvent.character != 0 &&
+                     novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.INTRO) || 
+                     novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.OUTRO) || 
+                     novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.INFO))
+            {
+                newMessageBox = Instantiate(cottaMessagePrefab, transform);
+            }
+            else
+            {
+                newMessageBox = Instantiate(greyMessagePrefab, transform);
+            }
+
+            return newMessageBox;
         }
     }
 }

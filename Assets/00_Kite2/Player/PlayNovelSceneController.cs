@@ -25,7 +25,7 @@ namespace _00_Kite2.Player
 {
     public class PlayNovelSceneController : SceneController
     {
-        private const float WaitingTime = 0.5f;
+        private const float WAITING_TIME = 0.5f;
 
         [Header("UI-Komponenten")] [SerializeField]
         private GameObject viewPort;
@@ -47,8 +47,8 @@ namespace _00_Kite2.Player
         [SerializeField] private GameObject freeTextInputPrefab;
         [SerializeField] private GameObject headerImage;
 
-        [Header("Novel-Visuals und Prefabs")] 
-        [SerializeField] private GameObject[] novelVisuals;
+        [Header("Novel-Visuals und Prefabs")] [SerializeField]
+        private GameObject[] novelVisuals;
 
         [SerializeField] private GameObject novelImageContainer;
         [SerializeField] private GameObject novelBackgroundPrefab;
@@ -101,12 +101,11 @@ namespace _00_Kite2.Player
         [SerializeField] private bool isTyping;
         [SerializeField] private List<string> playThroughHistory = new();
         [SerializeField] private List<VisualNovelEvent> eventHistory = new();
-        
+
         private readonly Dictionary<string, VisualNovelEvent> _novelEvents = new();
         private readonly string[] _optionsId = new string[2];
         private ConversationContentGuiController _conversationContentGuiController;
         private int _novelCharacter = -1;
-        private NovelImageController _novelImagesController;
         private VisualNovelEvent _savedEventToResume; // Speichert das letzte Ereignis für das Fortsetzen
         private Coroutine _timerCoroutine;
         private bool _typingWasSkipped;
@@ -121,21 +120,21 @@ namespace _00_Kite2.Player
         public List<string> PlayThroughHistory => playThroughHistory;
         public string[] OptionsId => _optionsId;
         public List<VisualNovelEvent> EventHistory => eventHistory;
-        public NovelImageController NovelImageController => _novelImagesController;
+        public NovelImageController NovelImageController { get; private set; }
 
         private void Start()
         {
             GameManager.Instance.CheckAndSetAllNovelsStatus();
-            
+
             _conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
 
             AnalyticsServiceHandler.Instance().StartStopwatch();
             BackStackManager.Instance().Push(SceneNames.PLAY_NOVEL_SCENE);
             novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
-            
+
             NovelBiasManager.Clear();
             OfflineFeedbackManager.Instance().Clear();
-            
+
             Initialize();
         }
 
@@ -143,7 +142,7 @@ namespace _00_Kite2.Player
         {
             PromptManager.Instance().InitializePrompt();
 
-            if (novelToPlay == null) return; 
+            if (novelToPlay == null) return;
 
             AnalyticsServiceHandler.Instance().SetIdOfCurrentNovel(novelToPlay.id);
             novelToPlay.ClearGlobalVariables();
@@ -166,7 +165,7 @@ namespace _00_Kite2.Player
             RectTransform canvasRect = canvas.GetComponent<RectTransform>();
             RectTransform conversationViewportTransform = conversationViewport.GetComponent<RectTransform>();
             conversationViewportTransform.sizeDelta = new Vector2(0, -canvasRect.rect.height * 0.5f);
-            
+
             RectTransform viewPortTransform = viewPort.GetComponent<RectTransform>();
 
             switch (novelToPlay.title)
@@ -175,83 +174,83 @@ namespace _00_Kite2.Player
                 {
                     GameObject novelImagesInstance = Instantiate(novelVisuals[0], viewPortTransform);
                     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<BankNovelImageController>();
+                    NovelImageController = controllerTransform.GetComponent<BankNovelImageController>();
                     break;
                 }
                 case "Anmietung eines Büros":
                 {
                     GameObject novelImagesInstance = Instantiate(novelVisuals[1], viewPortTransform);
                     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<BueroNovelImageController>();
+                    NovelImageController = controllerTransform.GetComponent<BueroNovelImageController>();
                     break;
                 }
                 case "Pressegespräch":
                 {
                     GameObject novelImagesInstance = Instantiate(novelVisuals[2], viewPortTransform);
                     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<PresseNovelImageController>();
+                    NovelImageController = controllerTransform.GetComponent<PresseNovelImageController>();
                     break;
                 }
                 case "Telefonat mit den Eltern":
                 {
                     GameObject novelImagesInstance = Instantiate(novelVisuals[3], viewPortTransform);
                     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<ElternNovelImageController>();
+                    NovelImageController = controllerTransform.GetComponent<ElternNovelImageController>();
                     break;
                 }
                 case "Telefonat mit der Notarin":
                 {
                     GameObject novelImagesInstance = Instantiate(novelVisuals[4], viewPortTransform);
                     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<NotarinNovelImageController>();
+                    NovelImageController = controllerTransform.GetComponent<NotarinNovelImageController>();
                     break;
                 }
                 case "Gespräch mit einem Bekannten":
                 {
                     GameObject novelImagesInstance = Instantiate(novelVisuals[5], viewPortTransform);
                     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<BekannterNovelImageController>();
+                    NovelImageController = controllerTransform.GetComponent<BekannterNovelImageController>();
                     break;
                 }
                 case "Einstiegsdialog":
                 {
                     GameObject novelImagesInstance = Instantiate(novelVisuals[6], viewPortTransform);
                     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<IntroNovelImageController>();
+                    NovelImageController = controllerTransform.GetComponent<IntroNovelImageController>();
                     break;
                 }
                 case "Honorarverhandlung mit Kundin":
                 {
                     GameObject novelImagesInstance = Instantiate(novelVisuals[7], viewPortTransform);
                     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<VerhandlungNovelImageController>();
+                    NovelImageController = controllerTransform.GetComponent<VerhandlungNovelImageController>();
                     break;
                 }
                 default:
                 {
                     GameObject novelImagesInstance = Instantiate(novelVisuals[0], viewPortTransform);
                     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<BankNovelImageController>();
+                    NovelImageController = controllerTransform.GetComponent<BankNovelImageController>();
                     break;
                 }
             }
 
-            _novelImagesController.SetCanvasRect(canvasRect);
+            NovelImageController.SetCanvasRect(canvasRect);
         }
-        
+
         private void HandleHeaderImage()
         {
             // Hide the header image, as it is not needed in the introductory dialogue
             bool isIntro = novelToPlay.title == "Einstiegsdialog";
             bool isIntroFromMainMenu = GameManager.Instance.IsIntroNovelLoadedFromMainMenu;
-            
+
             headerImage.SetActive(!isIntro || !isIntroFromMainMenu);
         }
-        
+
         private void InitializeCharacterExpressions()
         {
             CharacterExpressions.Clear();
-            
+
             List<int> characters = novelToPlay.novelEvents
                 .Select(e => e.character) // Wähle das `character`-Feld aus
                 .Where(c => c != 0 && c != 1 && c != 4) // Schließe die Werte 0, 1 und 4 aus
@@ -290,10 +289,10 @@ namespace _00_Kite2.Player
         public void OnConfirm()
         {
             TextToSpeechManager.Instance.CancelSpeak();
-            
+
             Vector2 mousePosition = Input.mousePosition;
 
-            if (_novelImagesController.HandleTouchEvent(mousePosition.x, mousePosition.y))
+            if (NovelImageController.HandleTouchEvent(mousePosition.x, mousePosition.y))
             {
                 return;
             }
@@ -309,7 +308,7 @@ namespace _00_Kite2.Player
 
                 _typingWasSkipped = true; // Flag setzen
                 SetTyping(false);
-                
+
                 TextToSpeechManager.Instance.CancelSpeak();
 
                 return; // Beendet die Methode, um nicht zum nächsten Event zu springen
@@ -461,7 +460,7 @@ namespace _00_Kite2.Player
                 }
             }
         }
-        
+
         private void HandleEventPreparation()
         {
             if (selectOptionContinueConversation != null)
@@ -640,8 +639,8 @@ namespace _00_Kite2.Player
             SetNextEvent(novelEvent);
 
             if (novelToPlay.IsVariableExistent(novelEvent.key) &&
-                (novelToPlay.GetGlobalVariable(novelEvent.key) == "True"
-                 || novelToPlay.GetGlobalVariable(novelEvent.key) == "true" ||
+                (novelToPlay.GetGlobalVariable(novelEvent.key) == "True" ||
+                 novelToPlay.GetGlobalVariable(novelEvent.key) == "true" ||
                  novelToPlay.GetGlobalVariable(novelEvent.key) == "TRUE"))
             {
                 OfflineFeedbackManager.Instance().AddLineToPrompt(novelEvent.value);
@@ -670,7 +669,7 @@ namespace _00_Kite2.Player
         {
             SetNextEvent(novelEvent);
 
-            _novelImagesController.SetBackground();
+            NovelImageController.SetBackground();
             StartCoroutine(imageScroll.ScrollToPoint(0.5f, 1f));
             StartCoroutine(StartNextEventInOneSeconds(1));
         }
@@ -678,7 +677,7 @@ namespace _00_Kite2.Player
         private void HandleCharacterJoinEvent(VisualNovelEvent novelEvent)
         {
             SetNextEvent(novelEvent);
-            _novelImagesController.SetCharacter();
+            NovelImageController.SetCharacter();
 
             StartCoroutine(StartNextEventInOneSeconds(1));
         }
@@ -687,7 +686,7 @@ namespace _00_Kite2.Player
         {
             SetNextEvent(novelEvent);
 
-            _novelImagesController.DestroyCharacter();
+            NovelImageController.DestroyCharacter();
 
             StartCoroutine(StartNextEventInOneSeconds(1));
         }
@@ -712,7 +711,7 @@ namespace _00_Kite2.Player
                 _novelCharacter != 4)
             {
                 CharacterExpressions[_novelCharacter] = novelEvent.expressionType;
-                _novelImagesController.SetFaceExpression(_novelCharacter, CharacterExpressions[_novelCharacter]);
+                NovelImageController.SetFaceExpression(_novelCharacter, CharacterExpressions[_novelCharacter]);
             }
 
             if (novelEvent.show)
@@ -806,10 +805,10 @@ namespace _00_Kite2.Player
                 if (CharacterExpressions[_novelCharacter] > 13)
                 {
                     CharacterExpressions[_novelCharacter] -= 13;
-                    _novelImagesController.SetFaceExpression(_novelCharacter, CharacterExpressions[_novelCharacter]);
+                    NovelImageController.SetFaceExpression(_novelCharacter, CharacterExpressions[_novelCharacter]);
                 }
             }
-            
+
             yield return new WaitForSeconds(second);
 
             StartCoroutine(PlayNextEvent());
@@ -843,12 +842,12 @@ namespace _00_Kite2.Player
 
         public void StartTalking()
         {
-            _novelImagesController.StartCharacterTalking();
+            NovelImageController.StartCharacterTalking();
         }
 
         public void StopTalking()
         {
-            _novelImagesController.StopCharacterTalking();
+            NovelImageController.StopCharacterTalking();
         }
 
         public void SetWaitingForConfirmation(bool value)
@@ -864,7 +863,7 @@ namespace _00_Kite2.Player
             {
                 SetWaitingForConfirmation(false);
 
-                float delay = WaitingTime;
+                float delay = WAITING_TIME;
                 if (_typingWasSkipped)
                 {
                     delay = 0f; // Wartezeit überspringen
@@ -919,7 +918,7 @@ namespace _00_Kite2.Player
             {
                 indexToRestore -= _optionsCount;
             }
-            
+
             // Entfernen des Events und aller nachfolgenden Events aus der Historie
             if (indexToRestore >= 0)
             {
@@ -1030,7 +1029,7 @@ namespace _00_Kite2.Player
             if (novelControllerMap.TryGetValue(searchId, out Type controllerType))
             {
                 var controller = FindObjectsOfType(controllerType).FirstOrDefault() as MonoBehaviour;
- 
+
                 if (controller != null && savedData.CharacterPrefabData != null)
                 {
                     if (savedData.CharacterPrefabData.TryGetValue(searchId, out CharacterData characterData))
@@ -1063,7 +1062,7 @@ namespace _00_Kite2.Player
                 elternController.novelKite2CharacterController2.SetClotheSprite(characterData.clotheIndex2);
                 elternController.novelKite2CharacterController2.SetHairSprite(characterData.hairIndex2);
             }
-            
+
             if (controller is PresseNovelImageController presseController)
             {
                 // Setze die Attribute basierend auf den gespeicherten Werten
@@ -1121,7 +1120,7 @@ namespace _00_Kite2.Player
         {
             foreach (var kvp in savedData.CharacterExpressions)
             {
-                _novelImagesController.SetFaceExpression(kvp.Key, kvp.Value);
+                NovelImageController.SetFaceExpression(kvp.Key, kvp.Value);
             }
         }
 
