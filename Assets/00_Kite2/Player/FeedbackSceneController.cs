@@ -11,7 +11,6 @@ using _00_Kite2.OfflineAiFeedback;
 using _00_Kite2.SaveNovelData;
 using _00_Kite2.Server_Communication;
 using _00_Kite2.Server_Communication.Server_Calls;
-//using LeastSquares.Overtone;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -120,6 +119,10 @@ namespace _00_Kite2.Player
             }
             else
             {
+                #if UNITY_IOS
+                        TextToSpeechManager.Instance.CancelSpeak();
+                #endif
+                
                 BackStackManager.Instance()
                     .Clear(); // we go back to the explorer and don't want the back-button to bring us to the feedback scene again
                 SceneLoader.LoadFoundersBubbleScene();

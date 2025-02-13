@@ -1730,7 +1730,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BEKANNTE TREFFEN
+  m_text: BEKANNTEN TREFFEN
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
   m_sharedMaterial: {fileID: 3127457962735927120, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
@@ -4877,7 +4877,7 @@ MonoBehaviour:
   container: {fileID: 1067528251}
   noDataObjectsHint: {fileID: 63610570}
   containerForBankkreditNovel: {fileID: 8983526791303255357}
-  containerForBekannteTreffenNovel: {fileID: 1122555527}
+  containerForBekanntenTreffenNovel: {fileID: 1122555527}
   containerForBankkontoNovel: {fileID: 203507345}
   containerForFoerderantragNovel: {fileID: 1933131690}
   containerForElternNovel: {fileID: 977517993}
@@ -4888,7 +4888,7 @@ MonoBehaviour:
   containerForHonorarNovel: {fileID: 1000109952}
   containerForLebenspartnerinNovel: {fileID: 1553965550}
   dropdownForBankkreditNovel: {fileID: 657247123254479140}
-  dropdownForBekannteTreffenNovel: {fileID: 1457782097}
+  dropdownForBekanntenTreffenNovel: {fileID: 1457782097}
   dropdownForBankkontoNovel: {fileID: 1284719197}
   dropdownForFoerderantragNovel: {fileID: 663462337}
   dropdownForElternNovel: {fileID: 1543939245}
@@ -4899,7 +4899,7 @@ MonoBehaviour:
   dropdownForHonorarNovel: {fileID: 289032708}
   dropdownForLebenspartnerinNovel: {fileID: 1578790500}
   spacingForBankkreditNovel: {fileID: 948405905}
-  spacingForBekannteTreffenNovel: {fileID: 1355985734}
+  spacingForBekanntenTreffenNovel: {fileID: 1355985734}
   spacingForBankkontoNovel: {fileID: 413226293}
   spacingForFoerderantragNovel: {fileID: 1742568431}
   spacingForElternNovel: {fileID: 750861753}
@@ -4910,7 +4910,7 @@ MonoBehaviour:
   spacingForHonorarNovel: {fileID: 1245389554}
   spacingForLebenspartnerinNovel: {fileID: 607388595}
   entryContainerForBankkreditNovel: {fileID: 657247122751064009}
-  entryContainerForBekannteTreffenNovel: {fileID: 1135273643}
+  entryContainerForBekanntenTreffenNovel: {fileID: 1135273643}
   entryContainerForBankkontoNovel: {fileID: 512483126}
   entryContainerForFoerderantragNovel: {fileID: 1707488281}
   entryContainerForElternNovel: {fileID: 321823154}
@@ -4921,7 +4921,7 @@ MonoBehaviour:
   entryContainerForHonorarNovel: {fileID: 785423253}
   entryContainerForLebenspartnerinNovel: {fileID: 1608235919}
   displayContainerForBankkreditNovel: 0
-  displayContainerForBekannteTreffenNovel: 0
+  displayContainerForBekanntenTreffenNovel: 0
   displayContainerForBankkontoNovel: 0
   displayContainerForFoerderantragNovel: 0
   displayContainerForElternNovel: 0
@@ -5527,7 +5527,7 @@ GameObject:
   - component: {fileID: 1122555531}
   - component: {fileID: 1122555530}
   m_Layer: 5
-  m_Name: Bekannte treffen
+  m_Name: Bekannten treffen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

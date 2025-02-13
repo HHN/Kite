@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace _00_Kite2.Common.Novel.Character.CharacterController
@@ -22,36 +21,31 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         private GameObject _instantiatedCharacter;
 
-        [FormerlySerializedAs("characterController")] public Kite2CharacterController kite2CharacterController;
-
         private void Start()
         {
-            base.novelKite2CharacterController = characterContainer.GetComponentInChildren<Kite2CharacterController>();
-        
-            base.novelKite2CharacterController.SetSkinSprite();
-            base.novelKite2CharacterController.SetHandSprite();
-            base.novelKite2CharacterController.SetClotheSprite();
-            base.novelKite2CharacterController.SetHairSprite();
-            
+            novelKite2CharacterController = characterContainer.GetComponentInChildren<Kite2CharacterController>();
+
+            novelKite2CharacterController.SetSkinSprite();
+            novelKite2CharacterController.SetHandSprite();
+            novelKite2CharacterController.SetClotheSprite();
+            novelKite2CharacterController.SetHairSprite();
+
             HandSpriteIndex handSpriteIndex = new HandSpriteIndex
             {
                 colorIndex = novelKite2CharacterController.handIndex[0],
                 spriteIndex = novelKite2CharacterController.handIndex[1],
             };
-        
-            GameManager.CharacterDataList = new Dictionary<long, CharacterData>
-            {
+
+            GameManager.Instance.AddCharacterData(
+                3, // Schlüssel für den Eintrag
+                new CharacterData
                 {
-                    3, // Schlüssel für den Eintrag
-                    new CharacterData
-                    {
-                        skinIndex = novelKite2CharacterController.skinIndex,
-                        handIndex = handSpriteIndex,
-                        clotheIndex = novelKite2CharacterController.clotheIndex,
-                        hairIndex = novelKite2CharacterController.hairIndex
-                    }
+                    skinIndex = novelKite2CharacterController.skinIndex,
+                    handIndex = handSpriteIndex,
+                    clotheIndex = novelKite2CharacterController.clotheIndex,
+                    hairIndex = novelKite2CharacterController.hairIndex
                 }
-            };
+            );
         }
 
         private void SetInitialSpritesForImages()
@@ -151,7 +145,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         private IEnumerator OnDecoVase()
         {
             GlobalVolumeManager.Instance.PlaySound(decoVaseAudio);
-            
+
             Image image = decoVasePrefab.GetComponent<Image>();
             image.sprite = animationFramesVase[1];
             Destroy(decoVaseContainer.transform.GetChild(0).gameObject);
@@ -172,7 +166,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         {
             GlobalVolumeManager.Instance.PlaySound(decoGlasAudio);
 
-            
+
             Image image = decoGlasPrefab.GetComponent<Image>();
             image.sprite = animationFramesGlas[1];
             Destroy(decoGlasContainer.transform.GetChild(0).gameObject);

@@ -158,17 +158,21 @@ MonoBehaviour:
   hairImage: {fileID: 3816683545305009484}
   faceImage: {fileID: 5629460200802205328}
   skinSprites:
-  - {fileID: 21300000, guid: 05cbbd121a7d8ac47b5b3212464ee1cd, type: 3}
+  - {fileID: 21300000, guid: bd28ad0f2418ee445b58820f6c47a66b, type: 3}
   glassesSprites: []
-  handSprites: []
+  handSprites:
+    handColorA: []
+    handColorB: []
+    handColorC: []
+    handColorD: []
   clotheSprites:
-  - {fileID: 21300000, guid: 9aaa60e2d4effa64f8d45d4e29b8855e, type: 3}
+  - {fileID: 21300000, guid: 537e22e6225f9534dbaee921282c5aa7, type: 3}
   hairSprites:
-  - {fileID: 21300000, guid: 3efe2b7ef95dcc542bab304d24940b25, type: 3}
+  - {fileID: 21300000, guid: 06c242bcd0002f344b9ac435cdcb3822, type: 3}
   animator: {fileID: 6155688656520349526}
   skinIndex: 0
   glassIndex: 0
-  handIndex: 0
+  handIndex: 
   clotheIndex: 0
   hairIndex: 0
 --- !u!95 &6155688656520349526

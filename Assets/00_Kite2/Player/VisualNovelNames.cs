@@ -4,7 +4,7 @@ namespace _00_Kite2.Player
     {
         NONE,
         BANK_KREDIT_NOVEL,
-        BEKANNTE_TREFFEN_NOVEL,
+        BEKANNTEN_TREFFEN_NOVEL,
         BANK_KONTO_NOVEL,
         FOERDERANTRAG_NOVEL,
         ELTERN_NOVEL,
@@ -53,7 +53,7 @@ namespace _00_Kite2.Player
                 }
                 case 9:
                 {
-                    return VisualNovelNames.BEKANNTE_TREFFEN_NOVEL;
+                    return VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL;
                 }
                 case 10:
                 {
@@ -169,7 +169,7 @@ namespace _00_Kite2.Player
                 {
                     return 8;
                 }
-                case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
                 {
                     return 9;
                 }

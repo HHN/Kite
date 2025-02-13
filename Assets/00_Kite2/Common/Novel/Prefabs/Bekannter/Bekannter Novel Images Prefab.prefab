@@ -457,6 +457,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daa89ba40176a8646ac5d4f0130c1092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  novelKite2CharacterController: {fileID: 0}
+  novelKite2CharacterController2: {fileID: 0}
   decoPlantPrefab: {fileID: 8411936371333490823, guid: 02334970db3300f4797dfc8a311a46c8, type: 3}
   decoPlantContainer: {fileID: 5558045549636132440}
   decoPlantAudio: {fileID: 8300000, guid: 36685d5895c76de418eb8d96bdcbef80, type: 3}
@@ -465,8 +467,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a54589aa564f7244da0c42a701cbbaa6, type: 3}
   - {fileID: 21300000, guid: 315c8ad94b56ae343998e44a28346b0e, type: 3}
   characterContainer: {fileID: 3669613035356320353}
-  characterPrefabs:
-  - {fileID: 1465545687914413273, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
+  characterPrefab: {fileID: 0}
 --- !u!1 &5558045549636132440
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,7 +791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1465545687914413254, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1200.3395
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1465545687914413254, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
       propertyPath: m_SizeDelta.y
@@ -850,7 +851,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1465545687914413273, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -72,7 +72,7 @@ namespace _00_Kite2.Common.Managers
                     _animateNumberForGruendungszuschussNovel = value;
                     break;
                 }
-                case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
                 {
                     _animateNumberForBekannteTreffenNovel = value;
                     break;
@@ -132,7 +132,7 @@ namespace _00_Kite2.Common.Managers
                 {
                     return _animateNumberForGruendungszuschussNovel;
                 }
-                case VisualNovelNames.BEKANNTE_TREFFEN_NOVEL:
+                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
                 {
                     return _animateNumberForBekannteTreffenNovel;
                 }

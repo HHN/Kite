@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace _00_Kite2.Common.Novel.Character.CharacterController
@@ -22,45 +21,28 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
         [SerializeField] private Sprite[] animationFramesGlas;
 
         [SerializeField] private Transform characterContainer;
-        [SerializeField] private List<GameObject> characterPrefabs;
-        // [SerializeField] private GameObject characterPrefab;
+        [SerializeField] private GameObject characterPrefab;
 
         private GameObject _instantiatedCharacter;
 
-        [FormerlySerializedAs("characterController")] public Kite2CharacterController kite2CharacterController;
-
         private void Start()
         {
-            SetInitialSpritesForImages();
-            SetInitialCharacters();
-        }
+            novelKite2CharacterController = characterContainer.GetComponentInChildren<Kite2CharacterController>();
 
-        // private void Start()
-        // {
-        //     // SetInitialSpritesForImages();
-        //     // SetInitialCharacters();
-        //     
-        //     novelKite2CharacterController = characterContainer.GetComponentInChildren<Kite2CharacterController>();
-        //
-        //     novelKite2CharacterController.SetSkinSprite();
-        //     novelKite2CharacterController.SetHandSprite();
-        //     novelKite2CharacterController.SetClotheSprite();
-        //     novelKite2CharacterController.SetHairSprite();
-        //
-        //     GameManager.CharacterDataList = new Dictionary<long, CharacterData>
-        //     {
-        //         {
-        //             4, // Schlüssel für den Eintrag
-        //             new CharacterData
-        //             {
-        //                 skinIndex = novelKite2CharacterController.skinIndex,
-        //                 handIndex = novelKite2CharacterController.handIndex,
-        //                 clotheIndex = novelKite2CharacterController.clotheIndex,
-        //                 hairIndex = novelKite2CharacterController.hairIndex
-        //             }
-        //         }
-        //     };
-        // }
+            novelKite2CharacterController.SetSkinSprite();
+            novelKite2CharacterController.SetClotheSprite();
+            novelKite2CharacterController.SetHairSprite();
+
+            GameManager.Instance.AddCharacterData(
+                4, // Schlüssel für den Eintrag
+                new CharacterData
+                {
+                    skinIndex = novelKite2CharacterController.skinIndex,
+                    clotheIndex = novelKite2CharacterController.clotheIndex,
+                    hairIndex = novelKite2CharacterController.hairIndex
+                }
+            );
+        }
 
         private void SetInitialSpritesForImages()
         {
@@ -85,13 +67,9 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         private void SetInitialCharacters()
         {
+            if (characterPrefab == null) return;
 
-            if (characterPrefabs.Count <= 0) return;
-
-            int randomIndex = Random.Range(0, characterPrefabs.Count);
-            GameObject randomGameObject = characterPrefabs[randomIndex];
-
-            _instantiatedCharacter = Instantiate(randomGameObject, characterContainer, false);
+            _instantiatedCharacter = Instantiate(characterPrefab, characterContainer, false);
             RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
 
             if (rectTransform == null) return;
@@ -114,7 +92,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         public override void SetCharacter()
         {
-            base.novelKite2CharacterController = _instantiatedCharacter.GetComponent<Kite2CharacterController>();
+            // novelKite2CharacterController = _instantiatedCharacter.GetComponent<Kite2CharacterController>();
         }
 
         public override void DestroyCharacter()

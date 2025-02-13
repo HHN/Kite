@@ -13,7 +13,8 @@ namespace _00_Kite2.Common.Novel
         MUTTER,
         BEKANNTER,
         NOTARIN,
-        SACHBEARBEITER
+        SACHBEARBEITER,
+        KUNDIN
     }
 
     public class CharacterTypeHelper
@@ -29,6 +30,7 @@ namespace _00_Kite2.Common.Novel
         private const string BEKANNTER = "Bekannter";
         private const string NOTARIN = "Notarin";
         private const string SACHBEARBEITER = "Sachbearbeiter";
+        private const string KUNDIN = "Kundin";
 
         public static int ToInt(CharacterRole characterRole)
         {
@@ -81,6 +83,10 @@ namespace _00_Kite2.Common.Novel
                 case CharacterRole.SACHBEARBEITER:
                 {
                     return 11;
+                }
+                case CharacterRole.KUNDIN:
+                {
+                    return 12;
                 }
                 default:
                 {
@@ -141,6 +147,10 @@ namespace _00_Kite2.Common.Novel
                 {
                     return CharacterRole.SACHBEARBEITER;
                 }
+                case 12:
+                {
+                    return CharacterRole.KUNDIN;
+                }
                 default: return CharacterRole.NONE;
             }
         }
@@ -196,6 +206,10 @@ namespace _00_Kite2.Common.Novel
                 case CharacterRole.SACHBEARBEITER:
                 {
                     return SACHBEARBEITER;
+                }
+                case CharacterRole.KUNDIN:
+                {
+                    return KUNDIN;
                 }
                 default:
                 {
@@ -256,6 +270,10 @@ namespace _00_Kite2.Common.Novel
                 {
                     return SACHBEARBEITER;
                 }
+                case 12:
+                {
+                    return KUNDIN;
+                }
                 default: return null;
             }
         }
@@ -311,6 +329,10 @@ namespace _00_Kite2.Common.Novel
                 case SACHBEARBEITER:
                 {
                     return CharacterRole.SACHBEARBEITER;
+                }
+                case KUNDIN:
+                {
+                    return CharacterRole.KUNDIN;
                 }
                 default: return CharacterRole.NONE;
             }

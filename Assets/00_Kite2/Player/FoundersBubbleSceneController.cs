@@ -223,9 +223,9 @@ namespace _00_Kite2.Player
 
         public void OnBekannteTreffenNovelButton()
         {
-            DisplayTextBoxForVisualNovel(VisualNovelNames.BEKANNTE_TREFFEN_NOVEL,
+            DisplayTextBoxForVisualNovel(VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL,
                 isBekanntenTreffenNovelInVersionContained);
-            infinityScroll.MoveToVisualNovel(VisualNovelNames.BEKANNTE_TREFFEN_NOVEL);
+            infinityScroll.MoveToVisualNovel(VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL);
         }
 
         public void OnBankKontoNovelButton()
@@ -457,7 +457,7 @@ namespace _00_Kite2.Player
 
         private void OnBekannteNovelButtonFromBurgerMenu()
         {
-            DisplayNovelFromMenu(VisualNovelNames.BEKANNTE_TREFFEN_NOVEL);
+            DisplayNovelFromMenu(VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL);
         }
 
         private void DisplayNovelFromMenu(VisualNovelNames visualNovelName)

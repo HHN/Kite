@@ -12,8 +12,6 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         private GameObject _instantiatedCharacter;
 
-        [FormerlySerializedAs("characterController")] public Kite2CharacterController kite2CharacterController;
-
         private void Start()
         {
             SetInitialCharacters();
@@ -77,7 +75,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
         public override void SetCharacter()
         {
-            base.novelKite2CharacterController = _instantiatedCharacter.GetComponent<Kite2CharacterController>();
+            novelKite2CharacterController = _instantiatedCharacter.GetComponent<Kite2CharacterController>();
         }
 
         public override bool HandleTouchEvent(float x, float y)

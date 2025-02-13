@@ -30,6 +30,13 @@ namespace _00_Kite2
         public int clotheIndex2;
         public int hairIndex2;
     }
+    
+    [Serializable]
+    public class CharacterDataEntry
+    {
+        public long id;
+        public CharacterData data;
+    }
 
     public class GameManager : MonoBehaviour
     {
@@ -48,7 +55,8 @@ namespace _00_Kite2
         public static GameManager Instance { get; private set; }
         
         // Static dictionary to store character data globally
-        public static Dictionary<long, CharacterData> CharacterDataList = new Dictionary<long, CharacterData>();
+        [SerializeField] private List<CharacterDataEntry> characterDataList = new();
+        private Dictionary<long, CharacterData> characterDataDictionary = new();
 
         // Property to get or set the skipIntroNovel flag
         public bool SkipIntroNovel
@@ -75,6 +83,13 @@ namespace _00_Kite2
 
             Instance = this;
             DontDestroyOnLoad(gameObject); // Ensure this object persists across scene changes
+            
+            // Liste in Dictionary umwandeln
+            characterDataDictionary = new Dictionary<long, CharacterData>();
+            foreach (var entry in characterDataList)
+            {
+                characterDataDictionary[entry.id] = entry.data;
+            }
 
             // Check and set the save status for all novels at startup
             CheckAndSetAllNovelsStatus();
@@ -125,6 +140,27 @@ namespace _00_Kite2
             {
                 _novelSaveStatus[novelId] = isSaved;
             }
+        }
+        
+        public void AddCharacterData(long id, CharacterData data)
+        {
+            characterDataDictionary[id] = data;
+    
+            // Falls ID schon existiert, aktualisieren
+            var existingEntry = characterDataList.Find(entry => entry.id == id);
+            if (existingEntry != null)
+            {
+                existingEntry.data = data;
+            }
+            else
+            {
+                characterDataList.Add(new CharacterDataEntry { id = id, data = data });
+            }
+        }
+
+        public Dictionary<long, CharacterData> GetCharacterDataDictionary()
+        {
+            return characterDataDictionary;
         }
     }
 }

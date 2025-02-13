@@ -48,6 +48,7 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
 
             if (novelKite2CharacterController == null)
             {
+                // Debug.Log("novelKite2CharacterController is null");
             }
             else if (characterId == 0)
             {
@@ -94,6 +95,10 @@ namespace _00_Kite2.Common.Novel.Character.CharacterController
                 novelKite2CharacterController.SetFaceExpression(expressionType);
             }
             else if (characterId == 11)
+            {
+                novelKite2CharacterController.SetFaceExpression(expressionType);
+            }
+            else if (characterId == 12)
             {
                 novelKite2CharacterController.SetFaceExpression(expressionType);
             }
