@@ -198,7 +198,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 443.07693, y: -257.51}
+  m_AnchoredPosition: {x: 447.6684, y: -257.51}
   m_SizeDelta: {x: 380, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &205931720
@@ -515,8 +515,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 443.07693, y: -503.02002}
-  m_SizeDelta: {x: 736.1539, y: 0}
+  m_AnchoredPosition: {x: 447.6684, y: -503.02002}
+  m_SizeDelta: {x: 745.3368, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &502088452
 Animator:
@@ -769,8 +769,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 443.07693, y: -379.015}
-  m_SizeDelta: {x: 736.1539, y: 0}
+  m_AnchoredPosition: {x: 447.6684, y: -379.015}
+  m_SizeDelta: {x: 745.3368, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &922473493
 MonoBehaviour:
@@ -1170,8 +1170,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 443.07693, y: -130.005}
-  m_SizeDelta: {x: 736.1539, y: 0}
+  m_AnchoredPosition: {x: 447.6684, y: -130.005}
+  m_SizeDelta: {x: 745.3368, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1340017593
 MonoBehaviour:
@@ -2811,8 +2811,8 @@ MonoBehaviour:
     novelEvents: []
     playedPath: 
   layout: {fileID: 1408727317}
-  waitingLoopMusic: {fileID: 8300000, guid: dd4754e12e8c3854d99c12b2e14260b0, type: 3}
-  resultMusic: {fileID: 8300000, guid: dcd82c57728b82947a224ea5f3cae07d, type: 3}
+  waitingLoopMusic: {fileID: 8300000, guid: a4d9ca4c75867804698a0b9adad12609, type: 3}
+  resultMusic: {fileID: 8300000, guid: d8f2b98e7b7869e4a872603a218556b5, type: 3}
   finishButton: {fileID: 2003831899110142021}
   finishButtonTop: {fileID: 1681901811}
   finishButtonBottom: {fileID: 1604045390}
@@ -2822,7 +2822,6 @@ MonoBehaviour:
   finishButtonBottomContainer: {fileID: 2084068594}
   copyButtonContainer: {fileID: 1224632047}
   copyNotificationContainer: {fileID: 509659195}
-  engine: {fileID: 1471199572}
   loadingAnimation: {fileID: 502088450}
 --- !u!4 &1727040111
 Transform:

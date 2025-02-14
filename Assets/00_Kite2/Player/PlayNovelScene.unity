@@ -920,8 +920,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 443.07693, y: -265}
-  m_SizeDelta: {x: 886.1539, y: 0}
+  m_AnchoredPosition: {x: 447.6684, y: -265}
+  m_SizeDelta: {x: 895.3368, y: 330}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &498441981
 MonoBehaviour:
@@ -3147,7 +3147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4302cc77cc8a64dac406b305bcda10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 20a983f3c45021b468c89895a8072ef3, type: 3}
+  audioClip: {fileID: 8300000, guid: 578d0edfbdc86d1419723c92700003fd, type: 3}
 --- !u!1 &1714175714
 GameObject:
   m_ObjectHideFlags: 0
@@ -3510,33 +3510,6 @@ MonoBehaviour:
   - {fileID: 781856241913721907, guid: dda9927ec9a0b6343b88a2621d1fe5d9, type: 3}
   novelImageContainer: {fileID: 1655295459}
   novelBackgroundPrefab: {fileID: 8411936371333490823, guid: bd9e9565679ee6446be061db5b61e445, type: 3}
-  characterPrefabEntries:
-  - novelId: Banktermin wegen Kreditbeantragung
-    characterPrefabs:
-    - {fileID: 1465545687914413273, guid: b7726decdf73039408e8c47d83f08b1f, type: 3}
-  - novelId: "Gespr\xE4ch mit einem Bekannten"
-    characterPrefabs:
-    - {fileID: 1465545687914413273, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
-  - novelId: "Anmietung eines B\xFCros"
-    characterPrefabs:
-    - {fileID: 1465545687914413273, guid: f0ce20ce584d58b4695d64ab6c6bccf9, type: 3}
-  - novelId: Telefonat mit den Eltern
-    characterPrefabs:
-    - {fileID: 1465545687914413273, guid: fe0cc47faafc1e948a15badc475ba62d, type: 3}
-    - {fileID: 1465545687914413273, guid: aee370a96d4a69c4fa663f6e1505d316, type: 3}
-  - novelId: Einstiegsdialog
-    characterPrefabs:
-    - {fileID: 1465545687914413273, guid: 3d4497c8617ec474aafda8860421d3eb, type: 3}
-  - novelId: Telefonat mit der Notarin
-    characterPrefabs:
-    - {fileID: 1465545687914413273, guid: 007f6e56dbdaee343967827de74e46f4, type: 3}
-  - novelId: "Pressegespr\xE4ch"
-    characterPrefabs:
-    - {fileID: 1465545687914413273, guid: e6259436c6c867c42bad191121365efb, type: 3}
-  - novelId: Honorarverhandlung mit Kundin
-    characterPrefabs:
-    - {fileID: 1465545687914413273, guid: 8c1acbda2949bf74a825ff93cd14ebc8, type: 3}
-  characterPrefabEntriesTest: []
   backgroundContainer: {fileID: 1386174946}
   deskContainer: {fileID: 641773708}
   decoDeskContainer: {fileID: 1714175714}
@@ -3562,7 +3535,6 @@ MonoBehaviour:
   gptServercallPrefab: {fileID: 2893782931371137265, guid: 0a83007157f62994a8eb13d6b7cfccc6, type: 3}
   leaveGameAndGoBackMessageBoxObject: {fileID: 2183646667946129171, guid: 52d64ed2a3cd0524ca7296e9ccb5ddca, type: 3}
   leaveGameAndGoBackMessageBox: {fileID: 5629918238507184917, guid: 52d64ed2a3cd0524ca7296e9ccb5ddca, type: 3}
-  hintForSavegameMessageBoxObject: {fileID: -7886966643122889469, guid: 19371ec5265175b4285038aaf97af918, type: 3}
   hintForSavegameMessageBox: {fileID: 5629918238507184917, guid: 19371ec5265175b4285038aaf97af918, type: 3}
   novelToPlay:
     id: 0
@@ -3577,14 +3549,13 @@ MonoBehaviour:
     playedPath: 
   currentTypeWriter: {fileID: 0}
   selectOptionContinueConversation: {fileID: 0}
-  currentTalkingCharacterController: {fileID: 0}
+  currentTalkingKite2CharacterController: {fileID: 0}
   clips:
-  - {fileID: 0}
   - {fileID: 8300000, guid: 6a2f896f4c76c7f44b538a4b04dad09e, type: 3}
-  - {fileID: 8300000, guid: ce01bdabef904a744ab5943498b127b0, type: 3}
-  - {fileID: 8300000, guid: 3ad33f7f14e090e4cb5fc5e2ff3121b8, type: 3}
+  - {fileID: 8300000, guid: cda9ba2dd422ff643969898376a63b55, type: 3}
+  - {fileID: 8300000, guid: d7e4565c0a95a7b48b9e8336849c86ca, type: 3}
   - {fileID: 8300000, guid: 540791ccaa3d1014b9ab91ffc610e3f1, type: 3}
-  - {fileID: 8300000, guid: 8df96fe7e03644a468c7445614a32f21, type: 3}
+  - {fileID: 8300000, guid: 4c44e565e4631f1419f6f4f03e23577e, type: 3}
   timerForHint: 12
   timerForHintInitial: 3
   firstUserConfirmation: 1
