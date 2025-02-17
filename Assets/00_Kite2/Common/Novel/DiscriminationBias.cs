@@ -124,23 +124,23 @@ namespace _00_Kite2.Common.Novel
                 case DiscriminationBias.IN_PERCEPTION_OF_LEADERSHIP_ABILITIES:
                     return "Hier wird folgender Bias relevant: Bias in der Wahrnehmung von Führungsfähigkeiten";
                 case DiscriminationBias.RACIST_AND_ETHNIC_BIASES:
-                    return "Hier wird folgender Bias relevant: Rassistische und ethnische Biases";
+                    return "Hier werden folgende Biases relevant: Rassistische und ethnische Biases";
                 case DiscriminationBias.SOCIOECONOMIC_BIASES:
-                    return "Hier wird folgender Bias relevant: Sozioökonomische Biases";
+                    return "Hier werden folgende Biases relevant: Sozioökonomische Biases";
                 case DiscriminationBias.AGE_AND_GENERATIONAL_BIASES:
-                    return "Hier wird folgender Bias relevant: Alter- und Generationen-Biases";
+                    return "Hier werden folgende Biases relevant: Alter- und Generationen-Biases";
                 case DiscriminationBias.SEXUALITY_RELATED_BIASES:
-                    return "Hier wird folgender Bias relevant: Sexualitätsbezogene Biases";
+                    return "Hier werden folgende Biases relevant: Sexualitätsbezogene Biases";
                 case DiscriminationBias.AGAINST_WOMEN_WITH_DISABILITIES:
                     return "Hier wird folgender Bias relevant: Biases gegenüber Frauen mit Behinderungen";
                 case DiscriminationBias.STEREOTYPES_AGAINST_WOMEN_IN_NON_TRADITIONAL_INDUSTRIES:
                     return
                         "Hier wird folgender Bias relevant: Stereotype gegenüber Frauen in nicht-traditionellen Branchen";
                 case DiscriminationBias.CULTURAL_AND_RELIGIOUS_BIASES:
-                    return "Hier wird folgender Bias relevant: Kulturelle und religiöse Biases";
+                    return "Hier werden folgende Biases relevant: Kulturelle und religiöse Biases";
                 case DiscriminationBias.MATERNAL_BIAS: return "Hier wird folgender Bias relevant: Maternal Bias";
                 case DiscriminationBias.AGAINST_WOMEN_WITH_CHILDREN:
-                    return "Hier wird folgender Bias relevant: Biases gegenüber Frauen mit Kindern";
+                    return "Hier wird folgender Bias relevant: Bias gegenüber Frauen mit Kindern";
                 case DiscriminationBias.EXPECTATIONS_REGARDING_FAMILY_PLANNING:
                     return "Hier wird folgender Bias relevant: Erwartungshaltung bezüglich Familienplanung";
                 case DiscriminationBias.WORK_LIFE_BALANCE_EXPECTATIONS:
@@ -155,7 +155,7 @@ namespace _00_Kite2.Common.Novel
                 case DiscriminationBias.IN_MEDIA_AND_ADVERTISING:
                     return "Hier wird folgender Bias relevant: Bias in Medien und Werbung";
                 case DiscriminationBias.UNCONSCIOUS_BIAS_IN_COMMUNICATION:
-                    return "Hier wird folgender Bias relevant: Unbewusste Bias in der Kommunikation";
+                    return "Hier wird folgender Bias relevant: Unbewusster Bias in der Kommunikation";
                 case DiscriminationBias.PROVE_IT_AGAIN_BIAS:
                     return "Hier wird folgender Bias relevant: Prove-it-Again-Bias";
                 case DiscriminationBias.HETERONORMATIVITAET_BIAS:

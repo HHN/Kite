@@ -651,9 +651,7 @@ namespace _00_Kite2.Player
         private void HandleMarkBiasEvent(VisualNovelEvent novelEvent)
         {
             SetNextEvent(novelEvent);
-            string biasInformation =
-                DiscriminationBiasHelper.GetInformationString(
-                    DiscriminationBiasHelper.ValueOf(novelEvent.relevantBias));
+            string biasInformation = DiscriminationBiasHelper.GetInformationString(DiscriminationBiasHelper.ValueOf(novelEvent.relevantBias));
             PromptManager.Instance().AddFormattedLineToPrompt("Hinweis", biasInformation);
             NovelBiasManager.Instance().MarkBiasAsRelevant(DiscriminationBiasHelper.ValueOf(novelEvent.relevantBias));
             StartCoroutine(PlayNextEvent());
