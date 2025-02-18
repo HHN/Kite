@@ -88,7 +88,7 @@ namespace _00_Kite2.Common.Managers
 
         public void AddFormattedLineToPrompt(string characterName, string text)
         {
-            string formattedLine = $"<b>{characterName}:</b> {text}";
+            string formattedLine = characterName.Contains("Hinweis") ? $"<i><b>{characterName}:</b> {text}</i>" : $"<b>{characterName}:</b> {text}";
             AddLineToPrompt(formattedLine);
         }
     }

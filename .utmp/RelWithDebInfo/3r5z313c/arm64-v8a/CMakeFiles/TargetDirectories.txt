@@ -1,5 +1,0 @@
-C:/Users/JL/Documents/Code/Kite2Client/.utmp/RelWithDebInfo/3r5z313c/arm64-v8a/CMakeFiles/edit_cache.dir
-C:/Users/JL/Documents/Code/Kite2Client/.utmp/RelWithDebInfo/3r5z313c/arm64-v8a/CMakeFiles/rebuild_cache.dir
-C:/Users/JL/Documents/Code/Kite2Client/.utmp/RelWithDebInfo/3r5z313c/arm64-v8a/FramePacing/CMakeFiles/swappywrapper.dir
-C:/Users/JL/Documents/Code/Kite2Client/.utmp/RelWithDebInfo/3r5z313c/arm64-v8a/FramePacing/CMakeFiles/edit_cache.dir
-C:/Users/JL/Documents/Code/Kite2Client/.utmp/RelWithDebInfo/3r5z313c/arm64-v8a/FramePacing/CMakeFiles/rebuild_cache.dir

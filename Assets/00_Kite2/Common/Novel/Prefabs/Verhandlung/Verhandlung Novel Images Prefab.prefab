@@ -629,7 +629,7 @@ MonoBehaviour:
   decoKommodeContainer: {fileID: 2204003879144595292}
   decoVasePrefab: {fileID: 8411936371333490823, guid: 7d913892f960ad9469f0b8837688bee0, type: 3}
   decoVaseContainer: {fileID: 6178494739774191856}
-  decoVaseAudio: {fileID: 8300000, guid: ecf72a67e2af14d48a34393afc832546, type: 3}
+  decoVaseAudio: {fileID: 8300000, guid: 0d635604f39a5ac488d112ac094bc2ef, type: 3}
   animationFramesVase:
   - {fileID: 21300000, guid: 3b6a23e979d597b4782a69ea4f5a51c1, type: 3}
   - {fileID: 21300000, guid: 744b1c2dae89b6f43a01072d74f6c67b, type: 3}

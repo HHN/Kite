@@ -469,12 +469,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5577a2203c8b3f742ad8b78b0d36674d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  novelKite2CharacterController: {fileID: 0}
+  novelKite2CharacterController2: {fileID: 0}
   decoVasePrefab: {fileID: 8411936371333490823, guid: c6a744ea4acda9845859e692793b662b, type: 3}
   decoVaseContainer: {fileID: 3234276313403849665}
   decoGlasPrefab: {fileID: 8411936371333490823, guid: 5914556f3061294488bc5c9fd324c341, type: 3}
   decoGlasContainer: {fileID: 5558045549636132440}
-  decoGlasAudio: {fileID: 8300000, guid: e98f518e9e0c377449a3134fc81ebcc9, type: 3}
-  decoVaseAudio: {fileID: 8300000, guid: ecf72a67e2af14d48a34393afc832546, type: 3}
+  decoGlasAudio: {fileID: 8300000, guid: 0d216aa514664d1498017d5950134f94, type: 3}
+  decoVaseAudio: {fileID: 8300000, guid: 0d635604f39a5ac488d112ac094bc2ef, type: 3}
   animationFramesVase:
   - {fileID: 21300000, guid: 3b6a23e979d597b4782a69ea4f5a51c1, type: 3}
   - {fileID: 21300000, guid: 744b1c2dae89b6f43a01072d74f6c67b, type: 3}
@@ -489,7 +491,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9d987476a3f9e3647ae902413ee1316b, type: 3}
   characterContainer: {fileID: 3669613035356320353}
   characterPrefab: {fileID: 0}
-  characterController: {fileID: 0}
 --- !u!1 &5558045549636132440
 GameObject:
   m_ObjectHideFlags: 0

@@ -92,7 +92,8 @@ namespace _00_Kite2.UserFeedback
         {
             Debug.Log("KOPIEREN");
             string pattern = @"<\/?b>";
-            GUIUtility.systemCopyBuffer = Regex.Replace(dialogText.text, pattern, string.Empty);
+            string copyText = Regex.Replace(dialogText.text, pattern, string.Empty);
+            GUIUtility.systemCopyBuffer = copyText.Replace("\r\n", "\r\n\r\n");
             StartCoroutine(ShowCopyPopup("Dialog"));
         }
 
@@ -100,7 +101,8 @@ namespace _00_Kite2.UserFeedback
         {
             Debug.Log("KOPIEREN");
             string pattern = @"<\/?b>";
-            GUIUtility.systemCopyBuffer = Regex.Replace(aiFeedbackText.text, pattern, string.Empty);
+            string copyText = Regex.Replace(dialogText.text, pattern, string.Empty);
+            GUIUtility.systemCopyBuffer = copyText.Replace("\r\n", "\r\n\r\n");
             StartCoroutine(ShowCopyPopup("Feedback"));
         }
 
