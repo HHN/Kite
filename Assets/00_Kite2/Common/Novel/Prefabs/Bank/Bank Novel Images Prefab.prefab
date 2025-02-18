@@ -568,12 +568,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a51791c6b3265d47b2f484304d34486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  novelKite2CharacterController: {fileID: 0}
+  novelKite2CharacterController2: {fileID: 0}
   decoGlasPrefab: {fileID: 8411936371333490823, guid: ee198f3e5cc9689469d14e822d4417e7, type: 3}
   decoGlasContainer: {fileID: 7557155198613614112}
   decoPlantPrefab: {fileID: 8411936371333490823, guid: 02334970db3300f4797dfc8a311a46c8, type: 3}
   decoPlantContainer: {fileID: 6144117888820781791}
-  decoGlasAudio: {fileID: 8300000, guid: e98f518e9e0c377449a3134fc81ebcc9, type: 3}
-  decoPlantAudio: {fileID: 8300000, guid: 36685d5895c76de418eb8d96bdcbef80, type: 3}
+  decoGlasAudio: {fileID: 8300000, guid: 0d216aa514664d1498017d5950134f94, type: 3}
+  decoPlantAudio: {fileID: 8300000, guid: f56fba4089e12584c97217a7049db785, type: 3}
   animationFramesPlant:
   - {fileID: 21300000, guid: f5eed5e52be07d641b798dbf6b915bb8, type: 3}
   - {fileID: 21300000, guid: a54589aa564f7244da0c42a701cbbaa6, type: 3}
@@ -588,7 +590,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9d987476a3f9e3647ae902413ee1316b, type: 3}
   characterContainer: {fileID: 3669613035356320353}
   characterPrefab: {fileID: 0}
-  characterController: {fileID: 0}
 --- !u!1 &5457771511623170846
 GameObject:
   m_ObjectHideFlags: 0

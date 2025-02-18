@@ -295,8 +295,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 572.5, y: -44.004997}
-  m_SizeDelta: {x: 945, y: 0}
+  m_AnchoredPosition: {x: 752.5, y: -44.004997}
+  m_SizeDelta: {x: 1305, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7179068350423566559
 CanvasRenderer:
@@ -559,4 +559,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4302cc77cc8a64dac406b305bcda10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: ba92d3f463aacab498d305586f493f84, type: 3}
+  audioClip: {fileID: 8300000, guid: f407a15594e440946955077bc60b63f4, type: 3}
