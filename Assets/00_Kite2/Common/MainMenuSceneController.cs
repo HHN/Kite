@@ -59,7 +59,6 @@ namespace _00_Kite2.Common
             AnalyticsServiceHandler.Instance().StartAnalytics();
             PlayerDataManager.Instance().LoadAllPlayerPrefs();
             BackStackManager.Instance().Clear();
-            SceneMemoryManager.Instance().ClearMemory();
         }
 
         private void SetupButtonListeners()
