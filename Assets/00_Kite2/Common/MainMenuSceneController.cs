@@ -27,6 +27,7 @@ namespace _00_Kite2.Common
         [SerializeField] private AudioSource kiteAudioLogo;
         [SerializeField] private GameObject getVersionServerCallPrefab;
         [SerializeField] private GameObject novelLoader;
+        [SerializeField] private TMP_Text versionInfo;
         private static int COMPATIBLE_SERVER_VERSION_NUMBER = 10;
 
         private void Start()
@@ -44,6 +45,8 @@ namespace _00_Kite2.Common
 
             // Hole die Instanz des PrivacyManagers, um den aktuellen Status der Datenschutzakzeptanz zu überprüfen
             var privacyManager = PrivacyAndConditionManager.Instance();
+
+            versionInfo.text = Application.version;
 
             if (PlayerPrefs.GetInt("IsSoundeffectsVolumeOn", 1) == 1)
             {
