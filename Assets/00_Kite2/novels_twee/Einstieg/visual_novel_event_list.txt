@@ -236,7 +236,7 @@ Wir möchten, dass du dich rundum unterstützt fühlst und sicherer wirst im Umg
 KITE II wurde von einem Projektteam an der Hochschule Heilbronn entwickelt. Das Projekt wird durch das Bundesministerium für Familie, Senioren, Frauen und Jugend gefördert. Für die Inhalte ist aber Prof. Dr. Nicola Marsden verantwortlich, die das Projektteam leitet.
 >>--<<
 >>Charakter01SprichtLaecheln:<<
-Wir arbeiten mit vielen Partner*innen zusammen, wie der bundesweiten gründerinnenagentur "(bga)", um Gründerinnen zu unterstützen und die Gründungswelt fairer zu machen.
+Wir arbeiten mit vielen Partner*innen zusammen, wie der bundesweiten gründerinnenagentur (bga), um Gründerinnen zu unterstützen und die Gründungswelt fairer zu machen.
 
 [[Welche Rolle spielt KI in der App?->KI Rolle]]
 [[Wofür steht eigentlich "KITE"?->Abkuerzung]]
