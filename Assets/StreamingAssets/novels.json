@@ -74102,7 +74102,7 @@
                     "faceSpriteId": 0,
                     "backgroundSpriteId": 0,
                     "character": 0,
-                    "text": "Für die Veranstaltung beträgt mein Honorar weiterhin bei 2.500 €. Wenn wir die beiden weiteren Buchungen zusammenfassen, kann ich Ihnen einen Rabatt anbieten.",
+                    "text": "Für die Veranstaltung liegt mein Honorar weiterhin bei 2.500 €. Wenn wir die beiden weiteren Buchungen zusammenfassen, kann ich Ihnen einen Rabatt anbieten.",
                     "animationType": 0,
                     "expressionType": 0,
                     "xPosition": 0,
@@ -74222,7 +74222,7 @@
                     "faceSpriteId": 0,
                     "backgroundSpriteId": 0,
                     "character": 0,
-                    "text": "Für die Veranstaltung beträgt mein Honorar weiterhin bei 2.500 €. Mit der anderen Buchung kann ich Ihnen einen Rabatt anbieten.",
+                    "text": "Für die Veranstaltung liegt mein Honorar weiterhin bei 2.500 €. Mit der anderen Buchung kann ich Ihnen einen Rabatt anbieten.",
                     "animationType": 0,
                     "expressionType": 0,
                     "xPosition": 0,
@@ -76728,7 +76728,7 @@
                 },
                 {
                     "id": "Willkommen",
-                    "nextId": "OptionsLabel1",
+                    "nextId": "OptionsLabel86",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -76757,8 +76757,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel1",
-                    "nextId": "OptionsLabel1OptionsLabel1",
+                    "id": "OptionsLabel86",
+                    "nextId": "OptionsLabel86OptionsLabel86",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -76787,8 +76787,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel1OptionsLabel1",
-                    "nextId": "OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1",
+                    "id": "OptionsLabel86OptionsLabel86",
+                    "nextId": "OptionsLabel86OptionsLabel86OptionsLabel86OptionsLabel86",
                     "onChoice": "Mehr über die App",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -76817,8 +76817,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1",
-                    "nextId": "OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1",
+                    "id": "OptionsLabel86OptionsLabel86OptionsLabel86OptionsLabel86",
+                    "nextId": "OptionsLabel86OptionsLabel86OptionsLabel86OptionsLabel86OptionsLabel86OptionsLabel86OptionsLabel86OptionsLabel86",
                     "onChoice": "Nicht-Gründerin Einstieg",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -76847,7 +76847,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1",
+                    "id": "OptionsLabel86OptionsLabel86OptionsLabel86OptionsLabel86OptionsLabel86OptionsLabel86OptionsLabel86OptionsLabel86",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -76908,7 +76908,7 @@
                 },
                 {
                     "id": "AbkuerzungRandomSeperatorString1020304Abkuerzung",
-                    "nextId": "OptionsLabel2",
+                    "nextId": "OptionsLabel87",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -76937,8 +76937,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel2",
-                    "nextId": "OptionsLabel2OptionsLabel2",
+                    "id": "OptionsLabel87",
+                    "nextId": "OptionsLabel87OptionsLabel87",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -76967,8 +76967,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel2OptionsLabel2",
-                    "nextId": "OptionsLabel2OptionsLabel2OptionsLabel2OptionsLabel2",
+                    "id": "OptionsLabel87OptionsLabel87",
+                    "nextId": "OptionsLabel87OptionsLabel87OptionsLabel87OptionsLabel87",
                     "onChoice": "KI Rolle",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -76997,7 +76997,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel2OptionsLabel2OptionsLabel2OptionsLabel2",
+                    "id": "OptionsLabel87OptionsLabel87OptionsLabel87OptionsLabel87",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -77058,7 +77058,7 @@
                 },
                 {
                     "id": "Beispiel SpielsituationRandomSeperatorString1020304Beispiel Spielsituation",
-                    "nextId": "OptionsLabel3",
+                    "nextId": "OptionsLabel88",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -77087,8 +77087,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel3",
-                    "nextId": "OptionsLabel3OptionsLabel3",
+                    "id": "OptionsLabel88",
+                    "nextId": "OptionsLabel88OptionsLabel88",
                     "onChoice": "Bias Beispiel",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -77117,8 +77117,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel3OptionsLabel3",
-                    "nextId": "OptionsLabel3OptionsLabel3OptionsLabel3OptionsLabel3",
+                    "id": "OptionsLabel88OptionsLabel88",
+                    "nextId": "OptionsLabel88OptionsLabel88OptionsLabel88OptionsLabel88",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -77147,7 +77147,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel3OptionsLabel3OptionsLabel3OptionsLabel3",
+                    "id": "OptionsLabel88OptionsLabel88OptionsLabel88OptionsLabel88",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -77178,7 +77178,7 @@
                 },
                 {
                     "id": "Bias Beispiel",
-                    "nextId": "OptionsLabel4",
+                    "nextId": "OptionsLabel89",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -77207,8 +77207,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel4",
-                    "nextId": "OptionsLabel4OptionsLabel4",
+                    "id": "OptionsLabel89",
+                    "nextId": "OptionsLabel89OptionsLabel89",
                     "onChoice": "Noch eine Frage",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -77237,8 +77237,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel4OptionsLabel4",
-                    "nextId": "OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4",
+                    "id": "OptionsLabel89OptionsLabel89",
+                    "nextId": "OptionsLabel89OptionsLabel89OptionsLabel89OptionsLabel89",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -77267,7 +77267,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4",
+                    "id": "OptionsLabel89OptionsLabel89OptionsLabel89OptionsLabel89",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -77298,7 +77298,7 @@
                 },
                 {
                     "id": "KI Resilienz",
-                    "nextId": "OptionsLabel5",
+                    "nextId": "OptionsLabel90",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -77327,8 +77327,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel5",
-                    "nextId": "OptionsLabel5OptionsLabel5",
+                    "id": "OptionsLabel90",
+                    "nextId": "OptionsLabel90OptionsLabel90",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -77357,8 +77357,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel5OptionsLabel5",
-                    "nextId": "OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5",
+                    "id": "OptionsLabel90OptionsLabel90",
+                    "nextId": "OptionsLabel90OptionsLabel90OptionsLabel90OptionsLabel90",
                     "onChoice": "Mehr über die App",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -77387,7 +77387,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5",
+                    "id": "OptionsLabel90OptionsLabel90OptionsLabel90OptionsLabel90",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -77448,7 +77448,7 @@
                 },
                 {
                     "id": "KI RolleRandomSeperatorString1020304KI Rolle",
-                    "nextId": "OptionsLabel6",
+                    "nextId": "OptionsLabel91",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -77477,8 +77477,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel6",
-                    "nextId": "OptionsLabel6OptionsLabel6",
+                    "id": "OptionsLabel91",
+                    "nextId": "OptionsLabel91OptionsLabel91",
                     "onChoice": "Projekt Ziel",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -77507,8 +77507,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel6OptionsLabel6",
-                    "nextId": "OptionsLabel6OptionsLabel6OptionsLabel6OptionsLabel6",
+                    "id": "OptionsLabel91OptionsLabel91",
+                    "nextId": "OptionsLabel91OptionsLabel91OptionsLabel91OptionsLabel91",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -77537,7 +77537,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel6OptionsLabel6OptionsLabel6OptionsLabel6",
+                    "id": "OptionsLabel91OptionsLabel91OptionsLabel91OptionsLabel91",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -77598,7 +77598,7 @@
                 },
                 {
                     "id": "Letzter SchrittRandomSeperatorString1020304Letzter Schritt",
-                    "nextId": "OptionsLabel7",
+                    "nextId": "OptionsLabel92",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -77627,8 +77627,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel7",
-                    "nextId": "OptionsLabel7OptionsLabel7",
+                    "id": "OptionsLabel92",
+                    "nextId": "OptionsLabel92OptionsLabel92",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -77657,8 +77657,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel7OptionsLabel7",
-                    "nextId": "OptionsLabel7OptionsLabel7OptionsLabel7OptionsLabel7",
+                    "id": "OptionsLabel92OptionsLabel92",
+                    "nextId": "OptionsLabel92OptionsLabel92OptionsLabel92OptionsLabel92",
                     "onChoice": "Mehr über die App",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -77687,7 +77687,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel7OptionsLabel7OptionsLabel7OptionsLabel7",
+                    "id": "OptionsLabel92OptionsLabel92OptionsLabel92OptionsLabel92",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -77748,7 +77748,7 @@
                 },
                 {
                     "id": "Mehr DetailsRandomSeperatorString1020304Mehr Details",
-                    "nextId": "OptionsLabel8",
+                    "nextId": "OptionsLabel93",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -77777,8 +77777,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel8",
-                    "nextId": "OptionsLabel8OptionsLabel8",
+                    "id": "OptionsLabel93",
+                    "nextId": "OptionsLabel93OptionsLabel93",
                     "onChoice": "Beispiel Spielsituation",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -77807,8 +77807,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel8OptionsLabel8",
-                    "nextId": "OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8",
+                    "id": "OptionsLabel93OptionsLabel93",
+                    "nextId": "OptionsLabel93OptionsLabel93OptionsLabel93OptionsLabel93",
                     "onChoice": "Was ist KITEII",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -77837,8 +77837,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8",
-                    "nextId": "OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8",
+                    "id": "OptionsLabel93OptionsLabel93OptionsLabel93OptionsLabel93",
+                    "nextId": "OptionsLabel93OptionsLabel93OptionsLabel93OptionsLabel93OptionsLabel93OptionsLabel93OptionsLabel93OptionsLabel93",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -77867,7 +77867,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8",
+                    "id": "OptionsLabel93OptionsLabel93OptionsLabel93OptionsLabel93OptionsLabel93OptionsLabel93OptionsLabel93OptionsLabel93",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -77928,7 +77928,7 @@
                 },
                 {
                     "id": "Mehr FunktionenRandomSeperatorString1020304Mehr Funktionen",
-                    "nextId": "OptionsLabel9",
+                    "nextId": "OptionsLabel94",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -77957,8 +77957,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel9",
-                    "nextId": "OptionsLabel9OptionsLabel9",
+                    "id": "OptionsLabel94",
+                    "nextId": "OptionsLabel94OptionsLabel94",
                     "onChoice": "Weitere Infos",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -77987,8 +77987,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel9OptionsLabel9",
-                    "nextId": "OptionsLabel9OptionsLabel9OptionsLabel9OptionsLabel9",
+                    "id": "OptionsLabel94OptionsLabel94",
+                    "nextId": "OptionsLabel94OptionsLabel94OptionsLabel94OptionsLabel94",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -78017,7 +78017,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel9OptionsLabel9OptionsLabel9OptionsLabel9",
+                    "id": "OptionsLabel94OptionsLabel94OptionsLabel94OptionsLabel94",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -78078,7 +78078,7 @@
                 },
                 {
                     "id": "Mehr über die AppRandomSeperatorString1020304Mehr über die App",
-                    "nextId": "OptionsLabel10",
+                    "nextId": "OptionsLabel95",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -78107,8 +78107,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel10",
-                    "nextId": "OptionsLabel10OptionsLabel10",
+                    "id": "OptionsLabel95",
+                    "nextId": "OptionsLabel95OptionsLabel95",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -78137,8 +78137,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel10OptionsLabel10",
-                    "nextId": "OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10",
+                    "id": "OptionsLabel95OptionsLabel95",
+                    "nextId": "OptionsLabel95OptionsLabel95OptionsLabel95OptionsLabel95",
                     "onChoice": "Mehr Details",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -78167,8 +78167,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10",
-                    "nextId": "OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10",
+                    "id": "OptionsLabel95OptionsLabel95OptionsLabel95OptionsLabel95",
+                    "nextId": "OptionsLabel95OptionsLabel95OptionsLabel95OptionsLabel95OptionsLabel95OptionsLabel95OptionsLabel95OptionsLabel95",
                     "onChoice": "Nicht-Gründerin Einstieg",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -78197,7 +78197,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10",
+                    "id": "OptionsLabel95OptionsLabel95OptionsLabel95OptionsLabel95OptionsLabel95OptionsLabel95OptionsLabel95OptionsLabel95",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -78258,7 +78258,7 @@
                 },
                 {
                     "id": "Nicht-Gründerin DetailsRandomSeperatorString1020304Nicht-Gründerin Details",
-                    "nextId": "OptionsLabel11",
+                    "nextId": "OptionsLabel96",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -78287,8 +78287,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel11",
-                    "nextId": "OptionsLabel11OptionsLabel11",
+                    "id": "OptionsLabel96",
+                    "nextId": "OptionsLabel96OptionsLabel96",
                     "onChoice": "Nicht-Gründerin Instruktionen",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -78317,8 +78317,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel11OptionsLabel11",
-                    "nextId": "OptionsLabel11OptionsLabel11OptionsLabel11OptionsLabel11",
+                    "id": "OptionsLabel96OptionsLabel96",
+                    "nextId": "OptionsLabel96OptionsLabel96OptionsLabel96OptionsLabel96",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -78347,7 +78347,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel11OptionsLabel11OptionsLabel11OptionsLabel11",
+                    "id": "OptionsLabel96OptionsLabel96OptionsLabel96OptionsLabel96",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -78408,7 +78408,7 @@
                 },
                 {
                     "id": "Nicht-Gründerin EinstiegRandomSeperatorString1020304Nicht-Gründerin Einstieg",
-                    "nextId": "OptionsLabel12",
+                    "nextId": "OptionsLabel97",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -78437,8 +78437,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel12",
-                    "nextId": "OptionsLabel12OptionsLabel12",
+                    "id": "OptionsLabel97",
+                    "nextId": "OptionsLabel97OptionsLabel97",
                     "onChoice": "Nicht-Gründerin Details",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -78467,8 +78467,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel12OptionsLabel12",
-                    "nextId": "OptionsLabel12OptionsLabel12OptionsLabel12OptionsLabel12",
+                    "id": "OptionsLabel97OptionsLabel97",
+                    "nextId": "OptionsLabel97OptionsLabel97OptionsLabel97OptionsLabel97",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -78497,7 +78497,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel12OptionsLabel12OptionsLabel12OptionsLabel12",
+                    "id": "OptionsLabel97OptionsLabel97OptionsLabel97OptionsLabel97",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -78528,7 +78528,7 @@
                 },
                 {
                     "id": "Nicht-Gründerin Instruktionen",
-                    "nextId": "OptionsLabel13",
+                    "nextId": "OptionsLabel98",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -78557,8 +78557,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel13",
-                    "nextId": "OptionsLabel13OptionsLabel13",
+                    "id": "OptionsLabel98",
+                    "nextId": "OptionsLabel98OptionsLabel98",
                     "onChoice": "Mehr Details",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -78587,8 +78587,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel13OptionsLabel13",
-                    "nextId": "OptionsLabel13OptionsLabel13OptionsLabel13OptionsLabel13",
+                    "id": "OptionsLabel98OptionsLabel98",
+                    "nextId": "OptionsLabel98OptionsLabel98OptionsLabel98OptionsLabel98",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -78617,7 +78617,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel13OptionsLabel13OptionsLabel13OptionsLabel13",
+                    "id": "OptionsLabel98OptionsLabel98OptionsLabel98OptionsLabel98",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -78678,7 +78678,7 @@
                 },
                 {
                     "id": "Nicht-GründerinnenRandomSeperatorString1020304Nicht-Gründerinnen",
-                    "nextId": "OptionsLabel14",
+                    "nextId": "OptionsLabel99",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -78707,8 +78707,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel14",
-                    "nextId": "OptionsLabel14OptionsLabel14",
+                    "id": "OptionsLabel99",
+                    "nextId": "OptionsLabel99OptionsLabel99",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -78737,8 +78737,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel14OptionsLabel14",
-                    "nextId": "OptionsLabel14OptionsLabel14OptionsLabel14OptionsLabel14",
+                    "id": "OptionsLabel99OptionsLabel99",
+                    "nextId": "OptionsLabel99OptionsLabel99OptionsLabel99OptionsLabel99",
                     "onChoice": "Statistik",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -78767,7 +78767,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel14OptionsLabel14OptionsLabel14OptionsLabel14",
+                    "id": "OptionsLabel99OptionsLabel99OptionsLabel99OptionsLabel99",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -78828,7 +78828,7 @@
                 },
                 {
                     "id": "Noch eine FrageRandomSeperatorString1020304Noch eine Frage",
-                    "nextId": "OptionsLabel15",
+                    "nextId": "OptionsLabel100",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -78857,8 +78857,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel15",
-                    "nextId": "OptionsLabel15OptionsLabel15",
+                    "id": "OptionsLabel100",
+                    "nextId": "OptionsLabel100OptionsLabel100",
                     "onChoice": "Mehr Funktionen",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -78887,8 +78887,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel15OptionsLabel15",
-                    "nextId": "OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15",
+                    "id": "OptionsLabel100OptionsLabel100",
+                    "nextId": "OptionsLabel100OptionsLabel100OptionsLabel100OptionsLabel100",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -78917,7 +78917,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15",
+                    "id": "OptionsLabel100OptionsLabel100OptionsLabel100OptionsLabel100",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -79008,7 +79008,7 @@
                 },
                 {
                     "id": "Projekt ZielRandomSeperatorString1020304Projekt ZielRandomSeperatorString1020304Projekt ZielRandomSeperatorString1020304Projekt Ziel",
-                    "nextId": "OptionsLabel16",
+                    "nextId": "OptionsLabel101",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -79037,8 +79037,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel16",
-                    "nextId": "OptionsLabel16OptionsLabel16",
+                    "id": "OptionsLabel101",
+                    "nextId": "OptionsLabel101OptionsLabel101",
                     "onChoice": "Statistik",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -79067,8 +79067,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel16OptionsLabel16",
-                    "nextId": "OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16",
+                    "id": "OptionsLabel101OptionsLabel101",
+                    "nextId": "OptionsLabel101OptionsLabel101OptionsLabel101OptionsLabel101",
                     "onChoice": "Nicht-Gründerinnen",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -79097,8 +79097,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16",
-                    "nextId": "OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16",
+                    "id": "OptionsLabel101OptionsLabel101OptionsLabel101OptionsLabel101",
+                    "nextId": "OptionsLabel101OptionsLabel101OptionsLabel101OptionsLabel101OptionsLabel101OptionsLabel101OptionsLabel101OptionsLabel101",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -79127,7 +79127,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16",
+                    "id": "OptionsLabel101OptionsLabel101OptionsLabel101OptionsLabel101OptionsLabel101OptionsLabel101OptionsLabel101OptionsLabel101",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -79278,7 +79278,7 @@
                 },
                 {
                     "id": "StatistikRandomSeperatorString1020304Statistik",
-                    "nextId": "OptionsLabel17",
+                    "nextId": "OptionsLabel102",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -79307,8 +79307,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel17",
-                    "nextId": "OptionsLabel17OptionsLabel17",
+                    "id": "OptionsLabel102",
+                    "nextId": "OptionsLabel102OptionsLabel102",
                     "onChoice": "KI Resilienz",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -79337,8 +79337,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel17OptionsLabel17",
-                    "nextId": "OptionsLabel17OptionsLabel17OptionsLabel17OptionsLabel17",
+                    "id": "OptionsLabel102OptionsLabel102",
+                    "nextId": "OptionsLabel102OptionsLabel102OptionsLabel102OptionsLabel102",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -79367,7 +79367,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel17OptionsLabel17OptionsLabel17OptionsLabel17",
+                    "id": "OptionsLabel102OptionsLabel102OptionsLabel102OptionsLabel102",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -79428,7 +79428,7 @@
                 },
                 {
                     "id": "Was ist KITEIIRandomSeperatorString1020304Was ist KITEII",
-                    "nextId": "OptionsLabel18",
+                    "nextId": "OptionsLabel103",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -79457,8 +79457,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel18",
-                    "nextId": "OptionsLabel18OptionsLabel18",
+                    "id": "OptionsLabel103",
+                    "nextId": "OptionsLabel103OptionsLabel103",
                     "onChoice": "Wer KITE II",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -79487,8 +79487,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel18OptionsLabel18",
-                    "nextId": "OptionsLabel18OptionsLabel18OptionsLabel18OptionsLabel18",
+                    "id": "OptionsLabel103OptionsLabel103",
+                    "nextId": "OptionsLabel103OptionsLabel103OptionsLabel103OptionsLabel103",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -79517,7 +79517,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel18OptionsLabel18OptionsLabel18OptionsLabel18",
+                    "id": "OptionsLabel103OptionsLabel103OptionsLabel103OptionsLabel103",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -79578,7 +79578,7 @@
                 },
                 {
                     "id": "Weitere InfosRandomSeperatorString1020304Weitere Infos",
-                    "nextId": "OptionsLabel19",
+                    "nextId": "OptionsLabel104",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -79607,8 +79607,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel19",
-                    "nextId": "OptionsLabel19OptionsLabel19",
+                    "id": "OptionsLabel104",
+                    "nextId": "OptionsLabel104OptionsLabel104",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -79637,8 +79637,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel19OptionsLabel19",
-                    "nextId": "OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19",
+                    "id": "OptionsLabel104OptionsLabel104",
+                    "nextId": "OptionsLabel104OptionsLabel104OptionsLabel104OptionsLabel104",
                     "onChoice": "Zusammenfassung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -79667,7 +79667,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19",
+                    "id": "OptionsLabel104OptionsLabel104OptionsLabel104OptionsLabel104",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -79728,7 +79728,7 @@
                 },
                 {
                     "id": "Wer KITE IIRandomSeperatorString1020304Wer KITE II",
-                    "nextId": "OptionsLabel20",
+                    "nextId": "OptionsLabel105",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -79738,7 +79738,7 @@
                     "faceSpriteId": 0,
                     "backgroundSpriteId": 0,
                     "character": 2,
-                    "text": "Wir arbeiten mit vielen Partner*innen zusammen, wie der bundesweiten gründerinnenagentur , um Gründerinnen zu unterstützen und die Gründungswelt fairer zu machen.",
+                    "text": "Wir arbeiten mit vielen Partner*innen zusammen, wie der bundesweiten gründerinnenagentur \\, um Gründerinnen zu unterstützen und die Gründungswelt fairer zu machen.",
                     "animationType": 0,
                     "expressionType": 23,
                     "xPosition": 0,
@@ -79757,8 +79757,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel20",
-                    "nextId": "OptionsLabel20OptionsLabel20",
+                    "id": "OptionsLabel105",
+                    "nextId": "OptionsLabel105OptionsLabel105",
                     "onChoice": "KI Rolle",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -79787,8 +79787,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel20OptionsLabel20",
-                    "nextId": "OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20",
+                    "id": "OptionsLabel105OptionsLabel105",
+                    "nextId": "OptionsLabel105OptionsLabel105OptionsLabel105OptionsLabel105",
                     "onChoice": "Abkuerzung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -79817,8 +79817,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20",
-                    "nextId": "OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20",
+                    "id": "OptionsLabel105OptionsLabel105OptionsLabel105OptionsLabel105",
+                    "nextId": "OptionsLabel105OptionsLabel105OptionsLabel105OptionsLabel105OptionsLabel105OptionsLabel105OptionsLabel105OptionsLabel105",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -79847,7 +79847,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20",
+                    "id": "OptionsLabel105OptionsLabel105OptionsLabel105OptionsLabel105OptionsLabel105OptionsLabel105OptionsLabel105OptionsLabel105",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -79908,7 +79908,7 @@
                 },
                 {
                     "id": "ZusammenfassungRandomSeperatorString1020304Zusammenfassung",
-                    "nextId": "OptionsLabel21",
+                    "nextId": "OptionsLabel106",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -79937,8 +79937,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel21",
-                    "nextId": "OptionsLabel21OptionsLabel21",
+                    "id": "OptionsLabel106",
+                    "nextId": "OptionsLabel106OptionsLabel106",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -79967,8 +79967,8 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel21OptionsLabel21",
-                    "nextId": "OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21",
+                    "id": "OptionsLabel106OptionsLabel106",
+                    "nextId": "OptionsLabel106OptionsLabel106OptionsLabel106OptionsLabel106",
                     "onChoice": "Letzter Schritt",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -79997,7 +79997,7 @@
                     "relevantBias": 0
                 },
                 {
-                    "id": "OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21",
+                    "id": "OptionsLabel106OptionsLabel106OptionsLabel106OptionsLabel106",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,

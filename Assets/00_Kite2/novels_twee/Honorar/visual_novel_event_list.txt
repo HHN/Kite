@@ -852,7 +852,7 @@ Natürlich. Also, ich würde Sie dann gerne für diese Veranstaltung und schonma
 
 [[Ja, also wenn Sie direkt drei Vorträge bei mir buchen, würde ich insgesamt 6.600 € zzgl. USt. berechnen. Also 2.200 € pro Vortrag.->Drei Vorträge]]
 
-[[Für die Veranstaltung beträgt mein Honorar weiterhin bei 2.500 €. Wenn wir die beiden weiteren Buchungen zusammenfassen, kann ich Ihnen einen Rabatt anbieten.->Rabatt]]
+[[Für die Veranstaltung liegt mein Honorar weiterhin bei 2.500 €. Wenn wir die beiden weiteren Buchungen zusammenfassen, kann ich Ihnen einen Rabatt anbieten.->Rabatt]]
 
 
 :: Wesentliche 2 {"position":"2500,3275","size":"100,100"}
@@ -861,7 +861,7 @@ Natürlich. Also, ich würde Sie dann gerne für diese Veranstaltung und ein wei
 
 [[Ja, also wenn Sie direkt zwei Vorträge bei mir buchen, würde ich insgesamt 4.400 € zzgl. USt. berechnen. Also 2.200 € pro Vortrag.->Direkt zwei Vorträge]]
 
-[[Für die Veranstaltung beträgt mein Honorar weiterhin bei 2.500 €. Mit der anderen Buchung kann ich Ihnen einen Rabatt anbieten.->Rabatt 2]]
+[[Für die Veranstaltung liegt mein Honorar weiterhin bei 2.500 €. Mit der anderen Buchung kann ich Ihnen einen Rabatt anbieten.->Rabatt 2]]
 
 
 :: Zielgerichtet {"position":"3125,1200","size":"100,100"}
