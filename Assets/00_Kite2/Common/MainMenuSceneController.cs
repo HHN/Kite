@@ -45,6 +45,15 @@ namespace _00_Kite2.Common
             // Hole die Instanz des PrivacyManagers, um den aktuellen Status der Datenschutzakzeptanz zu überprüfen
             var privacyManager = PrivacyAndConditionManager.Instance();
 
+            if (PlayerPrefs.GetInt("IsSoundeffectsVolumeOn", 1) == 1)
+            {
+                GlobalVolumeManager.Instance.SetGlobalVolume(PlayerPrefs.GetFloat("SavedSoundeffectsVolume", 1));
+            }
+            else
+            {
+                GlobalVolumeManager.Instance.SetGlobalVolume(0);
+            }
+
             // Überprüfe, ob die Nutzungsbedingungen und Datenschutzrichtlinien akzeptiert wurden
             if (privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted())
             {
@@ -56,7 +65,7 @@ namespace _00_Kite2.Common
         private void InitializeScene()
         {
             DontDestroyOnLoad(novelLoader);
-            AnalyticsServiceHandler.Instance().StartAnalytics();
+            //AnalyticsServiceHandler.Instance().StartAnalytics();  //TODO: Replace with custom Analytics
             PlayerDataManager.Instance().LoadAllPlayerPrefs();
             BackStackManager.Instance().Clear();
             SceneMemoryManager.Instance().ClearMemory();
@@ -79,7 +88,7 @@ namespace _00_Kite2.Common
 
                 if (privacyManager.IsDataCollectionAccepted())
                 {
-                    AnalyticsServiceHandler.Instance().CollectData();
+                    //AnalyticsServiceHandler.Instance().CollectData(); //TODO: Replace with custom Analytics
                 }
 
                 if (!ApplicationModeManager.Instance().IsOfflineModeActive())
