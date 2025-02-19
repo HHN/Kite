@@ -172,7 +172,7 @@ namespace _00_Kite2.Player.Kite_Novels.Visual_Novel_Formatter
             text = RemoveTitleFromPassage(text);
             text = RemoveTextInDoubleBrackets(text);
             text = RemoveTextInCurlyBraces(text);
-            text = RemoveTextInParentheses(text);
+            //text = RemoveTextInParentheses(text); Wir brauchen den Text in Klammern zur Zeit (z.B. (bga))
             text = RemoveTextInDoubleAngleBrackets(text);
             text = RemoveTextInDoubleAngleBracketsOtherDirection(text);
             text = RemoveSquareBrackets(text);
