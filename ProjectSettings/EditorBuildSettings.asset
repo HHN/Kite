@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/00_Kite2/Player/PlayInstructionScene.unity
     guid: 107de03954a699245be4e7689460de64
   - enabled: 1
-    path: Assets/00_Kite2/Common/NovelHistoryScene.unity
+    path: Assets/00_Kite2/Common/NovelHistory/NovelHistoryScene.unity
     guid: 3d8065ad5dae4a248a0ba319ba324138
   - enabled: 1
     path: Assets/00_Kite2/Common/FoundersWell2Scene.unity
