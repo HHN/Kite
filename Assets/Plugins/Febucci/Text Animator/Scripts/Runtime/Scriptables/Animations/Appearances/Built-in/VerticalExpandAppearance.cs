@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Febucci.UI.Effects
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(fileName = "Vertical Expand Appearance", menuName = "Text Animator/Animations/Appearances/Vertical Expand")]
+    [CreateAssetMenu(fileName = "Vertical Expand Appearance", menuName = "Text Animator/_Animations/Appearances/Vertical Expand")]
     [EffectInfo("vertexp", EffectCategory.Appearances)]
     public sealed class VerticalExpandAppearance : AppearanceScriptableBase
     {

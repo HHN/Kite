@@ -8,7 +8,7 @@ namespace Febucci.UI.Effects
     /// Applies multiples animations, allowing user to use one tag for all of them
     /// </summary>
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(fileName = "Composite With Emission", menuName = "Text Animator/Animations/Special/Composite With Emission")]
+    [CreateAssetMenu(fileName = "Composite With Emission", menuName = "Text Animator/_Animations/Special/Composite With Emission")]
     [EffectInfo("", EffectCategory.All)]
     public sealed class CompositeWithEmission : AnimationScriptableBase
     {

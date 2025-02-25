@@ -6,52 +6,52 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenuScene.unity
+    path: Assets/_Scenes/MainMenuScene.unity
     guid: 3f684c50ceffa584480cfc12a815401b
   - enabled: 1
-    path: Assets/00_Kite2/Player/PlayNovelScene.unity
+    path: Assets/_Scenes/PlayNovelScene.unity
     guid: 945b72fd05426924f830464ef17543ec
   - enabled: 1
-    path: Assets/00_Kite2/Player/FeedbackScene.unity
+    path: Assets/_Scenes/FeedbackScene.unity
     guid: b0393e03ad9357e4cafd694c35f17130
   - enabled: 1
-    path: Assets/00_Kite2/Common/PlayerPrefsScene.unity
+    path: Assets/_Scenes/PlayerPrefsScene.unity
     guid: fdfceeac0c3e28b4faabbf23eb644185
   - enabled: 1
-    path: Assets/00_Kite2/Player/FoundersBubbleScene.unity
+    path: Assets/_Scenes/FoundersBubbleScene.unity
     guid: e6ba19ac2203fb24ea7256fc32f4c050
   - enabled: 1
-    path: Assets/00_Kite2/Player/PlayInstructionScene.unity
+    path: Assets/_Scenes/PlayInstructionScene.unity
     guid: 107de03954a699245be4e7689460de64
   - enabled: 1
-    path: Assets/00_Kite2/Common/NovelHistory/NovelHistoryScene.unity
+    path: Assets/_Scripts/Common/NovelHistory/NovelHistoryScene.unity
     guid: 3d8065ad5dae4a248a0ba319ba324138
   - enabled: 1
-    path: Assets/00_Kite2/Common/FoundersWell2Scene.unity
+    path: Assets/_Scenes/FoundersWell2Scene.unity
     guid: ac8a450c55dc9c24995aba138454922e
   - enabled: 1
-    path: Assets/00_Kite2/Einstellungen/BarrierefreiheitScene.unity
+    path: Assets/_Scenes/Einstellungen/BarrierefreiheitScene.unity
     guid: b9704eff5730cc848b7e15173484a58e
   - enabled: 1
-    path: Assets/00_Kite2/LegalInformation/DatenschutzScene.unity
+    path: Assets/_Scenes/LegalInformation/DatenschutzScene.unity
     guid: f5cb0b69189b695499b6182cfb78cebc
   - enabled: 1
-    path: Assets/00_Kite2/LegalInformation/ImpressumScene.unity
+    path: Assets/_Scenes/LegalInformation/ImpressumScene.unity
     guid: 5a81ee2b542eabd4f97ddd6faf0a64f5
   - enabled: 1
-    path: Assets/00_Kite2/LegalInformation/NutzungsbedingungenScene.unity
+    path: Assets/_Scenes/LegalInformation/NutzungsbedingungenScene.unity
     guid: 621fc56954dac124db9d13e52918a77c
   - enabled: 1
-    path: Assets/00_Kite2/LegalInformation/RessourcenScene.unity
+    path: Assets/_Scenes/LegalInformation/RessourcenScene.unity
     guid: 13cfd61506123d946bf5196688dd9110
   - enabled: 1
-    path: Assets/00_Kite2/Einstellungen/EinstellungenScene.unity
+    path: Assets/_Scenes/Einstellungen/EinstellungenScene.unity
     guid: 10175c04a1bfea24c972082d4b2d7942
   - enabled: 1
-    path: Assets/00_Kite2/Bookmarks/GemerkteNovelsScene.unity
+    path: Assets/_Scenes/GemerkteNovelsScene.unity
     guid: 46df8111616ab4741b32e88ca04b2348
   - enabled: 1
-    path: Assets/00_Kite2/Einstellungen/SoundeinstellungScene.unity
+    path: Assets/_Scenes/Einstellungen/SoundeinstellungScene.unity
     guid: ad834cd147064c242810f7f44030a821
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

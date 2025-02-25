@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Febucci.UI.Effects
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(fileName = "RandomDir Appearance", menuName = "Text Animator/Animations/Appearances/Random Direction")]
+    [CreateAssetMenu(fileName = "RandomDir Appearance", menuName = "Text Animator/_Animations/Appearances/Random Direction")]
     [EffectInfo("rdir", EffectCategory.Appearances)]
     public sealed class RandomDirectionAppearance : AppearanceScriptableBase
     {

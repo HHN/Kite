@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Febucci.UI.Effects
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(menuName = "Text Animator/Animations/Behaviors/Shake", fileName = "Shake Behavior")]
+    [CreateAssetMenu(menuName = "Text Animator/_Animations/Behaviors/Shake", fileName = "Shake Behavior")]
     [EffectInfo("shake", EffectCategory.Behaviors)]
     [DefaultValue(nameof(baseAmplitude), 1.13f)]
     [DefaultValue(nameof(baseDelay), .1f)]

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Febucci.UI.Effects
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(fileName = "Fade Behavior", menuName = "Text Animator/Animations/Behaviors/Fade")]
+    [CreateAssetMenu(fileName = "Fade Behavior", menuName = "Text Animator/_Animations/Behaviors/Fade")]
     [EffectInfo("fade", EffectCategory.Behaviors)]
     public sealed class FadeBehavior : BehaviorScriptableBase
     {

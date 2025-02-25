@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Febucci.UI.Effects
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(menuName = "Text Animator/Animations/Behaviors/Rainbow", fileName = "Rainbow Behavior")]
+    [CreateAssetMenu(menuName = "Text Animator/_Animations/Behaviors/Rainbow", fileName = "Rainbow Behavior")]
     [EffectInfo("rainb", EffectCategory.Behaviors)]
     public sealed class RainbowBehavior : BehaviorScriptableBase
     {

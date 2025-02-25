@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Febucci.UI.Effects
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(menuName = "Text Animator/Animations/Behaviors/Dangle", fileName = "Dangle Behavior")]
+    [CreateAssetMenu(menuName = "Text Animator/_Animations/Behaviors/Dangle", fileName = "Dangle Behavior")]
     [EffectInfo("dangle", EffectCategory.Behaviors)]
     [DefaultValue(nameof(baseAmplitude), 7.87f)]
     [DefaultValue(nameof(baseFrequency), 3.37f)]
