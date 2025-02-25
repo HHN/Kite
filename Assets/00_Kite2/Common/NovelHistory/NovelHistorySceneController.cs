@@ -119,17 +119,6 @@ namespace _00_Kite2.Common.NovelHistory
             }
 
             SortEntriesAndCreateDictionary(entries);
-            // foreach (var l in _dateAndTimeToNovelIdDictionary)
-            // {
-            //     Debug.Log(l.Key + " : " + l.Value);
-            // }
-            
-            foreach (var dialogHistoryEntry in entries)
-            {
-                Debug.Log(dialogHistoryEntry.GetNovelId() + " : " + dialogHistoryEntry.GetDateAndTime());
-            }
-            
-            // entries = SortEntries(entries);
             
             foreach (DialogHistoryEntry dataObject in entries)
             {
@@ -139,7 +128,6 @@ namespace _00_Kite2.Common.NovelHistory
             SetVisibilityOfUiElements();
 
             StartCoroutine(RebuildLayout());
-            // SortAndArrangeContainers(entries);
         }
 
         private IEnumerator RebuildLayout()
@@ -194,11 +182,9 @@ namespace _00_Kite2.Common.NovelHistory
                 novelIdAtIndex.Add((int)entry.GetNovelId());
             }
             
-            Debug.Log(VisualNovelNamesHelper.GetName(entry.GetNovelId()));
             GetContainerByNovelId(entry.GetNovelId()).transform.SetSiblingIndex(novelIdAtIndex.IndexOf((int)entry.GetNovelId()) * 2);
             GameObject placeholder = novelPlaceholder.Find(obj => obj.name.Contains(VisualNovelNamesHelper.GetName(entry.GetNovelId())));
             placeholder.transform.SetSiblingIndex(novelIdAtIndex.IndexOf((int)entry.GetNovelId()) * 2 + 1);
-            Debug.Log(placeholder.name);
         }
         
         private void SortEntriesAndCreateDictionary(List<DialogHistoryEntry> entries)
@@ -260,43 +246,6 @@ namespace _00_Kite2.Common.NovelHistory
             entries.AddRange(sortedEntriesWithOriginal.Select(entry => entry.Key));
         }
         
-        // private void SortAndArrangeContainers(List<DialogHistoryEntry> entries)
-        // {
-        //     // Schritt 1: Die Einträge nach Datum und NovelId sortieren
-        //     SortEntriesAndCreateDictionary(entries); // Diese Methode hast du schon
-        //
-        //     // Schritt 2: Alle Container zunächst ausblenden
-        //     HideAllContainers();
-        //
-        //     // Schritt 3: Initialisiere eine Position, die sich bei jedem Container-Aufruf erhöht
-        //     float yOffset = 0f;
-        //
-        //     // Schritt 4: Nun iterieren wir durch die sortierten Einträge
-        //     foreach (var entry in entries)
-        //     {
-        //         // Schritt 5: Bestimmen des Containers für die aktuelle NovelId
-        //         GameObject containerToDisplay = GetContainerByNovelId(entry.GetNovelId());
-        //         Debug.Log(containerToDisplay.name);
-        //
-        //         // Wenn der Container vorhanden ist, zeigen wir ihn an
-        //         if (containerToDisplay != null)
-        //         {
-        //             // Setze den Container auf sichtbar
-        //             containerToDisplay.SetActive(true);
-        //
-        //             // Schritt 6: Umpositioniere den Container, basierend auf der aktuellen yOffset
-        //             RectTransform containerRect = containerToDisplay.GetComponent<RectTransform>();
-        //             containerRect.anchoredPosition = new Vector2(containerRect.anchoredPosition.x, yOffset);
-        //
-        //             // Schritt 7: Erhöhe den yOffset für den nächsten Container
-        //             yOffset -= containerRect.rect.height + 10f; // Optional: Der Wert 10f ist der Abstand zwischen den Containern
-        //         }
-        //     }
-        //
-        //     // Schritt 8: Danach können wir sicherstellen, dass die Layouts neu gebaut werden
-        //     StartCoroutine(RebuildLayout());
-        // }
-        
         private GameObject GetContainerByNovelId(long novelId)
         {
             // Dies ist ein Beispiel, wie du den richtigen Container basierend auf der NovelId zurückgeben kannst.
@@ -327,22 +276,6 @@ namespace _00_Kite2.Common.NovelHistory
                 default:
                     return null; // Falls keine passende NovelId gefunden wird
             }
-        }
-
-        private void HideAllContainers()
-        {
-            // Alle Container ausblenden, damit nur die notwendigen angezeigt werden
-            containerForBankkreditNovel.SetActive(false);
-            containerForBekanntenTreffenNovel.SetActive(false);
-            containerForBankkontoNovel.SetActive(false);
-            containerForFoerderantragNovel.SetActive(false);
-            containerForElternNovel.SetActive(false);
-            containerForNotarinNovel.SetActive(false);
-            containerForPresseNovel.SetActive(false);
-            containerForBueroNovel.SetActive(false);
-            containerForGruendungszuschussNovel.SetActive(false);
-            containerForHonorarNovel.SetActive(false);
-            containerForLebenspartnerinNovel.SetActive(false);
         }
         
         private DropDownMenu GetDropDownMenuById(long novelId)
