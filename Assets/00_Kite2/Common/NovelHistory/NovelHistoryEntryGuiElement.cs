@@ -91,18 +91,18 @@ namespace _00_Kite2.UserFeedback
         private void CopyDialog()
         {
             Debug.Log("KOPIEREN");
-            string pattern = @"<\/?b>";
+            string pattern = @"<\/?(b|i)>";
             string copyText = Regex.Replace(dialogText.text, pattern, string.Empty);
-            GUIUtility.systemCopyBuffer = copyText.Replace("\r\n", "\r\n\r\n");
+            GUIUtility.systemCopyBuffer = copyText.Replace("\n", "\n\n");
             StartCoroutine(ShowCopyPopup("Dialog"));
         }
 
         private void CopyFeedback()
         {
             Debug.Log("KOPIEREN");
-            string pattern = @"<\/?b>";
+            string pattern = @"<\/?(b|i)>";
             string copyText = Regex.Replace(dialogText.text, pattern, string.Empty);
-            GUIUtility.systemCopyBuffer = copyText.Replace("\r\n", "\r\n\r\n");
+            GUIUtility.systemCopyBuffer = copyText.Replace("\n", "\n\n");
             StartCoroutine(ShowCopyPopup("Feedback"));
         }
 
