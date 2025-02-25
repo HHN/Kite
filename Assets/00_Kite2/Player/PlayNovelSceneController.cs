@@ -769,8 +769,6 @@ namespace _00_Kite2.Player
             PlayThroughCounterAnimationManager.Instance()
                 .SetAnimation(true, VisualNovelNamesHelper.ValueOf((int)novelToPlay.id));
 
-            int userRole = FeedbackRoleManager.Instance.GetFeedbackRole();
-
             PlayerDataManager.Instance().SetNovelHistory(playThroughHistory);
 
             // Check if the current novel is the introductory dialogue
@@ -781,18 +779,8 @@ namespace _00_Kite2.Player
                 return; // Exit the method to prevent further scenes from being loaded
             }
 
-            // Check if the user has a specific role and if the app is in online mode
-            if ((userRole == 1 || userRole == 3 || userRole == 4 || userRole == 5) &&
-                ApplicationModeManager.Instance().IsOnlineModeActive())
-            {
-                // Load the ReviewNovelScene where the user can rate or review what they've read
-                SceneLoader.LoadReviewNovelScene();
-            }
-            else
-            {
-                // If the conditions are not met, load the FeedbackScene
-                SceneLoader.LoadFeedbackScene();
-            }
+            SceneLoader.LoadFeedbackScene();
+            
         }
 
         private IEnumerator StartNextEventInOneSeconds(float second)

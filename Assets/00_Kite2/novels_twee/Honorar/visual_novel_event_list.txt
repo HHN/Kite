@@ -15,7 +15,7 @@ Novel_Verhandlung
 }
 
 
-:: 2.200 € {"position":"3400,3775","size":"100,100"}
+:: 2.200 € {"position":"3500,3775","size":"100,100"}
 >>Charakter01SprichtLaecheln:<<
 Okay, danke, dass Sie uns entgegenkommen. Ich schicke Ihnen die Vertragsdetails zur Durchsicht. 
 >>--<<
@@ -27,7 +27,7 @@ Ich freue mich auf die Zusammenarbeit und darauf, Sie bei unserer Veranstaltung 
 [[Vielen Dank und ich wünsche Ihnen auch einen schönen Tag. Ich freue mich auf unsere zukünftigen Gespräche!->Ende]]
 
 
-:: Abbruch {"position":"2975,3775","size":"100,100"}
+:: Abbruch {"position":"2875,3775","size":"100,100"}
 >>Charakter01SprichtNeutral:<<
 Nun gut, dann wünsche ich Ihnen alles Gute für die Zukunft. Vielleicht kommen wir trotzdem mal zusammen.
 
@@ -36,31 +36,22 @@ Nun gut, dann wünsche ich Ihnen alles Gute für die Zukunft. Vielleicht kommen 
 [[Danke! Ich wünsche Ihnen viel Erfolg bei der Veranstaltung.->Ende]]
 
 
-:: Abbruch 2 {"position":"2900,3775","size":"100,100"}
->>Charakter01SprichtNeutral:<<
-Nun gut, dann wünsche ich Ihnen alles Gute für die Zukunft. Vielleicht kommen wir trotzdem mal zusammen.
-
-[[Danke. Ihnen auch alles Gute.->Ende]]
-
-[[Danke! Ich wünsche Ihnen viel Erfolg bei der Veranstaltung.->Ende]]
-
-
-:: Abschied {"position":"3550,3775","size":"100,100"}
+:: Abschied {"position":"3650,3775","size":"100,100"}
 >>Charakter01SprichtLaecheln:<<
 Dann wünsche ich Ihnen noch einen schönen Tag. Auf Wiedersehen.
 
 [[Danke, das wünsche ich Ihnen auch. Auf Wiedersehen.->Ende]]
 
-[[Vielen Dank und ich wünsche Ihnen auch einen schönen Tag.->Ende]]
+[[Vielen Dank, Ihnen auch einen schönen Tag.->Ende]]
 
 
-:: Abschied 2 {"position":"2800,3775","size":"100,100"}
+:: Abschied 2 {"position":"2700,3775","size":"100,100"}
 >>Charakter01SprichtLaecheln:<<
 Dann wünsche ich Ihnen noch einen schönen Tag. Auf Wiedersehen.
 
 [[Danke, das wünsche ich Ihnen auch. Auf Wiedersehen.->Ende]]
 
-[[Vielen Dank und ich wünsche Ihnen auch einen schönen Tag.->Ende]]
+[[Vielen Dank, Ihnen auch einen schönen Tag.->Ende]]
 
 
 :: Anfang {"position":"2925,200","size":"100,100"}
@@ -73,22 +64,22 @@ Es freut uns, dass Sie uns unterstützen können. Nun stellt sich uns natürlich
 [[Frage nach Honorar]]
 
 
-:: Anpassungsfähigkeit {"position":"3375,2625","size":"100,100"}
+:: Anpassungsfähigkeit {"position":"3450,2625","size":"100,100"}
 >>Charakter01SprichtNeutralEntspannt:<<
-Gut, dann bespreche ich mich nochmal und melde mich bei Ihnen.
+Ich verstehe. Dann bespreche ich mich nochmal und melde mich bei Ihnen.
 
 [[Das klingt gut. Ich freue mich auf Ihre Rückmeldung.->Abschied]]
 
-[[Sehr gern. Für weitere Fragen stehe ich jederzeit zur Verfügung.->Abschied]]
+[[Welche Rahmenbedingungen müssen für Sie denn erfüllt sein, damit mein Honorar für Sie im Budgetrahmen liegt?->Rahmenbedingungen]]
 
 
 :: Anpassungsfähigkeit 2 {"position":"2800,2625","size":"100,100"}
 >>Charakter01SprichtNeutralEntspannt:<<
-Gut, dann bespreche ich mich nochmal und melde mich bei Ihnen.
+Ich verstehe. Dann bespreche ich mich nochmal und melde mich bei Ihnen.
 
 [[Das klingt gut. Ich freue mich auf Ihre Rückmeldung.->Abschied 2]]
 
-[[Sehr gern. Für weitere Fragen stehe ich jederzeit zur Verfügung.->Abschied 2]]
+[[Welche Rahmenbedingungen müssen für Sie denn erfüllt sein, damit mein Honorar für Sie im Budgetrahmen liegt?->Rahmenbedingungen]]
 
 
 :: Arbeit {"position":"2850,900","size":"100,100"}
@@ -98,9 +89,9 @@ Aber sehen Sie es nicht auch als Gelegenheit, für Ihr Unternehmen etwas Sichtba
 >>Charakter01SprichtLaecheln:<<
 Manchmal zählt eben die Investition.
 
-[[Sichtbarkeit allein deckt die Vorbereitungskosten nicht. Der Preis bleibt bei 2.500 € zzgl. USt.->Honorar]]
+[[Sichtbarkeit allein deckt die Vorbereitungskosten nicht. Der Preis bleibt bei 2.500 € zzgl. USt.->Längerfristige Zusammenarbeit II]]
 
-[[Ich sehe den Wert der Sichtbarkeit, doch fair vergütet zu werden, bleibt für mich zentral.->Honorar]]
+[[Ich sehe den Wert der Sichtbarkeit, doch fair vergütet zu werden, bleibt für mich zentral.->Längerfristige Zusammenarbeit II]]
 
 
 :: Ausnahme [Bias] {"position":"3250,3125","size":"100,100"}
@@ -113,6 +104,8 @@ Das meine ich ja! Männer fallen da eher aus dem Rahmen, während bei Frauen die
 
 [[Mir fällt auf, dass diese Annahme noch immer verbreitet ist. Wäre es Ihnen wichtig, wie ich das Thema Emotionen in den Vortrag einbringe?->Emotionen]]
 
+[[Ich habe nicht das Gefühl, dass wir auf der gleichen Wellenlänge sind und möchte deshalb doch nicht bei Ihrer Veranstaltung auftreten.->Nicht Auftreten]]
+
 
 :: Ausnahme 2 [Bias] {"position":"2800,3125","size":"100,100"}
 >>Charakter01SprichtLaecheln:<<
@@ -123,6 +116,8 @@ Das meine ich ja! Männer fallen da eher aus dem Rahmen, während bei Frauen die
 [[Lassen Sie uns auf das Wesentliche fokussieren: die Vereinbarung meines Honorars.->Wesentliche 2]]
 
 [[Mir fällt auf, dass diese Annahme noch immer verbreitet ist. Wäre es Ihnen wichtig, wie ich das Thema Emotionen in den Vortrag einbringe?->Emotionen 2]]
+
+[[Ich habe nicht das Gefühl, dass wir auf der gleichen Wellenlänge sind und möchte deshalb doch nicht bei Ihrer Veranstaltung auftreten.->Nicht Auftreten 2]]
 
 
 :: Betonung [Bias] {"position":"3250,2775","size":"100,100"}
@@ -145,6 +140,20 @@ Ach, verstehen Sie mich nicht falsch! Es ist nur, dass Frauen oft etwas emotiona
 [[Das ist aber eine starke Generalisierung. Menschen können unabhängig von ihrem Geschlecht emotional sein.->Emotional 2]]
 
 [[Ehrlich gesagt, habe ich das Gefühl ich, dass Sie in Schubladen denken.->Schubladenkdenken 2]]
+
+
+:: Betonung Mehrwert [Bias] {"position":"3425,2775","size":"100,100"}
+>>Charakter01SprichtKritisch:<<
+Das ist wirklich schwierig. 
+>>--<<
+>>Charakter01SprichtLachend:<<
+Ach, wissen Sie was? Ich nehme Ihr Angebot an. Lassen Sie uns doch die Details am besten auch im Vertrag festhalten. Sie wissen ja, bei Frauen ist es oft besser, alles klar zu regeln.
+>>--<<
+>>RelevanterBias:Mikroaggressionen<<
+
+[[Wie meinen Sie das?->Vertrag Nachfrage]]
+
+[[Interessant, dass Sie das extra betonen. Ich denke, klare Verträge sind generell sinnvoll, unabhängig vom Geschlecht.->Betonung]]
 
 
 :: Briefing {"position":"3025,1725","size":"100,100"}
@@ -282,15 +291,6 @@ Ach nein, da bleiben wir lieber bei Ihnen und Ihrem Unternehmen. Außer es hat k
 >>Ende<<
 
 
-:: Folgegespräch {"position":"3075,750","size":"100,100"}
->>Charakter01SprichtLachend:<<
-Ein Folgegespräch klingt gut, aber auch beim ersten Mal wäre eine Geste schön. Gerade bei Unternehmerinnen freuen wir uns über flexiblere Angebote.
-
-[[Ich finde Ihre Veranstaltung gut und wichtig. Deshalb bin ich auch bereit als Speakerin aufzutreten. Mein Honorar ist nicht verhandelbar.->Nicht verhandelbar]]
-
-[[Ich kann Ihnen anbieten, am Ende noch eine Fragerunde einzubauen.->Q&A]]
-
-
 :: Frage nach Honorar {"position":"2925,350","size":"100,100"}
 >>SpielerinCharakterSpricht:<<
 Mein Honorar liegt bei 2.500 € zzgl. USt.
@@ -363,7 +363,7 @@ Das stimmt! Gut, dann verbleiben wir so und halten das vertraglich fest. Danke, 
 
 :: Honorar {"position":"2800,1200","size":"100,100"}
 >>Charakter01SprichtLaecheln:<<
-Sie hatten vorhin von einem Folgegespräch gesprochen. Wäre dann ein Rabatt möglich, wenn wir Sie für nächstes Jahr direkt wieder buchen?
+Sie hatten vorhin von einer längerfristigen Zusammenarbeit gesprochen. Das heißt, es wäre ein Rabatt möglich, wenn wir Sie für nächstes Jahr wieder buchen?
 
 [[Je nachdem wie oft Sie mich buchen, bin ich bereit mit dem Preis runterzugehen.->Mehrmals buchen]]
 
@@ -372,7 +372,7 @@ Sie hatten vorhin von einem Folgegespräch gesprochen. Wäre dann ein Rabatt mö
 
 :: Honorar II {"position":"2950,1200","size":"100,100"}
 >>Charakter01SprichtLaecheln:<<
-Schön zu hören. Sie hatten vorhin von einem Folgegespräch gesprochen. Wäre dann ein Rabatt möglich, wenn wir Sie für nächstes Jahr direkt wieder buchen?
+Schön zu hören. Sie hatten vorhin von einer längerfristigen Zusammenarbeit gesprochen. Das heißt, es wäre ein Rabatt möglich, wenn wir Sie für nächstes Jahr wieder buchen?
 
 [[Je nachdem wie oft Sie mich buchen, bin ich bereit mit dem Preis runterzugehen.->Mehrmals buchen]]
 
@@ -381,7 +381,7 @@ Schön zu hören. Sie hatten vorhin von einem Folgegespräch gesprochen. Wäre d
 
 :: Honorar III {"position":"3300,1200","size":"100,100"}
 >>Charakter01SprichtLaecheln:<<
-Ich verstehe. Sie hatten vorhin von einem Folgegespräch gesprochen. Wäre dann ein Rabatt möglich, wenn wir Sie für nächstes Jahr direkt wieder buchen?
+Ich verstehe. Sie hatten vorhin von einer längerfristigen Zusammenarbeit gesprochen. Das heißt, es wäre ein Rabatt möglich, wenn wir Sie für nächstes Jahr wieder buchen?
 
 [[Je nachdem wie oft Sie mich buchen, bin ich bereit mit dem Preis runterzugehen.->Mehrmals buchen]]
 
@@ -390,7 +390,7 @@ Ich verstehe. Sie hatten vorhin von einem Folgegespräch gesprochen. Wäre dann 
 
 :: Klare Grenzen [Bias] {"position":"3325,2450","size":"100,100"}
 >>Charakter01SprichtNeutralEntspannt:<<
-Ein wenig weniger strikte Linien können aber auch manchmal den Spielraum erweitern. Gerade als Frau ist doch Anpassungsfähigkeit oft von Vorteil.
+Etwas weniger strikte Linien können aber auch manchmal den Spielraum erweitern. Gerade als Frau ist doch Anpassungsfähigkeit oft von Vorteil.
 >>--<<
 >>RelevanterBias:Bestaetigungsverzerrung<<
 
@@ -401,13 +401,155 @@ Ein wenig weniger strikte Linien können aber auch manchmal den Spielraum erweit
 
 :: Klare Grenzen 2 [Bias] {"position":"2750,2450","size":"100,100"}
 >>Charakter01SprichtNeutralEntspannt:<<
-Ein wenig weniger strikte Linien können aber auch manchmal den Spielraum erweitern. Gerade als Frau ist doch Anpassungsfähigkeit oft von Vorteil.
+Etwas weniger strikte Linien können aber auch manchmal den Spielraum erweitern. Gerade als Frau ist doch Anpassungsfähigkeit oft von Vorteil.
 >>--<<
 >>RelevanterBias:Bestaetigungsverzerrung<<
 
 [[Anpassungsfähigkeit heißt für mich, den besten Service zu bieten, ohne die Preise zu verbiegen.->Anpassungsfähigkeit 2]]
 
 [[In Verhandlungen geht es um klare Konditionen, nicht um Geschlechterklischees.->Klare Konditionen 2]]
+
+
+:: Klare Konditionen [Bias] {"position":"3225,2625","size":"100,100"}
+>>Charakter01SprichtLachend:<<
+Das stimmt. Ach, wissen Sie was? Ich nehme Ihr Angebot an. Lassen Sie uns doch die Details am besten auch im Vertrag festhalten. Sie wissen ja, bei Frauen ist es oft besser, alles klar zu regeln.
+>>--<<
+>>RelevanterBias:Mikroaggressionen<<
+
+[[Wie meinen Sie das?->Vertrag Nachfrage]]
+
+[[Interessant, dass Sie das extra betonen. Ich denke, klare Verträge sind generell sinnvoll, unabhängig vom Geschlecht.->Betonung]]
+
+
+:: Klare Konditionen 2 [Bias] {"position":"2600,2600","size":"100,100"}
+>>Charakter01SprichtLachend:<<
+Das stimmt. Ach, wissen Sie was? Ich nehme Ihr Angebot an. Lassen Sie uns doch die Details am besten auch im Vertrag festhalten. Sie wissen ja, bei Frauen ist es oft besser, alles klar zu regeln.
+>>--<<
+>>RelevanterBias:Mikroaggressionen<<
+
+[[Wie meinen Sie das?->Vertrag Nachfrage 2]]
+
+[[Interessant, dass Sie das extra betonen. Ich denke, klare Verträge sind generell sinnvoll, unabhängig vom Geschlecht.->Betonung 2]]
+
+
+:: Kurzvortrag: Ausnahme [Bias] {"position":"3775,3400","size":"100,100"}
+>>Charakter01SprichtLaecheln:<<
+Das meine ich ja! Männer fallen da eher aus dem Rahmen, während bei Frauen die Emotionen eben etwas natürlicher sind.
+>>--<<
+>>RelevanterBias:GeschlechtsspezifischeStereotypen<<
+
+[[Lassen Sie uns auf das Wesentliche fokussieren.->Kurzvortrag: Wesentliche]]
+
+[[Ich habe nicht das Gefühl, dass wir auf der gleichen Wellenlänge sind und möchte deshalb doch nicht bei Ihrer Veranstaltung auftreten.->Nicht Auftreten]]
+
+
+:: Kurzvortrag: Betonung [Bias] {"position":"3725,3100","size":"100,100"}
+>>Charakter01SprichtLaecheln:<<
+Ach, verstehen Sie mich nicht falsch! Es ist nur, dass Frauen oft etwas emotionaler an solche Verhandlungen herangehen. Ein Vertrag kann da Missverständnisse vorbeugen, finden Sie nicht?
+>>--<<
+>>RelevanterBias:GeschlechtsspezifischeStereotypen<<
+
+[[Das ist aber eine starke Generalisierung. Menschen können unabhängig von ihrem Geschlecht emotional sein.->Kurzvortrag: Emotional]]
+
+[[Ehrlich gesagt, habe ich das Gefühl ich, dass Sie in Schubladen denken.->Kurzvortrag: Schubladenkdenken]]
+
+
+:: Kurzvortrag: Emotional [Bias] {"position":"3775,3250","size":"100,100"}
+>>Charakter01SprichtLachend:<<
+Natürlich. Ich hatte selbst mal einen Kollegen, der war so emotional! Wirklich schlimmer als jede Frau.
+>>--<<
+>>RelevanterBias:Mikroaggressionen<<
+
+[[Interessant, dass Sie bei Männern solche Emotionen als Ausnahme betrachten.->Kurzvortrag: Ausnahme]]
+
+[[Lassen Sie uns auf das Wesentliche fokussieren.->Kurzvortrag: Wesentliche]]
+
+
+:: Kurzvortrag: Geregelter Rahmen {"position":"3550,3250","size":"100,100"}
+>>Charakter01SprichtErstaunt:<<
+Natürlich, ich wollte nur betonen, dass wir bei so einer Kooperation alles in Ihrem Interesse gestalten möchten. 
+
+[[Ich verstehe. Lassen Sie uns doch auf das Wesentliche fokussieren.->Kurzvortrag: Wesentliche]]
+
+[[Ich habe nicht das Gefühl, dass wir auf der gleichen Wellenlänge sind und möchte deshalb doch nicht bei Ihrer Veranstaltung auftreten.->Nicht Auftreten]]
+
+
+:: Kurzvortrag: Honorar {"position":"3550,3600","size":"100,100"}
+>>Charakter01SprichtLachend:<<
+Da Sie noch eine Fragerunde dranhängen, hört sich das für mich gut an.
+
+[[Gut, wir können uns gerne nächste Woche nochmal treffen, um konkreter über die Inhalte zu sprechen.->Nächste Woche]]
+
+[[Super, schicken Sie mir den Vertrag dann gerne als Mail zu.->Vertrag Mail]]
+
+
+:: Kurzvortrag: Paketpreise {"position":"3800,3775","size":"100,100"}
+>>Charakter01SprichtLachend:<<
+Das klingt gut. Ich bespreche mich hierzu nochmal und melde mich dann bei Ihnen.
+
+[[Ich freue mich auf Ihre Rückmeldung. Sollten Sie vorab noch Fragen haben, stehe ich gerne zur Verfügung.->Ende]]
+
+[[Super. Ich freue mich darauf, von Ihnen zu hören!->Ende]]
+
+
+:: Kurzvortrag: Schubladenkdenken {"position":"3650,3250","size":"100,100"}
+>>Charakter01SprichtLachend:<<
+Ich hatte mal einen Kollegen, der war dermaßen emotional! Wirklich schlimmer als jede Frau.
+>>--<<
+>>RelevanterBias:Mikroaggressionen<<
+
+[[Interessant, dass Sie bei Männern solche Emotionen als Ausnahme betrachten.->Kurzvortrag: Ausnahme]]
+
+[[Lassen Sie uns auf das Wesentliche fokussieren.->Kurzvortrag: Wesentliche]]
+
+
+:: Kurzvortrag: Vertrag Nachfrage [Bias] {"position":"3575,3100","size":"100,100"}
+>>Charakter01SprichtLaecheln:<<
+Sie als Unternehmerin wissen ja selbst, wie wichtig ein guter Rahmen ist. Frauen brauchen eben oft die nötige Unterstützung, um sich voll entfalten zu können.
+>>--<<
+>>RelevanterBias:GeschlechtsspezifischeStereotypen<<
+
+[[Ein geregelter Rahmen ist für alle Beteiligten von Vorteil, unabhängig vom Geschlecht.->Kurzvortrag: Geregelter Rahmen]]
+
+[[Ehrlich gesagt, habe ich das Gefühl, dass Sie in Schubladen denken.->Kurzvortrag: Schubladenkdenken]]
+
+
+:: Kurzvortrag: Wesentliche {"position":"3625,3425","size":"100,100"}
+>>Charakter01SprichtLaecheln:<<
+Natürlich. Also, ich würde Sie dann gerne für einen Kurzvortrag buchen. Wie würde denn da das Honorar aussehen?
+
+[[Ein Kurzvortrag liegt bei 1.300 € zzgl. USt., inklusive Vorbereitung und einem kurzen Q&A im Anschluss. Passt das für Sie?->Kurzvortrag: Honorar]]
+
+[[Für einen Kurzvortrag berechne ich 1.300 € zzgl. USt. Falls Sie Interesse an einer regelmäßigen Zusammenarbeit haben, könnten wir auch über Paketpreise sprechen.->Kurzvortrag: Paketpreise]]
+
+
+:: Kürzeres Format {"position":"3650,2950","size":"100,100"}
+>>Charakter01SprichtLachend:<<
+Kurzvortrag klingt super. Lassen Sie uns doch die Details am besten auch im Vertrag festhalten. Sie wissen ja, bei Frauen ist es oft besser, alles klar zu regeln.
+>>--<<
+>>RelevanterBias:Mikroaggressionen<<
+
+[[Wie meinen Sie das?->Kurzvortrag: Vertrag Nachfrage]]
+
+[[Interessant, dass Sie das extra betonen. Ich denke, klare Verträge sind generell sinnvoll, unabhängig vom Geschlecht.->Kurzvortrag: Betonung]]
+
+
+:: Längerfristige Zusammenarbeit {"position":"3075,750","size":"100,100"}
+>>Charakter01SprichtLachend:<<
+Längerfristige Zusammenarbeit klingt gut, aber auch beim ersten Mal wäre eine Geste schön. Gerade bei Unternehmerinnen freuen wir uns über flexiblere Angebote.
+
+[[Ich finde Ihre Veranstaltung gut und wichtig. Deshalb bin ich auch bereit als Speakerin aufzutreten. Mein Honorar ist nicht verhandelbar.->Nicht verhandelbar]]
+
+[[Ich kann Ihnen anbieten, am Ende noch eine Fragerunde einzubauen.->Q&A]]
+
+
+:: Längerfristige Zusammenarbeit II {"position":"2650,1200","size":"100,100"}
+>>Charakter01SprichtLaecheln:<<
+Wie sieht es denn mit einer längerfristigen Zusammenarbeit aus? Wäre denn ein Rabatt möglich, wenn wir Sie für nächstes Jahr wieder buchen?
+
+[[Je nachdem wie oft Sie mich buchen, bin ich bereit mit dem Preis runterzugehen.->Mehrmals buchen]]
+
+[[Ja, also wenn Sie direkt zwei Vorträge bei mir buchen, würde ich insgesamt 4.500 € zzgl. USt. berechnen.->Zwei Vorträge]]
 
 
 :: Mehr trauen [Bias] {"position":"3350,1725","size":"100,100"}
@@ -444,7 +586,7 @@ Was wenn wir Sie nun mehrmals buchen und nach dem ersten Auftritt feststellen, d
 [[Natürlich ist eine Feedback-Schleife möglich. Ein detailliertes Briefing im Vorfeld hilft, Erwartungen abzugleichen.->Briefing]]
 
 
-:: Nicht Auftreten {"position":"2975,3125","size":"100,100"}
+:: Nicht Auftreten {"position":"2975,3400","size":"100,100"}
 >>Charakter01SprichtKritisch:<<
 Wie? Also, das wirkt auf mich nun wirklich wie eine emotionale Entscheidung. Denken Sie nicht, dass das etwas impulsiv ist?
 >>--<<
@@ -452,18 +594,18 @@ Wie? Also, das wirkt auf mich nun wirklich wie eine emotionale Entscheidung. Den
 
 [[Es mag impulsiv wirken, aber ich habe darüber nachgedacht. Es passt für mich nicht.->Abbruch]]
 
-[[Tut mir leid, aber ich habe meine Entscheidung getroffen.->Abbruch]]
+[[Ich gehe nochmal in mich und melde mich dann bei Ihnen.->Überlegen]]
 
 
-:: Nicht Auftreten 2 {"position":"2425,3125","size":"100,100"}
+:: Nicht Auftreten 2 {"position":"2625,3250","size":"100,100"}
 >>Charakter01SprichtKritisch:<<
 Wie? Also, das wirkt auf mich nun wirklich wie eine emotionale Entscheidung. Denken Sie nicht, dass das etwas impulsiv ist?
 >>--<<
 >>RelevanterBias:GeschlechtsspezifischeStereotypen<<
 
-[[Es mag impulsiv wirken, aber ich habe darüber nachgedacht. Es passt für mich nicht.->Abbruch 2]]
+[[Es mag impulsiv wirken, aber ich habe darüber nachgedacht. Es passt für mich nicht.->Abbruch]]
 
-[[Tut mir leid, aber ich habe meine Entscheidung getroffen.->Abbruch 2]]
+[[Ich gehe nochmal in mich und melde mich dann bei Ihnen.->Überlegen]]
 
 
 :: Nicht im Paketpreis {"position":"3150,2175","size":"100,100"}
@@ -475,7 +617,7 @@ Nun gut, und wie viel würde das Briefing kosten?
 [[Ich berechne regulär 200 € für das Briefing, aber für Sie reduziere ich es auf 100 €.->Vertrag]]
 
 
-:: Nicht im Paketpreis 2 {"position":"2625,2175","size":"100,100"}
+:: Nicht im Paketpreis 2 {"position":"2575,2175","size":"100,100"}
 >>Charakter01SprichtFragend:<<
 Nun gut, und wie viel würde das Briefing kosten?
 
@@ -484,28 +626,28 @@ Nun gut, und wie viel würde das Briefing kosten?
 [[Ich berechne regulär 200 € für das Briefing, aber für Sie reduziere ich es auf 100 €.->Vertrag 2]]
 
 
-:: Nicht niedriger {"position":"3275,3775","size":"100,100"}
+:: Nicht niedriger {"position":"3375,3775","size":"100,100"}
 >>Charakter01SprichtLachend:<<
 Ich verstehe. Dann lassen Sie uns so verbleiben.  Danke, dass Sie uns entgegenkommen.  Ich schicke Ihnen die Vertragsdetails zur Durchsicht. 
 >>--<<
 >>Charakter01SprichtLaechelnGross:<<
 Ich freue mich auf die Zusammenarbeit und darauf, Sie bei unserer Veranstaltung willkommen zu heißen.
 
-[[Danke, das wünsche ich Ihnen auch. Auf Wiedersehen.->Ende]]
+[[Danke, ich freue mich auch. Auf Wiedersehen.->Ende]]
 
-[[Vielen Dank und ich wünsche Ihnen auch einen schönen Tag. Ich freue mich auf unsere zukünftigen Gespräche!->Ende]]
+[[Vielen Dank. Ich freue mich auf unsere zukünftigen Gespräche!->Ende]]
 
 
-:: Nicht niedriger 2 {"position":"2700,3775","size":"100,100"}
+:: Nicht niedriger 2 {"position":"2575,3775","size":"100,100"}
 >>Charakter01SprichtSmiling:<<
 Ich verstehe. Dann lassen Sie uns so verbleiben.  Danke, dass Sie uns entgegenkommen.  Ich schicke Ihnen die Vertragsdetails zur Durchsicht. 
 >>--<<
 >>Charakter01SprichtLaechelnGross:<<
 Ich freue mich auf die Zusammenarbeit und darauf, Sie bei unserer Veranstaltung willkommen zu heißen.
 
-[[Danke, das wünsche ich Ihnen auch. Auf Wiedersehen.->Ende]]
+[[Danke, ich freue mich auch. Auf Wiedersehen.->Ende]]
 
-[[Vielen Dank und ich wünsche Ihnen auch einen schönen Tag. Ich freue mich auf unsere zukünftigen Gespräche!->Ende]]
+[[Vielen Dank. Ich freue mich auf unsere zukünftigen Gespräche!->Ende]]
 
 
 :: Nicht verhandelbar {"position":"3025,900","size":"100,100"}
@@ -517,7 +659,7 @@ Das ist natürlich Ihr gutes Recht. Aber ich dachte, es wäre für Sie eine sch�
 [[Netzwerk ist wertvoll, doch ebenso ist eine faire Entlohnung meiner Expertise.->Details]]
 
 
-:: Nächste Woche {"position":"3075,3775","size":"100,100"}
+:: Nächste Woche {"position":"3150,3775","size":"100,100"}
 >>Charakter01SprichtLaechelnGross:<<
 Das klingt gut. Dann wünsche ich Ihnen noch einen schönen Tag.
 
@@ -526,35 +668,13 @@ Das klingt gut. Dann wünsche ich Ihnen noch einen schönen Tag.
 [[Vielen Dank und ich wünsche Ihnen auch einen schönen Tag. Ich freue mich auf unsere zukünftigen Gespräche!->Ende]]
 
 
-:: Nächste Woche 2 {"position":"2500,3775","size":"100,100"}
+:: Nächste Woche 2 {"position":"2375,3775","size":"100,100"}
 >>Charakter01SprichtLaechelnGross:<<
 Das klingt gut. Dann wünsche ich Ihnen noch einen schönen Tag.
 
 [[Danke, das wünsche ich Ihnen auch. Auf Wiedersehen.->Ende]]
 
 [[Vielen Dank und ich wünsche Ihnen auch einen schönen Tag. Ich freue mich auf unsere zukünftigen Gespräche!->Ende]]
-
-
-:: Klare Konditionen [Bias] {"position":"3250,2625","size":"100,100"}
->>Charakter01SprichtLachend:<<
-Das stimmt. Ach, wissen Sie was? Ich nehme Ihr Angebot an. Lassen Sie uns doch die Details am besten auch im Vertrag festhalten. Sie wissen ja, bei Frauen ist es oft besser, alles klar zu regeln.
->>--<<
->>RelevanterBias:Mikroaggressionen<<
-
-[[Wie meinen Sie das?->Vertrag Nachfrage]]
-
-[[Interessant, dass Sie das extra betonen. Ich denke, klare Verträge sind generell sinnvoll, unabhängig vom Geschlecht.->Betonung]]
-
-
-:: Klare Konditionen 2 [Bias] {"position":"2625,2625","size":"100,100"}
->>Charakter01SprichtLachend:<<
-Das stimmt. Ach, wissen Sie was? Ich nehme Ihr Angebot an. Lassen Sie uns doch die Details am besten auch im Vertrag festhalten. Sie wissen ja, bei Frauen ist es oft besser, alles klar zu regeln.
->>--<<
->>RelevanterBias:Mikroaggressionen<<
-
-[[Wie meinen Sie das?->Vertrag Nachfrage 2]]
-
-[[Interessant, dass Sie das extra betonen. Ich denke, klare Verträge sind generell sinnvoll, unabhängig vom Geschlecht.->Betonung 2]]
 
 
 :: Q&A [Bias] {"position":"3275,900","size":"100,100"}
@@ -574,7 +694,7 @@ Natürlich, aber es wäre schön, wenn wir da eine Frauensolidarität spüren k�
 
 [[Frauen müssen oft mehr leisten, um ernst genommen zu werden. Daher lege ich besonderen Wert darauf, dass meine Preise die Qualität meiner Arbeit widerspiegeln.->Qualität widerspiegeln]]
 
-[[Vielleicht können wir uns auf ein Folgegespräch einigen, wenn Sie mich öfter buchen?->Folgegespräch]]
+[[Gerne können wir über Konditionen sprechen, wenn Sie an einer längerfristigen Zusammenarbeit interessiert sind.->Längerfristige Zusammenarbeit]]
 
 
 :: Qualität widerspiegeln {"position":"2825,600","size":"100,100"}
@@ -629,13 +749,22 @@ Nun gut. Wie viel verlangen Sie denn für den anderen Vortrag?
 [[Wenn Sie beide Veranstaltungen zusammen buchen, liegt mein Honorar bei insgesamt 4.500 € zzgl. USt.->Vertragsdetails 2]]
 
 
+:: Rahmenbedingungen {"position":"3675,2775","size":"100,100"}
+>>Charakter01SprichtNeutralEntspannt:<<
+Unser Budget für Speaker*innen liegt normalerweise bei 1.500 €. Wäre es möglich, den Umfang Ihres Vortrags entsprechend anzupassen? 
+
+[[Ich könnte Ihnen ein kürzeres Format anbieten, beispielsweise einen Kurzvortrag als Impuls oder eine Panel-Teilnahme. Würde das passen?->Kürzeres Format]]
+
+[[Mein voller Vortrag bietet tiefgehende Einblicke und praxisnahe Beispiele. Möchten Sie lieber am Honorar oder am Mehrwert für Ihr Publikum sparen?->Betonung Mehrwert]]
+
+
 :: Reduzierung nicht möglich {"position":"3000,600","size":"100,100"}
 >>Charakter01SprichtLaecheln:<<
 Klar, aber wir hätten gedacht, Sie sehen den Auftritt auch als Chance. Gerade für Gründerinnen kann das doch hilfreich sein.
 
 [[Solche Auftritte sind nicht nur Chancen, sondern auch Arbeit, die angemessen vergütet werden sollte.->Arbeit]]
 
-[[Vielleicht können wir uns auf ein Folgegespräch einigen, wenn Sie mich öfter buchen?->Folgegespräch]]
+[[Gerne können wir über Konditionen sprechen, wenn Sie an einer längerfristigen Zusammenarbeit interessiert sind.->Längerfristige Zusammenarbeit]]
 
 
 :: Schubladendenken II [Bias] {"position":"3075,3125","size":"100,100"}
@@ -765,7 +894,7 @@ Super, dann halten wir die Details am besten auch im Vertrag fest. Sie wissen ja
 [[Interessant, dass Sie das extra betonen. Ich denke, klare Verträge sind generell sinnvoll, unabhängig vom Geschlecht.->Betonung]]
 
 
-:: Vertrag 2 [Bias] {"position":"2325,2500","size":"100,100"}
+:: Vertrag 2 [Bias] {"position":"2375,2450","size":"100,100"}
 >>Charakter01SprichtLachend:<<
 Super, dann halten wir die Details am besten auch im Vertrag fest. Sie wissen ja, bei Frauen ist es oft besser, alles klar zu regeln.
 >>--<<
@@ -776,7 +905,7 @@ Super, dann halten wir die Details am besten auch im Vertrag fest. Sie wissen ja
 [[Interessant, dass Sie das extra betonen. Ich denke, klare Verträge sind generell sinnvoll, unabhängig vom Geschlecht.->Betonung 2]]
 
 
-:: Vertrag Mail {"position":"3175,3775","size":"100,100"}
+:: Vertrag Mail {"position":"3275,3775","size":"100,100"}
 >>Charakter01SprichtLaechelnGross:<<
 Das mache ich. Dann wünsche ich Ihnen noch einen schönen Tag.
 
@@ -785,7 +914,7 @@ Das mache ich. Dann wünsche ich Ihnen noch einen schönen Tag.
 [[Vielen Dank und ich wünsche Ihnen auch einen schönen Tag. Ich freue mich auf unsere zukünftigen Gespräche!->Ende]]
 
 
-:: Vertrag Mail 2 {"position":"2600,3775","size":"100,100"}
+:: Vertrag Mail 2 {"position":"2475,3775","size":"100,100"}
 >>Charakter01SprichtLaechelnGross:<<
 Das mache ich. Dann wünsche ich Ihnen noch einen schönen Tag.
 
@@ -816,16 +945,16 @@ Sie als Unternehmerin wissen ja selbst, wie wichtig ein guter Rahmen ist. Frauen
 [[Ehrlich gesagt, habe ich das Gefühl ich, dass Sie in Schubladen denken.->Schubladenkdenken 2]]
 
 
-:: Vertragsdetails 2 {"position":"2400,3775","size":"100,100"}
+:: Vertragsdetails 2 {"position":"2275,3775","size":"100,100"}
 >>Charakter01SprichtLaecheln:<<
 Okay, danke, dass Sie uns entgegenkommen. Ich schicke Ihnen die Vertragsdetails zur Durchsicht. 
 >>--<<
 >>Charakter01SprichtLaechelnGross:<<
 Ich freue mich auf die Zusammenarbeit und darauf, Sie bei unserer Veranstaltung willkommen zu heißen.
 
-[[Danke, das wünsche ich Ihnen auch. Auf Wiedersehen.->Ende]]
+[[Danke, ich freue mich auch. Auf Wiedersehen.->Ende]]
 
-[[Vielen Dank und ich wünsche Ihnen auch einen schönen Tag. Ich freue mich auf unsere zukünftigen Gespräche!->Ende]]
+[[Vielen Dank. Ich freue mich auf unsere zukünftigen Gespräche!->Ende]]
 
 
 :: Wertschätzung {"position":"3350,2175","size":"100,100"}
@@ -837,7 +966,7 @@ Selbstverständlich! Nun gut, und wie viel würde das Briefing kosten?
 [[Ich berechne regulär 200 € für das Briefing, aber für Sie reduziere ich es auf 100 €->Vertrag]]
 
 
-:: Wertschätzung 2 {"position":"2775,2175","size":"100,100"}
+:: Wertschätzung 2 {"position":"2850,2200","size":"100,100"}
 >>Charakter01SprichtLaecheln:<<
 Selbstverständlich! Nun gut, und wie viel würde das Briefing kosten?
 
@@ -852,10 +981,10 @@ Natürlich. Also, ich würde Sie dann gerne für diese Veranstaltung und schonma
 
 [[Ja, also wenn Sie direkt drei Vorträge bei mir buchen, würde ich insgesamt 6.600 € zzgl. USt. berechnen. Also 2.200 € pro Vortrag.->Drei Vorträge]]
 
-[[Für die Veranstaltung beträgt mein Honorar weiterhin bei 2.500 €. Wenn wir die beiden weiteren Buchungen zusammenfassen, kann ich Ihnen einen Rabatt anbieten.->Rabatt]]
+[[Für die Veranstaltung liegt mein Honorar weiterhin bei 2.500 €. Wenn wir die beiden weiteren Buchungen zusammenfassen, kann ich Ihnen einen Rabatt anbieten.->Rabatt]]
 
 
-:: Wesentliche 2 {"position":"2500,3275","size":"100,100"}
+:: Wesentliche 2 {"position":"2450,3250","size":"100,100"}
 >>Charakter01SprichtLaecheln:<<
 Natürlich. Also, ich würde Sie dann gerne für diese Veranstaltung und ein weiteres Mal für nächstes Jahr buchen. Wie würde denn da das Honorar aussehen?
 
@@ -908,3 +1037,12 @@ Was wenn wir Sie nun zwei Mal buchen und nach dem ersten Auftritt feststellen, d
 [[Ich bin zuversichtlich, dass meine Arbeit überzeugt, sonst hätten Sie mich ja nicht kontaktiert.->Zuversicht 2]]
 
 [[Natürlich ist eine Feedback-Schleife möglich. Ein detailliertes Briefing im Vorfeld hilft, Erwartungen abzugleichen.->Briefing 2]]
+
+
+:: Überlegen {"position":"2975,3775","size":"100,100"}
+>>Charakter01SprichtLaecheln:<<
+Ja, tun Sie das und melden Sie sich gerne. Dann wünsche ich Ihnen noch einen schönen Tag. Auf Wiedersehen.
+
+[[Danke, das wünsche ich Ihnen auch. Auf Wiedersehen.->Ende]]
+
+[[Vielen Dank, Ihnen auch einen schönen Tag.->Ende]]

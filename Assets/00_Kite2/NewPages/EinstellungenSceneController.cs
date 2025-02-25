@@ -2,6 +2,7 @@ using _00_Kite2.Common;
 using _00_Kite2.Common.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace _00_Kite2.NewPages
 {
@@ -12,6 +13,7 @@ namespace _00_Kite2.NewPages
         [SerializeField] private Button nutzungsbedingungenButton;
         [SerializeField] private Button datenschutzButton; 
         [SerializeField] private Button soundeinstellungButton;
+        [SerializeField] private TMP_Text versionInfo;
 
         public void Start()
         {
@@ -20,6 +22,7 @@ namespace _00_Kite2.NewPages
             nutzungsbedingungenButton.onClick.AddListener(OnNutzungsbedingungenButton);
             datenschutzButton.onClick.AddListener(OnDatenschutzButton);
             soundeinstellungButton.onClick.AddListener(OnSoundeinstellungButton);
+            versionInfo.text = "Version: " + Application.version;
         }
 
         private void OnBarrierefreiheitButton()

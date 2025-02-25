@@ -88,74 +88,14 @@ namespace _00_Kite2.Common.SceneManagement
             LoadScene(SceneNames.INITIAL_TALK_SCENE);
         }
 
-        public static void LoadAddObserverScene()
-        {
-            LoadScene(SceneNames.ADD_OBSERVER_SCENE);
-        }
-
-        public static void LoadAiReviewExplorerScene()
-        {
-            LoadScene(SceneNames.AI_REVIEW_EXPLORER_SCENE);
-        }
-
-        public static void LoadFeedbackRoleManagementScene()
-        {
-            LoadScene(SceneNames.FEEDBACK_ROKE_MANAGEMENT_SCENE);
-        }
-
-        public static void LoadNovelReviewExplorerScene()
-        {
-            LoadScene(SceneNames.NOVEL_REVIEW_EXPLORER_SCENE);
-        }
-
-        public static void LoadReviewAiScene()
-        {
-            LoadScene(SceneNames.REVIEW_AI_SCENE);
-        }
-
-        public static void LoadReviewNovelScene()
-        {
-            LoadScene(SceneNames.REVIEW_NOVEL_SCENE);
-        }
-
-        public static void LoadPromptsAndCompletionsExplorerScene()
-        {
-            LoadScene(SceneNames.PROMPTS_AND_COMPLETIONS_EXPLORER_SCENE);
-        }
-
-        public static void LoadTermsOfUseScene()
-        {
-            LoadScene(SceneNames.TERMS_OF_USE_SCENE);
-        }
-
-        public static void LoadImprintScene()
-        {
-            LoadScene(SceneNames.IMPRINT_SCENE);
-        }
-
-        public static void LoadPrivacyPolicyScene()
-        {
-            LoadScene(SceneNames.PRIVACY_POLICY_SCENE);
-        }
-
         public static void LoadPlayerPrefsScene()
         {
             LoadScene(SceneNames.PLAYER_PREFS_SCENE);
         }
 
-        public static void LoadExpertFeedbackScene()
-        {
-            LoadScene(SceneNames.EXPERT_FEEDBACK_SCENE);
-        }
-
         public static void LoadFoundersBubbleScene()
         {
             LoadScene(SceneNames.FOUNDERS_BUBBLE_SCENE);
-        }
-
-        public static void LoadFoundersWellScene()
-        {
-            LoadScene(SceneNames.FOUNDERS_WELL_SCENE);
         }
 
         public static void LoadFoundersWell2Scene()

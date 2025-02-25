@@ -211,7 +211,6 @@ namespace _00_Kite2.Player
                 return;
             }
 
-            //SceneLoader.LoadFoundersWellScene();
             SceneLoader.LoadFoundersWell2Scene();
         }
 

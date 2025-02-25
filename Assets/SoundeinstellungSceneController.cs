@@ -28,13 +28,15 @@ namespace _00_Kite2.NewPages
         private void Start()
         {
             BackStackManager.Instance().Push(SceneNames.SOUNDEINSTELLUNG_SCENE);
-
+            // WENN SAFEDSOUNDEFFECTVOLUME NOCH NICHT VORHANDEN SOLL DIESES AUF 1 GESETZT WERDEN
             InitializeToggleTextToSpeech();
             InitializeToggleSoundeffects();
 
             InitializeSoundeffectSlider();
 
             soundEffectsSliderHandler.OnSliderReleasedEvent += HandleSoundEffectsSliderReleased;
+
+            soundEffectsVolumeSlider.onValueChanged.AddListener(UpdateSoundeffectsVolume);
 
             toggleTextToSpeech.onValueChanged.AddListener(delegate { OnToggleTextToSpeech(); });
             toggleSoundEffects.onValueChanged.AddListener(delegate { OnToggleSoundEffects(); });
@@ -46,63 +48,11 @@ namespace _00_Kite2.NewPages
 
             toggleTextToSpeechInfoButton.onClick.AddListener(delegate { OnToggleTextToSpeechInfoButton(); });
             toggleSoundEffectsInfoButton.onClick.AddListener(delegate { OnToggleSoundEffectsInfoButton(); }); 
-
-            soundEffectsVolumeSlider.onValueChanged.AddListener(UpdateSoundeffectsVolume);
         }
 
         private void OnDestroy()
         {
             soundEffectsSliderHandler.OnSliderReleasedEvent -= HandleSoundEffectsSliderReleased;
-        }
-
-        private void ToggleTextToSpeech()
-        {
-            if (toggleTextToSpeech.isOn)
-            {
-                toggleTextToSpeech.isOn = false;
-
-            }
-            else
-            {
-                toggleTextToSpeech.isOn = true;
-            }
-        }
-
-        private void ToggleSoundEffects()
-        {
-            if (toggleSoundEffects.isOn)
-            {
-                toggleSoundEffects.isOn = false;
-                PlayerPrefs.SetInt("IsSoundeffectsVolumeOn", 0);
-            }
-            else
-            {
-                toggleSoundEffects.isOn = true;
-                PlayerPrefs.SetInt("IsSoundeffectsVolumeOn", 1);
-            }
-        }
-
-        private void TestVolumeSoundEffects()
-        {
-            GlobalVolumeManager.Instance.PlaySound(soundCheckClip);
-        }
-
-        private void HandleSoundEffectsSliderReleased(float value)
-        {
-            Debug.Log("Triggert HandleSoundEffectsSliderReleased mit: " + value);
-            PlayerPrefs.SetFloat("SavedSoundeffectsVolume", value);
-
-            GlobalVolumeManager.Instance.SetGlobalVolume(value);
-            if (soundeffectsVolume > 0)
-            {
-                toggleSoundEffects.isOn = true;
-                PlayerPrefs.SetInt("IsSoundeffectsVolumeOn", 1);
-            }
-            else
-            {
-                toggleSoundEffects.isOn = false;
-                PlayerPrefs.SetInt("IsSoundeffectsVolumeOn", 0);
-            }
         }
 
         private void InitializeToggleTextToSpeech()
@@ -121,28 +71,57 @@ namespace _00_Kite2.NewPages
 
         private void InitializeToggleSoundeffects()
         {
-            soundeffectsVolume = PlayerPrefs.GetFloat("SavedSoundeffectsVolume", 1);
-            bool isSoundeffectsVolumeOn = PlayerPrefs.GetInt("IsSoundeffectsVolumeOn", 0) == 1;
-            if (soundeffectsVolume == 0f || !isSoundeffectsVolumeOn)
+            bool isSoundeffectsVolumeOn = PlayerPrefs.GetInt("IsSoundeffectsVolumeOn", 1) == 1;
+            if (!isSoundeffectsVolumeOn)
             {
                 toggleSoundEffects.isOn = false;
                 ToggleVisibilityCheckmarkSoundeffects(false);
+                soundeffectsVolume = 0f;
             }
             else
             {
-                Debug.Log("soundeffectsVolume: " + soundeffectsVolume);
                 toggleSoundEffects.isOn = true;
                 ToggleVisibilityCheckmarkSoundeffects(true);
+                soundeffectsVolume = PlayerPrefs.GetFloat("SavedSoundeffectsVolume", 1);
             }
         }
 
         private void InitializeSoundeffectSlider()
         {
-            float savedSoundeffectsVolume = PlayerPrefs.GetFloat("SavedSoundeffectsVolume", 1);
-            soundeffectsVolume = savedSoundeffectsVolume;
             soundEffectsVolumeSlider.value = soundeffectsVolume;
-            Debug.Log("InitializeSoundeffectSlider: " + soundeffectsVolume);
             GlobalVolumeManager.Instance.SetGlobalVolume(soundeffectsVolume);
+        }
+
+        private void HandleSoundEffectsSliderReleased(float value)
+        {
+            PlayerPrefs.SetFloat("SavedSoundeffectsVolume", value);
+
+            GlobalVolumeManager.Instance.SetGlobalVolume(value);
+
+            soundeffectsVolume = value;
+
+            if (soundeffectsVolume > 0)
+            {
+                toggleSoundEffects.isOn = true;
+                PlayerPrefs.SetInt("IsSoundeffectsVolumeOn", 1);
+            }
+            else
+            {
+                toggleSoundEffects.isOn = false;
+                PlayerPrefs.SetInt("IsSoundeffectsVolumeOn", 0);
+            }
+        }
+
+        private void UpdateSoundeffectsVolume(float sliderValue)
+        {
+            if (sliderValue > 0f)
+            {
+                ToggleVisibilityCheckmarkSoundeffects(true);
+            }
+            else
+            {
+                ToggleVisibilityCheckmarkSoundeffects(false);
+            }
         }
 
         private void OnToggleTextToSpeech()
@@ -167,18 +146,17 @@ namespace _00_Kite2.NewPages
         {
             if (!toggleSoundEffects.isOn)
             {
-                Debug.Log("Deactivate Soundeffects");
                 PlayerPrefs.SetFloat("SavedSoundeffectsVolume", soundeffectsVolume);
                 GlobalVolumeManager.Instance.SetGlobalVolume(0f);
                 soundeffectsVolume = 0f;
                 soundEffectsVolumeSlider.value = 0;
                 DisplayInfoMessage(InfoMessages.DEACTIVATED_SOUNDEFFECTS_BUTTON);
                 ToggleVisibilityCheckmarkSoundeffects(false);
+                PlayerPrefs.SetInt("IsSoundeffectsVolumeOn", 0);
             }
             else
             {                    
-                Debug.Log("Activate Soundeffects");
-                soundeffectsVolume = PlayerPrefs.GetFloat("SavedSoundeffectsVolume", soundeffectsVolume);
+                soundeffectsVolume = PlayerPrefs.GetFloat("SavedSoundeffectsVolume");
                 if (soundeffectsVolume == 0f)
                 {
                     soundeffectsVolume = 1;
@@ -186,14 +164,43 @@ namespace _00_Kite2.NewPages
                 {
                     soundeffectsVolume = 0.1f;
                 }
-                Debug.Log("OnToggleSoundEffects: " + soundeffectsVolume);
                 soundEffectsVolumeSlider.value = soundeffectsVolume;
                 GlobalVolumeManager.Instance.SetGlobalVolume(soundeffectsVolume);
                 DisplayInfoMessage(InfoMessages.ACTIVATED_SOUNDEFFECTS_BUTTON);
                 ToggleVisibilityCheckmarkSoundeffects(true);
+                PlayerPrefs.SetInt("IsSoundeffectsVolumeOn", 1);
             }
         }
 
+        private void ToggleTextToSpeech()
+        {
+            if (toggleTextToSpeech.isOn)
+            {
+                toggleTextToSpeech.isOn = false;
+
+            }
+            else
+            {
+                toggleTextToSpeech.isOn = true;
+            }
+        }
+
+        private void ToggleSoundEffects()
+        {
+            if (toggleSoundEffects.isOn)
+            {
+                toggleSoundEffects.isOn = false;
+            }
+            else
+            {
+                toggleSoundEffects.isOn = true;
+            }
+        }
+
+        private void TestVolumeSoundEffects()
+        {
+            GlobalVolumeManager.Instance.PlaySound(soundCheckClip);
+        }
 
         private void OnToggleTextToSpeechInfoButton()
         {
@@ -205,18 +212,6 @@ namespace _00_Kite2.NewPages
             DisplayInfoMessage(InfoMessages.EXPLANATION_SOUNDEFFECTS_BUTTON);
         }
 
-        private void UpdateSoundeffectsVolume(float sliderValue)
-        {
-            if (sliderValue == 0f)
-            {
-                ToggleVisibilityCheckmarkSoundeffects(false);
-            }
-            else
-            {
-                ToggleVisibilityCheckmarkSoundeffects(true);
-            }
-        }
-
         private void ToggleVisibilityCheckmarkTTS(bool show)
         {
             checkMarkTTS.SetActive(show);
@@ -226,6 +221,5 @@ namespace _00_Kite2.NewPages
         {
             checkMarkSoundeffects.SetActive(show);
         }
-
     }
 }

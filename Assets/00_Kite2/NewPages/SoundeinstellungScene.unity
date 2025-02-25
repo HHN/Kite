@@ -1458,7 +1458,7 @@ GameObject:
   m_Component:
   - component: {fileID: 844055471}
   m_Layer: 5
-  m_Name: Soundeffekte Slider
+  m_Name: Sound-Effekte Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1680,7 +1680,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Soundeffekte aktivieren
+  m_text: Sound-Effekte aktivieren
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
@@ -2300,7 +2300,7 @@ GameObject:
   - component: {fileID: 1208414262}
   - component: {fileID: 1208414261}
   m_Layer: 5
-  m_Name: Soundeffekte Infotext
+  m_Name: Sound-Effekte Infotext
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2345,7 +2345,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Lautst\xE4rke Soundeffekte"
+  m_text: "Lautst\xE4rke Sound-Effekte"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
