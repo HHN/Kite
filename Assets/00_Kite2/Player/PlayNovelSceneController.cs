@@ -18,7 +18,6 @@ using _00_Kite2.Server_Communication.Server_Calls;
 using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace _00_Kite2.Player

@@ -1,13 +1,15 @@
-using UnityEngine.Networking;
-using System.Collections;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class BypassCertificate : CertificateHandler
+namespace _00_Kite2
 {
-    protected override bool ValidateCertificate(byte[] certificateData)
+    public class BypassCertificate : CertificateHandler
     {
-        Debug.Log("BypassCertificate");
-        // Nur zum Testen: Immer true zurückgeben
-        return true;
+        protected override bool ValidateCertificate(byte[] certificateData)
+        {
+            Debug.Log("BypassCertificate");
+            // Nur zum Testen: Immer true zurï¿½ckgeben
+            return true;
+        }
     }
 }
