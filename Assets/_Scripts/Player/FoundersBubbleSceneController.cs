@@ -13,11 +13,9 @@ namespace Assets._Scripts.Player
 {
     public class FoundersBubbleSceneController : SceneController
     {
-        [Header("Novel Description Textbox")] [SerializeField]
-        private GameObject novelDescriptionTextboxGameObject;
-
+        [Header("Novel Description Textbox")]
+        
         [SerializeField] private NovelDescriptionTextbox novelDescriptionTextbox;
-        [SerializeField] private GameObject novelDescriptionTextboxIntroGameObject;
         [SerializeField] private NovelDescriptionTextbox novelDescriptionTextboxIntro;
         [SerializeField] private bool isPopupOpen;
         [SerializeField] private VisualNovelNames currentlyOpenedVisualNovelPopup;
@@ -323,7 +321,7 @@ namespace Assets._Scripts.Player
 
             if (!isNovelContainedInVersion)
             {
-                novelDescriptionTextboxGameObject.SetActive(true);
+                novelDescriptionTextbox.gameObject.SetActive(true);
                 novelDescriptionTextbox.SetHead(FoundersBubbleMetaInformation.IsHighInGui(visualNovel));
                 novelDescriptionTextbox.SetVisualNovelName(visualNovel);
                 novelDescriptionTextbox.SetText(
@@ -349,8 +347,8 @@ namespace Assets._Scripts.Player
 
                     if (novel.id == 13)
                     {
-                        novelDescriptionTextboxGameObject.SetActive(false);
-                        novelDescriptionTextboxIntroGameObject.SetActive(true);
+                        novelDescriptionTextbox.gameObject.SetActive(false);
+                        novelDescriptionTextboxIntro.gameObject.SetActive(true);
                         novelDescriptionTextboxIntro.SetHead(FoundersBubbleMetaInformation.IsHighInGui(visualNovel));
                         novelDescriptionTextboxIntro.SetVisualNovel(novel);
                         novelDescriptionTextboxIntro.SetVisualNovelName(visualNovel);
@@ -362,8 +360,8 @@ namespace Assets._Scripts.Player
                     }
                     else
                     {
-                        novelDescriptionTextboxIntroGameObject.SetActive(false);
-                        novelDescriptionTextboxGameObject.SetActive(true);
+                        novelDescriptionTextboxIntro.gameObject.SetActive(false);
+                        novelDescriptionTextbox.gameObject.SetActive(true);
                         novelDescriptionTextbox.SetHead(FoundersBubbleMetaInformation.IsHighInGui(visualNovel));
                         novelDescriptionTextbox.SetVisualNovel(novel);
                         novelDescriptionTextbox.SetVisualNovelName(visualNovel);
@@ -389,7 +387,8 @@ namespace Assets._Scripts.Player
         {
             isPopupOpen = false;
             currentlyOpenedVisualNovelPopup = VisualNovelNames.NONE;
-            novelDescriptionTextboxGameObject.SetActive(false);
+            novelDescriptionTextbox.gameObject.SetActive(false);
+            novelDescriptionTextboxIntro.gameObject.SetActive(false);
         }
 
         public override void OnStop()
