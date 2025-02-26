@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Febucci.UI.Effects
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(fileName = "Fade Appearance", menuName = "Text Animator/Animations/Appearances/Fade")]
+    [CreateAssetMenu(fileName = "Fade Appearance", menuName = "Text Animator/_Animations/Appearances/Fade")]
     [EffectInfo("fade", EffectCategory.Appearances)]
     public sealed class FadeAppearance : AppearanceScriptableBase
     {

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Febucci.UI.Effects
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(fileName = "Diagonal Expand Appearance", menuName = "Text Animator/Animations/Appearances/Diagonal Expand")]
+    [CreateAssetMenu(fileName = "Diagonal Expand Appearance", menuName = "Text Animator/_Animations/Appearances/Diagonal Expand")]
     [EffectInfo("diagexp", EffectCategory.Appearances)]
     public sealed class DiagonalExpandAppearance : AppearanceScriptableBase
     {

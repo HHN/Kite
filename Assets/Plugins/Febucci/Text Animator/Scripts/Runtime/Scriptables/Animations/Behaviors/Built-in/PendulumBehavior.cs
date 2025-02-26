@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Febucci.UI.Effects
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(fileName = "Pendulum Behavior", menuName = "Text Animator/Animations/Behaviors/Pendulum")]
+    [CreateAssetMenu(fileName = "Pendulum Behavior", menuName = "Text Animator/_Animations/Behaviors/Pendulum")]
     [EffectInfo("pend", EffectCategory.Behaviors)]
     [DefaultValue(nameof(baseAmplitude), 24.7f)]
     [DefaultValue(nameof(baseFrequency), 3.1f)]
