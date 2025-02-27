@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2845073450423576705}
   - component: {fileID: 2845073450423576718}
   - component: {fileID: 2845073450423576707}
-  - component: {fileID: 6553942909093147415}
   - component: {fileID: 7010371653666119940}
   - component: {fileID: 4456623514824019513}
   m_Layer: 5
@@ -36,7 +35,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -137,32 +135,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2db89b0d6485ea34baa7f484c0a16249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  engine: {fileID: 6553942909093147415}
-  maxRecordingTime: 0
-  clip: {fileID: 0}
-  isRecording: 0
-  textField: {fileID: 0}
-  microfonButton: {fileID: 2845073450423576718}
-  spriteWhileNotRecording: {fileID: 21300000, guid: 7728f45eebfb4894c8a9fefcfa376e2f, type: 3}
-  spriteWhileRecording: {fileID: 21300000, guid: ca6abb19912aac74f9a28f3274351a19, type: 3}
---- !u!114 &6553942909093147415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2845073450423576716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89a13c2ef0f7142f8800c05dca542df1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SelectedModel: whisper-tiny
-  SelectedLanguage: de
-  TranslateToEnglish: 0
-  NumOfBeams: 5
-  Verbose: 1
-  LastTranscriptionTime: 0
 --- !u!114 &7010371653666119940
 MonoBehaviour:
   m_ObjectHideFlags: 0
