@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets._Scripts.Common.UI.UI_Elements.Buttons
+namespace Assets._Scripts.Common.UI_Elements.Buttons
 {
     public class SelfdestructionScript : MonoBehaviour
     {

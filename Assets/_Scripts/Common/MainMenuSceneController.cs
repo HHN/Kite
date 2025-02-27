@@ -4,7 +4,7 @@ using Assets._Scripts.Common.Managers;
 using Assets._Scripts.Common.Messages;
 using Assets._Scripts.Common.Novel;
 using Assets._Scripts.Common.SceneManagement;
-using Assets._Scripts.Common.UI.UI_Elements.Toggle;
+using Assets._Scripts.Common.UI_Elements;
 using Assets._Scripts.Player;
 using Assets._Scripts.Server_Communication;
 using Assets._Scripts.Server_Communication.Server_Calls;

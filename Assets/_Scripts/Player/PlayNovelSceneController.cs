@@ -7,10 +7,10 @@ using System.Text.RegularExpressions;
 using Assets._Scripts.Common;
 using Assets._Scripts.Common.Managers;
 using Assets._Scripts.Common.Novel;
-using Assets._Scripts.Common.Novel.Character.CharacterController;
+using Assets._Scripts.Common.Novel.CharacterController;
 using Assets._Scripts.Common.SceneManagement;
-using Assets._Scripts.Common.UI.UI_Elements.Free_Text_User_Input;
-using Assets._Scripts.Common.UI.UI_Elements.Messages;
+using Assets._Scripts.Common.UI_Elements.FreeTextUserInput;
+using Assets._Scripts.Common.UI_Elements.Messages;
 using Assets._Scripts.Common.Utilities;
 using Assets._Scripts.SaveNovelData;
 using Assets._Scripts.Server_Communication.Server_Calls;
@@ -220,7 +220,7 @@ namespace Assets._Scripts.Player
                 {
                     GameObject novelImagesInstance = Instantiate(novelVisuals[7], viewPortTransform);
                     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<VerhandlungNovelImageController>();
+                    _novelImagesController = controllerTransform.GetComponent<HonorarNovelImageController>();
                     break;
                 }
                 default:
@@ -1004,7 +1004,7 @@ namespace Assets._Scripts.Player
                 { 6, typeof(BueroNovelImageController) },
                 { 9, typeof(BekannterNovelImageController) },
                 { 10, typeof(BankNovelImageController) },
-                { 11, typeof(VerhandlungNovelImageController) },
+                { 11, typeof(HonorarNovelImageController) },
                 { 13, typeof(IntroNovelImageController) }
             };
 
@@ -1089,13 +1089,13 @@ namespace Assets._Scripts.Player
                 bankController.novelKite2CharacterController.SetHairSprite(characterData.hairIndex);
             }
 
-            if (controller is VerhandlungNovelImageController verhandlungController)
+            if (controller is HonorarNovelImageController honorarController)
             {
                 // Setze die Attribute basierend auf den gespeicherten Werten
-                verhandlungController.novelKite2CharacterController.SetSkinSprite(characterData.skinIndex);
-                // verhandlungController.novelKite2CharacterController.SetHandSprite(characterData.handIndex);
-                verhandlungController.novelKite2CharacterController.SetClotheSprite(characterData.clotheIndex);
-                verhandlungController.novelKite2CharacterController.SetHairSprite(characterData.hairIndex);
+                honorarController.novelKite2CharacterController.SetSkinSprite(characterData.skinIndex);
+                // honorarController.novelKite2CharacterController.SetHandSprite(characterData.handIndex);
+                honorarController.novelKite2CharacterController.SetClotheSprite(characterData.clotheIndex);
+                honorarController.novelKite2CharacterController.SetHairSprite(characterData.hairIndex);
             }
         }
 

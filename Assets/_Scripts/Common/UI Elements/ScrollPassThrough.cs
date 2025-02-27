@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.Common.UI.UI_Elements.InputField
+namespace Assets._Scripts.Common.UI_Elements
 {
     public class ScrollPassThrough : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {

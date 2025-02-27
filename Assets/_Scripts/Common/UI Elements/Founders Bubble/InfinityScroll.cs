@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.Common.UI.Founders_Bubble.ScrollingBehavior
+namespace Assets._Scripts.Common.UI_Elements.Founders_Bubble
 {
     public class InfinityScroll : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {

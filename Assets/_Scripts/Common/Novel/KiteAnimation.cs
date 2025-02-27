@@ -1,4 +1,4 @@
-namespace Assets._Scripts.Common.Novel.Event_Animations
+namespace Assets._Scripts.Common.Novel
 {
     public enum KiteAnimation
     {

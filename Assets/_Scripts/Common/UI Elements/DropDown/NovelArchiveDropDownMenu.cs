@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.Common.UI.UI_Elements.DropDown
+namespace Assets._Scripts.Common.UI_Elements.DropDown
 {
     public class NovelArchiveDropDownMenu : MonoBehaviour
     {

@@ -7,7 +7,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.Common.UI.UI_Elements.Free_Text_User_Input
+namespace Assets._Scripts.Common.UI_Elements.FreeTextUserInput
 {
     public class RequestExpertFeedbackPanelController : MonoBehaviour, IOnSuccessHandler
     {

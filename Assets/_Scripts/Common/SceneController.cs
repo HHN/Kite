@@ -1,4 +1,4 @@
-using Assets._Scripts.Common.UI.UI_Elements.Messages;
+using Assets._Scripts.Common.UI_Elements.Messages;
 using Assets._Scripts.Common.Utilities;
 using UnityEngine;
 

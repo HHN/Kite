@@ -1,5 +1,5 @@
 using Assets._Scripts.Common.Managers;
-using Assets._Scripts.Common.Novel.Character.CharacterController;
+using Assets._Scripts.Common.Novel.CharacterController;
 using Assets._Scripts.Common.SceneManagement;
 using Assets._Scripts.Common.Utilities;
 using Assets._Scripts.Player;
@@ -8,7 +8,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.Common.UI.UI_Elements.Messages
+namespace Assets._Scripts.Common.UI_Elements.Messages
 {
     public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
     {

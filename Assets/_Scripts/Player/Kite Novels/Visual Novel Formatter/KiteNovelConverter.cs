@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Assets._Scripts.Common.Novel;
-using Assets._Scripts.Common.Novel.Event_Animations;
 using UnityEngine;
 
 namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter

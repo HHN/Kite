@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Linq;
 using Assets._Scripts.Common.Managers;
 using Assets._Scripts.Common.SceneManagement;
-using Assets._Scripts.Common.UI.UI_Elements.DropDown;
+using Assets._Scripts.Common.UI_Elements.DropDown;
 using Assets._Scripts.Player;
 using UnityEngine;
 

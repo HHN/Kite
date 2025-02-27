@@ -2,7 +2,7 @@ using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using TMPro;
 using UnityEngine;
 
-namespace Assets._Scripts.Common.UI.UI_Elements.TextBoxes
+namespace Assets._Scripts.Common.UI_Elements.TextBoxes
 {
     public class ChatMessageBox : MonoBehaviour
     {

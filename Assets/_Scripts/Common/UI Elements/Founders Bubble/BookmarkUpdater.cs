@@ -3,7 +3,7 @@ using Assets._Scripts.Player;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.Common.UI.Founders_Bubble.Bookmarks
+namespace Assets._Scripts.Common.UI_Elements.Founders_Bubble
 {
     public class BookmarkUpdater : MonoBehaviour
     {

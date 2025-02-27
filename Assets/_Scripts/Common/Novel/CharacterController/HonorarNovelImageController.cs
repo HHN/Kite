@@ -3,9 +3,9 @@ using Assets._Scripts.Common.Managers;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.Common.Novel.Character.CharacterController
+namespace Assets._Scripts.Common.Novel.CharacterController
 {
-    public class VerhandlungNovelImageController : NovelImageController
+    public class HonorarNovelImageController : NovelImageController
     {
         [SerializeField] private GameObject backgroundContainer;
         [SerializeField] private GameObject decoDeskContainer;

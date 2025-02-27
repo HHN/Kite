@@ -1,7 +1,8 @@
 using UnityEngine;
+
 //using LeastSquares.Undertone;
 
-namespace Assets._Scripts.Common.UI.UI_Elements.Buttons
+namespace Assets._Scripts.Common.UI_Elements.Buttons
 {
     public class MicrophoneButton : MonoBehaviour
     {

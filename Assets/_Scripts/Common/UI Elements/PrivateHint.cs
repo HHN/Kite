@@ -2,7 +2,7 @@ using Assets._Scripts.Common.Managers;
 using Assets._Scripts.Common.Novel;
 using UnityEngine;
 
-namespace Assets._Scripts.Common.UI.Visual_Novel_Images
+namespace Assets._Scripts.Common.UI_Elements
 {
     public class PrivateHint : MonoBehaviour
     {

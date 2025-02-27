@@ -33,14 +33,14 @@ namespace Assets._Scripts.Common.Managers
             _backStack.Push(sceneName);
         }
 
-        public string Pop()
+        public void Pop()
         {
             if (_backStack.Count == 0)
             {
-                return "";
+                return;
             }
 
-            return _backStack.Pop();
+            _backStack.Pop();
         }
 
         private string Peek()

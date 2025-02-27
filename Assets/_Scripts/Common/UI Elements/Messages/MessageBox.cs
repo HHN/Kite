@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.Common.UI.UI_Elements.Messages
+namespace Assets._Scripts.Common.UI_Elements.Messages
 {
     public class MessageBox : MonoBehaviour
     {

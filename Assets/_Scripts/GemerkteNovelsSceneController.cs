@@ -7,7 +7,7 @@ using Assets._Scripts.Player;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.Bookmarks
+namespace Assets._Scripts
 {
     public class GemerkteNovelsSceneController : SceneController
     {

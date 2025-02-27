@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets._Scripts.Common.UI.UI_Elements.Radio_Button
+namespace Assets._Scripts.Common.UI_Elements.Buttons
 {
     public class RadioButtonHandler : MonoBehaviour
     {

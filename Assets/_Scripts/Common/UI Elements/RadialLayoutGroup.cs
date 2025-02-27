@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.Common.UI
+namespace Assets._Scripts.Common.UI_Elements
 {
     public class RadialLayoutGroup : LayoutGroup
     {

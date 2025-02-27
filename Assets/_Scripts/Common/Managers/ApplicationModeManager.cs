@@ -7,7 +7,7 @@ namespace Assets._Scripts.Common.Managers
         private static ApplicationModeManager _instance;
 
         private ApplicationModeWrapper _wrapper;
-        private const string Key = "ApplicationModeWrapper";
+        private const string KEY = "ApplicationModeWrapper";
 
         private ApplicationModeManager()
         {
@@ -62,9 +62,9 @@ namespace Assets._Scripts.Common.Managers
 
         private ApplicationModeWrapper LoadApplicationModeWrapper()
         {
-            if (PlayerDataManager.Instance().HasKey(Key))
+            if (PlayerDataManager.Instance().HasKey(KEY))
             {
-                string json = PlayerDataManager.Instance().GetPlayerData(Key);
+                string json = PlayerDataManager.Instance().GetPlayerData(KEY);
                 return JsonUtility.FromJson<ApplicationModeWrapper>(json);
             }
             else
@@ -78,7 +78,7 @@ namespace Assets._Scripts.Common.Managers
         private void Save()
         {
             string json = JsonUtility.ToJson(_wrapper);
-            PlayerDataManager.Instance().SavePlayerData(Key, json);
+            PlayerDataManager.Instance().SavePlayerData(KEY, json);
         }
     }
 }

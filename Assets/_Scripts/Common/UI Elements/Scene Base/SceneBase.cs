@@ -1,11 +1,11 @@
 using Assets._Scripts.Common.SceneManagement;
-using Assets._Scripts.Common.UI.UI_Elements.Messages;
+using Assets._Scripts.Common.UI_Elements.Messages;
 using Assets._Scripts.Common.Utilities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.Common.UI.Scene_Base
+namespace Assets._Scripts.Common.UI_Elements.Scene_Base
 {
     public class SceneBase : MonoBehaviour
     {

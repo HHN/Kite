@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.Common.UI.UI_Elements.Buttons
+namespace Assets._Scripts.Common.UI_Elements.Buttons
 {
     public class CloseButton : MonoBehaviour
     {

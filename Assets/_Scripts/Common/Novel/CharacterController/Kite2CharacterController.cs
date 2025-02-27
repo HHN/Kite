@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-namespace Assets._Scripts.Common.Novel.Character.CharacterController
+namespace Assets._Scripts.Common.Novel.CharacterController
 {
     [Serializable] // Ermöglicht Anzeige im Inspector
     public class HandSprites

@@ -85,7 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 831789010391981580}
   m_Layer: 0
-  m_Name: Verhandlung Novel Images Prefab
+  m_Name: HonorarNovelImagesPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

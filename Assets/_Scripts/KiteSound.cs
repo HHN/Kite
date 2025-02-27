@@ -10,7 +10,7 @@ namespace Assets._Scripts
         MAN_LAUGHING
     }
 
-    public class KiteSoundHelper
+    public static class KiteSoundHelper
     {
         public static int ToInt(KiteSound sound)
         {

@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets._Scripts.Common.Novel;
-using Assets._Scripts.Common.Novel.Character.CharacterController;
-using Assets._Scripts.Common.UI.UI_Elements.TextBoxes;
+using Assets._Scripts.Common.Novel.CharacterController;
+using Assets._Scripts.Common.UI_Elements.TextBoxes;
 using Assets._Scripts.Player;
 using UnityEngine;
 

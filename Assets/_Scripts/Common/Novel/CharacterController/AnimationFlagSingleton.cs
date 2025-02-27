@@ -1,4 +1,4 @@
-namespace Assets._Scripts.Common.Novel.Character.CharacterController
+namespace Assets._Scripts.Common.Novel.CharacterController
 {
     public class AnimationFlagSingleton
     {

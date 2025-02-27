@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Assets._Scripts.Common.Novel.Character.CharacterController;
+using Assets._Scripts.Common.Novel.CharacterController;
 using Assets._Scripts.Player;
 using Assets._Scripts.SaveNovelData;
 using UnityEngine;

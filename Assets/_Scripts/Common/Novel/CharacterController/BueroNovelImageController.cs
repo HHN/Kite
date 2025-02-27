@@ -3,7 +3,7 @@ using Assets._Scripts.Common.Managers;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.Common.Novel.Character.CharacterController
+namespace Assets._Scripts.Common.Novel.CharacterController
 {
     public class BueroNovelImageController : NovelImageController
     {

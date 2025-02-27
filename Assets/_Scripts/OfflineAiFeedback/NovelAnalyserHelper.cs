@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Text;
 using Assets._Scripts.Common.Novel;
-using Assets._Scripts.Common.Novel.Event_Animations;
 using Assets._Scripts.Player;
 using UnityEngine;
 

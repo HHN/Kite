@@ -1,5 +1,4 @@
 using Assets._Scripts.Common.Novel;
-using Assets._Scripts.Common.Novel.Event_Animations;
 
 namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
 {

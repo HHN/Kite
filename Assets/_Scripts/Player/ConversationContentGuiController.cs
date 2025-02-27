@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets._Scripts.Common.Managers;
 using Assets._Scripts.Common.Novel;
-using Assets._Scripts.Common.UI.UI_Elements.TextBoxes;
+using Assets._Scripts.Common.UI_Elements.TextBoxes;
 using Assets._Scripts.Common.UndoChoice;
 using Assets._Scripts.Common.Utilities;
 using Assets._Scripts.SaveNovelData;

@@ -14,7 +14,7 @@ namespace Assets._Scripts.Common.Managers
             {
                 if (_instance == null)
                 {
-                    _instance = FindObjectOfType<CoroutineManger>();
+                    _instance = FindAnyObjectByType<CoroutineManger>();
                     if (_instance == null)
                     {
                         GameObject obj = new GameObject("CoroutineManger");
