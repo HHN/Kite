@@ -1,9 +1,8 @@
-using Assets._Scripts.Common;
-using Assets._Scripts.Common.Managers;
-using Assets._Scripts.Common.Messages;
-using Assets._Scripts.Common.SceneManagement;
-using Assets._Scripts.Common.UI_Elements.Buttons;
-using Assets._Scripts.Common.Utilities;
+using Assets._Scripts.Managers;
+using Assets._Scripts.Messages;
+using Assets._Scripts.SceneManagement;
+using Assets._Scripts.UI_Elements.Buttons;
+using Assets._Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.UI;
 //using LeastSquares.Overtone;
@@ -109,7 +108,7 @@ namespace Assets._Scripts.LegalInformation
                 deleteUserDataConfirmDialogObject.CloseMessageBox();
             }
 
-            if (canvas.IsNullOrDestroyed())
+            if (DestroyValidator.IsNullOrDestroyed(canvas))
             {
                 return;
             }
@@ -134,7 +133,7 @@ namespace Assets._Scripts.LegalInformation
                 deleteUserDataConfirmDialogObject.CloseMessageBox();
             }
 
-            if (canvas.IsNullOrDestroyed())
+            if (DestroyValidator.IsNullOrDestroyed(canvas))
             {
                 return;
             }

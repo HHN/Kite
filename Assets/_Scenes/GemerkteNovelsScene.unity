@@ -474,12 +474,12 @@ MonoBehaviour:
   bankkreditNovel: {fileID: 1756499380}
   bekannteTreffenNovel: {fileID: 1544616211}
   bankkontoNovel: {fileID: 992898982}
-  foerderantragNovel: {fileID: 93171630}
+  foerderAntragNovel: {fileID: 93171630}
   elternNovel: {fileID: 1921530029}
   notarinNovel: {fileID: 573693585}
   presseNovel: {fileID: 1738873487}
   bueroNovel: {fileID: 1824850170}
-  gruenderzuschussNovel: {fileID: 174099629}
+  gruenderZuschussNovel: {fileID: 174099629}
   honorarNovel: {fileID: 632586683}
   lebenspartnerNovel: {fileID: 689054092}
   introNovel: {fileID: 1363038382}
@@ -3347,8 +3347,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 447.6684, y: -515}
-  m_SizeDelta: {x: 695.3368, y: 0}
+  m_AnchoredPosition: {x: 432, y: -515}
+  m_SizeDelta: {x: 664, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1279610416
 MonoBehaviour:
@@ -4514,7 +4514,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 447.6684, y: -1220}
+  m_AnchoredPosition: {x: 432, y: -1220}
   m_SizeDelta: {x: 850, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1766330959
@@ -5199,7 +5199,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 447.6684, y: -250}
+  m_AnchoredPosition: {x: 432, y: -250}
   m_SizeDelta: {x: 300, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2104077628

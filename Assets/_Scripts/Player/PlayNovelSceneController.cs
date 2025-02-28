@@ -4,16 +4,15 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Assets._Scripts.Common;
-using Assets._Scripts.Common.Managers;
-using Assets._Scripts.Common.Novel;
-using Assets._Scripts.Common.Novel.CharacterController;
-using Assets._Scripts.Common.SceneManagement;
-using Assets._Scripts.Common.UI_Elements.FreeTextUserInput;
-using Assets._Scripts.Common.UI_Elements.Messages;
-using Assets._Scripts.Common.Utilities;
+using Assets._Scripts.Managers;
+using Assets._Scripts.Novel;
+using Assets._Scripts.Novel.CharacterController;
 using Assets._Scripts.SaveNovelData;
+using Assets._Scripts.SceneManagement;
 using Assets._Scripts.Server_Communication.Server_Calls;
+using Assets._Scripts.UI_Elements.FreeTextUserInput;
+using Assets._Scripts.UI_Elements.Messages;
+using Assets._Scripts.Utilities;
 using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using TMPro;
 using UnityEngine;
@@ -503,7 +502,7 @@ namespace Assets._Scripts.Player
                 return;
             }
 
-            if (novelEvent.audioClipToPlay == KiteSoundHelper.ToInt(KiteSound.LEAVE_SCENE))
+            if (novelEvent.audioClipToPlay == KiteSoundHelper.ToInt(KiteSound.LeaveScene))
             {
                 StartCoroutine(StartNextEventInOneSeconds(2.5f));
                 return;
@@ -954,7 +953,7 @@ namespace Assets._Scripts.Player
         /// </summary> 
         private void ShowHintForSavegameMessageBox()
         {
-            if (hintForSavegameMessageBox == null || canvas.IsNullOrDestroyed()) return;
+            if (hintForSavegameMessageBox == null || DestroyValidator.IsNullOrDestroyed(canvas)) return;
 
             // Überprüfen, ob die HintForSavegameMessageBox bereits geladen ist und schließe sie gegebenenfalls
             if (_hintForSavegameMessageBoxObject != null && !_hintForSavegameMessageBoxObject.IsNullOrDestroyed())

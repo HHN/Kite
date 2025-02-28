@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
-using Assets._Scripts.Common.Managers;
-using Assets._Scripts.Common.Novel;
-using Assets._Scripts.Common.UI_Elements.TextBoxes;
-using Assets._Scripts.Common.UndoChoice;
-using Assets._Scripts.Common.Utilities;
+using Assets._Scripts.Managers;
+using Assets._Scripts.Novel;
 using Assets._Scripts.SaveNovelData;
+using Assets._Scripts.UI_Elements.TextBoxes;
+using Assets._Scripts.UndoChoice;
+using Assets._Scripts.Utilities;
 using Febucci.UI;
 using Febucci.UI.Core;
 using UnityEngine;
@@ -199,7 +199,7 @@ namespace Assets._Scripts.Player
                 undoChoiceMessageBoxObject.CloseMessageBox();
             }
 
-            if (_sceneController.canvas.IsNullOrDestroyed())
+            if (DestroyValidator.IsNullOrDestroyed(_sceneController.canvas))
             {
                 return;
             }

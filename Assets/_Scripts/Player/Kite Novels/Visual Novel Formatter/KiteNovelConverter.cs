@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Assets._Scripts.Common.Novel;
+using Assets._Scripts.Novel;
 using UnityEngine;
 
 namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
@@ -160,7 +160,7 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
             string label01 = label;
             string label02 = label01 + "RandomString0012003";
             string label03 = label02 + "RandomRandom";
-            KiteSound leaveSceneSound = KiteSound.LEAVE_SCENE;
+            KiteSound leaveSceneSound = KiteSound.LeaveScene;
 
             VisualNovelEvent soundEvent = KiteNovelEventFactory.GetPlaySoundEvent(label01, label02, leaveSceneSound);
             VisualNovelEvent exitEvent = KiteNovelEventFactory.GetCharacterExitsEvent(label02, label03);
@@ -1519,23 +1519,23 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
 
                 case (NovelKeyWord.SOUND_ABSPIELEN_WATER_POURING):
                 {
-                    return HandlePlaySoundEvent(passage, KiteSound.WATER_POURING, kiteNovelEventList.NovelEvents);
+                    return HandlePlaySoundEvent(passage, KiteSound.WaterPouring, kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.SOUND_ABSPIELEN_LEAVE_SCENE):
                 {
-                    return HandlePlaySoundEvent(passage, KiteSound.LEAVE_SCENE, kiteNovelEventList.NovelEvents);
+                    return HandlePlaySoundEvent(passage, KiteSound.LeaveScene, kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.SOUND_ABSPIELEN_TELEPHONE_CALL):
                 {
-                    return HandlePlaySoundEvent(passage, KiteSound.TELEPHONE_CALL, kiteNovelEventList.NovelEvents);
+                    return HandlePlaySoundEvent(passage, KiteSound.TelephoneCall, kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.SOUND_ABSPIELEN_PAPER_SOUND):
                 {
-                    return HandlePlaySoundEvent(passage, KiteSound.PAPER_SOUND, kiteNovelEventList.NovelEvents);
+                    return HandlePlaySoundEvent(passage, KiteSound.PaperSound, kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.SOUND_ABSPIELEN_MAN_LAUGHING):
                 {
-                    return HandlePlaySoundEvent(passage, KiteSound.MAN_LAUGHING, kiteNovelEventList.NovelEvents);
+                    return HandlePlaySoundEvent(passage, KiteSound.ManLaughing, kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.ANIMATION_ABSPIELEN_WATER_POURING):
                 {

@@ -58,7 +58,7 @@ namespace Assets._Scripts.Server_Communication
 
         public List<NovelReview> GetNovelReviews()
         {
-            return this.novelReviews;
+            return novelReviews;
         }
 
         public void SetAiReviews(List<AiReview> aiReviews)

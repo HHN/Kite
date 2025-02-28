@@ -6,60 +6,40 @@ namespace Assets._Scripts.UserFeedback
     [Serializable]
     public class NovelReview
     {
-        [SerializeField] private long id;
+        [SerializeField] private long reviewId;
         [SerializeField] private long novelId;
-        [SerializeField] private string novelName;
+        [SerializeField] private string novelTitle;
         [SerializeField] private long rating;
-        [SerializeField] private string reviewText;
+        [SerializeField] private string reviewContent;
 
-        public void SetId(long id)
+        public long ReviewId
         {
-            this.id = id;
+            get => reviewId;
+            set => reviewId = value;
         }
 
-        public long GetId()
+        public long NovelId
         {
-            return id;
+            get => novelId;
+            set => novelId = value;
         }
 
-        public void SetNovelId(long novelId)
+        public string NovelTitle
         {
-            this.novelId = novelId;
+            get => novelTitle;
+            set => novelTitle = value;
         }
 
-        public long GetNovelId()
+        public long Rating
         {
-            return novelId;
+            get => rating;
+            set => rating = value;
         }
 
-        public void SetNovelName(string novelName)
+        public string ReviewContent
         {
-            this.novelName = novelName;
-        }
-
-        public string GetNovelName()
-        {
-            return novelName;
-        }
-
-        public void SetRating(long rating)
-        {
-            this.rating = rating;
-        }
-
-        public long GetRating()
-        {
-            return rating;
-        }
-
-        public void SetReviewText(string reviewText)
-        {
-            this.reviewText = reviewText;
-        }
-
-        public string GetReviewText()
-        {
-            return reviewText;
+            get => reviewContent;
+            set => reviewContent = value;
         }
     }
 }

@@ -2360,8 +2360,8 @@ MonoBehaviour:
   isIntroNovelSaved: 0
   introNovelLoadedFromMainMenu: 1
   novelSaveStatusList: []
-  calledFromReload: 0
   characterDataList: []
+  calledFromReload: 0
 --- !u!4 &1193876631
 Transform:
   m_ObjectHideFlags: 0

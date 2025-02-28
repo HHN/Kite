@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using Assets._Scripts.Common.Novel;
+using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using Newtonsoft.Json;
 using UnityEngine;

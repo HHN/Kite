@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Assets._Scripts.Common.Novel;
+using Assets._Scripts.Novel;
 using UnityEngine;
 
 namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
@@ -224,7 +224,7 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
 
         private void HandlePlaySoundEvent(VisualNovelEvent novelEvent)
         {
-            if (KiteSoundHelper.ValueOf(novelEvent.audioClipToPlay) == KiteSound.NONE)
+            if (KiteSoundHelper.ValueOf(novelEvent.audioClipToPlay) == KiteSound.None)
             {
                 OnTestFailed("Sound Event without audio clip!", _objectUnderTest.title, novelEvent.id);
                 return;

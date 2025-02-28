@@ -1,4 +1,4 @@
-using Assets._Scripts.Common.Managers;
+using Assets._Scripts.Managers;
 using Assets._Scripts.Server_Communication;
 
 namespace Assets._Scripts.Player

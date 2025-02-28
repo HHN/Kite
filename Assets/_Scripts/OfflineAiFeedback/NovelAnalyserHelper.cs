@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Text;
-using Assets._Scripts.Common.Novel;
+using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using UnityEngine;
 
@@ -319,7 +319,7 @@ namespace Assets._Scripts.OfflineAiFeedback
 
         private void HandlePlaySoundEvent(VisualNovelEvent novelEvent)
         {
-            if (KiteSoundHelper.ValueOf(novelEvent.audioClipToPlay) == KiteSound.NONE)
+            if (KiteSoundHelper.ValueOf(novelEvent.audioClipToPlay) == KiteSound.None)
             {
                 OnAnalysisFailed("Sound Event without audio clip!", _objectUnderAnalyse.title, novelEvent.id);
                 return;

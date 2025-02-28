@@ -13,64 +13,40 @@ namespace Assets._Scripts.UserFeedback
         [SerializeField] private string aiFeedback;
         [SerializeField] private string reviewText;
 
-        public void SetId(long id)
+        public long Id
         {
-            this.id = id;
+            get => id;
+            set => id = value;
         }
 
-        public long GetId()
+        public long NovelId
         {
-            return id;
+            get => novelId;
+            set => novelId = value;
         }
 
-        public void SetNovelId(long novelId)
+        public string NovelName
         {
-            this.novelId = novelId;
+            get => novelName;
+            set => novelName = value;
         }
 
-        public long GetNovelId()
+        public string Prompt
         {
-            return novelId;
+            get => prompt;
+            set => prompt = value;
         }
 
-        public void SetNovelName(string novelName)
+        public string AiFeedback
         {
-            this.novelName = novelName;
+            get => aiFeedback;
+            set => aiFeedback = value;
         }
 
-        public string GetNovelName()
+        public string ReviewText
         {
-            return novelName;
-        }
-
-        public void SetPrompt(string prompt)
-        {
-            this.prompt = prompt;
-        }
-
-        public string GetPrompt()
-        {
-            return prompt;
-        }
-
-        public void SetAiFeedback(string aiFeedback)
-        {
-            this.aiFeedback = aiFeedback;
-        }
-
-        public string GetAiFeedback()
-        {
-            return aiFeedback;
-        }
-
-        public void SetReviewText(string reviewText)
-        {
-            this.reviewText = reviewText;
-        }
-
-        public string GetReviewText()
-        {
-            return reviewText;
+            get => reviewText;
+            set => reviewText = value;
         }
     }
 }
