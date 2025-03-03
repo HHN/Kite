@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Assets._Scripts.Common.Novel;
+using Assets._Scripts.Novel;
 
 namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
 {

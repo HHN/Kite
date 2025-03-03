@@ -1,7 +1,7 @@
 using System.Collections;
-using Assets._Scripts.Common.Managers;
-using Assets._Scripts.Common.Novel;
-using Assets._Scripts.Common.SceneManagement;
+using Assets._Scripts.Managers;
+using Assets._Scripts.Novel;
+using Assets._Scripts.SceneManagement;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

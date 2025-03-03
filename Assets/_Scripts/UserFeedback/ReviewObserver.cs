@@ -6,27 +6,27 @@ namespace Assets._Scripts.UserFeedback
     [Serializable]
     public class ReviewObserver
     {
-        [SerializeField] private long id;
-        [SerializeField] private string email;
+        [SerializeField] private long observerID;
+        [SerializeField] private string observerEmail;
 
         public void SetId(long id)
         {
-            this.id = id;
+            this.observerID = id;
         }
 
         public long GetId()
         {
-            return id;
+            return observerID;
         }
 
         public void SetEmail(string email)
         {
-            this.email = email;
+            observerEmail = email;
         }
 
         public string GetEmail()
         {
-            return email;
+            return observerEmail;
         }
     }
 }

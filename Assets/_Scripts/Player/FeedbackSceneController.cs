@@ -1,16 +1,15 @@
 using System;
 using System.Collections;
 using System.Globalization;
-using Assets._Scripts.Common;
-using Assets._Scripts.Common.Managers;
-using Assets._Scripts.Common.Messages;
-using Assets._Scripts.Common.Novel;
-using Assets._Scripts.Common.SceneManagement;
-using Assets._Scripts.Common.Utilities;
+using Assets._Scripts.Managers;
+using Assets._Scripts.Messages;
+using Assets._Scripts.Novel;
 using Assets._Scripts.OfflineAiFeedback;
 using Assets._Scripts.SaveNovelData;
+using Assets._Scripts.SceneManagement;
 using Assets._Scripts.Server_Communication;
 using Assets._Scripts.Server_Communication.Server_Calls;
+using Assets._Scripts.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -38,6 +37,8 @@ namespace Assets._Scripts.Player
         [SerializeField] private GameObject copyNotificationContainer;
         //[SerializeField] private TTSEngine engine;
         [SerializeField] private GameObject loadingAnimation;
+        
+        private readonly CultureInfo _culture = new CultureInfo("de-DE");
 
         private void Start()
         {
@@ -95,7 +96,6 @@ namespace Assets._Scripts.Player
 
                 if (savedData == null)
                 {
-                    Debug.LogWarning("No saved data found for the novel.");
                     return;
                 }
             
@@ -175,8 +175,7 @@ namespace Assets._Scripts.Player
             dialogHistoryEntry.SetDialog(PromptManager.Instance().GetDialog());
             dialogHistoryEntry.SetCompletion(response.Trim());
             DateTime now = DateTime.Now;
-            CultureInfo culture = new CultureInfo("de-DE");
-            string formattedDateTime = now.ToString("ddd | dd.MM.yyyy | HH:mm", culture);
+            string formattedDateTime = now.ToString("ddd | dd.MM.yyyy | HH:mm", _culture);
             dialogHistoryEntry.SetDateAndTime(formattedDateTime);
             DialogHistoryManager.Instance().AddEntry(dialogHistoryEntry);
             yield return null;
@@ -219,6 +218,8 @@ namespace Assets._Scripts.Player
         public FeedbackSceneController FeedbackSceneController;
         public long ID;
         public string Dialog;
+        
+        private readonly CultureInfo _culture = new CultureInfo("de-DE");
 
         public void OnSuccess(Response response)
         {
@@ -237,12 +238,9 @@ namespace Assets._Scripts.Player
             dialogHistoryEntry.SetDialog(Dialog);
             dialogHistoryEntry.SetCompletion(response.Trim());
             DateTime now = DateTime.Now;
-            CultureInfo culture = new CultureInfo("de-DE");
-            string formattedDateTime = now.ToString("ddd | dd.MM.yyyy | HH:mm", culture);
+            string formattedDateTime = now.ToString("ddd | dd.MM.yyyy | HH:mm", _culture);
             dialogHistoryEntry.SetDateAndTime(formattedDateTime);
             DialogHistoryManager.Instance().AddEntry(dialogHistoryEntry);
-            
-            Debug.Log("Feedback Saved in Novel Archive");
         }
     }
 }

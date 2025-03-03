@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using Assets._Scripts.Common.Managers;
-using Assets._Scripts.Common.Novel;
+using Assets._Scripts.Managers;
+using Assets._Scripts.Novel;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;

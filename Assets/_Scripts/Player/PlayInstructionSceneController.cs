@@ -1,6 +1,5 @@
-using Assets._Scripts.Common;
-using Assets._Scripts.Common.Managers;
-using Assets._Scripts.Common.SceneManagement;
+using Assets._Scripts.Managers;
+using Assets._Scripts.SceneManagement;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using Assets._Scripts.Common.Managers;
-using Assets._Scripts.Common.Novel;
+using Assets._Scripts.Managers;
+using Assets._Scripts.Novel;
 using Assets._Scripts.Player.Kite_Novels.Visual_Novel_Loader;
 using Newtonsoft.Json;
 using UnityEngine;

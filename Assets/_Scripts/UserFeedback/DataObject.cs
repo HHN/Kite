@@ -10,34 +10,22 @@ namespace Assets._Scripts.UserFeedback
         [SerializeField] private string completion;
         [SerializeField] private long id;
 
-        public void SetPrompt(string prompt)
+        public string Prompt
         {
-            this.prompt = prompt;
+            get => prompt;
+            set => prompt = value;
         }
 
-        public string GetPrompt()
+        public string Completion
         {
-            return this.prompt;
+            get => completion;
+            set => completion = value;
         }
 
-        public void SetCompletion(string completion)
+        public long Id
         {
-            this.completion = completion;
-        }
-
-        public string GetCompletion()
-        {
-            return this.completion;
-        }
-
-        public void SetId(long id)
-        {
-            this.id = id;
-        }
-
-        public long GetId()
-        {
-            return this.id;
+            get => id;
+            set => id = value;
         }
     }
 }

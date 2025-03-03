@@ -1,4 +1,4 @@
-using Assets._Scripts.Common.Messages;
+using Assets._Scripts.Messages;
 using UnityEngine.Networking;
 
 namespace Assets._Scripts.Server_Communication.Server_Calls

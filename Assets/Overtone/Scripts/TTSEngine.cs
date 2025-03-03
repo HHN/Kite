@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using Overtone.Scripts;
+using LeastSquares.Overtone;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace LeastSquares.Overtone
+namespace Overtone.Scripts
 {
     public class TTSEngine : MonoBehaviour
     {
@@ -14,8 +14,8 @@ namespace LeastSquares.Overtone
         private IntPtr _context;
         private readonly object _lock = new object();
         public bool Disposed { get; private set; }
-        
-        void Awake()
+
+        private void Awake()
         {
             lock (_lock)
             {
@@ -53,8 +53,8 @@ namespace LeastSquares.Overtone
             clip.SetData(result.Samples, 0);
             return clip;
         }
-        
-        public async Task<TTSResult> SpeakSamples(SpeechUnit unit, TTSVoiceNative voice)
+
+        private async Task<TTSResult> SpeakSamples(SpeechUnit unit, TTSVoiceNative voice)
         {
             var tcs = new TaskCompletionSource<TTSResult>();
         
@@ -123,20 +123,18 @@ namespace LeastSquares.Overtone
             return floatSamples;
         }
 
-        void OnDestroy()
+        private void OnDestroy()
         {
-            Debug.Log("Marking as should destroy");
             Dispose();
         }
 
-        void Dispose()
+        private void Dispose()
         {
             lock (_lock)
             {
                 Disposed = true;
                 if (_context != IntPtr.Zero)
                     TTSNative.OvertoneFree(_context);
-                // Debug.Log("Successfully cleaned up TTS Engine");
             }
         }
     }
