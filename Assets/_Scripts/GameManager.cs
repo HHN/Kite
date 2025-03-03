@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Assets._Scripts.Common.Novel.Character.CharacterController;
+using System.Linq;
+using Assets._Scripts.Novel.CharacterController;
 using Assets._Scripts.Player;
 using Assets._Scripts.SaveNovelData;
 using UnityEngine;
@@ -11,9 +12,9 @@ namespace Assets._Scripts
     public class NovelSaveStatus
     {
         public string novelId; // Unique identifier for the novel
-        public bool isSaved;   // Whether the novel has been saved
+        public bool isSaved; // Whether the novel has been saved
     }
-    
+
     [Serializable]
     public class CharacterData
     {
@@ -23,14 +24,14 @@ namespace Assets._Scripts
         public HandSpriteIndex handIndex;
         public int clotheIndex;
         public int hairIndex;
-        
+
         public int skinIndex2;
         public int glassIndex2;
         public HandSpriteIndex handIndex2;
         public int clotheIndex2;
         public int hairIndex2;
     }
-    
+
     [Serializable]
     public class CharacterDataEntry
     {
@@ -41,22 +42,24 @@ namespace Assets._Scripts
     public class GameManager : MonoBehaviour
     {
         [SerializeField] private bool skipIntroNovel; // Whether to skip the introduction novel
-
         [SerializeField] private bool isIntroNovelSaved; // Tracks if the intro novel is saved
-        [SerializeField] private bool introNovelLoadedFromMainMenu = true; // Whether the intro novel was loaded from the main menu
+
+        [SerializeField]
+        private bool introNovelLoadedFromMainMenu = true; // Whether the intro novel was loaded from the main menu
 
         // List to display in the Inspector (only for debugging, not used directly)
         [SerializeField] private List<NovelSaveStatus> novelSaveStatusList = new();
+
+        // Static dictionary to store character data globally
+        [SerializeField] private List<CharacterDataEntry> characterDataList = new();
 
         public bool calledFromReload = true; // Flag to check if the scene is being reloaded
 
         // Dictionary to dynamically manage the save status of each novel
         private readonly Dictionary<string, bool> _novelSaveStatus = new();
         public static GameManager Instance { get; private set; }
-        
-        // Static dictionary to store character data globally
-        [SerializeField] private List<CharacterDataEntry> characterDataList = new();
-        private Dictionary<long, CharacterData> characterDataDictionary = new();
+
+        private Dictionary<long, CharacterData> _characterDataDictionary = new();
 
         // Property to get or set the skipIntroNovel flag
         public bool SkipIntroNovel
@@ -71,7 +74,7 @@ namespace Assets._Scripts
             get => introNovelLoadedFromMainMenu;
             set => introNovelLoadedFromMainMenu = value;
         }
-        
+
         private void Awake()
         {
             // Singleton pattern to ensure a single instance of GameManager exists
@@ -83,13 +86,9 @@ namespace Assets._Scripts
 
             Instance = this;
             DontDestroyOnLoad(gameObject); // Ensure this object persists across scene changes
-            
+
             // Liste in Dictionary umwandeln
-            characterDataDictionary = new Dictionary<long, CharacterData>();
-            foreach (var entry in characterDataList)
-            {
-                characterDataDictionary[entry.id] = entry.data;
-            }
+            _characterDataDictionary = characterDataList.ToDictionary(entry => entry.id, entry => entry.data);
 
             // Check and set the save status for all novels at startup
             CheckAndSetAllNovelsStatus();
@@ -125,7 +124,7 @@ namespace Assets._Scripts
         public bool HasSavedProgress(string novelId)
         {
             // Here it checks if the save status for the novel exists in the dictionary and is `true`
-            return _novelSaveStatus.ContainsKey(novelId) && _novelSaveStatus[novelId];
+            return _novelSaveStatus.TryGetValue(novelId, out var isSaved) && isSaved;
         }
 
         /// <summary>
@@ -141,13 +140,13 @@ namespace Assets._Scripts
                 _novelSaveStatus[novelId] = isSaved;
             }
         }
-        
+
         public void AddCharacterData(long id, CharacterData data)
         {
-            characterDataDictionary[id] = data;
-    
+            _characterDataDictionary[id] = data;
+
             // Falls ID schon existiert, aktualisieren
-            var existingEntry = characterDataList.Find(entry => entry.id == id);
+            var existingEntry = characterDataList.FirstOrDefault(entry => entry.id == id);
             if (existingEntry != null)
             {
                 existingEntry.data = data;
@@ -160,7 +159,7 @@ namespace Assets._Scripts
 
         public Dictionary<long, CharacterData> GetCharacterDataDictionary()
         {
-            return characterDataDictionary;
+            return _characterDataDictionary;
         }
     }
 }

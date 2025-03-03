@@ -1,10 +1,9 @@
 using System.Collections.Generic;
-using Assets._Scripts.Common;
-using Assets._Scripts.Common.Managers;
-using Assets._Scripts.Common.Novel;
-using Assets._Scripts.Common.SceneManagement;
-using Assets._Scripts.Common.SceneMemory;
-using Assets._Scripts.Common.UI.Founders_Bubble.ScrollingBehavior;
+using Assets._Scripts.Managers;
+using Assets._Scripts.Novel;
+using Assets._Scripts.SceneManagement;
+using Assets._Scripts.SceneMemory;
+using Assets._Scripts.UI_Elements.Founders_Bubble;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

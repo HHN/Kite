@@ -1,4 +1,4 @@
-using Assets._Scripts.Common.SceneManagement;
+using Assets._Scripts.SceneManagement;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,7 +8,6 @@ namespace Assets._Scripts
 {
     public class FooterMenuController : MonoBehaviour
     {
-
         [SerializeField] private Button homeButton;
         [SerializeField] private Button archivButton;
         [SerializeField] private Button bookmarkButton;
@@ -38,22 +37,19 @@ namespace Assets._Scripts
 
         [SerializeField] private string currentScene;
 
-
-
-
-        void Start()
+        private void Start()
         {
-            homeButton.onClick.AddListener(delegate { OnHomeButton(); });
-            archivButton.onClick.AddListener(delegate { OnArchivButton(); });
-            bookmarkButton.onClick.AddListener(delegate { OnBookmarkButton(); });
-            linksButton.onClick.AddListener(delegate { OnLinksButton(); });
-            profilButton.onClick.AddListener(delegate { OnProfilButton(); });
+            homeButton.onClick.AddListener(OnHomeButton);
+            archivButton.onClick.AddListener(OnArchivButton);
+            bookmarkButton.onClick.AddListener(OnBookmarkButton);
+            linksButton.onClick.AddListener(OnLinksButton);
+            profilButton.onClick.AddListener(OnProfilButton);
             SetButtonImagesInaktiv();
             SetTextColorsInaktiv();
-            SetImageForActivButton();
+            SetImageForActiveButton();
         }
 
-        private void SetImageForActivButton()
+        private void SetImageForActiveButton()
         {
             string imageName = SceneManager.GetActiveScene().name;
             currentScene = imageName;
@@ -88,6 +84,7 @@ namespace Assets._Scripts
             {
                 return;
             }
+
             SceneLoader.LoadFoundersBubbleScene();
         }
 
@@ -97,6 +94,7 @@ namespace Assets._Scripts
             {
                 return;
             }
+
             SceneLoader.LoadNovelHistoryScene();
         }
 
@@ -106,6 +104,7 @@ namespace Assets._Scripts
             {
                 return;
             }
+
             SceneLoader.LoadGemerkteNovelsScene();
         }
 
@@ -115,6 +114,7 @@ namespace Assets._Scripts
             {
                 return;
             }
+
             SceneLoader.LoadRessourcenScene();
         }
 
@@ -124,6 +124,7 @@ namespace Assets._Scripts
             {
                 return;
             }
+
             SceneLoader.LoadFoundersWell2Scene();
         }
 
@@ -151,7 +152,7 @@ namespace Assets._Scripts
                 }
                 else
                 {
-                    Debug.LogWarning("Ung�ltiger Hex-Farbcode: " + hexColor);
+                    Debug.LogWarning("Ungültiger Hex-Farbcode: " + hexColor);
                 }
             }
             else
@@ -196,6 +197,5 @@ namespace Assets._Scripts
         {
             profilButton.image.sprite = profilButtonActiveImage;
         }
-
     }
 }

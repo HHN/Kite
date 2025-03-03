@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using Assets._Scripts.Common.Managers;
+using Assets._Scripts.Managers;
 using Assets._Scripts.Player;
 using Newtonsoft.Json;
 using UnityEngine;
