@@ -152,6 +152,11 @@ namespace Assets._Scripts.SceneManagement
         {
             LoadScene(SceneNames.SOUNDEINSTELLUNG_SCENE);
         }
+        
+        public static void LoadKnowledgeScene()
+        {
+            LoadScene(SceneNames.KNOWLEDGE_SCENE);
+        }
 
         public static void LoadScene(string sceneName)
         {

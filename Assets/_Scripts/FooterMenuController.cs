@@ -12,7 +12,8 @@ namespace Assets._Scripts
         [SerializeField] private Button archivButton;
         [SerializeField] private Button bookmarkButton;
         [SerializeField] private Button linksButton;
-        [SerializeField] private Button profilButton;
+        [SerializeField] private Button knowledgeButton;
+        // [SerializeField] private Button profilButton;
 
         [SerializeField] private Sprite homeButtonActiveImage;
         [SerializeField] private Sprite homeButtonInactiveImage;
@@ -25,15 +26,19 @@ namespace Assets._Scripts
 
         [SerializeField] private Sprite linksButtonActiveImage;
         [SerializeField] private Sprite linksButtonInactiveImage;
+        
+        [SerializeField] private Sprite knowledgeButtonActiveImage;
+        [SerializeField] private Sprite knowledgeButtonInactiveImage;
 
-        [SerializeField] private Sprite profilButtonActiveImage;
-        [SerializeField] private Sprite profilButtonInactiveImage;
+        // [SerializeField] private Sprite profilButtonActiveImage;
+        // [SerializeField] private Sprite profilButtonInactiveImage;
 
         [SerializeField] private TextMeshProUGUI startTextElement;
         [SerializeField] private TextMeshProUGUI archivTextElement;
         [SerializeField] private TextMeshProUGUI gemerktTextElement;
         [SerializeField] private TextMeshProUGUI linkTextElement;
-        [SerializeField] private TextMeshProUGUI profilTextElement;
+        [SerializeField] private TextMeshProUGUI knowledgeTextElement;
+        // [SerializeField] private TextMeshProUGUI profilTextElement;
 
         [SerializeField] private string currentScene;
 
@@ -43,7 +48,8 @@ namespace Assets._Scripts
             archivButton.onClick.AddListener(OnArchivButton);
             bookmarkButton.onClick.AddListener(OnBookmarkButton);
             linksButton.onClick.AddListener(OnLinksButton);
-            profilButton.onClick.AddListener(OnProfilButton);
+            // profilButton.onClick.AddListener(OnProfilButton);
+            knowledgeButton.onClick.AddListener(OnKnowledgeButton);
             SetButtonImagesInaktiv();
             SetTextColorsInaktiv();
             SetImageForActiveButton();
@@ -71,10 +77,14 @@ namespace Assets._Scripts
                     SetLinksButtonImage();
                     SetTextToActive(linkTextElement);
                     break;
-                case SceneNames.FOUNDERS_WELL_2_SCENE:
-                    SetProfilButtonImage();
-                    SetTextToActive(profilTextElement);
+                case SceneNames.KNOWLEDGE_SCENE:
+                    SetKnowledgeButtonImage();
+                    SetTextToActive(knowledgeTextElement);
                     break;
+                // case SceneNames.FOUNDERS_WELL_2_SCENE:
+                //     SetProfilButtonImage();
+                //     SetTextToActive(profilTextElement);
+                //     break;
             }
         }
 
@@ -117,16 +127,26 @@ namespace Assets._Scripts
 
             SceneLoader.LoadRessourcenScene();
         }
-
-        private void OnProfilButton()
+        
+        private void OnKnowledgeButton()
         {
-            if (currentScene.Equals(SceneNames.FOUNDERS_WELL_2_SCENE))
+            if (currentScene.Equals(SceneNames.KNOWLEDGE_SCENE))
             {
                 return;
             }
-
-            SceneLoader.LoadFoundersWell2Scene();
+            
+            SceneLoader.LoadKnowledgeScene();
         }
+
+        // private void OnProfilButton()
+        // {
+        //     if (currentScene.Equals(SceneNames.FOUNDERS_WELL_2_SCENE))
+        //     {
+        //         return;
+        //     }
+        //
+        //     SceneLoader.LoadFoundersWell2Scene();
+        // }
 
         private void SetButtonImagesInaktiv()
         {
@@ -134,7 +154,8 @@ namespace Assets._Scripts
             archivButton.image.sprite = archivButtonInactiveImage;
             bookmarkButton.image.sprite = bookmarkButtonInactiveImage;
             linksButton.image.sprite = linksButtonInactiveImage;
-            profilButton.image.sprite = profilButtonInactiveImage;
+            knowledgeButton.image.sprite = knowledgeButtonInactiveImage;
+            // profilButton.image.sprite = profilButtonInactiveImage;
         }
 
         private void SetTextColorsInaktiv()
@@ -148,7 +169,8 @@ namespace Assets._Scripts
                     archivTextElement.color = newColor;
                     gemerktTextElement.color = newColor;
                     linkTextElement.color = newColor;
-                    profilTextElement.color = newColor;
+                    knowledgeTextElement.color = newColor;
+                    // profilTextElement.color = newColor;
                 }
                 else
                 {
@@ -192,10 +214,15 @@ namespace Assets._Scripts
         {
             linksButton.image.sprite = linksButtonActiveImage;
         }
-
-        private void SetProfilButtonImage()
+        
+        private void SetKnowledgeButtonImage()
         {
-            profilButton.image.sprite = profilButtonActiveImage;
+            knowledgeButton.image.sprite = knowledgeButtonActiveImage;
         }
+
+        // private void SetProfilButtonImage()
+        // {
+        //     profilButton.image.sprite = profilButtonActiveImage;
+        // }
     }
 }

@@ -8114,6 +8114,30 @@ PrefabInstance:
       propertyPath: m_TagString
       value: NoResize
       objectReference: {fileID: 0}
+    - target: {fileID: 1306608760877055459, guid: d1f349db516504b4d9995edb2a155f6c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1306608760877055459, guid: d1f349db516504b4d9995edb2a155f6c, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1306608760877055459, guid: d1f349db516504b4d9995edb2a155f6c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1306608760877055459, guid: d1f349db516504b4d9995edb2a155f6c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1306608760877055459, guid: d1f349db516504b4d9995edb2a155f6c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1306608760877055459, guid: d1f349db516504b4d9995edb2a155f6c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3408403461269183126, guid: d1f349db516504b4d9995edb2a155f6c, type: 3}
       propertyPath: m_TagString
       value: NoResize
@@ -11245,9 +11269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageBox: {fileID: 5629918238507184917, guid: 47c0a3038b673a24cb82a566be2abf20, type: 3}
   canvas: {fileID: 1101610312}
-  novelDescriptionTextboxGameObject: {fileID: 927162474}
   novelDescriptionTextbox: {fileID: 927162478}
-  novelDescriptionTextboxIntroGameObject: {fileID: 1839374588}
   novelDescriptionTextboxIntro: {fileID: 1839374592}
   isPopupOpen: 0
   currentlyOpenedVisualNovelPopup: 0

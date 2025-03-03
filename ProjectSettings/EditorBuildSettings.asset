@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/_Scenes/PlayInstructionScene.unity
     guid: 107de03954a699245be4e7689460de64
   - enabled: 1
-    path: Assets/_Scripts/Common/NovelHistory/NovelHistoryScene.unity
+    path: Assets/_Scenes/NovelHistoryScene.unity
     guid: 3d8065ad5dae4a248a0ba319ba324138
   - enabled: 1
     path: Assets/_Scenes/FoundersWell2Scene.unity
@@ -53,5 +53,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Einstellungen/SoundeinstellungScene.unity
     guid: ad834cd147064c242810f7f44030a821
+  - enabled: 1
+    path: Assets/_Scenes/KnowledgeScene.unity
+    guid: 62e4fa0bd9ddb8b409a9a76b3c395967
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

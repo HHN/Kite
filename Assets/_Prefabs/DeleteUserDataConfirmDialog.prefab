@@ -39,7 +39,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 990, y: -179.2475}
+  m_AnchoredPosition: {x: 450, y: -134.2475}
   m_SizeDelta: {x: 340, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &933067902189610239
@@ -525,7 +525,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 330, y: -179.2475}
+  m_AnchoredPosition: {x: 150, y: -134.2475}
   m_SizeDelta: {x: 340, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3285660958884881379
@@ -830,8 +830,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 660, y: -260.7525}
-  m_SizeDelta: {x: 1320, y: 0}
+  m_AnchoredPosition: {x: 300, y: -305.7525}
+  m_SizeDelta: {x: 600, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5629918238001899987
 CanvasRenderer:
@@ -1021,12 +1021,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5849dec7226b8246ad9aed4852762c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  engine: {fileID: 7103426669770194647}
   cancelButton: {fileID: 3285660958884881377}
   confirmButton: {fileID: 933067902189610237}
   background: {fileID: 5629918239573963860}
   backgroundLeave: {fileID: 5237567227481474345}
-  textCancle: {fileID: 3285660957898591839}
+  textCancel: {fileID: 0}
   person: {fileID: 6443886456676338429}
   uiContainer: {fileID: 5629918239573963860}
   messageText: {fileID: 5629918238001899984}
