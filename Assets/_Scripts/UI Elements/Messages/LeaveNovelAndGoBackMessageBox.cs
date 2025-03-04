@@ -142,9 +142,9 @@ namespace Assets._Scripts.UI_Elements.Messages
             }
 
             // If the last scene is the PLAY_INSTRUCTION_SCENE, load the FOUNDERS_BUBBLE_SCENE instead
-            if (lastScene == SceneNames.PLAY_INSTRUCTION_SCENE)
+            if (lastScene == SceneNames.PlayInstructionScene)
             {
-                SceneLoader.LoadScene(SceneNames.FOUNDERS_BUBBLE_SCENE);
+                SceneLoader.LoadScene(SceneNames.FoundersBubbleScene);
                 BackStackManager.Instance().Pop(); // Remove the instruction scene from the back stack
                 return;
             }

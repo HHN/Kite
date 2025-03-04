@@ -99,7 +99,7 @@ namespace Assets._Scripts.NovelHistory
                 GameObjectManager.Instance().SetCopyNotification(copyNotificationContainer);
             }
 
-            BackStackManager.Instance().Push(SceneNames.NOVEL_HISTORY_SCENE);
+            BackStackManager.Instance().Push(SceneNames.NovelHistoryScene);
             novelHistoryEntries = new List<NovelHistoryEntryGuiElement>();
 
             InitializeBooleans();

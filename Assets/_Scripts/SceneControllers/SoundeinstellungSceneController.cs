@@ -24,7 +24,7 @@ namespace Assets._Scripts.SceneControllers
 
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.SOUNDEINSTELLUNG_SCENE);
+            BackStackManager.Instance().Push(SceneNames.SoundeinstellungScene);
             
             InitializeToggleTextToSpeech();
             InitializeToggleSoundEffects();

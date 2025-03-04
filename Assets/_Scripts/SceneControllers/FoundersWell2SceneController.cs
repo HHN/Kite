@@ -20,7 +20,7 @@ namespace Assets._Scripts.SceneControllers
 
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.FOUNDERS_WELL_2_SCENE);
+            BackStackManager.Instance().Push(SceneNames.FoundersWell2Scene);
 
             InitializeButtonActions();
             AddButtonListeners();

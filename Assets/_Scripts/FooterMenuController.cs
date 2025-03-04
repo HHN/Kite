@@ -61,23 +61,23 @@ namespace Assets._Scripts
             currentScene = imageName;
             switch (imageName)
             {
-                case SceneNames.FOUNDERS_BUBBLE_SCENE:
+                case SceneNames.FoundersBubbleScene:
                     SetHomeButtonImage();
                     SetTextToActive(startTextElement);
                     break;
-                case SceneNames.NOVEL_HISTORY_SCENE:
+                case SceneNames.NovelHistoryScene:
                     SetArchivButtonImage();
                     SetTextToActive(archivTextElement);
                     break;
-                case SceneNames.GEMERKTE_NOVELS_SCENE:
+                case SceneNames.GemerkteNovelsScene:
                     SetBookmarkButtonImage();
                     SetTextToActive(gemerktTextElement);
                     break;
-                case SceneNames.RESSOURCEN_SCENE:
+                case SceneNames.RessourcenScene:
                     SetLinksButtonImage();
                     SetTextToActive(linkTextElement);
                     break;
-                case SceneNames.KNOWLEDGE_SCENE:
+                case SceneNames.KnowledgeScene:
                     SetKnowledgeButtonImage();
                     SetTextToActive(knowledgeTextElement);
                     break;
@@ -90,7 +90,7 @@ namespace Assets._Scripts
 
         private void OnHomeButton()
         {
-            if (currentScene.Equals(SceneNames.FOUNDERS_BUBBLE_SCENE))
+            if (currentScene.Equals(SceneNames.FoundersBubbleScene))
             {
                 return;
             }
@@ -100,7 +100,7 @@ namespace Assets._Scripts
 
         private void OnArchivButton()
         {
-            if (currentScene.Equals(SceneNames.NOVEL_HISTORY_SCENE))
+            if (currentScene.Equals(SceneNames.NovelHistoryScene))
             {
                 return;
             }
@@ -110,7 +110,7 @@ namespace Assets._Scripts
 
         private void OnBookmarkButton()
         {
-            if (currentScene.Equals(SceneNames.GEMERKTE_NOVELS_SCENE))
+            if (currentScene.Equals(SceneNames.GemerkteNovelsScene))
             {
                 return;
             }
@@ -120,7 +120,7 @@ namespace Assets._Scripts
 
         private void OnLinksButton()
         {
-            if (currentScene.Equals(SceneNames.RESSOURCEN_SCENE))
+            if (currentScene.Equals(SceneNames.RessourcenScene))
             {
                 return;
             }
@@ -130,7 +130,7 @@ namespace Assets._Scripts
         
         private void OnKnowledgeButton()
         {
-            if (currentScene.Equals(SceneNames.KNOWLEDGE_SCENE))
+            if (currentScene.Equals(SceneNames.KnowledgeScene))
             {
                 return;
             }

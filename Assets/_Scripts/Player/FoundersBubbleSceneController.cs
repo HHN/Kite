@@ -78,7 +78,7 @@ namespace Assets._Scripts.Player
 
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.FOUNDERS_BUBBLE_SCENE);
+            BackStackManager.Instance().Push(SceneNames.FoundersBubbleScene);
 
             foundersWellButton.onClick.AddListener(OnFoundersWellButton);
 

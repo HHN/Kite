@@ -25,7 +25,7 @@ namespace Assets._Scripts.Player
 
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.PLAY_INSTRUCTION_SCENE);
+            BackStackManager.Instance().Push(SceneNames.PlayInstructionScene);
 
             backgroundColor = PlayManager.Instance().GetBackgroundColorOfVisualNovelToPlay();
             novelName.text = PlayManager.Instance().GetDisplayNameOfNovelToPlay();

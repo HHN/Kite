@@ -29,7 +29,7 @@ namespace Assets._Scripts.SceneControllers
 
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.BARRIEREFREIHEIT_SCENE);
+            BackStackManager.Instance().Push(SceneNames.BarrierefreiheitScene);
 
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
             InitializeToggleTextToSpeech();

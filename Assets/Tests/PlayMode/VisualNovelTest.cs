@@ -44,7 +44,7 @@ namespace Tests.PlayMode
         [UnityTest]
         public IEnumerator ConvertNovelsFromTweeToJson()
         {
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneNames.MAIN_MENU_SCENE);
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneNames.MainMenuScene);
 
             while (!asyncLoad.isDone)
             {
@@ -66,7 +66,7 @@ namespace Tests.PlayMode
         [UnityTest]
         public IEnumerator ConvertNovelsFromTweeToJsonAndSelectiveOverrideOldNovels()
         {
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneNames.MAIN_MENU_SCENE);
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneNames.MainMenuScene);
 
             while (!asyncLoad.isDone)
             {
