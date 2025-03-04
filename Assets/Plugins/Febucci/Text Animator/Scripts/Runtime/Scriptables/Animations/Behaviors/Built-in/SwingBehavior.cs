@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Febucci.UI.Effects
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(menuName = "Text Animator/Animations/Behaviors/Swing", fileName = "Swing Behavior")]
+    [CreateAssetMenu(menuName = "Text Animator/_Animations/Behaviors/Swing", fileName = "Swing Behavior")]
     [EffectInfo("swing", EffectCategory.Behaviors)]
     [DefaultValue(nameof(baseAmplitude), 22.74f)]
     [DefaultValue(nameof(baseFrequency), 3.65f)]

@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 namespace Febucci.UI.Effects
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(fileName = "Vertex Curve Animation", menuName = "Text Animator/Animations/Special/Vertex Curve Animation")]
+    [CreateAssetMenu(fileName = "Vertex Curve Animation", menuName = "Text Animator/_Animations/Special/Vertex Curve Animation")]
     [EffectInfo("", EffectCategory.All)]
     public sealed class VertexCurveAnimation : AnimationScriptableBase
     {

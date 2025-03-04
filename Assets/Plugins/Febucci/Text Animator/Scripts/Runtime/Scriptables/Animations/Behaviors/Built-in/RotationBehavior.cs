@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Febucci.UI.Effects
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(menuName = "Text Animator/Animations/Behaviors/Rotation", fileName = "Rotation Behavior")]
+    [CreateAssetMenu(menuName = "Text Animator/_Animations/Behaviors/Rotation", fileName = "Rotation Behavior")]
     [EffectInfo("rot", EffectCategory.Behaviors)]
     public sealed class RotationBehavior : BehaviorScriptableBase
     {

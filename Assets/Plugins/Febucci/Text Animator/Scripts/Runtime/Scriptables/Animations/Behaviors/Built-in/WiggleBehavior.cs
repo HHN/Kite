@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Febucci.UI.Effects
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(menuName = "Text Animator/Animations/Behaviors/Wiggle", fileName = "Wiggle Behavior")]
+    [CreateAssetMenu(menuName = "Text Animator/_Animations/Behaviors/Wiggle", fileName = "Wiggle Behavior")]
     [EffectInfo("wiggle", EffectCategory.Behaviors)]
     [DefaultValue(nameof(baseAmplitude), 4.74f)]
     [DefaultValue(nameof(baseFrequency), 7.82f)]

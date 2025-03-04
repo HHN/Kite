@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Febucci.UI.Effects
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(fileName = "Offset Appearance", menuName = "Text Animator/Animations/Appearances/Offset")]
+    [CreateAssetMenu(fileName = "Offset Appearance", menuName = "Text Animator/_Animations/Appearances/Offset")]
     [EffectInfo("offset", EffectCategory.Appearances)]
     public sealed class OffsetAppearance : AppearanceScriptableBase
     {

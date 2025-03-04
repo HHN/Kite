@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Febucci.UI.Effects
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(fileName = "Slide Behavior", menuName = "Text Animator/Animations/Behaviors/Slide")]
+    [CreateAssetMenu(fileName = "Slide Behavior", menuName = "Text Animator/_Animations/Behaviors/Slide")]
     [EffectInfo("slide", EffectCategory.Behaviors)]
     [DefaultValue(nameof(baseAmplitude), 5)]
     [DefaultValue(nameof(baseFrequency), 3)]
