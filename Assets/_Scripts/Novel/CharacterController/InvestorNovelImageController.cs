@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Assets._Scripts.Novel.CharacterController
 {
-    public class BekannterNovelImageController : NovelImageController
+    public class InvestorNovelImageController : NovelImageController
     {
         [SerializeField] private GameObject decoPlantPrefab;
         [SerializeField] private GameObject decoPlantContainer;

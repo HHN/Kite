@@ -472,7 +472,7 @@ MonoBehaviour:
   canvas: {fileID: 201577320}
   visualNovelHolder: {fileID: 1766330958}
   bankkreditNovel: {fileID: 1756499380}
-  bekannteTreffenNovel: {fileID: 1544616211}
+  investorNovel: {fileID: 0}
   bankkontoNovel: {fileID: 992898982}
   foerderAntragNovel: {fileID: 93171630}
   elternNovel: {fileID: 1921530029}
@@ -2290,7 +2290,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Bekannten \ntreffen"
+  m_text: Investor
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
   m_sharedMaterial: {fileID: 3127457962735927120, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
@@ -3347,8 +3347,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 432, y: -515}
-  m_SizeDelta: {x: 664, y: 0}
+  m_AnchoredPosition: {x: 467.02704, y: -515}
+  m_SizeDelta: {x: 734.0541, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1279610416
 MonoBehaviour:
@@ -3704,7 +3704,7 @@ GameObject:
   - component: {fileID: 1544616210}
   - component: {fileID: 1544616209}
   m_Layer: 5
-  m_Name: Bekannten treffen
+  m_Name: Investor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4514,7 +4514,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 432, y: -1220}
+  m_AnchoredPosition: {x: 467.02704, y: -1220}
   m_SizeDelta: {x: 850, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1766330959
@@ -5199,7 +5199,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 432, y: -250}
+  m_AnchoredPosition: {x: 467.02704, y: -250}
   m_SizeDelta: {x: 300, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2104077628

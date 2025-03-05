@@ -38,7 +38,7 @@ namespace Assets._Scripts.Player
                 {
                     return true;
                 }
-                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
+                case VisualNovelNames.INVESTOR_NOVEL:
                 {
                     return false;
                 }
@@ -97,7 +97,7 @@ namespace Assets._Scripts.Player
                 {
                     return new Color(86 / 255f, 70 / 255f, 23 / 255f);
                 }
-                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
+                case VisualNovelNames.INVESTOR_NOVEL:
                 {
                     return new Color(76 / 255f, 114 / 255f, 42 / 255f);
                 }
@@ -156,7 +156,7 @@ namespace Assets._Scripts.Player
                 {
                     return new Color(46 / 255f, 37 / 255f, 12 / 255f);
                 }
-                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
+                case VisualNovelNames.INVESTOR_NOVEL:
                 {
                     return new Color(48 / 255f, 72 / 255f, 15 / 255f);
                 }
@@ -215,9 +215,9 @@ namespace Assets._Scripts.Player
                 {
                     return "Gründungs-\r\nzuschuss";
                 }
-                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
+                case VisualNovelNames.INVESTOR_NOVEL:
                 {
-                    return "Bekannten\r\ntreffen";
+                    return "Investor";
                 }
                 case VisualNovelNames.BANK_KREDIT_NOVEL:
                 {
@@ -274,7 +274,7 @@ namespace Assets._Scripts.Player
                 {
                     return 7;
                 }
-                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
+                case VisualNovelNames.INVESTOR_NOVEL:
                 {
                     return 6;
                 }

@@ -38,7 +38,7 @@ namespace Assets._Scripts.Player
         [SerializeField] private bool isGruendungszuschussNovelInVersionContained;
         [SerializeField] private bool isHonorarNovelInVersionContained;
         [SerializeField] private bool isLebenspartnerNovelInVersionContained;
-        [SerializeField] private bool isBekanntenTreffenNovelInVersionContained;
+        [SerializeField] private bool isInvestorNovelInVersionContained;
 
         [Header("General Buttons")] [SerializeField]
         private Button novelListButton;
@@ -60,7 +60,7 @@ namespace Assets._Scripts.Player
         [SerializeField] private Button presseNovelButtonFromBurgerMenu;
         [SerializeField] private Button bueroNovelButtonFromBurgerMenu;
         [SerializeField] private Button honorarNovelButtonFromBurgerMenu;
-        [SerializeField] private Button bekanntenNovelButtonFromBurgerMenu;
+        [SerializeField] private Button investorNovelButtonFromBurgerMenu;
 
         [Header("Search Input and Button Containers")] [SerializeField]
         private TMP_InputField inputField;
@@ -95,7 +95,7 @@ namespace Assets._Scripts.Player
             isGruendungszuschussNovelInVersionContained = true;
             isHonorarNovelInVersionContained = true;
             isLebenspartnerNovelInVersionContained = true;
-            isBekanntenTreffenNovelInVersionContained = true;
+            isInvestorNovelInVersionContained = true;
 
             novelListButton.onClick.AddListener(OnNovelListButton);
             settingsButton.onClick.AddListener(OnSettingsButton);
@@ -106,7 +106,7 @@ namespace Assets._Scripts.Player
             notarinNovelButtonFromBurgerMenu.onClick.AddListener(OnNotarinButtonFromBurgerMenu);
             presseNovelButtonFromBurgerMenu.onClick.AddListener(OnPresseButtonFromBurgerMenu);
             bueroNovelButtonFromBurgerMenu.onClick.AddListener(OnBueroButtonFromBurgerMenu);
-            bekanntenNovelButtonFromBurgerMenu.onClick.AddListener(OnBekannteNovelButtonFromBurgerMenu);
+            investorNovelButtonFromBurgerMenu.onClick.AddListener(OnInvestorNovelButtonFromBurgerMenu);
             honorarNovelButtonFromBurgerMenu.onClick.AddListener(OnHonorarNovelButtonFromBurgerMenu);
             burgerMenuBackground.onClick.AddListener(OnBackgroundButton);
 
@@ -217,11 +217,11 @@ namespace Assets._Scripts.Player
             infinityScroll.MoveToVisualNovel(VisualNovelNames.BANK_KREDIT_NOVEL);
         }
 
-        public void OnBekannteTreffenNovelButton()
+        public void OnInvestorNovelButton()
         {
-            DisplayTextBoxForVisualNovel(VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL,
-                isBekanntenTreffenNovelInVersionContained);
-            infinityScroll.MoveToVisualNovel(VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL);
+            DisplayTextBoxForVisualNovel(VisualNovelNames.INVESTOR_NOVEL,
+                isInvestorNovelInVersionContained);
+            infinityScroll.MoveToVisualNovel(VisualNovelNames.INVESTOR_NOVEL);
         }
 
         public void OnBankKontoNovelButton()
@@ -452,9 +452,9 @@ namespace Assets._Scripts.Player
             DisplayNovelFromMenu(VisualNovelNames.HONORAR_NOVEL);
         }
 
-        private void OnBekannteNovelButtonFromBurgerMenu()
+        private void OnInvestorNovelButtonFromBurgerMenu()
         {
-            DisplayNovelFromMenu(VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL);
+            DisplayNovelFromMenu(VisualNovelNames.INVESTOR_NOVEL);
         }
 
         private void DisplayNovelFromMenu(VisualNovelNames visualNovelName)

@@ -41,7 +41,7 @@ namespace Assets._Scripts.Novel.CharacterController
             // case CharacterRole.VERMIETER: { return 6; }
             // case CharacterRole.VATER: { return 7; }
             // case CharacterRole.MUTTER: { return 8; }
-            // case CharacterRole.BEKANNTER: { return 9; }
+            // case CharacterRole.INVESTOR: { return 9; }
             // case CharacterRole.NOTARIN: { return 10; }
             // case CharacterRole.SACHBEARBEITER: { return 11; }
 

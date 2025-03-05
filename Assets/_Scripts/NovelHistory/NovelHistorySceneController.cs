@@ -19,7 +19,7 @@ namespace Assets._Scripts.NovelHistory
         [SerializeField] private GameObject noDataObjectsHint;
 
         [SerializeField] private GameObject containerForBankkreditNovel;
-        [SerializeField] private GameObject containerForBekanntenTreffenNovel;
+        [SerializeField] private GameObject containerForInvestorNovel;
         [SerializeField] private GameObject containerForBankkontoNovel;
         [SerializeField] private GameObject containerForFoerderantragNovel;
         [SerializeField] private GameObject containerForElternNovel;
@@ -32,7 +32,7 @@ namespace Assets._Scripts.NovelHistory
 
         [SerializeField] private List<GameObject> novelPlaceholder = new List<GameObject>();
         [SerializeField] private DropDownMenu dropdownForBankkreditNovel;
-        [SerializeField] private DropDownMenu dropdownForBekanntenTreffenNovel;
+        [SerializeField] private DropDownMenu dropdownForInvestorNovel;
         [SerializeField] private DropDownMenu dropdownForBankkontoNovel;
         [SerializeField] private DropDownMenu dropdownForFoerderantragNovel;
         [SerializeField] private DropDownMenu dropdownForElternNovel;
@@ -44,7 +44,7 @@ namespace Assets._Scripts.NovelHistory
         [SerializeField] private DropDownMenu dropdownForLebenspartnerinNovel;
 
         [SerializeField] private GameObject spacingForBankkreditNovel;
-        [SerializeField] private GameObject spacingForBekanntenTreffenNovel;
+        [SerializeField] private GameObject spacingForInvestorNovel;
         [SerializeField] private GameObject spacingForBankkontoNovel;
         [SerializeField] private GameObject spacingForFoerderantragNovel;
         [SerializeField] private GameObject spacingForElternNovel;
@@ -56,7 +56,7 @@ namespace Assets._Scripts.NovelHistory
         [SerializeField] private GameObject spacingForLebenspartnerinNovel;
 
         [SerializeField] private GameObject entryContainerForBankkreditNovel;
-        [SerializeField] private GameObject entryContainerForBekanntenTreffenNovel;
+        [SerializeField] private GameObject entryContainerForInvestorNovel;
         [SerializeField] private GameObject entryContainerForBankkontoNovel;
         [SerializeField] private GameObject entryContainerForFoerderantragNovel;
         [SerializeField] private GameObject entryContainerForElternNovel;
@@ -68,7 +68,7 @@ namespace Assets._Scripts.NovelHistory
         [SerializeField] private GameObject entryContainerForLebenspartnerinNovel;
 
         [SerializeField] private bool displayContainerForBankkreditNovel;
-        [SerializeField] private bool displayContainerForBekanntenTreffenNovel;
+        [SerializeField] private bool displayContainerForInvestorNovel;
         [SerializeField] private bool displayContainerForBankkontoNovel;
         [SerializeField] private bool displayContainerForFoerderantragNovel;
         [SerializeField] private bool displayContainerForElternNovel;
@@ -133,7 +133,7 @@ namespace Assets._Scripts.NovelHistory
         private IEnumerator RebuildLayout()
         {
             dropdownForBankkreditNovel.RebuildLayout();
-            dropdownForBekanntenTreffenNovel.RebuildLayout();
+            dropdownForInvestorNovel.RebuildLayout();
             dropdownForBankkontoNovel.RebuildLayout();
             dropdownForFoerderantragNovel.RebuildLayout();
             dropdownForElternNovel.RebuildLayout();
@@ -253,8 +253,8 @@ namespace Assets._Scripts.NovelHistory
             {
                 case "Bankkredit":
                     return containerForBankkreditNovel;
-                case "Bekannten treffen":
-                    return containerForBekanntenTreffenNovel;
+                case "Investor":
+                    return containerForInvestorNovel;
                 case "Bankkonto":
                     return containerForBankkontoNovel;
                 case "Förderantrag":
@@ -289,10 +289,10 @@ namespace Assets._Scripts.NovelHistory
                     displayContainerForBankkreditNovel = true;
                     return dropdownForBankkreditNovel;
                 }
-                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
+                case VisualNovelNames.INVESTOR_NOVEL:
                 {
-                    displayContainerForBekanntenTreffenNovel = true;
-                    return dropdownForBekanntenTreffenNovel;
+                    displayContainerForInvestorNovel = true;
+                    return dropdownForInvestorNovel;
                 }
                 case VisualNovelNames.BANK_KONTO_NOVEL:
                 {
@@ -357,10 +357,10 @@ namespace Assets._Scripts.NovelHistory
                     displayContainerForBankkreditNovel = true;
                     return containerForBankkreditNovel;
                 }
-                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
+                case VisualNovelNames.INVESTOR_NOVEL:
                 {
-                    displayContainerForBekanntenTreffenNovel = true;
-                    return containerForBekanntenTreffenNovel;
+                    displayContainerForInvestorNovel = true;
+                    return containerForInvestorNovel;
                 }
                 case VisualNovelNames.BANK_KONTO_NOVEL:
                 {
@@ -425,10 +425,10 @@ namespace Assets._Scripts.NovelHistory
                     displayContainerForBankkreditNovel = true;
                     return entryContainerForBankkreditNovel;
                 }
-                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
+                case VisualNovelNames.INVESTOR_NOVEL:
                 {
-                    displayContainerForBekanntenTreffenNovel = true;
-                    return entryContainerForBekanntenTreffenNovel;
+                    displayContainerForInvestorNovel = true;
+                    return entryContainerForInvestorNovel;
                 }
                 case VisualNovelNames.BANK_KONTO_NOVEL:
                 {
@@ -485,7 +485,7 @@ namespace Assets._Scripts.NovelHistory
         private void InitializeBooleans()
         {
             displayContainerForBankkreditNovel = false;
-            displayContainerForBekanntenTreffenNovel = false;
+            displayContainerForInvestorNovel = false;
             displayContainerForBankkontoNovel = false;
             displayContainerForFoerderantragNovel = false;
             displayContainerForElternNovel = false;
@@ -502,8 +502,8 @@ namespace Assets._Scripts.NovelHistory
         {
             containerForBankkreditNovel.SetActive(displayContainerForBankkreditNovel);
             spacingForBankkreditNovel.SetActive(displayContainerForBankkreditNovel);
-            containerForBekanntenTreffenNovel.SetActive(displayContainerForBekanntenTreffenNovel);
-            spacingForBekanntenTreffenNovel.SetActive(displayContainerForBekanntenTreffenNovel);
+            containerForInvestorNovel.SetActive(displayContainerForInvestorNovel);
+            spacingForInvestorNovel.SetActive(displayContainerForInvestorNovel);
             containerForBankkontoNovel.SetActive(displayContainerForBankkontoNovel);
             spacingForBankkontoNovel.SetActive(displayContainerForBankkontoNovel);
             containerForFoerderantragNovel.SetActive(displayContainerForFoerderantragNovel);
