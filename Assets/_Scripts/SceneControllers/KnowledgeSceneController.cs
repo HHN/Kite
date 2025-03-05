@@ -11,7 +11,7 @@ namespace Assets._Scripts.SceneControllers
     public class KnowledgeSceneController : MonoBehaviour
     {
         [SerializeField] private GameObject infoText;
-        
+
         [SerializeField] private Button barrierenButton;
         [SerializeField] private Button erwartungenNormenButton;
         [SerializeField] private Button wahrnehmungFuehrungsrollenButton;
@@ -79,38 +79,38 @@ namespace Assets._Scripts.SceneControllers
                 { erwartungenNormenButton, () => ShowCategory(erwartungenNormenInfoGroup) },
                 { wahrnehmungFuehrungsrollenButton, () => ShowCategory(wahrnehmungFuehrungsrollenInfoGroup) },
                 { barrierenHindernisseButton, () => ShowCategory(barrierenHindernisseInfoGroup) },
-                
+
                 { barrierenInfoButton, OnBarrierenInfoButton },
                 { erwartungenNormenInfoButton, OnErwartungenNormenInfoButton },
                 { wahrnehmungFuehrungsrollenInfoButton, OnWahrnehmungFuehrungsrollenInfoButton },
                 { barrierenHindernisseInfoButton, OnBarrierenHindernisseInfoButton },
 
                 // Strukturelle wirtschaftliche Barrieren
-                { finanzierungszugangButton, () => ShowBiasDetails(BiasDescriptionTexts.FINANZIERUNGSZUGANG_HEADLINE, BiasDescriptionTexts.FINANZIERUNGSZUGANG_DESCRIPTION_PREVIEW, BiasDescriptionTexts.FINANZIERUNGSZUGANG_DESCRIPTION) },
-                { genderPayGapButton, () => ShowBiasDetails(BiasDescriptionTexts.GENDER_PAY_GAP_HEADLINE, BiasDescriptionTexts.GENDER_PAY_GAP_DESCRIPTION_PREVIEW, BiasDescriptionTexts.GENDER_PAY_GAP_DESCRIPTION) },
-                // { unterbewertungWeiblichGefuehrterUnternehmenButton, () => ShowBiasDetails(BiasDescriptionTexts.UNTERBEWERTUNG_WEIBLICHER_UNTERNEHMEN) },
-                // { riskAversionBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.RISK_AVERSION) },
-                // { bestaetigungsVerzerrungButton, () => ShowBiasDetails(BiasDescriptionTexts.BESTAETIGUNGS_VERZERRUNG) },
+                { finanzierungszugangButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.Finanzierungszugang) },
+                { genderPayGapButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.GenderPayGap) },
+                { unterbewertungWeiblichGefuehrterUnternehmenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.UnterbewertungWeiblichGefuehrterUnternehmen) },
+                { riskAversionBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.RiskAversionBias) },
+                { bestaetigungsVerzerrungButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.ConfirmationBias) },
+                
+                // Gesellschaftliche Erwartungen & soziale Normen
+                { tokenismButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.Tokenism) },
+                { biasInDerWahrnehmungVonFuehrungsFaehigkeitenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.BiasInDerWahrnehmungVonFuehrungsfaehigkeiten) },
+                { benevolenterSexismusButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.BenevolenterSexismus) },
+                { altersUndGenerationenBiasesButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.AltersUndGenerationenBiases) },
+                { stereotypeGegenueberFrauenInNichtTraditionellenBranchenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.Stereotype) },
                 //
-                // // Gesellschaftliche Erwartungen & soziale Normen
-                // { tokenismButton, OnTokenism },
-                // { biasInDerWahrnehmungVonFuehrungsFaehigkeitenButton, OnBiasInDerWahrnehmungVonFuehrungsFaehigkeiten },
-                // { benevolenterSexismusButton, OnBenevolenterSexismus },
-                // { altersUndGenerationenBiasesButton, OnAltersUndGenerationenBiases },
-                // { stereotypeGegenueberFrauenInNichtTraditionellenBranchenButton, OnStereotypeGegenueberFrauen },
-                //
-                // // Wahrnehmung & Führungsrollen
-                // { heteronormativitaetButton, OnHeteronormativitaet },
-                // { maternalBiasButton, OnMaternalBias },
-                // { erwartungshaltungBezueglichFamilienplanungButton, OnErwartungshaltungBezueglichFamilienplanung },
-                // { workLifeBalanceErwartungenButton, OnWorkLifeBalanceErwartungen },
-                // { geschlechtsspezifischeStereotypeButton, OnGeschlechtsspezifischeStereotype },
-                //
-                // // Psychologische Barrieren & kommunikative Hindernisse
-                // { tightropeBiasButton, OnTightropeBias },
-                // { mikroaggressionenButton, OnMikroaggressionen },
-                // { leistungsattributionsBiasButton, OnLeistungsattributionsBias },
-                // { unbewussteBiasInDerKommunikationButton, OnUnbewussteBiasInDerKommunikation }
+                // Wahrnehmung & Führungsrollen
+                { heteronormativitaetButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.Heteronormativitaet) },
+                { maternalBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.MaternalBias) },
+                { erwartungshaltungBezueglichFamilienplanungButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.FamilienplanungBias) },
+                { workLifeBalanceErwartungenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.WorkLifeBalance) },
+                { geschlechtsspezifischeStereotypeButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.GeschlechtsspezifischeStereotype) },
+                
+                // Psychologische Barrieren & kommunikative Hindernisse
+                { tightropeBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.TightropeBias) },
+                { mikroaggressionenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.Mikroagressionen) },
+                { leistungsattributionsBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.LeistungsattributionsBias) },
+                { unbewussteBiasInDerKommunikationButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.UnbewussteBiasInDerKommunikation) }
             };
         }
 
@@ -121,7 +121,7 @@ namespace Assets._Scripts.SceneControllers
                 buttonAction.Key.onClick.AddListener(() => buttonAction.Value.Invoke());
             }
         }
-        
+
         /// <summary>
         /// Aktiviert eine bestimmte Bias-Kategorie und deaktiviert die anderen.
         /// </summary>
@@ -138,68 +138,18 @@ namespace Assets._Scripts.SceneControllers
 
             activeGroup.SetActive(true);
         }
-        
+
         /// <summary>
         /// Zeigt detaillierte Informationen zu einem Bias-Thema.
         /// </summary>
-        private void ShowBiasDetails(string biasHeadline, string biasDescriptionPreview, string biasDescription)
+        private void ShowBiasDetails(BiasDescriptionTexts.BiasType type)
         {
             infoText.SetActive(false);
             biasInformation.SetActive(false);
             barrierenInfoGroup.SetActive(false);
 
             biasDetailsObject.SetActive(true);
-            biasDetailsObject.GetComponentInChildren<TextMeshProUGUI>().text = "<size=40><align=center><b>" + biasHeadline + "</b></align></size>\n\n" +
-                                                                     "<size=30><b>" + biasDescriptionPreview + "</b></size>" +
-                                                                     "<size=30>" + biasDescription + "</size>";
-        }
-
-        private void OnBarrierenButton()
-        {
-            infoText.SetActive(true);
-            biasGroups.SetActive(false);
-            biasInformation.SetActive(true);
-
-            barrierenInfoGroup.SetActive(true);
-            erwartungenNormenInfoGroup.SetActive(false);
-            wahrnehmungFuehrungsrollenInfoGroup.SetActive(false);
-            barrierenHindernisseInfoGroup.SetActive(false);
-        }
-
-        private void OnErwartungenNormen()
-        {
-            infoText.SetActive(true);
-            biasGroups.SetActive(false);
-            biasInformation.SetActive(true);
-
-            barrierenInfoGroup.SetActive(false);
-            erwartungenNormenInfoGroup.SetActive(true);
-            wahrnehmungFuehrungsrollenInfoGroup.SetActive(false);
-            barrierenHindernisseInfoGroup.SetActive(false);
-        }
-
-        private void OnWahrnehmungFuehrungsrollenButton()
-        {
-            infoText.SetActive(true);
-            biasGroups.SetActive(false);
-            biasInformation.SetActive(true);
-
-            barrierenInfoGroup.SetActive(false);
-            erwartungenNormenInfoGroup.SetActive(false);
-            wahrnehmungFuehrungsrollenInfoGroup.SetActive(true);
-            barrierenHindernisseInfoGroup.SetActive(false);
-        }
-
-        private void OnBarrierenHindernisseButton()
-        {
-            infoText.SetActive(true);
-            biasGroups.SetActive(false);
-            biasInformation.SetActive(true);
-
-            barrierenInfoGroup.SetActive(false);
-            erwartungenNormenInfoGroup.SetActive(false);
-            wahrnehmungFuehrungsrollenInfoGroup.SetActive(false);
-            barrierenHindernisseInfoGroup.SetActive(true);
+            biasDetailsObject.GetComponentInChildren<TextMeshProUGUI>().text = BiasDescriptionTexts.GetString(type);
         }
 
         private void OnBarrierenInfoButton()
@@ -208,7 +158,7 @@ namespace Assets._Scripts.SceneControllers
             biasGroups.SetActive(true);
             biasInformation.SetActive(false);
 
-            barrierenInfoGroup.SetActive(false);
+            barrierenInfoGroup.SetActive(true);
             erwartungenNormenInfoGroup.SetActive(false);
             wahrnehmungFuehrungsrollenInfoGroup.SetActive(false);
             barrierenHindernisseInfoGroup.SetActive(false);
@@ -221,7 +171,7 @@ namespace Assets._Scripts.SceneControllers
             biasInformation.SetActive(false);
 
             barrierenInfoGroup.SetActive(false);
-            erwartungenNormenInfoGroup.SetActive(false);
+            erwartungenNormenInfoGroup.SetActive(true);
             wahrnehmungFuehrungsrollenInfoGroup.SetActive(false);
             barrierenHindernisseInfoGroup.SetActive(false);
         }
@@ -234,7 +184,7 @@ namespace Assets._Scripts.SceneControllers
 
             barrierenInfoGroup.SetActive(false);
             erwartungenNormenInfoGroup.SetActive(false);
-            wahrnehmungFuehrungsrollenInfoGroup.SetActive(false);
+            wahrnehmungFuehrungsrollenInfoGroup.SetActive(true);
             barrierenHindernisseInfoGroup.SetActive(false);
         }
 
@@ -247,27 +197,7 @@ namespace Assets._Scripts.SceneControllers
             barrierenInfoGroup.SetActive(false);
             erwartungenNormenInfoGroup.SetActive(false);
             wahrnehmungFuehrungsrollenInfoGroup.SetActive(false);
-            barrierenHindernisseInfoGroup.SetActive(false);
+            barrierenHindernisseInfoGroup.SetActive(true);
         }
-
-        // private void OnFinanzierungszugang()
-        // {
-        //     infoText.SetActive(false);
-        //     biasInformation.SetActive(false);
-        //     barrierenInfoGroup.SetActive(false);
-        //     
-        //     biasDetailsObject.SetActive(true);
-        //     biasDetailsObject.GetComponent<TextMeshProUGUI>().text = BiasDescriptionTexts.FINANZIERUNGSZUGANG;
-        // }
-        //
-        // private void OnGenderPayGap()
-        // {
-        //     infoText.SetActive(false);
-        //     biasInformation.SetActive(false);
-        //     barrierenInfoGroup.SetActive(false);
-        //     
-        //     biasDetailsObject.SetActive(true);
-        //     biasDetailsObject.GetComponent<TextMeshProUGUI>().text = BiasDescriptionTexts.GENDER_PAY_GAP;
-        // }
     }
 }
