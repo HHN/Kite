@@ -120,6 +120,27 @@ namespace Assets._Scripts.Player
         public List<VisualNovelEvent> EventHistory => eventHistory;
         public NovelImageController NovelImageController => _novelImagesController;
 
+        private static PlayNovelSceneController _instance;
+
+        public static PlayNovelSceneController Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = FindObjectOfType<PlayNovelSceneController>();
+                    if (_instance == null)
+                    {
+                        GameObject obj = new GameObject("PlayNovelSceneController");
+                        _instance = obj.AddComponent<PlayNovelSceneController>();
+                        DontDestroyOnLoad(obj);
+                    }
+                }
+
+                return _instance;
+            }
+        }
+
         private void Start()
         {
             _conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
@@ -284,8 +305,9 @@ namespace Assets._Scripts.Player
 
         public void OnConfirm()
         {
+            Debug.Log("OnConfirm");
             TextToSpeechManager.Instance.CancelSpeak();
-            
+
             Vector2 mousePosition = Input.mousePosition;
 
             if (_novelImagesController.HandleTouchEvent(mousePosition.x, mousePosition.y))
@@ -304,8 +326,8 @@ namespace Assets._Scripts.Player
 
                 _typingWasSkipped = true; // Flag setzen
                 SetTyping(false);
-                
-                TextToSpeechManager.Instance.CancelSpeak();
+
+                //TextToSpeechManager.Instance.CancelSpeak();
 
                 return; // Beendet die Methode, um nicht zum nächsten Event zu springen
             }

@@ -165,7 +165,6 @@ namespace Assets._Scripts.Managers
 #elif UNITY_IOS
         TextToSpeechManager.Instance.CancelSpeak();
 #endif
-            TextToSpeechManager.Instance.CancelSpeak();
             GameManager.Instance.calledFromReload = false;
 
             // Disable animations after the selection

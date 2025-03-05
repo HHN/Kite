@@ -117,7 +117,10 @@ namespace Assets._Scripts.Novel.CharacterController
 
         private IEnumerator OnDecoPlant()
         {
-            GlobalVolumeManager.Instance.PlaySound(decoPlantAudio);
+            if (!TextToSpeechManager.Instance.IsTextToSpeechActivated())
+            {
+                GlobalVolumeManager.Instance.PlaySound(decoPlantAudio);
+            }
             Image image = decoPlantPrefab.GetComponent<Image>();
             image.sprite = animationFramesPlant[1];
             Destroy(decoPlantContainer.transform.GetChild(0).gameObject);

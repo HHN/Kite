@@ -144,7 +144,10 @@ namespace Assets._Scripts.Novel.CharacterController
 
         private IEnumerator OnDecoVase()
         {
-            GlobalVolumeManager.Instance.PlaySound(decoVaseAudio);
+            if(!TextToSpeechManager.Instance.IsTextToSpeechActivated())
+            {
+                GlobalVolumeManager.Instance.PlaySound(decoVaseAudio);
+            }
 
             Image image = decoVasePrefab.GetComponent<Image>();
             image.sprite = animationFramesVase[1];
@@ -164,9 +167,10 @@ namespace Assets._Scripts.Novel.CharacterController
 
         private IEnumerator OnDecoGlas()
         {
-            GlobalVolumeManager.Instance.PlaySound(decoGlasAudio);
-
-
+            if (!TextToSpeechManager.Instance.IsTextToSpeechActivated())
+            {
+                GlobalVolumeManager.Instance.PlaySound(decoGlasAudio);
+            }
             Image image = decoGlasPrefab.GetComponent<Image>();
             image.sprite = animationFramesGlas[1];
             Destroy(decoGlasContainer.transform.GetChild(0).gameObject);

@@ -786,7 +786,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 447.6684, y: -130.005}
+  m_AnchoredPosition: {x: 480, y: -130.005}
   m_SizeDelta: {x: 462.09, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &307427551
@@ -1068,7 +1068,7 @@ MonoBehaviour:
   soundEffectsVolumeSlider: {fileID: 123304440}
   testVolumeSoundEffects: {fileID: 598920458}
   checkMarkTTS: {fileID: 316326285}
-  checkMarkSoundeffects: {fileID: 1208411262}
+  checkMarkSoundEffects: {fileID: 1208411262}
   soundEffectsSliderHandler: {fileID: 123304441}
   soundCheckClip: {fileID: 8300000, guid: 0bd821fb88442584b88e0378c0e732e9, type: 3}
 --- !u!1001 &499877782
@@ -1518,7 +1518,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 447.6684, y: -500.01}
+  m_AnchoredPosition: {x: 480, y: -500.01}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &859716341
@@ -1975,7 +1975,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 447.6684, y: -230.01}
+  m_AnchoredPosition: {x: 480, y: -230.01}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1112012864
@@ -2619,7 +2619,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 447.6684, y: -1069.9551}
+  m_AnchoredPosition: {x: 480, y: -1069.9551}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1385386269
