@@ -89,6 +89,7 @@ namespace Assets._Scripts.UI_Elements.Buttons
                 ShowPlayInstructionManager.Instance().SetShowInstruction(true);
                 CloseMessageBox();
             }
+            Assets._Scripts.Managers.DialogHistoryManager.Instance().ClearList();
         }
 
         private void OnCancelButton()
