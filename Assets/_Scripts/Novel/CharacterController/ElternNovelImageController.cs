@@ -249,7 +249,10 @@ namespace Assets._Scripts.Novel.CharacterController
 
         private IEnumerator OnDecoTasse1()
         {
-            GlobalVolumeManager.Instance.PlaySound(decoTasseAudio);
+            if (!TextToSpeechManager.Instance.IsTextToSpeechActivated())
+            {
+                GlobalVolumeManager.Instance.PlaySound(decoTasseAudio);
+            }
             Image image = decoTasse1Prefab.GetComponent<Image>();
             image.sprite = animationFramesTasse1[1];
             if (decoTasse1Container.transform.childCount > 0)
@@ -289,7 +292,10 @@ namespace Assets._Scripts.Novel.CharacterController
 
         private IEnumerator OnDecoTasse2()
         {
-            GlobalVolumeManager.Instance.PlaySound(decoTasseAudio);
+            if (!TextToSpeechManager.Instance.IsTextToSpeechActivated())
+            {
+                GlobalVolumeManager.Instance.PlaySound(decoTasseAudio);
+            }
 
             Image image = decoTasse2Prefab.GetComponent<Image>();
             image.sprite = animationFramesTasse2[1];
@@ -330,7 +336,10 @@ namespace Assets._Scripts.Novel.CharacterController
 
         private IEnumerator OnDecoKanne()
         {
-            GlobalVolumeManager.Instance.PlaySound(decoKanneAudio);
+            if (!TextToSpeechManager.Instance.IsTextToSpeechActivated())
+            {
+                GlobalVolumeManager.Instance.PlaySound(decoKanneAudio);
+            }
 
             Image image = decoKannePrefab.GetComponent<Image>();
             image.sprite = animationFramesKanne[1];
@@ -371,7 +380,10 @@ namespace Assets._Scripts.Novel.CharacterController
         private IEnumerator OnDecoLampe()
         {
             AudioClip clip = _decoLampeStatus ? decoLampeOffAudio : decoLampeOnAudio;
-            GlobalVolumeManager.Instance.PlaySound(clip);
+            if (!TextToSpeechManager.Instance.IsTextToSpeechActivated())
+            {
+                GlobalVolumeManager.Instance.PlaySound(clip);
+            }
 
             if (_decoLampeStatus)
             {

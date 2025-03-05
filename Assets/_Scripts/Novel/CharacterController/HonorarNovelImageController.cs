@@ -120,7 +120,10 @@ namespace Assets._Scripts.Novel.CharacterController
 
         private IEnumerator OnDecoVase()
         {
-            GlobalVolumeManager.Instance.PlaySound(decoVaseAudio);
+            if (!TextToSpeechManager.Instance.IsTextToSpeechActivated())
+            {
+                GlobalVolumeManager.Instance.PlaySound(decoVaseAudio);
+            }
 
             Image image = decoVasePrefab.GetComponent<Image>();
             image.sprite = animationFramesVase[1];
