@@ -25,7 +25,7 @@ namespace Assets._Scripts.Biases
             UnbewussteBiasInDerKommunikation
         }
 
-        public static string GetString(BiasType biasType)
+        public static string GetStringByType(BiasType biasType)
         {
             switch (biasType)
             {
@@ -102,6 +102,91 @@ namespace Assets._Scripts.Biases
                            "<size=30><b>" + LeistungsattributionsBiasPreview + "</b></size>" +
                            "<size=30>" + LeistungsattributionsBiasDescription + "</size>";
                 case BiasType.UnbewussteBiasInDerKommunikation:
+                    return "<size=40><align=center><b>" + UnbewussteBiasInDerKommunikationHeadline + "</b></align></size>\n\n" +
+                           "<size=30><b>" + UnbewussteBiasInDerKommunikationPreview + "</b></size>" +
+                           "<size=30>" + UnbewussteBiasInDerKommunikationDescription + "</size>";
+                default:
+                    return "";
+            }
+        }
+        
+        public static string GetStringByInt(int number)
+        {
+            switch (number)
+            {
+                case 0:
+                    return "<size=40><align=center><b>" + FinanzierungszugangHeadline + "</b></align></size>\n\n" +
+                        "<size=30><b>" + FinanzierungszugangDescriptionPreview + "</b></size>" +
+                        "<size=30>" + FinanzierungszugangDescription + "</size>";
+                case 1:
+                    return "<size=40><align=center><b>" + GenderPayGapHeadline + "</b></align></size>\n\n" +
+                           "<size=30><b>" + GenderPayGapDescriptionPreview + "</b></size>" +
+                           "<size=30>" + GenderPayGapDescription + "</size>";
+                case 2:
+                    return "<size=40><align=center><b>" + UnterbewertungWeiblichGefuehrterUnternehmenHeadline + "</b></align></size>\n\n" +
+                           "<size=30><b>" + UnterbewertungWeiblichGefuehrterUnternehmenPreview + "</b></size>" +
+                           "<size=30>" + UnterbewertungWeiblichGefuehrterUnternehmenDescription + "</size>";
+                case 3:
+                    return "<size=40><align=center><b>" + RiskAversionBiasHeadline + "</b></align></size>\n\n" +
+                           "<size=30><b>" + RiskAversionBiasPreview + "</b></size>" +
+                           "<size=30>" + RiskAversionBiasDescription + "</size>";
+                case 4:
+                    return "<size=40><align=center><b>" + CONFIRMATION_BIAS_HEADLINE + "</b></align></size>\n\n" +
+                           "<size=30><b>" + CONFIRMATION_BIAS_PREVIEW + "</b></size>" +
+                           "<size=30>" + CONFIRMATION_BIAS_DESCRIPTION + "</size>";
+                case 5:
+                    return "<size=40><align=center><b>" + TokenismHeadline + "</b></align></size>\n\n" +
+                           "<size=30><b>" + TokenismPreview + "</b></size>" +
+                           "<size=30>" + TokenismDescription + "</size>";
+                case 6:
+                    return "<size=40><align=center><b>" + BiasInDerWahrnehmungVonFuehrungsfaehigkeitenHeadline + "</b></align></size>\n\n" +
+                           "<size=30><b>" + BiasInDerWahrnehmungVonFuehrungsfaehigkeitenPreview + "</b></size>" +
+                           "<size=30>" + BiasInDerWahrnehmungVonFuehrungsfaehigkeitenDescription + "</size>";
+                case 7:
+                    return "<size=40><align=center><b>" + BenevolenterSexismusHeadline + "</b></align></size>\n\n" +
+                           "<size=30><b>" + BenevolenterSexismusPreview + "</b></size>" +
+                           "<size=30>" + BenevolenterSexismusDescription + "</size>";
+                case 8:
+                    return "<size=40><align=center><b>" + AltersUndGenerationenBiasHeadline + "</b></align></size>\n\n" +
+                           "<size=30><b>" + AltersUndGenerationenBiasPreview + "</b></size>" +
+                           "<size=30>" + AltersUndGenerationenBiasDescription + "</size>";
+                case 9:
+                    return "<size=40><align=center><b>" + StereotypeHeadline + "</b></align></size>\n\n" +
+                           "<size=30><b>" + StereotypePreview + "</b></size>" +
+                           "<size=30>" + StereotypeDescription + "</size>";
+                case 10:
+                    return "<size=40><align=center><b>" + HeteronormativitaetHeadline + "</b></align></size>\n\n" +
+                           "<size=30><b>" + HeteronormativitaetPreview + "</b></size>" +
+                           "<size=30>" + HeteronormativitaetDescription + "</size>";
+                case 11:
+                    return "<size=40><align=center><b>" + MaternalBiasHeadline + "</b></align></size>\n\n" +
+                           "<size=30><b>" + MaternalBiasPreview + "</b></size>" +
+                           "<size=30>" + MaternalBiasDescription + "</size>";
+                case 12:
+                    return "<size=40><align=center><b>" + FamilienplanungBiasHeadline + "</b></align></size>\n\n" +
+                           "<size=30><b>" + FamilienplanungPreview + "</b></size>" +
+                           "<size=30>" + FamilienplanungDescription + "</size>";
+                case 13:
+                    return "<size=40><align=center><b>" + WorkLifeBalanceHeadline + "</b></align></size>\n\n" +
+                           "<size=30><b>" + WorkLifeBalancePreview + "</b></size>" +
+                           "<size=30>" + WorkLifeBalanceDescription + "</size>";
+                case 14:
+                    return "<size=40><align=center><b>" + GeschlechtsspezifischeStereotypeHeadline + "</b></align></size>\n\n" +
+                           "<size=30><b>" + GeschlechtsspezifischeStereotypePreview + "</b></size>" +
+                           "<size=30>" + GeschlechtsspezifischeStereotypeDescription + "</size>";
+                case 15:
+                    return "<size=40><align=center><b>" + TightropeBiasHeadline + "</b></align></size>\n\n" +
+                           "<size=30><b>" + TightropeBiasPreview + "</b></size>" +
+                           "<size=30>" + TightropeBiasDescription + "</size>";
+                case 16:
+                    return "<size=40><align=center><b>" + MikroaggressionenHeadline + "</b></align></size>\n\n" +
+                           "<size=30><b>" + MikroaggressionenPreview + "</b></size>" +
+                           "<size=30>" + MikroaggressionenDescription + "</size>";
+                case 17:
+                    return "<size=40><align=center><b>" + LeistungsattributionsBiasHeadline + "</b></align></size>\n\n" +
+                           "<size=30><b>" + LeistungsattributionsBiasPreview + "</b></size>" +
+                           "<size=30>" + LeistungsattributionsBiasDescription + "</size>";
+                case 18:
                     return "<size=40><align=center><b>" + UnbewussteBiasInDerKommunikationHeadline + "</b></align></size>\n\n" +
                            "<size=30><b>" + UnbewussteBiasInDerKommunikationPreview + "</b></size>" +
                            "<size=30>" + UnbewussteBiasInDerKommunikationDescription + "</size>";

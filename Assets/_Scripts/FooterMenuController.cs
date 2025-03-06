@@ -1,3 +1,4 @@
+using Assets._Scripts.SceneControllers;
 using Assets._Scripts.SceneManagement;
 using TMPro;
 using UnityEngine;
@@ -13,7 +14,6 @@ namespace Assets._Scripts
         [SerializeField] private Button bookmarkButton;
         [SerializeField] private Button linksButton;
         [SerializeField] private Button knowledgeButton;
-        // [SerializeField] private Button profilButton;
 
         [SerializeField] private Sprite homeButtonActiveImage;
         [SerializeField] private Sprite homeButtonInactiveImage;
@@ -30,15 +30,11 @@ namespace Assets._Scripts
         [SerializeField] private Sprite knowledgeButtonActiveImage;
         [SerializeField] private Sprite knowledgeButtonInactiveImage;
 
-        // [SerializeField] private Sprite profilButtonActiveImage;
-        // [SerializeField] private Sprite profilButtonInactiveImage;
-
         [SerializeField] private TextMeshProUGUI startTextElement;
         [SerializeField] private TextMeshProUGUI archivTextElement;
         [SerializeField] private TextMeshProUGUI gemerktTextElement;
         [SerializeField] private TextMeshProUGUI linkTextElement;
         [SerializeField] private TextMeshProUGUI knowledgeTextElement;
-        // [SerializeField] private TextMeshProUGUI profilTextElement;
 
         [SerializeField] private string currentScene;
 
@@ -48,7 +44,6 @@ namespace Assets._Scripts
             archivButton.onClick.AddListener(OnArchivButton);
             bookmarkButton.onClick.AddListener(OnBookmarkButton);
             linksButton.onClick.AddListener(OnLinksButton);
-            // profilButton.onClick.AddListener(OnProfilButton);
             knowledgeButton.onClick.AddListener(OnKnowledgeButton);
             SetButtonImagesInaktiv();
             SetTextColorsInaktiv();
@@ -81,10 +76,6 @@ namespace Assets._Scripts
                     SetKnowledgeButtonImage();
                     SetTextToActive(knowledgeTextElement);
                     break;
-                // case SceneNames.FOUNDERS_WELL_2_SCENE:
-                //     SetProfilButtonImage();
-                //     SetTextToActive(profilTextElement);
-                //     break;
             }
         }
 
@@ -130,23 +121,8 @@ namespace Assets._Scripts
         
         private void OnKnowledgeButton()
         {
-            if (currentScene.Equals(SceneNames.KnowledgeScene))
-            {
-                return;
-            }
-            
             SceneLoader.LoadKnowledgeScene();
         }
-
-        // private void OnProfilButton()
-        // {
-        //     if (currentScene.Equals(SceneNames.FOUNDERS_WELL_2_SCENE))
-        //     {
-        //         return;
-        //     }
-        //
-        //     SceneLoader.LoadFoundersWell2Scene();
-        // }
 
         private void SetButtonImagesInaktiv()
         {
@@ -155,7 +131,6 @@ namespace Assets._Scripts
             bookmarkButton.image.sprite = bookmarkButtonInactiveImage;
             linksButton.image.sprite = linksButtonInactiveImage;
             knowledgeButton.image.sprite = knowledgeButtonInactiveImage;
-            // profilButton.image.sprite = profilButtonInactiveImage;
         }
 
         private void SetTextColorsInaktiv()
@@ -170,7 +145,6 @@ namespace Assets._Scripts
                     gemerktTextElement.color = newColor;
                     linkTextElement.color = newColor;
                     knowledgeTextElement.color = newColor;
-                    // profilTextElement.color = newColor;
                 }
                 else
                 {
@@ -219,10 +193,5 @@ namespace Assets._Scripts
         {
             knowledgeButton.image.sprite = knowledgeButtonActiveImage;
         }
-
-        // private void SetProfilButtonImage()
-        // {
-        //     profilButton.image.sprite = profilButtonActiveImage;
-        // }
     }
 }
