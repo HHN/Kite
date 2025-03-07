@@ -9,7 +9,7 @@ namespace Assets._Scripts.Managers
         private static PreGeneratedOfflineFeedbackManager _instance;
 
         private Dictionary<string, FeedbackNodeContainer> _feedbackForBankKreditNovel;
-        private Dictionary<string, FeedbackNodeContainer> _feedbackForBekannteTreffenNovel;
+        private Dictionary<string, FeedbackNodeContainer> _feedbackForInvestorNovel;
         private Dictionary<string, FeedbackNodeContainer> _feedbackForBankKontoNovel;
         private Dictionary<string, FeedbackNodeContainer> _feedbackForFoerderantragNovel;
         private Dictionary<string, FeedbackNodeContainer> _feedbackForElternNovel;
@@ -24,7 +24,7 @@ namespace Assets._Scripts.Managers
         private PreGeneratedOfflineFeedbackManager()
         {
             this._feedbackForBankKreditNovel = null;
-            this._feedbackForBekannteTreffenNovel = null;
+            this._feedbackForInvestorNovel = null;
             this._feedbackForBankKontoNovel = null;
             this._feedbackForFoerderantragNovel = null;
             this._feedbackForElternNovel = null;
@@ -79,9 +79,9 @@ namespace Assets._Scripts.Managers
                 {
                     return _feedbackForGruendungszuschussNovel;
                 }
-                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
+                case VisualNovelNames.INVESTOR_NOVEL:
                 {
-                    return _feedbackForBekannteTreffenNovel;
+                    return _feedbackForInvestorNovel;
                 }
                 case VisualNovelNames.BANK_KREDIT_NOVEL:
                 {
@@ -146,9 +146,9 @@ namespace Assets._Scripts.Managers
                     _feedbackForGruendungszuschussNovel = feedback;
                     break;
                 }
-                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
+                case VisualNovelNames.INVESTOR_NOVEL:
                 {
-                    _feedbackForBekannteTreffenNovel = feedback;
+                    _feedbackForInvestorNovel = feedback;
                     break;
                 }
                 case VisualNovelNames.BANK_KREDIT_NOVEL:
@@ -206,9 +206,9 @@ namespace Assets._Scripts.Managers
                 {
                     return _feedbackForGruendungszuschussNovel is { Count: > 0 };
                 }
-                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
+                case VisualNovelNames.INVESTOR_NOVEL:
                 {
-                    return _feedbackForBekannteTreffenNovel is { Count: > 0 };
+                    return _feedbackForInvestorNovel is { Count: > 0 };
                 }
                 case VisualNovelNames.BANK_KREDIT_NOVEL:
                 {

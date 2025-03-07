@@ -2411,7 +2411,7 @@ GameObject:
   - component: {fileID: 275604536}
   - component: {fileID: 275604538}
   m_Layer: 5
-  m_Name: "B\xFCro"
+  m_Name: Vermieter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3603,7 +3603,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Bekannten treffen
+  m_text: 'Investor
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
   m_sharedMaterial: {fileID: 3127457962735927120, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
@@ -6957,7 +6959,7 @@ GameObject:
   - component: {fileID: 896357494}
   - component: {fileID: 896357495}
   m_Layer: 5
-  m_Name: "B\xFCro"
+  m_Name: Vermieter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7726,7 +7728,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "B\xFCro"
+  m_text: 'Vermieter
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
   m_sharedMaterial: {fileID: 3127457962735927120, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
@@ -8425,9 +8429,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bekannten
+  m_text: 'Investor
 
-    treffen'
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
   m_sharedMaterial: {fileID: 3127457962735927120, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
@@ -10223,7 +10227,7 @@ GameObject:
   - component: {fileID: 1127367644}
   - component: {fileID: 1127367643}
   m_Layer: 5
-  m_Name: Bekannten Button
+  m_Name: Investor Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10726,7 +10730,7 @@ GameObject:
   - component: {fileID: 1187536072}
   - component: {fileID: 1187536071}
   m_Layer: 5
-  m_Name: Bekannten Novel
+  m_Name: Investor Novel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10799,7 +10803,7 @@ GameObject:
   - component: {fileID: 1189314881}
   - component: {fileID: 1189314883}
   m_Layer: 5
-  m_Name: Bekannten Treffen
+  m_Name: Investor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10907,8 +10911,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1240231751}
-        m_TargetAssemblyTypeName: FoundersBubbleSceneController, Main
-        m_MethodName: OnBekannteTreffenNovelButton
+        m_TargetAssemblyTypeName: Assets._Scripts.Player.FoundersBubbleSceneController,
+          _Scripts
+        m_MethodName: OnInvestorNovelButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11286,7 +11291,7 @@ MonoBehaviour:
   isGruendungszuschussNovelInVersionContained: 0
   isHonorarNovelInVersionContained: 0
   isLebenspartnerNovelInVersionContained: 0
-  isBekanntenTreffenNovelInVersionContained: 0
+  isInvestorNovelInVersionContained: 0
   novelListButton: {fileID: 1025096809}
   settingsButton: {fileID: 1117367867}
   burgerMenu: {fileID: 1022675892}
@@ -11299,7 +11304,7 @@ MonoBehaviour:
   presseNovelButtonFromBurgerMenu: {fileID: 1657538440}
   bueroNovelButtonFromBurgerMenu: {fileID: 88253489}
   honorarNovelButtonFromBurgerMenu: {fileID: 260845107}
-  bekanntenNovelButtonFromBurgerMenu: {fileID: 1127367643}
+  investorNovelButtonFromBurgerMenu: {fileID: 1127367643}
   inputField: {fileID: 1310158264}
   buttonContainers:
   - {fileID: 1889880346}
@@ -13371,7 +13376,7 @@ GameObject:
   - component: {fileID: 1617371039}
   - component: {fileID: 1617371040}
   m_Layer: 5
-  m_Name: Bekannten Treffen
+  m_Name: Investor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

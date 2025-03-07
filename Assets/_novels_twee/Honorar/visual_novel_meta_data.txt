@@ -14,13 +14,5 @@
   "talkingPartner02" : "",
   "talkingPartner03" : "",
   "wordsToReplace": [
-    {"wordToReplace": ">>BekannterSprichtLaughing:<<", "replaceByValue": ">>Charakter01SprichtLaughing:<<"},
-    {"wordToReplace": ">>BekannterSprichtProud:<<", "replaceByValue": ">>Charakter01SprichtProud:<<"},
-    {"wordToReplace": ">>BekannterSprichtSmiling:<<", "replaceByValue": ">>Charakter01SprichtSmiling:<<"},
-    {"wordToReplace": ">>BekannterSprichtFriendly:<<", "replaceByValue": ">>Charakter01SprichtFriendly:<<"},
-    {"wordToReplace": ">>BekannterSprichtCritical:<<", "replaceByValue": ">>Charakter01SprichtCritical:<<"},
-    {"wordToReplace": ">>BekannterSprichtDefeated:<<", "replaceByValue": ">>Charakter01SprichtDefeated:<<"},
-    {"wordToReplace": ">>BekannterSprichtAstonished:<<", "replaceByValue": ">>Charakter01SprichtAstonished:<<"},
-    {"wordToReplace": ">>SpielerinCharakterSpricht:<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"}
     ]
 }

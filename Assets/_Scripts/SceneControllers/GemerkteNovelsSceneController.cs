@@ -12,7 +12,7 @@ namespace Assets._Scripts.SceneControllers
     {
         [SerializeField] private RectTransform visualNovelHolder;
         [SerializeField] private Button bankkreditNovel;
-        [SerializeField] private Button bekannteTreffenNovel;
+        [SerializeField] private Button investorNovel;
         [SerializeField] private Button bankkontoNovel;
         [SerializeField] private Button foerderAntragNovel;
         [SerializeField] private Button elternNovel;
@@ -33,7 +33,7 @@ namespace Assets._Scripts.SceneControllers
             _novelButtons = new Dictionary<VisualNovelNames, Button>
             {
                 { VisualNovelNames.BANK_KREDIT_NOVEL, bankkreditNovel },
-                { VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL, bekannteTreffenNovel },
+                { VisualNovelNames.INVESTOR_NOVEL, investorNovel },
                 { VisualNovelNames.BANK_KONTO_NOVEL, bankkontoNovel },
                 { VisualNovelNames.FOERDERANTRAG_NOVEL, foerderAntragNovel },
                 { VisualNovelNames.ELTERN_NOVEL, elternNovel },

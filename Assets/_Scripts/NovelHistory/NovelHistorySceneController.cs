@@ -19,7 +19,7 @@ namespace Assets._Scripts.NovelHistory
         [SerializeField] private GameObject noDataObjectsHint;
 
         [SerializeField] private GameObject containerForBankkreditNovel;
-        [SerializeField] private GameObject containerForBekanntenTreffenNovel;
+        [SerializeField] private GameObject containerForInvestorNovel;
         [SerializeField] private GameObject containerForBankkontoNovel;
         [SerializeField] private GameObject containerForFoerderantragNovel;
         [SerializeField] private GameObject containerForElternNovel;
@@ -32,7 +32,7 @@ namespace Assets._Scripts.NovelHistory
 
         [SerializeField] private List<GameObject> novelPlaceholder = new List<GameObject>();
         [SerializeField] private DropDownMenu dropdownForBankkreditNovel;
-        [SerializeField] private DropDownMenu dropdownForBekanntenTreffenNovel;
+        [SerializeField] private DropDownMenu dropdownForInvestorNovel;
         [SerializeField] private DropDownMenu dropdownForBankkontoNovel;
         [SerializeField] private DropDownMenu dropdownForFoerderantragNovel;
         [SerializeField] private DropDownMenu dropdownForElternNovel;
@@ -44,7 +44,7 @@ namespace Assets._Scripts.NovelHistory
         [SerializeField] private DropDownMenu dropdownForLebenspartnerinNovel;
 
         [SerializeField] private GameObject spacingForBankkreditNovel;
-        [SerializeField] private GameObject spacingForBekanntenTreffenNovel;
+        [SerializeField] private GameObject spacingForInvestorNovel;
         [SerializeField] private GameObject spacingForBankkontoNovel;
         [SerializeField] private GameObject spacingForFoerderantragNovel;
         [SerializeField] private GameObject spacingForElternNovel;
@@ -56,7 +56,7 @@ namespace Assets._Scripts.NovelHistory
         [SerializeField] private GameObject spacingForLebenspartnerinNovel;
 
         [SerializeField] private GameObject entryContainerForBankkreditNovel;
-        [SerializeField] private GameObject entryContainerForBekanntenTreffenNovel;
+        [SerializeField] private GameObject entryContainerForInvestorNovel;
         [SerializeField] private GameObject entryContainerForBankkontoNovel;
         [SerializeField] private GameObject entryContainerForFoerderantragNovel;
         [SerializeField] private GameObject entryContainerForElternNovel;
@@ -68,7 +68,7 @@ namespace Assets._Scripts.NovelHistory
         [SerializeField] private GameObject entryContainerForLebenspartnerinNovel;
 
         [SerializeField] private bool displayContainerForBankkreditNovel;
-        [SerializeField] private bool displayContainerForBekanntenTreffenNovel;
+        [SerializeField] private bool displayContainerForInvestorNovel;
         [SerializeField] private bool displayContainerForBankkontoNovel;
         [SerializeField] private bool displayContainerForFoerderantragNovel;
         [SerializeField] private bool displayContainerForElternNovel;
@@ -133,7 +133,7 @@ namespace Assets._Scripts.NovelHistory
         private IEnumerator RebuildLayout()
         {
             dropdownForBankkreditNovel.RebuildLayout();
-            dropdownForBekanntenTreffenNovel.RebuildLayout();
+            dropdownForInvestorNovel.RebuildLayout();
             dropdownForBankkontoNovel.RebuildLayout();
             dropdownForFoerderantragNovel.RebuildLayout();
             dropdownForElternNovel.RebuildLayout();
@@ -253,8 +253,8 @@ namespace Assets._Scripts.NovelHistory
             {
                 case "Bankkredit":
                     return containerForBankkreditNovel;
-                case "Bekannten treffen":
-                    return containerForBekanntenTreffenNovel;
+                case "Investor":
+                    return containerForInvestorNovel;
                 case "Bankkonto":
                     return containerForBankkontoNovel;
                 case "Förderantrag":
@@ -289,10 +289,10 @@ namespace Assets._Scripts.NovelHistory
                     displayContainerForBankkreditNovel = true;
                     return dropdownForBankkreditNovel;
                 }
-                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
+                case VisualNovelNames.INVESTOR_NOVEL:
                 {
-                    displayContainerForBekanntenTreffenNovel = true;
-                    return dropdownForBekanntenTreffenNovel;
+                    displayContainerForInvestorNovel = true;
+                    return dropdownForInvestorNovel;
                 }
                 case VisualNovelNames.BANK_KONTO_NOVEL:
                 {
@@ -357,10 +357,10 @@ namespace Assets._Scripts.NovelHistory
                     displayContainerForBankkreditNovel = true;
                     return containerForBankkreditNovel;
                 }
-                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
+                case VisualNovelNames.INVESTOR_NOVEL:
                 {
-                    displayContainerForBekanntenTreffenNovel = true;
-                    return containerForBekanntenTreffenNovel;
+                    displayContainerForInvestorNovel = true;
+                    return containerForInvestorNovel;
                 }
                 case VisualNovelNames.BANK_KONTO_NOVEL:
                 {
@@ -425,10 +425,10 @@ namespace Assets._Scripts.NovelHistory
                     displayContainerForBankkreditNovel = true;
                     return entryContainerForBankkreditNovel;
                 }
-                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
+                case VisualNovelNames.INVESTOR_NOVEL:
                 {
-                    displayContainerForBekanntenTreffenNovel = true;
-                    return entryContainerForBekanntenTreffenNovel;
+                    displayContainerForInvestorNovel = true;
+                    return entryContainerForInvestorNovel;
                 }
                 case VisualNovelNames.BANK_KONTO_NOVEL:
                 {
@@ -485,7 +485,7 @@ namespace Assets._Scripts.NovelHistory
         private void InitializeBooleans()
         {
             displayContainerForBankkreditNovel = false;
-            displayContainerForBekanntenTreffenNovel = false;
+            displayContainerForInvestorNovel = false;
             displayContainerForBankkontoNovel = false;
             displayContainerForFoerderantragNovel = false;
             displayContainerForElternNovel = false;
@@ -502,8 +502,8 @@ namespace Assets._Scripts.NovelHistory
         {
             containerForBankkreditNovel.SetActive(displayContainerForBankkreditNovel);
             spacingForBankkreditNovel.SetActive(displayContainerForBankkreditNovel);
-            containerForBekanntenTreffenNovel.SetActive(displayContainerForBekanntenTreffenNovel);
-            spacingForBekanntenTreffenNovel.SetActive(displayContainerForBekanntenTreffenNovel);
+            containerForInvestorNovel.SetActive(displayContainerForInvestorNovel);
+            spacingForInvestorNovel.SetActive(displayContainerForInvestorNovel);
             containerForBankkontoNovel.SetActive(displayContainerForBankkontoNovel);
             spacingForBankkontoNovel.SetActive(displayContainerForBankkontoNovel);
             containerForFoerderantragNovel.SetActive(displayContainerForFoerderantragNovel);
@@ -523,69 +523,6 @@ namespace Assets._Scripts.NovelHistory
             containerForLebenspartnerinNovel.SetActive(displayContainerForLebenspartnerinNovel);
             spacingForLebenspartnerinNovel.SetActive(displayContainerForLebenspartnerinNovel);
             noDataObjectsHint.SetActive(displayNoDataObjectsHint);
-        }
-
-        private List<DialogHistoryEntry> SortEntries(List<DialogHistoryEntry> entries)
-        {
-            // Liste zum Speichern der sortierten Datumswerte und der zugehörigen Original-Elemente
-            List<KeyValuePair<DialogHistoryEntry, DateTime>> sortedEntries =
-                new List<KeyValuePair<DialogHistoryEntry, DateTime>>();
-
-            // Setze die deutsche Kultur für die Datum/Uhrzeit-Formatierung
-            CultureInfo culture = new CultureInfo("de-DE");
-
-            // Sortiere novelHistoryEntries basierend auf dem Datum in HeadButtonText.text
-            foreach (var entry in entries)
-            {
-                // Zerlege den HeadButtonText.text anhand von " | " in Teile
-                string[] parts = entry.GetDateAndTime().Split('|');
-
-                if (parts.Length < 3)
-                    continue; // Falls das Format fehlerhaft ist, überspringe den Eintrag
-
-                string datePart = parts[1].Trim(); // "dd.MM.yyyy"
-                string timePart = parts[2].Trim(); // "HH:mm"
-
-                // Datum + Zeit zusammenfügen und in DateTime umwandeln
-                if (DateTime.TryParseExact($"{datePart} {timePart}", "dd.MM.yyyy HH:mm", culture,
-                        DateTimeStyles.None, out DateTime parsedDate))
-                {
-                    // Füge das Element und das Datum als Paar zur Liste hinzu
-                    sortedEntries.Add(new KeyValuePair<DialogHistoryEntry, DateTime>(entry, parsedDate));
-                }
-                else
-                {
-                    // Falls das Parsen fehlschlägt, füge den Eintrag mit MinValue hinzu
-                    sortedEntries.Add(new KeyValuePair<DialogHistoryEntry, DateTime>(entry, DateTime.MinValue));
-                }
-            }
-
-            // Zuerst nach novelID sortieren, dann nach DateAndTime
-            sortedEntries = sortedEntries
-                .OrderBy(entry => entry.Key.GetNovelId()) // Zuerst nach novelID sortieren
-                .ThenBy(entry => entry.Value) // Dann nach DateAndTime sortieren
-                .Reverse() // Optional: Umkehren der Reihenfolge (falls erforderlich)
-                .ToList();
-
-            // Liste der sortierten DialogHistoryEntries basierend auf novelID und DateAndTime
-            entries = sortedEntries
-                .Select(entry => entry.Key) // Extrahiere das Original-Element
-                .ToList();
-
-            // Jetzt die sortierten Einträge in das Dictionary einsortieren
-            foreach (var pair in sortedEntries)
-            {
-                long novelId = pair.Key.GetNovelId();
-
-                if (!_novelHistoryEntriesDictionary.ContainsKey(novelId))
-                {
-                    _novelHistoryEntriesDictionary[novelId] = new List<DialogHistoryEntry>();
-                }
-
-                _novelHistoryEntriesDictionary[novelId].Add(pair.Key);
-            }
-
-            return entries;
         }
     }
 }

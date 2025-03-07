@@ -12,7 +12,7 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
 {
     public class NovelReader : MonoBehaviour
     {
-        private const string NovelListPath = "00_Kite2/novels_twee/list_of_novels.txt";
+        private const string NovelListPath = "_novels_twee/list_of_novels.txt";
         private const string MetaDataFileName = "visual_novel_meta_data.txt";
         private const string EventListFileName = "visual_novel_event_list.txt";
         private bool _isFinished;
