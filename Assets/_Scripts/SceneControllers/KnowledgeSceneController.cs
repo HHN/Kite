@@ -87,15 +87,6 @@ namespace Assets._Scripts.SceneControllers
         private TMP_Text _biasDetailsText;
 
         private Dictionary<Button, Action> _buttonActions;
-        
-        private enum SceneState
-        {
-            MainCategories,
-            BiasCategories,
-            BiasDetails
-        }
-
-        private SceneState _currentSceneState;
 
         public void Start()
         {
@@ -103,7 +94,6 @@ namespace Assets._Scripts.SceneControllers
             AddButtonListeners();
             
             _biasDetailsText = biasDetailsObject.GetComponentInChildren<TextMeshProUGUI>();
-            _currentSceneState = SceneState.MainCategories;
 
             if (inputField != null)
             {
