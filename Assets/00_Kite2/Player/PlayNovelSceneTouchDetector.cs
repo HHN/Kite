@@ -10,20 +10,19 @@ namespace Assets._Scripts.Player
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            // Prüfen, ob sich der Finger/Mauszeiger zwischen Drücken und Loslassen 
+            // Prï¿½fen, ob sich der Finger/Mauszeiger zwischen Drï¿½cken und Loslassen 
             // weiter als 'dragThreshold' bewegt hat. Wenn ja, war es ein Drag, kein Klick.
             float distance = Vector2.Distance(eventData.pressPosition, eventData.position);
             if (distance > dragThreshold)
             {
                 Debug.Log("DRAG");
-                // War eher ein Drag – nichts tun
+                // War eher ein Drag ï¿½ nichts tun
                 return;
             }
 
-            // War ein echter Klick – nun die Methode im PlayNovelSceneController aufrufen
+            // War ein echter Klick ï¿½ nun die Methode im PlayNovelSceneController aufrufen
             if (PlayNovelSceneController.Instance != null)
             {
-                Debug.Log("CLICK");
                 PlayNovelSceneController.Instance.OnConfirm();
             }
             else

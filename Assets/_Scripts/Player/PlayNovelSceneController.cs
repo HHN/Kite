@@ -305,7 +305,6 @@ namespace Assets._Scripts.Player
 
         public void OnConfirm()
         {
-            Debug.Log("OnConfirm");
             TextToSpeechManager.Instance.CancelSpeak();
 
             Vector2 mousePosition = Input.mousePosition;
