@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Febucci.UI.Effects
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(fileName = "Rotating Appearance", menuName = "Text Animator/Animations/Appearances/Rotating")]
+    [CreateAssetMenu(fileName = "Rotating Appearance", menuName = "Text Animator/_Animations/Appearances/Rotating")]
     [EffectInfo("rot", EffectCategory.Appearances)]
     [DefaultValue(nameof(baseDuration), .7f)]
     public sealed class RotatingAppearance : AppearanceScriptableBase

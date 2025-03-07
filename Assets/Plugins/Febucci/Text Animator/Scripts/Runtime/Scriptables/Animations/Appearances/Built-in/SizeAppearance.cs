@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Febucci.UI.Effects
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(fileName = "Size Appearance", menuName = "Text Animator/Animations/Appearances/Size")]
+    [CreateAssetMenu(fileName = "Size Appearance", menuName = "Text Animator/_Animations/Appearances/Size")]
     [EffectInfo("size", EffectCategory.Appearances)]
     public sealed class SizeAppearance : AppearanceScriptableBase
     {

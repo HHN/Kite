@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Febucci.UI.Effects
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(menuName = "Text Animator/Animations/Behaviors/Size", fileName = "Size Behavior")]
+    [CreateAssetMenu(menuName = "Text Animator/_Animations/Behaviors/Size", fileName = "Size Behavior")]
     [EffectInfo("incr", EffectCategory.Behaviors)]
     public sealed class SizeBehavior : BehaviorScriptableBase
     {

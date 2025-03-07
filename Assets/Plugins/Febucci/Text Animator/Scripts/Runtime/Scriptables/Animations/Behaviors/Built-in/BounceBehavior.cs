@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Febucci.UI.Effects
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(fileName = "Bounce", menuName = "Text Animator/Animations/Behaviors/Bounce")]
+    [CreateAssetMenu(fileName = "Bounce", menuName = "Text Animator/_Animations/Behaviors/Bounce")]
     [EffectInfo("bounce", EffectCategory.Behaviors)]
     [DefaultValue(nameof(baseAmplitude), 13.19f)]
     [DefaultValue(nameof(baseFrequency), 1f)]

@@ -1,0 +1,48 @@
+using Assets._Scripts.Messages;
+using Assets._Scripts.Server_Communication.Request_Objects;
+using UnityEngine.Networking;
+
+namespace Assets._Scripts.Server_Communication.Server_Calls
+{
+    public class GetUserRoleByCodeServerCall : ServerCall
+    {
+        public string code;
+
+        protected override object CreateRequestObject()
+        {
+            GetUserRoleByCodeRequest call = new GetUserRoleByCodeRequest();
+            call.code = code;
+            return call;
+        }
+
+        protected override UnityWebRequest CreateUnityWebRequestObject()
+        {
+            return UnityWebRequest.PostWwwForm(ConnectionLink.USER_ROLE_LINK, string.Empty);
+        }
+
+        protected override void OnResponse(Response response)
+        {
+            switch (ResultCodeHelper.ValueOf(response.GetResultCode()))
+            {
+                case ResultCode.SUCCESSFULLY_GOT_USER_ROLE:
+                {
+                    OnSuccessHandler.OnSuccess(response);
+                    return;
+                }
+                default:
+                {
+                    if (OnErrorHandler != null)
+                    {
+                        OnErrorHandler.OnError(response);
+                    }
+                    else
+                    {
+                        sceneController.DisplayErrorMessage(ErrorMessages.UNEXPECTED_SERVER_ERROR);
+                    }
+
+                    return;
+                }
+            }
+        }
+    }
+}

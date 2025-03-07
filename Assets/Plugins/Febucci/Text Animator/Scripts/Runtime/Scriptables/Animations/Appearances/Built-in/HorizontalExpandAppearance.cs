@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Febucci.UI.Effects
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(fileName = "Horizontal Expand Appearance", menuName = "Text Animator/Animations/Appearances/Horizontal Expand")]
+    [CreateAssetMenu(fileName = "Horizontal Expand Appearance", menuName = "Text Animator/_Animations/Appearances/Horizontal Expand")]
     [EffectInfo("horiexp", EffectCategory.Appearances)]
     public sealed class HorizontalExpandAppearance : AppearanceScriptableBase
     {
