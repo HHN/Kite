@@ -7,7 +7,7 @@ namespace Assets._Scripts.Managers
     public class PlayRecordManagerWrapper
     {
         [SerializeField] private int numberOfPlaysForBankkreditNovel;
-        [SerializeField] private int numberOfPlaysForBekannteTreffenNovel;
+        [SerializeField] private int numberOfPlaysForInvestorNovel;
         [SerializeField] private int numberOfPlaysForBankkontoNovel;
         [SerializeField] private int numberOfPlaysForFoerderantragNovel;
         [SerializeField] private int numberOfPlaysForElternNovel;
@@ -29,14 +29,14 @@ namespace Assets._Scripts.Managers
             return numberOfPlaysForBankkreditNovel;
         }
 
-        public void SetNumberOfPlaysForBekannteTreffenNovel(int numberOfPlaysForBekannteTreffenNovel)
+        public void SetNumberOfPlaysForInvestorNovel(int numberOfPlaysForInvestorNovel)
         {
-            this.numberOfPlaysForBekannteTreffenNovel = numberOfPlaysForBekannteTreffenNovel;
+            this.numberOfPlaysForInvestorNovel = numberOfPlaysForInvestorNovel;
         }
 
-        public int GetNumberOfPlaysForBekannteTreffenNovel()
+        public int GetNumberOfPlaysForInvestorNovel()
         {
-            return numberOfPlaysForBekannteTreffenNovel;
+            return numberOfPlaysForInvestorNovel;
         }
 
         public void SetNumberOfPlaysForBankkontoNovel(int numberOfPlaysForBankkontoNovel)
@@ -142,7 +142,7 @@ namespace Assets._Scripts.Managers
         public void ClearData()
         {
             numberOfPlaysForBankkreditNovel = 0;
-            numberOfPlaysForBekannteTreffenNovel = 0;
+            numberOfPlaysForInvestorNovel = 0;
             numberOfPlaysForBankkontoNovel = 0;
             numberOfPlaysForFoerderantragNovel = 0;
             numberOfPlaysForElternNovel = 0;

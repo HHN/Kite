@@ -4,7 +4,7 @@ namespace Assets._Scripts.Player
     {
         NONE,
         BANK_KREDIT_NOVEL,
-        BEKANNTEN_TREFFEN_NOVEL,
+        INVESTOR_NOVEL,
         BANK_KONTO_NOVEL,
         FOERDERANTRAG_NOVEL,
         ELTERN_NOVEL,
@@ -53,7 +53,7 @@ namespace Assets._Scripts.Player
                 }
                 case 9:
                 {
-                    return VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL;
+                    return VisualNovelNames.INVESTOR_NOVEL;
                 }
                 case 10:
                 {
@@ -112,7 +112,7 @@ namespace Assets._Scripts.Player
                 }
                 case 9:
                 {
-                    return "Bekannten treffen";
+                    return "Investor";
                 }
                 case 10:
                 {
@@ -169,7 +169,7 @@ namespace Assets._Scripts.Player
                 {
                     return 8;
                 }
-                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
+                case VisualNovelNames.INVESTOR_NOVEL:
                 {
                     return 9;
                 }

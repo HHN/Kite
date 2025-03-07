@@ -11,7 +11,7 @@ namespace Assets._Scripts.Novel
         VERMIETER,
         VATER,
         MUTTER,
-        BEKANNTER,
+        INVESTOR,
         NOTARIN,
         SACHBEARBEITER,
         KUNDIN
@@ -27,7 +27,7 @@ namespace Assets._Scripts.Novel
         private const string VERMIETER = "Vermieter";
         private const string VATER = "Vater";
         private const string MUTTER = "Mutter";
-        private const string BEKANNTER = "Bekannter";
+        private const string INVESTOR = "Investor";
         private const string NOTARIN = "Notarin";
         private const string SACHBEARBEITER = "Sachbearbeiter";
         private const string KUNDIN = "Kundin";
@@ -72,7 +72,7 @@ namespace Assets._Scripts.Novel
                 {
                     return 8;
                 }
-                case CharacterRole.BEKANNTER:
+                case CharacterRole.INVESTOR:
                 {
                     return 9;
                 }
@@ -137,7 +137,7 @@ namespace Assets._Scripts.Novel
                 }
                 case 9:
                 {
-                    return CharacterRole.BEKANNTER;
+                    return CharacterRole.INVESTOR;
                 }
                 case 10:
                 {
@@ -195,9 +195,9 @@ namespace Assets._Scripts.Novel
                 {
                     return MUTTER;
                 }
-                case CharacterRole.BEKANNTER:
+                case CharacterRole.INVESTOR:
                 {
-                    return BEKANNTER;
+                    return INVESTOR;
                 }
                 case CharacterRole.NOTARIN:
                 {
@@ -260,7 +260,7 @@ namespace Assets._Scripts.Novel
                 }
                 case 9:
                 {
-                    return BEKANNTER;
+                    return INVESTOR;
                 }
                 case 10:
                 {
@@ -318,9 +318,9 @@ namespace Assets._Scripts.Novel
                 {
                     return CharacterRole.MUTTER;
                 }
-                case BEKANNTER:
+                case INVESTOR:
                 {
-                    return CharacterRole.BEKANNTER;
+                    return CharacterRole.INVESTOR;
                 }
                 case NOTARIN:
                 {

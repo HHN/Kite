@@ -222,11 +222,11 @@ namespace Assets._Scripts.Player
                     _novelImagesController = controllerTransform.GetComponent<NotarinNovelImageController>();
                     break;
                 }
-                case "Gespräch mit einem Bekannten":
+                case "Gespräch mit einem Investor":
                 {
                     GameObject novelImagesInstance = Instantiate(novelVisuals[5], viewPortTransform);
                     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<BekannterNovelImageController>();
+                    _novelImagesController = controllerTransform.GetComponent<InvestorNovelImageController>();
                     break;
                 }
                 case "Einstiegsdialog":
@@ -1023,7 +1023,7 @@ namespace Assets._Scripts.Player
                 { 3, typeof(PresseNovelImageController) },
                 { 4, typeof(NotarinNovelImageController) },
                 { 6, typeof(BueroNovelImageController) },
-                { 9, typeof(BekannterNovelImageController) },
+                { 9, typeof(InvestorNovelImageController) },
                 { 10, typeof(BankNovelImageController) },
                 { 11, typeof(HonorarNovelImageController) },
                 { 13, typeof(IntroNovelImageController) }
@@ -1092,13 +1092,13 @@ namespace Assets._Scripts.Player
                 bueroController.novelKite2CharacterController.SetHairSprite(characterData.hairIndex);
             }
 
-            if (controller is BekannterNovelImageController bekannterController)
+            if (controller is InvestorNovelImageController investorController)
             {
                 // Setze die Attribute basierend auf den gespeicherten Werten
-                bekannterController.novelKite2CharacterController.SetSkinSprite(characterData.skinIndex);
-                // bekannterController.novelKite2CharacterController.SetHandSprite(characterData.handIndex);
-                bekannterController.novelKite2CharacterController.SetClotheSprite(characterData.clotheIndex);
-                bekannterController.novelKite2CharacterController.SetHairSprite(characterData.hairIndex);
+                investorController.novelKite2CharacterController.SetSkinSprite(characterData.skinIndex);
+                // investorController.novelKite2CharacterController.SetHandSprite(characterData.handIndex);
+                investorController.novelKite2CharacterController.SetClotheSprite(characterData.clotheIndex);
+                investorController.novelKite2CharacterController.SetHairSprite(characterData.hairIndex);
             }
 
             if (controller is BankNovelImageController bankController)

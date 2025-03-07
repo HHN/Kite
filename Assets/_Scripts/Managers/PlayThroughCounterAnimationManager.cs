@@ -7,7 +7,7 @@ namespace Assets._Scripts.Managers
         private static PlayThroughCounterAnimationManager _instance;
 
         private bool _animateNumberForBankkreditNovel;
-        private bool _animateNumberForBekannteTreffenNovel;
+        private bool _animateNumberForInvestorNovel;
         private bool _animateNumberForBankkontoNovel;
         private bool _animateNumberForFoerderantragNovel;
         private bool _animateNumberForElternNovel;
@@ -72,9 +72,9 @@ namespace Assets._Scripts.Managers
                     _animateNumberForGruendungszuschussNovel = value;
                     break;
                 }
-                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
+                case VisualNovelNames.INVESTOR_NOVEL:
                 {
-                    _animateNumberForBekannteTreffenNovel = value;
+                    _animateNumberForInvestorNovel = value;
                     break;
                 }
                 case VisualNovelNames.BANK_KREDIT_NOVEL:
@@ -132,9 +132,9 @@ namespace Assets._Scripts.Managers
                 {
                     return _animateNumberForGruendungszuschussNovel;
                 }
-                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
+                case VisualNovelNames.INVESTOR_NOVEL:
                 {
-                    return _animateNumberForBekannteTreffenNovel;
+                    return _animateNumberForInvestorNovel;
                 }
                 case VisualNovelNames.BANK_KREDIT_NOVEL:
                 {

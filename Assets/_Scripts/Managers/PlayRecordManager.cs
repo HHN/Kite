@@ -82,11 +82,11 @@ namespace Assets._Scripts.Managers
                     _wrapper.SetNumberOfPlaysForGruendungszuschussNovel(numberOfPlays);
                     break;
                 }
-                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
+                case VisualNovelNames.INVESTOR_NOVEL:
                 {
-                    int numberOfPlays = _wrapper.GetNumberOfPlaysForBekannteTreffenNovel();
+                    int numberOfPlays = _wrapper.GetNumberOfPlaysForInvestorNovel();
                     numberOfPlays++;
-                    _wrapper.SetNumberOfPlaysForBekannteTreffenNovel(numberOfPlays);
+                    _wrapper.SetNumberOfPlaysForInvestorNovel(numberOfPlays);
                     break;
                 }
                 case VisualNovelNames.BANK_KREDIT_NOVEL:
@@ -159,9 +159,9 @@ namespace Assets._Scripts.Managers
                 {
                     return _wrapper.GetNumberOfPlaysForGruenungszuschussNovel();
                 }
-                case VisualNovelNames.BEKANNTEN_TREFFEN_NOVEL:
+                case VisualNovelNames.INVESTOR_NOVEL:
                 {
-                    return _wrapper.GetNumberOfPlaysForBekannteTreffenNovel();
+                    return _wrapper.GetNumberOfPlaysForInvestorNovel();
                 }
                 case VisualNovelNames.BANK_KREDIT_NOVEL:
                 {
