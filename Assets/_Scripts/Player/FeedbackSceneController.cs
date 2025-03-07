@@ -42,7 +42,7 @@ namespace Assets._Scripts.Player
 
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.FEEDBACK_SCENE);
+            BackStackManager.Instance().Push(SceneNames.FeedbackScene);
 
             FontSizeManager.Instance().UpdateAllTextComponents();
 
@@ -141,8 +141,8 @@ namespace Assets._Scripts.Player
 
         public void OnSuccess(Response response)
         {
-            if (SceneManager.GetActiveScene().name != SceneNames.FEEDBACK_SCENE
-                && SceneManager.GetActiveScene().name != SceneNames.COMMENT_SECTION_SCENE)
+            if (SceneManager.GetActiveScene().name != SceneNames.FeedbackScene
+                && SceneManager.GetActiveScene().name != SceneNames.CommentSectionScene)
             {
                 return;
             }

@@ -1,4 +1,5 @@
 using Assets._Scripts.Player;
+using Assets._Scripts.SceneControllers;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.UI_Elements.Messages;
 using Assets._Scripts.Utilities;
@@ -19,7 +20,8 @@ namespace Assets._Scripts.UI_Elements.Scene_Base
         [SerializeField] private LeaveNovelAndGoBackToMainMenuMessageBox warningMessageBoxObjectClose;
         [SerializeField] private Canvas canvas;
 
-        private PlayNovelSceneController _playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
+        private PlayNovelSceneController
+            _playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
 
         private void Start()
         {
@@ -29,19 +31,13 @@ namespace Assets._Scripts.UI_Elements.Scene_Base
                 _playNovelSceneController = controllerObject.GetComponent<PlayNovelSceneController>();
             }
 
-            // if (_playNovelSceneController == null && isNovelScene)
-            // {
-            //     Debug.LogWarning(
-            //         "PlayNovelSceneController not found in the scene. Make sure this script is attached to the correct scene.");
-            // }
-
             backButton.onClick.AddListener(OnBackButton);
         }
 
         private void OnBackButton()
         {
             string sceneName = SceneManager.GetActiveScene().name;
-            
+
             if (sceneName.Contains("PlayNovelScene") && _playNovelSceneController != null)
             {
                 _playNovelSceneController.IsPaused = true; // Pause the novel progression
@@ -49,19 +45,27 @@ namespace Assets._Scripts.UI_Elements.Scene_Base
 
             if (!sceneName.Contains("PlayNovelScene"))
             {
-                string lastScene = SceneRouter.GetTargetSceneForBackButton();
-
-                if (string.IsNullOrEmpty(lastScene))
+                if (sceneName.Contains("KnowledgeScene"))
                 {
-                    SceneLoader.LoadMainMenuScene();
-                    return;
+                    KnowledgeSceneController knowledgeSceneController = FindAnyObjectByType<KnowledgeSceneController>();
+                    knowledgeSceneController.NavigateScene();
                 }
+                else
+                {
+                    string lastScene = SceneRouter.GetTargetSceneForBackButton();
 
-                #if UNITY_IOS
+                    if (string.IsNullOrEmpty(lastScene))
+                    {
+                        SceneLoader.LoadMainMenuScene();
+                        return;
+                    }
+
+#if UNITY_IOS
                     TextToSpeechManager.Instance.CancelSpeak();
-                #endif
+#endif
 
-                SceneLoader.LoadScene(lastScene);
+                    SceneLoader.LoadScene(lastScene);
+                }
             }
 
             if (sceneName.Contains("PlayNovelScene") && _playNovelSceneController.NovelToPlay.id == 13)

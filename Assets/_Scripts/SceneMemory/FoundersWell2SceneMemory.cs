@@ -7,7 +7,7 @@ namespace Assets._Scripts.SceneMemory
     {
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.FOUNDERS_WELL_2_SCENE);
+            BackStackManager.Instance().Push(SceneNames.FoundersWell2Scene);
         }
     }
 }

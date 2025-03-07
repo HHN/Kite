@@ -10,78 +10,82 @@ namespace Assets._Scripts.SceneManagement
 
             switch (currentScene.name)
             {
-                case (SceneNames.MAIN_MENU_SCENE):
+                case (SceneNames.MainMenuScene):
                 {
-                    return SceneNames.MAIN_MENU_SCENE;
+                    return SceneNames.MainMenuScene;
                 }
-                case (SceneNames.FOUNDERS_BUBBLE_SCENE):
+                case (SceneNames.FoundersBubbleScene):
                 {
-                    return SceneNames.MAIN_MENU_SCENE;
+                    return SceneNames.MainMenuScene;
                 }
-                case (SceneNames.FOUNDERS_WELL_2_SCENE):
+                case (SceneNames.FoundersWell2Scene):
                 {
-                    return SceneNames.FOUNDERS_BUBBLE_SCENE;
+                    return SceneNames.FoundersBubbleScene;
                 }
-                case (SceneNames.PLAY_INSTRUCTION_SCENE):
+                case (SceneNames.PlayInstructionScene):
                 {
-                    return SceneNames.FOUNDERS_BUBBLE_SCENE;
+                    return SceneNames.FoundersBubbleScene;
                 }
-                case (SceneNames.PLAY_NOVEL_SCENE):
+                case (SceneNames.PlayNovelScene):
                 {
-                    return SceneNames.FOUNDERS_BUBBLE_SCENE;
+                    return SceneNames.FoundersBubbleScene;
                 }
-                case (SceneNames.FEEDBACK_SCENE):
+                case (SceneNames.FeedbackScene):
                 {
-                    return SceneNames.FOUNDERS_BUBBLE_SCENE;
+                    return SceneNames.FoundersBubbleScene;
                 }
-                case (SceneNames.NUTZUNGSBEDINGUNGEN_SCENE):
+                case (SceneNames.NutzungsbedingungenScene):
                 {
-                    return SceneNames.EINSTELLUNGEN_SCENE;
+                    return SceneNames.EinstellungenScene;
                 }
-                case (SceneNames.NOVEL_HISTORY_SCENE):
+                case (SceneNames.NovelHistoryScene):
                 {
-                    return SceneNames.FOUNDERS_BUBBLE_SCENE;
+                    return SceneNames.FoundersBubbleScene;
                 }
-                case (SceneNames.DATENSCHUTZ_SCENE):
+                case (SceneNames.DatenschutzScene):
                 {
-                    return SceneNames.EINSTELLUNGEN_SCENE;
+                    return SceneNames.EinstellungenScene;
                 }
-                case (SceneNames.IMPRESSUM_SCENE):
+                case (SceneNames.ImpressumScene):
                 {
-                    return SceneNames.EINSTELLUNGEN_SCENE;
+                    return SceneNames.EinstellungenScene;
                 }
-                case (SceneNames.RESSOURCEN_SCENE):
+                case (SceneNames.RessourcenScene):
                 {
-                    return SceneNames.FOUNDERS_BUBBLE_SCENE;
+                    return SceneNames.FoundersBubbleScene;
                 }
-                case (SceneNames.BARRIEREFREIHEIT_SCENE):
+                case (SceneNames.BarrierefreiheitScene):
                 {
-                    return SceneNames.EINSTELLUNGEN_SCENE;
+                    return SceneNames.EinstellungenScene;
                 }
-                case (SceneNames.PLAYER_PREFS_SCENE):
+                case (SceneNames.PlayerPrefsScene):
                 {
-                    return SceneNames.DATENSCHUTZ_SCENE;
+                    return SceneNames.DatenschutzScene;
                 }
-                case (SceneNames.EINSTELLUNGEN_SCENE):
+                case (SceneNames.EinstellungenScene):
                 {
-                    return SceneNames.FOUNDERS_BUBBLE_SCENE;
+                    return SceneNames.FoundersBubbleScene;
                 }
-                case (SceneNames.GEMERKTE_NOVELS_SCENE):
+                case (SceneNames.GemerkteNovelsScene):
                 {
-                    return SceneNames.FOUNDERS_BUBBLE_SCENE;
+                    return SceneNames.FoundersBubbleScene;
                 }
-                case (SceneNames.SOUNDEINSTELLUNG_SCENE):
+                case (SceneNames.SoundeinstellungScene):
                 {
-                    return SceneNames.EINSTELLUNGEN_SCENE;
+                    return SceneNames.EinstellungenScene;
+                }
+                case (SceneNames.KnowledgeScene):
+                {
+                    return SceneNames.FoundersBubbleScene;
                 }
 
-                default: return SceneNames.MAIN_MENU_SCENE;
+                default: return SceneNames.MainMenuScene;
             }
         }
 
         public static string GetTargetSceneForCloseButton()
         {
-            return SceneNames.MAIN_MENU_SCENE;
+            return SceneNames.MainMenuScene;
         }
     }
 }

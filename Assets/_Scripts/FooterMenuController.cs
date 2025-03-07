@@ -1,3 +1,4 @@
+using Assets._Scripts.SceneControllers;
 using Assets._Scripts.SceneManagement;
 using TMPro;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace Assets._Scripts
         [SerializeField] private Button archivButton;
         [SerializeField] private Button bookmarkButton;
         [SerializeField] private Button linksButton;
-        [SerializeField] private Button profilButton;
+        [SerializeField] private Button knowledgeButton;
 
         [SerializeField] private Sprite homeButtonActiveImage;
         [SerializeField] private Sprite homeButtonInactiveImage;
@@ -25,15 +26,15 @@ namespace Assets._Scripts
 
         [SerializeField] private Sprite linksButtonActiveImage;
         [SerializeField] private Sprite linksButtonInactiveImage;
-
-        [SerializeField] private Sprite profilButtonActiveImage;
-        [SerializeField] private Sprite profilButtonInactiveImage;
+        
+        [SerializeField] private Sprite knowledgeButtonActiveImage;
+        [SerializeField] private Sprite knowledgeButtonInactiveImage;
 
         [SerializeField] private TextMeshProUGUI startTextElement;
         [SerializeField] private TextMeshProUGUI archivTextElement;
         [SerializeField] private TextMeshProUGUI gemerktTextElement;
         [SerializeField] private TextMeshProUGUI linkTextElement;
-        [SerializeField] private TextMeshProUGUI profilTextElement;
+        [SerializeField] private TextMeshProUGUI knowledgeTextElement;
 
         [SerializeField] private string currentScene;
 
@@ -43,7 +44,7 @@ namespace Assets._Scripts
             archivButton.onClick.AddListener(OnArchivButton);
             bookmarkButton.onClick.AddListener(OnBookmarkButton);
             linksButton.onClick.AddListener(OnLinksButton);
-            profilButton.onClick.AddListener(OnProfilButton);
+            knowledgeButton.onClick.AddListener(OnKnowledgeButton);
             SetButtonImagesInaktiv();
             SetTextColorsInaktiv();
             SetImageForActiveButton();
@@ -55,32 +56,32 @@ namespace Assets._Scripts
             currentScene = imageName;
             switch (imageName)
             {
-                case SceneNames.FOUNDERS_BUBBLE_SCENE:
+                case SceneNames.FoundersBubbleScene:
                     SetHomeButtonImage();
                     SetTextToActive(startTextElement);
                     break;
-                case SceneNames.NOVEL_HISTORY_SCENE:
+                case SceneNames.NovelHistoryScene:
                     SetArchivButtonImage();
                     SetTextToActive(archivTextElement);
                     break;
-                case SceneNames.GEMERKTE_NOVELS_SCENE:
+                case SceneNames.GemerkteNovelsScene:
                     SetBookmarkButtonImage();
                     SetTextToActive(gemerktTextElement);
                     break;
-                case SceneNames.RESSOURCEN_SCENE:
+                case SceneNames.RessourcenScene:
                     SetLinksButtonImage();
                     SetTextToActive(linkTextElement);
                     break;
-                case SceneNames.FOUNDERS_WELL_2_SCENE:
-                    SetProfilButtonImage();
-                    SetTextToActive(profilTextElement);
+                case SceneNames.KnowledgeScene:
+                    SetKnowledgeButtonImage();
+                    SetTextToActive(knowledgeTextElement);
                     break;
             }
         }
 
         private void OnHomeButton()
         {
-            if (currentScene.Equals(SceneNames.FOUNDERS_BUBBLE_SCENE))
+            if (currentScene.Equals(SceneNames.FoundersBubbleScene))
             {
                 return;
             }
@@ -90,7 +91,7 @@ namespace Assets._Scripts
 
         private void OnArchivButton()
         {
-            if (currentScene.Equals(SceneNames.NOVEL_HISTORY_SCENE))
+            if (currentScene.Equals(SceneNames.NovelHistoryScene))
             {
                 return;
             }
@@ -100,7 +101,7 @@ namespace Assets._Scripts
 
         private void OnBookmarkButton()
         {
-            if (currentScene.Equals(SceneNames.GEMERKTE_NOVELS_SCENE))
+            if (currentScene.Equals(SceneNames.GemerkteNovelsScene))
             {
                 return;
             }
@@ -110,22 +111,17 @@ namespace Assets._Scripts
 
         private void OnLinksButton()
         {
-            if (currentScene.Equals(SceneNames.RESSOURCEN_SCENE))
+            if (currentScene.Equals(SceneNames.RessourcenScene))
             {
                 return;
             }
 
             SceneLoader.LoadRessourcenScene();
         }
-
-        private void OnProfilButton()
+        
+        private void OnKnowledgeButton()
         {
-            if (currentScene.Equals(SceneNames.FOUNDERS_WELL_2_SCENE))
-            {
-                return;
-            }
-
-            SceneLoader.LoadFoundersWell2Scene();
+            SceneLoader.LoadKnowledgeScene();
         }
 
         private void SetButtonImagesInaktiv()
@@ -134,7 +130,7 @@ namespace Assets._Scripts
             archivButton.image.sprite = archivButtonInactiveImage;
             bookmarkButton.image.sprite = bookmarkButtonInactiveImage;
             linksButton.image.sprite = linksButtonInactiveImage;
-            profilButton.image.sprite = profilButtonInactiveImage;
+            knowledgeButton.image.sprite = knowledgeButtonInactiveImage;
         }
 
         private void SetTextColorsInaktiv()
@@ -148,7 +144,7 @@ namespace Assets._Scripts
                     archivTextElement.color = newColor;
                     gemerktTextElement.color = newColor;
                     linkTextElement.color = newColor;
-                    profilTextElement.color = newColor;
+                    knowledgeTextElement.color = newColor;
                 }
                 else
                 {
@@ -192,10 +188,10 @@ namespace Assets._Scripts
         {
             linksButton.image.sprite = linksButtonActiveImage;
         }
-
-        private void SetProfilButtonImage()
+        
+        private void SetKnowledgeButtonImage()
         {
-            profilButton.image.sprite = profilButtonActiveImage;
+            knowledgeButton.image.sprite = knowledgeButtonActiveImage;
         }
     }
 }

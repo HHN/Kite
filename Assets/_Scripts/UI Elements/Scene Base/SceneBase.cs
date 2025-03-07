@@ -31,14 +31,14 @@ namespace Assets._Scripts.UI_Elements.Scene_Base
             OnGuestMode();
             string sceneName = SceneManager.GetActiveScene().name;
 
-            if (sceneName.Equals(SceneNames.PLAY_NOVEL_SCENE))
+            if (sceneName.Equals(SceneNames.PlayNovelScene))
             {
                 homeButton.onClick.AddListener(OnHomeButtonForNovelPlayer);
                 settingsButton.onClick.AddListener(OnSettingsButtonForNovelPlayer);
                 backButton.onClick.AddListener(OnBackButtonForNovelPlayer);
                 closeButton.onClick.AddListener(OnBackButtonForNovelPlayer);
             }
-            else if (sceneName.Equals(SceneNames.MAIN_MENU_SCENE))
+            else if (sceneName.Equals(SceneNames.MainMenuScene))
             {
             }
             else
@@ -57,7 +57,7 @@ namespace Assets._Scripts.UI_Elements.Scene_Base
         {
             string lastScene = SceneRouter.GetTargetSceneForBackButton();
 
-            SceneLoader.LoadScene(string.IsNullOrEmpty(lastScene) ? SceneNames.MAIN_MENU_SCENE : lastScene);
+            SceneLoader.LoadScene(string.IsNullOrEmpty(lastScene) ? SceneNames.MainMenuScene : lastScene);
         }
 
         private void OnBackButtonForNovelPlayer()

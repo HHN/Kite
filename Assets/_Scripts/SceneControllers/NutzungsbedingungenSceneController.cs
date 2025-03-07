@@ -3,7 +3,7 @@ using Assets._Scripts.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.LegalInformation
+namespace Assets._Scripts.SceneControllers
 {
     public class NutzungsbedingungenSceneController : SceneController
     {
@@ -12,7 +12,7 @@ namespace Assets._Scripts.LegalInformation
 
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.NUTZUNGSBEDINGUNGEN_SCENE);
+            BackStackManager.Instance().Push(SceneNames.NutzungsbedingungenScene);
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout02);
             FontSizeManager.Instance().UpdateAllTextComponents();
         }

@@ -78,7 +78,7 @@ namespace Assets._Scripts.Player
 
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.FOUNDERS_BUBBLE_SCENE);
+            BackStackManager.Instance().Push(SceneNames.FoundersBubbleScene);
 
             foundersWellButton.onClick.AddListener(OnFoundersWellButton);
 
@@ -135,39 +135,36 @@ namespace Assets._Scripts.Player
 
         private void OnInputValueChanged(string input)
         {
+            string inputLower = input.ToLower();
+            
             // Erstelle eine temporäre Liste, um die Container neu anzuordnen
             List<GameObject> visibleContainers = new List<GameObject>();
             List<GameObject> hiddenContainers = new List<GameObject>();
 
             foreach (var container in _originalOrder)
             {
-                if (container != null)
+                if (container == null) continue;
+                
+                // Hole den Button innerhalb des Containers
+                Button button = container.GetComponentInChildren<Button>();
+                if (button == null) continue;
+                
+                // Hole den TextMeshPro-Text, der im Button enthalten ist
+                TMP_Text buttonText = button.GetComponentInChildren<TMP_Text>();
+                if (buttonText == null) continue;
+                
+                // Vergleiche den Button-Text mit dem Input
+                if (buttonText.text.ToLower().Contains(inputLower))
                 {
-                    // Hole den Button innerhalb des Containers
-                    Button button = container.GetComponentInChildren<Button>();
-
-                    if (button != null)
-                    {
-                        // Hole den TextMeshPro-Text, der im Button enthalten ist
-                        TMP_Text buttonText = button.GetComponentInChildren<TMP_Text>();
-
-                        if (buttonText != null)
-                        {
-                            // Vergleiche den Button-Text mit dem Input
-                            if (buttonText.text.ToLower().Contains(input.ToLower()))
-                            {
-                                // Container sichtbar machen und zur Liste der sichtbaren Container hinzufügen
-                                container.SetActive(true);
-                                visibleContainers.Add(container);
-                            }
-                            else
-                            {
-                                // Container deaktivieren und zur Liste der versteckten Container hinzufügen
-                                container.SetActive(false);
-                                hiddenContainers.Add(container);
-                            }
-                        }
-                    }
+                    // Container sichtbar machen und zur Liste der sichtbaren Container hinzufügen
+                    container.SetActive(true);
+                    visibleContainers.Add(container);
+                }
+                else
+                {
+                    // Container deaktivieren und zur Liste der versteckten Container hinzufügen
+                    container.SetActive(false);
+                    hiddenContainers.Add(container);
                 }
             }
 

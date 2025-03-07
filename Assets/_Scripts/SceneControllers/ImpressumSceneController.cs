@@ -3,7 +3,7 @@ using Assets._Scripts.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.LegalInformation
+namespace Assets._Scripts.SceneControllers
 {
     public class ImpressumSceneController : SceneController
     {
@@ -11,7 +11,7 @@ namespace Assets._Scripts.LegalInformation
 
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.IMPRESSUM_SCENE);
+            BackStackManager.Instance().Push(SceneNames.ImpressumScene);
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
             FontSizeManager.Instance().UpdateAllTextComponents();
         }

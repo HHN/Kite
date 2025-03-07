@@ -5,9 +5,10 @@ using Assets._Scripts.UI_Elements.Buttons;
 using Assets._Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.UI;
+
 //using LeastSquares.Overtone;
 
-namespace Assets._Scripts.LegalInformation
+namespace Assets._Scripts.SceneControllers
 {
     public class DatenschutzSceneController : SceneController
     {
@@ -30,7 +31,7 @@ namespace Assets._Scripts.LegalInformation
 
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.DATENSCHUTZ_SCENE);
+            BackStackManager.Instance().Push(SceneNames.DatenschutzScene);
 
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout02);

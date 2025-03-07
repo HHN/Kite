@@ -3,7 +3,7 @@ using Assets._Scripts.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.LegalInformation
+namespace Assets._Scripts.SceneControllers
 {
     public class RessourcenSceneController : SceneController
     {
@@ -15,7 +15,7 @@ namespace Assets._Scripts.LegalInformation
 
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.RESSOURCEN_SCENE);
+            BackStackManager.Instance().Push(SceneNames.RessourcenScene);
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
 
             bgaButton.onClick.AddListener(OnBgaButton);

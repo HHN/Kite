@@ -146,7 +146,7 @@ namespace Assets._Scripts.Player
             _conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
 
             AnalyticsServiceHandler.Instance().StartStopwatch();
-            BackStackManager.Instance().Push(SceneNames.PLAY_NOVEL_SCENE);
+            BackStackManager.Instance().Push(SceneNames.PlayNovelScene);
             novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
             
             NovelBiasManager.Clear();
