@@ -5,11 +5,14 @@ using Assets._Scripts.SceneManagement;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 namespace Assets._Scripts.SceneControllers
 {
     public class KnowledgeSceneController : MonoBehaviour
     {
+        [SerializeField] private RectTransform contentRectTransform;
+
         [SerializeField] private GameObject infoText;
         [SerializeField] private GameObject biasGroups;
         [SerializeField] private GameObject biasInformation;
@@ -194,6 +197,7 @@ namespace Assets._Scripts.SceneControllers
 
             activeGroup.SetActive(true);
             _currentBiasInformationChapter = activeGroup;
+            StartCoroutine(RebuildLayout());
         }
 
         /// <summary>
@@ -209,6 +213,7 @@ namespace Assets._Scripts.SceneControllers
 
             biasDetailsObject.SetActive(true);
             _biasDetailsText.text = BiasDescriptionTexts.GetStringByType(type);
+            StartCoroutine(RebuildLayout());
         }
 
         private void OnBarrierenInfoButton()
@@ -221,6 +226,7 @@ namespace Assets._Scripts.SceneControllers
             erwartungenNormenInfoGroup.SetActive(false);
             wahrnehmungFuehrungsrollenInfoGroup.SetActive(false);
             barrierenHindernisseInfoGroup.SetActive(false);
+            StartCoroutine(RebuildLayout());
         }
 
         private void OnErwartungenNormenInfoButton()
@@ -233,6 +239,7 @@ namespace Assets._Scripts.SceneControllers
             erwartungenNormenInfoGroup.SetActive(true);
             wahrnehmungFuehrungsrollenInfoGroup.SetActive(false);
             barrierenHindernisseInfoGroup.SetActive(false);
+            StartCoroutine(RebuildLayout());
         }
 
         private void OnWahrnehmungFuehrungsrollenInfoButton()
@@ -245,6 +252,7 @@ namespace Assets._Scripts.SceneControllers
             erwartungenNormenInfoGroup.SetActive(false);
             wahrnehmungFuehrungsrollenInfoGroup.SetActive(true);
             barrierenHindernisseInfoGroup.SetActive(false);
+            StartCoroutine(RebuildLayout());
         }
 
         private void OnBarrierenHindernisseInfoButton()
@@ -257,6 +265,7 @@ namespace Assets._Scripts.SceneControllers
             erwartungenNormenInfoGroup.SetActive(false);
             wahrnehmungFuehrungsrollenInfoGroup.SetActive(false);
             barrierenHindernisseInfoGroup.SetActive(true);
+            StartCoroutine(RebuildLayout());
         }
 
         public void NavigateScene()
@@ -322,5 +331,11 @@ namespace Assets._Scripts.SceneControllers
                 biasGroups.SetActive(true);
             }
         }
+
+    private IEnumerator RebuildLayout()
+    {
+        yield return null; // Einen Frame warten
+        LayoutRebuilder.ForceRebuildLayoutImmediate(contentRectTransform);
+    }
     }
 }
