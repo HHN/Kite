@@ -9,14 +9,11 @@ namespace Assets._Scripts.SaveNovelData
 {
     public class HintForSavegameMessageBox : MonoBehaviour
     {
-        [SerializeField]
-        private TextMeshProUGUI messageBoxHeadline; // Text component for the headline of the message box
-
         [SerializeField] private TextMeshProUGUI messageBoxBody; // Text component for the body of the message box
         [SerializeField] private Button continueButton; // Button to continue with the novel
         [SerializeField] private Button restartButton; // Button to restart the novel
-        [SerializeField] private GameObject textContinue; // GameObject containing the "Continue" text
-        [SerializeField] private GameObject textRestart; // GameObject containing the "Restart" text
+        [SerializeField] private TextMeshProUGUI textContinue; // GameObject containing the "Continue" text
+        [SerializeField] private TextMeshProUGUI textRestart; // GameObject containing the "Restart" text
 
         [SerializeField]
         private GameObject person; // GameObject representing the person or character related to the message
@@ -52,8 +49,8 @@ namespace Assets._Scripts.SaveNovelData
             Color color = NovelColorManager.Instance().GetColor();
 
             // Set the color of the text components to match the selected novel color theme
-            textContinue.GetComponent<TextMeshProUGUI>().color = color;
-            textRestart.GetComponent<TextMeshProUGUI>().color = color;
+            textContinue.color = color;
+            textRestart.color = color;
         }
 
         /// <summary>
@@ -79,6 +76,7 @@ namespace Assets._Scripts.SaveNovelData
         private void OnRestartButton()
         {
             _playNovelSceneController.RestartNovel();
+            GameManager.Instance.CheckAndSetAllNovelsStatus();
             CloseMessageBox();
         }
 
@@ -88,12 +86,12 @@ namespace Assets._Scripts.SaveNovelData
         public void CloseMessageBox()
         {
             // Ensure the object is not null or destroyed before attempting to destroy it
-            if (this.IsNullOrDestroyed() || this.gameObject.IsNullOrDestroyed())
+            if (this.IsNullOrDestroyed() || gameObject.IsNullOrDestroyed())
             {
                 return;
             }
 
-            DestroyImmediate(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }

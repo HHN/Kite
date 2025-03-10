@@ -1,6 +1,8 @@
+using Assets._Scripts.Player;
 using UnityEngine;
 using UnityEngine.EventSystems;
-namespace Assets._Scripts.Player
+
+namespace _00_Kite2.Player
 {
 
     public class PlayNovelSceneTouchDetector : MonoBehaviour, IPointerClickHandler

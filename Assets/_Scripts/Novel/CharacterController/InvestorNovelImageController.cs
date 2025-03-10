@@ -22,7 +22,6 @@ namespace Assets._Scripts.Novel.CharacterController
             novelKite2CharacterController = characterContainer.GetComponentInChildren<Kite2CharacterController>();
 
             novelKite2CharacterController.SetSkinSprite();
-            // novelKite2CharacterController.SetHandSprite();
             novelKite2CharacterController.SetClotheSprite();
             novelKite2CharacterController.SetHairSprite();
 
@@ -31,59 +30,33 @@ namespace Assets._Scripts.Novel.CharacterController
                 colorIndex = novelKite2CharacterController.handIndex[0],
                 spriteIndex = novelKite2CharacterController.handIndex[1],
             };
-
-            GameManager.Instance.AddCharacterData(
-                9, // Schlüssel für den Eintrag
-                new CharacterData
-                {
-                    skinIndex = novelKite2CharacterController.skinIndex,
-                    // handIndex = handSpriteIndex,
-                    clotheIndex = novelKite2CharacterController.clotheIndex,
-                    hairIndex = novelKite2CharacterController.hairIndex
-                }
-            );
-        }
-
-        private void SetInitialSpritesForImages()
-        {
-            Image image = decoPlantPrefab.GetComponent<Image>();
-            image.sprite = animationFramesPlant[0];
-            if (decoPlantContainer.transform.childCount > 0)
+            
+            foreach (var novelStatus in GameManager.Instance.NovelSaveStatusList)
             {
-                Destroy(decoPlantContainer.transform.GetChild(0).gameObject);
+                // Wenn das Novel die gesuchte ID hat, setze den isSaved Wert
+                int.TryParse(novelStatus.novelId, out int number);
+                if (number == 9)
+                {
+                    if (!novelStatus.isSaved)
+                    {
+                        GameManager.Instance.AddCharacterData(
+                            9, // Schlüssel für den Eintrag
+                            new CharacterData
+                            {
+                                skinIndex = novelKite2CharacterController.skinIndex,
+                                clotheIndex = novelKite2CharacterController.clotheIndex,
+                                hairIndex = novelKite2CharacterController.hairIndex
+                            }
+                        );
+                    }
+
+                    break; // Keine Notwendigkeit mehr weiterzusuchen
+                }
             }
-
-            Instantiate(decoPlantPrefab, decoPlantContainer.transform);
-        }
-
-        private void SetInitialCharacters()
-        {
-            if (characterPrefab == null) return;
-
-            _instantiatedCharacter = Instantiate(characterPrefab, characterContainer, false);
-            RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
-
-            if (rectTransform == null) return;
-
-            rectTransform.anchorMin = new Vector2(0.5f, 0);
-            rectTransform.anchorMax = new Vector2(0.5f, 1);
-
-            rectTransform.pivot = new Vector2(0.5f, 0.5f);
-
-            rectTransform.anchoredPosition = new Vector2(0, 0);
-
-            rectTransform.sizeDelta = new Vector2(1200.339f, 0);
-
-            rectTransform.localPosition = new Vector3(0, 0, 0);
-
-            rectTransform.localScale = new Vector3(1, 1, 1);
-
-            rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
         }
 
         public override void SetCharacter()
         {
-            // base.novelKite2CharacterController = _instantiatedCharacter.GetComponent<Kite2CharacterController>();
         }
 
         public override bool HandleTouchEvent(float x, float y)

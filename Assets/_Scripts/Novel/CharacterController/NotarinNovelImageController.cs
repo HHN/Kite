@@ -32,67 +32,33 @@ namespace Assets._Scripts.Novel.CharacterController
             novelKite2CharacterController.SetSkinSprite();
             novelKite2CharacterController.SetClotheSprite();
             novelKite2CharacterController.SetHairSprite();
-
-            GameManager.Instance.AddCharacterData(
-                4, // Schlüssel für den Eintrag
-                new CharacterData
+            
+            foreach (var novelStatus in GameManager.Instance.NovelSaveStatusList)
+            {
+                // Wenn das Novel die gesuchte ID hat, setze den isSaved Wert
+                int.TryParse(novelStatus.novelId, out int number);
+                if (number == 4)
                 {
-                    skinIndex = novelKite2CharacterController.skinIndex,
-                    clotheIndex = novelKite2CharacterController.clotheIndex,
-                    hairIndex = novelKite2CharacterController.hairIndex
+                    if (!novelStatus.isSaved)
+                    {
+                        GameManager.Instance.AddCharacterData(
+                            4, // Schlüssel für den Eintrag
+                            new CharacterData
+                            {
+                                skinIndex = novelKite2CharacterController.skinIndex,
+                                clotheIndex = novelKite2CharacterController.clotheIndex,
+                                hairIndex = novelKite2CharacterController.hairIndex
+                            }
+                        );
+                    }
+
+                    break; // Keine Notwendigkeit mehr weiterzusuchen
                 }
-            );
-        }
-
-        private void SetInitialSpritesForImages()
-        {
-            Image image = decoGlasPrefab.GetComponent<Image>();
-            image.sprite = animationFramesGlas[0];
-            if (decoGlasContainer.transform.childCount > 0)
-            {
-                Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
             }
-
-            Instantiate(decoGlasPrefab, decoGlasContainer.transform);
-
-            image = decoPlantPrefab.GetComponent<Image>();
-            image.sprite = animationFramesPlant[0];
-            if (decoPlantContainer.transform.childCount > 0)
-            {
-                Destroy(decoPlantContainer.transform.GetChild(0).gameObject);
-            }
-
-            Instantiate(decoPlantPrefab, decoPlantContainer.transform);
-        }
-
-        private void SetInitialCharacters()
-        {
-            if (characterPrefab == null) return;
-
-            _instantiatedCharacter = Instantiate(characterPrefab, characterContainer, false);
-            RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
-
-            if (rectTransform == null) return;
-
-            rectTransform.anchorMin = new Vector2(0.5f, 0);
-            rectTransform.anchorMax = new Vector2(0.5f, 1);
-
-            rectTransform.pivot = new Vector2(0.5f, 0.5f);
-
-            rectTransform.anchoredPosition = new Vector2(0, 0);
-
-            rectTransform.sizeDelta = new Vector2(1200.339f, 0);
-
-            rectTransform.localPosition = new Vector3(0, 0, 0);
-
-            rectTransform.localScale = new Vector3(1, 1, 1);
-
-            rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
         }
 
         public override void SetCharacter()
         {
-            // novelKite2CharacterController = _instantiatedCharacter.GetComponent<Kite2CharacterController>();
         }
 
         public override void DestroyCharacter()

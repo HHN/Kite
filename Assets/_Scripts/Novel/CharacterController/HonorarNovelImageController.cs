@@ -28,59 +28,34 @@ namespace Assets._Scripts.Novel.CharacterController
             // novelKite2CharacterController.SetHandSprite();
             novelKite2CharacterController.SetClotheSprite();
             novelKite2CharacterController.SetHairSprite();
-
-            GameManager.Instance.AddCharacterData(
-                11, // Schlüssel für den Eintrag
-                new CharacterData
-                {
-                    skinIndex = novelKite2CharacterController.skinIndex,
-                    // handIndex = novelKite2CharacterController.handIndex,
-                    clotheIndex = novelKite2CharacterController.clotheIndex,
-                    hairIndex = novelKite2CharacterController.hairIndex
-                }
-            );
-        }
-
-        private void SetInitialSpritesForImages()
-        {
-            Image image = decoVasePrefab.GetComponent<Image>();
-            image.sprite = animationFramesVase[0];
-            if (decoVaseContainer.transform.childCount > 0)
+            
+            foreach (var novelStatus in GameManager.Instance.NovelSaveStatusList)
             {
-                Destroy(decoVaseContainer.transform.GetChild(0).gameObject);
+                // Wenn das Novel die gesuchte ID hat, setze den isSaved Wert
+                int.TryParse(novelStatus.novelId, out int number);
+                if (number == 11)
+                {
+                    if (!novelStatus.isSaved)
+                    {
+                        GameManager.Instance.AddCharacterData(
+                            11, // Schlüssel für den Eintrag
+                            new CharacterData
+                            {
+                                skinIndex = novelKite2CharacterController.skinIndex,
+                                // handIndex = novelKite2CharacterController.handIndex,
+                                clotheIndex = novelKite2CharacterController.clotheIndex,
+                                hairIndex = novelKite2CharacterController.hairIndex
+                            }
+                        );
+                    }
+
+                    break; // Keine Notwendigkeit mehr weiterzusuchen
+                }
             }
-
-            Instantiate(decoVasePrefab, decoVaseContainer.transform);
-        }
-
-        private void SetInitialCharacters()
-        {
-            if (characterPrefab == null) return;
-
-            _instantiatedCharacter = Instantiate(characterPrefab, characterContainer, false);
-            RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
-
-            if (rectTransform == null) return;
-
-            rectTransform.anchorMin = new Vector2(0.5f, 0);
-            rectTransform.anchorMax = new Vector2(0.5f, 1);
-
-            rectTransform.pivot = new Vector2(0.5f, 0.5f);
-
-            rectTransform.anchoredPosition = new Vector2(-61, -721);
-
-            rectTransform.sizeDelta = new Vector2(1766.319f, 0);
-
-            rectTransform.localPosition = new Vector3(-61, -720, 0);
-
-            rectTransform.localScale = new Vector3(1, 1, 1);
-
-            rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
         }
 
         public override void SetCharacter()
         {
-            // base.novelKite2CharacterController = _instantiatedCharacter.GetComponent<Kite2CharacterController>();
         }
 
         public override void SetBackground()

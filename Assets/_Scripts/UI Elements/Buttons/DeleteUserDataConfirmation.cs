@@ -22,11 +22,14 @@ namespace Assets._Scripts.UI_Elements.Buttons
         [SerializeField] private GameObject uiContainer;
         [SerializeField] private TextMeshProUGUI messageText;
 
+        private const string Delete = "delete";
+        private const string Reset = "reset";
+
         private string _origin;
 
         public void Initialize(string origin)
         {
-            this._origin = origin;
+            _origin = origin;
             FontSizeManager.Instance().UpdateAllTextComponents();
         }
 
@@ -35,12 +38,12 @@ namespace Assets._Scripts.UI_Elements.Buttons
             cancelButton.onClick.AddListener(OnCancelButton);
             confirmButton.onClick.AddListener(OnConfirmButton);
 
-            if (_origin == "delete")
+            if (_origin == Delete)
             {
                 messageText.text = InfoMessages.DELETE_DATA_CONFIRMATION;
             }
-
-            if (_origin == "reset")
+            
+            if (_origin == Reset)
             {
                 messageText.text = InfoMessages.RESET_APP_CONFIRMATION;
             }
@@ -64,7 +67,7 @@ namespace Assets._Scripts.UI_Elements.Buttons
 
         private void OnConfirmButton()
         {
-            if (_origin == "delete")
+            if (_origin == Delete)
             {
                 StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.DELETED_DATA));
                 PlayerDataManager.Instance().ClearRelevantUserdata();
@@ -76,7 +79,7 @@ namespace Assets._Scripts.UI_Elements.Buttons
                 CloseMessageBox();
             }
 
-            if (_origin == "reset")
+            if (_origin == Reset)
             {
                 SaveLoadManager.ClearAllSaveData();
 
@@ -89,7 +92,8 @@ namespace Assets._Scripts.UI_Elements.Buttons
                 ShowPlayInstructionManager.Instance().SetShowInstruction(true);
                 CloseMessageBox();
             }
-            Assets._Scripts.Managers.DialogHistoryManager.Instance().ClearList();
+
+            DialogHistoryManager.Instance().ClearList();
         }
 
         private void OnCancelButton()
@@ -99,17 +103,17 @@ namespace Assets._Scripts.UI_Elements.Buttons
 
         public void Activate()
         {
-            this.gameObject.SetActive(true);
+            gameObject.SetActive(true);
         }
 
         public void CloseMessageBox()
         {
-            if (this.IsNullOrDestroyed() || this.gameObject.IsNullOrDestroyed())
+            if (this.IsNullOrDestroyed() || gameObject.IsNullOrDestroyed())
             {
                 return;
             }
 
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }

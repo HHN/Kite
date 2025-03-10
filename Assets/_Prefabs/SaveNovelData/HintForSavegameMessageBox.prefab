@@ -1000,8 +1000,8 @@ MonoBehaviour:
   messageBoxBody: {fileID: 5629918238001899984}
   continueButton: {fileID: 3285660958884881377}
   restartButton: {fileID: 2124244729785374120}
-  textContinue: {fileID: 3285660957898591839}
-  textRestart: {fileID: 125854002053972208}
+  textContinue: {fileID: 3285660957898591833}
+  textRestart: {fileID: 1152946741549959397}
   person: {fileID: 7650504827494563425}
 --- !u!1 &5629918239573963860
 GameObject:
