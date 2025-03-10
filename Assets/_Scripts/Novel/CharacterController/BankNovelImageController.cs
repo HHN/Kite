@@ -61,55 +61,8 @@ namespace Assets._Scripts.Novel.CharacterController
             }
         }
 
-        private void SetInitialSpritesForImages()
-        {
-            Image image = decoPlantPrefab.GetComponent<Image>();
-            image.sprite = animationFramesPlant[0];
-            if (decoPlantContainer.transform.childCount > 0)
-            {
-                Destroy(decoPlantContainer.transform.GetChild(0).gameObject);
-            }
-
-            Instantiate(decoPlantPrefab, decoPlantContainer.transform);
-
-            image = decoGlasPrefab.GetComponent<Image>();
-            image.sprite = animationFramesGlas[0];
-            if (decoGlasContainer.transform.childCount > 0)
-            {
-                Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
-            }
-
-            Instantiate(decoGlasPrefab, decoGlasContainer.transform);
-        }
-
-        private void SetInitialCharacters()
-        {
-            if (characterPrefab == null) return;
-
-            _instantiatedCharacter = Instantiate(characterPrefab, characterContainer, false);
-            RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
-
-            if (rectTransform == null) return;
-
-            rectTransform.anchorMin = new Vector2(0.5f, 0);
-            rectTransform.anchorMax = new Vector2(0.5f, 1);
-
-            rectTransform.pivot = new Vector2(0.5f, 0.5f);
-
-            rectTransform.anchoredPosition = new Vector2(0, -699);
-
-            rectTransform.sizeDelta = new Vector2(1200.339f, 0);
-
-            rectTransform.localPosition = new Vector3(0, 699, 0);
-
-            rectTransform.localScale = new Vector3(1, 1, 1);
-
-            rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
-        }
-
         public override void SetCharacter()
         {
-            // Kite2CharacterController = _instantiatedCharacter.GetComponent<Kite2CharacterController>();
         }
 
         public override bool HandleTouchEvent(float x, float y)

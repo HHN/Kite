@@ -29,6 +29,9 @@ namespace Assets._Scripts.SceneControllers
         [SerializeField] private DeleteUserDataConfirmation deleteUserDataConfirmDialogObject;
         [SerializeField] private GameObject deleteUserDataConfirmDialog;
 
+        private const string Delete = "delete";
+        private const string Origin = "reset";
+
         private void Start()
         {
             BackStackManager.Instance().Push(SceneNames.DatenschutzScene);
@@ -117,7 +120,7 @@ namespace Assets._Scripts.SceneControllers
             deleteUserDataConfirmDialogObject = null;
             deleteUserDataConfirmDialogObject = Instantiate(deleteUserDataConfirmDialog,
                 canvas.transform).GetComponent<DeleteUserDataConfirmation>();
-            deleteUserDataConfirmDialogObject.Initialize("delete");
+            deleteUserDataConfirmDialogObject.Initialize(Delete);
             deleteUserDataConfirmDialogObject.Activate();
         }
 
@@ -142,7 +145,7 @@ namespace Assets._Scripts.SceneControllers
             deleteUserDataConfirmDialogObject = null;
             deleteUserDataConfirmDialogObject = Instantiate(deleteUserDataConfirmDialog,
                 canvas.transform).GetComponent<DeleteUserDataConfirmation>();
-            deleteUserDataConfirmDialogObject.Initialize("reset");
+            deleteUserDataConfirmDialogObject.Initialize(Origin);
             deleteUserDataConfirmDialogObject.Activate();
         }
 

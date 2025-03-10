@@ -60,6 +60,8 @@ namespace Assets._Scripts
         public static GameManager Instance { get; private set; }
 
         private Dictionary<long, CharacterData> _characterDataDictionary = new();
+        
+        public List<NovelSaveStatus> NovelSaveStatusList => novelSaveStatusList;
 
         // Property to get or set the skipIntroNovel flag
         public bool SkipIntroNovel

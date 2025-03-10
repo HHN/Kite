@@ -33,7 +33,7 @@ namespace Assets._Scripts.Novel.CharacterController
             {
                 // Wenn das Novel die gesuchte ID hat, setze den isSaved Wert
                 int.TryParse(novelStatus.novelId, out int number);
-                if (number == 10)
+                if (number == 11)
                 {
                     if (!novelStatus.isSaved)
                     {
@@ -54,46 +54,8 @@ namespace Assets._Scripts.Novel.CharacterController
             }
         }
 
-        private void SetInitialSpritesForImages()
-        {
-            Image image = decoVasePrefab.GetComponent<Image>();
-            image.sprite = animationFramesVase[0];
-            if (decoVaseContainer.transform.childCount > 0)
-            {
-                Destroy(decoVaseContainer.transform.GetChild(0).gameObject);
-            }
-
-            Instantiate(decoVasePrefab, decoVaseContainer.transform);
-        }
-
-        private void SetInitialCharacters()
-        {
-            if (characterPrefab == null) return;
-
-            _instantiatedCharacter = Instantiate(characterPrefab, characterContainer, false);
-            RectTransform rectTransform = _instantiatedCharacter.GetComponent<RectTransform>();
-
-            if (rectTransform == null) return;
-
-            rectTransform.anchorMin = new Vector2(0.5f, 0);
-            rectTransform.anchorMax = new Vector2(0.5f, 1);
-
-            rectTransform.pivot = new Vector2(0.5f, 0.5f);
-
-            rectTransform.anchoredPosition = new Vector2(-61, -721);
-
-            rectTransform.sizeDelta = new Vector2(1766.319f, 0);
-
-            rectTransform.localPosition = new Vector3(-61, -720, 0);
-
-            rectTransform.localScale = new Vector3(1, 1, 1);
-
-            rectTransform.localRotation = Quaternion.Euler(0, 0, 0);
-        }
-
         public override void SetCharacter()
         {
-            // base.novelKite2CharacterController = _instantiatedCharacter.GetComponent<Kite2CharacterController>();
         }
 
         public override void SetBackground()

@@ -7,7 +7,7 @@ namespace Assets._Scripts.Managers
     public class DialogHistoryManager
     {
         private static DialogHistoryManager _instance;
-        private DialogHistoryEntryList _entries;
+        [SerializeField] private DialogHistoryEntryList _entries;
         private const string Key = "DialogueHistoryEntries";
 
 

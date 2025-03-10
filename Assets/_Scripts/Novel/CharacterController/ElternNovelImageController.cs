@@ -65,7 +65,7 @@ namespace Assets._Scripts.Novel.CharacterController
             {
                 // Wenn das Novel die gesuchte ID hat, setze den isSaved Wert
                 int.TryParse(novelStatus.novelId, out int number);
-                if (number == 10)
+                if (number == 2)
                 {
                     if (!novelStatus.isSaved)
                     {
@@ -91,95 +91,8 @@ namespace Assets._Scripts.Novel.CharacterController
             }
         }
 
-        private void SetInitialSpritesForImages()
-        {
-            Image image = decoTasse1Prefab.GetComponent<Image>();
-            image.sprite = animationFramesTasse1[0];
-            if (decoTasse1Container.transform.childCount > 0)
-            {
-                Destroy(decoTasse1Container.transform.GetChild(0).gameObject);
-            }
-
-            Instantiate(decoTasse1Prefab, decoTasse1Container.transform);
-
-            image = decoTasse2Prefab.GetComponent<Image>();
-            image.sprite = animationFramesTasse2[0];
-            if (decoTasse2Container.transform.childCount > 0)
-            {
-                Destroy(decoTasse2Container.transform.GetChild(0).gameObject);
-            }
-
-            Instantiate(decoTasse2Prefab, decoTasse2Container.transform);
-
-            image = decoKannePrefab.GetComponent<Image>();
-            image.sprite = animationFramesKanne[0];
-            if (decoKanneContainer.transform.childCount > 0)
-            {
-                Destroy(decoKanneContainer.transform.GetChild(0).gameObject);
-            }
-
-            Instantiate(decoKannePrefab, decoKanneContainer.transform);
-
-            image = decoLampePrefab.GetComponent<Image>();
-            image.sprite = decoLampeOff;
-            if (decoLampeContainer.transform.childCount > 0)
-            {
-                Destroy(decoLampeContainer.transform.GetChild(0).gameObject);
-            }
-
-            Instantiate(decoLampePrefab, decoLampeContainer.transform);
-        }
-
-        private void SetInitialCharacters()
-        {
-            if (characterMutterPrefab == null || characterVaterPrefab == null) return;
-
-            _instantiatedMotherCharacter = Instantiate(characterMutterPrefab, motherCharacterContainer, false);
-            RectTransform rectTransformMutter = _instantiatedMotherCharacter.GetComponent<RectTransform>();
-            if (rectTransformMutter != null)
-            {
-                rectTransformMutter.anchorMin = new Vector2(0.5f, 0.5f);
-                rectTransformMutter.anchorMax = new Vector2(0.5f, 0.5f);
-
-                rectTransformMutter.pivot = new Vector2(0.5f, 0.5f);
-
-                rectTransformMutter.anchoredPosition = new Vector2(-315, -597);
-
-                rectTransformMutter.sizeDelta = new Vector2(1200.339f, 1044);
-
-                rectTransformMutter.localPosition = new Vector3(-315, -597, 0);
-
-                rectTransformMutter.localScale = new Vector3(1, 1, 1);
-
-                rectTransformMutter.localRotation = Quaternion.Euler(0, 0, 0);
-            }
-
-            _instantiatedFatherCharacter = Instantiate(characterVaterPrefab, fatherCharacterContainer, false);
-            RectTransform rectTransformVater = _instantiatedFatherCharacter.GetComponent<RectTransform>();
-
-            if (rectTransformVater != null)
-            {
-                rectTransformVater.anchorMin = new Vector2(0.5f, 0.5f);
-                rectTransformVater.anchorMax = new Vector2(0.5f, 0.5f);
-
-                rectTransformVater.pivot = new Vector2(0.5f, 0.5f);
-
-                rectTransformVater.anchoredPosition = new Vector2(204, -610);
-
-                rectTransformVater.sizeDelta = new Vector2(1200.339f, 1044);
-
-                rectTransformVater.localPosition = new Vector3(204, -610, 0);
-
-                rectTransformVater.localScale = new Vector3(1, 1, 1);
-
-                rectTransformVater.localRotation = Quaternion.Euler(0, 0, 0);
-            }
-        }
-
         public override void SetCharacter()
         {
-            // novelKite2CharacterController = _instantiatedMotherCharacter.GetComponent<Kite2CharacterController>();
-            // novelKite2CharacterController2 = _instantiatedFatherCharacter.GetComponent<Kite2CharacterController>();
         }
 
         public override void SetBackground()
