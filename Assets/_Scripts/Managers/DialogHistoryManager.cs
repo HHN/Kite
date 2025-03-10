@@ -60,7 +60,7 @@ namespace Assets._Scripts.Managers
 
         public void ClearList()
         {
-            _entries = new DialogHistoryEntryList();
+            _entries = new DialogHistoryEntryList() { entries = new List<DialogHistoryEntry>() };
         }
     }
 
