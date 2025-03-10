@@ -178,6 +178,7 @@ namespace Assets._Scripts.Player
             {
                 buttonContainers[i].transform.SetSiblingIndex(i + 1); // +1, um das InputField oben zu halten
             }
+            inputField.transform.SetSiblingIndex(0);
         }
 
         public void OnBackgroundButton()
