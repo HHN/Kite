@@ -12,14 +12,8 @@ namespace Assets._Scripts.SceneControllers
 {
     public class DatenschutzSceneController : SceneController
     {
-        [SerializeField] private Toggle dataCollectionToggle;
-        [SerializeField] private Button toggleDataCollectionInfoButton;
-        [SerializeField] private Button deleteCollectedDataButton;
-        [SerializeField] private Button deleteCollectedDataInfoButton;
         [SerializeField] private Button resetAppButton;
         [SerializeField] private Button resetAppInfoButton;
-        [SerializeField] private Button playerPrefsButton;
-        [SerializeField] private Button playerPrefsInfoButton;
         [SerializeField] private Toggle applicationModeToggle;
         [SerializeField] private Button applicationModeInfoButton;
         [SerializeField] private AudioSource audioSource;
@@ -40,17 +34,10 @@ namespace Assets._Scripts.SceneControllers
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout02);
             audioSource = GetComponent<AudioSource>();
 
-            InitializeToggleDataCollectionButton();
             InitializeApplicationModeButton();
 
-            dataCollectionToggle.onValueChanged.AddListener(delegate { OnToggleDataCollection(dataCollectionToggle); });
-            toggleDataCollectionInfoButton.onClick.AddListener(OnToggleDataCollectionInfoButton);
-            deleteCollectedDataButton.onClick.AddListener(OnDeleteCollectedDataButton);
-            deleteCollectedDataInfoButton.onClick.AddListener(OnDeleteCollectedDataInfoButton);
             resetAppButton.onClick.AddListener(OnResetAppButton);
             resetAppInfoButton.onClick.AddListener(OnResetAppInfoButton);
-            playerPrefsButton.onClick.AddListener(OnPlayerPrefsButton);
-            playerPrefsInfoButton.onClick.AddListener(OnPlayerPrefsInfoButton);
             applicationModeToggle.onValueChanged.AddListener(delegate
             {
                 OnApplicationModeToggle(applicationModeToggle);
@@ -155,17 +142,6 @@ namespace Assets._Scripts.SceneControllers
             DisplayInfoMessage(InfoMessages.EXPLANATION_RESET_APP_BUTTON);
         }
 
-        private void InitializeToggleDataCollectionButton()
-        {
-            if (PrivacyAndConditionManager.Instance().IsDataCollectionAccepted())
-            {
-                dataCollectionToggle.isOn = true;
-            }
-            else
-            {
-                dataCollectionToggle.isOn = false;
-            }
-        }
 
         private void InitializeApplicationModeButton()
         {
