@@ -472,7 +472,7 @@ MonoBehaviour:
   canvas: {fileID: 201577320}
   visualNovelHolder: {fileID: 1766330958}
   bankkreditNovel: {fileID: 1756499380}
-  investorNovel: {fileID: 0}
+  investorNovel: {fileID: 1544616211}
   bankkontoNovel: {fileID: 992898982}
   foerderAntragNovel: {fileID: 93171630}
   elternNovel: {fileID: 1921530029}
