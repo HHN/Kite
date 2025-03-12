@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Assets._Scripts.Biases
 {
     public static class BiasDescriptionTexts
@@ -25,91 +27,6 @@ namespace Assets._Scripts.Biases
             UnbewussteBiasInDerKommunikation
         }
 
-        public static string GetStringByType(BiasType biasType)
-        {
-            switch (biasType)
-            {
-                case BiasType.Finanzierungszugang:
-                    return "<size=40><align=center><b>" + FinanzierungszugangHeadline + "</b></align></size>\n\n" +
-                        "<size=30><b>" + FinanzierungszugangDescriptionPreview + "</b></size>" +
-                        "<size=30>" + FinanzierungszugangDescription + "</size>";
-                case BiasType.GenderPayGap:
-                    return "<size=40><align=center><b>" + GenderPayGapHeadline + "</b></align></size>\n\n" +
-                           "<size=30><b>" + GenderPayGapDescriptionPreview + "</b></size>" +
-                           "<size=30>" + GenderPayGapDescription + "</size>";
-                case BiasType.UnterbewertungWeiblichGefuehrterUnternehmen:
-                    return "<size=40><align=center><b>" + UnterbewertungWeiblichGefuehrterUnternehmenHeadline + "</b></align></size>\n\n" +
-                           "<size=30><b>" + UnterbewertungWeiblichGefuehrterUnternehmenPreview + "</b></size>" +
-                           "<size=30>" + UnterbewertungWeiblichGefuehrterUnternehmenDescription + "</size>";
-                case BiasType.RiskAversionBias:
-                    return "<size=40><align=center><b>" + RiskAversionBiasHeadline + "</b></align></size>\n\n" +
-                           "<size=30><b>" + RiskAversionBiasPreview + "</b></size>" +
-                           "<size=30>" + RiskAversionBiasDescription + "</size>";
-                case BiasType.ConfirmationBias:
-                    return "<size=40><align=center><b>" + CONFIRMATION_BIAS_HEADLINE + "</b></align></size>\n\n" +
-                           "<size=30><b>" + CONFIRMATION_BIAS_PREVIEW + "</b></size>" +
-                           "<size=30>" + CONFIRMATION_BIAS_DESCRIPTION + "</size>";
-                case BiasType.Tokenism:
-                    return "<size=40><align=center><b>" + TokenismHeadline + "</b></align></size>\n\n" +
-                           "<size=30><b>" + TokenismPreview + "</b></size>" +
-                           "<size=30>" + TokenismDescription + "</size>";
-                case BiasType.BiasInDerWahrnehmungVonFuehrungsfaehigkeiten:
-                    return "<size=40><align=center><b>" + BiasInDerWahrnehmungVonFuehrungsfaehigkeitenHeadline + "</b></align></size>\n\n" +
-                           "<size=30><b>" + BiasInDerWahrnehmungVonFuehrungsfaehigkeitenPreview + "</b></size>" +
-                           "<size=30>" + BiasInDerWahrnehmungVonFuehrungsfaehigkeitenDescription + "</size>";
-                case BiasType.BenevolenterSexismus:
-                    return "<size=40><align=center><b>" + BenevolenterSexismusHeadline + "</b></align></size>\n\n" +
-                           "<size=30><b>" + BenevolenterSexismusPreview + "</b></size>" +
-                           "<size=30>" + BenevolenterSexismusDescription + "</size>";
-                case BiasType.AltersUndGenerationenBiases:
-                    return "<size=40><align=center><b>" + AltersUndGenerationenBiasHeadline + "</b></align></size>\n\n" +
-                           "<size=30><b>" + AltersUndGenerationenBiasPreview + "</b></size>" +
-                           "<size=30>" + AltersUndGenerationenBiasDescription + "</size>";
-                case BiasType.Stereotype:
-                    return "<size=40><align=center><b>" + StereotypeHeadline + "</b></align></size>\n\n" +
-                           "<size=30><b>" + StereotypePreview + "</b></size>" +
-                           "<size=30>" + StereotypeDescription + "</size>";
-                case BiasType.Heteronormativitaet:
-                    return "<size=40><align=center><b>" + HeteronormativitaetHeadline + "</b></align></size>\n\n" +
-                           "<size=30><b>" + HeteronormativitaetPreview + "</b></size>" +
-                           "<size=30>" + HeteronormativitaetDescription + "</size>";
-                case BiasType.MaternalBias:
-                    return "<size=40><align=center><b>" + MaternalBiasHeadline + "</b></align></size>\n\n" +
-                           "<size=30><b>" + MaternalBiasPreview + "</b></size>" +
-                           "<size=30>" + MaternalBiasDescription + "</size>";
-                case BiasType.FamilienplanungBias:
-                    return "<size=40><align=center><b>" + FamilienplanungBiasHeadline + "</b></align></size>\n\n" +
-                           "<size=30><b>" + FamilienplanungPreview + "</b></size>" +
-                           "<size=30>" + FamilienplanungDescription + "</size>";
-                case BiasType.WorkLifeBalance:
-                    return "<size=40><align=center><b>" + WorkLifeBalanceHeadline + "</b></align></size>\n\n" +
-                           "<size=30><b>" + WorkLifeBalancePreview + "</b></size>" +
-                           "<size=30>" + WorkLifeBalanceDescription + "</size>";
-                case BiasType.GeschlechtsspezifischeStereotype:
-                    return "<size=40><align=center><b>" + GeschlechtsspezifischeStereotypeHeadline + "</b></align></size>\n\n" +
-                           "<size=30><b>" + GeschlechtsspezifischeStereotypePreview + "</b></size>" +
-                           "<size=30>" + GeschlechtsspezifischeStereotypeDescription + "</size>";
-                case BiasType.TightropeBias:
-                    return "<size=40><align=center><b>" + TightropeBiasHeadline + "</b></align></size>\n\n" +
-                           "<size=30><b>" + TightropeBiasPreview + "</b></size>" +
-                           "<size=30>" + TightropeBiasDescription + "</size>";
-                case BiasType.Mikroagressionen:
-                    return "<size=40><align=center><b>" + MikroaggressionenHeadline + "</b></align></size>\n\n" +
-                           "<size=30><b>" + MikroaggressionenPreview + "</b></size>" +
-                           "<size=30>" + MikroaggressionenDescription + "</size>";
-                case BiasType.LeistungsattributionsBias:
-                    return "<size=40><align=center><b>" + LeistungsattributionsBiasHeadline + "</b></align></size>\n\n" +
-                           "<size=30><b>" + LeistungsattributionsBiasPreview + "</b></size>" +
-                           "<size=30>" + LeistungsattributionsBiasDescription + "</size>";
-                case BiasType.UnbewussteBiasInDerKommunikation:
-                    return "<size=40><align=center><b>" + UnbewussteBiasInDerKommunikationHeadline + "</b></align></size>\n\n" +
-                           "<size=30><b>" + UnbewussteBiasInDerKommunikationPreview + "</b></size>" +
-                           "<size=30>" + UnbewussteBiasInDerKommunikationDescription + "</size>";
-                default:
-                    return "";
-            }
-        }
-
         public static readonly string PLACEHOLDER =
             "<size=30><b>Schwierigkeiten von Frauen, Kapital für ihre Unternehmen zu beschaffen. Hier einige Daten und Fakten dazu:\n\n</b>" +
             "In Deutschland ist es so und so, und hier gibt es Zahlen dazu. Und so weiter und so weiter..." +
@@ -117,6 +34,8 @@ namespace Assets._Scripts.Biases
             "In Deutschland ist es so und so, und hier gibt es Zahlen dazu. Und so weiter und so weiter..." +
             "In Deutschland ist es so und so, und hier gibt es Zahlen dazu. Und so weiter und so weiter..." +
             "In Deutschland ist es so und so, und hier gibt es Zahlen dazu. Und so weiter und so weiter...\n\n</size>";
+        
+        private static readonly string LinkColor = "#F5944E";
 
         #region Finanzierungszugang
 
@@ -128,15 +47,15 @@ namespace Assets._Scripts.Biases
             "fließen in rein weibliche Teams – eine markante Diskrepanz.\n\n";
 
         private static readonly string FinanzierungszugangDescription =
-            "Studien zeigen, dass Investorinnen und Investoren Frauen oft als risikoaverser wahrnehmen und ihre " +
-            "Geschäftsmodelle kritischer hinterfragen. Während männliche Gründer häufiger zu Wachstumsstrategien " +
-            "befragt werden, müssen Frauen verstärkt ihre Risikominimierung erklären. Das führt dazu, dass sie " +
-            "seltener an große Finanzierungsrunden kommen und langsamer skalieren können " +
-            "(Quelle: <link=\"https://www.ey.com/de_de/newsroom/2024/02/startup-barometer-gruenderinnen\">EY Startup-Barometer 2024</link>).\n\n" +
-            "In unseren Stories zeigt sich dieser Bias, wenn ein Familienmitglied skeptisch fragt, ob genügend Kapital " +
-            "vorhanden ist, um das Unternehmen langfristig zu finanzieren. Während männlichen Gründern oft automatisch " +
-            "zugetraut wird, die Finanzierung bereits gesichert zu haben, müssen Frauen erst beweisen, " +
-            "dass sie Kapital beschaffen können.";
+            $"Studien zeigen, dass Investorinnen und Investoren Frauen oft als risikoaverser wahrnehmen und ihre " +
+            $"Geschäftsmodelle kritischer hinterfragen. Während männliche Gründer häufiger zu Wachstumsstrategien " +
+            $"befragt werden, müssen Frauen verstärkt ihre Risikominimierung erklären. Das führt dazu, dass sie " +
+            $"seltener an große Finanzierungsrunden kommen und langsamer skalieren können " +
+            $"(<color={LinkColor}><link=\"https://www.ey.com/de_de/newsroom/2024/02/startup-barometer-gruenderinnen\">Quelle</link></color>).\n\n" +
+            $"In unseren Stories zeigt sich dieser Bias, wenn ein Familienmitglied skeptisch fragt, ob genügend Kapital " +
+            $"vorhanden ist, um das Unternehmen langfristig zu finanzieren. Während männlichen Gründern oft automatisch " +
+            $"zugetraut wird, die Finanzierung bereits gesichert zu haben, müssen Frauen erst beweisen, " +
+            $"dass sie Kapital beschaffen können.";
 
         #endregion
 
@@ -150,16 +69,16 @@ namespace Assets._Scripts.Biases
             "durchschnittlich nur ein Drittel der Summe, die männlich geführte Startups erhalten.\n\n";
 
         private static readonly string GenderPayGapDescription =
-            "Das bedeutet, dass Frauen mit weniger Kapital starten, langsamer wachsen und es schwerer haben, " +
-            "Investorinnen und Investoren von der Rentabilität ihres Unternehmens zu überzeugen. " +
-            "Viele Investorinnen und Investoren gehen davon aus, dass Frauen vorsichtiger kalkulieren oder weniger " +
-            "ambitioniert in Verhandlungen sind – eine Annahme, die durch Studien nicht gestützt wird, aber dennoch " +
-            "Finanzierungsentscheidungen beeinflusst " +
-            "(Quelle: <link=\"https://web-assets.bcg.com/img-src/20190910_BCG_PM_Diversity%20in%20Start-Ups_fwi_AG_tcm9-228682.pdf\">" +
-            "BCG-Studie: Diversity in Start-Ups</link>).\n\nIn unseren Stories zeigt sich das, wenn eine " +
-            "Verhandlungspartnerin erwartet, dass eine Gründerin flexibler beim Honorar ist. Die Annahme, " +
-            "dass weibliche Unternehmerinnen niedrigere Preise akzeptieren sollten, zeigt, wie tief verwurzelt " +
-            "diese finanzielle Abwertung ist.";
+            $"Das bedeutet, dass Frauen mit weniger Kapital starten, langsamer wachsen und es schwerer haben, " +
+            $"Investorinnen und Investoren von der Rentabilität ihres Unternehmens zu überzeugen. " +
+            $"Viele Investorinnen und Investoren gehen davon aus, dass Frauen vorsichtiger kalkulieren oder weniger " +
+            $"ambitioniert in Verhandlungen sind – eine Annahme, die durch Studien nicht gestützt wird, aber dennoch " +
+            $"Finanzierungsentscheidungen beeinflusst " +
+            $"(<color={LinkColor}><link=\"https://web-assets.bcg.com/img-src/20190910_BCG_PM_Diversity%20in%20Start-Ups_fwi_AG_tcm9-228682.pdf\">" +
+            $"Quelle</link></color>).\n\n" +
+            $"In unseren Stories zeigt sich das, wenn eine Verhandlungspartnerin erwartet, dass eine Gründerin " +
+            $"flexibler beim Honorar ist. Die Annahme, dass weibliche Unternehmerinnen niedrigere Preise akzeptieren " +
+            $"sollten, zeigt, wie tief verwurzelt diese finanzielle Abwertung ist.";
 
         #endregion
 
@@ -174,16 +93,16 @@ namespace Assets._Scripts.Biases
             "Neugründungen mit Männern an der Spitze durchschnittlich 16,4-mal höher eingeschätzt wird.\n\n";
 
         private static readonly string UnterbewertungWeiblichGefuehrterUnternehmenDescription =
-            "Dies liegt jedoch nicht an mangelndem Selbstbewusstsein, sondern daran, dass Investorinnen und " +
-            "Investoren Frauen häufig geringere Skalierungsmöglichkeiten und weniger Führungsstärke zutrauen. " +
-            "Dadurch sind Gründerinnen gezwungen, konservativer zu kalkulieren, was ihre Finanzierungsrunden " +
-            "zusätzlich erschwert. Auch in Gesprächen mit Geschäftspartnerinnen und Geschäftspartnern werden " +
-            "weibliche Gründer öfter skeptischer hinterfragt als ihre männlichen Kollegen " +
-            "(Quelle: <link=\"https://web-assets.bcg.com/img-src/20190910_BCG_PM_Diversity%20in%20Start-Ups_fwi_AG_tcm9-228682.pdf\">" +
-            "BCG-Studie: Diversity in Start-Ups</link>).\n\nIn unseren Stories zeigt sich das, wenn ein Investor die " +
-            "Unternehmensbewertung als „ambitioniert“ für eine Gründerin einstuft – unabhängig von der Marktanalyse " +
-            "und realen Erfolgszahlen. Diese unterschwellige Abwertung führt dazu, dass Frauen für ihre Unternehmen " +
-            "oft schlechtere Konditionen erhalten.";
+            $"Dies liegt jedoch nicht an mangelndem Selbstbewusstsein, sondern daran, dass Investorinnen und " +
+            $"Investoren Frauen häufig geringere Skalierungsmöglichkeiten und weniger Führungsstärke zutrauen. " +
+            $"Dadurch sind Gründerinnen gezwungen, konservativer zu kalkulieren, was ihre Finanzierungsrunden " +
+            $"zusätzlich erschwert. Auch in Gesprächen mit Geschäftspartnerinnen und Geschäftspartnern werden " +
+            $"weibliche Gründer öfter skeptischer hinterfragt als ihre männlichen Kollegen " +
+            $"(<color={LinkColor}><link=\"https://web-assets.bcg.com/img-src/20190910_BCG_PM_Diversity%20in%20Start-Ups_fwi_AG_tcm9-228682.pdf\">" +
+            $"Quelle</link></color>).\n\n" +
+            $"In unseren Stories zeigt sich das, wenn ein Investor die Unternehmensbewertung als „ambitioniert“ für " +
+            $"eine Gründerin einstuft – unabhängig von der Marktanalyse und realen Erfolgszahlen. Diese unterschwellige " +
+            $"Abwertung führt dazu, dass Frauen für ihre Unternehmen oft schlechtere Konditionen erhalten.";
 
         #endregion
 
@@ -199,38 +118,39 @@ namespace Assets._Scripts.Biases
             "gelten Frauen bei gleichem Verhalten als „zögerlich“ oder „übervorsichtig“.\n\n";
 
         private static readonly string RiskAversionBiasDescription =
-            "Diese Wahrnehmung führt dazu, dass Investorinnen und Investoren Frauen seltener als dynamische " +
-            "Unternehmerinnen wahrnehmen und ihnen weniger Kapital für Wachstum und Expansion anvertrauen. " +
-            "Dadurch entsteht ein Teufelskreis: Weniger Kapital bedeutet langsamere Skalierung, was wiederum die " +
-            "bestehenden Vorurteile über zu vorsichtige Gründerinnen zu bestätigen scheint " +
-            "(Quelle: <link=\"https://www.kfw.de/%C3%9Cber-die-KfW/KfW-Research/Female-Entrepreneurship.html\">" +
-            "KfW Research – Female Entrepreneurship</link>).\n\nIn unseren Stories zeigt sich dieser Bias, wenn ein " +
-            "Investor bezweifelt, dass Frauen wirklich bereit sind, aggressiv genug zu skalieren – als wäre " +
-            "Risikobereitschaft die einzige Strategie für Wachstum. Auch ein Vermieter stellt die Belastbarkeit " +
-            "infrage, obwohl die Geschäftszahlen eine durchdachte und erfolgversprechende Strategie belegen.";
+            $"Diese Wahrnehmung führt dazu, dass Investorinnen und Investoren Frauen seltener als dynamische " +
+            $"Unternehmerinnen wahrnehmen und ihnen weniger Kapital für Wachstum und Expansion anvertrauen. " +
+            $"Dadurch entsteht ein Teufelskreis: Weniger Kapital bedeutet langsamere Skalierung, was wiederum die " +
+            $"bestehenden Vorurteile über zu vorsichtige Gründerinnen zu bestätigen scheint " +
+            $"(<color={LinkColor}><link=\"https://www.kfw.de/%C3%9Cber-die-KfW/KfW-Research/Female-Entrepreneurship.html\">Quelle</link></color>).\n\n" +
+            $"In unseren Stories zeigt sich dieser Bias, wenn ein Investor bezweifelt, dass Frauen wirklich bereit " +
+            $"sind, aggressiv genug zu skalieren – als wäre Risikobereitschaft die einzige Strategie für Wachstum. " +
+            $"Auch ein Vermieter stellt die Belastbarkeit infrage, obwohl die Geschäftszahlen eine durchdachte und " +
+            $"erfolgversprechende Strategie belegen.";
 
         #endregion
 
         #region Bestätigungsverzerrung (Confirmation Bias)
 
-        public static readonly string CONFIRMATION_BIAS_HEADLINE =
+        private static readonly string ConfirmationBiasHeadline =
             "Bestätigungsverzerrung (Confirmation Bias)";
 
-        public static readonly string CONFIRMATION_BIAS_PREVIEW =
+        private static readonly string ConfirmationBiasPreview =
             "Menschen nehmen Informationen so wahr, dass sie ihre bestehenden Überzeugungen bestätigen. " +
             "Genau das geschieht bei Gründerinnen: Investorinnen und Investoren stellen Frauen häufiger Fragen zur " +
             "Risikominimierung, während sie bei männlichen Gründern nach Wachstumsstrategien fragen. Das beeinflusst " +
             "nicht nur die Wahrnehmung der Unternehmerin, sondern auch ihre Chancen auf Finanzierung.\n\n";
 
-        public static readonly string CONFIRMATION_BIAS_DESCRIPTION =
-            "Frauen werden in Pitches subtil anders behandelt, ihre Pläne kritischer hinterfragt und ihre Ideen " +
-            "mit einer höheren Skepsis betrachtet. Dadurch verstärkt sich der Eindruck, dass weibliche Gründungsteams " +
-            "vorsichtiger und weniger wachstumsorientiert sind – ein klassischer Fall von sich selbst erfüllender " +
-            "Prophezeiung (Quelle: <link=\"https://www.kfw.de/%C3%9Cber-die-KfW/KfW-Research/Female-Entrepreneurship.html\">" +
-            "KfW Research – Female Entrepreneurship</link>).\n\nIn unseren Stories zeigt sich dieser Bias, wenn ein " +
-            "Bank-Mitarbeiter seine stereotype Wahrnehmung von Gründerinnen mit „jahrelanger Erfahrung“ rechtfertigt. " +
-            "Anstatt sich auf Zahlen und Fakten zu stützen, bleibt er bei seinen subjektiven Annahmen und hinterfragt " +
-            "eine Gründerin strenger als einen männlichen Gründer mit der gleichen Geschäftsidee.";
+        private static readonly string ConfirmationBiasDescription =
+            $"Frauen werden in Pitches subtil anders behandelt, ihre Pläne kritischer hinterfragt und ihre Ideen " +
+            $"mit einer höheren Skepsis betrachtet. Dadurch verstärkt sich der Eindruck, dass weibliche Gründungsteams " +
+            $"vorsichtiger und weniger wachstumsorientiert sind – ein klassischer Fall von sich selbst erfüllender " +
+            $"Prophezeiung (<color={LinkColor}><link=\"https://www.kfw.de/%C3%9Cber-die-KfW/KfW-Research/Female-Entrepreneurship.html\">" +
+            $"Quelle</link></color>).\n\n" +
+            $"In unseren Stories zeigt sich dieser Bias, wenn ein Bank-Mitarbeiter seine stereotype Wahrnehmung von " +
+            $"Gründerinnen mit „jahrelanger Erfahrung“ rechtfertigt. Anstatt sich auf Zahlen und Fakten zu stützen, " +
+            $"bleibt er bei seinen subjektiven Annahmen und hinterfragt eine Gründerin strenger als einen männlichen " +
+            $"Gründer mit der gleichen Geschäftsidee.";
 
         #endregion
 
@@ -247,17 +167,17 @@ namespace Assets._Scripts.Biases
             "männlichen Kollegen liegt.\n\n";
 
         private static readonly string TokenismDescription =
-            "Dieses Phänomen wird als Tokenism bezeichnet: Es vermittelt den Anschein von Fortschritt, " +
-            "führt aber in der Praxis nicht zu strukturellen Veränderungen. Studien zeigen, dass Frauen in solchen " +
-            "Situationen oft auf ihre Identität als Frau reduziert werden, anstatt für ihre unternehmerische Leistung " +
-            "anerkannt zu werden. Das kann dazu führen, dass Gründerinnen weniger ernst genommen werden oder in " +
-            "Verhandlungen weniger Einfluss erhalten " +
-            "(Quelle: <link=\"https://www.tandfonline.com/doi/full/10.1080/08985626.2018.1551795\">" +
-            "Tandfonline – Gender and Entrepreneurship</link>).\n\nIn unseren Stories zeigt sich dieser Bias, wenn eine " +
-            "Journalistin Dein Startup nicht wegen seiner Innovation oder seines Geschäftsmodells spannend findet, " +
-            "sondern einzig, weil es von einer Frau gegründet wurde. Die Gründerin wird nicht als erfolgreiche " +
-            "Unternehmerin wahrgenommen, sondern als „Ausnahmeerscheinung“, was ihre tatsächlichen unternehmerischen " +
-            "Leistungen in den Hintergrund rückt.";
+            $"Dieses Phänomen wird als Tokenism bezeichnet: Es vermittelt den Anschein von Fortschritt, " +
+            $"führt aber in der Praxis nicht zu strukturellen Veränderungen. Studien zeigen, dass Frauen in solchen " +
+            $"Situationen oft auf ihre Identität als Frau reduziert werden, anstatt für ihre unternehmerische Leistung " +
+            $"anerkannt zu werden. Das kann dazu führen, dass Gründerinnen weniger ernst genommen werden oder in " +
+            $"Verhandlungen weniger Einfluss erhalten " +
+            $"(<color={LinkColor}><link=\"https://www.tandfonline.com/doi/full/10.1080/08985626.2018.1551795\">" +
+            $"Quelle</link></color>).\n\n" +
+            $"In unseren Stories zeigt sich dieser Bias, wenn eine Journalistin Dein Startup nicht wegen seiner " +
+            $"Innovation oder seines Geschäftsmodells spannend findet, sondern einzig, weil es von einer Frau " +
+            $"gegründet wurde. Die Gründerin wird nicht als erfolgreiche Unternehmerin wahrgenommen, sondern " +
+            $"als „Ausnahmeerscheinung“, was ihre tatsächlichen unternehmerischen Leistungen in den Hintergrund rückt.";
 
         #endregion
 
@@ -273,14 +193,13 @@ namespace Assets._Scripts.Biases
             "beweisen und werden schneller infrage gestellt.\n\n";
 
         private static readonly string BiasInDerWahrnehmungVonFuehrungsfaehigkeitenDescription =
-            "Die verbreitete Denkweise „think manager, think male“ oder „think entrepreneur, think male“ sorgt dafür, " +
-            "dass Frauen in der Unternehmenswelt oft nicht als natürliche Führungspersönlichkeiten wahrgenommen " +
-            "werden (Quelle: <link=\"https://link.springer.com/article/10.1007/s11365-018-0553-0\">" +
-            "Springer – Entrepreneurial Leadership Bias</link>).\n\nIn unseren Stories zeigt sich dieser Bias, als eine " +
-            "Notarin Dich nach dem Geschäftsführer fragt und selbstverständlich annimmt, dass es sich um einen Mann " +
-            "handeln muss. Die unausgesprochene Annahme: Unternehmerische Führung liegt nicht in weiblicher Hand. " +
-            "Solche Denkmuster verstärken strukturelle Hürden für Gründerinnen, die nicht nur ihre Qualifikation " +
-            "beweisen, sondern auch bestehende Vorurteile überwinden müssen.";
+            $"Die verbreitete Denkweise „think manager, think male“ oder „think entrepreneur, think male“ sorgt dafür, " +
+            $"dass Frauen in der Unternehmenswelt oft nicht als natürliche Führungspersönlichkeiten wahrgenommen " +
+            $"werden (<color={LinkColor}><link=\"https://link.springer.com/article/10.1007/s11365-018-0553-0\">Quelle</link></color>).\n\n" +
+            $"In unseren Stories zeigt sich dieser Bias, als eine Notarin Dich nach dem Geschäftsführer fragt und " +
+            $"selbstverständlich annimmt, dass es sich um einen Mann handeln muss. Die unausgesprochene Annahme: " +
+            $"Unternehmerische Führung liegt nicht in weiblicher Hand. Solche Denkmuster verstärken strukturelle Hürden " +
+            $"für Gründerinnen, die nicht nur ihre Qualifikation beweisen, sondern auch bestehende Vorurteile überwinden müssen.";
 
         #endregion
 
@@ -297,15 +216,15 @@ namespace Assets._Scripts.Biases
             "sie als gleichwertige Akteure in der Wirtschaft zu sehen.\n\n";
 
         private static readonly string BenevolenterSexismusDescription =
-            "Eine aktuelle Studie zeigt, dass Investorinnen und Investoren mit einer hohen Ausprägung an " +
-            "benevolentem Sexismus männlich geführte Startups positiver bewerten, während sie Frauen nicht " +
-            "zwingend abwerten – sondern stattdessen Männer gezielt bevorzugen " +
-            "(Quelle: <link=\"https://journals.sagepub.com/doi/full/10.1177/10422587231178865\">" +
-            "SAGE – Benevolent Sexism in Startup Evaluation</link>).\n\nIn unseren Stories zeigt sich dieser Bias, wenn " +
-            "ein Vermieter Deine „Frauenpower“ lobt – aber gleichzeitig andeutet, dass Unternehmertum für Frauen " +
-            "„sehr stressig“ sei. Die Botschaft dahinter: Frauen sind zwar bewundernswert, aber möglicherweise " +
-            "„besser aufgehoben“ in weniger belastenden Berufen. Solche Aussagen klingen unterstützend, bewirken " +
-            "aber das Gegenteil, indem sie Frauen subtil aus anspruchsvollen Karrierewegen herausdrängen.";
+            $"Eine aktuelle Studie zeigt, dass Investorinnen und Investoren mit einer hohen Ausprägung an " +
+            $"benevolentem Sexismus männlich geführte Startups positiver bewerten, während sie Frauen nicht " +
+            $"zwingend abwerten – sondern stattdessen Männer gezielt bevorzugen " +
+            $"(<color={LinkColor}><link=\"https://journals.sagepub.com/doi/full/10.1177/10422587231178865\">Quelle</link></color>).\n\n" +
+            $"In unseren Stories zeigt sich dieser Bias, wenn ein Vermieter Deine „Frauenpower“ lobt – aber " +
+            $"gleichzeitig andeutet, dass Unternehmertum für Frauen „sehr stressig“ sei. Die Botschaft dahinter: " +
+            $"Frauen sind zwar bewundernswert, aber möglicherweise „besser aufgehoben“ in weniger belastenden Berufen. " +
+            $"Solche Aussagen klingen unterstützend, bewirken aber das Gegenteil, indem sie Frauen subtil aus " +
+            $"anspruchsvollen Karrierewegen herausdrängen.";
 
         #endregion
 
@@ -320,15 +239,16 @@ namespace Assets._Scripts.Biases
             "abgesprochen wird, werden ältere Gründerinnen seltener als dynamisch oder innovativ wahrgenommen.\n\n";
 
         private static readonly string AltersUndGenerationenBiasDescription =
-            "Dabei zeigt ein genauer Blick auf die Zahlen: Das Bild vom jugendlichen Garagengründer ist ein Mythos. " +
-            "Tatsächlich ist das Gründungsgeschehen viel altersdiverser, doch die Förder- und Startup-Landschaft " +
-            "bildet dies nicht ausreichend ab. Ältere Gründerinnen und Gründer erhalten seltener Zugang zu Kapital " +
-            "und Förderprogrammen, obwohl sie über mehr berufliche Erfahrung und Netzwerke verfügen " +
-            "(Quelle: <link=\"https://fosteringinnovation.de/gruenden-in-der-mitte-des-lebens-das-potenzial-aelterer-entrepreneure/\">" +
-            "Fostering Innovation – Alter und Gründung</link>).\n\nIn unseren Stories zeigt sich dieser Bias, wenn ein " +
-            "Vermieter misstrauisch fragt, ob Deine Gründung wirklich ernst gemeint ist oder nur ein „Hobbyprojekt“. " +
-            "Solche Vorurteile betreffen besonders ältere Gründerinnen, da ihnen oft unterstellt wird, nicht die " +
-            "Energie oder den langfristigen Antrieb für ein wachstumsstarkes Unternehmen zu haben.";
+            $"Dabei zeigt ein genauer Blick auf die Zahlen: Das Bild vom jugendlichen Garagengründer ist ein Mythos. " +
+            $"Tatsächlich ist das Gründungsgeschehen viel altersdiverser, doch die Förder- und Startup-Landschaft " +
+            $"bildet dies nicht ausreichend ab. Ältere Gründerinnen und Gründer erhalten seltener Zugang zu Kapital " +
+            $"und Förderprogrammen, obwohl sie über mehr berufliche Erfahrung und Netzwerke verfügen " +
+            $"(<color={LinkColor}><link=\"https://fosteringinnovation.de/gruenden-in-der-mitte-des-lebens-das-potenzial-aelterer-entrepreneure/\">" +
+            $"Quelle</link></color>).\n\n" +
+            $"In unseren Stories zeigt sich dieser Bias, wenn ein Vermieter misstrauisch fragt, ob Deine Gründung " +
+            $"wirklich ernst gemeint ist oder nur ein „Hobbyprojekt“. Solche Vorurteile betreffen besonders ältere " +
+            $"Gründerinnen, da ihnen oft unterstellt wird, nicht die Energie oder den langfristigen Antrieb für " +
+            $"ein wachstumsstarkes Unternehmen zu haben.";
 
         #endregion
 
@@ -344,15 +264,15 @@ namespace Assets._Scripts.Biases
             "immer wieder unter Beweis stellen, während Männern ihre Kompetenz eher automatisch zugetraut wird.\n\n";
 
         private static readonly string StereotypeDescription =
-            "Studien zeigen, dass Frauen in Technik-, Bau- und Ingenieurberufen häufiger hinterfragt werden und " +
-            "seltener als Experten wahrgenommen werden. Diese strukturellen Vorurteile führen dazu, dass Frauen es " +
-            "schwerer haben, sich am Markt zu behaupten – nicht aufgrund mangelnder Fähigkeiten, sondern weil ihnen " +
-            "weniger Vertrauen entgegengebracht wird " +
-            "(Quelle: <link=\"https://www.existenzgruendungsportal.de/SharedDocs/Downloads/DE/Publikationen/female-founders-digitalbranche-2020.html\">" +
-            "Existenzgründungsportal – Female Founders in Tech</link>).\n\nIn unseren Stories zeigt sich dieser Bias, " +
-            "wenn ein Verhandlungspartner Dir rät, Deine Preise als Frau in der Branche „anzupassen“, um " +
-            "konkurrenzfähig zu bleiben. Die Annahme dahinter: Frauen können sich in bestimmten Märkten nur über " +
-            "Rabatte und niedrigere Preise behaupten – nicht durch Qualität und Kompetenz.";
+            $"Studien zeigen, dass Frauen in Technik-, Bau- und Ingenieurberufen häufiger hinterfragt werden und " +
+            $"seltener als Experten wahrgenommen werden. Diese strukturellen Vorurteile führen dazu, dass Frauen es " +
+            $"schwerer haben, sich am Markt zu behaupten – nicht aufgrund mangelnder Fähigkeiten, sondern weil ihnen " +
+            $"weniger Vertrauen entgegengebracht wird " +
+            $"(<color={LinkColor}><link=\"https://www.existenzgruendungsportal.de/SharedDocs/Downloads/DE/Publikationen/female-founders-digitalbranche-2020.html\">" +
+            $"Quelle</link></color>).\n\n" +
+            $"In unseren Stories zeigt sich dieser Bias, wenn ein Verhandlungspartner Dir rät, Deine Preise als Frau " +
+            $"in der Branche „anzupassen“, um konkurrenzfähig zu bleiben. Die Annahme dahinter: Frauen können sich " +
+            $"in bestimmten Märkten nur über Rabatte und niedrigere Preise behaupten – nicht durch Qualität und Kompetenz.";
 
         #endregion
 
@@ -367,13 +287,12 @@ namespace Assets._Scripts.Biases
             "beruflichen Entscheidungen von ihrem Ehemann beeinflusst werden.\n\n";
 
         private static readonly string HeteronormativitaetDescription =
-            "Besonders für queere Gründerinnen kann das belastend sein, da sie entweder gezwungen sind, ihre " +
-            "Identität offenzulegen oder falsche Annahmen stehenzulassen, um keine geschäftlichen Nachteile zu riskieren " +
-            "(Quelle: <link=\"https://www.emerald.com/insight/content/doi/10.1108/ijebr-12-2022-1114/full/html\">" +
-            "Emerald – Gender and Entrepreneurship</link>).\n\nIn unseren Stories zeigt sich dieser Bias, wenn ein " +
-            "Bank-Mitarbeiter fragt, was Dein Ehemann zu Deiner Gründung sagt – anstatt Dich als eigenständige " +
-            "Unternehmerin zu sehen. Die implizite Botschaft: Eine Frau gründet nicht alleine, sondern immer im " +
-            "Kontext einer (heterosexuellen) Partnerschaft.";
+            $"Besonders für queere Gründerinnen kann das belastend sein, da sie entweder gezwungen sind, ihre " +
+            $"Identität offenzulegen oder falsche Annahmen stehenzulassen, um keine geschäftlichen Nachteile zu riskieren " +
+            $"(<color={LinkColor}><link=\"https://www.emerald.com/insight/content/doi/10.1108/ijebr-12-2022-1114/full/html\">Quelle</link></color>).\n\n" +
+            $"In unseren Stories zeigt sich dieser Bias, wenn ein Bank-Mitarbeiter fragt, was Dein Ehemann zu Deiner " +
+            $"Gründung sagt – anstatt Dich als eigenständige Unternehmerin zu sehen. Die implizite Botschaft: Eine " +
+            $"Frau gründet nicht alleine, sondern immer im Kontext einer (heterosexuellen) Partnerschaft.";
 
         #endregion
 
@@ -390,13 +309,13 @@ namespace Assets._Scripts.Biases
             "wachstumsstark wahrgenommen werden.\n\n";
 
         private static readonly string MaternalBiasDescription =
-            "Studien zeigen, dass Gründerinnen in Pitches häufiger Fragen zur Vereinbarkeit von Familie und " +
-            "Beruf gestellt bekommen – eine Frage, die männliche Gründer mit Kindern deutlich seltener hören " +
-            "(Quelle: <link=\"https://doi.org/10.1177/0018726708098082\">" +
-            "SAGE – Maternal Bias in Workplaces</link>).\n\nIn unseren Stories zeigt sich dieser Bias, wenn ein " +
-            "Familienmitglied betont, wie schwer es sei, Kinder und Unternehmen unter einen Hut zu bringen – " +
-            "als ob Männer diesen Konflikt nicht hätten. Die unausgesprochene Botschaft: Eine Mutter kann " +
-            "entweder fürsorglich oder erfolgreich sein, aber nicht beides.";
+            $"Studien zeigen, dass Gründerinnen in Pitches häufiger Fragen zur Vereinbarkeit von Familie und " +
+            $"Beruf gestellt bekommen – eine Frage, die männliche Gründer mit Kindern deutlich seltener hören " +
+            $"(<color={LinkColor}><link=\"https://doi.org/10.1177/0018726708098082\">Quelle</link></color>).\n\n" +
+            $"In unseren Stories zeigt sich dieser Bias, wenn ein Familienmitglied betont, wie schwer es sei, " +
+            $"Kinder und Unternehmen unter einen Hut zu bringen – als ob Männer diesen Konflikt nicht hätten. " +
+            $"Die unausgesprochene Botschaft: Eine Mutter kann entweder fürsorglich oder erfolgreich sein, " +
+            $"aber nicht beides.";
 
         #endregion
 
@@ -413,16 +332,16 @@ namespace Assets._Scripts.Biases
             "könnten.\n\n";
 
         private static readonly string FamilienplanungDescription =
-            "Dies führt dazu, dass Gründerinnen bei Finanzierungsverhandlungen oder langfristigen " +
-            "Geschäftspartnerschaften benachteiligt werden " +
-            "(Quelle: <link=\"https://doi.org/10.1016/j.jbusvent.2018.04.003\">" +
-            "Journal of Business Venturing – Gender and Family Planning</link>).\n\nIn unseren Stories zeigt sich dieser " +
-            "Bias, wenn ein Vermieter beiläufig andeutet, dass „jüngere Frauen ja oft von einem Projekt zum nächsten " +
-            "wechseln“ und dann „vielleicht doch irgendwann die Familienplanung ansteht“. Die Unterstellung: " +
-            "Deine unternehmerische Zukunft sei ungewiss, weil sie potenziell von privaten Entscheidungen abhängt.";
+            $"Dies führt dazu, dass Gründerinnen bei Finanzierungsverhandlungen oder langfristigen " +
+            $"Geschäftspartnerschaften benachteiligt werden " +
+            $"(<color={LinkColor}><link=\"https://doi.org/10.1016/j.jbusvent.2018.04.003\">Quelle</link></color>).\n\n" +
+            $"In unseren Stories zeigt sich dieser Bias, wenn ein Vermieter beiläufig andeutet, dass „jüngere " +
+            $"Frauen ja oft von einem Projekt zum nächsten wechseln“ und dann „vielleicht doch irgendwann die " +
+            $"Familienplanung ansteht“. Die Unterstellung: Deine unternehmerische Zukunft sei ungewiss, weil sie " +
+            $"potenziell von privaten Entscheidungen abhängt.";
 
         #endregion
-        
+
         #region Work-Life-Balance-Erwartungen
 
         private static readonly string WorkLifeBalanceHeadline =
@@ -435,19 +354,18 @@ namespace Assets._Scripts.Biases
             "vereinbaren können.\n\n";
 
         private static readonly string WorkLifeBalanceDescription =
-            "In Deutschland leisten Frauen im Durchschnitt 30 Stunden pro Woche unbezahlte Arbeit, während Männer " +
-            "nur 21 Stunden für solche Tätigkeiten aufbringen. Dieses Ungleichgewicht führt dazu, dass Frauen sich " +
-            "häufiger mit Fragen zu Vereinbarkeit, Belastbarkeit oder Verantwortung konfrontiert sehen, die " +
-            "männliche Gründer seltener hören " +
-            "(Quelle: <link=\"https://www.destatis.de/DE/Presse/Pressemitteilungen/2024/02/PD24_073_63991.html\">" +
-            "Statistisches Bundesamt – Arbeitszeit und Gender</link>).\n\nIn unseren Stories zeigt sich dieser Bias, " +
-            "wenn ein Familienmitglied erzählt, dass ein befreundeter Gründer „extrem viel Stress hatte“ und sich " +
-            "fragt, ob das für Dich nicht auch „zu anstrengend“ wird. Die Annahme dahinter: Frauen sollten automatisch " +
-            "darauf achten, dass sie eine gesunde Balance halten – während Männern unternehmerische Überarbeitung " +
-            "oft als Engagement ausgelegt wird.";
+            $"In Deutschland leisten Frauen im Durchschnitt 30 Stunden pro Woche unbezahlte Arbeit, während Männer " +
+            $"nur 21 Stunden für solche Tätigkeiten aufbringen. Dieses Ungleichgewicht führt dazu, dass Frauen sich " +
+            $"häufiger mit Fragen zu Vereinbarkeit, Belastbarkeit oder Verantwortung konfrontiert sehen, die " +
+            $"männliche Gründer seltener hören " +
+            $"(<color={LinkColor}><link=\"https://www.destatis.de/DE/Presse/Pressemitteilungen/2024/02/PD24_073_63991.html\">Quelle</link></color>).\n\n" +
+            $"In unseren Stories zeigt sich dieser Bias, wenn ein Familienmitglied erzählt, dass ein befreundeter " +
+            $"Gründer „extrem viel Stress hatte“ und sich fragt, ob das für Dich nicht auch „zu anstrengend“ wird. " +
+            $"Die Annahme dahinter: Frauen sollten automatisch darauf achten, dass sie eine gesunde Balance halten – " +
+            $"während Männern unternehmerische Überarbeitung oft als Engagement ausgelegt wird.";
 
         #endregion
-        
+
         #region Geschlechtsspezifische Stereotype
 
         private static readonly string GeschlechtsspezifischeStereotypeHeadline =
@@ -459,17 +377,16 @@ namespace Assets._Scripts.Biases
             "werden Frauen oft als „kommunikativ“, „detailliert“ oder „harmonieorientiert“ beschrieben.\n\n";
 
         private static readonly string GeschlechtsspezifischeStereotypeDescription =
-            "Diese Zuschreibungen sind nicht nur wertend, sondern beeinflussen auch Entscheidungen in der " +
-            "Geschäftswelt – von Einstellungsprozessen über Finanzierungsentscheidungen bis hin zur Wahrnehmung von " +
-            "Führungskompetenz " +
-            "(Quelle: <link=\"https://doi.org/10.1515/erj-2022-0235\">" +
-            "Entrepreneurial Research Journal – Gendered Perceptions</link>).\n\nIn unseren Stories zeigt sich dieser " +
-            "Bias, wenn ein Vermieter beiläufig bemerkt, dass ihm auffällt, dass „Frauen sich detaillierter mit " +
-            "Anforderungen auseinandersetzen“. Auch wenn es positiv klingt, verstärkt es das Stereotyp, dass Frauen " +
-            "eher auf Details achten als auf strategische Unternehmensführung.";
+            $"Diese Zuschreibungen sind nicht nur wertend, sondern beeinflussen auch Entscheidungen in der " +
+            $"Geschäftswelt – von Einstellungsprozessen über Finanzierungsentscheidungen bis hin zur Wahrnehmung von " +
+            $"Führungskompetenz " +
+            $"(<color={LinkColor}><link=\"https://doi.org/10.1515/erj-2022-0235\">Quelle</link></color>).\n\n" +
+            $"In unseren Stories zeigt sich dieser Bias, wenn ein Vermieter beiläufig bemerkt, dass ihm auffällt, " +
+            $"dass „Frauen sich detaillierter mit Anforderungen auseinandersetzen“. Auch wenn es positiv klingt, " +
+            $"verstärkt es das Stereotyp, dass Frauen eher auf Details achten als auf strategische Unternehmensführung.";
 
         #endregion
-        
+
         #region Tightrope Bias
 
         private static readonly string TightropeBiasHeadline =
@@ -481,15 +398,16 @@ namespace Assets._Scripts.Biases
             "und entscheidungsstark, werden sie als „zu fordernd“ oder „unsympathisch“ wahrgenommen.\n\n";
 
         private static readonly string TightropeBiasDescription =
-            "Dieser sogenannte Tightrope Bias zwingt Frauen dazu, ständig ihr Verhalten zu balancieren, während " +
-            "männliche Kollegen für dasselbe Verhalten als „entschlossen“ oder „visionär“ wahrgenommen werden " +
-            "(Quelle: <link=\"https://doi.org/10.1002/ltl.20654\">Leadership & Tightrope Bias</link>).\n\nIn unseren " +
-            "Stories zeigt sich dieser Bias, wenn eine Verhandlungspartnerin betont, dass sie Dein Selbstbewusstsein " +
-            "schätzt – aber gleichzeitig andeutet, dass dieses „zu forsch“ für manche Investorinnen und Investoren " +
-            "wirken könnte. Die implizite Erwartung: Frauen sollten selbstbewusst, aber nicht zu selbstbewusst sein.";
+            $"Dieser sogenannte Tightrope Bias zwingt Frauen dazu, ständig ihr Verhalten zu balancieren, während " +
+            $"männliche Kollegen für dasselbe Verhalten als „entschlossen“ oder „visionär“ wahrgenommen werden " +
+            $"(<color={LinkColor}><link=\"https://doi.org/10.1002/ltl.20654\">Quelle</link></color>).\n\n" +
+            $"In unseren Stories zeigt sich dieser Bias, wenn eine Verhandlungspartnerin betont, dass sie " +
+            $"Dein Selbstbewusstsein schätzt – aber gleichzeitig andeutet, dass dieses „zu forsch“ für manche " +
+            $"Investorinnen und Investoren wirken könnte. Die implizite Erwartung: Frauen sollten selbstbewusst, " +
+            $"aber nicht zu selbstbewusst sein.";
 
         #endregion
-        
+
         #region Mikroaggressionen
 
         private static readonly string MikroaggressionenHeadline =
@@ -501,16 +419,16 @@ namespace Assets._Scripts.Biases
             "die Frauen das Gefühl geben, nicht vollständig ernst genommen zu werden.\n\n";
 
         private static readonly string MikroaggressionenDescription =
-            "Mikroaggressionen summieren sich über die Zeit und können das Selbstbewusstsein von Frauen in " +
-            "Verhandlungen oder Finanzierungsrunden beeinflussen " +
-            "(Quelle: <link=\"https://doi.org/10.1007/978-3-031-50164-7\">" +
-            "Mikroaggressionen in der Arbeitswelt</link>).\n\nIn unseren Stories zeigt sich dieser Bias, wenn ein " +
-            "Investor zögert und sagt, er frage sich, „ob sich Investoren mit einer weiblichen Geschäftsführung " +
-            "wohlfühlen“. Die Aussage ist nicht direkt abwertend, setzt aber unterschwellig voraus, dass Dein " +
-            "Geschlecht für Deine geschäftlichen Erfolgsaussichten eine Rolle spielt.";
+            $"Mikroaggressionen summieren sich über die Zeit und können das Selbstbewusstsein von Frauen in " +
+            $"Verhandlungen oder Finanzierungsrunden beeinflussen " +
+            $"(<color={LinkColor}><link=\"https://doi.org/10.1007/978-3-031-50164-7\">Quelle</link></color>).\n\n" +
+            $"In unseren Stories zeigt sich dieser Bias, wenn ein Investor zögert und sagt, er frage sich, " +
+            $"„ob sich Investoren mit einer weiblichen Geschäftsführung wohlfühlen“. Die Aussage ist nicht direkt " +
+            $"abwertend, setzt aber unterschwellig voraus, dass Dein Geschlecht für Deine geschäftlichen " +
+            $"Erfolgsaussichten eine Rolle spielt.";
 
         #endregion
-        
+
         #region Leistungsattributions-Bias
 
         private static readonly string LeistungsattributionsBiasHeadline =
@@ -524,18 +442,18 @@ namespace Assets._Scripts.Biases
             "Männer mit identischen Ergebnissen.\n\n";
 
         private static readonly string LeistungsattributionsBiasDescription =
-            "Dies geschieht durch einen unbewussten Mechanismus, der die Begründung rationalisiert: Beobachtende " +
-            "suchen nach alternativen Erklärungen für die Leistung einer Frau, beispielsweise durch Glück oder die " +
-            "Anwesenheit eines männlichen Kollegen. Diese systematische Abwertung kann dazu führen, dass Frauen sich " +
-            "immer wieder neu beweisen müssen, während Männer schneller als fähig anerkannt werden " +
-            "(Quelle: <link=\"https://doi.org/10.1287/orsc.2022.1594\">" +
-            "Organizational Science – Leistungsattribution</link>).\n\nIn unseren Stories zeigt sich dieser Bias, wenn " +
-            "eine Journalistin darauf verweist, dass Du „Glück gehabt hast, genau die richtige Nische zu finden“. " +
-            "Die Botschaft: Dein Erfolg basiert nicht auf Können oder Marktverständnis, sondern auf Zufall – " +
-            "ein klassisches Beispiel für die Abwertung weiblicher Leistungen.";
+            $"Dies geschieht durch einen unbewussten Mechanismus, der die Begründung rationalisiert: Beobachtende " +
+            $"suchen nach alternativen Erklärungen für die Leistung einer Frau, beispielsweise durch Glück oder die " +
+            $"Anwesenheit eines männlichen Kollegen. Diese systematische Abwertung kann dazu führen, dass Frauen sich " +
+            $"immer wieder neu beweisen müssen, während Männer schneller als fähig anerkannt werden " +
+            $"(<color={LinkColor}><link=\"https://doi.org/10.1287/orsc.2022.1594\">Quelle</link></color>).\n\n" +
+            $"In unseren Stories zeigt sich dieser Bias, wenn eine Journalistin darauf verweist, dass Du „Glück gehabt " +
+            $"hast, genau die richtige Nische zu finden“. Die Botschaft: Dein Erfolg basiert nicht auf Können " +
+            $"oder Marktverständnis, sondern auf Zufall – ein klassisches Beispiel für die Abwertung " +
+            $"weiblicher Leistungen.";
 
         #endregion
-        
+
         #region Unbewusste Bias in der Kommunikation
 
         private static readonly string UnbewussteBiasInDerKommunikationHeadline =
@@ -548,18 +466,205 @@ namespace Assets._Scripts.Biases
             "Führungsfähigkeit konfrontiert werden. \n\n";
 
         private static readonly string UnbewussteBiasInDerKommunikationDescription =
-            "Ihnen wird geraten, ihre Ideen „einfacher“ oder „verständlicher“ zu erklären, selbst wenn ihre " +
-            "Präsentationen auf demselben fachlichen Niveau sind wie die ihrer männlichen Kollegen. Ein weiteres " +
-            "Beispiel ist die Abwertung weiblicher Führungsteams durch stereotype Annahmen über weibliche Dynamiken – " +
-            "etwa, dass Frauen in Konflikte oder Klatsch verwickelt seien, anstatt strategische Entscheidungen zu " +
-            "treffen. Solche unbewussten Biases untergraben die Professionalität von Frauen und beeinflussen, wie " +
-            "sie in der Geschäftswelt wahrgenommen werden " +
-            "(Quelle: <link=\"https://doi.org/10.1007/s10869-022-09871-7\">" +
-            "Kommunikation und Geschlecht</link>).\n\nIn unseren Stories zeigt sich dieser Bias, wenn ein " +
-            "Bank-Mitarbeiter behauptet, dass es mit mehreren Frauen in der Geschäftsführung schwierig sei – er " +
-            "„denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch“. Diese Form herablassender " +
-            "Kommunikation stellt nicht nur ihre Kompetenz infrage, sondern verstärkt stereotype Rollenbilder.";
+            $"Ihnen wird geraten, ihre Ideen „einfacher“ oder „verständlicher“ zu erklären, selbst wenn ihre " +
+            $"Präsentationen auf demselben fachlichen Niveau sind wie die ihrer männlichen Kollegen. Ein weiteres " +
+            $"Beispiel ist die Abwertung weiblicher Führungsteams durch stereotype Annahmen über weibliche Dynamiken – " +
+            $"etwa, dass Frauen in Konflikte oder Klatsch verwickelt seien, anstatt strategische Entscheidungen zu " +
+            $"treffen. Solche unbewussten Biases untergraben die Professionalität von Frauen und beeinflussen, wie " +
+            $"sie in der Geschäftswelt wahrgenommen werden " +
+            $"(<color={LinkColor}><link=\"https://doi.org/10.1007/s10869-022-09871-7\">Quelle</link></color>).\n\n" +
+            $"In unseren Stories zeigt sich dieser Bias, wenn ein Bank-Mitarbeiter behauptet, dass es mit mehreren " +
+            $"Frauen in der Geschäftsführung schwierig sei – er „denke da an möglichen Zickenkrieg und viel Klatsch " +
+            $"und Tratsch“. Diese Form herablassender Kommunikation stellt nicht nur ihre Kompetenz infrage, " +
+            $"sondern verstärkt stereotype Rollenbilder.";
 
         #endregion
+
+        private static readonly Dictionary<BiasType, string[]> BiasDetailsTexts = new()
+        {
+            {
+                BiasType.Finanzierungszugang,
+                new[]
+                {
+                    FinanzierungszugangHeadline,
+                    FinanzierungszugangDescriptionPreview,
+                    FinanzierungszugangDescription
+                }
+            },
+            {
+                BiasType.GenderPayGap,
+                new[]
+                {
+                    GenderPayGapHeadline,
+                    GenderPayGapDescriptionPreview,
+                    GenderPayGapDescription
+                }
+            },
+            {
+                BiasType.UnterbewertungWeiblichGefuehrterUnternehmen,
+                new[]
+                {
+                    UnterbewertungWeiblichGefuehrterUnternehmenHeadline,
+                    UnterbewertungWeiblichGefuehrterUnternehmenPreview,
+                    UnterbewertungWeiblichGefuehrterUnternehmenDescription
+                }
+            },
+            {
+                BiasType.RiskAversionBias,
+                new[]
+                {
+                    RiskAversionBiasHeadline,
+                    RiskAversionBiasPreview,
+                    RiskAversionBiasDescription
+                }
+            },
+            {
+                BiasType.ConfirmationBias,
+                new[]
+                {
+                    ConfirmationBiasHeadline,
+                    ConfirmationBiasPreview,
+                    ConfirmationBiasDescription
+                }
+            },
+            {
+                BiasType.Tokenism,
+                new[]
+                {
+                    TokenismHeadline,
+                    TokenismPreview,
+                    TokenismDescription
+                }
+            },
+            {
+                BiasType.BiasInDerWahrnehmungVonFuehrungsfaehigkeiten,
+                new[]
+                {
+                    BiasInDerWahrnehmungVonFuehrungsfaehigkeitenHeadline,
+                    BiasInDerWahrnehmungVonFuehrungsfaehigkeitenPreview,
+                    BiasInDerWahrnehmungVonFuehrungsfaehigkeitenDescription
+                }
+            },
+            {
+                BiasType.BenevolenterSexismus,
+                new[]
+                {
+                    BenevolenterSexismusHeadline,
+                    BenevolenterSexismusPreview,
+                    BenevolenterSexismusDescription
+                }
+            },
+            {
+                BiasType.AltersUndGenerationenBiases,
+                new[]
+                {
+                    AltersUndGenerationenBiasHeadline,
+                    AltersUndGenerationenBiasPreview,
+                    AltersUndGenerationenBiasDescription
+                }
+            },
+            {
+                BiasType.Stereotype,
+                new[]
+                {
+                    StereotypeHeadline,
+                    StereotypePreview,
+                    StereotypeDescription
+                }
+            },
+            {
+                BiasType.Heteronormativitaet,
+                new[]
+                {
+                    HeteronormativitaetHeadline,
+                    HeteronormativitaetPreview,
+                    HeteronormativitaetDescription
+                }
+            },
+            {
+                BiasType.MaternalBias,
+                new[]
+                {
+                    MaternalBiasHeadline,
+                    MaternalBiasPreview,
+                    MaternalBiasDescription
+                }
+            },
+            {
+                BiasType.FamilienplanungBias,
+                new[]
+                {
+                    FamilienplanungBiasHeadline,
+                    FamilienplanungPreview,
+                    FamilienplanungDescription
+                }
+            },
+            {
+                BiasType.WorkLifeBalance,
+                new[]
+                {
+                    WorkLifeBalanceHeadline,
+                    WorkLifeBalancePreview,
+                    WorkLifeBalanceDescription
+                }
+            },
+            {
+                BiasType.GeschlechtsspezifischeStereotype,
+                new[]
+                {
+                    GeschlechtsspezifischeStereotypeHeadline,
+                    GeschlechtsspezifischeStereotypePreview,
+                    GeschlechtsspezifischeStereotypeDescription
+                }
+            },
+            {
+                BiasType.TightropeBias,
+                new[]
+                {
+                    TightropeBiasHeadline,
+                    TightropeBiasPreview,
+                    TightropeBiasDescription
+                }
+            },
+            {
+                BiasType.Mikroagressionen,
+                new[]
+                {
+                    MikroaggressionenHeadline,
+                    MikroaggressionenPreview,
+                    MikroaggressionenDescription
+                }
+            },
+            {
+                BiasType.LeistungsattributionsBias,
+                new[]
+                {
+                    LeistungsattributionsBiasHeadline,
+                    LeistungsattributionsBiasPreview,
+                    LeistungsattributionsBiasDescription
+                }
+            },
+            {
+                BiasType.UnbewussteBiasInDerKommunikation,
+                new[]
+                {
+                    UnbewussteBiasInDerKommunikationHeadline,
+                    UnbewussteBiasInDerKommunikationPreview,
+                    UnbewussteBiasInDerKommunikationDescription
+                }
+            }
+        };
+
+        public static string GetBiasText(BiasType biasType)
+        {
+            if (BiasDetailsTexts.TryGetValue(biasType, out var biasInfo))
+            {
+                return $"<size=40><align=center><b>{biasInfo[0]}</b></align></size>\n\n" +
+                       $"<size=35>{biasInfo[1]}</size>" +
+                       $"<size=35>{biasInfo[2]}</size>";
+            }
+
+            return "";
+        }
     }
 }
