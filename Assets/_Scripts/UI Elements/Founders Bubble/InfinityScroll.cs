@@ -1,5 +1,6 @@
 using Assets._Scripts.Managers;
 using Assets._Scripts.Player;
+using Assets._Scripts.SceneControllers;
 using Assets._Scripts.SceneMemory;
 using UnityEngine;
 using UnityEngine.EventSystems;

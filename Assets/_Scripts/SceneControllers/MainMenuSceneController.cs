@@ -37,8 +37,7 @@ namespace Assets._Scripts.SceneControllers
             // Initialisiere die Szene und setze grundlegende Einstellungen
             InitializeScene();
 
-            // Richte die Button-Listener ein, um auf Benutzereingaben zu reagieren
-            SetupButtonListeners();
+            continueTermsAndConditionsButton.onClick.AddListener(OnContinueTermsAndConditionsButton);
 
             // Behandle die Nutzungsbedingungen und Datenschutzrichtlinien
             HandleTermsAndConditions();
@@ -73,12 +72,6 @@ namespace Assets._Scripts.SceneControllers
             BackStackManager.Instance().Clear();
         }
 
-        private void SetupButtonListeners()
-        {
-            //novelPlayerButton.onClick.AddListener(OnNovelPlayerButton);
-            continueTermsAndConditionsButton.onClick.AddListener(OnContinueTermsAndConditionsButton);
-        }
-
         private void HandleTermsAndConditions()
         {
             var privacyManager = PrivacyAndConditionManager.Instance();
@@ -102,11 +95,11 @@ namespace Assets._Scripts.SceneControllers
 
         private void StartVersionCheck()
         {
-            var call = Object.Instantiate(getVersionServerCallPrefab).GetComponent<GetVersionServerCall>();
+            var call = Instantiate(getVersionServerCallPrefab).GetComponent<GetVersionServerCall>();
             call.sceneController = this;
             call.OnSuccessHandler = this;
             call.SendRequest();
-            Object.DontDestroyOnLoad(call.gameObject);
+            DontDestroyOnLoad(call.gameObject);
         }
 
         public void OnNovelPlayerButton()
@@ -116,8 +109,8 @@ namespace Assets._Scripts.SceneControllers
             analytics.SetFromWhereIsNovelSelected("KITE NOVELS");
 
             // Instantiate the sound prefab and assign it to a variable
-            GameObject buttonSound = Object.Instantiate(buttonSoundPrefab);
-            Object.DontDestroyOnLoad(buttonSound); // Correct usage of 
+            GameObject buttonSound = Instantiate(buttonSoundPrefab);
+            DontDestroyOnLoad(buttonSound); // Correct usage of 
         }
 
         public void OnSettingsButton()

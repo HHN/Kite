@@ -136,6 +136,39 @@ namespace Assets._Scripts.Player
                 }
             }
         }
+        
+        public static long GetId(string name)
+        {
+            switch (name)
+            {
+                case "Eltern":
+                    return 2;
+                case "Presse":
+                    return 3;
+                case "Notarin":
+                    return 4;
+                case "Bankkonto":
+                    return 5;
+                case "Büro":
+                    return 6;
+                case "Förderantrag":
+                    return 7;
+                case "Gründungs-zuschuss":
+                    return 8;
+                case "Investor":
+                    return 9;
+                case "Bankkredit":
+                    return 10;
+                case "Honorar":
+                    return 11;
+                case "Intro-Novel":
+                    return 13;
+                case "Lebens-partner*in":
+                    return -10;
+                default:
+                    return 0; // Rückgabewert im Falle eines nicht gefundenen Werts
+            }
+        }
 
         public static int ToInt(VisualNovelNames value)
         {
