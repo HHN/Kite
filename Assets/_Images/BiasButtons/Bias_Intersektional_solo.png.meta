@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6830f9d05bad8044992a25e9a097a55a
+guid: 0ebcfce8e64278340b6056f0afb5fae5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5132917227877237822
-    second: Bias_Rollen_0
+      213: -8218121142107715254
+    second: Bias_Intersektional_solo_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -165,13 +165,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bias_Rollen_0
+      name: Bias_Intersektional_solo_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 11
         width: 760
-        height: 728
+        height: 513
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,8 +180,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2cbf4e20af634c8b0800000000000000
-      internalID: -5132917227877237822
+      spriteID: a49ca8bdc5e53fd80800000000000000
+      internalID: -8218121142107715254
       vertices: []
       indices: 
       edges: []
@@ -200,7 +200,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bias_Rollen_0: -5132917227877237822
+      Bias_Intersektional_solo_0: -8218121142107715254
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

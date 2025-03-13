@@ -212,7 +212,8 @@ namespace Assets._Scripts.SceneControllers
             barrierenInfoGroup.SetActive(false);
 
             biasDetailsObject.SetActive(true);
-            _biasDetailsText.text = BiasDescriptionTexts.GetStringByType(type);
+            // _biasDetailsText.text = BiasDescriptionTexts.GetStringByType(type);
+            _biasDetailsText.text = BiasDescriptionTexts.GetBiasText(type);
             StartCoroutine(RebuildLayout());
         }
 

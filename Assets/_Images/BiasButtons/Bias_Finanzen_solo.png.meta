@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6a310dbfe00311d4c8ef3e72d31c2a5f
+guid: 71e0785b208c8fe428ca35281222223a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8800336862329533505
-    second: Bias_Finanzen_0
+      213: -6734367355938044279
+    second: Bias_Finanzen_solo_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -165,13 +165,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bias_Finanzen_0
+      name: Bias_Finanzen_solo_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 760
-        height: 728
+        width: 325
+        height: 295
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,8 +180,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1447de600c3112a70800000000000000
-      internalID: 8800336862329533505
+      spriteID: 986835ae198ba82a0800000000000000
+      internalID: -6734367355938044279
       vertices: []
       indices: 
       edges: []
@@ -200,7 +200,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bias_Finanzen_0: 8800336862329533505
+      Bias_Finanzen_solo_0: -6734367355938044279
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -2,6 +2,7 @@ using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Debug = UnityEngine.Debug;
 
 namespace Assets._Scripts.Biases
 {
@@ -18,24 +19,17 @@ namespace Assets._Scripts.Biases
         {
             // Ermittle den index des geklickten Links
             int linkIndex = TMP_TextUtilities.FindIntersectingLink(_textMeshPro, eventData.position, null);
-        
+
             if (linkIndex != -1)
             {
                 TMP_LinkInfo linkInfo = _textMeshPro.textInfo.linkInfo[linkIndex];
                 string url = linkInfo.GetLinkID();
-            
-                // Öffne den Link im Browser
-                OpenURL(url);
-            }
-        }
+                
+                Debug.Log(url);
 
-        private void OpenURL(string url)
-        {
-#if UNITY_WEBGL
-            Application.OpenURL(url);
-#else
-            Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
-#endif
+                // Öffne den Link im Browser
+                Application.OpenURL(url);
+            }
         }
     }
 }
