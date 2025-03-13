@@ -1,10 +1,25 @@
 fileFormatVersion: 2
-guid: 281fd25ce374d1648a6748e25a5eeb38
+guid: c33c2405cdd1e1343ab7f8185c565f2f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 83067251076920301
-    second: Bias_Karriere_0
+      213: -6357491808664201760
+    second: Bias_Rollen_solo_0
+  - first:
+      213: -4860962471354264176
+    second: Bias_Rollen_solo_1
+  - first:
+      213: -5821246221002057426
+    second: Bias_Rollen_solo_2
+  - first:
+      213: -4609583790970488460
+    second: Bias_Rollen_solo_3
+  - first:
+      213: -7762702843182179650
+    second: Bias_Rollen_solo_4
+  - first:
+      213: 3010183467770734338
+    second: Bias_Rollen_solo_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -165,13 +180,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bias_Karriere_0
+      name: Bias_Rollen_solo_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 760
-        height: 728
+        x: 20
+        y: 228
+        width: 60
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,8 +195,118 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: de378e8893d172100800000000000000
-      internalID: 83067251076920301
+      spriteID: 0e55d1a22e6a5c7a0800000000000000
+      internalID: -6357491808664201760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bias_Rollen_solo_1
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 228
+        width: 61
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0959c6403646a8cb0800000000000000
+      internalID: -4860962471354264176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bias_Rollen_solo_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 101
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e29561f7767c63fa0800000000000000
+      internalID: -5821246221002057426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bias_Rollen_solo_3
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 149
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4793ec8f6f77700c0800000000000000
+      internalID: -4609583790970488460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bias_Rollen_solo_4
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 0
+        width: 106
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eba163784e6554490800000000000000
+      internalID: -7762702843182179650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bias_Rollen_solo_5
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 75
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2076a315ae156c920800000000000000
+      internalID: 3010183467770734338
       vertices: []
       indices: 
       edges: []
@@ -200,7 +325,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bias_Karriere_0: 83067251076920301
+      Bias_Rollen_solo_0: -6357491808664201760
+      Bias_Rollen_solo_1: -4860962471354264176
+      Bias_Rollen_solo_2: -5821246221002057426
+      Bias_Rollen_solo_3: -4609583790970488460
+      Bias_Rollen_solo_4: -7762702843182179650
+      Bias_Rollen_solo_5: 3010183467770734338
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
