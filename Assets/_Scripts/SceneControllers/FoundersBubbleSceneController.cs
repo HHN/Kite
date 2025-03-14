@@ -10,6 +10,7 @@ using NUnit.Framework;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Assets._Scripts.SceneControllers
@@ -26,19 +27,13 @@ namespace Assets._Scripts.SceneControllers
         [Header("Novel Description Textbox")] [SerializeField]
         private NovelDescriptionTextbox novelDescriptionTextbox;
 
-        [SerializeField] private NovelDescriptionTextbox novelDescriptionTextboxIntro;
         [SerializeField] private bool isPopupOpen;
         [SerializeField] private VisualNovelNames currentlyOpenedVisualNovelPopup;
 
-        [Header("Infinity Scroll")] [SerializeField]
-        private InfinityScroll infinityScroll;
+        [SerializeField] private InfinityScroll infinityScroll;
 
-        [Header("Founder's Well Button")] [SerializeField]
-        private Button foundersWellButton;
-
-        [Header("General Buttons")] [SerializeField]
-        private Button novelListButton;
-
+        [SerializeField] private Button foundersWellButton;
+        [SerializeField] private Button novelListButton;
         [SerializeField] private Button settingsButton;
 
         [Header("Burger Menu")] [SerializeField]
@@ -46,33 +41,22 @@ namespace Assets._Scripts.SceneControllers
 
         [SerializeField] private bool isBurgerMenuOpen;
         [SerializeField] private Button burgerMenuBackground;
-
-        [Header("Burger Menu Buttons")] [SerializeField]
-        private Button introNovelButtonFromBurgerMenu;
-
-        [SerializeField] private Button bankkreditNovelButtonFromBurgerMenu;
-        [SerializeField] private Button elternNovelButtonFromBurgerMenu;
-        [SerializeField] private Button notarinNovelButtonFromBurgerMenu;
-        [SerializeField] private Button presseNovelButtonFromBurgerMenu;
-        [SerializeField] private Button bueroNovelButtonFromBurgerMenu;
-        [SerializeField] private Button honorarNovelButtonFromBurgerMenu;
-        [SerializeField] private Button investorNovelButtonFromBurgerMenu;
+        [SerializeField] private GameObject burgerMenuButtonPrefab;
+        [SerializeField] private List<GameObject> burgerMenuButtons;
 
         [Header("Search Input and Button Containers")] [SerializeField]
         private TMP_InputField inputField;
 
-        [SerializeField] private List<GameObject> buttonContainers;
+        [SerializeField] private List<GameObject> novelButtons;
 
-        [Header("Sound Prefab")] [SerializeField]
-        private GameObject selectNovelSoundPrefab;
+        [SerializeField] private GameObject selectNovelSoundPrefab;
 
-        [Header("Other Variables")] [SerializeField]
-        private bool finishedInitialization;
+        [SerializeField] private bool finishedInitialization;
 
         private int _novelId;
         private List<GameObject> _originalOrder;
 
-        [SerializeField] private List<NovelEntry> _isNovelContainedInVersion;
+        private List<NovelEntry> _isNovelContainedInVersion;
 
         private void Start()
         {
@@ -84,8 +68,11 @@ namespace Assets._Scripts.SceneControllers
 
             List<VisualNovel> allKiteNovels = KiteNovelManager.Instance().GetAllKiteNovels();
 
+            var children = burgerMenu.GetComponentsInChildren<Transform>();
+            var content = children.FirstOrDefault(k => k.gameObject.name == "Content");
+
             _isNovelContainedInVersion = new List<NovelEntry>();
-            foreach (var visualNovel in allKiteNovels)
+            foreach (VisualNovel visualNovel in allKiteNovels)
             {
                 NovelEntry novelEntry = new NovelEntry
                 {
@@ -94,19 +81,46 @@ namespace Assets._Scripts.SceneControllers
                 };
 
                 _isNovelContainedInVersion.Add(novelEntry);
+
+                CreateBurgerMenuButton(visualNovel, content);
+            }
+
+
+            List<Transform> buttonChildren = new List<Transform>();
+            if (content != null)
+            {
+                foreach (Transform child in content)
+                {
+                    if (!child.gameObject.name.Contains("Search") || !child.gameObject.name.Contains("Background"))
+                    {
+                        buttonChildren.Add(child);
+                    }
+                    else
+                    {
+                        if (child.gameObject.name.Contains("Background"))
+                        {
+                            buttonChildren.Insert(0, child);
+                        }
+                        else
+                        {
+                            buttonChildren.Insert(1, child);
+                        }
+                    }
+                }
+            }
+
+            // Alphabetisch sortieren
+            buttonChildren = buttonChildren.OrderBy(child => child.name).ToList();
+
+            // Reihenfolge in der Hierarchie anpassen
+            for (int i = 0; i < buttonChildren.Count; i++)
+            {
+                buttonChildren[i].SetSiblingIndex(i);
             }
 
             novelListButton.onClick.AddListener(OnNovelListButton);
             settingsButton.onClick.AddListener(OnSettingsButton);
 
-            introNovelButtonFromBurgerMenu.onClick.AddListener(OnIntroButtonFromBurgerMenu);
-            bankkreditNovelButtonFromBurgerMenu.onClick.AddListener(OnBankkreditButtonFromBurgerMenu);
-            elternNovelButtonFromBurgerMenu.onClick.AddListener(OnElternButtonFromBurgerMenu);
-            notarinNovelButtonFromBurgerMenu.onClick.AddListener(OnNotarinButtonFromBurgerMenu);
-            presseNovelButtonFromBurgerMenu.onClick.AddListener(OnPresseButtonFromBurgerMenu);
-            bueroNovelButtonFromBurgerMenu.onClick.AddListener(OnBueroButtonFromBurgerMenu);
-            investorNovelButtonFromBurgerMenu.onClick.AddListener(OnInvestorNovelButtonFromBurgerMenu);
-            honorarNovelButtonFromBurgerMenu.onClick.AddListener(OnHonorarNovelButtonFromBurgerMenu);
             burgerMenuBackground.onClick.AddListener(OnBackgroundButton);
 
             if (inputField != null)
@@ -119,10 +133,10 @@ namespace Assets._Scripts.SceneControllers
                 Debug.LogError("InputField ist nicht zugewiesen.");
             }
 
-            if (buttonContainers != null && buttonContainers.Count > 0)
+            if (novelButtons != null && novelButtons.Count > 0)
             {
                 // Speichere die ursprüngliche Reihenfolge der Container
-                _originalOrder = new List<GameObject>(buttonContainers);
+                _originalOrder = new List<GameObject>(novelButtons);
             }
             else
             {
@@ -131,6 +145,25 @@ namespace Assets._Scripts.SceneControllers
 
             StartCoroutine(TextToSpeechManager.Instance.Speak(" "));
             GlobalVolumeManager.Instance.StopSound();
+        }
+
+        private void CreateBurgerMenuButton(VisualNovel visualNovel, Transform content)
+        {
+            var novelId = VisualNovelNamesHelper.ValueOf((int)(visualNovel.id));
+            if (novelId == VisualNovelNames.NONE) return;
+
+            string novelName = VisualNovelNamesHelper.GetName(visualNovel.id);
+
+            GameObject burgerMenuButton = Instantiate(burgerMenuButtonPrefab, content?.transform);
+
+            burgerMenuButton.name = novelName;
+            burgerMenuButton.GetComponentInChildren<Button>().name = novelName;
+            burgerMenuButton.GetComponentInChildren<TextMeshProUGUI>().text = novelName;
+            burgerMenuButton.GetComponentInChildren<Button>().onClick.AddListener(OnButtonFromBurgerMenu);
+
+            burgerMenuButton.GetComponentInChildren<Image>().color =
+                FoundersBubbleMetaInformation.GetForegroundColorOfNovel(novelId);
+            burgerMenuButtons.Add(burgerMenuButton);
         }
 
         private void OnInputValueChanged(string input)
@@ -169,14 +202,14 @@ namespace Assets._Scripts.SceneControllers
             }
 
             // Setze die Reihenfolge der Container in der Liste neu
-            buttonContainers.Clear();
-            buttonContainers.AddRange(visibleContainers);
-            buttonContainers.AddRange(hiddenContainers);
+            novelButtons.Clear();
+            novelButtons.AddRange(visibleContainers);
+            novelButtons.AddRange(hiddenContainers);
 
             // Aktualisiere die Reihenfolge der Container in der UI
-            for (int i = 0; i < buttonContainers.Count; i++)
+            for (int i = 0; i < novelButtons.Count; i++)
             {
-                buttonContainers[i].transform.SetSiblingIndex(i + 1); // +1, um das InputField oben zu halten
+                novelButtons[i].transform.SetSiblingIndex(i + 1); // +1, um das InputField oben zu halten
             }
 
             inputField.transform.SetSiblingIndex(1);
@@ -209,177 +242,32 @@ namespace Assets._Scripts.SceneControllers
 
             SceneLoader.LoadFoundersWell2Scene();
         }
-        
+
         public void OnNovelButton()
         {
             GameObject buttonObject = EventSystem.current.currentSelectedGameObject;
-            long novelNames = VisualNovelNamesHelper.GetId(buttonObject.name);
-            
-            //Neue Methode in VisualNovelNamesHelper, die aus einem string den dazugehörigen Enum-Wert zurückgibt
-            // var entry = _isNovelContainedInVersion.FirstOrDefault(novel =>
-            //     novel.novelId == (long)VisualNovelNamesHelper.ToInt(novelNames));
-            //
-            // if (entry == null) return;
-            //
-            // DisplayTextBoxForVisualNovel(novelNames, entry.isContained);
-            // infinityScroll.MoveToVisualNovel(novelNames);
-        }
+            VisualNovelNames novelNames = VisualNovelNamesHelper.ValueByString(buttonObject.name);
 
-        // public void OnBankkreditNovelButton()
-        // {
-        //     VisualNovelNames novelNames = VisualNovelNames.BANK_KREDIT_NOVEL;
-        //     var entry = _isNovelContainedInVersion.FirstOrDefault(novel =>
-        //         novel.novelId == (long)VisualNovelNamesHelper.ToInt(novelNames));
-        //
-        //     if (entry == null) return;
-        //
-        //     DisplayTextBoxForVisualNovel(novelNames, entry.isContained);
-        //     infinityScroll.MoveToVisualNovel(novelNames);
-        // }
-        //
-        // public void OnInvestorNovelButton()
-        // {
-        //     VisualNovelNames novelNames = VisualNovelNames.INVESTOR_NOVEL;
-        //     var entry = _isNovelContainedInVersion.FirstOrDefault(novel =>
-        //         novel.novelId == (long)VisualNovelNamesHelper.ToInt(novelNames));
-        //
-        //     if (entry == null) return;
-        //
-        //     DisplayTextBoxForVisualNovel(novelNames, entry.isContained);
-        //     infinityScroll.MoveToVisualNovel(novelNames);
-        // }
-        //
-        // public void OnBankKontoNovelButton()
-        // {
-        //     VisualNovelNames novelNames = VisualNovelNames.BANK_KONTO_NOVEL;
-        //     var entry = _isNovelContainedInVersion.FirstOrDefault(novel =>
-        //         novel.novelId == (long)VisualNovelNamesHelper.ToInt(novelNames));
-        //
-        //     if (entry == null) return;
-        //
-        //     DisplayTextBoxForVisualNovel(novelNames, entry.isContained);
-        //     infinityScroll.MoveToVisualNovel(novelNames);
-        // }
-        //
-        // public void OnFoerderantragNovelButton()
-        // {
-        //     VisualNovelNames novelNames = VisualNovelNames.FOERDERANTRAG_NOVEL;
-        //     var entry = _isNovelContainedInVersion.FirstOrDefault(novel =>
-        //         novel.novelId == (long)VisualNovelNamesHelper.ToInt(novelNames));
-        //
-        //     if (entry == null) return;
-        //
-        //     DisplayTextBoxForVisualNovel(novelNames, entry.isContained);
-        //     infinityScroll.MoveToVisualNovel(novelNames);
-        // }
-        //
-        // public void OnElternNovelButton()
-        // {
-        //     VisualNovelNames novelNames = VisualNovelNames.ELTERN_NOVEL;
-        //     var entry = _isNovelContainedInVersion.FirstOrDefault(novel =>
-        //         novel.novelId == (long)VisualNovelNamesHelper.ToInt(novelNames));
-        //
-        //     if (entry == null) return;
-        //
-        //     DisplayTextBoxForVisualNovel(novelNames, entry.isContained);
-        //     infinityScroll.MoveToVisualNovel(novelNames);
-        // }
-        //
-        // public void OnNotariatNovelButton()
-        // {
-        //     VisualNovelNames novelNames = VisualNovelNames.NOTARIAT_NOVEL;
-        //     var entry = _isNovelContainedInVersion.FirstOrDefault(novel =>
-        //         novel.novelId == (long)VisualNovelNamesHelper.ToInt(novelNames));
-        //
-        //     if (entry == null) return;
-        //
-        //     DisplayTextBoxForVisualNovel(novelNames, entry.isContained);
-        //     infinityScroll.MoveToVisualNovel(novelNames);
-        // }
-        //
-        // public void OnPresseNovelButton()
-        // {
-        //     VisualNovelNames novelNames = VisualNovelNames.PRESSE_NOVEL;
-        //     var entry = _isNovelContainedInVersion.FirstOrDefault(novel =>
-        //         novel.novelId == (long)VisualNovelNamesHelper.ToInt(novelNames));
-        //
-        //     if (entry == null) return;
-        //
-        //     DisplayTextBoxForVisualNovel(novelNames, entry.isContained);
-        //     infinityScroll.MoveToVisualNovel(novelNames);
-        // }
-        //
-        // public void OnBueroNovelButton()
-        // {
-        //     VisualNovelNames novelNames = VisualNovelNames.BUERO_NOVEL;
-        //     var entry = _isNovelContainedInVersion.FirstOrDefault(novel =>
-        //         novel.novelId == (long)VisualNovelNamesHelper.ToInt(novelNames));
-        //
-        //     if (entry == null) return;
-        //
-        //     DisplayTextBoxForVisualNovel(novelNames, entry.isContained);
-        //     infinityScroll.MoveToVisualNovel(novelNames);
-        // }
-        //
-        // public void OnGruenderzuschussNovelButton()
-        // {
-        //     VisualNovelNames novelNames = VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL;
-        //     var entry = _isNovelContainedInVersion.FirstOrDefault(novel =>
-        //         novel.novelId == (long)VisualNovelNamesHelper.ToInt(novelNames));
-        //
-        //     if (entry == null) return;
-        //
-        //     DisplayTextBoxForVisualNovel(novelNames, entry.isContained);
-        //     infinityScroll.MoveToVisualNovel(novelNames);
-        // }
-        //
-        // public void OnHonorarNovelButton()
-        // {
-        //     VisualNovelNames novelNames = VisualNovelNames.HONORAR_NOVEL;
-        //     var entry = _isNovelContainedInVersion.FirstOrDefault(novel =>
-        //         novel.novelId == (long)VisualNovelNamesHelper.ToInt(novelNames));
-        //
-        //     if (entry == null) return;
-        //
-        //     DisplayTextBoxForVisualNovel(novelNames, entry.isContained);
-        //     infinityScroll.MoveToVisualNovel(novelNames);
-        // }
-        //
-        // public void OnLebenspartnerNovelButton()
-        // {
-        //     VisualNovelNames novelNames = VisualNovelNames.LEBENSPARTNER_NOVEL;
-        //     var entry = _isNovelContainedInVersion.FirstOrDefault(novel =>
-        //         novel.novelId == (long)VisualNovelNamesHelper.ToInt(novelNames));
-        //
-        //     if (entry == null) return;
-        //
-        //     DisplayTextBoxForVisualNovel(novelNames, entry.isContained);
-        //     infinityScroll.MoveToVisualNovel(novelNames);
-        // }
-        //
-        // public void OnIntroNovelButton()
-        // {
-        //     VisualNovelNames novelNames = VisualNovelNames.INTRO_NOVEL;
-        //     var entry = _isNovelContainedInVersion.FirstOrDefault(novel =>
-        //         novel.novelId == (long)VisualNovelNamesHelper.ToInt(novelNames));
-        //
-        //     if (entry == null) return;
-        //
-        //     DisplayTextBoxForVisualNovel(novelNames, entry.isContained);
-        //     infinityScroll.MoveToVisualNovel(novelNames);
-        // }
+            var entry = _isNovelContainedInVersion.FirstOrDefault(novel =>
+                novel.novelId == VisualNovelNamesHelper.ToInt(novelNames));
+
+            if (entry == null) return;
+
+            DisplayTextBoxForVisualNovel(novelNames, entry.isContained);
+            infinityScroll.MoveToVisualNovel(novelNames);
+        }
 
         private void OnNovelListButton()
         {
             if (isBurgerMenuOpen)
             {
-                this.burgerMenu.gameObject.SetActive(false);
+                burgerMenu.gameObject.SetActive(false);
                 isBurgerMenuOpen = false;
                 return;
             }
 
             isBurgerMenuOpen = true;
-            this.burgerMenu.gameObject.SetActive(true);
+            burgerMenu.gameObject.SetActive(true);
             FontSizeManager.Instance().UpdateAllTextComponents();
         }
 
@@ -392,7 +280,7 @@ namespace Assets._Scripts.SceneControllers
         {
             if (isBurgerMenuOpen)
             {
-                this.burgerMenu.gameObject.SetActive(false);
+                burgerMenu.gameObject.SetActive(false);
                 isBurgerMenuOpen = false;
             }
 
@@ -425,36 +313,16 @@ namespace Assets._Scripts.SceneControllers
             {
                 if (novel.id == _novelId)
                 {
-                    //Debug.Log("title: " + novel.title);
-                    //Debug.Log("description: " + novel.description);
-
-                    if (novel.id == 13)
-                    {
-                        novelDescriptionTextbox.gameObject.SetActive(false);
-                        novelDescriptionTextboxIntro.gameObject.SetActive(true);
-                        novelDescriptionTextboxIntro.SetHead(FoundersBubbleMetaInformation.IsHighInGui(visualNovel));
-                        novelDescriptionTextboxIntro.SetVisualNovel(novel);
-                        novelDescriptionTextboxIntro.SetVisualNovelName(visualNovel);
-                        novelDescriptionTextboxIntro.SetText(novel.description);
-                        novelDescriptionTextboxIntro.SetColorOfImage(
-                            FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
-                        novelDescriptionTextboxIntro.SetButtonsActive(true);
-                        novelDescriptionTextboxIntro.UpdateSize();
-                    }
-                    else
-                    {
-                        novelDescriptionTextboxIntro.gameObject.SetActive(false);
-                        novelDescriptionTextbox.gameObject.SetActive(true);
-                        novelDescriptionTextbox.SetHead(FoundersBubbleMetaInformation.IsHighInGui(visualNovel));
-                        novelDescriptionTextbox.SetVisualNovel(novel);
-                        novelDescriptionTextbox.SetVisualNovelName(visualNovel);
-                        novelDescriptionTextbox.SetText(novel.description);
-                        novelDescriptionTextbox.SetColorOfImage(
-                            FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
-                        novelDescriptionTextbox.SetButtonsActive(true);
-                        novelDescriptionTextbox.InitializeBookMarkButton(FavoritesManager.Instance().IsFavorite(novel));
-                        novelDescriptionTextbox.UpdateSize();
-                    }
+                    novelDescriptionTextbox.gameObject.SetActive(true);
+                    novelDescriptionTextbox.SetHead(FoundersBubbleMetaInformation.IsHighInGui(visualNovel));
+                    novelDescriptionTextbox.SetVisualNovel(novel);
+                    novelDescriptionTextbox.SetVisualNovelName(visualNovel);
+                    novelDescriptionTextbox.SetText(novel.description);
+                    novelDescriptionTextbox.SetColorOfImage(
+                        FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
+                    novelDescriptionTextbox.SetButtonsActive(true);
+                    novelDescriptionTextbox.InitializeBookMarkButton(FavoritesManager.Instance().IsFavorite(novel));
+                    novelDescriptionTextbox.UpdateSize();
 
                     isPopupOpen = true;
                     currentlyOpenedVisualNovelPopup = visualNovel;
@@ -471,7 +339,6 @@ namespace Assets._Scripts.SceneControllers
             isPopupOpen = false;
             currentlyOpenedVisualNovelPopup = VisualNovelNames.NONE;
             novelDescriptionTextbox.gameObject.SetActive(false);
-            novelDescriptionTextboxIntro.gameObject.SetActive(false);
         }
 
         public override void OnStop()
@@ -500,45 +367,23 @@ namespace Assets._Scripts.SceneControllers
             }
         }
 
-        private void OnIntroButtonFromBurgerMenu()
+        public void OnButtonFromBurgerMenu()
         {
-            GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
-            DisplayNovelFromMenu(VisualNovelNames.INTRO_NOVEL);
-        }
+            GameObject buttonObject = EventSystem.current.currentSelectedGameObject;
+            Debug.Log(buttonObject.name);
+            VisualNovelNames novelNames = VisualNovelNamesHelper.ValueByString(buttonObject.name.Replace("Button", ""));
 
-        private void OnBankkreditButtonFromBurgerMenu()
-        {
-            DisplayNovelFromMenu(VisualNovelNames.BANK_KREDIT_NOVEL);
-        }
+            var entry = _isNovelContainedInVersion.FirstOrDefault(novel =>
+                novel.novelId == VisualNovelNamesHelper.ToInt(novelNames));
 
-        private void OnElternButtonFromBurgerMenu()
-        {
-            DisplayNovelFromMenu(VisualNovelNames.ELTERN_NOVEL);
-        }
+            if (entry == null) return;
 
-        private void OnNotarinButtonFromBurgerMenu()
-        {
-            DisplayNovelFromMenu(VisualNovelNames.NOTARIAT_NOVEL);
-        }
+            if (novelNames == VisualNovelNames.EINSTIEGS_NOVEL)
+            {
+                GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
+            }
 
-        private void OnPresseButtonFromBurgerMenu()
-        {
-            DisplayNovelFromMenu(VisualNovelNames.PRESSE_NOVEL);
-        }
-
-        private void OnBueroButtonFromBurgerMenu()
-        {
-            DisplayNovelFromMenu(VisualNovelNames.BUERO_NOVEL);
-        }
-
-        private void OnHonorarNovelButtonFromBurgerMenu()
-        {
-            DisplayNovelFromMenu(VisualNovelNames.HONORAR_NOVEL);
-        }
-
-        private void OnInvestorNovelButtonFromBurgerMenu()
-        {
-            DisplayNovelFromMenu(VisualNovelNames.INVESTOR_NOVEL);
+            DisplayNovelFromMenu(novelNames);
         }
 
         private void DisplayNovelFromMenu(VisualNovelNames visualNovelName)

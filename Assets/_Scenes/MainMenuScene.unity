@@ -2356,7 +2356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e66148b76347274899c8e1d51bc6705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipIntroNovel: 0
+  skipIntroNovel: 1
   isIntroNovelSaved: 0
   introNovelLoadedFromMainMenu: 1
   novelSaveStatusList: []
@@ -2454,7 +2454,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1274653184
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2471,10 +2471,10 @@ RectTransform:
   - {fileID: 36329547602864009}
   m_Father: {fileID: 277032711}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 438.13327, y: -540.025}
+  m_SizeDelta: {x: 876.26654, y: 348.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1274653185
 MonoBehaviour:
@@ -3035,7 +3035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7185633893947003523, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1564.03
+      value: -1166.02
       objectReference: {fileID: 0}
     - target: {fileID: 7185633893947003523, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4319,7 +4319,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 75, y: -174.005}
-  m_SizeDelta: {x: 50, y: 0}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &36329546473678961
 MonoBehaviour:
@@ -4827,7 +4827,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 488.13327, y: -174.005}
-  m_SizeDelta: {x: 676.26654, y: 0}
+  m_SizeDelta: {x: 676.26654, y: 348.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &36329547602864010
 MonoBehaviour:
@@ -4958,7 +4958,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Hiermit stimme ich den Datenschutzerkl\xE4rungen zu."
+  m_text: " Die Datenschutzerkl\xE4rung habe ich zur Kentniss genommen."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
@@ -5045,7 +5045,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 488.13327, y: -54.005}
+  m_AnchoredPosition: {x: 474.02457, y: -54.005}
   m_SizeDelta: {x: 648.04913, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &36329547614096791

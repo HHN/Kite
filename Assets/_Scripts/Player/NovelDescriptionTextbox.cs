@@ -100,7 +100,7 @@ namespace Assets._Scripts.Player
         /// <param name="visualNovel">Die Visual Novel.</param>
         public void SetVisualNovel(VisualNovel visualNovel)
         {
-            this.visualNovelToDisplay = visualNovel;
+            visualNovelToDisplay = visualNovel;
 
             if (bookMarkButton != null) InitializeBookMarkButton(FavoritesManager.Instance().IsFavorite(visualNovel));
         }
@@ -172,7 +172,15 @@ namespace Assets._Scripts.Player
         public void SetButtonsActive(bool active)
         {
             playButton.gameObject.SetActive(active);
-            if (bookMarkButton != null) bookMarkButton.gameObject.SetActive(active);
+            
+            if (visualNovelToDisplay.id == 13)
+            {
+                bookMarkButton.gameObject.SetActive(false);
+            }
+            else
+            {
+                if (bookMarkButton != null) bookMarkButton.gameObject.SetActive(active);
+            }
         }
 
         /// <summary>

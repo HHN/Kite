@@ -71,14 +71,14 @@ namespace Assets._Scripts.Managers
                 {
                     return _feedbackForBueroNovel;
                 }
-                case VisualNovelNames.FOERDERANTRAG_NOVEL:
-                {
-                    return _feedbackForFoerderantragNovel;
-                }
-                case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
-                {
-                    return _feedbackForGruendungszuschussNovel;
-                }
+                // case VisualNovelNames.FOERDERANTRAG_NOVEL:
+                // {
+                //     return _feedbackForFoerderantragNovel;
+                // }
+                // case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
+                // {
+                //     return _feedbackForGruendungszuschussNovel;
+                // }
                 case VisualNovelNames.INVESTOR_NOVEL:
                 {
                     return _feedbackForInvestorNovel;
@@ -91,14 +91,14 @@ namespace Assets._Scripts.Managers
                 {
                     return _feedbackForHonorarNovel;
                 }
-                case VisualNovelNames.INTRO_NOVEL:
+                case VisualNovelNames.EINSTIEGS_NOVEL:
                 {
                     return _feedbackForIntroNovel;
                 }
-                case VisualNovelNames.LEBENSPARTNER_NOVEL:
-                {
-                    return _feedbackForLebenspartnerNovel;
-                }
+                // case VisualNovelNames.LEBENSPARTNER_NOVEL:
+                // {
+                //     return _feedbackForLebenspartnerNovel;
+                // }
                 default:
                 {
                     return null;
@@ -136,16 +136,16 @@ namespace Assets._Scripts.Managers
                     _feedbackForBueroNovel = feedback;
                     break;
                 }
-                case VisualNovelNames.FOERDERANTRAG_NOVEL:
-                {
-                    _feedbackForFoerderantragNovel = feedback;
-                    break;
-                }
-                case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
-                {
-                    _feedbackForGruendungszuschussNovel = feedback;
-                    break;
-                }
+                // case VisualNovelNames.FOERDERANTRAG_NOVEL:
+                // {
+                //     _feedbackForFoerderantragNovel = feedback;
+                //     break;
+                // }
+                // case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
+                // {
+                //     _feedbackForGruendungszuschussNovel = feedback;
+                //     break;
+                // }
                 case VisualNovelNames.INVESTOR_NOVEL:
                 {
                     _feedbackForInvestorNovel = feedback;
@@ -161,16 +161,16 @@ namespace Assets._Scripts.Managers
                     _feedbackForHonorarNovel = feedback;
                     break;
                 }
-                case VisualNovelNames.INTRO_NOVEL:
+                case VisualNovelNames.EINSTIEGS_NOVEL:
                 {
                     _feedbackForIntroNovel = feedback;
                     break;
                 }
-                case VisualNovelNames.LEBENSPARTNER_NOVEL:
-                {
-                    _feedbackForLebenspartnerNovel = feedback;
-                    break;
-                }
+                // case VisualNovelNames.LEBENSPARTNER_NOVEL:
+                // {
+                //     _feedbackForLebenspartnerNovel = feedback;
+                //     break;
+                // }
             }
         }
 
@@ -198,14 +198,14 @@ namespace Assets._Scripts.Managers
                 {
                     return _feedbackForBueroNovel is { Count: > 0 };
                 }
-                case VisualNovelNames.FOERDERANTRAG_NOVEL:
-                {
-                    return _feedbackForFoerderantragNovel is { Count: > 0 };
-                }
-                case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
-                {
-                    return _feedbackForGruendungszuschussNovel is { Count: > 0 };
-                }
+                // case VisualNovelNames.FOERDERANTRAG_NOVEL:
+                // {
+                //     return _feedbackForFoerderantragNovel is { Count: > 0 };
+                // }
+                // case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
+                // {
+                //     return _feedbackForGruendungszuschussNovel is { Count: > 0 };
+                // }
                 case VisualNovelNames.INVESTOR_NOVEL:
                 {
                     return _feedbackForInvestorNovel is { Count: > 0 };
@@ -218,14 +218,14 @@ namespace Assets._Scripts.Managers
                 {
                     return _feedbackForHonorarNovel is { Count: > 0 };
                 }
-                case VisualNovelNames.INTRO_NOVEL:
+                case VisualNovelNames.EINSTIEGS_NOVEL:
                 {
                     return _feedbackForIntroNovel is { Count: > 0 };
                 }
-                case VisualNovelNames.LEBENSPARTNER_NOVEL:
-                {
-                    return _feedbackForLebenspartnerNovel is { Count: > 0 };
-                }
+                // case VisualNovelNames.LEBENSPARTNER_NOVEL:
+                // {
+                //     return _feedbackForLebenspartnerNovel is { Count: > 0 };
+                // }
                 default:
                 {
                     return false;

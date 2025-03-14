@@ -35,15 +35,15 @@ namespace Assets._Scripts.SceneControllers
                 { VisualNovelNames.BANK_KREDIT_NOVEL, bankkreditNovel },
                 { VisualNovelNames.INVESTOR_NOVEL, investorNovel },
                 { VisualNovelNames.BANK_KONTO_NOVEL, bankkontoNovel },
-                { VisualNovelNames.FOERDERANTRAG_NOVEL, foerderAntragNovel },
+                // { VisualNovelNames.FOERDERANTRAG_NOVEL, foerderAntragNovel },
                 { VisualNovelNames.ELTERN_NOVEL, elternNovel },
                 { VisualNovelNames.NOTARIAT_NOVEL, notarinNovel },
                 { VisualNovelNames.PRESSE_NOVEL, presseNovel },
                 { VisualNovelNames.BUERO_NOVEL, bueroNovel },
-                { VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL, gruenderZuschussNovel },
+                // { VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL, gruenderZuschussNovel },
                 { VisualNovelNames.HONORAR_NOVEL, honorarNovel },
-                { VisualNovelNames.LEBENSPARTNER_NOVEL, lebenspartnerNovel },
-                { VisualNovelNames.INTRO_NOVEL, introNovel }
+                // { VisualNovelNames.LEBENSPARTNER_NOVEL, lebenspartnerNovel },
+                { VisualNovelNames.EINSTIEGS_NOVEL, introNovel }
             };
 
             foreach (var novelButton in _novelButtons)
