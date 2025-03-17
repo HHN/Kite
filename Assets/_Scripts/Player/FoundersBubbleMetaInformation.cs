@@ -26,7 +26,7 @@ namespace Assets._Scripts.Player
                 {
                     return false;
                 }
-                case VisualNovelNames.BUERO_NOVEL:
+                case VisualNovelNames.VERMIETER_NOVEL:
                 {
                     return true;
                 }
@@ -85,7 +85,7 @@ namespace Assets._Scripts.Player
                 {
                     return new Color(53 / 255f, 146 / 255f, 20 / 255f);
                 }
-                case VisualNovelNames.BUERO_NOVEL:
+                case VisualNovelNames.VERMIETER_NOVEL:
                 {
                     return new Color(23 / 255f, 49 / 255f, 86 / 255f);
                 }
@@ -144,7 +144,7 @@ namespace Assets._Scripts.Player
                 {
                     return new Color(37 / 255f, 101 / 255f, 14 / 255f);
                 }
-                case VisualNovelNames.BUERO_NOVEL:
+                case VisualNovelNames.VERMIETER_NOVEL:
                 {
                     return new Color(12 / 255f, 26 / 255f, 46 / 255f);
                 }
@@ -203,9 +203,9 @@ namespace Assets._Scripts.Player
                 {
                     return "Bankkonto";
                 }
-                case VisualNovelNames.BUERO_NOVEL:
+                case VisualNovelNames.VERMIETER_NOVEL:
                 {
-                    return "Büro";
+                    return "Vermieter";
                 }
                 case VisualNovelNames.FOERDERANTRAG_NOVEL:
                 {
@@ -262,7 +262,7 @@ namespace Assets._Scripts.Player
                 {
                     return 2;
                 }
-                case VisualNovelNames.BUERO_NOVEL:
+                case VisualNovelNames.VERMIETER_NOVEL:
                 {
                     return 5;
                 }
