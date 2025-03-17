@@ -110,15 +110,15 @@ namespace Assets._Scripts.Player
             honorarNovelButtonFromBurgerMenu.onClick.AddListener(OnHonorarNovelButtonFromBurgerMenu);
             burgerMenuBackground.onClick.AddListener(OnBackgroundButton);
 
-            if (inputField != null)
-            {
-                // Füge den Listener für Änderungen am Text des InputFields hinzu
-                inputField.onValueChanged.AddListener(OnInputValueChanged);
-            }
-            else
-            {
-                Debug.LogError("InputField ist nicht zugewiesen.");
-            }
+            // if (inputField != null)
+            // {
+            //     // Füge den Listener für Änderungen am Text des InputFields hinzu
+            //     inputField.onValueChanged.AddListener(OnInputValueChanged);
+            // }
+            // else
+            // {
+            //     Debug.LogError("InputField ist nicht zugewiesen.");
+            // }
 
             if (buttonContainers != null && buttonContainers.Count > 0)
             {
@@ -176,9 +176,9 @@ namespace Assets._Scripts.Player
             // Aktualisiere die Reihenfolge der Container in der UI
             for (int i = 0; i < buttonContainers.Count; i++)
             {
-                buttonContainers[i].transform.SetSiblingIndex(i + 1); // +1, um das InputField oben zu halten
+                buttonContainers[i].transform.SetSiblingIndex(i /*+ 1*/); // +1, um das InputField oben zu halten
             }
-            inputField.transform.SetSiblingIndex(1);
+            // inputField.transform.SetSiblingIndex(1);
         }
 
         public void OnBackgroundButton()
