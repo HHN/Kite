@@ -319,7 +319,7 @@ namespace Assets._Scripts.NovelHistory
                     displayContainerForPresseNovel = true;
                     return dropdownForPresseNovel;
                 }
-                case VisualNovelNames.BUERO_NOVEL:
+                case VisualNovelNames.VERMIETER_NOVEL:
                 {
                     displayContainerForBueroNovel = true;
                     return dropdownForBueroNovel;
@@ -387,7 +387,7 @@ namespace Assets._Scripts.NovelHistory
                     displayContainerForPresseNovel = true;
                     return containerForPresseNovel;
                 }
-                case VisualNovelNames.BUERO_NOVEL:
+                case VisualNovelNames.VERMIETER_NOVEL:
                 {
                     displayContainerForBueroNovel = true;
                     return containerForBueroNovel;
@@ -455,7 +455,7 @@ namespace Assets._Scripts.NovelHistory
                     displayContainerForPresseNovel = true;
                     return entryContainerForPresseNovel;
                 }
-                case VisualNovelNames.BUERO_NOVEL:
+                case VisualNovelNames.VERMIETER_NOVEL:
                 {
                     displayContainerForBueroNovel = true;
                     return entryContainerForBueroNovel;

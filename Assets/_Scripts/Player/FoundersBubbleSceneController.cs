@@ -254,8 +254,8 @@ namespace Assets._Scripts.Player
 
         public void OnBueroNovelButton()
         {
-            DisplayTextBoxForVisualNovel(VisualNovelNames.BUERO_NOVEL, isBueroNovelInVersionContained);
-            infinityScroll.MoveToVisualNovel(VisualNovelNames.BUERO_NOVEL);
+            DisplayTextBoxForVisualNovel(VisualNovelNames.VERMIETER_NOVEL, isBueroNovelInVersionContained);
+            infinityScroll.MoveToVisualNovel(VisualNovelNames.VERMIETER_NOVEL);
         }
 
         public void OnGruenderzuschussNovelButton()
@@ -442,7 +442,7 @@ namespace Assets._Scripts.Player
 
         private void OnBueroButtonFromBurgerMenu()
         {
-            DisplayNovelFromMenu(VisualNovelNames.BUERO_NOVEL);
+            DisplayNovelFromMenu(VisualNovelNames.VERMIETER_NOVEL);
         }
 
         private void OnHonorarNovelButtonFromBurgerMenu()

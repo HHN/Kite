@@ -804,7 +804,7 @@ GameObject:
   - component: {fileID: 88253490}
   - component: {fileID: 88253489}
   m_Layer: 5
-  m_Name: Buero Button
+  m_Name: VermieterButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5105,7 +5105,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 447.6684, y: -250}
+  m_AnchoredPosition: {x: 447.6684, y: -550}
   m_SizeDelta: {x: 895.3368, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &649079108
@@ -7519,7 +7519,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 447.6684, y: -750}
+  m_AnchoredPosition: {x: 447.6684, y: -350}
   m_SizeDelta: {x: 895.3368, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &958305983
@@ -8567,7 +8567,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "B\xFCro"
+  m_text: Vermieter
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
   m_sharedMaterial: {fileID: 3127457962735927120, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
@@ -10753,7 +10753,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 447.6684, y: -550}
+  m_AnchoredPosition: {x: 447.6684, y: -450}
   m_SizeDelta: {x: 895.3368, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1187536071
@@ -12139,7 +12139,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 447.6684, y: -150}
+  m_AnchoredPosition: {x: 447.6684, y: -250}
   m_SizeDelta: {x: 895.3368, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1367009241
@@ -12405,7 +12405,7 @@ GameObject:
   - component: {fileID: 1413419992}
   - component: {fileID: 1413419991}
   m_Layer: 5
-  m_Name: BueroNovel
+  m_Name: VermieterNovel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12428,7 +12428,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 447.6684, y: -450}
+  m_AnchoredPosition: {x: 447.6684, y: -750}
   m_SizeDelta: {x: 895.3368, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1413419991
@@ -13799,13 +13799,13 @@ RectTransform:
   - {fileID: 39357343}
   - {fileID: 1310158263}
   - {fileID: 1889880347}
+  - {fileID: 1681754290}
   - {fileID: 1367009240}
+  - {fileID: 958305982}
+  - {fileID: 1187536070}
   - {fileID: 649079107}
   - {fileID: 1916777517}
   - {fileID: 1413419990}
-  - {fileID: 1187536070}
-  - {fileID: 1681754290}
-  - {fileID: 958305982}
   m_Father: {fileID: 1036229385}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -14009,7 +14009,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 447.6684, y: -650}
+  m_AnchoredPosition: {x: 447.6684, y: -150}
   m_SizeDelta: {x: 895.3368, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1681754291
@@ -15221,7 +15221,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 447.6684, y: -350}
+  m_AnchoredPosition: {x: 447.6684, y: -650}
   m_SizeDelta: {x: 895.3368, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1916777518

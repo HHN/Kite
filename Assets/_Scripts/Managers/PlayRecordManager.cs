@@ -61,7 +61,7 @@ namespace Assets._Scripts.Managers
                     _wrapper.SetNumberOfPlaysForBankkontoNovel(numberOfPlays);
                     break;
                 }
-                case VisualNovelNames.BUERO_NOVEL:
+                case VisualNovelNames.VERMIETER_NOVEL:
                 {
                     int numberOfPlays = _wrapper.GetNumberOfPlaysForBueroNovel();
                     numberOfPlays++;
@@ -147,7 +147,7 @@ namespace Assets._Scripts.Managers
                 {
                     return _wrapper.GetNumberOfPlaysForBankkontoNovel();
                 }
-                case VisualNovelNames.BUERO_NOVEL:
+                case VisualNovelNames.VERMIETER_NOVEL:
                 {
                     return _wrapper.GetNumberOfPlaysForBueroNovel();
                 }

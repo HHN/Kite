@@ -67,7 +67,7 @@ namespace Assets._Scripts.Managers
                 {
                     return _feedbackForBankKontoNovel;
                 }
-                case VisualNovelNames.BUERO_NOVEL:
+                case VisualNovelNames.VERMIETER_NOVEL:
                 {
                     return _feedbackForBueroNovel;
                 }
@@ -131,7 +131,7 @@ namespace Assets._Scripts.Managers
                     _feedbackForBankKontoNovel = feedback;
                     break;
                 }
-                case VisualNovelNames.BUERO_NOVEL:
+                case VisualNovelNames.VERMIETER_NOVEL:
                 {
                     _feedbackForBueroNovel = feedback;
                     break;
@@ -194,7 +194,7 @@ namespace Assets._Scripts.Managers
                 {
                     return _feedbackForBankKontoNovel is { Count: > 0 };
                 }
-                case VisualNovelNames.BUERO_NOVEL:
+                case VisualNovelNames.VERMIETER_NOVEL:
                 {
                     return _feedbackForBueroNovel is { Count: > 0 };
                 }

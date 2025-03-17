@@ -57,7 +57,7 @@ namespace Assets._Scripts.Managers
                     _animateNumberForBankkontoNovel = value;
                     break;
                 }
-                case VisualNovelNames.BUERO_NOVEL:
+                case VisualNovelNames.VERMIETER_NOVEL:
                 {
                     _animateNumberForBueroNovel = value;
                     break;
@@ -120,7 +120,7 @@ namespace Assets._Scripts.Managers
                 {
                     return _animateNumberForBankkontoNovel;
                 }
-                case VisualNovelNames.BUERO_NOVEL:
+                case VisualNovelNames.VERMIETER_NOVEL:
                 {
                     return _animateNumberForBueroNovel;
                 }

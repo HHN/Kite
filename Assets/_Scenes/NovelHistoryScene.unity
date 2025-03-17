@@ -1821,7 +1821,7 @@ GameObject:
   - component: {fileID: 356936097}
   - component: {fileID: 356936096}
   m_Layer: 5
-  m_Name: "B\xFCroPlaceHolder"
+  m_Name: VermieterPlaceHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2638,7 +2638,7 @@ GameObject:
   - component: {fileID: 519295638}
   - component: {fileID: 519295637}
   m_Layer: 5
-  m_Name: "B\xFCro"
+  m_Name: Vermieter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4368,7 +4368,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "B\xDCRO"
+  m_text: VERMIETER
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
   m_sharedMaterial: {fileID: 3127457962735927120, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
