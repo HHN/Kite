@@ -10,7 +10,6 @@ namespace Assets._Scripts.Player
     {
         [SerializeField] private Image novelImage;
         [SerializeField] private Image textBoxImage;
-        [SerializeField] private Image headerImage;
         [SerializeField] private TextMeshProUGUI novelName;
         [SerializeField] private TextMeshProUGUI buttonText;
         [SerializeField] private Color backgroundColor;
@@ -20,6 +19,12 @@ namespace Assets._Scripts.Player
         [SerializeField] private Button backButton;
         [SerializeField] private Toggle toggle;
         [SerializeField] private Toggle toggle2;
+
+        [SerializeField] private Image playButtonImage1;
+        [SerializeField] private Image playButtonImage2;
+        [SerializeField] private Image checkBoxImage1;
+        [SerializeField] private Image checkBoxImage2;
+        [SerializeField] private Image headerImage;
 
         private bool _isSyncing;
 
@@ -40,6 +45,8 @@ namespace Assets._Scripts.Player
             toggle2.onValueChanged.AddListener((value) => SyncToggles(toggle2, toggle, value));
 
             FontSizeManager.Instance().UpdateAllTextComponents();
+
+            SetColours();
         }
 
         private void SyncToggles(Toggle changedToggle, Toggle otherToggle, bool isOn)
@@ -77,6 +84,15 @@ namespace Assets._Scripts.Player
             }
 
             SceneLoader.LoadScene(lastScene);
+        }
+
+        private void SetColours() 
+        {
+            playButtonImage1.color = NovelColorManager.Instance().GetColor();
+            playButtonImage2.color = NovelColorManager.Instance().GetColor();
+            checkBoxImage1.color = NovelColorManager.Instance().GetColor();
+            checkBoxImage2.color = NovelColorManager.Instance().GetColor();
+            headerImage.color = NovelColorManager.Instance().GetColor();
         }
     }
 }
