@@ -295,11 +295,11 @@ namespace Assets._Scripts.SceneControllers
                     displayContainerForInvestorNovel = true;
                     return dropdownForInvestorNovel;
                 }
-                case VisualNovelNames.BANK_KONTO_NOVEL:
-                {
-                    displayContainerForBankkontoNovel = true;
-                    return dropdownForBankkontoNovel;
-                }
+                // case VisualNovelNames.BANK_KONTO_NOVEL:
+                // {
+                //     displayContainerForBankkontoNovel = true;
+                //     return dropdownForBankkontoNovel;
+                // }
                 // case VisualNovelNames.FOERDERANTRAG_NOVEL:
                 // {
                 //     displayContainerForFoerderantragNovel = true;
@@ -363,11 +363,11 @@ namespace Assets._Scripts.SceneControllers
                     displayContainerForInvestorNovel = true;
                     return containerForInvestorNovel;
                 }
-                case VisualNovelNames.BANK_KONTO_NOVEL:
-                {
-                    displayContainerForBankkontoNovel = true;
-                    return containerForBankkontoNovel;
-                }
+                // case VisualNovelNames.BANK_KONTO_NOVEL:
+                // {
+                //     displayContainerForBankkontoNovel = true;
+                //     return containerForBankkontoNovel;
+                // }
                 // case VisualNovelNames.FOERDERANTRAG_NOVEL:
                 // {
                 //     displayContainerForFoerderantragNovel = true;
@@ -431,11 +431,11 @@ namespace Assets._Scripts.SceneControllers
                     displayContainerForInvestorNovel = true;
                     return entryContainerForInvestorNovel;
                 }
-                case VisualNovelNames.BANK_KONTO_NOVEL:
-                {
-                    displayContainerForBankkontoNovel = true;
-                    return entryContainerForBankkontoNovel;
-                }
+                // case VisualNovelNames.BANK_KONTO_NOVEL:
+                // {
+                //     displayContainerForBankkontoNovel = true;
+                //     return entryContainerForBankkontoNovel;
+                // }
                 // case VisualNovelNames.FOERDERANTRAG_NOVEL:
                 // {
                 //     displayContainerForFoerderantragNovel = true;

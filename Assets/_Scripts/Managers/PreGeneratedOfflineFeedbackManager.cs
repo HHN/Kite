@@ -63,10 +63,10 @@ namespace Assets._Scripts.Managers
                 {
                     return _feedbackForNotariatNovel;
                 }
-                case VisualNovelNames.BANK_KONTO_NOVEL:
-                {
-                    return _feedbackForBankKontoNovel;
-                }
+                // case VisualNovelNames.BANK_KONTO_NOVEL:
+                // {
+                //     return _feedbackForBankKontoNovel;
+                // }
                 case VisualNovelNames.BUERO_NOVEL:
                 {
                     return _feedbackForBueroNovel;
@@ -126,11 +126,11 @@ namespace Assets._Scripts.Managers
                     _feedbackForNotariatNovel = feedback;
                     break;
                 }
-                case VisualNovelNames.BANK_KONTO_NOVEL:
-                {
-                    _feedbackForBankKontoNovel = feedback;
-                    break;
-                }
+                // case VisualNovelNames.BANK_KONTO_NOVEL:
+                // {
+                //     _feedbackForBankKontoNovel = feedback;
+                //     break;
+                // }
                 case VisualNovelNames.BUERO_NOVEL:
                 {
                     _feedbackForBueroNovel = feedback;
@@ -190,10 +190,10 @@ namespace Assets._Scripts.Managers
                 {
                     return _feedbackForNotariatNovel is { Count: > 0 };
                 }
-                case VisualNovelNames.BANK_KONTO_NOVEL:
-                {
-                    return _feedbackForBankKontoNovel is { Count: > 0 };
-                }
+                // case VisualNovelNames.BANK_KONTO_NOVEL:
+                // {
+                //     return _feedbackForBankKontoNovel is { Count: > 0 };
+                // }
                 case VisualNovelNames.BUERO_NOVEL:
                 {
                     return _feedbackForBueroNovel is { Count: > 0 };

@@ -44,9 +44,7 @@ namespace Assets._Scripts.SceneControllers
         [SerializeField] private GameObject burgerMenuButtonPrefab;
         [SerializeField] private List<GameObject> burgerMenuButtons;
 
-        [Header("Search Input and Button Containers")] [SerializeField]
-        private TMP_InputField inputField;
-
+        [Header("Search Input and Button Containers")] 
         [SerializeField] private List<GameObject> novelButtons;
 
         [SerializeField] private GameObject selectNovelSoundPrefab;
@@ -123,16 +121,6 @@ namespace Assets._Scripts.SceneControllers
 
             burgerMenuBackground.onClick.AddListener(OnBackgroundButton);
 
-            if (inputField != null)
-            {
-                // Füge den Listener für Änderungen am Text des InputFields hinzu
-                inputField.onValueChanged.AddListener(OnInputValueChanged);
-            }
-            else
-            {
-                Debug.LogError("InputField ist nicht zugewiesen.");
-            }
-
             if (novelButtons != null && novelButtons.Count > 0)
             {
                 // Speichere die ursprüngliche Reihenfolge der Container
@@ -153,6 +141,7 @@ namespace Assets._Scripts.SceneControllers
             if (novelId == VisualNovelNames.NONE) return;
 
             string novelName = VisualNovelNamesHelper.GetName(visualNovel.id);
+            Debug.Log($"Novel ID: {visualNovel.id}, Novel Name: {novelName}");
 
             GameObject burgerMenuButton = Instantiate(burgerMenuButtonPrefab, content?.transform);
 
@@ -211,8 +200,6 @@ namespace Assets._Scripts.SceneControllers
             {
                 novelButtons[i].transform.SetSiblingIndex(i + 1); // +1, um das InputField oben zu halten
             }
-
-            inputField.transform.SetSiblingIndex(1);
         }
 
         public void OnBackgroundButton()

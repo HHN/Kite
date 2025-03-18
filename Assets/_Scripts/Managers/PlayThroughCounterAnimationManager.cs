@@ -52,11 +52,11 @@ namespace Assets._Scripts.Managers
                     _animateNumberForNotariatNovel = value;
                     break;
                 }
-                case VisualNovelNames.BANK_KONTO_NOVEL:
-                {
-                    _animateNumberForBankkontoNovel = value;
-                    break;
-                }
+                // case VisualNovelNames.BANK_KONTO_NOVEL:
+                // {
+                //     _animateNumberForBankkontoNovel = value;
+                //     break;
+                // }
                 case VisualNovelNames.BUERO_NOVEL:
                 {
                     _animateNumberForBueroNovel = value;
@@ -116,10 +116,10 @@ namespace Assets._Scripts.Managers
                 {
                     return _animateNumberForNotariatNovel;
                 }
-                case VisualNovelNames.BANK_KONTO_NOVEL:
-                {
-                    return _animateNumberForBankkontoNovel;
-                }
+                // case VisualNovelNames.BANK_KONTO_NOVEL:
+                // {
+                //     return _animateNumberForBankkontoNovel;
+                // }
                 case VisualNovelNames.BUERO_NOVEL:
                 {
                     return _animateNumberForBueroNovel;

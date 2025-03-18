@@ -54,13 +54,13 @@ namespace Assets._Scripts.Managers
                     _wrapper.SetNumberOfPlaysForNotarinNovel(numberOfPlays);
                     break;
                 }
-                case VisualNovelNames.BANK_KONTO_NOVEL:
-                {
-                    int numberOfPlays = _wrapper.GetNumberOfPlaysForBankkontoNovel();
-                    numberOfPlays++;
-                    _wrapper.SetNumberOfPlaysForBankkontoNovel(numberOfPlays);
-                    break;
-                }
+                // case VisualNovelNames.BANK_KONTO_NOVEL:
+                // {
+                //     int numberOfPlays = _wrapper.GetNumberOfPlaysForBankkontoNovel();
+                //     numberOfPlays++;
+                //     _wrapper.SetNumberOfPlaysForBankkontoNovel(numberOfPlays);
+                //     break;
+                // }
                 case VisualNovelNames.BUERO_NOVEL:
                 {
                     int numberOfPlays = _wrapper.GetNumberOfPlaysForBueroNovel();
@@ -143,10 +143,10 @@ namespace Assets._Scripts.Managers
                 {
                     return _wrapper.GetNumberOfPlaysForNotarinNovel();
                 }
-                case VisualNovelNames.BANK_KONTO_NOVEL:
-                {
-                    return _wrapper.GetNumberOfPlaysForBankkontoNovel();
-                }
+                // case VisualNovelNames.BANK_KONTO_NOVEL:
+                // {
+                //     return _wrapper.GetNumberOfPlaysForBankkontoNovel();
+                // }
                 case VisualNovelNames.BUERO_NOVEL:
                 {
                     return _wrapper.GetNumberOfPlaysForBueroNovel();

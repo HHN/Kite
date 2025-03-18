@@ -5,7 +5,7 @@ namespace Assets._Scripts.Player
         NONE,
         BANK_KREDIT_NOVEL,
         INVESTOR_NOVEL,
-        BANK_KONTO_NOVEL,
+        // BANK_KONTO_NOVEL,
         // FOERDERANTRAG_NOVEL,
         ELTERN_NOVEL,
         NOTARIAT_NOVEL,
@@ -35,10 +35,10 @@ namespace Assets._Scripts.Player
                 {
                     return VisualNovelNames.NOTARIAT_NOVEL;
                 }
-                case 5:
-                {
-                    return VisualNovelNames.BANK_KONTO_NOVEL;
-                }
+                // case 5:
+                // {
+                //     return VisualNovelNames.BANK_KONTO_NOVEL;
+                // }
                 case 6:
                 {
                     return VisualNovelNames.BUERO_NOVEL;
@@ -147,8 +147,8 @@ namespace Assets._Scripts.Player
                     return VisualNovelNames.PRESSE_NOVEL;
                 case "Notarin":
                     return VisualNovelNames.NOTARIAT_NOVEL;
-                case "Bankkonto":
-                    return VisualNovelNames.BANK_KONTO_NOVEL;
+                // case "Bankkonto":
+                //     return VisualNovelNames.BANK_KONTO_NOVEL;
                 case "Büro":
                     return VisualNovelNames.BUERO_NOVEL;
                 // case "Förderantrag":
@@ -186,10 +186,10 @@ namespace Assets._Scripts.Player
                 {
                     return 4;
                 }
-                case VisualNovelNames.BANK_KONTO_NOVEL:
-                {
-                    return 5;
-                }
+                // case VisualNovelNames.BANK_KONTO_NOVEL:
+                // {
+                //     return 5;
+                // }
                 case VisualNovelNames.BUERO_NOVEL:
                 {
                     return 6;

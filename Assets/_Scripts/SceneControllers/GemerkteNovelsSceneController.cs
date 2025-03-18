@@ -34,7 +34,7 @@ namespace Assets._Scripts.SceneControllers
             {
                 { VisualNovelNames.BANK_KREDIT_NOVEL, bankkreditNovel },
                 { VisualNovelNames.INVESTOR_NOVEL, investorNovel },
-                { VisualNovelNames.BANK_KONTO_NOVEL, bankkontoNovel },
+                // { VisualNovelNames.BANK_KONTO_NOVEL, bankkontoNovel },
                 // { VisualNovelNames.FOERDERANTRAG_NOVEL, foerderAntragNovel },
                 { VisualNovelNames.ELTERN_NOVEL, elternNovel },
                 { VisualNovelNames.NOTARIAT_NOVEL, notarinNovel },

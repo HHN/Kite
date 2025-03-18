@@ -15,7 +15,7 @@ namespace Assets._Scripts.OfflineAiFeedback
         {
             { VisualNovelNames.BANK_KREDIT_NOVEL, "bank_kredit_feedback.json" },
             { VisualNovelNames.INVESTOR_NOVEL, "investor_feedback.json" },
-            { VisualNovelNames.BANK_KONTO_NOVEL, "bank_konto_feedback.json" },
+            // { VisualNovelNames.BANK_KONTO_NOVEL, "bank_konto_feedback.json" },
             // { VisualNovelNames.FOERDERANTRAG_NOVEL, "foerderantrag_feedback.json" },
             { VisualNovelNames.ELTERN_NOVEL, "eltern_feedback.json" },
             { VisualNovelNames.NOTARIAT_NOVEL, "notariat_feedback.json" },

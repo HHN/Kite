@@ -12,6 +12,7 @@ namespace Assets._Scripts.Player
         private static readonly Color DarkBlue = new(12 / 255f, 26 / 255f, 46 / 255f);
         private static readonly Color Violet = new(83 / 255f, 32 / 255f, 83 / 255f);
         private static readonly Color Brown = new(46 / 255f, 37 / 255f, 12 / 255f);
+        private static readonly Color GreenBrown = new (48 / 255f, 72 / 255f, 15 / 255f);
         private static readonly Color Default = new(0 / 255f, 0 / 255f, 0 / 255f);
 
         public static bool IsHighInGui(VisualNovelNames value)
@@ -30,10 +31,10 @@ namespace Assets._Scripts.Player
                 {
                     return true;
                 }
-                case VisualNovelNames.BANK_KONTO_NOVEL:
-                {
-                    return false;
-                }
+                // case VisualNovelNames.BANK_KONTO_NOVEL:
+                // {
+                //     return false;
+                // }
                 case VisualNovelNames.BUERO_NOVEL:
                 {
                     return true;
@@ -89,10 +90,10 @@ namespace Assets._Scripts.Player
                 {
                     return Turquoise;
                 }
-                case VisualNovelNames.BANK_KONTO_NOVEL:
-                {
-                    return Green;
-                }
+                // case VisualNovelNames.BANK_KONTO_NOVEL:
+                // {
+                //     return Green;
+                // }
                 case VisualNovelNames.BUERO_NOVEL:
                 {
                     return DarkBlue;
@@ -138,55 +139,55 @@ namespace Assets._Scripts.Player
             {
                 case VisualNovelNames.ELTERN_NOVEL:
                 {
-                    return new Color(37 / 255f, 101 / 255f, 14 / 255f);
+                    return Green;
                 }
                 case VisualNovelNames.PRESSE_NOVEL:
                 {
-                    return new Color(83 / 255f, 32 / 255f, 83 / 255f);
+                    return Violet;
                 }
                 case VisualNovelNames.NOTARIAT_NOVEL:
                 {
-                    return new Color(17 / 255f, 69 / 255f, 74 / 255f);
+                    return Turquoise;
                 }
-                case VisualNovelNames.BANK_KONTO_NOVEL:
-                {
-                    return new Color(37 / 255f, 101 / 255f, 14 / 255f);
-                }
+                // case VisualNovelNames.BANK_KONTO_NOVEL:
+                // {
+                //     return Green;
+                // }
                 case VisualNovelNames.BUERO_NOVEL:
                 {
-                    return new Color(12 / 255f, 26 / 255f, 46 / 255f);
+                    return DarkBlue;
                 }
                 // case VisualNovelNames.FOERDERANTRAG_NOVEL:
                 // {
-                //     return new Color(17 / 255f, 69 / 255f, 74 / 255f);
+                //     return Turquoise;
                 // }
                 // case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
                 // {
-                //     return new Color(46 / 255f, 37 / 255f, 12 / 255f);
+                //     return Brown;
                 // }
                 case VisualNovelNames.INVESTOR_NOVEL:
                 {
-                    return new Color(48 / 255f, 72 / 255f, 15 / 255f);
+                    return GreenBrown;
                 }
                 case VisualNovelNames.BANK_KREDIT_NOVEL:
                 {
-                    return new Color(12 / 255f, 26 / 255f, 46 / 255f);
+                    return DarkBlue;
                 }
                 case VisualNovelNames.HONORAR_NOVEL:
                 {
-                    return new Color(15 / 255f, 69 / 255f, 60 / 255f);
+                    return Turquoise2;
                 }
                 case VisualNovelNames.EINSTIEGS_NOVEL:
                 {
-                    return new Color(83 / 255f, 32 / 255f, 83 / 255f);
+                    return Violet;
                 }
                 // case VisualNovelNames.LEBENSPARTNER_NOVEL:
                 // {
-                //     return new Color(12 / 255f, 26 / 255f, 46 / 255f);
+                //     return DarkBlue;
                 // }
                 default:
                 {
-                    return new Color(0 / 255f, 0 / 255f, 0 / 255f);
+                    return Default;
                 }
             }
         }
@@ -207,10 +208,10 @@ namespace Assets._Scripts.Player
                 {
                     return "Notarin";
                 }
-                case VisualNovelNames.BANK_KONTO_NOVEL:
-                {
-                    return "Bankkonto";
-                }
+                // case VisualNovelNames.BANK_KONTO_NOVEL:
+                // {
+                //     return "Bankkonto";
+                // }
                 case VisualNovelNames.BUERO_NOVEL:
                 {
                     return "Büro";
@@ -266,10 +267,10 @@ namespace Assets._Scripts.Player
                 {
                     return 3;
                 }
-                case VisualNovelNames.BANK_KONTO_NOVEL:
-                {
-                    return 2;
-                }
+                // case VisualNovelNames.BANK_KONTO_NOVEL:
+                // {
+                //     return 2;
+                // }
                 case VisualNovelNames.BUERO_NOVEL:
                 {
                     return 5;
