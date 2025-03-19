@@ -1,7 +1,12 @@
-﻿using Febucci.UI.Core;
+﻿using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Animator._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing.Regions._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations.Behaviors._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Utilities;
 using UnityEngine;
 
-namespace Febucci.UI.Effects
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations.Behaviors.Built_in
 {
     [UnityEngine.Scripting.Preserve]
     [CreateAssetMenu(menuName = "Text Animator/_Animations/Behaviors/Shake", fileName = "Shake Behavior")]
@@ -57,7 +62,7 @@ namespace Febucci.UI.Effects
 
         int randIndex;
         float timePassed;
-        public override void ApplyEffectTo(ref Core.CharacterData character, TAnimCore animator)
+        public override void ApplyEffectTo(ref CharacterData character, TAnimCore animator)
         {
             timePassed = animator.time.timeSinceStart;
             timePassed += character.index * waveSize;

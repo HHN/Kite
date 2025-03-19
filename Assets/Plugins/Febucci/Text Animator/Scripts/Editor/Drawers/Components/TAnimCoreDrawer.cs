@@ -1,11 +1,17 @@
 using System.Text;
-using UnityEngine;
+using Plugins.Febucci.Text_Animator.Scripts.Editor.Drawers._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Editor.Drawers.Scriptables.Database;
+using Plugins.Febucci.Text_Animator.Scripts.Editor.Drawers.Settings;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Animator._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Settings;
 using UnityEditor;
+using UnityEngine;
 
-namespace Febucci.UI.Core
+namespace Plugins.Febucci.Text_Animator.Scripts.Editor.Drawers.Components
 {
-    [CustomEditor(typeof(Core.TAnimCore), true)]
-    class TAnimCoreDrawer : Editor
+    [CustomEditor(typeof(TAnimCore), true)]
+    class TAnimCoreDrawer : UnityEditor.Editor
     {
         SerializedProperty m_Script;
 
@@ -33,7 +39,7 @@ namespace Febucci.UI.Core
         SerializedProperty databaseActionsField;
         DatabaseSharedDrawer databaseActionsDrawer;
 
-        Core.TAnimCore script;
+        TAnimCore script;
         static string[] excludedProperties = new string[]
         {
             "m_Script",
@@ -56,7 +62,7 @@ namespace Febucci.UI.Core
 
         void OnEnable()
         {
-            script = (Core.TAnimCore)target;
+            script = (TAnimCore)target;
 
             m_Script = serializedObject.FindProperty("m_Script");
 
@@ -71,16 +77,16 @@ namespace Febucci.UI.Core
             databaseAppearancesDrawer = new DatabaseSharedDrawer();
             databaseActionsDrawer = new DatabaseSharedDrawer();
             
-            defaultTagsMode = serializedObject.FindProperty(nameof(Febucci.UI.Core.TAnimCore.defaultTagsMode));
+            defaultTagsMode = serializedObject.FindProperty(nameof(TAnimCore.defaultTagsMode));
             defaultAppearancesTags = serializedObject.FindProperty("defaultAppearancesTags");
             defaultBehaviorsTags = serializedObject.FindProperty("defaultBehaviorsTags");
             defaultDisappearancesTags = serializedObject.FindProperty("defaultDisappearancesTags");
 
-            referenceFontSize = serializedObject.FindProperty(nameof(Febucci.UI.Core.TAnimCore.referenceFontSize));
-            useDynamicScaling = serializedObject.FindProperty(nameof(Febucci.UI.Core.TAnimCore.useDynamicScaling));
-            timeScale = serializedObject.FindProperty(nameof(Febucci.UI.Core.TAnimCore.timeScale));
-            animationLoop = serializedObject.FindProperty(nameof(Febucci.UI.Core.TAnimCore.animationLoop));
-            isResettingTimeOnNewText = serializedObject.FindProperty(nameof(Febucci.UI.Core.TAnimCore.isResettingTimeOnNewText));
+            referenceFontSize = serializedObject.FindProperty(nameof(TAnimCore.referenceFontSize));
+            useDynamicScaling = serializedObject.FindProperty(nameof(TAnimCore.useDynamicScaling));
+            timeScale = serializedObject.FindProperty(nameof(TAnimCore.timeScale));
+            animationLoop = serializedObject.FindProperty(nameof(TAnimCore.animationLoop));
+            isResettingTimeOnNewText = serializedObject.FindProperty(nameof(TAnimCore.isResettingTimeOnNewText));
 
             gui_visibleCharacters = new GUIContent("Visible Characters", null,
                 $"Range of visible characters in the text.\nTo modify this via script, set \"{nameof(TAnimCore.firstVisibleCharacter)}\" and \"{nameof(TAnimCore.maxVisibleCharacters)}\"");
@@ -412,7 +418,7 @@ namespace Febucci.UI.Core
 
                     GUI.enabled = false;
                     EditorGUILayout.LabelField(
-                        (defaultTagsMode.intValue == (int)Core.TAnimCore.DefaultTagsMode.Fallback
+                        (defaultTagsMode.intValue == (int)TAnimCore.DefaultTagsMode.Fallback
                             ? helpFallbackTags
                             : helpConstantTags), EditorStyles.wordWrappedMiniLabel);
                     GUI.enabled = true;

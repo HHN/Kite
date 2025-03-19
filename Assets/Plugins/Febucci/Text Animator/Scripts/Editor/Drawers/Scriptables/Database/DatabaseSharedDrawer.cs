@@ -1,7 +1,8 @@
-using UnityEngine;
+using Plugins.Febucci.Text_Animator.Scripts.Editor.Drawers._Core;
 using UnityEditor;
+using UnityEngine;
 
-namespace Febucci.UI.Core
+namespace Plugins.Febucci.Text_Animator.Scripts.Editor.Drawers.Scriptables.Database
 {
     //handles drawing of each single effect
     //with possibility to expand and directly draw the scriptable object as well

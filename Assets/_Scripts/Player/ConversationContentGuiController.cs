@@ -6,8 +6,8 @@ using Assets._Scripts.SaveNovelData;
 using Assets._Scripts.UI_Elements.TextBoxes;
 using Assets._Scripts.UndoChoice;
 using Assets._Scripts.Utilities;
-using Febucci.UI;
-using Febucci.UI.Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Animator._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter.Built_in;
 using UnityEngine;
 using UnityEngine.UI;
 

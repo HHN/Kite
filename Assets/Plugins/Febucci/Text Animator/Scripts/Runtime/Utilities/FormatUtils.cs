@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Febucci.UI.Core
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Utilities
 {
     /// <summary>
     /// Helper class. Contains methods to parse attributes/values from strings.

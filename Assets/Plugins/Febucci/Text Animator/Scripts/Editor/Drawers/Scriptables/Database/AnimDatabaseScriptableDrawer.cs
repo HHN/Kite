@@ -1,10 +1,10 @@
-using Febucci.UI.Effects;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations._Core;
 using UnityEditor;
 
-namespace Febucci.UI.Core
+namespace Plugins.Febucci.Text_Animator.Scripts.Editor.Drawers.Scriptables.Database
 {
     [CustomEditor(typeof(AnimationsDatabase), true)]
-    class AnimDatabaseScriptableDrawer : Editor
+    class AnimDatabaseScriptableDrawer : UnityEditor.Editor
     {
         DatabaseSharedDrawer drawer = new DatabaseSharedDrawer();
 

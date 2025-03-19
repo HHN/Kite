@@ -1,8 +1,9 @@
-using Febucci.UI.Effects;
+using Plugins.Febucci.Text_Animator.Scripts.Editor.Drawers._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing._Core;
 using UnityEditor;
 using UnityEngine;
 
-namespace Febucci.UI.Core
+namespace Plugins.Febucci.Text_Animator.Scripts.Editor.Drawers.Scriptables.Database
 {
     [System.Serializable]
     class AnimationElementDrawer

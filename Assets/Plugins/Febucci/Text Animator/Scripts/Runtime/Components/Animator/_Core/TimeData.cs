@@ -1,4 +1,4 @@
-namespace Febucci.UI
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Animator._Core
 {
     /// <summary>
     /// Contains TextAnimator's current time values.

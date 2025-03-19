@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Febucci.UI.Effects
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Utilities
 {
     //TODO Docs
 

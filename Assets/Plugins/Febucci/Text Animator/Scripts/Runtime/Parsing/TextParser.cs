@@ -1,6 +1,7 @@
 using System.Text;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing._Core;
 
-namespace Febucci.UI.Core.Parsing
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing
 {
     /// <summary>
     /// Handles text parsing and rich text tags recognition

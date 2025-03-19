@@ -1,4 +1,4 @@
-namespace Febucci.UI.Effects
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations.Special.Curves._Core
 {
     [System.Serializable]
     public struct TimeMode

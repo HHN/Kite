@@ -1,13 +1,18 @@
 using System;
 using System.Text;
-using Febucci.UI.Actions;
-using Febucci.UI.Core.Parsing;
-using Febucci.UI.Effects;
 using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing.Markers.Actions;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing.Markers.Events;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing.Regions.Animations;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Settings;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Utilities;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Febucci.UI.Core
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Animator._Core
 {
     [DisallowMultipleComponent]
     [HelpURL("https://www.febucci.com/text-animator-unity/docs/how-to-add-effects-to-your-texts/")]

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Febucci.UI
+namespace Plugins.Febucci.Text_Animator.Scripts.Editor.Drawers.Settings
 {
     [System.Serializable]
     internal class TextAnimatorInstallationData : ScriptableObject

@@ -1,6 +1,7 @@
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Utilities;
 using UnityEngine;
 
-namespace Febucci.UI.Core
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing._Core
 {
     public struct CharacterData
     {
@@ -26,11 +27,11 @@ namespace Febucci.UI.Core
             //--Initializes first time only--
             if (!info.initialized)
             {
-                source.positions = new Vector3[Core.TextUtilities.verticesPerChar];
-                source.colors = new Color32[Core.TextUtilities.verticesPerChar];
+                source.positions = new Vector3[TextUtilities.verticesPerChar];
+                source.colors = new Color32[TextUtilities.verticesPerChar];
 
-                current.positions = new Vector3[Core.TextUtilities.verticesPerChar];
-                current.colors = new Color32[Core.TextUtilities.verticesPerChar];
+                current.positions = new Vector3[TextUtilities.verticesPerChar];
+                current.colors = new Color32[TextUtilities.verticesPerChar];
             }
 
         }

@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using Plugins.Febucci.Text_Animator.Attributes.Runtime;
 using UnityEditor;
+using UnityEngine;
 
-namespace Febucci.Attributes
+namespace Plugins.Febucci.Text_Animator.Attributes.Editor
 {
     [CustomPropertyDrawer(typeof(MinValueAttribute))]
     public class MinValueAttributeDrawer : PropertyDrawer

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Febucci.Attributes
+namespace Plugins.Febucci.Text_Animator.Attributes.Runtime
 {
     public class NotZeroAttribute : PropertyAttribute
     {

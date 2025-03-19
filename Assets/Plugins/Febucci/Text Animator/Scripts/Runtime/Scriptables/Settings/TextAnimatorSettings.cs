@@ -1,10 +1,8 @@
-using Febucci.UI.Actions;
-using Febucci.UI.Core;
-using Febucci.UI.Core.Parsing;
-using Febucci.UI.Effects;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing.Markers.Actions;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations._Core;
 using UnityEngine;
 
-namespace Febucci.UI
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Settings
 {
     /// <summary>
     /// Contains global settings for Text Animator, like effects enabled status and default databases. 

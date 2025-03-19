@@ -1,8 +1,10 @@
-using Febucci.UI.Core;
-using Febucci.UI.Core.Parsing;
 using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing.Markers.Actions;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Actions._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Utilities;
 
-namespace Febucci.UI.Actions
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Actions.Built_in
 {
     [System.Serializable]
     [UnityEngine.CreateAssetMenu(fileName = "Speed Action", menuName = "Text Animator/Actions/Speed", order = 1)]

@@ -17,7 +17,6 @@ namespace _00_Kite2.Player
             float distance = Vector2.Distance(eventData.pressPosition, eventData.position);
             if (distance > dragThreshold)
             {
-                Debug.Log("DRAG");
                 // War eher ein Drag � nichts tun
                 return;
             }
