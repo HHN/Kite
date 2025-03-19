@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using Assets._Scripts.Managers;
 
 namespace Assets._Scripts.SceneControllers
 {
@@ -106,6 +107,9 @@ namespace Assets._Scripts.SceneControllers
             {
                 Debug.LogError("InputField ist nicht zugewiesen.");
             }
+            
+            FontSizeManager.Instance().UpdateAllTextComponents();
+            StartCoroutine(RebuildLayout());
         }
 
         private void InitializeButtonActions()
