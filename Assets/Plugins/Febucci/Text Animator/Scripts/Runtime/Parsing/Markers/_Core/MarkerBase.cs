@@ -1,4 +1,4 @@
-namespace Febucci.UI.Core.Parsing
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing.Markers._Core
 {
     public abstract class MarkerBase : System.IComparable<MarkerBase>
     {

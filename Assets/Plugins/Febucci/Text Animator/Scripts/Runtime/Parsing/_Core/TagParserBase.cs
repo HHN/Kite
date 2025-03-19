@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace Febucci.UI.Core.Parsing
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing._Core
 {
     /// <summary>
     /// Base class to parse/process a rich text tag

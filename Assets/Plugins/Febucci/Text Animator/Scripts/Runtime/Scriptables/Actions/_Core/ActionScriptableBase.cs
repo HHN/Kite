@@ -1,8 +1,8 @@
-using Febucci.UI.Core;
-using Febucci.UI.Core.Parsing;
 using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing.Markers.Actions;
 
-namespace Febucci.UI.Actions
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Actions._Core
 {
     [System.Serializable]
     public abstract class ActionScriptableBase : UnityEngine.ScriptableObject, ITagProvider

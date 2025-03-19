@@ -1,6 +1,6 @@
 using System;
 
-namespace Febucci.UI.Core
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations._Core
 {
     [Flags]
     public enum EffectCategory

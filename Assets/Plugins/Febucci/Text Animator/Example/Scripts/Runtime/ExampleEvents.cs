@@ -1,10 +1,10 @@
 using System.Collections;
-using Febucci.UI.Core;
-using Febucci.UI.Core.Parsing;
 using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing.Markers.Events;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Utilities;
 using UnityEngine;
 
-namespace Febucci.UI.Examples
+namespace Plugins.Febucci.Text_Animator.Example.Scripts.Runtime
 {
     [AddComponentMenu(""), DisallowMultipleComponent]
     class ExampleEvents : MonoBehaviour

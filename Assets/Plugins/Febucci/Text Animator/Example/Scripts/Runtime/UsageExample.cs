@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter.Built_in;
+using UnityEngine;
 
-namespace Febucci.UI.Examples
+namespace Plugins.Febucci.Text_Animator.Example.Scripts.Runtime
 {
     //Prevents this example to show up in the inspector, since it should be used only in the example scene (and so, not annoy you after you understand how this works)
     [AddComponentMenu("")]

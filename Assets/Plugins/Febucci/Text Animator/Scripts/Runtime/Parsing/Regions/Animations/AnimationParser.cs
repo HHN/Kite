@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Febucci.UI.Effects;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations._Core;
 
-namespace Febucci.UI.Core.Parsing
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing.Regions.Animations
 {
     /// <summary>
     /// Rules how to parse a rich text tag that has an opening and ending

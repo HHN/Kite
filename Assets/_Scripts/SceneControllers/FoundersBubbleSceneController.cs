@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
+using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.SceneMemory;
 using Assets._Scripts.UI_Elements.Founders_Bubble;
@@ -8,7 +9,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.Player
+namespace Assets._Scripts.SceneControllers
 {
     public class FoundersBubbleSceneController : SceneController
     {
@@ -222,17 +223,17 @@ namespace Assets._Scripts.Player
             infinityScroll.MoveToVisualNovel(VisualNovelNames.INVESTOR_NOVEL);
         }
 
-        public void OnBankKontoNovelButton()
-        {
-            DisplayTextBoxForVisualNovel(VisualNovelNames.BANK_KONTO_NOVEL, isBankkontoNovelInVersionContained);
-            infinityScroll.MoveToVisualNovel(VisualNovelNames.BANK_KONTO_NOVEL);
-        }
+        // public void OnBankKontoNovelButton()
+        // {
+        //     DisplayTextBoxForVisualNovel(VisualNovelNames.BANK_KONTO_NOVEL, isBankkontoNovelInVersionContained);
+        //     infinityScroll.MoveToVisualNovel(VisualNovelNames.BANK_KONTO_NOVEL);
+        // }
 
-        public void OnFoerderantragNovelButton()
-        {
-            DisplayTextBoxForVisualNovel(VisualNovelNames.FOERDERANTRAG_NOVEL, isFoerderantragNovelInVersionContained);
-            infinityScroll.MoveToVisualNovel(VisualNovelNames.FOERDERANTRAG_NOVEL);
-        }
+        // public void OnFoerderantragNovelButton()
+        // {
+        //     DisplayTextBoxForVisualNovel(VisualNovelNames.FOERDERANTRAG_NOVEL, isFoerderantragNovelInVersionContained);
+        //     infinityScroll.MoveToVisualNovel(VisualNovelNames.FOERDERANTRAG_NOVEL);
+        // }
 
         public void OnElternNovelButton()
         {
@@ -258,12 +259,12 @@ namespace Assets._Scripts.Player
             infinityScroll.MoveToVisualNovel(VisualNovelNames.VERMIETER_NOVEL);
         }
 
-        public void OnGruenderzuschussNovelButton()
-        {
-            DisplayTextBoxForVisualNovel(VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL,
-                isGruendungszuschussNovelInVersionContained);
-            infinityScroll.MoveToVisualNovel(VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL);
-        }
+        // public void OnGruenderzuschussNovelButton()
+        // {
+        //     DisplayTextBoxForVisualNovel(VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL,
+        //         isGruendungszuschussNovelInVersionContained);
+        //     infinityScroll.MoveToVisualNovel(VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL);
+        // }
 
         public void OnHonorarNovelButton()
         {
@@ -271,16 +272,16 @@ namespace Assets._Scripts.Player
             infinityScroll.MoveToVisualNovel(VisualNovelNames.HONORAR_NOVEL);
         }
 
-        public void OnLebenspartnerNovelButton()
-        {
-            DisplayTextBoxForVisualNovel(VisualNovelNames.LEBENSPARTNER_NOVEL, isLebenspartnerNovelInVersionContained);
-            infinityScroll.MoveToVisualNovel(VisualNovelNames.LEBENSPARTNER_NOVEL);
-        }
+        // public void OnLebenspartnerNovelButton()
+        // {
+        //     DisplayTextBoxForVisualNovel(VisualNovelNames.LEBENSPARTNER_NOVEL, isLebenspartnerNovelInVersionContained);
+        //     infinityScroll.MoveToVisualNovel(VisualNovelNames.LEBENSPARTNER_NOVEL);
+        // }
 
         public void OnIntroNovelButton()
         {
-            DisplayTextBoxForVisualNovel(VisualNovelNames.INTRO_NOVEL, isIntroNovelNovelInVersionContained);
-            infinityScroll.MoveToVisualNovel(VisualNovelNames.INTRO_NOVEL);
+            DisplayTextBoxForVisualNovel(VisualNovelNames.EINSTIEGS_NOVEL, isIntroNovelNovelInVersionContained);
+            infinityScroll.MoveToVisualNovel(VisualNovelNames.EINSTIEGS_NOVEL);
         }
 
         private void OnNovelListButton()
@@ -417,7 +418,7 @@ namespace Assets._Scripts.Player
         private void OnIntroButtonFromBurgerMenu()
         {
             GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
-            DisplayNovelFromMenu(VisualNovelNames.INTRO_NOVEL);
+            DisplayNovelFromMenu(VisualNovelNames.EINSTIEGS_NOVEL);
         }
 
         private void OnBankkreditButtonFromBurgerMenu()

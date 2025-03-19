@@ -1,6 +1,7 @@
 using System.Text;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing._Core;
 
-namespace Febucci.UI.Core.Parsing
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing.Markers.Events
 {
     public class EventParser : TagParserBase
     {

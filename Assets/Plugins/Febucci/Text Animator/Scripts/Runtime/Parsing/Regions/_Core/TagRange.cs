@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using System.Text;
+﻿using System.Text;
+using UnityEngine;
 
-namespace Febucci.UI.Core.Parsing
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing.Regions._Core
 {
     public struct TagRange
     {

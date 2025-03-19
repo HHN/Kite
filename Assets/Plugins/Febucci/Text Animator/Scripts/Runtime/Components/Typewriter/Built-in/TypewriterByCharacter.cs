@@ -1,8 +1,9 @@
-﻿using Febucci.UI.Core;
+﻿using Plugins.Febucci.Text_Animator.Attributes.Runtime;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Animator._Core;
 using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using UnityEngine;
 
-namespace Febucci.UI
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter.Built_in
 {
     /// <summary>
     /// Built-in typewriter, which shows letters dynamically character after character.<br/>
@@ -14,9 +15,9 @@ namespace Febucci.UI
     [AddComponentMenu("Febucci/TextAnimator/Typewriter - By Character")]
     public class TypewriterByCharacter : TypewriterCore
     {
-        [SerializeField, Attributes.CharsDisplayTime, Tooltip("Wait time for normal letters")] public float waitForNormalChars = .03f;
-        [SerializeField, Attributes.CharsDisplayTime, Tooltip("Wait time for ! ? .")] public float waitLong = .6f;
-        [SerializeField, Attributes.CharsDisplayTime, Tooltip("Wait time for ; : ) - ,")] public float waitMiddle = .2f;
+        [SerializeField, CharsDisplayTime, Tooltip("Wait time for normal letters")] public float waitForNormalChars = .03f;
+        [SerializeField, CharsDisplayTime, Tooltip("Wait time for ! ? .")] public float waitLong = .6f;
+        [SerializeField, CharsDisplayTime, Tooltip("Wait time for ; : ) - ,")] public float waitMiddle = .2f;
         [SerializeField, Tooltip("-True: only the last punctuaction on a sequence waits for its category time.\n-False: each punctuaction will wait, regardless if it's in a sequence or not")] public bool avoidMultiplePunctuactionWait = false;
 
         [SerializeField, Tooltip("True if you want the typewriter to wait for new line characters")] public bool waitForNewLines = true;
@@ -24,8 +25,8 @@ namespace Febucci.UI
         [SerializeField, Tooltip("True if you want the typewriter to wait for all characters, false if you want to skip waiting for the last one")] public bool waitForLastCharacter = true;
 
         [SerializeField, Tooltip("True if you want to use the same typewriter's wait times for the disappearance progression, false if you want to use a different wait time")] public bool useTypewriterWaitForDisappearances = true;
-        [SerializeField, Attributes.CharsDisplayTime, Tooltip("Wait time for characters in the disappearance progression")] float disappearanceWaitTime = .015f;
-        [SerializeField, Attributes.MinValue(0.1f), Tooltip("How much faster/slower is the disappearance progression compared to the typewriter's typing speed")] public float disappearanceSpeedMultiplier = 1;
+        [SerializeField, CharsDisplayTime, Tooltip("Wait time for characters in the disappearance progression")] float disappearanceWaitTime = .015f;
+        [SerializeField, MinValue(0.1f), Tooltip("How much faster/slower is the disappearance progression compared to the typewriter's typing speed")] public float disappearanceSpeedMultiplier = 1;
 
         protected override float GetWaitAppearanceTimeOf(int charIndex)
         {

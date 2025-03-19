@@ -1,4 +1,4 @@
-namespace Febucci.UI.Core
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core
 {
     /// <summary>
     /// A way to store information about the typing progress between coroutines,

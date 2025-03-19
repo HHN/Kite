@@ -1,7 +1,11 @@
-﻿using Febucci.UI.Core;
+﻿using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Animator._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations.Behaviors._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Utilities;
 using UnityEngine;
 
-namespace Febucci.UI.Effects
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations.Behaviors.Built_in
 {
     [UnityEngine.Scripting.Preserve]
     [CreateAssetMenu(menuName = "Text Animator/_Animations/Behaviors/Swing", fileName = "Swing Behavior")]
@@ -11,7 +15,7 @@ namespace Febucci.UI.Effects
     [DefaultValue(nameof(baseWaveSize), .171f)]
     public sealed class SwingBehavior : BehaviorScriptableSine
     {
-        public override void ApplyEffectTo(ref Core.CharacterData character, TAnimCore animator)
+        public override void ApplyEffectTo(ref CharacterData character, TAnimCore animator)
         {           
             character.current.positions.RotateChar(Mathf.Cos(animator.time.timeSinceStart * frequency + character.index * waveSize) * amplitude);
         }

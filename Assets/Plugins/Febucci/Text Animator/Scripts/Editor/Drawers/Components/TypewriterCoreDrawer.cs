@@ -2,10 +2,10 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Febucci.UI.Core.Editors
+namespace Plugins.Febucci.Text_Animator.Scripts.Editor.Drawers.Components
 {
     [CustomEditor(typeof(TypewriterCore), true)]
-    class TypewriterCoreDrawer : Editor
+    class TypewriterCoreDrawer : UnityEditor.Editor
     {
         SerializedProperty showLettersDinamically;
         SerializedProperty startTypewriterMode;

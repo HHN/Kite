@@ -1,4 +1,4 @@
-namespace Febucci.UI.Core
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing._Core
 {
     public struct WordInfo
     {

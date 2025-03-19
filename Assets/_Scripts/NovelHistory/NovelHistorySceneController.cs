@@ -294,16 +294,16 @@ namespace Assets._Scripts.NovelHistory
                     displayContainerForInvestorNovel = true;
                     return dropdownForInvestorNovel;
                 }
-                case VisualNovelNames.BANK_KONTO_NOVEL:
-                {
-                    displayContainerForBankkontoNovel = true;
-                    return dropdownForBankkontoNovel;
-                }
-                case VisualNovelNames.FOERDERANTRAG_NOVEL:
-                {
-                    displayContainerForFoerderantragNovel = true;
-                    return dropdownForFoerderantragNovel;
-                }
+                // case VisualNovelNames.BANK_KONTO_NOVEL:
+                // {
+                //     displayContainerForBankkontoNovel = true;
+                //     return dropdownForBankkontoNovel;
+                // }
+                // case VisualNovelNames.FOERDERANTRAG_NOVEL:
+                // {
+                //     displayContainerForFoerderantragNovel = true;
+                //     return dropdownForFoerderantragNovel;
+                // }
                 case VisualNovelNames.ELTERN_NOVEL:
                 {
                     displayContainerForElternNovel = true;
@@ -324,21 +324,21 @@ namespace Assets._Scripts.NovelHistory
                     displayContainerForBueroNovel = true;
                     return dropdownForBueroNovel;
                 }
-                case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
-                {
-                    displayContainerForGruendungszuschussNovel = true;
-                    return dropdownForGruendungszuschussNovel;
-                }
+                // case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
+                // {
+                //     displayContainerForGruendungszuschussNovel = true;
+                //     return dropdownForGruendungszuschussNovel;
+                // }
                 case VisualNovelNames.HONORAR_NOVEL:
                 {
                     displayContainerForHonorarNovel = true;
                     return dropdownForHonorarNovel;
                 }
-                case VisualNovelNames.LEBENSPARTNER_NOVEL:
-                {
-                    displayContainerForLebenspartnerinNovel = true;
-                    return dropdownForLebenspartnerinNovel;
-                }
+                // case VisualNovelNames.LEBENSPARTNER_NOVEL:
+                // {
+                //     displayContainerForLebenspartnerinNovel = true;
+                //     return dropdownForLebenspartnerinNovel;
+                // }
                 default:
                 {
                     return null;
@@ -362,16 +362,16 @@ namespace Assets._Scripts.NovelHistory
                     displayContainerForInvestorNovel = true;
                     return containerForInvestorNovel;
                 }
-                case VisualNovelNames.BANK_KONTO_NOVEL:
-                {
-                    displayContainerForBankkontoNovel = true;
-                    return containerForBankkontoNovel;
-                }
-                case VisualNovelNames.FOERDERANTRAG_NOVEL:
-                {
-                    displayContainerForFoerderantragNovel = true;
-                    return containerForFoerderantragNovel;
-                }
+                // case VisualNovelNames.BANK_KONTO_NOVEL:
+                // {
+                //     displayContainerForBankkontoNovel = true;
+                //     return containerForBankkontoNovel;
+                // }
+                // case VisualNovelNames.FOERDERANTRAG_NOVEL:
+                // {
+                //     displayContainerForFoerderantragNovel = true;
+                //     return containerForFoerderantragNovel;
+                // }
                 case VisualNovelNames.ELTERN_NOVEL:
                 {
                     displayContainerForElternNovel = true;
@@ -392,21 +392,21 @@ namespace Assets._Scripts.NovelHistory
                     displayContainerForBueroNovel = true;
                     return containerForBueroNovel;
                 }
-                case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
-                {
-                    displayContainerForGruendungszuschussNovel = true;
-                    return containerForGruendungszuschussNovel;
-                }
+                // case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
+                // {
+                //     displayContainerForGruendungszuschussNovel = true;
+                //     return containerForGruendungszuschussNovel;
+                // }
                 case VisualNovelNames.HONORAR_NOVEL:
                 {
                     displayContainerForHonorarNovel = true;
                     return containerForHonorarNovel;
                 }
-                case VisualNovelNames.LEBENSPARTNER_NOVEL:
-                {
-                    displayContainerForLebenspartnerinNovel = true;
-                    return containerForLebenspartnerinNovel;
-                }
+                // case VisualNovelNames.LEBENSPARTNER_NOVEL:
+                // {
+                //     displayContainerForLebenspartnerinNovel = true;
+                //     return containerForLebenspartnerinNovel;
+                // }
                 default:
                 {
                     return null;
@@ -430,16 +430,16 @@ namespace Assets._Scripts.NovelHistory
                     displayContainerForInvestorNovel = true;
                     return entryContainerForInvestorNovel;
                 }
-                case VisualNovelNames.BANK_KONTO_NOVEL:
-                {
-                    displayContainerForBankkontoNovel = true;
-                    return entryContainerForBankkontoNovel;
-                }
-                case VisualNovelNames.FOERDERANTRAG_NOVEL:
-                {
-                    displayContainerForFoerderantragNovel = true;
-                    return entryContainerForFoerderantragNovel;
-                }
+                // case VisualNovelNames.BANK_KONTO_NOVEL:
+                // {
+                //     displayContainerForBankkontoNovel = true;
+                //     return entryContainerForBankkontoNovel;
+                // }
+                // case VisualNovelNames.FOERDERANTRAG_NOVEL:
+                // {
+                //     displayContainerForFoerderantragNovel = true;
+                //     return entryContainerForFoerderantragNovel;
+                // }
                 case VisualNovelNames.ELTERN_NOVEL:
                 {
                     displayContainerForElternNovel = true;
@@ -460,21 +460,21 @@ namespace Assets._Scripts.NovelHistory
                     displayContainerForBueroNovel = true;
                     return entryContainerForBueroNovel;
                 }
-                case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
-                {
-                    displayContainerForGruendungszuschussNovel = true;
-                    return entryContainerForGruendungszuschussNovel;
-                }
+                // case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
+                // {
+                //     displayContainerForGruendungszuschussNovel = true;
+                //     return entryContainerForGruendungszuschussNovel;
+                // }
                 case VisualNovelNames.HONORAR_NOVEL:
                 {
                     displayContainerForHonorarNovel = true;
                     return entryContainerForHonorarNovel;
                 }
-                case VisualNovelNames.LEBENSPARTNER_NOVEL:
-                {
-                    displayContainerForLebenspartnerinNovel = true;
-                    return entryContainerForLebenspartnerinNovel;
-                }
+                // case VisualNovelNames.LEBENSPARTNER_NOVEL:
+                // {
+                //     displayContainerForLebenspartnerinNovel = true;
+                //     return entryContainerForLebenspartnerinNovel;
+                // }
                 default:
                 {
                     return null;

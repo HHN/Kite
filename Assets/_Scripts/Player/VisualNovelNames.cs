@@ -5,16 +5,16 @@ namespace Assets._Scripts.Player
         NONE,
         BANK_KREDIT_NOVEL,
         INVESTOR_NOVEL,
-        BANK_KONTO_NOVEL,
-        FOERDERANTRAG_NOVEL,
+        // BANK_KONTO_NOVEL,
+        // FOERDERANTRAG_NOVEL,
         ELTERN_NOVEL,
         NOTARIAT_NOVEL,
         PRESSE_NOVEL,
         VERMIETER_NOVEL,
-        GRUENDER_ZUSCHUSS_NOVEL,
+        // GRUENDER_ZUSCHUSS_NOVEL,
         HONORAR_NOVEL,
-        LEBENSPARTNER_NOVEL,
-        INTRO_NOVEL
+        // LEBENSPARTNER_NOVEL,
+        EINSTIEGS_NOVEL
     }
 
     public class VisualNovelNamesHelper
@@ -35,22 +35,22 @@ namespace Assets._Scripts.Player
                 {
                     return VisualNovelNames.NOTARIAT_NOVEL;
                 }
-                case 5:
-                {
-                    return VisualNovelNames.BANK_KONTO_NOVEL;
-                }
+                // case 5:
+                // {
+                //     return VisualNovelNames.BANK_KONTO_NOVEL;
+                // }
                 case 6:
                 {
                     return VisualNovelNames.VERMIETER_NOVEL;
                 }
-                case 7:
-                {
-                    return VisualNovelNames.FOERDERANTRAG_NOVEL;
-                }
-                case 8:
-                {
-                    return VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL;
-                }
+                // case 7:
+                // {
+                //     return VisualNovelNames.FOERDERANTRAG_NOVEL;
+                // }
+                // case 8:
+                // {
+                //     return VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL;
+                // }
                 case 9:
                 {
                     return VisualNovelNames.INVESTOR_NOVEL;
@@ -65,12 +65,12 @@ namespace Assets._Scripts.Player
                 }
                 case 13:
                 {
-                    return VisualNovelNames.INTRO_NOVEL;
+                    return VisualNovelNames.EINSTIEGS_NOVEL;
                 }
-                case -10:
-                {
-                    return VisualNovelNames.LEBENSPARTNER_NOVEL;
-                }
+                // case -10:
+                // {
+                //     return VisualNovelNames.LEBENSPARTNER_NOVEL;
+                // }
                 default:
                 {
                     return VisualNovelNames.NONE;
@@ -94,22 +94,22 @@ namespace Assets._Scripts.Player
                 {
                     return "Notarin";
                 }
-                case 5:
-                {
-                    return "Bankkonto";
-                }
+                // case 5:
+                // {
+                //     return "Bankkonto";
+                // }
                 case 6:
                 {
                     return "Vermieter";
                 }
-                case 7:
-                {
-                    return "Förderantrag";
-                }
-                case 8:
-                {
-                    return "Gründungs-zuschuss";
-                }
+                // case 7:
+                // {
+                //     return "Förderantrag";
+                // }
+                // case 8:
+                // {
+                //     return "Gründungs-zuschuss";
+                // }
                 case 9:
                 {
                     return "Investor";
@@ -124,12 +124,12 @@ namespace Assets._Scripts.Player
                 }
                 case 13:
                 {
-                    return "Intro-Novel";
+                    return "Einstieg";
                 }
-                case -10:
-                {
-                    return "Lebens-partner*in";
-                }
+                // case -10:
+                // {
+                //     return "Lebens-partner*in";
+                // }
                 default:
                 {
                     return "";
@@ -153,22 +153,22 @@ namespace Assets._Scripts.Player
                 {
                     return 4;
                 }
-                case VisualNovelNames.BANK_KONTO_NOVEL:
-                {
-                    return 5;
-                }
+                // case VisualNovelNames.BANK_KONTO_NOVEL:
+                // {
+                //     return 5;
+                // }
                 case VisualNovelNames.VERMIETER_NOVEL:
                 {
                     return 6;
                 }
-                case VisualNovelNames.FOERDERANTRAG_NOVEL:
-                {
-                    return 7;
-                }
-                case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
-                {
-                    return 8;
-                }
+                // case VisualNovelNames.FOERDERANTRAG_NOVEL:
+                // {
+                //     return 7;
+                // }
+                // case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
+                // {
+                //     return 8;
+                // }
                 case VisualNovelNames.INVESTOR_NOVEL:
                 {
                     return 9;
@@ -181,14 +181,14 @@ namespace Assets._Scripts.Player
                 {
                     return 11;
                 }
-                case VisualNovelNames.INTRO_NOVEL:
+                case VisualNovelNames.EINSTIEGS_NOVEL:
                 {
                     return 13;
                 }
-                case VisualNovelNames.LEBENSPARTNER_NOVEL:
-                {
-                    return -10;
-                }
+                // case VisualNovelNames.LEBENSPARTNER_NOVEL:
+                // {
+                //     return -10;
+                // }
                 default:
                 {
                     return 0;

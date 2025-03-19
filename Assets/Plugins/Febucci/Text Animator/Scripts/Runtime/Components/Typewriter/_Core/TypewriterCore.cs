@@ -1,7 +1,8 @@
 ﻿using System.Collections;
-using Febucci.UI;
-using Febucci.UI.Core;
-using Febucci.UI.Core.Parsing;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Animator._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter.Built_in;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing.Markers.Actions;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Settings;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,7 +19,7 @@ namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._C
     /// Manual: <see href="https://www.febucci.com/text-animator-unity/docs/writing-custom-typewriters-c-sharp/">Writing Custom Typewriters (C#)</see>
     /// </remarks>
     [DisallowMultipleComponent]
-    [RequireComponent(typeof(global::Febucci.UI.Core.TAnimCore))]
+    [RequireComponent(typeof(global::Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Animator._Core.TAnimCore))]
     public abstract class TypewriterCore : MonoBehaviour
     {
         [System.Flags]

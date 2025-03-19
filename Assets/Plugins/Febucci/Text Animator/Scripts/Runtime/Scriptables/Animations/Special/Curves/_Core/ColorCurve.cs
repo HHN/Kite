@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Febucci.UI.Effects
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations.Special.Curves._Core
 {
     public class ColorCurveProperty : PropertyAttribute
     {

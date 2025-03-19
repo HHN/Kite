@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Assets._Scripts.Common.Novel.Animations.Blinzeln
+namespace _Animations.Blinzeln
 {
     public class BlinkingController : MonoBehaviour
     {

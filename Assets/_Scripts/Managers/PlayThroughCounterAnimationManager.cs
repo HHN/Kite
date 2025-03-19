@@ -52,26 +52,26 @@ namespace Assets._Scripts.Managers
                     _animateNumberForNotariatNovel = value;
                     break;
                 }
-                case VisualNovelNames.BANK_KONTO_NOVEL:
-                {
-                    _animateNumberForBankkontoNovel = value;
-                    break;
-                }
+                // case VisualNovelNames.BANK_KONTO_NOVEL:
+                // {
+                //     _animateNumberForBankkontoNovel = value;
+                //     break;
+                // }
                 case VisualNovelNames.VERMIETER_NOVEL:
                 {
                     _animateNumberForBueroNovel = value;
                     break;
                 }
-                case VisualNovelNames.FOERDERANTRAG_NOVEL:
-                {
-                    _animateNumberForFoerderantragNovel = value;
-                    break;
-                }
-                case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
-                {
-                    _animateNumberForGruendungszuschussNovel = value;
-                    break;
-                }
+                // case VisualNovelNames.FOERDERANTRAG_NOVEL:
+                // {
+                //     _animateNumberForFoerderantragNovel = value;
+                //     break;
+                // }
+                // case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
+                // {
+                //     _animateNumberForGruendungszuschussNovel = value;
+                //     break;
+                // }
                 case VisualNovelNames.INVESTOR_NOVEL:
                 {
                     _animateNumberForInvestorNovel = value;
@@ -87,16 +87,16 @@ namespace Assets._Scripts.Managers
                     _animateNumberForHonorarNovel = value;
                     break;
                 }
-                case VisualNovelNames.INTRO_NOVEL:
+                case VisualNovelNames.EINSTIEGS_NOVEL:
                 {
                     _animateNumberForIntroNovel = value;
                     break;
                 }
-                case VisualNovelNames.LEBENSPARTNER_NOVEL:
-                {
-                    _animateNumberForLebenspartnerNovel = value;
-                    break;
-                }
+                // case VisualNovelNames.LEBENSPARTNER_NOVEL:
+                // {
+                //     _animateNumberForLebenspartnerNovel = value;
+                //     break;
+                // }
             }
         }
 
@@ -116,22 +116,22 @@ namespace Assets._Scripts.Managers
                 {
                     return _animateNumberForNotariatNovel;
                 }
-                case VisualNovelNames.BANK_KONTO_NOVEL:
-                {
-                    return _animateNumberForBankkontoNovel;
-                }
+                // case VisualNovelNames.BANK_KONTO_NOVEL:
+                // {
+                //     return _animateNumberForBankkontoNovel;
+                // }
                 case VisualNovelNames.VERMIETER_NOVEL:
                 {
                     return _animateNumberForBueroNovel;
                 }
-                case VisualNovelNames.FOERDERANTRAG_NOVEL:
-                {
-                    return _animateNumberForFoerderantragNovel;
-                }
-                case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
-                {
-                    return _animateNumberForGruendungszuschussNovel;
-                }
+                // case VisualNovelNames.FOERDERANTRAG_NOVEL:
+                // {
+                //     return _animateNumberForFoerderantragNovel;
+                // }
+                // case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
+                // {
+                //     return _animateNumberForGruendungszuschussNovel;
+                // }
                 case VisualNovelNames.INVESTOR_NOVEL:
                 {
                     return _animateNumberForInvestorNovel;
@@ -144,14 +144,14 @@ namespace Assets._Scripts.Managers
                 {
                     return _animateNumberForHonorarNovel;
                 }
-                case VisualNovelNames.INTRO_NOVEL:
+                case VisualNovelNames.EINSTIEGS_NOVEL:
                 {
                     return _animateNumberForIntroNovel;
                 }
-                case VisualNovelNames.LEBENSPARTNER_NOVEL:
-                {
-                    return _animateNumberForLebenspartnerNovel;
-                }
+                // case VisualNovelNames.LEBENSPARTNER_NOVEL:
+                // {
+                //     return _animateNumberForLebenspartnerNovel;
+                // }
                 default:
                 {
                     return false;

@@ -1,11 +1,10 @@
-using Febucci.UI.Actions;
-using Febucci.UI.Core.Parsing;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing.Markers.Actions;
 using UnityEditor;
 
-namespace Febucci.UI.Core
+namespace Plugins.Febucci.Text_Animator.Scripts.Editor.Drawers.Scriptables.Database
 {
     [CustomEditor(typeof(ActionDatabase), true)]
-    class ActionDatabaseScriptableDrawer : Editor
+    class ActionDatabaseScriptableDrawer : UnityEditor.Editor
     {
         DatabaseSharedDrawer drawer = new DatabaseSharedDrawer();
 

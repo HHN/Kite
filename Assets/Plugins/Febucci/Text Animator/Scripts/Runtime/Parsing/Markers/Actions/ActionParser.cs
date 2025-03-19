@@ -1,7 +1,7 @@
 using System.Text;
-using Febucci.UI.Actions;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing._Core;
 
-namespace Febucci.UI.Core.Parsing
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing.Markers.Actions
 {
     public sealed class ActionParser : TagParserBase
     {

@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Febucci.UI.Core
+namespace Plugins.Febucci.Text_Animator.Scripts.Editor.Drawers._Core
 {
     /// <summary>
     /// Could draw anything

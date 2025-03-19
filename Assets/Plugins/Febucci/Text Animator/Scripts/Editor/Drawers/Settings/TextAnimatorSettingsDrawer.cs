@@ -1,10 +1,11 @@
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Settings;
 using UnityEditor;
 using UnityEngine;
 
-namespace Febucci.UI
+namespace Plugins.Febucci.Text_Animator.Scripts.Editor.Drawers.Settings
 {
     [CustomEditor(typeof(TextAnimatorSettings))]
-    public class TextAnimatorSettingsDrawer : Editor
+    public class TextAnimatorSettingsDrawer : UnityEditor.Editor
     {
         bool extraSettings = false;
 
