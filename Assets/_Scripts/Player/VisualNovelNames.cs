@@ -10,7 +10,7 @@ namespace Assets._Scripts.Player
         ELTERN_NOVEL,
         NOTARIAT_NOVEL,
         PRESSE_NOVEL,
-        BUERO_NOVEL,
+        VERMIETER_NOVEL,
         // GRUENDER_ZUSCHUSS_NOVEL,
         HONORAR_NOVEL,
         // LEBENSPARTNER_NOVEL,
@@ -41,7 +41,7 @@ namespace Assets._Scripts.Player
                 // }
                 case 6:
                 {
-                    return VisualNovelNames.BUERO_NOVEL;
+                    return VisualNovelNames.VERMIETER_NOVEL;
                 }
                 // case 7:
                 // {
@@ -150,7 +150,7 @@ namespace Assets._Scripts.Player
                 // case "Bankkonto":
                 //     return VisualNovelNames.BANK_KONTO_NOVEL;
                 case "Büro":
-                    return VisualNovelNames.BUERO_NOVEL;
+                    return VisualNovelNames.VERMIETER_NOVEL;
                 // case "Förderantrag":
                 //     return VisualNovelNames.FOERDERANTRAG_NOVEL;
                 // case "Gründungs-zuschuss":
@@ -190,7 +190,7 @@ namespace Assets._Scripts.Player
                 // {
                 //     return 5;
                 // }
-                case VisualNovelNames.BUERO_NOVEL:
+                case VisualNovelNames.VERMIETER_NOVEL:
                 {
                     return 6;
                 }

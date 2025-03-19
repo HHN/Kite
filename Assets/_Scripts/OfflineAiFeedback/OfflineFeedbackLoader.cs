@@ -20,7 +20,7 @@ namespace Assets._Scripts.OfflineAiFeedback
             { VisualNovelNames.ELTERN_NOVEL, "eltern_feedback.json" },
             { VisualNovelNames.NOTARIAT_NOVEL, "notariat_feedback.json" },
             { VisualNovelNames.PRESSE_NOVEL, "presse_feedback.json" },
-            { VisualNovelNames.BUERO_NOVEL, "buero_feedback.json" },
+            { VisualNovelNames.VERMIETER_NOVEL, "buero_feedback.json" },
             // { VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL, "gruender_zuschuss_feedback.json" },
             { VisualNovelNames.HONORAR_NOVEL, "honorar_feedback.json" },
             // { VisualNovelNames.LEBENSPARTNER_NOVEL, "lebenspartner_feedback.json" },

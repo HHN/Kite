@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 15507077}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -299,8 +299,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Psychologische Barrieren & kommunikative Hindernisse
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -410,8 +410,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332.00003, y: -343.33334}
-  m_SizeDelta: {x: 664, y: 0}
+  m_AnchoredPosition: {x: 397.6684, y: -322.5}
+  m_SizeDelta: {x: 795.3368, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &34318600
 MonoBehaviour:
@@ -460,7 +460,7 @@ GameObject:
   - component: {fileID: 58841823}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -512,8 +512,8 @@ MonoBehaviour:
     indem sie Frauen sanfte, unterst\xFCtzende Rollen zuweist, anstatt sie als gleichwertige
     Akteure in der Wirtschaft zu sehen. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -629,8 +629,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -575}
-  m_SizeDelta: {x: 664, y: 1150}
+  m_AnchoredPosition: {x: 397.6684, y: -587.5}
+  m_SizeDelta: {x: 795.3368, y: 1175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &65549961
 MonoBehaviour:
@@ -649,11 +649,11 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 1
   m_Spacing: 15
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
+  m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
@@ -783,8 +783,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -657.5}
-  m_SizeDelta: {x: 664, y: 175}
+  m_AnchoredPosition: {x: 397.6684, y: -657.5}
+  m_SizeDelta: {x: 795.3368, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &99095382
 MonoBehaviour:
@@ -1009,8 +1009,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -37.5}
-  m_SizeDelta: {x: 664, y: 100}
+  m_AnchoredPosition: {x: 397.6684, y: -50}
+  m_SizeDelta: {x: 795.3368, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &129210897
 MonoBehaviour:
@@ -1130,8 +1130,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -1050}
-  m_SizeDelta: {x: 664, y: 200}
+  m_AnchoredPosition: {x: 397.6684, y: -1075}
+  m_SizeDelta: {x: 795.3368, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &138269259
 MonoBehaviour:
@@ -1251,8 +1251,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -3507.5}
-  m_SizeDelta: {x: 664, y: 175}
+  m_AnchoredPosition: {x: 397.6684, y: -3507.5}
+  m_SizeDelta: {x: 795.3368, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &142378138
 MonoBehaviour:
@@ -1499,7 +1499,7 @@ GameObject:
   - component: {fileID: 177072153}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1549,8 +1549,8 @@ MonoBehaviour:
     gestellt wird. Besonders Gr\xFCnderinnen wird oft unterstellt, dass sie ihr Unternehmen
     nicht mit anderen Verpflichtungen vereinbaren k\xF6nnen. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1744,7 +1744,7 @@ GameObject:
   - component: {fileID: 218328084}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1793,7 +1793,7 @@ MonoBehaviour:
     dass sie in einer heterosexuellen Beziehung leben und dass ihre beruflichen Entscheidungen
     von ihrem Ehemann beeinflusst werden. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1859,7 +1859,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &218328085
@@ -1883,7 +1883,7 @@ GameObject:
   - component: {fileID: 229359519}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1933,7 +1933,7 @@ MonoBehaviour:
     oder Ernsthaftigkeit abgesprochen wird, werden \xE4ltere Gr\xFCnderinnen seltener
     als dynamisch oder innovativ wahrgenommen. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1999,7 +1999,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &229359520
@@ -2278,7 +2278,7 @@ GameObject:
   - component: {fileID: 245868018}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2328,8 +2328,8 @@ MonoBehaviour:
     oder Ernsthaftigkeit abgesprochen wird, werden \xE4ltere Gr\xFCnderinnen seltener
     als dynamisch oder innovativ wahrgenommen. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2590,8 +2590,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -1987.5}
-  m_SizeDelta: {x: 664, y: 175}
+  m_AnchoredPosition: {x: 397.6684, y: -1987.5}
+  m_SizeDelta: {x: 795.3368, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &286804341
 MonoBehaviour:
@@ -2710,7 +2710,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 664, y: 190}
+  m_SizeDelta: {x: 0, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &302377534
 MonoBehaviour:
@@ -2735,8 +2735,8 @@ MonoBehaviour:
   m_text: "Wirst du anders bewertet, weil du eine Frau bist? Hier findest du die
     g\xE4ngigsten Biases \u2013 einfach erkl\xE4rt mit Beispielen aus echten Gr\xFCndungssituationen."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
-  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
+  m_sharedMaterial: {fileID: 3127457962735927120, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2766,7 +2766,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -3054,7 +3054,7 @@ GameObject:
   - component: {fileID: 329732700}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3105,8 +3105,8 @@ MonoBehaviour:
     treffen unbewusst Annahmen dar\xFCber, dass Frauen ihre Karriere m\xF6glicherweise
     unterbrechen oder sich weniger auf ihr Unternehmen konzentrieren k\xF6nnten. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3195,7 +3195,7 @@ GameObject:
   - component: {fileID: 360177052}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3245,8 +3245,8 @@ MonoBehaviour:
     hingegen direkt und entscheidungsstark, werden sie als \u201Ezu fordernd\u201C
     oder \u201Eunsympathisch\u201C wahrgenommen. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3448,8 +3448,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -835}
-  m_SizeDelta: {x: 664, y: 200}
+  m_AnchoredPosition: {x: 397.6684, y: -860}
+  m_SizeDelta: {x: 795.3368, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &415953191
 MonoBehaviour:
@@ -3546,7 +3546,7 @@ GameObject:
   - component: {fileID: 417643223}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3597,8 +3597,8 @@ MonoBehaviour:
     oder mit unterschwelligen Zweifeln an ihrer F\xFChrungsf\xE4higkeit konfrontiert
     werden. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3710,8 +3710,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -3317.5}
-  m_SizeDelta: {x: 664, y: 175}
+  m_AnchoredPosition: {x: 397.6684, y: -3317.5}
+  m_SizeDelta: {x: 795.3368, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &418127037
 MonoBehaviour:
@@ -3952,8 +3952,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -1417.5}
-  m_SizeDelta: {x: 664, y: 175}
+  m_AnchoredPosition: {x: 397.6684, y: -1417.5}
+  m_SizeDelta: {x: 795.3368, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &473106579
 MonoBehaviour:
@@ -4050,7 +4050,7 @@ GameObject:
   - component: {fileID: 477706287}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4101,7 +4101,7 @@ MonoBehaviour:
     als Aush\xE4ngeschild f\xFCr Inklusion, w\xE4hrend die tats\xE4chliche Kontrolle
     \xFCber strategische Entscheidungen weiterhin bei m\xE4nnlichen Kollegen liegt. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4167,7 +4167,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &477706288
@@ -4191,7 +4191,7 @@ GameObject:
   - component: {fileID: 486301766}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4240,8 +4240,8 @@ MonoBehaviour:
     erhalten Startups mit rein weiblichen Teams pro Finanzierungsrunde durchschnittlich
     nur ein Drittel der Summe, die m\xE4nnlich gef\xFChrte Startups erhalten. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4353,8 +4353,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -87.5}
-  m_SizeDelta: {x: 664, y: 175}
+  m_AnchoredPosition: {x: 397.6684, y: -87.5}
+  m_SizeDelta: {x: 795.3368, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &498521118
 MonoBehaviour:
@@ -4474,8 +4474,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -847.5}
-  m_SizeDelta: {x: 664, y: 175}
+  m_AnchoredPosition: {x: 397.6684, y: -847.5}
+  m_SizeDelta: {x: 795.3368, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &511624391
 MonoBehaviour:
@@ -4572,7 +4572,7 @@ GameObject:
   - component: {fileID: 537460461}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4618,7 +4618,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Gesellschaftliche Erwartungen & soziale Normen
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4684,7 +4684,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &537460462
@@ -4993,8 +4993,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -2747.5}
-  m_SizeDelta: {x: 664, y: 175}
+  m_AnchoredPosition: {x: 397.6684, y: -2747.5}
+  m_SizeDelta: {x: 795.3368, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &557673129
 MonoBehaviour:
@@ -5091,7 +5091,7 @@ GameObject:
   - component: {fileID: 576354209}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5137,8 +5137,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Strukturelle wirtschaftliche Barrieren
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5281,7 +5281,7 @@ GameObject:
   - component: {fileID: 612456997}
   m_Layer: 5
   m_Name: BiasDetails
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5302,8 +5302,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 362, y: -549.115}
-  m_SizeDelta: {x: 664, y: 1038.23}
+  m_AnchoredPosition: {x: 362, y: -426.005}
+  m_SizeDelta: {x: 664, y: 792.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &612456993
 MonoBehaviour:
@@ -5335,8 +5335,8 @@ MonoBehaviour:
     Und so weiter und so weiter...\" +\r\n            \"In Deutschland ist es so
     und so, und hier gibt es Zahlen dazu. Und so weiter und so weiter...\\n\\n</size>\";"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5474,8 +5474,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -1797.5}
-  m_SizeDelta: {x: 664, y: 175}
+  m_AnchoredPosition: {x: 397.6684, y: -1797.5}
+  m_SizeDelta: {x: 795.3368, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &613902149
 MonoBehaviour:
@@ -5763,7 +5763,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 447.6684, y: -2657.5}
-  m_SizeDelta: {x: 695.3368, y: 3595}
+  m_SizeDelta: {x: 795.3368, y: 3595}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &628245630
 MonoBehaviour:
@@ -5782,11 +5782,11 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 1
   m_Spacing: 15
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
+  m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
@@ -5818,7 +5818,7 @@ GameObject:
   - component: {fileID: 635645795}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5867,8 +5867,8 @@ MonoBehaviour:
     sich durch beil\xE4ufige Kommentare, skeptische Fragen oder nonverbale Signale,
     die Frauen das Gef\xFChl geben, nicht vollst\xE4ndig ernst genommen zu werden. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6078,7 +6078,7 @@ GameObject:
   - component: {fileID: 638267224}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6127,8 +6127,8 @@ MonoBehaviour:
     m\xE4nnlichen Kollegen. Nur 2% des gesamten Wagniskapitals in Deutschland flie\xDFen
     in rein weibliche Teams \u2013 eine markante Diskrepanz. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6459,7 +6459,7 @@ GameObject:
   - component: {fileID: 671233498}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6510,8 +6510,8 @@ MonoBehaviour:
     Gr\xFCndern nach Wachstumsstrategien fragen. Das beeinflusst nicht nur die Wahrnehmung
     der Unternehmerin, sondern auch ihre Chancen auf Finanzierung. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6647,11 +6647,11 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 1
   m_Spacing: 15
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
+  m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
@@ -6947,7 +6947,7 @@ GameObject:
   - component: {fileID: 797484740}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6998,8 +6998,8 @@ MonoBehaviour:
     Kompetenz wird kritischer beurteilt, sie m\xFCssen sich h\xE4ufiger beweisen
     und werden schneller infrage gestellt."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7088,7 +7088,7 @@ GameObject:
   - component: {fileID: 804207266}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7137,8 +7137,8 @@ MonoBehaviour:
     m\xE4nnlichen Kollegen. Nur 2% des gesamten Wagniskapitals in Deutschland flie\xDFen
     in rein weibliche Teams \u2013 eine markante Diskrepanz. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7227,7 +7227,7 @@ GameObject:
   - component: {fileID: 818980324}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7279,7 +7279,7 @@ MonoBehaviour:
     Aufgaben selbst bei objektiv hoher Leistung als weniger kompetent wahrgenommen
     werden als M\xE4nner mit identischen Ergebnissen. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -7345,7 +7345,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &818980325
@@ -7444,7 +7444,7 @@ GameObject:
   - component: {fileID: 858680429}
   m_Layer: 5
   m_Name: Text
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7604,8 +7604,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 447.6684, y: -500}
-  m_SizeDelta: {x: 724, y: 1098.23}
+  m_AnchoredPosition: {x: 447.6684, y: -860}
+  m_SizeDelta: {x: 795.3368, y: 852.01}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &880108697
 MonoBehaviour:
@@ -7725,8 +7725,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 447.6684, y: -675}
-  m_SizeDelta: {x: 695.3368, y: 350}
+  m_AnchoredPosition: {x: 447.6684, y: -637.5}
+  m_SizeDelta: {x: 795.3368, y: 275}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &880644628
 MonoBehaviour:
@@ -7759,11 +7759,11 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 1
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
+  m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
@@ -7951,7 +7951,7 @@ GameObject:
   - component: {fileID: 887678554}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8003,7 +8003,7 @@ MonoBehaviour:
     indem sie Frauen sanfte, unterst\xFCtzende Rollen zuweist, anstatt sie als gleichwertige
     Akteure in der Wirtschaft zu sehen. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -8069,7 +8069,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &887678555
@@ -8093,7 +8093,7 @@ GameObject:
   - component: {fileID: 901883835}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8142,8 +8142,8 @@ MonoBehaviour:
     erhalten Startups mit rein weiblichen Teams pro Finanzierungsrunde durchschnittlich
     nur ein Drittel der Summe, die m\xE4nnlich gef\xFChrte Startups erhalten. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8255,8 +8255,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -620}
-  m_SizeDelta: {x: 664, y: 200}
+  m_AnchoredPosition: {x: 397.6684, y: -645}
+  m_SizeDelta: {x: 795.3368, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &935103808
 MonoBehaviour:
@@ -8353,7 +8353,7 @@ GameObject:
   - component: {fileID: 1014844102}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8403,8 +8403,8 @@ MonoBehaviour:
     zeigt, dass der Wert von deutschen Neugr\xFCndungen mit M\xE4nnern an der Spitze
     durchschnittlich 16,4-mal h\xF6her eingesch\xE4tzt wird. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8493,7 +8493,7 @@ GameObject:
   - component: {fileID: 1018035374}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8544,8 +8544,8 @@ MonoBehaviour:
     konzentrieren? Diese Annahme f\xFChrt dazu, dass Frauen mit Kindern bei Investoren
     seltener als erfolgsorientiert oder wachstumsstark wahrgenommen werden. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8792,8 +8792,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332.0001, y: -137.5}
-  m_SizeDelta: {x: 664, y: 0}
+  m_AnchoredPosition: {x: 397.6684, y: -125}
+  m_SizeDelta: {x: 795.3368, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1069276707
 MonoBehaviour:
@@ -8842,7 +8842,7 @@ GameObject:
   - component: {fileID: 1106310084}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8894,7 +8894,7 @@ MonoBehaviour:
     Beweis stellen, w\xE4hrend M\xE4nnern ihre Kompetenz eher automatisch zugetraut
     wird. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -8960,7 +8960,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1106310085
@@ -8984,7 +8984,7 @@ GameObject:
   - component: {fileID: 1115922274}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9036,8 +9036,8 @@ MonoBehaviour:
     Beweis stellen, w\xE4hrend M\xE4nnern ihre Kompetenz eher automatisch zugetraut
     wird. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9149,8 +9149,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -1037.5}
-  m_SizeDelta: {x: 664, y: 175}
+  m_AnchoredPosition: {x: 397.6684, y: -1037.5}
+  m_SizeDelta: {x: 795.3368, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1121334776
 MonoBehaviour:
@@ -9247,7 +9247,7 @@ GameObject:
   - component: {fileID: 1121407842}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9293,8 +9293,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Wahrnehmung & F\xFChrungsrollen"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9383,7 +9383,7 @@ GameObject:
   - component: {fileID: 1170196256}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9433,7 +9433,7 @@ MonoBehaviour:
     zugeschrieben werden, werden Frauen oft als \u201Ekommunikativ\u201C, \u201Edetailliert\u201C
     oder \u201Eharmonieorientiert\u201C beschrieben. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -9499,7 +9499,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1170196257
@@ -9523,7 +9523,7 @@ GameObject:
   - component: {fileID: 1176885797}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9574,8 +9574,8 @@ MonoBehaviour:
     als Aush\xE4ngeschild f\xFCr Inklusion, w\xE4hrend die tats\xE4chliche Kontrolle
     \xFCber strategische Entscheidungen weiterhin bei m\xE4nnlichen Kollegen liegt. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9664,7 +9664,7 @@ GameObject:
   - component: {fileID: 1221347775}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9715,7 +9715,7 @@ MonoBehaviour:
     treffen unbewusst Annahmen dar\xFCber, dass Frauen ihre Karriere m\xF6glicherweise
     unterbrechen oder sich weniger auf ihr Unternehmen konzentrieren k\xF6nnten. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -9781,7 +9781,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1221347776
@@ -9977,8 +9977,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -3127.5}
-  m_SizeDelta: {x: 664, y: 175}
+  m_AnchoredPosition: {x: 397.6684, y: -3127.5}
+  m_SizeDelta: {x: 795.3368, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1238836995
 MonoBehaviour:
@@ -10205,8 +10205,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -2177.5}
-  m_SizeDelta: {x: 664, y: 175}
+  m_AnchoredPosition: {x: 397.6684, y: -2177.5}
+  m_SizeDelta: {x: 795.3368, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1252367075
 MonoBehaviour:
@@ -10326,8 +10326,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -1227.5}
-  m_SizeDelta: {x: 664, y: 175}
+  m_AnchoredPosition: {x: 397.6684, y: -1227.5}
+  m_SizeDelta: {x: 795.3368, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1266656933
 MonoBehaviour:
@@ -10424,7 +10424,7 @@ GameObject:
   - component: {fileID: 1271631460}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10473,7 +10473,7 @@ MonoBehaviour:
     sich durch beil\xE4ufige Kommentare, skeptische Fragen oder nonverbale Signale,
     die Frauen das Gef\xFChl geben, nicht vollst\xE4ndig ernst genommen zu werden. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -10539,7 +10539,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1271631461
@@ -10700,7 +10700,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 664, y: 50}
+  m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1276242062
 MonoBehaviour:
@@ -10855,7 +10855,7 @@ GameObject:
   - component: {fileID: 1283625380}
   m_Layer: 5
   m_Name: Placeholder
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10921,8 +10921,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: SUCHE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11132,7 +11132,7 @@ GameObject:
   - component: {fileID: 1315303536}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11178,7 +11178,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Wahrnehmung & F\xFChrungsrollen"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -11244,7 +11244,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1315303537
@@ -11268,7 +11268,7 @@ GameObject:
   - component: {fileID: 1317076699}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11319,8 +11319,8 @@ MonoBehaviour:
     Gr\xFCndern nach Wachstumsstrategien fragen. Das beeinflusst nicht nur die Wahrnehmung
     der Unternehmerin, sondern auch ihre Chancen auf Finanzierung. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11558,7 +11558,7 @@ GameObject:
   - component: {fileID: 1369616575}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11608,8 +11608,8 @@ MonoBehaviour:
     zugeschrieben werden, werden Frauen oft als \u201Ekommunikativ\u201C, \u201Edetailliert\u201C
     oder \u201Eharmonieorientiert\u201C beschrieben. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11698,7 +11698,7 @@ GameObject:
   - component: {fileID: 1375052501}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11748,8 +11748,8 @@ MonoBehaviour:
     zeigt, dass der Wert von deutschen Neugr\xFCndungen mit M\xE4nnern an der Spitze
     durchschnittlich 16,4-mal h\xF6her eingesch\xE4tzt wird. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11861,8 +11861,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -405}
-  m_SizeDelta: {x: 664, y: 200}
+  m_AnchoredPosition: {x: 397.6684, y: -430}
+  m_SizeDelta: {x: 795.3368, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1399912745
 MonoBehaviour:
@@ -11959,7 +11959,7 @@ GameObject:
   - component: {fileID: 1401024448}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12011,8 +12011,8 @@ MonoBehaviour:
     Aufgaben selbst bei objektiv hoher Leistung als weniger kompetent wahrgenommen
     werden als M\xE4nner mit identischen Ergebnissen. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -12101,7 +12101,7 @@ GameObject:
   - component: {fileID: 1402190422}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12152,7 +12152,7 @@ MonoBehaviour:
     konzentrieren? Diese Annahme f\xFChrt dazu, dass Frauen mit Kindern bei Investoren
     seltener als erfolgsorientiert oder wachstumsstark wahrgenommen werden. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -12218,7 +12218,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1402190423
@@ -12264,7 +12264,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 664, y: 50}
+  m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1408616815
 MonoBehaviour:
@@ -12545,11 +12545,11 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 1
   m_Spacing: 15
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
+  m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
@@ -12604,8 +12604,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -467.5}
-  m_SizeDelta: {x: 664, y: 175}
+  m_AnchoredPosition: {x: 397.6684, y: -467.5}
+  m_SizeDelta: {x: 795.3368, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1422784868
 MonoBehaviour:
@@ -12725,8 +12725,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -2557.5}
-  m_SizeDelta: {x: 664, y: 175}
+  m_AnchoredPosition: {x: 397.6684, y: -2557.5}
+  m_SizeDelta: {x: 795.3368, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1464088409
 MonoBehaviour:
@@ -12846,8 +12846,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -2367.5}
-  m_SizeDelta: {x: 664, y: 175}
+  m_AnchoredPosition: {x: 397.6684, y: -2367.5}
+  m_SizeDelta: {x: 795.3368, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1501915869
 MonoBehaviour:
@@ -12967,8 +12967,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -1607.5}
-  m_SizeDelta: {x: 664, y: 175}
+  m_AnchoredPosition: {x: 397.6684, y: -1607.5}
+  m_SizeDelta: {x: 795.3368, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1562846856
 MonoBehaviour:
@@ -13328,8 +13328,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332.00003, y: -64.16667}
-  m_SizeDelta: {x: 664, y: 0}
+  m_AnchoredPosition: {x: 397.6684, y: -60}
+  m_SizeDelta: {x: 795.3368, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1662224390
 MonoBehaviour:
@@ -13378,7 +13378,7 @@ GameObject:
   - component: {fileID: 1673077871}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13427,8 +13427,8 @@ MonoBehaviour:
     dass sie in einer heterosexuellen Beziehung leben und dass ihre beruflichen Entscheidungen
     von ihrem Ehemann beeinflusst werden. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13760,11 +13760,11 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 1
   m_Spacing: 15
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
+  m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
@@ -13918,7 +13918,7 @@ GameObject:
   - component: {fileID: 1805909547}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13968,7 +13968,7 @@ MonoBehaviour:
     gestellt wird. Besonders Gr\xFCnderinnen wird oft unterstellt, dass sie ihr Unternehmen
     nicht mit anderen Verpflichtungen vereinbaren k\xF6nnen. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -14034,7 +14034,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1805909548
@@ -14081,8 +14081,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -2937.5}
-  m_SizeDelta: {x: 664, y: 175}
+  m_AnchoredPosition: {x: 397.6684, y: -2937.5}
+  m_SizeDelta: {x: 795.3368, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1837498957
 MonoBehaviour:
@@ -14177,6 +14177,7 @@ GameObject:
   - component: {fileID: 1846330429}
   - component: {fileID: 1846330431}
   - component: {fileID: 1846330430}
+  - component: {fileID: 1846330432}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: NoResize
@@ -14198,10 +14199,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2111190598}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 50}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 447.6684, y: -435}
+  m_SizeDelta: {x: 795.3368, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1846330430
 MonoBehaviour:
@@ -14302,6 +14303,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1846330428}
   m_CullTransparentMesh: 1
+--- !u!114 &1846330432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846330428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 0
 --- !u!1 &1882396204
 GameObject:
   m_ObjectHideFlags: 0
@@ -14458,8 +14473,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -277.5}
-  m_SizeDelta: {x: 664, y: 175}
+  m_AnchoredPosition: {x: 397.6684, y: -277.5}
+  m_SizeDelta: {x: 795.3368, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1895194856
 MonoBehaviour:
@@ -14677,7 +14692,7 @@ GameObject:
   - component: {fileID: 1928017017}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14723,8 +14738,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Strukturelle wirtschaftliche Barrieren
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14959,8 +14974,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 447.6684, y: -860}
-  m_SizeDelta: {x: 695.3368, y: 0}
+  m_AnchoredPosition: {x: 447.6684, y: -1447.5}
+  m_SizeDelta: {x: 795.3368, y: 1175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1939660392
 MonoBehaviour:
@@ -14979,11 +14994,11 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 1
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
+  m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
@@ -15001,7 +15016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
-  m_VerticalFit: 2
+  m_VerticalFit: 0
 --- !u!1 &1949034509
 GameObject:
   m_ObjectHideFlags: 0
@@ -15015,7 +15030,7 @@ GameObject:
   - component: {fileID: 1949034511}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15066,8 +15081,8 @@ MonoBehaviour:
     f\xFCr ihre \u201Ebesonnene\u201C Planung gelobt werden, gelten Frauen bei gleichem
     Verhalten als \u201Ez\xF6gerlich\u201C oder \u201E\xFCbervorsichtig\u201C. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -15156,7 +15171,7 @@ GameObject:
   - component: {fileID: 1949716364}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15207,7 +15222,7 @@ MonoBehaviour:
     Kompetenz wird kritischer beurteilt, sie m\xFCssen sich h\xE4ufiger beweisen
     und werden schneller infrage gestellt."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -15273,7 +15288,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1949716365
@@ -15297,7 +15312,7 @@ GameObject:
   - component: {fileID: 1967892069}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15343,7 +15358,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Psychologische Barrieren & kommunikative Hindernisse
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -15409,7 +15424,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1967892070
@@ -15433,7 +15448,7 @@ GameObject:
   - component: {fileID: 1986195949}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15484,8 +15499,8 @@ MonoBehaviour:
     f\xFCr ihre \u201Ebesonnene\u201C Planung gelobt werden, gelten Frauen bei gleichem
     Verhalten als \u201Ez\xF6gerlich\u201C oder \u201E\xFCbervorsichtig\u201C. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -15574,7 +15589,7 @@ GameObject:
   - component: {fileID: 1995491758}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15620,8 +15635,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Gesellschaftliche Erwartungen & soziale Normen
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -15710,7 +15725,7 @@ GameObject:
   - component: {fileID: 2024709262}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15760,7 +15775,7 @@ MonoBehaviour:
     hingegen direkt und entscheidungsstark, werden sie als \u201Ezu fordernd\u201C
     oder \u201Eunsympathisch\u201C wahrgenommen. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -15826,7 +15841,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2024709263
@@ -15971,7 +15986,7 @@ GameObject:
   - component: {fileID: 2068692751}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: NoResize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16022,7 +16037,7 @@ MonoBehaviour:
     oder mit unterschwelligen Zweifeln an ihrer F\xFChrungsf\xE4higkeit konfrontiert
     werden. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -16088,7 +16103,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2068692752
@@ -16135,8 +16150,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -190}
-  m_SizeDelta: {x: 664, y: 200}
+  m_AnchoredPosition: {x: 397.6684, y: -215}
+  m_SizeDelta: {x: 795.3368, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2095679264
 MonoBehaviour:
@@ -16292,18 +16307,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 100
-    m_Right: 100
+    m_Left: 50
+    m_Right: 50
     m_Top: 100
     m_Bottom: 100
-  m_ChildAlignment: 1
+  m_ChildAlignment: 4
   m_Spacing: 10
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 1
+  m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
 --- !u!1 &2119467951
 GameObject:
@@ -16343,8 +16358,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 447.6684, y: -1222.5}
-  m_SizeDelta: {x: 725, y: 0}
+  m_AnchoredPosition: {x: 447.6684, y: -1197.5}
+  m_SizeDelta: {x: 795.3368, y: 825}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2119467953
 MonoBehaviour:
@@ -16359,7 +16374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
-  m_VerticalFit: 2
+  m_VerticalFit: 0
 --- !u!114 &2119467954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16380,7 +16395,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 350, y: 350}
+  m_CellSize: {x: 380, y: 380}
   m_Spacing: {x: 25, y: 25}
   m_Constraint: 1
   m_ConstraintCount: 2
@@ -16419,7 +16434,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 447.6684, y: -480}
-  m_SizeDelta: {x: 695.3368, y: 0}
+  m_SizeDelta: {x: 795.3368, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2140784906
 MonoBehaviour:

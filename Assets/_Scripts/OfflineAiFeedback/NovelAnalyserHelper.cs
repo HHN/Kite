@@ -48,7 +48,7 @@ namespace Assets._Scripts.OfflineAiFeedback
                 _numberOfPossiblePaths[VisualNovelNames.ELTERN_NOVEL] = 0;
                 _numberOfPossiblePaths[VisualNovelNames.NOTARIAT_NOVEL] = 0;
                 _numberOfPossiblePaths[VisualNovelNames.PRESSE_NOVEL] = 0;
-                _numberOfPossiblePaths[VisualNovelNames.BUERO_NOVEL] = 0;
+                _numberOfPossiblePaths[VisualNovelNames.VERMIETER_NOVEL] = 0;
                 // _numberOfPossiblePaths[VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL] = 0;
                 _numberOfPossiblePaths[VisualNovelNames.HONORAR_NOVEL] = 0;
                 // _numberOfPossiblePaths[VisualNovelNames.LEBENSPARTNER_NOVEL] = 0;
@@ -67,7 +67,7 @@ namespace Assets._Scripts.OfflineAiFeedback
                 _allPossibleNovelAnalyserHelpers[VisualNovelNames.ELTERN_NOVEL] = new List<NovelAnalyserHelper>();
                 _allPossibleNovelAnalyserHelpers[VisualNovelNames.NOTARIAT_NOVEL] = new List<NovelAnalyserHelper>();
                 _allPossibleNovelAnalyserHelpers[VisualNovelNames.PRESSE_NOVEL] = new List<NovelAnalyserHelper>();
-                _allPossibleNovelAnalyserHelpers[VisualNovelNames.BUERO_NOVEL] = new List<NovelAnalyserHelper>();
+                _allPossibleNovelAnalyserHelpers[VisualNovelNames.VERMIETER_NOVEL] = new List<NovelAnalyserHelper>();
                 // _allPossibleNovelAnalyserHelpers[VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL] =
                 //     new List<NovelAnalyserHelper>();
                 _allPossibleNovelAnalyserHelpers[VisualNovelNames.HONORAR_NOVEL] = new List<NovelAnalyserHelper>();
@@ -86,7 +86,7 @@ namespace Assets._Scripts.OfflineAiFeedback
                 _allPossibleBiasCombinations[VisualNovelNames.ELTERN_NOVEL] = new List<NovelAnalyserHelper>();
                 _allPossibleBiasCombinations[VisualNovelNames.NOTARIAT_NOVEL] = new List<NovelAnalyserHelper>();
                 _allPossibleBiasCombinations[VisualNovelNames.PRESSE_NOVEL] = new List<NovelAnalyserHelper>();
-                _allPossibleBiasCombinations[VisualNovelNames.BUERO_NOVEL] = new List<NovelAnalyserHelper>();
+                _allPossibleBiasCombinations[VisualNovelNames.VERMIETER_NOVEL] = new List<NovelAnalyserHelper>();
                 // _allPossibleBiasCombinations[VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL] =
                     new List<NovelAnalyserHelper>();
                 _allPossibleBiasCombinations[VisualNovelNames.HONORAR_NOVEL] = new List<NovelAnalyserHelper>();

@@ -39,7 +39,7 @@ namespace Assets._Scripts.SceneControllers
                 { VisualNovelNames.ELTERN_NOVEL, elternNovel },
                 { VisualNovelNames.NOTARIAT_NOVEL, notarinNovel },
                 { VisualNovelNames.PRESSE_NOVEL, presseNovel },
-                { VisualNovelNames.BUERO_NOVEL, bueroNovel },
+                { VisualNovelNames.VERMIETER_NOVEL, bueroNovel },
                 // { VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL, gruenderZuschussNovel },
                 { VisualNovelNames.HONORAR_NOVEL, honorarNovel },
                 // { VisualNovelNames.LEBENSPARTNER_NOVEL, lebenspartnerNovel },

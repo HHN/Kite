@@ -35,7 +35,7 @@ namespace Assets._Scripts.Player
                 // {
                 //     return false;
                 // }
-                case VisualNovelNames.BUERO_NOVEL:
+                case VisualNovelNames.VERMIETER_NOVEL:
                 {
                     return true;
                 }
@@ -94,7 +94,7 @@ namespace Assets._Scripts.Player
                 // {
                 //     return Green;
                 // }
-                case VisualNovelNames.BUERO_NOVEL:
+                case VisualNovelNames.VERMIETER_NOVEL:
                 {
                     return DarkBlue;
                 }
@@ -153,7 +153,7 @@ namespace Assets._Scripts.Player
                 // {
                 //     return Green;
                 // }
-                case VisualNovelNames.BUERO_NOVEL:
+                case VisualNovelNames.VERMIETER_NOVEL:
                 {
                     return DarkBlue;
                 }
@@ -212,9 +212,9 @@ namespace Assets._Scripts.Player
                 // {
                 //     return "Bankkonto";
                 // }
-                case VisualNovelNames.BUERO_NOVEL:
+                case VisualNovelNames.VERMIETER_NOVEL:
                 {
-                    return "Büro";
+                    return "Vermieter";
                 }
                 // case VisualNovelNames.FOERDERANTRAG_NOVEL:
                 // {
@@ -271,7 +271,7 @@ namespace Assets._Scripts.Player
                 // {
                 //     return 2;
                 // }
-                case VisualNovelNames.BUERO_NOVEL:
+                case VisualNovelNames.VERMIETER_NOVEL:
                 {
                     return 5;
                 }
