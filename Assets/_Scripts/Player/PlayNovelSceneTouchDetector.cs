@@ -1,10 +1,8 @@
-using Assets._Scripts.Player;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace _00_Kite2.Player
+namespace Assets._Scripts.Player
 {
-
     public class PlayNovelSceneTouchDetector : MonoBehaviour, IPointerClickHandler
     {
         // Schwellwert in Pixeln, ab dem wir von einer Drag-Bewegung ausgehen
