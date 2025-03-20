@@ -2,22 +2,15 @@ namespace Assets._Scripts.Player
 {
     public enum VisualNovelNames
     {
-        NONE,
-        BANK_KREDIT_NOVEL,
-        INVESTOR_NOVEL,
-
-        // BANK_KONTO_NOVEL,
-        // FOERDERANTRAG_NOVEL,
-        ELTERN_NOVEL,
-        NOTARIAT_NOVEL,
-        PRESSE_NOVEL,
-        VERMIETER_NOVEL,
-
-        // GRUENDER_ZUSCHUSS_NOVEL,
-        HONORAR_NOVEL,
-
-        // LEBENSPARTNER_NOVEL,
-        EINSTIEGS_NOVEL
+        None,
+        BankKreditNovel,
+        InvestorNovel,
+        ElternNovel,
+        NotariatNovel,
+        PresseNovel,
+        VermieterNovel,
+        HonorarNovel,
+        EinstiegsNovel
     }
 
     public class VisualNovelNamesHelper
@@ -28,55 +21,39 @@ namespace Assets._Scripts.Player
             {
                 case 2:
                 {
-                    return VisualNovelNames.ELTERN_NOVEL;
+                    return VisualNovelNames.ElternNovel;
                 }
                 case 3:
                 {
-                    return VisualNovelNames.PRESSE_NOVEL;
+                    return VisualNovelNames.PresseNovel;
                 }
                 case 4:
                 {
-                    return VisualNovelNames.NOTARIAT_NOVEL;
+                    return VisualNovelNames.NotariatNovel;
                 }
-                // case 5:
-                // {
-                //     return VisualNovelNames.BANK_KONTO_NOVEL;
-                // }
                 case 6:
                 {
-                    return VisualNovelNames.VERMIETER_NOVEL;
+                    return VisualNovelNames.VermieterNovel;
                 }
-                // case 7:
-                // {
-                //     return VisualNovelNames.FOERDERANTRAG_NOVEL;
-                // }
-                // case 8:
-                // {
-                //     return VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL;
-                // }
                 case 9:
                 {
-                    return VisualNovelNames.INVESTOR_NOVEL;
+                    return VisualNovelNames.InvestorNovel;
                 }
                 case 10:
                 {
-                    return VisualNovelNames.BANK_KREDIT_NOVEL;
+                    return VisualNovelNames.BankKreditNovel;
                 }
                 case 11:
                 {
-                    return VisualNovelNames.HONORAR_NOVEL;
+                    return VisualNovelNames.HonorarNovel;
                 }
                 case 13:
                 {
-                    return VisualNovelNames.EINSTIEGS_NOVEL;
+                    return VisualNovelNames.EinstiegsNovel;
                 }
-                // case -10:
-                // {
-                //     return VisualNovelNames.LEBENSPARTNER_NOVEL;
-                // }
                 default:
                 {
-                    return VisualNovelNames.NONE;
+                    return VisualNovelNames.None;
                 }
             }
         }
@@ -97,22 +74,10 @@ namespace Assets._Scripts.Player
                 {
                     return "Notarin";
                 }
-                // case 5:
-                // {
-                //     return "Bankkonto";
-                // }
                 case 6:
                 {
                     return "Vermieter";
                 }
-                // case 7:
-                // {
-                //     return "Förderantrag";
-                // }
-                // case 8:
-                // {
-                //     return "Gründungs-zuschuss";
-                // }
                 case 9:
                 {
                     return "Investor";
@@ -129,10 +94,6 @@ namespace Assets._Scripts.Player
                 {
                     return "Einstieg";
                 }
-                // case -10:
-                // {
-                //     return "Lebens-partner*in";
-                // }
                 default:
                 {
                     return "";
@@ -145,31 +106,23 @@ namespace Assets._Scripts.Player
             switch (name)
             {
                 case "Eltern":
-                    return VisualNovelNames.ELTERN_NOVEL;
+                    return VisualNovelNames.ElternNovel;
                 case "Presse":
-                    return VisualNovelNames.PRESSE_NOVEL;
+                    return VisualNovelNames.PresseNovel;
                 case "Notarin":
-                    return VisualNovelNames.NOTARIAT_NOVEL;
-                // case "Bankkonto":
-                //     return VisualNovelNames.BANK_KONTO_NOVEL;
+                    return VisualNovelNames.NotariatNovel;
                 case "Büro":
-                    return VisualNovelNames.VERMIETER_NOVEL;
-                // case "Förderantrag":
-                //     return VisualNovelNames.FOERDERANTRAG_NOVEL;
-                // case "Gründungs-zuschuss":
-                //     return VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL;
+                    return VisualNovelNames.VermieterNovel;
                 case "Investor":
-                    return VisualNovelNames.INVESTOR_NOVEL;
+                    return VisualNovelNames.InvestorNovel;
                 case "Bankkredit":
-                    return VisualNovelNames.BANK_KREDIT_NOVEL;
+                    return VisualNovelNames.BankKreditNovel;
                 case "Honorar":
-                    return VisualNovelNames.HONORAR_NOVEL;
+                    return VisualNovelNames.HonorarNovel;
                 case "Einstieg":
-                    return VisualNovelNames.EINSTIEGS_NOVEL;
-                // case "Lebens-partner*in":
-                //     return VisualNovelNames.LEBENSPARTNER_NOVEL;
+                    return VisualNovelNames.EinstiegsNovel;
                 default:
-                    return VisualNovelNames.NONE; // Rückgabewert im Falle eines nicht gefundenen Werts
+                    return VisualNovelNames.None; // Rückgabewert im Falle eines nicht gefundenen Werts
             }
         }
 
@@ -177,54 +130,38 @@ namespace Assets._Scripts.Player
         {
             switch (value)
             {
-                case VisualNovelNames.ELTERN_NOVEL:
+                case VisualNovelNames.ElternNovel:
                 {
                     return 2;
                 }
-                case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PresseNovel:
                 {
                     return 3;
                 }
-                case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NotariatNovel:
                 {
                     return 4;
                 }
-                // case VisualNovelNames.BANK_KONTO_NOVEL:
-                // {
-                //     return 5;
-                // }
-                case VisualNovelNames.VERMIETER_NOVEL:
+                case VisualNovelNames.VermieterNovel:
                 {
                     return 6;
                 }
-                // case VisualNovelNames.FOERDERANTRAG_NOVEL:
-                // {
-                //     return 7;
-                // }
-                // case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
-                // {
-                //     return 8;
-                // }
-                case VisualNovelNames.INVESTOR_NOVEL:
+                case VisualNovelNames.InvestorNovel:
                 {
                     return 9;
                 }
-                case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BankKreditNovel:
                 {
                     return 10;
                 }
-                case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HonorarNovel:
                 {
                     return 11;
                 }
-                case VisualNovelNames.EINSTIEGS_NOVEL:
+                case VisualNovelNames.EinstiegsNovel:
                 {
                     return 13;
                 }
-                // case VisualNovelNames.LEBENSPARTNER_NOVEL:
-                // {
-                //     return -10;
-                // }
                 default:
                 {
                     return 0;

@@ -284,12 +284,12 @@ namespace Assets._Scripts.NovelHistory
 
             switch (novelNames)
             {
-                case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BankKreditNovel:
                 {
                     displayContainerForBankkreditNovel = true;
                     return dropdownForBankkreditNovel;
                 }
-                case VisualNovelNames.INVESTOR_NOVEL:
+                case VisualNovelNames.InvestorNovel:
                 {
                     displayContainerForInvestorNovel = true;
                     return dropdownForInvestorNovel;
@@ -304,22 +304,22 @@ namespace Assets._Scripts.NovelHistory
                 //     displayContainerForFoerderantragNovel = true;
                 //     return dropdownForFoerderantragNovel;
                 // }
-                case VisualNovelNames.ELTERN_NOVEL:
+                case VisualNovelNames.ElternNovel:
                 {
                     displayContainerForElternNovel = true;
                     return dropdownForElternNovel;
                 }
-                case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NotariatNovel:
                 {
                     displayContainerForNotarinNovel = true;
                     return dropdownForNotarinNovel;
                 }
-                case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PresseNovel:
                 {
                     displayContainerForPresseNovel = true;
                     return dropdownForPresseNovel;
                 }
-                case VisualNovelNames.VERMIETER_NOVEL:
+                case VisualNovelNames.VermieterNovel:
                 {
                     displayContainerForBueroNovel = true;
                     return dropdownForBueroNovel;
@@ -329,7 +329,7 @@ namespace Assets._Scripts.NovelHistory
                 //     displayContainerForGruendungszuschussNovel = true;
                 //     return dropdownForGruendungszuschussNovel;
                 // }
-                case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HonorarNovel:
                 {
                     displayContainerForHonorarNovel = true;
                     return dropdownForHonorarNovel;
@@ -352,12 +352,12 @@ namespace Assets._Scripts.NovelHistory
 
             switch (novelNames)
             {
-                case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BankKreditNovel:
                 {
                     displayContainerForBankkreditNovel = true;
                     return containerForBankkreditNovel;
                 }
-                case VisualNovelNames.INVESTOR_NOVEL:
+                case VisualNovelNames.InvestorNovel:
                 {
                     displayContainerForInvestorNovel = true;
                     return containerForInvestorNovel;
@@ -372,22 +372,22 @@ namespace Assets._Scripts.NovelHistory
                 //     displayContainerForFoerderantragNovel = true;
                 //     return containerForFoerderantragNovel;
                 // }
-                case VisualNovelNames.ELTERN_NOVEL:
+                case VisualNovelNames.ElternNovel:
                 {
                     displayContainerForElternNovel = true;
                     return containerForElternNovel;
                 }
-                case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NotariatNovel:
                 {
                     displayContainerForNotarinNovel = true;
                     return containerForNotarinNovel;
                 }
-                case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PresseNovel:
                 {
                     displayContainerForPresseNovel = true;
                     return containerForPresseNovel;
                 }
-                case VisualNovelNames.VERMIETER_NOVEL:
+                case VisualNovelNames.VermieterNovel:
                 {
                     displayContainerForBueroNovel = true;
                     return containerForBueroNovel;
@@ -397,7 +397,7 @@ namespace Assets._Scripts.NovelHistory
                 //     displayContainerForGruendungszuschussNovel = true;
                 //     return containerForGruendungszuschussNovel;
                 // }
-                case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HonorarNovel:
                 {
                     displayContainerForHonorarNovel = true;
                     return containerForHonorarNovel;
@@ -420,12 +420,12 @@ namespace Assets._Scripts.NovelHistory
 
             switch (novelNames)
             {
-                case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BankKreditNovel:
                 {
                     displayContainerForBankkreditNovel = true;
                     return entryContainerForBankkreditNovel;
                 }
-                case VisualNovelNames.INVESTOR_NOVEL:
+                case VisualNovelNames.InvestorNovel:
                 {
                     displayContainerForInvestorNovel = true;
                     return entryContainerForInvestorNovel;
@@ -440,22 +440,22 @@ namespace Assets._Scripts.NovelHistory
                 //     displayContainerForFoerderantragNovel = true;
                 //     return entryContainerForFoerderantragNovel;
                 // }
-                case VisualNovelNames.ELTERN_NOVEL:
+                case VisualNovelNames.ElternNovel:
                 {
                     displayContainerForElternNovel = true;
                     return entryContainerForElternNovel;
                 }
-                case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NotariatNovel:
                 {
                     displayContainerForNotarinNovel = true;
                     return entryContainerForNotarinNovel;
                 }
-                case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PresseNovel:
                 {
                     displayContainerForPresseNovel = true;
                     return entryContainerForPresseNovel;
                 }
-                case VisualNovelNames.VERMIETER_NOVEL:
+                case VisualNovelNames.VermieterNovel:
                 {
                     displayContainerForBueroNovel = true;
                     return entryContainerForBueroNovel;
@@ -465,7 +465,7 @@ namespace Assets._Scripts.NovelHistory
                 //     displayContainerForGruendungszuschussNovel = true;
                 //     return entryContainerForGruendungszuschussNovel;
                 // }
-                case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HonorarNovel:
                 {
                     displayContainerForHonorarNovel = true;
                     return entryContainerForHonorarNovel;

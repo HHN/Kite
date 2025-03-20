@@ -154,7 +154,7 @@ namespace Assets._Scripts.UI_Elements.Founders_Bubble
                 contentPanelTransform.localPosition -=
                     new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
                 isUpdated = true;
-                currentTarget = currentTarget + FoundersBubbleMetaInformation.NumberOfNovelsToDisplay;
+                currentTarget = currentTarget + FoundersBubbleMetaInformation.numberOfNovelsToDisplay;
             }
             else if (contentPanelTransform.localPosition.x <
                      0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
@@ -164,7 +164,7 @@ namespace Assets._Scripts.UI_Elements.Founders_Bubble
                 contentPanelTransform.localPosition +=
                     new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
                 isUpdated = true;
-                currentTarget = currentTarget - FoundersBubbleMetaInformation.NumberOfNovelsToDisplay;
+                currentTarget = currentTarget - FoundersBubbleMetaInformation.numberOfNovelsToDisplay;
             }
 
             SnapToItem();
@@ -220,7 +220,7 @@ namespace Assets._Scripts.UI_Elements.Founders_Bubble
                 contentPanelTransform.localPosition -=
                     new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
                 isUpdated = true;
-                currentTarget = currentTarget + FoundersBubbleMetaInformation.NumberOfNovelsToDisplay;
+                currentTarget = currentTarget + FoundersBubbleMetaInformation.numberOfNovelsToDisplay;
             }
             else if (contentPanelTransform.localPosition.x <
                      0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
@@ -230,7 +230,7 @@ namespace Assets._Scripts.UI_Elements.Founders_Bubble
                 contentPanelTransform.localPosition +=
                     new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
                 isUpdated = true;
-                currentTarget = currentTarget - FoundersBubbleMetaInformation.NumberOfNovelsToDisplay;
+                currentTarget = currentTarget - FoundersBubbleMetaInformation.numberOfNovelsToDisplay;
             }
 
             SnapToItem();
@@ -282,9 +282,9 @@ namespace Assets._Scripts.UI_Elements.Founders_Bubble
             snappingSpeed = 0;
             currentTarget = FoundersBubbleMetaInformation.GetIndexOfNovel(visualNovelNames) + itemsToAdd;
 
-            if (IsCurrentlyInFirstHalf() && currentTarget > FoundersBubbleMetaInformation.NumberOfNovelsToDisplay)
+            if (IsCurrentlyInFirstHalf() && currentTarget > FoundersBubbleMetaInformation.numberOfNovelsToDisplay)
             {
-                currentTarget = currentTarget - FoundersBubbleMetaInformation.NumberOfNovelsToDisplay;
+                currentTarget = currentTarget - FoundersBubbleMetaInformation.numberOfNovelsToDisplay;
             }
         }
 

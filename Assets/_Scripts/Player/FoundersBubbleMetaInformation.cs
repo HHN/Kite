@@ -4,60 +4,53 @@ namespace Assets._Scripts.Player
 {
     public class FoundersBubbleMetaInformation : MonoBehaviour
     {
-        public static int NumberOfNovelsToDisplay = 8;
+        public static int numberOfNovelsToDisplay = 8;
+
+        private static readonly Color Green = new(37 / 255f, 101 / 255f, 14 / 255f);
+        private static readonly Color Turquoise = new(17 / 255f, 69 / 255f, 74 / 255f);
+        private static readonly Color Turquoise2 = new(15 / 255f, 69 / 255f, 60 / 255f);
+        private static readonly Color DarkBlue = new(12 / 255f, 26 / 255f, 46 / 255f);
+        private static readonly Color Violet = new(83 / 255f, 32 / 255f, 83 / 255f);
+        private static readonly Color Brown = new(46 / 255f, 37 / 255f, 12 / 255f);
+        private static readonly Color GreenBrown = new (48 / 255f, 72 / 255f, 15 / 255f);
+        private static readonly Color Default = new(0 / 255f, 0 / 255f, 0 / 255f);
 
         public static bool IsHighInGui(VisualNovelNames value)
         {
             switch (value)
             {
-                case VisualNovelNames.ELTERN_NOVEL:
+                case VisualNovelNames.ElternNovel:
                 {
                     return false;
                 }
-                case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PresseNovel:
                 {
                     return false;
                 }
-                case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NotariatNovel:
                 {
                     return true;
                 }
-                // case VisualNovelNames.BANK_KONTO_NOVEL:
-                // {
-                //     return false;
-                // }
-                case VisualNovelNames.VERMIETER_NOVEL:
+                case VisualNovelNames.VermieterNovel:
                 {
                     return true;
                 }
-                // case VisualNovelNames.FOERDERANTRAG_NOVEL:
-                // {
-                //     return true;
-                // }
-                // case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
-                // {
-                //     return true;
-                // }
-                case VisualNovelNames.INVESTOR_NOVEL:
+                case VisualNovelNames.InvestorNovel:
                 {
                     return false;
                 }
-                case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BankKreditNovel:
                 {
                     return true;
                 }
-                case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HonorarNovel:
                 {
                     return false;
                 }
-                case VisualNovelNames.EINSTIEGS_NOVEL:
+                case VisualNovelNames.EinstiegsNovel:
                 {
-                    return false;
+                    return true;
                 }
-                // case VisualNovelNames.LEBENSPARTNER_NOVEL:
-                // {
-                //     return true;
-                // }
                 default:
                 {
                     return false;
@@ -69,57 +62,41 @@ namespace Assets._Scripts.Player
         {
             switch (value)
             {
-                case VisualNovelNames.ELTERN_NOVEL:
+                case VisualNovelNames.ElternNovel:
                 {
-                    return new Color(53 / 255f, 146 / 255f, 20 / 255f);
+                    return Green;
                 }
-                case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PresseNovel:
                 {
-                    return new Color(120 / 255f, 45 / 255f, 119 / 255f);
+                    return Violet;
                 }
-                case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NotariatNovel:
                 {
-                    return new Color(27 / 255f, 108 / 255f, 115 / 255f);
+                    return Turquoise;
                 }
-                // case VisualNovelNames.BANK_KONTO_NOVEL:
-                // {
-                //     return new Color(53 / 255f, 146 / 255f, 20 / 255f);
-                // }
-                case VisualNovelNames.VERMIETER_NOVEL:
+                case VisualNovelNames.VermieterNovel:
                 {
-                    return new Color(23 / 255f, 49 / 255f, 86 / 255f);
+                    return DarkBlue;
                 }
-                // case VisualNovelNames.FOERDERANTRAG_NOVEL:
-                // {
-                //     return new Color(27 / 255f, 108 / 255f, 115 / 255f);
-                // }
-                // case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
-                // {
-                //     return new Color(86 / 255f, 70 / 255f, 23 / 255f);
-                // }
-                case VisualNovelNames.INVESTOR_NOVEL:
+                case VisualNovelNames.InvestorNovel:
                 {
-                    return new Color(76 / 255f, 114 / 255f, 42 / 255f);
+                    return Green;
                 }
-                case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BankKreditNovel:
                 {
-                    return new Color(23 / 255f, 49 / 255f, 86 / 255f);
+                    return DarkBlue;
                 }
-                case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HonorarNovel:
                 {
-                    return new Color(24 / 255f, 111 / 255f, 96 / 255f);
+                    return Turquoise2;
                 }
-                case VisualNovelNames.EINSTIEGS_NOVEL:
+                case VisualNovelNames.EinstiegsNovel:
                 {
-                    return new Color(120 / 255f, 45 / 255f, 119 / 255f);
+                    return Violet;
                 }
-                // case VisualNovelNames.LEBENSPARTNER_NOVEL:
-                // {
-                //     return new Color(23 / 255f, 49 / 255f, 86 / 255f);
-                // }
                 default:
                 {
-                    return new Color(0 / 255f, 0 / 255f, 0 / 255f);
+                    return default;
                 }
             }
         }
@@ -128,57 +105,41 @@ namespace Assets._Scripts.Player
         {
             switch (value)
             {
-                case VisualNovelNames.ELTERN_NOVEL:
+                case VisualNovelNames.ElternNovel:
                 {
-                    return new Color(37 / 255f, 101 / 255f, 14 / 255f);
+                    return Green;
                 }
-                case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PresseNovel:
                 {
-                    return new Color(83 / 255f, 32 / 255f, 83 / 255f);
+                    return Violet;
                 }
-                case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NotariatNovel:
                 {
-                    return new Color(17 / 255f, 69 / 255f, 74 / 255f);
+                    return Turquoise;
                 }
-                // case VisualNovelNames.BANK_KONTO_NOVEL:
-                // {
-                //     return new Color(37 / 255f, 101 / 255f, 14 / 255f);
-                // }
-                case VisualNovelNames.VERMIETER_NOVEL:
+                case VisualNovelNames.VermieterNovel:
                 {
-                    return new Color(12 / 255f, 26 / 255f, 46 / 255f);
+                    return DarkBlue;
                 }
-                // case VisualNovelNames.FOERDERANTRAG_NOVEL:
-                // {
-                //     return new Color(17 / 255f, 69 / 255f, 74 / 255f);
-                // }
-                // case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
-                // {
-                //     return new Color(46 / 255f, 37 / 255f, 12 / 255f);
-                // }
-                case VisualNovelNames.INVESTOR_NOVEL:
+                case VisualNovelNames.InvestorNovel:
                 {
-                    return new Color(48 / 255f, 72 / 255f, 15 / 255f);
+                    return GreenBrown;
                 }
-                case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BankKreditNovel:
                 {
-                    return new Color(12 / 255f, 26 / 255f, 46 / 255f);
+                    return DarkBlue;
                 }
-                case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HonorarNovel:
                 {
-                    return new Color(15 / 255f, 69 / 255f, 60 / 255f);
+                    return Turquoise2;
                 }
-                case VisualNovelNames.EINSTIEGS_NOVEL:
+                case VisualNovelNames.EinstiegsNovel:
                 {
-                    return new Color(83 / 255f, 32 / 255f, 83 / 255f);
+                    return Violet;
                 }
-                // case VisualNovelNames.LEBENSPARTNER_NOVEL:
-                // {
-                //     return new Color(12 / 255f, 26 / 255f, 46 / 255f);
-                // }
                 default:
                 {
-                    return new Color(0 / 255f, 0 / 255f, 0 / 255f);
+                    return Default;
                 }
             }
         }
@@ -187,54 +148,38 @@ namespace Assets._Scripts.Player
         {
             switch (value)
             {
-                case VisualNovelNames.ELTERN_NOVEL:
+                case VisualNovelNames.ElternNovel:
                 {
                     return "Eltern";
                 }
-                case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PresseNovel:
                 {
                     return "Presse";
                 }
-                case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NotariatNovel:
                 {
                     return "Notarin";
                 }
-                // case VisualNovelNames.BANK_KONTO_NOVEL:
-                // {
-                //     return "Bankkonto";
-                // }
-                case VisualNovelNames.VERMIETER_NOVEL:
+                case VisualNovelNames.VermieterNovel:
                 {
                     return "Vermieter";
                 }
-                // case VisualNovelNames.FOERDERANTRAG_NOVEL:
-                // {
-                //     return "Förderantrag";
-                // }
-                // case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
-                // {
-                //     return "Gründungs-\r\nzuschuss";
-                // }
-                case VisualNovelNames.INVESTOR_NOVEL:
+                case VisualNovelNames.InvestorNovel:
                 {
                     return "Investor";
                 }
-                case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BankKreditNovel:
                 {
                     return "Bankkredit";
                 }
-                case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HonorarNovel:
                 {
                     return "Honorar";
                 }
-                case VisualNovelNames.EINSTIEGS_NOVEL:
+                case VisualNovelNames.EinstiegsNovel:
                 {
                     return "Einstieg";
                 }
-                // case VisualNovelNames.LEBENSPARTNER_NOVEL:
-                // {
-                //     return "Lebens-\r\npartner*in";
-                // }
                 default:
                 {
                     return "";
@@ -246,54 +191,38 @@ namespace Assets._Scripts.Player
         {
             switch (value)
             {
-                case VisualNovelNames.ELTERN_NOVEL:
+                case VisualNovelNames.ElternNovel:
                 {
                     return 2;
                 }
-                case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PresseNovel:
                 {
                     return 4;
                 }
-                case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NotariatNovel:
                 {
                     return 3;
                 }
-                // case VisualNovelNames.BANK_KONTO_NOVEL:
-                // {
-                //     return 2;
-                // }
-                case VisualNovelNames.VERMIETER_NOVEL:
+                case VisualNovelNames.VermieterNovel:
                 {
                     return 5;
                 }
-                // case VisualNovelNames.FOERDERANTRAG_NOVEL:
-                // {
-                //     return 3;
-                // }
-                // case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
-                // {
-                //     return 7;
-                // }
-                case VisualNovelNames.INVESTOR_NOVEL:
+                case VisualNovelNames.InvestorNovel:
                 {
                     return 6;
                 }
-                case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BankKreditNovel:
                 {
                     return 1;
                 }
-                case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HonorarNovel:
                 {
                     return 8;
                 }
-                case VisualNovelNames.EINSTIEGS_NOVEL:
+                case VisualNovelNames.EinstiegsNovel:
                 {
                     return 7;
                 }
-                // case VisualNovelNames.LEBENSPARTNER_NOVEL:
-                // {
-                //     return 9;
-                // }
                 default:
                 {
                     return -1;

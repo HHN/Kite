@@ -60,7 +60,7 @@ namespace Assets._Scripts.SceneControllers
 
             foundersWellButton.onClick.AddListener(OnFoundersWellButton);
 
-            currentlyOpenedVisualNovelPopup = VisualNovelNames.NONE;
+            currentlyOpenedVisualNovelPopup = VisualNovelNames.None;
 
             List<VisualNovel> allKiteNovels = KiteNovelManager.Instance().GetAllKiteNovels();
 
@@ -135,7 +135,7 @@ namespace Assets._Scripts.SceneControllers
         private void CreateBurgerMenuButton(VisualNovel visualNovel, Transform content)
         {
             var novelId = VisualNovelNamesHelper.ValueOf((int)(visualNovel.id));
-            if (novelId == VisualNovelNames.NONE) return;
+            if (novelId == VisualNovelNames.None) return;
 
             string novelName = VisualNovelNamesHelper.GetName(visualNovel.id);
 
@@ -321,7 +321,7 @@ namespace Assets._Scripts.SceneControllers
         public void MakeTextboxInvisible()
         {
             isPopupOpen = false;
-            currentlyOpenedVisualNovelPopup = VisualNovelNames.NONE;
+            currentlyOpenedVisualNovelPopup = VisualNovelNames.None;
             novelDescriptionTextbox.gameObject.SetActive(false);
         }
 
@@ -362,7 +362,7 @@ namespace Assets._Scripts.SceneControllers
 
             if (entry == null) return;
 
-            if (novelNames == VisualNovelNames.EINSTIEGS_NOVEL)
+            if (novelNames == VisualNovelNames.EinstiegsNovel)
             {
                 GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
             }
