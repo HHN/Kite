@@ -5,14 +5,17 @@ namespace Assets._Scripts.Player
         NONE,
         BANK_KREDIT_NOVEL,
         INVESTOR_NOVEL,
+
         // BANK_KONTO_NOVEL,
         // FOERDERANTRAG_NOVEL,
         ELTERN_NOVEL,
         NOTARIAT_NOVEL,
         PRESSE_NOVEL,
         VERMIETER_NOVEL,
+
         // GRUENDER_ZUSCHUSS_NOVEL,
         HONORAR_NOVEL,
+
         // LEBENSPARTNER_NOVEL,
         EINSTIEGS_NOVEL
     }
@@ -134,6 +137,39 @@ namespace Assets._Scripts.Player
                 {
                     return "";
                 }
+            }
+        }
+
+        public static VisualNovelNames ValueByString(string name)
+        {
+            switch (name)
+            {
+                case "Eltern":
+                    return VisualNovelNames.ELTERN_NOVEL;
+                case "Presse":
+                    return VisualNovelNames.PRESSE_NOVEL;
+                case "Notarin":
+                    return VisualNovelNames.NOTARIAT_NOVEL;
+                // case "Bankkonto":
+                //     return VisualNovelNames.BANK_KONTO_NOVEL;
+                case "Büro":
+                    return VisualNovelNames.VERMIETER_NOVEL;
+                // case "Förderantrag":
+                //     return VisualNovelNames.FOERDERANTRAG_NOVEL;
+                // case "Gründungs-zuschuss":
+                //     return VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL;
+                case "Investor":
+                    return VisualNovelNames.INVESTOR_NOVEL;
+                case "Bankkredit":
+                    return VisualNovelNames.BANK_KREDIT_NOVEL;
+                case "Honorar":
+                    return VisualNovelNames.HONORAR_NOVEL;
+                case "Einstieg":
+                    return VisualNovelNames.EINSTIEGS_NOVEL;
+                // case "Lebens-partner*in":
+                //     return VisualNovelNames.LEBENSPARTNER_NOVEL;
+                default:
+                    return VisualNovelNames.NONE; // Rückgabewert im Falle eines nicht gefundenen Werts
             }
         }
 
