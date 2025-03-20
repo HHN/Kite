@@ -868,8 +868,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nBitte akzeptieren sie die Nutzungsbedingungen und die Datenschutzerkl\xE4rung
-    und best\xE4tigen sie mit dem WEITER-Button um fortzufahren."
+  m_text: "\nBitte akzeptieren Sie die Nutzungsbedingungen und best\xE4tigen Sie,
+    dass Sie die Datenschutzerkl\xE4rung zur Kenntnis genommen haben. Best\xE4tigen
+    Sie mit dem WEITER-Button, um fortzufahren."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
