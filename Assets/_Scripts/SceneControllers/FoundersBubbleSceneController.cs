@@ -13,9 +13,9 @@ namespace Assets._Scripts.SceneControllers
 {
     public class FoundersBubbleSceneController : SceneController
     {
-        [Header("Novel Description Textbox")]
-        
-        [SerializeField] private NovelDescriptionTextbox novelDescriptionTextbox;
+        [Header("Novel Description Textbox")] [SerializeField]
+        private NovelDescriptionTextbox novelDescriptionTextbox;
+
         [SerializeField] private NovelDescriptionTextbox novelDescriptionTextboxIntro;
         [SerializeField] private bool isPopupOpen;
         [SerializeField] private VisualNovelNames currentlyOpenedVisualNovelPopup;
@@ -130,6 +130,7 @@ namespace Assets._Scripts.SceneControllers
             {
                 Debug.LogError("Die Button-Container-Liste ist nicht zugewiesen oder leer.");
             }
+
             StartCoroutine(TextToSpeechManager.Instance.Speak(" "));
             GlobalVolumeManager.Instance.StopSound();
         }
@@ -137,7 +138,7 @@ namespace Assets._Scripts.SceneControllers
         private void OnInputValueChanged(string input)
         {
             string inputLower = input.ToLower();
-            
+
             // Erstelle eine temporäre Liste, um die Container neu anzuordnen
             List<GameObject> visibleContainers = new List<GameObject>();
             List<GameObject> hiddenContainers = new List<GameObject>();
@@ -145,15 +146,15 @@ namespace Assets._Scripts.SceneControllers
             foreach (var container in _originalOrder)
             {
                 if (container == null) continue;
-                
+
                 // Hole den Button innerhalb des Containers
                 Button button = container.GetComponentInChildren<Button>();
                 if (button == null) continue;
-                
+
                 // Hole den TextMeshPro-Text, der im Button enthalten ist
                 TMP_Text buttonText = button.GetComponentInChildren<TMP_Text>();
                 if (buttonText == null) continue;
-                
+
                 // Vergleiche den Button-Text mit dem Input
                 if (buttonText.text.ToLower().Contains(inputLower))
                 {
@@ -340,36 +341,16 @@ namespace Assets._Scripts.SceneControllers
             {
                 if (novel.id == _novelId)
                 {
-                    //Debug.Log("title: " + novel.title);
-                    //Debug.Log("description: " + novel.description);
-
-                    if (novel.id == 13)
-                    {
-                        novelDescriptionTextbox.gameObject.SetActive(false);
-                        novelDescriptionTextboxIntro.gameObject.SetActive(true);
-                        novelDescriptionTextboxIntro.SetHead(FoundersBubbleMetaInformation.IsHighInGui(visualNovel));
-                        novelDescriptionTextboxIntro.SetVisualNovel(novel);
-                        novelDescriptionTextboxIntro.SetVisualNovelName(visualNovel);
-                        novelDescriptionTextboxIntro.SetText(novel.description);
-                        novelDescriptionTextboxIntro.SetColorOfImage(
-                            FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
-                        novelDescriptionTextboxIntro.SetButtonsActive(true);
-                        novelDescriptionTextboxIntro.UpdateSize();
-                    }
-                    else
-                    {
-                        novelDescriptionTextboxIntro.gameObject.SetActive(false);
-                        novelDescriptionTextbox.gameObject.SetActive(true);
-                        novelDescriptionTextbox.SetHead(FoundersBubbleMetaInformation.IsHighInGui(visualNovel));
-                        novelDescriptionTextbox.SetVisualNovel(novel);
-                        novelDescriptionTextbox.SetVisualNovelName(visualNovel);
-                        novelDescriptionTextbox.SetText(novel.description);
-                        novelDescriptionTextbox.SetColorOfImage(
-                            FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
-                        novelDescriptionTextbox.SetButtonsActive(true);
-                        novelDescriptionTextbox.InitializeBookMarkButton(FavoritesManager.Instance().IsFavorite(novel));
-                        novelDescriptionTextbox.UpdateSize();
-                    }
+                    novelDescriptionTextbox.gameObject.SetActive(true);
+                    novelDescriptionTextbox.SetHead(FoundersBubbleMetaInformation.IsHighInGui(visualNovel));
+                    novelDescriptionTextbox.SetVisualNovel(novel);
+                    novelDescriptionTextbox.SetVisualNovelName(visualNovel);
+                    novelDescriptionTextbox.SetText(novel.description);
+                    novelDescriptionTextbox.SetColorOfImage(
+                        FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
+                    novelDescriptionTextbox.SetButtonsActive(true);
+                    novelDescriptionTextbox.InitializeBookMarkButton(FavoritesManager.Instance().IsFavorite(novel));
+                    novelDescriptionTextbox.UpdateSize();
 
                     isPopupOpen = true;
                     currentlyOpenedVisualNovelPopup = visualNovel;
