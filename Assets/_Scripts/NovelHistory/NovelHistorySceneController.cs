@@ -20,65 +20,65 @@ namespace Assets._Scripts.NovelHistory
 
         [SerializeField] private GameObject containerForBankkreditNovel;
         [SerializeField] private GameObject containerForInvestorNovel;
-        [SerializeField] private GameObject containerForBankkontoNovel;
-        [SerializeField] private GameObject containerForFoerderantragNovel;
+        // [SerializeField] private GameObject containerForBankkontoNovel;
+        // [SerializeField] private GameObject containerForFoerderantragNovel;
         [SerializeField] private GameObject containerForElternNovel;
         [SerializeField] private GameObject containerForNotarinNovel;
         [SerializeField] private GameObject containerForPresseNovel;
         [SerializeField] private GameObject containerForBueroNovel;
-        [SerializeField] private GameObject containerForGruendungszuschussNovel;
+        // [SerializeField] private GameObject containerForGruendungszuschussNovel;
         [SerializeField] private GameObject containerForHonorarNovel;
-        [SerializeField] private GameObject containerForLebenspartnerinNovel;
+        // [SerializeField] private GameObject containerForLebenspartnerinNovel;
 
         [SerializeField] private List<GameObject> novelPlaceholder = new List<GameObject>();
         [SerializeField] private DropDownMenu dropdownForBankkreditNovel;
         [SerializeField] private DropDownMenu dropdownForInvestorNovel;
-        [SerializeField] private DropDownMenu dropdownForBankkontoNovel;
-        [SerializeField] private DropDownMenu dropdownForFoerderantragNovel;
+        // [SerializeField] private DropDownMenu dropdownForBankkontoNovel;
+        // [SerializeField] private DropDownMenu dropdownForFoerderantragNovel;
         [SerializeField] private DropDownMenu dropdownForElternNovel;
         [SerializeField] private DropDownMenu dropdownForNotarinNovel;
         [SerializeField] private DropDownMenu dropdownForPresseNovel;
         [SerializeField] private DropDownMenu dropdownForBueroNovel;
-        [SerializeField] private DropDownMenu dropdownForGruendungszuschussNovel;
+        // [SerializeField] private DropDownMenu dropdownForGruendungszuschussNovel;
         [SerializeField] private DropDownMenu dropdownForHonorarNovel;
-        [SerializeField] private DropDownMenu dropdownForLebenspartnerinNovel;
+        // [SerializeField] private DropDownMenu dropdownForLebenspartnerinNovel;
 
         [SerializeField] private GameObject spacingForBankkreditNovel;
         [SerializeField] private GameObject spacingForInvestorNovel;
-        [SerializeField] private GameObject spacingForBankkontoNovel;
-        [SerializeField] private GameObject spacingForFoerderantragNovel;
+        // [SerializeField] private GameObject spacingForBankkontoNovel;
+        // [SerializeField] private GameObject spacingForFoerderantragNovel;
         [SerializeField] private GameObject spacingForElternNovel;
         [SerializeField] private GameObject spacingForNotarinNovel;
         [SerializeField] private GameObject spacingForPresseNovel;
         [SerializeField] private GameObject spacingForBueroNovel;
-        [SerializeField] private GameObject spacingForGruendungszuschussNovel;
+        // [SerializeField] private GameObject spacingForGruendungszuschussNovel;
         [SerializeField] private GameObject spacingForHonorarNovel;
-        [SerializeField] private GameObject spacingForLebenspartnerinNovel;
+        // [SerializeField] private GameObject spacingForLebenspartnerinNovel;
 
         [SerializeField] private GameObject entryContainerForBankkreditNovel;
         [SerializeField] private GameObject entryContainerForInvestorNovel;
-        [SerializeField] private GameObject entryContainerForBankkontoNovel;
-        [SerializeField] private GameObject entryContainerForFoerderantragNovel;
+        // [SerializeField] private GameObject entryContainerForBankkontoNovel;
+        // [SerializeField] private GameObject entryContainerForFoerderantragNovel;
         [SerializeField] private GameObject entryContainerForElternNovel;
         [SerializeField] private GameObject entryContainerForNotarinNovel;
         [SerializeField] private GameObject entryContainerForPresseNovel;
         [SerializeField] private GameObject entryContainerForBueroNovel;
-        [SerializeField] private GameObject entryContainerForGruendungszuschussNovel;
+        // [SerializeField] private GameObject entryContainerForGruendungszuschussNovel;
         [SerializeField] private GameObject entryContainerForHonorarNovel;
-        [SerializeField] private GameObject entryContainerForLebenspartnerinNovel;
+        // [SerializeField] private GameObject entryContainerForLebenspartnerinNovel;
 
         [SerializeField] private bool displayContainerForBankkreditNovel;
         [SerializeField] private bool displayContainerForInvestorNovel;
-        [SerializeField] private bool displayContainerForBankkontoNovel;
-        [SerializeField] private bool displayContainerForFoerderantragNovel;
+        // [SerializeField] private bool displayContainerForBankkontoNovel;
+        // [SerializeField] private bool displayContainerForFoerderantragNovel;
         [SerializeField] private bool displayContainerForElternNovel;
         [SerializeField] private bool displayContainerForNotarinNovel;
         [SerializeField] private bool displayContainerForPresseNovel;
         [SerializeField] private bool displayContainerForBueroNovel;
-        [SerializeField] private bool displayContainerForGruendungszuschussNovel;
+        // [SerializeField] private bool displayContainerForGruendungszuschussNovel;
         [SerializeField] private bool displayContainerForHonorarNovel;
 
-        [SerializeField] private bool displayContainerForLebenspartnerinNovel;
+        // [SerializeField] private bool displayContainerForLebenspartnerinNovel;
 
         [SerializeField] private bool displayNoDataObjectsHint;
 
@@ -134,15 +134,15 @@ namespace Assets._Scripts.NovelHistory
         {
             dropdownForBankkreditNovel.RebuildLayout();
             dropdownForInvestorNovel.RebuildLayout();
-            dropdownForBankkontoNovel.RebuildLayout();
-            dropdownForFoerderantragNovel.RebuildLayout();
+            // dropdownForBankkontoNovel.RebuildLayout();
+            // dropdownForFoerderantragNovel.RebuildLayout();
             dropdownForElternNovel.RebuildLayout();
             dropdownForNotarinNovel.RebuildLayout();
             dropdownForPresseNovel.RebuildLayout();
             dropdownForBueroNovel.RebuildLayout();
-            dropdownForGruendungszuschussNovel.RebuildLayout();
+            // dropdownForGruendungszuschussNovel.RebuildLayout();
             dropdownForHonorarNovel.RebuildLayout();
-            dropdownForLebenspartnerinNovel.RebuildLayout();
+            // dropdownForLebenspartnerinNovel.RebuildLayout();
 
             yield break;
         }
@@ -255,24 +255,24 @@ namespace Assets._Scripts.NovelHistory
                     return containerForBankkreditNovel;
                 case "Investor":
                     return containerForInvestorNovel;
-                case "Bankkonto":
-                    return containerForBankkontoNovel;
-                case "Förderantrag":
-                    return containerForFoerderantragNovel;
+                // case "Bankkonto":
+                //     return containerForBankkontoNovel;
+                // case "Förderantrag":
+                //     return containerForFoerderantragNovel;
                 case "Eltern":
                     return containerForElternNovel;
                 case "Notarin":
                     return containerForNotarinNovel;
                 case "Presse":
                     return containerForPresseNovel;
-                case "Büro":
+                case "Vermieter":
                     return containerForBueroNovel;
-                case "Gründungs-zuschuss":
-                    return containerForGruendungszuschussNovel;
+                // case "Gründungs-zuschuss":
+                //     return containerForGruendungszuschussNovel;
                 case "Honorar":
                     return containerForHonorarNovel;
-                case "Lebens-partner*in":
-                    return containerForLebenspartnerinNovel;
+                // case "Lebens-partner*in":
+                //     return containerForLebenspartnerinNovel;
                 default:
                     return null; // Falls keine passende NovelId gefunden wird
             }
@@ -486,15 +486,15 @@ namespace Assets._Scripts.NovelHistory
         {
             displayContainerForBankkreditNovel = false;
             displayContainerForInvestorNovel = false;
-            displayContainerForBankkontoNovel = false;
-            displayContainerForFoerderantragNovel = false;
+            // displayContainerForBankkontoNovel = false;
+            // displayContainerForFoerderantragNovel = false;
             displayContainerForElternNovel = false;
             displayContainerForNotarinNovel = false;
             displayContainerForPresseNovel = false;
             displayContainerForBueroNovel = false;
-            displayContainerForGruendungszuschussNovel = false;
+            // displayContainerForGruendungszuschussNovel = false;
             displayContainerForHonorarNovel = false;
-            displayContainerForLebenspartnerinNovel = false;
+            // displayContainerForLebenspartnerinNovel = false;
             displayNoDataObjectsHint = true;
         }
 
@@ -504,10 +504,10 @@ namespace Assets._Scripts.NovelHistory
             spacingForBankkreditNovel.SetActive(displayContainerForBankkreditNovel);
             containerForInvestorNovel.SetActive(displayContainerForInvestorNovel);
             spacingForInvestorNovel.SetActive(displayContainerForInvestorNovel);
-            containerForBankkontoNovel.SetActive(displayContainerForBankkontoNovel);
-            spacingForBankkontoNovel.SetActive(displayContainerForBankkontoNovel);
-            containerForFoerderantragNovel.SetActive(displayContainerForFoerderantragNovel);
-            spacingForFoerderantragNovel.SetActive(displayContainerForFoerderantragNovel);
+            // containerForBankkontoNovel.SetActive(displayContainerForBankkontoNovel);
+            // spacingForBankkontoNovel.SetActive(displayContainerForBankkontoNovel);
+            // containerForFoerderantragNovel.SetActive(displayContainerForFoerderantragNovel);
+            // spacingForFoerderantragNovel.SetActive(displayContainerForFoerderantragNovel);
             containerForElternNovel.SetActive(displayContainerForElternNovel);
             spacingForElternNovel.SetActive(displayContainerForElternNovel);
             containerForNotarinNovel.SetActive(displayContainerForNotarinNovel);
@@ -516,12 +516,12 @@ namespace Assets._Scripts.NovelHistory
             spacingForPresseNovel.SetActive(displayContainerForPresseNovel);
             containerForBueroNovel.SetActive(displayContainerForBueroNovel);
             spacingForBueroNovel.SetActive(displayContainerForBueroNovel);
-            containerForGruendungszuschussNovel.SetActive(displayContainerForGruendungszuschussNovel);
-            spacingForGruendungszuschussNovel.SetActive(displayContainerForGruendungszuschussNovel);
+            // containerForGruendungszuschussNovel.SetActive(displayContainerForGruendungszuschussNovel);
+            // spacingForGruendungszuschussNovel.SetActive(displayContainerForGruendungszuschussNovel);
             containerForHonorarNovel.SetActive(displayContainerForHonorarNovel);
             spacingForHonorarNovel.SetActive(displayContainerForHonorarNovel);
-            containerForLebenspartnerinNovel.SetActive(displayContainerForLebenspartnerinNovel);
-            spacingForLebenspartnerinNovel.SetActive(displayContainerForLebenspartnerinNovel);
+            // containerForLebenspartnerinNovel.SetActive(displayContainerForLebenspartnerinNovel);
+            // spacingForLebenspartnerinNovel.SetActive(displayContainerForLebenspartnerinNovel);
             noDataObjectsHint.SetActive(displayNoDataObjectsHint);
         }
     }

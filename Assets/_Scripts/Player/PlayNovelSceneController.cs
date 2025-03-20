@@ -784,8 +784,7 @@ namespace Assets._Scripts.Player
             PlayRecordManager.Instance()
                 .IncreasePlayCounterForNovel(VisualNovelNamesHelper.ValueOf((int)novelToPlay.id));
 
-            PlayThroughCounterAnimationManager.Instance()
-                .SetAnimation(true, VisualNovelNamesHelper.ValueOf((int)novelToPlay.id));
+            PlayThroughCounterAnimationManager.Instance().SetAnimation(true, VisualNovelNamesHelper.ValueOf((int)novelToPlay.id));
 
             PlayerDataManager.Instance().SetNovelHistory(playThroughHistory);
 
