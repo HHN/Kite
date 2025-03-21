@@ -34,15 +34,11 @@ namespace Assets._Scripts.SceneControllers
             {
                 { VisualNovelNames.BANK_KREDIT_NOVEL, bankkreditNovel },
                 { VisualNovelNames.INVESTOR_NOVEL, investorNovel },
-                // { VisualNovelNames.BANK_KONTO_NOVEL, bankkontoNovel },
-                // { VisualNovelNames.FOERDERANTRAG_NOVEL, foerderAntragNovel },
                 { VisualNovelNames.ELTERN_NOVEL, elternNovel },
                 { VisualNovelNames.NOTARIAT_NOVEL, notarinNovel },
                 { VisualNovelNames.PRESSE_NOVEL, presseNovel },
                 { VisualNovelNames.VERMIETER_NOVEL, bueroNovel },
-                // { VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL, gruenderZuschussNovel },
                 { VisualNovelNames.HONORAR_NOVEL, honorarNovel },
-                // { VisualNovelNames.LEBENSPARTNER_NOVEL, lebenspartnerNovel },
                 { VisualNovelNames.EINSTIEGS_NOVEL, introNovel }
             };
 
@@ -139,14 +135,11 @@ namespace Assets._Scripts.SceneControllers
             }
 
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-            PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(
-                FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(
-                FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetDisplayNameOfNovelToPlay(
-                FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
-            GameObject buttonSound = Object.Instantiate(selectNovelSoundPrefab);
-            Object.DontDestroyOnLoad(buttonSound);
+            PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
+            PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+            PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+            GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
+            DontDestroyOnLoad(buttonSound);
 
             if (ShowPlayInstructionManager.Instance().ShowInstruction())
             {
