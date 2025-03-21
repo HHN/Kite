@@ -1,5 +1,5 @@
 {
   "visualNovels": [
-    "_novels_twee\\Investor"
+    "_novels_twee\\Eltern"
   ]
 }
