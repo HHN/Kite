@@ -20,7 +20,7 @@ namespace Assets._Scripts
         // ------------------------------------------------
         // iOS native methods
         // ------------------------------------------------
-#if UNITY_IOS
+#if UNITY_IOS && !UNITY_EDITOR
         [DllImport("__Internal")]
         private static extern void _InitializeTTS();
 
@@ -32,12 +32,18 @@ namespace Assets._Scripts
 
         [DllImport("__Internal")]
         private static extern bool _IsSpeaking();
+#else
+        // Fallbacks, falls wir nicht auf einem echten iOS-Device laufen
+        private static void _InitializeTTS() { }
+        private static void _Speak(string message) { }
+        private static void _StopSpeaking() { }
+        private static bool _IsSpeaking() { return false; }
 #endif
 
         // ------------------------------------------------
         // WebGL JavaScript Plugin
         // ------------------------------------------------
-#if UNITY_WEBGL
+#if UNITY_WEBGL && !UNITY_EDITOR
         [DllImport("__Internal")]
         private static extern void TTS_Initialize();
 
@@ -49,6 +55,12 @@ namespace Assets._Scripts
 
         [DllImport("__Internal")]
         private static extern int TTS_IsSpeaking(); // Rückgabe int statt bool
+#else
+        // Fallbacks für Editor oder andere Plattformen
+        private static void TTS_Initialize() { }
+        private static void TTS_Speak(string message) { }
+        private static void TTS_Stop() { }
+        private static int TTS_IsSpeaking() { return 0; }
 #endif
 
         // ------------------------------------------------
@@ -99,10 +111,10 @@ namespace Assets._Scripts
                 // Android-spezifische Initialisierung
                 StartCoroutine(InitializeTTSAndroid());
             }
-#elif UNITY_IOS
+#elif UNITY_IOS && !UNITY_EDITOR
             // iOS-spezifische Initialisierung
             _InitializeTTS();
-#elif UNITY_WEBGL
+#elif UNITY_WEBGL && !UNITY_EDITOR
             // WebGL: JavaScript-Plugin initialisieren
             TTS_Initialize();
 #endif
@@ -155,7 +167,6 @@ namespace Assets._Scripts
             return _lastMessage;
         }
 
-
         // ------------------------------------------------
         // Text generieren (z.B. für Multiple Choice)
         // ------------------------------------------------
@@ -194,8 +205,8 @@ namespace Assets._Scripts
         // ------------------------------------------------
         public IEnumerator Speak(string message)
         {
-#if UNITY_EDITOR
             // Im Unity-Editor TTS nicht ausführen
+#if UNITY_EDITOR
             yield break;
 #endif
 
@@ -248,7 +259,7 @@ namespace Assets._Scripts
                 Debug.LogError("TextToSpeech is not initialized.");
             }
 
-#elif UNITY_IOS
+#elif UNITY_IOS && !UNITY_EDITOR
             // ------------------------------------------
             // iOS-Implementierung
             // ------------------------------------------
@@ -258,7 +269,7 @@ namespace Assets._Scripts
                 yield return null;
             }
 
-#elif UNITY_WEBGL
+#elif UNITY_WEBGL && !UNITY_EDITOR
             // ------------------------------------------
             // WebGL: JavaScript-Plugin
             // ------------------------------------------
@@ -282,10 +293,10 @@ namespace Assets._Scripts
                 StartEmptySpeech();
                 _isSpeaking = false;
             }
-#elif UNITY_IOS
+#elif UNITY_IOS && !UNITY_EDITOR
             _StopSpeaking();
             _isSpeaking = false;
-#elif UNITY_WEBGL
+#elif UNITY_WEBGL && !UNITY_EDITOR
             TTS_Stop();
             _isSpeaking = false;
 #endif
@@ -295,9 +306,9 @@ namespace Assets._Scripts
         {
 #if UNITY_ANDROID
             return _isSpeaking;
-#elif UNITY_IOS
+#elif UNITY_IOS && !UNITY_EDITOR
             return _IsSpeaking();
-#elif UNITY_WEBGL
+#elif UNITY_WEBGL && !UNITY_EDITOR
             // Gibt true zurück, wenn TTS_IsSpeaking() == 1
             return TTS_IsSpeaking() == 1;
 #else
