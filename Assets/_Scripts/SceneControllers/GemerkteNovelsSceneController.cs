@@ -34,15 +34,11 @@ namespace Assets._Scripts.SceneControllers
             {
                 { VisualNovelNames.BankKreditNovel, bankkreditNovel },
                 { VisualNovelNames.InvestorNovel, investorNovel },
-                // { VisualNovelNames.BANK_KONTO_NOVEL, bankkontoNovel },
-                // { VisualNovelNames.FOERDERANTRAG_NOVEL, foerderAntragNovel },
                 { VisualNovelNames.ElternNovel, elternNovel },
                 { VisualNovelNames.NotariatNovel, notarinNovel },
                 { VisualNovelNames.PresseNovel, presseNovel },
                 { VisualNovelNames.VermieterNovel, bueroNovel },
-                // { VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL, gruenderZuschussNovel },
                 { VisualNovelNames.HonorarNovel, honorarNovel },
-                // { VisualNovelNames.LEBENSPARTNER_NOVEL, lebenspartnerNovel },
                 { VisualNovelNames.EinstiegsNovel, introNovel }
             };
 
@@ -139,12 +135,9 @@ namespace Assets._Scripts.SceneControllers
             }
 
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-            PlayManager.Instance().SetColorOfVisualNovelToPlay(
-                FoundersBubbleMetaInformation.GetColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetColorOfVisualNovelToPlay(
-                FoundersBubbleMetaInformation.GetColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetDisplayNameOfNovelToPlay(
-                FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+            PlayManager.Instance().SetColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetColorOfNovel(visualNovelName));
+            PlayManager.Instance().SetColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetColorOfNovel(visualNovelName));
+            PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
             GameObject buttonSound = Object.Instantiate(selectNovelSoundPrefab);
             Object.DontDestroyOnLoad(buttonSound);
 

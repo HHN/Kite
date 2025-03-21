@@ -101,7 +101,7 @@ namespace Assets._Scripts.NovelHistory
         {
             Debug.Log("KOPIEREN");
             string pattern = @"<\/?(b|i)>";
-            string copyText = Regex.Replace(dialogText.text, pattern, string.Empty);
+            string copyText = Regex.Replace(aiFeedbackText.text, pattern, string.Empty);
             GUIUtility.systemCopyBuffer = copyText.Replace("\n", "\n\n");
             StartCoroutine(ShowCopyPopup("Feedback"));
         }
