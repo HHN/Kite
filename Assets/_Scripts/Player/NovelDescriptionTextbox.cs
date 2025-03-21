@@ -116,15 +116,9 @@ namespace Assets._Scripts.Player
             }
 
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-            PlayManager.Instance()
-                .SetForegroundColorOfVisualNovelToPlay(
-                    FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
-            PlayManager.Instance()
-                .SetBackgroundColorOfVisualNovelToPlay(
-                    FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-            PlayManager.Instance()
-                .SetDisplayNameOfNovelToPlay(
-                    FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+            PlayManager.Instance().SetColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetColorOfNovel(visualNovelName));
+            PlayManager.Instance().SetColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetColorOfNovel(visualNovelName));
+            PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
 

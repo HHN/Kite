@@ -78,7 +78,7 @@ namespace Assets._Scripts.NovelHistory
 
         public void SetVisualNovelColor(VisualNovelNames visualNovel)
         {
-            Color color = FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel);
+            Color color = FoundersBubbleMetaInformation.GetColorOfNovel(visualNovel);
             image.color = color;
             image01.color = color;
             image02.color = color;

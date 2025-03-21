@@ -27,47 +27,32 @@ namespace Assets._Scripts.Managers
 
         public void SetVisualNovelToPlay(VisualNovel novelToPlay)
         {
-            this._novelToPlay = novelToPlay;
+            _novelToPlay = novelToPlay;
         }
 
         public VisualNovel GetVisualNovelToPlay()
         {
-            if (_novelToPlay == null)
-            {
-                return null;
-            }
-
             return _novelToPlay;
         }
 
-        public void SetBackgroundColorOfVisualNovelToPlay(Color colorOfNovel)
+        public void SetColorOfVisualNovelToPlay(Color colorOfNovel)
         {
-            this._backgroundColorForNovel = colorOfNovel;
+            _backgroundColorForNovel = colorOfNovel;
         }
 
-        public Color GetBackgroundColorOfVisualNovelToPlay()
+        public Color GetColorOfVisualNovelToPlay()
         {
             return _backgroundColorForNovel;
         }
 
-        public void SetForegroundColorOfVisualNovelToPlay(Color colorOfNovel)
-        {
-            this._foregroundColorForNovel = colorOfNovel;
-        }
-
-        public Color GetForegroundColorOfVisualNovelToPlay()
-        {
-            return _foregroundColorForNovel;
-        }
-
         public void SetDisplayNameOfNovelToPlay(string v)
         {
-            this._displayName = v;
+            _displayName = v;
         }
 
         public string GetDisplayNameOfNovelToPlay()
         {
-            return this._displayName;
+            return _displayName;
         }
     }
 }

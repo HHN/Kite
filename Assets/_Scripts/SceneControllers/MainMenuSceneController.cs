@@ -16,7 +16,6 @@ namespace Assets._Scripts.SceneControllers
 {
     public class MainMenuSceneController : SceneController, IOnSuccessHandler
     {
-        [SerializeField] private Button novelPlayerButton;
         [SerializeField] private GameObject buttonSoundPrefab;
         [SerializeField] private GameObject termsAndConditionPanel;
         [SerializeField] private Button continueTermsAndConditionsButton;
@@ -24,7 +23,6 @@ namespace Assets._Scripts.SceneControllers
         [SerializeField] private CustomToggle dataPrivacyToggle;
         [SerializeField] private CustomToggle collectDataToggle;
         [SerializeField] private TextMeshProUGUI infoTextTermsAndConditions;
-        [SerializeField] private AudioSource kiteAudioLogo;
         [SerializeField] private GameObject getVersionServerCallPrefab;
         [SerializeField] private GameObject novelLoader;
         [SerializeField] private TMP_Text versionInfo;
@@ -32,8 +30,6 @@ namespace Assets._Scripts.SceneControllers
 
         private void Start()
         {
-            // Initialisiere den TextToSpeechManager
-            TextToSpeechManager ttsManager = TextToSpeechManager.Instance;
             // Initialisiere die Szene und setze grundlegende Einstellungen
             InitializeScene();
 
@@ -75,7 +71,6 @@ namespace Assets._Scripts.SceneControllers
 
         private void SetupButtonListeners()
         {
-            //novelPlayerButton.onClick.AddListener(OnNovelPlayerButton);
             continueTermsAndConditionsButton.onClick.AddListener(OnContinueTermsAndConditionsButton);
         }
 
@@ -86,7 +81,7 @@ namespace Assets._Scripts.SceneControllers
             if (privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted())
             {
                 termsAndConditionPanel.SetActive(false);
-                
+
 
                 if (privacyManager.IsDataCollectionAccepted())
                 {
@@ -102,27 +97,11 @@ namespace Assets._Scripts.SceneControllers
 
         private void StartVersionCheck()
         {
-            var call = Object.Instantiate(getVersionServerCallPrefab).GetComponent<GetVersionServerCall>();
+            var call = Instantiate(getVersionServerCallPrefab).GetComponent<GetVersionServerCall>();
             call.sceneController = this;
             call.OnSuccessHandler = this;
             call.SendRequest();
-            Object.DontDestroyOnLoad(call.gameObject);
-        }
-
-        public void OnNovelPlayerButton()
-        {
-            var analytics = AnalyticsServiceHandler.Instance();
-            analytics.SendMainMenuStatistics();
-            analytics.SetFromWhereIsNovelSelected("KITE NOVELS");
-
-            // Instantiate the sound prefab and assign it to a variable
-            GameObject buttonSound = Object.Instantiate(buttonSoundPrefab);
-            Object.DontDestroyOnLoad(buttonSound); // Correct usage of 
-        }
-
-        public void OnSettingsButton()
-        {
-            SceneLoader.LoadSettingsScene();
+            DontDestroyOnLoad(call.gameObject);
         }
 
         private void OnContinueTermsAndConditionsButton()
@@ -224,20 +203,10 @@ namespace Assets._Scripts.SceneControllers
                     // Convert the novel ID to the corresponding enum
                     VisualNovelNames novelNames = VisualNovelNamesHelper.ValueOf((int)novel.id);
 
-                    PlayManager.Instance()
-                        .SetVisualNovelToPlay(novel); // Set the novel to be played in the PlayManager          
-                    PlayManager.Instance()
-                        .SetForegroundColorOfVisualNovelToPlay(
-                            FoundersBubbleMetaInformation
-                                .GetForegroundColorOfNovel(novelNames)); // Set the foreground color for the novel
-                    PlayManager.Instance()
-                        .SetBackgroundColorOfVisualNovelToPlay(
-                            FoundersBubbleMetaInformation
-                                .GetBackgroundColorOfNovel(novelNames)); // Set the background color for the novel
-                    PlayManager.Instance()
-                        .SetDisplayNameOfNovelToPlay(
-                            FoundersBubbleMetaInformation
-                                .GetDisplayNameOfNovelToPlay(novelNames)); // Set the display name for the novel
+                    PlayManager.Instance().SetVisualNovelToPlay(novel); // Set the novel to be played in the PlayManager          
+                    PlayManager.Instance().SetColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetColorOfNovel(novelNames)); // Set the foreground color for the novel
+                    PlayManager.Instance().SetColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetColorOfNovel(novelNames)); // Set the background color for the novel
+                    PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelNames)); // Set the display name for the novel
 
                     // Load the PlayNovelScene
                     SceneLoader.LoadPlayNovelScene();

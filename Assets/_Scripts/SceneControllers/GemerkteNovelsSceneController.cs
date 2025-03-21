@@ -139,10 +139,10 @@ namespace Assets._Scripts.SceneControllers
             }
 
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-            PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(
-                FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(
-                FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+            PlayManager.Instance().SetColorOfVisualNovelToPlay(
+                FoundersBubbleMetaInformation.GetColorOfNovel(visualNovelName));
+            PlayManager.Instance().SetColorOfVisualNovelToPlay(
+                FoundersBubbleMetaInformation.GetColorOfNovel(visualNovelName));
             PlayManager.Instance().SetDisplayNameOfNovelToPlay(
                 FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
             GameObject buttonSound = Object.Instantiate(selectNovelSoundPrefab);
