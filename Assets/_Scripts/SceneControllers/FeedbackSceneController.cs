@@ -5,6 +5,7 @@ using Assets._Scripts.Managers;
 using Assets._Scripts.Messages;
 using Assets._Scripts.Novel;
 using Assets._Scripts.OfflineAiFeedback;
+using Assets._Scripts.Player;
 using Assets._Scripts.SaveNovelData;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.Server_Communication;
@@ -15,7 +16,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.Player
+namespace Assets._Scripts.SceneControllers
 {
     public class FeedbackSceneController : SceneController, IOnSuccessHandler, IOnErrorHandler
     {
