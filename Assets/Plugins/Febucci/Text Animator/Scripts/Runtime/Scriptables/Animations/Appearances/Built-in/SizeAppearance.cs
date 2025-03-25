@@ -1,10 +1,15 @@
-﻿using Febucci.UI.Core;
-using Febucci.UI.Effects;
+﻿using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Animator._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing.Regions._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations.Appearances._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Utilities;
 using UnityEngine;
-namespace Febucci.UI.Effects
+
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations.Appearances.Built_in
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(fileName = "Size Appearance", menuName = "Text Animator/Animations/Appearances/Size")]
+    [CreateAssetMenu(fileName = "Size Appearance", menuName = "Text Animator/_Animations/Appearances/Size")]
     [EffectInfo("size", EffectCategory.Appearances)]
     public sealed class SizeAppearance : AppearanceScriptableBase
     {
@@ -17,7 +22,7 @@ namespace Febucci.UI.Effects
             amplitude = baseAmplitude * -1 + 1;
         }
 
-        public override void ApplyEffectTo(ref Core.CharacterData character, TAnimCore animator)
+        public override void ApplyEffectTo(ref CharacterData character, TAnimCore animator)
         {
             character.current.positions.LerpUnclamped(
                 character.current.positions.GetMiddlePos(),

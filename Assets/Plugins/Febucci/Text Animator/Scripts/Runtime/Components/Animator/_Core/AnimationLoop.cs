@@ -1,4 +1,4 @@
-namespace Febucci.UI
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Animator._Core
 {
     public enum AnimationLoop
     {

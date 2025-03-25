@@ -1,8 +1,9 @@
-﻿using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
+﻿using Plugins.Febucci.Text_Animator.Attributes.Runtime;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace Febucci.UI.Examples
+namespace Text_Animator_Extras.Typewriter_Sound
 {
     /// <summary>
     /// Extra example class for the TextAnimator plugin, used to add sounds to the TextAnimatorPlayer.
@@ -16,7 +17,7 @@ namespace Febucci.UI.Examples
         public AudioSource source;
 
         [Header("Management")]
-        [Tooltip("How much time has to pass before playing the next sound"), SerializeField, Attributes.MinValue(0)]
+        [Tooltip("How much time has to pass before playing the next sound"), SerializeField, MinValue(0)]
         float minSoundDelay = .07f;
 
         [Tooltip("True if you want the new sound to cut the previous one\nFalse if each sound will continue until its end"), SerializeField]

@@ -1,6 +1,7 @@
-using Febucci.UI.Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Animator._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing.Regions._Core;
 
-namespace Febucci.UI.Effects
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations.Behaviors._Core
 {
     public abstract class BehaviorScriptableSine : BehaviorScriptableBase
     {

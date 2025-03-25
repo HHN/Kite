@@ -1,10 +1,13 @@
-﻿using Febucci.UI.Core;
+﻿using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Animator._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations.Behaviors._Core;
 using UnityEngine;
 
-namespace Febucci.UI.Effects
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations.Behaviors.Built_in
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(fileName = "Slide Behavior", menuName = "Text Animator/Animations/Behaviors/Slide")]
+    [CreateAssetMenu(fileName = "Slide Behavior", menuName = "Text Animator/_Animations/Behaviors/Slide")]
     [EffectInfo("slide", EffectCategory.Behaviors)]
     [DefaultValue(nameof(baseAmplitude), 5)]
     [DefaultValue(nameof(baseFrequency), 3)]
@@ -13,7 +16,7 @@ namespace Febucci.UI.Effects
     {
         float sin;
 
-        public override void ApplyEffectTo(ref Core.CharacterData character, TAnimCore animator)
+        public override void ApplyEffectTo(ref CharacterData character, TAnimCore animator)
         {
             sin = Mathf.Sin(frequency * animator.time.timeSinceStart 
                 + character.index * waveSize) * amplitude * character.uniformIntensity;

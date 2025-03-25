@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Febucci.UI.Core
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing._Core
 {
     /// <summary>
     /// Caches information about tag providers, so that

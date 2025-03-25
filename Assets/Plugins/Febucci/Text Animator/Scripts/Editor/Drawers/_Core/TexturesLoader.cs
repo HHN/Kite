@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Febucci.UI
+namespace Plugins.Febucci.Text_Animator.Scripts.Editor.Drawers._Core
 {
     public static class TexturesLoader
     {

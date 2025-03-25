@@ -1,5 +1,6 @@
-﻿using Febucci.UI.Core;
-using Febucci.UI.Core.Parsing;
+﻿using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Animator._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Utilities;
 using TMPro;
 using UnityEngine;
 

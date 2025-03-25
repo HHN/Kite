@@ -1,12 +1,15 @@
 using System;
-using Febucci.UI.Core;
+using System.Linq;
+using Plugins.Febucci.Text_Animator.Scripts.Editor.Drawers._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing.Markers.Actions;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Actions._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Settings;
 using UnityEditor;
 using UnityEngine;
-using System.Linq;
-using Febucci.UI.Actions;
-using Febucci.UI.Effects;
 
-namespace Febucci.UI
+namespace Plugins.Febucci.Text_Animator.Scripts.Editor.Drawers.Settings
 {
     public class TextAnimatorSetupWindow : EditorWindow
     {

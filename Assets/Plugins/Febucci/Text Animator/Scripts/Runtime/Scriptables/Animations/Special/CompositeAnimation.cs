@@ -1,13 +1,16 @@
-﻿using Febucci.UI.Core;
+﻿using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Animator._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing.Regions._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations._Core;
 using UnityEngine;
 
-namespace Febucci.UI.Effects
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations.Special
 {
     /// <summary>
     /// Applies multiples animations, allowing user to use one tag for all of them
     /// </summary>
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(fileName = "Composite Animation", menuName = "Text Animator/Animations/Special/Composite")]
+    [CreateAssetMenu(fileName = "Composite Animation", menuName = "Text Animator/_Animations/Special/Composite")]
     [EffectInfo("", EffectCategory.All)]
     public sealed class CompositeAnimation : AnimationScriptableBase
     {

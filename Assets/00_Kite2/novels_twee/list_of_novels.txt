@@ -1,6 +1,0 @@
-{
-  "visualNovels": [
-    "00_Kite2\\novels_twee\\Honorar",
-    "00_Kite2\\novels_twee\\Vermieter"
-  ]
-}

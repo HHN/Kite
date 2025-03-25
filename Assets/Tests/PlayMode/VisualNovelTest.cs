@@ -1,85 +1,88 @@
-using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
-using _00_Kite2.Common.Managers;
-using _00_Kite2.Common.SceneManagement;
-using _00_Kite2.Player.Kite_Novels.Visual_Novel_Formatter;
+using Assets._Scripts.Managers;
+using Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter;
+using Assets._Scripts.SceneManagement;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 
-public class VisualNovelTest
+namespace Tests.PlayMode
 {
-    [UnityTest]
-    public IEnumerator TestNovels()
+    public class VisualNovelTest
     {
-        float startTime = Time.time;
-        float timeout = 5f;
-
-        SceneLoader.LoadMainMenuScene();
-
-        while (KiteNovelManager.Instance().GetAllKiteNovels() == null || KiteNovelManager.Instance().GetAllKiteNovels().Count == 0)
+        [UnityTest]
+        public IEnumerator TestNovels()
         {
-            if (Time.time - startTime > timeout)
+            float startTime = Time.time;
+            float timeout = 5f;
+
+            SceneLoader.LoadMainMenuScene();
+
+            while (KiteNovelManager.Instance().GetAllKiteNovels() == null || KiteNovelManager.Instance().GetAllKiteNovels().Count == 0)
             {
-                Assert.Fail("Time out! Loading novels did not work.");
+                if (Time.time - startTime > timeout)
+                {
+                    Assert.Fail("Time out! Loading novels did not work.");
+                }
+                yield return null;
             }
-            yield return null;
-        }
-        List<NovelTester> tests = NovelTester.TestNovels(KiteNovelManager.Instance().GetAllKiteNovels());
+            List<NovelTester> tests = NovelTester.TestNovels(KiteNovelManager.Instance().GetAllKiteNovels());
 
-        foreach (NovelTester test in tests)
+            foreach (NovelTester test in tests)
+            {
+                while (test.IsTestOver() == false)
+                {
+                    yield return null;
+                }
+
+                Assert.IsTrue(test.IsTestSuccessful());
+            }
+        }
+
+        [UnityTest]
+        public IEnumerator ConvertNovelsFromTweeToJson()
         {
-            while (test.IsTestOver() == false)
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneNames.MainMenuScene);
+
+            while (!asyncLoad.isDone)
             {
                 yield return null;
             }
+            GameObject converter = GameObject.Find("TweeToJsonConverter");
 
-            Assert.IsTrue(test.IsTestSuccessful());
+            Assert.NotNull(converter);
+
+            NovelReader novelReader = converter.GetComponent<NovelReader>();
+            novelReader.ConvertNovelsFromTweeToJSON();
+
+            while (novelReader.IsFinished() == false)
+            {
+                yield return null;
+            }
         }
-    }
 
-    [UnityTest]
-    public IEnumerator ConvertNovelsFromTweeToJson()
-    {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneNames.MAIN_MENU_SCENE);
-
-        while (!asyncLoad.isDone)
+        [UnityTest]
+        public IEnumerator ConvertNovelsFromTweeToJsonAndSelectiveOverrideOldNovels()
         {
-            yield return null;
-        }
-        GameObject converter = GameObject.Find("TweeToJsonConverter");
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneNames.MainMenuScene);
 
-        Assert.NotNull(converter);
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
+            GameObject converter = GameObject.Find("TweeToJsonConverter");
 
-        NovelReader novelReader = converter.GetComponent<NovelReader>();
-        novelReader.ConvertNovelsFromTweeToJSON();
+            Assert.NotNull(converter);
 
-        while (novelReader.IsFinished() == false)
-        {
-            yield return null;
-        }
-    }
+            NovelReader novelReader = converter.GetComponent<NovelReader>();
+            novelReader.ConvertNovelsFromTweeToJSONAndSelectiveOverrideOldNovels();
 
-    [UnityTest]
-    public IEnumerator ConvertNovelsFromTweeToJsonAndSelectiveOverrideOldNovels()
-    {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneNames.MAIN_MENU_SCENE);
-
-        while (!asyncLoad.isDone)
-        {
-            yield return null;
-        }
-        GameObject converter = GameObject.Find("TweeToJsonConverter");
-
-        Assert.NotNull(converter);
-
-        NovelReader novelReader = converter.GetComponent<NovelReader>();
-        novelReader.ConvertNovelsFromTweeToJSONAndSelectiveOverrideOldNovels();
-
-        while (novelReader.IsFinished() == false)
-        {
-            yield return null;
+            while (novelReader.IsFinished() == false)
+            {
+                yield return null;
+            }
         }
     }
 }

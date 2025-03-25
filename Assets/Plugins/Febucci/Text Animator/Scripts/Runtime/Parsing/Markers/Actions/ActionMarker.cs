@@ -1,4 +1,6 @@
-namespace Febucci.UI.Core.Parsing
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing.Markers._Core;
+
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing.Markers.Actions
 {
     /// <summary>
     /// Contains information about an action tag in text.

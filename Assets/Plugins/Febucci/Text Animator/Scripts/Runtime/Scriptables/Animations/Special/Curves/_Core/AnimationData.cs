@@ -1,6 +1,7 @@
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing._Core;
 using UnityEngine;
 
-namespace Febucci.UI.Effects
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations.Special.Curves._Core
 {
     [System.Serializable]
     public class AnimationData
@@ -27,7 +28,7 @@ namespace Febucci.UI.Effects
         Vector2 scale;
         Quaternion rot;
 
-        public bool TryCalculatingMatrix(Core.CharacterData character,
+        public bool TryCalculatingMatrix(CharacterData character,
             float timePassed,
             float weight,
             out Matrix4x4 matrix,
@@ -72,7 +73,7 @@ namespace Febucci.UI.Effects
             return true;
         }
 
-        public bool TryCalculatingColor(Core.CharacterData character, float timePassed, float weight, out Color32 color)
+        public bool TryCalculatingColor(CharacterData character, float timePassed, float weight, out Color32 color)
         {
             if(!colorCurve.enabled)
             {

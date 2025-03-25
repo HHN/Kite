@@ -1,11 +1,15 @@
-﻿using Febucci.UI.Core;
-using Febucci.UI.Effects;
+﻿using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Animator._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing.Regions._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations.Appearances._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Utilities;
 using UnityEngine;
 
-namespace Febucci.UI.Effects
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations.Appearances.Built_in
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(fileName = "Rotating Appearance", menuName = "Text Animator/Animations/Appearances/Rotating")]
+    [CreateAssetMenu(fileName = "Rotating Appearance", menuName = "Text Animator/_Animations/Appearances/Rotating")]
     [EffectInfo("rot", EffectCategory.Appearances)]
     [DefaultValue(nameof(baseDuration), .7f)]
     public sealed class RotatingAppearance : AppearanceScriptableBase
@@ -19,7 +23,7 @@ namespace Febucci.UI.Effects
             targetAngle = baseTargetAngle;
         }
 
-        public override void ApplyEffectTo(ref Core.CharacterData character, TAnimCore animator)
+        public override void ApplyEffectTo(ref CharacterData character, TAnimCore animator)
         {
             character.current.positions.RotateChar(
                 Mathf.Lerp(

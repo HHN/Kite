@@ -1,8 +1,8 @@
-using Febucci.UI.Effects;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations.Special.Curves._Core;
 using UnityEditor;
 using UnityEngine;
 
-namespace Febucci.UI.Core
+namespace Plugins.Febucci.Text_Animator.Scripts.Editor.Drawers.Properties
 {
     [CustomPropertyDrawer(typeof(ColorCurveProperty))]
     public class ColorCurvePropertyDrawer : PropertyDrawer

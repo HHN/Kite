@@ -1,11 +1,15 @@
-﻿using Febucci.UI.Core;
-using Febucci.UI.Effects;
+﻿using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Animator._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing.Regions._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations.Appearances._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Utilities;
 using UnityEngine;
 
-namespace Febucci.UI.Effects
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations.Appearances.Built_in
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(fileName = "Diagonal Expand Appearance", menuName = "Text Animator/Animations/Appearances/Diagonal Expand")]
+    [CreateAssetMenu(fileName = "Diagonal Expand Appearance", menuName = "Text Animator/_Animations/Appearances/Diagonal Expand")]
     [EffectInfo("diagexp", EffectCategory.Appearances)]
     public sealed class DiagonalExpandAppearance : AppearanceScriptableBase
     {
@@ -39,7 +43,7 @@ namespace Febucci.UI.Effects
             }
         }
 
-        public override void ApplyEffectTo(ref Core.CharacterData character, TAnimCore animator)
+        public override void ApplyEffectTo(ref CharacterData character, TAnimCore animator)
         {
             middlePos = character.current.positions.GetMiddlePos();
             pct = Tween.EaseInOut(character.passedTime / duration);

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Febucci.UI
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing.Regions._Core
 {
     public struct ModifierInfo: IEquatable<ModifierInfo>
     {

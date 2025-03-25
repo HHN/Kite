@@ -1,17 +1,20 @@
-﻿using Febucci.UI.Core;
-using Febucci.UI.Effects;
+﻿using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Animator._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations.Appearances._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Utilities;
 using UnityEngine;
 
-namespace Febucci.UI.Effects
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations.Appearances.Built_in
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(fileName = "Fade Appearance", menuName = "Text Animator/Animations/Appearances/Fade")]
+    [CreateAssetMenu(fileName = "Fade Appearance", menuName = "Text Animator/_Animations/Appearances/Fade")]
     [EffectInfo("fade", EffectCategory.Appearances)]
     public sealed class FadeAppearance : AppearanceScriptableBase
     {
         Color32 temp;
         
-        public override void ApplyEffectTo(ref Core.CharacterData character, TAnimCore animator)
+        public override void ApplyEffectTo(ref CharacterData character, TAnimCore animator)
         {
             //from transparent to real color
             for (int i = 0; i < TextUtilities.verticesPerChar; i++)

@@ -1,9 +1,8 @@
-using Febucci.UI.Core;
-using Febucci.UI.Effects;
 using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Settings;
 using UnityEngine;
 
-namespace Febucci.UI.Examples
+namespace Plugins.Febucci.Text_Animator.Example.Scripts.Runtime
 {
     [AddComponentMenu("")]
     public class DefaultEffectsExample : MonoBehaviour

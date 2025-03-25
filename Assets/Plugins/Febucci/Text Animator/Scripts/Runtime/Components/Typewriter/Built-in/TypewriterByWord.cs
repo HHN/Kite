@@ -1,12 +1,14 @@
-﻿using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
+﻿using Plugins.Febucci.Text_Animator.Attributes.Runtime;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Animator._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Febucci.UI
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter.Built_in
 {
     /// <summary>
     /// Built-in typewriter, which shows letters dynamically word after word.<br/>
-    /// To enable it, add this component near a <see cref="Febucci.UI.Core.TAnimCore"/> one<br/>
+    /// To enable it, add this component near a <see cref="TAnimCore"/> one<br/>
     /// - Base class: <see cref="TypewriterCore"/><br/>
     /// - Manual: <see href="https://www.febucci.com/text-animator-unity/docs/typewriters/">TextAnimatorPlayers</see>
     /// </summary>
@@ -14,9 +16,9 @@ namespace Febucci.UI
     [AddComponentMenu("Febucci/TextAnimator/Typewriter - By Word")]
     public class TypewriterByWord: TypewriterCore
     {
-        [SerializeField, Attributes.CharsDisplayTime] public float waitForNormalWord = 0.3f;
-        [FormerlySerializedAs("waitForWordWithPuntuaction")] [SerializeField, Attributes.CharsDisplayTime] public float waitForWordWithPunctuation = 0.5f;
-        [SerializeField, Attributes.CharsDisplayTime] public float disappearanceDelay = 0.5f;
+        [SerializeField, CharsDisplayTime] public float waitForNormalWord = 0.3f;
+        [FormerlySerializedAs("waitForWordWithPuntuaction")] [SerializeField, CharsDisplayTime] public float waitForWordWithPunctuation = 0.5f;
+        [SerializeField, CharsDisplayTime] public float disappearanceDelay = 0.5f;
         
         bool IsCharInsideAnyWord(int charIndex)
         {

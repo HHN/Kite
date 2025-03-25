@@ -1,10 +1,14 @@
-﻿using Febucci.UI.Core;
+﻿using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Animator._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations.Behaviors._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Utilities;
 using UnityEngine;
 
-namespace Febucci.UI.Effects
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations.Behaviors.Built_in
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(fileName = "Pendulum Behavior", menuName = "Text Animator/Animations/Behaviors/Pendulum")]
+    [CreateAssetMenu(fileName = "Pendulum Behavior", menuName = "Text Animator/_Animations/Behaviors/Pendulum")]
     [EffectInfo("pend", EffectCategory.Behaviors)]
     [DefaultValue(nameof(baseAmplitude), 24.7f)]
     [DefaultValue(nameof(baseFrequency), 3.1f)]
@@ -34,7 +38,7 @@ namespace Febucci.UI.Effects
             }
         }
 
-        public override void ApplyEffectTo(ref Core.CharacterData character, TAnimCore animator)
+        public override void ApplyEffectTo(ref CharacterData character, TAnimCore animator)
         {
             character.current.positions.RotateChar(
                 Mathf.Sin(-animator.time.timeSinceStart * frequency + waveSize * character.index) * amplitude,

@@ -1,11 +1,15 @@
-﻿using Febucci.UI.Core;
-using Febucci.UI.Effects;
+﻿using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Animator._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Parsing.Regions._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations.Appearances._Core;
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Utilities;
 using UnityEngine;
 
-namespace Febucci.UI.Effects
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Animations.Appearances.Built_in
 {
     [UnityEngine.Scripting.Preserve]
-    [CreateAssetMenu(fileName = "Offset Appearance", menuName = "Text Animator/Animations/Appearances/Offset")]
+    [CreateAssetMenu(fileName = "Offset Appearance", menuName = "Text Animator/_Animations/Appearances/Offset")]
     [EffectInfo("offset", EffectCategory.Appearances)]
     public sealed class OffsetAppearance : AppearanceScriptableBase
     {
@@ -19,7 +23,7 @@ namespace Febucci.UI.Effects
             amount = baseAmount;
         }
 
-        public override void ApplyEffectTo(ref Core.CharacterData character, TAnimCore animator)
+        public override void ApplyEffectTo(ref CharacterData character, TAnimCore animator)
         {
             character.current.positions.MoveChar(baseDirection * amount * character.uniformIntensity * Tween.EaseIn(1 - character.passedTime / duration));
         }

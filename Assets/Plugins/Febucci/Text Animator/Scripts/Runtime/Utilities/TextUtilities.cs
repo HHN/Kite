@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Febucci.UI.Core
+namespace Plugins.Febucci.Text_Animator.Scripts.Runtime.Utilities
 {
     /// <summary>
     /// Helper class. Contains methods (including extensions) that modify your letters positions and colors.

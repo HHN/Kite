@@ -1,7 +1,7 @@
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter.Built_in;
 using UnityEditor;
-using UnityEngine;
 
-namespace Febucci.UI.Core.Editors
+namespace Plugins.Febucci.Text_Animator.Scripts.Editor.Drawers.Components
 {
     [CustomEditor(typeof(TypewriterByCharacter), true)]
     class TypewriterByCharacterDrawer : TypewriterCoreDrawer

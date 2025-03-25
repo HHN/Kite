@@ -1,10 +1,11 @@
+using Plugins.Febucci.Text_Animator.Scripts.Runtime.Scriptables.Settings;
 using UnityEditor;
 using UnityEngine;
 
-namespace Febucci.UI
+namespace Plugins.Febucci.Text_Animator.Scripts.Editor.Drawers.Settings
 {
     [CustomEditor(typeof(TextAnimatorInstallationData))]
-    internal class TextAnimatorInstallationDataDrawer : Editor
+    internal class TextAnimatorInstallationDataDrawer : UnityEditor.Editor
     {
         TextAnimatorInstallationData script;
 

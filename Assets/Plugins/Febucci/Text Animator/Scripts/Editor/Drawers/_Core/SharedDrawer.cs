@@ -1,6 +1,6 @@
 using UnityEditor;
 
-namespace Febucci.UI.Core
+namespace Plugins.Febucci.Text_Animator.Scripts.Editor.Drawers._Core
 {
     /// <summary>
     /// Base class that can be used to create drawers used by multiple
