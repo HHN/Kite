@@ -195,157 +195,131 @@ namespace Assets._Scripts.Novel.CharacterController
                 case 1: // Schaut Erschrocken
                 {
                     ShowErschrockenAnimation();
-                    // PlayRelaxedAnimation();
                     return;
                 }
                 case 2: // Schaut Genervt
                 {
                     ShowGenervtAnimation();
-                    // PlayAstonishedAnimation();
                     return;
                 }
                 case 3: // Schaut Unzufrieden
                 {
                     ShowUnzufriedenAnimation();
-                    // PlayRefusingAnimation();
                     return;
                 }
                 case 4: // Schaut Ablehnend
                 {
                     ShowAblehnendAnimation();
-                    // PlaySmileAnimation();
                     return;
                 }
                 case 5: // Schaut Erstaunt
                 {
                     ShowErstauntAnimation();
-                    // PlayFriendlyAnimation();
                     return;
                 }
                 case 6: // Schaut Fragend
                 {
                     ShowFragendAnimation();
-                    // PlayLaughingAnimation();
                     return;
                 }
                 case 7: // Schaut Kritisch
                 {
                     ShowKritischAnimation();
-                    // PlayCriticalAnimation();
                     return;
                 }
                 case 8: // Schaut Lächeln_Groß
                 {
                     ShowLaechelnGrossAnimation();
-                    // PlayNoDealAnimation();
                     return;
                 }
                 case 9: // Schaut Lachend
                 {
                     ShowLachendAnimation();
-                    // PlayHappyAnimation();
                     return;
                 }
                 case 10:    // Schaut Lächeln
                 {
                     ShowLaechelnAnimation();
-                    // PlayProudAnimation();
                     return;
                 }
                 case 11:    // Schaut Neutral_Entspannt
                 {
                     ShowNeutralEntspanntAnimation();
-                    // PlayScaredAnimation();
                     return;
                 }
                 case 12:    // Schaut Neutral
                 {
                     ShowNeutralAnimation();
-                    // PlayQuestioningAnimation();
                     return;
                 }
                 case 13:    // Schaut Stolz
                 {
                     ShowStolzAnimation();
-                    // PlayDefeatedAnimation();
                     return;
                 }
                 case 14: // Spricht Erschrocken
                 {
                     PlayErschrockenAnimation();
-                    // PlayRelaxedAnimation();
                     return;
                 }
                 case 15: // Spricht Genervt
                 {
                     PlayGenervtAnimation();
-                    // PlayAstonishedAnimation();
                     return;
                 }
                 case 16: // Spricht Unzufrieden
                 {
                     PlayUnzufriedenAnimation();
-                    // PlayRefusingAnimation();
                     return;
                 }
                 case 17: // Spricht Ablehnend
                 {
                     PlayAblehnendAnimation();
-                    // PlaySmileAnimation();
                     return;
                 }
                 case 18: // Spricht Erstaunt
                 {
                     PlayErstauntAnimation();
-                    // PlayFriendlyAnimation();
                     return;
                 }
                 case 19: // Spricht Fragend
                 {
                     PlayFragendAnimation();
-                    // PlayLaughingAnimation();
                     return;
                 }
                 case 20: // Spricht Kritisch
                 {
                     PlayKritischAnimation();
-                    // PlayCriticalAnimation();
                     return;
                 }
                 case 21: // Spricht Lächeln_Groß
                 {
                     PlayLaechelnGrossAnimation();
-                    // PlayNoDealAnimation();
                     return;
                 }
                 case 22: // Spricht Lachend
                 {
                     PlayLachendAnimation();
-                    // PlayHappyAnimation();
                     return;
                 }
                 case 23:    // Spricht Lächeln
                 {
                     PlayLaechelnAnimation();
-                    // PlayProudAnimation();
                     return;
                 }
                 case 24:    // Spricht Neutral_Entspannt
                 {
                     PlayNeutralEntspanntAnimation();
-                    // PlayScaredAnimation();
                     return;
                 }
                 case 25:    // Spricht Neutral
                 {
                     PlayNeutralAnimation();
-                    // PlayQuestioningAnimation();
                     return;
                 }
                 case 26:    // Spricht Stolz
                 {
                     PlayStolzAnimation();
-                    // PlayDefeatedAnimation();
                     return;
                 }
                 default:

@@ -1,5 +1,5 @@
 using Assets._Scripts.Managers;
-using Assets._Scripts.UI_Elements.FreeTextUserInput;
+using Assets._Scripts.UIElements.FreeTextUserInput;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

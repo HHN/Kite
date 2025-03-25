@@ -2,18 +2,27 @@ namespace Assets._Scripts.Utilities
 {
     public enum FaceExpressions
     {
-        NeutralRelaxed,
-        Rejecting,
+        None,
         Frightened,
+        Annoyed,
+        Unsatisfied,
+        Rejecting,
         Astonished,
         Questioning,
-        Annoyed,
         Critical,
+        SmilingBig,
         Laughing,
-        LaughingBig,
         Smiling,
+        NeutralRelaxed,
         Neutral,
         Proud,
-        Unsatisfied
+    }
+
+    public static class FaceExpressionHelper
+    {
+        public static int ToInt(FaceExpressions expression)
+        {
+            return (int) expression;
+        }
     }
 }
