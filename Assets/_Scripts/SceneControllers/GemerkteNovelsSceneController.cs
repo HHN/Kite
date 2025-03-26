@@ -116,6 +116,7 @@ namespace Assets._Scripts.SceneControllers
 
         private void OnNovelButton(VisualNovelNames visualNovelName)
         {
+            NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
             VisualNovel visualNovelToDisplay = null;
             List<VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
 
