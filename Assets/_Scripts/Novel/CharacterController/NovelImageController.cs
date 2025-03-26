@@ -32,19 +32,6 @@ namespace Assets._Scripts.Novel.CharacterController
 
         public void SetFaceExpression(int characterId, int expressionType)
         {
-            // case CharacterRole.NONE: { return 0; }
-            // case CharacterRole.PLAYER: { return 1; }
-            // case CharacterRole.INTRO: { return 2; }
-            // case CharacterRole.OUTRO: { return 3; }
-            // case CharacterRole.INFO: { return 4; }
-            // case CharacterRole.REPORTERIN: { return 5; }
-            // case CharacterRole.VERMIETER: { return 6; }
-            // case CharacterRole.VATER: { return 7; }
-            // case CharacterRole.MUTTER: { return 8; }
-            // case CharacterRole.INVESTOR: { return 9; }
-            // case CharacterRole.NOTARIN: { return 10; }
-            // case CharacterRole.SACHBEARBEITER: { return 11; }
-
             if (novelKite2CharacterController == null)
             {
                 // Debug.Log("novelKite2CharacterController is null");
