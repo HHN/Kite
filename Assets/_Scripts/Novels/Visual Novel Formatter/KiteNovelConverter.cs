@@ -15,15 +15,16 @@ namespace Assets._Scripts.Novels.Visual_Novel_Formatter
 
             foreach (KiteNovelFolder folder in folders)
             {
-                VisualNovel novel = new VisualNovel();
-
-                novel.id = folder.NovelMetaData.IdNumberOfNovel;
-                novel.title = folder.NovelMetaData.TitleOfNovel;
-                novel.description = folder.NovelMetaData.DescriptionOfNovel;
-                novel.image = folder.NovelMetaData.IdNumberOfRepresentationImage;
-                novel.context = folder.NovelMetaData.ContextForPrompt;
-                novel.isKite2Novel = folder.NovelMetaData.IsKite2Novel;
-                novel.novelEvents = folder.NovelEventList.NovelEvents;
+                VisualNovel novel = new VisualNovel
+                {
+                    id = folder.NovelMetaData.IdNumberOfNovel,
+                    title = folder.NovelMetaData.TitleOfNovel,
+                    description = folder.NovelMetaData.DescriptionOfNovel,
+                    image = folder.NovelMetaData.IdNumberOfRepresentationImage,
+                    context = folder.NovelMetaData.ContextForPrompt,
+                    isKite2Novel = folder.NovelMetaData.IsKite2Novel,
+                    novelEvents = folder.NovelEventList.NovelEvents
+                };
 
                 novels.Add(novel);
             }
@@ -458,11 +459,6 @@ namespace Assets._Scripts.Novels.Visual_Novel_Formatter
             CharacterRole character03 = CharacterTypeHelper.ValueOf(kiteNovelMetaData.TalkingPartner03);
 
             NovelKeyWord recognizedKeyWord = FindFirstKeyWordInText(passage.Passage);
-            
-            if(passage.Passage.Contains("Anfang"))
-            {
-                Debug.Log($"Anfang: {recognizedKeyWord}");
-            }
 
             switch (recognizedKeyWord)
             {

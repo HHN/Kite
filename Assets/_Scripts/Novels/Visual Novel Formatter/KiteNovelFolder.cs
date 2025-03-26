@@ -4,18 +4,12 @@ namespace Assets._Scripts.Novels.Visual_Novel_Formatter
     {
         public KiteNovelFolder(KiteNovelMetaData novelMetaData, KiteNovelEventList novelEventList)
         {
-            this.NovelMetaData = novelMetaData;
-            this.NovelEventList = novelEventList;
+            NovelMetaData = novelMetaData;
+            NovelEventList = novelEventList;
         }
 
-        public KiteNovelFolder()
-        {
-            this.NovelMetaData = null;
-            this.NovelEventList = null;
-        }
+        public KiteNovelMetaData NovelMetaData { get; }
 
-        public KiteNovelMetaData NovelMetaData { get; set; }
-
-        public KiteNovelEventList NovelEventList { get; set; }
+        public KiteNovelEventList NovelEventList { get; }
     }
 }

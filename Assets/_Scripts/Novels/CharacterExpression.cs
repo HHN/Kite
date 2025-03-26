@@ -34,33 +34,33 @@ namespace Assets._Scripts.Novels
      public class CharacterExpressionHelper
      {
          private const string NONE = "None";
-         private const string SCHAUT_ERSCHROCKEN = "Schaut erschrocken";
-         private const string SCHAUT_GENERVT = "Schaut genervt";
-         private const string SCHAUT_UNZUFRIEDEN = "Schaut unzufrieden";
-         private const string SCHAUT_ABLEHNEND = "Schaut ablehnend";
-         private const string SCHAUT_ERSTAUNT = "Schaut erstaunt";
-         private const string SCHAUT_FRAGEND = "Schaut fragend";
-         private const string SCHAUT_KRITISCH = "Schaut kritisch";
-         private const string SCHAUT_LAECHELN_GROSS = "Schaut laecheln gross";
-         private const string SCHAUT_LACHEND = "Schaut lachend";
-         private const string SCHAUT_LAECHELN = "Schaut laecheln";
-         private const string SCHAUT_NEUTRAL_ENTSPANNT = "Schaut neutral entspannt";
-         private const string SCHAUT_NEUTRAL = "Schaut neutral";
-         private const string SCHAUT_STOLZ = "Schaut stolz";
+         private const string LOOKS_SCARED = "Looks scared";
+         private const string LOOKS_DEFEATED = "Looks defeated";
+         private const string LOOKS_DISSATISFIED = "Looks dissatisfied";
+         private const string LOOKS_REJECTING = "Looks rejecting";
+         private const string LOOKS_AMAZED = "Looks amazed";
+         private const string LOOKS_QUESTIONING = "Looks questioning";
+         private const string LOOKS_CRITICAL = "Looks critical";
+         private const string LOOKS_SMILING_BIG = "Looks smiling big";
+         private const string LOOKS_LAUGHING = "Looks laughing";
+         private const string LOOKS_SMILING = "Looks smiling";
+         private const string LOOKS_NEUTRAL_RELAXED = "Looks neutral relaxed";
+         private const string LOOKS_NEUTRAL = "Looks neutral";
+         private const string LOOKS_PROUD = "Looks proud";
          
-         private const string SPRICHT_ERSCHROCKEN = "Spricht erschrocken";
-         private const string SPRICHT_GENERVT = "Spricht genervt";
-         private const string SPRICHT_UNZUFRIEDEN = "Spricht unzufrieden";
-         private const string SPRICHT_ABLEHNEND = "Spricht ablehnend";
-         private const string SPRICHT_ERSTAUNT = "Spricht erstaunt";
-         private const string SPRICHT_FRAGEND = "Spricht fragend";
-         private const string SPRICHT_KRITISCH = "Spricht kritisch";
-         private const string SPRICHT_LAECHELN_GROSS = "Spricht laecheln gross";
-         private const string SPRICHT_LACHEND = "Spricht lachend";
-         private const string SPRICHT_LAECHELN = "Spricht laecheln";
-         private const string SPRICHT_NEUTRAL_ENTSPANNT = "Spricht neutral entspannt";
-         private const string SPRICHT_NEUTRAL = "Spricht neutral";
-         private const string SPRICHT_STOLZ = "Spricht stolz";
+         private const string SPEAKS_SCARED = "Speaks scared";
+         private const string SPEAKS_DEFEATED = "Speaks defeated";
+         private const string SPEAKS_DISSATISFIED = "Speaks dissatisfied";
+         private const string SPEAKS_REJECTING = "Speaks rejecting";
+         private const string SPEAKS_AMAZED = "Speaks amazed";
+         private const string SPEAKS_QUESTIONING = "Speaks questioning";
+         private const string SPEAKS_CRITICAL = "Speaks critical";
+         private const string SPEAKS_SMILING_BIG = "Speaks smiling big";
+         private const string SPEAKS_LAUGHING = "Spricht lachend";
+         private const string SPEAKS_SMILING = "Speaks smiling";
+         private const string SPEAKS_NEUTRAL_RELAXED = "Speaks neutral relaxed";
+         private const string SPEAKS_NEUTRAL = "Speaks neutral";
+         private const string SPEAKS_PROUD = "Speaks proud";
 
          public static int ToInt(CharacterExpression expressionType)
          {
@@ -139,32 +139,32 @@ namespace Assets._Scripts.Novels
              switch (i)
              {
                  case NONE: { return CharacterExpression.None; }
-                 case SCHAUT_ERSCHROCKEN: { return CharacterExpression.LooksScared; }
-                 case SCHAUT_GENERVT: { return CharacterExpression.LooksDefeated; }
-                 case SCHAUT_UNZUFRIEDEN: { return CharacterExpression.LooksDissatisfied; }
-                 case SCHAUT_ABLEHNEND: { return CharacterExpression.LooksRejecting; }
-                 case SCHAUT_ERSTAUNT: { return CharacterExpression.LooksAmazed; }
-                 case SCHAUT_FRAGEND: { return CharacterExpression.LooksQuestioning; }
-                 case SCHAUT_KRITISCH: { return CharacterExpression.LooksCritical; }
-                 case SCHAUT_LAECHELN_GROSS: { return CharacterExpression.LooksSmilingBig; }
-                 case SCHAUT_LACHEND: { return CharacterExpression.LooksLaughing; }
-                 case SCHAUT_LAECHELN: { return CharacterExpression.LooksSmiling; }
-                 case SCHAUT_NEUTRAL_ENTSPANNT: { return CharacterExpression.LooksNeutralRelaxed; }
-                 case SCHAUT_NEUTRAL: { return CharacterExpression.LooksNeutral; }
-                 case SCHAUT_STOLZ: { return CharacterExpression.LooksProud; }
-                 case SPRICHT_ERSCHROCKEN: { return CharacterExpression.SpeaksScared; }
-                 case SPRICHT_GENERVT: { return CharacterExpression.SpeaksDefeated; }
-                 case SPRICHT_UNZUFRIEDEN: { return CharacterExpression.SpeaksDissatisfied; }
-                 case SPRICHT_ABLEHNEND: { return CharacterExpression.SpeaksRejecting; }
-                 case SPRICHT_ERSTAUNT: { return CharacterExpression.SpeaksAmazed; }
-                 case SPRICHT_FRAGEND: { return CharacterExpression.SpeaksQuestioning; }
-                 case SPRICHT_KRITISCH: { return CharacterExpression.SpeaksCritical; }
-                 case SPRICHT_LAECHELN_GROSS: { return CharacterExpression.SpeaksSmilingBig; }
-                 case SPRICHT_LACHEND: { return CharacterExpression.SpeaksLaughing; }
-                 case SPRICHT_LAECHELN: { return CharacterExpression.SpeaksSmiling; }
-                 case SPRICHT_NEUTRAL_ENTSPANNT: { return CharacterExpression.SpeaksNeutralRelaxed; }
-                 case SPRICHT_NEUTRAL: { return CharacterExpression.SpeaksNeutral; }
-                 case SPRICHT_STOLZ: { return CharacterExpression.SpeaksProud; }
+                 case LOOKS_SCARED: { return CharacterExpression.LooksScared; }
+                 case LOOKS_DEFEATED: { return CharacterExpression.LooksDefeated; }
+                 case LOOKS_DISSATISFIED: { return CharacterExpression.LooksDissatisfied; }
+                 case LOOKS_REJECTING: { return CharacterExpression.LooksRejecting; }
+                 case LOOKS_AMAZED: { return CharacterExpression.LooksAmazed; }
+                 case LOOKS_QUESTIONING: { return CharacterExpression.LooksQuestioning; }
+                 case LOOKS_CRITICAL: { return CharacterExpression.LooksCritical; }
+                 case LOOKS_SMILING_BIG: { return CharacterExpression.LooksSmilingBig; }
+                 case LOOKS_LAUGHING: { return CharacterExpression.LooksLaughing; }
+                 case LOOKS_SMILING: { return CharacterExpression.LooksSmiling; }
+                 case LOOKS_NEUTRAL_RELAXED: { return CharacterExpression.LooksNeutralRelaxed; }
+                 case LOOKS_NEUTRAL: { return CharacterExpression.LooksNeutral; }
+                 case LOOKS_PROUD: { return CharacterExpression.LooksProud; }
+                 case SPEAKS_SCARED: { return CharacterExpression.SpeaksScared; }
+                 case SPEAKS_DEFEATED: { return CharacterExpression.SpeaksDefeated; }
+                 case SPEAKS_DISSATISFIED: { return CharacterExpression.SpeaksDissatisfied; }
+                 case SPEAKS_REJECTING: { return CharacterExpression.SpeaksRejecting; }
+                 case SPEAKS_AMAZED: { return CharacterExpression.SpeaksAmazed; }
+                 case SPEAKS_QUESTIONING: { return CharacterExpression.SpeaksQuestioning; }
+                 case SPEAKS_CRITICAL: { return CharacterExpression.SpeaksCritical; }
+                 case SPEAKS_SMILING_BIG: { return CharacterExpression.SpeaksSmilingBig; }
+                 case SPEAKS_LAUGHING: { return CharacterExpression.SpeaksLaughing; }
+                 case SPEAKS_SMILING: { return CharacterExpression.SpeaksSmiling; }
+                 case SPEAKS_NEUTRAL_RELAXED: { return CharacterExpression.SpeaksNeutralRelaxed; }
+                 case SPEAKS_NEUTRAL: { return CharacterExpression.SpeaksNeutral; }
+                 case SPEAKS_PROUD: { return CharacterExpression.SpeaksProud; }
                  
                  default: { return CharacterExpression.None; }
              }
