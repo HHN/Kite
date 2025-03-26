@@ -468,7 +468,7 @@ namespace Assets._Scripts.OfflineAiFeedback
                 return;
             }
 
-            if (CharacterExpressionHelper.ValueOf(novelEvent.expressionType) == CharacterExpression.NONE)
+            if (CharacterExpressionHelper.ValueOf(novelEvent.expressionType) == CharacterExpression.None)
             {
                 OnAnalysisFailed("Show message event without character expression!", _objectUnderAnalyse.title,
                     novelEvent.id);

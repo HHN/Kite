@@ -2,33 +2,33 @@ namespace Assets._Scripts.Novel
 {
     public enum CharacterExpression
     {
-         NONE,
-         SCHAUT_ERSCHROCKEN,
-         SCHAUT_GENERVT,
-         SCHAUT_UNZUFRIEDEN,
-         SCHAUT_ABLEHNEND,
-         SCHAUT_ERSTAUNT,
-         SCHAUT_FRAGEND,
-         SCHAUT_KRITISCH,
-         SCHAUT_LAECHELN_GROSS,
-         SCHAUT_LACHEND,
-         SCHAUT_LAECHELN,
-         SCHAUT_NEUTRAL_ENTSPANNT,
-         SCHAUT_NEUTRAL,
-         SCHAUT_STOLZ,
-         SPRICHT_ERSCHROCKEN,
-         SPRICHT_GENERVT,
-         SPRICHT_UNZUFRIEDEN,
-         SPRICHT_ABLEHNEND,
-         SPRICHT_ERSTAUNT,
-         SPRICHT_FRAGEND,
-         SPRICHT_KRITISCH,
-         SPRICHT_LAECHELN_GROSS,
-         SPRICHT_LACHEND,
-         SPRICHT_LAECHELN,
-         SPRICHT_NEUTRAL_ENTSPANNT,
-         SPRICHT_NEUTRAL,
-         SPRICHT_STOLZ
+         None,
+         SchautErschrocken,
+         SchautGenervt,
+         SchautUnzufrieden,
+         SchautAblehnend,
+         SchautErstaunt,
+         SchautFragend,
+         SchautKritisch,
+         SchautLaechelnGross,
+         SchautLachend,
+         SchautLaecheln,
+         SchautNeutralEntspannt,
+         SchautNeutral,
+         SchautStolz,
+         SprichtErschrocken,
+         SprichtGenervt,
+         SprichtUnzufrieden,
+         SprichtAblehnend,
+         SprichtErstaunt,
+         SprichtFragend,
+         SprichtKritisch,
+         SprichtLaechelnGross,
+         SprichtLachend,
+         SprichtLaecheln,
+         SprichtNeutralEntspannt,
+         SprichtNeutral,
+         SprichtStolz
      }
   
      public class CharacterExpressionHelper
@@ -66,33 +66,33 @@ namespace Assets._Scripts.Novel
          {
              switch (expressionType)
              {
-                 case CharacterExpression.NONE: { return 0; }
-                 case CharacterExpression.SCHAUT_ERSCHROCKEN: { return 1; }
-                 case CharacterExpression.SCHAUT_GENERVT: { return 2; }
-                 case CharacterExpression.SCHAUT_UNZUFRIEDEN: { return 3; }
-                 case CharacterExpression.SCHAUT_ABLEHNEND: { return 4; }
-                 case CharacterExpression.SCHAUT_ERSTAUNT: { return 5; }
-                 case CharacterExpression.SCHAUT_FRAGEND: { return 6; }
-                 case CharacterExpression.SCHAUT_KRITISCH: { return 7; }
-                 case CharacterExpression.SCHAUT_LAECHELN_GROSS: { return 8; }
-                 case CharacterExpression.SCHAUT_LACHEND: { return 9; }
-                 case CharacterExpression.SCHAUT_LAECHELN: { return 10; }
-                 case CharacterExpression.SCHAUT_NEUTRAL_ENTSPANNT: { return 11; }
-                 case CharacterExpression.SCHAUT_NEUTRAL: { return 12; }
-                 case CharacterExpression.SCHAUT_STOLZ: { return 13; }
-                 case CharacterExpression.SPRICHT_ERSCHROCKEN: { return 14; }
-                 case CharacterExpression.SPRICHT_GENERVT: { return 15; }
-                 case CharacterExpression.SPRICHT_UNZUFRIEDEN: { return 16; }
-                 case CharacterExpression.SPRICHT_ABLEHNEND: { return 17; }
-                 case CharacterExpression.SPRICHT_ERSTAUNT: { return 18; }
-                 case CharacterExpression.SPRICHT_FRAGEND: { return 19; }
-                 case CharacterExpression.SPRICHT_KRITISCH: { return 20; }
-                 case CharacterExpression.SPRICHT_LAECHELN_GROSS: { return 21; }
-                 case CharacterExpression.SPRICHT_LACHEND: { return 22; }
-                 case CharacterExpression.SPRICHT_LAECHELN: { return 23; }
-                 case CharacterExpression.SPRICHT_NEUTRAL_ENTSPANNT: { return 24; }
-                 case CharacterExpression.SPRICHT_NEUTRAL: { return 25; }
-                 case CharacterExpression.SPRICHT_STOLZ: { return 26; }
+                 case CharacterExpression.None: { return 0; }
+                 case CharacterExpression.SchautErschrocken: { return 1; }
+                 case CharacterExpression.SchautGenervt: { return 2; }
+                 case CharacterExpression.SchautUnzufrieden: { return 3; }
+                 case CharacterExpression.SchautAblehnend: { return 4; }
+                 case CharacterExpression.SchautErstaunt: { return 5; }
+                 case CharacterExpression.SchautFragend: { return 6; }
+                 case CharacterExpression.SchautKritisch: { return 7; }
+                 case CharacterExpression.SchautLaechelnGross: { return 8; }
+                 case CharacterExpression.SchautLachend: { return 9; }
+                 case CharacterExpression.SchautLaecheln: { return 10; }
+                 case CharacterExpression.SchautNeutralEntspannt: { return 11; }
+                 case CharacterExpression.SchautNeutral: { return 12; }
+                 case CharacterExpression.SchautStolz: { return 13; }
+                 case CharacterExpression.SprichtErschrocken: { return 14; }
+                 case CharacterExpression.SprichtGenervt: { return 15; }
+                 case CharacterExpression.SprichtUnzufrieden: { return 16; }
+                 case CharacterExpression.SprichtAblehnend: { return 17; }
+                 case CharacterExpression.SprichtErstaunt: { return 18; }
+                 case CharacterExpression.SprichtFragend: { return 19; }
+                 case CharacterExpression.SprichtKritisch: { return 20; }
+                 case CharacterExpression.SprichtLaechelnGross: { return 21; }
+                 case CharacterExpression.SprichtLachend: { return 22; }
+                 case CharacterExpression.SprichtLaecheln: { return 23; }
+                 case CharacterExpression.SprichtNeutralEntspannt: { return 24; }
+                 case CharacterExpression.SprichtNeutral: { return 25; }
+                 case CharacterExpression.SprichtStolz: { return 26; }
                  
                  default: { return 0; }
              }
@@ -102,35 +102,35 @@ namespace Assets._Scripts.Novel
          {
              switch (i)
              {
-                 case 0: { return CharacterExpression.NONE; }
-                 case 1: { return CharacterExpression.SCHAUT_ERSCHROCKEN; }
-                 case 2: { return CharacterExpression.SCHAUT_GENERVT; }
-                 case 3: { return CharacterExpression.SCHAUT_UNZUFRIEDEN; }
-                 case 4: { return CharacterExpression.SCHAUT_ABLEHNEND; }
-                 case 5: { return CharacterExpression.SCHAUT_ERSTAUNT; }
-                 case 6: { return CharacterExpression.SCHAUT_FRAGEND; }
-                 case 7: { return CharacterExpression.SCHAUT_KRITISCH; }
-                 case 8: { return CharacterExpression.SCHAUT_LAECHELN_GROSS; }
-                 case 9: { return CharacterExpression.SCHAUT_LACHEND; }
-                 case 10: { return CharacterExpression.SCHAUT_LAECHELN; }
-                 case 11: { return CharacterExpression.SCHAUT_NEUTRAL_ENTSPANNT; }
-                 case 12: { return CharacterExpression.SCHAUT_NEUTRAL; }
-                 case 13: { return CharacterExpression.SCHAUT_STOLZ; }
-                 case 14: { return CharacterExpression.SPRICHT_ERSCHROCKEN; }
-                 case 15: { return CharacterExpression.SPRICHT_GENERVT; }
-                 case 16: { return CharacterExpression.SPRICHT_UNZUFRIEDEN; }
-                 case 17: { return CharacterExpression.SPRICHT_ABLEHNEND; }
-                 case 18: { return CharacterExpression.SPRICHT_ERSTAUNT; }
-                 case 19: { return CharacterExpression.SPRICHT_FRAGEND; }
-                 case 20: { return CharacterExpression.SPRICHT_KRITISCH; }
-                 case 21: { return CharacterExpression.SPRICHT_LAECHELN_GROSS; }
-                 case 22: { return CharacterExpression.SPRICHT_LACHEND; }
-                 case 23: { return CharacterExpression.SPRICHT_LAECHELN; }
-                 case 24: { return CharacterExpression.SPRICHT_NEUTRAL_ENTSPANNT; }
-                 case 25: { return CharacterExpression.SPRICHT_NEUTRAL; }
-                 case 26: { return CharacterExpression.SPRICHT_STOLZ; }
+                 case 0: { return CharacterExpression.None; }
+                 case 1: { return CharacterExpression.SchautErschrocken; }
+                 case 2: { return CharacterExpression.SchautGenervt; }
+                 case 3: { return CharacterExpression.SchautUnzufrieden; }
+                 case 4: { return CharacterExpression.SchautAblehnend; }
+                 case 5: { return CharacterExpression.SchautErstaunt; }
+                 case 6: { return CharacterExpression.SchautFragend; }
+                 case 7: { return CharacterExpression.SchautKritisch; }
+                 case 8: { return CharacterExpression.SchautLaechelnGross; }
+                 case 9: { return CharacterExpression.SchautLachend; }
+                 case 10: { return CharacterExpression.SchautLaecheln; }
+                 case 11: { return CharacterExpression.SchautNeutralEntspannt; }
+                 case 12: { return CharacterExpression.SchautNeutral; }
+                 case 13: { return CharacterExpression.SchautStolz; }
+                 case 14: { return CharacterExpression.SprichtErschrocken; }
+                 case 15: { return CharacterExpression.SprichtGenervt; }
+                 case 16: { return CharacterExpression.SprichtUnzufrieden; }
+                 case 17: { return CharacterExpression.SprichtAblehnend; }
+                 case 18: { return CharacterExpression.SprichtErstaunt; }
+                 case 19: { return CharacterExpression.SprichtFragend; }
+                 case 20: { return CharacterExpression.SprichtKritisch; }
+                 case 21: { return CharacterExpression.SprichtLaechelnGross; }
+                 case 22: { return CharacterExpression.SprichtLachend; }
+                 case 23: { return CharacterExpression.SprichtLaecheln; }
+                 case 24: { return CharacterExpression.SprichtNeutralEntspannt; }
+                 case 25: { return CharacterExpression.SprichtNeutral; }
+                 case 26: { return CharacterExpression.SprichtStolz; }
                  
-                 default: { return CharacterExpression.NONE; }
+                 default: { return CharacterExpression.None; }
              }
          }
 
@@ -138,35 +138,35 @@ namespace Assets._Scripts.Novel
          {
              switch (i)
              {
-                 case NONE: { return CharacterExpression.NONE; }
-                 case SCHAUT_ERSCHROCKEN: { return CharacterExpression.SCHAUT_ERSCHROCKEN; }
-                 case SCHAUT_GENERVT: { return CharacterExpression.SCHAUT_GENERVT; }
-                 case SCHAUT_UNZUFRIEDEN: { return CharacterExpression.SCHAUT_UNZUFRIEDEN; }
-                 case SCHAUT_ABLEHNEND: { return CharacterExpression.SCHAUT_ABLEHNEND; }
-                 case SCHAUT_ERSTAUNT: { return CharacterExpression.SCHAUT_ERSTAUNT; }
-                 case SCHAUT_FRAGEND: { return CharacterExpression.SCHAUT_FRAGEND; }
-                 case SCHAUT_KRITISCH: { return CharacterExpression.SCHAUT_KRITISCH; }
-                 case SCHAUT_LAECHELN_GROSS: { return CharacterExpression.SCHAUT_LAECHELN_GROSS; }
-                 case SCHAUT_LACHEND: { return CharacterExpression.SCHAUT_LACHEND; }
-                 case SCHAUT_LAECHELN: { return CharacterExpression.SCHAUT_LAECHELN; }
-                 case SCHAUT_NEUTRAL_ENTSPANNT: { return CharacterExpression.SCHAUT_NEUTRAL_ENTSPANNT; }
-                 case SCHAUT_NEUTRAL: { return CharacterExpression.SCHAUT_NEUTRAL; }
-                 case SCHAUT_STOLZ: { return CharacterExpression.SCHAUT_STOLZ; }
-                 case SPRICHT_ERSCHROCKEN: { return CharacterExpression.SPRICHT_ERSCHROCKEN; }
-                 case SPRICHT_GENERVT: { return CharacterExpression.SPRICHT_GENERVT; }
-                 case SPRICHT_UNZUFRIEDEN: { return CharacterExpression.SPRICHT_UNZUFRIEDEN; }
-                 case SPRICHT_ABLEHNEND: { return CharacterExpression.SPRICHT_ABLEHNEND; }
-                 case SPRICHT_ERSTAUNT: { return CharacterExpression.SPRICHT_ERSTAUNT; }
-                 case SPRICHT_FRAGEND: { return CharacterExpression.SPRICHT_FRAGEND; }
-                 case SPRICHT_KRITISCH: { return CharacterExpression.SPRICHT_KRITISCH; }
-                 case SPRICHT_LAECHELN_GROSS: { return CharacterExpression.SPRICHT_LAECHELN_GROSS; }
-                 case SPRICHT_LACHEND: { return CharacterExpression.SPRICHT_LACHEND; }
-                 case SPRICHT_LAECHELN: { return CharacterExpression.SPRICHT_LAECHELN; }
-                 case SPRICHT_NEUTRAL_ENTSPANNT: { return CharacterExpression.SPRICHT_NEUTRAL_ENTSPANNT; }
-                 case SPRICHT_NEUTRAL: { return CharacterExpression.SPRICHT_NEUTRAL; }
-                 case SPRICHT_STOLZ: { return CharacterExpression.SPRICHT_STOLZ; }
+                 case NONE: { return CharacterExpression.None; }
+                 case SCHAUT_ERSCHROCKEN: { return CharacterExpression.SchautErschrocken; }
+                 case SCHAUT_GENERVT: { return CharacterExpression.SchautGenervt; }
+                 case SCHAUT_UNZUFRIEDEN: { return CharacterExpression.SchautUnzufrieden; }
+                 case SCHAUT_ABLEHNEND: { return CharacterExpression.SchautAblehnend; }
+                 case SCHAUT_ERSTAUNT: { return CharacterExpression.SchautErstaunt; }
+                 case SCHAUT_FRAGEND: { return CharacterExpression.SchautFragend; }
+                 case SCHAUT_KRITISCH: { return CharacterExpression.SchautKritisch; }
+                 case SCHAUT_LAECHELN_GROSS: { return CharacterExpression.SchautLaechelnGross; }
+                 case SCHAUT_LACHEND: { return CharacterExpression.SchautLachend; }
+                 case SCHAUT_LAECHELN: { return CharacterExpression.SchautLaecheln; }
+                 case SCHAUT_NEUTRAL_ENTSPANNT: { return CharacterExpression.SchautNeutralEntspannt; }
+                 case SCHAUT_NEUTRAL: { return CharacterExpression.SchautNeutral; }
+                 case SCHAUT_STOLZ: { return CharacterExpression.SchautStolz; }
+                 case SPRICHT_ERSCHROCKEN: { return CharacterExpression.SprichtErschrocken; }
+                 case SPRICHT_GENERVT: { return CharacterExpression.SprichtGenervt; }
+                 case SPRICHT_UNZUFRIEDEN: { return CharacterExpression.SprichtUnzufrieden; }
+                 case SPRICHT_ABLEHNEND: { return CharacterExpression.SprichtAblehnend; }
+                 case SPRICHT_ERSTAUNT: { return CharacterExpression.SprichtErstaunt; }
+                 case SPRICHT_FRAGEND: { return CharacterExpression.SprichtFragend; }
+                 case SPRICHT_KRITISCH: { return CharacterExpression.SprichtKritisch; }
+                 case SPRICHT_LAECHELN_GROSS: { return CharacterExpression.SprichtLaechelnGross; }
+                 case SPRICHT_LACHEND: { return CharacterExpression.SprichtLachend; }
+                 case SPRICHT_LAECHELN: { return CharacterExpression.SprichtLaecheln; }
+                 case SPRICHT_NEUTRAL_ENTSPANNT: { return CharacterExpression.SprichtNeutralEntspannt; }
+                 case SPRICHT_NEUTRAL: { return CharacterExpression.SprichtNeutral; }
+                 case SPRICHT_STOLZ: { return CharacterExpression.SprichtStolz; }
                  
-                 default: { return CharacterExpression.NONE; }
+                 default: { return CharacterExpression.None; }
              }
          }
      }

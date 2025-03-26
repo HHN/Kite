@@ -102,7 +102,7 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
             CharacterExpression expression =
                 CharacterExpressionHelper.ValueOf(kiteNovelMetaData.StartTalkingPartnerEmotion);
 
-            if (expression == CharacterExpression.NONE)
+            if (expression == CharacterExpression.None)
             {
                 Debug.LogWarning("While loading " + kiteNovelMetaData.TitleOfNovel +
                                  ": Initial CharacterRole-Expression not found!");
@@ -455,74 +455,74 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
                 }
                 case (NovelKeyWord.EintrittCharakter01):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_NEUTRAL_ENTSPANNT,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
                     // return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.RELAXED,
                     //     kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter01GesichtsausdruckErschrocken):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_ERSCHROCKEN,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautErschrocken,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter01GesichtsausdruckGenervt):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_GENERVT,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautGenervt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter01GesichtsausdruckUnzufrieden):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_UNZUFRIEDEN,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautUnzufrieden,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter01GesichtsausdruckAblehnend):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_ABLEHNEND,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautAblehnend,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter01GesichtsausdruckErstaunt):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_ERSTAUNT,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautErstaunt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter01GesichtsausdruckFragend):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_ERSTAUNT,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautErstaunt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter01GesichtsausdruckKritisch):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_KRITISCH,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautKritisch,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter01GesichtsausdruckLaechelnGross):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_LAECHELN_GROSS,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautLaechelnGross,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter01GesichtsausdruckLachend):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_LACHEND,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautLachend,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter01GesichtsausdruckLaecheln):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_LAECHELN,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautLaecheln,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter01GesichtsausdruckNeutralEntspannt):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_NEUTRAL_ENTSPANNT,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter01GesichtsausdruckNeutral):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_NEUTRAL,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautNeutral,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter01GesichtsausdruckStolz):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_STOLZ,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautStolz,
                         kiteNovelEventList.NovelEvents);
                 }
                 // case (NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_RELAXED):
@@ -593,149 +593,149 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
 
                 case (NovelKeyWord.Charakter01Schaut):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_NEUTRAL_ENTSPANNT,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
                     // return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.RELAXED,
                     //     kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SchautGesichtsausdruckErschrocken):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_ERSCHROCKEN,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautErschrocken,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SchautGesichtsausdruckGenervt):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_GENERVT,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautGenervt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SchautGesichtsausdruckUnzufrieden):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_UNZUFRIEDEN,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautUnzufrieden,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SchautGesichtsausdruckAblehnend):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_ABLEHNEND,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautAblehnend,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SchautGesichtsausdruckErstaunt):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_ERSTAUNT,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautErstaunt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SchautGesichtsausdruckFragend):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_ERSTAUNT,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautErstaunt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SchautGesichtsausdruckKritisch):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_KRITISCH,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautKritisch,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SchautGesichtsausdruckLaechelnGross):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_LAECHELN_GROSS,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautLaechelnGross,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SchautGesichtsausdruckLachend):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_LACHEND,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautLachend,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SchautGesichtsausdruckLaecheln):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_LAECHELN,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautLaecheln,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SchautGesichtsausdruckNeutralEntspannt):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_NEUTRAL_ENTSPANNT,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SchautGesichtsausdruckNeutral):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_NEUTRAL,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautNeutral,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SchautGesichtsausdruckStolz):
                 {
-                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCHAUT_STOLZ,
+                    return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautStolz,
                         kiteNovelEventList.NovelEvents);
                 }
 
                 case (NovelKeyWord.Charakter01Spricht):
                 {
                     return HandleCharacterTalksEvent(passage, charakter01, message,
-                        CharacterExpression.SPRICHT_NEUTRAL_ENTSPANNT,
+                        CharacterExpression.SprichtNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
                     // return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.RELAXED,
                     //     kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SprichtGesichtsausdruckErschrocken):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SPRICHT_ERSCHROCKEN,
+                    return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtErschrocken,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SprichtGesichtsausdruckGenervt):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SPRICHT_GENERVT,
+                    return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtGenervt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SprichtGesichtsausdruckUnzufrieden):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SPRICHT_UNZUFRIEDEN,
+                    return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtUnzufrieden,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SprichtGesichtsausdruckAblehnend):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SPRICHT_ABLEHNEND,
+                    return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtAblehnend,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SprichtGesichtsausdruckErstaunt):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SPRICHT_ERSTAUNT,
+                    return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtErstaunt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SprichtGesichtsausdruckFragend):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SPRICHT_FRAGEND,
+                    return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtFragend,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SprichtGesichtsausdruckKritisch):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SPRICHT_KRITISCH,
+                    return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtKritisch,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SprichtGesichtsausdruckLaechelnGross):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SPRICHT_LAECHELN_GROSS,
+                    return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtLaechelnGross,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SprichtGesichtsausdruckLachend):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SPRICHT_LACHEND,
+                    return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtLachend,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SprichtGesichtsausdruckLaecheln):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SPRICHT_LAECHELN,
+                    return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtLaecheln,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SprichtGesichtsausdruckNeutralEntspannt):
                 {
                     return HandleCharacterTalksEvent(passage, charakter01, message,
-                        CharacterExpression.SPRICHT_NEUTRAL_ENTSPANNT,
+                        CharacterExpression.SprichtNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SprichtGesichtsausdruckNeutral):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SPRICHT_NEUTRAL,
+                    return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtNeutral,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter01SprichtGesichtsausdruckStolz):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SPRICHT_STOLZ,
+                    return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtStolz,
                         kiteNovelEventList.NovelEvents);
                 }
                 // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_RELAXED):
@@ -806,72 +806,72 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
 
                 case (NovelKeyWord.EintrittCharakter02):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_NEUTRAL_ENTSPANNT,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter02GesichtsausdruckErschrocken):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_ERSCHROCKEN,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautErschrocken,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter02GesichtsausdruckGenervt):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_GENERVT,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautGenervt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter02GesichtsausdruckUnzufrieden):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_UNZUFRIEDEN,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautUnzufrieden,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter02GesichtsausdruckAblehnend):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_ABLEHNEND,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautAblehnend,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter02GesichtsausdruckErstaunt):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_ERSTAUNT,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautErstaunt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter02GesichtsausdruckFragend):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_FRAGEND,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautFragend,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter02GesichtsausdruckKritisch):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_KRITISCH,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautKritisch,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter02GesichtsausdruckLaechelnGross):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_LAECHELN_GROSS,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautLaechelnGross,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter02GesichtsausdruckLachend):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_LACHEND,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautLachend,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter02GesichtsausdruckLaecheln):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_LAECHELN,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautLaecheln,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter02GesichtsausdruckNeutralEntspannt):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_NEUTRAL_ENTSPANNT,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter02GesichtsausdruckNeutral):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_NEUTRAL,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautNeutral,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter02GesichtsausdruckStolz):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_STOLZ,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautStolz,
                         kiteNovelEventList.NovelEvents);
                 }
                 // case (NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_RELAXED):
@@ -942,149 +942,149 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
 
                 case (NovelKeyWord.Charakter02Schaut):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_NEUTRAL_ENTSPANNT,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
                     // return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.RELAXED,
                     //     kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SchautGesichtsausdruckErschrocken):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_ERSCHROCKEN,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautErschrocken,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SchautGesichtsausdruckGenervt):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_GENERVT,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautGenervt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SchautGesichtsausdruckUnzufrieden):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_UNZUFRIEDEN,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautUnzufrieden,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SchautGesichtsausdruckAblehnend):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_ABLEHNEND,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautAblehnend,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SchautGesichtsausdruckErstaunt):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_ERSTAUNT,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautErstaunt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SchautGesichtsausdruckFragend):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_ERSTAUNT,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautErstaunt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SchautGesichtsausdruckKritisch):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_KRITISCH,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautKritisch,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SchautGesichtsausdruckLaechelnGross):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_LAECHELN_GROSS,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautLaechelnGross,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SchautGesichtsausdruckLachend):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_LACHEND,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautLachend,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SchautGesichtsausdruckLaecheln):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_LAECHELN,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautLaecheln,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SchautGesichtsausdruckNeutralEntspannt):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_NEUTRAL_ENTSPANNT,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SchautGesichtsausdruckNeutral):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_NEUTRAL,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautNeutral,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SchautGesichtsausdruckStolz):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_STOLZ,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautStolz,
                         kiteNovelEventList.NovelEvents);
                 }
 
                 case (NovelKeyWord.Charakter02Spricht):
                 {
                     return HandleCharacterTalksEvent(passage, charakter02, message,
-                        CharacterExpression.SPRICHT_NEUTRAL_ENTSPANNT,
+                        CharacterExpression.SprichtNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
                     // return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.RELAXED,
                     //     kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SprichtGesichtsausdruckErschrocken):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SPRICHT_ERSCHROCKEN,
+                    return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtErschrocken,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SprichtGesichtsausdruckGenervt):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SPRICHT_GENERVT,
+                    return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtGenervt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SprichtGesichtsausdruckUnzufrieden):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SPRICHT_UNZUFRIEDEN,
+                    return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtUnzufrieden,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SprichtGesichtsausdruckAblehnend):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SPRICHT_ABLEHNEND,
+                    return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtAblehnend,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SprichtGesichtsausdruckErstaunt):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SPRICHT_ERSTAUNT,
+                    return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtErstaunt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SprichtGesichtsausdruckFragend):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SPRICHT_FRAGEND,
+                    return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtFragend,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SprichtGesichtsausdruckKritisch):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SPRICHT_KRITISCH,
+                    return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtKritisch,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SprichtGesichtsausdruckLaechelnGross):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SPRICHT_LAECHELN_GROSS,
+                    return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtLaechelnGross,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SprichtGesichtsausdruckLachend):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SPRICHT_LACHEND,
+                    return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtLachend,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SprichtGesichtsausdruckLaecheln):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SPRICHT_LAECHELN,
+                    return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtLaecheln,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SprichtGesichtsausdruckNeutralEntspannt):
                 {
                     return HandleCharacterTalksEvent(passage, charakter02, message,
-                        CharacterExpression.SPRICHT_NEUTRAL_ENTSPANNT,
+                        CharacterExpression.SprichtNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SprichtGesichtsausdruckNeutral):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SPRICHT_NEUTRAL,
+                    return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtNeutral,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter02SprichtGesichtsausdruckStolz):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SPRICHT_STOLZ,
+                    return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtStolz,
                         kiteNovelEventList.NovelEvents);
                 }
                 // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_RELAXED):
@@ -1155,74 +1155,74 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
 
                 case (NovelKeyWord.EintrittCharakter03):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_NEUTRAL_ENTSPANNT,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
                     // return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.RELAXED,
                     //     kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter03GesichtsausdruckErschrocken):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_ERSCHROCKEN,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautErschrocken,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter03GesichtsausdruckGenervt):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_GENERVT,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautGenervt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter03GesichtsausdruckUnzufrieden):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_UNZUFRIEDEN,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautUnzufrieden,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter03GesichtsausdruckAblehnend):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_ABLEHNEND,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautAblehnend,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter03GesichtsausdruckErstaunt):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_ERSTAUNT,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautErstaunt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter03GesichtsausdruckFragend):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_FRAGEND,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautFragend,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter03GesichtsausdruckKritisch):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_KRITISCH,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautKritisch,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter03GesichtsausdruckLaechelnGross):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_LAECHELN_GROSS,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautLaechelnGross,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter03GesichtsausdruckLachend):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_LACHEND,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautLachend,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter03GesichtsausdruckLaecheln):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_LAECHELN,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautLaecheln,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter03GesichtsausdruckNeutralEntspannt):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_NEUTRAL_ENTSPANNT,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter03GesichtsausdruckNeutral):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_NEUTRAL,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautNeutral,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EintrittCharakter03GesichtsausdruckStolz):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_STOLZ,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautStolz,
                         kiteNovelEventList.NovelEvents);
                 }
                 // case (NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_RELAXED):
@@ -1293,149 +1293,149 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
 
                 case (NovelKeyWord.Charakter03Schaut):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_NEUTRAL_ENTSPANNT,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
                     // return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.RELAXED,
                     //     kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SchautGesichtsausdruckErschrocken):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_ERSCHROCKEN,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautErschrocken,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SchautGesichtsausdruckGenervt):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_GENERVT,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautGenervt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SchautGesichtsausdruckUnzufrieden):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_UNZUFRIEDEN,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautUnzufrieden,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SchautGesichtsausdruckAblehnend):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_ABLEHNEND,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautAblehnend,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SchautGesichtsausdruckErstaunt):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_ERSTAUNT,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautErstaunt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SchautGesichtsausdruckFragend):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_ERSTAUNT,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautErstaunt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SchautGesichtsausdruckKritisch):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_KRITISCH,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautKritisch,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SchautGesichtsausdruckLaechelnGross):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_LAECHELN_GROSS,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautLaechelnGross,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SchautGesichtsausdruckLachend):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_LACHEND,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautLachend,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SchautGesichtsausdruckLaecheln):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_LAECHELN,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautLaecheln,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SchautGesichtsausdruckNeutralEntspannt):
                 {
-                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCHAUT_NEUTRAL_ENTSPANNT,
+                    return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SchautGesichtsausdruckNeutral):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_NEUTRAL,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautNeutral,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SchautGesichtsausdruckStolz):
                 {
-                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCHAUT_STOLZ,
+                    return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautStolz,
                         kiteNovelEventList.NovelEvents);
                 }
 
                 case (NovelKeyWord.Charakter03Spricht):
                 {
                     return HandleCharacterTalksEvent(passage, charakter03, message,
-                        CharacterExpression.SPRICHT_NEUTRAL_ENTSPANNT,
+                        CharacterExpression.SprichtNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
                     // return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.RELAXED,
                     //     kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SprichtGesichtsausdruckErschrocken):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SPRICHT_ERSCHROCKEN,
+                    return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtErschrocken,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SprichtGesichtsausdruckGenervt):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SPRICHT_GENERVT,
+                    return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtGenervt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SprichtGesichtsausdruckUnzufrieden):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SPRICHT_UNZUFRIEDEN,
+                    return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtUnzufrieden,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SprichtGesichtsausdruckAblehnend):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SPRICHT_ABLEHNEND,
+                    return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtAblehnend,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SprichtGesichtsausdruckErstaunt):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SPRICHT_ERSTAUNT,
+                    return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtErstaunt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SprichtGesichtsausdruckFragend):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SPRICHT_FRAGEND,
+                    return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtFragend,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SprichtGesichtsausdruckKritisch):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SPRICHT_KRITISCH,
+                    return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtKritisch,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SprichtGesichtsausdruckLaechelnGross):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SPRICHT_LAECHELN_GROSS,
+                    return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtLaechelnGross,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SprichtGesichtsausdruckLachend):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SPRICHT_LACHEND,
+                    return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtLachend,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SprichtGesichtsausdruckLaecheln):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SPRICHT_LAECHELN,
+                    return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtLaecheln,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SprichtGesichtsausdruckNeutralEntspannt):
                 {
                     return HandleCharacterTalksEvent(passage, charakter03, message,
-                        CharacterExpression.SPRICHT_NEUTRAL_ENTSPANNT,
+                        CharacterExpression.SprichtNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SprichtGesichtsausdruckNeutral):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SPRICHT_NEUTRAL,
+                    return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtNeutral,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.Charakter03SprichtGesichtsausdruckStolz):
                 {
-                    return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SPRICHT_STOLZ,
+                    return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtStolz,
                         kiteNovelEventList.NovelEvents);
                 }
                 // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_RELAXED):
@@ -1507,13 +1507,13 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
                 case (NovelKeyWord.SpielerCharakterSpricht):
                 {
                     return HandleCharacterTalksEvent(passage, CharacterRole.PLAYER, message,
-                        CharacterExpression.SCHAUT_NEUTRAL_ENTSPANNT, kiteNovelEventList.NovelEvents);
+                        CharacterExpression.SchautNeutralEntspannt, kiteNovelEventList.NovelEvents);
                 }
 
                 case (NovelKeyWord.InfoNachrichtWirdAngezeigt):
                 {
                     return HandleCharacterTalksEvent(passage, CharacterRole.INFO, message,
-                        CharacterExpression.SCHAUT_NEUTRAL_ENTSPANNT,
+                        CharacterExpression.SchautNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
                 }
 

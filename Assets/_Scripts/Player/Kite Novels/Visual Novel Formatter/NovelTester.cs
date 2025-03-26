@@ -376,7 +376,7 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
                 return;
             }
 
-            if (CharacterExpressionHelper.ValueOf(novelEvent.expressionType) == CharacterExpression.NONE)
+            if (CharacterExpressionHelper.ValueOf(novelEvent.expressionType) == CharacterExpression.None)
             {
                 OnTestFailed("Show message event without character expression!", _objectUnderTest.title, novelEvent.id);
                 return;
