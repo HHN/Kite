@@ -188,7 +188,7 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
                 return "";
             }
 
-            foreach (string keyWord in NovelKeyWordValue.ALL_KEY_WORDS)
+            foreach (string keyWord in NovelKeyWordValue.allKeyWords)
             {
                 input = input.Replace(keyWord, "");
             }

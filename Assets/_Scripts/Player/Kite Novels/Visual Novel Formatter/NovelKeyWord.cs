@@ -204,345 +204,345 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
         {
             switch (value)
             {
-                case (NovelKeyWordValue.SZENE_BUERO): return NovelKeyWord.SzeneBuero;
+                case (NovelKeyWordValue.SzeneBuero): return NovelKeyWord.SzeneBuero;
 
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_01):
+                case (NovelKeyWordValue.EintrittCharakter01):
                     return NovelKeyWord.EintrittCharakter01;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_ERSCHROCKEN):
+                case (NovelKeyWordValue.EintrittCharakter01GesichtsausdruckErschrocken):
                     return NovelKeyWord.EintrittCharakter01GesichtsausdruckErschrocken;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_GENERVT):
+                case (NovelKeyWordValue.EintrittCharakter01GesichtsausdruckGenervt):
                     return NovelKeyWord.EintrittCharakter01GesichtsausdruckGenervt;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_UNZUFRIEDEN):
+                case (NovelKeyWordValue.EintrittCharakter01GesichtsausdruckUnzufrieden):
                     return NovelKeyWord.EintrittCharakter01GesichtsausdruckUnzufrieden;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_ABLEHNEND):
+                case (NovelKeyWordValue.EintrittCharakter01GesichtsausdruckAblehnend):
                     return NovelKeyWord.EintrittCharakter01GesichtsausdruckAblehnend;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_ERSTAUNT):
+                case (NovelKeyWordValue.EintrittCharakter01GesichtsausdruckErstaunt):
                     return NovelKeyWord.EintrittCharakter01GesichtsausdruckErstaunt;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_FRAGEND):
+                case (NovelKeyWordValue.EintrittCharakter01GesichtsausdruckFragend):
                     return NovelKeyWord.EintrittCharakter01GesichtsausdruckFragend;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_KRITISCH):
+                case (NovelKeyWordValue.EintrittCharakter01GesichtsausdruckKritisch):
                     return NovelKeyWord.EintrittCharakter01GesichtsausdruckKritisch;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_LAECHELN_GROSS):
+                case (NovelKeyWordValue.EintrittCharakter01GesichtsausdruckLaechelnGross):
                     return NovelKeyWord.EintrittCharakter01GesichtsausdruckLaechelnGross;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_LACHEND):
+                case (NovelKeyWordValue.EintrittCharakter01GesichtsausdruckLachend):
                     return NovelKeyWord.EintrittCharakter01GesichtsausdruckLachend;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_LAECHELN):
+                case (NovelKeyWordValue.EintrittCharakter01GesichtsausdruckLaecheln):
                     return NovelKeyWord.EintrittCharakter01GesichtsausdruckLaecheln;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_NEUTRAL_ENTSPANNT):
+                case (NovelKeyWordValue.EintrittCharakter01GesichtsausdruckNeutralEntspannt):
                     return NovelKeyWord.EintrittCharakter01GesichtsausdruckNeutralEntspannt;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_NEUTRAL):
+                case (NovelKeyWordValue.EintrittCharakter01GesichtsausdruckNeutral):
                     return NovelKeyWord.EintrittCharakter01GesichtsausdruckNeutral;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_STOLZ):
+                case (NovelKeyWordValue.EintrittCharakter01GesichtsausdruckStolz):
                     return NovelKeyWord.EintrittCharakter01GesichtsausdruckStolz;
 
-                case (NovelKeyWordValue.CHARAKTER_01_SCHAUT):
+                case (NovelKeyWordValue.Charakter01Schaut):
                     return NovelKeyWord.Charakter01Schaut;
-                case (NovelKeyWordValue.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_ERSCHROCKEN):
+                case (NovelKeyWordValue.Charakter01SchautGesichtsausdruckErschrocken):
                     return NovelKeyWord.Charakter01SchautGesichtsausdruckErschrocken;
-                case (NovelKeyWordValue.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_GENERVT):
+                case (NovelKeyWordValue.Charakter01SchautGesichtsausdruckGenervt):
                     return NovelKeyWord.Charakter01SchautGesichtsausdruckGenervt;
-                case (NovelKeyWordValue.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_UNZUFRIEDEN):
+                case (NovelKeyWordValue.Charakter01SchautGesichtsausdruckUnzufrieden):
                     return NovelKeyWord.Charakter01SchautGesichtsausdruckUnzufrieden;
-                case (NovelKeyWordValue.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_ABLEHNEND):
+                case (NovelKeyWordValue.Charakter01SchautGesichtsausdruckAblehnend):
                     return NovelKeyWord.Charakter01SchautGesichtsausdruckAblehnend;
-                case (NovelKeyWordValue.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_ERSTAUNT):
+                case (NovelKeyWordValue.Charakter01SchautGesichtsausdruckErstaunt):
                     return NovelKeyWord.Charakter01SchautGesichtsausdruckErstaunt;
-                case (NovelKeyWordValue.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_FRAGEND):
+                case (NovelKeyWordValue.Charakter01SchautGesichtsausdruckFragend):
                     return NovelKeyWord.Charakter01SchautGesichtsausdruckFragend;
-                case (NovelKeyWordValue.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_KRITISCH):
+                case (NovelKeyWordValue.Charakter01SchautGesichtsausdruckKritisch):
                     return NovelKeyWord.Charakter01SchautGesichtsausdruckKritisch;
-                case (NovelKeyWordValue.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_LAECHELN_GROSS):
+                case (NovelKeyWordValue.Charakter01SchautGesichtsausdruckLaechelnGross):
                     return NovelKeyWord.Charakter01SchautGesichtsausdruckLaechelnGross;
-                case (NovelKeyWordValue.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_LACHEND):
+                case (NovelKeyWordValue.Charakter01SchautGesichtsausdruckLachend):
                     return NovelKeyWord.Charakter01SchautGesichtsausdruckLachend;
-                case (NovelKeyWordValue.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_LAECHELN):
+                case (NovelKeyWordValue.Charakter01SchautGesichtsausdruckLaecheln):
                     return NovelKeyWord.Charakter01SchautGesichtsausdruckLaecheln;
-                case (NovelKeyWordValue.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_NEUTRAL_ENTSPANNT):
+                case (NovelKeyWordValue.Charakter01SchautGesichtsausdruckNeutralEntspannt):
                     return NovelKeyWord.Charakter01SchautGesichtsausdruckNeutralEntspannt;
-                case (NovelKeyWordValue.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_NEUTRAL):
+                case (NovelKeyWordValue.Charakter01SchautGesichtsausdruckNeutral):
                     return NovelKeyWord.Charakter01SchautGesichtsausdruckNeutral;
-                case (NovelKeyWordValue.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_STOLZ):
+                case (NovelKeyWordValue.Charakter01SchautGesichtsausdruckStolz):
                     return NovelKeyWord.Charakter01SchautGesichtsausdruckStolz;
 
-                case (NovelKeyWordValue.CHARAKTER_01_SPRICHT):
+                case (NovelKeyWordValue.Charakter01Spricht):
                     return NovelKeyWord.Charakter01Spricht;
-                case (NovelKeyWordValue.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_ERSCHROCKEN):
+                case (NovelKeyWordValue.Charakter01SprichtGesichtsausdruckErschrocken):
                     return NovelKeyWord.Charakter01SprichtGesichtsausdruckErschrocken;
-                case (NovelKeyWordValue.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_GENERVT):
+                case (NovelKeyWordValue.Charakter01SprichtGesichtsausdruckGenervt):
                     return NovelKeyWord.Charakter01SprichtGesichtsausdruckGenervt;
-                case (NovelKeyWordValue.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_UNZUFRIEDEN):
+                case (NovelKeyWordValue.Charakter01SprichtGesichtsausdruckUnzufrieden):
                     return NovelKeyWord.Charakter01SprichtGesichtsausdruckUnzufrieden;
-                case (NovelKeyWordValue.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_ABLEHNEND):
+                case (NovelKeyWordValue.Charakter01SprichtGesichtsausdruckAblehnend):
                     return NovelKeyWord.Charakter01SprichtGesichtsausdruckAblehnend;
-                case (NovelKeyWordValue.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_ERSTAUNT):
+                case (NovelKeyWordValue.Charakter01SprichtGesichtsausdruckErstaunt):
                     return NovelKeyWord.Charakter01SprichtGesichtsausdruckErstaunt;
-                case (NovelKeyWordValue.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_FRAGEND):
+                case (NovelKeyWordValue.Charakter01SprichtGesichtsausdruckFragend):
                     return NovelKeyWord.Charakter01SprichtGesichtsausdruckFragend;
-                case (NovelKeyWordValue.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_KRITISCH):
+                case (NovelKeyWordValue.Charakter01SprichtGesichtsausdruckKritisch):
                     return NovelKeyWord.Charakter01SprichtGesichtsausdruckKritisch;
-                case (NovelKeyWordValue.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_LAECHELN_GROSS):
+                case (NovelKeyWordValue.Charakter01SprichtGesichtsausdruckLaechelnGross):
                     return NovelKeyWord.Charakter01SprichtGesichtsausdruckLaechelnGross;
-                case (NovelKeyWordValue.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_LACHEND):
+                case (NovelKeyWordValue.Charakter01SprichtGesichtsausdruckLachend):
                     return NovelKeyWord.Charakter01SprichtGesichtsausdruckLachend;
-                case (NovelKeyWordValue.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_LAECHELN):
+                case (NovelKeyWordValue.Charakter01SprichtGesichtsausdruckLaecheln):
                     return NovelKeyWord.Charakter01SprichtGesichtsausdruckLaecheln;
-                case (NovelKeyWordValue.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_NEUTRAL_ENTSPANNT):
+                case (NovelKeyWordValue.Charakter01SprichtGesichtsausdruckNeutralEntspannt):
                     return NovelKeyWord.Charakter01SprichtGesichtsausdruckNeutralEntspannt;
-                case (NovelKeyWordValue.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_NEUTRAL):
+                case (NovelKeyWordValue.Charakter01SprichtGesichtsausdruckNeutral):
                     return NovelKeyWord.Charakter01SprichtGesichtsausdruckNeutral;
-                case (NovelKeyWordValue.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_STOLZ):
+                case (NovelKeyWordValue.Charakter01SprichtGesichtsausdruckStolz):
                     return NovelKeyWord.Charakter01SprichtGesichtsausdruckStolz;
 
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_02):
+                case (NovelKeyWordValue.EintrittCharakter02):
                     return NovelKeyWord.EintrittCharakter02;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_ERSCHROCKEN):
+                case (NovelKeyWordValue.EintrittCharakter02GesichtsausdruckErschrocken):
                     return NovelKeyWord.EintrittCharakter02GesichtsausdruckErschrocken;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_GENERVT):
+                case (NovelKeyWordValue.EintrittCharakter02GesichtsausdruckGenervt):
                     return NovelKeyWord.EintrittCharakter02GesichtsausdruckGenervt;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_UNZUFRIEDEN):
+                case (NovelKeyWordValue.EintrittCharakter02GesichtsausdruckUnzufrieden):
                     return NovelKeyWord.EintrittCharakter02GesichtsausdruckUnzufrieden;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_ABLEHNEND):
+                case (NovelKeyWordValue.EintrittCharakter02GesichtsausdruckAblehnend):
                     return NovelKeyWord.EintrittCharakter02GesichtsausdruckAblehnend;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_ERSTAUNT):
+                case (NovelKeyWordValue.EintrittCharakter02GesichtsausdruckErstaunt):
                     return NovelKeyWord.EintrittCharakter02GesichtsausdruckErstaunt;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_FRAGEND):
+                case (NovelKeyWordValue.EintrittCharakter02GesichtsausdruckFragend):
                     return NovelKeyWord.EintrittCharakter02GesichtsausdruckFragend;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_KRITISCH):
+                case (NovelKeyWordValue.EintrittCharakter02GesichtsausdruckKritisch):
                     return NovelKeyWord.EintrittCharakter02GesichtsausdruckKritisch;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_LAECHELN_GROSS):
+                case (NovelKeyWordValue.EintrittCharakter02GesichtsausdruckLaechelnGross):
                     return NovelKeyWord.EintrittCharakter02GesichtsausdruckLaechelnGross;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_LACHEND):
+                case (NovelKeyWordValue.EintrittCharakter02GesichtsausdruckLachend):
                     return NovelKeyWord.EintrittCharakter02GesichtsausdruckLachend;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_LAECHELN):
+                case (NovelKeyWordValue.EintrittCharakter02GesichtsausdruckLaecheln):
                     return NovelKeyWord.EintrittCharakter02GesichtsausdruckLaecheln;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_NEUTRAL_ENTSPANNT):
+                case (NovelKeyWordValue.EintrittCharakter02GesichtsausdruckNeutralEntspannt):
                     return NovelKeyWord.EintrittCharakter02GesichtsausdruckNeutralEntspannt;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_NEUTRAL):
+                case (NovelKeyWordValue.EintrittCharakter02GesichtsausdruckNeutral):
                     return NovelKeyWord.EintrittCharakter02GesichtsausdruckNeutral;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_STOLZ):
+                case (NovelKeyWordValue.EintrittCharakter02GesichtsausdruckStolz):
                     return NovelKeyWord.EintrittCharakter02GesichtsausdruckStolz;
 
-                case (NovelKeyWordValue.CHARAKTER_02_SCHAUT):
+                case (NovelKeyWordValue.Charakter02Schaut):
                     return NovelKeyWord.Charakter02Schaut;
-                case (NovelKeyWordValue.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_ERSCHROCKEN):
+                case (NovelKeyWordValue.Charakter02SchautGesichtsausdruckErschrocken):
                     return NovelKeyWord.Charakter02SchautGesichtsausdruckErschrocken;
-                case (NovelKeyWordValue.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_GENERVT):
+                case (NovelKeyWordValue.Charakter02SchautGesichtsausdruckGenervt):
                     return NovelKeyWord.Charakter02SchautGesichtsausdruckGenervt;
-                case (NovelKeyWordValue.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_UNZUFRIEDEN):
+                case (NovelKeyWordValue.Charakter02SchautGesichtsausdruckUnzufrieden):
                     return NovelKeyWord.Charakter02SchautGesichtsausdruckUnzufrieden;
-                case (NovelKeyWordValue.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_ABLEHNEND):
+                case (NovelKeyWordValue.Charakter02SchautGesichtsausdruckAblehnend):
                     return NovelKeyWord.Charakter02SchautGesichtsausdruckAblehnend;
-                case (NovelKeyWordValue.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_ERSTAUNT):
+                case (NovelKeyWordValue.Charakter02SchautGesichtsausdruckErstaunt):
                     return NovelKeyWord.Charakter02SchautGesichtsausdruckErstaunt;
-                case (NovelKeyWordValue.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_FRAGEND):
+                case (NovelKeyWordValue.Charakter02SchautGesichtsausdruckFragend):
                     return NovelKeyWord.Charakter02SchautGesichtsausdruckFragend;
-                case (NovelKeyWordValue.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_KRITISCH):
+                case (NovelKeyWordValue.Charakter02SchautGesichtsausdruckKritisch):
                     return NovelKeyWord.Charakter02SchautGesichtsausdruckKritisch;
-                case (NovelKeyWordValue.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_LAECHELN_GROSS):
+                case (NovelKeyWordValue.Charakter02SchautGesichtsausdruckLaechelnGross):
                     return NovelKeyWord.Charakter02SchautGesichtsausdruckLaechelnGross;
-                case (NovelKeyWordValue.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_LACHEND):
+                case (NovelKeyWordValue.Charakter02SchautGesichtsausdruckLachend):
                     return NovelKeyWord.Charakter02SchautGesichtsausdruckLachend;
-                case (NovelKeyWordValue.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_LAECHELN):
+                case (NovelKeyWordValue.Charakter02SchautGesichtsausdruckLaecheln):
                     return NovelKeyWord.Charakter02SchautGesichtsausdruckLaecheln;
-                case (NovelKeyWordValue.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_NEUTRAL_ENTSPANNT):
+                case (NovelKeyWordValue.Charakter02SchautGesichtsausdruckNeutralEntspannt):
                     return NovelKeyWord.Charakter02SchautGesichtsausdruckNeutralEntspannt;
-                case (NovelKeyWordValue.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_NEUTRAL):
+                case (NovelKeyWordValue.Charakter02SchautGesichtsausdruckNeutral):
                     return NovelKeyWord.Charakter02SchautGesichtsausdruckNeutral;
-                case (NovelKeyWordValue.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_STOLZ):
+                case (NovelKeyWordValue.Charakter02SchautGesichtsausdruckStolz):
                     return NovelKeyWord.Charakter02SchautGesichtsausdruckStolz;
 
-                case (NovelKeyWordValue.CHARAKTER_02_SPRICHT):
+                case (NovelKeyWordValue.Charakter02Spricht):
                     return NovelKeyWord.Charakter02Spricht;
-                case (NovelKeyWordValue.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_ERSCHROCKEN):
+                case (NovelKeyWordValue.Charakter02SprichtGesichtsausdruckErschrocken):
                     return NovelKeyWord.Charakter02SprichtGesichtsausdruckErschrocken;
-                case (NovelKeyWordValue.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_GENERVT):
+                case (NovelKeyWordValue.Charakter02SprichtGesichtsausdruckGenervt):
                     return NovelKeyWord.Charakter02SprichtGesichtsausdruckGenervt;
-                case (NovelKeyWordValue.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_UNZUFRIEDEN):
+                case (NovelKeyWordValue.Charakter02SprichtGesichtsausdruckUnzufrieden):
                     return NovelKeyWord.Charakter02SprichtGesichtsausdruckUnzufrieden;
-                case (NovelKeyWordValue.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_ABLEHNEND):
+                case (NovelKeyWordValue.Charakter02SprichtGesichtsausdruckAblehnend):
                     return NovelKeyWord.Charakter02SprichtGesichtsausdruckAblehnend;
-                case (NovelKeyWordValue.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_ERSTAUNT):
+                case (NovelKeyWordValue.Charakter02SprichtGesichtsausdruckErstaunt):
                     return NovelKeyWord.Charakter02SprichtGesichtsausdruckErstaunt;
-                case (NovelKeyWordValue.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_FRAGEND):
+                case (NovelKeyWordValue.Charakter02SprichtGesichtsausdruckFragend):
                     return NovelKeyWord.Charakter02SprichtGesichtsausdruckFragend;
-                case (NovelKeyWordValue.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_KRITISCH):
+                case (NovelKeyWordValue.Charakter02SprichtGesichtsausdruckKritisch):
                     return NovelKeyWord.Charakter02SprichtGesichtsausdruckKritisch;
-                case (NovelKeyWordValue.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_LAECHELN_GROSS):
+                case (NovelKeyWordValue.Charakter02SprichtGesichtsausdruckLaechelnGross):
                     return NovelKeyWord.Charakter02SprichtGesichtsausdruckLaechelnGross;
-                case (NovelKeyWordValue.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_LACHEND):
+                case (NovelKeyWordValue.Charakter02SprichtGesichtsausdruckLachend):
                     return NovelKeyWord.Charakter02SprichtGesichtsausdruckLachend;
-                case (NovelKeyWordValue.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_LAECHELN):
+                case (NovelKeyWordValue.Charakter02SprichtGesichtsausdruckLaecheln):
                     return NovelKeyWord.Charakter02SprichtGesichtsausdruckLaecheln;
-                case (NovelKeyWordValue.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_NEUTRAL_ENTSPANNT):
+                case (NovelKeyWordValue.Charakter02SprichtGesichtsausdruckNeutralEntspannt):
                     return NovelKeyWord.Charakter02SprichtGesichtsausdruckNeutralEntspannt;
-                case (NovelKeyWordValue.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_NEUTRAL):
+                case (NovelKeyWordValue.Charakter02SprichtGesichtsausdruckNeutral):
                     return NovelKeyWord.Charakter02SprichtGesichtsausdruckNeutral;
-                case (NovelKeyWordValue.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_STOLZ):
+                case (NovelKeyWordValue.Charakter02SprichtGesichtsausdruckStolz):
                     return NovelKeyWord.Charakter02SprichtGesichtsausdruckStolz;
 
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_03):
+                case (NovelKeyWordValue.EintrittCharakter03):
                     return NovelKeyWord.EintrittCharakter03;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_ERSCHROCKEN):
+                case (NovelKeyWordValue.EintrittCharakter03GesichtsausdruckErschrocken):
                     return NovelKeyWord.EintrittCharakter03GesichtsausdruckErschrocken;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_GENERVT):
+                case (NovelKeyWordValue.EintrittCharakter03GesichtsausdruckGenervt):
                     return NovelKeyWord.EintrittCharakter03GesichtsausdruckGenervt;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_UNZUFRIEDEN):
+                case (NovelKeyWordValue.EintrittCharakter03GesichtsausdruckUnzufrieden):
                     return NovelKeyWord.EintrittCharakter03GesichtsausdruckUnzufrieden;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_ABLEHNEND):
+                case (NovelKeyWordValue.EintrittCharakter03GesichtsausdruckAblehnend):
                     return NovelKeyWord.EintrittCharakter03GesichtsausdruckAblehnend;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_ERSTAUNT):
+                case (NovelKeyWordValue.EintrittCharakter03GesichtsausdruckErstaunt):
                     return NovelKeyWord.EintrittCharakter03GesichtsausdruckErstaunt;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_FRAGEND):
+                case (NovelKeyWordValue.EintrittCharakter03GesichtsausdruckFragend):
                     return NovelKeyWord.EintrittCharakter03GesichtsausdruckFragend;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_KRITISCH):
+                case (NovelKeyWordValue.EintrittCharakter03GesichtsausdruckKritisch):
                     return NovelKeyWord.EintrittCharakter03GesichtsausdruckKritisch;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_LAECHELN_GROSS):
+                case (NovelKeyWordValue.EintrittCharakter03GesichtsausdruckLaechelnGross):
                     return NovelKeyWord.EintrittCharakter03GesichtsausdruckLaechelnGross;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_LACHEND):
+                case (NovelKeyWordValue.EintrittCharakter03GesichtsausdruckLachend):
                     return NovelKeyWord.EintrittCharakter03GesichtsausdruckLachend;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_LAECHELN):
+                case (NovelKeyWordValue.EintrittCharakter03GesichtsausdruckLaecheln):
                     return NovelKeyWord.EintrittCharakter03GesichtsausdruckLaecheln;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_NEUTRAL_ENTSPANNT):
+                case (NovelKeyWordValue.EintrittCharakter03GesichtsausdruckNeutralEntspannt):
                     return NovelKeyWord.EintrittCharakter03GesichtsausdruckNeutralEntspannt;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_NEUTRAL):
+                case (NovelKeyWordValue.EintrittCharakter03GesichtsausdruckNeutral):
                     return NovelKeyWord.EintrittCharakter03GesichtsausdruckNeutral;
-                case (NovelKeyWordValue.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_STOLZ):
+                case (NovelKeyWordValue.EintrittCharakter03GesichtsausdruckStolz):
                     return NovelKeyWord.EintrittCharakter03GesichtsausdruckStolz;
 
-                case (NovelKeyWordValue.CHARAKTER_03_SCHAUT):
+                case (NovelKeyWordValue.Charakter03Schaut):
                     return NovelKeyWord.Charakter03Schaut;
-                case (NovelKeyWordValue.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_ERSCHROCKEN):
+                case (NovelKeyWordValue.Charakter03SchautGesichtsausdruckErschrocken):
                     return NovelKeyWord.Charakter03SchautGesichtsausdruckErschrocken;
-                case (NovelKeyWordValue.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_GENERVT):
+                case (NovelKeyWordValue.Charakter03SchautGesichtsausdruckGenervt):
                     return NovelKeyWord.Charakter03SchautGesichtsausdruckGenervt;
-                case (NovelKeyWordValue.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_UNZUFRIEDEN):
+                case (NovelKeyWordValue.Charakter03SchautGesichtsausdruckUnzufrieden):
                     return NovelKeyWord.Charakter03SchautGesichtsausdruckUnzufrieden;
-                case (NovelKeyWordValue.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_ABLEHNEND):
+                case (NovelKeyWordValue.Charakter03SchautGesichtsausdruckAblehnend):
                     return NovelKeyWord.Charakter03SchautGesichtsausdruckAblehnend;
-                case (NovelKeyWordValue.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_ERSTAUNT):
+                case (NovelKeyWordValue.Charakter03SchautGesichtsausdruckErstaunt):
                     return NovelKeyWord.Charakter03SchautGesichtsausdruckErstaunt;
-                case (NovelKeyWordValue.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_FRAGEND):
+                case (NovelKeyWordValue.Charakter03SchautGesichtsausdruckFragend):
                     return NovelKeyWord.Charakter03SchautGesichtsausdruckFragend;
-                case (NovelKeyWordValue.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_KRITISCH):
+                case (NovelKeyWordValue.Charakter03SchautGesichtsausdruckKritisch):
                     return NovelKeyWord.Charakter03SchautGesichtsausdruckKritisch;
-                case (NovelKeyWordValue.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_LAECHELN_GROSS):
+                case (NovelKeyWordValue.Charakter03SchautGesichtsausdruckLaechelnGross):
                     return NovelKeyWord.Charakter03SchautGesichtsausdruckLaechelnGross;
-                case (NovelKeyWordValue.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_LACHEND):
+                case (NovelKeyWordValue.Charakter03SchautGesichtsausdruckLachend):
                     return NovelKeyWord.Charakter03SchautGesichtsausdruckLachend;
-                case (NovelKeyWordValue.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_LAECHELN):
+                case (NovelKeyWordValue.Charakter03SchautGesichtsausdruckLaecheln):
                     return NovelKeyWord.Charakter03SchautGesichtsausdruckLaecheln;
-                case (NovelKeyWordValue.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_NEUTRAL_ENTSPANNT):
+                case (NovelKeyWordValue.Charakter03SchautGesichtsausdruckNeutralEntspannt):
                     return NovelKeyWord.Charakter03SchautGesichtsausdruckNeutralEntspannt;
-                case (NovelKeyWordValue.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_NEUTRAL):
+                case (NovelKeyWordValue.Charakter03SchautGesichtsausdruckNeutral):
                     return NovelKeyWord.Charakter03SchautGesichtsausdruckNeutral;
-                case (NovelKeyWordValue.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_STOLZ):
+                case (NovelKeyWordValue.Charakter03SchautGesichtsausdruckStolz):
                     return NovelKeyWord.Charakter03SchautGesichtsausdruckStolz;
 
-                case (NovelKeyWordValue.CHARAKTER_03_SPRICHT):
+                case (NovelKeyWordValue.Charakter03Spricht):
                     return NovelKeyWord.Charakter03Spricht;
-                case (NovelKeyWordValue.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_ERSCHROCKEN):
+                case (NovelKeyWordValue.Charakter03SprichtGesichtsausdruckErschrocken):
                     return NovelKeyWord.Charakter03SprichtGesichtsausdruckErschrocken;
-                case (NovelKeyWordValue.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_GENERVT):
+                case (NovelKeyWordValue.Charakter03SprichtGesichtsausdruckGenervt):
                     return NovelKeyWord.Charakter03SprichtGesichtsausdruckGenervt;
-                case (NovelKeyWordValue.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_UNZUFRIEDEN):
+                case (NovelKeyWordValue.Charakter03SprichtGesichtsausdruckUnzufrieden):
                     return NovelKeyWord.Charakter03SprichtGesichtsausdruckUnzufrieden;
-                case (NovelKeyWordValue.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_ABLEHNEND):
+                case (NovelKeyWordValue.Charakter03SprichtGesichtsausdruckAblehnend):
                     return NovelKeyWord.Charakter03SprichtGesichtsausdruckAblehnend;
-                case (NovelKeyWordValue.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_ERSTAUNT):
+                case (NovelKeyWordValue.Charakter03SprichtGesichtsausdruckErstaunt):
                     return NovelKeyWord.Charakter03SprichtGesichtsausdruckErstaunt;
-                case (NovelKeyWordValue.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_FRAGEND):
+                case (NovelKeyWordValue.Charakter03SprichtGesichtsausdruckFragend):
                     return NovelKeyWord.Charakter03SprichtGesichtsausdruckFragend;
-                case (NovelKeyWordValue.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_KRITISCH):
+                case (NovelKeyWordValue.Charakter03SprichtGesichtsausdruckKritisch):
                     return NovelKeyWord.Charakter03SprichtGesichtsausdruckKritisch;
-                case (NovelKeyWordValue.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_LAECHELN_GROSS):
+                case (NovelKeyWordValue.Charakter03SprichtGesichtsausdruckLaechelnGross):
                     return NovelKeyWord.Charakter03SprichtGesichtsausdruckLaechelnGross;
-                case (NovelKeyWordValue.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_LACHEND):
+                case (NovelKeyWordValue.Charakter03SprichtGesichtsausdruckLachend):
                     return NovelKeyWord.Charakter03SprichtGesichtsausdruckLachend;
-                case (NovelKeyWordValue.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_LAECHELN):
+                case (NovelKeyWordValue.Charakter03SprichtGesichtsausdruckLaecheln):
                     return NovelKeyWord.Charakter03SprichtGesichtsausdruckLaecheln;
-                case (NovelKeyWordValue.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_NEUTRAL_ENTSPANNT):
+                case (NovelKeyWordValue.Charakter03SprichtGesichtsausdruckNeutralEntspannt):
                     return NovelKeyWord.Charakter03SprichtGesichtsausdruckNeutralEntspannt;
-                case (NovelKeyWordValue.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_NEUTRAL):
+                case (NovelKeyWordValue.Charakter03SprichtGesichtsausdruckNeutral):
                     return NovelKeyWord.Charakter03SprichtGesichtsausdruckNeutral;
-                case (NovelKeyWordValue.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_STOLZ):
+                case (NovelKeyWordValue.Charakter03SprichtGesichtsausdruckStolz):
                     return NovelKeyWord.Charakter03SprichtGesichtsausdruckStolz;
 
-                case (NovelKeyWordValue.SPIELER_CHARAKTER_SPRICHT): return NovelKeyWord.SpielerCharakterSpricht;
-                case (NovelKeyWordValue.INFO_NACHRICHT_WIRD_ANGEZEIGT):
+                case (NovelKeyWordValue.SpielerCharakterSpricht): return NovelKeyWord.SpielerCharakterSpricht;
+                case (NovelKeyWordValue.InfoNachrichtWirdAngezeigt):
                     return NovelKeyWord.InfoNachrichtWirdAngezeigt;
-                case (NovelKeyWordValue.SOUND_ABSPIELEN_WATER_POURING):
+                case (NovelKeyWordValue.SoundAbspielenWaterPouring):
                     return NovelKeyWord.SoundAbspielenWaterPouring;
-                case (NovelKeyWordValue.SOUND_ABSPIELEN_LEAVE_SCENE): return NovelKeyWord.SoundAbspielenLeaveScene;
-                case (NovelKeyWordValue.SOUND_ABSPIELEN_TELEPHONE_CALL):
+                case (NovelKeyWordValue.SoundAbspielenLeaveScene): return NovelKeyWord.SoundAbspielenLeaveScene;
+                case (NovelKeyWordValue.SoundAbspielenTelephoneCall):
                     return NovelKeyWord.SoundAbspielenTelephoneCall;
-                case (NovelKeyWordValue.SOUND_ABSPIELEN_PAPER_SOUND): return NovelKeyWord.SoundAbspielenPaperSound;
-                case (NovelKeyWordValue.SOUND_ABSPIELEN_MAN_LAUGHING): return NovelKeyWord.SoundAbspielenManLaughing;
-                case (NovelKeyWordValue.ANIMATION_ABSPIELEN_WATER_POURING):
+                case (NovelKeyWordValue.SoundAbspielenPaperSound): return NovelKeyWord.SoundAbspielenPaperSound;
+                case (NovelKeyWordValue.SoundAbspielenManLaughing): return NovelKeyWord.SoundAbspielenManLaughing;
+                case (NovelKeyWordValue.AnimationAbspielenWaterPouring):
                     return NovelKeyWord.AnimationAbspielenWaterPouring;
-                case (NovelKeyWordValue.DIALOG_OPTIONEN): return NovelKeyWord.DialogOptionen;
-                case (NovelKeyWordValue.ENDE): return NovelKeyWord.Ende;
-                case (NovelKeyWordValue.FREITEXT_EINGABE): return NovelKeyWord.FreitextEingabe;
-                case (NovelKeyWordValue.GPT_PROMPT_MIT_DEFAULT_COMPLETION_HANDLER):
+                case (NovelKeyWordValue.DialogOptionen): return NovelKeyWord.DialogOptionen;
+                case (NovelKeyWordValue.Ende): return NovelKeyWord.Ende;
+                case (NovelKeyWordValue.FreitextEingabe): return NovelKeyWord.FreitextEingabe;
+                case (NovelKeyWordValue.GptPromptMitDefaultCompletionHandler):
                     return NovelKeyWord.GptPromptMitDefaultCompletionHandler;
-                case (NovelKeyWordValue.PERSISTENTES_SPEICHERN): return NovelKeyWord.PersistentesSpeichern;
-                case (NovelKeyWordValue.VARIABLE_SETZEN): return NovelKeyWord.VariableSetzen;
-                case (NovelKeyWordValue.VARIABLE_AUS_BOOLSCHEM_AUSDRUCK_BESTIMMEN):
+                case (NovelKeyWordValue.PersistentesSpeichern): return NovelKeyWord.PersistentesSpeichern;
+                case (NovelKeyWordValue.VariableSetzen): return NovelKeyWord.VariableSetzen;
+                case (NovelKeyWordValue.VariableAusBoolschemAusdruckBestimmen):
                     return NovelKeyWord.VariableAusBoolschemAusdruckBestimmen;
-                case (NovelKeyWordValue.FEEDBACK_HINZUFUEGEN): return NovelKeyWord.FeedbackHinzufuegen;
-                case (NovelKeyWordValue.FEEDBACK_UNTER_BEDINGUNG_HINZUFUEGEN):
+                case (NovelKeyWordValue.FeedbackHinzufuegen): return NovelKeyWord.FeedbackHinzufuegen;
+                case (NovelKeyWordValue.FeedbackUnterBedingungHinzufuegen):
                     return NovelKeyWord.FeedbackUnterBedingungHinzufuegen;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_FINANZIERUNGSZUGANG):
+                case (NovelKeyWordValue.RelevanterBiasFinanzierungszugang):
                     return NovelKeyWord.RelevanterBiasFinanzierungszugang;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_GENDER_PAY_GAP):
+                case (NovelKeyWordValue.RelevanterBiasGenderPayGap):
                     return NovelKeyWord.RelevanterBiasGenderPayGap;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_UNTERBEWERTUNG_WEIBLICH_GEFUEHRTER_UNTERNEHMEN):
+                case (NovelKeyWordValue.RelevanterBiasUnterbewertungWeiblichGefuehrterUnternehmen):
                     return NovelKeyWord.RelevanterBiasUnterbewertungWeiblichGefuehrterUnternehmen;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_RISK_AVERSION_BIAS):
+                case (NovelKeyWordValue.RelevanterBiasRiskAversionBias):
                     return NovelKeyWord.RelevanterBiasRiskAversionBias;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_BESTAETIGUNGSVERZERRUNG):
+                case (NovelKeyWordValue.RelevanterBiasBestaetigungsverzerrung):
                     return NovelKeyWord.RelevanterBiasBestaetigungsverzerrung;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_TOKENISM): return NovelKeyWord.RelevanterBiasTokenism;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_BIAS_IN_DER_WAHRNEHMUNG_VON_FUEHRUNGSFAEHIGKEITEN):
+                case (NovelKeyWordValue.RelevanterBiasTokenism): return NovelKeyWord.RelevanterBiasTokenism;
+                case (NovelKeyWordValue.RelevanterBiasBiasInDerWahrnehmungVonFuehrungsfaehigkeiten):
                     return NovelKeyWord.RelevanterBiasBiasInDerWahrnehmungVonFuehrungsfaehigkeiten;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_RASSISTISCHE_UND_ETHNISCHE_BIASES):
+                case (NovelKeyWordValue.RelevanterBiasRassistischeUndEthnischeBiases):
                     return NovelKeyWord.RelevanterBiasRassistischeUndEthnischeBiases;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_SOZIOOEKONOMISCHE_BIASES):
+                case (NovelKeyWordValue.RelevanterBiasSoziooekonomischeBiases):
                     return NovelKeyWord.RelevanterBiasSoziooekonomischeBiases;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_ALTER_UND_GENERATIONEN_BIASES):
+                case (NovelKeyWordValue.RelevanterBiasAlterUndGenerationenBiases):
                     return NovelKeyWord.RelevanterBiasAlterUndGenerationenBiases;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_SEXUALITAETSBEZOGENE_BIASES):
+                case (NovelKeyWordValue.RelevanterBiasSexualitaetsbezogeneBiases):
                     return NovelKeyWord.RelevanterBiasSexualitaetsbezogeneBiases;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_BIASES_GEGENUEBER_FRAUEN_MIT_BEHINDERUNGEN):
+                case (NovelKeyWordValue.RelevanterBiasBiasesGegenueberFrauenMitBehinderungen):
                     return NovelKeyWord.RelevanterBiasBiasesGegenueberFrauenMitBehinderungen;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_STEREOTYPE_GEGENUEBER_FRAUEN_IN_NICHT_TRADITIONELLEN_BRANCHEN):
+                case (NovelKeyWordValue.RelevanterBiasStereotypeGegenueberFrauenInNichtTraditionellenBranchen):
                     return NovelKeyWord.RelevanterBiasStereotypeGegenueberFrauenInNichtTraditionellenBranchen;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_KULTURELLE_UND_RELIGIOESE_BIASES):
+                case (NovelKeyWordValue.RelevanterBiasKulturelleUndReligioeseBiases):
                     return NovelKeyWord.RelevanterBiasKulturelleUndReligioeseBiases;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_MATERNAL_BIAS):
+                case (NovelKeyWordValue.RelevanterBiasMaternalBias):
                     return NovelKeyWord.RelevanterBiasMaternalBias;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_BIASES_GEGENUEBER_FRAUEN_MIT_KINDERN):
+                case (NovelKeyWordValue.RelevanterBiasBiasesGegenueberFrauenMitKindern):
                     return NovelKeyWord.RelevanterBiasBiasesGegenueberFrauenMitKindern;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_ERWARTUNGSHALTUNG_BEZUEGLICH_FAMILIENPLANUNG):
+                case (NovelKeyWordValue.RelevanterBiasErwartungshaltungBezueglichFamilienplanung):
                     return NovelKeyWord.RelevanterBiasErwartungshaltungBezueglichFamilienplanung;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_WORK_LIFE_BALANCE_ERWARTUNGEN):
+                case (NovelKeyWordValue.RelevanterBiasWorkLifeBalanceErwartungen):
                     return NovelKeyWord.RelevanterBiasWorkLifeBalanceErwartungen;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_GESCHLECHTSSPEZIFISCHE_STEREOTYPEN):
+                case (NovelKeyWordValue.RelevanterBiasGeschlechtsspezifischeStereotypen):
                     return NovelKeyWord.RelevanterBiasGeschlechtsspezifischeStereotypen;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_TIGHTROPE_BIAS):
+                case (NovelKeyWordValue.RelevanterBiasTightropeBias):
                     return NovelKeyWord.RelevanterBiasTightropeBias;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_MIKROAGGRESSIONEN):
+                case (NovelKeyWordValue.RelevanterBiasMikroaggressionen):
                     return NovelKeyWord.RelevanterBiasMikroaggressionen;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_LEISTUNGSATTRIBUTIONS_BIAS):
+                case (NovelKeyWordValue.RelevanterBiasLeistungsattributionsBias):
                     return NovelKeyWord.RelevanterBiasLeistungsattributionsBias;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_BIAS_IN_MEDIEN_UND_WERBUNG):
+                case (NovelKeyWordValue.RelevanterBiasBiasInMedienUndWerbung):
                     return NovelKeyWord.RelevanterBiasBiasInMedienUndWerbung;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_UNBEWUSSTE_BIAS_IN_DER_KOMMUNIKATION):
+                case (NovelKeyWordValue.RelevanterBiasUnbewussteBiasInDerKommunikation):
                     return NovelKeyWord.RelevanterBiasUnbewussteBiasInDerKommunikation;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_PROVE_IT_AGAIN_BIAS):
+                case (NovelKeyWordValue.RelevanterBiasProveItAgainBias):
                     return NovelKeyWord.RelevanterBiasProveItAgainBias;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_HETERONORMATIVITAET_BIAS):
+                case (NovelKeyWordValue.RelevanterBiasHeteronormativitaetBias):
                     return NovelKeyWord.RelevanterBiasHeteronormativitaetBias;
-                case (NovelKeyWordValue.RELEVANTER_BIAS_BENEVOLENTER_SEXISMUS_BIAS):
+                case (NovelKeyWordValue.RelevanterBiasBenevolenterSexismusBias):
                     return NovelKeyWord.RelevanterBiasBenevolenterSexismusBias;
                 default: return NovelKeyWord.None;
             }

@@ -1715,7 +1715,7 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
 
         private static NovelKeyWord FindFirstKeyWordInText(string text)
         {
-            foreach (string keyWord in NovelKeyWordValue.ALL_KEY_WORDS)
+            foreach (string keyWord in NovelKeyWordValue.allKeyWords)
             {
                 if (text.Contains(keyWord))
                 {
