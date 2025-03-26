@@ -2,8 +2,8 @@ namespace Assets._Scripts.Novel
 {
     public enum CompletionHandler
     {
-        NONE,
-        DEFAULT_COMPLETION_HANDLER
+        None,
+        DefaultCompletionHandler
     }
 
     public class CompletionHandlerHelper
@@ -12,7 +12,7 @@ namespace Assets._Scripts.Novel
         {
             switch (completionHandler)
             {
-                case CompletionHandler.DEFAULT_COMPLETION_HANDLER: return 1;
+                case CompletionHandler.DefaultCompletionHandler: return 1;
                 default: return 0;
             }
         }
@@ -21,8 +21,8 @@ namespace Assets._Scripts.Novel
         {
             switch (completionHandler)
             {
-                case 1: return CompletionHandler.DEFAULT_COMPLETION_HANDLER;
-                default: return CompletionHandler.NONE;
+                case 1: return CompletionHandler.DefaultCompletionHandler;
+                default: return CompletionHandler.None;
             }
         }
     }

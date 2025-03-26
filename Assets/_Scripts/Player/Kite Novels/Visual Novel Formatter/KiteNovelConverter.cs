@@ -1552,7 +1552,7 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
                 }
                 case (NovelKeyWord.GptPromptMitDefaultCompletionHandler):
                 {
-                    return HandleGptRequestEvent(passage, message, CompletionHandler.DEFAULT_COMPLETION_HANDLER,
+                    return HandleGptRequestEvent(passage, message, CompletionHandler.DefaultCompletionHandler,
                         kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.PersistentesSpeichern):
