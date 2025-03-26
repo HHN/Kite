@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter;
 
-namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
+namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 {
     public class KiteNovelMetaData
     {
@@ -10,15 +11,7 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
 
         public string DescriptionOfNovel { get; set; } = "";
 
-        public long IdNumberOfRepresentationImage { get; set; } = 0;
-
         public string ContextForPrompt { get; set; } = "";
-
-        public bool IsKite2Novel { get; set; } = false;
-
-        public string StartLocation { get; set; } = "";
-
-        public bool IsWithStartValues { get; set; } = false;
 
         public string StartTalkingPartnerEmotion { get; set; } = "";
 
