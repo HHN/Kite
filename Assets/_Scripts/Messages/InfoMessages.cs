@@ -9,15 +9,15 @@ namespace Assets._Scripts.Messages
         public static readonly string WAIT_FOR_CHANGE_OF_PASSWORD = "Bitte warten! Das Passwort wird geändert!";
         public static readonly string WAIT_FOR_RESET_OF_PASSWORD = "Bitte warten! Ihr Passwort wird zurück gesetzt!";
         public static readonly string WAIT_FOR_LOAD_NOVEL = "Bitte warten! Die Visual Novels werden geladen!";
-        public static readonly string WAIT_FOR_LOAD_COMMENT_SECTION = "Bitte warten! Die Kommentare zur Visual Novel werden geladen!";
+        public static readonly string WAIT_FOR_LOAD_COMMENT_SECTION = "Bitte warten! Die Kommentare zur Visual Novels werden geladen!";
         public static readonly string WAIT_FOR_UPLOAD_COMMENT = "Bitte warten! Der Kommentar wird gepostet!";
         public static readonly string WAIT_FOR_DELETE_COMMENT = "Bitte warten! Der Kommentar wird gelöscht!";
         public static readonly string WAIT_FOR_CHANGE_COMMENT = "Bitte warten! Änderung wird gespeichert!";
         public static readonly string WAIT_FOR_LIKE_COMMENT = "Bitte warten! Kommentar wird mit 'Gefällt mir' markiert!";
         public static readonly string WAIT_FOR_UNLIKE_COMMENT = "Bitte warten! 'Gefällt mir'-Markierung wird aufgehoben!";
-        public static readonly string WAIT_FOR_LIKE_NOVEL = "Bitte warten! Novel wird mit 'Gefällt mir' markiert!";
+        public static readonly string WAIT_FOR_LIKE_NOVEL = "Bitte warten! Novels wird mit 'Gefällt mir' markiert!";
         public static readonly string WAIT_FOR_UNLIKE_NOVEL = "Bitte warten! 'Gefällt mir'-Markierung wird aufgehoben!";
-        public static readonly string WAIT_FOR_LOAD_NOVEL_INFORMATION = "Bitte warten! Die Visual Novel wird geladen!";
+        public static readonly string WAIT_FOR_LOAD_NOVEL_INFORMATION = "Bitte warten! Die Visual Novels wird geladen!";
         public static readonly string EXPLANATION_ABOUT_US_BUTTON = "Mit diesem Button kommst du auf die Info Seite unserer App.";
         public static readonly string EXPLANATION_COLLECT_DATA_BUTTON = "Aktuell werden von dir keine Nutzungsdaten aufgezeichnet. Um die KITE II App verbessern zu können, möchten wir Daten über das Nutzungsverhalten der Nutzenden aufzeichnen. Durch die Analyse der Daten können wir vielleicht Verbesserungsmöglichkeiten identifizieren. Die Aufzeichnung der Daten ist anonym und erfolgt freiwillig. Mit diesem Button kannst du die Datenaufzeichnung starten.";
         public static readonly string EXPLANATION_STOP_DATA_BUTTON = "Aktuell werden von dir Nutzungsdaten aufgezeichnet. Um die KITE II App verbessern zu können, möchten wir Daten über das Nutzungsverhalten der Nutzenden aufzeichnen. Durch die Analyse der Daten können wir vielleicht Verbesserungsmöglichkeiten identifizieren. Die Aufzeichnung der Daten ist anonym und erfolgt freiwillig. Mit diesem Button kannst du die Datenaufzeichnung stoppen.";
@@ -32,7 +32,7 @@ namespace Assets._Scripts.Messages
         public static readonly string EXPLANATION_TERMS_OF_USE_BUTTON = "Mit diesem Button kommst du auf die Nutzungsbedingungen unserer App.";
         public static readonly string EXPLANATION_DATA_PRIVACY_BUTTON = "Mit diesem Button kommst du auf die Datenschutzerklärung unserer App.";
         public static readonly string EXPLANATION_IMPRINT_BUTTON = "Mit diesem Button kommst du auf das Impressum unserer App.";
-        public static readonly string EXPLANATION_PLAYERPREFS_BUTTON = "Mit diesem Button kommst du auf die Übersichtsseite deiner Eingaben während der Intro-Novel.";
+        public static readonly string EXPLANATION_PLAYERPREFS_BUTTON = "Mit diesem Button kommst du auf die Übersichtsseite deiner Eingaben während der Intro-Novels.";
         public static readonly string EXPLANATION_APPLICATION_MODE_BUTTON = "Mit diesem Button kannst du zwischen Offline- und Online-Modus hin und her switchen.";
         public static readonly string EXPLANATION_EXPERT_FEEDBACK_BUTTON = "Mit diesem Button kommst du auf eine Übersicht der Fragen, die du an unsere Experten gestellt hast, sowie den dazugehörigen Antworten.";
         public static readonly string SWITCHED_TO_ONLINE_MODE = "Die App befindet sich jetzt im Online Modus.";

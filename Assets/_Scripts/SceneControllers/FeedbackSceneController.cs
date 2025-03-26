@@ -3,7 +3,7 @@ using System.Collections;
 using System.Globalization;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Messages;
-using Assets._Scripts.Novel;
+using Assets._Scripts.Novels;
 using Assets._Scripts.OfflineAiFeedback;
 using Assets._Scripts.Player;
 using Assets._Scripts.SaveNovelData;

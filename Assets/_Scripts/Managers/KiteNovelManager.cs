@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Assets._Scripts.Novel;
+using Assets._Scripts.Novels;
 
 namespace Assets._Scripts.Managers
 {

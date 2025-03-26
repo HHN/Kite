@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Text;
-using Assets._Scripts.Novel;
+using Assets._Scripts.Novels;
 using Assets._Scripts.Player;
 using UnityEngine;
 
@@ -132,7 +132,7 @@ namespace Assets._Scripts.OfflineAiFeedback
         {
             if (_objectUnderAnalyse == null)
             {
-                OnAnalysisFailed("Novel under test is null.", "-", "-");
+                OnAnalysisFailed("Novels under test is null.", "-", "-");
                 return;
             }
 
@@ -145,7 +145,7 @@ namespace Assets._Scripts.OfflineAiFeedback
 
             if (string.IsNullOrEmpty(_objectUnderAnalyse.title))
             {
-                OnAnalysisFailed("Novel title is null or empty.", "-", "-");
+                OnAnalysisFailed("Novels title is null or empty.", "-", "-");
                 return;
             }
 
@@ -660,7 +660,7 @@ namespace Assets._Scripts.OfflineAiFeedback
         {
             if (_isOriginalNode)
             {
-                Debug.LogError("Finished Test of Novel with Errors. Novel under Test: " + _objectUnderAnalyse.title +
+                Debug.LogError("Finished Test of Novels with Errors. Novels under Test: " + _objectUnderAnalyse.title +
                                ";");
             }
             else
@@ -673,7 +673,7 @@ namespace Assets._Scripts.OfflineAiFeedback
         {
             _isAnalysisFinished = true;
             AnalysisEndedEarly();
-            Debug.LogError("Error while testing novel. Novel under test: " + visualNovelUnderTest +
+            Debug.LogError("Error while testing novel. Novels under test: " + visualNovelUnderTest +
                            "; Event under test: " + eventUnderTest + "; Error: " + error + ";");
         }
 

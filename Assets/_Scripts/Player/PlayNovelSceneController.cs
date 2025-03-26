@@ -5,8 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Assets._Scripts.Managers;
-using Assets._Scripts.Novel;
-using Assets._Scripts.Novel.CharacterController;
+using Assets._Scripts.Novels;
+using Assets._Scripts.Novels.CharacterController;
 using Assets._Scripts.SaveNovelData;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.Server_Communication.Server_Calls;
@@ -44,7 +44,7 @@ namespace Assets._Scripts.Player
         [SerializeField] private GameObject freeTextInputPrefab;
         [SerializeField] private GameObject headerImage;
 
-        [Header("Novel-Visuals und Prefabs")] 
+        [Header("Novels-Visuals und Prefabs")] 
         [SerializeField] private GameObject[] novelVisuals;
 
         [SerializeField] private GameObject novelImageContainer;

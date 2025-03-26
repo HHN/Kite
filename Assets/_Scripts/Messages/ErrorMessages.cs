@@ -17,6 +17,6 @@ namespace Assets._Scripts.Messages
         public static readonly string USER_NOT_FOUND = "Der angegebene Benutzername oder die angegebene Email-Adresse ist nicht registriert.";
         public static readonly string NO_COMMENT_ENTERED = "Bitte gebe den Kommentar ein, den du posten möchtest!";
         public static readonly string REVIEW_OBSERVER_ALREADY_EXISTS = "Die Email-Adresse wurde bereits als Beobachter hinzugefügt.";
-        public static readonly string NOVEL_NOT_FOUND = "Die gewünschte Novel konnte leider nicht gefunden werden.";
+        public static readonly string NOVEL_NOT_FOUND = "Die gewünschte Novels konnte leider nicht gefunden werden.";
     }
 }

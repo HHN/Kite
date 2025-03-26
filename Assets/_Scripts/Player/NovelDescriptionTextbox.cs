@@ -1,6 +1,6 @@
 using System.Collections;
 using Assets._Scripts.Managers;
-using Assets._Scripts.Novel;
+using Assets._Scripts.Novels;
 using Assets._Scripts.SceneManagement;
 using TMPro;
 using UnityEngine;
@@ -28,7 +28,7 @@ namespace Assets._Scripts.Player
         [SerializeField] private Sprite unBookmarkSprite;
         [SerializeField] private GameObject selectNovelSoundPrefab;
 
-        [Header("Visual Novel Daten")] [SerializeField]
+        [Header("Visual Novels Daten")] [SerializeField]
         private VisualNovel visualNovelToDisplay;
 
         [SerializeField] private VisualNovelNames visualNovelName;
@@ -43,9 +43,9 @@ namespace Assets._Scripts.Player
         }
 
         /// <summary>
-        /// Initialisiert den Lesezeichen-Button basierend darauf, ob die Visual Novel favorisiert ist.
+        /// Initialisiert den Lesezeichen-Button basierend darauf, ob die Visual Novels favorisiert ist.
         /// </summary>
-        /// <param name="isFavorite">Gibt an, ob die Visual Novel favorisiert ist.</param>
+        /// <param name="isFavorite">Gibt an, ob die Visual Novels favorisiert ist.</param>
         public void InitializeBookMarkButton(bool isFavorite)
         {
             playText.color = colorOfText;
@@ -86,18 +86,18 @@ namespace Assets._Scripts.Player
         }
 
         /// <summary>
-        /// Setzt den Namen der Visual Novel.
+        /// Setzt den Namen der Visual Novels.
         /// </summary>
-        /// <param name="visualNovelName">Der Name der Visual Novel.</param>
+        /// <param name="visualNovelName">Der Name der Visual Novels.</param>
         public void SetVisualNovelName(VisualNovelNames visualNovelName)
         {
             this.visualNovelName = visualNovelName;
         }
 
         /// <summary>
-        /// Legt die anzuzeigende Visual Novel fest.
+        /// Legt die anzuzeigende Visual Novels fest.
         /// </summary>
-        /// <param name="visualNovel">Die Visual Novel.</param>
+        /// <param name="visualNovel">Die Visual Novels.</param>
         public void SetVisualNovel(VisualNovel visualNovel)
         {
             this.visualNovelToDisplay = visualNovel;
@@ -148,9 +148,9 @@ namespace Assets._Scripts.Player
         }
 
         /// <summary>
-        /// Markiert oder entmarkiert die Visual Novel als Favorit.
+        /// Markiert oder entmarkiert die Visual Novels als Favorit.
         /// </summary>
-        /// <param name="visualNovel">Die Visual Novel.</param>
+        /// <param name="visualNovel">Die Visual Novels.</param>
         private IEnumerator MarkAsFavorite(VisualNovel visualNovel)
         {
             if (FavoritesManager.Instance().IsFavorite(visualNovel))

@@ -1,4 +1,4 @@
-using Assets._Scripts.Novel;
+using Assets._Scripts.Novels;
 using UnityEngine;
 
 namespace Assets._Scripts.Managers

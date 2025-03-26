@@ -136,10 +136,10 @@ namespace Assets._Scripts.Managers
 
             // Trennzeichen definieren
             const string mainSeparator = "|"; // Trennt verschiedene Auswertungen
-            const string subSeparator = "~"; // Trennt Novel-Name von Ablauf und Bewertung
+            const string subSeparator = "~"; // Trennt Novels-Name von Ablauf und Bewertung
             const string flowSeparator = "^"; // Trennt Ablauf von der Bewertung
 
-            // Neue Auswertung vorbereiten, indem der Name der Novel, der Ablauf und die Auswertung mit Trennzeichen verbunden werden
+            // Neue Auswertung vorbereiten, indem der Name der Novels, der Ablauf und die Auswertung mit Trennzeichen verbunden werden
             string newEvaluation = novelName + subSeparator + novelHistoryString + flowSeparator + evaluation;
 
             // Neue Auswertung an bestehende anhängen

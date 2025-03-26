@@ -352,7 +352,7 @@ namespace Assets._Scripts.Test
 //                 string numberMatch = Regex.Match(key, @"\d+").Value; // Extrahiere die Nummer
 //                 if (!string.IsNullOrEmpty(value))
 //                 {
-//                     // Dynamisch alle möglichen `Charakter01Spricht...` zuordnen
+//                     // Dynamisch alle möglichen `Character01Speaks...` zuordnen
 //                     string dynamicPattern = $@"Charakter{numberMatch}";
 //
 //                     if (!CharacterToSpeakerMap.ContainsKey(dynamicPattern))

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Assets._Scripts.Managers;
-using Assets._Scripts.Novel;
+using Assets._Scripts.Novels;
 using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.SceneMemory;
@@ -13,7 +13,7 @@ namespace Assets._Scripts.SceneControllers
 {
     public class FoundersBubbleSceneController : SceneController
     {
-        [Header("Novel Description Textbox")]
+        [Header("Novels Description Textbox")]
         
         [SerializeField] private NovelDescriptionTextbox novelDescriptionTextbox;
         [SerializeField] private NovelDescriptionTextbox novelDescriptionTextboxIntro;
@@ -323,7 +323,7 @@ namespace Assets._Scripts.SceneControllers
                 novelDescriptionTextbox.SetHead(FoundersBubbleMetaInformation.IsHighInGui(visualNovel));
                 novelDescriptionTextbox.SetVisualNovelName(visualNovel);
                 novelDescriptionTextbox.SetText(
-                    "Leider ist diese Novel nicht in der Testversion enthalten. Bitte spiele eine andere Novel.");
+                    "Leider ist diese Novels nicht in der Testversion enthalten. Bitte spiele eine andere Novels.");
                 novelDescriptionTextbox.SetColorOfImage(
                     FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
                 novelDescriptionTextbox.SetButtonsActive(false);

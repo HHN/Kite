@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Assets._Scripts.Managers;
-using Assets._Scripts.Novel;
+using Assets._Scripts.Novels;
 using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
 using UnityEngine;
@@ -131,7 +131,7 @@ namespace Assets._Scripts.SceneControllers
 
             if (visualNovelToDisplay == null)
             {
-                DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
+                DisplayErrorMessage("Die gewünschte Novels konnte nicht geladen werden.");
                 return;
             }
 
