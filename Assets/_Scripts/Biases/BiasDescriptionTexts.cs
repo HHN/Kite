@@ -2,31 +2,31 @@ using System.Collections.Generic;
 
 namespace Assets._Scripts.Biases
 {
+    public enum BiasType
+    {
+        Finanzierungszugang,
+        GenderPayGap,
+        UnterbewertungWeiblichGefuehrterUnternehmen,
+        RiskAversionBias,
+        ConfirmationBias,
+        Tokenism,
+        BiasInDerWahrnehmungVonFuehrungsfaehigkeiten,
+        BenevolenterSexismus,
+        AltersUndGenerationenBiases,
+        Stereotype,
+        Heteronormativitaet,
+        MaternalBias,
+        FamilienplanungBias,
+        WorkLifeBalance,
+        GeschlechtsspezifischeStereotype,
+        TightropeBias,
+        Mikroagressionen,
+        LeistungsattributionsBias,
+        UnbewussteBiasInDerKommunikation
+    }
+    
     public static class BiasDescriptionTexts
     {
-        public enum BiasType
-        {
-            Finanzierungszugang,
-            GenderPayGap,
-            UnterbewertungWeiblichGefuehrterUnternehmen,
-            RiskAversionBias,
-            ConfirmationBias,
-            Tokenism,
-            BiasInDerWahrnehmungVonFuehrungsfaehigkeiten,
-            BenevolenterSexismus,
-            AltersUndGenerationenBiases,
-            Stereotype,
-            Heteronormativitaet,
-            MaternalBias,
-            FamilienplanungBias,
-            WorkLifeBalance,
-            GeschlechtsspezifischeStereotype,
-            TightropeBias,
-            Mikroagressionen,
-            LeistungsattributionsBias,
-            UnbewussteBiasInDerKommunikation
-        }
-
         public static readonly string PLACEHOLDER =
             "<size=30><b>Schwierigkeiten von Frauen, Kapital für ihre Unternehmen zu beschaffen. Hier einige Daten und Fakten dazu:\n\n</b>" +
             "In Deutschland ist es so und so, und hier gibt es Zahlen dazu. Und so weiter und so weiter..." +

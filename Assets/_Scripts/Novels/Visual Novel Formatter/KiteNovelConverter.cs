@@ -72,8 +72,7 @@ namespace Assets._Scripts.Novels.Visual_Novel_Formatter
             }
         }
 
-        private static void InitializeKiteNovelEventList(KiteNovelMetaData kiteNovelMetaData,
-            KiteNovelEventList kiteNovelEventList, string startLabel)
+        private static void InitializeKiteNovelEventList(KiteNovelMetaData kiteNovelMetaData, KiteNovelEventList kiteNovelEventList, string startLabel)
         {
             if (!kiteNovelMetaData.IsWithStartValues)
             {
@@ -98,8 +97,7 @@ namespace Assets._Scripts.Novels.Visual_Novel_Formatter
             CharacterRole character = CharacterTypeHelper.ValueOf(kiteNovelMetaData.TalkingPartner01);
             if (character == CharacterRole.NONE)
             {
-                Debug.LogWarning("While loading " + kiteNovelMetaData.TitleOfNovel +
-                                 ": Initial CharacterRole not found!");
+                Debug.LogWarning("While loading " + kiteNovelMetaData.TitleOfNovel + ": Initial CharacterRole not found!");
             }
 
             CharacterExpression expression =
@@ -107,12 +105,10 @@ namespace Assets._Scripts.Novels.Visual_Novel_Formatter
 
             if (expression == CharacterExpression.None)
             {
-                Debug.LogWarning("While loading " + kiteNovelMetaData.TitleOfNovel +
-                                 ": Initial CharacterRole-Expression not found!");
+                Debug.LogWarning("While loading " + kiteNovelMetaData.TitleOfNovel + ": Initial CharacterRole-Expression not found!");
             }
 
-            VisualNovelEvent initialCharacterJoinsEvent =
-                KiteNovelEventFactory.GetCharacterJoinsEvent(id, nextId, character, expression);
+            VisualNovelEvent initialCharacterJoinsEvent = KiteNovelEventFactory.GetCharacterJoinsEvent(id, nextId, character, expression);
             kiteNovelEventList.NovelEvents.Add(initialCharacterJoinsEvent);
         }
 
@@ -148,8 +144,7 @@ namespace Assets._Scripts.Novels.Visual_Novel_Formatter
         {
             string id = twee?.Label;
             string nextId = twee?.Links?[0]?.Target;
-            VisualNovelEvent novelEvent =
-                KiteNovelEventFactory.GetCharacterJoinsEvent(id, nextId, character, expressionType);
+            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetCharacterJoinsEvent(id, nextId, character, expressionType);
             list.Add(novelEvent);
             return novelEvent;
         }
@@ -235,27 +230,6 @@ namespace Assets._Scripts.Novels.Visual_Novel_Formatter
             string id = twee?.Label;
             string nextId = twee?.Links?[0]?.Target;
             VisualNovelEvent novelEvent = KiteNovelEventFactory.GetPlayAnimationEvent(id, nextId, animationToPlay);
-            list.Add(novelEvent);
-            return novelEvent;
-        }
-
-        private static VisualNovelEvent HandleFreeTextInputEvent(TweePassage twee, string message,
-            List<VisualNovelEvent> list)
-        {
-            string[] parts = message.Split(new[] { ':' }, 2);
-
-            if (parts.Length != 2)
-            {
-                Debug.LogWarning("While creating Visual Novels: Free Text Input Event could not be created.");
-                return null;
-            }
-
-            string id = twee?.Label;
-            string nextId = twee?.Links?[0]?.Target;
-            string question = parts[1].Trim();
-            string variablesName = parts[0].Trim();
-            VisualNovelEvent novelEvent =
-                KiteNovelEventFactory.GetFreeTextInputEvent(id, nextId, question, variablesName);
             list.Add(novelEvent);
             return novelEvent;
         }
@@ -1111,28 +1085,28 @@ namespace Assets._Scripts.Novels.Visual_Novel_Formatter
                         kiteNovelEventList.NovelEvents);
                 }
 
-                case NovelKeyWord.InfoNachrichtWirdAngezeigt:
+                case NovelKeyWord.InfoMessageIsDisplayed:
                 {
                     return HandleCharacterTalksEvent(passage, CharacterRole.INFO, message, CharacterExpression.LooksNeutralRelaxed, kiteNovelEventList.NovelEvents);
                 }
 
-                case NovelKeyWord.SoundAbspielenWaterPouring:
+                case NovelKeyWord.PlaySoundWaterPouring:
                 {
                     return HandlePlaySoundEvent(passage, KiteSound.WaterPouring, kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.SoundAbspielenLeaveScene:
+                case NovelKeyWord.PlaySoundLeaveScene:
                 {
                     return HandlePlaySoundEvent(passage, KiteSound.LeaveScene, kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.SoundAbspielenTelephoneCall:
+                case NovelKeyWord.PlaySoundTelephoneCall:
                 {
                     return HandlePlaySoundEvent(passage, KiteSound.TelephoneCall, kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.SoundAbspielenPaperSound:
+                case NovelKeyWord.PlaySoundPaperSound:
                 {
                     return HandlePlaySoundEvent(passage, KiteSound.PaperSound, kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.SoundAbspielenManLaughing:
+                case NovelKeyWord.PlaySoundManLaughing:
                 {
                     return HandlePlaySoundEvent(passage, KiteSound.ManLaughing, kiteNovelEventList.NovelEvents);
                 }
@@ -1141,168 +1115,164 @@ namespace Assets._Scripts.Novels.Visual_Novel_Formatter
                     return HandlePlayAnimationEvent(passage, KiteAnimation.WATER_POURING,
                         kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.Ende:
+                case NovelKeyWord.End:
                 {
                     return HandleEndNovelEvent(passage.Label, kiteNovelEventList.NovelEvents);
-                }
-                case NovelKeyWord.FreitextEingabe:
-                {
-                    return HandleFreeTextInputEvent(passage, message, kiteNovelEventList.NovelEvents);
                 }
                 case NovelKeyWord.GptPromptMitDefaultCompletionHandler:
                 {
                     return HandleGptRequestEvent(passage, message, CompletionHandler.DefaultCompletionHandler,
                         kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.PersistentesSpeichern:
+                case NovelKeyWord.PersistentSaving:
                 {
                     return HandleSaveDataEvent(passage, message, kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.VariableSetzen:
+                case NovelKeyWord.SetVariable:
                 {
                     return HandleSetVariableEvent(passage, message, kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.VariableAusBoolschemAusdruckBestimmen:
+                case NovelKeyWord.DetermineVariableFromBooleanExpression:
                 {
                     return HandleSetVariableFromBooleanExpressionEvent(passage, message,
                         kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.FeedbackHinzufuegen:
+                case NovelKeyWord.AddFeedback:
                 {
                     return HandleAddFeedbackEvent(passage, message, kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.FeedbackUnterBedingungHinzufuegen:
+                case NovelKeyWord.AddFeedbackUnderCondition:
                 {
                     return HandleAddFeedbackUnderConditionEvent(passage, message, kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasFinanzierungszugang:
+                case NovelKeyWord.RelevantBiasAccessToFinancing:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.ACCESS_TO_FUNDING,
                         kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasGenderPayGap:
+                case NovelKeyWord.RelevantBiasGenderPayGap:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.GENDER_PAY_GAP, kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasUnterbewertungWeiblichGefuehrterUnternehmen:
+                case NovelKeyWord.RelevantBiasUndervaluationOfFemaleLedCompanies:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.UNDERVALUATION_OF_WOMEN_LED_BUSINESSES,
                         kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasRiskAversionBias:
+                case NovelKeyWord.RelevantBiasRiskAversionBias:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.RISK_AVERSION_BIAS,
                         kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasBestaetigungsverzerrung:
+                case NovelKeyWord.RelevantBiasConfirmationBias:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.CONFIRMATION_BIAS,
                         kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasTokenism:
+                case NovelKeyWord.RelevantBiasTokenism:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.TOKENISM, kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasBiasInDerWahrnehmungVonFuehrungsfaehigkeiten:
+                case NovelKeyWord.RelevantBiasBiasInThePerceptionOfLeadershipSkills:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.IN_PERCEPTION_OF_LEADERSHIP_ABILITIES,
                         kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasRassistischeUndEthnischeBiases:
+                case NovelKeyWord.RelevantBiasRacialAndEthnicBiases:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.RACIST_AND_ETHNIC_BIASES,
                         kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasSoziooekonomischeBiases:
+                case NovelKeyWord.RelevantBiasSocioeconomicBiases:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.SOCIOECONOMIC_BIASES,
                         kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasAlterUndGenerationenBiases:
+                case NovelKeyWord.RelevantBiasAgeAndGenerationBiases:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.AGE_AND_GENERATIONAL_BIASES,
                         kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasSexualitaetsbezogeneBiases:
+                case NovelKeyWord.RelevantBiasSexualityRelatedBiases:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.SEXUALITY_RELATED_BIASES,
                         kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasBiasesGegenueberFrauenMitBehinderungen:
+                case NovelKeyWord.RelevantBiasBiasesAgainstWomenWithDisabilities:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.AGAINST_WOMEN_WITH_DISABILITIES,
                         kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasStereotypeGegenueberFrauenInNichtTraditionellenBranchen:
+                case NovelKeyWord.RelevantBiasStereotypesTowardsWomenInNonTraditionalIndustries:
                 {
                     return HandleBiasEvent(passage,
                         DiscriminationBias.STEREOTYPES_AGAINST_WOMEN_IN_NON_TRADITIONAL_INDUSTRIES,
                         kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasKulturelleUndReligioeseBiases:
+                case NovelKeyWord.RelevantBiasCulturalAndReligiousBiases:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.CULTURAL_AND_RELIGIOUS_BIASES,
                         kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasMaternalBias:
+                case NovelKeyWord.RelevantBiasMaternalBias:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.MATERNAL_BIAS, kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasBiasesGegenueberFrauenMitKindern:
+                case NovelKeyWord.RelevantBiasBiasesAgainstWomenWithChildren:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.AGAINST_WOMEN_WITH_CHILDREN,
                         kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasErwartungshaltungBezueglichFamilienplanung:
+                case NovelKeyWord.RelevantBiasExpectationsRegardingFamilyPlanning:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.EXPECTATIONS_REGARDING_FAMILY_PLANNING,
                         kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasWorkLifeBalanceErwartungen:
+                case NovelKeyWord.RelevantBiasWorkLifeBalanceExpectations:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.WORK_LIFE_BALANCE_EXPECTATIONS,
                         kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasGeschlechtsspezifischeStereotypen:
+                case NovelKeyWord.RelevantBiasGenderSpecificStereotypes:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.GENDER_SPECIFIC_STEREOTYPES,
                         kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasTightropeBias:
+                case NovelKeyWord.RelevantBiasTightropeBias:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.TIGHTROPE_BIAS, kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasMikroaggressionen:
+                case NovelKeyWord.RelevantBiasMicroaggressions:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.MICROAGGRESSIONS,
                         kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasLeistungsattributionsBias:
+                case NovelKeyWord.RelevantBiasPerformanceAttributionBias:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.PERFORMANCE_ATTRIBUTION_BIAS,
                         kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasBiasInMedienUndWerbung:
+                case NovelKeyWord.RelevantBiasBiasInMediaAndAdvertising:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.IN_MEDIA_AND_ADVERTISING,
                         kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasUnbewussteBiasInDerKommunikation:
+                case NovelKeyWord.RelevantBiasUnconsciousBiasInCommunication:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.UNCONSCIOUS_BIAS_IN_COMMUNICATION,
                         kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasProveItAgainBias:
+                case NovelKeyWord.RelevantBiasProveItAgainBias:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.PROVE_IT_AGAIN_BIAS,
                         kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasHeteronormativitaetBias:
+                case NovelKeyWord.RelevantBiasHeteronormativityBias:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.HETERONORMATIVITAET_BIAS,
                         kiteNovelEventList.NovelEvents);
                 }
-                case NovelKeyWord.RelevanterBiasBenevolenterSexismusBias:
+                case NovelKeyWord.RelevantBiasBenevolentSexismBias:
                 {
                     return HandleBiasEvent(passage, DiscriminationBias.BENEVOLENTER_SEXISMUS_BIAS,
                         kiteNovelEventList.NovelEvents);
@@ -1319,6 +1289,7 @@ namespace Assets._Scripts.Novels.Visual_Novel_Formatter
                 string keyWord = NovelKeyWordHelper.GetNovelKeywordString(novelKeyWord);
                 if (text.Contains(keyWord))
                 {
+                    Debug.Log($"keyWord: {keyWord}");
                     return NovelKeyWordHelper.GetKeyWordOutOfValue(keyWord);
                 }
             }
