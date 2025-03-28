@@ -14,11 +14,9 @@ namespace Assets._Scripts.Managers
         public bool IsBiasConfirmationBiasRelevant { get; set; }
         public bool IsBiasTokenismRelevant { get; set; }
         public bool IsBiasInPerceptionOfLeadershipAbilitiesRelevant { get; set; }
-        public bool IsBiasRacistAndEthnicBiasesRelevant { get; set; }
+        public bool IsBiasRacialAndEthnicBiasesRelevant { get; set; }
         public bool IsBiasSocioeconomicBiasesRelevant { get; set; }
-        public bool IsBiasAgeAndGenerationalBiasesRelevant { get; set; }
-        public bool IsBiasSexualityRelatedBiasesRelevant { get; set; }
-        public bool IsBiasAgainstWomenWithDisabilitiesRelevant { get; set; }
+        public bool IsBiasAgeAndGenerationBiasesRelevant { get; set; }
         public bool IsBiasStereotypesAgainstWomenInNonTraditionalIndustriesRelevant { get; set; }
         public bool IsBiasCulturalAndReligiousBiasesRelevant { get; set; }
         public bool IsBiasMaternalBiasRelevant { get; set; }
@@ -32,8 +30,8 @@ namespace Assets._Scripts.Managers
         public bool IsBiasInMediaAndAdvertisingRelevant { get; set; }
         public bool IsBiasUnconsciousBiasInCommunicationRelevant { get; set; }
         public bool IsBiasProveItAgainBiasRelevant { get; set; }
-        public bool IsBiasHeteronormativitaetBiasRelevant { get; set; }
-        public bool IsBiasBenevolenterSexismusBiasRelevant { get; set; }
+        public bool IsBiasHeteronormativityBiasRelevant { get; set; }
+        public bool IsBiasBenevolentSexismBiasRelevant { get; set; }
 
         private NovelBiasManager()
         {
@@ -44,11 +42,9 @@ namespace Assets._Scripts.Managers
             IsBiasConfirmationBiasRelevant = false;
             IsBiasTokenismRelevant = false;
             IsBiasInPerceptionOfLeadershipAbilitiesRelevant = false;
-            IsBiasRacistAndEthnicBiasesRelevant = false;
+            IsBiasRacialAndEthnicBiasesRelevant = false;
             IsBiasSocioeconomicBiasesRelevant = false;
-            IsBiasAgeAndGenerationalBiasesRelevant = false;
-            IsBiasSexualityRelatedBiasesRelevant = false;
-            IsBiasAgainstWomenWithDisabilitiesRelevant = false;
+            IsBiasAgeAndGenerationBiasesRelevant = false;
             IsBiasStereotypesAgainstWomenInNonTraditionalIndustriesRelevant = false;
             IsBiasCulturalAndReligiousBiasesRelevant = false;
             IsBiasMaternalBiasRelevant = false;
@@ -62,8 +58,8 @@ namespace Assets._Scripts.Managers
             IsBiasInMediaAndAdvertisingRelevant = false;
             IsBiasUnconsciousBiasInCommunicationRelevant = false;
             IsBiasProveItAgainBiasRelevant = false;
-            IsBiasHeteronormativitaetBiasRelevant = false;
-            IsBiasBenevolenterSexismusBiasRelevant = false;
+            IsBiasHeteronormativityBiasRelevant = false;
+            IsBiasBenevolentSexismBiasRelevant = false;
         }
 
         public static NovelBiasManager Instance()
@@ -80,86 +76,80 @@ namespace Assets._Scripts.Managers
         {
             switch (biasName)
             {
-                case DiscriminationBias.ACCESS_TO_FUNDING:
+                case DiscriminationBias.AccessToFunding:
                     IsBiasAccessToFundingRelevant = true;
                     break;
-                case DiscriminationBias.GENDER_PAY_GAP:
+                case DiscriminationBias.GenderPayGap:
                     IsBiasGenderPayGapRelevant = true;
                     break;
-                case DiscriminationBias.UNDERVALUATION_OF_WOMEN_LED_BUSINESSES:
+                case DiscriminationBias.UndervaluationOfWomenLedBusinesses:
                     IsBiasUndervaluationOfWomenLedBusinessesRelevant = true;
                     break;
-                case DiscriminationBias.RISK_AVERSION_BIAS:
+                case DiscriminationBias.RiskAversionBias:
                     IsBiasRiskAversionBiasRelevant = true;
                     break;
-                case DiscriminationBias.CONFIRMATION_BIAS:
+                case DiscriminationBias.ConfirmationBias:
                     IsBiasConfirmationBiasRelevant = true;
                     break;
-                case DiscriminationBias.TOKENISM:
+                case DiscriminationBias.Tokenism:
                     IsBiasTokenismRelevant = true;
                     break;
-                case DiscriminationBias.IN_PERCEPTION_OF_LEADERSHIP_ABILITIES:
+                case DiscriminationBias.InPerceptionOfLeadershipAbilities:
                     IsBiasInPerceptionOfLeadershipAbilitiesRelevant = true;
                     break;
-                case DiscriminationBias.RACIST_AND_ETHNIC_BIASES:
-                    IsBiasRacistAndEthnicBiasesRelevant = true;
+                case DiscriminationBias.RacistAndEthnicBiases:
+                    IsBiasRacialAndEthnicBiasesRelevant = true;
                     break;
-                case DiscriminationBias.SOCIOECONOMIC_BIASES:
+                case DiscriminationBias.SocioeconomicBiases:
                     IsBiasSocioeconomicBiasesRelevant = true;
                     break;
-                case DiscriminationBias.AGE_AND_GENERATIONAL_BIASES:
-                    IsBiasAgeAndGenerationalBiasesRelevant = true;
+                case DiscriminationBias.AgeAndGenerationalBiases:
+                    IsBiasAgeAndGenerationBiasesRelevant = true;
                     break;
-                case DiscriminationBias.SEXUALITY_RELATED_BIASES:
-                    IsBiasSexualityRelatedBiasesRelevant = true;
-                    break;
-                case DiscriminationBias.AGAINST_WOMEN_WITH_DISABILITIES:
-                    IsBiasAgainstWomenWithDisabilitiesRelevant = true;
-                    break;
-                case DiscriminationBias.STEREOTYPES_AGAINST_WOMEN_IN_NON_TRADITIONAL_INDUSTRIES:
+                case DiscriminationBias.StereotypesAgainstWomenInNonTraditionalIndustries:
                     IsBiasStereotypesAgainstWomenInNonTraditionalIndustriesRelevant = true;
                     break;
-                case DiscriminationBias.CULTURAL_AND_RELIGIOUS_BIASES:
+                case DiscriminationBias.CulturalAndReligiousBiases:
                     IsBiasCulturalAndReligiousBiasesRelevant = true;
                     break;
-                case DiscriminationBias.MATERNAL_BIAS:
+                case DiscriminationBias.MaternalBias:
                     IsBiasMaternalBiasRelevant = true;
                     break;
-                case DiscriminationBias.AGAINST_WOMEN_WITH_CHILDREN:
+                case DiscriminationBias.AgainstWomenWithChildren:
                     IsBiasAgainstWomenWithChildrenRelevant = true;
                     break;
-                case DiscriminationBias.EXPECTATIONS_REGARDING_FAMILY_PLANNING:
+                case DiscriminationBias.ExpectationsRegardingFamilyPlanning:
                     IsBiasExpectationsRegardingFamilyPlanningRelevant = true;
                     break;
-                case DiscriminationBias.WORK_LIFE_BALANCE_EXPECTATIONS:
+                case DiscriminationBias.WorkLifeBalanceExpectations:
                     IsBiasWorkLifeBalanceExpectationsRelevant = true;
                     break;
-                case DiscriminationBias.GENDER_SPECIFIC_STEREOTYPES:
+                case DiscriminationBias.GenderSpecificStereotypes:
                     IsBiasGenderSpecificStereotypesRelevant = true;
                     break;
-                case DiscriminationBias.TIGHTROPE_BIAS:
+                case DiscriminationBias.TightropeBias:
                     IsBiasTightropeBiasRelevant = true;
                     break;
-                case DiscriminationBias.MICROAGGRESSIONS:
+                case DiscriminationBias.Microaggressions:
                     IsBiasMicroaggressionsRelevant = true;
                     break;
-                case DiscriminationBias.PERFORMANCE_ATTRIBUTION_BIAS:
+                case DiscriminationBias.PerformanceAttributionBias:
                     IsBiasPerformanceAttributionBiasRelevant = true;
                     break;
-                case DiscriminationBias.IN_MEDIA_AND_ADVERTISING:
+                case DiscriminationBias.InMediaAndAdvertising:
                     IsBiasInMediaAndAdvertisingRelevant = true;
                     break;
-                case DiscriminationBias.UNCONSCIOUS_BIAS_IN_COMMUNICATION:
+                case DiscriminationBias.UnconsciousBiasInCommunication:
                     IsBiasUnconsciousBiasInCommunicationRelevant = true;
                     break;
-                case DiscriminationBias.PROVE_IT_AGAIN_BIAS:
+                case DiscriminationBias.ProveItAgainBias:
                     IsBiasProveItAgainBiasRelevant = true;
                     break;
-                case DiscriminationBias.HETERONORMATIVITAET_BIAS:
-                    IsBiasHeteronormativitaetBiasRelevant = true;
+                case DiscriminationBias.HeteronormativityBias:
+                    IsBiasHeteronormativityBiasRelevant = true;
                     break;
-                case DiscriminationBias.BENEVOLENTER_SEXISMUS_BIAS:
-                    IsBiasBenevolenterSexismusBiasRelevant = true;
+                case DiscriminationBias.BenevolentSexismBias:
+                    IsBiasBenevolentSexismBiasRelevant = true;
                     break;
                 default:
                     Debug.LogWarning("Bias not Recognized: " + biasName);

@@ -282,32 +282,31 @@ namespace Assets._Scripts.Novels.Visual_Novel_Formatter
 
         public const string AddFeedbackUnderCondition = ">>AddFeedbackUnderCondition<<";
 
-        public const string RelevantBiasAccessToFinancing = ">>RelevantBias:AccessToFinancing<<";
+        public const string RelevantBiasAccessToFunding = ">>RelevantBias:AccessToFunding<<";
         public const string RelevantBiasGenderPayGap = ">>RelevantBias:GenderPayGap<<";
-        public const string RelevantBiasUndervaluationOfFemaleLedCompanies = ">>RelevantBias:UndervaluationOfFemaleLedCompanies<<";
+        public const string RelevantBiasUndervaluationOfWomenLedBusinesses = ">>RelevantBias:UndervaluationOfWomenLedBusinesses<<";
         public const string RelevantBiasRiskAversionBias = ">>RelevantBias:RiskAversionBias<<";
         public const string RelevantBiasConfirmationBias = ">>RelevantBias:ConfirmationBias<<";
         public const string RelevantBiasTokenism = ">>RelevantBias:Tokenism<<";
-        public const string RelevantBiasBiasInThePerceptionOfLeadershipSkills = ">>RelevantBias:BiasInThePerceptionOfLeadershipSkills<<";
-        public const string RelevantBiasRacialAndEthnicBiases = ">>RelevantBias:RacialAndEthnicBiases<<";
-        public const string RelevantBiasSocioeconomicBiases = ">>RelevantBias:SocioeconomicBiases<<";
+        public const string RelevantBiasBiasInThePerceptionOfLeadershipAbilities = ">>RelevantBias:BiasInThePerceptionOfLeadershipAbilities<<";
+        public const string RelevantBiasBenevolentSexismBias = ">>RelevantBias:BenevolentSexismBias<<";
         public const string RelevantBiasAgeAndGenerationBiases = ">>RelevantBias:AgeAndGenerationBiases<<";
-        public const string RelevantBiasSexualityRelatedBiases = ">>RelevantBias:SexualityRelatedBiases<<";
-        public const string RelevantBiasBiasesAgainstWomenWithDisabilities = ">>RelevantBias:BiasesAgainstWomenWithDisabilities<<";
-        public const string RelevantBiasStereotypesTowardsWomenInNonTraditionalIndustries = ">>RelevantBias:StereotypesTowardsWomenInNonTraditionalIndustries<<";
-        public const string RelevantBiasCulturalAndReligiousBiases = ">>RelevantBias:CulturalAndReligiousBiases<<";
+        public const string RelevantBiasStereotypesAgainstWomenInNonTraditionalIndustries = ">>RelevantBias:StereotypesAgainstWomenInNonTraditionalIndustries<<";
+        public const string RelevantBiasHeteronormativityBias = ">>RelevantBias:HeteronormativityBias<<";
         public const string RelevantBiasMaternalBias = ">>RelevantBias:MaternalBias<<";
-        public const string RelevantBiasBiasesAgainstWomenWithChildren = ">>RelevantBias:BiasesAgainstWomenWithChildren<<";
         public const string RelevantBiasExpectationsRegardingFamilyPlanning = ">>RelevantBias:ExpectationsRegardingFamilyPlanning<<";
         public const string RelevantBiasWorkLifeBalanceExpectations = ">>RelevantBias:WorkLifeBalanceExpectations<<";
         public const string RelevantBiasGenderSpecificStereotypes = ">>RelevantBias:GenderSpecificStereotypes<<";
         public const string RelevantBiasTightropeBias = ">>RelevantBias:TightropeBias<<";
         public const string RelevantBiasMicroaggressions = ">>RelevantBias:Microaggressions<<";
         public const string RelevantBiasPerformanceAttributionBias = ">>RelevantBias:PerformanceAttributionBias<<";
-        public const string RelevantBiasBiasInMediaAndAdvertising = ">>RelevantBias:BiasInMediaAndAdvertising<<";
         public const string RelevantBiasUnconsciousBiasInCommunication = ">>RelevantBias:UnconsciousBiasInCommunication<<";
+        
         public const string RelevantBiasProveItAgainBias = ">>RelevantBias:ProveItAgainBias<<";
-        public const string RelevantBiasHeteronormativityBias = ">>RelevantBias:HeteronormativityBias<<";
-        public const string RelevantBiasBenevolentSexismBias = ">>RelevantBias:BenevolentSexismBias<<";
+        public const string RelevantBiasCulturalAndReligiousBiases = ">>RelevantBias:CulturalAndReligiousBiases<<";
+        public const string RelevantBiasBiasesAgainstWomenWithChildren = ">>RelevantBias:BiasesAgainstWomenWithChildren<<";
+        public const string RelevantBiasBiasInMediaAndAdvertising = ">>RelevantBias:BiasInMediaAndAdvertising<<";
+        public const string RelevantBiasSocioeconomicBiases = ">>RelevantBias:SocioeconomicBiases<<";
+        public const string RelevantBiasRacialAndEthnicBiases = ">>RelevantBias:RacialAndEthnicBiases<<";
     }
 }

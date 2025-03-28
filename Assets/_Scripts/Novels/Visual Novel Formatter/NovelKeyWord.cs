@@ -167,19 +167,17 @@ namespace Assets._Scripts.Novels.Visual_Novel_Formatter
         AddFeedback,
         AddFeedbackUnderCondition,
 
-        RelevantBiasAccessToFinancing,
+        RelevantBiasAccessToFunding,
         RelevantBiasGenderPayGap,
-        RelevantBiasUndervaluationOfFemaleLedCompanies,
+        RelevantBiasUndervaluationOfWomenLedBusinesses,
         RelevantBiasRiskAversionBias,
         RelevantBiasConfirmationBias,
         RelevantBiasTokenism,
-        RelevantBiasBiasInThePerceptionOfLeadershipSkills,
+        RelevantBiasBiasInThePerceptionOfLeadershipAbilities,
         RelevantBiasRacialAndEthnicBiases,
         RelevantBiasSocioeconomicBiases,
         RelevantBiasAgeAndGenerationBiases,
-        RelevantBiasSexualityRelatedBiases,
-        RelevantBiasBiasesAgainstWomenWithDisabilities,
-        RelevantBiasStereotypesTowardsWomenInNonTraditionalIndustries,
+        RelevantBiasStereotypesAgainstWomenInNonTraditionalIndustries,
         RelevantBiasCulturalAndReligiousBiases,
         RelevantBiasMaternalBias,
         RelevantBiasBiasesAgainstWomenWithChildren,
@@ -404,19 +402,17 @@ namespace Assets._Scripts.Novels.Visual_Novel_Formatter
 
                 case NovelKeyWordValue.AddFeedbackUnderCondition: return NovelKeyWord.AddFeedbackUnderCondition;
                 
-                case NovelKeyWordValue.RelevantBiasAccessToFinancing: return NovelKeyWord.RelevantBiasAccessToFinancing;
+                case NovelKeyWordValue.RelevantBiasAccessToFunding: return NovelKeyWord.RelevantBiasAccessToFunding;
                 case NovelKeyWordValue.RelevantBiasGenderPayGap: return NovelKeyWord.RelevantBiasGenderPayGap;
-                case NovelKeyWordValue.RelevantBiasUndervaluationOfFemaleLedCompanies: return NovelKeyWord.RelevantBiasUndervaluationOfFemaleLedCompanies;
+                case NovelKeyWordValue.RelevantBiasUndervaluationOfWomenLedBusinesses: return NovelKeyWord.RelevantBiasUndervaluationOfWomenLedBusinesses;
                 case NovelKeyWordValue.RelevantBiasRiskAversionBias: return NovelKeyWord.RelevantBiasRiskAversionBias;
                 case NovelKeyWordValue.RelevantBiasConfirmationBias: return NovelKeyWord.RelevantBiasConfirmationBias;
                 case NovelKeyWordValue.RelevantBiasTokenism: return NovelKeyWord.RelevantBiasTokenism;
-                case NovelKeyWordValue.RelevantBiasBiasInThePerceptionOfLeadershipSkills: return NovelKeyWord.RelevantBiasBiasInThePerceptionOfLeadershipSkills;
+                case NovelKeyWordValue.RelevantBiasBiasInThePerceptionOfLeadershipAbilities: return NovelKeyWord.RelevantBiasBiasInThePerceptionOfLeadershipAbilities;
                 case NovelKeyWordValue.RelevantBiasRacialAndEthnicBiases: return NovelKeyWord.RelevantBiasRacialAndEthnicBiases;
                 case NovelKeyWordValue.RelevantBiasSocioeconomicBiases: return NovelKeyWord.RelevantBiasSocioeconomicBiases;
                 case NovelKeyWordValue.RelevantBiasAgeAndGenerationBiases: return NovelKeyWord.RelevantBiasAgeAndGenerationBiases;
-                case NovelKeyWordValue.RelevantBiasSexualityRelatedBiases: return NovelKeyWord.RelevantBiasSexualityRelatedBiases;
-                case NovelKeyWordValue.RelevantBiasBiasesAgainstWomenWithDisabilities: return NovelKeyWord.RelevantBiasBiasesAgainstWomenWithDisabilities;
-                case NovelKeyWordValue.RelevantBiasStereotypesTowardsWomenInNonTraditionalIndustries: return NovelKeyWord.RelevantBiasStereotypesTowardsWomenInNonTraditionalIndustries;
+                case NovelKeyWordValue.RelevantBiasStereotypesAgainstWomenInNonTraditionalIndustries: return NovelKeyWord.RelevantBiasStereotypesAgainstWomenInNonTraditionalIndustries;
                 case NovelKeyWordValue.RelevantBiasCulturalAndReligiousBiases: return NovelKeyWord.RelevantBiasCulturalAndReligiousBiases;
                 case NovelKeyWordValue.RelevantBiasMaternalBias: return NovelKeyWord.RelevantBiasMaternalBias;
                 case NovelKeyWordValue.RelevantBiasBiasesAgainstWomenWithChildren: return NovelKeyWord.RelevantBiasBiasesAgainstWomenWithChildren;

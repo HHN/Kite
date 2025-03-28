@@ -43,15 +43,11 @@ namespace Assets._Scripts.OfflineAiFeedback
                 _numberOfPossiblePaths = new Dictionary<VisualNovelNames, int>();
                 _numberOfPossiblePaths[VisualNovelNames.BankKreditNovel] = 0;
                 _numberOfPossiblePaths[VisualNovelNames.InvestorNovel] = 0;
-                // _numberOfPossiblePaths[VisualNovelNames.BANK_KONTO_NOVEL] = 0;
-                // _numberOfPossiblePaths[VisualNovelNames.FOERDERANTRAG_NOVEL] = 0;
                 _numberOfPossiblePaths[VisualNovelNames.ElternNovel] = 0;
                 _numberOfPossiblePaths[VisualNovelNames.NotariatNovel] = 0;
                 _numberOfPossiblePaths[VisualNovelNames.PresseNovel] = 0;
                 _numberOfPossiblePaths[VisualNovelNames.VermieterNovel] = 0;
-                // _numberOfPossiblePaths[VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL] = 0;
                 _numberOfPossiblePaths[VisualNovelNames.HonorarNovel] = 0;
-                // _numberOfPossiblePaths[VisualNovelNames.LEBENSPARTNER_NOVEL] = 0;
                 _numberOfPossiblePaths[VisualNovelNames.EinstiegsNovel] = 0;
             }
 
@@ -59,17 +55,12 @@ namespace Assets._Scripts.OfflineAiFeedback
             {
                 _allPossibleNovelAnalyserHelpers = new Dictionary<VisualNovelNames, List<NovelAnalyserHelper>>();
                 _allPossibleNovelAnalyserHelpers[VisualNovelNames.BankKreditNovel] = new List<NovelAnalyserHelper>();
-                _allPossibleNovelAnalyserHelpers[VisualNovelNames.InvestorNovel] =
-                    new List<NovelAnalyserHelper>();
-                // _allPossibleNovelAnalyserHelpers[VisualNovelNames.BANK_KONTO_NOVEL] = new List<NovelAnalyserHelper>();
-                // _allPossibleNovelAnalyserHelpers[VisualNovelNames.FOERDERANTRAG_NOVEL] = new List<NovelAnalyserHelper>();
+                _allPossibleNovelAnalyserHelpers[VisualNovelNames.InvestorNovel] = new List<NovelAnalyserHelper>();
                 _allPossibleNovelAnalyserHelpers[VisualNovelNames.ElternNovel] = new List<NovelAnalyserHelper>();
                 _allPossibleNovelAnalyserHelpers[VisualNovelNames.NotariatNovel] = new List<NovelAnalyserHelper>();
                 _allPossibleNovelAnalyserHelpers[VisualNovelNames.PresseNovel] = new List<NovelAnalyserHelper>();
                 _allPossibleNovelAnalyserHelpers[VisualNovelNames.VermieterNovel] = new List<NovelAnalyserHelper>(); 
-                // _allPossibleNovelAnalyserHelpers[VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL] = new List<NovelAnalyserHelper>();
                 _allPossibleNovelAnalyserHelpers[VisualNovelNames.HonorarNovel] = new List<NovelAnalyserHelper>();
-                // _allPossibleNovelAnalyserHelpers[VisualNovelNames.LEBENSPARTNER_NOVEL] = new List<NovelAnalyserHelper>();
                 _allPossibleNovelAnalyserHelpers[VisualNovelNames.EinstiegsNovel] = new List<NovelAnalyserHelper>();
             }
 
@@ -78,15 +69,11 @@ namespace Assets._Scripts.OfflineAiFeedback
                 _allPossibleBiasCombinations = new Dictionary<VisualNovelNames, List<NovelAnalyserHelper>>();
                 _allPossibleBiasCombinations[VisualNovelNames.BankKreditNovel] = new List<NovelAnalyserHelper>();
                 _allPossibleBiasCombinations[VisualNovelNames.InvestorNovel] = new List<NovelAnalyserHelper>();
-                // _allPossibleBiasCombinations[VisualNovelNames.BANK_KONTO_NOVEL] = new List<NovelAnalyserHelper>();
-                // _allPossibleBiasCombinations[VisualNovelNames.FOERDERANTRAG_NOVEL] = new List<NovelAnalyserHelper>();
                 _allPossibleBiasCombinations[VisualNovelNames.ElternNovel] = new List<NovelAnalyserHelper>();
                 _allPossibleBiasCombinations[VisualNovelNames.NotariatNovel] = new List<NovelAnalyserHelper>();
                 _allPossibleBiasCombinations[VisualNovelNames.PresseNovel] = new List<NovelAnalyserHelper>();
                 _allPossibleBiasCombinations[VisualNovelNames.VermieterNovel] = new List<NovelAnalyserHelper>();
-                // _allPossibleBiasCombinations[VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL] = new List<NovelAnalyserHelper>();
                 _allPossibleBiasCombinations[VisualNovelNames.HonorarNovel] = new List<NovelAnalyserHelper>();
-                // _allPossibleBiasCombinations[VisualNovelNames.LEBENSPARTNER_NOVEL] = new List<NovelAnalyserHelper>();
                 _allPossibleBiasCombinations[VisualNovelNames.EinstiegsNovel] = new List<NovelAnalyserHelper>();
             }
 
@@ -388,7 +375,7 @@ namespace Assets._Scripts.OfflineAiFeedback
 
         private void HandleMarkBiasEvent(VisualNovelEvent novelEvent)
         {
-            if (DiscriminationBiasHelper.ValueOf(novelEvent.relevantBias) == DiscriminationBias.NONE)
+            if (DiscriminationBiasHelper.ValueOf(novelEvent.relevantBias) == DiscriminationBias.None)
             {
                 OnAnalysisFailed("Discrimination bias event without discrimination bias!", _objectUnderAnalyse.title,
                     novelEvent.id);

@@ -296,7 +296,7 @@ namespace Assets._Scripts.Novels.Visual_Novel_Formatter
 
         private void HandleMarkBiasEvent(VisualNovelEvent novelEvent)
         {
-            if (DiscriminationBiasHelper.ValueOf(novelEvent.relevantBias) == DiscriminationBias.NONE)
+            if (DiscriminationBiasHelper.ValueOf(novelEvent.relevantBias) == DiscriminationBias.None)
             {
                 OnTestFailed("Discrimination bias event without discrimination bias!", _objectUnderTest.title,
                     novelEvent.id);
