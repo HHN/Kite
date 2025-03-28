@@ -187,9 +187,11 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             {
                 return "";
             }
-
-            foreach (string keyWord in NovelKeyWordValue.ALL_KEY_WORDS)
+            
+            foreach (NovelKeyWord novelKeyWord in Enum.GetValues(typeof(NovelKeyWord)))
             {
+                string keyWord = NovelKeyWordHelper.GetNovelKeywordString(novelKeyWord);
+
                 input = input.Replace(keyWord, "");
             }
 

@@ -6,18 +6,12 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
     {
         public KiteNovelFolder(NovelMetaData novelMetaData, KiteNovelEventList novelEventList)
         {
-            this.NovelMetaData = novelMetaData;
-            this.NovelEventList = novelEventList;
-        }
-
-        public KiteNovelFolder()
-        {
-            this.NovelMetaData = null;
-            this.NovelEventList = null;
+            NovelMetaData = novelMetaData;
+            NovelEventList = novelEventList;
         }
 
         public NovelMetaData NovelMetaData { get; set; }
 
-        public KiteNovelEventList NovelEventList { get; set; }
+        public KiteNovelEventList NovelEventList { get; }
     }
 }

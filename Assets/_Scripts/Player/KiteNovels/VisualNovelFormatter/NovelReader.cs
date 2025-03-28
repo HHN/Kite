@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
+using Assets._Scripts.NovelData;
 using Assets._Scripts.Player.KiteNovels.Visual_Novel_Loader;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -17,10 +18,10 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
         private const string EventListFileName = "visual_novel_event_list.txt";
         private bool _isFinished;
 
-        // public void ConvertNovelsFromTweeToJSON()
-        // {
-        //     StartCoroutine(LoadAllNovelsWithTweeApproach());
-        // }
+        public void ConvertNovelsFromTweeToJSON()
+        {
+            StartCoroutine(LoadAllNovelsWithTweeApproach());
+        }
 
         public void ConvertNovelsFromTweeToJSONAndSelectiveOverrideOldNovels()
         {
@@ -32,27 +33,27 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             return _isFinished;
         }
 
-        // private IEnumerator LoadAllNovelsWithTweeApproach()
-        // {
-        //     if (KiteNovelManager.Instance().AreNovelsLoaded())
-        //     {
-        //         yield break;
-        //     }
-        //
-        //     string fullPath = Path.Combine(Application.dataPath, NovelListPath);
-        //
-        //     yield return StartCoroutine(LoadNovelPaths(fullPath, listOfAllNovelPaths =>
-        //     {
-        //         if (listOfAllNovelPaths == null || listOfAllNovelPaths.Count == 0)
-        //         {
-        //             Debug.LogWarning("Loading Novels failed: No Novels found! Path: " + fullPath);
-        //             KiteNovelManager.Instance().SetAllKiteNovels(new List<VisualNovel>());
-        //             return;
-        //         }
-        //
-        //         StartCoroutine(ProcessNovels(listOfAllNovelPaths));
-        //     }));
-        // }
+        private IEnumerator LoadAllNovelsWithTweeApproach()
+        {
+            if (KiteNovelManager.Instance().AreNovelsLoaded())
+            {
+                yield break;
+            }
+
+            string fullPath = Path.Combine(Application.dataPath, NovelListPath);
+
+            yield return StartCoroutine(LoadNovelPaths(fullPath, listOfAllNovelPaths =>
+            {
+                if (listOfAllNovelPaths == null || listOfAllNovelPaths.Count == 0)
+                {
+                    Debug.LogWarning("Loading Novel failed: No Novel found! Path: " + fullPath);
+                    KiteNovelManager.Instance().SetAllKiteNovels(new List<VisualNovel>());
+                    return;
+                }
+
+                StartCoroutine(ProcessNovels(listOfAllNovelPaths));
+            }));
+        }
 
         private IEnumerator LoadAllNovelsWithTweeApproachAndSelectiveOverrideOldNovels()
         {
@@ -67,7 +68,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             {
                 if (listOfAllNovelPaths == null || listOfAllNovelPaths.Count == 0)
                 {
-                    Debug.LogWarning("Loading Novels failed: No Novels found! Path: " + fullPath);
+                    Debug.LogWarning("Loading Novel failed: No Novel found! Path: " + fullPath);
                     KiteNovelManager.Instance().SetAllKiteNovels(new List<VisualNovel>());
                     return;
                 }
@@ -76,48 +77,48 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             }));
         }
 
-        // private IEnumerator ProcessNovels(List<string> listOfAllNovelPaths)
-        // {
-        //     List<KiteNovelFolder> allFolders = new List<KiteNovelFolder>();
-        //
-        //     foreach (string pathOfNovel in listOfAllNovelPaths)
-        //     {
-        //         string fullPathOfNovelMetaData = Path.Combine(Application.dataPath, pathOfNovel, MetaDataFileName);
-        //         string fullPathOfNovelEventList = Path.Combine(Application.dataPath, pathOfNovel, EventListFileName);
-        //
-        //         KiteNovelMetaData kiteNovelMetaData = null;
-        //         string jsonStringOfEventList = null;
-        //
-        //         yield return StartCoroutine(LoadAndDeserialize<KiteNovelMetaData>(fullPathOfNovelMetaData,
-        //             result => { kiteNovelMetaData = result; }));
-        //
-        //         if (kiteNovelMetaData == null)
-        //         {
-        //             Debug.LogWarning("Kite Novel Meta Data could not be loaded: " + pathOfNovel);
-        //             continue;
-        //         }
-        //
-        //         yield return StartCoroutine(LoadFileContent(fullPathOfNovelEventList,
-        //             result => { jsonStringOfEventList = result; }));
-        //
-        //         if (string.IsNullOrEmpty(jsonStringOfEventList))
-        //         {
-        //             Debug.LogWarning("Kite Novel Event List could not be loaded: " + pathOfNovel);
-        //             continue;
-        //         }
-        //
-        //         jsonStringOfEventList = ReplaceWordsInString(jsonStringOfEventList, kiteNovelMetaData.WordsToReplace);
-        //
-        //         KiteNovelEventList kiteNovelEventList =
-        //             KiteNovelConverter.ConvertTextDocumentIntoEventList(jsonStringOfEventList, kiteNovelMetaData);
-        //
-        //         allFolders.Add(new KiteNovelFolder(kiteNovelMetaData, kiteNovelEventList));
-        //     }
-        //
-        //     List<VisualNovel> visualNovels = KiteNovelConverter.ConvertFilesToNovels(allFolders);
-        //
-        //     SaveToJson(new NovelListWrapper(visualNovels));
-        // }
+        private IEnumerator ProcessNovels(List<string> listOfAllNovelPaths)
+        {
+            List<KiteNovelFolder> allFolders = new List<KiteNovelFolder>();
+
+            foreach (string pathOfNovel in listOfAllNovelPaths)
+            {
+                string fullPathOfNovelMetaData = Path.Combine(Application.dataPath, pathOfNovel, MetaDataFileName);
+                string fullPathOfNovelEventList = Path.Combine(Application.dataPath, pathOfNovel, EventListFileName);
+
+                NovelMetaData kiteNovelMetaData = null;
+                string jsonStringOfEventList = null;
+
+                yield return StartCoroutine(LoadAndDeserialize<NovelMetaData>(fullPathOfNovelMetaData,
+                    result => { kiteNovelMetaData = result; }));
+
+                if (kiteNovelMetaData == null)
+                {
+                    Debug.LogWarning("Kite Novel Meta Data could not be loaded: " + pathOfNovel);
+                    continue;
+                }
+
+                yield return StartCoroutine(LoadFileContent(fullPathOfNovelEventList,
+                    result => { jsonStringOfEventList = result; }));
+
+                if (string.IsNullOrEmpty(jsonStringOfEventList))
+                {
+                    Debug.LogWarning("Kite Novel Event List could not be loaded: " + pathOfNovel);
+                    continue;
+                }
+
+                // jsonStringOfEventList = ReplaceWordsInString(jsonStringOfEventList, kiteNovelMetaData.WordsToReplace);
+
+                KiteNovelEventList kiteNovelEventList =
+                    KiteNovelConverter.ConvertTextDocumentIntoEventList(jsonStringOfEventList, kiteNovelMetaData);
+
+                allFolders.Add(new KiteNovelFolder(kiteNovelMetaData, kiteNovelEventList));
+            }
+
+            List<VisualNovel> visualNovels = KiteNovelConverter.ConvertFilesToNovels(allFolders);
+
+            SaveToJson(new NovelListWrapper(visualNovels));
+        }
 
         private IEnumerator ProcessNovelsAndSelectiveOverrideOldNovels(List<string> listOfAllNovelPaths)
         {

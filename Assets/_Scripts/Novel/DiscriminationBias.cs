@@ -2,34 +2,34 @@ namespace Assets._Scripts.Novel
 {
     public enum DiscriminationBias
     {
-        NONE,
-        ACCESS_TO_FUNDING,
-        GENDER_PAY_GAP,
-        UNDERVALUATION_OF_WOMEN_LED_BUSINESSES,
-        RISK_AVERSION_BIAS,
-        CONFIRMATION_BIAS,
-        TOKENISM,
-        IN_PERCEPTION_OF_LEADERSHIP_ABILITIES,
-        RACIST_AND_ETHNIC_BIASES,
-        SOCIOECONOMIC_BIASES,
-        AGE_AND_GENERATIONAL_BIASES,
-        SEXUALITY_RELATED_BIASES,
-        AGAINST_WOMEN_WITH_DISABILITIES,
-        STEREOTYPES_AGAINST_WOMEN_IN_NON_TRADITIONAL_INDUSTRIES,
-        CULTURAL_AND_RELIGIOUS_BIASES,
-        MATERNAL_BIAS,
-        AGAINST_WOMEN_WITH_CHILDREN,
-        EXPECTATIONS_REGARDING_FAMILY_PLANNING,
-        WORK_LIFE_BALANCE_EXPECTATIONS,
-        GENDER_SPECIFIC_STEREOTYPES,
-        TIGHTROPE_BIAS,
-        MICROAGGRESSIONS,
-        PERFORMANCE_ATTRIBUTION_BIAS,
-        IN_MEDIA_AND_ADVERTISING,
-        UNCONSCIOUS_BIAS_IN_COMMUNICATION,
-        PROVE_IT_AGAIN_BIAS,
-        HETERONORMATIVITAET_BIAS,
-        BENEVOLENTER_SEXISMUS_BIAS
+        None,
+        AccessToFunding,
+        GenderPayGap,
+        UndervaluationOfWomenLedBusinesses,
+        RiskAversionBias,
+        ConfirmationBias,
+        Tokenism,
+        InPerceptionOfLeadershipAbilities,
+        RacistAndEthnicBiases,
+        SocioeconomicBiases,
+        AgeAndGenerationalBiases,
+        SexualityRelatedBiases,
+        AgainstWomenWithDisabilities,
+        StereotypesAgainstWomenInNonTraditionalIndustries,
+        CulturalAndReligiousBiases,
+        MaternalBias,
+        AgainstWomenWithChildren,
+        ExpectationsRegardingFamilyPlanning,
+        WorkLifeBalanceExpectations,
+        GenderSpecificStereotypes,
+        TightropeBias,
+        Microaggressions,
+        PerformanceAttributionBias,
+        InMediaAndAdvertising,
+        UnconsciousBiasInCommunication,
+        ProveItAgainBias,
+        HeteronormativityBias,
+        BenevolentSexismBias
     }
 
     public class DiscriminationBiasHelper
@@ -38,34 +38,34 @@ namespace Assets._Scripts.Novel
         {
             switch (discriminationBias)
             {
-                case DiscriminationBias.NONE: return 0;
-                case DiscriminationBias.ACCESS_TO_FUNDING: return 1;
-                case DiscriminationBias.GENDER_PAY_GAP: return 2;
-                case DiscriminationBias.UNDERVALUATION_OF_WOMEN_LED_BUSINESSES: return 3;
-                case DiscriminationBias.RISK_AVERSION_BIAS: return 4;
-                case DiscriminationBias.CONFIRMATION_BIAS: return 5;
-                case DiscriminationBias.TOKENISM: return 6;
-                case DiscriminationBias.IN_PERCEPTION_OF_LEADERSHIP_ABILITIES: return 7;
-                case DiscriminationBias.RACIST_AND_ETHNIC_BIASES: return 8;
-                case DiscriminationBias.SOCIOECONOMIC_BIASES: return 9;
-                case DiscriminationBias.AGE_AND_GENERATIONAL_BIASES: return 10;
-                case DiscriminationBias.SEXUALITY_RELATED_BIASES: return 11;
-                case DiscriminationBias.AGAINST_WOMEN_WITH_DISABILITIES: return 12;
-                case DiscriminationBias.STEREOTYPES_AGAINST_WOMEN_IN_NON_TRADITIONAL_INDUSTRIES: return 13;
-                case DiscriminationBias.CULTURAL_AND_RELIGIOUS_BIASES: return 14;
-                case DiscriminationBias.MATERNAL_BIAS: return 15;
-                case DiscriminationBias.AGAINST_WOMEN_WITH_CHILDREN: return 16;
-                case DiscriminationBias.EXPECTATIONS_REGARDING_FAMILY_PLANNING: return 17;
-                case DiscriminationBias.WORK_LIFE_BALANCE_EXPECTATIONS: return 18;
-                case DiscriminationBias.GENDER_SPECIFIC_STEREOTYPES: return 19;
-                case DiscriminationBias.TIGHTROPE_BIAS: return 20;
-                case DiscriminationBias.MICROAGGRESSIONS: return 21;
-                case DiscriminationBias.PERFORMANCE_ATTRIBUTION_BIAS: return 22;
-                case DiscriminationBias.IN_MEDIA_AND_ADVERTISING: return 23;
-                case DiscriminationBias.UNCONSCIOUS_BIAS_IN_COMMUNICATION: return 24;
-                case DiscriminationBias.PROVE_IT_AGAIN_BIAS: return 25;
-                case DiscriminationBias.HETERONORMATIVITAET_BIAS: return 26;
-                case DiscriminationBias.BENEVOLENTER_SEXISMUS_BIAS: return 27;
+                case DiscriminationBias.None: return 0;
+                case DiscriminationBias.AccessToFunding: return 1;
+                case DiscriminationBias.GenderPayGap: return 2;
+                case DiscriminationBias.UndervaluationOfWomenLedBusinesses: return 3;
+                case DiscriminationBias.RiskAversionBias: return 4;
+                case DiscriminationBias.ConfirmationBias: return 5;
+                case DiscriminationBias.Tokenism: return 6;
+                case DiscriminationBias.InPerceptionOfLeadershipAbilities: return 7;
+                case DiscriminationBias.RacistAndEthnicBiases: return 8;
+                case DiscriminationBias.SocioeconomicBiases: return 9;
+                case DiscriminationBias.AgeAndGenerationalBiases: return 10;
+                case DiscriminationBias.SexualityRelatedBiases: return 11;
+                case DiscriminationBias.AgainstWomenWithDisabilities: return 12;
+                case DiscriminationBias.StereotypesAgainstWomenInNonTraditionalIndustries: return 13;
+                case DiscriminationBias.CulturalAndReligiousBiases: return 14;
+                case DiscriminationBias.MaternalBias: return 15;
+                case DiscriminationBias.AgainstWomenWithChildren: return 16;
+                case DiscriminationBias.ExpectationsRegardingFamilyPlanning: return 17;
+                case DiscriminationBias.WorkLifeBalanceExpectations: return 18;
+                case DiscriminationBias.GenderSpecificStereotypes: return 19;
+                case DiscriminationBias.TightropeBias: return 20;
+                case DiscriminationBias.Microaggressions: return 21;
+                case DiscriminationBias.PerformanceAttributionBias: return 22;
+                case DiscriminationBias.InMediaAndAdvertising: return 23;
+                case DiscriminationBias.UnconsciousBiasInCommunication: return 24;
+                case DiscriminationBias.ProveItAgainBias: return 25;
+                case DiscriminationBias.HeteronormativityBias: return 26;
+                case DiscriminationBias.BenevolentSexismBias: return 27;
                 default: return 0;
             }
         }
@@ -74,35 +74,35 @@ namespace Assets._Scripts.Novel
         {
             switch (discriminationBias)
             {
-                case 0: return DiscriminationBias.NONE;
-                case 1: return DiscriminationBias.ACCESS_TO_FUNDING;
-                case 2: return DiscriminationBias.GENDER_PAY_GAP;
-                case 3: return DiscriminationBias.UNDERVALUATION_OF_WOMEN_LED_BUSINESSES;
-                case 4: return DiscriminationBias.RISK_AVERSION_BIAS;
-                case 5: return DiscriminationBias.CONFIRMATION_BIAS;
-                case 6: return DiscriminationBias.TOKENISM;
-                case 7: return DiscriminationBias.IN_PERCEPTION_OF_LEADERSHIP_ABILITIES;
-                case 8: return DiscriminationBias.RACIST_AND_ETHNIC_BIASES;
-                case 9: return DiscriminationBias.SOCIOECONOMIC_BIASES;
-                case 10: return DiscriminationBias.AGE_AND_GENERATIONAL_BIASES;
-                case 11: return DiscriminationBias.SEXUALITY_RELATED_BIASES;
-                case 12: return DiscriminationBias.AGAINST_WOMEN_WITH_DISABILITIES;
-                case 13: return DiscriminationBias.STEREOTYPES_AGAINST_WOMEN_IN_NON_TRADITIONAL_INDUSTRIES;
-                case 14: return DiscriminationBias.CULTURAL_AND_RELIGIOUS_BIASES;
-                case 15: return DiscriminationBias.MATERNAL_BIAS;
-                case 16: return DiscriminationBias.AGAINST_WOMEN_WITH_CHILDREN;
-                case 17: return DiscriminationBias.EXPECTATIONS_REGARDING_FAMILY_PLANNING;
-                case 18: return DiscriminationBias.WORK_LIFE_BALANCE_EXPECTATIONS;
-                case 19: return DiscriminationBias.GENDER_SPECIFIC_STEREOTYPES;
-                case 20: return DiscriminationBias.TIGHTROPE_BIAS;
-                case 21: return DiscriminationBias.MICROAGGRESSIONS;
-                case 22: return DiscriminationBias.PERFORMANCE_ATTRIBUTION_BIAS;
-                case 23: return DiscriminationBias.IN_MEDIA_AND_ADVERTISING;
-                case 24: return DiscriminationBias.UNCONSCIOUS_BIAS_IN_COMMUNICATION;
-                case 25: return DiscriminationBias.PROVE_IT_AGAIN_BIAS;
-                case 26: return DiscriminationBias.HETERONORMATIVITAET_BIAS;
-                case 27: return DiscriminationBias.BENEVOLENTER_SEXISMUS_BIAS;
-                default: return DiscriminationBias.NONE;
+                case 0: return DiscriminationBias.None;
+                case 1: return DiscriminationBias.AccessToFunding;
+                case 2: return DiscriminationBias.GenderPayGap;
+                case 3: return DiscriminationBias.UndervaluationOfWomenLedBusinesses;
+                case 4: return DiscriminationBias.RiskAversionBias;
+                case 5: return DiscriminationBias.ConfirmationBias;
+                case 6: return DiscriminationBias.Tokenism;
+                case 7: return DiscriminationBias.InPerceptionOfLeadershipAbilities;
+                case 8: return DiscriminationBias.RacistAndEthnicBiases;
+                case 9: return DiscriminationBias.SocioeconomicBiases;
+                case 10: return DiscriminationBias.AgeAndGenerationalBiases;
+                case 11: return DiscriminationBias.SexualityRelatedBiases;
+                case 12: return DiscriminationBias.AgainstWomenWithDisabilities;
+                case 13: return DiscriminationBias.StereotypesAgainstWomenInNonTraditionalIndustries;
+                case 14: return DiscriminationBias.CulturalAndReligiousBiases;
+                case 15: return DiscriminationBias.MaternalBias;
+                case 16: return DiscriminationBias.AgainstWomenWithChildren;
+                case 17: return DiscriminationBias.ExpectationsRegardingFamilyPlanning;
+                case 18: return DiscriminationBias.WorkLifeBalanceExpectations;
+                case 19: return DiscriminationBias.GenderSpecificStereotypes;
+                case 20: return DiscriminationBias.TightropeBias;
+                case 21: return DiscriminationBias.Microaggressions;
+                case 22: return DiscriminationBias.PerformanceAttributionBias;
+                case 23: return DiscriminationBias.InMediaAndAdvertising;
+                case 24: return DiscriminationBias.UnconsciousBiasInCommunication;
+                case 25: return DiscriminationBias.ProveItAgainBias;
+                case 26: return DiscriminationBias.HeteronormativityBias;
+                case 27: return DiscriminationBias.BenevolentSexismBias;
+                default: return DiscriminationBias.None;
             }
         }
 
@@ -110,57 +110,57 @@ namespace Assets._Scripts.Novel
         {
             switch (discriminationBias)
             {
-                case DiscriminationBias.NONE: return "";
-                case DiscriminationBias.ACCESS_TO_FUNDING:
-                    return "Hier wird folgender Bias relevant: Finanzierungszugang";
-                case DiscriminationBias.GENDER_PAY_GAP: return "Hier wird folgender Bias relevant: Gender Pay Gap";
-                case DiscriminationBias.UNDERVALUATION_OF_WOMEN_LED_BUSINESSES:
+                case DiscriminationBias.None: return "";
+                case DiscriminationBias.AccessToFunding:
+                    return "Hier wird folgender Bias relevant: AccessToFinancing";
+                case DiscriminationBias.GenderPayGap: return "Hier wird folgender Bias relevant: Gender Pay Gap";
+                case DiscriminationBias.UndervaluationOfWomenLedBusinesses:
                     return "Hier wird folgender Bias relevant: Unterbewertung weiblich geführter Unternehmen";
-                case DiscriminationBias.RISK_AVERSION_BIAS:
+                case DiscriminationBias.RiskAversionBias:
                     return "Hier wird folgender Bias relevant: Risk Aversion Bias";
-                case DiscriminationBias.CONFIRMATION_BIAS:
+                case DiscriminationBias.ConfirmationBias:
                     return "Hier wird folgender Bias relevant: Bestätigungsverzerrung";
-                case DiscriminationBias.TOKENISM: return "Hier wird folgender Bias relevant: Tokenism";
-                case DiscriminationBias.IN_PERCEPTION_OF_LEADERSHIP_ABILITIES:
+                case DiscriminationBias.Tokenism: return "Hier wird folgender Bias relevant: Tokenism";
+                case DiscriminationBias.InPerceptionOfLeadershipAbilities:
                     return "Hier wird folgender Bias relevant: Bias in der Wahrnehmung von Führungsfähigkeiten";
-                case DiscriminationBias.RACIST_AND_ETHNIC_BIASES:
+                case DiscriminationBias.RacistAndEthnicBiases:
                     return "Hier werden folgende Biases relevant: Rassistische und ethnische Biases";
-                case DiscriminationBias.SOCIOECONOMIC_BIASES:
+                case DiscriminationBias.SocioeconomicBiases:
                     return "Hier werden folgende Biases relevant: Sozioökonomische Biases";
-                case DiscriminationBias.AGE_AND_GENERATIONAL_BIASES:
+                case DiscriminationBias.AgeAndGenerationalBiases:
                     return "Hier werden folgende Biases relevant: Alter- und Generationen-Biases";
-                case DiscriminationBias.SEXUALITY_RELATED_BIASES:
+                case DiscriminationBias.SexualityRelatedBiases:
                     return "Hier werden folgende Biases relevant: Sexualitätsbezogene Biases";
-                case DiscriminationBias.AGAINST_WOMEN_WITH_DISABILITIES:
+                case DiscriminationBias.AgainstWomenWithDisabilities:
                     return "Hier wird folgender Bias relevant: Biases gegenüber Frauen mit Behinderungen";
-                case DiscriminationBias.STEREOTYPES_AGAINST_WOMEN_IN_NON_TRADITIONAL_INDUSTRIES:
+                case DiscriminationBias.StereotypesAgainstWomenInNonTraditionalIndustries:
                     return
                         "Hier wird folgender Bias relevant: Stereotype gegenüber Frauen in nicht-traditionellen Branchen";
-                case DiscriminationBias.CULTURAL_AND_RELIGIOUS_BIASES:
+                case DiscriminationBias.CulturalAndReligiousBiases:
                     return "Hier werden folgende Biases relevant: Kulturelle und religiöse Biases";
-                case DiscriminationBias.MATERNAL_BIAS: return "Hier wird folgender Bias relevant: Maternal Bias";
-                case DiscriminationBias.AGAINST_WOMEN_WITH_CHILDREN:
+                case DiscriminationBias.MaternalBias: return "Hier wird folgender Bias relevant: Maternal Bias";
+                case DiscriminationBias.AgainstWomenWithChildren:
                     return "Hier wird folgender Bias relevant: Bias gegenüber Frauen mit Kindern";
-                case DiscriminationBias.EXPECTATIONS_REGARDING_FAMILY_PLANNING:
+                case DiscriminationBias.ExpectationsRegardingFamilyPlanning:
                     return "Hier wird folgender Bias relevant: Erwartungshaltung bezüglich Familienplanung";
-                case DiscriminationBias.WORK_LIFE_BALANCE_EXPECTATIONS:
+                case DiscriminationBias.WorkLifeBalanceExpectations:
                     return "Hier wird folgender Bias relevant: Work-Life-Balance-Erwartungen";
-                case DiscriminationBias.GENDER_SPECIFIC_STEREOTYPES:
+                case DiscriminationBias.GenderSpecificStereotypes:
                     return "Hier wird folgender Bias relevant: Geschlechtsspezifische Stereotypen";
-                case DiscriminationBias.TIGHTROPE_BIAS:
+                case DiscriminationBias.TightropeBias:
                     return "Hier wird folgender Bias relevant: Doppelte Bindung (Tightrope Bias)";
-                case DiscriminationBias.MICROAGGRESSIONS: return "Hier wird folgender Bias relevant: Mikroaggressionen";
-                case DiscriminationBias.PERFORMANCE_ATTRIBUTION_BIAS:
+                case DiscriminationBias.Microaggressions: return "Hier wird folgender Bias relevant: Mikroaggressionen";
+                case DiscriminationBias.PerformanceAttributionBias:
                     return "Hier wird folgender Bias relevant: Leistungsattributions-Bias";
-                case DiscriminationBias.IN_MEDIA_AND_ADVERTISING:
+                case DiscriminationBias.InMediaAndAdvertising:
                     return "Hier wird folgender Bias relevant: Bias in Medien und Werbung";
-                case DiscriminationBias.UNCONSCIOUS_BIAS_IN_COMMUNICATION:
+                case DiscriminationBias.UnconsciousBiasInCommunication:
                     return "Hier wird folgender Bias relevant: Unbewusster Bias in der Kommunikation";
-                case DiscriminationBias.PROVE_IT_AGAIN_BIAS:
+                case DiscriminationBias.ProveItAgainBias:
                     return "Hier wird folgender Bias relevant: Prove-it-Again-Bias";
-                case DiscriminationBias.HETERONORMATIVITAET_BIAS:
+                case DiscriminationBias.HeteronormativityBias:
                     return "Hier wird folgender Bias relevant: Heteronormativität";
-                case DiscriminationBias.BENEVOLENTER_SEXISMUS_BIAS:
+                case DiscriminationBias.BenevolentSexismBias:
                     return "Hier wird folgender Bias relevant: Benevolenter Sexismus";
                 default: return "";
             }

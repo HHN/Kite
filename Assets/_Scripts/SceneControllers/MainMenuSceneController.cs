@@ -60,7 +60,7 @@ namespace Assets._Scripts.SceneControllers
             // Überprüfe, ob die Nutzungsbedingungen und Datenschutzrichtlinien akzeptiert wurden
             if (privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted())
             {
-                // Starte eine Coroutine, die darauf wartet, dass die Novels geladen sind
+                // Starte eine Coroutine, die darauf wartet, dass die Novel geladen sind
                 StartCoroutine(WaitForNovelsToLoad());
             }
         }

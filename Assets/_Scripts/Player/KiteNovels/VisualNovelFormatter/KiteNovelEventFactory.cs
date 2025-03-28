@@ -28,8 +28,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             return novelEvent;
         }
 
-        public static VisualNovelEvent GetCharacterJoinsEvent(string id, string nextId, CharacterRole characterRole,
-            CharacterExpression expression)
+        public static VisualNovelEvent GetCharacterJoinsEvent(string id, string nextId, CharacterRole characterRole, CharacterExpression expression)
         {
             VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.CHARAKTER_JOIN_EVENT, false);
             novelEvent.character = CharacterTypeHelper.ToInt(characterRole);

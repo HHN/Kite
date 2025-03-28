@@ -37,17 +37,17 @@ namespace Assets._Scripts.Managers
         {
             switch (novel)
             {
-                case VisualNovelNames.ELTERN_NOVEL:
+                case VisualNovelNames.ElternNovel:
                 {
                     _animateNumberForElternNovel = value;
                     break;
                 }
-                case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PresseNovel:
                 {
                     _animateNumberForPresseNovel = value;
                     break;
                 }
-                case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NotariatNovel:
                 {
                     _animateNumberForNotariatNovel = value;
                     break;
@@ -57,7 +57,7 @@ namespace Assets._Scripts.Managers
                 //     _animateNumberForBankkontoNovel = value;
                 //     break;
                 // }
-                case VisualNovelNames.VERMIETER_NOVEL:
+                case VisualNovelNames.VermieterNovel:
                 {
                     _animateNumberForBueroNovel = value;
                     break;
@@ -72,22 +72,22 @@ namespace Assets._Scripts.Managers
                 //     _animateNumberForGruendungszuschussNovel = value;
                 //     break;
                 // }
-                case VisualNovelNames.INVESTOR_NOVEL:
+                case VisualNovelNames.InvestorNovel:
                 {
                     _animateNumberForInvestorNovel = value;
                     break;
                 }
-                case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BankKreditNovel:
                 {
                     _animateNumberForBankkreditNovel = value;
                     break;
                 }
-                case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HonorarNovel:
                 {
                     _animateNumberForHonorarNovel = value;
                     break;
                 }
-                case VisualNovelNames.EINSTIEGS_NOVEL:
+                case VisualNovelNames.EinstiegsNovel:
                 {
                     _animateNumberForIntroNovel = value;
                     break;
@@ -104,15 +104,15 @@ namespace Assets._Scripts.Managers
         {
             switch (novel)
             {
-                case VisualNovelNames.ELTERN_NOVEL:
+                case VisualNovelNames.ElternNovel:
                 {
                     return _animateNumberForElternNovel;
                 }
-                case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PresseNovel:
                 {
                     return _animateNumberForPresseNovel;
                 }
-                case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NotariatNovel:
                 {
                     return _animateNumberForNotariatNovel;
                 }
@@ -120,7 +120,7 @@ namespace Assets._Scripts.Managers
                 // {
                 //     return _animateNumberForBankkontoNovel;
                 // }
-                case VisualNovelNames.VERMIETER_NOVEL:
+                case VisualNovelNames.VermieterNovel:
                 {
                     return _animateNumberForBueroNovel;
                 }
@@ -132,19 +132,19 @@ namespace Assets._Scripts.Managers
                 // {
                 //     return _animateNumberForGruendungszuschussNovel;
                 // }
-                case VisualNovelNames.INVESTOR_NOVEL:
+                case VisualNovelNames.InvestorNovel:
                 {
                     return _animateNumberForInvestorNovel;
                 }
-                case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BankKreditNovel:
                 {
                     return _animateNumberForBankkreditNovel;
                 }
-                case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HonorarNovel:
                 {
                     return _animateNumberForHonorarNovel;
                 }
-                case VisualNovelNames.EINSTIEGS_NOVEL:
+                case VisualNovelNames.EinstiegsNovel:
                 {
                     return _animateNumberForIntroNovel;
                 }

@@ -24,7 +24,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 
             if (novels == null || novels.Count == 0)
             {
-                Debug.LogWarning("No Novels to test.");
+                Debug.LogWarning("No Novel to test.");
                 return tests;
             }
 
@@ -297,7 +297,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 
         private void HandleMarkBiasEvent(VisualNovelEvent novelEvent)
         {
-            if (DiscriminationBiasHelper.ValueOf(novelEvent.relevantBias) == DiscriminationBias.NONE)
+            if (DiscriminationBiasHelper.ValueOf(novelEvent.relevantBias) == DiscriminationBias.None)
             {
                 OnTestFailed("Discrimination bias event without discrimination bias!", _objectUnderTest.title,
                     novelEvent.id);
@@ -376,7 +376,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
                 return;
             }
 
-            if (CharacterExpressionHelper.ValueOf(novelEvent.expressionType) == CharacterExpression.NONE)
+            if (CharacterExpressionHelper.ValueOf(novelEvent.expressionType) == CharacterExpression.None)
             {
                 OnTestFailed("Show message event without character expression!", _objectUnderTest.title, novelEvent.id);
                 return;
