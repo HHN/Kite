@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using Assets._Scripts.Novels;
+using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -250,7 +250,7 @@ namespace Assets._Scripts.SaveNovelData
             }
             else
             {
-                Debug.LogWarning($"Kein Spielstand für Novels ID {novelId} gefunden.");
+                Debug.LogWarning($"Kein Spielstand für Novel ID {novelId} gefunden.");
             }
         }
 

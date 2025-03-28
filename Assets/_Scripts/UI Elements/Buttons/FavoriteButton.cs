@@ -1,5 +1,5 @@
 using Assets._Scripts.Managers;
-using Assets._Scripts.Novels;
+using Assets._Scripts.Novel;
 using UnityEngine;
 using UnityEngine.UI;
 

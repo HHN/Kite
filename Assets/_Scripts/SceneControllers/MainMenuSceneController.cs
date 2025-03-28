@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Messages;
-using Assets._Scripts.Novels;
+using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.Server_Communication;
@@ -60,7 +60,7 @@ namespace Assets._Scripts.SceneControllers
             // Überprüfe, ob die Nutzungsbedingungen und Datenschutzrichtlinien akzeptiert wurden
             if (privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted())
             {
-                // Starte eine Coroutine, die darauf wartet, dass die Novels geladen sind
+                // Starte eine Coroutine, die darauf wartet, dass die Novel geladen sind
                 StartCoroutine(WaitForNovelsToLoad());
             }
         }

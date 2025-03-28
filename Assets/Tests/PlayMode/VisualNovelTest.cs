@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Assets._Scripts.Managers;
-using Assets._Scripts.Novels.Visual_Novel_Formatter;
+using Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter;
 using Assets._Scripts.SceneManagement;
 using NUnit.Framework;
 using UnityEngine;

@@ -1,0 +1,114 @@
+using System.Collections;
+using Assets._Scripts.Managers;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Assets._Scripts.Novel.CharacterController
+{
+    public class BueroNovelImageController : NovelImageController
+    {
+        [SerializeField] private GameObject decoPlantPrefab;
+        [SerializeField] private GameObject decoPlantContainer;
+        [SerializeField] private AudioClip decoPlantAudio;
+        [SerializeField] private Sprite[] animationFrames;
+
+        [SerializeField] private Transform characterContainer;
+        [SerializeField] private GameObject characterPrefab;
+
+        private GameObject _instantiatedCharacter;
+
+        private void Start()
+        {
+            novelKite2CharacterController = characterContainer.GetComponentInChildren<Kite2CharacterController>();
+
+            novelKite2CharacterController.SetSkinSprite();
+            novelKite2CharacterController.SetHandSprite();
+            novelKite2CharacterController.SetClotheSprite();
+            novelKite2CharacterController.SetHairSprite();
+
+            HandSpriteIndex handSpriteIndex = new HandSpriteIndex
+            {
+                colorIndex = novelKite2CharacterController.handIndex[0],
+                spriteIndex = novelKite2CharacterController.handIndex[1],
+            };
+            
+            foreach (var novelStatus in GameManager.Instance.NovelSaveStatusList)
+            {
+                // Wenn das Novel die gesuchte ID hat, setze den isSaved Wert
+                int.TryParse(novelStatus.novelId, out int number);
+                if (number == 6)
+                {
+                    if (!novelStatus.isSaved)
+                    {
+                        GameManager.Instance.AddCharacterData(
+                            6, // Schlüssel für den Eintrag
+                            new CharacterData
+                            {
+                                skinIndex = novelKite2CharacterController.skinIndex,
+                                handIndex = handSpriteIndex,
+                                clotheIndex = novelKite2CharacterController.clotheIndex,
+                                hairIndex = novelKite2CharacterController.hairIndex
+                            }
+                        );
+                    }
+
+                    break; // Keine Notwendigkeit mehr weiterzusuchen
+                }
+            }
+        }
+
+        public override void SetCharacter()
+        {
+        }
+
+        public override bool HandleTouchEvent(float x, float y)
+        {
+            // Check if animations are allowed to proceed, return false if disabled
+            if (AnimationFlagSingleton.Instance().GetFlag() == false)
+            {
+                return false;
+            }
+
+            // Get the RectTransforms of the objects to detect touch within their bounds
+            RectTransform decoPlantRectTransform = decoPlantContainer.GetComponent<RectTransform>();
+
+            // Get the world corners of the plant decoration container
+            Vector3[] cornersDecoPlant = new Vector3[4];
+            decoPlantRectTransform.GetWorldCorners(cornersDecoPlant);
+            Vector3 bottomLeftDecoPlant = cornersDecoPlant[0];
+            Vector3 topRightDecoPlant = cornersDecoPlant[2];
+
+            // Check if the touch coordinates are within the glass decoration bounds
+            if (x >= bottomLeftDecoPlant.x && x <= topRightDecoPlant.x &&
+                y >= bottomLeftDecoPlant.y && y <= topRightDecoPlant.y)
+            {
+                StartCoroutine(OnDecoPlant()); // Trigger the plant interaction
+                return true;
+            }
+
+            // Return false if the touch is outside both bounds
+            return false;
+        }
+
+        private IEnumerator OnDecoPlant()
+        {
+            if (!TextToSpeechManager.Instance.IsTextToSpeechActivated())
+            {
+                GlobalVolumeManager.Instance.PlaySound(decoPlantAudio);
+            }
+            Image image = decoPlantPrefab.GetComponent<Image>();
+            image.sprite = animationFrames[1];
+            Destroy(decoPlantContainer.transform.GetChild(0).gameObject);
+            Instantiate(decoPlantPrefab, decoPlantContainer.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFrames[2];
+            Destroy(decoPlantContainer.transform.GetChild(0).gameObject);
+            Instantiate(decoPlantPrefab, decoPlantContainer.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFrames[0];
+            Destroy(decoPlantContainer.transform.GetChild(0).gameObject);
+            Instantiate(decoPlantPrefab, decoPlantContainer.transform);
+            yield return new WaitForSeconds(0f);
+        }
+    }
+}
