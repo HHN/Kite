@@ -2,28 +2,28 @@ namespace Assets._Scripts.Novel
 {
     public enum CompletionHandler
     {
-        NONE,
-        DEFAULT_COMPLETION_HANDLER
+        None,
+        DefaultCompletionHandler
     }
 
     public class CompletionHandlerHelper
     {
         public static int ToInt(CompletionHandler completionHandler)
         {
-            switch (completionHandler)
+            return completionHandler switch
             {
-                case CompletionHandler.DEFAULT_COMPLETION_HANDLER: return 1;
-                default: return 0;
-            }
+                CompletionHandler.DefaultCompletionHandler => 1,
+                _ => 0
+            };
         }
 
         public static CompletionHandler ValueOf(int completionHandler)
         {
-            switch (completionHandler)
+            return completionHandler switch
             {
-                case 1: return CompletionHandler.DEFAULT_COMPLETION_HANDLER;
-                default: return CompletionHandler.NONE;
-            }
+                1 => CompletionHandler.DefaultCompletionHandler,
+                _ => CompletionHandler.None
+            };
         }
     }
 }

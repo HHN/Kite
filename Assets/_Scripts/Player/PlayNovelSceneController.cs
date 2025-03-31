@@ -820,7 +820,7 @@ namespace Assets._Scripts.Player
         {
             if (!show) return;
 
-            AddEntryToPlayThroughHistory(CharacterRole.PLAYER, message);
+            AddEntryToPlayThroughHistory(CharacterRole.Player, message);
             conversationContent.ShowPlayerAnswer(message);
             ScrollToBottom();
         }

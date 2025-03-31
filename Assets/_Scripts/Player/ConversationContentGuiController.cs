@@ -108,7 +108,7 @@ namespace Assets._Scripts.Player
             messageBox.SetMessage(message);
             guiContent.Add(newMessageBox);
 
-            AddFormattedPromptLine(CharacterTypeHelper.ToInt(CharacterRole.PLAYER), message);
+            AddFormattedPromptLine(CharacterTypeHelper.ToInt(CharacterRole.Player), message);
 
             // Deaktiviere den Button der vorherigen blueMessagePrefabWithTrigger (falls vorhanden)
             if (_lastBlueMessagePrefabWithTrigger != null)
@@ -274,14 +274,14 @@ namespace Assets._Scripts.Player
         private GameObject GetMessagePrefab(VisualNovelEvent novelEvent)
         {
             GameObject newMessageBox;
-            if (novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.PLAYER))
+            if (novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.Player))
             {
                 newMessageBox = Instantiate(blueMessagePrefab, transform);
             }
             else if (novelEvent.character != 0 &&
-                     novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.INTRO) || 
-                     novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.OUTRO) || 
-                     novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.INFO))
+                     novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.Intro) || 
+                     novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.Outro) || 
+                     novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.Info))
             {
                 newMessageBox = Instantiate(cottaMessagePrefab, transform);
             }
