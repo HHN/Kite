@@ -357,57 +357,57 @@ namespace Assets._Scripts.Novel.CharacterController
         
         private void ShowErschrockenAnimation()
         {
-            animator.Play("erschrocken");
+            animator.Play("scared");
         }
         
         private void ShowGenervtAnimation()
         {
-            animator.Play("genervt");
+            animator.Play("defeated");
         }
         
         private void ShowUnzufriedenAnimation()
         {
-            animator.Play("unzufrieden");
+            animator.Play("dissatisfied");
         }
         
         private void ShowAblehnendAnimation()
         {
-            animator.Play("ablehnend");
+            animator.Play("rejecting");
         }
         
         private void ShowErstauntAnimation()
         {
-            animator.Play("erstaunt");
+            animator.Play("amazed");
         }
 
         private void ShowFragendAnimation()
         {
-            animator.Play("fragend");
+            animator.Play("questioning");
         }
         
         private void ShowKritischAnimation()
         {
-            animator.Play("kritisch");
+            animator.Play("critical");
         }
         
         private void ShowLaechelnGrossAnimation()
         {
-            animator.Play("laecheln_gross");
+            animator.Play("smiling_big");
         }
         
         private void ShowLachendAnimation()
         {
-            animator.Play("lachend");
+            animator.Play("laughing");
         }
         
         private void ShowLaechelnAnimation()
         {
-            animator.Play("laecheln");
+            animator.Play("smiling");
         }
         
         private void ShowNeutralEntspanntAnimation()
         {
-            animator.Play("neutral_entspannt");
+            animator.Play("neutral_relaxed");
         }
         
         private void ShowNeutralAnimation()
@@ -417,72 +417,72 @@ namespace Assets._Scripts.Novel.CharacterController
         
         private void ShowStolzAnimation()
         {
-            animator.Play("stolz");
+            animator.Play("proud");
         }
 
         private void PlayErschrockenAnimation()
         {
-            animator.Play("erschrocken_sprechen");
+            animator.Play("scared_speaking");
         }
         
         private void PlayGenervtAnimation()
         {
-            animator.Play("genervt_sprechen");
+            animator.Play("defeated_speaking");
         }
         
         private void PlayUnzufriedenAnimation()
         {
-            animator.Play("unzufrieden_sprechen");
+            animator.Play("dissatisfied_speaking");
         }
         
         private void PlayAblehnendAnimation()
         {
-            animator.Play("ablehnend_sprechen");
+            animator.Play("rejecting_speaking");
         }
         
         private void PlayErstauntAnimation()
         {
-            animator.Play("erstaunt_sprechen");
+            animator.Play("amazed_speaking");
         }
 
         private void PlayFragendAnimation()
         {
-            animator.Play("fragend_sprechen");
+            animator.Play("questioning_speaking");
         }
         
         private void PlayKritischAnimation()
         {
-            animator.Play("kritisch_sprechen");
+            animator.Play("critical_speaking");
         }
         
         private void PlayLaechelnGrossAnimation()
         {
-            animator.Play("laecheln_gross_sprechen");
+            animator.Play("smiling_big_speaking");
         }
         
         private void PlayLachendAnimation()
         {
-            animator.Play("lachend_sprechen");
+            animator.Play("laughing_speaking");
         }
         
         private void PlayLaechelnAnimation()
         {
-            animator.Play("laecheln_sprechen");
+            animator.Play("smiling_speaking");
         }
         
         private void PlayNeutralEntspanntAnimation()
         {
-            animator.Play("neutral_entspannt_sprechen");
+            animator.Play("neutral_relaxed_speaking");
         }
         
         private void PlayNeutralAnimation()
         {
-            animator.Play("neutral_sprechen");
+            animator.Play("neutral_speaking");
         }
         
         private void PlayStolzAnimation()
         {
-            animator.Play("stolz_sprechen");
+            animator.Play("proud_speaking");
         }
 
         public void StartTalking()
