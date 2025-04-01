@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Assets._Scripts.SceneControllers
 {
-    public class RessourcenSceneController : SceneController
+    public class ResourcesSceneController : SceneController
     {
         [SerializeField] private RectTransform layout;
 
@@ -15,7 +15,7 @@ namespace Assets._Scripts.SceneControllers
 
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.RessourcenScene);
+            BackStackManager.Instance().Push(SceneNames.ResourcesScene);
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
 
             bgaButton.onClick.AddListener(OnBgaButton);

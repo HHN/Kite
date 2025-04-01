@@ -2,6 +2,7 @@ using Assets._Scripts.Managers;
 using Assets._Scripts.Novel.CharacterController;
 using Assets._Scripts.Player;
 using Assets._Scripts.SaveNovelData;
+using Assets._Scripts.SceneControllers;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.Utilities;
 using TMPro;

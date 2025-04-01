@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Novel.CharacterController;
+using Assets._Scripts.Player;
 using Assets._Scripts.SaveNovelData;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.Server_Communication.Server_Calls;
@@ -18,7 +19,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.Player
+namespace Assets._Scripts.SceneControllers
 {
     public class PlayNovelSceneController : SceneController
     {

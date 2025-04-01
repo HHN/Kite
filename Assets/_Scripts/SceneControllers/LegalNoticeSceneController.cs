@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 namespace Assets._Scripts.SceneControllers
 {
-    public class ImpressumSceneController : SceneController
+    public class LegalNoticeSceneController : SceneController
     {
         [SerializeField] private RectTransform layout;
 
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.ImpressumScene);
+            BackStackManager.Instance().Push(SceneNames.LegalNoticeScene);
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
             FontSizeManager.Instance().UpdateAllTextComponents();
         }

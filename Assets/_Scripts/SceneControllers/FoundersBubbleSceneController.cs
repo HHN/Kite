@@ -81,8 +81,6 @@ namespace Assets._Scripts.SceneControllers
         {
             BackStackManager.Instance().Push(SceneNames.FoundersBubbleScene);
 
-            foundersWellButton.onClick.AddListener(OnFoundersWellButton);
-
             currentlyOpenedVisualNovelPopup = VisualNovelNames.NONE;
 
             isIntroNovelNovelInVersionContained = true;
@@ -192,24 +190,6 @@ namespace Assets._Scripts.SceneControllers
             }
         }
 
-        private void OnFoundersWellButton()
-        {
-            if (isBurgerMenuOpen)
-            {
-                this.burgerMenu.gameObject.SetActive(false);
-                isBurgerMenuOpen = false;
-                return;
-            }
-
-            if (isPopupOpen)
-            {
-                MakeTextboxInvisible();
-                return;
-            }
-
-            SceneLoader.LoadFoundersWell2Scene();
-        }
-
         public void OnBankkreditNovelButton()
         {
             DisplayTextBoxForVisualNovel(VisualNovelNames.BANK_KREDIT_NOVEL, isBankkreditNovelInVersionContained);
@@ -300,7 +280,7 @@ namespace Assets._Scripts.SceneControllers
 
         private void OnSettingsButton()
         {
-            SceneLoader.LoadEinstellungenScene();
+            SceneLoader.LoadSettingsScene();
         }
 
         private void DisplayTextBoxForVisualNovel(VisualNovelNames visualNovel, bool isNovelContainedInVersion)

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Assets._Scripts.SceneControllers
 {
-    public class EinstellungenSceneController : SceneController
+    public class SettingsSceneController : SceneController
     {
         [SerializeField] private Button barrierefreiheitButton;
         [SerializeField] private Button impressumButton;
@@ -46,27 +46,27 @@ namespace Assets._Scripts.SceneControllers
 
         private void OnBarrierefreiheitButton()
         {
-            SceneLoader.LoadBarrierefreiheitScene();
+            SceneLoader.LoadAccessibilityScene();
         }
 
         private void OnImpressumButton()
         {
-            SceneLoader.LoadImpressumScene();
+            SceneLoader.LoadLegalNoticeScene();
         }
 
         private void OnNutzungsbedingungenButton()
         {
-            SceneLoader.LoadNutzungsbedingungenScene();
+            SceneLoader.LoadTermsOfUseScene();
         }
 
         private void OnDatenschutzButton()
         {
-            SceneLoader.LoadDatenschutzScene();
+            SceneLoader.LoadPrivacyPolicyScene();
         }
 
         private void OnSoundeinstellungButton()
         {
-            SceneLoader.SoundeinstellungScene();
+            SceneLoader.LoadSoundSettingsScene();
         }
     }
 }

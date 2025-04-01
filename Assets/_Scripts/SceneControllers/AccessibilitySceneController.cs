@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Assets._Scripts.SceneControllers
 {
-    public class BarrierefreiheitSceneController : SceneController
+    public class AccessibilitySceneController : SceneController
     {
         [SerializeField] private Toggle toggleTextToSpeech;
         [SerializeField] private Button toggleTextToSpeechInfoButton;
@@ -29,7 +29,7 @@ namespace Assets._Scripts.SceneControllers
 
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.BarrierefreiheitScene);
+            BackStackManager.Instance().Push(SceneNames.AccessibilityScene);
 
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
             InitializeToggleTextToSpeech();

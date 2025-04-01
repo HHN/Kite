@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace Assets._Scripts.SceneControllers
 {
-    public class DatenschutzSceneController : SceneController
+    public class PrivacyPolicySceneController : SceneController
     {
         [SerializeField] private Button resetAppButton;
         [SerializeField] private Button resetAppInfoButton;
@@ -28,7 +28,7 @@ namespace Assets._Scripts.SceneControllers
 
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.DatenschutzScene);
+            BackStackManager.Instance().Push(SceneNames.PrivacyPolicyScene);
 
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout02);
@@ -153,17 +153,6 @@ namespace Assets._Scripts.SceneControllers
             {
                 applicationModeToggle.isOn = true;
             }
-        }
-
-        private void OnPlayerPrefsButton()
-        {
-            SceneLoader.LoadPlayerPrefsScene();
-        }
-
-        private void OnPlayerPrefsInfoButton()
-        {
-            StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.EXPLANATION_PLAYERPREFS_BUTTON));
-            DisplayInfoMessage(InfoMessages.EXPLANATION_PLAYERPREFS_BUTTON);
         }
 
 
