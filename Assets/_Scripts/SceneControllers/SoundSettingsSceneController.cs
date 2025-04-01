@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Assets._Scripts.SceneControllers
 {
-    public class SoundeinstellungSceneController : SceneController
+    public class SoundSettingsSceneController : SceneController
     {
         [SerializeField] private Toggle toggleTextToSpeech;
         [SerializeField] private Toggle toggleSoundEffects;
@@ -24,7 +24,7 @@ namespace Assets._Scripts.SceneControllers
 
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.SoundeinstellungScene);
+            BackStackManager.Instance().Push(SceneNames.SoundSettingsScene);
             
             InitializeToggleTextToSpeech();
             InitializeToggleSoundEffects();

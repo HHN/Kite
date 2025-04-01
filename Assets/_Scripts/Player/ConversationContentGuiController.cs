@@ -3,6 +3,7 @@ using System.Linq;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.SaveNovelData;
+using Assets._Scripts.SceneControllers;
 using Assets._Scripts.UI_Elements.TextBoxes;
 using Assets._Scripts.UndoChoice;
 using Assets._Scripts.Utilities;

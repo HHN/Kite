@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace Assets._Scripts.SceneControllers
 {
-    public class GemerkteNovelsSceneController : SceneController
+    public class BookmarkedNovelsSceneController : SceneController
     {
         [SerializeField] private RectTransform visualNovelHolder;
         [SerializeField] private Button bankkreditNovel;

@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 namespace Assets._Scripts.SceneControllers
 {
-    public class NutzungsbedingungenSceneController : SceneController
+    public class TermsOfUseSceneController : SceneController
     {
         [SerializeField] private RectTransform layout;
         [SerializeField] private RectTransform layout02;
 
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.NutzungsbedingungenScene);
+            BackStackManager.Instance().Push(SceneNames.TermsOfUseScene);
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout02);
             FontSizeManager.Instance().UpdateAllTextComponents();
         }
