@@ -10,31 +10,23 @@ namespace Assets._Scripts.Managers
 
         private Dictionary<string, FeedbackNodeContainer> _feedbackForBankKreditNovel;
         private Dictionary<string, FeedbackNodeContainer> _feedbackForInvestorNovel;
-        // private Dictionary<string, FeedbackNodeContainer> _feedbackForBankKontoNovel;
-        // private Dictionary<string, FeedbackNodeContainer> _feedbackForFoerderantragNovel;
         private Dictionary<string, FeedbackNodeContainer> _feedbackForElternNovel;
         private Dictionary<string, FeedbackNodeContainer> _feedbackForNotariatNovel;
         private Dictionary<string, FeedbackNodeContainer> _feedbackForPresseNovel;
         private Dictionary<string, FeedbackNodeContainer> _feedbackForBueroNovel;
-        // private Dictionary<string, FeedbackNodeContainer> _feedbackForGruendungszuschussNovel;
         private Dictionary<string, FeedbackNodeContainer> _feedbackForHonorarNovel;
-        // private Dictionary<string, FeedbackNodeContainer> _feedbackForLebenspartnerNovel;
         private Dictionary<string, FeedbackNodeContainer> _feedbackForIntroNovel;
 
         private PreGeneratedOfflineFeedbackManager()
         {
-            this._feedbackForBankKreditNovel = null;
-            this._feedbackForInvestorNovel = null;
-            // this._feedbackForBankKontoNovel = null;
-            // this._feedbackForFoerderantragNovel = null;
-            this._feedbackForElternNovel = null;
-            this._feedbackForNotariatNovel = null;
-            this._feedbackForPresseNovel = null;
-            this._feedbackForBueroNovel = null;
-            // this._feedbackForGruendungszuschussNovel = null;
-            this._feedbackForHonorarNovel = null;
-            // this._feedbackForLebenspartnerNovel = null;
-            this._feedbackForIntroNovel = null;
+            _feedbackForBankKreditNovel = null;
+            _feedbackForInvestorNovel = null;
+            _feedbackForElternNovel = null;
+            _feedbackForNotariatNovel = null;
+            _feedbackForPresseNovel = null;
+            _feedbackForBueroNovel = null;
+            _feedbackForHonorarNovel = null;
+            _feedbackForIntroNovel = null;
         }
 
         public static PreGeneratedOfflineFeedbackManager Instance()
@@ -63,22 +55,10 @@ namespace Assets._Scripts.Managers
                 {
                     return _feedbackForNotariatNovel;
                 }
-                // case VisualNovelNames.BANK_KONTO_NOVEL:
-                // {
-                //     return _feedbackForBankKontoNovel;
-                // }
                 case VisualNovelNames.VERMIETER_NOVEL:
                 {
                     return _feedbackForBueroNovel;
                 }
-                // case VisualNovelNames.FOERDERANTRAG_NOVEL:
-                // {
-                //     return _feedbackForFoerderantragNovel;
-                // }
-                // case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
-                // {
-                //     return _feedbackForGruendungszuschussNovel;
-                // }
                 case VisualNovelNames.INVESTOR_NOVEL:
                 {
                     return _feedbackForInvestorNovel;
@@ -95,10 +75,6 @@ namespace Assets._Scripts.Managers
                 {
                     return _feedbackForIntroNovel;
                 }
-                // case VisualNovelNames.LEBENSPARTNER_NOVEL:
-                // {
-                //     return _feedbackForLebenspartnerNovel;
-                // }
                 default:
                 {
                     return null;

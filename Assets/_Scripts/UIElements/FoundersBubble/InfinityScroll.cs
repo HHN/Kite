@@ -76,11 +76,8 @@ namespace Assets._Scripts.UI_Elements.Founders_Bubble
                 contentPanelTransform.localPosition.y,
                 contentPanelTransform.localPosition.z);
 
-            widthBefore = (itemList[0].rect.width * itemList.Length) +
-                ((itemList.Length - 1) * horizontalLayoutGroup.spacing) - (viewPortTransform.rect.width);
-            widthAfter = (itemList[0].rect.width * (itemList.Length + (2 * itemsToAdd))) +
-                         ((itemList.Length + (2 * itemsToAdd) - 1) * horizontalLayoutGroup.spacing) -
-                         (viewPortTransform.rect.width);
+            widthBefore = itemList[0].rect.width * itemList.Length + (itemList.Length - 1) * horizontalLayoutGroup.spacing - viewPortTransform.rect.width;
+            widthAfter = itemList[0].rect.width * (itemList.Length + 2 * itemsToAdd) + (itemList.Length + 2 * itemsToAdd - 1) * horizontalLayoutGroup.spacing - viewPortTransform.rect.width;
 
             FoundersBubbleSceneMemory memory = SceneMemoryManager.Instance().GetMemoryOfFoundersBubbleScene();
 
@@ -94,7 +91,7 @@ namespace Assets._Scripts.UI_Elements.Founders_Bubble
             }
         }
 
-        void Update()
+        private void Update()
         {
             if (scrollRect == null)
             {
@@ -124,7 +121,7 @@ namespace Assets._Scripts.UI_Elements.Founders_Bubble
                     isUpdated = true;
                 }
                 else if (contentPanelTransform.localPosition.x <
-                         0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
+                         0 - itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing))
                 {
                     Canvas.ForceUpdateCanvases();
                     oldVelocity = scrollRect.velocity;
@@ -157,7 +154,7 @@ namespace Assets._Scripts.UI_Elements.Founders_Bubble
                 currentTarget = currentTarget + FoundersBubbleMetaInformation.NumberOfNovelsToDisplay;
             }
             else if (contentPanelTransform.localPosition.x <
-                     0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
+                     0 - itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing))
             {
                 Canvas.ForceUpdateCanvases();
                 oldVelocity = scrollRect.velocity;
@@ -190,7 +187,7 @@ namespace Assets._Scripts.UI_Elements.Founders_Bubble
                     isUpdated = true;
                 }
                 else if (contentPanelTransform.localPosition.x <
-                         0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
+                         0 - itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing))
                 {
                     Canvas.ForceUpdateCanvases();
                     oldVelocity = customScrollRect.velocity;
@@ -223,7 +220,7 @@ namespace Assets._Scripts.UI_Elements.Founders_Bubble
                 currentTarget = currentTarget + FoundersBubbleMetaInformation.NumberOfNovelsToDisplay;
             }
             else if (contentPanelTransform.localPosition.x <
-                     0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
+                     0 - itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing))
             {
                 Canvas.ForceUpdateCanvases();
                 oldVelocity = customScrollRect.velocity;
@@ -239,8 +236,8 @@ namespace Assets._Scripts.UI_Elements.Founders_Bubble
 
         private void SnapToItem()
         {
-            float targetXPosition = 0 - ((currentTarget * (itemList[0].rect.width + horizontalLayoutGroup.spacing)) -
-                                         (viewPortTransform.rect.width / 2) - (itemList[0].rect.width / 2) -
+            float targetXPosition = 0 - (currentTarget * (itemList[0].rect.width + horizontalLayoutGroup.spacing) -
+                                         viewPortTransform.rect.width / 2 - itemList[0].rect.width / 2 -
                                          horizontalLayoutGroup.spacing);
 
             if (isSnapped)
@@ -297,7 +294,7 @@ namespace Assets._Scripts.UI_Elements.Founders_Bubble
 
             if ((contentPanelTransform.localPosition.x >= 0 ||
                  contentPanelTransform.localPosition.x <
-                 0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing))) &&
+                 0 - itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)) &&
                 customScrollRect.m_Dragging)
             {
                 customScrollRect.OnEndDrag(new PointerEventData(null) { button = 0 });
@@ -321,8 +318,8 @@ namespace Assets._Scripts.UI_Elements.Founders_Bubble
 
         private bool IsCurrentlyInFirstHalf()
         {
-            return (contentPanelTransform.localPosition.x >
-                    (0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)) / 2));
+            return contentPanelTransform.localPosition.x >
+                   0 - itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing) / 2;
         }
 
         public float GetCurrentScrollPosition()

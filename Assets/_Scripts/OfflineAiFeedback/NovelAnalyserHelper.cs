@@ -326,7 +326,7 @@ namespace Assets._Scripts.OfflineAiFeedback
 
         private void HandlePlayAnimationEvent(VisualNovelEvent novelEvent)
         {
-            if (KiteAnimationHelper.ValueOf(novelEvent.animationToPlay) == KiteAnimation.NONE)
+            if (KiteAnimationHelper.ValueOf(novelEvent.animationToPlay) == KiteAnimation.None)
             {
                 OnAnalysisFailed("Animation Event without animation!", _objectUnderAnalyse.title, novelEvent.id);
                 return;
@@ -388,7 +388,7 @@ namespace Assets._Scripts.OfflineAiFeedback
 
         private void HandleMarkBiasEvent(VisualNovelEvent novelEvent)
         {
-            if (DiscriminationBiasHelper.ValueOf(novelEvent.relevantBias) == DiscriminationBias.NONE)
+            if (DiscriminationBiasHelper.ValueOf(novelEvent.relevantBias) == DiscriminationBias.None)
             {
                 OnAnalysisFailed("Discrimination bias event without discrimination bias!", _objectUnderAnalyse.title,
                     novelEvent.id);
@@ -411,7 +411,7 @@ namespace Assets._Scripts.OfflineAiFeedback
 
         private void HandleCharacterJoinEvent(VisualNovelEvent novelEvent)
         {
-            if (CharacterTypeHelper.ValueOf(novelEvent.character) == CharacterRole.NONE)
+            if (CharacterTypeHelper.ValueOf(novelEvent.character) == CharacterRole.None)
             {
                 OnAnalysisFailed("CharacterRole joins event without character!", _objectUnderAnalyse.title,
                     novelEvent.id);
@@ -424,11 +424,11 @@ namespace Assets._Scripts.OfflineAiFeedback
 
         private void HandleCharacterExitEvent(VisualNovelEvent novelEvent)
         {
-            if ((CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.NONE) &&
-                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.OUTRO) &&
-                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.INTRO) &&
-                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.INFO) &&
-                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.PLAYER))
+            if ((CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.None) &&
+                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Outro) &&
+                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Intro) &&
+                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Info) &&
+                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Player))
             {
                 if (!_currentCharacters.Contains(CharacterTypeHelper.ValueOf(novelEvent.character)))
                 {
@@ -458,17 +458,17 @@ namespace Assets._Scripts.OfflineAiFeedback
             }
 
             if (!_currentCharacters.Contains(CharacterTypeHelper.ValueOf(novelEvent.character)) &&
-                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.INTRO) &&
-                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.OUTRO) &&
-                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.INFO) &&
-                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.PLAYER))
+                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Intro) &&
+                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Outro) &&
+                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Info) &&
+                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Player))
             {
                 OnAnalysisFailed("Show message event with speaking character that is not in the scene!",
                     _objectUnderAnalyse.title, novelEvent.id);
                 return;
             }
 
-            if (CharacterExpressionHelper.ValueOf(novelEvent.expressionType) == CharacterExpression.NONE)
+            if (CharacterExpressionHelper.ValueOf(novelEvent.expressionType) == CharacterExpression.None)
             {
                 OnAnalysisFailed("Show message event without character expression!", _objectUnderAnalyse.title,
                     novelEvent.id);
@@ -564,7 +564,7 @@ namespace Assets._Scripts.OfflineAiFeedback
 
             if (addChoiceEvent.show)
             {
-                AddFormattedLineToPrompt(CharacterTypeHelper.GetNameOfCharacter(CharacterRole.PLAYER),
+                AddFormattedLineToPrompt(CharacterTypeHelper.GetNameOfCharacter(CharacterRole.Player),
                     addChoiceEvent.text);
             }
 
