@@ -7,18 +7,19 @@ using System.Text.RegularExpressions;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Novel.CharacterController;
+using Assets._Scripts.Player;
 using Assets._Scripts.SaveNovelData;
 using Assets._Scripts.SceneManagement;
-using Assets._Scripts.Server_Communication.Server_Calls;
-using Assets._Scripts.UI_Elements.FreeTextUserInput;
-using Assets._Scripts.UI_Elements.Messages;
+using Assets._Scripts.ServerCommunication.ServerCalls;
+using Assets._Scripts.UIElements.FreeTextUserInput;
+using Assets._Scripts.UIElements.Messages;
 using Assets._Scripts.Utilities;
 using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.Player
+namespace Assets._Scripts.SceneControllers
 {
     public class PlayNovelSceneController : SceneController
     {
@@ -270,7 +271,7 @@ namespace Assets._Scripts.Player
             
             List<int> characters = novelToPlay.novelEvents
                 .Select(e => e.character) // Wähle das `character`-Feld aus
-                .Where(c => c != 0 && c != 1 && c != 4) // Schließe die Werte 0, 1 und 4 aus
+                .Where(c => c != 0 && c != 1 /*&& c != 4*/) // Schließe die Werte 0, 1 und 4 aus
                 .Distinct() // Optional: Entfernt Duplikate
                 .ToList(); // Konvertiere das Ergebnis in eine Liste
 
@@ -714,16 +715,16 @@ namespace Assets._Scripts.Player
 
             _novelCharacter = novelEvent.character;
 
-            if (!CharacterExpressions.ContainsKey(_novelCharacter) && _novelCharacter != 0 && _novelCharacter != 1 &&
-                _novelCharacter != 4)
+            if (!CharacterExpressions.ContainsKey(_novelCharacter) && _novelCharacter != 0 && _novelCharacter != 1 /*&&
+                _novelCharacter != 4*/)
             {
                 Debug.LogWarning($"Character ID {_novelCharacter} is not registered.");
                 return;
             }
 
             // Speichere die neue Gesichtsanimation
-            if (CharacterExpressions.ContainsKey(_novelCharacter) && _novelCharacter != 0 && _novelCharacter != 1 &&
-                _novelCharacter != 4)
+            if (CharacterExpressions.ContainsKey(_novelCharacter) && _novelCharacter != 0 && _novelCharacter != 1 /*&&
+                _novelCharacter != 4*/)
             {
                 CharacterExpressions[_novelCharacter] = novelEvent.expressionType;
                 _novelImagesController.SetFaceExpression(_novelCharacter, CharacterExpressions[_novelCharacter]);

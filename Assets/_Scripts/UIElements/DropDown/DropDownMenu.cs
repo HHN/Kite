@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.UI_Elements.DropDown
+namespace Assets._Scripts.UIElements.DropDown
 {
     public class DropDownMenu : MonoBehaviour
     {

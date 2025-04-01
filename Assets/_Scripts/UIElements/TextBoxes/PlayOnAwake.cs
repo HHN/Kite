@@ -1,7 +1,7 @@
 using Assets._Scripts.Managers;
 using UnityEngine;
 
-namespace Assets._Scripts.UI_Elements.TextBoxes
+namespace Assets._Scripts.UIElements.TextBoxes
 {
     public class PlayOnAwake : MonoBehaviour
     {

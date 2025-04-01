@@ -88,33 +88,40 @@ namespace Assets._Scripts.Novel.CharacterController
         {
             if (handSprites == null) return;
 
-            if (handIndex[0] == 0)
+            switch (handIndex[0])
             {
-                int randomIndex = Random.Range(0, handSprites.handColorA.Length);
-                handImage.sprite = handSprites.handColorA[randomIndex];
+                case 0:
+                {
+                    int randomIndex = Random.Range(0, handSprites.handColorA.Length);
+                    handImage.sprite = handSprites.handColorA[randomIndex];
                 
-                handIndex[1] = randomIndex;
-            }
-            else if (handIndex[0] == 1)
-            {
-                int randomIndex = Random.Range(0, handSprites.handColorB.Length);
-                handImage.sprite = handSprites.handColorB[randomIndex];
+                    handIndex[1] = randomIndex;
+                    break;
+                }
+                case 1:
+                {
+                    int randomIndex = Random.Range(0, handSprites.handColorB.Length);
+                    handImage.sprite = handSprites.handColorB[randomIndex];
                 
-                handIndex[1] = randomIndex;
-            }
-            else if (handIndex[0] == 2)
-            {
-                int randomIndex = Random.Range(0, handSprites.handColorC.Length);
-                handImage.sprite = handSprites.handColorC[randomIndex];
+                    handIndex[1] = randomIndex;
+                    break;
+                }
+                case 2:
+                {
+                    int randomIndex = Random.Range(0, handSprites.handColorC.Length);
+                    handImage.sprite = handSprites.handColorC[randomIndex];
                 
-                handIndex[1] = randomIndex;
-            }
-            else if (handIndex[0] == 3)
-            {
-                int randomIndex = Random.Range(0, handSprites.handColorD.Length);
-                handImage.sprite = handSprites.handColorD[randomIndex];
+                    handIndex[1] = randomIndex;
+                    break;
+                }
+                case 3:
+                {
+                    int randomIndex = Random.Range(0, handSprites.handColorD.Length);
+                    handImage.sprite = handSprites.handColorD[randomIndex];
                 
-                handIndex[1] = randomIndex;
+                    handIndex[1] = randomIndex;
+                    break;
+                }
             }
         }
 
@@ -155,23 +162,15 @@ namespace Assets._Scripts.Novel.CharacterController
         public void SetHandSprite(HandSpriteIndex handSpriteIndex)
         {
             if (handSprites == null) return;
-            
-            if (handSpriteIndex.colorIndex == 0)
+
+            handImage.sprite = handSpriteIndex.colorIndex switch
             {
-                handImage.sprite = handSprites.handColorA[handSpriteIndex.spriteIndex];
-            }
-            else if (handSpriteIndex.colorIndex == 1)
-            {
-                handImage.sprite = handSprites.handColorB[handSpriteIndex.spriteIndex];
-            }
-            else if (handSpriteIndex.colorIndex == 2)
-            {
-                handImage.sprite = handSprites.handColorC[handSpriteIndex.spriteIndex];
-            }
-            else if (handSpriteIndex.colorIndex == 3)
-            {
-                handImage.sprite = handSprites.handColorD[handSpriteIndex.spriteIndex];
-            }
+                0 => handSprites.handColorA[handSpriteIndex.spriteIndex],
+                1 => handSprites.handColorB[handSpriteIndex.spriteIndex],
+                2 => handSprites.handColorC[handSpriteIndex.spriteIndex],
+                3 => handSprites.handColorD[handSpriteIndex.spriteIndex],
+                _ => handImage.sprite
+            };
         }
 
         public void SetClotheSprite(int clotheSpriteIndex)
@@ -192,160 +191,134 @@ namespace Assets._Scripts.Novel.CharacterController
         {
             switch (expression)
             {
-                case 1: // Schaut Erschrocken
+                case 1:
                 {
                     ShowErschrockenAnimation();
-                    // PlayRelaxedAnimation();
                     return;
                 }
-                case 2: // Schaut Genervt
+                case 2:
                 {
                     ShowGenervtAnimation();
-                    // PlayAstonishedAnimation();
                     return;
                 }
-                case 3: // Schaut Unzufrieden
+                case 3:
                 {
                     ShowUnzufriedenAnimation();
-                    // PlayRefusingAnimation();
                     return;
                 }
-                case 4: // Schaut Ablehnend
+                case 4:
                 {
                     ShowAblehnendAnimation();
-                    // PlaySmileAnimation();
                     return;
                 }
-                case 5: // Schaut Erstaunt
+                case 5:
                 {
                     ShowErstauntAnimation();
-                    // PlayFriendlyAnimation();
                     return;
                 }
-                case 6: // Schaut Fragend
+                case 6:
                 {
                     ShowFragendAnimation();
-                    // PlayLaughingAnimation();
                     return;
                 }
-                case 7: // Schaut Kritisch
+                case 7:
                 {
                     ShowKritischAnimation();
-                    // PlayCriticalAnimation();
                     return;
                 }
-                case 8: // Schaut Lächeln_Groß
+                case 8:
                 {
                     ShowLaechelnGrossAnimation();
-                    // PlayNoDealAnimation();
                     return;
                 }
-                case 9: // Schaut Lachend
+                case 9:
                 {
                     ShowLachendAnimation();
-                    // PlayHappyAnimation();
                     return;
                 }
-                case 10:    // Schaut Lächeln
+                case 10:
                 {
                     ShowLaechelnAnimation();
-                    // PlayProudAnimation();
                     return;
                 }
-                case 11:    // Schaut Neutral_Entspannt
+                case 11:
                 {
                     ShowNeutralEntspanntAnimation();
-                    // PlayScaredAnimation();
                     return;
                 }
-                case 12:    // Schaut Neutral
+                case 12:
                 {
                     ShowNeutralAnimation();
-                    // PlayQuestioningAnimation();
                     return;
                 }
-                case 13:    // Schaut Stolz
+                case 13:
                 {
                     ShowStolzAnimation();
-                    // PlayDefeatedAnimation();
                     return;
                 }
-                case 14: // Spricht Erschrocken
+                case 14:
                 {
                     PlayErschrockenAnimation();
-                    // PlayRelaxedAnimation();
                     return;
                 }
-                case 15: // Spricht Genervt
+                case 15:
                 {
                     PlayGenervtAnimation();
-                    // PlayAstonishedAnimation();
                     return;
                 }
-                case 16: // Spricht Unzufrieden
+                case 16:
                 {
                     PlayUnzufriedenAnimation();
-                    // PlayRefusingAnimation();
                     return;
                 }
-                case 17: // Spricht Ablehnend
+                case 17:
                 {
                     PlayAblehnendAnimation();
-                    // PlaySmileAnimation();
                     return;
                 }
-                case 18: // Spricht Erstaunt
+                case 18:
                 {
                     PlayErstauntAnimation();
-                    // PlayFriendlyAnimation();
                     return;
                 }
-                case 19: // Spricht Fragend
+                case 19:
                 {
                     PlayFragendAnimation();
-                    // PlayLaughingAnimation();
                     return;
                 }
-                case 20: // Spricht Kritisch
+                case 20:
                 {
                     PlayKritischAnimation();
-                    // PlayCriticalAnimation();
                     return;
                 }
-                case 21: // Spricht Lächeln_Groß
+                case 21:
                 {
                     PlayLaechelnGrossAnimation();
-                    // PlayNoDealAnimation();
                     return;
                 }
-                case 22: // Spricht Lachend
+                case 22:
                 {
                     PlayLachendAnimation();
-                    // PlayHappyAnimation();
                     return;
                 }
-                case 23:    // Spricht Lächeln
+                case 23:
                 {
                     PlayLaechelnAnimation();
-                    // PlayProudAnimation();
                     return;
                 }
-                case 24:    // Spricht Neutral_Entspannt
+                case 24:
                 {
                     PlayNeutralEntspanntAnimation();
-                    // PlayScaredAnimation();
                     return;
                 }
-                case 25:    // Spricht Neutral
+                case 25:
                 {
                     PlayNeutralAnimation();
-                    // PlayQuestioningAnimation();
                     return;
                 }
-                case 26:    // Spricht Stolz
+                case 26:
                 {
                     PlayStolzAnimation();
-                    // PlayDefeatedAnimation();
                     return;
                 }
                 default:

@@ -1,7 +1,7 @@
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine.Networking;
 
-namespace Assets._Scripts.Server_Communication
+namespace Assets._Scripts.ServerCommunication
 {
     public class CustomCertificateHandler : CertificateHandler
     {

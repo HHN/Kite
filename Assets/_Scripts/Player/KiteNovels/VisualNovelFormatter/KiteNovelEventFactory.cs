@@ -1,6 +1,6 @@
 using Assets._Scripts.Novel;
 
-namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
+namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 {
     public abstract class KiteNovelEventFactory
     {

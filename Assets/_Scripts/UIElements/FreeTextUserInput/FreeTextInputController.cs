@@ -1,12 +1,12 @@
 using System.Reflection;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
-using Assets._Scripts.Player;
+using Assets._Scripts.SceneControllers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.UI_Elements.FreeTextUserInput
+namespace Assets._Scripts.UIElements.FreeTextUserInput
 {
     public class FreeTextInputController : MonoBehaviour
     {

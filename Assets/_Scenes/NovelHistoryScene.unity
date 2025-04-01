@@ -634,7 +634,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 617fbe24fe3aed6448bdfccf2d38153a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -845,7 +845,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 617fbe24fe3aed6448bdfccf2d38153a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1161,7 +1161,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 617fbe24fe3aed6448bdfccf2d38153a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1937,7 +1937,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 617fbe24fe3aed6448bdfccf2d38153a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3344,7 +3344,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 617fbe24fe3aed6448bdfccf2d38153a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4963,15 +4963,11 @@ MonoBehaviour:
   noDataObjectsHint: {fileID: 63610570}
   containerForBankkreditNovel: {fileID: 8983526791303255357}
   containerForInvestorNovel: {fileID: 1122555527}
-  containerForBankkontoNovel: {fileID: 203507345}
-  containerForFoerderantragNovel: {fileID: 1933131690}
   containerForElternNovel: {fileID: 977517993}
   containerForNotarinNovel: {fileID: 2050534266}
   containerForPresseNovel: {fileID: 1559626568}
   containerForBueroNovel: {fileID: 519295634}
-  containerForGruendungszuschussNovel: {fileID: 1759595780}
   containerForHonorarNovel: {fileID: 1000109952}
-  containerForLebenspartnerinNovel: {fileID: 1553965550}
   novelPlaceholder:
   - {fileID: 948405905}
   - {fileID: 1355985734}
@@ -4986,48 +4982,32 @@ MonoBehaviour:
   - {fileID: 607388595}
   dropdownForBankkreditNovel: {fileID: 657247123254479140}
   dropdownForInvestorNovel: {fileID: 1457782097}
-  dropdownForBankkontoNovel: {fileID: 1284719197}
-  dropdownForFoerderantragNovel: {fileID: 663462337}
   dropdownForElternNovel: {fileID: 1543939245}
   dropdownForNotarinNovel: {fileID: 1591834933}
   dropdownForPresseNovel: {fileID: 1175750298}
   dropdownForBueroNovel: {fileID: 361567813}
-  dropdownForGruendungszuschussNovel: {fileID: 523732539}
   dropdownForHonorarNovel: {fileID: 289032708}
-  dropdownForLebenspartnerinNovel: {fileID: 1578790500}
   spacingForBankkreditNovel: {fileID: 948405905}
   spacingForInvestorNovel: {fileID: 1355985734}
-  spacingForBankkontoNovel: {fileID: 413226293}
-  spacingForFoerderantragNovel: {fileID: 1742568431}
   spacingForElternNovel: {fileID: 750861753}
   spacingForNotarinNovel: {fileID: 718533544}
   spacingForPresseNovel: {fileID: 475043288}
   spacingForBueroNovel: {fileID: 356936094}
-  spacingForGruendungszuschussNovel: {fileID: 1009061738}
   spacingForHonorarNovel: {fileID: 1245389554}
-  spacingForLebenspartnerinNovel: {fileID: 607388595}
   entryContainerForBankkreditNovel: {fileID: 657247122751064009}
   entryContainerForInvestorNovel: {fileID: 1135273643}
-  entryContainerForBankkontoNovel: {fileID: 512483126}
-  entryContainerForFoerderantragNovel: {fileID: 1707488281}
   entryContainerForElternNovel: {fileID: 321823154}
   entryContainerForNotarinNovel: {fileID: 1700279456}
   entryContainerForPresseNovel: {fileID: 592913912}
   entryContainerForBueroNovel: {fileID: 1919890242}
-  entryContainerForGruendungszuschussNovel: {fileID: 271380915}
   entryContainerForHonorarNovel: {fileID: 785423253}
-  entryContainerForLebenspartnerinNovel: {fileID: 1608235919}
   displayContainerForBankkreditNovel: 0
   displayContainerForInvestorNovel: 0
-  displayContainerForBankkontoNovel: 0
-  displayContainerForFoerderantragNovel: 0
   displayContainerForElternNovel: 0
   displayContainerForNotarinNovel: 0
   displayContainerForPresseNovel: 0
   displayContainerForBueroNovel: 0
-  displayContainerForGruendungszuschussNovel: 0
   displayContainerForHonorarNovel: 0
-  displayContainerForLebenspartnerinNovel: 0
   displayNoDataObjectsHint: 0
   novelHistoryEntries: []
   copyNotificationContainer: {fileID: 177665909}
@@ -5374,7 +5354,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 617fbe24fe3aed6448bdfccf2d38153a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6210,7 +6190,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 617fbe24fe3aed6448bdfccf2d38153a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6940,7 +6920,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 617fbe24fe3aed6448bdfccf2d38153a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7151,7 +7131,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 617fbe24fe3aed6448bdfccf2d38153a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9281,7 +9261,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 617fbe24fe3aed6448bdfccf2d38153a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9871,7 +9851,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 617fbe24fe3aed6448bdfccf2d38153a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13042,7 +13022,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 427949b7df555b145a4ad6f59be7aa7c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 617fbe24fe3aed6448bdfccf2d38153a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

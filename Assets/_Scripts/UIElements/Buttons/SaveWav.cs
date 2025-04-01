@@ -29,7 +29,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-namespace Assets._Scripts.UI_Elements.Buttons
+namespace Assets._Scripts.UIElements.Buttons
 {
     public static class SaveWav
     {

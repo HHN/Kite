@@ -59,7 +59,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: kritisch
+  m_Name: critical
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -111,7 +111,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: laecheln_sprechen
+  m_Name: smiling_speaking
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -137,7 +137,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: erschrocken_sprechen
+  m_Name: scared_speaking
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -163,7 +163,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: stolz
+  m_Name: proud
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -189,7 +189,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: laecheln_gross_sprechen
+  m_Name: smiling_big_speaking
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -215,7 +215,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: genervt
+  m_Name: defeated
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -338,7 +338,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: erstaunt
+  m_Name: amazed
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -364,7 +364,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: genervt_sprechen
+  m_Name: defeated_speaking
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -418,7 +418,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: lachend
+  m_Name: laughing
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -444,7 +444,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: neutral_entspannt
+  m_Name: neutral_relaxed
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -470,7 +470,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: unzufrieden_sprechen
+  m_Name: dissatisfied_speaking
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -496,7 +496,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: laecheln_gross
+  m_Name: smiling_big
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -522,7 +522,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: lachend_sprechen
+  m_Name: laughing_speaking
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -548,7 +548,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: neutral_entspannt_sprechen
+  m_Name: neutral_relaxed_speaking
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -574,7 +574,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: kritisch_sprechen
+  m_Name: critical_speaking
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -600,7 +600,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: neutral_sprechen
+  m_Name: neutral_speaking
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -626,7 +626,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: stolz_sprechen
+  m_Name: proud_speaking
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -678,7 +678,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: laecheln
+  m_Name: smiling
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -704,7 +704,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: erstaunt_sprechen
+  m_Name: amazed_speaking
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -730,7 +730,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: fragend_sprechen
+  m_Name: questioning_speaking
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -756,7 +756,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: fragend
+  m_Name: questioning
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -782,7 +782,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: unzufrieden
+  m_Name: dissatisfied
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

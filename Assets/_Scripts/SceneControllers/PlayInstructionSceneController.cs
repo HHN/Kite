@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.Player
+namespace Assets._Scripts.SceneControllers
 {
     public class PlayInstructionSceneController : SceneController
     {

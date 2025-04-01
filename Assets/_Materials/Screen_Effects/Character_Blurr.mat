@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CharacterBlur
+  m_Name: Character_Blurr
   m_Shader: {fileID: 4800000, guid: 44a2278ce0c5aa34aa4470556408ea91, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
