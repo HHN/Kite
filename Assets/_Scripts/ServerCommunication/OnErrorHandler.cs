@@ -1,4 +1,4 @@
-namespace Assets._Scripts.Server_Communication
+namespace Assets._Scripts.ServerCommunication
 {
     public interface IOnErrorHandler
     {

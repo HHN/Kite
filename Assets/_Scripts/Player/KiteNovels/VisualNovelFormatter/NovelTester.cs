@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Assets._Scripts.Novel;
 using UnityEngine;
 
-namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
+namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 {
     public class NovelTester
     {

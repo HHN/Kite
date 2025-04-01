@@ -1,7 +1,7 @@
 using Assets._Scripts.Messages;
 using UnityEngine.Networking;
 
-namespace Assets._Scripts.Server_Communication.Server_Calls
+namespace Assets._Scripts.ServerCommunication.ServerCalls
 {
     public class GetReviewObserversServerCall : ServerCall
     {

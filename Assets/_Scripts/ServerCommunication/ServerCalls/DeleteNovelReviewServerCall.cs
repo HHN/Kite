@@ -1,8 +1,8 @@
 using Assets._Scripts.Messages;
-using Assets._Scripts.Server_Communication.Request_Objects;
+using Assets._Scripts.ServerCommunication.RequestObjects;
 using UnityEngine.Networking;
 
-namespace Assets._Scripts.Server_Communication.Server_Calls
+namespace Assets._Scripts.ServerCommunication.ServerCalls
 {
     public class DeleteNovelReviewServerCall : ServerCall
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Assets._Scripts.Novel;
 using UnityEngine;
 
-namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Loader
+namespace Assets._Scripts.Player.KiteNovels.VisualNovelLoader
 {
     [Serializable]
     public class NovelListWrapper

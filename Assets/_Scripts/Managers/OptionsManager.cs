@@ -4,7 +4,8 @@ using System.Linq;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Novel.CharacterController;
 using Assets._Scripts.Player;
-using Assets._Scripts.UI_Elements.TextBoxes;
+using Assets._Scripts.SceneControllers;
+using Assets._Scripts.UIElements.TextBoxes;
 using UnityEngine;
 
 namespace Assets._Scripts.Managers

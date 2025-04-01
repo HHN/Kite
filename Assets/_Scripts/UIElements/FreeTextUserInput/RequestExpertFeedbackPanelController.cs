@@ -1,14 +1,13 @@
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
-using Assets._Scripts.Player;
 using Assets._Scripts.SceneControllers;
-using Assets._Scripts.Server_Communication;
-using Assets._Scripts.Server_Communication.Server_Calls;
+using Assets._Scripts.ServerCommunication;
+using Assets._Scripts.ServerCommunication.ServerCalls;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.UI_Elements.FreeTextUserInput
+namespace Assets._Scripts.UIElements.FreeTextUserInput
 {
     public class RequestExpertFeedbackPanelController : MonoBehaviour, IOnSuccessHandler
     {

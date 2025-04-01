@@ -7,7 +7,7 @@ using Assets._Scripts.Managers;
 using Assets._Scripts.NovelHistory;
 using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
-using Assets._Scripts.UI_Elements.DropDown;
+using Assets._Scripts.UIElements.DropDown;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
