@@ -4,6 +4,7 @@ using System.IO;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player.Kite_Novels.Visual_Novel_Loader;
+using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -62,7 +63,7 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
             }
 
             string fullPath = Path.Combine(Application.dataPath, NovelListPath);
-
+            
             yield return StartCoroutine(LoadNovelPaths(fullPath, listOfAllNovelPaths =>
             {
                 if (listOfAllNovelPaths == null || listOfAllNovelPaths.Count == 0)
@@ -114,6 +115,7 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
                 allFolders.Add(new KiteNovelFolder(kiteNovelMetaData, kiteNovelEventList));
             }
 
+            Debug.Log($"allFolders: {allFolders.Count}");
             List<VisualNovel> visualNovels = KiteNovelConverter.ConvertFilesToNovels(allFolders);
 
             SaveToJson(new NovelListWrapper(visualNovels));
@@ -151,8 +153,7 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
 
                 jsonStringOfEventList = ReplaceWordsInString(jsonStringOfEventList, kiteNovelMetaData.WordsToReplace);
 
-                KiteNovelEventList kiteNovelEventList =
-                    KiteNovelConverter.ConvertTextDocumentIntoEventList(jsonStringOfEventList, kiteNovelMetaData);
+                KiteNovelEventList kiteNovelEventList = KiteNovelConverter.ConvertTextDocumentIntoEventList(jsonStringOfEventList, kiteNovelMetaData);
 
                 allFolders.Add(new KiteNovelFolder(kiteNovelMetaData, kiteNovelEventList));
             }

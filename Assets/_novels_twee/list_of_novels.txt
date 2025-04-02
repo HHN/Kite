@@ -1,5 +1,5 @@
 {
   "visualNovels": [
-    "_novels_twee\\Eltern"
+    "_novels_twee\\AI_TRAQC"
   ]
 }

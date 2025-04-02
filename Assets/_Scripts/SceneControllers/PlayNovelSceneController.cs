@@ -158,9 +158,9 @@ namespace Assets._Scripts.SceneControllers
 
         private void Initialize()
         {
-            PromptManager.Instance().InitializePrompt();
-
             if (novelToPlay == null) return; 
+            
+            PromptManager.Instance().InitializePrompt(novelToPlay.id);
 
             AnalyticsServiceHandler.Instance().SetIdOfCurrentNovel(novelToPlay.id);
             novelToPlay.ClearGlobalVariables();

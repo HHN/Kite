@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Assets._Scripts.Novel;
+using Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter;
 using UnityEngine;
 
-namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
+namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 {
     public abstract class KiteNovelConverter
     {
@@ -127,9 +128,9 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
             string dialogMessage, CharacterExpression expression, List<VisualNovelEvent> list)
         {
             string id = twee?.Label;
+            Debug.Log($"id: {twee?.Label}");
             string nextId = twee?.Links?[0]?.Target;
-            VisualNovelEvent novelEvent =
-                KiteNovelEventFactory.GetCharacterTalksEvent(id, nextId, character, dialogMessage, expression);
+            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetCharacterTalksEvent(id, nextId, character, dialogMessage, expression);
             list.Add(novelEvent);
             return novelEvent;
         }
