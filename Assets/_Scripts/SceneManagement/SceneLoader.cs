@@ -28,19 +28,9 @@ namespace Assets._Scripts.SceneManagement
             LoadScene(SceneNames.SettingsScene);
         }
 
-        public static void LoadPlayerPrefsScene()
-        {
-            LoadScene(SceneNames.PlayerPrefsScene);
-        }
-
         public static void LoadFoundersBubbleScene()
         {
             LoadScene(SceneNames.FoundersBubbleScene);
-        }
-
-        public static void LoadFoundersWell2Scene()
-        {
-            LoadScene(SceneNames.FoundersWell2Scene);
         }
 
         public static void LoadPlayInstructionScene()
@@ -53,44 +43,39 @@ namespace Assets._Scripts.SceneManagement
             LoadScene(SceneNames.NovelHistoryScene);
         }
 
-        public static void LoadRessourcenScene()
+        public static void LoadResourcesScene()
         {
-            LoadScene(SceneNames.RessourcenScene);
+            LoadScene(SceneNames.ResourcesScene);
         }
 
-        public static void LoadBarrierefreiheitScene()
+        public static void LoadAccessibilityScene()
         {
-            LoadScene(SceneNames.BarrierefreiheitScene);
+            LoadScene(SceneNames.AccessibilityScene);
         }
 
-        public static void LoadDatenschutzScene()
+        public static void LoadPrivacyPolicyScene()
         {
-            LoadScene(SceneNames.DatenschutzScene);
+            LoadScene(SceneNames.PrivacyPolicyScene);
         }
 
-        public static void LoadImpressumScene()
+        public static void LoadLegalNoticeScene()
         {
-            LoadScene(SceneNames.ImpressumScene);
+            LoadScene(SceneNames.LegalNoticeScene);
         }
 
-        public static void LoadNutzungsbedingungenScene()
+        public static void LoadTermsOfUseScene()
         {
-            LoadScene(SceneNames.NutzungsbedingungenScene);
+            LoadScene(SceneNames.TermsOfUseScene);
         }
 
-        public static void LoadEinstellungenScene()
+        public static void LoadBookmarkedNovelsScene()
         {
-            LoadScene(SceneNames.EinstellungenScene);
+            LoadScene(SceneNames.BookmarkedNovelsScene);
         }
 
-        public static void LoadGemerkteNovelsScene()
+        public static void LoadSoundSettingsScene()
         {
-            LoadScene(SceneNames.GemerkteNovelsScene);
-        }
-
-        public static void SoundeinstellungScene()
-        {
-            LoadScene(SceneNames.SoundeinstellungScene);
+            LoadScene(SceneNames.SoundSettingsScene);
         }
         
         public static void LoadKnowledgeScene()

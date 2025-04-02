@@ -2,19 +2,19 @@ namespace Assets._Scripts.Novel
 {
     public enum CharacterRole
     {
-        NONE,
-        PLAYER,
-        INTRO,
-        OUTRO,
-        INFO,
-        REPORTERIN,
-        VERMIETER,
-        VATER,
-        MUTTER,
-        INVESTOR,
-        NOTARIN,
-        SACHBEARBEITER,
-        KUNDIN
+        None,
+        Player,
+        Intro,
+        Outro,
+        Info,
+        Reporterin,
+        Vermieter,
+        Vater,
+        Mutter,
+        Investor,
+        Notarin,
+        Sachbearbeiter,
+        Kundin
     }
 
     public class CharacterTypeHelper
@@ -34,308 +34,107 @@ namespace Assets._Scripts.Novel
 
         public static int ToInt(CharacterRole characterRole)
         {
-            switch (characterRole)
+            return characterRole switch
             {
-                case CharacterRole.NONE:
-                {
-                    return 0;
-                }
-                case CharacterRole.PLAYER:
-                {
-                    return 1;
-                }
-                case CharacterRole.INTRO:
-                {
-                    return 2;
-                }
-                case CharacterRole.OUTRO:
-                {
-                    return 3;
-                }
-                case CharacterRole.INFO:
-                {
-                    return 4;
-                }
-                case CharacterRole.REPORTERIN:
-                {
-                    return 5;
-                }
-                case CharacterRole.VERMIETER:
-                {
-                    return 6;
-                }
-                case CharacterRole.VATER:
-                {
-                    return 7;
-                }
-                case CharacterRole.MUTTER:
-                {
-                    return 8;
-                }
-                case CharacterRole.INVESTOR:
-                {
-                    return 9;
-                }
-                case CharacterRole.NOTARIN:
-                {
-                    return 10;
-                }
-                case CharacterRole.SACHBEARBEITER:
-                {
-                    return 11;
-                }
-                case CharacterRole.KUNDIN:
-                {
-                    return 12;
-                }
-                default:
-                {
-                    return 0;
-                }
-            }
+                CharacterRole.None => 0,
+                CharacterRole.Player => 1,
+                CharacterRole.Intro => 2,
+                CharacterRole.Outro => 3,
+                CharacterRole.Info => 4,
+                CharacterRole.Reporterin => 5,
+                CharacterRole.Vermieter => 6,
+                CharacterRole.Vater => 7,
+                CharacterRole.Mutter => 8,
+                CharacterRole.Investor => 9,
+                CharacterRole.Notarin => 10,
+                CharacterRole.Sachbearbeiter => 11,
+                CharacterRole.Kundin => 12,
+                _ => 0
+            };
         }
 
         public static CharacterRole ValueOf(int i)
         {
-            switch (i)
+            return i switch
             {
-                case 0:
-                {
-                    return CharacterRole.NONE;
-                }
-                case 1:
-                {
-                    return CharacterRole.PLAYER;
-                }
-                case 2:
-                {
-                    return CharacterRole.INTRO;
-                }
-                case 3:
-                {
-                    return CharacterRole.OUTRO;
-                }
-                case 4:
-                {
-                    return CharacterRole.INFO;
-                }
-                case 5:
-                {
-                    return CharacterRole.REPORTERIN;
-                }
-                case 6:
-                {
-                    return CharacterRole.VERMIETER;
-                }
-                case 7:
-                {
-                    return CharacterRole.VATER;
-                }
-                case 8:
-                {
-                    return CharacterRole.MUTTER;
-                }
-                case 9:
-                {
-                    return CharacterRole.INVESTOR;
-                }
-                case 10:
-                {
-                    return CharacterRole.NOTARIN;
-                }
-                case 11:
-                {
-                    return CharacterRole.SACHBEARBEITER;
-                }
-                case 12:
-                {
-                    return CharacterRole.KUNDIN;
-                }
-                default: return CharacterRole.NONE;
-            }
+                0 => CharacterRole.None,
+                1 => CharacterRole.Player,
+                2 => CharacterRole.Intro,
+                3 => CharacterRole.Outro,
+                4 => CharacterRole.Info,
+                5 => CharacterRole.Reporterin,
+                6 => CharacterRole.Vermieter,
+                7 => CharacterRole.Vater,
+                8 => CharacterRole.Mutter,
+                9 => CharacterRole.Investor,
+                10 => CharacterRole.Notarin,
+                11 => CharacterRole.Sachbearbeiter,
+                12 => CharacterRole.Kundin,
+                _ => CharacterRole.None
+            };
         }
 
         public static string GetNameOfCharacter(CharacterRole characterRole)
         {
-            switch (characterRole)
+            return characterRole switch
             {
-                case CharacterRole.NONE:
-                {
-                    return null;
-                }
-                case CharacterRole.PLAYER:
-                {
-                    return PLAYER;
-                }
-                case CharacterRole.INTRO:
-                {
-                    return INTRO;
-                }
-                case CharacterRole.OUTRO:
-                {
-                    return OUTRO;
-                }
-                case CharacterRole.INFO:
-                {
-                    return INFO;
-                }
-                case CharacterRole.REPORTERIN:
-                {
-                    return REPORTERIN;
-                }
-                case CharacterRole.VERMIETER:
-                {
-                    return VERMIETER;
-                }
-                case CharacterRole.VATER:
-                {
-                    return VATER;
-                }
-                case CharacterRole.MUTTER:
-                {
-                    return MUTTER;
-                }
-                case CharacterRole.INVESTOR:
-                {
-                    return INVESTOR;
-                }
-                case CharacterRole.NOTARIN:
-                {
-                    return NOTARIN;
-                }
-                case CharacterRole.SACHBEARBEITER:
-                {
-                    return SACHBEARBEITER;
-                }
-                case CharacterRole.KUNDIN:
-                {
-                    return KUNDIN;
-                }
-                default:
-                {
-                    return null;
-                }
-            }
+                CharacterRole.None => null,
+                CharacterRole.Player => PLAYER,
+                CharacterRole.Intro => INTRO,
+                CharacterRole.Outro => OUTRO,
+                CharacterRole.Info => INFO,
+                CharacterRole.Reporterin => REPORTERIN,
+                CharacterRole.Vermieter => VERMIETER,
+                CharacterRole.Vater => VATER,
+                CharacterRole.Mutter => MUTTER,
+                CharacterRole.Investor => INVESTOR,
+                CharacterRole.Notarin => NOTARIN,
+                CharacterRole.Sachbearbeiter => SACHBEARBEITER,
+                CharacterRole.Kundin => KUNDIN,
+                _ => null
+            };
         }
 
         public static string GetNameOfCharacter(int i)
         {
-            switch (i)
+            return i switch
             {
-                case 0:
-                {
-                    return null;
-                }
-                case 1:
-                {
-                    return PLAYER;
-                }
-                case 2:
-                {
-                    return INTRO;
-                }
-                case 3:
-                {
-                    return OUTRO;
-                }
-                case 4:
-                {
-                    return INFO;
-                }
-                case 5:
-                {
-                    return REPORTERIN;
-                }
-                case 6:
-                {
-                    return VERMIETER;
-                }
-                case 7:
-                {
-                    return VATER;
-                }
-                case 8:
-                {
-                    return MUTTER;
-                }
-                case 9:
-                {
-                    return INVESTOR;
-                }
-                case 10:
-                {
-                    return NOTARIN;
-                }
-                case 11:
-                {
-                    return SACHBEARBEITER;
-                }
-                case 12:
-                {
-                    return KUNDIN;
-                }
-                default: return null;
-            }
+                0 => null,
+                1 => PLAYER,
+                2 => INTRO,
+                3 => OUTRO,
+                4 => INFO,
+                5 => REPORTERIN,
+                6 => VERMIETER,
+                7 => VATER,
+                8 => MUTTER,
+                9 => INVESTOR,
+                10 => NOTARIN,
+                11 => SACHBEARBEITER,
+                12 => KUNDIN,
+                _ => null
+            };
         }
 
         public static CharacterRole ValueOf(string name)
         {
-            switch (name)
+            return name switch
             {
-                case null:
-                {
-                    return CharacterRole.NONE;
-                }
-                case PLAYER:
-                {
-                    return CharacterRole.PLAYER;
-                }
-                case INTRO:
-                {
-                    return CharacterRole.INTRO;
-                }
-                case OUTRO:
-                {
-                    return CharacterRole.OUTRO;
-                }
-                case INFO:
-                {
-                    return CharacterRole.INFO;
-                }
-                case REPORTERIN:
-                {
-                    return CharacterRole.REPORTERIN;
-                }
-                case VERMIETER:
-                {
-                    return CharacterRole.VERMIETER;
-                }
-                case VATER:
-                {
-                    return CharacterRole.VATER;
-                }
-                case MUTTER:
-                {
-                    return CharacterRole.MUTTER;
-                }
-                case INVESTOR:
-                {
-                    return CharacterRole.INVESTOR;
-                }
-                case NOTARIN:
-                {
-                    return CharacterRole.NOTARIN;
-                }
-                case SACHBEARBEITER:
-                {
-                    return CharacterRole.SACHBEARBEITER;
-                }
-                case KUNDIN:
-                {
-                    return CharacterRole.KUNDIN;
-                }
-                default: return CharacterRole.NONE;
-            }
+                null => CharacterRole.None,
+                PLAYER => CharacterRole.Player,
+                INTRO => CharacterRole.Intro,
+                OUTRO => CharacterRole.Outro,
+                INFO => CharacterRole.Info,
+                REPORTERIN => CharacterRole.Reporterin,
+                VERMIETER => CharacterRole.Vermieter,
+                VATER => CharacterRole.Vater,
+                MUTTER => CharacterRole.Mutter,
+                INVESTOR => CharacterRole.Investor,
+                NOTARIN => CharacterRole.Notarin,
+                SACHBEARBEITER => CharacterRole.Sachbearbeiter,
+                KUNDIN => CharacterRole.Kundin,
+                _ => CharacterRole.None
+            };
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
+using Assets._Scripts.SceneControllers;
 using Newtonsoft.Json;
 using UnityEngine;
 

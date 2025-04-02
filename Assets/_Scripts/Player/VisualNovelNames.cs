@@ -14,7 +14,8 @@ namespace Assets._Scripts.Player
         // GRUENDER_ZUSCHUSS_NOVEL,
         HONORAR_NOVEL,
         // LEBENSPARTNER_NOVEL,
-        EINSTIEGS_NOVEL
+        EINSTIEGS_NOVEL,
+        VERTRIEB_NOVEL,
     }
 
     public class VisualNovelNamesHelper
@@ -66,6 +67,10 @@ namespace Assets._Scripts.Player
                 case 13:
                 {
                     return VisualNovelNames.EINSTIEGS_NOVEL;
+                }
+                case 14:
+                {
+                    return VisualNovelNames.VERTRIEB_NOVEL;
                 }
                 // case -10:
                 // {
@@ -126,6 +131,10 @@ namespace Assets._Scripts.Player
                 {
                     return "Einstieg";
                 }
+                case 14:
+                {
+                    return "Vertrieb";
+                }
                 // case -10:
                 // {
                 //     return "Lebens-partner*in";
@@ -184,6 +193,10 @@ namespace Assets._Scripts.Player
                 case VisualNovelNames.EINSTIEGS_NOVEL:
                 {
                     return 13;
+                }
+                case VisualNovelNames.VERTRIEB_NOVEL:
+                {
+                    return 14;
                 }
                 // case VisualNovelNames.LEBENSPARTNER_NOVEL:
                 // {

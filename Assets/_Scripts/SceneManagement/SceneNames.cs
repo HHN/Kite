@@ -20,19 +20,17 @@ namespace Assets._Scripts.SceneManagement
 
         // FOUNDER-RELATED SCENES
         public const string FoundersBubbleScene = "FoundersBubbleScene";
-        public const string FoundersWell2Scene = "FoundersWell2Scene";
 
         // LEGAL INFORMATION
-        public const string ImpressumScene = "ImpressumScene";
-        public const string DatenschutzScene = "DatenschutzScene";
-        public const string NutzungsbedingungenScene = "NutzungsbedingungenScene";
+        public const string LegalNoticeScene = "LegalNoticeScene";
+        public const string PrivacyPolicyScene = "PrivacyPolicyScene";
+        public const string TermsOfUseScene = "TermsOfUseScene";
 
         // OTHER PAGES
-        public const string BarrierefreiheitScene = "BarrierefreiheitScene";
-        public const string EinstellungenScene = "EinstellungenScene";
-        public const string GemerkteNovelsScene = "GemerkteNovelsScene";
-        public const string RessourcenScene = "RessourcenScene";
-        public const string SoundeinstellungScene = "SoundeinstellungScene";
+        public const string AccessibilityScene = "AccessibilityScene";
+        public const string BookmarkedNovelsScene = "BookmarkedNovelsScene";
+        public const string ResourcesScene = "ResourcesScene";
+        public const string SoundSettingsScene = "SoundSettingsScene";
         public const string KnowledgeScene = "KnowledgeScene";
     }
 }
