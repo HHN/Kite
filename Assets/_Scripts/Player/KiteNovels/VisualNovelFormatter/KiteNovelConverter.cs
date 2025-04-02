@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Assets._Scripts.Novel;
+using Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter;
 using UnityEngine;
 
-namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
+namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 {
     public abstract class KiteNovelConverter
     {
@@ -21,9 +22,7 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
                 novel.id = folder.NovelMetaData.IdNumberOfNovel;
                 novel.title = folder.NovelMetaData.TitleOfNovel;
                 novel.description = folder.NovelMetaData.DescriptionOfNovel;
-                novel.image = folder.NovelMetaData.IdNumberOfRepresentationImage;
                 novel.context = folder.NovelMetaData.ContextForPrompt;
-                novel.isKite2Novel = folder.NovelMetaData.IsKite2Novel;
                 novel.novelEvents = folder.NovelEventList.NovelEvents;
 
                 novels.Add(novel);
@@ -72,22 +71,12 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
         private static void InitializeKiteNovelEventList(KiteNovelMetaData kiteNovelMetaData,
             KiteNovelEventList kiteNovelEventList, string startLabel)
         {
-            if (!kiteNovelMetaData.IsWithStartValues)
-            {
-                return;
-            }
 
             string connectionLabel = "initalCharakterJoinsEvent001";
             string id = "initialLocationEvent001";
             string nextId = connectionLabel;
-            Location location = LocationHelper.ValueOf(kiteNovelMetaData.StartLocation);
 
-            if (location == Location.NONE)
-            {
-                Debug.LogWarning("While loading " + kiteNovelMetaData.TitleOfNovel + ": Initial Location not found!");
-            }
-
-            VisualNovelEvent initialLocationEvent = KiteNovelEventFactory.GetSetBackgroundEvent(id, nextId, location);
+            VisualNovelEvent initialLocationEvent = KiteNovelEventFactory.GetSetBackgroundEvent(id, nextId);
             kiteNovelEventList.NovelEvents.Add(initialLocationEvent);
 
             id = connectionLabel;
@@ -118,7 +107,7 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
         {
             string id = twee?.Label;
             string nextId = twee?.Links?[0]?.Target;
-            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetSetBackgroundEvent(id, nextId, location);
+            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetSetBackgroundEvent(id, nextId);
             list.Add(novelEvent);
             return novelEvent;
         }
@@ -128,8 +117,7 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
         {
             string id = twee?.Label;
             string nextId = twee?.Links?[0]?.Target;
-            VisualNovelEvent novelEvent =
-                KiteNovelEventFactory.GetCharacterTalksEvent(id, nextId, character, dialogMessage, expression);
+            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetCharacterTalksEvent(id, nextId, character, dialogMessage, expression);
             list.Add(novelEvent);
             return novelEvent;
         }
@@ -196,13 +184,12 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
             foreach (TweeLink link in twee.Links)
             {
                 string id = label;
-                label = label + label;
+                label += label;
                 string nextId = label;
                 string optionText = link.Text;
                 string onChoice = link.Target;
                 bool showAfterSelection = link.ShowAfterSelection;
-                VisualNovelEvent visualNovelEvent =
-                    KiteNovelEventFactory.GetAddChoiceEvent(id, nextId, optionText, onChoice, showAfterSelection);
+                VisualNovelEvent visualNovelEvent = KiteNovelEventFactory.GetAddChoiceEvent(id, nextId, optionText, onChoice, showAfterSelection);
                 list.Add(visualNovelEvent);
             }
 
@@ -457,8 +444,6 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
                 {
                     return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
-                    // return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.RELAXED,
-                    //     kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_ERSCHROCKEN):
                 {
@@ -525,78 +510,11 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
                     return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautStolz,
                         kiteNovelEventList.NovelEvents);
                 }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_RELAXED):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.RELAXED,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_ASTONISHED):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.ASTONISHED,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_REFUSING):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.REFUSING,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_SMILING):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SMILING,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_FRIENDLY):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.FRIENDLY,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_LAUGHING):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.LAUGHING,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_CRITICAL):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.CRITICAL,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_DECISION_NO):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.DECISION_NO,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_HAPPY):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.HAPPY,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_PROUD):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.PROUD,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_SCARED):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SCARED,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_QUESTIONING):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.QUESTIONING,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_DEFEATED):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.DEFEATED,
-                //         kiteNovelEventList.NovelEvents);
-                // }
 
                 case (NovelKeyWord.CHARAKTER_01_SCHAUT):
                 {
                     return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
-                    // return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.RELAXED,
-                    //     kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_ERSCHROCKEN):
                 {
@@ -669,8 +587,6 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
                     return HandleCharacterTalksEvent(passage, charakter01, message,
                         CharacterExpression.SprichtNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
-                    // return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.RELAXED,
-                    //     kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_ERSCHROCKEN):
                 {
@@ -738,71 +654,6 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
                     return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtStolz,
                         kiteNovelEventList.NovelEvents);
                 }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_RELAXED):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.RELAXED,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_ASTONISHED):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.ASTONISHED,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_REFUSING):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.REFUSING,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_SMILING):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SMILING,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_FRIENDLY):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.FRIENDLY,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_LAUGHING):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.LAUGHING,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_CRITICAL):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.CRITICAL,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_DECISION_NO):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.DECISION_NO,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_HAPPY):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.HAPPY,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_PROUD):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.PROUD,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_SCARED):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SCARED,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_QUESTIONING):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.QUESTIONING,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_01_GESICHTSAUSDRUCK_DEFEATED):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.DEFEATED,
-                //         kiteNovelEventList.NovelEvents);
-                // }
 
                 case (NovelKeyWord.EINTRITT_CHARAKTER_02):
                 {
@@ -874,78 +725,11 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
                     return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautStolz,
                         kiteNovelEventList.NovelEvents);
                 }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_RELAXED):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.RELAXED,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_ASTONISHED):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.ASTONISHED,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_REFUSING):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.REFUSING,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_SMILING):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SMILING,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_FRIENDLY):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.FRIENDLY,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_LAUGHING):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.LAUGHING,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_CRITICAL):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.CRITICAL,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_DECISION_NO):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.DECISION_NO,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_HAPPY):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.HAPPY,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_PROUD):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.PROUD,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_SCARED):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SCARED,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_QUESTIONING):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.QUESTIONING,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_DEFEATED):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.DEFEATED,
-                //         kiteNovelEventList.NovelEvents);
-                // }
 
                 case (NovelKeyWord.CHARAKTER_02_SCHAUT):
                 {
                     return HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
-                    // return HandleCharacterComesEvent(passage, charakter01, CharacterExpression.RELAXED,
-                    //     kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_ERSCHROCKEN):
                 {
@@ -1018,8 +802,6 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
                     return HandleCharacterTalksEvent(passage, charakter02, message,
                         CharacterExpression.SprichtNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
-                    // return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.RELAXED,
-                    //     kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_ERSCHROCKEN):
                 {
@@ -1087,78 +869,11 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
                     return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtStolz,
                         kiteNovelEventList.NovelEvents);
                 }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_RELAXED):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.RELAXED,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_ASTONISHED):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.ASTONISHED,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_REFUSING):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.REFUSING,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_SMILING):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SMILING,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_FRIENDLY):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.FRIENDLY,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_LAUGHING):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.LAUGHING,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_CRITICAL):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.CRITICAL,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_DECISION_NO):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.DECISION_NO,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_HAPPY):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.HAPPY,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_PROUD):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.PROUD,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_SCARED):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SCARED,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_QUESTIONING):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.QUESTIONING,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_02_GESICHTSAUSDRUCK_DEFEATED):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.DEFEATED,
-                //         kiteNovelEventList.NovelEvents);
-                // }
 
                 case (NovelKeyWord.EINTRITT_CHARAKTER_03):
                 {
                     return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
-                    // return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.RELAXED,
-                    //     kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_ERSCHROCKEN):
                 {
@@ -1225,78 +940,11 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
                     return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautStolz,
                         kiteNovelEventList.NovelEvents);
                 }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_RELAXED):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.RELAXED,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_ASTONISHED):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.ASTONISHED,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_REFUSING):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.REFUSING,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_SMILING):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SMILING,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_FRIENDLY):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.FRIENDLY,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_LAUGHING):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.LAUGHING,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_CRITICAL):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.CRITICAL,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_DECISION_NO):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.DECISION_NO,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_HAPPY):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.HAPPY,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_PROUD):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.PROUD,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_SCARED):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SCARED,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_QUESTIONING):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.QUESTIONING,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_DEFEATED):
-                // {
-                //     return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.DEFEATED,
-                //         kiteNovelEventList.NovelEvents);
-                // }
 
                 case (NovelKeyWord.CHARAKTER_03_SCHAUT):
                 {
                     return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
-                    // return HandleCharacterComesEvent(passage, charakter03, CharacterExpression.RELAXED,
-                    //     kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_ERSCHROCKEN):
                 {
@@ -1369,8 +1017,6 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
                     return HandleCharacterTalksEvent(passage, charakter03, message,
                         CharacterExpression.SprichtNeutralEntspannt,
                         kiteNovelEventList.NovelEvents);
-                    // return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.RELAXED,
-                    //     kiteNovelEventList.NovelEvents);
                 }
                 case (NovelKeyWord.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_ERSCHROCKEN):
                 {
@@ -1438,71 +1084,6 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
                     return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtStolz,
                         kiteNovelEventList.NovelEvents);
                 }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_RELAXED):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.RELAXED,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_ASTONISHED):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.ASTONISHED,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_REFUSING):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.REFUSING,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_SMILING):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SMILING,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_FRIENDLY):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.FRIENDLY,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_LAUGHING):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.LAUGHING,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_CRITICAL):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.CRITICAL,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_DECISION_NO):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.DECISION_NO,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_HAPPY):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.HAPPY,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_PROUD):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.PROUD,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_SCARED):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SCARED,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_QUESTIONING):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.QUESTIONING,
-                //         kiteNovelEventList.NovelEvents);
-                // }
-                // case (NovelKeyWord.CHARAKTER_SPRICHT_CHARAKTER_03_GESICHTSAUSDRUCK_DEFEATED):
-                // {
-                //     return HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.DEFEATED,
-                //         kiteNovelEventList.NovelEvents);
-                // }
 
                 case (NovelKeyWord.SPIELER_CHARAKTER_SPRICHT):
                 {

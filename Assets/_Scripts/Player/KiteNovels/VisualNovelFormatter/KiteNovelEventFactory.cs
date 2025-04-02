@@ -1,6 +1,6 @@
 using Assets._Scripts.Novel;
 
-namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
+namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 {
     public abstract class KiteNovelEventFactory
     {
@@ -21,10 +21,9 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
             return novelEvent;
         }
 
-        public static VisualNovelEvent GetSetBackgroundEvent(string id, string nextId, Location location)
+        public static VisualNovelEvent GetSetBackgroundEvent(string id, string nextId)
         {
             VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.SET_BACKGROUND_EVENT, false);
-            novelEvent.backgroundSpriteId = LocationHelper.ToInt(location);
             return novelEvent;
         }
 

@@ -14,7 +14,6 @@ namespace Assets._Scripts.Novel
         public int clotheSpriteId;
         public int hairSpriteId;
         public int faceSpriteId;
-        public int backgroundSpriteId;
         public int character;
         public string text;
         public int animationType;
@@ -47,7 +46,6 @@ namespace Assets._Scripts.Novel
             newEvent.clotheSpriteId = clotheSpriteId;
             newEvent.hairSpriteId = hairSpriteId;
             newEvent.faceSpriteId = faceSpriteId;
-            newEvent.backgroundSpriteId = backgroundSpriteId;
             newEvent.character = character;
             newEvent.text = text;
             newEvent.animationType = animationType;
