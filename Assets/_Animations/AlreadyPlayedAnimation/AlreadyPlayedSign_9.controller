@@ -57,11 +57,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<<< HEAD:Assets/_Animations/AlreadyPlayedAnimation/AlreadyPlayedSign9.controller
-  m_Name: AlreadyPlayedSign9
-========
   m_Name: AlreadyPlayedSign_9
->>>>>>>> develop:Assets/_Animations/AlreadyPlayedAnimation/AlreadyPlayedSign_9.controller
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:

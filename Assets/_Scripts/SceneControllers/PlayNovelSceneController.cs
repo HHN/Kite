@@ -160,7 +160,7 @@ namespace Assets._Scripts.SceneControllers
         {
             if (novelToPlay == null) return; 
             
-            PromptManager.Instance().InitializePrompt(novelToPlay.id);
+            PromptManager.Instance().InitializePrompt(novelToPlay);
 
             AnalyticsServiceHandler.Instance().SetIdOfCurrentNovel(novelToPlay.id);
             novelToPlay.ClearGlobalVariables();

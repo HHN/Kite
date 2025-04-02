@@ -10,15 +10,15 @@ namespace Assets._Scripts.Player
         {
             switch (value)
             {
-                case VisualNovelNames.ELTERN_NOVEL:
+                case VisualNovelNames.ElternNovel:
                 {
                     return false;
                 }
-                case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PresseNovel:
                 {
                     return false;
                 }
-                case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NotariatNovel:
                 {
                     return true;
                 }
@@ -26,7 +26,7 @@ namespace Assets._Scripts.Player
                 // {
                 //     return false;
                 // }
-                case VisualNovelNames.VERMIETER_NOVEL:
+                case VisualNovelNames.VermieterNovel:
                 {
                     return true;
                 }
@@ -38,19 +38,19 @@ namespace Assets._Scripts.Player
                 // {
                 //     return true;
                 // }
-                case VisualNovelNames.INVESTOR_NOVEL:
+                case VisualNovelNames.InvestorNovel:
                 {
                     return false;
                 }
-                case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BankKreditNovel:
                 {
                     return true;
                 }
-                case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HonorarNovel:
                 {
                     return false;
                 }
-                case VisualNovelNames.EINSTIEGS_NOVEL:
+                case VisualNovelNames.EinstiegsNovel:
                 {
                     return false;
                 }
@@ -69,15 +69,15 @@ namespace Assets._Scripts.Player
         {
             switch (value)
             {
-                case VisualNovelNames.ELTERN_NOVEL:
+                case VisualNovelNames.ElternNovel:
                 {
                     return new Color(53 / 255f, 146 / 255f, 20 / 255f);
                 }
-                case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PresseNovel:
                 {
                     return new Color(120 / 255f, 45 / 255f, 119 / 255f);
                 }
-                case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NotariatNovel:
                 {
                     return new Color(27 / 255f, 108 / 255f, 115 / 255f);
                 }
@@ -85,7 +85,7 @@ namespace Assets._Scripts.Player
                 // {
                 //     return new Color(53 / 255f, 146 / 255f, 20 / 255f);
                 // }
-                case VisualNovelNames.VERMIETER_NOVEL:
+                case VisualNovelNames.VermieterNovel:
                 {
                     return new Color(23 / 255f, 49 / 255f, 86 / 255f);
                 }
@@ -97,19 +97,19 @@ namespace Assets._Scripts.Player
                 // {
                 //     return new Color(86 / 255f, 70 / 255f, 23 / 255f);
                 // }
-                case VisualNovelNames.INVESTOR_NOVEL:
+                case VisualNovelNames.InvestorNovel:
                 {
                     return new Color(76 / 255f, 114 / 255f, 42 / 255f);
                 }
-                case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BankKreditNovel:
                 {
                     return new Color(23 / 255f, 49 / 255f, 86 / 255f);
                 }
-                case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HonorarNovel:
                 {
                     return new Color(24 / 255f, 111 / 255f, 96 / 255f);
                 }
-                case VisualNovelNames.EINSTIEGS_NOVEL:
+                case VisualNovelNames.EinstiegsNovel:
                 {
                     return new Color(120 / 255f, 45 / 255f, 119 / 255f);
                 }
@@ -128,15 +128,15 @@ namespace Assets._Scripts.Player
         {
             switch (value)
             {
-                case VisualNovelNames.ELTERN_NOVEL:
+                case VisualNovelNames.ElternNovel:
                 {
                     return new Color(37 / 255f, 101 / 255f, 14 / 255f);
                 }
-                case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PresseNovel:
                 {
                     return new Color(83 / 255f, 32 / 255f, 83 / 255f);
                 }
-                case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NotariatNovel:
                 {
                     return new Color(17 / 255f, 69 / 255f, 74 / 255f);
                 }
@@ -144,7 +144,7 @@ namespace Assets._Scripts.Player
                 // {
                 //     return new Color(37 / 255f, 101 / 255f, 14 / 255f);
                 // }
-                case VisualNovelNames.VERMIETER_NOVEL:
+                case VisualNovelNames.VermieterNovel:
                 {
                     return new Color(12 / 255f, 26 / 255f, 46 / 255f);
                 }
@@ -156,23 +156,23 @@ namespace Assets._Scripts.Player
                 // {
                 //     return new Color(46 / 255f, 37 / 255f, 12 / 255f);
                 // }
-                case VisualNovelNames.INVESTOR_NOVEL:
+                case VisualNovelNames.InvestorNovel:
                 {
                     return new Color(48 / 255f, 72 / 255f, 15 / 255f);
                 }
-                case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BankKreditNovel:
                 {
                     return new Color(12 / 255f, 26 / 255f, 46 / 255f);
                 }
-                case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HonorarNovel:
                 {
                     return new Color(15 / 255f, 69 / 255f, 60 / 255f);
                 }
-                case VisualNovelNames.EINSTIEGS_NOVEL:
+                case VisualNovelNames.EinstiegsNovel:
                 {
                     return new Color(83 / 255f, 32 / 255f, 83 / 255f);
                 }
-                case VisualNovelNames.VERTRIEB_NOVEL:
+                case VisualNovelNames.VertriebNovel:
                 {
                     return new Color(83 / 255f, 32 / 255f, 83 / 255f);
                 }
@@ -191,15 +191,15 @@ namespace Assets._Scripts.Player
         {
             switch (value)
             {
-                case VisualNovelNames.ELTERN_NOVEL:
+                case VisualNovelNames.ElternNovel:
                 {
                     return "Eltern";
                 }
-                case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PresseNovel:
                 {
                     return "Presse";
                 }
-                case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NotariatNovel:
                 {
                     return "Notarin";
                 }
@@ -207,7 +207,7 @@ namespace Assets._Scripts.Player
                 // {
                 //     return "Bankkonto";
                 // }
-                case VisualNovelNames.VERMIETER_NOVEL:
+                case VisualNovelNames.VermieterNovel:
                 {
                     return "Vermieter";
                 }
@@ -219,23 +219,23 @@ namespace Assets._Scripts.Player
                 // {
                 //     return "Gründungs-\r\nzuschuss";
                 // }
-                case VisualNovelNames.INVESTOR_NOVEL:
+                case VisualNovelNames.InvestorNovel:
                 {
                     return "Investor";
                 }
-                case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BankKreditNovel:
                 {
                     return "Bankkredit";
                 }
-                case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HonorarNovel:
                 {
                     return "Honorar";
                 }
-                case VisualNovelNames.EINSTIEGS_NOVEL:
+                case VisualNovelNames.EinstiegsNovel:
                 {
                     return "Einstieg";
                 }
-                case VisualNovelNames.VERTRIEB_NOVEL:
+                case VisualNovelNames.VertriebNovel:
                 {
                     return "Vertrieb";
                 }
@@ -254,15 +254,15 @@ namespace Assets._Scripts.Player
         {
             switch (value)
             {
-                case VisualNovelNames.ELTERN_NOVEL:
+                case VisualNovelNames.ElternNovel:
                 {
                     return 2;
                 }
-                case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PresseNovel:
                 {
                     return 4;
                 }
-                case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NotariatNovel:
                 {
                     return 3;
                 }
@@ -270,7 +270,7 @@ namespace Assets._Scripts.Player
                 // {
                 //     return 2;
                 // }
-                case VisualNovelNames.VERMIETER_NOVEL:
+                case VisualNovelNames.VermieterNovel:
                 {
                     return 5;
                 }
@@ -282,23 +282,23 @@ namespace Assets._Scripts.Player
                 // {
                 //     return 7;
                 // }
-                case VisualNovelNames.INVESTOR_NOVEL:
+                case VisualNovelNames.InvestorNovel:
                 {
                     return 6;
                 }
-                case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BankKreditNovel:
                 {
                     return 1;
                 }
-                case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HonorarNovel:
                 {
                     return 8;
                 }
-                case VisualNovelNames.EINSTIEGS_NOVEL:
+                case VisualNovelNames.EinstiegsNovel:
                 {
                     return 7;
                 }
-                case VisualNovelNames.VERTRIEB_NOVEL:
+                case VisualNovelNames.VertriebNovel:
                 {
                     return 9;
                 }
