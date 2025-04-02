@@ -449,11 +449,6 @@ namespace Assets._Scripts.SceneControllers
         private void DisplayNovelFromMenu(VisualNovelNames visualNovelName)
         {
             VisualNovel visualNovelToDisplay = null;
-            
-            KiteNovelManager.Instance().GetAllKiteNovels().ForEach(kiteNovel =>
-            {
-                Debug.Log($"ForEach: {(int)kiteNovel.id}, {VisualNovelNamesHelper.ValueOf((int)kiteNovel.id)}");
-            });
 
             KiteNovelManager.Instance().GetAllKiteNovels().ForEach(kiteNovel =>
             {
