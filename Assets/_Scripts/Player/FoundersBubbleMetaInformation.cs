@@ -172,6 +172,10 @@ namespace Assets._Scripts.Player
                 {
                     return new Color(83 / 255f, 32 / 255f, 83 / 255f);
                 }
+                case VisualNovelNames.VERTRIEB_NOVEL:
+                {
+                    return new Color(83 / 255f, 32 / 255f, 83 / 255f);
+                }
                 // case VisualNovelNames.LEBENSPARTNER_NOVEL:
                 // {
                 //     return new Color(12 / 255f, 26 / 255f, 46 / 255f);
@@ -231,6 +235,10 @@ namespace Assets._Scripts.Player
                 {
                     return "Einstieg";
                 }
+                case VisualNovelNames.VERTRIEB_NOVEL:
+                {
+                    return "Vertrieb";
+                }
                 // case VisualNovelNames.LEBENSPARTNER_NOVEL:
                 // {
                 //     return "Lebens-\r\npartner*in";
@@ -289,6 +297,10 @@ namespace Assets._Scripts.Player
                 case VisualNovelNames.EINSTIEGS_NOVEL:
                 {
                     return 7;
+                }
+                case VisualNovelNames.VERTRIEB_NOVEL:
+                {
+                    return 9;
                 }
                 // case VisualNovelNames.LEBENSPARTNER_NOVEL:
                 // {
