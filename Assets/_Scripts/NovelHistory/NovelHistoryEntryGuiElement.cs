@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Player;
@@ -29,6 +30,11 @@ namespace Assets._Scripts.NovelHistory
         [SerializeField] private Button copyDialogButton;
         [SerializeField] private Button copyFeedbackButton;
         private GameObject _copyNotificationContainer;
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+        [DllImport("__Internal")]
+        private static extern void CopyTextToClipboard(string text);
+#endif
 
         private void Start()
         {
@@ -93,7 +99,14 @@ namespace Assets._Scripts.NovelHistory
             Debug.Log("KOPIEREN");
             string pattern = @"<\/?(b|i)>";
             string copyText = Regex.Replace(dialogText.text, pattern, string.Empty);
-            GUIUtility.systemCopyBuffer = copyText.Replace("\n", "\n\n");
+            copyText = copyText.Replace("\n", "\n\n");
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+                CopyTextToClipboard(copyText);
+#else
+            GUIUtility.systemCopyBuffer = copyText;
+#endif
+
             StartCoroutine(ShowCopyPopup("Dialog"));
         }
 
@@ -102,7 +115,14 @@ namespace Assets._Scripts.NovelHistory
             Debug.Log("KOPIEREN");
             string pattern = @"<\/?(b|i)>";
             string copyText = Regex.Replace(aiFeedbackText.text, pattern, string.Empty);
-            GUIUtility.systemCopyBuffer = copyText.Replace("\n", "\n\n");
+            copyText = copyText.Replace("\n", "\n\n");
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+                CopyTextToClipboard(copyText);
+#else
+            GUIUtility.systemCopyBuffer = copyText;
+#endif
+
             StartCoroutine(ShowCopyPopup("Feedback"));
         }
 
@@ -124,8 +144,7 @@ namespace Assets._Scripts.NovelHistory
                     // Setze den Text
                     textComponent.text = "Das Feedback wurde in die\r\nZwischenablage kopiert.";
                 }
-
-                if (whatWasCopied == "Dialog")
+                else if (whatWasCopied == "Dialog")
                 {
                     // Setze den Text
                     textComponent.text = "Der Dialog wurde in die\r\nZwischenablage kopiert.";

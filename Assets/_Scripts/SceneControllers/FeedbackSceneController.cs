@@ -15,6 +15,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Runtime.InteropServices;
 
 namespace Assets._Scripts.SceneControllers
 {
@@ -38,7 +39,12 @@ namespace Assets._Scripts.SceneControllers
         [SerializeField] private GameObject copyNotificationContainer;
         //[SerializeField] private TTSEngine engine;
         [SerializeField] private GameObject loadingAnimation;
-        
+
+        #if UNITY_WEBGL && !UNITY_EDITOR
+            [DllImport("__Internal")]
+            private static extern void CopyTextToClipboard(string text);
+        #endif
+
         private readonly CultureInfo _culture = new CultureInfo("de-DE");
 
         private void Start()
@@ -124,7 +130,11 @@ namespace Assets._Scripts.SceneControllers
 
         public void OnCopyButton()
         {
-            GUIUtility.systemCopyBuffer = feedbackText.text;
+        #if UNITY_WEBGL && !UNITY_EDITOR
+                CopyTextToClipboard(feedbackText.text);
+        #else
+                    GUIUtility.systemCopyBuffer = feedbackText.text;
+        #endif
             StartCoroutine(ShowCopyPopup());
         }
 
