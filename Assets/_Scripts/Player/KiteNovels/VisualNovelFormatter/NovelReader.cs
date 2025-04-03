@@ -1,3 +1,5 @@
+using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -6,44 +8,73 @@ using Assets._Scripts.Novel;
 using Assets._Scripts.Player.Kite_Novels.Visual_Novel_Loader;
 using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
 using Newtonsoft.Json;
-using UnityEngine;
 using UnityEngine.Networking;
 
 namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
 {
+    // Die NovelReader-Klasse ist ein MonoBehaviour, das den Prozess des Ladens, Verarbeitens
+    // und Konvertierens von Novellen aus dem Twee-Format in das JSON-Format steuert.
     public class NovelReader : MonoBehaviour
     {
+        // Konstanten, die die Pfade zu wichtigen Dateien definieren.
+        // NovelListPath: Pfad zur Datei, die eine Liste aller Novellenpfade enthält.
         private const string NovelListPath = "_novels_twee/list_of_novels.txt";
+        // MetaDataFileName: Dateiname der Datei, die Metadaten (z. B. Titel, Einstellungen) der Novelle enthält.
         private const string MetaDataFileName = "visual_novel_meta_data.txt";
+        // EventListFileName: Dateiname der Datei, die die Event-Liste (Story-Ereignisse) der Novelle enthält.
         private const string EventListFileName = "visual_novel_event_list.txt";
+        // Flag, das angibt, ob der gesamte Konvertierungsvorgang abgeschlossen ist.
         private bool _isFinished;
 
+        /// <summary>
+        /// Startet den Prozess, alle Novellen im Twee-Format zu laden und in JSON zu konvertieren.
+        /// Diese Methode startet die Coroutine LoadAllNovelsWithTweeApproach.
+        /// </summary>
         public void ConvertNovelsFromTweeToJSON()
         {
             StartCoroutine(LoadAllNovelsWithTweeApproach());
         }
 
+        /// <summary>
+        /// Startet den Prozess, alle Novellen zu laden und nur selektiv alte Novellen zu überschreiben.
+        /// Diese Methode startet die Coroutine LoadAllNovelsWithTweeApproachAndSelectiveOverrideOldNovels.
+        /// </summary>
         public void ConvertNovelsFromTweeToJSONAndSelectiveOverrideOldNovels()
         {
             StartCoroutine(LoadAllNovelsWithTweeApproachAndSelectiveOverrideOldNovels());
         }
 
+        /// <summary>
+        /// Gibt zurück, ob der gesamte Konvertierungsvorgang abgeschlossen ist.
+        /// </summary>
+        /// <returns>true, wenn der Prozess abgeschlossen ist, ansonsten false.</returns>
         public bool IsFinished()
         {
             return _isFinished;
         }
 
+        /// <summary>
+        /// Coroutine, die alle Novellen im Twee-Format lädt.
+        /// Zunächst wird geprüft, ob bereits Novellen geladen wurden.
+        /// Anschließend wird der vollständige Pfad zur Datei, die alle Novellenpfade enthält, ermittelt.
+        /// Danach werden die Pfade geladen und, falls vorhanden, die einzelnen Novellen verarbeitet.
+        /// </summary>
         private IEnumerator LoadAllNovelsWithTweeApproach()
         {
+            // Wenn bereits Novellen geladen sind, wird die Coroutine beendet.
             if (KiteNovelManager.Instance().AreNovelsLoaded())
             {
                 yield break;
             }
 
+            // Ermittelt den vollständigen Pfad zur Datei, die die Liste der Novellenpfade enthält.
             string fullPath = Path.Combine(Application.dataPath, NovelListPath);
 
+            // Starte die Coroutine zum Laden der Novellenpfade und verarbeite diese anschließend.
             yield return StartCoroutine(LoadNovelPaths(fullPath, listOfAllNovelPaths =>
             {
+                // Falls keine Novellenpfade gefunden wurden, wird eine Warnung ausgegeben und der Manager
+                // mit einer leeren Liste initialisiert.
                 if (listOfAllNovelPaths == null || listOfAllNovelPaths.Count == 0)
                 {
                     Debug.LogWarning("Loading Novels failed: No Novels found! Path: " + fullPath);
@@ -51,19 +82,26 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
                     return;
                 }
 
+                // Falls Novellenpfade vorhanden sind, starte die Verarbeitung der einzelnen Novellen.
                 StartCoroutine(ProcessNovels(listOfAllNovelPaths));
             }));
         }
 
+        /// <summary>
+        /// Ähnlich wie LoadAllNovelsWithTweeApproach, jedoch mit zusätzlicher Logik zum selektiven Überschreiben alter Novellen.
+        /// </summary>
         private IEnumerator LoadAllNovelsWithTweeApproachAndSelectiveOverrideOldNovels()
         {
+            // Prüft, ob bereits Novellen geladen wurden.
             if (KiteNovelManager.Instance().AreNovelsLoaded())
             {
                 yield break;
             }
 
+            // Bestimmt den vollständigen Pfad zur Liste der Novellenpfade.
             string fullPath = Path.Combine(Application.dataPath, NovelListPath);
-            
+
+            // Lade die Liste der Novellenpfade.
             yield return StartCoroutine(LoadNovelPaths(fullPath, listOfAllNovelPaths =>
             {
                 if (listOfAllNovelPaths == null || listOfAllNovelPaths.Count == 0)
@@ -73,106 +111,146 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
                     return;
                 }
 
+                // Starte die Verarbeitung der Novellen mit selektivem Überschreiben.
                 StartCoroutine(ProcessNovelsAndSelectiveOverrideOldNovels(listOfAllNovelPaths));
             }));
         }
 
+        /// <summary>
+        /// Verarbeitet alle Novellen, indem für jeden Novellenpfad
+        /// die Metadaten und die Event-Liste geladen, deserialisiert und in einen KiteNovelFolder
+        /// zusammengefasst werden.
+        /// Anschließend werden alle Ordner in VisualNovel-Objekte konvertiert und als JSON gespeichert.
+        /// </summary>
         private IEnumerator ProcessNovels(List<string> listOfAllNovelPaths)
         {
+            // Liste zum Speichern aller verarbeiteten Novellenordner.
             List<KiteNovelFolder> allFolders = new List<KiteNovelFolder>();
 
+            // Durchlaufe alle Novellenpfade.
             foreach (string pathOfNovel in listOfAllNovelPaths)
             {
+                // Erzeuge den vollständigen Pfad zur Metadaten-Datei der Novelle.
                 string fullPathOfNovelMetaData = Path.Combine(Application.dataPath, pathOfNovel, MetaDataFileName);
+                // Erzeuge den vollständigen Pfad zur Event-Liste der Novelle.
                 string fullPathOfNovelEventList = Path.Combine(Application.dataPath, pathOfNovel, EventListFileName);
 
                 KiteNovelMetaData kiteNovelMetaData = null;
                 string jsonStringOfEventList = null;
 
+                // Lade und deserialisiere die Metadaten der Novelle.
                 yield return StartCoroutine(LoadAndDeserialize<KiteNovelMetaData>(fullPathOfNovelMetaData,
                     result => { kiteNovelMetaData = result; }));
 
+                // Falls die Metadaten nicht geladen werden konnten, gebe eine Warnung aus und überspringe diese Novelle.
                 if (kiteNovelMetaData == null)
                 {
                     Debug.LogWarning("Kite Novel Meta Data could not be loaded: " + pathOfNovel);
                     continue;
                 }
 
+                // Lade den Inhalt der Event-Liste.
                 yield return StartCoroutine(LoadFileContent(fullPathOfNovelEventList,
                     result => { jsonStringOfEventList = result; }));
 
+                // Falls die Event-Liste leer ist, gebe eine Warnung aus und überspringe diese Novelle.
                 if (string.IsNullOrEmpty(jsonStringOfEventList))
                 {
                     Debug.LogWarning("Kite Novel Event List could not be loaded: " + pathOfNovel);
                     continue;
                 }
 
+                // Ersetze bestimmte Wörter in der Event-Liste, basierend auf den in den Metadaten angegebenen Ersetzungen.
                 jsonStringOfEventList = ReplaceWordsInString(jsonStringOfEventList, kiteNovelMetaData.WordsToReplace);
 
+                // Konvertiere den Text der Event-Liste in eine strukturierte Event-Liste.
                 KiteNovelEventList kiteNovelEventList =
                     KiteNovelConverter.ConvertTextDocumentIntoEventList(jsonStringOfEventList, kiteNovelMetaData);
 
+                // Füge den aktuellen Novellenordner (bestehend aus Metadaten und Event-Liste) zur Gesamtliste hinzu.
                 allFolders.Add(new KiteNovelFolder(kiteNovelMetaData, kiteNovelEventList));
             }
 
             Debug.Log($"allFolders: {allFolders.Count}");
+            // Konvertiere alle verarbeiteten Novellenordner in VisualNovel-Objekte.
             List<VisualNovel> visualNovels = KiteNovelConverter.ConvertFilesToNovels(allFolders);
 
+            // Speichere die konvertierten Visual Novels als JSON-Datei.
             SaveToJson(new NovelListWrapper(visualNovels));
         }
 
+        /// <summary>
+        /// Verarbeitet alle Novellen ähnlich wie ProcessNovels, führt aber zusätzlich einen Vergleich
+        /// mit bereits geladenen Novellen durch, um nur geänderte Novellen zu überschreiben.
+        /// </summary>
         private IEnumerator ProcessNovelsAndSelectiveOverrideOldNovels(List<string> listOfAllNovelPaths)
         {
+            // Liste zur Speicherung aller verarbeiteten Novellenordner.
             List<KiteNovelFolder> allFolders = new List<KiteNovelFolder>();
 
+            // Durchlaufe alle Novellenpfade.
             foreach (string pathOfNovel in listOfAllNovelPaths)
             {
+                // Erstelle die vollständigen Pfade zu den Metadaten- und Event-Listen-Dateien.
                 string fullPathOfNovelMetaData = Path.Combine(Application.dataPath, pathOfNovel, MetaDataFileName);
                 string fullPathOfNovelEventList = Path.Combine(Application.dataPath, pathOfNovel, EventListFileName);
 
                 KiteNovelMetaData kiteNovelMetaData = null;
                 string jsonStringOfEventList = null;
 
+                // Lade und deserialisiere die Metadaten.
                 yield return StartCoroutine(LoadAndDeserialize<KiteNovelMetaData>(fullPathOfNovelMetaData,
                     result => { kiteNovelMetaData = result; }));
 
+                // Falls die Metadaten nicht geladen werden konnten, überspringe diese Novelle.
                 if (kiteNovelMetaData == null)
                 {
                     Debug.LogWarning("Kite Novel Meta Data could not be loaded: " + pathOfNovel);
                     continue;
                 }
 
+                // Lade den Inhalt der Event-Liste.
                 yield return StartCoroutine(LoadFileContent(fullPathOfNovelEventList,
                     result => { jsonStringOfEventList = result; }));
 
+                // Falls die Event-Liste leer ist, überspringe diese Novelle.
                 if (string.IsNullOrEmpty(jsonStringOfEventList))
                 {
                     Debug.LogWarning("Kite Novel Event List could not be loaded: " + pathOfNovel);
                     continue;
                 }
 
+                // Ersetze Wörter in der Event-Liste anhand der in den Metadaten angegebenen Wortpaare.
                 jsonStringOfEventList = ReplaceWordsInString(jsonStringOfEventList, kiteNovelMetaData.WordsToReplace);
 
+                // Konvertiere den Text der Event-Liste in eine strukturierte Event-Liste.
                 KiteNovelEventList kiteNovelEventList = KiteNovelConverter.ConvertTextDocumentIntoEventList(jsonStringOfEventList, kiteNovelMetaData);
 
+                // Füge den verarbeiteten Ordner zur Gesamtliste hinzu.
                 allFolders.Add(new KiteNovelFolder(kiteNovelMetaData, kiteNovelEventList));
             }
 
+            // Konvertiere alle Ordner in VisualNovel-Objekte.
             List<VisualNovel> visualNovels = KiteNovelConverter.ConvertFilesToNovels(allFolders);
 
+            // Warte, bis der Manager mindestens eine Visual Novel geladen hat.
             while (KiteNovelManager.Instance().GetAllKiteNovels().Count == 0)
             {
                 yield return new WaitForSeconds(1);
             }
 
+            // Erhalte die aktuell geladenen (alten) Novellen.
             List<VisualNovel> oldNovels = KiteNovelManager.Instance().GetAllKiteNovels();
 
+            // Erzeuge eine neue Liste, in die entweder das alte Novel oder ein neues, aktualisiertes Novel übernommen wird.
             List<VisualNovel> modifiedListOfNovels = new List<VisualNovel>();
 
+            // Vergleiche jedes alte Novel mit den neu geladenen Novellen.
             foreach (VisualNovel visualNovel in oldNovels)
             {
                 VisualNovel novel = visualNovel;
 
+                // Falls ein neues Novel mit derselben ID gefunden wird, wird das alte Novel durch das neue ersetzt.
                 foreach (VisualNovel newNovel in visualNovels)
                 {
                     if (newNovel.id == novel.id)
@@ -183,46 +261,69 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
                     }
                 }
 
+                // Füge das (ggf. aktualisierte) Novel der neuen Liste hinzu.
                 modifiedListOfNovels.Add(novel);
             }
 
+            // Speichere die modifizierte Liste als JSON.
             SaveToJson(new NovelListWrapper(modifiedListOfNovels));
         }
 
+        /// <summary>
+        /// Lädt den Inhalt der Datei, die alle Novellenpfade enthält, und übergibt die
+        /// deserialisierte Liste an den Callback.
+        /// </summary>
         private IEnumerator LoadNovelPaths(string path, System.Action<List<string>> callback)
         {
+            // Starte die Coroutine zum Laden des Dateiinhalts.
             yield return StartCoroutine(LoadFileContent(path, jsonString =>
             {
+                // Falls der geladene Inhalt leer ist, rufe den Callback mit null auf.
                 if (string.IsNullOrEmpty(jsonString))
                 {
                     callback(null);
                 }
                 else
                 {
+                    // Deserialisiere den JSON-String in ein KiteNovelList-Objekt.
                     KiteNovelList kiteNovelList = JsonConvert.DeserializeObject<KiteNovelList>(jsonString);
+                    // Übergibt die Liste der Novellenpfade an den Callback.
                     callback(kiteNovelList?.VisualNovels);
                 }
             }));
         }
 
+        /// <summary>
+        /// Lädt den Inhalt einer Datei und deserialisiert diesen in ein Objekt vom Typ T.
+        /// Das Ergebnis wird über den Callback zurückgegeben.
+        /// </summary>
         private IEnumerator LoadAndDeserialize<T>(string path, System.Action<T> callback)
         {
+            // Starte die Coroutine zum Laden des Dateiinhalts.
             yield return StartCoroutine(LoadFileContent(path, jsonString =>
             {
+                // Falls der Inhalt leer ist, wird default(T) zurückgegeben.
                 if (string.IsNullOrEmpty(jsonString))
                 {
                     callback(default);
                 }
                 else
                 {
+                    // Deserialisiere den JSON-String in ein Objekt vom Typ T (mittels Newtonsoft.Json).
                     T result = JsonConvert.DeserializeObject<T>(jsonString);
                     callback(result);
                 }
             }));
         }
 
+        /// <summary>
+        /// Lädt den Inhalt einer Datei asynchron.
+        /// - Auf iOS (iPhonePlayer) wird der Inhalt synchron mit File.ReadAllText geladen.
+        /// - Auf anderen Plattformen wird UnityWebRequest verwendet, um den Inhalt asynchron zu laden.
+        /// </summary>
         private IEnumerator LoadFileContent(string path, System.Action<string> callback)
         {
+            // Falls die Plattform iOS ist, wird die Datei direkt gelesen.
             if (Application.platform == RuntimePlatform.IPhonePlayer)
             {
                 string jsonString = File.ReadAllText(path);
@@ -230,10 +331,12 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
             }
             else
             {
+                // Für andere Plattformen wird UnityWebRequest verwendet.
                 using (UnityWebRequest www = UnityWebRequest.Get(path))
                 {
                     yield return www.SendWebRequest();
 
+                    // Überprüfe, ob ein Verbindungs- oder Protokollfehler aufgetreten ist.
                     if ((www.result == UnityWebRequest.Result.ConnectionError) ||
                         (www.result == UnityWebRequest.Result.ProtocolError))
                     {
@@ -242,34 +345,52 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
                     }
                     else
                     {
+                        // Wenn kein Fehler aufgetreten ist, wird der geladene Text zurückgegeben.
                         callback(www.downloadHandler.text);
                     }
                 }
             }
         }
 
+        /// <summary>
+        /// Ersetzt in einem Eingabestring alle Vorkommen von bestimmten Wörtern durch definierte Ersatzwerte.
+        /// Die Wortpaare werden in der Liste wordsToReplace übergeben.
+        /// </summary>
         private string ReplaceWordsInString(string input, List<WordPair> wordsToReplace)
         {
+            // Iteriere über alle Wortpaare.
             foreach (WordPair wordPair in wordsToReplace)
             {
+                // Prüfe, ob das Wortpaar gültig ist (nicht null und beide Werte sind nicht leer).
                 if (wordPair != null && !string.IsNullOrEmpty(wordPair.WordToReplace) &&
                     !string.IsNullOrEmpty(wordPair.ReplaceByValue))
                 {
+                    // Ersetze das zu ersetzende Wort durch den definierten Ersatzwert.
                     input = input.Replace(wordPair.WordToReplace, wordPair.ReplaceByValue);
                 }
             }
-
+            // Gib den modifizierten String zurück.
             return input;
         }
 
+        /// <summary>
+        /// Konvertiert das übergebene NovelListWrapper-Objekt in einen JSON-String und speichert diesen in einer Datei.
+        /// Der Pfad wird über Application.dataPath bestimmt.
+        /// Anschließend wird ein Log ausgegeben und _isFinished auf true gesetzt.
+        /// </summary>
         private void SaveToJson(NovelListWrapper novelListWrapper)
         {
+            // Konvertiere das Objekt in einen formatierten JSON-String.
             string json = JsonUtility.ToJson(novelListWrapper, true);
+            // Bestimme den Speicherpfad (im gleichen Verzeichnis wie die Applikationsdaten).
             string path = Path.Combine(Application.dataPath, "novels.json");
+            // Schreibe den JSON-String in die Datei.
             File.WriteAllText(path, json);
+            // Logge den erfolgreichen Abschluss mit dem Speicherpfad.
             Debug.Log(
                 "Visual Novels have been successfully converted to JSON format and saved under the following path: " +
                 path);
+            // Setze das Flag, dass der Konvertierungsvorgang abgeschlossen ist.
             _isFinished = true;
         }
     }
