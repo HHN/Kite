@@ -1,4 +1,6 @@
-namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
+using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
+
+namespace Assets._Scripts.Novel.VisualNovelFormatter
 {
     public class KiteNovelFolder
     {

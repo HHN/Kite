@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Assets._Scripts.Novel;
+using Assets._Scripts.Novel.VisualNovelFormatter;
 using UnityEngine;
 
 namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
@@ -21,9 +22,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
                 novel.id = folder.NovelMetaData.IdNumberOfNovel;
                 novel.title = folder.NovelMetaData.TitleOfNovel;
                 novel.description = folder.NovelMetaData.DescriptionOfNovel;
-                novel.image = folder.NovelMetaData.IdNumberOfRepresentationImage;
                 novel.context = folder.NovelMetaData.ContextForPrompt;
-                novel.isKite2Novel = folder.NovelMetaData.IsKite2Novel;
                 novel.novelEvents = folder.NovelEventList.NovelEvents;
 
                 novels.Add(novel);
@@ -67,22 +66,11 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 
         private static void InitializeKiteNovelEventList(KiteNovelMetaData kiteNovelMetaData, KiteNovelEventList kiteNovelEventList, string startLabel)
         {
-            if (!kiteNovelMetaData.IsWithStartValues)
-            {
-                return;
-            }
-
             string connectionLabel = "initalCharakterJoinsEvent001";
             string id = "initialLocationEvent001";
             string nextId = connectionLabel;
-            Location location = LocationHelper.ValueOf(kiteNovelMetaData.StartLocation);
 
-            if (location == Location.NONE)
-            {
-                Debug.LogWarning("While loading " + kiteNovelMetaData.TitleOfNovel + ": Initial Location not found!");
-            }
-
-            VisualNovelEvent initialLocationEvent = KiteNovelEventFactory.GetSetBackgroundEvent(id, nextId, location);
+            VisualNovelEvent initialLocationEvent = KiteNovelEventFactory.GetSetBackgroundEvent(id, nextId);
             kiteNovelEventList.NovelEvents.Add(initialLocationEvent);
 
             id = connectionLabel;
@@ -110,7 +98,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
         {
             string id = twee?.Label;
             string nextId = twee?.Links?[0]?.Target;
-            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetSetBackgroundEvent(id, nextId, location);
+            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetSetBackgroundEvent(id, nextId);
             list.Add(novelEvent);
             return novelEvent;
         }

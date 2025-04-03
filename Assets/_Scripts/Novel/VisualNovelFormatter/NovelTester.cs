@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using Assets._Scripts.Novel;
 using UnityEngine;
 
-namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
+namespace Assets._Scripts.Novel.VisualNovelFormatter
 {
     public class NovelTester
     {
@@ -149,11 +148,6 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 
             switch (type)
             {
-                case VisualNovelEventType.SetBackgroundEvent:
-                {
-                    HandleBackgrundEvent(eventUnderTest);
-                    break;
-                }
                 case VisualNovelEventType.CharakterJoinEvent:
                 {
                     HandleCharacterJoinEvent(eventUnderTest);
@@ -296,17 +290,6 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             {
                 OnTestFailed("Discrimination bias event without discrimination bias!", _objectUnderTest.title,
                     novelEvent.id);
-                return;
-            }
-
-            PlayNextEvent();
-        }
-
-        private void HandleBackgrundEvent(VisualNovelEvent novelEvent)
-        {
-            if (LocationHelper.ValueOf(novelEvent.backgroundSpriteId) == Location.NONE)
-            {
-                OnTestFailed("Location event without Location!", _objectUnderTest.title, novelEvent.id);
                 return;
             }
 

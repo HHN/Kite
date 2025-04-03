@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using Assets._Scripts.Managers;
-using Assets._Scripts.Novel;
+using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
 using Assets._Scripts.Player.KiteNovels.VisualNovelLoader;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
+namespace Assets._Scripts.Novel.VisualNovelFormatter
 {
     public class NovelReader : MonoBehaviour
     {
@@ -177,7 +177,6 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
                     if (newNovel.id == novel.id)
                     {
                         novel = newNovel;
-                        Debug.Log("Override Novel : " + newNovel.title);
                         break;
                     }
                 }
