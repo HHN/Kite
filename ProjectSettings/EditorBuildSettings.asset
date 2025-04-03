@@ -14,9 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/FeedbackScene.unity
     guid: b0393e03ad9357e4cafd694c35f17130
-  - enabled: 0
-    path: Assets/_Scenes/PlayerPrefsScene.unity
-    guid: fdfceeac0c3e28b4faabbf23eb644185
   - enabled: 1
     path: Assets/_Scenes/FoundersBubbleScene.unity
     guid: e6ba19ac2203fb24ea7256fc32f4c050
@@ -26,9 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/NovelHistoryScene.unity
     guid: 3d8065ad5dae4a248a0ba319ba324138
-  - enabled: 0
-    path: Assets/_Scenes/FoundersWell2Scene.unity
-    guid: ac8a450c55dc9c24995aba138454922e
   - enabled: 1
     path: Assets/_Scenes/Einstellungen/AccessibilityScene.unity
     guid: b9704eff5730cc848b7e15173484a58e
