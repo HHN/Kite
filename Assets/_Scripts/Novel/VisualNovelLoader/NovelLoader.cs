@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Loader
+namespace Assets._Scripts.Player.KiteNovels.VisualNovelLoader
 {
     public class NovelLoader : MonoBehaviour
     {

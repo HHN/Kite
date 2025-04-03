@@ -5,7 +5,7 @@ using Assets._Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Assets._Scripts.Server_Communication
+namespace Assets._Scripts.ServerCommunication
 {
     public abstract class ServerCall : MonoBehaviour
     {

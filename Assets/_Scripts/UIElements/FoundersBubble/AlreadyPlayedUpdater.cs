@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.UI_Elements.Founders_Bubble
+namespace Assets._Scripts.UIElements.FoundersBubble
 {
     public class AlreadyPlayedUpdater : MonoBehaviour
     {

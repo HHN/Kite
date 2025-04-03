@@ -4,7 +4,7 @@ using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.SceneMemory;
-using Assets._Scripts.UI_Elements.Founders_Bubble;
+using Assets._Scripts.UIElements.FoundersBubble;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

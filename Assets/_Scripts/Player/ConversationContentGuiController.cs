@@ -4,7 +4,7 @@ using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.SaveNovelData;
 using Assets._Scripts.SceneControllers;
-using Assets._Scripts.UI_Elements.TextBoxes;
+using Assets._Scripts.UIElements.TextBoxes;
 using Assets._Scripts.UndoChoice;
 using Assets._Scripts.Utilities;
 using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Animator._Core;
@@ -63,18 +63,18 @@ namespace Assets._Scripts.Player
         {
             switch (VisualNovelEventTypeHelper.ValueOf(novelEvent.eventType))
             {
-                case VisualNovelEventType.SHOW_MESSAGE_EVENT:
+                case VisualNovelEventType.ShowMessageEvent:
                 {
                     visualNovelEvents.Add(novelEvent);
                     ShowMessage(novelEvent);
                     break;
                 }
-                case VisualNovelEventType.ADD_CHOICE_EVENT:
+                case VisualNovelEventType.AddChoiceEvent:
                 {
                     _options.Add(novelEvent);
                     break;
                 }
-                case VisualNovelEventType.SHOW_CHOICES_EVENT:
+                case VisualNovelEventType.ShowChoicesEvent:
                 {
                     // Instantiate the options prefab and add it to the guiContent list
                     GameObject optionsObject = Instantiate(optionsPrefab, transform);

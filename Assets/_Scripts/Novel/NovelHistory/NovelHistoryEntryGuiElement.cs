@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Player;
-using Assets._Scripts.UI_Elements.DropDown;
+using Assets._Scripts.UIElements.DropDown;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

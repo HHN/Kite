@@ -1,7 +1,7 @@
 using Assets._Scripts.Managers;
 using Assets._Scripts.Messages;
 using Assets._Scripts.SceneManagement;
-using Assets._Scripts.UI_Elements.Buttons;
+using Assets._Scripts.UIElements.Buttons;
 using Assets._Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.UI;

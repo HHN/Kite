@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
-using Assets._Scripts.Player.Kite_Novels.Visual_Novel_Loader;
-using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
+using Assets._Scripts.Player.KiteNovels.VisualNovelLoader;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
+namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 {
     public class NovelReader : MonoBehaviour
     {

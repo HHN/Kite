@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.UI_Elements
+namespace Assets._Scripts.UIElements
 {
     public class DynamicMinHeightSetter : MonoBehaviour
     {

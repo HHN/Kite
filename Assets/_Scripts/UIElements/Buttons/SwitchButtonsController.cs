@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.UI_Elements.Buttons
+namespace Assets._Scripts.UIElements.Buttons
 {
     public class SwitchButtonsController : MonoBehaviour
     {
