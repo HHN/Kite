@@ -1,6 +1,6 @@
 using System;
 
-namespace Assets._Scripts.Server_Communication.Request_Objects
+namespace Assets._Scripts.ServerCommunication.RequestObjects
 {
     [Serializable]
     public class AddNovelReviewRequest

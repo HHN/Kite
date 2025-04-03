@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 //using LeastSquares.Overtone;
 
-namespace Assets._Scripts.UI_Elements.Buttons
+namespace Assets._Scripts.UIElements.Buttons
 {
     public class DeleteUserDataConfirmation : MonoBehaviour
     {

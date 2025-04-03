@@ -8,14 +8,14 @@ using Assets._Scripts.OfflineAiFeedback;
 using Assets._Scripts.Player;
 using Assets._Scripts.SaveNovelData;
 using Assets._Scripts.SceneManagement;
-using Assets._Scripts.Server_Communication;
-using Assets._Scripts.Server_Communication.Server_Calls;
 using Assets._Scripts.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Runtime.InteropServices;
+using Assets._Scripts.ServerCommunication;
+using Assets._Scripts.ServerCommunication.ServerCalls;
 
 namespace Assets._Scripts.SceneControllers
 {

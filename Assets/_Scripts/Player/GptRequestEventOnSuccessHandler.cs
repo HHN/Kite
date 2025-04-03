@@ -1,5 +1,5 @@
 using Assets._Scripts.Managers;
-using Assets._Scripts.Server_Communication;
+using Assets._Scripts.ServerCommunication;
 
 namespace Assets._Scripts.Player
 {
