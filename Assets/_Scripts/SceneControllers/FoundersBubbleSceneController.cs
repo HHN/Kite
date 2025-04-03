@@ -442,7 +442,6 @@ namespace Assets._Scripts.SceneControllers
         
         private void OnVertriebNovelButtonFromBurgerMenu()
         {
-            Debug.Log($"VertriebNovelButtonFromBurgerMenu");
             DisplayNovelFromMenu(VisualNovelNames.VERTRIEB_NOVEL);
         }
 
