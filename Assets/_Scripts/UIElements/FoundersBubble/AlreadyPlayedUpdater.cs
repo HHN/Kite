@@ -34,10 +34,8 @@ namespace Assets._Scripts.UI_Elements.Founders_Bubble
 
         private IEnumerator SetValueIn90Frames(int numberOfPlays)
         {
-            Debug.Log(numberOfPlays);
             if (_startedAnimation)
             {
-                Debug.Log("break");
                 yield break;
             }
 

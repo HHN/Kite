@@ -11,7 +11,6 @@ using Assets._Scripts.Player;
 using Assets._Scripts.SaveNovelData;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.Server_Communication.Server_Calls;
-using Assets._Scripts.UI_Elements.FreeTextUserInput;
 using Assets._Scripts.UI_Elements.Messages;
 using Assets._Scripts.Utilities;
 using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
@@ -42,7 +41,6 @@ namespace Assets._Scripts.SceneControllers
         [SerializeField] private GameObject backgroundColor;
         [SerializeField] private GameObject imageAreaColor;
         [SerializeField] private GameObject screenContentColor;
-        [SerializeField] private GameObject freeTextInputPrefab;
         [SerializeField] private GameObject headerImage;
 
         [Header("Novel-Visuals und Prefabs")] 
@@ -425,11 +423,6 @@ namespace Assets._Scripts.SceneControllers
                     HandlePlayAnimationEvent(nextEventToPlay);
                     break;
                 }
-                case VisualNovelEventType.FREE_TEXT_INPUT_EVENT:
-                {
-                    HandleFreeTextInputEvent(nextEventToPlay);
-                    break;
-                }
                 case VisualNovelEventType.GPT_PROMPT_EVENT:
                 {
                     HandleGptPromptEvent(nextEventToPlay);
@@ -548,23 +541,6 @@ namespace Assets._Scripts.SceneControllers
             {
                 currentAnimation = Instantiate(novelAnimations[novelEvent.animationToPlay], viewPortOfImages.transform);
             }
-        }
-
-        private void HandleFreeTextInputEvent(VisualNovelEvent novelEvent)
-        {
-            SetNextEvent(novelEvent);
-        
-            if (novelEvent.questionForFreeTextInput == string.Empty
-                || novelEvent.questionForFreeTextInput == ""
-                || novelEvent.variablesName == string.Empty
-                || novelEvent.variablesName == "")
-            {
-                return;
-            }
-        
-            FreeTextInputController freeTextInputController = Instantiate(this.freeTextInputPrefab, canvas.transform)
-                .GetComponent<FreeTextInputController>();
-            freeTextInputController.Initialize(novelEvent.questionForFreeTextInput, novelEvent.variablesName);
         }
 
         private void HandleGptPromptEvent(VisualNovelEvent novelEvent)
