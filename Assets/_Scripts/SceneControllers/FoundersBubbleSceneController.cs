@@ -26,7 +26,7 @@ namespace Assets._Scripts.SceneControllers
         [Header("Founder's Well Button")] [SerializeField]
         private Button foundersWellButton;
 
-        [Header("Novels Contained in Version")] 
+        [Header("Novel Contained in Version")]
         [SerializeField] private bool isIntroNovelNovelInVersionContained;
         [SerializeField] private bool isBankkreditNovelInVersionContained;
         [SerializeField] private bool isBankkontoNovelInVersionContained;
@@ -110,16 +110,6 @@ namespace Assets._Scripts.SceneControllers
             honorarNovelButtonFromBurgerMenu.onClick.AddListener(OnHonorarNovelButtonFromBurgerMenu);
             vertriebNovelButtonFromBurgerMenu.onClick.AddListener(OnVertriebNovelButtonFromBurgerMenu);
             burgerMenuBackground.onClick.AddListener(OnBackgroundButton);
-
-            // if (inputField != null)
-            // {
-            //     // Füge den Listener für Änderungen am Text des InputFields hinzu
-            //     inputField.onValueChanged.AddListener(OnInputValueChanged);
-            // }
-            // else
-            // {
-            //     Debug.LogError("InputField ist nicht zugewiesen.");
-            // }
 
             if (buttonContainers != null && buttonContainers.Count > 0)
             {
@@ -263,7 +253,7 @@ namespace Assets._Scripts.SceneControllers
         public void OnIntroNovelButton()
         {
             DisplayTextBoxForVisualNovel(VisualNovelNames.EinstiegsNovel, isIntroNovelNovelInVersionContained);
-            infinityScroll.MoveToVisualNovel(VisualNovelNames.EinstiegsNovel);
+            // infinityScroll.MoveToVisualNovel(VisualNovelNames.EinstiegsNovel);
         }
 
         private void OnNovelListButton()

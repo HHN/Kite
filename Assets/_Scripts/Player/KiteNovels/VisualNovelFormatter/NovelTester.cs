@@ -24,7 +24,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 
             if (novels == null || novels.Count == 0)
             {
-                Debug.LogWarning("No Novels to test.");
+                Debug.LogWarning("No Novel to test.");
                 return tests;
             }
 

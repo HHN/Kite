@@ -123,7 +123,7 @@ namespace Assets._Scripts.SaveNovelData
                 // Wenn ein Element gefunden wurde, lösche alles von hinten bis zu diesem Index
                 if (indexToRemoveUpTo != -1)
                 {
-                    // Entfernt alle Elemente von indexToRemoveUpTo bis zum Ende der Liste
+                    // Entfernt alle Elemente von indexToRemoveUpTo bis zum End der Liste
                     conversationContentGuiController.VisualNovelEvents.RemoveRange(indexToRemoveUpTo, conversationContentGuiController.VisualNovelEvents.Count - indexToRemoveUpTo);
                 }
             }

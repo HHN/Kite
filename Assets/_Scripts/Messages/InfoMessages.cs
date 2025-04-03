@@ -8,7 +8,7 @@ namespace Assets._Scripts.Messages
         public static readonly string WAIT_FOR_DELETION_OF_ACCOUNT = "Bitte warten! Der Account wird gelöscht!";
         public static readonly string WAIT_FOR_CHANGE_OF_PASSWORD = "Bitte warten! Das Passwort wird geändert!";
         public static readonly string WAIT_FOR_RESET_OF_PASSWORD = "Bitte warten! Ihr Passwort wird zurück gesetzt!";
-        public static readonly string WAIT_FOR_LOAD_NOVEL = "Bitte warten! Die Visual Novels werden geladen!";
+        public static readonly string WAIT_FOR_LOAD_NOVEL = "Bitte warten! Die Visual Novel werden geladen!";
         public static readonly string WAIT_FOR_LOAD_COMMENT_SECTION = "Bitte warten! Die Kommentare zur Visual Novel werden geladen!";
         public static readonly string WAIT_FOR_UPLOAD_COMMENT = "Bitte warten! Der Kommentar wird gepostet!";
         public static readonly string WAIT_FOR_DELETE_COMMENT = "Bitte warten! Der Kommentar wird gelöscht!";
@@ -41,7 +41,7 @@ namespace Assets._Scripts.Messages
         public static readonly string SAVED_SUCCESFULLY = "Deine Änderungen wurden gespeichert.";
         public static readonly string STARTED_TOGGLETEXTTOSPEECH_BUTTON = "Text wird dir nun vorgelesen.";
         public static readonly string STOPPED_TOGGLETEXTTOSPEECH_BUTTON = "Text wird dir nun nicht länger vorgelesen.";
-        public static readonly string EXPLANATION_TEXTTOSPEECH_BUTTON = "Dieser Button schaltet die Sprachausgabe an bzw. aus. Ist die Sprachausgabe aktiviert, werden die Novels vertont und der Text, auf welchen du innerhalb der App drückst, wird dir vorgelesen.";
+        public static readonly string EXPLANATION_TEXTTOSPEECH_BUTTON = "Dieser Button schaltet die Sprachausgabe an bzw. aus. Ist die Sprachausgabe aktiviert, werden die Novel vertont und der Text, auf welchen du innerhalb der App drückst, wird dir vorgelesen.";
         public static readonly string EXPLANATION_SOUNDEFFECTS_BUTTON = "Dieser Button schaltet die Soundeffekte an bzw. aus. Dies beinhaltet sämtliche Geräusche der App, außer der Vorlesefunktion.";
         public static readonly string EXPLANATION_ADJUST_FONT_SIZE_BUTTON = "Mit dem Regler kannst du die Schriftgröße für die meisten Texte in der App anpassen. An dem Beispieltext kannst du sehen, wie groß die Texte angezeigt werden, sobald du bestätigst.";
         public static readonly string CONFIRM_FONT_SIZE_ADJUSTMENT = "Die Schriftgröße wurde angepasst.";

@@ -14,11 +14,9 @@ namespace Assets._Scripts.Managers
         public bool IsBiasConfirmationBiasRelevant { get; set; }
         public bool IsBiasTokenismRelevant { get; set; }
         public bool IsBiasInPerceptionOfLeadershipAbilitiesRelevant { get; set; }
-        public bool IsBiasRacistAndEthnicBiasesRelevant { get; set; }
+        public bool IsBiasRacialAndEthnicBiasesRelevant { get; set; }
         public bool IsBiasSocioeconomicBiasesRelevant { get; set; }
-        public bool IsBiasAgeAndGenerationalBiasesRelevant { get; set; }
-        public bool IsBiasSexualityRelatedBiasesRelevant { get; set; }
-        public bool IsBiasAgainstWomenWithDisabilitiesRelevant { get; set; }
+        public bool IsBiasAgeAndGenerationBiasesRelevant { get; set; }
         public bool IsBiasStereotypesAgainstWomenInNonTraditionalIndustriesRelevant { get; set; }
         public bool IsBiasCulturalAndReligiousBiasesRelevant { get; set; }
         public bool IsBiasMaternalBiasRelevant { get; set; }
@@ -32,8 +30,8 @@ namespace Assets._Scripts.Managers
         public bool IsBiasInMediaAndAdvertisingRelevant { get; set; }
         public bool IsBiasUnconsciousBiasInCommunicationRelevant { get; set; }
         public bool IsBiasProveItAgainBiasRelevant { get; set; }
-        public bool IsBiasHeteronormativitaetBiasRelevant { get; set; }
-        public bool IsBiasBenevolenterSexismusBiasRelevant { get; set; }
+        public bool IsBiasHeteronormativityBiasRelevant { get; set; }
+        public bool IsBiasBenevolentSexismBiasRelevant { get; set; }
 
         private NovelBiasManager()
         {
@@ -44,11 +42,9 @@ namespace Assets._Scripts.Managers
             IsBiasConfirmationBiasRelevant = false;
             IsBiasTokenismRelevant = false;
             IsBiasInPerceptionOfLeadershipAbilitiesRelevant = false;
-            IsBiasRacistAndEthnicBiasesRelevant = false;
+            IsBiasRacialAndEthnicBiasesRelevant = false;
             IsBiasSocioeconomicBiasesRelevant = false;
-            IsBiasAgeAndGenerationalBiasesRelevant = false;
-            IsBiasSexualityRelatedBiasesRelevant = false;
-            IsBiasAgainstWomenWithDisabilitiesRelevant = false;
+            IsBiasAgeAndGenerationBiasesRelevant = false;
             IsBiasStereotypesAgainstWomenInNonTraditionalIndustriesRelevant = false;
             IsBiasCulturalAndReligiousBiasesRelevant = false;
             IsBiasMaternalBiasRelevant = false;
@@ -62,8 +58,8 @@ namespace Assets._Scripts.Managers
             IsBiasInMediaAndAdvertisingRelevant = false;
             IsBiasUnconsciousBiasInCommunicationRelevant = false;
             IsBiasProveItAgainBiasRelevant = false;
-            IsBiasHeteronormativitaetBiasRelevant = false;
-            IsBiasBenevolenterSexismusBiasRelevant = false;
+            IsBiasHeteronormativityBiasRelevant = false;
+            IsBiasBenevolentSexismBiasRelevant = false;
         }
 
         public static NovelBiasManager Instance()
@@ -102,19 +98,10 @@ namespace Assets._Scripts.Managers
                     IsBiasInPerceptionOfLeadershipAbilitiesRelevant = true;
                     break;
                 case DiscriminationBias.RacistAndEthnicBiases:
-                    IsBiasRacistAndEthnicBiasesRelevant = true;
+                    IsBiasRacialAndEthnicBiasesRelevant = true;
                     break;
                 case DiscriminationBias.SocioeconomicBiases:
                     IsBiasSocioeconomicBiasesRelevant = true;
-                    break;
-                case DiscriminationBias.AgeAndGenerationalBiases:
-                    IsBiasAgeAndGenerationalBiasesRelevant = true;
-                    break;
-                case DiscriminationBias.SexualityRelatedBiases:
-                    IsBiasSexualityRelatedBiasesRelevant = true;
-                    break;
-                case DiscriminationBias.AgainstWomenWithDisabilities:
-                    IsBiasAgainstWomenWithDisabilitiesRelevant = true;
                     break;
                 case DiscriminationBias.StereotypesAgainstWomenInNonTraditionalIndustries:
                     IsBiasStereotypesAgainstWomenInNonTraditionalIndustriesRelevant = true;
@@ -155,11 +142,11 @@ namespace Assets._Scripts.Managers
                 case DiscriminationBias.ProveItAgainBias:
                     IsBiasProveItAgainBiasRelevant = true;
                     break;
-                case DiscriminationBias.HeteronormativitaetBias:
-                    IsBiasHeteronormativitaetBiasRelevant = true;
+                case DiscriminationBias.HeteronormativityBias:
+                    IsBiasHeteronormativityBiasRelevant = true;
                     break;
-                case DiscriminationBias.BenevolenterSexismusBias:
-                    IsBiasBenevolenterSexismusBiasRelevant = true;
+                case DiscriminationBias.BenevolentSexismBias:
+                    IsBiasBenevolentSexismBiasRelevant = true;
                     break;
                 default:
                     Debug.LogWarning("Bias not Recognized: " + biasName);

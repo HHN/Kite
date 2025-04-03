@@ -383,6 +383,7 @@ namespace Assets._Scripts.SceneControllers
                 }
                 case VisualNovelEventType.CHARAKTER_JOIN_EVENT:
                 {
+                    Debug.Log($"Character join event: {nextEventToPlay.text}");
                     HandleCharacterJoinEvent(nextEventToPlay);
                     break;
                 }

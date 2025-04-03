@@ -47,7 +47,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             {
                 if (listOfAllNovelPaths == null || listOfAllNovelPaths.Count == 0)
                 {
-                    Debug.LogWarning("Loading Novels failed: No Novels found! Path: " + fullPath);
+                    Debug.LogWarning("Loading Novel failed: No Novel found! Path: " + fullPath);
                     KiteNovelManager.Instance().SetAllKiteNovels(new List<VisualNovel>());
                     return;
                 }
@@ -69,7 +69,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             {
                 if (listOfAllNovelPaths == null || listOfAllNovelPaths.Count == 0)
                 {
-                    Debug.LogWarning("Loading Novels failed: No Novels found! Path: " + fullPath);
+                    Debug.LogWarning("Loading Novel failed: No Novel found! Path: " + fullPath);
                     KiteNovelManager.Instance().SetAllKiteNovels(new List<VisualNovel>());
                     return;
                 }
@@ -108,7 +108,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
                     continue;
                 }
 
-                jsonStringOfEventList = ReplaceWordsInString(jsonStringOfEventList, kiteNovelMetaData.WordsToReplace);
+                // jsonStringOfEventList = ReplaceWordsInString(jsonStringOfEventList, kiteNovelMetaData.WordsToReplace);
 
                 KiteNovelEventList kiteNovelEventList =
                     KiteNovelConverter.ConvertTextDocumentIntoEventList(jsonStringOfEventList, kiteNovelMetaData);

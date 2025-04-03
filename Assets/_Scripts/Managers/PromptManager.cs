@@ -90,7 +90,7 @@ namespace Assets._Scripts.Managers
                     "Formuliere den Text aus einer unbestimmten Ich-Perspektive."
                 );
                 _prompt.AppendLine();
-
+                
                 //Wissens Basis
                 _prompt.Append(
                     "Hier die Liste mit Geschlechterbiases im Gründungsprozess:\r\n\r\n" +

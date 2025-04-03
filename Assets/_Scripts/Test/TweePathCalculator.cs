@@ -62,7 +62,7 @@ namespace Assets._Scripts.Test
             }
 
             // Statische Zuordnungen
-            _characterToSpeakerMap[@"InfoNachrichtWirdAngezeigt"] = "Info";
+            _characterToSpeakerMap[@"InfoMessageIsDisplayed"] = "Info";
             _characterToSpeakerMap[@"SpielerinCharakterSpricht"] = "Spielerin";
 
             // Ausgabe der gesamten CharacterToSpeakerMap
@@ -152,10 +152,10 @@ namespace Assets._Scripts.Test
                 }
             }
 
-            // Stelle sicher, dass "Ende" im Graph existiert
-            if (!_graph.ContainsKey("Ende"))
+            // Stelle sicher, dass "End" im Graph existiert
+            if (!_graph.ContainsKey("End"))
             {
-                _graph["Ende"] = (new List<string>(), new List<string>(), "");
+                _graph["End"] = (new List<string>(), new List<string>(), "");
             }
         }
 
@@ -178,7 +178,7 @@ namespace Assets._Scripts.Test
                 var (links, _, _) = _graph[node];
 
                 // Wenn Endknoten erreicht
-                if (links.Count == 0 || node == "Ende")
+                if (links.Count == 0 || node == "End")
                 {
                     allPaths.Add(new List<string>(currentPath));
                 }
@@ -352,7 +352,7 @@ namespace Assets._Scripts.Test
 //                 string numberMatch = Regex.Match(key, @"\d+").Value; // Extrahiere die Nummer
 //                 if (!string.IsNullOrEmpty(value))
 //                 {
-//                     // Dynamisch alle möglichen `Charakter01Spricht...` zuordnen
+//                     // Dynamisch alle möglichen `Character01Speaks...` zuordnen
 //                     string dynamicPattern = $@"Charakter{numberMatch}";
 //
 //                     if (!CharacterToSpeakerMap.ContainsKey(dynamicPattern))
@@ -363,7 +363,7 @@ namespace Assets._Scripts.Test
 //             }
 //
 //             // Statische Zuordnungen
-//             CharacterToSpeakerMap[@"InfoNachrichtWirdAngezeigt"] = "Info";
+//             CharacterToSpeakerMap[@"InfoMessageIsDisplayed"] = "Info";
 //             CharacterToSpeakerMap[@"SpielerinCharakterSpricht"] = "Spielerin";
 //
 //             Debug.Log("CharacterToSpeakerMap Inhalt:");
@@ -470,10 +470,10 @@ namespace Assets._Scripts.Test
 //                     }
 //                 }
 //
-//                 // Prüfe auf den >>Ende<<-Marker
-//                 if (nodeBody.Contains(">>Ende<<") && !links.Contains("Ende"))
+//                 // Prüfe auf den >>End<<-Marker
+//                 if (nodeBody.Contains(">>End<<") && !links.Contains("End"))
 //                 {
-//                     links.Add("Ende");
+//                     links.Add("End");
 //                 }
 //
 //                 if (!Graph.ContainsKey(nodeName))
@@ -487,10 +487,10 @@ namespace Assets._Scripts.Test
 //                 }
 //             }
 //
-//             // Stelle sicher, dass "Ende" im Graph existiert
-//             if (!Graph.ContainsKey("Ende"))
+//             // Stelle sicher, dass "End" im Graph existiert
+//             if (!Graph.ContainsKey("End"))
 //             {
-//                 Graph["Ende"] = (new List<string>(), string.Empty, "Unbekannt");
+//                 Graph["End"] = (new List<string>(), string.Empty, "Unbekannt");
 //             }
 //         }
 //
@@ -515,7 +515,7 @@ namespace Assets._Scripts.Test
 //                 var (links, _, _) = Graph[node];
 //
 //                 // Wenn Endknoten erreicht
-//                 if (links.Count == 0 || node == "Ende")
+//                 if (links.Count == 0 || node == "End")
 //                 {
 //                     allPaths.Add(new List<string>(currentPath));
 //                 }

@@ -30,7 +30,7 @@ namespace Assets._Scripts.Player.KiteNovels.Visual_Novel_Loader
             {
                 if (listOfAllNovel == null || listOfAllNovel.Count == 0)
                 {
-                    Debug.LogWarning("Loading Novels failed: No Novels found! Path: " + fullPath);
+                    Debug.LogWarning("Loading Novel failed: No Novel found! Path: " + fullPath);
                 }
                 KiteNovelManager.Instance().SetAllKiteNovels(listOfAllNovel);
             }));
