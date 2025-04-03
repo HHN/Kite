@@ -64,11 +64,11 @@ namespace Assets._Scripts
                     SetArchivButtonImage();
                     SetTextToActive(archivTextElement);
                     break;
-                case SceneNames.GemerkteNovelsScene:
+                case SceneNames.BookmarkedNovelsScene:
                     SetBookmarkButtonImage();
                     SetTextToActive(gemerktTextElement);
                     break;
-                case SceneNames.RessourcenScene:
+                case SceneNames.ResourcesScene:
                     SetLinksButtonImage();
                     SetTextToActive(linkTextElement);
                     break;
@@ -101,22 +101,22 @@ namespace Assets._Scripts
 
         private void OnBookmarkButton()
         {
-            if (currentScene.Equals(SceneNames.GemerkteNovelsScene))
+            if (currentScene.Equals(SceneNames.BookmarkedNovelsScene))
             {
                 return;
             }
 
-            SceneLoader.LoadGemerkteNovelsScene();
+            SceneLoader.LoadBookmarkedNovelsScene();
         }
 
         private void OnLinksButton()
         {
-            if (currentScene.Equals(SceneNames.RessourcenScene))
+            if (currentScene.Equals(SceneNames.ResourcesScene))
             {
                 return;
             }
 
-            SceneLoader.LoadRessourcenScene();
+            SceneLoader.LoadResourcesScene();
         }
         
         private void OnKnowledgeButton()

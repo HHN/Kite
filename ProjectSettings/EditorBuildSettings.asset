@@ -15,9 +15,6 @@ EditorBuildSettings:
     path: Assets/_Scenes/FeedbackScene.unity
     guid: b0393e03ad9357e4cafd694c35f17130
   - enabled: 1
-    path: Assets/_Scenes/PlayerPrefsScene.unity
-    guid: fdfceeac0c3e28b4faabbf23eb644185
-  - enabled: 1
     path: Assets/_Scenes/FoundersBubbleScene.unity
     guid: e6ba19ac2203fb24ea7256fc32f4c050
   - enabled: 1
@@ -27,31 +24,28 @@ EditorBuildSettings:
     path: Assets/_Scenes/NovelHistoryScene.unity
     guid: 3d8065ad5dae4a248a0ba319ba324138
   - enabled: 1
-    path: Assets/_Scenes/FoundersWell2Scene.unity
-    guid: ac8a450c55dc9c24995aba138454922e
-  - enabled: 1
-    path: Assets/_Scenes/Einstellungen/BarrierefreiheitScene.unity
+    path: Assets/_Scenes/Einstellungen/AccessibilityScene.unity
     guid: b9704eff5730cc848b7e15173484a58e
   - enabled: 1
-    path: Assets/_Scenes/LegalInformation/DatenschutzScene.unity
+    path: Assets/_Scenes/LegalInformation/PrivacyPolicyScene.unity
     guid: f5cb0b69189b695499b6182cfb78cebc
   - enabled: 1
-    path: Assets/_Scenes/LegalInformation/ImpressumScene.unity
+    path: Assets/_Scenes/LegalInformation/LegalNoticeScene.unity
     guid: 5a81ee2b542eabd4f97ddd6faf0a64f5
   - enabled: 1
-    path: Assets/_Scenes/LegalInformation/NutzungsbedingungenScene.unity
+    path: Assets/_Scenes/LegalInformation/TermsOfUseScene.unity
     guid: 621fc56954dac124db9d13e52918a77c
   - enabled: 1
-    path: Assets/_Scenes/LegalInformation/RessourcenScene.unity
+    path: Assets/_Scenes/LegalInformation/ResourcesScene.unity
     guid: 13cfd61506123d946bf5196688dd9110
   - enabled: 1
-    path: Assets/_Scenes/Einstellungen/EinstellungenScene.unity
+    path: Assets/_Scenes/Einstellungen/SettingsScene.unity
     guid: 10175c04a1bfea24c972082d4b2d7942
   - enabled: 1
-    path: Assets/_Scenes/GemerkteNovelsScene.unity
+    path: Assets/_Scenes/BookmarkedNovelsScene.unity
     guid: 46df8111616ab4741b32e88ca04b2348
   - enabled: 1
-    path: Assets/_Scenes/Einstellungen/SoundeinstellungScene.unity
+    path: Assets/_Scenes/Einstellungen/SoundSettingsScene.unity
     guid: ad834cd147064c242810f7f44030a821
   - enabled: 1
     path: Assets/_Scenes/KnowledgeScene.unity

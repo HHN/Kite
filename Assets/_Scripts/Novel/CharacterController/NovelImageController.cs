@@ -34,7 +34,6 @@ namespace Assets._Scripts.Novel.CharacterController
         {
             if (novelKite2CharacterController == null)
             {
-                // Debug.Log("novelKite2CharacterController is null");
             }
             else if (characterId == 0)
             {

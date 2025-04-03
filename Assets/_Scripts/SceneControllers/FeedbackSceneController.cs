@@ -68,8 +68,7 @@ namespace Assets._Scripts.SceneControllers
             {
                 StartWaitingMusic();
                 VisualNovel novel = PlayManager.Instance().GetVisualNovelToPlay();
-                feedbackText.SetText(
-                    "Das Feedback wird gerade geladen. Dies dauert durchschnittlich zwischen 30 und 60 Sekunden. Solltest du nicht so lange warten wollen, kannst du dir das Feedback einfach im Archiv anschauen, sobald es fertig ist.");
+                feedbackText.SetText("Das Feedback wird gerade geladen. Dies dauert durchschnittlich zwischen 30 und 60 Sekunden. Solltest du nicht so lange warten wollen, kannst du dir das Feedback einfach im Archiv anschauen, sobald es fertig ist.");
                 GetCompletionServerCall call = Instantiate(gptServercallPrefab).GetComponent<GetCompletionServerCall>();
                 call.sceneController = this;
 
@@ -117,8 +116,7 @@ namespace Assets._Scripts.SceneControllers
                     TextToSpeechManager.Instance.CancelSpeak();
             #endif
             
-            BackStackManager.Instance()
-                .Clear(); // we go back to the explorer and don't want the back-button to bring us to the feedback scene again
+            BackStackManager.Instance().Clear(); // we go back to the explorer and don't want the back-button to bring us to the feedback scene again
             SceneLoader.LoadFoundersBubbleScene();
         }
 

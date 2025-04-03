@@ -26,9 +26,8 @@ namespace Assets._Scripts.SceneControllers
         [Header("Founder's Well Button")] [SerializeField]
         private Button foundersWellButton;
 
-        [Header("Novels Contained in Version")] [SerializeField]
-        private bool isIntroNovelNovelInVersionContained;
-
+        [Header("Novels Contained in Version")] 
+        [SerializeField] private bool isIntroNovelNovelInVersionContained;
         [SerializeField] private bool isBankkreditNovelInVersionContained;
         [SerializeField] private bool isBankkontoNovelInVersionContained;
         [SerializeField] private bool isFoerderantragNovelInVersionContained;
@@ -40,6 +39,7 @@ namespace Assets._Scripts.SceneControllers
         [SerializeField] private bool isHonorarNovelInVersionContained;
         [SerializeField] private bool isLebenspartnerNovelInVersionContained;
         [SerializeField] private bool isInvestorNovelInVersionContained;
+        [SerializeField] private bool isVertriebNovelInVersionContained;
 
         [Header("General Buttons")] [SerializeField]
         private Button novelListButton;
@@ -52,9 +52,8 @@ namespace Assets._Scripts.SceneControllers
         [SerializeField] private bool isBurgerMenuOpen;
         [SerializeField] private Button burgerMenuBackground;
 
-        [Header("Burger Menu Buttons")] [SerializeField]
-        private Button introNovelButtonFromBurgerMenu;
-
+        [Header("Burger Menu Buttons")] 
+        [SerializeField] private Button introNovelButtonFromBurgerMenu;
         [SerializeField] private Button bankkreditNovelButtonFromBurgerMenu;
         [SerializeField] private Button elternNovelButtonFromBurgerMenu;
         [SerializeField] private Button notarinNovelButtonFromBurgerMenu;
@@ -62,6 +61,7 @@ namespace Assets._Scripts.SceneControllers
         [SerializeField] private Button bueroNovelButtonFromBurgerMenu;
         [SerializeField] private Button honorarNovelButtonFromBurgerMenu;
         [SerializeField] private Button investorNovelButtonFromBurgerMenu;
+        [SerializeField] private Button vertriebNovelButtonFromBurgerMenu;
 
         [Header("Search Input and Button Containers")] [SerializeField]
         private TMP_InputField inputField;
@@ -81,9 +81,7 @@ namespace Assets._Scripts.SceneControllers
         {
             BackStackManager.Instance().Push(SceneNames.FoundersBubbleScene);
 
-            foundersWellButton.onClick.AddListener(OnFoundersWellButton);
-
-            currentlyOpenedVisualNovelPopup = VisualNovelNames.NONE;
+            currentlyOpenedVisualNovelPopup = VisualNovelNames.None;
 
             isIntroNovelNovelInVersionContained = true;
             isBankkreditNovelInVersionContained = true;
@@ -97,6 +95,7 @@ namespace Assets._Scripts.SceneControllers
             isHonorarNovelInVersionContained = true;
             isLebenspartnerNovelInVersionContained = true;
             isInvestorNovelInVersionContained = true;
+            isVertriebNovelInVersionContained = true;
 
             novelListButton.onClick.AddListener(OnNovelListButton);
             settingsButton.onClick.AddListener(OnSettingsButton);
@@ -109,6 +108,7 @@ namespace Assets._Scripts.SceneControllers
             bueroNovelButtonFromBurgerMenu.onClick.AddListener(OnBueroButtonFromBurgerMenu);
             investorNovelButtonFromBurgerMenu.onClick.AddListener(OnInvestorNovelButtonFromBurgerMenu);
             honorarNovelButtonFromBurgerMenu.onClick.AddListener(OnHonorarNovelButtonFromBurgerMenu);
+            vertriebNovelButtonFromBurgerMenu.onClick.AddListener(OnVertriebNovelButtonFromBurgerMenu);
             burgerMenuBackground.onClick.AddListener(OnBackgroundButton);
 
             // if (inputField != null)
@@ -192,35 +192,17 @@ namespace Assets._Scripts.SceneControllers
             }
         }
 
-        private void OnFoundersWellButton()
-        {
-            if (isBurgerMenuOpen)
-            {
-                this.burgerMenu.gameObject.SetActive(false);
-                isBurgerMenuOpen = false;
-                return;
-            }
-
-            if (isPopupOpen)
-            {
-                MakeTextboxInvisible();
-                return;
-            }
-
-            SceneLoader.LoadFoundersWell2Scene();
-        }
-
         public void OnBankkreditNovelButton()
         {
-            DisplayTextBoxForVisualNovel(VisualNovelNames.BANK_KREDIT_NOVEL, isBankkreditNovelInVersionContained);
-            infinityScroll.MoveToVisualNovel(VisualNovelNames.BANK_KREDIT_NOVEL);
+            DisplayTextBoxForVisualNovel(VisualNovelNames.BankKreditNovel, isBankkreditNovelInVersionContained);
+            infinityScroll.MoveToVisualNovel(VisualNovelNames.BankKreditNovel);
         }
 
         public void OnInvestorNovelButton()
         {
-            DisplayTextBoxForVisualNovel(VisualNovelNames.INVESTOR_NOVEL,
+            DisplayTextBoxForVisualNovel(VisualNovelNames.InvestorNovel,
                 isInvestorNovelInVersionContained);
-            infinityScroll.MoveToVisualNovel(VisualNovelNames.INVESTOR_NOVEL);
+            infinityScroll.MoveToVisualNovel(VisualNovelNames.InvestorNovel);
         }
 
         // public void OnBankKontoNovelButton()
@@ -237,26 +219,26 @@ namespace Assets._Scripts.SceneControllers
 
         public void OnElternNovelButton()
         {
-            DisplayTextBoxForVisualNovel(VisualNovelNames.ELTERN_NOVEL, isElternNovelInVersionContained);
-            infinityScroll.MoveToVisualNovel(VisualNovelNames.ELTERN_NOVEL);
+            DisplayTextBoxForVisualNovel(VisualNovelNames.ElternNovel, isElternNovelInVersionContained);
+            infinityScroll.MoveToVisualNovel(VisualNovelNames.ElternNovel);
         }
 
         public void OnNotariatNovelButton()
         {
-            DisplayTextBoxForVisualNovel(VisualNovelNames.NOTARIAT_NOVEL, isNotarinNovelInVersionContained);
-            infinityScroll.MoveToVisualNovel(VisualNovelNames.NOTARIAT_NOVEL);
+            DisplayTextBoxForVisualNovel(VisualNovelNames.NotariatNovel, isNotarinNovelInVersionContained);
+            infinityScroll.MoveToVisualNovel(VisualNovelNames.NotariatNovel);
         }
 
         public void OnPresseNovelButton()
         {
-            DisplayTextBoxForVisualNovel(VisualNovelNames.PRESSE_NOVEL, isPresseNovelInVersionContained);
-            infinityScroll.MoveToVisualNovel(VisualNovelNames.PRESSE_NOVEL);
+            DisplayTextBoxForVisualNovel(VisualNovelNames.PresseNovel, isPresseNovelInVersionContained);
+            infinityScroll.MoveToVisualNovel(VisualNovelNames.PresseNovel);
         }
 
         public void OnBueroNovelButton()
         {
-            DisplayTextBoxForVisualNovel(VisualNovelNames.VERMIETER_NOVEL, isBueroNovelInVersionContained);
-            infinityScroll.MoveToVisualNovel(VisualNovelNames.VERMIETER_NOVEL);
+            DisplayTextBoxForVisualNovel(VisualNovelNames.VermieterNovel, isBueroNovelInVersionContained);
+            infinityScroll.MoveToVisualNovel(VisualNovelNames.VermieterNovel);
         }
 
         // public void OnGruenderzuschussNovelButton()
@@ -268,8 +250,8 @@ namespace Assets._Scripts.SceneControllers
 
         public void OnHonorarNovelButton()
         {
-            DisplayTextBoxForVisualNovel(VisualNovelNames.HONORAR_NOVEL, isHonorarNovelInVersionContained);
-            infinityScroll.MoveToVisualNovel(VisualNovelNames.HONORAR_NOVEL);
+            DisplayTextBoxForVisualNovel(VisualNovelNames.HonorarNovel, isHonorarNovelInVersionContained);
+            infinityScroll.MoveToVisualNovel(VisualNovelNames.HonorarNovel);
         }
 
         // public void OnLebenspartnerNovelButton()
@@ -280,8 +262,8 @@ namespace Assets._Scripts.SceneControllers
 
         public void OnIntroNovelButton()
         {
-            DisplayTextBoxForVisualNovel(VisualNovelNames.EINSTIEGS_NOVEL, isIntroNovelNovelInVersionContained);
-            infinityScroll.MoveToVisualNovel(VisualNovelNames.EINSTIEGS_NOVEL);
+            DisplayTextBoxForVisualNovel(VisualNovelNames.EinstiegsNovel, isIntroNovelNovelInVersionContained);
+            infinityScroll.MoveToVisualNovel(VisualNovelNames.EinstiegsNovel);
         }
 
         private void OnNovelListButton()
@@ -300,7 +282,7 @@ namespace Assets._Scripts.SceneControllers
 
         private void OnSettingsButton()
         {
-            SceneLoader.LoadEinstellungenScene();
+            SceneLoader.LoadSettingsScene();
         }
 
         private void DisplayTextBoxForVisualNovel(VisualNovelNames visualNovel, bool isNovelContainedInVersion)
@@ -322,10 +304,8 @@ namespace Assets._Scripts.SceneControllers
                 novelDescriptionTextbox.gameObject.SetActive(true);
                 novelDescriptionTextbox.SetHead(FoundersBubbleMetaInformation.IsHighInGui(visualNovel));
                 novelDescriptionTextbox.SetVisualNovelName(visualNovel);
-                novelDescriptionTextbox.SetText(
-                    "Leider ist diese Novel nicht in der Testversion enthalten. Bitte spiele eine andere Novel.");
-                novelDescriptionTextbox.SetColorOfImage(
-                    FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
+                novelDescriptionTextbox.SetText("Leider ist diese Novel nicht in der Testversion enthalten. Bitte spiele eine andere Novel.");
+                novelDescriptionTextbox.SetColorOfImage(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
                 novelDescriptionTextbox.SetButtonsActive(false);
                 isPopupOpen = true;
                 currentlyOpenedVisualNovelPopup = visualNovel;
@@ -351,8 +331,7 @@ namespace Assets._Scripts.SceneControllers
                         novelDescriptionTextboxIntro.SetVisualNovel(novel);
                         novelDescriptionTextboxIntro.SetVisualNovelName(visualNovel);
                         novelDescriptionTextboxIntro.SetText(novel.description);
-                        novelDescriptionTextboxIntro.SetColorOfImage(
-                            FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
+                        novelDescriptionTextboxIntro.SetColorOfImage(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
                         novelDescriptionTextboxIntro.SetButtonsActive(true);
                         novelDescriptionTextboxIntro.UpdateSize();
                     }
@@ -364,8 +343,7 @@ namespace Assets._Scripts.SceneControllers
                         novelDescriptionTextbox.SetVisualNovel(novel);
                         novelDescriptionTextbox.SetVisualNovelName(visualNovel);
                         novelDescriptionTextbox.SetText(novel.description);
-                        novelDescriptionTextbox.SetColorOfImage(
-                            FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
+                        novelDescriptionTextbox.SetColorOfImage(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
                         novelDescriptionTextbox.SetButtonsActive(true);
                         novelDescriptionTextbox.InitializeBookMarkButton(FavoritesManager.Instance().IsFavorite(novel));
                         novelDescriptionTextbox.UpdateSize();
@@ -373,8 +351,7 @@ namespace Assets._Scripts.SceneControllers
 
                     isPopupOpen = true;
                     currentlyOpenedVisualNovelPopup = visualNovel;
-                    NovelColorManager.Instance()
-                        .SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
+                    NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
                 }
             }
 
@@ -384,7 +361,7 @@ namespace Assets._Scripts.SceneControllers
         public void MakeTextboxInvisible()
         {
             isPopupOpen = false;
-            currentlyOpenedVisualNovelPopup = VisualNovelNames.NONE;
+            currentlyOpenedVisualNovelPopup = VisualNovelNames.None;
             novelDescriptionTextbox.gameObject.SetActive(false);
             novelDescriptionTextboxIntro.gameObject.SetActive(false);
         }
@@ -418,42 +395,47 @@ namespace Assets._Scripts.SceneControllers
         private void OnIntroButtonFromBurgerMenu()
         {
             GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
-            DisplayNovelFromMenu(VisualNovelNames.EINSTIEGS_NOVEL);
+            DisplayNovelFromMenu(VisualNovelNames.EinstiegsNovel);
         }
 
         private void OnBankkreditButtonFromBurgerMenu()
         {
-            DisplayNovelFromMenu(VisualNovelNames.BANK_KREDIT_NOVEL);
+            DisplayNovelFromMenu(VisualNovelNames.BankKreditNovel);
         }
 
         private void OnElternButtonFromBurgerMenu()
         {
-            DisplayNovelFromMenu(VisualNovelNames.ELTERN_NOVEL);
+            DisplayNovelFromMenu(VisualNovelNames.ElternNovel);
         }
 
         private void OnNotarinButtonFromBurgerMenu()
         {
-            DisplayNovelFromMenu(VisualNovelNames.NOTARIAT_NOVEL);
+            DisplayNovelFromMenu(VisualNovelNames.NotariatNovel);
         }
 
         private void OnPresseButtonFromBurgerMenu()
         {
-            DisplayNovelFromMenu(VisualNovelNames.PRESSE_NOVEL);
+            DisplayNovelFromMenu(VisualNovelNames.PresseNovel);
         }
 
         private void OnBueroButtonFromBurgerMenu()
         {
-            DisplayNovelFromMenu(VisualNovelNames.VERMIETER_NOVEL);
+            DisplayNovelFromMenu(VisualNovelNames.VermieterNovel);
         }
 
         private void OnHonorarNovelButtonFromBurgerMenu()
         {
-            DisplayNovelFromMenu(VisualNovelNames.HONORAR_NOVEL);
+            DisplayNovelFromMenu(VisualNovelNames.HonorarNovel);
         }
 
         private void OnInvestorNovelButtonFromBurgerMenu()
         {
-            DisplayNovelFromMenu(VisualNovelNames.INVESTOR_NOVEL);
+            DisplayNovelFromMenu(VisualNovelNames.InvestorNovel);
+        }
+        
+        private void OnVertriebNovelButtonFromBurgerMenu()
+        {
+            DisplayNovelFromMenu(VisualNovelNames.VertriebNovel);
         }
 
         private void DisplayNovelFromMenu(VisualNovelNames visualNovelName)
@@ -474,18 +456,10 @@ namespace Assets._Scripts.SceneControllers
             }
 
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-            NovelColorManager.Instance()
-                .SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(
-                    VisualNovelNamesHelper.ValueOf((int)visualNovelToDisplay.id)));
-            PlayManager.Instance()
-                .SetForegroundColorOfVisualNovelToPlay(
-                    FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
-            PlayManager.Instance()
-                .SetBackgroundColorOfVisualNovelToPlay(
-                    FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-            PlayManager.Instance()
-                .SetDisplayNameOfNovelToPlay(
-                    FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+            NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(VisualNovelNamesHelper.ValueOf((int)visualNovelToDisplay.id)));
+            PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
+            PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+            PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
 

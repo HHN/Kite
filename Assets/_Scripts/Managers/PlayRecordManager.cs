@@ -33,21 +33,21 @@ namespace Assets._Scripts.Managers
 
             switch (playedNovel)
             {
-                case VisualNovelNames.ELTERN_NOVEL:
+                case VisualNovelNames.ElternNovel:
                 {
                     int numberOfPlays = _wrapper.GetNumberOfPlaysForElternNovel();
                     numberOfPlays++;
                     _wrapper.SetNumberOfPlaysForElternNovel(numberOfPlays);
                     break;
                 }
-                case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PresseNovel:
                 {
                     int numberOfPlays = _wrapper.GetNumberOfPlaysForPresseNovel();
                     numberOfPlays++;
                     _wrapper.SetNumberOfPlaysForPresseNovel(numberOfPlays);
                     break;
                 }
-                case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NotariatNovel:
                 {
                     int numberOfPlays = _wrapper.GetNumberOfPlaysForNotarinNovel();
                     numberOfPlays++;
@@ -61,7 +61,7 @@ namespace Assets._Scripts.Managers
                 //     _wrapper.SetNumberOfPlaysForBankkontoNovel(numberOfPlays);
                 //     break;
                 // }
-                case VisualNovelNames.VERMIETER_NOVEL:
+                case VisualNovelNames.VermieterNovel:
                 {
                     int numberOfPlays = _wrapper.GetNumberOfPlaysForBueroNovel();
                     numberOfPlays++;
@@ -82,28 +82,28 @@ namespace Assets._Scripts.Managers
                 //     _wrapper.SetNumberOfPlaysForGruendungszuschussNovel(numberOfPlays);
                 //     break;
                 // }
-                case VisualNovelNames.INVESTOR_NOVEL:
+                case VisualNovelNames.InvestorNovel:
                 {
                     int numberOfPlays = _wrapper.GetNumberOfPlaysForInvestorNovel();
                     numberOfPlays++;
                     _wrapper.SetNumberOfPlaysForInvestorNovel(numberOfPlays);
                     break;
                 }
-                case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BankKreditNovel:
                 {
                     int numberOfPlays = _wrapper.GetNumberOfPlaysForBankkreditNovel();
                     numberOfPlays++;
                     _wrapper.SetNumberOfPlaysForBankkreditNovel(numberOfPlays);
                     break;
                 }
-                case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HonorarNovel:
                 {
                     int numberOfPlays = _wrapper.GetNumberOfPlaysForHonorarNovel();
                     numberOfPlays++;
                     _wrapper.SetNumberOfPlaysForHonorarNovel(numberOfPlays);
                     break;
                 }
-                case VisualNovelNames.EINSTIEGS_NOVEL:
+                case VisualNovelNames.EinstiegsNovel:
                 {
                     int numberOfPlays = _wrapper.GetNumberOfPlaysForIntroNovel();
                     numberOfPlays++;
@@ -131,15 +131,15 @@ namespace Assets._Scripts.Managers
 
             switch (novel)
             {
-                case VisualNovelNames.ELTERN_NOVEL:
+                case VisualNovelNames.ElternNovel:
                 {
                     return _wrapper.GetNumberOfPlaysForElternNovel();
                 }
-                case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PresseNovel:
                 {
                     return _wrapper.GetNumberOfPlaysForPresseNovel();
                 }
-                case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NotariatNovel:
                 {
                     return _wrapper.GetNumberOfPlaysForNotarinNovel();
                 }
@@ -147,7 +147,7 @@ namespace Assets._Scripts.Managers
                 // {
                 //     return _wrapper.GetNumberOfPlaysForBankkontoNovel();
                 // }
-                case VisualNovelNames.VERMIETER_NOVEL:
+                case VisualNovelNames.VermieterNovel:
                 {
                     return _wrapper.GetNumberOfPlaysForBueroNovel();
                 }
@@ -159,19 +159,19 @@ namespace Assets._Scripts.Managers
                 // {
                 //     return _wrapper.GetNumberOfPlaysForGruenungszuschussNovel();
                 // }
-                case VisualNovelNames.INVESTOR_NOVEL:
+                case VisualNovelNames.InvestorNovel:
                 {
                     return _wrapper.GetNumberOfPlaysForInvestorNovel();
                 }
-                case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BankKreditNovel:
                 {
                     return _wrapper.GetNumberOfPlaysForBankkreditNovel();
                 }
-                case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HonorarNovel:
                 {
                     return _wrapper.GetNumberOfPlaysForHonorarNovel();
                 }
-                case VisualNovelNames.EINSTIEGS_NOVEL:
+                case VisualNovelNames.EinstiegsNovel:
                 {
                     return _wrapper.GetNumberOfPlaysForIntroNovel();
                 }

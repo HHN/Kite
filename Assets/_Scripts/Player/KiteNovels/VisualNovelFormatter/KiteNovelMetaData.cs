@@ -10,15 +10,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 
         public string DescriptionOfNovel { get; set; } = "";
 
-        public long IdNumberOfRepresentationImage { get; set; } = 0;
-
         public string ContextForPrompt { get; set; } = "";
-
-        public bool IsKite2Novel { get; set; } = false;
-
-        public string StartLocation { get; set; } = "";
-
-        public bool IsWithStartValues { get; set; } = false;
 
         public string StartTalkingPartnerEmotion { get; set; } = "";
 

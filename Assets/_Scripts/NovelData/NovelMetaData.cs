@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
 using Assets._Scripts.Utilities;
 
 namespace Assets._Scripts.NovelData
@@ -15,11 +17,14 @@ namespace Assets._Scripts.NovelData
         public FaceExpressions StartTalkingPartnerEmotion;
         public string[] TalkingPartners; // Mindestens 1 Element // Alle Felder müssen ausgefüllt sein
 
+        public List<WordPair> WordsToReplace;
+
         public void SetTitleOfNovel(string title) => TitleOfNovel = title;
         public void SetDescriptionOfNovel(string description) => DescriptionOfNovel = description;
         public void SetNameOfMainCharacter(string characterName) => NameOfMainCharacter = characterName;
         public void SetContextForPrompt(string context) => ContextForPrompt = context;
         public void SetStartTalkingPartnerEmotion(FaceExpressions expression) => StartTalkingPartnerEmotion = expression;
         public void SetTalkingPartners(string[] newTalkingPartners) => TalkingPartners = newTalkingPartners;
+        public void SetWordsToReplace(List<WordPair> newWordsToReplace) => WordsToReplace = newWordsToReplace;
     }
 }

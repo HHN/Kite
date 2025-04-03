@@ -2,48 +2,30 @@ namespace Assets._Scripts.Novel
 {
     public enum KiteAnimation
     {
-        NONE,
-        WATER_POURING
+        None,
+        WaterPouring
     }
 
     public class KiteAnimationHelper
     {
         public static int ToInt(KiteAnimation sound)
         {
-            switch (sound)
+            return sound switch
             {
-                case KiteAnimation.NONE:
-                {
-                    return 0;
-                }
-                case KiteAnimation.WATER_POURING:
-                {
-                    return 1;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
+                KiteAnimation.None => 0,
+                KiteAnimation.WaterPouring => 1,
+                _ => -1
+            };
         }
 
         public static KiteAnimation ValueOf(int i)
         {
-            switch (i)
+            return i switch
             {
-                case 0:
-                {
-                    return KiteAnimation.NONE;
-                }
-                case 1:
-                {
-                    return KiteAnimation.WATER_POURING;
-                }
-                default:
-                {
-                    return KiteAnimation.NONE;
-                }
-            }
+                0 => KiteAnimation.None,
+                1 => KiteAnimation.WaterPouring,
+                _ => KiteAnimation.None
+            };
         }
     }
 }

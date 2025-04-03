@@ -10,31 +10,23 @@ namespace Assets._Scripts.Managers
 
         private Dictionary<string, FeedbackNodeContainer> _feedbackForBankKreditNovel;
         private Dictionary<string, FeedbackNodeContainer> _feedbackForInvestorNovel;
-        // private Dictionary<string, FeedbackNodeContainer> _feedbackForBankKontoNovel;
-        // private Dictionary<string, FeedbackNodeContainer> _feedbackForFoerderantragNovel;
         private Dictionary<string, FeedbackNodeContainer> _feedbackForElternNovel;
         private Dictionary<string, FeedbackNodeContainer> _feedbackForNotariatNovel;
         private Dictionary<string, FeedbackNodeContainer> _feedbackForPresseNovel;
         private Dictionary<string, FeedbackNodeContainer> _feedbackForBueroNovel;
-        // private Dictionary<string, FeedbackNodeContainer> _feedbackForGruendungszuschussNovel;
         private Dictionary<string, FeedbackNodeContainer> _feedbackForHonorarNovel;
-        // private Dictionary<string, FeedbackNodeContainer> _feedbackForLebenspartnerNovel;
         private Dictionary<string, FeedbackNodeContainer> _feedbackForIntroNovel;
 
         private PreGeneratedOfflineFeedbackManager()
         {
-            this._feedbackForBankKreditNovel = null;
-            this._feedbackForInvestorNovel = null;
-            // this._feedbackForBankKontoNovel = null;
-            // this._feedbackForFoerderantragNovel = null;
-            this._feedbackForElternNovel = null;
-            this._feedbackForNotariatNovel = null;
-            this._feedbackForPresseNovel = null;
-            this._feedbackForBueroNovel = null;
-            // this._feedbackForGruendungszuschussNovel = null;
-            this._feedbackForHonorarNovel = null;
-            // this._feedbackForLebenspartnerNovel = null;
-            this._feedbackForIntroNovel = null;
+            _feedbackForBankKreditNovel = null;
+            _feedbackForInvestorNovel = null;
+            _feedbackForElternNovel = null;
+            _feedbackForNotariatNovel = null;
+            _feedbackForPresseNovel = null;
+            _feedbackForBueroNovel = null;
+            _feedbackForHonorarNovel = null;
+            _feedbackForIntroNovel = null;
         }
 
         public static PreGeneratedOfflineFeedbackManager Instance()
@@ -51,54 +43,38 @@ namespace Assets._Scripts.Managers
         {
             switch (visualNovel)
             {
-                case VisualNovelNames.ELTERN_NOVEL:
+                case VisualNovelNames.ElternNovel:
                 {
                     return _feedbackForElternNovel;
                 }
-                case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PresseNovel:
                 {
                     return _feedbackForPresseNovel;
                 }
-                case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NotariatNovel:
                 {
                     return _feedbackForNotariatNovel;
                 }
-                // case VisualNovelNames.BANK_KONTO_NOVEL:
-                // {
-                //     return _feedbackForBankKontoNovel;
-                // }
-                case VisualNovelNames.VERMIETER_NOVEL:
+                case VisualNovelNames.VermieterNovel:
                 {
                     return _feedbackForBueroNovel;
                 }
-                // case VisualNovelNames.FOERDERANTRAG_NOVEL:
-                // {
-                //     return _feedbackForFoerderantragNovel;
-                // }
-                // case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
-                // {
-                //     return _feedbackForGruendungszuschussNovel;
-                // }
-                case VisualNovelNames.INVESTOR_NOVEL:
+                case VisualNovelNames.InvestorNovel:
                 {
                     return _feedbackForInvestorNovel;
                 }
-                case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BankKreditNovel:
                 {
                     return _feedbackForBankKreditNovel;
                 }
-                case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HonorarNovel:
                 {
                     return _feedbackForHonorarNovel;
                 }
-                case VisualNovelNames.EINSTIEGS_NOVEL:
+                case VisualNovelNames.EinstiegsNovel:
                 {
                     return _feedbackForIntroNovel;
                 }
-                // case VisualNovelNames.LEBENSPARTNER_NOVEL:
-                // {
-                //     return _feedbackForLebenspartnerNovel;
-                // }
                 default:
                 {
                     return null;
@@ -111,17 +87,17 @@ namespace Assets._Scripts.Managers
         {
             switch (visualNovel)
             {
-                case VisualNovelNames.ELTERN_NOVEL:
+                case VisualNovelNames.ElternNovel:
                 {
                     _feedbackForElternNovel = feedback;
                     break;
                 }
-                case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PresseNovel:
                 {
                     _feedbackForPresseNovel = feedback;
                     break;
                 }
-                case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NotariatNovel:
                 {
                     _feedbackForNotariatNovel = feedback;
                     break;
@@ -131,7 +107,7 @@ namespace Assets._Scripts.Managers
                 //     _feedbackForBankKontoNovel = feedback;
                 //     break;
                 // }
-                case VisualNovelNames.VERMIETER_NOVEL:
+                case VisualNovelNames.VermieterNovel:
                 {
                     _feedbackForBueroNovel = feedback;
                     break;
@@ -146,22 +122,22 @@ namespace Assets._Scripts.Managers
                 //     _feedbackForGruendungszuschussNovel = feedback;
                 //     break;
                 // }
-                case VisualNovelNames.INVESTOR_NOVEL:
+                case VisualNovelNames.InvestorNovel:
                 {
                     _feedbackForInvestorNovel = feedback;
                     break;
                 }
-                case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BankKreditNovel:
                 {
                     _feedbackForBankKreditNovel = feedback;
                     break;
                 }
-                case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HonorarNovel:
                 {
                     _feedbackForHonorarNovel = feedback;
                     break;
                 }
-                case VisualNovelNames.EINSTIEGS_NOVEL:
+                case VisualNovelNames.EinstiegsNovel:
                 {
                     _feedbackForIntroNovel = feedback;
                     break;
@@ -178,15 +154,15 @@ namespace Assets._Scripts.Managers
         {
             switch (visualNovel)
             {
-                case VisualNovelNames.ELTERN_NOVEL:
+                case VisualNovelNames.ElternNovel:
                 {
                     return _feedbackForElternNovel is { Count: > 0 };
                 }
-                case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PresseNovel:
                 {
                     return _feedbackForPresseNovel is { Count: > 0 };
                 }
-                case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NotariatNovel:
                 {
                     return _feedbackForNotariatNovel is { Count: > 0 };
                 }
@@ -194,7 +170,7 @@ namespace Assets._Scripts.Managers
                 // {
                 //     return _feedbackForBankKontoNovel is { Count: > 0 };
                 // }
-                case VisualNovelNames.VERMIETER_NOVEL:
+                case VisualNovelNames.VermieterNovel:
                 {
                     return _feedbackForBueroNovel is { Count: > 0 };
                 }
@@ -206,19 +182,19 @@ namespace Assets._Scripts.Managers
                 // {
                 //     return _feedbackForGruendungszuschussNovel is { Count: > 0 };
                 // }
-                case VisualNovelNames.INVESTOR_NOVEL:
+                case VisualNovelNames.InvestorNovel:
                 {
                     return _feedbackForInvestorNovel is { Count: > 0 };
                 }
-                case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BankKreditNovel:
                 {
                     return _feedbackForBankKreditNovel is { Count: > 0 };
                 }
-                case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HonorarNovel:
                 {
                     return _feedbackForHonorarNovel is { Count: > 0 };
                 }
-                case VisualNovelNames.EINSTIEGS_NOVEL:
+                case VisualNovelNames.EinstiegsNovel:
                 {
                     return _feedbackForIntroNovel is { Count: > 0 };
                 }
