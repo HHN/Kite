@@ -39,7 +39,6 @@ namespace Assets._Scripts.SceneControllers
         [SerializeField] private bool isHonorarNovelInVersionContained;
         [SerializeField] private bool isLebenspartnerNovelInVersionContained;
         [SerializeField] private bool isInvestorNovelInVersionContained;
-        
         [SerializeField] private bool isVertriebNovelInVersionContained;
 
         [Header("General Buttons")] [SerializeField]
@@ -62,7 +61,6 @@ namespace Assets._Scripts.SceneControllers
         [SerializeField] private Button bueroNovelButtonFromBurgerMenu;
         [SerializeField] private Button honorarNovelButtonFromBurgerMenu;
         [SerializeField] private Button investorNovelButtonFromBurgerMenu;
-        
         [SerializeField] private Button vertriebNovelButtonFromBurgerMenu;
 
         [Header("Search Input and Button Containers")] [SerializeField]
@@ -306,10 +304,8 @@ namespace Assets._Scripts.SceneControllers
                 novelDescriptionTextbox.gameObject.SetActive(true);
                 novelDescriptionTextbox.SetHead(FoundersBubbleMetaInformation.IsHighInGui(visualNovel));
                 novelDescriptionTextbox.SetVisualNovelName(visualNovel);
-                novelDescriptionTextbox.SetText(
-                    "Leider ist diese Novel nicht in der Testversion enthalten. Bitte spiele eine andere Novel.");
-                novelDescriptionTextbox.SetColorOfImage(
-                    FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
+                novelDescriptionTextbox.SetText("Leider ist diese Novel nicht in der Testversion enthalten. Bitte spiele eine andere Novel.");
+                novelDescriptionTextbox.SetColorOfImage(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
                 novelDescriptionTextbox.SetButtonsActive(false);
                 isPopupOpen = true;
                 currentlyOpenedVisualNovelPopup = visualNovel;
@@ -335,8 +331,7 @@ namespace Assets._Scripts.SceneControllers
                         novelDescriptionTextboxIntro.SetVisualNovel(novel);
                         novelDescriptionTextboxIntro.SetVisualNovelName(visualNovel);
                         novelDescriptionTextboxIntro.SetText(novel.description);
-                        novelDescriptionTextboxIntro.SetColorOfImage(
-                            FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
+                        novelDescriptionTextboxIntro.SetColorOfImage(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
                         novelDescriptionTextboxIntro.SetButtonsActive(true);
                         novelDescriptionTextboxIntro.UpdateSize();
                     }
@@ -348,8 +343,7 @@ namespace Assets._Scripts.SceneControllers
                         novelDescriptionTextbox.SetVisualNovel(novel);
                         novelDescriptionTextbox.SetVisualNovelName(visualNovel);
                         novelDescriptionTextbox.SetText(novel.description);
-                        novelDescriptionTextbox.SetColorOfImage(
-                            FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
+                        novelDescriptionTextbox.SetColorOfImage(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
                         novelDescriptionTextbox.SetButtonsActive(true);
                         novelDescriptionTextbox.InitializeBookMarkButton(FavoritesManager.Instance().IsFavorite(novel));
                         novelDescriptionTextbox.UpdateSize();
@@ -357,8 +351,7 @@ namespace Assets._Scripts.SceneControllers
 
                     isPopupOpen = true;
                     currentlyOpenedVisualNovelPopup = visualNovel;
-                    NovelColorManager.Instance()
-                        .SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
+                    NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovel));
                 }
             }
 
@@ -442,7 +435,6 @@ namespace Assets._Scripts.SceneControllers
         
         private void OnVertriebNovelButtonFromBurgerMenu()
         {
-            Debug.Log($"VertriebNovelButtonFromBurgerMenu");
             DisplayNovelFromMenu(VisualNovelNames.VertriebNovel);
         }
 

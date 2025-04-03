@@ -5,6 +5,7 @@ using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter;
 using Assets._Scripts.Player.Kite_Novels.Visual_Novel_Loader;
+using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;

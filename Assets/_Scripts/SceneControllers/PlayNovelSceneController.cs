@@ -230,6 +230,13 @@ namespace Assets._Scripts.SceneControllers
                     _novelImagesController = controllerTransform.GetComponent<InvestorNovelImageController>();
                     break;
                 }
+                case "Vertrieb":
+                {
+                    GameObject novelImagesInstance = Instantiate(novelVisuals[5], viewPortTransform);
+                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                    _novelImagesController = controllerTransform.GetComponent<InvestorNovelImageController>();
+                    break;
+                }
                 case "Einstiegsdialog":
                 {
                     GameObject novelImagesInstance = Instantiate(novelVisuals[6], viewPortTransform);
