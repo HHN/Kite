@@ -128,7 +128,6 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             string dialogMessage, CharacterExpression expression, List<VisualNovelEvent> list)
         {
             string id = twee?.Label;
-            Debug.Log($"id: {twee?.Label}");
             string nextId = twee?.Links?[0]?.Target;
             VisualNovelEvent novelEvent = KiteNovelEventFactory.GetCharacterTalksEvent(id, nextId, character, dialogMessage, expression);
             list.Add(novelEvent);
