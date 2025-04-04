@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets._Scripts.Novel.CharacterController
 {
-    public class IntroNovelImageController : NovelImageController
+    public class EinstiegNovelImageController : NovelImageController
     {
         [SerializeField] private Transform characterContainer;
         [SerializeField] private List<GameObject> characterPrefabs;

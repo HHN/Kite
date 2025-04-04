@@ -239,7 +239,7 @@ namespace Assets._Scripts.SceneControllers
                 {
                     GameObject novelImagesInstance = Instantiate(novelVisuals[6], viewPortTransform);
                     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<IntroNovelImageController>();
+                    _novelImagesController = controllerTransform.GetComponent<EinstiegNovelImageController>();
                     break;
                 }
                 case "Honorarverhandlung mit Kundin":
@@ -1008,7 +1008,7 @@ namespace Assets._Scripts.SceneControllers
                 { 9, typeof(InvestorNovelImageController) },
                 { 10, typeof(BankNovelImageController) },
                 { 11, typeof(HonorarNovelImageController) },
-                { 13, typeof(IntroNovelImageController) }
+                { 13, typeof(EinstiegNovelImageController) }
             };
 
             // Falls die ID in der Map existiert, versuche den Controller zu finden
