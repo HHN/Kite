@@ -149,7 +149,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             BackStackManager.Instance().Push(SceneNames.PlayNovelScene);
             novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
             
-            NovelBiasManager.Clear();
+            NovelBiasManager.Instance().Clear();
             OfflineFeedbackManager.Instance().Clear();
             
             Initialize();
