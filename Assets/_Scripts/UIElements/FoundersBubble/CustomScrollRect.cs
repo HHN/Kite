@@ -4,7 +4,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.UI_Elements.Founders_Bubble
+namespace Assets._Scripts.UIElements.FoundersBubble
 {
     public class CustomScrollRect : UIBehaviour, IInitializePotentialDragHandler, IBeginDragHandler, IEndDragHandler,
         IDragHandler, IScrollHandler, ICanvasElement, ILayoutElement, ILayoutGroup

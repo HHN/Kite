@@ -3,8 +3,7 @@ using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
-using Assets._Scripts.SceneMemory;
-using Assets._Scripts.UI_Elements.Founders_Bubble;
+using Assets._Scripts.UIElements.FoundersBubble;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -376,11 +375,7 @@ namespace Assets._Scripts.SceneControllers
         public override void OnStop()
         {
             base.OnStop();
-            FoundersBubbleSceneMemory memory = new FoundersBubbleSceneMemory
-            {
-                ScrollPosition = infinityScroll.GetCurrentScrollPosition()
-            };
-            SceneMemoryManager.Instance().SetMemoryOfFoundersBubbleScene(memory);
+            SceneMemoryManager.Instance().SetMemoryOfFoundersBubbleScene(infinityScroll.GetCurrentScrollPosition());
         }
 
         private void ToggleBurgerMenu()
