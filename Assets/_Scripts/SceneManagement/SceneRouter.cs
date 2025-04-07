@@ -21,7 +21,6 @@ namespace Assets._Scripts.SceneManagement
                 SceneNames.LegalNoticeScene => SceneNames.SettingsScene,
                 SceneNames.ResourcesScene => SceneNames.FoundersBubbleScene,
                 SceneNames.AccessibilityScene => SceneNames.SettingsScene,
-                SceneNames.PlayerPrefsScene => SceneNames.PrivacyPolicyScene,
                 SceneNames.SettingsScene => SceneNames.FoundersBubbleScene,
                 SceneNames.BookmarkedNovelsScene => SceneNames.FoundersBubbleScene,
                 SceneNames.SoundSettingsScene => SceneNames.SettingsScene,

@@ -15,7 +15,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.Runtime.InteropServices;
 
 namespace Assets._Scripts.SceneControllers
 {
@@ -152,8 +151,7 @@ namespace Assets._Scripts.SceneControllers
 
         public void OnSuccess(Response response)
         {
-            if (SceneManager.GetActiveScene().name != SceneNames.FeedbackScene
-                && SceneManager.GetActiveScene().name != SceneNames.CommentSectionScene)
+            if (SceneManager.GetActiveScene().name != SceneNames.FeedbackScene)
             {
                 return;
             }
