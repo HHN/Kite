@@ -102,32 +102,32 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             _alreadyPlayedEvents.Add(eventUnderTest.id);
 
             if (string.IsNullOrEmpty(eventUnderTest.nextId) &&
-                (VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) !=
-                 VisualNovelEventType.SHOW_CHOICES_EVENT) &&
-                (VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) != VisualNovelEventType.END_NOVEL_EVENT))
+                VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) !=
+                VisualNovelEventType.SHOW_CHOICES_EVENT &&
+                VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) != VisualNovelEventType.END_NOVEL_EVENT)
             {
                 OnTestFailed("Id of next event is null or empty!", _objectUnderTest.title, eventUnderTest.id);
                 return;
             }
 
             if (!_novelEvents.ContainsKey(eventUnderTest.nextId) &&
-                (VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) !=
-                 VisualNovelEventType.SHOW_CHOICES_EVENT) &&
-                (VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) != VisualNovelEventType.END_NOVEL_EVENT))
+                VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) !=
+                VisualNovelEventType.SHOW_CHOICES_EVENT &&
+                VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) != VisualNovelEventType.END_NOVEL_EVENT)
             {
                 OnTestFailed("Next event to play not found!", _objectUnderTest.title, eventUnderTest.id);
                 return;
             }
 
-            if ((VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) == VisualNovelEventType.ADD_CHOICE_EVENT)
-                && (string.IsNullOrEmpty(eventUnderTest.onChoice)))
+            if (VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) == VisualNovelEventType.ADD_CHOICE_EVENT
+                && string.IsNullOrEmpty(eventUnderTest.onChoice))
             {
                 OnTestFailed("Add Choice event without onChoice value!", _objectUnderTest.title, eventUnderTest.id);
                 return;
             }
 
-            if ((VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) ==
-                 VisualNovelEventType.ADD_CHOICE_EVENT) &&
+            if (VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) ==
+                VisualNovelEventType.ADD_CHOICE_EVENT &&
                 !_novelEvents.ContainsKey(eventUnderTest.onChoice))
             {
                 OnTestFailed("Add Choice event with on choice target that could not be found!", _objectUnderTest.title,
@@ -137,10 +137,10 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
             VisualNovelEventType type = VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType);
 
-            if ((VisualNovelEventTypeHelper.ValueOf(_nextEventToTest.eventType) !=
-                 VisualNovelEventType.SHOW_CHOICES_EVENT) &&
-                (VisualNovelEventTypeHelper.ValueOf(_nextEventToTest.eventType) !=
-                 VisualNovelEventType.END_NOVEL_EVENT))
+            if (VisualNovelEventTypeHelper.ValueOf(_nextEventToTest.eventType) !=
+                VisualNovelEventType.SHOW_CHOICES_EVENT &&
+                VisualNovelEventTypeHelper.ValueOf(_nextEventToTest.eventType) !=
+                VisualNovelEventType.END_NOVEL_EVENT)
             {
                 string nextEventID = eventUnderTest.nextId;
                 _nextEventToTest = _novelEvents[nextEventID];
@@ -223,130 +223,75 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
         private void HandlePlaySoundEvent(VisualNovelEvent novelEvent)
         {
-            if (novelEvent.audioClipToPlay == "NONE")
-            {
-                OnTestFailed("Sound Event without audio clip!", _objectUnderTest.title, novelEvent.id);
-                return;
-            }
-
+            if (!ValidateEventField(novelEvent.audioClipToPlay, "Sound Event without audio clip!", novelEvent)) return;
             PlayNextEvent();
         }
 
         private void HandlePlayAnimationEvent(VisualNovelEvent novelEvent)
         {
-            if (novelEvent.animationToPlay == "NONE")
-            {
-                OnTestFailed("Animation Event without animation!", _objectUnderTest.title, novelEvent.id);
-                return;
-            }
-
+            if (!ValidateEventField(novelEvent.animationToPlay, "Animation Event without animation!", novelEvent)) return;
             PlayNextEvent();
         }
 
         private void HandleFreeTextInputEvent(VisualNovelEvent novelEvent)
         {
-            if (string.IsNullOrEmpty(novelEvent.questionForFreeTextInput))
-            {
-                OnTestFailed("Freetext input Event without question!", _objectUnderTest.title, novelEvent.id);
-                return;
-            }
-
-            if (string.IsNullOrEmpty(novelEvent.variablesName))
-            {
-                OnTestFailed("Freetext input Event without variable!", _objectUnderTest.title, novelEvent.id);
-                return;
-            }
-
+            if (!ValidateEventField(novelEvent.questionForFreeTextInput, "Freetext input Event without question!", novelEvent)) return;
+            if (!ValidateEventField(novelEvent.variablesName, "Freetext input Event without variable!", novelEvent)) return;
             PlayNextEvent();
         }
 
         private void HandleGptPromptEvent(VisualNovelEvent novelEvent)
         {
-            if (string.IsNullOrEmpty(novelEvent.gptPrompt))
-            {
-                OnTestFailed("GPT prompt event without prompt!", _objectUnderTest.title, novelEvent.id);
-                return;
-            }
-
-            if (string.IsNullOrEmpty(novelEvent.variablesNameForGptPrompt))
-            {
-                OnTestFailed("GPT prompt event without variable!", _objectUnderTest.title, novelEvent.id);
-                return;
-            }
-
+            if (!ValidateEventField(novelEvent.gptPrompt, "GPT prompt event without prompt!", novelEvent)) return;
+            if (!ValidateEventField(novelEvent.variablesNameForGptPrompt, "GPT prompt event without variable!", novelEvent)) return;
             PlayNextEvent();
         }
 
         private void HandleSavePersistentEvent(VisualNovelEvent novelEvent)
         {
-            if (string.IsNullOrEmpty(novelEvent.key))
-            {
-                OnTestFailed("Save persistent event without key!", _objectUnderTest.title, novelEvent.id);
-                return;
-            }
-
-            if (string.IsNullOrEmpty(novelEvent.value))
-            {
-                OnTestFailed("Save persistent event without value!", _objectUnderTest.title, novelEvent.id);
-                return;
-            }
-
+            if (!ValidateEventField(novelEvent.key, "Save persistent event without key!", novelEvent)) return;
+            if (!ValidateEventField(novelEvent.value, "Save persistent event without value!", novelEvent)) return;
             PlayNextEvent();
         }
 
         private void HandleMarkBiasEvent(VisualNovelEvent novelEvent)
         {
-            if (novelEvent.relevantBias == "NONE")
-            {
-                OnTestFailed("Discrimination bias event without discrimination bias!", _objectUnderTest.title,
-                    novelEvent.id);
-                return;
-            }
-
+            if (!ValidateEventField(novelEvent.relevantBias, "Discrimination bias event without discrimination bias!", novelEvent)) return;
             PlayNextEvent();
         }
 
         private void HandleBackgrundEvent(VisualNovelEvent novelEvent)
         {
-            if (novelEvent.backgroundSprite == "NONE")
-            {
-                OnTestFailed("Location event without Location!", _objectUnderTest.title, novelEvent.id);
-                return;
-            }
-
+            if (!ValidateEventField(novelEvent.backgroundSprite, "Location event without Location!", novelEvent)) return;
             PlayNextEvent();
         }
 
         private void HandleCharacterJoinEvent(VisualNovelEvent novelEvent)
         {
-            if (CharacterTypeHelper.ValueOf(novelEvent.character) == CharacterRole.None)
+            CharacterRole role = CharacterTypeHelper.ValueOf(novelEvent.character);
+            if (role == CharacterRole.None)
             {
                 OnTestFailed("CharacterRole joins event without character!", _objectUnderTest.title, novelEvent.id);
                 return;
             }
 
-            _currentCharacters.Add(CharacterTypeHelper.ValueOf(novelEvent.character));
+            _currentCharacters.Add(role);
             PlayNextEvent();
         }
 
         private void HandleCharacterExitEvent(VisualNovelEvent novelEvent)
         {
-            if ((CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.None) &&
-                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Outro) &&
-                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Intro) &&
-                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Info) &&
-                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Player))
+            CharacterRole role = CharacterTypeHelper.ValueOf(novelEvent.character);
+            
+            if (role != CharacterRole.None && role != CharacterRole.Outro && role != CharacterRole.Intro && role != CharacterRole.Info && role != CharacterRole.Player)
             {
-                if (!_currentCharacters.Contains(CharacterTypeHelper.ValueOf(novelEvent.character)))
+                if (!_currentCharacters.Contains(role))
                 {
-                    OnTestFailed("CharacterRole exit event with character that is not in the scene!",
-                        _objectUnderTest.title, novelEvent.id);
+                    OnTestFailed("CharacterRole exit event with character that is not in the scene!", _objectUnderTest.title, novelEvent.id);
                     return;
                 }
-                else
-                {
-                    _currentCharacters.Remove(CharacterTypeHelper.ValueOf(novelEvent.character));
-                }
+
+                _currentCharacters.Remove(role);
             }
             else
             {
@@ -364,14 +309,10 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 return;
             }
 
-            if (!_currentCharacters.Contains(CharacterTypeHelper.ValueOf(novelEvent.character)) &&
-                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Intro) &&
-                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Outro) &&
-                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Info) &&
-                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Player))
+            CharacterRole role = CharacterTypeHelper.ValueOf(novelEvent.character);
+            if (!_currentCharacters.Contains(role) && role != CharacterRole.Intro && role != CharacterRole.Outro && role != CharacterRole.Info && role != CharacterRole.Player)
             {
-                OnTestFailed("Show message event with speaking character that is not in the scene!",
-                    _objectUnderTest.title, novelEvent.id);
+                OnTestFailed("Show message event with speaking character that is not in the scene!", _objectUnderTest.title, novelEvent.id);
                 return;
             }
 
@@ -407,7 +348,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
             foreach (VisualNovelEvent visualNovelEvent in _choices)
             {
-                NovelTester novelTester = this.DeepCopy();
+                NovelTester novelTester = DeepCopy();
                 novelTester.PerformChoice(_novelEvents[visualNovelEvent.onChoice]);
             }
         }
@@ -416,8 +357,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         {
             if (visualNovelEvent == null)
             {
-                OnTestFailed("On choice event with target that could not be found!", _objectUnderTest.title,
-                    visualNovelEvent.id);
+                OnTestFailed("On choice event with target that could not be found!", _objectUnderTest.title, visualNovelEvent.id);
                 return;
             }
 
@@ -431,33 +371,30 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             NovelTester newCopy = new NovelTester();
 
             newCopy._novelEvents = new Dictionary<string, VisualNovelEvent>();
-            foreach (var entry in this._novelEvents)
+            foreach (var entry in _novelEvents)
             {
                 newCopy._novelEvents.Add(entry.Key, entry.Value.DeepCopy());
             }
 
-            if (this._nextEventToTest != null)
-                newCopy._nextEventToTest = this._nextEventToTest.DeepCopy();
-
-            if (this._objectUnderTest != null)
-                newCopy._objectUnderTest = this._objectUnderTest.DeepCopy();
+            if (_nextEventToTest != null) newCopy._nextEventToTest = _nextEventToTest.DeepCopy();
+            if (_objectUnderTest != null) newCopy._objectUnderTest = _objectUnderTest.DeepCopy();
 
             newCopy._currentCharacters = new HashSet<CharacterRole>();
-            foreach (CharacterRole character in this._currentCharacters)
+            foreach (CharacterRole character in _currentCharacters)
             {
                 newCopy._currentCharacters.Add(character);
             }
 
             newCopy._choices = new List<VisualNovelEvent>();
 
-            foreach (VisualNovelEvent choice in this._choices)
+            foreach (VisualNovelEvent choice in _choices)
             {
                 newCopy._choices.Add(choice.DeepCopy());
             }
 
             newCopy._alreadyPlayedEvents = new HashSet<string>();
 
-            foreach (string alreadyPlayedEvent in this._alreadyPlayedEvents)
+            foreach (string alreadyPlayedEvent in _alreadyPlayedEvents)
             {
                 newCopy._alreadyPlayedEvents.Add(alreadyPlayedEvent);
             }
@@ -512,13 +449,22 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 _parent?.FailedEndOfTestTriggeredByChildren();
             }
         }
+        
+        private bool ValidateEventField(string value, string errorMessage, VisualNovelEvent novelEvent)
+        {
+            if (string.IsNullOrEmpty(value) || value == "NONE")
+            {
+                OnTestFailed(errorMessage, _objectUnderTest.title, novelEvent.id);
+                return false;
+            }
+            return true;
+        }
 
         private void OnTestFailed(string error, string visualNovelUnderTest, string eventUnderTest)
         {
             _isTestFinished = true;
             TestEndedEarly();
-            Debug.LogError("Error while testing novel. Novel under test: " + visualNovelUnderTest +
-                           "; Event under test: " + eventUnderTest + "; Error: " + error + ";");
+            Debug.LogError("Error while testing novel. Novel under test: " + visualNovelUnderTest + "; Event under test: " + eventUnderTest + "; Error: " + error + ";");
         }
 
         public bool IsTestOver()

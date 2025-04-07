@@ -137,15 +137,14 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
             foreach (KiteNovelFolder folder in folders)
             {
-                VisualNovel novel = new VisualNovel();
-
-                novel.id = folder.NovelMetaData.IdNumberOfNovel;
-                novel.title = folder.NovelMetaData.TitleOfNovel;
-                novel.description = folder.NovelMetaData.DescriptionOfNovel;
-                novel.image = folder.NovelMetaData.IdNumberOfRepresentationImage;
-                novel.context = folder.NovelMetaData.ContextForPrompt;
-                novel.isKite2Novel = folder.NovelMetaData.IsKite2Novel;
-                novel.novelEvents = folder.NovelEventList;
+                VisualNovel novel = new VisualNovel
+                {
+                    id = folder.NovelMetaData.IdNumberOfNovel,
+                    title = folder.NovelMetaData.TitleOfNovel,
+                    description = folder.NovelMetaData.DescriptionOfNovel,
+                    context = folder.NovelMetaData.ContextForPrompt,
+                    novelEvents = folder.NovelEventList
+                };
 
                 novels.Add(novel);
             }
@@ -203,20 +202,23 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             {
                 return HandleEndNovelEvent(passage.Label, eventList);
             }
+            
             // If a bias is defined.
-            else if (!string.IsNullOrEmpty(model.Bias))
+            if (!string.IsNullOrEmpty(model.Bias))
             {
                 string biasString = MapBiasString(model.Bias);
                 return HandleBiasEvent(passage, biasString, eventList);
             }
+            
             // If a sound is defined.
-            else if (!string.IsNullOrEmpty(model.Sound))
+            if (!string.IsNullOrEmpty(model.Sound))
             {
                 string soundString = MapSoundString(model.Sound);
                 return HandlePlaySoundEvent(passage, soundString, eventList);
             }
+            
             // If it's a character event.
-            else if (model.CharacterIndex.HasValue)
+            if (model.CharacterIndex.HasValue)
             {
                 string role = GetCharacterRoleFromIndex(model.CharacterIndex.Value, metaData);
                 string expression = MapExpressionString(model.FaceExpression);
@@ -228,11 +230,13 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                     {
                         return HandleCharacterJoinsEvent(passage, role, expression, eventList);
                     }
-                    else if (model.Action.Equals("Speaks", StringComparison.OrdinalIgnoreCase))
+
+                    if (model.Action.Equals("Speaks", StringComparison.OrdinalIgnoreCase))
                     {
                         return HandleCharacterTalksEvent(passage, role, originalMessage, expression, eventList);
                     }
-                    else if (model.Action.Equals("Looks", StringComparison.OrdinalIgnoreCase))
+
+                    if (model.Action.Equals("Looks", StringComparison.OrdinalIgnoreCase))
                     {
                         // "Looks" is treated as a variant of the join event.
                         return HandleCharacterJoinsEvent(passage, role, expression, eventList);
@@ -300,13 +304,13 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         {
             if (index == 0)
                 return "Info";
-            else if (index == 1)
+            if (index == 1)
                 return "Player";
-            else if (index == 2)
+            if (index == 2)
                 return metaData.TalkingPartner01;
-            else if (index == 3)
+            if (index == 3)
                 return metaData.TalkingPartner02;
-            else if (index == 4)
+            if (index == 4)
                 return metaData.TalkingPartner03;
             return "";
         }
@@ -317,8 +321,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// </summary>
         private static void HandleLoop(VisualNovelEvent lastEvent, string startLabel, List<VisualNovelEvent> eventList)
         {
-            if (lastEvent == null || string.IsNullOrEmpty(lastEvent.nextId)
-                || string.IsNullOrEmpty(startLabel) || eventList == null)
+            if (lastEvent == null || string.IsNullOrEmpty(lastEvent.nextId) || string.IsNullOrEmpty(startLabel) || eventList == null)
             {
                 return;
             }
@@ -453,7 +456,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             foreach (TweeLink link in passage.Links)
             {
                 string id = label;
-                label = label + label;
+                label += label;
                 string nextId = label;
                 string optionText = link.Text;
                 string onChoice = link.Target;
@@ -480,25 +483,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             string id = passage?.Label;
             string nextId = passage?.Links?[0]?.Target;
             VisualNovelEvent novelEvent = KiteNovelEventFactory.GetPlayAnimationEvent(id, nextId, animation);
-            list.Add(novelEvent);
-            return novelEvent;
-        }
-
-        private static VisualNovelEvent HandleFreeTextInputEvent(TweePassage passage, string message, List<VisualNovelEvent> list)
-        {
-            string[] parts = message.Split(new[] { ':' }, 2);
-
-            if (parts.Length != 2)
-            {
-                Debug.LogWarning("While creating Visual Novels: Free Text Input Event could not be created.");
-                return null;
-            }
-
-            string id = passage?.Label;
-            string nextId = passage?.Links?[0]?.Target;
-            string question = parts[1].Trim();
-            string variableName = parts[0].Trim();
-            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetFreeTextInputEvent(id, nextId, question, variableName);
             list.Add(novelEvent);
             return novelEvent;
         }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Assets._Scripts.Managers;
+using Assets._Scripts.Novel;
 using Assets._Scripts.Novel.VisualNovelFormatter;
 using Assets._Scripts.SceneManagement;
 using NUnit.Framework;
@@ -15,19 +16,10 @@ namespace Tests.PlayMode
         [UnityTest]
         public IEnumerator TestNovels()
         {
-            float startTime = Time.time;
-            float timeout = 5f;
-
             SceneLoader.LoadMainMenuScene();
 
-            while (KiteNovelManager.Instance().GetAllKiteNovels() == null || KiteNovelManager.Instance().GetAllKiteNovels().Count == 0)
-            {
-                if (Time.time - startTime > timeout)
-                {
-                    Assert.Fail("Time out! Loading novels did not work.");
-                }
-                yield return null;
-            }
+            yield return WaitForNovels();
+
             List<NovelTester> tests = NovelTester.TestNovels(KiteNovelManager.Instance().GetAllKiteNovels());
 
             foreach (NovelTester test in tests)
@@ -44,42 +36,51 @@ namespace Tests.PlayMode
         [UnityTest]
         public IEnumerator ConvertNovelsFromTweeToJson()
         {
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneNames.MainMenuScene);
-
-            while (!asyncLoad.isDone)
-            {
-                yield return null;
-            }
-            GameObject converter = GameObject.Find("TweeToJsonConverter");
-
-            Assert.NotNull(converter);
-
-            NovelReader novelReader = converter.GetComponent<NovelReader>();
-            novelReader.ConvertNovelsFromTweeToJSON();
-
-            while (novelReader.IsFinished() == false)
-            {
-                yield return null;
-            }
+            yield return RunConverter(nr => nr.ConvertNovelsFromTweeToJSON());
         }
 
         [UnityTest]
         public IEnumerator ConvertNovelsFromTweeToJsonAndSelectiveOverrideOldNovels()
         {
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneNames.MainMenuScene);
+            yield return RunConverter(nr => nr.ConvertNovelsFromTweeToJSONAndSelectiveOverrideOldNovels());
+        }
 
-            while (!asyncLoad.isDone)
+        private IEnumerator LoadScene(string sceneName)
+        {
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+            while (asyncLoad != null && !asyncLoad.isDone)
             {
                 yield return null;
             }
-            GameObject converter = GameObject.Find("TweeToJsonConverter");
+        }
 
+        private IEnumerator WaitForNovels(float timeout = 5f)
+        {
+            float startTime = Time.time;
+            
+            List<VisualNovel> novels = KiteNovelManager.Instance().GetAllKiteNovels();
+            while (novels == null || novels.Count == 0)
+            {
+                if (Time.time - startTime > timeout)
+                {
+                    Assert.Fail("Time out! Loading novels did not work.");
+                }
+
+                yield return null;
+            }
+        }
+
+        private IEnumerator RunConverter(System.Action<NovelReader> convertMethod)
+        {
+            yield return LoadScene(SceneNames.MainMenuScene);
+
+            GameObject converter = GameObject.Find("TweeToJsonConverter");
             Assert.NotNull(converter);
 
             NovelReader novelReader = converter.GetComponent<NovelReader>();
-            novelReader.ConvertNovelsFromTweeToJSONAndSelectiveOverrideOldNovels();
+            convertMethod(novelReader);
 
-            while (novelReader.IsFinished() == false)
+            while (!novelReader.IsFinished())
             {
                 yield return null;
             }

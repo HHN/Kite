@@ -230,13 +230,14 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             List<VisualNovel> visualNovels = KiteNovelConverter.ConvertFilesToNovels(allFolders);
 
             // Warte, bis der Manager mindestens eine Visual Novel geladen hat.
-            while (KiteNovelManager.Instance().GetAllKiteNovels().Count == 0)
+            List<VisualNovel> novels = KiteNovelManager.Instance().GetAllKiteNovels();
+            while (novels.Count == 0)
             {
                 yield return new WaitForSeconds(1);
             }
 
             // Erhalte die aktuell geladenen (alten) Novellen.
-            List<VisualNovel> oldNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+            List<VisualNovel> oldNovels = novels;
 
             // Erzeuge eine neue Liste, in die entweder das alte Novel oder ein neues, aktualisiertes Novel �bernommen wird.
             List<VisualNovel> modifiedListOfNovels = new List<VisualNovel>();

@@ -9,8 +9,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             return novelEvent;
         }
 
-        public static VisualNovelEvent GetCharacterTalksEvent(string id, string nextId, string characterRole,
-            string dialogMessage, string expression)
+        public static VisualNovelEvent GetCharacterTalksEvent(string id, string nextId, string characterRole, string dialogMessage, string expression)
         {
             VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.SHOW_MESSAGE_EVENT, true);
             novelEvent.character = characterRole;
@@ -26,8 +25,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             return novelEvent;
         }
 
-        public static VisualNovelEvent GetCharacterJoinsEvent(string id, string nextId, string characterRole,
-            string expression)
+        public static VisualNovelEvent GetCharacterJoinsEvent(string id, string nextId, string characterRole, string expression)
         {
             VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.CHARAKTER_JOIN_EVENT, false);
             novelEvent.character = characterRole;
@@ -41,8 +39,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             return novelEvent;
         }
 
-        public static VisualNovelEvent GetFreeTextInputEvent(string id, string nextId, string question,
-            string variablesName)
+        public static VisualNovelEvent GetFreeTextInputEvent(string id, string nextId, string question, string variablesName)
         {
             VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.FREE_TEXT_INPUT_EVENT, true);
             novelEvent.questionForFreeTextInput = question;
@@ -50,8 +47,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             return novelEvent;
         }
 
-        public static VisualNovelEvent GetGptEvent(string id, string nextId, string prompt, string variablesName,
-            string completionHandlerId)
+        public static VisualNovelEvent GetGptEvent(string id, string nextId, string prompt, string variablesName, string completionHandlerId)
         {
             VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.GPT_PROMPT_EVENT, false);
             novelEvent.gptPrompt = prompt;
@@ -76,8 +72,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             return novelEvent;
         }
 
-        public static VisualNovelEvent GetCalculateVariableFromBooleanExpressionEvent(string id, string nextId,
-            string key, string value)
+        public static VisualNovelEvent GetCalculateVariableFromBooleanExpressionEvent(string id, string nextId, string key, string value)
         {
             VisualNovelEvent novelEvent = CreateEvent(id, nextId,
                 VisualNovelEventType.CALCULATE_VARIABLE_FROM_BOOLEAN_EXPRESSION_EVENT, false);
@@ -93,8 +88,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             return novelEvent;
         }
 
-        public static VisualNovelEvent GetAddFeedbackUnderConditionEvent(string id, string nextId, string key,
-            string value)
+        public static VisualNovelEvent GetAddFeedbackUnderConditionEvent(string id, string nextId, string key, string value)
         {
             VisualNovelEvent novelEvent =
                 CreateEvent(id, nextId, VisualNovelEventType.ADD_FEEDBACK_UNDER_CONDITION_EVENT, false);
@@ -109,8 +103,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             return novelEvent;
         }
 
-        public static VisualNovelEvent GetAddChoiceEvent(string id, string nextId, string optionText, string onChoice,
-            bool showAfterSelection)
+        public static VisualNovelEvent GetAddChoiceEvent(string id, string nextId, string optionText, string onChoice, bool showAfterSelection)
         {
             VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.ADD_CHOICE_EVENT, false);
             novelEvent.text = optionText;
@@ -141,14 +134,15 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         }
 
 
-        private static VisualNovelEvent CreateEvent(string id, string nextId, VisualNovelEventType type,
-            bool waitForConfirmation)
+        private static VisualNovelEvent CreateEvent(string id, string nextId, VisualNovelEventType type, bool waitForConfirmation)
         {
-            VisualNovelEvent novelEvent = new VisualNovelEvent();
-            novelEvent.id = id;
-            novelEvent.nextId = nextId;
-            novelEvent.eventType = VisualNovelEventTypeHelper.ToInt(type);
-            novelEvent.waitForUserConfirmation = waitForConfirmation;
+            VisualNovelEvent novelEvent = new VisualNovelEvent
+            {
+                id = id,
+                nextId = nextId,
+                eventType = VisualNovelEventTypeHelper.ToInt(type),
+                waitForUserConfirmation = waitForConfirmation
+            };
             return novelEvent;
         }
     }
