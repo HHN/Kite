@@ -1,5 +1,5 @@
+using Assets._Scripts.Controller.SceneControllers;
 using Assets._Scripts.Player;
-using Assets._Scripts.SceneControllers;
 using UnityEngine;
 
 namespace Assets._Scripts.UI_Elements.TextBoxes

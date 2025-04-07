@@ -24,7 +24,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         private bool _isFinished;
 
         /// <summary>
-        /// Startet den Prozess, alle Novellen im Twee-Format zu laden und in JSON zu konvertieren.
+        /// Startet den Prozess, alle Novels im Twee-Format zu laden und in JSON zu konvertieren.
         /// Diese Methode startet die Coroutine LoadAllNovelsWithTweeApproach.
         /// </summary>
         public void ConvertNovelsFromTweeToJSON()
@@ -147,8 +147,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 }
 
                 // Lade den Inhalt der Event-Liste.
-                yield return StartCoroutine(LoadFileContent(fullPathOfNovelEventList,
-                    result => { jsonStringOfEventList = result; }));
+                yield return StartCoroutine(LoadFileContent(fullPathOfNovelEventList, result => { jsonStringOfEventList = result; }));
 
                 // Falls die Event-Liste leer ist, gebe eine Warnung aus und �berspringe diese Novelle.
                 if (string.IsNullOrEmpty(jsonStringOfEventList))
@@ -163,14 +162,12 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 jsonStringOfEventList = ReplaceWordsInString(jsonStringOfEventList, kiteNovelMetaData.WordsToReplace);
 
                 // Konvertiere den Text der Event-Liste in eine strukturierte Event-Liste.
-                List<VisualNovelEvent> kiteNovelEventList =
-                    KiteNovelConverter.ConvertTextDocumentIntoEventList(jsonStringOfEventList, kiteNovelMetaData);
+                List<VisualNovelEvent> kiteNovelEventList = KiteNovelConverter.ConvertTextDocumentIntoEventList(jsonStringOfEventList, kiteNovelMetaData);
 
                 // F�ge den aktuellen Novellenordner (bestehend aus Metadaten und Event-Liste) zur Gesamtliste hinzu.
                 allFolders.Add(new KiteNovelFolder(kiteNovelMetaData, kiteNovelEventList));
             }
 
-            Debug.Log($"allFolders: {allFolders.Count}");
             // Konvertiere alle verarbeiteten Novellenordner in VisualNovel-Objekte.
             List<VisualNovel> visualNovels = KiteNovelConverter.ConvertFilesToNovels(allFolders);
 
@@ -317,7 +314,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
         /// <summary>
         /// L�dt den Inhalt einer Datei asynchron.
-        /// - Auf iOS (iPhonePlayer) wird der Inhalt synchron mit File.ReadAllText geladen.
+        /// - Auf iOS (iPhonePlayer) wird der Inhalt synchron mit File. ReadAllText geladen.
         /// - Auf anderen Plattformen wird UnityWebRequest verwendet, um den Inhalt asynchron zu laden.
         /// </summary>
         private IEnumerator LoadFileContent(string path, System.Action<string> callback)
@@ -336,8 +333,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                     yield return www.SendWebRequest();
 
                     // �berpr�fe, ob ein Verbindungs- oder Protokollfehler aufgetreten ist.
-                    if ((www.result == UnityWebRequest.Result.ConnectionError) ||
-                        (www.result == UnityWebRequest.Result.ProtocolError))
+                    if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
                     {
                         Debug.LogError($"Error loading file at {path}: {www.error}");
                         callback(null);
@@ -386,9 +382,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             // Schreibe den JSON-String in die Datei.
             File.WriteAllText(path, json);
             // Logge den erfolgreichen Abschluss mit dem Speicherpfad.
-            Debug.Log(
-                "Visual Novels have been successfully converted to JSON format and saved under the following path: " +
-                path);
+            Debug.Log("Visual Novels have been successfully converted to JSON format and saved under the following path: " + path);
             // Setze das Flag, dass der Konvertierungsvorgang abgeschlossen ist.
             _isFinished = true;
         }

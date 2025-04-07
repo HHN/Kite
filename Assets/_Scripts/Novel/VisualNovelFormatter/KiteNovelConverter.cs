@@ -89,8 +89,9 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                     }
                     return model;
                 }
+                
                 // If it is a Sound keyword.
-                else if (parts[0].StartsWith("Sound", StringComparison.OrdinalIgnoreCase))
+                if (parts[0].StartsWith("Sound", StringComparison.OrdinalIgnoreCase))
                 {
                     if (parts.Length > 1)
                     {
@@ -98,8 +99,9 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                     }
                     return model;
                 }
+                
                 // If it is a Bias keyword.
-                else if (parts[0].StartsWith("Bias", StringComparison.OrdinalIgnoreCase))
+                if (parts[0].StartsWith("Bias", StringComparison.OrdinalIgnoreCase))
                 {
                     if (parts.Length > 1)
                     {
