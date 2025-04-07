@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 
-namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
+namespace Assets._Scripts.Novel.VisualNovelFormatter
 {
     /// <summary>
     /// The TweeProcessor is responsible for processing a Twee formatted source.
@@ -346,7 +346,7 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
         }
 
         /// <summary>
-        /// Removes text within parentheses (e.g., (…)).
+        /// Removes text within parentheses (e.g., (ï¿½)).
         /// Currently not used because text in parentheses might be needed.
         /// </summary>
         private static string RemoveTextInParentheses(string input)

@@ -1,9 +1,6 @@
-using System;
 using System.Collections.Generic;
-using Assets._Scripts.Novel;
 
-
-namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
+namespace Assets._Scripts.Novel.VisualNovelFormatter
 {
     public class KiteNovelFolder
     {

@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets._Scripts.Novel;
-using Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter;
 using UnityEngine;
 
-namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
+namespace Assets._Scripts.Novel.VisualNovelFormatter
 {
     #region NovelKeywordModel and Parser
 

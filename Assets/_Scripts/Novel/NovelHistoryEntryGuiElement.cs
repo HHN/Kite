@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Player;
@@ -9,7 +8,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Scripts.NovelHistory
+namespace Assets._Scripts.Novel
 {
     public class NovelHistoryEntryGuiElement : MonoBehaviour
     {
