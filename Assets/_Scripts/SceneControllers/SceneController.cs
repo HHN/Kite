@@ -2,7 +2,7 @@ using Assets._Scripts.UI_Elements.Messages;
 using Assets._Scripts.Utilities;
 using UnityEngine;
 
-namespace Assets._Scripts
+namespace Assets._Scripts.SceneControllers
 {
     public class SceneController : MonoBehaviour
     {
