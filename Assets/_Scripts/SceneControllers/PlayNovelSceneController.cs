@@ -103,7 +103,7 @@ namespace Assets._Scripts.SceneControllers
         private readonly Dictionary<string, VisualNovelEvent> _novelEvents = new();
         private readonly string[] _optionsId = new string[2];
         private ConversationContentGuiController _conversationContentGuiController;
-        private int _novelCharacter = -1;
+        private string _novelCharacter = "NONE";
         private NovelImageController _novelImagesController;
         private VisualNovelEvent _savedEventToResume; // Speichert das letzte Ereignis für das Fortsetzen
         private Coroutine _timerCoroutine;
@@ -112,7 +112,7 @@ namespace Assets._Scripts.SceneControllers
         private IEnumerator _speakingCoroutine;
 
         // Character Expressions
-        public Dictionary<int, int> CharacterExpressions { get; } = new();
+        public Dictionary<string, string> CharacterExpressions { get; } = new();
 
         public bool IsPaused { get; set; }
         public VisualNovel NovelToPlay => novelToPlay;
@@ -276,15 +276,15 @@ namespace Assets._Scripts.SceneControllers
         {
             CharacterExpressions.Clear();
             
-            List<int> characters = novelToPlay.novelEvents
+            List<string> characters = novelToPlay.novelEvents
                 .Select(e => e.character) // Wähle das `character`-Feld aus
-                .Where(c => c != 0 && c != 1 && c != 4) // Schließe die Werte 0, 1 und 4 aus
+                .Where(c => c != "NONE" && c != "PLAYER" && c != "INFO") // Schließe die Werte 0, 1 und 4 aus
                 .Distinct() // Optional: Entfernt Duplikate
                 .ToList(); // Konvertiere das Ergebnis in eine Liste
 
             foreach (var characterId in characters)
             {
-                CharacterExpressions[characterId] = -1;
+                CharacterExpressions[characterId] = "NONE";
             }
         }
 
@@ -520,9 +520,9 @@ namespace Assets._Scripts.SceneControllers
         {
             SetNextEvent(novelEvent);
 
-            if (novelEvent.audioClipToPlay != 0)
+            if (novelEvent.audioClipToPlay != "NONE")
             {
-                GlobalVolumeManager.Instance.PlaySound(clips[novelEvent.audioClipToPlay]);
+                //GlobalVolumeManager.Instance.PlaySound(clips[novelEvent.audioClipToPlay]);    //TODO: Gescheites Konzept für die Auswahl überlegen.
             }
 
             if (novelEvent.waitForUserConfirmation)
@@ -531,7 +531,7 @@ namespace Assets._Scripts.SceneControllers
                 return;
             }
 
-            if (novelEvent.audioClipToPlay == KiteSoundHelper.ToInt(KiteSound.LeaveScene))
+            if (novelEvent.audioClipToPlay == "LEAVESCENE")  
             {
                 StartCoroutine(StartNextEventInOneSeconds(2.5f));
                 return;
@@ -544,9 +544,9 @@ namespace Assets._Scripts.SceneControllers
         {
             SetNextEvent(novelEvent);
 
-            if (novelEvent.animationToPlay != 0)
+            if (novelEvent.animationToPlay != "NONE")
             {
-                currentAnimation = Instantiate(novelAnimations[novelEvent.animationToPlay], viewPortOfImages.transform);
+                //currentAnimation = Instantiate(novelEvent.animationToPlay, viewPortOfImages.transform);   //TODO: Anpassen, siehe oben.
             }
         }
 
@@ -587,13 +587,13 @@ namespace Assets._Scripts.SceneControllers
 
             GetCompletionServerCall call = Instantiate(gptServercallPrefab).GetComponent<GetCompletionServerCall>();
             call.sceneController = this;
-            GptRequestEventOnSuccessHandler onSuccessHandler = new GptRequestEventOnSuccessHandler
-            {
-                VariablesNameForGptPrompt = novelEvent.variablesNameForGptPrompt,
-                CompletionHandler = GptCompletionHandlerManager.Instance()
-                    .GetCompletionHandlerById(novelEvent.gptCompletionHandlerId)
-            };
-            call.OnSuccessHandler = onSuccessHandler;
+            //GptRequestEventOnSuccessHandler onSuccessHandler = new GptRequestEventOnSuccessHandler            //TODO: Wegen CompletionHandler schauen. Vermutlich reicht einer.
+            //{
+            //    VariablesNameForGptPrompt = novelEvent.variablesNameForGptPrompt,
+            //    CompletionHandler = GptCompletionHandlerManager.Instance()
+            //        .GetCompletionHandlerById(novelEvent.gptCompletionHandler)
+            //};
+            //call.OnSuccessHandler = onSuccessHandler;
             call.prompt = ReplacePlaceholders(novelEvent.gptPrompt, novelToPlay.GetGlobalVariables());
             call.SendRequest();
             DontDestroyOnLoad(call.gameObject);
@@ -677,9 +677,9 @@ namespace Assets._Scripts.SceneControllers
         private void HandleMarkBiasEvent(VisualNovelEvent novelEvent)
         {
             SetNextEvent(novelEvent);
-            string biasInformation = DiscriminationBiasHelper.GetInformationString(DiscriminationBiasHelper.ValueOf(novelEvent.relevantBias));
+            string biasInformation = novelEvent.relevantBias;
             PromptManager.Instance().AddFormattedLineToPrompt("Hinweis", biasInformation);
-            NovelBiasManager.Instance().MarkBiasAsRelevant(DiscriminationBiasHelper.ValueOf(novelEvent.relevantBias));
+            NovelBiasManager.Instance().MarkBiasAsRelevant(novelEvent.relevantBias);
             StartCoroutine(PlayNextEvent());
         }
 
@@ -722,19 +722,19 @@ namespace Assets._Scripts.SceneControllers
 
             _novelCharacter = novelEvent.character;
 
-            if (!CharacterExpressions.ContainsKey(_novelCharacter) && _novelCharacter != 0 && _novelCharacter != 1 &&
-                _novelCharacter != 4)
+            if (!CharacterExpressions.ContainsKey(_novelCharacter) && _novelCharacter != "NONE" && _novelCharacter != "PLAYER" &&
+                _novelCharacter != "INFO")
             {
                 Debug.LogWarning($"Character ID {_novelCharacter} is not registered.");
                 return;
             }
 
             // Speichere die neue Gesichtsanimation
-            if (CharacterExpressions.ContainsKey(_novelCharacter) && _novelCharacter != 0 && _novelCharacter != 1 &&
-                _novelCharacter != 4)
+            if (CharacterExpressions.ContainsKey(_novelCharacter) && _novelCharacter != "NONE" && _novelCharacter != "PLAYER" &&
+                _novelCharacter != "INFO")
             {
-                CharacterExpressions[_novelCharacter] = novelEvent.expressionType;
-                _novelImagesController.SetFaceExpression(_novelCharacter, CharacterExpressions[_novelCharacter]);
+                //CharacterExpressions[_novelCharacter] = novelEvent.expressionType;
+                //_novelImagesController.SetFaceExpression(_novelCharacter, CharacterExpressions[_novelCharacter]);     // TODO: Machen, dass es nen String nimmt.
             }
 
             if (novelEvent.show)
@@ -810,14 +810,14 @@ namespace Assets._Scripts.SceneControllers
 
         private IEnumerator StartNextEventInOneSeconds(float second)
         {
-            if (_novelCharacter != -1 && CharacterExpressions.ContainsKey(_novelCharacter))
-            {
-                if (CharacterExpressions[_novelCharacter] > 13)
-                {
-                    CharacterExpressions[_novelCharacter] -= 13;
-                    _novelImagesController.SetFaceExpression(_novelCharacter, CharacterExpressions[_novelCharacter]);
-                }
-            }
+            //if (_novelCharacter != "NONE" && CharacterExpressions.ContainsKey(_novelCharacter))       //TODO: Auf STring anpassen.
+            //{
+            //    if (CharacterExpressions[_novelCharacter] > 13)
+            //    {
+            //        CharacterExpressions[_novelCharacter] -= 13;
+            //        _novelImagesController.SetFaceExpression(_novelCharacter, CharacterExpressions[_novelCharacter]);
+            //    }
+            //}
             
             yield return new WaitForSeconds(second);
 

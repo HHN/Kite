@@ -111,10 +111,6 @@ namespace Assets._Scripts.SceneControllers
 
         public void OnNovelPlayerButton()
         {
-            var analytics = AnalyticsServiceHandler.Instance();
-            analytics.SendMainMenuStatistics();
-            analytics.SetFromWhereIsNovelSelected("KITE NOVELS");
-
             // Instantiate the sound prefab and assign it to a variable
             GameObject buttonSound = Object.Instantiate(buttonSoundPrefab);
             Object.DontDestroyOnLoad(buttonSound); // Correct usage of 

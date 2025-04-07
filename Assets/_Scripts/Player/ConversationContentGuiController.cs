@@ -109,7 +109,7 @@ namespace Assets._Scripts.Player
             messageBox.SetMessage(message);
             guiContent.Add(newMessageBox);
 
-            AddFormattedPromptLine(CharacterTypeHelper.ToInt(CharacterRole.Player), message);
+            AddFormattedPromptLine("PLAYER", message);
 
             // Deaktiviere den Button der vorherigen blueMessagePrefabWithTrigger (falls vorhanden)
             if (_lastBlueMessagePrefabWithTrigger != null)
@@ -209,9 +209,9 @@ namespace Assets._Scripts.Player
             {
                 VisualNovelEvent visualNovelEvent = savedData.visualNovelEvents[i];
 
-                if (visualNovelEvent.id.Contains("OptionsLabel") && visualNovelEvent.character == 0)
+                if (visualNovelEvent.id.Contains("OptionsLabel") && visualNovelEvent.character == "none")
                 {
-                    visualNovelEvent.character = 1;
+                    visualNovelEvent.character = "PLAYER";
                 }
                 
                 AddFormattedPromptLine(visualNovelEvent.character, visualNovelEvent.text);
@@ -264,25 +264,22 @@ namespace Assets._Scripts.Player
             }
         }
         
-        private static void AddFormattedPromptLine(int character, string message)
+        private static void AddFormattedPromptLine(string character, string message)
         {
-            PromptManager.Instance().AddFormattedLineToPrompt(
-                CharacterTypeHelper.GetNameOfCharacter(character),
-                PlayNovelSceneController.ReplacePlaceholders(message,
-                    PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables()));
+            PromptManager.Instance().AddFormattedLineToPrompt(character, PlayNovelSceneController.ReplacePlaceholders(message, PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables()));
         }
         
         private GameObject GetMessagePrefab(VisualNovelEvent novelEvent)
         {
             GameObject newMessageBox;
-            if (novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.Player))
+            if (novelEvent.character == "PLAYER")
             {
                 newMessageBox = Instantiate(blueMessagePrefab, transform);
             }
-            else if (novelEvent.character != 0 &&
-                     novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.Intro) || 
-                     novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.Outro) || 
-                     novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.Info))
+            else if (novelEvent.character != "NONE" &&
+                     novelEvent.character == "INTRO" || 
+                     novelEvent.character == "OUTRO" || 
+                     novelEvent.character == "INFO")
             {
                 newMessageBox = Instantiate(cottaMessagePrefab, transform);
             }

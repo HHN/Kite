@@ -161,10 +161,12 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
                 }
 
                 // Ersetze bestimmte Wörter in der Event-Liste, basierend auf den in den Metadaten angegebenen Ersetzungen.
+
+                // Why? No one knows...
                 jsonStringOfEventList = ReplaceWordsInString(jsonStringOfEventList, kiteNovelMetaData.WordsToReplace);
 
                 // Konvertiere den Text der Event-Liste in eine strukturierte Event-Liste.
-                KiteNovelEventList kiteNovelEventList =
+                List<VisualNovelEvent> kiteNovelEventList =
                     KiteNovelConverter.ConvertTextDocumentIntoEventList(jsonStringOfEventList, kiteNovelMetaData);
 
                 // Füge den aktuellen Novellenordner (bestehend aus Metadaten und Event-Liste) zur Gesamtliste hinzu.
@@ -224,7 +226,7 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
                 jsonStringOfEventList = ReplaceWordsInString(jsonStringOfEventList, kiteNovelMetaData.WordsToReplace);
 
                 // Konvertiere den Text der Event-Liste in eine strukturierte Event-Liste.
-                KiteNovelEventList kiteNovelEventList = KiteNovelConverter.ConvertTextDocumentIntoEventList(jsonStringOfEventList, kiteNovelMetaData);
+                List<VisualNovelEvent> kiteNovelEventList = KiteNovelConverter.ConvertTextDocumentIntoEventList(jsonStringOfEventList, kiteNovelMetaData);
 
                 // Füge den verarbeiteten Ordner zur Gesamtliste hinzu.
                 allFolders.Add(new KiteNovelFolder(kiteNovelMetaData, kiteNovelEventList));

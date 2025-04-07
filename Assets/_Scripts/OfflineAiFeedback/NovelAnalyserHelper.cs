@@ -315,7 +315,7 @@ namespace Assets._Scripts.OfflineAiFeedback
 
         private void HandlePlaySoundEvent(VisualNovelEvent novelEvent)
         {
-            if (KiteSoundHelper.ValueOf(novelEvent.audioClipToPlay) == KiteSound.None)
+            if (novelEvent.audioClipToPlay == "NONE")
             {
                 OnAnalysisFailed("Sound Event without audio clip!", _objectUnderAnalyse.title, novelEvent.id);
                 return;
@@ -326,7 +326,7 @@ namespace Assets._Scripts.OfflineAiFeedback
 
         private void HandlePlayAnimationEvent(VisualNovelEvent novelEvent)
         {
-            if (KiteAnimationHelper.ValueOf(novelEvent.animationToPlay) == KiteAnimation.None)
+            if (novelEvent.animationToPlay == "NONE")
             {
                 OnAnalysisFailed("Animation Event without animation!", _objectUnderAnalyse.title, novelEvent.id);
                 return;
@@ -388,7 +388,7 @@ namespace Assets._Scripts.OfflineAiFeedback
 
         private void HandleMarkBiasEvent(VisualNovelEvent novelEvent)
         {
-            if (DiscriminationBiasHelper.ValueOf(novelEvent.relevantBias) == DiscriminationBias.None)
+            if (novelEvent.relevantBias == "NONE")
             {
                 OnAnalysisFailed("Discrimination bias event without discrimination bias!", _objectUnderAnalyse.title,
                     novelEvent.id);
@@ -400,7 +400,7 @@ namespace Assets._Scripts.OfflineAiFeedback
 
         private void HandleBackgrundEvent(VisualNovelEvent novelEvent)
         {
-            if (LocationHelper.ValueOf(novelEvent.backgroundSpriteId) == Location.NONE)
+            if (novelEvent.backgroundSprite == "NONE")
             {
                 OnAnalysisFailed("Location event without Location!", _objectUnderAnalyse.title, novelEvent.id);
                 return;
@@ -475,7 +475,7 @@ namespace Assets._Scripts.OfflineAiFeedback
                 return;
             }
 
-            AddFormattedLineToPrompt(CharacterTypeHelper.GetNameOfCharacter(novelEvent.character), novelEvent.text);
+            AddFormattedLineToPrompt(novelEvent.character, novelEvent.text);
 
             PlayNextEvent();
         }

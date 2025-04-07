@@ -224,7 +224,7 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
 
         private void HandlePlaySoundEvent(VisualNovelEvent novelEvent)
         {
-            if (KiteSoundHelper.ValueOf(novelEvent.audioClipToPlay) == KiteSound.None)
+            if (novelEvent.audioClipToPlay == "NONE")
             {
                 OnTestFailed("Sound Event without audio clip!", _objectUnderTest.title, novelEvent.id);
                 return;
@@ -235,7 +235,7 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
 
         private void HandlePlayAnimationEvent(VisualNovelEvent novelEvent)
         {
-            if (KiteAnimationHelper.ValueOf(novelEvent.animationToPlay) == KiteAnimation.None)
+            if (novelEvent.animationToPlay == "NONE")
             {
                 OnTestFailed("Animation Event without animation!", _objectUnderTest.title, novelEvent.id);
                 return;
@@ -297,7 +297,7 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
 
         private void HandleMarkBiasEvent(VisualNovelEvent novelEvent)
         {
-            if (DiscriminationBiasHelper.ValueOf(novelEvent.relevantBias) == DiscriminationBias.None)
+            if (novelEvent.relevantBias == "NONE")
             {
                 OnTestFailed("Discrimination bias event without discrimination bias!", _objectUnderTest.title,
                     novelEvent.id);
@@ -309,7 +309,7 @@ namespace Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter
 
         private void HandleBackgrundEvent(VisualNovelEvent novelEvent)
         {
-            if (LocationHelper.ValueOf(novelEvent.backgroundSpriteId) == Location.NONE)
+            if (novelEvent.backgroundSprite == "NONE")
             {
                 OnTestFailed("Location event without Location!", _objectUnderTest.title, novelEvent.id);
                 return;

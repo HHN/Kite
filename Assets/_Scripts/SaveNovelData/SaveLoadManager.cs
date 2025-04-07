@@ -163,31 +163,33 @@ namespace Assets._Scripts.SaveNovelData
                 playNovelSceneController.PlayThroughHistory[^1] = "Spielerin: ";
             }
 
-            NovelSaveData saveData = new NovelSaveData
-            {
-                //novelId = currentNovelId,
-                currentEventId = formattedId,
-                playThroughHistory = playNovelSceneController.PlayThroughHistory,
-                optionsId = playNovelSceneController.OptionsId.ToArray(),
-                eventHistory = playNovelSceneController.EventHistory,
-                content = conversationContentGuiController.Content,
-                visualNovelEvents = conversationContentGuiController.VisualNovelEvents,
-                messageType = messageBoxesNames,
-                optionCount = _count,
-                CharacterExpressions = playNovelSceneController.CharacterExpressions,
-                CharacterPrefabData = characterPrefabData
-            };
+            //TODO: Nach CharacterExpressions schauen. Problem aktuell: eine ist int, int    andere ist string, string
 
-            DeleteNovelSaveData(currentNovelId);
-            // Save or update the novel in the dictionary
-            allSaveData[currentNovelId] = saveData;
+            //NovelSaveData saveData = new NovelSaveData
+            //{
+            //    //novelId = currentNovelId,
+            //    currentEventId = formattedId,
+            //    playThroughHistory = playNovelSceneController.PlayThroughHistory,
+            //    optionsId = playNovelSceneController.OptionsId.ToArray(),
+            //    eventHistory = playNovelSceneController.EventHistory,
+            //    content = conversationContentGuiController.Content,
+            //    visualNovelEvents = conversationContentGuiController.VisualNovelEvents,
+            //    messageType = messageBoxesNames,
+            //    optionCount = _count,
+            //    CharacterExpressions = playNovelSceneController.CharacterExpressions,
+            //    CharacterPrefabData = characterPrefabData
+            //};
 
-            // Serialize the dictionary and save it in pretty format
-            string json = JsonConvert.SerializeObject(allSaveData, Formatting.Indented);
+            //DeleteNovelSaveData(currentNovelId);
+            //// Save or update the novel in the dictionary
+            //allSaveData[currentNovelId] = saveData;
 
-            File.WriteAllText(SaveFilePath, json, Encoding.UTF8);
+            //// Serialize the dictionary and save it in pretty format
+            //string json = JsonConvert.SerializeObject(allSaveData, Formatting.Indented);
 
-            GameManager.Instance.UpdateNovelSaveStatus(currentNovelId, true);
+            //File.WriteAllText(SaveFilePath, json, Encoding.UTF8);
+
+            //GameManager.Instance.UpdateNovelSaveStatus(currentNovelId, true);
         }
 
         /// <summary>

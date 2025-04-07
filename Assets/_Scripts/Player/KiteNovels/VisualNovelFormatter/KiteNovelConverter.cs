@@ -24,11 +24,11 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
     /// <summary>
     /// Parser that converts a keyword string (e.g. ">>Character1|Looks|Angry<<") into a NovelKeywordModel.
     /// Expected formats:
-    ///   >>End<<                → sets End = true
-    ///   >>Info<<               → sets CharacterIndex = 0
-    ///   >>Player<<             → sets CharacterIndex = 1
-    ///   >>Character1|Looks|Angry<<  → sets CharacterIndex = 1+1 = 2, Action = "Looks", FaceExpression = "Angry"
-    ///   >>Sound|TestSound<<     → sets Sound = "TestSound"
+    ///   >>End<<                   → sets End = true
+    ///   >>Info<<                  → sets CharacterIndex = 0
+    ///   >>Player<<                → sets CharacterIndex = 1
+    ///   >>Character1|Looks|Angry<< → sets CharacterIndex = 1+1 = 2, Action = "Looks", FaceExpression = "Angry"
+    ///   >>Sound|TestSound<<        → sets Sound = "TestSound"
     ///   >>Bias|ConfirmationBias<<  → sets Bias = "ConfirmationBias"
     /// </summary>
     public static class NovelKeywordParser
@@ -41,7 +41,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             // Trim leading and trailing spaces.
             keyword = keyword.Trim();
 
-            // Remove the ">>" and "<<" markers.
+            // Remove the markers ">>" and "<<".
             if (keyword.StartsWith(">>") && keyword.EndsWith("<<"))
             {
                 keyword = keyword.Substring(2, keyword.Length - 4);
@@ -50,7 +50,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             NovelKeywordModel model = new NovelKeywordModel();
 
             // Check if the keyword signals the end.
-            if (string.Equals(keyword, "End", StringComparison.OrdinalIgnoreCase) ||
+            if (string.Equals(keyword, "End", StringComparison.OrdinalIgnoreCase)||
                 string.Equals(keyword, "Ende", StringComparison.OrdinalIgnoreCase))
             {
                 model.End = true;
@@ -68,14 +68,14 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
                 return model;
             }
 
-            // Split the string using the '|' separator.
+            // Split the string by the '|' separator.
             string[] parts = keyword.Split('|');
             if (parts.Length > 0)
             {
                 // If it is a Character keyword.
                 if (parts[0].StartsWith("Character", StringComparison.OrdinalIgnoreCase))
                 {
-                    // For example: "Character1" → extract "1" and add 1 (since 0 = Info, 1 = Player).
+                    // Example: "Character1" → extract "1" and add 1 (since 0 = Info, 1 = Player).
                     string numberPart = parts[0].Substring("Character".Length);
                     if (int.TryParse(numberPart, out int num))
                     {
@@ -120,8 +120,8 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
     /// <summary>
     /// Converter class that creates VisualNovel objects from processed novel folders
     /// and converts the Twee text document into a structured event list.
-    /// Instead of using a huge switch-case, it now uses the NovelKeywordParser to generate
-    /// a NovelKeywordModel from the passage text and then selects the appropriate event handler.
+    /// Instead of a huge switch-case, it now uses the NovelKeywordParser to generate a NovelKeywordModel from the passage text.
+    /// All values (role, expression etc.) are handled as strings.
     /// </summary>
     public abstract class KiteNovelConverter
     {
@@ -129,7 +129,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
         private const string EventDefinitionSeparator = ">>--<<";
 
         /// <summary>
-        /// Converts the processed novel folders into a list of VisualNovel objects.
+        /// Converts processed novel folders into a list of VisualNovel objects.
         /// </summary>
         public static List<VisualNovel> ConvertFilesToNovels(List<KiteNovelFolder> folders)
         {
@@ -145,7 +145,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
                 novel.image = folder.NovelMetaData.IdNumberOfRepresentationImage;
                 novel.context = folder.NovelMetaData.ContextForPrompt;
                 novel.isKite2Novel = folder.NovelMetaData.IsKite2Novel;
-                novel.novelEvents = folder.NovelEventList.NovelEvents;
+                novel.novelEvents = folder.NovelEventList;
 
                 novels.Add(novel);
             }
@@ -155,14 +155,14 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 
         /// <summary>
         /// Converts the content of a Twee text document into a structured event list.
-        /// For each passage, the message text (keyword) is extracted and converted into a NovelKeywordModel.
+        /// For each passage, the message (keyword) is extracted and converted into a NovelKeywordModel.
         /// Based on the fields set in the model, the corresponding event is created.
         /// </summary>
-        public static KiteNovelEventList ConvertTextDocumentIntoEventList(string tweeFile, KiteNovelMetaData kiteNovelMetaData)
+        public static List<VisualNovelEvent> ConvertTextDocumentIntoEventList(string tweeFile, KiteNovelMetaData metaData)
         {
-            KiteNovelEventList kiteNovelEventList = new KiteNovelEventList();
-            string startEventLabel = TweeProcessor.GetStartLabelFromTweeFile(tweeFile);
-            InitializeKiteNovelEventList(kiteNovelMetaData, kiteNovelEventList, startEventLabel);
+            List<VisualNovelEvent> eventList = new List<VisualNovelEvent>();
+            string startLabel = TweeProcessor.GetStartLabelFromTweeFile(tweeFile);
+            InitializeKiteNovelEventList(metaData, eventList, startLabel);
             List<TweePassage> passages = TweeProcessor.ProcessTweeFile(tweeFile);
 
             foreach (TweePassage passage in passages)
@@ -174,24 +174,24 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
                 NovelKeywordModel keywordModel = NovelKeywordParser.ParseKeyword(message);
 
                 // Create the corresponding VisualNovelEvent based on the model.
-                VisualNovelEvent createdEvent = CreateVisualNovelEventFromKeyword(passage, message, keywordModel, kiteNovelMetaData, kiteNovelEventList);
+                VisualNovelEvent createdEvent = CreateVisualNovelEventFromKeyword(passage, message, keywordModel, metaData, eventList);
 
                 // Check if the event creates a loop, and adjust if necessary.
-                HandleLoop(createdEvent, startEventLabel, kiteNovelEventList);
+                HandleLoop(createdEvent, startLabel, eventList);
 
                 // If dialogue options are present, process them.
-                HandleDialogueOptionEvent(passage, kiteNovelEventList.NovelEvents, createdEvent);
+                HandleDialogueOptionEvent(passage, eventList, createdEvent);
             }
 
-            return kiteNovelEventList;
+            return eventList;
         }
 
         /// <summary>
         /// Creates a VisualNovelEvent based on the NovelKeywordModel.
         /// Depending on the fields set in the model (End, Bias, Sound, or Character event),
-        /// the corresponding event type is created.
+        /// the corresponding event is created.
         /// </summary>
-        private static VisualNovelEvent CreateVisualNovelEventFromKeyword(TweePassage passage, string originalMessage, NovelKeywordModel model, KiteNovelMetaData metaData, KiteNovelEventList eventList)
+        private static VisualNovelEvent CreateVisualNovelEventFromKeyword(TweePassage passage, string originalMessage, NovelKeywordModel model, KiteNovelMetaData metaData, List<VisualNovelEvent> eventList)
         {
             if (model == null)
             {
@@ -201,41 +201,41 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             // If the keyword signals the end.
             if (model.End.HasValue && model.End.Value)
             {
-                return HandleEndNovelEvent(passage.Label, eventList.NovelEvents);
+                return HandleEndNovelEvent(passage.Label, eventList);
             }
             // If a bias is defined.
             else if (!string.IsNullOrEmpty(model.Bias))
             {
-                DiscriminationBias biasEnum = MapBiasStringToEnum(model.Bias);
-                return HandleBiasEvent(passage, biasEnum, eventList.NovelEvents);
+                string biasString = MapBiasString(model.Bias);
+                return HandleBiasEvent(passage, biasString, eventList);
             }
             // If a sound is defined.
             else if (!string.IsNullOrEmpty(model.Sound))
             {
-                KiteSound soundEnum = MapSoundStringToEnum(model.Sound);
-                return HandlePlaySoundEvent(passage, soundEnum, eventList.NovelEvents);
+                string soundString = MapSoundString(model.Sound);
+                return HandlePlaySoundEvent(passage, soundString, eventList);
             }
             // If it's a character event.
             else if (model.CharacterIndex.HasValue)
             {
-                CharacterRole role = GetCharacterRoleFromIndex(model.CharacterIndex.Value, metaData);
-                CharacterExpression expression = MapExpressionStringToEnum(model.FaceExpression);
+                string role = GetCharacterRoleFromIndex(model.CharacterIndex.Value, metaData);
+                string expression = MapExpressionString(model.FaceExpression);
 
                 // Decide based on the Action field which event to create.
                 if (!string.IsNullOrEmpty(model.Action))
                 {
                     if (model.Action.Equals("Entry", StringComparison.OrdinalIgnoreCase))
                     {
-                        return HandleCharacterJoinsEvent(passage, role, expression, eventList.NovelEvents);
+                        return HandleCharacterJoinsEvent(passage, role, expression, eventList);
                     }
                     else if (model.Action.Equals("Speaks", StringComparison.OrdinalIgnoreCase))
                     {
-                        return HandleCharacterTalksEvent(passage, role, originalMessage, expression, eventList.NovelEvents);
+                        return HandleCharacterTalksEvent(passage, role, originalMessage, expression, eventList);
                     }
                     else if (model.Action.Equals("Looks", StringComparison.OrdinalIgnoreCase))
                     {
-                        // "Looks" is handled as a variant of the character joining event.
-                        return HandleCharacterJoinsEvent(passage, role, expression, eventList.NovelEvents);
+                        // "Looks" is treated as a variant of the join event.
+                        return HandleCharacterJoinsEvent(passage, role, expression, eventList);
                     }
                 }
             }
@@ -244,79 +244,78 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
         }
 
         /// <summary>
-        /// Maps a bias string to the corresponding DiscriminationBias enum.
-        /// Add further mappings as needed.
+        /// Returns the bias string (can perform additional mapping if needed).
         /// </summary>
-        private static DiscriminationBias MapBiasStringToEnum(string bias)
+        private static string MapBiasString(string bias)
         {
+            // For example, you might want to normalize the bias string.
             if (bias.Equals("AccessToFunding", StringComparison.OrdinalIgnoreCase))
-                return DiscriminationBias.AccessToFunding;
+                return "AccessToFunding";
             if (bias.Equals("GenderPayGap", StringComparison.OrdinalIgnoreCase))
-                return DiscriminationBias.GenderPayGap;
-            // Add further mappings here...
-            return DiscriminationBias.None;
+                return "GenderPayGap";
+            // Add further mappings as needed...
+            return bias;
         }
 
         /// <summary>
-        /// Maps a sound string to the corresponding KiteSound enum.
+        /// Returns the sound string (can perform additional mapping if needed).
         /// </summary>
-        private static KiteSound MapSoundStringToEnum(string sound)
+        private static string MapSoundString(string sound)
         {
             if (sound.Equals("WaterPouring", StringComparison.OrdinalIgnoreCase))
-                return KiteSound.WaterPouring;
+                return "WaterPouring";
             if (sound.Equals("LeaveScene", StringComparison.OrdinalIgnoreCase))
-                return KiteSound.LeaveScene;
+                return "LeaveScene";
             if (sound.Equals("TelephoneCall", StringComparison.OrdinalIgnoreCase))
-                return KiteSound.TelephoneCall;
+                return "TelephoneCall";
             if (sound.Equals("PaperSound", StringComparison.OrdinalIgnoreCase))
-                return KiteSound.PaperSound;
+                return "PaperSound";
             if (sound.Equals("ManLaughing", StringComparison.OrdinalIgnoreCase))
-                return KiteSound.ManLaughing;
-            return KiteSound.None;
+                return "ManLaughing";
+            return sound;
         }
 
         /// <summary>
-        /// Maps an expression string to the corresponding CharacterExpression enum.
-        /// Add further mappings as needed.
+        /// Returns the expression string (can perform additional mapping if needed).
         /// </summary>
-        private static CharacterExpression MapExpressionStringToEnum(string expression)
+        private static string MapExpressionString(string expression)
         {
             if (string.IsNullOrEmpty(expression))
-                return CharacterExpression.None;
+                return "";
             if (expression.Equals("Angry", StringComparison.OrdinalIgnoreCase))
-                return CharacterExpression.LooksCritically; // Example mapping
+                return "Angry"; // Example mapping
             if (expression.Equals("Scared", StringComparison.OrdinalIgnoreCase))
-                return CharacterExpression.LooksScared;
+                return "Scared";
             if (expression.Equals("Neutral", StringComparison.OrdinalIgnoreCase))
-                return CharacterExpression.LooksNeutral;
+                return "Neutral";
             // Add further mappings as needed...
-            return CharacterExpression.None;
+            return expression;
         }
 
         /// <summary>
-        /// Determines the CharacterRole based on the CharacterIndex.
-        /// 0: Info, 1: Player, 2: first talking partner, 3: second talking partner, 4: third talking partner.
+        /// Determines the character role as a string based on the CharacterIndex.
+        /// 0: "Info", 1: "Player", 2: first talking partner, 3: second talking partner, 4: third talking partner.
         /// </summary>
-        private static CharacterRole GetCharacterRoleFromIndex(int index, KiteNovelMetaData metaData)
+        private static string GetCharacterRoleFromIndex(int index, KiteNovelMetaData metaData)
         {
             if (index == 0)
-                return CharacterRole.Info;
+                return "Info";
             else if (index == 1)
-                return CharacterRole.Player;
+                return "Player";
             else if (index == 2)
-                return CharacterTypeHelper.ValueOf(metaData.TalkingPartner01);
+                return metaData.TalkingPartner01;
             else if (index == 3)
-                return CharacterTypeHelper.ValueOf(metaData.TalkingPartner02);
+                return metaData.TalkingPartner02;
             else if (index == 4)
-                return CharacterTypeHelper.ValueOf(metaData.TalkingPartner03);
-            return CharacterRole.None;
+                return metaData.TalkingPartner03;
+            return "";
         }
 
         /// <summary>
-        /// Checks whether the last created event refers to the start of the novel.
+        /// Checks if the last created event refers to the start of the novel.
         /// If so, creates a new end event and adjusts the linking to avoid loops.
         /// </summary>
-        private static void HandleLoop(VisualNovelEvent lastEvent, string startLabel, KiteNovelEventList eventList)
+        private static void HandleLoop(VisualNovelEvent lastEvent, string startLabel, List<VisualNovelEvent> eventList)
         {
             if (lastEvent == null || string.IsNullOrEmpty(lastEvent.nextId)
                 || string.IsNullOrEmpty(startLabel) || eventList == null)
@@ -327,7 +326,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             {
                 string newLabel = "RandomEndNovelString" + _counterForNamingPurpose;
                 _counterForNamingPurpose++;
-                HandleEndNovelEvent(newLabel, eventList.NovelEvents);
+                HandleEndNovelEvent(newLabel, eventList);
                 lastEvent.nextId = newLabel;
             }
         }
@@ -336,7 +335,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
         /// Initializes the event list with start values (e.g. initial location and character join events)
         /// if defined in the metadata.
         /// </summary>
-        private static void InitializeKiteNovelEventList(KiteNovelMetaData metaData, KiteNovelEventList eventList, string startLabel)
+        private static void InitializeKiteNovelEventList(KiteNovelMetaData metaData, List<VisualNovelEvent> eventList, string startLabel)
         {
             if (!metaData.IsWithStartValues)
             {
@@ -346,37 +345,38 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             string connectionLabel = "initialCharacterJoinsEvent001";
             string id = "initialLocationEvent001";
             string nextId = connectionLabel;
-            Location location = LocationHelper.ValueOf(metaData.StartLocation);
+            // Instead of using an enum, we assume metaData.StartLocation is a string.
+            string location = metaData.StartLocation;
 
-            if (location == Location.NONE)
+            if (string.IsNullOrEmpty(location))
             {
                 Debug.LogWarning("While loading " + metaData.TitleOfNovel + ": Initial location not found!");
             }
 
             VisualNovelEvent initialLocationEvent = KiteNovelEventFactory.GetSetBackgroundEvent(id, nextId, location);
-            eventList.NovelEvents.Add(initialLocationEvent);
+            eventList.Add(initialLocationEvent);
 
             id = connectionLabel;
             nextId = startLabel;
-            CharacterRole character = CharacterTypeHelper.ValueOf(metaData.TalkingPartner01);
-            if (character == CharacterRole.None)
+            string character = metaData.TalkingPartner01;
+            if (string.IsNullOrEmpty(character))
             {
                 Debug.LogWarning("While loading " + metaData.TitleOfNovel + ": Initial character role not found!");
             }
 
-            CharacterExpression expression = CharacterExpressionHelper.ValueOf(metaData.StartTalkingPartnerEmotion);
-            if (expression == CharacterExpression.None)
+            string expression = metaData.StartTalkingPartnerEmotion;
+            if (string.IsNullOrEmpty(expression))
             {
                 Debug.LogWarning("While loading " + metaData.TitleOfNovel + ": Initial character expression not found!");
             }
 
             VisualNovelEvent initialCharacterJoinsEvent = KiteNovelEventFactory.GetCharacterJoinsEvent(id, nextId, character, expression);
-            eventList.NovelEvents.Add(initialCharacterJoinsEvent);
+            eventList.Add(initialCharacterJoinsEvent);
         }
 
         #region Specific Event Handlers
 
-        private static VisualNovelEvent HandleLocationEvent(TweePassage passage, Location location, List<VisualNovelEvent> list)
+        private static VisualNovelEvent HandleLocationEvent(TweePassage passage, string location, List<VisualNovelEvent> list)
         {
             string id = passage?.Label;
             string nextId = passage?.Links?[0]?.Target;
@@ -385,7 +385,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             return novelEvent;
         }
 
-        private static VisualNovelEvent HandleCharacterTalksEvent(TweePassage passage, CharacterRole character, string dialogMessage, CharacterExpression expression, List<VisualNovelEvent> list)
+        private static VisualNovelEvent HandleCharacterTalksEvent(TweePassage passage, string character, string dialogMessage, string expression, List<VisualNovelEvent> list)
         {
             string id = passage?.Label;
             string nextId = passage?.Links?[0]?.Target;
@@ -394,7 +394,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             return novelEvent;
         }
 
-        private static VisualNovelEvent HandleCharacterJoinsEvent(TweePassage passage, CharacterRole character, CharacterExpression expression, List<VisualNovelEvent> list)
+        private static VisualNovelEvent HandleCharacterJoinsEvent(TweePassage passage, string character, string expression, List<VisualNovelEvent> list)
         {
             string id = passage?.Label;
             string nextId = passage?.Links?[0]?.Target;
@@ -403,7 +403,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             return novelEvent;
         }
 
-        private static VisualNovelEvent HandleBiasEvent(TweePassage passage, DiscriminationBias bias, List<VisualNovelEvent> list)
+        private static VisualNovelEvent HandleBiasEvent(TweePassage passage, string bias, List<VisualNovelEvent> list)
         {
             string id = passage?.Label;
             string nextId = passage?.Links?[0]?.Target;
@@ -417,7 +417,8 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             string label01 = label;
             string label02 = label01 + "RandomString0012003";
             string label03 = label02 + "RandomRandom";
-            KiteSound leaveSceneSound = KiteSound.LeaveScene;
+            // Use the sound string directly.
+            string leaveSceneSound = "LeaveScene";
 
             VisualNovelEvent soundEvent = KiteNovelEventFactory.GetPlaySoundEvent(label01, label02, leaveSceneSound);
             VisualNovelEvent exitEvent = KiteNovelEventFactory.GetCharacterExitsEvent(label02, label03);
@@ -465,20 +466,20 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             list.Add(showChoicesEvent);
         }
 
-        private static VisualNovelEvent HandlePlaySoundEvent(TweePassage passage, KiteSound audioClipToPlay, List<VisualNovelEvent> list)
+        private static VisualNovelEvent HandlePlaySoundEvent(TweePassage passage, string sound, List<VisualNovelEvent> list)
         {
             string id = passage?.Label;
             string nextId = passage?.Links?[0]?.Target;
-            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetPlaySoundEvent(id, nextId, audioClipToPlay);
+            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetPlaySoundEvent(id, nextId, sound);
             list.Add(novelEvent);
             return novelEvent;
         }
 
-        private static VisualNovelEvent HandlePlayAnimationEvent(TweePassage passage, KiteAnimation animationToPlay, List<VisualNovelEvent> list)
+        private static VisualNovelEvent HandlePlayAnimationEvent(TweePassage passage, string animation, List<VisualNovelEvent> list)
         {
             string id = passage?.Label;
             string nextId = passage?.Links?[0]?.Target;
-            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetPlayAnimationEvent(id, nextId, animationToPlay);
+            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetPlayAnimationEvent(id, nextId, animation);
             list.Add(novelEvent);
             return novelEvent;
         }
@@ -502,7 +503,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             return novelEvent;
         }
 
-        private static VisualNovelEvent HandleGptRequestEvent(TweePassage passage, string message, CompletionHandler completionHandlerId, List<VisualNovelEvent> list)
+        private static VisualNovelEvent HandleGptRequestEvent(TweePassage passage, string message, string completionHandlerId, List<VisualNovelEvent> list)
         {
             string[] parts = message.Split(new[] { ':' }, 2);
 
