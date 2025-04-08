@@ -6,6 +6,7 @@ using Assets._Scripts.Novel.VisualNovelLoader;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
+using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
 
 namespace Assets._Scripts.Novel.VisualNovelFormatter
 {
@@ -385,6 +386,105 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             Debug.Log("Visual Novels have been successfully converted to JSON format and saved under the following path: " + path);
             // Setze das Flag, dass der Konvertierungsvorgang abgeschlossen ist.
             _isFinished = true;
+        }
+    }
+
+    //TODO: Auslagern in eigenes File
+
+    /// <summary>
+    /// This script tests the keyword reading and extraction.
+    /// You can specify the file path (relative to Application.dataPath or an absolute path) in the Inspector.
+    /// The script reads the file, processes each line using the NovelKeywordParser, and outputs
+    /// the extracted keyword properties (such as End, CharacterIndex, Action, FaceExpression, Sound, Bias)
+    /// to the console.
+    /// </summary>
+    public class KeywordTester : MonoBehaviour
+    {
+        // Public field to specify the file path in the Inspector.
+        // Example: "TestKeywords.txt" if the file is located in the Application.dataPath folder.
+        public string filePath = "Assets/_novels_twee/Eltern/visual_novel_event_list.txt";
+
+        /// <summary>
+        /// Called when the script starts.
+        /// Initiates the process of reading and processing the keyword file.
+        /// </summary>
+        public void Start()
+        {
+            // Start the coroutine that loads and processes the keywords from the file.
+            StartCoroutine(ProcessKeywordFile());
+        }
+
+        /// <summary>
+        /// Coroutine that reads the keyword file, processes each line to extract the keyword data,
+        /// and outputs the extracted properties to the Unity console.
+        /// </summary>
+        private IEnumerator ProcessKeywordFile()
+        {
+            // Build the full file path by combining Application.dataPath with the filePath provided.
+            // If your file is located elsewhere, adjust accordingly.
+            string fullPath = Path.Combine(Application.dataPath, filePath);
+
+            string fileContent = "";
+
+            // Check if the file exists at the specified path.
+            if (File.Exists(fullPath))
+            {
+                // Read the entire file content synchronously.
+                fileContent = File.ReadAllText(fullPath);
+            }
+            else
+            {
+                Debug.LogError("Keyword file not found at: " + fullPath);
+                yield break;
+            }
+
+            NovelKeywordParser.ParseKeywordsFromFile(fileContent);
+
+            //// Split the file content into lines (removing empty entries).
+            //string[] lines = fileContent.Split(new[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
+
+
+            //// Process each line individually.
+            //foreach (string line in lines)
+            //{
+            //    // Trim whitespace from the line.
+            //    string trimmedLine = line.Trim();
+
+            //    // Skip if the line is empty.
+            //    if (string.IsNullOrEmpty(trimmedLine))
+            //        continue;
+
+            //    // Use the NovelKeywordParser to convert the line into a NovelKeywordModel.
+            //    NovelKeywordModel model = NovelKeywordParser.ParseKeyword(trimmedLine);
+
+            //    // Build an output string containing the parsed keyword properties.
+            //    if (model != null)
+            //    {
+            //        string output = "Parsed Keyword: ";
+            //        if (model.End.HasValue && model.End.Value)
+            //            output += "[End] ";
+            //        if (model.CharacterIndex.HasValue)
+            //            output += $"CharacterIndex: {model.CharacterIndex.Value} ";
+            //        if (!string.IsNullOrEmpty(model.Action))
+            //            output += $"Action: {model.Action} ";
+            //        if (!string.IsNullOrEmpty(model.FaceExpression))
+            //            output += $"FaceExpression: {model.FaceExpression} ";
+            //        if (!string.IsNullOrEmpty(model.Sound))
+            //            output += $"Sound: {model.Sound} ";
+            //        if (!string.IsNullOrEmpty(model.Bias))
+            //            output += $"Bias: {model.Bias} ";
+
+            //        // Output the result to the Unity Console.
+            //        Debug.Log(output);
+            //    }
+            //    else
+            //    {
+            //        //Debug.Log("No keyword model parsed for line: " + trimmedLine);
+            //    }
+
+            //    // Yield return null to wait for the next frame (optional, for large files).
+                yield return null;
+            
         }
     }
 }

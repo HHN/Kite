@@ -84,5 +84,29 @@ namespace Tests.PlayMode
                 yield return null;
             }
         }
+
+        [UnityTest]
+        public IEnumerator TestKeyWords()
+        {
+            Debug.Log("TEST!");
+
+            // Erstelle ein neues GameObject und füge das KeywordTester-Skript hinzu.
+            GameObject testerObj = new GameObject("KeywordTesterObject");
+            KeywordTester tester = testerObj.AddComponent<KeywordTester>();
+            // Optional: Passe den Dateipfad an, falls nötig.
+            tester.filePath = "_novels_twee/Eltern/visual_novel_event_list.txt";
+
+            // Warte eine gewisse Zeit, damit die Coroutine im KeywordTester laufen kann.
+            // Dies ist ein einfaches Beispiel; ggf. musst du hier an deine Testlogik anpassen.
+            yield return new WaitForSeconds(2f);
+
+            // Hier könntest du weitere Checks einbauen, z.B. anhand interner Tester-Daten.
+            Debug.Log("Keyword testing completed.");
+
+            // Zerstöre das Tester-Objekt, um saubere Verhältnisse zu schaffen.
+            Object.Destroy(testerObj);
+
+            yield return null;
+        }
     }
 }
