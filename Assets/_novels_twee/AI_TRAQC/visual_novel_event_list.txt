@@ -19,7 +19,7 @@ Alles klar, dann bis die Tage.
 
 
 :: Anfang {"position":"1300,75","size":"100,100"}
->>Charakter01SprichtNeutral:<<
+>>InfoNachrichtWirdAngezeigt:<<
 Im Rahmen Deiner Aufgabe, KI in der Firma einzuführen, gehst du bei einem Mitarbeiter aus Vertrieb und Marketing vorbei, um mögliche Einsatzbereiche und Potenziale zu besprechen.
 [[Weiter->Hallo, Marketing!]]
 
