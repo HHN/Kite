@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Messages;
 using Assets._Scripts.Novel;
@@ -68,6 +69,7 @@ namespace Assets._Scripts.SceneControllers
         private void InitializeScene()
         {
             DontDestroyOnLoad(novelLoader);
+            
             //AnalyticsServiceHandler.Instance().StartAnalytics();  //TODO: Replace with custom Analytics
             PlayerDataManager.Instance().LoadAllPlayerPrefs();
             BackStackManager.Instance().Clear();
