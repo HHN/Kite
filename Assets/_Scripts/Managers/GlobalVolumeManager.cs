@@ -63,7 +63,7 @@ namespace Assets._Scripts.Managers
         }
 
         // Weist alle AudioSources in der Szene der Audio Mixer Group zu
-        public void InitGlobalAudiosource()
+        private void InitGlobalAudiosource()
         {
             if (audioSource == null)
             {
@@ -71,7 +71,7 @@ namespace Assets._Scripts.Managers
                 audioSource = gameObject.AddComponent<AudioSource>();
             }
 
-            float savedSoundeffectsVolume = UnityEngine.PlayerPrefs.GetFloat("SavedSoundeffectsVolume", 100);
+            float savedSoundeffectsVolume = PlayerPrefs.GetFloat("SavedSoundeffectsVolume", 100);
             SetGlobalVolume(savedSoundeffectsVolume / 100);
         }
 

@@ -136,8 +136,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 string jsonStringOfEventList = null;
 
                 // Lade und deserialisiere die Metadaten der Novelle.
-                yield return StartCoroutine(LoadAndDeserialize<KiteNovelMetaData>(fullPathOfNovelMetaData,
-                    result => { kiteNovelMetaData = result; }));
+                yield return StartCoroutine(LoadAndDeserialize<KiteNovelMetaData>(fullPathOfNovelMetaData, result => { kiteNovelMetaData = result; }));
 
                 // Falls die Metadaten nicht geladen werden konnten, gebe eine Warnung aus und �berspringe diese Novelle.
                 if (kiteNovelMetaData == null)
@@ -206,8 +205,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 }
 
                 // Lade den Inhalt der Event-Liste.
-                yield return StartCoroutine(LoadFileContent(fullPathOfNovelEventList,
-                    result => { jsonStringOfEventList = result; }));
+                yield return StartCoroutine(LoadFileContent(fullPathOfNovelEventList, result => { jsonStringOfEventList = result; }));
 
                 // Falls die Event-Liste leer ist, �berspringe diese Novelle.
                 if (string.IsNullOrEmpty(jsonStringOfEventList))
@@ -218,6 +216,9 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
                 // Ersetze W�rter in der Event-Liste anhand der in den Metadaten angegebenen Wortpaare.
                 jsonStringOfEventList = ReplaceWordsInString(jsonStringOfEventList, kiteNovelMetaData.WordsToReplace);
+                
+                // Zwischenspeichern der in der Novel verwendeten Keywords.
+                // Mit Mimiken / Audio Files / Biases
 
                 // Konvertiere den Text der Event-Liste in eine strukturierte Event-Liste.
                 List<VisualNovelEvent> kiteNovelEventList = KiteNovelConverter.ConvertTextDocumentIntoEventList(jsonStringOfEventList, kiteNovelMetaData);

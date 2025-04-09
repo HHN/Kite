@@ -13,8 +13,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
     {
         // Regex to extract the StoryData block (everything between ":: StoryData" and the next "::") 
         // using multiline mode so that it matches across multiple lines.
-        private static readonly Regex StoryDataRegex =
-            new Regex(@":: StoryData\s*\n([\s\S]*?)\n::", RegexOptions.Multiline);
+        private static readonly Regex StoryDataRegex = new(@":: StoryData\s*\n([\s\S]*?)\n::", RegexOptions.Multiline);
 
         // Regex to match any text inside double square brackets, which are used for links.
         private static readonly Regex LinkRegex = new Regex(@"\[\[(.*?)\]\]");
@@ -225,10 +224,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             // Use the StoryDataRegex to extract the JSON content within the StoryData block.
             Match match = StoryDataRegex.Match(tweeFileContent);
 
-            if (!match.Success)
-            {
-                return null;
-            }
+            if (!match.Success) return null;
 
             string jsonContent = match.Groups[1].Value;
 

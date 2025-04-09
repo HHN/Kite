@@ -192,16 +192,10 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// </summary>
         private static VisualNovelEvent CreateVisualNovelEventFromKeyword(TweePassage passage, string originalMessage, NovelKeywordModel model, KiteNovelMetaData metaData, List<VisualNovelEvent> eventList)
         {
-            if (model == null)
-            {
-                return null;
-            }
+            if (model == null) return null;
 
             // If the keyword signals the end.
-            if (model.End.HasValue && model.End.Value)
-            {
-                return HandleEndNovelEvent(passage.Label, eventList);
-            }
+            if (model.End.HasValue && model.End.Value) return HandleEndNovelEvent(passage.Label, eventList);
             
             // If a bias is defined.
             if (!string.IsNullOrEmpty(model.Bias))
