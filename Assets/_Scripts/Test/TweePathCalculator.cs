@@ -9,8 +9,7 @@ namespace Assets._Scripts.Test
 {
     public class TweePathCalculator
     {
-        private readonly Dictionary<string, (List<string> Links, List<string> Speakers, string Body)> _graph =
-            new Dictionary<string, (List<string> Links, List<string> Speakers, string Body)>();
+        private readonly Dictionary<string, (List<string> Links, List<string> Speakers, string Body)> _graph = new Dictionary<string, (List<string> Links, List<string> Speakers, string Body)>();
 
         private readonly Dictionary<string, string> _characterToSpeakerMap = new Dictionary<string, string>();
 
@@ -66,11 +65,11 @@ namespace Assets._Scripts.Test
             _characterToSpeakerMap[@"SpielerinCharakterSpricht"] = "Spielerin";
 
             // Ausgabe der gesamten CharacterToSpeakerMap
-            Debug.Log("CharacterToSpeakerMap-Inhalt:");
-            foreach (var entry in _characterToSpeakerMap)
-            {
-                Debug.Log($"  {entry.Key} -> {entry.Value}");
-            }
+            // Debug.Log("CharacterToSpeakerMap-Inhalt:");
+            // foreach (var entry in _characterToSpeakerMap)
+            // {
+            //     Debug.Log($"  {entry.Key} -> {entry.Value}");
+            // }
         }
 
         public void ParseTweeFile(string tweeContent)
@@ -94,7 +93,7 @@ namespace Assets._Scripts.Test
                 foreach (Match speakerMatch in speakerMatches)
                 {
                     string speaker = speakerMatch.Groups[1].Value.Trim();
-                    Debug.Log($"Originaler Sprecher: {speaker}");
+                    // Debug.Log($"Originaler Sprecher: {speaker}");
 
                     // Basissprecher extrahieren
                     foreach (var key in _characterToSpeakerMap.Keys)
@@ -102,7 +101,7 @@ namespace Assets._Scripts.Test
                         if (speaker.StartsWith(key))
                         {
                             speaker = _characterToSpeakerMap[key];
-                            Debug.Log($"Sprecher gemappt auf '{speaker}'");
+                            // Debug.Log($"Sprecher gemappt auf '{speaker}'");
                             break;
                         }
                     }
@@ -161,6 +160,8 @@ namespace Assets._Scripts.Test
 
         public List<List<string>> GetAllPaths(string startNode)
         {
+            Debug.Log("GetAllPaths gestartet");
+
             List<List<string>> allPaths = new List<List<string>>();
             List<string> currentPath = new List<string>();
 
@@ -201,35 +202,35 @@ namespace Assets._Scripts.Test
         {
             Debug.Log($"Gefundene Pfade: {paths.Count}");
 
-            foreach (var path in paths)
-            {
-                string pathOutput = string.Join(" -> ", path);
-                Debug.Log($"Pfad: {pathOutput}");
-
-                foreach (string node in path)
-                {
-                    if (_graph.ContainsKey(node))
-                    {
-                        var (_, speakers, _) = _graph[node];
-
-                        foreach (var speaker in speakers)
-                        {
-                            Debug.Log($"Sprecher im Knoten '{node}': {speaker}");
-                        }
-
-                        // Sprecher ausgeben
-                        if (speakers.Count > 0)
-                        {
-                            string speakerList = string.Join(", ", speakers);
-                            Debug.Log($"Knoten '{node}' hat folgende Sprecher: {speakerList}");
-                        }
-                        else
-                        {
-                            Debug.Log($"Knoten '{node}' hat keine Sprecher.");
-                        }
-                    }
-                }
-            }
+            // foreach (var path in paths)
+            // {
+            //     string pathOutput = string.Join(" -> ", path);
+            //     Debug.Log($"Pfad: {pathOutput}");
+            //
+            //     foreach (string node in path)
+            //     {
+            //         if (_graph.ContainsKey(node))
+            //         {
+            //             var (_, speakers, _) = _graph[node];
+            //
+            //             foreach (var speaker in speakers)
+            //             {
+            //                 Debug.Log($"Sprecher im Knoten '{node}': {speaker}");
+            //             }
+            //
+            //             // Sprecher ausgeben
+            //             if (speakers.Count > 0)
+            //             {
+            //                 string speakerList = string.Join(", ", speakers);
+            //                 Debug.Log($"Knoten '{node}' hat folgende Sprecher: {speakerList}");
+            //             }
+            //             else
+            //             {
+            //                 Debug.Log($"Knoten '{node}' hat keine Sprecher.");
+            //             }
+            //         }
+            //     }
+            // }
         }
 
         // public void PrintPaths(List<List<string>> paths)
