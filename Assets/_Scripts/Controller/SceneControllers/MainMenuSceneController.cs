@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Messages;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
-using Assets._Scripts.Server_Communication;
-using Assets._Scripts.Server_Communication.Server_Calls;
-using Assets._Scripts.UI_Elements;
+using Assets._Scripts.ServerCommunication;
+using Assets._Scripts.ServerCommunication.ServerCalls;
+using Assets._Scripts.UIElements;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -68,6 +69,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void InitializeScene()
         {
             DontDestroyOnLoad(novelLoader);
+            
             //AnalyticsServiceHandler.Instance().StartAnalytics();  //TODO: Replace with custom Analytics
             PlayerDataManager.Instance().LoadAllPlayerPrefs();
             BackStackManager.Instance().Clear();

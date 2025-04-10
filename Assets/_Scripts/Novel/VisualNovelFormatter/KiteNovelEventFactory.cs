@@ -1,4 +1,6 @@
-namespace Assets._Scripts.Novel.VisualNovelFormatter
+using Assets._Scripts.Novel;
+
+namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 {
     public abstract class KiteNovelEventFactory
     {
@@ -49,7 +51,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
         public static VisualNovelEvent GetGptEvent(string id, string nextId, string prompt, string variablesName, string completionHandlerId)
         {
-            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.GPT_PROMPT_EVENT, false);
+            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.GptPromptEvent, false);
             novelEvent.gptPrompt = prompt;
             novelEvent.variablesNameForGptPrompt = variablesName;
             novelEvent.gptCompletionHandler = completionHandlerId;
@@ -58,7 +60,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
         public static VisualNovelEvent GetSavePersistentEvent(string id, string nextId, string key, string value)
         {
-            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.SAVE_PERSISTENT_EVENT, false);
+            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.SavePersistentEvent, false);
             novelEvent.key = key;
             novelEvent.value = value;
             return novelEvent;
@@ -66,7 +68,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
         public static VisualNovelEvent GetSaveVariableEvent(string id, string nextId, string key, string value)
         {
-            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.SAVE_VARIABLE_EVENT, false);
+            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.SaveVariableEvent, false);
             novelEvent.key = key;
             novelEvent.value = value;
             return novelEvent;
@@ -75,7 +77,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         public static VisualNovelEvent GetCalculateVariableFromBooleanExpressionEvent(string id, string nextId, string key, string value)
         {
             VisualNovelEvent novelEvent = CreateEvent(id, nextId,
-                VisualNovelEventType.CALCULATE_VARIABLE_FROM_BOOLEAN_EXPRESSION_EVENT, false);
+                VisualNovelEventType.CalculateVariableFromBooleanExpressionEvent, false);
             novelEvent.key = key;
             novelEvent.value = value;
             return novelEvent;
@@ -83,7 +85,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
         public static VisualNovelEvent GetAddFeedbackEvent(string id, string nextId, string message)
         {
-            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.ADD_FEEDBACK_EVENT, false);
+            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.AddFeedbackEvent, false);
             novelEvent.value = message;
             return novelEvent;
         }
@@ -91,7 +93,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         public static VisualNovelEvent GetAddFeedbackUnderConditionEvent(string id, string nextId, string key, string value)
         {
             VisualNovelEvent novelEvent =
-                CreateEvent(id, nextId, VisualNovelEventType.ADD_FEEDBACK_UNDER_CONDITION_EVENT, false);
+                CreateEvent(id, nextId, VisualNovelEventType.AddFeedbackUnderConditionEvent, false);
             novelEvent.key = key;
             novelEvent.value = value;
             return novelEvent;
@@ -99,13 +101,13 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
         public static VisualNovelEvent GetEndNovelEvent(string id)
         {
-            VisualNovelEvent novelEvent = CreateEvent(id, "", VisualNovelEventType.END_NOVEL_EVENT, false);
+            VisualNovelEvent novelEvent = CreateEvent(id, "", VisualNovelEventType.EndNovelEvent, false);
             return novelEvent;
         }
 
         public static VisualNovelEvent GetAddChoiceEvent(string id, string nextId, string optionText, string onChoice, bool showAfterSelection)
         {
-            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.ADD_CHOICE_EVENT, false);
+            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.AddChoiceEvent, false);
             novelEvent.text = optionText;
             novelEvent.onChoice = onChoice;
             novelEvent.show = showAfterSelection;
@@ -114,7 +116,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
         public static VisualNovelEvent GetShowChoicesEvent(string id)
         {
-            VisualNovelEvent novelEvent = CreateEvent(id, "", VisualNovelEventType.SHOW_CHOICES_EVENT, true);
+            VisualNovelEvent novelEvent = CreateEvent(id, "", VisualNovelEventType.ShowChoicesEvent, true);
             return novelEvent;
         }
 

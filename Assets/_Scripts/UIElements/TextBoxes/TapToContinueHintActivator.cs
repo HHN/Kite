@@ -2,7 +2,7 @@ using Assets._Scripts.Controller.SceneControllers;
 using Assets._Scripts.Player;
 using UnityEngine;
 
-namespace Assets._Scripts.UI_Elements.TextBoxes
+namespace Assets._Scripts.UIElements.TextBoxes
 {
     public class TapToContinueHintActivator : MonoBehaviour
     {

@@ -41,53 +41,40 @@ namespace Assets._Scripts.OfflineAiFeedback
             if (_numberOfPossiblePaths == null)
             {
                 _numberOfPossiblePaths = new Dictionary<VisualNovelNames, int>();
-                _numberOfPossiblePaths[VisualNovelNames.BANK_KREDIT_NOVEL] = 0;
-                _numberOfPossiblePaths[VisualNovelNames.INVESTOR_NOVEL] = 0;
-                // _numberOfPossiblePaths[VisualNovelNames.BANK_KONTO_NOVEL] = 0;
-                // _numberOfPossiblePaths[VisualNovelNames.FOERDERANTRAG_NOVEL] = 0;
-                _numberOfPossiblePaths[VisualNovelNames.ELTERN_NOVEL] = 0;
-                _numberOfPossiblePaths[VisualNovelNames.NOTARIAT_NOVEL] = 0;
-                _numberOfPossiblePaths[VisualNovelNames.PRESSE_NOVEL] = 0;
-                _numberOfPossiblePaths[VisualNovelNames.VERMIETER_NOVEL] = 0;
-                // _numberOfPossiblePaths[VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL] = 0;
-                _numberOfPossiblePaths[VisualNovelNames.HONORAR_NOVEL] = 0;
-                // _numberOfPossiblePaths[VisualNovelNames.LEBENSPARTNER_NOVEL] = 0;
-                _numberOfPossiblePaths[VisualNovelNames.EINSTIEGS_NOVEL] = 0;
+                _numberOfPossiblePaths[VisualNovelNames.BankKreditNovel] = 0;
+                _numberOfPossiblePaths[VisualNovelNames.InvestorNovel] = 0;
+                _numberOfPossiblePaths[VisualNovelNames.ElternNovel] = 0;
+                _numberOfPossiblePaths[VisualNovelNames.NotariatNovel] = 0;
+                _numberOfPossiblePaths[VisualNovelNames.PresseNovel] = 0;
+                _numberOfPossiblePaths[VisualNovelNames.VermieterNovel] = 0;
+                _numberOfPossiblePaths[VisualNovelNames.HonorarNovel] = 0;
+                _numberOfPossiblePaths[VisualNovelNames.EinstiegsNovel] = 0;
             }
 
             if (_allPossibleNovelAnalyserHelpers == null)
             {
                 _allPossibleNovelAnalyserHelpers = new Dictionary<VisualNovelNames, List<NovelAnalyserHelper>>();
-                _allPossibleNovelAnalyserHelpers[VisualNovelNames.BANK_KREDIT_NOVEL] = new List<NovelAnalyserHelper>();
-                _allPossibleNovelAnalyserHelpers[VisualNovelNames.INVESTOR_NOVEL] =
-                    new List<NovelAnalyserHelper>();
-                // _allPossibleNovelAnalyserHelpers[VisualNovelNames.BANK_KONTO_NOVEL] = new List<NovelAnalyserHelper>();
-                // _allPossibleNovelAnalyserHelpers[VisualNovelNames.FOERDERANTRAG_NOVEL] = new List<NovelAnalyserHelper>();
-                _allPossibleNovelAnalyserHelpers[VisualNovelNames.ELTERN_NOVEL] = new List<NovelAnalyserHelper>();
-                _allPossibleNovelAnalyserHelpers[VisualNovelNames.NOTARIAT_NOVEL] = new List<NovelAnalyserHelper>();
-                _allPossibleNovelAnalyserHelpers[VisualNovelNames.PRESSE_NOVEL] = new List<NovelAnalyserHelper>();
-                _allPossibleNovelAnalyserHelpers[VisualNovelNames.VERMIETER_NOVEL] = new List<NovelAnalyserHelper>(); 
-                // _allPossibleNovelAnalyserHelpers[VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL] = new List<NovelAnalyserHelper>();
-                _allPossibleNovelAnalyserHelpers[VisualNovelNames.HONORAR_NOVEL] = new List<NovelAnalyserHelper>();
-                // _allPossibleNovelAnalyserHelpers[VisualNovelNames.LEBENSPARTNER_NOVEL] = new List<NovelAnalyserHelper>();
-                _allPossibleNovelAnalyserHelpers[VisualNovelNames.EINSTIEGS_NOVEL] = new List<NovelAnalyserHelper>();
+                _allPossibleNovelAnalyserHelpers[VisualNovelNames.BankKreditNovel] = new List<NovelAnalyserHelper>();
+                _allPossibleNovelAnalyserHelpers[VisualNovelNames.InvestorNovel] = new List<NovelAnalyserHelper>();
+                _allPossibleNovelAnalyserHelpers[VisualNovelNames.ElternNovel] = new List<NovelAnalyserHelper>();
+                _allPossibleNovelAnalyserHelpers[VisualNovelNames.NotariatNovel] = new List<NovelAnalyserHelper>();
+                _allPossibleNovelAnalyserHelpers[VisualNovelNames.PresseNovel] = new List<NovelAnalyserHelper>();
+                _allPossibleNovelAnalyserHelpers[VisualNovelNames.VermieterNovel] = new List<NovelAnalyserHelper>(); 
+                _allPossibleNovelAnalyserHelpers[VisualNovelNames.HonorarNovel] = new List<NovelAnalyserHelper>();
+                _allPossibleNovelAnalyserHelpers[VisualNovelNames.EinstiegsNovel] = new List<NovelAnalyserHelper>();
             }
 
             if (_allPossibleBiasCombinations == null)
             {
                 _allPossibleBiasCombinations = new Dictionary<VisualNovelNames, List<NovelAnalyserHelper>>();
-                _allPossibleBiasCombinations[VisualNovelNames.BANK_KREDIT_NOVEL] = new List<NovelAnalyserHelper>();
-                _allPossibleBiasCombinations[VisualNovelNames.INVESTOR_NOVEL] = new List<NovelAnalyserHelper>();
-                // _allPossibleBiasCombinations[VisualNovelNames.BANK_KONTO_NOVEL] = new List<NovelAnalyserHelper>();
-                // _allPossibleBiasCombinations[VisualNovelNames.FOERDERANTRAG_NOVEL] = new List<NovelAnalyserHelper>();
-                _allPossibleBiasCombinations[VisualNovelNames.ELTERN_NOVEL] = new List<NovelAnalyserHelper>();
-                _allPossibleBiasCombinations[VisualNovelNames.NOTARIAT_NOVEL] = new List<NovelAnalyserHelper>();
-                _allPossibleBiasCombinations[VisualNovelNames.PRESSE_NOVEL] = new List<NovelAnalyserHelper>();
-                _allPossibleBiasCombinations[VisualNovelNames.VERMIETER_NOVEL] = new List<NovelAnalyserHelper>();
-                // _allPossibleBiasCombinations[VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL] = new List<NovelAnalyserHelper>();
-                _allPossibleBiasCombinations[VisualNovelNames.HONORAR_NOVEL] = new List<NovelAnalyserHelper>();
-                // _allPossibleBiasCombinations[VisualNovelNames.LEBENSPARTNER_NOVEL] = new List<NovelAnalyserHelper>();
-                _allPossibleBiasCombinations[VisualNovelNames.EINSTIEGS_NOVEL] = new List<NovelAnalyserHelper>();
+                _allPossibleBiasCombinations[VisualNovelNames.BankKreditNovel] = new List<NovelAnalyserHelper>();
+                _allPossibleBiasCombinations[VisualNovelNames.InvestorNovel] = new List<NovelAnalyserHelper>();
+                _allPossibleBiasCombinations[VisualNovelNames.ElternNovel] = new List<NovelAnalyserHelper>();
+                _allPossibleBiasCombinations[VisualNovelNames.NotariatNovel] = new List<NovelAnalyserHelper>();
+                _allPossibleBiasCombinations[VisualNovelNames.PresseNovel] = new List<NovelAnalyserHelper>();
+                _allPossibleBiasCombinations[VisualNovelNames.VermieterNovel] = new List<NovelAnalyserHelper>();
+                _allPossibleBiasCombinations[VisualNovelNames.HonorarNovel] = new List<NovelAnalyserHelper>();
+                _allPossibleBiasCombinations[VisualNovelNames.EinstiegsNovel] = new List<NovelAnalyserHelper>();
             }
 
             _allPossibleNovelAnalyserHelpers[_visualNovelName].Add(this);
@@ -116,16 +103,6 @@ namespace Assets._Scripts.OfflineAiFeedback
             }
 
             return allUniqueNovelAnalyserHelpersFromStartToEnd;
-        }
-
-        public static int GetNumberOfPossiblePaths(VisualNovelNames visualNovelName)
-        {
-            return _numberOfPossiblePaths[visualNovelName];
-        }
-
-        public VisualNovel GetObjectUnderTest()
-        {
-            return _objectUnderAnalyse;
         }
 
         public void AnalyseNovel()
@@ -191,46 +168,39 @@ namespace Assets._Scripts.OfflineAiFeedback
             _alreadyPlayedEvents.Add(eventUnderTest.id);
 
             if (string.IsNullOrEmpty(eventUnderTest.nextId) &&
-                (VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) !=
-                 VisualNovelEventType.SHOW_CHOICES_EVENT) &&
-                (VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) != VisualNovelEventType.END_NOVEL_EVENT))
+                VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) != VisualNovelEventType.ShowChoicesEvent &&
+                VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) != VisualNovelEventType.EndNovelEvent)
             {
                 OnAnalysisFailed("Id of next event is null or empty!", _objectUnderAnalyse.title, eventUnderTest.id);
                 return;
             }
 
             if (!_novelEvents.ContainsKey(eventUnderTest.nextId) &&
-                (VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) !=
-                 VisualNovelEventType.SHOW_CHOICES_EVENT) &&
-                (VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) != VisualNovelEventType.END_NOVEL_EVENT))
+                VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) !=
+                VisualNovelEventType.ShowChoicesEvent &&
+                VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) != VisualNovelEventType.EndNovelEvent)
             {
                 OnAnalysisFailed("Next event to play not found!", _objectUnderAnalyse.title, eventUnderTest.id);
                 return;
             }
 
-            if ((VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) == VisualNovelEventType.ADD_CHOICE_EVENT)
-                && (string.IsNullOrEmpty(eventUnderTest.onChoice)))
+            if (VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) == VisualNovelEventType.AddChoiceEvent && string.IsNullOrEmpty(eventUnderTest.onChoice))
             {
                 OnAnalysisFailed("Add Choice event without onChoice value!", _objectUnderAnalyse.title,
                     eventUnderTest.id);
                 return;
             }
 
-            if ((VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) ==
-                 VisualNovelEventType.ADD_CHOICE_EVENT) &&
-                !_novelEvents.ContainsKey(eventUnderTest.onChoice))
+            if (VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) == VisualNovelEventType.AddChoiceEvent && !_novelEvents.ContainsKey(eventUnderTest.onChoice))
             {
-                OnAnalysisFailed("Add Choice event with on choice target that could not be found!",
-                    _objectUnderAnalyse.title, eventUnderTest.id);
+                OnAnalysisFailed("Add Choice event with on choice target that could not be found!", _objectUnderAnalyse.title, eventUnderTest.id);
                 return;
             }
 
             VisualNovelEventType type = VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType);
 
-            if ((VisualNovelEventTypeHelper.ValueOf(_nextEventToAnalyse.eventType) !=
-                 VisualNovelEventType.SHOW_CHOICES_EVENT) &&
-                (VisualNovelEventTypeHelper.ValueOf(_nextEventToAnalyse.eventType) !=
-                 VisualNovelEventType.END_NOVEL_EVENT))
+            if (VisualNovelEventTypeHelper.ValueOf(_nextEventToAnalyse.eventType) != VisualNovelEventType.ShowChoicesEvent &&
+                VisualNovelEventTypeHelper.ValueOf(_nextEventToAnalyse.eventType) != VisualNovelEventType.EndNovelEvent)
             {
                 string nextEventID = eventUnderTest.nextId;
                 _nextEventToAnalyse = _novelEvents[nextEventID];
@@ -238,69 +208,59 @@ namespace Assets._Scripts.OfflineAiFeedback
 
             switch (type)
             {
-                case VisualNovelEventType.SET_BACKGROUND_EVENT:
-                {
-                    HandleBackgrundEvent(eventUnderTest);
-                    break;
-                }
-                case VisualNovelEventType.CHARAKTER_JOIN_EVENT:
+                case VisualNovelEventType.CharakterJoinEvent:
                 {
                     HandleCharacterJoinEvent(eventUnderTest);
                     break;
                 }
-                case VisualNovelEventType.CHARAKTER_EXIT_EVENT:
+                case VisualNovelEventType.CharacterExitEvent:
                 {
                     HandleCharacterExitEvent(eventUnderTest);
                     break;
                 }
-                case VisualNovelEventType.SHOW_MESSAGE_EVENT:
+                case VisualNovelEventType.ShowMessageEvent:
                 {
                     HandleShowMessageEvent(eventUnderTest);
                     break;
                 }
-                case VisualNovelEventType.ADD_CHOICE_EVENT:
+                case VisualNovelEventType.AddChoiceEvent:
                 {
                     HandleAddChoiceEvent(eventUnderTest);
                     break;
                 }
-                case VisualNovelEventType.SHOW_CHOICES_EVENT:
+                case VisualNovelEventType.ShowChoicesEvent:
                 {
                     HandleShowChoicesEvent(eventUnderTest);
                     break;
                 }
-                case VisualNovelEventType.END_NOVEL_EVENT:
+                case VisualNovelEventType.EndNovelEvent:
                 {
                     _numberOfPossiblePaths[_visualNovelName]++;
                     _endetAnalysisByReachingEndNovelEvent = true;
                     AnalysisEndedSuccessfully();
                     break;
                 }
-                case VisualNovelEventType.PLAY_SOUND_EVENT:
+                case VisualNovelEventType.PlaySoundEvent:
                 {
                     HandlePlaySoundEvent(eventUnderTest);
                     break;
                 }
-                case VisualNovelEventType.PLAY_ANIMATION_EVENT:
+                case VisualNovelEventType.PlayAnimationEvent:
                 {
                     HandlePlayAnimationEvent(eventUnderTest);
                     break;
                 }
-                case VisualNovelEventType.FREE_TEXT_INPUT_EVENT:
-                {
-                    HandleFreeTextInputEvent(eventUnderTest);
-                    break;
-                }
-                case VisualNovelEventType.GPT_PROMPT_EVENT:
+                case VisualNovelEventType.GptPromptEvent:
                 {
                     HandleGptPromptEvent(eventUnderTest);
                     break;
                 }
-                case VisualNovelEventType.SAVE_PERSISTENT_EVENT:
+                case VisualNovelEventType.SavePersistentEvent:
                 {
                     HandleSavePersistentEvent(eventUnderTest);
                     break;
                 }
-                case VisualNovelEventType.MARK_BIAS_EVENT:
+                case VisualNovelEventType.MarkBiasEvent:
                 {
                     HandleMarkBiasEvent(eventUnderTest);
                     break;
@@ -329,23 +289,6 @@ namespace Assets._Scripts.OfflineAiFeedback
             if (novelEvent.animationToPlay == "NONE")
             {
                 OnAnalysisFailed("Animation Event without animation!", _objectUnderAnalyse.title, novelEvent.id);
-                return;
-            }
-
-            PlayNextEvent();
-        }
-
-        private void HandleFreeTextInputEvent(VisualNovelEvent novelEvent)
-        {
-            if (string.IsNullOrEmpty(novelEvent.questionForFreeTextInput))
-            {
-                OnAnalysisFailed("Freetext input Event without question!", _objectUnderAnalyse.title, novelEvent.id);
-                return;
-            }
-
-            if (string.IsNullOrEmpty(novelEvent.variablesName))
-            {
-                OnAnalysisFailed("Freetext input Event without variable!", _objectUnderAnalyse.title, novelEvent.id);
                 return;
             }
 
@@ -398,17 +341,6 @@ namespace Assets._Scripts.OfflineAiFeedback
             PlayNextEvent();
         }
 
-        private void HandleBackgrundEvent(VisualNovelEvent novelEvent)
-        {
-            if (novelEvent.backgroundSprite == "NONE")
-            {
-                OnAnalysisFailed("Location event without Location!", _objectUnderAnalyse.title, novelEvent.id);
-                return;
-            }
-
-            PlayNextEvent();
-        }
-
         private void HandleCharacterJoinEvent(VisualNovelEvent novelEvent)
         {
             if (CharacterTypeHelper.ValueOf(novelEvent.character) == CharacterRole.None)
@@ -424,11 +356,11 @@ namespace Assets._Scripts.OfflineAiFeedback
 
         private void HandleCharacterExitEvent(VisualNovelEvent novelEvent)
         {
-            if ((CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.None) &&
-                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Outro) &&
-                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Intro) &&
-                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Info) &&
-                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Player))
+            if (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.None &&
+                CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Outro &&
+                CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Intro &&
+                CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Info &&
+                CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Player)
             {
                 if (!_currentCharacters.Contains(CharacterTypeHelper.ValueOf(novelEvent.character)))
                 {
@@ -458,10 +390,10 @@ namespace Assets._Scripts.OfflineAiFeedback
             }
 
             if (!_currentCharacters.Contains(CharacterTypeHelper.ValueOf(novelEvent.character)) &&
-                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Intro) &&
-                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Outro) &&
-                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Info) &&
-                (CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Player))
+                CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Intro &&
+                CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Outro &&
+                CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Info &&
+                CharacterTypeHelper.ValueOf(novelEvent.character) != CharacterRole.Player)
             {
                 OnAnalysisFailed("Show message event with speaking character that is not in the scene!",
                     _objectUnderAnalyse.title, novelEvent.id);
@@ -482,7 +414,7 @@ namespace Assets._Scripts.OfflineAiFeedback
 
         private void InitializePrompt()
         {
-            this._prompt = new StringBuilder();
+            _prompt = new StringBuilder();
 
             //ROLLE
             _prompt.Append("Du bist eine Geschlechterforscherin. ");
@@ -570,8 +502,7 @@ namespace Assets._Scripts.OfflineAiFeedback
 
             if (visualNovelEvent == null)
             {
-                OnAnalysisFailed("On choice event with target that could not be found!", _objectUnderAnalyse.title,
-                    visualNovelEvent.id);
+                OnAnalysisFailed("On choice event with target that could not be found!", _objectUnderAnalyse.title, visualNovelEvent.id);
                 return;
             }
 

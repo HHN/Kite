@@ -47,7 +47,6 @@ namespace Assets._Scripts.Novel
             newEvent.clotheSpriteId = clotheSpriteId;
             newEvent.hairSpriteId = hairSpriteId;
             newEvent.faceSpriteId = faceSpriteId;
-            newEvent.backgroundSprite = backgroundSprite;
             newEvent.character = character;
             newEvent.text = text;
             newEvent.animationType = animationType;

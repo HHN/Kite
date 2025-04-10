@@ -102,32 +102,54 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             _alreadyPlayedEvents.Add(eventUnderTest.id);
 
             if (string.IsNullOrEmpty(eventUnderTest.nextId) &&
+<<<<<<< HEAD
                 VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) !=
                 VisualNovelEventType.SHOW_CHOICES_EVENT &&
                 VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) != VisualNovelEventType.END_NOVEL_EVENT)
+=======
+                (VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) !=
+                 VisualNovelEventType.ShowChoicesEvent) &&
+                (VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) != VisualNovelEventType.EndNovelEvent))
+>>>>>>> develop
             {
                 OnTestFailed("Id of next event is null or empty!", _objectUnderTest.title, eventUnderTest.id);
                 return;
             }
 
             if (!_novelEvents.ContainsKey(eventUnderTest.nextId) &&
+<<<<<<< HEAD
                 VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) !=
                 VisualNovelEventType.SHOW_CHOICES_EVENT &&
                 VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) != VisualNovelEventType.END_NOVEL_EVENT)
+=======
+                (VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) !=
+                 VisualNovelEventType.ShowChoicesEvent) &&
+                (VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) != VisualNovelEventType.EndNovelEvent))
+>>>>>>> develop
             {
                 OnTestFailed("Next event to play not found!", _objectUnderTest.title, eventUnderTest.id);
                 return;
             }
 
+<<<<<<< HEAD
             if (VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) == VisualNovelEventType.ADD_CHOICE_EVENT
                 && string.IsNullOrEmpty(eventUnderTest.onChoice))
+=======
+            if ((VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) == VisualNovelEventType.AddChoiceEvent)
+                && (string.IsNullOrEmpty(eventUnderTest.onChoice)))
+>>>>>>> develop
             {
                 OnTestFailed("Add Choice event without onChoice value!", _objectUnderTest.title, eventUnderTest.id);
                 return;
             }
 
+<<<<<<< HEAD
             if (VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) ==
                 VisualNovelEventType.ADD_CHOICE_EVENT &&
+=======
+            if ((VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType) ==
+                 VisualNovelEventType.AddChoiceEvent) &&
+>>>>>>> develop
                 !_novelEvents.ContainsKey(eventUnderTest.onChoice))
             {
                 OnTestFailed("Add Choice event with on choice target that could not be found!", _objectUnderTest.title,
@@ -137,10 +159,17 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
             VisualNovelEventType type = VisualNovelEventTypeHelper.ValueOf(eventUnderTest.eventType);
 
+<<<<<<< HEAD
             if (VisualNovelEventTypeHelper.ValueOf(_nextEventToTest.eventType) !=
                 VisualNovelEventType.SHOW_CHOICES_EVENT &&
                 VisualNovelEventTypeHelper.ValueOf(_nextEventToTest.eventType) !=
                 VisualNovelEventType.END_NOVEL_EVENT)
+=======
+            if ((VisualNovelEventTypeHelper.ValueOf(_nextEventToTest.eventType) !=
+                 VisualNovelEventType.ShowChoicesEvent) &&
+                (VisualNovelEventTypeHelper.ValueOf(_nextEventToTest.eventType) !=
+                 VisualNovelEventType.EndNovelEvent))
+>>>>>>> develop
             {
                 string nextEventID = eventUnderTest.nextId;
                 _nextEventToTest = _novelEvents[nextEventID];
@@ -148,67 +177,57 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
             switch (type)
             {
-                case VisualNovelEventType.SET_BACKGROUND_EVENT:
-                {
-                    HandleBackgrundEvent(eventUnderTest);
-                    break;
-                }
-                case VisualNovelEventType.CHARAKTER_JOIN_EVENT:
+                case VisualNovelEventType.CharakterJoinEvent:
                 {
                     HandleCharacterJoinEvent(eventUnderTest);
                     break;
                 }
-                case VisualNovelEventType.CHARAKTER_EXIT_EVENT:
+                case VisualNovelEventType.CharacterExitEvent:
                 {
                     HandleCharacterExitEvent(eventUnderTest);
                     break;
                 }
-                case VisualNovelEventType.SHOW_MESSAGE_EVENT:
+                case VisualNovelEventType.ShowMessageEvent:
                 {
                     HandleShowMessageEvent(eventUnderTest);
                     break;
                 }
-                case VisualNovelEventType.ADD_CHOICE_EVENT:
+                case VisualNovelEventType.AddChoiceEvent:
                 {
                     HandleAddChoiceEvent(eventUnderTest);
                     break;
                 }
-                case VisualNovelEventType.SHOW_CHOICES_EVENT:
+                case VisualNovelEventType.ShowChoicesEvent:
                 {
                     HandleShowChoicesEvent(eventUnderTest);
                     break;
                 }
-                case VisualNovelEventType.END_NOVEL_EVENT:
+                case VisualNovelEventType.EndNovelEvent:
                 {
                     TestEndedSuccessfully();
                     break;
                 }
-                case VisualNovelEventType.PLAY_SOUND_EVENT:
+                case VisualNovelEventType.PlaySoundEvent:
                 {
                     HandlePlaySoundEvent(eventUnderTest);
                     break;
                 }
-                case VisualNovelEventType.PLAY_ANIMATION_EVENT:
+                case VisualNovelEventType.PlayAnimationEvent:
                 {
                     HandlePlayAnimationEvent(eventUnderTest);
                     break;
                 }
-                case VisualNovelEventType.FREE_TEXT_INPUT_EVENT:
-                {
-                    HandleFreeTextInputEvent(eventUnderTest);
-                    break;
-                }
-                case VisualNovelEventType.GPT_PROMPT_EVENT:
+                case VisualNovelEventType.GptPromptEvent:
                 {
                     HandleGptPromptEvent(eventUnderTest);
                     break;
                 }
-                case VisualNovelEventType.SAVE_PERSISTENT_EVENT:
+                case VisualNovelEventType.SavePersistentEvent:
                 {
                     HandleSavePersistentEvent(eventUnderTest);
                     break;
                 }
-                case VisualNovelEventType.MARK_BIAS_EVENT:
+                case VisualNovelEventType.MarkBiasEvent:
                 {
                     HandleMarkBiasEvent(eventUnderTest);
                     break;
@@ -260,12 +279,15 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             PlayNextEvent();
         }
 
+<<<<<<< HEAD
         private void HandleBackgrundEvent(VisualNovelEvent novelEvent)
         {
             if (!ValidateEventField(novelEvent.backgroundSprite, "Location event without Location!", novelEvent)) return;
             PlayNextEvent();
         }
 
+=======
+>>>>>>> develop
         private void HandleCharacterJoinEvent(VisualNovelEvent novelEvent)
         {
             CharacterRole role = CharacterTypeHelper.ValueOf(novelEvent.character);

@@ -4,7 +4,7 @@ using Assets._Scripts.ExpertFeedback;
 using Assets._Scripts.UserFeedback;
 using UnityEngine;
 
-namespace Assets._Scripts.Server_Communication
+namespace Assets._Scripts.ServerCommunication
 {
     [Serializable]
     public class Response

@@ -7,7 +7,7 @@ using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
-using Assets._Scripts.UI_Elements.DropDown;
+using Assets._Scripts.UIElements.DropDown;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -252,37 +252,37 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             switch (novelNames)
             {
-                case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BankKreditNovel:
                 {
                     displayContainerForBankkreditNovel = true;
                     return dropdownForBankkreditNovel;
                 }
-                case VisualNovelNames.INVESTOR_NOVEL:
+                case VisualNovelNames.InvestorNovel:
                 {
                     displayContainerForInvestorNovel = true;
                     return dropdownForInvestorNovel;
                 }
-                case VisualNovelNames.ELTERN_NOVEL:
+                case VisualNovelNames.ElternNovel:
                 {
                     displayContainerForElternNovel = true;
                     return dropdownForElternNovel;
                 }
-                case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NotariatNovel:
                 {
                     displayContainerForNotarinNovel = true;
                     return dropdownForNotarinNovel;
                 }
-                case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PresseNovel:
                 {
                     displayContainerForPresseNovel = true;
                     return dropdownForPresseNovel;
                 }
-                case VisualNovelNames.VERMIETER_NOVEL:
+                case VisualNovelNames.VermieterNovel:
                 {
                     displayContainerForBueroNovel = true;
                     return dropdownForBueroNovel;
                 }
-                case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HonorarNovel:
                 {
                     displayContainerForHonorarNovel = true;
                     return dropdownForHonorarNovel;
@@ -300,37 +300,37 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             switch (novelNames)
             {
-                case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BankKreditNovel:
                 {
                     displayContainerForBankkreditNovel = true;
                     return containerForBankkreditNovel;
                 }
-                case VisualNovelNames.INVESTOR_NOVEL:
+                case VisualNovelNames.InvestorNovel:
                 {
                     displayContainerForInvestorNovel = true;
                     return containerForInvestorNovel;
                 }
-                case VisualNovelNames.ELTERN_NOVEL:
+                case VisualNovelNames.ElternNovel:
                 {
                     displayContainerForElternNovel = true;
                     return containerForElternNovel;
                 }
-                case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NotariatNovel:
                 {
                     displayContainerForNotarinNovel = true;
                     return containerForNotarinNovel;
                 }
-                case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PresseNovel:
                 {
                     displayContainerForPresseNovel = true;
                     return containerForPresseNovel;
                 }
-                case VisualNovelNames.VERMIETER_NOVEL:
+                case VisualNovelNames.VermieterNovel:
                 {
                     displayContainerForBueroNovel = true;
                     return containerForBueroNovel;
                 }
-                case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HonorarNovel:
                 {
                     displayContainerForHonorarNovel = true;
                     return containerForHonorarNovel;
@@ -348,37 +348,37 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             switch (novelNames)
             {
-                case VisualNovelNames.BANK_KREDIT_NOVEL:
+                case VisualNovelNames.BankKreditNovel:
                 {
                     displayContainerForBankkreditNovel = true;
                     return entryContainerForBankkreditNovel;
                 }
-                case VisualNovelNames.INVESTOR_NOVEL:
+                case VisualNovelNames.InvestorNovel:
                 {
                     displayContainerForInvestorNovel = true;
                     return entryContainerForInvestorNovel;
                 }
-                case VisualNovelNames.ELTERN_NOVEL:
+                case VisualNovelNames.ElternNovel:
                 {
                     displayContainerForElternNovel = true;
                     return entryContainerForElternNovel;
                 }
-                case VisualNovelNames.NOTARIAT_NOVEL:
+                case VisualNovelNames.NotariatNovel:
                 {
                     displayContainerForNotarinNovel = true;
                     return entryContainerForNotarinNovel;
                 }
-                case VisualNovelNames.PRESSE_NOVEL:
+                case VisualNovelNames.PresseNovel:
                 {
                     displayContainerForPresseNovel = true;
                     return entryContainerForPresseNovel;
                 }
-                case VisualNovelNames.VERMIETER_NOVEL:
+                case VisualNovelNames.VermieterNovel:
                 {
                     displayContainerForBueroNovel = true;
                     return entryContainerForBueroNovel;
                 }
-                case VisualNovelNames.HONORAR_NOVEL:
+                case VisualNovelNames.HonorarNovel:
                 {
                     displayContainerForHonorarNovel = true;
                     return entryContainerForHonorarNovel;

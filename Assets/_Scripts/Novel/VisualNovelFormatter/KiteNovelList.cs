@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Assets._Scripts.Novel.VisualNovelFormatter
+namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 {
     public class KiteNovelList
     {

@@ -8,13 +8,14 @@ using Assets._Scripts.OfflineAiFeedback;
 using Assets._Scripts.Player;
 using Assets._Scripts.SaveNovelData;
 using Assets._Scripts.SceneManagement;
-using Assets._Scripts.Server_Communication;
-using Assets._Scripts.Server_Communication.Server_Calls;
 using Assets._Scripts.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Assets._Scripts.ServerCommunication;
+using Assets._Scripts.ServerCommunication.ServerCalls;
+using System.Runtime.InteropServices;
 
 namespace Assets._Scripts.Controller.SceneControllers
 {
@@ -73,7 +74,10 @@ namespace Assets._Scripts.Controller.SceneControllers
             {
                 StartWaitingMusic();
                 VisualNovel novel = PlayManager.Instance().GetVisualNovelToPlay();
-                feedbackText.SetText("Das Feedback wird gerade geladen. Dies dauert durchschnittlich zwischen 30 und 60 Sekunden. Solltest du nicht so lange warten wollen, kannst du dir das Feedback einfach im Archiv anschauen, sobald es fertig ist.");
+                feedbackText.SetText("Das Feedback wird gerade geladen. Dies dauert durchschnittlich zwischen 30 und 60 Sekunden. Solltest du nicht so lange warten wollen, kannst du dir das Feedback einfach im Archiv anschauen, sobald es fertig ist." +
+                                     "\n" +
+                                     "\n" +
+                                     "<align=center><i>Hinweis:</i> Analyse und Feedback wurden durch KI künstlich erzeugt. Eine individuelle Beratung wird hierdurch nicht ersetzt.</align>");
                 GetCompletionServerCall call = Instantiate(gptServercallPrefab).GetComponent<GetCompletionServerCall>();
                 call.sceneController = this;
 
@@ -121,8 +125,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                     TextToSpeechManager.Instance.CancelSpeak();
             #endif
             
-            BackStackManager.Instance()
-                .Clear(); // we go back to the explorer and don't want the back-button to bring us to the feedback scene again
+            BackStackManager.Instance().Clear(); // we go back to the explorer and don't want the back-button to bring us to the feedback scene again
             SceneLoader.LoadFoundersBubbleScene();
         }
 

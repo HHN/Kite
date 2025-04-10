@@ -23,11 +23,11 @@ namespace Assets._Scripts.Biases
             {
                 TMP_LinkInfo linkInfo = _textMeshPro.textInfo.linkInfo[linkIndex];
                 string url = linkInfo.GetLinkID();
-                
-                Debug.Log(url);
 
-                // Öffne den Link im Browser
-                Application.OpenURL(url);
+                if (!string.IsNullOrEmpty(url))
+                {
+                    Application.OpenURL(url);
+                }
             }
         }
     }

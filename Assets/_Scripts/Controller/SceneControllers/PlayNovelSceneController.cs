@@ -10,8 +10,8 @@ using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using Assets._Scripts.SaveNovelData;
 using Assets._Scripts.SceneManagement;
-using Assets._Scripts.Server_Communication.Server_Calls;
-using Assets._Scripts.UI_Elements.Messages;
+using Assets._Scripts.ServerCommunication.ServerCalls;
+using Assets._Scripts.UIElements.Messages;
 using Assets._Scripts.Utilities;
 using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using TMPro;
@@ -41,7 +41,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private GameObject backgroundColor;
         [SerializeField] private GameObject imageAreaColor;
         [SerializeField] private GameObject screenContentColor;
-        [SerializeField] private GameObject freeTextInputPrefab;
         [SerializeField] private GameObject headerImage;
 
         [Header("Novel-Visuals und Prefabs")] 
@@ -159,7 +158,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             if (novelToPlay == null) return; 
             
-            PromptManager.Instance().InitializePrompt(novelToPlay.id);
+            PromptManager.Instance().InitializePrompt(novelToPlay);
 
             AnalyticsServiceHandler.Instance().SetIdOfCurrentNovel(novelToPlay.id);
             novelToPlay.ClearGlobalVariables();
@@ -240,7 +239,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 {
                     GameObject novelImagesInstance = Instantiate(novelVisuals[6], viewPortTransform);
                     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<IntroNovelImageController>();
+                    _novelImagesController = controllerTransform.GetComponent<EinstiegNovelImageController>();
                     break;
                 }
                 case "Honorarverhandlung mit Kundin":
@@ -369,33 +368,33 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             switch (type)
             {
-                case VisualNovelEventType.SET_BACKGROUND_EVENT:
+                case VisualNovelEventType.SetBackgroundEvent:
                 {
                     HandleBackgroundEvent(nextEventToPlay);
                     break;
                 }
-                case VisualNovelEventType.CHARAKTER_JOIN_EVENT:
+                case VisualNovelEventType.CharakterJoinEvent:
                 {
                     HandleCharacterJoinEvent(nextEventToPlay);
                     break;
                 }
-                case VisualNovelEventType.CHARAKTER_EXIT_EVENT:
+                case VisualNovelEventType.CharacterExitEvent:
                 {
                     HandleCharacterExitEvent(nextEventToPlay);
                     break;
                 }
-                case VisualNovelEventType.SHOW_MESSAGE_EVENT:
+                case VisualNovelEventType.ShowMessageEvent:
                 {
                     HandleShowMessageEvent(nextEventToPlay);
                     ScrollToBottom();
                     break;
                 }
-                case VisualNovelEventType.ADD_CHOICE_EVENT:
+                case VisualNovelEventType.AddChoiceEvent:
                 {
                     HandleAddChoiceEvent(nextEventToPlay);
                     break;
                 }
-                case VisualNovelEventType.SHOW_CHOICES_EVENT:
+                case VisualNovelEventType.ShowChoicesEvent:
                 {
                     confirmArea.gameObject.SetActive(false);
                     confirmArea2.gameObject.SetActive(false);
@@ -403,52 +402,52 @@ namespace Assets._Scripts.Controller.SceneControllers
                     ScrollToBottom();
                     break;
                 }
-                case VisualNovelEventType.END_NOVEL_EVENT:
+                case VisualNovelEventType.EndNovelEvent:
                 {
                     HandleEndNovelEvent();
                     break;
                 }
-                case VisualNovelEventType.PLAY_SOUND_EVENT:
+                case VisualNovelEventType.PlaySoundEvent:
                 {
                     HandlePlaySoundEvent(nextEventToPlay);
                     break;
                 }
-                case VisualNovelEventType.PLAY_ANIMATION_EVENT:
+                case VisualNovelEventType.PlayAnimationEvent:
                 {
                     HandlePlayAnimationEvent(nextEventToPlay);
                     break;
                 }
-                case VisualNovelEventType.GPT_PROMPT_EVENT:
+                case VisualNovelEventType.GptPromptEvent:
                 {
                     HandleGptPromptEvent(nextEventToPlay);
                     break;
                 }
-                case VisualNovelEventType.SAVE_PERSISTENT_EVENT:
+                case VisualNovelEventType.SavePersistentEvent:
                 {
                     HandleSavePersistentEvent(nextEventToPlay);
                     break;
                 }
-                case VisualNovelEventType.SAVE_VARIABLE_EVENT:
+                case VisualNovelEventType.SaveVariableEvent:
                 {
                     HandleSaveVariableEvent(nextEventToPlay);
                     break;
                 }
-                case VisualNovelEventType.ADD_FEEDBACK_EVENT:
+                case VisualNovelEventType.AddFeedbackEvent:
                 {
                     HandleAddFeedbackEvent(nextEventToPlay);
                     break;
                 }
-                case VisualNovelEventType.ADD_FEEDBACK_UNDER_CONDITION_EVENT:
+                case VisualNovelEventType.AddFeedbackUnderConditionEvent:
                 {
                     HandleAddFeedbackUnderConditionEvent(nextEventToPlay);
                     break;
                 }
-                case VisualNovelEventType.MARK_BIAS_EVENT:
+                case VisualNovelEventType.MarkBiasEvent:
                 {
                     HandleMarkBiasEvent(nextEventToPlay);
                     break;
                 }
-                case VisualNovelEventType.CALCULATE_VARIABLE_FROM_BOOLEAN_EXPRESSION_EVENT:
+                case VisualNovelEventType.CalculateVariableFromBooleanExpressionEvent:
                 {
                     HandleCalculateVariableFromBooleanExpressionEvent(nextEventToPlay);
                     break;
@@ -1000,7 +999,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 { 9, typeof(InvestorNovelImageController) },
                 { 10, typeof(BankNovelImageController) },
                 { 11, typeof(HonorarNovelImageController) },
-                { 13, typeof(IntroNovelImageController) }
+                { 13, typeof(EinstiegNovelImageController) }
             };
 
             // Falls die ID in der Map existiert, versuche den Controller zu finden

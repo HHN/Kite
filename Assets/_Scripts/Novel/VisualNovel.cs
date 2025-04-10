@@ -50,12 +50,7 @@ namespace Assets._Scripts.Novel
 
         public bool IsVariableExistent(string name)
         {
-            if (GlobalVariables == null)
-            {
-                return false;
-            }
-
-            return GlobalVariables.ContainsKey(name);
+            return GlobalVariables != null && GlobalVariables.ContainsKey(name);
         }
 
         public void RemoveGlobalVariable(string name)
@@ -107,6 +102,16 @@ namespace Assets._Scripts.Novel
             newNovel.feedback = feedback;
             newNovel.context = context;
             newNovel.playedPath = playedPath;
+            VisualNovel newNovel = new VisualNovel
+            {
+                id = id,
+                folderName = folderName,
+                title = title,
+                description = description,
+                feedback = feedback,
+                context = context,
+                playedPath = playedPath
+            };
 
             if (novelEvents != null)
             {

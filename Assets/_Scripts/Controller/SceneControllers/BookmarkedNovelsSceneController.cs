@@ -32,14 +32,14 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             _novelButtons = new Dictionary<VisualNovelNames, Button>
             {
-                { VisualNovelNames.BANK_KREDIT_NOVEL, bankkreditNovel },
-                { VisualNovelNames.INVESTOR_NOVEL, investorNovel },
-                { VisualNovelNames.ELTERN_NOVEL, elternNovel },
-                { VisualNovelNames.NOTARIAT_NOVEL, notarinNovel },
-                { VisualNovelNames.PRESSE_NOVEL, presseNovel },
-                { VisualNovelNames.VERMIETER_NOVEL, bueroNovel },
-                { VisualNovelNames.HONORAR_NOVEL, honorarNovel },
-                { VisualNovelNames.EINSTIEGS_NOVEL, introNovel }
+                { VisualNovelNames.BankKreditNovel, bankkreditNovel },
+                { VisualNovelNames.InvestorNovel, investorNovel },
+                { VisualNovelNames.ElternNovel, elternNovel },
+                { VisualNovelNames.NotariatNovel, notarinNovel },
+                { VisualNovelNames.PresseNovel, presseNovel },
+                { VisualNovelNames.VermieterNovel, bueroNovel },
+                { VisualNovelNames.HonorarNovel, honorarNovel },
+                { VisualNovelNames.EinstiegsNovel, introNovel }
             };
 
             foreach (var novelButton in _novelButtons)
