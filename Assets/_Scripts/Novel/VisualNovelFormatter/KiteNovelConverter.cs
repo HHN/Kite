@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using Assets._Scripts.Novel;
+using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
+using Assets._Scripts.Novel.VisualNovelFormatter;
 using UnityEngine;
 
-namespace Assets._Scripts.Novel.VisualNovelFormatter
+namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 {
     #region NovelKeywordModel and Parser
 
@@ -31,52 +34,113 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
     /// </summary>
     public static class NovelKeywordParser
     {
+        /// <summary>
+        /// Liest den Inhalt einer Datei (als String), verarbeitet jede Zeile und gibt
+        /// eine Liste aller gültigen NovelKeywordModel-Objekte zurück. Gleichzeitig wird
+        /// in der Konsole ausgegeben, wie viele gültige Keywords gefunden wurden.
+        /// </summary>
+        /// <param name="fileContent">Der gesamte Text aus der Keyword-Datei.</param>
+        /// <returns>Liste der NovelKeywordModel für alle Zeilen, die gültige Keywords darstellen.</returns>
+        public static List<NovelKeywordModel> ParseKeywordsFromFile(string fileContent)
+        {
+            // Teile den Inhalt in einzelne Zeilen auf (Zeilenumbrüche können \n und/oder \r sein)
+            string[] lines = fileContent.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+            List<NovelKeywordModel> models = new List<NovelKeywordModel>();
+
+            // Gehe alle Zeilen durch
+            foreach (string line in lines)
+            {
+                // Rufe den Einzelzeilen-Parser auf
+                NovelKeywordModel model = ParseKeyword(line);
+                // Wenn ein gültiges Model zurückgegeben wurde (nicht null), füge es der Liste hinzu.
+                if (model != null)
+                {
+                    models.Add(model);
+                }
+            }
+
+            // Gib die Gesamtanzahl der validen Schlüsselwörter aus.
+            Debug.Log("Total valid keywords found: " + models.Count);
+            return models;
+        }
+
+        /// <summary>
+        /// Parst einen einzelnen Keyword-String und gibt ein NovelKeywordModel zurück.
+        /// Falls der String nicht den erwarteten Mustern entspricht, wird null zurückgegeben.
+        /// Erwartete Formate:
+        ///   >>End<< oder >>Ende<<                           → setzt End = true
+        ///   >>Info<<                                       → setzt CharacterIndex = 0
+        ///   >>Player<<                                     → setzt CharacterIndex = 1
+        ///   >>Character1|Speaks|Angry<<                     → setzt CharacterIndex = 1+1=2, Action="Speaks", FaceExpression="Angry"
+        ///   >>Sound|TestSound<<                             → setzt Sound = "TestSound"
+        ///   >>Bias|ConfirmationBias<<                       → setzt Bias = "ConfirmationBias"
+        /// </summary>
+        /// <param name="keyword">Die Zeile, die verarbeitet werden soll.</param>
+        /// <returns>Ein NovelKeywordModel oder null, wenn kein gültiges Keyword erkannt wurde.</returns>
         public static NovelKeywordModel ParseKeyword(string keyword)
         {
+            // Falls der Eingabestring leer oder nur Whitespace ist, wird null zurückgegeben.
             if (string.IsNullOrWhiteSpace(keyword))
+            {
+                Debug.Log("Empty or whitespace line encountered.");
                 return null;
+            }
 
-            // Trim leading and trailing spaces.
+            // Entferne führende und abschließende Leerzeichen.
             keyword = keyword.Trim();
 
-            // Remove the markers ">>" and "<<".
-            if (keyword.StartsWith(">>") && keyword.EndsWith("<<"))
+            // Es werden nur Zeilen verarbeitet, die mit ">>" beginnen und mit "<<" enden.
+            if (!(keyword.StartsWith(">>") && keyword.EndsWith("<<")))
             {
-                keyword = keyword.Substring(2, keyword.Length - 4);
+                // Keine gültigen Markierungen gefunden → Zeile überspringen.
+                return null;
             }
 
-            NovelKeywordModel model = new NovelKeywordModel();
+            // Entferne die Marker ">>" und "<<".
+            keyword = keyword.Substring(2, keyword.Length - 4);
 
-            // Check if the keyword signals the end.
-            if (string.Equals(keyword, "End", StringComparison.OrdinalIgnoreCase)||
+            // Hinweis: Wir erzeugen vorerst kein Modell, sondern prüfen nur die Zeile
+            // und erstellen später (nur) ein Modell, wenn ein gültiges Muster erkannt wurde.
+
+            // Prüfe, ob das Keyword ein End-Kommando signalisiert.
+            if (string.Equals(keyword, "End", StringComparison.OrdinalIgnoreCase) ||
                 string.Equals(keyword, "Ende", StringComparison.OrdinalIgnoreCase))
             {
+                NovelKeywordModel model = new NovelKeywordModel();
                 model.End = true;
+                Debug.Log("Parsed keyword (End): " + keyword);
                 return model;
             }
-            // Check for the exact keywords "Info" and "Player".
+
+            // Prüfe auf die exakten Schlüsselwörter "Info" und "Player".
             if (string.Equals(keyword, "Info", StringComparison.OrdinalIgnoreCase))
             {
+                NovelKeywordModel model = new NovelKeywordModel();
                 model.CharacterIndex = 0;
+                Debug.Log("Parsed keyword (Info): " + keyword);
                 return model;
             }
             if (string.Equals(keyword, "Player", StringComparison.OrdinalIgnoreCase))
             {
+                NovelKeywordModel model = new NovelKeywordModel();
                 model.CharacterIndex = 1;
+                Debug.Log("Parsed keyword (Player): " + keyword);
                 return model;
             }
 
-            // Split the string by the '|' separator.
+            // Teile den String anhand des Trennzeichens '|'.
             string[] parts = keyword.Split('|');
             if (parts.Length > 0)
             {
-                // If it is a Character keyword.
+                // Wenn es sich um ein Character‑Keyword handelt.
                 if (parts[0].StartsWith("Character", StringComparison.OrdinalIgnoreCase))
                 {
-                    // Example: "Character1" → extract "1" and add 1 (since 0 = Info, 1 = Player).
+                    NovelKeywordModel model = new NovelKeywordModel();
+                    // Beispiel: "Character1" → extrahiere die Zahl.
                     string numberPart = parts[0].Substring("Character".Length);
                     if (int.TryParse(numberPart, out int num))
                     {
+                        // Falls 0 für Info und 1 für Player belegt sind, wird hier num + 1 gerechnet.
                         model.CharacterIndex = num + 1;
                     }
                     if (parts.Length > 1)
@@ -87,31 +151,36 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                     {
                         model.FaceExpression = parts[2];
                     }
+                    Debug.Log("Parsed keyword (Character): " + keyword);
                     return model;
                 }
-                
-                // If it is a Sound keyword.
-                if (parts[0].StartsWith("Sound", StringComparison.OrdinalIgnoreCase))
+                // Wenn es sich um ein Sound‑Keyword handelt.
+                else if (parts[0].StartsWith("Sound", StringComparison.OrdinalIgnoreCase))
                 {
+                    NovelKeywordModel model = new NovelKeywordModel();
                     if (parts.Length > 1)
                     {
                         model.Sound = parts[1];
                     }
+                    Debug.Log("Parsed keyword (Sound): " + keyword);
                     return model;
                 }
-                
-                // If it is a Bias keyword.
-                if (parts[0].StartsWith("Bias", StringComparison.OrdinalIgnoreCase))
+                // Wenn es sich um ein Bias‑Keyword handelt.
+                else if (parts[0].StartsWith("Bias", StringComparison.OrdinalIgnoreCase))
                 {
+                    NovelKeywordModel model = new NovelKeywordModel();
                     if (parts.Length > 1)
                     {
                         model.Bias = parts[1];
                     }
+                    Debug.Log("Parsed keyword (Bias): " + keyword);
                     return model;
                 }
             }
 
-            return model;
+            // Falls keiner der erwarteten Fälle eintritt, wird null zurückgegeben.
+            Debug.Log("Line did not match any keyword pattern: " + keyword);
+            return null;
         }
     }
 
