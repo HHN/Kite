@@ -14,6 +14,7 @@ namespace Assets._Scripts.Controller.CharacterController
         private void Start()
         {
             SetInitialCharacters();
+            //novelKite2CharacterController = _instantiatedCharacter.GetComponent<Kite2CharacterController>();
         }
 
         // private void Start()
@@ -74,7 +75,7 @@ namespace Assets._Scripts.Controller.CharacterController
 
         public override void SetCharacter()
         {
-            novelKite2CharacterController = _instantiatedCharacter.GetComponent<Kite2CharacterController>();
+            //novelKite2CharacterController = _instantiatedCharacter.GetComponent<Kite2CharacterController>();
         }
 
         public override bool HandleTouchEvent(float x, float y)
