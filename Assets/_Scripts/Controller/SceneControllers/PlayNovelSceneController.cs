@@ -82,8 +82,8 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         [SerializeField] private Kite2CharacterController currentTalkingKite2CharacterController;
 
-        [Header("Audio-Komponenten")] [SerializeField]
-        private AudioClip[] clips;
+        [Header("Audio-Komponenten")] 
+        [SerializeField] private AudioClip[] clips;
 
         [Header("Timing und Analytics")] [SerializeField]
         private float timerForHint = 12.0f; // Time after which the hint to tap on the screen is shown
@@ -355,16 +355,10 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private IEnumerator PlayNextEvent()
         {
-            if (TextToSpeechManager.Instance.IsTextToSpeechActivated())
-            {
-                yield return WaitForSpeechToFinish();
-            }
+            if (TextToSpeechManager.Instance.IsTextToSpeechActivated()) yield return WaitForSpeechToFinish();
 
             // Stop if paused
-            if (IsPaused)
-            {
-                yield break;
-            }
+            if (IsPaused) yield break;
 
             HandleEventPreparation();
 
@@ -587,8 +581,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void HandleSavePersistentEvent(VisualNovelEvent novelEvent)
         {
             SetNextEvent(novelEvent);
-            WriteUserInputToFile(novelEvent.key,
-                ReplacePlaceholders(novelEvent.value, novelToPlay.GetGlobalVariables()));
+            WriteUserInputToFile(novelEvent.key, ReplacePlaceholders(novelEvent.value, novelToPlay.GetGlobalVariables()));
             StartCoroutine(PlayNextEvent());
         }
 

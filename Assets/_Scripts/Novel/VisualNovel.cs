@@ -10,10 +10,8 @@ namespace Assets._Scripts.Novel
         public string folderName;
         public string title;
         public string description;
-        public long image;
         public string feedback;
         public string context;
-        public bool isKite2Novel;
         public List<VisualNovelEvent> novelEvents;
         public Dictionary<string, string> GlobalVariables;
         public string playedPath;
@@ -106,10 +104,8 @@ namespace Assets._Scripts.Novel
             newNovel.folderName = folderName;
             newNovel.title = title;
             newNovel.description = description;
-            newNovel.image = image;
             newNovel.feedback = feedback;
             newNovel.context = context;
-            newNovel.isKite2Novel = isKite2Novel;
             newNovel.playedPath = playedPath;
 
             if (novelEvents != null)

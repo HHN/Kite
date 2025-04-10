@@ -6,25 +6,27 @@ namespace Assets._Scripts.Biases
     {
         public enum BiasType
         {
-            Finanzierungszugang,
+            AccessToFunding,
             GenderPayGap,
-            UnterbewertungWeiblichGefuehrterUnternehmen,
+            UndervaluationOfWomenLedBusinesses,
             RiskAversionBias,
             ConfirmationBias,
             Tokenism,
-            BiasInDerWahrnehmungVonFuehrungsfaehigkeiten,
-            BenevolenterSexismus,
-            AltersUndGenerationenBiases,
-            Stereotype,
-            Heteronormativitaet,
+            InPerceptionOfLeadershipAbilities,
+            BenevolentSexismBias,
+            AgeAndGenerationalBiases,
+            StereotypesAgainstWomenInNonTraditionalIndustries,
+            Heteronormativity,
             MaternalBias,
-            FamilienplanungBias,
-            WorkLifeBalance,
-            GeschlechtsspezifischeStereotype,
+            ExpectationsRegardingFamilyPlanning,
+            WorkLifeBalanceExpectations,
+            GenderSpecificStereotypes,
             TightropeBias,
-            Mikroagressionen,
-            LeistungsattributionsBias,
-            UnbewussteBiasInDerKommunikation
+            Microaggressions,
+            PerformanceAttributionBias,
+            UnconsciousBiasInCommunication,
+            ProveItAgainBias
+            // eine Methode schreiben, die anhand des Keywords den Namen des Biases zurückgibt
         }
 
         public static readonly string PLACEHOLDER =
@@ -37,9 +39,9 @@ namespace Assets._Scripts.Biases
         
         private static readonly string LinkColor = "#F5944E";
 
-        #region Finanzierungszugang
+        #region AccessToFunding
 
-        private static readonly string FinanzierungszugangHeadline = "Finanzierungszugang";
+        private static readonly string FinanzierungszugangHeadline = "AccessToFunding";
 
         private static readonly string FinanzierungszugangDescriptionPreview =
             "Kapital ist der Schlüssel zum Unternehmenswachstum, doch Gründerinnen erhalten deutlich weniger Zugang " +
@@ -483,7 +485,7 @@ namespace Assets._Scripts.Biases
         private static readonly Dictionary<BiasType, string[]> BiasDetailsTexts = new()
         {
             {
-                BiasType.Finanzierungszugang,
+                BiasType.AccessToFunding,
                 new[]
                 {
                     FinanzierungszugangHeadline,
@@ -501,7 +503,7 @@ namespace Assets._Scripts.Biases
                 }
             },
             {
-                BiasType.UnterbewertungWeiblichGefuehrterUnternehmen,
+                BiasType.UndervaluationOfWomenLedBusinesses,
                 new[]
                 {
                     UnterbewertungWeiblichGefuehrterUnternehmenHeadline,
@@ -537,7 +539,7 @@ namespace Assets._Scripts.Biases
                 }
             },
             {
-                BiasType.BiasInDerWahrnehmungVonFuehrungsfaehigkeiten,
+                BiasType.InPerceptionOfLeadershipAbilities,
                 new[]
                 {
                     BiasInDerWahrnehmungVonFuehrungsfaehigkeitenHeadline,
@@ -546,7 +548,7 @@ namespace Assets._Scripts.Biases
                 }
             },
             {
-                BiasType.BenevolenterSexismus,
+                BiasType.BenevolentSexismBias,
                 new[]
                 {
                     BenevolenterSexismusHeadline,
@@ -555,7 +557,7 @@ namespace Assets._Scripts.Biases
                 }
             },
             {
-                BiasType.AltersUndGenerationenBiases,
+                BiasType.AgeAndGenerationalBiases,
                 new[]
                 {
                     AltersUndGenerationenBiasHeadline,
@@ -564,7 +566,7 @@ namespace Assets._Scripts.Biases
                 }
             },
             {
-                BiasType.Stereotype,
+                BiasType.StereotypesAgainstWomenInNonTraditionalIndustries,
                 new[]
                 {
                     StereotypeHeadline,
@@ -573,7 +575,7 @@ namespace Assets._Scripts.Biases
                 }
             },
             {
-                BiasType.Heteronormativitaet,
+                BiasType.Heteronormativity,
                 new[]
                 {
                     HeteronormativitaetHeadline,
@@ -591,7 +593,7 @@ namespace Assets._Scripts.Biases
                 }
             },
             {
-                BiasType.FamilienplanungBias,
+                BiasType.ExpectationsRegardingFamilyPlanning,
                 new[]
                 {
                     FamilienplanungBiasHeadline,
@@ -600,7 +602,7 @@ namespace Assets._Scripts.Biases
                 }
             },
             {
-                BiasType.WorkLifeBalance,
+                BiasType.WorkLifeBalanceExpectations,
                 new[]
                 {
                     WorkLifeBalanceHeadline,
@@ -609,7 +611,7 @@ namespace Assets._Scripts.Biases
                 }
             },
             {
-                BiasType.GeschlechtsspezifischeStereotype,
+                BiasType.GenderSpecificStereotypes,
                 new[]
                 {
                     GeschlechtsspezifischeStereotypeHeadline,
@@ -627,7 +629,7 @@ namespace Assets._Scripts.Biases
                 }
             },
             {
-                BiasType.Mikroagressionen,
+                BiasType.Microaggressions,
                 new[]
                 {
                     MikroaggressionenHeadline,
@@ -636,7 +638,7 @@ namespace Assets._Scripts.Biases
                 }
             },
             {
-                BiasType.LeistungsattributionsBias,
+                BiasType.PerformanceAttributionBias,
                 new[]
                 {
                     LeistungsattributionsBiasHeadline,
@@ -645,7 +647,7 @@ namespace Assets._Scripts.Biases
                 }
             },
             {
-                BiasType.UnbewussteBiasInDerKommunikation,
+                BiasType.UnconsciousBiasInCommunication,
                 new[]
                 {
                     UnbewussteBiasInDerKommunikationHeadline,

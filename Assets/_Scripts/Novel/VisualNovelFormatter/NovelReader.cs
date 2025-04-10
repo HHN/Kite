@@ -137,8 +137,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 string jsonStringOfEventList = null;
 
                 // Lade und deserialisiere die Metadaten der Novelle.
-                yield return StartCoroutine(LoadAndDeserialize<KiteNovelMetaData>(fullPathOfNovelMetaData,
-                    result => { kiteNovelMetaData = result; }));
+                yield return StartCoroutine(LoadAndDeserialize<KiteNovelMetaData>(fullPathOfNovelMetaData, result => { kiteNovelMetaData = result; }));
 
                 // Falls die Metadaten nicht geladen werden konnten, gebe eine Warnung aus und �berspringe diese Novelle.
                 if (kiteNovelMetaData == null)
@@ -207,8 +206,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 }
 
                 // Lade den Inhalt der Event-Liste.
-                yield return StartCoroutine(LoadFileContent(fullPathOfNovelEventList,
-                    result => { jsonStringOfEventList = result; }));
+                yield return StartCoroutine(LoadFileContent(fullPathOfNovelEventList, result => { jsonStringOfEventList = result; }));
 
                 // Falls die Event-Liste leer ist, �berspringe diese Novelle.
                 if (string.IsNullOrEmpty(jsonStringOfEventList))
@@ -219,6 +217,9 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
                 // Ersetze W�rter in der Event-Liste anhand der in den Metadaten angegebenen Wortpaare.
                 jsonStringOfEventList = ReplaceWordsInString(jsonStringOfEventList, kiteNovelMetaData.WordsToReplace);
+                
+                // Zwischenspeichern der in der Novel verwendeten Keywords.
+                // Mit Mimiken / Audio Files / Biases
 
                 // Konvertiere den Text der Event-Liste in eine strukturierte Event-Liste.
                 List<VisualNovelEvent> kiteNovelEventList = KiteNovelConverter.ConvertTextDocumentIntoEventList(jsonStringOfEventList, kiteNovelMetaData);
@@ -231,13 +232,14 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             List<VisualNovel> visualNovels = KiteNovelConverter.ConvertFilesToNovels(allFolders);
 
             // Warte, bis der Manager mindestens eine Visual Novel geladen hat.
-            while (KiteNovelManager.Instance().GetAllKiteNovels().Count == 0)
+            List<VisualNovel> novels = KiteNovelManager.Instance().GetAllKiteNovels();
+            while (novels.Count == 0)
             {
                 yield return new WaitForSeconds(1);
             }
 
             // Erhalte die aktuell geladenen (alten) Novellen.
-            List<VisualNovel> oldNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+            List<VisualNovel> oldNovels = novels;
 
             // Erzeuge eine neue Liste, in die entweder das alte Novel oder ein neues, aktualisiertes Novel �bernommen wird.
             List<VisualNovel> modifiedListOfNovels = new List<VisualNovel>();
