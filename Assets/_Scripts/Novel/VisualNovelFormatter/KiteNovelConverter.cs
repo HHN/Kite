@@ -403,24 +403,19 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
         /// </summary>
         private static void InitializeKiteNovelEventList(KiteNovelMetaData metaData, List<VisualNovelEvent> eventList, string startLabel)
         {
-            if (!metaData.IsWithStartValues)
-            {
-                return;
-            }
-
             string connectionLabel = "initialCharacterJoinsEvent001";
             string id = "initialLocationEvent001";
             string nextId = connectionLabel;
             // Instead of using an enum, we assume metaData.StartLocation is a string.
-            string location = metaData.StartLocation;
+            //string location = metaData.StartLocation;
 
-            if (string.IsNullOrEmpty(location))
-            {
-                Debug.LogWarning("While loading " + metaData.TitleOfNovel + ": Initial location not found!");
-            }
+            //if (string.IsNullOrEmpty(location))
+            //{
+            //    Debug.LogWarning("While loading " + metaData.TitleOfNovel + ": Initial location not found!");
+            //}
 
-            VisualNovelEvent initialLocationEvent = KiteNovelEventFactory.GetSetBackgroundEvent(id, nextId, location);
-            eventList.Add(initialLocationEvent);
+            //VisualNovelEvent initialLocationEvent = KiteNovelEventFactory.GetSetBackgroundEvent(id, nextId, location);
+            //eventList.Add(initialLocationEvent);
 
             id = connectionLabel;
             nextId = startLabel;
@@ -442,14 +437,14 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 
         #region Specific Event Handlers
 
-        private static VisualNovelEvent HandleLocationEvent(TweePassage passage, string location, List<VisualNovelEvent> list)
-        {
-            string id = passage?.Label;
-            string nextId = passage?.Links?[0]?.Target;
-            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetSetBackgroundEvent(id, nextId, location);
-            list.Add(novelEvent);
-            return novelEvent;
-        }
+        //private static VisualNovelEvent HandleLocationEvent(TweePassage passage, string location, List<VisualNovelEvent> list)
+        //{
+        //    string id = passage?.Label;
+        //    string nextId = passage?.Links?[0]?.Target;
+        //    VisualNovelEvent novelEvent = KiteNovelEventFactory.GetSetBackgroundEvent(id, nextId, location);
+        //    list.Add(novelEvent);
+        //    return novelEvent;
+        //}
 
         private static VisualNovelEvent HandleCharacterTalksEvent(TweePassage passage, string character, string dialogMessage, string expression, List<VisualNovelEvent> list)
         {

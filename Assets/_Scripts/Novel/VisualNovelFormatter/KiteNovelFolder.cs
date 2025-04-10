@@ -1,4 +1,5 @@
 using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
+using System.Collections.Generic;
 
 namespace Assets._Scripts.Novel.VisualNovelFormatter
 {

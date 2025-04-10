@@ -6,30 +6,23 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
     {
         public static VisualNovelEvent GetBiasEvent(string id, string nextId, string relevantBias)
         {
-            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.MARK_BIAS_EVENT, false);
+            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.MarkBiasEvent, false);
             novelEvent.relevantBias = relevantBias;
             return novelEvent;
         }
 
         public static VisualNovelEvent GetCharacterTalksEvent(string id, string nextId, string characterRole, string dialogMessage, string expression)
         {
-            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.SHOW_MESSAGE_EVENT, true);
+            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.ShowMessageEvent, true);
             novelEvent.character = characterRole;
             novelEvent.text = dialogMessage;
             novelEvent.expressionType = expression;
             return novelEvent;
         }
 
-        public static VisualNovelEvent GetSetBackgroundEvent(string id, string nextId, string location)
-        {
-            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.SET_BACKGROUND_EVENT, false);
-            novelEvent.backgroundSprite = location;
-            return novelEvent;
-        }
-
         public static VisualNovelEvent GetCharacterJoinsEvent(string id, string nextId, string characterRole, string expression)
         {
-            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.CHARAKTER_JOIN_EVENT, false);
+            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.CharacterJoinEvent, false);
             novelEvent.character = characterRole;
             novelEvent.expressionType = expression;
             return novelEvent;
@@ -37,15 +30,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 
         public static VisualNovelEvent GetCharacterExitsEvent(string id, string nextId)
         {
-            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.CHARAKTER_EXIT_EVENT, false);
-            return novelEvent;
-        }
-
-        public static VisualNovelEvent GetFreeTextInputEvent(string id, string nextId, string question, string variablesName)
-        {
-            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.FREE_TEXT_INPUT_EVENT, true);
-            novelEvent.questionForFreeTextInput = question;
-            novelEvent.variablesName = variablesName;
+            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.CharacterExitEvent, false);
             return novelEvent;
         }
 
@@ -123,14 +108,14 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
         // TODO: Check if this should be removed. Isn't used by the time this is written.
         public static VisualNovelEvent GetPlayAnimationEvent(string id, string nextId, string animationToPlay)
         {
-            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.PLAY_ANIMATION_EVENT, false);
+            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.PlayAnimationEvent, false);
             novelEvent.animationToPlay = animationToPlay;
             return novelEvent;
         }
 
         public static VisualNovelEvent GetPlaySoundEvent(string id, string nextId, string audioClipToPlay)
         {
-            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.PLAY_SOUND_EVENT, false);
+            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.PlaySoundEvent, false);
             novelEvent.audioClipToPlay = audioClipToPlay;
             return novelEvent;
         }

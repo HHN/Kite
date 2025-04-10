@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
+using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
+using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
 
 namespace Assets._Scripts.Novel.VisualNovelFormatter
 {

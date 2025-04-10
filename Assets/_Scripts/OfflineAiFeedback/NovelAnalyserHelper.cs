@@ -208,7 +208,7 @@ namespace Assets._Scripts.OfflineAiFeedback
 
             switch (type)
             {
-                case VisualNovelEventType.CharakterJoinEvent:
+                case VisualNovelEventType.CharacterJoinEvent:
                 {
                     HandleCharacterJoinEvent(eventUnderTest);
                     break;

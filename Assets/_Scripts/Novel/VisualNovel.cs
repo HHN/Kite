@@ -93,15 +93,6 @@ namespace Assets._Scripts.Novel
 
         public VisualNovel DeepCopy()
         {
-            VisualNovel newNovel = new VisualNovel();
-
-            newNovel.id = id;
-            newNovel.folderName = folderName;
-            newNovel.title = title;
-            newNovel.description = description;
-            newNovel.feedback = feedback;
-            newNovel.context = context;
-            newNovel.playedPath = playedPath;
             VisualNovel newNovel = new VisualNovel
             {
                 id = id,

@@ -4,7 +4,7 @@ namespace Assets._Scripts.Novel
     {
         None,
         SetBackgroundEvent,
-        CharakterJoinEvent,
+        CharacterJoinEvent,
         CharacterExitEvent,
         ShowMessageEvent,
         AddChoiceEvent,
@@ -35,7 +35,7 @@ namespace Assets._Scripts.Novel
                 {
                     return 1;
                 }
-                case VisualNovelEventType.CharakterJoinEvent:
+                case VisualNovelEventType.CharacterJoinEvent:
                 {
                     return 2;
                 }
@@ -117,7 +117,7 @@ namespace Assets._Scripts.Novel
                 }
                 case 2:
                 {
-                    return VisualNovelEventType.CharakterJoinEvent;
+                    return VisualNovelEventType.CharacterJoinEvent;
                 }
                 case 3:
                 {

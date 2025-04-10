@@ -373,7 +373,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                     HandleBackgroundEvent(nextEventToPlay);
                     break;
                 }
-                case VisualNovelEventType.CharakterJoinEvent:
+                case VisualNovelEventType.CharacterJoinEvent:
                 {
                     HandleCharacterJoinEvent(nextEventToPlay);
                     break;
