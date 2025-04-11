@@ -196,8 +196,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 string jsonStringOfEventList = null;
 
                 // Lade und deserialisiere die Metadaten.
-                yield return StartCoroutine(LoadAndDeserialize<KiteNovelMetaData>(fullPathOfNovelMetaData,
-                    result => { kiteNovelMetaData = result; }));
+                yield return StartCoroutine(LoadAndDeserialize<KiteNovelMetaData>(fullPathOfNovelMetaData, result => { kiteNovelMetaData = result; }));
 
                 // Falls die Metadaten nicht geladen werden konnten, �berspringe diese Novelle.
                 if (kiteNovelMetaData == null)
