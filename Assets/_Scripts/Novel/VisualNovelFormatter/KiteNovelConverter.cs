@@ -118,6 +118,8 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             {
                 NovelKeywordModel model = new NovelKeywordModel();
                 model.CharacterIndex = 0;
+                model.Action = "Looks";
+                model.FaceExpression = "NeutralRelaxed";
                 Debug.Log("Parsed keyword (Info): " + keyword);
                 return model;
             }
@@ -125,6 +127,8 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             {
                 NovelKeywordModel model = new NovelKeywordModel();
                 model.CharacterIndex = 1;
+                model.Action = "Looks";
+                model.FaceExpression = "NeutralRelaxed";
                 Debug.Log("Parsed keyword (Player): " + keyword);
                 return model;
             }
