@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
+namespace Assets._Scripts.Novel.VisualNovelFormatter
 {
     public class TweePassage
     {
@@ -9,13 +9,6 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             Label = label;
             Passage = passage;
             Links = links ?? new List<TweeLink>();
-        }
-
-        public TweePassage()
-        {
-            Label = "";
-            Passage = "";
-            Links = new List<TweeLink>();
         }
 
         public string Label { get; set; }

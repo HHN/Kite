@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
@@ -170,6 +171,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             {
                 return input.Substring(2);
             }
+
             return input;
         }
 
@@ -246,7 +248,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
         /// <summary>
         /// Extracts the message text from a Twee passage by removing titles, links, metadata, and various formatting symbols.
-        /// This cleaned-up text is used later for further processing (e.g., keyword extraction).
+        /// This cleaned-up text is used later for further processing.
         /// </summary>
         /// <param name="text">The full passage text.</param>
         /// <returns>The cleaned message text.</returns>
@@ -270,6 +272,19 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             // Normalize extra spaces to a single space.
             text = NormalizeSpaces(text);
             return text.Trim();
+        }
+
+        /// <summary>
+        /// Extracts the keyword from a Twee passage.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns>The cleaned keyword.</returns>
+        public static string ExtractKeywordOutOfTweePassage(string text)
+        {
+            if (string.IsNullOrEmpty(text)) return "";
+
+            var match = Regex.Match(text, @"\>\>.*?\<\<");
+            return match.Success ? match.Value.Trim() : "";
         }
 
         /// <summary>
@@ -398,6 +413,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             {
                 return "";
             }
+
             var result = input.Replace("[", "").Replace("]", "");
             return result;
         }
@@ -411,6 +427,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             {
                 return "";
             }
+
             var pattern = @"\s+";
             var result = Regex.Replace(input, pattern, " ");
             return result;

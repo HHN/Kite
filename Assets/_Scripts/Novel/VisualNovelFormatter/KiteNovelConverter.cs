@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
 using Assets._Scripts.Novel.VisualNovelFormatter;
@@ -79,6 +80,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
         /// <returns>Ein NovelKeywordModel oder null, wenn kein gültiges Keyword erkannt wurde.</returns>
         public static NovelKeywordModel ParseKeyword(string keyword)
         {
+            Debug.Log($"ParseKeyword: {keyword}");
             // Falls der Eingabestring leer oder nur Whitespace ist, wird null zurückgegeben.
             if (string.IsNullOrWhiteSpace(keyword))
             {
@@ -108,7 +110,6 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             {
                 NovelKeywordModel model = new NovelKeywordModel();
                 model.End = true;
-                Debug.Log("Parsed keyword (End): " + keyword);
                 return model;
             }
 
@@ -151,7 +152,6 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
                     {
                         model.FaceExpression = parts[2];
                     }
-                    Debug.Log("Parsed keyword (Character): " + keyword);
                     return model;
                 }
                 // Wenn es sich um ein Sound‑Keyword handelt.
@@ -237,9 +237,13 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             {
                 // Extract the message text (i.e. the keyword) from the passage.
                 string message = TweeProcessor.ExtractMessageOutOfTweePassage(passage.Passage);
-
+                Debug.Log($"passage.Label: {passage.Label}");
+                Debug.Log($"message: {message}");
+                
+                string keyword = TweeProcessor.ExtractKeywordOutOfTweePassage(passage.Passage);
+                
                 // Generate a NovelKeywordModel from the message text.
-                NovelKeywordModel keywordModel = NovelKeywordParser.ParseKeyword(message);
+                NovelKeywordModel keywordModel = NovelKeywordParser.ParseKeyword(keyword);
 
                 // Create the corresponding VisualNovelEvent based on the model.
                 VisualNovelEvent createdEvent = CreateVisualNovelEventFromKeyword(passage, message, keywordModel, metaData, eventList);
@@ -348,14 +352,33 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
         private static string MapExpressionString(string expression)
         {
             if (string.IsNullOrEmpty(expression))
-                return "";
-            if (expression.Equals("Angry", StringComparison.OrdinalIgnoreCase))
-                return "Angry"; // Example mapping
+                return "NeutralRelaxed";
             if (expression.Equals("Scared", StringComparison.OrdinalIgnoreCase))
                 return "Scared";
+            if (expression.Equals("Defeated", StringComparison.OrdinalIgnoreCase))
+                return "Defeated";
+            if (expression.Equals("Dissatisfied", StringComparison.OrdinalIgnoreCase))
+                return "Dissatisfied";
+            if (expression.Equals("Rejecting", StringComparison.OrdinalIgnoreCase))
+                return "Rejecting";
+            if (expression.Equals("Amazed", StringComparison.OrdinalIgnoreCase))
+                return "Amazed";
+            if (expression.Equals("Questioning", StringComparison.OrdinalIgnoreCase))
+                return "Questioning";
+            if (expression.Equals("Critical", StringComparison.OrdinalIgnoreCase))
+                return "Critical";
+            if (expression.Equals("SmilingBig", StringComparison.OrdinalIgnoreCase))
+                return "SmilingBig";
+            if (expression.Equals("Laughing", StringComparison.OrdinalIgnoreCase))
+                return "Laughing";
+            if (expression.Equals("Smiling", StringComparison.OrdinalIgnoreCase))
+                return "Smiling";
+            if (expression.Equals("NeutralRelaxed", StringComparison.OrdinalIgnoreCase))
+                return "NeutralRelaxed";
             if (expression.Equals("Neutral", StringComparison.OrdinalIgnoreCase))
                 return "Neutral";
-            // Add further mappings as needed...
+            if (expression.Equals("Proud", StringComparison.OrdinalIgnoreCase))
+                return "Proud";
             return expression;
         }
 
@@ -449,7 +472,8 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
         private static VisualNovelEvent HandleCharacterTalksEvent(TweePassage passage, string character, string dialogMessage, string expression, List<VisualNovelEvent> list)
         {
             string id = passage?.Label;
-            string nextId = passage?.Links?[0]?.Target;
+
+            string nextId = passage?.Links?.FirstOrDefault()?.Target ?? "";
             VisualNovelEvent novelEvent = KiteNovelEventFactory.GetCharacterTalksEvent(id, nextId, character, dialogMessage, expression);
             list.Add(novelEvent);
             return novelEvent;
