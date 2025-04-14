@@ -95,7 +95,7 @@ namespace Tests.PlayMode
             GameObject testerObj = new GameObject("KeywordTesterObject");
             KeywordTester tester = testerObj.AddComponent<KeywordTester>();
             // Optional: Passe den Dateipfad an, falls n�tig.
-            tester.filePath = "_novels_twee/Eltern/visual_novel_event_list.txt";
+            tester.folderPath = "_novels_twee/";
 
             // Warte eine gewisse Zeit, damit die Coroutine im KeywordTester laufen kann.
             // Dies ist ein einfaches Beispiel; ggf. musst du hier an deine Testlogik anpassen.

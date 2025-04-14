@@ -402,91 +402,68 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
     /// </summary>
     public class KeywordTester : MonoBehaviour
     {
-        // Public field to specify the file path in the Inspector.
-        // Example: "TestKeywords.txt" if the file is located in the Application.dataPath folder.
-        public string filePath = "Assets/_novels_twee/Eltern/visual_novel_event_list.txt";
+        // Public field to specify the folder path in the Inspector.
+        // Example: "Assets/_novels_twee/Eltern" if all files are located in this folder or its subfolders.
+        public string folderPath = "Assets/_novels_twee/";
 
         /// <summary>
         /// Called when the script starts.
-        /// Initiates the process of reading and processing the keyword file.
+        /// Initiates the process of reading all files named "visual_novel_event_list.txt" from the given folder.
         /// </summary>
         public void Start()
         {
-            // Start the coroutine that loads and processes the keywords from the file.
-            StartCoroutine(ProcessKeywordFile());
+            // Start the coroutine that loads and processes keywords from all matching files in the folder.
+            StartCoroutine(ProcessKeywordFolder());
         }
 
         /// <summary>
-        /// Coroutine that reads the keyword file, processes each line to extract the keyword data,
-        /// and outputs the extracted properties to the Unity console.
+        /// Coroutine that searches for all files named "visual_novel_event_list.txt"
+        /// in the specified folder (including subdirectories), processes each file to extract the keyword data,
+        /// and outputs the total count of valid keywords found to the Unity console.
         /// </summary>
-        private IEnumerator ProcessKeywordFile()
+        private IEnumerator ProcessKeywordFolder()
         {
-            // Build the full file path by combining Application.dataPath with the filePath provided.
-            // If your file is located elsewhere, adjust accordingly.
-            string fullPath = Path.Combine(Application.dataPath, filePath);
+            // Build the full folder path by combining Application.dataPath with the folderPath provided.
+            string fullFolderPath = Path.Combine(Application.dataPath, folderPath);
 
-            string fileContent = "";
-
-            // Check if the file exists at the specified path.
-            if (File.Exists(fullPath))
+            // Check if the folder exists.
+            if (!Directory.Exists(fullFolderPath))
             {
-                // Read the entire file content synchronously.
-                fileContent = File.ReadAllText(fullPath);
-            }
-            else
-            {
-                Debug.LogError("Keyword file not found at: " + fullPath);
+                Debug.LogError("Keyword folder not found at: " + fullFolderPath);
                 yield break;
             }
 
-            NovelKeywordParser.ParseKeywordsFromFile(fileContent);
+            // Get all files with the name "visual_novel_event_list.txt" in the folder and its subdirectories.
+            string[] filePaths = Directory.GetFiles(fullFolderPath, "visual_novel_event_list.txt", SearchOption.AllDirectories);
+            Debug.Log("Number of files found: " + filePaths.Length);
 
-            //// Split the file content into lines (removing empty entries).
-            //string[] lines = fileContent.Split(new[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
+            // Liste zum Sammeln aller validen Keyword-Modelle aus allen Dateien.
+            List<NovelKeywordModel> allModels = new List<NovelKeywordModel>();
 
+            // Gehe alle gefundenen Dateien durch.
+            foreach (string file in filePaths)
+            {
+                Debug.Log("Processing file: " + file);
 
-            //// Process each line individually.
-            //foreach (string line in lines)
-            //{
-            //    // Trim whitespace from the line.
-            //    string trimmedLine = line.Trim();
+                // Lese den Inhalt der Datei synchron.
+                string fileContent = File.ReadAllText(file);
 
-            //    // Skip if the line is empty.
-            //    if (string.IsNullOrEmpty(trimmedLine))
-            //        continue;
+                // Rufe den Parser auf, der den gesamten Dateiinhalt verarbeitet.
+                List<NovelKeywordModel> models = NovelKeywordParser.ParseKeywordsFromFile(fileContent);
 
-            //    // Use the NovelKeywordParser to convert the line into a NovelKeywordModel.
-            //    NovelKeywordModel model = NovelKeywordParser.ParseKeyword(trimmedLine);
+                if (models != null)
+                {
+                    allModels.AddRange(models);
+                }
 
-            //    // Build an output string containing the parsed keyword properties.
-            //    if (model != null)
-            //    {
-            //        string output = "Parsed Keyword: ";
-            //        if (model.End.HasValue && model.End.Value)
-            //            output += "[End] ";
-            //        if (model.CharacterIndex.HasValue)
-            //            output += $"CharacterIndex: {model.CharacterIndex.Value} ";
-            //        if (!string.IsNullOrEmpty(model.Action))
-            //            output += $"Action: {model.Action} ";
-            //        if (!string.IsNullOrEmpty(model.FaceExpression))
-            //            output += $"FaceExpression: {model.FaceExpression} ";
-            //        if (!string.IsNullOrEmpty(model.Sound))
-            //            output += $"Sound: {model.Sound} ";
-            //        if (!string.IsNullOrEmpty(model.Bias))
-            //            output += $"Bias: {model.Bias} ";
-
-            //        // Output the result to the Unity Console.
-            //        Debug.Log(output);
-            //    }
-            //    else
-            //    {
-            //        //Debug.Log("No keyword model parsed for line: " + trimmedLine);
-            //    }
-
-            //    // Yield return null to wait for the next frame (optional, for large files).
+                // Optional: Warte einen Frame, um große Dateien nicht blockierend zu verarbeiten.
                 yield return null;
-            
+            }
+
+            // Gib die Gesamtzahl der gefundenen validen Keywords in der Konsole aus.
+            Debug.Log("Total valid keywords found across all files: " + allModels.Count);
+
+            yield return null;
         }
     }
 }

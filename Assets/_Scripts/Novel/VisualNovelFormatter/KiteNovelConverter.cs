@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
 using Assets._Scripts.Novel.VisualNovelFormatter;
@@ -35,6 +36,60 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
     /// </summary>
     public static class NovelKeywordParser
     {
+
+        // Konstante zum Dateinamen des Mapping-Files.
+        private static readonly string MappingFileFullPath = Path.Combine(Application.dataPath, "Assets/_novels_twee/Mappings/BiasMapping.txt");
+
+        // Dictionary, das das Bias-Mapping enthält. Dieses wird beim ersten Zugriff über LoadBiasMapping() geladen.
+        private static Dictionary<string, string> biasMapping = LoadBiasMapping();
+
+        private static Dictionary<string, string> LoadBiasMapping()
+        {
+            Dictionary<string, string> mapping = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            try
+            {
+                // Verwende den bereits vollständig definierten MappingFileFullPath.
+                if (!File.Exists(MappingFileFullPath))
+                {
+                    Debug.LogWarning("Bias mapping file not found at: " + MappingFileFullPath);
+                    return mapping; // Leeres Mapping zurückgeben.
+                }
+
+                // Lese alle Zeilen der Datei.
+                string[] lines = File.ReadAllLines(MappingFileFullPath);
+                foreach (string line in lines)
+                {
+                    // Überspringe leere oder nur aus Leerzeichen bestehende Zeilen.
+                    if (string.IsNullOrWhiteSpace(line))
+                        continue;
+
+                    // Suche nach dem ersten Doppelpunkt als Trenner.
+                    int colonIndex = line.IndexOf(':');
+                    if (colonIndex > 0 && colonIndex < line.Length - 1)
+                    {
+                        // Extrahiere den englischen Bias (Key) und den deutschen Bias (Value).
+                        string key = line.Substring(0, colonIndex).Trim();
+                        string value = line.Substring(colonIndex + 1).Trim();
+                        if (!string.IsNullOrEmpty(key) && !mapping.ContainsKey(key))
+                        {
+                            mapping.Add(key, value);
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Invalid mapping line: " + line);
+                    }
+                }
+                Debug.Log("Loaded " + mapping.Count + " bias mappings.");
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("Error loading bias mapping: " + ex.Message);
+            }
+            return mapping;
+        }
+
+
         /// <summary>
         /// Liest den Inhalt einer Datei (als String), verarbeitet jede Zeile und gibt
         /// eine Liste aller gültigen NovelKeywordModel-Objekte zurück. Gleichzeitig wird
@@ -80,7 +135,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
         /// <returns>Ein NovelKeywordModel oder null, wenn kein gültiges Keyword erkannt wurde.</returns>
         public static NovelKeywordModel ParseKeyword(string keyword)
         {
-            Debug.Log($"ParseKeyword: {keyword}");
+            //Debug.Log($"ParseKeyword: {keyword}");
             // Falls der Eingabestring leer oder nur Whitespace ist, wird null zurückgegeben.
             if (string.IsNullOrWhiteSpace(keyword))
             {
@@ -105,10 +160,12 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             // und erstellen später (nur) ein Modell, wenn ein gültiges Muster erkannt wurde.
 
             // Prüfe, ob das Keyword ein End-Kommando signalisiert.
+
+            NovelKeywordModel model = new NovelKeywordModel();
+
             if (string.Equals(keyword, "End", StringComparison.OrdinalIgnoreCase) ||
                 string.Equals(keyword, "Ende", StringComparison.OrdinalIgnoreCase))
             {
-                NovelKeywordModel model = new NovelKeywordModel();
                 model.End = true;
                 return model;
             }
@@ -116,7 +173,6 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             // Prüfe auf die exakten Schlüsselwörter "Info" und "Player".
             if (string.Equals(keyword, "Info", StringComparison.OrdinalIgnoreCase))
             {
-                NovelKeywordModel model = new NovelKeywordModel();
                 model.CharacterIndex = 0;
                 model.Action = "Looks";
                 model.FaceExpression = "NeutralRelaxed";
@@ -125,7 +181,6 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             }
             if (string.Equals(keyword, "Player", StringComparison.OrdinalIgnoreCase))
             {
-                NovelKeywordModel model = new NovelKeywordModel();
                 model.CharacterIndex = 1;
                 model.Action = "Looks";
                 model.FaceExpression = "NeutralRelaxed";
@@ -140,7 +195,6 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
                 // Wenn es sich um ein Character‑Keyword handelt.
                 if (parts[0].StartsWith("Character", StringComparison.OrdinalIgnoreCase))
                 {
-                    NovelKeywordModel model = new NovelKeywordModel();
                     // Beispiel: "Character1" → extrahiere die Zahl.
                     string numberPart = parts[0].Substring("Character".Length);
                     if (int.TryParse(numberPart, out int num))
@@ -156,12 +210,12 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
                     {
                         model.FaceExpression = parts[2];
                     }
+                    Debug.Log("Parsed keyword (Character): " + model.CharacterIndex + " " + model.Action + " " + model.FaceExpression);
                     return model;
                 }
                 // Wenn es sich um ein Sound‑Keyword handelt.
                 else if (parts[0].StartsWith("Sound", StringComparison.OrdinalIgnoreCase))
                 {
-                    NovelKeywordModel model = new NovelKeywordModel();
                     if (parts.Length > 1)
                     {
                         model.Sound = parts[1];
@@ -172,10 +226,10 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
                 // Wenn es sich um ein Bias‑Keyword handelt.
                 else if (parts[0].StartsWith("Bias", StringComparison.OrdinalIgnoreCase))
                 {
-                    NovelKeywordModel model = new NovelKeywordModel();
                     if (parts.Length > 1)
                     {
-                        model.Bias = parts[1];
+                        // Wende das externe Mapping an.
+                        model.Bias = MapBias(parts[1]);
                     }
                     Debug.Log("Parsed keyword (Bias): " + keyword);
                     return model;
@@ -186,16 +240,32 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             Debug.Log("Line did not match any keyword pattern: " + keyword);
             return null;
         }
+
+        /// <summary>
+        /// Internal mapping method – looks up the English bias in the dictionary and returns the German translation.
+        /// </summary>
+        private static string MapBias(string englishBias)
+        {
+            if (biasMapping.TryGetValue(englishBias, out string germanBias))
+            {
+                return germanBias;
+            }
+            else
+            {
+                Debug.LogWarning("Bias mapping not found for: " + englishBias);
+                return englishBias; // Fallback to original.
+            }
+        }
     }
 
     #endregion
 
-    /// <summary>
-    /// Converter class that creates VisualNovel objects from processed novel folders
-    /// and converts the Twee text document into a structured event list.
-    /// Instead of a huge switch-case, it now uses the NovelKeywordParser to generate a NovelKeywordModel from the passage text.
-    /// All values (role, expression etc.) are handled as strings.
-    /// </summary>
+        /// <summary>
+        /// Converter class that creates VisualNovel objects from processed novel folders
+        /// and converts the Twee text document into a structured event list.
+        /// Instead of a huge switch-case, it now uses the NovelKeywordParser to generate a NovelKeywordModel from the passage text.
+        /// All values (role, expression etc.) are handled as strings.
+        /// </summary>
     public abstract class KiteNovelConverter
     {
         private static int _counterForNamingPurpose = 1;
@@ -245,6 +315,8 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
                 Debug.Log($"message: {message}");
                 
                 string keyword = TweeProcessor.ExtractKeywordOutOfTweePassage(passage.Passage);
+
+                Debug.Log("keywordString: " + keyword);
                 
                 // Generate a NovelKeywordModel from the message text.
                 NovelKeywordModel keywordModel = NovelKeywordParser.ParseKeyword(keyword);
@@ -284,8 +356,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             // If a sound is defined.
             if (!string.IsNullOrEmpty(model.Sound))
             {
-                string soundString = MapSoundString(model.Sound);
-                return HandlePlaySoundEvent(passage, soundString, eventList);
+                return HandlePlaySoundEvent(passage, model.Sound, eventList);
             }
             
             // If it's a character event.
@@ -335,20 +406,20 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
         /// <summary>
         /// Returns the sound string (can perform additional mapping if needed).
         /// </summary>
-        private static string MapSoundString(string sound)
-        {
-            if (sound.Equals("WaterPouring", StringComparison.OrdinalIgnoreCase))
-                return "WaterPouring";
-            if (sound.Equals("LeaveScene", StringComparison.OrdinalIgnoreCase))
-                return "LeaveScene";
-            if (sound.Equals("TelephoneCall", StringComparison.OrdinalIgnoreCase))
-                return "TelephoneCall";
-            if (sound.Equals("PaperSound", StringComparison.OrdinalIgnoreCase))
-                return "PaperSound";
-            if (sound.Equals("ManLaughing", StringComparison.OrdinalIgnoreCase))
-                return "ManLaughing";
-            return sound;
-        }
+        //private static string MapSoundString(string sound)
+        //{
+        //    if (sound.Equals("WaterPouring", StringComparison.OrdinalIgnoreCase))
+        //        return "WaterPouring";
+        //    if (sound.Equals("LeaveScene", StringComparison.OrdinalIgnoreCase))
+        //        return "LeaveScene";
+        //    if (sound.Equals("TelephoneCall", StringComparison.OrdinalIgnoreCase))
+        //        return "TelephoneCall";
+        //    if (sound.Equals("PaperSound", StringComparison.OrdinalIgnoreCase))
+        //        return "PaperSound";
+        //    if (sound.Equals("ManLaughing", StringComparison.OrdinalIgnoreCase))
+        //        return "ManLaughing";
+        //    return sound;
+        //}
 
         /// <summary>
         /// Returns the expression string (can perform additional mapping if needed).
@@ -357,32 +428,6 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
         {
             if (string.IsNullOrEmpty(expression))
                 return "NeutralRelaxed";
-            if (expression.Equals("Scared", StringComparison.OrdinalIgnoreCase))
-                return "Scared";
-            if (expression.Equals("Defeated", StringComparison.OrdinalIgnoreCase))
-                return "Defeated";
-            if (expression.Equals("Dissatisfied", StringComparison.OrdinalIgnoreCase))
-                return "Dissatisfied";
-            if (expression.Equals("Rejecting", StringComparison.OrdinalIgnoreCase))
-                return "Rejecting";
-            if (expression.Equals("Amazed", StringComparison.OrdinalIgnoreCase))
-                return "Amazed";
-            if (expression.Equals("Questioning", StringComparison.OrdinalIgnoreCase))
-                return "Questioning";
-            if (expression.Equals("Critical", StringComparison.OrdinalIgnoreCase))
-                return "Critical";
-            if (expression.Equals("SmilingBig", StringComparison.OrdinalIgnoreCase))
-                return "SmilingBig";
-            if (expression.Equals("Laughing", StringComparison.OrdinalIgnoreCase))
-                return "Laughing";
-            if (expression.Equals("Smiling", StringComparison.OrdinalIgnoreCase))
-                return "Smiling";
-            if (expression.Equals("NeutralRelaxed", StringComparison.OrdinalIgnoreCase))
-                return "NeutralRelaxed";
-            if (expression.Equals("Neutral", StringComparison.OrdinalIgnoreCase))
-                return "Neutral";
-            if (expression.Equals("Proud", StringComparison.OrdinalIgnoreCase))
-                return "Proud";
             return expression;
         }
 
