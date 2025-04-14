@@ -88,37 +88,6 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             return mapping;
         }
 
-
-        /// <summary>
-        /// Liest den Inhalt einer Datei (als String), verarbeitet jede Zeile und gibt
-        /// eine Liste aller gültigen NovelKeywordModel-Objekte zurück. Gleichzeitig wird
-        /// in der Konsole ausgegeben, wie viele gültige Keywords gefunden wurden.
-        /// </summary>
-        /// <param name="fileContent">Der gesamte Text aus der Keyword-Datei.</param>
-        /// <returns>Liste der NovelKeywordModel für alle Zeilen, die gültige Keywords darstellen.</returns>
-        public static List<NovelKeywordModel> ParseKeywordsFromFile(string fileContent)
-        {
-            // Teile den Inhalt in einzelne Zeilen auf (Zeilenumbrüche können \n und/oder \r sein)
-            string[] lines = fileContent.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
-            List<NovelKeywordModel> models = new List<NovelKeywordModel>();
-
-            // Gehe alle Zeilen durch
-            foreach (string line in lines)
-            {
-                // Rufe den Einzelzeilen-Parser auf
-                NovelKeywordModel model = ParseKeyword(line);
-                // Wenn ein gültiges Model zurückgegeben wurde (nicht null), füge es der Liste hinzu.
-                if (model != null)
-                {
-                    models.Add(model);
-                }
-            }
-
-            // Gib die Gesamtanzahl der validen Schlüsselwörter aus.
-            Debug.Log("Total valid keywords found: " + models.Count);
-            return models;
-        }
-
         /// <summary>
         /// Parst einen einzelnen Keyword-String und gibt ein NovelKeywordModel zurück.
         /// Falls der String nicht den erwarteten Mustern entspricht, wird null zurückgegeben.
@@ -134,7 +103,6 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
         /// <returns>Ein NovelKeywordModel oder null, wenn kein gültiges Keyword erkannt wurde.</returns>
         public static NovelKeywordModel ParseKeyword(string keyword)
         {
-            //Debug.Log($"ParseKeyword: {keyword}");
             // Falls der Eingabestring leer oder nur Whitespace ist, wird null zurückgegeben.
             if (string.IsNullOrWhiteSpace(keyword))
             {
@@ -250,6 +218,47 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
         }
 
         /// <summary>
+        /// Parst den kompletten Eingabetext, der mehrere Keyword-Zeilen enthalten kann, 
+        /// unter Verwendung des Separators ">>--<<" und gibt eine Liste der gültigen NovelKeywordModel zurück.
+        /// </summary>
+        /// <param name="fileContent">Der gesamte Text aus der Keyword-Datei.</param>
+        /// <returns>Liste der NovelKeywordModel.</returns>
+        public static List<NovelKeywordModel> ParseKeywordsFromFile(string fileContent)
+        {
+            string[] lines = fileContent.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+            List<NovelKeywordModel> models = new List<NovelKeywordModel>();
+
+            // Wir gehen davon aus, dass einzelne Keyword-Blöcke durch den Separator ">>--<<" getrennt sind.
+            foreach (string line in lines)
+            {
+                // Falls der Separator in der Zeile vorkommt, wird diese Zeile in mehrere Tokens geteilt.
+                string[] tokens = line.Split(new string[] { ">>--<<" }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (string token in tokens)
+                {
+                    string trimmedToken = token.Trim();
+                    if (string.IsNullOrWhiteSpace(trimmedToken))
+                        continue;
+
+                    // Stelle sicher, dass die Keywords die Marker ">>" und "<<" haben.
+                    if (!(trimmedToken.StartsWith(">>") && trimmedToken.EndsWith("<<")))
+                    {
+                        // Überspringe, falls die Marker fehlen.
+                        Debug.Log("Skipped token due to invalid markers: " + trimmedToken);
+                        continue;
+                    }
+                    NovelKeywordModel model = ParseKeyword(trimmedToken);
+                    if (model != null)
+                    {
+                        models.Add(model);
+                    }
+                }
+            }
+
+            Debug.Log("Total valid keywords found: " + models.Count);
+            return models;
+        }
+
+        /// <summary>
         /// Internal mapping method – looks up the English bias in the dictionary and returns the German translation.
         /// </summary>
         private static string MapBias(string englishBias)
@@ -328,16 +337,21 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
                 Debug.Log("keywordString: " + keyword);
                 
                 // Generate a NovelKeywordModel from the message text.
-                NovelKeywordModel keywordModel = NovelKeywordParser.ParseKeyword(keyword);
+                List<NovelKeywordModel> keywordModels = NovelKeywordParser.ParseKeywordsFromFile(keyword);
 
-                // Create the corresponding VisualNovelEvent based on the model.
-                VisualNovelEvent createdEvent = CreateVisualNovelEventFromKeyword(passage, message, keywordModel, metaData, eventList);
+                foreach (NovelKeywordModel model in keywordModels)
+                {
 
-                // Check if the event creates a loop, and adjust if necessary.
-                HandleLoop(createdEvent, startLabel, eventList);
+                    // Create the corresponding VisualNovelEvent based on the model.
+                    VisualNovelEvent createdEvent = CreateVisualNovelEventFromKeyword(passage, message, model, metaData, eventList);
 
-                // If dialogue options are present, process them.
-                HandleDialogueOptionEvent(passage, eventList, createdEvent);
+                    // Check if the event creates a loop, and adjust if necessary.
+                    HandleLoop(createdEvent, startLabel, eventList);
+
+                    // If dialogue options are present, process them.
+                    HandleDialogueOptionEvent(passage, eventList, createdEvent);
+
+                }
             }
 
             return eventList;

@@ -109,7 +109,7 @@ Manchmal zählt eben die Investition.
 >>Character1|Speaks|Smiling<<
 Das meine ich ja! Männer fallen da eher aus dem Rahmen, während bei Frauen die Emotionen eben etwas natürlicher sind.
 >>--<<
->>Bias|GEndrSpecificStereotypes<<
+>>Bias|GenderSpecificStereotypes<<
 
 [[Lassen Sie uns auf das Wesentliche fokussieren: die Vereinbarung meines Honorars.->Wesentliche]]
 
@@ -120,7 +120,7 @@ Das meine ich ja! Männer fallen da eher aus dem Rahmen, während bei Frauen die
 >>Character1|Speaks|Smiling<<
 Das meine ich ja! Männer fallen da eher aus dem Rahmen, während bei Frauen die Emotionen eben etwas natürlicher sind.
 >>--<<
->>Bias|GEndrSpecificStereotypes<<
+>>Bias|GenderSpecificStereotypes<<
 
 [[Lassen Sie uns auf das Wesentliche fokussieren: die Vereinbarung meines Honorars.->Wesentliche 2]]
 
@@ -131,7 +131,7 @@ Das meine ich ja! Männer fallen da eher aus dem Rahmen, während bei Frauen die
 >>Character1|Speaks|Smiling<<
 Ach, verstehen Sie mich nicht falsch! Es ist nur, dass Frauen oft etwas emotionaler an solche Verhandlungen herangehen. Ein Vertrag kann da Missverständnisse vorbeugen, finden Sie nicht?
 >>--<<
->>Bias|GEndrSpecificStereotypes<<
+>>Bias|GenderSpecificStereotypes<<
 
 [[Das ist aber eine starke Generalisierung. Menschen können unabhängig von ihrem Geschlecht emotional sein.->Emotional]]
 
@@ -144,7 +144,7 @@ Ach, verstehen Sie mich nicht falsch! Es ist nur, dass Frauen oft etwas emotiona
 >>Character1|Speaks|Smiling<<
 Ach, verstehen Sie mich nicht falsch! Es ist nur, dass Frauen oft etwas emotionaler an solche Verhandlungen herangehen. Ein Vertrag kann da Missverständnisse vorbeugen, finden Sie nicht?
 >>--<<
->>Bias|GEndrSpecificStereotypes<<
+>>Bias|GenderSpecificStereotypes<<
 
 [[Das ist aber eine starke Generalisierung. Menschen können unabhängig von ihrem Geschlecht emotional sein.->Emotional 2]]
 
@@ -219,7 +219,7 @@ Ach, ein Extra? Männer bieten sowas meist gleich mit an, ohne Aufpreis. Ich dac
 >>Character1|Speaks|Critical<<
 Ja, aber Frauen neigen ja dazu, sich schnell in Details zu verlieren. Ich mache mir Sorgen, dass Sie zu detailorientiert arbeiten und dann das Honorar dadurch steigt.
 >>--<<
->>Bias|GEndrSpecificStereotypes<<
+>>Bias|GenderSpecificStereotypes<<
 
 [[Ich versichere Ihnen, ich arbeite zielgerichtet, ohne unnötige Schleifen.->Zielgerichtet]]
 
@@ -467,7 +467,7 @@ Das stimmt. Ach, wissen Sie was? Ich nehme Ihr Angebot an. Lassen Sie uns doch d
 
 :: Mehr trauen [Bias] {"position":"3350,1725","size":"100,100"}
 >>Character1|Speaks|Laughing<<
-Das stimmt. Ich hätte nur ehrlich gesagt erwartet, dass Sie etwas zurückhaltEndr wären.
+Das stimmt. Ich hätte nur ehrlich gesagt erwartet, dass Sie etwas zurückhaltender wären.
 >>--<<
 >>Bias|RiskAversionBias<<
 
@@ -478,7 +478,7 @@ Das stimmt. Ich hätte nur ehrlich gesagt erwartet, dass Sie etwas zurückhaltEn
 
 :: Mehr trauen 2 [Bias] {"position":"2550,1725","size":"100,100"}
 >>Character1|Speaks|Laughing<<
-Das stimmt. Ich hätte nur ehrlich gesagt erwartet, dass Sie etwas zurückhaltEndr wären.
+Das stimmt. Ich hätte nur ehrlich gesagt erwartet, dass Sie etwas zurückhaltender wären.
 >>--<<
 >>Bias|RiskAversionBias<<
 
@@ -505,7 +505,7 @@ Was wenn wir Sie nun mehrmals buchen und nach dem ersten Auftritt feststellen, d
 >>Character1|Speaks|Critical<<
 Wie? Also, das wirkt auf mich nun wirklich wie eine emotionale Entscheidung. Denken Sie nicht, dass das etwas impulsiv ist?
 >>--<<
->>Bias|GEndrSpecificStereotypes<<
+>>Bias|GenderSpecificStereotypes<<
 
 [[Meine Entscheidung ist wohlüberlegt. Ich wünsche Ihnen dennoch viel Erfolg bei Ihrer Veranstaltung.->Abbruch]]
 
@@ -516,7 +516,7 @@ Wie? Also, das wirkt auf mich nun wirklich wie eine emotionale Entscheidung. Den
 >>Character1|Speaks|Critical<<
 Wie? Also, das wirkt auf mich nun wirklich wie eine emotionale Entscheidung. Denken Sie nicht, dass das etwas impulsiv ist?
 >>--<<
->>Bias|GEndrSpecificStereotypes<<
+>>Bias|GenderSpecificStereotypes<<
 
 [[Meine Entscheidung ist wohlüberlegt. Ich wünsche Ihnen dennoch viel Erfolg bei Ihrer Veranstaltung.->Abbruch 2]]
 
@@ -602,7 +602,7 @@ Das klingt gut. Dann wünsche ich Ihnen noch einen schönen Tag.
 >>Character1|Speaks|Smiling<<
 Das wäre zwar informativ, aber wir haben erwartet, dass Gründerinnen flexibler beim Honorar sind.
 >>--<<
->>Bias|GEndrPayGap<<
+>>Bias|GenderPayGap<<
 
 [[Mein Honorar spiegelt die Qualität und den Aufwand wider. Das ist nicht verhandelbar.->Honorar III]]
 
@@ -687,7 +687,7 @@ Klar, aber wir hätten gedacht, Sie sehen den Auftritt auch als Chance. Gerade f
 [[Ich sehe den Auftritt als wertvolle Gelegenheit, aber es ist mir wichtig, dass meine Arbeit fair vergütet wird. Wir könnten langfristig über eine Kooperation sprechen?->Arbeit]]
 
 
-:: SchubladEndnken II [Bias] {"position":"3075,3125","size":"100,100"}
+:: Schubladendenken II [Bias] {"position":"3075,3125","size":"100,100"}
 >>Character1|Speaks|Laughing<<
 Ich hatte mal einen Kollegen, der war dermaßen emotional! Wirklich schlimmer als jede Frau.
 >>--<<
@@ -700,7 +700,7 @@ Ich hatte mal einen Kollegen, der war dermaßen emotional! Wirklich schlimmer al
 [[Ich verstehe, dass Sie unterstützen möchten. Lassen Sie uns dennoch sachlich über mein Honorar sprechen.->Wesentliche]]
 
 
-:: SchubladEndnken II 2 [Bias] {"position":"2675,3125","size":"100,100"}
+:: Schubladendenken II 2 [Bias] {"position":"2675,3125","size":"100,100"}
 >>Character1|Speaks|Laughing<<
 Ich hatte mal einen Kollegen, der war dermaßen emotional! Wirklich schlimmer als jede Frau.
 >>--<<
@@ -717,14 +717,14 @@ Ich hatte mal einen Kollegen, der war dermaßen emotional! Wirklich schlimmer al
 >>Character1|Speaks|Surprised<<
 Ach nein! Ich bin doch selbst eine Frau und möchte andere Frauen nur unterstützen. Ich weiß, dass auch Männer bspw. auch emotional sein können.
 
-[[SchubladEndnken II]]
+[[Schubladendenken II]]
 
 
 :: Schubladenkdenken 2 {"position":"2550,2925","size":"100,100"}
 >>Character1|Speaks|Surprised<<
 Ach nein! Ich bin doch selbst eine Frau und möchte andere Frauen nur unterstützen. Ich weiß, dass auch Männer bspw. auch emotional sein können.
 
-[[SchubladEndnken II 2]]
+[[Schubladendenken II 2]]
 
 
 :: Selbstbewusstsein Nachfrage [Bias] {"position":"3200,1725","size":"100,100"}
@@ -857,7 +857,7 @@ Das mache ich. Dann wünsche ich Ihnen noch einen schönen Tag.
 >>Character1|Speaks|Smiling<<
 Sie als Unternehmerin wissen ja selbst, wie wichtig ein guter Rahmen ist. Frauen brauchen eben oft die nötige Unterstützung, um sich voll entfalten zu können.
 >>--<<
->>Bias|GEndrSpecificStereotypes<<
+>>Bias|GenderSpecificStereotypes<<
 
 [[Ein geregelter Rahmen ist für alle Beteiligten von Vorteil, unabhängig vom Geschlecht.->Geregelter Rahmen]]
 
@@ -868,7 +868,7 @@ Sie als Unternehmerin wissen ja selbst, wie wichtig ein guter Rahmen ist. Frauen
 >>Character1|Speaks|Smiling<<
 Sie als Unternehmerin wissen ja selbst, wie wichtig ein guter Rahmen ist. Frauen brauchen eben oft die nötige Unterstützung, um sich voll entfalten zu können.
 >>--<<
->>Bias|GEndrSpecificStereotypes<<
+>>Bias|GenderSpecificStereotypes<<
 
 [[Ein geregelter Rahmen ist für alle Beteiligten von Vorteil, unabhängig vom Geschlecht.->Geregelter Rahmen 2]]
 
@@ -928,7 +928,7 @@ Natürlich. Also, ich würde Sie dann gerne für diese Veranstaltung und ein wei
 Das klingt vernünftig. Es ist nur so, ich habe den Eindruck, dass Sie sich viel Mühe geben, was ich sehr schätze. 
 >>--<<
 >>Character1|Speaks|Questioning<<
-Aber denken Sie, Sie können diese Qualität bei zunehmEndm Druck beibehalten?
+Aber denken Sie, Sie können diese Qualität bei zunehmendem Druck beibehalten?
 
 [[Dank meiner Erfahrung als Speakerin gehe ich souverän mit solchen Anforderungen um.->Honorar II]]
 
