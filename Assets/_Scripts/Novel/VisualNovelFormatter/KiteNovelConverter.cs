@@ -223,13 +223,13 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
         /// </summary>
         /// <param name="fileContent">Der gesamte Text aus der Keyword-Datei.</param>
         /// <returns>Liste der NovelKeywordModel.</returns>
-        public static List<NovelKeywordModel> ParseKeywordsFromFile(string fileContent)
+        public static List<NovelKeywordModel> ParseKeywordsFromFile(List<string> fileContent)
         {
-            string[] lines = fileContent.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+            // string[] lines = fileContent.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
             List<NovelKeywordModel> models = new List<NovelKeywordModel>();
 
             // Wir gehen davon aus, dass einzelne Keyword-Blöcke durch den Separator ">>--<<" getrennt sind.
-            foreach (string line in lines)
+            foreach (string line in fileContent)
             {
                 // Falls der Separator in der Zeile vorkommt, wird diese Zeile in mehrere Tokens geteilt.
                 string[] tokens = line.Split(new string[] { ">>--<<" }, StringSplitOptions.RemoveEmptyEntries);
@@ -324,33 +324,90 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             InitializeKiteNovelEventList(metaData, eventList, startLabel);
             List<TweePassage> passages = TweeProcessor.ProcessTweeFile(tweeFile);
 
-
             foreach (TweePassage passage in passages)
             {
                 // Extract the message text (i.e. the keyword) from the passage.
                 string message = TweeProcessor.ExtractMessageOutOfTweePassage(passage.Passage);
                 Debug.Log($"passage.Label: {passage.Label}");
                 Debug.Log($"message: {message}");
+                Debug.Log($"passage: {passage.Passage}");
                 
-                string keyword = TweeProcessor.ExtractKeywordOutOfTweePassage(passage.Passage);
-
-                Debug.Log("keywordString: " + keyword);
+                List<string> keywords = TweeProcessor.ExtractKeywordOutOfTweePassage(passage.Passage);
                 
                 // Generate a NovelKeywordModel from the message text.
-                List<NovelKeywordModel> keywordModels = NovelKeywordParser.ParseKeywordsFromFile(keyword);
+                List<NovelKeywordModel> keywordModels = NovelKeywordParser.ParseKeywordsFromFile(keywords);
 
-                foreach (NovelKeywordModel model in keywordModels)
+                if (keywordModels.Count > 1)
                 {
+                    string endString = "";
+                    
+                    foreach (var model in keywordModels)
+                    {
+                        if (model.End.HasValue && model.End.Value)
+                        {
+                            endString = "EndSeparator";
+                        }
+                    }
 
+                    string createdEventId = "";
+                    string createdEventNextId = "";
+                    
+                    for (int i = 0; i < keywordModels.Count; i++)
+                    {
+                        // Create the corresponding VisualNovelEvent based on the model.
+                        VisualNovelEvent createdEvent = CreateVisualNovelEventFromKeyword(passage, message, keywordModels[i], metaData, eventList);
+                        Debug.Log($"createdEvent.id: {createdEvent.id}");
+                        
+                        createdEventId = createdEvent.id;
+                        createdEventNextId = createdEvent.nextId;
+                        
+                        if (i != 0)
+                        {
+                            if (endString == "EndSeparator")
+                            {
+                                createdEvent.id += endString + createdEventId;
+                            }
+                            else
+                            {
+                                createdEvent.id += "RandomSeparator" + createdEventId;
+                            }
+                        }
+
+                        createdEventId += createdEvent.id;
+
+                        if (i != keywordModels.Count - 1)
+                        {
+                            if (endString == "EndSeparator")
+                            {
+                                createdEvent.nextId += endString + createdEvent.id;
+                            }
+                            else
+                            {
+                                createdEvent.nextId = createdEventNextId + "RandomSeparator" + createdEventNextId;
+                            }
+                        }
+                        else if (i == keywordModels.Count - 1 && endString == "EndSeparator")
+                        {
+                            createdEvent.nextId = "";
+                        }
+
+                        // Check if the event creates a loop, and adjust if necessary.
+                        HandleLoop(createdEvent, startLabel, eventList);
+
+                        // If dialogue options are present, process them.
+                        HandleDialogueOptionEvent(passage, eventList, createdEvent);
+                    }
+                }
+                else
+                {
                     // Create the corresponding VisualNovelEvent based on the model.
-                    VisualNovelEvent createdEvent = CreateVisualNovelEventFromKeyword(passage, message, model, metaData, eventList);
+                    VisualNovelEvent createdEvent = CreateVisualNovelEventFromKeyword(passage, message, keywordModels[0], metaData, eventList);
 
                     // Check if the event creates a loop, and adjust if necessary.
                     HandleLoop(createdEvent, startLabel, eventList);
 
                     // If dialogue options are present, process them.
                     HandleDialogueOptionEvent(passage, eventList, createdEvent);
-
                 }
             }
 
@@ -559,7 +616,11 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
         {
             Debug.Log("HandleBiasEvent");
             string id = passage?.Label;
-            string nextId = passage?.Links?[0]?.Target;
+
+            string nextId = (passage?.Links != null && passage.Links.Count > 0)
+                ? passage.Links[0]?.Target ?? ""
+                : "";
+
             VisualNovelEvent novelEvent = KiteNovelEventFactory.GetBiasEvent(id, nextId, bias);
             list.Add(novelEvent);
             return novelEvent;

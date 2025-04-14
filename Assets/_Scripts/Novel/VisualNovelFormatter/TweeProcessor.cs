@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
 using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
+using UnityEngine;
 
 namespace Assets._Scripts.Novel.VisualNovelFormatter
 {
@@ -279,12 +280,25 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// </summary>
         /// <param name="text"></param>
         /// <returns>The cleaned keyword.</returns>
-        public static string ExtractKeywordOutOfTweePassage(string text)
+        public static List<string> ExtractKeywordOutOfTweePassage(string text)
         {
-            if (string.IsNullOrEmpty(text)) return "";
+            Debug.Log($"string in ExtractKeywordOutOfTweePassage: {text}");
+            
+            var result = new List<string>();
+            
+            if (string.IsNullOrEmpty(text)) return result;
 
-            var match = Regex.Match(text, @"\>\>.*?\<\<");
-            return match.Success ? match.Value.Trim() : "";
+            var matches = Regex.Matches(text, @"\>\>.*?\<\<");
+            
+            foreach (Match match in matches)
+            {
+                if (match.Success)
+                {
+                    result.Add(match.Value.Trim());
+                }
+            }
+
+            return result;
         }
 
         /// <summary>

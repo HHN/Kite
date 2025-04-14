@@ -290,6 +290,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             foreach (VisualNovelEvent novelEvent in novelToPlay.novelEvents)
             {
+                Debug.Log($"novelEvent.id: {novelEvent.id}");
                 _novelEvents.Add(novelEvent.id, novelEvent);
             }
         }

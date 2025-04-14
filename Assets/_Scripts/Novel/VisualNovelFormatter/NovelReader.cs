@@ -449,7 +449,8 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 Debug.Log("Processing file: " + file);
 
                 // Lese den Inhalt der Datei synchron.
-                string fileContent = File.ReadAllText(file);
+                List<string> fileContent = new List<string>();
+                fileContent.AddRange(File.ReadAllLines(file));
 
                 // Rufe den Parser auf, der den gesamten Dateiinhalt verarbeitet.
                 List<NovelKeywordModel> models = NovelKeywordParser.ParseKeywordsFromFile(fileContent);
