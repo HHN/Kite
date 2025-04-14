@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Assets._Scripts.Novel;
+using UnityEngine;
 
 namespace Assets._Scripts.Managers
 {
@@ -30,6 +31,12 @@ namespace Assets._Scripts.Managers
 
         public void SetAllKiteNovels(List<VisualNovel> kiteNovels)
         {
+            Debug.Log("SetAllKiteNovels");
+            if (kiteNovels == null)
+            {
+                Debug.Log("List<VisualNovel> kiteNovels is null ");
+            }
+            Debug.Log("List<VisualNovel> kiteNovels size: " + kiteNovels.Count);
             this._kiteNovels = kiteNovels;
         }
 

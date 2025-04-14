@@ -67,6 +67,7 @@ namespace Tests.PlayMode
         [UnityTest]
         public IEnumerator ConvertNovelsFromTweeToJsonAndSelectiveOverrideOldNovels()
         {
+            Debug.Log("ConvertNovelsFromTweeToJsonAndSelectiveOverrideOldNovels");
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneNames.MainMenuScene);
 
             while (!asyncLoad.isDone)

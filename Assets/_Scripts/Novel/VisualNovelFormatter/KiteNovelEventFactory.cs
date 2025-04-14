@@ -1,4 +1,5 @@
 using Assets._Scripts.Novel;
+using UnityEngine;
 
 namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 {
@@ -8,6 +9,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
         {
             VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.MarkBiasEvent, false);
             novelEvent.relevantBias = relevantBias;
+            Debug.Log("BIAS: " + relevantBias);
             return novelEvent;
         }
 

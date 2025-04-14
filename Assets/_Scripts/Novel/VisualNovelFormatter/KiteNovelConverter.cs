@@ -17,7 +17,6 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
     public class NovelKeywordModel
     {
         public int? CharacterIndex { get; set; }
-        public string Action { get; set; }
         public string FaceExpression { get; set; }
         public string Bias { get; set; }
         public string Sound { get; set; }
@@ -38,7 +37,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
     {
 
         // Konstante zum Dateinamen des Mapping-Files.
-        private static readonly string MappingFileFullPath = Path.Combine(Application.dataPath, "Assets/_novels_twee/Mappings/BiasMapping.txt");
+        private static readonly string MappingFileFullPath = Path.Combine(Application.dataPath, "_Mappings/BiasMapping.txt");
 
         // Dictionary, das das Bias-Mapping enthält. Dieses wird beim ersten Zugriff über LoadBiasMapping() geladen.
         private static Dictionary<string, string> biasMapping = LoadBiasMapping();
@@ -174,16 +173,14 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             if (string.Equals(keyword, "Info", StringComparison.OrdinalIgnoreCase))
             {
                 model.CharacterIndex = 0;
-                model.Action = "Looks";
-                model.FaceExpression = "NeutralRelaxed";
+                model.FaceExpression = "Looks|NeutralRelaxed";
                 Debug.Log("Parsed keyword (Info): " + keyword);
                 return model;
             }
             if (string.Equals(keyword, "Player", StringComparison.OrdinalIgnoreCase))
             {
                 model.CharacterIndex = 1;
-                model.Action = "Looks";
-                model.FaceExpression = "NeutralRelaxed";
+                model.FaceExpression = "Looks|NeutralRelaxed";
                 Debug.Log("Parsed keyword (Player): " + keyword);
                 return model;
             }
@@ -192,25 +189,36 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             string[] parts = keyword.Split('|');
             if (parts.Length > 0)
             {
-                // Wenn es sich um ein Character‑Keyword handelt.
+                // If it is a Character keyword.
                 if (parts[0].StartsWith("Character", StringComparison.OrdinalIgnoreCase))
                 {
-                    // Beispiel: "Character1" → extrahiere die Zahl.
+                    // Example: "Character1" → extract the number.
                     string numberPart = parts[0].Substring("Character".Length);
                     if (int.TryParse(numberPart, out int num))
                     {
-                        // Falls 0 für Info und 1 für Player belegt sind, wird hier num + 1 gerechnet.
+                        // Since 0 = Info and 1 = Player are reserved, we assign num + 1.
                         model.CharacterIndex = num + 1;
                     }
-                    if (parts.Length > 1)
+
+                    // If there are exactly two parts, then only the face expression is provided.
+                    // In this case, we default to "Speaks" as the action.
+                    if (parts.Length == 2)
                     {
-                        model.Action = parts[1];
+                        model.FaceExpression = "Speaks|" + parts[1];
                     }
-                    if (parts.Length > 2)
+                    // If there are at least three parts, use the provided action and face expression.
+                    else if (parts.Length >= 3)
                     {
-                        model.FaceExpression = parts[2];
+                        model.FaceExpression = parts[1] + "|" + parts[2];
                     }
-                    Debug.Log("Parsed keyword (Character): " + model.CharacterIndex + " " + model.Action + " " + model.FaceExpression);
+                    // Optional: Falls es nur ein Part gibt (was nicht vorkommen sollte), wird kein Model erstellt.
+                    else
+                    {
+                        Debug.LogWarning("Character keyword does not contain enough parts: " + keyword);
+                        return null;
+                    }
+
+                    Debug.Log("Parsed keyword (Character): " + model.CharacterIndex + " Expression: " + model.FaceExpression);
                     return model;
                 }
                 // Wenn es sich um ein Sound‑Keyword handelt.
@@ -307,6 +315,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             InitializeKiteNovelEventList(metaData, eventList, startLabel);
             List<TweePassage> passages = TweeProcessor.ProcessTweeFile(tweeFile);
 
+
             foreach (TweePassage passage in passages)
             {
                 // Extract the message text (i.e. the keyword) from the passage.
@@ -345,12 +354,14 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 
             // If the keyword signals the end.
             if (model.End.HasValue && model.End.Value) return HandleEndNovelEvent(passage.Label, eventList);
-            
+
+
+            Debug.Log("BIAS defined: " + model.Bias);
             // If a bias is defined.
             if (!string.IsNullOrEmpty(model.Bias))
             {
-                string biasString = MapBiasString(model.Bias);
-                return HandleBiasEvent(passage, biasString, eventList);
+                Debug.Log("BIAS IS NOT NULL");
+                return HandleBiasEvent(passage, model.Bias, eventList);
             }
             
             // If a sound is defined.
@@ -365,43 +376,36 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
                 string role = GetCharacterRoleFromIndex(model.CharacterIndex.Value, metaData);
                 string expression = MapExpressionString(model.FaceExpression);
 
-                // Decide based on the Action field which event to create.
-                if (!string.IsNullOrEmpty(model.Action))
-                {
-                    if (model.Action.Equals("Entry", StringComparison.OrdinalIgnoreCase))
-                    {
-                        return HandleCharacterJoinsEvent(passage, role, expression, eventList);
-                    }
+                return HandleCharacterTalksEvent(passage, role, originalMessage, expression, eventList);
 
-                    if (model.Action.Equals("Speaks", StringComparison.OrdinalIgnoreCase))
-                    {
-                        return HandleCharacterTalksEvent(passage, role, originalMessage, expression, eventList);
-                    }
 
-                    if (model.Action.Equals("Looks", StringComparison.OrdinalIgnoreCase))
-                    {
-                        // "Looks" is treated as a variant of the join event.
-                        return HandleCharacterJoinsEvent(passage, role, expression, eventList);
-                    }
-                }
+                // TODO: Remove when verything works
+
+                //// Decide based on the Action field which event to create.
+                //if (!string.IsNullOrEmpty(model.Action))
+                //{
+                //    if (model.Action.Equals("Entry", StringComparison.OrdinalIgnoreCase))
+                //    {
+                //        return HandleCharacterJoinsEvent(passage, role, expression, eventList);
+                //    }
+
+                //    if (model.Action.Equals("Speaks", StringComparison.OrdinalIgnoreCase))
+                //    {
+                //        return HandleCharacterTalksEvent(passage, role, originalMessage, expression, eventList);
+                //    }
+
+                //    if (model.Action.Equals("Looks", StringComparison.OrdinalIgnoreCase))
+                //    {
+                //        // "Looks" is treated as a variant of the join event.
+                //        return HandleCharacterJoinsEvent(passage, role, expression, eventList);
+                //    }
+                //}
             }
 
             return null;
         }
 
-        /// <summary>
-        /// Returns the bias string (can perform additional mapping if needed).
-        /// </summary>
-        private static string MapBiasString(string bias)
-        {
-            // For example, you might want to normalize the bias string.
-            if (bias.Equals("AccessToFunding", StringComparison.OrdinalIgnoreCase))
-                return "AccessToFunding";
-            if (bias.Equals("GenderPayGap", StringComparison.OrdinalIgnoreCase))
-                return "GenderPayGap";
-            // Add further mappings as needed...
-            return bias;
-        }
+        
 
         /// <summary>
         /// Returns the sound string (can perform additional mapping if needed).
@@ -539,6 +543,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 
         private static VisualNovelEvent HandleBiasEvent(TweePassage passage, string bias, List<VisualNovelEvent> list)
         {
+            Debug.Log("HandleBiasEvent");
             string id = passage?.Label;
             string nextId = passage?.Links?[0]?.Target;
             VisualNovelEvent novelEvent = KiteNovelEventFactory.GetBiasEvent(id, nextId, bias);

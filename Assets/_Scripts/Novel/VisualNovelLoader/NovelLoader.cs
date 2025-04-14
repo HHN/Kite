@@ -90,7 +90,8 @@ namespace Assets._Scripts.Novel.VisualNovelLoader
         /// <param name="callback">Callback, das den geladenen Text zur�ckgibt</param>
         /// <returns>IEnumerator f�r die Coroutine</returns>
         private IEnumerator LoadFileContent(string path, System.Action<string> callback)
-        {
+        { 
+            Debug.Log("path webrequest " + path);
             // Falls die Plattform iOS ist, wird die Datei direkt aus dem Dateisystem gelesen.
             if (Application.platform == RuntimePlatform.IPhonePlayer)
             {

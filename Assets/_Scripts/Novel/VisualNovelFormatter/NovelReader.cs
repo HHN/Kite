@@ -69,6 +69,8 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             // Ermittelt den vollst�ndigen Pfad zur Datei, die die Liste der Novellenpfade enth�lt.
             string fullPath = Path.Combine(Application.dataPath, NovelListPath);
 
+            Debug.Log("fullPath: " + fullPath);
+
             // Starte die Coroutine zum Laden der Novellenpfade und verarbeite diese anschlie�end.
             yield return StartCoroutine(LoadNovelPaths(fullPath, listOfAllNovelPaths =>
             {
@@ -80,7 +82,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                     KiteNovelManager.Instance().SetAllKiteNovels(new List<VisualNovel>());
                     return;
                 }
-
+                Debug.Log("Found " + listOfAllNovelPaths.Count + " novels");
                 // Falls Novellenpfade vorhanden sind, starte die Verarbeitung der einzelnen Novellen.
                 StartCoroutine(ProcessNovels(listOfAllNovelPaths));
             }));
@@ -123,6 +125,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// </summary>
         private IEnumerator ProcessNovels(List<string> listOfAllNovelPaths)
         {
+
             // Liste zum Speichern aller verarbeiteten Novellenordner.
             List<KiteNovelFolder> allFolders = new List<KiteNovelFolder>();
 
