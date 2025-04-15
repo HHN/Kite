@@ -13,7 +13,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             return novelEvent;
         }
 
-        public static VisualNovelEvent GetCharacterTalksEvent(string id, string nextId, string characterRole, string dialogMessage, string expression)
+        public static VisualNovelEvent GetCharacterTalksEvent(string id, string nextId, int characterRole, string dialogMessage, int expression)
         {
             VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.ShowMessageEvent, true);
             novelEvent.character = characterRole;
@@ -22,7 +22,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             return novelEvent;
         }
 
-        public static VisualNovelEvent GetCharacterJoinsEvent(string id, string nextId, string characterRole, string expression)
+        public static VisualNovelEvent GetCharacterJoinsEvent(string id, string nextId, int characterRole, int expression)
         {
             VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.CharacterJoinEvent, false);
             novelEvent.character = characterRole;

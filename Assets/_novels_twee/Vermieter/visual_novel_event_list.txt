@@ -111,6 +111,8 @@ Bei älteren Frauen habe ich häufiger das Gefühl, dass sie ein Hobby brauchen 
 Du hast heute einen Termin für die Besichtigung von Büroräumen.
 Dort angekommen, wirst du von dem Vermieter angesprochen.
 
+Blubb.
+
 
 [[Weiter]]
 
@@ -132,7 +134,7 @@ Es scheint mir oft, dass der Aufwand und die Kosten nicht im Verhältnis zur tat
 
 
 :: Bekanntmachen {"position":"1125,1825","size":"100,100"}
->>VermieterSprichtFriendly:<<
+>>Character1|Speaks|Smiling<<
 Netzwerken, das ist der Schlüssel zum Erfolg! Gut, dass Sie daran gedacht haben. Ich schicke Ihnen später seine Kontaktdaten. Sagen Sie ihm gerne, dass ich Sie geschickt habe. 
 
 [[Freund betont]]

@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.IO;
-using Assets._Scripts.Novel;
+using Assets._Scripts._Mappings;
 using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
-using Assets._Scripts.Novel.VisualNovelFormatter;
 using UnityEngine;
 
-namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
+namespace Assets._Scripts.Novel.VisualNovelFormatter
 {
     #region NovelKeywordModel and Parser
 
@@ -17,7 +15,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
     public class NovelKeywordModel
     {
         public int? CharacterIndex { get; set; }
-        public string FaceExpression { get; set; }
+        public int FaceExpression { get; set; }
         public string Bias { get; set; }
         public string Sound { get; set; }
         public bool? End { get; set; }
@@ -89,14 +87,14 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             if (string.Equals(keyword, "Info", StringComparison.OrdinalIgnoreCase))
             {
                 model.CharacterIndex = 0;
-                model.FaceExpression = "Looks|NeutralRelaxed";
+                model.FaceExpression = MappingManager.MapFaceExpressions("NeutralRelaxed");
                 Debug.Log("Parsed keyword (Info): " + keyword);
                 return model;
             }
             if (string.Equals(keyword, "Player", StringComparison.OrdinalIgnoreCase))
             {
                 model.CharacterIndex = 1;
-                model.FaceExpression = "Looks|NeutralRelaxed";
+                model.FaceExpression = MappingManager.MapFaceExpressions("NeutralRelaxed");
                 Debug.Log("Parsed keyword (Player): " + keyword);
                 return model;
             }
@@ -120,12 +118,12 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
                     // In this case, we default to "Speaks" as the action.
                     if (parts.Length == 2)
                     {
-                        model.FaceExpression = "Speaks|" + parts[1];
+                        model.FaceExpression = MappingManager.MapFaceExpressions(parts[1]);
                     }
                     // If there are at least three parts, use the provided action and face expression.
                     else if (parts.Length >= 3)
                     {
-                        model.FaceExpression = parts[1] + "|" + parts[2];
+                        model.FaceExpression = MappingManager.MapFaceExpressions(parts[2]);
                     }
                     // Optional: Falls es nur ein Part gibt (was nicht vorkommen sollte), wird kein Model erstellt.
                     else
@@ -153,7 +151,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
                     if (parts.Length > 1)
                     {
                         // Wende das externe Mapping an.
-                        model.Bias = MappingManager.Instance.MapBias(parts[1]);
+                        model.Bias = MappingManager.MapBias(parts[1]);
                     }
                     Debug.Log("Parsed keyword (Bias): " + keyword);
                     return model;
@@ -265,6 +263,12 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
                 
                 // Generate a NovelKeywordModel from the message text.
                 List<NovelKeywordModel> keywordModels = NovelKeywordParser.ParseKeywordsFromFile(keywords);
+                
+                Debug.Log($"keywordModels.Count: {keywordModels.Count}");
+                if (keywordModels.Count == 0)
+                {
+                    Debug.Log($"passage.Label: {passage.Label}");
+                }
 
                 if (keywordModels.Count > 1)
                 {
@@ -373,10 +377,10 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             // If it's a character event.
             if (model.CharacterIndex.HasValue)
             {
-                string role = GetCharacterRoleFromIndex(model.CharacterIndex.Value, metaData);
-                string expression = MapExpressionString(model.FaceExpression);
+                int character = GetCharacterRoleFromIndex(model.CharacterIndex.Value, metaData);
+                int expression = model.FaceExpression;
 
-                return HandleCharacterTalksEvent(passage, role, originalMessage, expression, eventList);
+                return HandleCharacterTalksEvent(passage, character, originalMessage, expression, eventList);
 
 
                 // TODO: Remove when verything works
@@ -406,32 +410,19 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
         }
 
         /// <summary>
-        /// Returns the expression string (can perform additional mapping if needed).
-        /// </summary>
-        private static string MapExpressionString(string expression)
-        {
-            if (string.IsNullOrEmpty(expression))
-                return "NeutralRelaxed";
-            return expression;
-        }
-
-        /// <summary>
         /// Determines the character role as a string based on the CharacterIndex.
         /// 0: "Info", 1: "Player", 2: first talking partner, 3: second talking partner, 4: third talking partner.
         /// </summary>
-        private static string GetCharacterRoleFromIndex(int index, KiteNovelMetaData metaData)
+        private static int GetCharacterRoleFromIndex(int index, KiteNovelMetaData metaData)
         {
-            if (index == 0)
-                return "Info";
-            if (index == 1)
-                return "Player";
-            if (index == 2)
-                return metaData.TalkingPartner01;
-            if (index == 3)
-                return metaData.TalkingPartner02;
-            if (index == 4)
-                return metaData.TalkingPartner03;
-            return "";
+            return index switch
+            {
+                < 2 => index,
+                2 => MappingManager.MapCharacter(metaData.TalkingPartner01),
+                3 => MappingManager.MapCharacter(metaData.TalkingPartner02),
+                4 => MappingManager.MapCharacter(metaData.TalkingPartner03),
+                _ => -1
+            };
         }
 
         /// <summary>
@@ -475,14 +466,14 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 
             id = connectionLabel;
             nextId = startLabel;
-            string character = metaData.TalkingPartner01;
-            if (string.IsNullOrEmpty(character))
+            int character = MappingManager.MapCharacter(metaData.TalkingPartner01);
+            if (character == -1)
             {
                 Debug.LogWarning("While loading " + metaData.TitleOfNovel + ": Initial character role not found!");
             }
 
-            string expression = metaData.StartTalkingPartnerEmotion;
-            if (string.IsNullOrEmpty(expression))
+            int expression = MappingManager.MapFaceExpressions(metaData.StartTalkingPartnerExpression);
+            if (expression == -1)
             {
                 Debug.LogWarning("While loading " + metaData.TitleOfNovel + ": Initial character expression not found!");
             }
@@ -493,16 +484,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 
         #region Specific Event Handlers
 
-        //private static VisualNovelEvent HandleLocationEvent(TweePassage passage, string location, List<VisualNovelEvent> list)
-        //{
-        //    string id = passage?.Label;
-        //    string nextId = passage?.Links?[0]?.Target;
-        //    VisualNovelEvent novelEvent = KiteNovelEventFactory.GetSetBackgroundEvent(id, nextId, location);
-        //    list.Add(novelEvent);
-        //    return novelEvent;
-        //}
-
-        private static VisualNovelEvent HandleCharacterTalksEvent(TweePassage passage, string character, string dialogMessage, string expression, List<VisualNovelEvent> list)
+        private static VisualNovelEvent HandleCharacterTalksEvent(TweePassage passage, int character, string dialogMessage, int expression, List<VisualNovelEvent> list)
         {
             string id = passage?.Label;
 
@@ -512,18 +494,17 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             return novelEvent;
         }
 
-        private static VisualNovelEvent HandleCharacterJoinsEvent(TweePassage passage, string character, string expression, List<VisualNovelEvent> list)
-        {
-            string id = passage?.Label;
-            string nextId = passage?.Links?[0]?.Target;
-            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetCharacterJoinsEvent(id, nextId, character, expression);
-            list.Add(novelEvent);
-            return novelEvent;
-        }
+        // private static VisualNovelEvent HandleCharacterJoinsEvent(TweePassage passage, string character, int expression, List<VisualNovelEvent> list)
+        // {
+        //     string id = passage?.Label;
+        //     string nextId = passage?.Links?[0]?.Target;
+        //     VisualNovelEvent novelEvent = KiteNovelEventFactory.GetCharacterJoinsEvent(id, nextId, character, expression);
+        //     list.Add(novelEvent);
+        //     return novelEvent;
+        // }
 
         private static VisualNovelEvent HandleBiasEvent(TweePassage passage, string bias, List<VisualNovelEvent> list)
         {
-            Debug.Log("HandleBiasEvent");
             string id = passage?.Label;
 
             string nextId = (passage?.Links != null && passage.Links.Count > 0)

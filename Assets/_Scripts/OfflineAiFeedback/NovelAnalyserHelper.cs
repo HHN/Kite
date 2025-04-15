@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Text;
+using Assets._Scripts._Mappings;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using UnityEngine;
@@ -407,7 +408,7 @@ namespace Assets._Scripts.OfflineAiFeedback
                 return;
             }
 
-            AddFormattedLineToPrompt(novelEvent.character, novelEvent.text);
+            AddFormattedLineToPrompt(MappingManager.MapCharacterToString(novelEvent.character), novelEvent.text);
 
             PlayNextEvent();
         }

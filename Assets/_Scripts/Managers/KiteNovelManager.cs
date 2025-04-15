@@ -31,12 +31,10 @@ namespace Assets._Scripts.Managers
 
         public void SetAllKiteNovels(List<VisualNovel> kiteNovels)
         {
-            Debug.Log("SetAllKiteNovels");
             if (kiteNovels == null)
             {
-                Debug.Log("List<VisualNovel> kiteNovels is null ");
+                Debug.LogWarning("List<VisualNovel> kiteNovels is null ");
             }
-            Debug.Log("List<VisualNovel> kiteNovels size: " + kiteNovels.Count);
             this._kiteNovels = kiteNovels;
         }
 

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Assets._Scripts._Mappings;
 using Assets._Scripts.Controller.SceneControllers;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
@@ -98,7 +99,7 @@ namespace Assets._Scripts.Player
                 PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables()));
             
             guiContent.Add(newMessageBox);
-            AddFormattedPromptLine(novelEvent.character, novelEvent.text);
+            AddFormattedPromptLine(MappingManager.MapCharacterToString(novelEvent.character), novelEvent.text);
         }
 
         public void ShowPlayerAnswer(string message)
@@ -109,7 +110,7 @@ namespace Assets._Scripts.Player
             messageBox.SetMessage(message);
             guiContent.Add(newMessageBox);
 
-            AddFormattedPromptLine("PLAYER", message);
+            AddFormattedPromptLine(MappingManager.MapCharacterToString(1), message);
 
             // Deaktiviere den Button der vorherigen blueMessagePrefabWithTrigger (falls vorhanden)
             if (_lastBlueMessagePrefabWithTrigger != null)
@@ -209,12 +210,12 @@ namespace Assets._Scripts.Player
             {
                 VisualNovelEvent visualNovelEvent = savedData.visualNovelEvents[i];
 
-                if (visualNovelEvent.id.Contains("OptionsLabel") && visualNovelEvent.character == "none")
+                if (visualNovelEvent.id.Contains("OptionsLabel") && visualNovelEvent.character == 0)
                 {
-                    visualNovelEvent.character = "PLAYER";
+                    visualNovelEvent.character = 1;
                 }
                 
-                AddFormattedPromptLine(visualNovelEvent.character, visualNovelEvent.text);
+                AddFormattedPromptLine(MappingManager.MapCharacterToString(visualNovelEvent.character), visualNovelEvent.text);
 
                 GameObject newMessageBox;
 
@@ -272,14 +273,14 @@ namespace Assets._Scripts.Player
         private GameObject GetMessagePrefab(VisualNovelEvent novelEvent)
         {
             GameObject newMessageBox;
-            if (novelEvent.character == "PLAYER")
+            if (novelEvent.character == 1)
             {
                 newMessageBox = Instantiate(blueMessagePrefab, transform);
             }
-            else if (novelEvent.character != "NONE" &&
-                     novelEvent.character == "INTRO" || 
-                     novelEvent.character == "OUTRO" || 
-                     novelEvent.character == "INFO")
+            else if (novelEvent.character != 0 && // None
+                     novelEvent.character == 2 || // Intro
+                     novelEvent.character == 3 || // Outro
+                     novelEvent.character == 4)   // Info
             {
                 newMessageBox = Instantiate(cottaMessagePrefab, transform);
             }

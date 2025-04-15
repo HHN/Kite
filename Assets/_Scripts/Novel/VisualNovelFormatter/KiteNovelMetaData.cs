@@ -13,7 +13,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
         public string ContextForPrompt { get; set; } = "";
 
-        public string StartTalkingPartnerEmotion { get; set; } = "";
+        public string StartTalkingPartnerExpression { get; set; } = "";
 
         public string TalkingPartner01 { get; set; } = "";
 

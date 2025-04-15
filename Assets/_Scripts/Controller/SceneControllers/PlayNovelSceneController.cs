@@ -101,7 +101,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         private readonly Dictionary<string, VisualNovelEvent> _novelEvents = new();
         private readonly string[] _optionsId = new string[2];
         private ConversationContentGuiController _conversationContentGuiController;
-        private string _novelCharacter = "NONE";
+        private int _novelCharacter = 0;
         private NovelImageController _novelImagesController;
         private VisualNovelEvent _savedEventToResume; // Speichert das letzte Ereignis für das Fortsetzen
         private Coroutine _timerCoroutine;
@@ -110,7 +110,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         private IEnumerator _speakingCoroutine;
 
         // Character Expressions
-        public Dictionary<string, string> CharacterExpressions { get; } = new();
+        public Dictionary<int, int> CharacterExpressions { get; } = new();
 
         public bool IsPaused { get; set; }
         public VisualNovel NovelToPlay => novelToPlay;
@@ -274,15 +274,15 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             CharacterExpressions.Clear();
             
-            List<string> characters = novelToPlay.novelEvents
+            List<int> characters = novelToPlay.novelEvents
                 .Select(e => e.character) // Wähle das `character`-Feld aus
-                .Where(c => c != "NONE" && c != "PLAYER" && c != "INFO") // Schließe die Werte 0, 1 und 4 aus
+                .Where(c => c != 0 && c != 1 && c != 4) // Schließe die Werte 0, 1 und 4 aus
                 .Distinct() // Optional: Entfernt Duplikate
                 .ToList(); // Konvertiere das Ergebnis in eine Liste
 
             foreach (var characterId in characters)
             {
-                CharacterExpressions[characterId] = "NONE";
+                CharacterExpressions[characterId] = 0;
             }
         }
 
@@ -690,19 +690,17 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             _novelCharacter = novelEvent.character;
 
-            if (!CharacterExpressions.ContainsKey(_novelCharacter) && _novelCharacter != "NONE" && _novelCharacter != "PLAYER" &&
-                _novelCharacter != "INFO")
+            if (!CharacterExpressions.ContainsKey(_novelCharacter) && _novelCharacter != 0 && _novelCharacter != 1 && _novelCharacter != 4)
             {
                 Debug.LogWarning($"Character ID {_novelCharacter} is not registered.");
                 return;
             }
 
             // Speichere die neue Gesichtsanimation
-            if (CharacterExpressions.ContainsKey(_novelCharacter) && _novelCharacter != "NONE" && _novelCharacter != "PLAYER" &&
-                _novelCharacter != "INFO")
+            if (CharacterExpressions.ContainsKey(_novelCharacter) && _novelCharacter != 0 && _novelCharacter != 1 && _novelCharacter != 4)
             {
-                //CharacterExpressions[_novelCharacter] = novelEvent.expressionType;
-                //_novelImagesController.SetFaceExpression(_novelCharacter, CharacterExpressions[_novelCharacter]);     // TODO: Machen, dass es nen String nimmt.
+                CharacterExpressions[_novelCharacter] = novelEvent.expressionType;
+                _novelImagesController.SetFaceExpression(_novelCharacter, CharacterExpressions[_novelCharacter]);
             }
 
             if (novelEvent.show)

@@ -88,6 +88,29 @@ namespace Tests.PlayMode
         }
 
         [UnityTest]
+        public IEnumerator ImportNovel()
+        {
+            Debug.Log("ConvertNovelsFromTweeToJsonAndSelectiveOverrideOldNovels");
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneNames.MainMenuScene);
+
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
+            GameObject converter = GameObject.Find("TweeToJsonConverter");
+
+            Assert.NotNull(converter);
+
+            NovelReader novelReader = converter.GetComponent<NovelReader>();
+            novelReader.ImportNovel();
+
+            while (novelReader.IsFinished() == false)
+            {
+                yield return null;
+            }
+        }
+
+        [UnityTest]
         public IEnumerator TestKeyWords()
         {
             Debug.Log("TEST!");

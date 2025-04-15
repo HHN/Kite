@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel.VisualNovelLoader;
 using Newtonsoft.Json;
@@ -41,6 +42,11 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         public void ConvertNovelsFromTweeToJSONAndSelectiveOverrideOldNovels()
         {
             StartCoroutine(LoadAllNovelsWithTweeApproachAndSelectiveOverrideOldNovels());
+        }
+
+        public void ImportNovel()
+        {
+            StartCoroutine(ImportNovelWithTweeApproach());
         }
 
         /// <summary>
@@ -114,6 +120,26 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
                 // Starte die Verarbeitung der Novellen mit selektivem �berschreiben.
                 StartCoroutine(ProcessNovelsAndSelectiveOverrideOldNovels(listOfAllNovelPaths));
+            }));
+        }
+
+        private IEnumerator ImportNovelWithTweeApproach()
+        {
+            // Bestimmt den vollst�ndigen Pfad zur Liste der Novellenpfade.
+            string fullPath = Path.Combine(Application.dataPath, NovelListPath);
+            
+            // Lade die Liste der Novel-Pfade.
+            yield return StartCoroutine(LoadNovelPaths(fullPath, listOfAllNovelPaths =>
+            {
+                if (listOfAllNovelPaths == null || listOfAllNovelPaths.Count == 0)
+                {
+                    Debug.LogWarning("Loading Novels failed: No Novels found! Path: " + fullPath);
+                    KiteNovelManager.Instance().SetAllKiteNovels(new List<VisualNovel>());
+                    return;
+                }
+
+                // Starte die Verarbeitung der Novellen mit selektivem �berschreiben.
+                StartCoroutine(NovelProcessor(listOfAllNovelPaths));
             }));
         }
 
@@ -269,6 +295,109 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
             // Speichere die modifizierte Liste als JSON.
             SaveToJson(new NovelListWrapper(modifiedListOfNovels));
+        }
+
+        private IEnumerator NovelProcessor(List<string> listOfAllNovelPaths)
+        {
+            // Liste zur Speicherung aller verarbeiteten Novellenordner.
+            List<KiteNovelFolder> allFolders = new List<KiteNovelFolder>();
+
+            // Durchlaufe alle Novellenpfade.
+            foreach (string pathOfNovel in listOfAllNovelPaths)
+            {
+                // Erstelle die vollst�ndigen Pfade zu den Metadaten- und Event-Listen-Dateien.
+                string fullPathOfNovelMetaData = Path.Combine(Application.dataPath, pathOfNovel, MetaDataFileName);
+                string fullPathOfNovelEventList = Path.Combine(Application.dataPath, pathOfNovel, EventListFileName);
+
+                KiteNovelMetaData kiteNovelMetaData = null;
+                string jsonStringOfEventList = null;
+
+                // Lade und deserialisiere die Metadaten.
+                yield return StartCoroutine(LoadAndDeserialize<KiteNovelMetaData>(fullPathOfNovelMetaData, result => { kiteNovelMetaData = result; }));
+
+                // Falls die Metadaten nicht geladen werden konnten, �berspringe diese Novelle.
+                if (kiteNovelMetaData == null)
+                {
+                    Debug.LogWarning("Kite Novel Meta Data could not be loaded: " + pathOfNovel);
+                    continue;
+                }
+
+                // Lade den Inhalt der Event-Liste.
+                yield return StartCoroutine(LoadFileContent(fullPathOfNovelEventList, result => { jsonStringOfEventList = result; }));
+
+                // Falls die Event-Liste leer ist, �berspringe diese Novelle.
+                if (string.IsNullOrEmpty(jsonStringOfEventList))
+                {
+                    Debug.LogWarning("Kite Novel Event List could not be loaded: " + pathOfNovel);
+                    continue;
+                }
+
+                // Ersetze W�rter in der Event-Liste anhand der in den Metadaten angegebenen Wortpaare.
+                jsonStringOfEventList = ReplaceWordsInString(jsonStringOfEventList, kiteNovelMetaData.WordsToReplace);
+                
+                // Zwischenspeichern der in der Novel verwendeten Keywords.
+                // Mit Mimiken / Audio Files / Biases
+
+                // Konvertiere den Text der Event-Liste in eine strukturierte Event-Liste.
+                List<VisualNovelEvent> kiteNovelEventList = KiteNovelConverter.ConvertTextDocumentIntoEventList(jsonStringOfEventList, kiteNovelMetaData);
+
+                // F�ge den verarbeiteten Ordner zur Gesamtliste hinzu.
+                allFolders.Add(new KiteNovelFolder(kiteNovelMetaData, kiteNovelEventList));
+            }
+
+            // Konvertiere alle Ordner in VisualNovel-Objekte.
+            List<VisualNovel> visualNovels = KiteNovelConverter.ConvertFilesToNovels(allFolders);
+
+            // Warte, bis der Manager mindestens eine Visual Novel geladen hat.
+            List<VisualNovel> novels = KiteNovelManager.Instance().GetAllKiteNovels();
+            
+            if (novels == null || novels.Count == 0)
+            {
+                // Speichere die konvertierten Visual Novels als JSON-Datei.
+                SaveToJson(new NovelListWrapper(visualNovels));
+            }
+            else
+            {
+                // Erhalte die aktuell geladenen (alten) Novellen.
+                List<VisualNovel> oldNovels = novels;
+
+                // Erzeuge eine neue Liste, in die entweder das alte Novel oder ein neues, aktualisiertes Novel �bernommen wird.
+                List<VisualNovel> modifiedListOfNovels = new List<VisualNovel>();
+
+                // Vergleiche jedes alte Novel mit den neu geladenen Novellen.
+                foreach (VisualNovel visualNovel in oldNovels)
+                {
+                    VisualNovel novel = visualNovel;
+
+                    // Falls ein neues Novel mit derselben ID gefunden wird, wird das alte Novel durch das neue ersetzt.
+                    foreach (VisualNovel newNovel in visualNovels)
+                    {
+                        if (newNovel.id == novel.id)
+                        {
+                            novel = newNovel;
+                            Debug.Log("Override Novel : " + newNovel.title);
+                            break;
+                        }
+                    }
+
+                    // F�ge das (ggf. aktualisierte) Novel der neuen Liste hinzu.
+                    modifiedListOfNovels.Add(novel);
+                }
+            
+                // Neue Novels anhängen, die noch nicht vorhanden sind
+                foreach (VisualNovel newNovel in visualNovels)
+                {
+                    bool alreadyExists = modifiedListOfNovels.Any(n => n.id == newNovel.id);
+                    if (!alreadyExists)
+                    {
+                        modifiedListOfNovels.Add(newNovel);
+                        Debug.Log("Added new Novel : " + newNovel.title);
+                    }
+                }
+
+                // Speichere die modifizierte Liste als JSON.
+                SaveToJson(new NovelListWrapper(modifiedListOfNovels));
+            }
         }
 
         /// <summary>

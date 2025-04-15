@@ -15,13 +15,13 @@ namespace Assets._Scripts.Novel
         public int hairSpriteId;
         public int faceSpriteId;
         public string backgroundSprite;
-        public string character;
+        public int character;
         public string text;
         public int animationType;
-        public string expressionType;
+        public int expressionType;
         public int xPosition;
         public int yPosition;
-        public int opinionChoiceNumber; // 1 -> Nervous; 2 -> Fearful; 3 -> Encouraged; 4 -> Annoyed;
+        public int opinionChoiceNumber;
         public string audioClipToPlay;
         public string animationToPlay;
         public bool show = true;
