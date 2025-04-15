@@ -161,7 +161,7 @@ Ihr Partner steht ja wirklich hinter Ihnen und übernimmt sogar die Bürgschaft.
 >>--<<
 >>Bias|ConfirmationBias<<
 >>--<<
->>Bias|GEndrPayGap<<
+>>Bias|GenderPayGap<<
 
 [[Ja, mein Partner ist eine wichtige Unterstützung. Ich schicke Ihnen die Bestätigung. Was wären denn die nächsten Schritte für den Kreditantrag?->Nächste Schritte]]
 
@@ -330,7 +330,7 @@ Besonders bei Neugründungen in wirtschaftlich unsicheren Zeiten oder in Branche
 >>Character1|Speaks|Rejecting<<
 Nun gut. Vielleicht sollten Sie noch einmal darüber nachdenken, den Betrag zu reduzieren. Es könnte klüger sein, sich nicht zu übernehmen.
 >>--<<
->>Bias|GEndrSpecificStereotypes<<
+>>Bias|GenderSpecificStereotypes<<
 
 [[Experte ausreichen II]]
 
@@ -352,14 +352,14 @@ Schön zu hören, dass Sie tatsächlich aktiv mitarbeiten und nicht nur ein Aush
 
 [[Was meinen Sie damit?->Aufgabenverteilung Nachfrage]]
 
-[[Wir sollten uns generell nicht auf irgEndtwas ausruhen. Wie geht’s denn mit dem Kreditantrag weiter?->End Positiv Geschäftspartner]]
+[[Wir sollten uns generell nicht auf irgendetwas ausruhen. Wie geht’s denn mit dem Kreditantrag weiter?->End Positiv Geschäftspartner]]
 
 
 :: Finanzangelegenheiten [Bias] {"position":"3150,2300","size":"100,100"}
 >>Character1|Speaks|NeutralRelaxed<<
 Nun ja, Frauen haben oft nicht das nötige Verständnis für komplexe Finanzangelegenheiten. 
 >>--<<
->>Bias|GEndrSpecificStereotypes<<
+>>Bias|GenderSpecificStereotypes<<
 
 [[Aber es gibt doch viele Frauen, die erfolgreich komplexe Finanzangelegenheiten managen?->Nachfrage Internalisiert]]
 
@@ -424,7 +424,7 @@ Ja, natürlich. Das war auch nur eine Redewendung und nicht böse gemeint.
 >>Character1|Speaks|Laughing<<
 Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.
 >>--<<
->>Bias|GEndrSpecificStereotypes<<
+>>Bias|GenderSpecificStereotypes<<
 >>--<<
 >>Bias|BiasInThePerceptionOfLeadershipSkills<<
 >>--<<
@@ -669,7 +669,7 @@ Wenn ich hier so in die Tabelle gucke, was es so gibt... Zuschüsse, Darlehen, u
 >>Character1|Speaks|Smiling<<
 Männer und Frauen gehen Dinge oft anders an. Männer haben oft eine natürliche Begabung für Zahlen.
 >>--<<
->>Bias|GEndrSpecificStereotypes<<
+>>Bias|GenderSpecificStereotypes<<
 >>--<<
 >>Bias|ConfirmationBias<<
 
@@ -811,7 +811,7 @@ Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzu
 >>--<<
 >>Bias|UndervaluationFemaleManagedCompany<<
 >>--<<
->>Bias|GEndrSpecificStereotypes<<
+>>Bias|GenderSpecificStereotypes<<
 
 [[Aus meiner Sicht ist die Kreditsumme unerlässlich, um die geplanten Wachstumsziele erfolgreich umzusetzen.->Finanzierung]]
 
@@ -1077,7 +1077,7 @@ In Ihrem Businessplan haben Sie Ihre Ziele klar definiert und die Finanzprognose
 
 [[Basierend auf meiner aktuellen Finanzplanung, plane ich einen Kredit in Höhe von 70.000 € zu beantragen.->Weiter VI]]
 
-[[Mein Kreditantrag wird voraussichtlich bei 70.000 € liegen, um die anstehEndn Investitionen und Betriebskosten angemessen abzudecken.->Weiter VI]]
+[[Mein Kreditantrag wird voraussichtlich bei 70.000 € liegen, um die anstehenden Investitionen und Betriebskosten angemessen abzudecken.->Weiter VI]]
 
 
 :: Weiter VI {"position":"2575,1025","size":"100,100"}

@@ -21,7 +21,7 @@ Einstiegsdialog
 KITE steht für KI-Thinktank Entrepreneurship. 
 >>--<<
 >>Character1|Speaks|Smiling<<
-Im Vorgängerprojekt KITE haben wir gezeigt, wie wichtig gezielter Kompetenzaufbau ist. Durch Workshops und Trainings konnten Gründerinnen lernen, diskriminierEnd Situationen schneller zu erkennen und sich darauf vorzubereiten. Diese Erfahrungen fließen nun direkt in KITE II ein.
+Im Vorgängerprojekt KITE haben wir gezeigt, wie wichtig gezielter Kompetenzaufbau ist. Durch Workshops und Trainings konnten Gründerinnen lernen, diskriminierende Situationen schneller zu erkennen und sich darauf vorzubereiten. Diese Erfahrungen fließen nun direkt in KITE II ein.
 
 [[Danke, ich bin bereit.->Spielstart]]
 [[Und welche Rolle spielt KI?->KI Rolle]]
@@ -109,7 +109,7 @@ Du kannst dir auch Novels merken, die du später spielen möchtest, und sehen, w
 
 :: Mehr über die App {"position":"550,575","size":"100,100"}
 >>Character1|Speaks|Smiling<<
-KITE II ist eine KI-gestützte Anwendung, die dir hilft, besser mit diskriminierEndn Erfahrungen im Gründungsprozess umzugehen.
+KITE II ist eine KI-gestützte Anwendung, die dir hilft, besser mit diskriminierenden Erfahrungen im Gründungsprozess umzugehen.
 >>--<<
 >>Character1|Speaks|Smiling<<
 Wir bieten dir realistische Dialoge, in denen du lernen kannst, auf Vorurteile zu reagieren.
@@ -222,7 +222,7 @@ Das Besondere an KITE II ist, dass die KI die Dialoge analysiert und dir Feedbac
 
 :: Weitere Infos {"position":"1550,575","size":"100,100"}
 >>Character1|Speaks|Smiling<<
-Es gibt auch Links zu weiterführEndn Informationen, falls du dich noch tiefer in bestimmte Themen einarbeiten möchtest.
+Es gibt auch Links zu weiterführenden Informationen, falls du dich noch tiefer in bestimmte Themen einarbeiten möchtest.
 >>--<<
 >>Character1|Speaks|Smiling<<
 Wir möchten, dass du dich rundum unterstützt fühlst und sicherer wirst im Umgang mit Diskriminierung.

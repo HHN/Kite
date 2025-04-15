@@ -136,7 +136,7 @@ Danke Ihnen! Bis bald.
 
 :: Erklärung [Bias] {"position":"2150,950","size":"100,100"}
 >>Character1|Speaks|Shocked<<
-So habe ich das nicht gemeint. Aber unsere Leserinnen und Leser finden es interessant, wenn eine so attraktive Frau wie Sie sich mit einer so spannEndn Idee selbstständig macht.
+So habe ich das nicht gemeint. Aber unsere Leserinnen und Leser finden es interessant, wenn eine so attraktive Frau wie Sie sich mit einer so spannenden Idee selbstständig macht.
 >>--<<
 >>Bias|Microaggression<<
 
@@ -162,7 +162,7 @@ Sehr ermutigend für andere Frauen. Und Sie haben ja auch wirklich Glück, dass 
 
 :: Fokus Geschäftsidee [Bias] {"position":"2000,250","size":"100,100"}
 >>Character1|Speaks|Dissatisfied<<
-Da kann ich leider nichts versprechen. Ich kann zwar beim Schreiben darauf achten, aber am End entscheidet die Redaktionsleitung, wie die Story erscheint.
+Da kann ich leider nichts versprechen. Ich kann zwar beim Schreiben darauf achten, aber am Ende entscheidet die Redaktionsleitung, wie die Story erscheint.
 >>--<<
 >>Character1|Speaks|Shocked<<
 Soll ich etwa nicht erwähnen, dass Sie eine Frau sind?
@@ -180,7 +180,7 @@ Soll ich etwa nicht erwähnen, dass Sie eine Frau sind?
 >>Character1|Speaks|Smiling<<
 Es ist ja schon eher selten, dass Frauen gründen. Das könnte anderen Mut machen! Ich finde, das sollte wir erwähnen.
 
-[[Mir ist es wichtig, dass meine Idee im Vordergrund steht. Das sEndt auch eine starke Botschaft.->Sensationalisierung]]
+[[Mir ist es wichtig, dass meine Idee im Vordergrund steht. Das sendet auch eine starke Botschaft.->Sensationalisierung]]
 
 [[Wir können gerne erwähnen, dass Frauen wie ich gründen, aber den Fokus auf die Idee legen.->Frauen gründen]]
 
@@ -406,7 +406,7 @@ Mal sehen, ich versuche einen Mittelweg zu finden. Aber seien Sie nicht überras
 
 [[Es ist mir wichtig, dass mein Geschlecht nicht im Mittelpunkt steht. Meine Gründung und Leistung sollen für sich sprechen.->Durchsetzung]]
 
-[[Warum ist es spannEndr, wenn das Geschlecht betont wird? Können Sie das erklären?->Nachfrage Positiv]]
+[[Warum ist es spannender, wenn das Geschlecht betont wird? Können Sie das erklären?->Nachfrage Positiv]]
 
 [[Wenn es nur ums Geschlecht geht, können wir es lassen.->Kein Artikel]]
 

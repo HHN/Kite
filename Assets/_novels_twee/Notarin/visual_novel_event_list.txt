@@ -27,7 +27,7 @@ Du hast einen Termin mit einer Notarin, um einen Termin für deine Gründung aus
 
 :: Bereits erwähnt {"position":"900,575","size":"100,100"}
 >>Character1|Speaks|NeutralRelaxed<<
-Ah, okay. Das Formular sEnd ich Ihnen zu. Nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?
+Ah, okay. Das Formular sende ich Ihnen zu. Nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?
 
 [[Ja, das passt mir gut.->Termin Ja]]
 
@@ -74,7 +74,7 @@ Guten Tag, für den Handelsregistereintrag muss erstmal ein Fragebogen ausgefül
 
 :: Fragebogen zurückkommen {"position":"1475,1025","size":"100,100"}
 >>Character1|Speaks|NeutralRelaxed<<
-Also, ich kann Ihnen den Fragebogen zusEndn und nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?
+Also, ich kann Ihnen den Fragebogen zusenden und nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?
 
 [[Ja, das passt mir gut.->Termin Ja]]
 
@@ -107,7 +107,7 @@ Ich verstehe Ihren Punkt und werde zukünftig darauf achten. In meiner Erfahrung
 >>End<<
 
 
-:: Ja ZusEndn {"position":"1350,725","size":"100,100"}
+:: Ja Zusenden {"position":"1350,725","size":"100,100"}
 >>Character1|Speaks|NeutralRelaxed<<
 Gut. Nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?
 
@@ -118,9 +118,9 @@ Gut. Nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen
 
 :: Klarstellung {"position":"1500,575","size":"100,100"}
 >>Character1|Speaks|Rejecting<<
-Wie auch immer. Wollen Sie den Fragebogen zugesEndt bekommen?
+Wie auch immer. Wollen Sie den Fragebogen zugesendet bekommen?
 
-[[Ja, schicken Sie mir bitte den Fragebogen zu.->Ja ZusEndn]]
+[[Ja, schicken Sie mir bitte den Fragebogen zu.->Ja Zusenden]]
 
 [[Mir ist wichtig, dass meine Position als Geschäftsführerin korrekt anerkannt wird. Ich erwarte, fair behandelt zu werden.->Kritik]]
 
@@ -149,7 +149,7 @@ Nun ja, als Frau ist es deutlich schwieriger zu gründen. Alleine die Kapitalbes
 
 :: Rat {"position":"775,1025","size":"100,100"}
 >>Character1|Speaks|NeutralRelaxed<<
-Kommen wir zurück zu dem Fragebogen. Wie gesagt, sEnd ich Ihnen die benötigten Formulare zu und nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?
+Kommen wir zurück zu dem Fragebogen. Wie gesagt, sende ich Ihnen die benötigten Formulare zu und nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?
 
 [[Ja, das passt mir gut.->Termin Ja]]
 
@@ -166,7 +166,7 @@ Es war ja nur ein gut gemeinter Rat. Da müssen Sie nicht gleich so zickig reagi
 
 [[Ich gehe nicht mehr weiter darauf ein. Lassen Sie uns lieber einen Termin ausmachen.->Termin ausmachen]] 
 
-[[Das war kein hilfreicher Rat, sondern einfach unangemessen. Ich werde mich an eine andere Notarin wEndn. Schönen Tag noch.->Gespräch beenden]]
+[[Das war kein hilfreicher Rat, sondern einfach unangemessen. Ich werde mich an eine andere Notarin wenden. Schönen Tag noch.->Gespräch beenden]]
 
 
 :: Respektvolle Behandlung {"position":"1675,1025","size":"100,100"}
@@ -183,7 +183,7 @@ Inwiefern habe ich Sie denn nicht respektvoll behandelt?
 Oh, so ist das. Nun gut. 
 >>--<<
 >>Character1|Speaks|NeutralRelaxed<<
-Kommen wir zurück zu dem Fragebogen. Wie gesagt, sEnd ich Ihnen die benötigten Formulare zu und nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?
+Kommen wir zurück zu dem Fragebogen. Wie gesagt, sende ich Ihnen die benötigten Formulare zu und nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?
 
 [[Ja, das passt mir gut.->Termin Ja]]
 
@@ -212,7 +212,7 @@ Schönen Tag noch!
 
 :: Termin ausmachen {"position":"1475,1350","size":"100,100"}
 >>Character1|Speaks|NeutralRelaxed<<
-Wie erwähnt, kann ich Ihnen dann den Fragebogen zusEndn und nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?
+Wie erwähnt, kann ich Ihnen dann den Fragebogen zusenden und nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?
 
 
 [[Ja, das passt mir gut.->Termin Ja]]
@@ -243,4 +243,4 @@ Vielleicht sollten Sie nicht so empfindlich auf jede Kleinigkeit reagieren. Wenn
 
 [[Ich gehe nicht mehr weiter darauf ein. Lassen Sie uns lieber einen Termin ausmachen.->Termin ausmachen]] 
 
-[[Ich sehe, dass eine respektvolle Zusammenarbeit hier nicht möglich ist. Ich werde mich an eine andere Notarin wEndn. Schönen Tag noch.->Gespräch beenden]]
+[[Ich sehe, dass eine respektvolle Zusammenarbeit hier nicht möglich ist. Ich werde mich an eine andere Notarin wenden. Schönen Tag noch.->Gespräch beenden]]

@@ -93,8 +93,8 @@ Du wirst es bereuen, wenn du in diese Unternehmensgründung reinstolperst und am
 [[Könnt ihr mich nicht einfach unterstützen und euch für mich freuen?->Besorgt-Negativ]]
 
 
-:: Ende {"position":"900,1725","size":"100,100"}
->>Ende<<
+:: End {"position":"900,1725","size":"100,100"}
+>>End<<
 
 
 :: Ersparnis [Bias] {"position":"825,600","size":"100,100"}
@@ -257,7 +257,7 @@ Oder vielleicht übernimmst du den kreativen Teil und überlässt die technische
 [[Ich kriege das schon hin und hole bei Bedarf Fachleute dazu. Lass uns das einfach so stehen lassen.->Negativ: Benevolenter Sexismus]]
 
 
-:: Negativ Ende {"position":"2825,1800","size":"100,100"}
+:: Negativ End {"position":"2825,1800","size":"100,100"}
 >>Character2|Speaks|Smiling<<
 Wir können ja nochmal darüber sprechen.
 >>--<<
@@ -270,7 +270,7 @@ Tschüss.
 >>Character2|Speaks|Smiling<<
 Mach's gut.
 >>--<<
->>Ende<<
+>>End<<
 
 
 :: Negativ II {"position":"2750,1650","size":"100,100"}
@@ -280,11 +280,11 @@ Na gut. Vielleicht solltest du noch eine Nacht darüber schlafen.
 >>Player<<
 Dann erzähle ich lieber nicht, dass ich diese Woche noch einen Termin...
 
-[[... bei der Bank habe.->Negativ Ende]]
+[[... bei der Bank habe.->Negativ End]]
 
-[[... bei der Notarin habe.->Negativ Ende]]
+[[... bei der Notarin habe.->Negativ End]]
 
-[[... für die Besichtigung von Büroräumen habe.->Negativ Ende]]
+[[... für die Besichtigung von Büroräumen habe.->Negativ End]]
 
 
 :: Negativ: Benevolenter Sexismus {"position":"2900,1650","size":"100,100"}
@@ -294,11 +294,11 @@ Na gut. Vielleicht solltest du noch eine Nacht darüber schlafen.
 >>Player<<
 Dann erzähle ich lieber nicht, dass ich diese Woche noch einen Termin...
 
-[[... bei der Bank habe.->Negativ Ende]]
+[[... bei der Bank habe.->Negativ End]]
 
-[[... bei der Notarin habe.->Negativ Ende]]
+[[... bei der Notarin habe.->Negativ End]]
 
-[[... für die Besichtigung von Büroräumen habe.->Negativ Ende]]
+[[... für die Besichtigung von Büroräumen habe.->Negativ End]]
 
 
 :: Neutral {"position":"1325,1575","size":"100,100"}
@@ -318,24 +318,24 @@ Danke. Ah, was ich dir auch noch sagen wollte. Ich habe diese Woche noch einen T
 [[... für die Besichtigung von Büroräumen.->Neutral-Termin]]
 
 
-:: Neutral Ende a {"position":"1250,1875","size":"100,100"}
+:: Neutral End a {"position":"1250,1875","size":"100,100"}
 >>Character2|Speaks|Smiling<<
 Alles klar, und besuch uns mal wieder. 
 >>--<<
 >>Character1|Speaks|Smiling<<
 Bis dann.
 >>--<<
->>Ende<<
+>>End<<
 
 
-:: Neutral Ende b {"position":"1400,1875","size":"100,100"}
+:: Neutral End b {"position":"1400,1875","size":"100,100"}
 >>Character2|Speaks|Smiling<<
 Oh, so war das nicht gemeint! Besuch uns mal wieder. 
 >>--<<
 >>Character1|Speaks|Smiling<<
 Ja, komm doch wieder mal vorbei. Mach's gut!
 >>--<<
->>Ende<<
+>>End<<
 
 
 :: Neutral-Negativ {"position":"2600,750","size":"100,100"}
@@ -353,9 +353,9 @@ Da bin ich gespannt. Denk dran, die Leute werden sich wohler fühlen, mit dir zu
 >>--<<
 >>Bias|TightropeBias<<
 
-[[Hm, ich muss dann auch weiter. Ich halte euch auf dem Laufenden. Bis dann.->Neutral Ende a]]
+[[Hm, ich muss dann auch weiter. Ich halte euch auf dem Laufenden. Bis dann.->Neutral End a]]
 
-[[Das würdest du jetzt einem Mann nicht sagen. Es ist okay zu zeigen, dass ich weiß, was ich will. Na ja, ich muss auch weiter. Bis dann.->Neutral Ende b]]
+[[Das würdest du jetzt einem Mann nicht sagen. Es ist okay zu zeigen, dass ich weiß, was ich will. Na ja, ich muss auch weiter. Bis dann.->Neutral End b]]
 
 
 :: Nur das Beste {"position":"2175,1475","size":"100,100"}
@@ -393,16 +393,16 @@ Wir freuen uns so für dich! Erzähl dann, wie es verlaufen ist, ja?
 [[Positiv: Benevolenter Sexismus]]
 
 
-:: Positiv-Termin Ende {"position":"900,1550","size":"100,100"}
+:: Positiv-Termin End {"position":"900,1550","size":"100,100"}
 >>Character2|Speaks|Smiling<<
 Alles klar, besuch uns mal wieder!
 >>--<<
 >>Character1|Speaks|SmilingBig<<
 Bis dann!
 
-[[Nochmal danke und bis dann.->Ende]]
+[[Nochmal danke und bis dann.->End]]
 
-[[Mache ich, bis dann!->Ende]]
+[[Mache ich, bis dann!->End]]
 
 
 :: Positiv: Benevolenter Sexismus [Bias] {"position":"800,1400","size":"100,100"}
@@ -412,7 +412,7 @@ Und du kannst auch deinen weiblichen Charme nutzen! Dann helfen Leute dir noch v
 >>--<<
 >>Bias|GenderSpecificStereotypes<<
 
-[[Okay, ich melde mich dann. Ich muss auch schon weiter ->Positiv-Termin Ende]]
+[[Okay, ich melde mich dann. Ich muss auch schon weiter ->Positiv-Termin End]]
 
 [[Also, das würdest du jetzt nicht zu einem Mann sagen. Was soll "weiblicher Charme" überhaupt bedeuten?->Positiv: Benevolenter Sexismus II]]
 
@@ -424,7 +424,7 @@ Du hast ja recht. Da habe ich nicht richtig darüber nachgedacht.
 >>Character1|Speaks|Smiling<<
 Melde dich einfach nach dem Termin, ja?
 
-[[Klar, ich melde mich dann. Ich muss auch schon wieder weiter.->Positiv-Termin Ende]]
+[[Klar, ich melde mich dann. Ich muss auch schon wieder weiter.->Positiv-Termin End]]
 
 
 :: Was? Warum? {"position":"2000,750","size":"100,100"}
@@ -501,3 +501,9 @@ Und hast du mal über deine Familienplanung nachgedacht? Du willst doch später 
 [[Also, weil ich mal Kinder haben will, soll ich kein Erfolg haben können?->Kind: Sexismus]]
 
 [[Wer sagt denn, dass ich Kinder will, und selbst wenn, was soll's?->Kein Kind: Sexismus]]
+
+
+
+
+
+

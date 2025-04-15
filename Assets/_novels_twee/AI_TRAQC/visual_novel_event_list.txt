@@ -134,7 +134,7 @@ Okay, wenn es uns entlastet, kann das sinnvoll sein.
 >>Character1|Speaks|Neutral<<
 Mal sehen, wie sich das entwickelt, bevor ich etwas sage.
 [[Ich verstehe, wir informieren euch regelmäßig, damit ihr mitentscheiden könnt.->M4]]
-[[Kein Problem, wir halten euch auf dem LaufEndn.->M4]]
+[[Kein Problem, wir halten euch auf dem Laufenden.->M4]]
 [[Andere sind bereits dabei – jetzt ist eure Chance, mitzugestalten.->M4]]
 
 
@@ -195,7 +195,7 @@ Ich verstehe, aber aktuell sehe ich keinen direkten Nutzen.
 :: M6 {"position":"1300,2675","size":"100,100"}
 >>Character1|Speaks|Neutral<<
 Und wenn die KI falsche Vorschläge macht?
-[[Im Endffekt muss immer ein Mensch entscheiden.->M6-2]]
+[[Im Endeffekt muss immer ein Mensch entscheiden.->M6-2]]
 [[Dann wird sie optimiert. Menschen irren sich auch.->M6-3]]
 [[Dann lernen wir gemeinsam, wie wir die KI verbessern können.->M6-1]]
 
@@ -210,7 +210,7 @@ Gut, wenn wir sie anpassen können, probiere ich es aus.
 :: M6-2 {"position":"1325,2825","size":"100,100"}
 >>Character1|Speaks|Neutral<<
 Das tun wir auch heute. Ich warte ab, bis ihr zuverlässigere Ergebnisse habt.
-[[Gern, wir halten euch auf dem LaufEndn und zeigen Fortschritte.->M7]]
+[[Gern, wir halten euch auf dem Laufenden und zeigen Fortschritte.->M7]]
 [[Um wirklich passgenaue Lösungen zu entwickeln, brauchen wir euch.->M7]]
 
 

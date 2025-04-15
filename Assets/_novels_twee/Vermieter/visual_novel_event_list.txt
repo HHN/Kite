@@ -132,7 +132,7 @@ Es scheint mir oft, dass der Aufwand und die Kosten nicht im Verhältnis zur tat
 
 
 :: Bekanntmachen {"position":"1125,1825","size":"100,100"}
->>Character1|Speaks|Smiling<<
+>>VermieterSprichtFriendly:<<
 Netzwerken, das ist der Schlüssel zum Erfolg! Gut, dass Sie daran gedacht haben. Ich schicke Ihnen später seine Kontaktdaten. Sagen Sie ihm gerne, dass ich Sie geschickt habe. 
 
 [[Freund betont]]
@@ -165,7 +165,7 @@ Ach, ich bin mir sicher, dass Sie das mit Ihrer Frauenpower toll machen werden. 
 Klar, ich helfe, wo ich kann. Der Freund, von dem ich gerade gesprochen habe, sagt immer, Marktforschung ist superwichtig.
 >>--<<
 >>Character1|Speaks|SmilingBig<<
-Sie haben ja schon recherchiert und hoffentlich die passEndn Methoden genutzt? Das macht echt den Unterschied.
+Sie haben ja schon recherchiert und hoffentlich die passenden Methoden genutzt? Das macht echt den Unterschied.
 >>--<<
 >>Bias|UndervaluationFemaleManagedCompany<<
 
@@ -280,7 +280,7 @@ Oh, das war vielleicht etwas ungeschickt ausgedrückt. Ich treffe oft auf Mietin
 >>Character1|Speaks|Smiling<<
 Es fällt mir aber eigentlich auch immer wieder auf, dass Frauen sich detaillierter mit den Anforderungen auseinandersetzen.
 >>--<<
->>Bias|GEndrSpecificStereotypes<<
+>>Bias|GenderSpecificStereotypes<<
 
 
 [[Ich denke, eine gute Vorbereitung ist entscheidend, unabhängig vom Geschlecht. Alle, die gründen, sollten sich um Details kümmern. Vielen Dank für das Vertrauen in meine Fähigkeiten.->Vorbereitung]]
@@ -384,7 +384,7 @@ Was für eine Frage haben Sie denn? Sie scheinen sich ja schon richtig viele Ged
 >>Character1|Speaks|Smiling<<
 Ja, das ist kein Problem. Die Vertragsgestaltung ist dann etwas komplexer. Vielleicht mögen Sie zur Abstimmung dann noch jemanden mitbringen, zum Beispiel Ihren Mann?
 >>--<<
->>Bias|GEndrSpecificStereotypes<<
+>>Bias|GenderSpecificStereotypes<<
 >>--<<
 >>Bias|Heteronormativity<<
 
@@ -445,7 +445,7 @@ Mein Freund betont außerdem immer wieder, wie wichtig Marktforschung ist. Sie h
 >>Character1|Speaks|Smiling<<
 Ach so, ja, das hatten Sie erwähnt. Gut, dass Sie sich Sachen besser merken können als ich, aber ich bin ja nicht so multitaskingfähig wie Sie als Frau. 
 >>--<<
->>Bias|GEndrSpecificStereotypes<<
+>>Bias|GenderSpecificStereotypes<<
 
 [[Selbstbewusst III]]
 
@@ -505,7 +505,7 @@ Lassen Sie uns dafür einen separaten Termin ausmachen. Ich habe nämlich nicht 
 >>Character1|Speaks|Laughing<<
 Das freut mich zu hören. Es ist wirklich großartig zu sehen, dass Sie sich das zutrauen! 
 >>--<<
->>Bias|GEndrSpecificStereotypes<<
+>>Bias|GenderSpecificStereotypes<<
 [[Freund Rat]]
 
 
@@ -526,7 +526,7 @@ Danke für Ihr Verständnis. Ich bin mir sicher, dass Sie Ihr Unternehmen mit Ih
 >>Character1|Speaks|SmilingBig<<
 Sie sind gut vorbereitet. Es fällt mir immer wieder auf, dass Frauen sich detaillierter mit den Anforderungen auseinandersetzen.
 >>--<<
->>Bias|GEndrSpecificStereotypes<<
+>>Bias|GenderSpecificStereotypes<<
 
 [[Gründliche Vorbereitung ist wichtig, unabhängig vom Geschlecht. Alle, die gründen, sollten sich um Details kümmern. Danke für das Vertrauen in meine Fähigkeiten.->Vorbereitung]]
 
@@ -579,7 +579,7 @@ Wie schön! Ich bin mir sicher, dass Sie das mit Ihrer Frauenpower toll machen w
 >>Character1|Speaks|Smiling<<
 Ach so, ja, das hatten Sie erwähnt. Gut, dass Sie sich Sachen besser merken können als ich, aber ich bin ja nicht so multitaskingfähig wie Sie als Frau. 
 >>--<<
->>Bias|GEndrSpecificStereotypes<<
+>>Bias|GenderSpecificStereotypes<<
 
 [[Selbstbewusst III]]
 
@@ -652,7 +652,7 @@ Es gibt einige Standarddokumente, die wir benötigen, um den Mietprozess in Gang
 >>Character1|Speaks|Shocked<<
 Sind Sie gar nicht nervös oder unsicher, was Ihre Gründung betrifft?
 >>--<<
->>Bias|GEndrSpecificStereotypes<<
+>>Bias|GenderSpecificStereotypes<<
 >>--<<
 >>Bias|RiskAversionBias<<
 
@@ -688,11 +688,11 @@ Entschuldigen Sie bitte. So war das natürlich nicht gemeint.
 
 :: Weiter {"position":"1900,375","size":"100,100"}
 >>Character1|Speaks|Smiling<<
-Guten Tag. Dies sind also die zur Verfügung stehEndn Räumlichkeiten. Und Sie sind dabei ein Unternehmen zu gründen?
+Guten Tag. Dies sind also die zur Verfügung stehenden Räumlichkeiten. Und Sie sind dabei ein Unternehmen zu gründen?
 
 [[Genau, ich bin nun so weit, dass ich mich nach Büroräumen umsehen kann->Weiter II]]
 
-[[Das Unternehmen besteht schon seit einer Weile. Ich möchte nun passEndre Büroräume finden.->Weiter II]]
+[[Das Unternehmen besteht schon seit einer Weile. Ich möchte nun passendere Büroräume finden.->Weiter II]]
 
 
 :: Weiter II [Bias] {"position":"1900,500","size":"100,100"}
@@ -712,7 +712,7 @@ Oh, wie interessant! Wie in der Anzeige geschrieben, liegt der Mietpreis kalt be
 >>Character1|Speaks|Smiling<<
 Nun ja, Männer haben ja oft mehr Übung in komplexen Verhandlungssachen und vier Ohren hören ja auch mehr als zwei.
 >>--<<
->>Bias|GEndrSpecificStereotypes<<
+>>Bias|GenderSpecificStereotypes<<
 
 [[Warum glauben Sie, dass ich einen Ehemann habe? Und aus meiner Erfahrung sind Männer da nicht unbedingt besser. Die Details klären wir also direkt miteinander.->Fokus]]
 

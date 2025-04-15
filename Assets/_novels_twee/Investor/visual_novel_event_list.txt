@@ -33,7 +33,7 @@ Danke Ihnen. Bis dahin.
 :: Anfang {"position":"900,375","size":"100,100"}
 >>Character1|Speaks|SmilingBig<<
 Ich muss sagen, Ihre Idee gefällt mir wirklich. Sehr innovativ!
-[[Vielen Dank! Wir haben auch bereits einen funktionierEndn Prototypen entwickelt.->Co-Founder]]
+[[Vielen Dank! Wir haben auch bereits einen funktionierenden Prototypen entwickelt.->Co-Founder]]
 [[Freut mich, dass es Ihnen gefällt! Wir sehen großes Marktpotenzial.->Co-Founder]]
 
 
@@ -115,7 +115,7 @@ Sie sind sehr überzeugt. Vielleicht ein bisschen zu forsch für manche Investor
 >>Character1|Speaks|Questioning<<
 Okay, Sie sind also optimistisch. Wissen Sie, ich will nicht sexistisch klingen, aber sind Frauen im Tech-Bereich nicht eher selten?
 >>--<<
->>Bias|GEndrSpecificStereotypes<<
+>>Bias|GenderSpecificStereotypes<<
 [[Ja, aber das sollte kein Argument gegen mein Unternehmen sein.->NichtAnzusehen]]
 [[Gerade deshalb ist es umso wichtiger, in innovative Gründerinnen zu investieren. Wer nur auf alte Muster setzt, verpasst die besten Chancen.->InvestorWohlfühlen]]
 [[Selten bedeutet nicht unfähig. Erfolgreiche Gründerinnen zeigen, dass es höchste Zeit für ein Umdenken ist.->InvestorWohlfühlen]]
@@ -172,7 +172,7 @@ Ich verstehe Sie und ich sage das wirklich ungern, aber ich frage mich, ob Inves
 :: InvestorZeit {"position":"725,3175","size":"100,100"}
 >>Character1|Speaks|Neutral<<
 Ich finde Ihr Konzept spannend, aber ich brauche noch Zeit.
-[[Das klingt gut. Wäre es okay, wenn ich mich End des Monats melde?->Abschluss]]
+[[Das klingt gut. Wäre es okay, wenn ich mich Ende des Monats melde?->Abschluss]]
 [[Gerne. Ich spreche ohnehin noch mit anderen. Melden Sie sich gerne.->Abschluss]]
 [[Alles klar. Freue mich darauf, von Ihnen zu hören.->Abschluss]]
 
@@ -217,7 +217,7 @@ Der Markt ist groß, aber sind Frauen bereit, so aggressiv zu skalieren?
 >>Character1|Speaks|Critical<<
 Nun, in dieser Branche muss man oft sehr technisch denken. Fühlen Sie sich da sicher?
 >>--<<
->>Bias|GEndrSpecificStereotypes<<
+>>Bias|GenderSpecificStereotypes<<
 [[Zweifeln Sie an meinen technischen Fähigkeiten?->Zweifel]]
 [[Ich kann Ihnen gern die technischen Details erläutern.->Forsch]]
 [[Sicherheit kommt durch Erfahrung – und die bringe ich mit.->Forsch]]
@@ -226,7 +226,7 @@ Nun, in dieser Branche muss man oft sehr technisch denken. Fühlen Sie sich da s
 :: Traktion {"position":"800,1650","size":"100,100"}
 >>Character1|Speaks|Questioning<<
 Nun gut. Haben Sie schon genug Kundschaft, die Ihr Produkt nutzen?
-[[Wir haben noch keine zahlEnd Kundschaft, aber vielversprechEnd Partnerschaften.->Bewertung]]
+[[Wir haben noch keine zahlende Kundschaft, aber vielversprechende Partnerschaften.->Bewertung]]
 [[Wie definieren Sie ‚genug‘? Unsere Zahlen zeigen klar, dass die Nachfrage da ist.->Bewertung]]
 [[Unser Wachstum bestätigt das Potenzial. Ich zeige Ihnen gern unsere aktuellen Kennzahlen.->Bewertung]]
 
@@ -252,7 +252,7 @@ Natürlich, es geht mir nur um Ihre Erfolgschancen!
 >>--<<
 >>Character1|Speaks|Neutral<<
 Ich finde Ihr Konzept auch spannend, aber ich brauche noch Zeit.
-[[Das klingt gut. Wäre es okay, wenn ich mich End des Monats melde?->Abschluss]]
+[[Das klingt gut. Wäre es okay, wenn ich mich Ende des Monats melde?->Abschluss]]
 [[Gerne. Ich spreche ohnehin noch mit anderen. Melden Sie sich gerne.->Abschluss]]
 [[Alles klar. Freue mich darauf, von Ihnen zu hören.->Abschluss]]
 

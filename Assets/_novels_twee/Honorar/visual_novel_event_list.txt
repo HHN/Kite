@@ -302,7 +302,7 @@ Ein Folgegespräch klingt gut, aber auch beim ersten Mal wäre eine Geste schön
 
 [[Ich finde Ihre Veranstaltung gut und wichtig. Deshalb bin ich auch bereit als Speakerin aufzutreten. Mein Honorar ist nicht verhandelbar.->Nicht verhandelbar]]
 
-[[Ich kann Ihnen anbieten, am End noch eine Fragerunde einzubauen.->Q&A]]
+[[Ich kann Ihnen anbieten, am Ende noch eine Fragerunde einzubauen.->Q&A]]
 
 
 :: Frage nach Honorar {"position":"2925,350","size":"100,100"}
