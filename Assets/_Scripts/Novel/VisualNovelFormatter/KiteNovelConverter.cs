@@ -328,9 +328,6 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             {
                 // Extract the message text (i.e. the keyword) from the passage.
                 string message = TweeProcessor.ExtractMessageOutOfTweePassage(passage.Passage);
-                Debug.Log($"passage.Label: {passage.Label}");
-                Debug.Log($"message: {message}");
-                Debug.Log($"passage: {passage.Passage}");
                 
                 List<string> keywords = TweeProcessor.ExtractKeywordOutOfTweePassage(passage.Passage);
                 
@@ -339,56 +336,50 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 
                 if (keywordModels.Count > 1)
                 {
-                    string endString = "";
-                    
-                    foreach (var model in keywordModels)
-                    {
-                        if (model.End.HasValue && model.End.Value)
-                        {
-                            endString = "EndSeparator";
-                        }
-                    }
 
-                    string createdEventId = "";
-                    string createdEventNextId = "";
+                    string targetString = "";
                     
                     for (int i = 0; i < keywordModels.Count; i++)
                     {
                         // Create the corresponding VisualNovelEvent based on the model.
                         VisualNovelEvent createdEvent = CreateVisualNovelEventFromKeyword(passage, message, keywordModels[i], metaData, eventList);
-                        Debug.Log($"createdEvent.id: {createdEvent.id}");
-                        
-                        createdEventId = createdEvent.id;
-                        createdEventNextId = createdEvent.nextId;
-                        
-                        if (i != 0)
+
+
+                        // If there is a link to the next event
+                        // We use the label bc it is unique
+                        if (targetString == "" && passage.Links.Any())
                         {
-                            if (endString == "EndSeparator")
+                            targetString = passage.Label;
+                        }
+                        // If it's the last event (no next event after this)
+                        else if (targetString == "" && !passage.Links.Any())
+                        {
+                            targetString = passage.Label + "newTarget";
+                        }
+
+                        // First event in list
+                        if (i == 0)
+                        {
+                            createdEvent.nextId = targetString + (i + 1);
+                        }
+                        // Not the last element
+                        else if (i != keywordModels.Count - 1)
+                        {
+                            createdEvent.id = targetString + i;
+                            createdEvent.nextId = targetString + (i + 1);
+                        }
+                        // Last element
+                        else
+                        {
+                            if (createdEvent == null)
                             {
-                                createdEvent.id += endString + createdEventId;
+                                eventList[eventList.Count - 3].id = targetString + (i);
                             }
                             else
                             {
-                                createdEvent.id += "RandomSeparator" + createdEventId;
+                                createdEvent.id = targetString + i;
+                                createdEvent.nextId = passage.Links[0].Target;
                             }
-                        }
-
-                        createdEventId += createdEvent.id;
-
-                        if (i != keywordModels.Count - 1)
-                        {
-                            if (endString == "EndSeparator")
-                            {
-                                createdEvent.nextId += endString + createdEvent.id;
-                            }
-                            else
-                            {
-                                createdEvent.nextId = createdEventNextId + "RandomSeparator" + createdEventNextId;
-                            }
-                        }
-                        else if (i == keywordModels.Count - 1 && endString == "EndSeparator")
-                        {
-                            createdEvent.nextId = "";
                         }
 
                         // Check if the event creates a loop, and adjust if necessary.
@@ -423,9 +414,15 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
         {
             if (model == null) return null;
 
+            Debug.Log("model != null");
             // If the keyword signals the end.
-            if (model.End.HasValue && model.End.Value) return HandleEndNovelEvent(passage.Label, eventList);
+            if (model.End.HasValue && model.End.Value)
+            {
+                HandleEndNovelEvent(passage.Label, eventList);
+                return null;
+            }
 
+            Debug.Log("!model.End.HasValue && model.End.Value");
 
             Debug.Log("BIAS defined: " + model.Bias);
             // If a bias is defined.
@@ -626,8 +623,9 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             return novelEvent;
         }
 
-        private static VisualNovelEvent HandleEndNovelEvent(string label, List<VisualNovelEvent> list)
+        private static void HandleEndNovelEvent(string label, List<VisualNovelEvent> list)
         {
+            Debug.Log("HandleEndNovelEvent");
             string label01 = label;
             string label02 = label01 + "RandomString0012003";
             string label03 = label02 + "RandomRandom";
@@ -641,8 +639,6 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             list.Add(soundEvent);
             list.Add(exitEvent);
             list.Add(endEvent);
-
-            return null;
         }
 
         private static void HandleDialogueOptionEvent(TweePassage passage, List<VisualNovelEvent> list, VisualNovelEvent lastEvent)
