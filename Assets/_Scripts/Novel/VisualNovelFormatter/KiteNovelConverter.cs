@@ -36,58 +36,6 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
     public static class NovelKeywordParser
     {
 
-        // Konstante zum Dateinamen des Mapping-Files.
-        private static readonly string MappingFileFullPath = Path.Combine(Application.dataPath, "_Mappings/BiasMapping.txt");
-
-        // Dictionary, das das Bias-Mapping enthält. Dieses wird beim ersten Zugriff über LoadBiasMapping() geladen.
-        private static Dictionary<string, string> biasMapping = LoadBiasMapping();
-
-        private static Dictionary<string, string> LoadBiasMapping()
-        {
-            Dictionary<string, string> mapping = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-            try
-            {
-                // Verwende den bereits vollständig definierten MappingFileFullPath.
-                if (!File.Exists(MappingFileFullPath))
-                {
-                    Debug.LogWarning("Bias mapping file not found at: " + MappingFileFullPath);
-                    return mapping; // Leeres Mapping zurückgeben.
-                }
-
-                // Lese alle Zeilen der Datei.
-                string[] lines = File.ReadAllLines(MappingFileFullPath);
-                foreach (string line in lines)
-                {
-                    // Überspringe leere oder nur aus Leerzeichen bestehende Zeilen.
-                    if (string.IsNullOrWhiteSpace(line))
-                        continue;
-
-                    // Suche nach dem ersten Doppelpunkt als Trenner.
-                    int colonIndex = line.IndexOf(':');
-                    if (colonIndex > 0 && colonIndex < line.Length - 1)
-                    {
-                        // Extrahiere den englischen Bias (Key) und den deutschen Bias (Value).
-                        string key = line.Substring(0, colonIndex).Trim();
-                        string value = line.Substring(colonIndex + 1).Trim();
-                        if (!string.IsNullOrEmpty(key) && !mapping.ContainsKey(key))
-                        {
-                            mapping.Add(key, value);
-                        }
-                    }
-                    else
-                    {
-                        Debug.LogWarning("Invalid mapping line: " + line);
-                    }
-                }
-                Debug.Log("Loaded " + mapping.Count + " bias mappings.");
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError("Error loading bias mapping: " + ex.Message);
-            }
-            return mapping;
-        }
-
         /// <summary>
         /// Parst einen einzelnen Keyword-String und gibt ein NovelKeywordModel zurück.
         /// Falls der String nicht den erwarteten Mustern entspricht, wird null zurückgegeben.
@@ -205,7 +153,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
                     if (parts.Length > 1)
                     {
                         // Wende das externe Mapping an.
-                        model.Bias = MapBias(parts[1]);
+                        model.Bias = MappingManager.Instance.MapBias(parts[1]);
                     }
                     Debug.Log("Parsed keyword (Bias): " + keyword);
                     return model;
@@ -256,22 +204,6 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 
             Debug.Log("Total valid keywords found: " + models.Count);
             return models;
-        }
-
-        /// <summary>
-        /// Internal mapping method – looks up the English bias in the dictionary and returns the German translation.
-        /// </summary>
-        private static string MapBias(string englishBias)
-        {
-            if (biasMapping.TryGetValue(englishBias, out string germanBias))
-            {
-                return germanBias;
-            }
-            else
-            {
-                Debug.LogWarning("Bias mapping not found for: " + englishBias);
-                return englishBias; // Fallback to original.
-            }
         }
     }
 
@@ -472,26 +404,6 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
 
             return null;
         }
-
-        
-
-        /// <summary>
-        /// Returns the sound string (can perform additional mapping if needed).
-        /// </summary>
-        //private static string MapSoundString(string sound)
-        //{
-        //    if (sound.Equals("WaterPouring", StringComparison.OrdinalIgnoreCase))
-        //        return "WaterPouring";
-        //    if (sound.Equals("LeaveScene", StringComparison.OrdinalIgnoreCase))
-        //        return "LeaveScene";
-        //    if (sound.Equals("TelephoneCall", StringComparison.OrdinalIgnoreCase))
-        //        return "TelephoneCall";
-        //    if (sound.Equals("PaperSound", StringComparison.OrdinalIgnoreCase))
-        //        return "PaperSound";
-        //    if (sound.Equals("ManLaughing", StringComparison.OrdinalIgnoreCase))
-        //        return "ManLaughing";
-        //    return sound;
-        //}
 
         /// <summary>
         /// Returns the expression string (can perform additional mapping if needed).
