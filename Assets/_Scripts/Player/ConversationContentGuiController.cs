@@ -274,6 +274,7 @@ namespace Assets._Scripts.Player
             Debug.Log($"novelEvent.id: {novelEvent.id}");
             Debug.Log($"novelEvent.character: {novelEvent.character}");
             GameObject newMessageBox;
+            
             if (novelEvent.character == 1)
             {
                 newMessageBox = Instantiate(blueMessagePrefab, transform);

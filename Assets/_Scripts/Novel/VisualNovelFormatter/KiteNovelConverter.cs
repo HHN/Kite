@@ -85,7 +85,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             // Prüfe auf die exakten Schlüsselwörter "Info" und "Player".
             if (string.Equals(keyword, "Info", StringComparison.OrdinalIgnoreCase))
             {
-                model.CharacterIndex = MappingManager.MapCharacter("Info");
+                model.CharacterIndex = 4;
                 model.FaceExpression = MappingManager.MapFaceExpressions("NeutralRelaxed");
                 return model;
             }
@@ -338,6 +338,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         {
             if (model == null) return null;
 
+            Debug.Log($"model.CharacterIndex: {model.CharacterIndex}, model.FaceExpression: {model.FaceExpression}, model.Bias: {model.Bias}, model.Sound: {model.Sound}, model.End: {model.End}");
             // If the keyword signals the end.
             if (model.End.HasValue && model.End.Value)
             {
