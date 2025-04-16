@@ -85,7 +85,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             // Prüfe auf die exakten Schlüsselwörter "Info" und "Player".
             if (string.Equals(keyword, "Info", StringComparison.OrdinalIgnoreCase))
             {
-                model.CharacterIndex = 0;
+                model.CharacterIndex = MappingManager.MapCharacter("Info");
                 model.FaceExpression = MappingManager.MapFaceExpressions("NeutralRelaxed");
                 return model;
             }
@@ -250,8 +250,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             InitializeKiteNovelEventList(metaData, eventList, startLabel);
             List<TweePassage> passages = TweeProcessor.ProcessTweeFile(tweeFile);
 
-            Debug.Log($"metaData.TitleOfNovel: {metaData.TitleOfNovel}");
-
             foreach (TweePassage passage in passages)
             {
                 // Extract the message text (i.e. the keyword) from the passage.
@@ -270,7 +268,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                     {
                         // Create the corresponding VisualNovelEvent based on the model.
                         VisualNovelEvent createdEvent = CreateVisualNovelEventFromKeyword(passage, message, keywordModels[i], metaData, eventList);
-
 
                         // If there is a link to the next event
                         // We use the label bc it is unique
@@ -414,7 +411,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// </summary>
         private static void InitializeKiteNovelEventList(KiteNovelMetaData metaData, List<VisualNovelEvent> eventList, string startLabel)
         {
-            string connectionLabel = "initialCharacterJoinsEvent001";
+            string connectionLabel = "InitialCharacterJoinsEvent001";
             string id = "initialLocationEvent001";
             string nextId = connectionLabel;
 
@@ -426,7 +423,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 Debug.LogWarning("While loading " + metaData.TitleOfNovel + ": Initial character role not found!");
             }
 
-            Debug.Log($"metaData.StartTalkingPartnerExpression: {metaData.StartTalkingPartnerExpression}");
             int expression = MappingManager.MapFaceExpressions(metaData.StartTalkingPartnerExpression);
             if (expression == -1)
             {

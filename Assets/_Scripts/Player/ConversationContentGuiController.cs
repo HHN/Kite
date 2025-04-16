@@ -95,8 +95,7 @@ namespace Assets._Scripts.Player
             var newMessageBox = GetMessagePrefab(novelEvent);
 
             ChatMessageBox messageBox = newMessageBox.GetComponent<ChatMessageBox>();
-            messageBox.SetMessage(PlayNovelSceneController.ReplacePlaceholders(novelEvent.text,
-                PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables()));
+            messageBox.SetMessage(PlayNovelSceneController.ReplacePlaceholders(novelEvent.text, PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables()));
             
             guiContent.Add(newMessageBox);
             AddFormattedPromptLine(MappingManager.MapCharacterToString(novelEvent.character), novelEvent.text);
@@ -272,6 +271,8 @@ namespace Assets._Scripts.Player
         
         private GameObject GetMessagePrefab(VisualNovelEvent novelEvent)
         {
+            Debug.Log($"novelEvent.id: {novelEvent.id}");
+            Debug.Log($"novelEvent.character: {novelEvent.character}");
             GameObject newMessageBox;
             if (novelEvent.character == 1)
             {

@@ -230,7 +230,7 @@ Ja, aber Frauen neigen ja dazu, sich schnell in Details zu verlieren. Ich mache 
 >>Character1|Speaks|Critical<<
 Hmm, 2.200 € pro Vortrag ist ja immer noch eine Stange Geld. Gerade als Frau in einer Männerdomäne müssen Sie Ihre Preise ja etwas anpassen, um konkurrenzfähig zu bleiben, finden Sie nicht?
 >>--<<
->>Bias|StereotypesAboutWomenInNon-TraditionalIndustries<<
+>>Bias|StereotypesAboutWomenInNonTraditionalIndustries<<
 
 [[In dieser Männerdomäne sticht man eher durch gute Arbeit als durch Rabatte heraus, finden Sie nicht?->Gute Arbeit 2]]
 
@@ -241,7 +241,7 @@ Hmm, 2.200 € pro Vortrag ist ja immer noch eine Stange Geld. Gerade als Frau i
 >>Character1|Speaks|Critical<<
 Hmm, 2.200 € pro Vortrag ist ja immer noch eine Stange Geld. Gerade als Frau in einer Männerdomäne müssen Sie Ihre Preise ja etwas anpassen, um konkurrenzfähig zu bleiben, finden Sie nicht?
 >>--<<
->>Bias|StereotypesAboutWomenInNon-TraditionalIndustries<<
+>>Bias|StereotypesAboutWomenInNonTraditionalIndustries<<
 
 [[In dieser Männerdomäne sticht man eher durch gute Arbeit als durch Rabatte heraus, finden Sie nicht?->Gute Arbeit]]
 
@@ -636,7 +636,7 @@ Wir müssen doch zusammenhalten, oder?
 >>Character1|Speaks|Critical<<
 Hmm, ich hätte erwartet, dass auch die erste Veranstaltung etwas günstiger wird. Gerade als Frau in einer Männerdomäne müssen Sie Ihre Preise ja etwas anpassen, um konkurrenzfähig zu bleiben, finden Sie nicht?
 >>--<<
->>Bias|StereotypesAboutWomenInNon-TraditionalIndustries<<
+>>Bias|StereotypesAboutWomenInNonTraditionalIndustries<<
 
 [[In dieser Männerdomäne sticht man eher durch gute Arbeit als durch Rabatte heraus, finden Sie nicht?->Rabatt II]]
 
@@ -649,7 +649,7 @@ Hmm, ich hätte erwartet, dass auch die erste Veranstaltung etwas günstiger wir
 >>Character1|Speaks|Critical<<
 Hmm, ich hätte erwartet, dass auch die erste Veranstaltung etwas günstiger wird. Gerade als Frau in einer Männerdomäne müssen Sie Ihre Preise ja etwas anpassen, um konkurrenzfähig zu bleiben, finden Sie nicht?
 >>--<<
->>Bias|StereotypesAboutWomenInNon-TraditionalIndustries<<
+>>Bias|StereotypesAboutWomenInNonTraditionalIndustries<<
 
 [[In dieser Männerdomäne sticht man eher durch gute Arbeit als durch Rabatte heraus, finden Sie nicht?->Rabatt II 2]]
 

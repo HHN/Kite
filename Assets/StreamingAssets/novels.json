@@ -9,7 +9,7 @@
             "context": "",
             "novelEvents": [
                 {
-                    "id": "initialCharacterJoinsEvent001",
+                    "id": "InitialCharacterJoinsEvent001",
                     "nextId": "Anfang",
                     "onChoice": "",
                     "eventType": 2,
@@ -49,7 +49,7 @@
                     "hairSpriteId": 0,
                     "faceSpriteId": 0,
                     "backgroundSprite": "",
-                    "character": 0,
+                    "character": -1,
                     "text": "Im Rahmen Deiner Aufgabe, KI in der Firma einzuführen, gehst du bei einem Mitarbeiter aus Vertrieb und Marketing vorbei, um mögliche Einsatzbereiche und Potenziale zu besprechen.",
                     "animationType": 0,
                     "expressionType": 10,
@@ -5990,7 +5990,7 @@
             "context": "",
             "novelEvents": [
                 {
-                    "id": "initialCharacterJoinsEvent001",
+                    "id": "InitialCharacterJoinsEvent001",
                     "nextId": "Willkommen",
                     "onChoice": "",
                     "eventType": 2,
@@ -11221,7 +11221,7 @@
             "context": "Es ist das Gespräch einer Gründerin, mit ihrer Mutter. Sie hat sich gründlich informiert und hat sich entschlossen, ein Unternehmen zu gründen. Sie ruft nun ihre Eltern an, um ihnen von dem Gründungsvorhaben zu berichten.",
             "novelEvents": [
                 {
-                    "id": "initialCharacterJoinsEvent001",
+                    "id": "InitialCharacterJoinsEvent001",
                     "nextId": "Anfang",
                     "onChoice": "",
                     "eventType": 2,
@@ -11261,7 +11261,7 @@
                     "hairSpriteId": 0,
                     "faceSpriteId": 0,
                     "backgroundSprite": "",
-                    "character": 0,
+                    "character": -1,
                     "text": "Nachdem du dich gründlich informiert hast, hast du dich dazu entschlossen ein Unternehmen zu gründen. Du hast dir auch schon die nächsten Schritte überlegt und rufst nun deine Eltern an, um ihnen von deinem Gründungsvorhaben zu berichten.",
                     "animationType": 0,
                     "expressionType": 10,
@@ -20472,7 +20472,7 @@
             "context": "Es ist das Gespräch einer Gründerin, Lea, mit einer Kundin. Es geht um die Verhandlung eines Preises. Die Gründerin ist bereit mit ihrem Unternehmen die gewünschte Leistung zu erbringen und hofft auf die Einigung auf eine angemessene Entlohnung. ",
             "novelEvents": [
                 {
-                    "id": "initialCharacterJoinsEvent001",
+                    "id": "InitialCharacterJoinsEvent001",
                     "nextId": "Anfang",
                     "onChoice": "",
                     "eventType": 2,
@@ -20512,7 +20512,7 @@
                     "hairSpriteId": 0,
                     "faceSpriteId": 0,
                     "backgroundSprite": "",
-                    "character": 0,
+                    "character": -1,
                     "text": "Du wurdest angefragt bei einer Veranstaltung als Speakerin aufzutreten und über deine Expertise als Gründerin zu sprechen. Nachdem bestätigt wurde, dass deine Expertise den Erwartungen entspricht, steht nun die Honorarverhandlung an. Es freut uns, dass Sie uns unterstützen können. Nun stellt sich uns natürlich die Frage, wie viel Sie verlangen.",
                     "animationType": 0,
                     "expressionType": 10,
@@ -24309,7 +24309,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "StereotypesAboutWomenInNon-TraditionalIndustries"
+                    "relevantBias": "Stereotypen über Frauen in nicht traditionellen Branchen"
                 },
                 {
                     "id": "OptionsLabel167",
@@ -24549,7 +24549,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "StereotypesAboutWomenInNon-TraditionalIndustries"
+                    "relevantBias": "Stereotypen über Frauen in nicht traditionellen Branchen"
                 },
                 {
                     "id": "OptionsLabel169",
@@ -31959,7 +31959,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "StereotypesAboutWomenInNon-TraditionalIndustries"
+                    "relevantBias": "Stereotypen über Frauen in nicht traditionellen Branchen"
                 },
                 {
                     "id": "OptionsLabel223",
@@ -32259,7 +32259,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "StereotypesAboutWomenInNon-TraditionalIndustries"
+                    "relevantBias": "Stereotypen über Frauen in nicht traditionellen Branchen"
                 },
                 {
                     "id": "OptionsLabel225",
@@ -38093,7 +38093,7 @@
             "context": "Es ist das Gespräch einer Gründerin, Lea, mit einem Angel Investor. Es geht um die Investition in das Unternehmen der Gründerin. Der Investor ist an der Innovation interessiert. Die Gründerin hofft, dass der Investor in ihre Innovation investieren wird.",
             "novelEvents": [
                 {
-                    "id": "initialCharacterJoinsEvent001",
+                    "id": "InitialCharacterJoinsEvent001",
                     "nextId": "Willkommen",
                     "onChoice": "",
                     "eventType": 2,
@@ -38133,7 +38133,7 @@
                     "hairSpriteId": 0,
                     "faceSpriteId": 0,
                     "backgroundSprite": "",
-                    "character": 0,
+                    "character": -1,
                     "text": "Du triffst dich mit einem Angel Investor, der auf einer Pitch Night Interesse an deiner Innovation gezeigt hat und nun mehr erfahren möchte.",
                     "animationType": 0,
                     "expressionType": 10,
@@ -42170,7 +42170,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "StereotypesAboutWomenInNon-TraditionalIndustries"
+                    "relevantBias": "Stereotypen über Frauen in nicht traditionellen Branchen"
                 },
                 {
                     "id": "OptionsLabel296",
@@ -44134,7 +44134,7 @@
             "context": "Es ist das Gespräch einer Gründerin, mit einem Bankmitarbeiter. Es geht um einen Kredit. Die Gründerin hat sich gut vorbereitet und hofft Informationen über den Kredit zu erhalten.",
             "novelEvents": [
                 {
-                    "id": "initialCharacterJoinsEvent001",
+                    "id": "InitialCharacterJoinsEvent001",
                     "nextId": "Anfang",
                     "onChoice": "",
                     "eventType": 2,
@@ -44174,7 +44174,7 @@
                     "hairSpriteId": 0,
                     "faceSpriteId": 0,
                     "backgroundSprite": "",
-                    "character": 0,
+                    "character": -1,
                     "text": "Bei deinem Banktermin heute möchtest du einen Kredit beantragen. Du hast deinen Businessplan und alle weiteren benötigten Dokumente bei dir.",
                     "animationType": 0,
                     "expressionType": 10,
@@ -63825,7 +63825,7 @@
             "context": "Es ist das Gespräch einer Gründerin, mit einer Notarin. Es geht um die Eintragung des Unternehmens der Gründerin ins Handelsregister. Die Gründerin hat sich gut vorbereitet und hofft einen Termin für ein Eintragung zu erhalten.",
             "novelEvents": [
                 {
-                    "id": "initialCharacterJoinsEvent001",
+                    "id": "InitialCharacterJoinsEvent001",
                     "nextId": "Anfang",
                     "onChoice": "",
                     "eventType": 2,
@@ -63865,7 +63865,7 @@
                     "hairSpriteId": 0,
                     "faceSpriteId": 0,
                     "backgroundSprite": "",
-                    "character": 0,
+                    "character": -1,
                     "text": "Du hast einen Termin mit einer Notarin, um einen Termin für deine Gründung auszumachen.",
                     "animationType": 0,
                     "expressionType": 10,
@@ -67916,7 +67916,7 @@
             "context": "Es ist das Gespräch einer Gründerin, mit einer Journalistin. Die Journalistin hat die Gründerin angesprochen und möchte einen Artikel über sie und ihr Unternehmen schreiben. Die Gründerin freut sich über diese Gelegenheit und hofft auf einen schönen Artikel.",
             "novelEvents": [
                 {
-                    "id": "initialCharacterJoinsEvent001",
+                    "id": "InitialCharacterJoinsEvent001",
                     "nextId": "Anfang",
                     "onChoice": "",
                     "eventType": 2,
@@ -67956,7 +67956,7 @@
                     "hairSpriteId": 0,
                     "faceSpriteId": 0,
                     "backgroundSprite": "",
-                    "character": 0,
+                    "character": -1,
                     "text": "Du befindest dich auf einer Veranstaltung, bei der Jungunternehmer*innen ihre Geschäftsidee vor einem Publikum präsentieren können, um Rückmeldung zu der Idee zu erhalten und um zu netzwerken.",
                     "animationType": 0,
                     "expressionType": 10,
@@ -67986,7 +67986,7 @@
                     "hairSpriteId": 0,
                     "faceSpriteId": 0,
                     "backgroundSprite": "",
-                    "character": 0,
+                    "character": -1,
                     "text": "Nachdem du deine Geschäftsidee vor einem Publikum gepitcht hast, stellst du dich an einen Tisch mit anderen Gästen, um mit ihnen zu reden. Du wirst von jemanden angesprochen.",
                     "animationType": 0,
                     "expressionType": 10,
@@ -72876,7 +72876,7 @@
                     "hairSpriteId": 0,
                     "faceSpriteId": 0,
                     "backgroundSprite": "",
-                    "character": 0,
+                    "character": -1,
                     "text": "Du verlässt den Raum.",
                     "animationType": 0,
                     "expressionType": 10,
@@ -78097,7 +78097,7 @@
             "context": "Es ist das Gespräch einer Gründerin, Lea, mit einem Vermieter. Es geht um die Anmietung von Büro-Räumen. Die Gründerin hat sich gut vorbereitet und hofft, dass sie die Büroräume für ihr Unternehmen bekommt.",
             "novelEvents": [
                 {
-                    "id": "initialCharacterJoinsEvent001",
+                    "id": "InitialCharacterJoinsEvent001",
                     "nextId": "Anfang",
                     "onChoice": "",
                     "eventType": 2,
@@ -78137,7 +78137,7 @@
                     "hairSpriteId": 0,
                     "faceSpriteId": 0,
                     "backgroundSprite": "",
-                    "character": 0,
+                    "character": -1,
                     "text": "Du hast heute einen Termin für die Besichtigung von Büroräumen. Dort angekommen, wirst du von dem Vermieter angesprochen.",
                     "animationType": 0,
                     "expressionType": 10,

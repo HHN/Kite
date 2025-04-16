@@ -8,7 +8,7 @@ ExpectationsRegardingFamilyPlanning: Erwartungen bezüglich Familienplanung
 SocioeconomicBiases: Sozioökonomische Verzerrungen
 TightropeBias: Tightrope Bias
 Microaggression: Mikroaggression
-StereotypesAboutWomenInNon: Stereotypen über Frauen in non-traditionellen Branchen
+StereotypesAboutWomenInNonTraditionalIndustries: Stereotypen über Frauen in nicht traditionellen Branchen
 ConfirmationBias: Bestätigungsbias
 RiskAversionBias: Risikoaversion
 GenderPayGap: Geschlechterlohngefälle

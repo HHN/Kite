@@ -688,8 +688,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             SetNextEvent(novelEvent);
 
             _novelCharacter = novelEvent.character;
-            
-            Debug.Log($"HandleShowMessageEvent: {_novelCharacter}");
 
             if (!CharacterExpressions.ContainsKey(_novelCharacter) && _novelCharacter != 0 && _novelCharacter != 1 && _novelCharacter != 4)
             {

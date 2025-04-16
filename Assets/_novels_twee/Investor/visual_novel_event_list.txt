@@ -191,7 +191,7 @@ Haben Sie denn einen männlichen Co-Founder? Das könnte helfen, Investor*innen 
 >>Character1|Speaks|Laughing<<
 Das stimmt. Ich meine nur, diese Durchsetzungsfähigkeit sieht man Ihnen gar nicht an.
 >>--<<
->>Bias|StereotypesAboutWomenInNon-TraditionalIndustries<<
+>>Bias|StereotypesAboutWomenInNonTraditionalIndustries<<
 [[Interessant. Woran machen Sie das fest?->TechKompetenzFrage]]
 [[Es kommt ja nicht auf das Aussehen, sondern auf die Ergebnisse an, oder?->InvestorWohlfühlen]]
 [[Gut, dass Sie mein technisches Know-how nicht an meinem Äußeren festmachen müssen.->TechKompetenzFrage]]

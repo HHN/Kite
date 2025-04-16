@@ -141,9 +141,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
             // Load and deserialize the novel's metadata.
             yield return StartCoroutine(LoadAndDeserialize<KiteNovelMetaData>(fullPathOfNovelMetaData, result => { kiteNovelMetaData = result; }));
-            
-            Debug.Log($"ProcessSingleNovel: kiteNovelMetaData.TitleOfNovel: {kiteNovelMetaData?.TitleOfNovel}");
-            Debug.Log($"ProcessSingleNovel: kiteNovelMetaData.StartTalkingPartnerExpression: {kiteNovelMetaData?.StartTalkingPartnerExpression}");
+
             // Skip if metadata couldn't be loaded.
             if (kiteNovelMetaData == null)
             {
@@ -284,11 +282,11 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             // Konvertiere das Objekt in einen formatierten JSON-String.
             string json = JsonUtility.ToJson(novelListWrapper, true);
             // Bestimme den Speicherpfad (im gleichen Verzeichnis wie die Applikationsdaten).
-            string path = Path.Combine(Application.dataPath, "novels.json");
+            string path = Path.Combine(Application.dataPath, "StreamingAssets/novels.json");
             // Schreibe den JSON-String in die Datei.
             File.WriteAllText(path, json);
             // Logge den erfolgreichen Abschluss mit dem Speicherpfad.
-            Debug.Log("Visual Novels have been successfully converted to JSON format and saved under the following path: " + path);
+            Debug.Log($"Visual Novels have been successfully converted to JSON format and saved under the following path: {path}");
             // Setze das Flag, dass der Konvertierungsvorgang abgeschlossen ist.
             _isFinished = true;
         }
