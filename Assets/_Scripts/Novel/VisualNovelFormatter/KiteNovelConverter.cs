@@ -251,7 +251,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             List<TweePassage> passages = TweeProcessor.ProcessTweeFile(tweeFile);
 
             Debug.Log($"metaData.TitleOfNovel: {metaData.TitleOfNovel}");
-            Debug.Log($"metaData.StartTalkingPartnerExpression: {metaData.StartTalkingPartnerExpression}");
 
             foreach (TweePassage passage in passages)
             {
@@ -317,7 +316,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                         HandleDialogueOptionEvent(passage, eventList, createdEvent);
                     }
                 }
-                else
+                else if (keywordModels.Count == 1)
                 {
                     // Create the corresponding VisualNovelEvent based on the model.
                     VisualNovelEvent createdEvent = CreateVisualNovelEventFromKeyword(passage, message, keywordModels[0], metaData, eventList);

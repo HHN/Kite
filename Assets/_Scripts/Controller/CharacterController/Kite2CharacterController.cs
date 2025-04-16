@@ -192,134 +192,134 @@ namespace Assets._Scripts.Controller.CharacterController
         {
             switch (expression)
             {
-                case 1:
-                {
-                    ShowScaredAnimation();
-                    return;
-                }
-                case 2:
-                {
-                    ShowDefeatedAnimation();
-                    return;
-                }
-                case 3:
-                {
-                    ShowDissatisfiedAnimation();
-                    return;
-                }
-                case 4:
-                {
-                    ShowRejectingAnimation();
-                    return;
-                }
-                case 5:
-                {
-                    ShowAmazedAnimation();
-                    return;
-                }
-                case 6:
-                {
-                    ShowQuestioningAnimation();
-                    return;
-                }
-                case 7:
-                {
-                    ShowCriticalAnimation();
-                    return;
-                }
-                case 8:
-                {
-                    ShowSmilingBigAnimation();
-                    return;
-                }
-                case 9:
-                {
-                    ShowLaughingAnimation();
-                    return;
-                }
-                case 10:
-                {
-                    ShowSmilingAnimation();
-                    return;
-                }
-                case 11:
-                {
-                    ShowNeutralRelaxedAnimation();
-                    return;
-                }
-                case 12:
-                {
-                    ShowNeutralAnimation();
-                    return;
-                }
-                case 13:
-                {
-                    ShowProudAnimation();
-                    return;
-                }
-                case 14:
+                case 0:
                 {
                     PlayScaredAnimation();
                     return;
                 }
-                case 15:
+                case 1:
                 {
                     PlayDefeatedAnimation();
                     return;
                 }
-                case 16:
+                case 2:
                 {
                     PlayDissatisfiedAnimation();
                     return;
                 }
-                case 17:
+                case 3:
                 {
                     PlayRejectingAnimation();
                     return;
                 }
-                case 18:
+                case 4:
                 {
                     PlayAmazedAnimation();
                     return;
                 }
-                case 19:
+                case 5:
                 {
                     PlayQuestioningAnimation();
                     return;
                 }
-                case 20:
+                case 6:
                 {
                     PlayCriticalAnimation();
                     return;
                 }
-                case 21:
+                case 7:
                 {
                     PlaySmilingBigAnimation();
                     return;
                 }
-                case 22:
+                case 8:
                 {
                     PlayLaughingAnimation();
                     return;
                 }
-                case 23:
+                case 9:
                 {
                     PlaySmilingAnimation();
                     return;
                 }
-                case 24:
+                case 10:
                 {
                     PlayNeutralRelaxedAnimation();
                     return;
                 }
-                case 25:
+                case 11:
                 {
                     PlayNeutralAnimation();
                     return;
                 }
-                case 26:
+                case 12:
                 {
                     PlayProudAnimation();
+                    return;
+                }
+                case 13:
+                {
+                    ShowScaredAnimation();
+                    return;
+                }
+                case 14:
+                {
+                    ShowDefeatedAnimation();
+                    return;
+                }
+                case 15:
+                {
+                    ShowDissatisfiedAnimation();
+                    return;
+                }
+                case 16:
+                {
+                    ShowRejectingAnimation();
+                    return;
+                }
+                case 17:
+                {
+                    ShowAmazedAnimation();
+                    return;
+                }
+                case 18:
+                {
+                    ShowQuestioningAnimation();
+                    return;
+                }
+                case 19:
+                {
+                    ShowCriticalAnimation();
+                    return;
+                }
+                case 20:
+                {
+                    ShowSmilingBigAnimation();
+                    return;
+                }
+                case 21:
+                {
+                    ShowLaughingAnimation();
+                    return;
+                }
+                case 22:
+                {
+                    ShowSmilingAnimation();
+                    return;
+                }
+                case 23:
+                {
+                    ShowNeutralRelaxedAnimation();
+                    return;
+                }
+                case 24:
+                {
+                    ShowNeutralAnimation();
+                    return;
+                }
+                case 25:
+                {
+                    ShowProudAnimation();
                     return;
                 }
                 default:

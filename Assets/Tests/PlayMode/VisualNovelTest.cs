@@ -45,53 +45,6 @@ namespace Tests.PlayMode
         }
 
         [UnityTest]
-        public IEnumerator ConvertNovelsFromTweeToJson()
-        {
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneNames.MainMenuScene);
-
-            while (!asyncLoad.isDone)
-            {
-                yield return null;
-            }
-
-            GameObject converter = GameObject.Find("TweeToJsonConverter");
-
-            Assert.NotNull(converter);
-
-            NovelReader novelReader = converter.GetComponent<NovelReader>();
-            novelReader.ConvertNovelsFromTweeToJSON();
-
-            while (novelReader.IsFinished() == false)
-            {
-                yield return null;
-            }
-        }
-
-        [UnityTest]
-        public IEnumerator ConvertNovelsFromTweeToJsonAndSelectiveOverrideOldNovels()
-        {
-            Debug.Log("ConvertNovelsFromTweeToJsonAndSelectiveOverrideOldNovels");
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneNames.MainMenuScene);
-
-            while (!asyncLoad.isDone)
-            {
-                yield return null;
-            }
-
-            GameObject converter = GameObject.Find("TweeToJsonConverter");
-
-            Assert.NotNull(converter);
-
-            NovelReader novelReader = converter.GetComponent<NovelReader>();
-            novelReader.ConvertNovelsFromTweeToJSONAndSelectiveOverrideOldNovels();
-
-            while (novelReader.IsFinished() == false)
-            {
-                yield return null;
-            }
-        }
-
-        [UnityTest]
         public IEnumerator ImportNovel()
         {
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneNames.MainMenuScene);

@@ -5,7 +5,7 @@
   "nameOfMainCharacter": "Spielerin",
   "contextForPrompt": "Es ist das Gespräch einer Gründerin, mit einem Bankmitarbeiter. Es geht um einen Kredit. Die Gründerin hat sich gut vorbereitet und hofft Informationen über den Kredit zu erhalten.",
   "folderName": "Kreditantrag",
-  "startTalkingPartnerEmotion": "NeutralRelaxed",
+  "startTalkingPartnerExpression": "NeutralRelaxed",
   "talkingPartner01" : "Sachbearbeiter",
   "talkingPartner02" : "",
   "talkingPartner03" : "",

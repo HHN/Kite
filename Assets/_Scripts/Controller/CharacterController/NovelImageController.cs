@@ -36,60 +36,35 @@ namespace Assets._Scripts.Controller.CharacterController
             if (novelKite2CharacterController == null)
             {
             }
-            else if (characterId == 0)
+            else switch (characterId)
             {
-                novelKite2CharacterController.SetFaceExpression(expressionType);
-            }
-            else if (characterId == 1)
-            {
-                novelKite2CharacterController.SetFaceExpression(expressionType);
-            }
-            else if (characterId == 2)
-            {
-                novelKite2CharacterController.SetFaceExpression(expressionType);
-            }
-            else if (characterId == 3)
-            {
-                novelKite2CharacterController.SetFaceExpression(expressionType);
-            }
-            else if (characterId == 4)
-            {
-                novelKite2CharacterController.SetFaceExpression(expressionType);
-            }
-            else if (characterId == 5)
-            {
-                novelKite2CharacterController.SetFaceExpression(expressionType);
-            }
-            else if (characterId == 6)
-            {
-                novelKite2CharacterController.SetFaceExpression(expressionType);
-            }
-            else if (characterId == 7)
-            {
-                novelKite2CharacterController2.SetFaceExpression(expressionType);
-            }
-            else if (characterId == 8)
-            {
-                novelKite2CharacterController.SetFaceExpression(expressionType);
-            }
-            else if (characterId == 9)
-            {
-                novelKite2CharacterController.SetFaceExpression(expressionType);
-            }
-            else if (characterId == 10)
-            {
-                novelKite2CharacterController.SetFaceExpression(expressionType);
-            }
-            else if (characterId == 11)
-            {
-                novelKite2CharacterController.SetFaceExpression(expressionType);
-            }
-            else if (characterId == 12)
-            {
-                novelKite2CharacterController.SetFaceExpression(expressionType);
-            }
-            else if (novelKite2CharacterController2 == null)
-            {
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                    novelKite2CharacterController.SetFaceExpression(expressionType);
+                    break;
+                case 7:
+                    novelKite2CharacterController2.SetFaceExpression(expressionType);
+                    break;
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                    novelKite2CharacterController.SetFaceExpression(expressionType);
+                    break;
+                default:
+                {
+                    if (novelKite2CharacterController2 == null)
+                    {
+                    }
+
+                    break;
+                }
             }
         }
 

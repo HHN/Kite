@@ -290,7 +290,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             foreach (VisualNovelEvent novelEvent in novelToPlay.novelEvents)
             {
-                Debug.Log($"novelEvent.id: {novelEvent.id}");
                 _novelEvents.Add(novelEvent.id, novelEvent);
             }
         }
@@ -689,6 +688,8 @@ namespace Assets._Scripts.Controller.SceneControllers
             SetNextEvent(novelEvent);
 
             _novelCharacter = novelEvent.character;
+            
+            Debug.Log($"HandleShowMessageEvent: {_novelCharacter}");
 
             if (!CharacterExpressions.ContainsKey(_novelCharacter) && _novelCharacter != 0 && _novelCharacter != 1 && _novelCharacter != 4)
             {
@@ -776,14 +777,14 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private IEnumerator StartNextEventInOneSeconds(float second)
         {
-            //if (_novelCharacter != "NONE" && CharacterExpressions.ContainsKey(_novelCharacter))       //TODO: Auf STring anpassen.
-            //{
-            //    if (CharacterExpressions[_novelCharacter] > 13)
-            //    {
-            //        CharacterExpressions[_novelCharacter] -= 13;
-            //        _novelImagesController.SetFaceExpression(_novelCharacter, CharacterExpressions[_novelCharacter]);
-            //    }
-            //}
+            if (_novelCharacter != 0 && CharacterExpressions.ContainsKey(_novelCharacter))
+            {
+                if (CharacterExpressions[_novelCharacter] <= 12)
+                {
+                    CharacterExpressions[_novelCharacter] += 13;
+                    _novelImagesController.SetFaceExpression(_novelCharacter, CharacterExpressions[_novelCharacter]);
+                }
+            }
             
             yield return new WaitForSeconds(second);
 
