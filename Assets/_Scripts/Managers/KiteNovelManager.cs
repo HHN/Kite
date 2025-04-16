@@ -35,7 +35,7 @@ namespace Assets._Scripts.Managers
             {
                 Debug.LogWarning("List<VisualNovel> kiteNovels is null ");
             }
-            this._kiteNovels = kiteNovels;
+            _kiteNovels = kiteNovels;
         }
 
         public bool AreNovelsLoaded()

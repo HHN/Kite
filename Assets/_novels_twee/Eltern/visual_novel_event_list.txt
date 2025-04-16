@@ -42,7 +42,7 @@ Nachdem du dich gründlich informiert hast, hast du dich dazu entschlossen ein U
 
 
 :: Besorgt-Negativ [Bias] {"position":"1725,1525","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Wichtig ist, dass du die Risiken im Blick hast. Du musst dann ja auch oft verhandeln.
 >>--<<
 >>Bias|GenderSpecificStereotypes<<
@@ -64,7 +64,7 @@ Vielleicht suchst du dir einen Geschäftspartner und überlässt dem diese harte
 
 
 :: Bruder [Bias] {"position":"2575,1475","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Na ja, als Mann hat er wohl einen besseren Geschäftssinn und setzt sich bestimmt besser durch als du.
 >>--<<
 >>Bias|UndervaluationFemaleManagedCompany<<
@@ -135,7 +135,7 @@ Also wenn ich ehrlich bin, finde ich die Idee nicht so gut. Lass es lieber.
 
 
 :: Kein Kind: Sexismus [Bias] {"position":"2300,1175","size":"100,100"}
->>Character2|Speaks|Shocked<<
+>>Character2|Speaks|Scared<<
 Natürlich spielt das eine Rolle. Schließlich nimmt die Kinderversorgung viel Zeit in Anspruch, das solltest du nicht unterschätzen.
 >>--<<
 >>Bias|BiasesAgainstWomenWithChildren<<
@@ -171,7 +171,7 @@ Wenn Kinder mit im Spiel sind, ist es nochmal ein anderes Risiko.
 
 
 :: Kind: Sexismus [Bias] {"position":"2150,1175","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Nein, so war das nicht gemeint, aber wie stellst du es dir denn vor? Kinder haben und ein Unternehmen führen! 
 >>--<<
 >>Character1|Speaks|Dissatisfied<<
@@ -339,7 +339,7 @@ Ja, komm doch wieder mal vorbei. Mach's gut!
 
 
 :: Neutral-Negativ {"position":"2600,750","size":"100,100"}
->>Character2|Speaks|Shocked<<
+>>Character2|Speaks|Scared<<
 Natürlich, aber ich mache mir einfach Sorgen und möchte, dass du an alles gedacht hast.
 
 [[Das verstehe ich, aber es wäre schön, wenn ihr euch auch einfach für mich freuen könntest.->Neutral]]
@@ -359,7 +359,7 @@ Da bin ich gespannt. Denk dran, die Leute werden sich wohler fühlen, mit dir zu
 
 
 :: Nur das Beste {"position":"2175,1475","size":"100,100"}
->>Character2|Speaks|Shocked<<
+>>Character2|Speaks|Scared<<
 Wir wollen nur, dass du das Beste für deine Zukunft hast.
 
 [[Viele haben erfolgreich ein Unternehmen gegründet und habeng leichzeitig eine Familie. Ich schaffe das auch.->Neutral]]
@@ -418,7 +418,7 @@ Und du kannst auch deinen weiblichen Charme nutzen! Dann helfen Leute dir noch v
 
 
 :: Positiv: Benevolenter Sexismus II {"position":"700,1550","size":"100,100"}
->>Character2|Speaks|Shocked<<
+>>Character2|Speaks|Scared<<
 Du hast ja recht. Da habe ich nicht richtig darüber nachgedacht.
 >>--<<
 >>Character1|Speaks|Smiling<<
@@ -428,7 +428,7 @@ Melde dich einfach nach dem Termin, ja?
 
 
 :: Was? Warum? {"position":"2000,750","size":"100,100"}
->>Character2|Speaks|Shocked<<
+>>Character2|Speaks|Scared<<
 Ich möchte nicht, dass du dich in etwas stürzt, das möglicherweise keine Zukunft hat. 
 >>--<<
 >>Character1|Speaks|Critical<<
@@ -467,7 +467,7 @@ Hallo! Wir haben das Telefon auf laut gestellt. Papa hat schon erzählt, dass du
 >>Player<<
 Ich habe beschlossen, mich selbstständig zu machen und mein eigenes Unternehmen zu gründen.
 >>--<<
->>Character2|Speaks|Surprised<<
+>>Character2|Speaks|Amazed<<
 Oh, das sind ja Neuigkeiten!
 
 [[Weiter4]]

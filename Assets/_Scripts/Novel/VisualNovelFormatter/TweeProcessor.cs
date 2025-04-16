@@ -282,8 +282,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// <returns>The cleaned keyword.</returns>
         public static List<string> ExtractKeywordOutOfTweePassage(string text)
         {
-            Debug.Log($"string in ExtractKeywordOutOfTweePassage: {text}");
-            
             var result = new List<string>();
             
             if (string.IsNullOrEmpty(text)) return result;

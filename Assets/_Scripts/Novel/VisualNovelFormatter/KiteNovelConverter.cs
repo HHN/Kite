@@ -33,7 +33,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
     /// </summary>
     public static class NovelKeywordParser
     {
-
         /// <summary>
         /// Parst einen einzelnen Keyword-String und gibt ein NovelKeywordModel zurück.
         /// Falls der String nicht den erwarteten Mustern entspricht, wird null zurückgegeben.
@@ -88,14 +87,13 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             {
                 model.CharacterIndex = 0;
                 model.FaceExpression = MappingManager.MapFaceExpressions("NeutralRelaxed");
-                Debug.Log("Parsed keyword (Info): " + keyword);
                 return model;
             }
+
             if (string.Equals(keyword, "Player", StringComparison.OrdinalIgnoreCase))
             {
                 model.CharacterIndex = 1;
                 model.FaceExpression = MappingManager.MapFaceExpressions("NeutralRelaxed");
-                Debug.Log("Parsed keyword (Player): " + keyword);
                 return model;
             }
 
@@ -132,7 +130,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                         return null;
                     }
 
-                    Debug.Log("Parsed keyword (Character): " + model.CharacterIndex + " Expression: " + model.FaceExpression);
                     return model;
                 }
                 // Wenn es sich um ein Sound‑Keyword handelt.
@@ -142,7 +139,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                     {
                         model.Sound = parts[1];
                     }
-                    Debug.Log("Parsed keyword (Sound): " + keyword);
+
                     return model;
                 }
                 // Wenn es sich um ein Bias‑Keyword handelt.
@@ -153,13 +150,12 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                         // Wende das externe Mapping an.
                         model.Bias = MappingManager.MapBias(parts[1]);
                     }
-                    Debug.Log("Parsed keyword (Bias): " + keyword);
+
                     return model;
                 }
             }
 
             // Falls keiner der erwarteten Fälle eintritt, wird null zurückgegeben.
-            Debug.Log("Line did not match any keyword pattern: " + keyword);
             return null;
         }
 
@@ -192,6 +188,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                         Debug.Log("Skipped token due to invalid markers: " + trimmedToken);
                         continue;
                     }
+
                     NovelKeywordModel model = ParseKeyword(trimmedToken);
                     if (model != null)
                     {
@@ -200,19 +197,18 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 }
             }
 
-            Debug.Log("Total valid keywords found: " + models.Count);
             return models;
         }
     }
 
     #endregion
 
-        /// <summary>
-        /// Converter class that creates VisualNovel objects from processed novel folders
-        /// and converts the Twee text document into a structured event list.
-        /// Instead of a huge switch-case, it now uses the NovelKeywordParser to generate a NovelKeywordModel from the passage text.
-        /// All values (role, expression etc.) are handled as strings.
-        /// </summary>
+    /// <summary>
+    /// Converter class that creates VisualNovel objects from processed novel folders
+    /// and converts the Twee text document into a structured event list.
+    /// Instead of a huge switch-case, it now uses the NovelKeywordParser to generate a NovelKeywordModel from the passage text.
+    /// All values (role, expression etc.) are handled as strings.
+    /// </summary>
     public abstract class KiteNovelConverter
     {
         private static int _counterForNamingPurpose = 1;
@@ -254,27 +250,23 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             InitializeKiteNovelEventList(metaData, eventList, startLabel);
             List<TweePassage> passages = TweeProcessor.ProcessTweeFile(tweeFile);
 
+            Debug.Log($"metaData.TitleOfNovel: {metaData.TitleOfNovel}");
+            Debug.Log($"metaData.StartTalkingPartnerExpression: {metaData.StartTalkingPartnerExpression}");
+
             foreach (TweePassage passage in passages)
             {
                 // Extract the message text (i.e. the keyword) from the passage.
                 string message = TweeProcessor.ExtractMessageOutOfTweePassage(passage.Passage);
-                
+
                 List<string> keywords = TweeProcessor.ExtractKeywordOutOfTweePassage(passage.Passage);
-                
+
                 // Generate a NovelKeywordModel from the message text.
                 List<NovelKeywordModel> keywordModels = NovelKeywordParser.ParseKeywordsFromFile(keywords);
-                
-                Debug.Log($"keywordModels.Count: {keywordModels.Count}");
-                if (keywordModels.Count == 0)
-                {
-                    Debug.Log($"passage.Label: {passage.Label}");
-                }
 
                 if (keywordModels.Count > 1)
                 {
-
                     string targetString = "";
-                    
+
                     for (int i = 0; i < keywordModels.Count; i++)
                     {
                         // Create the corresponding VisualNovelEvent based on the model.
@@ -350,7 +342,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         {
             if (model == null) return null;
 
-            Debug.Log("model != null");
             // If the keyword signals the end.
             if (model.End.HasValue && model.End.Value)
             {
@@ -358,22 +349,18 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 return null;
             }
 
-            Debug.Log("!model.End.HasValue && model.End.Value");
-
-            Debug.Log("BIAS defined: " + model.Bias);
             // If a bias is defined.
             if (!string.IsNullOrEmpty(model.Bias))
             {
-                Debug.Log("BIAS IS NOT NULL");
                 return HandleBiasEvent(passage, model.Bias, eventList);
             }
-            
+
             // If a sound is defined.
             if (!string.IsNullOrEmpty(model.Sound))
             {
                 return HandlePlaySoundEvent(passage, model.Sound, eventList);
             }
-            
+
             // If it's a character event.
             if (model.CharacterIndex.HasValue)
             {
@@ -381,29 +368,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 int expression = model.FaceExpression;
 
                 return HandleCharacterTalksEvent(passage, character, originalMessage, expression, eventList);
-
-
-                // TODO: Remove when verything works
-
-                //// Decide based on the Action field which event to create.
-                //if (!string.IsNullOrEmpty(model.Action))
-                //{
-                //    if (model.Action.Equals("Entry", StringComparison.OrdinalIgnoreCase))
-                //    {
-                //        return HandleCharacterJoinsEvent(passage, role, expression, eventList);
-                //    }
-
-                //    if (model.Action.Equals("Speaks", StringComparison.OrdinalIgnoreCase))
-                //    {
-                //        return HandleCharacterTalksEvent(passage, role, originalMessage, expression, eventList);
-                //    }
-
-                //    if (model.Action.Equals("Looks", StringComparison.OrdinalIgnoreCase))
-                //    {
-                //        // "Looks" is treated as a variant of the join event.
-                //        return HandleCharacterJoinsEvent(passage, role, expression, eventList);
-                //    }
-                //}
             }
 
             return null;
@@ -435,6 +399,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             {
                 return;
             }
+
             if (lastEvent.nextId == startLabel)
             {
                 string newLabel = "RandomEndNovelString" + _counterForNamingPurpose;
@@ -453,16 +418,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             string connectionLabel = "initialCharacterJoinsEvent001";
             string id = "initialLocationEvent001";
             string nextId = connectionLabel;
-            // Instead of using an enum, we assume metaData.StartLocation is a string.
-            //string location = metaData.StartLocation;
-
-            //if (string.IsNullOrEmpty(location))
-            //{
-            //    Debug.LogWarning("While loading " + metaData.TitleOfNovel + ": Initial location not found!");
-            //}
-
-            //VisualNovelEvent initialLocationEvent = KiteNovelEventFactory.GetSetBackgroundEvent(id, nextId, location);
-            //eventList.Add(initialLocationEvent);
 
             id = connectionLabel;
             nextId = startLabel;
@@ -472,10 +427,11 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 Debug.LogWarning("While loading " + metaData.TitleOfNovel + ": Initial character role not found!");
             }
 
+            Debug.Log($"metaData.StartTalkingPartnerExpression: {metaData.StartTalkingPartnerExpression}");
             int expression = MappingManager.MapFaceExpressions(metaData.StartTalkingPartnerExpression);
             if (expression == -1)
             {
-                Debug.LogWarning("While loading " + metaData.TitleOfNovel + ": Initial character expression not found!");
+                Debug.LogWarning("While loading " + metaData.TitleOfNovel + ": Initial character expression " + metaData.StartTalkingPartnerExpression + "not found!");
             }
 
             VisualNovelEvent initialCharacterJoinsEvent = KiteNovelEventFactory.GetCharacterJoinsEvent(id, nextId, character, expression);
@@ -518,7 +474,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
         private static void HandleEndNovelEvent(string label, List<VisualNovelEvent> list)
         {
-            Debug.Log("HandleEndNovelEvent");
             string label01 = label;
             string label02 = label01 + "RandomString0012003";
             string label03 = label02 + "RandomRandom";

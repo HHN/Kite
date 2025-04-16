@@ -89,7 +89,7 @@ Investor*innen suchen nach Exit-Szenarien. Können Sie garantieren, dass Sie lan
 
 
 :: Fachliche Expertise Frage {"position":"975,1325","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Es geht doch nicht um Ihre Kompetenz! Ich sehe einfach oft, dass ein Gründer schneller das Vertrauen der Investor*innen gewinnt als eine Gründerin.
 [[Lassen Sie uns doch darüber sprechen, wie wir dieses Vertrauen durch transparente Zahlen und Fakten aufbauen können.->Traktion]]
 [[Vertrauen Sie einem Gründer auch eher als einer Gründerin?->Geschlechter-Bias Frage]]
@@ -129,7 +129,7 @@ Ja, ein starkes Team ist wichtig, aber Investor*innen schauen auch darauf, wer a
 
 
 :: Führungserfahrung Frage [Bias] {"position":"975,975","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Nein, nein, so meine ich das nicht. Es geht nur darum, dass Männer oft als durchsetzungsfähiger wahrgenommen werden. Das könnte Ihnen helfen.
 >>--<<
 >>Bias|ProveItAgainBias<<
@@ -139,7 +139,7 @@ Nein, nein, so meine ich das nicht. Es geht nur darum, dass Männer oft als durc
 
 
 :: Geschlechter-Bias Frage [Bias] {"position":"1050,1475","size":"100,100"}
->>Character1|Speaks|Surprised<<
+>>Character1|Speaks|Amazed<<
 Nein, natürlich nicht! Es geht nur darum, wie der Markt reagiert, nicht um meine persönliche Meinung.
 >>--<<
 >>Character1|Speaks|Critical<<
@@ -247,7 +247,7 @@ Ein strategischer Exit ist planbarer. Haben Sie bereits Käufer im Blick?
 
 
 :: Wachstumspotenzial Frage {"position":"875,3175","size":"100,100"}
->>Character1|Speaks|Surprised<<
+>>Character1|Speaks|Amazed<<
 Natürlich, es geht mir nur um Ihre Erfolgschancen!
 >>--<<
 >>Character1|Speaks|Neutral<<

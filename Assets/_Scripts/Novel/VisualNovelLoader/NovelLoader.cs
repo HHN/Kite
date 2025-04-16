@@ -45,13 +45,16 @@ namespace Assets._Scripts.Novel.VisualNovelLoader
             yield return StartCoroutine(LoadNovels(fullPath, listOfAllNovel =>
             {
                 // Falls die geladene Liste null oder leer ist, wird eine Warnung im Log ausgegeben.
-                if (listOfAllNovel == null || listOfAllNovel.Count == 0)
+                if (listOfAllNovel != null && listOfAllNovel.Count != 0)
+                {
+                    // Ansonsten wird die geladene Liste der Novellen an den KiteNovelManager �bergeben,
+                    // der die Novellen im weiteren Verlauf verwaltet.
+                    KiteNovelManager.Instance().SetAllKiteNovels(listOfAllNovel);
+                }
+                else
                 {
                     Debug.LogWarning("Loading Novels failed: No Novels found! Path: " + fullPath);
                 }
-                // Ansonsten wird die geladene Liste der Novellen an den KiteNovelManager �bergeben,
-                // der die Novellen im weiteren Verlauf verwaltet.
-                KiteNovelManager.Instance().SetAllKiteNovels(listOfAllNovel);
             }));
         }
 
@@ -90,8 +93,7 @@ namespace Assets._Scripts.Novel.VisualNovelLoader
         /// <param name="callback">Callback, das den geladenen Text zur�ckgibt</param>
         /// <returns>IEnumerator f�r die Coroutine</returns>
         private IEnumerator LoadFileContent(string path, System.Action<string> callback)
-        { 
-            Debug.Log("path webrequest " + path);
+        {
             // Falls die Plattform iOS ist, wird die Datei direkt aus dem Dateisystem gelesen.
             if (Application.platform == RuntimePlatform.IPhonePlayer)
             {

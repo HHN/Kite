@@ -90,7 +90,7 @@ Okay, dann mal ehrlich, was sehen Sie denn so als die größte Schwachstelle in 
 
 
 :: Businessplan allein {"position":"2650,3200","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Ist doch schön, Hilfe zu haben. Warum regen Sie sich da so auf?
 
 [[Ich bin nur verwundert über Ihre Annahme, dass da ein Mann mitgeschrieben haben muss.->Verwunderung]]
@@ -145,7 +145,7 @@ Ah, wahrscheinlich Ihr Partner?
 
 
 :: Bürgschaft Annahme {"position":"1925,1850","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Oh, klar. Entschuldigung, ich habe das nicht böse gemeint. Ich meine, es ist ja schon normaler an einen Partner zu denken, der so als Brötchenverdiener die Frau unterstützt.
 
 [[Ist schon in Ordnung. Was sind denn die nächsten Schritte?->OK, weiter]]
@@ -287,7 +287,7 @@ Gerne und auf Wiedersehen.
 
 
 :: Entscheidungen Alleine [Bias] {"position":"2775,2300","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Klingt fast ein bisschen aggressiv? Mein Rat: Versuchen Sie es doch mal mit einem freundlicheren Ton.
 >>--<<
 >>Bias|TightropeBias<<
@@ -412,7 +412,7 @@ Ja, an sich schon. Also, zu ihrem Kreditantrag. Was ich jetzt so höre, ist, das
 
 
 :: Geschlechtsunabhängig {"position":"1675,2225","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Ja, natürlich. Das war auch nur eine Redewendung und nicht böse gemeint.
 
 [[Davon gehe ich aus, aber wir sollten auf geschlechterneutrale Sprache achten. So etwas festigt oft Stereotypen.->Redewendung Erklärung]]
@@ -445,7 +445,7 @@ Na, der Businessplan ist ziemlich gut geschrieben und zeigt, dass ordentlich rec
 
 
 :: Geschäftspartner Nachfrage II [Bias] {"position":"2750,3200","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 So ein reines Frauen-Team in der Geschäftsführung kann schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.
 >>--<<
 >>Bias|BiasInThePerceptionOfLeadershipSkills<<
@@ -458,7 +458,7 @@ So ein reines Frauen-Team in der Geschäftsführung kann schon schwierig sein. I
 
 
 :: Geschäftspartnerin [Bias] {"position":"2975,2900","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.
 >>--<<
 >>Bias|BiasInThePerceptionOfLeadershipSkills<<
@@ -579,7 +579,7 @@ Das ist das Problem, dass Sie das offenbar nicht sehen. Da müssen Sie sich scho
 
 
 :: Keine Sorge [Bias] {"position":"2900,2550","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Sie sind ja selbstbewusst.
 >>--<<
 >>Bias|UnconsciousBiasInCommunication<<
@@ -859,7 +859,7 @@ Ja, wissen Sie, das ist alles jetzt nicht so einfach wie Sie sich das vorstellen
 
 
 :: Schwachstelle {"position":"2350,3350","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Das ist ja interessant. Weil ich fragte gerade nach einem Schwachpunkt und Sie sagen expandieren. Das wäre jetzt gar nicht so der Schwachpunkt für mich, aber okay.
 
 [[Ich meine damit auch, dass die Planung in so einem Fall eine ganz andere wäre.->Planung]]
@@ -868,7 +868,7 @@ Das ist ja interessant. Weil ich fragte gerade nach einem Schwachpunkt und Sie s
 
 
 :: Selbst [Bias] {"position":"3000,1850","size":"100,100"}
->>Character1|Speaks|Surprised<<
+>>Character1|Speaks|Amazed<<
 Alleine als Frau? Und da sind Sie sich sicher, dass das so alles in Ordnung ist?
 >>--<<
 >>Bias|Microaggression<<

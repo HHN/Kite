@@ -100,7 +100,7 @@ Das würde sicher viele Leserinnen inspirieren. Und ehrlich gesagt, es macht den
 
 
 :: Durchsetzung [Bias Frage] {"position":"1850,1100","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Es heißt ja oft, Frauen wären nicht so durchsetzungsfähig wie Männer. Bei Ihnen sieht das ganz anders aus! Wäre spannend, das im Artikel zu erwähnen, oder?
 >>--<<
 >>Bias|BiasInThePerceptionOfLeadershipSkills<<
@@ -135,7 +135,7 @@ Danke Ihnen! Bis bald.
 
 
 :: Erklärung [Bias] {"position":"2150,950","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 So habe ich das nicht gemeint. Aber unsere Leserinnen und Leser finden es interessant, wenn eine so attraktive Frau wie Sie sich mit einer so spannenden Idee selbstständig macht.
 >>--<<
 >>Bias|Microaggression<<
@@ -164,7 +164,7 @@ Sehr ermutigend für andere Frauen. Und Sie haben ja auch wirklich Glück, dass 
 >>Character1|Speaks|Dissatisfied<<
 Da kann ich leider nichts versprechen. Ich kann zwar beim Schreiben darauf achten, aber am Ende entscheidet die Redaktionsleitung, wie die Story erscheint.
 >>--<<
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Soll ich etwa nicht erwähnen, dass Sie eine Frau sind?
 >>--<<
 >>Bias|UnconsciousBiasInCommunication<<
@@ -261,7 +261,7 @@ Danke, das klingt super! Haben Sie schon eine konkrete Frage für den Artikel?
 
 
 :: Kein Artikel {"position":"2025,1325","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Oh, warum denn nicht?
 
 [[Ich will einfach nicht.->Keine Gründe]]
@@ -292,7 +292,7 @@ Nun gut. Auf Wiedersehen.
 
 
 :: Kein Artikel b {"position":"2175,1175","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Sind Sie sich sicher, dass Sie auf einen Artikel verzichten möchten?
 
 [[Ja, wenn der Fokus nicht auf meinem Unternehmen liegt, verzichte ich lieber.->Kein Artikel b II]]
@@ -331,7 +331,7 @@ Verstanden, Sie können das gerne nochmal anschauen. Ich schicke Ihnen den Artik
 
 
 :: Konfrontativ {"position":"1825,1950","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Ach, tue ich das?
 >>--<<
 >>Character1|Speaks|Critical<<
@@ -429,7 +429,7 @@ Oh, Entschuldigen Sie. Ich wollte Ihren Anteil nicht schmälern.
 
 
 :: Sensationalisierung [Bias] {"position":"1775,425","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Die Tatsache, dass Sie eine Frau sind, macht Ihre Geschichte doch viel interessanter. Die Menschen lieben solche Geschichten!
 
 >>--<<
@@ -454,7 +454,7 @@ Genau, es ist noch selten, dass Frauen in der Branche Erfolg haben. Ihre Geschic
 
 
 :: Strukturelle Gründe {"position":"1950,2225","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Ob wir einen Artikel über Hürden und Diskriminierung schreiben, muss ich abklären. Ich gebe Ihnen dann nochmal Bescheid.
 
 [[Okay. Es sollte aber nicht so wirken, als wären das nur individuelle Probleme.->Ansonsten kein Artikel]]
@@ -476,7 +476,7 @@ Klar, ich verstehe. Sie möchten, dass der Artikel sich auf Ihre Geschäftsidee 
 
 
 :: Umsetzung [Bias] {"position":"1650,1725","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Das wundert mich. Viele Frauen finden es wichtig, über die Schwierigkeiten zu sprechen.
 >>--<<
 >>Bias|ConfirmationBias<<

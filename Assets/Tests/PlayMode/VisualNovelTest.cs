@@ -27,8 +27,10 @@ namespace Tests.PlayMode
                 {
                     Assert.Fail("Time out! Loading novels did not work.");
                 }
+
                 yield return null;
             }
+
             List<NovelTester> tests = NovelTester.TestNovels(KiteNovelManager.Instance().GetAllKiteNovels());
 
             foreach (NovelTester test in tests)
@@ -51,6 +53,7 @@ namespace Tests.PlayMode
             {
                 yield return null;
             }
+
             GameObject converter = GameObject.Find("TweeToJsonConverter");
 
             Assert.NotNull(converter);
@@ -74,6 +77,7 @@ namespace Tests.PlayMode
             {
                 yield return null;
             }
+
             GameObject converter = GameObject.Find("TweeToJsonConverter");
 
             Assert.NotNull(converter);
@@ -90,13 +94,13 @@ namespace Tests.PlayMode
         [UnityTest]
         public IEnumerator ImportNovel()
         {
-            Debug.Log("ConvertNovelsFromTweeToJsonAndSelectiveOverrideOldNovels");
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneNames.MainMenuScene);
 
             while (!asyncLoad.isDone)
             {
                 yield return null;
             }
+
             GameObject converter = GameObject.Find("TweeToJsonConverter");
 
             Assert.NotNull(converter);

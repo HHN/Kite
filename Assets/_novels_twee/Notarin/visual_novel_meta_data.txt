@@ -6,7 +6,7 @@
   "nameOfMainCharacter": "Spielerin",
   "contextForPrompt": "Es ist das Gespräch einer Gründerin, mit einer Notarin. Es geht um die Eintragung des Unternehmens der Gründerin ins Handelsregister. Die Gründerin hat sich gut vorbereitet und hofft einen Termin für ein Eintragung zu erhalten.",
   "folderName": "Notarin",
-  "startTalkingPartnerEmotion": "Schaut neutral entspannt",
+  "startTalkingPartnerEmotion": "NeutralRelaxed",
   "talkingPartner01" : "Notarin",
   "talkingPartner02" : "",
   "talkingPartner03" : "",

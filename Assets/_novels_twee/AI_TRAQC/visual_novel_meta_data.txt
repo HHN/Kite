@@ -8,7 +8,7 @@
   "folderName": "AI_TRAQC",
   "isKite2Novel": true,
   "startLocation": "Office",
-  "startTalkingPartnerEmotion": "Schaut neutral entspannt",
+  "startTalkingPartnerEmotion": "NeutralRelaxed",
   "isWithStartValues": true,
   "talkingPartner01" : "Intro",
   "talkingPartner02" : "",

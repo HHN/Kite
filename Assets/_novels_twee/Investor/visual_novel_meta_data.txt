@@ -5,7 +5,7 @@
   "nameOfMainCharacter": "Spielerin",
   "contextForPrompt": "Es ist das Gespräch einer Gründerin, Lea, mit einem Angel Investor. Es geht um die Investition in das Unternehmen der Gründerin. Der Investor ist an der Innovation interessiert. Die Gründerin hofft, dass der Investor in ihre Innovation investieren wird.",
   "folderName": "Investor",
-  "startTalkingPartnerEmotion": "Schaut neutral entspannt",
+  "startTalkingPartnerEmotion": "NeutralRelaxed",
   "talkingPartner01" : "Investor",
   "talkingPartner02" : "",
   "talkingPartner03" : "",

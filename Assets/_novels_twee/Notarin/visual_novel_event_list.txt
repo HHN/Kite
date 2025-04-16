@@ -40,7 +40,7 @@ Ah, okay. Das Formular sende ich Ihnen zu. Nächsten Donnerstag 15 Uhr hätte ic
 >>Character1|Speaks|NeutralRelaxed<<
 Ja, das ist bereits notiert. 
 >>--<<
->>Character1|Speaks|Surprised<<
+>>Character1|Speaks|Amazed<<
 Das ist schon außergewöhnlich, dass Sie gründen. Wer hat Ihnen denn bei der Gründung geholfen?
 >>--<<
 >>Bias|PerformanceAttributionBias<<
@@ -126,7 +126,7 @@ Wie auch immer. Wollen Sie den Fragebogen zugesendet bekommen?
 
 
 :: Kritik {"position":"1675,725","size":"100,100"}
->>Character1|Speaks|Annoyed<<
+>>Character1|Speaks|Defeated<<
 Sie nehmen das zu persönlich. Geschlecht spielt keine Rolle. Das war nicht meine Absicht, Sie abzuwerten. Ich habe Ihre Position durchaus respektiert.
 
 [[Das Geschlecht spielt eine Rolle, weil Sie angenommen haben, dass ein Mann die Geschäftsführung übernimmt.->Geschlechtsannahme]]
@@ -157,7 +157,7 @@ Kommen wir zurück zu dem Fragebogen. Wie gesagt, sende ich Ihnen die benötigte
 
 
 :: Rat Gereizt [Bias] {"position":"575,1025","size":"100,100"}
->>Character1|Speaks|Surprised<<
+>>Character1|Speaks|Amazed<<
 Es war ja nur ein gut gemeinter Rat. Da müssen Sie nicht gleich so zickig reagieren.
 >>--<<
 >>Bias|UnconsciousBiasInCommunication<<
@@ -179,7 +179,7 @@ Inwiefern habe ich Sie denn nicht respektvoll behandelt?
 
 
 :: Selbstständig {"position":"875,875","size":"100,100"}
->>Character1|Speaks|Surprised<<
+>>Character1|Speaks|Amazed<<
 Oh, so ist das. Nun gut. 
 >>--<<
 >>Character1|Speaks|NeutralRelaxed<<

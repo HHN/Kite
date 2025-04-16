@@ -76,8 +76,6 @@ namespace Assets._Scripts._Mappings
                         Debug.LogWarning("Invalid mapping line: " + line);
                     }
                 }
-
-                Debug.Log("Loaded " + mapping.Count + " bias mappings.");
             }
             catch (Exception ex)
             {
@@ -140,8 +138,6 @@ namespace Assets._Scripts._Mappings
                         Debug.LogWarning("Invalid mapping line: " + line);
                     }
                 }
-
-                Debug.Log("Loaded " + mapping.Count + " face expression mappings.");
             }
             catch (Exception ex)
             {
@@ -205,8 +201,6 @@ namespace Assets._Scripts._Mappings
                         Debug.LogWarning("Invalid mapping line: " + line);
                     }
                 }
-
-                Debug.Log("Loaded " + mapping.Count + " character mappings.");
             }
             catch (Exception ex)
             {
@@ -273,7 +267,7 @@ namespace Assets._Scripts._Mappings
             Debug.LogWarning("Character mapping not found for: " + character);
             return -1; // Fallback-Wert, falls der Character-String nicht gefunden wird.
         }
-        
+
         /// <summary>
         /// �bersetzt den �bergebenen Character-String in seinen zugeh�rigen Integer-Wert anhand des geladenen Mappings.
         /// Falls kein Mapping gefunden wird, wird -1 zur�ckgegeben.
@@ -286,7 +280,7 @@ namespace Assets._Scripts._Mappings
             {
                 return "";
             }
-    
+
             return _characterMapping.FirstOrDefault(x => x.Value == character).Key;
         }
     }

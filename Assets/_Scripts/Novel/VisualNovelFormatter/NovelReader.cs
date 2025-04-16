@@ -139,7 +139,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 }
 
                 // Starte die Verarbeitung der Novellen mit selektivem �berschreiben.
-                StartCoroutine(NovelProcessor(listOfAllNovelPaths));
+                StartCoroutine(ProcessAndMergeNovels(listOfAllNovelPaths));
             }));
         }
 
@@ -297,107 +297,115 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             SaveToJson(new NovelListWrapper(modifiedListOfNovels));
         }
 
-        private IEnumerator NovelProcessor(List<string> listOfAllNovelPaths)
+        /// <summary>
+        /// Processes and merges visual novels by loading, converting, and updating the existing list.
+        /// New novels are added, and existing ones with matching IDs are updated.
+        /// The result is saved as a JSON file.
+        /// </summary>
+        /// <param name="listOfAllNovelPaths">List of relative paths to all novel folders.</param>
+        /// <returns>IEnumerator for coroutine execution.</returns>
+        private IEnumerator ProcessAndMergeNovels(List<string> listOfAllNovelPaths)
         {
-            // Liste zur Speicherung aller verarbeiteten Novellenordner.
+            // List to hold all processed novel folders.
             List<KiteNovelFolder> allFolders = new List<KiteNovelFolder>();
 
-            // Durchlaufe alle Novellenpfade.
+            // Process each novel path individually.
             foreach (string pathOfNovel in listOfAllNovelPaths)
             {
-                // Erstelle die vollst�ndigen Pfade zu den Metadaten- und Event-Listen-Dateien.
-                string fullPathOfNovelMetaData = Path.Combine(Application.dataPath, pathOfNovel, MetaDataFileName);
-                string fullPathOfNovelEventList = Path.Combine(Application.dataPath, pathOfNovel, EventListFileName);
-
-                KiteNovelMetaData kiteNovelMetaData = null;
-                string jsonStringOfEventList = null;
-
-                // Lade und deserialisiere die Metadaten.
-                yield return StartCoroutine(LoadAndDeserialize<KiteNovelMetaData>(fullPathOfNovelMetaData, result => { kiteNovelMetaData = result; }));
-
-                // Falls die Metadaten nicht geladen werden konnten, �berspringe diese Novelle.
-                if (kiteNovelMetaData == null)
-                {
-                    Debug.LogWarning("Kite Novel Meta Data could not be loaded: " + pathOfNovel);
-                    continue;
-                }
-
-                // Lade den Inhalt der Event-Liste.
-                yield return StartCoroutine(LoadFileContent(fullPathOfNovelEventList, result => { jsonStringOfEventList = result; }));
-
-                // Falls die Event-Liste leer ist, �berspringe diese Novelle.
-                if (string.IsNullOrEmpty(jsonStringOfEventList))
-                {
-                    Debug.LogWarning("Kite Novel Event List could not be loaded: " + pathOfNovel);
-                    continue;
-                }
-
-                // Ersetze W�rter in der Event-Liste anhand der in den Metadaten angegebenen Wortpaare.
-                jsonStringOfEventList = ReplaceWordsInString(jsonStringOfEventList, kiteNovelMetaData.WordsToReplace);
-                
-                // Zwischenspeichern der in der Novel verwendeten Keywords.
-                // Mit Mimiken / Audio Files / Biases
-
-                // Konvertiere den Text der Event-Liste in eine strukturierte Event-Liste.
-                List<VisualNovelEvent> kiteNovelEventList = KiteNovelConverter.ConvertTextDocumentIntoEventList(jsonStringOfEventList, kiteNovelMetaData);
-
-                // F�ge den verarbeiteten Ordner zur Gesamtliste hinzu.
-                allFolders.Add(new KiteNovelFolder(kiteNovelMetaData, kiteNovelEventList));
+                yield return ProcessSingleNovel(pathOfNovel, allFolders);
             }
 
-            // Konvertiere alle Ordner in VisualNovel-Objekte.
+            // Convert the processed folders into VisualNovel objects.
             List<VisualNovel> visualNovels = KiteNovelConverter.ConvertFilesToNovels(allFolders);
 
-            // Warte, bis der Manager mindestens eine Visual Novel geladen hat.
-            List<VisualNovel> novels = KiteNovelManager.Instance().GetAllKiteNovels();
-            
-            if (novels == null || novels.Count == 0)
+            // Retrieve already loaded novels from the manager.
+            List<VisualNovel> existingNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+
+            // If no novels exist, save the entire new list.
+            if (existingNovels == null || existingNovels.Count == 0)
             {
-                // Speichere die konvertierten Visual Novels als JSON-Datei.
                 SaveToJson(new NovelListWrapper(visualNovels));
             }
             else
             {
-                // Erhalte die aktuell geladenen (alten) Novellen.
-                List<VisualNovel> oldNovels = novels;
-
-                // Erzeuge eine neue Liste, in die entweder das alte Novel oder ein neues, aktualisiertes Novel �bernommen wird.
+                // Prepare a list for the final result, including updated and new novels.
                 List<VisualNovel> modifiedListOfNovels = new List<VisualNovel>();
 
-                // Vergleiche jedes alte Novel mit den neu geladenen Novellen.
-                foreach (VisualNovel visualNovel in oldNovels)
+                // Update existing novels with new ones if IDs match.
+                foreach (VisualNovel oldNovel in existingNovels)
                 {
-                    VisualNovel novel = visualNovel;
+                    VisualNovel updatedNovel = visualNovels.FirstOrDefault(n => n.id == oldNovel.id) ?? oldNovel;
 
-                    // Falls ein neues Novel mit derselben ID gefunden wird, wird das alte Novel durch das neue ersetzt.
-                    foreach (VisualNovel newNovel in visualNovels)
+                    if (!ReferenceEquals(updatedNovel, oldNovel))
                     {
-                        if (newNovel.id == novel.id)
-                        {
-                            novel = newNovel;
-                            Debug.Log("Override Novel : " + newNovel.title);
-                            break;
-                        }
+                        Debug.Log("Overriding Novel: " + updatedNovel.title);
                     }
 
                     // F�ge das (ggf. aktualisierte) Novel der neuen Liste hinzu.
-                    modifiedListOfNovels.Add(novel);
+                    modifiedListOfNovels.Add(updatedNovel);
                 }
             
-                // Neue Novels anhängen, die noch nicht vorhanden sind
+                // Add any entirely new novels that weren't already included.
                 foreach (VisualNovel newNovel in visualNovels)
                 {
-                    bool alreadyExists = modifiedListOfNovels.Any(n => n.id == newNovel.id);
-                    if (!alreadyExists)
+                    if (!modifiedListOfNovels.Any(n => n.id == newNovel.id))
                     {
                         modifiedListOfNovels.Add(newNovel);
                         Debug.Log("Added new Novel : " + newNovel.title);
                     }
                 }
 
-                // Speichere die modifizierte Liste als JSON.
+                // Save the merged result to JSON.
                 SaveToJson(new NovelListWrapper(modifiedListOfNovels));
             }
+        }
+
+        /// <summary>
+        /// Processes a single visual novel by loading its metadata and event list,
+        /// transforming the content, and adding it to the provided folder list.
+        /// </summary>
+        /// <param name="pathOfNovel">Relative path to the novel's folder inside the project.</param>
+        /// <param name="allFolders">The list to which the processed novel will be added.</param>
+        /// <returns>IEnumerator for coroutine execution.</returns>
+        private IEnumerator ProcessSingleNovel(string pathOfNovel, List<KiteNovelFolder> allFolders)
+        {
+            // Build the full paths for metadata and event list files.
+            string fullPathOfNovelMetaData = Path.Combine(Application.dataPath, pathOfNovel, MetaDataFileName);
+            string fullPathOfNovelEventList = Path.Combine(Application.dataPath, pathOfNovel, EventListFileName);
+
+            KiteNovelMetaData kiteNovelMetaData = null;
+            string jsonStringOfEventList = null;
+
+            // Load and deserialize the novel's metadata.
+            yield return StartCoroutine(LoadAndDeserialize<KiteNovelMetaData>(fullPathOfNovelMetaData, result => { kiteNovelMetaData = result; }));
+            
+            Debug.Log($"ProcessSingleNovel: kiteNovelMetaData.TitleOfNovel: {kiteNovelMetaData?.TitleOfNovel}");
+            Debug.Log($"ProcessSingleNovel: kiteNovelMetaData.StartTalkingPartnerExpression: {kiteNovelMetaData?.StartTalkingPartnerExpression}");
+            // Skip if metadata couldn't be loaded.
+            if (kiteNovelMetaData == null)
+            {
+                Debug.LogWarning("Kite Novel Meta Data could not be loaded: " + pathOfNovel);
+                yield break;
+            }
+
+            // Load the event list content.
+            yield return StartCoroutine(LoadFileContent(fullPathOfNovelEventList, result => { jsonStringOfEventList = result; }));
+
+            // Skip if event list is empty or missing.
+            if (string.IsNullOrEmpty(jsonStringOfEventList))
+            {
+                Debug.LogWarning("Kite Novel Event List could not be loaded: " + pathOfNovel);
+                yield break;
+            }
+
+            // Replace placeholder words in the event list using metadata replacement rules.
+            jsonStringOfEventList = ReplaceWordsInString(jsonStringOfEventList, kiteNovelMetaData.WordsToReplace);
+
+            // Convert the raw text into a structured list of visual novel events.
+            List<VisualNovelEvent> kiteNovelEventList = KiteNovelConverter.ConvertTextDocumentIntoEventList(jsonStringOfEventList, kiteNovelMetaData);
+
+            // Add the processed folder to the result list.
+            allFolders.Add(new KiteNovelFolder(kiteNovelMetaData, kiteNovelEventList));
         }
 
         /// <summary>

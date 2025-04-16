@@ -5,7 +5,7 @@
   "nameOfMainCharacter": "Spielerin",
   "contextForPrompt": "Es ist das Gespräch einer Gründerin, mit einer Journalistin. Die Journalistin hat die Gründerin angesprochen und möchte einen Artikel über sie und ihr Unternehmen schreiben. Die Gründerin freut sich über diese Gelegenheit und hofft auf einen schönen Artikel.",
   "folderName": "Presse",
-  "startTalkingPartnerEmotion": "Schaut neutral entspannt",
+  "startTalkingPartnerEmotion": "NeutralRelaxed",
   "talkingPartner01" : "Journalistin",
   "talkingPartner02" : "",
   "talkingPartner03" : "",

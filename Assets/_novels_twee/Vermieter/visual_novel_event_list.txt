@@ -31,7 +31,7 @@ Gutes Aussehen und Sachverstand, Sie haben ja bei der Verteilung der Kompetenzen
 
 
 :: Ageism Alt {"position":"1875,1900","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Entschuldigen Sie bitte. So war das natürlich nicht gemeint. Ich denke nicht, dass Sie zu alt zum Gründen sind.
 
 
@@ -41,7 +41,7 @@ Entschuldigen Sie bitte. So war das natürlich nicht gemeint. Ich denke nicht, d
 
 
 :: Ageism Jung {"position":"1675,1900","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Entschuldigen Sie bitte. So war das natürlich nicht gemeint. Ich denke natürlich nicht, dass Sie zu jung zum Gründen sind.
 
 [[Ich schätze Ihre Entschuldigung. Konzentrieren wir uns darauf, wie wir den Mietprozess vorantreiben können.->Mietprozess]]
@@ -111,14 +111,12 @@ Bei älteren Frauen habe ich häufiger das Gefühl, dass sie ein Hobby brauchen 
 Du hast heute einen Termin für die Besichtigung von Büroräumen.
 Dort angekommen, wirst du von dem Vermieter angesprochen.
 
-Blubb.
-
 
 [[Weiter]]
 
 
 :: Anforderungen {"position":"2325,2075","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Darüber können wir uns dann in Ruhe unterhalten.
 
 [[Neuer Termin]]
@@ -358,7 +356,7 @@ Er betont immer wieder, wie wichtig Marktforschung ist. Sie haben ja schon auf I
 
 
 :: Fokus: Neutral {"position":"1975,2500","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Oh, ach so. Das verstehe ich natürlich. Übrigens! Ein Freund von mir hat auch gegründet! Da habe ich einiges mitbekommen. 
 
 [[Freund betont]]
@@ -372,7 +370,7 @@ Ja, das wird er sicher. Übrigens, ein Freund von mir hat auch gegründet! Da ha
 
 
 :: Frage [Bias] {"position":"2100,1000","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Was für eine Frage haben Sie denn? Sie scheinen sich ja schon richtig viele Gedanken gemacht zu haben!
 >>--<<
 >>Bias|UnconsciousBiasInCommunication<<
@@ -464,7 +462,7 @@ Gut, dass Sie gut vorbereitet sind. Mieten Sie zum ersten Mal Büroflächen? Hab
 
 
 :: Ignorieren {"position":"2175,1325","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Ach, das ist Ihnen wichtig? Ehrlich gesagt, halte ich den Aufwand oft für übertrieben. Die meisten meiner Mieter*innen brauchen das nicht.
 
 [[Ich möchte sicherstellen, dass Zugänge barrierefrei sind. Das kommt letztlich allen zugute und stärkt auch unsere Gemeinschaft.->Inklusion]]
@@ -609,7 +607,7 @@ Natürlich, da kann ich Ihnen nur zustimmen. Da fällt mir etwas ein. Ein Freund
 
 
 :: Sensibilisierung b {"position":"1300,1575","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Oh, ach so. Dann ist ja gut. Ein Freund von mir hat auch gegründet! Da habe ich einiges mitbekommen. 
 
 [[Freund betont]]
@@ -623,7 +621,7 @@ Das war nur ein nett gemeintes Kompliment, aber ich glaube, ich verstehe, worauf
 
 
 :: Sicher {"position":"1400,1575","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Oh, ach so. Dann ist ja gut. Ein Freund von mir hat auch gegründet! Da habe ich einiges mitbekommen. 
 
 [[Freund betont]]
@@ -651,7 +649,7 @@ Es gibt einige Standarddokumente, die wir benötigen, um den Mietprozess in Gang
 
 
 :: Umlenken II [Bias] {"position":"1500,1400","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Sind Sie gar nicht nervös oder unsicher, was Ihre Gründung betrifft?
 >>--<<
 >>Bias|GenderSpecificStereotypes<<
@@ -666,21 +664,21 @@ Sind Sie gar nicht nervös oder unsicher, was Ihre Gründung betrifft?
 
 
 :: Vorbereitung {"position":"950,1100","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Stimmt, da haben Sie selbstverständlich recht. Aber Frauen haben manchmal zusätzliche Herausforderungen in der Geschäftswelt. 
 
 [[Freund Gründungsliteratur]]
 
 
 :: Vorbereitung Sicher {"position":"950,1575","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Oh, ach so. Dann ist ja gut.
 
 [[Freund betont]]
 
 
 :: Vorbereitung klarstellen {"position":"1775,1900","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Entschuldigen Sie bitte. So war das natürlich nicht gemeint.
 
 [[Ich schätze Ihre Entschuldigung. Konzentrieren wir uns doch darauf den Mietprozess voranzutreiben.->Mietprozess]]
@@ -698,7 +696,7 @@ Guten Tag. Dies sind also die zur Verfügung stehenden Räumlichkeiten. Und Sie 
 
 
 :: Weiter II [Bias] {"position":"1900,500","size":"100,100"}
->>Character1|Speaks|Shocked<<
+>>Character1|Speaks|Scared<<
 Oh, wie interessant! Wie in der Anzeige geschrieben, liegt der Mietpreis kalt bei 8,11€ pro Quadratmeter. Die Mindestmietdauer beträgt 5 Jahre, sind Sie sicher, den Mietpreis über diesen Zeitraum bezahlen zu können?
 >>--<<
 >>Bias|Microaggression<<
