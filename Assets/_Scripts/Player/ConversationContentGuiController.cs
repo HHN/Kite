@@ -271,8 +271,6 @@ namespace Assets._Scripts.Player
         
         private GameObject GetMessagePrefab(VisualNovelEvent novelEvent)
         {
-            Debug.Log($"novelEvent.id: {novelEvent.id}");
-            Debug.Log($"novelEvent.character: {novelEvent.character}");
             GameObject newMessageBox;
             
             if (novelEvent.character == 1)

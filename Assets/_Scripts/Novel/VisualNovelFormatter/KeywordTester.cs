@@ -47,7 +47,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
             // Get all files with the name "visual_novel_event_list.txt" in the folder and its subdirectories.
             string[] filePaths = Directory.GetFiles(fullFolderPath, "visual_novel_event_list.txt", SearchOption.AllDirectories);
-            Debug.Log("Number of files found: " + filePaths.Length);
 
             // Liste zum Sammeln aller validen Keyword-Modelle aus allen Dateien.
             List<NovelKeywordModel> allModels = new List<NovelKeywordModel>();
@@ -55,8 +54,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             // Gehe alle gefundenen Dateien durch.
             foreach (string file in filePaths)
             {
-                Debug.Log("Processing file: " + file);
-
                 // Lese den Inhalt der Datei synchron.
                 List<string> fileContent = new List<string>();
                 fileContent.AddRange(File.ReadAllLines(file));
@@ -72,9 +69,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 // Optional: Warte einen Frame, um große Dateien nicht blockierend zu verarbeiten.
                 yield return null;
             }
-
-            // Gib die Gesamtzahl der gefundenen validen Keywords in der Konsole aus.
-            Debug.Log("Total valid keywords found across all files: " + allModels.Count);
 
             yield return null;
         }

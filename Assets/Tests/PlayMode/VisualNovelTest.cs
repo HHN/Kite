@@ -70,8 +70,6 @@ namespace Tests.PlayMode
         [UnityTest]
         public IEnumerator TestKeyWords()
         {
-            Debug.Log("TEST!");
-
             // Erstelle ein neues GameObject und f�ge das KeywordTester-Skript hinzu.
             GameObject testerObj = new GameObject("KeywordTesterObject");
             KeywordTester tester = testerObj.AddComponent<KeywordTester>();

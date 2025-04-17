@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Assets._Scripts._Mappings;
-using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
 using UnityEngine;
 
 namespace Assets._Scripts.Novel.VisualNovelFormatter
@@ -14,7 +13,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
     /// </summary>
     public class NovelKeywordModel
     {
-        public int? CharacterIndex { get; set; }
+        public int CharacterIndex { get; set; }
         public int FaceExpression { get; set; }
         public string Bias { get; set; }
         public string Sound { get; set; }
@@ -46,12 +45,11 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// </summary>
         /// <param name="keyword">Die Zeile, die verarbeitet werden soll.</param>
         /// <returns>Ein NovelKeywordModel oder null, wenn kein gültiges Keyword erkannt wurde.</returns>
-        public static NovelKeywordModel ParseKeyword(string keyword)
+        private static NovelKeywordModel ParseKeyword(string keyword, KiteNovelMetaData kiteNovelMetaData)
         {
             // Falls der Eingabestring leer oder nur Whitespace ist, wird null zurückgegeben.
             if (string.IsNullOrWhiteSpace(keyword))
             {
-                Debug.Log("Empty or whitespace line encountered.");
                 return null;
             }
 
@@ -85,14 +83,14 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             // Prüfe auf die exakten Schlüsselwörter "Info" und "Player".
             if (string.Equals(keyword, "Info", StringComparison.OrdinalIgnoreCase))
             {
-                model.CharacterIndex = 4;
+                model.CharacterIndex = MappingManager.MapCharacter("Info");
                 model.FaceExpression = MappingManager.MapFaceExpressions("NeutralRelaxed");
                 return model;
             }
 
             if (string.Equals(keyword, "Player", StringComparison.OrdinalIgnoreCase))
             {
-                model.CharacterIndex = 1;
+                model.CharacterIndex = MappingManager.MapCharacter("Player");
                 model.FaceExpression = MappingManager.MapFaceExpressions("NeutralRelaxed");
                 return model;
             }
@@ -108,8 +106,18 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                     string numberPart = parts[0].Substring("Character".Length);
                     if (int.TryParse(numberPart, out int num))
                     {
-                        // Since 0 = Info and 1 = Player are reserved, we assign num + 1.
-                        model.CharacterIndex = num + 1;
+                        if (num == 1)
+                        {
+                            model.CharacterIndex = MappingManager.MapCharacter(kiteNovelMetaData.TalkingPartner01);
+                        }
+                        else if (num == 2)
+                        {
+                            model.CharacterIndex = MappingManager.MapCharacter(kiteNovelMetaData.TalkingPartner02);
+                        }
+                        else if (num == 3)
+                        {
+                            model.CharacterIndex = MappingManager.MapCharacter(kiteNovelMetaData.TalkingPartner03);
+                        }
                     }
 
                     // If there are exactly two parts, then only the face expression is provided.
@@ -137,6 +145,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 {
                     if (parts.Length > 1)
                     {
+                        model.CharacterIndex = 0;
                         model.Sound = parts[1];
                     }
 
@@ -165,7 +174,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// </summary>
         /// <param name="fileContent">Der gesamte Text aus der Keyword-Datei.</param>
         /// <returns>Liste der NovelKeywordModel.</returns>
-        public static List<NovelKeywordModel> ParseKeywordsFromFile(List<string> fileContent)
+        public static List<NovelKeywordModel> ParseKeywordsFromFile(List<string> fileContent, KiteNovelMetaData kiteNovelMetaData = null)
         {
             // string[] lines = fileContent.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
             List<NovelKeywordModel> models = new List<NovelKeywordModel>();
@@ -184,12 +193,10 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                     // Stelle sicher, dass die Keywords die Marker ">>" und "<<" haben.
                     if (!(trimmedToken.StartsWith(">>") && trimmedToken.EndsWith("<<")))
                     {
-                        // Überspringe, falls die Marker fehlen.
-                        Debug.Log("Skipped token due to invalid markers: " + trimmedToken);
                         continue;
                     }
 
-                    NovelKeywordModel model = ParseKeyword(trimmedToken);
+                    NovelKeywordModel model = ParseKeyword(trimmedToken, kiteNovelMetaData);
                     if (model != null)
                     {
                         models.Add(model);
@@ -258,7 +265,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 List<string> keywords = TweeProcessor.ExtractKeywordOutOfTweePassage(passage.Passage);
 
                 // Generate a NovelKeywordModel from the message text.
-                List<NovelKeywordModel> keywordModels = NovelKeywordParser.ParseKeywordsFromFile(keywords);
+                List<NovelKeywordModel> keywordModels = NovelKeywordParser.ParseKeywordsFromFile(keywords, metaData);
 
                 if (keywordModels.Count > 1)
                 {
@@ -338,7 +345,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         {
             if (model == null) return null;
 
-            Debug.Log($"model.CharacterIndex: {model.CharacterIndex}, model.FaceExpression: {model.FaceExpression}, model.Bias: {model.Bias}, model.Sound: {model.Sound}, model.End: {model.End}");
             // If the keyword signals the end.
             if (model.End.HasValue && model.End.Value)
             {
@@ -347,43 +353,22 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             }
 
             // If a bias is defined.
-            if (!string.IsNullOrEmpty(model.Bias))
+            else if (!string.IsNullOrEmpty(model.Bias))
             {
                 return HandleBiasEvent(passage, model.Bias, eventList);
             }
 
             // If a sound is defined.
-            if (!string.IsNullOrEmpty(model.Sound))
+            else if (!string.IsNullOrEmpty(model.Sound))
             {
                 return HandlePlaySoundEvent(passage, model.Sound, eventList);
             }
 
             // If it's a character event.
-            if (model.CharacterIndex.HasValue)
-            {
-                int character = GetCharacterRoleFromIndex(model.CharacterIndex.Value, metaData);
-                int expression = model.FaceExpression;
+            int character = model.CharacterIndex; //GetCharacterRoleFromIndex(model.CharacterIndex, metaData);
+              int expression = model.FaceExpression;
 
-                return HandleCharacterTalksEvent(passage, character, originalMessage, expression, eventList);
-            }
-
-            return null;
-        }
-
-        /// <summary>
-        /// Determines the character role as a string based on the CharacterIndex.
-        /// 0: "Info", 1: "Player", 2: first talking partner, 3: second talking partner, 4: third talking partner.
-        /// </summary>
-        private static int GetCharacterRoleFromIndex(int index, KiteNovelMetaData metaData)
-        {
-            return index switch
-            {
-                < 2 => index,
-                2 => MappingManager.MapCharacter(metaData.TalkingPartner01),
-                3 => MappingManager.MapCharacter(metaData.TalkingPartner02),
-                4 => MappingManager.MapCharacter(metaData.TalkingPartner03),
-                _ => -1
-            };
+            return HandleCharacterTalksEvent(passage, character, originalMessage, expression, eventList);
         }
 
         /// <summary>
@@ -445,15 +430,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             list.Add(novelEvent);
             return novelEvent;
         }
-
-        // private static VisualNovelEvent HandleCharacterJoinsEvent(TweePassage passage, string character, int expression, List<VisualNovelEvent> list)
-        // {
-        //     string id = passage?.Label;
-        //     string nextId = passage?.Links?[0]?.Target;
-        //     VisualNovelEvent novelEvent = KiteNovelEventFactory.GetCharacterJoinsEvent(id, nextId, character, expression);
-        //     list.Add(novelEvent);
-        //     return novelEvent;
-        // }
 
         private static VisualNovelEvent HandleBiasEvent(TweePassage passage, string bias, List<VisualNovelEvent> list)
         {
