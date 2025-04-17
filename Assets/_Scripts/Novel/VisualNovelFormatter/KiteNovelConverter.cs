@@ -260,7 +260,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             foreach (TweePassage passage in passages)
             {
                 // Extract the message text (i.e. the keyword) from the passage.
-                string message = TweeProcessor.ExtractMessageOutOfTweePassage(passage.Passage);
+                List<string> message = TweeProcessor.ExtractMessageOutOfTweePassage(passage.Passage);
 
                 List<string> keywords = TweeProcessor.ExtractKeywordOutOfTweePassage(passage.Passage);
 
@@ -270,12 +270,24 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 if (keywordModels.Count > 1)
                 {
                     string targetString = "";
+                    int messageIndex = 0;
 
                     for (int i = 0; i < keywordModels.Count; i++)
                     {
-                        // Create the corresponding VisualNovelEvent based on the model.
-                        VisualNovelEvent createdEvent = CreateVisualNovelEventFromKeyword(passage, message, keywordModels[i], metaData, eventList);
-
+                        VisualNovelEvent createdEvent = new VisualNovelEvent();
+                        if (message.Count == 0)
+                        {
+                            createdEvent = CreateVisualNovelEventFromKeyword(passage, "", keywordModels[i], metaData, eventList);
+                        }
+                        else if (message.Count <= messageIndex)
+                        {
+                            createdEvent = CreateVisualNovelEventFromKeyword(passage, message[message.Count-1], keywordModels[i], metaData, eventList);
+                        }
+                        else
+                        {
+                            // Create the corresponding VisualNovelEvent based on the model.
+                            createdEvent = CreateVisualNovelEventFromKeyword(passage, message[messageIndex], keywordModels[i], metaData, eventList);
+                        }
                         // If there is a link to the next event
                         // We use the label bc it is unique
                         if (targetString == "" && passage.Links.Any())
@@ -313,6 +325,53 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                             }
                         }
 
+                        // angenommen createdEvent ist hier schon zugewiesen…
+                        if (createdEvent == null)
+                        {
+                            Debug.LogWarning($"No event created for passage {passage.Label}, skipping debug output.");
+                        }
+                        else
+                        {
+
+                        if (createdEvent.eventType == 4)
+                        {
+                            messageIndex++;
+                        }
+                            var parts = new List<string>();
+
+                            if (!string.IsNullOrEmpty(createdEvent.id))
+                                parts.Add($"id={createdEvent.id}");
+                            if (!string.IsNullOrEmpty(createdEvent.nextId))
+                                parts.Add($"nextId={createdEvent.nextId}");
+                            if (!string.IsNullOrEmpty(createdEvent.onChoice))
+                                parts.Add($"onChoice={createdEvent.onChoice}");
+
+                            if (createdEvent.eventType != 0)
+                                parts.Add($"eventType={createdEvent.eventType}");
+                            if (createdEvent.character != 0)
+                                parts.Add($"character={createdEvent.character}");
+
+                            if (!string.IsNullOrEmpty(createdEvent.text))
+                                parts.Add($"text=\"{createdEvent.text}\"");
+
+                            if (createdEvent.animationType != 0)
+                                parts.Add($"animationType={createdEvent.animationType}");
+                            if (createdEvent.expressionType != 0)
+                                parts.Add($"expressionType={createdEvent.expressionType}");
+
+                            if (!string.IsNullOrEmpty(createdEvent.key))
+                                parts.Add($"key={createdEvent.key}");
+                            if (!string.IsNullOrEmpty(createdEvent.value))
+                                parts.Add($"value={createdEvent.value}");
+                            if (!string.IsNullOrEmpty(createdEvent.relevantBias))
+                                parts.Add($"relevantBias={createdEvent.relevantBias}");
+
+                            Debug.Log("[CreatedEvent] " + string.Join(" | ", parts));
+                        }
+
+
+
+
                         // Check if the event creates a loop, and adjust if necessary.
                         HandleLoop(createdEvent, startLabel, eventList);
 
@@ -322,8 +381,16 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 }
                 else if (keywordModels.Count == 1)
                 {
-                    // Create the corresponding VisualNovelEvent based on the model.
-                    VisualNovelEvent createdEvent = CreateVisualNovelEventFromKeyword(passage, message, keywordModels[0], metaData, eventList);
+                    VisualNovelEvent createdEvent = new VisualNovelEvent();
+                    if (message.Count == 0)
+                    {
+                        createdEvent = CreateVisualNovelEventFromKeyword(passage, "", keywordModels[0], metaData, eventList);
+                    }
+                    else
+                    {
+                        // Create the corresponding VisualNovelEvent based on the model.
+                        createdEvent = CreateVisualNovelEventFromKeyword(passage, message[0], keywordModels[0], metaData, eventList);
+                    }
 
                     // Check if the event creates a loop, and adjust if necessary.
                     HandleLoop(createdEvent, startLabel, eventList);

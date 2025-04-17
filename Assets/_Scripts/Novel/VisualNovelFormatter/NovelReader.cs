@@ -16,6 +16,22 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
     // und Konvertierens von Novellen aus dem Twee-Format in das JSON-Format steuert.
     public class NovelReader : MonoBehaviour
     {
+        private static NovelReader _instance;
+        public static NovelReader Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    // Erstelle neues GameObject und hänge das Script dran
+                    GameObject go = new GameObject("NovelReader");
+                    _instance = go.AddComponent<NovelReader>();
+                    DontDestroyOnLoad(go);
+                }
+                return _instance;
+            }
+        }
+
         // Konstanten, die die Pfade zu wichtigen Dateien definieren.
         // NovelListPath: Pfad zur Datei, die eine Liste aller Novellenpfade enth�lt.
         private const string NovelListPath = "_novels_twee/list_of_novels.txt";

@@ -47,24 +47,17 @@ namespace Tests.PlayMode
         [UnityTest]
         public IEnumerator ImportNovel()
         {
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneNames.MainMenuScene);
+            // Hole Dir die Instanz einmal in eine lokale Variable:
+            var novelReader = NovelReader.Instance;
 
-            while (!asyncLoad.isDone)
-            {
-                yield return null;
-            }
-
-            GameObject converter = GameObject.Find("TweeToJsonConverter");
-
-            Assert.NotNull(converter);
-
-            NovelReader novelReader = converter.GetComponent<NovelReader>();
+            // Starte den Import
             novelReader.ImportNovel();
 
-            while (novelReader.IsFinished() == false)
-            {
-                yield return null;
-            }
+            // Warte, bis er fertig ist
+            yield return new WaitUntil(() => novelReader.IsFinished());
+
+            // Testende
+            Assert.IsTrue(novelReader.IsFinished(), "ImportNovel sollte am Ende fertig sein.");
         }
 
         [UnityTest]

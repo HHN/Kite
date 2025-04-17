@@ -253,8 +253,9 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// </summary>
         /// <param name="text">The full passage text.</param>
         /// <returns>The cleaned message text.</returns>
-        public static string ExtractMessageOutOfTweePassage(string text)
+        public static List<string> ExtractMessageOutOfTweePassage(string text)
         {
+            Debug.Log(text);
             // Remove the title from the passage.
             text = RemoveTitleFromPassage(text);
             // Remove any text enclosed in double square brackets.
@@ -271,8 +272,16 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             // Remove known keywords from the text.
             text = RemoveKeyWords(text);
             // Normalize extra spaces to a single space.
+            Debug.Log(text);
             text = NormalizeSpaces(text);
-            return text.Trim();
+            Debug.Log(text);
+            List <string> list = text.Trim().Split(new[] { "\r\n", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            int idx = 0;
+            foreach (var line in list)
+            {
+                Debug.Log($"Zeile {idx++}: {line}");
+            }
+            return text.Trim().Split(new[] { "\r\n", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries).ToList();
         }
 
         /// <summary>
@@ -436,13 +445,16 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         private static string NormalizeSpaces(string input)
         {
             if (string.IsNullOrEmpty(input))
-            {
-                return "";
-            }
+                return string.Empty;
 
-            var pattern = @"\s+";
-            var result = Regex.Replace(input, pattern, " ");
-            return result;
+            // 1) Alle Arten von Zeilenumbrüchen (CRLF, CR, LF) auf '\n' vereinheitlichen
+            //    und anschließend jede Folge von einem oder mehreren umzubrechen auf genau einen '\n' reduzieren.
+            string collapsedLines = Regex.Replace(input, @"(\r\n|\r|\n)+", "\n");
+
+            // 2) Jede Folge von Leerzeichen oder Tabs auf genau ein einzelnes Leerzeichen reduzieren.
+            string collapsedSpaces = Regex.Replace(collapsedLines, @"[ \t]+", " ");
+
+            return collapsedSpaces;
         }
     }
 }

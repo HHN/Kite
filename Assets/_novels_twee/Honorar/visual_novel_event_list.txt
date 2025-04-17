@@ -66,11 +66,14 @@ Dann wünsche ich Ihnen noch einen schönen Tag. Auf Wiedersehen.
 :: Anfang {"position":"2925,200","size":"100,100"}
 >>Info<<
 Du wurdest angefragt bei einer Veranstaltung als Speakerin aufzutreten und über deine Expertise als Gründerin zu sprechen. Nachdem bestätigt wurde, dass deine Expertise den Erwartungen entspricht, steht nun die Honorarverhandlung an.
->>--<<
+
+[[Frage nach HonorarI]]
+
+:: Frage nach HonorarI {"position":"2725,200","size":"100,100"}
 >>Character1|Speaks|Smiling<<
 Es freut uns, dass Sie uns unterstützen können. Nun stellt sich uns natürlich die Frage, wie viel Sie verlangen.
 
-[[Frage nach Honorar]]
+[[Frage nach HonorarII]]
 
 
 :: Anpassungsfähigkeit {"position":"3375,2625","size":"100,100"}
@@ -305,7 +308,7 @@ Ein Folgegespräch klingt gut, aber auch beim ersten Mal wäre eine Geste schön
 [[Ich kann Ihnen anbieten, am Ende noch eine Fragerunde einzubauen.->Q&A]]
 
 
-:: Frage nach Honorar {"position":"2925,350","size":"100,100"}
+:: Frage nach HonorarII {"position":"2925,350","size":"100,100"}
 >>Player<<
 Mein Honorar liegt bei 2.500 € zzgl. USt.
 >>--<<
