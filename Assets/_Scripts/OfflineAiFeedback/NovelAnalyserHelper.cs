@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Text;
+using Assets._Scripts._Mappings;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using UnityEngine;
@@ -208,7 +209,7 @@ namespace Assets._Scripts.OfflineAiFeedback
 
             switch (type)
             {
-                case VisualNovelEventType.CharakterJoinEvent:
+                case VisualNovelEventType.CharacterJoinEvent:
                 {
                     HandleCharacterJoinEvent(eventUnderTest);
                     break;
@@ -275,7 +276,7 @@ namespace Assets._Scripts.OfflineAiFeedback
 
         private void HandlePlaySoundEvent(VisualNovelEvent novelEvent)
         {
-            if (KiteSoundHelper.ValueOf(novelEvent.audioClipToPlay) == KiteSound.None)
+            if (novelEvent.audioClipToPlay == "NONE")
             {
                 OnAnalysisFailed("Sound Event without audio clip!", _objectUnderAnalyse.title, novelEvent.id);
                 return;
@@ -286,7 +287,7 @@ namespace Assets._Scripts.OfflineAiFeedback
 
         private void HandlePlayAnimationEvent(VisualNovelEvent novelEvent)
         {
-            if (KiteAnimationHelper.ValueOf(novelEvent.animationToPlay) == KiteAnimation.None)
+            if (novelEvent.animationToPlay == "NONE")
             {
                 OnAnalysisFailed("Animation Event without animation!", _objectUnderAnalyse.title, novelEvent.id);
                 return;
@@ -331,7 +332,7 @@ namespace Assets._Scripts.OfflineAiFeedback
 
         private void HandleMarkBiasEvent(VisualNovelEvent novelEvent)
         {
-            if (DiscriminationBiasHelper.ValueOf(novelEvent.relevantBias) == DiscriminationBias.None)
+            if (novelEvent.relevantBias == "NONE")
             {
                 OnAnalysisFailed("Discrimination bias event without discrimination bias!", _objectUnderAnalyse.title,
                     novelEvent.id);
@@ -407,7 +408,7 @@ namespace Assets._Scripts.OfflineAiFeedback
                 return;
             }
 
-            AddFormattedLineToPrompt(CharacterTypeHelper.GetNameOfCharacter(novelEvent.character), novelEvent.text);
+            AddFormattedLineToPrompt(MappingManager.MapCharacterToString(novelEvent.character), novelEvent.text);
 
             PlayNextEvent();
         }

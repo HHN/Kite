@@ -1,6 +1,6 @@
+using Assets._Scripts.Controller.SceneControllers;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Player;
-using Assets._Scripts.SceneControllers;
 using Assets._Scripts.Utilities;
 using TMPro;
 using UnityEngine;

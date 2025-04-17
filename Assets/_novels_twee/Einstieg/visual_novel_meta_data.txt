@@ -5,7 +5,7 @@
   "nameOfMainCharacter": "Spielerin",
   "contextForPrompt": "",
   "folderName": "Einstieg",
-  "startTalkingPartnerEmotion": "Schaut neutral entspannt",
+  "startTalkingPartnerExpression": "NeutralRelaxed",
   "talkingPartner01" : "Intro",
   "talkingPartner02" : "",
   "talkingPartner03" : "",

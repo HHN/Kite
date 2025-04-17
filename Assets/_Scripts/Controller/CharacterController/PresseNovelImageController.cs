@@ -1,0 +1,172 @@
+using System.Collections;
+using Assets._Scripts.Managers;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Assets._Scripts.Controller.CharacterController
+{
+    public class PresseNovelImageController : NovelImageController
+    {
+        [SerializeField] private GameObject decoVasePrefab;
+        [SerializeField] private GameObject decoVaseContainer;
+        [SerializeField] private GameObject decoGlasPrefab;
+        [SerializeField] private GameObject decoGlasContainer;
+        [SerializeField] private AudioClip decoGlasAudio;
+        [SerializeField] private AudioClip decoVaseAudio;
+        [SerializeField] private Sprite[] animationFramesVase;
+        [SerializeField] private Sprite[] animationFramesGlas;
+
+        [SerializeField] private Transform characterContainer;
+        [SerializeField] private GameObject characterPrefab;
+
+        private GameObject _instantiatedCharacter;
+
+        private void Start()
+        {
+            novelKite2CharacterController = characterContainer.GetComponentInChildren<Kite2CharacterController>();
+
+            novelKite2CharacterController.SetSkinSprite();
+            novelKite2CharacterController.SetHandSprite();
+            novelKite2CharacterController.SetClotheSprite();
+            novelKite2CharacterController.SetHairSprite();
+
+            HandSpriteIndex handSpriteIndex = new HandSpriteIndex
+            {
+                colorIndex = novelKite2CharacterController.handIndex[0],
+                spriteIndex = novelKite2CharacterController.handIndex[1],
+            };
+            
+            foreach (var novelStatus in GameManager.Instance.NovelSaveStatusList)
+            {
+                // Wenn das Novel die gesuchte ID hat, setze den isSaved Wert
+                int.TryParse(novelStatus.novelId, out int number);
+                if (number == 3)
+                {
+                    if (!novelStatus.isSaved)
+                    {
+                        GameManager.Instance.AddCharacterData(
+                            3, // Schlüssel für den Eintrag
+                            new CharacterData
+                            {
+                                skinIndex = novelKite2CharacterController.skinIndex,
+                                handIndex = handSpriteIndex,
+                                clotheIndex = novelKite2CharacterController.clotheIndex,
+                                hairIndex = novelKite2CharacterController.hairIndex
+                            }
+                        );
+                    }
+
+                    break; // Keine Notwendigkeit mehr weiterzusuchen
+                }
+            }
+        }
+
+        public override void SetCharacter()
+        {
+        }
+
+        public override bool HandleTouchEvent(float x, float y)
+        {
+            // Check if animations are allowed to proceed, return false if disabled
+            if (AnimationFlagSingleton.Instance().GetFlag() == false)
+            {
+                return false;
+            }
+
+            // Get the RectTransforms of the objects to detect touch within their bounds
+            RectTransform decoVaseRectTransform = decoVaseContainer.GetComponent<RectTransform>();
+            RectTransform decoGlasRectTransform = decoGlasContainer.GetComponent<RectTransform>();
+
+            // Get the world corners of the vase decoration container
+            Vector3[] cornersDecoVase = new Vector3[4];
+            decoVaseRectTransform.GetWorldCorners(cornersDecoVase);
+            Vector3 bottomLeftDecoVase = cornersDecoVase[0];
+            Vector3 topRightDecoVase = cornersDecoVase[2];
+
+            // Get the world corners of the glass decoration container
+            Vector3[] cornersDecoGlas = new Vector3[4];
+            decoGlasRectTransform.GetWorldCorners(cornersDecoGlas);
+            Vector3 bottomLeftDecoGlas = cornersDecoGlas[0];
+            Vector3 topRightDecoGlas = cornersDecoGlas[2];
+
+            // Check if the touch coordinates are within the vase decoration bounds
+            if (x >= bottomLeftDecoVase.x && x <= topRightDecoVase.x &&
+                y >= bottomLeftDecoVase.y && y <= topRightDecoVase.y)
+            {
+                StartCoroutine(OnDecoVase());
+                return true;
+            }
+            // Check if the touch coordinates are within the glass decoration bounds
+            else if (x >= bottomLeftDecoGlas.x && x <= topRightDecoGlas.x &&
+                     y >= bottomLeftDecoGlas.y && y <= topRightDecoGlas.y)
+            {
+                StartCoroutine(OnDecoGlas());
+                return true;
+            }
+
+            // Return false if the touch is outside both bounds
+            return false;
+        }
+
+        private IEnumerator OnDecoVase()
+        {
+            if(!TextToSpeechManager.Instance.IsTextToSpeechActivated())
+            {
+                GlobalVolumeManager.Instance.PlaySound(decoVaseAudio);
+            }
+
+            Image image = decoVasePrefab.GetComponent<Image>();
+            image.sprite = animationFramesVase[1];
+            Destroy(decoVaseContainer.transform.GetChild(0).gameObject);
+            Instantiate(decoVasePrefab, decoVaseContainer.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFramesVase[2];
+            Destroy(decoVaseContainer.transform.GetChild(0).gameObject);
+            Instantiate(decoVasePrefab, decoVaseContainer.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFramesVase[0];
+            Destroy(decoVaseContainer.transform.GetChild(0).gameObject);
+            Instantiate(decoVasePrefab, decoVaseContainer.transform);
+
+            yield return new WaitForSeconds(0f);
+        }
+
+        private IEnumerator OnDecoGlas()
+        {
+            if (!TextToSpeechManager.Instance.IsTextToSpeechActivated())
+            {
+                GlobalVolumeManager.Instance.PlaySound(decoGlasAudio);
+            }
+            Image image = decoGlasPrefab.GetComponent<Image>();
+            image.sprite = animationFramesGlas[1];
+            Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+            Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFramesGlas[2];
+            Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+            Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFramesGlas[3];
+            Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+            Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFramesGlas[4];
+            Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+            Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFramesGlas[5];
+            Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+            Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFramesGlas[6];
+            Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+            Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFramesGlas[0];
+            Destroy(decoGlasContainer.transform.GetChild(0).gameObject);
+            Instantiate(decoGlasPrefab, decoGlasContainer.transform);
+
+            yield return new WaitForSeconds(0f);
+        }
+    }
+}

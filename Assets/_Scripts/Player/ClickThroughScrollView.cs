@@ -1,4 +1,4 @@
-using Assets._Scripts.SceneControllers;
+using Assets._Scripts.Controller.SceneControllers;
 using UnityEngine;
 using UnityEngine.EventSystems;
 

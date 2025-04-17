@@ -1,7 +1,6 @@
+using Assets._Scripts.Controller.SceneControllers;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Player;
-using Assets._Scripts.SceneControllers;
-using Assets._Scripts.SceneMemory;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -79,15 +78,15 @@ namespace Assets._Scripts.UIElements.FoundersBubble
             widthBefore = itemList[0].rect.width * itemList.Length + (itemList.Length - 1) * horizontalLayoutGroup.spacing - viewPortTransform.rect.width;
             widthAfter = itemList[0].rect.width * (itemList.Length + 2 * itemsToAdd) + (itemList.Length + 2 * itemsToAdd - 1) * horizontalLayoutGroup.spacing - viewPortTransform.rect.width;
 
-            FoundersBubbleSceneMemory memory = SceneMemoryManager.Instance().GetMemoryOfFoundersBubbleScene();
+            float scrollPosition = SceneMemoryManager.Instance().GetMemoryOfFoundersBubbleScene();
 
-            if (memory != null && scrollRect != null)
+            if (scrollRect != null)
             {
-                scrollRect.horizontalNormalizedPosition = memory.ScrollPosition;
+                scrollRect.horizontalNormalizedPosition = scrollPosition;
             }
-            else if (memory != null && customScrollRect != null)
+            else if (customScrollRect != null)
             {
-                customScrollRect.horizontalNormalizedPosition = memory.ScrollPosition;
+                customScrollRect.horizontalNormalizedPosition = scrollPosition;
             }
         }
 

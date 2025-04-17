@@ -1,4 +1,5 @@
-using Assets._Scripts.SceneControllers;
+using Assets._Scripts.Controller.SceneControllers;
+using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.UIElements.Messages;
 using Assets._Scripts.Utilities;

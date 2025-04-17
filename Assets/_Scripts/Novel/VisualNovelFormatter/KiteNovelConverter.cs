@@ -1,29 +1,243 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
-using Assets._Scripts.Novel;
-using Assets._Scripts.Novel.VisualNovelFormatter;
+using System.Linq;
+using Assets._Scripts._Mappings;
 using UnityEngine;
 
-namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
+namespace Assets._Scripts.Novel.VisualNovelFormatter
 {
+    #region NovelKeywordModel and Parser
+
+    /// <summary>
+    /// Model for a keyword. All fields are optional.
+    /// </summary>
+    public class NovelKeywordModel
+    {
+        public int CharacterIndex { get; set; }
+        public int FaceExpression { get; set; }
+        public string Bias { get; set; }
+        public string Sound { get; set; }
+        public bool? End { get; set; }
+    }
+
+    /// <summary>
+    /// Parser that converts a keyword string (e.g. ">>Character1|Looks|Angry<<") into a NovelKeywordModel.
+    /// Expected formats:
+    ///   >>End<<                   → sets End = true
+    ///   >>Info<<                  → sets CharacterIndex = 0
+    ///   >>Player<<                → sets CharacterIndex = 1
+    ///   >>Character1|Looks|Angry<< → sets CharacterIndex = 1+1 = 2, Action = "Looks", FaceExpression = "Angry"
+    ///   >>Sound|TestSound<<        → sets Sound = "TestSound"
+    ///   >>Bias|ConfirmationBias<<  → sets Bias = "ConfirmationBias"
+    /// </summary>
+    public static class NovelKeywordParser
+    {
+        /// <summary>
+        /// Parst einen einzelnen Keyword-String und gibt ein NovelKeywordModel zurück.
+        /// Falls der String nicht den erwarteten Mustern entspricht, wird null zurückgegeben.
+        /// Erwartete Formate:
+        ///   >>End<< oder >>Ende<<                           → setzt End = true
+        ///   >>Info<<                                       → setzt CharacterIndex = 0
+        ///   >>Player<<                                     → setzt CharacterIndex = 1
+        ///   >>Character1|Speaks|Angry<<                     → setzt CharacterIndex = 1+1=2, Action="Speaks", FaceExpression="Angry"
+        ///   >>Sound|TestSound<<                             → setzt Sound = "TestSound"
+        ///   >>Bias|ConfirmationBias<<                       → setzt Bias = "ConfirmationBias"
+        /// </summary>
+        /// <param name="keyword">Die Zeile, die verarbeitet werden soll.</param>
+        /// <returns>Ein NovelKeywordModel oder null, wenn kein gültiges Keyword erkannt wurde.</returns>
+        private static NovelKeywordModel ParseKeyword(string keyword, KiteNovelMetaData kiteNovelMetaData)
+        {
+            // Falls der Eingabestring leer oder nur Whitespace ist, wird null zurückgegeben.
+            if (string.IsNullOrWhiteSpace(keyword))
+            {
+                return null;
+            }
+
+            // Entferne führende und abschließende Leerzeichen.
+            keyword = keyword.Trim();
+
+            // Es werden nur Zeilen verarbeitet, die mit ">>" beginnen und mit "<<" enden.
+            if (!(keyword.StartsWith(">>") && keyword.EndsWith("<<")))
+            {
+                // Keine gültigen Markierungen gefunden → Zeile überspringen.
+                return null;
+            }
+
+            // Entferne die Marker ">>" und "<<".
+            keyword = keyword.Substring(2, keyword.Length - 4);
+
+            // Hinweis: Wir erzeugen vorerst kein Modell, sondern prüfen nur die Zeile
+            // und erstellen später (nur) ein Modell, wenn ein gültiges Muster erkannt wurde.
+
+            // Prüfe, ob das Keyword ein End-Kommando signalisiert.
+
+            NovelKeywordModel model = new NovelKeywordModel();
+
+            if (string.Equals(keyword, "End", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(keyword, "Ende", StringComparison.OrdinalIgnoreCase))
+            {
+                model.End = true;
+                return model;
+            }
+
+            // Prüfe auf die exakten Schlüsselwörter "Info" und "Player".
+            if (string.Equals(keyword, "Info", StringComparison.OrdinalIgnoreCase))
+            {
+                model.CharacterIndex = MappingManager.MapCharacter("Info");
+                model.FaceExpression = MappingManager.MapFaceExpressions("NeutralRelaxed");
+                return model;
+            }
+
+            if (string.Equals(keyword, "Player", StringComparison.OrdinalIgnoreCase))
+            {
+                model.CharacterIndex = MappingManager.MapCharacter("Player");
+                model.FaceExpression = MappingManager.MapFaceExpressions("NeutralRelaxed");
+                return model;
+            }
+
+            // Teile den String anhand des Trennzeichens '|'.
+            string[] parts = keyword.Split('|');
+            if (parts.Length > 0)
+            {
+                // If it is a Character keyword.
+                if (parts[0].StartsWith("Character", StringComparison.OrdinalIgnoreCase))
+                {
+                    // Example: "Character1" → extract the number.
+                    string numberPart = parts[0].Substring("Character".Length);
+                    if (int.TryParse(numberPart, out int num))
+                    {
+                        if (num == 1)
+                        {
+                            model.CharacterIndex = MappingManager.MapCharacter(kiteNovelMetaData.TalkingPartner01);
+                        }
+                        else if (num == 2)
+                        {
+                            model.CharacterIndex = MappingManager.MapCharacter(kiteNovelMetaData.TalkingPartner02);
+                        }
+                        else if (num == 3)
+                        {
+                            model.CharacterIndex = MappingManager.MapCharacter(kiteNovelMetaData.TalkingPartner03);
+                        }
+                    }
+
+                    // If there are exactly two parts, then only the face expression is provided.
+                    // In this case, we default to "Speaks" as the action.
+                    if (parts.Length == 2)
+                    {
+                        model.FaceExpression = MappingManager.MapFaceExpressions(parts[1]);
+                    }
+                    // If there are at least three parts, use the provided action and face expression.
+                    else if (parts.Length >= 3)
+                    {
+                        model.FaceExpression = MappingManager.MapFaceExpressions(parts[2]);
+                    }
+                    // Optional: Falls es nur ein Part gibt (was nicht vorkommen sollte), wird kein Model erstellt.
+                    else
+                    {
+                        Debug.LogWarning("Character keyword does not contain enough parts: " + keyword);
+                        return null;
+                    }
+
+                    return model;
+                }
+                // Wenn es sich um ein Sound‑Keyword handelt.
+                else if (parts[0].StartsWith("Sound", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (parts.Length > 1)
+                    {
+                        model.CharacterIndex = 0;
+                        model.Sound = parts[1];
+                    }
+
+                    return model;
+                }
+                // Wenn es sich um ein Bias‑Keyword handelt.
+                else if (parts[0].StartsWith("Bias", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (parts.Length > 1)
+                    {
+                        // Wende das externe Mapping an.
+                        model.Bias = MappingManager.MapBias(parts[1]);
+                    }
+
+                    return model;
+                }
+            }
+
+            // Falls keiner der erwarteten Fälle eintritt, wird null zurückgegeben.
+            return null;
+        }
+
+        /// <summary>
+        /// Parst den kompletten Eingabetext, der mehrere Keyword-Zeilen enthalten kann, 
+        /// unter Verwendung des Separators ">>--<<" und gibt eine Liste der gültigen NovelKeywordModel zurück.
+        /// </summary>
+        /// <param name="fileContent">Der gesamte Text aus der Keyword-Datei.</param>
+        /// <returns>Liste der NovelKeywordModel.</returns>
+        public static List<NovelKeywordModel> ParseKeywordsFromFile(List<string> fileContent, KiteNovelMetaData kiteNovelMetaData = null)
+        {
+            // string[] lines = fileContent.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+            List<NovelKeywordModel> models = new List<NovelKeywordModel>();
+
+            // Wir gehen davon aus, dass einzelne Keyword-Blöcke durch den Separator ">>--<<" getrennt sind.
+            foreach (string line in fileContent)
+            {
+                // Falls der Separator in der Zeile vorkommt, wird diese Zeile in mehrere Tokens geteilt.
+                string[] tokens = line.Split(new string[] { ">>--<<" }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (string token in tokens)
+                {
+                    string trimmedToken = token.Trim();
+                    if (string.IsNullOrWhiteSpace(trimmedToken))
+                        continue;
+
+                    // Stelle sicher, dass die Keywords die Marker ">>" und "<<" haben.
+                    if (!(trimmedToken.StartsWith(">>") && trimmedToken.EndsWith("<<")))
+                    {
+                        continue;
+                    }
+
+                    NovelKeywordModel model = ParseKeyword(trimmedToken, kiteNovelMetaData);
+                    if (model != null)
+                    {
+                        models.Add(model);
+                    }
+                }
+            }
+
+            return models;
+        }
+    }
+
+    #endregion
+
+    /// <summary>
+    /// Converter class that creates VisualNovel objects from processed novel folders
+    /// and converts the Twee text document into a structured event list.
+    /// Instead of a huge switch-case, it now uses the NovelKeywordParser to generate a NovelKeywordModel from the passage text.
+    /// All values (role, expression etc.) are handled as strings.
+    /// </summary>
     public abstract class KiteNovelConverter
     {
         private static int _counterForNamingPurpose = 1;
         private const string EventDefinitionSeparator = ">>--<<";
 
+        /// <summary>
+        /// Converts processed novel folders into a list of VisualNovel objects.
+        /// </summary>
         public static List<VisualNovel> ConvertFilesToNovels(List<KiteNovelFolder> folders)
         {
             List<VisualNovel> novels = new List<VisualNovel>();
 
             foreach (KiteNovelFolder folder in folders)
             {
-                VisualNovel novel = new VisualNovel();
-
-                novel.id = folder.NovelMetaData.IdNumberOfNovel;
-                novel.title = folder.NovelMetaData.TitleOfNovel;
-                novel.description = folder.NovelMetaData.DescriptionOfNovel;
-                novel.context = folder.NovelMetaData.ContextForPrompt;
-                novel.novelEvents = folder.NovelEventList.NovelEvents;
+                VisualNovel novel = new VisualNovel
+                {
+                    id = folder.NovelMetaData.IdNumberOfNovel,
+                    title = folder.NovelMetaData.TitleOfNovel,
+                    description = folder.NovelMetaData.DescriptionOfNovel,
+                    context = folder.NovelMetaData.ContextForPrompt,
+                    novelEvents = folder.NovelEventList
+                };
 
                 novels.Add(novel);
             }
@@ -31,114 +245,279 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             return novels;
         }
 
-        public static KiteNovelEventList ConvertTextDocumentIntoEventList(string tweeFile, KiteNovelMetaData kiteNovelMetaData)
+        /// <summary>
+        /// Converts the content of a Twee text document into a structured event list.
+        /// For each passage, the message (keyword) is extracted and converted into a NovelKeywordModel.
+        /// Based on the fields set in the model, the corresponding event is created.
+        /// </summary>
+        public static List<VisualNovelEvent> ConvertTextDocumentIntoEventList(string tweeFile, KiteNovelMetaData metaData)
         {
-            KiteNovelEventList kiteNovelEventList = new KiteNovelEventList();
-            string startEventLabel = TweeProcessor.GetStartLabelFromTweeFile(tweeFile);
-            InitializeKiteNovelEventList(kiteNovelMetaData, kiteNovelEventList, startEventLabel);
+            List<VisualNovelEvent> eventList = new List<VisualNovelEvent>();
+            string startLabel = TweeProcessor.GetStartLabelFromTweeFile(tweeFile);
+            InitializeKiteNovelEventList(metaData, eventList, startLabel);
             List<TweePassage> passages = TweeProcessor.ProcessTweeFile(tweeFile);
 
             foreach (TweePassage passage in passages)
             {
-                VisualNovelEvent lastCreatedEvent = CreateVisualNovelEvents(passage, kiteNovelMetaData, kiteNovelEventList);
-                HandleLoop(lastCreatedEvent, startEventLabel, kiteNovelEventList);
-                HandleDialogueOptionEvent(passage, kiteNovelEventList.NovelEvents, lastCreatedEvent);
+                // Extract the message text (i.e. the keyword) from the passage.
+                List<string> message = TweeProcessor.ExtractMessageOutOfTweePassage(passage.Passage);
+
+                List<string> keywords = TweeProcessor.ExtractKeywordOutOfTweePassage(passage.Passage);
+
+                // Generate a NovelKeywordModel from the message text.
+                List<NovelKeywordModel> keywordModels = NovelKeywordParser.ParseKeywordsFromFile(keywords, metaData);
+
+                if (keywordModels.Count > 1)
+                {
+                    string targetString = "";
+                    int messageIndex = 0;
+
+                    for (int i = 0; i < keywordModels.Count; i++)
+                    {
+                        VisualNovelEvent createdEvent = new VisualNovelEvent();
+                        if (message.Count == 0)
+                        {
+                            createdEvent = CreateVisualNovelEventFromKeyword(passage, "", keywordModels[i], metaData, eventList);
+                        }
+                        else if (message.Count <= messageIndex)
+                        {
+                            createdEvent = CreateVisualNovelEventFromKeyword(passage, message[message.Count-1], keywordModels[i], metaData, eventList);
+                        }
+                        else
+                        {
+                            // Create the corresponding VisualNovelEvent based on the model.
+                            createdEvent = CreateVisualNovelEventFromKeyword(passage, message[messageIndex], keywordModels[i], metaData, eventList);
+                        }
+                        // If there is a link to the next event
+                        // We use the label bc it is unique
+                        if (targetString == "" && passage.Links.Any())
+                        {
+                            targetString = passage.Label;
+                        }
+                        // If it's the last event (no next event after this)
+                        else if (targetString == "" && !passage.Links.Any())
+                        {
+                            targetString = passage.Label + "newTarget";
+                        }
+
+                        // First event in list
+                        if (i == 0)
+                        {
+                            createdEvent.nextId = targetString + (i + 1);
+                        }
+                        // Not the last element
+                        else if (i != keywordModels.Count - 1)
+                        {
+                            createdEvent.id = targetString + i;
+                            createdEvent.nextId = targetString + (i + 1);
+                        }
+                        // Last element
+                        else
+                        {
+                            if (createdEvent == null)
+                            {
+                                eventList[eventList.Count - 3].id = targetString + (i);
+                            }
+                            else
+                            {
+                                createdEvent.id = targetString + i;
+                                createdEvent.nextId = passage.Links[0].Target;
+                            }
+                        }
+
+                        // angenommen createdEvent ist hier schon zugewiesen…
+                        if (createdEvent == null)
+                        {
+                            Debug.LogWarning($"No event created for passage {passage.Label}, skipping debug output.");
+                        }
+                        else
+                        {
+
+                        if (createdEvent.eventType == 4)
+                        {
+                            messageIndex++;
+                        }
+                            var parts = new List<string>();
+
+                            if (!string.IsNullOrEmpty(createdEvent.id))
+                                parts.Add($"id={createdEvent.id}");
+                            if (!string.IsNullOrEmpty(createdEvent.nextId))
+                                parts.Add($"nextId={createdEvent.nextId}");
+                            if (!string.IsNullOrEmpty(createdEvent.onChoice))
+                                parts.Add($"onChoice={createdEvent.onChoice}");
+
+                            if (createdEvent.eventType != 0)
+                                parts.Add($"eventType={createdEvent.eventType}");
+                            if (createdEvent.character != 0)
+                                parts.Add($"character={createdEvent.character}");
+
+                            if (!string.IsNullOrEmpty(createdEvent.text))
+                                parts.Add($"text=\"{createdEvent.text}\"");
+
+                            if (createdEvent.animationType != 0)
+                                parts.Add($"animationType={createdEvent.animationType}");
+                            if (createdEvent.expressionType != 0)
+                                parts.Add($"expressionType={createdEvent.expressionType}");
+
+                            if (!string.IsNullOrEmpty(createdEvent.key))
+                                parts.Add($"key={createdEvent.key}");
+                            if (!string.IsNullOrEmpty(createdEvent.value))
+                                parts.Add($"value={createdEvent.value}");
+                            if (!string.IsNullOrEmpty(createdEvent.relevantBias))
+                                parts.Add($"relevantBias={createdEvent.relevantBias}");
+
+                            Debug.Log("[CreatedEvent] " + string.Join(" | ", parts));
+                        }
+
+
+
+
+                        // Check if the event creates a loop, and adjust if necessary.
+                        HandleLoop(createdEvent, startLabel, eventList);
+
+                        // If dialogue options are present, process them.
+                        HandleDialogueOptionEvent(passage, eventList, createdEvent);
+                    }
+                }
+                else if (keywordModels.Count == 1)
+                {
+                    VisualNovelEvent createdEvent = new VisualNovelEvent();
+                    if (message.Count == 0)
+                    {
+                        createdEvent = CreateVisualNovelEventFromKeyword(passage, "", keywordModels[0], metaData, eventList);
+                    }
+                    else
+                    {
+                        // Create the corresponding VisualNovelEvent based on the model.
+                        createdEvent = CreateVisualNovelEventFromKeyword(passage, message[0], keywordModels[0], metaData, eventList);
+                    }
+
+                    // Check if the event creates a loop, and adjust if necessary.
+                    HandleLoop(createdEvent, startLabel, eventList);
+
+                    // If dialogue options are present, process them.
+                    HandleDialogueOptionEvent(passage, eventList, createdEvent);
+                }
             }
 
-            return kiteNovelEventList;
+            return eventList;
         }
 
-        private static void HandleLoop(VisualNovelEvent lastEvent, string labelOfStartEvent, KiteNovelEventList kiteNovelEventList)
+        /// <summary>
+        /// Creates a VisualNovelEvent based on the NovelKeywordModel.
+        /// Depending on the fields set in the model (End, Bias, Sound, or Character event),
+        /// the corresponding event is created.
+        /// </summary>
+        private static VisualNovelEvent CreateVisualNovelEventFromKeyword(TweePassage passage, string originalMessage, NovelKeywordModel model, KiteNovelMetaData metaData, List<VisualNovelEvent> eventList)
         {
-            if (lastEvent == null || string.IsNullOrEmpty(lastEvent.nextId) || string.IsNullOrEmpty(labelOfStartEvent) || kiteNovelEventList == null)
+            if (model == null) return null;
+
+            // If the keyword signals the end.
+            if (model.End.HasValue && model.End.Value)
+            {
+                HandleEndNovelEvent(passage.Label, eventList);
+                return null;
+            }
+
+            // If a bias is defined.
+            else if (!string.IsNullOrEmpty(model.Bias))
+            {
+                return HandleBiasEvent(passage, model.Bias, eventList);
+            }
+
+            // If a sound is defined.
+            else if (!string.IsNullOrEmpty(model.Sound))
+            {
+                return HandlePlaySoundEvent(passage, model.Sound, eventList);
+            }
+
+            // If it's a character event.
+            int character = model.CharacterIndex; //GetCharacterRoleFromIndex(model.CharacterIndex, metaData);
+              int expression = model.FaceExpression;
+
+            return HandleCharacterTalksEvent(passage, character, originalMessage, expression, eventList);
+        }
+
+        /// <summary>
+        /// Checks if the last created event refers to the start of the novel.
+        /// If so, creates a new end event and adjusts the linking to avoid loops.
+        /// </summary>
+        private static void HandleLoop(VisualNovelEvent lastEvent, string startLabel, List<VisualNovelEvent> eventList)
+        {
+            if (lastEvent == null || string.IsNullOrEmpty(lastEvent.nextId) || string.IsNullOrEmpty(startLabel) || eventList == null)
             {
                 return;
             }
 
-            if (lastEvent.nextId == labelOfStartEvent)
+            if (lastEvent.nextId == startLabel)
             {
                 string newLabel = "RandomEndNovelString" + _counterForNamingPurpose;
                 _counterForNamingPurpose++;
-                HandleEndNovelEvent(newLabel, kiteNovelEventList.NovelEvents);
+                HandleEndNovelEvent(newLabel, eventList);
                 lastEvent.nextId = newLabel;
             }
         }
 
-        private static void InitializeKiteNovelEventList(KiteNovelMetaData kiteNovelMetaData, KiteNovelEventList kiteNovelEventList, string startLabel)
+        /// <summary>
+        /// Initializes the event list with start values (e.g. initial location and character join events)
+        /// if defined in the metadata.
+        /// </summary>
+        private static void InitializeKiteNovelEventList(KiteNovelMetaData metaData, List<VisualNovelEvent> eventList, string startLabel)
         {
-            string connectionLabel = "initalCharakterJoinsEvent001";
+            string connectionLabel = "InitialCharacterJoinsEvent001";
             string id = "initialLocationEvent001";
             string nextId = connectionLabel;
 
-            VisualNovelEvent initialLocationEvent = KiteNovelEventFactory.GetSetBackgroundEvent(id, nextId);
-            kiteNovelEventList.NovelEvents.Add(initialLocationEvent);
-
             id = connectionLabel;
             nextId = startLabel;
-            CharacterRole character = CharacterTypeHelper.ValueOf(kiteNovelMetaData.TalkingPartner01);
-            if (character == CharacterRole.None)
+            int character = MappingManager.MapCharacter(metaData.TalkingPartner01);
+            if (character == -1)
             {
-                Debug.LogWarning("While loading " + kiteNovelMetaData.TitleOfNovel + ": Initial CharacterRole not found!");
+                Debug.LogWarning("While loading " + metaData.TitleOfNovel + ": Initial character role not found!");
             }
 
-            CharacterExpression expression =
-                CharacterExpressionHelper.ValueOf(kiteNovelMetaData.StartTalkingPartnerEmotion);
-
-            if (expression == CharacterExpression.None)
+            int expression = MappingManager.MapFaceExpressions(metaData.StartTalkingPartnerExpression);
+            if (expression == -1)
             {
-                Debug.LogWarning("While loading " + kiteNovelMetaData.TitleOfNovel + ": Initial CharacterRole-Expression not found!");
+                Debug.LogWarning("While loading " + metaData.TitleOfNovel + ": Initial character expression " + metaData.StartTalkingPartnerExpression + "not found!");
             }
 
             VisualNovelEvent initialCharacterJoinsEvent = KiteNovelEventFactory.GetCharacterJoinsEvent(id, nextId, character, expression);
-            kiteNovelEventList.NovelEvents.Add(initialCharacterJoinsEvent);
+            eventList.Add(initialCharacterJoinsEvent);
         }
 
-        private static VisualNovelEvent HandleLocationEvent(TweePassage twee, Location location,
-            List<VisualNovelEvent> list)
-        {
-            string id = twee?.Label;
-            string nextId = twee?.Links?[0]?.Target;
-            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetSetBackgroundEvent(id, nextId);
-            list.Add(novelEvent);
-            return novelEvent;
-        }
+        #region Specific Event Handlers
 
-        private static VisualNovelEvent HandleCharacterTalksEvent(TweePassage twee, CharacterRole character,
-            string dialogMessage, CharacterExpression expression, List<VisualNovelEvent> list)
+        private static VisualNovelEvent HandleCharacterTalksEvent(TweePassage passage, int character, string dialogMessage, int expression, List<VisualNovelEvent> list)
         {
-            string id = twee?.Label;
-            string nextId = twee?.Links?[0]?.Target;
+            string id = passage?.Label;
+
+            string nextId = passage?.Links?.FirstOrDefault()?.Target ?? "";
             VisualNovelEvent novelEvent = KiteNovelEventFactory.GetCharacterTalksEvent(id, nextId, character, dialogMessage, expression);
             list.Add(novelEvent);
             return novelEvent;
         }
 
-        private static VisualNovelEvent HandleCharacterComesEvent(TweePassage twee, CharacterRole character,
-            CharacterExpression expressionType, List<VisualNovelEvent> list)
+        private static VisualNovelEvent HandleBiasEvent(TweePassage passage, string bias, List<VisualNovelEvent> list)
         {
-            string id = twee?.Label;
-            string nextId = twee?.Links?[0]?.Target;
-            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetCharacterJoinsEvent(id, nextId, character, expressionType);
+            string id = passage?.Label;
+
+            string nextId = (passage?.Links != null && passage.Links.Count > 0)
+                ? passage.Links[0]?.Target ?? ""
+                : "";
+
+            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetBiasEvent(id, nextId, bias);
             list.Add(novelEvent);
             return novelEvent;
         }
 
-        private static VisualNovelEvent HandleBiasEvent(TweePassage twee, DiscriminationBias relevantBias,
-            List<VisualNovelEvent> list)
-        {
-            string id = twee?.Label;
-            string nextId = twee?.Links?[0]?.Target;
-            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetBiasEvent(id, nextId, relevantBias);
-            list.Add(novelEvent);
-            return novelEvent;
-        }
-
-        private static VisualNovelEvent HandleEndNovelEvent(string label, List<VisualNovelEvent> list)
+        private static void HandleEndNovelEvent(string label, List<VisualNovelEvent> list)
         {
             string label01 = label;
             string label02 = label01 + "RandomString0012003";
             string label03 = label02 + "RandomRandom";
-            KiteSound leaveSceneSound = KiteSound.LeaveScene;
+            // Use the sound string directly.
+            string leaveSceneSound = "LeaveScene";
 
             VisualNovelEvent soundEvent = KiteNovelEventFactory.GetPlaySoundEvent(label01, label02, leaveSceneSound);
             VisualNovelEvent exitEvent = KiteNovelEventFactory.GetCharacterExitsEvent(label02, label03);
@@ -147,14 +526,11 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             list.Add(soundEvent);
             list.Add(exitEvent);
             list.Add(endEvent);
-
-            return null;
         }
 
-        private static void HandleDialogueOptionEvent(TweePassage twee, List<VisualNovelEvent> list,
-            VisualNovelEvent lastEvent)
+        private static void HandleDialogueOptionEvent(TweePassage passage, List<VisualNovelEvent> list, VisualNovelEvent lastEvent)
         {
-            if (twee == null || twee.Links == null || twee.Links.Count <= 1)
+            if (passage == null || passage.Links == null || passage.Links.Count <= 1)
             {
                 return;
             }
@@ -168,13 +544,13 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             }
             else
             {
-                label = twee.Label;
+                label = passage.Label;
             }
 
-            foreach (TweeLink link in twee.Links)
+            foreach (TweeLink link in passage.Links)
             {
                 string id = label;
-                label = label + label;
+                label += label;
                 string nextId = label;
                 string optionText = link.Text;
                 string onChoice = link.Target;
@@ -187,28 +563,25 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             list.Add(showChoicesEvent);
         }
 
-        private static VisualNovelEvent HandlePlaySoundEvent(TweePassage twee, KiteSound audioClipToPlay,
-            List<VisualNovelEvent> list)
+        private static VisualNovelEvent HandlePlaySoundEvent(TweePassage passage, string sound, List<VisualNovelEvent> list)
         {
-            string id = twee?.Label;
-            string nextId = twee?.Links?[0]?.Target;
-            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetPlaySoundEvent(id, nextId, audioClipToPlay);
+            string id = passage?.Label;
+            string nextId = passage?.Links?[0]?.Target;
+            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetPlaySoundEvent(id, nextId, sound);
             list.Add(novelEvent);
             return novelEvent;
         }
 
-        private static VisualNovelEvent HandlePlayAnimationEvent(TweePassage twee, KiteAnimation animationToPlay,
-            List<VisualNovelEvent> list)
+        private static VisualNovelEvent HandlePlayAnimationEvent(TweePassage passage, string animation, List<VisualNovelEvent> list)
         {
-            string id = twee?.Label;
-            string nextId = twee?.Links?[0]?.Target;
-            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetPlayAnimationEvent(id, nextId, animationToPlay);
+            string id = passage?.Label;
+            string nextId = passage?.Links?[0]?.Target;
+            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetPlayAnimationEvent(id, nextId, animation);
             list.Add(novelEvent);
             return novelEvent;
         }
 
-        private static VisualNovelEvent HandleGptRequestEvent(TweePassage twee, string message,
-            CompletionHandler completionHandlerId, List<VisualNovelEvent> list)
+        private static VisualNovelEvent HandleGptRequestEvent(TweePassage passage, string message, string completionHandlerId, List<VisualNovelEvent> list)
         {
             string[] parts = message.Split(new[] { ':' }, 2);
 
@@ -218,17 +591,16 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
                 return null;
             }
 
-            string id = twee?.Label;
-            string nextId = twee?.Links?[0]?.Target;
+            string id = passage?.Label;
+            string nextId = passage?.Links?[0]?.Target;
             string prompt = parts[1].Trim();
-            string variablesName = parts[0].Trim();
-            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetGptEvent(id, nextId, prompt, variablesName, completionHandlerId);
+            string variableName = parts[0].Trim();
+            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetGptEvent(id, nextId, prompt, variableName, completionHandlerId);
             list.Add(novelEvent);
             return novelEvent;
         }
 
-        private static VisualNovelEvent HandleSaveDataEvent(TweePassage twee, string message,
-            List<VisualNovelEvent> list)
+        private static VisualNovelEvent HandleSaveDataEvent(TweePassage passage, string message, List<VisualNovelEvent> list)
         {
             string[] parts = message.Split(new[] { ':' }, 2);
 
@@ -238,8 +610,8 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
                 return null;
             }
 
-            string id = twee?.Label;
-            string nextId = twee?.Links?[0]?.Target;
+            string id = passage?.Label;
+            string nextId = passage?.Links?[0]?.Target;
             string key = parts[0].Trim();
             string value = parts[1].Trim();
             VisualNovelEvent novelEvent = KiteNovelEventFactory.GetSavePersistentEvent(id, nextId, key, value);
@@ -247,19 +619,18 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             return novelEvent;
         }
 
-        private static VisualNovelEvent HandleSetVariableEvent(TweePassage twee, string message,
-            List<VisualNovelEvent> list)
+        private static VisualNovelEvent HandleSetVariableEvent(TweePassage passage, string message, List<VisualNovelEvent> list)
         {
             string[] parts = message.Split(new[] { ':' }, 2);
 
             if (parts.Length != 2)
             {
-                Debug.LogWarning("While creating Visual Novels: Save Variable Event could not be created.");
+                Debug.LogWarning("While creating Visual Novels: Set Variable Event could not be created.");
                 return null;
             }
 
-            string id = twee?.Label;
-            string nextId = twee?.Links?[0]?.Target;
+            string id = passage?.Label;
+            string nextId = passage?.Links?[0]?.Target;
             string key = parts[0].Trim();
             string value = parts[1].Trim();
             VisualNovelEvent novelEvent = KiteNovelEventFactory.GetSaveVariableEvent(id, nextId, key, value);
@@ -267,19 +638,18 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             return novelEvent;
         }
 
-        private static VisualNovelEvent HandleSetVariableFromBooleanExpressionEvent(TweePassage twee, string message,
-            List<VisualNovelEvent> list)
+        private static VisualNovelEvent HandleSetVariableFromBooleanExpressionEvent(TweePassage passage, string message, List<VisualNovelEvent> list)
         {
             string[] parts = message.Split(new[] { ':' }, 2);
 
             if (parts.Length != 2)
             {
-                Debug.LogWarning("While creating Visual Novels: Calculate Variable from boolean expression Event could not be created.");
+                Debug.LogWarning("While creating Visual Novels: Calculate Variable from Boolean Expression Event could not be created.");
                 return null;
             }
 
-            string id = twee?.Label;
-            string nextId = twee?.Links?[0]?.Target;
+            string id = passage?.Label;
+            string nextId = passage?.Links?[0]?.Target;
             string key = parts[0].Trim();
             string value = parts[1].Trim();
             VisualNovelEvent novelEvent = KiteNovelEventFactory.GetCalculateVariableFromBooleanExpressionEvent(id, nextId, key, value);
@@ -287,8 +657,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             return novelEvent;
         }
 
-        private static VisualNovelEvent HandleAddFeedbackUnderConditionEvent(TweePassage twee, string message,
-            List<VisualNovelEvent> list)
+        private static VisualNovelEvent HandleAddFeedbackUnderConditionEvent(TweePassage passage, string message, List<VisualNovelEvent> list)
         {
             string[] parts = message.Split(new[] { ':' }, 2);
 
@@ -298,8 +667,8 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
                 return null;
             }
 
-            string id = twee?.Label;
-            string nextId = twee?.Links?[0]?.Target;
+            string id = passage?.Label;
+            string nextId = passage?.Links?[0]?.Target;
             string key = parts[0].Trim();
             string value = parts[1].Trim();
             VisualNovelEvent novelEvent = KiteNovelEventFactory.GetAddFeedbackUnderConditionEvent(id, nextId, key, value);
@@ -307,283 +676,15 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             return novelEvent;
         }
 
-        private static VisualNovelEvent HandleAddFeedbackEvent(TweePassage twee, string message,
-            List<VisualNovelEvent> list)
+        private static VisualNovelEvent HandleAddFeedbackEvent(TweePassage passage, string message, List<VisualNovelEvent> list)
         {
-            string id = twee?.Label;
-            string nextId = twee?.Links?[0]?.Target;
+            string id = passage?.Label;
+            string nextId = passage?.Links?[0]?.Target;
             VisualNovelEvent novelEvent = KiteNovelEventFactory.GetAddFeedbackEvent(id, nextId, message);
             list.Add(novelEvent);
             return novelEvent;
         }
 
-        private static VisualNovelEvent CreateVisualNovelEvents(TweePassage passage,
-            KiteNovelMetaData kiteNovelMetaData, KiteNovelEventList kiteNovelEventList)
-        {
-            if (passage.Passage.Contains(EventDefinitionSeparator))
-            {
-                return CreateMultipleVisualNovelEvent(passage, kiteNovelMetaData, kiteNovelEventList);
-            }
-            else
-            {
-                return CreateOneVisualNovelEvent(passage, kiteNovelMetaData, kiteNovelEventList);
-            }
-        }
-
-        private static VisualNovelEvent CreateOneVisualNovelEvent(TweePassage passage,
-            KiteNovelMetaData kiteNovelMetaData, KiteNovelEventList kiteNovelEventList)
-        {
-            string message = TweeProcessor.ExtractMessageOutOfTweePassage(passage.Passage);
-            VisualNovelEvent visualNovelEvent =
-                ConvertListOfDataObjectsIntoKiteNovelEvent(passage, message, kiteNovelMetaData, kiteNovelEventList);
-            return visualNovelEvent;
-        }
-
-        private static VisualNovelEvent CreateMultipleVisualNovelEvent(TweePassage passage,
-            KiteNovelMetaData kiteNovelMetaData, KiteNovelEventList kiteNovelEventList)
-        {
-            List<VisualNovelEvent> createdEvents = new List<VisualNovelEvent>();
-            string[] eventDefinitions = passage?.Passage?.Split(new[] { EventDefinitionSeparator },
-                StringSplitOptions.RemoveEmptyEntries);
-            string label = passage.Label;
-
-            foreach (string eventDefinition in eventDefinitions)
-            {
-                string nextLabel = label + "RandomSeperatorString1020304" + label;
-                List<TweeLink> links = new List<TweeLink> { new TweeLink(nextLabel, nextLabel, false) };
-                TweePassage newPassage = new TweePassage(label, eventDefinition, links);
-                label = nextLabel;
-                string message = TweeProcessor.ExtractMessageOutOfTweePassage(eventDefinition);
-                VisualNovelEvent visualNovelEvent =
-                    ConvertListOfDataObjectsIntoKiteNovelEvent(newPassage, message, kiteNovelMetaData,
-                        kiteNovelEventList);
-
-                if (visualNovelEvent != null)
-                {
-                    createdEvents.Add(visualNovelEvent);
-                }
-            }
-
-            if (createdEvents.Count == 0)
-            {
-                return null;
-            }
-
-            VisualNovelEvent firstEvent = createdEvents[0];
-            if (firstEvent != null)
-            {
-                firstEvent.id = passage.Label;
-            }
-
-            VisualNovelEvent lastEvent = createdEvents[createdEvents.Count - 1];
-            if (lastEvent != null && passage.Links?.Count != 0)
-            {
-                lastEvent.nextId = passage.Links?[0]?.Target;
-            }
-
-            return lastEvent;
-        }
-
-        private static VisualNovelEvent ConvertListOfDataObjectsIntoKiteNovelEvent(TweePassage passage, string message,
-            KiteNovelMetaData kiteNovelMetaData, KiteNovelEventList kiteNovelEventList)
-        {
-            if (string.IsNullOrEmpty(passage?.Passage))
-            {
-                return null;
-            }
-
-            CharacterRole charakter01 = CharacterTypeHelper.ValueOf(kiteNovelMetaData.TalkingPartner01);
-            CharacterRole charakter02 = CharacterTypeHelper.ValueOf(kiteNovelMetaData.TalkingPartner02);
-            CharacterRole charakter03 = CharacterTypeHelper.ValueOf(kiteNovelMetaData.TalkingPartner03);
-
-            NovelKeyWord recognizedKeyWord = FindFirstKeyWordInText(passage.Passage);
-
-            return recognizedKeyWord switch
-            {
-                NovelKeyWord.SZENE_BUERO => HandleLocationEvent(passage, Location.OFFICE, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_01 => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautNeutralEntspannt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_ERSCHROCKEN => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautErschrocken, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_GENERVT => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautGenervt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_UNZUFRIEDEN => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautUnzufrieden, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_ABLEHNEND => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautAblehnend, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_ERSTAUNT => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautErstaunt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_FRAGEND => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautErstaunt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_KRITISCH => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautKritisch, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_LAECHELN_GROSS => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautLaechelnGross, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_LACHEND => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautLachend, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_LAECHELN => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautLaecheln, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_NEUTRAL_ENTSPANNT => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautNeutralEntspannt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_NEUTRAL => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautNeutral, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_01_GESICHTSAUSDRUCK_STOLZ => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautStolz, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SCHAUT => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautNeutralEntspannt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_ERSCHROCKEN => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautErschrocken, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_GENERVT => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautGenervt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_UNZUFRIEDEN => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautUnzufrieden, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_ABLEHNEND => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautAblehnend, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_ERSTAUNT => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautErstaunt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_FRAGEND => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautErstaunt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_KRITISCH => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautKritisch, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_LAECHELN_GROSS => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautLaechelnGross, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_LACHEND => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautLachend, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_LAECHELN => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautLaecheln, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_NEUTRAL_ENTSPANNT => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautNeutralEntspannt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_NEUTRAL => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautNeutral, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SCHAUT_GESICHTSAUSDRUCK_STOLZ => HandleCharacterComesEvent(passage, charakter01, CharacterExpression.SchautStolz, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SPRICHT => HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtNeutralEntspannt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_ERSCHROCKEN => HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtErschrocken, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_GENERVT => HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtGenervt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_UNZUFRIEDEN => HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtUnzufrieden, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_ABLEHNEND => HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtAblehnend, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_ERSTAUNT => HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtErstaunt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_FRAGEND => HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtFragend, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_KRITISCH => HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtKritisch, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_LAECHELN_GROSS => HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtLaechelnGross, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_LACHEND => HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtLachend, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_LAECHELN => HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtLaecheln, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_NEUTRAL_ENTSPANNT => HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtNeutralEntspannt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_NEUTRAL => HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtNeutral, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_01_SPRICHT_GESICHTSAUSDRUCK_STOLZ => HandleCharacterTalksEvent(passage, charakter01, message, CharacterExpression.SprichtStolz, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_02 => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautNeutralEntspannt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_ERSCHROCKEN => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautErschrocken, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_GENERVT => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautGenervt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_UNZUFRIEDEN => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautUnzufrieden, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_ABLEHNEND => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautAblehnend, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_ERSTAUNT => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautErstaunt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_FRAGEND => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautFragend, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_KRITISCH => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautKritisch, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_LAECHELN_GROSS => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautLaechelnGross, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_LACHEND => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautLachend, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_LAECHELN => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautLaecheln, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_NEUTRAL_ENTSPANNT => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautNeutralEntspannt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_NEUTRAL => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautNeutral, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_02_GESICHTSAUSDRUCK_STOLZ => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautStolz, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SCHAUT => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautNeutralEntspannt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_ERSCHROCKEN => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautErschrocken, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_GENERVT => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautGenervt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_UNZUFRIEDEN => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautUnzufrieden, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_ABLEHNEND => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautAblehnend, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_ERSTAUNT => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautErstaunt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_FRAGEND => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautErstaunt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_KRITISCH => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautKritisch, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_LAECHELN_GROSS => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautLaechelnGross, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_LACHEND => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautLachend, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_LAECHELN => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautLaecheln, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_NEUTRAL_ENTSPANNT => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautNeutralEntspannt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_NEUTRAL => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautNeutral, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SCHAUT_GESICHTSAUSDRUCK_STOLZ => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautStolz, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SPRICHT => HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtNeutralEntspannt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_ERSCHROCKEN => HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtErschrocken, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_GENERVT => HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtGenervt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_UNZUFRIEDEN => HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtUnzufrieden, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_ABLEHNEND => HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtAblehnend, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_ERSTAUNT => HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtErstaunt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_FRAGEND => HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtFragend, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_KRITISCH => HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtKritisch, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_LAECHELN_GROSS => HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtLaechelnGross, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_LACHEND => HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtLachend, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_LAECHELN => HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtLaecheln, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_NEUTRAL_ENTSPANNT => HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtNeutralEntspannt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_NEUTRAL => HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtNeutral, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_02_SPRICHT_GESICHTSAUSDRUCK_STOLZ => HandleCharacterTalksEvent(passage, charakter02, message, CharacterExpression.SprichtStolz, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_03 => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautNeutralEntspannt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_ERSCHROCKEN => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautErschrocken, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_GENERVT => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautGenervt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_UNZUFRIEDEN => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautUnzufrieden, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_ABLEHNEND => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautAblehnend, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_ERSTAUNT => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautErstaunt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_FRAGEND => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautFragend, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_KRITISCH => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautKritisch, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_LAECHELN_GROSS => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautLaechelnGross, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_LACHEND => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautLachend, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_LAECHELN => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautLaecheln, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_NEUTRAL_ENTSPANNT => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautNeutralEntspannt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_NEUTRAL => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautNeutral, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.EINTRITT_CHARAKTER_03_GESICHTSAUSDRUCK_STOLZ => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautStolz, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SCHAUT => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautNeutralEntspannt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_ERSCHROCKEN => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautErschrocken, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_GENERVT => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautGenervt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_UNZUFRIEDEN => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautUnzufrieden, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_ABLEHNEND => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautAblehnend, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_ERSTAUNT => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautErstaunt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_FRAGEND => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautErstaunt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_KRITISCH => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautKritisch, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_LAECHELN_GROSS => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautLaechelnGross, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_LACHEND => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautLachend, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_LAECHELN => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautLaecheln, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_NEUTRAL_ENTSPANNT => HandleCharacterComesEvent(passage, charakter02, CharacterExpression.SchautNeutralEntspannt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_NEUTRAL => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautNeutral, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SCHAUT_GESICHTSAUSDRUCK_STOLZ => HandleCharacterComesEvent(passage, charakter03, CharacterExpression.SchautStolz, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SPRICHT => HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtNeutralEntspannt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_ERSCHROCKEN => HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtErschrocken, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_GENERVT => HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtGenervt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_UNZUFRIEDEN => HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtUnzufrieden, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_ABLEHNEND => HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtAblehnend, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_ERSTAUNT => HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtErstaunt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_FRAGEND => HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtFragend, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_KRITISCH => HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtKritisch, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_LAECHELN_GROSS => HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtLaechelnGross, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_LACHEND => HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtLachend, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_LAECHELN => HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtLaecheln, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_NEUTRAL_ENTSPANNT => HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtNeutralEntspannt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_NEUTRAL => HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtNeutral, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.CHARAKTER_03_SPRICHT_GESICHTSAUSDRUCK_STOLZ => HandleCharacterTalksEvent(passage, charakter03, message, CharacterExpression.SprichtStolz, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.SPIELER_CHARAKTER_SPRICHT => HandleCharacterTalksEvent(passage, CharacterRole.Player, message, CharacterExpression.SchautNeutralEntspannt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.INFO_NACHRICHT_WIRD_ANGEZEIGT => HandleCharacterTalksEvent(passage, CharacterRole.Info, message, CharacterExpression.SchautNeutralEntspannt, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.SOUND_ABSPIELEN_WATER_POURING => HandlePlaySoundEvent(passage, KiteSound.WaterPouring, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.SOUND_ABSPIELEN_LEAVE_SCENE => HandlePlaySoundEvent(passage, KiteSound.LeaveScene, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.SOUND_ABSPIELEN_TELEPHONE_CALL => HandlePlaySoundEvent(passage, KiteSound.TelephoneCall, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.SOUND_ABSPIELEN_PAPER_SOUND => HandlePlaySoundEvent(passage, KiteSound.PaperSound, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.SOUND_ABSPIELEN_MAN_LAUGHING => HandlePlaySoundEvent(passage, KiteSound.ManLaughing, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.ANIMATION_ABSPIELEN_WATER_POURING => HandlePlayAnimationEvent(passage, KiteAnimation.WaterPouring, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.ENDE => HandleEndNovelEvent(passage.Label, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.GPT_PROMPT_MIT_DEFAULT_COMPLETION_HANDLER => HandleGptRequestEvent(passage, message, CompletionHandler.DefaultCompletionHandler, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.PERSISTENTES_SPEICHERN => HandleSaveDataEvent(passage, message, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.VARIABLE_SETZEN => HandleSetVariableEvent(passage, message, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.VARIABLE_AUS_BOOLSCHEM_AUSDRUCK_BESTIMMEN => HandleSetVariableFromBooleanExpressionEvent(passage, message, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.FEEDBACK_HINZUFUEGEN => HandleAddFeedbackEvent(passage, message, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.FEEDBACK_UNTER_BEDINGUNG_HINZUFUEGEN => HandleAddFeedbackUnderConditionEvent(passage, message, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_FINANZIERUNGSZUGANG => HandleBiasEvent(passage, DiscriminationBias.AccessToFunding, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_GENDER_PAY_GAP => HandleBiasEvent(passage, DiscriminationBias.GenderPayGap, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_UNTERBEWERTUNG_WEIBLICH_GEFUEHRTER_UNTERNEHMEN => HandleBiasEvent(passage, DiscriminationBias.UndervaluationOfWomenLedBusinesses, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_RISK_AVERSION_BIAS => HandleBiasEvent(passage, DiscriminationBias.RiskAversionBias, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_BESTAETIGUNGSVERZERRUNG => HandleBiasEvent(passage, DiscriminationBias.ConfirmationBias, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_TOKENISM => HandleBiasEvent(passage, DiscriminationBias.Tokenism, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_BIAS_IN_DER_WAHRNEHMUNG_VON_FUEHRUNGSFAEHIGKEITEN => HandleBiasEvent(passage, DiscriminationBias.InPerceptionOfLeadershipAbilities, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_RASSISTISCHE_UND_ETHNISCHE_BIASES => HandleBiasEvent(passage, DiscriminationBias.RacistAndEthnicBiases, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_SOZIOOEKONOMISCHE_BIASES => HandleBiasEvent(passage, DiscriminationBias.SocioeconomicBiases, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_ALTER_UND_GENERATIONEN_BIASES => HandleBiasEvent(passage, DiscriminationBias.AgeAndGenerationalBiases, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_SEXUALITAETSBEZOGENE_BIASES => HandleBiasEvent(passage, DiscriminationBias.SexualityRelatedBiases, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_BIASES_GEGENUEBER_FRAUEN_MIT_BEHINDERUNGEN => HandleBiasEvent(passage, DiscriminationBias.AgainstWomenWithDisabilities, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_STEREOTYPE_GEGENUEBER_FRAUEN_IN_NICHT_TRADITIONELLEN_BRANCHEN => HandleBiasEvent(passage, DiscriminationBias.StereotypesAgainstWomenInNonTraditionalIndustries, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_KULTURELLE_UND_RELIGIOESE_BIASES => HandleBiasEvent(passage, DiscriminationBias.CulturalAndReligiousBiases, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_MATERNAL_BIAS => HandleBiasEvent(passage, DiscriminationBias.MaternalBias, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_BIASES_GEGENUEBER_FRAUEN_MIT_KINDERN => HandleBiasEvent(passage, DiscriminationBias.AgainstWomenWithChildren, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_ERWARTUNGSHALTUNG_BEZUEGLICH_FAMILIENPLANUNG => HandleBiasEvent(passage, DiscriminationBias.ExpectationsRegardingFamilyPlanning, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_WORK_LIFE_BALANCE_ERWARTUNGEN => HandleBiasEvent(passage, DiscriminationBias.WorkLifeBalanceExpectations, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_GESCHLECHTSSPEZIFISCHE_STEREOTYPEN => HandleBiasEvent(passage, DiscriminationBias.GenderSpecificStereotypes, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_TIGHTROPE_BIAS => HandleBiasEvent(passage, DiscriminationBias.TightropeBias, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_MIKROAGGRESSIONEN => HandleBiasEvent(passage, DiscriminationBias.Microaggressions, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_LEISTUNGSATTRIBUTIONS_BIAS => HandleBiasEvent(passage, DiscriminationBias.PerformanceAttributionBias, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_BIAS_IN_MEDIEN_UND_WERBUNG => HandleBiasEvent(passage, DiscriminationBias.InMediaAndAdvertising, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_UNBEWUSSTE_BIAS_IN_DER_KOMMUNIKATION => HandleBiasEvent(passage, DiscriminationBias.UnconsciousBiasInCommunication, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_PROVE_IT_AGAIN_BIAS => HandleBiasEvent(passage, DiscriminationBias.ProveItAgainBias, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_HETERONORMATIVITAET_BIAS => HandleBiasEvent(passage, DiscriminationBias.HeteronormativitaetBias, kiteNovelEventList.NovelEvents),
-                NovelKeyWord.RELEVANTER_BIAS_BENEVOLENTER_SEXISMUS_BIAS => HandleBiasEvent(passage, DiscriminationBias.BenevolenterSexismusBias, kiteNovelEventList.NovelEvents),
-                _ => null
-            };
-        }
-
-        private static NovelKeyWord FindFirstKeyWordInText(string text)
-        {
-            foreach (string keyWord in NovelKeyWordValue.ALL_KEY_WORDS)
-            {
-                if (text.Contains(keyWord))
-                {
-                    return NovelKeyWordHelper.GetKeyWordOutOfValue(keyWord);
-                }
-            }
-
-            return NovelKeyWord.NONE;
-        }
+        #endregion
     }
 }

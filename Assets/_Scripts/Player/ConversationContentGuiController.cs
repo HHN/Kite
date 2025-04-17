@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
+using Assets._Scripts._Mappings;
+using Assets._Scripts.Controller.SceneControllers;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.SaveNovelData;
-using Assets._Scripts.SceneControllers;
 using Assets._Scripts.UIElements.TextBoxes;
 using Assets._Scripts.UndoChoice;
 using Assets._Scripts.Utilities;
@@ -94,11 +95,10 @@ namespace Assets._Scripts.Player
             var newMessageBox = GetMessagePrefab(novelEvent);
 
             ChatMessageBox messageBox = newMessageBox.GetComponent<ChatMessageBox>();
-            messageBox.SetMessage(PlayNovelSceneController.ReplacePlaceholders(novelEvent.text,
-                PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables()));
+            messageBox.SetMessage(PlayNovelSceneController.ReplacePlaceholders(novelEvent.text, PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables()));
             
             guiContent.Add(newMessageBox);
-            AddFormattedPromptLine(novelEvent.character, novelEvent.text);
+            AddFormattedPromptLine(MappingManager.MapCharacterToString(novelEvent.character), novelEvent.text);
         }
 
         public void ShowPlayerAnswer(string message)
@@ -109,7 +109,7 @@ namespace Assets._Scripts.Player
             messageBox.SetMessage(message);
             guiContent.Add(newMessageBox);
 
-            AddFormattedPromptLine(CharacterTypeHelper.ToInt(CharacterRole.Player), message);
+            AddFormattedPromptLine(MappingManager.MapCharacterToString(1), message);
 
             // Deaktiviere den Button der vorherigen blueMessagePrefabWithTrigger (falls vorhanden)
             if (_lastBlueMessagePrefabWithTrigger != null)
@@ -214,7 +214,7 @@ namespace Assets._Scripts.Player
                     visualNovelEvent.character = 1;
                 }
                 
-                AddFormattedPromptLine(visualNovelEvent.character, visualNovelEvent.text);
+                AddFormattedPromptLine(MappingManager.MapCharacterToString(visualNovelEvent.character), visualNovelEvent.text);
 
                 GameObject newMessageBox;
 
@@ -264,25 +264,23 @@ namespace Assets._Scripts.Player
             }
         }
         
-        private static void AddFormattedPromptLine(int character, string message)
+        private static void AddFormattedPromptLine(string character, string message)
         {
-            PromptManager.Instance().AddFormattedLineToPrompt(
-                CharacterTypeHelper.GetNameOfCharacter(character),
-                PlayNovelSceneController.ReplacePlaceholders(message,
-                    PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables()));
+            PromptManager.Instance().AddFormattedLineToPrompt(character, PlayNovelSceneController.ReplacePlaceholders(message, PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables()));
         }
         
         private GameObject GetMessagePrefab(VisualNovelEvent novelEvent)
         {
             GameObject newMessageBox;
-            if (novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.Player))
+            
+            if (novelEvent.character == 1)
             {
                 newMessageBox = Instantiate(blueMessagePrefab, transform);
             }
-            else if (novelEvent.character != 0 &&
-                     novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.Intro) || 
-                     novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.Outro) || 
-                     novelEvent.character == CharacterTypeHelper.ToInt(CharacterRole.Info))
+            else if (novelEvent.character != 0 && // None
+                     novelEvent.character == 2 || // Intro
+                     novelEvent.character == 3 || // Outro
+                     novelEvent.character == 4)   // Info
             {
                 newMessageBox = Instantiate(cottaMessagePrefab, transform);
             }

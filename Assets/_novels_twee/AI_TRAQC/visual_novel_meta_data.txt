@@ -2,18 +2,12 @@
   "idNumberOfNovel": 14,
   "titleOfNovel": "Vertrieb",
   "descriptionOfNovel": "Im Rahmen Deiner Aufgabe, KI in der Firma einzuführen, gehst du bei einem Mitarbeiter aus Vertrieb und Marketing vorbei, um mögliche Einsatzbereiche und Potenziale zu besprechen.",
-  "idNumberOfRepresentationImage": 8,
-  "nameOfMainCharacter": "Spielerin",
   "contextForPrompt": "",
-  "folderName": "AI_TRAQC",
-  "isKite2Novel": true,
-  "startLocation": "Office",
-  "startTalkingPartnerEmotion": "Schaut neutral entspannt",
+  "startTalkingPartnerExpression": "NeutralRelaxed",
   "isWithStartValues": true,
   "talkingPartner01" : "Intro",
   "talkingPartner02" : "",
   "talkingPartner03" : "",
   "wordsToReplace": [
-    {"wordToReplace": ">>SpielerinCharakterSpricht:<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"}
   ]
 }

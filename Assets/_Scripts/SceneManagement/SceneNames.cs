@@ -10,13 +10,9 @@ namespace Assets._Scripts.SceneManagement
         public const string PlayNovelScene = "PlayNovelScene";
         public const string PlayInstructionScene = "PlayInstructionScene";
         public const string NovelHistoryScene = "NovelHistoryScene";
-        public const string PlayerPrefsScene = "PlayerPrefsScene";
         
         // FEEDBACK SYSTEM
         public const string FeedbackScene = "FeedbackScene";
-
-        // COMMUNITY & COMMUNICATION
-        public const string CommentSectionScene = "CommentSectionScene";
 
         // FOUNDER-RELATED SCENES
         public const string FoundersBubbleScene = "FoundersBubbleScene";

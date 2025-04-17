@@ -5,7 +5,7 @@
   "nameOfMainCharacter": "Spielerin",
   "contextForPrompt": "Es ist das Gespräch einer Gründerin, mit ihrer Mutter. Sie hat sich gründlich informiert und hat sich entschlossen, ein Unternehmen zu gründen. Sie ruft nun ihre Eltern an, um ihnen von dem Gründungsvorhaben zu berichten.",
   "folderName": "Eltern",
-  "startTalkingPartnerEmotion": "Schaut neutral entspannt",
+  "startTalkingPartnerExpression": "NeutralRelaxed",
   "talkingPartner01" : "Vater",
   "talkingPartner02" : "Mutter",
   "talkingPartner03" : "",

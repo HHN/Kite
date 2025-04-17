@@ -1,38 +1,28 @@
-using Assets._Scripts.Novel;
-
-namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
+namespace Assets._Scripts.Novel.VisualNovelFormatter
 {
     public abstract class KiteNovelEventFactory
     {
-        public static VisualNovelEvent GetBiasEvent(string id, string nextId, DiscriminationBias relevantBias)
+        public static VisualNovelEvent GetBiasEvent(string id, string nextId, string relevantBias)
         {
             VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.MarkBiasEvent, false);
-            novelEvent.relevantBias = DiscriminationBiasHelper.ToInt(relevantBias);
+            novelEvent.relevantBias = relevantBias;
             return novelEvent;
         }
 
-        public static VisualNovelEvent GetCharacterTalksEvent(string id, string nextId, CharacterRole characterRole,
-            string dialogMessage, CharacterExpression expression)
+        public static VisualNovelEvent GetCharacterTalksEvent(string id, string nextId, int characterRole, string dialogMessage, int expression)
         {
             VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.ShowMessageEvent, true);
-            novelEvent.character = CharacterTypeHelper.ToInt(characterRole);
+            novelEvent.character = characterRole;
             novelEvent.text = dialogMessage;
-            novelEvent.expressionType = CharacterExpressionHelper.ToInt(expression);
+            novelEvent.expressionType = expression;
             return novelEvent;
         }
 
-        public static VisualNovelEvent GetSetBackgroundEvent(string id, string nextId)
+        public static VisualNovelEvent GetCharacterJoinsEvent(string id, string nextId, int characterRole, int expression)
         {
-            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.SetBackgroundEvent, false);
-            return novelEvent;
-        }
-
-        public static VisualNovelEvent GetCharacterJoinsEvent(string id, string nextId, CharacterRole characterRole,
-            CharacterExpression expression)
-        {
-            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.CharakterJoinEvent, false);
-            novelEvent.character = CharacterTypeHelper.ToInt(characterRole);
-            novelEvent.expressionType = CharacterExpressionHelper.ToInt(expression);
+            VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.CharacterJoinEvent, false);
+            novelEvent.character = characterRole;
+            novelEvent.expressionType = expression;
             return novelEvent;
         }
 
@@ -42,13 +32,12 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             return novelEvent;
         }
 
-        public static VisualNovelEvent GetGptEvent(string id, string nextId, string prompt, string variablesName,
-            CompletionHandler completionHandlerId)
+        public static VisualNovelEvent GetGptEvent(string id, string nextId, string prompt, string variablesName, string completionHandlerId)
         {
             VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.GptPromptEvent, false);
             novelEvent.gptPrompt = prompt;
             novelEvent.variablesNameForGptPrompt = variablesName;
-            novelEvent.gptCompletionHandlerId = CompletionHandlerHelper.ToInt(completionHandlerId);
+            novelEvent.gptCompletionHandler = completionHandlerId;
             return novelEvent;
         }
 
@@ -68,8 +57,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             return novelEvent;
         }
 
-        public static VisualNovelEvent GetCalculateVariableFromBooleanExpressionEvent(string id, string nextId,
-            string key, string value)
+        public static VisualNovelEvent GetCalculateVariableFromBooleanExpressionEvent(string id, string nextId, string key, string value)
         {
             VisualNovelEvent novelEvent = CreateEvent(id, nextId,
                 VisualNovelEventType.CalculateVariableFromBooleanExpressionEvent, false);
@@ -85,8 +73,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             return novelEvent;
         }
 
-        public static VisualNovelEvent GetAddFeedbackUnderConditionEvent(string id, string nextId, string key,
-            string value)
+        public static VisualNovelEvent GetAddFeedbackUnderConditionEvent(string id, string nextId, string key, string value)
         {
             VisualNovelEvent novelEvent =
                 CreateEvent(id, nextId, VisualNovelEventType.AddFeedbackUnderConditionEvent, false);
@@ -101,8 +88,7 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             return novelEvent;
         }
 
-        public static VisualNovelEvent GetAddChoiceEvent(string id, string nextId, string optionText, string onChoice,
-            bool showAfterSelection)
+        public static VisualNovelEvent GetAddChoiceEvent(string id, string nextId, string optionText, string onChoice, bool showAfterSelection)
         {
             VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.AddChoiceEvent, false);
             novelEvent.text = optionText;
@@ -117,29 +103,31 @@ namespace Assets._Scripts.Player.KiteNovels.VisualNovelFormatter
             return novelEvent;
         }
 
-        public static VisualNovelEvent GetPlayAnimationEvent(string id, string nextId, KiteAnimation animationToPlay)
+        // TODO: Check if this should be removed. Isn't used by the time this is written.
+        public static VisualNovelEvent GetPlayAnimationEvent(string id, string nextId, string animationToPlay)
         {
             VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.PlayAnimationEvent, false);
-            novelEvent.animationToPlay = KiteAnimationHelper.ToInt(animationToPlay);
+            novelEvent.animationToPlay = animationToPlay;
             return novelEvent;
         }
 
-        public static VisualNovelEvent GetPlaySoundEvent(string id, string nextId, KiteSound audioClipToPlay)
+        public static VisualNovelEvent GetPlaySoundEvent(string id, string nextId, string audioClipToPlay)
         {
             VisualNovelEvent novelEvent = CreateEvent(id, nextId, VisualNovelEventType.PlaySoundEvent, false);
-            novelEvent.audioClipToPlay = KiteSoundHelper.ToInt(audioClipToPlay);
+            novelEvent.audioClipToPlay = audioClipToPlay;
             return novelEvent;
         }
 
 
-        private static VisualNovelEvent CreateEvent(string id, string nextId, VisualNovelEventType type,
-            bool waitForConfirmation)
+        private static VisualNovelEvent CreateEvent(string id, string nextId, VisualNovelEventType type, bool waitForConfirmation)
         {
-            VisualNovelEvent novelEvent = new VisualNovelEvent();
-            novelEvent.id = id;
-            novelEvent.nextId = nextId;
-            novelEvent.eventType = VisualNovelEventTypeHelper.ToInt(type);
-            novelEvent.waitForUserConfirmation = waitForConfirmation;
+            VisualNovelEvent novelEvent = new VisualNovelEvent
+            {
+                id = id,
+                nextId = nextId,
+                eventType = VisualNovelEventTypeHelper.ToInt(type),
+                waitForUserConfirmation = waitForConfirmation
+            };
             return novelEvent;
         }
     }

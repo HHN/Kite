@@ -1,10 +1,11 @@
 using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
+using System.Collections.Generic;
 
 namespace Assets._Scripts.Novel.VisualNovelFormatter
 {
     public class KiteNovelFolder
     {
-        public KiteNovelFolder(KiteNovelMetaData novelMetaData, KiteNovelEventList novelEventList)
+        public KiteNovelFolder(KiteNovelMetaData novelMetaData, List<VisualNovelEvent> novelEventList)
         {
             this.NovelMetaData = novelMetaData;
             this.NovelEventList = novelEventList;
@@ -18,6 +19,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
         public KiteNovelMetaData NovelMetaData { get; set; }
 
-        public KiteNovelEventList NovelEventList { get; set; }
+        public List<VisualNovelEvent> NovelEventList { get; set; }
     }
 }

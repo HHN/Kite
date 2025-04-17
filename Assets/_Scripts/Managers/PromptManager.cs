@@ -95,7 +95,7 @@ namespace Assets._Scripts.Managers
                 _prompt.Append(
                     "Hier die Liste mit Geschlechterbiases im Gründungsprozess:\r\n\r\n" +
                     "Finanzielle und geschäftliche Herausforderungen:\r\n" +
-                    "- Finanzierungszugang: Schwierigkeiten von Frauen, Kapital für ihre Unternehmen zu beschaffen.\r\n" +
+                    "- AccessToFunding: Schwierigkeiten von Frauen, Kapital für ihre Unternehmen zu beschaffen.\r\n" +
                     "- Gender Pay Gap: Lohnungleichheit zwischen Männern und Frauen.\r\n" +
                     "- Unterbewertung weiblich geführter Unternehmen: Geringere Bewertung von Unternehmen, die von Frauen geführt werden.\r\n" +
                     "- Risk Aversion Bias: Wahrnehmung von Frauen als risikoaverser.\r\n" +

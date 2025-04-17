@@ -14,24 +14,25 @@ namespace Assets._Scripts.Novel
         public int clotheSpriteId;
         public int hairSpriteId;
         public int faceSpriteId;
+        public string backgroundSprite;
         public int character;
         public string text;
         public int animationType;
         public int expressionType;
         public int xPosition;
         public int yPosition;
-        public int opinionChoiceNumber; // 1 -> Nervous; 2 -> Fearful; 3 -> Encouraged; 4 -> Annoyed;
-        public int audioClipToPlay;
-        public int animationToPlay;
+        public int opinionChoiceNumber;
+        public string audioClipToPlay;
+        public string animationToPlay;
         public bool show = true;
         public string questionForFreeTextInput;
         public string variablesName;
         public string gptPrompt;
         public string variablesNameForGptPrompt;
-        public int gptCompletionHandlerId;
+        public string gptCompletionHandler;
         public string key;
         public string value;
-        public int relevantBias;
+        public string relevantBias;
 
         public VisualNovelEvent DeepCopy()
         {
@@ -60,7 +61,7 @@ namespace Assets._Scripts.Novel
             newEvent.variablesName = variablesName;
             newEvent.gptPrompt = gptPrompt;
             newEvent.variablesNameForGptPrompt = variablesNameForGptPrompt;
-            newEvent.gptCompletionHandlerId = gptCompletionHandlerId;
+            newEvent.gptCompletionHandler = gptCompletionHandler;
             newEvent.key = key;
             newEvent.value = value;
             newEvent.relevantBias = relevantBias;
