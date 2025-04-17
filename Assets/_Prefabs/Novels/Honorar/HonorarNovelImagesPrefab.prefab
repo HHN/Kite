@@ -588,6 +588,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6949410670094988474}
   - component: {fileID: 4036826445676781994}
+  - component: {fileID: 7984048738214637961}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -617,16 +618,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5051381907867912084}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7725fe153f9424b4aa8c7c2167c3f98e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   novelKite2CharacterController: {fileID: 0}
   novelKite2CharacterController2: {fileID: 0}
-  backgroundContainer: {fileID: 4321828020364627261}
-  decoDeskContainer: {fileID: 4467964754824672667}
-  decoKommodeContainer: {fileID: 2204003879144595292}
   decoVasePrefab: {fileID: 8411936371333490823, guid: 7d913892f960ad9469f0b8837688bee0, type: 3}
   decoVaseContainer: {fileID: 6178494739774191856}
   decoVaseAudio: {fileID: 8300000, guid: 0d635604f39a5ac488d112ac094bc2ef, type: 3}
@@ -636,6 +634,25 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c2b7968438f3b574fb90c9f4bec337a4, type: 3}
   characterContainer: {fileID: 3669613035356320353}
   characterPrefab: {fileID: 0}
+--- !u!114 &7984048738214637961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5051381907867912084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d760dc32eccc49bf935a6a9ae334e70a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  novelKite2CharacterController: {fileID: 0}
+  novelKite2CharacterController2: {fileID: 0}
+  characterContainer: {fileID: 3669613035356320353}
+  characterPrefab: {fileID: 0}
+  decorations:
+  - prefab: {fileID: 8411936371333490823, guid: 7d913892f960ad9469f0b8837688bee0, type: 3}
+    container: {fileID: 6178494739774191856}
 --- !u!1 &6178494739774191856
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 8411936371333490820}
   - component: {fileID: 3395814856990978911}
   - component: {fileID: 657428175645804257}
+  - component: {fileID: 8303488304354531083}
   m_Layer: 5
-  m_Name: BankNovelDecoGlasPrefab
+  m_Name: DecoGlasPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +32,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -76,3 +76,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8303488304354531083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8411936371333490823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e699ce5ff0413e4daebb7b5b7843bdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 8411936371333490823}
+  sound: {fileID: 8300000, guid: 0d216aa514664d1498017d5950134f94, type: 3}
+  animationFrames:
+  - {fileID: 21300000, guid: 10e10e3354d9ea640bf7a5ae785ae96a, type: 3}
+  - {fileID: 21300000, guid: 4d1db428631932b4d812907be6956434, type: 3}
+  - {fileID: 21300000, guid: a8d967ae17f4c9e4284e3bebf1894a79, type: 3}
+  - {fileID: 21300000, guid: f3ae4e205b00e884abb8663c9162de1e, type: 3}
+  - {fileID: 21300000, guid: 00158b797f500ca498d255b7352d521e, type: 3}
+  - {fileID: 21300000, guid: 43e029753c0ce044590d3f63d8aef9d6, type: 3}
+  - {fileID: 21300000, guid: 9d987476a3f9e3647ae902413ee1316b, type: 3}

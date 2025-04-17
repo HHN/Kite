@@ -102,7 +102,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         private readonly string[] _optionsId = new string[2];
         private ConversationContentGuiController _conversationContentGuiController;
         private int _novelCharacter = 0;
-        private NovelImageController _novelImagesController;
+        private NewNovelImageController _novelImagesController;
         private VisualNovelEvent _savedEventToResume; // Speichert das letzte Ereignis für das Fortsetzen
         private Coroutine _timerCoroutine;
         private bool _typingWasSkipped;
@@ -117,7 +117,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         public List<string> PlayThroughHistory => playThroughHistory;
         public string[] OptionsId => _optionsId;
         public List<VisualNovelEvent> EventHistory => eventHistory;
-        public NovelImageController NovelImageController => _novelImagesController;
+        public NewNovelImageController NovelImageController => _novelImagesController;
 
         private static PlayNovelSceneController _instance;
 
@@ -190,72 +190,72 @@ namespace Assets._Scripts.Controller.SceneControllers
                 {
                     GameObject novelImagesInstance = Instantiate(novelVisuals[0], viewPortTransform);
                     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<BankNovelImageController>();
+                    _novelImagesController = controllerTransform.GetComponent<NewNovelImageController>();
                     break;
                 }
                 case "Anmietung eines Büros":
                 {
                     GameObject novelImagesInstance = Instantiate(novelVisuals[1], viewPortTransform);
                     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<BueroNovelImageController>();
+                    _novelImagesController = controllerTransform.GetComponent<NewNovelImageController>();
                     break;
                 }
-                case "Pressegespräch":
-                {
-                    GameObject novelImagesInstance = Instantiate(novelVisuals[2], viewPortTransform);
-                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<PresseNovelImageController>();
-                    break;
-                }
-                case "Telefonat mit den Eltern":
-                {
-                    GameObject novelImagesInstance = Instantiate(novelVisuals[3], viewPortTransform);
-                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<ElternNovelImageController>();
-                    break;
-                }
-                case "Telefonat mit der Notarin":
-                {
-                    GameObject novelImagesInstance = Instantiate(novelVisuals[4], viewPortTransform);
-                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<NotarinNovelImageController>();
-                    break;
-                }
-                case "Gespräch mit einem Investor":
-                {
-                    GameObject novelImagesInstance = Instantiate(novelVisuals[5], viewPortTransform);
-                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<InvestorNovelImageController>();
-                    break;
-                }
-                case "Vertrieb":
-                {
-                    GameObject novelImagesInstance = Instantiate(novelVisuals[5], viewPortTransform);
-                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<InvestorNovelImageController>();
-                    break;
-                }
-                case "Einstiegsdialog":
-                {
-                    GameObject novelImagesInstance = Instantiate(novelVisuals[6], viewPortTransform);
-                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<EinstiegNovelImageController>();
-                    break;
-                }
+                // case "Pressegespräch":
+                // {
+                //     GameObject novelImagesInstance = Instantiate(novelVisuals[2], viewPortTransform);
+                //     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                //     _novelImagesController = controllerTransform.GetComponent<PresseNovelImageController>();
+                //     break;
+                // }
+                // case "Telefonat mit den Eltern":
+                // {
+                //     GameObject novelImagesInstance = Instantiate(novelVisuals[3], viewPortTransform);
+                //     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                //     _novelImagesController = controllerTransform.GetComponent<ElternNovelImageController>();
+                //     break;
+                // }
+                // case "Telefonat mit der Notarin":
+                // {
+                //     GameObject novelImagesInstance = Instantiate(novelVisuals[4], viewPortTransform);
+                //     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                //     _novelImagesController = controllerTransform.GetComponent<NotarinNovelImageController>();
+                //     break;
+                // }
+                // case "Gespräch mit einem Investor":
+                // {
+                //     GameObject novelImagesInstance = Instantiate(novelVisuals[5], viewPortTransform);
+                //     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                //     _novelImagesController = controllerTransform.GetComponent<InvestorNovelImageController>();
+                //     break;
+                // }
+                // case "Vertrieb":
+                // {
+                //     GameObject novelImagesInstance = Instantiate(novelVisuals[5], viewPortTransform);
+                //     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                //     _novelImagesController = controllerTransform.GetComponent<InvestorNovelImageController>();
+                //     break;
+                // }
+                // case "Einstiegsdialog":
+                // {
+                //     GameObject novelImagesInstance = Instantiate(novelVisuals[6], viewPortTransform);
+                //     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                //     _novelImagesController = controllerTransform.GetComponent<EinstiegNovelImageController>();
+                //     break;
+                // }
                 case "Honorarverhandlung mit Kundin":
                 {
                     GameObject novelImagesInstance = Instantiate(novelVisuals[7], viewPortTransform);
                     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<HonorarNovelImageController>();
+                    _novelImagesController = controllerTransform.GetComponent<NewNovelImageController>();
                     break;
                 }
-                default:
-                {
-                    GameObject novelImagesInstance = Instantiate(novelVisuals[0], viewPortTransform);
-                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<BankNovelImageController>();
-                    break;
-                }
+                // default:
+                // {
+                //     GameObject novelImagesInstance = Instantiate(novelVisuals[0], viewPortTransform);
+                //     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                //     _novelImagesController = controllerTransform.GetComponent<BankNovelImageController>();
+                //     break;
+                // }
             }
 
             _novelImagesController.SetCanvasRect(canvasRect);
@@ -993,9 +993,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 { 2, typeof(ElternNovelImageController) },
                 { 3, typeof(PresseNovelImageController) },
                 { 4, typeof(NotarinNovelImageController) },
-                { 6, typeof(BueroNovelImageController) },
                 { 9, typeof(InvestorNovelImageController) },
-                { 10, typeof(BankNovelImageController) },
                 { 11, typeof(HonorarNovelImageController) },
                 { 13, typeof(EinstiegNovelImageController) }
             };

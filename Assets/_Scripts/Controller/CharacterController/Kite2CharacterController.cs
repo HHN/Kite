@@ -113,6 +113,8 @@ namespace Assets._Scripts.Controller.CharacterController
         public void SetHandSprite()
         {
             if (handSprites == null) return;
+            
+            Debug.Log($"handsprites: {handSprites}");
 
             switch (handIndex[0])
             {

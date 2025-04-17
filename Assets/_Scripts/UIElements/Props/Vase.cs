@@ -1,0 +1,40 @@
+using System.Collections;
+using Assets._Scripts.Controller.CharacterController;
+using Assets._Scripts.Managers;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Assets._Scripts.UIElements.Props
+{
+    public class Vase : MonoBehaviour, IDecorationInteraction
+    {
+        [SerializeField] private GameObject prefab;
+        [SerializeField] private AudioClip sound;
+        [SerializeField] private Sprite[] animationFrames;
+
+        public IEnumerator PlayInteraction(RectTransform container)
+        {
+            Debug.Log("Vase interaction triggered");
+            
+            if (!TextToSpeechManager.Instance.IsTextToSpeechActivated())
+            {
+                GlobalVolumeManager.Instance.PlaySound(sound);
+            }
+
+            Image image = prefab.GetComponent<Image>();
+            image.sprite = animationFrames[1];
+            Destroy(container.transform.GetChild(0).gameObject);
+            Instantiate(prefab, container.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFrames[2];
+            Destroy(container.transform.GetChild(0).gameObject);
+            Instantiate(prefab, container.transform);
+            yield return new WaitForSeconds(0.5f);
+            image.sprite = animationFrames[0];
+            Destroy(container.transform.GetChild(0).gameObject);
+            Instantiate(prefab, container.transform);
+
+            yield return new WaitForSeconds(0f);
+        }
+    }
+}

@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 8411936371333490820}
   - component: {fileID: 8411936371333490810}
   - component: {fileID: 8411936371333490821}
+  - component: {fileID: 5611173928910108010}
   m_Layer: 5
-  m_Name: HonorarNovelDecoVasePrefab
+  m_Name: DecoVasePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,3 +76,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5611173928910108010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8411936371333490823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788e0c732d7dbbb46997bf5e24407677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 8411936371333490823}
+  sound: {fileID: 8300000, guid: 0d635604f39a5ac488d112ac094bc2ef, type: 3}
+  animationFrames:
+  - {fileID: 21300000, guid: 3b6a23e979d597b4782a69ea4f5a51c1, type: 3}
+  - {fileID: 21300000, guid: 744b1c2dae89b6f43a01072d74f6c67b, type: 3}
+  - {fileID: 21300000, guid: c2b7968438f3b574fb90c9f4bec337a4, type: 3}

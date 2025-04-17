@@ -7,9 +7,6 @@ namespace Assets._Scripts.Controller.CharacterController
 {
     public class HonorarNovelImageController : NovelImageController
     {
-        [SerializeField] private GameObject backgroundContainer;
-        [SerializeField] private GameObject decoDeskContainer;
-        [SerializeField] private GameObject decoKommodeContainer;
         [SerializeField] private GameObject decoVasePrefab;
         [SerializeField] private GameObject decoVaseContainer;
         [SerializeField] private AudioClip decoVaseAudio;
