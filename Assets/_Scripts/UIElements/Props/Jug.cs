@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Assets._Scripts.UIElements.Props
 {
-    public class WaterGlass : MonoBehaviour, IDecorationInteraction
+    public class Jug : MonoBehaviour, IDecorationInteraction
     {
         [SerializeField] private AudioClip sound;
         [SerializeField] private Sprite[] animationFrames;
@@ -37,30 +37,6 @@ namespace Assets._Scripts.UIElements.Props
             yield return new WaitForSeconds(0.5f);
             
             image.sprite = animationFrames[3];
-            if (container.transform.childCount > 0)
-            {
-                Destroy(container.transform.GetChild(0).gameObject);
-            }
-            Instantiate(gameObject, container.transform);
-            yield return new WaitForSeconds(0.5f);
-            
-            image.sprite = animationFrames[4];
-            if (container.transform.childCount > 0)
-            {
-                Destroy(container.transform.GetChild(0).gameObject);
-            }
-            Instantiate(gameObject, container.transform);
-            yield return new WaitForSeconds(0.5f);
-            
-            image.sprite = animationFrames[5];
-            if (container.transform.childCount > 0)
-            {
-                Destroy(container.transform.GetChild(0).gameObject);
-            }
-            Instantiate(gameObject, container.transform);
-            yield return new WaitForSeconds(0.5f);
-            
-            image.sprite = animationFrames[6];
             if (container.transform.childCount > 0)
             {
                 Destroy(container.transform.GetChild(0).gameObject);

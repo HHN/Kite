@@ -348,6 +348,7 @@ GameObject:
   - component: {fileID: 5316091976446384908}
   - component: {fileID: 3613962885634019568}
   - component: {fileID: 6258752665224613818}
+  - component: {fileID: 8756693802345200989}
   m_Layer: 6
   m_Name: Desk Container
   m_TagString: Untagged
@@ -412,6 +413,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8756693802345200989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4467964754824672667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d760dc32eccc49bf935a6a9ae334e70a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  novelKite2CharacterController: {fileID: 0}
+  novelKite2CharacterController2: {fileID: 0}
+  characterContainers: []
+  decorations: []
 --- !u!1 &4782255772119278625
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,7 +529,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6949410670094988474}
-  - component: {fileID: 4208036239371078957}
+  - component: {fileID: 8017588899939843682}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -535,7 +552,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 831789010391981580}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4208036239371078957
+--- !u!114 &8017588899939843682
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -544,48 +561,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 5051381907867912084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f20524d491eb1145ade02d8abc03770, type: 3}
+  m_Script: {fileID: 11500000, guid: d760dc32eccc49bf935a6a9ae334e70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   novelKite2CharacterController: {fileID: 0}
   novelKite2CharacterController2: {fileID: 0}
-  backgroundPrefab: {fileID: 8411936371333490823, guid: 2705c2e178f89064287181c7bfbf2cbd, type: 3}
-  backgroundContainer: {fileID: 4321828020364627261}
-  deskPrefab: {fileID: 8411936371333490823, guid: 89dc1dbc08ee5aa4eabae250cf565f83, type: 3}
-  deskContainer: {fileID: 4467964754824672667}
-  decoTasse1Prefab: {fileID: 8411936371333490823, guid: b50994c696a0cd248bee354926d1dfa2, type: 3}
-  decoTasse1Container: {fileID: 2929638796514769843}
-  decoTasse2Prefab: {fileID: 8411936371333490823, guid: 964bb2b0f18ef8f4793124162a7c3a97, type: 3}
-  decoTasse2Container: {fileID: 7609554257560545093}
-  decoKannePrefab: {fileID: 8411936371333490823, guid: d5ee49643c715ff45a44b92dfce2fecf, type: 3}
-  decoKanneContainer: {fileID: 5558045549636132440}
-  decoLampePrefab: {fileID: 8411936371333490823, guid: 15924d7078a34db4a9991bfe3fbbfac4, type: 3}
-  decoLampeContainer: {fileID: 6921178490795108454}
-  decoTasseAudio: {fileID: 8300000, guid: 05ee5b1d0084a1547ba21302a47aff73, type: 3}
-  decoKanneAudio: {fileID: 8300000, guid: 05ee5b1d0084a1547ba21302a47aff73, type: 3}
-  decoLampeOnAudio: {fileID: 8300000, guid: 0e1a7e97f60b0ff4ab38f408fb7b7c09, type: 3}
-  decoLampeOffAudio: {fileID: 8300000, guid: 130b268b5ccf0d448865ecd967e3fe00, type: 3}
-  animationFramesTasse1:
-  - {fileID: 21300000, guid: eef29e5f7b3ae2144a46e1e0ca8b1eac, type: 3}
-  - {fileID: 21300000, guid: 783a4558015fdba4e81928ebe45c621d, type: 3}
-  - {fileID: 21300000, guid: c66aafb7be8b33f4db52983c26f0b231, type: 3}
-  - {fileID: 21300000, guid: f76986cfd50f74f4aabe75935dfa3a72, type: 3}
-  animationFramesTasse2:
-  - {fileID: 21300000, guid: 0129efb8dab92744a83641685a09b126, type: 3}
-  - {fileID: 21300000, guid: 4940cf0165721f64eaa3678e0e295c69, type: 3}
-  - {fileID: 21300000, guid: 0ca94bfe6f48fd74caaebbb998d038d1, type: 3}
-  - {fileID: 21300000, guid: 3eb87dbd56dc24142ab33e06d40af259, type: 3}
-  animationFramesKanne:
-  - {fileID: 21300000, guid: b3c461e04c4a39f4a9633f9903f6f32b, type: 3}
-  - {fileID: 21300000, guid: 3962090127a2cc44da26fcf2de93eb9b, type: 3}
-  - {fileID: 21300000, guid: 6c744e62a10f2e54ba97701575760d26, type: 3}
-  - {fileID: 21300000, guid: 3e8914c3bf50ec0478086001a5d7909f, type: 3}
-  decoLampeOff: {fileID: 21300000, guid: 79ce01fcaebfb3745ab11ee94822de84, type: 3}
-  decoLampeOn: {fileID: 21300000, guid: f9b3b12d991328d4db33b5d1f747759f, type: 3}
-  motherCharacterContainer: {fileID: 3669613035356320353}
-  fatherCharacterContainer: {fileID: 3780887922587301350}
-  characterMutterPrefab: {fileID: 0}
-  characterVaterPrefab: {fileID: 0}
+  characterContainers:
+  - {fileID: 3780887922587301350}
+  - {fileID: 3669613035356320353}
+  decorations:
+  - prefab: {fileID: 8411936371333490823, guid: b50994c696a0cd248bee354926d1dfa2, type: 3}
+    container: {fileID: 2929638796514769843}
+  - prefab: {fileID: 8411936371333490823, guid: 964bb2b0f18ef8f4793124162a7c3a97, type: 3}
+    container: {fileID: 7609554257560545093}
+  - prefab: {fileID: 8411936371333490823, guid: d5ee49643c715ff45a44b92dfce2fecf, type: 3}
+    container: {fileID: 5558045549636132440}
+  - prefab: {fileID: 8411936371333490823, guid: 15924d7078a34db4a9991bfe3fbbfac4, type: 3}
+    container: {fileID: 6921178490795108454}
 --- !u!1 &5558045549636132440
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,14 +1006,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.49803925, g: 0.73333335, b: 0.86666673, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 79ce01fcaebfb3745ab11ee94822de84, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

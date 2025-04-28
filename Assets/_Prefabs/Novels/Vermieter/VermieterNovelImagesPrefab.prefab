@@ -422,7 +422,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6949410670094988474}
-  - component: {fileID: 206297168245257575}
   - component: {fileID: 8342724666542580831}
   m_Layer: 0
   m_Name: Controller
@@ -446,29 +445,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 831789010391981580}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &206297168245257575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5051381907867912084}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76bbd7035b311214f97d8ccedcaa10bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  novelKite2CharacterController: {fileID: 0}
-  novelKite2CharacterController2: {fileID: 0}
-  decoPlantPrefab: {fileID: 8411936371333490823, guid: 02334970db3300f4797dfc8a311a46c8, type: 3}
-  decoPlantContainer: {fileID: 5558045549636132440}
-  decoPlantAudio: {fileID: 8300000, guid: f56fba4089e12584c97217a7049db785, type: 3}
-  animationFrames:
-  - {fileID: 21300000, guid: f5eed5e52be07d641b798dbf6b915bb8, type: 3}
-  - {fileID: 21300000, guid: a54589aa564f7244da0c42a701cbbaa6, type: 3}
-  - {fileID: 21300000, guid: 315c8ad94b56ae343998e44a28346b0e, type: 3}
-  characterContainer: {fileID: 3669613035356320353}
-  characterPrefab: {fileID: 0}
 --- !u!114 &8342724666542580831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,8 +459,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   novelKite2CharacterController: {fileID: 0}
   novelKite2CharacterController2: {fileID: 0}
-  characterContainer: {fileID: 3669613035356320353}
-  characterPrefab: {fileID: 0}
+  characterContainers:
+  - {fileID: 3669613035356320353}
   decorations:
   - prefab: {fileID: 8411936371333490823, guid: 02334970db3300f4797dfc8a311a46c8, type: 3}
     container: {fileID: 5558045549636132440}

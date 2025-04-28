@@ -43,8 +43,8 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private GameObject screenContentColor;
         [SerializeField] private GameObject headerImage;
 
-        [Header("Novel-Visuals und Prefabs")] 
-        [SerializeField] private GameObject[] novelVisuals;
+        [Header("Novel-Visuals und Prefabs")] [SerializeField]
+        private GameObject[] novelVisuals;
 
         [SerializeField] private GameObject novelImageContainer;
         [SerializeField] private GameObject novelBackgroundPrefab;
@@ -81,8 +81,8 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         [SerializeField] private Kite2CharacterController currentTalkingKite2CharacterController;
 
-        [Header("Audio-Komponenten")] 
-        [SerializeField] private AudioClip[] clips;
+        [Header("Audio-Komponenten")] [SerializeField]
+        private AudioClip[] clips;
 
         [Header("Timing und Analytics")] [SerializeField]
         private float timerForHint = 12.0f; // Time after which the hint to tap on the screen is shown
@@ -97,12 +97,12 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private bool isTyping;
         [SerializeField] private List<string> playThroughHistory = new();
         [SerializeField] private List<VisualNovelEvent> eventHistory = new();
-        
+
         private readonly Dictionary<string, VisualNovelEvent> _novelEvents = new();
         private readonly string[] _optionsId = new string[2];
         private ConversationContentGuiController _conversationContentGuiController;
         private int _novelCharacter = 0;
-        private NewNovelImageController _novelImagesController;
+        private NovelImageController _novelImagesController;
         private VisualNovelEvent _savedEventToResume; // Speichert das letzte Ereignis für das Fortsetzen
         private Coroutine _timerCoroutine;
         private bool _typingWasSkipped;
@@ -117,7 +117,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         public List<string> PlayThroughHistory => playThroughHistory;
         public string[] OptionsId => _optionsId;
         public List<VisualNovelEvent> EventHistory => eventHistory;
-        public NewNovelImageController NovelImageController => _novelImagesController;
+        public NovelImageController NovelImageController => _novelImagesController;
 
         private static PlayNovelSceneController _instance;
 
@@ -147,17 +147,17 @@ namespace Assets._Scripts.Controller.SceneControllers
             AnalyticsServiceHandler.Instance().StartStopwatch();
             BackStackManager.Instance().Push(SceneNames.PlayNovelScene);
             novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
-            
+
             NovelBiasManager.Instance().Clear();
             OfflineFeedbackManager.Instance().Clear();
-            
+
             Initialize();
         }
 
         private void Initialize()
         {
-            if (novelToPlay == null) return; 
-            
+            if (novelToPlay == null) return;
+
             PromptManager.Instance().InitializePrompt(novelToPlay);
 
             AnalyticsServiceHandler.Instance().SetIdOfCurrentNovel(novelToPlay.id);
@@ -181,7 +181,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             RectTransform canvasRect = canvas.GetComponent<RectTransform>();
             RectTransform conversationViewportTransform = conversationViewport.GetComponent<RectTransform>();
             conversationViewportTransform.sizeDelta = new Vector2(0, -canvasRect.rect.height * 0.5f);
-            
+
             RectTransform viewPortTransform = viewPort.GetComponent<RectTransform>();
 
             switch (novelToPlay.title)
@@ -190,90 +190,91 @@ namespace Assets._Scripts.Controller.SceneControllers
                 {
                     GameObject novelImagesInstance = Instantiate(novelVisuals[0], viewPortTransform);
                     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<NewNovelImageController>();
+                    Debug.Log($"controllerTransform: {controllerTransform}");
+                    _novelImagesController = controllerTransform.GetComponent<NovelImageController>();
                     break;
                 }
                 case "Anmietung eines Büros":
                 {
                     GameObject novelImagesInstance = Instantiate(novelVisuals[1], viewPortTransform);
                     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<NewNovelImageController>();
+                    _novelImagesController = controllerTransform.GetComponent<NovelImageController>();
                     break;
                 }
-                // case "Pressegespräch":
-                // {
-                //     GameObject novelImagesInstance = Instantiate(novelVisuals[2], viewPortTransform);
-                //     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                //     _novelImagesController = controllerTransform.GetComponent<PresseNovelImageController>();
-                //     break;
-                // }
-                // case "Telefonat mit den Eltern":
-                // {
-                //     GameObject novelImagesInstance = Instantiate(novelVisuals[3], viewPortTransform);
-                //     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                //     _novelImagesController = controllerTransform.GetComponent<ElternNovelImageController>();
-                //     break;
-                // }
-                // case "Telefonat mit der Notarin":
-                // {
-                //     GameObject novelImagesInstance = Instantiate(novelVisuals[4], viewPortTransform);
-                //     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                //     _novelImagesController = controllerTransform.GetComponent<NotarinNovelImageController>();
-                //     break;
-                // }
-                // case "Gespräch mit einem Investor":
-                // {
-                //     GameObject novelImagesInstance = Instantiate(novelVisuals[5], viewPortTransform);
-                //     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                //     _novelImagesController = controllerTransform.GetComponent<InvestorNovelImageController>();
-                //     break;
-                // }
-                // case "Vertrieb":
-                // {
-                //     GameObject novelImagesInstance = Instantiate(novelVisuals[5], viewPortTransform);
-                //     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                //     _novelImagesController = controllerTransform.GetComponent<InvestorNovelImageController>();
-                //     break;
-                // }
-                // case "Einstiegsdialog":
-                // {
-                //     GameObject novelImagesInstance = Instantiate(novelVisuals[6], viewPortTransform);
-                //     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                //     _novelImagesController = controllerTransform.GetComponent<EinstiegNovelImageController>();
-                //     break;
-                // }
+                case "Pressegespräch":
+                {
+                    GameObject novelImagesInstance = Instantiate(novelVisuals[2], viewPortTransform);
+                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                    _novelImagesController = controllerTransform.GetComponent<NovelImageController>();
+                    break;
+                }
+                case "Telefonat mit den Eltern":
+                {
+                    GameObject novelImagesInstance = Instantiate(novelVisuals[3], viewPortTransform);
+                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                    _novelImagesController = controllerTransform.GetComponent<NovelImageController>();
+                    break;
+                }
+                case "Telefonat mit der Notarin":
+                {
+                    GameObject novelImagesInstance = Instantiate(novelVisuals[4], viewPortTransform);
+                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                    _novelImagesController = controllerTransform.GetComponent<NovelImageController>();
+                    break;
+                }
+                case "Gespräch mit einem Investor":
+                {
+                    GameObject novelImagesInstance = Instantiate(novelVisuals[5], viewPortTransform);
+                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                    _novelImagesController = controllerTransform.GetComponent<NovelImageController>();
+                    break;
+                }
+                case "Vertrieb":
+                {
+                    GameObject novelImagesInstance = Instantiate(novelVisuals[5], viewPortTransform);
+                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                    _novelImagesController = controllerTransform.GetComponent<NovelImageController>();
+                    break;
+                }
+                case "Einstiegsdialog":
+                {
+                    GameObject novelImagesInstance = Instantiate(novelVisuals[6], viewPortTransform);
+                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                    _novelImagesController = controllerTransform.GetComponent<NovelImageController>();
+                    break;
+                }
                 case "Honorarverhandlung mit Kundin":
                 {
                     GameObject novelImagesInstance = Instantiate(novelVisuals[7], viewPortTransform);
                     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<NewNovelImageController>();
+                    _novelImagesController = controllerTransform.GetComponent<NovelImageController>();
                     break;
                 }
-                // default:
-                // {
-                //     GameObject novelImagesInstance = Instantiate(novelVisuals[0], viewPortTransform);
-                //     Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                //     _novelImagesController = controllerTransform.GetComponent<BankNovelImageController>();
-                //     break;
-                // }
+                default:
+                {
+                    GameObject novelImagesInstance = Instantiate(novelVisuals[0], viewPortTransform);
+                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+                    _novelImagesController = controllerTransform.GetComponent<NovelImageController>();
+                    break;
+                }
             }
 
             _novelImagesController.SetCanvasRect(canvasRect);
         }
-        
+
         private void HandleHeaderImage()
         {
             // Hide the header image, as it is not needed in the introductory dialogue
             bool isIntro = novelToPlay.title == "Einstiegsdialog";
             bool isIntroFromMainMenu = GameManager.Instance.IsIntroNovelLoadedFromMainMenu;
-            
+
             headerImage.SetActive(!isIntro || !isIntroFromMainMenu);
         }
-        
+
         private void InitializeCharacterExpressions()
         {
             CharacterExpressions.Clear();
-            
+
             List<int> characters = novelToPlay.novelEvents
                 .Select(e => e.character) // Wähle das `character`-Feld aus
                 .Where(c => c != 0 && c != 1 && c != 4) // Schließe die Werte 0, 1 und 4 aus
@@ -472,7 +473,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 }
             }
         }
-        
+
         private void HandleEventPreparation()
         {
             if (selectOptionContinueConversation != null)
@@ -518,7 +519,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 return;
             }
 
-            if (novelEvent.audioClipToPlay == "LEAVESCENE")  
+            if (novelEvent.audioClipToPlay == "LEAVESCENE")
             {
                 StartCoroutine(StartNextEventInOneSeconds(2.5f));
                 return;
@@ -770,7 +771,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
 
             SceneLoader.LoadFeedbackScene();
-            
         }
 
         private IEnumerator StartNextEventInOneSeconds(float second)
@@ -783,7 +783,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                     _novelImagesController.SetFaceExpression(_novelCharacter, CharacterExpressions[_novelCharacter]);
                 }
             }
-            
+
             yield return new WaitForSeconds(second);
 
             StartCoroutine(PlayNextEvent());
@@ -893,7 +893,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             {
                 indexToRestore -= _optionsCount;
             }
-            
+
             // Entfernen des Events und aller nachfolgenden Events aus der Historie
             if (indexToRestore >= 0)
             {
@@ -987,29 +987,14 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             long searchId = novelToPlay.id;
 
-            // Dictionary mit Zuordnung von searchId zu Controller-Typ
-            Dictionary<long, Type> novelControllerMap = new Dictionary<long, Type>
+            if (_novelImagesController != null && savedData.CharacterPrefabData != null)
             {
-                { 2, typeof(ElternNovelImageController) },
-                { 3, typeof(PresseNovelImageController) },
-                { 4, typeof(NotarinNovelImageController) },
-                { 9, typeof(InvestorNovelImageController) },
-                { 11, typeof(HonorarNovelImageController) },
-                { 13, typeof(EinstiegNovelImageController) }
-            };
-
-            // Falls die ID in der Map existiert, versuche den Controller zu finden
-            if (novelControllerMap.TryGetValue(searchId, out Type controllerType))
-            {
-                var controller = FindObjectsOfType(controllerType).FirstOrDefault() as MonoBehaviour;
- 
-                if (controller != null && savedData.CharacterPrefabData != null)
+                Debug.Log($"_novelImagesController: {_novelImagesController}");
+                if (savedData.CharacterPrefabData.TryGetValue(searchId, out CharacterData characterData))
                 {
-                    if (savedData.CharacterPrefabData.TryGetValue(searchId, out CharacterData characterData))
-                    {
-                        // Setzt die Charakterattribute basierend auf dem gefundenen Controller
-                        ApplyCharacterData(controller, characterData);
-                    }
+                    Debug.Log($"searchId: {searchId}, characterData: {characterData}");
+                    // Setzt die Charakterattribute basierend auf dem gefundenen Controller
+                    ApplyCharacterData(_novelImagesController, characterData);
                 }
             }
 
@@ -1020,72 +1005,44 @@ namespace Assets._Scripts.Controller.SceneControllers
             StartCoroutine(PlayNextEvent());
         }
 
-        private void ApplyCharacterData(MonoBehaviour controller, CharacterData characterData)
+        private void ApplyCharacterData(NovelImageController controller, CharacterData characterData)
         {
-            if (controller is ElternNovelImageController elternController)
+            if (controller == null)
             {
-                // Setze die Attribute basierend auf den gespeicherten Werten
-                elternController.novelKite2CharacterController.SetSkinSprite(characterData.skinIndex);
-                elternController.novelKite2CharacterController.SetHandSprite(characterData.handIndex);
-                elternController.novelKite2CharacterController.SetClotheSprite(characterData.clotheIndex);
-                elternController.novelKite2CharacterController.SetHairSprite(characterData.hairIndex);
-
-                elternController.novelKite2CharacterController2.SetSkinSprite(characterData.skinIndex2);
-                elternController.novelKite2CharacterController2.SetGlassesSprite(characterData.glassIndex2);
-                elternController.novelKite2CharacterController2.SetClotheSprite(characterData.clotheIndex2);
-                elternController.novelKite2CharacterController2.SetHairSprite(characterData.hairIndex2);
-            }
-            
-            if (controller is PresseNovelImageController presseController)
-            {
-                // Setze die Attribute basierend auf den gespeicherten Werten
-                presseController.novelKite2CharacterController.SetSkinSprite(characterData.skinIndex);
-                presseController.novelKite2CharacterController.SetHandSprite(characterData.handIndex);
-                presseController.novelKite2CharacterController.SetClotheSprite(characterData.clotheIndex);
-                presseController.novelKite2CharacterController.SetHairSprite(characterData.hairIndex);
+                Debug.LogError("ApplyCharacterData failed: controller is null");
+                return;
             }
 
-            if (controller is NotarinNovelImageController notarinController)
+            if (controller.characterControllers == null || controller.characterControllers.Count == 0)
             {
-                // Setze die Attribute basierend auf den gespeicherten Werten
-                notarinController.novelKite2CharacterController.SetSkinSprite(characterData.skinIndex);
-                notarinController.novelKite2CharacterController.SetClotheSprite(characterData.clotheIndex);
-                notarinController.novelKite2CharacterController.SetHairSprite(characterData.hairIndex);
+                Debug.LogError("ApplyCharacterData failed: characterControllers list is null or empty");
+                return;
             }
 
-            if (controller is BueroNovelImageController bueroController)
+            if (controller.characterControllers.Count >= 1 && controller.characterControllers[0] != null)
             {
-                // Setze die Attribute basierend auf den gespeicherten Werten
-                bueroController.novelKite2CharacterController.SetSkinSprite(characterData.skinIndex);
-                bueroController.novelKite2CharacterController.SetClotheSprite(characterData.clotheIndex);
-                bueroController.novelKite2CharacterController.SetHairSprite(characterData.hairIndex);
+                controller.characterControllers[0].SetSkinSprite(characterData.skinIndex);
+                controller.characterControllers[0].SetHandSprite(characterData.handIndex);
+                controller.characterControllers[0].SetClotheSprite(characterData.clotheIndex);
+                controller.characterControllers[0].SetHairSprite(characterData.hairIndex);
+                controller.characterControllers[0].SetGlassesSprite(characterData.glassIndex);
+            }
+            else
+            {
+                Debug.LogWarning("First character controller is missing or null.");
             }
 
-            if (controller is InvestorNovelImageController investorController)
+            if (controller.characterControllers.Count >= 2 && controller.characterControllers[1] != null)
             {
-                // Setze die Attribute basierend auf den gespeicherten Werten
-                investorController.novelKite2CharacterController.SetSkinSprite(characterData.skinIndex);
-                // investorController.novelKite2CharacterController.SetHandSprite(characterData.handIndex);
-                investorController.novelKite2CharacterController.SetClotheSprite(characterData.clotheIndex);
-                investorController.novelKite2CharacterController.SetHairSprite(characterData.hairIndex);
+                controller.characterControllers[1].SetSkinSprite(characterData.skinIndex2);
+                controller.characterControllers[1].SetGlassesSprite(characterData.glassIndex2);
+                controller.characterControllers[1].SetClotheSprite(characterData.clotheIndex2);
+                controller.characterControllers[1].SetHairSprite(characterData.hairIndex2);
+                controller.characterControllers[1].SetGlassesSprite(characterData.glassIndex2);
             }
-
-            if (controller is BankNovelImageController bankController)
+            else
             {
-                // Setze die Attribute basierend auf den gespeicherten Werten
-                bankController.novelKite2CharacterController.SetSkinSprite(characterData.skinIndex);
-                bankController.novelKite2CharacterController.SetHandSprite(characterData.handIndex);
-                bankController.novelKite2CharacterController.SetClotheSprite(characterData.clotheIndex);
-                bankController.novelKite2CharacterController.SetHairSprite(characterData.hairIndex);
-            }
-
-            if (controller is HonorarNovelImageController honorarController)
-            {
-                // Setze die Attribute basierend auf den gespeicherten Werten
-                honorarController.novelKite2CharacterController.SetSkinSprite(characterData.skinIndex);
-                // honorarController.novelKite2CharacterController.SetHandSprite(characterData.handIndex);
-                honorarController.novelKite2CharacterController.SetClotheSprite(characterData.clotheIndex);
-                honorarController.novelKite2CharacterController.SetHairSprite(characterData.hairIndex);
+                Debug.LogWarning("Second character controller is missing or null.");
             }
         }
 

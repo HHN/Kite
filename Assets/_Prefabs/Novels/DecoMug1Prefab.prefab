@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 8411936371333490820}
   - component: {fileID: 8411936371333490810}
   - component: {fileID: 8411936371333490821}
+  - component: {fileID: 3952387171915376964}
   m_Layer: 5
-  m_Name: ElternNovelDecoKannePrefab
+  m_Name: DecoMug1Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +32,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f2de316d8df50a743967a47d4597a45b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0cc0d283a5b45d04cb90f0609df1c9d7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -76,3 +76,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3952387171915376964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8411936371333490823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b4a0cff9ae04b7590eeccef7b83ad70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: 05ee5b1d0084a1547ba21302a47aff73, type: 3}
+  animationFrames:
+  - {fileID: 21300000, guid: eef29e5f7b3ae2144a46e1e0ca8b1eac, type: 3}
+  - {fileID: 21300000, guid: 783a4558015fdba4e81928ebe45c621d, type: 3}
+  - {fileID: 21300000, guid: c66aafb7be8b33f4db52983c26f0b231, type: 3}
+  - {fileID: 21300000, guid: f76986cfd50f74f4aabe75935dfa3a72, type: 3}

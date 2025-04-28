@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4253796331781111194}
   - component: {fileID: 2571110113651146512}
   m_Layer: 5
-  m_Name: CharacterPrefabBuero
+  m_Name: CharacterPrefabVermieter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
   skinImage: {fileID: 4503084980460225573}
   glassImage: {fileID: 6750568625383529933}
   handImage: {fileID: 6183954683827931753}
-  clotheImage: {fileID: 6289610850099512998}
+  clothesImage: {fileID: 6289610850099512998}
   hairImage: {fileID: 6434204589533422953}
   faceImage: {fileID: 8722988004786373907}
   skinSprites:
@@ -91,7 +91,7 @@ MonoBehaviour:
     handColorB: []
     handColorC: []
     handColorD: []
-  clotheSprites:
+  clothesSprites:
   - {fileID: 21300000, guid: 84e9d4e4cce4c9a45b6e143c19ad6282, type: 3}
   hairSprites:
   - {fileID: 21300000, guid: 72ed6b058846fee418f085c0e6fe4a36, type: 3}
@@ -663,7 +663,7 @@ GameObject:
   - component: {fileID: 7732955584801550884}
   - component: {fileID: 6289610850099512998}
   m_Layer: 5
-  m_Name: ClotheImage
+  m_Name: ClothesImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -739,7 +739,7 @@ GameObject:
   - component: {fileID: 2084217448141452050}
   - component: {fileID: 6183954683827931753}
   m_Layer: 5
-  m_Name: Haende
+  m_Name: Hands
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

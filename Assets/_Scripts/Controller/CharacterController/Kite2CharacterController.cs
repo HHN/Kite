@@ -13,27 +13,27 @@ namespace Assets._Scripts.Controller.CharacterController
         public Sprite[] handColorC; // z.B. "a", "b", "c"
         public Sprite[] handColorD; // z.B. "a", "b", "c"
     }
-    
+
     [Serializable]
     public class HandSpriteIndex
     {
-        public int colorIndex;  // z.B. 0 für "A", 1 für "B"
+        public int colorIndex; // z.B. 0 für "A", 1 für "B"
         public int spriteIndex; // Der spezifische Index im Hand-Sprite-Array (z.B. handColorA[0])
     }
-    
+
     public class Kite2CharacterController : MonoBehaviour
     {
         [SerializeField] private Image skinImage;
         [SerializeField] private Image glassImage;
         [SerializeField] private Image handImage;
-        [SerializeField] private Image clotheImage;
+        [SerializeField] private Image clothesImage;
         [SerializeField] private Image hairImage;
         [SerializeField] private Image faceImage;
 
         [SerializeField] private Sprite[] skinSprites;
         [SerializeField] private Sprite[] glassesSprites;
         [SerializeField] private HandSprites handSprites;
-        [SerializeField] private Sprite[] clotheSprites;
+        [SerializeField] private Sprite[] clothesSprites;
         [SerializeField] private Sprite[] hairSprites;
         [SerializeField] private Animator animator;
 
@@ -70,16 +70,16 @@ namespace Assets._Scripts.Controller.CharacterController
         public int[] handIndex;
         public int clotheIndex;
         public int hairIndex;
-        
+
         public void SetSkinSprite()
         {
-            if (skinSprites == null) return;
-            
+            if (skinSprites == null || skinSprites.Length == 0 || skinImage == null) return;
+
             handIndex = new int[2];
-        
+
             skinIndex = Random.Range(0, skinSprites.Length);
             Sprite randomSkinImage = skinSprites[skinIndex];
-        
+
             skinImage.sprite = randomSkinImage;
 
             if (randomSkinImage.name.Contains("a"))
@@ -99,22 +99,20 @@ namespace Assets._Scripts.Controller.CharacterController
                 handIndex[0] = 3;
             }
         }
-        
+
         public void SetGlassesSprite()
         {
-            if (glassesSprites == null) return;
+            if (glassesSprites == null || glassesSprites.Length == 0) return;
 
             glassIndex = Random.Range(0, glassesSprites.Length);
             Sprite randomGlassImage = glassesSprites[glassIndex];
 
             glassImage.sprite = randomGlassImage;
         }
-        
+
         public void SetHandSprite()
         {
-            if (handSprites == null) return;
-            
-            Debug.Log($"handsprites: {handSprites}");
+            if (handSprites == null || handSprites.handColorA.Length == 0 || handSprites.handColorB.Length == 0 || handSprites.handColorC.Length == 0 || handSprites.handColorD.Length == 0) return;
 
             switch (handIndex[0])
             {
@@ -122,7 +120,7 @@ namespace Assets._Scripts.Controller.CharacterController
                 {
                     int randomIndex = Random.Range(0, handSprites.handColorA.Length);
                     handImage.sprite = handSprites.handColorA[randomIndex];
-                
+
                     handIndex[1] = randomIndex;
                     break;
                 }
@@ -130,7 +128,7 @@ namespace Assets._Scripts.Controller.CharacterController
                 {
                     int randomIndex = Random.Range(0, handSprites.handColorB.Length);
                     handImage.sprite = handSprites.handColorB[randomIndex];
-                
+
                     handIndex[1] = randomIndex;
                     break;
                 }
@@ -138,7 +136,7 @@ namespace Assets._Scripts.Controller.CharacterController
                 {
                     int randomIndex = Random.Range(0, handSprites.handColorC.Length);
                     handImage.sprite = handSprites.handColorC[randomIndex];
-                
+
                     handIndex[1] = randomIndex;
                     break;
                 }
@@ -146,7 +144,7 @@ namespace Assets._Scripts.Controller.CharacterController
                 {
                     int randomIndex = Random.Range(0, handSprites.handColorD.Length);
                     handImage.sprite = handSprites.handColorD[randomIndex];
-                
+
                     handIndex[1] = randomIndex;
                     break;
                 }
@@ -155,57 +153,73 @@ namespace Assets._Scripts.Controller.CharacterController
 
         public void SetClotheSprite()
         {
-            if (clotheSprites == null) return;
+            if (clothesSprites == null || clothesSprites.Length == 0) return;
 
-            clotheIndex = Random.Range(0, clotheSprites.Length);
-            Sprite randomClotheImage = clotheSprites[clotheIndex];
+            clotheIndex = Random.Range(0, clothesSprites.Length);
+            Sprite randomClotheImage = clothesSprites[clotheIndex];
 
-            clotheImage.sprite = randomClotheImage;
+            clothesImage.sprite = randomClotheImage;
         }
 
         public void SetHairSprite()
         {
-            if (hairSprites == null) return;
+            if (hairSprites == null || hairSprites.Length == 0) return;
 
             hairIndex = Random.Range(0, hairSprites.Length);
             Sprite randomHairImage = hairSprites[hairIndex];
 
             hairImage.sprite = randomHairImage;
         }
-        
+
         public void SetSkinSprite(int skinSpriteIndex)
         {
-            if (skinSprites == null) return;
-        
+            if (skinSprites == null || skinImage == null) return;
+
             skinImage.sprite = skinSprites[skinSpriteIndex];
         }
-        
+
         public void SetGlassesSprite(int glassesSpriteIndex)
         {
-            if (glassesSprites == null) return;
-        
+            if (glassesSprites == null || glassImage == null) return;
+
             glassImage.sprite = glassesSprites[glassesSpriteIndex];
         }
-        
+
         public void SetHandSprite(HandSpriteIndex handSpriteIndex)
         {
-            if (handSprites == null) return;
+            if (handSprites == null || handImage == null) return;
+            
+            Debug.Log($"handSpriteIndex: {handSpriteIndex.colorIndex}, {handSpriteIndex.spriteIndex}");
 
-            handImage.sprite = handSpriteIndex.colorIndex switch
+            Sprite[] selectedHandColorArray = handSpriteIndex.colorIndex switch
             {
-                0 => handSprites.handColorA[handSpriteIndex.spriteIndex],
-                1 => handSprites.handColorB[handSpriteIndex.spriteIndex],
-                2 => handSprites.handColorC[handSpriteIndex.spriteIndex],
-                3 => handSprites.handColorD[handSpriteIndex.spriteIndex],
-                _ => handImage.sprite
+                0 => handSprites.handColorA,
+                1 => handSprites.handColorB,
+                2 => handSprites.handColorC,
+                3 => handSprites.handColorD,
+                _ => null
             };
+
+            if (selectedHandColorArray == null)
+            {
+                Debug.LogWarning($"Invalid colorIndex {handSpriteIndex.colorIndex}");
+                return;
+            }
+
+            if (handSpriteIndex.spriteIndex < 0 || handSpriteIndex.spriteIndex >= selectedHandColorArray.Length)
+            {
+                Debug.LogWarning($"Invalid spriteIndex {handSpriteIndex.spriteIndex} for color {handSpriteIndex.colorIndex}");
+                return;
+            }
+
+            handImage.sprite = selectedHandColorArray[handSpriteIndex.spriteIndex];
         }
 
         public void SetClotheSprite(int clotheSpriteIndex)
         {
-            if (clotheSprites == null) return;
+            if (clothesSprites == null || clothesImage == null) return;
 
-            clotheImage.sprite = clotheSprites[clotheSpriteIndex];
+            clothesImage.sprite = clothesSprites[clotheSpriteIndex];
         }
 
         public void SetHairSprite(int hairSpriteIndex)
@@ -365,5 +379,16 @@ namespace Assets._Scripts.Controller.CharacterController
         {
             animator.SetBool(IsTalking, false);
         }
+        
+        private bool IsValidArray(Sprite[] array)
+        {
+            return array != null && array.Length > 0;
+        }
+
+        private bool IsValidImage(Image image)
+        {
+            return image != null;
+        }
+
     }
 }

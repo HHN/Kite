@@ -93,6 +93,7 @@ namespace Assets._Scripts.UIElements.Messages
 
         private void OnPauseButton()
         {
+            Debug.Log($"Save Novel Data: {_playNovelSceneController.NovelToPlay.id}");
             SaveLoadManager.SaveNovelData(_playNovelSceneController, _conversationContentGuiController);
             GameManager.Instance.CheckAndSetAllNovelsStatus();
             LeaveNovel();

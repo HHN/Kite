@@ -14,8 +14,6 @@ namespace Assets._Scripts.UIElements.Props
 
         public IEnumerator PlayInteraction(RectTransform container)
         {
-            Debug.Log("Vase interaction triggered");
-            
             if (!TextToSpeechManager.Instance.IsTextToSpeechActivated())
             {
                 GlobalVolumeManager.Instance.PlaySound(sound);
@@ -23,15 +21,26 @@ namespace Assets._Scripts.UIElements.Props
 
             Image image = prefab.GetComponent<Image>();
             image.sprite = animationFrames[1];
-            Destroy(container.transform.GetChild(0).gameObject);
+            if (container.transform.childCount > 0)
+            {
+                Destroy(container.transform.GetChild(0).gameObject);
+            }
             Instantiate(prefab, container.transform);
             yield return new WaitForSeconds(0.5f);
+            
             image.sprite = animationFrames[2];
-            Destroy(container.transform.GetChild(0).gameObject);
+            if (container.transform.childCount > 0)
+            {
+                Destroy(container.transform.GetChild(0).gameObject);
+            }
             Instantiate(prefab, container.transform);
             yield return new WaitForSeconds(0.5f);
+            
             image.sprite = animationFrames[0];
-            Destroy(container.transform.GetChild(0).gameObject);
+            if (container.transform.childCount > 0)
+            {
+                Destroy(container.transform.GetChild(0).gameObject);
+            }
             Instantiate(prefab, container.transform);
 
             yield return new WaitForSeconds(0f);

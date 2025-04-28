@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 63481036548094391}
   - component: {fileID: 296343294975901975}
   m_Layer: 5
-  m_Name: ClotheImage
+  m_Name: ClothesImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -229,7 +229,7 @@ MonoBehaviour:
   skinImage: {fileID: 8843401428765193259}
   glassImage: {fileID: 7924053061443397198}
   handImage: {fileID: 4360268642978770635}
-  clotheImage: {fileID: 296343294975901975}
+  clothesImage: {fileID: 296343294975901975}
   hairImage: {fileID: 6987702891928674746}
   faceImage: {fileID: 930803433711691359}
   skinSprites:
@@ -259,7 +259,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 156a77837bb61854288826a12700549a, type: 3}
     handColorD:
     - {fileID: 21300000, guid: 88f356be6bc275046836ce8604888605, type: 3}
-  clotheSprites:
+  clothesSprites:
   - {fileID: 21300000, guid: 61a6897aec021284f9fb593206c4b958, type: 3}
   - {fileID: 21300000, guid: 5cd8b065bcbde48469ad81ff2f23740f, type: 3}
   - {fileID: 21300000, guid: b80acaf364226cb4cb49c1b166991d1b, type: 3}
