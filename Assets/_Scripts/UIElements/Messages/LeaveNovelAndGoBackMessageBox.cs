@@ -108,9 +108,7 @@ namespace Assets._Scripts.UIElements.Messages
 
         private void OnEndButton()
         {
-            PromptManager.Instance()
-                .AddLineToPrompt(
-                    "Das Gespräch wurde vorzeitig beendet. Bitte beachte, dass kein Teil des Dialogs in das Feedback darf.");
+            PromptManager.Instance().AddLineToPrompt("Das Gespräch wurde vorzeitig beendet. Bitte beachte, dass kein Teil des Dialogs in das Feedback darf.");
 
             _playNovelSceneController.HandleEndNovelEvent();
         }

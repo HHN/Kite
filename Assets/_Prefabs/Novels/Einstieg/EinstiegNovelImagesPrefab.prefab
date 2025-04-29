@@ -308,7 +308,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6949410670094988474}
-  - component: {fileID: 6191337537256547800}
+  - component: {fileID: 2501534421617359964}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -331,7 +331,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 831789010391981580}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6191337537256547800
+--- !u!114 &2501534421617359964
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -340,13 +340,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5051381907867912084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abb15fa2b5d4e18489e7fcbee3371a0b, type: 3}
+  m_Script: {fileID: 11500000, guid: d760dc32eccc49bf935a6a9ae334e70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   novelKite2CharacterController: {fileID: 0}
   novelKite2CharacterController2: {fileID: 0}
-  characterContainer: {fileID: 0}
-  characterPrefabs: []
+  characterContainers:
+  - {fileID: 3669613035356320353}
+  decorations: []
 --- !u!1 &7545688216486579158
 GameObject:
   m_ObjectHideFlags: 0

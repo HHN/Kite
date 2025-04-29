@@ -24,12 +24,14 @@ namespace Assets._Scripts
         public HandSpriteIndex handIndex;
         public int clotheIndex;
         public int hairIndex;
+        public int characterId;
 
         public int skinIndex2;
         public int glassIndex2;
         public HandSpriteIndex handIndex2;
         public int clotheIndex2;
         public int hairIndex2;
+        public int characterId2;
     }
 
     [Serializable]
@@ -103,6 +105,8 @@ namespace Assets._Scripts
         {
             _novelSaveStatus.Clear(); // Clear the current dictionary
             novelSaveStatusList.Clear(); // Clear the Inspector list
+            _characterDataDictionary.Clear();
+            characterDataList.Clear(); // Auch die Liste für den Inspector leeren!
 
             // Iterate through all VisualNovelNames (enums) and check their save status
             foreach (VisualNovelNames novelName in Enum.GetValues(typeof(VisualNovelNames)))
@@ -110,11 +114,27 @@ namespace Assets._Scripts
                 string novelId = VisualNovelNamesHelper.ToInt(novelName).ToString();
 
                 // Check if a save exists for the novel
-                bool isSaved = SaveLoadManager.Load(novelId) != null;
+                var saveData = SaveLoadManager.Load(novelId);
+                bool isSaved = saveData != null;
                 _novelSaveStatus[novelId] = isSaved;
 
                 // Add the save status to the Inspector list for debugging
                 novelSaveStatusList.Add(new NovelSaveStatus { novelId = novelId, isSaved = isSaved });
+                
+                if (isSaved && saveData.CharacterPrefabData != null)
+                {
+                    foreach (var kvp in saveData.CharacterPrefabData)
+                    {
+                        _characterDataDictionary[kvp.Key] = kvp.Value;
+
+                        // Außerdem in die Liste für den Inspector hinzufügen
+                        characterDataList.Add(new CharacterDataEntry
+                        {
+                            id = kvp.Key,
+                            data = kvp.Value
+                        });
+                    }
+                }
             }
         }
 

@@ -792,7 +792,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6949410670094988474}
-  - component: {fileID: 2238328390138193247}
+  - component: {fileID: 1702780890283290133}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -815,7 +815,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 831789010391981580}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2238328390138193247
+--- !u!114 &1702780890283290133
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -824,35 +824,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 5051381907867912084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04b3bdc539872db4fa551dbfa2c3583a, type: 3}
+  m_Script: {fileID: 11500000, guid: d760dc32eccc49bf935a6a9ae334e70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   novelKite2CharacterController: {fileID: 0}
   novelKite2CharacterController2: {fileID: 0}
-  backgroundPrefab: {fileID: 0}
-  backgroundContainer: {fileID: 0}
-  deskPrefab: {fileID: 0}
-  deskContainer: {fileID: 0}
-  decoGlasPrefab: {fileID: 8411936371333490823, guid: ee198f3e5cc9689469d14e822d4417e7, type: 3}
-  decoGlasContainer: {fileID: 3234276313403849665}
-  decoPlantPrefab: {fileID: 8411936371333490823, guid: 02334970db3300f4797dfc8a311a46c8, type: 3}
-  decoPlantContainer: {fileID: 5558045549636132440}
-  decoGlasAudio: {fileID: 8300000, guid: 0d216aa514664d1498017d5950134f94, type: 3}
-  decoPlantAudio: {fileID: 8300000, guid: f56fba4089e12584c97217a7049db785, type: 3}
-  animationFramesPlant:
-  - {fileID: 21300000, guid: f5eed5e52be07d641b798dbf6b915bb8, type: 3}
-  - {fileID: 21300000, guid: a54589aa564f7244da0c42a701cbbaa6, type: 3}
-  - {fileID: 21300000, guid: 315c8ad94b56ae343998e44a28346b0e, type: 3}
-  animationFramesGlas:
-  - {fileID: 21300000, guid: 10e10e3354d9ea640bf7a5ae785ae96a, type: 3}
-  - {fileID: 21300000, guid: a8d967ae17f4c9e4284e3bebf1894a79, type: 3}
-  - {fileID: 21300000, guid: f3ae4e205b00e884abb8663c9162de1e, type: 3}
-  - {fileID: 21300000, guid: 00158b797f500ca498d255b7352d521e, type: 3}
-  - {fileID: 21300000, guid: 43e029753c0ce044590d3f63d8aef9d6, type: 3}
-  - {fileID: 21300000, guid: 9d987476a3f9e3647ae902413ee1316b, type: 3}
-  - {fileID: 21300000, guid: 4d1db428631932b4d812907be6956434, type: 3}
-  characterContainer: {fileID: 3669613035356320353}
-  characterPrefab: {fileID: 0}
+  characterContainers:
+  - {fileID: 3669613035356320353}
+  decorations:
+  - prefab: {fileID: 8411936371333490823, guid: 02334970db3300f4797dfc8a311a46c8, type: 3}
+    container: {fileID: 5558045549636132440}
+  - prefab: {fileID: 8411936371333490823, guid: ee198f3e5cc9689469d14e822d4417e7, type: 3}
+    container: {fileID: 3234276313403849665}
 --- !u!1 &5558045549636132440
 GameObject:
   m_ObjectHideFlags: 0

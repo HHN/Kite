@@ -230,13 +230,26 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
             foreach (KiteNovelFolder folder in folders)
             {
+                var characters = new List<string>();
+
+                // Füge nur nicht-leere Namen hinzu
+                if (!string.IsNullOrWhiteSpace(folder.NovelMetaData.TalkingPartner01))
+                    characters.Add(folder.NovelMetaData.TalkingPartner01);
+
+                if (!string.IsNullOrWhiteSpace(folder.NovelMetaData.TalkingPartner02))
+                    characters.Add(folder.NovelMetaData.TalkingPartner02);
+
+                if (!string.IsNullOrWhiteSpace(folder.NovelMetaData.TalkingPartner03))
+                    characters.Add(folder.NovelMetaData.TalkingPartner03);
+                
                 VisualNovel novel = new VisualNovel
                 {
                     id = folder.NovelMetaData.IdNumberOfNovel,
                     title = folder.NovelMetaData.TitleOfNovel,
                     description = folder.NovelMetaData.DescriptionOfNovel,
                     context = folder.NovelMetaData.ContextForPrompt,
-                    novelEvents = folder.NovelEventList
+                    novelEvents = folder.NovelEventList,
+                    characters = characters
                 };
 
                 novels.Add(novel);

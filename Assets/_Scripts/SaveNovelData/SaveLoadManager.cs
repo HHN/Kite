@@ -49,7 +49,7 @@ namespace Assets._Scripts.SaveNovelData
             {
                 formattedId = "OptionsLabel" + match.Groups[1].Value;
             }
-            else if (!match.Success) // Falls kein Treffer, durchlaufe die Liste rückwärts
+            else if (!match.Success) // Falls kein Treffer durchlaufe die Liste rückwärts
             {
                 for (int i = conversationContentGuiController.Content.Count - 1; i >= 0; i--)
                 {
@@ -163,33 +163,31 @@ namespace Assets._Scripts.SaveNovelData
                 playNovelSceneController.PlayThroughHistory[^1] = "Spielerin: ";
             }
 
-            //TODO: Nach CharacterExpressions schauen. Problem aktuell: eine ist int, int    andere ist string, string
+            NovelSaveData saveData = new NovelSaveData
+            {
+                //novelId = currentNovelId,
+                currentEventId = formattedId,
+                playThroughHistory = playNovelSceneController.PlayThroughHistory,
+                optionsId = playNovelSceneController.OptionsId.ToArray(),
+                eventHistory = playNovelSceneController.EventHistory,
+                content = conversationContentGuiController.Content,
+                visualNovelEvents = conversationContentGuiController.VisualNovelEvents,
+                messageType = messageBoxesNames,
+                optionCount = _count,
+                CharacterExpressions = playNovelSceneController.CharacterExpressions,
+                CharacterPrefabData = characterPrefabData
+            };
 
-            //NovelSaveData saveData = new NovelSaveData
-            //{
-            //    //novelId = currentNovelId,
-            //    currentEventId = formattedId,
-            //    playThroughHistory = playNovelSceneController.PlayThroughHistory,
-            //    optionsId = playNovelSceneController.OptionsId.ToArray(),
-            //    eventHistory = playNovelSceneController.EventHistory,
-            //    content = conversationContentGuiController.Content,
-            //    visualNovelEvents = conversationContentGuiController.VisualNovelEvents,
-            //    messageType = messageBoxesNames,
-            //    optionCount = _count,
-            //    CharacterExpressions = playNovelSceneController.CharacterExpressions,
-            //    CharacterPrefabData = characterPrefabData
-            //};
+            DeleteNovelSaveData(currentNovelId);
+            // Save or update the novel in the dictionary
+            allSaveData[currentNovelId] = saveData;
 
-            //DeleteNovelSaveData(currentNovelId);
-            //// Save or update the novel in the dictionary
-            //allSaveData[currentNovelId] = saveData;
+            // Serialize the dictionary and save it in a pretty format
+            string json = JsonConvert.SerializeObject(allSaveData, Formatting.Indented);
 
-            //// Serialize the dictionary and save it in pretty format
-            //string json = JsonConvert.SerializeObject(allSaveData, Formatting.Indented);
+            File.WriteAllText(SaveFilePath, json, Encoding.UTF8);
 
-            //File.WriteAllText(SaveFilePath, json, Encoding.UTF8);
-
-            //GameManager.Instance.UpdateNovelSaveStatus(currentNovelId, true);
+            GameManager.Instance.UpdateNovelSaveStatus(currentNovelId, true);
         }
 
         /// <summary>

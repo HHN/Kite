@@ -19,18 +19,18 @@ namespace Assets._Scripts.Novel
 
     public class CharacterTypeHelper
     {
-        private const string PLAYER = "Spielerin";
-        private const string INTRO = "Intro";
-        private const string OUTRO = "Outro";
-        private const string INFO = "Info";
-        private const string REPORTERIN = "Journalistin";
-        private const string VERMIETER = "Vermieter";
-        private const string VATER = "Vater";
-        private const string MUTTER = "Mutter";
-        private const string INVESTOR = "Investor";
-        private const string NOTARIN = "Notarin";
-        private const string SACHBEARBEITER = "Sachbearbeiter";
-        private const string KUNDIN = "Kundin";
+        private const string Player = "Spielerin";
+        private const string Intro = "Intro";
+        private const string Outro = "Outro";
+        private const string Info = "Info";
+        private const string Reporterin = "Journalistin";
+        private const string Vermieter = "Vermieter";
+        private const string Vater = "Vater";
+        private const string Mutter = "Mutter";
+        private const string Investor = "Investor";
+        private const string Notarin = "Notarin";
+        private const string Sachbearbeiter = "Sachbearbeiter";
+        private const string Kundin = "Kundin";
 
         public static int ToInt(CharacterRole characterRole)
         {
@@ -79,18 +79,18 @@ namespace Assets._Scripts.Novel
             return characterRole switch
             {
                 CharacterRole.None => null,
-                CharacterRole.Player => PLAYER,
-                CharacterRole.Intro => INTRO,
-                CharacterRole.Outro => OUTRO,
-                CharacterRole.Info => INFO,
-                CharacterRole.Reporterin => REPORTERIN,
-                CharacterRole.Vermieter => VERMIETER,
-                CharacterRole.Vater => VATER,
-                CharacterRole.Mutter => MUTTER,
-                CharacterRole.Investor => INVESTOR,
-                CharacterRole.Notarin => NOTARIN,
-                CharacterRole.Sachbearbeiter => SACHBEARBEITER,
-                CharacterRole.Kundin => KUNDIN,
+                CharacterRole.Player => Player,
+                CharacterRole.Intro => Intro,
+                CharacterRole.Outro => Outro,
+                CharacterRole.Info => Info,
+                CharacterRole.Reporterin => Reporterin,
+                CharacterRole.Vermieter => Vermieter,
+                CharacterRole.Vater => Vater,
+                CharacterRole.Mutter => Mutter,
+                CharacterRole.Investor => Investor,
+                CharacterRole.Notarin => Notarin,
+                CharacterRole.Sachbearbeiter => Sachbearbeiter,
+                CharacterRole.Kundin => Kundin,
                 _ => null
             };
         }
@@ -100,18 +100,18 @@ namespace Assets._Scripts.Novel
             return i switch
             {
                 0 => null,
-                1 => PLAYER,
-                2 => INTRO,
-                3 => OUTRO,
-                4 => INFO,
-                5 => REPORTERIN,
-                6 => VERMIETER,
-                7 => VATER,
-                8 => MUTTER,
-                9 => INVESTOR,
-                10 => NOTARIN,
-                11 => SACHBEARBEITER,
-                12 => KUNDIN,
+                1 => Player,
+                2 => Intro,
+                3 => Outro,
+                4 => Info,
+                5 => Reporterin,
+                6 => Vermieter,
+                7 => Vater,
+                8 => Mutter,
+                9 => Investor,
+                10 => Notarin,
+                11 => Sachbearbeiter,
+                12 => Kundin,
                 _ => null
             };
         }
@@ -121,18 +121,18 @@ namespace Assets._Scripts.Novel
             return name switch
             {
                 null => CharacterRole.None,
-                PLAYER => CharacterRole.Player,
-                INTRO => CharacterRole.Intro,
-                OUTRO => CharacterRole.Outro,
-                INFO => CharacterRole.Info,
-                REPORTERIN => CharacterRole.Reporterin,
-                VERMIETER => CharacterRole.Vermieter,
-                VATER => CharacterRole.Vater,
-                MUTTER => CharacterRole.Mutter,
-                INVESTOR => CharacterRole.Investor,
-                NOTARIN => CharacterRole.Notarin,
-                SACHBEARBEITER => CharacterRole.Sachbearbeiter,
-                KUNDIN => CharacterRole.Kundin,
+                Player => CharacterRole.Player,
+                Intro => CharacterRole.Intro,
+                Outro => CharacterRole.Outro,
+                Info => CharacterRole.Info,
+                Reporterin => CharacterRole.Reporterin,
+                Vermieter => CharacterRole.Vermieter,
+                Vater => CharacterRole.Vater,
+                Mutter => CharacterRole.Mutter,
+                Investor => CharacterRole.Investor,
+                Notarin => CharacterRole.Notarin,
+                Sachbearbeiter => CharacterRole.Sachbearbeiter,
+                Kundin => CharacterRole.Kundin,
                 _ => CharacterRole.None
             };
         }
