@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Assets._Scripts._Mappings;
 using Assets._Scripts.Controller.SceneControllers;
 using UnityEngine;
 
@@ -10,7 +13,7 @@ namespace Assets._Scripts.Controller.CharacterController
         IEnumerator PlayInteraction(RectTransform container);
     }
 
-    [System.Serializable]
+    [Serializable]
     public class DecorationInteraction
     {
         public GameObject prefab;
@@ -19,9 +22,7 @@ namespace Assets._Scripts.Controller.CharacterController
 
     public class NovelImageController : MonoBehaviour
     {
-        private RectTransform _canvasRect;
         public Kite2CharacterController novelKite2CharacterController;
-        public Kite2CharacterController novelKite2CharacterController2;
 
         [Header("Character Setup")] [SerializeField]
         private List<Transform> characterContainers;
@@ -29,67 +30,103 @@ namespace Assets._Scripts.Controller.CharacterController
         [Header("Decoration Interactions")] [SerializeField]
         private DecorationInteraction[] decorations;
 
-        public List<Kite2CharacterController> characterControllers;
+        public List<Kite2CharacterController> characterControllers = new();
 
         private void Start()
         {
             PlayNovelSceneController playNovelSceneController = FindObjectOfType<PlayNovelSceneController>();
-            characterControllers = new List<Kite2CharacterController>();
+            
+            InitializeCharacters(playNovelSceneController);
+            SaveCharacterDataIfNeeded(playNovelSceneController);
+        }
+        
+        private void InitializeCharacters(PlayNovelSceneController playNovelSceneController)
+        {
+            var characters = playNovelSceneController.NovelToPlay.characters;
+            characterControllers = new List<Kite2CharacterController>(new Kite2CharacterController[characters.Count]);
 
-            foreach (var characterContainer in characterContainers)
+            foreach (var container in characterContainers)
             {
-                Kite2CharacterController controller = characterContainer.GetComponentInChildren<Kite2CharacterController>();
+                string containerName = container.GetChild(0).name.Trim();
+
+                // Suche den Index des ersten Charakters, dessen Name im Containernamen enthalten ist
+                string matchedCharacter = characters.FirstOrDefault(c => !string.IsNullOrWhiteSpace(c) && containerName.IndexOf(c.Trim(), StringComparison.OrdinalIgnoreCase) >= 0);
+
+                int matchIndex = characters.IndexOf(matchedCharacter);
+
+
+                if (matchIndex == -1)
+                {
+                    Debug.LogWarning($"Container '{containerName}' does not match any character in NovelToPlay.characters.");
+                    continue;
+                }
+                
+                Kite2CharacterController controller = container.GetComponentInChildren<Kite2CharacterController>();
 
                 if (controller != null)
                 {
-                    characterControllers.Add(controller);
+                    characterControllers[matchIndex] = controller;
                     
                     controller.SetSkinSprite();
                     controller.SetHandSprite();
                     controller.SetClotheSprite();
                     controller.SetHairSprite();
-                    controller.SetGlassesSprite(); 
+                    controller.SetGlassesSprite();
+                    
+                    controller.characterId = MappingManager.MapCharacter(matchedCharacter);
                 }
                 else
                 {
-                    Debug.LogWarning("Character container not found");
+                    Debug.LogWarning("Character container does not contain a Kite2CharacterController.");
                 }
             }
+        }
+        
+        private void SaveCharacterDataIfNeeded(PlayNovelSceneController playNovelSceneController)
+        {
+            int novelId = (int)playNovelSceneController.NovelToPlay.id;
 
-            foreach (var novelStatus in GameManager.Instance.NovelSaveStatusList)
+            foreach (var status in GameManager.Instance.NovelSaveStatusList)
             {
-                int novelId = (int)playNovelSceneController.NovelToPlay.id;
-                int.TryParse(novelStatus.novelId, out int number);
-                
-                if (number == novelId)
+                if (int.TryParse(status.novelId, out int id) && id == novelId)
                 {
-                    if (!novelStatus.isSaved)
+                    if (!status.isSaved)
                     {
-                        CharacterData characterData = new CharacterData();
+                        var data = new CharacterData();
 
-                        // Befülle dynamisch die Werte
                         if (characterControllers.Count > 0)
                         {
-                            characterData.skinIndex = characterControllers[0].skinIndex;
-                            characterData.handIndex = new HandSpriteIndex
+                            var c0 = characterControllers[0];
+                            data.skinIndex = c0.skinIndex;
+                            data.handIndex = new HandSpriteIndex
                             {
-                                colorIndex = characterControllers[0].handIndex[0],
-                                spriteIndex = characterControllers[0].handIndex[1],
+                                colorIndex = c0.handIndex?[0] ?? 0,
+                                spriteIndex = c0.handIndex?[1] ?? 0
                             };
-                            characterData.clotheIndex = characterControllers[0].clotheIndex;
-                            characterData.hairIndex = characterControllers[0].hairIndex;
-                            characterData.glassIndex = characterControllers[0].glassIndex;
+                            data.clotheIndex = c0.clotheIndex;
+                            data.hairIndex = c0.hairIndex;
+                            data.glassIndex = c0.glassIndex;
                         }
 
                         if (characterControllers.Count > 1)
                         {
-                            characterData.skinIndex2 = characterControllers[1].skinIndex;
-                            characterData.clotheIndex2 = characterControllers[1].clotheIndex;
-                            characterData.hairIndex2 = characterControllers[1].hairIndex;
-                            characterData.glassIndex2 = characterControllers[1].glassIndex;
+                            var c1 = characterControllers[1];
+                            data.skinIndex2 = c1.skinIndex;
+                            data.handIndex2 = new HandSpriteIndex
+                            {
+                                colorIndex = c1.handIndex?[0] ?? 0,
+                                spriteIndex = c1.handIndex?[1] ?? 0
+                            };
+                            data.clotheIndex2 = c1.clotheIndex;
+                            data.hairIndex2 = c1.hairIndex;
+                            data.glassIndex2 = c1.glassIndex;
                         }
 
-                        GameManager.Instance.AddCharacterData(novelId, characterData);
+                        GameManager.Instance.AddCharacterData(novelId, data);
+                    }
+                    else
+                    {
+                        GameManager.Instance.CheckAndSetAllNovelsStatus();
                     }
 
                     break;
@@ -99,20 +136,16 @@ namespace Assets._Scripts.Controller.CharacterController
 
         public void SetCanvasRect(RectTransform canvasRect)
         {
-            _canvasRect = canvasRect;
         }
 
         public bool HandleTouchEvent(float x, float y)
         {
             // Check if animations are allowed to proceed, return false if disabled
-            if (AnimationFlagSingleton.Instance().GetFlag() == false)
-            {
-                return false;
-            }
+            if (!AnimationFlagSingleton.Instance().GetFlag()) return false;
 
             foreach (var decoration in decorations)
             {
-                if (decoration?.container == null || decoration?.prefab == null)
+                if (decoration?.container == null || decoration.prefab == null)
                 {
                     continue;
                 }
@@ -149,54 +182,25 @@ namespace Assets._Scripts.Controller.CharacterController
             return false;
         }
 
-        public virtual void SetBackground()
-        {
-        }
+        public virtual void SetBackground() { }
 
-        public virtual void SetCharacter()
-        {
-        }
+        public virtual void SetCharacter() { }
 
-        public virtual void DestroyCharacter()
-        {
-        }
+        public virtual void DestroyCharacter() { }
 
         public void SetFaceExpression(int characterId, int expressionType)
         {
-            if (novelKite2CharacterController == null)
+            var controller = characterControllers
+                .FirstOrDefault(c => c != null && c.characterId == characterId);
+
+            if (controller != null)
             {
+                controller.SetFaceExpression(expressionType);
             }
             else
-                switch (characterId)
-                {
-                    case 0:
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 4:
-                    case 5:
-                    case 6:
-                        novelKite2CharacterController.SetFaceExpression(expressionType);
-                        break;
-                    case 7:
-                        novelKite2CharacterController2.SetFaceExpression(expressionType);
-                        break;
-                    case 8:
-                    case 9:
-                    case 10:
-                    case 11:
-                    case 12:
-                        novelKite2CharacterController.SetFaceExpression(expressionType);
-                        break;
-                    default:
-                    {
-                        if (novelKite2CharacterController2 == null)
-                        {
-                        }
-
-                        break;
-                    }
-                }
+            {
+                Debug.LogWarning($"SetFaceExpression failed: No controller found with characterId {characterId}");
+            }
         }
 
         public virtual void StartCharacterTalking()

@@ -93,7 +93,6 @@ namespace Assets._Scripts.UIElements.Messages
 
         private void OnPauseButton()
         {
-            Debug.Log($"Save Novel Data: {_playNovelSceneController.NovelToPlay.id}");
             SaveLoadManager.SaveNovelData(_playNovelSceneController, _conversationContentGuiController);
             GameManager.Instance.CheckAndSetAllNovelsStatus();
             LeaveNovel();
@@ -109,9 +108,7 @@ namespace Assets._Scripts.UIElements.Messages
 
         private void OnEndButton()
         {
-            PromptManager.Instance()
-                .AddLineToPrompt(
-                    "Das Gespräch wurde vorzeitig beendet. Bitte beachte, dass kein Teil des Dialogs in das Feedback darf.");
+            PromptManager.Instance().AddLineToPrompt("Das Gespräch wurde vorzeitig beendet. Bitte beachte, dass kein Teil des Dialogs in das Feedback darf.");
 
             _playNovelSceneController.HandleEndNovelEvent();
         }

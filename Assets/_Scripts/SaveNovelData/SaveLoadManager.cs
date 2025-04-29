@@ -49,7 +49,7 @@ namespace Assets._Scripts.SaveNovelData
             {
                 formattedId = "OptionsLabel" + match.Groups[1].Value;
             }
-            else if (!match.Success) // Falls kein Treffer, durchlaufe die Liste rückwärts
+            else if (!match.Success) // Falls kein Treffer durchlaufe die Liste rückwärts
             {
                 for (int i = conversationContentGuiController.Content.Count - 1; i >= 0; i--)
                 {
@@ -182,13 +182,7 @@ namespace Assets._Scripts.SaveNovelData
             // Save or update the novel in the dictionary
             allSaveData[currentNovelId] = saveData;
 
-            foreach (var novelSaveData in allSaveData)
-            {
-                Debug.Log($"novelId: {novelSaveData.Key}");
-                Debug.Log($"{novelSaveData.Value.currentEventId}");
-            }
-
-            // Serialize the dictionary and save it in pretty format
+            // Serialize the dictionary and save it in a pretty format
             string json = JsonConvert.SerializeObject(allSaveData, Formatting.Indented);
 
             File.WriteAllText(SaveFilePath, json, Encoding.UTF8);

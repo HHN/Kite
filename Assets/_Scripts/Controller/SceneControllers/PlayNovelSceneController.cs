@@ -101,7 +101,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         private readonly Dictionary<string, VisualNovelEvent> _novelEvents = new();
         private readonly string[] _optionsId = new string[2];
         private ConversationContentGuiController _conversationContentGuiController;
-        private int _novelCharacter = 0;
+        private int _novelCharacter;
         private NovelImageController _novelImagesController;
         private VisualNovelEvent _savedEventToResume; // Speichert das letzte Ereignis für das Fortsetzen
         private Coroutine _timerCoroutine;
@@ -264,7 +264,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private void HandleHeaderImage()
         {
-            // Hide the header image, as it is not needed in the introductory dialogue
+            // Hide the header image, as it is unnecessary in the introductory dialogue
             bool isIntro = novelToPlay.title == "Einstiegsdialog";
             bool isIntroFromMainMenu = GameManager.Instance.IsIntroNovelLoadedFromMainMenu;
 
@@ -948,7 +948,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             if (hintForSavegameMessageBox == null || DestroyValidator.IsNullOrDestroyed(canvas)) return;
 
-            // Überprüfen, ob die HintForSavegameMessageBox bereits geladen ist und schließe sie gegebenenfalls
+            // Überprüfen, ob die HintForSavegameMessageBox bereits geladen ist, und schließe sie gegebenenfalls
             if (_hintForSavegameMessageBoxObject != null && !_hintForSavegameMessageBoxObject.IsNullOrDestroyed())
             {
                 _hintForSavegameMessageBoxObject.GetComponent<HintForSavegameMessageBox>().CloseMessageBox();

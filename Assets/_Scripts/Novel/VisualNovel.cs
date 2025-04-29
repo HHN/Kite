@@ -15,6 +15,7 @@ namespace Assets._Scripts.Novel
         public List<VisualNovelEvent> novelEvents;
         public Dictionary<string, string> GlobalVariables;
         public string playedPath;
+        public List<string> characters;
 
         public void AddGlobalVariable(string name, string value)
         {
@@ -60,20 +61,17 @@ namespace Assets._Scripts.Novel
                 return;
             }
 
-            if (GlobalVariables.ContainsKey(name))
-            {
-                GlobalVariables.Remove(name);
-            }
+            GlobalVariables.Remove(name);
         }
 
         public string GetGlobalVariable(string name)
         {
-            if (GlobalVariables == null || !GlobalVariables.ContainsKey(name))
+            if (GlobalVariables == null || !GlobalVariables.TryGetValue(name, out var variable))
             {
                 return string.Empty;
             }
 
-            return GlobalVariables[name];
+            return variable;
         }
 
         public Dictionary<string, string> GetGlobalVariables()

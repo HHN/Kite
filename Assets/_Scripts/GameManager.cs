@@ -24,12 +24,14 @@ namespace Assets._Scripts
         public HandSpriteIndex handIndex;
         public int clotheIndex;
         public int hairIndex;
+        public int characterId;
 
         public int skinIndex2;
         public int glassIndex2;
         public HandSpriteIndex handIndex2;
         public int clotheIndex2;
         public int hairIndex2;
+        public int characterId2;
     }
 
     [Serializable]
@@ -125,7 +127,7 @@ namespace Assets._Scripts
                     {
                         _characterDataDictionary[kvp.Key] = kvp.Value;
 
-                        // Zusätzlich in die Liste für den Inspector hinzufügen
+                        // Außerdem in die Liste für den Inspector hinzufügen
                         characterDataList.Add(new CharacterDataEntry
                         {
                             id = kvp.Key,

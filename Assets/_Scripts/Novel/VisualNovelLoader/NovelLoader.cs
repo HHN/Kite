@@ -5,7 +5,6 @@ using Assets._Scripts.Managers;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
-using Assets._Scripts.Player.KiteNovels.VisualNovelLoader;
 
 namespace Assets._Scripts.Novel.VisualNovelLoader
 {
