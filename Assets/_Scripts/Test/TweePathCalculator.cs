@@ -11,7 +11,7 @@ namespace Assets
     {
         [SerializeField] private string filePathNovel = "Assets/YourNovelFile.txt";
         [SerializeField] private string outPutNovel = "Assets/NovelFileOnlyBiases.txt";
-        private readonly Dictionary<string, (List<string> Links, string Body)> _graph = new Dictionary<string, (List<string> Links, string Body)>();
+        private readonly Dictionary<string, (List<KeyValuePair<string,string>> Links, string Body)> _graph = new Dictionary<string, (List<KeyValuePair<string, string>> Links, string Body)>();
 
         private void Start()
         {
@@ -62,7 +62,7 @@ namespace Assets
                 string nodeName = match.Groups[1].Value.Trim();
                 string nodeBody = match.Groups[2].Value;
 
-                List<string> links = new List<string>();
+                List<KeyValuePair<string, string>> links = new List<KeyValuePair<string, string>> ();
 
                 //Debug.Log("Knoten: " + nodeName);
 
@@ -82,19 +82,19 @@ namespace Assets
 
                     if (!string.IsNullOrEmpty(targetLink))
                     {
-                        links.Add(targetLink);
+                        links.Add(new KeyValuePair<string, string>(targetLink, linkMatch.Groups[1].Value.Trim()));
                     }
 
-                    Debug.Log("Link: " + targetLink);
+                    Debug.Log("Text: " + linkMatch.Groups[1].Value.Trim() + "Link: " + targetLink); //Show the content of the answer and the corresponding Link
                 }
                 if (!_graph.ContainsKey(nodeName))
                 {
                     _graph[nodeName] = (links, nodeBody);
                 }
             }
-            if (!_graph.ContainsKey("Ende"))
+            if (!_graph.ContainsKey("End"))
             {
-                _graph["Ende"] = (new List<string>(), "");
+                _graph["End"] = (new List<KeyValuePair<string, string>>(),"");
             }
         }
 
@@ -106,12 +106,12 @@ namespace Assets
             string currentNode;
 
             var (links, _) = _graph[startNode];
-            links.ForEach(link => edgesToVisit.Push(link));
+            links.ForEach(link => edgesToVisit.Push(link.Key));
 
             while (edgesToVisit.Count > 0)
             {
                 currentNode = edgesToVisit.Pop();
-                Debug.Log(currentNode);
+                //Debug.Log(currentNode); // Show all nodes we circle through while counting
                 var (_, body) = _graph[currentNode];
                 if (body.Contains(">>End<<"))
                 {
@@ -121,7 +121,7 @@ namespace Assets
                 {
                     //visitedNodes.Add(currentNode);
                     (links, _) = _graph[currentNode];
-                    links.ForEach(link => edgesToVisit.Push(link));
+                    links.ForEach(link => edgesToVisit.Push(link.Key));
                 }
             }
             return numberOfPaths;
