@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace Assets
 {
-    public class PathCalculator : MonoBehaviour
+    public class TweePathCalculator : MonoBehaviour
     {
         [SerializeField] private string filePathNovel = "Assets/YourNovelFile.txt";
         [SerializeField] private string outPutNovel = "Assets/NovelFileOnlyBiases.txt";
@@ -113,7 +113,7 @@ namespace Assets
                 currentNode = edgesToVisit.Pop();
                 Debug.Log(currentNode);
                 var (_, body) = _graph[currentNode];
-                if (body.Contains(">>Ende<<"))
+                if (body.Contains(">>End<<"))
                 {
                     numberOfPaths++;
                 }
