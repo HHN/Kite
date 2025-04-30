@@ -762,6 +762,18 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             PlayerDataManager.Instance().SetNovelHistory(playThroughHistory);
 
+            foreach (var eintrag in playThroughHistory)
+            {
+                Debug.Log(eintrag);
+            }
+
+#if UNITY_WEBGL
+ foreach (var eintrag in playThroughHistory)
+            {
+                Application.ExternalCall("logMessage", eintrag);
+            }
+#endif
+
             // Check if the current novel is the introductory dialogue
             if (novelToPlay.title == "Einstiegsdialog")
             {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using Assets._Scripts.Managers;
+using Assets._Scripts._Mappings;
 using Assets._Scripts.Messages;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
@@ -35,6 +36,8 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             // Initialisiere den TextToSpeechManager
             TextToSpeechManager ttsManager = TextToSpeechManager.Instance;
+
+            MappingManager mappingManager = MappingManager.Instance;
             // Initialisiere die Szene und setze grundlegende Einstellungen
             InitializeScene();
 

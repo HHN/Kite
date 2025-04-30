@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Networking; // Add the UnityWebRequest namespace
 
 namespace Assets._Scripts._Mappings
 {
@@ -10,16 +11,38 @@ namespace Assets._Scripts._Mappings
     {
         private static MappingManager _instance;
 
-        // Mapping-Files
-        private static readonly string MappingFileBias = Path.Combine(Application.dataPath, "_Scripts/_Mappings/BiasMapping.txt");
-        private static readonly string MappingFileFaceExpression = Path.Combine(Application.dataPath, "_Scripts/_Mappings/FaceExpressionMapping.txt");
-        private static readonly string MappingFileCharacter = Path.Combine(Application.dataPath, "_Scripts/_Mappings/CharacterMapping.txt");
+        // Mapping-Files - Different paths for Unity Editor and WebGL
+        private static readonly string MappingFileBias;
+        private static readonly string MappingFileFaceExpression;
+        private static readonly string MappingFileCharacter;
 
-        // Dictionaries
-        private static Dictionary<string, string> _biasMapping = LoadBiasMapping();
-        private static Dictionary<string, int> _faceExpressionMapping = LoadFaceExpressionMapping();
-        private static Dictionary<string, int> _characterMapping = LoadCharacterMapping();
+        // Dictionaries to store the mappings for bias, face expression, and characters
+        private static Dictionary<string, string> _biasMapping = new Dictionary<string, string>();
+        private static Dictionary<string, int> _faceExpressionMapping = new Dictionary<string, int>();
+        private static Dictionary<string, int> _characterMapping = new Dictionary<string, int>();
 
+        // Static constructor to determine file paths based on platform (WebGL vs Editor/Standalone)
+        static MappingManager()
+        {
+#if UNITY_WEBGL
+            // For WebGL, we use the StreamingAssets folder, but WebGL files need to be accessed asynchronously
+            MappingFileBias = Path.Combine(Application.streamingAssetsPath, "BiasMapping.txt");
+            MappingFileFaceExpression = Path.Combine(Application.streamingAssetsPath, "FaceExpressionMapping.txt");
+            MappingFileCharacter = Path.Combine(Application.streamingAssetsPath, "CharacterMapping.txt");
+            Application.ExternalCall("logMessage", "Paths: " + MappingFileBias + " " + MappingFileFaceExpression + " " + MappingFileCharacter);
+            Application.ExternalCall("logMessage", "Calling Loading Functions");
+#else
+            // For Unity Editor and other platforms, use the original path
+            MappingFileBias = Path.Combine(Application.dataPath, "_Scripts/_Mappings/BiasMapping.txt");
+            MappingFileFaceExpression = Path.Combine(Application.dataPath, "_Scripts/_Mappings/FaceExpressionMapping.txt");
+            MappingFileCharacter = Path.Combine(Application.dataPath, "_Scripts/_Mappings/CharacterMapping.txt");
+#endif
+            LoadBiasMappingAsync();
+            LoadFaceExpressionMappingAsync();
+            LoadCharacterMappingAsync();
+        }
+
+        // Singleton pattern to ensure only one instance of MappingManager exists
         public static MappingManager Instance
         {
             get
@@ -39,180 +62,218 @@ namespace Assets._Scripts._Mappings
             }
         }
 
-        private static Dictionary<string, string> LoadBiasMapping()
+        // Loads the Bias mapping from the corresponding file
+        private static void LoadBiasMappingAsync()
         {
-            Dictionary<string, string> mapping = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-            try
+            string filePath = MappingFileBias;
+
+#if UNITY_WEBGL
+            // For WebGL, use UnityWebRequest to load the file asynchronously
+            UnityWebRequest www = UnityWebRequest.Get(MappingFileBias);
+            Application.ExternalCall("logMessage", "MappingFileBias: " + MappingFileBias);
+            www.SendWebRequest().completed += (asyncOperation) =>
             {
-                // Verwende den bereits vollstï¿½ndig definierten MappingFileFullPath.
-                if (!File.Exists(MappingFileBias))
+                if (www.result == UnityWebRequest.Result.Success)
                 {
-                    Debug.LogWarning("Bias mapping file not found at: " + MappingFileBias);
-                    return mapping; // Leeres Mapping zurï¿½ckgeben.
+                    // Split the downloaded content into lines
+                    string[] lines = www.downloadHandler.text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                    ProcessMappingFile(lines, ref _biasMapping);
+                }
+                else
+                {
+                    Application.ExternalCall("logMessage", "Error loading bias mapping: " + www.error);
+                }
+            };
+#else
+            // For other platforms, read directly from file system
+            if (File.Exists(filePath))
+            {
+                string[] lines = File.ReadAllLines(filePath);
+                ProcessMappingFile(lines, ref _biasMapping);
+            }
+            else
+            {
+                Debug.LogWarning("Bias mapping file not found at: " + filePath);
+            }
+#endif
+        }
+
+        // Loads the FaceExpression mapping from the corresponding file
+        private static void LoadFaceExpressionMappingAsync()
+        {
+            string filePath = MappingFileFaceExpression;
+
+#if UNITY_WEBGL
+            UnityWebRequest www = UnityWebRequest.Get(MappingFileFaceExpression);
+            Application.ExternalCall("logMessage", "MappingFileFaceExpression: " + MappingFileFaceExpression);
+            www.SendWebRequest().completed += (asyncOperation) =>
+            {
+                if (www.result == UnityWebRequest.Result.Success)
+                {
+                    // Split the downloaded content into lines
+                    string[] lines = www.downloadHandler.text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                    ProcessFaceExpressionFile(lines, ref _faceExpressionMapping);
+                }
+                else
+                {
+                    Application.ExternalCall("logMessage", "Error loading face expression mapping: " + www.error);
+                }
+            };
+#else
+            if (File.Exists(filePath))
+            {
+                string[] lines = File.ReadAllLines(filePath);
+                ProcessFaceExpressionFile(lines, ref _faceExpressionMapping);
+            }
+            else
+            {
+                Debug.LogWarning("Face expression mapping file not found at: " + filePath);
+            }
+#endif
+        }
+
+        // Loads the Character mapping from the corresponding file
+        private static void LoadCharacterMappingAsync()
+        {
+            string filePath = MappingFileCharacter;
+
+#if UNITY_WEBGL
+            UnityWebRequest www = UnityWebRequest.Get(MappingFileCharacter);
+            Application.ExternalCall("logMessage", "MappingFileCharacter: " + MappingFileCharacter);
+            www.SendWebRequest().completed += (asyncOperation) =>
+            {
+                if (www.result == UnityWebRequest.Result.Success)
+                {
+                    // Split the downloaded content into lines
+                    string[] lines = www.downloadHandler.text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                    ProcessCharacterFile(lines, ref _characterMapping);
+                }
+                else
+                {
+                    Application.ExternalCall("logMessage", "Error loading character mapping: " + www.error);
+                }
+            };
+#else
+            if (File.Exists(filePath))
+            {
+                string[] lines = File.ReadAllLines(filePath);
+                ProcessCharacterFile(lines, ref _characterMapping);
+            }
+            else
+            {
+                Debug.LogWarning("Character mapping file not found at: " + filePath);
+            }
+#endif
+        }
+
+        // Helper method to process mapping file (for Bias, FaceExpression, and Character mappings)
+        private static void ProcessMappingFile(string[] lines, ref Dictionary<string, string> mapping)
+        {
+            Debug.Log("ProcessMappingFile called"); // Log, um zu sehen, dass die Funktion aufgerufen wird.
+
+            int addedPairsCount = 0; // Zähler für hinzugefügte Paare.
+
+            foreach (string line in lines)
+            {
+                // Logge den Inhalt jeder Zeile
+                Debug.Log("Processing line: " + line);
+
+                if (string.IsNullOrWhiteSpace(line))
+                {
+                    continue; // Leere Zeilen überspringen.
                 }
 
-                // Lese alle Zeilen der Datei.
-                string[] lines = File.ReadAllLines(MappingFileBias);
-                foreach (string line in lines)
+                int colonIndex = line.IndexOf(':');
+                if (colonIndex > 0 && colonIndex < line.Length - 1)
                 {
-                    // ï¿½berspringe leere oder nur aus Leerzeichen bestehende Zeilen.
-                    if (string.IsNullOrWhiteSpace(line))
-                        continue;
+                    string key = line.Substring(0, colonIndex).Trim();
+                    string value = line.Substring(colonIndex + 1).Trim();
 
-                    // Suche nach dem ersten Doppelpunkt als Trenner.
-                    int colonIndex = line.IndexOf(':');
-                    if (colonIndex > 0 && colonIndex < line.Length - 1)
+                    // Logge die gefundenen Key-Value-Paare
+                    Debug.Log("Parsed key: " + key + ", value: " + value);
+
+                    if (!string.IsNullOrEmpty(key) && !mapping.ContainsKey(key))
                     {
-                        // Extrahiere den englischen Bias (Key) und den deutschen Bias (Value).
-                        string key = line.Substring(0, colonIndex).Trim();
-                        string value = line.Substring(colonIndex + 1).Trim();
+                        mapping.Add(key, value);
+                        addedPairsCount++; // Zähler erhöhen, wenn ein neues Paar hinzugefügt wird.
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("Invalid mapping line (missing colon): " + line);
+                }
+            }
+
+            // Ausgabe, wie viele Paare hinzugefügt wurden
+            Debug.Log("Added " + addedPairsCount + " key-value pairs.");
+        }
+
+
+        // Helper method to process FaceExpression mapping file
+        private static void ProcessFaceExpressionFile(string[] lines, ref Dictionary<string, int> mapping)
+        {
+            foreach (string line in lines)
+            {
+                if (string.IsNullOrWhiteSpace(line)) continue;
+
+                int colonIndex = line.IndexOf(':');
+                if (colonIndex > 0 && colonIndex < line.Length - 1)
+                {
+                    string key = line.Substring(0, colonIndex).Trim();
+                    string valueStr = line.Substring(colonIndex + 1).Trim();
+
+                    if (int.TryParse(valueStr, out int id))
+                    {
                         if (!string.IsNullOrEmpty(key) && !mapping.ContainsKey(key))
                         {
-                            mapping.Add(key, value);
+                            mapping.Add(key, id);
                         }
                     }
                     else
                     {
-                        Debug.LogWarning("Invalid mapping line: " + line);
+                        Debug.LogWarning("Invalid face expression mapping value (not an integer): " + line);
                     }
                 }
+                else
+                {
+                    Debug.LogWarning("Invalid mapping line: " + line);
+                }
             }
-            catch (Exception ex)
-            {
-                Debug.LogError("Error loading bias mapping: " + ex.Message);
-            }
-
-            return mapping;
         }
 
-        /// <summary>
-        /// Liest das FaceExpression-Mapping aus einer externen Textdatei ein.
-        /// Das Mapping-File muss Zeilen im Format "[FaceExpression]:[Id]" enthalten.
-        /// </summary>
-        /// <returns>Ein Dictionary, das den FaceExpression-String (Key) auf den zugehï¿½rigen Integer-Wert (Value) abbildet.</returns>
-        private static Dictionary<string, int> LoadFaceExpressionMapping()
+        // Helper method to process Character mapping file
+        private static void ProcessCharacterFile(string[] lines, ref Dictionary<string, int> mapping)
         {
-            Dictionary<string, int> mapping = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
-            try
+            foreach (string line in lines)
             {
-                // Prï¿½fe, ob die Mapping-Datei existiert.
-                if (!File.Exists(MappingFileFaceExpression))
-                {
-                    Debug.LogWarning("Face expression mapping file not found at: " + MappingFileFaceExpression);
-                    return mapping; // Gib ein leeres Mapping zurï¿½ck.
-                }
+                if (string.IsNullOrWhiteSpace(line)) continue;
 
-                // Lese alle Zeilen der Datei.
-                string[] lines = File.ReadAllLines(MappingFileFaceExpression);
-                foreach (string line in lines)
+                int colonIndex = line.IndexOf(':');
+                if (colonIndex > 0 && colonIndex < line.Length - 1)
                 {
-                    // ï¿½berspringe leere oder nur aus Leerzeichen bestehende Zeilen.
-                    if (string.IsNullOrWhiteSpace(line))
-                        continue;
+                    string key = line.Substring(0, colonIndex).Trim();
+                    string valueStr = line.Substring(colonIndex + 1).Trim();
 
-                    // Suche nach dem ersten Doppelpunkt als Trenner.
-                    int colonIndex = line.IndexOf(':');
-                    if (colonIndex > 0 && colonIndex < line.Length - 1)
+                    if (int.TryParse(valueStr, out int id))
                     {
-                        // Extrahiere den FaceExpression-String (Key) und den dazugehï¿½rigen Wert als String.
-                        string key = line.Substring(0, colonIndex).Trim();
-                        string valueStr = line.Substring(colonIndex + 1).Trim();
-
-                        // Versuche, den Wert in einen Integer zu parsen.
-                        if (int.TryParse(valueStr, out int id))
+                        if (!string.IsNullOrEmpty(key) && !mapping.ContainsKey(key))
                         {
-                            // Fï¿½ge den Key und den geparsten Wert dem Dictionary hinzu, sofern der Key nicht leer ist
-                            // und noch nicht im Dictionary enthalten ist.
-                            if (!string.IsNullOrEmpty(key) && !mapping.ContainsKey(key))
-                            {
-                                mapping.Add(key, id);
-                            }
-                        }
-                        else
-                        {
-                            Debug.LogWarning("Invalid face expression mapping value (not an integer): " + line);
+                            mapping.Add(key, id);
                         }
                     }
                     else
                     {
-                        Debug.LogWarning("Invalid mapping line: " + line);
+                        Debug.LogWarning("Invalid character mapping value (not an integer): " + line);
                     }
                 }
+                else
+                {
+                    Debug.LogWarning("Invalid mapping line: " + line);
+                }
             }
-            catch (Exception ex)
-            {
-                Debug.LogError("Error loading face expression mapping: " + ex.Message);
-            }
-
-            return mapping;
         }
 
-        /// <summary>
-        /// Liest das Character-Mapping aus einer externen Textdatei ein.
-        /// Das Mapping-File muss Zeilen im Format "[Character]:[Id]" enthalten.
-        /// </summary>
-        /// <returns>Ein Dictionary, das den Character-String (Key) auf den zugehï¿½rigen Integer-Wert (Value) abbildet.</returns>
-        private static Dictionary<string, int> LoadCharacterMapping()
-        {
-            Dictionary<string, int> mapping = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
-
-            try
-            {
-                // Prï¿½fe, ob die Mapping-Datei existiert.
-                if (!File.Exists(MappingFileCharacter))
-                {
-                    Debug.LogWarning("Character mapping file not found at: " + MappingFileCharacter);
-                    return mapping; // Gib ein leeres Mapping zurï¿½ck.
-                }
-
-                // Lese alle Zeilen der Datei.
-                string[] lines = File.ReadAllLines(MappingFileCharacter);
-                foreach (string line in lines)
-                {
-                    // ï¿½berspringe leere oder nur aus Leerzeichen bestehende Zeilen.
-                    if (string.IsNullOrWhiteSpace(line))
-                        continue;
-
-                    // Suche nach dem ersten Doppelpunkt als Trenner.
-                    int colonIndex = line.IndexOf(':');
-                    if (colonIndex > 0 && colonIndex < line.Length - 1)
-                    {
-                        // Extrahiere den FaceExpression-String (Key) und den dazugehï¿½rigen Wert als String.
-                        string key = line.Substring(0, colonIndex).Trim();
-                        string valueStr = line.Substring(colonIndex + 1).Trim();
-
-                        // Versuche, den Wert in einen Integer zu parsen.
-                        if (int.TryParse(valueStr, out int id))
-                        {
-                            // Fï¿½ge den Key und den geparsten Wert dem Dictionary hinzu, sofern der Key nicht leer ist
-                            // und noch nicht im Dictionary enthalten ist.
-                            if (!string.IsNullOrEmpty(key) && !mapping.ContainsKey(key))
-                            {
-                                mapping.Add(key, id);
-                            }
-                        }
-                        else
-                        {
-                            Debug.LogWarning("Invalid character mapping value (not an integer): " + line);
-                        }
-                    }
-                    else
-                    {
-                        Debug.LogWarning("Invalid mapping line: " + line);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError("Error loading character mapping: " + ex.Message);
-            }
-
-            return mapping;
-        }
-
-        /// <summary>
-        /// Internal mapping method ï¿½ looks up the English bias in the dictionary and returns the German translation.
-        /// </summary>
+        // Maps a given bias (in English) to its German translation from the loaded dictionary
         public static string MapBias(string englishBias)
         {
             if (_biasMapping.TryGetValue(englishBias, out string germanBias))
@@ -221,15 +282,10 @@ namespace Assets._Scripts._Mappings
             }
 
             Debug.LogWarning("Bias mapping not found for: " + englishBias);
-            return englishBias; // Fallback to original.
+            return englishBias; // Fallback to original if no mapping is found
         }
 
-        /// <summary>
-        /// ï¿½bersetzt den ï¿½bergebenen FaceExpression-String in seinen zugehï¿½rigen Integer-Wert anhand des geladenen Mappings.
-        /// Falls kein Mapping gefunden wird, wird -1 zurï¿½ckgegeben.
-        /// </summary>
-        /// <param name="faceExpression">Der FaceExpression-String, der abgebildet werden soll.</param>
-        /// <returns>Den Integer-Wert, der dem FaceExpression zugeordnet ist, oder -1, wenn nichts gefunden wurde.</returns>
+        // Maps a given face expression string to its corresponding integer value from the loaded dictionary
         public static int MapFaceExpressions(string faceExpression)
         {
             if (string.IsNullOrEmpty(faceExpression))
@@ -243,15 +299,10 @@ namespace Assets._Scripts._Mappings
             }
 
             Debug.LogWarning("Face expression mapping not found for: " + faceExpression);
-            return -1; // Fallback-Wert, falls der FaceExpression-String nicht gefunden wird.
+            return -1; // Fallback value if no mapping is found
         }
 
-        /// <summary>
-        /// ï¿½bersetzt den ï¿½bergebenen Character-String in seinen zugehï¿½rigen Integer-Wert anhand des geladenen Mappings.
-        /// Falls kein Mapping gefunden wird, wird -1 zurï¿½ckgegeben.
-        /// </summary>
-        /// <param name="character">Der Character-String, der abgebildet werden soll.</param>
-        /// <returns>Den Integer-Wert, der dem Character zugeordnet ist, oder -1, wenn nichts gefunden wurde.</returns>
+        // Maps a given character string to its corresponding integer value from the loaded dictionary
         public static int MapCharacter(string character)
         {
             if (string.IsNullOrEmpty(character))
@@ -265,22 +316,23 @@ namespace Assets._Scripts._Mappings
             }
 
             Debug.LogWarning("Character mapping not found for: " + character);
-            return -1; // Fallback-Wert, falls der Character-String nicht gefunden wird.
+            return -1; // Fallback value if no mapping is found
         }
 
-        /// <summary>
-        /// ï¿½bersetzt den ï¿½bergebenen Character-String in seinen zugehï¿½rigen Integer-Wert anhand des geladenen Mappings.
-        /// Falls kein Mapping gefunden wird, wird -1 zurï¿½ckgegeben.
-        /// </summary>
-        /// <param name="character">Der Character-String, der abgebildet werden soll.</param>
-        /// <returns>Den Integer-Wert, der dem Character zugeordnet ist, oder -1, wenn nichts gefunden wurde.</returns>
+        // Maps a given character integer value to its corresponding character string from the loaded dictionary
         public static string MapCharacterToString(int character)
         {
             if (character == -1)
             {
                 return "";
             }
-
+            Debug.Log("character: " + character);
+            Debug.Log("Mapping: " + _characterMapping.FirstOrDefault(x => x.Value == character).Key);
+            Debug.Log($"Anzahl der Charakter-Mappings: {_characterMapping.Count}");
+            foreach (var pair in _characterMapping)
+            {
+                Debug.Log($"Key: {pair.Key}, Value: {pair.Value}");
+            }
             return _characterMapping.FirstOrDefault(x => x.Value == character).Key;
         }
     }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 
 namespace Assets._Scripts.Managers
 {
@@ -39,6 +40,13 @@ namespace Assets._Scripts.Managers
 
         public void SetNovelHistory(List<string> novelHistory)
         {
+#if UNITY_WEBGL
+Application.ExternalCall("logMessage", " public void SetNovelHistory(List<string> novelHistory)");
+                 foreach (var eintrag in novelHistory)
+            {
+                Application.ExternalCall("logMessage", eintrag);
+            }
+#endif
             _novelHistory = novelHistory;
         }
 

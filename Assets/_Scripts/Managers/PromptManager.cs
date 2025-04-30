@@ -1,5 +1,6 @@
 using System.Text;
 using Assets._Scripts.Novel;
+using UnityEngine;
 
 namespace Assets._Scripts.Managers
 {
@@ -136,6 +137,11 @@ namespace Assets._Scripts.Managers
 
         public void AddLineToPrompt(string line)
         {
+            Debug.Log("AddLineToPrompt");
+#if UNITY_WEBGL
+                Application.ExternalCall("logMessage", "AddLineToPrompt" + line);
+#endif
+
             if (_prompt == null)
             {
                 _prompt = new StringBuilder();
@@ -152,6 +158,10 @@ namespace Assets._Scripts.Managers
 
         public void AddFormattedLineToPrompt(string characterName, string text)
         {
+            Debug.Log("AddFormattedLineToPrompt characterName: " + characterName);
+#if UNITY_WEBGL
+                Application.ExternalCall("logMessage", "AddFormattedLineToPrompt: Character:" + characterName);
+#endif
             string formattedLine = characterName.Contains("Hinweis")
                 ? $"<i><b>{characterName}:</b> {text}</i>"
                 : $"<b>{characterName}:</b> {text}";
