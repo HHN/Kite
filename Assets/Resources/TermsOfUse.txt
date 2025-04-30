@@ -16,8 +16,6 @@ Weitere Informationen über die Hochschule finden Sie im <u>Impressum</u>.
 
 und so auf spielerische Weise hinsichtlich diskriminierender Inhalte sensibilisiert. Am Ende des jeweils gewählten Visual Novel wird das Gespräch durch Künstliche Intelligenz (KI) analysiert und ein Feedback generiert. Weiterführende Informationen über die App finden Sie auf der Webseite https://kite2.de/.
 
-1.3 Die in den Nutzungsbedingungen verwendeten Begriffe sind nicht geschlechtsspezifisch.
-
 2. Nutzung der App, Missachtung von Rechten der Hochschule
 
 2.1 Zur Nutzung der App sind ausschließlich natürliche Personen berechtigt, die das 18. Lebensjahr vollendet haben. Die Nutzung der App ist kostenlos; ein Rechtsanspruch zur Nutzung besteht nicht.
@@ -36,7 +34,7 @@ und so auf spielerische Weise hinsichtlich diskriminierender Inhalte sensibilisi
 
 3.3	Sofern die Haftung der Hochschule ausgeschlossen oder beschränkt ist, gilt dies auch für eine solche von gesetzlichen Vertretern, Mitarbeitern oder Erfüllungsgehilfen.
 
-3.4	Die Hochschule steht nicht ein für die Funktionsfähigkeit von Datennetzen, Servern und Datenleitungen zu seinem Rechenzentrum und die ständige Verfügbarkeit der Dienste. Eine 100%ige Verfügbarkeit der App ist technisch nicht zu realisieren. Die Hochschule ist jedoch bemüht, die Dienste möglichst konstant und vollständig bereitzustellen. Insbesondere Wartungs- oder Sicherheitsarbeiten sowie Ereignisse, die nicht im Machtbereich der Hochschule liegen, können zu Störungen oder vorübergehender Einstellung der Dienste führen wie z.B. Störungen von öffentlichen Kommunikationsnetzen, Stromausfälle.
+3.4	Die Hochschule steht nicht ein für die Funktionsfähigkeit von Datennetzen, Servern und Datenleitungen sowie die ständige Verfügbarkeit der Dienste. Eine 100%ige Verfügbarkeit ist technisch nicht zu realisieren, die Hochschule ist jedoch bemüht, die Dienste möglichst konstant und vollständig bereitzustellen. Insbesondere Wartungs- oder Sicherheitsarbeiten sowie Ereignisse, die nicht im Machtbereich der Hochschule liegen, können zu Störungen oder vorübergehender Einstellung der Dienste führen wie z.B. Störungen von öffentlichen Kommunikationsnetzen, Stromausfälle.
 
 4. Information über die Interaktion mit KI
 
