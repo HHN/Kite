@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Text.RegularExpressions;
+using Codice.Client.Common.GameUI;
+using UnityEditor.Graphs;
+using System.Linq;
 
 
 namespace Assets
@@ -11,12 +14,13 @@ namespace Assets
     {
         [SerializeField] private string filePathNovel = "Assets/YourNovelFile.txt";
         [SerializeField] private string outPutNovel = "Assets/NovelFileOnlyBiases.txt";
-        private readonly Dictionary<string, (List<KeyValuePair<string,string>> Links, string Body)> _graph = new Dictionary<string, (List<KeyValuePair<string, string>> Links, string Body)>();
+        private Dictionary<string, (List<KeyValuePair<string,string>> Links, string Body)> _graph = new Dictionary<string, (List<KeyValuePair<string, string>> Links, string Body)>();
 
         private void Start()
         {
             ParseTweeFile(ReadTweeFile(filePathNovel));
             Debug.Log("Number of Paths: " + CountPathsNonRecursive("Anfang"));
+            CreateSubGraph();
         }
 
         public string ReadTweeFile(string filePath)
@@ -91,11 +95,12 @@ namespace Assets
                 {
                     _graph[nodeName] = (links, nodeBody);
                 }
-            }
+            }/*
             if (!_graph.ContainsKey("End"))
             {
                 _graph["End"] = (new List<KeyValuePair<string, string>>(),"");
-            }
+            }*/
+            Debug.Log("Done");
         }
 
         public int CountPathsNonRecursive(string startNode)
@@ -122,9 +127,39 @@ namespace Assets
                     //visitedNodes.Add(currentNode);
                     (links, _) = _graph[currentNode];
                     links.ForEach(link => edgesToVisit.Push(link.Key));
+                    
                 }
             }
             return numberOfPaths;
+        }
+
+        public void CreateSubGraph()
+        {
+            List<string> endNodes = new List<string>();
+            foreach(string key in _graph.Keys)
+            {
+                var (_,nodeBody) = _graph[key];
+                if(nodeBody.Contains(">>End<<"))
+                {
+                    endNodes.Add(key);
+                }
+            }
+            _graph["End"] = _graph[endNodes[0]];
+            _graph.Remove(endNodes[0]);
+            foreach(string key in _graph.Keys.ToList())
+            {
+                var (links, _) = _graph[key];
+                var (_, body) = _graph[key];
+                for(int i=0;i<links.Count;i++)
+                {
+                    if(endNodes.Contains(links[i].Key) && links[i].Key != "End")
+                    {
+                        links[i] = new KeyValuePair<string,string>("End",links[i].Value);
+                    }
+                }
+                _graph[key] = (links,body);
+            }
+            Debug.Log("End Nodes: " + endNodes);
         }
     }
 }
