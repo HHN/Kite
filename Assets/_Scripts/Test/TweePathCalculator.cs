@@ -22,9 +22,10 @@ namespace Assets
         {
             ParseTweeFile(ReadTweeFile(filePathNovel));
             Debug.Log("Number of Paths: " + CountPathsNonRecursive("Anfang"));
+            UnifyEndNodes();
             CreateBackwardsGraph();
             CreateSubGraph();
-
+            Debug.Log("Number of Paths: " + CountPathsNonRecursive("Anfang"));
         }
 
         public string ReadTweeFile(string filePath)
@@ -162,7 +163,7 @@ namespace Assets
                 }
             }
         }
-        public void CreateSubGraph()
+        public void UnifyEndNodes()
         {
             List<string> endNodes = new List<string>();
             foreach(string key in _graph.Keys)
@@ -190,8 +191,37 @@ namespace Assets
                 }
                 _graph[key] = (links,body);
             }
-
-            Debug.Log("End Nodes: " + endNodes);
+            Debug.Log("done");
+        }
+        public void CreateSubGraph()
+        {
+            foreach(string node in nodesWithoutBias)
+            {
+                List<string> backwardsLinks = _backwardsGraph[node];
+                foreach(string backwardsLink in backwardsLinks)
+                {
+                    var (links, _) = _graph[backwardsLink];
+                    var (_, body) = _graph[backwardsLink];
+                    for(int i=0;i<links.Count;i++)
+                    {
+                        if(links[i].Key == backwardsLink)
+                        {
+                            List<string> linkKeys = links.Select(kvp => kvp.Key).ToList();
+                            if(!nodesWithoutBias.Contains(backwardsLink))
+                            {
+                                var (newLinks, _ ) = _graph[node];
+                                links.AddRange(newLinks);
+                            }
+                            else if(!linkKeys.Contains(backwardsLink)) //this is not correct, how do we find out if link has been added already?
+                            {
+                                var (newLinks, _ ) = _graph[node];
+                                links.AddRange(newLinks);
+                            }
+                        }
+                    }
+                    _graph[backwardsLink] = (links,body);
+                }
+            }
         }
     }
 }
