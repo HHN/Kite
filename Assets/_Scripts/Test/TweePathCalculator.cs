@@ -14,13 +14,17 @@ namespace Assets
     {
         [SerializeField] private string filePathNovel = "Assets/YourNovelFile.txt";
         [SerializeField] private string outPutNovel = "Assets/NovelFileOnlyBiases.txt";
+        Stack<string> nodesWithoutBias = new Stack<string>();
         private Dictionary<string, (List<KeyValuePair<string,string>> Links, string Body)> _graph = new Dictionary<string, (List<KeyValuePair<string, string>> Links, string Body)>();
+        private Dictionary<string, List<string>> _backwardsGraph = new Dictionary<string, List<string>>();
 
         private void Start()
         {
             ParseTweeFile(ReadTweeFile(filePathNovel));
             Debug.Log("Number of Paths: " + CountPathsNonRecursive("Anfang"));
+            CreateBackwardsGraph();
             CreateSubGraph();
+
         }
 
         public string ReadTweeFile(string filePath)
@@ -57,7 +61,6 @@ namespace Assets
         {
             string nodePattern = @"::\s*([^\n\{\[\|]+).*?\n((?:.|\n)*?)(?=(::|$))";
             string linkPattern = @"\[\[(?:(.*?)(?:\s*(?:\||->)\s*(.*?))|([^|\]]+))\]\]";
-            string biasPattern = @">>RelevanterBias:([^<>]+)<<";
 
             MatchCollection matches = Regex.Matches(tweeContent, nodePattern);
 
@@ -94,6 +97,10 @@ namespace Assets
                 if (!_graph.ContainsKey(nodeName))
                 {
                     _graph[nodeName] = (links, nodeBody);
+                    if(!nodeBody.Contains(">>Bias|"))
+                    {
+                        nodesWithoutBias.Push(nodeName);
+                    }
                 }
             }/*
             if (!_graph.ContainsKey("End"))
@@ -133,6 +140,28 @@ namespace Assets
             return numberOfPaths;
         }
 
+        public void CreateBackwardsGraph()
+        {
+            foreach(string key in _graph.Keys)
+            {
+                var (links, _) = _graph[key];
+                if(!_graph.ContainsKey(key))
+                {
+                    _backwardsGraph[key] = new List<string>();
+                }
+                for(int i=0;i<links.Count;i++)
+                {
+                    if(!_backwardsGraph.ContainsKey(links[i].Key))
+                    {
+                        _backwardsGraph[links[i].Key] = new List<string>();
+                    }
+                    else if(!_backwardsGraph[links[i].Key].Contains(key))
+                    {
+                        _backwardsGraph[links[i].Key].Add(key);
+                    }
+                }
+            }
+        }
         public void CreateSubGraph()
         {
             List<string> endNodes = new List<string>();
@@ -146,6 +175,8 @@ namespace Assets
             }
             _graph["End"] = _graph[endNodes[0]];
             _graph.Remove(endNodes[0]);
+            
+            
             foreach(string key in _graph.Keys.ToList())
             {
                 var (links, _) = _graph[key];
@@ -159,6 +190,7 @@ namespace Assets
                 }
                 _graph[key] = (links,body);
             }
+
             Debug.Log("End Nodes: " + endNodes);
         }
     }
