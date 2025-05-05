@@ -623,12 +623,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   novelKite2CharacterController: {fileID: 0}
-  novelKite2CharacterController2: {fileID: 0}
   characterContainers:
   - {fileID: 3669613035356320353}
   decorations:
   - prefab: {fileID: 8411936371333490823, guid: 7d913892f960ad9469f0b8837688bee0, type: 3}
     container: {fileID: 6178494739774191856}
+  characterControllers: []
 --- !u!1 &6178494739774191856
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,7 +949,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1465545687914413273, guid: 8c1acbda2949bf74a825ff93cd14ebc8, type: 3}
       propertyPath: m_Name
-      value: Character Prefab Verhandlung
+      value: Character Prefab Kundin
       objectReference: {fileID: 0}
     - target: {fileID: 1465545687914413273, guid: 8c1acbda2949bf74a825ff93cd14ebc8, type: 3}
       propertyPath: m_IsActive

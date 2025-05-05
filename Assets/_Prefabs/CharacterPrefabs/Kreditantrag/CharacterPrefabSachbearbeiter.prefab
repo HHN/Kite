@@ -125,6 +125,7 @@ MonoBehaviour:
   handIndex: 
   clotheIndex: 0
   hairIndex: 0
+  characterId: 0
 --- !u!95 &6155688656520349526
 Animator:
   serializedVersion: 7

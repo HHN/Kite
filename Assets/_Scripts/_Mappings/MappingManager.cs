@@ -24,17 +24,11 @@ namespace Assets._Scripts._Mappings
         // Static constructor to determine file paths based on platform (WebGL vs Editor/Standalone)
         static MappingManager()
         {
-#if UNITY_WEBGL
             // For WebGL, we use the StreamingAssets folder, but WebGL files need to be accessed asynchronously
             MappingFileBias = Path.Combine(Application.streamingAssetsPath, "BiasMapping.txt");
             MappingFileFaceExpression = Path.Combine(Application.streamingAssetsPath, "FaceExpressionMapping.txt");
             MappingFileCharacter = Path.Combine(Application.streamingAssetsPath, "CharacterMapping.txt");
-#else
-            // For Unity Editor and other platforms, use the original path
-            MappingFileBias = Path.Combine(Application.dataPath, "_Scripts/_Mappings/BiasMapping.txt");
-            MappingFileFaceExpression = Path.Combine(Application.dataPath, "_Scripts/_Mappings/FaceExpressionMapping.txt");
-            MappingFileCharacter = Path.Combine(Application.dataPath, "_Scripts/_Mappings/CharacterMapping.txt");
-#endif
+
             LoadBiasMappingAsync();
             LoadFaceExpressionMappingAsync();
             LoadCharacterMappingAsync();

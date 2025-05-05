@@ -5,7 +5,7 @@
   "contextForPrompt": "",
   "startTalkingPartnerExpression": "NeutralRelaxed",
   "isWithStartValues": true,
-  "talkingPartner01" : "Intro",
+  "talkingPartner01" : "Investor",
   "talkingPartner02" : "",
   "talkingPartner03" : "",
   "wordsToReplace": [

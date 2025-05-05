@@ -241,7 +241,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
                 if (!string.IsNullOrWhiteSpace(folder.NovelMetaData.TalkingPartner03))
                     characters.Add(folder.NovelMetaData.TalkingPartner03);
-                
+
                 VisualNovel novel = new VisualNovel
                 {
                     id = folder.NovelMetaData.IdNumberOfNovel,
@@ -294,13 +294,14 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                         }
                         else if (message.Count <= messageIndex)
                         {
-                            createdEvent = CreateVisualNovelEventFromKeyword(passage, message[message.Count-1], keywordModels[i], metaData, eventList);
+                            createdEvent = CreateVisualNovelEventFromKeyword(passage, message[message.Count - 1], keywordModels[i], metaData, eventList);
                         }
                         else
                         {
                             // Create the corresponding VisualNovelEvent based on the model.
                             createdEvent = CreateVisualNovelEventFromKeyword(passage, message[messageIndex], keywordModels[i], metaData, eventList);
                         }
+
                         // If there is a link to the next event
                         // We use the label bc it is unique
                         if (targetString == "" && passage.Links.Any())
@@ -338,18 +339,18 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                             }
                         }
 
-                        // angenommen createdEvent ist hier schon zugewiesen…
+                        // angenommen createdEvent ist hier schon zugewiesen
                         if (createdEvent == null)
                         {
                             Debug.LogWarning($"No event created for passage {passage.Label}, skipping debug output.");
                         }
                         else
                         {
+                            if (createdEvent.eventType == 4)
+                            {
+                                messageIndex++;
+                            }
 
-                        if (createdEvent.eventType == 4)
-                        {
-                            messageIndex++;
-                        }
                             var parts = new List<string>();
 
                             if (!string.IsNullOrEmpty(createdEvent.id))
@@ -378,11 +379,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                                 parts.Add($"value={createdEvent.value}");
                             if (!string.IsNullOrEmpty(createdEvent.relevantBias))
                                 parts.Add($"relevantBias={createdEvent.relevantBias}");
-
-                            Debug.Log("[CreatedEvent] " + string.Join(" | ", parts));
                         }
-
-
 
 
                         // Check if the event creates a loop, and adjust if necessary.
@@ -446,7 +443,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
             // If it's a character event.
             int character = model.CharacterIndex; //GetCharacterRoleFromIndex(model.CharacterIndex, metaData);
-              int expression = model.FaceExpression;
+            int expression = model.FaceExpression;
 
             return HandleCharacterTalksEvent(passage, character, originalMessage, expression, eventList);
         }

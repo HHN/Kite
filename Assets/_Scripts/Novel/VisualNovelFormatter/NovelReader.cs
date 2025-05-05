@@ -95,9 +95,18 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
             // Convert the processed folders into VisualNovel objects.
             List<VisualNovel> visualNovels = KiteNovelConverter.ConvertFilesToNovels(allFolders);
+            
+            Debug.Log($"visualNovels: {string.Join(", ", visualNovels.Select(n => n.title))}");
+            
+            while (KiteNovelManager.Instance().GetAllKiteNovels().Count == 0)
+            {
+                yield return new WaitForSeconds(1);
+            }
 
             // Retrieve already loaded novels from the manager.
             List<VisualNovel> existingNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+            
+            Debug.Log($"existingNovels: {string.Join(", ", existingNovels.Select(n => n.title))}");
 
             // If no novels exist, save the entire new list.
             if (existingNovels == null || existingNovels.Count == 0)

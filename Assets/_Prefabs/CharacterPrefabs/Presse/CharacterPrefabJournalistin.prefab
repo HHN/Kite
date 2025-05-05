@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2e6fd163a71357c4faaae7190c1a039b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 61a6897aec021284f9fb593206c4b958, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c72a63d8939ea50469ec6da8a9af7af6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 23ab6a60784ea4d45a12f291dc846e00, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -275,6 +275,7 @@ MonoBehaviour:
   handIndex: 
   clotheIndex: 0
   hairIndex: 0
+  characterId: 0
 --- !u!95 &6155688656520349526
 Animator:
   serializedVersion: 7
@@ -436,7 +437,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3990f26775a93634e9e8bb34bbf67a58, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1d277f06df4b6f640818be46d3ee96df, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -741,7 +742,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9f581aa4af48b9e479829ff2ad70bd18, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8c7ba12561509094e994e87bdc0db61e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

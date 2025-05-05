@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets._Scripts._Mappings;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Novel.VisualNovelFormatter;
@@ -47,6 +48,10 @@ namespace Tests.PlayMode
         [UnityTest]
         public IEnumerator ImportNovel()
         {
+            MappingManager mappingManager = MappingManager.Instance;
+            
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneNames.MainMenuScene);
+            
             // Hole Dir die Instanz einmal in eine lokale Variable:
             var novelReader = NovelReader.Instance;
 

@@ -470,7 +470,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   novelKite2CharacterController: {fileID: 0}
-  novelKite2CharacterController2: {fileID: 0}
   characterContainers:
   - {fileID: 3669613035356320353}
   decorations:
@@ -478,6 +477,7 @@ MonoBehaviour:
     container: {fileID: 3234276313403849665}
   - prefab: {fileID: 8411936371333490823, guid: ee198f3e5cc9689469d14e822d4417e7, type: 3}
     container: {fileID: 5558045549636132440}
+  characterControllers: []
 --- !u!1 &5558045549636132440
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,7 +1038,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1465545687914413273, guid: e6259436c6c867c42bad191121365efb, type: 3}
       propertyPath: m_Name
-      value: Character Prefab Presse
+      value: Character Prefab Journalistin
       objectReference: {fileID: 0}
     - target: {fileID: 4253796331781111194, guid: e6259436c6c867c42bad191121365efb, type: 3}
       propertyPath: m_SortingLayer
