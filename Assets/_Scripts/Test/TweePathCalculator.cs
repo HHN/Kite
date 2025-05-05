@@ -14,18 +14,18 @@ namespace Assets
     {
         [SerializeField] private string filePathNovel = "Assets/YourNovelFile.txt";
         [SerializeField] private string outPutNovel = "Assets/NovelFileOnlyBiases.txt";
-        Stack<string> nodesWithoutBias = new Stack<string>();
+        List<string> nodesWithoutBias = new List<string>();
         private Dictionary<string, (List<KeyValuePair<string,string>> Links, string Body)> _graph = new Dictionary<string, (List<KeyValuePair<string, string>> Links, string Body)>();
         private Dictionary<string, List<string>> _backwardsGraph = new Dictionary<string, List<string>>();
 
         private void Start()
         {
             ParseTweeFile(ReadTweeFile(filePathNovel));
-            Debug.Log("Number of Paths: " + CountPathsNonRecursive("Anfang"));
+            //Debug.Log("Number of Paths: " + CountPathsNonRecursive("Anfang"));
             UnifyEndNodes();
             CreateBackwardsGraph();
             CreateSubGraph();
-            Debug.Log("Number of Paths: " + CountPathsNonRecursive("Anfang"));
+            //Debug.Log("Number of Paths: " + CountPathsNonRecursive("Anfang"));
         }
 
         public string ReadTweeFile(string filePath)
@@ -95,20 +95,12 @@ namespace Assets
 
                     Debug.Log("Text: " + linkMatch.Groups[1].Value.Trim() + "Link: " + targetLink); //Show the content of the answer and the corresponding Link
                 }
-                if (!_graph.ContainsKey(nodeName))
+                if (!_graph.ContainsKey(nodeName) && nodeName != "StoryData" && nodeName != "StoryTitle")
                 {
                     _graph[nodeName] = (links, nodeBody);
-                    if(!nodeBody.Contains(">>Bias|"))
-                    {
-                        nodesWithoutBias.Push(nodeName);
-                    }
                 }
-            }/*
-            if (!_graph.ContainsKey("End"))
-            {
-                _graph["End"] = (new List<KeyValuePair<string, string>>(),"");
-            }*/
-            Debug.Log("Done");
+            }
+            Debug.Log("Parsed twee file");
         }
 
         public int CountPathsNonRecursive(string startNode)
@@ -143,25 +135,31 @@ namespace Assets
 
         public void CreateBackwardsGraph()
         {
-            foreach(string key in _graph.Keys)
+            _backwardsGraph = new Dictionary<string, List<string>>();
+            foreach (string node in _graph.Keys)
             {
-                var (links, _) = _graph[key];
-                if(!_graph.ContainsKey(key))
+                var (children, _) = _graph[node];
+                if (!_backwardsGraph.ContainsKey(node))
                 {
-                    _backwardsGraph[key] = new List<string>();
+                    _backwardsGraph[node] = new List<string>();
                 }
-                for(int i=0;i<links.Count;i++)
+                for(int i=0;i<children.Count;i++)
                 {
-                    if(!_backwardsGraph.ContainsKey(links[i].Key))
+                    if(!_backwardsGraph.ContainsKey(children[i].Key))
                     {
-                        _backwardsGraph[links[i].Key] = new List<string>();
+                        _backwardsGraph[children[i].Key] = new List<string>();
+                        _backwardsGraph[children[i].Key].Add(node);
                     }
-                    else if(!_backwardsGraph[links[i].Key].Contains(key))
+                    else
                     {
-                        _backwardsGraph[links[i].Key].Add(key);
+                        if (!_backwardsGraph[children[i].Key].Contains(node))
+                        {
+                            _backwardsGraph[children[i].Key].Add(node);
+                        }
                     }
                 }
             }
+            Debug.Log("Created backwards graph");
         }
         public void UnifyEndNodes()
         {
@@ -178,7 +176,7 @@ namespace Assets
             _graph.Remove(endNodes[0]);
             
             
-            foreach(string key in _graph.Keys.ToList())
+            foreach(string key in _graph.Keys.ToList()) //could use backwardsgraph as well
             {
                 var (links, _) = _graph[key];
                 var (_, body) = _graph[key];
@@ -186,42 +184,86 @@ namespace Assets
                 {
                     if(endNodes.Contains(links[i].Key) && links[i].Key != "End")
                     {
-                        links[i] = new KeyValuePair<string,string>("End",links[i].Value);
+                        links[i] = new KeyValuePair<string,string>("End",links[i].Value); //TODO: Unterscheiden, ob Bias-Node oder nicht. Dementsprechend doppelt ersetzen oder nicht
                     }
+                }
+                if (!body.Contains(">>Bias|") && key != "End") //creates a List of nodesWithoutBias
+                {
+                    nodesWithoutBias.Add(key);
                 }
                 _graph[key] = (links,body);
             }
-            Debug.Log("done");
+
+            foreach(string endNode in endNodes)
+            {
+                _graph.Remove(endNode);
+                nodesWithoutBias.Remove(endNode);
+            }
+
+            Debug.Log("Unified end nodes");
         }
+
         public void CreateSubGraph()
         {
-            foreach(string node in nodesWithoutBias)
+            foreach(string node in nodesWithoutBias) //All nodes without bias should be replaced
             {
-                List<string> backwardsLinks = _backwardsGraph[node];
-                foreach(string backwardsLink in backwardsLinks)
+                List<string> parents = _backwardsGraph[node];
+                foreach(string parent in parents)
                 {
-                    var (links, _) = _graph[backwardsLink];
-                    var (_, body) = _graph[backwardsLink];
-                    for(int i=0;i<links.Count;i++)
+                    var (links, _) = _graph[parent];
+                    var (_, body) = _graph[parent];
+
+                    foreach (KeyValuePair<string,string> link in links.ToList())
                     {
-                        if(links[i].Key == backwardsLink)
+                        if (link.Key == node)
                         {
                             List<string> linkKeys = links.Select(kvp => kvp.Key).ToList();
-                            if(!nodesWithoutBias.Contains(backwardsLink))
+                            if (!nodesWithoutBias.Contains(parent))
                             {
-                                var (newLinks, _ ) = _graph[node];
+                                var (newLinks, _) = _graph[node];
+                                links.Remove(link);
                                 links.AddRange(newLinks);
                             }
-                            else if(!linkKeys.Contains(backwardsLink)) //this is not correct, how do we find out if link has been added already?
+                            else
                             {
-                                var (newLinks, _ ) = _graph[node];
-                                links.AddRange(newLinks);
+                                if (!linkKeys.Contains(node))
+                                {
+                                    var (newLinks, _) = _graph[node];
+                                    links.Remove(link);
+                                    links.AddRange(newLinks);
+                                }
                             }
                         }
                     }
-                    _graph[backwardsLink] = (links,body);
+                    /*
+                    for (int i=0;i<links.Count;i++)
+                    {
+                        if(links[i].Key == node)
+                        {
+                            List<string> linkKeys = links.Select(kvp => kvp.Key).ToList();
+                            if(!nodesWithoutBias.Contains(parent))
+                            {
+                                var (newLinks, _ ) = _graph[node];
+                                links.Remove(links[i]);
+                                links.AddRange(newLinks);
+                            }
+                            else
+                            {
+                                if (!linkKeys.Contains(node))
+                                {
+                                    var (newLinks, _) = _graph[node];
+                                    links.Remove(links[i]);
+                                    links.AddRange(newLinks);
+                                }
+                            }
+                        }
+                    }*/
+                    _graph[parent] = (links,body);
                 }
+                _graph.Remove(node);
+                CreateBackwardsGraph();
             }
+            Debug.Log("Created subgraph");
         }
     }
 }
