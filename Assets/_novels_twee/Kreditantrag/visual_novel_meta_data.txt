@@ -9,6 +9,7 @@
   "talkingPartner01" : "Sachbearbeiter",
   "talkingPartner02" : "",
   "talkingPartner03" : "",
+  "isKiteNovel": true,
   "wordsToReplace": [
 	{"wordToReplace": ">>AngestellteSprichtCritical:<<", "replaceByValue": ">>Charakter01SprichtCritical:<<"},
 	{"wordToReplace": ">>AngestellteSprichtLaughing:<<", "replaceByValue": ">>Charakter01SprichtLaughing:<<"},

@@ -1,3 +1,4 @@
+using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 
 namespace Assets._Scripts.Managers

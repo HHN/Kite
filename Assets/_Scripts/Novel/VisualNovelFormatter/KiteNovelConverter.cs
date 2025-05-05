@@ -249,7 +249,8 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                     description = folder.NovelMetaData.DescriptionOfNovel,
                     context = folder.NovelMetaData.ContextForPrompt,
                     novelEvents = folder.NovelEventList,
-                    characters = characters
+                    characters = characters,
+                    isKiteNovel = folder.NovelMetaData.IsKiteNovel,
                 };
 
                 novels.Add(novel);

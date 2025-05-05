@@ -9,6 +9,7 @@
   "talkingPartner01" : "Vater",
   "talkingPartner02" : "Mutter",
   "talkingPartner03" : "",
+  "isKiteNovel": true,
   "wordsToReplace": [
 	{"wordToReplace": ">>SpielerinCharakterSpricht:<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"}
 	]

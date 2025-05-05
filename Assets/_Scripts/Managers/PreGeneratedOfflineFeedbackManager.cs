@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Assets._Scripts.Novel;
 using Assets._Scripts.OfflineAiFeedback;
 using Assets._Scripts.Player;
 

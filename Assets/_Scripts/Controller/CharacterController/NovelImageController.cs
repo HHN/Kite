@@ -190,8 +190,7 @@ namespace Assets._Scripts.Controller.CharacterController
 
         public void SetFaceExpression(int characterId, int expressionType)
         {
-            var controller = characterControllers
-                .FirstOrDefault(c => c != null && c.characterId == characterId);
+            var controller = characterControllers.FirstOrDefault(c => c != null && c.characterId == characterId);
 
             if (controller != null)
             {

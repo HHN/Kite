@@ -9,6 +9,7 @@
   "talkingPartner01" : "Kundin",
   "talkingPartner02" : "",
   "talkingPartner03" : "",
+  "isKiteNovel": true,
   "wordsToReplace": [
     ]
 }
