@@ -17,10 +17,10 @@ Novel_Eltern
 
 
 :: Altes Denken [Bias] {"position":"2300,1325","size":"100,100"}
->>Character1|Speaks|Rejecting<<
+>>Character1|Rejecting<<
 Das ist doch etwas ganzes anderes.
 >>--<<
->>Character2|Speaks|Dissatisfied<<
+>>Character2|Dissatisfied<<
 Als Frau wirst du dich trotzdem mehr um die Kinder kümmern müssen und es als Unternehmerin schwerer haben.
 >>--<<
 >>Bias|BiasesAgainstWomenWithChildren<<
@@ -42,7 +42,7 @@ Nachdem du dich gründlich informiert hast, hast du dich dazu entschlossen ein U
 
 
 :: Besorgt-Negativ [Bias] {"position":"1725,1525","size":"100,100"}
->>Character1|Speaks|Scared<<
+>>Character1|Scared<<
 Wichtig ist, dass du die Risiken im Blick hast. Du musst dann ja auch oft verhandeln.
 >>--<<
 >>Bias|GenderSpecificStereotypes<<
@@ -51,7 +51,7 @@ Wichtig ist, dass du die Risiken im Blick hast. Du musst dann ja auch oft verhan
 
 
 :: Besorgt-Negativ II [Bias] {"position":"1725,1675","size":"100,100"}
->>Character2|Speaks|Smiling<<
+>>Character2|Smiling<<
 Vielleicht suchst du dir einen Geschäftspartner und überlässt dem diese harten Verhandlungsgespräche?
 >>--<<
 >>Bias|GenderSpecificStereotypes<<
@@ -64,7 +64,7 @@ Vielleicht suchst du dir einen Geschäftspartner und überlässt dem diese harte
 
 
 :: Bruder [Bias] {"position":"2575,1475","size":"100,100"}
->>Character1|Speaks|Scared<<
+>>Character1|Scared<<
 Na ja, als Mann hat er wohl einen besseren Geschäftssinn und setzt sich bestimmt besser durch als du.
 >>--<<
 >>Bias|UndervaluationFemaleManagedCompany<<
@@ -77,14 +77,14 @@ Na ja, als Mann hat er wohl einen besseren Geschäftssinn und setzt sich bestimm
 
 
 :: Eher Negativ {"position":"2050,1000","size":"100,100"}
->>Character2|Speaks|Rejecting<<
+>>Character2|Rejecting<<
 Wir machen uns Sorgen um dich, und du ignorierst komplett, was wir sagen. 
 
 [[Eher Negativ II]]
 
 
 :: Eher Negativ II [Bias] {"position":"1900,1150","size":"100,100"}
->>Character1|Speaks|Critical<<
+>>Character1|Critical<<
 Du wirst es bereuen, wenn du in diese Unternehmensgründung reinstolperst und am Ende alles verlierst.
 >>--<<
 >>Bias|BiasInThePerceptionOfLeadershipSkills<<
@@ -98,7 +98,7 @@ Du wirst es bereuen, wenn du in diese Unternehmensgründung reinstolperst und am
 
 
 :: Ersparnis [Bias] {"position":"825,600","size":"100,100"}
->>Character1|Speaks|Critical<<
+>>Character1|Critical<<
 Klingt sinnvoll, aber vergiss nicht, dass so eine Gründung oft mehr kostet als gedacht. Was ist, wenn du nicht genug Finanzierung erhältst?
 >>--<<
 >>Bias|AccessToFinancing<<
@@ -111,7 +111,7 @@ Klingt sinnvoll, aber vergiss nicht, dass so eine Gründung oft mehr kostet als 
 
 
 :: Familie [Bias] {"position":"1100,1075","size":"100,100"}
->>Character2|Speaks|Questioning<<
+>>Character2|Questioning<<
 Und was ist mit Familie? Du willst doch später Kinder haben, oder nicht?
 >>--<<
 >>Bias|ExpectationsRegardingFamilyPlanning<<
@@ -124,7 +124,7 @@ Und was ist mit Familie? Du willst doch später Kinder haben, oder nicht?
 
 
 :: Herausforderung {"position":"2000,600","size":"100,100"}
->>Character2|Speaks|Critical<<
+>>Character2|Critical<<
 Also wenn ich ehrlich bin, finde ich die Idee nicht so gut. Lass es lieber.
 
 [[Das kriege ich schon hin, vor allem mit der richtigen Planung und der Unterstützung.->Neutral]]
@@ -135,7 +135,7 @@ Also wenn ich ehrlich bin, finde ich die Idee nicht so gut. Lass es lieber.
 
 
 :: Kein Kind: Sexismus [Bias] {"position":"2300,1175","size":"100,100"}
->>Character2|Speaks|Scared<<
+>>Character2|Scared<<
 Natürlich spielt das eine Rolle. Schließlich nimmt die Kinderversorgung viel Zeit in Anspruch, das solltest du nicht unterschätzen.
 >>--<<
 >>Bias|BiasesAgainstWomenWithChildren<<
@@ -150,10 +150,10 @@ Natürlich spielt das eine Rolle. Schließlich nimmt die Kinderversorgung viel Z
 
 
 :: Keine Kinder [Bias] {"position":"2450,1325","size":"100,100"}
->>Character2|Speaks|Rejecting<<
+>>Character2|Rejecting<<
 Das denkst du jetzt. Warte noch ein paar Jahre, dann änderst du deine Meinung. Aber selbst ohne Kinder solltest du dir das nochmal überlegen. 
 >>--<<
->>Character1|Speaks|Laughing<<
+>>Character1|Laughing<<
 Ach, wie wäre es denn, wenn du mal mit deinem Bruder sprichst. Dann sind die Chancen bestimmt besser, dass dein Vorhaben erfolgreich wird.
 >>--<<
 >>Bias|GenderSpecificStereotypes<<
@@ -164,17 +164,17 @@ Ach, wie wäre es denn, wenn du mal mit deinem Bruder sprichst. Dann sind die Ch
 
 
 :: Kind: Besorgt-Negativ {"position":"2050,1325","size":"100,100"}
->>Character2|Speaks|Rejecting<<
+>>Character2|Rejecting<<
 Wenn Kinder mit im Spiel sind, ist es nochmal ein anderes Risiko.
 
 [[Besorgt-Negativ]]
 
 
 :: Kind: Sexismus [Bias] {"position":"2150,1175","size":"100,100"}
->>Character1|Speaks|Scared<<
+>>Character1|Scared<<
 Nein, so war das nicht gemeint, aber wie stellst du es dir denn vor? Kinder haben und ein Unternehmen führen! 
 >>--<<
->>Character1|Speaks|Dissatisfied<<
+>>Character1|Dissatisfied<<
 Das alles unter einen Hut zu bringen, ist echt nicht leicht.
 >>--<<
 >>Bias|BiasesAgainstWomenWithChildren<<
@@ -187,7 +187,7 @@ Das alles unter einen Hut zu bringen, ist echt nicht leicht.
 
 
 :: Kinder [Bias] {"position":"2175,1325","size":"100,100"}
->>Character2|Speaks|Dissatisfied<<
+>>Character2|Dissatisfied<<
 Wir haben gesehen, wie stressig es sein kann, ein Unternehmen zu führen. Ein Freund hat es versucht und es war extrem anstrengend für die ganze Familie. 
 >>--<<
 >>Bias|WorkLifeBalanceExpectations<<
@@ -196,7 +196,7 @@ Wir haben gesehen, wie stressig es sein kann, ein Unternehmen zu führen. Ein Fr
 
 
 :: Kredite [Bias] {"position":"1375,600","size":"100,100"}
->>Character1|Speaks|Critical<<
+>>Character1|Critical<<
 Kredite könnten zwar eine Möglichkeit sein, aber vergiss die Zinsen und Rückzahlung nicht. Bist du denn sicher, dass du diese finanzielle Belastung stemmen kannst?
 >>--<<
 >>Bias|SocioeconomicBiases<<
@@ -209,7 +209,7 @@ Kredite könnten zwar eine Möglichkeit sein, aber vergiss die Zinsen und Rückz
 
 
 :: Meine Entscheidung [Bias] {"position":"2150,750","size":"100,100"}
->>Character1|Speaks|Critical<<
+>>Character1|Critical<<
 Glaubst du wirklich, du könntest ein Unternehmen führen? Du solltest realistischer sein und dir eine vernünftige Karriere suchen, anstatt diese Fantasie zu verfolgen. 
 >>--<<
 
@@ -219,7 +219,7 @@ Glaubst du wirklich, du könntest ein Unternehmen führen? Du solltest realistis
 
 
 :: Meine Entscheidung II [Bias] {"position":"2150,900","size":"100,100"}
->>Character2|Speaks|Questioning<<
+>>Character2|Questioning<<
 Und was ist denn mit Familie? Du willst doch später Kinder haben, oder nicht?
 >>--<<
 >>Bias|ExpectationsRegardingFamilyPlanning<<
@@ -230,10 +230,10 @@ Und was ist denn mit Familie? Du willst doch später Kinder haben, oder nicht?
 
 
 :: Mentorin {"position":"2600,600","size":"100,100"}
->>Character2|Speaks|Smiling<<
+>>Character2|Smiling<<
 Gut, dass du vorbereitet bist und Unterstützung hast. Aber denk daran, dass nicht unbedingt alles nach Plan verläuft.
 >>--<<
->>Character1|Speaks|Rejecting<<
+>>Character1|Rejecting<<
 Was machst du, wenn es mal Rückschläge gibt?
 
 [[Ich weiß, dass es nicht immer perfekt läuft, aber ich lerne daraus und passe mich an, damit ich das machen kann, was mir Spaß macht.->Positiv]]
@@ -244,10 +244,10 @@ Was machst du, wenn es mal Rückschläge gibt?
 
 
 :: Negativ [Bias] {"position":"2825,1475","size":"100,100"}
->>Character1|Speaks|Critical<<
+>>Character1|Critical<<
 Denk lieber noch einmal darüber nach. Es ist naiv zu glauben, dass du ohne Erfahrung ein Unternehmen führen kannst.
 >>--<<
->>Character1|Speaks|Smiling<<
+>>Character1|Smiling<<
 Oder vielleicht übernimmst du den kreativen Teil und überlässt die technischen Geschäftsaspekte lieber einem Partner?
 >>--<<
 >>Bias|BiasInThePerceptionOfLeadershipSkills<<
@@ -258,23 +258,23 @@ Oder vielleicht übernimmst du den kreativen Teil und überlässt die technische
 
 
 :: Negativ End {"position":"2825,1800","size":"100,100"}
->>Character2|Speaks|Smiling<<
+>>Character2|Smiling<<
 Wir können ja nochmal darüber sprechen.
 >>--<<
 >>Player<<
 Ja, mal schauen. Ich melde mich. Bis dann.
 >>--<<
->>Character1|Speaks|Smiling<<
+>>Character1|Smiling<<
 Tschüss.
 >>--<<
->>Character2|Speaks|Smiling<<
+>>Character2|Smiling<<
 Mach's gut.
 >>--<<
 >>End<<
 
 
 :: Negativ II {"position":"2750,1650","size":"100,100"}
->>Character2|Speaks|Rejecting<<
+>>Character2|Rejecting<<
 Na gut. Vielleicht solltest du noch eine Nacht darüber schlafen.
 >>--<<
 >>Player<<
@@ -288,7 +288,7 @@ Dann erzähle ich lieber nicht, dass ich diese Woche noch einen Termin...
 
 
 :: Negativ: Benevolenter Sexismus {"position":"2900,1650","size":"100,100"}
->>Character2|Speaks|Rejecting<<
+>>Character2|Rejecting<<
 Na gut. Vielleicht solltest du noch eine Nacht darüber schlafen.
 >>--<<
 >>Player<<
@@ -302,10 +302,10 @@ Dann erzähle ich lieber nicht, dass ich diese Woche noch einen Termin...
 
 
 :: Neutral {"position":"1325,1575","size":"100,100"}
->>Character1|Speaks|Critical<<
+>>Character1|Critical<<
 Na ja, hoffentlich klappt das alles.
 >>--<<
->>Character2|Speaks|Smiling<<
+>>Character2|Smiling<<
 Wir drücken dir auf jeden Fall die Daumen.
 >>--<<
 >>Player<<
@@ -319,27 +319,27 @@ Danke. Ah, was ich dir auch noch sagen wollte. Ich habe diese Woche noch einen T
 
 
 :: Neutral End a {"position":"1250,1875","size":"100,100"}
->>Character2|Speaks|Smiling<<
+>>Character2|Smiling<<
 Alles klar, und besuch uns mal wieder. 
 >>--<<
->>Character1|Speaks|Smiling<<
+>>Character1|Smiling<<
 Bis dann.
 >>--<<
 >>End<<
 
 
 :: Neutral End b {"position":"1400,1875","size":"100,100"}
->>Character2|Speaks|Smiling<<
+>>Character2|Smiling<<
 Oh, so war das nicht gemeint! Besuch uns mal wieder. 
 >>--<<
->>Character1|Speaks|Smiling<<
+>>Character1|Smiling<<
 Ja, komm doch wieder mal vorbei. Mach's gut!
 >>--<<
 >>End<<
 
 
 :: Neutral-Negativ {"position":"2600,750","size":"100,100"}
->>Character2|Speaks|Scared<<
+>>Character2|Scared<<
 Natürlich, aber ich mache mir einfach Sorgen und möchte, dass du an alles gedacht hast.
 
 [[Das verstehe ich, aber es wäre schön, wenn ihr euch auch einfach für mich freuen könntest.->Neutral]]
@@ -348,7 +348,7 @@ Natürlich, aber ich mache mir einfach Sorgen und möchte, dass du an alles geda
 
 
 :: Neutral-Termin [Bias] {"position":"1325,1725","size":"100,100"}
->>Character2|Speaks|Smiling<<
+>>Character2|Smiling<<
 Da bin ich gespannt. Denk dran, die Leute werden sich wohler fühlen, mit dir zu arbeiten, wenn du freundlich und aufgeschlossen auftrittst. Versuch also nicht so dominant zu wirken.
 >>--<<
 >>Bias|TightropeBias<<
@@ -359,7 +359,7 @@ Da bin ich gespannt. Denk dran, die Leute werden sich wohler fühlen, mit dir zu
 
 
 :: Nur das Beste {"position":"2175,1475","size":"100,100"}
->>Character2|Speaks|Scared<<
+>>Character2|Scared<<
 Wir wollen nur, dass du das Beste für deine Zukunft hast.
 
 [[Viele haben erfolgreich ein Unternehmen gegründet und habeng leichzeitig eine Familie. Ich schaffe das auch.->Neutral]]
@@ -370,10 +370,10 @@ Wir wollen nur, dass du das Beste für deine Zukunft hast.
 
 
 :: Positiv {"position":"800,1100","size":"100,100"}
->>Character1|Speaks|Smiling<<
+>>Character1|Smiling<<
 Es ist echt schön, dass du so engagiert und vorbereitet bist.
 >>--<<
->>Character2|Speaks|Laughing<<
+>>Character2|Laughing<<
 Wir sind echt stolz auf dich! Und vergiss nicht, wir sind immer da, falls du Hilfe brauchst.
 >>--<<
 >>Player<<
@@ -387,17 +387,17 @@ Danke, das bedeutet mir viel. Übrigens, ich habe diese Woche einen Termin...
 
 
 :: Positiv-Termin {"position":"800,1250","size":"100,100"}
->>Character1|Speaks|SmilingBig<<
+>>Character1|SmilingBig<<
 Wir freuen uns so für dich! Erzähl dann, wie es verlaufen ist, ja?
 
 [[Positiv: Benevolenter Sexismus]]
 
 
 :: Positiv-Termin End {"position":"900,1550","size":"100,100"}
->>Character2|Speaks|Smiling<<
+>>Character2|Smiling<<
 Alles klar, besuch uns mal wieder!
 >>--<<
->>Character1|Speaks|SmilingBig<<
+>>Character1|SmilingBig<<
 Bis dann!
 
 [[Nochmal danke und bis dann.->End]]
@@ -406,7 +406,7 @@ Bis dann!
 
 
 :: Positiv: Benevolenter Sexismus [Bias] {"position":"800,1400","size":"100,100"}
->>Character2|Speaks|Smiling<<
+>>Character2|Smiling<<
 Und du kannst auch deinen weiblichen Charme nutzen! Dann helfen Leute dir noch viel lieber.
 
 >>--<<
@@ -418,20 +418,20 @@ Und du kannst auch deinen weiblichen Charme nutzen! Dann helfen Leute dir noch v
 
 
 :: Positiv: Benevolenter Sexismus II {"position":"700,1550","size":"100,100"}
->>Character2|Speaks|Scared<<
+>>Character2|Scared<<
 Du hast ja recht. Da habe ich nicht richtig darüber nachgedacht.
 >>--<<
->>Character1|Speaks|Smiling<<
+>>Character1|Smiling<<
 Melde dich einfach nach dem Termin, ja?
 
 [[Klar, ich melde mich dann. Ich muss auch schon wieder weiter.->Positiv-Termin End]]
 
 
 :: Was? Warum? {"position":"2000,750","size":"100,100"}
->>Character2|Speaks|Scared<<
+>>Character2|Scared<<
 Ich möchte nicht, dass du dich in etwas stürzt, das möglicherweise keine Zukunft hat. 
 >>--<<
->>Character1|Speaks|Critical<<
+>>Character1|Critical<<
 Das ist riskant und klingt irgendwie nach einer Schnapsidee.
 
 [[Eine Schnapsidee also. Ihr denkt, ich schaffe das nicht.->Eher Negativ]]
@@ -440,7 +440,7 @@ Das ist riskant und klingt irgendwie nach einer Schnapsidee.
 
 
 :: Weiter {"position":"1050,375","size":"100,100"}
->>Character1|Speaks|Smiling<<
+>>Character1|Smiling<<
 Hallo! Schön, dass du anrufst. Wie geht es dir denn?
 
 [[Weiter1]]
@@ -455,10 +455,10 @@ Hallo, Papa. Mir geht es gut. Ist Mama auch da? Ich rufe an, weil ich euch etwas
 
 
 :: Weiter2 {"position":"1350,375","size":"100,100"}
->>Character1|Speaks|Smiling<<
+>>Character1|Smiling<<
 Warte kurz. Ich hole sie.
 >>--<<
->>Character2|Speaks|Smiling<<
+>>Character2|Smiling<<
 Hallo! Wir haben das Telefon auf laut gestellt. Papa hat schon erzählt, dass du uns etwas Wichtiges sagen möchtest. Worum geht's denn?
 [[Weiter3]]
 
@@ -467,17 +467,17 @@ Hallo! Wir haben das Telefon auf laut gestellt. Papa hat schon erzählt, dass du
 >>Player<<
 Ich habe beschlossen, mich selbstständig zu machen und mein eigenes Unternehmen zu gründen.
 >>--<<
->>Character2|Speaks|Amazed<<
+>>Character2|Amazed<<
 Oh, das sind ja Neuigkeiten!
 
 [[Weiter4]]
 
 
 :: Weiter4 {"position":"1650,375","size":"100,100"}
->>Character1|Speaks|Questioning<<
+>>Character1|Questioning<<
 Das ist wirklich interessant und du hast sicher einen Geschäftsplan, aber wie willst du z. B. dein Vorhaben finanzieren?
 >>--<<
->>Character2|Speaks|Rejecting<<
+>>Character2|Rejecting<<
 Und bist du sicher, dass das eine gute Idee ist? Ich meine es nur gut, aber es wäre vielleicht klug, noch ein paar Jahre Erfahrung zu sammeln, bevor du so etwas Großes angehst.
 
 [[Ich fange mit meinen Ersparnissen an und bemühe mich um weitere Finanzierungsmöglichkeiten.->Ersparnis]]
@@ -490,10 +490,10 @@ Und bist du sicher, dass das eine gute Idee ist? Ich meine es nur gut, aber es w
 
 
 :: Zu locker [Bias] {"position":"2400,925","size":"100,100"}
->>Character1|Speaks|Critical<<
+>>Character1|Critical<<
 Ich glaube, du gehst das ein bisschen zu locker an.
 >>--<<
->>Character2|Speaks|Questioning<<
+>>Character2|Questioning<<
 Und hast du mal über deine Familienplanung nachgedacht? Du willst doch später Kinder haben, oder nicht?
 >>--<<
 >>Bias|ExpectationsRegardingFamilyPlanning<<
@@ -501,9 +501,3 @@ Und hast du mal über deine Familienplanung nachgedacht? Du willst doch später 
 [[Also, weil ich mal Kinder haben will, soll ich kein Erfolg haben können?->Kind: Sexismus]]
 
 [[Wer sagt denn, dass ich Kinder will, und selbst wenn, was soll's?->Kein Kind: Sexismus]]
-
-
-
-
-
-
