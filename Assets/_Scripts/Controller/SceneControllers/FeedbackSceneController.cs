@@ -15,7 +15,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Assets._Scripts.ServerCommunication;
 using Assets._Scripts.ServerCommunication.ServerCalls;
-using System.Runtime.InteropServices;
 
 namespace Assets._Scripts.Controller.SceneControllers
 {
