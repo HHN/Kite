@@ -102,6 +102,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             
             foreach (DialogHistoryEntry dataObject in entries)
             {
+
                 AddEntry(dataObject);
             }
 

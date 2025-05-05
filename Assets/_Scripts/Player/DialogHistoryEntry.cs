@@ -50,5 +50,11 @@ namespace Assets._Scripts.Player
         {
             this .completion = completion;
         }
+
+        public string GetDialogWithReplacedCharacterDesignation()
+        {
+            string result = dialog.Replace("Player:", "Du:");
+            return result;
+        }
     }
 }

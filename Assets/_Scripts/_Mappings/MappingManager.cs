@@ -29,8 +29,6 @@ namespace Assets._Scripts._Mappings
             MappingFileBias = Path.Combine(Application.streamingAssetsPath, "BiasMapping.txt");
             MappingFileFaceExpression = Path.Combine(Application.streamingAssetsPath, "FaceExpressionMapping.txt");
             MappingFileCharacter = Path.Combine(Application.streamingAssetsPath, "CharacterMapping.txt");
-            Application.ExternalCall("logMessage", "Paths: " + MappingFileBias + " " + MappingFileFaceExpression + " " + MappingFileCharacter);
-            Application.ExternalCall("logMessage", "Calling Loading Functions");
 #else
             // For Unity Editor and other platforms, use the original path
             MappingFileBias = Path.Combine(Application.dataPath, "_Scripts/_Mappings/BiasMapping.txt");
@@ -70,7 +68,6 @@ namespace Assets._Scripts._Mappings
 #if UNITY_WEBGL
             // For WebGL, use UnityWebRequest to load the file asynchronously
             UnityWebRequest www = UnityWebRequest.Get(MappingFileBias);
-            Application.ExternalCall("logMessage", "MappingFileBias: " + MappingFileBias);
             www.SendWebRequest().completed += (asyncOperation) =>
             {
                 if (www.result == UnityWebRequest.Result.Success)
@@ -105,7 +102,6 @@ namespace Assets._Scripts._Mappings
 
 #if UNITY_WEBGL
             UnityWebRequest www = UnityWebRequest.Get(MappingFileFaceExpression);
-            Application.ExternalCall("logMessage", "MappingFileFaceExpression: " + MappingFileFaceExpression);
             www.SendWebRequest().completed += (asyncOperation) =>
             {
                 if (www.result == UnityWebRequest.Result.Success)
@@ -139,7 +135,6 @@ namespace Assets._Scripts._Mappings
 
 #if UNITY_WEBGL
             UnityWebRequest www = UnityWebRequest.Get(MappingFileCharacter);
-            Application.ExternalCall("logMessage", "MappingFileCharacter: " + MappingFileCharacter);
             www.SendWebRequest().completed += (asyncOperation) =>
             {
                 if (www.result == UnityWebRequest.Result.Success)
@@ -169,15 +164,10 @@ namespace Assets._Scripts._Mappings
         // Helper method to process mapping file (for Bias, FaceExpression, and Character mappings)
         private static void ProcessMappingFile(string[] lines, ref Dictionary<string, string> mapping)
         {
-            Debug.Log("ProcessMappingFile called"); // Log, um zu sehen, dass die Funktion aufgerufen wird.
-
             int addedPairsCount = 0; // Zähler für hinzugefügte Paare.
 
             foreach (string line in lines)
             {
-                // Logge den Inhalt jeder Zeile
-                Debug.Log("Processing line: " + line);
-
                 if (string.IsNullOrWhiteSpace(line))
                 {
                     continue; // Leere Zeilen überspringen.
@@ -188,9 +178,6 @@ namespace Assets._Scripts._Mappings
                 {
                     string key = line.Substring(0, colonIndex).Trim();
                     string value = line.Substring(colonIndex + 1).Trim();
-
-                    // Logge die gefundenen Key-Value-Paare
-                    Debug.Log("Parsed key: " + key + ", value: " + value);
 
                     if (!string.IsNullOrEmpty(key) && !mapping.ContainsKey(key))
                     {
@@ -203,9 +190,6 @@ namespace Assets._Scripts._Mappings
                     Debug.LogWarning("Invalid mapping line (missing colon): " + line);
                 }
             }
-
-            // Ausgabe, wie viele Paare hinzugefügt wurden
-            Debug.Log("Added " + addedPairsCount + " key-value pairs.");
         }
 
 
@@ -325,13 +309,6 @@ namespace Assets._Scripts._Mappings
             if (character == -1)
             {
                 return "";
-            }
-            Debug.Log("character: " + character);
-            Debug.Log("Mapping: " + _characterMapping.FirstOrDefault(x => x.Value == character).Key);
-            Debug.Log($"Anzahl der Charakter-Mappings: {_characterMapping.Count}");
-            foreach (var pair in _characterMapping)
-            {
-                Debug.Log($"Key: {pair.Key}, Value: {pair.Value}");
             }
             return _characterMapping.FirstOrDefault(x => x.Value == character).Key;
         }

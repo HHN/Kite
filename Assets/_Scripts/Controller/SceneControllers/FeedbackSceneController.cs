@@ -83,10 +83,6 @@ namespace Assets._Scripts.Controller.SceneControllers
 
                 string dialog = PromptManager.Instance().GetDialog();
 
-#if UNITY_WEBGL
-                Application.ExternalCall("logMessage", "string dialog = PromptManager.Instance().GetDialog();" + dialog);
-#endif
-
                 dialog = dialog.Replace("Bitte beachte, dass kein Teil des Dialogs in das Feedback darf.", "");
 
                 FeedbackHandler feedbackHandler = new FeedbackHandler()
@@ -239,9 +235,6 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         public void OnSuccess(Response response)
         {
-#if UNITY_WEBGL
-                Application.ExternalCall("logMessage", "public void OnSuccess(Response response)" + response);
-#endif
             SaveDialogToHistory(response.GetCompletion());
 
             if (!FeedbackSceneController.IsNullOrDestroyed())
@@ -255,10 +248,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             DialogHistoryEntry dialogHistoryEntry = new DialogHistoryEntry();
             dialogHistoryEntry.SetNovelId(ID);
             dialogHistoryEntry.SetDialog(Dialog);
-            Debug.Log("DIALOG: " + Dialog);
-#if UNITY_WEBGL
-                Application.ExternalCall("logMessage", Dialog);
-#endif
             dialogHistoryEntry.SetCompletion(response.Trim());
             DateTime now = DateTime.Now;
             string formattedDateTime = now.ToString("ddd | dd.MM.yyyy | HH:mm", _culture);

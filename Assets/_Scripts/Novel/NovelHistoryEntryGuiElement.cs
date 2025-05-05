@@ -47,7 +47,7 @@ namespace Assets._Scripts.Novel
         {
             this.dialogHistoryEntry = dialogHistoryEntry;
             headButtonText.text = dialogHistoryEntry.GetDateAndTime();
-            dialogText.text = dialogHistoryEntry.GetDialog();
+            dialogText.text = dialogHistoryEntry.GetDialogWithReplacedCharacterDesignation();
             aiFeedbackText.text = dialogHistoryEntry.GetCompletion().Replace("#", "").Replace("*", "").Trim();
         }
 
