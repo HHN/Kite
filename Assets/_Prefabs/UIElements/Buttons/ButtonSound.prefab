@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2815634607838017244}
-  - component: {fileID: 4270161733045752855}
   - component: {fileID: -3403412442418869309}
   m_Layer: 0
   m_Name: ButtonSound
@@ -33,18 +32,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4270161733045752855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5665505778772664329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c399c2f4ddf3b1e48ac05d08b8283dec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-3403412442418869309
 MonoBehaviour:
   m_ObjectHideFlags: 0

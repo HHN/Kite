@@ -9,6 +9,7 @@
   "talkingPartner01" : "Investor",
   "talkingPartner02" : "",
   "talkingPartner03" : "",
+  "isKiteNovel": true,
   "wordsToReplace": [
     {"wordToReplace": ">>SpielerinCharakterSpricht:<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"}
 	]

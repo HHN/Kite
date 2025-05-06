@@ -72,7 +72,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void InitializeScene()
         {
             DontDestroyOnLoad(novelLoader);
-            
+
             //AnalyticsServiceHandler.Instance().StartAnalytics();  //TODO: Replace with custom Analytics
             PlayerDataManager.Instance().LoadAllPlayerPrefs();
             BackStackManager.Instance().Clear();
@@ -91,7 +91,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             if (privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted())
             {
                 termsAndConditionPanel.SetActive(false);
-                
+
 
                 if (privacyManager.IsDataCollectionAccepted())
                 {
@@ -225,20 +225,10 @@ namespace Assets._Scripts.Controller.SceneControllers
                     // Convert the novel ID to the corresponding enum
                     VisualNovelNames novelNames = VisualNovelNamesHelper.ValueOf((int)novel.id);
 
-                    PlayManager.Instance()
-                        .SetVisualNovelToPlay(novel); // Set the novel to be played in the PlayManager          
-                    PlayManager.Instance()
-                        .SetForegroundColorOfVisualNovelToPlay(
-                            FoundersBubbleMetaInformation
-                                .GetForegroundColorOfNovel(novelNames)); // Set the foreground color for the novel
-                    PlayManager.Instance()
-                        .SetBackgroundColorOfVisualNovelToPlay(
-                            FoundersBubbleMetaInformation
-                                .GetBackgroundColorOfNovel(novelNames)); // Set the background color for the novel
-                    PlayManager.Instance()
-                        .SetDisplayNameOfNovelToPlay(
-                            FoundersBubbleMetaInformation
-                                .GetDisplayNameOfNovelToPlay(novelNames)); // Set the display name for the novel
+                    PlayManager.Instance().SetVisualNovelToPlay(novel); // Set the novel to be played in the PlayManager          
+                    PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetColorOfNovel(novelNames)); // Set the foreground color for the novel
+                    PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetColorOfNovel(novelNames)); // Set the background color for the novel
+                    PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelNames)); // Set the display name for the novel
 
                     // Load the PlayNovelScene
                     SceneLoader.LoadPlayNovelScene();

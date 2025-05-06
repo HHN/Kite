@@ -754,13 +754,11 @@ namespace Assets._Scripts.Controller.SceneControllers
         public void HandleEndNovelEvent()
         {
             AnalyticsServiceHandler.Instance().SendNovelPlayTime();
-
-            PlayRecordManager.Instance()
-                .IncreasePlayCounterForNovel(VisualNovelNamesHelper.ValueOf((int)novelToPlay.id));
-
-            PlayThroughCounterAnimationManager.Instance().SetAnimation(true, VisualNovelNamesHelper.ValueOf((int)novelToPlay.id));
+            
+            VisualNovelNames currentNovel = VisualNovelNamesHelper.ValueOf((int)novelToPlay.id);
 
             PlayerDataManager.Instance().SetNovelHistory(playThroughHistory);
+            PlayThroughCounterAnimationManager.Instance().SetAnimation(true, currentNovel);
 
             // Check if the current novel is the introductory dialogue
             if (novelToPlay.title == "Einstiegsdialog")
@@ -769,7 +767,8 @@ namespace Assets._Scripts.Controller.SceneControllers
                 SceneLoader.LoadFoundersBubbleScene();
                 return; // Exit the method to prevent further scenes from being loaded
             }
-
+            
+            PlayRecordManager.Instance().IncreasePlayCounterForNovel(currentNovel);
             SceneLoader.LoadFeedbackScene();
         }
 

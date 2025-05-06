@@ -3,7 +3,7 @@
         {
             "id": 14,
             "folderName": "",
-            "title": "Vertrieb",
+            "title": "Vertrieb (AI_TRAQC)",
             "description": "Im Rahmen Deiner Aufgabe, KI in der Firma einzuführen, gehst du bei einem Mitarbeiter aus Vertrieb und Marketing vorbei, um mögliche Einsatzbereiche und Potenziale zu besprechen.",
             "feedback": "",
             "context": "",
@@ -5982,7 +5982,8 @@
             "playedPath": "",
             "characters": [
                 "Investor"
-            ]
+            ],
+            "isKiteNovel": false
         },
         {
             "id": 13,
@@ -11216,7 +11217,8 @@
             "playedPath": "",
             "characters": [
                 "Intro"
-            ]
+            ],
+            "isKiteNovel": true
         },
         {
             "id": 2,
@@ -20471,7 +20473,8 @@
             "characters": [
                 "Vater",
                 "Mutter"
-            ]
+            ],
+            "isKiteNovel": true
         },
         {
             "id": 11,
@@ -38095,7 +38098,8 @@
             "playedPath": "",
             "characters": [
                 "Kundin"
-            ]
+            ],
+            "isKiteNovel": true
         },
         {
             "id": 9,
@@ -44139,7 +44143,8 @@
             "playedPath": "",
             "characters": [
                 "Investor"
-            ]
+            ],
+            "isKiteNovel": true
         },
         {
             "id": 10,
@@ -63833,7 +63838,8 @@
             "playedPath": "",
             "characters": [
                 "Sachbearbeiter"
-            ]
+            ],
+            "isKiteNovel": true
         },
         {
             "id": 4,
@@ -67927,7 +67933,8 @@
             "playedPath": "",
             "characters": [
                 "Notarin"
-            ]
+            ],
+            "isKiteNovel": true
         },
         {
             "id": 3,
@@ -77961,7 +77968,8 @@
             "playedPath": "",
             "characters": [
                 "Journalistin"
-            ]
+            ],
+            "isKiteNovel": true
         },
         {
             "id": 6,
@@ -89465,7 +89473,8 @@
             "playedPath": "",
             "characters": [
                 "Vermieter"
-            ]
+            ],
+            "isKiteNovel": true
         }
     ]
 }

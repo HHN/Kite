@@ -118,10 +118,10 @@ namespace Assets._Scripts.Novel
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
             PlayManager.Instance()
                 .SetForegroundColorOfVisualNovelToPlay(
-                    FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
+                    FoundersBubbleMetaInformation.GetColorOfNovel(visualNovelName));
             PlayManager.Instance()
                 .SetBackgroundColorOfVisualNovelToPlay(
-                    FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+                    FoundersBubbleMetaInformation.GetColorOfNovel(visualNovelName));
             PlayManager.Instance()
                 .SetDisplayNameOfNovelToPlay(
                     FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));

@@ -16,6 +16,7 @@ namespace Assets._Scripts.Novel
         public Dictionary<string, string> GlobalVariables;
         public string playedPath;
         public List<string> characters;
+        public bool isKiteNovel;
 
         public void AddGlobalVariable(string name, string value)
         {
@@ -99,7 +100,8 @@ namespace Assets._Scripts.Novel
                 description = description,
                 feedback = feedback,
                 context = context,
-                playedPath = playedPath
+                playedPath = playedPath,
+                isKiteNovel = isKiteNovel
             };
 
             if (novelEvents != null)

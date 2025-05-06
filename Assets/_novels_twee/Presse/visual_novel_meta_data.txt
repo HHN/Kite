@@ -9,6 +9,7 @@
   "talkingPartner01" : "Journalistin",
   "talkingPartner02" : "",
   "talkingPartner03" : "",
+  "isKiteNovel": true,
   "wordsToReplace": [
 	{"wordToReplace": ">>JournalistinSprichtFriendly:<<", "replaceByValue": ">>Charakter01SprichtLaecheln:<<"},
 	{"wordToReplace": ">>SpielerinCharakterSpricht:<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"}	

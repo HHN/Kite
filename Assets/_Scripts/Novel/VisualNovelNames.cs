@@ -1,4 +1,4 @@
-namespace Assets._Scripts.Player
+namespace Assets._Scripts.Novel
 {
     public enum VisualNovelNames
     {
@@ -48,6 +48,33 @@ namespace Assets._Scripts.Player
                 14 => "Vertrieb",
                 _ => ""
             };
+        }
+        
+        public static VisualNovelNames ValueByString(string name)
+        {
+            switch (name)
+            {
+                case "Eltern":
+                    return VisualNovelNames.ElternNovel;
+                case "Presse":
+                    return VisualNovelNames.PresseNovel;
+                case "Notarin":
+                    return VisualNovelNames.NotariatNovel;
+                case "Vermieter":
+                    return VisualNovelNames.VermieterNovel;
+                case "Investor":
+                    return VisualNovelNames.InvestorNovel;
+                case "Bankkredit":
+                    return VisualNovelNames.BankKreditNovel;
+                case "Honorar":
+                    return VisualNovelNames.HonorarNovel;
+                case "Einstieg":
+                    return VisualNovelNames.EinstiegsNovel;
+                case "Vertrieb":
+                    return VisualNovelNames.VertriebNovel;
+                default:
+                    return VisualNovelNames.None; // Rückgabewert im Falle eines nicht gefundenen Werts
+            }
         }
 
         public static int ToInt(VisualNovelNames value)

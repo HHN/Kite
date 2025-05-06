@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Assets._Scripts.Controller.CharacterController;
+using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using Assets._Scripts.SaveNovelData;
 using UnityEngine;
