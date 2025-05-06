@@ -213,33 +213,45 @@ namespace Assets
                 List<string> parents = _backwardsGraph[node];
                 foreach(string parent in parents)
                 {
-                    var (links, _) = _graph[parent];
+                    var (parentLinks, _) = _graph[parent];
                     var (_, body) = _graph[parent];
                     
-                    foreach (KeyValuePair<string,string> link in links.ToList())
+                    List<string> parentLinkKeys = parentLinks.Select(kvp => kvp.Key).ToList();
+                    bool replaced = false;
+                    foreach (KeyValuePair<string,string> parentLink in parentLinks.ToList())
                     {
-                        if (link.Key == node)
+                        if (parentLink.Key == node)
                         {
-                            List<string> linkKeys = links.Select(kvp => kvp.Key).ToList();
                             if (!nodesWithoutBias.Contains(parent))
                             {
                                 var (newLinks, _) = _graph[node];
-                                links.Remove(link);
-                                links.AddRange(newLinks);
+                                parentLinks.Remove(parentLink);
+                                parentLinks.AddRange(newLinks);
                             }
                             else
                             {
-                                if (linkKeys.Contains(node))
+                                if(replaced)
+                                {
+                                    parentLinks.Remove(parentLink);
+                                }
+                                else
                                 {
                                     var (newLinks, _) = _graph[node];
-                                    links.Remove(link);
-                                    links.AddRange(newLinks);
+                                    parentLinks.Remove(parentLink);
+                                    parentLinks.AddRange(newLinks);
+                                    replaced = true;
                                 }
+                                
+                                
                             }
+                        }
+                        else if(parentLink.Key == "End")
+                        {
+                            Debug.Log("Ende!");
                         }
                     }
                     
-                    _graph[parent] = (links,body);
+                    _graph[parent] = (parentLinks,body);
                 }
                 _graph.Remove(node);
                 CreateBackwardsGraph();
