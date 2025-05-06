@@ -21,8 +21,6 @@ namespace Assets._Scripts.Novel.VisualNovelLoader
         {
             // Starte die Coroutine, die alle Novellen aus der JSON-Datei l�dt.
             StartCoroutine(LoadAllNovelsFromJson());
-            
-            Destroy(gameObject, 5f);
         }
 
         /// <summary>
