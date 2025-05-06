@@ -183,17 +183,56 @@ namespace Assets
             {
                 var (links, _) = _graph[key];
                 var (_, body) = _graph[key];
-                for(int i=0;i<links.Count;i++)
-                {
-                    if(endNodes.Contains(links[i].Key) && links[i].Key != "End")
-                    {
-                        links[i] = new KeyValuePair<string,string>("End",links[i].Value); //TODO: Unterscheiden, ob Bias-Node oder nicht. Dementsprechend doppelt ersetzen oder nicht
-                    }
-                }
                 if (!body.Contains(">>Bias|") && key != "End" && key != "Anfang") //creates a List of nodesWithoutBias
                 {
                     nodesWithoutBias.Add(key);
                 }
+                bool replaced = false;
+                foreach(KeyValuePair<string,string> link in links.ToList())
+                {
+                    if(endNodes.Contains(link.Key) && link.Key != "End")
+                    {
+                        if(!nodesWithoutBias.Contains(key))
+                        {
+                            links[links.FindIndex(l => l.Equals(link))] = new KeyValuePair<string,string>("End",link.Value);
+                        }
+                        else
+                        {
+                            if(replaced)
+                            {
+                                links.Remove(link); //Removes it from the wrong list, we iterate through here
+                            }
+                            else
+                            {
+                                links[links.FindIndex(l => l.Equals(link))] = new KeyValuePair<string,string>("End",link.Value);
+                                replaced = true;
+                            }
+                        }
+                    }
+
+                }/*
+                for(int i=0; i<links.Count; i++)
+                {
+                    if(endNodes.Contains(links[i].Key) && links[i].Key != "End")
+                    {
+                        if(!nodesWithoutBias.Contains(key))
+                        {
+                            links[i] = new KeyValuePair<string,string>("End",links[i].Value);
+                        }
+                        else
+                        {
+                            if(replaced)
+                            {
+                                links.Remove(links[i]); //Removes it from the wrong list, we iterate through here
+                            }
+                            else
+                            {
+                                links[i] = new KeyValuePair<string,string>("End",links[i].Value);
+                                replaced = true;
+                            }
+                        }
+                    }
+                }*/
                 _graph[key] = (links,body);
             }
 
@@ -244,10 +283,6 @@ namespace Assets
                                 
                                 
                             }
-                        }
-                        else if(parentLink.Key == "End")
-                        {
-                            Debug.Log("Ende!");
                         }
                     }
                     
