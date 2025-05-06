@@ -21,11 +21,11 @@ namespace Assets
         private void Start()
         {
             ParseTweeFile(ReadTweeFile(filePathNovel));
-            //Debug.Log("Number of Paths: " + CountPathsNonRecursive("Anfang"));
+            Debug.Log("Number of Paths: " + CountPathsNonRecursive("Anfang"));
             UnifyEndNodes();
             CreateBackwardsGraph();
             CreateSubGraph();
-            //Debug.Log("Number of Paths: " + CountPathsNonRecursive("Fragebogen"));
+            Debug.Log("Number of Paths: " + CountPathsNonRecursive("Anfang"));
         }
 
         public string ReadTweeFile(string filePath)
@@ -145,14 +145,17 @@ namespace Assets
                 }
                 for(int i=0;i<children.Count;i++)
                 {
-                    if(!_backwardsGraph.ContainsKey(children[i].Key) && _graph.ContainsKey(children[i].Key))
+                    if(!_backwardsGraph.ContainsKey(children[i].Key))
                     {
-                        _backwardsGraph[children[i].Key] = new List<string>();
-                        _backwardsGraph[children[i].Key].Add(node);
+                        if(_graph.ContainsKey(children[i].Key))
+                        {
+                            _backwardsGraph[children[i].Key] = new List<string>();
+                            _backwardsGraph[children[i].Key].Add(node);
+                        }
                     }
                     else
                     {
-                        if (_graph.ContainsKey(node) && !_backwardsGraph[children[i].Key].Contains(node))
+                        if (!_backwardsGraph[children[i].Key].Contains(node))
                         {
                             _backwardsGraph[children[i].Key].Add(node);
                         }
@@ -187,7 +190,7 @@ namespace Assets
                         links[i] = new KeyValuePair<string,string>("End",links[i].Value); //TODO: Unterscheiden, ob Bias-Node oder nicht. Dementsprechend doppelt ersetzen oder nicht
                     }
                 }
-                if (!body.Contains(">>Bias|") && key != "End") //creates a List of nodesWithoutBias
+                if (!body.Contains(">>Bias|") && key != "End" && key != "Anfang") //creates a List of nodesWithoutBias
                 {
                     nodesWithoutBias.Add(key);
                 }
@@ -212,7 +215,7 @@ namespace Assets
                 {
                     var (links, _) = _graph[parent];
                     var (_, body) = _graph[parent];
-                    /*
+                    
                     foreach (KeyValuePair<string,string> link in links.ToList())
                     {
                         if (link.Key == node)
@@ -226,7 +229,7 @@ namespace Assets
                             }
                             else
                             {
-                                if (!linkKeys.Contains(node))
+                                if (linkKeys.Contains(node))
                                 {
                                     var (newLinks, _) = _graph[node];
                                     links.Remove(link);
@@ -234,30 +237,8 @@ namespace Assets
                                 }
                             }
                         }
-                    }*/
-                    
-                    for (int i=0;i<links.Count;i++)
-                    {
-                        if(links[i].Key == node)
-                        {
-                            List<string> linkKeys = links.Select(kvp => kvp.Key).ToList();
-                            if(!nodesWithoutBias.Contains(parent))
-                            {
-                                var (newLinks, _ ) = _graph[node];
-                                links.Remove(links[i]);
-                                links.AddRange(newLinks);
-                            }
-                            else
-                            {
-                                if (!linkKeys.Contains(node))
-                                {
-                                    var (newLinks, _) = _graph[node];
-                                    links.Remove(links[i]);
-                                    links.AddRange(newLinks);
-                                }
-                            }
-                        }
                     }
+                    
                     _graph[parent] = (links,body);
                 }
                 _graph.Remove(node);
