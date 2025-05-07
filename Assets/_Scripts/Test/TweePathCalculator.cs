@@ -1,33 +1,24 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using System.IO;
-using System.Text.RegularExpressions;
-using Codice.Client.Common.GameUI;
-using UnityEditor.Graphs;
 using System.Linq;
+using System.Text.RegularExpressions;
+using UnityEditor.Graphs;
+using UnityEngine;
 
-
-namespace Assets
+namespace Assets._Scripts.Test
 {
-    public class TweePathCalculator : MonoBehaviour
+    public class TweePathCalculator
     {
-        [SerializeField] private string filePathNovel = "Assets/YourNovelFile.txt";
-        [SerializeField] private string outPutNovel = "Assets/NovelFileOnlyBiases.txt";
-        List<string> nodesWithoutBias = new List<string>();
-        private Dictionary<string, (List<KeyValuePair<string,string>> Links, string Body)> _graph = new Dictionary<string, (List<KeyValuePair<string, string>> Links, string Body)>();
-        private Dictionary<string, List<string>> _backwardsGraph = new Dictionary<string, List<string>>();
+        private readonly Dictionary<string, (List<string> Links, List<string> Speakers, string Body)> _graph = new Dictionary<string, (List<string> Links, List<string> Speakers, string Body)>();
 
-        private void Start()
-        {
-            ParseTweeFile(ReadTweeFile(filePathNovel));
-            Debug.Log("Number of Paths: " + CountPathsNonRecursive("Anfang"));
-            UnifyEndNodes();
-            CreateBackwardsGraph();
-            CreateSubGraph();
-            Debug.Log("Number of Paths: " + CountPathsNonRecursive("Anfang"));
-        }
+        private readonly Dictionary<string, string> _characterToSpeakerMap = new Dictionary<string, string>();
 
+        /// <summary>
+        /// Liest eine Twee-Datei von der angegebenen Datei und gibt den Inhalt als String zurück.
+        /// </summary>
+        /// <param name="filePath">Pfad zur Twee-Datei</param>
+        /// <returns>Inhalt der Twee-Datei als String</returns>
         public string ReadTweeFile(string filePath)
         {
             if (!File.Exists(filePath))
@@ -46,22 +37,47 @@ namespace Assets
             }
         }
 
-        public void WriteTweeFile(string filePath, string input)
+        public void ParseMetaTweeFile(string tweeContent)
         {
-            if (!File.Exists(filePath))
+            string metaPattern = @"""(talkingPartner\d+)""\s*:\s*""([^""]*)""";
+
+            MatchCollection matches = Regex.Matches(tweeContent, metaPattern);
+
+            foreach (Match match in matches)
             {
-                File.WriteAllText(filePath, input);
+                string key = match.Groups[1].Value.Trim(); // e.g., talkingPartner01
+                string value = match.Groups[2].Value.Trim(); // e.g., Notarin
+
+                string numberMatch = Regex.Match(key, @"\d+").Value; // Extrahiere die Nummer
+                if (!string.IsNullOrEmpty(value))
+                {
+                    // Dynamisch alle möglichen `Charakter01...` zuordnen
+                    string dynamicPattern = $@"Charakter{numberMatch}";
+
+                    if (!_characterToSpeakerMap.ContainsKey(dynamicPattern))
+                    {
+                        _characterToSpeakerMap[dynamicPattern] = value;
+                    }
+                }
             }
-            else
-            {
-                throw new FileNotFoundException($"Datei existiert bereits: {filePath}. Bitte anderen Pfad wählen");
-            }
+
+            // Statische Zuordnungen
+            _characterToSpeakerMap[@"InfoNachrichtWirdAngezeigt"] = "Info";
+            _characterToSpeakerMap[@"SpielerinCharakterSpricht"] = "Spielerin";
+
+            // Ausgabe der gesamten CharacterToSpeakerMap
+            // Debug.Log("CharacterToSpeakerMap-Inhalt:");
+            // foreach (var entry in _characterToSpeakerMap)
+            // {
+            //     Debug.Log($"  {entry.Key} -> {entry.Value}");
+            // }
         }
 
         public void ParseTweeFile(string tweeContent)
         {
             string nodePattern = @"::\s*([^\n\{\[\|]+).*?\n((?:.|\n)*?)(?=(::|$))";
             string linkPattern = @"\[\[(?:(.*?)(?:\s*(?:\||->)\s*(.*?))|([^|\]]+))\]\]";
+            string speakerPattern = @">>([^\s<>]+):<<";
 
             MatchCollection matches = Regex.Matches(tweeContent, nodePattern);
 
@@ -70,10 +86,40 @@ namespace Assets
                 string nodeName = match.Groups[1].Value.Trim();
                 string nodeBody = match.Groups[2].Value;
 
-                List<KeyValuePair<string, string>> links = new List<KeyValuePair<string, string>> ();
+                List<string> links = new List<string>();
+                List<string> speakers = new List<string>();
 
-                //Debug.Log("Knoten: " + nodeName);
+                // Sprecher extrahieren
+                MatchCollection speakerMatches = Regex.Matches(nodeBody, speakerPattern);
+                foreach (Match speakerMatch in speakerMatches)
+                {
+                    string speaker = speakerMatch.Groups[1].Value.Trim();
+                    // Debug.Log($"Originaler Sprecher: {speaker}");
 
+                    // Basissprecher extrahieren
+                    foreach (var key in _characterToSpeakerMap.Keys)
+                    {
+                        if (speaker.StartsWith(key))
+                        {
+                            speaker = _characterToSpeakerMap[key];
+                            // Debug.Log($"Sprecher gemappt auf '{speaker}'");
+                            break;
+                        }
+                    }
+
+                    // Kein Mapping gefunden
+                    if (!_characterToSpeakerMap.Values.Contains(speaker))
+                    {
+                        Debug.LogWarning($"Kein Mapping für Sprecher '{speaker}' gefunden.");
+                    }
+
+                    if (!speakers.Contains(speaker))
+                    {
+                        speakers.Add(speaker);
+                    }
+                }
+
+                // Links extrahieren
                 MatchCollection linkMatches = Regex.Matches(nodeBody, linkPattern);
                 foreach (Match linkMatch in linkMatches)
                 {
@@ -90,515 +136,200 @@ namespace Assets
 
                     if (!string.IsNullOrEmpty(targetLink))
                     {
-                        links.Add(new KeyValuePair<string, string>(targetLink, linkMatch.Groups[1].Value.Trim()));
+                        links.Add(targetLink);
                     }
-
-                    Debug.Log("Text: " + linkMatch.Groups[1].Value.Trim() + "Link: " + targetLink); //Show the content of the answer and the corresponding Link
                 }
-                if (!_graph.ContainsKey(nodeName) && nodeName != "StoryData" && nodeName != "StoryTitle")
+
+                // Speichere Node im Graphen
+                if (!_graph.ContainsKey(nodeName))
                 {
-                    _graph[nodeName] = (links, nodeBody);
+                    _graph[nodeName] = (links, speakers, nodeBody);
+                }
+                else
+                {
+                    _graph[nodeName].Links.AddRange(links);
+                    _graph[nodeName].Speakers.AddRange(speakers.Where(s => !_graph[nodeName].Speakers.Contains(s)));
                 }
             }
-            Debug.Log("Parsed twee file");
+
+            // Stelle sicher, dass "Ende" im Graph existiert
+            if (!_graph.ContainsKey("Ende"))
+            {
+                _graph["Ende"] = (new List<string>(), new List<string>(), "");
+            }
         }
 
-        public int CountPathsNonRecursive(string startNode)
+        public List<List<string>> GetAllPaths(string startNode)
         {
-            int numberOfPaths = 0;
-            Stack<string> edgesToVisit = new Stack<string>();
-            HashSet<string> visitedNodes = new HashSet<string>();
-            string currentNode;
+            Debug.Log("GetAllPaths gestartet");
 
-            var (links, _) = _graph[startNode];
-            links.ForEach(link => edgesToVisit.Push(link.Key));
+            List<List<string>> allPaths = new List<List<string>>();
+            List<string> currentPath = new List<string>();
 
-            while (edgesToVisit.Count > 0)
+            void DFS(string node)
             {
-                currentNode = edgesToVisit.Pop();
-                //Debug.Log(currentNode); // Show all nodes we circle through while counting
-                var (_, body) = _graph[currentNode];
-                if (body.Contains(">>End<<"))
+                if (!_graph.ContainsKey(node))
                 {
-                    numberOfPaths++;
+                    Debug.LogError($"Knoten {node} existiert nicht im Graphen!");
+                    return;
                 }
-                if (!visitedNodes.Contains(currentNode))
+
+                // Füge den aktuellen Knoten zum Pfad hinzu
+                currentPath.Add(node);
+
+                var (links, _, _) = _graph[node];
+
+                // Wenn Endknoten erreicht
+                if (links.Count == 0 || node == "Ende")
                 {
-                    //visitedNodes.Add(currentNode);
-                    (links, _) = _graph[currentNode];
-                    links.ForEach(link => edgesToVisit.Push(link.Key));
-                    
+                    allPaths.Add(new List<string>(currentPath));
                 }
+                else
+                {
+                    foreach (string neighbor in links)
+                    {
+                        DFS(neighbor);
+                    }
+                }
+
+                currentPath.RemoveAt(currentPath.Count - 1);
             }
-            return numberOfPaths;
+
+            DFS(startNode);
+            return allPaths;
         }
 
-        public void CreateBackwardsGraph()
+        public List<List<string>> ReturnUniquePaths(List<List<string>> paths)
         {
-            _backwardsGraph = new Dictionary<string, List<string>>();
-            foreach (string node in _graph.Keys)
+            List<List<string>> newPaths = new List<List<string>>();
+            foreach(List<string> path in paths)
             {
-                var (children, _) = _graph[node];
-                if (!_backwardsGraph.ContainsKey(node))
+                bool duplicate = false;
+                List<string> newPath = new List<string>();
+                foreach(string node in path)
                 {
-                    _backwardsGraph[node] = new List<string>();
-                }
-                for(int i=0;i<children.Count;i++)
-                {
-                    if(!_backwardsGraph.ContainsKey(children[i].Key))
+                    var (_, _, nodeBody) = _graph[node];
+                    if(nodeBody.Contains(">>Bias|"))
                     {
-                        if(_graph.ContainsKey(children[i].Key))
-                        {
-                            _backwardsGraph[children[i].Key] = new List<string>();
-                            _backwardsGraph[children[i].Key].Add(node);
-                        }
-                    }
-                    else
-                    {
-                        if (!_backwardsGraph[children[i].Key].Contains(node))
-                        {
-                            _backwardsGraph[children[i].Key].Add(node);
-                        }
+                        newPath.Add(node);
                     }
                 }
-            }
-            Debug.Log("Created backwards graph");
-        }
-        public void UnifyEndNodes()
-        {
-            List<string> endNodes = new List<string>();
-            foreach(string key in _graph.Keys)
-            {
-                var (_,nodeBody) = _graph[key];
-                if(nodeBody.Contains(">>End<<"))
+                foreach(List<string> listElement in newPaths)
                 {
-                    endNodes.Add(key);
+                    if(listElement.SequenceEqual(newPath))
+                    {
+                        duplicate = true;
+                    }
+                }
+                if(!duplicate)
+                {
+                    newPaths.Add(newPath);
                 }
             }
-            _graph["End"] = _graph[endNodes[0]];
-            _graph.Remove(endNodes[0]);
-            
-            
-            foreach(string key in _graph.Keys.ToList()) //could use backwardsgraph as well
-            {
-                var (links, _) = _graph[key];
-                var (_, body) = _graph[key];
-                if (!body.Contains(">>Bias|") && key != "End" && key != "Anfang") //creates a List of nodesWithoutBias
-                {
-                    nodesWithoutBias.Add(key);
-                }
-                bool replaced = false;
-                foreach(KeyValuePair<string,string> link in links.ToList())
-                {
-                    if(endNodes.Contains(link.Key) && link.Key != "End")
-                    {
-                        if(!nodesWithoutBias.Contains(key))
-                        {
-                            links[links.FindIndex(l => l.Equals(link))] = new KeyValuePair<string,string>("End",link.Value);
-                        }
-                        else
-                        {
-                            if(replaced)
-                            {
-                                links.Remove(link); //Removes it from the wrong list, we iterate through here
-                            }
-                            else
-                            {
-                                links[links.FindIndex(l => l.Equals(link))] = new KeyValuePair<string,string>("End",link.Value);
-                                replaced = true;
-                            }
-                        }
-                    }
-
-                }/*
-                for(int i=0; i<links.Count; i++)
-                {
-                    if(endNodes.Contains(links[i].Key) && links[i].Key != "End")
-                    {
-                        if(!nodesWithoutBias.Contains(key))
-                        {
-                            links[i] = new KeyValuePair<string,string>("End",links[i].Value);
-                        }
-                        else
-                        {
-                            if(replaced)
-                            {
-                                links.Remove(links[i]); //Removes it from the wrong list, we iterate through here
-                            }
-                            else
-                            {
-                                links[i] = new KeyValuePair<string,string>("End",links[i].Value);
-                                replaced = true;
-                            }
-                        }
-                    }
-                }*/
-                _graph[key] = (links,body);
-            }
-
-            foreach(string endNode in endNodes)
-            {
-                _graph.Remove(endNode);
-                nodesWithoutBias.Remove(endNode);
-            }
-
-            Debug.Log("Unified end nodes");
+            Debug.Log("Unique Paths created");
+            return newPaths;
         }
 
-        public void CreateSubGraph()
+        
+
+        public void PrintPathsAndSpeakers(List<List<string>> paths)
         {
-            foreach(string node in nodesWithoutBias) //All nodes without bias should be replaced
+            Debug.Log($"Gefundene Pfade: {paths.Count}");
+
+            // foreach (var path in paths)
+            // {
+            //     string pathOutput = string.Join(" -> ", path);
+            //     Debug.Log($"Pfad: {pathOutput}");
+            //
+            //     foreach (string node in path)
+            //     {
+            //         if (_graph.ContainsKey(node))
+            //         {
+            //             var (_, speakers, _) = _graph[node];
+            //
+            //             foreach (var speaker in speakers)
+            //             {
+            //                 Debug.Log($"Sprecher im Knoten '{node}': {speaker}");
+            //             }
+            //
+            //             // Sprecher ausgeben
+            //             if (speakers.Count > 0)
+            //             {
+            //                 string speakerList = string.Join(", ", speakers);
+            //                 Debug.Log($"Knoten '{node}' hat folgende Sprecher: {speakerList}");
+            //             }
+            //             else
+            //             {
+            //                 Debug.Log($"Knoten '{node}' hat keine Sprecher.");
+            //             }
+            //         }
+            //     }
+            // }
+        }
+
+        // public void PrintPaths(List<List<string>> paths)
+        // {
+        //     Debug.Log($"Gefundene Pfade: {paths.Count}");
+        //
+        //     foreach (var path in paths)
+        //     {
+        //         string purePath = string.Join(" -> ", path);
+        //         Debug.Log($"Pfad: {purePath}");
+        //     }
+        // }
+
+        // --- Auskommentierter Code für spätere Verwendung ---
+
+        /*
+        public void PrintPathsAsConversationAndPath(List<List<string>> paths)
+        {
+            Debug.Log($"Gefundene Pfade: {paths.Count}");
+
+            foreach (var path in paths)
             {
-                List<string> parents = _backwardsGraph[node];
-                foreach(string parent in parents)
+                string conversation = "Gespräch:\n";
+
+                foreach (string nodeName in path)
                 {
-                    var (parentLinks, _) = _graph[parent];
-                    var (_, body) = _graph[parent];
-                    
-                    List<string> parentLinkKeys = parentLinks.Select(kvp => kvp.Key).ToList();
-                    bool replaced = false;
-                    foreach (KeyValuePair<string,string> parentLink in parentLinks.ToList())
+                    if (Graph.ContainsKey(nodeName))
                     {
-                        if (parentLink.Key == node)
+                        var (_, body, _) = Graph[nodeName];
+
+                        string[] lines = body.Split('\n');
+                        foreach (var line in lines)
                         {
-                            if (!nodesWithoutBias.Contains(parent))
+                            if (line.Trim().StartsWith(">>") || string.IsNullOrWhiteSpace(line))
                             {
-                                var (newLinks, _) = _graph[node];
-                                parentLinks.Remove(parentLink);
-                                parentLinks.AddRange(newLinks);
+                                continue;
                             }
-                            else
+
+                            int colonIndex = line.IndexOf(":");
+                            if (colonIndex > -1)
                             {
-                                if(replaced)
+                                string speaker = line.Substring(0, colonIndex).Trim();
+                                string text = line.Substring(colonIndex + 1).Trim();
+
+                                if (CharacterToSpeakerMap.TryGetValue(speaker, out string mappedSpeaker))
                                 {
-                                    parentLinks.Remove(parentLink);
+                                    speaker = mappedSpeaker;
                                 }
-                                else
-                                {
-                                    var (newLinks, _) = _graph[node];
-                                    parentLinks.Remove(parentLink);
-                                    parentLinks.AddRange(newLinks);
-                                    replaced = true;
-                                }
-                                
-                                
+
+                                conversation += $"{speaker}: {text}\n\n";
+                            }
+                            else
+                            {
+                                conversation += line.Trim() + "\n\n";
                             }
                         }
                     }
-                    
-                    _graph[parent] = (parentLinks,body);
                 }
-                _graph.Remove(node);
-                CreateBackwardsGraph();
+
+                Debug.Log(conversation.Trim());
             }
-            Debug.Log("Created subgraph");
         }
+        */
     }
 }
-
-
-
-//Old script, should be still working. See earlier commits. Above path calculator is more streamlined.
-//using System;
-//using System.Collections.Generic;
-//using System.IO;
-//using System.Linq;
-//using System.Text.RegularExpressions;
-//using UnityEngine;
-
-//namespace Assets._Scripts.Test
-//{
-//    public class TweePathCalculator
-//    {
-//        private readonly Dictionary<string, (List<string> Links, List<string> Speakers, string Body)> _graph = new Dictionary<string, (List<string> Links, List<string> Speakers, string Body)>();
-
-//        private readonly Dictionary<string, string> _characterToSpeakerMap = new Dictionary<string, string>();
-
-//        /// <summary>
-//        /// Liest eine Twee-Datei von der angegebenen Datei und gibt den Inhalt als String zurück.
-//        /// </summary>
-//        /// <param name="filePath">Pfad zur Twee-Datei</param>
-//        /// <returns>Inhalt der Twee-Datei als String</returns>
-//        public string ReadTweeFile(string filePath)
-//        {
-//            if (!File.Exists(filePath))
-//            {
-//                throw new FileNotFoundException($"Die Datei wurde nicht gefunden: {filePath}");
-//            }
-
-//            try
-//            {
-//                // Dateiinhalt einlesen und als String zurückgeben
-//                return File.ReadAllText(filePath);
-//            }
-//            catch (Exception ex)
-//            {
-//                throw new Exception($"Fehler beim Lesen der Datei: {ex.Message}");
-//            }
-//        }
-
-//        public void ParseMetaTweeFile(string tweeContent)
-//        {
-//            string metaPattern = @"""(talkingPartner\d+)""\s*:\s*""([^""]*)""";
-
-//            MatchCollection matches = Regex.Matches(tweeContent, metaPattern);
-
-//            foreach (Match match in matches)
-//            {
-//                string key = match.Groups[1].Value.Trim(); // e.g., talkingPartner01
-//                string value = match.Groups[2].Value.Trim(); // e.g., Notarin
-
-//                string numberMatch = Regex.Match(key, @"\d+").Value; // Extrahiere die Nummer
-//                if (!string.IsNullOrEmpty(value))
-//                {
-//                    // Dynamisch alle möglichen `Charakter01...` zuordnen
-//                    string dynamicPattern = $@"Charakter{numberMatch}";
-
-//                    if (!_characterToSpeakerMap.ContainsKey(dynamicPattern))
-//                    {
-//                        _characterToSpeakerMap[dynamicPattern] = value;
-//                    }
-//                }
-//            }
-
-//            // Statische Zuordnungen
-//            _characterToSpeakerMap[@"InfoNachrichtWirdAngezeigt"] = "Info";
-//            _characterToSpeakerMap[@"SpielerinCharakterSpricht"] = "Spielerin";
-
-//            // Ausgabe der gesamten CharacterToSpeakerMap
-//            // Debug.Log("CharacterToSpeakerMap-Inhalt:");
-//            // foreach (var entry in _characterToSpeakerMap)
-//            // {
-//            //     Debug.Log($"  {entry.Key} -> {entry.Value}");
-//            // }
-//        }
-
-//        public void ParseTweeFile(string tweeContent)
-//        {
-//            string nodePattern = @"::\s*([^\n\{\[\|]+).*?\n((?:.|\n)*?)(?=(::|$))";
-//            string linkPattern = @"\[\[(?:(.*?)(?:\s*(?:\||->)\s*(.*?))|([^|\]]+))\]\]";
-//            string speakerPattern = @">>([^\s<>]+):<<";
-
-//            MatchCollection matches = Regex.Matches(tweeContent, nodePattern);
-
-//            foreach (Match match in matches)
-//            {
-//                string nodeName = match.Groups[1].Value.Trim();
-//                string nodeBody = match.Groups[2].Value;
-
-//                List<string> links = new List<string>();
-//                List<string> speakers = new List<string>();
-
-//                // Sprecher extrahieren
-//                MatchCollection speakerMatches = Regex.Matches(nodeBody, speakerPattern);
-//                foreach (Match speakerMatch in speakerMatches)
-//                {
-//                    string speaker = speakerMatch.Groups[1].Value.Trim();
-//                    // Debug.Log($"Originaler Sprecher: {speaker}");
-
-//                    // Basissprecher extrahieren
-//                    foreach (var key in _characterToSpeakerMap.Keys)
-//                    {
-//                        if (speaker.StartsWith(key))
-//                        {
-//                            speaker = _characterToSpeakerMap[key];
-//                            // Debug.Log($"Sprecher gemappt auf '{speaker}'");
-//                            break;
-//                        }
-//                    }
-
-//                    // Kein Mapping gefunden
-//                    if (!_characterToSpeakerMap.Values.Contains(speaker))
-//                    {
-//                        Debug.LogWarning($"Kein Mapping für Sprecher '{speaker}' gefunden.");
-//                    }
-
-//                    if (!speakers.Contains(speaker))
-//                    {
-//                        speakers.Add(speaker);
-//                    }
-//                }
-
-//                // Links extrahieren
-//                MatchCollection linkMatches = Regex.Matches(nodeBody, linkPattern);
-//                foreach (Match linkMatch in linkMatches)
-//                {
-//                    string targetLink = null;
-
-//                    if (!string.IsNullOrEmpty(linkMatch.Groups[2].Value))
-//                    {
-//                        targetLink = linkMatch.Groups[2].Value.Trim(); // Text nach | oder ->
-//                    }
-//                    else if (!string.IsNullOrEmpty(linkMatch.Groups[3].Value))
-//                    {
-//                        targetLink = linkMatch.Groups[3].Value.Trim(); // Alleinstehender Text als Link
-//                    }
-
-//                    if (!string.IsNullOrEmpty(targetLink))
-//                    {
-//                        links.Add(targetLink);
-//                    }
-//                }
-
-//                // Speichere Node im Graphen
-//                if (!_graph.ContainsKey(nodeName))
-//                {
-//                    _graph[nodeName] = (links, speakers, "");
-//                }
-//                else
-//                {
-//                    _graph[nodeName].Links.AddRange(links);
-//                    _graph[nodeName].Speakers.AddRange(speakers.Where(s => !_graph[nodeName].Speakers.Contains(s)));
-//                }
-//            }
-
-//            // Stelle sicher, dass "Ende" im Graph existiert
-//            if (!_graph.ContainsKey("Ende"))
-//            {
-//                _graph["Ende"] = (new List<string>(), new List<string>(), "");
-//            }
-//        }
-
-//        public List<List<string>> GetAllPaths(string startNode)
-//        {
-//            Debug.Log("GetAllPaths gestartet");
-
-//            List<List<string>> allPaths = new List<List<string>>();
-//            List<string> currentPath = new List<string>();
-
-//            void DFS(string node)
-//            {
-//                if (!_graph.ContainsKey(node))
-//                {
-//                    Debug.LogError($"Knoten {node} existiert nicht im Graphen!");
-//                    return;
-//                }
-
-//                // Füge den aktuellen Knoten zum Pfad hinzu
-//                currentPath.Add(node);
-
-//                var (links, _, _) = _graph[node];
-
-//                // Wenn Endknoten erreicht
-//                if (links.Count == 0 || node == "Ende")
-//                {
-//                    allPaths.Add(new List<string>(currentPath));
-//                }
-//                else
-//                {
-//                    foreach (string neighbor in links)
-//                    {
-//                        DFS(neighbor);
-//                    }
-//                }
-
-//                currentPath.RemoveAt(currentPath.Count - 1);
-//            }
-
-//            DFS(startNode);
-//            return allPaths;
-//        }
-
-//        public void PrintPathsAndSpeakers(List<List<string>> paths)
-//        {
-//            Debug.Log($"Gefundene Pfade: {paths.Count}");
-
-//            // foreach (var path in paths)
-//            // {
-//            //     string pathOutput = string.Join(" -> ", path);
-//            //     Debug.Log($"Pfad: {pathOutput}");
-//            //
-//            //     foreach (string node in path)
-//            //     {
-//            //         if (_graph.ContainsKey(node))
-//            //         {
-//            //             var (_, speakers, _) = _graph[node];
-//            //
-//            //             foreach (var speaker in speakers)
-//            //             {
-//            //                 Debug.Log($"Sprecher im Knoten '{node}': {speaker}");
-//            //             }
-//            //
-//            //             // Sprecher ausgeben
-//            //             if (speakers.Count > 0)
-//            //             {
-//            //                 string speakerList = string.Join(", ", speakers);
-//            //                 Debug.Log($"Knoten '{node}' hat folgende Sprecher: {speakerList}");
-//            //             }
-//            //             else
-//            //             {
-//            //                 Debug.Log($"Knoten '{node}' hat keine Sprecher.");
-//            //             }
-//            //         }
-//            //     }
-//            // }
-//        }
-
-//        // public void PrintPaths(List<List<string>> paths)
-//        // {
-//        //     Debug.Log($"Gefundene Pfade: {paths.Count}");
-//        //
-//        //     foreach (var path in paths)
-//        //     {
-//        //         string purePath = string.Join(" -> ", path);
-//        //         Debug.Log($"Pfad: {purePath}");
-//        //     }
-//        // }
-
-//        // --- Auskommentierter Code für spätere Verwendung ---
-
-        
-//        public void PrintPathsAsConversationAndPath(List<List<string>> paths)
-//        {
-//            Debug.Log($"Gefundene Pfade: {paths.Count}");
-
-//            foreach (var path in paths)
-//            {
-//                string conversation = "Gespräch:\n";
-
-//                foreach (string nodeName in path)
-//                {
-//                    if (Graph.ContainsKey(nodeName))
-//                    {
-//                        var (_, body, _) = Graph[nodeName];
-
-//                        string[] lines = body.Split('\n');
-//                        foreach (var line in lines)
-//                        {
-//                            if (line.Trim().StartsWith(">>") || string.IsNullOrWhiteSpace(line))
-//                            {
-//                                continue;
-//                            }
-
-//                            int colonIndex = line.IndexOf(":");
-//                            if (colonIndex > -1)
-//                            {
-//                                string speaker = line.Substring(0, colonIndex).Trim();
-//                                string text = line.Substring(colonIndex + 1).Trim();
-
-//                                if (CharacterToSpeakerMap.TryGetValue(speaker, out string mappedSpeaker))
-//                                {
-//                                    speaker = mappedSpeaker;
-//                                }
-
-//                                conversation += $"{speaker}: {text}\n\n";
-//                            }
-//                            else
-//                            {
-//                                conversation += line.Trim() + "\n\n";
-//                            }
-//                        }
-//                    }
-//                }
-
-//                Debug.Log(conversation.Trim());
-//            }
-//        }
-        
-//    }
-//}
-
-
 
 
 // using System;

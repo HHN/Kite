@@ -267,11 +267,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2074922528}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1a28fefdccf8c0418b4e557fb5d1ccc, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a23bb3d06214c94498e632fed65502c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   filePathNovel: Assets/_novels_twee/Notarin/visual_novel_event_list.txt
-  outPutNovel: Assets/NovelFileOnlyBiases.txt
+  filePathMeta: Assets/_novels_twee/Notarin/visual_novel_meta_data.txt
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
