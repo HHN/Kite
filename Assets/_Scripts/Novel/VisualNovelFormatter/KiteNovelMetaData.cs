@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
+using UnityEngine;
 
 namespace Assets._Scripts.Novel.VisualNovelFormatter
 {
@@ -21,6 +22,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
         public string TalkingPartner03 { get; set; } = "";
         public bool IsKiteNovel { get; set; } = true;
+        public string NovelColor { get; set; } = "#000000";
 
         public List<WordPair> WordsToReplace { get; set; } = new();
     }

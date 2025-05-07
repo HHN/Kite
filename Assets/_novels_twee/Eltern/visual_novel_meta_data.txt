@@ -10,6 +10,7 @@
   "talkingPartner02" : "Mutter",
   "talkingPartner03" : "",
   "isKiteNovel": true,
+  "novelColor": "#25650E",
   "wordsToReplace": [
 	{"wordToReplace": ">>SpielerinCharakterSpricht:<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"}
 	]

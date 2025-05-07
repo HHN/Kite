@@ -32,8 +32,8 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         [SerializeField] private GameObject copyNotificationContainer;
 
-        private Dictionary<long, List<DialogHistoryEntry>> _novelHistoryEntriesDictionary = new();
-        private Dictionary<long, GameObject> _novelContainers = new();
+        private readonly Dictionary<long, List<DialogHistoryEntry>> _novelHistoryEntriesDictionary = new();
+        private readonly Dictionary<long, GameObject> _novelContainers = new();
         private Dictionary<long, DropDownMenu> _novelDropDownMenus = new();
         private Dictionary<DateTime, long> _dateAndTimeToNovelIdDictionary = new();
 
@@ -100,12 +100,15 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private void AddEntryToContainer(DialogHistoryEntry entry, GameObject novelContainer)
         {
+            List<VisualNovel> allKiteNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+            VisualNovel novel = allKiteNovels.FirstOrDefault(n => n.id == entry.GetNovelId());
+            
             GameObject reviewContainer = novelContainer.transform.Find("Review Container").gameObject;
             GameObject reviewButton = novelContainer.transform.Find("Review Button").gameObject;
 
             var visualNovel = VisualNovelNamesHelper.ValueOf((int)entry.GetNovelId());
 
-            reviewButton.GetComponent<Image>().color = FoundersBubbleMetaInformation.GetColorOfNovel(visualNovel);
+            if (novel != null) reviewButton.GetComponent<Image>().color = novel.novelColor;
             reviewButton.GetComponentInChildren<TextMeshProUGUI>().text = VisualNovelNamesHelper.GetName(entry.GetNovelId());
             reviewButton.GetComponentInChildren<AlreadyPlayedUpdater>().VisualNovel = visualNovel;
 
@@ -114,7 +117,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             var dataObjectGuiElement = Instantiate(entryPrefab, reviewContainer.transform).GetComponent<NovelHistoryEntryGuiElement>();
             dataObjectGuiElement.InitializeEntry(entry);
-            dataObjectGuiElement.SetVisualNovelColor(visualNovel);
+            dataObjectGuiElement.SetVisualNovelColor(novel.novelColor);
 
             dataObjectGuiElement.AddLayoutToUpdateOnChange(reviewContainer.GetComponent<RectTransform>());
             dataObjectGuiElement.AddLayoutToUpdateOnChange(novelContainer.GetComponent<RectTransform>());

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets._Scripts.Novel
 {
@@ -17,6 +18,7 @@ namespace Assets._Scripts.Novel
         public string playedPath;
         public List<string> characters;
         public bool isKiteNovel;
+        public Color novelColor;
 
         public void AddGlobalVariable(string name, string value)
         {

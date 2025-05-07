@@ -143,7 +143,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             burgerMenuButton.GetComponentInChildren<TextMeshProUGUI>().text = !visualNovel.isKiteNovel ? visualNovel.title : novelName;
             burgerMenuButton.GetComponentInChildren<Button>().onClick.AddListener(OnButtonFromBurgerMenu);
 
-            burgerMenuButton.GetComponentInChildren<Image>().color = FoundersBubbleMetaInformation.GetColorOfNovel(novelId);
+            burgerMenuButton.GetComponentInChildren<Image>().color = visualNovel.novelColor;
             burgerMenuButtons.Add(burgerMenuButton);
         }
 
@@ -191,6 +191,13 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private void DisplayTextBoxForVisualNovel(VisualNovelNames visualNovel, bool isNovelContainedInVersion)
         {
+            List<VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+            allNovels = allNovels.OrderBy(novel => novel.id).ToList();
+            
+            _novelId = VisualNovelNamesHelper.ToInt(visualNovel);
+            
+            VisualNovel currentNovel = allNovels.Find(novel => novel.id == _novelId);
+            
             if (isBurgerMenuOpen)
             {
                 burgerMenu.gameObject.SetActive(false);
@@ -209,16 +216,12 @@ namespace Assets._Scripts.Controller.SceneControllers
                 novelDescriptionTextbox.SetHead(FoundersBubbleMetaInformation.IsHighInGui(visualNovel));
                 novelDescriptionTextbox.SetVisualNovelName(visualNovel);
                 novelDescriptionTextbox.SetText("Leider ist diese Novel nicht in der Testversion enthalten. Bitte spiele eine andere Novel.");
-                novelDescriptionTextbox.SetColorOfImage(FoundersBubbleMetaInformation.GetColorOfNovel(visualNovel));
+                novelDescriptionTextbox.SetColorOfImage(currentNovel.novelColor);
                 novelDescriptionTextbox.SetButtonsActive(false);
                 isPopupOpen = true;
                 currentlyOpenedVisualNovelPopup = visualNovel;
                 return;
             }
-
-            _novelId = VisualNovelNamesHelper.ToInt(visualNovel);
-
-            List<VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
 
             foreach (VisualNovel novel in allNovels)
             {
@@ -229,14 +232,14 @@ namespace Assets._Scripts.Controller.SceneControllers
                 novelDescriptionTextbox.SetVisualNovel(novel);
                 novelDescriptionTextbox.SetVisualNovelName(visualNovel);
                 novelDescriptionTextbox.SetText(novel.description);
-                novelDescriptionTextbox.SetColorOfImage(FoundersBubbleMetaInformation.GetColorOfNovel(visualNovel));
+                novelDescriptionTextbox.SetColorOfImage(novel.novelColor);
                 novelDescriptionTextbox.SetButtonsActive(true);
                 novelDescriptionTextbox.InitializeBookMarkButton(FavoritesManager.Instance().IsFavorite(novel));
                 novelDescriptionTextbox.UpdateSize();
 
                 isPopupOpen = true;
                 currentlyOpenedVisualNovelPopup = visualNovel;
-                NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetColorOfNovel(visualNovel));
+                NovelColorManager.Instance().SetColor(novel.novelColor);
             }
 
             FontSizeManager.Instance().UpdateAllTextComponents();
@@ -298,10 +301,11 @@ namespace Assets._Scripts.Controller.SceneControllers
                 return;
             }
 
+            Color color = visualNovelToDisplay.novelColor;
+
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-            NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetColorOfNovel(VisualNovelNamesHelper.ValueOf((int)visualNovelToDisplay.id)));
-            PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetColorOfNovel(visualNovelName));
+            NovelColorManager.Instance().SetColor(color);
+            PlayManager.Instance().SetColorOfVisualNovelToPlay(color);
             PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);

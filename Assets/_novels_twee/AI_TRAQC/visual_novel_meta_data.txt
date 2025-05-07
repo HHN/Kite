@@ -9,6 +9,7 @@
   "talkingPartner02" : "",
   "talkingPartner03" : "",
   "isKiteNovel": false,
+  "novelColor": "#0C1A2E",
   "wordsToReplace": [
   ]
 }

@@ -210,8 +210,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                     VisualNovelNames novelNames = VisualNovelNamesHelper.ValueOf((int)novel.id);
 
                     PlayManager.Instance().SetVisualNovelToPlay(novel); // Set the novel to be played in the PlayManager          
-                    PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetColorOfNovel(novelNames)); // Set the foreground color for the novel
-                    PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetColorOfNovel(novelNames)); // Set the background color for the novel
+                    PlayManager.Instance().SetColorOfVisualNovelToPlay(novel.novelColor); // Set the color for the novel
                     PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelNames)); // Set the display name for the novel
 
                     // Load the PlayNovelScene
