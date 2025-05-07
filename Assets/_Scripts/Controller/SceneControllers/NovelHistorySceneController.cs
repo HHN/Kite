@@ -93,6 +93,8 @@ namespace Assets._Scripts.Controller.SceneControllers
             novelContainer.name = VisualNovelNamesHelper.GetName(novelId);
 
             _novelContainers[novelId] = novelContainer;
+            _novelHistoryEntriesDictionary[novelId] = new List<DialogHistoryEntry>();
+            
             Instantiate(spacingPrefab, containerParent);
         }
 
