@@ -10,9 +10,10 @@ namespace Assets._Scripts.Test
 {
     public class TweePathCalculator
     {
-        private readonly Dictionary<string, (List<string> Links, List<string> Speakers, string Body)> _graph = new Dictionary<string, (List<string> Links, List<string> Speakers, string Body)>();
-
+        //private readonly Dictionary<string, (List<string> Links, List<string> Speakers, string Body)> _graph = new Dictionary<string, (List<string> Links, List<string> Speakers, string Body)>();
+        private readonly Dictionary<string,Node> _graph = new Dictionary<string,Node>();
         private readonly Dictionary<string, string> _characterToSpeakerMap = new Dictionary<string, string>();
+        private readonly Dictionary<string, KeyValuePair<string,int>> duplicates = new Dictionary<string, KeyValuePair<string,int>>();
 
         /// <summary>
         /// Liest eine Twee-Datei von der angegebenen Datei und gibt den Inhalt als String zurück.
@@ -77,7 +78,6 @@ namespace Assets._Scripts.Test
         {
             string nodePattern = @"::\s*([^\n\{\[\|]+).*?\n((?:.|\n)*?)(?=(::|$))";
             string linkPattern = @"\[\[(?:(.*?)(?:\s*(?:\||->)\s*(.*?))|([^|\]]+))\]\]";
-            string speakerPattern = @">>([^\s<>]+):<<";
 
             MatchCollection matches = Regex.Matches(tweeContent, nodePattern);
 
@@ -86,55 +86,24 @@ namespace Assets._Scripts.Test
                 string nodeName = match.Groups[1].Value.Trim();
                 string nodeBody = match.Groups[2].Value;
 
-                List<string> links = new List<string>();
-                List<string> speakers = new List<string>();
-
-                // Sprecher extrahieren
-                MatchCollection speakerMatches = Regex.Matches(nodeBody, speakerPattern);
-                foreach (Match speakerMatch in speakerMatches)
-                {
-                    string speaker = speakerMatch.Groups[1].Value.Trim();
-                    // Debug.Log($"Originaler Sprecher: {speaker}");
-
-                    // Basissprecher extrahieren
-                    foreach (var key in _characterToSpeakerMap.Keys)
-                    {
-                        if (speaker.StartsWith(key))
-                        {
-                            speaker = _characterToSpeakerMap[key];
-                            // Debug.Log($"Sprecher gemappt auf '{speaker}'");
-                            break;
-                        }
-                    }
-
-                    // Kein Mapping gefunden
-                    if (!_characterToSpeakerMap.Values.Contains(speaker))
-                    {
-                        Debug.LogWarning($"Kein Mapping für Sprecher '{speaker}' gefunden.");
-                    }
-
-                    if (!speakers.Contains(speaker))
-                    {
-                        speakers.Add(speaker);
-                    }
-                }
+                List<Link> links = new List<Link>();
 
                 // Links extrahieren
                 MatchCollection linkMatches = Regex.Matches(nodeBody, linkPattern);
                 foreach (Match linkMatch in linkMatches)
                 {
-                    string targetLink = null;
+                    Link targetLink = new Link();
 
                     if (!string.IsNullOrEmpty(linkMatch.Groups[2].Value))
                     {
-                        targetLink = linkMatch.Groups[2].Value.Trim(); // Text nach | oder ->
+                        targetLink.targetNode = linkMatch.Groups[2].Value.Trim(); // Text nach | oder ->
                     }
                     else if (!string.IsNullOrEmpty(linkMatch.Groups[3].Value))
                     {
-                        targetLink = linkMatch.Groups[3].Value.Trim(); // Alleinstehender Text als Link
+                        targetLink.targetNode = linkMatch.Groups[3].Value.Trim(); // Alleinstehender Text als Link
                     }
 
-                    if (!string.IsNullOrEmpty(targetLink))
+                    if (!string.IsNullOrEmpty(targetLink.targetNode))
                     {
                         links.Add(targetLink);
                     }
@@ -143,19 +112,19 @@ namespace Assets._Scripts.Test
                 // Speichere Node im Graphen
                 if (!_graph.ContainsKey(nodeName))
                 {
-                    _graph[nodeName] = (links, speakers, nodeBody);
+                    Node newNode = new Node(nodeBody, links);
+                    _graph[nodeName] = newNode;
                 }
                 else
                 {
-                    _graph[nodeName].Links.AddRange(links);
-                    _graph[nodeName].Speakers.AddRange(speakers.Where(s => !_graph[nodeName].Speakers.Contains(s)));
+                    _graph[nodeName].links.AddRange(links);
                 }
             }
 
             // Stelle sicher, dass "Ende" im Graph existiert
             if (!_graph.ContainsKey("Ende"))
             {
-                _graph["Ende"] = (new List<string>(), new List<string>(), "");
+                _graph["Ende"] = new Node("",new List<Link>());
             }
         }
 
@@ -177,7 +146,7 @@ namespace Assets._Scripts.Test
                 // Füge den aktuellen Knoten zum Pfad hinzu
                 currentPath.Add(node);
 
-                var (links, _, _) = _graph[node];
+                List<Link> links = _graph[node].links;
 
                 // Wenn Endknoten erreicht
                 if (links.Count == 0 || node == "Ende")
@@ -186,9 +155,9 @@ namespace Assets._Scripts.Test
                 }
                 else
                 {
-                    foreach (string neighbor in links)
+                    foreach (Link neighbor in links)
                     {
-                        DFS(neighbor);
+                        DFS(neighbor.targetNode);
                     }
                 }
 
@@ -208,7 +177,7 @@ namespace Assets._Scripts.Test
                 List<string> newPath = new List<string>();
                 foreach(string node in path)
                 {
-                    var (_, _, nodeBody) = _graph[node];
+                    string nodeBody = _graph[node].body;
                     if(nodeBody.Contains(">>Bias|"))
                     {
                         newPath.Add(node);
@@ -328,6 +297,22 @@ namespace Assets._Scripts.Test
             }
         }
         */
+    }
+    public class Node
+    {
+        public string body;
+        public List<Link> links = new List<Link>();
+        public Dictionary<Link,int> duplicateLinks = new Dictionary<Link,int>();
+        public Node(string _nodeBody, List<Link> _links)
+        {
+            body = _nodeBody;
+            links = _links;
+        }
+    }
+    public class Link
+    {
+        public string targetNode;
+        public string dialogueText;
     }
 }
 
