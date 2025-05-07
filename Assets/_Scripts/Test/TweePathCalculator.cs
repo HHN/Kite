@@ -87,13 +87,13 @@ namespace Assets._Scripts.Test
                 string nodeBody = match.Groups[2].Value;
 
                 List<Link> links = new List<Link>();
+                Dictionary<string,int> linkCount = new Dictionary<string,int>();
 
                 // Links extrahieren
                 MatchCollection linkMatches = Regex.Matches(nodeBody, linkPattern);
                 foreach (Match linkMatch in linkMatches)
                 {
                     Link targetLink = new Link();
-
                     if (!string.IsNullOrEmpty(linkMatch.Groups[2].Value))
                     {
                         targetLink.targetNode = linkMatch.Groups[2].Value.Trim(); // Text nach | oder ->
@@ -105,7 +105,16 @@ namespace Assets._Scripts.Test
 
                     if (!string.IsNullOrEmpty(targetLink.targetNode))
                     {
+                        targetLink.dialogueText = linkMatch.Groups[1].Value.Trim();
                         links.Add(targetLink);
+                        if(linkCount.ContainsKey(targetLink.targetNode))
+                        {
+                            linkCount[targetLink.targetNode]++;
+                        }
+                        else
+                        {
+                            linkCount[targetLink.targetNode]=1;
+                        }
                     }
                 }
 
@@ -114,6 +123,7 @@ namespace Assets._Scripts.Test
                 {
                     Node newNode = new Node(nodeBody, links);
                     _graph[nodeName] = newNode;
+                    _graph[nodeName].linkCount = linkCount;
                 }
                 else
                 {
@@ -173,7 +183,7 @@ namespace Assets._Scripts.Test
             List<List<string>> newPaths = new List<List<string>>();
             foreach(List<string> path in paths)
             {
-                bool duplicate = false;
+                bool linkCount = false;
                 List<string> newPath = new List<string>();
                 foreach(string node in path)
                 {
@@ -187,10 +197,10 @@ namespace Assets._Scripts.Test
                 {
                     if(listElement.SequenceEqual(newPath))
                     {
-                        duplicate = true;
+                        linkCount = true;
                     }
                 }
-                if(!duplicate)
+                if(!linkCount)
                 {
                     newPaths.Add(newPath);
                 }
@@ -302,7 +312,7 @@ namespace Assets._Scripts.Test
     {
         public string body;
         public List<Link> links = new List<Link>();
-        public Dictionary<Link,int> duplicateLinks = new Dictionary<Link,int>();
+        public Dictionary<string,int> linkCount = new Dictionary<string,int>();
         public Node(string _nodeBody, List<Link> _links)
         {
             body = _nodeBody;
