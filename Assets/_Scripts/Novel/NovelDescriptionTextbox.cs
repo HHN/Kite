@@ -79,19 +79,19 @@ namespace Assets._Scripts.Novel
         /// <summary>
         /// Setzt den angezeigten Text.
         /// </summary>
-        /// <param name="text">Der anzuzeigende Text.</param>
-        public void SetText(string text)
+        /// <param name="novelDescription">Der anzuzeigende Text.</param>
+        public void SetText(string novelDescription)
         {
-            this.text.text = text;
+            text.text = novelDescription;
         }
 
         /// <summary>
         /// Setzt den Namen der Visual Novel.
         /// </summary>
-        /// <param name="visualNovelName">Der Name der Visual Novel.</param>
-        public void SetVisualNovelName(VisualNovelNames visualNovelName)
+        /// <param name="novelName">Der Name der Visual Novel.</param>
+        public void SetVisualNovelName(VisualNovelNames novelName)
         {
-            this.visualNovelName = visualNovelName;
+            visualNovelName = novelName;
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Assets._Scripts.Novel
         /// <param name="visualNovel">Die Visual Novel.</param>
         public void SetVisualNovel(VisualNovel visualNovel)
         {
-            this.visualNovelToDisplay = visualNovel;
+            visualNovelToDisplay = visualNovel;
 
             if (bookMarkButton != null) InitializeBookMarkButton(FavoritesManager.Instance().IsFavorite(visualNovel));
         }
@@ -116,15 +116,8 @@ namespace Assets._Scripts.Novel
             }
 
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-            PlayManager.Instance()
-                .SetForegroundColorOfVisualNovelToPlay(
-                    FoundersBubbleMetaInformation.GetColorOfNovel(visualNovelName));
-            PlayManager.Instance()
-                .SetBackgroundColorOfVisualNovelToPlay(
-                    FoundersBubbleMetaInformation.GetColorOfNovel(visualNovelName));
-            PlayManager.Instance()
-                .SetDisplayNameOfNovelToPlay(
-                    FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+            PlayManager.Instance().SetColorOfVisualNovelToPlay(visualNovelToDisplay.novelColor);
+            PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
 

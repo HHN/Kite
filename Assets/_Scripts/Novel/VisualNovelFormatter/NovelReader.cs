@@ -109,7 +109,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             Debug.Log($"existingNovels: {string.Join(", ", existingNovels.Select(n => n.title))}");
 
             // If no novels exist, save the entire new list.
-            if (existingNovels == null || existingNovels.Count == 0)
+            if (existingNovels.Count == 0)
             {
                 SaveToJson(new NovelListWrapper(visualNovels));
             }
@@ -135,7 +135,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 // Add any entirely new novels that weren't already included.
                 foreach (VisualNovel newNovel in visualNovels)
                 {
-                    if (!modifiedListOfNovels.Any(n => n.id == newNovel.id))
+                    if (modifiedListOfNovels.All(n => n.id != newNovel.id))
                     {
                         modifiedListOfNovels.Add(newNovel);
                         Debug.Log("Added new Novel : " + newNovel.title);

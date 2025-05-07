@@ -30,34 +30,5 @@ namespace Assets._Scripts.Managers
         {
             return _color;
         }
-
-        public void SetCanvasHeight(float height)
-        {
-            if (height > 0) // Überprüfung, ob die Höhe positiv ist
-            {
-                this._canvasHeight = height;
-            }
-        }
-
-        // Getter für canvasHeight
-        public float GetCanvasHeight()
-        {
-            return this._canvasHeight;
-        }
-
-        // Setter für canvasWidth
-        public void SetCanvasWidth(float width)
-        {
-            if (width > 0) // Überprüfung, ob die Breite positiv ist
-            {
-                this._canvasWidth = width;
-            }
-        }
-
-        // Getter für canvasWidth
-        public float GetCanvasWidth()
-        {
-            return this._canvasWidth;
-        }
     }
 }

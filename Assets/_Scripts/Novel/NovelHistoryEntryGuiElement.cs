@@ -82,9 +82,8 @@ namespace Assets._Scripts.Novel
             };
         }
 
-        public void SetVisualNovelColor(VisualNovelNames visualNovel)
+        public void SetVisualNovelColor(Color color)
         {
-            Color color = FoundersBubbleMetaInformation.GetColorOfNovel(visualNovel);
             image.color = color;
             image01.color = color;
             image02.color = color;

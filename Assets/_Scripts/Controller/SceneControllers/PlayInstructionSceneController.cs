@@ -32,7 +32,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             BackStackManager.Instance().Push(SceneNames.PlayInstructionScene);
 
-            backgroundColor = PlayManager.Instance().GetBackgroundColorOfVisualNovelToPlay();
+            backgroundColor = PlayManager.Instance().GetColorOfVisualNovelToPlay();
             novelName.text = PlayManager.Instance().GetDisplayNameOfNovelToPlay();
             novelImage.color = backgroundColor;
             toggle.isOn = false;
@@ -71,19 +71,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void NeverShowAgain()
         {
             ShowPlayInstructionManager.Instance().SetShowInstruction(false);
-        }
-
-        public void OnBackButton()
-        {
-            string lastScene = SceneRouter.GetTargetSceneForBackButton();
-
-            if (string.IsNullOrEmpty(lastScene))
-            {
-                SceneLoader.LoadMainMenuScene();
-                return;
-            }
-
-            SceneLoader.LoadScene(lastScene);
         }
 
         private void SetColours() 

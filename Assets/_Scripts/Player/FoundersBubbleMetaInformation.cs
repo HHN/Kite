@@ -1,12 +1,11 @@
 using Assets._Scripts.Novel;
-using Assets._Scripts.Utilities;
 using UnityEngine;
 
 namespace Assets._Scripts.Player
 {
     public class FoundersBubbleMetaInformation : MonoBehaviour
     {
-        public static int NumberOfNovelsToDisplay = 8;
+        public const int NumberOfNovelsToDisplay = 8;
 
         public static bool IsHighInGui(VisualNovelNames value)
         {
@@ -21,23 +20,6 @@ namespace Assets._Scripts.Player
                 VisualNovelNames.HonorarNovel => false,
                 VisualNovelNames.EinstiegsNovel => false,
                 _ => false
-            };
-        }
-        
-        internal static Color GetColorOfNovel(VisualNovelNames value)
-        {
-            return value switch
-            {
-                VisualNovelNames.ElternNovel => NovelColours.GetNovelColour(NovelColourPicker.Green),
-                VisualNovelNames.PresseNovel => NovelColours.GetNovelColour(NovelColourPicker.Violet),
-                VisualNovelNames.NotariatNovel => NovelColours.GetNovelColour(NovelColourPicker.Turquoise),
-                VisualNovelNames.VermieterNovel => NovelColours.GetNovelColour(NovelColourPicker.DarkBlue),
-                VisualNovelNames.InvestorNovel => NovelColours.GetNovelColour(NovelColourPicker.GreenBrown),
-                VisualNovelNames.BankKreditNovel => NovelColours.GetNovelColour(NovelColourPicker.DarkBlue),
-                VisualNovelNames.HonorarNovel => NovelColours.GetNovelColour(NovelColourPicker.Turquoise2),
-                VisualNovelNames.EinstiegsNovel => NovelColours.GetNovelColour(NovelColourPicker.Violet),
-                VisualNovelNames.None => NovelColours.GetNovelColour(NovelColourPicker.Default),
-                _ => NovelColours.GetNovelColour(NovelColourPicker.Default)
             };
         }
 
