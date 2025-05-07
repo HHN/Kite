@@ -241,6 +241,8 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
                 if (!string.IsNullOrWhiteSpace(folder.NovelMetaData.TalkingPartner03))
                     characters.Add(folder.NovelMetaData.TalkingPartner03);
+                
+                Debug.Log($"folder.NovelMetaData.NovelColor: {folder.NovelMetaData.NovelColor}");
 
                 VisualNovel novel = new VisualNovel
                 {
@@ -251,6 +253,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                     novelEvents = folder.NovelEventList,
                     characters = characters,
                     isKiteNovel = folder.NovelMetaData.IsKiteNovel,
+                    novelColor = ColorUtility.TryParseHtmlString(folder.NovelMetaData.NovelColor, out Color c) ? c : Color.black,
                 };
 
                 novels.Add(novel);

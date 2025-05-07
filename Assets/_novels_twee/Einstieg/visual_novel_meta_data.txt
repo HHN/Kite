@@ -10,6 +10,7 @@
   "talkingPartner02" : "",
   "talkingPartner03" : "",
   "isKiteNovel": true,
+  "novelColor": "#532053",
   "wordsToReplace": [
     {"wordToReplace": ">>Charakter01SprichtFriendly:<<", "replaceByValue": ">>Charakter01Laecheln:<<"},
   ]
