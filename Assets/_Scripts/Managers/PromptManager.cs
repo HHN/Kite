@@ -1,6 +1,5 @@
 using System.Text;
 using Assets._Scripts.Novel;
-using UnityEngine;
 
 namespace Assets._Scripts.Managers
 {

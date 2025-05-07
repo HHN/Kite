@@ -22,10 +22,7 @@ namespace Assets._Scripts.Novel
 
         public void AddGlobalVariable(string name, string value)
         {
-            if (GlobalVariables == null)
-            {
-                GlobalVariables = new Dictionary<string, string>();
-            }
+            GlobalVariables ??= new Dictionary<string, string>();
 
             GlobalVariables.Add(name, value);
         }
@@ -79,12 +76,7 @@ namespace Assets._Scripts.Novel
 
         public Dictionary<string, string> GetGlobalVariables()
         {
-            if (GlobalVariables == null)
-            {
-                GlobalVariables = new Dictionary<string, string>();
-            }
-
-            return GlobalVariables;
+            return GlobalVariables ??= new Dictionary<string, string>();
         }
 
         public void ClearGlobalVariables()

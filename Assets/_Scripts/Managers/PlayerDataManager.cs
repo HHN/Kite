@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Text;
-using UnityEngine;
 
 namespace Assets._Scripts.Managers
 {
@@ -217,30 +216,15 @@ namespace Assets._Scripts.Managers
                 UnityEngine.PlayerPrefs.DeleteKey("GPTAnswerForPreferences");
             }
 
-            if (_playerPrefs.ContainsKey("PlayerName"))
-            {
-                _playerPrefs.Remove("PlayerName");
-            }
+            _playerPrefs.Remove("PlayerName");
 
-            if (_playerPrefs.ContainsKey("CompanyName"))
-            {
-                _playerPrefs.Remove("CompanyName");
-            }
+            _playerPrefs.Remove("CompanyName");
 
-            if (_playerPrefs.ContainsKey("ElevatorPitch"))
-            {
-                _playerPrefs.Remove("ElevatorPitch");
-            }
+            _playerPrefs.Remove("ElevatorPitch");
 
-            if (_playerPrefs.ContainsKey("Preferences"))
-            {
-                _playerPrefs.Remove("Preferences");
-            }
+            _playerPrefs.Remove("Preferences");
 
-            if (_playerPrefs.ContainsKey("GPTAnswerForPreferences"))
-            {
-                _playerPrefs.Remove("GPTAnswerForPreferences");
-            }
+            _playerPrefs.Remove("GPTAnswerForPreferences");
         }
     }
 }
