@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using Assets._Scripts.Managers;
 using Assets._Scripts._Mappings;
 using Assets._Scripts.Messages;
@@ -18,19 +17,16 @@ namespace Assets._Scripts.Controller.SceneControllers
 {
     public class MainMenuSceneController : SceneController, IOnSuccessHandler
     {
-        [SerializeField] private Button novelPlayerButton;
-        [SerializeField] private GameObject buttonSoundPrefab;
         [SerializeField] private GameObject termsAndConditionPanel;
         [SerializeField] private Button continueTermsAndConditionsButton;
         [SerializeField] private CustomToggle termsOfUseToggle;
         [SerializeField] private CustomToggle dataPrivacyToggle;
         [SerializeField] private CustomToggle collectDataToggle;
         [SerializeField] private TextMeshProUGUI infoTextTermsAndConditions;
-        [SerializeField] private AudioSource kiteAudioLogo;
         [SerializeField] private GameObject getVersionServerCallPrefab;
         [SerializeField] private GameObject novelLoader;
         [SerializeField] private TMP_Text versionInfo;
-        private const int COMPATIBLE_SERVER_VERSION_NUMBER = 10;
+        private const int CompatibleServerVersionNumber = 10;
 
         private void Start()
         {
@@ -52,9 +48,9 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             versionInfo.text = Application.version;
 
-            if (UnityEngine.PlayerPrefs.GetInt("IsSoundEffectVolumeOn", 1) == 1)
+            if (PlayerPrefs.GetInt("IsSoundEffectVolumeOn", 1) == 1)
             {
-                GlobalVolumeManager.Instance.SetGlobalVolume(UnityEngine.PlayerPrefs.GetFloat("SavedSoundEffectVolume", 1));
+                GlobalVolumeManager.Instance.SetGlobalVolume(PlayerPrefs.GetFloat("SavedSoundEffectVolume", 1));
             }
             else
             {
@@ -114,18 +110,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             Object.DontDestroyOnLoad(call.gameObject);
         }
 
-        public void OnNovelPlayerButton()
-        {
-            // Instantiate the sound prefab and assign it to a variable
-            GameObject buttonSound = Object.Instantiate(buttonSoundPrefab);
-            Object.DontDestroyOnLoad(buttonSound); // Correct usage of 
-        }
-
-        public void OnSettingsButton()
-        {
-            SceneLoader.LoadSettingsScene();
-        }
-
         private void OnContinueTermsAndConditionsButton()
         {
             UpdateTermsAcceptance();
@@ -180,7 +164,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             if (response == null) return;
 
-            if (response.GetVersion() != COMPATIBLE_SERVER_VERSION_NUMBER)
+            if (response.GetVersion() != CompatibleServerVersionNumber)
             {
                 DisplayInfoMessage(InfoMessages.UPDATE_AVAILABLE);
             }

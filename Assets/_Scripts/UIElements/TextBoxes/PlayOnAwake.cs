@@ -10,6 +10,8 @@ namespace Assets._Scripts.UIElements.TextBoxes
         private void Start()
         {
             GlobalVolumeManager.Instance.PlaySound(audioClip);
+            
+            // Destroy(gameObject, 5f);
         }
     }
 }

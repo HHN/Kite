@@ -1,7 +1,6 @@
 using System.Collections;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
-using Assets._Scripts.Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +13,12 @@ namespace Assets._Scripts.UIElements.FoundersBubble
         [SerializeField] private TextMeshProUGUI number;
         [SerializeField] private Animator animator;
         private bool _startedAnimation;
+
+        public VisualNovelNames VisualNovel
+        {
+            get => visualNovel;
+            set => visualNovel = value;
+        }
 
         private void Update()
         {
