@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Scripting;
 
 namespace Assets._Scripts.UIElements.DropDown
 {
+    [Preserve]
     public class DropDownMenu : MonoBehaviour
     {
         [SerializeField] private GameObject menuWrapper;
@@ -16,10 +18,10 @@ namespace Assets._Scripts.UIElements.DropDown
         [SerializeField] private List<RectTransform> listOfObjectToUpdate;
         [SerializeField] private List<DropDownMenu> childMenus;
 
-        // Start is called before the first frame update
         private void Start()
         {
-            menuButton.onClick.AddListener(OnMenuButton);
+            if (menuButton != null)
+                menuButton.onClick.AddListener(OnMenuButton);
             InitiateMenu();
         }
 
@@ -33,88 +35,105 @@ namespace Assets._Scripts.UIElements.DropDown
             if (isOpen)
             {
                 OpenMenu();
-                return;
             }
-
-            CloseMenu();
+            else
+            {
+                CloseMenu();
+            }
         }
 
         public void SetMenuOpen(bool setOpen)
         {
             if (setOpen)
-            {
                 OpenMenu();
-            }
             else
-            {
                 CloseMenu();
-            }
         }
 
         private void OnMenuButton()
         {
             if (isOpen)
-            {
                 CloseMenu();
-            }
             else
-            {
                 OpenMenu();
-            }
 
             StartCoroutine(RebuildLayout());
         }
 
         private void OpenMenu()
         {
-            indicatorImage.sprite = spriteWhileOpen;
-            menuWrapper.SetActive(true);
-            LayoutRebuilder.ForceRebuildLayoutImmediate(menuWrapper.GetComponent<RectTransform>());
+            if (indicatorImage != null && spriteWhileOpen != null)
+                indicatorImage.sprite = spriteWhileOpen;
+
+            if (menuWrapper != null)
+            {
+                menuWrapper.SetActive(true);
+                var rt = menuWrapper.GetComponent<RectTransform>();
+                if (rt != null)
+                    LayoutRebuilder.ForceRebuildLayoutImmediate(rt);
+            }
+
             isOpen = true;
         }
 
         private void CloseMenu()
         {
-            indicatorImage.sprite = spriteWhileClosed;
-            menuWrapper.SetActive(false);
-            LayoutRebuilder.ForceRebuildLayoutImmediate(menuWrapper.GetComponent<RectTransform>());
+            if (indicatorImage != null && spriteWhileClosed != null)
+                indicatorImage.sprite = spriteWhileClosed;
+
+            if (menuWrapper != null)
+            {
+                menuWrapper.SetActive(false);
+                var rt = menuWrapper.GetComponent<RectTransform>();
+                if (rt != null)
+                    LayoutRebuilder.ForceRebuildLayoutImmediate(rt);
+            }
+
             isOpen = false;
         }
 
         public void AddLayoutToUpdateOnChange(RectTransform rect)
         {
-            listOfObjectToUpdate.Add(rect);
+            if (rect == null) return;
+            if (listOfObjectToUpdate == null)
+                listOfObjectToUpdate = new List<RectTransform>();
+            if (!listOfObjectToUpdate.Contains(rect))
+                listOfObjectToUpdate.Add(rect);
         }
 
         public IEnumerator RebuildLayout()
         {
             yield return new WaitForEndOfFrame();
 
+            // Update child menus first
             if (childMenus != null)
             {
-                foreach (DropDownMenu menu in childMenus)
+                foreach (var menu in childMenus)
                 {
-                    menu.RebuildLayout();
+                    if (menu != null)
+                        StartCoroutine(menu.RebuildLayout());
                 }
             }
 
+            // Update registered RectTransforms
             if (listOfObjectToUpdate != null)
             {
-                foreach (RectTransform rect in listOfObjectToUpdate)
+                Canvas.ForceUpdateCanvases();
+                foreach (var rect in listOfObjectToUpdate)
                 {
-                    LayoutRebuilder.ForceRebuildLayoutImmediate(rect);
+                    if (rect != null)
+                        LayoutRebuilder.ForceRebuildLayoutImmediate(rect);
                 }
             }
         }
 
         public void AddChildMenu(DropDownMenu menu)
         {
+            if (menu == null) return;
             if (childMenus == null)
-            {
                 childMenus = new List<DropDownMenu>();
-            }
-
-            childMenus.Add(menu);
+            if (!childMenus.Contains(menu))
+                childMenus.Add(menu);
         }
     }
 }

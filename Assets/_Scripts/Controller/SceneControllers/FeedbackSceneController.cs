@@ -16,9 +16,11 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Assets._Scripts.ServerCommunication;
 using Assets._Scripts.ServerCommunication.ServerCalls;
+using UnityEngine.Scripting;
 
 namespace Assets._Scripts.Controller.SceneControllers
 {
+    [Preserve]
     public class FeedbackSceneController : SceneController, IOnSuccessHandler, IOnErrorHandler
     {
         [SerializeField] private TextMeshProUGUI feedbackText;
@@ -40,10 +42,10 @@ namespace Assets._Scripts.Controller.SceneControllers
         //[SerializeField] private TTSEngine engine;
         [SerializeField] private GameObject loadingAnimation;
 
-        #if UNITY_WEBGL && !UNITY_EDITOR
-            [DllImport("__Internal")]
-            private static extern void CopyTextToClipboard(string text);
-        #endif
+    #if UNITY_WEBGL && !UNITY_EDITOR
+        [DllImport("__Internal")]
+        private static extern void CopyTextToClipboard(string text);
+    #endif
 
         private readonly CultureInfo _culture = new CultureInfo("de-DE");
 
@@ -134,7 +136,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         public void OnCopyButton()
         {
-        #if UNITY_WEBGL && !UNITY_EDITOR
+    #if UNITY_WEBGL && !UNITY_EDITOR
                 CopyTextToClipboard(feedbackText.text);
         #else
                     GUIUtility.systemCopyBuffer = feedbackText.text;
@@ -176,7 +178,17 @@ namespace Assets._Scripts.Controller.SceneControllers
             novelToPlay.feedback = (completion);
             //PlayerDataManager.Instance().SaveEvaluation(novelToPlay.title, response.GetCompletion().Trim());
             AnalyticsServiceHandler.Instance().SetWaitedForAiFeedbackTrue();
-            LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
+
+            // Neuer Nullcheck und Auto-Find für layout
+            if (layout == null)
+            {
+                GameObject contentGo = GameObject.Find("Content");
+                if (contentGo != null)
+                    layout = contentGo.GetComponent<RectTransform>();
+            }
+            if (layout != null)
+                LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
+
             PlayResultMusic();
             FontSizeManager.Instance().UpdateAllTextComponents();
             //requestExpertFeedbackButton.interactable = true;
@@ -205,7 +217,16 @@ namespace Assets._Scripts.Controller.SceneControllers
             
             SaveDialogToHistory(completion);
             
-            LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
+            // Neuer Nullcheck und Auto-Find für layout
+            if (layout == null)
+            {
+                GameObject contentGo = GameObject.Find("Content");
+                if (contentGo != null)
+                    layout = contentGo.GetComponent<RectTransform>();
+            }
+            if (layout != null)
+                LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
+
             PlayResultMusic();
             FontSizeManager.Instance().UpdateAllTextComponents();
         }
