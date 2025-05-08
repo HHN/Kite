@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Globalization;
+using System.Runtime.InteropServices;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Messages;
 using Assets._Scripts.Novel;
