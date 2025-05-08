@@ -2764,6 +2764,9 @@ MonoBehaviour:
     context: 
     novelEvents: []
     playedPath: 
+    characters: []
+    isKiteNovel: 0
+    novelColor: {r: 0, g: 0, b: 0, a: 0}
   layout: {fileID: 1408727317}
   waitingLoopMusic: {fileID: 8300000, guid: a4d9ca4c75867804698a0b9adad12609, type: 3}
   resultMusic: {fileID: 8300000, guid: d8f2b98e7b7869e4a872603a218556b5, type: 3}
@@ -2777,6 +2780,8 @@ MonoBehaviour:
   copyButtonContainer: {fileID: 1224632047}
   copyNotificationContainer: {fileID: 509659195}
   loadingAnimation: {fileID: 502088450}
+  feedbackScrollRect: {fileID: 0}
+  wheelScrollSpeed: 0.5
 --- !u!4 &1727040111
 Transform:
   m_ObjectHideFlags: 0

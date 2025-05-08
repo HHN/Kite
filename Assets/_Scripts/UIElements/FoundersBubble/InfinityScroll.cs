@@ -41,6 +41,9 @@ namespace Assets._Scripts.UIElements.FoundersBubble
         [SerializeField] private Vector2 velocityDuringDrag;
         [SerializeField] private float lastDragTime;
 
+        // New: Geschwindigkeit für Mausrad-Scroll
+        [SerializeField] private float wheelScrollSpeed = 0.2f;
+
         private void Start()
         {
             lastDragPosition = Vector2.zero;
@@ -61,12 +64,10 @@ namespace Assets._Scripts.UIElements.FoundersBubble
             for (int i = 0; i < itemsToAdd; i++)
             {
                 int num = itemList.Length - i - 1;
-
                 while (num < 0)
                 {
                     num += itemList.Length;
                 }
-
                 RectTransform rt = Instantiate(itemList[num], contentPanelTransform);
                 rt.SetAsFirstSibling();
             }
@@ -77,10 +78,10 @@ namespace Assets._Scripts.UIElements.FoundersBubble
                 contentPanelTransform.localPosition.z);
 
             widthBefore = itemList[0].rect.width * itemList.Length + (itemList.Length - 1) * horizontalLayoutGroup.spacing - viewPortTransform.rect.width;
-            widthAfter = itemList[0].rect.width * (itemList.Length + 2 * itemsToAdd) + (itemList.Length + 2 * itemsToAdd - 1) * horizontalLayoutGroup.spacing - viewPortTransform.rect.width;
+            widthAfter = itemList[0].rect.width * (itemList.Length + 2 * itemsToAdd) +
+                         (itemList.Length + 2 * itemsToAdd - 1) * horizontalLayoutGroup.spacing - viewPortTransform.rect.width;
 
             float scrollPosition = SceneMemoryManager.Instance().GetMemoryOfFoundersBubbleScene();
-
             if (scrollRect != null)
             {
                 scrollRect.horizontalNormalizedPosition = scrollPosition;
@@ -93,12 +94,27 @@ namespace Assets._Scripts.UIElements.FoundersBubble
 
         private void Update()
         {
+            // Zusatz: horizontales Scrolling mit Mausrad
+            float wheel = Input.GetAxis("Mouse ScrollWheel");
+            if (Mathf.Abs(wheel) > 0.0001f)
+            {
+                if (scrollRect != null)
+                {
+                    float pos = scrollRect.horizontalNormalizedPosition + wheel * wheelScrollSpeed;
+                    scrollRect.horizontalNormalizedPosition = Mathf.Clamp01(pos);
+                }
+                else if (customScrollRect != null)
+                {
+                    float pos = customScrollRect.horizontalNormalizedPosition + wheel * wheelScrollSpeed;
+                    customScrollRect.horizontalNormalizedPosition = Mathf.Clamp01(pos);
+                }
+            }
+
             if (scrollRect == null)
             {
                 UpdateForCustomScrollRect();
                 return;
             }
-
             UpdateForScrollRect();
         }
 

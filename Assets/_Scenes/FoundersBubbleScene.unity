@@ -1594,6 +1594,8 @@ MonoBehaviour:
   lastDragPosition: {x: 0, y: 0}
   velocityDuringDrag: {x: 0, y: 0}
   lastDragTime: 0
+  wheelScrollSpeed: 0.2
+  wheelSmoothing: 10
 --- !u!114 &233784054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5499,6 +5501,7 @@ MonoBehaviour:
     playedPath: 
     characters: []
     isKiteNovel: 0
+    novelColor: {r: 0, g: 0, b: 0, a: 0}
   visualNovelName: 0
   colorOfText: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &927162479
@@ -10304,6 +10307,8 @@ MonoBehaviour:
   lastDragPosition: {x: 0, y: 0}
   velocityDuringDrag: {x: 0, y: 0}
   lastDragTime: 0
+  wheelScrollSpeed: 1
+  wheelSmoothing: 10
 --- !u!1 &1839374588
 GameObject:
   m_ObjectHideFlags: 0
@@ -10423,6 +10428,7 @@ MonoBehaviour:
     playedPath: 
     characters: []
     isKiteNovel: 0
+    novelColor: {r: 0, g: 0, b: 0, a: 0}
   visualNovelName: 0
   colorOfText: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1839374593
@@ -10615,6 +10621,8 @@ MonoBehaviour:
   lastDragPosition: {x: 0, y: 0}
   velocityDuringDrag: {x: 0, y: 0}
   lastDragTime: 0
+  wheelScrollSpeed: 0.8
+  wheelSmoothing: 10
 --- !u!114 &1935854956
 MonoBehaviour:
   m_ObjectHideFlags: 0

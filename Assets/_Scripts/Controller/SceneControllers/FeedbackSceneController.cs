@@ -42,6 +42,10 @@ namespace Assets._Scripts.Controller.SceneControllers
         //[SerializeField] private TTSEngine engine;
         [SerializeField] private GameObject loadingAnimation;
 
+        // New: scroll rect for mouse wheel vertical scroll
+        [SerializeField] private ScrollRect feedbackScrollRect;
+        [SerializeField] private float wheelScrollSpeed = 0.2f;
+
     #if UNITY_WEBGL && !UNITY_EDITOR
         [DllImport("__Internal")]
         private static extern void CopyTextToClipboard(string text);
@@ -122,14 +126,25 @@ namespace Assets._Scripts.Controller.SceneControllers
             loadingAnimation.SetActive(false);
         }
 
+        private void Update()
+        {
+            // Mouse wheel vertical scroll support
+            float wheel = Input.GetAxis("Mouse ScrollWheel");
+            if (Mathf.Abs(wheel) > 0f && feedbackScrollRect != null)
+            {
+                float pos = feedbackScrollRect.verticalNormalizedPosition + wheel * wheelScrollSpeed;
+                feedbackScrollRect.verticalNormalizedPosition = Mathf.Clamp01(pos);
+            }
+        }
+
         public void OnFinishButton()
         {
             AnalyticsServiceHandler.Instance().SendWaitedForAIFeedback();
 
-            #if UNITY_IOS
+        #if UNITY_IOS
                     TextToSpeechManager.Instance.CancelSpeak();
-            #endif
-            
+        #endif
+                    
             BackStackManager.Instance().Clear(); // we go back to the explorer and don't want the back-button to bring us to the feedback scene again
             SceneLoader.LoadFoundersBubbleScene();
         }
@@ -230,7 +245,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             PlayResultMusic();
             FontSizeManager.Instance().UpdateAllTextComponents();
         }
-        
+      
         private void SaveDialogToHistory(string response)
         {
             DialogHistoryEntry dialogHistoryEntry = new DialogHistoryEntry();
