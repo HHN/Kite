@@ -51,9 +51,9 @@ namespace Assets._Scripts.ServerCommunication
 
         protected void HandleWebRequestResult(UnityWebRequest webRequest)
         {
-            //Debug.Log("UnityWebRequest Result: " + webRequest.result);
-            //Debug.Log("UnityWebRequest Error: " + webRequest.error);
-            //Debug.Log("WebRequest URL: " + webRequest.url);
+            Debug.Log("UnityWebRequest Result: " + webRequest.result);
+            Debug.Log("UnityWebRequest Error: " + webRequest.error);
+            Debug.Log("WebRequest URL: " + webRequest.url);
 
             switch (webRequest.result)
             {

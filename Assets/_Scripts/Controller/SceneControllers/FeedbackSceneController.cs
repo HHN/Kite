@@ -47,6 +47,9 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private readonly CultureInfo _culture = new CultureInfo("de-DE");
 
+        private VisualNovel _novel;
+        private string _dialog;
+
         private void Start()
         {
             BackStackManager.Instance().Push(SceneNames.FeedbackScene);
@@ -73,7 +76,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             if (string.IsNullOrEmpty(novelToPlay.feedback))
             {
                 StartWaitingMusic();
-                VisualNovel novel = PlayManager.Instance().GetVisualNovelToPlay();
+                _novel = PlayManager.Instance().GetVisualNovelToPlay();
                 feedbackText.SetText("Das Feedback wird gerade geladen. Dies dauert durchschnittlich zwischen 30 und 60 Sekunden. Solltest du nicht so lange warten wollen, kannst du dir das Feedback einfach im Archiv anschauen, sobald es fertig ist." +
                                      "\n" +
                                      "\n" +
@@ -81,21 +84,21 @@ namespace Assets._Scripts.Controller.SceneControllers
                 GetCompletionServerCall call = Instantiate(gptServercallPrefab).GetComponent<GetCompletionServerCall>();
                 call.sceneController = this;
 
-                string dialog = PromptManager.Instance().GetDialog();
+                _dialog = PromptManager.Instance().GetDialog();
 
-                dialog = dialog.Replace("Bitte beachte, dass kein Teil des Dialogs in das Feedback darf.", "");
+                _dialog = _dialog.Replace("Bitte beachte, dass kein Teil des Dialogs in das Feedback darf.", "");
 
                 FeedbackHandler feedbackHandler = new FeedbackHandler()
                 {
                     FeedbackSceneController = this,
                     ID = PlayManager.Instance().GetVisualNovelToPlay().id,
-                    Dialog = dialog
+                    Dialog = _dialog
                 };
 
                 call.OnSuccessHandler = feedbackHandler;
                 call.OnErrorHandler = this;
 
-                call.prompt = PromptManager.Instance().GetPrompt(novel != null ? novel.context : "");
+                call.prompt = PromptManager.Instance().GetPrompt(_novel != null ? _novel.context : "");
 
                 call.SendRequest();
                 DontDestroyOnLoad(call.gameObject);
@@ -179,29 +182,44 @@ namespace Assets._Scripts.Controller.SceneControllers
             //requestExpertFeedbackButton.interactable = true;
         }
 
-        public IEnumerator SaveDialogToHistory(string response)
-        {
-            DialogHistoryEntry dialogHistoryEntry = new DialogHistoryEntry();
-            dialogHistoryEntry.SetNovelId(PlayManager.Instance().GetVisualNovelToPlay().id);
-            dialogHistoryEntry.SetDialog(PromptManager.Instance().GetDialog());
-            Debug.Log("RESPONSE: " + response);
-            dialogHistoryEntry.SetCompletion(response.Trim());
-            DateTime now = DateTime.Now;
-            string formattedDateTime = now.ToString("ddd | dd.MM.yyyy | HH:mm", _culture);
-            dialogHistoryEntry.SetDateAndTime(formattedDateTime);
-            DialogHistoryManager.Instance().AddEntry(dialogHistoryEntry);
-            yield return null;
-        }
-
         public void OnError(Response response)
         {
+            if (SceneManager.GetActiveScene().name != SceneNames.FeedbackScene)
+            {
+                return;
+            }
+            
             StopWaitingMusic();
             DisplayErrorMessage(ErrorMessages.UNEXPECTED_SERVER_ERROR);
             finishButtonContainer.SetActive(false);
             finishButtonTopContainer.SetActive(true);
             finishButtonBottomContainer.SetActive(true);
+            
+            string completion = response.GetCompletion().Replace("#", "").Replace("*", "").Trim();
+            
+            StartCoroutine(TextToSpeechManager.Instance.Speak(completion));
+            
             feedbackText.SetText("Leider ist aktuell keine KI-Analyse verfügbar.");
             loadingAnimation.SetActive(false);
+            novelToPlay.feedback = completion;
+            
+            SaveDialogToHistory(completion);
+            
+            LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
+            PlayResultMusic();
+            FontSizeManager.Instance().UpdateAllTextComponents();
+        }
+        
+        private void SaveDialogToHistory(string response)
+        {
+            DialogHistoryEntry dialogHistoryEntry = new DialogHistoryEntry();
+            dialogHistoryEntry.SetNovelId(_novel.id);
+            dialogHistoryEntry.SetDialog(_dialog);
+            dialogHistoryEntry.SetCompletion(response.Trim());
+            DateTime now = DateTime.Now;
+            string formattedDateTime = now.ToString("ddd | dd.MM.yyyy | HH:mm", _culture);
+            dialogHistoryEntry.SetDateAndTime(formattedDateTime);
+            DialogHistoryManager.Instance().AddEntry(dialogHistoryEntry);
         }
 
         private void StartWaitingMusic()
@@ -217,11 +235,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void PlayResultMusic()
         {
             GlobalVolumeManager.Instance.PlaySound(resultMusic);
-        }
-
-        public void DeactivateAskButton()
-        {
-            //requestExpertFeedbackButton.interactable = false;
         }
     }
 
@@ -240,6 +253,16 @@ namespace Assets._Scripts.Controller.SceneControllers
             if (!FeedbackSceneController.IsNullOrDestroyed())
             {
                 FeedbackSceneController.OnSuccess(response);
+            }
+        }
+        
+        public void OnError(Response message)
+        {
+            SaveDialogToHistory(message.GetCompletion());
+
+            if (!FeedbackSceneController.IsNullOrDestroyed())
+            {
+                FeedbackSceneController.OnError(message);
             }
         }
 
