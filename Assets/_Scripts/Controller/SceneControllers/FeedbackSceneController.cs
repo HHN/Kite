@@ -195,7 +195,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             finishButtonTopContainer.SetActive(true);
             finishButtonBottomContainer.SetActive(true);
             
-            string completion = response.GetCompletion().Replace("#", "").Replace("*", "").Trim();
+            string completion = "Keine Analyse verfügbar – Serverfehler.";
             
             StartCoroutine(TextToSpeechManager.Instance.Speak(completion));
             

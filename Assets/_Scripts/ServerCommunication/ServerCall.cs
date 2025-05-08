@@ -73,10 +73,14 @@ namespace Assets._Scripts.ServerCommunication
                     if (Application.internetReachability == NetworkReachability.NotReachable)
                     {
                         sceneController.DisplayErrorMessage(ErrorMessages.NO_INTERNET);
+                        Response response = new Response();
+                        OnResponse(response);
                     }
                     else
                     {
                         sceneController.DisplayErrorMessage($"Unerwarteter Fehler: {webRequest.error}");
+                        Response response = new Response();
+                        OnResponse(response);
                     }
 
                     break;
