@@ -121,7 +121,7 @@ namespace Assets._Scripts.Test
                 // Speichere Node im Graphen
                 if (!_graph.ContainsKey(nodeName))
                 {
-                    Node newNode = new Node(nodeBody, links);
+                    Node newNode = new Node(nodeName, nodeBody, links);
                     _graph[nodeName] = newNode;
                     _graph[nodeName].linkCount = linkCount;
                 }
@@ -134,73 +134,74 @@ namespace Assets._Scripts.Test
             // Stelle sicher, dass "Ende" im Graph existiert
             if (!_graph.ContainsKey("Ende"))
             {
-                _graph["Ende"] = new Node("",new List<Link>());
+                _graph["Ende"] = new Node("Ende", "",new List<Link>());
             }
         }
 
-        public List<List<string>> GetAllPaths(string startNode)
+        public List<Dictionary<Node, Link>> GetAllPaths(string startNode)
         {
             Debug.Log("GetAllPaths gestartet");
 
-            List<List<string>> allPaths = new List<List<string>>();
-            List<string> currentPath = new List<string>();
+            List<Dictionary<Node, Link>> allPaths = new List<Dictionary<Node, Link>>();
+            Dictionary<Node, Link> currentPath = new Dictionary<Node, Link>();
 
-            void DFS(string node)
+            void DFS(Node node)
             {
-                if (!_graph.ContainsKey(node))
+                if (!_graph.ContainsKey(node.name))
                 {
                     Debug.LogError($"Knoten {node} existiert nicht im Graphen!");
                     return;
                 }
 
                 // Füge den aktuellen Knoten zum Pfad hinzu
-                currentPath.Add(node);
 
-                List<Link> links = _graph[node].links;
+                List<Link> links = _graph[node.name].links;
 
                 // Wenn Endknoten erreicht
-                if (links.Count == 0 || node == "Ende")
+                if (links.Count == 0 || node.name == "Ende")
                 {
-                    allPaths.Add(new List<string>(currentPath));
+                    allPaths.Add(new Dictionary<Node, Link>(currentPath));
                 }
                 else
                 {
                     foreach (Link neighbor in links)
                     {
-                        DFS(neighbor.targetNode);
+                        currentPath[node] = neighbor;
+                        DFS(_graph[neighbor.targetNode]);
                     }
                 }
 
-                currentPath.RemoveAt(currentPath.Count - 1);
+                //currentPath.RemoveAt(currentPath.Count - 1);
+                currentPath.Remove(node);
             }
 
-            DFS(startNode);
+            DFS(_graph[startNode]);
             return allPaths;
         }
 
-        public List<List<string>> ReturnUniquePaths(List<List<string>> paths)
+        public List<Dictionary<Node,Link>> ReturnUniquePaths(List<Dictionary<Node, Link>> paths)
         {
-            List<List<string>> newPaths = new List<List<string>>();
-            foreach(List<string> path in paths)
+            List<Dictionary<Node, Link>> newPaths = new List<Dictionary<Node, Link>>();
+            foreach(Dictionary<Node, Link> path in paths)
             {
-                bool linkCount = false;
-                List<string> newPath = new List<string>();
-                foreach(string node in path)
+                bool duplicate = false;
+                Dictionary<Node, Link> newPath = new Dictionary<Node, Link>();
+                foreach(KeyValuePair<Node,Link> decision in path)
                 {
-                    string nodeBody = _graph[node].body;
+                    string nodeBody = decision.Key.body;
                     if(nodeBody.Contains(">>Bias|"))
                     {
-                        newPath.Add(node);
+                        newPath.Add(decision.Key,decision.Value);
                     }
                 }
-                foreach(List<string> listElement in newPaths)
+                foreach(Dictionary<Node, Link> listElement in newPaths)
                 {
-                    if(listElement.SequenceEqual(newPath))
+                    if(PathEqual(listElement, newPath))
                     {
-                        linkCount = true;
+                        duplicate = true;
                     }
                 }
-                if(!linkCount)
+                if(!duplicate)
                 {
                     newPaths.Add(newPath);
                 }
@@ -209,11 +210,41 @@ namespace Assets._Scripts.Test
             return newPaths;
         }
 
-        
+        public bool PathEqual(Dictionary<Node, Link> firstPath, Dictionary<Node, Link> secondPath)
+        {
+            if(firstPath.Count != secondPath.Count)
+            {
+                return false;
+            }
+            foreach(KeyValuePair<Node,Link> decision in firstPath)
+            {
+                if(secondPath.TryGetValue(decision.Key,out Link value))
+                {
+                    if(!_graph[value.targetNode].body.Contains("End") && !value.Equals(decision.Value))
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
-        public void PrintPathsAndSpeakers(List<List<string>> paths)
+        public void PrintPathsAndSpeakers(List<Dictionary<Node,Link>> paths)
         {
             Debug.Log($"Gefundene Pfade: {paths.Count}");
+            /*
+            foreach (Dictionary<Node,Link> path in paths)
+            {
+                Debug.Log("Path:");
+                foreach(KeyValuePair<Node,Link> decision in path)
+                {
+                    Debug.Log("Node: " + decision.Key.name + "; Link: " + decision.Value.targetNode);
+                }
+            }*/
 
             // foreach (var path in paths)
             // {
@@ -310,20 +341,44 @@ namespace Assets._Scripts.Test
     }
     public class Node
     {
+        public string name;
         public string body;
         public List<Link> links = new List<Link>();
         public Dictionary<string,int> linkCount = new Dictionary<string,int>();
-        public Node(string _nodeBody, List<Link> _links)
+
+        public Node(string _name, string _nodeBody, List<Link> _links)
         {
+            name = _name;
             body = _nodeBody;
             links = _links;
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj is not Node other) return false;
+            return name == other.name;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(name); // Use .NET's built-in hash combiner
         }
     }
     public class Link
     {
         public string targetNode;
         public string dialogueText;
+        public override bool Equals(object obj)
+        {
+            if (obj is not Link other) return false;
+            return targetNode == other.targetNode && dialogueText == other.dialogueText;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(targetNode, dialogueText); // Use .NET's built-in hash combiner
+        }
     }
+
 }
 
 

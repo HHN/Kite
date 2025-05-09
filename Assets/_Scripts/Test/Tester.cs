@@ -23,7 +23,7 @@ namespace Assets._Scripts.Test
                 calculator.ParseTweeFile(novelContent);
 
                 // Alle Pfade ab "Anfang" berechnen
-                List<List<string>> allPaths = calculator.GetAllPaths("Anfang");
+                List<Dictionary<Node,Link>> allPaths = calculator.GetAllPaths("Anfang");
                 calculator.PrintPathsAndSpeakers(allPaths);
                 Debug.Log("Unique Paths with Biases: " + calculator.ReturnUniquePaths(allPaths).Count);
 
