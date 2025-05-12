@@ -1595,7 +1595,6 @@ MonoBehaviour:
   velocityDuringDrag: {x: 0, y: 0}
   lastDragTime: 0
   wheelScrollSpeed: 0.2
-  wheelSmoothing: 10
 --- !u!114 &233784054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10308,7 +10307,6 @@ MonoBehaviour:
   velocityDuringDrag: {x: 0, y: 0}
   lastDragTime: 0
   wheelScrollSpeed: 1
-  wheelSmoothing: 10
 --- !u!1 &1839374588
 GameObject:
   m_ObjectHideFlags: 0
@@ -10621,8 +10619,7 @@ MonoBehaviour:
   lastDragPosition: {x: 0, y: 0}
   velocityDuringDrag: {x: 0, y: 0}
   lastDragTime: 0
-  wheelScrollSpeed: 0.8
-  wheelSmoothing: 10
+  wheelScrollSpeed: 5
 --- !u!114 &1935854956
 MonoBehaviour:
   m_ObjectHideFlags: 0
