@@ -42,7 +42,7 @@ namespace Assets._Scripts.UIElements.FoundersBubble
         [SerializeField] private float lastDragTime;
 
         // New: Geschwindigkeit für Mausrad-Scroll
-        [SerializeField] private float wheelScrollSpeed = 0.2f;
+        [SerializeField] private float wheelScrollSpeed = 5f;
 
         private void Start()
         {
