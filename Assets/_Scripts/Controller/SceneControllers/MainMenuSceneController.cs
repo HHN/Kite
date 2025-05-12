@@ -11,7 +11,9 @@ using Assets._Scripts.ServerCommunication.ServerCalls;
 using Assets._Scripts.UIElements;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
+
 
 namespace Assets._Scripts.Controller.SceneControllers
 {
@@ -28,22 +30,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private TMP_Text versionInfo;
         private const int CompatibleServerVersionNumber = 10;
 
-        // NEW: allow smooth mouse-wheel scrolling in WebGL
-        [SerializeField] private ScrollRect pageScrollRect;
-        [SerializeField] private float wheelScrollSensitivity = 1000f;
-
-        private void Update()
-        {
-            // capture mouse wheel and add to scroll velocity for smooth movement
-            float wheel = Input.GetAxis("Mouse ScrollWheel");
-            if (Mathf.Abs(wheel) > 0.0001f && pageScrollRect != null)
-            {
-                var vel = pageScrollRect.velocity;
-                // wheel positive => scroll up, adjust sign if needed
-                vel.y += wheel * wheelScrollSensitivity;
-                pageScrollRect.velocity = vel;
-            }
-        }
 
         private void Start()
         {
