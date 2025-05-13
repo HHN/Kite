@@ -534,8 +534,6 @@ MonoBehaviour:
   getVersionServerCallPrefab: {fileID: 4259928301371937561, guid: 07199a4010e12194fa13e3204ec3e194, type: 3}
   novelLoader: {fileID: 1260174985}
   versionInfo: {fileID: 706995368}
-  pageScrollRect: {fileID: 0}
-  wheelScrollSpeed: 5
 --- !u!4 &110977352
 Transform:
   m_ObjectHideFlags: 0
@@ -1027,7 +1025,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 10
   m_Viewport: {fileID: 864084383}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}

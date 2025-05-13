@@ -261,7 +261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5051008366195749883, guid: 7f395f4c2c1c2a54aabc624ffdd6fd76, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 795.3368
+      value: 860
       objectReference: {fileID: 0}
     - target: {fileID: 5051008366195749883, guid: 7f395f4c2c1c2a54aabc624ffdd6fd76, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2073,8 +2073,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 447.6684, y: -130.005}
-  m_SizeDelta: {x: 283.44, y: 0}
+  m_AnchoredPosition: {x: 480, y: -130.005}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &638546828
 MonoBehaviour:
@@ -2247,7 +2247,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 10
   m_Viewport: {fileID: 1606998229}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}

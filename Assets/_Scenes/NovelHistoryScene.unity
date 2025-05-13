@@ -404,8 +404,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 447.6684, y: -505.01}
-  m_SizeDelta: {x: 795.3368, y: 0}
+  m_AnchoredPosition: {x: 480, y: -505.01}
+  m_SizeDelta: {x: 860, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &62138493
 MonoBehaviour:
@@ -1439,8 +1439,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 447.6684, y: -250}
-  m_SizeDelta: {x: 300, y: 0}
+  m_AnchoredPosition: {x: 480, y: -250}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &464315336
 MonoBehaviour:
@@ -1764,7 +1764,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 10
   m_Viewport: {fileID: 1751779041}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -2884,49 +2884,6 @@ MonoBehaviour:
   entryPrefab: {fileID: 9146482380495600665, guid: d527561d7aa624f4b8e910c32a97f8a3, type: 3}
   container: {fileID: 1067528251}
   noDataObjectsHint: {fileID: 63610570}
-  containerForBankkreditNovel: {fileID: 8547379210458793527}
-  containerForInvestorNovel: {fileID: 1122555527}
-  containerForElternNovel: {fileID: 977517993}
-  containerForNotarinNovel: {fileID: 2050534266}
-  containerForPresseNovel: {fileID: 1559626568}
-  containerForBueroNovel: {fileID: 519295634}
-  containerForHonorarNovel: {fileID: 1000109952}
-  novelPlaceholder:
-  - {fileID: 8755277077861397635}
-  - {fileID: 1355985734}
-  - {fileID: 750861753}
-  - {fileID: 718533544}
-  - {fileID: 475043288}
-  - {fileID: 356936094}
-  - {fileID: 1245389554}
-  dropdownForBankkreditNovel: {fileID: 8480839403569214679}
-  dropdownForInvestorNovel: {fileID: 1457782097}
-  dropdownForElternNovel: {fileID: 1543939245}
-  dropdownForNotarinNovel: {fileID: 1591834933}
-  dropdownForPresseNovel: {fileID: 1175750298}
-  dropdownForBueroNovel: {fileID: 361567813}
-  dropdownForHonorarNovel: {fileID: 289032708}
-  spacingForBankkreditNovel: {fileID: 8755277077861397635}
-  spacingForInvestorNovel: {fileID: 1355985734}
-  spacingForElternNovel: {fileID: 750861753}
-  spacingForNotarinNovel: {fileID: 718533544}
-  spacingForPresseNovel: {fileID: 475043288}
-  spacingForBueroNovel: {fileID: 356936094}
-  spacingForHonorarNovel: {fileID: 1245389554}
-  entryContainerForBankkreditNovel: {fileID: 6721084045948267460}
-  entryContainerForInvestorNovel: {fileID: 1135273643}
-  entryContainerForElternNovel: {fileID: 321823154}
-  entryContainerForNotarinNovel: {fileID: 1700279456}
-  entryContainerForPresseNovel: {fileID: 592913912}
-  entryContainerForBueroNovel: {fileID: 1919890242}
-  entryContainerForHonorarNovel: {fileID: 785423253}
-  displayContainerForBankkreditNovel: 0
-  displayContainerForInvestorNovel: 0
-  displayContainerForElternNovel: 0
-  displayContainerForNotarinNovel: 0
-  displayContainerForPresseNovel: 0
-  displayContainerForBueroNovel: 0
-  displayContainerForHonorarNovel: 0
   displayNoDataObjectsHint: 0
   novelHistoryEntries: []
   copyNotificationContainer: {fileID: 177665909}
@@ -6701,8 +6658,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 447.6684, y: -823.02}
-  m_SizeDelta: {x: 795.3368, y: 0}
+  m_AnchoredPosition: {x: 480, y: -823.02}
+  m_SizeDelta: {x: 860, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1916447369
 MonoBehaviour:

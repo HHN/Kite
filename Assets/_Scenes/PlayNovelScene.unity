@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 10
   m_Viewport: {fileID: 1089021934}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -2235,7 +2235,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 10
   m_Viewport: {fileID: 198210689}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -3511,7 +3511,6 @@ MonoBehaviour:
   backgroundColor: {fileID: 1033715450}
   imageAreaColor: {fileID: 182827003}
   screenContentColor: {fileID: 1281647807}
-  freeTextInputPrefab: {fileID: 3171214583603264105, guid: 59415a69fbe4f7e4a85431a77d1028fd, type: 3}
   headerImage: {fileID: 1574087967}
   novelVisuals:
   - {fileID: 781856241913721907, guid: 0befadf77118e9847b85864f275358d1, type: 3}
@@ -3555,12 +3554,13 @@ MonoBehaviour:
     folderName: 
     title: 
     description: 
-    image: 0
     feedback: 
     context: 
-    isKite2Novel: 0
     novelEvents: []
     playedPath: 
+    characters: []
+    isKiteNovel: 0
+    novelColor: {r: 0, g: 0, b: 0, a: 0}
   currentTypeWriter: {fileID: 0}
   selectOptionContinueConversation: {fileID: 0}
   currentTalkingKite2CharacterController: {fileID: 0}
@@ -3585,7 +3585,7 @@ MonoBehaviour:
     clotheSpriteId: 0
     hairSpriteId: 0
     faceSpriteId: 0
-    backgroundSpriteId: 0
+    backgroundSprite: 
     character: 0
     text: 
     animationType: 0
@@ -3600,7 +3600,7 @@ MonoBehaviour:
     variablesName: 
     gptPrompt: 
     variablesNameForGptPrompt: 
-    gptCompletionHandlerId: 0
+    gptCompletionHandler: 
     key: 
     value: 
     relevantBias: 0
