@@ -152,5 +152,12 @@ namespace Assets._Scripts.UIElements.Messages
             // Load the last scene retrieved from the back button functionality
             SceneLoader.LoadScene(lastScene);
         }
+
+        public void HandleButtons()
+        {
+            pauseButton.gameObject.SetActive(false);
+
+            backgroundMessageBox.GetComponentInChildren<TextMeshProUGUI>().text = "Was möchtest du tun?\n\n<b>Weiterspielen:</b> Die Story fortsetzen.\n<b>Abschließen:</b> Die Story hier beenden und als abgeschlossen werten.\n<b>Abbrechen:</b> Die Story ohne Speicherung abbrechen.";
+        }
     }
 }
