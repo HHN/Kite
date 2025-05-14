@@ -298,7 +298,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                         }
                         else if (message.Count <= messageIndex)
                         {
-                            createdEvent = CreateVisualNovelEventFromKeyword(passage, message[message.Count - 1], keywordModels[i], metaData, eventList);
+                            createdEvent = CreateVisualNovelEventFromKeyword(passage, message[^1], keywordModels[i], metaData, eventList);
                         }
                         else
                         {
@@ -334,7 +334,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                         {
                             if (createdEvent == null)
                             {
-                                eventList[eventList.Count - 3].id = targetString + (i);
+                                eventList[^3].id = targetString + (i);
                             }
                             else
                             {
@@ -396,15 +396,8 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 else if (keywordModels.Count == 1)
                 {
                     VisualNovelEvent createdEvent = new VisualNovelEvent();
-                    if (message.Count == 0)
-                    {
-                        createdEvent = CreateVisualNovelEventFromKeyword(passage, "", keywordModels[0], metaData, eventList);
-                    }
-                    else
-                    {
-                        // Create the corresponding VisualNovelEvent based on the model.
-                        createdEvent = CreateVisualNovelEventFromKeyword(passage, message[0], keywordModels[0], metaData, eventList);
-                    }
+                    // Create the corresponding VisualNovelEvent based on the model.
+                    createdEvent = CreateVisualNovelEventFromKeyword(passage, message.Count == 0 ? "" : message[0], keywordModels[0], metaData, eventList);
 
                     // Check if the event creates a loop, and adjust if necessary.
                     HandleLoop(createdEvent, startLabel, eventList);
@@ -582,119 +575,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             string id = passage?.Label;
             string nextId = passage?.Links?[0]?.Target;
             VisualNovelEvent novelEvent = KiteNovelEventFactory.GetPlaySoundEvent(id, nextId, sound);
-            list.Add(novelEvent);
-            return novelEvent;
-        }
-
-        private static VisualNovelEvent HandlePlayAnimationEvent(TweePassage passage, string animation, List<VisualNovelEvent> list)
-        {
-            string id = passage?.Label;
-            string nextId = passage?.Links?[0]?.Target;
-            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetPlayAnimationEvent(id, nextId, animation);
-            list.Add(novelEvent);
-            return novelEvent;
-        }
-
-        private static VisualNovelEvent HandleGptRequestEvent(TweePassage passage, string message, string completionHandlerId, List<VisualNovelEvent> list)
-        {
-            string[] parts = message.Split(new[] { ':' }, 2);
-
-            if (parts.Length != 2)
-            {
-                Debug.LogWarning("While creating Visual Novels: GPT Prompt Event could not be created.");
-                return null;
-            }
-
-            string id = passage?.Label;
-            string nextId = passage?.Links?[0]?.Target;
-            string prompt = parts[1].Trim();
-            string variableName = parts[0].Trim();
-            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetGptEvent(id, nextId, prompt, variableName, completionHandlerId);
-            list.Add(novelEvent);
-            return novelEvent;
-        }
-
-        private static VisualNovelEvent HandleSaveDataEvent(TweePassage passage, string message, List<VisualNovelEvent> list)
-        {
-            string[] parts = message.Split(new[] { ':' }, 2);
-
-            if (parts.Length != 2)
-            {
-                Debug.LogWarning("While creating Visual Novels: Save Persistent Event could not be created.");
-                return null;
-            }
-
-            string id = passage?.Label;
-            string nextId = passage?.Links?[0]?.Target;
-            string key = parts[0].Trim();
-            string value = parts[1].Trim();
-            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetSavePersistentEvent(id, nextId, key, value);
-            list.Add(novelEvent);
-            return novelEvent;
-        }
-
-        private static VisualNovelEvent HandleSetVariableEvent(TweePassage passage, string message, List<VisualNovelEvent> list)
-        {
-            string[] parts = message.Split(new[] { ':' }, 2);
-
-            if (parts.Length != 2)
-            {
-                Debug.LogWarning("While creating Visual Novels: Set Variable Event could not be created.");
-                return null;
-            }
-
-            string id = passage?.Label;
-            string nextId = passage?.Links?[0]?.Target;
-            string key = parts[0].Trim();
-            string value = parts[1].Trim();
-            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetSaveVariableEvent(id, nextId, key, value);
-            list.Add(novelEvent);
-            return novelEvent;
-        }
-
-        private static VisualNovelEvent HandleSetVariableFromBooleanExpressionEvent(TweePassage passage, string message, List<VisualNovelEvent> list)
-        {
-            string[] parts = message.Split(new[] { ':' }, 2);
-
-            if (parts.Length != 2)
-            {
-                Debug.LogWarning("While creating Visual Novels: Calculate Variable from Boolean Expression Event could not be created.");
-                return null;
-            }
-
-            string id = passage?.Label;
-            string nextId = passage?.Links?[0]?.Target;
-            string key = parts[0].Trim();
-            string value = parts[1].Trim();
-            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetCalculateVariableFromBooleanExpressionEvent(id, nextId, key, value);
-            list.Add(novelEvent);
-            return novelEvent;
-        }
-
-        private static VisualNovelEvent HandleAddFeedbackUnderConditionEvent(TweePassage passage, string message, List<VisualNovelEvent> list)
-        {
-            string[] parts = message.Split(new[] { ':' }, 2);
-
-            if (parts.Length != 2)
-            {
-                Debug.LogWarning("While creating Visual Novels: Add Feedback Under Condition Event could not be created.");
-                return null;
-            }
-
-            string id = passage?.Label;
-            string nextId = passage?.Links?[0]?.Target;
-            string key = parts[0].Trim();
-            string value = parts[1].Trim();
-            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetAddFeedbackUnderConditionEvent(id, nextId, key, value);
-            list.Add(novelEvent);
-            return novelEvent;
-        }
-
-        private static VisualNovelEvent HandleAddFeedbackEvent(TweePassage passage, string message, List<VisualNovelEvent> list)
-        {
-            string id = passage?.Label;
-            string nextId = passage?.Links?[0]?.Target;
-            VisualNovelEvent novelEvent = KiteNovelEventFactory.GetAddFeedbackEvent(id, nextId, message);
             list.Add(novelEvent);
             return novelEvent;
         }

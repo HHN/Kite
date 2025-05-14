@@ -41,15 +41,15 @@ namespace Assets._Scripts.Controller.SceneControllers
             playButton.onClick.AddListener(OnPlayButton);
             playButton2.onClick.AddListener(OnPlayButton);
 
-            toggle.onValueChanged.AddListener((value) => SyncToggles(toggle, toggle2, value));
-            toggle2.onValueChanged.AddListener((value) => SyncToggles(toggle2, toggle, value));
+            toggle.onValueChanged.AddListener((value) => SyncToggles(toggle2, value));
+            toggle2.onValueChanged.AddListener((value) => SyncToggles(toggle, value));
 
             FontSizeManager.Instance().UpdateAllTextComponents();
 
             SetColours();
         }
 
-        private void SyncToggles(Toggle changedToggle, Toggle otherToggle, bool isOn)
+        private void SyncToggles(Toggle otherToggle, bool isOn)
         {
             if (_isSyncing) return; // Prevent recursive calls
 

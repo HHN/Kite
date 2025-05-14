@@ -13,12 +13,7 @@ namespace Assets._Scripts.Managers
 
         public static NovelColorManager Instance()
         {
-            if (_instance == null)
-            {
-                _instance = new NovelColorManager();
-            }
-
-            return _instance;
+            return _instance ??= new NovelColorManager();
         }
 
         public void SetColor(Color color)

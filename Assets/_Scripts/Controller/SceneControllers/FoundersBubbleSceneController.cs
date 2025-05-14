@@ -49,7 +49,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private bool finishedInitialization;
 
         private int _novelId;
-        private List<GameObject> _originalOrder;
 
         private List<NovelEntry> _isNovelContainedInVersion;
 
@@ -89,14 +88,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                     }
                     else
                     {
-                        if (child.gameObject.name.Contains("Background"))
-                        {
-                            buttonChildren.Insert(0, child);
-                        }
-                        else
-                        {
-                            buttonChildren.Insert(1, child);
-                        }
+                        buttonChildren.Insert(child.gameObject.name.Contains("Background") ? 0 : 1, child);
                     }
                 }
             }
@@ -118,7 +110,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             if (novelButtons != null && novelButtons.Count > 0)
             {
                 // Speichere die ursprüngliche Reihenfolge der Container
-                _originalOrder = new List<GameObject>(novelButtons);
+                new List<GameObject>(novelButtons);
             }
             else
             {
