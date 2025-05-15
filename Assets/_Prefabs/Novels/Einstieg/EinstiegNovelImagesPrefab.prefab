@@ -344,10 +344,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   novelKite2CharacterController: {fileID: 0}
-  novelKite2CharacterController2: {fileID: 0}
   characterContainers:
   - {fileID: 3669613035356320353}
   decorations: []
+  characterControllers: []
 --- !u!1 &7545688216486579158
 GameObject:
   m_ObjectHideFlags: 0

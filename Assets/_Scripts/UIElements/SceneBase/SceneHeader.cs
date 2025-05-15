@@ -68,45 +68,27 @@ namespace Assets._Scripts.UIElements.SceneBase
                 }
             }
 
-            if (sceneName.Contains("PlayNovelScene") && _playNovelSceneController.NovelToPlay.id == 13)
+            if (warningMessageBox != null)
             {
-                if (warningMessageBoxIntro != null)
+                if (!warningMessageBoxObject.IsNullOrDestroyed())
                 {
-                    if (!warningMessageBoxObjectIntro.IsNullOrDestroyed())
-                    {
-                        warningMessageBoxObjectIntro.CloseMessageBox();
-                    }
-
-                    if (canvas.IsNullOrDestroyed())
-                    {
-                        return;
-                    }
-
-                    warningMessageBoxObjectIntro = null;
-                    warningMessageBoxObjectIntro = Instantiate(warningMessageBoxIntro, canvas.transform)
-                        .GetComponent<LeaveNovelAndGoBackMessageBox>();
-                    warningMessageBoxObjectIntro.Activate();
+                    warningMessageBoxObject.CloseMessageBox();
                 }
-            }
-            else
-            {
-                if (warningMessageBox != null)
+
+                if (canvas.IsNullOrDestroyed())
                 {
-                    if (!warningMessageBoxObject.IsNullOrDestroyed())
-                    {
-                        warningMessageBoxObject.CloseMessageBox();
-                    }
-
-                    if (canvas.IsNullOrDestroyed())
-                    {
-                        return;
-                    }
-
-                    warningMessageBoxObject = null;
-                    warningMessageBoxObject = Instantiate(warningMessageBox, canvas.transform)
-                        .GetComponent<LeaveNovelAndGoBackMessageBox>();
-                    warningMessageBoxObject.Activate();
+                    return;
                 }
+
+                warningMessageBoxObject = null;
+                warningMessageBoxObject = Instantiate(warningMessageBox, canvas.transform).GetComponent<LeaveNovelAndGoBackMessageBox>();
+
+                if (sceneName.Contains("PlayNovelScene") && _playNovelSceneController.NovelToPlay.id == 13)
+                {
+                    warningMessageBoxObject.HandleButtons();
+                }
+
+                warningMessageBoxObject.Activate();
             }
         }
     }

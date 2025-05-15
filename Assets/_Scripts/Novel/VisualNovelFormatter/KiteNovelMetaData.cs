@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
-using UnityEngine;
 
 namespace Assets._Scripts.Novel.VisualNovelFormatter
 {

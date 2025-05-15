@@ -1,5 +1,5 @@
+using System;
 using Assets._Scripts.Novel;
-using Assets._Scripts.Player;
 using UnityEngine;
 
 namespace Assets._Scripts.Managers
@@ -17,20 +17,14 @@ namespace Assets._Scripts.Managers
 
         public static PlayRecordManager Instance()
         {
-            if (_instance == null)
-            {
-                _instance = new PlayRecordManager();
-            }
+            if (_instance == null) _instance = new PlayRecordManager();
 
             return _instance;
         }
 
         public void IncreasePlayCounterForNovel(VisualNovelNames playedNovel)
         {
-            if (_wrapper == null)
-            {
-                _wrapper = LoadPlayRecordManagerWrapper();
-            }
+            _wrapper ??= LoadPlayRecordManagerWrapper();
 
             switch (playedNovel)
             {
@@ -55,13 +49,6 @@ namespace Assets._Scripts.Managers
                     _wrapper.SetNumberOfPlaysForNotarinNovel(numberOfPlays);
                     break;
                 }
-                // case VisualNovelNames.BANK_KONTO_NOVEL:
-                // {
-                //     int numberOfPlays = _wrapper.GetNumberOfPlaysForBankkontoNovel();
-                //     numberOfPlays++;
-                //     _wrapper.SetNumberOfPlaysForBankkontoNovel(numberOfPlays);
-                //     break;
-                // }
                 case VisualNovelNames.VermieterNovel:
                 {
                     int numberOfPlays = _wrapper.GetNumberOfPlaysForBueroNovel();
@@ -69,20 +56,6 @@ namespace Assets._Scripts.Managers
                     _wrapper.SetNumberOfPlaysForBueroNovel(numberOfPlays);
                     break;
                 }
-                // case VisualNovelNames.FOERDERANTRAG_NOVEL:
-                // {
-                //     int numberOfPlays = _wrapper.GetNumberOfPlaysForFoerderantragNovel();
-                //     numberOfPlays++;
-                //     _wrapper.SetNumberOfPlaysForFoerderantragNovel(numberOfPlays);
-                //     break;
-                // }
-                // case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
-                // {
-                //     int numberOfPlays = _wrapper.GetNumberOfPlaysForGruenungszuschussNovel();
-                //     numberOfPlays++;
-                //     _wrapper.SetNumberOfPlaysForGruendungszuschussNovel(numberOfPlays);
-                //     break;
-                // }
                 case VisualNovelNames.InvestorNovel:
                 {
                     int numberOfPlays = _wrapper.GetNumberOfPlaysForInvestorNovel();
@@ -111,13 +84,12 @@ namespace Assets._Scripts.Managers
                     _wrapper.SetNumberOfPlaysForIntroNovel(numberOfPlays);
                     break;
                 }
-                // case VisualNovelNames.LEBENSPARTNER_NOVEL:
-                // {
-                //     int numberOfPlays = _wrapper.GetNumberOfPlaysForLebenspartnerNovel();
-                //     numberOfPlays++;
-                //     _wrapper.SetNumberOfPlaysForLebenspartnerNovel(numberOfPlays);
-                //     break;
-                // }
+                case VisualNovelNames.None:
+                    break;
+                case VisualNovelNames.VertriebNovel:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(playedNovel), playedNovel, null);
             }
 
             Save();
@@ -125,10 +97,7 @@ namespace Assets._Scripts.Managers
 
         public int GetNumberOfPlaysForNovel(VisualNovelNames novel)
         {
-            if (_wrapper == null)
-            {
-                _wrapper = LoadPlayRecordManagerWrapper();
-            }
+            _wrapper ??= LoadPlayRecordManagerWrapper();
 
             switch (novel)
             {
@@ -144,22 +113,10 @@ namespace Assets._Scripts.Managers
                 {
                     return _wrapper.GetNumberOfPlaysForNotarinNovel();
                 }
-                // case VisualNovelNames.BANK_KONTO_NOVEL:
-                // {
-                //     return _wrapper.GetNumberOfPlaysForBankkontoNovel();
-                // }
                 case VisualNovelNames.VermieterNovel:
                 {
                     return _wrapper.GetNumberOfPlaysForBueroNovel();
                 }
-                // case VisualNovelNames.FOERDERANTRAG_NOVEL:
-                // {
-                //     return _wrapper.GetNumberOfPlaysForFoerderantragNovel();
-                // }
-                // case VisualNovelNames.GRUENDER_ZUSCHUSS_NOVEL:
-                // {
-                //     return _wrapper.GetNumberOfPlaysForGruenungszuschussNovel();
-                // }
                 case VisualNovelNames.InvestorNovel:
                 {
                     return _wrapper.GetNumberOfPlaysForInvestorNovel();
@@ -176,10 +133,8 @@ namespace Assets._Scripts.Managers
                 {
                     return _wrapper.GetNumberOfPlaysForIntroNovel();
                 }
-                // case VisualNovelNames.LEBENSPARTNER_NOVEL:
-                // {
-                //     return _wrapper.GetNumberOfPlaysForLebenspartnerNovel();
-                // }
+                case VisualNovelNames.None:
+                case VisualNovelNames.VertriebNovel:
                 default:
                 {
                     return -1;

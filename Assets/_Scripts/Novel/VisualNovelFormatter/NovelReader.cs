@@ -11,45 +11,38 @@ using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
 
 namespace Assets._Scripts.Novel.VisualNovelFormatter
 {
-    // Die NovelReader-Klasse ist ein MonoBehaviour, das den Prozess des Ladens, Verarbeitens
-    // und Konvertierens von Novellen aus dem Twee-Format in das JSON-Format steuert.
+    // The NovelReader class is a MonoBehaviour that manages loading, processing, and converting visual novels from the Twee format to JSON.
     public class NovelReader : MonoBehaviour
     {
+        // Constants defining the file paths
+        private const string NovelListPath = "_novels_twee/list_of_novels.txt"; // Path to file containing list of all novel directories
+        private const string MetaDataFileName = "visual_novel_meta_data.txt"; // File containing metadata of a novel
+        private const string EventListFileName = "visual_novel_event_list.txt"; // File containing the list of events for a novel
+
+        private bool _isFinished; // Flag to indicate whether the import process has finished
+        
         private static NovelReader _instance;
+
         public static NovelReader Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    // Erstelle neues GameObject und hänge das Script dran
                     GameObject go = new GameObject("NovelReader");
                     _instance = go.AddComponent<NovelReader>();
                     DontDestroyOnLoad(go);
                 }
+
                 return _instance;
             }
         }
-
-        // Konstanten, die die Pfade zu wichtigen Dateien definieren.
-        // NovelListPath: Pfad zur Datei, die eine Liste aller Novellenpfade enth�lt.
-        private const string NovelListPath = "_novels_twee/list_of_novels.txt";
-        // MetaDataFileName: Dateiname der Datei, die Metadaten (z. B. Titel, Einstellungen) der Novelle enth�lt.
-        private const string MetaDataFileName = "visual_novel_meta_data.txt";
-        // EventListFileName: Dateiname der Datei, die die Event-Liste (Story-Ereignisse) der Novelle enth�lt.
-        private const string EventListFileName = "visual_novel_event_list.txt";
-        // Flag, das angibt, ob der gesamte Konvertierungsvorgang abgeschlossen ist.
-        private bool _isFinished;
 
         public void ImportNovel()
         {
             StartCoroutine(ImportNovelWithTweeApproach());
         }
 
-        /// <summary>
-        /// Gibt zur�ck, ob der gesamte Konvertierungsvorgang abgeschlossen ist.
-        /// </summary>
-        /// <returns>true, wenn der Prozess abgeschlossen ist, ansonsten false.</returns>
         public bool IsFinished()
         {
             return _isFinished;
@@ -57,31 +50,28 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
         private IEnumerator ImportNovelWithTweeApproach()
         {
-            // Bestimmt den vollst�ndigen Pfad zur Liste der Novellenpfade.
-            string fullPath = Path.Combine(Application.dataPath, NovelListPath);
-            
-            // Lade die Liste der Novel-Pfade.
+            string dataPath = Application.dataPath;
+            string fullPath = Path.Combine(dataPath, NovelListPath);
+
             yield return StartCoroutine(LoadNovelPaths(fullPath, listOfAllNovelPaths =>
             {
                 if (listOfAllNovelPaths == null || listOfAllNovelPaths.Count == 0)
                 {
-                    Debug.LogWarning("Loading Novels failed: No Novels found! Path: " + fullPath);
+                    Log($"Loading Novels failed: No Novels found! Path: {fullPath}", LogType.Warning);
+
                     KiteNovelManager.Instance().SetAllKiteNovels(new List<VisualNovel>());
                     return;
                 }
 
-                // Starte die Verarbeitung der Novellen mit selektivem �berschreiben.
                 StartCoroutine(ProcessAndMergeNovels(listOfAllNovelPaths));
             }));
         }
 
         /// <summary>
-        /// Processes and merges visual novels by loading, converting, and updating the existing list.
-        /// New novels are added, and existing ones with matching IDs are updated.
-        /// The result is saved as a JSON file.
+        /// Processes and merges visual novels by converting from Twee to VisualNovel format.
+        /// Updates existing ones and adds new ones based on ID comparison.
+        /// Saves the final list as JSON.
         /// </summary>
-        /// <param name="listOfAllNovelPaths">List of relative paths to all novel folders.</param>
-        /// <returns>IEnumerator for coroutine execution.</returns>
         private IEnumerator ProcessAndMergeNovels(List<string> listOfAllNovelPaths)
         {
             // List to hold all processed novel folders.
@@ -95,18 +85,13 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
             // Convert the processed folders into VisualNovel objects.
             List<VisualNovel> visualNovels = KiteNovelConverter.ConvertFilesToNovels(allFolders);
-            
-            Debug.Log($"visualNovels: {string.Join(", ", visualNovels.Select(n => n.title))}");
-            
-            while (KiteNovelManager.Instance().GetAllKiteNovels().Count == 0)
-            {
-                yield return new WaitForSeconds(1);
-            }
 
             // Retrieve already loaded novels from the manager.
             List<VisualNovel> existingNovels = KiteNovelManager.Instance().GetAllKiteNovels();
-            
-            Debug.Log($"existingNovels: {string.Join(", ", existingNovels.Select(n => n.title))}");
+            while (existingNovels.Count == 0)
+            {
+                yield return new WaitForSeconds(1);
+            }
 
             // If no novels exist, save the entire new list.
             if (existingNovels.Count == 0)
@@ -123,22 +108,15 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 {
                     VisualNovel updatedNovel = visualNovels.FirstOrDefault(n => n.id == oldNovel.id) ?? oldNovel;
 
-                    if (!ReferenceEquals(updatedNovel, oldNovel))
-                    {
-                        Debug.Log("Overriding Novel: " + updatedNovel.title);
-                    }
-
-                    // F�ge das (ggf. aktualisierte) Novel der neuen Liste hinzu.
                     modifiedListOfNovels.Add(updatedNovel);
                 }
-            
+
                 // Add any entirely new novels that weren't already included.
                 foreach (VisualNovel newNovel in visualNovels)
                 {
                     if (modifiedListOfNovels.All(n => n.id != newNovel.id))
                     {
                         modifiedListOfNovels.Add(newNovel);
-                        Debug.Log("Added new Novel : " + newNovel.title);
                     }
                 }
 
@@ -148,8 +126,8 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         }
 
         /// <summary>
-        /// Processes a single visual novel by loading its metadata and event list,
-        /// transforming the content, and adding it to the provided folder list.
+        /// Loads a single visual novel's metadata and event list, processes replacements,
+        /// and adds it to the list of novel folders.
         /// </summary>
         /// <param name="pathOfNovel">Relative path to the novel's folder inside the project.</param>
         /// <param name="allFolders">The list to which the processed novel will be added.</param>
@@ -169,7 +147,8 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             // Skip if metadata couldn't be loaded.
             if (kiteNovelMetaData == null)
             {
-                Debug.LogWarning("Kite Novel Meta Data could not be loaded: " + pathOfNovel);
+                Log($"Kite Novel Meta Data could not be loaded: {pathOfNovel}", LogType.Warning);
+
                 yield break;
             }
 
@@ -179,7 +158,8 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             // Skip if event list is empty or missing.
             if (string.IsNullOrEmpty(jsonStringOfEventList))
             {
-                Debug.LogWarning("Kite Novel Event List could not be loaded: " + pathOfNovel);
+                Log($"Kite Novel Event List could not be loaded: {pathOfNovel}", LogType.Warning);
+
                 yield break;
             }
 
@@ -194,60 +174,41 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         }
 
         /// <summary>
-        /// L�dt den Inhalt der Datei, die alle Novellenpfade enth�lt, und �bergibt die
-        /// deserialisierte Liste an den Callback.
+        /// Loads the list of visual novel paths and invokes the callback with the result.
         /// </summary>
         private IEnumerator LoadNovelPaths(string path, System.Action<List<string>> callback)
         {
-            // Starte die Coroutine zum Laden des Dateiinhalts.
             yield return StartCoroutine(LoadFileContent(path, jsonString =>
             {
-                // Falls der geladene Inhalt leer ist, rufe den Callback mit null auf.
                 if (string.IsNullOrEmpty(jsonString))
                 {
                     callback(null);
                 }
                 else
                 {
-                    // Deserialisiere den JSON-String in ein KiteNovelList-Objekt.
                     KiteNovelList kiteNovelList = JsonConvert.DeserializeObject<KiteNovelList>(jsonString);
-                    // �bergibt die Liste der Novellenpfade an den Callback.
                     callback(kiteNovelList?.VisualNovels);
                 }
             }));
         }
 
         /// <summary>
-        /// L�dt den Inhalt einer Datei und deserialisiert diesen in ein Objekt vom Typ T.
-        /// Das Ergebnis wird �ber den Callback zur�ckgegeben.
+        /// Loads and deserializes a file's content into a specific type T.
         /// </summary>
         private IEnumerator LoadAndDeserialize<T>(string path, System.Action<T> callback)
         {
-            // Starte die Coroutine zum Laden des Dateiinhalts.
-            yield return StartCoroutine(LoadFileContent(path, jsonString =>
+            yield return LoadFileContent(path, jsonString =>
             {
-                // Falls der Inhalt leer ist, wird default(T) zur�ckgegeben.
-                if (string.IsNullOrEmpty(jsonString))
-                {
-                    callback(default);
-                }
-                else
-                {
-                    // Deserialisiere den JSON-String in ein Objekt vom Typ T (mittels Newtonsoft.Json).
-                    T result = JsonConvert.DeserializeObject<T>(jsonString);
-                    callback(result);
-                }
-            }));
+                callback(string.IsNullOrEmpty(jsonString) ? default : JsonConvert.DeserializeObject<T>(jsonString));
+            });
         }
 
         /// <summary>
-        /// L�dt den Inhalt einer Datei asynchron.
-        /// - Auf iOS (iPhonePlayer) wird der Inhalt synchron mit File. ReadAllText geladen.
-        /// - Auf anderen Plattformen wird UnityWebRequest verwendet, um den Inhalt asynchron zu laden.
+        /// Loads a file's content. Uses File.ReadAllText on iOS, UnityWebRequest otherwise.
         /// </summary>
         private IEnumerator LoadFileContent(string path, System.Action<string> callback)
         {
-            // Falls die Plattform iOS ist, wird die Datei direkt gelesen.
+            // May be refactored in the future, but for now, we need to ensure the file is in the correct location.
             if (Application.platform == RuntimePlatform.IPhonePlayer)
             {
                 string jsonString = File.ReadAllText(path);
@@ -255,20 +216,17 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             }
             else
             {
-                // F�r andere Plattformen wird UnityWebRequest verwendet.
                 using (UnityWebRequest www = UnityWebRequest.Get(path))
                 {
                     yield return www.SendWebRequest();
 
-                    // �berpr�fe, ob ein Verbindungs- oder Protokollfehler aufgetreten ist.
                     if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
                     {
-                        Debug.LogError($"Error loading file at {path}: {www.error}");
+                        Log($"Error loading file at {path}: {www.error}", LogType.Error);
                         callback(null);
                     }
                     else
                     {
-                        // Wenn kein Fehler aufgetreten ist, wird der geladene Text zur�ckgegeben.
                         callback(www.downloadHandler.text);
                     }
                 }
@@ -276,43 +234,51 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         }
 
         /// <summary>
-        /// Ersetzt in einem Eingabestring alle Vorkommen von bestimmten W�rtern durch definierte Ersatzwerte.
-        /// Die Wortpaare werden in der Liste wordsToReplace �bergeben.
+        /// Replaces all occurrences of words defined in WordPairs with replacement values.
         /// </summary>
         private string ReplaceWordsInString(string input, List<WordPair> wordsToReplace)
         {
-            // Iteriere �ber alle Wortpaare.
-            foreach (WordPair wordPair in wordsToReplace)
+            if (wordsToReplace == null || wordsToReplace.Count == 0) return input;
+
+            string result = input;
+            
+            foreach (var word in wordsToReplace)
             {
-                // Pr�fe, ob das Wortpaar g�ltig ist (nicht null und beide Werte sind nicht leer).
-                if (wordPair != null && !string.IsNullOrEmpty(wordPair.WordToReplace) &&
-                    !string.IsNullOrEmpty(wordPair.ReplaceByValue))
+                if (!string.IsNullOrWhiteSpace(word?.WordToReplace) && !string.IsNullOrWhiteSpace(word.ReplaceByValue))
                 {
-                    // Ersetze das zu ersetzende Wort durch den definierten Ersatzwert.
-                    input = input.Replace(wordPair.WordToReplace, wordPair.ReplaceByValue);
+                    result = result.Replace(word.WordToReplace, word.ReplaceByValue);
                 }
             }
-            // Gib den modifizierten String zur�ck.
-            return input;
+            return result;
         }
 
         /// <summary>
-        /// Konvertiert das �bergebene NovelListWrapper-Objekt in einen JSON-String und speichert diesen in einer Datei.
-        /// Der Pfad wird �ber Application.dataPath bestimmt.
-        /// Anschlie�end wird ein Log ausgegeben und _isFinished auf true gesetzt.
+        /// Converts the novel list to JSON and writes it to a file.
         /// </summary>
         private void SaveToJson(NovelListWrapper novelListWrapper)
         {
-            // Konvertiere das Objekt in einen formatierten JSON-String.
             string json = JsonUtility.ToJson(novelListWrapper, true);
-            // Bestimme den Speicherpfad (im gleichen Verzeichnis wie die Applikationsdaten).
             string path = Path.Combine(Application.dataPath, "StreamingAssets/novels.json");
-            // Schreibe den JSON-String in die Datei.
             File.WriteAllText(path, json);
-            // Logge den erfolgreichen Abschluss mit dem Speicherpfad.
-            Debug.Log($"Visual Novels have been successfully converted to JSON format and saved under the following path: {path}");
-            // Setze das Flag, dass der Konvertierungsvorgang abgeschlossen ist.
+            Log($"Visual Novels have been successfully converted to JSON format and saved under the following path: {path}", LogType.Error);
             _isFinished = true;
         }
+        
+        private void Log(string message, LogType type = LogType.Log)
+        {
+            switch (type)
+            {
+                case LogType.Warning:
+                    Debug.LogWarning(message);
+                    break;
+                case LogType.Error:
+                    Debug.LogError(message);
+                    break;
+                default:
+                    Debug.Log(message);
+                    break;
+            }
+        }
+
     }
 }
