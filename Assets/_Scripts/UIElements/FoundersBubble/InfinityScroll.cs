@@ -2,6 +2,7 @@ using Assets._Scripts.Controller.SceneControllers;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
+using Assets._Scripts.UI_Elements.Founders_Bubble;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -41,9 +42,6 @@ namespace Assets._Scripts.UIElements.FoundersBubble
         [SerializeField] private Vector2 velocityDuringDrag;
         [SerializeField] private float lastDragTime;
 
-        // New: Geschwindigkeit für Mausrad-Scroll
-        [SerializeField] private float wheelScrollSpeed = 5f;
-
         private void Start()
         {
             lastDragPosition = Vector2.zero;
@@ -64,10 +62,12 @@ namespace Assets._Scripts.UIElements.FoundersBubble
             for (int i = 0; i < itemsToAdd; i++)
             {
                 int num = itemList.Length - i - 1;
+
                 while (num < 0)
                 {
                     num += itemList.Length;
                 }
+
                 RectTransform rt = Instantiate(itemList[num], contentPanelTransform);
                 rt.SetAsFirstSibling();
             }
@@ -77,44 +77,32 @@ namespace Assets._Scripts.UIElements.FoundersBubble
                 contentPanelTransform.localPosition.y,
                 contentPanelTransform.localPosition.z);
 
-            widthBefore = itemList[0].rect.width * itemList.Length + (itemList.Length - 1) * horizontalLayoutGroup.spacing - viewPortTransform.rect.width;
-            widthAfter = itemList[0].rect.width * (itemList.Length + 2 * itemsToAdd) +
-                         (itemList.Length + 2 * itemsToAdd - 1) * horizontalLayoutGroup.spacing - viewPortTransform.rect.width;
+            widthBefore = (itemList[0].rect.width * itemList.Length) +
+                ((itemList.Length - 1) * horizontalLayoutGroup.spacing) - (viewPortTransform.rect.width);
+            widthAfter = (itemList[0].rect.width * (itemList.Length + (2 * itemsToAdd))) +
+                         ((itemList.Length + (2 * itemsToAdd) - 1) * horizontalLayoutGroup.spacing) -
+                         (viewPortTransform.rect.width);
 
-            float scrollPosition = SceneMemoryManager.Instance().GetMemoryOfFoundersBubbleScene();
-            if (scrollRect != null)
-            {
-                scrollRect.horizontalNormalizedPosition = scrollPosition;
-            }
-            else if (customScrollRect != null)
-            {
-                customScrollRect.horizontalNormalizedPosition = scrollPosition;
-            }
+            // FoundersBubbleSceneMemory memory = SceneMemoryManager.Instance().GetMemoryOfFoundersBubbleScene();
+            //
+            // if (memory != null && scrollRect != null)
+            // {
+            //     scrollRect.horizontalNormalizedPosition = memory.ScrollPosition;
+            // }
+            // else if (memory != null && customScrollRect != null)
+            // {
+            //     customScrollRect.horizontalNormalizedPosition = memory.ScrollPosition;
+            // }
         }
 
-        private void Update()
+        void Update()
         {
-            // Zusatz: horizontales Scrolling mit Mausrad
-            float wheel = Input.GetAxis("Mouse ScrollWheel");
-            if (Mathf.Abs(wheel) > 0.0001f)
-            {
-                if (scrollRect != null)
-                {
-                    float pos = scrollRect.horizontalNormalizedPosition + wheel * wheelScrollSpeed;
-                    scrollRect.horizontalNormalizedPosition = Mathf.Clamp01(pos);
-                }
-                else if (customScrollRect != null)
-                {
-                    float pos = customScrollRect.horizontalNormalizedPosition + wheel * wheelScrollSpeed;
-                    customScrollRect.horizontalNormalizedPosition = Mathf.Clamp01(pos);
-                }
-            }
-
             if (scrollRect == null)
             {
                 UpdateForCustomScrollRect();
                 return;
             }
+
             UpdateForScrollRect();
         }
 
@@ -137,7 +125,7 @@ namespace Assets._Scripts.UIElements.FoundersBubble
                     isUpdated = true;
                 }
                 else if (contentPanelTransform.localPosition.x <
-                         0 - itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing))
+                         0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
                 {
                     Canvas.ForceUpdateCanvases();
                     oldVelocity = scrollRect.velocity;
@@ -170,7 +158,7 @@ namespace Assets._Scripts.UIElements.FoundersBubble
                 currentTarget = currentTarget + FoundersBubbleMetaInformation.NumberOfNovelsToDisplay;
             }
             else if (contentPanelTransform.localPosition.x <
-                     0 - itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing))
+                     0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
             {
                 Canvas.ForceUpdateCanvases();
                 oldVelocity = scrollRect.velocity;
@@ -203,7 +191,7 @@ namespace Assets._Scripts.UIElements.FoundersBubble
                     isUpdated = true;
                 }
                 else if (contentPanelTransform.localPosition.x <
-                         0 - itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing))
+                         0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
                 {
                     Canvas.ForceUpdateCanvases();
                     oldVelocity = customScrollRect.velocity;
@@ -236,7 +224,7 @@ namespace Assets._Scripts.UIElements.FoundersBubble
                 currentTarget = currentTarget + FoundersBubbleMetaInformation.NumberOfNovelsToDisplay;
             }
             else if (contentPanelTransform.localPosition.x <
-                     0 - itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing))
+                     0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
             {
                 Canvas.ForceUpdateCanvases();
                 oldVelocity = customScrollRect.velocity;
@@ -252,8 +240,8 @@ namespace Assets._Scripts.UIElements.FoundersBubble
 
         private void SnapToItem()
         {
-            float targetXPosition = 0 - (currentTarget * (itemList[0].rect.width + horizontalLayoutGroup.spacing) -
-                                         viewPortTransform.rect.width / 2 - itemList[0].rect.width / 2 -
+            float targetXPosition = 0 - ((currentTarget * (itemList[0].rect.width + horizontalLayoutGroup.spacing)) -
+                                         (viewPortTransform.rect.width / 2) - (itemList[0].rect.width / 2) -
                                          horizontalLayoutGroup.spacing);
 
             if (isSnapped)
@@ -310,7 +298,7 @@ namespace Assets._Scripts.UIElements.FoundersBubble
 
             if ((contentPanelTransform.localPosition.x >= 0 ||
                  contentPanelTransform.localPosition.x <
-                 0 - itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)) &&
+                 0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing))) &&
                 customScrollRect.m_Dragging)
             {
                 customScrollRect.OnEndDrag(new PointerEventData(null) { button = 0 });
@@ -334,8 +322,8 @@ namespace Assets._Scripts.UIElements.FoundersBubble
 
         private bool IsCurrentlyInFirstHalf()
         {
-            return contentPanelTransform.localPosition.x >
-                   0 - itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing) / 2;
+            return (contentPanelTransform.localPosition.x >
+                    (0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)) / 2));
         }
 
         public float GetCurrentScrollPosition()
