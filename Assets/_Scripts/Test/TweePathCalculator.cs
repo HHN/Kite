@@ -67,11 +67,11 @@ namespace Assets._Scripts.Test
             _characterToSpeakerMap[@"SpielerinCharakterSpricht"] = "Spielerin";
 
             // Ausgabe der gesamten CharacterToSpeakerMap
-            // Debug.Log("CharacterToSpeakerMap-Inhalt:");
-            // foreach (var entry in _characterToSpeakerMap)
-            // {
-            //     Debug.Log($"  {entry.Key} -> {entry.Value}");
-            // }
+            Debug.Log("CharacterToSpeakerMap-Inhalt:");
+            foreach (var entry in _characterToSpeakerMap)
+            {
+                Debug.Log($"  {entry.Key} -> {entry.Value}");
+            }
         }
 
         public void ParseTweeFile(string tweeContent)
@@ -207,6 +207,16 @@ namespace Assets._Scripts.Test
                 }
             }
             Debug.Log("Unique Paths created");
+            Debug.Log($"Gefundene Pfade: {newPaths.Count}");
+            
+            foreach (Dictionary<Node,Link> path in newPaths)
+            {
+                Debug.Log("Path:");
+                foreach(KeyValuePair<Node,Link> decision in path)
+                {
+                    Debug.Log("Node: " + decision.Key.name + "; Link: " + decision.Value.targetNode);
+                }
+            }
             return newPaths;
         }
 
@@ -235,16 +245,16 @@ namespace Assets._Scripts.Test
 
         public void PrintPathsAndSpeakers(List<Dictionary<Node,Link>> paths)
         {
-            Debug.Log($"Gefundene Pfade: {paths.Count}");
-            /*
-            foreach (Dictionary<Node,Link> path in paths)
-            {
-                Debug.Log("Path:");
-                foreach(KeyValuePair<Node,Link> decision in path)
-                {
-                    Debug.Log("Node: " + decision.Key.name + "; Link: " + decision.Value.targetNode);
-                }
-            }*/
+            // Debug.Log($"Gefundene Pfade: {paths.Count}");
+            //
+            // foreach (Dictionary<Node,Link> path in paths)
+            // {
+            //     Debug.Log("Path:");
+            //     foreach(KeyValuePair<Node,Link> decision in path)
+            //     {
+            //         Debug.Log("Node: " + decision.Key.name + "; Link: " + decision.Value.targetNode);
+            //     }
+            // }
 
             // foreach (var path in paths)
             // {
