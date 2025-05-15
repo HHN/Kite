@@ -2596,7 +2596,7 @@ MonoBehaviour:
   novelDescriptionTextbox: {fileID: 927162478}
   isPopupOpen: 0
   currentlyOpenedVisualNovelPopup: 0
-  infinityScroll: {fileID: 0}
+  infinityScroll: {fileID: 7050460447704524325}
   novelListButton: {fileID: 1025096809}
   settingsButton: {fileID: 1117367867}
   burgerMenu: {fileID: 1022675892}
@@ -9715,7 +9715,7 @@ MonoBehaviour:
   m_Elasticity: 0.5
   m_Inertia: 1
   m_DecelerationRate: 0.5
-  m_ScrollSensitivity: 8
+  m_ScrollSensitivity: 15
   m_Viewport: {fileID: 2182451462433923743}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
