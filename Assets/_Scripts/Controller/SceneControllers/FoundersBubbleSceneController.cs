@@ -152,7 +152,10 @@ namespace Assets._Scripts.Controller.SceneControllers
         public void OnNovelButton()
         {
             GameObject buttonObject = EventSystem.current.currentSelectedGameObject;
+            
+            Debug.Log($"buttonObject.name: {buttonObject.name}");
             VisualNovelNames novelNames = VisualNovelNamesHelper.ValueByString(buttonObject.name);
+            Debug.Log($"novelNames: {novelNames}");
 
             var entry = _isNovelContainedInVersion.FirstOrDefault(novel => novel.novelId == VisualNovelNamesHelper.ToInt(novelNames));
 
