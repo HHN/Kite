@@ -153,16 +153,19 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             GameObject buttonObject = EventSystem.current.currentSelectedGameObject;
             
-            Debug.Log($"buttonObject.name: {buttonObject.name}");
+            // Debug.Log($"buttonObject.name: {buttonObject.name}");
             VisualNovelNames novelNames = VisualNovelNamesHelper.ValueByString(buttonObject.name);
-            Debug.Log($"novelNames: {novelNames}");
+            // Debug.Log($"novelNames: {novelNames}");
 
             var entry = _isNovelContainedInVersion.FirstOrDefault(novel => novel.novelId == VisualNovelNamesHelper.ToInt(novelNames));
 
             if (entry == null) return;
-
             DisplayTextBoxForVisualNovel(novelNames, entry.isContained);
             infinityScroll.MoveToVisualNovel(novelNames);
+            if (novelNames.ToString() == "EinstiegsNovel")
+            {
+                novelDescriptionTextbox.DeactivatedBookmarkButton();
+            }
         }
 
         private void OnNovelListButton()

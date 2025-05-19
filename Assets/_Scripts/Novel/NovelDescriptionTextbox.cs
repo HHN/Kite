@@ -90,7 +90,6 @@ namespace Assets._Scripts.Novel
         public void SetVisualNovelName(VisualNovelNames novelName)
         {
             visualNovelName = novelName;
-            Debug.Log(novelName);
         }
 
         /// <summary>
@@ -121,7 +120,7 @@ namespace Assets._Scripts.Novel
             DontDestroyOnLoad(buttonSound);
 
             if (ShowPlayInstructionManager.Instance().ShowInstruction() &&
-                visualNovelToDisplay.title != "Einstiegsdialog")
+                visualNovelToDisplay.title != "EinstiegsNovel")
             {
                 SceneLoader.LoadPlayInstructionScene();
             }
@@ -165,6 +164,11 @@ namespace Assets._Scripts.Novel
         {
             playButton.gameObject.SetActive(active);
             if (bookMarkButton != null) bookMarkButton.gameObject.SetActive(active);
+        }
+
+        public void DeactivatedBookmarkButton()
+        {
+            bookMarkButton.gameObject.SetActive(false);
         }
 
         /// <summary>
