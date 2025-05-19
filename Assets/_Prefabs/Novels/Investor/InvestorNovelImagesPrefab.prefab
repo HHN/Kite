@@ -372,7 +372,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -175, y: 470}
+  m_AnchoredPosition: {x: -175, y: 350}
   m_SizeDelta: {x: 244, y: 1044}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1535315102825623083
@@ -458,12 +458,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   novelKite2CharacterController: {fileID: 0}
-  novelKite2CharacterController2: {fileID: 0}
   characterContainers:
   - {fileID: 3669613035356320353}
   decorations:
   - prefab: {fileID: 8411936371333490823, guid: 02334970db3300f4797dfc8a311a46c8, type: 3}
     container: {fileID: 5558045549636132440}
+  characterControllers: []
 --- !u!1 &5558045549636132440
 GameObject:
   m_ObjectHideFlags: 0
