@@ -17,7 +17,6 @@ namespace Assets._Scripts.Novel
         private Image image;
 
         [SerializeField] private GameObject smallHead;
-        [SerializeField] private GameObject bigHead;
         [SerializeField] private TextMeshProUGUI text;
         [SerializeField] private Button playButton;
         [SerializeField] private Button bookMarkButton;
@@ -73,7 +72,6 @@ namespace Assets._Scripts.Novel
             colorOfText = color;
             image.color = color;
             smallHead.GetComponent<Image>().color = color;
-            bigHead.GetComponent<Image>().color = color;
         }
 
         /// <summary>
@@ -92,6 +90,7 @@ namespace Assets._Scripts.Novel
         public void SetVisualNovelName(VisualNovelNames novelName)
         {
             visualNovelName = novelName;
+            Debug.Log(novelName);
         }
 
         /// <summary>
@@ -174,7 +173,6 @@ namespace Assets._Scripts.Novel
         /// <param name="isHigh">True f�r gro�en Kopf, False f�r kleinen Kopf.</param>
         public void SetHead(bool isHigh)
         {
-            bigHead.SetActive(isHigh);
             smallHead.SetActive(!isHigh);
         }
 
