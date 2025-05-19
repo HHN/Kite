@@ -50,5 +50,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/KnowledgeScene.unity
     guid: 62e4fa0bd9ddb8b409a9a76b3c395967
+  - enabled: 1
+    path: Assets/_Scenes/MainMenuSceneTest.unity
+    guid: c4f74740544119c419d93999ffb7c2c5
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

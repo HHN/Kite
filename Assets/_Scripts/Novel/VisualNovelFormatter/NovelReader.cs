@@ -260,7 +260,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             string json = JsonUtility.ToJson(novelListWrapper, true);
             string path = Path.Combine(Application.dataPath, "StreamingAssets/novels.json");
             File.WriteAllText(path, json);
-            Log($"Visual Novels have been successfully converted to JSON format and saved under the following path: {path}", LogType.Error);
+            Log($"Visual Novels have been successfully converted to JSON format and saved under the following path: {path}");
             _isFinished = true;
         }
         

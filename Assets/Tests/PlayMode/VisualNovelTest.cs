@@ -50,7 +50,7 @@ namespace Tests.PlayMode
         {
             MappingManager mappingManager = MappingManager.Instance;
             
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneNames.MainMenuScene);
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("_Scenes/MainMenuSceneTest");
             
             // Hole Dir die Instanz einmal in eine lokale Variable:
             var novelReader = NovelReader.Instance;
