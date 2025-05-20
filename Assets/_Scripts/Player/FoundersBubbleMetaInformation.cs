@@ -11,14 +11,13 @@ namespace Assets._Scripts.Player
         {
             return value switch
             {
+                VisualNovelNames.BankKreditNovel => true,
                 VisualNovelNames.ElternNovel => false,
-                VisualNovelNames.PresseNovel => false,
                 VisualNovelNames.NotariatNovel => true,
+                VisualNovelNames.PresseNovel => false,
                 VisualNovelNames.VermieterNovel => true,
                 VisualNovelNames.InvestorNovel => false,
-                VisualNovelNames.BankKreditNovel => true,
                 VisualNovelNames.HonorarNovel => false,
-                VisualNovelNames.EinstiegsNovel => false,
                 _ => false
             };
         }

@@ -18,7 +18,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         public long novelId;
         public bool isContained;
     }
-    
+
     public class FoundersBubbleSceneController : SceneController
     {
         [Header("Novel Description Textbox")] [SerializeField]
@@ -41,12 +41,14 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private GameObject burgerMenuButtonPrefab;
         [SerializeField] private List<GameObject> burgerMenuButtons;
 
-        [Header("Search Input and Button Containers")] 
-        [SerializeField] private List<GameObject> novelButtons;
+        [Header("Search Input and Button Containers")] [SerializeField]
+        private List<GameObject> novelButtons;
 
         [SerializeField] private GameObject selectNovelSoundPrefab;
 
         [SerializeField] private bool finishedInitialization;
+
+        private Dictionary<long, VisualNovel> _allKiteNovelsById;
 
         private int _novelId;
 
@@ -58,13 +60,14 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             currentlyOpenedVisualNovelPopup = VisualNovelNames.None;
 
-            List<VisualNovel> allKiteNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+            List<VisualNovel> allKiteNovelsList = KiteNovelManager.Instance().GetAllKiteNovels();
+            _allKiteNovelsById = allKiteNovelsList.ToDictionary(novel => novel.id);
 
             var children = burgerMenu.GetComponentsInChildren<Transform>();
             var content = children.FirstOrDefault(k => k.gameObject.name == "Content");
 
             _isNovelContainedInVersion = new List<NovelEntry>();
-            foreach (VisualNovel visualNovel in allKiteNovels)
+            foreach (VisualNovel visualNovel in allKiteNovelsList)
             {
                 NovelEntry novelEntry = new NovelEntry
                 {
@@ -110,7 +113,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             if (novelButtons != null && novelButtons.Count > 0)
             {
                 // Speichere die ursprüngliche Reihenfolge der Container
-                new List<GameObject>(novelButtons);
+                // new List<GameObject>(novelButtons);
             }
             else
             {
@@ -120,7 +123,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             StartCoroutine(TextToSpeechManager.Instance.Speak(" "));
             GlobalVolumeManager.Instance.StopSound();
         }
-        
+
         private void CreateBurgerMenuButton(VisualNovel visualNovel, Transform content)
         {
             var novelId = VisualNovelNamesHelper.ValueOf((int)(visualNovel.id));
@@ -148,18 +151,17 @@ namespace Assets._Scripts.Controller.SceneControllers
                 MakeTextboxInvisible();
             }
         }
-        
+
         public void OnNovelButton()
         {
             GameObject buttonObject = EventSystem.current.currentSelectedGameObject;
-            
-            // Debug.Log($"buttonObject.name: {buttonObject.name}");
-            VisualNovelNames novelNames = VisualNovelNamesHelper.ValueByString(buttonObject.name);
-            // Debug.Log($"novelNames: {novelNames}");
 
-            var entry = _isNovelContainedInVersion.FirstOrDefault(novel => novel.novelId == VisualNovelNamesHelper.ToInt(novelNames));
+            VisualNovelNames novelNames = VisualNovelNamesHelper.ValueByString(buttonObject.name);
+
+            NovelEntry entry = _isNovelContainedInVersion.FirstOrDefault(novel => novel.novelId == VisualNovelNamesHelper.ToInt(novelNames));
 
             if (entry == null) return;
+
             DisplayTextBoxForVisualNovel(novelNames, entry.isContained);
             infinityScroll.MoveToVisualNovel(novelNames);
             if (novelNames.ToString() == "EinstiegsNovel")
@@ -182,6 +184,14 @@ namespace Assets._Scripts.Controller.SceneControllers
             FontSizeManager.Instance().UpdateAllTextComponents();
         }
 
+        public void OnIntroNovelButton()
+        {
+            GameObject buttonObject = EventSystem.current.currentSelectedGameObject;
+            VisualNovelNames novelNames = VisualNovelNamesHelper.ValueByString(buttonObject.name);
+
+            LoadAndPlayNovel(novelNames, true);
+        }
+
         private void OnSettingsButton()
         {
             SceneLoader.LoadSettingsScene();
@@ -189,13 +199,14 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private void DisplayTextBoxForVisualNovel(VisualNovelNames visualNovel, bool isNovelContainedInVersion)
         {
-            List<VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
-            allNovels = allNovels.OrderBy(novel => novel.id).ToList();
-            
             _novelId = VisualNovelNamesHelper.ToInt(visualNovel);
-            
-            VisualNovel currentNovel = allNovels.Find(novel => novel.id == _novelId);
-            
+            VisualNovel currentNovel;
+            if (!_allKiteNovelsById.TryGetValue(_novelId, out currentNovel))
+            {
+                Debug.LogError($"Novel mit ID {_novelId} nicht im Dictionary gefunden.");
+                return;
+            }
+
             if (isBurgerMenuOpen)
             {
                 burgerMenu.gameObject.SetActive(false);
@@ -221,24 +232,19 @@ namespace Assets._Scripts.Controller.SceneControllers
                 return;
             }
 
-            foreach (VisualNovel novel in allNovels)
-            {
-                if (novel.id != _novelId) continue;
-                
-                novelDescriptionTextbox.gameObject.SetActive(true);
-                novelDescriptionTextbox.SetHead(FoundersBubbleMetaInformation.IsHighInGui(visualNovel));
-                novelDescriptionTextbox.SetVisualNovel(novel);
-                novelDescriptionTextbox.SetVisualNovelName(visualNovel);
-                novelDescriptionTextbox.SetText(novel.description);
-                novelDescriptionTextbox.SetColorOfImage(novel.novelColor);
-                novelDescriptionTextbox.SetButtonsActive(true);
-                novelDescriptionTextbox.InitializeBookMarkButton(FavoritesManager.Instance().IsFavorite(novel));
-                novelDescriptionTextbox.UpdateSize();
+            novelDescriptionTextbox.gameObject.SetActive(true);
+            novelDescriptionTextbox.SetHead(FoundersBubbleMetaInformation.IsHighInGui(visualNovel));
+            novelDescriptionTextbox.SetVisualNovel(currentNovel);
+            novelDescriptionTextbox.SetVisualNovelName(visualNovel);
+            novelDescriptionTextbox.SetText(currentNovel.description);
+            novelDescriptionTextbox.SetColorOfImage(currentNovel.novelColor);
+            novelDescriptionTextbox.SetButtonsActive(true);
+            novelDescriptionTextbox.InitializeBookMarkButton(FavoritesManager.Instance().IsFavorite(currentNovel));
+            novelDescriptionTextbox.UpdateSize();
 
-                isPopupOpen = true;
-                currentlyOpenedVisualNovelPopup = visualNovel;
-                NovelColorManager.Instance().SetColor(novel.novelColor);
-            }
+            isPopupOpen = true;
+            currentlyOpenedVisualNovelPopup = visualNovel;
+            NovelColorManager.Instance().SetColor(currentNovel.novelColor);
 
             FontSizeManager.Instance().UpdateAllTextComponents();
         }
@@ -255,7 +261,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             base.OnStop();
             SceneMemoryManager.Instance().SetMemoryOfFoundersBubbleScene(infinityScroll.GetCurrentScrollPosition());
         }
-        
+
         private void OnButtonFromBurgerMenu()
         {
             GameObject buttonObject = EventSystem.current.currentSelectedGameObject;
@@ -265,12 +271,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             if (entry == null) return;
 
-            if (novelNames == VisualNovelNames.EinstiegsNovel)
-            {
-                GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
-            }
-
-            DisplayNovelFromMenu(novelNames);
+            LoadAndPlayNovel(novelNames);
         }
 
         private void CloseBurgerMenuIfOpen()
@@ -282,39 +283,38 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
         }
 
-        private void DisplayNovelFromMenu(VisualNovelNames visualNovelName)
+        private void LoadAndPlayNovel(VisualNovelNames novelName, bool isIntroNovel = false)
         {
-            VisualNovel visualNovelToDisplay = null;
-
-            KiteNovelManager.Instance().GetAllKiteNovels().ForEach(kiteNovel =>
+            VisualNovel visualNovelToDisplay;
+            if (!_allKiteNovelsById.TryGetValue(VisualNovelNamesHelper.ToInt(novelName), out visualNovelToDisplay))
             {
-                if (VisualNovelNamesHelper.ValueOf((int)kiteNovel.id) == visualNovelName)
-                {
-                    visualNovelToDisplay = kiteNovel;
-                }
-            });
-
-            if (visualNovelToDisplay == null)
-            {
+                Debug.LogWarning($"Novel with name {novelName} (ID: {VisualNovelNamesHelper.ToInt(novelName)}) not found in dictionary.");
                 return;
             }
 
-            Color color = visualNovelToDisplay.novelColor;
-
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-            NovelColorManager.Instance().SetColor(color);
-            PlayManager.Instance().SetColorOfVisualNovelToPlay(color);
-            PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+            NovelColorManager.Instance().SetColor(visualNovelToDisplay.novelColor);
+            PlayManager.Instance().SetColorOfVisualNovelToPlay(visualNovelToDisplay.novelColor);
+            PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelName));
+
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
 
-            if (ShowPlayInstructionManager.Instance().ShowInstruction() && visualNovelToDisplay.title != "Einstiegsdialog")
+            if (isIntroNovel)
             {
-                SceneLoader.LoadPlayInstructionScene();
+                GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
+                SceneLoader.LoadPlayNovelScene();
             }
             else
             {
-                SceneLoader.LoadPlayNovelScene();
+                if (ShowPlayInstructionManager.Instance().ShowInstruction() && visualNovelToDisplay.title != "Einstiegsdialog")
+                {
+                    SceneLoader.LoadPlayInstructionScene();
+                }
+                else
+                {
+                    SceneLoader.LoadPlayNovelScene();
+                }
             }
         }
     }
