@@ -64,8 +64,10 @@ namespace Assets._Scripts.UIElements.Messages
 
         private void InitUI()
         {
-            // Retrieve the colour from the NovelColorManager instance
+            // Retrieve the color from the NovelColorManager instance
             Color colour = NovelColorManager.Instance().GetColor();
+            
+            Debug.Log("Color: " + colour);
             
             pauseButton.image.color = colour;
 
