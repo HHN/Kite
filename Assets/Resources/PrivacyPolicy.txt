@@ -1,142 +1,90 @@
-$%
-1. Einführung
-$%
+## 1. Einführung
 
-$%
 Wir freuen uns, dass Sie KITE II nutzen. Der Schutz Ihrer Daten ist uns besonders wichtig. Deshalb erheben wir nur das, was wirklich notwendig ist – und das sind keine personenbezogenen Daten, außer Ihrer IP-Adresse. Diese benötigen wir ausschließlich, um Ihnen individuelles Feedback zu den gespielten Dialogen zu geben. Sobald das Feedback übermittelt wurde, wird Ihre IP-Adresse umgehend gelöscht und nicht gespeichert.
-$%
 
-$%
-2. Verantwortliche
-$%
+## 2. Verantwortliche
 
-$%
-Name und Kontaktdaten des Verantwortlichen sowie gegebenenfalls seiner Vertreter: 
-Hochschule Heilbronn 
+Name und Kontaktdaten des Verantwortlichen sowie gegebenenfalls seiner Vertreter:
+Hochschule Heilbronn
 Max-Planck-Straße 39
 74281 Heilbronn
 Deutschland
 
-Die Hochschule Heilbronn wird gesetzlich vertreten durch den Rektor, Herrn Prof.-Dr. Ing. Oliver Lenzen. 
+Die Hochschule Heilbronn wird gesetzlich vertreten durch den Rektor, Herrn Prof.-Dr. Ing. Oliver Lenzen.
 
 Tel.: 07131 / 504-0
-E-Mail: info@hs-heilbronn.de 
-Website: www.hs-heilbronn.de 
-$%
+E-Mail: info@hs-heilbronn.de
+Website: [www.hs-heilbronn.de](https://www.hs-heilbronn.de)
 
-$%
-3. Datenschutzbeauftragter
-$%
+## 3. Datenschutzbeauftragter
 
-$%
 Wir haben an unserer Hochschule einen externen Datenschutzbeauftragten bestellt. Vertrauliche Anliegen zum Datenschutz können Sie gerne direkt an diesen richten:
 
 Deutsche Datenschutzkanzlei
-Maximilian Musch 
+Maximilian Musch
 Richard-Wagner-Str. 2
 88094 Oberteuringen
 Deutschland
 Tel: +49 (0) 7542 / 949 21 02
-E-Mail: musch@ddsk.de. 
+E-Mail: musch@ddsk.de
 
 Internes Datenschutzbüro:
 Bei Fragen zum Datenschutz steht Ihnen ebenfalls das interne Datenschutzbüro der Hochschule Heilbronn zur Verfügung: dsb@hs-heilbronn.de
-$%
 
-$%
-4. Ziele und Zwecke der Verarbeitung sowie Empfänger
-$%
+## 4. Ziele und Zwecke der Verarbeitung sowie Empfänger
 
-$%
-4.1. Allgemeine Beschreibung App(-funktionen) und Datenverarbeitung
-$%
+### 4.1. Allgemeine Beschreibung App(-funktionen) und Datenverarbeitung
 
-$%
-Die App bietet die Möglichkeit, im Rahmen von Visual Novels Gesprächssituationen zu simulieren. Die Visual Novels in der App basieren auf vorgefertigten Dialogen, bei denen die Spielerin aus verschiedenen vorgegebenen Antwortmöglichkeiten auswählt. 
+Die App bietet die Möglichkeit, im Rahmen von Visual Novels Gesprächssituationen zu simulieren. Die Visual Novels in der App basieren auf vorgefertigten Dialogen, bei denen die Spielerin aus verschiedenen vorgegebenen Antwortmöglichkeiten auswählt.
 In der App kann man sich nicht registrieren oder sich einen Account erstellen. Die Angabe von persönlichen Daten, wie etwa Name, E-Mail, Anschrift, Telefonnummer oder finanzieller Informationen, ist nicht möglich.
-$%
 
-$%
-4.2. Datenerhebung/-verarbeitung zu unterschiedlichen Zwecken
-$%
+### 4.2. Datenerhebung/-verarbeitung zu unterschiedlichen Zwecken
 
-$%
-Zweck der Datenverarbeitung ist es, auf Basis der im Dialog gewählten Antwortmöglichkeiten eine Analyse des Gesprächsverlaufs im Rahmen der Visual Novel zu erstellen und diese der nutzenden Person zur Verfügung zu stellen: Am Ende des Gesprächs wird der tatsächlich stattgefundene Dialog zur Analyse an unseren Server geschickt, die Analyse erfolgt mit Hilfe eines Large Language Models. Das Analyseergebnis wird zurück an die nutzende Person geschickt. 
+Zweck der Datenverarbeitung ist es, auf Basis der im Dialog gewählten Antwortmöglichkeiten eine Analyse des Gesprächsverlaufs im Rahmen der Visual Novel zu erstellen und diese der nutzenden Person zur Verfügung zu stellen: Am Ende des Gesprächs wird der tatsächlich stattgefundene Dialog zur Analyse an unseren Server geschickt, die Analyse erfolgt mit Hilfe eines Large Language Models. Das Analyseergebnis wird zurück an die nutzende Person geschickt.
 Um die Analyse des stattgefundenen Dialogs an die nutzende Person zurückzuschicken nutzen wir die IP-Adresse. Diese wird nur zum Zurücksenden des Analyseergebnisses verwendet und nicht gespeichert.
-Die Verarbeitung des Gesprächsverlaufs wird durch ein Large Language Model ermöglicht. Hierbei werden jedoch keine personenbezogenen Daten gespeichert oder verarbeitet. 
+Die Verarbeitung des Gesprächsverlaufs wird durch ein Large Language Model ermöglicht. Hierbei werden jedoch keine personenbezogenen Daten gespeichert oder verarbeitet.
 Wir nutzen einen Server, der von Strato gehostet wird. Dieser Server befindet sich in Deutschland.
-$%
 
-$%
-5. Datenkategorien
-$%
+## 5. Datenkategorien
 
-$%
-Erhoben und verarbeitet wird im Rahmen der App-Nutzung ausschließlich die IP-Adresse. 
+Erhoben und verarbeitet wird im Rahmen der App-Nutzung ausschließlich die IP-Adresse.
 Es werden keine besonders schützenswerten personenbezogenen Daten nach Art. 9 Abs. 1 DSGVO verarbeitet.
-$%
 
-$%
-6. Quellen der Datenerhebung 
-$%
+## 6. Quellen der Datenerhebung
 
-$%
 Wir verarbeiten ausschließlich die Daten (IP-Adresse), die Sie uns im Rahmen der oben beschriebenen Datenverarbeitung und Nutzung der App zur Verfügung stellen.
-$%
 
-$%
-7. Rechtsgrundlagen der Datenverarbeitung
-$%
+## 7. Rechtsgrundlagen der Datenverarbeitung
 
-$%
 Rechtsgrundlage für die Verarbeitung Ihrer Daten ist die Bereitstellung der App. Die Verarbeitung der Daten erfolgt somit auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO.
-$%
 
-$%
-8. Weitere Datenschutzinformationen
-$%
+## 8. Weitere Datenschutzinformationen
 
-$%
-8.1. Bestehen einer automatisierten Entscheidungsfindung (Profiling)
-$%
+### 8.1. Bestehen einer automatisierten Entscheidungsfindung (Profiling)
 
-$%
-Wir setzen keine rein automatisierten Entscheidungsverfahren gemäß Art. 22 DSGVO ein. 
-$%
+Wir setzen keine rein automatisierten Entscheidungsverfahren gemäß Art. 22 DSGVO ein.
 
-$%
-8.2. Umfang der Pflichten, uns Daten bereitzustellen
-$%
+### 8.2. Umfang der Pflichten, uns Daten bereitzustellen
 
-$%
-Die Nutzung der App erfolgt freiwillig. Die Bereitstellung bestimmter personenbezogener Daten ist für die Nutzung unserer App erforderlich. Ohne diese Daten können wir die gewünschten Funktionen nicht bereitstellen. Dies betrifft ausschließlich die IP-Adresse. 
+Die Nutzung der App erfolgt freiwillig. Die Bereitstellung bestimmter personenbezogener Daten ist für die Nutzung unserer App erforderlich. Ohne diese Daten können wir die gewünschten Funktionen nicht bereitstellen. Dies betrifft ausschließlich die IP-Adresse.
 Falls Sie uns diese Daten nicht zur Verfügung stellen, können wir Ihnen unsere Dienste möglicherweise nicht oder nur eingeschränkt bereitstellen.
-$%
 
-$%
-8.3. Speicher- und Löschfristen
-$%
+### 8.3. Speicher- und Löschfristen
 
-$%
 Die IP-Adresse wird im Rahmen der Bereitstellung von Feedback zu den gespielten Dialogen kurzfristig verarbeitet. Sobald das Feedback übermittelt wurde, wird die IP-Adresse umgehend gelöscht und nicht gespeichert.
-$%
 
-$%
-9. Ihre Rechte
-$%
+## 9. Ihre Rechte
 
-$%
 Unter bestimmten Voraussetzungen können Sie uns gegenüber Ihre Datenschutzrechte geltend machen. Ihre Anträge über die Ausübung Ihrer Rechte sollten nach Möglichkeit schriftlich oder per E-Mail an die oben angegebene Anschrift adressiert werden.
--	Sie haben das Recht, von uns Auskunft über Ihre bei uns gespeicherten Daten nach den Regeln von Art. 15 DSGVO (ggf. mit Einschränkungen nach § 9 LDSG) zu erhalten. 
--	Auf Ihren Antrag hin werden wir die über Sie gespeicherten Daten nach Art. 16 DSGVO berichtigen, wenn diese unzutreffend oder fehlerhaft sind. 
--	Wenn Sie es wünschen, werden wir Ihre Daten nach den Grundsätzen von Art. 17 DSGVO löschen, sofern andere gesetzliche Regelungen (z.B. gesetzliche Aufbewahrungspflichten oder die Einschränkungen nach § 10 LDSG) oder ein überwiegendes Interesse unsererseits (z. B. zur Verteidigung unserer Rechte und Ansprüche) dem nicht entgegenstehen. 
--	Unter Berücksichtigung der Voraussetzungen des Art. 18 DSGVO können Sie von uns verlangen, die Verarbeitung Ihrer Daten einzuschränken. 
--	Ferner können Sie gegen die Verarbeitung Ihrer Daten Widerspruch nach Art. 21 DSGVO einlegen, aufgrund dessen wir die Verarbeitung Ihrer Daten beenden. Dieses Widerspruchsrecht gilt nur bei Vorliegen besonderer Umstände Ihrer persönlichen Situation, wobei Rechte unseres Hauses Ihrem Widerspruchsrecht ggf. entgegenstehen können. 
--	Auch haben Sie das Recht, Ihre Daten unter den Voraussetzungen von Art. 20 DSGVO in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten oder sie einem Dritten zu übermitteln.
--	Darüber hinaus haben Sie das Recht, eine erteilte Einwilligung in die Verarbeitung personenbezogener Daten jederzeit uns gegenüber mit Wirkung für die Zukunft zu widerrufen.
-Ferner steht Ihnen ein Beschwerderecht bei einer Datenschutzaufsichtsbehörde zu (Art. 77 DSGVO). 
+> - Sie haben das Recht, von uns Auskunft über Ihre bei uns gespeicherten Daten nach den Regeln von Art. 15 DSGVO (ggf. mit Einschränkungen nach § 9 LDSG) zu erhalten.
+> - Auf Ihren Antrag hin werden wir die über Sie gespeicherten Daten nach Art. 16 DSGVO berichtigen, wenn diese unzutreffend oder fehlerhaft sind.
+> - Wenn Sie es wünschen, werden wir Ihre Daten nach den Grundsätzen von Art. 17 DSGVO löschen, sofern andere gesetzliche Regelungen (z.B. gesetzliche Aufbewahrungspflichten oder die Einschränkungen nach § 10 LDSG) oder ein überwiegendes Interesse unsererseits (z. B. zur Verteidigung unserer Rechte und Ansprüche) dem nicht entgegenstehen.
+> - Unter Berücksichtigung der Voraussetzungen des Art. 18 DSGVO können Sie von uns verlangen, die Verarbeitung Ihrer Daten einzuschränken.
+> - Ferner können Sie gegen die Verarbeitung Ihrer Daten Widerspruch nach Art. 21 DSGVO einlegen, aufgrund dessen wir die Verarbeitung Ihrer Daten beenden. Dieses Widerspruchsrecht gilt nur bei Vorliegen besonderer Umstände Ihrer persönlichen Situation, wobei Rechte unseres Hauses Ihrem Widerspruchsrecht ggf. entgegenstehen können.
+> - Auch haben Sie das Recht, Ihre Daten unter den Voraussetzungen von Art. 20 DSGVO in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten oder sie einem Dritten zu übermitteln.
+> - Darüber hinaus haben Sie das Recht, eine erteilte Einwilligung in die Verarbeitung personenbezogener Daten jederzeit uns gegenüber mit Wirkung für die Zukunft zu widerrufen.
+Ferner steht Ihnen ein Beschwerderecht bei einer Datenschutzaufsichtsbehörde zu (Art. 77 DSGVO).
 Die zuständige Aufsichtsbehörde im Land Baden-Württemberg:
 Landesbeauftragte für den Datenschutz und die Informationsfreiheit Baden-Württemberg
 E-Mail: poststelle@lfdi.bwl.de
-Internet: https://www.baden-wuerttemberg.datenschutz.de
-$%
+Internet: [https://www.baden-wuerttemberg.datenschutz.de](https://www.baden-wuerttemberg.datenschutz.de)

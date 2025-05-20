@@ -335,7 +335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5051008366195749883, guid: 273af63beb05c3d49a0299b82088e849, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1080
+      value: 980
       objectReference: {fileID: 0}
     - target: {fileID: 5051008366195749883, guid: 273af63beb05c3d49a0299b82088e849, type: 3}
       propertyPath: m_SizeDelta.y
@@ -641,8 +641,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
-    m_Right: 0
+    m_Left: 50
+    m_Right: 50
     m_Top: 100
     m_Bottom: 100
   m_ChildAlignment: 0
@@ -1120,7 +1120,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 540, y: -130.005}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_SizeDelta: {x: 980, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1896546250
 MonoBehaviour:
@@ -1156,7 +1156,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Nutzungsbedingungen der KITE II Mobile App
+  m_text: Nutzungsbedingungen
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
   m_sharedMaterial: {fileID: 3127457962735927120, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
