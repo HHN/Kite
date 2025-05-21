@@ -52,8 +52,19 @@ namespace Tests.PlayMode
             
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("_Scenes/MainMenuSceneTest");
             
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
+            
+            GameObject converter = GameObject.Find("TweeToJsonConverter");
+
+            Assert.NotNull(converter);
+
+            NovelReader novelReader = converter.GetComponent<NovelReader>();
+            
             // Hole Dir die Instanz einmal in eine lokale Variable:
-            var novelReader = NovelReader.Instance;
+            // var novelReader = NovelReader.Instance;
 
             // Starte den Import
             novelReader.ImportNovel();
