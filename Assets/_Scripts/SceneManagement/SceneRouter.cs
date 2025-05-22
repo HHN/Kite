@@ -25,6 +25,7 @@ namespace Assets._Scripts.SceneManagement
                 SceneNames.BookmarkedNovelsScene => SceneNames.FoundersBubbleScene,
                 SceneNames.SoundSettingsScene => SceneNames.SettingsScene,
                 SceneNames.KnowledgeScene => SceneNames.FoundersBubbleScene,
+                SceneNames.LegalInformationScene => SceneNames.FoundersBubbleScene,
                 _ => SceneNames.MainMenuScene
             };
         }

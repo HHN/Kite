@@ -18,6 +18,7 @@ namespace Assets._Scripts.SceneManagement
         public const string FoundersBubbleScene = "FoundersBubbleScene";
 
         // LEGAL INFORMATION
+        public const string LegalInformationScene = "LegalInformationScene";
         public const string LegalNoticeScene = "LegalNoticeScene";
         public const string PrivacyPolicyScene = "PrivacyPolicyScene";
         public const string TermsOfUseScene = "TermsOfUseScene";
