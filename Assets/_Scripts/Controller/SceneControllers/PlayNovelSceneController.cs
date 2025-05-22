@@ -12,6 +12,7 @@ using Assets._Scripts.SaveNovelData;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.ServerCommunication.ServerCalls;
 using Assets._Scripts.UIElements.Messages;
+using Assets._Scripts.UIElements.SceneBase;
 using Assets._Scripts.Utilities;
 using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using TMPro;
@@ -29,6 +30,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         [SerializeField] private GameObject conversationViewport;
         [SerializeField] private Button closeButton;
+        [SerializeField] private Button legalInformationButton;
         [SerializeField] private TextMeshProUGUI novelName;
         [SerializeField] private ConversationContentGuiController conversationContent;
         [SerializeField] public Button confirmArea;
@@ -170,7 +172,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             if (novelToPlay.novelEvents.Count <= 0) return;
 
             SetVisualElements();
-            HandleHeaderImage();
+            // HandleHeaderImage();
             InitializeCharacterExpressions();
             InitializeNovelEvents();
             CheckForSavegame();
@@ -268,7 +270,8 @@ namespace Assets._Scripts.Controller.SceneControllers
             bool isIntro = novelToPlay.title == "Einstiegsdialog";
             bool isIntroFromMainMenu = GameManager.Instance.IsIntroNovelLoadedFromMainMenu;
 
-            headerImage.SetActive(!isIntro || !isIntroFromMainMenu);
+            // headerImage.GetComponent<SceneHeader>().HandleButtons(isIntro || isIntroFromMainMenu);
+            // headerImage.SetActive(!isIntro || !isIntroFromMainMenu);
         }
 
         private void InitializeCharacterExpressions()

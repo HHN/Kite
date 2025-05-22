@@ -12,6 +12,7 @@ namespace Assets._Scripts.UIElements.SceneBase
     public class SceneHeader : MonoBehaviour
     {
         [SerializeField] private Button backButton;
+        [SerializeField] private Button legalInformationButton;
         [SerializeField] private GameObject warningMessageBox;
         [SerializeField] private GameObject warningMessageBoxIntro;
         [SerializeField] private GameObject warningMessageBoxClose;
@@ -29,8 +30,23 @@ namespace Assets._Scripts.UIElements.SceneBase
             {
                 _playNovelSceneController = controllerObject.GetComponent<PlayNovelSceneController>();
             }
+            
+            backButton.gameObject.SetActive(true);
+            legalInformationButton.gameObject.SetActive(false);
+
+            if (GameManager.Instance.IsIntroNovelLoadedFromMainMenu)
+            {
+                backButton.gameObject.SetActive(false);
+                legalInformationButton.gameObject.SetActive(true);
+            }
+            else
+            {
+                backButton.gameObject.SetActive(true);
+                legalInformationButton.gameObject.SetActive(true);
+            }
 
             backButton.onClick.AddListener(OnBackButton);
+            legalInformationButton.onClick.AddListener(OnLegalInformationButton);
         }
 
         private void OnBackButton()
@@ -89,6 +105,19 @@ namespace Assets._Scripts.UIElements.SceneBase
 
                 warningMessageBoxObject.Activate();
             }
+        }
+        
+        public void OnLegalInformationButton()
+        {
+            Debug.Log($"OnLegalInformationButton");
+            SceneLoader.LoadLegalInformationScene();
+        }
+
+        public void HandleButtons(bool isIntroScene)
+        {
+            Debug.Log("HandleButtons");
+            backButton.gameObject.SetActive(!isIntroScene);
+            legalInformationButton.gameObject.SetActive(isIntroScene);
         }
     }
 }
