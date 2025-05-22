@@ -53,5 +53,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/MainMenuSceneTest.unity
     guid: c4f74740544119c419d93999ffb7c2c5
+  - enabled: 1
+    path: Assets/_Scenes/LegalInformation/LegalInformationScene.unity
+    guid: 1404938a584fc644fa72891c9304b0ca
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

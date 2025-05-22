@@ -31,6 +31,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         private InfinityScroll infinityScroll;
 
         [SerializeField] private Button novelListButton;
+        [SerializeField] private Button legalInformationButton;
         [SerializeField] private Button settingsButton;
 
         [Header("Burger Menu")] [SerializeField]
@@ -106,6 +107,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
 
             novelListButton.onClick.AddListener(OnNovelListButton);
+            legalInformationButton.onClick.AddListener(OnLegalInformationButton);
             settingsButton.onClick.AddListener(OnSettingsButton);
 
             burgerMenuBackground.onClick.AddListener(OnBackgroundButton);
@@ -190,6 +192,11 @@ namespace Assets._Scripts.Controller.SceneControllers
             VisualNovelNames novelNames = VisualNovelNamesHelper.ValueByString(buttonObject.name);
 
             LoadAndPlayNovel(novelNames, true);
+        }
+        
+        private void OnLegalInformationButton()
+        {
+            SceneLoader.LoadLegalInformationScene();
         }
 
         private void OnSettingsButton()

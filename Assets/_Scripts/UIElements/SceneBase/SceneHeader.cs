@@ -20,8 +20,7 @@ namespace Assets._Scripts.UIElements.SceneBase
         [SerializeField] private LeaveNovelAndGoBackToMainMenuMessageBox warningMessageBoxObjectClose;
         [SerializeField] private Canvas canvas;
 
-        private PlayNovelSceneController
-            _playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
+        private PlayNovelSceneController _playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
 
         private void Start()
         {
