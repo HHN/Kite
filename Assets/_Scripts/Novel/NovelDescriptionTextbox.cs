@@ -175,9 +175,9 @@ namespace Assets._Scripts.Novel
         /// Setzt den angezeigten Kopf basierend auf der H�he.
         /// </summary>
         /// <param name="isHigh">True f�r gro�en Kopf, False f�r kleinen Kopf.</param>
-        public void SetHead(bool isHigh)
+        public void SetHead()
         {
-            smallHead.SetActive(!isHigh);
+            smallHead.SetActive(true);
         }
 
         /// <summary>

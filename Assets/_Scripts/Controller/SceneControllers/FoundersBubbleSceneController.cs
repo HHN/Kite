@@ -222,7 +222,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             if (!isNovelContainedInVersion)
             {
                 novelDescriptionTextbox.gameObject.SetActive(true);
-                novelDescriptionTextbox.SetHead(FoundersBubbleMetaInformation.IsHighInGui(visualNovel));
+                novelDescriptionTextbox.SetHead();
                 novelDescriptionTextbox.SetVisualNovelName(visualNovel);
                 novelDescriptionTextbox.SetText("Leider ist diese Novel nicht in der Testversion enthalten. Bitte spiele eine andere Novel.");
                 novelDescriptionTextbox.SetColorOfImage(currentNovel.novelColor);
@@ -233,7 +233,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
 
             novelDescriptionTextbox.gameObject.SetActive(true);
-            novelDescriptionTextbox.SetHead(FoundersBubbleMetaInformation.IsHighInGui(visualNovel));
+            novelDescriptionTextbox.SetHead();
             novelDescriptionTextbox.SetVisualNovel(currentNovel);
             novelDescriptionTextbox.SetVisualNovelName(visualNovel);
             novelDescriptionTextbox.SetText(currentNovel.description);
