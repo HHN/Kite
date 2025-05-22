@@ -59,6 +59,8 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             BackStackManager.Instance().Push(SceneNames.FoundersBubbleScene);
 
+            GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
+
             currentlyOpenedVisualNovelPopup = VisualNovelNames.None;
 
             List<VisualNovel> allKiteNovelsList = KiteNovelManager.Instance().GetAllKiteNovels();
