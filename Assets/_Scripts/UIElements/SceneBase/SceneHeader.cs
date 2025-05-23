@@ -32,17 +32,15 @@ namespace Assets._Scripts.UIElements.SceneBase
             }
             
             backButton.gameObject.SetActive(true);
-            legalInformationButton.gameObject.SetActive(false);
 
             if (GameManager.Instance.IsIntroNovelLoadedFromMainMenu)
             {
                 backButton.gameObject.SetActive(false);
-                legalInformationButton.gameObject.SetActive(true);
+                GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
             }
             else
             {
                 backButton.gameObject.SetActive(true);
-                legalInformationButton.gameObject.SetActive(true);
             }
 
             backButton.onClick.AddListener(OnBackButton);
