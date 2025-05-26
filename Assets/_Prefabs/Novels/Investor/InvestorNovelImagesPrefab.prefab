@@ -370,10 +370,10 @@ RectTransform:
   - {fileID: 5536019399551283411}
   m_Father: {fileID: 7694940209821240600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -220, y: 390}
-  m_SizeDelta: {x: 244, y: 1044}
+  m_AnchorMin: {x: -0.2, y: 0}
+  m_AnchorMax: {x: 0.8, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1535315102825623083
 CanvasRenderer:
@@ -474,6 +474,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5869069278642351330}
   - component: {fileID: 1692021508203506289}
+  - component: {fileID: 4589216971758839477}
   m_Layer: 3
   m_Name: Deco Plant Container
   m_TagString: Untagged
@@ -488,18 +489,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5558045549636132440}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3177125110010624423}
   m_Father: {fileID: 7694940209821240600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 350, y: 377}
-  m_SizeDelta: {x: 300, y: 450}
+  m_AnchorMin: {x: 0.35, y: -0.3}
+  m_AnchorMax: {x: 1.35, y: 0.7}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1692021508203506289
 MonoBehaviour:
@@ -557,6 +558,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4589216971758839477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5558045549636132440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 2
+  m_AspectRatio: 0.6666667
 --- !u!1 &6240976351819815475
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,7 +782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1465545687914413254, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1465545687914413254, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
       propertyPath: m_AnchorMax.y
@@ -775,7 +790,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1465545687914413254, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1465545687914413254, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
       propertyPath: m_AnchorMin.y
@@ -841,10 +856,62 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character Prefab Investor
       objectReference: {fileID: 0}
+    - target: {fileID: 1605649503668890460, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743177286471939758, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2497710498005018124, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3702708503349398441, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126753951640385348, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4253796331781111194, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4524035883740533591, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
+      propertyPath: 'hairSprites.Array.data[1]'
+      value: 
+      objectReference: {fileID: 21300000, guid: b4b34852cca131e41b52c604ae64ff1c, type: 3}
+    - target: {fileID: 4524035883740533591, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
+      propertyPath: 'handSprites.handColorA.Array.data[0]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 2b0008164cdb1ed408f95f92f8ddd0fa, type: 3}
+    - target: {fileID: 4524035883740533591, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
+      propertyPath: 'handSprites.handColorB.Array.data[0]'
+      value: 
+      objectReference: {fileID: 21300000, guid: fae6f3965513bf24eb9b8cd99d5b7c7b, type: 3}
+    - target: {fileID: 4524035883740533591, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
+      propertyPath: 'handSprites.handColorC.Array.data[0]'
+      value: 
+      objectReference: {fileID: 21300000, guid: da84ce3f0fcd6af4aa1267bb3a42aeff, type: 3}
+    - target: {fileID: 4524035883740533591, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
+      propertyPath: 'handSprites.handColorD.Array.data[0]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 259cee5eaa41202448c4420a0e8178bb, type: 3}
+    - target: {fileID: 6438940700170831803, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8721691660771487528, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8803450695257444492, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 8931213347672921323, guid: 2b0008164cdb1ed408f95f92f8ddd0fa, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

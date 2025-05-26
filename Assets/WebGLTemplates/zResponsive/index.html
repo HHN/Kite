@@ -88,7 +88,7 @@
 				canvas.style.backgroundSize = '100% 1rem';
 			}
 
-			// === Neue onResize(): Desktop 1 : 1.5, Mobile full visualViewport ===
+			// === Neue onResize(): Desktop 1 : 2, Mobile full visualViewport ===
 			function onResize() {
 				var container = canvas.parentElement;
 				var isDesktop = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -99,13 +99,13 @@
 					// Volle Höhe des inneren Fensters
 					var vw = window.innerWidth;
 					var vh = window.innerHeight;
-					// Höhe = vh, Breite = vh / 1.5
+					// Höhe = vh, Breite = vh / 
 					h = vh;
-					w = Math.floor(h / 1.5);
+					w = Math.floor(h / 2);
 					// Falls Breite zu groß
 					if (w > vw) {
 						w = vw;
-						h = Math.floor(w * 1.5);
+						h = Math.floor(w * 2);
 					}
 					// Zentriert horizontal, oben bündig
 					left = Math.floor((vw - w) / 2);
