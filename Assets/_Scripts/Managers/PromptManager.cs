@@ -78,53 +78,44 @@ namespace Assets._Scripts.Managers
 
                 //Output Format
                 _prompt.Append(
-                    "Schreibe einen Analysetext. Stelle die Biases und Verzerrungen dar, auf die du dich beziehst (unten eine Liste mit Geschlechterbiases im Gründungsprozess).\r\n" +
-                    "Im Dialog findest du auch Hinweise auf Biases, die an der jeweiligen Stelle des Dialogs zum Tragen kommen. Nutze diese Hinweise zur Analyse des Dialogs.\r\n" +
-                    "Analysiere auch Leas Verhalten und ihre Reaktionen auf diese Biases mit konkreten Beispielen aus dem Dialog.\r\n" +
-                    "Stelle die Vorteile von Leas Verhalten dar und deute vorsichtig an, welche Nachteile ihre Reaktion haben könnte.\r\n" +
-                    "Führe das Nicht-Ansprechen geschlechterstereotyper Annahmen nicht bei den Nachteilen auf.\r\n" +
-                    "Sei vorsichtig mit dem Hinweis, Biases und Stereotype direkt anzusprechen, weil dies zwar generell sinnvoll sein kann,\r\n" +
-                    "Lea aber in erster Linie darauf achten muss, dass sie das Gespräch so führt, dass sie im Gespräch erfolgreich ist.\r\n" +
-                    "Nutze geschlechtergerechte Sprache (z.B. Gründer*innen, weibliche Gründerinnen).\r\n" +
-                    "Richte den Text in der Du-Form an Lea. Sei wohlwollend und ermunternd. Sprich Lea nicht mit ihrem Namen an.\r\n" +
-                    "Formuliere den Text aus einer unbestimmten Ich-Perspektive."
+                    "Schreibe einen Analysetext. Stelle die Biases und Verzerrungen dar, auf die du dich beziehst (unten eine Liste mit Geschlechterbiases im Gründungsprozess). \n\n" +
+                    "Im Dialog findest Du auch Hinweise auf Biases, die an der jeweiligen Stelle des Dialogs zum Tragen kommen. Nutze diese Hinweise zur Analyse des Dialogs. \n\n" +
+                    "Analysiere auch Leas Verhalten und ihre Reaktionen auf diese Biases zu den jeweiligen Biases.mit konkreten Beispielen aus dem Dialog. \n\n" +
+                    "Stelle die Vorteile von Leas Verhalten dar und deute vorsichtig an, welche Nachteile ihre Reaktion haben könnte.\n\n" +
+                    "Führe das Nicht-Ansprechen geschlechterstereotyper Annahmen nicht bei den Nachteilen auf.\n\n" +
+                    "Sei vorsichtig mit dem Hinweis, Biases und Stereotype direkt anzusprechen, weil dies zwar generell sinnvoll sein kann, Lea aber in erster Linie darauf achten muss, dass sie das Gespräch so führt, dass sie im Gespräch erfolgreich ist.\n\n" +
+                    "Nutze geschlechtergerechte Sprache (z.B. Gründer*innen, weibliche Gründerinnen).\n\n" +
+                    "Richte den Text in der Du-Form an Lea. Sei wohlwollend und ermunternd. Sprich Lea nicht mit ihrem Namen an. Formuliere den Text aus einer unbestimmten Ich-Perspektive.\n\n"
                 );
                 _prompt.AppendLine();
 
                 //Wissens Basis
                 _prompt.Append(
-                    "Hier die Liste mit Geschlechterbiases im Gründungsprozess:\r\n\r\n" +
-                    "Finanzielle und geschäftliche Herausforderungen:\r\n" +
-                    "- AccessToFunding: Schwierigkeiten von Frauen, Kapital für ihre Unternehmen zu beschaffen.\r\n" +
-                    "- Gender Pay Gap: Lohnungleichheit zwischen Männern und Frauen.\r\n" +
-                    "- Unterbewertung weiblich geführter Unternehmen: Geringere Bewertung von Unternehmen, die von Frauen geführt werden.\r\n" +
-                    "- Risk Aversion Bias: Wahrnehmung von Frauen als risikoaverser.\r\n" +
-                    "- Bestätigungsverzerrung: Tendenz, Informationen zu interpretieren, die bestehende Vorurteile bestätigen.\r\n" +
-                    "- Tokenism: Wahrnehmung von Frauen in unternehmerischen Kreisen als Alibifiguren.\r\n" +
-                    "- Bias in der Wahrnehmung von Führungsfähigkeiten: Infragestellung der Führungsfähigkeiten von Frauen.\r\n" +
-                    "- Benevolenter Sexismus: Schützend oder wohlwollend gemeinte, aber dennoch herabwürdigende Haltungen gegenüber Frauen.\r\n\r\n" +
-                    "Intersektionale und spezifische Biases:\r\n" +
-                    "- Rassistische und ethnische Biases: Zusätzliche Vorurteile gegenüber Frauen aus Minderheitengruppen.\r\n" +
-                    "- Sozioökonomische Biases: Größere Hindernisse für Frauen aus niedrigeren sozioökonomischen Schichten.\r\n" +
-                    "- Alter- und Generationen-Biases: Diskriminierung aufgrund von Altersstereotypen.\r\n" +
-                    "- Sexualitätsbezogene Biases: Vorurteile gegenüber lesbischen, bisexuellen oder queeren Frauen.\r\n" +
-                    "- Biases gegenüber Frauen mit Behinderungen: Zusätzliche Herausforderungen für Frauen mit körperlichen oder geistigen Behinderungen.\r\n" +
-                    "- Stereotype gegenüber Frauen in nicht-traditionellen Branchen: Widerstände gegen Frauen in männlich dominierten Feldern.\r\n" +
-                    "- Kulturelle und religiöse Biases: Diskriminierung aufgrund kultureller oder religiöser Zugehörigkeit.\r\n" +
-                    "- Heteronormativität: Annahmen und Erwartungen, dass Heterosexualität die bevorzugte sexuelle Orientierung ist.\r\n\r\n" +
-                    "Biases im Bereich der Rollen- und Familienwahrnehmung:\r\n" +
-                    "- Maternal Bias: Annahmen über geringere Engagementbereitschaft von Müttern oder potenziellen Müttern.\r\n" +
-                    "- Biases gegenüber Frauen mit Kindern: Benachteiligung von Müttern, insbesondere Alleinerziehenden.\r\n" +
-                    "- Erwartungshaltung bezüglich Familienplanung: Annahmen über zukünftige Familienplanung bei Frauen im gebärfähigen Alter.\r\n" +
-                    "- Work-Life-Balance-Erwartungen: Druck auf Frauen, ein Gleichgewicht zwischen Beruf und Familie zu finden.\r\n\r\n" +
-                    "Karriereentwicklungs- und Wahrnehmungsbiases:\r\n" +
-                    "- Geschlechtsspezifische Stereotypen: Annahmen über geringere Kompetenz von Frauen in bestimmten Bereichen.\r\n" +
-                    "- Doppelte Bindung (Tightrope Bias): Konflikt zwischen der Wahrnehmung als zu weich oder zu aggressiv.\r\n" +
-                    "- Mikroaggressionen: Subtile Formen der Diskriminierung gegenüber Frauen.\r\n" +
-                    "- Leistungsattributions-Bias: Externe Zuschreibung von Erfolgen von Frauen.\r\n" +
-                    "- Bias in Medien und Werbung: Verzerrte Darstellung von Unternehmerinnen in den Medien.\r\n" +
-                    "- Unbewusste Bias in der Kommunikation: Herabsetzende Art und Weise, wie über Frauenunternehmen gesprochen wird.\r\n" +
-                    "- Prove-it-Again-Bias: Anforderung an Frauen, insbesondere in technischen Bereichen, ihre Kompetenzen wiederholt zu beweisen.\r\n"
+                    "Hier die Liste mit Geschlechterbiases im Gründungsprozess:\n\n" +
+                    "Finanzielle und Geschäftliche Herausforderungen\n\n" +
+                    "Finanzierungszugang \n>>Bias|AccessToFinancing<<\nBias: Schwierigkeiten von Frauen, Kapital für ihre Unternehmen zu beschaffen.\n\n" +
+                    "Gender Pay Gap\n>>Bias|GenderPayGap<<\nBias: Lohnungleichheit zwischen Männern und Frauen.\n\n" +
+                    "Unterbewertung weiblich geführter Unternehmen\n>>Bias|UndervaluationFemaleManagedCompany<<\nBias: Geringere Bewertung von Unternehmen, die von Frauen geführt werden.\n\n" +
+                    "Risk Aversion Bias\n>>Bias|RiskAversionBias<<\nBias: Wahrnehmung von Frauen als risikoaverser.\n\n" +
+                    "Bestätigungsverzerrung\n>>Bias|ConfirmationBias<<\nBias: Tendenz, Informationen zu interpretieren, die bestehende Vorurteile bestätigen.\n\n" +
+                    "Gesellschaftliche Erwartungen & soziale Normen\n\n" +
+                    "Tokenism\n>>Bias|Tokenism<<\nBias: Wahrnehmung von Frauen in unternehmerischen Kreisen als Alibifiguren.\n\n" +
+                    "Bias in der Wahrnehmung von Führungsfähigkeiten\n>>Bias|BiasInThePerceptionOfLeadershipSkills<<\nBias: Infragestellung der Führungsfähigkeiten von Frauen.\n\n" +
+                    "Benevolenter Sexismus\n>>Bias|BenevolentSexism<<\nBias: Schützend oder wohlwollend gemeinte, aber dennoch herabwürdigende Haltungen gegenüber Frauen, die sie als weniger kompetent und in Bedarf von männlicher Hilfe darstellen.\n\n" +
+                    "Alter- und Generationen-Biases\n>>Bias|AgeAndGenerationsBiases<<\nBias: Diskriminierung aufgrund von Altersstereotypen.\n\n" +
+                    "Stereotype gegenüber Frauen in nicht-traditionellen Branchen\n>>Bias|StereotypesAboutWomenInNon<<\nBias: Widerstände gegen Frauen in männlich dominierten Feldern.\n\n" +
+                    "Prove-it-Again-Bias\n>>Bias|ProveItAgainBias<<\nBias: Anforderung an Frauen, insbesondere in technischen Bereichen, ihre Kompetenzen wiederholt zu beweisen.\n\n" +
+                    "Wahrnehmung & Führungsrollen\n\n" +
+                    "Heteronormativität\n>>Bias|Heteronormativity<<\nBias: Annahmen und Erwartungen, die auf der Vorstellung beruhen, dass Heterosexualität die einzige oder bevorzugte sexuelle Orientierung ist.\n\n" +
+                    "Maternal Bias\n>>Bias|BiasesAgainstWomenWithChildren<<\nBias: Annahmen über geringere Engagementbereitschaft von Müttern oder potenziellen Müttern.\n\n" +
+                    "Erwartungshaltung bezüglich Familienplanung\n>>Bias|ExpectationsRegardingFamilyPlanning<<\nBias: Annahmen über zukünftige Familienplanung bei Frauen im gebärfähigen Alter.\n\n" +
+                    "Work-Life-Balance-Erwartungen\n>>Bias|WorkLifeBalanceExpectations<<\nBias: Druck auf Frauen, ein Gleichgewicht zwischen Beruf und Familie zu finden.\n\n" +
+                    "Geschlechterspezifische Stereotype\n>>Bias|GenderSpecificStereotypes<<\nBias: Annahmen über geringere Kompetenz von Frauen in bestimmten Bereichen.\n\n" +
+                    "Psychologische Barrieren & kommunikative Hindernisse\n\n" +
+                    "Doppelte Bindung (Tightrope Bias)\n>>Bias|TightropeBias<<\nBias: Konflikt zwischen der Wahrnehmung als zu weich oder zu aggressiv.\n\n" +
+                    "Mikroaggressionen\n>>Bias|Microaggression<<\nBias: Subtile Formen der Diskriminierung gegenüber Frauen.\n\n" +
+                    "Leistungsattributions-Bias\n>>Bias|PerformanceAttributionBias<<\nBias: Externe Zuschreibung von Erfolgen von Frauen.\n\n" +
+                    "Unbewusste Biases in der Kommunikation\n>>Bias|UnconsciousBiasInCommunication<<\nBias: Herabsetzende Art und Weise, wie über Frauenunternehmen gesprochen wird.\n"
                 );
             }
 
