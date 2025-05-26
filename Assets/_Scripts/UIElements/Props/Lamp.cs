@@ -13,10 +13,11 @@ namespace Assets._Scripts.UIElements.Props
         [SerializeField] private Sprite lampOn;
         [SerializeField] private Sprite lampOff;
         
-        private bool _decoLampeStatus;
+        private bool _decoLampeStatus = false;
 
         public IEnumerator PlayInteraction(RectTransform container)
         {
+            
             AudioClip clip = _decoLampeStatus ? soundOn : soundOff;
             if (!TextToSpeechManager.Instance.IsTextToSpeechActivated())
             {
@@ -27,12 +28,6 @@ namespace Assets._Scripts.UIElements.Props
             {
                 Image image = gameObject.GetComponent<Image>();
                 image.sprite = lampOff;
-                if (container.transform.childCount > 0)
-                {
-                    Destroy(container.transform.GetChild(0).gameObject);
-                }
-
-                Instantiate(gameObject, container.transform);
                 _decoLampeStatus = false;
                 yield return new WaitForSeconds(0.5f);
             }
@@ -40,12 +35,6 @@ namespace Assets._Scripts.UIElements.Props
             {
                 Image image = gameObject.GetComponent<Image>();
                 image.sprite = lampOn;
-                if (container.transform.childCount > 0)
-                {
-                    Destroy(container.transform.GetChild(0).gameObject);
-                }
-
-                Instantiate(gameObject, container.transform);
                 _decoLampeStatus = true;
                 yield return new WaitForSeconds(0.5f);
             }

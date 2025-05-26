@@ -880,6 +880,26 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4524035883740533591, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
+      propertyPath: 'hairSprites.Array.data[1]'
+      value: 
+      objectReference: {fileID: 21300000, guid: b4b34852cca131e41b52c604ae64ff1c, type: 3}
+    - target: {fileID: 4524035883740533591, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
+      propertyPath: 'handSprites.handColorA.Array.data[0]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 2b0008164cdb1ed408f95f92f8ddd0fa, type: 3}
+    - target: {fileID: 4524035883740533591, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
+      propertyPath: 'handSprites.handColorB.Array.data[0]'
+      value: 
+      objectReference: {fileID: 21300000, guid: fae6f3965513bf24eb9b8cd99d5b7c7b, type: 3}
+    - target: {fileID: 4524035883740533591, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
+      propertyPath: 'handSprites.handColorC.Array.data[0]'
+      value: 
+      objectReference: {fileID: 21300000, guid: da84ce3f0fcd6af4aa1267bb3a42aeff, type: 3}
+    - target: {fileID: 4524035883740533591, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
+      propertyPath: 'handSprites.handColorD.Array.data[0]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 259cee5eaa41202448c4420a0e8178bb, type: 3}
     - target: {fileID: 6438940700170831803, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -888,6 +908,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8803450695257444492, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 8931213347672921323, guid: 2b0008164cdb1ed408f95f92f8ddd0fa, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
