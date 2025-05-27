@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using UnityEditor.Graphs;
 using UnityEngine;
 
 namespace Assets._Scripts.Test
 {
     public class TweePathCalculator
     {
-        private readonly Dictionary<string, (List<string> Links, List<string> Speakers, string Body)> _graph = new Dictionary<string, (List<string> Links, List<string> Speakers, string Body)>();
-
+        //private readonly Dictionary<string, (List<string> Links, List<string> Speakers, string Body)> _graph = new Dictionary<string, (List<string> Links, List<string> Speakers, string Body)>();
+        private readonly Dictionary<string,Node> _graph = new Dictionary<string,Node>();
         private readonly Dictionary<string, string> _characterToSpeakerMap = new Dictionary<string, string>();
+        private readonly Dictionary<string, KeyValuePair<string,int>> duplicates = new Dictionary<string, KeyValuePair<string,int>>();
 
         /// <summary>
         /// Liest eine Twee-Datei von der angegebenen Datei und gibt den Inhalt als String zurück.
@@ -65,18 +67,17 @@ namespace Assets._Scripts.Test
             _characterToSpeakerMap[@"SpielerinCharakterSpricht"] = "Spielerin";
 
             // Ausgabe der gesamten CharacterToSpeakerMap
-            // Debug.Log("CharacterToSpeakerMap-Inhalt:");
-            // foreach (var entry in _characterToSpeakerMap)
-            // {
-            //     Debug.Log($"  {entry.Key} -> {entry.Value}");
-            // }
+            Debug.Log("CharacterToSpeakerMap-Inhalt:");
+            foreach (var entry in _characterToSpeakerMap)
+            {
+                Debug.Log($"  {entry.Key} -> {entry.Value}");
+            }
         }
 
         public void ParseTweeFile(string tweeContent)
         {
             string nodePattern = @"::\s*([^\n\{\[\|]+).*?\n((?:.|\n)*?)(?=(::|$))";
             string linkPattern = @"\[\[(?:(.*?)(?:\s*(?:\||->)\s*(.*?))|([^|\]]+))\]\]";
-            string speakerPattern = @">>([^\s<>]+):<<";
 
             MatchCollection matches = Regex.Matches(tweeContent, nodePattern);
 
@@ -85,122 +86,175 @@ namespace Assets._Scripts.Test
                 string nodeName = match.Groups[1].Value.Trim();
                 string nodeBody = match.Groups[2].Value;
 
-                List<string> links = new List<string>();
-                List<string> speakers = new List<string>();
-
-                // Sprecher extrahieren
-                MatchCollection speakerMatches = Regex.Matches(nodeBody, speakerPattern);
-                foreach (Match speakerMatch in speakerMatches)
-                {
-                    string speaker = speakerMatch.Groups[1].Value.Trim();
-                    // Debug.Log($"Originaler Sprecher: {speaker}");
-
-                    // Basissprecher extrahieren
-                    foreach (var key in _characterToSpeakerMap.Keys)
-                    {
-                        if (speaker.StartsWith(key))
-                        {
-                            speaker = _characterToSpeakerMap[key];
-                            // Debug.Log($"Sprecher gemappt auf '{speaker}'");
-                            break;
-                        }
-                    }
-
-                    // Kein Mapping gefunden
-                    if (!_characterToSpeakerMap.Values.Contains(speaker))
-                    {
-                        Debug.LogWarning($"Kein Mapping für Sprecher '{speaker}' gefunden.");
-                    }
-
-                    if (!speakers.Contains(speaker))
-                    {
-                        speakers.Add(speaker);
-                    }
-                }
+                List<Link> links = new List<Link>();
+                Dictionary<string,int> linkCount = new Dictionary<string,int>();
 
                 // Links extrahieren
                 MatchCollection linkMatches = Regex.Matches(nodeBody, linkPattern);
                 foreach (Match linkMatch in linkMatches)
                 {
-                    string targetLink = null;
-
+                    Link targetLink = new Link();
                     if (!string.IsNullOrEmpty(linkMatch.Groups[2].Value))
                     {
-                        targetLink = linkMatch.Groups[2].Value.Trim(); // Text nach | oder ->
+                        targetLink.targetNode = linkMatch.Groups[2].Value.Trim(); // Text nach | oder ->
                     }
                     else if (!string.IsNullOrEmpty(linkMatch.Groups[3].Value))
                     {
-                        targetLink = linkMatch.Groups[3].Value.Trim(); // Alleinstehender Text als Link
+                        targetLink.targetNode = linkMatch.Groups[3].Value.Trim(); // Alleinstehender Text als Link
                     }
 
-                    if (!string.IsNullOrEmpty(targetLink))
+                    if (!string.IsNullOrEmpty(targetLink.targetNode))
                     {
+                        targetLink.dialogueText = linkMatch.Groups[1].Value.Trim();
                         links.Add(targetLink);
+                        if(linkCount.ContainsKey(targetLink.targetNode))
+                        {
+                            linkCount[targetLink.targetNode]++;
+                        }
+                        else
+                        {
+                            linkCount[targetLink.targetNode]=1;
+                        }
                     }
                 }
 
                 // Speichere Node im Graphen
                 if (!_graph.ContainsKey(nodeName))
                 {
-                    _graph[nodeName] = (links, speakers, "");
+                    Node newNode = new Node(nodeName, nodeBody, links);
+                    _graph[nodeName] = newNode;
+                    _graph[nodeName].linkCount = linkCount;
                 }
                 else
                 {
-                    _graph[nodeName].Links.AddRange(links);
-                    _graph[nodeName].Speakers.AddRange(speakers.Where(s => !_graph[nodeName].Speakers.Contains(s)));
+                    _graph[nodeName].links.AddRange(links);
                 }
             }
 
             // Stelle sicher, dass "Ende" im Graph existiert
             if (!_graph.ContainsKey("Ende"))
             {
-                _graph["Ende"] = (new List<string>(), new List<string>(), "");
+                _graph["Ende"] = new Node("Ende", "",new List<Link>());
             }
         }
 
-        public List<List<string>> GetAllPaths(string startNode)
+        public List<Dictionary<Node, Link>> GetAllPaths(string startNode)
         {
             Debug.Log("GetAllPaths gestartet");
 
-            List<List<string>> allPaths = new List<List<string>>();
-            List<string> currentPath = new List<string>();
+            List<Dictionary<Node, Link>> allPaths = new List<Dictionary<Node, Link>>();
+            Dictionary<Node, Link> currentPath = new Dictionary<Node, Link>();
 
-            void DFS(string node)
+            void DFS(Node node)
             {
-                if (!_graph.ContainsKey(node))
+                if (!_graph.ContainsKey(node.name))
                 {
                     Debug.LogError($"Knoten {node} existiert nicht im Graphen!");
                     return;
                 }
 
                 // Füge den aktuellen Knoten zum Pfad hinzu
-                currentPath.Add(node);
 
-                var (links, _, _) = _graph[node];
+                List<Link> links = _graph[node.name].links;
 
                 // Wenn Endknoten erreicht
-                if (links.Count == 0 || node == "Ende")
+                if (links.Count == 0 || node.name == "Ende")
                 {
-                    allPaths.Add(new List<string>(currentPath));
+                    allPaths.Add(new Dictionary<Node, Link>(currentPath));
                 }
                 else
                 {
-                    foreach (string neighbor in links)
+                    foreach (Link neighbor in links)
                     {
-                        DFS(neighbor);
+                        currentPath[node] = neighbor;
+                        DFS(_graph[neighbor.targetNode]);
                     }
                 }
 
-                currentPath.RemoveAt(currentPath.Count - 1);
+                //currentPath.RemoveAt(currentPath.Count - 1);
+                currentPath.Remove(node);
             }
 
-            DFS(startNode);
+            DFS(_graph[startNode]);
             return allPaths;
         }
 
-        public void PrintPathsAndSpeakers(List<List<string>> paths)
+        public List<Dictionary<Node,Link>> ReturnUniquePaths(List<Dictionary<Node, Link>> paths)
         {
-            Debug.Log($"Gefundene Pfade: {paths.Count}");
+            List<Dictionary<Node, Link>> newPaths = new List<Dictionary<Node, Link>>();
+            foreach(Dictionary<Node, Link> path in paths)
+            {
+                bool duplicate = false;
+                Dictionary<Node, Link> newPath = new Dictionary<Node, Link>();
+                foreach(KeyValuePair<Node,Link> decision in path)
+                {
+                    string nodeBody = decision.Key.body;
+                    if(nodeBody.Contains(">>Bias|"))
+                    {
+                        newPath.Add(decision.Key,decision.Value);
+                    }
+                }
+                foreach(Dictionary<Node, Link> listElement in newPaths)
+                {
+                    if(PathEqual(listElement, newPath))
+                    {
+                        duplicate = true;
+                    }
+                }
+                if(!duplicate)
+                {
+                    newPaths.Add(newPath);
+                }
+            }
+            Debug.Log("Unique Paths created");
+            Debug.Log($"Gefundene Pfade: {newPaths.Count}");
+            
+            foreach (Dictionary<Node,Link> path in newPaths)
+            {
+                Debug.Log("Path:");
+                foreach(KeyValuePair<Node,Link> decision in path)
+                {
+                    Debug.Log("Node: " + decision.Key.name + "; Link: " + decision.Value.targetNode);
+                }
+            }
+            return newPaths;
+        }
+
+        public bool PathEqual(Dictionary<Node, Link> firstPath, Dictionary<Node, Link> secondPath)
+        {
+            if(firstPath.Count != secondPath.Count)
+            {
+                return false;
+            }
+            foreach(KeyValuePair<Node,Link> decision in firstPath)
+            {
+                if(secondPath.TryGetValue(decision.Key,out Link value))
+                {
+                    if(!_graph[value.targetNode].body.Contains("End") && !value.Equals(decision.Value))
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public void PrintPathsAndSpeakers(List<Dictionary<Node,Link>> paths)
+        {
+            // Debug.Log($"Gefundene Pfade: {paths.Count}");
+            //
+            // foreach (Dictionary<Node,Link> path in paths)
+            // {
+            //     Debug.Log("Path:");
+            //     foreach(KeyValuePair<Node,Link> decision in path)
+            //     {
+            //         Debug.Log("Node: " + decision.Key.name + "; Link: " + decision.Value.targetNode);
+            //     }
+            // }
 
             // foreach (var path in paths)
             // {
@@ -295,6 +349,46 @@ namespace Assets._Scripts.Test
         }
         */
     }
+    public class Node
+    {
+        public string name;
+        public string body;
+        public List<Link> links = new List<Link>();
+        public Dictionary<string,int> linkCount = new Dictionary<string,int>();
+
+        public Node(string _name, string _nodeBody, List<Link> _links)
+        {
+            name = _name;
+            body = _nodeBody;
+            links = _links;
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj is not Node other) return false;
+            return name == other.name;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(name); // Use .NET's built-in hash combiner
+        }
+    }
+    public class Link
+    {
+        public string targetNode;
+        public string dialogueText;
+        public override bool Equals(object obj)
+        {
+            if (obj is not Link other) return false;
+            return targetNode == other.targetNode && dialogueText == other.dialogueText;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(targetNode, dialogueText); // Use .NET's built-in hash combiner
+        }
+    }
+
 }
 
 

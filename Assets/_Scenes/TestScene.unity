@@ -220,8 +220,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2074922530}
-  - component: {fileID: 2074922529}
   - component: {fileID: 2074922531}
+  - component: {fileID: 2074922532}
   m_Layer: 0
   m_Name: Tester
   m_TagString: Untagged
@@ -229,20 +229,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2074922529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2074922528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a23bb3d06214c94498e632fed65502c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  filePathNovel: C:\Users\student\WorkProjectsKiteII\Kite2Client\Assets\00_Kite2\novels_twee\Notarin\visual_novel_event_list.txt
-  filePathMeta: C:\Users\student\WorkProjectsKiteII\Kite2Client\Assets\00_Kite2\novels_twee\Notarin\visual_novel_meta_data.txt
 --- !u!4 &2074922530
 Transform:
   m_ObjectHideFlags: 0
@@ -272,6 +258,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeStartPosition: {x: 0, y: 0, z: 0}
   nodeSpacing: 2
+--- !u!114 &2074922532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074922528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a23bb3d06214c94498e632fed65502c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filePathNovel: Assets/_novels_twee/Notarin/visual_novel_event_list.txt
+  filePathMeta: Assets/_novels_twee/Notarin/visual_novel_meta_data.txt
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
