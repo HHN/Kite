@@ -13,7 +13,8 @@ namespace Assets._Scripts.Test
         //private readonly Dictionary<string, (List<string> Links, List<string> Speakers, string Body)> _graph = new Dictionary<string, (List<string> Links, List<string> Speakers, string Body)>();
         private readonly Dictionary<string,Node> _graph = new Dictionary<string,Node>();
         private readonly Dictionary<string, string> _characterToSpeakerMap = new Dictionary<string, string>();
-        private readonly Dictionary<string, KeyValuePair<string,int>> duplicates = new Dictionary<string, KeyValuePair<string,int>>();
+
+        private string outputFile = "Assets/PathOutput.txt";
 
         /// <summary>
         /// Liest eine Twee-Datei von der angegebenen Datei und gibt den Inhalt als String zurück.
@@ -78,6 +79,7 @@ namespace Assets._Scripts.Test
         {
             string nodePattern = @"::\s*([^\n\{\[\|]+).*?\n((?:.|\n)*?)(?=(::|$))";
             string linkPattern = @"\[\[(?:(.*?)(?:\s*(?:\||->)\s*(.*?))|([^|\]]+))\]\]";
+            string speakerPattern = @">>([^\s<>]+):<<"; // Fängt jeden Sprecher ein, der mit >> beginnt und :<< endet
 
             MatchCollection matches = Regex.Matches(tweeContent, nodePattern);
 
@@ -88,6 +90,49 @@ namespace Assets._Scripts.Test
 
                 List<Link> links = new List<Link>();
                 Dictionary<string,int> linkCount = new Dictionary<string,int>();
+                List<(string Speaker, string Text)> conversations = new List<(string Speaker, string Text)>();
+
+                // Sprecher extrahieren
+                MatchCollection speakerMatches = Regex.Matches(nodeBody, speakerPattern);
+                int lastIndex = 0;
+                foreach (Match speakerMatch in speakerMatches)
+                {
+                    string speaker = speakerMatch.Groups[1].Value.Trim();
+                    Debug.Log("speaker: " + speaker);
+
+                    // Prüfe, ob der Sprecher in der CharacterToSpeakerMap enthalten ist
+                    foreach (var characterToSpeaker in _characterToSpeakerMap)
+                    {
+                        Debug.Log("characterToSpeaker: " + characterToSpeaker.Key + " " + characterToSpeaker.Value);
+                        if (speaker.Contains(characterToSpeaker.Key))
+                        {
+                            speaker = characterToSpeaker.Value; // Ersetze durch den gemappten Sprecher
+                            Debug.Log("speaker new: " + speaker);
+                        }
+                        // else
+                        // {
+                        //     Debug.LogWarning($"Sprecher '{speaker}' nicht in CharacterToSpeakerMap gefunden!");
+                        // }
+                    }
+
+                    int startIndex = speakerMatch.Index + speakerMatch.Length;
+                    int endIndex = nodeBody.IndexOf(">>", startIndex);
+                    endIndex = endIndex == -1 ? nodeBody.Length : endIndex;
+
+                    string text = nodeBody.Substring(startIndex, endIndex - startIndex).Trim();
+                    conversations.Add((speaker, text));
+                    lastIndex = endIndex;
+                }
+
+                // Füge verbleibenden Text als Teil der letzten Sprecher-Phase hinzu
+                if (lastIndex < nodeBody.Length)
+                {
+                    string remainingText = nodeBody.Substring(lastIndex).Trim();
+                    if (!string.IsNullOrEmpty(remainingText))
+                    {
+                        conversations.Add(("Unbekannt", remainingText));
+                    }
+                }
 
                 // Links extrahieren
                 MatchCollection linkMatches = Regex.Matches(nodeBody, linkPattern);
@@ -130,9 +175,8 @@ namespace Assets._Scripts.Test
                     _graph[nodeName].links.AddRange(links);
                 }
             }
-
-            // Stelle sicher, dass "Ende" im Graph existiert
-            if (!_graph.ContainsKey("Ende"))
+                // Stelle sicher, dass "Ende" im Graph existiert
+                if (!_graph.ContainsKey("Ende"))
             {
                 _graph["Ende"] = new Node("Ende", "",new List<Link>());
             }
@@ -204,6 +248,7 @@ namespace Assets._Scripts.Test
                 if(!duplicate)
                 {
                     newPaths.Add(newPath);
+                    WritePath(newPath);
                 }
             }
             Debug.Log("Unique Paths created");
@@ -241,6 +286,32 @@ namespace Assets._Scripts.Test
                 }
             }
             return true;
+        }
+
+        public void WritePath(Dictionary<Node,Link> path)
+        {
+            foreach(KeyValuePair<Node,Link> node in path)
+            {
+                WriteInFile(node.Key.body, outputFile);
+                WriteInFile("Spielerin: " + node.Value.dialogueText, outputFile);
+            }
+            WriteInFile("PATH FINISHED", outputFile);
+        }
+
+        public void WriteInFile(string output, string path)
+        {
+            if (!File.Exists(path))
+            {
+                var sr = File.CreateText(path);
+                sr.WriteLine(output);
+                sr.Close();
+            }
+            else
+            {
+                var sr = new StreamWriter(path, append:true);
+                sr.WriteLine(output);
+                sr.Close();
+            }
         }
 
         public void PrintPathsAndSpeakers(List<Dictionary<Node,Link>> paths)
@@ -353,6 +424,7 @@ namespace Assets._Scripts.Test
     {
         public string name;
         public string body;
+        public string speaker;
         public List<Link> links = new List<Link>();
         public Dictionary<string,int> linkCount = new Dictionary<string,int>();
 
