@@ -70,10 +70,10 @@ namespace Assets._Scripts
         {
             get
             {
-                if (_instance == null)
+                if (!_instance)
                 {
                     _instance = FindObjectOfType<TextToSpeechManager>();
-                    if (_instance == null)
+                    if (!_instance)
                     {
                         GameObject obj = new GameObject("TextToSpeechManager");
                         _instance = obj.AddComponent<TextToSpeechManager>();
@@ -86,7 +86,7 @@ namespace Assets._Scripts
 
         private void Awake()
         {
-            if (_instance == null)
+            if (!_instance)
             {
                 _instance = this;
                 DontDestroyOnLoad(gameObject);
@@ -102,8 +102,8 @@ namespace Assets._Scripts
         // ------------------------------------------------
         private void Start()
         {
-            _ttsIsActive = UnityEngine.PlayerPrefs.GetInt("TTS", 0) != 0;
-            _soundEffectIsActive = UnityEngine.PlayerPrefs.GetInt("SoundEffect", 0) != 0;
+            _ttsIsActive = PlayerPrefs.GetInt("TTS", 0) != 0;
+            _soundEffectIsActive = PlayerPrefs.GetInt("SoundEffect", 0) != 0;
 
 #if UNITY_ANDROID
             if (Application.platform == RuntimePlatform.Android)
@@ -131,15 +131,15 @@ namespace Assets._Scripts
         public void ActivateTTS()
         {
             _ttsIsActive = true;
-            UnityEngine.PlayerPrefs.SetInt("TTS", 1);
-            UnityEngine.PlayerPrefs.Save();
+            PlayerPrefs.SetInt("TTS", 1);
+            PlayerPrefs.Save();
         }
 
         public void DeactivateTTS()
         {
             _ttsIsActive = false;
-            UnityEngine.PlayerPrefs.SetInt("TTS", 0);
-            UnityEngine.PlayerPrefs.Save();
+            PlayerPrefs.SetInt("TTS", 0);
+            PlayerPrefs.Save();
         }
 
         public bool IsSoundEffectActivated()
@@ -168,7 +168,7 @@ namespace Assets._Scripts
         }
 
         // ------------------------------------------------
-        // Text generieren (z.B. für Multiple Choice)
+        // Text generieren (z. B. für Multiple Choice)
         // ------------------------------------------------
         public void AddChoiceToChoiceCollectionForTextToSpeech(string choice)
         {
@@ -209,79 +209,6 @@ namespace Assets._Scripts
 #if UNITY_EDITOR
             yield break;
 #endif
-
-            if (!_ttsIsActive) yield break;
-
-            _lastMessage = message;
-            _isSpeaking = true;
-
-#if UNITY_ANDROID
-            // ------------------------------------------
-            // Android-Implementierung
-            // ------------------------------------------
-            while (!_isInitialized)
-            {
-                yield return null;
-            }
-
-            if (_ttsObject != null)
-            {
-                string utteranceId = "UniqueID_" + System.Guid.NewGuid().ToString();
-                int apiLevel = GetAndroidSDKVersion();
-
-                if (apiLevel >= 21)
-                {
-                    // Für API Level 21 und höher
-                    AndroidJavaObject bundleParams = new AndroidJavaObject("android.os.Bundle");
-                    bundleParams.Call("putString", "utteranceId", utteranceId);
-                    _ttsObject.Call<int>("speak", message, 0, bundleParams, utteranceId);
-
-                    // Warte, bis die Engine fertig gesprochen hat
-                    while (_ttsObject.Call<bool>("isSpeaking"))
-                    {
-                        yield return null;
-                    }
-                }
-                else
-                {
-                    // Für API Level < 21
-                    AndroidJavaObject hashMapParams = new AndroidJavaObject("java.util.HashMap");
-                    hashMapParams.Call<AndroidJavaObject>("put", "utteranceId", utteranceId);
-                    _ttsObject.Call<int>("speak", message, 0, hashMapParams);
-
-                    // Grobe Wartezeit basierend auf Zeichenlänge
-                    float estimatedDuration = message.Length * 0.05f;
-                    yield return new WaitForSeconds(estimatedDuration);
-                }
-            }
-            else
-            {
-                Debug.LogError("TextToSpeech is not initialized.");
-            }
-
-#elif UNITY_IOS && !UNITY_EDITOR
-            // ------------------------------------------
-            // iOS-Implementierung
-            // ------------------------------------------
-            _Speak(message);
-            while (_IsSpeaking())
-            {
-                yield return null;
-            }
-
-#elif UNITY_WEBGL && !UNITY_EDITOR
-            // ------------------------------------------
-            // WebGL: JavaScript-Plugin
-            // ------------------------------------------
-            TTS_Speak(message);
-            // Warte, bis TTS_IsSpeaking() 0 zurückgibt
-            while (TTS_IsSpeaking() == 1)
-            {
-                yield return null;
-            }
-#endif
-
-            _isSpeaking = false;
         }
 
         public void CancelSpeak()
@@ -289,7 +216,7 @@ namespace Assets._Scripts
 #if UNITY_ANDROID
             if (_ttsObject != null)
             {
-                // Leeres Speech aufrufen, um das aktuelle zu stoppen
+                // Leeres Speech aufrufen, um das Aktuelle zu stoppen
                 StartEmptySpeech();
                 _isSpeaking = false;
             }
