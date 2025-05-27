@@ -568,7 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d760dc32eccc49bf935a6a9ae334e70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  novelKite2CharacterController: {fileID: 0}
+  novelKite2CharacterController: {fileID: 4108371283005600182}
   characterContainers:
   - {fileID: 3669613035356320353}
   decorations:
@@ -576,7 +576,8 @@ MonoBehaviour:
     container: {fileID: 7557155198613614112}
   - prefab: {fileID: 8411936371333490823, guid: 02334970db3300f4797dfc8a311a46c8, type: 3}
     container: {fileID: 6144117888820781791}
-  characterControllers: []
+  characterControllers:
+  - {fileID: 4108371283005600182}
 --- !u!1 &5457771511623170846
 GameObject:
   m_ObjectHideFlags: 0
@@ -1192,3 +1193,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1465545687914413254, guid: b7726decdf73039408e8c47d83f08b1f, type: 3}
   m_PrefabInstance: {fileID: 561620921049113313}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4108371283005600182 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4524035883740533591, guid: b7726decdf73039408e8c47d83f08b1f, type: 3}
+  m_PrefabInstance: {fileID: 561620921049113313}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce19c46472896824fb0a14726030f762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

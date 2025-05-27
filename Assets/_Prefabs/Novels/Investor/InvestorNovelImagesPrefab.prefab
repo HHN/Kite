@@ -457,7 +457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d760dc32eccc49bf935a6a9ae334e70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  novelKite2CharacterController: {fileID: 0}
+  novelKite2CharacterController: {fileID: 7371782307241992002}
   characterContainers:
   - {fileID: 3669613035356320353}
   decorations:
@@ -922,3 +922,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1465545687914413254, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
   m_PrefabInstance: {fileID: 6378590594651032597}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7371782307241992002 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4524035883740533591, guid: 454e996595fac544dbec2ee520da3d6a, type: 3}
+  m_PrefabInstance: {fileID: 6378590594651032597}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce19c46472896824fb0a14726030f762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

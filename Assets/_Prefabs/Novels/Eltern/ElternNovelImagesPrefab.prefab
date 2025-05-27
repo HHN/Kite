@@ -487,7 +487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d760dc32eccc49bf935a6a9ae334e70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  novelKite2CharacterController: {fileID: 0}
+  novelKite2CharacterController: {fileID: 1562489743920229827}
   characterContainers:
   - {fileID: 3780887922587301350}
   - {fileID: 3669613035356320353}
@@ -500,7 +500,8 @@ MonoBehaviour:
     container: {fileID: 5558045549636132440}
   - prefab: {fileID: 3065152627500870298}
     container: {fileID: 3065152627500870298}
-  characterControllers: []
+  characterControllers:
+  - {fileID: 1562489743920229827}
 --- !u!1 &5558045549636132440
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,6 +1457,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe0cc47faafc1e948a15badc475ba62d, type: 3}
+--- !u!114 &1562489743920229827 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4524035883740533591, guid: fe0cc47faafc1e948a15badc475ba62d, type: 3}
+  m_PrefabInstance: {fileID: 3127625208898780820}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce19c46472896824fb0a14726030f762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2929638796514769843 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 274618941161129255, guid: fe0cc47faafc1e948a15badc475ba62d, type: 3}
