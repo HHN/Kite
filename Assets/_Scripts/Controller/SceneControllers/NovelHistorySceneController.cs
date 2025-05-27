@@ -8,57 +8,23 @@ using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.UIElements.DropDown;
+using Assets._Scripts.UIElements.FoundersBubble;
+using TMPro;
+using UnityEngine.UI;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace Assets._Scripts.Controller.SceneControllers
 {
     public class NovelHistorySceneController : SceneController
     {
-        [SerializeField] private GameObject dataObjectPrefab;
+        [SerializeField] private GameObject containerPrefab;
+        [SerializeField] private GameObject spacingPrefab;
+        [SerializeField] private Transform containerParent;
+
+        [SerializeField] private GameObject entryPrefab;
+
         [SerializeField] private GameObject container;
         [SerializeField] private GameObject noDataObjectsHint;
-
-        [SerializeField] private GameObject containerForBankkreditNovel;
-        [SerializeField] private GameObject containerForInvestorNovel;
-        [SerializeField] private GameObject containerForElternNovel;
-        [SerializeField] private GameObject containerForNotarinNovel;
-        [SerializeField] private GameObject containerForPresseNovel;
-        [SerializeField] private GameObject containerForBueroNovel;
-        [SerializeField] private GameObject containerForHonorarNovel;
-
-        [SerializeField] private List<GameObject> novelPlaceholder = new List<GameObject>();
-        [SerializeField] private DropDownMenu dropdownForBankkreditNovel;
-        [SerializeField] private DropDownMenu dropdownForInvestorNovel;
-        [SerializeField] private DropDownMenu dropdownForElternNovel;
-        [SerializeField] private DropDownMenu dropdownForNotarinNovel;
-        [SerializeField] private DropDownMenu dropdownForPresseNovel;
-        [SerializeField] private DropDownMenu dropdownForBueroNovel;
-        [SerializeField] private DropDownMenu dropdownForHonorarNovel;
-
-        [SerializeField] private GameObject spacingForBankkreditNovel;
-        [SerializeField] private GameObject spacingForInvestorNovel;
-        [SerializeField] private GameObject spacingForElternNovel;
-        [SerializeField] private GameObject spacingForNotarinNovel;
-        [SerializeField] private GameObject spacingForPresseNovel;
-        [SerializeField] private GameObject spacingForBueroNovel;
-        [SerializeField] private GameObject spacingForHonorarNovel;
-
-        [SerializeField] private GameObject entryContainerForBankkreditNovel;
-        [SerializeField] private GameObject entryContainerForInvestorNovel;
-        [SerializeField] private GameObject entryContainerForElternNovel;
-        [SerializeField] private GameObject entryContainerForNotarinNovel;
-        [SerializeField] private GameObject entryContainerForPresseNovel;
-        [SerializeField] private GameObject entryContainerForBueroNovel;
-        [SerializeField] private GameObject entryContainerForHonorarNovel;
-
-        [SerializeField] private bool displayContainerForBankkreditNovel;
-        [SerializeField] private bool displayContainerForInvestorNovel;
-        [SerializeField] private bool displayContainerForElternNovel;
-        [SerializeField] private bool displayContainerForNotarinNovel;
-        [SerializeField] private bool displayContainerForPresseNovel;
-        [SerializeField] private bool displayContainerForBueroNovel;
-        [SerializeField] private bool displayContainerForHonorarNovel;
 
         [SerializeField] private bool displayNoDataObjectsHint;
 
@@ -66,113 +32,116 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         [SerializeField] private GameObject copyNotificationContainer;
 
-        private Dictionary<long, List<DialogHistoryEntry>> _novelHistoryEntriesDictionary = new();
+        private readonly Dictionary<long, List<DialogHistoryEntry>> _novelHistoryEntriesDictionary = new();
+        private readonly Dictionary<long, GameObject> _novelContainers = new();
+        private Dictionary<long, DropDownMenu> _novelDropDownMenus = new();
         private Dictionary<DateTime, long> _dateAndTimeToNovelIdDictionary = new();
-        private List<int> novelIdAtIndex = new();
+
+        // Setze die deutsche Kultur für die Datum/Uhrzeit-Formatierung
+        private readonly CultureInfo _culture = new("de-DE");
 
         private void Start()
         {
-            if (copyNotificationContainer != null)
-            {
-                // Das GameObject wurde gefunden, deaktiviere es
-                copyNotificationContainer.SetActive(false);
-                GameObjectManager.Instance().SetCopyNotification(copyNotificationContainer);
-            }
+            if (copyNotificationContainer != null) InitCopyNotification();
 
             BackStackManager.Instance().Push(SceneNames.NovelHistoryScene);
+
             novelHistoryEntries = new List<NovelHistoryEntryGuiElement>();
-
-            InitializeBooleans();
-
-            List<DialogHistoryEntry> entries = DialogHistoryManager.Instance().GetEntries();
-
-            if (entries == null)
-            {
-                SetVisibilityOfUiElements();
-                return;
-            }
-
-            if (entries.Count == 0)
-            {
-                SetVisibilityOfUiElements();
-                return;
-            }
-
-            SortEntriesAndCreateDictionary(entries);
-            
-            foreach (DialogHistoryEntry dataObject in entries)
-            {
-                AddEntry(dataObject);
-            }
-
-            SetVisibilityOfUiElements();
+            InitializeScene();
 
             StartCoroutine(RebuildLayout());
         }
 
+        private void InitCopyNotification()
+        {
+            copyNotificationContainer.SetActive(false);
+            GameObjectManager.Instance().SetCopyNotification(copyNotificationContainer);
+        }
+
+        private void InitializeScene()
+        {
+            List<DialogHistoryEntry> entries = DialogHistoryManager.Instance().GetEntries();
+
+            if (entries == null || entries.Count == 0)
+            {
+                noDataObjectsHint.SetActive(true);
+                return;
+            }
+
+            noDataObjectsHint.SetActive(false);
+            SortEntriesAndCreateDictionary(entries);
+            AddNovelContainer(entries);
+        }
+
+        private void AddNovelContainer(List<DialogHistoryEntry> entries)
+        {
+            foreach (DialogHistoryEntry entry in entries)
+            {
+                long novelId = entry.GetNovelId();
+
+                if (!_novelHistoryEntriesDictionary.ContainsKey(novelId))
+                    CreateNovelContainer(novelId);
+
+                _novelHistoryEntriesDictionary[novelId].Add(entry);
+                AddEntryToContainer(entry, _novelContainers[novelId]);
+            }
+        }
+
+        private void CreateNovelContainer(long novelId)
+        {
+            GameObject novelContainer = Instantiate(containerPrefab, containerParent);
+            novelContainer.name = VisualNovelNamesHelper.GetName(novelId);
+
+            _novelContainers[novelId] = novelContainer;
+            _novelHistoryEntriesDictionary[novelId] = new List<DialogHistoryEntry>();
+            
+            Instantiate(spacingPrefab, containerParent);
+        }
+
+        private void AddEntryToContainer(DialogHistoryEntry entry, GameObject novelContainer)
+        {
+            List<VisualNovel> allKiteNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+            VisualNovel novel = allKiteNovels.FirstOrDefault(n => n.id == entry.GetNovelId());
+            
+            GameObject reviewContainer = novelContainer.transform.Find("Review Container").gameObject;
+            GameObject reviewButton = novelContainer.transform.Find("Review Button").gameObject;
+
+            var visualNovel = VisualNovelNamesHelper.ValueOf((int)entry.GetNovelId());
+
+            if (novel != null) reviewButton.GetComponent<Image>().color = novel.novelColor;
+            reviewButton.GetComponentInChildren<TextMeshProUGUI>().text = VisualNovelNamesHelper.GetName(entry.GetNovelId());
+            reviewButton.GetComponentInChildren<AlreadyPlayedUpdater>().VisualNovel = visualNovel;
+
+            RectTransform containerTransform = container.GetComponent<RectTransform>();
+            reviewButton.GetComponent<DropDownMenu>().AddLayoutToUpdateOnChange(containerTransform);
+
+            var dataObjectGuiElement = Instantiate(entryPrefab, reviewContainer.transform).GetComponent<NovelHistoryEntryGuiElement>();
+            dataObjectGuiElement.InitializeEntry(entry);
+            dataObjectGuiElement.SetVisualNovelColor(novel.novelColor);
+
+            dataObjectGuiElement.AddLayoutToUpdateOnChange(reviewContainer.GetComponent<RectTransform>());
+            dataObjectGuiElement.AddLayoutToUpdateOnChange(novelContainer.GetComponent<RectTransform>());
+            dataObjectGuiElement.AddLayoutToUpdateOnChange(containerTransform);
+
+            FontSizeManager.Instance().UpdateAllTextComponents();
+        }
+
         private IEnumerator RebuildLayout()
         {
-            dropdownForBankkreditNovel.RebuildLayout();
-            dropdownForInvestorNovel.RebuildLayout();
-            dropdownForElternNovel.RebuildLayout();
-            dropdownForNotarinNovel.RebuildLayout();
-            dropdownForPresseNovel.RebuildLayout();
-            dropdownForBueroNovel.RebuildLayout();
-            dropdownForHonorarNovel.RebuildLayout();
+            foreach (var novelDropDownMenu in _novelDropDownMenus)
+            {
+                novelDropDownMenu.Value.RebuildLayout();
+            }
 
             yield break;
         }
 
-        private void AddEntry(DialogHistoryEntry entry)
-        {
-            GameObject entryContainer = GetEntryContainerById(entry.GetNovelId());
-            GameObject containerGameObject = GetContainerGameObjectById(entry.GetNovelId());
-            DropDownMenu dropDownMenu = GetDropDownMenuById(entry.GetNovelId());
-
-            if (entryContainer == null)
-            {
-                return;
-            }
-
-            displayNoDataObjectsHint = false;
-
-            NovelHistoryEntryGuiElement dataObjectGuiElement = Object.Instantiate(dataObjectPrefab, entryContainer.transform)
-                .GetComponent<NovelHistoryEntryGuiElement>();
-
-            dataObjectGuiElement.InitializeEntry(entry);
-            novelHistoryEntries.Add(dataObjectGuiElement);
-
-            foreach (DropDownMenu dropdown in dataObjectGuiElement.GetDropDownMenus())
-            {
-                dropDownMenu.AddChildMenu(dropdown);
-            }
-
-            dataObjectGuiElement.AddLayoutToUpdateOnChange(entryContainer.GetComponent<RectTransform>());
-            dataObjectGuiElement.AddLayoutToUpdateOnChange(containerGameObject.GetComponent<RectTransform>());
-            dataObjectGuiElement.AddLayoutToUpdateOnChange(this.container.GetComponent<RectTransform>());
-            dataObjectGuiElement.SetVisualNovelColor(VisualNovelNamesHelper.ValueOf((int)entry.GetNovelId()));
-            FontSizeManager.Instance().UpdateAllTextComponents();
-
-            if (!novelIdAtIndex.Contains((int)entry.GetNovelId()))
-            {
-                novelIdAtIndex.Add((int)entry.GetNovelId());
-            }
-            
-            GetContainerByNovelId(entry.GetNovelId()).transform.SetSiblingIndex(novelIdAtIndex.IndexOf((int)entry.GetNovelId()) * 2);
-            GameObject placeholder = novelPlaceholder.Find(obj => obj.name.Contains(VisualNovelNamesHelper.GetName(entry.GetNovelId())));
-            placeholder.transform.SetSiblingIndex(novelIdAtIndex.IndexOf((int)entry.GetNovelId()) * 2 + 1);
-        }
-        
         private void SortEntriesAndCreateDictionary(List<DialogHistoryEntry> entries)
         {
-            // Setze die deutsche Kultur für die Datum/Uhrzeit-Formatierung
-            CultureInfo culture = new CultureInfo("de-DE");
-
             // Erstelle eine Liste zum Speichern der Sortierung
             List<KeyValuePair<DateTime, long>> sortedEntries = new List<KeyValuePair<DateTime, long>>();
-            List<KeyValuePair<DialogHistoryEntry, DateTime>> sortedEntriesWithOriginal =
-                new List<KeyValuePair<DialogHistoryEntry, DateTime>>();
-            
+            List<KeyValuePair<DialogHistoryEntry, DateTime>> sortedEntriesWithOriginal = new List<KeyValuePair<DialogHistoryEntry, DateTime>>();
+
             foreach (var entry in entries)
             {
                 // Zerlege den HeadButtonText.text anhand von " | " in Teile
@@ -185,8 +154,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 string timePart = parts[2].Trim(); // "HH:mm"
 
                 // Datum + Zeit zusammenfügen und in DateTime umwandeln
-                if (DateTime.TryParseExact($"{datePart} {timePart}", "dd.MM.yyyy HH:mm", culture,
-                        DateTimeStyles.None, out DateTime parsedDate))
+                if (DateTime.TryParseExact($"{datePart} {timePart}", "dd.MM.yyyy HH:mm", _culture, DateTimeStyles.None, out DateTime parsedDate))
                 {
                     // Füge das Datum und die NovelId zur Liste hinzu (für das Dictionary)
                     sortedEntries.Add(new KeyValuePair<DateTime, long>(parsedDate, entry.GetNovelId()));
@@ -197,8 +165,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 else
                 {
                     // Falls das Parsen fehlschlägt, füge das Element mit DateTime.MinValue hinzu
-                    sortedEntriesWithOriginal.Add(
-                        new KeyValuePair<DialogHistoryEntry, DateTime>(entry, DateTime.MinValue));
+                    sortedEntriesWithOriginal.Add(new KeyValuePair<DialogHistoryEntry, DateTime>(entry, DateTime.MinValue));
                 }
             }
 
@@ -220,205 +187,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             // Die sortierten DialogHistoryEntry-Elemente in der richtigen Reihenfolge zurückgeben
             entries.Clear();
             entries.AddRange(sortedEntriesWithOriginal.Select(entry => entry.Key));
-        }
-        
-        private GameObject GetContainerByNovelId(long novelId)
-        {
-            // Dies ist ein Beispiel, wie du den richtigen Container basierend auf der NovelId zurückgeben kannst.
-            switch (VisualNovelNamesHelper.GetName(novelId))
-            {
-                case "Bankkredit":
-                    return containerForBankkreditNovel;
-                case "Investor":
-                    return containerForInvestorNovel;
-                case "Eltern":
-                    return containerForElternNovel;
-                case "Notarin":
-                    return containerForNotarinNovel;
-                case "Presse":
-                    return containerForPresseNovel;
-                case "Vermieter":
-                    return containerForBueroNovel;
-                case "Honorar":
-                    return containerForHonorarNovel;
-                default:
-                    return null; // Falls keine passende NovelId gefunden wird
-            }
-        }
-        
-        private DropDownMenu GetDropDownMenuById(long novelId)
-        {
-            VisualNovelNames novelNames = VisualNovelNamesHelper.ValueOf((int)novelId);
-
-            switch (novelNames)
-            {
-                case VisualNovelNames.BankKreditNovel:
-                {
-                    displayContainerForBankkreditNovel = true;
-                    return dropdownForBankkreditNovel;
-                }
-                case VisualNovelNames.InvestorNovel:
-                {
-                    displayContainerForInvestorNovel = true;
-                    return dropdownForInvestorNovel;
-                }
-                case VisualNovelNames.ElternNovel:
-                {
-                    displayContainerForElternNovel = true;
-                    return dropdownForElternNovel;
-                }
-                case VisualNovelNames.NotariatNovel:
-                {
-                    displayContainerForNotarinNovel = true;
-                    return dropdownForNotarinNovel;
-                }
-                case VisualNovelNames.PresseNovel:
-                {
-                    displayContainerForPresseNovel = true;
-                    return dropdownForPresseNovel;
-                }
-                case VisualNovelNames.VermieterNovel:
-                {
-                    displayContainerForBueroNovel = true;
-                    return dropdownForBueroNovel;
-                }
-                case VisualNovelNames.HonorarNovel:
-                {
-                    displayContainerForHonorarNovel = true;
-                    return dropdownForHonorarNovel;
-                }
-                default:
-                {
-                    return null;
-                }
-            }
-        }
-
-        private GameObject GetContainerGameObjectById(long novelId)
-        {
-            VisualNovelNames novelNames = VisualNovelNamesHelper.ValueOf((int)novelId);
-
-            switch (novelNames)
-            {
-                case VisualNovelNames.BankKreditNovel:
-                {
-                    displayContainerForBankkreditNovel = true;
-                    return containerForBankkreditNovel;
-                }
-                case VisualNovelNames.InvestorNovel:
-                {
-                    displayContainerForInvestorNovel = true;
-                    return containerForInvestorNovel;
-                }
-                case VisualNovelNames.ElternNovel:
-                {
-                    displayContainerForElternNovel = true;
-                    return containerForElternNovel;
-                }
-                case VisualNovelNames.NotariatNovel:
-                {
-                    displayContainerForNotarinNovel = true;
-                    return containerForNotarinNovel;
-                }
-                case VisualNovelNames.PresseNovel:
-                {
-                    displayContainerForPresseNovel = true;
-                    return containerForPresseNovel;
-                }
-                case VisualNovelNames.VermieterNovel:
-                {
-                    displayContainerForBueroNovel = true;
-                    return containerForBueroNovel;
-                }
-                case VisualNovelNames.HonorarNovel:
-                {
-                    displayContainerForHonorarNovel = true;
-                    return containerForHonorarNovel;
-                }
-                default:
-                {
-                    return null;
-                }
-            }
-        }
-
-        private GameObject GetEntryContainerById(long novelId)
-        {
-            VisualNovelNames novelNames = VisualNovelNamesHelper.ValueOf((int)novelId);
-
-            switch (novelNames)
-            {
-                case VisualNovelNames.BankKreditNovel:
-                {
-                    displayContainerForBankkreditNovel = true;
-                    return entryContainerForBankkreditNovel;
-                }
-                case VisualNovelNames.InvestorNovel:
-                {
-                    displayContainerForInvestorNovel = true;
-                    return entryContainerForInvestorNovel;
-                }
-                case VisualNovelNames.ElternNovel:
-                {
-                    displayContainerForElternNovel = true;
-                    return entryContainerForElternNovel;
-                }
-                case VisualNovelNames.NotariatNovel:
-                {
-                    displayContainerForNotarinNovel = true;
-                    return entryContainerForNotarinNovel;
-                }
-                case VisualNovelNames.PresseNovel:
-                {
-                    displayContainerForPresseNovel = true;
-                    return entryContainerForPresseNovel;
-                }
-                case VisualNovelNames.VermieterNovel:
-                {
-                    displayContainerForBueroNovel = true;
-                    return entryContainerForBueroNovel;
-                }
-                case VisualNovelNames.HonorarNovel:
-                {
-                    displayContainerForHonorarNovel = true;
-                    return entryContainerForHonorarNovel;
-                }
-                default:
-                {
-                    return null;
-                }
-            }
-        }
-
-        private void InitializeBooleans()
-        {
-            displayContainerForBankkreditNovel = false;
-            displayContainerForInvestorNovel = false;
-            displayContainerForElternNovel = false;
-            displayContainerForNotarinNovel = false;
-            displayContainerForPresseNovel = false;
-            displayContainerForBueroNovel = false;
-            displayContainerForHonorarNovel = false;
-            displayNoDataObjectsHint = true;
-        }
-
-        private void SetVisibilityOfUiElements()
-        {
-            containerForBankkreditNovel.SetActive(displayContainerForBankkreditNovel);
-            spacingForBankkreditNovel.SetActive(displayContainerForBankkreditNovel);
-            containerForInvestorNovel.SetActive(displayContainerForInvestorNovel);
-            spacingForInvestorNovel.SetActive(displayContainerForInvestorNovel);
-            containerForElternNovel.SetActive(displayContainerForElternNovel);
-            spacingForElternNovel.SetActive(displayContainerForElternNovel);
-            containerForNotarinNovel.SetActive(displayContainerForNotarinNovel);
-            spacingForNotarinNovel.SetActive(displayContainerForNotarinNovel);
-            containerForPresseNovel.SetActive(displayContainerForPresseNovel);
-            spacingForPresseNovel.SetActive(displayContainerForPresseNovel);
-            containerForBueroNovel.SetActive(displayContainerForBueroNovel);
-            spacingForBueroNovel.SetActive(displayContainerForBueroNovel);
-            containerForHonorarNovel.SetActive(displayContainerForHonorarNovel);
-            spacingForHonorarNovel.SetActive(displayContainerForHonorarNovel);
-            noDataObjectsHint.SetActive(displayNoDataObjectsHint);
         }
     }
 }

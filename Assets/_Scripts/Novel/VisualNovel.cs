@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets._Scripts.Novel
 {
@@ -16,13 +17,12 @@ namespace Assets._Scripts.Novel
         public Dictionary<string, string> GlobalVariables;
         public string playedPath;
         public List<string> characters;
+        public bool isKiteNovel;
+        public Color novelColor;
 
         public void AddGlobalVariable(string name, string value)
         {
-            if (GlobalVariables == null)
-            {
-                GlobalVariables = new Dictionary<string, string>();
-            }
+            GlobalVariables ??= new Dictionary<string, string>();
 
             GlobalVariables.Add(name, value);
         }
@@ -76,12 +76,7 @@ namespace Assets._Scripts.Novel
 
         public Dictionary<string, string> GetGlobalVariables()
         {
-            if (GlobalVariables == null)
-            {
-                GlobalVariables = new Dictionary<string, string>();
-            }
-
-            return GlobalVariables;
+            return GlobalVariables ??= new Dictionary<string, string>();
         }
 
         public void ClearGlobalVariables()
@@ -99,7 +94,8 @@ namespace Assets._Scripts.Novel
                 description = description,
                 feedback = feedback,
                 context = context,
-                playedPath = playedPath
+                playedPath = playedPath,
+                isKiteNovel = isKiteNovel
             };
 
             if (novelEvents != null)

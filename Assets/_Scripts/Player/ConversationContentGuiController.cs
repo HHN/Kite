@@ -98,9 +98,7 @@ namespace Assets._Scripts.Player
             messageBox.SetMessage(PlayNovelSceneController.ReplacePlaceholders(novelEvent.text, PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables()));
             
             guiContent.Add(newMessageBox);
-#if UNITY_WEBGL
-                Application.ExternalCall("logMessage", "ConversationContentGuiController: ShowMessage:" + novelEvent.character);
-#endif
+
             AddFormattedPromptLine(MappingManager.MapCharacterToString(novelEvent.character), novelEvent.text);
         }
 
@@ -269,9 +267,6 @@ namespace Assets._Scripts.Player
         
         private static void AddFormattedPromptLine(string character, string message)
         {
-#if UNITY_WEBGL
-                Application.ExternalCall("logMessage", "ConversationContentGuiController: Character:" + character);
-#endif
             PromptManager.Instance().AddFormattedLineToPrompt(character, PlayNovelSceneController.ReplacePlaceholders(message, PlayManager.Instance().GetVisualNovelToPlay().GetGlobalVariables()));
         }
         

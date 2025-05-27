@@ -9,9 +9,6 @@ namespace Assets._Scripts.Controller.SceneControllers
     public class SettingsSceneController : SceneController
     {
         [SerializeField] private Button barrierefreiheitButton;
-        [SerializeField] private Button impressumButton;
-        [SerializeField] private Button nutzungsbedingungenButton;
-        [SerializeField] private Button datenschutzButton; 
         [SerializeField] private Button soundeinstellungButton;
         [SerializeField] private TMP_Text versionInfo;
         
@@ -29,9 +26,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             _buttonActions = new Dictionary<Button, System.Action>
             {
                 { barrierefreiheitButton, OnBarrierefreiheitButton },
-                { impressumButton, OnImpressumButton },
-                { nutzungsbedingungenButton, OnNutzungsbedingungenButton },
-                { datenschutzButton, OnDatenschutzButton },
                 { soundeinstellungButton, OnSoundeinstellungButton }
             };
         }

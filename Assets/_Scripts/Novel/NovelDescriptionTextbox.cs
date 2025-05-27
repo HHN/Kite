@@ -17,7 +17,6 @@ namespace Assets._Scripts.Novel
         private Image image;
 
         [SerializeField] private GameObject smallHead;
-        [SerializeField] private GameObject bigHead;
         [SerializeField] private TextMeshProUGUI text;
         [SerializeField] private Button playButton;
         [SerializeField] private Button bookMarkButton;
@@ -73,25 +72,24 @@ namespace Assets._Scripts.Novel
             colorOfText = color;
             image.color = color;
             smallHead.GetComponent<Image>().color = color;
-            bigHead.GetComponent<Image>().color = color;
         }
 
         /// <summary>
         /// Setzt den angezeigten Text.
         /// </summary>
-        /// <param name="text">Der anzuzeigende Text.</param>
-        public void SetText(string text)
+        /// <param name="novelDescription">Der anzuzeigende Text.</param>
+        public void SetText(string novelDescription)
         {
-            this.text.text = text;
+            text.text = novelDescription;
         }
 
         /// <summary>
         /// Setzt den Namen der Visual Novel.
         /// </summary>
-        /// <param name="visualNovelName">Der Name der Visual Novel.</param>
-        public void SetVisualNovelName(VisualNovelNames visualNovelName)
+        /// <param name="novelName">Der Name der Visual Novel.</param>
+        public void SetVisualNovelName(VisualNovelNames novelName)
         {
-            this.visualNovelName = visualNovelName;
+            visualNovelName = novelName;
         }
 
         /// <summary>
@@ -100,7 +98,7 @@ namespace Assets._Scripts.Novel
         /// <param name="visualNovel">Die Visual Novel.</param>
         public void SetVisualNovel(VisualNovel visualNovel)
         {
-            this.visualNovelToDisplay = visualNovel;
+            visualNovelToDisplay = visualNovel;
 
             if (bookMarkButton != null) InitializeBookMarkButton(FavoritesManager.Instance().IsFavorite(visualNovel));
         }
@@ -116,20 +114,13 @@ namespace Assets._Scripts.Novel
             }
 
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-            PlayManager.Instance()
-                .SetForegroundColorOfVisualNovelToPlay(
-                    FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
-            PlayManager.Instance()
-                .SetBackgroundColorOfVisualNovelToPlay(
-                    FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
-            PlayManager.Instance()
-                .SetDisplayNameOfNovelToPlay(
-                    FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+            PlayManager.Instance().SetColorOfVisualNovelToPlay(visualNovelToDisplay.novelColor);
+            PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
 
             if (ShowPlayInstructionManager.Instance().ShowInstruction() &&
-                visualNovelToDisplay.title != "Einstiegsdialog")
+                visualNovelToDisplay.title != "EinstiegsNovel")
             {
                 SceneLoader.LoadPlayInstructionScene();
             }
@@ -175,14 +166,18 @@ namespace Assets._Scripts.Novel
             if (bookMarkButton != null) bookMarkButton.gameObject.SetActive(active);
         }
 
+        public void DeactivatedBookmarkButton()
+        {
+            bookMarkButton.gameObject.SetActive(false);
+        }
+
         /// <summary>
         /// Setzt den angezeigten Kopf basierend auf der H�he.
         /// </summary>
         /// <param name="isHigh">True f�r gro�en Kopf, False f�r kleinen Kopf.</param>
-        public void SetHead(bool isHigh)
+        public void SetHead()
         {
-            bigHead.SetActive(isHigh);
-            smallHead.SetActive(!isHigh);
+            smallHead.SetActive(true);
         }
 
         /// <summary>

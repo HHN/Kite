@@ -1,6 +1,9 @@
 using Assets._Scripts.Controller.SceneControllers;
 using Assets._Scripts.Managers;
+using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
+using Assets._Scripts.Managers;
+using Assets._Scripts.UI_Elements.Founders_Bubble;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -75,22 +78,25 @@ namespace Assets._Scripts.UIElements.FoundersBubble
                 contentPanelTransform.localPosition.y,
                 contentPanelTransform.localPosition.z);
 
-            widthBefore = itemList[0].rect.width * itemList.Length + (itemList.Length - 1) * horizontalLayoutGroup.spacing - viewPortTransform.rect.width;
-            widthAfter = itemList[0].rect.width * (itemList.Length + 2 * itemsToAdd) + (itemList.Length + 2 * itemsToAdd - 1) * horizontalLayoutGroup.spacing - viewPortTransform.rect.width;
+            widthBefore = (itemList[0].rect.width * itemList.Length) +
+                ((itemList.Length - 1) * horizontalLayoutGroup.spacing) - (viewPortTransform.rect.width);
+            widthAfter = (itemList[0].rect.width * (itemList.Length + (2 * itemsToAdd))) +
+                         ((itemList.Length + (2 * itemsToAdd) - 1) * horizontalLayoutGroup.spacing) -
+                         (viewPortTransform.rect.width);
 
-            float scrollPosition = SceneMemoryManager.Instance().GetMemoryOfFoundersBubbleScene();
+            float memory = SceneMemoryManager.Instance().GetMemoryOfFoundersBubbleScene();
 
-            if (scrollRect != null)
+            if (memory != 0 && scrollRect != null)
             {
-                scrollRect.horizontalNormalizedPosition = scrollPosition;
+                scrollRect.horizontalNormalizedPosition = memory;
             }
-            else if (customScrollRect != null)
+            else if (memory != 0 && customScrollRect != null)
             {
-                customScrollRect.horizontalNormalizedPosition = scrollPosition;
+                customScrollRect.horizontalNormalizedPosition = memory;
             }
         }
 
-        private void Update()
+        void Update()
         {
             if (scrollRect == null)
             {
@@ -120,7 +126,7 @@ namespace Assets._Scripts.UIElements.FoundersBubble
                     isUpdated = true;
                 }
                 else if (contentPanelTransform.localPosition.x <
-                         0 - itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing))
+                         0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
                 {
                     Canvas.ForceUpdateCanvases();
                     oldVelocity = scrollRect.velocity;
@@ -153,7 +159,7 @@ namespace Assets._Scripts.UIElements.FoundersBubble
                 currentTarget = currentTarget + FoundersBubbleMetaInformation.NumberOfNovelsToDisplay;
             }
             else if (contentPanelTransform.localPosition.x <
-                     0 - itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing))
+                     0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
             {
                 Canvas.ForceUpdateCanvases();
                 oldVelocity = scrollRect.velocity;
@@ -186,7 +192,7 @@ namespace Assets._Scripts.UIElements.FoundersBubble
                     isUpdated = true;
                 }
                 else if (contentPanelTransform.localPosition.x <
-                         0 - itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing))
+                         0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
                 {
                     Canvas.ForceUpdateCanvases();
                     oldVelocity = customScrollRect.velocity;
@@ -219,7 +225,7 @@ namespace Assets._Scripts.UIElements.FoundersBubble
                 currentTarget = currentTarget + FoundersBubbleMetaInformation.NumberOfNovelsToDisplay;
             }
             else if (contentPanelTransform.localPosition.x <
-                     0 - itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing))
+                     0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
             {
                 Canvas.ForceUpdateCanvases();
                 oldVelocity = customScrollRect.velocity;
@@ -235,8 +241,8 @@ namespace Assets._Scripts.UIElements.FoundersBubble
 
         private void SnapToItem()
         {
-            float targetXPosition = 0 - (currentTarget * (itemList[0].rect.width + horizontalLayoutGroup.spacing) -
-                                         viewPortTransform.rect.width / 2 - itemList[0].rect.width / 2 -
+            float targetXPosition = 0 - ((currentTarget * (itemList[0].rect.width + horizontalLayoutGroup.spacing)) -
+                                         (viewPortTransform.rect.width / 2) - (itemList[0].rect.width / 2) -
                                          horizontalLayoutGroup.spacing);
 
             if (isSnapped)
@@ -293,7 +299,7 @@ namespace Assets._Scripts.UIElements.FoundersBubble
 
             if ((contentPanelTransform.localPosition.x >= 0 ||
                  contentPanelTransform.localPosition.x <
-                 0 - itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)) &&
+                 0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing))) &&
                 customScrollRect.m_Dragging)
             {
                 customScrollRect.OnEndDrag(new PointerEventData(null) { button = 0 });
@@ -317,8 +323,8 @@ namespace Assets._Scripts.UIElements.FoundersBubble
 
         private bool IsCurrentlyInFirstHalf()
         {
-            return contentPanelTransform.localPosition.x >
-                   0 - itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing) / 2;
+            return (contentPanelTransform.localPosition.x >
+                    (0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)) / 2));
         }
 
         public float GetCurrentScrollPosition()

@@ -13,12 +13,7 @@ namespace Assets._Scripts.Managers
 
         public static NovelColorManager Instance()
         {
-            if (_instance == null)
-            {
-                _instance = new NovelColorManager();
-            }
-
-            return _instance;
+            return _instance ??= new NovelColorManager();
         }
 
         public void SetColor(Color color)
@@ -29,35 +24,6 @@ namespace Assets._Scripts.Managers
         public Color GetColor()
         {
             return _color;
-        }
-
-        public void SetCanvasHeight(float height)
-        {
-            if (height > 0) // Überprüfung, ob die Höhe positiv ist
-            {
-                this._canvasHeight = height;
-            }
-        }
-
-        // Getter für canvasHeight
-        public float GetCanvasHeight()
-        {
-            return this._canvasHeight;
-        }
-
-        // Setter für canvasWidth
-        public void SetCanvasWidth(float width)
-        {
-            if (width > 0) // Überprüfung, ob die Breite positiv ist
-            {
-                this._canvasWidth = width;
-            }
-        }
-
-        // Getter für canvasWidth
-        public float GetCanvasWidth()
-        {
-            return this._canvasWidth;
         }
     }
 }

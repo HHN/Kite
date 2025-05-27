@@ -1,13 +1,15 @@
 {
   "idNumberOfNovel": 14,
-  "titleOfNovel": "Vertrieb",
+  "titleOfNovel": "Vertrieb (AI_TRAQC)",
   "descriptionOfNovel": "Im Rahmen Deiner Aufgabe, KI in der Firma einzuführen, gehst du bei einem Mitarbeiter aus Vertrieb und Marketing vorbei, um mögliche Einsatzbereiche und Potenziale zu besprechen.",
   "contextForPrompt": "",
   "startTalkingPartnerExpression": "NeutralRelaxed",
   "isWithStartValues": true,
-  "talkingPartner01" : "Intro",
+  "talkingPartner01" : "Investor",
   "talkingPartner02" : "",
   "talkingPartner03" : "",
+  "isKiteNovel": false,
+  "novelColor": "#0C1A2E",
   "wordsToReplace": [
   ]
 }

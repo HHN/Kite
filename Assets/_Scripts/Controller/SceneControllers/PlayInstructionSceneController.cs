@@ -32,7 +32,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             BackStackManager.Instance().Push(SceneNames.PlayInstructionScene);
 
-            backgroundColor = PlayManager.Instance().GetBackgroundColorOfVisualNovelToPlay();
+            backgroundColor = PlayManager.Instance().GetColorOfVisualNovelToPlay();
             novelName.text = PlayManager.Instance().GetDisplayNameOfNovelToPlay();
             novelImage.color = backgroundColor;
             toggle.isOn = false;
@@ -41,15 +41,15 @@ namespace Assets._Scripts.Controller.SceneControllers
             playButton.onClick.AddListener(OnPlayButton);
             playButton2.onClick.AddListener(OnPlayButton);
 
-            toggle.onValueChanged.AddListener((value) => SyncToggles(toggle, toggle2, value));
-            toggle2.onValueChanged.AddListener((value) => SyncToggles(toggle2, toggle, value));
+            toggle.onValueChanged.AddListener((value) => SyncToggles(toggle2, value));
+            toggle2.onValueChanged.AddListener((value) => SyncToggles(toggle, value));
 
             FontSizeManager.Instance().UpdateAllTextComponents();
 
             SetColours();
         }
 
-        private void SyncToggles(Toggle changedToggle, Toggle otherToggle, bool isOn)
+        private void SyncToggles(Toggle otherToggle, bool isOn)
         {
             if (_isSyncing) return; // Prevent recursive calls
 
@@ -71,19 +71,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void NeverShowAgain()
         {
             ShowPlayInstructionManager.Instance().SetShowInstruction(false);
-        }
-
-        public void OnBackButton()
-        {
-            string lastScene = SceneRouter.GetTargetSceneForBackButton();
-
-            if (string.IsNullOrEmpty(lastScene))
-            {
-                SceneLoader.LoadMainMenuScene();
-                return;
-            }
-
-            SceneLoader.LoadScene(lastScene);
         }
 
         private void SetColours() 

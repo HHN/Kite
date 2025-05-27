@@ -12,6 +12,7 @@ namespace Assets._Scripts.UIElements.SceneBase
     public class SceneHeader : MonoBehaviour
     {
         [SerializeField] private Button backButton;
+        [SerializeField] private Button legalInformationButton;
         [SerializeField] private GameObject warningMessageBox;
         [SerializeField] private GameObject warningMessageBoxIntro;
         [SerializeField] private GameObject warningMessageBoxClose;
@@ -20,8 +21,7 @@ namespace Assets._Scripts.UIElements.SceneBase
         [SerializeField] private LeaveNovelAndGoBackToMainMenuMessageBox warningMessageBoxObjectClose;
         [SerializeField] private Canvas canvas;
 
-        private PlayNovelSceneController
-            _playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
+        private PlayNovelSceneController _playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
 
         private void Start()
         {
@@ -30,8 +30,21 @@ namespace Assets._Scripts.UIElements.SceneBase
             {
                 _playNovelSceneController = controllerObject.GetComponent<PlayNovelSceneController>();
             }
+            
+            backButton.gameObject.SetActive(true);
+
+            if (GameManager.Instance.IsIntroNovelLoadedFromMainMenu)
+            {
+                backButton.gameObject.SetActive(false);
+                GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
+            }
+            else
+            {
+                backButton.gameObject.SetActive(true);
+            }
 
             backButton.onClick.AddListener(OnBackButton);
+            legalInformationButton.onClick.AddListener(OnLegalInformationButton);
         }
 
         private void OnBackButton()
@@ -68,46 +81,41 @@ namespace Assets._Scripts.UIElements.SceneBase
                 }
             }
 
-            if (sceneName.Contains("PlayNovelScene") && _playNovelSceneController.NovelToPlay.id == 13)
+            if (warningMessageBox != null)
             {
-                if (warningMessageBoxIntro != null)
+                if (!warningMessageBoxObject.IsNullOrDestroyed())
                 {
-                    if (!warningMessageBoxObjectIntro.IsNullOrDestroyed())
-                    {
-                        warningMessageBoxObjectIntro.CloseMessageBox();
-                    }
-
-                    if (canvas.IsNullOrDestroyed())
-                    {
-                        return;
-                    }
-
-                    warningMessageBoxObjectIntro = null;
-                    warningMessageBoxObjectIntro = Instantiate(warningMessageBoxIntro, canvas.transform)
-                        .GetComponent<LeaveNovelAndGoBackMessageBox>();
-                    warningMessageBoxObjectIntro.Activate();
+                    warningMessageBoxObject.CloseMessageBox();
                 }
-            }
-            else
-            {
-                if (warningMessageBox != null)
+
+                if (canvas.IsNullOrDestroyed())
                 {
-                    if (!warningMessageBoxObject.IsNullOrDestroyed())
-                    {
-                        warningMessageBoxObject.CloseMessageBox();
-                    }
-
-                    if (canvas.IsNullOrDestroyed())
-                    {
-                        return;
-                    }
-
-                    warningMessageBoxObject = null;
-                    warningMessageBoxObject = Instantiate(warningMessageBox, canvas.transform)
-                        .GetComponent<LeaveNovelAndGoBackMessageBox>();
-                    warningMessageBoxObject.Activate();
+                    return;
                 }
+
+                warningMessageBoxObject = null;
+                warningMessageBoxObject = Instantiate(warningMessageBox, canvas.transform).GetComponent<LeaveNovelAndGoBackMessageBox>();
+
+                if (sceneName.Contains("PlayNovelScene") && _playNovelSceneController.NovelToPlay.id == 13)
+                {
+                    warningMessageBoxObject.HandleButtons();
+                }
+
+                warningMessageBoxObject.Activate();
             }
+        }
+        
+        public void OnLegalInformationButton()
+        {
+            Debug.Log($"OnLegalInformationButton");
+            SceneLoader.LoadLegalInformationScene();
+        }
+
+        public void HandleButtons(bool isIntroScene)
+        {
+            Debug.Log("HandleButtons");
+            backButton.gameObject.SetActive(!isIntroScene);
+            legalInformationButton.gameObject.SetActive(isIntroScene);
         }
     }
 }

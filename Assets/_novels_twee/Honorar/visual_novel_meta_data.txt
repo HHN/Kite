@@ -9,6 +9,8 @@
   "talkingPartner01" : "Kundin",
   "talkingPartner02" : "",
   "talkingPartner03" : "",
+  "isKiteNovel": true,
+  "novelColor": "#0F453C",
   "wordsToReplace": [
     ]
 }

@@ -1,4 +1,4 @@
-using Assets._Scripts.Player;
+using Assets._Scripts.Novel;
 
 namespace Assets._Scripts.Managers
 {

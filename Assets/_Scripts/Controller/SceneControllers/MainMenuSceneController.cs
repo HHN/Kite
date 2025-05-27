@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using Assets._Scripts.Managers;
 using Assets._Scripts._Mappings;
 using Assets._Scripts.Messages;
@@ -12,25 +11,25 @@ using Assets._Scripts.ServerCommunication.ServerCalls;
 using Assets._Scripts.UIElements;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
+
 
 namespace Assets._Scripts.Controller.SceneControllers
 {
     public class MainMenuSceneController : SceneController, IOnSuccessHandler
     {
-        [SerializeField] private Button novelPlayerButton;
-        [SerializeField] private GameObject buttonSoundPrefab;
         [SerializeField] private GameObject termsAndConditionPanel;
         [SerializeField] private Button continueTermsAndConditionsButton;
         [SerializeField] private CustomToggle termsOfUseToggle;
         [SerializeField] private CustomToggle dataPrivacyToggle;
         [SerializeField] private CustomToggle collectDataToggle;
         [SerializeField] private TextMeshProUGUI infoTextTermsAndConditions;
-        [SerializeField] private AudioSource kiteAudioLogo;
         [SerializeField] private GameObject getVersionServerCallPrefab;
         [SerializeField] private GameObject novelLoader;
         [SerializeField] private TMP_Text versionInfo;
-        private const int COMPATIBLE_SERVER_VERSION_NUMBER = 10;
+        private const int CompatibleServerVersionNumber = 10;
+
 
         private void Start()
         {
@@ -52,9 +51,9 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             versionInfo.text = Application.version;
 
-            if (UnityEngine.PlayerPrefs.GetInt("IsSoundEffectVolumeOn", 1) == 1)
+            if (PlayerPrefs.GetInt("IsSoundEffectVolumeOn", 1) == 1)
             {
-                GlobalVolumeManager.Instance.SetGlobalVolume(UnityEngine.PlayerPrefs.GetFloat("SavedSoundEffectVolume", 1));
+                GlobalVolumeManager.Instance.SetGlobalVolume(PlayerPrefs.GetFloat("SavedSoundEffectVolume", 1));
             }
             else
             {
@@ -72,7 +71,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void InitializeScene()
         {
             DontDestroyOnLoad(novelLoader);
-            
+
             //AnalyticsServiceHandler.Instance().StartAnalytics();  //TODO: Replace with custom Analytics
             PlayerDataManager.Instance().LoadAllPlayerPrefs();
             BackStackManager.Instance().Clear();
@@ -91,7 +90,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             if (privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted())
             {
                 termsAndConditionPanel.SetActive(false);
-                
 
                 if (privacyManager.IsDataCollectionAccepted())
                 {
@@ -112,18 +110,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             call.OnSuccessHandler = this;
             call.SendRequest();
             Object.DontDestroyOnLoad(call.gameObject);
-        }
-
-        public void OnNovelPlayerButton()
-        {
-            // Instantiate the sound prefab and assign it to a variable
-            GameObject buttonSound = Object.Instantiate(buttonSoundPrefab);
-            Object.DontDestroyOnLoad(buttonSound); // Correct usage of 
-        }
-
-        public void OnSettingsButton()
-        {
-            SceneLoader.LoadSettingsScene();
         }
 
         private void OnContinueTermsAndConditionsButton()
@@ -180,7 +166,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             if (response == null) return;
 
-            if (response.GetVersion() != COMPATIBLE_SERVER_VERSION_NUMBER)
+            if (response.GetVersion() != CompatibleServerVersionNumber)
             {
                 DisplayInfoMessage(InfoMessages.UPDATE_AVAILABLE);
             }
@@ -225,20 +211,9 @@ namespace Assets._Scripts.Controller.SceneControllers
                     // Convert the novel ID to the corresponding enum
                     VisualNovelNames novelNames = VisualNovelNamesHelper.ValueOf((int)novel.id);
 
-                    PlayManager.Instance()
-                        .SetVisualNovelToPlay(novel); // Set the novel to be played in the PlayManager          
-                    PlayManager.Instance()
-                        .SetForegroundColorOfVisualNovelToPlay(
-                            FoundersBubbleMetaInformation
-                                .GetForegroundColorOfNovel(novelNames)); // Set the foreground color for the novel
-                    PlayManager.Instance()
-                        .SetBackgroundColorOfVisualNovelToPlay(
-                            FoundersBubbleMetaInformation
-                                .GetBackgroundColorOfNovel(novelNames)); // Set the background color for the novel
-                    PlayManager.Instance()
-                        .SetDisplayNameOfNovelToPlay(
-                            FoundersBubbleMetaInformation
-                                .GetDisplayNameOfNovelToPlay(novelNames)); // Set the display name for the novel
+                    PlayManager.Instance().SetVisualNovelToPlay(novel); // Set the novel to be played in the PlayManager          
+                    PlayManager.Instance().SetColorOfVisualNovelToPlay(novel.novelColor); // Set the color for the novel
+                    PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelNames)); // Set the display name for the novel
 
                     // Load the PlayNovelScene
                     SceneLoader.LoadPlayNovelScene();

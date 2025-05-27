@@ -51,10 +51,6 @@ namespace Assets._Scripts.ServerCommunication
 
         protected void HandleWebRequestResult(UnityWebRequest webRequest)
         {
-            //Debug.Log("UnityWebRequest Result: " + webRequest.result);
-            //Debug.Log("UnityWebRequest Error: " + webRequest.error);
-            //Debug.Log("WebRequest URL: " + webRequest.url);
-
             switch (webRequest.result)
             {
                 case UnityWebRequest.Result.Success:
@@ -73,10 +69,14 @@ namespace Assets._Scripts.ServerCommunication
                     if (Application.internetReachability == NetworkReachability.NotReachable)
                     {
                         sceneController.DisplayErrorMessage(ErrorMessages.NO_INTERNET);
+                        Response response = new Response();
+                        OnResponse(response);
                     }
                     else
                     {
                         sceneController.DisplayErrorMessage($"Unerwarteter Fehler: {webRequest.error}");
+                        Response response = new Response();
+                        OnResponse(response);
                     }
 
                     break;

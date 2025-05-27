@@ -9,6 +9,8 @@
   "talkingPartner01" : "Sachbearbeiter",
   "talkingPartner02" : "",
   "talkingPartner03" : "",
+  "isKiteNovel": true,
+  "novelColor": "#0C1A2E",
   "wordsToReplace": [
 	{"wordToReplace": ">>AngestellteSprichtCritical:<<", "replaceByValue": ">>Charakter01SprichtCritical:<<"},
 	{"wordToReplace": ">>AngestellteSprichtLaughing:<<", "replaceByValue": ">>Charakter01SprichtLaughing:<<"},

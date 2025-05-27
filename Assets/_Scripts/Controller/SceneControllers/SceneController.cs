@@ -10,17 +10,17 @@ namespace Assets._Scripts.Controller.SceneControllers
         public GameObject canvas;
         private MessageBox _messageObject;
 
-        public MessageBox DisplayInfoMessage(string infoMessage)
+        public void DisplayInfoMessage(string infoMessage)
         {
-            return DisplayMessage("INFORMATION", infoMessage, false);
+            DisplayMessage("INFORMATION", infoMessage, false);
         }
 
-        public MessageBox DisplayErrorMessage(string errorMessage)
+        public void DisplayErrorMessage(string errorMessage)
         {
-            return DisplayMessage("FEHLER-MELDUNG", errorMessage, true);
+            DisplayMessage("FEHLER-MELDUNG", errorMessage, true);
         }
 
-        private MessageBox DisplayMessage(string headline, string message, bool isError)
+        private void DisplayMessage(string headline, string message, bool isError)
         {
             if (!_messageObject.IsNullOrDestroyed())
             {
@@ -29,7 +29,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             if (canvas.IsNullOrDestroyed())
             {
-                return null;
+                return;
             }
 
             _messageObject = null;
@@ -38,7 +38,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             _messageObject.SetBody(message);
             _messageObject.SetIsErrorMessage(isError);
             _messageObject.Activate();
-            return _messageObject;
         }
 
         public virtual void OnStop()

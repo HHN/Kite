@@ -116,7 +116,6 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private void OnNovelButton(VisualNovelNames visualNovelName)
         {
-            NovelColorManager.Instance().SetColor(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
             VisualNovel visualNovelToDisplay = null;
             List<VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
 
@@ -135,9 +134,11 @@ namespace Assets._Scripts.Controller.SceneControllers
                 return;
             }
 
+            Color novelColor = visualNovelToDisplay.novelColor;
+            NovelColorManager.Instance().SetColor(novelColor);
+
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-            PlayManager.Instance().SetForegroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetForegroundColorOfNovel(visualNovelName));
-            PlayManager.Instance().SetBackgroundColorOfVisualNovelToPlay(FoundersBubbleMetaInformation.GetBackgroundColorOfNovel(visualNovelName));
+            PlayManager.Instance().SetColorOfVisualNovelToPlay(novelColor);
             PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);

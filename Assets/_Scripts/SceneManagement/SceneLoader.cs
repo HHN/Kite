@@ -54,6 +54,11 @@ namespace Assets._Scripts.SceneManagement
             LoadScene(SceneNames.AccessibilityScene);
         }
 
+        public static void LoadLegalInformationScene()
+        {
+            LoadScene(SceneNames.LegalInformationScene);
+        }
+
         public static void LoadPrivacyPolicyScene()
         {
             LoadScene(SceneNames.PrivacyPolicyScene);

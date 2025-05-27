@@ -255,7 +255,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// <returns>The cleaned message text.</returns>
         public static List<string> ExtractMessageOutOfTweePassage(string text)
         {
-            Debug.Log(text);
             // Remove the title from the passage.
             text = RemoveTitleFromPassage(text);
             // Remove any text enclosed in double square brackets.
@@ -272,15 +271,9 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             // Remove known keywords from the text.
             text = RemoveKeyWords(text);
             // Normalize extra spaces to a single space.
-            Debug.Log(text);
             text = NormalizeSpaces(text);
-            Debug.Log(text);
             List <string> list = text.Trim().Split(new[] { "\r\n", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries).ToList();
             int idx = 0;
-            foreach (var line in list)
-            {
-                Debug.Log($"Zeile {idx++}: {line}");
-            }
             return text.Trim().Split(new[] { "\r\n", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries).ToList();
         }
 

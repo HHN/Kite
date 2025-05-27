@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Globalization;
+using System.Runtime.InteropServices;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Messages;
 using Assets._Scripts.Novel;
@@ -15,10 +16,11 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Assets._Scripts.ServerCommunication;
 using Assets._Scripts.ServerCommunication.ServerCalls;
-using System.Runtime.InteropServices;
+using UnityEngine.Scripting;
 
 namespace Assets._Scripts.Controller.SceneControllers
 {
+    [Preserve]
     public class FeedbackSceneController : SceneController, IOnSuccessHandler, IOnErrorHandler
     {
         [SerializeField] private TextMeshProUGUI feedbackText;
@@ -40,12 +42,19 @@ namespace Assets._Scripts.Controller.SceneControllers
         //[SerializeField] private TTSEngine engine;
         [SerializeField] private GameObject loadingAnimation;
 
-        #if UNITY_WEBGL && !UNITY_EDITOR
-            [DllImport("__Internal")]
-            private static extern void CopyTextToClipboard(string text);
-        #endif
+        // New: scroll rect for mouse wheel vertical scroll
+        [SerializeField] private ScrollRect feedbackScrollRect;
+        [SerializeField] private float wheelScrollSpeed = 0.2f;
+
+    #if UNITY_WEBGL && !UNITY_EDITOR
+        [DllImport("__Internal")]
+        private static extern void CopyTextToClipboard(string text);
+    #endif
 
         private readonly CultureInfo _culture = new CultureInfo("de-DE");
+
+        private VisualNovel _novel;
+        private string _dialog;
 
         private void Start()
         {
@@ -73,33 +82,29 @@ namespace Assets._Scripts.Controller.SceneControllers
             if (string.IsNullOrEmpty(novelToPlay.feedback))
             {
                 StartWaitingMusic();
-                VisualNovel novel = PlayManager.Instance().GetVisualNovelToPlay();
+                _novel = PlayManager.Instance().GetVisualNovelToPlay();
                 feedbackText.SetText("Das Feedback wird gerade geladen. Dies dauert durchschnittlich zwischen 30 und 60 Sekunden. Solltest du nicht so lange warten wollen, kannst du dir das Feedback einfach im Archiv anschauen, sobald es fertig ist." +
                                      "\n" +
                                      "\n" +
-                                     "<align=center><i>Hinweis:</i> Analyse und Feedback wurden durch KI künstlich erzeugt. Eine individuelle Beratung wird hierdurch nicht ersetzt.</align>");
+                                     "<align=center><i>Hinweis: Analyse und Feedback wurden durch KI künstlich erzeugt. Eine individuelle Beratung wird hierdurch nicht ersetzt.</i></align>");
                 GetCompletionServerCall call = Instantiate(gptServercallPrefab).GetComponent<GetCompletionServerCall>();
                 call.sceneController = this;
 
-                string dialog = PromptManager.Instance().GetDialog();
+                _dialog = PromptManager.Instance().GetDialog();
 
-#if UNITY_WEBGL
-                Application.ExternalCall("logMessage", "string dialog = PromptManager.Instance().GetDialog();" + dialog);
-#endif
-
-                dialog = dialog.Replace("Bitte beachte, dass kein Teil des Dialogs in das Feedback darf.", "");
+                _dialog = _dialog.Replace("Bitte beachte, dass kein Teil des Dialogs in das Feedback darf.", "");
 
                 FeedbackHandler feedbackHandler = new FeedbackHandler()
                 {
                     FeedbackSceneController = this,
                     ID = PlayManager.Instance().GetVisualNovelToPlay().id,
-                    Dialog = dialog
+                    Dialog = _dialog
                 };
 
                 call.OnSuccessHandler = feedbackHandler;
                 call.OnErrorHandler = this;
 
-                call.prompt = PromptManager.Instance().GetPrompt(novel != null ? novel.context : "");
+                call.prompt = PromptManager.Instance().GetPrompt(_novel != null ? _novel.context : "");
 
                 call.SendRequest();
                 DontDestroyOnLoad(call.gameObject);
@@ -121,21 +126,32 @@ namespace Assets._Scripts.Controller.SceneControllers
             loadingAnimation.SetActive(false);
         }
 
+        private void Update()
+        {
+            // Mouse wheel vertical scroll support
+            float wheel = Input.GetAxis("Mouse ScrollWheel");
+            if (Mathf.Abs(wheel) > 0f && feedbackScrollRect != null)
+            {
+                float pos = feedbackScrollRect.verticalNormalizedPosition + wheel * wheelScrollSpeed;
+                feedbackScrollRect.verticalNormalizedPosition = Mathf.Clamp01(pos);
+            }
+        }
+
         public void OnFinishButton()
         {
             AnalyticsServiceHandler.Instance().SendWaitedForAIFeedback();
 
-            #if UNITY_IOS
+        #if UNITY_IOS
                     TextToSpeechManager.Instance.CancelSpeak();
-            #endif
-            
+        #endif
+                    
             BackStackManager.Instance().Clear(); // we go back to the explorer and don't want the back-button to bring us to the feedback scene again
             SceneLoader.LoadFoundersBubbleScene();
         }
 
         public void OnCopyButton()
         {
-        #if UNITY_WEBGL && !UNITY_EDITOR
+    #if UNITY_WEBGL && !UNITY_EDITOR
                 CopyTextToClipboard(feedbackText.text);
         #else
                     GUIUtility.systemCopyBuffer = feedbackText.text;
@@ -177,35 +193,69 @@ namespace Assets._Scripts.Controller.SceneControllers
             novelToPlay.feedback = (completion);
             //PlayerDataManager.Instance().SaveEvaluation(novelToPlay.title, response.GetCompletion().Trim());
             AnalyticsServiceHandler.Instance().SetWaitedForAiFeedbackTrue();
-            LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
+
+            // Neuer Nullcheck und Auto-Find für layout
+            if (layout == null)
+            {
+                GameObject contentGo = GameObject.Find("Content");
+                if (contentGo != null)
+                    layout = contentGo.GetComponent<RectTransform>();
+            }
+            if (layout != null)
+                LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
+
             PlayResultMusic();
             FontSizeManager.Instance().UpdateAllTextComponents();
             //requestExpertFeedbackButton.interactable = true;
         }
 
-        public IEnumerator SaveDialogToHistory(string response)
-        {
-            DialogHistoryEntry dialogHistoryEntry = new DialogHistoryEntry();
-            dialogHistoryEntry.SetNovelId(PlayManager.Instance().GetVisualNovelToPlay().id);
-            dialogHistoryEntry.SetDialog(PromptManager.Instance().GetDialog());
-            Debug.Log("RESPONSE: " + response);
-            dialogHistoryEntry.SetCompletion(response.Trim());
-            DateTime now = DateTime.Now;
-            string formattedDateTime = now.ToString("ddd | dd.MM.yyyy | HH:mm", _culture);
-            dialogHistoryEntry.SetDateAndTime(formattedDateTime);
-            DialogHistoryManager.Instance().AddEntry(dialogHistoryEntry);
-            yield return null;
-        }
-
         public void OnError(Response response)
         {
+            if (SceneManager.GetActiveScene().name != SceneNames.FeedbackScene)
+            {
+                return;
+            }
+            
             StopWaitingMusic();
             DisplayErrorMessage(ErrorMessages.UNEXPECTED_SERVER_ERROR);
             finishButtonContainer.SetActive(false);
             finishButtonTopContainer.SetActive(true);
             finishButtonBottomContainer.SetActive(true);
+            
+            string completion = "Keine Analyse verfügbar – Serverfehler.";
+            
+            StartCoroutine(TextToSpeechManager.Instance.Speak(completion));
+            
             feedbackText.SetText("Leider ist aktuell keine KI-Analyse verfügbar.");
             loadingAnimation.SetActive(false);
+            novelToPlay.feedback = completion;
+            
+            SaveDialogToHistory(completion);
+            
+            // Neuer Nullcheck und Auto-Find für layout
+            if (layout == null)
+            {
+                GameObject contentGo = GameObject.Find("Content");
+                if (contentGo != null)
+                    layout = contentGo.GetComponent<RectTransform>();
+            }
+            if (layout != null)
+                LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
+
+            PlayResultMusic();
+            FontSizeManager.Instance().UpdateAllTextComponents();
+        }
+      
+        private void SaveDialogToHistory(string response)
+        {
+            DialogHistoryEntry dialogHistoryEntry = new DialogHistoryEntry();
+            dialogHistoryEntry.SetNovelId(_novel.id);
+            dialogHistoryEntry.SetDialog(_dialog);
+            dialogHistoryEntry.SetCompletion(response.Trim());
+            DateTime now = DateTime.Now;
+            string formattedDateTime = now.ToString("ddd | dd.MM.yyyy | HH:mm", _culture);
+            dialogHistoryEntry.SetDateAndTime(formattedDateTime);
+            DialogHistoryManager.Instance().AddEntry(dialogHistoryEntry);
         }
 
         private void StartWaitingMusic()
@@ -222,11 +272,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             GlobalVolumeManager.Instance.PlaySound(resultMusic);
         }
-
-        public void DeactivateAskButton()
-        {
-            //requestExpertFeedbackButton.interactable = false;
-        }
     }
 
     public class FeedbackHandler : IOnSuccessHandler
@@ -239,14 +284,21 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         public void OnSuccess(Response response)
         {
-#if UNITY_WEBGL
-                Application.ExternalCall("logMessage", "public void OnSuccess(Response response)" + response);
-#endif
             SaveDialogToHistory(response.GetCompletion());
 
             if (!FeedbackSceneController.IsNullOrDestroyed())
             {
                 FeedbackSceneController.OnSuccess(response);
+            }
+        }
+        
+        public void OnError(Response message)
+        {
+            SaveDialogToHistory(message.GetCompletion());
+
+            if (!FeedbackSceneController.IsNullOrDestroyed())
+            {
+                FeedbackSceneController.OnError(message);
             }
         }
 
@@ -255,10 +307,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             DialogHistoryEntry dialogHistoryEntry = new DialogHistoryEntry();
             dialogHistoryEntry.SetNovelId(ID);
             dialogHistoryEntry.SetDialog(Dialog);
-            Debug.Log("DIALOG: " + Dialog);
-#if UNITY_WEBGL
-                Application.ExternalCall("logMessage", Dialog);
-#endif
             dialogHistoryEntry.SetCompletion(response.Trim());
             DateTime now = DateTime.Now;
             string formattedDateTime = now.ToString("ddd | dd.MM.yyyy | HH:mm", _culture);

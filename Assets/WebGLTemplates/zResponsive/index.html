@@ -4,104 +4,152 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>{{{ PRODUCT_NAME }}}</title>
+	<title>Kite 2</title>
+
+	<!-- Statische Viewport-Meta für Mobilgeräte -->
+	<meta name="viewport"
+		  content="width=device-width,
+                 height=device-height,
+                 initial-scale=1.0,
+                 viewport-fit=cover,
+                 user-scalable=no,
+                 shrink-to-fit=yes">
+
 	<style>
-		html, body {background:{{{ BACKGROUND || '#000' }}};width:100%;height:100%;overflow:visible;padding:0;margin:0;}
-		div#container {background:transparent !important;position:absolute;}
-		div#container canvas {position:absolute;}
-		div#container canvas[data-pixel-art="true"] {position:absolute;image-rendering:optimizeSpeed;image-rendering:-webkit-crisp-edges;image-rendering:-moz-crisp-edges;image-rendering:-o-crisp-edges;image-rendering:crisp-edges;image-rendering:-webkit-optimize-contrast;image-rendering:optimize-contrast;image-rendering:pixelated;-ms-interpolation-mode:nearest-neighbor;}
+		html, body {
+			background: #0B1A2D;
+			width: 100%;
+			height: 100%;
+			overflow: visible;
+			padding: 0;
+			margin: 0;
+		}
+
+		div#container {
+			background: transparent !important;
+			position: absolute;
+			box-sizing: border-box;
+		}
+
+			div#container canvas {
+				position: absolute;
+			}
+
+				div#container canvas[data-pixel-art="true"] {
+					position: absolute;
+					image-rendering: optimizeSpeed;
+					image-rendering: -webkit-crisp-edges;
+					image-rendering: -moz-crisp-edges;
+					image-rendering: -o-crisp-edges;
+					image-rendering: crisp-edges;
+					image-rendering: -webkit-optimize-contrast;
+					image-rendering: optimize-contrast;
+					image-rendering: pixelated;
+					-ms-interpolation-mode: nearest-neighbor;
+				}
+
+		/* Weißer Rahmen rund um #container, nur auf Desktop */
+		@media (hover: hover) and (pointer: fine) {
+			div#container {
+				outline: 5px solid white;
+			}
+		}
 	</style>
 </head>
 
 <body>
 	<div id="container">
-		<canvas id="game-canvas" data-pixel-art="{{{ OPTIMIZE_FOR_PIXEL_ART }}}"></canvas>
-		<script src="Build/{{{ LOADER_FILENAME }}}"></script>
+		<canvas id="game-canvas" data-pixel-art="false"></canvas>
+		<script src="Build/Kite2Web.loader.js"></script>
 		<script>
 			var canvas = document.querySelector("#game-canvas");
 			var config =
 			{
-				dataUrl: "Build/{{{ DATA_FILENAME }}}",
-				frameworkUrl: "Build/{{{ FRAMEWORK_FILENAME }}}",
-				codeUrl: "Build/{{{ CODE_FILENAME }}}",
-#if MEMORY_FILENAME
-				memoryUrl: "Build/{{{ MEMORY_FILENAME }}}",
-#endif
-#if SYMBOLS_FILENAME
-				symbolsUrl: "Build/{{{ SYMBOLS_FILENAME }}}",
-#endif
+				dataUrl: "Build/Kite2Web.data",
+				frameworkUrl: "Build/Kite2Web.framework.js",
+				codeUrl: "Build/Kite2Web.wasm",
 				streamingAssetsUrl: "StreamingAssets",
-				companyName: "{{{ COMPANY_NAME }}}",
-				productName: "{{{ PRODUCT_NAME }}}",
-				productVersion: "{{{ PRODUCT_VERSION }}}",
+				companyName: "Hochschule Heilbronn",
+				productName: "Kite 2",
+				productVersion: "0.23.9",
 			};
 			var scaleToFit;
-			try
-			{
-				scaleToFit = !!JSON.parse("{{{ SCALE_TO_FIT }}}");
+			try {
+				scaleToFit = !!JSON.parse("true");
 			} catch (e) {
 				scaleToFit = true;
 			}
-			
-			function progressHandler(progress)
-			{
+
+			function progressHandler(progress) {
 				var percent = progress * 100 + '%';
-				canvas.style.background = 'linear-gradient(to right, white, white ' + percent + ', transparent ' + percent + ', transparent) no-repeat center';
+				canvas.style.background =
+				  'linear-gradient(to right, white, white ' + percent +
+				  ', transparent ' + percent + ', transparent) no-repeat center';
 				canvas.style.backgroundSize = '100% 1rem';
 			}
-			
-			function onResize()
-			{
+
+			// === Neue onResize(): Desktop 1 : 2, Mobile full visualViewport ===
+			function onResize() {
 				var container = canvas.parentElement;
-				var w;
-				var h;
+				var isDesktop = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-				if (scaleToFit)
-				{
-					w = window.innerWidth;
-					h = window.innerHeight;
+				var w, h, left, top;
 
-					var r = {{{ HEIGHT }}} / {{{ WIDTH }}};
-					if (w * r > window.innerHeight)
-					{
-						w = Math.min(w, Math.ceil(h / r));
+				if (isDesktop) {
+					// Volle Höhe des inneren Fensters
+					var vw = window.innerWidth;
+					var vh = window.innerHeight;
+					// Höhe = vh, Breite = vh / 
+					h = vh;
+					w = Math.floor(h / 2);
+					// Falls Breite zu groß
+					if (w > vw) {
+						w = vw;
+						h = Math.floor(w * 2);
 					}
-					h = Math.floor(w * r);
-				} 
-				else
-				{
-					w = {{{ WIDTH }}};
-					h = {{{ HEIGHT }}};
+					// Zentriert horizontal, oben bündig
+					left = Math.floor((vw - w) / 2);
+					top = 0;
+				} else {
+					// Voller sichtbarer Bereich auf Mobile (Header/Footer ausgeklammert)
+					var vv = window.visualViewport;
+					w = vv.width;
+					h = vv.height;
+					left = vv.offsetLeft;
+					top = vv.offsetTop;
 				}
 
-				container.style.width = canvas.style.width = w + "px";
-				container.style.height = canvas.style.height = h + "px";
-				container.style.top = Math.floor((window.innerHeight - h) / 2) + "px";
-				container.style.left = Math.floor((window.innerWidth - w) / 2) + "px";
+				// Einmaliges Setzen von Größe & Position
+				container.style.width  = w + "px";
+				container.style.height = h + "px";
+				container.style.left   = left + "px";
+				container.style.top    = top + "px";
+				canvas.style.width     = w + "px";
+				canvas.style.height    = h + "px";
 			}
-			
-			createUnityInstance(canvas, config, progressHandler).then(function (instance)
-			{
+			// ====================================================================
+
+			createUnityInstance(canvas, config, progressHandler).then(function (instance) {
 				canvas = instance.Module.canvas;
 				onResize();
 			});
-			
+
 			window.addEventListener('resize', onResize);
 			onResize();
 
 			// Style for mobile devices.
-				// Fill the whole browser client area with the game canvas.
-				const meta = document.createElement('meta');
-				meta.name = 'viewport';
-				meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-				document.getElementsByTagName('head')[0].appendChild(meta);
+			// Fill the whole browser client area with the game canvas.
+			const meta = document.createElement('meta');
+			meta.name = 'viewport';
+			meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+			document.getElementsByTagName('head')[0].appendChild(meta);
 		</script>
 		</script>
 		<script type="text/javascript">
-		 function logMessage(message) {
-			 console.log(message);
-		 }
-	   </script>	
+			function logMessage(message) {
+				console.log(message);
+			}
+		</script>
 	</div>
 </body>
 
