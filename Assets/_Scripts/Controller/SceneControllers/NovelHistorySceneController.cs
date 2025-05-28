@@ -75,15 +75,30 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private void AddNovelContainer(List<DialogHistoryEntry> entries)
         {
+            var allKiteNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+            Dictionary<long, VisualNovel> allKiteNovelsById = allKiteNovels.ToDictionary(novel => novel.id);
+
             foreach (DialogHistoryEntry entry in entries)
             {
                 long novelId = entry.GetNovelId();
 
-                if (!_novelHistoryEntriesDictionary.ContainsKey(novelId))
-                    CreateNovelContainer(novelId);
+                // Überprüfe, ob die novelId in unserem allKiteNovelsById Dictionary existiert.
+                if (allKiteNovelsById.TryGetValue(novelId, out VisualNovel foundNovel))
+                {
+                    string designation = foundNovel.designation;
 
-                _novelHistoryEntriesDictionary[novelId].Add(entry);
-                AddEntryToContainer(entry, _novelContainers[novelId]);
+                    if (!_novelHistoryEntriesDictionary.ContainsKey(novelId))
+                    {
+                        CreateNovelContainer(novelId);
+                    }
+
+                    _novelHistoryEntriesDictionary[novelId].Add(entry);
+                    AddEntryToContainer(entry, _novelContainers[novelId], designation);
+                }
+                else
+                {
+                    Debug.LogWarning($"Novel with ID {novelId} from history entry not found in available Kite Novels. Skipping this entry.");
+                }
             }
         }
 
@@ -94,22 +109,22 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             _novelContainers[novelId] = novelContainer;
             _novelHistoryEntriesDictionary[novelId] = new List<DialogHistoryEntry>();
-            
+
             Instantiate(spacingPrefab, containerParent);
         }
 
-        private void AddEntryToContainer(DialogHistoryEntry entry, GameObject novelContainer)
+        private void AddEntryToContainer(DialogHistoryEntry entry, GameObject novelContainer, string designation)
         {
             List<VisualNovel> allKiteNovels = KiteNovelManager.Instance().GetAllKiteNovels();
             VisualNovel novel = allKiteNovels.FirstOrDefault(n => n.id == entry.GetNovelId());
-            
+
             GameObject reviewContainer = novelContainer.transform.Find("Review Container").gameObject;
             GameObject reviewButton = novelContainer.transform.Find("Review Button").gameObject;
 
             var visualNovel = VisualNovelNamesHelper.ValueOf((int)entry.GetNovelId());
 
             if (novel != null) reviewButton.GetComponent<Image>().color = novel.novelColor;
-            reviewButton.GetComponentInChildren<TextMeshProUGUI>().text = VisualNovelNamesHelper.GetName(entry.GetNovelId());
+            reviewButton.GetComponentInChildren<TextMeshProUGUI>().text = designation;
             reviewButton.GetComponentInChildren<AlreadyPlayedUpdater>().VisualNovel = visualNovel;
 
             RectTransform containerTransform = container.GetComponent<RectTransform>();

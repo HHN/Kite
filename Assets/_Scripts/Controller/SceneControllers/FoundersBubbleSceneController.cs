@@ -35,8 +35,9 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private Button legalInformationButton;
         [SerializeField] private Button settingsButton;
 
-        [Header("Burger Menu")] 
-        [SerializeField] private Sprite closedBurgerMenuSprite;
+        [Header("Burger Menu")] [SerializeField]
+        private Sprite closedBurgerMenuSprite;
+
         [SerializeField] private Sprite openedBurgerMenuSprite;
         [SerializeField] private GameObject burgerMenu;
 
@@ -63,9 +64,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void Start()
         {
             BackStackManager.Instance().Push(SceneNames.FoundersBubbleScene);
-
             GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
-
             currentlyOpenedVisualNovelPopup = VisualNovelNames.None;
 
             List<VisualNovel> allKiteNovelsList = KiteNovelManager.Instance().GetAllKiteNovels();
@@ -73,15 +72,22 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             var children = burgerMenu.GetComponentsInChildren<Transform>();
             var content = children.FirstOrDefault(k => k.gameObject.name == "Content");
-            
-            // Instantiate the headline and set its sibling index to 0
-            GameObject burgerMenuHeadline = Instantiate(burgerMenuHeadlinePrefab, content?.transform);
-            if (content != null)
+
+            // Sicherstellen, dass 'content' existiert
+            if (content == null)
             {
-                burgerMenuHeadline.transform.SetSiblingIndex(0); 
+                Debug.LogError("Content Transform not found in burgerMenu. Cannot proceed with UI setup.");
+                return;
             }
 
+            // 1. Headline instantiieren und am Anfang platzieren
+            GameObject burgerMenuHeadline = Instantiate(burgerMenuHeadlinePrefab, content.transform);
+            burgerMenuHeadline.transform.SetSiblingIndex(0);
+
             _isNovelContainedInVersion = new List<NovelEntry>();
+
+            // 2. Alle Buttons erstellen und in einer temporären Liste speichern
+            List<GameObject> novelButtonsToSort = new List<GameObject>();
             foreach (VisualNovel visualNovel in allKiteNovelsList)
             {
                 NovelEntry novelEntry = new NovelEntry
@@ -89,103 +95,101 @@ namespace Assets._Scripts.Controller.SceneControllers
                     novelId = visualNovel.id,
                     isContained = true
                 };
-
                 _isNovelContainedInVersion.Add(novelEntry);
-                
-                CreateBurgerMenuButton(visualNovel, content);
-            }
 
- // Now, collect all children EXCEPT the headline, then sort and reorder
-            List<Transform> sortableChildren = new List<Transform>();
-            if (content != null)
-            {
-                foreach (Transform child in content)
+                GameObject novelButton = CreateBurgerMenuButton(visualNovel, content); // CreateBurgerMenuButton nur den Button zurückgeben lassen
+                if (novelButton != null)
                 {
-                    // Exclude the headline from the sorting list
-                    if (!child.gameObject.name.Contains("Headline"))
-                    {
-                        sortableChildren.Add(child);
-                    }
+                    novelButtonsToSort.Add(novelButton);
                 }
             }
 
-            // Separate search/background, then sort other children
-            List<Transform> searchAndBackground = new List<Transform>();
-            List<Transform> otherButtons = new List<Transform>();
+            // 3. Temporäre Liste der Buttons alphabetisch sortieren
+            // (Achte darauf, dass der Name des GameObject die Sortiergrundlage ist)
+            novelButtonsToSort = novelButtonsToSort.OrderBy(btn => btn.GetComponentInChildren<TextMeshProUGUI>().text).ToList();
 
-            foreach(Transform child in sortableChildren)
+            // 4. Buttons und Separatoren in der richtigen Reihenfolge dem Content hinzufügen
+            // Bestimme den Startindex für die sortierten Buttons und Separatoren
+            // Headline ist bei Index 0. Background und Search kommen danach.
+            int currentSiblingIndex = 1;
+
+            // Zuerst Background und Search platzieren, falls vorhanden
+            List<Transform> searchAndBackground = new List<Transform>();
+            foreach (Transform child in content)
             {
+                // Hole alle Kinder, die noch nicht sortiert wurden (also nicht die Headline und nicht die Buttons)
                 if (child.gameObject.name.Contains("Search") || child.gameObject.name.Contains("Background"))
                 {
                     searchAndBackground.Add(child);
                 }
-                else
-                {
-                    otherButtons.Add(child);
-                }
             }
 
-            // Sort other buttons alphabetically
-            otherButtons = otherButtons.OrderBy(child => child.name).ToList();
-
-            // Reconstruct the order: Headline (already at 0), then Background, then Search, then sorted Novel buttons/separators
-            int currentSiblingIndex = 1; // Start from 1 because headline is at 0
-
-            // Position Background and Search
-            foreach(Transform child in searchAndBackground.OrderBy(child => child.gameObject.name.Contains("Background") ? 0 : 1))
+            // Position Background und Search (falls vorhanden und in der gewünschten Reihenfolge)
+            // Angenommen, Background kommt vor Search, falls beide existieren
+            foreach (Transform child in searchAndBackground.OrderBy(child => child.gameObject.name.Contains("Background") ? 0 : 1))
             {
                 child.SetSiblingIndex(currentSiblingIndex);
                 currentSiblingIndex++;
             }
 
-            // Position sorted novel buttons and separators
-            foreach (Transform child in otherButtons)
+            // Jetzt die sortierten Novel-Buttons und ihre Separatoren hinzufügen
+            foreach (GameObject novelButton in novelButtonsToSort)
             {
-                child.SetSiblingIndex(currentSiblingIndex);
+                // Setze den Sibling Index des Buttons
+                novelButton.transform.SetSiblingIndex(currentSiblingIndex);
                 currentSiblingIndex++;
+                burgerMenuButtons.Add(novelButton); // Füge den Button zur burgerMenuButtons Liste hinzu
+
+                // Erstelle den Separator direkt nach dem Button
+                GameObject separatorLine = Instantiate(burgerMenuSeparatorImage, content.transform);
+                separatorLine.name = $"{novelButton.name}Separator"; // Name des Separators vom Button ableiten
+                separatorLine.GetComponentInChildren<Image>().name = $"{novelButton.name}Separator";
+                separatorLine.transform.SetSiblingIndex(currentSiblingIndex);
+                currentSiblingIndex++;
+                burgerMenuButtons.Add(separatorLine); // Füge den Separator zur burgerMenuButtons Liste hinzu
             }
 
+
+            // Listener hinzufügen
             novelListButton.onClick.AddListener(OnNovelListButton);
             legalInformationButton.onClick.AddListener(OnLegalInformationButton);
             settingsButton.onClick.AddListener(OnSettingsButton);
-
             burgerMenuBackground.onClick.AddListener(OnBackgroundButton);
 
-            if (novelButtons != null && novelButtons.Count > 0)
-            {
-                // Speichere die ursprüngliche Reihenfolge der Container
-                // new List<GameObject>(novelButtons);
-            }
-            else
-            {
-                Debug.LogError("Die Button-Container-Liste ist nicht zugewiesen oder leer.");
-            }
+            // Die Debug.LogError und die if-else-Anweisung bezüglich novelButtons sind hier nicht mehr relevant,
+            // da wir die Liste dynamisch füllen.
+            // if (novelButtons != null && novelButtons.Count > 0)
+            // {
+            //     // Speichere die ursprüngliche Reihenfolge der Container
+            //     // new List<GameObject>(novelButtons);
+            // }
+            // else
+            // {
+            //     Debug.LogError("Die Button-Container-Liste ist nicht zugewiesen oder leer.");
+            // }
 
             StartCoroutine(TextToSpeechManager.Instance.Speak(" "));
             GlobalVolumeManager.Instance.StopSound();
         }
 
-        private void CreateBurgerMenuButton(VisualNovel visualNovel, Transform content)
+// Die CreateBurgerMenuButton Methode muss jetzt nur den Button zurückgeben
+        private GameObject CreateBurgerMenuButton(VisualNovel visualNovel, Transform content)
         {
             var novelId = VisualNovelNamesHelper.ValueOf((int)(visualNovel.id));
-            if (novelId == VisualNovelNames.None) return;
+            if (novelId == VisualNovelNames.None) return null;
 
             string novelName = VisualNovelNamesHelper.GetName(visualNovel.id);
 
-            GameObject burgerMenuButton = Instantiate(burgerMenuButtonPrefab, content?.transform);
-
+            GameObject burgerMenuButton = Instantiate(burgerMenuButtonPrefab, content); // Instanziiere direkt unter dem Content
             burgerMenuButton.name = novelName;
             burgerMenuButton.GetComponentInChildren<Button>().name = novelName;
-            burgerMenuButton.GetComponentInChildren<TextMeshProUGUI>().text = !visualNovel.isKiteNovel ? visualNovel.title : novelName;
+            burgerMenuButton.GetComponentInChildren<TextMeshProUGUI>().text = !visualNovel.isKiteNovel ? visualNovel.title : visualNovel.designation;
             burgerMenuButton.GetComponentInChildren<Button>().onClick.AddListener(OnButtonFromBurgerMenu);
-
             burgerMenuButton.GetComponentInChildren<Image>().color = visualNovel.novelColor;
-            burgerMenuButtons.Add(burgerMenuButton);
-            
-            GameObject separatorLine = Instantiate(burgerMenuSeparatorImage, content?.transform);
-            separatorLine.name = $"{novelName}Separator";
-            separatorLine.GetComponentInChildren<Image>().name = $"{novelName}Separator";
-            burgerMenuButtons.Add(separatorLine);
+    
+            // Füge den Button hier NICHT zur burgerMenuButtons Liste hinzu,
+            // da er erst nach der Sortierung hinzugefügt werden soll.
+            return burgerMenuButton;
         }
 
         public void OnBackgroundButton()
@@ -221,14 +225,14 @@ namespace Assets._Scripts.Controller.SceneControllers
             if (isBurgerMenuOpen)
             {
                 novelListButtonImage.sprite = closedBurgerMenuSprite;
-                
+
                 burgerMenu.gameObject.SetActive(false);
                 isBurgerMenuOpen = false;
                 return;
             }
 
             novelListButtonImage.sprite = openedBurgerMenuSprite;
-            
+
             isBurgerMenuOpen = true;
             burgerMenu.gameObject.SetActive(true);
             FontSizeManager.Instance().UpdateAllTextComponents();
@@ -241,7 +245,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             LoadAndPlayNovel(novelNames, true);
         }
-        
+
         private void OnLegalInformationButton()
         {
             SceneLoader.LoadLegalInformationScene();
@@ -353,6 +357,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             NovelColorManager.Instance().SetColor(visualNovelToDisplay.novelColor);
             PlayManager.Instance().SetColorOfVisualNovelToPlay(visualNovelToDisplay.novelColor);
             PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelName));
+            PlayManager.Instance().SetDesignationOfNovelToPlay(visualNovelToDisplay.designation);
 
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);

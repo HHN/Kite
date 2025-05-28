@@ -1,6 +1,7 @@
 {
   "idNumberOfNovel": 4,
   "titleOfNovel": "Telefonat mit der Notarin",
+  "designationOfNovel": "Mit Notarin telefonieren",
   "descriptionOfNovel": "Du rufst bei einer Notarin an, um einen Termin für deine Gründung auszumachen.",
   "idNumberOfRepresentationImage": 3,
   "nameOfMainCharacter": "Spielerin",

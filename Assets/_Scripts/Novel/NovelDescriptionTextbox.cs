@@ -116,6 +116,7 @@ namespace Assets._Scripts.Novel
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
             PlayManager.Instance().SetColorOfVisualNovelToPlay(visualNovelToDisplay.novelColor);
             PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+            PlayManager.Instance().SetDesignationOfNovelToPlay(visualNovelToDisplay.designation);
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
 

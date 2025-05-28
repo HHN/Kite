@@ -10,6 +10,7 @@ namespace Assets._Scripts.Managers
         private Color _colorForNovel;
         private Color _foregroundColorForNovel;
         private string _displayName;
+        private string _designation;
 
         private PlayManager()
         {
@@ -58,6 +59,16 @@ namespace Assets._Scripts.Managers
         public string GetDisplayNameOfNovelToPlay()
         {
             return _displayName;
+        }
+        
+        public void SetDesignationOfNovelToPlay(string v)
+        {
+            _designation = v;
+        }
+
+        public string GetDesignationOfNovelToPlay()
+        {
+            return _designation;
         }
     }
 }

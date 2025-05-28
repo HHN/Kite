@@ -1,6 +1,7 @@
 {
   "idNumberOfNovel": 6,
   "titleOfNovel": "Anmietung eines Büros",
+  "designationOfNovel": "Büro anmieten",
   "descriptionOfNovel": "Du hast heute einen Termin für die Besichtigung von Büroräumen.",
   "nameOfMainCharacter": "Lea",
   "contextForPrompt": "Es ist das Gespräch einer Gründerin, Lea, mit einem Vermieter. Es geht um die Anmietung von Büro-Räumen. Die Gründerin hat sich gut vorbereitet und hofft, dass sie die Büroräume für ihr Unternehmen bekommt.",

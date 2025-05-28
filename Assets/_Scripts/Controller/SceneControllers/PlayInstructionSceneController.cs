@@ -33,7 +33,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             BackStackManager.Instance().Push(SceneNames.PlayInstructionScene);
 
             backgroundColor = PlayManager.Instance().GetColorOfVisualNovelToPlay();
-            novelName.text = PlayManager.Instance().GetDisplayNameOfNovelToPlay();
+            novelName.text = PlayManager.Instance().GetDesignationOfNovelToPlay();
             novelImage.color = backgroundColor;
             toggle.isOn = false;
             toggle2.isOn = false;

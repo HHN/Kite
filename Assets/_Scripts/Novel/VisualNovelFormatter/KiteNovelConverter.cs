@@ -41,6 +41,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 {
                     id = folder.NovelMetaData.IdNumberOfNovel,
                     title = folder.NovelMetaData.TitleOfNovel,
+                    designation = folder.NovelMetaData.DesignationOfNovel,
                     description = folder.NovelMetaData.DescriptionOfNovel,
                     context = folder.NovelMetaData.ContextForPrompt,
                     novelEvents = folder.NovelEventList,
