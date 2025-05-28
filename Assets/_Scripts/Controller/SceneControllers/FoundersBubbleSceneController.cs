@@ -31,15 +31,20 @@ namespace Assets._Scripts.Controller.SceneControllers
         private InfinityScroll infinityScroll;
 
         [SerializeField] private Button novelListButton;
+        [SerializeField] private Image novelListButtonImage;
         [SerializeField] private Button legalInformationButton;
         [SerializeField] private Button settingsButton;
 
-        [Header("Burger Menu")] [SerializeField]
-        private GameObject burgerMenu;
+        [Header("Burger Menu")] 
+        [SerializeField] private Sprite closedBurgerMenuSprite;
+        [SerializeField] private Sprite openedBurgerMenuSprite;
+        [SerializeField] private GameObject burgerMenu;
 
         [SerializeField] private bool isBurgerMenuOpen;
         [SerializeField] private Button burgerMenuBackground;
         [SerializeField] private GameObject burgerMenuButtonPrefab;
+        [SerializeField] private GameObject burgerMenuSeparatorImage;
+        [SerializeField] private GameObject burgerMenuHeadlinePrefab;
         [SerializeField] private List<GameObject> burgerMenuButtons;
 
         [Header("Search Input and Button Containers")] [SerializeField]
@@ -68,6 +73,13 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             var children = burgerMenu.GetComponentsInChildren<Transform>();
             var content = children.FirstOrDefault(k => k.gameObject.name == "Content");
+            
+            // Instantiate the headline and set its sibling index to 0
+            GameObject burgerMenuHeadline = Instantiate(burgerMenuHeadlinePrefab, content?.transform);
+            if (content != null)
+            {
+                burgerMenuHeadline.transform.SetSiblingIndex(0); 
+            }
 
             _isNovelContainedInVersion = new List<NovelEntry>();
             foreach (VisualNovel visualNovel in allKiteNovelsList)
@@ -79,33 +91,58 @@ namespace Assets._Scripts.Controller.SceneControllers
                 };
 
                 _isNovelContainedInVersion.Add(novelEntry);
-
+                
                 CreateBurgerMenuButton(visualNovel, content);
             }
 
-            List<Transform> buttonChildren = new List<Transform>();
+ // Now, collect all children EXCEPT the headline, then sort and reorder
+            List<Transform> sortableChildren = new List<Transform>();
             if (content != null)
             {
                 foreach (Transform child in content)
                 {
-                    if (!child.gameObject.name.Contains("Search") || !child.gameObject.name.Contains("Background"))
+                    // Exclude the headline from the sorting list
+                    if (!child.gameObject.name.Contains("Headline"))
                     {
-                        buttonChildren.Add(child);
-                    }
-                    else
-                    {
-                        buttonChildren.Insert(child.gameObject.name.Contains("Background") ? 0 : 1, child);
+                        sortableChildren.Add(child);
                     }
                 }
             }
 
-            // Alphabetisch sortieren
-            buttonChildren = buttonChildren.OrderBy(child => child.name).ToList();
+            // Separate search/background, then sort other children
+            List<Transform> searchAndBackground = new List<Transform>();
+            List<Transform> otherButtons = new List<Transform>();
 
-            // Reihenfolge in der Hierarchie anpassen
-            for (int i = 0; i < buttonChildren.Count; i++)
+            foreach(Transform child in sortableChildren)
             {
-                buttonChildren[i].SetSiblingIndex(i);
+                if (child.gameObject.name.Contains("Search") || child.gameObject.name.Contains("Background"))
+                {
+                    searchAndBackground.Add(child);
+                }
+                else
+                {
+                    otherButtons.Add(child);
+                }
+            }
+
+            // Sort other buttons alphabetically
+            otherButtons = otherButtons.OrderBy(child => child.name).ToList();
+
+            // Reconstruct the order: Headline (already at 0), then Background, then Search, then sorted Novel buttons/separators
+            int currentSiblingIndex = 1; // Start from 1 because headline is at 0
+
+            // Position Background and Search
+            foreach(Transform child in searchAndBackground.OrderBy(child => child.gameObject.name.Contains("Background") ? 0 : 1))
+            {
+                child.SetSiblingIndex(currentSiblingIndex);
+                currentSiblingIndex++;
+            }
+
+            // Position sorted novel buttons and separators
+            foreach (Transform child in otherButtons)
+            {
+                child.SetSiblingIndex(currentSiblingIndex);
+                currentSiblingIndex++;
             }
 
             novelListButton.onClick.AddListener(OnNovelListButton);
@@ -144,6 +181,11 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             burgerMenuButton.GetComponentInChildren<Image>().color = visualNovel.novelColor;
             burgerMenuButtons.Add(burgerMenuButton);
+            
+            GameObject separatorLine = Instantiate(burgerMenuSeparatorImage, content?.transform);
+            separatorLine.name = $"{novelName}Separator";
+            separatorLine.GetComponentInChildren<Image>().name = $"{novelName}Separator";
+            burgerMenuButtons.Add(separatorLine);
         }
 
         public void OnBackgroundButton()
@@ -178,11 +220,15 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             if (isBurgerMenuOpen)
             {
+                novelListButtonImage.sprite = closedBurgerMenuSprite;
+                
                 burgerMenu.gameObject.SetActive(false);
                 isBurgerMenuOpen = false;
                 return;
             }
 
+            novelListButtonImage.sprite = openedBurgerMenuSprite;
+            
             isBurgerMenuOpen = true;
             burgerMenu.gameObject.SetActive(true);
             FontSizeManager.Instance().UpdateAllTextComponents();
@@ -273,7 +319,9 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private void OnButtonFromBurgerMenu()
         {
+            Debug.Log($"OnButtonFromBurgerMenu called for button: {EventSystem.current.currentSelectedGameObject.name}");
             GameObject buttonObject = EventSystem.current.currentSelectedGameObject;
+            Debug.Log(buttonObject.name.Replace("Button", ""));
             VisualNovelNames novelNames = VisualNovelNamesHelper.ValueByString(buttonObject.name.Replace("Button", ""));
 
             var entry = _isNovelContainedInVersion.FirstOrDefault(novel => novel.novelId == VisualNovelNamesHelper.ToInt(novelNames));

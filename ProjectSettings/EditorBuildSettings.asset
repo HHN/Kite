@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/_Scenes/NovelHistoryScene.unity
     guid: 3d8065ad5dae4a248a0ba319ba324138
   - enabled: 1
-    path: Assets/_Scenes/Einstellungen/AccessibilityScene.unity
+    path: Assets/_Scenes/Einstellungen/BarrierefreiheitScene.unity
     guid: b9704eff5730cc848b7e15173484a58e
   - enabled: 1
     path: Assets/_Scenes/LegalInformation/PrivacyPolicyScene.unity
@@ -39,13 +39,13 @@ EditorBuildSettings:
     path: Assets/_Scenes/LegalInformation/ResourcesScene.unity
     guid: 13cfd61506123d946bf5196688dd9110
   - enabled: 1
-    path: Assets/_Scenes/Einstellungen/SettingsScene.unity
+    path: Assets/_Scenes/SettingsScene.unity
     guid: 10175c04a1bfea24c972082d4b2d7942
   - enabled: 1
     path: Assets/_Scenes/BookmarkedNovelsScene.unity
     guid: 46df8111616ab4741b32e88ca04b2348
   - enabled: 1
-    path: Assets/_Scenes/Einstellungen/SoundSettingsScene.unity
+    path: Assets/_Scenes/Einstellungen/SoundeinstellungScene.unity
     guid: ad834cd147064c242810f7f44030a821
   - enabled: 1
     path: Assets/_Scenes/KnowledgeScene.unity
