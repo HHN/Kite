@@ -13,6 +13,7 @@ namespace Assets._Scripts.UIElements.SceneBase
     {
         [SerializeField] private Button backButton;
         [SerializeField] private Button legalInformationButton;
+        [SerializeField] private Button settingsButton;
         [SerializeField] private GameObject warningMessageBox;
         [SerializeField] private GameObject warningMessageBoxIntro;
         [SerializeField] private GameObject warningMessageBoxClose;
@@ -45,6 +46,7 @@ namespace Assets._Scripts.UIElements.SceneBase
 
             backButton.onClick.AddListener(OnBackButton);
             legalInformationButton.onClick.AddListener(OnLegalInformationButton);
+            settingsButton.onClick.AddListener(OnSettingsButton);
         }
 
         private void OnBackButton()
@@ -104,16 +106,21 @@ namespace Assets._Scripts.UIElements.SceneBase
                 warningMessageBoxObject.Activate();
             }
         }
-        
-        public void OnLegalInformationButton()
+
+        private void OnLegalInformationButton()
         {
-            Debug.Log($"OnLegalInformationButton");
+            Debug.Log($"OnLegalInformationButton called in SceneHeader for scene: {SceneManager.GetActiveScene().name}");
             SceneLoader.LoadLegalInformationScene();
+        }
+
+        private void OnSettingsButton()
+        {
+            Debug.Log($"OnSettingsButton called in SceneHeader for scene: {SceneManager.GetActiveScene().name}");
+            SceneLoader.LoadSettingsScene();
         }
 
         public void HandleButtons(bool isIntroScene)
         {
-            Debug.Log("HandleButtons");
             backButton.gameObject.SetActive(!isIntroScene);
             legalInformationButton.gameObject.SetActive(isIntroScene);
         }

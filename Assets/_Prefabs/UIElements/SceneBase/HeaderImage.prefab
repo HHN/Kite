@@ -237,6 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backButton: {fileID: 280254953071386967}
   legalInformationButton: {fileID: 82571465049839946}
+  settingsButton: {fileID: 6215146667960030873}
   warningMessageBox: {fileID: 5629918238507184917, guid: 52d64ed2a3cd0524ca7296e9ccb5ddca, type: 3}
   warningMessageBoxIntro: {fileID: 5629918238507184917, guid: 2398ab08a15d5c34ca9902e6ce7e7907, type: 3}
   warningMessageBoxClose: {fileID: 5629918238507184917, guid: 02336cf7844601448ad76ec2335ed21f, type: 3}
