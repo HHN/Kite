@@ -1023,7 +1023,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 72.25, y: 40}
-  m_SizeDelta: {x: 65, y: 52}
+  m_SizeDelta: {x: 59, y: 45}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &790033021
 MonoBehaviour:
@@ -1045,7 +1045,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 815206590fe4f0548bb22d6336e237be, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 85c71c934fac92e48aa3f9c879cf0ed5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2903,8 +2903,8 @@ MonoBehaviour:
   novelListButtonImage: {fileID: 790033021}
   legalInformationButton: {fileID: 1561547188}
   settingsButton: {fileID: 1117367867}
-  closedBurgerMenuSprite: {fileID: 21300000, guid: 815206590fe4f0548bb22d6336e237be, type: 3}
-  openedBurgerMenuSprite: {fileID: 21300000, guid: 89eb997d947c0a648a502f56bc7ac459, type: 3}
+  closedBurgerMenuSprite: {fileID: 21300000, guid: 85c71c934fac92e48aa3f9c879cf0ed5, type: 3}
+  openedBurgerMenuSprite: {fileID: 21300000, guid: ce727a8acb14f1548b92976a971c8f58, type: 3}
   burgerMenu: {fileID: 1022675892}
   isBurgerMenuOpen: 0
   burgerMenuBackground: {fileID: 1022675897}

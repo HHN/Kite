@@ -156,18 +156,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             settingsButton.onClick.AddListener(OnSettingsButton);
             burgerMenuBackground.onClick.AddListener(OnBackgroundButton);
 
-            // Die Debug.LogError und die if-else-Anweisung bezüglich novelButtons sind hier nicht mehr relevant,
-            // da wir die Liste dynamisch füllen.
-            // if (novelButtons != null && novelButtons.Count > 0)
-            // {
-            //     // Speichere die ursprüngliche Reihenfolge der Container
-            //     // new List<GameObject>(novelButtons);
-            // }
-            // else
-            // {
-            //     Debug.LogError("Die Button-Container-Liste ist nicht zugewiesen oder leer.");
-            // }
-
             StartCoroutine(TextToSpeechManager.Instance.Speak(" "));
             GlobalVolumeManager.Instance.StopSound();
         }
