@@ -54,7 +54,7 @@ namespace Assets._Scripts.Test
                 if (!string.IsNullOrEmpty(value))
                 {
                     // Dynamisch alle möglichen `Charakter01...` zuordnen
-                    string dynamicPattern = $@"Charakter{numberMatch}";
+                    string dynamicPattern = $@"Character{int.Parse(numberMatch)}";
 
                     if (!_characterToSpeakerMap.ContainsKey(dynamicPattern))
                     {
@@ -79,7 +79,6 @@ namespace Assets._Scripts.Test
         {
             string nodePattern = @"::\s*([^\n\{\[\|]+).*?\n((?:.|\n)*?)(?=(::|$))";
             string linkPattern = @"\[\[(?:(.*?)(?:\s*(?:\||->)\s*(.*?))|([^|\]]+))\]\]";
-            string speakerPattern = @">>([^\s<>]+):<<"; // Fängt jeden Sprecher ein, der mit >> beginnt und :<< endet
 
             MatchCollection matches = Regex.Matches(tweeContent, nodePattern);
 
@@ -87,53 +86,38 @@ namespace Assets._Scripts.Test
             {
                 string nodeName = match.Groups[1].Value.Trim();
                 string nodeBody = match.Groups[2].Value;
+                string dialogue = "";
 
                 List<Link> links = new List<Link>();
                 Dictionary<string,int> linkCount = new Dictionary<string,int>();
                 List<(string Speaker, string Text)> conversations = new List<(string Speaker, string Text)>();
 
-                // Sprecher extrahieren
-                MatchCollection speakerMatches = Regex.Matches(nodeBody, speakerPattern);
-                int lastIndex = 0;
-                foreach (Match speakerMatch in speakerMatches)
+                //Speaker ersetzen
+                foreach (KeyValuePair<string,string> speaker in _characterToSpeakerMap)
+                {
+                    if(speaker.Value != "")
+                    {
+                        nodeBody = nodeBody.Replace(speaker.Key, speaker.Value);
+                    }
+                }
+
+               
+                var speakerMatch = Regex.Match(nodeBody, @">>(.*?)\|.*?<<\s*(.*?)\s*>>--<<", RegexOptions.Singleline);
+                if (speakerMatch.Success)
                 {
                     string speaker = speakerMatch.Groups[1].Value.Trim();
-                    Debug.Log("speaker: " + speaker);
-
-                    // Prüfe, ob der Sprecher in der CharacterToSpeakerMap enthalten ist
-                    foreach (var characterToSpeaker in _characterToSpeakerMap)
-                    {
-                        Debug.Log("characterToSpeaker: " + characterToSpeaker.Key + " " + characterToSpeaker.Value);
-                        if (speaker.Contains(characterToSpeaker.Key))
-                        {
-                            speaker = characterToSpeaker.Value; // Ersetze durch den gemappten Sprecher
-                            Debug.Log("speaker new: " + speaker);
-                        }
-                        // else
-                        // {
-                        //     Debug.LogWarning($"Sprecher '{speaker}' nicht in CharacterToSpeakerMap gefunden!");
-                        // }
-                    }
-
-                    int startIndex = speakerMatch.Index + speakerMatch.Length;
-                    int endIndex = nodeBody.IndexOf(">>", startIndex);
-                    endIndex = endIndex == -1 ? nodeBody.Length : endIndex;
-
-                    string text = nodeBody.Substring(startIndex, endIndex - startIndex).Trim();
-                    conversations.Add((speaker, text));
-                    lastIndex = endIndex;
+                    string message = speakerMatch.Groups[2].Value.Trim();
+                    dialogue = $"{speaker}: {message}\n";
                 }
 
-                // Füge verbleibenden Text als Teil der letzten Sprecher-Phase hinzu
-                if (lastIndex < nodeBody.Length)
+                // Extract bias
+                var biasMatch = Regex.Match(nodeBody, @">>Bias\|(.*?)<<");
+                if (biasMatch.Success)
                 {
-                    string remainingText = nodeBody.Substring(lastIndex).Trim();
-                    if (!string.IsNullOrEmpty(remainingText))
-                    {
-                        conversations.Add(("Unbekannt", remainingText));
-                    }
+                    string bias = biasMatch.Groups[1].Value.Trim();
+                    dialogue = dialogue + $"Bias: {bias}";
                 }
-
+                
                 // Links extrahieren
                 MatchCollection linkMatches = Regex.Matches(nodeBody, linkPattern);
                 foreach (Match linkMatch in linkMatches)
@@ -169,6 +153,7 @@ namespace Assets._Scripts.Test
                     Node newNode = new Node(nodeName, nodeBody, links);
                     _graph[nodeName] = newNode;
                     _graph[nodeName].linkCount = linkCount;
+                    newNode.dialogue = dialogue;
                 }
                 else
                 {
@@ -292,7 +277,7 @@ namespace Assets._Scripts.Test
         {
             foreach(KeyValuePair<Node,Link> node in path)
             {
-                WriteInFile(node.Key.body, outputFile);
+                WriteInFile(node.Key.dialogue, outputFile);
                 WriteInFile("Spielerin: " + node.Value.dialogueText, outputFile);
             }
             WriteInFile("PATH FINISHED", outputFile);
@@ -424,7 +409,7 @@ namespace Assets._Scripts.Test
     {
         public string name;
         public string body;
-        public string speaker;
+        public string dialogue;
         public List<Link> links = new List<Link>();
         public Dictionary<string,int> linkCount = new Dictionary<string,int>();
 
