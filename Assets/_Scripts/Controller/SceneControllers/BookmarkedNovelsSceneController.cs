@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -47,27 +49,52 @@ namespace Assets._Scripts.Controller.SceneControllers
                 novelButton.Value.onClick.AddListener(() => OnNovelButton(novelButton.Key));
                 novelButton.Value.gameObject.SetActive(false);
             }
+            
+            // Holen Sie sich alle Kite Novels und erstellen Sie ein Dictionary für schnellen Zugriff
+            List<VisualNovel> allKiteNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+            Dictionary<long, VisualNovel> allKiteNovelsById = allKiteNovels.ToDictionary(novel => novel.id);
+
 
             List<long> favoriteIds = FavoritesManager.Instance().GetFavoritesIds();
             int index = 0;
 
             foreach (long id in favoriteIds)
             {
-                GameObject novel = GetNovelById(id);
-
-                if (novel == null)
+                // Versuchen Sie, das VisualNovel-Objekt anhand der ID zu finden
+                if (allKiteNovelsById.TryGetValue(id, out VisualNovel foundNovel))
                 {
-                    continue;
+                    GameObject novelButtonInstance = GetNovelById(id);
+
+                    if (novelButtonInstance == null)
+                    {
+                        Debug.LogWarning($"Button instance for Novel ID {id} not found in scene. Skipping.");
+                        continue;
+                    }
+
+                    Vector3 localPosition = GetLocalPositionByIndex(index);
+                    novelButtonInstance.transform.localPosition = localPosition;
+                    novelButtonInstance.gameObject.SetActive(true);
+
+                    // Hier setzen wir den Text basierend auf der foundNovel
+                    TextMeshProUGUI novelText = novelButtonInstance.gameObject.GetComponentInChildren<TextMeshProUGUI>();
+                    if (novelText != null)
+                    {
+                        // Verwenden Sie 'designation' für KiteNovels und 'title' für andere
+                        novelText.text = foundNovel.isKiteNovel ? foundNovel.designation : foundNovel.title;
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"TextMeshProUGUI component not found on novel button for ID: {id}");
+                    }
+
+                    index++;
                 }
-
-                Vector3 localPosition = GetLocalPositionByIndex(index);
-                novel.transform.localPosition = localPosition;
-                novel.gameObject.SetActive(true);
-
-                index++;
+                else
+                {
+                    Debug.LogWarning($"Favorite Novel with ID {id} not found in allKiteNovels. Skipping.");
+                }
             }
-
-
+            
             SetVisualNovelHolderHeight(index);
         }
 
@@ -140,6 +167,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
             PlayManager.Instance().SetColorOfVisualNovelToPlay(novelColor);
             PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+            PlayManager.Instance().SetDesignationOfNovelToPlay(visualNovelToDisplay.designation);
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
 

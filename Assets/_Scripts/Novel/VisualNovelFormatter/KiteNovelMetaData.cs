@@ -8,6 +8,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         public long IdNumberOfNovel { get; set; } = 0;
 
         public string TitleOfNovel { get; set; } = "";
+        public string DesignationOfNovel { get; set; } = "";
 
         public string DescriptionOfNovel { get; set; } = "";
 

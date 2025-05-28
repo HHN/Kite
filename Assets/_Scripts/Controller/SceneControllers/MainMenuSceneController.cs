@@ -214,7 +214,8 @@ namespace Assets._Scripts.Controller.SceneControllers
                     PlayManager.Instance().SetVisualNovelToPlay(novel); // Set the novel to be played in the PlayManager          
                     PlayManager.Instance().SetColorOfVisualNovelToPlay(novel.novelColor); // Set the color for the novel
                     PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelNames)); // Set the display name for the novel
-
+                    PlayManager.Instance().SetDesignationOfNovelToPlay(novel.designation);
+                    
                     // Load the PlayNovelScene
                     SceneLoader.LoadPlayNovelScene();
                 }

@@ -1,6 +1,7 @@
 {
   "idNumberOfNovel": 10,
   "titleOfNovel": "Banktermin wegen Kreditbeantragung",
+  "designationOfNovel": "Kredit beantragen",
   "descriptionOfNovel": "Du hast heute einen Banktermin, um einen Kredit zu beantragen.",
   "nameOfMainCharacter": "Spielerin",
   "contextForPrompt": "Es ist das Gespräch einer Gründerin, mit einem Bankmitarbeiter. Es geht um einen Kredit. Die Gründerin hat sich gut vorbereitet und hofft Informationen über den Kredit zu erhalten.",
