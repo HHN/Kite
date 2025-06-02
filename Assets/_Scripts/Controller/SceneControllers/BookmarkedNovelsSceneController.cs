@@ -32,6 +32,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         public void Start()
         {
+            BackStackManager.Instance().Push(SceneNames.BookmarkedNovelsScene);
             _novelButtons = new Dictionary<VisualNovelNames, Button>
             {
                 { VisualNovelNames.BankKreditNovel, bankkreditNovel },

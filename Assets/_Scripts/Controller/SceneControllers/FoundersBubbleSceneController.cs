@@ -8,6 +8,7 @@ using Assets._Scripts.UIElements.FoundersBubble;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Assets._Scripts.Controller.SceneControllers
@@ -63,7 +64,12 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.FoundersBubbleScene);
+            BackStackManager.Instance().Clear();
+
+            DestroyPlayNovelSceneController();
+            
+            FooterActivationManager.Instance().SetFooterActivated(true);
+
             GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
             currentlyOpenedVisualNovelPopup = VisualNovelNames.None;
 

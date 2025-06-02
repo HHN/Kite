@@ -94,6 +94,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         public void Start()
         {
+            BackStackManager.Instance().Push(SceneNames.KnowledgeScene);
             InitializeButtonActions();
             AddButtonListeners();
             

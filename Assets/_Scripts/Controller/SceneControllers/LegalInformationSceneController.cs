@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Assets._Scripts.Managers;
 using Assets._Scripts.SceneManagement;
 using TMPro;
 using UnityEngine;
@@ -20,6 +21,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             InitializeButtonActions();
             AddButtonListeners();
             versionInfo.text = "Version: " + Application.version;
+            BackStackManager.Instance().Push(SceneNames.LegalInformationScene);
         }
 
         private void InitializeButtonActions()

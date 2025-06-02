@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets._Scripts.Managers
 {
@@ -33,14 +34,22 @@ namespace Assets._Scripts.Managers
             _backStack.Push(sceneName);
         }
 
-        public void Pop()
+        public string Pop()
         {
             if (_backStack.Count == 0)
             {
-                return;
+                return "";
+            }
+            
+            foreach (string element in _backStack)
+            {
+                Debug.Log(element);
             }
 
+
+            string sceneName = _backStack.Peek();
             _backStack.Pop();
+            return sceneName;
         }
 
         private string Peek()

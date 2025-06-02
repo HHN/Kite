@@ -117,7 +117,7 @@ namespace Assets._Scripts
             {
                 if (blockText.StartsWith("#"))
                 {
-                    Debug.Log($"blockText: {blockText}");
+                    // Debug.Log($"blockText: {blockText}");
                     if (blockText.StartsWith("#### "))
                     {
                         textComp.fontSize = heading4Size;
@@ -134,9 +134,9 @@ namespace Assets._Scripts
                     }
                     else if (blockText.StartsWith("## "))
                     {
-                        Debug.Log($"heading2Size: {heading2Size}");
+                        // Debug.Log($"heading2Size: {heading2Size}");
                         textComp.fontSize = heading2Size;
-                        Debug.Log($"textComp.fontSize: {textComp.fontSize}");
+                        // Debug.Log($"textComp.fontSize: {textComp.fontSize}");
                         textComp.color = heading2Color;
                         textComp.fontStyle = TMPro.FontStyles.Bold;
                         displaytext = linkRegex.Replace(blockText.Substring(3), MatchEvaluator);
