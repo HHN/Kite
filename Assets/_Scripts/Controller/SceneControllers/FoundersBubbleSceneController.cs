@@ -61,6 +61,8 @@ namespace Assets._Scripts.Controller.SceneControllers
             BackStackManager.Instance().Clear();
 
             DestroyPlayNovelSceneController();
+            
+            FooterActivationManager.Instance().SetFooterActivated(true);
 
             GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
 

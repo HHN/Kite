@@ -144,6 +144,8 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private void Start()
         {
+            FooterActivationManager.Instance().SetFooterActivated(false);
+            
             _conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
 
             AnalyticsServiceHandler.Instance().StartStopwatch();
