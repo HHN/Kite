@@ -7,18 +7,21 @@ namespace Assets._Scripts.SceneManagement
 {
     public abstract class SceneLoader
     {
-        
-        private const string NovelBaseScene = "PlayNovelScene";
-        
+        private const string NovelBaseScene       = "PlayNovelScene";
         private const string DontDestroySceneName = "DontDestroyOnLoad";
-        
-        // Szenen, bei deren Laden wir die PlayNovelScene vorher vollständig schließen
+
+        // Szenen, die KEIN additiver Wechsel sein sollen
         private static readonly HashSet<string> SingleLoadExceptions = new HashSet<string>
         {
             "FeedBackScene",
             "FoundersBubbleScene"
         };
-        
+
+        // Merkt sich den Namen der aktuell geladenen Sub-Szene (oder null, wenn keine).
+        // Wird in LoadScene() aktualisiert, muss aber auch zurückgesetzt werden, wenn Ihr 
+        // die Sub-Szene außerhalb von LoadScene entladet (z.B. per Back-Button).
+        private static string _currentSubScene = null;
+
         public static void LoadMainMenuScene()
         {
             LoadScene(SceneNames.MainMenuScene);
@@ -26,9 +29,8 @@ namespace Assets._Scripts.SceneManagement
 
         public static void LoadPlayNovelScene()
         {
-            // Überprüfen, ob ein Speicherstand für die nächste Szene existiert
+            // Überprüfen, ob ein Speicherstand existiert…
             GameManager.Instance.CheckAndSetAllNovelsStatus();
-
             LoadScene(SceneNames.PlayNovelScene);
         }
 
@@ -96,79 +98,156 @@ namespace Assets._Scripts.SceneManagement
         {
             LoadScene(SceneNames.SoundSettingsScene);
         }
-        
+
         public static void LoadKnowledgeScene()
         {
             LoadScene(SceneNames.KnowledgeScene);
         }
-        
-        // Controller stoppen, wie gehabt...
-        // GameObject oldController = GameObject.Find("Controller");
-        //     if (oldController != null)
-        // {
-        //     var sc = oldController.GetComponent<SceneController>();
-        //     if (sc != null) sc.OnStop();
-        // }
-        
+
+        // =========================================================================
+        // Die zentrale Ladelogik:
+        // =========================================================================
         public static void LoadScene(string sceneName)
-    {
-        // ----------------------------------------------------------
-        // 1) Sonderfälle: Feedback oder FoundersBubble
-        //    -> PlayNovelScene beenden und dann SINGLE-Mode laden
-        // ----------------------------------------------------------
-        if (SingleLoadExceptions.Contains(sceneName))
         {
-            // Wenn noch geladen, unloaden
-            if (SceneManager.GetSceneByName(NovelBaseScene).isLoaded)
+            // ────────────────────────────────────────────────────────────────────────────
+            // a) Wurde _currentSubScene extern bereits entladen? Dann zurücksetzen:
+            // ────────────────────────────────────────────────────────────────────────────
+            if (_currentSubScene != null && !SceneManager.GetSceneByName(_currentSubScene).isLoaded)
             {
-                SceneManager.UnloadSceneAsync(NovelBaseScene);
+                _currentSubScene = null;
             }
-            // Danach ganz normal laden (ersetzt alle anderen Szenen)
-            SceneManager.LoadScene(sceneName);
-            return;
-        }
 
-        // ----------------------------------------------------------
-        // 2) Prüfen, ob wir uns noch im Novel-Modus befinden
-        //    (PlayNovelScene ist persistent im Hintergrund)
-        // ----------------------------------------------------------
-        bool inNovelMode = SceneManager.GetSceneByName(NovelBaseScene).isLoaded;
-
-        // a) Wenn PlayNovelScene nicht geladen oder wir direkt zurück zu ihr wollen:
-        if (!inNovelMode || sceneName == NovelBaseScene)
-        {
-            SceneManager.LoadScene(sceneName);
-            return;
-        }
-
-        // ----------------------------------------------------------
-        // 3) Novel-Modus & keine Ausnahme:
-        //    - unload aller Subs (außer PlayNovelScene & DontDestroy)
-        //    - load der neuen Sub-Szene additiv
-        // ----------------------------------------------------------
-        // 3a) Alte Sub-Szenen ermitteln und entladen
-        for (int i = 0; i < SceneManager.sceneCount; i++)
-        {
-            var s = SceneManager.GetSceneAt(i);
-            if (!s.isLoaded) continue;
-            if (s.name == NovelBaseScene)       continue;
-            if (s.name == DontDestroySceneName) continue;
-            SceneManager.UnloadSceneAsync(s);
-        }
-
-        // 3b) Neue Sub-Szene additiv laden
-        var loadOp = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-        loadOp.completed += _ =>
-        {
-            var newlyLoaded = SceneManager.GetSceneByName(sceneName);
-            if (newlyLoaded.IsValid() && newlyLoaded.isLoaded)
+            // ----------------------------------------------------------
+            // 1) Sonderfälle: Feedback oder FoundersBubble → Single-Mode
+            //    (PlayNovelScene wird entladen, keine additive Logik)
+            // ----------------------------------------------------------
+            if (SingleLoadExceptions.Contains(sceneName))
             {
-                SceneManager.SetActiveScene(newlyLoaded);
+                // Wenn Base-Szene noch geladen ist, entladen
+                if (SceneManager.GetSceneByName(NovelBaseScene).isLoaded)
+                {
+                    SceneManager.UnloadSceneAsync(NovelBaseScene);
+                }
+                // Normales Single-Laden
+                SceneManager.LoadScene(sceneName);
+                // Nach Single-Load müssen wir unbedingt alle Flags zurücksetzen:
+                ClearPreservedControllers();
+                _currentSubScene = null;
+                return;
             }
-        };
-    }
-        
-            
+
+            // ----------------------------------------------------------
+            // 2) Prüfen, ob wir uns noch im Novel-Mode befinden
+            //    (PlayNovelScene ist persistent im Hintergrund)
+            // ----------------------------------------------------------
+            bool inNovelMode = SceneManager.GetSceneByName(NovelBaseScene).isLoaded;
+
+            // a) Wenn PlayNovelScene nicht geladen oder explizit zurück zu ihr:
+            if (!inNovelMode || sceneName == NovelBaseScene)
+            {
+                // Alle Persistent-Controller freigeben
+                ClearPreservedControllers();
+                // Kein Sub-Scene-State mehr
+                _currentSubScene = null;
+
+                // Single-Mode-Laden
+                SceneManager.LoadScene(sceneName);
+                return;
+            }
+
+            // ----------------------------------------------------------
+            // 3) Novel-Mode & keine Ausnahme:
+            //    Hier tauschen wir die jeweils aktive Sub-Szene aus.
+            // ----------------------------------------------------------
+
+            // 3a) Beim ersten Additive-Load speichern wir die Base-Controller
+            if (!controllersPreserved)
+            {
+                PreserveBaseControllers();
+                controllersPreserved = true;
+            }
+
+            // 3b) Wenn noch keine Sub-Szene geladen ist (erstes Mal):
+            if (_currentSubScene == null)
+            {
+                var firstOp = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+                firstOp.completed += _ =>
+                {
+                    Scene newlyLoaded = SceneManager.GetSceneByName(sceneName);
+                    if (newlyLoaded.IsValid() && newlyLoaded.isLoaded)
+                    {
+                        // 1. Neue additiv geladene Szene aktivieren
+                        SceneManager.SetActiveScene(newlyLoaded);
+                        // 2. Den Namen merken, damit wir sie später entladen/kontrollieren können
+                        _currentSubScene = sceneName;
+                    }
+                };
+                return;
+            }
+
+            // 3c) Wenn bereits eine Sub-Szene offen ist, tauschen wir sie aus
+            //     → Lade zuerst die neue, setze sie als aktiv, und erst dann entlade ich die alte.
+            {
+                var op = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+                op.completed += _ =>
+                {
+                    // 1. Neue Szene gefunden und aktiv setzen
+                    Scene newScene = SceneManager.GetSceneByName(sceneName);
+                    if (newScene.IsValid() && newScene.isLoaded)
+                    {
+                        SceneManager.SetActiveScene(newScene);
+                        // 2. Jetzt erst die alte Sub-Szene entladen (falls sie noch existiert)
+                        if (!string.IsNullOrEmpty(_currentSubScene))
+                        {
+                            Scene oldScene = SceneManager.GetSceneByName(_currentSubScene);
+                            if (oldScene.IsValid() && oldScene.isLoaded)
+                            {
+                                SceneManager.UnloadSceneAsync(oldScene);
+                            }
+                        }
+                        // 3. Und nun den neuen Namen speichern
+                        _currentSubScene = sceneName;
+                    }
+                };
+                return;
+            }
         }
 
+        // =========================================================================
+        // (Optional) Base-Controller persistieren
+        // =========================================================================
+        private static readonly List<GameObject> PreservedControllers  = new List<GameObject>();
+        internal static bool controllersPreserved = false;
+
+        private static void PreserveBaseControllers()
+        {
+            Scene baseScene = SceneManager.GetSceneByName(NovelBaseScene);
+            if (!baseScene.isLoaded) return;
+
+            foreach (var root in baseScene.GetRootGameObjects())
+            {
+                var controllers = root.GetComponentsInChildren<SceneController>(true);
+                foreach (var sc in controllers)
+                {
+                    var go = sc.gameObject;
+                    if (!PreservedControllers.Contains(go))
+                    {
+                        Object.DontDestroyOnLoad(go);
+                        PreservedControllers.Add(go);
+                    }
+                }
+            }
+        }
+
+        private static void ClearPreservedControllers()
+        {
+            foreach (var go in PreservedControllers)
+            {
+                if (go != null)
+                    Object.Destroy(go);
+            }
+            PreservedControllers.Clear();
+            controllersPreserved = false;
+        }
     }
+}

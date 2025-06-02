@@ -1,5 +1,5 @@
 using Assets._Scripts.Controller.SceneControllers;
-using Assets._Scripts.Player;
+using Assets._Scripts.Managers;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.UIElements.Messages;
 using Assets._Scripts.Utilities;
@@ -65,11 +65,57 @@ namespace Assets._Scripts.UIElements.SceneBase
                 }
                 else
                 {
-                    string lastScene = SceneRouter.GetTargetSceneForBackButton();
+                    // string lastScene = SceneRouter.GetTargetSceneForBackButton();
+                    string lastScene = BackStackManager.Instance().Pop();
+                    
+                    // As long as the loaded scene is the active scene, load the next scene
+                    while (!string.IsNullOrEmpty(lastScene) && lastScene == SceneManager.GetActiveScene().name)
+                    {
+                        lastScene = BackStackManager.Instance().Pop();
+                    }
 
                     if (string.IsNullOrEmpty(lastScene))
                     {
-                        SceneLoader.LoadMainMenuScene();
+                        Scene active = SceneManager.GetActiveScene();
+                        bool isAdditiveSubScene = active.name != "PlayNovelScene" 
+                                                  && active.isLoaded;
+                        if (isAdditiveSubScene)
+                        {
+                            // A) Sub-Szene entladen
+                            SceneManager.UnloadSceneAsync(active);
+
+                            // B) PlayNovelScene wieder aktivieren
+                            Scene baseScene = SceneManager.GetSceneByName("PlayNovelScene");
+                            if (baseScene.IsValid() && baseScene.isLoaded)
+                            {
+                                SceneManager.SetActiveScene(baseScene);
+                            }
+                            return;
+                        }
+                        else
+                        {
+                            SceneLoader.LoadFoundersBubbleScene(); 
+                            return;
+                        }
+                    }
+                    if (lastScene == "PlayNovelScene")
+                    {
+                        // Wenn der Backstack gerade genau "PlayNovelScene" geliefert hat,
+                        // soll die Basis-Szene nur wieder aktiv gesetzt werden –
+                        // auf keinen Fall neu geladen.
+                        // Falls aktuell noch eine Additive-Sub-Szene offen ist, entlade sie…
+                        Scene active = SceneManager.GetActiveScene();
+                        if (active.name != "PlayNovelScene")
+                        {
+                            SceneManager.UnloadSceneAsync(active);
+                        }
+
+                        // Nun PlayNovelScene zum Active machen
+                        var playNovel = SceneManager.GetSceneByName("PlayNovelScene");
+                        if (playNovel.IsValid() && playNovel.isLoaded)
+                        {
+                            SceneManager.SetActiveScene(playNovel);
+                        }
                         return;
                     }
 

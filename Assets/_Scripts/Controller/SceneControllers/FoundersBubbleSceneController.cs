@@ -8,6 +8,7 @@ using Assets._Scripts.UIElements.FoundersBubble;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Assets._Scripts.Controller.SceneControllers
@@ -57,7 +58,9 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.FoundersBubbleScene);
+            BackStackManager.Instance().Clear();
+
+            DestroyPlayNovelSceneController();
 
             GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
 
@@ -126,6 +129,17 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             StartCoroutine(TextToSpeechManager.Instance.Speak(" "));
             GlobalVolumeManager.Instance.StopSound();
+        }
+        
+        private void DestroyPlayNovelSceneController()
+        {
+            // Controller suchen, der per DontDestroyOnLoad in den Persistent‐Root verschoben wurde
+            GameObject persistentController = GameObject.Find("Controller");
+            if (persistentController != null)
+            {
+                // Zerstört das GameObject inklusive aller angehängten Komponenten
+                Destroy(persistentController);
+            }
         }
 
         private void CreateBurgerMenuButton(VisualNovel visualNovel, Transform content)

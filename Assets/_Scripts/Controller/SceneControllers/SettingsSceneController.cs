@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Assets._Scripts.Managers;
 using Assets._Scripts.SceneManagement;
 using TMPro;
 using UnityEngine;
@@ -16,6 +17,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         public void Start()
         {
+            BackStackManager.Instance().Push(SceneNames.SettingsScene);
             InitializeButtonActions();
             AddButtonListeners();
             versionInfo.text = "Version: " + Application.version;
