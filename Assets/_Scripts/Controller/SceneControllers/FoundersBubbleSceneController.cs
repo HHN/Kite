@@ -165,6 +165,18 @@ namespace Assets._Scripts.Controller.SceneControllers
             StartCoroutine(TextToSpeechManager.Instance.Speak(" "));
             GlobalVolumeManager.Instance.StopSound();
         }
+        
+        private void DestroyPlayNovelSceneController()
+        {
+            // Controller suchen, der per DontDestroyOnLoad in den Persistent‐Root verschoben wurde
+            GameObject persistentController = GameObject.Find("Controller");
+            if (persistentController != null)
+            {
+                // Zerstört das GameObject inklusive aller angehängten Komponenten
+                Destroy(persistentController);
+            }
+        }
+
 
 // Die CreateBurgerMenuButton Methode muss jetzt nur den Button zurückgeben
         private GameObject CreateBurgerMenuButton(VisualNovel visualNovel, Transform content)
