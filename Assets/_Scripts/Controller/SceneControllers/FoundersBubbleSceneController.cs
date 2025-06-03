@@ -66,6 +66,8 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             BackStackManager.Instance().Clear();
             
+            DestroyPlayNovelSceneController();
+            
             FooterActivationManager.Instance().SetFooterActivated(true);
 
             GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
@@ -162,6 +164,17 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             StartCoroutine(TextToSpeechManager.Instance.Speak(" "));
             GlobalVolumeManager.Instance.StopSound();
+        }
+
+        private void DestroyPlayNovelSceneController()
+        {
+            // Controller suchen, der per DontDestroyOnLoad in den Persistent‐Root verschoben wurde
+            GameObject persistentController = GameObject.Find("PlayNovelSceneController");
+            if (persistentController != null)
+            {
+                // Zerstört das GameObject inklusive aller angehängten Komponenten
+                Destroy(persistentController);
+            }
         }
 
 

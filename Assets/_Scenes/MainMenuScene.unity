@@ -2344,7 +2344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e66148b76347274899c8e1d51bc6705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipIntroNovel: 1
+  skipIntroNovel: 0
   isIntroNovelSaved: 0
   introNovelLoadedFromMainMenu: 1
   novelSaveStatusList: []

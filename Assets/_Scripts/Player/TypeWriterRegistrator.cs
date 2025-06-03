@@ -10,7 +10,7 @@ namespace Assets._Scripts.Player
 
         private void Start()
         {
-            _controller = GameObject.Find("Controller").GetComponent<PlayNovelSceneController>();
+            _controller = GameObject.Find("PlayNovelSceneController").GetComponent<PlayNovelSceneController>();
         }
 
         public void OnStartTyping()

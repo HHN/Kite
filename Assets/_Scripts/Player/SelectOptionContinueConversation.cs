@@ -18,7 +18,7 @@ namespace Assets._Scripts.Player
 
         public void OnTypewritingStart()
         {
-            controller = GameObject.Find("Controller").GetComponent<PlayNovelSceneController>();
+            controller = GameObject.Find("PlayNovelSceneController").GetComponent<PlayNovelSceneController>();
             controller.selectOptionContinueConversation = this;
         }
     }
