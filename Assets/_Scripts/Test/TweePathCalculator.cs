@@ -147,6 +147,7 @@ namespace Assets._Scripts.Test
                     }
                 }
 
+                nodeBody = Regex.Replace(nodeBody, @"\[\[.*?->.*?\]\]\s*", "", RegexOptions.Singleline);
                 // Speichere Node im Graphen
                 if (!_graph.ContainsKey(nodeName))
                 {
@@ -210,6 +211,7 @@ namespace Assets._Scripts.Test
 
         public List<Dictionary<Node,Link>> ReturnUniquePaths(List<Dictionary<Node, Link>> paths)
         {
+            int pathCount = 1;
             List<Dictionary<Node, Link>> newPaths = new List<Dictionary<Node, Link>>();
             foreach(Dictionary<Node, Link> path in paths)
             {
@@ -234,6 +236,8 @@ namespace Assets._Scripts.Test
                 {
                     newPaths.Add(newPath);
                     WritePath(newPath);
+                    WriteInFile("PATH " + pathCount + " FINISHED" + "\r\n", outputFile);
+                    pathCount++;
                 }
             }
             Debug.Log("Unique Paths created");
@@ -277,10 +281,9 @@ namespace Assets._Scripts.Test
         {
             foreach(KeyValuePair<Node,Link> node in path)
             {
-                WriteInFile(node.Key.dialogue, outputFile);
-                WriteInFile("Spielerin: " + node.Value.dialogueText, outputFile);
+                WriteInFile(node.Key.body.Trim() + "\r\n", outputFile);
+                WriteInFile("Spielerin: " + node.Value.dialogueText + "\r\n", outputFile);
             }
-            WriteInFile("PATH FINISHED", outputFile);
         }
 
         public void WriteInFile(string output, string path)
