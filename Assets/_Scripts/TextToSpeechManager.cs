@@ -209,7 +209,81 @@ namespace Assets._Scripts
 #if UNITY_EDITOR
             yield break;
 #endif
+
+            if (!_ttsIsActive) yield break;
+
+            _lastMessage = message;
+            _isSpeaking = true;
+
+#if UNITY_ANDROID
+            // ------------------------------------------
+            // Android-Implementierung
+            // ------------------------------------------
+            while (!_isInitialized)
+            {
+                yield return null;
+            }
+
+            if (_ttsObject != null)
+            {
+                string utteranceId = "UniqueID_" + System.Guid.NewGuid().ToString();
+                int apiLevel = GetAndroidSDKVersion();
+
+                if (apiLevel >= 21)
+                {
+                    // Für API Level 21 und höher
+                    AndroidJavaObject bundleParams = new AndroidJavaObject("android.os.Bundle");
+                    bundleParams.Call("putString", "utteranceId", utteranceId);
+                    _ttsObject.Call<int>("speak", message, 0, bundleParams, utteranceId);
+
+                    // Warte, bis die Engine fertig gesprochen hat
+                    while (_ttsObject.Call<bool>("isSpeaking"))
+                    {
+                        yield return null;
+                    }
+                }
+                else
+                {
+                    // Für API Level < 21
+                    AndroidJavaObject hashMapParams = new AndroidJavaObject("java.util.HashMap");
+                    hashMapParams.Call<AndroidJavaObject>("put", "utteranceId", utteranceId);
+                    _ttsObject.Call<int>("speak", message, 0, hashMapParams);
+
+                    // Grobe Wartezeit basierend auf Zeichenlänge
+                    float estimatedDuration = message.Length * 0.05f;
+                    yield return new WaitForSeconds(estimatedDuration);
+                }
+            }
+            else
+            {
+                Debug.LogError("TextToSpeech is not initialized.");
+            }
+
+#elif UNITY_IOS && !UNITY_EDITOR
+            // ------------------------------------------
+            // iOS-Implementierung
+            // ------------------------------------------
+            _Speak(message);
+            while (_IsSpeaking())
+            {
+                yield return null;
+            }
+
+#elif UNITY_WEBGL && !UNITY_EDITOR
+            // ------------------------------------------
+            // WebGL: JavaScript-Plugin
+            // ------------------------------------------
+            TTS_Speak(message);
+            // Warte, bis TTS_IsSpeaking() 0 zurückgibt
+            while (TTS_IsSpeaking() == 1)
+            {
+                yield return null;
+            }
+#endif
+
+            _isSpeaking = false;
         }
+
 
         public void CancelSpeak()
         {
