@@ -79,8 +79,7 @@ namespace Assets._Scripts.UIElements.SceneBase
                     if (string.IsNullOrEmpty(lastScene))
                     {
                         Scene active = SceneManager.GetActiveScene();
-                        bool isAdditiveSubScene = active.name != "PlayNovelScene" 
-                                                  && active.isLoaded;
+                        bool isAdditiveSubScene = active.name != "PlayNovelScene" && active.isLoaded;
                         if (isAdditiveSubScene)
                         {
                             // A) Sub-Szene entladen

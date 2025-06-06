@@ -105,7 +105,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private void StartVersionCheck()
         {
-            var call = Object.Instantiate(getVersionServerCallPrefab).GetComponent<GetVersionServerCall>();
+            var call = Instantiate(getVersionServerCallPrefab).GetComponent<GetVersionServerCall>();
             call.sceneController = this;
             call.OnSuccessHandler = this;
             call.SendRequest();

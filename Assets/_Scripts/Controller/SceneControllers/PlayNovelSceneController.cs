@@ -144,12 +144,13 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private void Start()
         {
+            BackStackManager.Instance().Push(SceneNames.PlayNovelScene);
+            
             FooterActivationManager.Instance().SetFooterActivated(false);
             
             _conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
 
             AnalyticsServiceHandler.Instance().StartStopwatch();
-            BackStackManager.Instance().Push(SceneNames.PlayNovelScene);
             novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
 
             NovelBiasManager.Instance().Clear();

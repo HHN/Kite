@@ -58,7 +58,8 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private void Start()
         {
-            BackStackManager.Instance().Clear();
+            // BackStackManager.Instance().Clear();
+            BackStackManager.Instance().Push(SceneNames.FeedbackScene);
 
             FontSizeManager.Instance().UpdateAllTextComponents();
 

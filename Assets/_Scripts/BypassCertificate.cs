@@ -7,7 +7,6 @@ namespace Assets._Scripts
     {
         protected override bool ValidateCertificate(byte[] certificateData)
         {
-            // Debug.Log("BypassCertificate");
             // Nur zum Testen: Immer true zurückgeben
             return true;
         }

@@ -14,7 +14,6 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private void Start()
         {
-            
             BackStackManager.Instance().Push(SceneNames.TermsOfUseScene);
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout02);
             FontSizeManager.Instance().UpdateAllTextComponents();

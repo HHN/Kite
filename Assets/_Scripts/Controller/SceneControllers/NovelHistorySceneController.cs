@@ -42,9 +42,9 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private void Start()
         {
-            if (copyNotificationContainer != null) InitCopyNotification();
-
             BackStackManager.Instance().Push(SceneNames.NovelHistoryScene);
+            
+            if (copyNotificationContainer != null) InitCopyNotification();
 
             novelHistoryEntries = new List<NovelHistoryEntryGuiElement>();
             InitializeScene();

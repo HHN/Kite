@@ -18,10 +18,11 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         public void Start()
         {
+            BackStackManager.Instance().Push(SceneNames.LegalInformationScene);
+            
             InitializeButtonActions();
             AddButtonListeners();
             versionInfo.text = "Version: " + Application.version;
-            BackStackManager.Instance().Push(SceneNames.LegalInformationScene);
         }
 
         private void InitializeButtonActions()

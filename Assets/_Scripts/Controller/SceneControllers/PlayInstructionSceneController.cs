@@ -30,8 +30,10 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private void Start()
         {
-            BackStackManager.Instance().Clear();
+            // BackStackManager.Instance().Clear();
 
+            BackStackManager.Instance().Push(SceneNames.PlayInstructionScene);
+            
             backgroundColor = PlayManager.Instance().GetColorOfVisualNovelToPlay();
             novelName.text = PlayManager.Instance().GetDesignationOfNovelToPlay();
             novelImage.color = backgroundColor;
