@@ -20,6 +20,8 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             BackStackManager.Instance().Push(SceneNames.LegalInformationScene);
             
+            FontSizeManager.Instance().UpdateAllTextComponents();
+            
             InitializeButtonActions();
             AddButtonListeners();
             versionInfo.text = "Version: " + Application.version;

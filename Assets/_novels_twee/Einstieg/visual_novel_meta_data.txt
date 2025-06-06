@@ -1,7 +1,7 @@
 {
   "idNumberOfNovel": 13,
   "titleOfNovel": "Einstiegsdialog",
-  "designationOfNovel": "Mehr zu KITE 2 erfahren",
+  "designationOfNovel": "Mehr zu KITE II erfahren",
   "descriptionOfNovel": "Hier kannst du den Einstiegs-Dialog erneut spielen.",
   "nameOfMainCharacter": "Spielerin",
   "contextForPrompt": "",
