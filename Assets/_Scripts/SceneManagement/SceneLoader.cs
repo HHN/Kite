@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Assets._Scripts.Controller.SceneControllers;
+using Assets._Scripts.Managers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -29,6 +30,7 @@ namespace Assets._Scripts.SceneManagement
 
         public static void LoadPlayNovelScene()
         {
+            BackStackManager.Instance().Clear();
             // Überprüfen, ob ein Speicherstand existiert…
             GameManager.Instance.CheckAndSetAllNovelsStatus();
             LoadScene(SceneNames.PlayNovelScene);
