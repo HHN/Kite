@@ -9,6 +9,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Assets._Scripts.Controller.SceneControllers
@@ -28,18 +29,16 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private bool isPopupOpen;
         [SerializeField] private VisualNovelNames currentlyOpenedVisualNovelPopup;
 
-        [Header("Infinity Scroll")] [SerializeField]
-        private InfinityScroll infinityScroll;
+        [Header("Infinity Scroll")] 
+        [SerializeField] private InfinityScroll infinityScroll;
 
-        [SerializeField] private Button novelListButton;
-        [SerializeField] private Image novelListButtonImage;
+        [FormerlySerializedAs("novelListButton")] 
+        [SerializeField] private Button novelListButtonToOpen;
+        [SerializeField] private Button novelListButtonToClose;
         [SerializeField] private Button legalInformationButton;
         [SerializeField] private Button settingsButton;
 
-        [Header("Burger Menu")] [SerializeField]
-        private Sprite closedBurgerMenuSprite;
-
-        [SerializeField] private Sprite openedBurgerMenuSprite;
+        [Header("Burger Menu")]
         [SerializeField] private GameObject burgerMenu;
 
         [SerializeField] private bool isBurgerMenuOpen;
@@ -158,7 +157,8 @@ namespace Assets._Scripts.Controller.SceneControllers
 
 
             // Listener hinzufügen
-            novelListButton.onClick.AddListener(OnNovelListButton);
+            novelListButtonToOpen.onClick.AddListener(OpenNovelList);
+            novelListButtonToClose.onClick.AddListener(CloseNovelList);
             legalInformationButton.onClick.AddListener(OnLegalInformationButton);
             settingsButton.onClick.AddListener(OnSettingsButton);
             burgerMenuBackground.onClick.AddListener(OnBackgroundButton);
@@ -227,22 +227,33 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
         }
 
-        private void OnNovelListButton()
+        private void OpenNovelList()
         {
-            if (isBurgerMenuOpen)
-            {
-                novelListButtonImage.sprite = closedBurgerMenuSprite;
-
-                burgerMenu.gameObject.SetActive(false);
-                isBurgerMenuOpen = false;
-                return;
-            }
-
-            novelListButtonImage.sprite = openedBurgerMenuSprite;
-
             isBurgerMenuOpen = true;
             burgerMenu.gameObject.SetActive(true);
             FontSizeManager.Instance().UpdateAllTextComponents();
+            ToggleOpenCloseButton();
+        }
+        
+        private void CloseNovelList()
+        {
+            burgerMenu.gameObject.SetActive(false);
+            isBurgerMenuOpen = false;
+            ToggleOpenCloseButton();
+        }
+
+        private void ToggleOpenCloseButton()
+        {
+            if (novelListButtonToOpen.IsActive())
+            {
+                novelListButtonToOpen.gameObject.SetActive(false);
+                novelListButtonToClose.gameObject.SetActive(true);
+            }
+            else
+            {
+                novelListButtonToOpen.gameObject.SetActive(true);
+                novelListButtonToClose.gameObject.SetActive(false);
+            }
         }
 
         public void OnIntroNovelButton()
