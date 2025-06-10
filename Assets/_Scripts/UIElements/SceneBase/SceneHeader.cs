@@ -3,6 +3,7 @@ using Assets._Scripts.Managers;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.UIElements.Messages;
 using Assets._Scripts.Utilities;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -36,12 +37,23 @@ namespace Assets._Scripts.UIElements.SceneBase
 
             if (GameManager.Instance.IsIntroNovelLoadedFromMainMenu)
             {
-                backButton.gameObject.SetActive(false);
+                // backButton.gameObject.SetActive(false);
+                
+                backButton.GetComponentInChildren<TextMeshProUGUI>().color = new Color(1, 1, 1, 0);
+                backButton.GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
+                backButton.interactable = false;
+                // backButton.GetComponent<Image>().raycastTarget = false;
+
                 GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
             }
             else
             {
-                backButton.gameObject.SetActive(true);
+                // backButton.gameObject.SetActive(true);
+                
+                backButton.GetComponentInChildren<TextMeshProUGUI>().color = new Color(1, 1, 1, 1);
+                backButton.GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1); 
+                backButton.interactable = true;
+                // backButton.GetComponent<Image>().raycastTarget = true;
             }
 
             backButton.onClick.AddListener(OnBackButton);
