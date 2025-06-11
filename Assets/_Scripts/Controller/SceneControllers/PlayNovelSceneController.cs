@@ -359,6 +359,11 @@ namespace Assets._Scripts.Controller.SceneControllers
             yield return StartCoroutine(PlayNextEvent());
         }
 
+        public void Continue()
+        {
+            StartCoroutine(PlayNextEvent());
+        }
+
         private IEnumerator PlayNextEvent()
         {
             if (TextToSpeechManager.Instance.IsTextToSpeechActivated()) yield return WaitForSpeechToFinish();

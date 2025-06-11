@@ -40,12 +40,6 @@ namespace Assets._Scripts.Managers
             {
                 return "";
             }
-            
-            foreach (string element in _backStack)
-            {
-                Debug.Log(element);
-            }
-
 
             string sceneName = _backStack.Peek();
             _backStack.Pop();
