@@ -16,11 +16,7 @@ namespace Assets._Scripts.UIElements.SceneBase
         [SerializeField] private Button legalInformationButton;
         [SerializeField] private Button settingsButton;
         [SerializeField] private GameObject warningMessageBox;
-        [SerializeField] private GameObject warningMessageBoxIntro;
-        [SerializeField] private GameObject warningMessageBoxClose;
         [SerializeField] private LeaveNovelAndGoBackMessageBox warningMessageBoxObject;
-        [SerializeField] private LeaveNovelAndGoBackMessageBox warningMessageBoxObjectIntro;
-        [SerializeField] private LeaveNovelAndGoBackToMainMenuMessageBox warningMessageBoxObjectClose;
         [SerializeField] private Canvas canvas;
 
         private PlayNovelSceneController _playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
@@ -37,23 +33,17 @@ namespace Assets._Scripts.UIElements.SceneBase
 
             if (GameManager.Instance.IsIntroNovelLoadedFromMainMenu)
             {
-                // backButton.gameObject.SetActive(false);
-                
                 backButton.GetComponentInChildren<TextMeshProUGUI>().color = new Color(1, 1, 1, 0);
                 backButton.GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
                 backButton.interactable = false;
-                // backButton.GetComponent<Image>().raycastTarget = false;
 
                 GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
             }
             else
             {
-                // backButton.gameObject.SetActive(true);
-                
                 backButton.GetComponentInChildren<TextMeshProUGUI>().color = new Color(1, 1, 1, 1);
                 backButton.GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1); 
                 backButton.interactable = true;
-                // backButton.GetComponent<Image>().raycastTarget = true;
             }
 
             backButton.onClick.AddListener(OnBackButton);
@@ -64,7 +54,7 @@ namespace Assets._Scripts.UIElements.SceneBase
         private void OnBackButton()
         {
             string sceneName = SceneManager.GetActiveScene().name;
-
+            
             if (sceneName.Contains("PlayNovelScene") && _playNovelSceneController != null)
             {
                 _playNovelSceneController.IsPaused = true; // Pause the novel progression
@@ -105,19 +95,17 @@ namespace Assets._Scripts.UIElements.SceneBase
                             }
                             return;
                         }
-                        else
-                        {
-                            SceneLoader.LoadFoundersBubbleScene(); 
-                            return;
-                        }
+
+                        SceneLoader.LoadFoundersBubbleScene(); 
+                        return;
                     }
                     if (lastScene == "PlayNovelScene")
                     {
-                        GameObject persistentController = GameObject.Find("PlayNovelSceneController");
-                        if (persistentController != null)
+                        Debug.Log($"lastScene == PlayNovelScene: {_playNovelSceneController != null}");
+                        if (_playNovelSceneController)
                         {
-                            persistentController.GetComponent<PlayNovelSceneController>().IsPaused = false;
-                            persistentController.GetComponent<PlayNovelSceneController>().Continue();
+                            _playNovelSceneController.IsPaused = false;
+                            _playNovelSceneController.Continue();
                         }
                         
                         // Wenn der Backstack gerade genau "PlayNovelScene" geliefert hat,
@@ -147,36 +135,39 @@ namespace Assets._Scripts.UIElements.SceneBase
                 }
             }
 
-            if (warningMessageBox != null)
+            HandleMessageBox(sceneName);
+        }
+
+        private void HandleMessageBox(string sceneName)
+        {
+            if (!warningMessageBox) return;
+            
+            if (!warningMessageBoxObject.IsNullOrDestroyed())
             {
-                if (!warningMessageBoxObject.IsNullOrDestroyed())
-                {
-                    warningMessageBoxObject.CloseMessageBox();
-                }
-
-                if (canvas.IsNullOrDestroyed())
-                {
-                    return;
-                }
-
-                warningMessageBoxObject = null;
-                warningMessageBoxObject = Instantiate(warningMessageBox, canvas.transform).GetComponent<LeaveNovelAndGoBackMessageBox>();
-
-                if (sceneName.Contains("PlayNovelScene") && _playNovelSceneController.NovelToPlay.id == 13)
-                {
-                    warningMessageBoxObject.HandleButtons();
-                }
-
-                warningMessageBoxObject.Activate();
+                warningMessageBoxObject.CloseMessageBox();
             }
+
+            if (canvas.IsNullOrDestroyed())
+            {
+                return;
+            }
+
+            warningMessageBoxObject = null;
+            warningMessageBoxObject = Instantiate(warningMessageBox, canvas.transform).GetComponent<LeaveNovelAndGoBackMessageBox>();
+
+            if (sceneName.Contains("PlayNovelScene") && _playNovelSceneController.NovelToPlay.id == 13)
+            {
+                warningMessageBoxObject.HandleButtons();
+            }
+
+            warningMessageBoxObject.Activate();
         }
 
         private void OnLegalInformationButton()
         {
-            GameObject persistentController = GameObject.Find("PlayNovelSceneController");
-            if (persistentController != null)
+            if (_playNovelSceneController != null)
             {
-                persistentController.GetComponent<PlayNovelSceneController>().IsPaused = true;
+                _playNovelSceneController.IsPaused = true;
             }
             
             SceneLoader.LoadLegalInformationScene();
@@ -184,19 +175,12 @@ namespace Assets._Scripts.UIElements.SceneBase
 
         private void OnSettingsButton()
         {
-            GameObject persistentController = GameObject.Find("PlayNovelSceneController");
-            if (persistentController != null)
+            if (_playNovelSceneController != null)
             {
-                persistentController.GetComponent<PlayNovelSceneController>().IsPaused = true;
+                _playNovelSceneController.IsPaused = true;
             }
             
             SceneLoader.LoadSettingsScene();
-        }
-
-        public void HandleButtons(bool isIntroScene)
-        {
-            backButton.gameObject.SetActive(!isIntroScene);
-            legalInformationButton.gameObject.SetActive(isIntroScene);
         }
     }
 }

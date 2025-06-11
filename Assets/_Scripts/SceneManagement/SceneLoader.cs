@@ -25,6 +25,7 @@ namespace Assets._Scripts.SceneManagement
 
         public static void LoadMainMenuScene()
         {
+            BackStackManager.Instance().Push(SceneNames.MainMenuScene);
             LoadScene(SceneNames.MainMenuScene);
         }
 
@@ -33,6 +34,9 @@ namespace Assets._Scripts.SceneManagement
             BackStackManager.Instance().Clear();
             // Überprüfen, ob ein Speicherstand existiert…
             GameManager.Instance.CheckAndSetAllNovelsStatus();
+            
+            BackStackManager.Instance().Push(SceneNames.PlayNovelScene);
+            
             LoadScene(SceneNames.PlayNovelScene);
         }
 

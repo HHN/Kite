@@ -114,7 +114,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         // Character Expressions
         public Dictionary<int, int> CharacterExpressions { get; } = new();
 
-        public bool IsPaused { get; set; }
+        public bool IsPaused; /*{ get; set; }*/
         public VisualNovel NovelToPlay => novelToPlay;
         public List<string> PlayThroughHistory => playThroughHistory;
         public string[] OptionsId => _optionsId;
@@ -144,8 +144,6 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.PlayNovelScene);
-            
             FooterActivationManager.Instance().SetFooterActivated(false);
             
             _conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
@@ -361,15 +359,17 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         public void Continue()
         {
+            BackStackManager.Instance().Push(SceneNames.PlayNovelScene);
+            
             StartCoroutine(PlayNextEvent());
         }
 
         private IEnumerator PlayNextEvent()
         {
-            if (TextToSpeechManager.Instance.IsTextToSpeechActivated()) yield return WaitForSpeechToFinish();
-
             // Stop if paused
             if (IsPaused) yield break;
+            
+            if (TextToSpeechManager.Instance.IsTextToSpeechActivated()) yield return WaitForSpeechToFinish();
 
             HandleEventPreparation();
 
