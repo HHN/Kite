@@ -27,10 +27,10 @@ namespace Assets._Scripts.UIElements.SceneBase
 
         private void Start()
         {
-            GameObject controllerObject = GameObject.Find("Controller");
-            if (controllerObject != null)
+            GameObject persistentController = GameObject.Find("PlayNovelSceneController");
+            if (persistentController != null)
             {
-                _playNovelSceneController = controllerObject.GetComponent<PlayNovelSceneController>();
+                _playNovelSceneController = persistentController.GetComponent<PlayNovelSceneController>();
             }
             
             backButton.gameObject.SetActive(true);
@@ -113,6 +113,13 @@ namespace Assets._Scripts.UIElements.SceneBase
                     }
                     if (lastScene == "PlayNovelScene")
                     {
+                        GameObject persistentController = GameObject.Find("PlayNovelSceneController");
+                        if (persistentController != null)
+                        {
+                            persistentController.GetComponent<PlayNovelSceneController>().IsPaused = false;
+                            persistentController.GetComponent<PlayNovelSceneController>().Continue();
+                        }
+                        
                         // Wenn der Backstack gerade genau "PlayNovelScene" geliefert hat,
                         // soll die Basis-Szene nur wieder aktiv gesetzt werden –
                         // auf keinen Fall neu geladen.
@@ -166,13 +173,23 @@ namespace Assets._Scripts.UIElements.SceneBase
 
         private void OnLegalInformationButton()
         {
-            Debug.Log($"OnLegalInformationButton called in SceneHeader for scene: {SceneManager.GetActiveScene().name}");
+            GameObject persistentController = GameObject.Find("PlayNovelSceneController");
+            if (persistentController != null)
+            {
+                persistentController.GetComponent<PlayNovelSceneController>().IsPaused = true;
+            }
+            
             SceneLoader.LoadLegalInformationScene();
         }
 
         private void OnSettingsButton()
         {
-            Debug.Log($"OnSettingsButton called in SceneHeader for scene: {SceneManager.GetActiveScene().name}");
+            GameObject persistentController = GameObject.Find("PlayNovelSceneController");
+            if (persistentController != null)
+            {
+                persistentController.GetComponent<PlayNovelSceneController>().IsPaused = true;
+            }
+            
             SceneLoader.LoadSettingsScene();
         }
 

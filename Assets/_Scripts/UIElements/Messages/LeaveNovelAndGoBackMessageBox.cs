@@ -56,7 +56,12 @@ namespace Assets._Scripts.UIElements.Messages
             FontSizeManager.Instance().UpdateAllTextComponents();
 
             // Find and assign the PlayNovelSceneController component for novel control actions
-            _playNovelSceneController = FindAnyObjectByType<PlayNovelSceneController>();
+            GameObject persistentController = GameObject.Find("PlayNovelSceneController");
+            if (persistentController != null)
+            {
+                _playNovelSceneController = persistentController.GetComponent<PlayNovelSceneController>();
+            }
+            
             _conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
 
             TextToSpeechManager.Instance.CancelSpeak();
