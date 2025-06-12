@@ -76,6 +76,8 @@ namespace Assets._Scripts.Controller.SceneControllers
                 Debug.LogError("Mindestens eine UI-Referenz für die Sound-Einstellungen ist nicht zugewiesen!", this);
                 return;
             }
+            
+            UpdateToggleImages(activeTextToSpeechImage, inactiveTextToSpeechImage, _isTextToSpeechActive);
 
             SetSliderVisuals(_isSoundActive);
             soundEffectsSliderHandler.OnSliderReleasedEvent += HandleSoundEffectsSliderReleased;
