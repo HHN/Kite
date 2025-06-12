@@ -282,7 +282,10 @@ namespace Assets._Scripts.Test
             foreach(KeyValuePair<Node,Link> node in path)
             {
                 WriteInFile(node.Key.body.Trim() + "\r\n", outputFile);
-                WriteInFile("Spielerin: " + node.Value.dialogueText + "\r\n", outputFile);
+                if (node.Value.dialogueText != string.Empty)
+                {
+                    WriteInFile("Spielerin: " + node.Value.dialogueText + "\r\n", outputFile);
+                }
             }
         }
 
