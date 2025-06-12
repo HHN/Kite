@@ -24,6 +24,7 @@ namespace Assets._Scripts.Controller.SceneControllers
     public class FeedbackSceneController : SceneController, IOnSuccessHandler, IOnErrorHandler
     {
         [SerializeField] private TextMeshProUGUI feedbackText;
+        [SerializeField] private TextMeshProUGUI hintText;
         [SerializeField] private OfflineFeedbackLoader offlineFeedbackLoader;
         [SerializeField] private GameObject gptServercallPrefab;
         [SerializeField] private VisualNovel novelToPlay;
@@ -39,10 +40,8 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private GameObject finishButtonBottomContainer;
         [SerializeField] private GameObject copyButtonContainer;
         [SerializeField] private GameObject copyNotificationContainer;
-        //[SerializeField] private TTSEngine engine;
         [SerializeField] private GameObject loadingAnimation;
 
-        // New: scroll rect for mouse wheel vertical scroll
         [SerializeField] private ScrollRect feedbackScrollRect;
         [SerializeField] private float wheelScrollSpeed = 0.2f;
 
@@ -84,10 +83,8 @@ namespace Assets._Scripts.Controller.SceneControllers
             {
                 StartWaitingMusic();
                 _novel = PlayManager.Instance().GetVisualNovelToPlay();
-                feedbackText.SetText("Das Feedback wird gerade geladen. Dies dauert durchschnittlich zwischen 30 und 60 Sekunden. Solltest du nicht so lange warten wollen, kannst du dir das Feedback einfach im Archiv anschauen, sobald es fertig ist." +
-                                     "\n" +
-                                     "\n" +
-                                     "<align=center><i>Hinweis: Analyse und Feedback wurden durch KI künstlich erzeugt. Eine individuelle Beratung wird hierdurch nicht ersetzt.</i></align>");
+                feedbackText.SetText("Das Feedback wird gerade geladen. Dies dauert durchschnittlich zwischen 30 und 60 Sekunden. Solltest du nicht so lange warten wollen, kannst du dir das Feedback einfach im Archiv anschauen, sobald es fertig ist.");
+                hintText.SetText("Hinweis: Analyse und Feedback wurden durch KI künstlich erzeugt. Eine individuelle Beratung wird hierdurch nicht ersetzt.");
                 GetCompletionServerCall call = Instantiate(gptServercallPrefab).GetComponent<GetCompletionServerCall>();
                 call.sceneController = this;
 
