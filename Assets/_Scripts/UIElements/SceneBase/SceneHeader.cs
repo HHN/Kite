@@ -67,6 +67,11 @@ namespace Assets._Scripts.UIElements.SceneBase
                     KnowledgeSceneController knowledgeSceneController = FindAnyObjectByType<KnowledgeSceneController>();
                     knowledgeSceneController.NavigateScene();
                 }
+                else if (sceneName.Contains("FeedbackScene"))
+                {
+                    SceneLoader.LoadFoundersBubbleScene(); 
+                    return;
+                }
                 else
                 {
                     // string lastScene = SceneRouter.GetTargetSceneForBackButton();
