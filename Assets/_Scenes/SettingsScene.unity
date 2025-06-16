@@ -4991,7 +4991,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Dieser Button schaltet die Sprachausgabe in den Visual Novels an bzw.
-    aus. Ist die Sprachausgabe aktiviert, werden die Dialoge vertont un der Text,
+    aus. Ist die Sprachausgabe aktiviert, werden die Dialoge vertont und der Text,
     auf welchen du dr\xFCckst, wird dir vorgelesen."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
