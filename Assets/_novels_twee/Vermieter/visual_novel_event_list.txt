@@ -690,7 +690,7 @@ Entschuldigen Sie bitte. So war das natürlich nicht gemeint.
 >>Character1|Smiling<<
 Guten Tag. Dies sind also die zur Verfügung stehenden Räumlichkeiten. Und Sie sind dabei ein Unternehmen zu gründen?
 
-[[Genau, ich bin nun so weit, dass ich mich nach Büroräumen umsehen kann->Weiter II]]
+[[Genau, ich bin nun so weit, dass ich mich nach Büroräumen umsehen kann.->Weiter II]]
 
 [[Das Unternehmen besteht schon seit einer Weile. Ich möchte nun passendere Büroräume finden.->Weiter II]]
 
