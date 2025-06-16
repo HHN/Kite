@@ -456,18 +456,18 @@ namespace Assets._Scripts.Biases
 
         #endregion
 
-        #region Unbewusste Bias in der Kommunikation
+        #region Unbewusste Biases in der Kommunikation
 
-        private static readonly string UnbewussteBiasInDerKommunikationHeadline =
-            "Unbewusste Bias in der Kommunikation";
+        private static readonly string UnbewussteBiasesInDerKommunikationHeadline =
+            "Unbewusste Biases in der Kommunikation";
 
-        private static readonly string UnbewussteBiasInDerKommunikationPreview =
+        private static readonly string UnbewussteBiasesInDerKommunikationPreview =
             "Sprache formt Wahrnehmung – und unbewusste Vorurteile spiegeln sich oft in der Art, wie mit Frauen in " +
             "der Geschäftswelt gesprochen wird. Studien zeigen, dass Gründerinnen in Meetings und Finanzierungsrunden " +
             "häufiger unterbrochen, herablassend behandelt oder mit unterschwelligen Zweifeln an ihrer " +
             "Führungsfähigkeit konfrontiert werden. \n\n";
 
-        private static readonly string UnbewussteBiasInDerKommunikationDescription =
+        private static readonly string UnbewussteBiasesInDerKommunikationDescription =
             $"Ihnen wird geraten, ihre Ideen „einfacher“ oder „verständlicher“ zu erklären, selbst wenn ihre " +
             $"Präsentationen auf demselben fachlichen Niveau sind wie die ihrer männlichen Kollegen. Ein weiteres " +
             $"Beispiel ist die Abwertung weiblicher Führungsteams durch stereotype Annahmen über weibliche Dynamiken – " +
@@ -650,9 +650,9 @@ namespace Assets._Scripts.Biases
                 BiasType.UnconsciousBiasInCommunication,
                 new[]
                 {
-                    UnbewussteBiasInDerKommunikationHeadline,
-                    UnbewussteBiasInDerKommunikationPreview,
-                    UnbewussteBiasInDerKommunikationDescription
+                    UnbewussteBiasesInDerKommunikationHeadline,
+                    UnbewussteBiasesInDerKommunikationPreview,
+                    UnbewussteBiasesInDerKommunikationDescription
                 }
             }
         };
