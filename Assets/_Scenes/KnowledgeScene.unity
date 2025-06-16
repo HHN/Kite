@@ -6754,7 +6754,7 @@ GameObject:
   - component: {fileID: 786762144}
   - component: {fileID: 786762143}
   m_Layer: 5
-  m_Name: UnbewussteBiasInDerKommunikation
+  m_Name: UnbewussteBiasesInDerKommunikation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16242,7 +16242,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<b>Unbewusste Bias in der Kommunikation</b>\nSprache formt Wahrnehmung
+  m_text: "<b>Unbewusste Biases in der Kommunikation</b>\nSprache formt Wahrnehmung
     \u2013 und unbewusste Vorurteile spiegeln sich oft in der Art, wie mit Frauen
     in der Gesch\xE4ftswelt gesprochen wird. Studien zeigen, dass Gr\xFCnderinnen
     in Meetings und Finanzierungsrunden h\xE4ufiger unterbrochen, herablassend behandelt
