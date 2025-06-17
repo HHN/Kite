@@ -222,6 +222,10 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void SetFontSize()
         {
             FontSizeManager.Instance().SetFontSize(_updatedFontSize);
+            FontSizeManager.Instance().UpdateAllTextComponents();
+            
+            LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
+            
             DisplayInfoMessage(InfoMessages.CONFIRM_FONT_SIZE_ADJUSTMENT);
         }
         
