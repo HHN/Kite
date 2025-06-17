@@ -64,7 +64,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             BackStackManager.Instance().Push(SceneNames.SettingsScene);
             
-            LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
+            // LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
             
             InitializeButtonActions();
             AddButtonListeners();
@@ -143,7 +143,9 @@ namespace Assets._Scripts.Controller.SceneControllers
             fontSizeSlider.value = sliderValue;
 
             // Text sofort auf die gespeicherte Schriftgröße setzen
-            UpdateFontSize(sliderValue);
+            FontSizeManager.Instance().UpdateAllTextComponents();
+            
+            LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
         }
 
         /// <summary>
