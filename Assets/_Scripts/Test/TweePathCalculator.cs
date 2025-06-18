@@ -168,6 +168,8 @@ namespace Assets._Scripts.Test
             }
         }
 
+
+        //Gibt alle Pfade zurück mit Antworten zu den Nodes
         public List<Dictionary<Node, Link>> GetAllPaths(string startNode)
         {
             Debug.Log("GetAllPaths gestartet");
@@ -209,6 +211,7 @@ namespace Assets._Scripts.Test
             return allPaths;
         }
 
+        //Reduziert Pfade nur auf Bias-Knoten und gibt einmalige Pfade zurück
         public List<Dictionary<Node,Link>> ReturnUniquePaths(List<Dictionary<Node, Link>> paths)
         {
             int pathCount = 1;
@@ -227,12 +230,12 @@ namespace Assets._Scripts.Test
                 }
                 foreach(Dictionary<Node, Link> listElement in newPaths)
                 {
-                    if(PathEqual(listElement, newPath))
+                    if(PathEqual(listElement, newPath)) //Checks if the path was documented before
                     {
                         duplicate = true;
                     }
                 }
-                if(!duplicate)
+                if(!duplicate) 
                 {
                     newPaths.Add(newPath);
                     WritePath(newPath);
@@ -254,6 +257,7 @@ namespace Assets._Scripts.Test
             return newPaths;
         }
 
+        //Returns true if two paths are equal
         public bool PathEqual(Dictionary<Node, Link> firstPath, Dictionary<Node, Link> secondPath)
         {
             if(firstPath.Count != secondPath.Count)
@@ -277,6 +281,7 @@ namespace Assets._Scripts.Test
             return true;
         }
 
+        //Writes a path into a specified file
         public void WritePath(Dictionary<Node,Link> path)
         {
             foreach(KeyValuePair<Node,Link> node in path)
@@ -289,6 +294,8 @@ namespace Assets._Scripts.Test
             }
         }
 
+
+        //Simple method for file output
         public void WriteInFile(string output, string path)
         {
             if (!File.Exists(path))
@@ -411,6 +418,7 @@ namespace Assets._Scripts.Test
         }
         */
     }
+
     public class Node
     {
         public string name;
@@ -425,13 +433,13 @@ namespace Assets._Scripts.Test
             body = _nodeBody;
             links = _links;
         }
-        public override bool Equals(object obj)
+        public override bool Equals(object obj) //Needed for path comparison
         {
             if (obj is not Node other) return false;
             return name == other.name;
         }
 
-        public override int GetHashCode()
+        public override int GetHashCode() //Needed for path comparison
         {
             return HashCode.Combine(name); // Use .NET's built-in hash combiner
         }
@@ -440,13 +448,13 @@ namespace Assets._Scripts.Test
     {
         public string targetNode;
         public string dialogueText;
-        public override bool Equals(object obj)
+        public override bool Equals(object obj) //Needed for path comparison
         {
             if (obj is not Link other) return false;
             return targetNode == other.targetNode && dialogueText == other.dialogueText;
         }
 
-        public override int GetHashCode()
+        public override int GetHashCode() //Needed for path comparison
         {
             return HashCode.Combine(targetNode, dialogueText); // Use .NET's built-in hash combiner
         }
