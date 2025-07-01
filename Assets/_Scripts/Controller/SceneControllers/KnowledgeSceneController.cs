@@ -18,14 +18,13 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private GameObject biasGroups;
         [SerializeField] private GameObject biasInformation;
         [SerializeField] private GameObject biasDetailsObject;
-        
-        [SerializeField] private Button barrierenButton;
-        [SerializeField] private Button erwartungenNormenButton;
-        [SerializeField] private Button wahrnehmungFuehrungsrollenButton;
-        [SerializeField] private Button barrierenHindernisseButton;
 
-        [Header("Strukturelle wirtschaftliche Barrieren")] [SerializeField]
-        private GameObject barrierenInfoGroup;
+        [SerializeField] private Sprite arrowLeftSprite;
+        [SerializeField] private Sprite arrowDownSprite;
+
+        [Header("Strukturelle wirtschaftliche Barrieren")] 
+        [SerializeField] private GameObject barrierenInfoGroup;
+        [SerializeField] private Image barrierenInfoButtonImage;
         [SerializeField] private Button barrierenInfoButton;
         [SerializeField] private Button finanzierungszugangButton;
         [SerializeField] private Button genderPayGapButton;
@@ -35,6 +34,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         [Header("Gesellschaftliche Erwartungen & soziale Normen")] [SerializeField]
         private GameObject erwartungenNormenInfoGroup;
+        [SerializeField] private Image erwartungenNormenInfoButtonImage;
         [SerializeField] private Button erwartungenNormenInfoButton;
         [SerializeField] private Button tokenismButton;
         [SerializeField] private Button biasInDerWahrnehmungVonFuehrungsFaehigkeitenButton;
@@ -44,6 +44,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         [Header("Wahrnehmung & Führungsrollen")] [SerializeField]
         private GameObject wahrnehmungFuehrungsrollenInfoGroup;
+        [SerializeField] private Image wahrnehmungFuehrungsrollenInfoButtonImage;
         [SerializeField] private Button wahrnehmungFuehrungsrollenInfoButton;
         [SerializeField] private Button heteronormativitaetButton;
         [SerializeField] private Button maternalBiasButton;
@@ -53,6 +54,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         [Header("Psychologische Barrieren & kommunikative Hindernisse")] [SerializeField]
         private GameObject barrierenHindernisseInfoGroup;
+        [SerializeField] private Image barrierenHindernisseInfoButtonImage;
         [SerializeField] private Button barrierenHindernisseInfoButton;
         [SerializeField] private Button tightropeBiasButton;
         [SerializeField] private Button mikroaggressionenButton;
@@ -91,6 +93,11 @@ namespace Assets._Scripts.Controller.SceneControllers
         private TMP_Text _biasDetailsText;
 
         private Dictionary<Button, Action> _buttonActions;
+        
+        private bool _barrienenInfoGroupActive;
+        private bool _erwartungsInfoGroupActive;
+        private bool _wahrnehmungFuehrungsrollenInfoGroupActive;
+        private bool _barrierenHindernisseInfoGroupActive;
 
         public void Start()
         {
@@ -101,7 +108,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             
             _biasDetailsText = biasDetailsObject.GetComponentInChildren<TextMeshProUGUI>();
 
-            if (inputField != null)
+            if (inputField)
             {
                 inputField.onValueChanged.AddListener(Search);
             }
@@ -118,11 +125,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             _buttonActions = new Dictionary<Button, Action>
             {
-                { barrierenButton, () => ShowCategory(barrierenInfoGroup) },
-                { erwartungenNormenButton, () => ShowCategory(erwartungenNormenInfoGroup) },
-                { wahrnehmungFuehrungsrollenButton, () => ShowCategory(wahrnehmungFuehrungsrollenInfoGroup) },
-                { barrierenHindernisseButton, () => ShowCategory(barrierenHindernisseInfoGroup) },
-
                 { barrierenInfoButton, OnBarrierenInfoButton },
                 { erwartungenNormenInfoButton, OnErwartungenNormenInfoButton },
                 { wahrnehmungFuehrungsrollenInfoButton, OnWahrnehmungFuehrungsrollenInfoButton },
@@ -188,25 +190,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Aktiviert eine bestimmte Bias-Kategorie und deaktiviert die anderen.
-        /// </summary>
-        private void ShowCategory(GameObject activeGroup)
-        {
-            infoText.SetActive(true);
-            biasGroups.SetActive(false);
-            biasInformation.SetActive(true);
-
-            barrierenInfoGroup.SetActive(false);
-            erwartungenNormenInfoGroup.SetActive(false);
-            wahrnehmungFuehrungsrollenInfoGroup.SetActive(false);
-            barrierenHindernisseInfoGroup.SetActive(false);
-
-            activeGroup.SetActive(true);
-            _currentBiasInformationChapter = activeGroup;
-            StartCoroutine(RebuildLayout());
-        }
-
-        /// <summary>
         /// Zeigt detaillierte Informationen zu einem Bias-Thema.
         /// </summary>
         private void ShowBiasDetails(BiasDescriptionTexts.BiasType type)
@@ -219,58 +202,134 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             biasDetailsObject.SetActive(true);
             _biasDetailsText.text = BiasDescriptionTexts.GetBiasText(type);
+            
+            FontSizeManager.Instance().UpdateAllTextComponents();
             StartCoroutine(RebuildLayout());
         }
 
         private void OnBarrierenInfoButton()
         {
-            infoText.SetActive(true);
-            biasGroups.SetActive(true);
-            biasInformation.SetActive(false);
+            if (_barrienenInfoGroupActive)
+            {
+                finanzierungszugangButton.gameObject.SetActive(false);
+                genderPayGapButton.gameObject.SetActive(false);
+                unterbewertungWeiblichGefuehrterUnternehmenButton.gameObject.SetActive(false);
+                riskAversionBiasButton.gameObject.SetActive(false);
+                bestaetigungsVerzerrungButton.gameObject.SetActive(false);
+                
+                barrierenInfoButtonImage.sprite = arrowLeftSprite;
+                
+                _barrienenInfoGroupActive = false;
+            }
+            else
+            {
+                finanzierungszugangButton.gameObject.SetActive(true);
+                genderPayGapButton.gameObject.SetActive(true);
+                unterbewertungWeiblichGefuehrterUnternehmenButton.gameObject.SetActive(true);
+                riskAversionBiasButton.gameObject.SetActive(true);
+                bestaetigungsVerzerrungButton.gameObject.SetActive(true);
+                
+                barrierenInfoButtonImage.sprite = arrowDownSprite;
+                
+                _barrienenInfoGroupActive = true;
 
-            barrierenInfoGroup.SetActive(true);
-            erwartungenNormenInfoGroup.SetActive(false);
-            wahrnehmungFuehrungsrollenInfoGroup.SetActive(false);
-            barrierenHindernisseInfoGroup.SetActive(false);
+                _currentBiasInformationChapter = barrierenInfoGroup;
+            }
+            
             StartCoroutine(RebuildLayout());
         }
 
         private void OnErwartungenNormenInfoButton()
         {
-            infoText.SetActive(true);
-            biasGroups.SetActive(true);
-            biasInformation.SetActive(false);
+            if (_erwartungsInfoGroupActive)
+            {
+                tokenismButton.gameObject.SetActive(false);
+                biasInDerWahrnehmungVonFuehrungsFaehigkeitenButton.gameObject.SetActive(false);
+                benevolenterSexismusButton.gameObject.SetActive(false);
+                altersUndGenerationenBiasesButton.gameObject.SetActive(false);
+                stereotypeGegenueberFrauenInNichtTraditionellenBranchenButton.gameObject.SetActive(false);
+                
+                erwartungenNormenInfoButtonImage.sprite = arrowLeftSprite;
+                
+                _erwartungsInfoGroupActive = false;
+            }
+            else
+            {
+                tokenismButton.gameObject.SetActive(true);
+                biasInDerWahrnehmungVonFuehrungsFaehigkeitenButton.gameObject.SetActive(true);
+                benevolenterSexismusButton.gameObject.SetActive(true);
+                altersUndGenerationenBiasesButton.gameObject.SetActive(true);
+                stereotypeGegenueberFrauenInNichtTraditionellenBranchenButton.gameObject.SetActive(true);
+                
+                erwartungenNormenInfoButtonImage.sprite = arrowDownSprite;
+                
+                _erwartungsInfoGroupActive = true;
 
-            barrierenInfoGroup.SetActive(false);
-            erwartungenNormenInfoGroup.SetActive(true);
-            wahrnehmungFuehrungsrollenInfoGroup.SetActive(false);
-            barrierenHindernisseInfoGroup.SetActive(false);
+                _currentBiasInformationChapter = erwartungenNormenInfoGroup;
+            }
+
             StartCoroutine(RebuildLayout());
         }
 
         private void OnWahrnehmungFuehrungsrollenInfoButton()
         {
-            infoText.SetActive(true);
-            biasGroups.SetActive(true);
-            biasInformation.SetActive(false);
-
-            barrierenInfoGroup.SetActive(false);
-            erwartungenNormenInfoGroup.SetActive(false);
-            wahrnehmungFuehrungsrollenInfoGroup.SetActive(true);
-            barrierenHindernisseInfoGroup.SetActive(false);
+            if (_wahrnehmungFuehrungsrollenInfoGroupActive)
+            {
+                heteronormativitaetButton.gameObject.SetActive(false);
+                maternalBiasButton.gameObject.SetActive(false);
+                erwartungshaltungBezueglichFamilienplanungButton.gameObject.SetActive(false);
+                workLifeBalanceErwartungenButton.gameObject.SetActive(false);
+                geschlechtsspezifischeStereotypeButton.gameObject.SetActive(false);
+                
+                wahrnehmungFuehrungsrollenInfoButtonImage.sprite = arrowLeftSprite;
+                
+                _wahrnehmungFuehrungsrollenInfoGroupActive = false;
+            }
+            else
+            {
+                heteronormativitaetButton.gameObject.SetActive(true);
+                maternalBiasButton.gameObject.SetActive(true);
+                erwartungshaltungBezueglichFamilienplanungButton.gameObject.SetActive(true);
+                workLifeBalanceErwartungenButton.gameObject.SetActive(true);
+                geschlechtsspezifischeStereotypeButton.gameObject.SetActive(true);
+                
+                wahrnehmungFuehrungsrollenInfoButtonImage.sprite = arrowDownSprite;
+                
+                _wahrnehmungFuehrungsrollenInfoGroupActive = true;
+                
+                _currentBiasInformationChapter = wahrnehmungFuehrungsrollenInfoGroup;
+            }
+            
             StartCoroutine(RebuildLayout());
         }
 
         private void OnBarrierenHindernisseInfoButton()
         {
-            infoText.SetActive(true);
-            biasGroups.SetActive(true);
-            biasInformation.SetActive(false);
+            if (_barrierenHindernisseInfoGroupActive)
+            {
+                tightropeBiasButton.gameObject.SetActive(false);
+                mikroaggressionenButton.gameObject.SetActive(false);
+                leistungsattributionsBiasButton.gameObject.SetActive(false);
+                unbewussteBiasInDerKommunikationButton.gameObject.SetActive(false);
+                
+                barrierenHindernisseInfoButtonImage.sprite = arrowLeftSprite;
+                
+                _barrierenHindernisseInfoGroupActive = false;
+            }
+            else
+            {
+                tightropeBiasButton.gameObject.SetActive(true);
+                mikroaggressionenButton.gameObject.SetActive(true);
+                leistungsattributionsBiasButton.gameObject.SetActive(true);
+                unbewussteBiasInDerKommunikationButton.gameObject.SetActive(true);
+                
+                barrierenHindernisseInfoButtonImage.sprite = arrowDownSprite;
+                
+                _barrierenHindernisseInfoGroupActive = true;
+                
+                _currentBiasInformationChapter = barrierenHindernisseInfoGroup;
+            }
 
-            barrierenInfoGroup.SetActive(false);
-            erwartungenNormenInfoGroup.SetActive(false);
-            wahrnehmungFuehrungsrollenInfoGroup.SetActive(false);
-            barrierenHindernisseInfoGroup.SetActive(true);
             StartCoroutine(RebuildLayout());
         }
 
@@ -278,19 +337,21 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             infoText.SetActive(true);
 
-            if (biasGroups.activeInHierarchy)
+            if (biasInformation.activeInHierarchy)
             {
                 SceneLoader.LoadFoundersBubbleScene();
-            }
-            else if (biasInformation.activeInHierarchy)
-            {
-                biasGroups.SetActive(true);
-                biasInformation.SetActive(false);
             }
             else if (biasDetailsObject.activeInHierarchy)
             {
                 biasInformation.SetActive(true);
-                _currentBiasInformationChapter.SetActive(true);
+                barrierenInfoButton.gameObject.SetActive(true);
+                erwartungenNormenInfoButton.gameObject.SetActive(true);
+                wahrnehmungFuehrungsrollenInfoButton.gameObject.SetActive(true);
+                barrierenHindernisseInfoButton.gameObject.SetActive(true);
+                
+                CloseSearchBar();
+                
+                // _currentBiasInformationChapter.SetActive(true);
                 biasDetailsObject.SetActive(false);
             }
         }
@@ -300,7 +361,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             searchBarButton.gameObject.SetActive(true);
             searchBarImage.gameObject.SetActive(false);
             
-            biasGroups.SetActive(false);
             biasInformation.SetActive(false);
             searchList.SetActive(true);
 
@@ -332,9 +392,9 @@ namespace Assets._Scripts.Controller.SceneControllers
                 searchList.SetActive(false);
             }
 
-            if (!biasGroups.activeInHierarchy)
+            if (!biasInformation.activeInHierarchy)
             {
-                biasGroups.SetActive(true);
+                biasInformation.SetActive(true);
             }
         }
 

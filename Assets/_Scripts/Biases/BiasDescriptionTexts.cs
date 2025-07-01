@@ -661,9 +661,9 @@ namespace Assets._Scripts.Biases
         {
             if (BiasDetailsTexts.TryGetValue(biasType, out var biasInfo))
             {
-                return $"<size=40><align=center><b>{biasInfo[0]}</b></align></size>\n\n" +
-                       $"<size=35>{biasInfo[1]}</size>" +
-                       $"<size=35>{biasInfo[2]}</size>";
+                return $"<align=center><b>{biasInfo[0]}</b></align>\n\n" +
+                       $"{biasInfo[1]}" +
+                       $"{biasInfo[2]}";
             }
 
             return "";
