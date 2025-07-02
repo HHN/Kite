@@ -6,13 +6,16 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-//using LeastSquares.Overtone;
-
 namespace Assets._Scripts.UIElements.Buttons
 {
+    static class Origins
+    {
+        public const string Reset = "reset";
+    }
+
+    
     public class DeleteUserDataConfirmation : MonoBehaviour
     {
-        //[SerializeField] private TTSEngine engine;
         [SerializeField] private Button cancelButton;
         [SerializeField] private Button confirmButton;
         [SerializeField] private GameObject background;
@@ -21,9 +24,6 @@ namespace Assets._Scripts.UIElements.Buttons
         [SerializeField] private GameObject person;
         [SerializeField] private GameObject uiContainer;
         [SerializeField] private TextMeshProUGUI messageText;
-
-        private const string Delete = "delete";
-        private const string Reset = "reset";
 
         private string _origin;
 
@@ -37,13 +37,8 @@ namespace Assets._Scripts.UIElements.Buttons
         {
             cancelButton.onClick.AddListener(OnCancelButton);
             confirmButton.onClick.AddListener(OnConfirmButton);
-
-            if (_origin == Delete)
-            {
-                messageText.text = InfoMessages.DELETE_DATA_CONFIRMATION;
-            }
             
-            if (_origin == Reset)
+            if (_origin == Origins.Reset)
             {
                 messageText.text = InfoMessages.RESET_APP_CONFIRMATION;
             }
@@ -54,42 +49,32 @@ namespace Assets._Scripts.UIElements.Buttons
 
         private void AdjustImageSize()
         {
-            float backgroundWidth = background.GetComponent<RectTransform>().rect.width;
+            RectTransform backgroundRect = background.GetComponent<RectTransform>();
+            RectTransform personRect = person.GetComponent<RectTransform>();
+            
+            float backgroundWidth = backgroundRect.rect.width;
 
-            if (person.GetComponent<RectTransform>().rect.width > backgroundWidth)
+            if (personRect.rect.width > backgroundWidth)
             {
-                person.GetComponent<RectTransform>()
-                    .SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, backgroundWidth);
-                person.GetComponent<RectTransform>()
-                    .SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, backgroundWidth);
+                personRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, backgroundWidth);
+                personRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, backgroundWidth);
             }
         }
 
         private void OnConfirmButton()
         {
-            if (_origin == Delete)
-            {
-                StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.DELETED_DATA));
-                PlayerDataManager.Instance().ClearRelevantUserdata();
-                if (AnalyticsServiceHandler.Instance().IsAnalyticsInitialized())
-                {
-                    AnalyticsServiceHandler.Instance().DeleteCollectedData();
-                }
-
-                CloseMessageBox();
-            }
-
-            if (_origin == Reset)
+            if (_origin == Origins.Reset)
             {
                 SaveLoadManager.ClearAllSaveData();
-
+                
                 StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.RESET_APP));
                 PlayerDataManager.Instance().ClearEverything();
-                UnityEngine.PlayerPrefs.DeleteAll();
-                UnityEngine.PlayerPrefs.Save();
+                PlayerPrefs.DeleteAll();
+                PlayerPrefs.Save();
                 FavoritesManager.Instance().ClearFavorites();
                 PlayRecordManager.Instance().ClearData();
                 ShowPlayInstructionManager.Instance().SetShowInstruction(true);
+                
                 CloseMessageBox();
             }
 
@@ -113,6 +98,9 @@ namespace Assets._Scripts.UIElements.Buttons
                 return;
             }
 
+            GameManager.Instance.resetApp = true;
+            GameManager.Instance.DisplayMessage(InfoMessages.RESET_APP);
+            
             Destroy(gameObject);
         }
     }

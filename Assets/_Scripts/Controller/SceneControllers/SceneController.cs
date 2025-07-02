@@ -10,7 +10,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         public GameObject canvas;
         private MessageBox _messageObject;
 
-        public void DisplayInfoMessage(string infoMessage)
+        protected void DisplayInfoMessage(string infoMessage)
         {
             DisplayMessage("INFORMATION", infoMessage, false);
         }
@@ -40,13 +40,13 @@ namespace Assets._Scripts.Controller.SceneControllers
             _messageObject.Activate();
         }
 
-        public virtual void OnStop()
+        protected virtual void OnStop()
         {
         }
 
         public void CloseMessageBox()
         {
-            if (_messageObject == null)
+            if (!_messageObject)
             {
                 return;
             }

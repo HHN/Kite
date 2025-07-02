@@ -18,12 +18,13 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private Button applicationModeInfoButton;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private RectTransform layout;
+
         [SerializeField] private RectTransform layout02;
+
         //[SerializeField] private TTSEngine engine;
         [SerializeField] private DeleteUserDataConfirmation deleteUserDataConfirmDialogObject;
         [SerializeField] private GameObject deleteUserDataConfirmDialog;
 
-        private const string Delete = "delete";
         private const string Origin = "reset";
 
         private void Start()
@@ -38,28 +39,9 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             resetAppButton.onClick.AddListener(OnResetAppButton);
             resetAppInfoButton.onClick.AddListener(OnResetAppInfoButton);
-            applicationModeToggle.onValueChanged.AddListener(delegate
-            {
-                OnApplicationModeToggle(applicationModeToggle);
-            });
+            applicationModeToggle.onValueChanged.AddListener(delegate { OnApplicationModeToggle(applicationModeToggle); });
             applicationModeInfoButton.onClick.AddListener(OnApplicationModeInfoButton);
             FontSizeManager.Instance().UpdateAllTextComponents();
-        }
-
-        private void OnToggleDataCollection(Toggle toggle)
-        {
-            if (toggle.isOn)
-            {
-                PrivacyAndConditionManager.Instance().AcceptDataCollection();
-                DisplayInfoMessage(InfoMessages.STARTED_DATA_COLLECTION);
-                StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.STARTED_DATA_COLLECTION));
-            }
-            else
-            {
-                PrivacyAndConditionManager.Instance().UnaccepedDataCollection();
-                DisplayInfoMessage(InfoMessages.STOPPED_DATA_COLLECTION);
-                StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.STOPPED_DATA_COLLECTION));
-            }
         }
 
         private void OnApplicationModeToggle(Toggle toggle)
@@ -78,45 +60,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
         }
 
-        private void OnToggleDataCollectionInfoButton()
-        {
-            if (PrivacyAndConditionManager.Instance().IsDataCollectionAccepted())
-            {
-                StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.EXPLANATION_STOP_DATA_BUTTON));
-                DisplayInfoMessage(InfoMessages.EXPLANATION_STOP_DATA_BUTTON);
-            }
-            else
-            {
-                StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.EXPLANATION_COLLECT_DATA_BUTTON));
-                DisplayInfoMessage(InfoMessages.EXPLANATION_COLLECT_DATA_BUTTON);
-            }
-        }
-
-        private void OnDeleteCollectedDataButton()
-        {
-            if (!deleteUserDataConfirmDialogObject.IsNullOrDestroyed())
-            {
-                deleteUserDataConfirmDialogObject.CloseMessageBox();
-            }
-
-            if (DestroyValidator.IsNullOrDestroyed(canvas))
-            {
-                return;
-            }
-
-            deleteUserDataConfirmDialogObject = null;
-            deleteUserDataConfirmDialogObject = Instantiate(deleteUserDataConfirmDialog,
-                canvas.transform).GetComponent<DeleteUserDataConfirmation>();
-            deleteUserDataConfirmDialogObject.Initialize(Delete);
-            deleteUserDataConfirmDialogObject.Activate();
-        }
-
-        private void OnDeleteCollectedDataInfoButton()
-        {
-            StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.EXPLANATION_DELETE_DATA_BUTTON));
-            DisplayInfoMessage(InfoMessages.EXPLANATION_DELETE_DATA_BUTTON);
-        }
-
         private void OnResetAppButton()
         {
             if (!deleteUserDataConfirmDialogObject.IsNullOrDestroyed())
@@ -124,16 +67,17 @@ namespace Assets._Scripts.Controller.SceneControllers
                 deleteUserDataConfirmDialogObject.CloseMessageBox();
             }
 
-            if (DestroyValidator.IsNullOrDestroyed(canvas))
+            if (canvas.IsNullOrDestroyed())
             {
                 return;
             }
 
             deleteUserDataConfirmDialogObject = null;
-            deleteUserDataConfirmDialogObject = Instantiate(deleteUserDataConfirmDialog,
-                canvas.transform).GetComponent<DeleteUserDataConfirmation>();
+            deleteUserDataConfirmDialogObject = Instantiate(deleteUserDataConfirmDialog, canvas.transform).GetComponent<DeleteUserDataConfirmation>();
             deleteUserDataConfirmDialogObject.Initialize(Origin);
             deleteUserDataConfirmDialogObject.Activate();
+
+            GameManager.Instance.canvas = canvas;
         }
 
         private void OnResetAppInfoButton()
@@ -145,14 +89,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private void InitializeApplicationModeButton()
         {
-            if (ApplicationModeManager.Instance().IsOfflineModeActive())
-            {
-                applicationModeToggle.isOn = false;
-            }
-            else
-            {
-                applicationModeToggle.isOn = true;
-            }
+            applicationModeToggle.isOn = !ApplicationModeManager.Instance().IsOfflineModeActive();
         }
 
 
