@@ -213,6 +213,8 @@ namespace Assets._Scripts
             _messageObject.SetBody(message);
             _messageObject.SetIsErrorMessage(false);
             _messageObject.Activate();
+
+            resetApp = false;
         }
     }
 }
