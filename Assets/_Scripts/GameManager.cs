@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets._Scripts.Controller.CharacterController;
 using Assets._Scripts.Novel;
-using Assets._Scripts.Player;
 using Assets._Scripts.SaveNovelData;
+using Assets._Scripts.UIElements.Messages;
+using Assets._Scripts.Utilities;
 using UnityEngine;
 
 namespace Assets._Scripts
@@ -46,9 +47,7 @@ namespace Assets._Scripts
     {
         [SerializeField] private bool skipIntroNovel; // Whether to skip the introduction novel
         [SerializeField] private bool isIntroNovelSaved; // Tracks if the intro novel is saved
-
-        [SerializeField]
-        private bool introNovelLoadedFromMainMenu = true; // Whether the intro novel was loaded from the main menu
+        [SerializeField] private bool introNovelLoadedFromMainMenu = true; // Whether the intro novel was loaded from the main menu
 
         // List to display in the Inspector (only for debugging, not used directly)
         [SerializeField] private List<NovelSaveStatus> novelSaveStatusList = new();
@@ -56,7 +55,11 @@ namespace Assets._Scripts
         // Static dictionary to store character data globally
         [SerializeField] private List<CharacterDataEntry> characterDataList = new();
 
+        [SerializeField] private GameObject messageBox;
+
         public bool calledFromReload = true; // Flag to check if the scene is being reloaded
+        public bool resetApp; // Flag to check if the app is being reset
+        public GameObject canvas;
 
         // Dictionary to dynamically manage the save status of each novel
         private readonly Dictionary<string, bool> _novelSaveStatus = new();
@@ -65,6 +68,8 @@ namespace Assets._Scripts
         private Dictionary<long, CharacterData> _characterDataDictionary = new();
         
         public List<NovelSaveStatus> NovelSaveStatusList => novelSaveStatusList;
+        
+        private MessageBox _messageObject;
 
         // Property to get or set the skipIntroNovel flag
         public bool SkipIntroNovel
@@ -83,7 +88,7 @@ namespace Assets._Scripts
         private void Awake()
         {
             // Singleton pattern to ensure a single instance of GameManager exists
-            if (Instance != null && Instance != this)
+            if (Instance && Instance != this)
             {
                 Destroy(gameObject); // Destroy duplicate GameManager instances
                 return;
@@ -183,6 +188,31 @@ namespace Assets._Scripts
         public Dictionary<long, CharacterData> GetCharacterDataDictionary()
         {
             return _characterDataDictionary;
+        }
+        
+        public void DisplayMessage(string message)
+        {
+            if (!resetApp)
+            {
+                return;
+            }
+            
+            if (!_messageObject.IsNullOrDestroyed())
+            {
+                _messageObject.CloseMessageBox();
+            }
+
+            if (canvas.IsNullOrDestroyed())
+            {
+                return;
+            }
+
+            _messageObject = null;
+            _messageObject = Instantiate(messageBox, canvas.transform).GetComponent<MessageBox>();
+            _messageObject.SetHeadline("INFORMATION");
+            _messageObject.SetBody(message);
+            _messageObject.SetIsErrorMessage(false);
+            _messageObject.Activate();
         }
     }
 }

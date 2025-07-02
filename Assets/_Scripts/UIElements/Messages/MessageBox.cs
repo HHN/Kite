@@ -34,31 +34,24 @@ namespace Assets._Scripts.UIElements.Messages
 
         public void Activate()
         {
-            if (this.isErrorMessage)
-            {
-                GlobalVolumeManager.Instance.PlaySound(errorSound);
-            }
-            else
-            {
-                GlobalVolumeManager.Instance.PlaySound(infoSound);
-            }
+            GlobalVolumeManager.Instance.PlaySound(isErrorMessage ? errorSound : infoSound);
 
-            this.gameObject.SetActive(true);
+            gameObject.SetActive(true);
         }
 
         private void OnOkButton()
         {
-            this.CloseMessageBox();
+            CloseMessageBox();
         }
 
         public void CloseMessageBox()
         {
-            if (this.IsNullOrDestroyed() || this.gameObject.IsNullOrDestroyed())
+            if (this.IsNullOrDestroyed() || gameObject.IsNullOrDestroyed())
             {
                 return;
             }
 
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
         public void SetIsErrorMessage(bool isError)
