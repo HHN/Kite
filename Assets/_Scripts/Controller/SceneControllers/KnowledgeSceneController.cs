@@ -236,6 +236,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 _currentBiasInformationChapter = barrierenInfoGroup;
             }
             
+            FontSizeManager.Instance().UpdateAllTextComponents();
             StartCoroutine(RebuildLayout());
         }
 
@@ -268,6 +269,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 _currentBiasInformationChapter = erwartungenNormenInfoGroup;
             }
 
+            FontSizeManager.Instance().UpdateAllTextComponents();
             StartCoroutine(RebuildLayout());
         }
 
@@ -300,6 +302,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 _currentBiasInformationChapter = wahrnehmungFuehrungsrollenInfoGroup;
             }
             
+            FontSizeManager.Instance().UpdateAllTextComponents();
             StartCoroutine(RebuildLayout());
         }
 
@@ -330,6 +333,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 _currentBiasInformationChapter = barrierenHindernisseInfoGroup;
             }
 
+            FontSizeManager.Instance().UpdateAllTextComponents();
             StartCoroutine(RebuildLayout());
         }
 

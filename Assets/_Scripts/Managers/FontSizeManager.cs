@@ -74,6 +74,7 @@ namespace Assets._Scripts.Managers
                     continue;
                 }
 
+                Debug.Log($"Updating TMP_Text component: {tmpTextComponent.name} with font size: {FontSize} (old: {tmpTextComponent.fontSize})");
                 tmpTextComponent.fontSize = FontSize;
                 tmpTextComponent.ForceMeshUpdate(); // Erzwingt das Update des Textes (optional f�r TMP)
 
