@@ -155,6 +155,9 @@ namespace Assets._Scripts.Controller.SceneControllers
             OfflineFeedbackManager.Instance().Clear();
 
             Initialize();
+            
+            GeneratedFeedbackManager.Instance.Reset();
+            GeneratedFeedbackManager.Instance.SetIdForNovel((int)novelToPlay.id);
         }
 
         private void Initialize()
@@ -444,11 +447,13 @@ namespace Assets._Scripts.Controller.SceneControllers
                     HandleSaveVariableEvent(nextEventToPlay);
                     break;
                 }
+                // TODO: Check if necessary 
                 case VisualNovelEventType.AddFeedbackEvent:
                 {
                     HandleAddFeedbackEvent(nextEventToPlay);
                     break;
                 }
+                // TODO: Check if necessary 
                 case VisualNovelEventType.AddFeedbackUnderConditionEvent:
                 {
                     HandleAddFeedbackUnderConditionEvent(nextEventToPlay);
@@ -871,6 +876,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void AddEntryToPlayThroughHistory(CharacterRole characterRole, string text)
         {
             playThroughHistory.Add(CharacterTypeHelper.GetNameOfCharacter(characterRole) + ": " + text);
+            GeneratedFeedbackManager.Instance.SetEvent(text);
         }
 
         public static string ReplacePlaceholders(string text, Dictionary<string, string> replacements)

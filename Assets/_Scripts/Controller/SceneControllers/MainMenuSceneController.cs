@@ -33,6 +33,10 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private void Start()
         {
+            GeneratedFeedbackManager feedbackManager = GeneratedFeedbackManager.Instance;
+            GeneratedFeedbackManager.Instance.LoadFeedbacks();
+            GeneratedFeedbackManager.Instance.DebugPrintAllFeedbackEntries();
+            
             // Initialisiere den TextToSpeechManager
             TextToSpeechManager ttsManager = TextToSpeechManager.Instance;
 

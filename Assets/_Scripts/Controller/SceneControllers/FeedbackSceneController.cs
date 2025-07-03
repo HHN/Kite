@@ -79,37 +79,48 @@ namespace Assets._Scripts.Controller.SceneControllers
                 return;
             }
 
+            GeneratedFeedbackManager.Instance.DebugPrintAvailableIds();
+            
+            hintText.SetText("Hinweis: Analyse und Feedback wurden durch KI künstlich erzeugt. Eine individuelle Beratung wird hierdurch nicht ersetzt.");
+            _novel = PlayManager.Instance().GetVisualNovelToPlay();
+            
+            _dialog = PromptManager.Instance().GetDialog();
+            
+            _dialog = _dialog.Replace("Bitte beachte, dass kein Teil des Dialogs in das Feedback darf.", "");
+
+            if (GeneratedFeedbackManager.Instance.HasEventsForId((int)novelToPlay.id))
+            {
+                Debug.Log("Feedback wurde gefunden!");
+                novelToPlay.feedback = GeneratedFeedbackManager.Instance.GetFeedback();
+                SaveDialogToHistory(novelToPlay.feedback);
+            }
+            
             if (string.IsNullOrEmpty(novelToPlay.feedback))
             {
                 StartWaitingMusic();
-                _novel = PlayManager.Instance().GetVisualNovelToPlay();
                 feedbackText.SetText("Das Feedback wird gerade geladen. Dies dauert durchschnittlich zwischen 30 und 60 Sekunden. Solltest du nicht so lange warten wollen, kannst du dir das Feedback einfach im Archiv anschauen, sobald es fertig ist.");
-                hintText.SetText("Hinweis: Analyse und Feedback wurden durch KI künstlich erzeugt. Eine individuelle Beratung wird hierdurch nicht ersetzt.");
                 GetCompletionServerCall call = Instantiate(gptServercallPrefab).GetComponent<GetCompletionServerCall>();
                 call.sceneController = this;
-
-                _dialog = PromptManager.Instance().GetDialog();
-
-                _dialog = _dialog.Replace("Bitte beachte, dass kein Teil des Dialogs in das Feedback darf.", "");
-
+            
+            
                 FeedbackHandler feedbackHandler = new FeedbackHandler()
                 {
                     FeedbackSceneController = this,
                     ID = PlayManager.Instance().GetVisualNovelToPlay().id,
                     Dialog = _dialog
                 };
-
+            
                 call.OnSuccessHandler = feedbackHandler;
                 call.OnErrorHandler = this;
-
+            
                 call.prompt = PromptManager.Instance().GetPrompt(_novel != null ? _novel.context : "");
-
+            
                 call.SendRequest();
                 DontDestroyOnLoad(call.gameObject);
                 
                 string novelId = novelToPlay.id.ToString();
                 NovelSaveData savedData = SaveLoadManager.Load(novelId);
-
+            
                 if (savedData == null)
                 {
                     return;
