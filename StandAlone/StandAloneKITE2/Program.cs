@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 
     public class TweePathCalculator
     {
-        private const string MetadataFilePath = @"..\..\..\Notarin\visual_novel_meta_data.txt";
-        private const string EventListFilePath = @"..\..\..\Notarin\visual_novel_event_list.txt";
-        private const string OutputFilePath = @"..\..\..\Notarin\pathOutput.txt";
-        private const string ResponseFilePath = @"..\..\..\Notarin\response.txt";
+        private const string MetadataFilePath = @"..\..\..\Eltern\visual_novel_meta_data.txt";
+        private const string EventListFilePath = @"..\..\..\Eltern\visual_novel_event_list.txt";
+        private const string OutputFilePath = @"..\..\..\Eltern\pathOutput.txt";
+        private const string ResponseFilePath = @"..\..\..\Eltern\response.txt";
         private static readonly string apiKey = Environment.GetEnvironmentVariable("API_KEY");
         
         private static readonly HttpClient http = new HttpClient
@@ -48,19 +48,21 @@ using System.Threading.Tasks;
             
             http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
             
-            List<string> prompts = LoadPromptsFromFile(OutputFilePath);
+            // List<string> prompts = LoadPromptsFromFile(OutputFilePath);
+            // int index = 1;
+            // foreach (var prompt in prompts)
+            // Nur die ersten 50 Prompts verwenden
+            List<string> prompts = LoadPromptsFromFile(OutputFilePath)
+                .Take(50)
+                .ToList();
             int index = 1;
             foreach (var prompt in prompts)
             {
-                Console.WriteLine(prompt);
+                Console.WriteLine($"Verarbeite Prompt #{index}:");
                 Console.WriteLine($"[{string.Join("; ", ExtractInOrder(prompt))}]");
                 Console.WriteLine(prompt);
                 await SendPrompt(prompt, index++);
                 Console.WriteLine("Prompt gesendet und Antwort angehängt.");
-                if (index==11)
-                {
-                    return;
-                }
             }
 
         }

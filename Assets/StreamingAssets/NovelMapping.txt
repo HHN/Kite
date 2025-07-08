@@ -1,0 +1,9 @@
+Vertrieb(AI_TRAQC):14
+Einstiegsdialog:13
+Eltern:2
+Honorarverhandlung:11
+Investor:9
+Banktermin:10
+Notarin:4
+Pressegespräch:3
+Büro:6

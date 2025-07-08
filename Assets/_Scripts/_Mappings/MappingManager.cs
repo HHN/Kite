@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace Assets._Scripts._Mappings
         private static readonly string MappingFileBias;
         private static readonly string MappingFileFaceExpression;
         private static readonly string MappingFileCharacter;
+        private static readonly string MappingFileNovels;
 
         // Dictionaries to store the mappings for bias, face expression, and characters
         private static Dictionary<string, string> _biasMapping = new Dictionary<string, string>();
@@ -28,6 +30,7 @@ namespace Assets._Scripts._Mappings
             MappingFileBias = Path.Combine(Application.streamingAssetsPath, "BiasMapping.txt");
             MappingFileFaceExpression = Path.Combine(Application.streamingAssetsPath, "FaceExpressionMapping.txt");
             MappingFileCharacter = Path.Combine(Application.streamingAssetsPath, "CharacterMapping.txt");
+            MappingFileNovels = Path.Combine(Application.streamingAssetsPath, "NovelMapping.txt");
 
             LoadBiasMappingAsync();
             LoadFaceExpressionMappingAsync();
@@ -158,13 +161,13 @@ namespace Assets._Scripts._Mappings
         // Helper method to process mapping file (for Bias, FaceExpression, and Character mappings)
         private static void ProcessMappingFile(string[] lines, ref Dictionary<string, string> mapping)
         {
-            int addedPairsCount = 0; // Zähler für hinzugefügte Paare.
+            int addedPairsCount = 0; // Zï¿½hler fï¿½r hinzugefï¿½gte Paare.
 
             foreach (string line in lines)
             {
                 if (string.IsNullOrWhiteSpace(line))
                 {
-                    continue; // Leere Zeilen überspringen.
+                    continue; // Leere Zeilen ï¿½berspringen.
                 }
 
                 int colonIndex = line.IndexOf(':');
@@ -176,7 +179,7 @@ namespace Assets._Scripts._Mappings
                     if (!string.IsNullOrEmpty(key) && !mapping.ContainsKey(key))
                     {
                         mapping.Add(key, value);
-                        addedPairsCount++; // Zähler erhöhen, wenn ein neues Paar hinzugefügt wird.
+                        addedPairsCount++; // Zï¿½hler erhï¿½hen, wenn ein neues Paar hinzugefï¿½gt wird.
                     }
                 }
                 else
@@ -305,6 +308,61 @@ namespace Assets._Scripts._Mappings
                 return "";
             }
             return _characterMapping.FirstOrDefault(x => x.Value == character).Key;
+        }
+        
+        /// <summary>
+        /// Liest die NovelMapping.txt (StreamingAssets/NovelMapping.txt) ein
+        /// und liefert die Zuordnung Ordnername â†’ Novel-ID.
+        /// Im Editor/Standalone synchron, unter WebGL asynchron via UnityWebRequest.
+        /// </summary>
+        /// <param name="onComplete">
+        /// Callback, das aufgerufen wird, sobald das Mapping geladen ist.
+        /// </param>
+        public IEnumerator LoadNovelMapping(Action<Dictionary<string,int>> onComplete)
+        {
+            var mappingPath = Path.Combine(Application.streamingAssetsPath, "NovelMapping.txt");
+
+#if UNITY_WEBGL
+            // WebGL: per HTTP holen
+            using var www = UnityWebRequest.Get(mappingPath);
+            yield return www.SendWebRequest();
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError($"LoadNovelMapping: Fehler beim Laden von {mappingPath}: {www.error}");
+                onComplete?.Invoke(new Dictionary<string,int>());
+                yield break;
+            }
+
+            // Text in Zeilen splitten
+            var lines = www.downloadHandler.text
+                .Split(new[]{'\r','\n'}, StringSplitOptions.RemoveEmptyEntries);
+#else
+    // Editor / Standalone: File-System
+    if (!File.Exists(mappingPath))
+    {
+        Debug.LogError($"LoadNovelMapping: Datei nicht gefunden: {mappingPath}");
+        onComplete?.Invoke(new Dictionary<string,int>());
+        yield break;
+    }
+    var lines = File.ReadAllLines(mappingPath);
+#endif
+
+            var dict = new Dictionary<string,int>(StringComparer.OrdinalIgnoreCase);
+            foreach (var raw in lines)
+            {
+                var line = raw.Trim();
+                if (line.Length == 0 || !line.Contains(':')) 
+                    continue;
+
+                var parts = line.Split(new[]{':'}, 2);
+                var key = parts[0].Trim();
+                if (int.TryParse(parts[1].Trim(), out var id))
+                    dict[key] = id;
+                else
+                    Debug.LogWarning($"LoadNovelMapping: UngÃ¼ltige ID in Zeile: {line}");
+            }
+
+            onComplete?.Invoke(dict);
         }
     }
 }
