@@ -15,7 +15,7 @@ namespace Assets._Scripts.SceneManagement
         private static readonly HashSet<string> SingleLoadExceptions = new HashSet<string>
         {
             "FeedBackScene",
-            "FoundersBubbleScene"
+            "FoundersBubbleTestScene"
         };
 
         // Merkt sich den Namen der aktuell geladenen Sub-Szene (oder null, wenn keine).

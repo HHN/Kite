@@ -40,7 +40,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             _messageObject.Activate();
         }
 
-        protected virtual void OnStop()
+        public virtual void OnStop()
         {
         }
 
