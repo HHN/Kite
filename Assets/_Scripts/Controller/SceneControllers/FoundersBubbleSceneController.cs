@@ -94,19 +94,43 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             // 2. Alle Buttons erstellen und in einer temporären Liste speichern
             List<GameObject> novelButtonsToSort = new List<GameObject>();
-            foreach (VisualNovel visualNovel in allKiteNovelsList)
+            if (GameManager.Instance.ShowAllNovels)
             {
-                NovelEntry novelEntry = new NovelEntry
+                foreach (VisualNovel visualNovel in allKiteNovelsList)
                 {
-                    novelId = visualNovel.id,
-                    isContained = true
-                };
-                _isNovelContainedInVersion.Add(novelEntry);
+                    NovelEntry novelEntry = new NovelEntry
+                    {
+                        novelId = visualNovel.id,
+                        isContained = true
+                    };
+                    _isNovelContainedInVersion.Add(novelEntry);
 
-                GameObject novelButton = CreateBurgerMenuButton(visualNovel, content); // CreateBurgerMenuButton nur den Button zurückgeben lassen
-                if (novelButton != null)
+                    GameObject novelButton = CreateBurgerMenuButton(visualNovel, content); // CreateBurgerMenuButton nur den Button zurückgeben lassen
+                    if (novelButton != null)
+                    {
+                        novelButtonsToSort.Add(novelButton);
+                    }
+                }
+            }
+            else
+            {
+                foreach (VisualNovel visualNovel in allKiteNovelsList)
                 {
-                    novelButtonsToSort.Add(novelButton);
+                    if (visualNovel.isKiteNovel)
+                    {
+                        NovelEntry novelEntry = new NovelEntry
+                        {
+                            novelId = visualNovel.id,
+                            isContained = true
+                        };
+                        _isNovelContainedInVersion.Add(novelEntry);
+
+                        GameObject novelButton = CreateBurgerMenuButton(visualNovel, content); // CreateBurgerMenuButton nur den Button zurückgeben lassen
+                        if (novelButton != null)
+                        {
+                            novelButtonsToSort.Add(novelButton);
+                        }
+                    }
                 }
             }
 

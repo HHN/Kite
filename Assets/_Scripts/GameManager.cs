@@ -45,6 +45,7 @@ namespace Assets._Scripts
 
     public class GameManager : MonoBehaviour
     {
+        [SerializeField] private bool showAllNovels = false;
         [SerializeField] private bool skipIntroNovel; // Whether to skip the introduction novel
         [SerializeField] private bool isIntroNovelSaved; // Tracks if the intro novel is saved
         [SerializeField] private bool introNovelLoadedFromMainMenu = true; // Whether the intro novel was loaded from the main menu
@@ -70,6 +71,12 @@ namespace Assets._Scripts
         public List<NovelSaveStatus> NovelSaveStatusList => novelSaveStatusList;
         
         private MessageBox _messageObject;
+        
+        public bool ShowAllNovels
+        {
+            get => showAllNovels;
+            set => showAllNovels = value;
+        }
 
         // Property to get or set the skipIntroNovel flag
         public bool SkipIntroNovel
