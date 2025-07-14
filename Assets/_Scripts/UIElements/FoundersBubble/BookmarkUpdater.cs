@@ -9,6 +9,12 @@ namespace Assets._Scripts.UIElements.FoundersBubble
     public class BookmarkUpdater : MonoBehaviour
     {
         [SerializeField] private VisualNovelNames visualNovel;
+        
+        public VisualNovelNames VisualNovel
+        {
+            get => visualNovel;
+            set => visualNovel = value;
+        }
 
         private void Update()
         {

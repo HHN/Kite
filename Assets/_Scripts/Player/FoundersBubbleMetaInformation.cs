@@ -5,23 +5,6 @@ namespace Assets._Scripts.Player
 {
     public class FoundersBubbleMetaInformation : MonoBehaviour
     {
-        public const int NumberOfNovelsToDisplay = 8;
-
-        public static bool IsHighInGui(VisualNovelNames value)
-        {
-            return value switch
-            {
-                VisualNovelNames.BankKreditNovel => true,
-                VisualNovelNames.ElternNovel => false,
-                VisualNovelNames.NotariatNovel => true,
-                VisualNovelNames.PresseNovel => false,
-                VisualNovelNames.VermieterNovel => true,
-                VisualNovelNames.InvestorNovel => false,
-                VisualNovelNames.HonorarNovel => false,
-                _ => false
-            };
-        }
-
         internal static string GetDisplayNameOfNovelToPlay(VisualNovelNames value)
         {
             return value switch
@@ -44,14 +27,14 @@ namespace Assets._Scripts.Player
             return value switch
             {
                 VisualNovelNames.ElternNovel => 2,
-                VisualNovelNames.PresseNovel => 4,
-                VisualNovelNames.NotariatNovel => 3,
-                VisualNovelNames.VermieterNovel => 5,
-                VisualNovelNames.InvestorNovel => 6,
-                VisualNovelNames.BankKreditNovel => 1,
-                VisualNovelNames.HonorarNovel => 8,
-                VisualNovelNames.EinstiegsNovel => 7,
-                VisualNovelNames.VertriebNovel => 9,
+                VisualNovelNames.HonorarNovel => 3,
+                VisualNovelNames.InvestorNovel => 4,
+                VisualNovelNames.BankKreditNovel => 5,
+                VisualNovelNames.NotariatNovel => 6,
+                VisualNovelNames.PresseNovel => 7,
+                VisualNovelNames.VermieterNovel => 8,
+                VisualNovelNames.EinstiegsNovel => 9,
+                VisualNovelNames.VertriebNovel => 10,
                 _ => -1
             };
         }

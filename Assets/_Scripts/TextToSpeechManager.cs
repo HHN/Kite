@@ -34,10 +34,22 @@ namespace Assets._Scripts
         private static extern bool _IsSpeaking();
 #else
         // Fallbacks, falls wir nicht auf einem echten iOS-Device laufen
-        private static void _InitializeTTS() { }
-        private static void _Speak(string message) { }
-        private static void _StopSpeaking() { }
-        private static bool _IsSpeaking() { return false; }
+        private static void _InitializeTTS()
+        {
+        }
+
+        private static void _Speak(string message)
+        {
+        }
+
+        private static void _StopSpeaking()
+        {
+        }
+
+        private static bool _IsSpeaking()
+        {
+            return false;
+        }
 #endif
 
         // ------------------------------------------------
@@ -57,10 +69,22 @@ namespace Assets._Scripts
         private static extern int TTS_IsSpeaking(); // Rückgabe int statt bool
 #else
         // Fallbacks für Editor oder andere Plattformen
-        private static void TTS_Initialize() { }
-        private static void TTS_Speak(string message) { }
-        private static void TTS_Stop() { }
-        private static int TTS_IsSpeaking() { return 0; }
+        private static void TTS_Initialize()
+        {
+        }
+
+        private static void TTS_Speak(string message)
+        {
+        }
+
+        private static void TTS_Stop()
+        {
+        }
+
+        private static int TTS_IsSpeaking()
+        {
+            return 0;
+        }
 #endif
 
         // ------------------------------------------------
@@ -80,6 +104,7 @@ namespace Assets._Scripts
                         DontDestroyOnLoad(obj);
                     }
                 }
+
                 return _instance;
             }
         }
@@ -207,6 +232,9 @@ namespace Assets._Scripts
         {
             // Im Unity-Editor TTS nicht ausführen
 #if UNITY_EDITOR
+            yield break;
+#else
+            Debug.Log($"[TTS Manager] Speak (Build): {message}"); // Optional: Log in Builds
             yield break;
 #endif
 

@@ -1,8 +1,9 @@
+using System;
+using System.Collections.Generic;
 using Assets._Scripts.Controller.SceneControllers;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
-using Assets._Scripts.Managers;
 using Assets._Scripts.UI_Elements.Founders_Bubble;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -17,7 +18,9 @@ namespace Assets._Scripts.UIElements.FoundersBubble
         [SerializeField] private RectTransform viewPortTransform;
         [SerializeField] private RectTransform contentPanelTransform;
         [SerializeField] private HorizontalLayoutGroup horizontalLayoutGroup;
-        [SerializeField] private RectTransform[] itemList;
+
+        [SerializeField] private RectTransform[] itemList; // ToDo: Create these items in the FoundersBubbleSceneController
+
         [SerializeField] private Vector2 oldVelocity;
         [SerializeField] private bool isUpdated;
         [SerializeField] private float maxSpeed = 1000f;
@@ -27,9 +30,6 @@ namespace Assets._Scripts.UIElements.FoundersBubble
 
         [SerializeField] private Vector2 lastPosition;
         [SerializeField] private bool stoppedDraggingManually;
-
-        [SerializeField] public float widthBefore;
-        [SerializeField] public float widthAfter;
 
         [SerializeField] public bool isSnapped;
         [SerializeField] public bool isTextboxVisible;
@@ -43,6 +43,14 @@ namespace Assets._Scripts.UIElements.FoundersBubble
         [SerializeField] private Vector2 velocityDuringDrag;
         [SerializeField] private float lastDragTime;
 
+        [SerializeField] private float yOffsetForZigzag = 200f;
+
+        public List<RectTransform> novelButtonsList;
+        public RectTransform[] novelButtons;
+
+        private bool _instantiated;
+        private int _numberOfNovels;
+
         private void Start()
         {
             lastDragPosition = Vector2.zero;
@@ -51,54 +59,70 @@ namespace Assets._Scripts.UIElements.FoundersBubble
             snappingSpeed = 0f;
             isUpdated = false;
             oldVelocity = Vector2.zero;
-            itemsToAdd = Mathf.CeilToInt(viewPortTransform.rect.width /
-                                         (itemList[0].rect.width + horizontalLayoutGroup.spacing));
-
-            for (int i = 0; i < itemsToAdd; i++)
+            
+            if (customScrollRect != null && customScrollRect.gameObject.name == "Novels")
             {
-                RectTransform rt = Instantiate(itemList[i % itemList.Length], contentPanelTransform);
-                rt.SetAsLastSibling();
-            }
-
-            for (int i = 0; i < itemsToAdd; i++)
-            {
-                int num = itemList.Length - i - 1;
-
-                while (num < 0)
+                novelButtons = new RectTransform[novelButtonsList.Count];
+                for (int i = 0; i < novelButtonsList.Count; i++)
                 {
-                    num += itemList.Length;
+                    novelButtons[i] = novelButtonsList[i];
                 }
-
-                RectTransform rt = Instantiate(itemList[num], contentPanelTransform);
-                rt.SetAsFirstSibling();
+                
+                _numberOfNovels = novelButtons.Length;
+                
+                itemsToAdd = 0;
+            }
+            else
+            {
+                novelButtons = itemList;
+                
+                // itemsToAdd = Mathf.CeilToInt(viewPortTransform.rect.width / (novelButtons[0].rect.width + horizontalLayoutGroup.spacing));
             }
 
-            contentPanelTransform.localPosition = new Vector3(
-                0 - (itemList[0].rect.width + horizontalLayoutGroup.spacing) * itemsToAdd,
-                contentPanelTransform.localPosition.y,
-                contentPanelTransform.localPosition.z);
+            if (customScrollRect == null || customScrollRect.gameObject.name != "Novels")
+            {
+                for (int i = 0; i < itemsToAdd; i++)
+                {
+                    RectTransform rt = Instantiate(novelButtons[i % novelButtons.Length], contentPanelTransform);
+                    rt.SetAsLastSibling();
+                }
+            
+                for (int i = 0; i < itemsToAdd; i++)
+                {
+                    int num = novelButtons.Length - i - 1;
+            
+                    while (num < 0)
+                    {
+                        num += novelButtons.Length;
+                    }
+            
+                    RectTransform rt = Instantiate(novelButtons[num], contentPanelTransform);
+                    rt.SetAsFirstSibling();
+                }
+            }
 
-            widthBefore = (itemList[0].rect.width * itemList.Length) +
-                ((itemList.Length - 1) * horizontalLayoutGroup.spacing) - (viewPortTransform.rect.width);
-            widthAfter = (itemList[0].rect.width * (itemList.Length + (2 * itemsToAdd))) +
-                         ((itemList.Length + (2 * itemsToAdd) - 1) * horizontalLayoutGroup.spacing) -
-                         (viewPortTransform.rect.width);
+            contentPanelTransform.localPosition = new Vector3(0 - (novelButtons[0].rect.width + horizontalLayoutGroup.spacing) * itemsToAdd,
+                contentPanelTransform.localPosition.y, contentPanelTransform.localPosition.z);
 
             float memory = SceneMemoryManager.Instance().GetMemoryOfFoundersBubbleScene();
 
-            if (memory != 0 && scrollRect != null)
+            if (memory != 0 && scrollRect)
             {
                 scrollRect.horizontalNormalizedPosition = memory;
             }
-            else if (memory != 0 && customScrollRect != null)
+            else if (memory != 0 && customScrollRect)
             {
                 customScrollRect.horizontalNormalizedPosition = memory;
             }
+
+            _instantiated = true;
         }
 
-        void Update()
+        private void Update()
         {
-            if (scrollRect == null)
+            if (!_instantiated) return;
+            
+            if (!scrollRect)
             {
                 UpdateForCustomScrollRect();
                 return;
@@ -109,7 +133,7 @@ namespace Assets._Scripts.UIElements.FoundersBubble
 
         private void UpdateForScrollRect()
         {
-            if (secondScrollRect == null)
+            if (!secondScrollRect)
             {
                 if (isUpdated)
                 {
@@ -121,17 +145,14 @@ namespace Assets._Scripts.UIElements.FoundersBubble
                 {
                     Canvas.ForceUpdateCanvases();
                     oldVelocity = scrollRect.velocity;
-                    contentPanelTransform.localPosition -=
-                        new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
+                    contentPanelTransform.localPosition -= new Vector3(novelButtons.Length * (novelButtons[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
                     isUpdated = true;
                 }
-                else if (contentPanelTransform.localPosition.x <
-                         0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
+                else if (contentPanelTransform.localPosition.x < 0 - (novelButtons.Length * (novelButtons[0].rect.width + horizontalLayoutGroup.spacing)))
                 {
                     Canvas.ForceUpdateCanvases();
                     oldVelocity = scrollRect.velocity;
-                    contentPanelTransform.localPosition +=
-                        new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
+                    contentPanelTransform.localPosition += new Vector3(novelButtons.Length * (novelButtons[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
                     isUpdated = true;
                 }
 
@@ -153,20 +174,17 @@ namespace Assets._Scripts.UIElements.FoundersBubble
             {
                 Canvas.ForceUpdateCanvases();
                 oldVelocity = scrollRect.velocity;
-                contentPanelTransform.localPosition -=
-                    new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
+                contentPanelTransform.localPosition -= new Vector3(novelButtons.Length * (novelButtons[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
                 isUpdated = true;
-                currentTarget = currentTarget + FoundersBubbleMetaInformation.NumberOfNovelsToDisplay;
+                currentTarget += _numberOfNovels;
             }
-            else if (contentPanelTransform.localPosition.x <
-                     0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
+            else if (contentPanelTransform.localPosition.x < 0 - (novelButtons.Length * (novelButtons[0].rect.width + horizontalLayoutGroup.spacing)))
             {
                 Canvas.ForceUpdateCanvases();
                 oldVelocity = scrollRect.velocity;
-                contentPanelTransform.localPosition +=
-                    new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
+                contentPanelTransform.localPosition += new Vector3(novelButtons.Length * (novelButtons[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
                 isUpdated = true;
-                currentTarget = currentTarget - FoundersBubbleMetaInformation.NumberOfNovelsToDisplay;
+                currentTarget -= _numberOfNovels;
             }
 
             SnapToItem();
@@ -175,7 +193,7 @@ namespace Assets._Scripts.UIElements.FoundersBubble
 
         private void UpdateForCustomScrollRect()
         {
-            if (secondScrollRect == null)
+            if (!secondScrollRect)
             {
                 if (isUpdated)
                 {
@@ -187,17 +205,14 @@ namespace Assets._Scripts.UIElements.FoundersBubble
                 {
                     Canvas.ForceUpdateCanvases();
                     oldVelocity = customScrollRect.velocity;
-                    contentPanelTransform.localPosition -=
-                        new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
+                    contentPanelTransform.localPosition -= new Vector3(novelButtons.Length * (novelButtons[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
                     isUpdated = true;
                 }
-                else if (contentPanelTransform.localPosition.x <
-                         0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
+                else if (contentPanelTransform.localPosition.x < 0 - (novelButtons.Length * (novelButtons[0].rect.width + horizontalLayoutGroup.spacing)))
                 {
                     Canvas.ForceUpdateCanvases();
                     oldVelocity = customScrollRect.velocity;
-                    contentPanelTransform.localPosition +=
-                        new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
+                    contentPanelTransform.localPosition += new Vector3(novelButtons.Length * (novelButtons[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
                     isUpdated = true;
                 }
 
@@ -219,20 +234,18 @@ namespace Assets._Scripts.UIElements.FoundersBubble
             {
                 Canvas.ForceUpdateCanvases();
                 oldVelocity = customScrollRect.velocity;
-                contentPanelTransform.localPosition -=
-                    new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
+                contentPanelTransform.localPosition -= new Vector3(novelButtons.Length * (novelButtons[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
                 isUpdated = true;
-                currentTarget = currentTarget + FoundersBubbleMetaInformation.NumberOfNovelsToDisplay;
+                currentTarget += _numberOfNovels;
             }
             else if (contentPanelTransform.localPosition.x <
-                     0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)))
+                     0 - (novelButtons.Length * (novelButtons[0].rect.width + horizontalLayoutGroup.spacing)))
             {
                 Canvas.ForceUpdateCanvases();
                 oldVelocity = customScrollRect.velocity;
-                contentPanelTransform.localPosition +=
-                    new Vector3(itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
+                contentPanelTransform.localPosition += new Vector3(novelButtons.Length * (novelButtons[0].rect.width + horizontalLayoutGroup.spacing), 0, 0);
                 isUpdated = true;
-                currentTarget = currentTarget - FoundersBubbleMetaInformation.NumberOfNovelsToDisplay;
+                currentTarget -= _numberOfNovels;
             }
 
             SnapToItem();
@@ -241,22 +254,21 @@ namespace Assets._Scripts.UIElements.FoundersBubble
 
         private void SnapToItem()
         {
-            float targetXPosition = 0 - ((currentTarget * (itemList[0].rect.width + horizontalLayoutGroup.spacing)) -
-                                         (viewPortTransform.rect.width / 2) - (itemList[0].rect.width / 2) -
+            float targetXPosition = 0 - (currentTarget * (novelButtons[0].rect.width + horizontalLayoutGroup.spacing) -
+                                         viewPortTransform.rect.width / 2 - novelButtons[0].rect.width / 2 -
                                          horizontalLayoutGroup.spacing);
 
             if (isSnapped)
             {
-                if (isTextboxVisible && contentPanelTransform.localPosition.x != targetXPosition)
-                {
-                    foundersBubbleSceneController.MakeTextboxInvisible();
-                    isTextboxVisible = false;
-                }
+                if (!isTextboxVisible || contentPanelTransform.localPosition.x == targetXPosition) return;
+                
+                foundersBubbleSceneController.MakeTextboxInvisible();
+                isTextboxVisible = false;
 
                 return;
             }
 
-            if (scrollRect != null)
+            if (scrollRect)
             {
                 scrollRect.velocity = Vector2.zero;
             }
@@ -284,22 +296,21 @@ namespace Assets._Scripts.UIElements.FoundersBubble
             snappingSpeed = 0;
             currentTarget = FoundersBubbleMetaInformation.GetIndexOfNovel(visualNovelNames) + itemsToAdd;
 
-            if (IsCurrentlyInFirstHalf() && currentTarget > FoundersBubbleMetaInformation.NumberOfNovelsToDisplay)
+            if (IsCurrentlyInFirstHalf() && currentTarget > _numberOfNovels)
             {
-                currentTarget = currentTarget - FoundersBubbleMetaInformation.NumberOfNovelsToDisplay;
+                currentTarget -= _numberOfNovels;
             }
         }
 
         public void CalculateAndSetCurrentPositionForSecondScrollView(Vector2 positionChange)
         {
-            if (secondScrollRect == null)
+            if (!secondScrollRect)
             {
                 return;
             }
 
             if ((contentPanelTransform.localPosition.x >= 0 ||
-                 contentPanelTransform.localPosition.x <
-                 0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing))) &&
+                 contentPanelTransform.localPosition.x < 0 - novelButtons.Length * (novelButtons[0].rect.width + horizontalLayoutGroup.spacing)) &&
                 customScrollRect.m_Dragging)
             {
                 customScrollRect.OnEndDrag(new PointerEventData(null) { button = 0 });
@@ -323,25 +334,18 @@ namespace Assets._Scripts.UIElements.FoundersBubble
 
         private bool IsCurrentlyInFirstHalf()
         {
-            return (contentPanelTransform.localPosition.x >
-                    (0 - (itemList.Length * (itemList[0].rect.width + horizontalLayoutGroup.spacing)) / 2));
+            return (contentPanelTransform.localPosition.x > 0 - novelButtons.Length * (novelButtons[0].rect.width + horizontalLayoutGroup.spacing) / 2);
         }
 
         public float GetCurrentScrollPosition()
         {
-            if (scrollRect != null)
-            {
-                return scrollRect.horizontalNormalizedPosition;
-            }
-
-            return customScrollRect.horizontalNormalizedPosition;
+            return scrollRect ? scrollRect.horizontalNormalizedPosition : customScrollRect.horizontalNormalizedPosition;
         }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
             lastDragPosition = eventData.position;
             lastDragTime = Time.time;
-            velocityDuringDrag = Vector2.zero;
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -349,12 +353,10 @@ namespace Assets._Scripts.UIElements.FoundersBubble
             Vector2 newPosition = eventData.position;
             float newTime = Time.time;
 
-            Vector2 deltaPosition = newPosition - lastDragPosition;
             float deltaTime = newTime - lastDragTime;
 
             if (deltaTime > 0)
             {
-                velocityDuringDrag = deltaPosition / deltaTime;
             }
 
             lastDragPosition = newPosition;
@@ -368,7 +370,7 @@ namespace Assets._Scripts.UIElements.FoundersBubble
 
         public Vector2 GetCurrentVelocity()
         {
-            if (customScrollRect == null)
+            if (!customScrollRect)
             {
                 return Vector2.zero;
             }

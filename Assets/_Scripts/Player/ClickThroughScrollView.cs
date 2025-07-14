@@ -6,7 +6,7 @@ namespace Assets._Scripts.Player
 {
     public class ClickThroughScrollView : MonoBehaviour, IPointerClickHandler
     {
-        public FoundersBubbleSceneController controller;
+        [SerializeField] private FounderBubbleSceneControllerNew controller;
 
         public void OnPointerClick(PointerEventData eventData)
         {

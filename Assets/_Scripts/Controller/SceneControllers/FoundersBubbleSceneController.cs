@@ -357,7 +357,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             novelDescriptionTextbox.gameObject.SetActive(false);
         }
 
-        protected override void OnStop()
+        public override void OnStop()
         {
             base.OnStop();
             SceneMemoryManager.Instance().SetMemoryOfFoundersBubbleScene(infinityScroll.GetCurrentScrollPosition());
