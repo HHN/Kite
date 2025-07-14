@@ -527,7 +527,7 @@ private IEnumerator LoadAllFeedbackWithMappingAsync(
         // ruft im HTML-Template die JS-Funktion logMessage(message) auf
         Application.ExternalCall("logMessage", message);
 #else
-            WebLogger.Log(message);
+            Debug.Log(message);
 #endif
         }
 
@@ -536,7 +536,7 @@ private IEnumerator LoadAllFeedbackWithMappingAsync(
 #if UNITY_WEBGL && !UNITY_EDITOR
         Application.ExternalCall("logMessage", $"⚠️ {message}");
 #else
-            WebLogger.LogWarning(message);
+            Debug.LogWarning(message);
 #endif
         }
 
@@ -545,7 +545,7 @@ private IEnumerator LoadAllFeedbackWithMappingAsync(
 #if UNITY_WEBGL && !UNITY_EDITOR
         Application.ExternalCall("logMessage", $"❌ {message}");
 #else
-            WebLogger.LogError(message);
+            Debug.LogError(message);
 #endif
         }
     }

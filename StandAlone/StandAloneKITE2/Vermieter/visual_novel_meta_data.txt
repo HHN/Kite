@@ -1,0 +1,23 @@
+{
+  "idNumberOfNovel": 6,
+  "titleOfNovel": "Anmietung eines Büros",
+  "designationOfNovel": "Büro anmieten",
+  "descriptionOfNovel": "Du hast heute einen Termin für die Besichtigung von Büroräumen.",
+  "nameOfMainCharacter": "Lea",
+  "contextForPrompt": "Es ist das Gespräch einer Gründerin, Lea, mit einem Vermieter. Es geht um die Anmietung von Büro-Räumen. Die Gründerin hat sich gut vorbereitet und hofft, dass sie die Büroräume für ihr Unternehmen bekommt.",
+  "folderName": "Vermieter",
+  "startTalkingPartnerExpression": "NeutralRelaxed",
+  "talkingPartner01" : "Vermieter",
+  "talkingPartner02" : "",
+  "talkingPartner03" : "",
+  "isKiteNovel": true,
+  "novelColor": "#0C1A2E",
+  "wordsToReplace": [
+	{"wordToReplace": ">>SpielerinCharakterSpricht:<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"},
+	{"wordToReplace": ">>VermieterSprichtLaughing:<<", "replaceByValue": ">>Charakter01SprichtLaughing:<<"},
+	{"wordToReplace": ">>VermieterSprichtAstonished:<<", "replaceByValue": ">>Charakter01SprichtAstonished:<<"},
+	{"wordToReplace": ">>VermieterSprichtCritical:<<", "replaceByValue": ">>Charakter01SprichtCritical:<<"},
+	{"wordToReplace": ">>VermieterSprichtFriendly:<<", "replaceByValue": ">>Charakter01SprichtFriendly:<<"},
+	{"wordToReplace": ">>VermieterSprichtDefeated:<<", "replaceByValue": ">>Charakter01SprichtDefeated:<<"}
+	]
+}
