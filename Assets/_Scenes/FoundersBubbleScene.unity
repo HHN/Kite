@@ -2177,31 +2177,22 @@ MonoBehaviour:
   messageBox: {fileID: 5629918238507184917, guid: 47c0a3038b673a24cb82a566be2abf20, type: 3}
   canvas: {fileID: 1101610312}
   novelDescriptionTextbox: {fileID: 927162478}
-  novelButtonPrefab: {fileID: 4139954582404095602, guid: 79107dad9918fd74ebbed9e25e1d7820, type: 3}
-  infinityScroll: {fileID: 8321807732332748881}
-  novelListScrollRect: {fileID: 0}
-  novelButtonsContainer: {fileID: 0}
-  horizontalLayoutGroup: {fileID: 0}
-  novelButtons: []
-  selectNovelSoundPrefab: {fileID: 5665505778772664329, guid: 0cf6b97a397eb0a499fcd91cb4e550d5, type: 3}
   isPopupOpen: 0
   currentlyOpenedVisualNovelPopup: 0
-  burgerMenu: {fileID: 1022675892}
-  isBurgerMenuOpen: 0
-  legalInformationButton: {fileID: 1851940696333236616}
-  settingsButton: {fileID: 6694424117488781698}
+  infinityScroll: {fileID: 8321807732332748881}
   novelListButtonToOpen: {fileID: 976453692828647035}
   novelListButtonToClose: {fileID: 8967244058567185687}
+  legalInformationButton: {fileID: 1851940696333236616}
+  settingsButton: {fileID: 6694424117488781698}
+  burgerMenu: {fileID: 1022675892}
+  isBurgerMenuOpen: 0
   burgerMenuBackground: {fileID: 1022675897}
-  burgerMenuButtonImage: {fileID: 0}
-  closedBurgerMenuSprite: {fileID: 21300000, guid: 85c71c934fac92e48aa3f9c879cf0ed5, type: 3}
-  openedBurgerMenuSprite: {fileID: 21300000, guid: ce727a8acb14f1548b92976a971c8f58, type: 3}
   burgerMenuButtonPrefab: {fileID: 9179647528077443982, guid: 09e4f639dadcd794c89fe7b62aae0d45, type: 3}
   burgerMenuSeparatorImage: {fileID: 4241884694862985184, guid: 604f6af6088d57e45b7ee9be6def39a0, type: 3}
   burgerMenuHeadlinePrefab: {fileID: 4241884694862985184, guid: 1dae306fc4ded7448977954d4a7d774e, type: 3}
   burgerMenuButtons: []
-  yOffsetForZigzag: 100
-  currentTarget: 0
+  novelButtons: []
+  selectNovelSoundPrefab: {fileID: 5665505778772664329, guid: 0cf6b97a397eb0a499fcd91cb4e550d5, type: 3}
   finishedInitialization: 0
 --- !u!4 &1240231752
 Transform:
@@ -3897,7 +3888,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 10
   m_Viewport: {fileID: 5896369360772306291}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -4531,7 +4522,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 10
   m_Viewport: {fileID: 5916432791625516944}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}

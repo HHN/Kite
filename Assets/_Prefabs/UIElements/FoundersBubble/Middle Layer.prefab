@@ -492,7 +492,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 10
   m_Viewport: {fileID: 5916432793560078525}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -532,8 +532,6 @@ MonoBehaviour:
   foundersBubbleSceneController: {fileID: 0}
   lastPosition: {x: 0, y: 0}
   stoppedDraggingManually: 0
-  widthBefore: 0
-  widthAfter: 0
   isSnapped: 0
   isTextboxVisible: 0
   snappingSpeed: 0
@@ -543,3 +541,6 @@ MonoBehaviour:
   lastDragPosition: {x: 0, y: 0}
   velocityDuringDrag: {x: 0, y: 0}
   lastDragTime: 0
+  yOffsetForZigzag: 200
+  novelButtonsList: []
+  novelButtons: []
