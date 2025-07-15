@@ -13,6 +13,13 @@ using UnityEngine.UI;
 
 namespace Assets._Scripts.Controller.SceneControllers
 {
+    [System.Serializable]
+    public class NovelEntry
+    {
+        public long novelId;
+        public bool isContained;
+    }
+    
     public class FounderBubbleSceneControllerNew : MonoBehaviour
     {
         [Header("UI Elements")] 
