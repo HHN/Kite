@@ -12,4 +12,6 @@ Notarin: 10
 Sachbearbeiter: 11
 Kundin: 12
 
+Sachbearbeiter: 14
+
 

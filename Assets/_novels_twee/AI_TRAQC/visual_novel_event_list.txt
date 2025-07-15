@@ -13,7 +13,7 @@ AITRAQC_KI_Einfuehrung
 
 
 :: Alles klar {"position":"1975,800","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|NeutralRelaxed<<
 Alles klar, dann bis die Tage.
 [[Ja, bis bald...]]
 
@@ -25,7 +25,7 @@ Im Rahmen Deiner Aufgabe, KI in der Firma einzuführen, gehst du bei einem Mitar
 
 
 :: Das wird schneller sinnvoll, als du denkst. {"position":"1725,700","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Questioning<<
 Was soll das denn heißen?
 [[Ich denke einfach, ihr könntet sehr profitieren.->M2]]
 [[Das soll heißen, dass Ihr dumm wärt, hier nicht mitzumachen.->M2]]
@@ -33,7 +33,7 @@ Was soll das denn heißen?
 
 
 :: End {"position":"1350,3650","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|NeutralRelaxed<<
 Okay, dann sollten wir das wohl angehen.
 [[Ja. Ich melde mich morgen wegen Terminen.->bis bald]]
 [[Gut, dann bis demnächst.->bis bald]]
@@ -47,7 +47,7 @@ Hallo! Ich bin hier, um mit dir darüber zu sprechen, wie Ihr KI bei euch in Ver
 
 
 :: Herausfinden {"position":"1625,1100","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Questioning<<
 Okay. Jetzt bin ich neugierig.
 [[Na endlich.]]
 [[Ja, gerade Vertrieb und Marketing kann mit automatisierter Leadsqualifizierung oder Texterstellung sehr profitieren.->M3-3.1]]
@@ -55,14 +55,14 @@ Okay. Jetzt bin ich neugierig.
 
 
 :: Ja, bis bald... {"position":"2200,800","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|NeutralRelaxed<<
 Tschüss.
 >>--<<
 >>End<<
 
 
 :: M1 {"position":"1300,375","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Speaks|Critical<<
 Warum? Wir brauchen keine KI, wir kennen unsere Kunden.
 [[Intuition reicht nicht. Datenbasierte Entscheidungen sind präziser.->M1-1.3]]
 [[Könnten wir gemeinsam analysieren, wo KI euch unterstützen könnte?->M1-1.1]]
@@ -70,14 +70,14 @@ Warum? Wir brauchen keine KI, wir kennen unsere Kunden.
 
 
 :: M1-1.1 {"position":"1325,550","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|NeutralRelaxed<<
 Okay, wenn es uns wirklich hilft, können wir es anschauen.
 [[Das freut mich! Wir können gemeinsam sinnvolle Anwendungsfälle erarbeiten.->M2]]
 [[Natürlich wird Euch das helfen!->M2]]
 
 
 :: M1-1.2 {"position":"1475,525","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Neutral<<
 Falls es irgendwann sinnvoll wird, melde ich mich bei euch.
 [[Perfekt, ich freue mich, wenn ihr Interesse entwickelt.->Alles klar]]
 [[Das wird schneller sinnvoll, als du denkst.]]
@@ -85,7 +85,7 @@ Falls es irgendwann sinnvoll wird, melde ich mich bei euch.
 
 
 :: M1-1.3 {"position":"1175,550","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Rejecting<<
 Ach ja? Dann können wir ja gleich alles automatisieren!
 [[KI soll unterstützen, nicht ersetzen – lasst uns das klären.->M2]]
 [[Es geht nicht um Automatisierung, sondern um bessere Entscheidungen.->M2]]
@@ -93,21 +93,21 @@ Ach ja? Dann können wir ja gleich alles automatisieren!
 
 
 :: M2 {"position":"1300,700","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Rejecting<<
 Aber unsere Erfahrung ist nicht durch KI zu ersetzen.
 [[Nur mit Eurer Erfahrung ist ein sinnvoller KI-Einsatz überhaupt möglich!->M2-2.1]]
 [[Erfahrung allein ist ineffizient. KI optimiert Kundenansprache und Umsätze.->M2-2.3]]
 
 
 :: M2-2.1 {"position":"1625,800","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Questioning<<
 Ja, das sehe ich auch so. Aber wozu dann KI?
 [[Wir integrieren euer Wissen mit datenbasierten Analysen.->M3]]
 [[Wozu KI bei Euch sinnvoll ist, müssten wir gemeinsam herausfinden.->Herausfinden]]
 
 
 :: M2-2.3 {"position":"1300,850","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Dissatisfied<<
 Jetzt sind wir also ineffizient? Danke für die Wertschätzung!
 [[Es geht darum, euch mit besseren Tools auszustatten.->M3]]
 [[KI ergänzt Erfahrung – niemand wird ersetzt.->M3]]
@@ -115,7 +115,7 @@ Jetzt sind wir also ineffizient? Danke für die Wertschätzung!
 
 
 :: M3 {"position":"1075,1400","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Scared<<
 Klingt nach Kontrolle. Wollt ihr uns ersetzen?
 [[Nein, aber ineffiziente Prozesse werden automatisiert.->M3-3.3]]
 [[Nein, im Gegenteil! Wir wollen euch mit besseren Tools ausstatten.->M3-3.1]]
@@ -123,7 +123,7 @@ Klingt nach Kontrolle. Wollt ihr uns ersetzen?
 
 
 :: M3-3.1 {"position":"1300,1675","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|NeutralRelaxed<<
 Okay, wenn es uns entlastet, kann das sinnvoll sein.
 [[Genau, wir möchten euch Routineaufgaben abnehmen, damit ihr mehr Zeit habt.->M4]]
 [[Dann lasst uns schauen, welche Aufgaben sich optimieren lassen.->M4]]
@@ -131,7 +131,7 @@ Okay, wenn es uns entlastet, kann das sinnvoll sein.
 
 
 :: M3-3.2 {"position":"1000,1700","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Neutral<<
 Mal sehen, wie sich das entwickelt, bevor ich etwas sage.
 [[Ich verstehe, wir informieren euch regelmäßig, damit ihr mitentscheiden könnt.->M4]]
 [[Kein Problem, wir halten euch auf dem Laufenden.->M4]]
@@ -139,7 +139,7 @@ Mal sehen, wie sich das entwickelt, bevor ich etwas sage.
 
 
 :: M3-3.3 {"position":"1150,1675","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Questioning<<
 Aha, und wir gehören dann wohl zu den ineffizienten Prozessen?
 [[Nein, ihr bleibt entscheidend – wir unterstützen euch bei Routinen.->M4]]
 [[Es geht um Unterstützung, nicht um Ersetzung.->M4]]
@@ -147,7 +147,7 @@ Aha, und wir gehören dann wohl zu den ineffizienten Prozessen?
 
 
 :: M4 {"position":"1300,1950","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Questioning<<
 Unsere Strategie funktioniert, warum etwas ändern?
 [[Vielleicht können wir KI testen und schauen, ob sie ergänzt?->M4-1]]
 [[Die Konkurrenz nutzt KI bereits. Wollt ihr zurückfallen?->M4-3]]
@@ -155,14 +155,14 @@ Unsere Strategie funktioniert, warum etwas ändern?
 
 
 :: M4-1 {"position":"1150,2100","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|NeutralRelaxed<<
 Ein Test schadet nicht – vielleicht entdecken wir Vorteile.
 [[Super, dann probieren wir es mit einer kleinen Pilotgruppe aus.->Okay]]
 [[Ihr werdet auf jeden Fall Vorteile entdecken.->Okay]]
 
 
 :: M4-3 {"position":"1300,2100","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Critical<<
 Das klingt, als wolltest du uns unter Druck setzen.
 [[Nein, aber wir wollen vorbereitet sein – lasst es uns erkunden.->M5]]
 [[Wir wollen nur sicherstellen, dass wir keine Chancen verpassen.->M5]]
@@ -170,7 +170,7 @@ Das klingt, als wolltest du uns unter Druck setzen.
 
 
 :: M5 {"position":"1300,2400","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Proud<<
 Wir setzen auf Beziehungen, nicht auf Algorithmen.
 [[KI kann helfen, Beziehungen gezielter zu pflegen – wie seht ihr das?->M5-1]]
 [[Ohne Algorithmen kommt Ihr bald nicht mehr weit.->brauchts immer]]
@@ -178,7 +178,7 @@ Wir setzen auf Beziehungen, nicht auf Algorithmen.
 
 
 :: M5-1 {"position":"1150,2525","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Smiling<<
 Wenn es unsere Beziehungen stärkt, bin ich offen dafür.
 [[Genau, KI kann eure Kundenbindung noch persönlicher machen.->M6]]
 [[Wir schauen uns an, wie KI euch dabei konkret unterstützen kann.->M6]]
@@ -186,14 +186,14 @@ Wenn es unsere Beziehungen stärkt, bin ich offen dafür.
 
 
 :: M5-2 {"position":"1300,2525","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Dissatisfied<<
 Ich verstehe, aber aktuell sehe ich keinen direkten Nutzen.
 [[Ihr könnt später einsteigen, falls es sich bewährt.->M6]]
 [[Was sind denn deine Sorgen?->M6]]
 
 
 :: M6 {"position":"1300,2675","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Questioning<<
 Und wenn die KI falsche Vorschläge macht?
 [[Im Endeffekt muss immer ein Mensch entscheiden.->M6-2]]
 [[Dann wird sie optimiert. Menschen irren sich auch.->M6-3]]
@@ -201,21 +201,21 @@ Und wenn die KI falsche Vorschläge macht?
 
 
 :: M6-1 {"position":"1175,2825","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Proud<<
 Gut, wenn wir sie anpassen können, probiere ich es aus.
 [[Super, wir setzen auf kontinuierliche Verbesserung – mit eurer Hilfe.->M7]]
 [[Irrtümer sind unvermeidbar, aber die KI wird stetig besser.->M7]]
 
 
 :: M6-2 {"position":"1325,2825","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Dissatisfied<<
 Das tun wir auch heute. Ich warte ab, bis ihr zuverlässigere Ergebnisse habt.
 [[Gern, wir halten euch auf dem Laufenden und zeigen Fortschritte.->M7]]
 [[Um wirklich passgenaue Lösungen zu entwickeln, brauchen wir euch.->M7]]
 
 
 :: M6-3 {"position":"1450,2850","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Critical<<
 Also sind wir genauso fehlerhaft wie eine unausgereifte KI?
 [[Jeder macht Fehler, aber mit eurer Erfahrung verbessern wir die KI schneller.->M7]]
 [[KI ist ein Werkzeug – euer Wissen bleibt entscheidend.->M7]]
@@ -223,7 +223,7 @@ Also sind wir genauso fehlerhaft wie eine unausgereifte KI?
 
 
 :: M7 {"position":"1325,2975","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Scared<<
 Insgesamt habe ich das Gefühl, mit KI kommt mehr Überwachung und weniger Autonomie.
 [[Wie könnte KI euch unterstützen, ohne eure Autonomie einzuschränken?->M7-1]]
 [[Es geht um Effizienz, nicht um Kontrolle.->M7-3]]
@@ -231,21 +231,21 @@ Insgesamt habe ich das Gefühl, mit KI kommt mehr Überwachung und weniger Auton
 
 
 :: M7-1 {"position":"1125,3175","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Questioning<<
 Dazu müssten wir erstmal mehr wissen, was möglich ist.
 [[Dann lass uns doch gerne einen Termin machen, bei dem wir dazu etwas zeigen.->M8]]
 [[Davon rede ich ja die ganze Zeit. Können wir Euch zeigen.->M8]]
 
 
 :: M7-2 {"position":"1325,3125","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|SmilingBig<<
 Dann lasst uns doch direkt in die Entwicklung einsteigen!
 [[Perfekt, dann lass uns einen Termin planen.->M8]]
 [[So schnell geht das jetzt auch nicht.->M8]]
 
 
 :: M7-3 {"position":"1475,3125","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Critical<<
 Klingt, als ob Produktivität jetzt wichtiger ist als Menschen!
 [[Menschen und Produktivität müssen gemeinsam gedacht werden.->M8]]
 [[Effizienz ist wichtig, aber eure Arbeitszufriedenheit ebenso.->M8]]
@@ -253,7 +253,7 @@ Klingt, als ob Produktivität jetzt wichtiger ist als Menschen!
 
 
 :: M8 {"position":"1325,3300","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Questioning<<
 Eine Frage noch: Müssen wir unsere Arbeitsweise komplett ändern?
 [[Das liegt in eurer Hand - ihr ändert, was euch sinnvoll erscheint. Vielleicht entdecken wir kleine Verbesserungen mit großem Nutzen.->M8-1]]
 [[Falls ihr neugierig seid, finden wir gemeinsam heraus, was hilft.->M8-1]]
@@ -261,7 +261,7 @@ Eine Frage noch: Müssen wir unsere Arbeitsweise komplett ändern?
 
 
 :: M8-1 {"position":"1225,3450","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Smiling<<
 Dann lass uns gerne einen Termin machen, um das alles zu besprechen. 
 [[Sehr gerne, lass uns starten.->loslegen]]
 [[Wenn wir kleine Verbesserungen schrittweise testen können, klingt das gut.->loslegen]]
@@ -269,7 +269,7 @@ Dann lass uns gerne einen Termin machen, um das alles zu besprechen.
 
 
 :: M8-3 {"position":"1475,3450","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Dissatisfied<<
 Klingt als halten Sie unsere Arbeit für dumm und ineffizient. Aber wir können es uns mal besprechen.
 [[Tut mir leid, das war nicht so gemeint.->End]]
 [[Smarter und effizienter ist doch immer gut!->End]]
@@ -277,7 +277,7 @@ Klingt als halten Sie unsere Arbeit für dumm und ineffizient. Aber wir können 
 
 
 :: Na endlich. {"position":"1675,1350","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Questioning<<
 Was soll das denn heißen?
 [[Naja, es ist ja in eurem Interesse, besser zu werden.->M4]]
 [[Dass Ihr es anscheinend erst jetzt kapiert.->zurueck]]
@@ -285,7 +285,7 @@ Was soll das denn heißen?
 
 
 :: Okay {"position":"1150,2225","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Neutral<<
 Okay.
 [[Was sind denn momentan noch deine Bedenken.->M5]]
 [[Gut. Dann lass uns das in Angriff nehmen.->loslegen]]
@@ -293,7 +293,7 @@ Okay.
 
 
 :: So machen wir's. {"position":"2000,2050","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|NeutralRelaxed<<
 Tschüss.
 >>--<<
 >>End<<
@@ -307,7 +307,7 @@ Danke, bis dahin.
 
 
 :: brauchts immer {"position":"1450,2525","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Proud<<
 Marketing und Vertrieb braucht es immer.
 [[Okay, dann schaut mal, wie weit ihr kommtI.->M6]]
 [[Genau deshalb sollten wir schauen, wie KI Euch helfen kann.->M6]]
@@ -315,7 +315,7 @@ Marketing und Vertrieb braucht es immer.
 
 
 :: loslegen {"position":"900,3625","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|SmilingBig<<
 Prima, da freue ich mich schon.
 [[Super, ich melde mich morgen wegen Terminen.->bis bald]]
 [[Gut, dann bis demnächst.->bis bald]]
@@ -323,34 +323,34 @@ Prima, da freue ich mich schon.
 
 
 :: sonstnoch {"position":"1075,3725","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Smiling<<
 Das ist eine gute Frage. Wir besprechen uns dazu und ich melde mich.
 [[Sehr gerne, freue mich auf die Rückmeldung->bis bald]]
 
 
 :: spaeter {"position":"1825,2050","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|NeutralRelaxed<<
 Alles klar, dann lass uns irgendwann nochmal dazu sprechen.
 [[So machen wir's.]]
 [[Vielleicht magst Du mir nochmal sagen, was Deine Hauptsorge ist.->M5]]
 
 
 :: tschuess {"position":"1775,2850","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Dissatisfied<<
 Ja, egal. Tschüss.
 >>--<<
 >>End<<
 
 
 :: veraltet {"position":"1625,2850","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Critical<<
 Also mit solchen Aussagen findest du keine Mitstreiter.
 [[Tut mir leid, war nicht so gemeint.->tschuess]]
 [[Ich muss wohl sowieso mit jemand anderem reden.->tschuess]]
 
 
 :: zurueck {"position":"1975,1150","size":"100,100"}
->>Character1|Speaks|Neutral<<
+>>Character1|Defeated<<
 Ich habe das Gefühl, wir kommen hier nicht weiter.
 [[Ja, das habe ich auch.->Alles klar]]
 [[Das war nicht so gemeint, tut mir leid. Ich glaube, wir könnten wirklich etwas bewirken, wenn wir zusammenarbeiten.->Herausfinden]]

@@ -1,16 +1,18 @@
 {
-  "idNumberOfNovel": 2,
-  "titleOfNovel": "Telefonat mit den Eltern",
-  "descriptionOfNovel": "Du hast dich entschieden, ein Unternehmen zu gründen, und teilst das nun deinen Eltern mit.",
+  "idNumberOfNovel": 4,
+  "titleOfNovel": "Telefonat mit der Notarin",
+  "designationOfNovel": "Mit Notarin telefonieren",
+  "descriptionOfNovel": "Du rufst bei einer Notarin an, um einen Termin für deine Gründung auszumachen.",
+  "idNumberOfRepresentationImage": 3,
   "nameOfMainCharacter": "Spielerin",
-  "contextForPrompt": "Es ist das Gespräch einer Gründerin, mit ihrer Mutter. Sie hat sich gründlich informiert und hat sich entschlossen, ein Unternehmen zu gründen. Sie ruft nun ihre Eltern an, um ihnen von dem Gründungsvorhaben zu berichten.",
-  "folderName": "Eltern",
+  "contextForPrompt": "Es ist das Gespräch einer Gründerin, mit einer Notarin. Es geht um die Eintragung des Unternehmens der Gründerin ins Handelsregister. Die Gründerin hat sich gut vorbereitet und hofft einen Termin für ein Eintragung zu erhalten.",
+  "folderName": "Notarin",
   "startTalkingPartnerExpression": "NeutralRelaxed",
-  "talkingPartner01" : "Vater",
-  "talkingPartner02" : "Mutter",
+  "talkingPartner01" : "Notarin",
+  "talkingPartner02" : "",
   "talkingPartner03" : "",
   "isKiteNovel": true,
-  "novelColor": "#25650E",
+  "novelColor": "#11454A",
   "wordsToReplace": [
 	{"wordToReplace": ">>SpielerinCharakterSpricht:<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"}
 	]

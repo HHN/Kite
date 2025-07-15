@@ -6,7 +6,7 @@
   "contextForPrompt": "",
   "startTalkingPartnerExpression": "NeutralRelaxed",
   "isWithStartValues": true,
-  "talkingPartner01" : "Investor",
+  "talkingPartner01" : "Sachbearbeiter",
   "talkingPartner02" : "",
   "talkingPartner03" : "",
   "isKiteNovel": false,
