@@ -61,7 +61,7 @@ namespace Assets._Scripts._Mappings
 
 #if UNITY_WEBGL
             // For WebGL, use UnityWebRequest to load the file asynchronously
-            UnityWebRequest www = UnityWebRequest.Get(MappingFileBias);
+            UnityWebRequest www = UnityWebRequest.Get(filePath);
             www.SendWebRequest().completed += (asyncOperation) =>
             {
                 if (www.result == UnityWebRequest.Result.Success)
@@ -158,13 +158,13 @@ namespace Assets._Scripts._Mappings
         // Helper method to process mapping file (for Bias, FaceExpression, and Character mappings)
         private static void ProcessMappingFile(string[] lines, ref Dictionary<string, string> mapping)
         {
-            int addedPairsCount = 0; // Zähler für hinzugefügte Paare.
+            int addedPairsCount = 0; // Zï¿½hler fï¿½r hinzugefï¿½gte Paare.
 
             foreach (string line in lines)
             {
                 if (string.IsNullOrWhiteSpace(line))
                 {
-                    continue; // Leere Zeilen überspringen.
+                    continue; // Leere Zeilen ï¿½berspringen.
                 }
 
                 int colonIndex = line.IndexOf(':');
@@ -176,7 +176,7 @@ namespace Assets._Scripts._Mappings
                     if (!string.IsNullOrEmpty(key) && !mapping.ContainsKey(key))
                     {
                         mapping.Add(key, value);
-                        addedPairsCount++; // Zähler erhöhen, wenn ein neues Paar hinzugefügt wird.
+                        addedPairsCount++; // Zï¿½hler erhï¿½hen, wenn ein neues Paar hinzugefï¿½gt wird.
                     }
                 }
                 else
