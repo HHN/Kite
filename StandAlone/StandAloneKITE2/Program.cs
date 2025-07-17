@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 
 public class TweePathCalculator
 {
-    private const string MetadataFilePath    = @"..\..\..\Honorar\visual_novel_meta_data.txt";
-    private const string EventListFilePath   = @"..\..\..\Honorar\visual_novel_event_list.txt";
-    private const string OutputFilePath      = @"..\..\..\Honorar\pathOutput.txt";
-    private const string ResponseFilePath    = @"..\..\..\Honorar\response.txt";
+    private const string MetadataFilePath    = @"..\..\..\Vermieter\visual_novel_meta_data.txt";
+    private const string EventListFilePath   = @"..\..\..\Vermieter\visual_novel_event_list.txt";
+    private const string OutputFilePath      = @"..\..\..\Vermieter\pathOutput.txt";
+    private const string ResponseFilePath    = @"..\..\..\Vermieter\response.txt";
     private static readonly string apiKey    = Environment.GetEnvironmentVariable("API_KEY");
 
     private static readonly HttpClient http  = new HttpClient
@@ -37,15 +37,15 @@ public class TweePathCalculator
     ParseMetaTweeFile(ReadTweeFile(MetadataFilePath));
     _tweeContent = ReadTweeFile(EventListFilePath);
     ParseTweeFile(_tweeContent);
-
+    
     // 2) Streaming aller Pfade + Unique-Filter auf Bias-Knoten
     Console.WriteLine("[GetAllPaths] Streaming aller Pfade startet...");
     var seen = new HashSet<string>();
     long processed = 0, uniqueCount = 0;
-
+    
     // Ausgabedatei für die Pfade zurücksetzen
     File.WriteAllText(OutputFilePath, string.Empty);
-
+    
     await Task.Run(() =>
     {
         foreach (var path in StreamAllPaths("Anfang", count =>
@@ -55,18 +55,18 @@ public class TweePathCalculator
         }))
         {
             processed++;
-
+    
             // nur die Bias-Entscheidungen extrahieren
             var filtered = path
                 .Where(kv => kv.Key.body.Contains(">>Bias|"))
                 .ToDictionary(kv => kv.Key, kv => kv.Value);
-
+    
             // Signatur für Duplikat-Check
             var sig = string.Join("→",
                 filtered.Select(kv =>
                     $"{kv.Key.name}|{kv.Value.targetNode}|{kv.Value.dialogueText.Replace("→","↦")}"
                 ));
-
+    
             if (seen.Add(sig))
             {
                 uniqueCount++;
@@ -74,26 +74,26 @@ public class TweePathCalculator
                 WritePath(filtered);
                 WriteInFile("\n################", OutputFilePath);
                 WriteInFile($"PATH {uniqueCount} FINISHED\n", OutputFilePath);
-
+    
                 if (uniqueCount == 1 || uniqueCount % 100 == 0)
                     Console.WriteLine($"[Unique] {uniqueCount:N0} einzigartige Pfade (processed={processed:N0})");
             }
         }
-
+    
         Console.WriteLine($"[GetAllPaths] Fertig! Verarbeitet: {processed:N0}, einzigartig: {uniqueCount:N0}.");
     });
 
     // 3) Prompts einlesen und Antworten senden
     http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
-    // var prompts = LoadPromptsFromFile(OutputFilePath);
-    // int idx = 1;
-    // foreach (var prompt in prompts)
-    // {
-    //     Console.WriteLine($"Verarbeite Prompt #{idx}…");
-    //     await SendPrompt(prompt, idx);
-    //     Console.WriteLine($"Prompt #{idx} gesendet und Antwort gespeichert.");
-    //     idx++;
-    // }
+    var prompts = LoadPromptsFromFile(OutputFilePath).Skip(0).ToList();
+    int idx = 1;
+    foreach (var prompt in prompts)
+    {
+        Console.WriteLine($"Verarbeite Prompt #{idx}…");
+        await SendPrompt(prompt, idx);
+        Console.WriteLine($"Prompt #{idx} gesendet und Antwort gespeichert.");
+        idx++;
+    }
     }
 
     /// <summary>
@@ -195,17 +195,49 @@ public class TweePathCalculator
                            .GetString() ?? "";
 
         string entry =
-            $"###{index}\n\n[{string.Join("; ", ExtractInOrder(original))}\n\n\n\n{answer}\n\n\n\n#$%\n\n\n\n";
+            $"###{index}\n\n[{string.Join("; ", ExtractInOrder(original))}]\n\n\n\n{answer}\n\n\n\n#$%\n\n\n\n";
         await File.AppendAllTextAsync(ResponseFilePath, entry, Encoding.UTF8);
     }
 
     private static string GetCompletePrompt(string prompt)
-    {
-        return
-            "Du bist eine Geschlechterforscherin.\n…\n"
-            + prompt + "\n\n"
-            + _tweeContent;
-    }
+{
+    return
+        "Du bist eine Geschlechterforscherin.\n" +
+        "Deine Aufgabe ist es, den folgenden Dialogausschnitt auf Diskriminierung hin zu untersuchen.\n\n" +
+        _contextForPrompt + "\n\n" +
+        "Die Spielerin hat den gesamten Dialog durchgespielt. Ich gebe Dir allerdings nur den Dialogausschnitt, in dem Biases vorkommen, weil dies die relevanten Passagen sind. Du findest dort jeweils die Aussage des Gegenübers, den Namen des Bias, der hier zum Tragen kommt und die Reaktion der Spielerin. Nutze die Information über den Bias als Basis für Deine Interpretation.\nAußerdem gebe ich dir die twee-Datei mit allen möglichen Gesprächspassagen. Dies ist aber nur für Dich zur Kontextualisierung, nicht zur Analyse.\nSchreibe einen Analysetext über den Dialogausschnitt, in dem Biases vorkommen. Stelle die Biases und Verzerrungen dar, auf die du dich beziehst (zur Erläuterung findest du unten eine Liste mit Geschlechterbiases im Gründungsprozess). Drücke Dich allgemeinverständlich aus. Verwende bei der Benennung der Biases ausschließlich den deutschen Namen. Setze keinen einleitenden Text davor, sondern starte direkt mit der Ansprache an die Spielerin.\nAnalysiere auch das Verhalten der Spielerin und ihre Reaktionen auf diese Biases zu den jeweiligen Biases mit konkreten Beispielen aus dem Dialog.\nStelle die Vorteile des Verhaltens der Gründerin dar und deute vorsichtig an, welche Nachteile ihre Reaktion haben könnte.\nFühre das Nicht-Ansprechen geschlechterstereotyper Annahmen nicht bei den Nachteilen auf.\nSei vorsichtig mit dem Hinweis, Biases und Stereotype direkt anzusprechen, weil dies zwar generell sinnvoll sein kann, die Spielerin aber in erster Linie darauf achten muss, dass sie das Gespräch so führt, dass sie im Gespräch erfolgreich ist.\nNutze geschlechtergerechte Sprache (z.B. Gründer*innen, weibliche Gründerinnen).\nRichte den Text in der Du-Form an die Spielerin.\nSprich niemals von 'Spielerin', 'Gründerin' oder einer anderen Bezeichnung als 'Du'. Dies muss unbedingt beachtet werden, da die Antwort ansonst nicht weiter verwendet werden kann.\nSei wohlwollend und ermunternd. Sprich die Gründerin nicht mit ihrem Namen an. Formuliere den Text aus einer unbestimmten Ich-Perspektive." +
+        "Hier die Liste mit Geschlechterbiases im Gründungsprozess:\n\n" +
+        "Finanzielle und Geschäftliche Herausforderungen\n\n" +
+        "Finanzierungszugang \n>>Bias|AccessToFinancing<<\nBias: Schwierigkeiten von Frauen, Kapital für ihre Unternehmen zu beschaffen.\n\n" +
+        "Gender Pay Gap\n>>Bias|GenderPayGap<<\nBias: Lohnungleichheit zwischen Männern und Frauen.\n\n" +
+        "Unterbewertung weiblich geführter Unternehmen\n>>Bias|UndervaluationFemaleManagedCompany<<\nBias: Geringere Bewertung von Unternehmen, die von Frauen geführt werden.\n\n" +
+        "Risk Aversion Bias\n>>Bias|RiskAversionBias<<\nBias: Wahrnehmung von Frauen als risikoaverser.\n\n" +
+        "Bestätigungsverzerrung\n>>Bias|ConfirmationBias<<\nBias: Tendenz, Informationen zu interpretieren, die bestehende Vorurteile bestätigen.\n\n" +
+        "Gesellschaftliche Erwartungen & soziale Normen\n\n" +
+        "Tokenism\n>>Bias|Tokenism<<\nBias: Wahrnehmung von Frauen in unternehmerischen Kreisen als Alibifiguren.\n\n" +
+        "Bias in der Wahrnehmung von Führungsfähigkeiten\n>>Bias|BiasInThePerceptionOfLeadershipSkills<<\nBias: Infragestellung der Führungsfähigkeiten von Frauen.\n\n" +
+        "Benevolenter Sexismus\n>>Bias|BenevolentSexism<<\nBias: Schützend oder wohlwollend gemeinte, aber dennoch herabwürdigende Haltungen gegenüber Frauen, " +
+        "die sie als weniger kompetent und in Bedarf von männlicher Hilfe darstellen.\n\n" +
+        "Alter- und Generationen-Biases\n>>Bias|AgeAndGenerationsBiases<<\nBias: Diskriminierung aufgrund von Altersstereotypen.\n\n" +
+        "Stereotype gegenüber Frauen in nicht-traditionellen Branchen\n>>Bias|StereotypesAboutWomenInNon<<\nBias: Widerstände gegen Frauen in männlich dominierten Feldern.\n\n" +
+        "Prove-it-Again-Bias\n>>Bias|ProveItAgainBias<<\nBias: Anforderung an Frauen, insbesondere in technischen Bereichen, ihre Kompetenzen wiederholt zu beweisen.\n\n" +
+        "Wahrnehmung & Führungsrollen\n\n" +
+        "Heteronormativität\n>>Bias|Heteronormativity<<\nBias: Annahmen und Erwartungen, die auf der Vorstellung beruhen, dass Heterosexualität die einzige oder bevorzugte sexuelle Orientierung ist.\n\n" +
+        "Maternal Bias\n>>Bias|BiasesAgainstWomenWithChildren<<\nBias: Annahmen über geringere Engagementbereitschaft von Müttern oder potenziellen Müttern.\n\n" +
+        "Erwartungshaltung bezüglich Familienplanung\n>>Bias|ExpectationsRegardingFamilyPlanning<<\nBias: Annahmen über zukünftige Familienplanung bei Frauen im gebärfähigen Alter.\n\n" +
+        "Work-Life-Balance-Erwartungen\n>>Bias|WorkLifeBalanceExpectations<<\nBias: Druck auf Frauen, ein Gleichgewicht zwischen Beruf und Familie zu finden.\n\n" +
+        "Geschlechterspezifische Stereotype\n>>Bias|GenderSpecificStereotypes<<\nBias: Annahmen über geringere Kompetenz von Frauen in bestimmten Bereichen.\n\n" +
+        "Psychologische Barrieren & kommunikative Hindernisse\n\n" +
+        "Doppelte Bindung (Tightrope Bias)\n>>Bias|TightropeBias<<\nBias: Konflikt zwischen der Wahrnehmung als zu weich oder zu aggressiv.\n\n" +
+        "Mikroaggressionen\n>>Bias|Microaggression<<\nBias: Subtile Formen der Diskriminierung gegenüber Frauen.\n\n" +
+        "Leistungsattributions-Bias\n>>Bias|PerformanceAttributionBias<<\nBias: Externe Zuschreibung von Erfolgen von Frauen.\n\n" +
+        "Unbewusste Biases in der Kommunikation\n>>Bias|UnconsciousBiasInCommunication<<\nBias: Herabsetzende Art und Weise, wie über Frauenunternehmen gesprochen wird.\n\n\n" +
+        "Hier der Dialogausschnitt, in denen Biases vorgekommen sind. Analysiere nur diesen Ausschnitt.\nSpreche in deiner Antwort immer von 'dem Dialog' und NIE! von Dialogausschnitt oder Dialogszene. Dies ist extrem wichtig, da die Antwort sonst nicht verwendet werden kann." +
+        prompt + 
+        "Hier zur Kontextualisierung die twee-Datei mit dem gesamten Dialog. Aber du sollst dich wie oben dargestellt nur auf den oben dargestellten Dialogabschnitt beziehen." +
+        _tweeContent;
+}
+
 
     public static List<string> ExtractInOrder(string input)
     {
