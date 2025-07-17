@@ -57,6 +57,14 @@ namespace Assets._Scripts.Managers
             if ((int)novel.id == 14)
             {
                 _prompt.Append(novel.context);
+                _prompt.Append("Du bist eine Organisationsentwicklerin und Kommunikationstrainerin. " +
+                               "Deine Aufgabe ist es, den folgenden Dialog dahingehend zu untersuchen, wie kommunikativ geschickt sich die KI-Einführungsperson verhalten hat. " +
+                               "Es ist das Gespräch einer KI-Einführungsperson mit einem Mitarbeiter aus Vertrieb und Marketing. " +
+                               "Schreibe einen Analysetext. Berücksichtige dabei Wissen aus den Bereichen der Einwandbehandlung, Gesprächstechniken, Kommunikationstechniken, Organisationsentwicklung etc. " +
+                               "Analysiere das Verhalten der KI-Einführungsperson und ihre Reaktionen auf den Mitarbeiter mit Bezug zu konkreten Beispielen aus dem Dialog. " +
+                               "Stelle dar, wo die KI-Einführungsperson geschickt agiert hat und wo eher nicht. Deute an, welche Vor- und Nachteile ihr Verhalten haben könnte. " +
+                               "Nutze geschlechtergerechte Sprache (z.B. Gründer*innen, weibliche Gründerinnen). " +
+                               "Richte den Text in der Du-Form an die KI-Einführungsperson. Sei wohlwollend und ermunternd. Formuliere den Text aus einer unbestimmten Ich-Perspektive.");
             }
             else
             {

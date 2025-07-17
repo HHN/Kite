@@ -46,7 +46,6 @@ namespace Assets._Scripts.Novel
         /// <returns>Ein NovelKeywordModel oder null, wenn kein gültiges Keyword erkannt wurde.</returns>
         private static NovelKeywordModel ParseKeyword(string keyword, KiteNovelMetaData kiteNovelMetaData)
         {
-            Debug.Log("Parsing keyword: " + keyword + "...");
             // Frühzeitiger Exit bei ungültiger Eingabe
             if (string.IsNullOrWhiteSpace(keyword) ||
                 !keyword.StartsWith(KeywordStartMarker, StringComparison.Ordinal) ||
@@ -193,7 +192,6 @@ namespace Assets._Scripts.Novel
         /// <returns>Liste der NovelKeywordModel.</returns>
         public static List<NovelKeywordModel> ParseKeywordsFromFile(List<string> fileContent, KiteNovelMetaData kiteNovelMetaData = null)
         {
-            Debug.Log("Parsing keywords from file...");
             // string[] lines = fileContent.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
             List<NovelKeywordModel> models = new List<NovelKeywordModel>();
 
