@@ -21,6 +21,13 @@ using UnityEngine.UI;
 
 namespace Assets._Scripts.Controller.SceneControllers
 {
+    [System.Serializable]
+    public class CharacterVisualEntry
+    {
+        public string characterName;
+        public GameObject prefab;
+    }
+    
     public class PlayNovelSceneController : SceneController
     {
         private const float WaitingTime = 0.5f;
@@ -45,8 +52,10 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private GameObject screenContentColor;
         [SerializeField] private GameObject headerImage;
 
-        [Header("Novel-Visuals und Prefabs")] [SerializeField]
-        private GameObject[] novelVisuals;
+        [Header("Novel-Visuals und Prefabs")] 
+        [SerializeField] private GameObject[] novelVisuals;
+        
+        [SerializeField] private List<CharacterVisualEntry> novelVisualMappings = new();
 
         [SerializeField] private GameObject novelImageContainer;
         [SerializeField] private GameObject novelBackgroundPrefab;
@@ -122,6 +131,8 @@ namespace Assets._Scripts.Controller.SceneControllers
         public NovelImageController NovelImageController => _novelImagesController;
 
         private static PlayNovelSceneController _instance;
+        
+        private Dictionary<string, GameObject> _characterToPrefabMap;
 
         public static PlayNovelSceneController Instance
         {
@@ -178,6 +189,18 @@ namespace Assets._Scripts.Controller.SceneControllers
             InitializeNovelEvents();
             CheckForSavegame();
         }
+        
+        private void InitializeCharacterToPrefabMap()
+        {
+            _characterToPrefabMap = new Dictionary<string, GameObject>();
+            foreach (var entry in novelVisualMappings)
+            {
+                if (!_characterToPrefabMap.ContainsKey(entry.characterName))
+                {
+                    _characterToPrefabMap.Add(entry.characterName, entry.prefab);
+                }
+            }
+        }
 
         private void SetVisualElements()
         {
@@ -187,80 +210,28 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             RectTransform viewPortTransform = viewPort.GetComponent<RectTransform>();
 
-            switch (novelToPlay.title)
+            string character = novelToPlay.characters[0];
+                
+                if (_characterToPrefabMap == null)
             {
-                case "Banktermin wegen Kreditbeantragung":
-                {
-                    GameObject novelImagesInstance = Instantiate(novelVisuals[0], viewPortTransform);
-                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    Debug.Log($"controllerTransform: {controllerTransform}");
-                    _novelImagesController = controllerTransform.GetComponent<NovelImageController>();
-                    break;
-                }
-                case "Anmietung eines Büros":
-                {
-                    GameObject novelImagesInstance = Instantiate(novelVisuals[1], viewPortTransform);
-                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<NovelImageController>();
-                    break;
-                }
-                case "Pressegespräch":
-                {
-                    GameObject novelImagesInstance = Instantiate(novelVisuals[2], viewPortTransform);
-                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<NovelImageController>();
-                    break;
-                }
-                case "Telefonat mit den Eltern":
-                {
-                    GameObject novelImagesInstance = Instantiate(novelVisuals[3], viewPortTransform);
-                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<NovelImageController>();
-                    break;
-                }
-                case "Telefonat mit der Notarin":
-                {
-                    GameObject novelImagesInstance = Instantiate(novelVisuals[4], viewPortTransform);
-                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<NovelImageController>();
-                    break;
-                }
-                case "Gespräch mit einem Investor":
-                {
-                    GameObject novelImagesInstance = Instantiate(novelVisuals[5], viewPortTransform);
-                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<NovelImageController>();
-                    break;
-                }
-                case "Vertrieb":
-                {
-                    GameObject novelImagesInstance = Instantiate(novelVisuals[5], viewPortTransform);
-                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<NovelImageController>();
-                    break;
-                }
-                case "Einstiegsdialog":
-                {
-                    GameObject novelImagesInstance = Instantiate(novelVisuals[6], viewPortTransform);
-                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<NovelImageController>();
-                    break;
-                }
-                case "Honorarverhandlung mit Kundin":
-                {
-                    GameObject novelImagesInstance = Instantiate(novelVisuals[7], viewPortTransform);
-                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<NovelImageController>();
-                    break;
-                }
-                default:
-                {
-                    GameObject novelImagesInstance = Instantiate(novelVisuals[0], viewPortTransform);
-                    Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
-                    _novelImagesController = controllerTransform.GetComponent<NovelImageController>();
-                    break;
-                }
+                InitializeCharacterToPrefabMap();
             }
+
+            if (!_characterToPrefabMap.TryGetValue(character, out var prefabToInstantiate))
+            {
+                Debug.LogWarning($"No prefab found for character '{character}', using fallback.");
+                prefabToInstantiate = novelVisualMappings.Count > 0 ? novelVisualMappings[0].prefab : null;
+            }
+
+            if (!prefabToInstantiate)
+            {
+                Debug.LogError("No valid prefab to instantiate.");
+                return;
+            }
+                    
+            GameObject novelImagesInstance = Instantiate(prefabToInstantiate, viewPortTransform);;
+            Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
+            _novelImagesController = controllerTransform.GetComponent<NovelImageController>();
 
             _novelImagesController.SetCanvasRect(canvasRect);
         }

@@ -74,7 +74,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// </summary>
         private IEnumerator ProcessAndMergeNovels(List<string> listOfAllNovelPaths)
         {
-            Debug.Log("Processing and merging visual novels...");
             // List to hold all processed novel folders.
             List<KiteNovelFolder> allFolders = new List<KiteNovelFolder>();
 
@@ -135,7 +134,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// <returns>IEnumerator for coroutine execution.</returns>
         private IEnumerator ProcessSingleNovel(string pathOfNovel, List<KiteNovelFolder> allFolders)
         {
-            Debug.Log("Processing single novel...");
             // Build the full paths for metadata and event list files.
             string fullPathOfNovelMetaData = Path.Combine(Application.dataPath, pathOfNovel, MetaDataFileName);
             string fullPathOfNovelEventList = Path.Combine(Application.dataPath, pathOfNovel, EventListFileName);
@@ -199,7 +197,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// </summary>
         private IEnumerator LoadAndDeserialize<T>(string path, System.Action<T> callback)
         {
-            Debug.Log("Loading and deserializing file...");
             yield return LoadFileContent(path, jsonString =>
             {
                 callback(string.IsNullOrEmpty(jsonString) ? default : JsonConvert.DeserializeObject<T>(jsonString));
@@ -211,7 +208,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// </summary>
         private IEnumerator LoadFileContent(string path, System.Action<string> callback)
         {
-            Debug.Log("Loading file content...");
             // May be refactored in the future, but for now, we need to ensure the file is in the correct location.
             if (Application.platform == RuntimePlatform.IPhonePlayer)
             {
@@ -242,7 +238,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// </summary>
         private string ReplaceWordsInString(string input, List<WordPair> wordsToReplace)
         {
-            Debug.Log("Replacing words in string...");
             if (wordsToReplace == null || wordsToReplace.Count == 0) return input;
 
             string result = input;
@@ -262,7 +257,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// </summary>
         private void SaveToJson(NovelListWrapper novelListWrapper)
         {
-            Debug.Log("Saving novel list to JSON...");
             string json = JsonUtility.ToJson(novelListWrapper, true);
             string path = Path.Combine(Application.dataPath, "StreamingAssets/novels.json");
             File.WriteAllText(path, json);

@@ -502,8 +502,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             if (!isBurgerMenuOpen) return;
             
-            burgerMenu.SetActive(false);
-            isBurgerMenuOpen = false;
+            CloseNovelList();
         }
 
         #endregion
