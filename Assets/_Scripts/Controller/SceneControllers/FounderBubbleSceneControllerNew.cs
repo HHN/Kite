@@ -37,7 +37,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private List<GameObject> burgerMenuButtons;
         [SerializeField] private bool isBurgerMenuOpen;
 
-        [Header("navigation Buttons")] 
+        [Header("Navigation Buttons")] 
         [SerializeField] private Button legalInformationButton;
         [SerializeField] private Button settingsButton;
         [SerializeField] private Button novelListButtonToOpen;
