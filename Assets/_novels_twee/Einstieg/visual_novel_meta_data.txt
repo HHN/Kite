@@ -3,7 +3,6 @@
   "titleOfNovel": "Einstiegsdialog",
   "designationOfNovel": "Mehr zu KITE II erfahren",
   "descriptionOfNovel": "Hier kannst du den Einstiegs-Dialog erneut spielen.",
-  "nameOfMainCharacter": "Spielerin",
   "contextForPrompt": "",
   "folderName": "Einstieg",
   "startTalkingPartnerExpression": "NeutralRelaxed",
