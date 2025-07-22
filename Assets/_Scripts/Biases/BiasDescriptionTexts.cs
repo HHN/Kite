@@ -24,8 +24,7 @@ namespace Assets._Scripts.Biases
             TightropeBias,
             Microaggressions,
             PerformanceAttributionBias,
-            UnconsciousBiasInCommunication,
-            ProveItAgainBias
+            UnconsciousBiasInCommunication
             // eine Methode schreiben, die anhand des Keywords den Namen des Biases zurückgibt
         }
 
