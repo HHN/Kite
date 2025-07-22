@@ -517,7 +517,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         /// <param name="visualNovel">The visual novel to be displayed in the text box.</param>
         /// <param name="isNovelContainedInVersion">Indicates whether the visual novel is available in the current version.</param>
-        /// <param name="TEST_VERSION_ERROR_MESSAGE"></param>
         private void DisplayTextBoxForVisualNovel(VisualNovelNames visualNovel, bool isNovelContainedInVersion)
         {
             _novelId = VisualNovelNamesHelper.ToInt(visualNovel);

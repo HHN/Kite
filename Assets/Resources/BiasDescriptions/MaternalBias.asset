@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5084c0e108f447f8a941930d98fc2d16, type: 3}
+  m_Name: MaternalBias
+  m_EditorClassIdentifier: 
+  biasType: 11
+  headline: Maternal Bias
+  preview: "M\xFCtter werden in der Gesch\xE4ftswelt oft als weniger engagiert oder
+    weniger belastbar wahrgenommen. Besonders Gr\xFCnderinnen mit Kindern begegnen
+    in Finanzierungsrunden und Gesch\xE4ftsgespr\xE4chen einer unausgesprochenen
+    Skepsis: Werden sie sich wirklich voll auf ihr Unternehmen konzentrieren? Diese
+    Annahme f\xFChrt dazu, dass Frauen mit Kindern bei Investoren seltener als erfolgsorientiert
+    oder wachstumsstark wahrgenommen werden.\n"
+  description: "Studien zeigen, dass Gr\xFCnderinnen in Pitches h\xE4ufiger Fragen
+    zur Vereinbarkeit von Familie und Beruf gestellt bekommen \u2013 eine Frage,
+    die m\xE4nnliche Gr\xFCnder mit Kindern deutlich seltener h\xF6ren (<color=LINK_COLOR><link=\"https://doi.org/10.1177/0018726708098082\\\">Quelle</link></color>).\n\r\nIn
+    unseren Stories zeigt sich dieser Bias, wenn ein Familienmitglied betont, wie
+    schwer es sei, Kinder und Unternehmen unter einen Hut zu bringen \u2013 als ob
+    M\xE4nner diesen Konflikt nicht h\xE4tten. Die unausgesprochene Botschaft: Eine
+    Mutter kann entweder f\xFCrsorglich oder erfolgreich sein, aber nicht beides."
