@@ -1,6 +1,6 @@
 Hier die Liste mit Geschlechterbiases im Gründungsprozess:
 
-Finanzielle und geschäftliche Herausforderungen                    
+Strukturelle wirtschaftliche Barrieren                    
                     
 Finanzierungszugang
 >>Bias|AccessToFinancing<<
@@ -43,10 +43,6 @@ Bias: Diskriminierung aufgrund von Altersstereotypen.
 Stereotype gegenüber Frauen in nicht-traditionellen Branchen
 >>Bias|StereotypesAboutWomenInNon<<
 Bias: Widerstände gegen Frauen in männlich dominierten Feldern.                    
-                    
-Prove-it-Again-Bias
->>Bias|ProveItAgainBias<<
-Bias: Anforderung an Frauen, insbesondere in technischen Bereichen, ihre Kompetenzen wiederholt zu beweisen.                    
                     
 Wahrnehmung & Führungsrollen
 
