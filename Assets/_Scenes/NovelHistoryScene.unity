@@ -689,8 +689,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hier findest Du Deine gespielten Dialoge und Analysen zum Nachlesen. Du
-    kannst sie in die Zwischenablage kopieren, um sie auch an anderer Stelle zu verwenden.
+  m_text: Hier findest Du Deine gespielten Dialoge und Analysen in chronologischer
+    Reihenfolge zum Nachlesen. Du kannst sie in die Zwischenablage kopieren, um sie
+    auch an anderer Stelle zu verwenden.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
@@ -1673,7 +1674,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540, y: -763.02}
+  m_AnchoredPosition: {x: 540, y: -823.02}
   m_SizeDelta: {x: 980, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1916447369
