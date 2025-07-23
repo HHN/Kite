@@ -9,6 +9,10 @@ using UnityEngine.UI;
 
 namespace Assets._Scripts.Controller.SceneControllers
 {
+    /// <summary>
+    /// Manages the behavior and interactions for the settings scene, including sound settings
+    /// and text-to-speech toggling functionality.
+    /// </summary>
     public class SettingsSceneController : SceneController
     {
         [Header("UI References - Text-to-Speech")] 
@@ -17,16 +21,16 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private Image inactiveTextToSpeechImage;
 
         [Header("UI References - Sound Effects")]
-        [SerializeField] private Button toggleSoundEffectsButton; // Button zum Umschalten der Soundeffekte
+        [SerializeField] private Button toggleSoundEffectsButton;
         [SerializeField] private Image activeSoundEffectsImage;
         [SerializeField] private Image inactiveSoundEffectsImage;
-        [SerializeField] private Slider soundEffectsVolumeSlider; // Dein Lautstärke-Slider
+        [SerializeField] private Slider soundEffectsVolumeSlider;
         [SerializeField] private SliderEventHandler soundEffectsSliderHandler;
-        [SerializeField] private Image sliderBackgroundImage; // Das Hintergrund-Image des Sliders
-        [SerializeField] private Image sliderFillImage; // Das Füll-Image des Sliders
-        [SerializeField] private Image sliderHandleImage; // Das Handle-Image des Sliders
-        [SerializeField] private Image sliderMinIcon; // Das Notensymbol links vom Slider
-        [SerializeField] private Image sliderMaxIcon; // Das Notensymbol rechts vom Slider
+        [SerializeField] private Image sliderBackgroundImage; 
+        [SerializeField] private Image sliderFillImage;
+        [SerializeField] private Image sliderHandleImage;
+        [SerializeField] private Image sliderMinIcon; 
+        [SerializeField] private Image sliderMaxIcon;
         [SerializeField] private AudioClip soundCheckClip;
         
         [Header("UI References - Font Size")]
@@ -37,12 +41,12 @@ namespace Assets._Scripts.Controller.SceneControllers
         [Header("Other UI")]
         [SerializeField] private TMP_Text versionInfo;
         [SerializeField] private RectTransform layout;
-        [SerializeField] private RectTransform layoutGroupContainer; // Container mit der Vertical Layout Group
+        [SerializeField] private RectTransform layoutGroupContainer;
 
         [Header("Visual States")] 
-        [SerializeField] private Color activeColor = Color.white; // Farbe, wenn der Slider aktiv ist
-        [SerializeField] private Color disabledColor = Color.gray; // Farbe, wenn der Slider deaktiviert ist (ausgegraut)
-        [SerializeField] private float disabledAlpha = 0.5f; // Transparenz, wenn der Slider deaktiviert ist
+        [SerializeField] private Color activeColor = Color.white;
+        [SerializeField] private Color disabledColor = Color.gray;
+        [SerializeField] private float disabledAlpha = 0.5f;
 
         private Dictionary<Button, Action> _buttonActions;
         private bool _isTextToSpeechActive;
@@ -50,26 +54,33 @@ namespace Assets._Scripts.Controller.SceneControllers
         
         private float _soundEffectVolume = 1;
         
-        private const int MinFontSize = 35; // Minimale Schriftgröße
-        private const int MaxFontSize = 50; // Maximale Schriftgröße
+        private const int MinFontSize = 35;
+        private const int MaxFontSize = 50;
         private int _updatedFontSize;
 
+        /// <summary>
+        /// Called when the script instance is being loaded.
+        /// Initializes the _isTextToSpeechActive and _isSoundActive fields based on the saved player preferences.
+        /// Ensures the persistence of user settings related to text-to-speech and sound effects across sessions.
+        /// </summary>
         private void Awake()
         {
             _isTextToSpeechActive = PlayerPrefs.GetInt("TTS", 1) == 1; // 1 = true, 0 = false
             _isSoundActive = PlayerPrefs.GetInt("IsSoundEffectVolumeOn", 1) == 1; // 1 = true, 0 = false
         }
 
+        /// <summary>
+        /// Initializes the settings scene and its UI components, ensuring proper configuration and behavior of various
+        /// elements such as toggles, sliders, and version display. Adds listeners to interactive components,
+        /// sets up sound settings, and updates the text-to-speech toggle visuals.
+        /// </summary>
         public void Start()
         {
             BackStackManager.Instance().Push(SceneNames.SettingsScene);
             
-            // LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
-            
             InitializeButtonActions();
             AddButtonListeners();
 
-            // Stelle sicher, dass alle notwendigen UI-Elemente zugewiesen sind.
             if (!toggleTextToSpeechButton || !activeTextToSpeechImage || !inactiveTextToSpeechImage || !soundEffectsVolumeSlider || !sliderBackgroundImage || !sliderFillImage ||
                 !sliderHandleImage || !sliderMinIcon || !sliderMaxIcon)
             {
@@ -83,21 +94,32 @@ namespace Assets._Scripts.Controller.SceneControllers
             soundEffectsSliderHandler.OnSliderReleasedEvent += HandleSoundEffectsSliderReleased;
             
             InitializeSoundEffectsVolumeSlider();
-            InitializeFontSizeSlider(); // Neue Methode zum Initialisieren des Sliders und der Schriftgröße
+            InitializeFontSizeSlider();
 
             versionInfo.text = "Version: " + Application.version;
             
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
         }
-        
+
+        /// <summary>
+        /// Called when the SettingsSceneController is being destroyed.
+        /// Ensures proper cleanup by detaching the event listener from the sound effects slider handler.
+        /// Prevents potential memory leaks or unexpected behavior related to lingering event subscriptions.
+        /// </summary>
         private void OnDestroy()
         {
-            if (soundEffectsSliderHandler) // Null-Check ist wichtig
+            if (soundEffectsSliderHandler)
             {
                 soundEffectsSliderHandler.OnSliderReleasedEvent -= HandleSoundEffectsSliderReleased;
             }
         }
 
+        /// <summary>
+        /// Initializes the button-to-action mappings for the settings scene.
+        /// Binds specific buttons to their respective event handlers and associates the font size slider
+        /// with its value change handling functionality.
+        /// Ensures that UI interactions are connected to their corresponding logic during scene initialization.
+        /// </summary>
         private void InitializeButtonActions()
         {
             _buttonActions = new Dictionary<Button, Action>
@@ -110,6 +132,11 @@ namespace Assets._Scripts.Controller.SceneControllers
             fontSizeSlider.onValueChanged.AddListener(UpdateFontSize);
         }
 
+        /// <summary>
+        /// Adds listeners to all buttons in the settings scene based on the predefined actions in the _buttonActions dictionary.
+        /// Associates each button with its corresponding delegate to handle click events.
+        /// Ensures button interactions execute the appropriate functionality tied to each button.
+        /// </summary>
         private void AddButtonListeners()
         {
             foreach (var buttonAction in _buttonActions)
@@ -117,40 +144,47 @@ namespace Assets._Scripts.Controller.SceneControllers
                 buttonAction.Key.onClick.AddListener(() => buttonAction.Value.Invoke());
             }
         }
-        
+
+        /// <summary>
+        /// Configures the sound effects volume slider with the saved volume setting and
+        /// updates the UI to reflect the current sound state.
+        /// Loads the saved sound effects volume from player preferences
+        /// and applies it to the slider and global volume manager.
+        /// </summary>
         private void InitializeSoundEffectsVolumeSlider()
         {
             UpdateToggleImages(activeSoundEffectsImage, inactiveSoundEffectsImage, _isSoundActive);
             
-            // Lade die gespeicherte Lautstärke aus PlayerPrefs, Standardwert ist 1 (volle Lautstärke)
             _soundEffectVolume = PlayerPrefs.GetFloat("SavedSoundEffectVolume", 1f);
             soundEffectsVolumeSlider.value = _soundEffectVolume;
 
-            // Setze die Lautstärke des AudioListeners
             GlobalVolumeManager.Instance.SetGlobalVolume(_soundEffectVolume);
         }
-        
-        // Neue Methode zum Initialisieren des Sliders basierend auf der gespeicherten Schriftgröße
+
+        /// <summary>
+        /// Initializes the font size slider based on previously saved player preferences.
+        /// Retrieves the saved font size or uses the default size if no preferences exist,
+        /// calculates the corresponding slider value, and updates the slider and UI text components accordingly.
+        /// Forces a layout rebuild to ensure the slider and text components are displayed properly.
+        /// </summary>
         private void InitializeFontSizeSlider()
         {
-            // Schriftgröße aus PlayerPrefs laden, Standardwert ist die minimale Schriftgröße
             int savedFontSize = PlayerPrefs.GetInt("SavedFontSize", MinFontSize);
 
-            // Berechne den Slider-Wert basierend auf der gespeicherten Schriftgröße
             float sliderValue = (float)(savedFontSize - MinFontSize) / (MaxFontSize - MinFontSize);
 
-            // Slider auf den entsprechenden Wert setzen
             fontSizeSlider.value = sliderValue;
 
-            // Text sofort auf die gespeicherte Schriftgröße setzen
             FontSizeManager.Instance().UpdateAllTextComponents();
             
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
         }
 
         /// <summary>
-        /// Diese Methode wird aufgerufen, wenn der toggleTextToSpeechButton geklickt wird.
-        /// Sie schaltet die Sichtbarkeit von activeTextToSpeechImage und inactiveTextToSpeechImage um.
+        /// Toggles the state of text-to-speech functionality.
+        /// Activates or deactivates the text-to-speech system based on its current status.
+        /// Updates the UI elements to reflect the active or inactive state.
+        /// Displays an informational message and triggers speech to notify the user about the change.
         /// </summary>
         private void OnToggleTextToSpeechButton()
         {
@@ -173,14 +207,16 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Diese Methode wird aufgerufen, wenn der Sounds-Aktivierungs-Button geklickt wird.
-        /// Sie schaltet den internen Zustand 'isSoundActive' um.
+        /// Toggles the sound effects settings between active and inactive states. Updates relevant UI components
+        /// to reflect the current state and adjusts global sound volume accordingly.
+        /// Handles saving and retrieving the user's sound volume preference from player preferences.
+        /// Displays an appropriate message indicating whether sound effects have been activated or deactivated.
         /// </summary>
         private void OnToggleSoundEffectsButton()
         {
+            // Toggles sound effects and updates visuals
             _isSoundActive = !_isSoundActive;
             
-            // Setze die Sichtbarkeit der Images basierend auf dem neuen Zustand
             if (activeSoundEffectsImage)
             {
                 activeSoundEffectsImage.gameObject.SetActive(_isSoundActive);
@@ -193,6 +229,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             
             SetSliderVisuals(_isSoundActive);
             
+            // Handles turning sound effects off
             if (!_isSoundActive)
             {
                 PlayerPrefs.SetFloat("SavedSoundEffectVolume", _soundEffectVolume);
@@ -202,6 +239,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 DisplayInfoMessage(InfoMessages.DEACTIVATED_SOUNDEFFECTS_BUTTON);
                 PlayerPrefs.SetInt("IsSoundEffectVolumeOn", 0);
             }
+            // Handles turning sound effects on
             else
             {                    
                 _soundEffectVolume = PlayerPrefs.GetFloat("SavedSoundEffectVolume");
@@ -218,7 +256,13 @@ namespace Assets._Scripts.Controller.SceneControllers
                 PlayerPrefs.SetInt("IsSoundEffectVolumeOn", 1);
             }
         }
-        
+
+        /// <summary>
+        /// Updates the font size for the application, ensuring the new value
+        /// is applied across all text components. The layout is rebuilt to
+        /// accommodate the changes, and a confirmation message is displayed
+        /// to the user.
+        /// </summary>
         private void SetFontSize()
         {
             FontSizeManager.Instance().SetFontSize(_updatedFontSize);
@@ -228,7 +272,12 @@ namespace Assets._Scripts.Controller.SceneControllers
             
             DisplayInfoMessage(InfoMessages.CONFIRM_FONT_SIZE_ADJUSTMENT);
         }
-        
+
+        /// <summary>
+        /// Updates the font size of the example text dynamically based on the provided slider value.
+        /// Calculates the new font size using the slider range and applies it to the relevant text element.
+        /// </summary>
+        /// <param name="sliderValue">A normalized value (0 to 1) representing the position of the font size slider.</param>
         private void UpdateFontSize(float sliderValue)
         {
             // Berechne die neue Schriftgröße basierend auf dem Slider-Wert
@@ -241,35 +290,34 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Passt die Farben und die Interaktionsfähigkeit der Slider-Komponenten an.
+        /// Updates the visual state of the sound effects volume slider and its associated components
+        /// based on the specified active status.
+        /// Adjusts colors and interactivity to indicate whether the slider is enabled or disabled.
         /// </summary>
-        /// <param name="active">True für aktiven (normalen) Zustand, False für inaktiven (ausgegrauten) Zustand.</param>
+        /// <param name="active">A boolean value indicating if the slider should be active.
+        /// When set to true, the slider is enabled with full opacity;
+        /// when false, it is disabled and displayed with reduced opacity.</param>
         private void SetSliderVisuals(bool active)
         {
-            soundEffectsVolumeSlider.interactable = active; // Setzt die Interaktivität des Sliders
+            soundEffectsVolumeSlider.interactable = active;
             Color targetColor = active ? activeColor : disabledColor;
-            // Für das Ausgrauen nutzen wir die Transparenz (Alpha-Wert)
-            targetColor.a = active ? 1f : disabledAlpha; // Wenn aktiv, volle Deckkraft, sonst reduzierte
+            targetColor.a = active ? 1f : disabledAlpha;
 
-            // Slider Background
             if (sliderBackgroundImage)
             {
                 sliderBackgroundImage.color = targetColor;
             }
 
-            // Slider Fill
             if (sliderFillImage)
             { 
                 sliderFillImage.color = targetColor;
             }
 
-            // Slider Handle
             if (sliderHandleImage) 
             {
                 sliderHandleImage.color = targetColor;
             }
-
-            // Icons neben dem Slider (angenommen TextMeshPro)
+            
             if (sliderMinIcon)
             {
                 sliderMinIcon.color = targetColor;
@@ -280,7 +328,13 @@ namespace Assets._Scripts.Controller.SceneControllers
                 sliderMaxIcon.color = targetColor;
             }
         }
-        
+
+        /// <summary>
+        /// Handles the action triggered when the sound effects volume slider is released.
+        /// Updates and saves the user preference for the sound effects volume,
+        /// adjusts the global sound level, and plays a sound effect as feedback.
+        /// </summary>
+        /// <param name="value">The sound effects volume level set by the slider, ranging from 0 to 1.</param>
         private void HandleSoundEffectsSliderReleased(float value)
         {
             PlayerPrefs.SetFloat("SavedSoundEffectVolume", value);
@@ -293,12 +347,12 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
         
         /// <summary>
-        /// Aktualisiert die Sichtbarkeit zweier Images basierend auf einem booleschen Zustand.
-        /// Nützlich für Toggle-ähnliche Button-Implementierungen.
+        /// Updates the visibility of two images based on a boolean state.
+        /// Useful for toggle-like button implementations.
         /// </summary>
-        /// <param name="activeImage">Das Image, das bei 'true' sichtbar sein soll.</param>
-        /// <param name="inactiveImage">Das Image, das bei 'true' unsichtbar sein soll.</param>
-        /// <param name="state">Der Zustand (true/false).</param>
+        /// <param name="activeImage">The image that should be visible when 'true'.</param>
+        /// <param name="inactiveImage">The image that should be invisible when 'true'.</param>
+        /// <param name="state">The state (true/false).</param>
         private void UpdateToggleImages(Image activeImage, Image inactiveImage, bool state)
         {
             if (activeImage)

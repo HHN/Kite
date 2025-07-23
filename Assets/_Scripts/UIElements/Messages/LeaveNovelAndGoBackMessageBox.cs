@@ -90,7 +90,7 @@ namespace Assets._Scripts.UIElements.Messages
 
         private void OnContinueButton()
         {
-            _playNovelSceneController.IsPaused = false; // Resume the novel progression
+            _playNovelSceneController.isPaused = false; // Resume the novel progression
             StartCoroutine(_playNovelSceneController.ReadLast());
             AnimationFlagSingleton.Instance().SetFlag(false);
             CloseMessageBox();

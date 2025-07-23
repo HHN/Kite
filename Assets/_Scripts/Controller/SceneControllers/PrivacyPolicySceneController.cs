@@ -6,10 +6,13 @@ using Assets._Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.UI;
 
-//using LeastSquares.Overtone;
-
 namespace Assets._Scripts.Controller.SceneControllers
 {
+    /// <summary>
+    /// Responsible for managing the privacy policy scene in the application.
+    /// Inherits from the <c>SceneController</c> base class and provides functionality to handle
+    /// the display of the privacy policy or related interactions specific to the privacy policy scene.
+    /// </summary>
     public class PrivacyPolicySceneController : SceneController
     {
         [SerializeField] private Button resetAppButton;
@@ -21,12 +24,17 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         [SerializeField] private RectTransform layout02;
 
-        //[SerializeField] private TTSEngine engine;
         [SerializeField] private DeleteUserDataConfirmation deleteUserDataConfirmDialogObject;
         [SerializeField] private GameObject deleteUserDataConfirmDialog;
 
         private const string Origin = "reset";
 
+        /// <summary>
+        /// Initializes the privacy policy scene when it starts.
+        /// This method sets up the backstack for navigation, updates UI components,
+        /// initializes the audio source, and configures interactions such as button clicks
+        /// and toggle changes.
+        /// </summary>
         private void Start()
         {
             BackStackManager.Instance().Push(SceneNames.PrivacyPolicyScene);
@@ -35,7 +43,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout02);
             audioSource = GetComponent<AudioSource>();
 
-            InitializeApplicationModeButton();
+            applicationModeToggle.isOn = !ApplicationModeManager.Instance().IsOfflineModeActive();
 
             resetAppButton.onClick.AddListener(OnResetAppButton);
             resetAppInfoButton.onClick.AddListener(OnResetAppInfoButton);
@@ -44,6 +52,12 @@ namespace Assets._Scripts.Controller.SceneControllers
             FontSizeManager.Instance().UpdateAllTextComponents();
         }
 
+        /// <summary>
+        /// Toggles the application mode between online and offline based on the state of the provided toggle.
+        /// Activates the corresponding application mode, displays an informational message,
+        /// and initiates text-to-speech for the mode change message.
+        /// </summary>
+        /// <param name="toggle">The toggle control representing the application's mode state.</param>
         private void OnApplicationModeToggle(Toggle toggle)
         {
             if (toggle.isOn)
@@ -60,6 +74,12 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
         }
 
+        /// <summary>
+        /// Handles the functionality triggered by pressing the reset application button.
+        /// This method manages the deletion confirmation dialog, resets its state if necessary,
+        /// and links the dialog to the canvas. It then initializes and activates the confirmation
+        /// dialog, ensuring the required setup for reset operations is in place.
+        /// </summary>
         private void OnResetAppButton()
         {
             if (!deleteUserDataConfirmDialogObject.IsNullOrDestroyed())
@@ -80,19 +100,23 @@ namespace Assets._Scripts.Controller.SceneControllers
             GameManager.Instance.canvas = canvas;
         }
 
+        /// <summary>
+        /// Handles the action performed when the reset app info button is clicked.
+        /// This method provides an explanation of the reset app functionality by
+        /// using text-to-speech to read the provided explanation aloud and
+        /// displaying the same explanation as an informational message on the UI.
+        /// </summary>
         private void OnResetAppInfoButton()
         {
             StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.EXPLANATION_RESET_APP_BUTTON));
             DisplayInfoMessage(InfoMessages.EXPLANATION_RESET_APP_BUTTON);
         }
 
-
-        private void InitializeApplicationModeButton()
-        {
-            applicationModeToggle.isOn = !ApplicationModeManager.Instance().IsOfflineModeActive();
-        }
-
-
+        /// <summary>
+        /// Handles the action triggered when the application mode info button is clicked.
+        /// This method initiates a text-to-speech explanation of the application mode's purpose
+        /// and displays an informative message related to switching between offline and online modes.
+        /// </summary>
         private void OnApplicationModeInfoButton()
         {
             StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.EXPLANATION_APPLICATION_MODE_BUTTON));

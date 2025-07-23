@@ -1,21 +1,30 @@
 using UnityEngine;
 
-// Diese Zeile sorgt dafür, dass du neue "Bias Description"-Assets direkt
-// über das "Create"-Menü in Unity erstellen kannst.
 namespace Assets._Scripts.Biases
 {
+    /// <summary>
+    /// Represents a ScriptableObject used to define the description and metadata for a specific type of bias.
+    /// </summary>
+    /// <remarks>
+    /// This class is designed to store detailed information about biases, including
+    /// - The type of bias.
+    /// - A headline describing the bias.
+    /// - A preview text for summarization.
+    /// - A detailed descriptive text.
+    /// Instances of this class can be created and managed within the Unity Editor
+    /// using the "Create > Biases > Bias Description" menu.
+    /// </remarks>
+    /// <example>
+    /// Use this class to define and group descriptive data for various bias types,
+    /// improving data organization in Unity projects related to biases.
+    /// </example>
     [CreateAssetMenu(fileName = "NewBiasDescription", menuName = "Biases/Bias Description")]
     public class BiasDescription : ScriptableObject
     {
-        // Hier verknüpfen wir das Daten-Asset mit dem passenden Enum-Typ.
-        // Das macht das spätere Nachschlagen im Code sehr einfach.
         public BiasDescriptionTexts.BiasType biasType;
 
-        // Die Überschrift für den Bias.
         public string headline;
 
-        // [TextArea] sorgt für ein größeres, mehrzeiliges Textfeld im Inspector,
-        // was die Bearbeitung langer Texte deutlich angenehmer macht.
         [TextArea(5, 10)]
         public string preview;
 

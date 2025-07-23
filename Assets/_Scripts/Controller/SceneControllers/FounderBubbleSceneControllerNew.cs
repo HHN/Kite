@@ -13,13 +13,23 @@ using UnityEngine.UI;
 
 namespace Assets._Scripts.Controller.SceneControllers
 {
+    /// <summary>
+    /// Represents an entry for a novel, containing its unique identifier
+    /// and whether it is included in the current version.
+    /// </summary>
     [System.Serializable]
     public class NovelEntry
     {
         public long novelId;
         public bool isContained;
     }
-    
+
+    /// <summary>
+    /// Manages the behavior and interactions within the FoundersBubble scene of the application.
+    /// This includes handling user input on visual novel buttons, managing introductory novels,
+    /// and responding to interactions with background elements while considering
+    /// the scene's state and UI components.
+    /// </summary>
     public class FounderBubbleSceneControllerNew : MonoBehaviour
     {
         [Header("UI Elements")] 
@@ -62,6 +72,11 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         #region Unity Lifecycle
 
+        /// <summary>
+        /// Sets up and initializes the FoundersBubble scene when it starts.
+        /// This includes preparing managers, organizing UI components,
+        /// and adding necessary event listeners to ensure the scene functions properly.
+        /// </summary>
         private void Start()
         {
             InitializeManagersAndState();
@@ -131,7 +146,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Configures and populates the main visual novel tiles in the scene.
+        /// Configures and populates the visual novel tiles in the scroll view in the scene.
         /// Iterates through the collection of available visual novels, instantiates UI elements
         /// for each novel that is classified as a "kite novel," and positions them in the UI container.
         /// Dynamically applies visual properties such as labels, colors, and button interactions.
@@ -139,44 +154,58 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void SetupMainNovelTiles()
         {
+            // Initialize index for button placement order
             int insertionIndex = 0;
 
+            // Loop through each visual novel in the collection
             foreach (VisualNovel visualNovel in _allKiteNovelsById.Values)
             {
+                // Skip if not a kite novel
                 if (!visualNovel.isKiteNovel) continue;
                 
+                // Get the name of the visual novel
                 string novelName = VisualNovelNamesHelper.GetName(visualNovel.id);
 
+                // Skip intro novels (not needed in scroll view)
                 if (novelName.Contains("Einstieg")) continue;
 
+                // Create a button instance from prefab
                 GameObject novelButtonGameObject = Instantiate(novelButtonPrefab, novelButtonsContainer);
                 RectTransform novelButtonRect = novelButtonGameObject.GetComponent<RectTransform>();
 
+                // Set button order 
                 novelButtonGameObject.transform.SetSiblingIndex(insertionIndex);
                 insertionIndex++;
 
+                // Configure button properties
                 novelButtonGameObject.name = novelName;
                 novelButtonGameObject.GetComponentInChildren<Button>().name = novelName;
                 novelButtonGameObject.GetComponentInChildren<TextMeshProUGUI>().text = !visualNovel.isKiteNovel ? visualNovel.title : visualNovel.designation;
                 novelButtonGameObject.GetComponentInChildren<Image>().color = visualNovel.novelColor;
 
+                // Setup button click handling
                 Button button = novelButtonGameObject.GetComponentInChildren<Button>();
                 VisualNovelNames novelNamesCopy = VisualNovelNamesHelper.ValueByString(novelButtonGameObject.name);
                 RectTransform buttonRect = novelButtonGameObject.GetComponent<RectTransform>();
                 
+                // Configure bookmark and played status updaters
                 novelButtonGameObject.GetComponentInChildren<BookmarkUpdater>().VisualNovel = VisualNovelNamesHelper.ValueOf((int)visualNovel.id);
                 novelButtonGameObject.GetComponentInChildren<AlreadyPlayedUpdater>().VisualNovel = VisualNovelNamesHelper.ValueOf((int)visualNovel.id);
 
+                // Add click listener
                 button.onClick.AddListener(() => { OnNovelButton(buttonRect, novelNamesCopy); });
 
+                // Store reference to the last button for padding calculations
                 if (novelButtonGameObject)
                 {
                     _lastNovelButtonRectTransform = novelButtonRect;
                 }
             }
 
+            // Apply padding to ensure proper button spacing
             ApplyDynamicPadding();
 
+            // Configure positioning for each button
             for (int i = 0; i < novelButtonsContainer.childCount; i++)
             {
                 Transform childTransform = novelButtonsContainer.GetChild(i);
@@ -189,6 +218,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 }
             }
 
+            // Force canvas update to reflect changes
             Canvas.ForceUpdateCanvases();
         }
 
@@ -274,8 +304,10 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// <param name="sortedNovelButtons">The list of visually sorted novel buttons to be added to the menu.</param>
         private void ReorderBurgerMenuItems(Transform content, List<GameObject> sortedNovelButtons)
         {
+            // Initialize index for placing UI elements in order
             int currentSiblingIndex = 1;
 
+            // Find search and background elements to keep at top of the menu
             List<Transform> searchAndBackground = new List<Transform>();
             foreach (Transform child in content)
             {
@@ -285,18 +317,22 @@ namespace Assets._Scripts.Controller.SceneControllers
                 }
             }
 
+            // Sort and position search/background elements (background first, then search)
             foreach (Transform child in searchAndBackground.OrderBy(child => child.gameObject.name.Contains("Background") ? 0 : 1))
             {
                 child.SetSiblingIndex(currentSiblingIndex);
                 currentSiblingIndex++;
             }
 
+            // Add novel buttons and separators in sorted order
             foreach (GameObject novelButton in sortedNovelButtons)
             {
+                // Position novel button
                 novelButton.transform.SetSiblingIndex(currentSiblingIndex);
                 currentSiblingIndex++;
                 burgerMenuButtons.Add(novelButton);
 
+                // Create and position a separator line after each button
                 GameObject separatorLine = Instantiate(burgerMenuSeparatorImage, content);
                 separatorLine.name = $"{novelButton.name}Separator";
                 separatorLine.GetComponentInChildren<Image>().name = $"{novelButton.name}Separator";

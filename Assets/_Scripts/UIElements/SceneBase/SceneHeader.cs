@@ -57,7 +57,7 @@ namespace Assets._Scripts.UIElements.SceneBase
             
             if (sceneName.Contains("PlayNovelScene") && _playNovelSceneController != null)
             {
-                _playNovelSceneController.IsPaused = true; // Pause the novel progression
+                _playNovelSceneController.isPaused = true; // Pause the novel progression
             }
 
             if (!sceneName.Contains("PlayNovelScene"))
@@ -109,7 +109,7 @@ namespace Assets._Scripts.UIElements.SceneBase
                         Debug.Log($"lastScene == PlayNovelScene: {_playNovelSceneController != null}");
                         if (_playNovelSceneController)
                         {
-                            _playNovelSceneController.IsPaused = false;
+                            _playNovelSceneController.isPaused = false;
                             _playNovelSceneController.Continue();
                         }
                         
@@ -172,7 +172,7 @@ namespace Assets._Scripts.UIElements.SceneBase
         {
             if (_playNovelSceneController != null)
             {
-                _playNovelSceneController.IsPaused = true;
+                _playNovelSceneController.isPaused = true;
             }
             
             SceneLoader.LoadLegalInformationScene();
@@ -182,7 +182,7 @@ namespace Assets._Scripts.UIElements.SceneBase
         {
             if (_playNovelSceneController != null)
             {
-                _playNovelSceneController.IsPaused = true;
+                _playNovelSceneController.isPaused = true;
             }
             
             SceneLoader.LoadSettingsScene();

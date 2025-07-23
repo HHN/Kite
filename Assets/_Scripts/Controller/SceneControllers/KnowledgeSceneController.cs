@@ -10,6 +10,11 @@ using UnityEngine.UI;
 
 namespace Assets._Scripts.Controller.SceneControllers
 {
+    /// <summary>
+    /// Controls the behavior and management of the Knowledge Scene in the application.
+    /// Manages UI elements, user input, and navigation within the scene, as well as performing
+    /// initialization tasks and layout rebuilding.
+    /// </summary>
     public class KnowledgeSceneController : MonoBehaviour
     {
         [SerializeField] private RectTransform contentRectTransform;
@@ -22,8 +27,9 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private Sprite arrowLeftSprite;
         [SerializeField] private Sprite arrowDownSprite;
 
-        [Header("Strukturelle wirtschaftliche Barrieren")] 
-        [SerializeField] private GameObject barrierenInfoGroup;
+        [Header("Strukturelle wirtschaftliche Barrieren")] [SerializeField]
+        private GameObject barrierenInfoGroup;
+
         [SerializeField] private Image barrierenInfoButtonImage;
         [SerializeField] private Button barrierenInfoButton;
         [SerializeField] private Button finanzierungszugangButton;
@@ -34,6 +40,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         [Header("Gesellschaftliche Erwartungen & soziale Normen")] [SerializeField]
         private GameObject erwartungenNormenInfoGroup;
+
         [SerializeField] private Image erwartungenNormenInfoButtonImage;
         [SerializeField] private Button erwartungenNormenInfoButton;
         [SerializeField] private Button tokenismButton;
@@ -44,6 +51,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         [Header("Wahrnehmung & Führungsrollen")] [SerializeField]
         private GameObject wahrnehmungFuehrungsrollenInfoGroup;
+
         [SerializeField] private Image wahrnehmungFuehrungsrollenInfoButtonImage;
         [SerializeField] private Button wahrnehmungFuehrungsrollenInfoButton;
         [SerializeField] private Button heteronormativitaetButton;
@@ -54,6 +62,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         [Header("Psychologische Barrieren & kommunikative Hindernisse")] [SerializeField]
         private GameObject barrierenHindernisseInfoGroup;
+
         [SerializeField] private Image barrierenHindernisseInfoButtonImage;
         [SerializeField] private Button barrierenHindernisseInfoButton;
         [SerializeField] private Button tightropeBiasButton;
@@ -61,13 +70,12 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private Button leistungsattributionsBiasButton;
         [SerializeField] private Button unbewussteBiasInDerKommunikationButton;
 
-        [Header("SearchBar")]
-        [SerializeField] private TMP_InputField inputField;
+        [Header("SearchBar")] [SerializeField] private TMP_InputField inputField;
         [SerializeField] private Button searchBarButton;
         [SerializeField] private Image searchBarImage;
         [SerializeField] private GameObject searchList;
         [SerializeField] private RectTransform searchBarRect;
-        
+
         [SerializeField] private Button searchListFinanzierungszugangButton;
         [SerializeField] private Button searchListGenderPayGapButton;
         [SerializeField] private Button searchListUnterbewertungWeiblichGefuehrterUnternehmenButton;
@@ -89,23 +97,27 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private Button searchListUnbewussteBiasInDerKommunikationButton;
 
         private GameObject _currentBiasInformationChapter;
-        
+
         private TMP_Text _biasDetailsText;
 
         private Dictionary<Button, Action> _buttonActions;
-        
+
         private bool _barrienenInfoGroupActive;
         private bool _erwartungsInfoGroupActive;
         private bool _wahrnehmungFuehrungsrollenInfoGroupActive;
         private bool _barrierenHindernisseInfoGroupActive;
 
+        /// <summary>
+        /// Initializes the Knowledge Scene, setting up navigation, buttons,
+        /// input field listeners, and ensuring the UI layout is updated correctly.
+        /// </summary>
         public void Start()
         {
             BackStackManager.Instance().Push(SceneNames.KnowledgeScene);
-            
+
             InitializeButtonActions();
             AddButtonListeners();
-            
+
             _biasDetailsText = biasDetailsObject.GetComponentInChildren<TextMeshProUGUI>();
 
             if (inputField)
@@ -116,11 +128,15 @@ namespace Assets._Scripts.Controller.SceneControllers
             {
                 Debug.LogError("InputField ist nicht zugewiesen.");
             }
-            
+
             FontSizeManager.Instance().UpdateAllTextComponents();
             StartCoroutine(RebuildLayout());
         }
 
+        /// <summary>
+        /// Configures the button actions and assigns the appropriate event handlers
+        /// to ensure proper interaction behavior within the Knowledge Scene.
+        /// </summary>
         private void InitializeButtonActions()
         {
             _buttonActions = new Dictionary<Button, Action>
@@ -130,33 +146,33 @@ namespace Assets._Scripts.Controller.SceneControllers
                 { wahrnehmungFuehrungsrollenInfoButton, OnWahrnehmungFuehrungsrollenInfoButton },
                 { barrierenHindernisseInfoButton, OnBarrierenHindernisseInfoButton },
 
-                // Strukturelle wirtschaftliche Barrieren
+                // Structural economic barriers
                 { finanzierungszugangButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.AccessToFunding) },
                 { genderPayGapButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.GenderPayGap) },
                 { unterbewertungWeiblichGefuehrterUnternehmenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.UndervaluationOfWomenLedBusinesses) },
                 { riskAversionBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.RiskAversionBias) },
                 { bestaetigungsVerzerrungButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.ConfirmationBias) },
 
-                // Gesellschaftliche Erwartungen & soziale Normen
+                // Societal expectations & social norms
                 { tokenismButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.Tokenism) },
                 { biasInDerWahrnehmungVonFuehrungsFaehigkeitenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.InPerceptionOfLeadershipAbilities) },
                 { benevolenterSexismusButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.BenevolentSexismBias) },
                 { altersUndGenerationenBiasesButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.AgeAndGenerationalBiases) },
                 { stereotypeGegenueberFrauenInNichtTraditionellenBranchenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.StereotypesAgainstWomenInNonTraditionalIndustries) },
-                
-                // Wahrnehmung & Führungsrollen
+
+                // Perception & leadership roles
                 { heteronormativitaetButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.Heteronormativity) },
                 { maternalBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.MaternalBias) },
                 { erwartungshaltungBezueglichFamilienplanungButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.ExpectationsRegardingFamilyPlanning) },
                 { workLifeBalanceErwartungenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.WorkLifeBalanceExpectations) },
                 { geschlechtsspezifischeStereotypeButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.GenderSpecificStereotypes) },
 
-                // Psychologische Barrieren & kommunikative Hindernisse
+                // Psychological barriers & communication obstacles
                 { tightropeBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.TightropeBias) },
                 { mikroaggressionenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.Microaggressions) },
                 { leistungsattributionsBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.PerformanceAttributionBias) },
                 { unbewussteBiasInDerKommunikationButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.UnconsciousBiasInCommunication) },
-                
+
                 { searchListFinanzierungszugangButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.AccessToFunding) },
                 { searchListGenderPayGapButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.GenderPayGap) },
                 { searchListUnterbewertungWeiblichGefuehrterUnternehmenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.UndervaluationOfWomenLedBusinesses) },
@@ -176,11 +192,15 @@ namespace Assets._Scripts.Controller.SceneControllers
                 { searchListMikroaggressionenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.Microaggressions) },
                 { searchListLeistungsattributionsBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.PerformanceAttributionBias) },
                 { searchListUnbewussteBiasInDerKommunikationButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.UnconsciousBiasInCommunication) },
-                
+
                 { searchBarButton, CloseSearchBar }
             };
         }
 
+        /// <summary>
+        /// Adds click event listeners to all buttons in the Knowledge Scene, binding them
+        /// to their associated actions defined in the button-to-action dictionary.
+        /// </summary>
         private void AddButtonListeners()
         {
             foreach (var (button, action) in _buttonActions)
@@ -190,23 +210,29 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Zeigt detaillierte Informationen zu einem Bias-Thema.
+        /// Displays the details of a specified bias type by activating the bias details UI
+        /// and updating the corresponding content text.
         /// </summary>
+        /// <param name="type">The type of bias to display, represented as a BiasType enum.</param>
         private void ShowBiasDetails(BiasDescriptionTexts.BiasType type)
         {
             if (searchList.activeInHierarchy) searchList.SetActive(false);
-            
+
             infoText.SetActive(false);
             biasInformation.SetActive(false);
             barrierenInfoGroup.SetActive(false);
 
             biasDetailsObject.SetActive(true);
             _biasDetailsText.text = BiasDescriptionTexts.GetBiasText(type);
-            
+
             FontSizeManager.Instance().UpdateAllTextComponents();
             StartCoroutine(RebuildLayout());
         }
 
+        /// <summary>
+        /// Toggles the visibility of the "Strukturelle wirtschaftliche Barrieren" information group,
+        /// updating button states, UI layout, and sprite appearance accordingly.
+        /// </summary>
         private void OnBarrierenInfoButton()
         {
             if (_barrienenInfoGroupActive)
@@ -216,9 +242,9 @@ namespace Assets._Scripts.Controller.SceneControllers
                 unterbewertungWeiblichGefuehrterUnternehmenButton.gameObject.SetActive(false);
                 riskAversionBiasButton.gameObject.SetActive(false);
                 bestaetigungsVerzerrungButton.gameObject.SetActive(false);
-                
+
                 barrierenInfoButtonImage.sprite = arrowLeftSprite;
-                
+
                 _barrienenInfoGroupActive = false;
             }
             else
@@ -228,18 +254,22 @@ namespace Assets._Scripts.Controller.SceneControllers
                 unterbewertungWeiblichGefuehrterUnternehmenButton.gameObject.SetActive(true);
                 riskAversionBiasButton.gameObject.SetActive(true);
                 bestaetigungsVerzerrungButton.gameObject.SetActive(true);
-                
+
                 barrierenInfoButtonImage.sprite = arrowDownSprite;
-                
+
                 _barrienenInfoGroupActive = true;
 
                 _currentBiasInformationChapter = barrierenInfoGroup;
             }
-            
+
             FontSizeManager.Instance().UpdateAllTextComponents();
             StartCoroutine(RebuildLayout());
         }
 
+        /// <summary>
+        /// Toggles the visibility of the "Erwartungen und Normen" information group,
+        /// updating button states, UI layout, and sprite appearance accordingly.
+        /// </summary>
         private void OnErwartungenNormenInfoButton()
         {
             if (_erwartungsInfoGroupActive)
@@ -249,9 +279,9 @@ namespace Assets._Scripts.Controller.SceneControllers
                 benevolenterSexismusButton.gameObject.SetActive(false);
                 altersUndGenerationenBiasesButton.gameObject.SetActive(false);
                 stereotypeGegenueberFrauenInNichtTraditionellenBranchenButton.gameObject.SetActive(false);
-                
+
                 erwartungenNormenInfoButtonImage.sprite = arrowLeftSprite;
-                
+
                 _erwartungsInfoGroupActive = false;
             }
             else
@@ -261,9 +291,9 @@ namespace Assets._Scripts.Controller.SceneControllers
                 benevolenterSexismusButton.gameObject.SetActive(true);
                 altersUndGenerationenBiasesButton.gameObject.SetActive(true);
                 stereotypeGegenueberFrauenInNichtTraditionellenBranchenButton.gameObject.SetActive(true);
-                
+
                 erwartungenNormenInfoButtonImage.sprite = arrowDownSprite;
-                
+
                 _erwartungsInfoGroupActive = true;
 
                 _currentBiasInformationChapter = erwartungenNormenInfoGroup;
@@ -273,6 +303,10 @@ namespace Assets._Scripts.Controller.SceneControllers
             StartCoroutine(RebuildLayout());
         }
 
+        /// <summary>
+        /// Toggles the visibility of the "Wahrnehmung & Führungsrollen" information group,
+        /// updating button states, UI layout, and sprite appearance accordingly.
+        /// </summary>
         private void OnWahrnehmungFuehrungsrollenInfoButton()
         {
             if (_wahrnehmungFuehrungsrollenInfoGroupActive)
@@ -282,9 +316,9 @@ namespace Assets._Scripts.Controller.SceneControllers
                 erwartungshaltungBezueglichFamilienplanungButton.gameObject.SetActive(false);
                 workLifeBalanceErwartungenButton.gameObject.SetActive(false);
                 geschlechtsspezifischeStereotypeButton.gameObject.SetActive(false);
-                
+
                 wahrnehmungFuehrungsrollenInfoButtonImage.sprite = arrowLeftSprite;
-                
+
                 _wahrnehmungFuehrungsrollenInfoGroupActive = false;
             }
             else
@@ -294,18 +328,22 @@ namespace Assets._Scripts.Controller.SceneControllers
                 erwartungshaltungBezueglichFamilienplanungButton.gameObject.SetActive(true);
                 workLifeBalanceErwartungenButton.gameObject.SetActive(true);
                 geschlechtsspezifischeStereotypeButton.gameObject.SetActive(true);
-                
+
                 wahrnehmungFuehrungsrollenInfoButtonImage.sprite = arrowDownSprite;
-                
+
                 _wahrnehmungFuehrungsrollenInfoGroupActive = true;
-                
+
                 _currentBiasInformationChapter = wahrnehmungFuehrungsrollenInfoGroup;
             }
-            
+
             FontSizeManager.Instance().UpdateAllTextComponents();
             StartCoroutine(RebuildLayout());
         }
 
+        /// <summary>
+        /// Toggles the visibility of the "Psychologische Barrieren & kommunikative Hindernisse" information group,
+        /// updating button states, UI layout, and sprite appearance accordingly.
+        /// </summary>
         private void OnBarrierenHindernisseInfoButton()
         {
             if (_barrierenHindernisseInfoGroupActive)
@@ -314,9 +352,9 @@ namespace Assets._Scripts.Controller.SceneControllers
                 mikroaggressionenButton.gameObject.SetActive(false);
                 leistungsattributionsBiasButton.gameObject.SetActive(false);
                 unbewussteBiasInDerKommunikationButton.gameObject.SetActive(false);
-                
+
                 barrierenHindernisseInfoButtonImage.sprite = arrowLeftSprite;
-                
+
                 _barrierenHindernisseInfoGroupActive = false;
             }
             else
@@ -325,11 +363,11 @@ namespace Assets._Scripts.Controller.SceneControllers
                 mikroaggressionenButton.gameObject.SetActive(true);
                 leistungsattributionsBiasButton.gameObject.SetActive(true);
                 unbewussteBiasInDerKommunikationButton.gameObject.SetActive(true);
-                
+
                 barrierenHindernisseInfoButtonImage.sprite = arrowDownSprite;
-                
+
                 _barrierenHindernisseInfoGroupActive = true;
-                
+
                 _currentBiasInformationChapter = barrierenHindernisseInfoGroup;
             }
 
@@ -337,6 +375,11 @@ namespace Assets._Scripts.Controller.SceneControllers
             StartCoroutine(RebuildLayout());
         }
 
+        /// <summary>
+        /// Navigates the Knowledge Scene by toggling the visibility of UI elements depending on their current state.
+        /// Adjusts the display of information and initiates scene transitions when necessary.
+        /// Ensures the correct layout and content are presented in the scene.
+        /// </summary>
         public void NavigateScene()
         {
             infoText.SetActive(true);
@@ -352,19 +395,23 @@ namespace Assets._Scripts.Controller.SceneControllers
                 erwartungenNormenInfoButton.gameObject.SetActive(true);
                 wahrnehmungFuehrungsrollenInfoButton.gameObject.SetActive(true);
                 barrierenHindernisseInfoButton.gameObject.SetActive(true);
-                
+
                 CloseSearchBar();
-                
-                // _currentBiasInformationChapter.SetActive(true);
+
                 biasDetailsObject.SetActive(false);
             }
         }
 
+        /// <summary>
+        /// Filters and displays results in the search list based on the provided input.
+        /// Updates the visibility of the search button, search bar image, and relevant UI elements.
+        /// </summary>
+        /// <param name="input">The string input provided by the user for filtering search results.</param>
         private void Search(string input)
         {
             searchBarButton.gameObject.SetActive(true);
             searchBarImage.gameObject.SetActive(false);
-            
+
             biasInformation.SetActive(false);
             searchList.SetActive(true);
 
@@ -384,10 +431,15 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
         }
 
+        /// <summary>
+        /// Closes the search bar by clearing the input field, hiding the search bar button,
+        /// showing the search bar image, and adjusting the visibility of the search list
+        /// and bias information accordingly.
+        /// </summary>
         private void CloseSearchBar()
         {
             inputField.text = "";
-            
+
             searchBarButton.gameObject.SetActive(false);
             searchBarImage.gameObject.SetActive(true);
 
@@ -402,10 +454,17 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
         }
 
-    private IEnumerator RebuildLayout()
-    {
-        yield return null; // Einen Frame warten
-        LayoutRebuilder.ForceRebuildLayoutImmediate(contentRectTransform);
-    }
+        /// <summary>
+        /// Forces an immediate rebuild of the layout for the specified content rect transform.
+        /// This ensures that the UI elements are properly arranged after changes to their properties or structure.
+        /// </summary>
+        /// <returns>
+        /// An enumerator that waits for a single frame before applying the layout rebuild operation.
+        /// </returns>
+        private IEnumerator RebuildLayout()
+        {
+            yield return null;
+            LayoutRebuilder.ForceRebuildLayoutImmediate(contentRectTransform);
+        }
     }
 }

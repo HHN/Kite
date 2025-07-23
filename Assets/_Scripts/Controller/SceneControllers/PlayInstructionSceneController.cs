@@ -6,6 +6,13 @@ using UnityEngine.UI;
 
 namespace Assets._Scripts.Controller.SceneControllers
 {
+    /// <summary>
+    /// Handles the behavior and logic specifically for the instructional scenes within the game.
+    /// </summary>
+    /// <remarks>
+    /// This controller inherits from the <see cref="SceneController"/> class and is designed to manage
+    /// user interactions, messages, and other functionality specific to instructional scenes.
+    /// </remarks>
     public class PlayInstructionSceneController : SceneController
     {
         [SerializeField] private Image novelImage;
@@ -28,10 +35,17 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private bool _isSyncing;
 
+        /// <summary>
+        /// Called when the PlayInstructionScene is initialized.
+        /// This method sets up various properties and behaviors specific to the instructional scene.
+        /// </summary>
+        /// <remarks>
+        /// This includes updating UI elements, setting colors and states, and configuring button and toggle listeners.
+        /// It integrates with the <see cref="BackStackManager"/> to track scene history
+        /// and with <see cref="PlayManager"/> to retrieve relevant information about the visual novel.
+        /// </remarks>
         private void Start()
         {
-            // BackStackManager.Instance().Clear();
-
             BackStackManager.Instance().Push(SceneNames.PlayInstructionScene);
             
             backgroundColor = PlayManager.Instance().GetColorOfVisualNovelToPlay();
@@ -51,6 +65,12 @@ namespace Assets._Scripts.Controller.SceneControllers
             SetColours();
         }
 
+        /// <summary>
+        /// Synchronizes the state of two toggles to ensure they have matching values.
+        /// Prevents recursive calls during the synchronization process.
+        /// </summary>
+        /// <param name="otherToggle">The toggle whose state needs to be updated to match the current toggle.</param>
+        /// <param name="isOn">The current state of the toggle triggering the synchronization.</param>
         private void SyncToggles(Toggle otherToggle, bool isOn)
         {
             if (_isSyncing) return; // Prevent recursive calls
@@ -60,22 +80,26 @@ namespace Assets._Scripts.Controller.SceneControllers
             _isSyncing = false; // End syncing
         }
 
+        /// <summary>
+        /// This method manages toggling behaviors when the "never show again" toggle is set
+        /// and transitions the current scene to the play novel scene using the <see cref="SceneLoader.LoadPlayNovelScene"/> method.
+        /// </summary>
         private void OnPlayButton()
         {
             if (toggle.isOn)
             {
-                NeverShowAgain();
+                ShowPlayInstructionManager.Instance().SetShowInstruction(false);
             }
 
             SceneLoader.LoadPlayNovelScene();
         }
 
-        private void NeverShowAgain()
-        {
-            ShowPlayInstructionManager.Instance().SetShowInstruction(false);
-        }
-
-        private void SetColours() 
+        /// <summary>
+        /// This method retrieves a color instance from <see cref="NovelColorManager"/> and applies it
+        /// to the designated elements, including button images, checkbox images, and the header image.
+        /// Ensures consistent theming based on the active visual novel.
+        /// </summary>
+        private void SetColours()
         {
             playButtonImage1.color = NovelColorManager.Instance().GetColor();
             playButtonImage2.color = NovelColorManager.Instance().GetColor();

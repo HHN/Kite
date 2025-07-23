@@ -10,6 +10,10 @@ using UnityEngine;
 
 namespace Assets._Scripts
 {
+    /// <summary>
+    /// Represents the save status of a novel. This class holds information about
+    /// whether a specific novel identified by its unique ID has been saved or not.
+    /// </summary>
     [Serializable]
     public class NovelSaveStatus
     {
@@ -17,6 +21,11 @@ namespace Assets._Scripts
         public bool isSaved; // Whether the novel has been saved
     }
 
+    /// <summary>
+    /// Represents data associated with a character, including customization indices
+    /// for various attributes like skin, glasses, clothes, hair, and hand sprites.
+    /// Allows for two sets of attributes, providing flexibility for character customization.
+    /// </summary>
     [Serializable]
     public class CharacterData
     {
@@ -36,6 +45,11 @@ namespace Assets._Scripts
         public int characterId2;
     }
 
+    /// <summary>
+    /// Represents an entry that associates a unique identifier with character data.
+    /// This is used to map specific character data configurations to an ID,
+    /// facilitating lookups and updates.
+    /// </summary>
     [Serializable]
     public class CharacterDataEntry
     {
@@ -43,26 +57,28 @@ namespace Assets._Scripts
         public CharacterData data;
     }
 
+    /// <summary>
+    /// Manages the game state and provides a centralized system for handling various
+    /// game-related functionalities, including save statuses, novel progress, and UI elements.
+    /// Implements a singleton pattern for easy global access.
+    /// </summary>
     public class GameManager : MonoBehaviour
     {
         [SerializeField] private bool showAllNovels = false;
-        [SerializeField] private bool skipIntroNovel; // Whether to skip the introduction novel
-        [SerializeField] private bool isIntroNovelSaved; // Tracks if the intro novel is saved
-        [SerializeField] private bool introNovelLoadedFromMainMenu = true; // Whether the intro novel was loaded from the main menu
+        [SerializeField] private bool skipIntroNovel;
+        [SerializeField] private bool isIntroNovelSaved;
+        [SerializeField] private bool introNovelLoadedFromMainMenu = true;
 
-        // List to display in the Inspector (only for debugging, not used directly)
         [SerializeField] private List<NovelSaveStatus> novelSaveStatusList = new();
 
-        // Static dictionary to store character data globally
         [SerializeField] private List<CharacterDataEntry> characterDataList = new();
 
         [SerializeField] private GameObject messageBox;
 
-        public bool calledFromReload = true; // Flag to check if the scene is being reloaded
-        public bool resetApp; // Flag to check if the app is being reset
+        public bool calledFromReload = true;
+        public bool resetApp;
         public GameObject canvas;
 
-        // Dictionary to dynamically manage the save status of each novel
         private readonly Dictionary<string, bool> _novelSaveStatus = new();
         public static GameManager Instance { get; private set; }
 
@@ -72,6 +88,7 @@ namespace Assets._Scripts
         
         private MessageBox _messageObject;
         
+        // Property to get or set the showAllNovels flag
         public bool ShowAllNovels
         {
             get => showAllNovels;
@@ -92,46 +109,49 @@ namespace Assets._Scripts
             set => introNovelLoadedFromMainMenu = value;
         }
 
+        /// <summary>
+        /// Initializes the GameManager instance and ensures it follows the singleton pattern,
+        /// preventing duplicate instances. Configures the GameManager object to persist between
+        /// scene loads, converts the character data list into a dictionary for efficient access,
+        /// and verifies the save status for all novels upon startup.
+        /// </summary>
         private void Awake()
         {
-            // Singleton pattern to ensure a single instance of GameManager exists
             if (Instance && Instance != this)
             {
-                Destroy(gameObject); // Destroy duplicate GameManager instances
+                Destroy(gameObject);
                 return;
             }
 
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Ensure this object persists across scene changes
+            DontDestroyOnLoad(gameObject);
 
-            // Liste in Dictionary umwandeln
             _characterDataDictionary = characterDataList.ToDictionary(entry => entry.id, entry => entry.data);
 
-            // Check and set the save status for all novels at startup
             CheckAndSetAllNovelsStatus();
         }
 
         /// <summary>
-        /// Checks and sets the save status for all novels.
+        /// Updates the status of all visual novels by iterating through all available novel identifiers
+        /// and checking if a save file exists for each. Clears and rebuilds the internal dictionary and
+        /// serialized list used for debugging and status tracking, ensuring they reflect the latest save data.
+        /// Additionally, handles character data synchronization if a save file is found.
         /// </summary>
         public void CheckAndSetAllNovelsStatus()
         {
-            _novelSaveStatus.Clear(); // Clear the current dictionary
-            novelSaveStatusList.Clear(); // Clear the Inspector list
+            _novelSaveStatus.Clear();
+            novelSaveStatusList.Clear();
             _characterDataDictionary.Clear();
-            characterDataList.Clear(); // Auch die Liste für den Inspector leeren!
+            characterDataList.Clear();
 
-            // Iterate through all VisualNovelNames (enums) and check their save status
             foreach (VisualNovelNames novelName in Enum.GetValues(typeof(VisualNovelNames)))
             {
                 string novelId = VisualNovelNamesHelper.ToInt(novelName).ToString();
 
-                // Check if a save exists for the novel
                 var saveData = SaveLoadManager.Load(novelId);
                 bool isSaved = saveData != null;
                 _novelSaveStatus[novelId] = isSaved;
 
-                // Add the save status to the Inspector list for debugging
                 novelSaveStatusList.Add(new NovelSaveStatus { novelId = novelId, isSaved = isSaved });
                 
                 if (isSaved && saveData.CharacterPrefabData != null)
@@ -140,7 +160,6 @@ namespace Assets._Scripts
                     {
                         _characterDataDictionary[kvp.Key] = kvp.Value;
 
-                        // Außerdem in die Liste für den Inspector hinzufügen
                         characterDataList.Add(new CharacterDataEntry
                         {
                             id = kvp.Key,
@@ -169,18 +188,24 @@ namespace Assets._Scripts
         /// <param name="isSaved">The new save status of the novel.</param>
         public void UpdateNovelSaveStatus(string novelId, bool isSaved)
         {
-            // Update the dictionary if the novel ID exists
             if (_novelSaveStatus.ContainsKey(novelId))
             {
                 _novelSaveStatus[novelId] = isSaved;
             }
         }
 
+        /// <summary>
+        /// Adds or updates character data in the GameManager. The method ensures the
+        /// character data is stored in both the internal dictionary and the list of character data entries.
+        /// If an entry with the specified ID already exists, it updates the existing entry. Otherwise,
+        /// a new entry is created and added to the list.
+        /// </summary>
+        /// <param name="id">The unique identifier for the character data to be added or updated.</param>
+        /// <param name="data">The character data to be stored or updated in the GameManager.</param>
         public void AddCharacterData(long id, CharacterData data)
         {
             _characterDataDictionary[id] = data;
 
-            // Falls ID schon existiert, aktualisieren
             var existingEntry = characterDataList.FirstOrDefault(entry => entry.id == id);
             if (existingEntry != null)
             {
@@ -192,11 +217,26 @@ namespace Assets._Scripts
             }
         }
 
+        /// <summary>
+        /// Retrieves the dictionary containing character data associated with unique identifiers.
+        /// Provides access to manage, retrieve, and manipulate character information
+        /// stored within the game manager.
+        /// </summary>
+        /// <returns>
+        /// A dictionary with unique identifiers as keys and corresponding
+        /// <see cref="CharacterData"/> objects as values.
+        /// </returns>
         public Dictionary<long, CharacterData> GetCharacterDataDictionary()
         {
             return _characterDataDictionary;
         }
-        
+
+        /// <summary>
+        /// Displays a message in a message box UI element. If a previous message box exists, it is closed
+        /// before displaying the new message. This method ensures the message box is instantiated,
+        /// configured, and activated on the assigned canvas.
+        /// </summary>
+        /// <param name="message">The message body text to be displayed.</param>
         public void DisplayMessage(string message)
         {
             if (!resetApp)

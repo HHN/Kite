@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Networking; // Add the UnityWebRequest namespace
+using UnityEngine.Networking;
 
 namespace Assets._Scripts._Mappings
 {
+    /// <summary>
+    /// Handles the mapping of various types of terms and entities (biases, face expressions, characters)
+    /// used in the application to their corresponding mapped values or identifiers.
+    /// Provides centralized mapping logic for consistent translation and retrieval of related data.
+    /// </summary>
     public class MappingManager : MonoBehaviour
     {
         private static MappingManager _instance;

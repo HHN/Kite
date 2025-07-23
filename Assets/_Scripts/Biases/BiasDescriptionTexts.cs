@@ -4,8 +4,14 @@ using UnityEngine;
 
 namespace Assets._Scripts.Biases
 {
+    /// <summary>
+    /// A static class that provides descriptions for various biases identified by their specific types.
+    /// </summary>
     public static class BiasDescriptionTexts
     {
+        /// <summary>
+        /// Represents the types of biases that can be encountered in social, organizational, or personal contexts.
+        /// </summary>
         public enum BiasType
         {
             AccessToFunding,
@@ -27,9 +33,8 @@ namespace Assets._Scripts.Biases
             Microaggressions,
             PerformanceAttributionBias,
             UnconsciousBiasInCommunication
-            // eine Methode schreiben, die anhand des Keywords den Namen des Biases zurückgibt
         }
-
+        
         public static readonly string PLACEHOLDER =
             "<size=30><b>Schwierigkeiten von Frauen, Kapital für ihre Unternehmen zu beschaffen. Hier einige Daten und Fakten dazu:\n\n</b>" +
             "In Deutschland ist es so und so, und hier gibt es Zahlen dazu. Und so weiter und so weiter..." +
@@ -40,12 +45,28 @@ namespace Assets._Scripts.Biases
 
         private static Dictionary<BiasType, BiasDescription> _biasDetails;
         private const string LinkColor = "#F5944E";
-        
+
+        /// <summary>
+        /// A static class providing functionalities to manage and retrieve descriptions of various biases.
+        /// </summary>
         static BiasDescriptionTexts()
         {
             InitializeBiasData();
         }
-        
+
+        /// <summary>
+        /// Initializes the bias data by loading resources and populating a dictionary
+        /// that maps bias types to their corresponding descriptions.
+        /// </summary>
+        /// <remarks>
+        /// This method ensures the bias details are loaded into memory at runtime by retrieving
+        /// all assets of type <see cref="BiasDescription"/> from a specific resource folder.
+        /// It organizes these assets into a dictionary for quick access based on the designated bias type.
+        /// If the data is already initialized, the method will not re-execute.
+        /// </remarks>
+        /// <example>
+        /// Call this method during static initialization to preload bias data for later retrievals.
+        /// </example>
         private static void InitializeBiasData()
         {
             if (_biasDetails != null) return;
@@ -53,10 +74,14 @@ namespace Assets._Scripts.Biases
             var biasAssets = Resources.LoadAll<BiasDescription>("BiasDescriptions");
             
             _biasDetails = biasAssets.ToDictionary(asset => asset.biasType, asset => asset);
-            
-            Debug.Log($"[BiasDescriptionTexts] {_biasDetails.Count} bias descriptions loaded.");
         }
-        
+
+        /// <summary>
+        /// Retrieves the descriptive text associated with a specific bias type.
+        /// </summary>
+        /// <param name="biasType">The type of bias for which the description is requested.</param>
+        /// <returns>A formatted string containing the headline, preview, and detailed description of the specified bias type.
+        /// If no description is found, a default "TEXT NOT FOUND" string is returned.</returns>
         public static string GetBiasText(BiasType biasType)
         {
             if (_biasDetails == null) InitializeBiasData();
@@ -70,7 +95,6 @@ namespace Assets._Scripts.Biases
                        $"{finalDescription}";
             }
 
-            Debug.LogWarning($"No bias description found for {biasType}");
             return "TEXT NOT FOUND";
         }
 
