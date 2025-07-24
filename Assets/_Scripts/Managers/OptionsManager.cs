@@ -10,6 +10,11 @@ using UnityEngine;
 
 namespace Assets._Scripts.Managers
 {
+    /// <summary>
+    /// The OptionsManager class is responsible for managing user-selectable options
+    /// in a visual novel scenario. This includes initializing options, handling user
+    /// selections, and triggering necessary events or actions based on the chosen option.
+    /// </summary>
     public class OptionsManager : MonoBehaviour
     {
         [SerializeField] private ChatMessageBox optionA;
@@ -44,9 +49,15 @@ namespace Assets._Scripts.Managers
         private PlayNovelSceneController _sceneController;
         private ConversationContentGuiController _conversationContentGuiController;
 
+        /// <summary>
+        /// Initializes the options manager by setting up options and their associated data,
+        /// linking them to the scene controller, and updating the GUI controller.
+        /// </summary>
+        /// <param name="sceneController">The scene controller managing the current play novel scene.</param>
+        /// <param name="options">A list of visual novel events representing the available options.</param>
         public void Initialize(PlayNovelSceneController sceneController, List<VisualNovelEvent> options)
         {
-            this._sceneController = sceneController;
+            _sceneController = sceneController;
             _conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
 
             GlobalVolumeManager.Instance.PlaySound(selectedSound);
@@ -123,41 +134,78 @@ namespace Assets._Scripts.Managers
             AnalyticsServiceHandler.Instance().AddedLastChoice();
         }
 
+        /// <summary>
+        /// Handles the selection of Option A in the options menu. This method logs the choice using
+        /// the analytics service and triggers the required follow-up actions, such as invoking a coroutine
+        /// to handle post-selection events.
+        /// </summary>
         public void OnOptionA()
         {
             AnalyticsServiceHandler.Instance().SetChoiceId(0);
             StartCoroutine(AfterSelection("Selected A", _stringA, _idA, _displayAfterSelectionA, 0));
         }
 
+        /// <summary>
+        /// Handles the selection of Option B in the visual novel scenario.
+        /// This method records the selection analytics, initiates a post-selection process,
+        /// and triggers corresponding actions or updates based on Option B being chosen.
+        /// </summary>
         public void OnOptionB()
         {
             AnalyticsServiceHandler.Instance().SetChoiceId(1);
             StartCoroutine(AfterSelection("Selected B", _stringB, _idB, _displayAfterSelectionB, 1));
         }
 
+        /// <summary>
+        /// Handles the selection of Option C in the visual novel scenario.
+        /// Records the user's choice via the analytics service and triggers
+        /// post-selection actions such as initiating the next event or updating the UI.
+        /// </summary>
         public void OnOptionC()
         {
             AnalyticsServiceHandler.Instance().SetChoiceId(2);
             StartCoroutine(AfterSelection("Selected C", _stringC, _idC, _displayAfterSelectionC, 2));
         }
 
+        /// <summary>
+        /// Handles the selection of Option D by performing analytics tracking
+        /// and initiating the next steps in the visual novel sequence.
+        /// </summary>
         public void OnOptionD()
         {
             AnalyticsServiceHandler.Instance().SetChoiceId(3);
             StartCoroutine(AfterSelection("Selected D", _stringD, _idD, _displayAfterSelectionD, 3));
         }
 
+        /// <summary>
+        /// Handles the selection of option E in the visual novel by marking it as chosen,
+        /// initiating analytics tracking, and starting the post-selection process.
+        /// </summary>
         public void OnOptionE()
         {
             AnalyticsServiceHandler.Instance().SetChoiceId(4);
             StartCoroutine(AfterSelection("Selected E", _stringE, _idE, _displayAfterSelectionE, 4));
         }
 
+        /// <summary>
+        /// Plays the decision sound effect to provide audio feedback for user interaction.
+        /// Uses the GlobalVolumeManager to handle playback of the associated audio clip.
+        /// </summary>
         public void PlayDecisionSound()
         {
             GlobalVolumeManager.Instance.PlaySound(decisionSound);
         }
 
+        /// <summary>
+        /// Handles the post-selection logic after an option is chosen, including updating
+        /// the game state, playing animations and audio, and managing scene transitions.
+        /// </summary>
+        /// <param name="parameterName">The name of the animation or effect associated with the selected option.</param>
+        /// <param name="answer">The string response corresponding to the selected option.</param>
+        /// <param name="nextEventID">The ID of the next event triggered by this selection.</param>
+        /// <param name="displayAfterSelection">Indicates whether additional UI or content should be displayed after the selection.</param>
+        /// <param name="index">The index of the selected option.</param>
+        /// <returns>An IEnumerator used to manage the timing of events following the selection.</returns>
         private IEnumerator AfterSelection(string parameterName, string answer, string nextEventID,
             bool displayAfterSelection, int index)
         {

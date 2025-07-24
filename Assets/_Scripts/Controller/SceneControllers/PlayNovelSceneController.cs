@@ -181,7 +181,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             AnalyticsServiceHandler.Instance().StartStopwatch();
             novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
 
-            NovelBiasManager.Instance().Clear();
             OfflineFeedbackManager.Instance().Clear();
 
             Initialize();
@@ -753,7 +752,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             SetNextEvent(novelEvent);
             string biasInformation = novelEvent.relevantBias;
             PromptManager.Instance().AddFormattedLineToPrompt("Hinweis", biasInformation);
-            NovelBiasManager.Instance().MarkBiasAsRelevant(novelEvent.relevantBias);
+            // NovelBiasManager.Instance().MarkBiasAsRelevant(novelEvent.relevantBias);
             StartCoroutine(PlayNextEvent());
         }
 

@@ -7,15 +7,17 @@ using Assets._Scripts.Novel.VisualNovelLoader;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
-using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
 
 namespace Assets._Scripts.Novel.VisualNovelFormatter
 {
-    // The NovelReader class is a MonoBehaviour that manages loading, processing, and converting visual novels from the Twee format to JSON.
+    /// <summary>
+    /// Manages the loading, processing, and conversion of visual novels from the Twee format to JSON.
+    /// Implements a singleton pattern for global access and ensures the object persists across scenes.
+    /// </summary>
     public class NovelReader : MonoBehaviour
     {
         // Constants defining the file paths
-        private const string NovelListPath = "_novels_twee/list_of_novels.txt"; // Path to file containing list of all novel directories
+        private const string NovelListPath = "_novels_twee/list_of_novels.txt"; // Path to file containing a list of all novel directories
         private const string MetaDataFileName = "visual_novel_meta_data.txt"; // File containing metadata of a novel
         private const string EventListFileName = "visual_novel_event_list.txt"; // File containing the list of events for a novel
 
@@ -23,6 +25,10 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         
         private static NovelReader _instance;
 
+        /// <summary>
+        /// Provides a singleton instance of the <see cref="NovelReader"/> class for global access.
+        /// Ensures only one instance of the class exists during the application's lifetime.
+        /// </summary>
         public static NovelReader Instance
         {
             get
@@ -38,16 +44,30 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             }
         }
 
+        /// <summary>
+        /// Initiates the import process for a visual novel using the Twee format.
+        /// The import operates asynchronously and converts the novel data into JSON format.
+        /// </summary>
         public void ImportNovel()
         {
             StartCoroutine(ImportNovelWithTweeApproach());
         }
 
+        /// <summary>
+        /// Indicates whether the import process for the visual novel has been completed.
+        /// Returns true if the process has finished, otherwise false.
+        /// </summary>
+        /// <returns>True if the import process is complete, false otherwise.</returns>
         public bool IsFinished()
         {
             return _isFinished;
         }
 
+        /// <summary>
+        /// Executes the import process for visual novels using the Twee format.
+        /// The method reads novel data, processes it asynchronously, and merges the data into JSON format.
+        /// </summary>
+        /// <returns>Coroutine indicating the progress and completion status of the import process.</returns>
         private IEnumerator ImportNovelWithTweeApproach()
         {
             string dataPath = Application.dataPath;
@@ -174,8 +194,12 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         }
 
         /// <summary>
-        /// Loads the list of visual novel paths and invokes the callback with the result.
+        /// Loads the file paths of novels from the specified path and invokes a callback with the list of novel paths.
+        /// Handles deserialization of data and manages asynchronous operations within Unity's coroutine system.
         /// </summary>
+        /// <param name="path">The path to the file that contains the list of novel paths.</param>
+        /// <param name="callback">The callback function to receive the list of novel paths as a List of strings. The callback is invoked with null if an error occurs or no paths are found.</param>
+        /// <returns>An IEnumerator to facilitate asynchronous loading of the novel paths in Unity's coroutine system.</returns>
         private IEnumerator LoadNovelPaths(string path, System.Action<List<string>> callback)
         {
             yield return StartCoroutine(LoadFileContent(path, jsonString =>
@@ -193,8 +217,13 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         }
 
         /// <summary>
-        /// Loads and deserializes a file's content into a specific type T.
+        /// Loads the content of a file at the specified path and deserializes it into an object of type T.
+        /// The deserialization process uses JSON formatting to reconstruct the object from the file data.
         /// </summary>
+        /// <param name="path">The file path from which the content will be loaded.</param>
+        /// <param name="callback">A callback that receives the deserialized object of type T. If deserialization fails, the callback receives the default value for type T.</param>
+        /// <typeparam name="T">The type of object into which the file content will be deserialized.</typeparam>
+        /// <returns>An IEnumerator used to control the asynchronous loading and deserialization process.</returns>
         private IEnumerator LoadAndDeserialize<T>(string path, System.Action<T> callback)
         {
             yield return LoadFileContent(path, jsonString =>
@@ -204,8 +233,12 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         }
 
         /// <summary>
-        /// Loads a file's content. Uses File.ReadAllText on iOS, UnityWebRequest otherwise.
+        /// Reads the content of a file from the specified path and provides it to the provided callback.
+        /// The method handles differences between platforms and loads the content accordingly.
         /// </summary>
+        /// <param name="path">The path to the file to be loaded.</param>
+        /// <param name="callback">The callback function to receive the loaded file content as a string.</param>
+        /// <returns>An IEnumerator to allow asynchronous file loading in Unity's coroutine system.</returns>
         private IEnumerator LoadFileContent(string path, System.Action<string> callback)
         {
             // May be refactored in the future, but for now, we need to ensure the file is in the correct location.
@@ -234,8 +267,12 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         }
 
         /// <summary>
-        /// Replaces all occurrences of words defined in WordPairs with replacement values.
+        /// Replaces specified words in the input string with their corresponding replacement values
+        /// as defined in the provided list of word pairs.
         /// </summary>
+        /// <param name="input">The input string in which the replacements will be performed.</param>
+        /// <param name="wordsToReplace">A list containing WordPair objects that specify the words to replace and their replacement values.</param>
+        /// <returns>The input string with the specified words replaced based on the word pairs. If no replacements are necessary, the original string is returned.</returns>
         private string ReplaceWordsInString(string input, List<WordPair> wordsToReplace)
         {
             if (wordsToReplace == null || wordsToReplace.Count == 0) return input;
@@ -253,8 +290,11 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         }
 
         /// <summary>
-        /// Converts the novel list to JSON and writes it to a file.
+        /// Converts a list of visual novels encapsulated in a NovelListWrapper object into JSON format
+        /// and saves it to a predefined location in the StreamingAssets directory.
+        /// Marks the process as finished upon successful execution.
         /// </summary>
+        /// <param name="novelListWrapper">A wrapper object containing the list of visual novels to be serialized and saved.</param>
         private void SaveToJson(NovelListWrapper novelListWrapper)
         {
             string json = JsonUtility.ToJson(novelListWrapper, true);
@@ -263,7 +303,13 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             Log($"Visual Novels have been successfully converted to JSON format and saved under the following path: {path}");
             _isFinished = true;
         }
-        
+
+        /// <summary>
+        /// Logs a message to the Unity console with the specified log type.
+        /// Allows for categorizing logs into different levels such as Warning or Error.
+        /// </summary>
+        /// <param name="message">The message to log in the console.</param>
+        /// <param name="type">The type of the log message, defaulting to Log. Possible values include Log, Warning, and Error.</param>
         private void Log(string message, LogType type = LogType.Log)
         {
             switch (type)

@@ -7,6 +7,10 @@ using UnityEngine.Networking;
 
 namespace Assets._Scripts.Managers
 {
+    /// <summary>
+    /// Manages the process of building and handling dialog prompts for a visual novel.
+    /// This class is implemented as a singleton to ensure a single instance throughout the application.
+    /// </summary>
     public class PromptManager
     {
         private static PromptManager _instance;
@@ -16,12 +20,23 @@ namespace Assets._Scripts.Managers
         private readonly string _promptPath;
         private readonly string _knowledgeBasePath;
 
+        /// <summary>
+        /// Provides functionality to manage prompts and dialogs for a visual novel.
+        /// Handles creation, formatting, storage, and retrieval of prompt and dialog text.
+        /// Implements a singleton pattern to maintain a single instance across the application.
+        /// </summary>
         private PromptManager()
         {
             _promptPath = Path.Combine(Application.streamingAssetsPath, "Prompt.txt");
             _knowledgeBasePath = Path.Combine(Application.streamingAssetsPath, "KnowledgeBase.txt");
         }
 
+        /// <summary>
+        /// Provides access to the single instance of the PromptManager class.
+        /// Ensures that only one instance of PromptManager exists throughout the application's lifecycle,
+        /// adhering to the singleton design pattern.
+        /// </summary>
+        /// <returns>The single instance of the PromptManager.</returns>
         public static PromptManager Instance()
         {
             if (_instance == null)
@@ -32,6 +47,12 @@ namespace Assets._Scripts.Managers
             return _instance;
         }
 
+        /// <summary>
+        /// Retrieves the current prompt with the context replaced in the template if available.
+        /// Returns an empty string if the prompt has not been initialized.
+        /// </summary>
+        /// <param name="context">The context string to replace within the prompt template.</param>
+        /// <returns>A string representing the prompt with the context replaced, or an empty string if no prompt is defined.</returns>
         public string GetPrompt(string context)
         {
             if (_prompt == null)
@@ -44,11 +65,22 @@ namespace Assets._Scripts.Managers
             return promptString.Replace("{{Context}}", context);
         }
 
+        /// <summary>
+        /// Retrieves the currently stored dialog as a string.
+        /// Returns an empty string if there is no dialog stored.
+        /// </summary>
+        /// <returns>The dialog content as a string.</returns>
         public string GetDialog()
         {
             return _dialog == null ? "" : _dialog.ToString();
         }
 
+        /// <summary>
+        /// Initializes the prompt and dialog text for a given visual novel.
+        /// Depending on the novel's ID, it configures the prompt with predefined text
+        /// or loads the prompt and knowledge base from external files.
+        /// </summary>
+        /// <param name="novel">The visual novel object to use for initializing the prompt.</param>
         public void InitializePrompt(VisualNovel novel)
         {
             _prompt = new StringBuilder();
@@ -75,29 +107,40 @@ namespace Assets._Scripts.Managers
             _prompt.Append("Hier ist der Dialog:");
         }
 
+        /// <summary>
+        /// Reads the content of a prompt file from the predefined path and appends it
+        /// to the current prompt using a specified callback for handling file content.
+        /// This method ensures the proper integration of external prompt data into the existing system.
+        /// </summary>
         private void LoadPromptFromFile()
         {
-            LoadTextFile(_promptPath, 
-                content =>
-                {
-                    _prompt.Append(content).AppendLine();
-                }, 
+            LoadTextFile(_promptPath,
+                content => { _prompt.Append(content).AppendLine(); },
                 "Prompt");
         }
 
+        /// <summary>
+        /// Loads the knowledge base from a predefined file path and appends its content to the current prompt.
+        /// Uses a callback function to process the file's content on successful load.
+        /// Acts as part of the initialization process to enrich the dialog prompt with additional data.
+        /// </summary>
         private void LoadKnowledgeBaseFromFile()
         {
-            LoadTextFile(_knowledgeBasePath, 
-                content =>
-                {
-                    _prompt.Append(content).AppendLine();
-                },
+            LoadTextFile(_knowledgeBasePath,
+                content => { _prompt.Append(content).AppendLine(); },
                 "Knowledge base");
         }
-        
+
+        /// <summary>
+        /// Loads a text file from the specified path, processes its content, and triggers a callback function upon success.
+        /// Provides error handling for different platforms and logs warnings when the file is not found.
+        /// </summary>
+        /// <param name="path">The file path to the text file to be loaded.</param>
+        /// <param name="onSuccess">The action to perform with the file's content once successfully loaded.</param>
+        /// <param name="fileLabel">A label used for logging purposes to identify the type of file being loaded.</param>
         private void LoadTextFile(string path, Action<string> onSuccess, string fileLabel)
         {
-#if UNITY_WEBGL
+        #if UNITY_WEBGL
             UnityWebRequest request = UnityWebRequest.Get(path);
             request.SendWebRequest().completed += (op) =>
             {
@@ -110,20 +153,24 @@ namespace Assets._Scripts.Managers
                     Application.ExternalCall("logMessage", $"Error loading {fileLabel}: {request.error}");
                 }
             };
-#else
-    if (File.Exists(path))
-    {
-        string text = File.ReadAllText(path);
-        onSuccess(text);
-    }
-    else
-    {
-        Debug.LogWarning($"{fileLabel} file not found at: {path}");
-    }
-#endif
+        #else
+            if (File.Exists(path))
+            {
+                string text = File.ReadAllText(path);
+                onSuccess(text);
+            }
+            else
+            {
+                Debug.LogWarning($"{fileLabel} file not found at: {path}");
+            }
+        #endif
         }
 
-
+        /// <summary>
+        /// Appends a new line of text to the current prompt and dialog builders.
+        /// If the prompt or dialog builders are uninitialized, they are created before appending the line.
+        /// </summary>
+        /// <param name="line">The line of text to add to the prompt and dialog.</param>
         public void AddLineToPrompt(string line)
         {
             if (_prompt == null)
@@ -140,6 +187,12 @@ namespace Assets._Scripts.Managers
             _dialog.AppendLine(line);
         }
 
+        /// <summary>
+        /// Adds a formatted line to the current prompt, including the character's name and their dialogue text.
+        /// The formatting distinguishes between regular character dialogue and hint messages by applying different styles.
+        /// </summary>
+        /// <param name="characterName">The name of the character or source of the dialogue. If it contains "Hinweis", a hint style is applied.</param>
+        /// <param name="text">The dialogue or hint text to be added to the prompt.</param>
         public void AddFormattedLineToPrompt(string characterName, string text)
         {
             string formattedLine = characterName.Contains("Hinweis")

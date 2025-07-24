@@ -6231,9 +6231,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Mit diesem Regler kannst du die Schriftgr\xF6\xDFe f\xFCr die meisten
-    Texte der App anpassen. An dem Beispieltext kannst du sehen, wie gro\xDF die
-    Texte angezeigt werden, sobal du best\xE4tigst."
+  m_text: "Mit dem Regler kannst du die Schriftgr\xF6\xDFe f\xFCr die meisten Texte
+    in der App anpassen. An dem Beispieltext kannst du sehen, wie gro\xDF die Texte
+    angezeigt werden, sobald du best\xE4tigst."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
@@ -6822,7 +6822,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.00013704093}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2111190599

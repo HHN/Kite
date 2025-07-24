@@ -172,15 +172,15 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             UpdateAcceptance(termsOfUseToggle.IsClicked(),
                 privacyManager.AcceptConditionsOfUsage,
-                privacyManager.UnaccepedConditionsOfUsage);
+                privacyManager.UnacceptedConditionsOfUsage);
 
             UpdateAcceptance(dataPrivacyToggle.IsClicked(),
                 privacyManager.AcceptTermsOfPrivacy,
-                privacyManager.UnaccepedTermsOfPrivacy);
+                privacyManager.UnacceptedTermsOfPrivacy);
 
             UpdateAcceptance(collectDataToggle.IsClicked(),
                 privacyManager.AcceptDataCollection,
-                privacyManager.UnaccepedDataCollection);
+                privacyManager.UnacceptedDataCollection);
         }
 
         /// <summary>

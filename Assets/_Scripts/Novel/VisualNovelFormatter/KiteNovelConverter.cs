@@ -9,7 +9,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
     /// Converter class that creates VisualNovel objects from processed novel folders
     /// and converts the Twee text document into a structured event list.
     /// Instead of a huge switch-case, it now uses the NovelKeywordParser to generate a NovelKeywordModel from the passage text.
-    /// All values (role, expression etc.) are handled as strings.
+    /// All values (role, expression, etc.) are handled as strings.
     /// </summary>
     public abstract class KiteNovelConverter
     {
@@ -24,13 +24,11 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
             foreach (KiteNovelFolder folder in folders)
             {
-                // Verwende eine temporäre Liste für die Charaktere und füge sie bedingt hinzu.
                 List<string> characters = new List<string>();
                 AddCharacterIfNotNullOrWhitespace(characters, folder.NovelMetaData.TalkingPartner01);
                 AddCharacterIfNotNullOrWhitespace(characters, folder.NovelMetaData.TalkingPartner02);
                 AddCharacterIfNotNullOrWhitespace(characters, folder.NovelMetaData.TalkingPartner03);
 
-                // Prüfe, ob die HTML-Farbe geparst werden kann, sonst Standardwert.
                 Color novelColor = Color.black; // Standardwert
                 if (!string.IsNullOrEmpty(folder.NovelMetaData.NovelColor))
                 {
@@ -56,7 +54,11 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             return novels;
         }
 
-        // Hilfsmethode, um Redundanz zu vermeiden
+        /// <summary>
+        /// Adds a character name to the provided list if the character name is not null, empty, or composed only of whitespace.
+        /// </summary>
+        /// <param name="list">The list to which the character name will be added.</param>
+        /// <param name="characterName">The name of the character to be added.</param>
         private static void AddCharacterIfNotNullOrWhitespace(List<string> list, string characterName)
         {
             if (!string.IsNullOrWhiteSpace(characterName))
@@ -123,16 +125,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                                 "" when !passage.Links.Any() => passage.Label + "newTarget", // If it's the last event (no next event after this)
                                 _ => targetString
                             };
-
-                            // // First event in list
-                            // if (i == 0)
-                            // {
-                            //     nextId = id + i;
-                            //     createdEvent.id = id;
-                            //     createdEvent.nextId = nextId;
-                            //     id = createdEvent.nextId;
-                            //
-                            // }
+                            
                             // Not the last element
                              if (i != keywordModels.Count - 1)
                             {
@@ -204,14 +197,12 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             }
 
             // If a bias is defined.
-
             if (!string.IsNullOrEmpty(model.Bias))
             {
                 return HandleBiasEvent(passage, model.Bias, eventList);
             }
 
             // If a sound is defined.
-
             if (!string.IsNullOrEmpty(model.Sound))
             {
                 return HandlePlaySoundEvent(passage, model.Sound, eventList);
@@ -270,6 +261,16 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
         #region Specific Event Handlers
 
+        /// <summary>
+        /// Creates a VisualNovelEvent representing a character talking action
+        /// and adds it to the provided list of events.
+        /// </summary>
+        /// <param name="passage">The TweePassage containing metadata such as the event ID and links to the next event.</param>
+        /// <param name="character">The integer identifier of the character involved in the talking action.</param>
+        /// <param name="dialogMessage">The dialog text associated with the character's talking action.</param>
+        /// <param name="expression">The integer identifier for the character's facial expression during the event.</param>
+        /// <param name="list">The list to which the created VisualNovelEvent will be added.</param>
+        /// <returns>A VisualNovelEvent object representing the character's action.</returns>
         private static VisualNovelEvent HandleCharacterTalksEvent(TweePassage passage, int character, string dialogMessage, int expression, List<VisualNovelEvent> list)
         {
             string id = passage?.Label;
@@ -280,6 +281,13 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             return novelEvent;
         }
 
+        /// <summary>
+        /// Handles the creation of a bias-related VisualNovelEvent from a given TweePassage, bias string, and list of events.
+        /// </summary>
+        /// <param name="passage">The TweePassage containing the label and any associated links.</param>
+        /// <param name="bias">The bias string relevant to the event being created.</param>
+        /// <param name="list">The list to which the created VisualNovelEvent will be added.</param>
+        /// <returns>The created VisualNovelEvent associated with the given bias.</returns>
         private static VisualNovelEvent HandleBiasEvent(TweePassage passage, string bias, List<VisualNovelEvent> list)
         {
             string id = passage?.Label;
@@ -293,6 +301,13 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             return novelEvent;
         }
 
+        /// <summary>
+        /// Handles the creation of specific end-of-novel events, including playing a sound,
+        /// making characters exit, and marking the end of the novel.
+        /// Adds the generated events to the provided list of VisualNovelEvent objects.
+        /// </summary>
+        /// <param name="label">The unique identifier used for labeling the events.</param>
+        /// <param name="list">The list of VisualNovelEvent objects to which the generated events will be added.</param>
         private static void HandleEndNovelEvent(string label, List<VisualNovelEvent> list)
         {
             string label01 = label + "RandomString0012003";
@@ -309,6 +324,13 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             list.Add(endEvent);
         }
 
+        /// <summary>
+        /// Handles dialogue options within a passage and creates appropriate VisualNovelEvent(s)
+        /// for adding and displaying choices.
+        /// </summary>
+        /// <param name="passage">The TweePassage object containing dialogue options.</param>
+        /// <param name="list">The list of VisualNovelEvent objects where the generated events will be added.</param>
+        /// <param name="lastEvent">The last VisualNovelEvent in the sequence to link dialogue options to.</param>
         private static void HandleDialogueOptionEvent(TweePassage passage, List<VisualNovelEvent> list, VisualNovelEvent lastEvent)
         {
             if (passage == null || passage.Links == null || passage.Links.Count <= 1)
@@ -344,6 +366,13 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             list.Add(showChoicesEvent);
         }
 
+        /// <summary>
+        /// Handles the creation of a play sound event from the given passage, sound, and event list.
+        /// </summary>
+        /// <param name="passage">The TweePassage containing the relevant label and links for the event.</param>
+        /// <param name="sound">The sound file or identifier to be associated with the event.</param>
+        /// <param name="list">The list of VisualNovelEvent objects to which the new event will be added.</param>
+        /// <returns>The created VisualNovelEvent representing the play sound action.</returns>
         private static VisualNovelEvent HandlePlaySoundEvent(TweePassage passage, string sound, List<VisualNovelEvent> list)
         {
             string id = passage?.Label;

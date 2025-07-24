@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
-using Assets._Scripts.Player.KiteNovels.VisualNovelFormatter;
 using UnityEngine;
 
 namespace Assets._Scripts.Novel.VisualNovelFormatter
@@ -60,7 +58,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
             // Get the label of the starting passage from the Twee file (from the StoryData block).
             string startLabel = GetStartLabelFromTweeFile(tweeSource);
-            // If the starting label is not found in the dictionary, simply return the collected passages.
+            // If the starting label is not found in the dictionary, return the collected passages.
             if (!dictionaryOfPassages.ContainsKey(startLabel))
             {
                 return listOfPassages;
@@ -87,7 +85,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// <returns>A list of passage strings.</returns>
         private static List<string> SplitTweeIntoPassages(string tweeText)
         {
-            // Split the text at "\n::". We use None for StringSplitOptions to keep empty entries if any.
+            // Split the text at "\n::". We use None for StringSplitOptions to keep empty entries, if any.
             List<string> passages = new List<string>(tweeText.Split(new[] { "\n::" }, StringSplitOptions.None));
 
             // For all passages starting from index 1, prepend "::" because the split removed it.
@@ -155,6 +153,8 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// <summary>
         /// Removes any text enclosed in square brackets (e.g. "[...]" ) from the input and trims the result.
         /// </summary>
+        /// <param name="input">The input text to process</param>
+        /// <returns>The processed string with bracketed text removed and trimmed</returns>
         private static string RemoveBracketedTextAndTrim(string input)
         {
             // Use a regex to remove any substring within square brackets.
@@ -166,6 +166,8 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// <summary>
         /// Removes a leading "\ " (backslash followed by a space) from the input string.
         /// </summary>
+        /// <param name="input">The input string to process</param>
+        /// <returns>The string with leading backslash-space removed if present, otherwise the original string</returns>
         private static string RemoveLeadingBackslashSpace(string input)
         {
             if (input.StartsWith("\\ "))
@@ -178,7 +180,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
         /// <summary>
         /// Extracts all links from a passage.
-        /// Links are text enclosed in double square brackets, and may contain additional formatting (e.g. "text->target").
+        /// Links are text enclosed in double square brackets and may contain additional formatting (e.g. "text->target").
         /// </summary>
         /// <param name="passage">The passage text.</param>
         /// <returns>A list of TweeLink objects extracted from the passage.</returns>
@@ -306,6 +308,8 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// from the input string. This replaces the previous approach that used
         /// NovelKeyWordValue.ALL_KEY_WORDS.
         /// </summary>
+        /// <param name="input">The input string to process</param>
+        /// <returns>The string with keywords removed</returns>
         private static string RemoveKeyWords(string input)
         {
             if (string.IsNullOrEmpty(input))
@@ -324,10 +328,11 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             return result;
         }
 
-
         /// <summary>
         /// Removes the title line (starting with ":: ") from the passage.
         /// </summary>
+        /// <param name="input">The passage text to process</param>
+        /// <returns>The passage text with title removed</returns>
         private static string RemoveTitleFromPassage(string input)
         {
             if (string.IsNullOrEmpty(input))
@@ -345,6 +350,8 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// <summary>
         /// Removes text within double square brackets (e.g., [[...]]), which are used for links.
         /// </summary>
+        /// <param name="input">The input text to process.</param>
+        /// <returns>The text with double square brackets removed.</returns>
         private static string RemoveTextInDoubleBrackets(string input)
         {
             if (string.IsNullOrEmpty(input))
@@ -360,6 +367,8 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// <summary>
         /// Removes text within curly braces (e.g., {...}).
         /// </summary>
+        /// <param name="input">The input string to process</param>
+        /// <returns>The string with curly braces content removed</returns>
         private static string RemoveTextInCurlyBraces(string input)
         {
             if (string.IsNullOrEmpty(input))
@@ -373,24 +382,10 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         }
 
         /// <summary>
-        /// Removes text within parentheses (e.g., (�)).
-        /// Currently not used because text in parentheses might be needed.
-        /// </summary>
-        private static string RemoveTextInParentheses(string input)
-        {
-            if (string.IsNullOrEmpty(input))
-            {
-                return "";
-            }
-
-            var pattern = @"\([^\)]*\)";
-            var result = Regex.Replace(input, pattern, "");
-            return result;
-        }
-
-        /// <summary>
         /// Removes text within double angle brackets (e.g., <<...>>).
         /// </summary>
+        /// <param name="input">The input text to process</param>
+        /// <returns>The text with double angle brackets content removed</returns>
         private static string RemoveTextInDoubleAngleBrackets(string input)
         {
             if (string.IsNullOrEmpty(input))
@@ -406,6 +401,8 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// <summary>
         /// Removes text in the reverse double angle bracket order (>>...<<).
         /// </summary>
+        /// <param name="input">The input text to process</param>
+        /// <returns>The text with double angle brackets content removed</returns>
         private static string RemoveTextInDoubleAngleBracketsOtherDirection(string input)
         {
             if (string.IsNullOrEmpty(input))
@@ -421,6 +418,8 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// <summary>
         /// Removes all square brackets from the input.
         /// </summary>
+        /// <param name="input">The input string to process</param> 
+        /// <returns>The string with square brackets removed</returns>
         private static string RemoveSquareBrackets(string input)
         {
             if (string.IsNullOrEmpty(input))
@@ -435,16 +434,18 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// <summary>
         /// Normalizes whitespace by replacing multiple spaces with a single space.
         /// </summary>
+        /// <param name="input">The input string to normalize</param>
+        /// <returns>The normalized string</returns>
         private static string NormalizeSpaces(string input)
         {
             if (string.IsNullOrEmpty(input))
                 return string.Empty;
 
-            // 1) Alle Arten von Zeilenumbrüchen (CRLF, CR, LF) auf '\n' vereinheitlichen
-            //    und anschließend jede Folge von einem oder mehreren umzubrechen auf genau einen '\n' reduzieren.
+            // 1) Unify all types of line breaks (CRLF, CR, LF) to '\n'
+            //    and reduce any sequence of one or more line breaks to exactly one '\n'
             string collapsedLines = Regex.Replace(input, @"(\r\n|\r|\n)+", "\n");
 
-            // 2) Jede Folge von Leerzeichen oder Tabs auf genau ein einzelnes Leerzeichen reduzieren.
+            // 2) Reduce any sequence of spaces or tabs to exactly one single space
             string collapsedSpaces = Regex.Replace(collapsedLines, @"[ \t]+", " ");
 
             return collapsedSpaces;
