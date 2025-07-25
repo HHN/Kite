@@ -8,13 +8,17 @@ using UnityEngine.UI;
 
 namespace Assets._Scripts.Novel
 {
+    /// <summary>
+    /// Represents a description textbox for a visual novel, providing functionalities
+    /// to display and manage visual novel details including text, color, and bookmark status.
+    /// </summary>
     public class NovelDescriptionTextbox : MonoBehaviour
     {
         private const string BookmarkedText = "GEMERKT";
         private const string UnbookmarkedText = "MERKEN";
 
-        [Header("UI Elemente")] [SerializeField]
-        private Image image;
+        [Header("UI Elements")] 
+        [SerializeField] private Image image;
 
         [SerializeField] private GameObject smallHead;
         [SerializeField] private TextMeshProUGUI text;
@@ -27,14 +31,17 @@ namespace Assets._Scripts.Novel
         [SerializeField] private Sprite unBookmarkSprite;
         [SerializeField] private GameObject selectNovelSoundPrefab;
 
-        [Header("Visual Novel Daten")] [SerializeField]
+        [Header("Visual Novel Data")] [SerializeField]
         private VisualNovel visualNovelToDisplay;
 
         [SerializeField] private VisualNovelNames visualNovelName;
 
-        [Header("Erscheinungsbild")] [SerializeField]
+        [Header("Appearance")] [SerializeField]
         private Color colorOfText;
 
+        /// <summary>
+        /// Initializes the NovelDescriptionTextbox by setting up button click listeners.
+        /// </summary>
         private void Start()
         {
             playButton.onClick.AddListener(OnPlayButton);
@@ -42,9 +49,9 @@ namespace Assets._Scripts.Novel
         }
 
         /// <summary>
-        /// Initialisiert den Lesezeichen-Button basierend darauf, ob die Visual Novel favorisiert ist.
+        /// Initializes the bookmark button based on whether the Visual Novel is marked as favorite.
         /// </summary>
-        /// <param name="isFavorite">Gibt an, ob die Visual Novel favorisiert ist.</param>
+        /// <param name="isFavorite">Indicates whether the Visual Novel is marked as favorite.</param>
         public void InitializeBookMarkButton(bool isFavorite)
         {
             playText.color = colorOfText;
@@ -64,9 +71,9 @@ namespace Assets._Scripts.Novel
         }
 
         /// <summary>
-        /// Setzt die Farbe des Bildes und der Kopf-Icons.
+        /// Sets the color of the image and head icons.
         /// </summary>
-        /// <param name="color">Die zu setzende Farbe.</param>
+        /// <param name="color">The color to set.</param>
         public void SetColorOfImage(Color color)
         {
             colorOfText = color;
@@ -75,27 +82,27 @@ namespace Assets._Scripts.Novel
         }
 
         /// <summary>
-        /// Setzt den angezeigten Text.
+        /// Sets the displayed text.
         /// </summary>
-        /// <param name="novelDescription">Der anzuzeigende Text.</param>
+        /// <param name="novelDescription">The text to display.</param>
         public void SetText(string novelDescription)
         {
             text.text = novelDescription;
         }
 
         /// <summary>
-        /// Setzt den Namen der Visual Novel.
+        /// Sets the name of the Visual Novel.
         /// </summary>
-        /// <param name="novelName">Der Name der Visual Novel.</param>
+        /// <param name="novelName">The name of the Visual Novel.</param>
         public void SetVisualNovelName(VisualNovelNames novelName)
         {
             visualNovelName = novelName;
         }
 
         /// <summary>
-        /// Legt die anzuzeigende Visual Novel fest.
+        /// Sets the Visual Novel to display.
         /// </summary>
-        /// <param name="visualNovel">Die Visual Novel.</param>
+        /// <param name="visualNovel">The Visual Novel.</param>
         public void SetVisualNovel(VisualNovel visualNovel)
         {
             visualNovelToDisplay = visualNovel;
@@ -104,7 +111,7 @@ namespace Assets._Scripts.Novel
         }
 
         /// <summary>
-        /// Wird aufgerufen, wenn der Play-Button gedrückt wird.
+        /// Called when the Play button is pressed.
         /// </summary>
         private void OnPlayButton()
         {
@@ -120,8 +127,7 @@ namespace Assets._Scripts.Novel
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
 
-            if (ShowPlayInstructionManager.Instance().ShowInstruction() &&
-                visualNovelToDisplay.title != "EinstiegsNovel")
+            if (ShowPlayInstructionManager.Instance().ShowInstruction() && visualNovelToDisplay.title != "EinstiegsNovel")
             {
                 SceneLoader.LoadPlayInstructionScene();
             }
@@ -132,7 +138,7 @@ namespace Assets._Scripts.Novel
         }
 
         /// <summary>
-        /// Wird aufgerufen, wenn der Lesezeichen-Button gedrückt wird.
+        /// Called when the Bookmark button is pressed.
         /// </summary>
         private void OnBookmarkButton()
         {
@@ -140,9 +146,9 @@ namespace Assets._Scripts.Novel
         }
 
         /// <summary>
-        /// Toggled die Markierung der Visual Novel als Favorit.
+        /// Toggles marking the Visual Novel as favorite.
         /// </summary>
-        /// <param name="visualNovel">Die Visual Novel.</param>
+        /// <param name="visualNovel">The Visual Novel.</param>
         private IEnumerator MarkAsFavorite(VisualNovel visualNovel)
         {
             if (FavoritesManager.Instance().IsFavorite(visualNovel))
@@ -158,9 +164,9 @@ namespace Assets._Scripts.Novel
         }
 
         /// <summary>
-        /// Setzt die Aktivität der Buttons.
+        /// Sets the activity state of the buttons.
         /// </summary>
-        /// <param name="active">Aktiviert oder deaktiviert die Buttons.</param>
+        /// <param name="active">Enables or disables the buttons.</param>
         public void SetButtonsActive(bool active)
         {
             playButton.gameObject.SetActive(active);
@@ -173,16 +179,15 @@ namespace Assets._Scripts.Novel
         }
 
         /// <summary>
-        /// Setzt den angezeigten Kopf basierend auf der H�he.
+        /// Sets the displayed head.
         /// </summary>
-        /// <param name="isHigh">True f�r gro�en Kopf, False f�r kleinen Kopf.</param>
         public void SetHead()
         {
             smallHead.SetActive(true);
         }
 
         /// <summary>
-        /// Aktualisiert die Gr��e des Layouts.
+        /// Updates the layout size.
         /// </summary>
         public void UpdateSize()
         {

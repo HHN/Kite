@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 4524035883740533591}
   - component: {fileID: 6155688656520349526}
   - component: {fileID: 4253796331781111194}
-  - component: {fileID: 2571110113651146512}
   m_Layer: 5
   m_Name: CharacterPrefabVermieter
   m_TagString: Untagged
@@ -100,15 +99,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: df333ac9d5c83b444bf27c2070c934e8, type: 3}
   - {fileID: 21300000, guid: b2e298bcabca56342b5b9cf26725d87f, type: 3}
   glassesSprites: []
-  handSprites:
-    handColorA:
-    - {fileID: 21300000, guid: 832d29c386a1b96469a1a0264fcd1564, type: 3}
-    handColorB:
-    - {fileID: 21300000, guid: 2a9a64d351cb2124dbe270cdbc66aa5e, type: 3}
-    handColorC:
-    - {fileID: 21300000, guid: c1d28d87bace8674fa733d1f6fd8a8e0, type: 3}
-    handColorD:
-    - {fileID: 21300000, guid: 68ec5ec9b9fa17241ad9052df5ca1408, type: 3}
   clothesSprites:
   - {fileID: 21300000, guid: 84e9d4e4cce4c9a45b6e143c19ad6282, type: 3}
   - {fileID: 21300000, guid: ed8513c7c8e7a9b4b9ce2c5c3e55a684, type: 3}
@@ -203,25 +193,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2571110113651146512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465545687914413273}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4b3a6f50fd020e469689c7cce8d5109, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultMaterial: {fileID: 0}
-  brightnessMaterial: {fileID: 2100000, guid: 08ff6e5fe6883ce48b8dae7920229ecc, type: 2}
-  blurMaterial: {fileID: 0}
-  characterImageFace: {fileID: 8722988004786373907}
-  characterImageHair: {fileID: 6434204589533422953}
-  characterImageCloths: {fileID: 6289610850099512998}
-  characterImageSkin: {fileID: 4503084980460225573}
 --- !u!1 &2333349259560305507
 GameObject:
   m_ObjectHideFlags: 0

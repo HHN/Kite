@@ -3,8 +3,19 @@ using UnityEngine;
 
 namespace Assets._Scripts.Player
 {
+    /// <summary>
+    /// Provides utility methods for retrieving meta-information related to visual novels,
+    /// primarily for displaying user-friendly names based on internal enum values.
+    /// </summary>
     public class FoundersBubbleMetaInformation : MonoBehaviour
     {
+        /// <summary>
+        /// Retrieves the display name (a user-friendly string) for a given visual novel enum.
+        /// This method maps <see cref="VisualNovelNames"/> enum values to their corresponding
+        /// German string representations.
+        /// </summary>
+        /// <param name="value">The <see cref="VisualNovelNames"/> enum value for which to get the display name.</param>
+        /// <returns>The string displaying the name of the novel, or an empty string if the value is not mapped.</returns>
         internal static string GetDisplayNameOfNovelToPlay(VisualNovelNames value)
         {
             return value switch
@@ -18,24 +29,7 @@ namespace Assets._Scripts.Player
                 VisualNovelNames.HonorarNovel => "Honorar",
                 VisualNovelNames.EinstiegsNovel => "Einstieg",
                 VisualNovelNames.VertriebNovel => "Vertrieb",
-                _ => ""
-            };
-        }
-
-        internal static int GetIndexOfNovel(VisualNovelNames value)
-        {
-            return value switch
-            {
-                VisualNovelNames.ElternNovel => 2,
-                VisualNovelNames.HonorarNovel => 3,
-                VisualNovelNames.InvestorNovel => 4,
-                VisualNovelNames.BankKreditNovel => 5,
-                VisualNovelNames.NotariatNovel => 6,
-                VisualNovelNames.PresseNovel => 7,
-                VisualNovelNames.VermieterNovel => 8,
-                VisualNovelNames.EinstiegsNovel => 9,
-                VisualNovelNames.VertriebNovel => 10,
-                _ => -1
+                _ => "" // Default case for unmapped values.
             };
         }
     }

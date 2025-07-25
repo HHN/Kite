@@ -346,6 +346,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 return;
             }
 
+            // ToDo: Hier werden die deutschen Expressions verwendet
             if (CharacterExpressionHelper.ValueOf(novelEvent.expressionType) == CharacterExpression.None)
             {
                 OnTestFailed("Show message event without character expression!", _objectUnderTest.title, novelEvent.id);

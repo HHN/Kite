@@ -1,5 +1,9 @@
 namespace Assets._Scripts.Novel
 {
+    /// <summary>
+    /// Defines a list of specific visual novel names.
+    /// This enum provides a strongly-typed way to refer to different novel scenarios.
+    /// </summary>
     public enum VisualNovelNames
     {
         None,
@@ -14,8 +18,18 @@ namespace Assets._Scripts.Novel
         VertriebNovel,
     }
 
+    /// <summary>
+    /// Provides helper methods for converting between <see cref="VisualNovelNames"/> enum values,
+    /// their corresponding integer IDs, and their string names.
+    /// Useful for mapping novel types for storage, display, or logical flow.
+    /// </summary>
     public class VisualNovelNamesHelper
     {
+        /// <summary>
+        /// Converts an integer value to its corresponding <see cref="VisualNovelNames"/> enum member.
+        /// </summary>
+        /// <param name="value">The integer ID of the visual novel.</param>
+        /// <returns>The <see cref="VisualNovelNames"/> enum member that matches the integer ID, or <see cref="VisualNovelNames.None"/> if no match is found.</returns>
         public static VisualNovelNames ValueOf(int value)
         {
             return value switch
@@ -33,6 +47,11 @@ namespace Assets._Scripts.Novel
             };
         }
 
+        /// <summary>
+        /// Retrieves the localized string name for a given visual novel ID.
+        /// </summary>
+        /// <param name="value">The integer ID of the visual novel.</param>
+        /// <returns>The string representation of the novel's name, or an empty string if the ID is not mapped.</returns>
         public static string GetName(long value)
         {
             return value switch
@@ -50,6 +69,11 @@ namespace Assets._Scripts.Novel
             };
         }
         
+        /// <summary>
+        /// Converts a string name to its corresponding <see cref="VisualNovelNames"/> enum member.
+        /// </summary>
+        /// <param name="name">The string name of the visual novel (e.g., "Eltern", "Presse").</param>
+        /// <returns>The <see cref="VisualNovelNames"/> enum member that matches the string name, or <see cref="VisualNovelNames.None"/> if no match is found.</returns>
         public static VisualNovelNames ValueByString(string name)
         {
             switch (name)
@@ -73,10 +97,15 @@ namespace Assets._Scripts.Novel
                 case "Vertrieb":
                     return VisualNovelNames.VertriebNovel;
                 default:
-                    return VisualNovelNames.None; // Rückgabewert im Falle eines nicht gefundenen Werts
+                    return VisualNovelNames.None;
             }
         }
 
+        /// <summary>
+        /// Converts a <see cref="VisualNovelNames"/> enum member to its corresponding integer ID.
+        /// </summary>
+        /// <param name="value">The <see cref="VisualNovelNames"/> enum member to convert.</param>
+        /// <returns>The integer ID associated with the novel name, or 0 if the enum member is not explicitly mapped (e.g., <see cref="VisualNovelNames.None"/>).</returns>
         public static int ToInt(VisualNovelNames value)
         {
             return value switch

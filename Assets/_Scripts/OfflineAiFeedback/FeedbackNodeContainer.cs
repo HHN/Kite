@@ -3,6 +3,10 @@ using UnityEngine;
 
 namespace Assets._Scripts.OfflineAiFeedback
 {
+    /// <summary>
+    /// Represents a data container for storing offline AI feedback related to a specific novel and player path.
+    /// This class is designed to be serializable, allowing its instances to be saved and loaded.
+    /// </summary>
     [Serializable]
     public class FeedbackNodeContainer
     {

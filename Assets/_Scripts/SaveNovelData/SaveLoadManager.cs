@@ -10,9 +10,13 @@ using Assets._Scripts.Player;
 using Newtonsoft.Json;
 using UnityEngine;
 
-// Manages saving and loading game data for a visual novel-style game
 namespace Assets._Scripts.SaveNovelData
 {
+    /// <summary>
+    /// Manages the saving and loading of visual novel game progress to and from persistent storage.
+    /// This static class handles serialization and deserialization of <see cref="NovelSaveData"/>
+    /// objects, allowing players to resume their progress.
+    /// </summary>
     public class SaveLoadManager : MonoBehaviour
     {
         private static readonly string SaveFilePath = Application.persistentDataPath + "/novelSaveData.json";
@@ -24,32 +28,32 @@ namespace Assets._Scripts.SaveNovelData
         /// </summary>
         /// <param name="playNovelSceneController">The controller for the current play scene.</param>
         /// <param name="conversationContentGuiController">The controller for the conversation content.</param>
-        public static void SaveNovelData(PlayNovelSceneController playNovelSceneController,
+         public static void SaveNovelData(PlayNovelSceneController playNovelSceneController,
             ConversationContentGuiController conversationContentGuiController)
         {
-            // Load all saved data as a dictionary
+            // Load all existing saved data as a dictionary to ensure we don't overwrite other novel saves.
             Dictionary<string, NovelSaveData> allSaveData = LoadAllSaveData();
 
-            // Current novel data
+            // Get the unique ID of the novel currently being played.
             string currentNovelId = playNovelSceneController.NovelToPlay.id.ToString();
 
-            // Speichern an der Stelle von OnChoice
-            // Alles danach verwerfen, sodass man wieder beim Auswahlverfahren beginnt
+            // The goal is to save at the point of a choice, discarding subsequent events.
             VisualNovelEvent currentEvent = playNovelSceneController.GetCurrentEvent();
 
-            // Define a new event ID format
+            // Define a new event ID format, initially using the current event's ID.
             string formattedId = currentEvent.id;
+            bool noMatch = false; // Flag to indicate if no "OptionsLabel" match was found initially.
 
-            // Use Regex to extract "OptionsLabel" followed by numbers
+            // Use Regex to find "OptionsLabel" followed by numbers.
+            // This suggests saving typically occurs right after a choice event ID.
             Match match = Regex.Match(currentEvent.id, @"^OptionsLabel(\d+)");
-            bool noMatch = false;
 
-            // Falls ein passendes Muster gefunden wurde, formatierte ID setzen
+            // If a matching pattern is found in the current event's ID, set the formatted ID.
             if (match.Success)
             {
                 formattedId = "OptionsLabel" + match.Groups[1].Value;
             }
-            else if (!match.Success) // Falls kein Treffer durchlaufe die Liste rückwärts
+            else // If no direct match in the current event, search backwards in the content history.
             {
                 for (int i = conversationContentGuiController.Content.Count - 1; i >= 0; i--)
                 {
@@ -57,136 +61,128 @@ namespace Assets._Scripts.SaveNovelData
                     if (match.Success)
                     {
                         formattedId = "OptionsLabel" + match.Groups[1].Value;
-                        noMatch = true;
-                        break;
+                        noMatch = true; // Indicate that a match was found by searching backwards.
+                        break; // Found the last options label, exit loop.
                     }
                 }
             }
 
-            // List<string> messageBoxesNames = new List<string>();
-            // foreach (var messageBox in conversationContentGuiController.GuiContent)
-            // {
-            //     if (!messageBox.name.Contains("OptionsToChooseFrom(Clone)"))
-            //     {
-            //         if (messageBox.name.Contains("Blue Message Prefab With Trigger(Clone)"))
-            //         {
-            //             _count++;
-            //         }
-            //
-            //         messageBoxesNames.Add(messageBox.name);
-            //     }
-            // }
-
             List<string> messageBoxesNames = new List<string>();
-            int index = 0;
+            int index = 0; // Index to mark where to truncate GUI content.
 
-            if (noMatch) // Falls vorher kein Match gefunden wurde, auch hier rückwärts durchsuchen
+            if (noMatch) // If "OptionsLabel" was found by searching backwards through `Content` list
             {
+                // Now search backwards through `GuiContent` to find the corresponding "OptionsToChooseFrom" GUI element.
                 for (int i = conversationContentGuiController.GuiContent.Count - 1; i >= 0; i--)
                 {
                     var messageBox = conversationContentGuiController.GuiContent[i];
 
-                    // Wenn "OptionsToChooseFrom(Clone)" gefunden wird, brich ab
+                    // If "OptionsToChooseFrom(Clone)" is found, this marks the cut-off point for GUI content.
                     if (messageBox.name.Contains("OptionsToChooseFrom(Clone)"))
                     {
-                        index = i;
-                        break;
+                        index = i; // Store this index.
+                        break; // Element found, exit loop.
                     }
                 }
 
-                // Hier wird der GuiContent nur bis zum gefundenen Index durchlaufen
+                // Iterate through GuiContent up to the determined 'index' to capture message box names.
                 for (int i = 0; i < index; i++)
                 {
                     var messageBox = conversationContentGuiController.GuiContent[i];
 
+                    // Exclude the options selection UI itself from the saved message types.
                     if (!messageBox.name.Contains("OptionsToChooseFrom(Clone)"))
                     {
                         if (messageBox.name.Contains("Blue Message Prefab With Trigger(Clone)"))
                         {
-                            _count++;
+                            _count++; // Increment count for player messages with triggers.
                         }
-
                         messageBoxesNames.Add(messageBox.name);
                     }
                 }
 
-                int indexToRemoveUpTo = -1;
+                int indexToRemoveUpTo = -1; // Index to mark where to truncate VisualNovelEvents.
+                // Search backwards through `VisualNovelEvents` to find the exact "OptionsLabel" event.
                 for (int i = conversationContentGuiController.VisualNovelEvents.Count - 1; i >= 0; i--)
                 {
                     if (conversationContentGuiController.VisualNovelEvents[i].id.Contains(formattedId))
                     {
-                        indexToRemoveUpTo = i;
-                        break; // Element gefunden, Schleife verlassen
+                        indexToRemoveUpTo = i; // Store this index.
+                        break; // Element found, exit loop.
                     }
                 }
 
-                // Wenn ein Element gefunden wurde, lösche alles von hinten bis zu diesem Index
+                // If an element was found, remove all subsequent elements from VisualNovelEvents.
                 if (indexToRemoveUpTo != -1)
                 {
-                    // Entfernt alle Elemente von indexToRemoveUpTo bis zum Ende der Liste
+                    // Removes all elements from indexToRemoveUpTo to the end of the list.
                     conversationContentGuiController.VisualNovelEvents.RemoveRange(indexToRemoveUpTo, conversationContentGuiController.VisualNovelEvents.Count - indexToRemoveUpTo);
                 }
             }
-            else // Falls vorher ein Match gefunden wurde, normal durchlaufen
+            else // If "OptionsLabel" was found directly in the `currentEvent.id` (normal flow for saving at a choice).
             {
+                // Iterate through all GuiContent (excluding options UI) to collect message box names.
                 foreach (var messageBox in conversationContentGuiController.GuiContent)
                 {
                     if (!messageBox.name.Contains("OptionsToChooseFrom(Clone)"))
                     {
                         if (messageBox.name.Contains("Blue Message Prefab With Trigger(Clone)"))
                         {
-                            _count++;
+                            _count++; // Increment count for player messages with triggers.
                         }
-
                         messageBoxesNames.Add(messageBox.name);
                     }
                 }
             }
 
+            // Prepare character prefab data for saving.
             Dictionary<long, CharacterData> characterPrefabData = new Dictionary<long, CharacterData>();
-
             if (playNovelSceneController.NovelImageController != null)
             {
-                var characterController = playNovelSceneController.NovelImageController;
-                if (characterController != null)
+                // Assuming NovelImageController has access to the global CharacterData dictionary.
+                var characterController = playNovelSceneController.NovelImageController; // This line seems redundant as characterController is not used directly.
+                if (GameManager.Instance.GetCharacterDataDictionary() != null)
                 {
                     foreach (var characterData in GameManager.Instance.GetCharacterDataDictionary())
                     {
-                        // Add the data to the dictionary
                         characterPrefabData.Add(characterData.Key, characterData.Value);
                     }
                 }
             }
 
-            if (playNovelSceneController.PlayThroughHistory[^1].Equals(": "))
+            // Special handling for the last entry in PlayThroughHistory if it's just a placeholder.
+            if (playNovelSceneController.PlayThroughHistory.Count > 0 && playNovelSceneController.PlayThroughHistory[^1].Equals(": "))
             {
-                playNovelSceneController.PlayThroughHistory[^1] = "Spielerin: ";
+                playNovelSceneController.PlayThroughHistory[^1] = "Spielerin: "; // Correct the placeholder.
             }
 
+            // Create a new NovelSaveData object with all the collected information.
             NovelSaveData saveData = new NovelSaveData
             {
-                //novelId = currentNovelId,
                 currentEventId = formattedId,
                 playThroughHistory = playNovelSceneController.PlayThroughHistory,
                 optionsId = playNovelSceneController.OptionsId.ToArray(),
                 eventHistory = playNovelSceneController.EventHistory,
-                content = conversationContentGuiController.Content,
-                visualNovelEvents = conversationContentGuiController.VisualNovelEvents,
-                messageType = messageBoxesNames,
-                optionCount = _count,
-                CharacterExpressions = playNovelSceneController.CharacterExpressions,
-                CharacterPrefabData = characterPrefabData
+                content = conversationContentGuiController.Content, // Conversation content.
+                visualNovelEvents = conversationContentGuiController.VisualNovelEvents, // Visual novel event history.
+                messageType = messageBoxesNames, // Names of message box prefabs used.
+                optionCount = _count, // Number of "Blue Message Prefab With Trigger" messages.
+                CharacterExpressions = playNovelSceneController.CharacterExpressions, // Character expressions.
+                CharacterPrefabData = characterPrefabData // Data about character prefabs (positions, etc.).
             };
 
+            // Delete any existing save data for this novel ID before saving the new one.
             DeleteNovelSaveData(currentNovelId);
-            // Save or update the novel in the dictionary
+            // Add or update the novel's save data in the dictionary.
             allSaveData[currentNovelId] = saveData;
 
-            // Serialize the dictionary and save it in a pretty format
+            // Serialize the entire dictionary of save data to a JSON string with pretty formatting.
             string json = JsonConvert.SerializeObject(allSaveData, Formatting.Indented);
 
+            // Write the JSON string to the save file.
             File.WriteAllText(SaveFilePath, json, Encoding.UTF8);
 
+            // Update the GameManager to reflect that this novel now has saved data.
             GameManager.Instance.UpdateNovelSaveStatus(currentNovelId, true);
         }
 
