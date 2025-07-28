@@ -1,10 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Assets._Scripts.UIElements.FoundersBubble
 {
+    /// <summary>
+    /// Implements a parallax scrolling effect for UI elements.
+    /// It creates multiple layers (background, midground, foreground) that scroll at different speeds
+    /// based on the horizontal scroll position of a <see cref="ScrollRect"/>.
+    /// </summary>
     public class ParallaxScroller : MonoBehaviour
     {
         [SerializeField] private ScrollRect scrollRect;
@@ -28,6 +32,11 @@ namespace Assets._Scripts.UIElements.FoundersBubble
         private HorizontalLayoutGroup _bgLayoutGroup;
         private HorizontalLayoutGroup _mgLayoutGroup;
 
+        /// <summary>
+        /// Called when the script instance is being loaded.
+        /// Initializes layout groups, instantiates parallax items, calculates scrollable width,
+        /// and sets up the scroll event listener and initial scroll position.
+        /// </summary>
         private void Start()
         {
             _bgLayoutGroup = backgroundParent.GetComponent<HorizontalLayoutGroup>();
@@ -73,6 +82,12 @@ namespace Assets._Scripts.UIElements.FoundersBubble
             StartCoroutine(SetInitialScrollDelayed());
         }
 
+        /// <summary>
+        /// A coroutine that sets the initial horizontal normalized position of the ScrollRect
+        /// to the center (0.5f) after a short delay. This ensures the layout is fully built
+        /// before setting the scroll position, preventing visual glitches.
+        /// </summary>
+        /// <returns>An IEnumerator for coroutine execution.</returns>
         private IEnumerator SetInitialScrollDelayed()
         {
             yield return null;
@@ -80,6 +95,12 @@ namespace Assets._Scripts.UIElements.FoundersBubble
             OnScroll(new Vector2(scrollRect.horizontalNormalizedPosition, 0));
         }
 
+        /// <summary>
+        /// Callback function for when the ScrollRect's value changes.
+        /// Calculates the new anchored positions for the background and midground layers
+        /// based on the scroll position and their respective speeds, creating the parallax effect.
+        /// </summary>
+        /// <param name="scrollPos">The normalized scroll position (x and y components).</param>
         private void OnScroll(Vector2 scrollPos)
         {
             float scrollX = scrollPos.x;

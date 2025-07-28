@@ -24,7 +24,7 @@ namespace Assets._Scripts.ServerCommunication.ServerCalls
         {
             switch (ResultCodeHelper.ValueOf(response.GetResultCode()))
             {
-                case ResultCode.SUCCESSFULLY_GOT_USER_ROLE:
+                case ResultCode.SuccessfullyGotUserRole:
                 {
                     OnSuccessHandler.OnSuccess(response);
                     return;

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Assets._Scripts.Novel;
+using Assets._Scripts.Utilities;
 using UnityEngine;
 
 namespace Assets._Scripts.Managers

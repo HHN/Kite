@@ -1,5 +1,10 @@
 namespace Assets._Scripts.SceneManagement
 {
+    /// <summary>
+    /// A static abstract class that defines constant string names for all scenes
+    /// used within the application. This centralizes scene name management,
+    /// reducing the chance of typos and making scene references consistent.
+    /// </summary>
     public abstract class SceneNames
     {
         // GENERAL SCENES

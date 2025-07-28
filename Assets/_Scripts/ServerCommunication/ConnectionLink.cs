@@ -1,5 +1,10 @@
 namespace Assets._Scripts.ServerCommunication
 {
+    /// <summary>
+    /// Provides static constant strings for all server API endpoints used in the application.
+    /// This centralizes the management of connection links, making it easier to configure
+    /// and maintain server communication paths.
+    /// </summary>
     public static class ConnectionLink
     {
         private static readonly string BASE_LINK = "https://kite2.site/"; // "https://localhost/"; //

@@ -11,6 +11,11 @@ using UnityEngine.UI;
 
 namespace Assets._Scripts.UIElements.Messages
 {
+    /// <summary>
+    /// Manages a message box that appears when a user attempts to leave a novel.
+    /// It provides options to continue, pause (save and leave), cancel (delete save and leave),
+    /// or end the novel prematurely (mark as completed and leave).
+    /// </summary>
     public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
     {
         [Header("Message Box Text Components")] [SerializeField]
@@ -37,14 +42,17 @@ namespace Assets._Scripts.UIElements.Messages
 
         [SerializeField] private GameObject person;
 
-        private ConversationContentGuiController
-            _conversationContentGuiController; // Reference to the PlayNovelSceneController to manage novel actions
+        private ConversationContentGuiController _conversationContentGuiController; // Reference to the PlayNovelSceneController to manage novel actions
 
-        private static PlayNovelSceneController
-            _playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
+        private static PlayNovelSceneController _playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
 
         [SerializeField] private GameObject messageBox;
 
+        /// <summary>
+        /// Called when the script instance is being loaded.
+        /// Initializes button listeners, UI colors, finds relevant controllers,
+        /// and cancels any ongoing text-to-speech.
+        /// </summary>
         private void Start()
         {
             continueButton.onClick.AddListener(OnContinueButton);
@@ -67,9 +75,11 @@ namespace Assets._Scripts.UIElements.Messages
             TextToSpeechManager.Instance.CancelSpeak();
         }
 
+        /// <summary>
+        /// Initializes the UI elements, particularly setting colors based on the novel's theme.
+        /// </summary>
         private void InitUI()
         {
-            // Retrieve the color from the NovelColorManager instance
             Color colour = NovelColorManager.Instance().GetColor();
             
             pauseButton.image.color = colour;
@@ -83,11 +93,18 @@ namespace Assets._Scripts.UIElements.Messages
             textContinueButton.GetComponent<TextMeshProUGUI>().color = colour;
         }
 
+        /// <summary>
+        /// Activates (makes visible) the message box GameObject.
+        /// </summary>
         public void Activate()
         {
             gameObject.SetActive(true);
         }
 
+        /// <summary>
+        /// Handles the action when the "Continue" button is clicked.
+        /// Resumes novel progression and closes the message box.
+        /// </summary>
         private void OnContinueButton()
         {
             _playNovelSceneController.isPaused = false; // Resume the novel progression
@@ -96,6 +113,10 @@ namespace Assets._Scripts.UIElements.Messages
             CloseMessageBox();
         }
 
+        /// <summary>
+        /// Handles the action when the "Pause" button is clicked.
+        /// Saves the novel's current progress and then leaves the novel scene.
+        /// </summary>
         private void OnPauseButton()
         {
             SaveLoadManager.SaveNovelData(_playNovelSceneController, _conversationContentGuiController);
@@ -103,6 +124,10 @@ namespace Assets._Scripts.UIElements.Messages
             LeaveNovel();
         }
 
+        /// <summary>
+        /// Handles the action when the "Cancel" button is clicked.
+        /// Deletes the novel's save data and then leaves the novel scene.
+        /// </summary>
         private void OnCancelButton()
         {
             // Lösche den zugehörigen Speicherstand
@@ -111,6 +136,10 @@ namespace Assets._Scripts.UIElements.Messages
             LeaveNovel();
         }
 
+        /// <summary>
+        /// Handles the action when the "End" button is clicked.
+        /// Adds a special line to the prompt for AI feedback and then triggers the novel ending process.
+        /// </summary>
         private void OnEndButton()
         {
             PromptManager.Instance().AddLineToPrompt("Das Gespräch wurde vorzeitig beendet. Bitte beachte, dass kein Teil des Dialogs in das Feedback darf.");
@@ -118,6 +147,10 @@ namespace Assets._Scripts.UIElements.Messages
             _playNovelSceneController.HandleEndNovelEvent();
         }
 
+        /// <summary>
+        /// Closes and destroys the message box GameObject.
+        /// Includes a safety check to prevent errors if the GameObject or script instance is already destroyed.
+        /// </summary>
         public void CloseMessageBox()
         {
             if (this.IsNullOrDestroyed() || gameObject.IsNullOrDestroyed())
@@ -128,6 +161,10 @@ namespace Assets._Scripts.UIElements.Messages
             Destroy(gameObject);
         }
 
+        /// <summary>
+        /// Static method to handle leaving the novel scene and navigating to the appropriate previous scene.
+        /// Manages animation flags, text-to-speech, and scene loading based on the back stack.
+        /// </summary>
         private static void LeaveNovel()
         {
             // Disable animations after confirmation
@@ -146,7 +183,7 @@ namespace Assets._Scripts.UIElements.Messages
                 return;
             }
 
-            // If the last scene is the PLAY_INSTRUCTION_SCENE, load the FOUNDERS_BUBBLE_SCENE instead
+            // If the last scene is the PlayInstructionScene, load the FoundersBubbleScene instead
             if (lastScene == SceneNames.PlayInstructionScene)
             {
                 SceneLoader.LoadScene(SceneNames.FoundersBubbleScene);
@@ -158,6 +195,10 @@ namespace Assets._Scripts.UIElements.Messages
             SceneLoader.LoadScene(lastScene);
         }
 
+        /// <summary>
+        /// Updates the text and visibility of certain UI elements within the message box,
+        /// particularly adjusting the text content and hiding the pause button.
+        /// </summary>
         public void HandleButtons()
         {
             pauseButton.gameObject.SetActive(false);

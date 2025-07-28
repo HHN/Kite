@@ -26,7 +26,7 @@ namespace Assets._Scripts.ServerCommunication.ServerCalls
         {
             switch (ResultCodeHelper.ValueOf(response.GetResultCode()))
             {
-                case ResultCode.SUCCESSFULLY_DELETED_REVIEW_OBSERVER:
+                case ResultCode.SuccessfullyDeletedReviewObserver:
                 {
                     OnSuccessHandler.OnSuccess(response);
                     return;

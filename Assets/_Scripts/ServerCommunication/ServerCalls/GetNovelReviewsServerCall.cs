@@ -19,7 +19,7 @@ namespace Assets._Scripts.ServerCommunication.ServerCalls
         {
             switch (ResultCodeHelper.ValueOf(response.GetResultCode()))
             {
-                case ResultCode.SUCCESSFULLY_GOT_ALL_NOVEL_REVIEWS:
+                case ResultCode.SuccessfullyGotAllNovelReviews:
                 {
                     OnSuccessHandler.OnSuccess(response);
                     return;

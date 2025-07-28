@@ -10,6 +10,11 @@ using UnityEngine.UI;
 
 namespace Assets._Scripts.UIElements.SceneBase
 {
+    /// <summary>
+    /// Manages the common header elements found in many scenes, such as the back button,
+    /// legal information button, and settings button. It handles navigation logic
+    /// and specific behaviors when a novel is being played.
+    /// </summary>
     public class SceneHeader : MonoBehaviour
     {
         [SerializeField] private Button backButton;
@@ -19,8 +24,13 @@ namespace Assets._Scripts.UIElements.SceneBase
         [SerializeField] private LeaveNovelAndGoBackMessageBox warningMessageBoxObject;
         [SerializeField] private Canvas canvas;
 
-        private PlayNovelSceneController _playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
+        private PlayNovelSceneController _playNovelSceneController;
 
+        /// <summary>
+        /// Called when the script instance is being loaded.
+        /// Finds the PlayNovelSceneController if present, manages the back button's visibility
+        /// and interactivity based on whether an intro novel was just loaded, and sets up button listeners.
+        /// </summary>
         private void Start()
         {
             GameObject persistentController = GameObject.Find("PlayNovelSceneController");
@@ -51,6 +61,11 @@ namespace Assets._Scripts.UIElements.SceneBase
             settingsButton.onClick.AddListener(OnSettingsButton);
         }
 
+        /// <summary>
+        /// Handles the click event for the back button.
+        /// Contains complex navigation logic based on the current scene and the back stack.
+        /// It also handles pausing the novel if currently in a novel scene.
+        /// </summary>
         private void OnBackButton()
         {
             string sceneName = SceneManager.GetActiveScene().name;
@@ -74,7 +89,6 @@ namespace Assets._Scripts.UIElements.SceneBase
                 }
                 else
                 {
-                    // string lastScene = SceneRouter.GetTargetSceneForBackButton();
                     string lastScene = BackStackManager.Instance().Pop();
                     
                     // As long as the loaded scene is the active scene, load the next scene
@@ -89,10 +103,10 @@ namespace Assets._Scripts.UIElements.SceneBase
                         bool isAdditiveSubScene = active.name != "PlayNovelScene" && active.isLoaded;
                         if (isAdditiveSubScene)
                         {
-                            // A) Sub-Szene entladen
+                            // If it's a sub-scene, unload it.
                             SceneManager.UnloadSceneAsync(active);
 
-                            // B) PlayNovelScene wieder aktivieren
+                            // Then activate PlayNovelScene if it's loaded.
                             Scene baseScene = SceneManager.GetSceneByName("PlayNovelScene");
                             if (baseScene.IsValid() && baseScene.isLoaded)
                             {
@@ -113,17 +127,14 @@ namespace Assets._Scripts.UIElements.SceneBase
                             _playNovelSceneController.Continue();
                         }
                         
-                        // Wenn der Backstack gerade genau "PlayNovelScene" geliefert hat,
-                        // soll die Basis-Szene nur wieder aktiv gesetzt werden –
-                        // auf keinen Fall neu geladen.
-                        // Falls aktuell noch eine Additive-Sub-Szene offen ist, entlade sie…
+                        // If the last scene was PlayNovelScene, just make it active, don't reload.
                         Scene active = SceneManager.GetActiveScene();
                         if (active.name != "PlayNovelScene")
                         {
                             SceneManager.UnloadSceneAsync(active);
                         }
 
-                        // Nun PlayNovelScene zum Active machen
+                        // Set PlayNovelScene as active.
                         var playNovel = SceneManager.GetSceneByName("PlayNovelScene");
                         if (playNovel.IsValid() && playNovel.isLoaded)
                         {
@@ -143,6 +154,11 @@ namespace Assets._Scripts.UIElements.SceneBase
             HandleMessageBox(sceneName);
         }
 
+        /// <summary>
+        /// Instantiates and activates the warning message box for leaving a novel.
+        /// Applies specific behavior if the novel is novel ID 13.
+        /// </summary>
+        /// <param name="sceneName">The name of the current active scene.</param>
         private void HandleMessageBox(string sceneName)
         {
             if (!warningMessageBox) return;
@@ -168,6 +184,10 @@ namespace Assets._Scripts.UIElements.SceneBase
             warningMessageBoxObject.Activate();
         }
 
+        /// <summary>
+        /// Handles the click event for the legal information button.
+        /// Pauses the novel if active and loads the legal information scene.
+        /// </summary>
         private void OnLegalInformationButton()
         {
             if (_playNovelSceneController != null)
@@ -178,6 +198,10 @@ namespace Assets._Scripts.UIElements.SceneBase
             SceneLoader.LoadLegalInformationScene();
         }
 
+        /// <summary>
+        /// Handles the click event for the settings button.
+        /// Pauses the novel if active and loads the settings scene.
+        /// </summary>
         private void OnSettingsButton()
         {
             if (_playNovelSceneController != null)

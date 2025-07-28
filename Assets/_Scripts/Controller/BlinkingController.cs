@@ -1,8 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Assets._Scripts
+namespace Assets._Scripts.Controller
 {
+    /// <summary>
+    /// Controls a blinking animation behavior for a character or object using an Animator component.
+    /// It triggers a "Blink" animation at random intervals and has a chance to trigger a double blink.
+    /// </summary>
+    [RequireComponent(typeof(Animator))] // Ensures that an Animator component is present on the GameObject.
     public class BlinkingController : MonoBehaviour
     {
         // Static variable to hold the hash for the "Blink" trigger in the Animator
@@ -13,6 +18,10 @@ namespace Assets._Scripts
         
         private Animator _animator; // Reference to the Animator component
 
+        /// <summary>
+        /// Called when the script instance is being loaded.
+        /// It initializes the Animator component and starts the blinking coroutine.
+        /// </summary>
         private void Start()
         {
             // Get the Animator component from the GameObject
@@ -29,7 +38,12 @@ namespace Assets._Scripts
             StartCoroutine(BlinkRoutine());
         }
 
-        // Coroutine that controls the timing of blinks
+        /// <summary>
+        /// This coroutine continuously triggers the blink animation at random intervals.
+        /// It waits for a random duration between <see cref="minBlinkTime"/> and <see cref="maxBlinkTime"/>
+        /// before calling <see cref="TriggerBlink"/>.
+        /// </summary>
+        /// <returns>An IEnumerator to support coroutine execution.</returns>
         private IEnumerator BlinkRoutine()
         {
             while (true)
@@ -43,7 +57,10 @@ namespace Assets._Scripts
             }
         }
 
-        // Triggers the blink animation and optionally a double blink
+        /// <summary>
+        /// Triggers the primary blink animation.
+        /// It also includes a 20% chance to trigger a second "double blink" shortly after the first.
+        /// </summary>
         private void TriggerBlink()
         {
             // Determine if a double blink should occur (20% probability)
@@ -59,7 +76,11 @@ namespace Assets._Scripts
             }
         }
 
-        // Handles the short delay between double blinks
+        /// <summary>
+        /// This coroutine handles the short delay between two blinks when a double blink occurs.
+        /// After the delay, it triggers the blink animation again.
+        /// </summary>
+        /// <returns>An IEnumerator to support coroutine execution.</returns>
         private IEnumerator DoubleBlinkDelay()
         {
             // Wait for a short duration (e.g., 0.2 seconds)

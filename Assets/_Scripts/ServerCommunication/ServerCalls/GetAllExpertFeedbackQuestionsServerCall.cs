@@ -19,7 +19,7 @@ namespace Assets._Scripts.ServerCommunication.ServerCalls
         {
             switch (ResultCodeHelper.ValueOf(response.GetResultCode()))
             {
-                case ResultCode.SUCCESSFULLY_GOT_ALL_EXPERT_FEEDBACK_QUESTIONS:
+                case ResultCode.SuccessfullyGotAllExpertFeedbackQuestions:
                 {
                     OnSuccessHandler.OnSuccess(response);
                     return;

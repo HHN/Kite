@@ -28,7 +28,7 @@ namespace Assets._Scripts.ServerCommunication.ServerCalls
         {
             switch (ResultCodeHelper.ValueOf(response.GetResultCode()))
             {
-                case ResultCode.SUCCESSFULLY_POSTET_EXPERT_FEEDBACK_ANSWER:
+                case ResultCode.SuccessfullyPostetExpertFeedbackAnswer:
                 {
                     OnSuccessHandler.OnSuccess(response);
                     return;

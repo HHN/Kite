@@ -24,12 +24,12 @@ namespace Assets._Scripts.ServerCommunication.ServerCalls
         {
             switch (ResultCodeHelper.ValueOf(response.GetResultCode()))
             {
-                case ResultCode.SUCCESSFULLY_FOUND_EXPERT_FEEDBACK_QUESTION:
+                case ResultCode.SuccessfullyFoundExpertFeedbackQuestion:
                 {
                     OnSuccessHandler.OnSuccess(response);
                     return;
                 }
-                case ResultCode.NO_SUCH_EXPERT_FEEDBACK_QUESTION:
+                case ResultCode.NoSuchExpertFeedbackQuestion:
                 {
                     OnSuccessHandler.OnSuccess(response);
                     return;
