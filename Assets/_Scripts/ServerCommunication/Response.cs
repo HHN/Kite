@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Assets._Scripts.UserFeedback;
 using UnityEngine;
 
 namespace Assets._Scripts.ServerCommunication
@@ -17,9 +16,6 @@ namespace Assets._Scripts.ServerCommunication
         [SerializeField] private int resultCode;
         [SerializeField] private string resultText;
         [SerializeField] private string completion;
-        [SerializeField] private List<AiReview> aiReviews;
-        [SerializeField] private List<ReviewObserver> reviewObservers;
-        [SerializeField] private List<DataObject> dataObjects;
         [SerializeField] private int version;
         [SerializeField] private int userRole;
 
@@ -75,60 +71,6 @@ namespace Assets._Scripts.ServerCommunication
         public string GetCompletion()
         {
             return completion;
-        }
-
-        /// <summary>
-        /// Sets the list of <see cref="AiReview"/> objects in the response.
-        /// </summary>
-        /// <param name="aiReviews">A list of AI review objects.</param>
-        public void SetAiReviews(List<AiReview> aiReviews)
-        {
-            this.aiReviews = aiReviews;
-        }
-
-        /// <summary>
-        /// Gets the list of <see cref="AiReview"/> objects from the response.
-        /// </summary>
-        /// <returns>A list of AI review objects.</returns>
-        public List<AiReview> GetAiReviews()
-        {
-            return aiReviews;
-        }
-
-        /// <summary>
-        /// Sets the list of <see cref="ReviewObserver"/> objects in the response.
-        /// </summary>
-        /// <param name="reviewObservers">A list of review observer objects.</param>
-        public void SetReviewObserver(List<ReviewObserver> reviewObservers)
-        {
-            this.reviewObservers = reviewObservers;
-        }
-
-        /// <summary>
-        /// Gets the list of <see cref="ReviewObserver"/> objects from the response.
-        /// </summary>
-        /// <returns>A list of review observer objects.</returns>
-        public List<ReviewObserver> GetReviewObserver()
-        {
-            return reviewObservers;
-        }
-
-        /// <summary>
-        /// Sets the list of <see cref="DataObject"/> objects in the response.
-        /// </summary>
-        /// <param name="dataObjects">A list of general data objects.</param>
-        public void SetDataObjects(List<DataObject> dataObjects)
-        {
-            this.dataObjects = dataObjects;
-        }
-
-        /// <summary>
-        /// Gets the list of <see cref="DataObject"/> objects from the response.
-        /// </summary>
-        /// <returns>A list of general data objects.</returns>
-        public List<DataObject> GetDataObjects()
-        {
-            return dataObjects;
         }
 
         /// <summary>
