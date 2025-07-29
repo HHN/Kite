@@ -69,7 +69,6 @@ namespace Assets._Scripts.Managers
             }
 
             optionA.SetMessage(options[0].text);
-            AnalyticsServiceHandler.Instance().AddChoiceToList(options[0].text);
             _idA = options[0].onChoice;
             _stringA = options[0].text;
             _displayAfterSelectionA = options[0].show;
@@ -80,12 +79,10 @@ namespace Assets._Scripts.Managers
                 optionC.gameObject.SetActive(false);
                 optionD.gameObject.SetActive(false);
                 optionE.gameObject.SetActive(false);
-                AnalyticsServiceHandler.Instance().AddedLastChoice();
                 return;
             }
 
             optionB.SetMessage(options[1].text);
-            AnalyticsServiceHandler.Instance().AddChoiceToList(options[1].text);
             _idB = options[1].onChoice;
             _stringB = options[1].text;
             _displayAfterSelectionB = options[1].show;
@@ -95,12 +92,10 @@ namespace Assets._Scripts.Managers
                 optionC.gameObject.SetActive(false);
                 optionD.gameObject.SetActive(false);
                 optionE.gameObject.SetActive(false);
-                AnalyticsServiceHandler.Instance().AddedLastChoice();
                 return;
             }
 
             optionC.SetMessage(options[2].text);
-            AnalyticsServiceHandler.Instance().AddChoiceToList(options[2].text);
             _idC = options[2].onChoice;
             _stringC = options[2].text;
             _displayAfterSelectionC = options[2].show;
@@ -109,12 +104,10 @@ namespace Assets._Scripts.Managers
             {
                 optionD.gameObject.SetActive(false);
                 optionE.gameObject.SetActive(false);
-                AnalyticsServiceHandler.Instance().AddedLastChoice();
                 return;
             }
 
             optionD.SetMessage(options[3].text);
-            AnalyticsServiceHandler.Instance().AddChoiceToList(options[3].text);
             _idD = options[3].onChoice;
             _stringD = options[3].text;
             _displayAfterSelectionD = options[3].show;
@@ -122,68 +115,56 @@ namespace Assets._Scripts.Managers
             if (options.Count == 4)
             {
                 optionE.gameObject.SetActive(false);
-                AnalyticsServiceHandler.Instance().AddedLastChoice();
                 return;
             }
 
             optionE.SetMessage(options[4].text);
-            AnalyticsServiceHandler.Instance().AddChoiceToList(options[4].text);
             _idE = options[4].onChoice;
             _stringE = options[4].text;
             _displayAfterSelectionE = options[4].show;
-            AnalyticsServiceHandler.Instance().AddedLastChoice();
         }
 
         /// <summary>
-        /// Handles the selection of Option A in the options menu. This method logs the choice using
-        /// the analytics service and triggers the required follow-up actions, such as invoking a coroutine
+        /// Handles the selection of Option A in the options menu. This method triggers the required follow-up actions, such as invoking a coroutine
         /// to handle post-selection events.
         /// </summary>
         public void OnOptionA()
         {
-            AnalyticsServiceHandler.Instance().SetChoiceId(0);
             StartCoroutine(AfterSelection("Selected A", _stringA, _idA, _displayAfterSelectionA, 0));
         }
 
         /// <summary>
         /// Handles the selection of Option B in the visual novel scenario.
-        /// This method records the selection analytics, initiates a post-selection process,
+        /// This method initiates a post-selection process,
         /// and triggers corresponding actions or updates based on Option B being chosen.
         /// </summary>
         public void OnOptionB()
         {
-            AnalyticsServiceHandler.Instance().SetChoiceId(1);
             StartCoroutine(AfterSelection("Selected B", _stringB, _idB, _displayAfterSelectionB, 1));
         }
 
         /// <summary>
         /// Handles the selection of Option C in the visual novel scenario.
-        /// Records the user's choice via the analytics service and triggers
-        /// post-selection actions such as initiating the next event or updating the UI.
+        /// Triggers post-selection actions such as initiating the next event or updating the UI.
         /// </summary>
         public void OnOptionC()
         {
-            AnalyticsServiceHandler.Instance().SetChoiceId(2);
             StartCoroutine(AfterSelection("Selected C", _stringC, _idC, _displayAfterSelectionC, 2));
         }
 
         /// <summary>
-        /// Handles the selection of Option D by performing analytics tracking
-        /// and initiating the next steps in the visual novel sequence.
+        /// Handles the selection of Option D by initiating the next steps in the visual novel sequence.
         /// </summary>
         public void OnOptionD()
         {
-            AnalyticsServiceHandler.Instance().SetChoiceId(3);
             StartCoroutine(AfterSelection("Selected D", _stringD, _idD, _displayAfterSelectionD, 3));
         }
 
         /// <summary>
-        /// Handles the selection of option E in the visual novel by marking it as chosen,
-        /// initiating analytics tracking, and starting the post-selection process.
+        /// Handles the selection of option E in the visual novel by marking it as chosen and starting the post-selection process.
         /// </summary>
         public void OnOptionE()
         {
-            AnalyticsServiceHandler.Instance().SetChoiceId(4);
             StartCoroutine(AfterSelection("Selected E", _stringE, _idE, _displayAfterSelectionE, 4));
         }
 

@@ -83,14 +83,13 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         /// <summary>
         /// Prepares and initializes required components for the scene.
-        /// Ensures certain game objects persist across scenes, starts analytics,
+        /// Ensures certain game objects persist across scenes,
         /// loads player preferences, and resets the back stack manager.
         /// </summary>
         private void InitializeScene()
         {
             DontDestroyOnLoad(novelLoader);
 
-            //AnalyticsServiceHandler.Instance().StartAnalytics();  //TODO: Replace with custom Analytics
             PlayerDataManager.Instance().LoadAllPlayerPrefs();
             BackStackManager.Instance().Clear();
         }
@@ -119,11 +118,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             if (privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted())
             {
                 termsAndConditionPanel.SetActive(false);
-
-                if (privacyManager.IsDataCollectionAccepted())
-                {
-                    //AnalyticsServiceHandler.Instance().CollectData(); //TODO: Replace with custom Analytics
-                }
             }
         }
 

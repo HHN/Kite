@@ -158,18 +158,15 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         /// <summary>
         /// Handles the actions performed when the finish button is clicked.
-        /// This includes sending analytics feedback, stopping any ongoing text-to-speech actions,
+        /// This includes stopping any ongoing text-to-speech actions,
         /// clearing the navigation back stack, and loading the Founder's Bubble scene.
         /// </summary>
         /// <remarks>
         /// This method ensures that the feedback scene is not revisited when navigating back and
-        /// transitions the user to the Founder's Bubble scene after handling necessary cleanup
-        /// and analytics processing.
+        /// transitions the user to the Founder's Bubble scene after handling necessary cleanup.
         /// </remarks>
         public void OnFinishButton()
         {
-            AnalyticsServiceHandler.Instance().SendWaitedForAIFeedback();
-
         #if UNITY_IOS
                     TextToSpeechManager.Instance.CancelSpeak();
         #endif
@@ -217,8 +214,8 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         /// <summary>
         /// Handles the successful response from the server and processes the feedback content.
-        /// Performs operations such as managing UI elements, updating text components,
-        /// playing audio feedback, and triggering necessary analytics events.
+        /// Performs operations such as managing UI elements, updating text components, and
+        /// playing audio feedback.
         /// </summary>
         /// <param name="response">The response object containing the feedback data and additional information.</param>
         public void OnSuccess(Response response)
@@ -246,7 +243,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             feedbackText.SetText(completion);
             loadingAnimation.SetActive(false);
             novelToPlay.feedback = completion;
-            AnalyticsServiceHandler.Instance().SetWaitedForAiFeedbackTrue();
 
             // Find and update layout if not assigned
             if (layout == null)

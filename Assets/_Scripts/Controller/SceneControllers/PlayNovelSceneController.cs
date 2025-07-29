@@ -102,11 +102,11 @@ namespace Assets._Scripts.Controller.SceneControllers
         [Header("Audio-Komponenten")] [SerializeField]
         private AudioClip[] clips;
 
-        [Header("Timing und Analytics")] [SerializeField]
+        [Header("Timing")] [SerializeField]
         private float timerForHint = 12.0f; // Time after which the hint to tap on the screen is shown
 
         [SerializeField] private float timerForHintInitial = 3.0f;
-        [SerializeField] private bool firstUserConfirmation = true; // Analytics flag for first confirmation
+        [SerializeField] private bool firstUserConfirmation = true;
 
         [Header("Spielstatus und Logik")] [SerializeField]
         private bool isWaitingForConfirmation;
@@ -170,7 +170,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         /// <summary>
         /// Initializes the PlayNovelSceneController, including setting up references,
-        /// clearing data managers, starting analytics, and initializing components.
+        /// clearing data managers, and initializing components.
         /// </summary>
         private void Start()
         {
@@ -178,7 +178,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             
             _conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
 
-            AnalyticsServiceHandler.Instance().StartStopwatch();
             novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
 
             OfflineFeedbackManager.Instance().Clear();
@@ -188,7 +187,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         /// <summary>
         /// Initializes the current Visual Novel within the scene, setting up essential parts,
-        /// preparing analytics, clearing global variables, and assigning visual and event-related properties.
+        /// clearing global variables, and assigning visual and event-related properties.
         /// Ensures readiness by validating the existence of the novel and initializing relevant systems.
         /// </summary>
         private void Initialize()
@@ -197,7 +196,6 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             PromptManager.Instance().InitializePrompt(novelToPlay);
 
-            AnalyticsServiceHandler.Instance().SetIdOfCurrentNovel(novelToPlay.id);
             novelToPlay.ClearGlobalVariables();
             novelToPlay.feedback = string.Empty;
             novelToPlay.playedPath = string.Empty;
@@ -840,7 +838,6 @@ namespace Assets._Scripts.Controller.SceneControllers
                 conversationContent.AddContent(novelEvent, this);
 
                 AddEntryToPlayThroughHistory(CharacterTypeHelper.ValueOf(novelEvent.character), novelEvent.text);
-                AnalyticsServiceHandler.Instance().SetLastQuestionForChoice(novelEvent.text);
             }
 
             // Wait for user confirmation if required
@@ -857,7 +854,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// <summary>
         /// Handles the addition of a choice event within the visual novel.
         /// It processes the event, updates the conversation content, checks for user confirmation,
-        /// logs the choice to analytics, and integrates it into the text-to-speech system.
+        /// and integrates it into the text-to-speech system.
         /// </summary>
         /// <param name="novelEvent">The visual novel event containing the choice
         /// details to be handled.</param>
@@ -873,7 +870,6 @@ namespace Assets._Scripts.Controller.SceneControllers
                 return;
             }
 
-            AnalyticsServiceHandler.Instance().AddChoiceToList(novelEvent.text);
             TextToSpeechManager.Instance.AddChoiceToChoiceCollectionForTextToSpeech(novelEvent.text);
             StartCoroutine(PlayNextEvent());
         }
@@ -899,14 +895,11 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Handles the completion of a visual novel event by sending analytics data,
-        /// updating the player's novel history, triggering animations, and deciding
+        /// Handles the completion of a visual novel event by updating the player's novel history, triggering animations, and deciding
         /// the next scene to load based on the completed novel's title.
         /// </summary>
         public void HandleEndNovelEvent()
         {
-            AnalyticsServiceHandler.Instance().SendNovelPlayTime();
-            
             VisualNovelNames currentNovel = VisualNovelNamesHelper.ValueOf((int)novelToPlay.id);
 
             PlayerDataManager.Instance().SetNovelHistory(playThroughHistory);
