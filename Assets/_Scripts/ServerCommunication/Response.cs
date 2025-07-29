@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Assets._Scripts.ExpertFeedback;
 using Assets._Scripts.UserFeedback;
 using UnityEngine;
 
@@ -24,8 +23,6 @@ namespace Assets._Scripts.ServerCommunication
         [SerializeField] private List<DataObject> dataObjects;
         [SerializeField] private int version;
         [SerializeField] private int userRole;
-        [SerializeField] private List<ExpertFeedbackQuestion> expertFeedbackQuestions;
-        [SerializeField] private List<ExpertFeedbackAnswer> expertFeedbackAnswers;
 
         /// <summary>
         /// Sets the numerical result code of the server response.
@@ -187,42 +184,6 @@ namespace Assets._Scripts.ServerCommunication
         public int GetUserRole()
         {
             return userRole;
-        }
-
-        /// <summary>
-        /// Gets the list of <see cref="ExpertFeedbackQuestion"/> objects from the response.
-        /// </summary>
-        /// <returns>A list of expert feedback question objects.</returns>
-        public List<ExpertFeedbackQuestion> GetExpertFeedbackQuestions()
-        {
-            return expertFeedbackQuestions;
-        }
-
-        /// <summary>
-        /// Sets the list of <see cref="ExpertFeedbackQuestion"/> objects in the response.
-        /// </summary>
-        /// <param name="expertFeedbackQuestions">A list of expert feedback question objects.</param>
-        public void SetExpertFeedbackQuestions(List<ExpertFeedbackQuestion> expertFeedbackQuestions)
-        {
-            this.expertFeedbackQuestions = expertFeedbackQuestions;
-        }
-
-        /// <summary>
-        /// Gets the list of <see cref="ExpertFeedbackAnswer"/> objects from the response.
-        /// </summary>
-        /// <returns>A list of expert feedback answer objects.</returns>
-        public List<ExpertFeedbackAnswer> GetExpertFeedbackAnswers()
-        {
-            return expertFeedbackAnswers;
-        }
-
-        /// <summary>
-        /// Sets the list of <see cref="ExpertFeedbackAnswer"/> objects in the response.
-        /// </summary>
-        /// <param name="expertFeedbackAnswers">A list of expert feedback answer objects.</param>
-        public void SetExpertFeedbackAnswers(List<ExpertFeedbackAnswer> expertFeedbackAnswers)
-        {
-            this.expertFeedbackAnswers = expertFeedbackAnswers;
         }
     }
 }
