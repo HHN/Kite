@@ -615,12 +615,6 @@ namespace Assets._Scripts.Controller.SceneControllers
                 return;
             }
 
-            if (ApplicationModeManager.Instance().IsOfflineModeActive())
-            {
-                StartCoroutine(PlayNextEvent());
-                return;
-            }
-
             GetCompletionServerCall call = Instantiate(gptServercallPrefab).GetComponent<GetCompletionServerCall>();
             call.sceneController = this;
             

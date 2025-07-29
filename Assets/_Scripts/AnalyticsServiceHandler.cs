@@ -303,11 +303,6 @@ namespace Assets._Scripts
         /// </summary>
         public void SendMainMenuStatistics()
         {
-            if (ApplicationModeManager.Instance().IsOfflineModeActive())
-            {
-                return;
-            }
-
             if (_hasBeenInitialized)
             {
                 StopStopwatch();
@@ -329,11 +324,6 @@ namespace Assets._Scripts
         /// <param name="visualNovelID">The ID of the novel viewed in the explorer (if applicable).</param>
         public void SendNovelExplorerStatistics(long visualNovelID)
         {
-            if (ApplicationModeManager.Instance().IsOfflineModeActive())
-            {
-                return;
-            }
-
             if (_hasBeenInitialized)
             {
                 StopStopwatch();
@@ -354,11 +344,6 @@ namespace Assets._Scripts
         /// <param name="visualNovelID">The ID of the novel whose detail view was shown.</param>
         public void SendDetailViewStatistics(long visualNovelID)
         {
-            if (ApplicationModeManager.Instance().IsOfflineModeActive())
-            {
-                return;
-            }
-
             if (_hasBeenInitialized)
             {
                 StopStopwatch();
@@ -380,11 +365,6 @@ namespace Assets._Scripts
         /// </summary>
         public void SendPlayNovelFirstConfirmation()
         {
-            if (ApplicationModeManager.Instance().IsOfflineModeActive())
-            {
-                return;
-            }
-
             if (_hasBeenInitialized)
             {
                 Dictionary<string, object> parameters = new Dictionary<string, object>()
@@ -403,11 +383,6 @@ namespace Assets._Scripts
         /// <param name="id">The ID of the player's chosen option.</param>
         private void SendPlayerChoice(int id)
         {
-            if (ApplicationModeManager.Instance().IsOfflineModeActive())
-            {
-                return;
-            }
-
             if (_hasBeenInitialized)
             {
                 var text = GetTextByChoiceId(id);
@@ -433,11 +408,6 @@ namespace Assets._Scripts
         /// <param name="id">The ID of the player's selected feeling.</param>
         public void SendPlayerFeeling(int id)
         {
-            if (ApplicationModeManager.Instance().IsOfflineModeActive())
-            {
-                return;
-            }
-
             if (_hasBeenInitialized)
             {
                 string text;
@@ -467,11 +437,6 @@ namespace Assets._Scripts
         /// </summary>
         public void SendNovelPlayTime()
         {
-            if (ApplicationModeManager.Instance().IsOfflineModeActive())
-            {
-                return;
-            }
-
             if (_hasBeenInitialized)
             {
                 StopStopwatch();
@@ -492,11 +457,6 @@ namespace Assets._Scripts
         /// </summary>
         public void SendWaitedForAIFeedback()
         {
-            if (ApplicationModeManager.Instance().IsOfflineModeActive())
-            {
-                return;
-            }
-
             if (_hasBeenInitialized)
             {
                 Dictionary<string, object> parameters = new Dictionary<string, object>()
@@ -513,11 +473,6 @@ namespace Assets._Scripts
         /// </summary>
         private void SendSessionStatistics()
         {
-            if (ApplicationModeManager.Instance().IsOfflineModeActive())
-            {
-                return;
-            }
-
             if (_hasBeenInitialized)
             {
                 _stopwatchSession.Stop();

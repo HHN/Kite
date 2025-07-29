@@ -88,17 +88,6 @@ namespace Assets._Scripts.Controller.SceneControllers
                 return;
             }
 
-            // Check if offline mode is active
-            if (ApplicationModeManager.Instance().IsOfflineModeActive())
-            {
-                feedbackText.SetText("Sie befinden sich im Offline Modus. Es ist kein Feedback verfügbar.");
-                loadingAnimation.SetActive(false);
-                finishButtonContainer.SetActive(false);
-                finishButtonTopContainer.SetActive(true);
-                finishButtonBottomContainer.SetActive(true);
-                return;
-            }
-
             // If no feedback exists yet, request it from the server
             if (string.IsNullOrEmpty(novelToPlay.feedback))
             {

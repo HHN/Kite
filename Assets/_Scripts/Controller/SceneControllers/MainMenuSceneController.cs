@@ -124,11 +124,6 @@ namespace Assets._Scripts.Controller.SceneControllers
                 {
                     //AnalyticsServiceHandler.Instance().CollectData(); //TODO: Replace with custom Analytics
                 }
-
-                if (!ApplicationModeManager.Instance().IsOfflineModeActive())
-                {
-                    StartVersionCheck();
-                }
             }
         }
 

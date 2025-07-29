@@ -43,35 +43,10 @@ namespace Assets._Scripts.Controller.SceneControllers
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout02);
             audioSource = GetComponent<AudioSource>();
 
-            applicationModeToggle.isOn = !ApplicationModeManager.Instance().IsOfflineModeActive();
-
             resetAppButton.onClick.AddListener(OnResetAppButton);
             resetAppInfoButton.onClick.AddListener(OnResetAppInfoButton);
-            applicationModeToggle.onValueChanged.AddListener(delegate { OnApplicationModeToggle(applicationModeToggle); });
             applicationModeInfoButton.onClick.AddListener(OnApplicationModeInfoButton);
             FontSizeManager.Instance().UpdateAllTextComponents();
-        }
-
-        /// <summary>
-        /// Toggles the application mode between online and offline based on the state of the provided toggle.
-        /// Activates the corresponding application mode, displays an informational message,
-        /// and initiates text-to-speech for the mode change message.
-        /// </summary>
-        /// <param name="toggle">The toggle control representing the application's mode state.</param>
-        private void OnApplicationModeToggle(Toggle toggle)
-        {
-            if (toggle.isOn)
-            {
-                ApplicationModeManager.Instance().ActivateOnlineMode();
-                DisplayInfoMessage(InfoMessages.SWITCHED_TO_ONLINE_MODE);
-                StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.SWITCHED_TO_ONLINE_MODE));
-            }
-            else
-            {
-                ApplicationModeManager.Instance().ActivateOfflineMode();
-                DisplayInfoMessage(InfoMessages.SWITCHED_TO_OFFLINE_MODE);
-                StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.SWITCHED_TO_OFFLINE_MODE));
-            }
         }
 
         /// <summary>
