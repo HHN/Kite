@@ -17,7 +17,6 @@ namespace Assets._Scripts.ServerCommunication
         [SerializeField] private int resultCode;
         [SerializeField] private string resultText;
         [SerializeField] private string completion;
-        [SerializeField] private List<NovelReview> novelReviews;
         [SerializeField] private List<AiReview> aiReviews;
         [SerializeField] private List<ReviewObserver> reviewObservers;
         [SerializeField] private List<DataObject> dataObjects;
@@ -76,24 +75,6 @@ namespace Assets._Scripts.ServerCommunication
         public string GetCompletion()
         {
             return completion;
-        }
-
-        /// <summary>
-        /// Sets the list of <see cref="NovelReview"/> objects in the response.
-        /// </summary>
-        /// <param name="novelReviews">A list of novel review objects.</param>
-        public void SetNovelReviews(List<NovelReview> novelReviews)
-        {
-            this.novelReviews = novelReviews;
-        }
-
-        /// <summary>
-        /// Gets the list of <see cref="NovelReview"/> objects from the response.
-        /// </summary>
-        /// <returns>A list of novel review objects.</returns>
-        public List<NovelReview> GetNovelReviews()
-        {
-            return novelReviews;
         }
 
         /// <summary>
