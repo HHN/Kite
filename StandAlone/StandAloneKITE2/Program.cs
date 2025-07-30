@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 
 public class TweePathCalculator
 {
-    private const string MetadataFilePath    = @"..\..\..\Vermieter\visual_novel_meta_data.txt";
-    private const string EventListFilePath   = @"..\..\..\Vermieter\visual_novel_event_list.txt";
-    private const string OutputFilePath      = @"..\..\..\Vermieter\pathOutput.txt";
-    private const string ResponseFilePath    = @"..\..\..\Vermieter\response.txt";
+    private const string MetadataFilePath    = @"..\..\..\Presse\visual_novel_meta_data.txt";
+    private const string EventListFilePath   = @"..\..\..\Presse\visual_novel_event_list.txt";
+    private const string OutputFilePath      = @"..\..\..\Presse\pathOutput.txt";
+    private const string ResponseFilePath    = @"..\..\..\Presse\response.txt";
     private static readonly string apiKey    = Environment.GetEnvironmentVariable("API_KEY");
 
     private static readonly HttpClient http  = new HttpClient
