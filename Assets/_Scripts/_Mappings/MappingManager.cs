@@ -33,7 +33,7 @@ namespace Assets._Scripts._Mappings
         static MappingManager()
         {
             // For WebGL, we use the StreamingAssets folder, but WebGL files need to be accessed asynchronously
-            MappingFileBias = Path.Combine(Application.streamingAssetsPath, "BiasMapping.txt");
+            MappingFileBias = Path.Combine(Application.streamingAssetsPath, "KnowledgeBase.txt");
             MappingFileFaceExpression = Path.Combine(Application.streamingAssetsPath, "FaceExpressionMapping.txt");
             MappingFileCharacter = Path.Combine(Application.streamingAssetsPath, "CharacterMapping.txt");
 
@@ -81,7 +81,7 @@ namespace Assets._Scripts._Mappings
                 {
                     // Split the downloaded content into lines
                     string[] lines = www.downloadHandler.text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-                    ProcessMappingFile(lines, ref _biasMapping);
+                    ParseBiasMappingFromKnowledgeBase(lines, ref _biasMapping);
                 }
                 else
                 {
@@ -93,7 +93,7 @@ namespace Assets._Scripts._Mappings
             if (File.Exists(filePath))
             {
                 string[] lines = File.ReadAllLines(filePath);
-                ProcessMappingFile(lines, ref _biasMapping);
+                ParseBiasMappingFromKnowledgeBase(lines, ref _biasMapping);
             }
             else
             {
@@ -177,42 +177,31 @@ namespace Assets._Scripts._Mappings
         }
 
         /// <summary>
-        /// Processes the mapping file by parsing an array of lines and populating the provided dictionary with key-value pairs.
-        /// Each line in the input should have a colon (':') separating the key and value.
-        /// Invalid lines are ignored, and warnings are logged for improperly formatted lines.
+        /// Parses bias mapping data from an array of lines and populate a dictionary
+        /// with mappings between English and German terms.
         /// </summary>
-        /// <param name="lines">An array of strings where each element represents a line from a mapping file.</param>
-        /// <param name="mapping">A reference to the dictionary that will be populated with key-value pairs extracted from the mapping file.</param>
-        private static void ProcessMappingFile(string[] lines, ref Dictionary<string, string> mapping)
+        /// <param name="lines">An array of strings representing lines of textual data, where English terms
+        /// and corresponding German terms are specified in sequence.</param>
+        /// <param name="mapping">A reference to a dictionary where the parsed mappings between English and German terms
+        /// will be stored.</param>
+        private static void ParseBiasMappingFromKnowledgeBase(string[] lines, ref Dictionary<string, string> mapping)
         {
-            foreach (string line in lines)
+            for (int i = 0; i < lines.Length - 1; i++)
             {
-                if (string.IsNullOrWhiteSpace(line))
-                {
-                    continue;
-                }
+                string german = lines[i].Trim();
+                string biasLine = lines[i + 1].Trim();
 
-                // Split the line into a key and value at the first colon.
-                int colonIndex = line.IndexOf(':');
-                if (colonIndex > 0 && colonIndex < line.Length - 1)
+                if (biasLine.StartsWith(">>Bias|") && biasLine.EndsWith("<<"))
                 {
-                    string key = line.Substring(0, colonIndex).Trim();
-                    string value = line.Substring(colonIndex + 1).Trim();
-
-                    // Ensure the key is not empty and add the pair to the dictionary.
-                    // TryAdd is a concise way to add only if the key doesn't already exist.
-                    if (!string.IsNullOrEmpty(key))
+                    string english = biasLine.Substring(7, biasLine.Length - 9).Trim(); // Extrahiere Bias-Namen
+                    if (!string.IsNullOrEmpty(english) && !string.IsNullOrEmpty(german))
                     {
-                        mapping.TryAdd(key, value);
+                        mapping.TryAdd(english, german);
                     }
-                }
-                else
-                {
-                    Debug.LogWarning($"Invalid mapping line (expected format 'key:value'): {line}");
                 }
             }
         }
-        
+
         /// <summary>
         /// Processes the face expression mapping file lines and populates the given dictionary with mappings.
         /// Each line is expected to have a key-value pair in the format "key:value".
