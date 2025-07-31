@@ -395,6 +395,7 @@ private IEnumerator LoadAllFeedbackWithMappingAsync(
             .ToArray();
 
         WebLogger.Log($"Verfügbare Novel-IDs mit Feedback: {string.Join(", ", ids)}");
+        Debug.Log($"Verfügbare Novel-IDs mit Feedback: {string.Join(", ", ids)}");
     }
     
     /// <summary>
