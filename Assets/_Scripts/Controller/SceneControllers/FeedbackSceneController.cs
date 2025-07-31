@@ -90,8 +90,8 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             if (GeneratedFeedbackManager.Instance.HasEventsForId((int)novelToPlay.id))
             {
-                Debug.Log("Feedback wurde gefunden!");
-                novelToPlay.feedback = GeneratedFeedbackManager.Instance.GetFeedback();
+                //Debug.Log("Feedback wurde gefunden!");
+                novelToPlay.feedback = GeneratedFeedbackManager.Instance.GetFeedback().Replace("**", "");
                 SaveDialogToHistory(novelToPlay.feedback);
             }
             

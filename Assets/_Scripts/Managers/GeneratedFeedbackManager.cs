@@ -451,73 +451,87 @@ private IEnumerator LoadAllFeedbackWithMappingAsync(
     }
 
     /// <summary>
-    /// Gibt true zurück, wenn genau ein einziger FeedbackEntry
-    /// die gewählten Events als Subsequenz in seinem Path enthält.
+    /// Gibt true zurück, wenn 'sub' als (nicht-zusammenhängende) Teilsequenz
+    /// in 'main' enthalten ist. Leerstrings und null-Einträge werden vorher entfernt.
     /// </summary>
-    public bool IsComplete
-        => _allEntries.Count(fe => IsSubsequence(_chosenEvents, fe.Path)) == 1;
-
-    /// <summary>
-    /// Gibt den Feedback-Text desjenigen Eintrags zurück, dessen Pfad (SubPfad)
-    /// als Subsequenz vollständig im gewählten Hauptpfad enthalten ist.
-    /// Wenn mehrere Einträge passen, wird der mit den meisten Elementen (längster SubPfad) ausgewählt.
-    /// </summary>
-    /// <returns>
-    /// Den Feedback-Text des besten Treffers oder null, falls keine SubPfad-Übereinstimmung gefunden wurde.
-    /// </returns>
-    public string? GetFeedback()
+    private static bool ContainsSubsequenceAnywhere(
+        IReadOnlyList<string> main,
+        IReadOnlyList<string> sub)
     {
-        // Finde alle Einträge, deren Path als Subsequenz in _chosenEvents vorkommt
-        var matches = _allEntries
-            .Where(fe => IsSubsequence(_chosenEvents, fe.Path))
+        // 1) Normalisieren: trimmen, null/leer rauswerfen
+        var mainClean = main
+            .Where(s => !string.IsNullOrWhiteSpace(s))
+            .Select(s => s!.Trim())
             .ToList();
 
-        // Keine Übereinstimmungen → kein Feedback
+        var subClean = sub
+            .Where(s => !string.IsNullOrWhiteSpace(s))
+            .Select(s => s!.Trim())
+            .ToList();
+
+        // 2) Leere Subsequenz matcht immer
+        if (subClean.Count == 0)
+            return true;
+
+        // 3) Standard-Subsequence-Scan
+        int j = 0;
+        for (int i = 0; i < mainClean.Count; i++)
+        {
+            if (string.Equals(mainClean[i], subClean[j], StringComparison.Ordinal))
+            {
+                j++;
+                if (j == subClean.Count)
+                    return true;
+            }
+        }
+        return false;
+    }
+
+
+    /// <summary>
+    /// True, sobald genau ein FeedbackEntry seinen Path 
+    /// irgendwo als Subsequenz in den gewählten Events enthält.
+    /// </summary>
+    public bool IsComplete
+        => _allEntries.Count(fe => 
+               ContainsSubsequenceAnywhere(_chosenEvents, fe.Path)) == 1;
+
+    /// <summary>
+    /// Liefert den Feedback-Text desjenigen Eintrags, dessen Path
+    /// irgendwo (in richtiger Reihenfolge) in den gewählten Events steckt.
+    /// Wenn mehrere passen, nehmen wir den längsten.
+    /// </summary>
+    public string? GetFeedback()
+    {
+        var matches = _allEntries
+            .Where(fe => ContainsSubsequenceAnywhere(_chosenEvents, fe.Path))
+            .ToList();
+
         if (!matches.Any())
             return null;
 
-        // Bestimme die maximale Länge unter den gefundenen SubPfaden
         int maxLength = matches.Max(fe => fe.Path.Count);
-
-        // Wähle den ersten Eintrag mit dieser maximalen Länge
-        var bestMatch = matches.First(fe => fe.Path.Count == maxLength);
-
-        // Gib sein Feedback zurück
-        return bestMatch.Feedback;
+        var best = matches.First(fe => fe.Path.Count == maxLength);
+        return best.Feedback;
     }
 
     /// <summary>
-    /// Liefert den aktuell gewählten Hauptpfad und alle
-    /// Candidate-Pfade, die innerhalb dieses Hauptpfades
-    /// als Subsequence vorkommen – inklusive Ein-Element-Pfade,
-    /// sobald der erste Event davon gewählt ist.
+    /// Gibt den kompletten Event-Verlauf zurück und alle Sub-Pfade,
+    /// die irgendwo (in richtiger Reihenfolge) darin enthalten sind.
     /// </summary>
     public (List<string> FullEvents, List<List<string>> SubPaths) GetStatus()
     {
         var full = new List<string>(_chosenEvents);
 
-        // *korrekt* prüft: ist jeder Eintrag von 'path' irgendwo in 'full' in richtiger Reihenfolge?
-        var subPaths = _allEntries
+        var subs = _allEntries
             .Select(fe => fe.Path)
-            .Where(path => IsSubsequence(full, path))
+            .Where(path => ContainsSubsequenceAnywhere(full, path))
             .ToList();
 
-        return (full, subPaths);
-    }
-
-    private static bool IsSubsequence(
-        IReadOnlyList<string> main,
-        IReadOnlyList<string> sub)
-    {
-        int j = 0;
-        for (int i = 0; i < main.Count && j < sub.Count; i++)
-        {
-            if (main[i] == sub[j])
-                j++;
-        }
-        return j == sub.Count;
+        return (full, subs);
     }
 }
+
 
     public static class WebLogger
     {
@@ -527,7 +541,7 @@ private IEnumerator LoadAllFeedbackWithMappingAsync(
         // ruft im HTML-Template die JS-Funktion logMessage(message) auf
         Application.ExternalCall("logMessage", message);
 #else
-            Debug.Log(message);
+            //Debug.Log(message);
 #endif
         }
 
@@ -536,7 +550,7 @@ private IEnumerator LoadAllFeedbackWithMappingAsync(
 #if UNITY_WEBGL && !UNITY_EDITOR
         Application.ExternalCall("logMessage", $"⚠️ {message}");
 #else
-            Debug.LogWarning(message);
+            //Debug.LogWarning(message);
 #endif
         }
 
@@ -545,7 +559,7 @@ private IEnumerator LoadAllFeedbackWithMappingAsync(
 #if UNITY_WEBGL && !UNITY_EDITOR
         Application.ExternalCall("logMessage", $"❌ {message}");
 #else
-            Debug.LogError(message);
+            //Debug.LogError(message);
 #endif
         }
     }
