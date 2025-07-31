@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1465545687914413254}
   - component: {fileID: 1465545687914413252}
-  - component: {fileID: 4126753951640385348}
   - component: {fileID: 4524035883740533591}
   - component: {fileID: 6155688656520349526}
   - component: {fileID: 4253796331781111194}
@@ -49,20 +48,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465545687914413273}
   m_CullTransparentMesh: 1
---- !u!114 &4126753951640385348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465545687914413273}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AspectMode: 2
-  m_AspectRatio: 1.1497505
 --- !u!114 &4524035883740533591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,6 +84,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: df333ac9d5c83b444bf27c2070c934e8, type: 3}
   - {fileID: 21300000, guid: b2e298bcabca56342b5b9cf26725d87f, type: 3}
   glassesSprites: []
+  handSprites:
+    HandColorA:
+    - {fileID: 21300000, guid: 832d29c386a1b96469a1a0264fcd1564, type: 3}
+    HandColorB:
+    - {fileID: 21300000, guid: 2a9a64d351cb2124dbe270cdbc66aa5e, type: 3}
+    HandColorC:
+    - {fileID: 21300000, guid: c1d28d87bace8674fa733d1f6fd8a8e0, type: 3}
+    HandColorD:
+    - {fileID: 21300000, guid: 68ec5ec9b9fa17241ad9052df5ca1408, type: 3}
   clothesSprites:
   - {fileID: 21300000, guid: 84e9d4e4cce4c9a45b6e143c19ad6282, type: 3}
   - {fileID: 21300000, guid: ed8513c7c8e7a9b4b9ce2c5c3e55a684, type: 3}
@@ -695,11 +689,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3014206807702693691}
-  - {fileID: 5855859007694441756}
-  - {fileID: 3084753187287582620}
   - {fileID: 3904063642809845299}
   - {fileID: 2293698212603797059}
   - {fileID: 4269171091090045215}
+  - {fileID: 3084753187287582620}
+  - {fileID: 5855859007694441756}
+  - {fileID: 2006125053318295345}
   m_Father: {fileID: 1465545687914413254}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: -0.5}
@@ -737,8 +732,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2006125053318295345}
+  m_Children: []
   m_Father: {fileID: 4110506590062096476}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -811,7 +805,7 @@ GameObject:
   - component: {fileID: 6183954683827931753}
   - component: {fileID: 443711252670075040}
   m_Layer: 5
-  m_Name: Hands
+  m_Name: HandImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -829,7 +823,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5855859007694441756}
+  m_Father: {fileID: 4110506590062096476}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

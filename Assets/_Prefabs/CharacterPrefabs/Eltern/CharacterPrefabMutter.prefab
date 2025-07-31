@@ -427,7 +427,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1465545687914413254}
   - component: {fileID: 1465545687914413252}
-  - component: {fileID: 4126753951640385348}
   - component: {fileID: 4524035883740533591}
   - component: {fileID: 6155688656520349526}
   - component: {fileID: 4253796331781111194}
@@ -466,20 +465,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465545687914413273}
   m_CullTransparentMesh: 1
---- !u!114 &4126753951640385348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465545687914413273}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AspectMode: 2
-  m_AspectRatio: 1.1497505
 --- !u!114 &4524035883740533591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,6 +497,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f0cd2a41e164db74fb5801502b18f8eb, type: 3}
   - {fileID: 21300000, guid: df333ac9d5c83b444bf27c2070c934e8, type: 3}
   glassesSprites: []
+  handSprites:
+    HandColorA:
+    - {fileID: 21300000, guid: c42fcb7e1e94e1741aef3e0a5a481b0e, type: 3}
+    HandColorB:
+    - {fileID: 21300000, guid: 4b3887f450aacd944884229a2acb43f8, type: 3}
+    - {fileID: 21300000, guid: ce98c9dfe7d7ad8439fcb5280a384a77, type: 3}
+    HandColorC:
+    - {fileID: 21300000, guid: 7980b4d38c3130548bc1ad6abaa194a9, type: 3}
+    HandColorD:
+    - {fileID: 0}
   clothesSprites:
   - {fileID: 21300000, guid: 79b391930c4c4cd4a994b4794c858cde, type: 3}
   - {fileID: 21300000, guid: 372aa6bdf58eb544ebc97177c7be5bef, type: 3}

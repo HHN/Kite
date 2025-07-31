@@ -65,7 +65,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private List<CharacterVisualEntry> novelVisualMappings = new();
 
         [SerializeField] private GameObject novelImageContainer;
-        [SerializeField] private GameObject novelBackgroundPrefab;
         [SerializeField] private GameObject backgroundContainer;
         [SerializeField] private GameObject deskContainer;
         [SerializeField] private GameObject decoDeskContainer;

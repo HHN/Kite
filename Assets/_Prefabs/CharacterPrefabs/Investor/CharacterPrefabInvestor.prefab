@@ -228,7 +228,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1465545687914413254}
   - component: {fileID: 1465545687914413252}
-  - component: {fileID: 4126753951640385348}
   - component: {fileID: 4524035883740533591}
   - component: {fileID: 6155688656520349526}
   - component: {fileID: 4253796331781111194}
@@ -267,20 +266,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465545687914413273}
   m_CullTransparentMesh: 1
---- !u!114 &4126753951640385348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465545687914413273}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AspectMode: 2
-  m_AspectRatio: 1.1497505
 --- !u!114 &4524035883740533591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,6 +302,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: df333ac9d5c83b444bf27c2070c934e8, type: 3}
   - {fileID: 21300000, guid: b2e298bcabca56342b5b9cf26725d87f, type: 3}
   glassesSprites: []
+  handSprites:
+    HandColorA:
+    - {fileID: 21300000, guid: 2b0008164cdb1ed408f95f92f8ddd0fa, type: 3}
+    HandColorB:
+    - {fileID: 21300000, guid: fae6f3965513bf24eb9b8cd99d5b7c7b, type: 3}
+    HandColorC:
+    - {fileID: 21300000, guid: da84ce3f0fcd6af4aa1267bb3a42aeff, type: 3}
+    HandColorD:
+    - {fileID: 21300000, guid: 259cee5eaa41202448c4420a0e8178bb, type: 3}
   clothesSprites:
   - {fileID: 21300000, guid: 93849b1d7811faa46a64acab38ff9a72, type: 3}
   - {fileID: 21300000, guid: 156b4461f254db348b9b97356baf2c2a, type: 3}
@@ -879,7 +873,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8931213347672921323, guid: 2b0008164cdb1ed408f95f92f8ddd0fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2b0008164cdb1ed408f95f92f8ddd0fa, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

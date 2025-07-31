@@ -921,7 +921,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 540, y: -265}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_SizeDelta: {x: 1080, y: 330}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &498441981
 MonoBehaviour:
@@ -3915,7 +3915,6 @@ MonoBehaviour:
   - characterName: Sachbearbeiter
     prefab: {fileID: 781856241913721907, guid: 0befadf77118e9847b85864f275358d1, type: 3}
   novelImageContainer: {fileID: 1655295459}
-  novelBackgroundPrefab: {fileID: 8411936371333490823, guid: bd9e9565679ee6446be061db5b61e445, type: 3}
   backgroundContainer: {fileID: 1386174946}
   deskContainer: {fileID: 641773708}
   decoDeskContainer: {fileID: 1714175714}
@@ -4001,7 +4000,7 @@ MonoBehaviour:
   isTyping: 0
   playThroughHistory: []
   eventHistory: []
-  IsPaused: 0
+  isPaused: 0
 --- !u!4 &2133875533
 Transform:
   m_ObjectHideFlags: 0

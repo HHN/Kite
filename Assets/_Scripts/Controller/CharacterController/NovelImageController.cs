@@ -47,7 +47,7 @@ namespace Assets._Scripts.Controller.CharacterController
         [Header("Decoration Interactions")] [SerializeField]
         private DecorationInteraction[] decorations;
 
-        public List<Kite2CharacterController> characterControllers = new();
+        [HideInInspector] public List<Kite2CharacterController> characterControllers = new();
 
         private void Start()
         {
