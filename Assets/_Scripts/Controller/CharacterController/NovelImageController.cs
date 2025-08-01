@@ -261,6 +261,7 @@ namespace Assets._Scripts.Controller.CharacterController
         /// </remarks>
         public virtual void StartCharacterTalking()
         {
+            Debug.Log($"novelKite2CharacterController: {novelKite2CharacterController}");
             if (novelKite2CharacterController == null)
             {
                 return;

@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 6704600108708975586}
   - component: {fileID: 6223790406291183613}
   m_Layer: 6
-  m_Name: Background Container
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 1535315102825623083}
   - component: {fileID: 4192368680822077079}
   m_Layer: 6
-  m_Name: Character Container
+  m_Name: CharacterContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 5869069278642351330}
   - component: {fileID: 9150480766732762899}
   m_Layer: 3
-  m_Name: Deco Plant Container
+  m_Name: DecoPlantContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

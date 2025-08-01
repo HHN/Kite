@@ -151,11 +151,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinImage: {fileID: 6553579731152782210}
-  glassImage: {fileID: 7767619512969835270}
-  handImage: {fileID: 8055982738316521722}
-  clothesImage: {fileID: 2735791881534372737}
-  hairImage: {fileID: 3816683545305009484}
   faceImage: {fileID: 5629460200802205328}
+  glassImage: {fileID: 7767619512969835270}
+  hairImage: {fileID: 3816683545305009484}
+  clothesImage: {fileID: 2735791881534372737}
+  handImage: {fileID: 8055982738316521722}
   skinSprites:
   - {fileID: 21300000, guid: 8c7ba12561509094e994e87bdc0db61e, type: 3}
   - {fileID: 21300000, guid: 23705b0d83ea24847ad9441c206187ff, type: 3}
@@ -174,27 +174,27 @@ MonoBehaviour:
   - {fileID: 21300000, guid: df333ac9d5c83b444bf27c2070c934e8, type: 3}
   - {fileID: 21300000, guid: b2e298bcabca56342b5b9cf26725d87f, type: 3}
   glassesSprites: []
-  handSprites:
-    HandColorA: []
-    HandColorB: []
-    HandColorC: []
-    HandColorD: []
-  clothesSprites:
-  - {fileID: 21300000, guid: 537e22e6225f9534dbaee921282c5aa7, type: 3}
-  - {fileID: 21300000, guid: 2d6ec58c3f6ebe6489f212080c5fc1d6, type: 3}
-  - {fileID: 21300000, guid: c6ff52e5a6bfb9241b8367775a7fbea9, type: 3}
-  - {fileID: 21300000, guid: 1d007f475254e8e43908668574a85e83, type: 3}
   hairSprites:
   - {fileID: 21300000, guid: fa67fe9e76d94ed45b78b8b48896add3, type: 3}
   - {fileID: 21300000, guid: a21e9a4c9f758ff48a38e2bf117bcf82, type: 3}
   - {fileID: 21300000, guid: ee98fd269dd9c8e4d91dc0de38217c0c, type: 3}
   - {fileID: 21300000, guid: ece792e4975ea5649a04c314f84dd14e, type: 3}
+  clothesSprites:
+  - {fileID: 21300000, guid: 537e22e6225f9534dbaee921282c5aa7, type: 3}
+  - {fileID: 21300000, guid: 2d6ec58c3f6ebe6489f212080c5fc1d6, type: 3}
+  - {fileID: 21300000, guid: c6ff52e5a6bfb9241b8367775a7fbea9, type: 3}
+  - {fileID: 21300000, guid: 1d007f475254e8e43908668574a85e83, type: 3}
+  handSprites:
+    HandColorA: []
+    HandColorB: []
+    HandColorC: []
+    HandColorD: []
   animator: {fileID: 6155688656520349526}
   skinIndex: 0
   glassIndex: 0
-  handIndex: 
-  clotheIndex: 0
   hairIndex: 0
+  clotheIndex: 0
+  handIndex: 
   characterId: 0
 --- !u!95 &6155688656520349526
 Animator:
@@ -876,7 +876,7 @@ GameObject:
   - component: {fileID: 6095954137444701355}
   - component: {fileID: 4170520537566791221}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Headset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

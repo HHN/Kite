@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6941678052607219121}
   - component: {fileID: 4685010338087822860}
   m_Layer: 3
-  m_Name: Deco Tasse 1 Container
+  m_Name: DecoMugContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -478,11 +478,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinImage: {fileID: 6553579731152782210}
-  glassImage: {fileID: 3745943266359623895}
-  handImage: {fileID: 8526199543508943464}
-  clothesImage: {fileID: 2735791881534372737}
-  hairImage: {fileID: 3816683545305009484}
   faceImage: {fileID: 5629460200802205328}
+  glassImage: {fileID: 3745943266359623895}
+  hairImage: {fileID: 3816683545305009484}
+  clothesImage: {fileID: 2735791881534372737}
+  handImage: {fileID: 8526199543508943464}
   skinSprites:
   - {fileID: 21300000, guid: 8c7ba12561509094e994e87bdc0db61e, type: 3}
   - {fileID: 21300000, guid: 23705b0d83ea24847ad9441c206187ff, type: 3}
@@ -497,6 +497,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f0cd2a41e164db74fb5801502b18f8eb, type: 3}
   - {fileID: 21300000, guid: df333ac9d5c83b444bf27c2070c934e8, type: 3}
   glassesSprites: []
+  hairSprites:
+  - {fileID: 21300000, guid: 0969c1d7e0f9f814080ca67de6a02d56, type: 3}
+  - {fileID: 21300000, guid: 0a5b665c75891e74798633688169797e, type: 3}
+  - {fileID: 21300000, guid: 0d17b36a046916c4b942fc446fb5acc4, type: 3}
+  - {fileID: 21300000, guid: 75033b837f060974ea7d7878e3dd9d25, type: 3}
+  clothesSprites:
+  - {fileID: 21300000, guid: 79b391930c4c4cd4a994b4794c858cde, type: 3}
+  - {fileID: 21300000, guid: 372aa6bdf58eb544ebc97177c7be5bef, type: 3}
+  - {fileID: 21300000, guid: 58bbed27cc5c40b4ea8e7d58352257d9, type: 3}
+  - {fileID: 21300000, guid: 0bd18820e6b6b3946815dafbea915c78, type: 3}
   handSprites:
     HandColorA:
     - {fileID: 21300000, guid: c42fcb7e1e94e1741aef3e0a5a481b0e, type: 3}
@@ -507,22 +517,12 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 7980b4d38c3130548bc1ad6abaa194a9, type: 3}
     HandColorD:
     - {fileID: 0}
-  clothesSprites:
-  - {fileID: 21300000, guid: 79b391930c4c4cd4a994b4794c858cde, type: 3}
-  - {fileID: 21300000, guid: 372aa6bdf58eb544ebc97177c7be5bef, type: 3}
-  - {fileID: 21300000, guid: 58bbed27cc5c40b4ea8e7d58352257d9, type: 3}
-  - {fileID: 21300000, guid: 0bd18820e6b6b3946815dafbea915c78, type: 3}
-  hairSprites:
-  - {fileID: 21300000, guid: 0969c1d7e0f9f814080ca67de6a02d56, type: 3}
-  - {fileID: 21300000, guid: 0a5b665c75891e74798633688169797e, type: 3}
-  - {fileID: 21300000, guid: 0d17b36a046916c4b942fc446fb5acc4, type: 3}
-  - {fileID: 21300000, guid: 75033b837f060974ea7d7878e3dd9d25, type: 3}
   animator: {fileID: 6155688656520349526}
   skinIndex: 0
   glassIndex: 0
-  handIndex: 
-  clotheIndex: 0
   hairIndex: 0
+  clotheIndex: 0
+  handIndex: 
   characterId: 0
 --- !u!95 &6155688656520349526
 Animator:

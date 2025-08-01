@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 3538426294306308669}
   - component: {fileID: 2021710192099047298}
   m_Layer: 3
-  m_Name: Deco Kommode Container
+  m_Name: DecoDrawerCabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 6704600108708975586}
   - component: {fileID: 6223790406291183613}
   m_Layer: 6
-  m_Name: Background Container
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 6258752665224613818}
   - component: {fileID: 3808352380996873129}
   m_Layer: 6
-  m_Name: Deco Desk Container
+  m_Name: DecoTable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 4192368680822077079}
   - component: {fileID: 1427214872243210726}
   m_Layer: 6
-  m_Name: Character Container
+  m_Name: CharacterContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 2329372007645306793}
   - component: {fileID: 1711885183087085471}
   m_Layer: 6
-  m_Name: Deco Vase Container
+  m_Name: DecoVaseContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
