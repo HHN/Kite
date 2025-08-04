@@ -161,7 +161,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             foreach (VisualNovel visualNovel in _allKiteNovelsById.Values)
             {
                 // Skip if not a kite novel
-                if (!visualNovel.isKiteNovel) continue;
+                if (visualNovel.isKiteNovel) continue;
                 
                 // Get the name of the visual novel
                 string novelName = VisualNovelNamesHelper.GetName(visualNovel.id);
@@ -277,6 +277,10 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             foreach (VisualNovel visualNovel in _allKiteNovelsById.Values)
             {
+                if (visualNovel.isKiteNovel)
+                {
+                    continue;
+                }
                 NovelEntry novelEntry = new NovelEntry
                 {
                     novelId = visualNovel.id,
