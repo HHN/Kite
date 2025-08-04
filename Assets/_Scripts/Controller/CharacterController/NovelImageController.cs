@@ -261,13 +261,12 @@ namespace Assets._Scripts.Controller.CharacterController
         /// </remarks>
         public virtual void StartCharacterTalking()
         {
-            Debug.Log($"novelKite2CharacterController: {novelKite2CharacterController}");
             if (novelKite2CharacterController == null)
             {
                 return;
             }
 
-            novelKite2CharacterController.StartTalking();
+            // novelKite2CharacterController.StartTalking();
         }
 
         /// <summary>
@@ -280,7 +279,7 @@ namespace Assets._Scripts.Controller.CharacterController
                 return;
             }
 
-            novelKite2CharacterController.StopTalking();
+            // novelKite2CharacterController.StopTalking();
         }
     }
 }

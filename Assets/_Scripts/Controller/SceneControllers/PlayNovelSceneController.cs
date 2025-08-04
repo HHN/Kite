@@ -986,19 +986,19 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// This method delegates the operation to the NovelImageController to handle character-specific
         /// talking animations or expressions.
         /// </summary>
-        public void StartTalking()
-        {
-            _novelImagesController.StartCharacterTalking();
-        }
+        // public void StartTalking()
+        // {
+        //     _novelImagesController.StartCharacterTalking();
+        // }
 
         /// <summary>
         /// Stops the currently talking character in the visual novel scene by invoking
         /// the relevant method in the NovelImageController.
         /// </summary>
-        public void StopTalking()
-        {
-            _novelImagesController.StopCharacterTalking();
-        }
+        // public void StopTalking()
+        // {
+        //     _novelImagesController.StopCharacterTalking();
+        // }
 
         /// <summary>
         /// Sets the state of whether the system is waiting for user confirmation.

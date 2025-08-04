@@ -323,10 +323,10 @@ namespace Assets._Scripts.Controller.CharacterController
         /// This method interacts with the character's animator to trigger the talking animation state.
         /// If the animator is null, the method does nothing.
         /// </remarks>
-        public void StartTalking()
-        {
-            animator?.SetBool(IsTalking, true);
-        }
+        // public void StartTalking()
+        // {
+        //     animator?.SetBool(IsTalking, true);
+        // }
 
         /// <summary>
         /// Stops the talking animation of the character by setting the "isTalking" animation flag to false.
@@ -335,9 +335,9 @@ namespace Assets._Scripts.Controller.CharacterController
         /// This method uses the Animator component to control the "isTalking" animation state.
         /// If the Animator instance is not null, it updates the "isTalking" boolean parameter to false, effectively halting any corresponding talking animations.
         /// </remarks>
-        public void StopTalking()
-        {
-            animator?.SetBool(IsTalking, false);
-        }
+        // public void StopTalking()
+        // {
+        //     animator?.SetBool(IsTalking, false);
+        // }
     }
 }
