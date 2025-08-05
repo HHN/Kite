@@ -805,7 +805,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2326842152714167184
 RectTransform:
   m_ObjectHideFlags: 0
@@ -822,10 +822,10 @@ RectTransform:
   - {fileID: 5317896097103068575}
   m_Father: {fileID: 8267146852985324931}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 582.5, y: -162.5}
+  m_SizeDelta: {x: 375, y: 95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3800895818682779910
 CanvasRenderer:
@@ -1275,8 +1275,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Was m\xF6chtest du tun?\n\n<b>Weiterspielen:</b> Die Story fortsetzen.\n<b>Pausieren:</b>
     Sp\xE4ter an dieser Stelle weitermachen.\n<b>Abbrechen:</b> Die Story ohne Speicherung
-    abbrechen.\n<b>Abschlie\xDFen:</b> Die Story hier beenden und als abgeschlossen
-    werten."
+    abbrechen."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
@@ -1703,7 +1702,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 437.5, y: -578.01}
+  m_AnchoredPosition: {x: 437.5, y: -473.01}
   m_SizeDelta: {x: 770, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6861162756059154671
@@ -2249,7 +2248,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 437.5, y: -741.505}
+  m_AnchoredPosition: {x: 437.5, y: -689.005}
   m_SizeDelta: {x: 875, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7925663639718970133
