@@ -29,10 +29,16 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 AddCharacterIfNotNullOrWhitespace(characters, folder.NovelMetaData.TalkingPartner02);
                 AddCharacterIfNotNullOrWhitespace(characters, folder.NovelMetaData.TalkingPartner03);
 
-                Color novelColor = Color.black; // Standardwert
+                Color novelColor = Color.black;
                 if (!string.IsNullOrEmpty(folder.NovelMetaData.NovelColor))
                 {
                     ColorUtility.TryParseHtmlString(folder.NovelMetaData.NovelColor, out novelColor);
+                }
+                
+                Color novelFrameColor = Color.black;
+                if (!string.IsNullOrEmpty(folder.NovelMetaData.NovelFrameColor))
+                {
+                    ColorUtility.TryParseHtmlString(folder.NovelMetaData.NovelFrameColor, out novelFrameColor);
                 }
 
                 VisualNovel novel = new VisualNovel
@@ -46,6 +52,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                     characters = characters,
                     isKiteNovel = folder.NovelMetaData.IsKiteNovel,
                     novelColor = novelColor,
+                    novelFrameColor = novelFrameColor
                 };
 
                 novels.Add(novel);

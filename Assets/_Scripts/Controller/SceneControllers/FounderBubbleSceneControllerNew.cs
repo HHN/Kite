@@ -36,6 +36,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private NovelDescriptionTextbox novelDescriptionTextbox;
         [SerializeField] private ScrollRect novelButtonsScrollRect;
         [SerializeField] private Transform novelButtonsContainer;
+        [SerializeField] private GameObject introNovelButton;
         [SerializeField] private HorizontalLayoutGroup horizontalLayoutGroup;
         [SerializeField] private GameObject novelButtonPrefab;
 
@@ -69,6 +70,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         private RectTransform _lastNovelButtonRectTransform;
         private List<NovelEntry> _isNovelContainedInVersion;
         private int _novelId;
+        private Transform _lastScaledNovelButton;
 
         #region Unity Lifecycle
 
@@ -85,6 +87,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             SetupBurgerMenuUI(content);
             SetupMainNovelTiles();
+            SetupIntroNovelButton();
             AddEventListeners();
             PerformPostUISetupActions();
         }
@@ -179,9 +182,23 @@ namespace Assets._Scripts.Controller.SceneControllers
 
                 // Configure button properties
                 novelButtonGameObject.name = novelName;
+                
+                Image[] images = novelButtonGameObject.GetComponentsInChildren<Image>(true);
+
+                foreach (Image img in images)
+                {
+                    if (img.gameObject.name == "ButtonFrame")
+                    {
+                        img.color = visualNovel.novelFrameColor;
+                    }
+                    else if (img.gameObject.name == "NovelName")
+                    {
+                        img.color = visualNovel.novelColor;
+                    }
+                }
+                
                 novelButtonGameObject.GetComponentInChildren<Button>().name = novelName;
                 novelButtonGameObject.GetComponentInChildren<TextMeshProUGUI>().text = !visualNovel.isKiteNovel ? visualNovel.title : visualNovel.designation;
-                novelButtonGameObject.GetComponentInChildren<Image>().color = visualNovel.novelColor;
 
                 // Setup button click handling
                 Button button = novelButtonGameObject.GetComponentInChildren<Button>();
@@ -220,6 +237,40 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             // Force canvas update to reflect changes
             Canvas.ForceUpdateCanvases();
+        }
+        
+        private void SetupIntroNovelButton()
+        {
+            if (introNovelButton)
+            {
+                foreach (VisualNovel visualNovel in _allKiteNovelsById.Values)
+                {
+                    if (visualNovel.designation.Equals("Mehr zu KITE II erfahren"))
+                    {
+                        Image[] images = introNovelButton.GetComponentsInChildren<Image>(true);
+
+                        foreach (Image img in images)
+                        {
+                            if (img.gameObject.name == "ButtonFrame")
+                            {
+                                img.color = visualNovel.novelFrameColor;
+                            }
+                            else if (img.gameObject.name == "NovelName")
+                            {
+                                img.color = visualNovel.novelColor;
+                            }
+                        }
+                
+                        introNovelButton.GetComponentInChildren<Button>().onClick.AddListener(OnIntroNovelButton);
+                        introNovelButton.GetComponentInChildren<Button>().name = visualNovel.title;
+                        introNovelButton.GetComponentInChildren<TextMeshProUGUI>().text = !visualNovel.isKiteNovel ? visualNovel.title : visualNovel.designation;
+                    }
+                }
+            }
+            else
+            {
+                Debug.LogWarning("Intro Novel Button is not assigned in the Inspector.");
+            }
         }
 
         /// <summary>
@@ -420,10 +471,26 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         /// <param name="buttonRect">The RectTransform of the clicked visual novel button.</param>
         /// <param name="novelNames">The enumeration value representing the visual novel associated with the button.</param>
-        public void OnNovelButton(RectTransform buttonRect, VisualNovelNames novelNames)
+        private void OnNovelButton(RectTransform buttonRect, VisualNovelNames novelNames)
         {
+            if (_lastScaledNovelButton != null)
+            {
+                _lastScaledNovelButton.localScale = Vector3.one;
+            }
+            
             NovelEntry entry = _isNovelContainedInVersion.FirstOrDefault(novel => novel.novelId == VisualNovelNamesHelper.ToInt(novelNames));
             if (entry == null) return;
+            
+            Image[] images = buttonRect.GetComponentsInChildren<Image>(true);
+
+            foreach (Image img in images)
+            {
+                if (img.gameObject.name == VisualNovelNamesHelper.GetName(VisualNovelNamesHelper.ToInt(novelNames)))
+                {
+                    img.gameObject.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+                    _lastScaledNovelButton = img.gameObject.transform;
+                }
+            }
 
             if (SnapToButton(buttonRect)) return;
 
@@ -440,10 +507,22 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// Retrieves the novel name from the button's name, determines the corresponding visual novel,
         /// and initializes it as an introductory novel to be played.
         /// </summary>
-        public void OnIntroNovelButton()
+        private void OnIntroNovelButton()
         {
-            GameObject buttonObject = EventSystem.current.currentSelectedGameObject;
-            VisualNovelNames novelNames = VisualNovelNamesHelper.ValueByString(buttonObject.name);
+            RectTransform buttonRect = EventSystem.current.currentSelectedGameObject.GetComponent<RectTransform>();
+            string buttonObjectName = buttonRect.gameObject.name.Replace("sdialog", "");
+            VisualNovelNames novelNames = VisualNovelNamesHelper.ValueByString(buttonObjectName);
+            
+            Image[] images = buttonRect.GetComponentsInChildren<Image>(true);
+
+            foreach (Image img in images)
+            {
+                if (img.gameObject.name.Contains("buttonObjectName"))
+                {
+                    img.gameObject.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+                    _lastScaledNovelButton = img.gameObject.transform;
+                }
+            }
 
             LoadAndPlayNovel(novelNames, true);
         }
@@ -606,6 +685,12 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private void MakeTextboxInvisible()
         {
+            if (_lastScaledNovelButton != null)
+            {
+                _lastScaledNovelButton.localScale = Vector3.one;
+                _lastScaledNovelButton = null;
+            }
+            
             isPopupOpen = false;
             currentlyOpenedVisualNovelPopup = VisualNovelNames.None;
             novelDescriptionTextbox.gameObject.SetActive(false);
