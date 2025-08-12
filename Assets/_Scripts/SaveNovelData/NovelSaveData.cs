@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using UnityEngine;
 

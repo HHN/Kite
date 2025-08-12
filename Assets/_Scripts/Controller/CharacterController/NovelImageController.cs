@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets._Scripts._Mappings;
 using Assets._Scripts.Controller.SceneControllers;
+using Assets._Scripts.Managers;
 using UnityEngine;
 
 namespace Assets._Scripts.Controller.CharacterController
