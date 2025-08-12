@@ -8,7 +8,7 @@ using Assets._Scripts.UIElements.Messages;
 using Assets._Scripts.Utilities;
 using UnityEngine;
 
-namespace Assets._Scripts
+namespace Assets._Scripts.Managers
 {
     /// <summary>
     /// Represents the save status of a novel. This class holds information about

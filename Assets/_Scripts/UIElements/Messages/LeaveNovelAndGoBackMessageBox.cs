@@ -202,8 +202,9 @@ namespace Assets._Scripts.UIElements.Messages
         public void HandleButtons()
         {
             pauseButton.gameObject.SetActive(false);
+            endButton.gameObject.SetActive(false);
 
-            backgroundMessageBox.GetComponentInChildren<TextMeshProUGUI>().text = "Was möchtest du tun?\n\n<b>Weiterspielen:</b> Die Story fortsetzen.\n<b>Abschließen:</b> Die Story hier beenden und als abgeschlossen werten.\n<b>Abbrechen:</b> Die Story ohne Speicherung abbrechen.";
+            backgroundMessageBox.GetComponentInChildren<TextMeshProUGUI>().text = "Was möchtest du tun?\n\n<b>Weiterspielen:</b> Die Story fortsetzen.\n<b>Abbrechen:</b> Die Story ohne Speicherung abbrechen.";
         }
     }
 }

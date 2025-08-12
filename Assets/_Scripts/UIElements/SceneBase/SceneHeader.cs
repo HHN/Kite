@@ -47,7 +47,7 @@ namespace Assets._Scripts.UIElements.SceneBase
                 backButton.GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
                 backButton.interactable = false;
 
-                GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
+                // GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
             }
             else
             {
