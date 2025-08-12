@@ -1,0 +1,87 @@
+Hier die Liste mit Geschlechterbiases im Gründungsprozess:
+
+Strukturelle wirtschaftliche Barrieren                    
+                    
+Finanzierungszugang
+>>Bias|AccessToFinancing<<
+Bias: Schwierigkeiten von Frauen, Kapital für ihre Unternehmen zu beschaffen.                    
+                    
+Gender Pay Gap
+>>Bias|GenderPayGap<<
+Bias: Lohnungleichheit zwischen Männern und Frauen.                    
+                    
+Unterbewertung weiblich geführter Unternehmen
+>>Bias|UndervaluationFemaleManagedCompany<<
+Bias: Geringere Bewertung von Unternehmen, die von Frauen geführt werden.                    
+                    
+Risk Aversion Bias
+>>Bias|RiskAversionBias<<
+Bias: Wahrnehmung von Frauen als risikoaverser.                    
+                    
+Bestätigungsverzerrung
+>>Bias|ConfirmationBias<<
+Bias: Tendenz, Informationen zu interpretieren, die bestehende Vorurteile bestätigen.
+                    
+Gesellschaftliche Erwartungen & soziale Normen                    
+                    
+Tokenism
+>>Bias|Tokenism<<
+Bias: Wahrnehmung von Frauen in unternehmerischen Kreisen als Alibifiguren.                    
+                    
+Bias in der Wahrnehmung von Führungsfähigkeiten
+>>Bias|BiasInThePerceptionOfLeadershipSkills<<
+Bias: Infragestellung der Führungsfähigkeiten von Frauen.
+                    
+Benevolenter Sexismus
+>>Bias|BenevolentSexism<<
+Bias: Schützend oder wohlwollend gemeinte, aber dennoch herabwürdigende Haltungen gegenüber Frauen, die sie als weniger kompetent und in Bedarf von männlicher Hilfe darstellen.
+                    
+Alter- und Generationen-Biases
+>>Bias|AgeAndGenerationsBiases<<
+Bias: Diskriminierung aufgrund von Altersstereotypen.                    
+                    
+Stereotype gegenüber Frauen in nicht-traditionellen Branchen
+>>Bias|StereotypesAboutWomenInNon<<
+Bias: Widerstände gegen Frauen in männlich dominierten Feldern.                    
+                    
+Wahrnehmung & Führungsrollen
+
+Heteronormativität
+>>Bias|Heteronormativity<<
+Bias: Annahmen und Erwartungen, die auf der Vorstellung beruhen, dass Heterosexualität die einzige oder bevorzugte sexuelle Orientierung ist.                    
+                    
+Maternal Bias
+>>Bias|BiasesAgainstWomenWithChildren<<
+Bias: Annahmen über geringere Engagementbereitschaft von Müttern oder potenziellen Müttern.                    
+                    
+Erwartungshaltung bezüglich Familienplanung
+>>Bias|ExpectationsRegardingFamilyPlanning<<
+Bias: Annahmen über zukünftige Familienplanung bei Frauen im gebärfähigen Alter.                    
+                    
+Work-Life-Balance-Erwartungen
+>>Bias|WorkLifeBalanceExpectations<<
+Bias: Druck auf Frauen, ein Gleichgewicht zwischen Beruf und Familie zu finden.                    
+                    
+Geschlechterspezifische Stereotype
+>>Bias|GenderSpecificStereotypes<<
+Bias: Annahmen über geringere Kompetenz von Frauen in bestimmten Bereichen.                    
+                    
+Psychologische Barrieren & kommunikative Hindernisse                    
+                    
+Doppelte Bindung (Tightrope Bias)
+>>Bias|TightropeBias<<
+Bias: Konflikt zwischen der Wahrnehmung als zu weich oder zu aggressiv.                    
+                    
+Mikroaggressionen
+>>Bias|Microaggression<<
+Bias: Subtile Formen der Diskriminierung gegenüber Frauen.                    
+                    
+Leistungsattributions-Bias
+>>Bias|PerformanceAttributionBias<<
+Bias: Externe Zuschreibung von Erfolgen von Frauen.                    
+                    
+Unbewusste Biases in der Kommunikation
+>>Bias|UnconsciousBiasInCommunication<<
+Bias: Herabsetzende Art und Weise, wie über Frauenunternehmen gesprochen wird.
+                    
+                

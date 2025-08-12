@@ -1,18 +1,17 @@
 {
   "idNumberOfNovel": 13,
   "titleOfNovel": "Einstiegsdialog",
+  "designationOfNovel": "Mehr zu KITE II erfahren",
   "descriptionOfNovel": "Hier kannst du den Einstiegs-Dialog erneut spielen.",
-  "idNumberOfRepresentationImage": 8,
-  "nameOfMainCharacter": "Spielerin",
   "contextForPrompt": "",
   "folderName": "Einstieg",
-  "isKite2Novel": true,
-  "startLocation": "Office",
-  "startTalkingPartnerEmotion": "Schaut neutral entspannt",
-  "isWithStartValues": true,
+  "startTalkingPartnerExpression": "NeutralRelaxed",
   "talkingPartner01" : "Intro",
   "talkingPartner02" : "",
   "talkingPartner03" : "",
+  "isKiteNovel": true,
+  "novelColor": "#AA1C02",
+  "novelFrameColor": "#D04C03",
   "wordsToReplace": [
     {"wordToReplace": ">>Charakter01SprichtFriendly:<<", "replaceByValue": ">>Charakter01Laecheln:<<"},
   ]

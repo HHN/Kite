@@ -1040,7 +1040,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 10
   m_Viewport: {fileID: 8902507568381915516}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -1274,9 +1274,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Was m\xF6chtest du tun?\n\n<b>Weiterspielen:</b> Die Story fortsetzen.\n<b>Pausieren:</b>
-    Sp\xE4ter an dieser Stelle weitermachen.\n<b>Abschlie\xDFen:</b> Die Story hier
-    beenden und als abgeschlossen werten.\n<b>Abbrechen:</b> Die Story ohne Speicherung
-    abbrechen."
+    Sp\xE4ter an dieser Stelle weitermachen.\n<b>Abbrechen:</b> Die Story ohne Speicherung
+    abbrechen.\n<b>Abschlie\xDFen:</b> Die Story hier beenden und als abgeschlossen
+    werten."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
   m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}

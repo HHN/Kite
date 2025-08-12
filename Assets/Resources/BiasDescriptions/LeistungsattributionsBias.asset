@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5084c0e108f447f8a941930d98fc2d16, type: 3}
+  m_Name: LeistungsattributionsBias
+  m_EditorClassIdentifier: 
+  biasType: 17
+  headline: Leistungsattributions-Bias
+  preview: "Frauen m\xFCssen ihren Erfolg h\xE4ufiger rechtfertigen als M\xE4nner.
+    Ihre Leistungen werden oft auf Gl\xFCck, \xE4u\xDFere Umst\xE4nde oder die Unterst\xFCtzung
+    anderer zur\xFCckgef\xFChrt, w\xE4hrend M\xE4nnern f\xFCr die gleichen Erfolge
+    strategisches Geschick und Kompetenz zugeschrieben wird. Forschungen zeigen,
+    dass Frauen bei \u201Em\xE4nnlich gepr\xE4gten\u201C Aufgaben selbst bei objektiv
+    hoher Leistung als weniger kompetent wahrgenommen werden als M\xE4nner mit identischen
+    Ergebnissen.\n"
+  description: "Dies geschieht durch einen unbewussten Mechanismus, der die Begr\xFCndung
+    rationalisiert: Beobachtende suchen nach alternativen Erkl\xE4rungen f\xFCr die
+    Leistung einer Frau, beispielsweise durch Gl\xFCck oder die Anwesenheit eines
+    m\xE4nnlichen Kollegen. Diese systematische Abwertung kann dazu f\xFChren, dass
+    Frauen sich immer wieder neu beweisen m\xFCssen, w\xE4hrend M\xE4nner schneller
+    als f\xE4hig anerkannt werden (<color=LINK_COLOR><link=\"https://doi.org/10.1287/orsc.2022.1594\\\">Quelle</link></color>).\n\r\nIn
+    unseren Stories zeigt sich dieser Bias, wenn eine Journalistin darauf verweist,
+    dass Du \u201EGl\xFCck gehabt hast, genau die richtige Nische zu finden\u201C.
+    Die Botschaft: Dein Erfolg basiert nicht auf K\xF6nnen oder Marktverst\xE4ndnis,
+    sondern auf Zufall \u2013 ein klassisches Beispiel f\xFCr die Abwertung weiblicher
+    Leistungen."

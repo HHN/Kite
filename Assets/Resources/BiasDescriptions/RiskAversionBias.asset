@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5084c0e108f447f8a941930d98fc2d16, type: 3}
+  m_Name: RiskAversionBias
+  m_EditorClassIdentifier: 
+  biasType: 3
+  headline: Risk Aversion Bias
+  preview: "Frauen wird oft unterstellt, dass sie weniger risikobereit sind als M\xE4nner.
+    Tats\xE4chlich zeigen Studien, dass Gr\xFCnderinnen Risiken bewusster analysieren
+    und detaillierter abw\xE4gen \u2013 doch genau diese Strategie wird ihnen negativ
+    ausgelegt. W\xE4hrend m\xE4nnliche Gr\xFCnder f\xFCr ihre \u201Ebesonnene\u201C
+    Planung gelobt werden, gelten Frauen bei gleichem Verhalten als \u201Ez\xF6gerlich\u201C
+    oder \u201E\xFCbervorsichtig\u201C.\n"
+  description: "Diese Wahrnehmung f\xFChrt dazu, dass Investorinnen und Investoren
+    Frauen seltener als dynamische Unternehmerinnen wahrnehmen und ihnen weniger
+    Kapital f\xFCr Wachstum und Expansion anvertrauen. Dadurch entsteht ein Teufelskreis:
+    Weniger Kapital bedeutet langsamere Skalierung, was wiederum die bestehenden
+    Vorurteile \xFCber zu vorsichtige Gr\xFCnderinnen zu best\xE4tigen scheint (<color=LINK_COLOR><link=\"https://www.kfw.de/%C3%9Cber-die-KfW/KfW-Research/Female-Entrepreneurship.html\\\">Quelle</link></color>).\n\r\nIn
+    unseren Stories zeigt sich dieser Bias, wenn ein Investor bezweifelt, dass Frauen
+    wirklich bereit sind, aggressiv genug zu skalieren \u2013 als w\xE4re Risikobereitschaft
+    die einzige Strategie f\xFCr Wachstum. Auch ein Vermieter stellt die Belastbarkeit
+    infrage, obwohl die Gesch\xE4ftszahlen eine durchdachte und erfolgversprechende
+    Strategie belegen."

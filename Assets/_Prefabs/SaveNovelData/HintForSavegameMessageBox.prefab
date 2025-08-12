@@ -386,7 +386,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 10
   m_Viewport: {fileID: 5452614148573845528}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -996,7 +996,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8a4c4fc71c39ef468272bc17787527a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  messageBoxHeadline: {fileID: 0}
   messageBoxBody: {fileID: 5629918238001899984}
   continueButton: {fileID: 3285660958884881377}
   restartButton: {fileID: 2124244729785374120}

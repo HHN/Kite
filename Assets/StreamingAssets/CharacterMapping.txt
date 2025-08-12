@@ -1,0 +1,15 @@
+None: 0
+Player: 1 
+Intro: 2
+Outro: 3
+Info: 4
+Journalistin: 5
+Vermieter: 6
+Vater: 7
+Mutter: 8
+Investor: 9
+Notarin: 10
+Sachbearbeiter: 11
+Kundin: 12
+
+
