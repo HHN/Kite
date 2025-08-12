@@ -2,87 +2,49 @@ using UnityEngine.SceneManagement;
 
 namespace Assets._Scripts.SceneManagement
 {
+    /// <summary>
+    /// Provides static utility methods for routing scene navigation, specifically
+    /// determining the target scene when a "back" or "close" action is performed.
+    /// This helps manage the flow of scenes within the application.
+    /// </summary>
     public abstract class SceneRouter
     {
+        /// <summary>
+        /// Determines the appropriate target scene to navigate to when a "back" button is pressed,
+        /// based on the currently active scene. This creates a specific, non-linear navigation path.
+        /// </summary>
+        /// <returns>The string name of the target scene for a "back" action.</returns>
         public static string GetTargetSceneForBackButton()
         {
             Scene currentScene = SceneManager.GetActiveScene();
 
-            switch (currentScene.name)
+            return currentScene.name switch
             {
-                case (SceneNames.MainMenuScene):
-                {
-                    return SceneNames.MainMenuScene;
-                }
-                case (SceneNames.FoundersBubbleScene):
-                {
-                    return SceneNames.MainMenuScene;
-                }
-                case (SceneNames.FoundersWell2Scene):
-                {
-                    return SceneNames.FoundersBubbleScene;
-                }
-                case (SceneNames.PlayInstructionScene):
-                {
-                    return SceneNames.FoundersBubbleScene;
-                }
-                case (SceneNames.PlayNovelScene):
-                {
-                    return SceneNames.FoundersBubbleScene;
-                }
-                case (SceneNames.FeedbackScene):
-                {
-                    return SceneNames.FoundersBubbleScene;
-                }
-                case (SceneNames.NutzungsbedingungenScene):
-                {
-                    return SceneNames.EinstellungenScene;
-                }
-                case (SceneNames.NovelHistoryScene):
-                {
-                    return SceneNames.FoundersBubbleScene;
-                }
-                case (SceneNames.DatenschutzScene):
-                {
-                    return SceneNames.EinstellungenScene;
-                }
-                case (SceneNames.ImpressumScene):
-                {
-                    return SceneNames.EinstellungenScene;
-                }
-                case (SceneNames.RessourcenScene):
-                {
-                    return SceneNames.FoundersBubbleScene;
-                }
-                case (SceneNames.BarrierefreiheitScene):
-                {
-                    return SceneNames.EinstellungenScene;
-                }
-                case (SceneNames.PlayerPrefsScene):
-                {
-                    return SceneNames.DatenschutzScene;
-                }
-                case (SceneNames.EinstellungenScene):
-                {
-                    return SceneNames.FoundersBubbleScene;
-                }
-                case (SceneNames.GemerkteNovelsScene):
-                {
-                    return SceneNames.FoundersBubbleScene;
-                }
-                case (SceneNames.SoundeinstellungScene):
-                {
-                    return SceneNames.EinstellungenScene;
-                }
-                case (SceneNames.KnowledgeScene):
-                {
-                    return SceneNames.FoundersBubbleScene;
-                }
-
-                default: return SceneNames.MainMenuScene;
-            }
+                SceneNames.MainMenuScene => SceneNames.MainMenuScene, // Stays on the Main Menu if already there.
+                SceneNames.FoundersBubbleScene => SceneNames.MainMenuScene,
+                SceneNames.PlayInstructionScene => SceneNames.FoundersBubbleScene,
+                SceneNames.PlayNovelScene => SceneNames.FoundersBubbleScene,
+                SceneNames.FeedbackScene => SceneNames.FoundersBubbleScene,
+                SceneNames.TermsOfUseScene => SceneNames.SettingsScene,
+                SceneNames.NovelHistoryScene => SceneNames.FoundersBubbleScene,
+                SceneNames.PrivacyPolicyScene => SceneNames.SettingsScene,
+                SceneNames.LegalNoticeScene => SceneNames.SettingsScene,
+                SceneNames.ResourcesScene => SceneNames.FoundersBubbleScene,
+                SceneNames.AccessibilityScene => SceneNames.SettingsScene,
+                SceneNames.SettingsScene => SceneNames.FoundersBubbleScene,
+                SceneNames.BookmarkedNovelsScene => SceneNames.FoundersBubbleScene,
+                SceneNames.SoundSettingsScene => SceneNames.SettingsScene,
+                SceneNames.KnowledgeScene => SceneNames.FoundersBubbleScene,
+                SceneNames.LegalInformationScene => SceneNames.FoundersBubbleScene,
+                _ => SceneNames.MainMenuScene // Default fallback to the Main Menu for any unhandled scene.
+            };
         }
 
+        /// <summary>
+        /// Determines the appropriate target scene to navigate to when a "close" button is pressed.
+        /// This implementation always directs to the Main Menu scene, providing a consistent exit point.
+        /// </summary>
+        /// <returns>The string name of the target scene for a "close" action (always Main Menu).</returns>
         public static string GetTargetSceneForCloseButton()
         {
             return SceneNames.MainMenuScene;

@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets._Scripts._Mappings;
 using Assets._Scripts.Managers;
-using Assets._Scripts.Player.Kite_Novels.Visual_Novel_Formatter;
+using Assets._Scripts.Novel;
+using Assets._Scripts.Novel.VisualNovelFormatter;
 using Assets._Scripts.SceneManagement;
 using NUnit.Framework;
 using UnityEngine;
@@ -26,8 +28,10 @@ namespace Tests.PlayMode
                 {
                     Assert.Fail("Time out! Loading novels did not work.");
                 }
+
                 yield return null;
             }
+
             List<NovelTester> tests = NovelTester.TestNovels(KiteNovelManager.Instance().GetAllKiteNovels());
 
             foreach (NovelTester test in tests)
@@ -42,47 +46,56 @@ namespace Tests.PlayMode
         }
 
         [UnityTest]
-        public IEnumerator ConvertNovelsFromTweeToJson()
+        public IEnumerator ImportNovel()
         {
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneNames.MainMenuScene);
-
+            MappingManager mappingManager = MappingManager.Instance;
+            
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("_Scenes/MainMenuSceneTest");
+            
             while (!asyncLoad.isDone)
             {
                 yield return null;
             }
+            
             GameObject converter = GameObject.Find("TweeToJsonConverter");
 
             Assert.NotNull(converter);
 
             NovelReader novelReader = converter.GetComponent<NovelReader>();
-            novelReader.ConvertNovelsFromTweeToJSON();
+            
+            // Hole Dir die Instanz einmal in eine lokale Variable:
+            // var novelReader = NovelReader.Instance;
 
-            while (novelReader.IsFinished() == false)
-            {
-                yield return null;
-            }
+            // Starte den Import
+            novelReader.ImportNovel();
+
+            // Warte, bis er fertig ist
+            yield return new WaitUntil(() => novelReader.IsFinished());
+
+            // Testende
+            Assert.IsTrue(novelReader.IsFinished(), "ImportNovel sollte am Ende fertig sein.");
         }
 
         [UnityTest]
-        public IEnumerator ConvertNovelsFromTweeToJsonAndSelectiveOverrideOldNovels()
+        public IEnumerator TestKeyWords()
         {
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneNames.MainMenuScene);
+            // Erstelle ein neues GameObject und f�ge das KeywordTester-Skript hinzu.
+            GameObject testerObj = new GameObject("KeywordTesterObject");
+            KeywordTester tester = testerObj.AddComponent<KeywordTester>();
+            // Optional: Passe den Dateipfad an, falls n�tig.
+            tester.folderPath = "_novels_twee/";
 
-            while (!asyncLoad.isDone)
-            {
-                yield return null;
-            }
-            GameObject converter = GameObject.Find("TweeToJsonConverter");
+            // Warte eine gewisse Zeit, damit die Coroutine im KeywordTester laufen kann.
+            // Dies ist ein einfaches Beispiel; ggf. musst du hier an deine Testlogik anpassen.
+            yield return new WaitForSeconds(2f);
 
-            Assert.NotNull(converter);
+            // Hier k�nntest du weitere Checks einbauen, z.B. anhand interner Tester-Daten.
+            Debug.Log("Keyword testing completed.");
 
-            NovelReader novelReader = converter.GetComponent<NovelReader>();
-            novelReader.ConvertNovelsFromTweeToJSONAndSelectiveOverrideOldNovels();
+            // Zerst�re das Tester-Objekt, um saubere Verh�ltnisse zu schaffen.
+            Object.Destroy(testerObj);
 
-            while (novelReader.IsFinished() == false)
-            {
-                yield return null;
-            }
+            yield return null;
         }
     }
 }

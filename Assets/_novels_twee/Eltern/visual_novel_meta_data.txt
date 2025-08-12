@@ -1,18 +1,16 @@
 {
   "idNumberOfNovel": 2,
   "titleOfNovel": "Telefonat mit den Eltern",
+  "designationOfNovel": "Eltern informieren",
   "descriptionOfNovel": "Du hast dich entschieden, ein Unternehmen zu gründen, und teilst das nun deinen Eltern mit.",
-  "idNumberOfRepresentationImage": 1,
-  "nameOfMainCharacter": "Spielerin",
   "contextForPrompt": "Es ist das Gespräch einer Gründerin, mit ihrer Mutter. Sie hat sich gründlich informiert und hat sich entschlossen, ein Unternehmen zu gründen. Sie ruft nun ihre Eltern an, um ihnen von dem Gründungsvorhaben zu berichten.",
-  "folderName": "Eltern",
-  "isKite2Novel": true,
-  "startLocation": "Office",
-  "startTalkingPartnerEmotion": "Schaut neutral entspannt",
-  "isWithStartValues": true,
+  "startTalkingPartnerExpression": "NeutralRelaxed",
   "talkingPartner01" : "Vater",
   "talkingPartner02" : "Mutter",
   "talkingPartner03" : "",
+  "isKiteNovel": true,
+  "novelColor": "#25650E",
+  "novelFrameColor": "#4C9A30",
   "wordsToReplace": [
 	{"wordToReplace": ">>SpielerinCharakterSpricht:<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"}
 	]

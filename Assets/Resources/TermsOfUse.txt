@@ -1,0 +1,58 @@
+## 1. Allgemeines
+
+1.1 Diese Nutzungsbedingungen regeln die Nutzung der Kite II Mobile App,
+
+– nachfolgend: App –,
+
+angeboten von der Hochschule Heilbronn, Körperschaft des öffentlichen Rechts, vertreten durch deren Rektor Prof. Dr.-Ing. Oliver Lenzen, Max-Plack-Straße 39, 74081 Heilbronn.
+
+– nachfolgend: Hochschule –.
+
+Weitere Informationen über die Hochschule finden Sie im Impressum.
+
+1.2 Die App ist ein Forschungsprojekt der Hochschule und soll helfen, Diskriminierungen in realitätsnahen Dialogen festzustellen und angemessen darauf zu reagieren. Zu diesen Zwecken wird ein Gespräch mit einer grafisch dargestellten Person, z.B. einem Bankberater, einem Notar, einem Investor oder Vermieter, simuliert
+
+– nachfolgend: Visual Novel –
+
+und so auf spielerische Weise hinsichtlich diskriminierender Inhalte sensibilisiert. Am Ende des jeweils gewählten Visual Novel wird das Gespräch durch Künstliche Intelligenz (KI) analysiert und ein Feedback generiert. Weiterführende Informationen über die App finden Sie auf der Webseite https://kite2.de/.
+
+## 2. Nutzung der App, Missachtung von Rechten der Hochschule
+
+2.1 Zur Nutzung der App sind ausschließlich natürliche Personen berechtigt, die das 18. Lebensjahr vollendet haben. Die Nutzung der App ist kostenlos; ein Rechtsanspruch zur Nutzung besteht nicht.
+
+2.2 Die Hochschule gewährt Ihnen ein nicht-ausschließliches, nicht übertragbares und nicht (unter-) lizenzierbares Recht zur privaten eigenen Nutzung der App im Rahmen dieser Nutzungsbedingungen. Alle weiteren, auch kommerzielle Nutzungen sind untersagt. Untersagt ist es auch, die Software der App oder Teile davon zu vervielfältigen, zu verbreiten, zu dekompilieren oder anderweitig zu verwerten oder verwerten zu lassen.
+
+2.3 Mit der Nutzung der App bestätigen Sie, die Rechte der Hochschule zu achten. Hierzu gehören Urheber- und daraus abgeleitete Nutzungsrechte, z.B. an Texten, Software und Grafiken, Kennzeichenrechte, z.B. an KITE und KITE II.
+
+2.4 Bei schuldhaften Verstößen gegen die Bestimmungen dieser Ziffer sind Sie verpflichtet, der Hochschule alle Schäden einschließlich der notwendigen Gerichts- und Anwaltskosten zu erstatten.
+
+## 3. Haftungsbeschränkung
+
+3.1 Die Hochschule haftet nicht für leicht fahrlässige Pflichtverletzungen, sofern diese keine vertragswesentlichen Pflichten oder Garantien betreffen oder Schäden aus der Verletzung des Lebens, des Körpers oder der Gesundheit oder Ansprüche aus dem Produkthaftungsgesetz begründen.
+
+3.2 Sofern die Hochschule für leichte Fahrlässigkeit haftet, ist die Haftung der Höhe nach begrenzt auf den typischerweise entstehenden, vorhersehbaren Schaden.
+
+3.3 Sofern die Haftung der Hochschule ausgeschlossen oder beschränkt ist, gilt dies auch für eine solche von gesetzlichen Vertretern, Mitarbeitern oder Erfüllungsgehilfen.
+
+3.4 Die Hochschule steht nicht ein für die Funktionsfähigkeit von Datennetzen, Servern und Datenleitungen sowie die ständige Verfügbarkeit der Dienste. Eine 100%ige Verfügbarkeit ist technisch nicht zu realisieren, die Hochschule ist jedoch bemüht, die Dienste möglichst konstant und vollständig bereitzustellen. Insbesondere Wartungs- oder Sicherheitsarbeiten sowie Ereignisse, die nicht im Machtbereich der Hochschule liegen, können zu Störungen oder vorübergehender Einstellung der Dienste führen wie z.B. Störungen von öffentlichen Kommunikationsnetzen, Stromausfälle.
+
+## 4. Information über die Interaktion mit KI
+
+4.1 Nach Beendigung des Visual Novels analysiert KI den Gesprächsverlauf und erstellt ein Feedback. Analyse und Feedback sind kein Ersatz für eine individuelle psychologische, juristische oder berufliche Beratung.
+
+4.2 Die App wird über künstlich erzeugte Ausgaben durch textlichen Hinweis klar und verständlich informieren. Inhalte von Analyse und Feedback werden wie folgt gekennzeichnet:
+„Hinweis: Analyse und Feedback wurden durch KI künstlich erzeugt. Eine individuelle Beratung wird hierdurch nicht ersetzt.“
+
+## 5. Datenschutz
+
+Wir erheben, verarbeiten und nutzen personenbezogene Daten nur, soweit wirklich erforderlich, und das sind keine personenbezogenen Daten, außer Ihrer IP-Adresse. Weiter Informationen finden Sie in der Datenschutzerklärung.
+
+## 6. Schlussbestimmungen
+
+6.1 Die Nutzungsbedingungen können heruntergeladen und ausgedruckt werden.
+
+6.2 Es gilt deutsches Recht. Die Hochschule ist nicht zur Teilnahme an einem Schlichtungsverfahren vor einer Verbraucherschlichtungsstelle verpflichtet und kann eine Teilnahme auch nicht anbieten.
+
+6.3 Die Hochschule ist berechtigt, mit einer Ankündigungsfrist von vier Wochen die Rechte und Pflichten zur Nutzung der App ganz oder teilweise auf einen Dritten zu übertragen.
+
+Stand: April 2025

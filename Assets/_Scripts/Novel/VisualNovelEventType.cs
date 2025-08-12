@@ -1,102 +1,110 @@
 namespace Assets._Scripts.Novel
 {
+    /// <summary>
+    /// Defines the various types of events that can occur within a visual novel.
+    /// Each enum member represents a distinct action or state change in the narrative flow.
+    /// </summary>
     public enum VisualNovelEventType
     {
-        NONE,
-        SET_BACKGROUND_EVENT,
-        CHARAKTER_JOIN_EVENT,
-        CHARAKTER_EXIT_EVENT,
-        SHOW_MESSAGE_EVENT,
-        ADD_CHOICE_EVENT,
-        SHOW_CHOICES_EVENT,
-        END_NOVEL_EVENT,
-        PLAY_SOUND_EVENT,
-        PLAY_ANIMATION_EVENT,
-        FREE_TEXT_INPUT_EVENT,
-        GPT_PROMPT_EVENT,
-        SAVE_PERSISTENT_EVENT,
-        MARK_BIAS_EVENT,
-        SAVE_VARIABLE_EVENT,
-        ADD_FEEDBACK_EVENT,
-        ADD_FEEDBACK_UNDER_CONDITION_EVENT,
-        CALCULATE_VARIABLE_FROM_BOOLEAN_EXPRESSION_EVENT
+        None,
+        SetBackgroundEvent,
+        CharacterJoinEvent,
+        CharacterExitEvent,
+        ShowMessageEvent,
+        AddChoiceEvent,
+        ShowChoicesEvent,
+        EndNovelEvent,
+        PlaySoundEvent,
+        PlayAnimationEvent,
+        GptPromptEvent,
+        SavePersistentEvent,
+        MarkBiasEvent,
+        SaveVariableEvent,
+        AddFeedbackEvent,
+        AddFeedbackUnderConditionEvent,
+        CalculateVariableFromBooleanExpressionEvent
     }
 
+    /// <summary>
+    /// Provides helper methods for converting between <see cref="VisualNovelEventType"/> enum values and integer representations.
+    /// This is useful for serialization or external data storage where enums might be stored as integers.
+    /// </summary>
     public class VisualNovelEventTypeHelper
     {
+        /// <summary>
+        /// Converts a <see cref="VisualNovelEventType"/> enum value to its corresponding integer representation.
+        /// </summary>
+        /// <param name="eventType">The <see cref="VisualNovelEventType"/> to convert.</param>
+        /// <returns>The integer value corresponding to the event type, or -1 if the event type is not mapped.</returns>
         public static int ToInt(VisualNovelEventType eventType)
         {
             switch (eventType)
             {
-                case VisualNovelEventType.NONE:
+                case VisualNovelEventType.None:
                 {
                     return 0;
                 }
-                case VisualNovelEventType.SET_BACKGROUND_EVENT:
+                case VisualNovelEventType.SetBackgroundEvent:
                 {
                     return 1;
                 }
-                case VisualNovelEventType.CHARAKTER_JOIN_EVENT:
+                case VisualNovelEventType.CharacterJoinEvent:
                 {
                     return 2;
                 }
-                case VisualNovelEventType.CHARAKTER_EXIT_EVENT:
+                case VisualNovelEventType.CharacterExitEvent:
                 {
                     return 3;
                 }
-                case VisualNovelEventType.SHOW_MESSAGE_EVENT:
+                case VisualNovelEventType.ShowMessageEvent:
                 {
                     return 4;
                 }
-                case VisualNovelEventType.ADD_CHOICE_EVENT:
+                case VisualNovelEventType.AddChoiceEvent:
                 {
                     return 5;
                 }
-                case VisualNovelEventType.SHOW_CHOICES_EVENT:
+                case VisualNovelEventType.ShowChoicesEvent:
                 {
                     return 6;
                 }
-                case VisualNovelEventType.END_NOVEL_EVENT:
+                case VisualNovelEventType.EndNovelEvent:
                 {
                     return 10;
                 }
-                case VisualNovelEventType.PLAY_SOUND_EVENT:
+                case VisualNovelEventType.PlaySoundEvent:
                 {
                     return 11;
                 }
-                case VisualNovelEventType.PLAY_ANIMATION_EVENT:
+                case VisualNovelEventType.PlayAnimationEvent:
                 {
                     return 12;
                 }
-                case VisualNovelEventType.FREE_TEXT_INPUT_EVENT:
-                {
-                    return 13;
-                }
-                case VisualNovelEventType.GPT_PROMPT_EVENT:
+                case VisualNovelEventType.GptPromptEvent:
                 {
                     return 14;
                 }
-                case VisualNovelEventType.SAVE_PERSISTENT_EVENT:
+                case VisualNovelEventType.SavePersistentEvent:
                 {
                     return 15;
                 }
-                case VisualNovelEventType.MARK_BIAS_EVENT:
+                case VisualNovelEventType.MarkBiasEvent:
                 {
                     return 16;
                 }
-                case VisualNovelEventType.SAVE_VARIABLE_EVENT:
+                case VisualNovelEventType.SaveVariableEvent:
                 {
                     return 17;
                 }
-                case VisualNovelEventType.ADD_FEEDBACK_EVENT:
+                case VisualNovelEventType.AddFeedbackEvent:
                 {
                     return 18;
                 }
-                case VisualNovelEventType.ADD_FEEDBACK_UNDER_CONDITION_EVENT:
+                case VisualNovelEventType.AddFeedbackUnderConditionEvent:
                 {
                     return 19;
                 }
-                case VisualNovelEventType.CALCULATE_VARIABLE_FROM_BOOLEAN_EXPRESSION_EVENT:
+                case VisualNovelEventType.CalculateVariableFromBooleanExpressionEvent:
                 {
                     return 20;
                 }
@@ -108,85 +116,86 @@ namespace Assets._Scripts.Novel
             }
         }
 
+        /// <summary>
+        /// Converts an integer value back to its corresponding <see cref="VisualNovelEventType"/> enum value.
+        /// </summary>
+        /// <param name="i">The integer value representing an event type.</param>
+        /// <returns>The <see cref="VisualNovelEventType"/> corresponding to the integer, or <see cref="VisualNovelEventType.None"/> if the integer is not mapped.</returns>
         public static VisualNovelEventType ValueOf(int i)
         {
             switch (i)
             {
                 case 0:
                 {
-                    return VisualNovelEventType.NONE;
+                    return VisualNovelEventType.None;
                 }
                 case 1:
                 {
-                    return VisualNovelEventType.SET_BACKGROUND_EVENT;
+                    return VisualNovelEventType.SetBackgroundEvent;
                 }
                 case 2:
                 {
-                    return VisualNovelEventType.CHARAKTER_JOIN_EVENT;
+                    return VisualNovelEventType.CharacterJoinEvent;
                 }
                 case 3:
                 {
-                    return VisualNovelEventType.CHARAKTER_EXIT_EVENT;
+                    return VisualNovelEventType.CharacterExitEvent;
                 }
                 case 4:
                 {
-                    return VisualNovelEventType.SHOW_MESSAGE_EVENT;
+                    return VisualNovelEventType.ShowMessageEvent;
                 }
                 case 5:
                 {
-                    return VisualNovelEventType.ADD_CHOICE_EVENT;
+                    return VisualNovelEventType.AddChoiceEvent;
                 }
                 case 6:
                 {
-                    return VisualNovelEventType.SHOW_CHOICES_EVENT;
+                    return VisualNovelEventType.ShowChoicesEvent;
                 }
                 case 10:
                 {
-                    return VisualNovelEventType.END_NOVEL_EVENT;
+                    return VisualNovelEventType.EndNovelEvent;
                 }
                 case 11:
                 {
-                    return VisualNovelEventType.PLAY_SOUND_EVENT;
+                    return VisualNovelEventType.PlaySoundEvent;
                 }
                 case 12:
                 {
-                    return VisualNovelEventType.PLAY_ANIMATION_EVENT;
-                }
-                case 13:
-                {
-                    return VisualNovelEventType.FREE_TEXT_INPUT_EVENT;
+                    return VisualNovelEventType.PlayAnimationEvent;
                 }
                 case 14:
                 {
-                    return VisualNovelEventType.GPT_PROMPT_EVENT;
+                    return VisualNovelEventType.GptPromptEvent;
                 }
                 case 15:
                 {
-                    return VisualNovelEventType.SAVE_PERSISTENT_EVENT;
+                    return VisualNovelEventType.SavePersistentEvent;
                 }
                 case 16:
                 {
-                    return VisualNovelEventType.MARK_BIAS_EVENT;
+                    return VisualNovelEventType.MarkBiasEvent;
                 }
                 case 17:
                 {
-                    return VisualNovelEventType.SAVE_VARIABLE_EVENT;
+                    return VisualNovelEventType.SaveVariableEvent;
                 }
                 case 18:
                 {
-                    return VisualNovelEventType.ADD_FEEDBACK_EVENT;
+                    return VisualNovelEventType.AddFeedbackEvent;
                 }
                 case 19:
                 {
-                    return VisualNovelEventType.ADD_FEEDBACK_UNDER_CONDITION_EVENT;
+                    return VisualNovelEventType.AddFeedbackUnderConditionEvent;
                 }
                 case 20:
                 {
-                    return VisualNovelEventType.CALCULATE_VARIABLE_FROM_BOOLEAN_EXPRESSION_EVENT;
+                    return VisualNovelEventType.CalculateVariableFromBooleanExpressionEvent;
                 }
                 default:
                 {
-                    return VisualNovelEventType.NONE;
+                    return VisualNovelEventType.None;
                 }
             }
         }

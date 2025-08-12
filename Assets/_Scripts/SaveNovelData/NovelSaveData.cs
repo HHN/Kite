@@ -1,15 +1,22 @@
 using System;
 using System.Collections.Generic;
+using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using UnityEngine;
 
 namespace Assets._Scripts.SaveNovelData
 {
+    /// <summary>
+    /// Represents the complete save data for a visual novel, encapsulating all necessary states
+    /// to resume gameplay from a specific point. This includes narrative progression,
+    /// displayed content, character states, and choices made.
+    /// Marked as <see cref="Serializable"/> to allow Unity's JsonUtility (or other serializers) to convert it to JSON.
+    /// </summary>
     [Serializable]
     public class NovelSaveData
     {
         public string currentEventId;
-        public List<string> playThroughHistory; // Verlauf der gewählten Aktionen oder Dialoge
+        public List<string> playThroughHistory;
         public string[] optionsId;
         public List<VisualNovelEvent> eventHistory;
         public List<VisualNovelEvent> visualNovelEvents;
@@ -20,21 +27,19 @@ namespace Assets._Scripts.SaveNovelData
         public Dictionary<long, CharacterData> CharacterPrefabData;
 
         /// <summary>
-        /// Konvertiert diese Instanz in einen JSON-String.
-        /// Hilfsmethode für den SaveManager.
+        /// Converts this instance of <see cref="NovelSaveData"/> into a JSON string.
         /// </summary>
-        /// <returns>Ein JSON-formatierter String, der diese Instanz repräsentiert.</returns>
+        /// <returns>A JSON-formatted string representing this instance.</returns>
         public string ToJson()
         {
             return JsonUtility.ToJson(this);
         }
 
         /// <summary>
-        /// Erstellt eine <see cref="NovelSaveData"/>-Instanz aus einem JSON-String.
-        /// Hilfsmethode für den SaveManager.
+        /// Creates a new <see cref="NovelSaveData"/> instance from a given JSON string.
         /// </summary>
-        /// <param name="json">Der zu deserialisierende JSON-String.</param>
-        /// <returns>Eine neue Instanz von <see cref="NovelSaveData"/>, gefüllt mit den Daten aus dem JSON-String.</returns>
+        /// <param name="json">The JSON string to deserialize.</param>
+        /// <returns>A new instance of <see cref="NovelSaveData"/> populated with data from the JSON string.</returns>
         public static NovelSaveData FromJson(string json)
         {
             return JsonUtility.FromJson<NovelSaveData>(json);

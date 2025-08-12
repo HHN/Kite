@@ -1,14 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets._Scripts.Controller.CharacterController;
+using Assets._Scripts.Controller.SceneControllers;
 using Assets._Scripts.Novel;
-using Assets._Scripts.Novel.CharacterController;
 using Assets._Scripts.Player;
-using Assets._Scripts.UI_Elements.TextBoxes;
+using Assets._Scripts.UIElements.TextBoxes;
 using UnityEngine;
 
 namespace Assets._Scripts.Managers
 {
+    /// <summary>
+    /// The OptionsManager class is responsible for managing user-selectable options
+    /// in a visual novel scenario. This includes initializing options, handling user
+    /// selections, and triggering necessary events or actions based on the chosen option.
+    /// </summary>
     public class OptionsManager : MonoBehaviour
     {
         [SerializeField] private ChatMessageBox optionA;
@@ -43,9 +49,15 @@ namespace Assets._Scripts.Managers
         private PlayNovelSceneController _sceneController;
         private ConversationContentGuiController _conversationContentGuiController;
 
+        /// <summary>
+        /// Initializes the options manager by setting up options and their associated data,
+        /// linking them to the scene controller, and updating the GUI controller.
+        /// </summary>
+        /// <param name="sceneController">The scene controller managing the current play novel scene.</param>
+        /// <param name="options">A list of visual novel events representing the available options.</param>
         public void Initialize(PlayNovelSceneController sceneController, List<VisualNovelEvent> options)
         {
-            this._sceneController = sceneController;
+            _sceneController = sceneController;
             _conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
 
             GlobalVolumeManager.Instance.PlaySound(selectedSound);
@@ -57,7 +69,6 @@ namespace Assets._Scripts.Managers
             }
 
             optionA.SetMessage(options[0].text);
-            AnalyticsServiceHandler.Instance().AddChoiceToList(options[0].text);
             _idA = options[0].onChoice;
             _stringA = options[0].text;
             _displayAfterSelectionA = options[0].show;
@@ -68,12 +79,10 @@ namespace Assets._Scripts.Managers
                 optionC.gameObject.SetActive(false);
                 optionD.gameObject.SetActive(false);
                 optionE.gameObject.SetActive(false);
-                AnalyticsServiceHandler.Instance().AddedLastChoice();
                 return;
             }
 
             optionB.SetMessage(options[1].text);
-            AnalyticsServiceHandler.Instance().AddChoiceToList(options[1].text);
             _idB = options[1].onChoice;
             _stringB = options[1].text;
             _displayAfterSelectionB = options[1].show;
@@ -83,12 +92,10 @@ namespace Assets._Scripts.Managers
                 optionC.gameObject.SetActive(false);
                 optionD.gameObject.SetActive(false);
                 optionE.gameObject.SetActive(false);
-                AnalyticsServiceHandler.Instance().AddedLastChoice();
                 return;
             }
 
             optionC.SetMessage(options[2].text);
-            AnalyticsServiceHandler.Instance().AddChoiceToList(options[2].text);
             _idC = options[2].onChoice;
             _stringC = options[2].text;
             _displayAfterSelectionC = options[2].show;
@@ -97,12 +104,10 @@ namespace Assets._Scripts.Managers
             {
                 optionD.gameObject.SetActive(false);
                 optionE.gameObject.SetActive(false);
-                AnalyticsServiceHandler.Instance().AddedLastChoice();
                 return;
             }
 
             optionD.SetMessage(options[3].text);
-            AnalyticsServiceHandler.Instance().AddChoiceToList(options[3].text);
             _idD = options[3].onChoice;
             _stringD = options[3].text;
             _displayAfterSelectionD = options[3].show;
@@ -110,53 +115,78 @@ namespace Assets._Scripts.Managers
             if (options.Count == 4)
             {
                 optionE.gameObject.SetActive(false);
-                AnalyticsServiceHandler.Instance().AddedLastChoice();
                 return;
             }
 
             optionE.SetMessage(options[4].text);
-            AnalyticsServiceHandler.Instance().AddChoiceToList(options[4].text);
             _idE = options[4].onChoice;
             _stringE = options[4].text;
             _displayAfterSelectionE = options[4].show;
-            AnalyticsServiceHandler.Instance().AddedLastChoice();
         }
 
+        /// <summary>
+        /// Handles the selection of Option A in the options menu. This method triggers the required follow-up actions, such as invoking a coroutine
+        /// to handle post-selection events.
+        /// </summary>
         public void OnOptionA()
         {
-            AnalyticsServiceHandler.Instance().SetChoiceId(0);
             StartCoroutine(AfterSelection("Selected A", _stringA, _idA, _displayAfterSelectionA, 0));
         }
 
+        /// <summary>
+        /// Handles the selection of Option B in the visual novel scenario.
+        /// This method initiates a post-selection process,
+        /// and triggers corresponding actions or updates based on Option B being chosen.
+        /// </summary>
         public void OnOptionB()
         {
-            AnalyticsServiceHandler.Instance().SetChoiceId(1);
             StartCoroutine(AfterSelection("Selected B", _stringB, _idB, _displayAfterSelectionB, 1));
         }
 
+        /// <summary>
+        /// Handles the selection of Option C in the visual novel scenario.
+        /// Triggers post-selection actions such as initiating the next event or updating the UI.
+        /// </summary>
         public void OnOptionC()
         {
-            AnalyticsServiceHandler.Instance().SetChoiceId(2);
             StartCoroutine(AfterSelection("Selected C", _stringC, _idC, _displayAfterSelectionC, 2));
         }
 
+        /// <summary>
+        /// Handles the selection of Option D by initiating the next steps in the visual novel sequence.
+        /// </summary>
         public void OnOptionD()
         {
-            AnalyticsServiceHandler.Instance().SetChoiceId(3);
             StartCoroutine(AfterSelection("Selected D", _stringD, _idD, _displayAfterSelectionD, 3));
         }
 
+        /// <summary>
+        /// Handles the selection of option E in the visual novel by marking it as chosen and starting the post-selection process.
+        /// </summary>
         public void OnOptionE()
         {
-            AnalyticsServiceHandler.Instance().SetChoiceId(4);
             StartCoroutine(AfterSelection("Selected E", _stringE, _idE, _displayAfterSelectionE, 4));
         }
 
+        /// <summary>
+        /// Plays the decision sound effect to provide audio feedback for user interaction.
+        /// Uses the GlobalVolumeManager to handle playback of the associated audio clip.
+        /// </summary>
         public void PlayDecisionSound()
         {
             GlobalVolumeManager.Instance.PlaySound(decisionSound);
         }
 
+        /// <summary>
+        /// Handles the post-selection logic after an option is chosen, including updating
+        /// the game state, playing animations and audio, and managing scene transitions.
+        /// </summary>
+        /// <param name="parameterName">The name of the animation or effect associated with the selected option.</param>
+        /// <param name="answer">The string response corresponding to the selected option.</param>
+        /// <param name="nextEventID">The ID of the next event triggered by this selection.</param>
+        /// <param name="displayAfterSelection">Indicates whether additional UI or content should be displayed after the selection.</param>
+        /// <param name="index">The index of the selected option.</param>
+        /// <returns>An IEnumerator used to manage the timing of events following the selection.</returns>
         private IEnumerator AfterSelection(string parameterName, string answer, string nextEventID,
             bool displayAfterSelection, int index)
         {

@@ -18,37 +18,37 @@ Novel_Investor
 
 
 :: Abschluss {"position":"800,3375","size":"100,100"}
->>Charakter01SprichtLaecheln:<<
+>>Character1|Smiling<<
 Ja, lassen Sie uns im Kontakt bleiben.
 >>--<<
->>SpielerinCharakterSpricht:<<
+>>Player<<
 Gerne, danke Ihnen. Bis bald.
 >>--<<
->>Charakter01SprichtLaecheln:<<
+>>Character1|Smiling<<
 Danke Ihnen. Bis dahin.
 >>--<<
->>Ende<<
+>>End<<
 
 
 :: Anfang {"position":"900,375","size":"100,100"}
->>Charakter01SprichtLaechelnGross:<<
+>>Character1|SmilingBig<<
 Ich muss sagen, Ihre Idee gefällt mir wirklich. Sehr innovativ!
 [[Vielen Dank! Wir haben auch bereits einen funktionierenden Prototypen entwickelt.->Co-Founder]]
 [[Freut mich, dass es Ihnen gefällt! Wir sehen großes Marktpotenzial.->Co-Founder]]
 
 
 :: Bewertung [Bias] {"position":"800,1825","size":"100,100"}
->>Charakter01SprichtUnzufrieden:<<
+>>Character1|Dissatisfied<<
 Ich bin ehrlich: Für ein frauengeführtes Unternehmen scheint mir die Bewertung sehr ambitioniert.
 >>--<<
->>RelevanterBias:UnterbewertungWeiblichGefuehrterUnternehmen<<
+>>Bias|UndervaluationFemaleManagedCompany<<
 [[Unsere Bewertung basiert auf Marktanalysen und vergleichbaren Start-ups – unabhängig vom Geschlecht.->ExitSzenario]]
 [[Mit diesem Denken verstärken Sie den Sexismus in der Gründungsszene noch weiter.->ExitSzenario]]
 [[Lassen Sie uns über die Fakten sprechen. Ich zeige Ihnen, warum unsere Bewertung gerechtfertigt ist.->ExitSzenario]]
 
 
 :: Co-Founder {"position":"900,575","size":"100,100"}
->>Charakter01SprichtLaecheln:<<
+>>Character1|Smiling<<
 Toll! Ich sehe aber oft, dass Teams mit einem technischen Co-Founder besser abschneiden. Haben Sie jemanden an Bord?
 [[Ja, ich habe einen technischen Hintergrund und mehrere Jahre Erfahrung in diesem Bereich.->MännlicherCoFounder]]
 [[Ich habe ein erfahrenes Tech-Team, das die Entwicklung vorantreibt. Mein Fokus liegt auf Strategie und Skalierung.->MännlicherCoFounder]]
@@ -56,7 +56,7 @@ Toll! Ich sehe aber oft, dass Teams mit einem technischen Co-Founder besser absc
 
 
 :: Druck {"position":"800,1175","size":"100,100"}
->>Charakter01SprichtFragend:<<
+>>Character1|Questioning<<
 Okay, aber denken Sie, dass Sie den Druck in der Geschäftsführung aushalten?
 [[Ich bin es gewohnt, unter Druck Entscheidungen zu treffen.->Skalierbarkeit]]
 [[Sie würden das einen Mann wahrscheinlich nicht fragen. Druck gehört zum Unternehmertum.->Skalierbarkeit]]
@@ -64,16 +64,16 @@ Okay, aber denken Sie, dass Sie den Druck in der Geschäftsführung aushalten?
 
 
 :: Durchsetzungsfähig [Bias] {"position":"975,1175","size":"100,100"}
->>Charakter01SprichtUnzufrieden:<<
+>>Character1|Dissatisfied<<
 Na ja, es ist eben eine Männerdomäne. Da hilft es manchmal, wenn jemand im Team "den Ton angibt".
 >>--<<
->>RelevanterBias:BenevolenterSexismus<<
+>>Bias|BenevolentSexism<<
 [[Glauben Sie, dass ein männlicher Co-Founder meine fachliche Expertise für Sie glaubwürdiger machen würde?->Fachliche Expertise Frage]]
 [[Keine Sorge, ich kann selbst gut "den Ton angeben".->Druck]]
 
 
 :: ExitArt {"position":"800,2175","size":"100,100"}
->>Charakter01SprichtKritisch:<<
+>>Character1|Critical<<
 Wie stellen Sie sich den Exit vor? Börsengang, also IPO, oder strategischer Verkauf?
 [[Ein strategischer Exit in fünf Jahren basierend auf Marktanalysen.->FrauenTechSelten]]
 [[IPO oder Verkauf – entscheidend ist, unser volles Potenzial auszuschöpfen.->FrauenTechSelten]]
@@ -81,7 +81,7 @@ Wie stellen Sie sich den Exit vor? Börsengang, also IPO, oder strategischer Ver
 
 
 :: ExitSzenario {"position":"800,1975","size":"100,100"}
->>Charakter01SprichtNeutral:<<
+>>Character1|Neutral<<
 Investor*innen suchen nach Exit-Szenarien. Können Sie garantieren, dass Sie langfristig committed sind?
 [[Unser Wachstumspotenzial macht verschiedene Exit-Optionen attraktiv. Lassen Sie uns darüber sprechen, welche Sie bevorzugen.->ExitArt]]
 [[Warum sollte ich sonst all meine Zeit und Energie in dieses Unternehmen stecken?->ExitArt]]
@@ -89,14 +89,14 @@ Investor*innen suchen nach Exit-Szenarien. Können Sie garantieren, dass Sie lan
 
 
 :: Fachliche Expertise Frage {"position":"975,1325","size":"100,100"}
->>Charakter01SprichtErschrocken:<<
+>>Character1|Scared<<
 Es geht doch nicht um Ihre Kompetenz! Ich sehe einfach oft, dass ein Gründer schneller das Vertrauen der Investor*innen gewinnt als eine Gründerin.
 [[Lassen Sie uns doch darüber sprechen, wie wir dieses Vertrauen durch transparente Zahlen und Fakten aufbauen können.->Traktion]]
 [[Vertrauen Sie einem Gründer auch eher als einer Gründerin?->Geschlechter-Bias Frage]]
 
 
 :: Finanzierung {"position":"800,2975","size":"100,100"}
->>Charakter01SprichtLaecheln:<<
+>>Character1|Smiling<<
 Zur Finanzierung: Denken Sie nicht, es wäre klüger, erst kleinere Finanzierungsrunden zu suchen?
 [[Unsere Kapitalstrategie basiert auf unserem Wachstumsplan.->InvestorZeit]]
 [[Würden Sie das auch einen Gründer mit demselben Wachstumspotenzial raten?->Wachstumspotenzial Frage]]
@@ -104,7 +104,7 @@ Zur Finanzierung: Denken Sie nicht, es wäre klüger, erst kleinere Finanzierung
 
 
 :: Forsch {"position":"825,2675","size":"100,100"}
->>Charakter01SprichtLachend:<<
+>>Character1|Laughing<<
 Sie sind sehr überzeugt. Vielleicht ein bisschen zu forsch für manche Investor*innen?
 [[Ich bin überzeugt, weil ich die Marktchancen genau kenne.->Finanzierung]]
 [[Selbstbewusstsein ist ein Vorteil beim Gründen, kein Nachteil.->Finanzierung]]
@@ -112,47 +112,47 @@ Sie sind sehr überzeugt. Vielleicht ein bisschen zu forsch für manche Investor
 
 
 :: FrauenTechSelten [Bias] {"position":"800,2375","size":"100,100"}
->>Charakter01SprichtFragend:<<
+>>Character1|Questioning<<
 Okay, Sie sind also optimistisch. Wissen Sie, ich will nicht sexistisch klingen, aber sind Frauen im Tech-Bereich nicht eher selten?
 >>--<<
->>RelevanterBias:GeschlechtsspezifischeStereotypen<<
+>>Bias|GenderSpecificStereotypes<<
 [[Ja, aber das sollte kein Argument gegen mein Unternehmen sein.->NichtAnzusehen]]
 [[Gerade deshalb ist es umso wichtiger, in innovative Gründerinnen zu investieren. Wer nur auf alte Muster setzt, verpasst die besten Chancen.->InvestorWohlfühlen]]
 [[Selten bedeutet nicht unfähig. Erfolgreiche Gründerinnen zeigen, dass es höchste Zeit für ein Umdenken ist.->InvestorWohlfühlen]]
 
 
 :: Führungserfahrung {"position":"825,975","size":"100,100"}
->>Charakter01SprichtNeutral:<<
+>>Character1|Neutral<<
 Ja, ein starkes Team ist wichtig, aber Investor*innen schauen auch darauf, wer an der Spitze steht. Wie sieht es mit Ihrer Führungserfahrung aus?
 [[Ich habe bereits Teams im Hochschulumfeld geführt.->Druck]]
 [[Ich habe bewiesen, dass ich Teams motivieren und erfolgreich skalieren kann.->Druck]]
 
 
 :: Führungserfahrung Frage [Bias] {"position":"975,975","size":"100,100"}
->>Charakter01SprichtErschrocken:<<
+>>Character1|Scared<<
 Nein, nein, so meine ich das nicht. Es geht nur darum, dass Männer oft als durchsetzungsfähiger wahrgenommen werden. Das könnte Ihnen helfen.
 >>--<<
->>RelevanterBias:ProveItAgainBias<<
+>>Bias|ProveItAgainBias<<
 [[Meinen Sie, mein Auftreten müsste durchsetzungsfähiger wirken, oder geht es eher um das Geschlecht?->Durchsetzungsfähig]]
 
 [[Spannend, wie tief solche Wahrnehmungen verankert sind. Vielleicht braucht die Branche genau deshalb frischen Wind.->Durchsetzungsfähig]]
 
 
 :: Geschlechter-Bias Frage [Bias] {"position":"1050,1475","size":"100,100"}
->>Charakter01SprichtErstaunt:<<
+>>Character1|Amazed<<
 Nein, natürlich nicht! Es geht nur darum, wie der Markt reagiert, nicht um meine persönliche Meinung.
 >>--<<
->>Charakter01SprichtKritisch:<<
+>>Character1|Critical<<
 Und der Markt ist groß, aber sind Frauen bereit, so aggressiv zu skalieren?
 >>--<<
->>RelevanterBias:Risk Aversion Bias<<
+>>Bias|RiskAversionBias<<
 [[Skalierbarkeit ist Teil unseres Geschäftsmodells. Wir haben eine klare Strategie.->Traktion]]
 [[Das finde ich jetzt schon eine sehr sexistische Frage.->Vergessen]]
 [[Ob Frauen im Allgemeinen bereit sind, aggressiv zu skalieren, weiß ich nicht. Ich bin es.->Traktion]]
 
 
 :: GuterWunsch {"position":"1350,3175","size":"100,100"}
->>Charakter01SprichtLaecheln:<<
+>>Character1|Smiling<<
 Dann wünsche ich Ihnen alles Gute für Ihren weiteren Weg.
 [[Danke. Von so jemand wie Ihnen brauche ich keine guten Wünsche.->Schluss]]
 [[Das wünsche ich Ihnen auch.->Schluss]]
@@ -160,17 +160,17 @@ Dann wünsche ich Ihnen alles Gute für Ihren weiteren Weg.
 
 
 :: InvestorWohlfühlen [Bias] {"position":"650,2550","size":"100,100"}
->>Charakter01SprichtUnzufrieden:<<
+>>Character1|Dissatisfied<<
 Ich verstehe Sie und ich sage das wirklich ungern, aber ich frage mich, ob Investor*innen sich mit einer weiblichen Geschäftsführung wohlfühlen.
 >>--<<
->>RelevanterBias:BiasInDerWahrnehmungVonFuehrungsfaehigkeiten<<
+>>Bias|BiasInThePerceptionOfLeadershipSkills<<
 [[Die Performance unseres Produkts sollte im Vordergrund stehen.->Forsch]]
 [[Ich verstehe Ihre Bedenken. Doch erfolgreiche Beispiele zeigen, dass Investor*innen vor allem auf starke Geschäftsmodelle und Ergebnisse setzen – und genau das liefern wir.->Forsch]]
 [[Wenn Investor*innen nach Bauchgefühl statt nach Leistung entscheiden, entgeht ihnen oft großes Potenzial.->Forsch]]
 
 
 :: InvestorZeit {"position":"725,3175","size":"100,100"}
->>Charakter01SprichtNeutral:<<
+>>Character1|Neutral<<
 Ich finde Ihr Konzept spannend, aber ich brauche noch Zeit.
 [[Das klingt gut. Wäre es okay, wenn ich mich Ende des Monats melde?->Abschluss]]
 [[Gerne. Ich spreche ohnehin noch mit anderen. Melden Sie sich gerne.->Abschluss]]
@@ -178,53 +178,53 @@ Ich finde Ihr Konzept spannend, aber ich brauche noch Zeit.
 
 
 :: MännlicherCoFounder [Bias] {"position":"900,775","size":"100,100"}
->>Charakter01SprichtKritisch:<<
+>>Character1|Critical<<
 Haben Sie denn einen männlichen Co-Founder? Das könnte helfen, Investor*innen zu überzeugen.
 >>--<<
->>RelevanterBias:BiasInDerWahrnehmungVonFuehrungsfaehigkeiten<<
+>>Bias|BiasInThePerceptionOfLeadershipSkills<<
 [[Nein, ich bin alleinige Gründerin, aber mein Team ist hochqualifiziert.->Führungserfahrung]]
 [[Interessant. Glauben Sie, dass Investor*innen eher in Männer investieren als in gute Ideen?->Führungserfahrung Frage]]
 [[Ich höre oft, dass Investor*innen Wert auf starke Teams legen. Lassen Sie uns doch über unsere Kompetenzen sprechen.->Führungserfahrung]]
 
 
 :: NichtAnzusehen [Bias] {"position":"950,2525","size":"100,100"}
->>Charakter01SprichtLachend:<<
+>>Character1|Laughing<<
 Das stimmt. Ich meine nur, diese Durchsetzungsfähigkeit sieht man Ihnen gar nicht an.
 >>--<<
->>RelevanterBias:StereotypeGegenueberFrauenInNichtTraditionellenBranchen<<
+>>Bias|StereotypesAboutWomenInNonTraditionalIndustries<<
 [[Interessant. Woran machen Sie das fest?->TechKompetenzFrage]]
 [[Es kommt ja nicht auf das Aussehen, sondern auf die Ergebnisse an, oder?->InvestorWohlfühlen]]
 [[Gut, dass Sie mein technisches Know-how nicht an meinem Äußeren festmachen müssen.->TechKompetenzFrage]]
 
 
 :: Schluss {"position":"1375,3375","size":"100,100"}
->>Charakter01SprichtLaecheln:<<
+>>Character1|Smiling<<
 Danke Ihnen. Bis dahin.
 >>--<<
->>Ende<<
+>>End<<
 
 
 :: Skalierbarkeit [Bias] {"position":"800,1375","size":"100,100"}
->>Charakter01SprichtKritisch:<<
+>>Character1|Critical<<
 Der Markt ist groß, aber sind Frauen bereit, so aggressiv zu skalieren?
 >>--<<
->>RelevanterBias:RiskAversionBias<<
+>>Bias|RiskAversionBias<<
 [[Skalierbarkeit ist Teil unseres Geschäftsmodells. Wir haben eine klare Strategie.->Traktion]]
 [[Ob Frauen im Allgemeinen bereit sind, aggressiv zu skalieren, weiß ich nicht. Ich bin es.->Traktion]]
 
 
 :: TechKompetenzFrage [Bias] {"position":"1050,2700","size":"100,100"}
->>Charakter01SprichtKritisch:<<
+>>Character1|Critical<<
 Nun, in dieser Branche muss man oft sehr technisch denken. Fühlen Sie sich da sicher?
 >>--<<
->>RelevanterBias:GeschlechtsspezifischeStereotypen<<
+>>Bias|GenderSpecificStereotypes<<
 [[Zweifeln Sie an meinen technischen Fähigkeiten?->Zweifel]]
 [[Ich kann Ihnen gern die technischen Details erläutern.->Forsch]]
 [[Sicherheit kommt durch Erfahrung – und die bringe ich mit.->Forsch]]
 
 
 :: Traktion {"position":"800,1650","size":"100,100"}
->>Charakter01SprichtFragend:<<
+>>Character1|Questioning<<
 Nun gut. Haben Sie schon genug Kundschaft, die Ihr Produkt nutzen?
 [[Wir haben noch keine zahlende Kundschaft, aber vielversprechende Partnerschaften.->Bewertung]]
 [[Wie definieren Sie ‚genug‘? Unsere Zahlen zeigen klar, dass die Nachfrage da ist.->Bewertung]]
@@ -232,14 +232,14 @@ Nun gut. Haben Sie schon genug Kundschaft, die Ihr Produkt nutzen?
 
 
 :: Vergessen {"position":"1050,1625","size":"100,100"}
->>Charakter01SprichtUnzufrieden:<<
+>>Character1|Dissatisfied<<
 Okay, vergessen Sie es.
 [[Gut. Was interessiert Sie denn noch?->Traktion]]
 [[Was soll das denn jetzt heißen.->WirdNichts]]
 
 
 :: VorschlagExit {"position":"1000,2175","size":"100,100"}
->>Charakter01SprichtLaecheln:<<
+>>Character1|Smiling<<
 Ein strategischer Exit ist planbarer. Haben Sie bereits Käufer im Blick?
 [[Ja, wir gehen davon aus, dass wir unserem größten Konkurrenten durchaus gefährlich werden können.->FrauenTechSelten]]
 [[Nein, da bin ich einfach mal optimistisch, dass etwas kommt.->FrauenTechSelten]]
@@ -247,10 +247,10 @@ Ein strategischer Exit ist planbarer. Haben Sie bereits Käufer im Blick?
 
 
 :: Wachstumspotenzial Frage {"position":"875,3175","size":"100,100"}
->>Charakter01SprichtErstaunt:<<
+>>Character1|Amazed<<
 Natürlich, es geht mir nur um Ihre Erfolgschancen!
 >>--<<
->>Charakter01SprichtNeutral:<<
+>>Character1|Neutral<<
 Ich finde Ihr Konzept auch spannend, aber ich brauche noch Zeit.
 [[Das klingt gut. Wäre es okay, wenn ich mich Ende des Monats melde?->Abschluss]]
 [[Gerne. Ich spreche ohnehin noch mit anderen. Melden Sie sich gerne.->Abschluss]]
@@ -258,13 +258,13 @@ Ich finde Ihr Konzept auch spannend, aber ich brauche noch Zeit.
 
 
 :: Willkommen {"position":"900,175","size":"100,100"}
->>InfoNachrichtWirdAngezeigt:<<
+>>Info<<
 Du triffst dich mit einem Angel Investor, der auf einer Pitch Night Interesse an deiner Innovation gezeigt hat und nun mehr erfahren möchte.
 [[Anfang]]
 
 
 :: WirdNichts {"position":"1050,1800","size":"100,100"}
->>Charakter01SprichtUnzufrieden:<<
+>>Character1|Dissatisfied<<
 Wissen Sie, ich glaube, wir kommen nicht zusammen.
 [[Das fände ich sehr schade. Was interessiert Sie denn noch?->Traktion]]
 [[Harte Auseinandersetzungen sind doch gut - lassen Sie uns weitersprechen.->Traktion]]
@@ -272,7 +272,7 @@ Wissen Sie, ich glaube, wir kommen nicht zusammen.
 
 
 :: WirdNichts2 {"position":"1200,2975","size":"100,100"}
->>Charakter01SprichtUnzufrieden:<<
+>>Character1|Dissatisfied<<
 Mir scheint, wir kommen nicht zusammen.
 [[Das fände ich sehr schade. Was interessiert Sie denn noch?->Finanzierung]]
 [[Harte Auseinandersetzungen sind doch gut - lassen Sie uns weitersprechen.->Finanzierung]]
@@ -280,7 +280,7 @@ Mir scheint, wir kommen nicht zusammen.
 
 
 :: Zweifel {"position":"950,2825","size":"100,100"}
->>Charakter01SprichtUnzufrieden:<<
+>>Character1|Dissatisfied<<
 Woher soll ich denn wissen, welche technischen Fähigkeiten Sie haben.
 [[Verstehe. Lassen Sie uns weiter überlegen->Finanzierung]]
 [[Also da müssen Sie mir schon vertrauen.->WirdNichts2]]

@@ -4,26 +4,40 @@ using UnityEngine.UI;
 
 namespace Assets._Scripts.Managers
 {
+    /// <summary>
+    /// Manages font size settings across the application, allowing for dynamic updates to
+    /// text components and saving user preferences for font sizes.
+    /// </summary>
     public class FontSizeManager : MonoBehaviour
     {
-        // Statische Instanz
+        // Static instance
         private static FontSizeManager _instance;
 
-        // Schriftgrößen-Variablen
-        public int FontSize { get; private set; }
+        // Font size variable
+        private int FontSize { get; set; }
 
-        // Werte f�r die minimal und maximal zulässige Schriftgröße
-        private const int MIN_FONT_SIZE = 35;
-        private const int MAX_FONT_SIZE = 50;
+        // Values for minimum and maximum allowed font size
+        private const int MinFontSize = 35;
+        private const int MaxFontSize = 50;
 
-        // Privater Konstruktor, um Instanziierungen von au�en zu verhindern
+        /// <summary>
+        /// Manages font size settings globally across the application. Provides functionalities
+        /// to set, retrieve, and apply font settings dynamically to text components, ensuring
+        /// a consistent font size experience for users. The manager also persists user preferences
+        /// for font sizes between sessions.
+        /// </summary>
         private FontSizeManager()
         {
-            // Standard-Schriftgröße kann hier initialisiert werden, z.B. mittlerer Wert zwischen min und max
-            FontSize = MIN_FONT_SIZE;
+            // Default font size can be initialized here, e.g. middle value between min and max
+            FontSize = MinFontSize;
         }
 
-        // Öffentliche Methode zum Abrufen der Instanz
+        /// <summary>
+        /// Provides global access to the singleton instance of the FontSizeManager class. Ensures that only one instance exists
+        /// and initializes the instance when accessed for the first time. If no instance exists in the scene, a new one
+        /// is created and marked to persist across scenes.
+        /// </summary>
+        /// <returns>The singleton instance of the FontSizeManager.</returns>
         public static FontSizeManager Instance()
         {
             if (_instance == null)
@@ -40,44 +54,52 @@ namespace Assets._Scripts.Managers
             return _instance;
         }
 
+        /// <summary>
+        /// Called when the FontSizeManager script instance is being loaded. This method initializes the
+        /// font size by retrieving the previously saved font size from PlayerPrefs. If no saved font size
+        /// is found, it assigns a default value of the minimum font size.
+        /// </summary>
         private void Awake()
         {
-            // Schriftgröße aus PlayerPrefs laden (Standard: minFontSize)
-            FontSize = UnityEngine.PlayerPrefs.GetInt("SavedFontSize", MIN_FONT_SIZE);
+            // Load font size from PlayerPrefs (default: minFontSize)
+            FontSize = PlayerPrefs.GetInt("SavedFontSize", MinFontSize);
         }
 
-        // Methode, um die Schriftgröße zu setzen, dabei wird sichergestellt, dass die Gr��e im zulässigen Bereich bleibt
+        /// <summary>
+        /// Sets the font size to the specified value, clamping it within the allowed minimum
+        /// and maximum font size range. The updated font size is saved in the user's preferences
+        /// and applied dynamically to all text components in the application.
+        /// </summary>
+        /// <param name="newFontSize">The new font size to be applied. The value will be clamped within the allowed range.</param>
         public void SetFontSize(int newFontSize)
         {
-            FontSize = Mathf.Clamp(newFontSize, MIN_FONT_SIZE, MAX_FONT_SIZE);
-            UnityEngine.PlayerPrefs.SetInt("SavedFontSize", FontSize);
+            FontSize = Mathf.Clamp(newFontSize, MinFontSize, MaxFontSize);
+            PlayerPrefs.SetInt("SavedFontSize", FontSize);
             UpdateAllTextComponents();
         }
 
-        // Methode, um die Schriftgröße direkt auf einen Slider-Wert anzupassen (0 = min, 1 = max)
-        public void SetFontSizeFromSlider(float sliderValue)
-        {
-            FontSize = Mathf.RoundToInt(Mathf.Lerp(MIN_FONT_SIZE, MAX_FONT_SIZE, sliderValue));
-            UnityEngine.PlayerPrefs.SetInt("SavedFontSize", FontSize);
-            UpdateAllTextComponents();
-        }
-
+        /// <summary>
+        /// Updates the font size on all text components within the current scene. The method locates
+        /// and iterates over all text components of supported types and applies the globally set font size.
+        /// It also rebuilds the layout of the text components to ensure proper alignment and spacing are preserved.
+        /// Text components tagged with "NoResize" are excluded from updates.
+        /// </summary>
         public void UpdateAllTextComponents()
         {
-            // TMP_Text-Komponenten finden und aktualisieren
+            // Find and update TMP_Text components
             TMP_Text[] tmpTextComponents = FindObjectsOfType<TMP_Text>();
             foreach (TMP_Text tmpTextComponent in tmpTextComponents)
             {
-                // Überprüfen, ob das Textobjekt den Tag "NoResize" hat, und überspringen
+                // Check if the text object has "NoResize" tag and skip
                 if (tmpTextComponent.CompareTag("NoResize"))
                 {
                     continue;
                 }
 
                 tmpTextComponent.fontSize = FontSize;
-                tmpTextComponent.ForceMeshUpdate(); // Erzwingt das Update des Textes (optional f�r TMP)
+                tmpTextComponent.ForceMeshUpdate(); // Forces text update (optional for TMP)
 
-                // **Layout f�r dieses Textobjekt neu erstellen**
+                // **Rebuild layout for this text object**
                 RectTransform rectTransform = tmpTextComponent.GetComponent<RectTransform>();
                 if (rectTransform != null)
                 {
@@ -85,11 +107,11 @@ namespace Assets._Scripts.Managers
                 }
             }
 
-            // UI-Text-Komponenten finden und aktualisieren
+            // Find and update UI Text components
             Text[] uiTextComponents = FindObjectsOfType<Text>();
             foreach (Text uiTextComponent in uiTextComponents)
             {
-                // Überprüfen, ob das Textobjekt den Tag "NoResize" hat, und überspringen
+                // Check if the text object has "NoResize" tag and skip
                 if (uiTextComponent.CompareTag("NoResize"))
                 {
                     continue;
@@ -97,7 +119,7 @@ namespace Assets._Scripts.Managers
 
                 uiTextComponent.fontSize = FontSize;
 
-                // **Layout f�r dieses Textobjekt neu erstellen**
+                // Rebuild layout for this text object
                 RectTransform rectTransform = uiTextComponent.GetComponent<RectTransform>();
                 if (rectTransform != null)
                 {

@@ -1,0 +1,2158 @@
+fileFormatVersion: 2
+guid: c9510e5b50caff040aea9d806144c52a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7068344084376599147
+    second: Vermieter_Hair_2_0
+  - first:
+      213: -8160798933144299461
+    second: Vermieter_Hair_2_1
+  - first:
+      213: 3137710677692944205
+    second: Vermieter_Hair_2_2
+  - first:
+      213: -1441406259957741766
+    second: Vermieter_Hair_2_3
+  - first:
+      213: 5630703747200413024
+    second: Vermieter_Hair_2_4
+  - first:
+      213: 2180154432672617584
+    second: Vermieter_Hair_2_5
+  - first:
+      213: 1649120845841325015
+    second: Vermieter_Hair_2_6
+  - first:
+      213: 927940545271950968
+    second: Vermieter_Hair_2_7
+  - first:
+      213: 7640072136362308686
+    second: Vermieter_Hair_2_8
+  - first:
+      213: 5657979152277779614
+    second: Vermieter_Hair_2_9
+  - first:
+      213: 2254269173026721171
+    second: Vermieter_Hair_2_10
+  - first:
+      213: -3017030541136786147
+    second: Vermieter_Hair_2_11
+  - first:
+      213: -957756205078190051
+    second: Vermieter_Hair_2_12
+  - first:
+      213: 4198690422714413141
+    second: Vermieter_Hair_2_13
+  - first:
+      213: -8572662716332177374
+    second: Vermieter_Hair_2_14
+  - first:
+      213: -3321418430910894952
+    second: Vermieter_Hair_2_15
+  - first:
+      213: 4720176855365784215
+    second: Vermieter_Hair_2_16
+  - first:
+      213: 4698821828178437710
+    second: Vermieter_Hair_2_17
+  - first:
+      213: -7023607378093858007
+    second: Vermieter_Hair_2_18
+  - first:
+      213: -544097360206778433
+    second: Vermieter_Hair_2_19
+  - first:
+      213: -4194796334008243168
+    second: Vermieter_Hair_2_20
+  - first:
+      213: -2175223592608361796
+    second: Vermieter_Hair_2_21
+  - first:
+      213: 4485786186458544811
+    second: Vermieter_Hair_2_22
+  - first:
+      213: 9059887282119152838
+    second: Vermieter_Hair_2_23
+  - first:
+      213: 4182831370240068735
+    second: Vermieter_Hair_2_24
+  - first:
+      213: 540154808663646685
+    second: Vermieter_Hair_2_25
+  - first:
+      213: -6505726574736755214
+    second: Vermieter_Hair_2_26
+  - first:
+      213: 6995944904871501072
+    second: Vermieter_Hair_2_27
+  - first:
+      213: -7710329806914100846
+    second: Vermieter_Hair_2_28
+  - first:
+      213: 8173600669389362479
+    second: Vermieter_Hair_2_29
+  - first:
+      213: -157469876434427407
+    second: Vermieter_Hair_2_30
+  - first:
+      213: 7021457382352180967
+    second: Vermieter_Hair_2_31
+  - first:
+      213: -593280727176039149
+    second: Vermieter_Hair_2_32
+  - first:
+      213: 5277395017562790037
+    second: Vermieter_Hair_2_33
+  - first:
+      213: 7692267637819104513
+    second: Vermieter_Hair_2_34
+  - first:
+      213: 4596053306968505
+    second: Vermieter_Hair_2_35
+  - first:
+      213: 8284449095479345670
+    second: Vermieter_Hair_2_36
+  - first:
+      213: -7552831534573686061
+    second: Vermieter_Hair_2_37
+  - first:
+      213: -4733631479221212454
+    second: Vermieter_Hair_2_38
+  - first:
+      213: 783440638344670854
+    second: Vermieter_Hair_2_39
+  - first:
+      213: -8898078912154806672
+    second: Vermieter_Hair_2_40
+  - first:
+      213: 2715158411848596770
+    second: Vermieter_Hair_2_41
+  - first:
+      213: 3909835428205251846
+    second: Vermieter_Hair_2_42
+  - first:
+      213: -7325394150841625372
+    second: Vermieter_Hair_2_43
+  - first:
+      213: -8501910680543007812
+    second: Vermieter_Hair_2_44
+  - first:
+      213: -7855006607150368330
+    second: Vermieter_Hair_2_45
+  - first:
+      213: 4538653403924007012
+    second: Vermieter_Hair_2_46
+  - first:
+      213: 2251187885185970036
+    second: Vermieter_Hair_2_47
+  - first:
+      213: 1869144788699974931
+    second: Vermieter_Hair_2_48
+  - first:
+      213: 605067119750215087
+    second: Vermieter_Hair_2_49
+  - first:
+      213: 8468859991676510283
+    second: Vermieter_Hair_2_50
+  - first:
+      213: 3658527876267375822
+    second: Vermieter_Hair_2_51
+  - first:
+      213: 1517436518141067962
+    second: Vermieter_Hair_2_52
+  - first:
+      213: 3794867534234019178
+    second: Vermieter_Hair_2_53
+  - first:
+      213: 7982100703599444103
+    second: Vermieter_Hair_2_54
+  - first:
+      213: -8751278288725194710
+    second: Vermieter_Hair_2_55
+  - first:
+      213: 2625106844374728064
+    second: Vermieter_Hair_2_56
+  - first:
+      213: -4641616659956901081
+    second: Vermieter_Hair_2_57
+  - first:
+      213: 3076888661013679431
+    second: Vermieter_Hair_2_58
+  - first:
+      213: -2376067400943872506
+    second: Vermieter_Hair_2_59
+  - first:
+      213: -7757824200417959633
+    second: Vermieter_Hair_2_60
+  - first:
+      213: 908713792896871669
+    second: Vermieter_Hair_2_61
+  - first:
+      213: 8487492017130070363
+    second: Vermieter_Hair_2_62
+  - first:
+      213: 1810168961661692221
+    second: Vermieter_Hair_2_63
+  - first:
+      213: -6620156627352143758
+    second: Vermieter_Hair_2_64
+  - first:
+      213: 8977427447523461107
+    second: Vermieter_Hair_2_65
+  - first:
+      213: -8944625187378584411
+    second: Vermieter_Hair_2_66
+  - first:
+      213: -772340062333303878
+    second: Vermieter_Hair_2_67
+  - first:
+      213: 7671971034227325158
+    second: Vermieter_Hair_2_68
+  - first:
+      213: 9145930568079604517
+    second: Vermieter_Hair_2_69
+  - first:
+      213: 3359686298132971128
+    second: Vermieter_Hair_2_70
+  - first:
+      213: -1903546321282375114
+    second: Vermieter_Hair_2_71
+  - first:
+      213: -8658806339756692631
+    second: Vermieter_Hair_2_72
+  - first:
+      213: -5031599303284658617
+    second: Vermieter_Hair_2_73
+  - first:
+      213: -2212750851973976405
+    second: Vermieter_Hair_2_74
+  - first:
+      213: -8042331303176668360
+    second: Vermieter_Hair_2_75
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: 47
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_0
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 2346
+        width: 413
+        height: 319
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6a308bbe7dc71260800000000000000
+      internalID: 7068344084376599147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_1
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 2326
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b381c8aab940fbe80800000000000000
+      internalID: -8160798933144299461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_2
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 2344
+        width: 19
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4f86dfac336b8b20800000000000000
+      internalID: 3137710677692944205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_3
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 2330
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a37c13ab4a81ffbe0800000000000000
+      internalID: -1441406259957741766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_4
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 2340
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06d675fa937442e40800000000000000
+      internalID: 5630703747200413024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_5
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 2329
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 074d1f2d7e6714e10800000000000000
+      internalID: 2180154432672617584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_6
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 2342
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7db50100caad2e610800000000000000
+      internalID: 1649120845841325015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_7
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 2342
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87eed9d6205b0ec00800000000000000
+      internalID: 927940545271950968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_8
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 2339
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e443c32112df60a60800000000000000
+      internalID: 7640072136362308686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_9
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 2339
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e94351ecf0e258e40800000000000000
+      internalID: 5657979152277779614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_10
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 2341
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39d0f568ed5c84f10800000000000000
+      internalID: 2254269173026721171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_11
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 2340
+        width: 21
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1d890f25ba5126d0800000000000000
+      internalID: -3017030541136786147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_12
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 2332
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1863ee4ecd55b2f0800000000000000
+      internalID: -957756205078190051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_13
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 2320
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5503abf91beb44a30800000000000000
+      internalID: 4198690422714413141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_14
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 2326
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22809cdeda8c70980800000000000000
+      internalID: -8572662716332177374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_15
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 2325
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89cee13e883f7e1d0800000000000000
+      internalID: -3321418430910894952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_16
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 2337
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 792191567df618140800000000000000
+      internalID: 4720176855365784215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_17
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 2327
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e466d6bae81953140800000000000000
+      internalID: 4698821828178437710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_18
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 2332
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92327e26d42278e90800000000000000
+      internalID: -7023607378093858007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_19
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 2332
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbfa5a9655af278f0800000000000000
+      internalID: -544097360206778433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_20
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 2330
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02ce35e85f619c5c0800000000000000
+      internalID: -4194796334008243168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_21
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 2330
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb29787daad00d1e0800000000000000
+      internalID: -2175223592608361796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_22
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 2333
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: baa373615c6b04e30800000000000000
+      internalID: 4485786186458544811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_23
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 2312
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c49ac35b7f2bbd70800000000000000
+      internalID: 9059887282119152838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_24
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 2316
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7c058a38f66c0a30800000000000000
+      internalID: 4182831370240068735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_25
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 2326
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd1ad16cfe30f7700800000000000000
+      internalID: 540154808663646685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_26
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 2323
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f53ffa262407b5a0800000000000000
+      internalID: -6505726574736755214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_27
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 2311
+        width: 10
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01dd11b23d6961160800000000000000
+      internalID: 6995944904871501072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_28
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 2317
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29167c544e76ff490800000000000000
+      internalID: -7710329806914100846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_29
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 2300
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2519d2d0867e6170800000000000000
+      internalID: 8173600669389362479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_30
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 2317
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f12d405bfd80ddf0800000000000000
+      internalID: -157469876434427407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_31
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 2315
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e655a8b94a317160800000000000000
+      internalID: 7021457382352180967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_32
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 2311
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 315369c625e34c7f0800000000000000
+      internalID: -593280727176039149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_33
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 2316
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5981f31cec21d3940800000000000000
+      internalID: 5277395017562790037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_34
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 2291
+        width: 12
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10dd07549ac60ca60800000000000000
+      internalID: 7692267637819104513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_35
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 2287
+        width: 32
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b90bbc0614501000800000000000000
+      internalID: 4596053306968505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_36
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 2301
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6024ad73f8648f270800000000000000
+      internalID: 8284449095479345670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_37
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 2285
+        width: 9
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d2fd556cb3fe2790800000000000000
+      internalID: -7552831534573686061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_38
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 2293
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adaa96fdf33ce4eb0800000000000000
+      internalID: -4733631479221212454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_39
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 2296
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68ea3271c175fda00800000000000000
+      internalID: 783440638344670854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_40
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 2306
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0765e999f5ca38480800000000000000
+      internalID: -8898078912154806672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_41
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 2289
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22d3627a03e2ea520800000000000000
+      internalID: 2715158411848596770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_42
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 2293
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60d49645b96824630800000000000000
+      internalID: 3909835428205251846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_43
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 2285
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e45c57d4d8f65a90800000000000000
+      internalID: -7325394150841625372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_44
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 2289
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbb6226f745230a80800000000000000
+      internalID: -8501910680543007812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_45
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 2287
+        width: 17
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b9b470cb196df290800000000000000
+      internalID: -7855006607150368330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_46
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 2285
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 468028b59398cfe30800000000000000
+      internalID: 4538653403924007012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_47
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 2267
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47f2c2b4473dd3f10800000000000000
+      internalID: 2251187885185970036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_48
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 2283
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31d0c3c384980f910800000000000000
+      internalID: 1869144788699974931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_49
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 2266
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa5faf1f651a56800800000000000000
+      internalID: 605067119750215087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_50
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 2279
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b406560ea4f678570800000000000000
+      internalID: 8468859991676510283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_51
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 2278
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eccf7c148b3b5c230800000000000000
+      internalID: 3658527876267375822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_52
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 2271
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab2010939740f0510800000000000000
+      internalID: 1517436518141067962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_53
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 2276
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a656ea39ae31aa430800000000000000
+      internalID: 3794867534234019178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_54
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 2273
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 780c0778c4e16ce60800000000000000
+      internalID: 7982100703599444103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_55
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 2269
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2842fd33c63d8680800000000000000
+      internalID: -8751278288725194710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_56
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 2266
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08df66c34c04e6420800000000000000
+      internalID: 2625106844374728064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_57
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 2265
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72bdbb77d3aa59fb0800000000000000
+      internalID: -4641616659956901081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_58
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 2271
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74dc5256fed43ba20800000000000000
+      internalID: 3076888661013679431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_59
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 2264
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 606da5ca943860fd0800000000000000
+      internalID: -2376067400943872506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_60
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 2253
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f21a8201efba65490800000000000000
+      internalID: -7757824200417959633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_61
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 2258
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fcad1c41666c9c00800000000000000
+      internalID: 908713792896871669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_62
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 2261
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b51600b5501a9c570800000000000000
+      internalID: 8487492017130070363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_63
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 2252
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d39684774130f1910800000000000000
+      internalID: 1810168961661692221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_64
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 2265
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2783a3d5f9a7024a0800000000000000
+      internalID: -6620156627352143758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_65
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 2259
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f74a76f2ba369c70800000000000000
+      internalID: 8977427447523461107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_66
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 2242
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a4a94168ce4ed380800000000000000
+      internalID: -8944625187378584411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_67
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 2252
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab302da2ec81845f0800000000000000
+      internalID: -772340062333303878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_68
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 2252
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e8b43ef101587a60800000000000000
+      internalID: 7671971034227325158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_69
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 2244
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52b75caf46fdcee70800000000000000
+      internalID: 9145930568079604517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_70
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 2232
+        width: 25
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87e76f443e000ae20800000000000000
+      internalID: 3359686298132971128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_71
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 2252
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 632667ac4be3595e0800000000000000
+      internalID: -1903546321282375114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_72
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 2249
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96be6e3a28db5d780800000000000000
+      internalID: -8658806339756692631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_73
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 2247
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74e6d9b971b2c2ab0800000000000000
+      internalID: -5031599303284658617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_74
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 2234
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: baee5a3e2daba41e0800000000000000
+      internalID: -2212750851973976405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vermieter_Hair_2_75
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 2237
+        width: 17
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83b76243a46e36090800000000000000
+      internalID: -8042331303176668360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Vermieter_Hair_2_0: 7068344084376599147
+      Vermieter_Hair_2_1: -8160798933144299461
+      Vermieter_Hair_2_10: 2254269173026721171
+      Vermieter_Hair_2_11: -3017030541136786147
+      Vermieter_Hair_2_12: -957756205078190051
+      Vermieter_Hair_2_13: 4198690422714413141
+      Vermieter_Hair_2_14: -8572662716332177374
+      Vermieter_Hair_2_15: -3321418430910894952
+      Vermieter_Hair_2_16: 4720176855365784215
+      Vermieter_Hair_2_17: 4698821828178437710
+      Vermieter_Hair_2_18: -7023607378093858007
+      Vermieter_Hair_2_19: -544097360206778433
+      Vermieter_Hair_2_2: 3137710677692944205
+      Vermieter_Hair_2_20: -4194796334008243168
+      Vermieter_Hair_2_21: -2175223592608361796
+      Vermieter_Hair_2_22: 4485786186458544811
+      Vermieter_Hair_2_23: 9059887282119152838
+      Vermieter_Hair_2_24: 4182831370240068735
+      Vermieter_Hair_2_25: 540154808663646685
+      Vermieter_Hair_2_26: -6505726574736755214
+      Vermieter_Hair_2_27: 6995944904871501072
+      Vermieter_Hair_2_28: -7710329806914100846
+      Vermieter_Hair_2_29: 8173600669389362479
+      Vermieter_Hair_2_3: -1441406259957741766
+      Vermieter_Hair_2_30: -157469876434427407
+      Vermieter_Hair_2_31: 7021457382352180967
+      Vermieter_Hair_2_32: -593280727176039149
+      Vermieter_Hair_2_33: 5277395017562790037
+      Vermieter_Hair_2_34: 7692267637819104513
+      Vermieter_Hair_2_35: 4596053306968505
+      Vermieter_Hair_2_36: 8284449095479345670
+      Vermieter_Hair_2_37: -7552831534573686061
+      Vermieter_Hair_2_38: -4733631479221212454
+      Vermieter_Hair_2_39: 783440638344670854
+      Vermieter_Hair_2_4: 5630703747200413024
+      Vermieter_Hair_2_40: -8898078912154806672
+      Vermieter_Hair_2_41: 2715158411848596770
+      Vermieter_Hair_2_42: 3909835428205251846
+      Vermieter_Hair_2_43: -7325394150841625372
+      Vermieter_Hair_2_44: -8501910680543007812
+      Vermieter_Hair_2_45: -7855006607150368330
+      Vermieter_Hair_2_46: 4538653403924007012
+      Vermieter_Hair_2_47: 2251187885185970036
+      Vermieter_Hair_2_48: 1869144788699974931
+      Vermieter_Hair_2_49: 605067119750215087
+      Vermieter_Hair_2_5: 2180154432672617584
+      Vermieter_Hair_2_50: 8468859991676510283
+      Vermieter_Hair_2_51: 3658527876267375822
+      Vermieter_Hair_2_52: 1517436518141067962
+      Vermieter_Hair_2_53: 3794867534234019178
+      Vermieter_Hair_2_54: 7982100703599444103
+      Vermieter_Hair_2_55: -8751278288725194710
+      Vermieter_Hair_2_56: 2625106844374728064
+      Vermieter_Hair_2_57: -4641616659956901081
+      Vermieter_Hair_2_58: 3076888661013679431
+      Vermieter_Hair_2_59: -2376067400943872506
+      Vermieter_Hair_2_6: 1649120845841325015
+      Vermieter_Hair_2_60: -7757824200417959633
+      Vermieter_Hair_2_61: 908713792896871669
+      Vermieter_Hair_2_62: 8487492017130070363
+      Vermieter_Hair_2_63: 1810168961661692221
+      Vermieter_Hair_2_64: -6620156627352143758
+      Vermieter_Hair_2_65: 8977427447523461107
+      Vermieter_Hair_2_66: -8944625187378584411
+      Vermieter_Hair_2_67: -772340062333303878
+      Vermieter_Hair_2_68: 7671971034227325158
+      Vermieter_Hair_2_69: 9145930568079604517
+      Vermieter_Hair_2_7: 927940545271950968
+      Vermieter_Hair_2_70: 3359686298132971128
+      Vermieter_Hair_2_71: -1903546321282375114
+      Vermieter_Hair_2_72: -8658806339756692631
+      Vermieter_Hair_2_73: -5031599303284658617
+      Vermieter_Hair_2_74: -2212750851973976405
+      Vermieter_Hair_2_75: -8042331303176668360
+      Vermieter_Hair_2_8: 7640072136362308686
+      Vermieter_Hair_2_9: 5657979152277779614
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
