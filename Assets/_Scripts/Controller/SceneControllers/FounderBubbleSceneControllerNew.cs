@@ -95,11 +95,12 @@ namespace Assets._Scripts.Controller.SceneControllers
             SetupIntroNovelButton();
             AddEventListeners();
             PerformPostUISetupActions();
+            
+            StartCoroutine(SetInitialScrollDelayed());
 
             if (GameManager.Instance.IsIntroNovelLoadedFromMainMenu)
             {
                 StartCoroutine(PerformInitialScrolling());
-                // PerformInitialScrolling();
                 
                 GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
             }
@@ -322,9 +323,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         private IEnumerator PerformInitialScrolling()
         {
             float tempScrollDuration = scrollDuration;
-            scrollDuration = 0.5f;
-            
-            StartCoroutine(SetInitialScrollDelayed());
+            scrollDuration = 1.5f;
 
             if (buttonCount % 2 != 0)
             {
