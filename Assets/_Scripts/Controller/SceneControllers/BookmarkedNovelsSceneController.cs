@@ -24,7 +24,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private Button presseNovel;
         [SerializeField] private Button bueroNovel;
         [SerializeField] private Button honorarNovel;
-        [SerializeField] private Button introNovel;
 
         [SerializeField] private GameObject selectNovelSoundPrefab;
 
@@ -49,7 +48,6 @@ namespace Assets._Scripts.Controller.SceneControllers
                 { VisualNovelNames.PresseNovel, presseNovel },
                 { VisualNovelNames.VermieterNovel, bueroNovel },
                 { VisualNovelNames.HonorarNovel, honorarNovel },
-                { VisualNovelNames.EinstiegsNovel, introNovel }
             };
 
             // Add click listeners and hide all novel buttons initially
