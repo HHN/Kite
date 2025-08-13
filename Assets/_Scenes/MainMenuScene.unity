@@ -2067,6 +2067,7 @@ MonoBehaviour:
   skipIntroNovel: 0
   isIntroNovelSaved: 0
   introNovelLoadedFromMainMenu: 1
+  showFeedbackLink: 0
   novelSaveStatusList: []
   characterDataList: []
   messageBox: {fileID: 5629918238507184917, guid: 47c0a3038b673a24cb82a566be2abf20, type: 3}
