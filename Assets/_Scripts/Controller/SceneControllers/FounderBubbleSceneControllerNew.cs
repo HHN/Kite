@@ -429,7 +429,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             NovelEntry entry = _isNovelContainedInVersion.FirstOrDefault(novel => novel.novelId == VisualNovelNamesHelper.ToInt(novelNames));
             if (entry == null) return;
 
-            if (SnapToButton(buttonRect)) return;
+            SnapToButton(buttonRect);
 
             DisplayTextBoxForVisualNovel(novelNames, entry.isContained);
 
