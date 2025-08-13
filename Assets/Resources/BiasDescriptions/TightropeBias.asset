@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5084c0e108f447f8a941930d98fc2d16, type: 3}
+  m_Name: TightropeBias
+  m_EditorClassIdentifier: 
+  biasType: 15
+  headline: Tightrope Bias
+  preview: "Frauen in F\xFChrungspositionen bewegen sich oft auf einem schmalen Grat:
+    Wenn sie zu freundlich und kooperativ sind, gelten sie als \u201Ezu weich\u201C
+    oder \u201Enicht durchsetzungsf\xE4hig\u201C. Sind sie hingegen direkt und entscheidungsstark,
+    werden sie als \u201Ezu fordernd\u201C oder \u201Eunsympathisch\u201C wahrgenommen."
+  description: "Dieser sogenannte Tightrope Bias zwingt Frauen dazu, st\xE4ndig ihr
+    Verhalten zu balancieren, w\xE4hrend m\xE4nnliche Kollegen f\xFCr dasselbe Verhalten
+    als \u201Eentschlossen\u201C oder \u201Evision\xE4r\u201C wahrgenommen werden
+    (<color=LINK_COLOR><link=\"https://doi.org/10.1002/ltl.20654\\\">Quelle</link></color>).\n\r\nIn
+    unseren Stories zeigt sich dieser Bias, wenn eine Verhandlungspartnerin betont,
+    dass sie Dein Selbstbewusstsein sch\xE4tzt \u2013 aber gleichzeitig andeutet,
+    dass dieses \u201Ezu forsch\u201C f\xFCr manche Investorinnen und Investoren
+    wirken k\xF6nnte. Die implizite Erwartung: Frauen sollten selbstbewusst, aber
+    nicht zu selbstbewusst sein."

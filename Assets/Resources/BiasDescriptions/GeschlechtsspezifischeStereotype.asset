@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5084c0e108f447f8a941930d98fc2d16, type: 3}
+  m_Name: GeschlechtsspezifischeStereotype
+  m_EditorClassIdentifier: 
+  biasType: 14
+  headline: Geschlechtsspezifische Stereotype
+  preview: "Stereotype beeinflussen, wie Frauen in der Gesch\xE4ftswelt wahrgenommen
+    werden. W\xE4hrend M\xE4nnern Eigenschaften wie \u201Eanalytisch\u201C, \u201Estrategisch\u201C
+    oder \u201Edurchsetzungsstark\u201C zugeschrieben werden, werden Frauen oft als
+    \u201Ekommunikativ\u201C, \u201Edetailliert\u201C oder \u201Eharmonieorientiert\u201C
+    beschrieben."
+  description: "Diese Zuschreibungen sind nicht nur wertend, sondern beeinflussen
+    auch Entscheidungen in der Gesch\xE4ftswelt \u2013 von Einstellungsprozessen
+    \xFCber Finanzierungsentscheidungen bis hin zur Wahrnehmung von F\xFChrungskompetenz
+    (<color=LINK_COLOR><link=\"https://doi.org/10.1515/erj-2022-0235\\\">Quelle</link></color>).\n\nIn
+    unseren Stories zeigt sich dieser Bias, wenn ein Vermieter beil\xE4ufig bemerkt,
+    dass ihm auff\xE4llt, dass \u201EFrauen sich detaillierter mit Anforderungen
+    auseinandersetzen\u201C. Auch wenn es positiv klingt, verst\xE4rkt es das Stereotyp,
+    dass Frauen eher auf Details achten als auf strategische Unternehmensf\xFChrung."

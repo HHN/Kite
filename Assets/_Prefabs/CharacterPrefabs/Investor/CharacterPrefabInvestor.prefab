@@ -228,11 +228,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1465545687914413254}
   - component: {fileID: 1465545687914413252}
-  - component: {fileID: 4126753951640385348}
   - component: {fileID: 4524035883740533591}
   - component: {fileID: 6155688656520349526}
   - component: {fileID: 4253796331781111194}
-  - component: {fileID: 2571110113651146512}
   m_Layer: 5
   m_Name: CharacterPrefabInvestor
   m_TagString: Untagged
@@ -268,20 +266,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465545687914413273}
   m_CullTransparentMesh: 1
---- !u!114 &4126753951640385348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465545687914413273}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AspectMode: 2
-  m_AspectRatio: 1.1497505
 --- !u!114 &4524035883740533591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,11 +279,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinImage: {fileID: 6553579731152782210}
-  glassImage: {fileID: 5693647773901302971}
-  handImage: {fileID: 8803450695257444492}
-  clothesImage: {fileID: 2735791881534372737}
-  hairImage: {fileID: 3816683545305009484}
   faceImage: {fileID: 5629460200802205328}
+  glassImage: {fileID: 5693647773901302971}
+  hairImage: {fileID: 3816683545305009484}
+  clothesImage: {fileID: 2735791881534372737}
+  handImage: {fileID: 8803450695257444492}
   skinSprites:
   - {fileID: 21300000, guid: 8c7ba12561509094e994e87bdc0db61e, type: 3}
   - {fileID: 21300000, guid: 23705b0d83ea24847ad9441c206187ff, type: 3}
@@ -318,31 +302,31 @@ MonoBehaviour:
   - {fileID: 21300000, guid: df333ac9d5c83b444bf27c2070c934e8, type: 3}
   - {fileID: 21300000, guid: b2e298bcabca56342b5b9cf26725d87f, type: 3}
   glassesSprites: []
-  handSprites:
-    handColorA:
-    - {fileID: 21300000, guid: 2b0008164cdb1ed408f95f92f8ddd0fa, type: 3}
-    handColorB:
-    - {fileID: 21300000, guid: fae6f3965513bf24eb9b8cd99d5b7c7b, type: 3}
-    handColorC:
-    - {fileID: 21300000, guid: da84ce3f0fcd6af4aa1267bb3a42aeff, type: 3}
-    handColorD:
-    - {fileID: 21300000, guid: 259cee5eaa41202448c4420a0e8178bb, type: 3}
-  clothesSprites:
-  - {fileID: 21300000, guid: 93849b1d7811faa46a64acab38ff9a72, type: 3}
-  - {fileID: 21300000, guid: 156b4461f254db348b9b97356baf2c2a, type: 3}
-  - {fileID: 21300000, guid: 0ecc2fdad64190643972b65db053abe7, type: 3}
-  - {fileID: 21300000, guid: 08d60682370d648418b9e5bf14106558, type: 3}
   hairSprites:
   - {fileID: 21300000, guid: e1ec65b9e3d85204fb85b92a53cd6c97, type: 3}
   - {fileID: 21300000, guid: b4b34852cca131e41b52c604ae64ff1c, type: 3}
   - {fileID: 21300000, guid: 569460745794b6f4f8bf0e454a7a7959, type: 3}
   - {fileID: 21300000, guid: 41327f564ceb3354bb6b064a09848038, type: 3}
+  clothesSprites:
+  - {fileID: 21300000, guid: 93849b1d7811faa46a64acab38ff9a72, type: 3}
+  - {fileID: 21300000, guid: 156b4461f254db348b9b97356baf2c2a, type: 3}
+  - {fileID: 21300000, guid: 0ecc2fdad64190643972b65db053abe7, type: 3}
+  - {fileID: 21300000, guid: 08d60682370d648418b9e5bf14106558, type: 3}
+  handSprites:
+    HandColorA:
+    - {fileID: 21300000, guid: 2b0008164cdb1ed408f95f92f8ddd0fa, type: 3}
+    HandColorB:
+    - {fileID: 21300000, guid: fae6f3965513bf24eb9b8cd99d5b7c7b, type: 3}
+    HandColorC:
+    - {fileID: 21300000, guid: da84ce3f0fcd6af4aa1267bb3a42aeff, type: 3}
+    HandColorD:
+    - {fileID: 21300000, guid: 259cee5eaa41202448c4420a0e8178bb, type: 3}
   animator: {fileID: 6155688656520349526}
   skinIndex: 0
   glassIndex: 0
-  handIndex: 
-  clotheIndex: 0
   hairIndex: 0
+  clotheIndex: 0
+  handIndex: 
   characterId: 0
 --- !u!95 &6155688656520349526
 Animator:
@@ -421,25 +405,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2571110113651146512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465545687914413273}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4b3a6f50fd020e469689c7cce8d5109, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultMaterial: {fileID: 0}
-  brightnessMaterial: {fileID: 2100000, guid: 08ff6e5fe6883ce48b8dae7920229ecc, type: 2}
-  blurMaterial: {fileID: 0}
-  characterImageFace: {fileID: 5629460200802205328}
-  characterImageHair: {fileID: 3816683545305009484}
-  characterImageCloths: {fileID: 2735791881534372737}
-  characterImageSkin: {fileID: 6553579731152782210}
 --- !u!1 &2070218041177338841
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,7 +820,7 @@ GameObject:
   - component: {fileID: 8803450695257444492}
   - component: {fileID: 4194258146844432055}
   m_Layer: 5
-  m_Name: Arm
+  m_Name: HandImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -908,7 +873,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8931213347672921323, guid: 2b0008164cdb1ed408f95f92f8ddd0fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2b0008164cdb1ed408f95f92f8ddd0fa, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -988,7 +988,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: Position Wrapper/Arm
+    path: Position Wrapper/HandImage
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -1063,7 +1063,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
-    path: Position Wrapper/Arm
+    path: Position Wrapper/HandImage
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -1205,7 +1205,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 503490424
+      path: 381755516
       attribute: 1460864421
       script: {fileID: 0}
       typeID: 224
@@ -1214,7 +1214,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 503490424
+      path: 381755516
       attribute: 538195251
       script: {fileID: 0}
       typeID: 224
@@ -2231,7 +2231,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: Position Wrapper/Arm
+    path: Position Wrapper/HandImage
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -2306,7 +2306,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
-    path: Position Wrapper/Arm
+    path: Position Wrapper/HandImage
     classID: 224
     script: {fileID: 0}
     flags: 0

@@ -6,10 +6,13 @@ using Assets._Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.UI;
 
-//using LeastSquares.Overtone;
-
 namespace Assets._Scripts.Controller.SceneControllers
 {
+    /// <summary>
+    /// Responsible for managing the privacy policy scene in the application.
+    /// Inherits from the <c>SceneController</c> base class and provides functionality to handle
+    /// the display of the privacy policy or related interactions specific to the privacy policy scene.
+    /// </summary>
     public class PrivacyPolicySceneController : SceneController
     {
         [SerializeField] private Button resetAppButton;
@@ -18,14 +21,20 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private Button applicationModeInfoButton;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private RectTransform layout;
+
         [SerializeField] private RectTransform layout02;
-        //[SerializeField] private TTSEngine engine;
+
         [SerializeField] private DeleteUserDataConfirmation deleteUserDataConfirmDialogObject;
         [SerializeField] private GameObject deleteUserDataConfirmDialog;
 
-        private const string Delete = "delete";
         private const string Origin = "reset";
 
+        /// <summary>
+        /// Initializes the privacy policy scene when it starts.
+        /// This method sets up the backstack for navigation, updates UI components,
+        /// initializes the audio source, and configures interactions such as button clicks
+        /// and toggle changes.
+        /// </summary>
         private void Start()
         {
             BackStackManager.Instance().Push(SceneNames.PrivacyPolicyScene);
@@ -34,89 +43,18 @@ namespace Assets._Scripts.Controller.SceneControllers
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout02);
             audioSource = GetComponent<AudioSource>();
 
-            InitializeApplicationModeButton();
-
             resetAppButton.onClick.AddListener(OnResetAppButton);
             resetAppInfoButton.onClick.AddListener(OnResetAppInfoButton);
-            applicationModeToggle.onValueChanged.AddListener(delegate
-            {
-                OnApplicationModeToggle(applicationModeToggle);
-            });
             applicationModeInfoButton.onClick.AddListener(OnApplicationModeInfoButton);
             FontSizeManager.Instance().UpdateAllTextComponents();
         }
 
-        private void OnToggleDataCollection(Toggle toggle)
-        {
-            if (toggle.isOn)
-            {
-                PrivacyAndConditionManager.Instance().AcceptDataCollection();
-                DisplayInfoMessage(InfoMessages.STARTED_DATA_COLLECTION);
-                StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.STARTED_DATA_COLLECTION));
-            }
-            else
-            {
-                PrivacyAndConditionManager.Instance().UnaccepedDataCollection();
-                DisplayInfoMessage(InfoMessages.STOPPED_DATA_COLLECTION);
-                StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.STOPPED_DATA_COLLECTION));
-            }
-        }
-
-        private void OnApplicationModeToggle(Toggle toggle)
-        {
-            if (toggle.isOn)
-            {
-                ApplicationModeManager.Instance().ActivateOnlineMode();
-                DisplayInfoMessage(InfoMessages.SWITCHED_TO_ONLINE_MODE);
-                StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.SWITCHED_TO_ONLINE_MODE));
-            }
-            else
-            {
-                ApplicationModeManager.Instance().ActivateOfflineMode();
-                DisplayInfoMessage(InfoMessages.SWITCHED_TO_OFFLINE_MODE);
-                StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.SWITCHED_TO_OFFLINE_MODE));
-            }
-        }
-
-        private void OnToggleDataCollectionInfoButton()
-        {
-            if (PrivacyAndConditionManager.Instance().IsDataCollectionAccepted())
-            {
-                StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.EXPLANATION_STOP_DATA_BUTTON));
-                DisplayInfoMessage(InfoMessages.EXPLANATION_STOP_DATA_BUTTON);
-            }
-            else
-            {
-                StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.EXPLANATION_COLLECT_DATA_BUTTON));
-                DisplayInfoMessage(InfoMessages.EXPLANATION_COLLECT_DATA_BUTTON);
-            }
-        }
-
-        private void OnDeleteCollectedDataButton()
-        {
-            if (!deleteUserDataConfirmDialogObject.IsNullOrDestroyed())
-            {
-                deleteUserDataConfirmDialogObject.CloseMessageBox();
-            }
-
-            if (DestroyValidator.IsNullOrDestroyed(canvas))
-            {
-                return;
-            }
-
-            deleteUserDataConfirmDialogObject = null;
-            deleteUserDataConfirmDialogObject = Instantiate(deleteUserDataConfirmDialog,
-                canvas.transform).GetComponent<DeleteUserDataConfirmation>();
-            deleteUserDataConfirmDialogObject.Initialize(Delete);
-            deleteUserDataConfirmDialogObject.Activate();
-        }
-
-        private void OnDeleteCollectedDataInfoButton()
-        {
-            StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.EXPLANATION_DELETE_DATA_BUTTON));
-            DisplayInfoMessage(InfoMessages.EXPLANATION_DELETE_DATA_BUTTON);
-        }
-
+        /// <summary>
+        /// Handles the functionality triggered by pressing the reset application button.
+        /// This method manages the deletion confirmation dialog, resets its state if necessary,
+        /// and links the dialog to the canvas. It then initializes and activates the confirmation
+        /// dialog, ensuring the required setup for reset operations is in place.
+        /// </summary>
         private void OnResetAppButton()
         {
             if (!deleteUserDataConfirmDialogObject.IsNullOrDestroyed())
@@ -124,38 +62,36 @@ namespace Assets._Scripts.Controller.SceneControllers
                 deleteUserDataConfirmDialogObject.CloseMessageBox();
             }
 
-            if (DestroyValidator.IsNullOrDestroyed(canvas))
+            if (canvas.IsNullOrDestroyed())
             {
                 return;
             }
 
             deleteUserDataConfirmDialogObject = null;
-            deleteUserDataConfirmDialogObject = Instantiate(deleteUserDataConfirmDialog,
-                canvas.transform).GetComponent<DeleteUserDataConfirmation>();
+            deleteUserDataConfirmDialogObject = Instantiate(deleteUserDataConfirmDialog, canvas.transform).GetComponent<DeleteUserDataConfirmation>();
             deleteUserDataConfirmDialogObject.Initialize(Origin);
             deleteUserDataConfirmDialogObject.Activate();
+
+            GameManager.Instance.canvas = canvas;
         }
 
+        /// <summary>
+        /// Handles the action performed when the reset app info button is clicked.
+        /// This method provides an explanation of the reset app functionality by
+        /// using text-to-speech to read the provided explanation aloud and
+        /// displaying the same explanation as an informational message on the UI.
+        /// </summary>
         private void OnResetAppInfoButton()
         {
             StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.EXPLANATION_RESET_APP_BUTTON));
             DisplayInfoMessage(InfoMessages.EXPLANATION_RESET_APP_BUTTON);
         }
 
-
-        private void InitializeApplicationModeButton()
-        {
-            if (ApplicationModeManager.Instance().IsOfflineModeActive())
-            {
-                applicationModeToggle.isOn = false;
-            }
-            else
-            {
-                applicationModeToggle.isOn = true;
-            }
-        }
-
-
+        /// <summary>
+        /// Handles the action triggered when the application mode info button is clicked.
+        /// This method initiates a text-to-speech explanation of the application mode's purpose
+        /// and displays an informative message related to switching between offline and online modes.
+        /// </summary>
         private void OnApplicationModeInfoButton()
         {
             StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.EXPLANATION_APPLICATION_MODE_BUTTON));

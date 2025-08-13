@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5084c0e108f447f8a941930d98fc2d16, type: 3}
+  m_Name: Tokenism
+  m_EditorClassIdentifier: 
+  biasType: 5
+  headline: Tokenism
+  preview: "Wenn Frauen in m\xE4nnerdominierten Branchen erfolgreich sind, werden
+    sie oft als \u201EVorzeigebeispiele\u201C f\xFCr Diversit\xE4t genutzt \u2013
+    allerdings ohne ihnen die gleiche Entscheidungs- und Gestaltungsmacht zuzugestehen.
+    H\xE4ufig erscheinen sie in Werbematerialien oder auf Veranstaltungen als Aush\xE4ngeschild
+    f\xFCr Inklusion, w\xE4hrend die tats\xE4chliche Kontrolle \xFCber strategische
+    Entscheidungen weiterhin bei m\xE4nnlichen Kollegen liegt.\n"
+  description: "Dieses Ph\xE4nomen wird als Tokenism bezeichnet: Es vermittelt den
+    Anschein von Fortschritt, f\xFChrt aber in der Praxis nicht zu strukturellen
+    Ver\xE4nderungen. Studien zeigen, dass Frauen in solchen Situationen oft auf
+    ihre Identit\xE4t als Frau reduziert werden, anstatt f\xFCr ihre unternehmerische
+    Leistung anerkannt zu werden. Das kann dazu f\xFChren, dass Gr\xFCnderinnen weniger
+    ernst genommen werden oder in Verhandlungen weniger Einfluss erhalten (<color=LINK_COLOR><link=\"https://www.tandfonline.com/doi/full/10.1080/08985626.2018.1551795\\\">Quelle</link></color>).\n\r\nIn
+    unseren Stories zeigt sich dieser Bias, wenn eine Journalistin Dein Startup nicht
+    wegen seiner Innovation oder seines Gesch\xE4ftsmodells spannend findet, sondern
+    einzig, weil es von einer Frau gegr\xFCndet wurde. Die Gr\xFCnderin wird nicht
+    als erfolgreiche Unternehmerin wahrgenommen, sondern als \u201EAusnahmeerscheinung\u201C,
+    was ihre tats\xE4chlichen unternehmerischen Leistungen in den Hintergrund r\xFCckt."

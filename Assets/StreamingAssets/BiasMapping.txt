@@ -13,7 +13,7 @@ ConfirmationBias: Bestätigungsbias
 RiskAversionBias: Risikoaversion
 GenderPayGap: Geschlechterlohngefälle
 BenevolentSexism: Wohlwollender Sexismus
-ProveItAgainBias: Beweise-es-erneut-Bias
+ProveItAgainBias: Prove-it-Again-Bias
 Heteronormativity: Heteronormativität
 UnconsciousBiasInCommunication: Unbewusste Verzerrung in der Kommunikation
 PerformanceAttributionBias: Verzerrung der Leistungszuordnung

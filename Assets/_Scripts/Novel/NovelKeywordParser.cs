@@ -19,14 +19,17 @@ namespace Assets._Scripts.Novel
     }
 
     /// <summary>
-    /// Parser that converts a keyword string (e.g. ">>Character1|Looks|Angry<<") into a NovelKeywordModel.
-    /// Expected formats:
-    ///   >>End<<                   → sets End = true
-    ///   >>Info<<                  → sets CharacterIndex = 0
-    ///   >>Player<<                → sets CharacterIndex = 1
-    ///   >>Character1|Looks|Angry<< → sets CharacterIndex = 1+1 = 2, Action = "Looks", FaceExpression = "Angry"
-    ///   >>Sound|TestSound<<        → sets Sound = "TestSound"
-    ///   >>Bias|ConfirmationBias<<  → sets Bias = "ConfirmationBias"
+    /// Parser that converts a keyword string (e.g., "&gt;&gt;Character1|Looks|Angry&lt;&lt;") into a NovelKeywordModel.
+    /// It handles various predefined formats for characters, sounds, biases, and special commands like "End".
+    /// <br/>
+    /// <br/>
+    /// Expected formats:<br/>
+    /// &gt;&gt;End&lt;&lt;                   → sets End = true<br/>
+    /// &gt;&gt;Info&lt;&lt;                  → sets CharacterIndex based on "Info" mapping<br/>
+    /// &gt;&gt;Player&lt;&lt;                → sets CharacterIndex based on "Player" mapping<br/>
+    /// &gt;&gt;Character1|Looks|Angry&lt;&lt; → sets CharacterIndex based on Character1's mapped name (e.g., from TalkingPartner01), and FaceExpression based on "Angry". The 'Looks' part (action) is parsed but currently not used in the model.<br/>
+    /// &gt;&gt;Sound|TestSound&lt;&lt;        → sets Sound = "TestSound"<br/>
+    /// &gt;&gt;Bias|ConfirmationBias&lt;&lt;  → sets Bias = "ConfirmationBias"
     /// </summary>
     public static class NovelKeywordParser
     {
@@ -38,16 +41,15 @@ namespace Assets._Scripts.Novel
         private const string BiasPrefix = "Bias";
 
         /// <summary>
-        /// Parst einen einzelnen Keyword-String und gibt ein NovelKeywordModel zurück.
-        /// Falls der String nicht den erwarteten Mustern entspricht, wird null zurückgegeben.
+        /// Parses a single keyword string and returns a <see cref="NovelKeywordModel"/>.
+        /// If the string does not match the expected patterns, null is returned.
         /// </summary>
-        /// <param name="keyword">Der zu parsenden Keyword-String (z.B. ">>Character1|Speaks|Angry<<").</param>
-        /// <param name="kiteNovelMetaData">Metadaten der Novel, um Charakternamen zu mappen.</param>
-        /// <returns>Ein NovelKeywordModel oder null, wenn kein gültiges Keyword erkannt wurde.</returns>
+        /// <param name="keyword">The keyword string to parse (e.g., "&gt;&gt;Character1|Speaks|Angry&lt;&lt;").</param>
+        /// <param name="kiteNovelMetaData">Novel metadata to map character names to their respective indices.</param>
+        /// <returns>A <see cref="NovelKeywordModel"/> or null if no valid keyword was recognized.</returns>
         private static NovelKeywordModel ParseKeyword(string keyword, KiteNovelMetaData kiteNovelMetaData)
         {
-            Debug.Log("Parsing keyword: " + keyword + "...");
-            // Frühzeitiger Exit bei ungültiger Eingabe
+            // Early exit for invalid input
             if (string.IsNullOrWhiteSpace(keyword) ||
                 !keyword.StartsWith(KeywordStartMarker, StringComparison.Ordinal) ||
                 !keyword.EndsWith(KeywordEndMarker, StringComparison.Ordinal))
@@ -55,13 +57,13 @@ namespace Assets._Scripts.Novel
                 return null;
             }
 
-            // Entferne die Marker ">>" und "<<".
-            keyword = keyword.Substring(KeywordStartMarker.Length, keyword.Length - KeywordStartMarker.Length - KeywordEndMarker.Length).Trim(); // Trimmen auch hier, falls Leerzeichen zwischen Marker und Inhalt sind.
+            // Remove the ">>" and "<<" markers.
+            keyword = keyword.Substring(KeywordStartMarker.Length, keyword.Length - KeywordStartMarker.Length - KeywordEndMarker.Length).Trim(); // Trim here as well, in case of spaces between marker and content.
             string innerKeyword = keyword;
 
             NovelKeywordModel model = new NovelKeywordModel();
 
-            // 1. End-Kommando
+            // 1. End command
             if (string.Equals(innerKeyword, "End", StringComparison.OrdinalIgnoreCase) ||
                 string.Equals(innerKeyword, "Ende", StringComparison.OrdinalIgnoreCase))
             {
@@ -69,7 +71,7 @@ namespace Assets._Scripts.Novel
                 return model;
             }
 
-            // 2. Exakte Schlüsselwörter "Info" und "Player"
+            // 2. Exact keywords "Info" and "Player"
             if (string.Equals(innerKeyword, "Info", StringComparison.OrdinalIgnoreCase))
             {
                 model.CharacterIndex = MappingManager.MapCharacter("Info");
@@ -84,24 +86,24 @@ namespace Assets._Scripts.Novel
                 return model;
             }
 
-            // 3. Keywords mit Trennzeichen '|'
+            // 3. Keywords with separator '|'
             string[] parts = innerKeyword.Split(new[] { PartSeparator }, StringSplitOptions.RemoveEmptyEntries);
 
-            if (parts.Length == 0) // Sollte nach dem Trimmen und Split nicht passieren, aber zur Sicherheit
+            if (parts.Length == 0) // Should not happen after trimming and splitting, but for safety
             {
                 return null;
             }
 
             string firstPart = parts[0];
-            // A. Character-Keyword
+            // A. Character keyword
             if (firstPart.StartsWith(CharacterPrefix, StringComparison.OrdinalIgnoreCase))
             {
                 string numberPart = firstPart.Substring(CharacterPrefix.Length);
                 if (int.TryParse(numberPart, out int charNum))
                 {
                     string characterName = null;
-                    // Verbesserung: Array oder Dictionary für TalkingPartner Zugriff
-                    // Statt if-else if Kette
+                    // Improvement: Use an array or dictionary for TalkingPartner access
+                    // Instead of if-else if chain
                     switch (charNum)
                     {
                         case 1: characterName = kiteNovelMetaData.TalkingPartner01; break;
@@ -119,7 +121,7 @@ namespace Assets._Scripts.Novel
                     else
                     {
                         Debug.LogWarning($"TalkingPartner{charNum:D2} is null or empty in metadata for keyword: {keyword}");
-                        return null; // Kein valider Charaktername gefunden
+                        return null; // No valid character name found
                     }
                 }
                 else
@@ -128,31 +130,31 @@ namespace Assets._Scripts.Novel
                     return null;
                 }
 
-                // Gesichtsausdruck
+                // Face expression
                 if (parts.Length == 2)
                 {
-                    // Beispiel: "Character1|Angry" -> default action "Speaks" (wenn benötigt)
+                    // Example: "Character1|Angry" -> default action "Speaks" (if needed)
                     model.FaceExpression = MappingManager.MapFaceExpressions(parts[1]);
                 }
                 else if (parts.Length >= 3)
                 {
-                    // Beispiel: "Character1|Speaks|Angry"
-                    model.FaceExpression = MappingManager.MapFaceExpressions(parts[2]); // Action (parts[1]) wird aktuell nicht verwendet
+                    // Example: "Character1|Speaks|Angry"
+                    model.FaceExpression = MappingManager.MapFaceExpressions(parts[2]); // Action (parts[1]) is currently not used
                 }
                 else
                 {
                     Debug.LogWarning($"Character keyword '{keyword}' does not contain enough parts for expression.");
-                    return null; // Mindestens ein Ausdruck sollte vorhanden sein
+                    return null; // At least one expression should be present
                 }
 
                 return model;
             }
-            // B. Sound-Keyword
+            // B. Sound keyword
             else if (firstPart.StartsWith(SoundPrefix, StringComparison.OrdinalIgnoreCase))
             {
                 if (parts.Length > 1)
                 {
-                    model.CharacterIndex = 0; // Sound-Events haben normalerweise keinen sprechenden Charakter
+                    model.CharacterIndex = 0; // Sound events typically don't have a speaking character
                     model.Sound = parts[1];
                 }
                 else
@@ -163,7 +165,7 @@ namespace Assets._Scripts.Novel
 
                 return model;
             }
-            // C. Bias-Keyword
+            // C. Bias keyword
             else if (firstPart.StartsWith(BiasPrefix, StringComparison.OrdinalIgnoreCase))
             {
                 if (parts.Length > 1)
@@ -179,28 +181,27 @@ namespace Assets._Scripts.Novel
                 return model;
             }
 
-            // Wenn keiner der erwarteten Fälle eintritt, wird null zurückgegeben.
+            // If none of the expected cases occur, null is returned.
             Debug.LogWarning($"Unknown keyword format: {keyword}");
             return null;
         }
 
         /// <summary>
-        /// Parst den kompletten Eingabetext, der mehrere Keyword-Zeilen enthalten kann, 
-        /// unter Verwendung des Separators ">>--<<" und gibt eine Liste der gültigen NovelKeywordModel zurück.
+        /// Parses the entire input text, which may contain multiple keyword lines,
+        /// using the separator "&gt;&gt;--&lt;&lt;" and returns a list of valid <see cref="NovelKeywordModel"/> objects.
+        /// Each line is split by the separator, and each resulting token is parsed as a keyword.
         /// </summary>
-        /// <param name="fileContent">Der gesamte Text aus der Keyword-Datei.</param>
-        /// <param name="kiteNovelMetaData"></param>
-        /// <returns>Liste der NovelKeywordModel.</returns>
+        /// <param name="fileContent">The entire text content from the keyword file, provided as a list of strings (lines).</param>
+        /// <param name="kiteNovelMetaData">Optional novel metadata used for character mapping during parsing.</param>
+        /// <returns>A <see cref="List{T}"/> of <see cref="NovelKeywordModel"/> objects representing the parsed keywords.</returns>
         public static List<NovelKeywordModel> ParseKeywordsFromFile(List<string> fileContent, KiteNovelMetaData kiteNovelMetaData = null)
         {
-            Debug.Log("Parsing keywords from file...");
-            // string[] lines = fileContent.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
             List<NovelKeywordModel> models = new List<NovelKeywordModel>();
 
-            // Wir gehen davon aus, dass einzelne Keyword-Blöcke durch den Separator ">>--<<" getrennt sind.
+            // We assume that individual keyword blocks are separated by the ">>--<<" separator.
             foreach (string line in fileContent)
             {
-                // Falls der Separator in der Zeile vorkommt, wird diese Zeile in mehrere Tokens geteilt.
+                // If the separator is present in the line, this line is split into multiple tokens.
                 string[] tokens = line.Split(new string[] { ">>--<<" }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (string token in tokens)
                 {
@@ -208,7 +209,7 @@ namespace Assets._Scripts.Novel
                     if (string.IsNullOrWhiteSpace(trimmedToken))
                         continue;
 
-                    // Stelle sicher, dass die Keywords die Marker ">>" und "<<" haben.
+                    // Ensure that the keywords have the ">>" and "<<" markers.
                     if (!(trimmedToken.StartsWith(KeywordStartMarker) && trimmedToken.EndsWith(KeywordEndMarker)))
                     {
                         continue;
