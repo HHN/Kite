@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets._Scripts._Mappings;
 using Assets._Scripts.Controller.SceneControllers;
+using Assets._Scripts.Managers;
 using UnityEngine;
 
 namespace Assets._Scripts.Controller.CharacterController
@@ -39,15 +40,13 @@ namespace Assets._Scripts.Controller.CharacterController
     /// </summary>
     public class NovelImageController : MonoBehaviour
     {
-        public Kite2CharacterController novelKite2CharacterController;
-
         [Header("Character Setup")] [SerializeField]
         private List<Transform> characterContainers;
 
         [Header("Decoration Interactions")] [SerializeField]
         private DecorationInteraction[] decorations;
 
-        public List<Kite2CharacterController> characterControllers = new();
+        [HideInInspector] public List<Kite2CharacterController> characterControllers = new();
 
         private void Start()
         {
@@ -250,36 +249,6 @@ namespace Assets._Scripts.Controller.CharacterController
             {
                 Debug.LogWarning($"SetFaceExpression failed: No controller found with characterId {characterId}");
             }
-        }
-
-        /// <summary>
-        /// Initiates the talking animation for the main character within the visual novel scene.
-        /// </summary>
-        /// <remarks>
-        /// This method triggers the `StartTalking` method of the primary character controller (if available),
-        /// enabling the character's talking behavior. If the main character controller is not initialized, it performs no action.
-        /// </remarks>
-        public virtual void StartCharacterTalking()
-        {
-            if (novelKite2CharacterController == null)
-            {
-                return;
-            }
-
-            novelKite2CharacterController.StartTalking();
-        }
-
-        /// <summary>
-        /// Stops the talking state of the active character within the visual novel scene.
-        /// </summary>
-        public virtual void StopCharacterTalking()
-        {
-            if (novelKite2CharacterController == null)
-            {
-                return;
-            }
-
-            novelKite2CharacterController.StopTalking();
         }
     }
 }

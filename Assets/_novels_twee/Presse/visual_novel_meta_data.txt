@@ -10,7 +10,8 @@
   "talkingPartner02" : "",
   "talkingPartner03" : "",
   "isKiteNovel": true,
-  "novelColor": "#532053",
+  "novelColor": "#4E2350",
+  "novelFrameColor": "#7E3B81",
   "wordsToReplace": [
 	{"wordToReplace": ">>JournalistinSprichtFriendly:<<", "replaceByValue": ">>Charakter01SprichtLaecheln:<<"},
 	{"wordToReplace": ">>SpielerinCharakterSpricht:<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"}	

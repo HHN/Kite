@@ -86,6 +86,14 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// is applied.
         /// </summary>
         public string NovelColor { get; set; } = "#000000";
+        
+        /// <summary>
+        /// Gets or sets the color representation of the novel frame in a hexadecimal string format.
+        /// This property is used to define the visual appearance or theme color associated
+        /// with the novel frame for display purposes. If not specified, a default color of black (`#000000`)
+        /// is applied.
+        /// </summary>
+        public string NovelFrameColor { get; set; } = "#000000";
 
         /// <summary>
         /// Gets or sets the list of word replacement rules for the visual novel.

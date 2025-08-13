@@ -215,6 +215,7 @@ RectTransform:
   m_Children:
   - {fileID: 319935828}
   - {fileID: 2100883812}
+  - {fileID: 523537227}
   - {fileID: 2103479659}
   - {fileID: 458233971}
   - {fileID: 1702201506}
@@ -1474,6 +1475,7 @@ MonoBehaviour:
     characters: []
     isKiteNovel: 0
     novelColor: {r: 0, g: 0, b: 0, a: 0}
+    novelFrameColor: {r: 0, g: 0, b: 0, a: 0}
   visualNovelName: 0
   colorOfText: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &458233975
@@ -1548,6 +1550,113 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding: {x: -8, y: -5, z: -8, w: -5}
   m_Softness: {x: 0, y: 0}
+--- !u!1001 &523537226
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8938145}
+    m_Modifications:
+    - target: {fileID: 1007907110608152469, guid: 76231234420b36646b2e53e80237c68b, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007907110608152469, guid: 76231234420b36646b2e53e80237c68b, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007907110608152469, guid: 76231234420b36646b2e53e80237c68b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007907110608152469, guid: 76231234420b36646b2e53e80237c68b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007907110608152469, guid: 76231234420b36646b2e53e80237c68b, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007907110608152469, guid: 76231234420b36646b2e53e80237c68b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007907110608152469, guid: 76231234420b36646b2e53e80237c68b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 310
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007907110608152469, guid: 76231234420b36646b2e53e80237c68b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007907110608152469, guid: 76231234420b36646b2e53e80237c68b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007907110608152469, guid: 76231234420b36646b2e53e80237c68b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007907110608152469, guid: 76231234420b36646b2e53e80237c68b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007907110608152469, guid: 76231234420b36646b2e53e80237c68b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007907110608152469, guid: 76231234420b36646b2e53e80237c68b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007907110608152469, guid: 76231234420b36646b2e53e80237c68b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007907110608152469, guid: 76231234420b36646b2e53e80237c68b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007907110608152469, guid: 76231234420b36646b2e53e80237c68b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007907110608152469, guid: 76231234420b36646b2e53e80237c68b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 463
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007907110608152469, guid: 76231234420b36646b2e53e80237c68b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007907110608152469, guid: 76231234420b36646b2e53e80237c68b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007907110608152469, guid: 76231234420b36646b2e53e80237c68b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139954582404095602, guid: 76231234420b36646b2e53e80237c68b, type: 3}
+      propertyPath: m_Name
+      value: IntroNovelButtonPrefab
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 76231234420b36646b2e53e80237c68b, type: 3}
+--- !u!224 &523537227 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1007907110608152469, guid: 76231234420b36646b2e53e80237c68b, type: 3}
+  m_PrefabInstance: {fileID: 523537226}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &523537228 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4139954582404095602, guid: 76231234420b36646b2e53e80237c68b, type: 3}
+  m_PrefabInstance: {fileID: 523537226}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &555283231
 GameObject:
   m_ObjectHideFlags: 0
@@ -4149,20 +4258,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1754640850}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1960214341}
-        m_TargetAssemblyTypeName: Assets._Scripts.Controller.SceneControllers.FounderBubbleSceneControllerNew,
-          _Scripts
-        m_MethodName: OnIntroNovelButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1754640850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4480,6 +4576,7 @@ MonoBehaviour:
   novelDescriptionTextbox: {fileID: 458233974}
   novelButtonsScrollRect: {fileID: 2100883813}
   novelButtonsContainer: {fileID: 1389716300}
+  introNovelButton: {fileID: 523537228}
   horizontalLayoutGroup: {fileID: 1389716302}
   novelButtonPrefab: {fileID: 4139954582404095602, guid: 79107dad9918fd74ebbed9e25e1d7820, type: 3}
   burgerMenu: {fileID: 1702201505}
@@ -5066,7 +5163,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2103479659
 RectTransform:
   m_ObjectHideFlags: 0

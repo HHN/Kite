@@ -8,6 +8,7 @@ namespace Assets._Scripts.Controller.CharacterController
     /// <summary>
     /// Represents a collection of sprites categorized by hand colors.
     /// </summary>
+    [Serializable]
     public class HandSprites
     {
         public Sprite[] HandColorA; 
@@ -36,18 +37,26 @@ namespace Assets._Scripts.Controller.CharacterController
     public class Kite2CharacterController : MonoBehaviour
     {
         [SerializeField] private Image skinImage;
-        [SerializeField] private Image glassImage;
-        [SerializeField] private Image handImage;
-        [SerializeField] private Image clothesImage;
-        [SerializeField] private Image hairImage;
         [SerializeField] private Image faceImage;
+        [SerializeField] private Image glassImage;
+        [SerializeField] private Image hairImage;
+        [SerializeField] private Image clothesImage;
+        [SerializeField] private Image handImage;
 
         [SerializeField] private Sprite[] skinSprites;
         [SerializeField] private Sprite[] glassesSprites;
-        [SerializeField] private HandSprites handSprites;
-        [SerializeField] private Sprite[] clothesSprites;
         [SerializeField] private Sprite[] hairSprites;
+        [SerializeField] private Sprite[] clothesSprites;
+        [SerializeField] private HandSprites handSprites;
         [SerializeField] private Animator animator;
+        
+        [HideInInspector] public int skinIndex;
+        [HideInInspector] public int glassIndex;
+        [HideInInspector] public int hairIndex;
+        [HideInInspector] public int clotheIndex;
+        [HideInInspector] public int[] handIndex;
+
+        [HideInInspector] public int characterId;
 
         private static readonly int IsTalking = Animator.StringToHash("isTalking");
 
@@ -80,14 +89,6 @@ namespace Assets._Scripts.Controller.CharacterController
             Animator.StringToHash("neutral"),
             Animator.StringToHash("proud")
         };
-
-        public int skinIndex;
-        public int glassIndex;
-        public int[] handIndex;
-        public int clotheIndex;
-        public int hairIndex;
-
-        public int characterId;
 
         // Utility methods
         private bool IsValidArray(Sprite[] array) => array != null && array.Length > 0;
@@ -322,10 +323,10 @@ namespace Assets._Scripts.Controller.CharacterController
         /// This method interacts with the character's animator to trigger the talking animation state.
         /// If the animator is null, the method does nothing.
         /// </remarks>
-        public void StartTalking()
-        {
-            animator?.SetBool(IsTalking, true);
-        }
+        // public void StartTalking()
+        // {
+        //     animator?.SetBool(IsTalking, true);
+        // }
 
         /// <summary>
         /// Stops the talking animation of the character by setting the "isTalking" animation flag to false.
@@ -334,9 +335,9 @@ namespace Assets._Scripts.Controller.CharacterController
         /// This method uses the Animator component to control the "isTalking" animation state.
         /// If the Animator instance is not null, it updates the "isTalking" boolean parameter to false, effectively halting any corresponding talking animations.
         /// </remarks>
-        public void StopTalking()
-        {
-            animator?.SetBool(IsTalking, false);
-        }
+        // public void StopTalking()
+        // {
+        //     animator?.SetBool(IsTalking, false);
+        // }
     }
 }

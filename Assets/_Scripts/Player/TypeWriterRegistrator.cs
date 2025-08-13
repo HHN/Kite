@@ -1,4 +1,5 @@
 using Assets._Scripts.Controller.SceneControllers;
+using Assets._Scripts.Managers;
 using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using UnityEngine;
 
@@ -40,7 +41,7 @@ namespace Assets._Scripts.Player
             }
             else
             {
-                _controller.StartTalking();
+                // _controller.StartTalking();
             }
         }
 
@@ -51,7 +52,7 @@ namespace Assets._Scripts.Player
         /// </summary>
         public void OnStopTyping()
         {
-            _controller.StopTalking();
+            // _controller.StopTalking();
         }
     }
 }

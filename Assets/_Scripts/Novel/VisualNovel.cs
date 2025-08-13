@@ -26,6 +26,7 @@ namespace Assets._Scripts.Novel
         public List<string> characters;
         public bool isKiteNovel;
         public Color novelColor;
+        public Color novelFrameColor;
 
         /// <summary>
         /// Adds a new global variable to the <see cref="GlobalVariables"/> dictionary.

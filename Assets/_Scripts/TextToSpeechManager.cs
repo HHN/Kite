@@ -277,9 +277,6 @@ namespace Assets._Scripts
             // so we typically skip actual speech and just log.
 #if UNITY_EDITOR
             yield break;
-#else
-            Debug.Log($"[TTS Manager] Speak (Build): {message}"); // Optional: Log in Builds
-            yield break;
 #endif
 
             if (!_ttsIsActive) yield break;

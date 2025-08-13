@@ -79,20 +79,7 @@ namespace Assets._Scripts.UIElements.FoundersBubble
 
             scrollRect.onValueChanged.AddListener(OnScroll);
 
-            StartCoroutine(SetInitialScrollDelayed());
-        }
-
-        /// <summary>
-        /// A coroutine that sets the initial horizontal normalized position of the ScrollRect
-        /// to the center (0.5f) after a short delay. This ensures the layout is fully built
-        /// before setting the scroll position, preventing visual glitches.
-        /// </summary>
-        /// <returns>An IEnumerator for coroutine execution.</returns>
-        private IEnumerator SetInitialScrollDelayed()
-        {
-            yield return null;
-            scrollRect.horizontalNormalizedPosition = 0.5f;
-            OnScroll(new Vector2(scrollRect.horizontalNormalizedPosition, 0));
+            // StartCoroutine(SetInitialScrollDelayed());
         }
 
         /// <summary>

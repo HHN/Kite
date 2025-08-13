@@ -100,7 +100,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1465545687914413254}
   - component: {fileID: 1465545687914413252}
-  - component: {fileID: 4126753951640385348}
   - component: {fileID: 4524035883740533591}
   - component: {fileID: 6155688656520349526}
   - component: {fileID: 4253796331781111194}
@@ -139,20 +138,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465545687914413273}
   m_CullTransparentMesh: 1
---- !u!114 &4126753951640385348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465545687914413273}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AspectMode: 2
-  m_AspectRatio: 1.1497505
 --- !u!114 &4524035883740533591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,6 +159,11 @@ MonoBehaviour:
   skinSprites:
   - {fileID: 21300000, guid: c7fc0a693283d614ea80cfad8c1c20e8, type: 3}
   glassesSprites: []
+  handSprites:
+    HandColorA: []
+    HandColorB: []
+    HandColorC: []
+    HandColorD: []
   clothesSprites:
   - {fileID: 21300000, guid: 9bd46ebcfb541134ea5d700abe048d05, type: 3}
   hairSprites:
@@ -509,11 +499,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8697894496397229334}
-  - {fileID: 3242057405063332371}
-  - {fileID: 2477610990757960517}
   - {fileID: 3306106834279968470}
   - {fileID: 2303264998522433969}
   - {fileID: 5784846802309061941}
+  - {fileID: 2477610990757960517}
+  - {fileID: 3242057405063332371}
   - {fileID: 7379418876410949766}
   m_Father: {fileID: 1465545687914413254}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

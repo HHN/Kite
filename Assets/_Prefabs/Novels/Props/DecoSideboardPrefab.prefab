@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 336984117713163398}
   - component: {fileID: 2034710495206404204}
   m_Layer: 3
-  m_Name: Deco Background Parents
+  m_Name: DecoSideboardPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1130205359635794538, guid: d17ae7f0565a4894ca5890d32554e9c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d17ae7f0565a4894ca5890d32554e9c5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 1
-  m_AspectRatio: 1.2
+  m_AspectRatio: 0.45945945
 --- !u!114 &2034710495206404204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,5 +105,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundOn: {fileID: 8300000, guid: 0e1a7e97f60b0ff4ab38f408fb7b7c09, type: 3}
   soundOff: {fileID: 8300000, guid: 130b268b5ccf0d448865ecd967e3fe00, type: 3}
-  lampOn: {fileID: -7420794287015657631, guid: b3fecf976453f934e88d82562ce60836, type: 3}
-  lampOff: {fileID: 1130205359635794538, guid: d17ae7f0565a4894ca5890d32554e9c5, type: 3}
+  lampOn: {fileID: 21300000, guid: b3fecf976453f934e88d82562ce60836, type: 3}
+  lampOff: {fileID: 21300000, guid: d17ae7f0565a4894ca5890d32554e9c5, type: 3}

@@ -8,6 +8,6 @@
     "_novels_twee\\Kreditantrag",
     "_novels_twee\\Notarin",
     "_novels_twee\\Presse",
-    "_novels_twee\\Vermieter"
+    "_novels_twee\\Vermieter",
   ]
-}
+} 

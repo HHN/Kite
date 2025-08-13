@@ -10,7 +10,8 @@
   "talkingPartner02" : "",
   "talkingPartner03" : "",
   "isKiteNovel": true,
-  "novelColor": "#0C1A2E",
+  "novelColor": "#0E1A2D",
+  "novelFrameColor": "#234169",
   "wordsToReplace": [
 	{"wordToReplace": ">>AngestellteSprichtCritical:<<", "replaceByValue": ">>Charakter01SprichtCritical:<<"},
 	{"wordToReplace": ">>AngestellteSprichtLaughing:<<", "replaceByValue": ">>Charakter01SprichtLaughing:<<"},
