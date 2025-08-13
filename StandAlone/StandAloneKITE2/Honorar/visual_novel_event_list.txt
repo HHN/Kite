@@ -63,17 +63,11 @@ Dann wünsche ich Ihnen noch einen schönen Tag. Auf Wiedersehen.
 [[Vielen Dank und ich wünsche Ihnen auch einen schönen Tag.->End]]
 
 
-:: Anfang {"position":"2925,200","size":"100,100"}
+:: Anfang {"position":"2600,200","size":"100,100"}
 >>Info<<
 Du wurdest angefragt bei einer Veranstaltung als Speakerin aufzutreten und über deine Expertise als Gründerin zu sprechen. Nachdem bestätigt wurde, dass deine Expertise den Erwartungen entspricht, steht nun die Honorarverhandlung an.
 
 [[Frage nach HonorarI]]
-
-:: Frage nach HonorarI {"position":"2725,200","size":"100,100"}
->>Character1|Smiling<<
-Es freut uns, dass Sie uns unterstützen können. Nun stellt sich uns natürlich die Frage, wie viel Sie verlangen.
-
-[[Frage nach HonorarII]]
 
 
 :: Anpassungsfähigkeit {"position":"3375,2625","size":"100,100"}
@@ -108,50 +102,38 @@ Manchmal zählt eben die Investition.
 [[Mein Honorar spiegelt den Wert meiner Arbeit wider. Ich bleibe bei 2.500 €.->Honorar]]
 
 
-:: Ausnahme [Bias] {"position":"3250,3125","size":"100,100"}
+:: Ausnahme {"position":"3250,3125","size":"100,100"}
 >>Character1|Smiling<<
-Das meine ich ja! Männer fallen da eher aus dem Rahmen, während bei Frauen die Emotionen eben etwas natürlicher sind.
->>--<<
->>Bias|GenderSpecificStereotypes<<
+Das meine ich ja! Manche Menschen bringen in Vorträgen stärker ihre Emotionen ein als andere.
 
-[[Lassen Sie uns auf das Wesentliche fokussieren: die Vereinbarung meines Honorars.->Wesentliche]]
+[[Fokussieren wir uns doch auf das Wesentliche: die Vereinbarung meines Honorars.->Wesentliche]]
 
-[[Mir fällt auf, dass diese Annahme noch immer verbreitet ist. Wäre es Ihnen wichtig, wie ich das Thema Emotionen in den Vortrag einbringe?->Emotionen]]
+[[Wäre es Ihnen wichtig, wie ich das Thema Emotionen in den Vortrag einbringe?->Emotionen]]
 
 
-:: Ausnahme 2 [Bias] {"position":"2800,3125","size":"100,100"}
+:: Ausnahme 2 {"position":"2800,3125","size":"100,100"}
 >>Character1|Smiling<<
-Das meine ich ja! Männer fallen da eher aus dem Rahmen, während bei Frauen die Emotionen eben etwas natürlicher sind.
->>--<<
->>Bias|GenderSpecificStereotypes<<
+Das meine ich ja! Manche Menschen bringen in Vorträgen stärker ihre Emotionen ein als andere.
 
-[[Lassen Sie uns auf das Wesentliche fokussieren: die Vereinbarung meines Honorars.->Wesentliche 2]]
+[[Fokussieren wir uns doch auf das Wesentliche: die Vereinbarung meines Honorars.->Wesentliche 2]]
 
-[[Mir fällt auf, dass diese Annahme noch immer verbreitet ist. Wäre es Ihnen wichtig, wie ich das Thema Emotionen in den Vortrag einbringe?->Emotionen 2]]
+[[Wäre es Ihnen wichtig, wie ich das Thema Emotionen in den Vortrag einbringe?->Emotionen 2]]
 
 
-:: Betonung [Bias] {"position":"3250,2775","size":"100,100"}
+:: Betonung {"position":"3250,2775","size":"100,100"}
 >>Character1|Smiling<<
-Ach, verstehen Sie mich nicht falsch! Es ist nur, dass Frauen oft etwas emotionaler an solche Verhandlungen herangehen. Ein Vertrag kann da Missverständnisse vorbeugen, finden Sie nicht?
->>--<<
->>Bias|GenderSpecificStereotypes<<
+Ach, verstehen Sie mich nicht falsch! Ich finde es hilfreich, wenn in Verhandlungen klar ist, wie beide Seiten auftreten. Ein Vertrag kann da Missverständnisse vorbeugen, finden Sie nicht?
 
-[[Das ist aber eine starke Generalisierung. Menschen können unabhängig von ihrem Geschlecht emotional sein.->Emotional]]
-
-[[Ehrlich gesagt, habe ich das Gefühl ich, dass Sie in Schubladen denken.->Schubladenkdenken]]
+[[Das stimmt, Missverständnisse können bei allen Menschen entstehen.->Emotional]]
 
 [[Mir ist es wichtig, dass wir sachlich bleiben. Lassen Sie uns doch konkret über die Vertragsdetails sprechen.->Geregelter Rahmen]]
 
 
-:: Betonung 2 [Bias] {"position":"2600,2775","size":"100,100"}
+:: Betonung 2 {"position":"2600,2775","size":"100,100"}
 >>Character1|Smiling<<
-Ach, verstehen Sie mich nicht falsch! Es ist nur, dass Frauen oft etwas emotionaler an solche Verhandlungen herangehen. Ein Vertrag kann da Missverständnisse vorbeugen, finden Sie nicht?
->>--<<
->>Bias|GenderSpecificStereotypes<<
+Ach, verstehen Sie mich nicht falsch! Ich finde es hilfreich, wenn in Verhandlungen klar ist, wie beide Seiten auftreten. Ein Vertrag kann da Missverständnisse vorbeugen, finden Sie nicht?
 
-[[Das ist aber eine starke Generalisierung. Menschen können unabhängig von ihrem Geschlecht emotional sein.->Emotional 2]]
-
-[[Ehrlich gesagt, habe ich das Gefühl ich, dass Sie in Schubladen denken.->Schubladenkdenken 2]]
+[[Das stimmt, Missverständnisse können bei allen Menschen entstehen.->Emotional 2]]
 
 [[Mir ist es wichtig, dass wir sachlich bleiben. Lassen Sie uns doch konkret über die Vertragsdetails sprechen.->Geregelter Rahmen 2]]
 
@@ -178,75 +160,65 @@ Ein Briefing klingt gut, aber ich hoffe, dass das nicht weitere Kosten bedeutet?
 [[Das Briefing könnte ich als zusätzlichen Service anbieten.->Buchbar 2]]
 
 
-:: Briefing regulär {"position":"3250,2300","size":"100,100"}
+:: Briefing regulär {"position":"3250,2225","size":"100,100"}
 >>Character1|Amazed<<
 Weitere 200 €! Da muss ich das erstmal absprechen. Ich hätte nicht erwartet, dass Sie so streng verhandeln.
 
-[[Strenge Verhandlungen sind Teil des Geschäftlichen, genauso wie klare Konditionen.->Teil des Geschäftlichen]]
+[[Strenge Verhandlungen sind Teil des Geschäftlichen, genauso wie klare Konditionen.->Klare Grenzen]]
 
 [[Ich nehme das mal als Kompliment. Klare Grenzen machen doch das Leben einfacher.->Klare Grenzen]]
 
 
-:: Briefing regulär 2 {"position":"2675,2300","size":"100,100"}
+:: Briefing regulär 2 {"position":"2700,2225","size":"100,100"}
 >>Character1|Amazed<<
 Weitere 200 €! Da muss ich das erstmal absprechen. Ich hätte nicht erwartet, dass Sie so streng verhandeln.
 
-[[Strenge Verhandlungen sind Teil des Geschäftlichen, genauso wie klare Konditionen.->Teil des Geschäftlichen 2]]
+[[Strenge Verhandlungen sind Teil des Geschäftlichen, genauso wie klare Konditionen.->Klare Grenzen 2]]
 
 [[Ich nehme das mal als Kompliment. Klare Grenzen machen doch das Leben einfacher.->Klare Grenzen 2]]
 
 
-:: Buchbar [Bias] {"position":"3175,1875","size":"100,100"}
+:: Buchbar {"position":"3175,1875","size":"100,100"}
 >>Character1|Amazed<<
-Ach, ein Extra? Männer bieten sowas meist gleich mit an, ohne Aufpreis. Ich dachte, als Gründerin wären Sie flexibler.
->>--<<
->>Bias|Microaggression<<
+Ach, ein Extra? Manche bieten sowas gleich mit an, ohne Aufpreis. Ich hatte gehofft, Sie könnten flexibler sein.
 
 [[Kann gut sein, ich möchte nur sicherstellen, dass alles transparent bleibt. Das Briefing ist optional.->Transparent]]
 
-[[Ich denke, das ist von Unternehmen zu Unternehmen unterschiedlich und hat weniger mit dem Geschlecht zu tun.->Geschlechtsunabhängig]]
+[[Das mag sein, aber ich gestalte meine Angebote klar strukturiert. Das Briefing ist ein zusätzlicher Service.->Transparent]]
 
 
-:: Buchbar 2 [Bias] {"position":"2725,1875","size":"100,100"}
+:: Buchbar 2 {"position":"2725,1875","size":"100,100"}
 >>Character1|Amazed<<
-Ach, ein Extra? Männer bieten sowas meist gleich mit an, ohne Aufpreis. Ich dachte, als Gründerin wären Sie flexibler.
->>--<<
->>Bias|Microaggression<<
+Ach, ein Extra? Manche bieten sowas gleich mit an, ohne Aufpreis. Ich hatte gehofft, Sie könnten flexibler sein.
 
 [[Kann gut sein, ich möchte nur sicherstellen, dass alles transparent bleibt. Das Briefing ist optional.->Transparent 2]]
 
-[[Ich denke, das ist von Unternehmen zu Unternehmen unterschiedlich und hat weniger mit dem Geschlecht zu tun.->Geschlechtsunabhängig 2]]
+[[Das mag sein, aber ich gestalte meine Angebote klar strukturiert. Das Briefing ist ein zusätzlicher Service.->Transparent 2]]
 
 
-:: Details [Bias] {"position":"3100,1050","size":"100,100"}
+:: Details {"position":"3100,1050","size":"100,100"}
 >>Character1|Critical<<
-Ja, aber Frauen neigen ja dazu, sich schnell in Details zu verlieren. Ich mache mir Sorgen, dass Sie zu detailorientiert arbeiten und dann das Honorar dadurch steigt.
->>--<<
->>Bias|GenderSpecificStereotypes<<
+Ich habe den Eindruck, dass wir sehr ins Detail gehen könnten. Ich möchte nur sicherstellen, dass der Aufwand im Rahmen bleibt.
 
 [[Ich versichere Ihnen, ich arbeite zielgerichtet, ohne unnötige Schleifen.->Zielgerichtet]]
 
 [[Ich garantiere Ihnen, dass das Honorar genau die nötige Detailarbeit abdeckt.->Zielgerichtet]]
 
 
-:: Direkt zwei Vorträge [Bias] {"position":"2625,3425","size":"100,100"}
+:: Direkt zwei Vorträge {"position":"2625,3425","size":"100,100"}
 >>Character1|Critical<<
-Hmm, 2.200 € pro Vortrag ist ja immer noch eine Stange Geld. Gerade als Frau in einer Männerdomäne müssen Sie Ihre Preise ja etwas anpassen, um konkurrenzfähig zu bleiben, finden Sie nicht?
->>--<<
->>Bias|StereotypesAboutWomenInNonTraditionalIndustries<<
+Hmm, 2.200 € pro Vortrag ist ja immer noch eine Stange Geld. In dieser Branche ist der Wettbewerb hoch. Glauben Sie, dass ein reduzierter Preis helfen würde, konkurrenzfähig zu bleiben?
 
-[[In dieser Männerdomäne sticht man eher durch gute Arbeit als durch Rabatte heraus, finden Sie nicht?->Gute Arbeit 2]]
+[[In dieser Branche sticht man eher durch gute Arbeit als durch Rabatte heraus, finden Sie nicht?->Gute Arbeit 2]]
 
 [[Das sind bereits 300 € Rabatt pro Vortrag, die ich erlassen würde. Niedriger kann ich nicht gehen.->Nicht niedriger 2]]
 
 
 :: Drei Vorträge {"position":"3175,3450","size":"100,100"}
 >>Character1|Critical<<
-Hmm, 2.200 € pro Vortrag ist ja immer noch eine Stange Geld. Gerade als Frau in einer Männerdomäne müssen Sie Ihre Preise ja etwas anpassen, um konkurrenzfähig zu bleiben, finden Sie nicht?
->>--<<
->>Bias|StereotypesAboutWomenInNonTraditionalIndustries<<
+Hmm, 2.200 € pro Vortrag ist ja immer noch eine Stange Geld. In dieser Branche ist der Wettbewerb hoch. Glauben Sie, dass ein reduzierter Preis helfen würde, konkurrenzfähig zu bleiben?
 
-[[In dieser Männerdomäne sticht man eher durch gute Arbeit als durch Rabatte heraus, finden Sie nicht?->Gute Arbeit]]
+[[In dieser Branche sticht man eher durch gute Arbeit als durch Rabatte heraus, finden Sie nicht?->Gute Arbeit]]
 
 [[Das sind bereits 300 € Rabatt pro Vortrag, die ich erlassen würde. Niedriger kann ich nicht gehen.->Nicht niedriger]]
 
@@ -274,7 +246,7 @@ Natürlich. Ich hatte selbst mal einen Kollegen, der war so emotional! Wirklich 
 
 [[Interessant, dass Sie bei Männern solche Emotionen als Ausnahme betrachten.->Ausnahme 2]]
 
-[[Lassen Sie uns auf das Wesentliche fokussieren: die Vereinbarung meines Honorars.->Wesentliche 2]]
+[[Fokussieren wir uns auf das Wesentliche: die Vereinbarung meines Honorars.->Wesentliche 2]]
 
 
 :: Emotionen {"position":"3125,3275","size":"100,100"}
@@ -306,6 +278,13 @@ Ein Folgegespräch klingt gut, aber auch beim ersten Mal wäre eine Geste schön
 [[Ich finde Ihre Veranstaltung gut und wichtig. Deshalb bin ich auch bereit als Speakerin aufzutreten. Mein Honorar ist nicht verhandelbar.->Nicht verhandelbar]]
 
 [[Ich kann Ihnen anbieten, am Ende noch eine Fragerunde einzubauen.->Q&A]]
+
+
+:: Frage nach HonorarI {"position":"2725,200","size":"100,100"}
+>>Character1|Smiling<<
+Es freut uns, dass Sie uns unterstützen können. Nun stellt sich uns natürlich die Frage, wie viel Sie verlangen.
+
+[[Frage nach HonorarII]]
 
 
 :: Frage nach HonorarII {"position":"2925,350","size":"100,100"}
@@ -342,32 +321,6 @@ Natürlich, ich wollte nur betonen, dass wir bei so einer Kooperation alles in I
 [[Ich habe nicht das Gefühl, dass wir auf der gleichen Wellenlänge sind und möchte deshalb doch nicht bei Ihrer Veranstaltung auftreten.->Nicht Auftreten 2]]
 
 [[Ein strukturierter Rahmen schafft Klarheit für beide Seiten. Ich denke, das ist eine gute Basis.->Wesentliche 2]]
-
-
-:: Geschlechtsunabhängig [Bias] {"position":"3250,2025","size":"100,100"}
->>Character1|Critical<<
-Wissen Sie, oft habe ich bei Gründerinnen den Eindruck, dass ein kooperativer Ansatz erfolgreicher ist. Könnten wir uns nicht entgegenkommen?
->>--<<
->>Bias|ConfirmationBias<<
-
-[[Ich bin für Kooperation offen, aber eine faire Vergütung meiner Expertise ist mir wichtig.->Wertschätzung]]
-
-[[Ich bin Ihnen ja bereits mit einem Paketpreis entgegengekommen. Mehr ist nicht möglich.->Nicht im Paketpreis]]
-
-[[Kooperation bedeutet für mich eine faire Bezahlung und Wertschätzung meiner Expertise.->Wertschätzung]]
-
-
-:: Geschlechtsunabhängig 2 [Bias] {"position":"2775,2025","size":"100,100"}
->>Character1|Critical<<
-Wissen Sie, oft habe ich bei Gründerinnen den Eindruck, dass ein kooperativer Ansatz erfolgreicher ist. Könnten wir uns nicht entgegenkommen?
->>--<<
->>Bias|ConfirmationBias<<
-
-[[Ich bin für Kooperation offen, aber eine faire Vergütung meiner Expertise ist mir wichtig.->Wertschätzung 2]]
-
-[[Ich bin Ihnen ja bereits mit einem Paketpreis entgegengekommen. Mehr ist nicht möglich.->Nicht im Paketpreis 2]]
-
-[[Kooperation bedeutet für mich eine faire Bezahlung und Wertschätzung meiner Expertise.->Wertschätzung 2]]
 
 
 :: Gute Arbeit {"position":"3125,3625","size":"100,100"}
@@ -415,7 +368,7 @@ Ich verstehe. Sie hatten vorhin von einem Folgegespräch gesprochen. Wäre dann 
 [[Ja, also wenn Sie direkt zwei Vorträge bei mir buchen, würde ich insgesamt 4.500 € zzgl. USt. berechnen.->Zwei Vorträge]]
 
 
-:: Klare Grenzen [Bias] {"position":"3325,2450","size":"100,100"}
+:: Klare Grenzen [Bias] {"position":"3300,2450","size":"100,100"}
 >>Character1|NeutralRelaxed<<
 Ein wenig weniger strikte Linien können aber auch manchmal den Spielraum erweitern. Gerade als Frau ist doch Anpassungsfähigkeit oft von Vorteil.
 >>--<<
@@ -428,7 +381,7 @@ Ein wenig weniger strikte Linien können aber auch manchmal den Spielraum erweit
 [[Flexibilität bedeutet für mich, gemeinsam Lösungen zu finden – ohne jedoch meine Preise zu unterbieten.->Klare Konditionen]]
 
 
-:: Klare Grenzen 2 [Bias] {"position":"2750,2450","size":"100,100"}
+:: Klare Grenzen 2 [Bias] {"position":"2700,2450","size":"100,100"}
 >>Character1|NeutralRelaxed<<
 Ein wenig weniger strikte Linien können aber auch manchmal den Spielraum erweitern. Gerade als Frau ist doch Anpassungsfähigkeit oft von Vorteil.
 >>--<<
@@ -441,31 +394,22 @@ Ein wenig weniger strikte Linien können aber auch manchmal den Spielraum erweit
 [[Flexibilität bedeutet für mich, gemeinsam Lösungen zu finden – ohne jedoch meine Preise zu unterbieten.->Klare Konditionen 2]]
 
 
-:: Klare Konditionen [Bias] {"position":"3250,2625","size":"100,100"}
+:: Klare Konditionen {"position":"3250,2625","size":"100,100"}
 >>Character1|Laughing<<
-Das stimmt. Ach, wissen Sie was? Ich nehme Ihr Angebot an. Lassen Sie uns doch die Details am besten auch im Vertrag festhalten. Sie wissen ja, bei Frauen ist es oft besser, alles klar zu regeln.
->>--<<
->>Bias|Microaggression<<
+Das stimmt. Ach, wissen Sie was? Ich nehme Ihr Angebot an. Lassen Sie uns doch die Details am besten auch im Vertrag festhalten. Es ist oft besser, alles klar zu regeln.
 
-[[Ein klarer Vertrag ist für beide Seiten hilfreich, unabhängig vom Geschlecht.->Betonung]]
+[[Das stimmt. Ein klarer Vertrag ist für beide Seiten hilfreich, unabhängig vom Geschlecht.->Betonung]]
 
-[[Wie meinen Sie das?->Vertrag Nachfrage]]
-
-[[Interessant, dass Sie das extra betonen. Ich denke, klare Verträge sind generell sinnvoll, unabhängig vom Geschlecht.->Betonung]]
+[[Ja, lassen Sie uns dann gleich die Honorardetails festhalten.->Wesentliche]]
 
 
-:: Klare Konditionen 2 [Bias] {"position":"2625,2625","size":"100,100"}
+:: Klare Konditionen 2 {"position":"2625,2625","size":"100,100"}
 >>Character1|Laughing<<
-Das stimmt. Ach, wissen Sie was? Ich nehme Ihr Angebot an. Lassen Sie uns doch die Details am besten auch im Vertrag festhalten. Sie wissen ja, bei Frauen ist es oft besser, alles klar zu regeln.
->>--<<
->>Bias|Microaggression<<
+Das stimmt. Ach, wissen Sie was? Ich nehme Ihr Angebot an. Lassen Sie uns doch die Details am besten auch im Vertrag festhalten. Es ist oft besser, alles klar zu regeln.
 
-[[Ein klarer Vertrag ist für beide Seiten hilfreich, unabhängig vom Geschlecht.->Betonung 2]]
+[[Das stimmt. Ein klarer Vertrag ist für beide Seiten hilfreich, unabhängig vom Geschlecht.->Betonung 2]]
 
-
-[[Wie meinen Sie das?->Vertrag Nachfrage 2]]
-
-[[Interessant, dass Sie das extra betonen. Ich denke, klare Verträge sind generell sinnvoll, unabhängig vom Geschlecht.->Betonung 2]]
+[[Ja, lassen Sie uns dann gleich die Honorardetails festhalten.->Wesentliche 2]]
 
 
 :: Mehr trauen [Bias] {"position":"3350,1725","size":"100,100"}
@@ -524,28 +468,6 @@ Wie? Also, das wirkt auf mich nun wirklich wie eine emotionale Entscheidung. Den
 [[Meine Entscheidung ist wohlüberlegt. Ich wünsche Ihnen dennoch viel Erfolg bei Ihrer Veranstaltung.->Abbruch 2]]
 
 [[Tut mir leid, aber ich habe meine Entscheidung getroffen.->Abbruch 2]]
-
-
-:: Nicht im Paketpreis {"position":"3150,2175","size":"100,100"}
->>Character1|Questioning<<
-Nun gut, und wie viel würde das Briefing kosten?
-
-[[200 €.->Briefing regulär]]
-
-[[Ich berechne regulär 200 € für das Briefing, aber für Sie reduziere ich es auf 100 €.->Vertrag]]
-
-[[Leider kann ich das Briefing nicht kostenlos anbieten. Ich berechne dafür 200 €.->Briefing regulär]]
-
-
-:: Nicht im Paketpreis 2 {"position":"2625,2175","size":"100,100"}
->>Character1|Questioning<<
-Nun gut, und wie viel würde das Briefing kosten?
-
-[[200 €.->Briefing regulär 2]]
-
-[[Ich berechne regulär 200 € für das Briefing, aber für Sie reduziere ich es auf 100 €.->Vertrag 2]]
-
-[[Leider kann ich das Briefing nicht kostenlos anbieten. Ich berechne dafür 200 €.->Briefing regulär 2]]
 
 
 :: Nicht niedriger {"position":"3275,3775","size":"100,100"}
@@ -635,7 +557,7 @@ Wir müssen doch zusammenhalten, oder?
 [[Zusammenhalt sollte nicht bedeuten, dass wir den Wert unserer Arbeit reduzieren müssen.->Reduzierung nicht möglich]]
 
 
-:: Rabatt {"position":"3400,3450","size":"100,100"}
+:: Rabatt [Bias] {"position":"3400,3450","size":"100,100"}
 >>Character1|Critical<<
 Hmm, ich hätte erwartet, dass auch die erste Veranstaltung etwas günstiger wird. Gerade als Frau in einer Männerdomäne müssen Sie Ihre Preise ja etwas anpassen, um konkurrenzfähig zu bleiben, finden Sie nicht?
 >>--<<
@@ -730,28 +652,6 @@ Ach nein! Ich bin doch selbst eine Frau und möchte andere Frauen nur unterstüt
 [[Schubladendenken II 2]]
 
 
-:: Selbstbewusstsein Nachfrage [Bias] {"position":"3200,1725","size":"100,100"}
->>Character1|SmilingBig<<
-Nun, ich meine nur, dass es oft besser ankommt, wenn Frauen ihre Erfolge bescheiden präsentieren. Das wirkt sympathischer, finden Sie nicht?
->>--<<
->>Bias|TightropeBias<<
-
-[[Ich finde, Frauen können genauso gut auf Ihre Erfolge stolz sein und diese selbstbewusst präsentieren.->Mehr trauen]]
-
-[[Sympathie und Selbstbewusstsein muss sich nicht ausschließen. Also ich kann Ihnen gerne noch ein Briefing anbeiten.->Briefing]]
-
-
-:: Selbstbewusstsein Nachfrage 2 [Bias] {"position":"2725,1725","size":"100,100"}
->>Character1|SmilingBig<<
-Nun, ich meine nur, dass es oft besser ankommt, wenn Frauen ihre Erfolge bescheiden präsentieren. Das wirkt sympathischer, finden Sie nicht?
->>--<<
->>Bias|TightropeBias<<
-
-[[Ich finde, Frauen können genauso gut auf Ihre Erfolge stolz sein und diese selbstbewusst präsentieren.->Mehr trauen 2]]
-
-[[Sympathie und Selbstbewusstsein muss sich nicht ausschließen. Also ich kann Ihnen gerne noch ein Briefing anbeiten.->Briefing 2]]
-
-
 :: Sichtbarkeit Nachfrage {"position":"2950,1050","size":"100,100"}
 >>Character1|Smiling<<
 Ihr Unternehmen ist ja noch nicht so groß und wir würden Sie auf Social Media bewerben und im Programmflyer nennen. Das ist für Sie doch auch Werbung.
@@ -772,48 +672,22 @@ Da kümmern wir uns bereits darum und ein reduziertes Honorar von Ihnen wäre au
 [[Vielleicht könnte ich einen zusätzlichen Q&A-Block anbieten. Das steigert den Mehrwert für das Publikum.->Q&A]]
 
 
-:: Teil des Geschäftlichen [Bias] {"position":"3200,2450","size":"100,100"}
->>Character1|NeutralRelaxed<<
-Gerade als Frau ist doch Anpassungsfähigkeit oft von Vorteil.
->>--<<
->>Bias|Microaggression<<
-
-[[Anpassungsfähigkeit heißt für mich, den besten Service zu bieten, ohne die Preise zu verbiegen.->Anpassungsfähigkeit]]
-
-[[Wie gesagt, in Verhandlungen geht es um klare Konditionen, nicht um Geschlechterklischees.->Klare Konditionen]]
-
-
-:: Teil des Geschäftlichen 2 [Bias] {"position":"2625,2450","size":"100,100"}
->>Character1|NeutralRelaxed<<
-Gerade als Frau ist doch Anpassungsfähigkeit oft von Vorteil.
->>--<<
->>Bias|Microaggression<<
-
-[[Anpassungsfähigkeit heißt für mich, den besten Service zu bieten, ohne die Preise zu verbiegen.->Anpassungsfähigkeit 2]]
-
-[[Wie gesagt, in Verhandlungen geht es um klare Konditionen, nicht um Geschlechterklischees.->Klare Konditionen 2]]
-
-
-:: Transparent {"position":"3075,2025","size":"100,100"}
+:: Transparent {"position":"3175,2025","size":"100,100"}
 >>Character1|Critical<<
 Transparent, ja… Aber Flexibilität zeigt doch auch Orientierung an der Kundschaft. Wollen Sie das Briefing nicht als Service verstehen?
 
 [[Nun, da Sie mich häufiger buchen möchten, biete ich das Briefing diesmal gern ohne Aufpreis an.->Vertrag]]
 
-[[Ich verstehe den Wunsch nach Flexibilität, aber das Briefing ist leider nicht im Paketpreis.->Nicht im Paketpreis]]
-
-[[Nein, mein Honorar bleibt ein fixer Bestandteil meiner Leistungen.->Nicht im Paketpreis]]
+[[Ich verstehe den Wunsch nach Flexibilität. Das Briefing kann ich nicht kostenlos anbieten und berechne dafür 200 €.->Briefing regulär]]
 
 
-:: Transparent 2 {"position":"2650,2025","size":"100,100"}
+:: Transparent 2 {"position":"2725,2025","size":"100,100"}
 >>Character1|Critical<<
 Transparent, ja… Aber Flexibilität zeigt doch auch Orientierung an der Kundschaft. Wollen Sie das Briefing nicht als Service verstehen?
 
 [[Nun, da Sie mich häufiger buchen möchten, biete ich das Briefing diesmal gern ohne Aufpreis an.->Vertrag 2]]
 
-[[Ich verstehe den Wunsch nach Flexibilität, aber das Briefing ist leider nicht im Paketpreis.->Nicht im Paketpreis 2]]
-
-[[Nein, mein Honorar bleibt ein fixer Bestandteil meiner Leistungen.->Nicht im Paketpreis 2]]
+[[Ich verstehe den Wunsch nach Flexibilität. Das Briefing kann ich nicht kostenlos anbieten und berechne dafür 200 €.->Briefing regulär 2]]
 
 
 :: Vertrag [Bias] {"position":"3000,2500","size":"100,100"}
@@ -856,26 +730,22 @@ Das mache ich. Dann wünsche ich Ihnen noch einen schönen Tag.
 [[Vielen Dank und ich wünsche Ihnen auch einen schönen Tag. Ich freue mich auf unsere zukünftigen Gespräche!->End]]
 
 
-:: Vertrag Nachfrage [Bias] {"position":"3025,2775","size":"100,100"}
+:: Vertrag Nachfrage {"position":"3025,2775","size":"100,100"}
 >>Character1|Smiling<<
-Sie als Unternehmerin wissen ja selbst, wie wichtig ein guter Rahmen ist. Frauen brauchen eben oft die nötige Unterstützung, um sich voll entfalten zu können.
->>--<<
->>Bias|GenderSpecificStereotypes<<
+Sie als Unternehmerin wissen ja selbst, wie wichtig ein guter Rahmen ist. So können sich alle Beteiligten optimal auf ihre Aufgaben konzentrieren.
 
-[[Ein geregelter Rahmen ist für alle Beteiligten von Vorteil, unabhängig vom Geschlecht.->Geregelter Rahmen]]
+[[Genau, ein geregelter Rahmen ist für alle Beteiligten von Vorteil, unabhängig vom Geschlecht.->Geregelter Rahmen]]
 
-[[Ehrlich gesagt, habe ich das Gefühl, dass Sie in Schubladen denken.->Schubladenkdenken]]
+[[Ehrlich gesagt, habe ich durch Ihre vorherige Aussage das Gefühl, dass Sie in Schubladen denken..->Schubladenkdenken]]
 
 
-:: Vertrag Nachfrage 2 [Bias] {"position":"2425,2775","size":"100,100"}
+:: Vertrag Nachfrage 2 {"position":"2425,2775","size":"100,100"}
 >>Character1|Smiling<<
-Sie als Unternehmerin wissen ja selbst, wie wichtig ein guter Rahmen ist. Frauen brauchen eben oft die nötige Unterstützung, um sich voll entfalten zu können.
->>--<<
->>Bias|GenderSpecificStereotypes<<
+Sie als Unternehmerin wissen ja selbst, wie wichtig ein guter Rahmen ist. So können sich alle Beteiligten optimal auf ihre Aufgaben konzentrieren.
 
-[[Ein geregelter Rahmen ist für alle Beteiligten von Vorteil, unabhängig vom Geschlecht.->Geregelter Rahmen 2]]
+[[Genau, ein geregelter Rahmen ist für alle Beteiligten von Vorteil, unabhängig vom Geschlecht.->Geregelter Rahmen 2]]
 
-[[Ehrlich gesagt, habe ich das Gefühl ich, dass Sie in Schubladen denken.->Schubladenkdenken 2]]
+[[Ehrlich gesagt, habe ich durch Ihre vorherige Aussage das Gefühl, dass Sie in Schubladen denken..->Schubladenkdenken 2]]
 
 
 :: Vertragsdetails 2 {"position":"2400,3775","size":"100,100"}
@@ -888,24 +758,6 @@ Ich freue mich auf die Zusammenarbeit und darauf, Sie bei unserer Veranstaltung 
 [[Danke, das wünsche ich Ihnen auch. Auf Wiedersehen.->End]]
 
 [[Vielen Dank und ich wünsche Ihnen auch einen schönen Tag. Ich freue mich auf unsere zukünftigen Gespräche!->End]]
-
-
-:: Wertschätzung {"position":"3350,2175","size":"100,100"}
->>Character1|Smiling<<
-Selbstverständlich! Nun gut, und wie viel würde das Briefing kosten?
-
-[[200 €.->Briefing regulär]]
-
-[[Ich berechne regulär 200 € für das Briefing, aber für Sie reduziere ich es auf 100 €->Vertrag]]
-
-
-:: Wertschätzung 2 {"position":"2775,2175","size":"100,100"}
->>Character1|Smiling<<
-Selbstverständlich! Nun gut, und wie viel würde das Briefing kosten?
-
-[[200 €.->Briefing regulär 2]]
-
-[[Ich berechne regulär 200 € für das Briefing, aber für Sie reduziere ich es auf 100 €->Vertrag 2]]
 
 
 :: Wesentliche {"position":"3300,3275","size":"100,100"}
@@ -940,28 +792,20 @@ Aber denken Sie, Sie können diese Qualität bei zunehmendem Druck beibehalten?
 [[Ich arbeite effizient und zielgerichtet. Mein Honorar spiegelt genau diesen Mehrwert wider.->Honorar II]]
 
 
-:: Zuversicht [Bias] {"position":"3275,1575","size":"100,100"}
+:: Zuversicht {"position":"3275,1575","size":"100,100"}
 >>Character1|Smiling<<
-Natürlich. Wir schätzen auch Ihr Selbstbewusstsein. Aber Selbstbewusstsein kann leicht als "zu fordernd" wirken, besonders bei Frauen.
->>--<<
->>Bias|TightropeBias<<
+Natürlich. Wir schätzen auch Ihr Selbstbewusstsein. Nur wird das manchmal unterschiedlich wahrgenommen.
 
-[[Was meinen Sie damit?->Selbstbewusstsein Nachfrage]]
-
-[[Ich denke, wir Frauen können uns ruhig mehr trauen.->Mehr trauen]]
+[[Ich denke, wir können klare Aussagen mit Offenheit verbinden.->Mehr trauen]]
 
 [[Selbstbewusstsein ist Teil meiner Professionalität. Gerne können wir im Vorfeld ein Briefing machen, um Erwartungen abzugleichen.->Briefing]]
 
 
-:: Zuversicht 2 [Bias] {"position":"2750,1575","size":"100,100"}
+:: Zuversicht 2 {"position":"2750,1575","size":"100,100"}
 >>Character1|Smiling<<
-Natürlich. Wir schätzen auch Ihr Selbstbewusstsein. Aber Selbstbewusstsein kann leicht als "zu fordernd" wirken, besonders bei Frauen.
->>--<<
->>Bias|TightropeBias<<
+Natürlich. Wir schätzen auch Ihr Selbstbewusstsein. Nur wird das manchmal unterschiedlich wahrgenommen.
 
-[[Was meinen Sie damit?->Selbstbewusstsein Nachfrage 2]]
-
-[[Ich denke, wir Frauen können uns ruhig mehr trauen.->Mehr trauen 2]]
+[[Ich denke, wir können klare Aussagen mit Offenheit verbinden.->Mehr trauen 2]]
 
 [[Selbstbewusstsein ist Teil meiner Professionalität. Gerne können wir im Vorfeld ein Briefing machen, um Erwartungen abzugleichen.->Briefing 2]]
 

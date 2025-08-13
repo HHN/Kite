@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 
 public class TweePathCalculator
 {
-    private const string MetadataFilePath    = @"..\..\..\Kreditantrag\visual_novel_meta_data.txt";
-    private const string EventListFilePath   = @"..\..\..\Kreditantrag\visual_novel_event_list.txt";
-    private const string OutputFilePath      = @"..\..\..\Kreditantrag\pathOutput.txt";
-    private const string ResponseFilePath    = @"..\..\..\Kreditantrag\response.txt";
+    private const string MetadataFilePath    = @"..\..\..\Honorar\visual_novel_meta_data.txt";
+    private const string EventListFilePath   = @"..\..\..\Honorar\visual_novel_event_list.txt";
+    private const string OutputFilePath      = @"..\..\..\Honorar\pathOutput.txt";
+    private const string ResponseFilePath    = @"..\..\..\Honorar\response.txt";
     private static readonly string apiKey    = Environment.GetEnvironmentVariable("API_KEY");
 
     private static readonly HttpClient http  = new HttpClient
@@ -84,16 +84,16 @@ public class TweePathCalculator
     });
 
     // 3) Prompts einlesen und Antworten senden
-    http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
-    var prompts = LoadPromptsFromFile(OutputFilePath).Skip(892).ToList();
-    int idx = 893;
-    foreach (var prompt in prompts)
-    {
-        Console.WriteLine($"Verarbeite Prompt #{idx}…");
-        await SendPrompt(prompt, idx);
-        Console.WriteLine($"Prompt #{idx} gesendet und Antwort gespeichert.");
-        idx++;
-    }
+    // http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
+    // var prompts = LoadPromptsFromFile(OutputFilePath).Skip(0).ToList();
+    // int idx = 1;
+    // foreach (var prompt in prompts)
+    // {
+    //     Console.WriteLine($"Verarbeite Prompt #{idx}…");
+    //     await SendPrompt(prompt, idx);
+    //     Console.WriteLine($"Prompt #{idx} gesendet und Antwort gespeichert.");
+    //     idx++;
+    // }
     }
 
     /// <summary>
