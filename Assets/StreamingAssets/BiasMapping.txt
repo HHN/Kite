@@ -10,7 +10,7 @@ TightropeBias: Tightrope Bias
 Microaggression: Mikroaggression
 StereotypesAboutWomenInNonTraditionalIndustries: Stereotypen über Frauen in nicht traditionellen Branchen
 ConfirmationBias: Bestätigungsbias
-RiskAversionBias: Risikoaversion
+RiskAversionBias: Risikovermeidungs-Bias
 GenderPayGap: Geschlechterlohngefälle
 BenevolentSexism: Wohlwollender Sexismus
 ProveItAgainBias: Prove-it-Again-Bias
