@@ -84,16 +84,16 @@ public class TweePathCalculator
     });
 
     // 3) Prompts einlesen und Antworten senden
-    // http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
-    // var prompts = LoadPromptsFromFile(OutputFilePath).Skip(0).ToList();
-    // int idx = 1;
-    // foreach (var prompt in prompts)
-    // {
-    //     Console.WriteLine($"Verarbeite Prompt #{idx}…");
-    //     await SendPrompt(prompt, idx);
-    //     Console.WriteLine($"Prompt #{idx} gesendet und Antwort gespeichert.");
-    //     idx++;
-    // }
+    http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
+    var prompts = LoadPromptsFromFile(OutputFilePath).Skip(50).Take(50).ToList();
+    int idx = 51;
+    foreach (var prompt in prompts)
+    {
+        Console.WriteLine($"Verarbeite Prompt #{idx}…");
+        await SendPrompt(prompt, idx);
+        Console.WriteLine($"Prompt #{idx} gesendet und Antwort gespeichert.");
+        idx++;
+    }
     }
 
     /// <summary>
@@ -205,13 +205,13 @@ public class TweePathCalculator
         "Du bist eine Geschlechterforscherin.\n" +
         "Deine Aufgabe ist es, den folgenden Dialogausschnitt auf Diskriminierung hin zu untersuchen.\n\n" +
         _contextForPrompt + "\n\n" +
-        "Die Spielerin hat den gesamten Dialog durchgespielt. Ich gebe Dir allerdings nur den Dialogausschnitt, in dem Biases vorkommen, weil dies die relevanten Passagen sind. Du findest dort jeweils die Aussage des Gegenübers, den Namen des Bias, der hier zum Tragen kommt und die Reaktion der Spielerin. Nutze die Information über den Bias als Basis für Deine Interpretation.\nAußerdem gebe ich dir die twee-Datei mit allen möglichen Gesprächspassagen. Dies ist aber nur für Dich zur Kontextualisierung, nicht zur Analyse.\nSchreibe einen Analysetext über den Dialogausschnitt, in dem Biases vorkommen. Stelle die Biases und Verzerrungen dar, auf die du dich beziehst (zur Erläuterung findest du unten eine Liste mit Geschlechterbiases im Gründungsprozess). Drücke Dich allgemeinverständlich aus. Verwende bei der Benennung der Biases ausschließlich den deutschen Namen. Setze keinen einleitenden Text davor, sondern starte direkt mit der Ansprache an die Spielerin.\nAnalysiere auch das Verhalten der Spielerin und ihre Reaktionen auf diese Biases zu den jeweiligen Biases mit konkreten Beispielen aus dem Dialog.\nStelle die Vorteile des Verhaltens der Gründerin dar und deute vorsichtig an, welche Nachteile ihre Reaktion haben könnte.\nFühre das Nicht-Ansprechen geschlechterstereotyper Annahmen nicht bei den Nachteilen auf.\nSei vorsichtig mit dem Hinweis, Biases und Stereotype direkt anzusprechen, weil dies zwar generell sinnvoll sein kann, die Spielerin aber in erster Linie darauf achten muss, dass sie das Gespräch so führt, dass sie im Gespräch erfolgreich ist.\nNutze geschlechtergerechte Sprache (z.B. Gründer*innen, weibliche Gründerinnen).\nRichte den Text in der Du-Form an die Spielerin.\nSprich niemals von 'Spielerin', 'Gründerin' oder einer anderen Bezeichnung als 'Du'. Dies muss unbedingt beachtet werden, da die Antwort ansonst nicht weiter verwendet werden kann.\nSei wohlwollend und ermunternd. Sprich die Gründerin nicht mit ihrem Namen an. Formuliere den Text aus einer unbestimmten Ich-Perspektive." +
+        "Die Spielerin hat den gesamten Dialog durchgespielt. Ich gebe Dir allerdings nur den Dialogausschnitt, in dem Biases vorkommen, weil dies die relevanten Passagen sind. Du findest dort jeweils die Aussage des Gegenübers, den Namen des Bias, der hier zum Tragen kommt und die Reaktion der Spielerin. Nutze die Information über den Bias als Basis für Deine Interpretation.\nAußerdem gebe ich dir die twee-Datei mit allen möglichen Gesprächspassagen. Dies ist aber nur für Dich zur Kontextualisierung, nicht zur Analyse.\nSchreibe einen Analysetext über den Dialogausschnitt, in dem Biases vorkommen. Stelle die Biases und Verzerrungen dar, auf die du dich beziehst (zur Erläuterung findest du unten eine Liste mit Geschlechterbiases im Gründungsprozess). Drücke Dich allgemeinverständlich aus. Verwende bei der Benennung der Biases ausschließlich den deutschen Namen. Setze keinen einleitenden Text davor, sondern starte direkt mit der Ansprache an die Spielerin.\nAnalysiere auch das Verhalten der Spielerin und ihre Reaktionen auf diese Biases zu den jeweiligen Biases mit konkreten Beispielen aus dem Dialog.\nStelle die Vorteile des Verhaltens der Gründerin dar und deute vorsichtig an, welche Nachteile ihre Reaktion haben könnte.\nFühre das Nicht-Ansprechen geschlechterstereotyper Annahmen nicht bei den Nachteilen auf.\nSei vorsichtig mit dem Hinweis, Biases und Stereotype direkt anzusprechen, weil dies zwar generell sinnvoll sein kann, die Spielerin aber in erster Linie darauf achten muss, dass sie das Gespräch so führt, dass sie im Gespräch erfolgreich ist.\nNutze geschlechtergerechte Sprache (z.B. Gründer*innen, weibliche Gründerinnen).\nRichte den Text in der du-Form an die Spielerin.\nSprich niemals von 'Spielerin', 'Gründerin' oder einer anderen Bezeichnung als 'du'. Dies muss unbedingt beachtet werden, da die Antwort ansonst nicht weiter verwendet werden kann.\nSei wohlwollend und ermunternd. Sprich die Gründerin nicht mit ihrem Namen an. Formuliere den Text aus einer unbestimmten Ich-Perspektive." +
         "Hier die Liste mit Geschlechterbiases im Gründungsprozess:\n\n" +
         "Finanzielle und Geschäftliche Herausforderungen\n\n" +
         "Finanzierungszugang \n>>Bias|AccessToFinancing<<\nBias: Schwierigkeiten von Frauen, Kapital für ihre Unternehmen zu beschaffen.\n\n" +
         "Gender Pay Gap\n>>Bias|GenderPayGap<<\nBias: Lohnungleichheit zwischen Männern und Frauen.\n\n" +
         "Unterbewertung weiblich geführter Unternehmen\n>>Bias|UndervaluationFemaleManagedCompany<<\nBias: Geringere Bewertung von Unternehmen, die von Frauen geführt werden.\n\n" +
-        "Risk Aversion Bias\n>>Bias|RiskAversionBias<<\nBias: Wahrnehmung von Frauen als risikoaverser.\n\n" +
+        "Risikovermeidungs-Bias\n>>Bias|RiskAversionBias<<\nBias: Wahrnehmung von Frauen als risikoaverser.\n\n" +
         "Bestätigungsverzerrung\n>>Bias|ConfirmationBias<<\nBias: Tendenz, Informationen zu interpretieren, die bestehende Vorurteile bestätigen.\n\n" +
         "Gesellschaftliche Erwartungen & soziale Normen\n\n" +
         "Tokenism\n>>Bias|Tokenism<<\nBias: Wahrnehmung von Frauen in unternehmerischen Kreisen als Alibifiguren.\n\n" +
