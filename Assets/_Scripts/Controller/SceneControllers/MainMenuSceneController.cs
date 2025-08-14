@@ -29,8 +29,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private Button continueTermsAndConditionsButton;
         [SerializeField] private CustomToggle termsOfUseToggle;
         [SerializeField] private CustomToggle dataPrivacyToggle;
-        [SerializeField] private CustomToggle collectDataToggle;
-        [SerializeField] private TextMeshProUGUI infoTextTermsAndConditions;
         [SerializeField] private GameObject getVersionServerCallPrefab;
         [SerializeField] private GameObject novelLoader;
         [SerializeField] private TMP_Text versionInfo;
@@ -122,21 +120,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Initiates a version check with the server to ensure the application is compatible
-        /// with the current server version. This method creates and configures an instance of
-        /// the GetVersionServerCall, sets the necessary callbacks and controllers, and sends
-        /// the request. The created server call object is marked to persist across scene loads.
-        /// </summary>
-        private void StartVersionCheck()
-        {
-            var call = Instantiate(getVersionServerCallPrefab).GetComponent<GetVersionServerCall>();
-            call.sceneController = this;
-            call.OnSuccessHandler = this;
-            call.SendRequest();
-            DontDestroyOnLoad(call.gameObject);
-        }
-
-        /// <summary>
         /// Handles the "Continue" button click event within the terms and conditions section of the main menu.
         /// This method updates the user's acceptance states for terms of use, privacy, and data collection
         /// and validates the overall acceptance before proceeding to load the appropriate scene or display
@@ -166,10 +149,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             UpdateAcceptance(dataPrivacyToggle.IsClicked(),
                 privacyManager.AcceptTermsOfPrivacy,
                 privacyManager.UnacceptedTermsOfPrivacy);
-
-            UpdateAcceptance(collectDataToggle.IsClicked(),
-                privacyManager.AcceptDataCollection,
-                privacyManager.UnacceptedDataCollection);
         }
 
         /// <summary>
@@ -205,10 +184,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             if (acceptedTermsOfUse && acceptedDataPrivacyTerms)
             {
                 StartCoroutine(WaitForNovelsToLoad());
-            }
-            else
-            {
-                infoTextTermsAndConditions.gameObject.SetActive(true);
             }
         }
 
