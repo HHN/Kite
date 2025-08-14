@@ -5,6 +5,9 @@ using Debug = UnityEngine.Debug;
 
 namespace Assets._Scripts.Biases
 {
+    /// <summary>
+    /// A handler class designed to detect and respond to clickable links within a TextMeshProUGUI component in Unity.
+    /// </summary>
     public class TextLinkHandler : MonoBehaviour, IPointerClickHandler
     {
         private TextMeshProUGUI _textMeshPro;
@@ -14,9 +17,12 @@ namespace Assets._Scripts.Biases
             _textMeshPro = GetComponent<TextMeshProUGUI>();
         }
 
+        /// <summary>
+        /// Handles click events on the TextMeshProUGUI component, detects clickable links, and executes appropriate actions.
+        /// </summary>
+        /// <param name="eventData">The PointerEventData associated with the pointer click event.</param>
         public void OnPointerClick(PointerEventData eventData)
         {
-            // Ermittle den index des geklickten Links
             int linkIndex = TMP_TextUtilities.FindIntersectingLink(_textMeshPro, eventData.position, null);
 
             if (linkIndex != -1)

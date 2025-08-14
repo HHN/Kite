@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5084c0e108f447f8a941930d98fc2d16, type: 3}
+  m_Name: AccessToFunding
+  m_EditorClassIdentifier: 
+  biasType: 0
+  headline: Access To Funding
+  preview: "Kapital ist der Schl\xFCssel zum Unternehmenswachstum, doch Gr\xFCnderinnen
+    erhalten deutlich weniger Zugang zu Finanzierung als ihre m\xE4nnlichen Kollegen.
+    Nur 2 % des gesamten Wagniskapitals in Deutschland flie\xDFen in rein weibliche
+    Teams \u2013 eine markante Diskrepanz."
+  description: "Studien zeigen, dass Investorinnen und Investoren Frauen oft als
+    risikoaverser wahrnehmen und ihre Gesch\xE4ftsmodelle kritischer hinterfragen.
+    W\xE4hrend m\xE4nnliche Gr\xFCnder h\xE4ufiger zu Wachstumsstrategien befragt
+    werden, m\xFCssen Frauen verst\xE4rkt ihre Risikominimierung erkl\xE4ren. Das
+    f\xFChrt dazu, dass sie seltener an gro\xDFe Finanzierungsrunden kommen und langsamer
+    skalieren k\xF6nnen (<color=LINK_COLOR><link=\"https://www.ey.com/de_de/newsroom/2024/02/startup-barometer-gruenderinnen\\\">Quelle</link></color>).\n\r\nIn
+    unseren Stories zeigt sich dieser Bias, wenn ein Familienmitglied skeptisch fragt,
+    ob gen\xFCgend Kapital vorhanden ist, um das Unternehmen langfristig zu finanzieren.
+    W\xE4hrend m\xE4nnlichen Gr\xFCndern oft automatisch zugetraut wird, die Finanzierung
+    bereits gesichert zu haben, m\xFCssen Frauen erst beweisen, dass sie Kapital
+    beschaffen k\xF6nnen."

@@ -17,6 +17,12 @@ using UnityEngine.UI;
 
 namespace Assets._Scripts.Controller.SceneControllers
 {
+    /// <summary>
+    /// Controls the main menu scene of the application, managing user interactions
+    /// and handling server communication responses specific to the main menu context.
+    /// Inherits from the <see cref="SceneController"/> class and implements the
+    /// <see cref="IOnSuccessHandler"/> interface.
+    /// </summary>
     public class MainMenuSceneController : SceneController, IOnSuccessHandler
     {
         [SerializeField] private GameObject termsAndConditionPanel;
@@ -28,28 +34,35 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private GameObject getVersionServerCallPrefab;
         [SerializeField] private GameObject novelLoader;
         [SerializeField] private TMP_Text versionInfo;
+        
         private const int CompatibleServerVersionNumber = 10;
 
-
+        /// <summary>
+        /// Initializes the main menu scene and its components when the scene starts.
+        /// This includes initializing the necessary managers, setting up button listeners,
+        /// handling terms and conditions, and setting application version information.
+        /// It also configures global sound effect volume based on player preferences and
+        /// conditionally starts loading novel data if required settings are accepted.
+        /// </summary>
         private void Start()
         {
             GeneratedFeedbackManager feedbackManager = GeneratedFeedbackManager.Instance;
             GeneratedFeedbackManager.Instance.LoadFeedbacks();
             
-            // Initialisiere den TextToSpeechManager
+            // Initialize the TextToSpeechManager
             TextToSpeechManager ttsManager = TextToSpeechManager.Instance;
 
             MappingManager mappingManager = MappingManager.Instance;
-            // Initialisiere die Szene und setze grundlegende Einstellungen
+            // Initialize the scene and set basic settings
             InitializeScene();
 
-            // Richte die Button-Listener ein, um auf Benutzereingaben zu reagieren
+            // Set up button listeners to respond to user input
             SetupButtonListeners();
 
-            // Behandle die Nutzungsbedingungen und Datenschutzrichtlinien
+            // Handle terms and conditions and privacy policy
             HandleTermsAndConditions();
 
-            // Hole die Instanz des PrivacyManagers, um den aktuellen Status der Datenschutzakzeptanz zu überprüfen
+            // Get an instance of PrivacyManager to check the current status of privacy acceptance
             var privacyManager = PrivacyAndConditionManager.Instance();
 
             versionInfo.text = Application.version;
@@ -63,29 +76,44 @@ namespace Assets._Scripts.Controller.SceneControllers
                 GlobalVolumeManager.Instance.SetGlobalVolume(0);
             }
 
-            // Überprüfe, ob die Nutzungsbedingungen und Datenschutzrichtlinien akzeptiert wurden
+            // Check if terms and conditions and privacy policy have been accepted
             if (privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted())
             {
-                // Starte eine Coroutine, die darauf wartet, dass die Novels geladen sind
+                // Start a coroutine that waits for the novels to load
                 StartCoroutine(WaitForNovelsToLoad());
             }
         }
 
+        /// <summary>
+        /// Prepares and initializes required components for the scene.
+        /// Ensures certain game objects persist across scenes,
+        /// loads player preferences, and resets the back stack manager.
+        /// </summary>
         private void InitializeScene()
         {
             DontDestroyOnLoad(novelLoader);
 
-            //AnalyticsServiceHandler.Instance().StartAnalytics();  //TODO: Replace with custom Analytics
             PlayerDataManager.Instance().LoadAllPlayerPrefs();
             BackStackManager.Instance().Clear();
         }
 
+        /// <summary>
+        /// Configures button click event listeners for the main menu scene.
+        /// This involves assigning methods to handle user interactions with
+        /// various UI buttons, initiating appropriate behaviors or navigation
+        /// responses within the main menu context.
+        /// </summary>
         private void SetupButtonListeners()
         {
-            //novelPlayerButton.onClick.AddListener(OnNovelPlayerButton);
             continueTermsAndConditionsButton.onClick.AddListener(OnContinueTermsAndConditionsButton);
         }
 
+        /// <summary>
+        /// Handles the verification and acceptance of terms and conditions as well as privacy policies.
+        /// If the terms and conditions and privacy policies are accepted, the related UI panel is hidden,
+        /// and additional actions such as enabling data collection and checking the application version
+        /// are performed if their prerequisites are met.
+        /// </summary>
         private void HandleTermsAndConditions()
         {
             var privacyManager = PrivacyAndConditionManager.Instance();
@@ -93,51 +121,52 @@ namespace Assets._Scripts.Controller.SceneControllers
             if (privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted())
             {
                 termsAndConditionPanel.SetActive(false);
-
-                if (privacyManager.IsDataCollectionAccepted())
-                {
-                    //AnalyticsServiceHandler.Instance().CollectData(); //TODO: Replace with custom Analytics
-                }
-
-                if (!ApplicationModeManager.Instance().IsOfflineModeActive())
-                {
-                    StartVersionCheck();
-                }
             }
         }
 
-        private void StartVersionCheck()
-        {
-            var call = Instantiate(getVersionServerCallPrefab).GetComponent<GetVersionServerCall>();
-            call.sceneController = this;
-            call.OnSuccessHandler = this;
-            call.SendRequest();
-            Object.DontDestroyOnLoad(call.gameObject);
-        }
-
+        /// <summary>
+        /// Handles the "Continue" button click event within the terms and conditions section of the main menu.
+        /// This method updates the user's acceptance states for terms of use, privacy, and data collection
+        /// and validates the overall acceptance before proceeding to load the appropriate scene or display
+        /// the necessary messages based on the acceptance status.
+        /// </summary>
         private void OnContinueTermsAndConditionsButton()
         {
             UpdateTermsAcceptance();
             ValidateTermsAndLoadScene();
         }
 
+        /// <summary>
+        /// Updates the acceptance state of terms and conditions based on the user's interaction
+        /// with the corresponding toggles. This includes handling terms of use, data privacy,
+        /// and optional data collection preferences. The method communicates the user's choices
+        /// to the PrivacyAndConditionManager and invokes the appropriate actions, such as
+        /// marking terms as accepted or unaccepted.
+        /// </summary>
         private void UpdateTermsAcceptance()
         {
             var privacyManager = PrivacyAndConditionManager.Instance();
 
             UpdateAcceptance(termsOfUseToggle.IsClicked(),
                 privacyManager.AcceptConditionsOfUsage,
-                privacyManager.UnaccepedConditionsOfUsage);
+                privacyManager.UnacceptedConditionsOfUsage);
 
             UpdateAcceptance(dataPrivacyToggle.IsClicked(),
                 privacyManager.AcceptTermsOfPrivacy,
-                privacyManager.UnaccepedTermsOfPrivacy);
+                privacyManager.UnacceptedTermsOfPrivacy);
 
             UpdateAcceptance(collectDataToggle.IsClicked(),
                 privacyManager.AcceptDataCollection,
-                privacyManager.UnaccepedDataCollection);
+                privacyManager.UnacceptedDataCollection);
         }
 
+        /// <summary>
+        /// Updates the acceptance state based on the provided condition and triggers
+        /// the corresponding action for acceptance or denial.
+        /// </summary>
+        /// <param name="isAccepted">A boolean value indicating whether the condition is accepted.</param>
+        /// <param name="acceptAction">The action to execute when the condition is accepted.</param>
+        /// <param name="deniedAction">The action to execute when the condition is denied.</param>
         private void UpdateAcceptance(bool isAccepted, System.Action acceptAction, System.Action deniedAction)
         {
             if (isAccepted)
@@ -150,6 +179,12 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
         }
 
+        /// <summary>
+        /// Validates whether the user has accepted the necessary terms of use and privacy conditions.
+        /// If both conditions are accepted, initiates loading of novel data.
+        /// Otherwise, displays a message indicating that the terms and conditions need to be accepted
+        /// before proceeding further.
+        /// </summary>
         private void ValidateTermsAndLoadScene()
         {
             bool acceptedTermsOfUse = termsOfUseToggle.IsClicked();
@@ -165,6 +200,12 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
         }
 
+        /// <summary>
+        /// Handles the success response received from the server specific to the main menu context.
+        /// Validates the server version against the compatible version and displays an informational message
+        /// if an update is available.
+        /// </summary>
+        /// <param name="response">The server response object containing relevant data for processing.</param>
         public void OnSuccess(Response response)
         {
             if (response == null) return;
@@ -175,7 +216,13 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
         }
 
-        // Coroutine that waits for the novels to load
+        /// <summary>
+        /// Waits for the list of visual novels to be completely loaded from the kite novel manager.
+        /// This coroutine periodically checks if the novel data has been loaded and performs actions based
+        /// on the application state. It will either start the introductory novel or load the designated
+        /// scene depending on the user's preferences.
+        /// </summary>
+        /// <returns>A coroutine that keeps yielding until the novel data is available.</returns>
         private IEnumerator WaitForNovelsToLoad()
         {
             // Initialize an empty list for the visual novels
@@ -200,7 +247,12 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
         }
 
-        // Method to start the introductory novel
+        /// <summary>
+        /// Identifies and starts the introductory novel from the provided list of loaded novels.
+        /// If a novel with the title "Einstiegsdialog" is found, it is configured for play,
+        /// applying its unique settings such as ID, color, and display name, and loads the corresponding play novel scene.
+        /// </summary>
+        /// <param name="allNovels">The list of all loaded visual novels to search for the introductory novel.</param>
         private static void StartIntroNovel(List<VisualNovel> allNovels)
         {
             // Iterate through the list of all loaded novels

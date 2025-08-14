@@ -6,117 +6,164 @@ using UnityEngine.SceneManagement;
 
 namespace Assets._Scripts.SceneManagement
 {
+    /// <summary>
+    /// Provides static utility methods for loading and managing scenes within the game.
+    /// It implements a scene loading strategy that distinguishes between full scene changes
+    /// and additive loading for sub-scenes within a persistent base scene (like the novel gameplay scene).
+    /// </summary>
     public abstract class SceneLoader
     {
-        private const string NovelBaseScene       = "PlayNovelScene";
+        private const string NovelBaseScene = "PlayNovelScene";
         private const string DontDestroySceneName = "DontDestroyOnLoad";
 
-        // Szenen, die KEIN additiver Wechsel sein sollen
+        /// <summary>
+        /// Scenes that should NOT be additive transitions
+        /// </summary>
         private static readonly HashSet<string> SingleLoadExceptions = new HashSet<string>
         {
             "FeedBackScene",
-            "FoundersBubbleScene"
+            "FoundersBubbleTestScene"
         };
 
-        // Merkt sich den Namen der aktuell geladenen Sub-Szene (oder null, wenn keine).
-        // Wird in LoadScene() aktualisiert, muss aber auch zurückgesetzt werden, wenn Ihr 
-        // die Sub-Szene außerhalb von LoadScene entladet (z.B. per Back-Button).
-        private static string _currentSubScene = null;
+        /// <summary>
+        /// Stores the name of the currently loaded additive sub-scene.
+        /// It is updated in <see cref="LoadScene"/> and must be reset manually if
+        /// a sub-scene is unloaded outside this class (e.g., via a back button).
+        /// Null if no sub-scene is currently loaded.
+        /// </summary>
+        private static string _currentSubScene;
 
+        /// <summary>
+        /// Loads the Main Menu scene. It also pushes the scene name onto the BackStackManager.
+        /// </summary>
         public static void LoadMainMenuScene()
         {
             BackStackManager.Instance().Push(SceneNames.MainMenuScene);
             LoadScene(SceneNames.MainMenuScene);
         }
 
+        /// <summary>
+        /// Loads the main Play Novel scene. This typically clears the back stack,
+        /// updates novel statuses, and sets up the base scene for novel gameplay.
+        /// </summary>
         public static void LoadPlayNovelScene()
         {
             BackStackManager.Instance().Clear();
-            // Überprüfen, ob ein Speicherstand existiert…
             GameManager.Instance.CheckAndSetAllNovelsStatus();
-            
+
             BackStackManager.Instance().Push(SceneNames.PlayNovelScene);
-            
+
             LoadScene(SceneNames.PlayNovelScene);
         }
 
+        /// <summary>
+        /// Loads the Feedback scene.
+        /// </summary>
         public static void LoadFeedbackScene()
         {
             LoadScene(SceneNames.FeedbackScene);
         }
 
+        /// <summary>
+        /// Loads the Settings scene.
+        /// </summary>
         public static void LoadSettingsScene()
         {
             LoadScene(SceneNames.SettingsScene);
         }
 
+        /// <summary>
+        /// Loads the Founders Bubble scene (likely a specific UI or gameplay module).
+        /// </summary>
         public static void LoadFoundersBubbleScene()
         {
             LoadScene(SceneNames.FoundersBubbleScene);
         }
 
+        /// <summary>
+        /// Loads the Play Instruction scene.
+        /// </summary>
         public static void LoadPlayInstructionScene()
         {
             LoadScene(SceneNames.PlayInstructionScene);
         }
 
+        /// <summary>
+        /// Loads the Novel History scene.
+        /// </summary>
         public static void LoadNovelHistoryScene()
         {
             LoadScene(SceneNames.NovelHistoryScene);
         }
 
+        /// <summary>
+        /// Loads the Resources scene.
+        /// </summary>
         public static void LoadResourcesScene()
         {
             LoadScene(SceneNames.ResourcesScene);
         }
 
-        public static void LoadAccessibilityScene()
-        {
-            LoadScene(SceneNames.AccessibilityScene);
-        }
-
+        /// <summary>
+        /// Loads the Legal Information scene.
+        /// </summary>
         public static void LoadLegalInformationScene()
         {
             LoadScene(SceneNames.LegalInformationScene);
         }
 
+        /// <summary>
+        /// Loads the Privacy Policy scene.
+        /// </summary>
         public static void LoadPrivacyPolicyScene()
         {
             LoadScene(SceneNames.PrivacyPolicyScene);
         }
 
+        /// <summary>
+        /// Loads the Legal Notice scene.
+        /// </summary>
         public static void LoadLegalNoticeScene()
         {
             LoadScene(SceneNames.LegalNoticeScene);
         }
 
+        /// <summary>
+        /// Loads the Terms of Use scene.
+        /// </summary>
         public static void LoadTermsOfUseScene()
         {
             LoadScene(SceneNames.TermsOfUseScene);
         }
 
+        /// <summary>
+        /// Loads the Bookmarked Novels scene.
+        /// </summary>
         public static void LoadBookmarkedNovelsScene()
         {
             LoadScene(SceneNames.BookmarkedNovelsScene);
         }
 
-        public static void LoadSoundSettingsScene()
-        {
-            LoadScene(SceneNames.SoundSettingsScene);
-        }
-
+        /// <summary>
+        /// Loads the Knowledge scene.
+        /// </summary>
         public static void LoadKnowledgeScene()
         {
             LoadScene(SceneNames.KnowledgeScene);
         }
 
-        // =========================================================================
-        // Die zentrale Ladelogik:
-        // =========================================================================
+        /// <summary>
+        /// =========================================================================
+        /// The central scene loading logic:
+        /// =========================================================================
+        /// This method orchestrates the loading of scenes, differentiating between
+        /// full scene replacements and additive loading for sub-scenes within the novel base.
+        /// </summary>
+        /// <param name="sceneName">The name of the scene to be loaded.</param>
         public static void LoadScene(string sceneName)
         {
             // ────────────────────────────────────────────────────────────────────────────
-            // a) Wurde _currentSubScene extern bereits entladen? Dann zurücksetzen:
+            // a) Has _currentSubScene already been unloaded externally? Then reset:
             // ────────────────────────────────────────────────────────────────────────────
             if (_currentSubScene != null && !SceneManager.GetSceneByName(_currentSubScene).isLoaded)
             {
@@ -124,56 +171,58 @@ namespace Assets._Scripts.SceneManagement
             }
 
             // ----------------------------------------------------------
-            // 1) Sonderfälle: Feedback oder FoundersBubble → Single-Mode
-            //    (PlayNovelScene wird entladen, keine additive Logik)
+            // 1) Special cases: Feedback or FoundersBubble → Single-Mode Load
+            //    (PlayNovelScene will be unloaded, no additive logic applies)
             // ----------------------------------------------------------
             if (SingleLoadExceptions.Contains(sceneName))
             {
-                // Wenn Base-Szene noch geladen ist, entladen
+                // If the base novel scene is loaded, unload it.
                 if (SceneManager.GetSceneByName(NovelBaseScene).isLoaded)
                 {
                     SceneManager.UnloadSceneAsync(NovelBaseScene);
                 }
-                // Normales Single-Laden
+
+                // Perform a standard single-mode scene load.
                 SceneManager.LoadScene(sceneName);
-                // Nach Single-Load müssen wir unbedingt alle Flags zurücksetzen:
+                // After a single load, it's crucial to clear all preserved controllers and reset sub-scene flags.
                 ClearPreservedControllers();
                 _currentSubScene = null;
                 return;
             }
 
             // ----------------------------------------------------------
-            // 2) Prüfen, ob wir uns noch im Novel-Mode befinden
-            //    (PlayNovelScene ist persistent im Hintergrund)
+            // 2) Check if we are currently in "Novel Mode"
+            //    (PlayNovelScene is persistent in the background)
             // ----------------------------------------------------------
             bool inNovelMode = SceneManager.GetSceneByName(NovelBaseScene).isLoaded;
 
-            // a) Wenn PlayNovelScene nicht geladen oder explizit zurück zu ihr:
+            // a) If PlayNovelScene is not loaded, or if we are explicitly loading back to it:
             if (!inNovelMode || sceneName == NovelBaseScene)
             {
-                // Alle Persistent-Controller freigeben
+                // Release all previously preserved controllers.
                 ClearPreservedControllers();
-                // Kein Sub-Scene-State mehr
+                // Reset the sub-scene state as we are leaving the additive novel mode.
                 _currentSubScene = null;
 
-                // Single-Mode-Laden
+                // Load the scene in single mode, replacing everything.
                 SceneManager.LoadScene(sceneName);
                 return;
             }
 
             // ----------------------------------------------------------
-            // 3) Novel-Mode & keine Ausnahme:
-            //    Hier tauschen wir die jeweils aktive Sub-Szene aus.
+            // 3) Novel Mode & not an exception:
+            //    Here, we swap out the currently active sub-scene.
             // ----------------------------------------------------------
 
-            // 3a) Beim ersten Additive-Load speichern wir die Base-Controller
-            if (!controllersPreserved)
+            // 3a) On the first additive load, preserve the base controllers.
+            // This ensures core controllers in the PlayNovelScene persist across sub-scene changes.
+            if (!_controllersPreserved)
             {
                 PreserveBaseControllers();
-                controllersPreserved = true;
+                _controllersPreserved = true;
             }
 
-            // 3b) Wenn noch keine Sub-Szene geladen ist (erstes Mal):
+            // 3b) If no sub-scene is currently loaded (first time loading an additive sub-scene):
             if (_currentSubScene == null)
             {
                 var firstOp = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
@@ -182,27 +231,27 @@ namespace Assets._Scripts.SceneManagement
                     Scene newlyLoaded = SceneManager.GetSceneByName(sceneName);
                     if (newlyLoaded.IsValid() && newlyLoaded.isLoaded)
                     {
-                        // 1. Neue additiv geladene Szene aktivieren
+                        // 1. Activate the newly loaded additive scene.
                         SceneManager.SetActiveScene(newlyLoaded);
-                        // 2. Den Namen merken, damit wir sie später entladen/kontrollieren können
+                        // 2. Remember its name for future unloading/control.
                         _currentSubScene = sceneName;
                     }
                 };
                 return;
             }
 
-            // 3c) Wenn bereits eine Sub-Szene offen ist, tauschen wir sie aus
-            //     → Lade zuerst die neue, setze sie als aktiv, und erst dann entlade ich die alte.
+            // 3c) If a sub-scene is already open, we swap it out:
+            //     → Load the new scene first, set it as active, and only then unload the old one.
             {
                 var op = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
                 op.completed += _ =>
                 {
-                    // 1. Neue Szene gefunden und aktiv setzen
+                    // 1. Find the new scene and set it as active.
                     Scene newScene = SceneManager.GetSceneByName(sceneName);
                     if (newScene.IsValid() && newScene.isLoaded)
                     {
                         SceneManager.SetActiveScene(newScene);
-                        // 2. Jetzt erst die alte Sub-Szene entladen (falls sie noch existiert)
+                        // 2. Now, and only now, unload the old sub-scene (if it still exists and is loaded).
                         if (!string.IsNullOrEmpty(_currentSubScene))
                         {
                             Scene oldScene = SceneManager.GetSceneByName(_currentSubScene);
@@ -211,31 +260,40 @@ namespace Assets._Scripts.SceneManagement
                                 SceneManager.UnloadSceneAsync(oldScene);
                             }
                         }
-                        // 3. Und nun den neuen Namen speichern
+
+                        // 3. And finally, store the name of the new sub-scene.
                         _currentSubScene = sceneName;
                     }
                 };
-                return;
             }
         }
 
         // =========================================================================
-        // (Optional) Base-Controller persistieren
+        // (Optional) Preserve Base-Controller Logic
         // =========================================================================
-        private static readonly List<GameObject> PreservedControllers  = new List<GameObject>();
-        internal static bool controllersPreserved = false;
+        private static readonly List<GameObject> PreservedControllers = new List<GameObject>();
 
+        private static bool _controllersPreserved;
+
+        /// <summary>
+        /// Identifies and preserves essential <see cref="SceneController"/> GameObjects
+        /// from the <see cref="NovelBaseScene"/> by marking them with <see cref="Object.DontDestroyOnLoad"/>.
+        /// This ensures they remain active when additive scenes are loaded.
+        /// </summary>
         private static void PreserveBaseControllers()
         {
             Scene baseScene = SceneManager.GetSceneByName(NovelBaseScene);
-            if (!baseScene.isLoaded) return;
+            if (!baseScene.isLoaded) return; // Only proceed if the base scene is actually loaded.
 
+            // Iterate through all root GameObjects in the base scene.
             foreach (var root in baseScene.GetRootGameObjects())
             {
+                // Find all SceneController components (including inactive ones) in children.
                 var controllers = root.GetComponentsInChildren<SceneController>(true);
                 foreach (var sc in controllers)
                 {
                     var go = sc.gameObject;
+                    // If the GameObject is not already in the preserved list, add it and mark for persistence.
                     if (!PreservedControllers.Contains(go))
                     {
                         Object.DontDestroyOnLoad(go);
@@ -245,15 +303,21 @@ namespace Assets._Scripts.SceneManagement
             }
         }
 
+        /// <summary>
+        /// Destroys all GameObjects that were previously marked to be preserved
+        /// (using <see cref="Object.DontDestroyOnLoad"/>) and clears the internal tracking list.
+        /// This is typically called when leaving the "Novel Mode" to clean up persistent objects.
+        /// </summary>
         private static void ClearPreservedControllers()
         {
             foreach (var go in PreservedControllers)
             {
-                if (go != null)
+                if (go != null) // Check if the GameObject still exists before destroying.
                     Object.Destroy(go);
             }
-            PreservedControllers.Clear();
-            controllersPreserved = false;
+
+            PreservedControllers.Clear(); // Clear the list of tracked preserved GameObjects.
+            _controllersPreserved = false; // Reset the flag.
         }
     }
 }

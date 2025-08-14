@@ -3,16 +3,15 @@
   "titleOfNovel": "Telefonat mit der Notarin",
   "designationOfNovel": "Mit Notarin telefonieren",
   "descriptionOfNovel": "Du rufst bei einer Notarin an, um einen Termin für deine Gründung auszumachen.",
-  "idNumberOfRepresentationImage": 3,
-  "nameOfMainCharacter": "Spielerin",
-  "contextForPrompt": "Es ist das Gespräch einer Gründerin, mit einer Notarin. Es geht um die Eintragung des Unternehmens der Gründerin ins Handelsregister. Die Gründerin hat sich gut vorbereitet und hofft einen Termin für ein Eintragung zu erhalten.",
+  "contextForPrompt": "Es ist das Gespräch einer Gründerin mit einer Notarin. Es geht um die Eintragung des Unternehmens der Gründerin ins Handelsregister. Die Gründerin hat sich gut vorbereitet und hofft einen Termin für eine Eintragung zu erhalten.",
   "folderName": "Notarin",
   "startTalkingPartnerExpression": "NeutralRelaxed",
   "talkingPartner01" : "Notarin",
   "talkingPartner02" : "",
   "talkingPartner03" : "",
   "isKiteNovel": true,
-  "novelColor": "#11454A",
+  "novelColor": "#2C144D",
+  "novelFrameColor": "#63458D",
   "wordsToReplace": [
 	{"wordToReplace": ">>SpielerinCharakterSpricht:<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"}
 	]

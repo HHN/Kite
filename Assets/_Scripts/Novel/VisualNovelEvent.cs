@@ -2,6 +2,12 @@ using System;
 
 namespace Assets._Scripts.Novel
 {
+    /// <summary>
+    /// Represents a single event or step within a visual novel's narrative.
+    /// This class holds all data relevant to a specific moment in the story,
+    /// such as character actions, dialogue, background changes, and interactive elements.
+    /// Marked <see cref="Serializable"/> to allow for easy saving and loading of novel data.
+    /// </summary>
     [Serializable]
     public class VisualNovelEvent
     {
@@ -34,6 +40,11 @@ namespace Assets._Scripts.Novel
         public string value;
         public string relevantBias;
 
+        /// <summary>
+        /// Creates a deep copy of the current <see cref="VisualNovelEvent"/> instance.
+        /// All fields are copied by value, as they are either primitive types or strings (which are immutable).
+        /// </summary>
+        /// <returns>A new <see cref="VisualNovelEvent"/> instance that is a deep copy of the original.</returns>
         public VisualNovelEvent DeepCopy()
         {
             VisualNovelEvent newEvent = new VisualNovelEvent();

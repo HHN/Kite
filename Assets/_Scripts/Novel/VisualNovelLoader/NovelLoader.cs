@@ -8,48 +8,43 @@ using UnityEngine.Networking;
 
 namespace Assets._Scripts.Novel.VisualNovelLoader
 {
-    // NovelLoader ist ein MonoBehaviour, das daf�r verantwortlich ist, die Novellen (Visual Novels)
-    // aus einer JSON-Datei zu laden und an den KiteNovelManager zu �bergeben.
+    /// <summary>
+    /// NovelLoader is a MonoBehaviour that is responsible for loading novels (Visual Novels)
+    /// from a JSON file and passing them to the KiteNovelManager.
+    /// </summary>
     public class NovelLoader : MonoBehaviour
     {
-        // Konstante, die den Dateinamen der JSON-Datei definiert, in der alle Novellen gespeichert sind.
-        private const string NOVELS_PATH = "novels.json";
+        private const string NovelsPath = "novels.json";
 
-        // Start() wird beim Starten des GameObjects aufgerufen.
-        // Hier wird der Ladevorgang der Novellen initialisiert.
+        /// <summary>
+        /// Initiates the process to load all novels from the JSON file
+        /// and schedules the destruction of the NovelLoader object after a set duration.
+        /// </summary>
         private void Start()
         {
-            // Starte die Coroutine, die alle Novellen aus der JSON-Datei l�dt.
             StartCoroutine(LoadAllNovelsFromJson());
-            
+
             Destroy(gameObject, 5f);
         }
 
         /// <summary>
-        /// L�dt alle Novellen aus der JSON-Datei, sofern sie noch nicht im KiteNovelManager geladen sind.
+        /// Loads all novels from the JSON file specified in the configuration
+        /// and assigns them to the KiteNovelManager for further management.
         /// </summary>
-        /// <returns>IEnumerator f�r die Coroutine</returns>
+        /// <returns>Returns an IEnumerator to support coroutine execution.</returns>
         private IEnumerator LoadAllNovelsFromJson()
         {
-            // �berpr�fe, ob die Novellen bereits geladen wurden. Falls ja, wird die Coroutine beendet.
             if (KiteNovelManager.Instance().AreNovelsLoaded())
             {
                 yield break;
             }
 
-            // Erstelle den vollst�ndigen Pfad zur JSON-Datei, indem Application.streamingAssetsPath
-            // (der Ordner f�r Streaming Assets) mit dem NOVELS_PATH kombiniert wird.
-            string fullPath = Path.Combine(Application.streamingAssetsPath, NOVELS_PATH);
+            string fullPath = Path.Combine(Application.streamingAssetsPath, NovelsPath);
 
-            // Starte die Coroutine LoadNovels, um die Novellen aus der JSON-Datei zu laden.
-            // Das Ergebnis (eine Liste von VisualNovel-Objekten) wird �ber den Callback verarbeitet.
             yield return StartCoroutine(LoadNovels(fullPath, listOfAllNovel =>
             {
-                // Falls die geladene Liste null oder leer ist, wird eine Warnung im Log ausgegeben.
                 if (listOfAllNovel != null && listOfAllNovel.Count != 0)
                 {
-                    // Ansonsten wird die geladene Liste der Novellen an den KiteNovelManager �bergeben,
-                    // der die Novellen im weiteren Verlauf verwaltet.
                     KiteNovelManager.Instance().SetAllKiteNovels(listOfAllNovel);
                 }
                 else
@@ -60,42 +55,37 @@ namespace Assets._Scripts.Novel.VisualNovelLoader
         }
 
         /// <summary>
-        /// L�dt die Novellen aus einer JSON-Datei und deserialisiert sie in eine Liste von VisualNovel-Objekten.
+        /// Loads novels from the given file path and invokes the callback function
+        /// with a list of VisualNovel objects upon completion.
         /// </summary>
-        /// <param name="path">Der vollst�ndige Pfad zur JSON-Datei</param>
-        /// <param name="callback">Callback, der die deserialisierte Liste zur�ckgibt</param>
-        /// <returns>IEnumerator f�r die Coroutine</returns>
+        /// <param name="path">The path to the file containing the novel JSON data.</param>
+        /// <param name="callback">A callback function to handle the list of VisualNovel objects after loading.</param>
+        /// <returns>An IEnumerator allowing the operation to be executed asynchronously.</returns>
         private IEnumerator LoadNovels(string path, System.Action<List<VisualNovel>> callback)
         {
-            // Starte die Coroutine LoadFileContent, um den Inhalt der Datei asynchron zu laden.
             yield return StartCoroutine(LoadFileContent(path, jsonString =>
             {
-                // Wenn der geladene JSON-String leer oder null ist, rufe den Callback mit null auf.
                 if (string.IsNullOrEmpty(jsonString))
                 {
                     callback(null);
                 }
                 else
                 {
-                    // Deserialisiere den JSON-String in ein NovelListWrapper-Objekt.
                     NovelListWrapper kiteNovelList = JsonConvert.DeserializeObject<NovelListWrapper>(jsonString);
-                    // �bergibt die Liste der VisualNovels, die in NovelListWrapper gespeichert sind, an den Callback.
                     callback(kiteNovelList?.VisualNovels);
                 }
             }));
         }
 
         /// <summary>
-        /// L�dt den Inhalt einer Datei asynchron.
-        /// - Auf iOS (iPhonePlayer) wird die Datei synchron �ber File.ReadAllText geladen.
-        /// - Auf anderen Plattformen wird UnityWebRequest verwendet, um den Inhalt asynchron zu laden.
+        /// Reads the content of a file from the specified path and invokes the provided callback
+        /// with a string representing the file's content.
         /// </summary>
-        /// <param name="path">Der Pfad zur Datei</param>
-        /// <param name="callback">Callback, das den geladenen Text zur�ckgibt</param>
-        /// <returns>IEnumerator f�r die Coroutine</returns>
+        /// <param name="path">The path to the file from which content is to be read. It can support platform-specific file systems.</param>
+        /// <param name="callback">The callback function that handles the file content as a string once loading is complete.</param>
+        /// <returns>An IEnumerator to facilitate asynchronous loading of the file content.</returns>
         private IEnumerator LoadFileContent(string path, System.Action<string> callback)
         {
-            // Falls die Plattform iOS ist, wird die Datei direkt aus dem Dateisystem gelesen.
             if (Application.platform == RuntimePlatform.IPhonePlayer)
             {
                 string jsonString = File.ReadAllText(path);
@@ -103,23 +93,17 @@ namespace Assets._Scripts.Novel.VisualNovelLoader
             }
             else
             {
-                // F�r andere Plattformen wird UnityWebRequest verwendet, um den Dateiinhalt asynchron zu laden.
                 using (UnityWebRequest www = UnityWebRequest.Get(path))
                 {
-                    // Warte, bis die Anfrage abgeschlossen ist.
                     yield return www.SendWebRequest();
 
-                    // �berpr�fe, ob ein Verbindungs- oder Protokollfehler aufgetreten ist.
-                    if ((www.result == UnityWebRequest.Result.ConnectionError) ||
-                        (www.result == UnityWebRequest.Result.ProtocolError))
+                    if (www.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
                     {
-                        // Logge den Fehler und rufe den Callback mit null auf.
                         Debug.LogError($"Error loading file at {path}: {www.error}");
                         callback(null);
                     }
                     else
                     {
-                        // Wenn kein Fehler aufgetreten ist, �bergebe den geladenen Text an den Callback.
                         callback(www.downloadHandler.text);
                     }
                 }

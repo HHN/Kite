@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5084c0e108f447f8a941930d98fc2d16, type: 3}
+  m_Name: BenevolenterSexismus
+  m_EditorClassIdentifier: 
+  biasType: 7
+  headline: Benevolenter Sexismus
+  preview: "Manchmal tarnt sich Diskriminierung als vermeintliches Lob. Wohlwollender
+    Sexismus klingt positiv, ist aber herablassend: Frauen werden f\xFCr ihre \u201Ebesondere
+    Sensibilit\xE4t\u201C oder \u201Eweibliche Intuition\u201C gelobt, w\xE4hrend
+    ihnen gleichzeitig wirtschaftliche F\xE4higkeiten abgesprochen werden. Diese
+    Art von Vorurteil verst\xE4rkt subtile Schranken, indem sie Frauen sanfte, unterst\xFCtzende
+    Rollen zuweist, anstatt sie als gleichwertige Akteure in der Wirtschaft zu sehen.\n"
+  description: "Eine aktuelle Studie zeigt, dass Investorinnen und Investoren mit
+    einer hohen Auspr\xE4gung an benevolentem Sexismus m\xE4nnlich gef\xFChrte Startups
+    positiver bewerten, w\xE4hrend sie Frauen nicht zwingend abwerten \u2013 sondern
+    stattdessen M\xE4nner gezielt bevorzugen (<color=LINK_COLOR><link=\"https://journals.sagepub.com/doi/full/10.1177/10422587231178865\\\">Quelle</link></color>).\n\r\nIn
+    unseren Stories zeigt sich dieser Bias, wenn ein Vermieter Deine \u201EFrauenpower\u201C
+    lobt \u2013 aber gleichzeitig andeutet, dass Unternehmertum f\xFCr Frauen \u201Esehr
+    stressig\u201C sei. Die Botschaft dahinter: Frauen sind zwar bewundernswert,
+    aber m\xF6glicherweise \u201Ebesser aufgehoben\u201C in weniger belastenden Berufen.
+    Solche Aussagen klingen unterst\xFCtzend, bewirken aber das Gegenteil, indem
+    sie Frauen subtil aus anspruchsvollen Karrierewegen herausdr\xE4ngen."

@@ -10,30 +10,35 @@ using UnityEngine.UI;
 
 namespace Assets._Scripts.Controller.SceneControllers
 {
+    /// <summary>
+    /// Manages the Bookmarked Novels Scene by initializing and handling the visual novels marked as favorite.
+    /// Responsible for managing the user interaction and displaying relevant bookmarked novels.
+    /// </summary>
     public class BookmarkedNovelsSceneController : SceneController
     {
         [SerializeField] private RectTransform visualNovelHolder;
         [SerializeField] private Button bankkreditNovel;
         [SerializeField] private Button investorNovel;
-        [SerializeField] private Button bankkontoNovel;
-        [SerializeField] private Button foerderAntragNovel;
         [SerializeField] private Button elternNovel;
         [SerializeField] private Button notarinNovel;
         [SerializeField] private Button presseNovel;
         [SerializeField] private Button bueroNovel;
-        [SerializeField] private Button gruenderZuschussNovel;
         [SerializeField] private Button honorarNovel;
-        [SerializeField] private Button lebenspartnerNovel;
-        [SerializeField] private Button introNovel;
 
         [SerializeField] private GameObject selectNovelSoundPrefab;
 
         private Dictionary<VisualNovelNames, Button> _novelButtons;
 
+        /// <summary>
+        /// Initializes the bookmarked novels scene by setting up the back stack, mapping novel buttons to visual novel names,
+        /// adding listener events to buttons, hiding all buttons by default, and populating the UI based on favorite visual novels.
+        /// </summary>
         public void Start()
         {
+            // Add current scene to back stack for navigation
             BackStackManager.Instance().Push(SceneNames.BookmarkedNovelsScene);
             
+            // Initialize dictionary mapping novel names to UI buttons
             _novelButtons = new Dictionary<VisualNovelNames, Button>
             {
                 { VisualNovelNames.BankKreditNovel, bankkreditNovel },
@@ -43,28 +48,29 @@ namespace Assets._Scripts.Controller.SceneControllers
                 { VisualNovelNames.PresseNovel, presseNovel },
                 { VisualNovelNames.VermieterNovel, bueroNovel },
                 { VisualNovelNames.HonorarNovel, honorarNovel },
-                { VisualNovelNames.EinstiegsNovel, introNovel }
             };
 
+            // Add click listeners and hide all novel buttons initially
             foreach (var novelButton in _novelButtons)
             {
                 novelButton.Value.onClick.AddListener(() => OnNovelButton(novelButton.Key));
                 novelButton.Value.gameObject.SetActive(false);
             }
             
-            // Holen Sie sich alle Kite Novels und erstellen Sie ein Dictionary für schnellen Zugriff
+            // Get all available novels and create a lookup by ID
             List<VisualNovel> allKiteNovels = KiteNovelManager.Instance().GetAllKiteNovels();
             Dictionary<long, VisualNovel> allKiteNovelsById = allKiteNovels.ToDictionary(novel => novel.id);
 
-
+            // Get a list of favorited novel IDs
             List<long> favoriteIds = FavoritesManager.Instance().GetFavoritesIds();
             int index = 0;
 
+            // Process each favorite novel
             foreach (long id in favoriteIds)
             {
-                // Versuchen Sie, das VisualNovel-Objekt anhand der ID zu finden
                 if (allKiteNovelsById.TryGetValue(id, out VisualNovel foundNovel))
                 {
+                    // Get the button instance for this novel
                     GameObject novelButtonInstance = GetNovelById(id);
 
                     if (novelButtonInstance == null)
@@ -73,15 +79,15 @@ namespace Assets._Scripts.Controller.SceneControllers
                         continue;
                     }
 
+                    // Position and show the button
                     Vector3 localPosition = GetLocalPositionByIndex(index);
                     novelButtonInstance.transform.localPosition = localPosition;
                     novelButtonInstance.gameObject.SetActive(true);
 
-                    // Hier setzen wir den Text basierend auf der foundNovel
+                    // Set the button text
                     TextMeshProUGUI novelText = novelButtonInstance.gameObject.GetComponentInChildren<TextMeshProUGUI>();
                     if (novelText != null)
                     {
-                        // Verwenden Sie 'designation' für KiteNovels und 'title' für andere
                         novelText.text = foundNovel.isKiteNovel ? foundNovel.designation : foundNovel.title;
                     }
                     else
@@ -97,9 +103,14 @@ namespace Assets._Scripts.Controller.SceneControllers
                 }
             }
             
+            // Adjust the height of the visual novel holder based on number of novels
             SetVisualNovelHolderHeight(index);
         }
 
+        /// <summary>
+        /// Sets the height of the visual novel holder based on the number of visual novels displayed.
+        /// </summary>
+        /// <param name="index">The count of visual novels to determine the height of the holder.</param>
         private void SetVisualNovelHolderHeight(int index)
         {
             float height = index switch
@@ -117,6 +128,11 @@ namespace Assets._Scripts.Controller.SceneControllers
             visualNovelHolder.GetComponent<LayoutElement>().preferredHeight = height;
         }
 
+        /// <summary>
+        /// Returns the local position of a UI element based on its index.
+        /// </summary>
+        /// <param name="index">The index for which the local position is to be calculated.</param>
+        /// <returns>A <see cref="Vector3"/> representing the local position corresponding to the specified index.</returns>
         private static Vector3 GetLocalPositionByIndex(int index)
         {
             return index switch
@@ -137,12 +153,21 @@ namespace Assets._Scripts.Controller.SceneControllers
             };
         }
 
+        /// <summary>
+        /// Retrieves the GameObject representing the novel button associated with the specified novel ID.
+        /// </summary>
+        /// <param name="id">The unique identifier of the visual novel to locate the corresponding button.</param>
+        /// <returns>The GameObject of the novel button if found; otherwise, null.</returns>
         private GameObject GetNovelById(long id)
         {
             VisualNovelNames visualNovelName = VisualNovelNamesHelper.ValueOf((int)id);
             return _novelButtons.TryGetValue(visualNovelName, out var button) ? button.gameObject : null;
         }
 
+        /// <summary>
+        /// Handles the process of loading and preparing the selected visual novel for play.
+        /// </summary>
+        /// <param name="visualNovelName">The name of the visual novel to be loaded and played.</param>
         private void OnNovelButton(VisualNovelNames visualNovelName)
         {
             VisualNovel visualNovelToDisplay = null;

@@ -8,68 +8,96 @@ namespace Assets._Scripts.Managers
 {
     public class EventSystemManager : MonoBehaviour
     {
-        // Hilfsklasse, um die EventSystems pro Szene zu speichern
-        class SceneEntry
+        /// <summary>
+        /// Represents an entry corresponding to a scene and its associated event systems.
+        /// </summary>
+        private class SceneEntry
         {
-            public Scene scene;
-            public List<EventSystem> systems;
+            public Scene Scene;
+            public List<EventSystem> Systems;
         }
 
-        // Stack aller Szenen mit ihren EventSystems (Index 0 = Hauptszene, dann additiv)
+        // Stack of all scenes with their event systems (index 0 = main scene, then additive)
         private readonly List<SceneEntry> _sceneStack = new List<SceneEntry>();
 
-        void Awake()
+        /// <summary>
+        /// Initializes the EventSystemManager instance.
+        /// Ensures the object is not destroyed on scene load, gathers all EventSystems
+        /// in the initially active scene, and subscribes to scene load and unload events
+        /// to handle EventSystem management across additive scenes.
+        /// </summary>
+        private void Awake()
         {
-            // Nie zerstören beim Szenenwechsel
+            // Never destroy on scene change
             DontDestroyOnLoad(gameObject);
 
-            // 1) Initial: alle EventSystems in der aktiven (Haupt-)Szene sammeln
+            // 1) Initially: collect all EventSystems in the active (main) scene
             Scene initial = SceneManager.GetActiveScene();
             var initialSystems = FindEventSystemsInScene(initial);
-            _sceneStack.Add(new SceneEntry { scene = initial, systems = initialSystems });
+            _sceneStack.Add(new SceneEntry { Scene = initial, Systems = initialSystems });
 
-            // 2) Auflade- und Entlade-Events abonnieren
+            // 2) Subscribe to scene load and unload events
             SceneManager.sceneLoaded   += OnSceneLoaded;
             SceneManager.sceneUnloaded += OnSceneUnloaded;
         }
 
-        // Wenn eine Szene additiv geladen wird:
+        /// <summary>
+        /// Handles logic when a scene is loaded in additive mode.
+        /// Disables all EventSystems in previously loaded scenes,
+        /// activates all EventSystems in the newly loaded scene,
+        /// and updates the scene stack with the new scene and its associated EventSystems.
+        /// </summary>
+        /// <param name="scene">The scene that was loaded.</param>
+        /// <param name="mode">The load mode of the scene. This method only performs actions if the mode is additive.</param>
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             if (mode != LoadSceneMode.Additive)
                 return;
-
-            // 1) Deaktiviere alle bisherigen EventSystems
+        
+            // 1) Disable all existing EventSystems
             foreach (var entry in _sceneStack)
-            foreach (var es in entry.systems)
+            foreach (var es in entry.Systems)
                 if (es != null) es.enabled = false;
-
-            // 2) Finde und aktiviere alle EventSystems der neuen Szene
+        
+            // 2) Find and activate all EventSystems in the new scene
             var newSystems = FindEventSystemsInScene(scene);
             foreach (var es in newSystems)
                 es.enabled = true;
-
-            // 3) Szene + ihre EventSystems oben auf den Stack legen
-            _sceneStack.Add(new SceneEntry { scene = scene, systems = newSystems });
+        
+            // 3) Add the scene and its EventSystems to top of the stack
+            _sceneStack.Add(new SceneEntry { Scene = scene, Systems = newSystems });
         }
 
-        // Wenn eine Szene entladen wird:
+        /// <summary>
+        /// Handles logic when a scene is unloaded.
+        /// Removes the corresponding entry for the unloaded scene from the internal scene stack
+        /// and reactivates the EventSystems of the last remaining scene in the stack, if any.
+        /// </summary>
+        /// <param name="scene">The scene that has been unloaded.</param>
         private void OnSceneUnloaded(Scene scene)
         {
-            // 1) Entferne den entsprechenden Stack-Eintrag
-            var entry = _sceneStack.FirstOrDefault(e => e.scene == scene);
+            // 1) Remove the corresponding stack entry
+            var entry = _sceneStack.FirstOrDefault(e => e.Scene == scene);
             if (entry != null)
                 _sceneStack.Remove(entry);
 
-            // 2) Reaktiviere die EventSystems der letzten verbliebenen Szene
+            // 2) Reactivate the EventSystems of the last remaining scene
             var top = _sceneStack.LastOrDefault();
+            
             if (top == null) return;
-            foreach (var es in top.systems)
+            
+            foreach (var es in top.Systems)
                 if (es != null)
                     es.enabled = true;
         }
 
-        // Hilfsmethode: alle EventSystems in einer Szene finden
+        /// <summary>
+        /// Retrieves all EventSystem components present in the specified scene.
+        /// Searches through all root GameObjects and their children to gather active
+        /// and inactive EventSystem components.
+        /// </summary>
+        /// <param name="scene">The scene to search for EventSystem components.</param>
+        /// <returns>A list of EventSystem components found in the specified scene.</returns>
         private List<EventSystem> FindEventSystemsInScene(Scene scene)
         {
             var roots = scene.GetRootGameObjects();
@@ -78,9 +106,12 @@ namespace Assets._Scripts.Managers
                 .ToList();
         }
 
-        void OnDestroy()
+        /// <summary>
+        /// Unsubscribes from the scene load and unload events managed by the SceneManager.
+        /// Ensures that no lingering references remain, preventing potential memory leaks or unintended behavior.
+        /// </summary>
+        private void OnDestroy()
         {
-            // Events sauber abmelden
             SceneManager.sceneLoaded   -= OnSceneLoaded;
             SceneManager.sceneUnloaded -= OnSceneUnloaded;
         }

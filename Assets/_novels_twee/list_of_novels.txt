@@ -1,5 +1,13 @@
 {
   "visualNovels": [
-    "_novels_twee\\AI_TRAQC"
+    "_novels_twee\\AI_TRAQC",
+    "_novels_twee\\Einstieg",
+    "_novels_twee\\Eltern",
+    "_novels_twee\\Honorar",
+    "_novels_twee\\Investor",
+    "_novels_twee\\Kreditantrag",
+    "_novels_twee\\Notarin",
+    "_novels_twee\\Presse",
+    "_novels_twee\\Vermieter",
   ]
 }

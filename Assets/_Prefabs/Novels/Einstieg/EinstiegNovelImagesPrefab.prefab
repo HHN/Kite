@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 6704600108708975586}
   - component: {fileID: 6223790406291183613}
   m_Layer: 6
-  m_Name: Background Container
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,7 +197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5316091976446384908}
   m_Layer: 6
-  m_Name: Desk Container
+  m_Name: DecoDesk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 1535315102825623083}
   - component: {fileID: 4192368680822077079}
   m_Layer: 6
-  m_Name: Character Container
+  m_Name: CharacterContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

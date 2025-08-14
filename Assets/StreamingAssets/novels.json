@@ -5,7 +5,7 @@
             "folderName": "",
             "title": "Vertrieb (AI_TRAQC)",
             "designation": "Vertrieb (AI_TRAQC)",
-            "description": "Im Rahmen Deiner Aufgabe, KI in der Firma einzuführen, gehst du bei einem Mitarbeiter aus Vertrieb und Marketing vorbei, um mögliche Einsatzbereiche und Potenziale zu besprechen.",
+            "description": "Im Rahmen deiner Aufgabe, KI in der Firma einzuführen, gehst du bei einem Mitarbeiter aus Vertrieb und Marketing vorbei, um mögliche Einsatzbereiche und Potenziale zu besprechen.",
             "feedback": "",
             "context": "",
             "novelEvents": [
@@ -5990,6 +5990,12 @@
                 "g": 0.10196078568696976,
                 "b": 0.18039216101169587,
                 "a": 1.0
+            },
+            "novelFrameColor": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 1.0
             }
         },
         {
@@ -6033,7 +6039,7 @@
                 },
                 {
                     "id": "Willkommen",
-                    "nextId": "OptionsLabel1",
+                    "nextId": "OptionsLabel39",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -6062,8 +6068,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel1",
-                    "nextId": "OptionsLabel1OptionsLabel1",
+                    "id": "OptionsLabel39",
+                    "nextId": "OptionsLabel39OptionsLabel39",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -6092,8 +6098,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel1OptionsLabel1",
-                    "nextId": "OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1",
+                    "id": "OptionsLabel39OptionsLabel39",
+                    "nextId": "OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39",
                     "onChoice": "Mehr über die App",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -6122,8 +6128,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1",
-                    "nextId": "OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1",
+                    "id": "OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39",
+                    "nextId": "OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39",
                     "onChoice": "Nicht-Gründerin Einstieg",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -6152,7 +6158,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1",
+                    "id": "OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39OptionsLabel39",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -6213,7 +6219,7 @@
                 },
                 {
                     "id": "Abkuerzung0",
-                    "nextId": "OptionsLabel2",
+                    "nextId": "OptionsLabel40",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -6242,8 +6248,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel2",
-                    "nextId": "OptionsLabel2OptionsLabel2",
+                    "id": "OptionsLabel40",
+                    "nextId": "OptionsLabel40OptionsLabel40",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -6272,8 +6278,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel2OptionsLabel2",
-                    "nextId": "OptionsLabel2OptionsLabel2OptionsLabel2OptionsLabel2",
+                    "id": "OptionsLabel40OptionsLabel40",
+                    "nextId": "OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40",
                     "onChoice": "KI Rolle",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -6302,7 +6308,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel2OptionsLabel2OptionsLabel2OptionsLabel2",
+                    "id": "OptionsLabel40OptionsLabel40OptionsLabel40OptionsLabel40",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -6363,7 +6369,7 @@
                 },
                 {
                     "id": "Beispiel Spielsituation0",
-                    "nextId": "OptionsLabel3",
+                    "nextId": "OptionsLabel41",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -6392,8 +6398,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel3",
-                    "nextId": "OptionsLabel3OptionsLabel3",
+                    "id": "OptionsLabel41",
+                    "nextId": "OptionsLabel41OptionsLabel41",
                     "onChoice": "Bias Beispiel",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -6422,8 +6428,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel3OptionsLabel3",
-                    "nextId": "OptionsLabel3OptionsLabel3OptionsLabel3OptionsLabel3",
+                    "id": "OptionsLabel41OptionsLabel41",
+                    "nextId": "OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -6452,7 +6458,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel3OptionsLabel3OptionsLabel3OptionsLabel3",
+                    "id": "OptionsLabel41OptionsLabel41OptionsLabel41OptionsLabel41",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -6513,7 +6519,7 @@
                 },
                 {
                     "id": "Bias Beispiel0",
-                    "nextId": "OptionsLabel4",
+                    "nextId": "OptionsLabel42",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -6542,8 +6548,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel4",
-                    "nextId": "OptionsLabel4OptionsLabel4",
+                    "id": "OptionsLabel42",
+                    "nextId": "OptionsLabel42OptionsLabel42",
                     "onChoice": "Noch eine Frage",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -6572,8 +6578,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel4OptionsLabel4",
-                    "nextId": "OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4",
+                    "id": "OptionsLabel42OptionsLabel42",
+                    "nextId": "OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -6602,7 +6608,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4",
+                    "id": "OptionsLabel42OptionsLabel42OptionsLabel42OptionsLabel42",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -6633,7 +6639,7 @@
                 },
                 {
                     "id": "KI Resilienz",
-                    "nextId": "OptionsLabel5",
+                    "nextId": "OptionsLabel43",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -6662,8 +6668,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel5",
-                    "nextId": "OptionsLabel5OptionsLabel5",
+                    "id": "OptionsLabel43",
+                    "nextId": "OptionsLabel43OptionsLabel43",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -6692,8 +6698,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel5OptionsLabel5",
-                    "nextId": "OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5",
+                    "id": "OptionsLabel43OptionsLabel43",
+                    "nextId": "OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43",
                     "onChoice": "Mehr über die App",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -6722,7 +6728,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5",
+                    "id": "OptionsLabel43OptionsLabel43OptionsLabel43OptionsLabel43",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -6783,7 +6789,7 @@
                 },
                 {
                     "id": "KI Rolle0",
-                    "nextId": "OptionsLabel6",
+                    "nextId": "OptionsLabel44",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -6812,8 +6818,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel6",
-                    "nextId": "OptionsLabel6OptionsLabel6",
+                    "id": "OptionsLabel44",
+                    "nextId": "OptionsLabel44OptionsLabel44",
                     "onChoice": "Projekt Ziel",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -6842,8 +6848,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel6OptionsLabel6",
-                    "nextId": "OptionsLabel6OptionsLabel6OptionsLabel6OptionsLabel6",
+                    "id": "OptionsLabel44OptionsLabel44",
+                    "nextId": "OptionsLabel44OptionsLabel44OptionsLabel44OptionsLabel44",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -6872,7 +6878,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel6OptionsLabel6OptionsLabel6OptionsLabel6",
+                    "id": "OptionsLabel44OptionsLabel44OptionsLabel44OptionsLabel44",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -6933,7 +6939,7 @@
                 },
                 {
                     "id": "Letzter Schritt0",
-                    "nextId": "OptionsLabel7",
+                    "nextId": "OptionsLabel45",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -6962,8 +6968,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel7",
-                    "nextId": "OptionsLabel7OptionsLabel7",
+                    "id": "OptionsLabel45",
+                    "nextId": "OptionsLabel45OptionsLabel45",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -6992,8 +6998,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel7OptionsLabel7",
-                    "nextId": "OptionsLabel7OptionsLabel7OptionsLabel7OptionsLabel7",
+                    "id": "OptionsLabel45OptionsLabel45",
+                    "nextId": "OptionsLabel45OptionsLabel45OptionsLabel45OptionsLabel45",
                     "onChoice": "Mehr über die App",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -7022,7 +7028,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel7OptionsLabel7OptionsLabel7OptionsLabel7",
+                    "id": "OptionsLabel45OptionsLabel45OptionsLabel45OptionsLabel45",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -7083,7 +7089,7 @@
                 },
                 {
                     "id": "Mehr Details0",
-                    "nextId": "OptionsLabel8",
+                    "nextId": "OptionsLabel46",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -7112,8 +7118,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel8",
-                    "nextId": "OptionsLabel8OptionsLabel8",
+                    "id": "OptionsLabel46",
+                    "nextId": "OptionsLabel46OptionsLabel46",
                     "onChoice": "Beispiel Spielsituation",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -7142,8 +7148,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel8OptionsLabel8",
-                    "nextId": "OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8",
+                    "id": "OptionsLabel46OptionsLabel46",
+                    "nextId": "OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46",
                     "onChoice": "Was ist KITEII",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -7172,8 +7178,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8",
-                    "nextId": "OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8",
+                    "id": "OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46",
+                    "nextId": "OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -7202,7 +7208,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8",
+                    "id": "OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46OptionsLabel46",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -7263,7 +7269,7 @@
                 },
                 {
                     "id": "Mehr Funktionen0",
-                    "nextId": "OptionsLabel9",
+                    "nextId": "OptionsLabel47",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -7292,8 +7298,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel9",
-                    "nextId": "OptionsLabel9OptionsLabel9",
+                    "id": "OptionsLabel47",
+                    "nextId": "OptionsLabel47OptionsLabel47",
                     "onChoice": "Weitere Infos",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -7322,8 +7328,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel9OptionsLabel9",
-                    "nextId": "OptionsLabel9OptionsLabel9OptionsLabel9OptionsLabel9",
+                    "id": "OptionsLabel47OptionsLabel47",
+                    "nextId": "OptionsLabel47OptionsLabel47OptionsLabel47OptionsLabel47",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -7352,7 +7358,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel9OptionsLabel9OptionsLabel9OptionsLabel9",
+                    "id": "OptionsLabel47OptionsLabel47OptionsLabel47OptionsLabel47",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -7413,7 +7419,7 @@
                 },
                 {
                     "id": "Mehr über die App0",
-                    "nextId": "OptionsLabel10",
+                    "nextId": "OptionsLabel48",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -7442,8 +7448,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel10",
-                    "nextId": "OptionsLabel10OptionsLabel10",
+                    "id": "OptionsLabel48",
+                    "nextId": "OptionsLabel48OptionsLabel48",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -7472,8 +7478,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel10OptionsLabel10",
-                    "nextId": "OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10",
+                    "id": "OptionsLabel48OptionsLabel48",
+                    "nextId": "OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48",
                     "onChoice": "Mehr Details",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -7502,8 +7508,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10",
-                    "nextId": "OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10",
+                    "id": "OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48",
+                    "nextId": "OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48",
                     "onChoice": "Nicht-Gründerin Einstieg",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -7532,7 +7538,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10",
+                    "id": "OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48OptionsLabel48",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -7593,7 +7599,7 @@
                 },
                 {
                     "id": "Nicht-Gründerin Details0",
-                    "nextId": "OptionsLabel11",
+                    "nextId": "OptionsLabel49",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -7622,8 +7628,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel11",
-                    "nextId": "OptionsLabel11OptionsLabel11",
+                    "id": "OptionsLabel49",
+                    "nextId": "OptionsLabel49OptionsLabel49",
                     "onChoice": "Nicht-Gründerin Instruktionen",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -7652,8 +7658,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel11OptionsLabel11",
-                    "nextId": "OptionsLabel11OptionsLabel11OptionsLabel11OptionsLabel11",
+                    "id": "OptionsLabel49OptionsLabel49",
+                    "nextId": "OptionsLabel49OptionsLabel49OptionsLabel49OptionsLabel49",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -7682,7 +7688,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel11OptionsLabel11OptionsLabel11OptionsLabel11",
+                    "id": "OptionsLabel49OptionsLabel49OptionsLabel49OptionsLabel49",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -7743,7 +7749,7 @@
                 },
                 {
                     "id": "Nicht-Gründerin Einstieg0",
-                    "nextId": "OptionsLabel12",
+                    "nextId": "OptionsLabel50",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -7772,8 +7778,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel12",
-                    "nextId": "OptionsLabel12OptionsLabel12",
+                    "id": "OptionsLabel50",
+                    "nextId": "OptionsLabel50OptionsLabel50",
                     "onChoice": "Nicht-Gründerin Details",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -7802,8 +7808,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel12OptionsLabel12",
-                    "nextId": "OptionsLabel12OptionsLabel12OptionsLabel12OptionsLabel12",
+                    "id": "OptionsLabel50OptionsLabel50",
+                    "nextId": "OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -7832,7 +7838,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel12OptionsLabel12OptionsLabel12OptionsLabel12",
+                    "id": "OptionsLabel50OptionsLabel50OptionsLabel50OptionsLabel50",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -7863,7 +7869,7 @@
                 },
                 {
                     "id": "Nicht-Gründerin Instruktionen",
-                    "nextId": "OptionsLabel13",
+                    "nextId": "OptionsLabel51",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -7892,8 +7898,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel13",
-                    "nextId": "OptionsLabel13OptionsLabel13",
+                    "id": "OptionsLabel51",
+                    "nextId": "OptionsLabel51OptionsLabel51",
                     "onChoice": "Mehr Details",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -7922,8 +7928,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel13OptionsLabel13",
-                    "nextId": "OptionsLabel13OptionsLabel13OptionsLabel13OptionsLabel13",
+                    "id": "OptionsLabel51OptionsLabel51",
+                    "nextId": "OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -7952,7 +7958,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel13OptionsLabel13OptionsLabel13OptionsLabel13",
+                    "id": "OptionsLabel51OptionsLabel51OptionsLabel51OptionsLabel51",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -8013,7 +8019,7 @@
                 },
                 {
                     "id": "Nicht-Gründerinnen0",
-                    "nextId": "OptionsLabel14",
+                    "nextId": "OptionsLabel52",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -8042,8 +8048,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel14",
-                    "nextId": "OptionsLabel14OptionsLabel14",
+                    "id": "OptionsLabel52",
+                    "nextId": "OptionsLabel52OptionsLabel52",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -8072,8 +8078,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel14OptionsLabel14",
-                    "nextId": "OptionsLabel14OptionsLabel14OptionsLabel14OptionsLabel14",
+                    "id": "OptionsLabel52OptionsLabel52",
+                    "nextId": "OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52",
                     "onChoice": "Statistik",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -8102,7 +8108,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel14OptionsLabel14OptionsLabel14OptionsLabel14",
+                    "id": "OptionsLabel52OptionsLabel52OptionsLabel52OptionsLabel52",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -8163,7 +8169,7 @@
                 },
                 {
                     "id": "Noch eine Frage0",
-                    "nextId": "OptionsLabel15",
+                    "nextId": "OptionsLabel53",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -8192,8 +8198,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel15",
-                    "nextId": "OptionsLabel15OptionsLabel15",
+                    "id": "OptionsLabel53",
+                    "nextId": "OptionsLabel53OptionsLabel53",
                     "onChoice": "Mehr Funktionen",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -8222,8 +8228,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel15OptionsLabel15",
-                    "nextId": "OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15",
+                    "id": "OptionsLabel53OptionsLabel53",
+                    "nextId": "OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -8252,7 +8258,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15",
+                    "id": "OptionsLabel53OptionsLabel53OptionsLabel53OptionsLabel53",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -8343,7 +8349,7 @@
                 },
                 {
                     "id": "Projekt Ziel01",
-                    "nextId": "OptionsLabel16",
+                    "nextId": "OptionsLabel54",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -8372,8 +8378,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel16",
-                    "nextId": "OptionsLabel16OptionsLabel16",
+                    "id": "OptionsLabel54",
+                    "nextId": "OptionsLabel54OptionsLabel54",
                     "onChoice": "Statistik",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -8402,8 +8408,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel16OptionsLabel16",
-                    "nextId": "OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16",
+                    "id": "OptionsLabel54OptionsLabel54",
+                    "nextId": "OptionsLabel54OptionsLabel54OptionsLabel54OptionsLabel54",
                     "onChoice": "Nicht-Gründerinnen",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -8432,8 +8438,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16",
-                    "nextId": "OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16",
+                    "id": "OptionsLabel54OptionsLabel54OptionsLabel54OptionsLabel54",
+                    "nextId": "OptionsLabel54OptionsLabel54OptionsLabel54OptionsLabel54OptionsLabel54OptionsLabel54OptionsLabel54OptionsLabel54",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -8462,7 +8468,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16",
+                    "id": "OptionsLabel54OptionsLabel54OptionsLabel54OptionsLabel54OptionsLabel54OptionsLabel54OptionsLabel54OptionsLabel54",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -8613,7 +8619,7 @@
                 },
                 {
                     "id": "Statistik0",
-                    "nextId": "OptionsLabel17",
+                    "nextId": "OptionsLabel55",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -8642,8 +8648,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel17",
-                    "nextId": "OptionsLabel17OptionsLabel17",
+                    "id": "OptionsLabel55",
+                    "nextId": "OptionsLabel55OptionsLabel55",
                     "onChoice": "KI Resilienz",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -8672,8 +8678,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel17OptionsLabel17",
-                    "nextId": "OptionsLabel17OptionsLabel17OptionsLabel17OptionsLabel17",
+                    "id": "OptionsLabel55OptionsLabel55",
+                    "nextId": "OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -8702,7 +8708,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel17OptionsLabel17OptionsLabel17OptionsLabel17",
+                    "id": "OptionsLabel55OptionsLabel55OptionsLabel55OptionsLabel55",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -8763,7 +8769,7 @@
                 },
                 {
                     "id": "Was ist KITEII0",
-                    "nextId": "OptionsLabel18",
+                    "nextId": "OptionsLabel56",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -8792,8 +8798,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel18",
-                    "nextId": "OptionsLabel18OptionsLabel18",
+                    "id": "OptionsLabel56",
+                    "nextId": "OptionsLabel56OptionsLabel56",
                     "onChoice": "Wer KITE II",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -8822,8 +8828,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel18OptionsLabel18",
-                    "nextId": "OptionsLabel18OptionsLabel18OptionsLabel18OptionsLabel18",
+                    "id": "OptionsLabel56OptionsLabel56",
+                    "nextId": "OptionsLabel56OptionsLabel56OptionsLabel56OptionsLabel56",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -8852,7 +8858,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel18OptionsLabel18OptionsLabel18OptionsLabel18",
+                    "id": "OptionsLabel56OptionsLabel56OptionsLabel56OptionsLabel56",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -8913,7 +8919,7 @@
                 },
                 {
                     "id": "Weitere Infos0",
-                    "nextId": "OptionsLabel19",
+                    "nextId": "OptionsLabel57",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -8942,8 +8948,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel19",
-                    "nextId": "OptionsLabel19OptionsLabel19",
+                    "id": "OptionsLabel57",
+                    "nextId": "OptionsLabel57OptionsLabel57",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -8972,8 +8978,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel19OptionsLabel19",
-                    "nextId": "OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19",
+                    "id": "OptionsLabel57OptionsLabel57",
+                    "nextId": "OptionsLabel57OptionsLabel57OptionsLabel57OptionsLabel57",
                     "onChoice": "Zusammenfassung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -9002,7 +9008,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19",
+                    "id": "OptionsLabel57OptionsLabel57OptionsLabel57OptionsLabel57",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -9063,7 +9069,7 @@
                 },
                 {
                     "id": "Wer KITE II0",
-                    "nextId": "OptionsLabel20",
+                    "nextId": "OptionsLabel58",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -9092,8 +9098,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel20",
-                    "nextId": "OptionsLabel20OptionsLabel20",
+                    "id": "OptionsLabel58",
+                    "nextId": "OptionsLabel58OptionsLabel58",
                     "onChoice": "KI Rolle",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -9122,8 +9128,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel20OptionsLabel20",
-                    "nextId": "OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20",
+                    "id": "OptionsLabel58OptionsLabel58",
+                    "nextId": "OptionsLabel58OptionsLabel58OptionsLabel58OptionsLabel58",
                     "onChoice": "Abkuerzung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -9152,8 +9158,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20",
-                    "nextId": "OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20",
+                    "id": "OptionsLabel58OptionsLabel58OptionsLabel58OptionsLabel58",
+                    "nextId": "OptionsLabel58OptionsLabel58OptionsLabel58OptionsLabel58OptionsLabel58OptionsLabel58OptionsLabel58OptionsLabel58",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -9182,7 +9188,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20",
+                    "id": "OptionsLabel58OptionsLabel58OptionsLabel58OptionsLabel58OptionsLabel58OptionsLabel58OptionsLabel58OptionsLabel58",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -9243,7 +9249,7 @@
                 },
                 {
                     "id": "Zusammenfassung0",
-                    "nextId": "OptionsLabel21",
+                    "nextId": "OptionsLabel59",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -9272,8 +9278,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel21",
-                    "nextId": "OptionsLabel21OptionsLabel21",
+                    "id": "OptionsLabel59",
+                    "nextId": "OptionsLabel59OptionsLabel59",
                     "onChoice": "Spielstart",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -9302,8 +9308,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel21OptionsLabel21",
-                    "nextId": "OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21",
+                    "id": "OptionsLabel59OptionsLabel59",
+                    "nextId": "OptionsLabel59OptionsLabel59OptionsLabel59OptionsLabel59",
                     "onChoice": "Letzter Schritt",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -9332,7 +9338,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21",
+                    "id": "OptionsLabel59OptionsLabel59OptionsLabel59OptionsLabel59",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -9368,9 +9374,15 @@
             ],
             "isKiteNovel": true,
             "novelColor": {
-                "r": 0.32549020648002627,
-                "g": 0.125490203499794,
-                "b": 0.32549020648002627,
+                "r": 0.6666666865348816,
+                "g": 0.10980392247438431,
+                "b": 0.007843137718737126,
+                "a": 1.0
+            },
+            "novelFrameColor": {
+                "r": 0.8156862854957581,
+                "g": 0.2980392277240753,
+                "b": 0.0117647061124444,
                 "a": 1.0
             }
         },
@@ -9561,7 +9573,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Verzerrungen gegenüber Frauen mit Kindern"
+                    "relevantBias": "Maternal Bias"
                 },
                 {
                     "id": "Altes Denken012",
@@ -9741,7 +9753,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
                     "id": "Besorgt-Negativ II",
@@ -9801,7 +9813,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
                     "id": "OptionsLabel61",
@@ -10011,7 +10023,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Verzerrung in der Wahrnehmung von Führungsfähigkeiten"
+                    "relevantBias": "Bias in der Wahrnehmung von Führungsfähigkeiten"
                 },
                 {
                     "id": "OptionsLabel62",
@@ -10191,7 +10203,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Verzerrung in der Wahrnehmung von Führungsfähigkeiten"
+                    "relevantBias": "Bias in der Wahrnehmung von Führungsfähigkeiten"
                 },
                 {
                     "id": "OptionsLabel63",
@@ -10431,7 +10443,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Zugang zu Finanzierung"
+                    "relevantBias": "Finanzierungszugang"
                 },
                 {
                     "id": "OptionsLabel64",
@@ -10611,7 +10623,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Erwartungen bezüglich Familienplanung"
+                    "relevantBias": "Erwartungshaltung bezüglich Familienplanung"
                 },
                 {
                     "id": "OptionsLabel65",
@@ -10941,7 +10953,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Verzerrungen gegenüber Frauen mit Kindern"
+                    "relevantBias": "Maternal Bias"
                 },
                 {
                     "id": "Kein Kind: Sexismus01",
@@ -11181,7 +11193,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
                     "id": "OptionsLabel68",
@@ -11391,7 +11403,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Verzerrungen gegenüber Frauen mit Kindern"
+                    "relevantBias": "Maternal Bias"
                 },
                 {
                     "id": "OptionsLabel69",
@@ -11631,7 +11643,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Sozioökonomische Verzerrungen"
+                    "relevantBias": "SocioeconomicBiases"
                 },
                 {
                     "id": "OptionsLabel70",
@@ -11811,7 +11823,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Verzerrung in der Wahrnehmung von Führungsfähigkeiten"
+                    "relevantBias": "Bias in der Wahrnehmung von Führungsfähigkeiten"
                 },
                 {
                     "id": "Meine Entscheidung II",
@@ -11871,7 +11883,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Erwartungen bezüglich Familienplanung"
+                    "relevantBias": "Erwartungshaltung bezüglich Familienplanung"
                 },
                 {
                     "id": "OptionsLabel71",
@@ -12231,7 +12243,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Verzerrung in der Wahrnehmung von Führungsfähigkeiten"
+                    "relevantBias": "Bias in der Wahrnehmung von Führungsfähigkeiten"
                 },
                 {
                     "id": "OptionsLabel73",
@@ -13581,7 +13593,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Tightrope Bias"
+                    "relevantBias": "Doppelte Bindung (Tightrope Bias)"
                 },
                 {
                     "id": "OptionsLabel78",
@@ -14271,7 +14283,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
                     "id": "OptionsLabel82",
@@ -15051,7 +15063,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Erwartungen bezüglich Familienplanung"
+                    "relevantBias": "Erwartungshaltung bezüglich Familienplanung"
                 },
                 {
                     "id": "OptionsLabel85",
@@ -15155,6 +15167,12 @@
                 "g": 0.3960784375667572,
                 "b": 0.054901961237192157,
                 "a": 1.0
+            },
+            "novelFrameColor": {
+                "r": 0.2980392277240753,
+                "g": 0.6039215922355652,
+                "b": 0.1882352977991104,
+                "a": 1.0
             }
         },
         {
@@ -15164,7 +15182,7 @@
             "designation": "Honorar verhandeln",
             "description": "Du bist in Kontakt mit einer Kundin gekommen. Nachdem geklärt wurde, dass deine angebotenen Leistungen zu den Anforderungen deines Gegenübers passen, geht es nun um die Honorarverhandlung.",
             "feedback": "",
-            "context": "Es ist das Gespräch einer Gründerin, Lea, mit einer Kundin. Es geht um die Verhandlung eines Preises. Die Gründerin ist bereit mit ihrem Unternehmen die gewünschte Leistung zu erbringen und hofft auf die Einigung auf eine angemessene Entlohnung. ",
+            "context": "Es ist das Gespräch einer Gründerin mit einer Kundin. Es geht um die Verhandlung eines Preises. Die Gründerin ist bereit mit ihrem Unternehmen die gewünschte Leistung zu erbringen und hofft auf die Einigung auf eine angemessene Entlohnung.",
             "novelEvents": [
                 {
                     "id": "InitialCharacterJoinsEvent001",
@@ -16364,7 +16382,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
                     "id": "OptionsLabel94",
@@ -16514,7 +16532,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
                     "id": "OptionsLabel95",
@@ -16664,7 +16682,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
                     "id": "OptionsLabel96",
@@ -16844,7 +16862,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
                     "id": "OptionsLabel97",
@@ -17564,7 +17582,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggression"
+                    "relevantBias": "Mikroaggressionen"
                 },
                 {
                     "id": "OptionsLabel102",
@@ -17714,7 +17732,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggression"
+                    "relevantBias": "Mikroaggressionen"
                 },
                 {
                     "id": "OptionsLabel103",
@@ -17864,7 +17882,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
                     "id": "OptionsLabel104",
@@ -18014,7 +18032,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Stereotypen über Frauen in nicht traditionellen Branchen"
+                    "relevantBias": "StereotypesAboutWomenInNonTraditionalIndustries"
                 },
                 {
                     "id": "OptionsLabel105",
@@ -18164,7 +18182,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Stereotypen über Frauen in nicht traditionellen Branchen"
+                    "relevantBias": "StereotypesAboutWomenInNonTraditionalIndustries"
                 },
                 {
                     "id": "OptionsLabel106",
@@ -18314,7 +18332,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggression"
+                    "relevantBias": "Mikroaggressionen"
                 },
                 {
                     "id": "OptionsLabel107",
@@ -18494,7 +18512,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggression"
+                    "relevantBias": "Mikroaggressionen"
                 },
                 {
                     "id": "OptionsLabel108",
@@ -19604,7 +19622,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bestätigungsbias"
+                    "relevantBias": "Bestätigungsverzerrung"
                 },
                 {
                     "id": "OptionsLabel115",
@@ -19784,7 +19802,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bestätigungsbias"
+                    "relevantBias": "Bestätigungsverzerrung"
                 },
                 {
                     "id": "OptionsLabel116",
@@ -20564,7 +20582,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bestätigungsbias"
+                    "relevantBias": "Bestätigungsverzerrung"
                 },
                 {
                     "id": "OptionsLabel122",
@@ -20744,7 +20762,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bestätigungsbias"
+                    "relevantBias": "Bestätigungsverzerrung"
                 },
                 {
                     "id": "OptionsLabel123",
@@ -20924,7 +20942,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggression"
+                    "relevantBias": "Mikroaggressionen"
                 },
                 {
                     "id": "OptionsLabel124",
@@ -21104,7 +21122,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggression"
+                    "relevantBias": "Mikroaggressionen"
                 },
                 {
                     "id": "OptionsLabel125",
@@ -21284,7 +21302,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Risikoaversion"
+                    "relevantBias": "Risk Aversion Bias"
                 },
                 {
                     "id": "OptionsLabel126",
@@ -21434,7 +21452,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Risikoaversion"
+                    "relevantBias": "Risk Aversion Bias"
                 },
                 {
                     "id": "OptionsLabel127",
@@ -21764,7 +21782,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
                     "id": "OptionsLabel129",
@@ -21914,7 +21932,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
                     "id": "OptionsLabel130",
@@ -23054,7 +23072,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterlohngefälle"
+                    "relevantBias": "Gender Pay Gap"
                 },
                 {
                     "id": "OptionsLabel138",
@@ -23504,7 +23522,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Stereotypen über Frauen in nicht traditionellen Branchen"
+                    "relevantBias": "StereotypesAboutWomenInNonTraditionalIndustries"
                 },
                 {
                     "id": "OptionsLabel141",
@@ -23684,7 +23702,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Stereotypen über Frauen in nicht traditionellen Branchen"
+                    "relevantBias": "StereotypesAboutWomenInNonTraditionalIndustries"
                 },
                 {
                     "id": "OptionsLabel142",
@@ -24254,7 +24272,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggression"
+                    "relevantBias": "Mikroaggressionen"
                 },
                 {
                     "id": "OptionsLabel146",
@@ -24434,7 +24452,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggression"
+                    "relevantBias": "Mikroaggressionen"
                 },
                 {
                     "id": "OptionsLabel147",
@@ -24674,7 +24692,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Tightrope Bias"
+                    "relevantBias": "Doppelte Bindung (Tightrope Bias)"
                 },
                 {
                     "id": "OptionsLabel148",
@@ -24824,7 +24842,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Tightrope Bias"
+                    "relevantBias": "Doppelte Bindung (Tightrope Bias)"
                 },
                 {
                     "id": "OptionsLabel149",
@@ -25244,7 +25262,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggression"
+                    "relevantBias": "Mikroaggressionen"
                 },
                 {
                     "id": "OptionsLabel152",
@@ -25394,7 +25412,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggression"
+                    "relevantBias": "Mikroaggressionen"
                 },
                 {
                     "id": "OptionsLabel153",
@@ -25844,7 +25862,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggression"
+                    "relevantBias": "Mikroaggressionen"
                 },
                 {
                     "id": "OptionsLabel156",
@@ -25994,7 +26012,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggression"
+                    "relevantBias": "Mikroaggressionen"
                 },
                 {
                     "id": "OptionsLabel157",
@@ -26384,7 +26402,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
                     "id": "OptionsLabel160",
@@ -26534,7 +26552,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
                     "id": "OptionsLabel161",
@@ -27494,7 +27512,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Tightrope Bias"
+                    "relevantBias": "Doppelte Bindung (Tightrope Bias)"
                 },
                 {
                     "id": "OptionsLabel168",
@@ -27674,7 +27692,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Tightrope Bias"
+                    "relevantBias": "Doppelte Bindung (Tightrope Bias)"
                 },
                 {
                     "id": "OptionsLabel169",
@@ -27983,9 +28001,15 @@
             ],
             "isKiteNovel": true,
             "novelColor": {
-                "r": 0.05882352963089943,
+                "r": 0.06666667014360428,
                 "g": 0.2705882489681244,
-                "b": 0.23529411852359773,
+                "b": 0.29019609093666079,
+                "a": 1.0
+            },
+            "novelFrameColor": {
+                "r": 0.15294118225574494,
+                "g": 0.4470588266849518,
+                "b": 0.49803921580314639,
                 "a": 1.0
             }
         },
@@ -27996,7 +28020,7 @@
             "designation": "Investor überzeugen",
             "description": "Du triffst dich mit einem Angel Investor, der auf einer Pitch Night Interesse an deiner Innovation gezeigt hat und nun mehr erfahren möchte.",
             "feedback": "",
-            "context": "Es ist das Gespräch einer Gründerin, Lea, mit einem Angel Investor. Es geht um die Investition in das Unternehmen der Gründerin. Der Investor ist an der Innovation interessiert. Die Gründerin hofft, dass der Investor in ihre Innovation investieren wird.",
+            "context": "Es ist das Gespräch einer Gründerin mit einem Angel Investor. Es geht um die Investition in das Unternehmen der Gründerin. Der Investor ist an der Innovation interessiert. Die Gründerin hofft, dass der Investor in ihre Innovation investieren wird.",
             "novelEvents": [
                 {
                     "id": "InitialCharacterJoinsEvent001",
@@ -28896,7 +28920,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Wohlwollender Sexismus"
+                    "relevantBias": "Benevolenter Sexismus"
                 },
                 {
                     "id": "OptionsLabel175",
@@ -29766,7 +29790,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
                     "id": "OptionsLabel181",
@@ -30066,7 +30090,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Beweise-es-erneut-Bias"
+                    "relevantBias": "ProveItAgainBias"
                 },
                 {
                     "id": "OptionsLabel183",
@@ -30246,7 +30270,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Risikoaversion"
+                    "relevantBias": "Risk Aversion Bias"
                 },
                 {
                     "id": "OptionsLabel184",
@@ -30546,7 +30570,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Verzerrung in der Wahrnehmung von Führungsfähigkeiten"
+                    "relevantBias": "Bias in der Wahrnehmung von Führungsfähigkeiten"
                 },
                 {
                     "id": "OptionsLabel186",
@@ -30876,7 +30900,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Verzerrung in der Wahrnehmung von Führungsfähigkeiten"
+                    "relevantBias": "Bias in der Wahrnehmung von Führungsfähigkeiten"
                 },
                 {
                     "id": "OptionsLabel188",
@@ -31056,7 +31080,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Stereotypen über Frauen in nicht traditionellen Branchen"
+                    "relevantBias": "StereotypesAboutWomenInNonTraditionalIndustries"
                 },
                 {
                     "id": "OptionsLabel189",
@@ -31356,7 +31380,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Risikoaversion"
+                    "relevantBias": "Risk Aversion Bias"
                 },
                 {
                     "id": "OptionsLabel190",
@@ -31506,7 +31530,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
                     "id": "OptionsLabel191",
@@ -32685,9 +32709,15 @@
             ],
             "isKiteNovel": true,
             "novelColor": {
-                "r": 0.1882352977991104,
+                "r": 0.2078431397676468,
                 "g": 0.2823529541492462,
-                "b": 0.05882352963089943,
+                "b": 0.10196078568696976,
+                "a": 1.0
+            },
+            "novelFrameColor": {
+                "r": 0.239215686917305,
+                "g": 0.5098039507865906,
+                "b": 0.16078431904315949,
                 "a": 1.0
             }
         },
@@ -32698,7 +32728,7 @@
             "designation": "Kredit beantragen",
             "description": "Du hast heute einen Banktermin, um einen Kredit zu beantragen.",
             "feedback": "",
-            "context": "Es ist das Gespräch einer Gründerin, mit einem Bankmitarbeiter. Es geht um einen Kredit. Die Gründerin hat sich gut vorbereitet und hofft Informationen über den Kredit zu erhalten.",
+            "context": "Es ist das Gespräch einer Gründerin mit einem Bankmitarbeiter. Es geht um einen Kredit. Die Gründerin hat sich gut vorbereitet und hofft Informationen über den Kredit zu erhalten.",
             "novelEvents": [
                 {
                     "id": "InitialCharacterJoinsEvent001",
@@ -34498,7 +34528,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bestätigungsbias"
+                    "relevantBias": "Bestätigungsverzerrung"
                 },
                 {
                     "id": "Bürgschaft Partner01",
@@ -34528,7 +34558,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterlohngefälle"
+                    "relevantBias": "Gender Pay Gap"
                 },
                 {
                     "id": "OptionsLabel210",
@@ -36298,7 +36328,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Tightrope Bias"
+                    "relevantBias": "Doppelte Bindung (Tightrope Bias)"
                 },
                 {
                     "id": "OptionsLabel221",
@@ -36838,7 +36868,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
                     "id": "Faire Aufgabenaufteilung",
@@ -37018,7 +37048,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggression"
+                    "relevantBias": "Mikroaggressionen"
                 },
                 {
                     "id": "OptionsLabel226",
@@ -37168,7 +37198,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
                     "id": "OptionsLabel227",
@@ -38038,7 +38068,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
                     "id": "Geschäftspartner01",
@@ -38068,7 +38098,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Verzerrung in der Wahrnehmung von Führungsfähigkeiten"
+                    "relevantBias": "Bias in der Wahrnehmung von Führungsfähigkeiten"
                 },
                 {
                     "id": "Geschäftspartner012",
@@ -38098,7 +38128,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bestätigungsbias"
+                    "relevantBias": "Bestätigungsverzerrung"
                 },
                 {
                     "id": "OptionsLabel233",
@@ -38368,7 +38398,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Verzerrung in der Wahrnehmung von Führungsfähigkeiten"
+                    "relevantBias": "Bias in der Wahrnehmung von Führungsfähigkeiten"
                 },
                 {
                     "id": "Geschäftspartner Nachfrage II01",
@@ -38398,7 +38428,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
+                    "relevantBias": "Unbewusste Biases in der Kommunikation"
                 },
                 {
                     "id": "OptionsLabel235",
@@ -38548,7 +38578,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Verzerrung in der Wahrnehmung von Führungsfähigkeiten"
+                    "relevantBias": "Bias in der Wahrnehmung von Führungsfähigkeiten"
                 },
                 {
                     "id": "Geschäftspartnerin01",
@@ -38578,7 +38608,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
+                    "relevantBias": "Unbewusste Biases in der Kommunikation"
                 },
                 {
                     "id": "OptionsLabel236",
@@ -38728,7 +38758,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Verzerrung in der Wahrnehmung von Führungsfähigkeiten"
+                    "relevantBias": "Bias in der Wahrnehmung von Führungsfähigkeiten"
                 },
                 {
                     "id": "Geschäftspartnerin Nachfrage01",
@@ -38758,7 +38788,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
+                    "relevantBias": "Unbewusste Biases in der Kommunikation"
                 },
                 {
                     "id": "OptionsLabel237",
@@ -40168,7 +40198,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
+                    "relevantBias": "Unbewusste Biases in der Kommunikation"
                 },
                 {
                     "id": "OptionsLabel248",
@@ -41368,7 +41398,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
                     "id": "Nachfrage Internalisiert01",
@@ -41398,7 +41428,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bestätigungsbias"
+                    "relevantBias": "Bestätigungsverzerrung"
                 },
                 {
                     "id": "OptionsLabel256",
@@ -42658,7 +42688,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
+                    "relevantBias": "Unbewusste Biases in der Kommunikation"
                 },
                 {
                     "id": "Professionell01",
@@ -42868,7 +42898,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
+                    "relevantBias": "Unbewusste Biases in der Kommunikation"
                 },
                 {
                     "id": "Professionell II01",
@@ -43108,7 +43138,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
                     "id": "OptionsLabel267",
@@ -43888,7 +43918,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggression"
+                    "relevantBias": "Mikroaggressionen"
                 },
                 {
                     "id": "OptionsLabel273",
@@ -44398,7 +44428,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bestätigungsbias"
+                    "relevantBias": "Bestätigungsverzerrung"
                 },
                 {
                     "id": "OptionsLabel276",
@@ -45088,7 +45118,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Tightrope Bias"
+                    "relevantBias": "Doppelte Bindung (Tightrope Bias)"
                 },
                 {
                     "id": "OptionsLabel281",
@@ -45568,7 +45598,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggression"
+                    "relevantBias": "Mikroaggressionen"
                 },
                 {
                     "id": "OptionsLabel284",
@@ -45718,7 +45748,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggression"
+                    "relevantBias": "Mikroaggressionen"
                 },
                 {
                     "id": "OptionsLabel285",
@@ -46867,9 +46897,15 @@
             ],
             "isKiteNovel": true,
             "novelColor": {
-                "r": 0.0470588244497776,
+                "r": 0.054901961237192157,
                 "g": 0.10196078568696976,
-                "b": 0.18039216101169587,
+                "b": 0.1764705926179886,
+                "a": 1.0
+            },
+            "novelFrameColor": {
+                "r": 0.13725490868091584,
+                "g": 0.2549019753932953,
+                "b": 0.4117647111415863,
                 "a": 1.0
             }
         },
@@ -46880,7 +46916,7 @@
             "designation": "Mit Notarin telefonieren",
             "description": "Du rufst bei einer Notarin an, um einen Termin für deine Gründung auszumachen.",
             "feedback": "",
-            "context": "Es ist das Gespräch einer Gründerin, mit einer Notarin. Es geht um die Eintragung des Unternehmens der Gründerin ins Handelsregister. Die Gründerin hat sich gut vorbereitet und hofft einen Termin für ein Eintragung zu erhalten.",
+            "context": "Es ist das Gespräch einer Gründerin mit einer Notarin. Es geht um die Eintragung des Unternehmens der Gründerin ins Handelsregister. Die Gründerin hat sich gut vorbereitet und hofft einen Termin für eine Eintragung zu erhalten.",
             "novelEvents": [
                 {
                     "id": "InitialCharacterJoinsEvent001",
@@ -47210,7 +47246,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Verzerrung der Leistungszuordnung"
+                    "relevantBias": "Leistungsattributions-Bias"
                 },
                 {
                     "id": "OptionsLabel293",
@@ -47510,7 +47546,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
+                    "relevantBias": "Unbewusste Biases in der Kommunikation"
                 },
                 {
                     "id": "OptionsLabel295",
@@ -47930,7 +47966,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bestätigungsbias"
+                    "relevantBias": "Bestätigungsverzerrung"
                 },
                 {
                     "id": "OptionsLabel298",
@@ -48530,7 +48566,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Zugang zu Finanzierung"
+                    "relevantBias": "Finanzierungszugang"
                 },
                 {
                     "id": "Nachfrage01",
@@ -48830,7 +48866,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
+                    "relevantBias": "Unbewusste Biases in der Kommunikation"
                 },
                 {
                     "id": "Rat Gereizt01",
@@ -48860,7 +48896,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Tightrope Bias"
+                    "relevantBias": "Doppelte Bindung (Tightrope Bias)"
                 },
                 {
                     "id": "OptionsLabel304",
@@ -49790,7 +49826,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
+                    "relevantBias": "Unbewusste Biases in der Kommunikation"
                 },
                 {
                     "id": "Wie auch immer01",
@@ -49820,7 +49856,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Verzerrung in der Wahrnehmung von Führungsfähigkeiten"
+                    "relevantBias": "Bias in der Wahrnehmung von Führungsfähigkeiten"
                 },
                 {
                     "id": "OptionsLabel308",
@@ -49919,9 +49955,15 @@
             ],
             "isKiteNovel": true,
             "novelColor": {
-                "r": 0.06666667014360428,
+                "r": 0.1725490242242813,
+                "g": 0.0784313753247261,
+                "b": 0.3019607961177826,
+                "a": 1.0
+            },
+            "novelFrameColor": {
+                "r": 0.38823530077934267,
                 "g": 0.2705882489681244,
-                "b": 0.29019609093666079,
+                "b": 0.5529412031173706,
                 "a": 1.0
             }
         },
@@ -49932,7 +49974,7 @@
             "designation": "Interview abklären",
             "description": "Auf einer Veranstaltung stellst du deine Geschäftsidee vor und wirst danach von einer Journalistin angesprochen.",
             "feedback": "",
-            "context": "Es ist das Gespräch einer Gründerin, mit einer Journalistin. Die Journalistin hat die Gründerin angesprochen und möchte einen Artikel über sie und ihr Unternehmen schreiben. Die Gründerin freut sich über diese Gelegenheit und hofft auf einen schönen Artikel.",
+            "context": "Es ist das Gespräch einer Gründerin mit einer Journalistin. Die Journalistin hat die Gründerin angesprochen und möchte einen Artikel über sie und ihr Unternehmen schreiben. Die Gründerin freut sich über diese Gelegenheit und hofft auf einen schönen Artikel.",
             "novelEvents": [
                 {
                     "id": "InitialCharacterJoinsEvent001",
@@ -50472,7 +50514,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Tokenismus"
+                    "relevantBias": "Tokenism"
                 },
                 {
                     "id": "OptionsLabel310",
@@ -50922,7 +50964,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Tokenismus"
+                    "relevantBias": "Tokenism"
                 },
                 {
                     "id": "OptionsLabel313",
@@ -51072,7 +51114,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Verzerrung in der Wahrnehmung von Führungsfähigkeiten"
+                    "relevantBias": "Bias in der Wahrnehmung von Führungsfähigkeiten"
                 },
                 {
                     "id": "OptionsLabel314",
@@ -51582,7 +51624,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggression"
+                    "relevantBias": "Mikroaggressionen"
                 },
                 {
                     "id": "OptionsLabel316",
@@ -51762,7 +51804,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Verzerrung der Leistungszuordnung"
+                    "relevantBias": "Leistungsattributions-Bias"
                 },
                 {
                     "id": "OptionsLabel317",
@@ -51972,7 +52014,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
+                    "relevantBias": "Unbewusste Biases in der Kommunikation"
                 },
                 {
                     "id": "OptionsLabel318",
@@ -52302,7 +52344,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggression"
+                    "relevantBias": "Mikroaggressionen"
                 },
                 {
                     "id": "OptionsLabel320",
@@ -52512,7 +52554,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Wohlwollender Sexismus"
+                    "relevantBias": "Benevolenter Sexismus"
                 },
                 {
                     "id": "Frauen gründen012",
@@ -52542,7 +52584,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Tokenismus"
+                    "relevantBias": "Tokenism"
                 },
                 {
                     "id": "OptionsLabel321",
@@ -53022,7 +53064,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Verzerrung der Leistungszuordnung"
+                    "relevantBias": "Leistungsattributions-Bias"
                 },
                 {
                     "id": "OptionsLabel324",
@@ -54612,7 +54654,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Wohlwollender Sexismus"
+                    "relevantBias": "Benevolenter Sexismus"
                 },
                 {
                     "id": "OptionsLabel332",
@@ -54792,7 +54834,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Tokenismus"
+                    "relevantBias": "Tokenism"
                 },
                 {
                     "id": "OptionsLabel333",
@@ -55002,7 +55044,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Tokenismus"
+                    "relevantBias": "Tokenism"
                 },
                 {
                     "id": "OptionsLabel334",
@@ -55602,7 +55644,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Tokenismus"
+                    "relevantBias": "Tokenism"
                 },
                 {
                     "id": "OptionsLabel338",
@@ -55782,7 +55824,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Tokenismus"
+                    "relevantBias": "Tokenism"
                 },
                 {
                     "id": "OptionsLabel339",
@@ -56262,7 +56304,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bestätigungsbias"
+                    "relevantBias": "Bestätigungsverzerrung"
                 },
                 {
                     "id": "OptionsLabel342",
@@ -56562,7 +56604,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Tokenismus"
+                    "relevantBias": "Tokenism"
                 },
                 {
                     "id": "OptionsLabel344",
@@ -57291,9 +57333,15 @@
             ],
             "isKiteNovel": true,
             "novelColor": {
-                "r": 0.32549020648002627,
-                "g": 0.125490203499794,
-                "b": 0.32549020648002627,
+                "r": 0.30588236451148989,
+                "g": 0.13725490868091584,
+                "b": 0.3137255012989044,
+                "a": 1.0
+            },
+            "novelFrameColor": {
+                "r": 0.4941176474094391,
+                "g": 0.23137255012989045,
+                "b": 0.5058823823928833,
                 "a": 1.0
             }
         },
@@ -57302,9 +57350,9 @@
             "folderName": "",
             "title": "Anmietung eines Büros",
             "designation": "Büro anmieten",
-            "description": "Du hast heute einen Termin für die Besichtigung von Büroräumen.",
+            "description": "Du hast heute einen Termin für die Besichtigung von Büro-Räumen.",
             "feedback": "",
-            "context": "Es ist das Gespräch einer Gründerin, Lea, mit einem Vermieter. Es geht um die Anmietung von Büro-Räumen. Die Gründerin hat sich gut vorbereitet und hofft, dass sie die Büroräume für ihr Unternehmen bekommt.",
+            "context": "Es ist das Gespräch einer Gründerin mit einem Vermieter. Es geht um die Anmietung von Büro-Räumen. Die Gründerin hat sich gut vorbereitet und hofft, dass sie die Büroräume für ihr Unternehmen bekommt.",
             "novelEvents": [
                 {
                     "id": "InitialCharacterJoinsEvent001",
@@ -57398,7 +57446,7 @@
                 },
                 {
                     "id": "Ablehnend0",
-                    "nextId": "OptionsLabel1",
+                    "nextId": "OptionsLabel349",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -57424,11 +57472,11 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Verzerrung der Leistungszuordnung"
+                    "relevantBias": "Leistungsattributions-Bias"
                 },
                 {
-                    "id": "OptionsLabel1",
-                    "nextId": "OptionsLabel1OptionsLabel1",
+                    "id": "OptionsLabel349",
+                    "nextId": "OptionsLabel349OptionsLabel349",
                     "onChoice": "Ärgern",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -57457,8 +57505,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel1OptionsLabel1",
-                    "nextId": "OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1",
+                    "id": "OptionsLabel349OptionsLabel349",
+                    "nextId": "OptionsLabel349OptionsLabel349OptionsLabel349OptionsLabel349",
                     "onChoice": "Umlenken",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -57487,8 +57535,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1",
-                    "nextId": "OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1",
+                    "id": "OptionsLabel349OptionsLabel349OptionsLabel349OptionsLabel349",
+                    "nextId": "OptionsLabel349OptionsLabel349OptionsLabel349OptionsLabel349OptionsLabel349OptionsLabel349OptionsLabel349OptionsLabel349",
                     "onChoice": "Sexismus",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -57517,7 +57565,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1OptionsLabel1",
+                    "id": "OptionsLabel349OptionsLabel349OptionsLabel349OptionsLabel349OptionsLabel349OptionsLabel349OptionsLabel349OptionsLabel349",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -57548,7 +57596,7 @@
                 },
                 {
                     "id": "Ageism Alt",
-                    "nextId": "OptionsLabel2",
+                    "nextId": "OptionsLabel350",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -57577,8 +57625,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel2",
-                    "nextId": "OptionsLabel2OptionsLabel2",
+                    "id": "OptionsLabel350",
+                    "nextId": "OptionsLabel350OptionsLabel350",
                     "onChoice": "Mietprozess",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -57607,8 +57655,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel2OptionsLabel2",
-                    "nextId": "OptionsLabel2OptionsLabel2OptionsLabel2OptionsLabel2",
+                    "id": "OptionsLabel350OptionsLabel350",
+                    "nextId": "OptionsLabel350OptionsLabel350OptionsLabel350OptionsLabel350",
                     "onChoice": "Ageism Nachfrage Alt",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -57637,7 +57685,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel2OptionsLabel2OptionsLabel2OptionsLabel2",
+                    "id": "OptionsLabel350OptionsLabel350OptionsLabel350OptionsLabel350",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -57668,7 +57716,7 @@
                 },
                 {
                     "id": "Ageism Jung",
-                    "nextId": "OptionsLabel3",
+                    "nextId": "OptionsLabel351",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -57697,8 +57745,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel3",
-                    "nextId": "OptionsLabel3OptionsLabel3",
+                    "id": "OptionsLabel351",
+                    "nextId": "OptionsLabel351OptionsLabel351",
                     "onChoice": "Mietprozess",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -57727,8 +57775,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel3OptionsLabel3",
-                    "nextId": "OptionsLabel3OptionsLabel3OptionsLabel3OptionsLabel3",
+                    "id": "OptionsLabel351OptionsLabel351",
+                    "nextId": "OptionsLabel351OptionsLabel351OptionsLabel351OptionsLabel351",
                     "onChoice": "Ageism Nachfrage Jung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -57757,7 +57805,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel3OptionsLabel3OptionsLabel3OptionsLabel3",
+                    "id": "OptionsLabel351OptionsLabel351OptionsLabel351OptionsLabel351",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -57874,11 +57922,11 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Alters- und Generationenbias"
+                    "relevantBias": "Alter- und Generationen-Biases"
                 },
                 {
                     "id": "Ageism Nachfrage II",
-                    "nextId": "OptionsLabel4",
+                    "nextId": "OptionsLabel352",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -57907,8 +57955,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel4",
-                    "nextId": "OptionsLabel4OptionsLabel4",
+                    "id": "OptionsLabel352",
+                    "nextId": "OptionsLabel352OptionsLabel352",
                     "onChoice": "Fokus: Positiv",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -57937,8 +57985,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel4OptionsLabel4",
-                    "nextId": "OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4",
+                    "id": "OptionsLabel352OptionsLabel352",
+                    "nextId": "OptionsLabel352OptionsLabel352OptionsLabel352OptionsLabel352",
                     "onChoice": "Fokus: Neutral",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -57967,8 +58015,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4",
-                    "nextId": "OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4",
+                    "id": "OptionsLabel352OptionsLabel352OptionsLabel352OptionsLabel352",
+                    "nextId": "OptionsLabel352OptionsLabel352OptionsLabel352OptionsLabel352OptionsLabel352OptionsLabel352OptionsLabel352OptionsLabel352",
                     "onChoice": "Fokus: Negativ",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -57997,7 +58045,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4OptionsLabel4",
+                    "id": "OptionsLabel352OptionsLabel352OptionsLabel352OptionsLabel352OptionsLabel352OptionsLabel352OptionsLabel352OptionsLabel352",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -58084,7 +58132,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Alters- und Generationenbias"
+                    "relevantBias": "Alter- und Generationen-Biases"
                 },
                 {
                     "id": "Alter",
@@ -58144,7 +58192,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Alters- und Generationenbias"
+                    "relevantBias": "Alter- und Generationen-Biases"
                 },
                 {
                     "id": "Alter II",
@@ -58178,7 +58226,7 @@
                 },
                 {
                     "id": "Alter II0",
-                    "nextId": "OptionsLabel5",
+                    "nextId": "OptionsLabel353",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -58204,11 +58252,11 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Alters- und Generationenbias"
+                    "relevantBias": "Alter- und Generationen-Biases"
                 },
                 {
-                    "id": "OptionsLabel5",
-                    "nextId": "OptionsLabel5OptionsLabel5",
+                    "id": "OptionsLabel353",
+                    "nextId": "OptionsLabel353OptionsLabel353",
                     "onChoice": "Vorbereitung klarstellen",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -58237,8 +58285,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel5OptionsLabel5",
-                    "nextId": "OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5",
+                    "id": "OptionsLabel353OptionsLabel353",
+                    "nextId": "OptionsLabel353OptionsLabel353OptionsLabel353OptionsLabel353",
                     "onChoice": "Ageism Jung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -58267,8 +58315,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5",
-                    "nextId": "OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5",
+                    "id": "OptionsLabel353OptionsLabel353OptionsLabel353OptionsLabel353",
+                    "nextId": "OptionsLabel353OptionsLabel353OptionsLabel353OptionsLabel353OptionsLabel353OptionsLabel353OptionsLabel353OptionsLabel353",
                     "onChoice": "Ageism Alt",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -58297,7 +58345,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5OptionsLabel5",
+                    "id": "OptionsLabel353OptionsLabel353OptionsLabel353OptionsLabel353OptionsLabel353OptionsLabel353OptionsLabel353OptionsLabel353",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -58358,7 +58406,7 @@
                 },
                 {
                     "id": "Aufwand",
-                    "nextId": "OptionsLabel6",
+                    "nextId": "OptionsLabel354",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -58387,8 +58435,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel6",
-                    "nextId": "OptionsLabel6OptionsLabel6",
+                    "id": "OptionsLabel354",
+                    "nextId": "OptionsLabel354OptionsLabel354",
                     "onChoice": "Inklusion Termin",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -58417,8 +58465,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel6OptionsLabel6",
-                    "nextId": "OptionsLabel6OptionsLabel6OptionsLabel6OptionsLabel6",
+                    "id": "OptionsLabel354OptionsLabel354",
+                    "nextId": "OptionsLabel354OptionsLabel354OptionsLabel354OptionsLabel354",
                     "onChoice": "Inklusion Termin",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -58447,7 +58495,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel6OptionsLabel6OptionsLabel6OptionsLabel6",
+                    "id": "OptionsLabel354OptionsLabel354OptionsLabel354OptionsLabel354",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -58594,11 +58642,11 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Wohlwollender Sexismus"
+                    "relevantBias": "Benevolenter Sexismus"
                 },
                 {
                     "id": "Dankbar01",
-                    "nextId": "OptionsLabel7",
+                    "nextId": "OptionsLabel355",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -58624,11 +58672,11 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
+                    "relevantBias": "Unbewusste Biases in der Kommunikation"
                 },
                 {
-                    "id": "OptionsLabel7",
-                    "nextId": "OptionsLabel7OptionsLabel7",
+                    "id": "OptionsLabel355",
+                    "nextId": "OptionsLabel355OptionsLabel355",
                     "onChoice": "End: Positiv Selbstbewusst",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -58657,8 +58705,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel7OptionsLabel7",
-                    "nextId": "OptionsLabel7OptionsLabel7OptionsLabel7OptionsLabel7",
+                    "id": "OptionsLabel355OptionsLabel355",
+                    "nextId": "OptionsLabel355OptionsLabel355OptionsLabel355OptionsLabel355",
                     "onChoice": "End Neutral: Doubledown",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -58687,8 +58735,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel7OptionsLabel7OptionsLabel7OptionsLabel7",
-                    "nextId": "OptionsLabel7OptionsLabel7OptionsLabel7OptionsLabel7OptionsLabel7OptionsLabel7OptionsLabel7OptionsLabel7",
+                    "id": "OptionsLabel355OptionsLabel355OptionsLabel355OptionsLabel355",
+                    "nextId": "OptionsLabel355OptionsLabel355OptionsLabel355OptionsLabel355OptionsLabel355OptionsLabel355OptionsLabel355OptionsLabel355",
                     "onChoice": "End: Positiv Selbstsicher",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -58717,7 +58765,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel7OptionsLabel7OptionsLabel7OptionsLabel7OptionsLabel7OptionsLabel7OptionsLabel7OptionsLabel7",
+                    "id": "OptionsLabel355OptionsLabel355OptionsLabel355OptionsLabel355OptionsLabel355OptionsLabel355OptionsLabel355OptionsLabel355",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -58808,7 +58856,7 @@
                 },
                 {
                     "id": "Danke01",
-                    "nextId": "OptionsLabel8",
+                    "nextId": "OptionsLabel356",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -58837,8 +58885,8 @@
                     "relevantBias": "Unterbewertung weiblich geführter Unternehmen"
                 },
                 {
-                    "id": "OptionsLabel8",
-                    "nextId": "OptionsLabel8OptionsLabel8",
+                    "id": "OptionsLabel356",
+                    "nextId": "OptionsLabel356OptionsLabel356",
                     "onChoice": "Selbstbewusst",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -58867,8 +58915,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel8OptionsLabel8",
-                    "nextId": "OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8",
+                    "id": "OptionsLabel356OptionsLabel356",
+                    "nextId": "OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356",
                     "onChoice": "Dankbar",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -58897,8 +58945,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8",
-                    "nextId": "OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8",
+                    "id": "OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356",
+                    "nextId": "OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356",
                     "onChoice": "Sachlich",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -58927,8 +58975,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8",
-                    "nextId": "OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8",
+                    "id": "OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356",
+                    "nextId": "OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356",
                     "onChoice": "Frustriert",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -58957,7 +59005,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8OptionsLabel8",
+                    "id": "OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356OptionsLabel356",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -59048,7 +59096,7 @@
                 },
                 {
                     "id": "End Neutral: Doubledown",
-                    "nextId": "OptionsLabel9",
+                    "nextId": "OptionsLabel357",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -59077,8 +59125,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel9",
-                    "nextId": "OptionsLabel9OptionsLabel9",
+                    "id": "OptionsLabel357",
+                    "nextId": "OptionsLabel357OptionsLabel357",
                     "onChoice": "End: Positiv-Neutral",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -59107,8 +59155,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel9OptionsLabel9",
-                    "nextId": "OptionsLabel9OptionsLabel9OptionsLabel9OptionsLabel9",
+                    "id": "OptionsLabel357OptionsLabel357",
+                    "nextId": "OptionsLabel357OptionsLabel357OptionsLabel357OptionsLabel357",
                     "onChoice": "End: Positiv-Neutral II",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -59137,7 +59185,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel9OptionsLabel9OptionsLabel9OptionsLabel9",
+                    "id": "OptionsLabel357OptionsLabel357OptionsLabel357OptionsLabel357",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -59254,7 +59302,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Tightrope Bias"
+                    "relevantBias": "Doppelte Bindung (Tightrope Bias)"
                 },
                 {
                     "id": "End: Negativ012",
@@ -59464,11 +59512,11 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
+                    "relevantBias": "Unbewusste Biases in der Kommunikation"
                 },
                 {
                     "id": "End: Positiv Selbstbewusst II",
-                    "nextId": "OptionsLabel10",
+                    "nextId": "OptionsLabel358",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -59497,8 +59545,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel10",
-                    "nextId": "OptionsLabel10OptionsLabel10",
+                    "id": "OptionsLabel358",
+                    "nextId": "OptionsLabel358OptionsLabel358",
                     "onChoice": "End: Neutral",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -59527,8 +59575,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel10OptionsLabel10",
-                    "nextId": "OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10",
+                    "id": "OptionsLabel358OptionsLabel358",
+                    "nextId": "OptionsLabel358OptionsLabel358OptionsLabel358OptionsLabel358",
                     "onChoice": "End: Positiv-Neutral",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -59557,7 +59605,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel10OptionsLabel10OptionsLabel10OptionsLabel10",
+                    "id": "OptionsLabel358OptionsLabel358OptionsLabel358OptionsLabel358",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -59644,11 +59692,11 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
+                    "relevantBias": "Unbewusste Biases in der Kommunikation"
                 },
                 {
                     "id": "End: Positiv Selbstsicher II",
-                    "nextId": "OptionsLabel11",
+                    "nextId": "OptionsLabel359",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -59677,8 +59725,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel11",
-                    "nextId": "OptionsLabel11OptionsLabel11",
+                    "id": "OptionsLabel359",
+                    "nextId": "OptionsLabel359OptionsLabel359",
                     "onChoice": "End: Neutral",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -59707,8 +59755,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel11OptionsLabel11",
-                    "nextId": "OptionsLabel11OptionsLabel11OptionsLabel11OptionsLabel11",
+                    "id": "OptionsLabel359OptionsLabel359",
+                    "nextId": "OptionsLabel359OptionsLabel359OptionsLabel359OptionsLabel359",
                     "onChoice": "End: Positiv-Neutral",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -59737,7 +59785,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel11OptionsLabel11OptionsLabel11OptionsLabel11",
+                    "id": "OptionsLabel359OptionsLabel359OptionsLabel359OptionsLabel359",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -60068,7 +60116,7 @@
                 },
                 {
                     "id": "Erwartung01",
-                    "nextId": "OptionsLabel12",
+                    "nextId": "OptionsLabel360",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -60094,11 +60142,11 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
-                    "id": "OptionsLabel12",
-                    "nextId": "OptionsLabel12OptionsLabel12",
+                    "id": "OptionsLabel360",
+                    "nextId": "OptionsLabel360OptionsLabel360",
                     "onChoice": "Vorbereitung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -60127,8 +60175,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel12OptionsLabel12",
-                    "nextId": "OptionsLabel12OptionsLabel12OptionsLabel12OptionsLabel12",
+                    "id": "OptionsLabel360OptionsLabel360",
+                    "nextId": "OptionsLabel360OptionsLabel360OptionsLabel360OptionsLabel360",
                     "onChoice": "Kompliment",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -60157,8 +60205,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel12OptionsLabel12OptionsLabel12OptionsLabel12",
-                    "nextId": "OptionsLabel12OptionsLabel12OptionsLabel12OptionsLabel12OptionsLabel12OptionsLabel12OptionsLabel12OptionsLabel12",
+                    "id": "OptionsLabel360OptionsLabel360OptionsLabel360OptionsLabel360",
+                    "nextId": "OptionsLabel360OptionsLabel360OptionsLabel360OptionsLabel360OptionsLabel360OptionsLabel360OptionsLabel360OptionsLabel360",
                     "onChoice": "Umlenken",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -60187,7 +60235,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel12OptionsLabel12OptionsLabel12OptionsLabel12OptionsLabel12OptionsLabel12OptionsLabel12OptionsLabel12",
+                    "id": "OptionsLabel360OptionsLabel360OptionsLabel360OptionsLabel360OptionsLabel360OptionsLabel360OptionsLabel360OptionsLabel360",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -60248,7 +60296,7 @@
                 },
                 {
                     "id": "Faktoren0",
-                    "nextId": "OptionsLabel13",
+                    "nextId": "OptionsLabel361",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -60274,11 +60322,11 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Alters- und Generationenbias"
+                    "relevantBias": "Alter- und Generationen-Biases"
                 },
                 {
-                    "id": "OptionsLabel13",
-                    "nextId": "OptionsLabel13OptionsLabel13",
+                    "id": "OptionsLabel361",
+                    "nextId": "OptionsLabel361OptionsLabel361",
                     "onChoice": "Alter",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -60307,8 +60355,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel13OptionsLabel13",
-                    "nextId": "OptionsLabel13OptionsLabel13OptionsLabel13OptionsLabel13",
+                    "id": "OptionsLabel361OptionsLabel361",
+                    "nextId": "OptionsLabel361OptionsLabel361OptionsLabel361OptionsLabel361",
                     "onChoice": "Alter",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -60337,7 +60385,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel13OptionsLabel13OptionsLabel13OptionsLabel13",
+                    "id": "OptionsLabel361OptionsLabel361OptionsLabel361OptionsLabel361",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -60368,7 +60416,7 @@
                 },
                 {
                     "id": "Fokus",
-                    "nextId": "OptionsLabel14",
+                    "nextId": "OptionsLabel362",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -60397,8 +60445,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel14",
-                    "nextId": "OptionsLabel14OptionsLabel14",
+                    "id": "OptionsLabel362",
+                    "nextId": "OptionsLabel362OptionsLabel362",
                     "onChoice": "Fokus: Positiv",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -60427,8 +60475,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel14OptionsLabel14",
-                    "nextId": "OptionsLabel14OptionsLabel14OptionsLabel14OptionsLabel14",
+                    "id": "OptionsLabel362OptionsLabel362",
+                    "nextId": "OptionsLabel362OptionsLabel362OptionsLabel362OptionsLabel362",
                     "onChoice": "Fokus: Neutral",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -60457,8 +60505,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel14OptionsLabel14OptionsLabel14OptionsLabel14",
-                    "nextId": "OptionsLabel14OptionsLabel14OptionsLabel14OptionsLabel14OptionsLabel14OptionsLabel14OptionsLabel14OptionsLabel14",
+                    "id": "OptionsLabel362OptionsLabel362OptionsLabel362OptionsLabel362",
+                    "nextId": "OptionsLabel362OptionsLabel362OptionsLabel362OptionsLabel362OptionsLabel362OptionsLabel362OptionsLabel362OptionsLabel362",
                     "onChoice": "Fokus: Negativ",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -60487,7 +60535,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel14OptionsLabel14OptionsLabel14OptionsLabel14OptionsLabel14OptionsLabel14OptionsLabel14OptionsLabel14",
+                    "id": "OptionsLabel362OptionsLabel362OptionsLabel362OptionsLabel362OptionsLabel362OptionsLabel362OptionsLabel362OptionsLabel362",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -60578,7 +60626,7 @@
                 },
                 {
                     "id": "Fokus a01",
-                    "nextId": "OptionsLabel15",
+                    "nextId": "OptionsLabel363",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -60607,8 +60655,8 @@
                     "relevantBias": "Unterbewertung weiblich geführter Unternehmen"
                 },
                 {
-                    "id": "OptionsLabel15",
-                    "nextId": "OptionsLabel15OptionsLabel15",
+                    "id": "OptionsLabel363",
+                    "nextId": "OptionsLabel363OptionsLabel363",
                     "onChoice": "Selbstbewusst",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -60637,8 +60685,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel15OptionsLabel15",
-                    "nextId": "OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15",
+                    "id": "OptionsLabel363OptionsLabel363",
+                    "nextId": "OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363",
                     "onChoice": "Dankbar",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -60667,8 +60715,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15",
-                    "nextId": "OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15",
+                    "id": "OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363",
+                    "nextId": "OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363",
                     "onChoice": "Dankbar",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -60697,8 +60745,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15",
-                    "nextId": "OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15",
+                    "id": "OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363",
+                    "nextId": "OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363",
                     "onChoice": "Sachlich",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -60727,8 +60775,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15",
-                    "nextId": "OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15",
+                    "id": "OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363",
+                    "nextId": "OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363",
                     "onChoice": "Frustriert",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -60757,7 +60805,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15OptionsLabel15",
+                    "id": "OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363OptionsLabel363",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -60874,11 +60922,11 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Wohlwollender Sexismus"
+                    "relevantBias": "Benevolenter Sexismus"
                 },
                 {
                     "id": "Fokus: Negativ II01",
-                    "nextId": "OptionsLabel16",
+                    "nextId": "OptionsLabel364",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -60907,8 +60955,8 @@
                     "relevantBias": "Unterbewertung weiblich geführter Unternehmen"
                 },
                 {
-                    "id": "OptionsLabel16",
-                    "nextId": "OptionsLabel16OptionsLabel16",
+                    "id": "OptionsLabel364",
+                    "nextId": "OptionsLabel364OptionsLabel364",
                     "onChoice": "Selbstbewusst",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -60937,8 +60985,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel16OptionsLabel16",
-                    "nextId": "OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16",
+                    "id": "OptionsLabel364OptionsLabel364",
+                    "nextId": "OptionsLabel364OptionsLabel364OptionsLabel364OptionsLabel364",
                     "onChoice": "Sachlich",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -60967,8 +61015,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16",
-                    "nextId": "OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16",
+                    "id": "OptionsLabel364OptionsLabel364OptionsLabel364OptionsLabel364",
+                    "nextId": "OptionsLabel364OptionsLabel364OptionsLabel364OptionsLabel364OptionsLabel364OptionsLabel364OptionsLabel364OptionsLabel364",
                     "onChoice": "Frustriert",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -60997,7 +61045,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16OptionsLabel16",
+                    "id": "OptionsLabel364OptionsLabel364OptionsLabel364OptionsLabel364OptionsLabel364OptionsLabel364OptionsLabel364OptionsLabel364",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -61118,7 +61166,7 @@
                 },
                 {
                     "id": "Frage0",
-                    "nextId": "OptionsLabel17",
+                    "nextId": "OptionsLabel365",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -61144,11 +61192,11 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
+                    "relevantBias": "Unbewusste Biases in der Kommunikation"
                 },
                 {
-                    "id": "OptionsLabel17",
-                    "nextId": "OptionsLabel17OptionsLabel17",
+                    "id": "OptionsLabel365",
+                    "nextId": "OptionsLabel365OptionsLabel365",
                     "onChoice": "Frage II",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -61177,8 +61225,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel17OptionsLabel17",
-                    "nextId": "OptionsLabel17OptionsLabel17OptionsLabel17OptionsLabel17",
+                    "id": "OptionsLabel365OptionsLabel365",
+                    "nextId": "OptionsLabel365OptionsLabel365OptionsLabel365OptionsLabel365",
                     "onChoice": "Erwartung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -61207,7 +61255,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel17OptionsLabel17OptionsLabel17OptionsLabel17",
+                    "id": "OptionsLabel365OptionsLabel365OptionsLabel365OptionsLabel365",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -61294,11 +61342,11 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
                     "id": "Frage II01",
-                    "nextId": "OptionsLabel18",
+                    "nextId": "OptionsLabel366",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -61327,8 +61375,8 @@
                     "relevantBias": "Heteronormativität"
                 },
                 {
-                    "id": "OptionsLabel18",
-                    "nextId": "OptionsLabel18OptionsLabel18",
+                    "id": "OptionsLabel366",
+                    "nextId": "OptionsLabel366OptionsLabel366",
                     "onChoice": "Ignorieren",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -61357,8 +61405,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel18OptionsLabel18",
-                    "nextId": "OptionsLabel18OptionsLabel18OptionsLabel18OptionsLabel18",
+                    "id": "OptionsLabel366OptionsLabel366",
+                    "nextId": "OptionsLabel366OptionsLabel366OptionsLabel366OptionsLabel366",
                     "onChoice": "Wieso Mann",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -61387,8 +61435,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel18OptionsLabel18OptionsLabel18OptionsLabel18",
-                    "nextId": "OptionsLabel18OptionsLabel18OptionsLabel18OptionsLabel18OptionsLabel18OptionsLabel18OptionsLabel18OptionsLabel18",
+                    "id": "OptionsLabel366OptionsLabel366OptionsLabel366OptionsLabel366",
+                    "nextId": "OptionsLabel366OptionsLabel366OptionsLabel366OptionsLabel366OptionsLabel366OptionsLabel366OptionsLabel366OptionsLabel366",
                     "onChoice": "Eigenverantwortlich",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -61417,7 +61465,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel18OptionsLabel18OptionsLabel18OptionsLabel18OptionsLabel18OptionsLabel18OptionsLabel18OptionsLabel18",
+                    "id": "OptionsLabel366OptionsLabel366OptionsLabel366OptionsLabel366OptionsLabel366OptionsLabel366OptionsLabel366OptionsLabel366",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -61448,7 +61496,7 @@
                 },
                 {
                     "id": "Freund Gründungsliteratur",
-                    "nextId": "OptionsLabel19",
+                    "nextId": "OptionsLabel367",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -61477,8 +61525,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel19",
-                    "nextId": "OptionsLabel19OptionsLabel19",
+                    "id": "OptionsLabel367",
+                    "nextId": "OptionsLabel367OptionsLabel367",
                     "onChoice": "Danke",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -61507,8 +61555,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel19OptionsLabel19",
-                    "nextId": "OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19",
+                    "id": "OptionsLabel367OptionsLabel367",
+                    "nextId": "OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367",
                     "onChoice": "Bekanntmachen",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -61537,8 +61585,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19",
-                    "nextId": "OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19",
+                    "id": "OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367",
+                    "nextId": "OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367",
                     "onChoice": "Bereits informiert",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -61567,8 +61615,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19",
-                    "nextId": "OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19",
+                    "id": "OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367",
+                    "nextId": "OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367",
                     "onChoice": "Vorbereitung Sicher",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -61597,7 +61645,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19OptionsLabel19",
+                    "id": "OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367OptionsLabel367",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -61688,7 +61736,7 @@
                 },
                 {
                     "id": "Freund Rat01",
-                    "nextId": "OptionsLabel20",
+                    "nextId": "OptionsLabel368",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -61717,8 +61765,8 @@
                     "relevantBias": "Unterbewertung weiblich geführter Unternehmen"
                 },
                 {
-                    "id": "OptionsLabel20",
-                    "nextId": "OptionsLabel20OptionsLabel20",
+                    "id": "OptionsLabel368",
+                    "nextId": "OptionsLabel368OptionsLabel368",
                     "onChoice": "Danke",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -61747,8 +61795,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel20OptionsLabel20",
-                    "nextId": "OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20",
+                    "id": "OptionsLabel368OptionsLabel368",
+                    "nextId": "OptionsLabel368OptionsLabel368OptionsLabel368OptionsLabel368",
                     "onChoice": "Bereits informiert",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -61777,8 +61825,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20",
-                    "nextId": "OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20",
+                    "id": "OptionsLabel368OptionsLabel368OptionsLabel368OptionsLabel368",
+                    "nextId": "OptionsLabel368OptionsLabel368OptionsLabel368OptionsLabel368OptionsLabel368OptionsLabel368OptionsLabel368OptionsLabel368",
                     "onChoice": "Sensibilisierung b",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -61807,7 +61855,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20OptionsLabel20",
+                    "id": "OptionsLabel368OptionsLabel368OptionsLabel368OptionsLabel368OptionsLabel368OptionsLabel368OptionsLabel368OptionsLabel368",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -61894,11 +61942,11 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Wohlwollender Sexismus"
+                    "relevantBias": "Benevolenter Sexismus"
                 },
                 {
                     "id": "Freund betont01",
-                    "nextId": "OptionsLabel21",
+                    "nextId": "OptionsLabel369",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -61927,8 +61975,8 @@
                     "relevantBias": "Unterbewertung weiblich geführter Unternehmen"
                 },
                 {
-                    "id": "OptionsLabel21",
-                    "nextId": "OptionsLabel21OptionsLabel21",
+                    "id": "OptionsLabel369",
+                    "nextId": "OptionsLabel369OptionsLabel369",
                     "onChoice": "Selbstbewusst",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -61957,8 +62005,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel21OptionsLabel21",
-                    "nextId": "OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21",
+                    "id": "OptionsLabel369OptionsLabel369",
+                    "nextId": "OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369",
                     "onChoice": "Dankbar",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -61987,8 +62035,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21",
-                    "nextId": "OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21",
+                    "id": "OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369",
+                    "nextId": "OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369",
                     "onChoice": "Sachlich",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -62017,8 +62065,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21",
-                    "nextId": "OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21",
+                    "id": "OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369",
+                    "nextId": "OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369",
                     "onChoice": "Frustriert",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -62047,7 +62095,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21OptionsLabel21",
+                    "id": "OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369OptionsLabel369",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -62134,11 +62182,11 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
                     "id": "Gründungsförderung",
-                    "nextId": "OptionsLabel22",
+                    "nextId": "OptionsLabel370",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -62167,8 +62215,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel22",
-                    "nextId": "OptionsLabel22OptionsLabel22",
+                    "id": "OptionsLabel370",
+                    "nextId": "OptionsLabel370OptionsLabel370",
                     "onChoice": "Faktoren",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -62197,8 +62245,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel22OptionsLabel22",
-                    "nextId": "OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22",
+                    "id": "OptionsLabel370OptionsLabel370",
+                    "nextId": "OptionsLabel370OptionsLabel370OptionsLabel370OptionsLabel370",
                     "onChoice": "Faktoren",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -62227,8 +62275,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22",
-                    "nextId": "OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22",
+                    "id": "OptionsLabel370OptionsLabel370OptionsLabel370OptionsLabel370",
+                    "nextId": "OptionsLabel370OptionsLabel370OptionsLabel370OptionsLabel370OptionsLabel370OptionsLabel370OptionsLabel370OptionsLabel370",
                     "onChoice": "Frage",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -62257,7 +62305,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22OptionsLabel22",
+                    "id": "OptionsLabel370OptionsLabel370OptionsLabel370OptionsLabel370OptionsLabel370OptionsLabel370OptionsLabel370OptionsLabel370",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -62288,7 +62336,7 @@
                 },
                 {
                     "id": "Ignorieren",
-                    "nextId": "OptionsLabel23",
+                    "nextId": "OptionsLabel371",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -62317,8 +62365,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel23",
-                    "nextId": "OptionsLabel23OptionsLabel23",
+                    "id": "OptionsLabel371",
+                    "nextId": "OptionsLabel371OptionsLabel371",
                     "onChoice": "Inklusion",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -62347,8 +62395,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel23OptionsLabel23",
-                    "nextId": "OptionsLabel23OptionsLabel23OptionsLabel23OptionsLabel23",
+                    "id": "OptionsLabel371OptionsLabel371",
+                    "nextId": "OptionsLabel371OptionsLabel371OptionsLabel371OptionsLabel371",
                     "onChoice": "Inklusion Nachfrage",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -62377,7 +62425,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel23OptionsLabel23OptionsLabel23OptionsLabel23",
+                    "id": "OptionsLabel371OptionsLabel371OptionsLabel371OptionsLabel371",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -62498,7 +62546,7 @@
                 },
                 {
                     "id": "Inklusion Termin II",
-                    "nextId": "OptionsLabel24",
+                    "nextId": "OptionsLabel372",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -62527,8 +62575,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel24",
-                    "nextId": "OptionsLabel24OptionsLabel24",
+                    "id": "OptionsLabel372",
+                    "nextId": "OptionsLabel372OptionsLabel372",
                     "onChoice": "Anforderungen",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -62557,8 +62605,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel24OptionsLabel24",
-                    "nextId": "OptionsLabel24OptionsLabel24OptionsLabel24OptionsLabel24",
+                    "id": "OptionsLabel372OptionsLabel372",
+                    "nextId": "OptionsLabel372OptionsLabel372OptionsLabel372OptionsLabel372",
                     "onChoice": "Neuer Termin",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -62587,7 +62635,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel24OptionsLabel24OptionsLabel24OptionsLabel24",
+                    "id": "OptionsLabel372OptionsLabel372OptionsLabel372OptionsLabel372",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -62674,7 +62722,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
                     "id": "Mietprozess",
@@ -62708,7 +62756,7 @@
                 },
                 {
                     "id": "Mietprozess0",
-                    "nextId": "OptionsLabel25",
+                    "nextId": "OptionsLabel373",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -62734,11 +62782,11 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
+                    "relevantBias": "Unbewusste Biases in der Kommunikation"
                 },
                 {
-                    "id": "OptionsLabel25",
-                    "nextId": "OptionsLabel25OptionsLabel25",
+                    "id": "OptionsLabel373",
+                    "nextId": "OptionsLabel373OptionsLabel373",
                     "onChoice": "End: Positiv Selbstbewusst",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -62767,8 +62815,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel25OptionsLabel25",
-                    "nextId": "OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25",
+                    "id": "OptionsLabel373OptionsLabel373",
+                    "nextId": "OptionsLabel373OptionsLabel373OptionsLabel373OptionsLabel373",
                     "onChoice": "End Neutral: Doubledown",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -62797,8 +62845,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25",
-                    "nextId": "OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25",
+                    "id": "OptionsLabel373OptionsLabel373OptionsLabel373OptionsLabel373",
+                    "nextId": "OptionsLabel373OptionsLabel373OptionsLabel373OptionsLabel373OptionsLabel373OptionsLabel373OptionsLabel373OptionsLabel373",
                     "onChoice": "End: Positiv Selbstsicher",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -62827,7 +62875,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25OptionsLabel25",
+                    "id": "OptionsLabel373OptionsLabel373OptionsLabel373OptionsLabel373OptionsLabel373OptionsLabel373OptionsLabel373OptionsLabel373",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -62888,7 +62936,7 @@
                 },
                 {
                     "id": "Natürlich0",
-                    "nextId": "OptionsLabel26",
+                    "nextId": "OptionsLabel374",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -62914,11 +62962,11 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
-                    "id": "OptionsLabel26",
-                    "nextId": "OptionsLabel26OptionsLabel26",
+                    "id": "OptionsLabel374",
+                    "nextId": "OptionsLabel374OptionsLabel374",
                     "onChoice": "Vorbereitung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -62947,8 +62995,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel26OptionsLabel26",
-                    "nextId": "OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26",
+                    "id": "OptionsLabel374OptionsLabel374",
+                    "nextId": "OptionsLabel374OptionsLabel374OptionsLabel374OptionsLabel374",
                     "onChoice": "Kompliment",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -62977,8 +63025,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26",
-                    "nextId": "OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26",
+                    "id": "OptionsLabel374OptionsLabel374OptionsLabel374OptionsLabel374",
+                    "nextId": "OptionsLabel374OptionsLabel374OptionsLabel374OptionsLabel374OptionsLabel374OptionsLabel374OptionsLabel374OptionsLabel374",
                     "onChoice": "Umlenken",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -63007,7 +63055,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26OptionsLabel26",
+                    "id": "OptionsLabel374OptionsLabel374OptionsLabel374OptionsLabel374OptionsLabel374OptionsLabel374OptionsLabel374OptionsLabel374",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -63068,7 +63116,7 @@
                 },
                 {
                     "id": "Neuer Termin",
-                    "nextId": "OptionsLabel27",
+                    "nextId": "OptionsLabel375",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -63097,8 +63145,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel27",
-                    "nextId": "OptionsLabel27OptionsLabel27",
+                    "id": "OptionsLabel375",
+                    "nextId": "OptionsLabel375OptionsLabel375",
                     "onChoice": "Termin ok",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -63127,8 +63175,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel27OptionsLabel27",
-                    "nextId": "OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27",
+                    "id": "OptionsLabel375OptionsLabel375",
+                    "nextId": "OptionsLabel375OptionsLabel375OptionsLabel375OptionsLabel375",
                     "onChoice": "Terminänderung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -63157,7 +63205,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel27OptionsLabel27OptionsLabel27OptionsLabel27",
+                    "id": "OptionsLabel375OptionsLabel375OptionsLabel375OptionsLabel375",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -63188,7 +63236,7 @@
                 },
                 {
                     "id": "Recherche",
-                    "nextId": "OptionsLabel28",
+                    "nextId": "OptionsLabel376",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -63217,8 +63265,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel28",
-                    "nextId": "OptionsLabel28OptionsLabel28",
+                    "id": "OptionsLabel376",
+                    "nextId": "OptionsLabel376OptionsLabel376",
                     "onChoice": "Ablehnend",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -63247,8 +63295,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel28OptionsLabel28",
-                    "nextId": "OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28",
+                    "id": "OptionsLabel376OptionsLabel376",
+                    "nextId": "OptionsLabel376OptionsLabel376OptionsLabel376OptionsLabel376",
                     "onChoice": "Faktoren",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -63277,7 +63325,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel28OptionsLabel28OptionsLabel28OptionsLabel28",
+                    "id": "OptionsLabel376OptionsLabel376OptionsLabel376OptionsLabel376",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -63364,11 +63412,11 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Wohlwollender Sexismus"
+                    "relevantBias": "Benevolenter Sexismus"
                 },
                 {
                     "id": "Sachlich01",
-                    "nextId": "OptionsLabel29",
+                    "nextId": "OptionsLabel377",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -63394,11 +63442,11 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
+                    "relevantBias": "Unbewusste Biases in der Kommunikation"
                 },
                 {
-                    "id": "OptionsLabel29",
-                    "nextId": "OptionsLabel29OptionsLabel29",
+                    "id": "OptionsLabel377",
+                    "nextId": "OptionsLabel377OptionsLabel377",
                     "onChoice": "End: Positiv Selbstbewusst",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -63427,8 +63475,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel29OptionsLabel29",
-                    "nextId": "OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29",
+                    "id": "OptionsLabel377OptionsLabel377",
+                    "nextId": "OptionsLabel377OptionsLabel377OptionsLabel377OptionsLabel377",
                     "onChoice": "End Neutral: Doubledown",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -63457,8 +63505,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29",
-                    "nextId": "OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29",
+                    "id": "OptionsLabel377OptionsLabel377OptionsLabel377OptionsLabel377",
+                    "nextId": "OptionsLabel377OptionsLabel377OptionsLabel377OptionsLabel377OptionsLabel377OptionsLabel377OptionsLabel377OptionsLabel377",
                     "onChoice": "End: Positiv Selbstsicher",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -63487,7 +63535,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29OptionsLabel29",
+                    "id": "OptionsLabel377OptionsLabel377OptionsLabel377OptionsLabel377OptionsLabel377OptionsLabel377OptionsLabel377OptionsLabel377",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -63574,7 +63622,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
                     "id": "Selbstbewusst III",
@@ -63608,7 +63656,7 @@
                 },
                 {
                     "id": "Selbstbewusst III0",
-                    "nextId": "OptionsLabel30",
+                    "nextId": "OptionsLabel378",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -63634,11 +63682,11 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggression"
+                    "relevantBias": "Mikroaggressionen"
                 },
                 {
-                    "id": "OptionsLabel30",
-                    "nextId": "OptionsLabel30OptionsLabel30",
+                    "id": "OptionsLabel378",
+                    "nextId": "OptionsLabel378OptionsLabel378",
                     "onChoice": "End: Positiv Selbstsicher",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -63667,8 +63715,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel30OptionsLabel30",
-                    "nextId": "OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30",
+                    "id": "OptionsLabel378OptionsLabel378",
+                    "nextId": "OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378",
                     "onChoice": "End: Positiv Selbstbewusst",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -63697,8 +63745,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30",
-                    "nextId": "OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30",
+                    "id": "OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378",
+                    "nextId": "OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378",
                     "onChoice": "End Neutral: Doubledown",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -63727,8 +63775,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30",
-                    "nextId": "OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30",
+                    "id": "OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378",
+                    "nextId": "OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378",
                     "onChoice": "End: Negativ",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -63757,7 +63805,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30OptionsLabel30",
+                    "id": "OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378OptionsLabel378",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -64054,11 +64102,11 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
                     "id": "Umlenken II01",
-                    "nextId": "OptionsLabel31",
+                    "nextId": "OptionsLabel379",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -64084,11 +64132,11 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Risikoaversion"
+                    "relevantBias": "Risk Aversion Bias"
                 },
                 {
-                    "id": "OptionsLabel31",
-                    "nextId": "OptionsLabel31OptionsLabel31",
+                    "id": "OptionsLabel379",
+                    "nextId": "OptionsLabel379OptionsLabel379",
                     "onChoice": "Sicher",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -64117,8 +64165,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel31OptionsLabel31",
-                    "nextId": "OptionsLabel31OptionsLabel31OptionsLabel31OptionsLabel31",
+                    "id": "OptionsLabel379OptionsLabel379",
+                    "nextId": "OptionsLabel379OptionsLabel379OptionsLabel379OptionsLabel379",
                     "onChoice": "Fokus",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -64147,8 +64195,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel31OptionsLabel31OptionsLabel31OptionsLabel31",
-                    "nextId": "OptionsLabel31OptionsLabel31OptionsLabel31OptionsLabel31OptionsLabel31OptionsLabel31OptionsLabel31OptionsLabel31",
+                    "id": "OptionsLabel379OptionsLabel379OptionsLabel379OptionsLabel379",
+                    "nextId": "OptionsLabel379OptionsLabel379OptionsLabel379OptionsLabel379OptionsLabel379OptionsLabel379OptionsLabel379OptionsLabel379",
                     "onChoice": "Netzwerk",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -64177,7 +64225,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel31OptionsLabel31OptionsLabel31OptionsLabel31OptionsLabel31OptionsLabel31OptionsLabel31OptionsLabel31",
+                    "id": "OptionsLabel379OptionsLabel379OptionsLabel379OptionsLabel379OptionsLabel379OptionsLabel379OptionsLabel379OptionsLabel379",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -64268,7 +64316,7 @@
                 },
                 {
                     "id": "Vorbereitung klarstellen",
-                    "nextId": "OptionsLabel32",
+                    "nextId": "OptionsLabel380",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -64297,8 +64345,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel32",
-                    "nextId": "OptionsLabel32OptionsLabel32",
+                    "id": "OptionsLabel380",
+                    "nextId": "OptionsLabel380OptionsLabel380",
                     "onChoice": "Mietprozess",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -64327,8 +64375,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel32OptionsLabel32",
-                    "nextId": "OptionsLabel32OptionsLabel32OptionsLabel32OptionsLabel32",
+                    "id": "OptionsLabel380OptionsLabel380",
+                    "nextId": "OptionsLabel380OptionsLabel380OptionsLabel380OptionsLabel380",
                     "onChoice": "Ageism Nachfrage",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -64357,7 +64405,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel32OptionsLabel32OptionsLabel32OptionsLabel32",
+                    "id": "OptionsLabel380OptionsLabel380OptionsLabel380OptionsLabel380",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -64388,7 +64436,7 @@
                 },
                 {
                     "id": "Weiter",
-                    "nextId": "OptionsLabel33",
+                    "nextId": "OptionsLabel381",
                     "onChoice": "",
                     "eventType": 4,
                     "waitForUserConfirmation": true,
@@ -64417,8 +64465,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel33",
-                    "nextId": "OptionsLabel33OptionsLabel33",
+                    "id": "OptionsLabel381",
+                    "nextId": "OptionsLabel381OptionsLabel381",
                     "onChoice": "Weiter II",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -64447,8 +64495,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel33OptionsLabel33",
-                    "nextId": "OptionsLabel33OptionsLabel33OptionsLabel33OptionsLabel33",
+                    "id": "OptionsLabel381OptionsLabel381",
+                    "nextId": "OptionsLabel381OptionsLabel381OptionsLabel381OptionsLabel381",
                     "onChoice": "Weiter II",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -64477,7 +64525,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel33OptionsLabel33OptionsLabel33OptionsLabel33",
+                    "id": "OptionsLabel381OptionsLabel381OptionsLabel381OptionsLabel381",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -64538,7 +64586,7 @@
                 },
                 {
                     "id": "Weiter II0",
-                    "nextId": "OptionsLabel34",
+                    "nextId": "OptionsLabel382",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -64564,11 +64612,11 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggression"
+                    "relevantBias": "Mikroaggressionen"
                 },
                 {
-                    "id": "OptionsLabel34",
-                    "nextId": "OptionsLabel34OptionsLabel34",
+                    "id": "OptionsLabel382",
+                    "nextId": "OptionsLabel382OptionsLabel382",
                     "onChoice": "Natürlich",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -64597,8 +64645,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel34OptionsLabel34",
-                    "nextId": "OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34",
+                    "id": "OptionsLabel382OptionsLabel382",
+                    "nextId": "OptionsLabel382OptionsLabel382OptionsLabel382OptionsLabel382",
                     "onChoice": "Recherche",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -64627,8 +64675,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34",
-                    "nextId": "OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34",
+                    "id": "OptionsLabel382OptionsLabel382OptionsLabel382OptionsLabel382",
+                    "nextId": "OptionsLabel382OptionsLabel382OptionsLabel382OptionsLabel382OptionsLabel382OptionsLabel382OptionsLabel382OptionsLabel382",
                     "onChoice": "Gründungsförderung",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -64657,7 +64705,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34OptionsLabel34",
+                    "id": "OptionsLabel382OptionsLabel382OptionsLabel382OptionsLabel382OptionsLabel382OptionsLabel382OptionsLabel382OptionsLabel382",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -64718,7 +64766,7 @@
                 },
                 {
                     "id": "Wieso Mann0",
-                    "nextId": "OptionsLabel35",
+                    "nextId": "OptionsLabel383",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -64744,11 +64792,11 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechtsspezifische Stereotypen"
+                    "relevantBias": "Geschlechterspezifische Stereotype"
                 },
                 {
-                    "id": "OptionsLabel35",
-                    "nextId": "OptionsLabel35OptionsLabel35",
+                    "id": "OptionsLabel383",
+                    "nextId": "OptionsLabel383OptionsLabel383",
                     "onChoice": "Fokus",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -64777,8 +64825,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel35OptionsLabel35",
-                    "nextId": "OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35",
+                    "id": "OptionsLabel383OptionsLabel383",
+                    "nextId": "OptionsLabel383OptionsLabel383OptionsLabel383OptionsLabel383",
                     "onChoice": "Umlenken",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -64807,7 +64855,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel35OptionsLabel35OptionsLabel35OptionsLabel35",
+                    "id": "OptionsLabel383OptionsLabel383OptionsLabel383OptionsLabel383",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -64868,7 +64916,7 @@
                 },
                 {
                     "id": "Ärgern0",
-                    "nextId": "OptionsLabel36",
+                    "nextId": "OptionsLabel384",
                     "onChoice": "",
                     "eventType": 16,
                     "waitForUserConfirmation": false,
@@ -64894,11 +64942,11 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggression"
+                    "relevantBias": "Mikroaggressionen"
                 },
                 {
-                    "id": "OptionsLabel36",
-                    "nextId": "OptionsLabel36OptionsLabel36",
+                    "id": "OptionsLabel384",
+                    "nextId": "OptionsLabel384OptionsLabel384",
                     "onChoice": "Sensibilisieren",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -64927,8 +64975,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel36OptionsLabel36",
-                    "nextId": "OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36",
+                    "id": "OptionsLabel384OptionsLabel384",
+                    "nextId": "OptionsLabel384OptionsLabel384OptionsLabel384OptionsLabel384",
                     "onChoice": "Diplomatisch",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -64957,8 +65005,8 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36",
-                    "nextId": "OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36",
+                    "id": "OptionsLabel384OptionsLabel384OptionsLabel384OptionsLabel384",
+                    "nextId": "OptionsLabel384OptionsLabel384OptionsLabel384OptionsLabel384OptionsLabel384OptionsLabel384OptionsLabel384OptionsLabel384",
                     "onChoice": "End: Negativ",
                     "eventType": 5,
                     "waitForUserConfirmation": false,
@@ -64987,7 +65035,7 @@
                     "relevantBias": ""
                 },
                 {
-                    "id": "OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36OptionsLabel36",
+                    "id": "OptionsLabel384OptionsLabel384OptionsLabel384OptionsLabel384OptionsLabel384OptionsLabel384OptionsLabel384OptionsLabel384",
                     "nextId": "",
                     "onChoice": "",
                     "eventType": 6,
@@ -65023,9 +65071,15 @@
             ],
             "isKiteNovel": true,
             "novelColor": {
-                "r": 0.0470588244497776,
-                "g": 0.10196078568696976,
-                "b": 0.18039216101169587,
+                "r": 0.3921568691730499,
+                "g": 0.0117647061124444,
+                "b": 0.25882354378700259,
+                "a": 1.0
+            },
+            "novelFrameColor": {
+                "r": 0.6470588445663452,
+                "g": 0.15294118225574494,
+                "b": 0.4745098054409027,
                 "a": 1.0
             }
         }

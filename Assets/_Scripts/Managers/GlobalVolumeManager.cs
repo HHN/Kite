@@ -2,11 +2,23 @@ using UnityEngine;
 
 namespace Assets._Scripts.Managers
 {
+    /// <summary>
+    /// Manages global audio settings and playback in the application.
+    /// </summary>
     public class GlobalVolumeManager : MonoBehaviour
     {
         [SerializeField] private AudioSource audioSource;
         private static GlobalVolumeManager _instance;
 
+        /// <summary>
+        /// Provides a singleton instance of the GlobalVolumeManager.
+        /// Ensures that there is only one instance of this manager throughout the application
+        /// and allows access to manage global audio settings and playback.
+        /// </summary>
+        /// <remarks>
+        /// If no existing instance is present in the scene, a new instance is created and persisted across scene loads.
+        /// This property is thread-safe and lazily initialized.
+        /// </remarks>
         public static GlobalVolumeManager Instance
         {
             get
@@ -28,22 +40,30 @@ namespace Assets._Scripts.Managers
             }
         }
 
+        /// <summary>
+        /// Ensures that a single instance of the GlobalVolumeManager exists in the scene.
+        /// Initializes the global AudioSource if it is the first instance and prevents the destruction of this GameObject across scenes.
+        /// If an instance already exists, destroys the duplicate instance.
+        /// </summary>
         private void Awake()
         {
-            // Singleton-Setup
             if (_instance == null)
             {
-                _instance = this; // Setze die Instanz direkt auf die private Variable
-                InitGlobalAudiosource();
-                DontDestroyOnLoad(gameObject); // Behalte dieses Objekt beim Szenenwechsel
+                _instance = this;
+                InitGlobalAudioSource();
+                DontDestroyOnLoad(gameObject);
             }
             else
             {
-                Destroy(gameObject); // Verhindere doppelte Instanzen
+                Destroy(gameObject);
             }
         }
 
-        // Setzt die globale Lautst�rke (0 bis 100)
+        /// <summary>
+        /// Sets the global volume for the application's audio.
+        /// Adjusts the volume of the associated AudioSource, ensuring the value is clamped within a range of 0 to 1.
+        /// </summary>
+        /// <param name="volume">The desired global volume level, where 0 represents mute and 1 represents the maximum volume.</param>
         public void SetGlobalVolume(float volume)
         {
             if (audioSource == null)
@@ -52,18 +72,25 @@ namespace Assets._Scripts.Managers
                 return;
             }
 
-            audioSource.volume = Mathf.Clamp(volume, 0f, 1f); // Wert begrenzen
+            audioSource.volume = Mathf.Clamp(volume, 0f, 1f);
         }
 
 
-        // Holt die aktuelle Lautst�rke (in Prozent, 0 bis 100)
-        public float GetGlobalVolume()
+        /// <summary>
+        /// Retrieves the current global volume level of the application's audio.
+        /// </summary>
+        /// <returns>The current volume level as a float, where 0 represents mute and 1 represents the maximum volume.</returns>
+        private float GetGlobalVolume()
         {
             return audioSource.volume;
         }
 
-        // Weist alle AudioSources in der Szene der Audio Mixer Group zu
-        private void InitGlobalAudiosource()
+        /// <summary>
+        /// Initializes the global AudioSource component for the GlobalVolumeManager.
+        /// Ensures an AudioSource exists on the GameObject, creates one if absent, and sets the initial global volume level
+        /// based on a previously saved value from PlayerPrefs.
+        /// </summary>
+        private void InitGlobalAudioSource()
         {
             if (audioSource == null)
             {
@@ -71,11 +98,17 @@ namespace Assets._Scripts.Managers
                 audioSource = gameObject.AddComponent<AudioSource>();
             }
 
-            float savedSoundeffectsVolume = PlayerPrefs.GetFloat("SavedSoundeffectsVolume", 100);
-            SetGlobalVolume(savedSoundeffectsVolume / 100);
+            float savedSoundEffectsVolume = PlayerPrefs.GetFloat("SavedSoundeffectsVolume", 100);
+            SetGlobalVolume(savedSoundEffectsVolume / 100);
         }
 
 
+        /// <summary>
+        /// Plays the specified audio clip through the managed AudioSource.
+        /// Optionally sets whether the audio should loop during playback. The playback volume is controlled by the global volume setting.
+        /// </summary>
+        /// <param name="clip">The audio clip to be played.</param>
+        /// <param name="loop">Optional parameter to specify whether the audio should loop. Defaults to false.</param>
         public void PlaySound(AudioClip clip, bool loop = false)
         {
             if (audioSource == null)
@@ -95,7 +128,10 @@ namespace Assets._Scripts.Managers
             audioSource.Play();
         }
 
-
+        /// <summary>
+        /// Stops the playback of any sound currently being played by the associated AudioSource.
+        /// Ensures that if no audio is playing, the method exits without performing any action.
+        /// </summary>
         public void StopSound()
         {
             if (audioSource.isPlaying)

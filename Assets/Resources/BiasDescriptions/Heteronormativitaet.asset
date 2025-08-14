@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5084c0e108f447f8a941930d98fc2d16, type: 3}
+  m_Name: Heteronormativitaet
+  m_EditorClassIdentifier: 
+  biasType: 10
+  headline: "Heteronormativit\xE4t"
+  preview: "Gesch\xE4ftsbeziehungen sind oft von unausgesprochenen Annahmen \xFCber
+    Geschlechterrollen gepr\xE4gt. Frauen wird h\xE4ufig unterstellt, dass sie in
+    einer heterosexuellen Beziehung leben und dass ihre beruflichen Entscheidungen
+    von ihrem Ehemann beeinflusst werden."
+  description: "Besonders f\xFCr queere Gr\xFCnderinnen kann das belastend sein,
+    da sie entweder gezwungen sind, ihre Identit\xE4t offenzulegen oder falsche Annahmen
+    stehenzulassen, um keine gesch\xE4ftlichen Nachteile zu riskieren (<color=LINK_COLOR><link=\"https://www.emerald.com/insight/content/doi/10.1108/ijebr-12-2022-1114/full/html\\\">Quelle</link></color>).\n\r\nIn
+    unseren Stories zeigt sich dieser Bias, wenn ein Bank-Mitarbeiter fragt, was
+    Dein Ehemann zu Deiner Gr\xFCndung sagt \u2013 anstatt Dich als eigenst\xE4ndige
+    Unternehmerin zu sehen. Die implizite Botschaft: Eine Frau gr\xFCndet nicht alleine,
+    sondern immer im Kontext einer (heterosexuellen) Partnerschaft."

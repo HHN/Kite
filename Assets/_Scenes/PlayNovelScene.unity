@@ -921,7 +921,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 540, y: -265}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_SizeDelta: {x: 1080, y: 330}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &498441981
 MonoBehaviour:
@@ -3895,8 +3895,26 @@ MonoBehaviour:
   - {fileID: 781856241913721907, guid: 821483aaec5e17b4b8a7aeaf08fc726e, type: 3}
   - {fileID: 781856241913721907, guid: 42c263b3ce0e2d24bbb694a032ccd4ef, type: 3}
   - {fileID: 781856241913721907, guid: dda9927ec9a0b6343b88a2621d1fe5d9, type: 3}
+  novelVisualMappings:
+  - characterName: Intro
+    prefab: {fileID: 781856241913721907, guid: 42c263b3ce0e2d24bbb694a032ccd4ef, type: 3}
+  - characterName: Journalistin
+    prefab: {fileID: 781856241913721907, guid: dc6cfdb0bff4a3940905b72a1dd9c28e, type: 3}
+  - characterName: Vermieter
+    prefab: {fileID: 781856241913721907, guid: f5ab4b7480ff0a149a5da5fbdaab5936, type: 3}
+  - characterName: Vater
+    prefab: {fileID: 781856241913721907, guid: 5e38a25fb9fcff147bf0a55efe66d21b, type: 3}
+  - characterName: Mutter
+    prefab: {fileID: 781856241913721907, guid: 5e38a25fb9fcff147bf0a55efe66d21b, type: 3}
+  - characterName: Investor
+    prefab: {fileID: 781856241913721907, guid: 821483aaec5e17b4b8a7aeaf08fc726e, type: 3}
+  - characterName: Notarin
+    prefab: {fileID: 781856241913721907, guid: ae3fdc487eb3f454a9558e9328bb970d, type: 3}
+  - characterName: Kundin
+    prefab: {fileID: 781856241913721907, guid: dda9927ec9a0b6343b88a2621d1fe5d9, type: 3}
+  - characterName: Sachbearbeiter
+    prefab: {fileID: 781856241913721907, guid: 0befadf77118e9847b85864f275358d1, type: 3}
   novelImageContainer: {fileID: 1655295459}
-  novelBackgroundPrefab: {fileID: 8411936371333490823, guid: bd9e9565679ee6446be061db5b61e445, type: 3}
   backgroundContainer: {fileID: 1386174946}
   deskContainer: {fileID: 641773708}
   decoDeskContainer: {fileID: 1714175714}
@@ -3982,6 +4000,7 @@ MonoBehaviour:
   isTyping: 0
   playThroughHistory: []
   eventHistory: []
+  isPaused: 0
 --- !u!4 &2133875533
 Transform:
   m_ObjectHideFlags: 0
