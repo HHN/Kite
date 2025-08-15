@@ -41,20 +41,7 @@ namespace Assets._Scripts.UIElements.SceneBase
             
             backButton.gameObject.SetActive(true);
 
-            if (GameManager.Instance.IsIntroNovelLoadedFromMainMenu)
-            {
-                backButton.GetComponentInChildren<TextMeshProUGUI>().color = new Color(1, 1, 1, 0);
-                backButton.GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
-                backButton.interactable = false;
-
-                // GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
-            }
-            else
-            {
-                backButton.GetComponentInChildren<TextMeshProUGUI>().color = new Color(1, 1, 1, 1);
-                backButton.GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1); 
-                backButton.interactable = true;
-            }
+            ToggleBackButtonVisibility(!GameManager.Instance.IsIntroNovelLoadedFromMainMenu);
 
             backButton.onClick.AddListener(OnBackButton);
             legalInformationButton.onClick.AddListener(OnLegalInformationButton);
@@ -120,11 +107,16 @@ namespace Assets._Scripts.UIElements.SceneBase
                     }
                     if (lastScene == "PlayNovelScene")
                     {
-                        Debug.Log($"lastScene == PlayNovelScene: {_playNovelSceneController != null}");
                         if (_playNovelSceneController)
                         {
                             _playNovelSceneController.isPaused = false;
                             _playNovelSceneController.Continue();
+                        }
+
+                        if (_playNovelSceneController.NovelToPlay.id == 13)
+                        {
+                            GameManager.Instance.IsIntroNovelLoadedFromMainMenu = true;
+                            ToggleBackButtonVisibility(false);
                         }
                         
                         // If the last scene was PlayNovelScene, just make it active, don't reload.
@@ -194,6 +186,8 @@ namespace Assets._Scripts.UIElements.SceneBase
             {
                 _playNovelSceneController.isPaused = true;
             }
+
+            if (GameManager.Instance.IsIntroNovelLoadedFromMainMenu) GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
             
             SceneLoader.LoadLegalInformationScene();
         }
@@ -209,7 +203,29 @@ namespace Assets._Scripts.UIElements.SceneBase
                 _playNovelSceneController.isPaused = true;
             }
             
+            if (GameManager.Instance.IsIntroNovelLoadedFromMainMenu) GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
+            
             SceneLoader.LoadSettingsScene();
+        }
+
+        /// <summary>
+        /// Adjusts the visibility and interactivity of the back button based on the provided visibility parameter.
+        /// </summary>
+        /// <param name="isVisible">Determines whether the back button should be visible and interactable.</param>
+        private void ToggleBackButtonVisibility(bool isVisible)
+        {
+            if (!isVisible)
+            {
+                backButton.GetComponentInChildren<TextMeshProUGUI>().color = new Color(1, 1, 1, 0);
+                backButton.GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
+                backButton.interactable = false;
+            }
+            else
+            {
+                backButton.GetComponentInChildren<TextMeshProUGUI>().color = new Color(1, 1, 1, 1);
+                backButton.GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1); 
+                backButton.interactable = true;
+            }
         }
     }
 }
