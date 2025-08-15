@@ -100,6 +100,8 @@ namespace Assets._Scripts.UIElements.Buttons
                 PlayRecordManager.Instance().ClearData();
                 ShowPlayInstructionManager.Instance().SetShowInstruction(true);
                 
+                GameManager.Instance.resetApp = true;
+                
                 CloseMessageBox();
             }
 
@@ -112,6 +114,8 @@ namespace Assets._Scripts.UIElements.Buttons
         /// </summary>
         private void OnCancelButton()
         {
+            GameManager.Instance.resetApp = false;
+            
             CloseMessageBox();
         }
 
@@ -133,9 +137,8 @@ namespace Assets._Scripts.UIElements.Buttons
             {
                 return;
             }
-
-            GameManager.Instance.resetApp = true;
-            GameManager.Instance.DisplayMessage(InfoMessages.RESET_APP);
+            
+            if (GameManager.Instance.resetApp) GameManager.Instance.DisplayMessage(InfoMessages.RESET_APP);
             
             Destroy(gameObject);
         }

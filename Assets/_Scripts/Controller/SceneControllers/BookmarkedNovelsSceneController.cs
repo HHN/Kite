@@ -61,7 +61,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             List<VisualNovel> allKiteNovels = KiteNovelManager.Instance().GetAllKiteNovels();
             Dictionary<long, VisualNovel> allKiteNovelsById = allKiteNovels.ToDictionary(novel => novel.id);
 
-            // Get a list of favorited novel IDs
+            // Get a list of favorite novel IDs
             List<long> favoriteIds = FavoritesManager.Instance().GetFavoritesIds();
             int index = 0;
 
@@ -103,7 +103,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 }
             }
             
-            // Adjust the height of the visual novel holder based on number of novels
+            // Adjust the height of the visual novel holder based on the number of novels
             SetVisualNovelHolderHeight(index);
         }
 
