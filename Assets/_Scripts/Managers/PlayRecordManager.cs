@@ -209,6 +209,8 @@ namespace Assets._Scripts.Managers
         /// </remarks>
         public void ClearData()
         {
+            _wrapper ??= LoadPlayRecordManagerWrapper();
+
             _wrapper.ClearData();
         }
     }

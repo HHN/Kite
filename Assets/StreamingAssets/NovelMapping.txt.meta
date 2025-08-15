@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/StreamingAssets/NovelMapping.txt.meta
 guid: 20f058ed60ba566478c228bc5dc7a32e
+========
+guid: 987844fb1740bff4482fa61423ef90d0
+>>>>>>>> develop:Assets/_Scenes/FoundersBubbleTestScene.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

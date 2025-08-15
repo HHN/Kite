@@ -90,32 +90,14 @@ namespace Assets._Scripts.Controller.SceneControllers
             {
                 return;
             }
-            
-            GeneratedFeedbackManager.Instance.DebugPrintAvailableIds();
-            
-            hintText.SetText("Hinweis: Analyse und Feedback wurden durch KI künstlich erzeugt. Eine individuelle Beratung wird hierdurch nicht ersetzt.");
-            _novel = PlayManager.Instance().GetVisualNovelToPlay();
-            
-            _dialog = PromptManager.Instance().GetDialog();
-            
-            _dialog = _dialog.Replace("Bitte beachte, dass kein Teil des Dialogs in das Feedback darf.", "");
 
-            feedbackLinkText.SetText("Erzähl uns fünf Minuten was Dir aufgefallen ist – dein Feedback hilft uns, KITE II weiterzuentwickeln.\n" +
-                                                                                $"<color={LinkColor}><link=\"https://9bxji5742ys.typeform.com/to/bNxpDQWc\"><u>[Zur Umfrage]</u></link></color>");
-            
-            feedbackLinkText.gameObject.SetActive(GameManager.Instance.ShowFeedbackLink);
-            
-            if (GeneratedFeedbackManager.Instance.HasEventsForId((int)novelToPlay.id))
-            {
-                novelToPlay.feedback = GeneratedFeedbackManager.Instance.GetFeedback().Replace("**", "");
-                SaveDialogToHistory(novelToPlay.feedback);
-            }
-            
             // If no feedback exists yet, request it from the server
             if (string.IsNullOrEmpty(novelToPlay.feedback))
             {
                 StartWaitingMusic();
                 _novel = PlayManager.Instance().GetVisualNovelToPlay();
+                feedbackLinkText.SetText("Erzähl uns fünf Minuten was Dir aufgefallen ist – dein Feedback hilft uns, KITE II weiterzuentwickeln.\n" +
+                                         $"<color={LinkColor}><link=\"https://9bxji5742ys.typeform.com/to/bNxpDQWc\"><u>[Zur Umfrage]</u></link></color>");
                 feedbackText.SetText("Das Feedback wird gerade geladen. Dies dauert durchschnittlich zwischen 30 und 60 Sekunden. Solltest du nicht so lange warten wollen, kannst du dir das Feedback einfach im Archiv anschauen, sobald es fertig ist.");
                 hintText.SetText("Hinweis: Analyse und Feedback wurden durch KI künstlich erzeugt. Eine individuelle Beratung wird hierdurch nicht ersetzt.");
                 

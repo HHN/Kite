@@ -7,11 +7,9 @@ using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.ServerCommunication;
-using Assets._Scripts.ServerCommunication.ServerCalls;
 using Assets._Scripts.UIElements;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
@@ -29,8 +27,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private Button continueTermsAndConditionsButton;
         [SerializeField] private CustomToggle termsOfUseToggle;
         [SerializeField] private CustomToggle dataPrivacyToggle;
-        [SerializeField] private CustomToggle collectDataToggle;
-        [SerializeField] private TextMeshProUGUI infoTextTermsAndConditions;
         [SerializeField] private GameObject getVersionServerCallPrefab;
         [SerializeField] private GameObject novelLoader;
         [SerializeField] private TMP_Text versionInfo;
@@ -154,10 +150,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             UpdateAcceptance(dataPrivacyToggle.IsClicked(),
                 privacyManager.AcceptTermsOfPrivacy,
                 privacyManager.UnacceptedTermsOfPrivacy);
-
-            UpdateAcceptance(collectDataToggle.IsClicked(),
-                privacyManager.AcceptDataCollection,
-                privacyManager.UnacceptedDataCollection);
         }
 
         /// <summary>
@@ -193,10 +185,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             if (acceptedTermsOfUse && acceptedDataPrivacyTerms)
             {
                 StartCoroutine(WaitForNovelsToLoad());
-            }
-            else
-            {
-                infoTextTermsAndConditions.gameObject.SetActive(true);
             }
         }
 

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/StreamingAssets/feedbacks.meta
 guid: b4d16f6f8f0897e42a8369ed172bdfff
+========
+guid: 82db11142b781bf4b934f230eaeeaf8a
+>>>>>>>> develop:Assets/_Prefabs/Novels/Props.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

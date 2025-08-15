@@ -17,11 +17,8 @@ namespace Assets._Scripts.Controller.SceneControllers
     {
         [SerializeField] private Button resetAppButton;
         [SerializeField] private Button resetAppInfoButton;
-        [SerializeField] private Toggle applicationModeToggle;
-        [SerializeField] private Button applicationModeInfoButton;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private RectTransform layout;
-
         [SerializeField] private RectTransform layout02;
 
         [SerializeField] private DeleteUserDataConfirmation deleteUserDataConfirmDialogObject;
@@ -44,8 +41,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             audioSource = GetComponent<AudioSource>();
 
             resetAppButton.onClick.AddListener(OnResetAppButton);
-            resetAppInfoButton.onClick.AddListener(OnResetAppInfoButton);
-            applicationModeInfoButton.onClick.AddListener(OnApplicationModeInfoButton);
+            resetAppInfoButton.onClick.AddListener(OnResetAppInfoButton); 
             FontSizeManager.Instance().UpdateAllTextComponents();
         }
 

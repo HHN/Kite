@@ -64,7 +64,7 @@ namespace Assets._Scripts.Managers
     /// </summary>
     public class GameManager : MonoBehaviour
     {
-        [SerializeField] private bool showAllNovels = false;
+        [SerializeField] private bool showAllNovels;
         [SerializeField] private bool skipIntroNovel;
         [SerializeField] private bool isIntroNovelSaved;
         [SerializeField] private bool introNovelLoadedFromMainMenu = true;
