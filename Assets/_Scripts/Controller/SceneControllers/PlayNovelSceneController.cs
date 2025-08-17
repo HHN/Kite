@@ -12,7 +12,6 @@ using Assets._Scripts.SaveNovelData;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.ServerCommunication.ServerCalls;
 using Assets._Scripts.UIElements.Messages;
-using Assets._Scripts.UIElements.SceneBase;
 using Assets._Scripts.Utilities;
 using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
 using TMPro;
@@ -154,7 +153,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             {
                 if (_instance == null)
                 {
-                    _instance = FindObjectOfType<PlayNovelSceneController>();
+                    _instance = FindAnyObjectByType<PlayNovelSceneController>();
                     if (_instance == null)
                     {
                         GameObject obj = new GameObject("PlayNovelSceneController");
@@ -257,7 +256,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 return;
             }
                     
-            GameObject novelImagesInstance = Instantiate(prefabToInstantiate, viewPortTransform);;
+            GameObject novelImagesInstance = Instantiate(prefabToInstantiate, viewPortTransform);
             Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
             _novelImagesController = controllerTransform.GetComponent<NovelImageController>();
         }
@@ -982,25 +981,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Initiates the process for a character to start talking within the visual novel scene.
-        /// This method delegates the operation to the NovelImageController to handle character-specific
-        /// talking animations or expressions.
-        /// </summary>
-        // public void StartTalking()
-        // {
-        //     _novelImagesController.StartCharacterTalking();
-        // }
-
-        /// <summary>
-        /// Stops the currently talking character in the visual novel scene by invoking
-        /// the relevant method in the NovelImageController.
-        /// </summary>
-        // public void StopTalking()
-        // {
-        //     _novelImagesController.StopCharacterTalking();
-        // }
-
-        /// <summary>
         /// Sets the state of whether the system is waiting for user confirmation.
         /// </summary>
         /// <param name="value">A boolean indicating whether the system should be waiting for confirmation (true) or not (false).</param>
@@ -1054,12 +1034,12 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Replaces placeholders in the specified text with corresponding values from the replacements dictionary.
-        /// Placeholders are defined within "<>" in the text and replaced with mapped values from the dictionary.
+        /// Replaces placeholders in the specified text with corresponding values from the replacement dictionary.
+        /// Placeholders are defined within "&gt;&lt;" in the text and replaced with mapped values from the dictionary.
         /// </summary>
         /// <param name="text">The input text containing placeholders to be replaced.</param>
         /// <param name="replacements">A dictionary containing the keys and their associated replacement values.</param>
-        /// <returns>The text with placeholders replaced by the corresponding values from the replacements dictionary. If no match is found for a placeholder, it remains unchanged.</
+        /// <returns>The text with placeholders replaced by the corresponding values from the replacement dictionary. If no match is found for a placeholder, it remains unchanged.</returns>
         public static string ReplacePlaceholders(string text, Dictionary<string, string> replacements)
         {
             return Regex.Replace(text, @"\>(.*?)\<", match =>

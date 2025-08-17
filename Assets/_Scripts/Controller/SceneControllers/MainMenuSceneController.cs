@@ -7,11 +7,9 @@ using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.ServerCommunication;
-using Assets._Scripts.ServerCommunication.ServerCalls;
 using Assets._Scripts.UIElements;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
