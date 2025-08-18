@@ -17,8 +17,6 @@ namespace Assets._Scripts.Controller.SceneControllers
     {
         [SerializeField] private Button resetAppButton;
         [SerializeField] private Button resetAppInfoButton;
-        [SerializeField] private Toggle applicationModeToggle;
-        [SerializeField] private Button applicationModeInfoButton;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private RectTransform layout;
 
@@ -45,7 +43,6 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             resetAppButton.onClick.AddListener(OnResetAppButton);
             resetAppInfoButton.onClick.AddListener(OnResetAppInfoButton);
-            applicationModeInfoButton.onClick.AddListener(OnApplicationModeInfoButton);
             FontSizeManager.Instance().UpdateAllTextComponents();
         }
 
@@ -85,17 +82,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.EXPLANATION_RESET_APP_BUTTON));
             DisplayInfoMessage(InfoMessages.EXPLANATION_RESET_APP_BUTTON);
-        }
-
-        /// <summary>
-        /// Handles the action triggered when the application mode info button is clicked.
-        /// This method initiates a text-to-speech explanation of the application mode's purpose
-        /// and displays an informative message related to switching between offline and online modes.
-        /// </summary>
-        private void OnApplicationModeInfoButton()
-        {
-            StartCoroutine(TextToSpeechManager.Instance.Speak(InfoMessages.EXPLANATION_APPLICATION_MODE_BUTTON));
-            DisplayInfoMessage(InfoMessages.EXPLANATION_APPLICATION_MODE_BUTTON);
         }
     }
 }
