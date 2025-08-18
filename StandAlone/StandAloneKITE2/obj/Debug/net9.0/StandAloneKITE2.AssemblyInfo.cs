@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StandAloneKITE2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ac14ca77ba16c6ccb2c5e2de163fb9eca84aa4ca")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b4a09ba64487e87607de498cfebb887b15a22835")]
 [assembly: System.Reflection.AssemblyProductAttribute("StandAloneKITE2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StandAloneKITE2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
