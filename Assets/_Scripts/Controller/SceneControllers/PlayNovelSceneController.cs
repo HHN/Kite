@@ -262,7 +262,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             GameObject novelImagesInstance = Instantiate(prefabToInstantiate, viewPortTransform);
             Transform controllerTransform = novelImagesInstance.transform.Find("Controller");
             _novelImagesController = controllerTransform.GetComponent<NovelImageController>();
-                InitializeCharacterToPrefabMap();
+            InitializeCharacterToPrefabMap();
         }
 
         /// <summary>
