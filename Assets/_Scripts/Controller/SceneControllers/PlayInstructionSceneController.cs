@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Assets._Scripts.Managers;
 using Assets._Scripts.SceneManagement;
 using TMPro;
@@ -49,7 +52,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             BackStackManager.Instance().Push(SceneNames.PlayInstructionScene);
             
             backgroundColor = PlayManager.Instance().GetColorOfVisualNovelToPlay();
-            novelName.text = PlayManager.Instance().GetDesignationOfNovelToPlay();
+            novelName.text = BalanceLineBreaks(PlayManager.Instance().GetDesignationOfNovelToPlay());
             novelImage.color = backgroundColor;
             toggle.isOn = false;
             toggle2.isOn = false;
@@ -107,5 +110,49 @@ namespace Assets._Scripts.Controller.SceneControllers
             checkBoxImage2.color = NovelColorManager.Instance().GetColor();
             headerImage.color = NovelColorManager.Instance().GetColor();
         }
+        
+        public static string BalanceLineBreaks(string input, int maxLineCount = 2)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+                return input;
+
+            // Wörter extrahieren
+            var words = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+            if (words.Length == 1)
+                return input; // nur ein Wort, keine Aufteilung nötig
+
+            // Gesamtlänge (ohne Leerzeichen)
+            int totalLength = words.Sum(w => w.Length);
+
+            // Ziel-Länge pro Zeile (ungefähr)
+            int targetLength = totalLength / maxLineCount;
+
+            var lines = new List<string>();
+            var currentLine = new List<string>();
+            int currentLength = 0;
+
+            foreach (var word in words)
+            {
+                if (currentLength + word.Length > targetLength && lines.Count < maxLineCount - 1)
+                {
+                    // Neue Zeile starten
+                    lines.Add(string.Join(" ", currentLine));
+                    currentLine.Clear();
+                    currentLength = 0;
+                }
+
+                currentLine.Add(word);
+                currentLength += word.Length + 1; // +1 für Leerzeichen
+            }
+
+            if (currentLine.Any())
+            {
+                lines.Add(string.Join(" ", currentLine));
+            }
+
+            return string.Join(Environment.NewLine, lines);
+        }
+
     }
 }
