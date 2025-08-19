@@ -2,11 +2,11 @@ Hier die Liste mit Geschlechterbiases im Gründungsprozess:
 
 Strukturelle wirtschaftliche Barrieren                    
                     
-Finanzierungszugang
+Zugang zu Finanzierung
 >>Bias|AccessToFinancing<<
 Bias: Schwierigkeiten von Frauen, Kapital für ihre Unternehmen zu beschaffen.                    
                     
-Gender Pay Gap
+Geschlechterlohngefälle
 >>Bias|GenderPayGap<<
 Bias: Lohnungleichheit zwischen Männern und Frauen.                    
                     
@@ -14,34 +14,34 @@ Unterbewertung weiblich geführter Unternehmen
 >>Bias|UndervaluationFemaleManagedCompany<<
 Bias: Geringere Bewertung von Unternehmen, die von Frauen geführt werden.                    
                     
-Risk Aversion Bias
+Risikovermeidungs-Bias
 >>Bias|RiskAversionBias<<
 Bias: Wahrnehmung von Frauen als risikoaverser.                    
                     
-Bestätigungsverzerrung
+Bestätigungsbias
 >>Bias|ConfirmationBias<<
 Bias: Tendenz, Informationen zu interpretieren, die bestehende Vorurteile bestätigen.
                     
 Gesellschaftliche Erwartungen & soziale Normen                    
                     
-Tokenism
+Tokenismus
 >>Bias|Tokenism<<
 Bias: Wahrnehmung von Frauen in unternehmerischen Kreisen als Alibifiguren.                    
                     
-Bias in der Wahrnehmung von Führungsfähigkeiten
+Verzerrung in der Wahrnehmung von Führungsfähigkeiten
 >>Bias|BiasInThePerceptionOfLeadershipSkills<<
 Bias: Infragestellung der Führungsfähigkeiten von Frauen.
                     
-Benevolenter Sexismus
+Wohlwollender Sexismus
 >>Bias|BenevolentSexism<<
 Bias: Schützend oder wohlwollend gemeinte, aber dennoch herabwürdigende Haltungen gegenüber Frauen, die sie als weniger kompetent und in Bedarf von männlicher Hilfe darstellen.
                     
-Alter- und Generationen-Biases
+Alters- und Generationenbias
 >>Bias|AgeAndGenerationsBiases<<
 Bias: Diskriminierung aufgrund von Altersstereotypen.                    
                     
-Stereotype gegenüber Frauen in nicht-traditionellen Branchen
->>Bias|StereotypesAboutWomenInNon<<
+Stereotypen über Frauen in nicht traditionellen Branchen
+>>Bias|StereotypesAboutWomenInNonTraditionalIndustries<<
 Bias: Widerstände gegen Frauen in männlich dominierten Feldern.                    
                     
 Wahrnehmung & Führungsrollen
