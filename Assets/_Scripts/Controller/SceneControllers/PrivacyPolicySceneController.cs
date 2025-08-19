@@ -19,6 +19,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private Button resetAppInfoButton;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private RectTransform layout;
+
         [SerializeField] private RectTransform layout02;
 
         [SerializeField] private DeleteUserDataConfirmation deleteUserDataConfirmDialogObject;
