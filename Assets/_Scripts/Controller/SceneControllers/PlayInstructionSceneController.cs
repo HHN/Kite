@@ -111,7 +111,13 @@ namespace Assets._Scripts.Controller.SceneControllers
             headerImage.color = NovelColorManager.Instance().GetColor();
         }
         
-        public static string BalanceLineBreaks(string input, int maxLineCount = 2)
+        /// <summary>
+        /// Balances line breaks in a given input string to ensure text is evenly distributed across multiple lines.
+        /// </summary>
+        /// <param name="input">The input string to be formatted with balanced line breaks.</param>
+        /// <param name="maxLineCount">The maximum number of lines the text should be distributed across. Defaults to 2.</param>
+        /// <returns>A string with line breaks added to balance the text across the specified number of lines.</returns>
+        private static string BalanceLineBreaks(string input, int maxLineCount = 2)
         {
             if (string.IsNullOrWhiteSpace(input))
                 return input;
