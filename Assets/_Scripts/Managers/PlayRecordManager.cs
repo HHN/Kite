@@ -103,6 +103,13 @@ namespace Assets._Scripts.Managers
                     _wrapper.SetNumberOfPlaysForIntroNovel(numberOfPlays);
                     break;
                 }
+                case VisualNovelNames.VermieterNovel:
+                {
+                    int numberOfPlays = _wrapper.GetNumberOfPlaysForVermieterNovel();
+                    numberOfPlays++;
+                    _wrapper.SetNumberOfPlaysForVermieterNovel(numberOfPlays);
+                    break;
+                }
                 case VisualNovelNames.None:
                     break;
                 case VisualNovelNames.VertriebNovel:
@@ -155,6 +162,10 @@ namespace Assets._Scripts.Managers
                 case VisualNovelNames.EinstiegsNovel:
                 {
                     return _wrapper.GetNumberOfPlaysForIntroNovel();
+                }
+                case VisualNovelNames.VermieterNovel:
+                {
+                    return _wrapper.GetNumberOfPlaysForVermieterNovel();
                 }
                 case VisualNovelNames.None:
                 case VisualNovelNames.VertriebNovel:
