@@ -413,18 +413,22 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             foreach (VisualNovel visualNovel in _allKiteNovelsById.Values)
             {
-                NovelEntry novelEntry = new NovelEntry
+                if (visualNovel.isKiteNovel)
                 {
-                    novelId = visualNovel.id,
-                    isContained = true
-                };
-                _isNovelContainedInVersion.Add(novelEntry);
-
-                GameObject novelButton = CreateBurgerMenuButton(visualNovel, content);
-                if (novelButton)
-                {
-                    novelButtonsList.Add(novelButton);
+                    NovelEntry novelEntry = new NovelEntry
+                    {
+                        novelId = visualNovel.id,
+                        isContained = true
+                    };
+                    _isNovelContainedInVersion.Add(novelEntry);
+    
+                    GameObject novelButton = CreateBurgerMenuButton(visualNovel, content);
+                    if (novelButton)
+                    {
+                        novelButtonsList.Add(novelButton);
+                    }
                 }
+                
             }
 
             return novelButtonsList;
