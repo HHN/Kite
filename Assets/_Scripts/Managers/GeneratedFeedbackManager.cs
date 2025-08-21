@@ -55,7 +55,7 @@ namespace Assets._Scripts.Managers
                 {
                     feedbackList = result;
                     DebugPrintAvailableIds();
-                    DebugPrintAllFeedbackEntries();
+                    // DebugPrintAllFeedbackEntries();
                 }));
             }));
         }
@@ -228,7 +228,7 @@ private IEnumerator LoadAllFeedbackWithMappingAsync(
 
 #if UNITY_WEBGL
     // Basis-URL zu Deinen Feedback-Dateien im StreamingAssets
-    string baseUrl = Path.Combine(Application.streamingAssetsPath, "feedbacks");
+    string baseUrl = Application.streamingAssetsPath.TrimEnd('/') + "/feedbacks";
 
     foreach (var kv in folderToId)
     {
