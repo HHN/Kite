@@ -18,7 +18,6 @@ namespace Assets._Scripts.Managers
         private StringBuilder _dialog;
 
         private readonly string _promptPath;
-        private readonly string _knowledgeBasePath;
 
         /// <summary>
         /// Provides functionality to manage prompts and dialogs for a visual novel.
@@ -28,7 +27,6 @@ namespace Assets._Scripts.Managers
         private PromptManager()
         {
             _promptPath = Path.Combine(Application.streamingAssetsPath, "Prompt.txt");
-            _knowledgeBasePath = Path.Combine(Application.streamingAssetsPath, "KnowledgeBase.txt");
         }
 
         /// <summary>
@@ -120,15 +118,21 @@ namespace Assets._Scripts.Managers
         }
 
         /// <summary>
-        /// Loads the knowledge base from a predefined file path and appends its content to the current prompt.
-        /// Uses a callback function to process the file's content on successful load.
-        /// Acts as part of the initialization process to enrich the dialog prompt with additional data.
+        /// Loads the knowledge base from a file located in the Resources directory.
+        /// Appends the content of the file to the existing prompt string builder if the file exists.
+        /// Logs an error if the knowledge base file is not found.
         /// </summary>
         private void LoadKnowledgeBaseFromFile()
         {
-            LoadTextFile(_knowledgeBasePath,
-                content => { _prompt.Append(content).AppendLine(); },
-                "Knowledge base");
+            TextAsset json = Resources.Load<TextAsset>("KnowledgeBase");
+            if (json != null)
+            {
+                _prompt.Append(json.text).AppendLine();
+            }
+            else
+            {
+                Debug.LogError("KnowledgeBase not found in Resources!");
+            }
         }
 
         /// <summary>
@@ -173,15 +177,8 @@ namespace Assets._Scripts.Managers
         /// <param name="line">The line of text to add to the prompt and dialog.</param>
         public void AddLineToPrompt(string line)
         {
-            if (_prompt == null)
-            {
-                _prompt = new StringBuilder();
-            }
-
-            if (_dialog == null)
-            {
-                _dialog = new StringBuilder();
-            }
+            _prompt ??= new StringBuilder();
+            _dialog ??= new StringBuilder();
 
             _prompt.AppendLine(line);
             _dialog.AppendLine(line);
