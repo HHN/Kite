@@ -27,9 +27,8 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private Sprite arrowLeftSprite;
         [SerializeField] private Sprite arrowDownSprite;
 
-        [Header("Strukturelle wirtschaftliche Barrieren")] [SerializeField]
-        private GameObject barrierenInfoGroup;
-
+        [Header("Strukturelle wirtschaftliche Barrieren")] 
+        [SerializeField] private GameObject barrierenInfoGroup;
         [SerializeField] private Image barrierenInfoButtonImage;
         [SerializeField] private Button barrierenInfoButton;
         [SerializeField] private Button finanzierungszugangButton;
@@ -38,9 +37,8 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private Button riskAversionBiasButton;
         [SerializeField] private Button bestaetigungsVerzerrungButton;
 
-        [Header("Gesellschaftliche Erwartungen & soziale Normen")] [SerializeField]
-        private GameObject erwartungenNormenInfoGroup;
-
+        [Header("Gesellschaftliche Erwartungen & soziale Normen")] 
+        [SerializeField] private GameObject erwartungenNormenInfoGroup;
         [SerializeField] private Image erwartungenNormenInfoButtonImage;
         [SerializeField] private Button erwartungenNormenInfoButton;
         [SerializeField] private Button tokenismButton;
@@ -49,9 +47,9 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private Button altersUndGenerationenBiasesButton;
         [SerializeField] private Button stereotypeGegenueberFrauenInNichtTraditionellenBranchenButton;
 
-        [Header("Wahrnehmung & Führungsrollen")] [SerializeField]
+        [Header("Wahrnehmung & Führungsrollen")] 
+        [SerializeField]
         private GameObject wahrnehmungFuehrungsrollenInfoGroup;
-
         [SerializeField] private Image wahrnehmungFuehrungsrollenInfoButtonImage;
         [SerializeField] private Button wahrnehmungFuehrungsrollenInfoButton;
         [SerializeField] private Button heteronormativitaetButton;
@@ -60,9 +58,8 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private Button workLifeBalanceErwartungenButton;
         [SerializeField] private Button geschlechtsspezifischeStereotypeButton;
 
-        [Header("Psychologische Barrieren & kommunikative Hindernisse")] [SerializeField]
-        private GameObject barrierenHindernisseInfoGroup;
-
+        [Header("Psychologische Barrieren & kommunikative Hindernisse")] 
+        [SerializeField] private GameObject barrierenHindernisseInfoGroup;
         [SerializeField] private Image barrierenHindernisseInfoButtonImage;
         [SerializeField] private Button barrierenHindernisseInfoButton;
         [SerializeField] private Button tightropeBiasButton;
@@ -70,7 +67,8 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private Button leistungsattributionsBiasButton;
         [SerializeField] private Button unbewussteBiasInDerKommunikationButton;
 
-        [Header("SearchBar")] [SerializeField] private TMP_InputField inputField;
+        [Header("SearchBar")] 
+        [SerializeField] private TMP_InputField inputField;
         [SerializeField] private Button searchBarButton;
         [SerializeField] private Image searchBarImage;
         [SerializeField] private GameObject searchList;
@@ -118,7 +116,19 @@ namespace Assets._Scripts.Controller.SceneControllers
             InitializeButtonActions();
             AddButtonListeners();
 
-            _biasDetailsText = biasDetailsObject.GetComponentInChildren<TextMeshProUGUI>();
+            _biasDetailsText = null;
+            if (biasDetailsObject)
+            {
+                _biasDetailsText = biasDetailsObject.GetComponentInChildren<TextMeshProUGUI>();
+                if (_biasDetailsText == null)
+                {
+                    Debug.LogWarning("Kein TextMeshProUGUI unter biasDetailsObject gefunden.");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("biasDetailsObject ist nicht zugewiesen.");
+            }
 
             if (inputField)
             {
@@ -147,51 +157,51 @@ namespace Assets._Scripts.Controller.SceneControllers
                 { barrierenHindernisseInfoButton, OnBarrierenHindernisseInfoButton },
 
                 // Structural economic barriers
-                { finanzierungszugangButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.AccessToFunding) },
-                { genderPayGapButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.GenderPayGap) },
-                { unterbewertungWeiblichGefuehrterUnternehmenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.UndervaluationOfWomenLedBusinesses) },
-                { riskAversionBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.RiskAversionBias) },
-                { bestaetigungsVerzerrungButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.ConfirmationBias) },
+                { finanzierungszugangButton, () => ShowBiasDetails(BiasType.AccessToFinancing) },
+                { genderPayGapButton, () => ShowBiasDetails(BiasType.GenderPayGap) },
+                { unterbewertungWeiblichGefuehrterUnternehmenButton, () => ShowBiasDetails(BiasType.UndervaluationFemaleManagedCompany) },
+                { riskAversionBiasButton, () => ShowBiasDetails(BiasType.RiskAversionBias) },
+                { bestaetigungsVerzerrungButton, () => ShowBiasDetails(BiasType.ConfirmationBias) },
 
                 // Societal expectations & social norms
-                { tokenismButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.Tokenism) },
-                { biasInDerWahrnehmungVonFuehrungsFaehigkeitenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.InPerceptionOfLeadershipAbilities) },
-                { benevolenterSexismusButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.BenevolentSexismBias) },
-                { altersUndGenerationenBiasesButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.AgeAndGenerationalBiases) },
-                { stereotypeGegenueberFrauenInNichtTraditionellenBranchenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.StereotypesAgainstWomenInNonTraditionalIndustries) },
+                { tokenismButton, () => ShowBiasDetails(BiasType.Tokenism) },
+                { biasInDerWahrnehmungVonFuehrungsFaehigkeitenButton, () => ShowBiasDetails(BiasType.BiasInThePerceptionOfLeadershipSkills) },
+                { benevolenterSexismusButton, () => ShowBiasDetails(BiasType.BenevolentSexism) },
+                { altersUndGenerationenBiasesButton, () => ShowBiasDetails(BiasType.AgeAndGenerationsBiases) },
+                { stereotypeGegenueberFrauenInNichtTraditionellenBranchenButton, () => ShowBiasDetails(BiasType.StereotypesAboutWomenInNonTraditionalIndustries) },
 
                 // Perception & leadership roles
-                { heteronormativitaetButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.Heteronormativity) },
-                { maternalBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.MaternalBias) },
-                { erwartungshaltungBezueglichFamilienplanungButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.ExpectationsRegardingFamilyPlanning) },
-                { workLifeBalanceErwartungenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.WorkLifeBalanceExpectations) },
-                { geschlechtsspezifischeStereotypeButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.GenderSpecificStereotypes) },
+                { heteronormativitaetButton, () => ShowBiasDetails(BiasType.Heteronormativity) },
+                { maternalBiasButton, () => ShowBiasDetails(BiasType.BiasesAgainstWomenWithChildren) },
+                { erwartungshaltungBezueglichFamilienplanungButton, () => ShowBiasDetails(BiasType.ExpectationsRegardingFamilyPlanning) },
+                { workLifeBalanceErwartungenButton, () => ShowBiasDetails(BiasType.WorkLifeBalanceExpectations) },
+                { geschlechtsspezifischeStereotypeButton, () => ShowBiasDetails(BiasType.GenderSpecificStereotypes) },
 
                 // Psychological barriers & communication obstacles
-                { tightropeBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.TightropeBias) },
-                { mikroaggressionenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.Microaggressions) },
-                { leistungsattributionsBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.PerformanceAttributionBias) },
-                { unbewussteBiasInDerKommunikationButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.UnconsciousBiasInCommunication) },
+                { tightropeBiasButton, () => ShowBiasDetails(BiasType.TightropeBias) },
+                { mikroaggressionenButton, () => ShowBiasDetails(BiasType.Microaggression) },
+                { leistungsattributionsBiasButton, () => ShowBiasDetails(BiasType.PerformanceAttributionBias) },
+                { unbewussteBiasInDerKommunikationButton, () => ShowBiasDetails(BiasType.UnconsciousBiasInCommunication) },
 
-                { searchListFinanzierungszugangButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.AccessToFunding) },
-                { searchListGenderPayGapButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.GenderPayGap) },
-                { searchListUnterbewertungWeiblichGefuehrterUnternehmenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.UndervaluationOfWomenLedBusinesses) },
-                { searchListRiskAversionBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.RiskAversionBias) },
-                { searchListBestaetigungsVerzerrungButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.ConfirmationBias) },
-                { searchListTokenismButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.Tokenism) },
-                { searchListBiasInDerWahrnehmungVonFuehrungsFaehigkeitenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.InPerceptionOfLeadershipAbilities) },
-                { searchListBenevolenterSexismusButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.BenevolentSexismBias) },
-                { searchListAltersUndGenerationenBiasesButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.AgeAndGenerationalBiases) },
-                { searchListStereotypeGegenueberFrauenInNichtTraditionellenBranchenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.StereotypesAgainstWomenInNonTraditionalIndustries) },
-                { searchListHeteronormativitaetButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.Heteronormativity) },
-                { searchListMaternalBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.MaternalBias) },
-                { searchListErwartungshaltungBezueglichFamilienplanungButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.ExpectationsRegardingFamilyPlanning) },
-                { searchListWorkLifeBalanceErwartungenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.WorkLifeBalanceExpectations) },
-                { searchListGeschlechtsspezifischeStereotypeButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.GenderSpecificStereotypes) },
-                { searchListTightropeBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.TightropeBias) },
-                { searchListMikroaggressionenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.Microaggressions) },
-                { searchListLeistungsattributionsBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.PerformanceAttributionBias) },
-                { searchListUnbewussteBiasInDerKommunikationButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.UnconsciousBiasInCommunication) },
+                { searchListFinanzierungszugangButton, () => ShowBiasDetails(BiasType.AccessToFinancing) },
+                { searchListGenderPayGapButton, () => ShowBiasDetails(BiasType.GenderPayGap) },
+                { searchListUnterbewertungWeiblichGefuehrterUnternehmenButton, () => ShowBiasDetails(BiasType.UndervaluationFemaleManagedCompany) },
+                { searchListRiskAversionBiasButton, () => ShowBiasDetails(BiasType.RiskAversionBias) },
+                { searchListBestaetigungsVerzerrungButton, () => ShowBiasDetails(BiasType.ConfirmationBias) },
+                { searchListTokenismButton, () => ShowBiasDetails(BiasType.Tokenism) },
+                { searchListBiasInDerWahrnehmungVonFuehrungsFaehigkeitenButton, () => ShowBiasDetails(BiasType.BiasInThePerceptionOfLeadershipSkills) },
+                { searchListBenevolenterSexismusButton, () => ShowBiasDetails(BiasType.BenevolentSexism) },
+                { searchListAltersUndGenerationenBiasesButton, () => ShowBiasDetails(BiasType.AgeAndGenerationsBiases) },
+                { searchListStereotypeGegenueberFrauenInNichtTraditionellenBranchenButton, () => ShowBiasDetails(BiasType.StereotypesAboutWomenInNonTraditionalIndustries) },
+                { searchListHeteronormativitaetButton, () => ShowBiasDetails(BiasType.Heteronormativity) },
+                { searchListMaternalBiasButton, () => ShowBiasDetails(BiasType.BiasesAgainstWomenWithChildren) },
+                { searchListErwartungshaltungBezueglichFamilienplanungButton, () => ShowBiasDetails(BiasType.ExpectationsRegardingFamilyPlanning) },
+                { searchListWorkLifeBalanceErwartungenButton, () => ShowBiasDetails(BiasType.WorkLifeBalanceExpectations) },
+                { searchListGeschlechtsspezifischeStereotypeButton, () => ShowBiasDetails(BiasType.GenderSpecificStereotypes) },
+                { searchListTightropeBiasButton, () => ShowBiasDetails(BiasType.TightropeBias) },
+                { searchListMikroaggressionenButton, () => ShowBiasDetails(BiasType.Microaggression) },
+                { searchListLeistungsattributionsBiasButton, () => ShowBiasDetails(BiasType.PerformanceAttributionBias) },
+                { searchListUnbewussteBiasInDerKommunikationButton, () => ShowBiasDetails(BiasType.UnconsciousBiasInCommunication) },
 
                 { searchBarButton, CloseSearchBar }
             };
@@ -214,7 +224,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// and updating the corresponding content text.
         /// </summary>
         /// <param name="type">The type of bias to display, represented as a BiasType enum.</param>
-        private void ShowBiasDetails(BiasDescriptionTexts.BiasType type)
+        private void ShowBiasDetails(BiasType type)
         {
             if (searchList.activeInHierarchy) searchList.SetActive(false);
 
