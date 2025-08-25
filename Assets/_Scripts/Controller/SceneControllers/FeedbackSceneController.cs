@@ -101,6 +101,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             {
                 Debug.Log("Feedback wurde gefunden!");
                 novelToPlay.feedback = GeneratedFeedbackManager.Instance.GetFeedback();
+                novelToPlay.feedback = novelToPlay.feedback.Replace("**", "");
                 SaveDialogToHistory(novelToPlay.feedback);
             }
 
