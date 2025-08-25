@@ -178,8 +178,6 @@ namespace Assets._Scripts._Mappings
                     Debug.LogWarning($"Unknown BiasType in JSON: {typeStr}");
                 }
             }
-
-            Debug.Log($"Loaded {_biases.Count} biases from JSON");
         }
 
 

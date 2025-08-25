@@ -18,6 +18,7 @@ namespace Assets._Scripts.Managers
         [SerializeField] private int numberOfPlaysForPresseNovel;
         [SerializeField] private int numberOfPlaysForHonorarNovel;
         [SerializeField] private int numberOfPlaysForIntroNovel;
+        [SerializeField] private int numberOfPlaysForVermieterNovel;
 
         /// <summary>
         /// Updates the number of plays for the Bankkredit novel to the specified value.
@@ -40,6 +41,29 @@ namespace Assets._Scripts.Managers
         {
             return numberOfPlaysForBankkreditNovel;
         }
+        
+        /// <summary>
+        /// Updates the number of plays for the Vermieter novel to the specified value.
+        /// </summary>
+        /// <param name="numberOfPlaysForVermieterNovel">
+        /// The updated number of plays for the Vermieter novel.
+        /// </param>
+        public void SetNumberOfPlaysForVermieterNovel(int numberOfPlaysForVermieterNovel)
+        {
+            this.numberOfPlaysForVermieterNovel = numberOfPlaysForVermieterNovel;
+        }
+        
+        /// <summary>
+        /// Retrieves the current number of plays for the Vermieter novel.
+        /// </summary>
+        /// <returns>
+        /// The total number of times the Vermieter novel has been played.
+        /// </returns>
+        public int GetNumberOfPlaysForVermieterNovel()
+        {
+            return numberOfPlaysForVermieterNovel;
+        }
+
 
         /// <summary>
         /// Updates the number of plays for the Investor novel to the specified value.
