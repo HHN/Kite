@@ -114,7 +114,7 @@ namespace Assets._Scripts.Biases
             return discriminationBias switch
             {
                 DiscriminationBias.None => "",
-                DiscriminationBias.AccessToFunding => "Hier wird folgender Bias relevant: AccessToFunding",
+                DiscriminationBias.AccessToFunding => "Hier wird folgender Bias relevant: AccessToFinancing",
                 DiscriminationBias.GenderPayGap => "Hier wird folgender Bias relevant: Gender Pay Gap",
                 DiscriminationBias.UndervaluationOfWomenLedBusinesses => "Hier wird folgender Bias relevant: Unterbewertung weiblich geführter Unternehmen",
                 DiscriminationBias.RiskAversionBias => "Hier wird folgender Bias relevant: Risk Aversion Bias",
@@ -144,25 +144,25 @@ namespace Assets._Scripts.Biases
         /// </summary>
         private static readonly Dictionary<string, string> BiasMap = new(StringComparer.OrdinalIgnoreCase)
         {
-            { "AccessToFunding", "Access To Funding" },
+            { "AccessToFinancing", "Access To Funding" },
             { "GenderPayGap", "Gender Pay Gap" },
-            { "UndervaluationOfWomenLedBusinesses", "Unterbewertung weiblich geführter Unternehmen" },
+            { "UndervaluationFemaleManagedCompany", "Unterbewertung weiblich geführter Unternehmen" },
             { "RiskAversionBias", "Risk Aversion Bias" },
             { "ConfirmationBias", "Bestätigungsverzerrung" },
             { "Tokenism", "Tokenism" },
-            { "InPerceptionOfLeadershipAbilities", "Bias in der Wahrnehmung von Führungsfähigkeiten" },
-            { "AgeAndGenerationalBiases", "Alters- und Generationen-Biases" },
-            { "StereotypesAgainstWomenInNonTraditionalIndustries", "Stereotype gegenüber Frauen in nicht-traditionellen Branchen" },
-            { "MaternalBias", "Maternal Bias" },
+            { "BiasInThePerceptionOfLeadershipSkills", "Bias in der Wahrnehmung von Führungsfähigkeiten" },
+            { "AgeAndGenerationsBiases", "Alters- und Generationen-Biases" },
+            { "StereotypesAboutWomenInNonTraditionalIndustries", "Stereotype gegenüber Frauen in nicht-traditionellen Branchen" },
+            { "BiasesAgainstWomenWithChildren", "Maternal Bias" },
             { "ExpectationsRegardingFamilyPlanning", "Hier wird folgender Bias relevant: Erwartungshaltung bezüglich Familienplanung" },
             { "WorkLifeBalanceExpectations", "Work-Life-Balance-Erwartungen" },
             { "GenderSpecificStereotypes", "Geschlechtsspezifische Stereotypen" },
             { "TightropeBias", "Doppelte Bindung (Tightrope Bias)" },
-            { "Microaggressions", "Mikroaggressionen" },
+            { "Microaggression", "Mikroaggressionen" },
             { "PerformanceAttributionBias", "Leistungsattributions-Bias" },
             { "UnconsciousBiasInCommunication", "Unbewusster Bias in der Kommunikation" },
             { "Heteronormativity", "Heteronormativität" },
-            { "BenevolentSexismBias", "Benevolenter Sexismus" }
+            { "BenevolentSexism", "Benevolenter Sexismus" }
         };
 
         /// <summary>

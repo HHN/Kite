@@ -335,8 +335,6 @@ namespace Assets._Scripts.Controller.SceneControllers
                 RectTransform leftButton = novelButtonsContainer.GetChild(middleIndex - 1).GetComponent<RectTransform>();
                 RectTransform rightButton = novelButtonsContainer.GetChild(middleIndex + 1).GetComponent<RectTransform>();
 
-                Debug.Log("Ungerade Anzahl: Mitte ist " + middleButton.name + ". Links: " + leftButton.name + ", Rechts: " + rightButton.name);
-
                 yield return new WaitForSeconds(1f);
                 SnapToButton(rightButton);
 
@@ -355,8 +353,6 @@ namespace Assets._Scripts.Controller.SceneControllers
 
                 RectTransform middleButton1 = novelButtonsContainer.GetChild(middleIndex1).GetComponent<RectTransform>();
                 RectTransform middleButton2 = novelButtonsContainer.GetChild(middleIndex2).GetComponent<RectTransform>();
-
-                Debug.Log("Gerade Anzahl: Die zwei mittleren Elemente sind " + middleButton1.name + " und " + middleButton2.name);
 
                 yield return new WaitForSeconds(1f);
                 SnapToButton(middleButton2);

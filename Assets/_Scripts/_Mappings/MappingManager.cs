@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Assets._Scripts.Biases;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -17,12 +18,11 @@ namespace Assets._Scripts._Mappings
         private static MappingManager _instance;
 
         // Mapping-Files
-        private static readonly string MappingFileBias;
         private static readonly string MappingFileFaceExpression;
         private static readonly string MappingFileCharacter;
 
         // Dictionaries to store the mappings for bias, face expression, and characters
-        private static Dictionary<string, string> _biasMapping = new Dictionary<string, string>();
+        private static Dictionary<BiasType, Bias> _biases = new Dictionary<BiasType, Bias>();
         private static Dictionary<string, int> _faceExpressionMapping = new Dictionary<string, int>();
         private static Dictionary<string, int> _characterMapping = new Dictionary<string, int>();
 
@@ -33,11 +33,10 @@ namespace Assets._Scripts._Mappings
         static MappingManager()
         {
             // For WebGL, we use the StreamingAssets folder, but WebGL files need to be accessed asynchronously
-            MappingFileBias = Path.Combine(Application.streamingAssetsPath, "KnowledgeBase.txt");
             MappingFileFaceExpression = Path.Combine(Application.streamingAssetsPath, "FaceExpressionMapping.txt");
             MappingFileCharacter = Path.Combine(Application.streamingAssetsPath, "CharacterMapping.txt");
 
-            LoadBiasMappingAsync();
+            LoadBiasesFromJson();    
             LoadFaceExpressionMappingAsync();
             LoadCharacterMappingAsync();
         }
@@ -62,44 +61,6 @@ namespace Assets._Scripts._Mappings
 
                 return _instance;
             }
-        }
-
-        /// <summary>
-        /// Asynchronously loads the bias mapping data from the appropriate source based on the target platform.
-        /// For WebGL, the file is accessed via a UnityWebRequest, while for other platforms the file is read directly from disk.
-        /// On a successful load, the file content is processed to populate the bias mapping dictionary.
-        /// Logs warnings or errors when the file is not found or cannot be loaded.
-        /// </summary>
-        private static void LoadBiasMappingAsync()
-        {
-#if UNITY_WEBGL
-            // For WebGL, use UnityWebRequest to load the file asynchronously
-            UnityWebRequest www = UnityWebRequest.Get(MappingFileBias);
-            www.SendWebRequest().completed += _ =>
-            {
-                if (www.result == UnityWebRequest.Result.Success)
-                {
-                    // Split the downloaded content into lines
-                    string[] lines = www.downloadHandler.text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-                    ParseBiasMappingFromKnowledgeBase(lines, ref _biasMapping);
-                }
-                else
-                {
-                    Application.ExternalCall("logMessage", "Error loading bias mapping: " + www.error);
-                }
-            };
-#else
-            // For other platforms, read directly from the file system
-            if (File.Exists(filePath))
-            {
-                string[] lines = File.ReadAllLines(filePath);
-                ParseBiasMappingFromKnowledgeBase(lines, ref _biasMapping);
-            }
-            else
-            {
-                Debug.LogWarning($"Bias mapping file not found at: {filePath}");
-            }
-#endif
         }
 
         /// <summary>
@@ -177,30 +138,48 @@ namespace Assets._Scripts._Mappings
         }
 
         /// <summary>
-        /// Parses bias mapping data from an array of lines and populate a dictionary
-        /// with mappings between English and German terms.
+        /// Loads bias data from a JSON file and populates the internal dictionary of biases.
+        /// This method is responsible for parsing the JSON, mapping the bias types,
+        /// and logging any errors or warnings for invalid or unknown bias types.
         /// </summary>
-        /// <param name="lines">An array of strings representing lines of textual data, where English terms
-        /// and corresponding German terms are specified in sequence.</param>
-        /// <param name="mapping">A reference to a dictionary where the parsed mappings between English and German terms
-        /// will be stored.</param>
-        private static void ParseBiasMappingFromKnowledgeBase(string[] lines, ref Dictionary<string, string> mapping)
+        private static void LoadBiasesFromJson()
         {
-            for (int i = 0; i < lines.Length - 1; i++)
+            TextAsset json = Resources.Load<TextAsset>("KnowledgeBase");
+            if (json == null)
             {
-                string german = lines[i].Trim();
-                string biasLine = lines[i + 1].Trim();
-
-                if (biasLine.StartsWith(">>Bias|") && biasLine.EndsWith("<<"))
+                Debug.LogError("Bias JSON not found in Resources!");
+                return;
+            }
+            
+            var wrapper = JsonUtility.FromJson<BiasJsonWrapper>(json.text);
+            
+            _biases = new Dictionary<BiasType, Bias>();
+            
+            foreach (var item in wrapper.items)
+            {
+                string typeStr = item.type;
+                if (typeStr.StartsWith(">>Bias|") && typeStr.EndsWith("<<"))
                 {
-                    string english = biasLine.Substring(7, biasLine.Length - 9).Trim(); // Extrahiere Bias-Namen
-                    if (!string.IsNullOrEmpty(english) && !string.IsNullOrEmpty(german))
+                    typeStr = typeStr.Substring(7, typeStr.Length - 9).Trim();
+                }
+
+                if (Enum.TryParse(typeStr, out BiasType biasType))
+                {
+                    _biases[biasType] = new Bias
                     {
-                        mapping.TryAdd(english, german);
-                    }
+                        biasType = biasType,
+                        headline = item.headline,
+                        preview = item.preview,
+                        description = item.description
+                    };
+                }
+                else
+                {
+                    Debug.LogWarning($"Unknown BiasType in JSON: {typeStr}");
                 }
             }
         }
+
 
         /// <summary>
         /// Processes the face expression mapping file lines and populates the given dictionary with mappings.
@@ -278,20 +257,40 @@ namespace Assets._Scripts._Mappings
         }
 
         /// <summary>
-        /// Maps a given English bias term to its corresponding German translation using the loaded dictionary.
-        /// If the mapping is not found, returns the original English bias as a fallback.
+        /// Maps a bias type represented by a string to its corresponding headline if it exists.
+        /// If the string does not match a valid BiasType, a warning is logged, and the input string is returned.
         /// </summary>
-        /// <param name="englishBias">The bias term in English to be translated.</param>
-        /// <returns>The corresponding German translation if found; otherwise, the original English bias.</returns>
-        public static string MapBias(string englishBias)
+        /// <param name="typeString">The string representing the bias type to map.</param>
+        /// <returns>The corresponding headline for the bias type if found; otherwise, the input string or enum value as a string.</returns>
+        public static string MapBias(string typeString)
         {
-            if (_biasMapping.TryGetValue(englishBias, out string germanBias))
+            // Versuche den String in das BiasType Enum zu parsen
+            if (Enum.TryParse(typeString, out BiasType type))
             {
-                return germanBias;
+                // Wenn das Parsen erfolgreich war, hole die Headline
+                if (_biases.TryGetValue(type, out Bias bias))
+                {
+                    return bias.headline;
+                }
+                Debug.LogWarning($"Bias mapping not found for enum value: {type}");
+                return type.ToString();
             }
 
-            Debug.LogWarning($"Bias mapping not found for: {englishBias}");
-            return englishBias; // Fallback to the original if no mapping is found
+            // Wenn der String kein gültiger Enum-Wert ist
+            Debug.LogWarning($"Invalid BiasType string: {typeString}");
+            return typeString;
+        }
+
+        /// <summary>
+        /// Retrieves a dictionary containing all available biases, mapped to their corresponding bias types.
+        /// This method provides access to the centralized storage of bias data used throughout the application.
+        /// </summary>
+        /// <returns>
+        /// A dictionary where the keys represent the bias types as <see cref="BiasType"/>, and the values are the corresponding <see cref="Bias"/> objects.
+        /// </returns>
+        public static Dictionary<BiasType, Bias> GetAllBiases()
+        {
+            return _biases;
         }
 
         /// <summary>

@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Assets._Scripts.Managers;
 using Assets._Scripts.SceneManagement;
 using TMPro;
@@ -49,7 +52,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             BackStackManager.Instance().Push(SceneNames.PlayInstructionScene);
             
             backgroundColor = PlayManager.Instance().GetColorOfVisualNovelToPlay();
-            novelName.text = PlayManager.Instance().GetDesignationOfNovelToPlay();
+            novelName.text = BalanceLineBreaks(PlayManager.Instance().GetDesignationOfNovelToPlay());
             novelImage.color = backgroundColor;
             toggle.isOn = false;
             toggle2.isOn = false;
@@ -106,6 +109,51 @@ namespace Assets._Scripts.Controller.SceneControllers
             checkBoxImage1.color = NovelColorManager.Instance().GetColor();
             checkBoxImage2.color = NovelColorManager.Instance().GetColor();
             headerImage.color = NovelColorManager.Instance().GetColor();
+        }
+
+        /// <summary>
+        /// Balances line breaks in a given input string to ensure text is evenly distributed across multiple lines.
+        /// </summary>
+        /// <param name="input">The input string to be formatted with balanced line breaks.</param>
+        /// <param name="maxLineCount">The maximum number of lines the text should be distributed across. Defaults to 2.</param>
+        /// <returns>A string with line breaks added to balance the text across the specified number of lines.</returns>
+        private static string BalanceLineBreaks(string input, int maxLineCount = 2)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+                return input;
+
+            var words = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+            if (words.Length == 1)
+                return input;
+
+            int totalLength = words.Sum(w => w.Length);
+
+            int targetLength = totalLength / maxLineCount;
+
+            var lines = new List<string>();
+            var currentLine = new List<string>();
+            int currentLength = 0;
+
+            foreach (var word in words)
+            {
+                if (currentLength + word.Length > targetLength && lines.Count < maxLineCount - 1)
+                {
+                    lines.Add(string.Join(" ", currentLine));
+                    currentLine.Clear();
+                    currentLength = 0;
+                }
+
+                currentLine.Add(word);
+                currentLength += word.Length + 1;
+            }
+
+            if (currentLine.Any())
+            {
+                lines.Add(string.Join(" ", currentLine));
+            }
+
+            return string.Join(Environment.NewLine, lines);
         }
     }
 }
