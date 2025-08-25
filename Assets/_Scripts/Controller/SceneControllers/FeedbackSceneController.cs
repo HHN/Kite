@@ -95,9 +95,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             _dialog = PromptManager.Instance().GetDialog();
             _dialog = _dialog.Replace("Bitte beachte, dass kein Teil des Dialogs in das Feedback darf.", "");
             
-            
-            feedbackLinkText.SetText("Erzähl uns fünf Minuten was Dir aufgefallen ist – dein Feedback hilft uns, KITE II weiterzuentwickeln.\n" +
-                                     $"<color={LinkColor}><link=\"https://9bxji5742ys.typeform.com/to/bNxpDQWc\"><u>[Zur Umfrage]</u></link></color>");
             hintText.SetText("Hinweis: Analyse und Feedback wurden durch KI künstlich erzeugt. Eine individuelle Beratung wird hierdurch nicht ersetzt.");
             
             if (GeneratedFeedbackManager.Instance.HasEventsForId((int)novelToPlay.id))
