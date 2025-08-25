@@ -1,12 +1,31 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Assets._Scripts.Novel;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
 
 namespace Assets._Scripts.Managers
 {
+    
+    [System.Serializable]
+    public class KnowledgeItem
+    {
+        public string type;
+        public string category;
+        public string headline;
+        public string bias;
+    }
+    
+    [System.Serializable]
+    public class KnowledgeBase
+    {
+        public string title;
+        public List<KnowledgeItem> items;
+    }
+    
     /// <summary>
     /// Manages the process of building and handling dialog prompts for a visual novel.
     /// This class is implemented as a singleton to ensure a single instance throughout the application.
@@ -127,7 +146,15 @@ namespace Assets._Scripts.Managers
             TextAsset json = Resources.Load<TextAsset>("KnowledgeBase");
             if (json != null)
             {
-                _prompt.Append(json.text).AppendLine();
+                KnowledgeBase kb = JsonUtility.FromJson<KnowledgeBase>(json.text);
+                foreach (var item in kb.items)
+                {
+                    _prompt.AppendLine($"{item.type}");
+                    _prompt.AppendLine($"{item.category}");
+                    _prompt.AppendLine($"{item.headline}");
+                    _prompt.AppendLine($"{item.bias}");
+                    _prompt.AppendLine();
+                }
             }
             else
             {
