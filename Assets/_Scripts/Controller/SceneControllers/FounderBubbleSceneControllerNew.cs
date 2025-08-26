@@ -75,7 +75,10 @@ namespace Assets._Scripts.Controller.SceneControllers
         private List<NovelEntry> _isNovelContainedInVersion;
         private int _novelId;
         private Transform _lastScaledNovelButton;
-        private int buttonCount;
+        private int _buttonCount;
+        private Coroutine _initialScrollRoutine;
+        private Coroutine _snapCoroutine;
+        private bool _userInterrupted;
 
         #region Unity Lifecycle
 
@@ -100,9 +103,21 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             if (GameManager.Instance.IsIntroNovelLoadedFromMainMenu)
             {
-                StartCoroutine(PerformInitialScrolling());
+                _initialScrollRoutine = StartCoroutine(PerformInitialScrolling());
                 
                 GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
+            }
+        }
+
+        /// <summary>
+        /// Updates the state of the FoundersBubble scene on each frame.
+        /// Stops the initial scrolling routine if user input is detected to interrupt it.
+        /// </summary>
+        private void Update()
+        {
+            if (!_userInterrupted && UserInterruptedByInput())
+            {
+                InterruptScrolling();
             }
         }
 
@@ -248,7 +263,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 }
             }
 
-            buttonCount = novelButtonsContainer.childCount;
+            _buttonCount = novelButtonsContainer.childCount;
 
             // Force canvas update to reflect changes
             Canvas.ForceUpdateCanvases();
@@ -325,10 +340,10 @@ namespace Assets._Scripts.Controller.SceneControllers
             float tempScrollDuration = scrollDuration;
             scrollDuration = 1.5f;
 
-            if (buttonCount % 2 != 0)
+            if (_buttonCount % 2 != 0)
             {
                 // Finde das mittlere Element
-                int middleIndex = buttonCount / 2;
+                int middleIndex = _buttonCount / 2;
                 RectTransform middleButton = novelButtonsContainer.GetChild(middleIndex).GetComponent<RectTransform>();
 
                 // Finde das Element links und rechts davon
@@ -348,8 +363,8 @@ namespace Assets._Scripts.Controller.SceneControllers
             else
             {
                 // Finde die beiden mittleren Elemente
-                int middleIndex1 = buttonCount / 2 - 1;
-                int middleIndex2 = buttonCount / 2;
+                int middleIndex1 = _buttonCount / 2 - 1;
+                int middleIndex2 = _buttonCount / 2;
 
                 RectTransform middleButton1 = novelButtonsContainer.GetChild(middleIndex1).GetComponent<RectTransform>();
                 RectTransform middleButton2 = novelButtonsContainer.GetChild(middleIndex2).GetComponent<RectTransform>();
@@ -377,7 +392,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             yield return null;
             novelButtonsScrollRect.horizontalNormalizedPosition = 0.5f;
-            // OnScroll(new Vector2(scrollRect.horizontalNormalizedPosition, 0));
         }
 
         #endregion
@@ -439,7 +453,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             // Initialize index for placing UI elements in order
             int currentSiblingIndex = 1;
 
-            // Find search and background elements to keep at top of the menu
+            // Find search and background elements to keep at the top of the menu
             List<Transform> searchAndBackground = new List<Transform>();
             foreach (Transform child in content)
             {
@@ -641,6 +655,40 @@ namespace Assets._Scripts.Controller.SceneControllers
             SceneLoader.LoadSettingsScene();
         }
 
+        private void InterruptScrolling()
+        {
+            _userInterrupted = true;
+
+            if (_initialScrollRoutine != null)
+            {
+                StopCoroutine(_initialScrollRoutine);
+                _initialScrollRoutine = null;
+            }
+
+            if (_snapCoroutine != null)
+            {
+                StopCoroutine(_snapCoroutine);
+                _snapCoroutine = null;
+            }
+        }
+
+        private bool UserInterruptedByInput()
+        {
+            // Tastatur-Eingaben
+            if (Input.anyKey || Input.anyKeyDown)
+                return true;
+
+            // Maus-Klick oder gehaltene Taste
+            if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(0))
+                return true;
+
+            // Touch-Eingabe (Tap oder Ziehen)
+            if (Input.touchCount > 0)
+                return true;
+
+            return false;
+        }
+
         #endregion
 
         #region Menu Management
@@ -837,6 +885,11 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private bool SnapToButton(RectTransform buttonRect)
         {
+            if (_snapCoroutine != null)
+            {
+                StopCoroutine(_snapCoroutine);
+            }
+            
             float viewportWidth = novelButtonsScrollRect.viewport.rect.width;
 
             float buttonCenterXInContent = buttonRect.anchoredPosition.x;
@@ -855,7 +908,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             normalizedPosition = Mathf.Clamp01(normalizedPosition);
 
-            StartCoroutine(SmoothScrollToPosition(normalizedPosition, scrollDuration));
+            _snapCoroutine = StartCoroutine(SmoothScrollToPosition(normalizedPosition, scrollDuration));
             return false;
         }
 

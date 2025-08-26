@@ -137,9 +137,10 @@ namespace Assets._Scripts.Managers
         }
 
         /// <summary>
-        /// Loads the knowledge base from a file located in the Resources directory.
-        /// Appends the content of the file to the existing prompt string builder if the file exists.
-        /// Logs an error if the knowledge base file is not found.
+        /// Loads the knowledge base from a JSON file located in the Resources folder.
+        /// Parses the JSON content into a KnowledgeBase object and appends its items to the prompt.
+        /// Ensures the inclusion of details such as type, category, headline, and bias for each knowledge item.
+        /// Logs an error message if the knowledge base file is not found.
         /// </summary>
         private void LoadKnowledgeBaseFromFile()
         {
