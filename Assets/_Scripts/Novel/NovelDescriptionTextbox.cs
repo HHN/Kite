@@ -127,14 +127,14 @@ namespace Assets._Scripts.Novel
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
 
-            if (ShowPlayInstructionManager.Instance().ShowInstruction() && visualNovelToDisplay.title != "EinstiegsNovel")
-            {
-                SceneLoader.LoadPlayInstructionScene();
-            }
-            else
-            {
+            // if (ShowPlayInstructionManager.Instance().ShowInstruction() && visualNovelToDisplay.title != "EinstiegsNovel")
+            // {
+            //     SceneLoader.LoadPlayInstructionScene();
+            // }
+            // else
+            // {
                 SceneLoader.LoadPlayNovelScene();
-            }
+            // }
         }
 
         /// <summary>

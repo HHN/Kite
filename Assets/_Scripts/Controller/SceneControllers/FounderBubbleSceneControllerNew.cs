@@ -32,43 +32,39 @@ namespace Assets._Scripts.Controller.SceneControllers
     /// </summary>
     public class FounderBubbleSceneControllerNew : MonoBehaviour
     {
-        [Header("UI Elements")] [SerializeField]
-        private NovelDescriptionTextbox novelDescriptionTextbox;
-
+        [Header("UI Elements")] 
+        [SerializeField] private NovelDescriptionTextbox novelDescriptionTextbox;
         [SerializeField] private ScrollRect novelButtonsScrollRect;
         [SerializeField] private Transform novelButtonsContainer;
         [SerializeField] private GameObject introNovelButton;
         [SerializeField] private HorizontalLayoutGroup horizontalLayoutGroup;
         [SerializeField] private GameObject novelButtonPrefab;
 
-        [Header("Burger Menu")] [SerializeField]
-        private GameObject burgerMenu;
-
+        [Header("Burger Menu")] 
+        [SerializeField] private GameObject burgerMenu;
         [SerializeField] private GameObject burgerMenuHeadlinePrefab;
         [SerializeField] private GameObject burgerMenuButtonPrefab;
         [SerializeField] private GameObject burgerMenuSeparatorImage;
         [SerializeField] private List<GameObject> burgerMenuButtons;
         [SerializeField] private bool isBurgerMenuOpen;
 
-        [Header("Navigation Buttons")] [SerializeField]
-        private Button legalInformationButton;
-
+        [Header("Navigation Buttons")] 
+        [SerializeField] private Button legalInformationButton;
         [SerializeField] private Button settingsButton;
         [SerializeField] private Button novelListButtonToOpen;
         [SerializeField] private Button novelListButtonToClose;
         [SerializeField] private Button burgerMenuBackground;
 
-        [Header("Layout Settings")] [SerializeField]
-        private float scrollDuration = 0.3f;
-
+        [Header("Layout Settings")] 
+        [SerializeField] private float scrollDuration = 0.3f;
         [SerializeField] private int yOffsetForZigzag = 100;
 
-        [Header("State Management")] [SerializeField]
-        private bool isPopupOpen;
-
+        [Header("State Management")] 
+        [SerializeField] private bool isPopupOpen;
         [SerializeField] private VisualNovelNames currentlyOpenedVisualNovelPopup;
 
-        [Header("Audio")] [SerializeField] private GameObject selectNovelSoundPrefab;
+        [Header("Audio")] 
+        [SerializeField] private GameObject selectNovelSoundPrefab;
 
         private Dictionary<long, VisualNovel> _allKiteNovelsById;
         private RectTransform _lastNovelButtonRectTransform;
@@ -292,8 +288,8 @@ namespace Assets._Scripts.Controller.SceneControllers
                         }
 
                         introNovelButton.GetComponentInChildren<Button>().onClick.AddListener(OnIntroNovelButton);
-                        introNovelButton.GetComponentInChildren<Button>().name = visualNovel.title;
-                        introNovelButton.GetComponentInChildren<TextMeshProUGUI>().text = !visualNovel.isKiteNovel ? visualNovel.title : visualNovel.designation;
+                        introNovelButton.GetComponentInChildren<Button>().name = "Mehr zu\nKITE II";
+                        introNovelButton.GetComponentInChildren<TextMeshProUGUI>().text = "Mehr zu\nKITE II";
                     }
                 }
             }
@@ -598,28 +594,24 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Loads and plays the introduction novel based on the currently selected button in the UI.
-        /// Retrieves the novel name from the button's name, determines the corresponding visual novel,
-        /// and initializes it as an introductory novel to be played.
+        /// Handles the event triggered when the introductory novel button is clicked.
+        /// Retrieves and validates the corresponding novel using its identifier,
+        /// updates the current visual novel's theme color, clears the navigation stack,
+        /// and loads the play instruction scene.
         /// </summary>
         private void OnIntroNovelButton()
         {
-            RectTransform buttonRect = EventSystem.current.currentSelectedGameObject.GetComponent<RectTransform>();
-            string buttonObjectName = buttonRect.gameObject.name.Replace("sdialog", "");
-            VisualNovelNames novelNames = VisualNovelNamesHelper.ValueByString(buttonObjectName);
-
-            Image[] images = buttonRect.GetComponentsInChildren<Image>(true);
-
-            foreach (Image img in images)
+            _novelId = VisualNovelNamesHelper.ToInt(VisualNovelNames.EinstiegsNovel);
+            if (!_allKiteNovelsById.TryGetValue(_novelId, out VisualNovel currentNovel))
             {
-                if (img.gameObject.name.Contains("buttonObjectName"))
-                {
-                    img.gameObject.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
-                    _lastScaledNovelButton = img.gameObject.transform;
-                }
+                Debug.LogError($"Novel mit ID {_novelId} nicht im Dictionary gefunden.");
+                return;
             }
-
-            LoadAndPlayNovel(novelNames, true);
+            
+            NovelColorManager.Instance().SetColor(currentNovel.novelColor);
+            
+            BackStackManager.Instance().Clear();
+            SceneLoader.LoadPlayInstructionScene();
         }
 
         /// <summary>
