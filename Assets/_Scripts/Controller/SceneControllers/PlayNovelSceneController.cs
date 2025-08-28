@@ -1187,10 +1187,8 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             if (_novelImagesController != null && savedData.CharacterPrefabData != null)
             {
-                Debug.Log($"_novelImagesController: {_novelImagesController}");
                 if (savedData.CharacterPrefabData.TryGetValue(searchId, out CharacterData characterData))
                 {
-                    Debug.Log($"searchId: {searchId}, characterData: {characterData}");
                     // Set character attributes based on the found controller
                     ApplyCharacterData(_novelImagesController, characterData);
                 }

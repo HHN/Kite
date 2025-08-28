@@ -610,7 +610,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             
             NovelColorManager.Instance().SetColor(currentNovel.novelColor);
             
-            BackStackManager.Instance().Clear();
             SceneLoader.LoadPlayInstructionScene();
         }
 
