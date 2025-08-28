@@ -14,17 +14,6 @@ using UnityEngine.UI;
 namespace Assets._Scripts.Controller.SceneControllers
 {
     /// <summary>
-    /// Represents an entry for a novel, containing its unique identifier
-    /// and whether it is included in the current version.
-    /// </summary>
-    [System.Serializable]
-    public class NovelEntry
-    {
-        public long novelId;
-        public bool isContained;
-    }
-
-    /// <summary>
     /// Manages the behavior and interactions within the FoundersBubble scene of the application.
     /// This includes handling user input on visual novel buttons, managing introductory novels,
     /// and responding to interactions with background elements while considering

@@ -5,6 +5,17 @@ using UnityEngine;
 namespace Assets._Scripts.Managers
 {
     /// <summary>
+    /// Represents an entry for a novel, containing its unique identifier
+    /// and whether it is included in the current version.
+    /// </summary>
+    [System.Serializable]
+    public class NovelEntry
+    {
+        public long novelId;
+        public bool isContained;
+    }
+    
+    /// <summary>
     /// Singleton manager class for handling operations related to Kite visual novels.
     /// Provides methods to manage, access, and verify the state of loaded Kite visual novels.
     /// </summary>

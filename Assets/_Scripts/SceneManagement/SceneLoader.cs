@@ -22,7 +22,7 @@ namespace Assets._Scripts.SceneManagement
         private static readonly HashSet<string> SingleLoadExceptions = new HashSet<string>
         {
             "FeedBackScene",
-            "FoundersBubbleTestScene"
+            "FoundersBubbleScene"
         };
 
         /// <summary>
