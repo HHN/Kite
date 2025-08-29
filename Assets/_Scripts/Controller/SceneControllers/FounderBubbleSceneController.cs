@@ -75,12 +75,22 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void Start()
         {
             InitializeManagersAndState();
+
+            SetupMainNovelTiles();
+            
             Transform content = GetBurgerMenuContentTransform();
             if (!content) return;
-
             SetupBurgerMenuUI(content);
-            SetupMainNovelTiles();
-            SetupIntroNovelButton();
+
+            if (GameManager.Instance.ShowKiteNovels)
+            {
+                SetupIntroNovelButton();
+            }
+            else
+            {
+                introNovelButton.SetActive(false);
+            }
+            
             AddEventListeners();
             PerformPostUISetupActions();
             
@@ -125,13 +135,16 @@ namespace Assets._Scripts.Controller.SceneControllers
             currentlyOpenedVisualNovelPopup = VisualNovelNames.None;
 
             List<VisualNovel> allKiteNovelsList = KiteNovelManager.Instance().GetAllKiteNovels();
+            
             _allKiteNovelsById = allKiteNovelsList.ToDictionary(novel => novel.id);
             _isNovelContainedInVersion = new List<NovelEntry>();
-
+            
+            bool showKite = GameManager.Instance.ShowKiteNovels;
+            
             foreach (VisualNovel novel in allKiteNovelsList)
             {
-                if (!novel.isKiteNovel) continue;
-
+                if (novel.isKiteNovel != showKite) continue;
+            
                 NovelEntry novelEntry = new NovelEntry
                 {
                     novelId = novel.id,
@@ -140,27 +153,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 _isNovelContainedInVersion.Add(novelEntry);
             }
         }
-
-        /// <summary>
-        /// Sets up the UI for the burger menu by creating and organizing its content.
-        /// Instantiates the headline element, generates buttons for available visual novels,
-        /// and sorts these buttons alphabetically before adding them to the menu in the correct order.
-        /// </summary>
-        /// <param name="content">The transform representing the container within which the burger menu elements will be organized.</param>
-        private void SetupBurgerMenuUI(Transform content)
-        {
-            InstantiateHeadline(content);
-            List<GameObject> novelButtonsToSort = CreateAndCollectNovelButtons(content);
-
-            novelButtonsToSort = novelButtonsToSort.OrderBy(btn =>
-            {
-                TextMeshProUGUI textMesh = btn.GetComponentInChildren<TextMeshProUGUI>();
-                return textMesh ? textMesh.text : btn.name;
-            }).ToList();
-
-            ReorderBurgerMenuItems(content, novelButtonsToSort);
-        }
-
+        
         /// <summary>
         /// Configures and populates the visual novel tiles in the scroll view in the scene.
         /// Iterates through the collection of available visual novels, instantiates UI elements
@@ -174,10 +167,9 @@ namespace Assets._Scripts.Controller.SceneControllers
             int insertionIndex = 0;
 
             // Loop through each visual novel in the collection
-            foreach (VisualNovel visualNovel in _allKiteNovelsById.Values)
+            foreach (NovelEntry entry in _isNovelContainedInVersion)
             {
-                // Skip if not a kite novel
-                if (!visualNovel.isKiteNovel) continue;
+                if (!_allKiteNovelsById.TryGetValue(entry.novelId, out var visualNovel)) continue;
 
                 // Get the name of the visual novel
                 string novelName = VisualNovelNamesHelper.GetName(visualNovel.id);
@@ -232,10 +224,39 @@ namespace Assets._Scripts.Controller.SceneControllers
                 }
             }
 
-            // Apply padding to ensure proper button spacing
             ApplyDynamicPadding();
+            SetupZigZagLayout();
+            _buttonCount = novelButtonsContainer.childCount;
+            Canvas.ForceUpdateCanvases();
+        }
 
-            // Configure positioning for each button
+        /// <summary>
+        /// Sets up the UI for the burger menu by creating and organizing its content.
+        /// Instantiates the headline element, generates buttons for available visual novels,
+        /// and sorts these buttons alphabetically before adding them to the menu in the correct order.
+        /// </summary>
+        /// <param name="content">The transform representing the container within which the burger menu elements will be organized.</param>
+        private void SetupBurgerMenuUI(Transform content)
+        {
+            InstantiateHeadline(content);
+            List<GameObject> novelButtonsToSort = CreateAndCollectNovelButtons(content);
+
+            novelButtonsToSort = novelButtonsToSort.OrderBy(btn =>
+            {
+                TextMeshProUGUI textMesh = btn.GetComponentInChildren<TextMeshProUGUI>();
+                return textMesh ? textMesh.text : btn.name;
+            }).ToList();
+
+            ReorderBurgerMenuItems(content, novelButtonsToSort);
+        }
+
+        /// <summary>
+        /// Arranges UI elements in a zigzag pattern within the specified container.
+        /// Each child element in the container is repositioned dynamically
+        /// using a Positioner component to create a staggered or alternating layout.
+        /// </summary>
+        private void SetupZigZagLayout()
+        {
             for (int i = 0; i < novelButtonsContainer.childCount; i++)
             {
                 Transform childTransform = novelButtonsContainer.GetChild(i);
@@ -247,19 +268,16 @@ namespace Assets._Scripts.Controller.SceneControllers
                     positioner.SetupButton(i, yOffsetForZigzag, novelButtonsContainer.childCount);
                 }
             }
-
-            _buttonCount = novelButtonsContainer.childCount;
-
-            // Force canvas update to reflect changes
-            Canvas.ForceUpdateCanvases();
         }
 
         private void SetupIntroNovelButton()
         {
             if (introNovelButton)
             {
-                foreach (VisualNovel visualNovel in _allKiteNovelsById.Values)
+                foreach (NovelEntry entry in _isNovelContainedInVersion)
                 {
+                    if (!_allKiteNovelsById.TryGetValue(entry.novelId, out var visualNovel)) continue;
+                    
                     if (visualNovel.designation.Equals("Mehr zu KITE II erfahren"))
                     {
                         Image[] images = introNovelButton.GetComponentsInChildren<Image>(true);
@@ -281,10 +299,6 @@ namespace Assets._Scripts.Controller.SceneControllers
                         introNovelButton.GetComponentInChildren<TextMeshProUGUI>().text = "Mehr zu\nKITE II";
                     }
                 }
-            }
-            else
-            {
-                Debug.LogWarning("Intro Novel Button is not assigned in the Inspector.");
             }
         }
 
@@ -325,13 +339,16 @@ namespace Assets._Scripts.Controller.SceneControllers
             float tempScrollDuration = scrollDuration;
             scrollDuration = 1.5f;
 
+            if (_buttonCount <= 1)
+            {
+                yield break;
+            }
+
             if (_buttonCount % 2 != 0)
             {
-                // Finde das mittlere Element
                 int middleIndex = _buttonCount / 2;
                 RectTransform middleButton = novelButtonsContainer.GetChild(middleIndex).GetComponent<RectTransform>();
 
-                // Finde das Element links und rechts davon
                 RectTransform leftButton = novelButtonsContainer.GetChild(middleIndex - 1).GetComponent<RectTransform>();
                 RectTransform rightButton = novelButtonsContainer.GetChild(middleIndex + 1).GetComponent<RectTransform>();
 
@@ -344,10 +361,8 @@ namespace Assets._Scripts.Controller.SceneControllers
                 yield return new WaitForSeconds(1f);
                 SnapToButton(middleButton);
             }
-            // Gerade Anzahl von Buttons
             else
             {
-                // Finde die beiden mittleren Elemente
                 int middleIndex1 = _buttonCount / 2 - 1;
                 int middleIndex2 = _buttonCount / 2;
 
@@ -403,25 +418,19 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// <returns>A list of game objects representing the created visual novel buttons.</returns>
         private List<GameObject> CreateAndCollectNovelButtons(Transform content)
         {
-            _isNovelContainedInVersion = new List<NovelEntry>();
             List<GameObject> novelButtonsList = new List<GameObject>();
-
-            foreach (VisualNovel visualNovel in _allKiteNovelsById.Values)
+            
+            foreach (NovelEntry entry in _isNovelContainedInVersion)
             {
-                NovelEntry novelEntry = new NovelEntry
-                {
-                    novelId = visualNovel.id,
-                    isContained = true
-                };
-                _isNovelContainedInVersion.Add(novelEntry);
-
+                if (!_allKiteNovelsById.TryGetValue(entry.novelId, out var visualNovel)) continue;
+            
                 GameObject novelButton = CreateBurgerMenuButton(visualNovel, content);
                 if (novelButton)
                 {
                     novelButtonsList.Add(novelButton);
                 }
             }
-
+            
             return novelButtonsList;
         }
 

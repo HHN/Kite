@@ -64,7 +64,7 @@ namespace Assets._Scripts.Managers
     /// </summary>
     public class GameManager : MonoBehaviour
     {
-        [SerializeField] private bool showAllNovels;
+        [SerializeField] private bool showKiteNovels;
         [SerializeField] private bool skipIntroNovel;
         [SerializeField] private bool isIntroNovelSaved;
         [SerializeField] private bool introNovelLoadedFromMainMenu = true;
@@ -88,11 +88,11 @@ namespace Assets._Scripts.Managers
         
         private MessageBox _messageObject;
         
-        // Property to get or set the showAllNovels flag
-        public bool ShowAllNovels
+        // Property to get or set the showKiteNovels flag
+        public bool ShowKiteNovels
         {
-            get => showAllNovels;
-            set => showAllNovels = value;
+            get => showKiteNovels;
+            set => showKiteNovels = value;
         }
 
         // Property to get or set the skipIntroNovel flag
