@@ -413,6 +413,11 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             foreach (VisualNovel visualNovel in _allKiteNovelsById.Values)
             {
+                if (!visualNovel.isKiteNovel)
+                {
+                    continue;
+                }
+
                 NovelEntry novelEntry = new NovelEntry
                 {
                     novelId = visualNovel.id,
