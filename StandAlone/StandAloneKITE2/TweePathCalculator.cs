@@ -137,6 +137,38 @@ public class TweePathCalculator
         }
 
         Console.WriteLine($"[Done] Neu generierte Feedbacks: {generated}.");
+        
+        // 7) Cleanup: alle ">--<" aus response.txt entfernen
+        CleanupResponseFileArtifacts();
+    }
+    
+    /// <summary>
+    /// Entfernt alle Vorkommen des Artefakt-Tokens ">--<" aus response.txt.
+    /// </summary>
+    private static void CleanupResponseFileArtifacts()
+    {
+        try
+        {
+            if (!File.Exists(ResponseFilePath)) return;
+
+            string content = File.ReadAllText(ResponseFilePath, Encoding.UTF8);
+            int occurrences = Regex.Matches(content, Regex.Escape(">--<")).Count;
+
+            if (occurrences > 0)
+            {
+                string cleaned = content.Replace(">--<", string.Empty);
+                File.WriteAllText(ResponseFilePath, cleaned, Encoding.UTF8);
+                Console.WriteLine($"[Cleanup] Entfernt {occurrences} Vorkommen von \">--<\" aus response.txt.");
+            }
+            else
+            {
+                Console.WriteLine("[Cleanup] Keine \">--<\"-Artefakte in response.txt gefunden.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[Cleanup] Fehler beim Bereinigen von response.txt: {ex.Message}");
+        }
     }
 
     // ==========================================

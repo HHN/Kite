@@ -8871,7 +8871,7 @@ Insgesamt bewegst du dich geschickt durch den Dialog, indem du dich auf das Wese
 
 ###351
 
-[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe das Unternehmen gegründet, arbeite aber mit anderen zusammen.]
+[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe das Unternehmen gegründet, arbeite aber mit anderen zusammen.]
 
 
 
@@ -8891,7 +8891,7 @@ Insgesamt hast du die Biases gut adressiert, indem du vorgefasste Meinungen mit 
 
 ###352
 
-[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch eine Geschäftspartnerin.; Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.; Wie meinen Sie das?; Das kann in der Geschäftsführung schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Finden Sie nicht, dass das Vorurteile sind?; Ach, Frauen können doch gar nicht anders. Ich höre auch immer wieder, dass sie besser mit Männern auskommen. Weniger Drama und entspannter.; Vielleicht sollten wir Menschen als Individuen sehen, statt sie in Schubladen zu stecken. Wie geht's denn jetzt weiter mit dem Kreditantrag?]
+[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch eine Geschäftspartnerin.; Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.; Wie meinen Sie das?; Das kann in der Geschäftsführung schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Finden Sie nicht, dass das Vorurteile sind?; Ach, Frauen können doch gar nicht anders. Ich höre auch immer wieder, dass sie besser mit Männern auskommen. Weniger Drama und entspannter.; Vielleicht sollten wir Menschen als Individuen sehen, statt sie in Schubladen zu stecken. Wie geht's denn jetzt weiter mit dem Kreditantrag?]
 
 
 
@@ -8917,7 +8917,7 @@ Du meisterst es, Dein Wissen, Deine Planungssicherheit und Deine Resilienz gegen
 
 ###353
 
-[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch eine Geschäftspartnerin.; Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.; Wie meinen Sie das?; Das kann in der Geschäftsführung schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Finden Sie nicht, dass das Vorurteile sind?; Ach, Frauen können doch gar nicht anders. Ich höre auch immer wieder, dass sie besser mit Männern auskommen. Weniger Drama und entspannter.; Frauen sind nicht dramatischer als Männer, aber das ist hier nicht das Thema. Was machen wir nun mit dem Kreditantrag?]
+[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch eine Geschäftspartnerin.; Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.; Wie meinen Sie das?; Das kann in der Geschäftsführung schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Finden Sie nicht, dass das Vorurteile sind?; Ach, Frauen können doch gar nicht anders. Ich höre auch immer wieder, dass sie besser mit Männern auskommen. Weniger Drama und entspannter.; Frauen sind nicht dramatischer als Männer, aber das ist hier nicht das Thema. Was machen wir nun mit dem Kreditantrag?]
 
 
 
@@ -8941,7 +8941,7 @@ Du handhabst das Gespräch beeindruckend geschickt und bleibst standhaft bei dei
 
 ###354
 
-[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch eine Geschäftspartnerin.; Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.; Wie meinen Sie das?; Das kann in der Geschäftsführung schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Unstimmigkeiten und Diskussionen gibt es überall. Sexistische Klischees sind hier nicht hilfreich.]
+[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch eine Geschäftspartnerin.; Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.; Wie meinen Sie das?; Das kann in der Geschäftsführung schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Unstimmigkeiten und Diskussionen gibt es überall. Sexistische Klischees sind hier nicht hilfreich.]
 
 
 
@@ -8965,7 +8965,7 @@ Ein möglicher Nachteil könnte jedoch sein, dass das nicht immer ausreicht, tie
 
 ###355
 
-[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch eine Geschäftspartnerin.; Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.; Wieso denn mutig?; Das kann in der Geschäftsführung schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Finden Sie nicht, dass das Vorurteile sind?; Ach, Frauen können doch gar nicht anders. Ich höre auch immer wieder, dass sie besser mit Männern auskommen. Weniger Drama und entspannter.; Vielleicht sollten wir Menschen als Individuen sehen, statt sie in Schubladen zu stecken. Wie geht's denn jetzt weiter mit dem Kreditantrag?]
+[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch eine Geschäftspartnerin.; Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.; Wieso denn mutig?; Das kann in der Geschäftsführung schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Finden Sie nicht, dass das Vorurteile sind?; Ach, Frauen können doch gar nicht anders. Ich höre auch immer wieder, dass sie besser mit Männern auskommen. Weniger Drama und entspannter.; Vielleicht sollten wir Menschen als Individuen sehen, statt sie in Schubladen zu stecken. Wie geht's denn jetzt weiter mit dem Kreditantrag?]
 
 
 
@@ -8989,7 +8989,7 @@ Insgesamt bist du auf einem sehr guten Weg und strahlst sowohl Kompetenz als auc
 
 ###356
 
-[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch eine Geschäftspartnerin.; Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.; Wieso denn mutig?; Das kann in der Geschäftsführung schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Finden Sie nicht, dass das Vorurteile sind?; Ach, Frauen können doch gar nicht anders. Ich höre auch immer wieder, dass sie besser mit Männern auskommen. Weniger Drama und entspannter.; Frauen sind nicht dramatischer als Männer, aber das ist hier nicht das Thema. Was machen wir nun mit dem Kreditantrag?]
+[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch eine Geschäftspartnerin.; Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.; Wieso denn mutig?; Das kann in der Geschäftsführung schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Finden Sie nicht, dass das Vorurteile sind?; Ach, Frauen können doch gar nicht anders. Ich höre auch immer wieder, dass sie besser mit Männern auskommen. Weniger Drama und entspannter.; Frauen sind nicht dramatischer als Männer, aber das ist hier nicht das Thema. Was machen wir nun mit dem Kreditantrag?]
 
 
 
@@ -9013,7 +9013,7 @@ Insgesamt hast du im Dialog souverän mit den Biases umgegangen. Du konntest die
 
 ###357
 
-[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch eine Geschäftspartnerin.; Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.; Wieso denn mutig?; Das kann in der Geschäftsführung schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Unstimmigkeiten und Diskussionen gibt es überall. Sexistische Klischees sind hier nicht hilfreich.]
+[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch eine Geschäftspartnerin.; Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.; Wieso denn mutig?; Das kann in der Geschäftsführung schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Unstimmigkeiten und Diskussionen gibt es überall. Sexistische Klischees sind hier nicht hilfreich.]
 
 
 
@@ -9037,7 +9037,7 @@ Insgesamt machst Du in diesem Gespräch einen sehr gut informierten und selbstbe
 
 ###358
 
-[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Was meinen Sie damit, dass Sie es sich gedacht haben?; So ein reines Frauen-Team in der Geschäftsführung kann schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Halten Sie das nicht für Vorurteile?; Ach, Frauen können doch gar nicht anders. Ich höre auch immer wieder, dass Frauen lieber mit Männern befreundet sind. Da gibt es nicht so viel Drama und alles ist deutlich entspannter.; Ich denke, es ist hilfreicher, Menschen als Individuen zu betrachten und nicht durch stereotype Filter zu beurteilen. Wie fahren wir denn mit dem Kreditantrag fort?]
+[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Was meinen Sie damit, dass Sie es sich gedacht haben?; So ein reines Frauen-Team in der Geschäftsführung kann schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Halten Sie das nicht für Vorurteile?; Ach, Frauen können doch gar nicht anders. Ich höre auch immer wieder, dass Frauen lieber mit Männern befreundet sind. Da gibt es nicht so viel Drama und alles ist deutlich entspannter.; Ich denke, es ist hilfreicher, Menschen als Individuen zu betrachten und nicht durch stereotype Filter zu beurteilen. Wie fahren wir denn mit dem Kreditantrag fort?]
 
 
 
@@ -9065,7 +9065,7 @@ Deine professionelle und sachbezogene Art hat Dir nicht nur geholfen, die kritis
 
 ###359
 
-[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Was meinen Sie damit, dass Sie es sich gedacht haben?; So ein reines Frauen-Team in der Geschäftsführung kann schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Halten Sie das nicht für Vorurteile?; Ach, Frauen können doch gar nicht anders. Ich höre auch immer wieder, dass Frauen lieber mit Männern befreundet sind. Da gibt es nicht so viel Drama und alles ist deutlich entspannter.; Frauen sind nicht dramatischer als Männer, aber darum geht's hier ja auch gar nicht. Was machen wir nun mit dem Kreditantrag?]
+[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Was meinen Sie damit, dass Sie es sich gedacht haben?; So ein reines Frauen-Team in der Geschäftsführung kann schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Halten Sie das nicht für Vorurteile?; Ach, Frauen können doch gar nicht anders. Ich höre auch immer wieder, dass Frauen lieber mit Männern befreundet sind. Da gibt es nicht so viel Drama und alles ist deutlich entspannter.; Frauen sind nicht dramatischer als Männer, aber darum geht's hier ja auch gar nicht. Was machen wir nun mit dem Kreditantrag?]
 
 
 
@@ -9089,7 +9089,7 @@ Insgesamt ist deine Herangehensweise in dem Dialog durchdacht und zielgerichtet.
 
 ###360
 
-[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Was meinen Sie damit, dass Sie es sich gedacht haben?; So ein reines Frauen-Team in der Geschäftsführung kann schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Unstimmigkeiten und Diskussionen sind in zwischenmenschlichen Beziehungen normal. Sexistische Klischees helfen uns hier nicht weiter.]
+[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Was meinen Sie damit, dass Sie es sich gedacht haben?; So ein reines Frauen-Team in der Geschäftsführung kann schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Unstimmigkeiten und Diskussionen sind in zwischenmenschlichen Beziehungen normal. Sexistische Klischees helfen uns hier nicht weiter.]
 
 
 
@@ -9113,7 +9113,7 @@ Letztendlich ist es wichtig, dass du dich auf dein Unternehmertum konzentrierst 
 
 ###361
 
-[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Was meinen Sie damit, dass Sie es sich gedacht haben?; Ach, Sie dürfen so etwas nicht so eng sehen und jedes Wort auf die Goldwaage legen. Sie sind da schon streng.; Es ist allerdings ein Problem, wenn dann die eigene Arbeit nicht anerkannt wird. Wie dem auch sei, wie fahren wir nun mit dem Kreditantrag fort?]
+[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Was meinen Sie damit, dass Sie es sich gedacht haben?; Ach, Sie dürfen so etwas nicht so eng sehen und jedes Wort auf die Goldwaage legen. Sie sind da schon streng.; Es ist allerdings ein Problem, wenn dann die eigene Arbeit nicht anerkannt wird. Wie dem auch sei, wie fahren wir nun mit dem Kreditantrag fort?]
 
 
 
@@ -9137,7 +9137,7 @@ Deine ruhige und sachliche Herangehensweise ist von Vorteil, da sie zeigt, dass 
 
 ###362
 
-[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Was meinen Sie damit, dass Sie es sich gedacht haben?; Ach, Sie dürfen so etwas nicht so eng sehen und jedes Wort auf die Goldwaage legen. Sie sind da schon streng.; Manchmal müssen wir bestimmt sein. Mit reiner Freundlichkeit kommen wir nicht weit, oder? Wie machen wir das nun mit dem Kreditantrag?]
+[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Was meinen Sie damit, dass Sie es sich gedacht haben?; Ach, Sie dürfen so etwas nicht so eng sehen und jedes Wort auf die Goldwaage legen. Sie sind da schon streng.; Manchmal müssen wir bestimmt sein. Mit reiner Freundlichkeit kommen wir nicht weit, oder? Wie machen wir das nun mit dem Kreditantrag?]
 
 
 
@@ -9161,7 +9161,7 @@ Deine Reaktionen sind durchweg beeindruckend. Du bist gut vorbereitet und lässt
 
 ###363
 
-[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Klar teilen wir die Aufgaben fair auf. Wir sind schließlich gleichberechtigt.; Schön zu hören, dass Sie tatsächlich aktiv mitarbeiten und nicht nur ein Aushängeschild sind.; Was meinen Sie damit?]
+[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Klar teilen wir die Aufgaben fair auf. Wir sind schließlich gleichberechtigt.; Schön zu hören, dass Sie tatsächlich aktiv mitarbeiten und nicht nur ein Aushängeschild sind.; Was meinen Sie damit?]
 
 
 
@@ -9189,7 +9189,7 @@ Insgesamt lässt dein Umgang mit Biases und deine fundierten Antworten darauf sc
 
 ###364
 
-[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Klar teilen wir die Aufgaben fair auf. Wir sind schließlich gleichberechtigt.; Schön zu hören, dass Sie tatsächlich aktiv mitarbeiten und nicht nur ein Aushängeschild sind.; Wir sollten uns generell nicht auf irgendetwas ausruhen. Wie geht’s denn mit dem Kreditantrag weiter?]
+[Wir sehen oft, dass Frauen es schwerer haben, sich in der Geschäftswelt durchzusetzen. Haben Sie darüber nachgedacht, den Betrag zu reduzieren? Es könnte Ihnen helfen, sich weniger zu übernehmen.; Dass Frauen es schwerer haben, liegt an den strukturellen und gesellschaftlichen Barrieren. Ich gründe nebenberuflich und habe so ein festes Einkommen, um den Kredit zurückzuzahlen.; Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Klar teilen wir die Aufgaben fair auf. Wir sind schließlich gleichberechtigt.; Schön zu hören, dass Sie tatsächlich aktiv mitarbeiten und nicht nur ein Aushängeschild sind.; Wir sollten uns generell nicht auf irgendetwas ausruhen. Wie geht’s denn mit dem Kreditantrag weiter?]
 
 
 
@@ -10610,7 +10610,7 @@ Insgesamt zeigst du im Dialog Stärke, indem du sachliche Informationen bereitst
 
 ###421
 
-[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe das Unternehmen gegründet, arbeite aber mit anderen zusammen.]
+[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe das Unternehmen gegründet, arbeite aber mit anderen zusammen.]
 
 
 
@@ -10632,7 +10632,7 @@ Indem Du ruhig und sachlich bleibst, schützt Du Dich vor unnötigen Auseinander
 
 ###422
 
-[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch eine Geschäftspartnerin.; Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.; Wie meinen Sie das?; Das kann in der Geschäftsführung schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Finden Sie nicht, dass das Vorurteile sind?; Ach, Frauen können doch gar nicht anders. Ich höre auch immer wieder, dass sie besser mit Männern auskommen. Weniger Drama und entspannter.; Vielleicht sollten wir Menschen als Individuen sehen, statt sie in Schubladen zu stecken. Wie geht's denn jetzt weiter mit dem Kreditantrag?]
+[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch eine Geschäftspartnerin.; Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.; Wie meinen Sie das?; Das kann in der Geschäftsführung schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Finden Sie nicht, dass das Vorurteile sind?; Ach, Frauen können doch gar nicht anders. Ich höre auch immer wieder, dass sie besser mit Männern auskommen. Weniger Drama und entspannter.; Vielleicht sollten wir Menschen als Individuen sehen, statt sie in Schubladen zu stecken. Wie geht's denn jetzt weiter mit dem Kreditantrag?]
 
 
 
@@ -10656,7 +10656,7 @@ Ein großer Vorteil Deiner Reaktion ist, dass Du klar und bestimmt auftrittst un
 
 ###423
 
-[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch eine Geschäftspartnerin.; Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.; Wie meinen Sie das?; Das kann in der Geschäftsführung schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Finden Sie nicht, dass das Vorurteile sind?; Ach, Frauen können doch gar nicht anders. Ich höre auch immer wieder, dass sie besser mit Männern auskommen. Weniger Drama und entspannter.; Frauen sind nicht dramatischer als Männer, aber das ist hier nicht das Thema. Was machen wir nun mit dem Kreditantrag?]
+[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch eine Geschäftspartnerin.; Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.; Wie meinen Sie das?; Das kann in der Geschäftsführung schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Finden Sie nicht, dass das Vorurteile sind?; Ach, Frauen können doch gar nicht anders. Ich höre auch immer wieder, dass sie besser mit Männern auskommen. Weniger Drama und entspannter.; Frauen sind nicht dramatischer als Männer, aber das ist hier nicht das Thema. Was machen wir nun mit dem Kreditantrag?]
 
 
 
@@ -10680,7 +10680,7 @@ Dein Verhalten zeugt von Professionalität und einem klaren Fokus auf das Ziel d
 
 ###424
 
-[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch eine Geschäftspartnerin.; Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.; Wie meinen Sie das?; Das kann in der Geschäftsführung schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Unstimmigkeiten und Diskussionen gibt es überall. Sexistische Klischees sind hier nicht hilfreich.]
+[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch eine Geschäftspartnerin.; Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.; Wie meinen Sie das?; Das kann in der Geschäftsführung schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Unstimmigkeiten und Diskussionen gibt es überall. Sexistische Klischees sind hier nicht hilfreich.]
 
 
 
@@ -10704,7 +10704,7 @@ Alles in allem hast Du in diesem Dialog professionell darauf reagiert, die offen
 
 ###425
 
-[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch eine Geschäftspartnerin.; Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.; Wieso denn mutig?; Das kann in der Geschäftsführung schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Finden Sie nicht, dass das Vorurteile sind?; Ach, Frauen können doch gar nicht anders. Ich höre auch immer wieder, dass sie besser mit Männern auskommen. Weniger Drama und entspannter.; Vielleicht sollten wir Menschen als Individuen sehen, statt sie in Schubladen zu stecken. Wie geht's denn jetzt weiter mit dem Kreditantrag?]
+[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch eine Geschäftspartnerin.; Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.; Wieso denn mutig?; Das kann in der Geschäftsführung schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Finden Sie nicht, dass das Vorurteile sind?; Ach, Frauen können doch gar nicht anders. Ich höre auch immer wieder, dass sie besser mit Männern auskommen. Weniger Drama und entspannter.; Vielleicht sollten wir Menschen als Individuen sehen, statt sie in Schubladen zu stecken. Wie geht's denn jetzt weiter mit dem Kreditantrag?]
 
 
 
@@ -10728,7 +10728,7 @@ Du hast die Balance zwischen Beharren auf sachlichen Gesprächsthemen und dem An
 
 ###426
 
-[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch eine Geschäftspartnerin.; Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.; Wieso denn mutig?; Das kann in der Geschäftsführung schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Finden Sie nicht, dass das Vorurteile sind?; Ach, Frauen können doch gar nicht anders. Ich höre auch immer wieder, dass sie besser mit Männern auskommen. Weniger Drama und entspannter.; Frauen sind nicht dramatischer als Männer, aber das ist hier nicht das Thema. Was machen wir nun mit dem Kreditantrag?]
+[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch eine Geschäftspartnerin.; Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.; Wieso denn mutig?; Das kann in der Geschäftsführung schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Finden Sie nicht, dass das Vorurteile sind?; Ach, Frauen können doch gar nicht anders. Ich höre auch immer wieder, dass sie besser mit Männern auskommen. Weniger Drama und entspannter.; Frauen sind nicht dramatischer als Männer, aber das ist hier nicht das Thema. Was machen wir nun mit dem Kreditantrag?]
 
 
 
@@ -10756,7 +10756,7 @@ Insgesamt zeigst Du eine starke, souveräne Haltung und führst das Gespräch au
 
 ###427
 
-[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch eine Geschäftspartnerin.; Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.; Wieso denn mutig?; Das kann in der Geschäftsführung schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Unstimmigkeiten und Diskussionen gibt es überall. Sexistische Klischees sind hier nicht hilfreich.]
+[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch eine Geschäftspartnerin.; Ach, ein richtiges Frauen-Team also? Das ist aber mutig von Ihnen.; Wieso denn mutig?; Das kann in der Geschäftsführung schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Unstimmigkeiten und Diskussionen gibt es überall. Sexistische Klischees sind hier nicht hilfreich.]
 
 
 
@@ -10778,7 +10778,7 @@ Eine mögliche Herausforderung besteht darin, dass das Ansprechen solcher Biases
 
 ###428
 
-[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Was meinen Sie damit, dass Sie es sich gedacht haben?; So ein reines Frauen-Team in der Geschäftsführung kann schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Halten Sie das nicht für Vorurteile?; Ach, Frauen können doch gar nicht anders. Ich höre auch immer wieder, dass Frauen lieber mit Männern befreundet sind. Da gibt es nicht so viel Drama und alles ist deutlich entspannter.; Ich denke, es ist hilfreicher, Menschen als Individuen zu betrachten und nicht durch stereotype Filter zu beurteilen. Wie fahren wir denn mit dem Kreditantrag fort?]
+[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Was meinen Sie damit, dass Sie es sich gedacht haben?; So ein reines Frauen-Team in der Geschäftsführung kann schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Halten Sie das nicht für Vorurteile?; Ach, Frauen können doch gar nicht anders. Ich höre auch immer wieder, dass Frauen lieber mit Männern befreundet sind. Da gibt es nicht so viel Drama und alles ist deutlich entspannter.; Ich denke, es ist hilfreicher, Menschen als Individuen zu betrachten und nicht durch stereotype Filter zu beurteilen. Wie fahren wir denn mit dem Kreditantrag fort?]
 
 
 
@@ -10806,7 +10806,7 @@ Du machst das großartig und Deine Achtsamkeit im Umgang mit diesen Biases ist b
 
 ###429
 
-[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Was meinen Sie damit, dass Sie es sich gedacht haben?; So ein reines Frauen-Team in der Geschäftsführung kann schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Halten Sie das nicht für Vorurteile?; Ach, Frauen können doch gar nicht anders. Ich höre auch immer wieder, dass Frauen lieber mit Männern befreundet sind. Da gibt es nicht so viel Drama und alles ist deutlich entspannter.; Frauen sind nicht dramatischer als Männer, aber darum geht's hier ja auch gar nicht. Was machen wir nun mit dem Kreditantrag?]
+[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Was meinen Sie damit, dass Sie es sich gedacht haben?; So ein reines Frauen-Team in der Geschäftsführung kann schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Halten Sie das nicht für Vorurteile?; Ach, Frauen können doch gar nicht anders. Ich höre auch immer wieder, dass Frauen lieber mit Männern befreundet sind. Da gibt es nicht so viel Drama und alles ist deutlich entspannter.; Frauen sind nicht dramatischer als Männer, aber darum geht's hier ja auch gar nicht. Was machen wir nun mit dem Kreditantrag?]
 
 
 
@@ -10828,7 +10828,7 @@ Abschließend lassen sich die im Dialog gezeigten Aussagen als bewusste und unbe
 
 ###430
 
-[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Was meinen Sie damit, dass Sie es sich gedacht haben?; So ein reines Frauen-Team in der Geschäftsführung kann schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Unstimmigkeiten und Diskussionen sind in zwischenmenschlichen Beziehungen normal. Sexistische Klischees helfen uns hier nicht weiter.]
+[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Was meinen Sie damit, dass Sie es sich gedacht haben?; So ein reines Frauen-Team in der Geschäftsführung kann schon schwierig sein. Ich denke da an möglichen Zickenkrieg und viel Klatsch und Tratsch.; Unstimmigkeiten und Diskussionen sind in zwischenmenschlichen Beziehungen normal. Sexistische Klischees helfen uns hier nicht weiter.]
 
 
 
@@ -10852,7 +10852,7 @@ Insgesamt zeigst du jedoch eine bewundernswerte Balance von Durchsetzungsvermög
 
 ###431
 
-[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Was meinen Sie damit, dass Sie es sich gedacht haben?; Ach, Sie dürfen so etwas nicht so eng sehen und jedes Wort auf die Goldwaage legen. Sie sind da schon streng.; Es ist allerdings ein Problem, wenn dann die eigene Arbeit nicht anerkannt wird. Wie dem auch sei, wie fahren wir nun mit dem Kreditantrag fort?]
+[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Was meinen Sie damit, dass Sie es sich gedacht haben?; Ach, Sie dürfen so etwas nicht so eng sehen und jedes Wort auf die Goldwaage legen. Sie sind da schon streng.; Es ist allerdings ein Problem, wenn dann die eigene Arbeit nicht anerkannt wird. Wie dem auch sei, wie fahren wir nun mit dem Kreditantrag fort?]
 
 
 
@@ -10880,7 +10880,7 @@ Es ist essenziell, dass du deine eigenen Fähigkeiten stets im Blick behältst u
 
 ###432
 
-[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Was meinen Sie damit, dass Sie es sich gedacht haben?; Ach, Sie dürfen so etwas nicht so eng sehen und jedes Wort auf die Goldwaage legen. Sie sind da schon streng.; Manchmal müssen wir bestimmt sein. Mit reiner Freundlichkeit kommen wir nicht weit, oder? Wie machen wir das nun mit dem Kreditantrag?]
+[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Was meinen Sie damit, dass Sie es sich gedacht haben?; Ach, Sie dürfen so etwas nicht so eng sehen und jedes Wort auf die Goldwaage legen. Sie sind da schon streng.; Manchmal müssen wir bestimmt sein. Mit reiner Freundlichkeit kommen wir nicht weit, oder? Wie machen wir das nun mit dem Kreditantrag?]
 
 
 
@@ -10906,7 +10906,7 @@ Dein Verhalten und deine Reaktionen auf die Biases sind insgesamt bewundernswert
 
 ###433
 
-[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Klar teilen wir die Aufgaben fair auf. Wir sind schließlich gleichberechtigt.; Schön zu hören, dass Sie tatsächlich aktiv mitarbeiten und nicht nur ein Aushängeschild sind.; Was meinen Sie damit?]
+[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Klar teilen wir die Aufgaben fair auf. Wir sind schließlich gleichberechtigt.; Schön zu hören, dass Sie tatsächlich aktiv mitarbeiten und nicht nur ein Aushängeschild sind.; Was meinen Sie damit?]
 
 
 
@@ -10930,7 +10930,7 @@ Insgesamt ist dein Verhalten im Gespräch überlegt und fokussiert auf die Errei
 
 ###434
 
-[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Klar teilen wir die Aufgaben fair auf. Wir sind schließlich gleichberechtigt.; Schön zu hören, dass Sie tatsächlich aktiv mitarbeiten und nicht nur ein Aushängeschild sind.; Wir sollten uns generell nicht auf irgendetwas ausruhen. Wie geht’s denn mit dem Kreditantrag weiter?]
+[Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?; Ich habe noch einen Geschäftspartner.; Habe ich's mir doch gedacht, dass Sie einen Mann an der Seite haben! Sie sollten aber auch bereit sein, Verantwortung und Arbeit zu übernehmen und nicht nur ihm alles überlassen.; Klar teilen wir die Aufgaben fair auf. Wir sind schließlich gleichberechtigt.; Schön zu hören, dass Sie tatsächlich aktiv mitarbeiten und nicht nur ein Aushängeschild sind.; Wir sollten uns generell nicht auf irgendetwas ausruhen. Wie geht’s denn mit dem Kreditantrag weiter?]
 
 
 

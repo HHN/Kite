@@ -108,12 +108,36 @@ namespace Assets._Scripts.Managers
 
         public string GetFeedback()
         {
-            string feedback = matcher.GetFeedback();
-            if (feedback != null)
+            // Einmalig am Ende auswerten:
+            var best = matcher.SelectBestEntry();
+
+            // Logging für Nachvollziehbarkeit
+            if (best.Entry != null)
             {
-                return feedback;
+                if (best.IsFullMatch)
+                {
+                    Debug.Log($"[Matcher] Vollständiger Sub-Pfad gefunden (Länge={best.Entry.Path.Count}):");
+                    Debug.Log("  " + string.Join(" -> ", best.Entry.Path));
+                    // Vollständiger Match → Feedback ausgeben
+                    return best.Entry.Feedback;
+                }
+                else
+                {
+                    Debug.Log($"[Matcher] KEIN vollständiger Sub-Pfad. Bester Teiltreffer: {best.MatchedCount} Treffer von {best.Entry.Path.Count}");
+                    Debug.Log("  Bester (teilweiser) Sub-Pfad: " + string.Join(" -> ", best.Entry.Path));
+
+                    var full = string.Join(" -> ", best.FullMainPath);
+                    var sub  = string.Join(", ", best.Entry.Path);
+                    var msg =
+                        "Vollständiger Pfad:\n\n" + full + "\n\n" +
+                        "Bester (teilweiser) Sub-Pfad:\n\n  - " + sub +
+                        $"  ({best.MatchedCount} Treffer)";
+                    WebLogger.Log(msg);
+                    return msg;
+                }
             }
 
+            // Fallback (keine Einträge)
             var (fullEvents, subPaths) = matcher.GetStatus();
             string subPathsString = "";
             if (subPaths.Count > 0)
@@ -273,7 +297,7 @@ private IEnumerator LoadAllFeedbackWithMappingAsync(
         }
 
         var entries = ParseFeedbackFile(feedbackFile);
-        WebLogger.Log($"Folder „{folderName}“ → novelId={novelId}, entries={entries.Count}");
+        WebLogger.Log($"Folder „{folderName}“ → novelId={novelId}, feedback-Entries={entries.Count}");
         result[novelId] = entries;
     }
 #endif
@@ -451,69 +475,101 @@ private IEnumerator LoadAllFeedbackWithMappingAsync(
         _chosenEvents.Add(chosenEvent);
     }
 
-    /// <summary>
-    /// Gibt true zurück, wenn 'sub' als (nicht-zusammenhängende) Teilsequenz
-    /// in 'main' enthalten ist. Leerstrings und null-Einträge werden vorher entfernt.
-    /// </summary>
-    private static bool ContainsSubsequenceAnywhere(
-        IReadOnlyList<string> main,
-        IReadOnlyList<string> sub)
+    // ---- Auswahl-Logik nur am Ende des Playthroughs ----
+
+    public sealed class BestSelection
     {
-        // 1) Normalisieren: trimmen, null/leer rauswerfen
-        var mainClean = main
-            .Where(s => !string.IsNullOrWhiteSpace(s))
-            .Select(s => s!.Trim())
-            .ToList();
-
-        var subClean = sub
-            .Where(s => !string.IsNullOrWhiteSpace(s))
-            .Select(s => s!.Trim())
-            .ToList();
-
-        // 2) Leere Subsequenz matcht immer
-        if (subClean.Count == 0)
-            return true;
-
-        // 3) Standard-Subsequence-Scan
-        int j = 0;
-        for (int i = 0; i < mainClean.Count; i++)
-        {
-            if (string.Equals(mainClean[i], subClean[j], StringComparison.Ordinal))
-            {
-                j++;
-                if (j == subClean.Count)
-                    return true;
-            }
-        }
-        return false;
+        public FeedbackEntry Entry { get; set; }     // ausgewählter Eintrag (voll/teilweise)
+        public bool IsFullMatch { get; set; }        // true = kompletter Subpfad enthalten
+        public int MatchedCount { get; set; }        // Anzahl gematchter Elemente (bei Teilmatch)
+        public List<string> FullMainPath { get; set; } // der komplette gewählte Pfad (normalisiert)
     }
 
-
     /// <summary>
-    /// True, sobald genau ein FeedbackEntry seinen Path 
-    /// irgendwo als Subsequenz in den gewählten Events enthält.
+    /// Wählt am Ende den passenden Sub-Pfad:
+    /// 1) Gibt es volle Matches? → nimm den LÄNGSTEN.
+    /// 2) Sonst nimm den Teil-Match mit der höchsten Trefferzahl (LCS).
     /// </summary>
-    public bool IsComplete
-        => _allEntries.Count(fe => 
-               ContainsSubsequenceAnywhere(_chosenEvents, fe.Path)) == 1;
+    public BestSelection SelectBestEntry()
+    {
+        var main = Normalize(_chosenEvents);
+
+        FeedbackEntry bestFull = null;
+        int bestFullLen = -1;
+
+        FeedbackEntry bestPartial = null;
+        int bestPartialCount = -1;
+        int bestPartialPathLen = -1;
+
+        foreach (var e in _allEntries)
+        {
+            var sub = Normalize(e.Path);
+
+            if (IsSubsequence(main, sub))
+            {
+                // Vollständiger Match → längsten wählen
+                if (sub.Count > bestFullLen)
+                {
+                    bestFullLen = sub.Count;
+                    bestFull = e;
+                }
+                continue;
+            }
+
+            // Teiltreffer per LCS
+            int lcs = LcsLength(main, sub);
+            if (lcs > bestPartialCount ||
+               (lcs == bestPartialCount && sub.Count > bestPartialPathLen))
+            {
+                bestPartialCount = lcs;
+                bestPartialPathLen = sub.Count;
+                bestPartial = e;
+            }
+        }
+
+        if (bestFull != null)
+        {
+            return new BestSelection
+            {
+                Entry = bestFull,
+                IsFullMatch = true,
+                MatchedCount = bestFull.Path.Count,
+                FullMainPath = main
+            };
+        }
+
+        if (bestPartial != null)
+        {
+            return new BestSelection
+            {
+                Entry = bestPartial,
+                IsFullMatch = false,
+                MatchedCount = bestPartialCount,
+                FullMainPath = main
+            };
+        }
+
+        // Nichts gefunden (keine Einträge)
+        return new BestSelection
+        {
+            Entry = null,
+            IsFullMatch = false,
+            MatchedCount = 0,
+            FullMainPath = main
+        };
+    }
 
     /// <summary>
-    /// Liefert den Feedback-Text desjenigen Eintrags, dessen Path
-    /// irgendwo (in richtiger Reihenfolge) in den gewählten Events steckt.
-    /// Wenn mehrere passen, nehmen wir den längsten.
+    /// Liefert den Feedback-Text desjenigen Eintrags, der per SelectBestEntry()
+    /// (vollständig) passt. Bei Teilmatch gibt diese Methode null zurück,
+    /// damit der Aufrufer (Manager) den besten Teil-Pfad ausgeben kann.
     /// </summary>
     public string? GetFeedback()
     {
-        var matches = _allEntries
-            .Where(fe => ContainsSubsequenceAnywhere(_chosenEvents, fe.Path))
-            .ToList();
-
-        if (!matches.Any())
-            return null;
-
-        int maxLength = matches.Max(fe => fe.Path.Count);
-        var best = matches.First(fe => fe.Path.Count == maxLength);
-        return best.Feedback;
+        var best = SelectBestEntry();
+        if (best.Entry != null && best.IsFullMatch)
+            return best.Entry.Feedback;
+        return null;
     }
 
     /// <summary>
@@ -530,6 +586,73 @@ private IEnumerator LoadAllFeedbackWithMappingAsync(
             .ToList();
 
         return (full, subs);
+    }
+
+    // ---------- Hilfsfunktionen ----------
+
+    private static List<string> Normalize(IReadOnlyList<string> list)
+        => list.Where(s => !string.IsNullOrWhiteSpace(s))
+               .Select(s => s.Trim())
+               .ToList();
+
+    /// <summary>
+    /// Prüft, ob 'sub' als Subsequenz (mit Gaps) in 'main' vorkommt.
+    /// </summary>
+    private static bool IsSubsequence(IReadOnlyList<string> main, IReadOnlyList<string> sub)
+    {
+        if (sub.Count == 0) return true;
+        int j = 0;
+        for (int i = 0; i < main.Count; i++)
+        {
+            if (string.Equals(main[i], sub[j], StringComparison.Ordinal))
+            {
+                j++;
+                if (j == sub.Count) return true;
+            }
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// LCS-Länge (Longest Common Subsequence) zwischen zwei Sequenzen.
+    /// Misst die maximale Anzahl von Elementen aus 'sub', die in 'main'
+    /// in derselben Reihenfolge (mit Gaps) vorkommen.
+    /// </summary>
+    private static int LcsLength(IReadOnlyList<string> a, IReadOnlyList<string> b)
+    {
+        int n = a.Count, m = b.Count;
+        if (n == 0 || m == 0) return 0;
+
+        // Speicheroptimierte 2-Zeilen-DP
+        var prev = new int[m + 1];
+        var curr = new int[m + 1];
+
+        for (int i = 1; i <= n; i++)
+        {
+            Array.Clear(curr, 0, curr.Length);
+            for (int j = 1; j <= m; j++)
+            {
+                if (string.Equals(a[i - 1], b[j - 1], StringComparison.Ordinal))
+                    curr[j] = prev[j - 1] + 1;
+                else
+                    curr[j] = Math.Max(prev[j], curr[j - 1]);
+            }
+            // swap
+            var tmp = prev; prev = curr; curr = tmp;
+        }
+        return prev[m];
+    }
+
+    /// <summary>
+    /// Für Status-Ansicht: einfacher Subsequence-Check (mit Gaps).
+    /// </summary>
+    private static bool ContainsSubsequenceAnywhere(
+        IReadOnlyList<string> main,
+        IReadOnlyList<string> sub)
+    {
+        var mainClean = Normalize(main);
+        var subClean  = Normalize(sub);
+        return IsSubsequence(mainClean, subClean);
     }
 }
 
