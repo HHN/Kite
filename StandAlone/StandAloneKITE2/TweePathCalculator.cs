@@ -164,6 +164,32 @@ public class TweePathCalculator
             {
                 Console.WriteLine("[Cleanup] Keine \">--<\"-Artefakte in response.txt gefunden.");
             }
+            
+            occurrences = Regex.Matches(content, Regex.Escape("***")).Count;
+            if (occurrences > 0)
+            {
+                string cleaned = content.Replace("**", string.Empty);
+                File.WriteAllText(ResponseFilePath, cleaned, Encoding.UTF8);
+                Console.WriteLine($"[Cleanup] Entfernt {occurrences} Vorkommen von \"***\" aus response.txt.");
+            }
+            else
+            {
+                Console.WriteLine("[Cleanup] Keine \"***\"-Artefakte in response.txt gefunden.");
+            }
+            
+            occurrences = Regex.Matches(content, Regex.Escape("**")).Count;
+            if (occurrences > 0)
+            {
+                string cleaned = content.Replace("**", string.Empty);
+                File.WriteAllText(ResponseFilePath, cleaned, Encoding.UTF8);
+                Console.WriteLine($"[Cleanup] Entfernt {occurrences} Vorkommen von \"**\" aus response.txt.");
+            }
+            else
+            {
+                Console.WriteLine("[Cleanup] Keine \"**\"-Artefakte in response.txt gefunden.");
+            }
+            
+            
         }
         catch (Exception ex)
         {
