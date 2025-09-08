@@ -22,11 +22,13 @@ namespace Assets._Scripts._Mappings
         private static readonly string MappingFileFaceExpression;
         private static readonly string MappingFileCharacter;
         private static readonly string MappingFileNovels;
+        private static readonly string MappingFileSound;
 
-        // Dictionaries to store the mappings for bias, face expression, and characters
-        private static Dictionary<string, string> _biasMapping = new Dictionary<string, string>();
-        private static Dictionary<string, int> _faceExpressionMapping = new Dictionary<string, int>();
-        private static Dictionary<string, int> _characterMapping = new Dictionary<string, int>();
+        // Dictionaries (ALLE case-insensitive)
+        private static Dictionary<string, string> _biasMapping         = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        private static Dictionary<string, int>    _faceExpressionMapping = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+        private static Dictionary<string, int>    _characterMapping      = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+        private static Dictionary<string, int>    _soundMapping          = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
         /// Provides functionality to manage and load mappings for biases, face expressions, and character data.
@@ -34,15 +36,18 @@ namespace Assets._Scripts._Mappings
         /// </summary>
         static MappingManager()
         {
-            // For WebGL, we use the StreamingAssets folder, but WebGL files need to be accessed asynchronously
-            MappingFileBias = Path.Combine(Application.streamingAssetsPath, "KnowledgeBase.txt");
-            MappingFileFaceExpression = Path.Combine(Application.streamingAssetsPath, "FaceExpressionMapping.txt");
-            MappingFileCharacter = Path.Combine(Application.streamingAssetsPath, "CharacterMapping.txt");
-            MappingFileNovels = Path.Combine(Application.streamingAssetsPath, "NovelMapping.txt");
+            // Für alle Plattformen: Pfade im StreamingAssets
+            MappingFileBias            = Path.Combine(Application.streamingAssetsPath, "KnowledgeBase.txt");
+            MappingFileFaceExpression  = Path.Combine(Application.streamingAssetsPath, "FaceExpressionMapping.txt");
+            MappingFileCharacter       = Path.Combine(Application.streamingAssetsPath, "CharacterMapping.txt");
+            MappingFileNovels          = Path.Combine(Application.streamingAssetsPath, "NovelMapping.txt");
+            MappingFileSound           = Path.Combine(Application.streamingAssetsPath, "SoundMapping.txt");
 
+            // Loader anstoßen
             LoadBiasMappingAsync();
             LoadFaceExpressionMappingAsync();
             LoadCharacterMappingAsync();
+            LoadSoundMappingAsync();
         }
 
         /// <summary>
@@ -54,7 +59,11 @@ namespace Assets._Scripts._Mappings
             {
                 if (_instance == null)
                 {
+#if UNITY_2023_1_OR_NEWER
                     _instance = FindAnyObjectByType<MappingManager>();
+#else
+                    _instance = FindObjectOfType<MappingManager>();
+#endif
                     if (_instance == null)
                     {
                         GameObject obj = new GameObject("MappingManager");
@@ -67,22 +76,14 @@ namespace Assets._Scripts._Mappings
             }
         }
 
-        /// <summary>
-        /// Asynchronously loads the bias mapping data from the appropriate source based on the target platform.
-        /// For WebGL, the file is accessed via a UnityWebRequest, while for other platforms the file is read directly from disk.
-        /// On a successful load, the file content is processed to populate the bias mapping dictionary.
-        /// Logs warnings or errors when the file is not found or cannot be loaded.
-        /// </summary>
         private static void LoadBiasMappingAsync()
         {
 #if UNITY_WEBGL
-            // For WebGL, use UnityWebRequest to load the file asynchronously
             UnityWebRequest www = UnityWebRequest.Get(MappingFileBias);
             www.SendWebRequest().completed += _ =>
             {
                 if (www.result == UnityWebRequest.Result.Success)
                 {
-                    // Split the downloaded content into lines
                     string[] lines = www.downloadHandler.text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
                     ParseBiasMappingFromKnowledgeBase(lines, ref _biasMapping);
                 }
@@ -92,7 +93,7 @@ namespace Assets._Scripts._Mappings
                 }
             };
 #else
-            // For other platforms, read directly from the file system
+            var filePath = MappingFileBias;
             if (File.Exists(filePath))
             {
                 string[] lines = File.ReadAllLines(filePath);
@@ -105,22 +106,14 @@ namespace Assets._Scripts._Mappings
 #endif
         }
 
-        /// <summary>
-        /// Asynchronously loads the face expressions mapping data from the appropriate source based on the target platform.
-        /// For WebGL, the file is accessed via a UnityWebRequest, while for other platforms the file is read directly from disk.
-        /// On a successful load, the file content is processed to populate the bias mapping dictionary.
-        /// Logs warnings or errors when the file is not found or cannot be loaded.
-        /// </summary>
         private static void LoadFaceExpressionMappingAsync()
         {
 #if UNITY_WEBGL
-            // For WebGL, use UnityWebRequest to load the file asynchronously
             UnityWebRequest www = UnityWebRequest.Get(MappingFileFaceExpression);
             www.SendWebRequest().completed += _ =>
             {
                 if (www.result == UnityWebRequest.Result.Success)
                 {
-                    // Split the downloaded content into lines
                     string[] lines = www.downloadHandler.text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
                     ProcessFaceExpressionFile(lines, ref _faceExpressionMapping);
                 }
@@ -130,6 +123,7 @@ namespace Assets._Scripts._Mappings
                 }
             };
 #else
+            var filePath = MappingFileFaceExpression;
             if (File.Exists(filePath))
             {
                 string[] lines = File.ReadAllLines(filePath);
@@ -142,22 +136,14 @@ namespace Assets._Scripts._Mappings
 #endif
         }
 
-        /// <summary>
-        /// Asynchronously loads the character mapping data from the appropriate source based on the target platform.
-        /// For WebGL, the file is accessed via a UnityWebRequest, while for other platforms the file is read directly from disk.
-        /// On a successful load, the file content is processed to populate the bias mapping dictionary.
-        /// Logs warnings or errors when the file is not found or cannot be loaded.
-        /// </summary>
         private static void LoadCharacterMappingAsync()
         {
 #if UNITY_WEBGL
-            // For WebGL, use UnityWebRequest to load the file asynchronously
             UnityWebRequest www = UnityWebRequest.Get(MappingFileCharacter);
             www.SendWebRequest().completed += _ =>
             {
                 if (www.result == UnityWebRequest.Result.Success)
                 {
-                    // Split the downloaded content into lines
                     string[] lines = www.downloadHandler.text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
                     ProcessCharacterFile(lines, ref _characterMapping);
                 }
@@ -167,6 +153,7 @@ namespace Assets._Scripts._Mappings
                 }
             };
 #else
+            var filePath = MappingFileCharacter;
             if (File.Exists(filePath))
             {
                 string[] lines = File.ReadAllLines(filePath);
@@ -179,45 +166,45 @@ namespace Assets._Scripts._Mappings
 #endif
         }
 
-        /// <summary>
-        /// Parses bias mapping data from an array of lines and populate a dictionary
-        /// with mappings between English and German terms.
-        /// </summary>
-        /// <param name="lines">An array of strings representing lines of textual data, where English terms
-        /// and corresponding German terms are specified in sequence.</param>
-        /// <param name="mapping">A reference to a dictionary where the parsed mappings between English and German terms
-        /// will be stored.</param>
-        private static void ParseBiasMappingFromKnowledgeBase(string[] lines, ref Dictionary<string, string> mapping)
-        {
-            for (int i = 0; i < lines.Length - 1; i++)
-            {
-                string german = lines[i].Trim();
-                string biasLine = lines[i + 1].Trim();
+        // ---------- SOUND MAPPING ----------
 
-                if (biasLine.StartsWith(">>Bias|") && biasLine.EndsWith("<<"))
+        private static void LoadSoundMappingAsync()
+        {
+#if UNITY_WEBGL
+            UnityWebRequest www = UnityWebRequest.Get(MappingFileSound);
+            www.SendWebRequest().completed += _ =>
+            {
+                if (www.result == UnityWebRequest.Result.Success)
                 {
-                    string english = biasLine.Substring(7, biasLine.Length - 9).Trim(); // Extrahiere Bias-Namen
-                    if (!string.IsNullOrEmpty(english) && !string.IsNullOrEmpty(german))
-                    {
-                        mapping.TryAdd(english, german);
-                    }
+                    string[] lines = www.downloadHandler.text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                    ProcessSoundFile(lines, ref _soundMapping);
                 }
+                else
+                {
+                    Application.ExternalCall("logMessage", "Error loading sound mapping: " + www.error);
+                }
+            };
+#else
+            var filePath = MappingFileSound;
+            if (File.Exists(filePath))
+            {
+                string[] lines = File.ReadAllLines(filePath);
+                ProcessSoundFile(lines, ref _soundMapping);
             }
+            else
+            {
+                Debug.LogWarning($"Sound mapping file not found at: {filePath}");
+            }
+#endif
         }
 
-        /// <summary>
-        /// Processes the face expression mapping file lines and populates the given dictionary with mappings.
-        /// Each line is expected to have a key-value pair in the format "key:value".
-        /// Invalid or malformed lines are ignored, and warnings are logged for invalid entries.
-        /// </summary>
-        /// <param name="lines">An array of strings representing lines from the face expression mapping file.</param>
-        /// <param name="mapping">A reference to the dictionary where the mappings will be stored. Keys are strings, and values are integers.</param>
-        private static void ProcessFaceExpressionFile(string[] lines, ref Dictionary<string, int> mapping)
+        private static void ProcessSoundFile(string[] lines, ref Dictionary<string, int> mapping)
         {
-            foreach (string line in lines)
+            foreach (string raw in lines)
             {
-                if (string.IsNullOrWhiteSpace(line)) continue;
+                if (string.IsNullOrWhiteSpace(raw)) continue;
 
+                string line = raw.Trim();
                 int colonIndex = line.IndexOf(':');
                 if (colonIndex > 0 && colonIndex < line.Length - 1)
                 {
@@ -228,7 +215,73 @@ namespace Assets._Scripts._Mappings
                     {
                         if (!string.IsNullOrEmpty(key))
                         {
-                            mapping.TryAdd(key, id);
+                            mapping[key] = id; // case-insensitive dictionary
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"Invalid sound mapping value (not an integer): {line}");
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning($"Invalid mapping line: {line}");
+                }
+            }
+        }
+
+        public static int MapSound(string clipName)
+        {
+            if (string.IsNullOrWhiteSpace(clipName))
+                return -1;
+
+            var key = clipName.Trim();
+            if (_soundMapping.TryGetValue(key, out int id))
+                return id;
+
+            Debug.LogWarning($"Sound mapping not found for: {clipName}");
+            return -1;
+        }
+
+        // ---------- EXISTIERENDE Parser/Mapper ----------
+
+        private static void ParseBiasMappingFromKnowledgeBase(string[] lines, ref Dictionary<string, string> mapping)
+        {
+            for (int i = 0; i < lines.Length - 1; i++)
+            {
+                string german = lines[i].Trim();
+                string biasLine = lines[i + 1].Trim();
+
+                if (biasLine.StartsWith(">>Bias|", StringComparison.OrdinalIgnoreCase) && // case-insensitive
+                    biasLine.EndsWith("<<", StringComparison.Ordinal))
+                {
+                    string english = biasLine.Substring(7, biasLine.Length - 9).Trim(); // extrahiere Bias-Namen
+                    if (!string.IsNullOrEmpty(english) && !string.IsNullOrEmpty(german))
+                    {
+                        mapping[english] = german; // Dictionary ist case-insensitive
+                    }
+                }
+            }
+        }
+
+        private static void ProcessFaceExpressionFile(string[] lines, ref Dictionary<string, int> mapping)
+        {
+            foreach (string lineRaw in lines)
+            {
+                if (string.IsNullOrWhiteSpace(lineRaw)) continue;
+
+                string line = lineRaw.Trim();
+                int colonIndex = line.IndexOf(':');
+                if (colonIndex > 0 && colonIndex < line.Length - 1)
+                {
+                    string key = line.Substring(0, colonIndex).Trim();
+                    string valueStr = line.Substring(colonIndex + 1).Trim();
+
+                    if (int.TryParse(valueStr, out int id))
+                    {
+                        if (!string.IsNullOrEmpty(key))
+                        {
+                            mapping[key] = id; // case-insensitive
                         }
                     }
                     else
@@ -243,18 +296,13 @@ namespace Assets._Scripts._Mappings
             }
         }
 
-        /// <summary>
-        /// Processes character file lines to populate a character mapping dictionary.
-        /// Parses each line of the file to extract key-value pairs representing character names and their corresponding integer IDs.
-        /// </summary>
-        /// <param name="lines">An array of strings representing lines from the character mapping file.</param>
-        /// <param name="mapping">A reference to the dictionary where the parsed mappings will be stored.</param>
         private static void ProcessCharacterFile(string[] lines, ref Dictionary<string, int> mapping)
         {
-            foreach (string line in lines)
+            foreach (string lineRaw in lines)
             {
-                if (string.IsNullOrWhiteSpace(line)) continue;
+                if (string.IsNullOrWhiteSpace(lineRaw)) continue;
 
+                string line = lineRaw.Trim();
                 int colonIndex = line.IndexOf(':');
                 if (colonIndex > 0 && colonIndex < line.Length - 1)
                 {
@@ -265,7 +313,7 @@ namespace Assets._Scripts._Mappings
                     {
                         if (!string.IsNullOrEmpty(key))
                         {
-                            mapping.TryAdd(key, id);
+                            mapping[key] = id; // case-insensitive
                         }
                     }
                     else
@@ -280,120 +328,96 @@ namespace Assets._Scripts._Mappings
             }
         }
 
-        /// <summary>
-        /// Maps a given English bias term to its corresponding German translation using the loaded dictionary.
-        /// If the mapping is not found, returns the original English bias as a fallback.
-        /// </summary>
-        /// <param name="englishBias">The bias term in English to be translated.</param>
-        /// <returns>The corresponding German translation if found; otherwise, the original English bias.</returns>
         public static string MapBias(string englishBias)
         {
-            if (_biasMapping.TryGetValue(englishBias, out string germanBias))
+            if (string.IsNullOrWhiteSpace(englishBias))
+                return englishBias;
+
+            var key = englishBias.Trim();
+            if (_biasMapping.TryGetValue(key, out string germanBias))
             {
                 return germanBias;
             }
 
             Debug.LogWarning($"Bias mapping not found for: {englishBias}");
-            return englishBias; // Fallback to the original if no mapping is found
+            return englishBias; // Fallback
         }
 
-        /// <summary>
-        /// Maps a given face expression string to its corresponding integer value based on the loaded mapping dictionary.
-        /// Returns a fallback value if the mapping is not found or if the input is null/empty.
-        /// </summary>
-        /// <param name="faceExpression">The face expression string to be mapped.</param>
-        /// <returns>The integer value corresponding to the face expression, or -1 if the mapping does not exist.</returns>
         public static int MapFaceExpressions(string faceExpression)
         {
-            if (string.IsNullOrEmpty(faceExpression))
+            if (string.IsNullOrWhiteSpace(faceExpression))
             {
                 return -1;
             }
 
-            if (_faceExpressionMapping.TryGetValue(faceExpression, out int id))
+            var key = faceExpression.Trim();
+            if (_faceExpressionMapping.TryGetValue(key, out int id))
             {
                 return id;
             }
 
             Debug.LogWarning($"Face expression mapping not found for: {faceExpression}");
-            return -1; // Fallback value if no mapping is found
+            return -1; // Fallback
         }
 
-        /// <summary>
-        /// Maps a specified character name to its corresponding integer identifier.
-        /// If the character is not found in the mapping, a fallback value of -1 is returned.
-        /// Logs a warning if the character's mapping is not found.
-        /// </summary>
-        /// <param name="character">The name of the character to map.</param>
-        /// <returns>The integer identifier of the mapped character if it exists; otherwise, -1.</returns>
         public static int MapCharacter(string character)
         {
-            if (string.IsNullOrEmpty(character))
+            if (string.IsNullOrWhiteSpace(character))
             {
                 return -1;
             }
 
-            if (_characterMapping.TryGetValue(character, out int id))
+            var key = character.Trim();
+            if (_characterMapping.TryGetValue(key, out int id))
             {
                 return id;
             }
 
             Debug.LogWarning("Character mapping not found for: " + character);
-            return -1; // Fallback value if no mapping is found
+            return -1; // Fallback
         }
 
-        /// <summary>
-        /// Maps a character's numeric identifier to its corresponding string representation.
-        /// </summary>
-        /// <param name="character">The numeric identifier of the character to map.</param>
-        /// <returns>The string representation of the character if found; otherwise, an empty string.</returns>
         public static string MapCharacterToString(int character)
         {
             return character == -1 ? "" : _characterMapping.FirstOrDefault(x => x.Value == character).Key;
         }
-        
+
         /// <summary>
         /// Liest die NovelMapping.txt (StreamingAssets/NovelMapping.txt) ein
         /// und liefert die Zuordnung Ordnername → Novel-ID.
         /// Im Editor/Standalone synchron, unter WebGL asynchron via UnityWebRequest.
         /// </summary>
-        /// <param name="onComplete">
-        /// Callback, das aufgerufen wird, sobald das Mapping geladen ist.
-        /// </param>
         public IEnumerator LoadNovelMapping(Action<Dictionary<string,int>> onComplete)
         {
             var mappingPath = Path.Combine(Application.streamingAssetsPath, "NovelMapping.txt");
 
 #if UNITY_WEBGL
-            // WebGL: per HTTP holen
             using var www = UnityWebRequest.Get(mappingPath);
             yield return www.SendWebRequest();
             if (www.result != UnityWebRequest.Result.Success)
             {
                 Debug.LogError($"LoadNovelMapping: Fehler beim Laden von {mappingPath}: {www.error}");
-                onComplete?.Invoke(new Dictionary<string,int>());
+                onComplete?.Invoke(new Dictionary<string,int>(StringComparer.OrdinalIgnoreCase));
                 yield break;
             }
 
-            // Text in Zeilen splitten
             var lines = www.downloadHandler.text
                 .Split(new[]{'\r','\n'}, StringSplitOptions.RemoveEmptyEntries);
 #else
-    // Editor / Standalone: File-System
-    if (!File.Exists(mappingPath))
-    {
-        Debug.LogError($"LoadNovelMapping: Datei nicht gefunden: {mappingPath}");
-        onComplete?.Invoke(new Dictionary<string,int>());
-        yield break;
-    }
-    var lines = File.ReadAllLines(mappingPath);
+            if (!File.Exists(mappingPath))
+            {
+                Debug.LogError($"LoadNovelMapping: Datei nicht gefunden: {mappingPath}");
+                onComplete?.Invoke(new Dictionary<string,int>(StringComparer.OrdinalIgnoreCase));
+                yield break;
+            }
+            var lines = File.ReadAllLines(mappingPath);
 #endif
 
             var dict = new Dictionary<string,int>(StringComparer.OrdinalIgnoreCase);
             foreach (var raw in lines)
             {
                 var line = raw.Trim();
-                if (line.Length == 0 || !line.Contains(':')) 
+                if (line.Length == 0 || !line.Contains(':'))
                     continue;
 
                 var parts = line.Split(new[]{':'}, 2);
