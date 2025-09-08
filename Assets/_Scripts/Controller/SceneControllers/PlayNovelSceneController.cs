@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Assets._Scripts._Mappings;
 using Assets._Scripts.Controller.CharacterController;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
@@ -561,7 +562,16 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             if (novelEvent.audioClipToPlay != "NONE")
             {
-                //GlobalVolumeManager.Instance.PlaySound(clips[novelEvent.audioClipToPlay]);    //TODO: Gescheites Konzept für die Auswahl überlegen.
+                int soundIndex = MappingManager.MapSound(novelEvent.audioClipToPlay);
+                if (soundIndex >= 0 && soundIndex < clips.Length)
+                {
+                    GlobalVolumeManager.Instance.PlaySound(clips[soundIndex]);
+                }
+                else
+                {
+                    Debug.LogWarning($"Ungültiger Sound-Index oder nicht gefunden: '{novelEvent.audioClipToPlay}'");
+                }
+
             }
 
             if (novelEvent.waitForUserConfirmation)

@@ -921,7 +921,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 540, y: -265}
-  m_SizeDelta: {x: 1080, y: 330}
+  m_SizeDelta: {x: 1080, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &498441981
 MonoBehaviour:
@@ -3954,11 +3954,11 @@ MonoBehaviour:
     characters: []
     isKiteNovel: 0
     novelColor: {r: 0, g: 0, b: 0, a: 0}
+    novelFrameColor: {r: 0, g: 0, b: 0, a: 0}
   currentTypeWriter: {fileID: 0}
   selectOptionContinueConversation: {fileID: 0}
   currentTalkingKite2CharacterController: {fileID: 0}
   clips:
-  - {fileID: 0}
   - {fileID: 8300000, guid: 6a2f896f4c76c7f44b538a4b04dad09e, type: 3}
   - {fileID: 8300000, guid: cda9ba2dd422ff643969898376a63b55, type: 3}
   - {fileID: 8300000, guid: d7e4565c0a95a7b48b9e8336849c86ca, type: 3}
