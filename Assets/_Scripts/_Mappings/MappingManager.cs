@@ -15,42 +15,48 @@ namespace Assets._Scripts._Mappings
     /// </summary>
     public class MappingManager : MonoBehaviour
     {
+        public static Dictionary<BiasType, Bias> biases = new Dictionary<BiasType, Bias>();
+        
         private static MappingManager _instance;
-
+        
         // Mapping-Files
         private static readonly string MappingFileFaceExpression;
         private static readonly string MappingFileCharacter;
+        private static readonly string MappingFileSound; // NEU
 
-        // Dictionaries to store the mappings for bias, face expression, and characters
-        private static Dictionary<string, int> _faceExpressionMapping = new Dictionary<string, int>();
-        private static Dictionary<string, int> _characterMapping = new Dictionary<string, int>();
-        public static Dictionary<BiasType, Bias> biases = new Dictionary<BiasType, Bias>();
+        // Dictionaries
+        private static Dictionary<string, int> _faceExpressionMapping = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+        private static Dictionary<string, int> _characterMapping      = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+        private static Dictionary<string, int> _soundMapping          = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase); // NEU
 
         /// <summary>
         /// Provides functionality to manage and load mappings for biases, face expressions, and character data.
-        /// This class uses platform-specific approaches to load mapping data from files and provides methods to map individual entries.
         /// </summary>
         static MappingManager()
         {
-            // For WebGL, we use the StreamingAssets folder, but WebGL files need to be accessed asynchronously
+            // StreamingAssets-Pfade
             MappingFileFaceExpression = Path.Combine(Application.streamingAssetsPath, "FaceExpressionMapping.txt");
-            MappingFileCharacter = Path.Combine(Application.streamingAssetsPath, "CharacterMapping.txt");
+            MappingFileCharacter      = Path.Combine(Application.streamingAssetsPath, "CharacterMapping.txt");
+            MappingFileSound          = Path.Combine(Application.streamingAssetsPath, "SoundMapping.txt"); // NEU
 
-            LoadBiasesFromJson();    
+            LoadBiasesFromJson();
             LoadFaceExpressionMappingAsync();
             LoadCharacterMappingAsync();
+            LoadSoundMappingAsync(); // NEU
         }
 
-        /// <summary>
-        /// Singleton pattern to ensure only one instance of MappingManager exists
-        /// </summary>
+        /// <summary>Singleton</summary>
         public static MappingManager Instance
         {
             get
             {
                 if (_instance == null)
                 {
+#if UNITY_2023_1_OR_NEWER
                     _instance = FindAnyObjectByType<MappingManager>();
+#else
+                    _instance = FindObjectOfType<MappingManager>();
+#endif
                     if (_instance == null)
                     {
                         GameObject obj = new GameObject("MappingManager");
@@ -58,7 +64,6 @@ namespace Assets._Scripts._Mappings
                         DontDestroyOnLoad(obj);
                     }
                 }
-
                 return _instance;
             }
         }
@@ -72,13 +77,11 @@ namespace Assets._Scripts._Mappings
         private static void LoadFaceExpressionMappingAsync()
         {
 #if UNITY_WEBGL
-            // For WebGL, use UnityWebRequest to load the file asynchronously
             UnityWebRequest www = UnityWebRequest.Get(MappingFileFaceExpression);
             www.SendWebRequest().completed += _ =>
             {
                 if (www.result == UnityWebRequest.Result.Success)
                 {
-                    // Split the downloaded content into lines
                     string[] lines = www.downloadHandler.text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
                     ProcessFaceExpressionFile(lines, ref _faceExpressionMapping);
                 }
@@ -88,6 +91,7 @@ namespace Assets._Scripts._Mappings
                 }
             };
 #else
+            var filePath = MappingFileFaceExpression;
             if (File.Exists(filePath))
             {
                 string[] lines = File.ReadAllLines(filePath);
@@ -109,13 +113,11 @@ namespace Assets._Scripts._Mappings
         private static void LoadCharacterMappingAsync()
         {
 #if UNITY_WEBGL
-            // For WebGL, use UnityWebRequest to load the file asynchronously
             UnityWebRequest www = UnityWebRequest.Get(MappingFileCharacter);
             www.SendWebRequest().completed += _ =>
             {
                 if (www.result == UnityWebRequest.Result.Success)
                 {
-                    // Split the downloaded content into lines
                     string[] lines = www.downloadHandler.text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
                     ProcessCharacterFile(lines, ref _characterMapping);
                 }
@@ -125,6 +127,7 @@ namespace Assets._Scripts._Mappings
                 }
             };
 #else
+            var filePath = MappingFileCharacter;
             if (File.Exists(filePath))
             {
                 string[] lines = File.ReadAllLines(filePath);
@@ -136,6 +139,39 @@ namespace Assets._Scripts._Mappings
             }
 #endif
         }
+
+        // NEU: Sound-Mapping laden
+        private static void LoadSoundMappingAsync()
+        {
+#if UNITY_WEBGL
+            UnityWebRequest www = UnityWebRequest.Get(MappingFileSound);
+            www.SendWebRequest().completed += _ =>
+            {
+                if (www.result == UnityWebRequest.Result.Success)
+                {
+                    string[] lines = www.downloadHandler.text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                    ProcessSoundFile(lines, ref _soundMapping);
+                }
+                else
+                {
+                    Application.ExternalCall("logMessage", "Error loading sound mapping: " + www.error);
+                }
+            };
+#else
+            var filePath = MappingFileSound;
+            if (File.Exists(filePath))
+            {
+                string[] lines = File.ReadAllLines(filePath);
+                ProcessSoundFile(lines, ref _soundMapping);
+            }
+            else
+            {
+                Debug.LogWarning($"Sound mapping file not found at: {filePath}");
+            }
+#endif
+        }
+
+        // ----------------- BIASES (JSON) -----------------
 
         /// <summary>
         /// Loads bias data from a JSON file and populates the internal dictionary of biases.
@@ -191,22 +227,20 @@ namespace Assets._Scripts._Mappings
         /// <param name="mapping">A reference to the dictionary where the mappings will be stored. Keys are strings, and values are integers.</param>
         private static void ProcessFaceExpressionFile(string[] lines, ref Dictionary<string, int> mapping)
         {
-            foreach (string line in lines)
+            foreach (string raw in lines)
             {
-                if (string.IsNullOrWhiteSpace(line)) continue;
+                if (string.IsNullOrWhiteSpace(raw)) continue;
 
+                string line = raw.Trim();
                 int colonIndex = line.IndexOf(':');
                 if (colonIndex > 0 && colonIndex < line.Length - 1)
                 {
                     string key = line.Substring(0, colonIndex).Trim();
                     string valueStr = line.Substring(colonIndex + 1).Trim();
 
-                    if (int.TryParse(valueStr, out int id))
+                    if (int.TryParse(valueStr, out int id) && !string.IsNullOrEmpty(key))
                     {
-                        if (!string.IsNullOrEmpty(key))
-                        {
-                            mapping.TryAdd(key, id);
-                        }
+                        mapping[key] = id; // Dictionary ist case-insensitive
                     }
                     else
                     {
@@ -228,22 +262,20 @@ namespace Assets._Scripts._Mappings
         /// <param name="mapping">A reference to the dictionary where the parsed mappings will be stored.</param>
         private static void ProcessCharacterFile(string[] lines, ref Dictionary<string, int> mapping)
         {
-            foreach (string line in lines)
+            foreach (string raw in lines)
             {
-                if (string.IsNullOrWhiteSpace(line)) continue;
+                if (string.IsNullOrWhiteSpace(raw)) continue;
 
+                string line = raw.Trim();
                 int colonIndex = line.IndexOf(':');
                 if (colonIndex > 0 && colonIndex < line.Length - 1)
                 {
                     string key = line.Substring(0, colonIndex).Trim();
                     string valueStr = line.Substring(colonIndex + 1).Trim();
 
-                    if (int.TryParse(valueStr, out int id))
+                    if (int.TryParse(valueStr, out int id) && !string.IsNullOrEmpty(key))
                     {
-                        if (!string.IsNullOrEmpty(key))
-                        {
-                            mapping.TryAdd(key, id);
-                        }
+                        mapping[key] = id; // case-insensitive
                     }
                     else
                     {
@@ -256,6 +288,38 @@ namespace Assets._Scripts._Mappings
                 }
             }
         }
+
+        // NEU: Parser für SoundMapping.txt
+        private static void ProcessSoundFile(string[] lines, ref Dictionary<string, int> mapping)
+        {
+            foreach (string raw in lines)
+            {
+                if (string.IsNullOrWhiteSpace(raw)) continue;
+
+                string line = raw.Trim();
+                int colonIndex = line.IndexOf(':');
+                if (colonIndex > 0 && colonIndex < line.Length - 1)
+                {
+                    string key = line.Substring(0, colonIndex).Trim();
+                    string valueStr = line.Substring(colonIndex + 1).Trim();
+
+                    if (int.TryParse(valueStr, out int id) && !string.IsNullOrEmpty(key))
+                    {
+                        mapping[key] = id; // case-insensitive
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"Invalid sound mapping value (not an integer): {line}");
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning($"Invalid mapping line: {line}");
+                }
+            }
+        }
+
+        // ----------------- PUBLIC API -----------------
 
         /// <summary>
         /// Maps a bias type represented by a string to its corresponding headline if it exists.
@@ -277,7 +341,6 @@ namespace Assets._Scripts._Mappings
                 return type.ToString();
             }
 
-            // Wenn der String kein gültiger Enum-Wert ist
             Debug.LogWarning($"Invalid BiasType string: {typeString}");
             return typeString;
         }
@@ -302,18 +365,10 @@ namespace Assets._Scripts._Mappings
         /// <returns>The integer value corresponding to the face expression, or -1 if the mapping does not exist.</returns>
         public static int MapFaceExpressions(string faceExpression)
         {
-            if (string.IsNullOrEmpty(faceExpression))
-            {
-                return -1;
-            }
+            if (string.IsNullOrWhiteSpace(faceExpression)) return -1;
 
-            if (_faceExpressionMapping.TryGetValue(faceExpression, out int id))
-            {
-                return id;
-            }
-
-            Debug.LogWarning($"Face expression mapping not found for: {faceExpression}");
-            return -1; // Fallback value if no mapping is found
+            var key = faceExpression.Trim();
+            return _faceExpressionMapping.TryGetValue(key, out int id) ? id : -1;
         }
 
         /// <summary>
@@ -325,18 +380,10 @@ namespace Assets._Scripts._Mappings
         /// <returns>The integer identifier of the mapped character if it exists; otherwise, -1.</returns>
         public static int MapCharacter(string character)
         {
-            if (string.IsNullOrEmpty(character))
-            {
-                return -1;
-            }
+            if (string.IsNullOrWhiteSpace(character)) return -1;
 
-            if (_characterMapping.TryGetValue(character, out int id))
-            {
-                return id;
-            }
-
-            Debug.LogWarning("Character mapping not found for: " + character);
-            return -1; // Fallback value if no mapping is found
+            var key = character.Trim();
+            return _characterMapping.TryGetValue(key, out int id) ? id : -1;
         }
 
         /// <summary>
@@ -347,6 +394,17 @@ namespace Assets._Scripts._Mappings
         public static string MapCharacterToString(int character)
         {
             return character == -1 ? "" : _characterMapping.FirstOrDefault(x => x.Value == character).Key;
+        }
+
+        /// <summary>
+        /// Case-insensitive mapping of sound clip name → int index (from StreamingAssets/SoundMapping.txt).
+        /// </summary>
+        public static int MapSound(string clipName)
+        {
+            if (string.IsNullOrWhiteSpace(clipName)) return -1;
+
+            var key = clipName.Trim();
+            return _soundMapping.TryGetValue(key, out int id) ? id : -1;
         }
     }
 }
