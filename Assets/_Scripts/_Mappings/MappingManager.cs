@@ -22,9 +22,9 @@ namespace Assets._Scripts._Mappings
         private static readonly string MappingFileCharacter;
 
         // Dictionaries to store the mappings for bias, face expression, and characters
-        private static Dictionary<BiasType, Bias> _biases = new Dictionary<BiasType, Bias>();
         private static Dictionary<string, int> _faceExpressionMapping = new Dictionary<string, int>();
         private static Dictionary<string, int> _characterMapping = new Dictionary<string, int>();
+        public static Dictionary<BiasType, Bias> biases = new Dictionary<BiasType, Bias>();
 
         /// <summary>
         /// Provides functionality to manage and load mappings for biases, face expressions, and character data.
@@ -153,7 +153,7 @@ namespace Assets._Scripts._Mappings
             
             var wrapper = JsonUtility.FromJson<BiasJsonWrapper>(json.text);
             
-            _biases = new Dictionary<BiasType, Bias>();
+            biases = new Dictionary<BiasType, Bias>();
             
             foreach (var item in wrapper.items)
             {
@@ -165,9 +165,10 @@ namespace Assets._Scripts._Mappings
 
                 if (Enum.TryParse(typeStr, out BiasType biasType))
                 {
-                    _biases[biasType] = new Bias
+                    biases[biasType] = new Bias
                     {
-                        biasType = biasType,
+                        type = typeStr,
+                        category = item.category,
                         headline = item.headline,
                         preview = item.preview,
                         description = item.description
@@ -268,7 +269,7 @@ namespace Assets._Scripts._Mappings
             if (Enum.TryParse(typeString, out BiasType type))
             {
                 // Wenn das Parsen erfolgreich war, hole die Headline
-                if (_biases.TryGetValue(type, out Bias bias))
+                if (biases.TryGetValue(type, out Bias bias))
                 {
                     return bias.headline;
                 }
@@ -290,7 +291,7 @@ namespace Assets._Scripts._Mappings
         /// </returns>
         public static Dictionary<BiasType, Bias> GetAllBiases()
         {
-            return _biases;
+            return biases;
         }
 
         /// <summary>
