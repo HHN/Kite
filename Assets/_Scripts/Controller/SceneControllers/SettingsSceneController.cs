@@ -65,8 +65,8 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void Awake()
         {
-            _isTextToSpeechActive = PlayerPrefs.GetInt("TTS", 1) == 1; // 1 = true, 0 = false
-            _isSoundActive = PlayerPrefs.GetInt("IsSoundEffectVolumeOn", 1) == 1; // 1 = true, 0 = false
+            _isTextToSpeechActive = PlayerPrefs.GetInt("TTS") == 1; // 1 = true, 0 = false
+            _isSoundActive = PlayerPrefs.GetInt("IsSoundEffectVolumeOn") == 1; // 1 = true, 0 = false
         }
 
         /// <summary>
