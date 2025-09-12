@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Assets._Scripts.Novel;
 
 namespace Assets._Scripts.Managers
@@ -9,6 +10,9 @@ namespace Assets._Scripts.Managers
     public class PlayThroughCounterAnimationManager
     {
         private static PlayThroughCounterAnimationManager _instance;
+        
+        // Holds animation state per visual novel
+        private readonly Dictionary<VisualNovelNames, bool> _animationStates = new Dictionary<VisualNovelNames, bool>();
 
         private bool _animateNumberForBankkreditNovel;
         private bool _animateNumberForInvestorNovel;
@@ -19,7 +23,7 @@ namespace Assets._Scripts.Managers
         private bool _animateNumberForIntroNovel;
 
         /// <summary>
-        /// Handles the management and control of playthrough counter animations
+        /// Handles the management and control of playthrough counter-animations
         /// for different visual novels. Animations can be toggled for specific
         /// visual novels and their current states can be queried.
         /// </summary>
@@ -34,12 +38,7 @@ namespace Assets._Scripts.Managers
         /// <returns>The singleton instance of <see cref="PlayThroughCounterAnimationManager"/>.</returns>
         public static PlayThroughCounterAnimationManager Instance()
         {
-            if (_instance == null)
-            {
-                _instance = new PlayThroughCounterAnimationManager();
-            }
-
-            return _instance;
+            return _instance ??= new PlayThroughCounterAnimationManager();
         }
 
         /// <summary>
@@ -50,52 +49,9 @@ namespace Assets._Scripts.Managers
         /// <param name="novel">The specific visual novel for which the animation state is being updated.</param>
         public void SetAnimation(bool value, VisualNovelNames novel)
         {
-            switch (novel)
-            {
-                case VisualNovelNames.ElternNovel:
-                {
-                    _animateNumberForElternNovel = value;
-                    break;
-                }
-                case VisualNovelNames.PresseNovel:
-                {
-                    _animateNumberForPresseNovel = value;
-                    break;
-                }
-                case VisualNovelNames.NotariatNovel:
-                {
-                    _animateNumberForNotariatNovel = value;
-                    break;
-                }
-                case VisualNovelNames.InvestorNovel:
-                {
-                    _animateNumberForInvestorNovel = value;
-                    break;
-                }
-                case VisualNovelNames.BankKreditNovel:
-                {
-                    _animateNumberForBankkreditNovel = value;
-                    break;
-                }
-                case VisualNovelNames.HonorarNovel:
-                {
-                    _animateNumberForHonorarNovel = value;
-                    break;
-                }
-                case VisualNovelNames.EinstiegsNovel:
-                {
-                    _animateNumberForIntroNovel = value;
-                    break;
-                }
-                case VisualNovelNames.None:
-                    break;
-                case VisualNovelNames.VermieterNovel:
-                    break;
-                case VisualNovelNames.VertriebNovel:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(novel), novel, null);
-            }
+            if (novel == VisualNovelNames.None) return;
+
+            _animationStates[novel] = value;
         }
 
         /// <summary>
@@ -105,44 +61,18 @@ namespace Assets._Scripts.Managers
         /// <returns>True if the animation is active for the specified visual novel; otherwise, false.</returns>
         public bool IsAnimationTrue(VisualNovelNames novel)
         {
-            switch (novel)
-            {
-                case VisualNovelNames.ElternNovel:
-                {
-                    return _animateNumberForElternNovel;
-                }
-                case VisualNovelNames.PresseNovel:
-                {
-                    return _animateNumberForPresseNovel;
-                }
-                case VisualNovelNames.NotariatNovel:
-                {
-                    return _animateNumberForNotariatNovel;
-                }
-                case VisualNovelNames.InvestorNovel:
-                {
-                    return _animateNumberForInvestorNovel;
-                }
-                case VisualNovelNames.BankKreditNovel:
-                {
-                    return _animateNumberForBankkreditNovel;
-                }
-                case VisualNovelNames.HonorarNovel:
-                {
-                    return _animateNumberForHonorarNovel;
-                }
-                case VisualNovelNames.EinstiegsNovel:
-                {
-                    return _animateNumberForIntroNovel;
-                }
-                case VisualNovelNames.None:
-                case VisualNovelNames.VermieterNovel:
-                case VisualNovelNames.VertriebNovel:
-                default:
-                {
-                    return false;
-                }
-            }
+            if (novel == VisualNovelNames.None) return false;
+
+            return _animationStates.TryGetValue(novel, out var value) && value;
+        }
+
+        /// <summary>
+        /// Clears all animation states for all visual novels, removing any active
+        /// animations and resetting the internal state tracking their statuses.
+        /// </summary>
+        public void ClearAllAnimations()
+        {
+            _animationStates.Clear();
         }
     }
 }
