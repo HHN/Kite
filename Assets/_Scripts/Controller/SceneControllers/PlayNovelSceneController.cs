@@ -1151,7 +1151,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void ShowHintForSavegameMessageBox()
         {
-            if (hintForSavegameMessageBox == null || DestroyValidator.IsNullOrDestroyed(canvas)) return;
+            if (hintForSavegameMessageBox == null || canvas.IsNullOrDestroyed()) return;
 
             // Check if the HintForSavegameMessageBox is already loaded and close it if necessary
             if (_hintForSavegameMessageBoxObject != null && !_hintForSavegameMessageBoxObject.IsNullOrDestroyed())

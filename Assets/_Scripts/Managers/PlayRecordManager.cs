@@ -13,6 +13,7 @@ namespace Assets._Scripts.Managers
         private static PlayRecordManager _instance;
         private PlayRecordManagerWrapper _wrapper;
         private const string Key = "PlayRecordManagerWrapper";
+        private const string OldKey = "OldPlayRecordManagerWrapper";
 
         /// <summary>
         /// Manages the tracking and recording of playthroughs for visual novels.
@@ -65,22 +66,49 @@ namespace Assets._Scripts.Managers
         }
 
         /// <summary>
-        /// Loads and provides access to the playthrough record data wrapper for visual novels.
+        /// Handles the creation and initialization of the PlayRecordManagerWrapper.
         /// </summary>
         /// <remarks>
-        /// This method initializes or retrieves the PlayRecordManagerWrapper instance used for managing play statistics.
-        /// It handles the deserialization of play data if available or creates a new wrapper instance if no existing data is found.
+        /// This method is used to load play record data, migrating from an old format if applicable,
+        /// and initializing a new PlayRecordManagerWrapper instance when no prior data exists.
+        /// It ensures compatibility between different versions of stored play records.
         /// </remarks>
         /// <returns>
-        /// A PlayRecordManagerWrapper instance that contains the playthrough data for visual novels.
+        /// A fully initialized PlayRecordManagerWrapper instance containing migrated or default play record data.
         /// </returns>
         private PlayRecordManagerWrapper LoadPlayRecordManagerWrapper()
         {
-            if (!PlayerDataManager.Instance().HasKey(Key)) return new PlayRecordManagerWrapper();
-            
-            string json = PlayerDataManager.Instance().GetPlayerData(Key);
-            return JsonUtility.FromJson<PlayRecordManagerWrapper>(json);
+            if (PlayerDataManager.Instance().HasKey(Key))
+            {
+                string json = PlayerDataManager.Instance().GetPlayerData(Key);
+                return JsonUtility.FromJson<PlayRecordManagerWrapper>(json);
+            }
 
+            if (PlayerPrefs.HasKey(OldKey))
+            {
+                string oldJson = PlayerPrefs.GetString(OldKey);
+                OldPlayRecordManagerWrapper oldData = JsonUtility.FromJson<OldPlayRecordManagerWrapper>(oldJson);
+
+                var newData = new PlayRecordManagerWrapper();
+
+                newData.SetNumberOfPlays(VisualNovelNames.BankKreditNovel, oldData.numberOfPlaysForBankkreditNovel);
+                newData.SetNumberOfPlays(VisualNovelNames.InvestorNovel, oldData.numberOfPlaysForInvestorNovel);
+                newData.SetNumberOfPlays(VisualNovelNames.ElternNovel, oldData.numberOfPlaysForElternNovel);
+                newData.SetNumberOfPlays(VisualNovelNames.NotariatNovel, oldData.numberOfPlaysForNotarinNovel);
+                newData.SetNumberOfPlays(VisualNovelNames.PresseNovel, oldData.numberOfPlaysForPresseNovel);
+                newData.SetNumberOfPlays(VisualNovelNames.HonorarNovel, oldData.numberOfPlaysForHonorarNovel);
+                newData.SetNumberOfPlays(VisualNovelNames.EinstiegsNovel, oldData.numberOfPlaysForIntroNovel);
+                newData.SetNumberOfPlays(VisualNovelNames.VermieterNovel, oldData.numberOfPlaysForVermieterNovel);
+
+                string newJson = JsonUtility.ToJson(newData);
+                PlayerDataManager.Instance().SavePlayerData(Key, newJson);
+
+                PlayerPrefs.DeleteKey(OldKey);
+
+                return newData;
+            }
+
+            return new PlayRecordManagerWrapper();
         }
 
         /// <summary>

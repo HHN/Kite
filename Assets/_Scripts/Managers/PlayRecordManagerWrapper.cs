@@ -1,10 +1,38 @@
 using System;
 using System.Collections.Generic;
 using Assets._Scripts.Novel;
-using UnityEngine;
 
 namespace Assets._Scripts.Managers
 {
+    /// <summary>
+    /// The OldPlayRecordManagerWrapper class serves as a legacy structure used to store
+    /// the count of plays for various types of novels. This class was used in an earlier
+    /// data format and is maintained for compatibility and migration purposes.
+    /// </summary>
+    [Serializable]
+    public class OldPlayRecordManagerWrapper
+    {
+        public int numberOfPlaysForBankkreditNovel;
+        public int numberOfPlaysForInvestorNovel;
+        public int numberOfPlaysForElternNovel;
+        public int numberOfPlaysForNotarinNovel;
+        public int numberOfPlaysForPresseNovel;
+        public int numberOfPlaysForHonorarNovel;
+        public int numberOfPlaysForIntroNovel;
+        public int numberOfPlaysForVermieterNovel;
+    }
+
+    /// <summary>
+    /// The PlayCountEntry struct represents a record for tracking the play count of a specific visual novel.
+    /// It is used to store the association between a visual novel name and the number of times it has been played.
+    /// </summary>
+    [Serializable]
+    public struct PlayCountEntry
+    {
+        public VisualNovelNames novel;
+        public int count;
+    }
+    
     /// <summary>
     /// The PlayRecordManagerWrapper class provides functionality to manage the count of plays
     /// for different types of novels. It includes methods to get and set the number of plays
@@ -13,15 +41,7 @@ namespace Assets._Scripts.Managers
     [Serializable]
     public class PlayRecordManagerWrapper
     {
-        
-        [Serializable]
-        private struct PlayCountEntry
-        {
-            public VisualNovelNames novel;
-            public int count;
-        }
-        
-        [SerializeField] private List<PlayCountEntry> playCounts = new List<PlayCountEntry>();
+        public List<PlayCountEntry> playCounts = new();
         
         private Dictionary<VisualNovelNames, int> _cache;
 
