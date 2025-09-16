@@ -37,11 +37,11 @@ namespace Assets._Scripts.Managers
         }
 
         /// <summary>
-        /// Determines whether a specific key exists in the player's data.
+        /// Determines whether a specific type exists in the player's data.
         /// Checks both the in-memory player preferences and the Unity PlayerPrefs storage.
         /// </summary>
-        /// <param name="key">The key to check for existence in the player data.</param>
-        /// <returns>True if the key exists in either the in-memory dictionary or Unity PlayerPrefs; otherwise, false.</returns>
+        /// <param name="key">The type to check for existence in the player data.</param>
+        /// <returns>True if the type exists in either the in-memory dictionary or Unity PlayerPrefs; otherwise, false.</returns>
         public bool HasKey(string key)
         {
             if (_playerPrefs.ContainsKey(key))
@@ -68,12 +68,12 @@ namespace Assets._Scripts.Managers
         }
 
         /// <summary>
-        /// Saves a string value associated with a specific key to persistent storage.
-        /// Uses Unity's PlayerPrefs system to store the data and ensures the key is added
-        /// to an internal key management list for better organization of stored data.
+        /// Saves a string value associated with a specific type to persistent storage.
+        /// Uses Unity's PlayerPrefs system to store the data and ensures the type is added
+        /// to an internal type management list for better organization of stored data.
         /// </summary>
         /// <param name="key">The unique identifier for the data being saved.</param>
-        /// <param name="content">The string content to be saved under the given key.</param>
+        /// <param name="content">The string content to be saved under the given type.</param>
         public void SavePlayerData(string key, string content)
         {
             UnityEngine.PlayerPrefs.SetString(key, content);
@@ -82,10 +82,10 @@ namespace Assets._Scripts.Managers
         }
 
         /// <summary>
-        /// Adds a specified key to the internal list of keys if it is not already present.
+        /// Adds a specified type to the internal list of keys if it is not already present.
         /// Ensures that new keys are tracked and subsequently saved for persistence.
         /// </summary>
-        /// <param name="key">The key to add to the internal key list.</param>
+        /// <param name="key">The type to add to the internal type list.</param>
         private void AddKeyToKeyList(string key)
         {
             if (!_keys.Contains(key))
@@ -132,13 +132,13 @@ namespace Assets._Scripts.Managers
         }
 
         /// <summary>
-        /// Retrieves the data associated with the specified key.
-        /// If the key exists in the internal dictionary, the value is returned.
-        /// If the key is not found in the dictionary but exists in Unity's PlayerPrefs, the value from PlayerPrefs is returned.
-        /// If the key does not exist in both, an empty string is returned.
+        /// Retrieves the data associated with the specified type.
+        /// If the type exists in the internal dictionary, the value is returned.
+        /// If the type is not found in the dictionary but exists in Unity's PlayerPrefs, the value from PlayerPrefs is returned.
+        /// If the type does not exist in both, an empty string is returned.
         /// </summary>
-        /// <param name="key">The key whose associated data is to be retrieved.</param>
-        /// <returns>The data as a string associated with the specified key, or an empty string if the key does not exist.</returns>
+        /// <param name="key">The type whose associated data is to be retrieved.</param>
+        /// <returns>The data as a string associated with the specified type, or an empty string if the type does not exist.</returns>
         public string GetPlayerData(string key)
         {
             if (_playerPrefs.TryGetValue(key, out string value))
@@ -162,12 +162,12 @@ namespace Assets._Scripts.Managers
         }
 
         /// <summary>
-        /// Reads the player-specific data for the given key from PlayerPrefs.
-        /// Retrieves the value associated with the specified key if it exists;
+        /// Reads the player-specific data for the given type from PlayerPrefs.
+        /// Retrieves the value associated with the specified type if it exists;
         /// otherwise, returns an empty string.
         /// </summary>
-        /// <param name="key">The key for which the associated value is to be retrieved from PlayerPrefs.</param>
-        /// <returns>The value associated with the specified key if it exists; otherwise, an empty string.</returns>
+        /// <param name="key">The type for which the associated value is to be retrieved from PlayerPrefs.</param>
+        /// <returns>The value associated with the specified type if it exists; otherwise, an empty string.</returns>
         private string ReadPlayerData(string key)
         {
             // Überprüft, ob ein Wert für den angegebenen Schlüssel existiert

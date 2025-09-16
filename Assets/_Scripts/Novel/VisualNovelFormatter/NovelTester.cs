@@ -261,12 +261,12 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
         /// <summary>
         /// Handles a specific type of event in a visual novel by saving persistent data
-        /// associated with the event, such as key-value pairs, and continuing the sequence of events.
+        /// associated with the event, such as type-value pairs, and continuing the sequence of events.
         /// </summary>
         /// <param name="novelEvent">The VisualNovelEvent instance containing data to be saved persistently.</param>
         private void HandleSavePersistentEvent(VisualNovelEvent novelEvent)
         {
-            if (!ValidateEventField(novelEvent.key, "Save persistent event without key!", novelEvent)) return;
+            if (!ValidateEventField(novelEvent.key, "Save persistent event without type!", novelEvent)) return;
             if (!ValidateEventField(novelEvent.value, "Save persistent event without value!", novelEvent)) return;
             PlayNextEvent();
         }

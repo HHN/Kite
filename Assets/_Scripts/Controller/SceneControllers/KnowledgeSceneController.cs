@@ -39,7 +39,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private GameObject searchList;
         [SerializeField] private RectTransform searchBarRect;
         
-        private Dictionary<BiasType, Bias> _biases;
+        private Dictionary<string, Bias> _biases;
         private readonly Dictionary<string, GameObject> _categoryContainers = new();
         private readonly Dictionary<string, bool> _categoryStates = new();
         private readonly Dictionary<string, bool> _categoryHasLoadedButtons = new();
@@ -191,7 +191,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// <param name="bias">The bias object associated with the clicked button, containing its type, headline, and other details.</param>
         private void OnBiasClicked(Bias bias)
         {
-            if (Enum.TryParse(bias.type, out BiasType biasType)) ShowBiasDetails(biasType);
+            ShowBiasDetails(bias.type);
             
         }
 
@@ -201,7 +201,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// with the corresponding description text while hiding unrelated elements.
         /// </summary>
         /// <param name="type">The type of the bias to display details for.</param>
-        private void ShowBiasDetails(BiasType type)
+        private void ShowBiasDetails(string type)
         {
             if (searchList.activeInHierarchy) searchList.SetActive(false);
 

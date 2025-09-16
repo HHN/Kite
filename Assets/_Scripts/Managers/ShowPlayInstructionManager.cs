@@ -66,11 +66,11 @@ namespace Assets._Scripts.Managers
 
         /// <summary>
         /// Loads the value of the setting based on the previously saved player data.
-        /// Retrieves a key from persistent storage to determine if the play instruction should be displayed.
+        /// Retrieves a type from persistent storage to determine if the play instruction should be displayed.
         /// </summary>
         /// <returns>
         /// A boolean value indicating whether the play instruction should be shown.
-        /// Returns true if the key does not exist or its value is set to true; otherwise, false.
+        /// Returns true if the type does not exist or its value is set to true; otherwise, false.
         /// </returns>
         private bool LoadValue()
         {
@@ -87,7 +87,7 @@ namespace Assets._Scripts.Managers
 
         /// <summary>
         /// Persists the current play instruction visibility setting to the storage system.
-        /// Uses the PlayerDataManager to save the setting with an associated key,
+        /// Uses the PlayerDataManager to save the setting with an associated type,
         /// ensuring changes to the instructions' visibility are not lost across sessions.
         /// </summary>
         private void Save()

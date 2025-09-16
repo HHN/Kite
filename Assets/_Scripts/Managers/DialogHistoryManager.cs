@@ -96,7 +96,7 @@ namespace Assets._Scripts.Managers
         /// Saves the current state of dialog history entries to persistent storage.
         /// Serializes the internal dialog history entries list into a JSON format
         /// and uses the PlayerDataManager to store the serialized data under
-        /// a predefined key.
+        /// a predefined type.
         /// Ensures that dialog history can be persisted across application sessions.
         /// </summary>
         private void Save()

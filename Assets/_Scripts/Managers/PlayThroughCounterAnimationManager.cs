@@ -89,7 +89,7 @@ namespace Assets._Scripts.Managers
 
         /// <summary>
         /// Loads the playthrough animation data from persistent storage. If no data exists with the
-        /// current key, this method attempts to migrate data from an older key format if available.
+        /// current type, this method attempts to migrate data from an older type format if available.
         /// If both current and old data formats are unavailable, this method initializes a new
         /// instance of playthrough animation data with default values.
         /// </summary>
@@ -132,7 +132,7 @@ namespace Assets._Scripts.Managers
 
         /// <summary>
         /// Persists the current state of playthrough animations to player preferences
-        /// by serializing the data and saving it using a unique key.
+        /// by serializing the data and saving it using a unique type.
         /// </summary>
         private void Save()
         {

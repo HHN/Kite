@@ -22,32 +22,6 @@ namespace Assets._Scripts.Biases
     }
 
     /// <summary>
-    /// Represents the types of biases that can be encountered in social, organizational, or personal contexts.
-    /// </summary>
-    public enum BiasType
-    {
-        AccessToFinancing,
-        GenderPayGap,
-        UndervaluationFemaleManagedCompany,
-        RiskAversionBias,
-        ConfirmationBias,
-        Tokenism,
-        BiasInThePerceptionOfLeadershipSkills,
-        BenevolentSexism,
-        AgeAndGenerationsBiases,
-        StereotypesAboutWomenInNonTraditionalIndustries,
-        Heteronormativity,
-        BiasesAgainstWomenWithChildren,
-        ExpectationsRegardingFamilyPlanning,
-        WorkLifeBalanceExpectations,
-        GenderSpecificStereotypes,
-        TightropeBias,
-        Microaggression,
-        PerformanceAttributionBias,
-        UnconsciousBiasInCommunication
-    }
-
-    /// <summary>
     /// Serves as a data container for deserializing a collection of biases from a JSON file.
     /// </summary>
     /// <remarks>

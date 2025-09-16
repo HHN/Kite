@@ -265,7 +265,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// <summary>
         /// Initializes the dictionary of character expressions for the current visual novel.
         /// This method extracts a list of unique character IDs from the novel's events, excluding specific IDs.
-        /// Each extracted character ID is added as a key in the dictionary with an initial expression value of zero.
+        /// Each extracted character ID is added as a type in the dictionary with an initial expression value of zero.
         /// </summary>
         private void InitializeCharacterExpressions()
         {
@@ -649,7 +649,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// Handles the saving of persistent events by processing the specified visual novel event,
         /// writing user input to a file, and initiating the next event playback.
         /// </summary>
-        /// <param name="novelEvent">The visual novel event containing data such as key, value,
+        /// <param name="novelEvent">The visual novel event containing data such as type, value,
         /// and other attributes related to the event being processed.</param>
         private void HandleSavePersistentEvent(VisualNovelEvent novelEvent)
         {
@@ -662,7 +662,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// Handles the process of saving a variable associated with a visual novel event,
         /// updates the global variables, and triggers the next event in the sequence.
         /// </summary>
-        /// <param name="novelEvent">The visual novel event containing the key-value pair to be saved
+        /// <param name="novelEvent">The visual novel event containing the type-value pair to be saved
         /// and other event-related data.</param>
         private void HandleSaveVariableEvent(VisualNovelEvent novelEvent)
         {
@@ -675,7 +675,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// Processes a VisualNovelEvent by evaluating a boolean expression, updating global variables,
         /// and setting the next event to play in the visual novel.
         /// </summary>
-        /// <param name="novelEvent">The event containing the boolean expression to evaluate, the variable key for storing the result, and the event transition data.</param>
+        /// <param name="novelEvent">The event containing the boolean expression to evaluate, the variable type for storing the result, and the event transition data.</param>
         private void HandleCalculateVariableFromBooleanExpressionEvent(VisualNovelEvent novelEvent)
         {
             SetNextEvent(novelEvent);
@@ -757,11 +757,11 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Writes user input to a file by saving the provided key and content
+        /// Writes user input to a file by saving the provided type and content
         /// using the PlayerDataManager for persistent storage.
         /// </summary>
-        /// <param name="key">The unique key representing the data to save.</param>
-        /// <param name="content">The content or value to associate with the key.</param>
+        /// <param name="key">The unique type representing the data to save.</param>
+        /// <param name="content">The content or value to associate with the type.</param>
         private void WriteUserInputToFile(string key, string content)
         {
             PlayerDataManager.Instance().SavePlayerData(key, content);

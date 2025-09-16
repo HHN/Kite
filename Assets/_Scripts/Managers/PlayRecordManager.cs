@@ -117,7 +117,7 @@ namespace Assets._Scripts.Managers
         /// <remarks>
         /// This method serializes the playthrough data held in the internal wrapper
         /// and stores it using the PlayerDataManager to ensure data persistence between sessions.
-        /// It uses the PlayRecordManagerWrapper and assigns the serialized data to a unique key.
+        /// It uses the PlayRecordManagerWrapper and assigns the serialized data to a unique type.
         /// </remarks>
         private void Save()
         {

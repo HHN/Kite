@@ -10,7 +10,7 @@ namespace Assets._Scripts.Biases
     /// </summary>
     public static class BiasDescriptionTexts
     {
-        private static Dictionary<BiasType, Bias> _biases;
+        private static Dictionary<string, Bias> _biases;
         private const string LinkColor = "#F5944E";
 
         /// <summary>
@@ -38,13 +38,13 @@ namespace Assets._Scripts.Biases
         /// <summary>
         /// Retrieves the description text for a specific bias type.
         /// </summary>
-        /// <param name="biasType">The type of bias for which to retrieve the description.</param>
+        /// <param name="biasKey">The type of bias for which to retrieve the description.</param>
         /// <returns>A string containing the formatted bias description or a default "TEXT NOT FOUND" if unavailable.</returns>
-        public static string GetBiasText(BiasType biasType)
+        public static string GetBiasText(string biasKey)
         {
             _biases ??= MappingManager.GetAllBiases();
 
-            if (_biases == null || !_biases.TryGetValue(biasType, out Bias biasInfo)) return "TEXT NOT FOUND";
+            if (_biases == null || !_biases.TryGetValue(biasKey, out Bias biasInfo)) return "TEXT NOT FOUND";
             
             string styledDescription = biasInfo.description.Replace("=LINK_COLOR", $"={LinkColor}");
                 

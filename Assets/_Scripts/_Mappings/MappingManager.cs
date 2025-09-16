@@ -15,34 +15,33 @@ namespace Assets._Scripts._Mappings
     /// </summary>
     public class MappingManager : MonoBehaviour
     {
-        public static Dictionary<BiasType, Bias> biases = new Dictionary<BiasType, Bias>();
-        
         private static MappingManager _instance;
         
+        public static Dictionary<string, Bias> biases = new(StringComparer.OrdinalIgnoreCase);
+
         // Mapping-Files
         private static readonly string MappingFileFaceExpression;
         private static readonly string MappingFileCharacter;
-        private static readonly string MappingFileSound; // NEU
+        private static readonly string MappingFileSound;
 
         // Dictionaries
-        private static Dictionary<string, int> _faceExpressionMapping = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
-        private static Dictionary<string, int> _characterMapping      = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
-        private static Dictionary<string, int> _soundMapping          = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase); // NEU
+        private static Dictionary<string, int> _faceExpressionMapping = new(StringComparer.OrdinalIgnoreCase);
+        private static Dictionary<string, int> _characterMapping = new(StringComparer.OrdinalIgnoreCase);
+        private static Dictionary<string, int> _soundMapping = new(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
         /// Provides functionality to manage and load mappings for biases, face expressions, and character data.
         /// </summary>
         static MappingManager()
         {
-            // StreamingAssets-Pfade
             MappingFileFaceExpression = Path.Combine(Application.streamingAssetsPath, "FaceExpressionMapping.txt");
-            MappingFileCharacter      = Path.Combine(Application.streamingAssetsPath, "CharacterMapping.txt");
-            MappingFileSound          = Path.Combine(Application.streamingAssetsPath, "SoundMapping.txt"); // NEU
+            MappingFileCharacter = Path.Combine(Application.streamingAssetsPath, "CharacterMapping.txt");
+            MappingFileSound = Path.Combine(Application.streamingAssetsPath, "SoundMapping.txt");
 
             LoadBiasesFromJson();
             LoadFaceExpressionMappingAsync();
             LoadCharacterMappingAsync();
-            LoadSoundMappingAsync(); // NEU
+            LoadSoundMappingAsync();
         }
 
         /// <summary>Singleton</summary>
@@ -64,6 +63,7 @@ namespace Assets._Scripts._Mappings
                         DontDestroyOnLoad(obj);
                     }
                 }
+
                 return _instance;
             }
         }
@@ -186,24 +186,25 @@ namespace Assets._Scripts._Mappings
                 Debug.LogError("Bias JSON not found in Resources!");
                 return;
             }
-            
+
             var wrapper = JsonUtility.FromJson<BiasJsonWrapper>(json.text);
-            
-            biases = new Dictionary<BiasType, Bias>();
-            
+
+            biases.Clear();
+
             foreach (var item in wrapper.items)
             {
-                string typeStr = item.type;
-                if (typeStr.StartsWith(">>Bias|") && typeStr.EndsWith("<<"))
+                if (string.IsNullOrWhiteSpace(item.type))
                 {
-                    typeStr = typeStr.Substring(7, typeStr.Length - 9).Trim();
+                    Debug.LogWarning("Bias ohne gültigen Key gefunden, wird übersprungen.");
+                    continue;
                 }
-
-                if (Enum.TryParse(typeStr, out BiasType biasType))
+                
+                string key = ExtractBiasKey(item.type);
+                if (!string.IsNullOrEmpty(key))
                 {
-                    biases[biasType] = new Bias
+                    biases[key] = new Bias
                     {
-                        type = typeStr,
+                        type = key,
                         category = item.category,
                         headline = item.headline,
                         preview = item.preview,
@@ -212,15 +213,34 @@ namespace Assets._Scripts._Mappings
                 }
                 else
                 {
-                    Debug.LogWarning($"Unknown BiasType in JSON: {typeStr}");
+                    Debug.LogWarning($"Ungültiger Bias-Key: {item.type}");
                 }
             }
         }
 
+        /// <summary>
+        /// Extracts the specific key value from a raw string input that is formatted with a predefined prefix and suffix syntax.
+        /// Returns the extracted key if the input matches the expected format, otherwise null.
+        /// </summary>
+        /// <param name="raw">The raw input string containing the key with a specific prefix and suffix.</param>
+        /// <returns>The extracted key if the input is valid and follows the expected format; otherwise, null.</returns>
+        private static string ExtractBiasKey(string raw)
+        {
+            if (string.IsNullOrWhiteSpace(raw))
+                return null;
+
+            const string prefix = ">>Bias|";
+            const string suffix = "<<";
+
+            if (raw.StartsWith(prefix) && raw.EndsWith(suffix))
+                return raw.Substring(prefix.Length, raw.Length - prefix.Length - suffix.Length).Trim();
+
+            return null;
+        }
 
         /// <summary>
         /// Processes the face expression mapping file lines and populates the given dictionary with mappings.
-        /// Each line is expected to have a key-value pair in the format "key:value".
+        /// Each line is expected to have a type-value pair in the format "type:value".
         /// Invalid or malformed lines are ignored, and warnings are logged for invalid entries.
         /// </summary>
         /// <param name="lines">An array of strings representing lines from the face expression mapping file.</param>
@@ -256,7 +276,7 @@ namespace Assets._Scripts._Mappings
 
         /// <summary>
         /// Processes character file lines to populate a character mapping dictionary.
-        /// Parses each line of the file to extract key-value pairs representing character names and their corresponding integer IDs.
+        /// Parses each line of the file to extract type-value pairs representing character names and their corresponding integer IDs.
         /// </summary>
         /// <param name="lines">An array of strings representing lines from the character mapping file.</param>
         /// <param name="mapping">A reference to the dictionary where the parsed mappings will be stored.</param>
@@ -289,7 +309,6 @@ namespace Assets._Scripts._Mappings
             }
         }
 
-        // NEU: Parser für SoundMapping.txt
         private static void ProcessSoundFile(string[] lines, ref Dictionary<string, int> mapping)
         {
             foreach (string raw in lines)
@@ -322,37 +341,36 @@ namespace Assets._Scripts._Mappings
         // ----------------- PUBLIC API -----------------
 
         /// <summary>
-        /// Maps a bias type represented by a string to its corresponding headline if it exists.
-        /// If the string does not match a valid BiasType, a warning is logged, and the input string is returned.
+        /// Maps a given type to its corresponding bias headline using the predefined bias mappings.
+        /// If the type is not found, the original type is returned, and a warning is logged.
         /// </summary>
-        /// <param name="typeString">The string representing the bias type to map.</param>
-        /// <returns>The corresponding headline for the bias type if found; otherwise, the input string or enum value as a string.</returns>
-        public static string MapBias(string typeString)
+        /// <param name="key">The type representing the bias to be mapped.</param>
+        /// <returns>
+        /// The mapped bias headline if the type exists in the mapping;
+        /// otherwise, the original type if no mapping is found.
+        /// </returns>
+        public static string MapBias(string key)
         {
-            // Versuche den String in das BiasType Enum zu parsen
-            if (Enum.TryParse(typeString, out BiasType type))
+            if (string.IsNullOrWhiteSpace(key))
+                return key;
+
+            if (biases.TryGetValue(key, out Bias bias))
             {
-                // Wenn das Parsen erfolgreich war, hole die Headline
-                if (biases.TryGetValue(type, out Bias bias))
-                {
-                    return bias.headline;
-                }
-                Debug.LogWarning($"Bias mapping not found for enum value: {type}");
-                return type.ToString();
+                return bias.headline;
             }
 
-            Debug.LogWarning($"Invalid BiasType string: {typeString}");
-            return typeString;
+            Debug.LogWarning($"Bias mapping not found for type: {key}");
+            return key;
         }
 
         /// <summary>
-        /// Retrieves a dictionary containing all available biases, mapped to their corresponding bias types.
-        /// This method provides access to the centralized storage of bias data used throughout the application.
+        /// Retrieves a dictionary containing all biases where the keys are bias names represented as strings
+        /// and the values are Bias objects that encapsulate detailed information about each bias.
         /// </summary>
         /// <returns>
-        /// A dictionary where the keys represent the bias types as <see cref="BiasType"/>, and the values are the corresponding <see cref="Bias"/> objects.
+        /// A dictionary mapping string keys to Bias objects, containing all available biases in the system.
         /// </returns>
-        public static Dictionary<BiasType, Bias> GetAllBiases()
+        public static Dictionary<string, Bias> GetAllBiases()
         {
             return biases;
         }
