@@ -129,6 +129,12 @@ namespace Assets._Scripts.Managers
             _characterDataDictionary = characterDataList.ToDictionary(entry => entry.id, entry => entry.data);
 
             CheckAndSetAllNovelsStatus();
+            
+            // GlobalVolumeManager.Instance.SetGlobalVolume(0f);
+            // PlayerPrefs.SetInt("IsSoundEffectVolumeOn", 0);
+            // PlayerPrefs.SetFloat("SavedSoundEffectVolume", 0f);
+            // TextToSpeechManager.Instance.DeactivateTTS();
+            // PlayerPrefs.SetInt("TTS", 0);
         }
 
         /// <summary>
