@@ -423,7 +423,8 @@ namespace Assets._Scripts.Controller.SceneControllers
             foreach (NovelEntry entry in _isNovelContainedInVersion)
             {
                 if (!_allKiteNovelsById.TryGetValue(entry.novelId, out var visualNovel)) continue;
-            
+                if (visualNovel.id == 13) continue; 
+                
                 GameObject novelButton = CreateBurgerMenuButton(visualNovel, content);
                 if (novelButton)
                 {

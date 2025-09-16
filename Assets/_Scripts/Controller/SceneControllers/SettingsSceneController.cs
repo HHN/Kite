@@ -59,9 +59,10 @@ namespace Assets._Scripts.Controller.SceneControllers
         private int _updatedFontSize;
 
         /// <summary>
-        /// Initializes the settings scene and its UI components, ensuring proper configuration and behavior of various
-        /// elements such as toggles, sliders, and version display. Adds listeners to interactive components,
-        /// sets up sound settings, and updates the text-to-speech toggle visuals.
+        /// Initializes the settings scene by loading user preferences, setting up the user interface,
+        /// and attaching necessary event handlers. Ensures the scene state reflects the saved settings
+        /// and configures the scene for proper functionality, including maintaining the navigation stack
+        /// for returning to the scene.
         /// </summary>
         public void Start()
         {
@@ -71,7 +72,12 @@ namespace Assets._Scripts.Controller.SceneControllers
             
             BackStackManager.Instance().Push(SceneNames.SettingsScene);
         }
-        
+
+        /// <summary>
+        /// Loads user preferences related to text-to-speech activation, sound effects settings,
+        /// saved sound effect volume, and font size. Retrieves the stored values from persistent storage
+        /// and updates the respective fields to ensure the settings scene reflects the last saved user preferences.
+        /// </summary>
         private void LoadSettings()
         {
             _isTextToSpeechActive = PlayerPrefs.GetInt("TTS", 1) == 1;
@@ -79,7 +85,13 @@ namespace Assets._Scripts.Controller.SceneControllers
             _soundEffectVolume = PlayerPrefs.GetFloat("SavedSoundEffectVolume", 1f);
             _updatedFontSize = PlayerPrefs.GetInt("SavedFontSize", MinFontSize);
         }
-        
+
+        /// <summary>
+        /// Configures and initializes the user interface elements in the settings scene, ensuring
+        /// all UI components reflect the current settings and functionality. This method updates
+        /// text fields, toggles, sliders, and other UI components based on user preferences and
+        /// application state. It also adjusts layout where necessary to maintain visual consistency.
+        /// </summary>
         private void InitializeUI()
         {
             ValidateUI();
@@ -111,7 +123,12 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
         }
-        
+
+        /// <summary>
+        /// Validates the existence of all required user interface references for the settings scene and logs
+        /// error messages for any missing components. Ensures that all necessary UI elements are properly
+        /// assigned in the inspector to prevent runtime issues.
+        /// </summary>
         private void ValidateUI()
         {
             if (!toggleTextToSpeechButton) Debug.LogError("toggleTextToSpeechButton fehlt!", this);
@@ -220,16 +237,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             // Toggles sound effects and updates visuals
             _isSoundActive = !_isSoundActive;
             
-            // if (activeSoundEffectsImage)
-            // {
-            //     activeSoundEffectsImage.gameObject.SetActive(_isSoundActive);
-            // }
-            //
-            // if (inactiveSoundEffectsImage)
-            // {
-            //     inactiveSoundEffectsImage.gameObject.SetActive(!_isSoundActive);
-            // }
-            
             UpdateToggleImages(activeSoundEffectsImage, inactiveSoundEffectsImage, _isSoundActive);
             
             SetSliderVisuals(_isSoundActive);
@@ -243,8 +250,6 @@ namespace Assets._Scripts.Controller.SceneControllers
                 soundEffectsVolumeSlider.value = 0;
                 DisplayInfoMessage(InfoMessages.DEACTIVATED_SOUNDEFFECTS_BUTTON);
                 PlayerPrefs.SetInt("IsSoundEffectVolumeOn", 0);
-                
-                PlayerPrefs.Save();
             }
             // Handles turning sound effects on
             else
@@ -261,9 +266,9 @@ namespace Assets._Scripts.Controller.SceneControllers
                 GlobalVolumeManager.Instance.SetGlobalVolume(_soundEffectVolume);
                 DisplayInfoMessage(InfoMessages.ACTIVATED_SOUNDEFFECTS_BUTTON);
                 PlayerPrefs.SetInt("IsSoundEffectVolumeOn", 1);
-                
-                PlayerPrefs.Save();
             }
+
+            PlayerPrefs.Save();
         }
 
         /// <summary>
