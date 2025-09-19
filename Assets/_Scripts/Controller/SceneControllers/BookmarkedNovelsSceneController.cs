@@ -197,15 +197,8 @@ namespace Assets._Scripts.Controller.SceneControllers
             PlayManager.Instance().SetDesignationOfNovelToPlay(visualNovelToDisplay.designation);
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
-
-            if (ShowPlayInstructionManager.Instance().ShowInstruction())
-            {
-                SceneLoader.LoadPlayInstructionScene();
-            }
-            else
-            {
-                SceneLoader.LoadPlayNovelScene();
-            }
+            
+            SceneLoader.LoadPlayNovelScene();
         }
     }
 }
