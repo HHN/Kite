@@ -33,7 +33,6 @@ namespace Assets._Scripts.Controller.SceneControllers
     [Preserve]
     public class FeedbackSceneController : SceneController, IOnSuccessHandler, IOnErrorHandler
     {
-        [SerializeField] private TextMeshProUGUI feedbackLinkText;
         [SerializeField] private TextMeshProUGUI feedbackText;
         [SerializeField] private TextMeshProUGUI hintText;
         [SerializeField] private GameObject gptServercallPrefab;
@@ -95,9 +94,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             if (string.IsNullOrEmpty(novelToPlay.feedback))
             {
                 StartWaitingMusic();
-                _novel = PlayManager.Instance().GetVisualNovelToPlay();
-                feedbackLinkText.SetText("Erzähl uns fünf Minuten was Dir aufgefallen ist – dein Feedback hilft uns, KITE II weiterzuentwickeln.\n" +
-                                         $"<color={LinkColor}><link=\"https://9bxji5742ys.typeform.com/to/bNxpDQWc\"><u>[Zur Umfrage]</u></link></color>");
+                _novel = PlayManager.Instance().GetVisualNovelToPlay(); 
                 feedbackText.SetText("Das Feedback wird gerade geladen. Dies dauert durchschnittlich zwischen 30 und 60 Sekunden. Solltest du nicht so lange warten wollen, kannst du dir das Feedback einfach im Archiv anschauen, sobald es fertig ist.");
                 hintText.SetText("Hinweis: Analyse und Feedback wurden durch KI künstlich erzeugt. Eine individuelle Beratung wird hierdurch nicht ersetzt.");
                 
