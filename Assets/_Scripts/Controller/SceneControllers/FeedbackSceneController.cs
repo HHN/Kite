@@ -112,9 +112,9 @@ namespace Assets._Scripts.Controller.SceneControllers
                 // Setup feedback handler
                 FeedbackHandler feedbackHandler = new FeedbackHandler()
                 {
-                    FeedbackSceneController = this,
-                    ID = PlayManager.Instance().GetVisualNovelToPlay().id,
-                    Dialog = _dialog
+                    feedbackSceneController = this,
+                    id = PlayManager.Instance().GetVisualNovelToPlay().id,
+                    dialog = _dialog
                 };
 
                 call.OnSuccessHandler = feedbackHandler;
@@ -168,7 +168,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         /// <remarks>
         /// This method ensures that the feedback scene is not revisited when navigating back and
-        /// transitions the user to the Founder's Bubble scene after handling necessary cleanup.
+        /// transitions the user to the Founder's Bubble scene after handling the necessary cleanup.
         /// </remarks>
         public void OnFinishButton()
         {
@@ -277,7 +277,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 return;
             }
             
-            // Stop background music and show error message
+            // Stop background music and show an error message
             StopWaitingMusic();
             DisplayErrorMessage(ErrorMessages.UNEXPECTED_SERVER_ERROR);
             
@@ -292,7 +292,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             // Read error message via text-to-speech
             StartCoroutine(TextToSpeechManager.Instance.Speak(completion));
             
-            // Update UI elements to show error state
+            // Update UI elements to show the error state
             feedbackText.SetText("Leider ist aktuell keine KI-Analyse verfügbar.");
             loadingAnimation.SetActive(false);
             novelToPlay.feedback = completion;
@@ -364,30 +364,30 @@ namespace Assets._Scripts.Controller.SceneControllers
     /// <remarks>
     /// This class implements the <see cref="IOnSuccessHandler"/> interface to handle successful server responses.
     /// It also includes error handling logic for unsuccessful call scenarios.
-    /// FeedbackHandler interacts closely with the <see cref="FeedbackSceneController"/> to manage server responses
+    /// FeedbackHandler interacts closely with the <see cref="feedbackSceneController"/> to manage server responses
     /// tied to the feedback feature.
     /// </remarks>
     public class FeedbackHandler : IOnSuccessHandler
     {
-        public FeedbackSceneController FeedbackSceneController;
-        public long ID;
-        public string Dialog;
+        public FeedbackSceneController feedbackSceneController;
+        public long id;
+        public string dialog;
         
         private readonly CultureInfo _culture = new("de-DE");
 
         /// <summary>
         /// Processes the successful response received from the server by performing the following actions:
         /// - Saves the dialog content to the history for record-keeping.
-        /// - Notifies the <see cref="FeedbackSceneController"/> if it is available, forwarding the response for additional handling.
+        /// - Notifies the <see cref="feedbackSceneController"/> if it is available, forwarding the response for additional handling.
         /// </summary>
         /// <param name="response">The server response containing the completion data to be processed.</param>
         public void OnSuccess(Response response)
         {
             SaveDialogToHistory(response.GetCompletion());
 
-            if (!FeedbackSceneController.IsNullOrDestroyed())
+            if (!feedbackSceneController.IsNullOrDestroyed())
             {
-                FeedbackSceneController.OnSuccess(response);
+                feedbackSceneController.OnSuccess(response);
             }
         }
 
@@ -400,9 +400,9 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             SaveDialogToHistory(message.GetCompletion());
 
-            if (!FeedbackSceneController.IsNullOrDestroyed())
+            if (!feedbackSceneController.IsNullOrDestroyed())
             {
-                FeedbackSceneController.OnError(message);
+                feedbackSceneController.OnError(message);
             }
         }
 
@@ -414,8 +414,8 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void SaveDialogToHistory(string response)
         {
             DialogHistoryEntry dialogHistoryEntry = new DialogHistoryEntry();
-            dialogHistoryEntry.SetNovelId(ID);
-            dialogHistoryEntry.SetDialog(Dialog);
+            dialogHistoryEntry.SetNovelId(id);
+            dialogHistoryEntry.SetDialog(dialog);
             dialogHistoryEntry.SetCompletion(response.Trim());
             DateTime now = DateTime.Now;
             string formattedDateTime = now.ToString("ddd | dd.MM.yyyy | HH:mm", _culture);

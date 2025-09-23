@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Assets._Scripts._Mappings;
 using Assets._Scripts.Controller.CharacterController;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
@@ -264,7 +265,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// <summary>
         /// Initializes the dictionary of character expressions for the current visual novel.
         /// This method extracts a list of unique character IDs from the novel's events, excluding specific IDs.
-        /// Each extracted character ID is added as a key in the dictionary with an initial expression value of zero.
+        /// Each extracted character ID is added as a type in the dictionary with an initial expression value of zero.
         /// </summary>
         private void InitializeCharacterExpressions()
         {
@@ -561,7 +562,16 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             if (novelEvent.audioClipToPlay != "NONE")
             {
-                //GlobalVolumeManager.Instance.PlaySound(clips[novelEvent.audioClipToPlay]);    //TODO: Gescheites Konzept für die Auswahl überlegen.
+                int soundIndex = MappingManager.MapSound(novelEvent.audioClipToPlay);
+                if (soundIndex >= 0 && soundIndex < clips.Length)
+                {
+                    GlobalVolumeManager.Instance.PlaySound(clips[soundIndex]);
+                }
+                else
+                {
+                    Debug.LogWarning($"Ungültiger Sound-Index oder nicht gefunden: '{novelEvent.audioClipToPlay}'");
+                }
+
             }
 
             if (novelEvent.waitForUserConfirmation)
@@ -639,7 +649,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// Handles the saving of persistent events by processing the specified visual novel event,
         /// writing user input to a file, and initiating the next event playback.
         /// </summary>
-        /// <param name="novelEvent">The visual novel event containing data such as key, value,
+        /// <param name="novelEvent">The visual novel event containing data such as type, value,
         /// and other attributes related to the event being processed.</param>
         private void HandleSavePersistentEvent(VisualNovelEvent novelEvent)
         {
@@ -652,7 +662,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// Handles the process of saving a variable associated with a visual novel event,
         /// updates the global variables, and triggers the next event in the sequence.
         /// </summary>
-        /// <param name="novelEvent">The visual novel event containing the key-value pair to be saved
+        /// <param name="novelEvent">The visual novel event containing the type-value pair to be saved
         /// and other event-related data.</param>
         private void HandleSaveVariableEvent(VisualNovelEvent novelEvent)
         {
@@ -665,7 +675,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// Processes a VisualNovelEvent by evaluating a boolean expression, updating global variables,
         /// and setting the next event to play in the visual novel.
         /// </summary>
-        /// <param name="novelEvent">The event containing the boolean expression to evaluate, the variable key for storing the result, and the event transition data.</param>
+        /// <param name="novelEvent">The event containing the boolean expression to evaluate, the variable type for storing the result, and the event transition data.</param>
         private void HandleCalculateVariableFromBooleanExpressionEvent(VisualNovelEvent novelEvent)
         {
             SetNextEvent(novelEvent);
@@ -747,11 +757,11 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Writes user input to a file by saving the provided key and content
+        /// Writes user input to a file by saving the provided type and content
         /// using the PlayerDataManager for persistent storage.
         /// </summary>
-        /// <param name="key">The unique key representing the data to save.</param>
-        /// <param name="content">The content or value to associate with the key.</param>
+        /// <param name="key">The unique type representing the data to save.</param>
+        /// <param name="content">The content or value to associate with the type.</param>
         private void WriteUserInputToFile(string key, string content)
         {
             PlayerDataManager.Instance().SavePlayerData(key, content);
@@ -1141,7 +1151,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void ShowHintForSavegameMessageBox()
         {
-            if (hintForSavegameMessageBox == null || DestroyValidator.IsNullOrDestroyed(canvas)) return;
+            if (hintForSavegameMessageBox == null || canvas.IsNullOrDestroyed()) return;
 
             // Check if the HintForSavegameMessageBox is already loaded and close it if necessary
             if (_hintForSavegameMessageBoxObject != null && !_hintForSavegameMessageBoxObject.IsNullOrDestroyed())
@@ -1187,10 +1197,8 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             if (_novelImagesController != null && savedData.CharacterPrefabData != null)
             {
-                Debug.Log($"_novelImagesController: {_novelImagesController}");
                 if (savedData.CharacterPrefabData.TryGetValue(searchId, out CharacterData characterData))
                 {
-                    Debug.Log($"searchId: {searchId}, characterData: {characterData}");
                     // Set character attributes based on the found controller
                     ApplyCharacterData(_novelImagesController, characterData);
                 }

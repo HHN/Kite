@@ -261,12 +261,12 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
         /// <summary>
         /// Handles a specific type of event in a visual novel by saving persistent data
-        /// associated with the event, such as key-value pairs, and continuing the sequence of events.
+        /// associated with the event, such as type-value pairs, and continuing the sequence of events.
         /// </summary>
         /// <param name="novelEvent">The VisualNovelEvent instance containing data to be saved persistently.</param>
         private void HandleSavePersistentEvent(VisualNovelEvent novelEvent)
         {
-            if (!ValidateEventField(novelEvent.key, "Save persistent event without key!", novelEvent)) return;
+            if (!ValidateEventField(novelEvent.key, "Save persistent event without type!", novelEvent)) return;
             if (!ValidateEventField(novelEvent.value, "Save persistent event without value!", novelEvent)) return;
             PlayNextEvent();
         }
@@ -343,13 +343,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             if (!_currentCharacters.Contains(role) && role != CharacterRole.Intro && role != CharacterRole.Outro && role != CharacterRole.Info && role != CharacterRole.Player)
             {
                 OnTestFailed("Show message event with speaking character that is not in the scene!", _objectUnderTest.title, novelEvent.id);
-                return;
-            }
-
-            // ToDo: Hier werden die deutschen Expressions verwendet
-            if (CharacterExpressionHelper.ValueOf(novelEvent.expressionType) == CharacterExpression.None)
-            {
-                OnTestFailed("Show message event without character expression!", _objectUnderTest.title, novelEvent.id);
                 return;
             }
 

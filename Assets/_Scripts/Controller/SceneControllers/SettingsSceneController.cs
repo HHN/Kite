@@ -59,46 +59,101 @@ namespace Assets._Scripts.Controller.SceneControllers
         private int _updatedFontSize;
 
         /// <summary>
-        /// Called when the script instance is being loaded.
-        /// Initializes the _isTextToSpeechActive and _isSoundActive fields based on the saved player preferences.
-        /// Ensures the persistence of user settings related to text-to-speech and sound effects across sessions.
-        /// </summary>
-        private void Awake()
-        {
-            _isTextToSpeechActive = PlayerPrefs.GetInt("TTS", 1) == 1; // 1 = true, 0 = false
-            _isSoundActive = PlayerPrefs.GetInt("IsSoundEffectVolumeOn", 1) == 1; // 1 = true, 0 = false
-        }
-
-        /// <summary>
-        /// Initializes the settings scene and its UI components, ensuring proper configuration and behavior of various
-        /// elements such as toggles, sliders, and version display. Adds listeners to interactive components,
-        /// sets up sound settings, and updates the text-to-speech toggle visuals.
+        /// Initializes the settings scene by loading user preferences, setting up the user interface,
+        /// and attaching necessary event handlers. Ensures the scene state reflects the saved settings
+        /// and configures the scene for proper functionality, including maintaining the navigation stack
+        /// for returning to the scene.
         /// </summary>
         public void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.SettingsScene);
+            LoadSettings();
+            InitializeUI();
+            HookEvents();
             
+            BackStackManager.Instance().Push(SceneNames.SettingsScene);
+        }
+
+        /// <summary>
+        /// Loads user preferences related to text-to-speech activation, sound effects settings,
+        /// saved sound effect volume, and font size. Retrieves the stored values from persistent storage
+        /// and updates the respective fields to ensure the settings scene reflects the last saved user preferences.
+        /// </summary>
+        private void LoadSettings()
+        {
+            _isTextToSpeechActive = PlayerPrefs.GetInt("TTS", 1) == 1;
+            _isSoundActive = PlayerPrefs.GetInt("IsSoundEffectVolumeOn", 1) == 1;
+            _soundEffectVolume = PlayerPrefs.GetFloat("SavedSoundEffectVolume", 1f);
+            _updatedFontSize = PlayerPrefs.GetInt("SavedFontSize", MinFontSize);
+        }
+
+        /// <summary>
+        /// Configures and initializes the user interface elements in the settings scene, ensuring
+        /// all UI components reflect the current settings and functionality. This method updates
+        /// text fields, toggles, sliders, and other UI components based on user preferences and
+        /// application state. It also adjusts layout where necessary to maintain visual consistency.
+        /// </summary>
+        private void InitializeUI()
+        {
+            ValidateUI();
+            
+            // Version
+            if (versionInfo != null)
+                versionInfo.text = "Version: " + Application.version;
+
+            // TTS
+            UpdateToggleImages(activeTextToSpeechImage, inactiveTextToSpeechImage, _isTextToSpeechActive);
+
+            // Sound
+            UpdateToggleImages(activeSoundEffectsImage, inactiveSoundEffectsImage, _isSoundActive);
+            if (soundEffectsVolumeSlider != null)
+            {
+                soundEffectsVolumeSlider.value = _soundEffectVolume;
+                SetSliderVisuals(_isSoundActive);
+            }
+
+            // Font Size
+            if (fontSizeSlider != null)
+            {
+                float sliderValue = (float)(_updatedFontSize - MinFontSize) / (MaxFontSize - MinFontSize);
+                fontSizeSlider.value = sliderValue;
+                exampleText.fontSize = _updatedFontSize;
+                
+                FontSizeManager.Instance().UpdateAllTextComponents();
+            }
+
+            LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
+        }
+
+        /// <summary>
+        /// Validates the existence of all required user interface references for the settings scene and logs
+        /// error messages for any missing components. Ensures that all necessary UI elements are properly
+        /// assigned in the inspector to prevent runtime issues.
+        /// </summary>
+        private void ValidateUI()
+        {
+            if (!toggleTextToSpeechButton) Debug.LogError("toggleTextToSpeechButton fehlt!", this);
+            if (!activeTextToSpeechImage) Debug.LogError("activeTextToSpeechImage fehlt!", this);
+            if (!inactiveTextToSpeechImage) Debug.LogError("inactiveTextToSpeechImage fehlt!", this);
+            if (!soundEffectsVolumeSlider) Debug.LogError("soundEffectsVolumeSlider fehlt!", this);
+            if (!sliderBackgroundImage) Debug.LogError("sliderBackgroundImage fehlt!", this);
+            if (!sliderFillImage) Debug.LogError("sliderFillImage fehlt!", this);
+            if (!sliderHandleImage) Debug.LogError("sliderHandleImage fehlt!", this);
+            if (!sliderMinIcon) Debug.LogError("sliderMinIcon fehlt!", this);
+            if (!sliderMaxIcon) Debug.LogError("sliderMaxIcon fehlt!", this);
+        }
+
+        /// <summary>
+        /// Sets up event handlers and listeners required for the interactive UI elements in the settings scene.
+        /// Binds button actions, initializes component-specific listeners, and connects functionality for the
+        /// sound effects slider event to ensure proper behavior when users interact with the scene's controls.
+        /// </summary>
+        private void HookEvents()
+        {
             InitializeButtonActions();
             AddButtonListeners();
 
-            if (!toggleTextToSpeechButton || !activeTextToSpeechImage || !inactiveTextToSpeechImage || !soundEffectsVolumeSlider || !sliderBackgroundImage || !sliderFillImage ||
-                !sliderHandleImage || !sliderMinIcon || !sliderMaxIcon)
-            {
-                Debug.LogError("Mindestens eine UI-Referenz für die Sound-Einstellungen ist nicht zugewiesen!", this);
-                return;
-            }
-            
-            UpdateToggleImages(activeTextToSpeechImage, inactiveTextToSpeechImage, _isTextToSpeechActive);
-
-            SetSliderVisuals(_isSoundActive);
-            soundEffectsSliderHandler.OnSliderReleasedEvent += HandleSoundEffectsSliderReleased;
-            
-            InitializeSoundEffectsVolumeSlider();
-            InitializeFontSizeSlider();
-
-            versionInfo.text = "Version: " + Application.version;
-            
-            LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
+            if (soundEffectsSliderHandler != null)
+                soundEffectsSliderHandler.OnSliderReleasedEvent += HandleSoundEffectsSliderReleased;
         }
 
         /// <summary>
@@ -122,14 +177,14 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void InitializeButtonActions()
         {
-            _buttonActions = new Dictionary<Button, Action>
-            {
-                { toggleTextToSpeechButton, OnToggleTextToSpeechButton },
-                { toggleSoundEffectsButton, OnToggleSoundEffectsButton },
-                { confirmButton, SetFontSize }
-            };
-            
-            fontSizeSlider.onValueChanged.AddListener(UpdateFontSize);
+            _buttonActions = new Dictionary<Button, Action>();
+
+            if (toggleTextToSpeechButton) _buttonActions[toggleTextToSpeechButton] = OnToggleTextToSpeechButton;
+            if (toggleSoundEffectsButton) _buttonActions[toggleSoundEffectsButton] = OnToggleSoundEffectsButton;
+            if (confirmButton) _buttonActions[confirmButton] = SetFontSize;
+
+            if (fontSizeSlider != null)
+                fontSizeSlider.onValueChanged.AddListener(UpdateFontSize);
         }
 
         /// <summary>
@@ -143,41 +198,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             {
                 buttonAction.Key.onClick.AddListener(() => buttonAction.Value.Invoke());
             }
-        }
-
-        /// <summary>
-        /// Configures the sound effects volume slider with the saved volume setting and
-        /// updates the UI to reflect the current sound state.
-        /// Loads the saved sound effects volume from player preferences
-        /// and applies it to the slider and global volume manager.
-        /// </summary>
-        private void InitializeSoundEffectsVolumeSlider()
-        {
-            UpdateToggleImages(activeSoundEffectsImage, inactiveSoundEffectsImage, _isSoundActive);
-            
-            _soundEffectVolume = PlayerPrefs.GetFloat("SavedSoundEffectVolume", 1f);
-            soundEffectsVolumeSlider.value = _soundEffectVolume;
-
-            GlobalVolumeManager.Instance.SetGlobalVolume(_soundEffectVolume);
-        }
-
-        /// <summary>
-        /// Initializes the font size slider based on previously saved player preferences.
-        /// Retrieves the saved font size or uses the default size if no preferences exist,
-        /// calculates the corresponding slider value, and updates the slider and UI text components accordingly.
-        /// Forces a layout rebuild to ensure the slider and text components are displayed properly.
-        /// </summary>
-        private void InitializeFontSizeSlider()
-        {
-            int savedFontSize = PlayerPrefs.GetInt("SavedFontSize", MinFontSize);
-
-            float sliderValue = (float)(savedFontSize - MinFontSize) / (MaxFontSize - MinFontSize);
-
-            fontSizeSlider.value = sliderValue;
-
-            FontSizeManager.Instance().UpdateAllTextComponents();
-            
-            LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
         }
 
         /// <summary>
@@ -217,19 +237,10 @@ namespace Assets._Scripts.Controller.SceneControllers
             // Toggles sound effects and updates visuals
             _isSoundActive = !_isSoundActive;
             
-            if (activeSoundEffectsImage)
-            {
-                activeSoundEffectsImage.gameObject.SetActive(_isSoundActive);
-            }
-
-            if (inactiveSoundEffectsImage)
-            {
-                inactiveSoundEffectsImage.gameObject.SetActive(!_isSoundActive);
-            }
+            UpdateToggleImages(activeSoundEffectsImage, inactiveSoundEffectsImage, _isSoundActive);
             
             SetSliderVisuals(_isSoundActive);
             
-            // Handles turning sound effects off
             if (!_isSoundActive)
             {
                 PlayerPrefs.SetFloat("SavedSoundEffectVolume", _soundEffectVolume);
@@ -239,7 +250,6 @@ namespace Assets._Scripts.Controller.SceneControllers
                 DisplayInfoMessage(InfoMessages.DEACTIVATED_SOUNDEFFECTS_BUTTON);
                 PlayerPrefs.SetInt("IsSoundEffectVolumeOn", 0);
             }
-            // Handles turning sound effects on
             else
             {                    
                 _soundEffectVolume = PlayerPrefs.GetFloat("SavedSoundEffectVolume");
@@ -255,6 +265,8 @@ namespace Assets._Scripts.Controller.SceneControllers
                 DisplayInfoMessage(InfoMessages.ACTIVATED_SOUNDEFFECTS_BUTTON);
                 PlayerPrefs.SetInt("IsSoundEffectVolumeOn", 1);
             }
+
+            PlayerPrefs.Save();
         }
 
         /// <summary>
@@ -280,10 +292,8 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// <param name="sliderValue">A normalized value (0 to 1) representing the position of the font size slider.</param>
         private void UpdateFontSize(float sliderValue)
         {
-            // Berechne die neue Schriftgröße basierend auf dem Slider-Wert
             int newFontSize = Mathf.RoundToInt(Mathf.Lerp(MinFontSize, MaxFontSize, sliderValue));
 
-            // Falls du TextMeshPro verwendest, setze stattdessen die TMP_Text FontSize
             exampleText.fontSize = newFontSize;
 
             _updatedFontSize = newFontSize;
@@ -338,6 +348,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void HandleSoundEffectsSliderReleased(float value)
         {
             PlayerPrefs.SetFloat("SavedSoundEffectVolume", value);
+            PlayerPrefs.Save();
 
             GlobalVolumeManager.Instance.SetGlobalVolume(value);
 

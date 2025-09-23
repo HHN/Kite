@@ -4,7 +4,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 {
     /// <summary>
     /// Represents the metadata information of a visual novel within the Kite Novel system.
-    /// This class stores key properties and descriptors for a visual novel, including its title,
+    /// This class stores type properties and descriptors for a visual novel, including its title,
     /// description, character details, and configurable parameters used in processing.
     /// </summary>
     public class KiteNovelMetaData

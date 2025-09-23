@@ -1,4 +1,3 @@
-using System;
 using Assets._Scripts.Novel;
 using UnityEngine;
 
@@ -12,17 +11,16 @@ namespace Assets._Scripts.Managers
     public class PlayRecordManager
     {
         private static PlayRecordManager _instance;
-
         private PlayRecordManagerWrapper _wrapper;
         private const string Key = "PlayRecordManagerWrapper";
+        private const string OldKey = "OldPlayRecordManagerWrapper";
 
         /// <summary>
-        /// Manages the tracking of playthrough records for visual novels.
+        /// Manages the tracking and recording of playthroughs for visual novels.
         /// </summary>
         /// <remarks>
-        /// This class is used to record and retrieve the number of times specific visual novels have been played,
-        /// as well as to clear playthrough data when needed. It implements functionality such as incrementing play counters,
-        /// fetching play data for different novels, and resetting stored play data.
+        /// This class is responsible for increasing play counters, retrieving the number of plays, and clearing stored play data
+        /// associated with different visual novels.
         /// </remarks>
         private PlayRecordManager()
         {
@@ -36,142 +34,48 @@ namespace Assets._Scripts.Managers
         /// </returns>
         public static PlayRecordManager Instance()
         {
-            if (_instance == null) _instance = new PlayRecordManager();
-
-            return _instance;
+            return _instance ??= new PlayRecordManager();
         }
 
         /// <summary>
-        /// Increases the play counter for a specified visual novel.
+        /// Increments the playthrough counter for the specified visual novel.
         /// </summary>
-        /// <param name="playedNovel">The visual novel for which the play count should be incremented.</param>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown when the provided novel does not match any known visual novel names.
-        /// </exception>
+        /// <remarks>
+        /// This method updates the play data for a specific visual novel by increasing its corresponding counter
+        /// and persists the updated data. If the provided novel is <c>VisualNovelNames.None</c>, the method performs no action.
+        /// </remarks>
+        /// <param name="playedNovel">The visual novel for which the play counter should be incremented.</param>
         public void IncreasePlayCounterForNovel(VisualNovelNames playedNovel)
         {
+            if (playedNovel == VisualNovelNames.None) return;
+
             _wrapper ??= LoadPlayRecordManagerWrapper();
-
-            switch (playedNovel)
-            {
-                case VisualNovelNames.ElternNovel:
-                {
-                    int numberOfPlays = _wrapper.GetNumberOfPlaysForElternNovel();
-                    numberOfPlays++;
-                    _wrapper.SetNumberOfPlaysForElternNovel(numberOfPlays);
-                    break;
-                }
-                case VisualNovelNames.PresseNovel:
-                {
-                    int numberOfPlays = _wrapper.GetNumberOfPlaysForPresseNovel();
-                    numberOfPlays++;
-                    _wrapper.SetNumberOfPlaysForPresseNovel(numberOfPlays);
-                    break;
-                }
-                case VisualNovelNames.NotariatNovel:
-                {
-                    int numberOfPlays = _wrapper.GetNumberOfPlaysForNotarinNovel();
-                    numberOfPlays++;
-                    _wrapper.SetNumberOfPlaysForNotarinNovel(numberOfPlays);
-                    break;
-                }
-                case VisualNovelNames.InvestorNovel:
-                {
-                    int numberOfPlays = _wrapper.GetNumberOfPlaysForInvestorNovel();
-                    numberOfPlays++;
-                    _wrapper.SetNumberOfPlaysForInvestorNovel(numberOfPlays);
-                    break;
-                }
-                case VisualNovelNames.BankKreditNovel:
-                {
-                    int numberOfPlays = _wrapper.GetNumberOfPlaysForBankkreditNovel();
-                    numberOfPlays++;
-                    _wrapper.SetNumberOfPlaysForBankkreditNovel(numberOfPlays);
-                    break;
-                }
-                case VisualNovelNames.HonorarNovel:
-                {
-                    int numberOfPlays = _wrapper.GetNumberOfPlaysForHonorarNovel();
-                    numberOfPlays++;
-                    _wrapper.SetNumberOfPlaysForHonorarNovel(numberOfPlays);
-                    break;
-                }
-                case VisualNovelNames.EinstiegsNovel:
-                {
-                    int numberOfPlays = _wrapper.GetNumberOfPlaysForIntroNovel();
-                    numberOfPlays++;
-                    _wrapper.SetNumberOfPlaysForIntroNovel(numberOfPlays);
-                    break;
-                }
-                case VisualNovelNames.None:
-                    break;
-                case VisualNovelNames.VertriebNovel:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(playedNovel), playedNovel, null);
-            }
-
+            _wrapper.IncreasePlayCounter(playedNovel);
             Save();
         }
 
         /// <summary>
-        /// Retrieves the number of times a specific visual novel has been played.
+        /// Retrieves the number of playthroughs for a given visual novel.
         /// </summary>
-        /// <param name="novel">The <see cref="VisualNovelNames"/> enumeration value specifying the visual novel.</param>
-        /// <returns>
-        /// An integer representing the total number of playthroughs for the specified visual novel.
-        /// Returns -1 if the specified visual novel is not tracked.
-        /// </returns>
+        /// <param name="novel">The visual novel whose playthrough count is to be retrieved.</param>
+        /// <returns>The total number of times the specified visual novel has been played.</returns>
         public int GetNumberOfPlaysForNovel(VisualNovelNames novel)
         {
             _wrapper ??= LoadPlayRecordManagerWrapper();
-
-            switch (novel)
-            {
-                case VisualNovelNames.ElternNovel:
-                {
-                    return _wrapper.GetNumberOfPlaysForElternNovel();
-                }
-                case VisualNovelNames.PresseNovel:
-                {
-                    return _wrapper.GetNumberOfPlaysForPresseNovel();
-                }
-                case VisualNovelNames.NotariatNovel:
-                {
-                    return _wrapper.GetNumberOfPlaysForNotarinNovel();
-                }
-                case VisualNovelNames.InvestorNovel:
-                {
-                    return _wrapper.GetNumberOfPlaysForInvestorNovel();
-                }
-                case VisualNovelNames.BankKreditNovel:
-                {
-                    return _wrapper.GetNumberOfPlaysForBankkreditNovel();
-                }
-                case VisualNovelNames.HonorarNovel:
-                {
-                    return _wrapper.GetNumberOfPlaysForHonorarNovel();
-                }
-                case VisualNovelNames.EinstiegsNovel:
-                {
-                    return _wrapper.GetNumberOfPlaysForIntroNovel();
-                }
-                case VisualNovelNames.None:
-                case VisualNovelNames.VertriebNovel:
-                default:
-                {
-                    return -1;
-                }
-            }
+            return _wrapper.GetNumberOfPlays(novel);
         }
 
         /// <summary>
-        /// Represents a wrapper used for storing and managing play record data.
+        /// Handles the creation and initialization of the PlayRecordManagerWrapper.
         /// </summary>
         /// <remarks>
-        /// This class is used as a container for serialized playthrough data, which is accessed and updated by the
-        /// PlayRecordManager class. It provides a structure for preserving the state of play records across multiple sessions.
+        /// This method is used to load play record data, migrating from an old format if applicable,
+        /// and initializing a new PlayRecordManagerWrapper instance when no prior data exists.
+        /// It ensures compatibility between different versions of stored play records.
         /// </remarks>
+        /// <returns>
+        /// A fully initialized PlayRecordManagerWrapper instance containing migrated or default play record data.
+        /// </returns>
         private PlayRecordManagerWrapper LoadPlayRecordManagerWrapper()
         {
             if (PlayerDataManager.Instance().HasKey(Key))
@@ -179,20 +83,41 @@ namespace Assets._Scripts.Managers
                 string json = PlayerDataManager.Instance().GetPlayerData(Key);
                 return JsonUtility.FromJson<PlayRecordManagerWrapper>(json);
             }
-            else
+
+            if (PlayerPrefs.HasKey(OldKey))
             {
-                PlayRecordManagerWrapper wrapper = new PlayRecordManagerWrapper();
-                return wrapper;
+                string oldJson = PlayerPrefs.GetString(OldKey);
+                OldPlayRecordManagerWrapper oldData = JsonUtility.FromJson<OldPlayRecordManagerWrapper>(oldJson);
+
+                var newData = new PlayRecordManagerWrapper();
+
+                newData.SetNumberOfPlays(VisualNovelNames.BankKreditNovel, oldData.numberOfPlaysForBankkreditNovel);
+                newData.SetNumberOfPlays(VisualNovelNames.InvestorNovel, oldData.numberOfPlaysForInvestorNovel);
+                newData.SetNumberOfPlays(VisualNovelNames.ElternNovel, oldData.numberOfPlaysForElternNovel);
+                newData.SetNumberOfPlays(VisualNovelNames.NotariatNovel, oldData.numberOfPlaysForNotarinNovel);
+                newData.SetNumberOfPlays(VisualNovelNames.PresseNovel, oldData.numberOfPlaysForPresseNovel);
+                newData.SetNumberOfPlays(VisualNovelNames.HonorarNovel, oldData.numberOfPlaysForHonorarNovel);
+                newData.SetNumberOfPlays(VisualNovelNames.EinstiegsNovel, oldData.numberOfPlaysForIntroNovel);
+                newData.SetNumberOfPlays(VisualNovelNames.VermieterNovel, oldData.numberOfPlaysForVermieterNovel);
+
+                string newJson = JsonUtility.ToJson(newData);
+                PlayerDataManager.Instance().SavePlayerData(Key, newJson);
+
+                PlayerPrefs.DeleteKey(OldKey);
+
+                return newData;
             }
+
+            return new PlayRecordManagerWrapper();
         }
 
         /// <summary>
-        /// Saves the current state of the playthrough data to persistent storage.
+        /// Saves the current state of playthrough records to persistent storage.
         /// </summary>
         /// <remarks>
-        /// This method serializes the playthrough data stored in the internal wrapper object
-        /// and uses the PlayerDataManager to save it under a predefined key. It ensures
-        /// that the latest playthrough information is securely stored and can be retrieved later.
+        /// This method serializes the playthrough data held in the internal wrapper
+        /// and stores it using the PlayerDataManager to ensure data persistence between sessions.
+        /// It uses the PlayRecordManagerWrapper and assigns the serialized data to a unique type.
         /// </remarks>
         private void Save()
         {
@@ -201,17 +126,17 @@ namespace Assets._Scripts.Managers
         }
 
         /// <summary>
-        /// Clears all records of playthrough data for visual novels.
+        /// Clears all recorded playthrough statistics for visual novels.
         /// </summary>
         /// <remarks>
-        /// This method removes all stored data related to the number of plays for each visual novel.
-        /// It is used to reset the playthrough data, typically during actions such as clearing user data or application resets.
+        /// This method resets the stored playthrough data by invoking the relevant functionality
+        /// in the underlying PlayRecordManagerWrapper instance. Once the data is cleared, the changes are saved.
         /// </remarks>
         public void ClearData()
         {
             _wrapper ??= LoadPlayRecordManagerWrapper();
-
             _wrapper.ClearData();
+            Save();
         }
     }
 }

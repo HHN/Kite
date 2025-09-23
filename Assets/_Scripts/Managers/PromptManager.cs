@@ -1,12 +1,31 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Assets._Scripts.Novel;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
 
 namespace Assets._Scripts.Managers
 {
+    
+    [System.Serializable]
+    public class KnowledgeItem
+    {
+        public string type;
+        public string category;
+        public string headline;
+        public string bias;
+    }
+    
+    [System.Serializable]
+    public class KnowledgeBase
+    {
+        public string title;
+        public List<KnowledgeItem> items;
+    }
+    
     /// <summary>
     /// Manages the process of building and handling dialog prompts for a visual novel.
     /// This class is implemented as a singleton to ensure a single instance throughout the application.
@@ -18,7 +37,6 @@ namespace Assets._Scripts.Managers
         private StringBuilder _dialog;
 
         private readonly string _promptPath;
-        private readonly string _knowledgeBasePath;
 
         /// <summary>
         /// Provides functionality to manage prompts and dialogs for a visual novel.
@@ -28,7 +46,6 @@ namespace Assets._Scripts.Managers
         private PromptManager()
         {
             _promptPath = Path.Combine(Application.streamingAssetsPath, "Prompt.txt");
-            _knowledgeBasePath = Path.Combine(Application.streamingAssetsPath, "KnowledgeBase.txt");
         }
 
         /// <summary>
@@ -120,15 +137,30 @@ namespace Assets._Scripts.Managers
         }
 
         /// <summary>
-        /// Loads the knowledge base from a predefined file path and appends its content to the current prompt.
-        /// Uses a callback function to process the file's content on successful load.
-        /// Acts as part of the initialization process to enrich the dialog prompt with additional data.
+        /// Loads the knowledge base from a JSON file located in the Resources folder.
+        /// Parses the JSON content into a KnowledgeBase object and appends its items to the prompt.
+        /// Ensures the inclusion of details such as type, category, headline, and bias for each knowledge item.
+        /// Logs an error message if the knowledge base file is not found.
         /// </summary>
         private void LoadKnowledgeBaseFromFile()
         {
-            LoadTextFile(_knowledgeBasePath,
-                content => { _prompt.Append(content).AppendLine(); },
-                "Knowledge base");
+            TextAsset json = Resources.Load<TextAsset>("KnowledgeBase");
+            if (json != null)
+            {
+                KnowledgeBase kb = JsonUtility.FromJson<KnowledgeBase>(json.text);
+                foreach (var item in kb.items)
+                {
+                    _prompt.AppendLine($"{item.type}");
+                    _prompt.AppendLine($"{item.category}");
+                    _prompt.AppendLine($"{item.headline}");
+                    _prompt.AppendLine($"{item.bias}");
+                    _prompt.AppendLine();
+                }
+            }
+            else
+            {
+                Debug.LogError("KnowledgeBase not found in Resources!");
+            }
         }
 
         /// <summary>
@@ -173,15 +205,8 @@ namespace Assets._Scripts.Managers
         /// <param name="line">The line of text to add to the prompt and dialog.</param>
         public void AddLineToPrompt(string line)
         {
-            if (_prompt == null)
-            {
-                _prompt = new StringBuilder();
-            }
-
-            if (_dialog == null)
-            {
-                _dialog = new StringBuilder();
-            }
+            _prompt ??= new StringBuilder();
+            _dialog ??= new StringBuilder();
 
             _prompt.AppendLine(line);
             _dialog.AppendLine(line);

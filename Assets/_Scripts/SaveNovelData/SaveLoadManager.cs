@@ -204,7 +204,7 @@ namespace Assets._Scripts.SaveNovelData
         /// <summary>
         /// Loads all saved data from the JSON file.
         /// </summary>
-        /// <returns>A dictionary containing all saved novel data, where the key is the novel ID.</returns>
+        /// <returns>A dictionary containing all saved novel data, where the type is the novel ID.</returns>
         private static Dictionary<string, NovelSaveData> LoadAllSaveData()
         {
             if (File.Exists(SaveFilePath))

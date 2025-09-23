@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Assets._Scripts._Mappings;
 using Assets._Scripts.Biases;
 using Assets._Scripts.Managers;
 using Assets._Scripts.SceneManagement;
@@ -11,195 +13,107 @@ using UnityEngine.UI;
 namespace Assets._Scripts.Controller.SceneControllers
 {
     /// <summary>
-    /// Controls the behavior and management of the Knowledge Scene in the application.
-    /// Manages UI elements, user input, and navigation within the scene, as well as performing
-    /// initialization tasks and layout rebuilding.
+    /// A controller responsible for managing the Knowledge Scene in the application.
+    /// Handles initialization, navigation logic, and interactions within the scene,
+    /// ensuring that data, UI components, and event listeners are properly configured.
+    /// Handles back navigation and manages category-specific logic and searches effectively.
     /// </summary>
     public class KnowledgeSceneController : MonoBehaviour
     {
         [SerializeField] private RectTransform contentRectTransform;
 
         [SerializeField] private GameObject infoText;
-        [SerializeField] private GameObject biasGroups;
         [SerializeField] private GameObject biasInformation;
         [SerializeField] private GameObject biasDetailsObject;
 
         [SerializeField] private Sprite arrowLeftSprite;
         [SerializeField] private Sprite arrowDownSprite;
-
-        [Header("Strukturelle wirtschaftliche Barrieren")] [SerializeField]
-        private GameObject barrierenInfoGroup;
-
-        [SerializeField] private Image barrierenInfoButtonImage;
-        [SerializeField] private Button barrierenInfoButton;
-        [SerializeField] private Button finanzierungszugangButton;
-        [SerializeField] private Button genderPayGapButton;
-        [SerializeField] private Button unterbewertungWeiblichGefuehrterUnternehmenButton;
-        [SerializeField] private Button riskAversionBiasButton;
-        [SerializeField] private Button bestaetigungsVerzerrungButton;
-
-        [Header("Gesellschaftliche Erwartungen & soziale Normen")] [SerializeField]
-        private GameObject erwartungenNormenInfoGroup;
-
-        [SerializeField] private Image erwartungenNormenInfoButtonImage;
-        [SerializeField] private Button erwartungenNormenInfoButton;
-        [SerializeField] private Button tokenismButton;
-        [SerializeField] private Button biasInDerWahrnehmungVonFuehrungsFaehigkeitenButton;
-        [SerializeField] private Button benevolenterSexismusButton;
-        [SerializeField] private Button altersUndGenerationenBiasesButton;
-        [SerializeField] private Button stereotypeGegenueberFrauenInNichtTraditionellenBranchenButton;
-
-        [Header("Wahrnehmung & Führungsrollen")] [SerializeField]
-        private GameObject wahrnehmungFuehrungsrollenInfoGroup;
-
-        [SerializeField] private Image wahrnehmungFuehrungsrollenInfoButtonImage;
-        [SerializeField] private Button wahrnehmungFuehrungsrollenInfoButton;
-        [SerializeField] private Button heteronormativitaetButton;
-        [SerializeField] private Button maternalBiasButton;
-        [SerializeField] private Button erwartungshaltungBezueglichFamilienplanungButton;
-        [SerializeField] private Button workLifeBalanceErwartungenButton;
-        [SerializeField] private Button geschlechtsspezifischeStereotypeButton;
-
-        [Header("Psychologische Barrieren & kommunikative Hindernisse")] [SerializeField]
-        private GameObject barrierenHindernisseInfoGroup;
-
-        [SerializeField] private Image barrierenHindernisseInfoButtonImage;
-        [SerializeField] private Button barrierenHindernisseInfoButton;
-        [SerializeField] private Button tightropeBiasButton;
-        [SerializeField] private Button mikroaggressionenButton;
-        [SerializeField] private Button leistungsattributionsBiasButton;
-        [SerializeField] private Button unbewussteBiasInDerKommunikationButton;
-
-        [Header("SearchBar")] [SerializeField] private TMP_InputField inputField;
+        
+        [SerializeField] private GameObject categoryButtonPrefab;
+        [SerializeField] private GameObject biasButtonPrefab;
+        
+        [Header("SearchBar")] 
+        [SerializeField] private TMP_InputField inputField;
         [SerializeField] private Button searchBarButton;
         [SerializeField] private Image searchBarImage;
         [SerializeField] private GameObject searchList;
         [SerializeField] private RectTransform searchBarRect;
-
-        [SerializeField] private Button searchListFinanzierungszugangButton;
-        [SerializeField] private Button searchListGenderPayGapButton;
-        [SerializeField] private Button searchListUnterbewertungWeiblichGefuehrterUnternehmenButton;
-        [SerializeField] private Button searchListRiskAversionBiasButton;
-        [SerializeField] private Button searchListBestaetigungsVerzerrungButton;
-        [SerializeField] private Button searchListTokenismButton;
-        [SerializeField] private Button searchListBiasInDerWahrnehmungVonFuehrungsFaehigkeitenButton;
-        [SerializeField] private Button searchListBenevolenterSexismusButton;
-        [SerializeField] private Button searchListAltersUndGenerationenBiasesButton;
-        [SerializeField] private Button searchListStereotypeGegenueberFrauenInNichtTraditionellenBranchenButton;
-        [SerializeField] private Button searchListHeteronormativitaetButton;
-        [SerializeField] private Button searchListMaternalBiasButton;
-        [SerializeField] private Button searchListErwartungshaltungBezueglichFamilienplanungButton;
-        [SerializeField] private Button searchListWorkLifeBalanceErwartungenButton;
-        [SerializeField] private Button searchListGeschlechtsspezifischeStereotypeButton;
-        [SerializeField] private Button searchListTightropeBiasButton;
-        [SerializeField] private Button searchListMikroaggressionenButton;
-        [SerializeField] private Button searchListLeistungsattributionsBiasButton;
-        [SerializeField] private Button searchListUnbewussteBiasInDerKommunikationButton;
-
-        private GameObject _currentBiasInformationChapter;
-
+        
+        private Dictionary<string, Bias> _biases;
+        private readonly Dictionary<string, GameObject> _categoryContainers = new();
+        private readonly Dictionary<string, bool> _categoryStates = new();
+        private readonly Dictionary<string, bool> _categoryHasLoadedButtons = new();
+        
+        private readonly List<GameObject> _searchResultButtons = new();
         private TMP_Text _biasDetailsText;
-
         private Dictionary<Button, Action> _buttonActions;
-
-        private bool _barrienenInfoGroupActive;
-        private bool _erwartungsInfoGroupActive;
-        private bool _wahrnehmungFuehrungsrollenInfoGroupActive;
-        private bool _barrierenHindernisseInfoGroupActive;
+        
+        private IEnumerable<string> _categories;
 
         /// <summary>
-        /// Initializes the Knowledge Scene, setting up navigation, buttons,
-        /// input field listeners, and ensuring the UI layout is updated correctly.
+        /// Initializes the Knowledge Scene by setting up the necessary data, UI components,
+        /// and event listeners. Pushes the current scene to the back stack for navigation purposes.
+        /// Loads bias data, configures category buttons and their respective actions, and prepares
+        /// the search functionality. Ensures that the font sizes are updated across text components
+        /// and triggers a layout rebuild.
         /// </summary>
         public void Start()
         {
             BackStackManager.Instance().Push(SceneNames.KnowledgeScene);
 
+            _biases = MappingManager.biases;
+            InitializeCategoryButtons();
+
             InitializeButtonActions();
             AddButtonListeners();
 
-            _biasDetailsText = biasDetailsObject.GetComponentInChildren<TextMeshProUGUI>();
-
-            if (inputField)
-            {
-                inputField.onValueChanged.AddListener(Search);
-            }
-            else
-            {
-                Debug.LogError("InputField ist nicht zugewiesen.");
-            }
+            if (biasDetailsObject) _biasDetailsText = biasDetailsObject.GetComponentInChildren<TextMeshProUGUI>();
+            if (_biasDetailsText == null) Debug.LogWarning("Kein TextMeshProUGUI unter biasDetailsObject gefunden.");
+            
+            if (inputField) inputField.onValueChanged.AddListener(Search);
+            else Debug.LogError("InputField ist nicht zugewiesen.");
 
             FontSizeManager.Instance().UpdateAllTextComponents();
             StartCoroutine(RebuildLayout());
         }
 
         /// <summary>
-        /// Configures the button actions and assigns the appropriate event handlers
-        /// to ensure proper interaction behavior within the Knowledge Scene.
+        /// Creates and initializes category buttons dynamically based on the distinct categories
+        /// derived from the biases loaded in the scene. Each button represents a unique category.
+        /// Configures button properties, such as text and name, and sets up click event listeners
+        /// for toggling the respective category state.
+        /// </summary>
+        private void InitializeCategoryButtons()
+        {
+            _categories = _biases.Values.Select(b => b.category).Distinct();
+            foreach (string category in _categories)
+            {
+                GameObject categoryGameObject = Instantiate(categoryButtonPrefab, biasInformation.transform);
+                categoryGameObject.name = category;
+                categoryGameObject.GetComponentInChildren<TextMeshProUGUI>().text = category;
+
+                _categoryContainers[category] = categoryGameObject;
+                _categoryStates[category] = false;
+                _categoryHasLoadedButtons[category] = false;
+
+                categoryGameObject.GetComponent<Button>().onClick.AddListener(() => ToggleCategory(category));
+            }
+        }
+
+        /// <summary>
+        /// Configures and initializes the actions associated with various UI buttons,
+        /// mapping each button to its respective functionality within the Knowledge Scene.
         /// </summary>
         private void InitializeButtonActions()
         {
             _buttonActions = new Dictionary<Button, Action>
             {
-                { barrierenInfoButton, OnBarrierenInfoButton },
-                { erwartungenNormenInfoButton, OnErwartungenNormenInfoButton },
-                { wahrnehmungFuehrungsrollenInfoButton, OnWahrnehmungFuehrungsrollenInfoButton },
-                { barrierenHindernisseInfoButton, OnBarrierenHindernisseInfoButton },
-
-                // Structural economic barriers
-                { finanzierungszugangButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.AccessToFunding) },
-                { genderPayGapButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.GenderPayGap) },
-                { unterbewertungWeiblichGefuehrterUnternehmenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.UndervaluationOfWomenLedBusinesses) },
-                { riskAversionBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.RiskAversionBias) },
-                { bestaetigungsVerzerrungButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.ConfirmationBias) },
-
-                // Societal expectations & social norms
-                { tokenismButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.Tokenism) },
-                { biasInDerWahrnehmungVonFuehrungsFaehigkeitenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.InPerceptionOfLeadershipAbilities) },
-                { benevolenterSexismusButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.BenevolentSexismBias) },
-                { altersUndGenerationenBiasesButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.AgeAndGenerationalBiases) },
-                { stereotypeGegenueberFrauenInNichtTraditionellenBranchenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.StereotypesAgainstWomenInNonTraditionalIndustries) },
-
-                // Perception & leadership roles
-                { heteronormativitaetButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.Heteronormativity) },
-                { maternalBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.MaternalBias) },
-                { erwartungshaltungBezueglichFamilienplanungButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.ExpectationsRegardingFamilyPlanning) },
-                { workLifeBalanceErwartungenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.WorkLifeBalanceExpectations) },
-                { geschlechtsspezifischeStereotypeButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.GenderSpecificStereotypes) },
-
-                // Psychological barriers & communication obstacles
-                { tightropeBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.TightropeBias) },
-                { mikroaggressionenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.Microaggressions) },
-                { leistungsattributionsBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.PerformanceAttributionBias) },
-                { unbewussteBiasInDerKommunikationButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.UnconsciousBiasInCommunication) },
-
-                { searchListFinanzierungszugangButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.AccessToFunding) },
-                { searchListGenderPayGapButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.GenderPayGap) },
-                { searchListUnterbewertungWeiblichGefuehrterUnternehmenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.UndervaluationOfWomenLedBusinesses) },
-                { searchListRiskAversionBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.RiskAversionBias) },
-                { searchListBestaetigungsVerzerrungButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.ConfirmationBias) },
-                { searchListTokenismButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.Tokenism) },
-                { searchListBiasInDerWahrnehmungVonFuehrungsFaehigkeitenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.InPerceptionOfLeadershipAbilities) },
-                { searchListBenevolenterSexismusButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.BenevolentSexismBias) },
-                { searchListAltersUndGenerationenBiasesButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.AgeAndGenerationalBiases) },
-                { searchListStereotypeGegenueberFrauenInNichtTraditionellenBranchenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.StereotypesAgainstWomenInNonTraditionalIndustries) },
-                { searchListHeteronormativitaetButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.Heteronormativity) },
-                { searchListMaternalBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.MaternalBias) },
-                { searchListErwartungshaltungBezueglichFamilienplanungButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.ExpectationsRegardingFamilyPlanning) },
-                { searchListWorkLifeBalanceErwartungenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.WorkLifeBalanceExpectations) },
-                { searchListGeschlechtsspezifischeStereotypeButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.GenderSpecificStereotypes) },
-                { searchListTightropeBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.TightropeBias) },
-                { searchListMikroaggressionenButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.Microaggressions) },
-                { searchListLeistungsattributionsBiasButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.PerformanceAttributionBias) },
-                { searchListUnbewussteBiasInDerKommunikationButton, () => ShowBiasDetails(BiasDescriptionTexts.BiasType.UnconsciousBiasInCommunication) },
-
                 { searchBarButton, CloseSearchBar }
             };
         }
 
         /// <summary>
-        /// Adds click event listeners to all buttons in the Knowledge Scene, binding them
-        /// to their associated actions defined in the button-to-action dictionary.
+        /// Adds event listeners to buttons within the Knowledge Scene, linking each button to its predefined action.
         /// </summary>
         private void AddButtonListeners()
         {
@@ -210,17 +124,89 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Displays the details of a specified bias type by activating the bias details UI
-        /// and updating the corresponding content text.
+        /// Toggles the visibility of a category's content in the Knowledge Scene. Expands or collapses
+        /// the category's associated container and updates UI elements such as arrow icons and layout.
         /// </summary>
-        /// <param name="type">The type of bias to display, represented as a BiasType enum.</param>
-        private void ShowBiasDetails(BiasDescriptionTexts.BiasType type)
+        /// <param name="category">The name of the category to toggle.</param>
+        private void ToggleCategory(string category)
+        {
+            bool isOpen = _categoryStates[category];
+            GameObject container = _categoryContainers[category];
+
+            if (isOpen)
+            {
+                foreach (Transform child in container.transform)
+                {
+                    if (child.name != "Headline") child.gameObject.SetActive(false);
+                }
+
+                SetArrow(container, arrowLeftSprite);
+                _categoryStates[category] = false;
+            }
+            else
+            {
+                if (!_categoryHasLoadedButtons[category])
+                {
+                    foreach (var bias in _biases.Values.Where(b => b.category == category))
+                    {
+                        GameObject biasGameObject = Instantiate(biasButtonPrefab, container.transform);
+                        biasGameObject.name = bias.headline;
+                        biasGameObject.GetComponentInChildren<TextMeshProUGUI>().text = FormatBiasButtonText(bias);
+
+                        biasGameObject.GetComponent<Button>().onClick.AddListener(() => OnBiasClicked(bias));
+                    }
+                }
+                else
+                {
+                    foreach (Transform child in container.transform)
+                    {
+                        if (child.name != "Headline") child.gameObject.SetActive(true);
+                    }
+                }
+
+                SetArrow(container, arrowDownSprite);
+                _categoryStates[category] = true;
+            }
+
+            FontSizeManager.Instance().UpdateAllTextComponents();
+            LayoutRebuilder.ForceRebuildLayoutImmediate(contentRectTransform);
+
+        }
+
+        /// <summary>
+        /// Updates the arrow sprite for a specified category GameObject, allowing for visual feedback on category state changes.
+        /// </summary>
+        /// <param name="categoryGameObject">The GameObject representing the category whose arrow sprite will be updated.</param>
+        /// <param name="sprite">The new Sprite to be set for the category's arrow.</param>
+        private void SetArrow(GameObject categoryGameObject, Sprite sprite)
+        {
+            var arrow = categoryGameObject.GetComponentsInChildren<Image>().FirstOrDefault(img => img.gameObject.name == "Arrow");
+            if (arrow != null) arrow.sprite = sprite;
+        }
+
+        /// <summary>
+        /// Handles the event triggered when a bias button is clicked, parsing the bias type
+        /// and displaying detailed information about the selected bias.
+        /// </summary>
+        /// <param name="bias">The bias object associated with the clicked button, containing its type, headline, and other details.</param>
+        private void OnBiasClicked(Bias bias)
+        {
+            ShowBiasDetails(bias.type);
+            
+        }
+
+        /// <summary>
+        /// Updates the UI to display the details of a specified bias type.
+        /// Ensures that the appropriate UI elements are visible and populated
+        /// with the corresponding description text while hiding unrelated elements.
+        /// </summary>
+        /// <param name="type">The type of the bias to display details for.</param>
+        private void ShowBiasDetails(string type)
         {
             if (searchList.activeInHierarchy) searchList.SetActive(false);
 
             infoText.SetActive(false);
             biasInformation.SetActive(false);
-            barrierenInfoGroup.SetActive(false);
 
             biasDetailsObject.SetActive(true);
             _biasDetailsText.text = BiasDescriptionTexts.GetBiasText(type);
@@ -230,155 +216,8 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Toggles the visibility of the "Strukturelle wirtschaftliche Barrieren" information group,
-        /// updating button states, UI layout, and sprite appearance accordingly.
-        /// </summary>
-        private void OnBarrierenInfoButton()
-        {
-            if (_barrienenInfoGroupActive)
-            {
-                finanzierungszugangButton.gameObject.SetActive(false);
-                genderPayGapButton.gameObject.SetActive(false);
-                unterbewertungWeiblichGefuehrterUnternehmenButton.gameObject.SetActive(false);
-                riskAversionBiasButton.gameObject.SetActive(false);
-                bestaetigungsVerzerrungButton.gameObject.SetActive(false);
-
-                barrierenInfoButtonImage.sprite = arrowLeftSprite;
-
-                _barrienenInfoGroupActive = false;
-            }
-            else
-            {
-                finanzierungszugangButton.gameObject.SetActive(true);
-                genderPayGapButton.gameObject.SetActive(true);
-                unterbewertungWeiblichGefuehrterUnternehmenButton.gameObject.SetActive(true);
-                riskAversionBiasButton.gameObject.SetActive(true);
-                bestaetigungsVerzerrungButton.gameObject.SetActive(true);
-
-                barrierenInfoButtonImage.sprite = arrowDownSprite;
-
-                _barrienenInfoGroupActive = true;
-
-                _currentBiasInformationChapter = barrierenInfoGroup;
-            }
-
-            FontSizeManager.Instance().UpdateAllTextComponents();
-            StartCoroutine(RebuildLayout());
-        }
-
-        /// <summary>
-        /// Toggles the visibility of the "Erwartungen und Normen" information group,
-        /// updating button states, UI layout, and sprite appearance accordingly.
-        /// </summary>
-        private void OnErwartungenNormenInfoButton()
-        {
-            if (_erwartungsInfoGroupActive)
-            {
-                tokenismButton.gameObject.SetActive(false);
-                biasInDerWahrnehmungVonFuehrungsFaehigkeitenButton.gameObject.SetActive(false);
-                benevolenterSexismusButton.gameObject.SetActive(false);
-                altersUndGenerationenBiasesButton.gameObject.SetActive(false);
-                stereotypeGegenueberFrauenInNichtTraditionellenBranchenButton.gameObject.SetActive(false);
-
-                erwartungenNormenInfoButtonImage.sprite = arrowLeftSprite;
-
-                _erwartungsInfoGroupActive = false;
-            }
-            else
-            {
-                tokenismButton.gameObject.SetActive(true);
-                biasInDerWahrnehmungVonFuehrungsFaehigkeitenButton.gameObject.SetActive(true);
-                benevolenterSexismusButton.gameObject.SetActive(true);
-                altersUndGenerationenBiasesButton.gameObject.SetActive(true);
-                stereotypeGegenueberFrauenInNichtTraditionellenBranchenButton.gameObject.SetActive(true);
-
-                erwartungenNormenInfoButtonImage.sprite = arrowDownSprite;
-
-                _erwartungsInfoGroupActive = true;
-
-                _currentBiasInformationChapter = erwartungenNormenInfoGroup;
-            }
-
-            FontSizeManager.Instance().UpdateAllTextComponents();
-            StartCoroutine(RebuildLayout());
-        }
-
-        /// <summary>
-        /// Toggles the visibility of the "Wahrnehmung & Führungsrollen" information group,
-        /// updating button states, UI layout, and sprite appearance accordingly.
-        /// </summary>
-        private void OnWahrnehmungFuehrungsrollenInfoButton()
-        {
-            if (_wahrnehmungFuehrungsrollenInfoGroupActive)
-            {
-                heteronormativitaetButton.gameObject.SetActive(false);
-                maternalBiasButton.gameObject.SetActive(false);
-                erwartungshaltungBezueglichFamilienplanungButton.gameObject.SetActive(false);
-                workLifeBalanceErwartungenButton.gameObject.SetActive(false);
-                geschlechtsspezifischeStereotypeButton.gameObject.SetActive(false);
-
-                wahrnehmungFuehrungsrollenInfoButtonImage.sprite = arrowLeftSprite;
-
-                _wahrnehmungFuehrungsrollenInfoGroupActive = false;
-            }
-            else
-            {
-                heteronormativitaetButton.gameObject.SetActive(true);
-                maternalBiasButton.gameObject.SetActive(true);
-                erwartungshaltungBezueglichFamilienplanungButton.gameObject.SetActive(true);
-                workLifeBalanceErwartungenButton.gameObject.SetActive(true);
-                geschlechtsspezifischeStereotypeButton.gameObject.SetActive(true);
-
-                wahrnehmungFuehrungsrollenInfoButtonImage.sprite = arrowDownSprite;
-
-                _wahrnehmungFuehrungsrollenInfoGroupActive = true;
-
-                _currentBiasInformationChapter = wahrnehmungFuehrungsrollenInfoGroup;
-            }
-
-            FontSizeManager.Instance().UpdateAllTextComponents();
-            StartCoroutine(RebuildLayout());
-        }
-
-        /// <summary>
-        /// Toggles the visibility of the "Psychologische Barrieren & kommunikative Hindernisse" information group,
-        /// updating button states, UI layout, and sprite appearance accordingly.
-        /// </summary>
-        private void OnBarrierenHindernisseInfoButton()
-        {
-            if (_barrierenHindernisseInfoGroupActive)
-            {
-                tightropeBiasButton.gameObject.SetActive(false);
-                mikroaggressionenButton.gameObject.SetActive(false);
-                leistungsattributionsBiasButton.gameObject.SetActive(false);
-                unbewussteBiasInDerKommunikationButton.gameObject.SetActive(false);
-
-                barrierenHindernisseInfoButtonImage.sprite = arrowLeftSprite;
-
-                _barrierenHindernisseInfoGroupActive = false;
-            }
-            else
-            {
-                tightropeBiasButton.gameObject.SetActive(true);
-                mikroaggressionenButton.gameObject.SetActive(true);
-                leistungsattributionsBiasButton.gameObject.SetActive(true);
-                unbewussteBiasInDerKommunikationButton.gameObject.SetActive(true);
-
-                barrierenHindernisseInfoButtonImage.sprite = arrowDownSprite;
-
-                _barrierenHindernisseInfoGroupActive = true;
-
-                _currentBiasInformationChapter = barrierenHindernisseInfoGroup;
-            }
-
-            FontSizeManager.Instance().UpdateAllTextComponents();
-            StartCoroutine(RebuildLayout());
-        }
-
-        /// <summary>
-        /// Navigates the Knowledge Scene by toggling the visibility of UI elements depending on their current state.
-        /// Adjusts the display of information and initiates scene transitions when necessary.
-        /// Ensures the correct layout and content are presented in the scene.
+        /// Handles the navigation logic within the Knowledge Scene, including toggling UI elements,
+        /// managing category visibility, and loading appropriate scenes or views based on the current context.
         /// </summary>
         public void NavigateScene()
         {
@@ -390,23 +229,22 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
             else if (biasDetailsObject.activeInHierarchy)
             {
+                biasDetailsObject.SetActive(false);
                 biasInformation.SetActive(true);
-                barrierenInfoButton.gameObject.SetActive(true);
-                erwartungenNormenInfoButton.gameObject.SetActive(true);
-                wahrnehmungFuehrungsrollenInfoButton.gameObject.SetActive(true);
-                barrierenHindernisseInfoButton.gameObject.SetActive(true);
+                
+                foreach (var category in _categoryContainers.Keys) _categoryContainers[category].SetActive(true);
 
                 CloseSearchBar();
-
-                biasDetailsObject.SetActive(false);
+                StartCoroutine(RebuildLayout());
             }
         }
 
         /// <summary>
-        /// Filters and displays results in the search list based on the provided input.
-        /// Updates the visibility of the search button, search bar image, and relevant UI elements.
+        /// Searches the list of biases and updates the search interface with results
+        /// that match the provided input. The search is case-insensitive and matches
+        /// both the headline and preview properties of biases.
         /// </summary>
-        /// <param name="input">The string input provided by the user for filtering search results.</param>
+        /// <param name="input">The search query entered by the user.</param>
         private void Search(string input)
         {
             searchBarButton.gameObject.SetActive(true);
@@ -414,53 +252,55 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             biasInformation.SetActive(false);
             searchList.SetActive(true);
+            
+            foreach (var btn in _searchResultButtons) btn.SetActive(false);
+            _searchResultButtons.Clear();
+
+            if (string.IsNullOrWhiteSpace(input)) return;
 
             string inputLower = input.ToLower();
-            bool hasResults = false;
+            var matches = _biases.Values
+                .Where(b => b.headline.ToLower().Contains(inputLower) || b.preview.ToLower().Contains(inputLower));
 
-            foreach (Transform entry in searchList.transform)
+            foreach (var bias in matches)
             {
-                bool isActive = entry.name.ToLower().Contains(inputLower);
-                entry.gameObject.SetActive(isActive);
-                if (isActive) hasResults = true;
+                GameObject buttonGameObject = Instantiate(biasButtonPrefab, searchList.transform);
+                buttonGameObject.name = bias.headline;
+                buttonGameObject.GetComponentInChildren<TextMeshProUGUI>().text = FormatBiasButtonText(bias);
+                buttonGameObject.GetComponent<Button>().onClick.AddListener(() => OnBiasClicked(bias));
+
+                _searchResultButtons.Add(buttonGameObject);
             }
 
-            if (hasResults)
-            {
-                LayoutRebuilder.ForceRebuildLayoutImmediate(searchList.GetComponent<VerticalLayoutGroup>().GetComponent<RectTransform>());
-            }
+            LayoutRebuilder.ForceRebuildLayoutImmediate(searchList.GetComponent<RectTransform>());
         }
 
         /// <summary>
-        /// Closes the search bar by clearing the input field, hiding the search bar button,
-        /// showing the search bar image, and adjusting the visibility of the search list
-        /// and bias information accordingly.
+        /// Formats the text content for a bias button, including its headline and preview description.
+        /// </summary>
+        /// <param name="bias">The bias object containing metadata such as headline and preview.</param>
+        /// <returns>A formatted string containing the headline in bold and the preview on a new line.</returns>
+        private string FormatBiasButtonText(Bias bias) => $"<b>{bias.headline}</b>\n{bias.preview}";
+
+        /// <summary>
+        /// Resets the search bar by clearing the input field, hiding the search button,
+        /// showing the search bar image, and deactivating the search list if active.
+        /// Ensures the bias information is displayed when needed.
         /// </summary>
         private void CloseSearchBar()
         {
             inputField.text = "";
-
             searchBarButton.gameObject.SetActive(false);
             searchBarImage.gameObject.SetActive(true);
 
-            if (searchList.activeInHierarchy)
-            {
-                searchList.SetActive(false);
-            }
-
-            if (!biasInformation.activeInHierarchy)
-            {
-                biasInformation.SetActive(true);
-            }
+            if (searchList.activeInHierarchy) searchList.SetActive(false);
+            if (!biasInformation.activeInHierarchy) biasInformation.SetActive(true);
         }
 
         /// <summary>
-        /// Forces an immediate rebuild of the layout for the specified content rect transform.
-        /// This ensures that the UI elements are properly arranged after changes to their properties or structure.
+        /// Rebuilds the layout of the content UI element to ensure proper alignment and spacing updates.
         /// </summary>
-        /// <returns>
-        /// An enumerator that waits for a single frame before applying the layout rebuild operation.
-        /// </returns>
+        /// <returns>An enumerator that allows this method to be used as a coroutine.</returns>
         private IEnumerator RebuildLayout()
         {
             yield return null;

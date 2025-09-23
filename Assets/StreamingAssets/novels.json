@@ -9573,7 +9573,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Maternal Bias"
+                    "relevantBias": "Verzerrungen gegenüber Frauen mit Kindern"
                 },
                 {
                     "id": "Altes Denken012",
@@ -9753,7 +9753,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "Besorgt-Negativ II",
@@ -9813,7 +9813,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "OptionsLabel61",
@@ -10023,7 +10023,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bias in der Wahrnehmung von Führungsfähigkeiten"
+                    "relevantBias": "Verzerrung in der Wahrnehmung von Führungsfähigkeiten"
                 },
                 {
                     "id": "OptionsLabel62",
@@ -10203,7 +10203,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bias in der Wahrnehmung von Führungsfähigkeiten"
+                    "relevantBias": "Verzerrung in der Wahrnehmung von Führungsfähigkeiten"
                 },
                 {
                     "id": "OptionsLabel63",
@@ -10443,7 +10443,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Finanzierungszugang"
+                    "relevantBias": "Zugang zu Finanzierung"
                 },
                 {
                     "id": "OptionsLabel64",
@@ -10623,7 +10623,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Erwartungshaltung bezüglich Familienplanung"
+                    "relevantBias": "Erwartungen bezüglich Familienplanung"
                 },
                 {
                     "id": "OptionsLabel65",
@@ -10953,7 +10953,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Maternal Bias"
+                    "relevantBias": "Verzerrungen gegenüber Frauen mit Kindern"
                 },
                 {
                     "id": "Kein Kind: Sexismus01",
@@ -11193,7 +11193,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "OptionsLabel68",
@@ -11403,7 +11403,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Maternal Bias"
+                    "relevantBias": "Verzerrungen gegenüber Frauen mit Kindern"
                 },
                 {
                     "id": "OptionsLabel69",
@@ -11823,7 +11823,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bias in der Wahrnehmung von Führungsfähigkeiten"
+                    "relevantBias": "Verzerrung in der Wahrnehmung von Führungsfähigkeiten"
                 },
                 {
                     "id": "Meine Entscheidung II",
@@ -11883,7 +11883,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Erwartungshaltung bezüglich Familienplanung"
+                    "relevantBias": "Erwartungen bezüglich Familienplanung"
                 },
                 {
                     "id": "OptionsLabel71",
@@ -12243,7 +12243,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bias in der Wahrnehmung von Führungsfähigkeiten"
+                    "relevantBias": "Verzerrung in der Wahrnehmung von Führungsfähigkeiten"
                 },
                 {
                     "id": "OptionsLabel73",
@@ -13593,7 +13593,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Doppelte Bindung (Tightrope Bias)"
+                    "relevantBias": "Tightrope Bias"
                 },
                 {
                     "id": "OptionsLabel78",
@@ -14283,7 +14283,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "OptionsLabel82",
@@ -15063,7 +15063,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Erwartungshaltung bezüglich Familienplanung"
+                    "relevantBias": "Erwartungen bezüglich Familienplanung"
                 },
                 {
                     "id": "OptionsLabel85",
@@ -16382,7 +16382,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "OptionsLabel94",
@@ -16532,7 +16532,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "OptionsLabel95",
@@ -16682,7 +16682,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "OptionsLabel96",
@@ -16862,7 +16862,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "OptionsLabel97",
@@ -17582,7 +17582,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggressionen"
+                    "relevantBias": "Mikroaggression"
                 },
                 {
                     "id": "OptionsLabel102",
@@ -17732,7 +17732,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggressionen"
+                    "relevantBias": "Mikroaggression"
                 },
                 {
                     "id": "OptionsLabel103",
@@ -17882,7 +17882,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "OptionsLabel104",
@@ -18032,7 +18032,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "StereotypesAboutWomenInNonTraditionalIndustries"
+                    "relevantBias": "Stereotypen über Frauen in nicht traditionellen Branchen"
                 },
                 {
                     "id": "OptionsLabel105",
@@ -18182,7 +18182,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "StereotypesAboutWomenInNonTraditionalIndustries"
+                    "relevantBias": "Stereotypen über Frauen in nicht traditionellen Branchen"
                 },
                 {
                     "id": "OptionsLabel106",
@@ -18332,7 +18332,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggressionen"
+                    "relevantBias": "Mikroaggression"
                 },
                 {
                     "id": "OptionsLabel107",
@@ -18512,7 +18512,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggressionen"
+                    "relevantBias": "Mikroaggression"
                 },
                 {
                     "id": "OptionsLabel108",
@@ -19622,7 +19622,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bestätigungsverzerrung"
+                    "relevantBias": "Bestätigungsbias"
                 },
                 {
                     "id": "OptionsLabel115",
@@ -19802,7 +19802,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bestätigungsverzerrung"
+                    "relevantBias": "Bestätigungsbias"
                 },
                 {
                     "id": "OptionsLabel116",
@@ -20582,7 +20582,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bestätigungsverzerrung"
+                    "relevantBias": "Bestätigungsbias"
                 },
                 {
                     "id": "OptionsLabel122",
@@ -20762,7 +20762,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bestätigungsverzerrung"
+                    "relevantBias": "Bestätigungsbias"
                 },
                 {
                     "id": "OptionsLabel123",
@@ -20942,7 +20942,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggressionen"
+                    "relevantBias": "Mikroaggression"
                 },
                 {
                     "id": "OptionsLabel124",
@@ -21122,7 +21122,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggressionen"
+                    "relevantBias": "Mikroaggression"
                 },
                 {
                     "id": "OptionsLabel125",
@@ -21302,7 +21302,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Risk Aversion Bias"
+                    "relevantBias": "Risikovermeidungs-Bias"
                 },
                 {
                     "id": "OptionsLabel126",
@@ -21452,7 +21452,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Risk Aversion Bias"
+                    "relevantBias": "Risikovermeidungs-Bias"
                 },
                 {
                     "id": "OptionsLabel127",
@@ -21782,7 +21782,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "OptionsLabel129",
@@ -21932,7 +21932,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "OptionsLabel130",
@@ -23072,7 +23072,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Gender Pay Gap"
+                    "relevantBias": "Geschlechterlohngefälle"
                 },
                 {
                     "id": "OptionsLabel138",
@@ -23522,7 +23522,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "StereotypesAboutWomenInNonTraditionalIndustries"
+                    "relevantBias": "Stereotypen über Frauen in nicht traditionellen Branchen"
                 },
                 {
                     "id": "OptionsLabel141",
@@ -23702,7 +23702,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "StereotypesAboutWomenInNonTraditionalIndustries"
+                    "relevantBias": "Stereotypen über Frauen in nicht traditionellen Branchen"
                 },
                 {
                     "id": "OptionsLabel142",
@@ -24272,7 +24272,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggressionen"
+                    "relevantBias": "Mikroaggression"
                 },
                 {
                     "id": "OptionsLabel146",
@@ -24452,7 +24452,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggressionen"
+                    "relevantBias": "Mikroaggression"
                 },
                 {
                     "id": "OptionsLabel147",
@@ -24692,7 +24692,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Doppelte Bindung (Tightrope Bias)"
+                    "relevantBias": "Tightrope Bias"
                 },
                 {
                     "id": "OptionsLabel148",
@@ -24842,7 +24842,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Doppelte Bindung (Tightrope Bias)"
+                    "relevantBias": "Tightrope Bias"
                 },
                 {
                     "id": "OptionsLabel149",
@@ -25262,7 +25262,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggressionen"
+                    "relevantBias": "Mikroaggression"
                 },
                 {
                     "id": "OptionsLabel152",
@@ -25412,7 +25412,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggressionen"
+                    "relevantBias": "Mikroaggression"
                 },
                 {
                     "id": "OptionsLabel153",
@@ -25862,7 +25862,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggressionen"
+                    "relevantBias": "Mikroaggression"
                 },
                 {
                     "id": "OptionsLabel156",
@@ -26012,7 +26012,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggressionen"
+                    "relevantBias": "Mikroaggression"
                 },
                 {
                     "id": "OptionsLabel157",
@@ -26402,7 +26402,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "OptionsLabel160",
@@ -26552,7 +26552,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "OptionsLabel161",
@@ -27512,7 +27512,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Doppelte Bindung (Tightrope Bias)"
+                    "relevantBias": "Tightrope Bias"
                 },
                 {
                     "id": "OptionsLabel168",
@@ -27692,7 +27692,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Doppelte Bindung (Tightrope Bias)"
+                    "relevantBias": "Tightrope Bias"
                 },
                 {
                     "id": "OptionsLabel169",
@@ -28920,7 +28920,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Benevolenter Sexismus"
+                    "relevantBias": "Wohlwollender Sexismus"
                 },
                 {
                     "id": "OptionsLabel175",
@@ -29790,7 +29790,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "OptionsLabel181",
@@ -30270,7 +30270,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Risk Aversion Bias"
+                    "relevantBias": "Risikovermeidungs-Bias"
                 },
                 {
                     "id": "OptionsLabel184",
@@ -30570,7 +30570,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bias in der Wahrnehmung von Führungsfähigkeiten"
+                    "relevantBias": "Verzerrung in der Wahrnehmung von Führungsfähigkeiten"
                 },
                 {
                     "id": "OptionsLabel186",
@@ -30900,7 +30900,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bias in der Wahrnehmung von Führungsfähigkeiten"
+                    "relevantBias": "Verzerrung in der Wahrnehmung von Führungsfähigkeiten"
                 },
                 {
                     "id": "OptionsLabel188",
@@ -31080,7 +31080,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "StereotypesAboutWomenInNonTraditionalIndustries"
+                    "relevantBias": "Stereotypen über Frauen in nicht traditionellen Branchen"
                 },
                 {
                     "id": "OptionsLabel189",
@@ -31380,7 +31380,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Risk Aversion Bias"
+                    "relevantBias": "Risikovermeidungs-Bias"
                 },
                 {
                     "id": "OptionsLabel190",
@@ -31530,7 +31530,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "OptionsLabel191",
@@ -34528,7 +34528,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bestätigungsverzerrung"
+                    "relevantBias": "Bestätigungsbias"
                 },
                 {
                     "id": "Bürgschaft Partner01",
@@ -34558,7 +34558,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Gender Pay Gap"
+                    "relevantBias": "Geschlechterlohngefälle"
                 },
                 {
                     "id": "OptionsLabel210",
@@ -36328,7 +36328,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Doppelte Bindung (Tightrope Bias)"
+                    "relevantBias": "Tightrope Bias"
                 },
                 {
                     "id": "OptionsLabel221",
@@ -36868,7 +36868,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "Faire Aufgabenaufteilung",
@@ -37048,7 +37048,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggressionen"
+                    "relevantBias": "Mikroaggression"
                 },
                 {
                     "id": "OptionsLabel226",
@@ -37198,7 +37198,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "OptionsLabel227",
@@ -38068,7 +38068,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "Geschäftspartner01",
@@ -38098,7 +38098,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bias in der Wahrnehmung von Führungsfähigkeiten"
+                    "relevantBias": "Verzerrung in der Wahrnehmung von Führungsfähigkeiten"
                 },
                 {
                     "id": "Geschäftspartner012",
@@ -38128,7 +38128,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bestätigungsverzerrung"
+                    "relevantBias": "Bestätigungsbias"
                 },
                 {
                     "id": "OptionsLabel233",
@@ -38398,7 +38398,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bias in der Wahrnehmung von Führungsfähigkeiten"
+                    "relevantBias": "Verzerrung in der Wahrnehmung von Führungsfähigkeiten"
                 },
                 {
                     "id": "Geschäftspartner Nachfrage II01",
@@ -38428,7 +38428,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Biases in der Kommunikation"
+                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
                 },
                 {
                     "id": "OptionsLabel235",
@@ -38578,7 +38578,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bias in der Wahrnehmung von Führungsfähigkeiten"
+                    "relevantBias": "Verzerrung in der Wahrnehmung von Führungsfähigkeiten"
                 },
                 {
                     "id": "Geschäftspartnerin01",
@@ -38608,7 +38608,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Biases in der Kommunikation"
+                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
                 },
                 {
                     "id": "OptionsLabel236",
@@ -38758,7 +38758,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bias in der Wahrnehmung von Führungsfähigkeiten"
+                    "relevantBias": "Verzerrung in der Wahrnehmung von Führungsfähigkeiten"
                 },
                 {
                     "id": "Geschäftspartnerin Nachfrage01",
@@ -38788,7 +38788,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Biases in der Kommunikation"
+                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
                 },
                 {
                     "id": "OptionsLabel237",
@@ -40198,7 +40198,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Biases in der Kommunikation"
+                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
                 },
                 {
                     "id": "OptionsLabel248",
@@ -41398,7 +41398,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "Nachfrage Internalisiert01",
@@ -41428,7 +41428,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bestätigungsverzerrung"
+                    "relevantBias": "Bestätigungsbias"
                 },
                 {
                     "id": "OptionsLabel256",
@@ -42688,7 +42688,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Biases in der Kommunikation"
+                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
                 },
                 {
                     "id": "Professionell01",
@@ -42898,7 +42898,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Biases in der Kommunikation"
+                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
                 },
                 {
                     "id": "Professionell II01",
@@ -43138,7 +43138,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "OptionsLabel267",
@@ -43918,7 +43918,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggressionen"
+                    "relevantBias": "Mikroaggression"
                 },
                 {
                     "id": "OptionsLabel273",
@@ -44428,7 +44428,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bestätigungsverzerrung"
+                    "relevantBias": "Bestätigungsbias"
                 },
                 {
                     "id": "OptionsLabel276",
@@ -45118,7 +45118,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Doppelte Bindung (Tightrope Bias)"
+                    "relevantBias": "Tightrope Bias"
                 },
                 {
                     "id": "OptionsLabel281",
@@ -45598,7 +45598,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggressionen"
+                    "relevantBias": "Mikroaggression"
                 },
                 {
                     "id": "OptionsLabel284",
@@ -45748,7 +45748,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggressionen"
+                    "relevantBias": "Mikroaggression"
                 },
                 {
                     "id": "OptionsLabel285",
@@ -47246,7 +47246,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Leistungsattributions-Bias"
+                    "relevantBias": "Verzerrung der Leistungszuordnung"
                 },
                 {
                     "id": "OptionsLabel293",
@@ -47546,7 +47546,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Biases in der Kommunikation"
+                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
                 },
                 {
                     "id": "OptionsLabel295",
@@ -47966,7 +47966,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bestätigungsverzerrung"
+                    "relevantBias": "Bestätigungsbias"
                 },
                 {
                     "id": "OptionsLabel298",
@@ -48566,7 +48566,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Finanzierungszugang"
+                    "relevantBias": "Zugang zu Finanzierung"
                 },
                 {
                     "id": "Nachfrage01",
@@ -48866,7 +48866,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Biases in der Kommunikation"
+                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
                 },
                 {
                     "id": "Rat Gereizt01",
@@ -48896,7 +48896,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Doppelte Bindung (Tightrope Bias)"
+                    "relevantBias": "Tightrope Bias"
                 },
                 {
                     "id": "OptionsLabel304",
@@ -49826,7 +49826,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Biases in der Kommunikation"
+                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
                 },
                 {
                     "id": "Wie auch immer01",
@@ -49856,7 +49856,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bias in der Wahrnehmung von Führungsfähigkeiten"
+                    "relevantBias": "Verzerrung in der Wahrnehmung von Führungsfähigkeiten"
                 },
                 {
                     "id": "OptionsLabel308",
@@ -50514,7 +50514,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Tokenism"
+                    "relevantBias": "Tokenismus"
                 },
                 {
                     "id": "OptionsLabel310",
@@ -50964,7 +50964,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Tokenism"
+                    "relevantBias": "Tokenismus"
                 },
                 {
                     "id": "OptionsLabel313",
@@ -51114,7 +51114,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bias in der Wahrnehmung von Führungsfähigkeiten"
+                    "relevantBias": "Verzerrung in der Wahrnehmung von Führungsfähigkeiten"
                 },
                 {
                     "id": "OptionsLabel314",
@@ -51624,7 +51624,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggressionen"
+                    "relevantBias": "Mikroaggression"
                 },
                 {
                     "id": "OptionsLabel316",
@@ -51804,7 +51804,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Leistungsattributions-Bias"
+                    "relevantBias": "Verzerrung der Leistungszuordnung"
                 },
                 {
                     "id": "OptionsLabel317",
@@ -52014,7 +52014,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Biases in der Kommunikation"
+                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
                 },
                 {
                     "id": "OptionsLabel318",
@@ -52344,7 +52344,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggressionen"
+                    "relevantBias": "Mikroaggression"
                 },
                 {
                     "id": "OptionsLabel320",
@@ -52554,7 +52554,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Benevolenter Sexismus"
+                    "relevantBias": "Wohlwollender Sexismus"
                 },
                 {
                     "id": "Frauen gründen012",
@@ -52584,7 +52584,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Tokenism"
+                    "relevantBias": "Tokenismus"
                 },
                 {
                     "id": "OptionsLabel321",
@@ -53064,7 +53064,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Leistungsattributions-Bias"
+                    "relevantBias": "Verzerrung der Leistungszuordnung"
                 },
                 {
                     "id": "OptionsLabel324",
@@ -54654,7 +54654,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Benevolenter Sexismus"
+                    "relevantBias": "Wohlwollender Sexismus"
                 },
                 {
                     "id": "OptionsLabel332",
@@ -54834,7 +54834,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Tokenism"
+                    "relevantBias": "Tokenismus"
                 },
                 {
                     "id": "OptionsLabel333",
@@ -55044,7 +55044,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Tokenism"
+                    "relevantBias": "Tokenismus"
                 },
                 {
                     "id": "OptionsLabel334",
@@ -55644,7 +55644,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Tokenism"
+                    "relevantBias": "Tokenismus"
                 },
                 {
                     "id": "OptionsLabel338",
@@ -55824,7 +55824,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Tokenism"
+                    "relevantBias": "Tokenismus"
                 },
                 {
                     "id": "OptionsLabel339",
@@ -56304,7 +56304,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Bestätigungsverzerrung"
+                    "relevantBias": "Bestätigungsbias"
                 },
                 {
                     "id": "OptionsLabel342",
@@ -56604,7 +56604,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Tokenism"
+                    "relevantBias": "Tokenismus"
                 },
                 {
                     "id": "OptionsLabel344",
@@ -57472,7 +57472,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Leistungsattributions-Bias"
+                    "relevantBias": "Verzerrung der Leistungszuordnung"
                 },
                 {
                     "id": "OptionsLabel349",
@@ -57922,7 +57922,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Alter- und Generationen-Biases"
+                    "relevantBias": "Alters- und Generationenbias"
                 },
                 {
                     "id": "Ageism Nachfrage II",
@@ -58132,7 +58132,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Alter- und Generationen-Biases"
+                    "relevantBias": "Alters- und Generationenbias"
                 },
                 {
                     "id": "Alter",
@@ -58192,7 +58192,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Alter- und Generationen-Biases"
+                    "relevantBias": "Alters- und Generationenbias"
                 },
                 {
                     "id": "Alter II",
@@ -58252,7 +58252,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Alter- und Generationen-Biases"
+                    "relevantBias": "Alters- und Generationenbias"
                 },
                 {
                     "id": "OptionsLabel353",
@@ -58642,7 +58642,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Benevolenter Sexismus"
+                    "relevantBias": "Wohlwollender Sexismus"
                 },
                 {
                     "id": "Dankbar01",
@@ -58672,7 +58672,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Biases in der Kommunikation"
+                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
                 },
                 {
                     "id": "OptionsLabel355",
@@ -59302,7 +59302,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Doppelte Bindung (Tightrope Bias)"
+                    "relevantBias": "Tightrope Bias"
                 },
                 {
                     "id": "End: Negativ012",
@@ -59512,7 +59512,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Biases in der Kommunikation"
+                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
                 },
                 {
                     "id": "End: Positiv Selbstbewusst II",
@@ -59692,7 +59692,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Biases in der Kommunikation"
+                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
                 },
                 {
                     "id": "End: Positiv Selbstsicher II",
@@ -60142,7 +60142,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "OptionsLabel360",
@@ -60322,7 +60322,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Alter- und Generationen-Biases"
+                    "relevantBias": "Alters- und Generationenbias"
                 },
                 {
                     "id": "OptionsLabel361",
@@ -60922,7 +60922,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Benevolenter Sexismus"
+                    "relevantBias": "Wohlwollender Sexismus"
                 },
                 {
                     "id": "Fokus: Negativ II01",
@@ -61192,7 +61192,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Biases in der Kommunikation"
+                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
                 },
                 {
                     "id": "OptionsLabel365",
@@ -61342,7 +61342,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "Frage II01",
@@ -61942,7 +61942,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Benevolenter Sexismus"
+                    "relevantBias": "Wohlwollender Sexismus"
                 },
                 {
                     "id": "Freund betont01",
@@ -62182,7 +62182,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "Gründungsförderung",
@@ -62722,7 +62722,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "Mietprozess",
@@ -62782,7 +62782,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Biases in der Kommunikation"
+                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
                 },
                 {
                     "id": "OptionsLabel373",
@@ -62962,7 +62962,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "OptionsLabel374",
@@ -63412,7 +63412,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Benevolenter Sexismus"
+                    "relevantBias": "Wohlwollender Sexismus"
                 },
                 {
                     "id": "Sachlich01",
@@ -63442,7 +63442,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Unbewusste Biases in der Kommunikation"
+                    "relevantBias": "Unbewusste Verzerrung in der Kommunikation"
                 },
                 {
                     "id": "OptionsLabel377",
@@ -63622,7 +63622,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "Selbstbewusst III",
@@ -63682,7 +63682,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggressionen"
+                    "relevantBias": "Mikroaggression"
                 },
                 {
                     "id": "OptionsLabel378",
@@ -64102,7 +64102,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "Umlenken II01",
@@ -64132,7 +64132,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Risk Aversion Bias"
+                    "relevantBias": "Risikovermeidungs-Bias"
                 },
                 {
                     "id": "OptionsLabel379",
@@ -64612,7 +64612,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggressionen"
+                    "relevantBias": "Mikroaggression"
                 },
                 {
                     "id": "OptionsLabel382",
@@ -64792,7 +64792,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Geschlechterspezifische Stereotype"
+                    "relevantBias": "Geschlechtsspezifische Stereotypen"
                 },
                 {
                     "id": "OptionsLabel383",
@@ -64942,7 +64942,7 @@
                     "gptCompletionHandler": "",
                     "key": "",
                     "value": "",
-                    "relevantBias": "Mikroaggressionen"
+                    "relevantBias": "Mikroaggression"
                 },
                 {
                     "id": "OptionsLabel384",
