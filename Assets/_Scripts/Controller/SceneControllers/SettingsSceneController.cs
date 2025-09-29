@@ -221,6 +221,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 TextToSpeechManager.Instance.DeactivateTTS();
                 DisplayInfoMessage(InfoMessages.STOPPED_TOGGLETEXTTOSPEECH_BUTTON);
                 StartCoroutine(TextToSpeechManager.Instance.Speak("Text wird nicht mehr vorgelesen"));
+                TextToSpeechManager.Instance.CancelSpeak();
             }
             
             UpdateToggleImages(activeTextToSpeechImage, inactiveTextToSpeechImage, _isTextToSpeechActive);

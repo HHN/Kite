@@ -169,9 +169,10 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </remarks>
         public void OnFinishButton()
         {
-        #if UNITY_IOS
-                    TextToSpeechManager.Instance.CancelSpeak();
-        #endif
+            if (TextToSpeechManager.Instance != null)
+            {
+                TextToSpeechManager.Instance.CancelSpeak();
+            }
                     
             // We go back to the explorer and don't want the back-button to bring us to the feedback scene again
             BackStackManager.Instance().Clear();
