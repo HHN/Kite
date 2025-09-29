@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/_Prefabs/UIElements/Buttons/KnowledgeBase/BiasButtonPrefab.prefab.meta
+guid: 203ff1bdcb1301a4fa0f3b6881ea2c4f
+PrefabImporter:
+========
 guid: d90e41c0baac68c459a880437827509c
 TextScriptImporter:
+>>>>>>>> main:Assets/_Images/Character/Test14.txt.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

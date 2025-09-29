@@ -23,7 +23,7 @@ namespace Assets._Scripts._Mappings
         private static readonly string MappingFileFaceExpression;
         private static readonly string MappingFileCharacter;
         private static readonly string MappingFileSound;
-
+        
         // Dictionaries
         private static Dictionary<string, int> _faceExpressionMapping = new(StringComparer.OrdinalIgnoreCase);
         private static Dictionary<string, int> _characterMapping = new(StringComparer.OrdinalIgnoreCase);
@@ -63,7 +63,6 @@ namespace Assets._Scripts._Mappings
                         DontDestroyOnLoad(obj);
                     }
                 }
-
                 return _instance;
             }
         }
@@ -171,7 +170,7 @@ namespace Assets._Scripts._Mappings
 #endif
         }
 
-        // ----------------- BIASES (JSON) -----------------
+// ----------------- BIASES (JSON) -----------------
 
         /// <summary>
         /// Loads bias data from a JSON file and populates the internal dictionary of biases.

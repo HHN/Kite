@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -39,9 +41,10 @@ namespace Assets._Scripts.Controller.SceneControllers
     {
         private const float WaitingTime = 0.5f;
 
-        [Header("UI-Komponenten")] [SerializeField]
-        private GameObject viewPort;
+        private static PlayNovelSceneController _instance;
 
+        [Header("UI-Komponenten")] 
+        [SerializeField] private GameObject viewPort;
         [SerializeField] private GameObject conversationViewport;
         [SerializeField] private Button closeButton;
         [SerializeField] private Button legalInformationButton;
@@ -61,9 +64,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         [Header("Novel-Visuals und Prefabs")] 
         [SerializeField] private GameObject[] novelVisuals;
-        
         [SerializeField] private List<CharacterVisualEntry> novelVisualMappings = new();
-
         [SerializeField] private GameObject novelImageContainer;
         [SerializeField] private GameObject backgroundContainer;
         [SerializeField] private GameObject deskContainer;
@@ -82,63 +83,59 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private GameObject viewPortOfImages;
         [SerializeField] private GameObject currentAnimation;
 
-        [Header("GPT und MessageBox")] [SerializeField]
-        private GameObject gptServercallPrefab;
-
+        [Header("GPT und MessageBox")] 
+        [SerializeField] private GameObject gptServerCallPrefab;
         [SerializeField] private LeaveNovelAndGoBackMessageBox leaveGameAndGoBackMessageBoxObject;
         [SerializeField] private GameObject leaveGameAndGoBackMessageBox;
-        private GameObject _hintForSavegameMessageBoxObject;
         [SerializeField] private GameObject hintForSavegameMessageBox;
 
-        [Header("Skript- und Controller-Referenzen")] [SerializeField]
-        private VisualNovel novelToPlay;
-
+        [Header("Skript- und Controller-Referenzen")] 
+        [SerializeField] private VisualNovel novelToPlay;
         [SerializeField] public TypewriterCore currentTypeWriter;
         [SerializeField] public SelectOptionContinueConversation selectOptionContinueConversation;
-
         [SerializeField] private Kite2CharacterController currentTalkingKite2CharacterController;
 
-        [Header("Audio-Komponenten")] [SerializeField]
-        private AudioClip[] clips;
-
-        [Header("Timing")] [SerializeField]
-        private float timerForHint = 12.0f; // Time after which the hint to tap on the screen is shown
-
+        [Header("Timing")] 
+        [SerializeField] private float timerForHint = 12.0f; // Time after which the hint to tap on the screen is shown
         [SerializeField] private float timerForHintInitial = 3.0f;
         [SerializeField] private bool firstUserConfirmation = true;
 
-        [Header("Spielstatus und Logik")] [SerializeField]
-        private bool isWaitingForConfirmation;
-
+        [Header("Spielstatus und Logik")]
+        [SerializeField] private bool isWaitingForConfirmation;
         [SerializeField] private VisualNovelEvent nextEventToPlay;
         [SerializeField] private bool isTyping;
         [SerializeField] private List<string> playThroughHistory = new();
         [SerializeField] private List<VisualNovelEvent> eventHistory = new();
 
+        public bool isPaused;
+
         private readonly Dictionary<string, VisualNovelEvent> _novelEvents = new();
         private readonly string[] _optionsId = new string[2];
+        private readonly Dictionary<string, int> _soundIndexByName = new(StringComparer.OrdinalIgnoreCase);
+        private bool _audioReady;
+        private Dictionary<string, GameObject> _characterToPrefabMap;
+
+        [Header("Audio-Komponenten")]
+        private AudioClip[] _clips;
+
+        private bool _clipsDumpedOnce;
         private ConversationContentGuiController _conversationContentGuiController;
+        private GameObject _hintForSavegameMessageBoxObject;
         private int _novelCharacter;
         private NovelImageController _novelImagesController;
+        private int _optionsCount;
         private VisualNovelEvent _savedEventToResume;
+        private IEnumerator _speakingCoroutine;
         private Coroutine _timerCoroutine;
         private bool _typingWasSkipped;
-        private int _optionsCount;
-        private IEnumerator _speakingCoroutine;
 
         // Character Expressions
         public Dictionary<int, int> CharacterExpressions { get; } = new();
-
-        public bool isPaused;
         public VisualNovel NovelToPlay => novelToPlay;
         public List<string> PlayThroughHistory => playThroughHistory;
         public string[] OptionsId => _optionsId;
         public List<VisualNovelEvent> EventHistory => eventHistory;
         public NovelImageController NovelImageController => _novelImagesController;
-
-        private static PlayNovelSceneController _instance;
-        
-        private Dictionary<string, GameObject> _characterToPrefabMap;
 
         /// <summary>
         /// Provides a globally accessible instance of the <see cref="PlayNovelSceneController"/> class.
@@ -174,14 +171,165 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void Start()
         {
             FooterActivationManager.Instance().SetFooterActivated(false);
-            
+
             _conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
-
             novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
-
             OfflineFeedbackManager.Instance().Clear();
 
+            StartCoroutine(BootstrapAudioAndInit());
+        }
+
+        private IEnumerator BootstrapAudioAndInit()
+        {
+            yield return StartCoroutine(LoadAudioClipsFromMapping());
+
+            _audioReady = true;
+
             Initialize();
+        }
+
+        private void DumpClips(string audioDumpContext)
+        {
+            if (_clips == null) return;
+
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.AppendLine($"[AudioDump] ({audioDumpContext}) clips.Length={_clips.Length}");
+
+            for (int i = 0; i < _clips.Length; i++)
+            {
+                var c = _clips[i];
+                if (c == null)
+                {
+                    sb.AppendLine($"  [{i}] null");
+                    continue;
+                }
+                sb.AppendLine($"  [{i}] name='{c.name}', len={c.length:F2}s, samples={c.samples}, freq={c.frequency}, channels={c.channels}, loadState={c.loadState}");
+            }
+        }
+
+        /// <summary>
+        /// Liest SoundMapping.txt (StreamingAssets) und lädt ausschließlich die referenzierten .wav
+        /// aus Assets/_AudioResources. Die Clips landen an ihren Indizes, Lücken bleiben null.
+        /// Es wird auf das vollständige Laden gewartet; bei fehlenden/fehlerhaften Files gibt es Warnungen.
+        /// </summary>
+        private IEnumerator LoadAudioClipsFromMapping()
+        {
+            string mappingPath = Path.Combine(Application.streamingAssetsPath, "SoundMapping.txt");
+            string mappingText;
+
+            if (mappingPath.Contains("://") || mappingPath.Contains(":///"))
+            {
+                using UnityWebRequest req = UnityWebRequest.Get(mappingPath);
+                yield return req.SendWebRequest();
+                if (req.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogWarning($"[AudioLoad] SoundMapping konnte nicht geladen werden: {req.error} ({mappingPath})");
+                    _clips = Array.Empty<AudioClip>();
+                    yield break;
+                }
+                mappingText = req.downloadHandler.text;
+            }
+            else
+            {
+                if (!File.Exists(mappingPath))
+                {
+                    Debug.LogWarning($"[AudioLoad] SoundMapping.txt nicht gefunden unter: {mappingPath}");
+                    _clips = Array.Empty<AudioClip>();
+                    yield break;
+                }
+                mappingText = File.ReadAllText(mappingPath);
+            }
+
+            var pairs = new List<(string name, int index)>();
+            foreach (var raw in mappingText.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                var line = raw.Trim();
+                if (line.Length == 0 || line.StartsWith("#")) continue;
+
+                var parts = line.Split(':');
+                if (parts.Length != 2)
+                {
+                    Debug.LogWarning($"[AudioLoad] Zeile ignoriert (kein Name:Index): '{line}'");
+                    continue;
+                }
+
+                var soundPair = parts[0].Trim();
+                if (!int.TryParse(parts[1], out int idx))
+                {
+                    Debug.LogWarning($"[AudioLoad] Ungültiger Index in Zeile: '{line}'");
+                    continue;
+                }
+
+                pairs.Add((soundPair, idx));
+            }
+
+            if (pairs.Count == 0)
+            {
+                Debug.LogWarning("[AudioLoad] Mapping ist leer – es wird kein Clip geladen.");
+                _clips = Array.Empty<AudioClip>();
+                yield break;
+            }
+
+            int size = pairs.Max(p => p.index) + 1;
+            _clips = new AudioClip[size];
+
+            _soundIndexByName.Clear();
+            for (int i = 0; i < pairs.Count; i++)
+            {
+                _soundIndexByName[pairs[i].name] = pairs[i].index;
+            }
+
+            var missing = new List<string>();
+            int loaded = 0;
+
+            foreach (var (clipName, index) in pairs)
+            {
+                string wavPath = Path.Combine(Application.dataPath, "_AudioResources", clipName + ".wav");
+
+                if (!File.Exists(wavPath))
+                {
+                    Debug.LogWarning($"[AudioLoad] Datei fehlt: {wavPath}");
+                    missing.Add($"{clipName}.wav");
+                    continue;
+                }
+
+                string fileUri = new Uri(wavPath).AbsoluteUri;
+
+                using UnityWebRequest req = UnityWebRequestMultimedia.GetAudioClip(fileUri, AudioType.WAV);
+                yield return req.SendWebRequest();
+
+                if (req.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogWarning($"[AudioLoad] UnityWebRequest-Fehler für '{clipName}': {req.error} | uri={fileUri}");
+                    missing.Add($"{clipName}.wav");
+                    continue;
+                }
+
+                var clip = DownloadHandlerAudioClip.GetContent(req);
+                if (clip == null)
+                {
+                    Debug.LogWarning($"[AudioLoad] GetContent() lieferte NULL für '{clipName}'");
+                    missing.Add($"{clipName}.wav");
+                    continue;
+                }
+
+                clip.name = clipName;
+
+                if (index >= 0 && index < _clips.Length)
+                {
+                    _clips[index] = clip;
+                    loaded++;
+                }
+                else
+                {
+                    Debug.LogWarning($"[AudioLoad] Index außerhalb des Bereichs ({index}) für '{clipName}' (clips.Length={_clips.Length})");
+                }
+            }
+
+            if (missing.Count > 0)
+            {
+                Debug.LogWarning($"[AudioLoad] Zusammenfassung: {loaded}/{pairs.Count} Clips geladen. Fehlend/fehlerhaft: {string.Join(", ", missing)}");
+            }
         }
 
         /// <summary>
@@ -378,10 +526,16 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         public void Continue()
         {
+            if (!_audioReady)
+            {
+                Debug.LogWarning("[PlayNovelSceneController] Continue() blocked — audio not ready yet");
+                return;
+            }
+
             BackStackManager.Instance().Push(SceneNames.PlayNovelScene);
-            
             StartCoroutine(PlayNextEvent());
         }
+
 
         /// <summary>
         /// Executes the next event in the visual novel sequence by managing the event flow,
@@ -558,20 +712,58 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// <param name="novelEvent">The visual novel event containing information about the sound to play and related behaviors such as waiting for user confirmation.</param>
         private void HandlePlaySoundEvent(VisualNovelEvent novelEvent)
         {
+            // Einmalig die gesamte clips-Liste dumpen, sobald das erste Sound-Event kommt
+            if (!_clipsDumpedOnce)
+            {
+                DumpClips("HandlePlaySoundEvent-enter");
+                _clipsDumpedOnce = true;
+            }
+
             SetNextEvent(novelEvent);
 
-            if (novelEvent.audioClipToPlay != "NONE")
+            string key = novelEvent.audioClipToPlay;
+
+            bool isNone = string.Equals(key, "NONE", StringComparison.OrdinalIgnoreCase);
+            bool isLeaveScene = string.Equals(key, "LEAVESCENE", StringComparison.OrdinalIgnoreCase);
+
+            if (!isNone && !isLeaveScene)
             {
-                int soundIndex = MappingManager.MapSound(novelEvent.audioClipToPlay);
-                if (soundIndex >= 0 && soundIndex < clips.Length)
+                if (string.IsNullOrWhiteSpace(key))
                 {
-                    GlobalVolumeManager.Instance.PlaySound(clips[soundIndex]);
+                    Debug.LogWarning("[PlaySound] audioClipToPlay ist leer.");
+                }
+                else if (_soundIndexByName.TryGetValue(key.Trim(), out int idx))
+                {
+
+                    if (idx >= 0 && idx < (_clips?.Length ?? 0))
+                    {
+                        if (_clips != null)
+                        {
+                            var clip = _clips[idx];
+                            if (clip != null)
+                            {
+                                if (clip.loadState == AudioDataLoadState.Unloaded)
+                                {
+                                    clip.LoadAudioData();
+                                }
+                            
+                                GlobalVolumeManager.Instance.PlaySound(clip);
+                            }
+                            else
+                            {
+                                Debug.LogWarning($"[PlaySound] Clip an idx {idx} ist NULL (Datei fehlte/Fehler beim Laden?)");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"[PlaySound] idx {idx} außerhalb von clips (len={(_clips?.Length ?? 0)})");
+                    }
                 }
                 else
                 {
-                    Debug.LogWarning($"Ungültiger Sound-Index oder nicht gefunden: '{novelEvent.audioClipToPlay}'");
+                    Debug.LogWarning($"[PlaySound] Kein Mapping für '{key}' (nicht in SoundMapping.txt?)");
                 }
-
             }
 
             if (novelEvent.waitForUserConfirmation)
@@ -579,8 +771,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 SetWaitingForConfirmation(true);
                 return;
             }
-
-            if (novelEvent.audioClipToPlay == "LEAVESCENE")
+            if (isLeaveScene)
             {
                 StartCoroutine(StartNextEventInOneSeconds(2.5f));
                 return;
@@ -588,6 +779,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             StartCoroutine(StartNextEventInOneSeconds(1));
         }
+
 
         /// <summary>
         /// Handles an event to play animations specified in the given visual novel event.
@@ -621,7 +813,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 return;
             }
 
-            GetCompletionServerCall call = Instantiate(gptServercallPrefab).GetComponent<GetCompletionServerCall>();
+            GetCompletionServerCall call = Instantiate(gptServerCallPrefab).GetComponent<GetCompletionServerCall>();
             call.sceneController = this;
             
             //GptRequestEventOnSuccessHandler onSuccessHandler = new GptRequestEventOnSuccessHandler            //TODO: Wegen CompletionHandler schauen. Vermutlich reicht einer.
