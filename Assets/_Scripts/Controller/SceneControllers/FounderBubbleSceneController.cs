@@ -840,14 +840,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
             else
             {
-                if (ShowPlayInstructionManager.Instance().ShowInstruction() && visualNovelToDisplay.title != "Einstiegsdialog")
-                {
-                    SceneLoader.LoadPlayInstructionScene();
-                }
-                else
-                {
-                    SceneLoader.LoadPlayNovelScene();
-                }
+                SceneLoader.LoadPlayNovelScene();
             }
         }
 
