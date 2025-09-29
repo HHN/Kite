@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/StreamingAssets/SoundMapping.txt.meta
+guid: 4e3d26cd01699bd448d24a52c99b7eb3
+========
 guid: e8f69ca198c4e8e43acdc5c82218991d
 folderAsset: yes
+>>>>>>>> main:Assets/_Prefabs/UIElements/Buttons/KnowledgeBase.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
