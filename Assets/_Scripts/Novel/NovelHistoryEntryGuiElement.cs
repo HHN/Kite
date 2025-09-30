@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Player;
 using Assets._Scripts.UIElements.DropDown;
+using Assets._Scripts.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -97,7 +98,7 @@ namespace Assets._Scripts.Novel
         /// </summary>
         private void CopyDialog()
         {
-            Debug.Log("KOPIEREN");
+            LogManager.Info("KOPIEREN");
             string pattern = @"<\/?(b|i)>"; // Regex to match <b>, <i>, </b>, </i> tags
             string copyText = Regex.Replace(dialogText.text, pattern, string.Empty);
             copyText = copyText.Replace("\n", "\n\n"); // Replace single newlines with double for better readability when pasted
@@ -118,7 +119,7 @@ namespace Assets._Scripts.Novel
         /// </summary>
         private void CopyFeedback()
         {
-            Debug.Log("KOPIEREN");
+            LogManager.Info("KOPIEREN");
             string pattern = @"<\/?(b|i)>"; // Regex to match <b>, <i>, </b>, </i> tags
             string copyText = Regex.Replace(aiFeedbackText.text, pattern, string.Empty);
             copyText = copyText.Replace("\n", "\n\n"); // Replace single newlines with double for better readability when pasted
@@ -142,7 +143,7 @@ namespace Assets._Scripts.Novel
         {
             if (GameObjectManager.Instance().GetCopyNotification() == null)
             {
-                Debug.Log("Kein GameObject mit dem Tag 'CopyNotification' gefunden.");
+                LogManager.Info("Kein GameObject mit dem Tag 'CopyNotification' gefunden.");
                 yield break; // Exit the coroutine if the object is not found.
             }
 

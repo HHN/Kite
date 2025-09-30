@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Assets._Scripts._Mappings;
+using Assets._Scripts.Utilities;
 using UnityEngine;
 
 namespace Assets._Scripts.Novel.VisualNovelFormatter
@@ -81,7 +82,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// </summary>
         public static List<VisualNovelEvent> ConvertTextDocumentIntoEventList(string tweeFile, KiteNovelMetaData metaData)
         {
-            Debug.Log("Convert Text Document Into Event List...");
+            LogManager.Info("Convert Text Document Into Event List...");
             List<VisualNovelEvent> eventList = new List<VisualNovelEvent>();
             string startLabel = TweeProcessor.GetStartLabelFromTweeFile(tweeFile);
             InitializeKiteNovelEventList(metaData, eventList, startLabel);
@@ -102,7 +103,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                     {
                         if (passage.Label.Contains("Neutral"))
                         {
-                            Debug.Log($"passage: {passage}");
+                            LogManager.Info($"passage: {passage}");
                         }
                         
                         string targetString = "";
@@ -253,13 +254,13 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             int character = MappingManager.MapCharacter(metaData.TalkingPartner01);
             if (character == -1)
             {
-                Debug.LogWarning("While loading " + metaData.TitleOfNovel + ": Initial character role not found!");
+                LogManager.Warning("While loading " + metaData.TitleOfNovel + ": Initial character role not found!");
             }
 
             int expression = MappingManager.MapFaceExpressions(metaData.StartTalkingPartnerExpression);
             if (expression == -1)
             {
-                Debug.LogWarning("While loading " + metaData.TitleOfNovel + ": Initial character expression " + metaData.StartTalkingPartnerExpression + "not found!");
+                LogManager.Warning("While loading " + metaData.TitleOfNovel + ": Initial character expression " + metaData.StartTalkingPartnerExpression + "not found!");
             }
 
             VisualNovelEvent initialCharacterJoinsEvent = KiteNovelEventFactory.GetCharacterJoinsEvent(connectionLabel, startLabel, character, expression);

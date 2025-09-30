@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Assets._Scripts.Novel;
+using Assets._Scripts.Utilities;
 using UnityEngine;
 
 namespace Assets._Scripts.Managers
@@ -70,7 +71,7 @@ namespace Assets._Scripts.Managers
         {
             if (kiteNovels == null)
             {
-                Debug.LogWarning("List<VisualNovel> kiteNovels is null ");
+                LogManager.Warning("List<VisualNovel> kiteNovels is null ");
             }
             _kiteNovels = kiteNovels;
         }

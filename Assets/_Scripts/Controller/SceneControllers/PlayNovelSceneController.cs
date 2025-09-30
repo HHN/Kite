@@ -223,7 +223,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 yield return req.SendWebRequest();
                 if (req.result != UnityWebRequest.Result.Success)
                 {
-                    Debug.LogWarning($"[AudioLoad] SoundMapping konnte nicht geladen werden: {req.error} ({mappingPath})");
+                    LogManager.Warning($"[AudioLoad] SoundMapping konnte nicht geladen werden: {req.error} ({mappingPath})");
                     _clips = Array.Empty<AudioClip>();
                     yield break;
                 }
@@ -233,7 +233,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             {
                 if (!File.Exists(mappingPath))
                 {
-                    Debug.LogWarning($"[AudioLoad] SoundMapping.txt nicht gefunden unter: {mappingPath}");
+                    LogManager.Warning($"[AudioLoad] SoundMapping.txt nicht gefunden unter: {mappingPath}");
                     _clips = Array.Empty<AudioClip>();
                     yield break;
                 }
@@ -249,14 +249,14 @@ namespace Assets._Scripts.Controller.SceneControllers
                 var parts = line.Split(':');
                 if (parts.Length != 2)
                 {
-                    Debug.LogWarning($"[AudioLoad] Zeile ignoriert (kein Name:Index): '{line}'");
+                    LogManager.Warning($"[AudioLoad] Zeile ignoriert (kein Name:Index): '{line}'");
                     continue;
                 }
 
                 var soundPair = parts[0].Trim();
                 if (!int.TryParse(parts[1], out int idx))
                 {
-                    Debug.LogWarning($"[AudioLoad] Ungültiger Index in Zeile: '{line}'");
+                    LogManager.Warning($"[AudioLoad] Ungültiger Index in Zeile: '{line}'");
                     continue;
                 }
 
@@ -265,7 +265,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             if (pairs.Count == 0)
             {
-                Debug.LogWarning("[AudioLoad] Mapping ist leer – es wird kein Clip geladen.");
+                LogManager.Warning("[AudioLoad] Mapping ist leer – es wird kein Clip geladen.");
                 _clips = Array.Empty<AudioClip>();
                 yield break;
             }
@@ -284,31 +284,12 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             foreach (var (clipName, index) in pairs)
             {
-                string wavPath = Path.Combine(Application.dataPath, "_AudioResources", clipName + ".wav");
+                string resourcePath = "_AudioResources/" + clipName; // Pfad relativ zu Resources/
 
-                if (!File.Exists(wavPath))
-                {
-                    Debug.LogWarning($"[AudioLoad] Datei fehlt: {wavPath}");
-                    missing.Add($"{clipName}.wav");
-                    continue;
-                }
-
-                string fileUri = new Uri(wavPath).AbsoluteUri;
-
-                using UnityWebRequest req = UnityWebRequestMultimedia.GetAudioClip(fileUri, AudioType.WAV);
-                yield return req.SendWebRequest();
-
-                if (req.result != UnityWebRequest.Result.Success)
-                {
-                    Debug.LogWarning($"[AudioLoad] UnityWebRequest-Fehler für '{clipName}': {req.error} | uri={fileUri}");
-                    missing.Add($"{clipName}.wav");
-                    continue;
-                }
-
-                var clip = DownloadHandlerAudioClip.GetContent(req);
+                AudioClip clip = Resources.Load<AudioClip>(resourcePath);
                 if (clip == null)
                 {
-                    Debug.LogWarning($"[AudioLoad] GetContent() lieferte NULL für '{clipName}'");
+                    LogManager.Warning($"[AudioLoad] Resources.Load konnte '{resourcePath}' nicht finden.");
                     missing.Add($"{clipName}.wav");
                     continue;
                 }
@@ -322,13 +303,13 @@ namespace Assets._Scripts.Controller.SceneControllers
                 }
                 else
                 {
-                    Debug.LogWarning($"[AudioLoad] Index außerhalb des Bereichs ({index}) für '{clipName}' (clips.Length={_clips.Length})");
+                    LogManager.Warning($"[AudioLoad] Index außerhalb des Bereichs ({index}) für '{clipName}' (clips.Length={_clips.Length})");
                 }
             }
 
             if (missing.Count > 0)
             {
-                Debug.LogWarning($"[AudioLoad] Zusammenfassung: {loaded}/{pairs.Count} Clips geladen. Fehlend/fehlerhaft: {string.Join(", ", missing)}");
+                LogManager.Warning($"[AudioLoad] Zusammenfassung: {loaded}/{pairs.Count} Clips geladen. Fehlend/fehlerhaft: {string.Join(", ", missing)}");
             }
         }
 
@@ -395,13 +376,13 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             if (!_characterToPrefabMap.TryGetValue(character, out var prefabToInstantiate))
             {
-                Debug.LogWarning($"No prefab found for character '{character}', using fallback.");
+                LogManager.Warning($"No prefab found for character '{character}', using fallback.");
                 prefabToInstantiate = novelVisualMappings.Count > 0 ? novelVisualMappings[0].prefab : null;
             }
 
             if (!prefabToInstantiate)
             {
-                Debug.LogError("No valid prefab to instantiate.");
+                LogManager.Error("No valid prefab to instantiate.");
                 return;
             }
                     
@@ -528,7 +509,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             if (!_audioReady)
             {
-                Debug.LogWarning("[PlayNovelSceneController] Continue() blocked — audio not ready yet");
+                LogManager.Warning("[PlayNovelSceneController] Continue() blocked — audio not ready yet");
                 return;
             }
 
@@ -730,7 +711,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             {
                 if (string.IsNullOrWhiteSpace(key))
                 {
-                    Debug.LogWarning("[PlaySound] audioClipToPlay ist leer.");
+                    LogManager.Warning("[PlaySound] audioClipToPlay ist leer.");
                 }
                 else if (_soundIndexByName.TryGetValue(key.Trim(), out int idx))
                 {
@@ -751,18 +732,18 @@ namespace Assets._Scripts.Controller.SceneControllers
                             }
                             else
                             {
-                                Debug.LogWarning($"[PlaySound] Clip an idx {idx} ist NULL (Datei fehlte/Fehler beim Laden?)");
+                                LogManager.Warning($"[PlaySound] Clip an idx {idx} ist NULL (Datei fehlte/Fehler beim Laden?)");
                             }
                         }
                     }
                     else
                     {
-                        Debug.LogWarning($"[PlaySound] idx {idx} außerhalb von clips (len={(_clips?.Length ?? 0)})");
+                        LogManager.Warning($"[PlaySound] idx {idx} außerhalb von clips (len={(_clips?.Length ?? 0)})");
                     }
                 }
                 else
                 {
-                    Debug.LogWarning($"[PlaySound] Kein Mapping für '{key}' (nicht in SoundMapping.txt?)");
+                    LogManager.Warning($"[PlaySound] Kein Mapping für '{key}' (nicht in SoundMapping.txt?)");
                 }
             }
 
@@ -899,7 +880,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
             catch (Exception ex)
             {
-                Debug.LogWarning($"Error evaluating boolean expression: {ex.Message}");
+                LogManager.Warning($"Error evaluating boolean expression: {ex.Message}");
                 return false;
             }
         }
@@ -1021,7 +1002,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             // Check if this is a valid character that requires expressions
             if (!CharacterExpressions.ContainsKey(_novelCharacter) && _novelCharacter != 0 && _novelCharacter != 1 && _novelCharacter != 4)
             {
-                Debug.LogWarning($"Character ID {_novelCharacter} is not registered.");
+                LogManager.Warning($"Character ID {_novelCharacter} is not registered.");
                 return;
             }
 
@@ -1368,7 +1349,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             if (savedData == null)
             {
-                Debug.LogWarning("No saved data found for the novel.");
+                LogManager.Warning("No saved data found for the novel.");
                 return;
             }
 
@@ -1413,13 +1394,13 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             if (controller == null)
             {
-                Debug.LogError("ApplyCharacterData failed: controller is null");
+                LogManager.Error("ApplyCharacterData failed: controller is null");
                 return;
             }
 
             if (controller.characterControllers == null || controller.characterControllers.Count == 0)
             {
-                Debug.LogError("ApplyCharacterData failed: characterControllers list is null or empty");
+                LogManager.Error("ApplyCharacterData failed: characterControllers list is null or empty");
                 return;
             }
 
@@ -1433,7 +1414,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
             else
             {
-                Debug.LogWarning("First character controller is missing or null.");
+                LogManager.Warning("First character controller is missing or null.");
             }
 
             if (controller.characterControllers.Count >= 2 && controller.characterControllers[1] != null)
@@ -1446,7 +1427,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
             else
             {
-                Debug.LogWarning("Second character controller is missing or null.");
+                LogManager.Warning("Second character controller is missing or null.");
             }
         }
 

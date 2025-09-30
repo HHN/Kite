@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Assets._Scripts.Novel;
+using Assets._Scripts.Utilities;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -159,7 +160,7 @@ namespace Assets._Scripts.Managers
             }
             else
             {
-                Debug.LogError("KnowledgeBase not found in Resources!");
+                LogManager.Error("KnowledgeBase not found in Resources!");
             }
         }
 
@@ -193,7 +194,7 @@ namespace Assets._Scripts.Managers
             }
             else
             {
-                Debug.LogWarning($"{fileLabel} file not found at: {path}");
+                LogManager.Warning($"{fileLabel} file not found at: {path}");
             }
         #endif
         }

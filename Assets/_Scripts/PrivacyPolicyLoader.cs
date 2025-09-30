@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
 using Assets._Scripts.Biases;
+using Assets._Scripts.Utilities;
 
 namespace Assets._Scripts
 {
@@ -59,7 +60,7 @@ namespace Assets._Scripts
 
             if (textAsset == null)
             {
-                Debug.LogError("Textdatei nicht gefunden: " + textFileName + ". Make sure it's in a Resources folder.", this);
+                LogManager.Error("Textdatei nicht gefunden: " + textFileName + ". Make sure it's in a Resources folder.", this);
                 return;
             }
 

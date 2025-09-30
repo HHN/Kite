@@ -1,5 +1,6 @@
 using Assets._Scripts.Managers;
 using Assets._Scripts.SceneManagement;
+using Assets._Scripts.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -251,7 +252,7 @@ namespace Assets._Scripts
             }
             else
             {
-                Debug.LogWarning("Ungültiger Hex-Farbcode: " + hexColor);
+                LogManager.Warning("Ungültiger Hex-Farbcode: " + hexColor);
             }
         }
 
@@ -265,7 +266,7 @@ namespace Assets._Scripts
             if (textElement != null)
                 textElement.color = Color.white;
             else
-                Debug.LogWarning("TextElement ist nicht gesetzt!");
+                LogManager.Warning("TextElement ist nicht gesetzt!");
         }
 
         /// <summary>

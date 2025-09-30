@@ -1,3 +1,4 @@
+using Assets._Scripts.Utilities;
 using UnityEngine;
 
 namespace Assets._Scripts.UIElements.FoundersBubble
@@ -34,7 +35,7 @@ namespace Assets._Scripts.UIElements.FoundersBubble
             }
             if (visualContentRect == null)
             {
-                Debug.LogError($"Positioner ({gameObject.name}): visualContentRect not assigned and not found as first child. Please assign it in Inspector.", this);
+                LogManager.Error($"Positioner ({gameObject.name}): visualContentRect not assigned and not found as first child. Please assign it in Inspector.", this);
             }
         }
 

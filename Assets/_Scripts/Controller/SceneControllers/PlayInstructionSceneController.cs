@@ -27,9 +27,11 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         [SerializeField] private Button backToFoundersBubbleButton;
         [SerializeField] private Button playButton;
+        [SerializeField] private Button knowledgeButton;
 
         [SerializeField] private Image backToFoundersBubbleButtonImage;
         [SerializeField] private Image playButtonImage;
+        [SerializeField] private Image knowledgeButtonImage;
         [SerializeField] private Image headerImage;
 
         private bool _isSyncing;
@@ -67,6 +69,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             backToFoundersBubbleButton.onClick.AddListener(OnBackToFoundersBubbleButton);
             playButton.onClick.AddListener(OnPlayButton);
+            knowledgeButton.onClick.AddListener(OnKnowledgeButton);
 
             FontSizeManager.Instance().UpdateAllTextComponents();
         }
@@ -92,6 +95,18 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
             SceneLoader.LoadPlayNovelScene();
+        }
+
+        /// <summary>
+        /// Handles the action triggered when the Knowledge button is clicked.
+        /// </summary>
+        /// <remarks>
+        /// This method loads the knowledge scene by invoking the <see cref="SceneLoader.LoadKnowledgeScene"/> method.
+        /// It facilitates navigation between the instructional scene and the knowledge content of the application.
+        /// </remarks>
+        private void OnKnowledgeButton()
+        {
+            SceneLoader.LoadKnowledgeScene();
         }
     }
 }

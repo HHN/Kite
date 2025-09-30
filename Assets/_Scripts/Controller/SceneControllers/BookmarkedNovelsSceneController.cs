@@ -3,6 +3,7 @@ using System.Linq;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.SceneManagement;
+using Assets._Scripts.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -69,7 +70,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             if (novelButtonPrefab == null)
             {
-                Debug.LogError("NovelButtonPrefab is missing!");
+                LogManager.Error("NovelButtonPrefab is missing!");
                 return;
             }
 
@@ -91,7 +92,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
 
             if (_prefabWidth <= 0 || _prefabHeight <= 0)
-                Debug.LogError("Could not determine prefab size.");
+                LogManager.Error("Could not determine prefab size.");
         }
 
         /// <summary>
@@ -106,7 +107,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             {
                 if (!allNovelsById.TryGetValue(favoriteIds[i], out var novel))
                 {
-                    Debug.LogWarning($"Favorite ID {favoriteIds[i]} not found in novels.");
+                    LogManager.Warning($"Favorite ID {favoriteIds[i]} not found in novels.");
                     continue;
                 }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Messages;
 using Assets._Scripts.SceneManagement;
+using Assets._Scripts.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -131,15 +132,15 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void ValidateUI()
         {
-            if (!toggleTextToSpeechButton) Debug.LogError("toggleTextToSpeechButton fehlt!", this);
-            if (!activeTextToSpeechImage) Debug.LogError("activeTextToSpeechImage fehlt!", this);
-            if (!inactiveTextToSpeechImage) Debug.LogError("inactiveTextToSpeechImage fehlt!", this);
-            if (!soundEffectsVolumeSlider) Debug.LogError("soundEffectsVolumeSlider fehlt!", this);
-            if (!sliderBackgroundImage) Debug.LogError("sliderBackgroundImage fehlt!", this);
-            if (!sliderFillImage) Debug.LogError("sliderFillImage fehlt!", this);
-            if (!sliderHandleImage) Debug.LogError("sliderHandleImage fehlt!", this);
-            if (!sliderMinIcon) Debug.LogError("sliderMinIcon fehlt!", this);
-            if (!sliderMaxIcon) Debug.LogError("sliderMaxIcon fehlt!", this);
+            if (!toggleTextToSpeechButton) LogManager.Error("toggleTextToSpeechButton fehlt!", this);
+            if (!activeTextToSpeechImage) LogManager.Error("activeTextToSpeechImage fehlt!", this);
+            if (!inactiveTextToSpeechImage) LogManager.Error("inactiveTextToSpeechImage fehlt!", this);
+            if (!soundEffectsVolumeSlider) LogManager.Error("soundEffectsVolumeSlider fehlt!", this);
+            if (!sliderBackgroundImage) LogManager.Error("sliderBackgroundImage fehlt!", this);
+            if (!sliderFillImage) LogManager.Error("sliderFillImage fehlt!", this);
+            if (!sliderHandleImage) LogManager.Error("sliderHandleImage fehlt!", this);
+            if (!sliderMinIcon) LogManager.Error("sliderMinIcon fehlt!", this);
+            if (!sliderMaxIcon) LogManager.Error("sliderMaxIcon fehlt!", this);
         }
 
         /// <summary>

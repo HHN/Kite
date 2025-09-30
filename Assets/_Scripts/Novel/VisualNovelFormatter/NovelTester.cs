@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Assets._Scripts.Utilities;
 using UnityEngine;
 
 namespace Assets._Scripts.Novel.VisualNovelFormatter
@@ -32,7 +33,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
             if (novels == null || novels.Count == 0)
             {
-                Debug.LogWarning("No Novels to test.");
+                LogManager.Warning("No Novels to test.");
                 return tests;
             }
 
@@ -500,7 +501,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         {
             if (_isOriginalTest)
             {
-                Debug.LogError("Finished Test of Novel with Errors. Novel under Test: " + _objectUnderTest.title + ";");
+                LogManager.Error("Finished Test of Novel with Errors. Novel under Test: " + _objectUnderTest.title + ";");
             }
             else
             {
@@ -536,7 +537,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         {
             _isTestFinished = true;
             TestEndedEarly();
-            Debug.LogError("Error while testing novel. Novel under test: " + visualNovelUnderTest + "; Event under test: " + eventUnderTest + "; Error: " + error + ";");
+            LogManager.Error("Error while testing novel. Novel under test: " + visualNovelUnderTest + "; Event under test: " + eventUnderTest + "; Error: " + error + ";");
         }
 
         /// <summary>

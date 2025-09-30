@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Assets._Scripts.Biases;
+using Assets._Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -98,7 +99,7 @@ namespace Assets._Scripts._Mappings
             }
             else
             {
-                Debug.LogWarning($"Face expression mapping file not found at: {filePath}");
+                LogManager.Warning($"Face expression mapping file not found at: {filePath}");
             }
 #endif
         }
@@ -134,7 +135,7 @@ namespace Assets._Scripts._Mappings
             }
             else
             {
-                Debug.LogWarning($"Character mapping file not found at: {filePath}");
+                LogManager.Warning($"Character mapping file not found at: {filePath}");
             }
 #endif
         }
@@ -165,7 +166,7 @@ namespace Assets._Scripts._Mappings
             }
             else
             {
-                Debug.LogWarning($"Sound mapping file not found at: {filePath}");
+                LogManager.Warning($"Sound mapping file not found at: {filePath}");
             }
 #endif
         }
@@ -182,7 +183,7 @@ namespace Assets._Scripts._Mappings
             TextAsset json = Resources.Load<TextAsset>("KnowledgeBase");
             if (json == null)
             {
-                Debug.LogError("Bias JSON not found in Resources!");
+                LogManager.Error("Bias JSON not found in Resources!");
                 return;
             }
 
@@ -194,7 +195,7 @@ namespace Assets._Scripts._Mappings
             {
                 if (string.IsNullOrWhiteSpace(item.type))
                 {
-                    Debug.LogWarning("Bias ohne gültigen Key gefunden, wird übersprungen.");
+                    LogManager.Warning("Bias ohne gültigen Key gefunden, wird übersprungen.");
                     continue;
                 }
                 
@@ -212,7 +213,7 @@ namespace Assets._Scripts._Mappings
                 }
                 else
                 {
-                    Debug.LogWarning($"Ungültiger Bias-Key: {item.type}");
+                    LogManager.Warning($"Ungültiger Bias-Key: {item.type}");
                 }
             }
         }
@@ -263,12 +264,12 @@ namespace Assets._Scripts._Mappings
                     }
                     else
                     {
-                        Debug.LogWarning($"Invalid face expression mapping value (not an integer): {line}");
+                        LogManager.Warning($"Invalid face expression mapping value (not an integer): {line}");
                     }
                 }
                 else
                 {
-                    Debug.LogWarning($"Invalid mapping line: {line}");
+                    LogManager.Warning($"Invalid mapping line: {line}");
                 }
             }
         }
@@ -298,12 +299,12 @@ namespace Assets._Scripts._Mappings
                     }
                     else
                     {
-                        Debug.LogWarning($"Invalid character mapping value (not an integer): {line}");
+                        LogManager.Warning($"Invalid character mapping value (not an integer): {line}");
                     }
                 }
                 else
                 {
-                    Debug.LogWarning($"Invalid mapping line: {line}");
+                    LogManager.Warning($"Invalid mapping line: {line}");
                 }
             }
         }
@@ -327,12 +328,12 @@ namespace Assets._Scripts._Mappings
                     }
                     else
                     {
-                        Debug.LogWarning($"Invalid sound mapping value (not an integer): {line}");
+                        LogManager.Warning($"Invalid sound mapping value (not an integer): {line}");
                     }
                 }
                 else
                 {
-                    Debug.LogWarning($"Invalid mapping line: {line}");
+                    LogManager.Warning($"Invalid mapping line: {line}");
                 }
             }
         }
@@ -358,7 +359,7 @@ namespace Assets._Scripts._Mappings
                 return bias.headline;
             }
 
-            Debug.LogWarning($"Bias mapping not found for type: {key}");
+            LogManager.Warning($"Bias mapping not found for type: {key}");
             return key;
         }
 

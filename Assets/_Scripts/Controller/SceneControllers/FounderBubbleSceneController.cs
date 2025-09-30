@@ -6,6 +6,7 @@ using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.UIElements.FoundersBubble;
+using Assets._Scripts.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -603,7 +604,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             _novelId = VisualNovelNamesHelper.ToInt(VisualNovelNames.EinstiegsNovel);
             if (!_allKiteNovelsById.TryGetValue(_novelId, out VisualNovel currentNovel))
             {
-                Debug.LogError($"Novel mit ID {_novelId} nicht im Dictionary gefunden.");
+                LogManager.Error($"Novel mit ID {_novelId} nicht im Dictionary gefunden.");
                 return;
             }
             
@@ -757,7 +758,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             _novelId = VisualNovelNamesHelper.ToInt(visualNovel);
             if (!_allKiteNovelsById.TryGetValue(_novelId, out VisualNovel currentNovel))
             {
-                Debug.LogError($"Novel mit ID {_novelId} nicht im Dictionary gefunden.");
+                LogManager.Error($"Novel mit ID {_novelId} nicht im Dictionary gefunden.");
                 return;
             }
 
@@ -820,7 +821,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             if (!_allKiteNovelsById.TryGetValue(VisualNovelNamesHelper.ToInt(novelName), out VisualNovel visualNovelToDisplay))
             {
-                Debug.LogWarning($"Novel with name {novelName} (ID: {VisualNovelNamesHelper.ToInt(novelName)}) not found in dictionary.");
+                LogManager.Warning($"Novel with name {novelName} (ID: {VisualNovelNamesHelper.ToInt(novelName)}) not found in dictionary.");
                 return;
             }
 
@@ -853,7 +854,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             Transform[] children = burgerMenu.GetComponentsInChildren<Transform>();
             Transform content = children.FirstOrDefault(k => k.gameObject.name == "Content");
 
-            if (!content) Debug.LogError("Content Transform not found in burgerMenu. Cannot proceed with UI setup.");
+            if (!content) LogManager.Error("Content Transform not found in burgerMenu. Cannot proceed with UI setup.");
 
             return content;
         }

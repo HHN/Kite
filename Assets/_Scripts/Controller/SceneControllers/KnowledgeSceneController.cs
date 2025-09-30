@@ -6,6 +6,7 @@ using Assets._Scripts._Mappings;
 using Assets._Scripts.Biases;
 using Assets._Scripts.Managers;
 using Assets._Scripts.SceneManagement;
+using Assets._Scripts.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -68,10 +69,10 @@ namespace Assets._Scripts.Controller.SceneControllers
             AddButtonListeners();
 
             if (biasDetailsObject) _biasDetailsText = biasDetailsObject.GetComponentInChildren<TextMeshProUGUI>();
-            if (_biasDetailsText == null) Debug.LogWarning("Kein TextMeshProUGUI unter biasDetailsObject gefunden.");
+            if (_biasDetailsText == null) LogManager.Warning("Kein TextMeshProUGUI unter biasDetailsObject gefunden.");
             
             if (inputField) inputField.onValueChanged.AddListener(Search);
-            else Debug.LogError("InputField ist nicht zugewiesen.");
+            else LogManager.Error("InputField ist nicht zugewiesen.");
 
             FontSizeManager.Instance().UpdateAllTextComponents();
             StartCoroutine(RebuildLayout());

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Assets._Scripts.Utilities;
 using UnityEngine;
 
 namespace Assets._Scripts.Novel.VisualNovelFormatter
@@ -41,7 +42,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             // Check if the folder exists.
             if (!Directory.Exists(fullFolderPath))
             {
-                Debug.LogError("Keyword folder not found at: " + fullFolderPath);
+                LogManager.Error("Keyword folder not found at: " + fullFolderPath);
                 yield break;
             }
 

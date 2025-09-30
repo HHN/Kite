@@ -323,7 +323,7 @@ namespace Assets._Scripts
             }
             else
             {
-                Debug.LogError("TextToSpeech is not initialized.");
+                LogManager.Error("TextToSpeech is not initialized.");
             }
 
 #elif UNITY_IOS && !UNITY_EDITOR // iOS Implementation (native plugin).
@@ -445,7 +445,7 @@ namespace Assets._Scripts
                 }
                 else
                 {
-                    Debug.LogError("Error initializing TextToSpeech.");
+                    LogManager.Error("Error initializing TextToSpeech.");
                 }
             }
         }
@@ -460,11 +460,11 @@ namespace Assets._Scripts
 
             if (result == -2) // LANG_MISSING_DATA
             {
-                Debug.LogError("The selected language is not available (LANG_MISSING_DATA).");
+                LogManager.Error("The selected language is not available (LANG_MISSING_DATA).");
             }
             else if (result == -1) // LANG_NOT_SUPPORTED
             {
-                Debug.LogError("The selected language is not supported (LANG_NOT_SUPPORTED).");
+                LogManager.Error("The selected language is not supported (LANG_NOT_SUPPORTED).");
             }
         }
 
