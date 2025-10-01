@@ -35,7 +35,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.PrivacyPolicyScene);
+            BackStackManager.Instance.Push(SceneNames.PrivacyPolicyScene);
 
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout02);

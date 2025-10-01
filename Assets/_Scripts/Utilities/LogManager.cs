@@ -4,25 +4,25 @@ namespace Assets._Scripts.Utilities
 
     public static class LogManager
     {
-        public enum LogLevel { Info, Warning, Error }
+        private enum LogLevel { Info, Warning, Error }
 
-        public static LogLevel CurrentLevel = LogLevel.Info;
+        private static LogLevel _currentLevel = LogLevel.Info;
 
         public static void Info(string message, Object context = null)
         {
-            if (CurrentLevel <= LogLevel.Info)
+            if (_currentLevel <= LogLevel.Info)
                 Debug.Log(Format("[INFO]", message), context);
         }
 
         public static void Warning(string message, Object context = null)
         {
-            if (CurrentLevel <= LogLevel.Warning)
+            if (_currentLevel <= LogLevel.Warning)
                 Debug.LogWarning(Format("[WARN]", message), context);
         }
 
         public static void Error(string message, Object context = null)
         {
-            if (CurrentLevel <= LogLevel.Error)
+            if (_currentLevel <= LogLevel.Error)
                 Debug.LogError(Format("[ERROR]", message), context);
         }
 

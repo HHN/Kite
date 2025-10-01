@@ -16,12 +16,17 @@ namespace Assets._Scripts.Controller.SceneControllers
     /// </summary>
     public class BookmarkedNovelsSceneController : SceneController
     {
+        private const int ColumnsInEvenRow = 2;
+        private const int ColumnsInOddRow = 1;
+        private const float Sqrt3Half = 0.866025404f; // Sqrt(3) / 2
+        
         [SerializeField] private RectTransform visualNovelHolder;
         [SerializeField] private GameObject novelButtonPrefab;
 
         [SerializeField] private GameObject selectNovelSoundPrefab;
 
-        [Header("Layout")] [SerializeField] private int columns = 3;
+        [Header("Layout")] 
+        [SerializeField] private int columns = 3;
         [SerializeField, Range(0.6f, 1.5f)] private float horizontalSpacingMultiplier = 1f;
         [SerializeField, Range(0.6f, 1.5f)] private float verticalSpacingMultiplier = 1f;
 
@@ -38,10 +43,10 @@ namespace Assets._Scripts.Controller.SceneControllers
         public void Start()
         {
             // Add current scene to back stack for navigation
-            BackStackManager.Instance().Push(SceneNames.BookmarkedNovelsScene);
+            BackStackManager.Instance.Push(SceneNames.BookmarkedNovelsScene);
             
             ClearNovelHolder();
-            InitializePrefabSize();
+            CalculatePrefabDimensions();
 
             Dictionary<long, VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels().ToDictionary(n => n.id);
             List<long> favoriteIds = FavoritesManager.Instance().GetFavoritesIds();
@@ -63,10 +68,12 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Calculates and sets the width and height of the novel button prefab based on its RectTransform or LayoutElement values.
-        /// Logs an error if the prefab size cannot be determined.
+        /// Calculates the dimensions of the novel button prefab for proper layout and rendering.
+        /// Attempts to determine size using its RectTransform and validates the result.
+        /// If the size cannot be determined through RectTransform, fallback logic attempts to use additional layout data.
+        /// Logs an error if the dimensions cannot be determined.
         /// </summary>
-        private void InitializePrefabSize()
+        private void CalculatePrefabDimensions()
         {
             if (novelButtonPrefab == null)
             {
@@ -74,33 +81,67 @@ namespace Assets._Scripts.Controller.SceneControllers
                 return;
             }
 
+            TryGetSizeFromRectTransform();
+            
+            if (!ValidatePrefabSize())
+            {
+                TryGetSizeFromLayoutElement();
+            }
+
+            if (!ValidatePrefabSize())
+            {
+                LogManager.Error("Could not determine prefab size.");
+            }
+        }
+
+        /// <summary>
+        /// Attempts to retrieve the size dimensions (width and height) of the `novelButtonPrefab`
+        /// from its associated `RectTransform` component. Extracted values are assigned to the
+        /// `_prefabWidth` and `_prefabHeight` fields. If the `sizeDelta` dimensions are nonzero,
+        /// those values are used. Otherwise, the dimensions of the `Rect` are used.
+        /// </summary>
+        private void TryGetSizeFromRectTransform()
+        {
             RectTransform prefabRect = novelButtonPrefab.GetComponent<RectTransform>();
             if (prefabRect != null)
             {
                 _prefabWidth = prefabRect.sizeDelta.x > 0 ? prefabRect.sizeDelta.x : prefabRect.rect.width;
                 _prefabHeight = prefabRect.sizeDelta.y > 0 ? prefabRect.sizeDelta.y : prefabRect.rect.height;
             }
-
-            if (_prefabWidth <= 0 || _prefabHeight <= 0)
-            {
-                var le = novelButtonPrefab.GetComponent<LayoutElement>();
-                if (le != null)
-                {
-                    _prefabWidth = le.preferredWidth > 0 ? le.preferredWidth : _prefabWidth;
-                    _prefabHeight = le.preferredHeight > 0 ? le.preferredHeight : _prefabHeight;
-                }
-            }
-
-            if (_prefabWidth <= 0 || _prefabHeight <= 0)
-                LogManager.Error("Could not determine prefab size.");
         }
 
         /// <summary>
-        /// Creates and initializes novel buttons for the bookmarked novels scene based on the provided list of favorite IDs
-        /// and the complete collection of visual novels. Each button is configured to represent a specific novel.
+        /// Attempts to update the width and height of the prefab by retrieving preferred dimensions
+        /// from the LayoutElement component attached to the prefab. If the LayoutElement exists and
+        /// preferred dimensions are specified, these values are assigned to the prefab's dimensions.
         /// </summary>
-        /// <param name="favoriteIds">A list of IDs representing the user's bookmarked novels.</param>
-        /// <param name="allNovelsById">A dictionary mapping novel IDs to their corresponding visual novel objects.</param>
+        private void TryGetSizeFromLayoutElement()
+        {
+            var layoutElement = novelButtonPrefab.GetComponent<LayoutElement>();
+            if (layoutElement != null)
+            {
+                _prefabWidth = layoutElement.preferredWidth > 0 ? layoutElement.preferredWidth : _prefabWidth;
+                _prefabHeight = layoutElement.preferredHeight > 0 ? layoutElement.preferredHeight : _prefabHeight;
+            }
+        }
+
+        /// <summary>
+        /// Validates the dimensions of the prefab by checking if the width and height are both greater than zero.
+        /// </summary>
+        /// <returns>
+        /// Returns true if both width and height of the prefab are greater than zero, otherwise returns false.
+        /// </returns>
+        private bool ValidatePrefabSize()
+        {
+            return _prefabWidth > 0 && _prefabHeight > 0;
+        }
+
+        /// <summary>
+        /// Generates and initializes buttons for the favorite visual novels based on the provided lists of favorite IDs
+        /// and all available novels. Each button is tied to a novel and indexed for a proper UI arrangement.
+        /// </summary>
+        /// <param name="favoriteIds">A list of IDs representing the user's favorite visual novels.</param>
+        /// <param name="allNovelsById">A dictionary containing all available visual novels keyed by their unique IDs.</param>
         private void CreateNovelButtons(List<long> favoriteIds, Dictionary<long, VisualNovel> allNovelsById)
         {
             for (int i = 0; i < favoriteIds.Count; i++)
@@ -111,33 +152,75 @@ namespace Assets._Scripts.Controller.SceneControllers
                     continue;
                 }
 
-                GameObject go = Instantiate(novelButtonPrefab, visualNovelHolder, false);
-                RectTransform rt = go.GetComponent<RectTransform>();
-                rt.localScale = Vector3.one;
-
-                rt.anchoredPosition = GetHexPosition(i);
-                go.name = novel.isKiteNovel ? novel.designation : novel.title;
-
-                SetupButtonUI(go, novel);
+                CreateSingleNovelButton(novel, i);
             }
         }
 
         /// <summary>
-        /// Configures the UI components of a button representing a visual novel, including its display text, background color,
-        /// and click event for selecting the associated visual novel.
+        /// Creates a single visual novel button based on the provided visual novel data and its index.
+        /// This method initializes the button's position, scale, name, and visual representation.
         /// </summary>
-        /// <param name="go">The GameObject representing the button to be configured.</param>
-        /// <param name="novel">The VisualNovel object containing data to configure the button.</param>
+        /// <param name="novel">The visual novel information used to populate the button's details.</param>
+        /// <param name="index">The positional index of the button, used to calculate its placement.</param>
+        private void CreateSingleNovelButton(VisualNovel novel, int index)
+        {
+            GameObject buttonObject = Instantiate(novelButtonPrefab, visualNovelHolder, false);
+            RectTransform rectTransform = buttonObject.GetComponent<RectTransform>();
+            
+            rectTransform.localScale = Vector3.one;
+            rectTransform.anchoredPosition = GetHexPosition(index);
+            
+            buttonObject.name = novel.isKiteNovel ? novel.designation : novel.title;
+            SetupButtonUI(buttonObject, novel);
+        }
+
+        /// <summary>
+        /// Configures the UI and functionality of a button associated with a specific visual novel.
+        /// Sets the button's image, text, and click event handler based on the corresponding visual novel properties.
+        /// </summary>
+        /// <param name="go">The game object representing the button in the UI.</param>
+        /// <param name="novel">The visual novel associated with the button, providing necessary data for configuration.</param>
         private void SetupButtonUI(GameObject go, VisualNovel novel)
+        {
+            ConfigureButtonImage(go, novel);
+            ConfigureButtonText(go, novel);
+            ConfigureButtonClickHandler(go, novel);
+        }
+
+        /// <summary>
+        /// Configures the image of a button based on the properties of the provided visual novel.
+        /// Updates the button's color using the novel's predefined color attribute.
+        /// </summary>
+        /// <param name="go">The button game object whose image component is to be configured.</param>
+        /// <param name="novel">The visual novel object containing the color properties to apply to the button.</param>
+        private void ConfigureButtonImage(GameObject go, VisualNovel novel)
         {
             var image = go.GetComponent<Image>();
             if (image != null)
                 image.color = novel.novelColor;
+        }
 
+        /// <summary>
+        /// Updates the text component of the button to display information about the given visual novel,
+        /// such as its title or designation, based on whether the novel is categorized as a Kite novel.
+        /// </summary>
+        /// <param name="go">The game object representing the button that will be updated.</param>
+        /// <param name="novel">The visual novel whose details are to be displayed on the button.</param>
+        private void ConfigureButtonText(GameObject go, VisualNovel novel)
+        {
             var text = go.GetComponentInChildren<TextMeshProUGUI>();
             if (text != null)
                 text.text = novel.isKiteNovel ? novel.designation : novel.title;
+        }
 
+        /// <summary>
+        /// Configures the click handler for a button associated with a given visual novel,
+        /// ensuring the appropriate action is executed when the button is clicked.
+        /// </summary>
+        /// <param name="go">The GameObject representing the button to configure.</param>
+        /// <param name="novel">The VisualNovel associated with the button that will be passed to the click handler.</param>
+        private void ConfigureButtonClickHandler(GameObject go, VisualNovel novel)
+        {
             var button = go.GetComponent<Button>();
             if (button != null)
             {
@@ -147,49 +230,82 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Calculates the position of a visual novel button in a hexagonal grid layout based on its index.
-        /// This method determines the row and column for the button, calculates its X and Y coordinates,
-        /// and returns a 3D position vector for placement in the scene.
+        /// Calculates the hexagonal grid position based on the given index, taking into account
+        /// the horizontal and vertical spacing, as well as the hexagonal row and column alignment.
         /// </summary>
-        /// <param name="index">The zero-based index of the button in the list of visual novels.</param>
-        /// <returns>A Vector3 representing the position of the button in the hexagonal grid layout.</returns>
+        /// <param name="index">The index of the hexagonal grid element for which the position is being calculated.</param>
+        /// <returns>The calculated position as a <see cref="Vector3"/>, representing the local position in the grid.</returns>
         private Vector3 GetHexPosition(int index)
         {
-            float xSpacing = _prefabWidth * Mathf.Sqrt(3) * 0.5f + horizontalOffset;
-            float ySpacing = _prefabHeight * 0.5f + verticalOffset;
+            float horizontalSpacing = _prefabWidth * Sqrt3Half + horizontalOffset;
+            float verticalSpacing = _prefabHeight * 0.5f + verticalOffset;
+            
+            var (row, column) = CalculateHexRowAndColumn(index);
+            
+            float x = CalculateHexXPosition(row, column, horizontalSpacing);
+            float y = -row * verticalSpacing;
+            
+            return new Vector3(x, y, 0f);
+        }
 
-            int patternIndex = index;
+        /// <summary>
+        /// Calculates the hexagonal grid row and column indices based on the provided flat index.
+        /// This method determines the position of a visual element in a hexagonal grid by iterating through rows until the
+        /// specified index is located within a particular row.
+        /// </summary>
+        /// <param name="index">The flat index representing the position in a sequential collection of grid elements.</param>
+        /// <returns>A tuple containing the calculated row and column indices in the hexagonal grid.</returns>
+        private (int row, int column) CalculateHexRowAndColumn(int index)
+        {
+            int remainingIndex = index;
             int row = 0;
-            int col = 0;
-
+            int column;
+            
             while (true)
             {
-                int rowCount = (row % 2 == 0) ? 2 : 1;
-                if (patternIndex < rowCount)
+                int columnsInCurrentRow = GetColumnsInRow(row);
+                
+                if (remainingIndex < columnsInCurrentRow)
                 {
-                    col = patternIndex;
+                    column = remainingIndex;
                     break;
                 }
-
-                patternIndex -= rowCount;
+                
+                remainingIndex -= columnsInCurrentRow;
                 row++;
             }
+            
+            return (row, column);
+        }
 
-            float x = 0;
-            int rowCountThis = (row % 2 == 0) ? 2 : 1;
+        /// <summary>
+        /// Determines the number of columns in a given row based on whether the row is odd or even.
+        /// </summary>
+        /// <param name="row">The row index for which the number of columns is to be determined.</param>
+        /// <returns>The number of columns in the specified row. Returns COLUMNS_IN_EVEN_ROW for even rows and COLUMNS_IN_ODD_ROW for odd rows.</returns>
+        private int GetColumnsInRow(int row)
+        {
+            bool isEvenRow = row % 2 == 0;
+            return isEvenRow ? ColumnsInEvenRow : ColumnsInOddRow;
+        }
 
-            if (rowCountThis == 2)
+        /// <summary>
+        /// Calculates the horizontal X position for a hexagonal grid layout based on the given row, column, and horizontal spacing.
+        /// </summary>
+        /// <param name="row">The row of the hexagonal grid where the element is located.</param>
+        /// <param name="column">The column within the current row of the hexagonal grid.</param>
+        /// <param name="horizontalSpacing">The spacing between columns in the hexagonal grid.</param>
+        /// <returns>Returns the calculated horizontal X position of the hexagonal cell.</returns>
+        private float CalculateHexXPosition(int row, int column, float horizontalSpacing)
+        {
+            int columnsInCurrentRow = GetColumnsInRow(row);
+
+            if (columnsInCurrentRow == ColumnsInEvenRow)
             {
-                x = col == 0 ? -xSpacing : xSpacing;
+                return column == 0 ? -horizontalSpacing : horizontalSpacing;
             }
-            else
-            {
-                x = 0;
-            }
-
-            float y = -row * ySpacing;
-
-            return new Vector3(x, y, 0f);
+            
+            return 0f;
         }
 
         /// <summary>
@@ -200,20 +316,33 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void AdjustScrollHeight(int count)
         {
             float size = _prefabWidth / 2f;
-            GetSpacing(size, out float _, out float ySpacing);
+            GetSpacing(size, out float ySpacing);
+            
+            int totalRows = CalculateTotalRows(count);
+            float requiredHeight = totalRows * ySpacing;
+            
+            visualNovelHolder.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, requiredHeight);
+        }
 
+        /// <summary>
+        /// Calculates the total number of rows required to display a given number of items,
+        /// based on the number of columns that can fit in each row.
+        /// </summary>
+        /// <param name="count">The total number of items to be displayed.</param>
+        /// <returns>The total number of rows required to display all items.</returns>
+        private int CalculateTotalRows(int count)
+        {
             int totalRows = 0;
-            int remaining = count;
-            while (remaining > 0)
+            int remainingItems = count;
+            
+            while (remainingItems > 0)
             {
                 totalRows++;
-                remaining -= (totalRows % 2 == 1) ? 2 : 1;
+                int columnsInCurrentRow = GetColumnsInRow(totalRows - 1);
+                remainingItems -= columnsInCurrentRow;
             }
-
-            float height = (totalRows - 1) * ySpacing + _prefabHeight;
-
-            var le = visualNovelHolder.GetComponent<LayoutElement>();
-            if (le != null) le.preferredHeight = height;
+            
+            return totalRows;
         }
 
         /// <summary>
@@ -221,11 +350,9 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// and the spacing multipliers defined for horizontal and vertical spacing.
         /// </summary>
         /// <param name="size">The size of the element used to calculate spacing.</param>
-        /// <param name="xSpacing">The calculated horizontal spacing for the elements.</param>
         /// <param name="ySpacing">The calculated vertical spacing for the elements.</param>
-        private void GetSpacing(float size, out float xSpacing, out float ySpacing)
+        private void GetSpacing(float size, out float ySpacing)
         {
-            xSpacing = size * Mathf.Sqrt(3) * horizontalSpacingMultiplier;
             ySpacing = size * 1.5f * verticalSpacingMultiplier;
         }
 

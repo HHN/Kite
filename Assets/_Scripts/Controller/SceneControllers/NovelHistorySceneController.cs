@@ -63,7 +63,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// <seealso cref="NovelHistoryEntryGuiElement"/>
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.NovelHistoryScene);
+            BackStackManager.Instance.Push(SceneNames.NovelHistoryScene);
 
             if (copyNotificationContainer != null) InitCopyNotification();
 

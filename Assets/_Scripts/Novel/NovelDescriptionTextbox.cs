@@ -1,4 +1,3 @@
-using System.Collections;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
@@ -16,10 +15,11 @@ namespace Assets._Scripts.Novel
     {
         private const string BookmarkedText = "GEMERKT";
         private const string UnbookmarkedText = "MERKEN";
+        private const int IntroNovelId = 13;
+
 
         [Header("UI Elements")] 
         [SerializeField] private Image image;
-
         [SerializeField] private GameObject smallHead;
         [SerializeField] private TextMeshProUGUI text;
         [SerializeField] private Button playButton;
@@ -31,42 +31,37 @@ namespace Assets._Scripts.Novel
         [SerializeField] private Sprite unBookmarkSprite;
         [SerializeField] private GameObject selectNovelSoundPrefab;
 
-        [Header("Visual Novel Data")] [SerializeField]
-        private VisualNovel visualNovelToDisplay;
-
+        [Header("Visual Novel Data")] 
+        [SerializeField] private VisualNovel visualNovelToDisplay;
         [SerializeField] private VisualNovelNames visualNovelName;
 
-        [Header("Appearance")] [SerializeField]
-        private Color colorOfText;
+        [Header("Appearance")] 
+        [SerializeField] private Color colorOfText;
 
         /// <summary>
-        /// Initializes the NovelDescriptionTextbox by setting up button click listeners.
+        /// Initializes the NovelDescriptionTextbox by setting up a button click listener.
         /// </summary>
         private void Start()
         {
             playButton.onClick.AddListener(OnPlayButton);
-            if (bookMarkButton != null) bookMarkButton.onClick.AddListener(OnBookmarkButton);
+            if (HasBookmarkButton()) bookMarkButton.onClick.AddListener(OnBookmarkButton);
         }
 
         /// <summary>
-        /// Initializes the bookmark button based on whether the Visual Novel is marked as favorite.
+        /// Initializes the bookmark button based on whether the Visual Novel is marked as a favorite.
         /// </summary>
-        /// <param name="isFavorite">Indicates whether the Visual Novel is marked as favorite.</param>
+        /// <param name="isFavorite">Indicates whether the Visual Novel is marked as a favorite.</param>
         public void InitializeBookMarkButton(bool isFavorite)
         {
             playText.color = colorOfText;
 
             if (isFavorite)
             {
-                bookmarkText.text = BookmarkedText;
-                bookmarkImage.sprite = bookmarkSprite;
-                bookmarkText.color = Color.white;
+                SetBookmarkedAppearance();
             }
             else
             {
-                bookmarkText.text = UnbookmarkedText;
-                bookmarkImage.sprite = unBookmarkSprite;
-                bookmarkText.color = colorOfText;
+                SetUnbookmarkedAppearance();
             }
         }
 
@@ -107,7 +102,7 @@ namespace Assets._Scripts.Novel
         {
             visualNovelToDisplay = visualNovel;
 
-            if (bookMarkButton != null) InitializeBookMarkButton(FavoritesManager.Instance().IsFavorite(visualNovel));
+            if (HasBookmarkButton()) InitializeBookMarkButton(FavoritesManager.Instance().IsFavorite(visualNovel));
         }
 
         /// <summary>
@@ -115,18 +110,9 @@ namespace Assets._Scripts.Novel
         /// </summary>
         private void OnPlayButton()
         {
-            if (visualNovelToDisplay.id == 13)
-            {
-                GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
-            }
-
-            PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-            PlayManager.Instance().SetColorOfVisualNovelToPlay(visualNovelToDisplay.novelColor);
-            PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
-            PlayManager.Instance().SetDesignationOfNovelToPlay(visualNovelToDisplay.designation);
-            GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
-            DontDestroyOnLoad(buttonSound);
-            
+            HandleIntroNovelSpecialCase();
+            ConfigurePlayManager();
+            PlaySelectNovelSound();
             SceneLoader.LoadPlayNovelScene();
         }
 
@@ -135,25 +121,27 @@ namespace Assets._Scripts.Novel
         /// </summary>
         private void OnBookmarkButton()
         {
-            StartCoroutine(MarkAsFavorite(visualNovelToDisplay));
+            ToggleFavorite(visualNovelToDisplay);
         }
 
         /// <summary>
         /// Toggles marking the Visual Novel as favorite.
         /// </summary>
         /// <param name="visualNovel">The Visual Novel.</param>
-        private IEnumerator MarkAsFavorite(VisualNovel visualNovel)
+        private void ToggleFavorite(VisualNovel visualNovel)
         {
-            if (FavoritesManager.Instance().IsFavorite(visualNovel))
+            bool isFavorite = FavoritesManager.Instance().IsFavorite(visualNovel);
+            
+            if (isFavorite)
             {
                 FavoritesManager.Instance().UnmarkAsFavorite(visualNovel);
-                InitializeBookMarkButton(false);
-                yield break;
             }
-
-            FavoritesManager.Instance().MarkAsFavorite(visualNovel);
-            InitializeBookMarkButton(true);
-            yield return null;
+            else
+            {
+                FavoritesManager.Instance().MarkAsFavorite(visualNovel);
+            }
+            
+            InitializeBookMarkButton(!isFavorite);
         }
 
         /// <summary>
@@ -163,18 +151,21 @@ namespace Assets._Scripts.Novel
         public void SetButtonsActive(bool active)
         {
             playButton.gameObject.SetActive(active);
-            if (bookMarkButton != null) bookMarkButton.gameObject.SetActive(active);
+            if (HasBookmarkButton()) bookMarkButton.gameObject.SetActive(active);
         }
 
+        /// <summary>
+        /// Deactivates the bookmark button if it is initialized and active.
+        /// </summary>
         public void DeactivatedBookmarkButton()
         {
-            bookMarkButton.gameObject.SetActive(false);
+            if (HasBookmarkButton()) bookMarkButton.gameObject.SetActive(false);
         }
 
         /// <summary>
         /// Sets the displayed head.
         /// </summary>
-        public void SetHead()
+        public void ActivateHeadIcon()
         {
             smallHead.SetActive(true);
         }
@@ -185,6 +176,70 @@ namespace Assets._Scripts.Novel
         public void UpdateSize()
         {
             LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
+        }
+
+        /// <summary>
+        /// Determines whether the bookmark button exists and is initialized.
+        /// </summary>
+        /// <returns>True if a bookmark button is present, otherwise false.</returns>
+        private bool HasBookmarkButton()
+        {
+            return bookMarkButton != null;
+        }
+
+        /// <summary>
+        /// Updates the appearance of the bookmark to reflect a "bookmarked" state
+        /// by modifying the text, sprite, and color.
+        /// </summary>
+        private void SetBookmarkedAppearance()
+        {
+            bookmarkText.text = BookmarkedText;
+            bookmarkImage.sprite = bookmarkSprite;
+            bookmarkText.color = Color.white;
+        }
+
+        /// <summary>
+        /// Configures the appearance of the bookmark elements to indicate an unbookmarked state.
+        /// Updates the bookmark text, image, and text color accordingly.
+        /// </summary>
+        private void SetUnbookmarkedAppearance()
+        {
+            bookmarkText.text = UnbookmarkedText;
+            bookmarkImage.sprite = unBookmarkSprite;
+            bookmarkText.color = colorOfText;
+        }
+
+        /// <summary>
+        /// Handles a special case for the intro novel by resetting the corresponding flag in the GameManager.
+        /// </summary>
+        private void HandleIntroNovelSpecialCase()
+        {
+            if (visualNovelToDisplay.id == IntroNovelId)
+            {
+                GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
+            }
+        }
+
+        /// <summary>
+        /// Configures the PlayManager with the information of the currently selected visual novel.
+        /// This includes setting the visual novel to play, its color, display name, and designation.
+        /// </summary>
+        private void ConfigurePlayManager()
+        {
+            var playManager = PlayManager.Instance();
+            playManager.SetVisualNovelToPlay(visualNovelToDisplay);
+            playManager.SetColorOfVisualNovelToPlay(visualNovelToDisplay.novelColor);
+            playManager.SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+            playManager.SetDesignationOfNovelToPlay(visualNovelToDisplay.designation);
+        }
+
+        /// <summary>
+        /// Plays a sound effect indicating selection of a novel in the novel description textbox.
+        /// </summary>
+        private void PlaySelectNovelSound()
+        {
+            GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
+            DontDestroyOnLoad(buttonSound);
         }
     }
 }

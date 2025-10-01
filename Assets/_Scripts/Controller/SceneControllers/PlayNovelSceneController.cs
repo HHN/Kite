@@ -513,10 +513,9 @@ namespace Assets._Scripts.Controller.SceneControllers
                 return;
             }
 
-            BackStackManager.Instance().Push(SceneNames.PlayNovelScene);
+            BackStackManager.Instance.Push(SceneNames.PlayNovelScene);
             StartCoroutine(PlayNextEvent());
         }
-
 
         /// <summary>
         /// Executes the next event in the visual novel sequence by managing the event flow,
@@ -693,7 +692,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// <param name="novelEvent">The visual novel event containing information about the sound to play and related behaviors such as waiting for user confirmation.</param>
         private void HandlePlaySoundEvent(VisualNovelEvent novelEvent)
         {
-            // Einmalig die gesamte clips-Liste dumpen, sobald das erste Sound-Event kommt
             if (!_clipsDumpedOnce)
             {
                 DumpClips("HandlePlaySoundEvent-enter");

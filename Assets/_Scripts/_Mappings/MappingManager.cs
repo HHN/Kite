@@ -18,7 +18,7 @@ namespace Assets._Scripts._Mappings
     {
         private static MappingManager _instance;
         
-        public static Dictionary<string, Bias> biases = new(StringComparer.OrdinalIgnoreCase);
+        public static readonly Dictionary<string, Bias> BIASES = new(StringComparer.OrdinalIgnoreCase);
 
         // Mapping-Files
         private static readonly string MappingFileFaceExpression;
@@ -189,7 +189,7 @@ namespace Assets._Scripts._Mappings
 
             var wrapper = JsonUtility.FromJson<BiasJsonWrapper>(json.text);
 
-            biases.Clear();
+            BIASES.Clear();
 
             foreach (var item in wrapper.items)
             {
@@ -202,7 +202,7 @@ namespace Assets._Scripts._Mappings
                 string key = ExtractBiasKey(item.type);
                 if (!string.IsNullOrEmpty(key))
                 {
-                    biases[key] = new Bias
+                    BIASES[key] = new Bias
                     {
                         type = key,
                         category = item.category,
@@ -354,7 +354,7 @@ namespace Assets._Scripts._Mappings
             if (string.IsNullOrWhiteSpace(key))
                 return key;
 
-            if (biases.TryGetValue(key, out Bias bias))
+            if (BIASES.TryGetValue(key, out Bias bias))
             {
                 return bias.headline;
             }
@@ -372,7 +372,7 @@ namespace Assets._Scripts._Mappings
         /// </returns>
         public static Dictionary<string, Bias> GetAllBiases()
         {
-            return biases;
+            return BIASES;
         }
 
         /// <summary>
@@ -386,7 +386,7 @@ namespace Assets._Scripts._Mappings
             if (string.IsNullOrWhiteSpace(faceExpression)) return -1;
 
             var key = faceExpression.Trim();
-            return _faceExpressionMapping.TryGetValue(key, out int id) ? id : -1;
+            return _faceExpressionMapping.GetValueOrDefault(key, -1);
         }
 
         /// <summary>
@@ -401,7 +401,7 @@ namespace Assets._Scripts._Mappings
             if (string.IsNullOrWhiteSpace(character)) return -1;
 
             var key = character.Trim();
-            return _characterMapping.TryGetValue(key, out int id) ? id : -1;
+            return _characterMapping.GetValueOrDefault(key, -1);
         }
 
         /// <summary>
@@ -412,17 +412,6 @@ namespace Assets._Scripts._Mappings
         public static string MapCharacterToString(int character)
         {
             return character == -1 ? "" : _characterMapping.FirstOrDefault(x => x.Value == character).Key;
-        }
-
-        /// <summary>
-        /// Case-insensitive mapping of sound clip name → int index (from StreamingAssets/SoundMapping.txt).
-        /// </summary>
-        public static int MapSound(string clipName)
-        {
-            if (string.IsNullOrWhiteSpace(clipName)) return -1;
-
-            var key = clipName.Trim();
-            return _soundMapping.TryGetValue(key, out int id) ? id : -1;
         }
     }
 }

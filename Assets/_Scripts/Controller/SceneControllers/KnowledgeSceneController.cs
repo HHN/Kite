@@ -60,9 +60,9 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         public void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.KnowledgeScene);
+            BackStackManager.Instance.Push(SceneNames.KnowledgeScene);
 
-            _biases = MappingManager.biases;
+            _biases = MappingManager.BIASES;
             InitializeCategoryButtons();
 
             InitializeButtonActions();

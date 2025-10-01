@@ -76,7 +76,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void Start()
         {
             InitializeManagersAndState();
-
             SetupMainNovelTiles();
             
             Transform content = GetBurgerMenuContentTransform();
@@ -130,7 +129,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void InitializeManagersAndState()
         {
-            BackStackManager.Instance().Push(SceneNames.FoundersBubbleScene);
+            BackStackManager.Instance.Push(SceneNames.FoundersBubbleScene);
             DestroyPlayNovelSceneController();
             FooterActivationManager.Instance().SetFooterActivated(true);
             currentlyOpenedVisualNovelPopup = VisualNovelNames.None;
@@ -777,7 +776,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             if (!isNovelContainedInVersion)
             {
                 novelDescriptionTextbox.gameObject.SetActive(true);
-                novelDescriptionTextbox.SetHead();
+                novelDescriptionTextbox.ActivateHeadIcon();
                 novelDescriptionTextbox.SetVisualNovelName(visualNovel);
                 novelDescriptionTextbox.SetText("Leider ist diese Novel nicht in der Testversion enthalten. Bitte spiele eine andere Novel.");
                 novelDescriptionTextbox.SetColorOfImage(currentNovel.novelColor);
@@ -788,7 +787,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
 
             novelDescriptionTextbox.gameObject.SetActive(true);
-            novelDescriptionTextbox.SetHead();
+            novelDescriptionTextbox.ActivateHeadIcon();
             novelDescriptionTextbox.SetVisualNovel(currentNovel);
             novelDescriptionTextbox.SetVisualNovelName(visualNovel);
             novelDescriptionTextbox.SetText(currentNovel.description);

@@ -71,7 +71,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             InitializeUI();
             HookEvents();
             
-            BackStackManager.Instance().Push(SceneNames.SettingsScene);
+            BackStackManager.Instance.Push(SceneNames.SettingsScene);
         }
 
         /// <summary>

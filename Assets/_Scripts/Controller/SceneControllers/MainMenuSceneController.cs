@@ -87,7 +87,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             DontDestroyOnLoad(novelLoader);
 
             PlayerDataManager.Instance().LoadAllPlayerPrefs();
-            BackStackManager.Instance().Clear();
+            BackStackManager.Instance.Clear();
         }
 
         /// <summary>

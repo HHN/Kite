@@ -30,7 +30,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </remarks>
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.ResourcesScene);
+            BackStackManager.Instance.Push(SceneNames.ResourcesScene);
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
 
             bgaButton.onClick.AddListener(OnBgaButton);

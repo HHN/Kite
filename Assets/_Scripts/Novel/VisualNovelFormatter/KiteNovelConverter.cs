@@ -82,7 +82,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// </summary>
         public static List<VisualNovelEvent> ConvertTextDocumentIntoEventList(string tweeFile, KiteNovelMetaData metaData)
         {
-            LogManager.Info("Convert Text Document Into Event List...");
             List<VisualNovelEvent> eventList = new List<VisualNovelEvent>();
             string startLabel = TweeProcessor.GetStartLabelFromTweeFile(tweeFile);
             InitializeKiteNovelEventList(metaData, eventList, startLabel);
@@ -95,23 +94,17 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 List<NovelKeywordModel> keywordModels = NovelKeywordParser.ParseKeywordsFromFile(keywords, metaData);
                 
                 string id = passage.Label;
-                string nextId = "";
 
                 switch (keywordModels.Count)
                 {
                     case > 1:
                     {
-                        if (passage.Label.Contains("Neutral"))
-                        {
-                            LogManager.Info($"passage: {passage}");
-                        }
-                        
                         string targetString = "";
                         int messageIndex = 0;
 
                         for (int i = 0; i < keywordModels.Count; i++)
                         {
-                            string currentMessage = "";
+                            string currentMessage;
                             if (message.Count == 0)
                             {
                                 currentMessage = "";
@@ -138,7 +131,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                              if (i != keywordModels.Count - 1)
                             {
                                 createdEvent.id = id; 
-                                nextId = id + "" + i;
+                                var nextId = id + "" + i;
                                 createdEvent.nextId = nextId;
                                 id = createdEvent.nextId;
                             }
@@ -159,13 +152,13 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                                 HandleDialogueOptionEvent(passage, eventList, createdEvent);
                             }
 
-                            // If the event is a dialogue option (eventType 4), increment the message index.
+                            // If the event is a dialogue option (eventType 4), increase the message index.
                             if (createdEvent != null && createdEvent.eventType == 4)
                             {
                                 messageIndex++;
                             }
 
-                            // Check if the event creates a loop, and adjust if necessary.
+                            // Check if the event creates a loop and adjust if necessary.
                             HandleLoop(createdEvent, startLabel, eventList);
                         }
 
@@ -175,7 +168,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                     {
                         var createdEvent = CreateVisualNovelEventFromKeyword(passage, message.Count == 0 ? "" : message[0], keywordModels[0], eventList);
 
-                        // Check if the event creates a loop, and adjust if necessary.
+                        // Check if the event creates a loop and adjust if necessary.
                         HandleLoop(createdEvent, startLabel, eventList);
 
                         // If dialogue options are present, process them.
@@ -244,7 +237,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         }
 
         /// <summary>
-        /// Initializes the event list with start values (e.g. initial location and character join events)
+        /// Initializes the event list with start values (e.g., initial location and character join events)
         /// if defined in the metadata.
         /// </summary>
         private static void InitializeKiteNovelEventList(KiteNovelMetaData metaData, List<VisualNovelEvent> eventList, string startLabel)

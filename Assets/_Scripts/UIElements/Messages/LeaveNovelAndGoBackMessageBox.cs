@@ -187,7 +187,7 @@ namespace Assets._Scripts.UIElements.Messages
             if (lastScene == SceneNames.PlayInstructionScene)
             {
                 SceneLoader.LoadScene(SceneNames.FoundersBubbleScene);
-                BackStackManager.Instance().Pop(); // Remove the instruction scene from the back stack
+                BackStackManager.Instance.Pop(); // Remove the instruction scene from the back stack
                 return;
             }
 

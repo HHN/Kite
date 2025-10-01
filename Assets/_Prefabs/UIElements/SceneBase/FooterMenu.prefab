@@ -1519,6 +1519,33 @@ MonoBehaviour:
   linkTextElement: {fileID: 963965268963135709}
   knowledgeTextElement: {fileID: 527937767503137556}
   currentScene: 
+  footerButtons:
+  - button: {fileID: 3423122959912270846}
+    textElement: {fileID: 1873256215574932930}
+    activeSprite: {fileID: 21300000, guid: b0239afeaf38ae546b4a1cd5ac8f9dfe, type: 3}
+    inactiveSprite: {fileID: 21300000, guid: aef1a32da9f3b5e4f8c1b849fd60bc41, type: 3}
+    sceneName: FoundersBubbleScene
+  - button: {fileID: 2370946507929020347}
+    textElement: {fileID: 851731528515431454}
+    activeSprite: {fileID: 21300000, guid: 679ce18ee81a171499a533346254d0b5, type: 3}
+    inactiveSprite: {fileID: 21300000, guid: eaa7bca3b28ddca42bec20881f635e5b, type: 3}
+    sceneName: NovelHistoryScene
+  - button: {fileID: 717479862477951272}
+    textElement: {fileID: 5664599468635809248}
+    activeSprite: {fileID: 21300000, guid: c73c4d883b88391429b4313c14ebee2b, type: 3}
+    inactiveSprite: {fileID: 21300000, guid: 36389605bb864d9429b102a1ad0546f6, type: 3}
+    sceneName: BookmarkedNovelsScene
+  - button: {fileID: 7505476659733948298}
+    textElement: {fileID: 963965268963135709}
+    activeSprite: {fileID: 21300000, guid: 0ef111b6316c55d4fad8b82e6fd73319, type: 3}
+    inactiveSprite: {fileID: 21300000, guid: 3cfaad441babc024cbcf2891443ccaae, type: 3}
+    sceneName: ResourcesScene
+  - button: {fileID: 1170644873795392631}
+    textElement: {fileID: 527937767503137556}
+    activeSprite: {fileID: 21300000, guid: 44177dbe87ae71b49aa75608635a6814, type: 3}
+    inactiveSprite: {fileID: 21300000, guid: bff1a9320e8f3a84386e27784ac0d811, type: 3}
+    sceneName: KnowledgeScene
+  hexColor: '#B6BBC0'
 --- !u!1 &8278472172511674010
 GameObject:
   m_ObjectHideFlags: 0

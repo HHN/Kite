@@ -47,7 +47,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </remarks>
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.PlayInstructionScene);
+            BackStackManager.Instance.Push(SceneNames.PlayInstructionScene);
             
             backgroundColor = PlayManager.Instance().GetColorOfVisualNovelToPlay();
             
