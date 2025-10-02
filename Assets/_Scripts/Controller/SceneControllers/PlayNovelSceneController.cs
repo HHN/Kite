@@ -129,7 +129,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         private Coroutine _timerCoroutine;
         private bool _typingWasSkipped;
 
-        // Character Expressions
         public Dictionary<int, int> CharacterExpressions { get; } = new();
         public VisualNovel NovelToPlay => novelToPlay;
         public List<string> PlayThroughHistory => playThroughHistory;
@@ -282,14 +281,30 @@ namespace Assets._Scripts.Controller.SceneControllers
             var missing = new List<string>();
             int loaded = 0;
 
+            var loadOperations = new List<ResourceRequest>();
+            var loadPairs = new List<(int index, string clipName)>();
+    
             foreach (var (clipName, index) in pairs)
             {
-                string resourcePath = "_AudioResources/" + clipName; // Pfad relativ zu Resources/
+                string resourcePath = "_AudioResources/" + clipName;
+                ResourceRequest request = Resources.LoadAsync<AudioClip>(resourcePath);
+                loadOperations.Add(request);
+                loadPairs.Add((index, clipName));
+            }
 
-                AudioClip clip = Resources.Load<AudioClip>(resourcePath);
+            while (loadOperations.Any(op => !op.isDone))
+            {
+                yield return null;
+            }
+
+            for (int i = 0; i < loadOperations.Count; i++)
+            {
+                var clip = loadOperations[i].asset as AudioClip;
+                var (index, clipName) = loadPairs[i];
+        
                 if (clip == null)
                 {
-                    LogManager.Warning($"[AudioLoad] Resources.Load konnte '{resourcePath}' nicht finden.");
+                    LogManager.Warning($"[AudioLoad] Resources.LoadAsync konnte '{clipName}' nicht finden.");
                     missing.Add($"{clipName}.wav");
                     continue;
                 }
@@ -345,12 +360,14 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void InitializeCharacterToPrefabMap()
         {
-            _characterToPrefabMap = new Dictionary<string, GameObject>();
+            _characterToPrefabMap = new Dictionary<string, GameObject>(novelVisualMappings.Count, StringComparer.OrdinalIgnoreCase);
+
             foreach (var entry in novelVisualMappings)
             {
-                if (!_characterToPrefabMap.ContainsKey(entry.characterName))
+                if (!string.IsNullOrEmpty(entry.characterName) && entry.prefab != null)
                 {
-                    _characterToPrefabMap.Add(entry.characterName, entry.prefab);
+                    // TryAdd vermeidet doppelte Contains-Prüfung
+                    _characterToPrefabMap.TryAdd(entry.characterName, entry.prefab);
                 }
             }
         }
@@ -528,13 +545,11 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// event handling within the visual novel sequence.</returns>
         private IEnumerator PlayNextEvent()
         {
-            // Stop if paused
             if (isPaused) yield break;
             
             if (TextToSpeechManager.Instance.IsTextToSpeechActivated()) yield return WaitForSpeechToFinish();
 
             HandleEventPreparation();
-
             eventHistory.Add(nextEventToPlay);
 
             VisualNovelEventType type = VisualNovelEventTypeHelper.ValueOf(nextEventToPlay.eventType);
@@ -625,6 +640,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                     HandleCalculateVariableFromBooleanExpressionEvent(nextEventToPlay);
                     break;
                 }
+                case VisualNovelEventType.None:
                 default:
                 {
                     string nextEventID = nextEventToPlay.nextId;
