@@ -11,14 +11,14 @@ namespace Assets._Scripts.UIElements.Props
     /// It implements the <see cref="IDecorationInteraction"/> interface, allowing it to be
     /// triggered as part of character interactions or other UI events.
     /// </summary>
-    public class Lamp : MonoBehaviour, IDecorationInteraction
+    public class LampInteraction : MonoBehaviour, IDecorationInteraction
     {
         [SerializeField] private AudioClip soundOn;
         [SerializeField] private AudioClip soundOff;
         [SerializeField] private Sprite lampOn;
         [SerializeField] private Sprite lampOff;
         
-        private bool _decoLampeStatus = false;
+        private bool _decoLampeStatus;
 
         /// <summary>
         /// Toggles the lamp's state (on/off), plays the corresponding sound, and updates its sprite.
@@ -29,7 +29,7 @@ namespace Assets._Scripts.UIElements.Props
         public IEnumerator PlayInteraction(RectTransform container)
         {
             AudioClip clip = _decoLampeStatus ? soundOn : soundOff;
-            if (!TextToSpeechManager.Instance.IsTextToSpeechActivated())
+            if (!TextToSpeechManager.Instance.IsTextToSpeechActivated() && clip)
             {
                 GlobalVolumeManager.Instance.PlaySound(clip);
             }

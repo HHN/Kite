@@ -48,18 +48,11 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private GameObject conversationViewport;
         [SerializeField] private Button closeButton;
         [SerializeField] private Button legalInformationButton;
-        [SerializeField] private TextMeshProUGUI novelName;
         [SerializeField] private ConversationContentGuiController conversationContent;
         [SerializeField] public Button confirmArea;
         [SerializeField] public Button confirmArea2;
         [SerializeField] private ChatScrollView chatScroll;
         [SerializeField] private ImageScrollView imageScroll;
-        [SerializeField] private GameObject backgroundBlur;
-        [SerializeField] private GameObject imageAreaBlur;
-        [SerializeField] private GameObject screenContentBlur;
-        [SerializeField] private GameObject backgroundColor;
-        [SerializeField] private GameObject imageAreaColor;
-        [SerializeField] private GameObject screenContentColor;
         [SerializeField] private GameObject headerImage;
 
         [Header("Novel-Visuals und Prefabs")] 
@@ -67,9 +60,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private List<CharacterVisualEntry> novelVisualMappings = new();
         [SerializeField] private GameObject novelImageContainer;
         [SerializeField] private GameObject backgroundContainer;
-        [SerializeField] private GameObject deskContainer;
-        [SerializeField] private GameObject decoDeskContainer;
-        [SerializeField] private GameObject decoBackgroundContainer;
         [SerializeField] private GameObject[] backgroundPrefab;
         [SerializeField] private GameObject[] deskPrefab;
         [SerializeField] private GameObject[] decoDeskPrefab;
@@ -78,7 +68,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private GameObject currentDesk;
         [SerializeField] private GameObject currentDecoDesk;
         [SerializeField] private GameObject currentDecoBackground;
-        [SerializeField] private GameObject characterContainer;
         [SerializeField] private GameObject[] novelAnimations;
         [SerializeField] private GameObject viewPortOfImages;
         [SerializeField] private GameObject currentAnimation;
@@ -342,8 +331,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             novelToPlay.ClearGlobalVariables();
             novelToPlay.feedback = string.Empty;
             novelToPlay.playedPath = string.Empty;
-
-            novelName.text = novelToPlay.title;
 
             if (novelToPlay.novelEvents.Count <= 0) return;
 

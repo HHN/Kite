@@ -11,7 +11,7 @@ namespace Assets._Scripts.UIElements.Props
     /// It implements the <see cref="IDecorationInteraction"/> interface, allowing it to be
     /// triggered as part of character interactions or other UI events.
     /// </summary>
-    public class Mug : MonoBehaviour, IDecorationInteraction
+    public class MugInteraction : MonoBehaviour, IDecorationInteraction
     {
         [SerializeField] private AudioClip sound;
         [SerializeField] private Sprite[] animationFrames;
@@ -24,45 +24,33 @@ namespace Assets._Scripts.UIElements.Props
         /// <returns>An IEnumerator to support coroutine execution.</returns>
         public IEnumerator PlayInteraction(RectTransform container)
         {
-            if (!TextToSpeechManager.Instance.IsTextToSpeechActivated())
+            if (!TextToSpeechManager.Instance.IsTextToSpeechActivated()&& sound)
             {
                 GlobalVolumeManager.Instance.PlaySound(sound);
             }
 
-            Image image = gameObject.GetComponent<Image>();
-            
-            image.sprite = animationFrames[1];
+            GameObject instance;
             if (container.transform.childCount > 0)
             {
-                Destroy(container.transform.GetChild(0).gameObject);
+                instance = container.transform.GetChild(0).gameObject;
             }
-            Instantiate(gameObject, container.transform);
-            yield return new WaitForSeconds(0.5f);
-            
-            image.sprite = animationFrames[2];
-            if (container.transform.childCount > 0)
+            else
             {
-                Destroy(container.transform.GetChild(0).gameObject);
+                instance = Instantiate(gameObject, container.transform);
             }
-            Instantiate(gameObject, container.transform);
-            yield return new WaitForSeconds(0.5f);
-            
-            image.sprite = animationFrames[3];
-            if (container.transform.childCount > 0)
-            {
-                Destroy(container.transform.GetChild(0).gameObject);
-            }
-            Instantiate(gameObject, container.transform);
-            yield return new WaitForSeconds(0.5f);
-            
-            image.sprite = animationFrames[0];
-            if (container.transform.childCount > 0)
-            {
-                Destroy(container.transform.GetChild(0).gameObject);
-            }
-            Instantiate(gameObject, container.transform);
 
-            yield return new WaitForSeconds(0f);
+            Image image = instance.GetComponent<Image>();
+            if (image == null) yield break;
+
+            // Animation durchlaufen (außer Startbild)
+            for (int i = 1; i < animationFrames.Length; i++)
+            {
+                image.sprite = animationFrames[i];
+                yield return new WaitForSeconds(0.5f);
+            }
+
+            // Startbild wiederherstellen
+            image.sprite = animationFrames[0];
         }
     }
 }
