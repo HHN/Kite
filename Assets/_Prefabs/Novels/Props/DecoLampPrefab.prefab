@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 336984117713163398}
   - component: {fileID: 2034710495206404204}
   m_Layer: 3
-  m_Name: DecoSideboardPrefab
+  m_Name: DecoLampPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

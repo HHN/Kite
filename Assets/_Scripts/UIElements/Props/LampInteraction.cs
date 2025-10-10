@@ -34,22 +34,11 @@ namespace Assets._Scripts.UIElements.Props
                 GlobalVolumeManager.Instance.PlaySound(clip);
             }
 
-            if (_decoLampeStatus)
-            {
-                Image image = gameObject.GetComponent<Image>();
-                image.sprite = lampOff;
-                _decoLampeStatus = false;
-                yield return new WaitForSeconds(0.5f);
-            }
-            else
-            {
-                Image image = gameObject.GetComponent<Image>();
-                image.sprite = lampOn;
-                _decoLampeStatus = true;
-                yield return new WaitForSeconds(0.5f);
-            }
+            Image image = gameObject.GetComponent<Image>();
+            image.sprite = _decoLampeStatus ? lampOff : lampOn;
+            _decoLampeStatus = !_decoLampeStatus;
 
-            yield return new WaitForSeconds(0f);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 }
