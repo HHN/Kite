@@ -1,6 +1,6 @@
 ## 1. Einführung
 
-Wir freuen uns, dass Sie KITE II nutzen. Der Schutz Ihrer Daten ist uns besonders wichtig. Deshalb erheben wir nur das, was wirklich notwendig ist – und das sind keine personenbezogenen Daten, außer Ihrer IP-Adresse. Diese benötigen wir ausschließlich, um Ihnen individuelles Feedback zu den gespielten Dialogen zu geben. Sobald das Feedback übermittelt wurde, wird Ihre IP-Adresse umgehend gelöscht und nicht gespeichert.
+Wir freuen uns, dass Sie KITE nutzen. Der Schutz Ihrer Daten ist uns besonders wichtig. Deshalb erheben wir nur das, was wirklich notwendig ist – und das sind keine personenbezogenen Daten, außer Ihrer IP-Adresse. Diese benötigen wir ausschließlich, um Ihnen individuelles Feedback zu den gespielten Dialogen zu geben. Sobald das Feedback übermittelt wurde, wird Ihre IP-Adresse umgehend gelöscht und nicht gespeichert.
 
 ## 2. Verantwortliche
 
