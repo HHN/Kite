@@ -278,7 +278,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 {
                     if (!_allKiteNovelsById.TryGetValue(entry.novelId, out var visualNovel)) continue;
                     
-                    if (visualNovel.designation.Equals("Mehr zu KITE II erfahren"))
+                    if (visualNovel.designation.Equals("Mehr zu KITE"))
                     {
                         Image[] images = introNovelButton.GetComponentsInChildren<Image>(true);
 
@@ -295,8 +295,8 @@ namespace Assets._Scripts.Controller.SceneControllers
                         }
 
                         introNovelButton.GetComponentInChildren<Button>().onClick.AddListener(OnIntroNovelButton);
-                        introNovelButton.GetComponentInChildren<Button>().name = "Mehr zu\nKITE II";
-                        introNovelButton.GetComponentInChildren<TextMeshProUGUI>().text = "Mehr zu\nKITE II";
+                        introNovelButton.GetComponentInChildren<Button>().name = visualNovel.designation;
+                        introNovelButton.GetComponentInChildren<TextMeshProUGUI>().text = visualNovel.designation;
                     }
                 }
             }
