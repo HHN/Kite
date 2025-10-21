@@ -76,13 +76,13 @@ Die IP-Adresse wird im Rahmen der Bereitstellung von Feedback zu den gespielten 
 ## 9. Ihre Rechte
 
 Unter bestimmten Voraussetzungen können Sie uns gegenüber Ihre Datenschutzrechte geltend machen. Ihre Anträge über die Ausübung Ihrer Rechte sollten nach Möglichkeit schriftlich oder per E-Mail an die oben angegebene Anschrift adressiert werden.
-> - Sie haben das Recht, von uns Auskunft über Ihre bei uns gespeicherten Daten nach den Regeln von Art. 15 DSGVO (ggf. mit Einschränkungen nach § 9 LDSG) zu erhalten.
-> - Auf Ihren Antrag hin werden wir die über Sie gespeicherten Daten nach Art. 16 DSGVO berichtigen, wenn diese unzutreffend oder fehlerhaft sind.
-> - Wenn Sie es wünschen, werden wir Ihre Daten nach den Grundsätzen von Art. 17 DSGVO löschen, sofern andere gesetzliche Regelungen (z.B. gesetzliche Aufbewahrungspflichten oder die Einschränkungen nach § 10 LDSG) oder ein überwiegendes Interesse unsererseits (z. B. zur Verteidigung unserer Rechte und Ansprüche) dem nicht entgegenstehen.
-> - Unter Berücksichtigung der Voraussetzungen des Art. 18 DSGVO können Sie von uns verlangen, die Verarbeitung Ihrer Daten einzuschränken.
-> - Ferner können Sie gegen die Verarbeitung Ihrer Daten Widerspruch nach Art. 21 DSGVO einlegen, aufgrund dessen wir die Verarbeitung Ihrer Daten beenden. Dieses Widerspruchsrecht gilt nur bei Vorliegen besonderer Umstände Ihrer persönlichen Situation, wobei Rechte unseres Hauses Ihrem Widerspruchsrecht ggf. entgegenstehen können.
-> - Auch haben Sie das Recht, Ihre Daten unter den Voraussetzungen von Art. 20 DSGVO in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten oder sie einem Dritten zu übermitteln.
-> - Darüber hinaus haben Sie das Recht, eine erteilte Einwilligung in die Verarbeitung personenbezogener Daten jederzeit uns gegenüber mit Wirkung für die Zukunft zu widerrufen.
+- Sie haben das Recht, von uns Auskunft über Ihre bei uns gespeicherten Daten nach den Regeln von Art. 15 DSGVO (ggf. mit Einschränkungen nach § 9 LDSG) zu erhalten.
+- Auf Ihren Antrag hin werden wir die über Sie gespeicherten Daten nach Art. 16 DSGVO berichtigen, wenn diese unzutreffend oder fehlerhaft sind.
+- Wenn Sie es wünschen, werden wir Ihre Daten nach den Grundsätzen von Art. 17 DSGVO löschen, sofern andere gesetzliche Regelungen (z.B. gesetzliche Aufbewahrungspflichten oder die Einschränkungen nach § 10 LDSG) oder ein überwiegendes Interesse unsererseits (z. B. zur Verteidigung unserer Rechte und Ansprüche) dem nicht entgegenstehen.
+- Unter Berücksichtigung der Voraussetzungen des Art. 18 DSGVO können Sie von uns verlangen, die Verarbeitung Ihrer Daten einzuschränken.
+- Ferner können Sie gegen die Verarbeitung Ihrer Daten Widerspruch nach Art. 21 DSGVO einlegen, aufgrund dessen wir die Verarbeitung Ihrer Daten beenden. Dieses Widerspruchsrecht gilt nur bei Vorliegen besonderer Umstände Ihrer persönlichen Situation, wobei Rechte unseres Hauses Ihrem Widerspruchsrecht ggf. entgegenstehen können.
+- Auch haben Sie das Recht, Ihre Daten unter den Voraussetzungen von Art. 20 DSGVO in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten oder sie einem Dritten zu übermitteln.
+- Darüber hinaus haben Sie das Recht, eine erteilte Einwilligung in die Verarbeitung personenbezogener Daten jederzeit uns gegenüber mit Wirkung für die Zukunft zu widerrufen.
 Ferner steht Ihnen ein Beschwerderecht bei einer Datenschutzaufsichtsbehörde zu (Art. 77 DSGVO).
 Die zuständige Aufsichtsbehörde im Land Baden-Württemberg:
 Landesbeauftragte für den Datenschutz und die Informationsfreiheit Baden-Württemberg
