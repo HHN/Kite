@@ -1,5 +1,6 @@
 # Kite2
 
+
 ## About the Project
 
 KITE is an AI-supported, gamified application that enables female founders to explore and respond to discriminatory interaction patterns in entrepreneurial contexts. The project is developed as part of the project KITE II [(BMBFSFJ 2023–2025)](https://www.hs-heilbronn.de/de/kite-II).
@@ -21,7 +22,17 @@ To open and edit the project, you need Unity.
 
 1.  Clone the repository.
 2.  Open the project in Unity.
-3.  The main scene to start the game is likely located in the `_Scenes` folder.
+3.  The main scene to start the game is `Assets/_Scenes/MainMenuScene.unity`.
+
+### Configure Game View
+
+For optimal display and testing of the mobile application:
+
+1.  Open the Game window (`Window > General > Game`).
+2.  In the Game window toolbar, switch from Game" to **Simulator**.
+3.  Select a mobile device (e.g., **Samsung Galaxy Note20 Ultra 5G**).
+
+This ensures the game is displayed in the correct mobile resolution during development.
 
 ## Contributing
 
@@ -83,7 +94,17 @@ Um das Projekt zu öffnen und zu bearbeiten, benötigen Sie Unity.
 
 1.  Klonen Sie das Repository.
 2.  Öffnen Sie das Projekt in Unity.
-3.  Die Hauptszene zum Starten des Spiels befindet sich wahrscheinlich im Ordner `_Scenes`.
+3.  Die Hauptszene zum Starten des Spiels ist `Assets/_Scenes/MainMenuScene.unity`.
+
+### Game View konfigurieren
+
+Für die optimale Darstellung und das Testen der mobilen Anwendung:
+
+1.  Öffnen Sie das Game-Fenster (`Window > General > Game`).
+2.  In der Leiste des Game-Fensters von "Game" auf **Simulator** umstellen.
+3.  Als Device z. B. **Samsung Galaxy Note20 Ultra 5G** auswählen.
+
+So wird das Spiel während der Entwicklung in der korrekten mobilen Auflösung angezeigt.
 
 ## Mitwirken
 
