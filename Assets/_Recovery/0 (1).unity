@@ -575,8 +575,10 @@ MonoBehaviour:
   wordmarkPercentOfContainer: 0.6
   forceCenterAnchors: 1
   ensureCircleMask: 1
-  parentCircleToLayoutRoot: 1
   parentInnerLogoToCircle: 1
+  panel: {fileID: 0}
+  raisePanelSortingOrder: 0
+  panelSortingOrder: 10
 --- !u!1 &277032710
 GameObject:
   m_ObjectHideFlags: 0

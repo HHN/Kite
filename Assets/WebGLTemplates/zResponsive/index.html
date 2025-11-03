@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="en-us">
-
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>{{{ PRODUCT_NAME }}}</title>
 
 	<meta name="viewport"
-		  content="width=device-width,height=device-height,initial-scale=1.0,viewport-fit=cover,user-scalable=no,shrink-to-fit=yes">
+		  content="width=device-width,height=device-height,initial-scale=1.0,viewport-fit=cover,user-scalable=no,shrink-to-fit=yes" />
 
 	<style>
 		:root{
-			/* ↓ hier feintunen */
-			--circle-size: 176px;         /* Ziel-Durchmesser des weißen Kreises */
-			--circle-offset-y: -40px;
-			--gap-under-circle: 18px;
+			/* Default-Werte – werden per JS überschrieben */
+			--circle-size-px: 176px;
+			--circle-top-px: 40px;
 
+			--gap-under-circle: 18px;
 			--wordmark-min: 200px;
 			--wordmark-max: 420px;
 
@@ -29,6 +28,7 @@
 			margin: 0; padding: 0; overflow: visible;
 		}
 
+		/* Unity-Container wird per onResize positioniert (1:2 auf Desktop) */
 		#container {
 			position: absolute;
 			box-sizing: border-box;
@@ -36,18 +36,9 @@
 			display: block;
 		}
 		#container canvas { position: absolute; }
-		#container canvas[data-pixel-art="true"] {
-			position: absolute;
-			image-rendering: optimizeSpeed;
-			image-rendering: -webkit-crisp-edges;
-			image-rendering: -moz-crisp-edges;
-			image-rendering: -o-crisp-edges;
-			image-rendering: crisp-edges;
-			image-rendering: -webkit-optimize-contrast;
-			image-rendering: optimize-contrast;
-			image-rendering: pixelated;
-			-ms-interpolation-mode: nearest-neighbor;
-		}
+
+		/* Standardkonforme image-rendering-Werte */
+		#container canvas[data-pixel-art="true"] { image-rendering: pixelated; }
 
 		@media (hover: hover) and (pointer: fine) { #container { outline: 5px solid white; } }
 		@media (hover: none)  and (pointer: coarse){ #container { outline: none; } }
@@ -55,38 +46,59 @@
 		/* Loading-Overlay */
 		#loading{
 			position: absolute; inset: 0;
-			display:flex; flex-direction:column; align-items:center; justify-content:center;
 			z-index:10; pointer-events:none; transition:opacity .35s ease;
 		}
 		#loading.hidden{ opacity:0; }
 
+		/* Kreis-Box */
 		.brand-mark{
-			transform: translateY(var(--circle-offset-y));
-			margin-bottom: var(--gap-under-circle);
-			/* nichts erzwingen – das Bild steuert die Größe */
+			position: absolute;
+			left: 50%;
+			top: var(--circle-top-px, 40px);                         /* Fallbacks für Linter */
+			transform: translateX(-50%);
+			width:  var(--circle-size-px, 176px);
+			height: var(--circle-size-px, 176px);
+			border-radius: 50%;
+			background: #fff;
+			display: grid; place-items: center;
+			overflow: hidden;
+			box-shadow: 0 10px 30px rgba(0,0,0,.18);
 		}
-		/* WICHTIG: nur HÖHE setzen, Breite automatisch → keine Verzerrung */
+		/* Innen-Logo: 5% kleiner, zentriert */
 		.brand-mark img{
-			height: var(--circle-size);
-			width: auto;
-			display:block;
+			width: 95%;
+			height: 95%;
+			object-fit: contain;
+			display: block;
+		}
+
+		/* Bereich unterhalb des Kreises */
+		.below{
+			position: absolute;
+			left: 0; width: 100%;
+			top: calc(
+					var(--circle-top-px, 40px)
+					+ var(--circle-size-px, 176px)
+					+ var(--gap-under-circle, 18px)
+			);
+			display: flex; flex-direction: column; align-items: center;
 		}
 
 		.wordmark{
-			width: clamp(var(--wordmark-min), 60%, var(--wordmark-max));
+			width: clamp(var(--wordmark-min, 200px), 60%, var(--wordmark-max, 420px));
 			height:auto; display:block;
 			filter: drop-shadow(0 6px 18px rgba(0,0,0,.25));
 		}
 
 		.progress{
 			width: clamp(220px, 70%, 380px);
-			height: var(--progress-height);
+			height: var(--progress-height, 14px);
 			background:#fff; border-radius:8px; overflow:hidden;
 			box-shadow: 0 6px 18px rgba(0,0,0,.25);
 			margin-top: 20px;
 		}
 		.progress__fill{
-			width:0%; height:100%; background:var(--accent-orange);
+			width:0%; height:100%; background:var(--accent-orange, #F36E21);
 			border-radius:8px 0 0 8px; transition: width .2s ease;
 		}
 	</style>
@@ -95,20 +107,28 @@
 <body>
 <div id="container">
 	<div id="loading" role="status" aria-live="polite" aria-label="Ladevorgang">
+		<!-- Kreis + Innenlogo -->
 		<div class="brand-mark">
-			<img src="Images/Kite_Logo_im_Kreis.png" alt="Kite Logo im weißen Kreis">
+			<img src="Images/Kite_Logo_im_Kreis.png" alt="Kite-Logo" />
 		</div>
-		<img class="wordmark" src="Images/kite_logo_ohne_II.png" alt="kite Wortmarke">
-		<div class="progress" aria-hidden="true">
-			<div id="progress-fill" class="progress__fill"></div>
+
+		<!-- Unterhalb des Kreises: Wortmarke + Progress -->
+		<div class="below">
+			<img class="wordmark" src="Images/kite_logo_ohne_II.png" alt="kite Wortmarke" />
+			<div class="progress" aria-hidden="true">
+				<div id="progress-fill" class="progress__fill"></div>
+			</div>
 		</div>
 	</div>
 
 	<canvas id="game-canvas" data-pixel-art="false"></canvas>
 
+	<!-- Unity ersetzt die Platzhalter beim Build -->
 	<script src="Build/{{{ LOADER_FILENAME }}}"></script>
+
 	<script>
 		var canvas = document.querySelector("#game-canvas");
+
 		var config = {
 			dataUrl: "Build/{{{ DATA_FILENAME }}}",
 			frameworkUrl: "Build/{{{ FRAMEWORK_FILENAME }}}",
@@ -120,8 +140,10 @@
 			autoSyncPersistentDataPath: true
 		};
 
-		const fillEl = document.getElementById("progress-fill");
+		const root      = document.documentElement;
+		const fillEl    = document.getElementById("progress-fill");
 		const loadingEl = document.getElementById("loading");
+
 		function progressHandler(progress){
 			const pct = Math.max(0, Math.min(100, Math.round(progress*100)));
 			fillEl.style.width = pct + "%";
@@ -131,10 +153,12 @@
 			}
 		}
 
+		/* Container berechnen & CSS-Variablen setzen (26,7% Höhe, Topkante 20,6%) */
 		function onResize(){
 			var container = canvas.parentElement;
 			var isDesktop = matchMedia("(hover: hover) and (pointer: fine)").matches;
 			var w,h,left,top;
+
 			if(isDesktop){
 				var vw = innerWidth, vh = innerHeight;
 				h = vh; w = Math.floor(h/2);
@@ -144,26 +168,31 @@
 				var vv = visualViewport || { width: innerWidth, height: innerHeight, offsetLeft:0, offsetTop:0 };
 				w = vv.width; h = vv.height; left = vv.offsetLeft; top = vv.offsetTop;
 			}
+
 			container.style.width = w+"px"; container.style.height = h+"px";
 			container.style.left = left+"px"; container.style.top = top+"px";
 			canvas.style.width = w+"px"; canvas.style.height = h+"px";
+
+			// 26,7% und 20,6% der Containerhöhe
+			root.style.setProperty("--circle-size-px", (h * 0.267) + "px");
+			root.style.setProperty("--circle-top-px",  (h * 0.206) + "px");
 		}
 
 		createUnityInstance(canvas, config, progressHandler).then(function(instance){
-			canvas = instance.Module.canvas;
-			onResize();
+			canvas = instance.Module.canvas; onResize();
 		});
 
 		addEventListener("resize", onResize);
 		onResize();
 
+		// Zusatz-Viewport-Meta
 		const meta = document.createElement("meta");
 		meta.name = "viewport";
 		meta.content = "width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes";
 		document.head.appendChild(meta);
-	</script>
 
-	<script> function logMessage(m){ console.log(m); } </script>
+		function logMessage(m){ console.log(m); }
+	</script>
 </div>
 </body>
 </html>
