@@ -21,7 +21,11 @@ Einstiegsdialog
 KITE steht für KI-Thinktank Entrepreneurship. 
 >>--<<
 >>Character1|Smiling<<
+<<<<<<< HEAD
 Im Vorgängerprojekt KITE haben wir gezeigt, wie wichtig gezielter Kompetenzaufbau ist. Durch Workshops und Trainings konnten Gründerinnen lernen, diskriminierende Situationen schneller zu erkennen und sich darauf vorzubereiten. Diese Erfahrungen fließen nun direkt in KITE II ein.
+=======
+Im Vorgängerprojekt von KITE haben wir gezeigt, wie wichtig gezielter Kompetenzaufbau ist. Durch Workshops und Trainings konnten Gründerinnen lernen, diskriminierende Situationen schneller zu erkennen und sich darauf vorzubereiten. Diese Erfahrungen fließen nun direkt in die KITE-App ein.
+>>>>>>> main
 
 [[Danke, ich bin bereit.->Spielstart]]
 [[Und welche Rolle spielt KI?->KI Rolle]]
@@ -62,12 +66,16 @@ Die KI gibt dir Feedback und hilft, deine Stärken zu erkennen. Sie zeigt dir, w
 
 :: KI Rolle {"position":"1325,250","size":"100,100"}
 >>Character1|Smiling<<
+<<<<<<< HEAD
 Die KI in KITE II analysiert die Dialoge, um Vorurteile zu erkennen. So kannst du lernen, wie du besser auf solche Muster reagierst.
+=======
+Die KI in KITE analysiert die Dialoge, um Vorurteile zu erkennen. So kannst du lernen, wie du besser auf solche Muster reagierst.
+>>>>>>> main
 >>--<<
 >>Character1|Smiling<<
 Statt in KI-Modellen nach Verzerrungen zu suchen, nutzen wir die KI, um Diskriminierung in den Interaktionen sichtbar zu machen.
 
-[[Was ist das Ziel von KITE II?->Projekt Ziel]]
+[[Was ist das Ziel von KITE?->Projekt Ziel]]
 [[Ich bin bereit, lass uns starten.->Spielstart]]
 
 
@@ -86,13 +94,17 @@ Zum Beispiel ein Bankgespräch oder das Anmieten von Räumlichkeiten. Jede Entsc
 
 :: Mehr Details {"position":"750,575","size":"100,100"}
 >>Character1|Smiling<<
+<<<<<<< HEAD
 In KITE II trainierst du typische Gründungssituationen, wie Bankgespräche oder das Anmieten von Räumlichkeiten. Die KI analysiert die Dialoge und gibt dir Feedback.
+=======
+In KITE trainierst du typische Gründungssituationen, wie Bankgespräche oder das Anmieten von Räumlichkeiten. Die KI analysiert die Dialoge und gibt dir Feedback.
+>>>>>>> main
 >>--<<
 >>Character1|Smiling<<
 Zu jedem Dialog bekommst du ein KI-generiertes Feedback, das dir zeigt, welche Biases oder Verzerrungen darin stecken.
 
 [[Gibt es ein Beispiel für so eine Situation?->Beispiel Spielsituation]]
-[[Was ist KITE II überhaupt? ->Was ist KITEII]]
+[[Was ist KITE überhaupt? ->Was ist KITEII]]
 [[Ich bin bereit, lass uns starten.->Spielstart]]
 
 
@@ -109,7 +121,11 @@ Du kannst dir auch Novels merken, die du später spielen möchtest, und sehen, w
 
 :: Mehr über die App {"position":"550,575","size":"100,100"}
 >>Character1|Smiling<<
+<<<<<<< HEAD
 KITE II ist eine KI-gestützte Anwendung, die dir hilft, besser mit diskriminierenden Erfahrungen im Gründungsprozess umzugehen.
+=======
+KITE ist eine KI-gestützte Anwendung, die dir hilft, besser mit diskriminierenden Erfahrungen im Gründungsprozess umzugehen.
+>>>>>>> main
 >>--<<
 >>Character1|Smiling<<
 Wir bieten dir realistische Dialoge, in denen du lernen kannst, auf Vorurteile zu reagieren.
@@ -132,7 +148,11 @@ Diese Erfahrungen bieten dir wertvolle Lernmöglichkeiten, die dir helfen könne
 
 :: Nicht-Gründerin Einstieg {"position":"575,800","size":"100,100"}
 >>Character1|Smiling<<
+<<<<<<< HEAD
 Das ist wunderbar! Bei KITE II hast du die Möglichkeit, dich in die Rolle einer Gründerin hineinzuversetzen. Das ermöglicht dir eine wertvolle Perspektivenübernahme.
+=======
+Das ist wunderbar! Bei KITE hast du die Möglichkeit, dich in die Rolle einer Gründerin hineinzuversetzen. Das ermöglicht dir eine wertvolle Perspektivenübernahme.
+>>>>>>> main
 >>--<<
 >>Character1|Smiling<<
 In den Dialogen spielst du die Rolle einer Gründerin, die sich mit verschiedenen Herausforderungen auseinandersetzt. Es ist wichtig, dass du dich ganz auf diese Rolle einlässt.
@@ -151,7 +171,11 @@ Versuche, dich bei den Dialogen auf die Sichtweise und Emotionen der Gründerin 
 
 :: Nicht-Gründerinnen {"position":"1750,50","size":"100,100"}
 >>Character1|Smiling<<
+<<<<<<< HEAD
 KITE II ist auch für Personen, die mit Gründerinnen arbeiten. 
+=======
+KITE ist auch für Personen, die mit Gründerinnen arbeiten. 
+>>>>>>> main
 
 >>--<<
 >>Character1|Smiling<<
@@ -164,7 +188,11 @@ Sie können ihre eigenen Vorurteile reflektieren und lernen, besser zu unterstü
 
 :: Noch eine Frage {"position":"1150,575","size":"100,100"}
 >>Character1|Smiling<<
+<<<<<<< HEAD
 KITE II hilft dir, die Situation einzuschätzen und deine Stärken zu nutzen. Jede Situation bietet dir neue Möglichkeiten.
+=======
+KITE hilft dir, die Situation einzuschätzen und deine Stärken zu nutzen. Jede Situation bietet dir neue Möglichkeiten.
+>>>>>>> main
 >>--<<
 >>Character1|Smiling<<
 Die Dialoge verlaufen immer anders, je nachdem, wie du reagierst. So kannst du verschiedene Ansätze testen.
@@ -175,7 +203,11 @@ Die Dialoge verlaufen immer anders, je nachdem, wie du reagierst. So kannst du v
 
 :: Projekt Ziel {"position":"1550,250","size":"100,100"}
 >>Character1|Smiling<<
+<<<<<<< HEAD
 KITE II soll Gründerinnen helfen, resilienter gegenüber Diskriminierung zu werden. 
+=======
+KITE soll Gründerinnen helfen, resilienter gegenüber Diskriminierung zu werden. 
+>>>>>>> main
 
 >>--<<
 >>Character1|Smiling<<
@@ -183,10 +215,14 @@ Grundsätzlich gilt aber: Nicht die Gründerinnen sollen sich ändern, sondern d
 
 >>--<<
 >>Character1|Smiling<<
+<<<<<<< HEAD
 Mit KITE II wollen wir die Gründungswelt gerechter machen. Unsere Vision ist, dass Gründerinnen die gleichen Chancen haben – unabhängig von ihrem Geschlecht oder Hintergrund.
+=======
+Mit KITE wollen wir die Gründungswelt gerechter machen. Unsere Vision ist, dass Gründerinnen die gleichen Chancen haben – unabhängig von ihrem Geschlecht oder Hintergrund.
+>>>>>>> main
 
 [[Gibt es dazu Statistiken?->Statistik]]
-[[Ist KITE II nur für Gründerinnen?->Nicht-Gründerinnen]]
+[[Ist KITE nur für Gründerinnen?->Nicht-Gründerinnen]]
 [[Okay, jetzt möchte ich losspielen.->Spielstart]]
 
 
@@ -201,7 +237,11 @@ Nur 37 % aller Gründungen werden von Frauen gemacht. Bei KI-Gründungen sind es
 
 >>--<<
 >>Character1|Smiling<<
+<<<<<<< HEAD
 Deshalb ist es wichtig, Frauen zu stärken, damit sie Vorurteile erkennen und überwinden. KITE II hilft Gründerinnen, Resilienz aufzubauen und sich gut vorzubereiten.
+=======
+Deshalb ist es wichtig, Frauen zu stärken, damit sie Vorurteile erkennen und überwinden. KITE hilft Gründerinnen, Resilienz aufzubauen und sich gut vorzubereiten.
+>>>>>>> main
 
 
 [[Wie unterstützt die KI bei der Resilienz?->KI Resilienz]]
@@ -211,12 +251,19 @@ Deshalb ist es wichtig, Frauen zu stärken, damit sie Vorurteile erkennen und ü
 
 :: Was ist KITEII {"position":"875,250","size":"100,100"}
 >>Character1|Smiling<<
+<<<<<<< HEAD
 KITE II ist eine KI-App, die Gründerinnen hilft, sich auf die Herausforderungen beim Gründen vorzubereiten.
 >>--<<
 >>Character1|Smiling<<
 Das Besondere an KITE II ist, dass die KI die Dialoge analysiert und dir Feedback gibt, wie du am besten auf Diskriminierung reagieren kannst. Es ist eine spielerische Unterstützung, die dir hilft, Resilienz aufzubauen.
+=======
+KITE ist eine KI-App, die Gründerinnen hilft, sich auf die Herausforderungen beim Gründen vorzubereiten.
+>>--<<
+>>Character1|Smiling<<
+Das Besondere an KITE ist, dass die KI die Dialoge analysiert und dir Feedback gibt, wie du am besten auf Diskriminierung reagieren kannst. Es ist eine spielerische Unterstützung, die dir hilft, Resilienz aufzubauen.
+>>>>>>> main
 
-[[Wer hat KITE II gemacht? ->Wer KITE II]]
+[[Wer hat KITE gemacht? ->Wer KITE II]]
 [[Toll. Jetzt will ich spielen.->Spielstart]]
 
 
@@ -233,7 +280,11 @@ Wir möchten, dass du dich rundum unterstützt fühlst und sicherer wirst im Umg
 
 :: Wer KITE II {"position":"1100,250","size":"100,100"}
 >>Character1|Smiling<<
+<<<<<<< HEAD
 KITE II wurde von einem Projektteam an der Hochschule Heilbronn entwickelt. Das Projekt wird durch das Bundesministerium für Familie, Senioren, Frauen und Jugend gefördert. Für die Inhalte ist aber Prof. Dr. Nicola Marsden verantwortlich, die das Projektteam leitet.
+=======
+KITE wurde von einem Projektteam an der Hochschule Heilbronn entwickelt. Das Projekt wird durch das Bundesministerium für Bildung, Familie, Senioren, Frauen und Jugend gefördert. Für die Inhalte ist aber Prof. Dr. Nicola Marsden verantwortlich, die das Projektteam leitet.
+>>>>>>> main
 >>--<<
 >>Character1|Smiling<<
 Wir arbeiten mit vielen Partner*innen zusammen, wie der bundesweiten gründerinnenagentur (bga), um Gründerinnen zu unterstützen und die Gründungswelt fairer zu machen.
@@ -246,7 +297,11 @@ Wir arbeiten mit vielen Partner*innen zusammen, wie der bundesweiten gründerinn
 
 :: Willkommen {"position":"350,575","size":"100,100"}
 >>Character1|Smiling<<
+<<<<<<< HEAD
 Hallo und herzlich willkommen bei KITE II! Schön, dass du hier bist.
+=======
+Hallo und herzlich willkommen bei KITE! Schön, dass du hier bist.
+>>>>>>> main
 Möchtest du direkt loslegen oder möchtest du mehr darüber erfahren, wie wir dich unterstützen können?
 
 [[Ich möchte direkt loslegen.->Spielstart]]
@@ -256,7 +311,11 @@ Möchtest du direkt loslegen oder möchtest du mehr darüber erfahren, wie wir d
 
 :: Zusammenfassung {"position":"1750,575","size":"100,100"}
 >>Character1|Smiling<<
+<<<<<<< HEAD
 KITE II hilft dir, resilienter zu werden. Du trainierst Gründungssituationen und erhältst Feedback, um Vorurteile zu erkennen.
+=======
+KITE hilft dir, resilienter zu werden. Du trainierst Gründungssituationen und erhältst Feedback, um Vorurteile zu erkennen.
+>>>>>>> main
 >>--<<
 >>Character1|Smiling<<
 Unsere KI unterstützt dich dabei, selbstbewusst aufzutreten und Herausforderungen zu meistern. Deine Reaktionen werden analysiert und helfen dir, immer besser zu werden.

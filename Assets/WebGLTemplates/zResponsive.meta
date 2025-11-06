@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/WebGLTemplates.meta
+guid: 78122e29ce110e5459e3b7f6bfc402c0
+========
 guid: 42d5536162b0eb5468173d96da115b36
+>>>>>>>> main:Assets/WebGLTemplates/zResponsive.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

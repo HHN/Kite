@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Assets._Scripts._Mappings;
 using Assets._Scripts.Novel.VisualNovelFormatter;
+using Assets._Scripts.Utilities;
 using UnityEngine;
 
 namespace Assets._Scripts.Novel
@@ -110,7 +111,7 @@ namespace Assets._Scripts.Novel
                         case 2: characterName = kiteNovelMetaData.TalkingPartner02; break;
                         case 3: characterName = kiteNovelMetaData.TalkingPartner03; break;
                         default:
-                            Debug.LogWarning($"Unknown Character number '{charNum}' in keyword: {keyword}");
+                            LogManager.Warning($"Unknown Character number '{charNum}' in keyword: {keyword}");
                             return null;
                     }
 
@@ -120,13 +121,13 @@ namespace Assets._Scripts.Novel
                     }
                     else
                     {
-                        Debug.LogWarning($"TalkingPartner{charNum:D2} is null or empty in metadata for keyword: {keyword}");
+                        LogManager.Warning($"TalkingPartner{charNum:D2} is null or empty in metadata for keyword: {keyword}");
                         return null; // No valid character name found
                     }
                 }
                 else
                 {
-                    Debug.LogWarning($"Invalid Character number format in keyword: {keyword}");
+                    LogManager.Warning($"Invalid Character number format in keyword: {keyword}");
                     return null;
                 }
 
@@ -143,7 +144,7 @@ namespace Assets._Scripts.Novel
                 }
                 else
                 {
-                    Debug.LogWarning($"Character keyword '{keyword}' does not contain enough parts for expression.");
+                    LogManager.Warning($"Character keyword '{keyword}' does not contain enough parts for expression.");
                     return null; // At least one expression should be present
                 }
 
@@ -159,7 +160,7 @@ namespace Assets._Scripts.Novel
                 }
                 else
                 {
-                    Debug.LogWarning($"Sound keyword '{keyword}' does not specify a sound name.");
+                    LogManager.Warning($"Sound keyword '{keyword}' does not specify a sound name.");
                     return null;
                 }
 
@@ -174,7 +175,7 @@ namespace Assets._Scripts.Novel
                 }
                 else
                 {
-                    Debug.LogWarning($"Bias keyword '{keyword}' does not specify a bias name.");
+                    LogManager.Warning($"Bias keyword '{keyword}' does not specify a bias name.");
                     return null;
                 }
 
@@ -182,7 +183,7 @@ namespace Assets._Scripts.Novel
             }
 
             // If none of the expected cases occur, null is returned.
-            Debug.LogWarning($"Unknown keyword format: {keyword}");
+            LogManager.Warning($"Unknown keyword format: {keyword}");
             return null;
         }
 

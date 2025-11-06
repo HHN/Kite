@@ -1,0 +1,28 @@
+MIT License / MIT-Lizenz
+
+Copyright (c) 2025 Hochschule Heilbronn / Lab for Social Informatics Prof. Dr. Nicola Marsden
+Developed by the project team of "KITE"
+Funded by the German Federal Ministry for Education, Family Affairs, Senior Citizens, Women and Youth (BMBFSFJ) 2023-2025
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+------------------------------------------------------------
+Deutsche Übersetzung 
+------------------------------------------------------------
+
+MIT-Lizenz
+
+Copyright (c) 2025 Hochschule Heilbronn / Lab für Sozioinformatik Prof. Dr. Nicola Marsden
+Entwickelt vom Projektteam "KITE"
+Gefördert durch das Bundesministerium für Bildung, Familie, Senioren, Frauen und Jugend (BMBFSFJ) 2023-2025
+
+Hiermit wird unentgeltlich die Erlaubnis erteilt, jeder Person, die eine Kopie dieser Software und der zugehörigen Dokumentationsdateien (die „Software“) erhält, die Software uneingeschränkt zu nutzen, einschließlich und ohne Beschränkung der Rechte, die Software zu verwenden, zu kopieren, zu verändern, zusammenzuführen, zu veröffentlichen, zu verbreiten, unterzulizenzieren und/oder zu verkaufen, sowie Personen, denen die Software bereitgestellt wird, dies ebenfalls zu gestatten, unter den folgenden Bedingungen:
+
+Der obige Urheberrechtsvermerk und dieser Erlaubnisvermerk sind in allen Kopien oder wesentlichen Teilen der Software beizubehalten.
+
+DIE SOFTWARE WIRD OHNE JEDE AUSDRÜCKLICHE ODER STILLSCHWEIGENDE GEWÄHRLEISTUNG BEREITGESTELLT, EINSCHLIESSLICH ABER NICHT BESCHRÄNKT AUF DIE GEWÄHRLEISTUNG DER MARKTGÄNGIGKEIT, DER EIGNUNG FÜR EINEN BESTIMMTEN ZWECK UND DER NICHTVERLETZUNG VON RECHTEN DRITTER. IN KEINEM FALL SIND DIE AUTOR*INNEN ODER URHEBERRECHTSINHABER*INNEN FÜR ANSPRÜCHE, SCHÄDEN ODER SONSTIGE HAFTUNGEN VERANTWORTLICH, EGAL OB AUS VERTRAG, UNERLAUBTER HANDLUNG ODER ANDERWEITIG, DIE AUS DER SOFTWARE ODER DER NUTZUNG DER SOFTWARE ODER ANDERER HANDLUNGEN IN VERBINDUNG MIT DER SOFTWARE ENTSTEHEN.

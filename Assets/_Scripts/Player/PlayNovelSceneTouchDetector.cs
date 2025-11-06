@@ -1,4 +1,5 @@
 using Assets._Scripts.Controller.SceneControllers;
+using Assets._Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -35,7 +36,7 @@ namespace Assets._Scripts.Player
             }
             else
             {
-                Debug.LogWarning("PlayNovelSceneController.Instance ist nicht gesetzt!");
+                LogManager.Warning("PlayNovelSceneController.Instance ist nicht gesetzt!");
             }
         }
     }

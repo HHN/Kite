@@ -22,7 +22,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.TermsOfUseScene);
+            BackStackManager.Instance.Push(SceneNames.TermsOfUseScene);
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout02);
             FontSizeManager.Instance().UpdateAllTextComponents();
         }

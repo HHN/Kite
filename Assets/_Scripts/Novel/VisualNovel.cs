@@ -32,7 +32,7 @@ namespace Assets._Scripts.Novel
         /// Adds a new global variable to the <see cref="GlobalVariables"/> dictionary.
         /// If the dictionary is null, it will be initialized.
         /// </summary>
-        /// <param name="name">The name (key) of the global variable.</param>
+        /// <param name="name">The name (type) of the global variable.</param>
         /// <param name="value">The string value of the global variable.</param>
         public void AddGlobalVariable(string name, string value)
         {

@@ -64,11 +64,10 @@ namespace Assets._Scripts.Managers
     /// </summary>
     public class GameManager : MonoBehaviour
     {
-        [SerializeField] private bool showAllNovels;
+        [SerializeField] private bool showKiteNovels;
         [SerializeField] private bool skipIntroNovel;
         [SerializeField] private bool isIntroNovelSaved;
         [SerializeField] private bool introNovelLoadedFromMainMenu = true;
-        [SerializeField] private bool showFeedbackLink = false;
 
         [SerializeField] private List<NovelSaveStatus> novelSaveStatusList = new();
 
@@ -89,11 +88,11 @@ namespace Assets._Scripts.Managers
         
         private MessageBox _messageObject;
         
-        // Property to get or set the showAllNovels flag
-        public bool ShowAllNovels
+        // Property to get or set the showKiteNovels flag
+        public bool ShowKiteNovels
         {
-            get => showAllNovels;
-            set => showAllNovels = value;
+            get => showKiteNovels;
+            set => showKiteNovels = value;
         }
 
         // Property to get or set the skipIntroNovel flag
@@ -108,13 +107,6 @@ namespace Assets._Scripts.Managers
         {
             get => introNovelLoadedFromMainMenu;
             set => introNovelLoadedFromMainMenu = value;
-        }
-        
-        // Property to get or set the showFeedbackLink flag
-        public bool ShowFeedbackLink
-        {
-            get => showFeedbackLink;
-            set => showFeedbackLink = value;
         }
 
         /// <summary>
@@ -137,6 +129,12 @@ namespace Assets._Scripts.Managers
             _characterDataDictionary = characterDataList.ToDictionary(entry => entry.id, entry => entry.data);
 
             CheckAndSetAllNovelsStatus();
+            
+            // GlobalVolumeManager.Instance.SetGlobalVolume(0f);
+            // PlayerPrefs.SetInt("IsSoundEffectVolumeOn", 0);
+            // PlayerPrefs.SetFloat("SavedSoundEffectVolume", 0f);
+            // TextToSpeechManager.Instance.DeactivateTTS();
+            // PlayerPrefs.SetInt("TTS", 0);
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
 using System.Collections;
+using Assets._Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,7 +45,7 @@ namespace Assets._Scripts.UIElements.FoundersBubble
 
             if (!_bgLayoutGroup || !_mgLayoutGroup)
             {
-                Debug.LogError("HorizontalLayoutGroup missing on backgroundParent or midgroundParent! Please add it in the Inspector.");
+                LogManager.Error("HorizontalLayoutGroup missing on backgroundParent or midgroundParent! Please add it in the Inspector.");
                 return;
             }
             

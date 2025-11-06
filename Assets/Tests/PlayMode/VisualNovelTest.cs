@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets._Scripts._Mappings;
 using Assets._Scripts.Managers;
+<<<<<<< HEAD
 using Assets._Scripts.Novel;
+=======
+>>>>>>> main
 using Assets._Scripts.Novel.VisualNovelFormatter;
 using Assets._Scripts.SceneManagement;
 using NUnit.Framework;
@@ -36,7 +39,7 @@ namespace Tests.PlayMode
 
             foreach (NovelTester test in tests)
             {
-                while (test.IsTestOver() == false)
+                while (!test.IsTestOver())
                 {
                     yield return null;
                 }

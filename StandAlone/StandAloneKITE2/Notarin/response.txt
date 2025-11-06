@@ -1,6 +1,10 @@
 ﻿###1 
 
+<<<<<<< HEAD
 [Klingt sinnvoll, aber vergiss nicht, dass so eine Gründung oft mehr kostet als gedacht. Was ist, wenn du nicht genug Finanzierung erhältst?; Deshalb hab ich mir weitere Finanzierungsquellen angeschaut, damit mein Unternehmen auch ohne sofortige Finanzierung gut läuft.; Und du kannst auch deinen weiblichen Charme nutzen! Dann helfen Leute dir noch viel lieber.; Okay, ich melde mich dann. Ich muss auch schon weiter]
+=======
+[Klingt sinnvoll, aber vergiss nicht, dass so eine Gründung oft mehr kostet als gedacht. Was ist, wenn du nicht genug Finanzierung erhältst?; Deshalb hab ich mir weitere Finanzierungsquellen angeschaut, damit mein Unternehmen auch ohne sofortige Finanzierung gut läuft.; Und du kannst auch deinen weiblichen Charme nutzen! Dann helfen Leute dir noch viel lieber.; Okay, ich melde mich dann. Ich muss auch schon weiter
+>>>>>>> main
 
 
 
@@ -20,7 +24,11 @@ Es ist ermutigend zu sehen, wie du trotz dieser Stereotypen und Hürden deinen W
 
 ###2 
 
+<<<<<<< HEAD
 [Klingt sinnvoll, aber vergiss nicht, dass so eine Gründung oft mehr kostet als gedacht. Was ist, wenn du nicht genug Finanzierung erhältst?; Deshalb hab ich mir weitere Finanzierungsquellen angeschaut, damit mein Unternehmen auch ohne sofortige Finanzierung gut läuft.; Und du kannst auch deinen weiblichen Charme nutzen! Dann helfen Leute dir noch viel lieber.; Also, das würdest du jetzt nicht zu einem Mann sagen. Was soll "weiblicher Charme" überhaupt bedeuten?]
+=======
+[Klingt sinnvoll, aber vergiss nicht, dass so eine Gründung oft mehr kostet als gedacht. Was ist, wenn du nicht genug Finanzierung erhältst?; Deshalb hab ich mir weitere Finanzierungsquellen angeschaut, damit mein Unternehmen auch ohne sofortige Finanzierung gut läuft.; Und du kannst auch deinen weiblichen Charme nutzen! Dann helfen Leute dir noch viel lieber.; Also, das würdest du jetzt nicht zu einem Mann sagen. Was soll "weiblicher Charme" überhaupt bedeuten?
+>>>>>>> main
 
 
 
@@ -40,7 +48,11 @@ Es ist ermutigend zu sehen, wie du in diesen Momenten auf potenziell diskriminie
 
 ###3 
 
+<<<<<<< HEAD
 [Klingt sinnvoll, aber vergiss nicht, dass so eine Gründung oft mehr kostet als gedacht. Was ist, wenn du nicht genug Finanzierung erhältst?; Ehrlich gesagt, macht mir das echt Angst, dass das Geld nicht reicht, und ich weiß nicht, was ich dann machen soll.; Wichtig ist, dass du die Risiken im Blick hast. Du musst dann ja auch oft verhandeln.; [[Besorgt-Negativ II]]; Vielleicht suchst du dir einen Geschäftspartner und überlässt dem diese harten Verhandlungsgespräche?; Das schaffe ich auch allein.; Da bin ich gespannt. Denk dran, die Leute werden sich wohler fühlen, mit dir zu arbeiten, wenn du freundlich und aufgeschlossen auftrittst. Versuch also nicht so dominant zu wirken.; Hm, ich muss dann auch weiter. Ich halte euch auf dem Laufenden. Bis dann.]
+=======
+[Klingt sinnvoll, aber vergiss nicht, dass so eine Gründung oft mehr kostet als gedacht. Was ist, wenn du nicht genug Finanzierung erhältst?; Ehrlich gesagt, macht mir das echt Angst, dass das Geld nicht reicht, und ich weiß nicht, was ich dann machen soll.; Wichtig ist, dass du die Risiken im Blick hast. Du musst dann ja auch oft verhandeln.; [[Besorgt-Negativ II]]; Vielleicht suchst du dir einen Geschäftspartner und überlässt dem diese harten Verhandlungsgespräche?; Das schaffe ich auch allein.; Da bin ich gespannt. Denk dran, die Leute werden sich wohler fühlen, mit dir zu arbeiten, wenn du freundlich und aufgeschlossen auftrittst. Versuch also nicht so dominant zu wirken.; Hm, ich muss dann auch weiter. Ich halte euch auf dem Laufenden. Bis dann.
+>>>>>>> main
 
 
 
@@ -64,7 +76,11 @@ Zusammenfassend bist du mit Mut und Entschlossenheit auf diese Herausforderungen
 
 ###4 
 
+<<<<<<< HEAD
 [Klingt sinnvoll, aber vergiss nicht, dass so eine Gründung oft mehr kostet als gedacht. Was ist, wenn du nicht genug Finanzierung erhältst?; Ehrlich gesagt, macht mir das echt Angst, dass das Geld nicht reicht, und ich weiß nicht, was ich dann machen soll.; Wichtig ist, dass du die Risiken im Blick hast. Du musst dann ja auch oft verhandeln.; [[Besorgt-Negativ II]]; Vielleicht suchst du dir einen Geschäftspartner und überlässt dem diese harten Verhandlungsgespräche?; Das schaffe ich auch allein.; Da bin ich gespannt. Denk dran, die Leute werden sich wohler fühlen, mit dir zu arbeiten, wenn du freundlich und aufgeschlossen auftrittst. Versuch also nicht so dominant zu wirken.; Das würdest du jetzt einem Mann nicht sagen. Es ist okay zu zeigen, dass ich weiß, was ich will. Na ja, ich muss auch weiter. Bis dann.]
+=======
+[Klingt sinnvoll, aber vergiss nicht, dass so eine Gründung oft mehr kostet als gedacht. Was ist, wenn du nicht genug Finanzierung erhältst?; Ehrlich gesagt, macht mir das echt Angst, dass das Geld nicht reicht, und ich weiß nicht, was ich dann machen soll.; Wichtig ist, dass du die Risiken im Blick hast. Du musst dann ja auch oft verhandeln.; [[Besorgt-Negativ II]]; Vielleicht suchst du dir einen Geschäftspartner und überlässt dem diese harten Verhandlungsgespräche?; Das schaffe ich auch allein.; Da bin ich gespannt. Denk dran, die Leute werden sich wohler fühlen, mit dir zu arbeiten, wenn du freundlich und aufgeschlossen auftrittst. Versuch also nicht so dominant zu wirken.; Das würdest du jetzt einem Mann nicht sagen. Es ist okay zu zeigen, dass ich weiß, was ich will. Na ja, ich muss auch weiter. Bis dann.
+>>>>>>> main
 
 
 
@@ -84,7 +100,11 @@ Insgesamt ist in diesem Dialog deine Fähigkeit zu erkennen, wie du mit verschie
 
 ###5 
 
+<<<<<<< HEAD
 [Klingt sinnvoll, aber vergiss nicht, dass so eine Gründung oft mehr kostet als gedacht. Was ist, wenn du nicht genug Finanzierung erhältst?; Ehrlich gesagt, macht mir das echt Angst, dass das Geld nicht reicht, und ich weiß nicht, was ich dann machen soll.; Wichtig ist, dass du die Risiken im Blick hast. Du musst dann ja auch oft verhandeln.; [[Besorgt-Negativ II]]; Vielleicht suchst du dir einen Geschäftspartner und überlässt dem diese harten Verhandlungsgespräche?; Ich denk mal drüber nach, ob ich jemanden mit ins Boot hole.; Da bin ich gespannt. Denk dran, die Leute werden sich wohler fühlen, mit dir zu arbeiten, wenn du freundlich und aufgeschlossen auftrittst. Versuch also nicht so dominant zu wirken.; Hm, ich muss dann auch weiter. Ich halte euch auf dem Laufenden. Bis dann.]
+=======
+[Klingt sinnvoll, aber vergiss nicht, dass so eine Gründung oft mehr kostet als gedacht. Was ist, wenn du nicht genug Finanzierung erhältst?; Ehrlich gesagt, macht mir das echt Angst, dass das Geld nicht reicht, und ich weiß nicht, was ich dann machen soll.; Wichtig ist, dass du die Risiken im Blick hast. Du musst dann ja auch oft verhandeln.; [[Besorgt-Negativ II]]; Vielleicht suchst du dir einen Geschäftspartner und überlässt dem diese harten Verhandlungsgespräche?; Ich denk mal drüber nach, ob ich jemanden mit ins Boot hole.; Da bin ich gespannt. Denk dran, die Leute werden sich wohler fühlen, mit dir zu arbeiten, wenn du freundlich und aufgeschlossen auftrittst. Versuch also nicht so dominant zu wirken.; Hm, ich muss dann auch weiter. Ich halte euch auf dem Laufenden. Bis dann.
+>>>>>>> main
 
 
 
@@ -106,7 +126,11 @@ Im gesamten Dialog agierst du klug, indem du dich um eine ausgleichende Kommunik
 
 ###6 
 
+<<<<<<< HEAD
 [Klingt sinnvoll, aber vergiss nicht, dass so eine Gründung oft mehr kostet als gedacht. Was ist, wenn du nicht genug Finanzierung erhältst?; Ehrlich gesagt, macht mir das echt Angst, dass das Geld nicht reicht, und ich weiß nicht, was ich dann machen soll.; Wichtig ist, dass du die Risiken im Blick hast. Du musst dann ja auch oft verhandeln.; [[Besorgt-Negativ II]]; Vielleicht suchst du dir einen Geschäftspartner und überlässt dem diese harten Verhandlungsgespräche?; Ich denk mal drüber nach, ob ich jemanden mit ins Boot hole.; Da bin ich gespannt. Denk dran, die Leute werden sich wohler fühlen, mit dir zu arbeiten, wenn du freundlich und aufgeschlossen auftrittst. Versuch also nicht so dominant zu wirken.; Das würdest du jetzt einem Mann nicht sagen. Es ist okay zu zeigen, dass ich weiß, was ich will. Na ja, ich muss auch weiter. Bis dann.]
+=======
+[Klingt sinnvoll, aber vergiss nicht, dass so eine Gründung oft mehr kostet als gedacht. Was ist, wenn du nicht genug Finanzierung erhältst?; Ehrlich gesagt, macht mir das echt Angst, dass das Geld nicht reicht, und ich weiß nicht, was ich dann machen soll.; Wichtig ist, dass du die Risiken im Blick hast. Du musst dann ja auch oft verhandeln.; [[Besorgt-Negativ II]]; Vielleicht suchst du dir einen Geschäftspartner und überlässt dem diese harten Verhandlungsgespräche?; Ich denk mal drüber nach, ob ich jemanden mit ins Boot hole.; Da bin ich gespannt. Denk dran, die Leute werden sich wohler fühlen, mit dir zu arbeiten, wenn du freundlich und aufgeschlossen auftrittst. Versuch also nicht so dominant zu wirken.; Das würdest du jetzt einem Mann nicht sagen. Es ist okay zu zeigen, dass ich weiß, was ich will. Na ja, ich muss auch weiter. Bis dann.
+>>>>>>> main
 
 
 
@@ -128,7 +152,11 @@ Insgesamt reflektiert das Verhalten, das du in diesem Dialog zeigst, eine Reihe 
 
 ###7 
 
+<<<<<<< HEAD
 [Klingt sinnvoll, aber vergiss nicht, dass so eine Gründung oft mehr kostet als gedacht. Was ist, wenn du nicht genug Finanzierung erhältst?; Ehrlich gesagt, macht mir das echt Angst, dass das Geld nicht reicht, und ich weiß nicht, was ich dann machen soll.; Wichtig ist, dass du die Risiken im Blick hast. Du musst dann ja auch oft verhandeln.; [[Besorgt-Negativ II]]; Vielleicht suchst du dir einen Geschäftspartner und überlässt dem diese harten Verhandlungsgespräche?; Was soll das denn heißen? Als ob ich das nicht allein hinkriege!; Denk lieber noch einmal darüber nach. Es ist naiv zu glauben, dass du ohne Erfahrung ein Unternehmen führen kannst.; Oder vielleicht übernimmst du den kreativen Teil und überlässt die technischen Geschäftsaspekte lieber einem Partner?; Aha...]
+=======
+[Klingt sinnvoll, aber vergiss nicht, dass so eine Gründung oft mehr kostet als gedacht. Was ist, wenn du nicht genug Finanzierung erhältst?; Ehrlich gesagt, macht mir das echt Angst, dass das Geld nicht reicht, und ich weiß nicht, was ich dann machen soll.; Wichtig ist, dass du die Risiken im Blick hast. Du musst dann ja auch oft verhandeln.; [[Besorgt-Negativ II]]; Vielleicht suchst du dir einen Geschäftspartner und überlässt dem diese harten Verhandlungsgespräche?; Was soll das denn heißen? Als ob ich das nicht allein hinkriege!; Denk lieber noch einmal darüber nach. Es ist naiv zu glauben, dass du ohne Erfahrung ein Unternehmen führen kannst.; Oder vielleicht übernimmst du den kreativen Teil und überlässt die technischen Geschäftsaspekte lieber einem Partner?; Aha...
+>>>>>>> main
 
 
 

@@ -1,7 +1,11 @@
 {
   "idNumberOfNovel": 13,
   "titleOfNovel": "Einstiegsdialog",
+<<<<<<< HEAD
   "designationOfNovel": "Mehr zu KITE II erfahren",
+=======
+  "designationOfNovel": "Mehr zu KITE",
+>>>>>>> main
   "descriptionOfNovel": "Hier kannst du den Einstiegs-Dialog erneut spielen.",
   "contextForPrompt": "",
   "folderName": "Einstieg",

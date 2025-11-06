@@ -1,11 +1,10 @@
-using System;
 using System.Runtime.InteropServices;
 using System.Collections;
-using System.Net;
 using System.Text.RegularExpressions;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Player;
 using Assets._Scripts.UIElements.DropDown;
+using Assets._Scripts.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -39,14 +38,6 @@ namespace Assets._Scripts.Novel
         [DllImport("__Internal")]
         private static extern void CopyTextToClipboard(string text);
 #endif
-        
-        // --- Helfer: Regexe & Tag-Stripping ---
-        private static readonly Regex PercentTriplet =
-            new Regex("%[0-9A-Fa-f]{2}", RegexOptions.Compiled);
-
-// Entfernt gängige TMP/HTML-ähnliche Tags: <b>, <i>, <size=...>, <color=...>, <br>, </...> usw.
-        private static readonly Regex TmpRichTagRegex =
-            new Regex(@"</?([a-zA-Z0-9#]+)(?:=[^>]*?)?>", RegexOptions.Compiled);
 
         /// <summary>
         /// Initializes the component by adding listeners to copy buttons and updating all text components.
@@ -107,8 +98,10 @@ namespace Assets._Scripts.Novel
         /// </summary>
         private void CopyDialog()
         {
-            Debug.Log("KOPIEREN");
-            string copyText = CleanForClipboard(dialogText.text);
+            LogManager.Info("KOPIEREN");
+            string pattern = @"<\/?(b|i)>"; // Regex to match <b>, <i>, </b>, </i> tags
+            string copyText = Regex.Replace(dialogText.text, pattern, string.Empty);
+            copyText = copyText.Replace("\n", "\n\n"); // Replace single newlines with double for better readability when pasted
 
 #if UNITY_WEBGL && !UNITY_EDITOR
             CopyTextToClipboard(copyText);
@@ -126,8 +119,10 @@ namespace Assets._Scripts.Novel
         /// </summary>
         private void CopyFeedback()
         {
-            Debug.Log("KOPIEREN");
-            string copyText = CleanForClipboard(aiFeedbackText.text);
+            LogManager.Info("KOPIEREN");
+            string pattern = @"<\/?(b|i)>"; // Regex to match <b>, <i>, </b>, </i> tags
+            string copyText = Regex.Replace(aiFeedbackText.text, pattern, string.Empty);
+            copyText = copyText.Replace("\n", "\n\n"); // Replace single newlines with double for better readability when pasted
 
 #if UNITY_WEBGL && !UNITY_EDITOR
             CopyTextToClipboard(copyText);
@@ -148,7 +143,7 @@ namespace Assets._Scripts.Novel
         {
             if (GameObjectManager.Instance().GetCopyNotification() == null)
             {
-                Debug.Log("Kein GameObject mit dem Tag 'CopyNotification' gefunden.");
+                LogManager.Info("Kein GameObject mit dem Tag 'CopyNotification' gefunden.");
                 yield break; // Exit the coroutine if the object is not found.
             }
 
@@ -179,39 +174,5 @@ namespace Assets._Scripts.Novel
             // Hide the popup
             GameObjectManager.Instance().GetCopyNotification().SetActive(false);
         }
-        
-        static string CleanForClipboard(string s)
-        {
-            if (string.IsNullOrEmpty(s)) return s;
-
-            // Rich-Text-Tags entfernen (kompatibel zu allen TMP-Versionen)
-            s = StripTmpRichTextTags(s);
-
-            // HTML-Entities (&amp;, &quot; ...) decoden
-            s = WebUtility.HtmlDecode(s);
-
-            // Falls URL-encodiert: '+' (form-urlencoded) als Leerzeichen interpretieren
-            if (s.IndexOf('%') >= 0 || (s.IndexOf('+') >= 0 && !s.Contains(" ")))
-                s = s.Replace("+", " ");
-
-            // Wenn %XX-Triads enthalten sind: decoden
-            if (PercentTriplet.IsMatch(s))
-            {
-                try { s = Uri.UnescapeDataString(s); } catch { /* ignorieren */ }
-            }
-
-            // Zeilenumbrüche normalisieren
-            s = s.Replace("\r\n", "\n").Replace("\r", "\n");
-
-            // Einzelne \n zu doppelten \n (Absatzabstand), vorhandene Leerzeilen bleiben erhalten
-            s = Regex.Replace(s, @"(?<=\S)\n(?!\n)", "\n\n");
-
-            return s;
-        }
-
-        
-        // Fallback für TMP-Rich-Text-Entfernung (funktioniert unabhängig von TMP-Versionen)
-        private static string StripTmpRichTextTags(string s) =>
-            string.IsNullOrEmpty(s) ? s : TmpRichTagRegex.Replace(s, string.Empty);
     }
 }

@@ -35,14 +35,13 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.PrivacyPolicyScene);
+            BackStackManager.Instance.Push(SceneNames.PrivacyPolicyScene);
 
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout02);
             audioSource = GetComponent<AudioSource>();
 
             resetAppButton.onClick.AddListener(OnResetAppButton);
-            resetAppInfoButton.onClick.AddListener(OnResetAppInfoButton); 
             resetAppInfoButton.onClick.AddListener(OnResetAppInfoButton);
             FontSizeManager.Instance().UpdateAllTextComponents();
         }

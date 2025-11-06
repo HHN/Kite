@@ -1,4 +1,5 @@
 using System;
+using Assets._Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -230,7 +231,7 @@ namespace Assets._Scripts.Controller.CharacterController
             
             if (selectedHandColorArray != null && (handSpriteIndex.spriteIndex < 0 || handSpriteIndex.spriteIndex >= selectedHandColorArray.Length))
             {
-                Debug.LogWarning($"Invalid spriteIndex {handSpriteIndex.spriteIndex} for color {handSpriteIndex.colorIndex}");
+                LogManager.Warning($"Invalid spriteIndex {handSpriteIndex.spriteIndex} for color {handSpriteIndex.colorIndex}");
                 return;
             }
 

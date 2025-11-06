@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+
+namespace Assets._Scripts.Biases
+{
+    /// <summary>
+    /// Represents a specific bias with associated metadata.
+    /// </summary>
+    /// <remarks>
+    /// This class provides the structure for describing various types of biases.
+    /// Each instance of the class contains details about the bias type, its category,
+    /// headline, preview, and a full description for informational purposes.
+    /// </remarks>
+    [Serializable]
+    public class Bias
+    {
+        public string type;
+        public string category;
+        public string headline;
+        public string preview;
+        public string description;
+    }
+
+    /// <summary>
+    /// Serves as a data container for deserializing a collection of biases from a JSON file.
+    /// </summary>
+    /// <remarks>
+    /// This class encapsulates a collection of bias data items, where each item represents an individual `BiasJsonItem`.
+    /// It is primarily used for JSON deserialization to load bias data into the application.
+    /// </remarks>
+    [Serializable]
+    public class BiasJsonWrapper
+    {
+        public List<Bias> items;
+    }
+}

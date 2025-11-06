@@ -8,6 +8,7 @@ using Assets._Scripts.Controller.SceneControllers;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
+using Assets._Scripts.Utilities;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -204,7 +205,7 @@ namespace Assets._Scripts.SaveNovelData
         /// <summary>
         /// Loads all saved data from the JSON file.
         /// </summary>
-        /// <returns>A dictionary containing all saved novel data, where the key is the novel ID.</returns>
+        /// <returns>A dictionary containing all saved novel data, where the type is the novel ID.</returns>
         private static Dictionary<string, NovelSaveData> LoadAllSaveData()
         {
             if (File.Exists(SaveFilePath))
@@ -218,7 +219,7 @@ namespace Assets._Scripts.SaveNovelData
                 }
                 catch (Exception ex)
                 {
-                    Debug.LogError("Fehler beim Laden der Daten: " + ex.Message);
+                    LogManager.Error("Fehler beim Laden der Daten: " + ex.Message);
                     return new Dictionary<string, NovelSaveData>();
                 }
             }
@@ -248,7 +249,7 @@ namespace Assets._Scripts.SaveNovelData
             }
             else
             {
-                Debug.LogWarning($"Kein Spielstand für Novel ID {novelId} gefunden.");
+                LogManager.Warning($"Kein Spielstand für Novel ID {novelId} gefunden.");
             }
         }
 

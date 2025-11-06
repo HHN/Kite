@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using Assets._Scripts.Managers;
+using Assets._Scripts.Utilities;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -49,7 +50,7 @@ namespace Assets._Scripts.Novel.VisualNovelLoader
                 }
                 else
                 {
-                    Debug.LogWarning("Loading Novels failed: No Novels found! Path: " + fullPath);
+                    LogManager.Warning("Loading Novels failed: No Novels found! Path: " + fullPath);
                 }
             }));
         }
@@ -99,7 +100,7 @@ namespace Assets._Scripts.Novel.VisualNovelLoader
 
                     if (www.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
                     {
-                        Debug.LogError($"Error loading file at {path}: {www.error}");
+                        LogManager.Error($"Error loading file at {path}: {www.error}");
                         callback(null);
                     }
                     else

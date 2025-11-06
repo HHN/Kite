@@ -20,7 +20,7 @@ namespace Assets._Scripts.SceneManagement
         public const string FeedbackScene = "FeedbackScene";
 
         // FOUNDER-RELATED SCENES
-        public const string FoundersBubbleScene = "FoundersBubbleTestScene";
+        public const string FoundersBubbleScene = "FoundersBubbleScene";
 
         // LEGAL INFORMATION
         public const string LegalInformationScene = "LegalInformationScene";

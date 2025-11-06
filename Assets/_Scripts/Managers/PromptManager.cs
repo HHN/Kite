@@ -1,42 +1,17 @@
-using System;
-using System.IO;
 using System.Text;
-using Assets._Scripts.Novel;
-using UnityEngine;
-using UnityEngine.Networking;
 
 namespace Assets._Scripts.Managers
 {
-    /// <summary>
-    /// Manages the process of building and handling dialog prompts for a visual novel.
-    /// This class is implemented as a singleton to ensure a single instance throughout the application.
-    /// </summary>
     public class PromptManager
     {
         private static PromptManager _instance;
         private StringBuilder _prompt;
         private StringBuilder _dialog;
 
-        private readonly string _promptPath;
-        private readonly string _knowledgeBasePath;
-
-        /// <summary>
-        /// Provides functionality to manage prompts and dialogs for a visual novel.
-        /// Handles creation, formatting, storage, and retrieval of prompt and dialog text.
-        /// Implements a singleton pattern to maintain a single instance across the application.
-        /// </summary>
         private PromptManager()
         {
-            _promptPath = Path.Combine(Application.streamingAssetsPath, "Prompt.txt");
-            _knowledgeBasePath = Path.Combine(Application.streamingAssetsPath, "KnowledgeBase.txt");
         }
 
-        /// <summary>
-        /// Provides access to the single instance of the PromptManager class.
-        /// Ensures that only one instance of PromptManager exists throughout the application's lifecycle,
-        /// adhering to the singleton design pattern.
-        /// </summary>
-        /// <returns>The single instance of the PromptManager.</returns>
         public static PromptManager Instance()
         {
             if (_instance == null)
@@ -107,28 +82,25 @@ namespace Assets._Scripts.Managers
             _prompt.Append("Hier ist der Dialog:");
         }
 
-        /// <summary>
-        /// Reads the content of a prompt file from the predefined path and appends it
-        /// to the current prompt using a specified callback for handling file content.
-        /// This method ensures the proper integration of external prompt data into the existing system.
-        /// </summary>
-        private void LoadPromptFromFile()
+        public void AddLineToPrompt(string line)
         {
-            LoadTextFile(_promptPath,
-                content => { _prompt.Append(content).AppendLine(); },
-                "Prompt");
-        }
-
-        /// <summary>
-        /// Loads the knowledge base from a predefined file path and appends its content to the current prompt.
-        /// Uses a callback function to process the file's content on successful load.
-        /// Acts as part of the initialization process to enrich the dialog prompt with additional data.
-        /// </summary>
-        private void LoadKnowledgeBaseFromFile()
-        {
-            LoadTextFile(_knowledgeBasePath,
-                content => { _prompt.Append(content).AppendLine(); },
-                "Knowledge base");
+            TextAsset json = Resources.Load<TextAsset>("KnowledgeBase");
+            if (json != null)
+            {
+                KnowledgeBase kb = JsonUtility.FromJson<KnowledgeBase>(json.text);
+                foreach (var item in kb.items)
+                {
+                    _prompt.AppendLine($"{item.type}");
+                    _prompt.AppendLine($"{item.category}");
+                    _prompt.AppendLine($"{item.headline}");
+                    _prompt.AppendLine($"{item.bias}");
+                    _prompt.AppendLine();
+                }
+            }
+            else
+            {
+                LogManager.Error("KnowledgeBase not found in Resources!");
+            }
         }
 
         /// <summary>
@@ -161,7 +133,7 @@ namespace Assets._Scripts.Managers
             }
             else
             {
-                Debug.LogWarning($"{fileLabel} file not found at: {path}");
+                LogManager.Warning($"{fileLabel} file not found at: {path}");
             }
         #endif
         }
@@ -173,15 +145,8 @@ namespace Assets._Scripts.Managers
         /// <param name="line">The line of text to add to the prompt and dialog.</param>
         public void AddLineToPrompt(string line)
         {
-            if (_prompt == null)
-            {
-                _prompt = new StringBuilder();
-            }
-
-            if (_dialog == null)
-            {
-                _dialog = new StringBuilder();
-            }
+            _prompt ??= new StringBuilder();
+            _dialog ??= new StringBuilder();
 
             _prompt.AppendLine(line);
             _dialog.AppendLine(line);

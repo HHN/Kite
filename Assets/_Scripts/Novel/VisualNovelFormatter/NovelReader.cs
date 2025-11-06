@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel.VisualNovelLoader;
+using Assets._Scripts.Utilities;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -315,13 +316,13 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             switch (type)
             {
                 case LogType.Warning:
-                    Debug.LogWarning(message);
+                    LogManager.Warning(message);
                     break;
                 case LogType.Error:
-                    Debug.LogError(message);
+                    LogManager.Error(message);
                     break;
                 default:
-                    Debug.Log(message);
+                    LogManager.Info(message);
                     break;
             }
         }
