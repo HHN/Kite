@@ -43,18 +43,31 @@
 		@media (hover: hover) and (pointer: fine) { #container { outline: 5px solid white; } }
 		@media (hover: none)  and (pointer: coarse){ #container { outline: none; } }
 
-		/* Loading-Overlay */
+		/* Loading-Overlay (mit Logo, Wortmarke, Progress) */
 		#loading{
 			position: absolute; inset: 0;
 			z-index:10; pointer-events:none; transition:opacity .35s ease;
 		}
 		#loading.hidden{ opacity:0; }
 
+		/* NEU: initial komplett aus dem Viewport schieben, damit nichts kurz oben links flackert */
+		#loading.preinit{
+			visibility: hidden;                 /* sicherheitshalber unsichtbar */
+			transform: translate(-300vw,-300vh);/* sehr weit off-screen */
+		}
+
+		/* Schwarzer Vorhang für die Überblende */
+		#blackout{
+			position:absolute; inset:0; background:#000;
+			opacity:0; pointer-events:none; z-index:20; /* über dem Loader */
+			transition: opacity .18s ease; /* erster Sprung: schnell zu Schwarz */
+		}
+
 		/* Kreis-Box */
 		.brand-mark{
 			position: absolute;
 			left: 50%;
-			top: var(--circle-top-px, 40px);                         /* Fallbacks für Linter */
+			top: var(--circle-top-px, 40px); /* Fallbacks für Linter/DevTools */
 			transform: translateX(-50%);
 			width:  var(--circle-size-px, 176px);
 			height: var(--circle-size-px, 176px);
@@ -101,25 +114,36 @@
 			width:0%; height:100%; background:var(--accent-orange, #F36E21);
 			border-radius:8px 0 0 8px; transition: width .2s ease;
 		}
+
+		/* Bewegungen reduzieren, wenn Systempräferenz aktiv ist */
+		@media (prefers-reduced-motion: reduce){
+			#loading{ transition:none; }
+			#blackout{ transition:none; }
+			.progress__fill{ transition:none; }
+		}
 	</style>
 </head>
 
 <body>
 <div id="container">
-	<div id="loading" role="status" aria-live="polite" aria-label="Ladevorgang">
+	<!-- Ladebild -->
+	<div id="loading" class="preinit" role="status" aria-live="polite" aria-label="Ladevorgang">
 		<!-- Kreis + Innenlogo -->
 		<div class="brand-mark">
-			<img src="Images/Kite_Logo_im_Kreis.png" alt="Kite-Logo" />
+			<img src="StreamingAssets/Kite_Logo_im_Kreis.png" alt="Kite-Logo" />
 		</div>
 
 		<!-- Unterhalb des Kreises: Wortmarke + Progress -->
 		<div class="below">
-			<img class="wordmark" src="Images/kite_logo_ohne_II.png" alt="kite Wortmarke" />
+			<img class="wordmark" src="StreamingAssets/kite_logo_ohne_II.png" alt="kite Wortmarke" />
 			<div class="progress" aria-hidden="true">
 				<div id="progress-fill" class="progress__fill"></div>
 			</div>
 		</div>
 	</div>
+
+	<!-- Schwarzer Vorhang für die Überblende -->
+	<div id="blackout" aria-hidden="true"></div>
 
 	<canvas id="game-canvas" data-pixel-art="false"></canvas>
 
@@ -143,13 +167,39 @@
 		const root      = document.documentElement;
 		const fillEl    = document.getElementById("progress-fill");
 		const loadingEl = document.getElementById("loading");
+		const blackout  = document.getElementById("blackout");
+
+		let revealed = false;
+		function revealLoader(){
+			if (revealed) return;
+			// Klasse entfernen NACHDEM Maße gesetzt wurden
+			loadingEl.classList.remove('preinit');
+			loadingEl.style.visibility = 'visible';
+			revealed = true;
+		}
 
 		function progressHandler(progress){
 			const pct = Math.max(0, Math.min(100, Math.round(progress*100)));
 			fillEl.style.width = pct + "%";
+
 			if (pct >= 100 || progress >= 0.999){
-				setTimeout(()=>loadingEl.classList.add("hidden"),150);
-				setTimeout(()=>loadingEl.remove(),600);
+				// 1) Schnell zu Schwarz blenden (über dem Loader)
+				blackout.style.opacity = 1;               // nutzt .18s ease (CSS)
+
+				// 2) Sobald schwarz: Loader unter dem Vorhang ausblenden
+				setTimeout(()=>{ loadingEl.classList.add("hidden"); }, 180);
+
+				// 3) Kurz schwarz stehen lassen, dann den Vorhang langsam aufziehen
+				setTimeout(()=>{
+					blackout.style.transition = "opacity .40s ease";
+					blackout.style.opacity = 0;
+				}, 180 + 120); // 120ms Standzeit in Schwarz
+
+				// 4) Aufräumen
+				setTimeout(()=>{
+					loadingEl.remove();
+					blackout.remove();
+				}, 180 + 120 + 450);
 			}
 		}
 
@@ -176,10 +226,15 @@
 			// 26,7% und 20,6% der Containerhöhe
 			root.style.setProperty("--circle-size-px", (h * 0.267) + "px");
 			root.style.setProperty("--circle-top-px",  (h * 0.206) + "px");
+
+			// Jetzt, wo alles positioniert ist, das Overlay ins Bild holen
+			// per rAF sicherstellen, dass Layout angewandt wurde
+			requestAnimationFrame(revealLoader);
 		}
 
 		createUnityInstance(canvas, config, progressHandler).then(function(instance){
-			canvas = instance.Module.canvas; onResize();
+			canvas = instance.Module.canvas;
+			onResize();
 		});
 
 		addEventListener("resize", onResize);
