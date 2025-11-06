@@ -171,11 +171,7 @@
       }
     },
     "com.unity.ide.rider": {
-<<<<<<< HEAD
-      "version": "3.0.36",
-=======
       "version": "3.0.38",
->>>>>>> main
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -231,11 +227,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.services.analytics": {
-<<<<<<< HEAD
-      "version": "6.0.3",
-=======
       "version": "6.1.1",
->>>>>>> main
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -273,11 +265,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
-<<<<<<< HEAD
-      "version": "1.4.6",
-=======
       "version": "1.6.0",
->>>>>>> main
       "depth": 0,
       "source": "builtin",
       "dependencies": {

@@ -78,7 +78,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void Start()
         {
             // Add current scene to back stack for navigation
-            BackStackManager.Instance().Push(SceneNames.FeedbackScene);
+            BackStackManager.Instance.Push(SceneNames.FeedbackScene);
 
             // Update text components with current font size settings
             FontSizeManager.Instance().UpdateAllTextComponents();
@@ -185,7 +185,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         #endif
                     
             // We go back to the explorer and don't want the back-button to bring us to the feedback scene again
-            BackStackManager.Instance().Clear();
+            BackStackManager.Instance.Clear();
             SceneLoader.LoadFoundersBubbleScene();
         }
 

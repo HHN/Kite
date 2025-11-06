@@ -1,17 +1,60 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using Assets._Scripts.Novel;
+using Assets._Scripts.Utilities;
+using Newtonsoft.Json;
+using UnityEngine;
+using UnityEngine.Networking;
 
 namespace Assets._Scripts.Managers
 {
+    
+    [System.Serializable]
+    public class KnowledgeItem
+    {
+        public string type;
+        public string category;
+        public string headline;
+        public string bias;
+    }
+    
+    [System.Serializable]
+    public class KnowledgeBase
+    {
+        public string title;
+        public List<KnowledgeItem> items;
+    }
+    
+    /// <summary>
+    /// Manages the process of building and handling dialog prompts for a visual novel.
+    /// This class is implemented as a singleton to ensure a single instance throughout the application.
+    /// </summary>
     public class PromptManager
     {
         private static PromptManager _instance;
         private StringBuilder _prompt;
         private StringBuilder _dialog;
 
+        private readonly string _promptPath;
+
+        /// <summary>
+        /// Provides functionality to manage prompts and dialogs for a visual novel.
+        /// Handles creation, formatting, storage, and retrieval of prompt and dialog text.
+        /// Implements a singleton pattern to maintain a single instance across the application.
+        /// </summary>
         private PromptManager()
         {
+            _promptPath = Path.Combine(Application.streamingAssetsPath, "Prompt.txt");
         }
 
+        /// <summary>
+        /// Provides access to the single instance of the PromptManager class.
+        /// Ensures that only one instance of PromptManager exists throughout the application's lifecycle,
+        /// adhering to the singleton design pattern.
+        /// </summary>
+        /// <returns>The single instance of the PromptManager.</returns>
         public static PromptManager Instance()
         {
             if (_instance == null)
@@ -82,7 +125,25 @@ namespace Assets._Scripts.Managers
             _prompt.Append("Hier ist der Dialog:");
         }
 
-        public void AddLineToPrompt(string line)
+        /// <summary>
+        /// Reads the content of a prompt file from the predefined path and appends it
+        /// to the current prompt using a specified callback for handling file content.
+        /// This method ensures the proper integration of external prompt data into the existing system.
+        /// </summary>
+        private void LoadPromptFromFile()
+        {
+            LoadTextFile(_promptPath,
+                content => { _prompt.Append(content).AppendLine(); },
+                "Prompt");
+        }
+
+        /// <summary>
+        /// Loads the knowledge base from a JSON file located in the Resources folder.
+        /// Parses the JSON content into a KnowledgeBase object and appends its items to the prompt.
+        /// Ensures the inclusion of details such as type, category, headline, and bias for each knowledge item.
+        /// Logs an error message if the knowledge base file is not found.
+        /// </summary>
+        private void LoadKnowledgeBaseFromFile()
         {
             TextAsset json = Resources.Load<TextAsset>("KnowledgeBase");
             if (json != null)

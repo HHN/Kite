@@ -72,6 +72,7 @@ namespace Assets._Scripts.Novel.VisualNovelLoader
                 }
                 else
                 {
+                    Debug.Log(jsonString);
                     NovelListWrapper kiteNovelList = JsonConvert.DeserializeObject<NovelListWrapper>(jsonString);
                     callback(kiteNovelList?.VisualNovels);
                 }

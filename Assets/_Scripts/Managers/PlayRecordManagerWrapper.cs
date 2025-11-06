@@ -73,28 +73,6 @@ namespace Assets._Scripts.Managers
             EnsureCache();
             return _cache.GetValueOrDefault(novel, 0);
         }
-        
-        /// <summary>
-        /// Updates the number of plays for the Vermieter novel to the specified value.
-        /// </summary>
-        /// <param name="numberOfPlaysForVermieterNovel">
-        /// The updated number of plays for the Vermieter novel.
-        /// </param>
-        public void SetNumberOfPlaysForVermieterNovel(int numberOfPlaysForVermieterNovel)
-        {
-            this.numberOfPlaysForVermieterNovel = numberOfPlaysForVermieterNovel;
-        }
-        
-        /// <summary>
-        /// Retrieves the current number of plays for the Vermieter novel.
-        /// </summary>
-        /// <returns>
-        /// The total number of times the Vermieter novel has been played.
-        /// </returns>
-        public int GetNumberOfPlaysForVermieterNovel()
-        {
-            return numberOfPlaysForVermieterNovel;
-        }
 
         /// <summary>
         /// Sets the number of plays for the specified novel.
