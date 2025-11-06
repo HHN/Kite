@@ -1,0 +1,16 @@
+{
+  "idNumberOfNovel": 42,
+  "titleOfNovel": "ServerTest",
+  "designationOfNovel": "",
+  "descriptionOfNovel": "Test auf Server",
+  "contextForPrompt": "Servertestprompt",
+  "startTalkingPartnerExpression": "NeutralRelaxed",
+  "talkingPartner01": "Mutter",
+  "talkingPartner02": "Vater",
+  "talkingPartner03": "",
+  "isKiteNovel": true,
+  "novelColor": "#ff8000",
+  "novelFrameColor": "#e8e8e8",
+  "folderName": "ServerTest",
+  "wordsToReplace": []
+}
