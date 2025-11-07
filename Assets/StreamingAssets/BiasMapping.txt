@@ -1,27 +1,3 @@
-<<<<<<< HEAD
-BiasesAgainstWomenWithChildren: Verzerrungen gegenüber Frauen mit Kindern
-WorkLifeBalanceExpectations: Work-Life-Balance-Erwartungen
-GenderSpecificStereotypes: Geschlechtsspezifische Stereotypen
-UndervaluationFemaleManagedCompany: Unterbewertung weiblich geführter Unternehmen
-BiasInThePerceptionOfLeadershipSkills: Verzerrung in der Wahrnehmung von Führungsfähigkeiten
-AccessToFinancing: Zugang zu Finanzierung
-ExpectationsRegardingFamilyPlanning: Erwartungen bezüglich Familienplanung
-SocioeconomicBiases: Sozioökonomische Verzerrungen
-TightropeBias: Tightrope Bias
-Microaggression: Mikroaggression
-StereotypesAboutWomenInNonTraditionalIndustries: Stereotypen über Frauen in nicht traditionellen Branchen
-ConfirmationBias: Bestätigungsbias
-RiskAversionBias: Risikovermeidungs-Bias
-GenderPayGap: Geschlechterlohngefälle
-BenevolentSexism: Wohlwollender Sexismus
-ProveItAgainBias: Prove-it-Again-Bias
-Heteronormativity: Heteronormativität
-UnconsciousBiasInCommunication: Unbewusste Verzerrung in der Kommunikation
-PerformanceAttributionBias: Verzerrung der Leistungszuordnung
-Tokenism: Tokenismus
-BiasInMediaAndAdvertising: Verzerrung in Medien und Werbung
-AgeAndGenerationsBiases: Alters- und Generationenbias
-=======
 AccessToFinancing: Zugang zu Finanzierung
 GenderPayGap: Geschlechterlohngefälle
 UndervaluationFemaleManagedCompany: Unterbewertung weiblich geführter Unternehmen
@@ -41,4 +17,3 @@ TightropeBias: Tightrope Bias
 Microaggression: Mikroaggression
 PerformanceAttributionBias: Verzerrung der Leistungszuordnung
 UnconsciousBiasInCommunication: Unbewusste Verzerrung in der Kommunikation
->>>>>>> main

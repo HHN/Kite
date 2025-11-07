@@ -12,9 +12,4 @@ Notarin: 10
 Sachbearbeiter: 11
 Kundin: 12
 
-<<<<<<< HEAD
-Sachbearbeiter: 14
-
-=======
->>>>>>> main
 

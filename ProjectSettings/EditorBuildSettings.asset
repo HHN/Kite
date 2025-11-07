@@ -50,5 +50,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/LegalInformation/LegalInformationScene.unity
     guid: 1404938a584fc644fa72891c9304b0ca
+  - enabled: 1
+    path: Assets/_Scenes/FoundersBubbleScene.unity
+    guid: 3b669d0e7f365cc4c8c5e6662804eb7f
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

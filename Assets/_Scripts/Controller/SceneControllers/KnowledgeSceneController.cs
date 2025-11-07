@@ -63,6 +63,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             BackStackManager.Instance.Push(SceneNames.KnowledgeScene);
 
             _biases = MappingManager.BIASES;
+            Debug.Log(_biases.Count);
             InitializeCategoryButtons();
 
             InitializeButtonActions();
@@ -89,6 +90,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             _categories = _biases.Values.Select(b => b.category).Distinct();
             foreach (string category in _categories)
             {
+                Debug.Log("!!!");
                 GameObject categoryGameObject = Instantiate(categoryButtonPrefab, biasInformation.transform);
                 categoryGameObject.name = category;
                 categoryGameObject.GetComponentInChildren<TextMeshProUGUI>().text = category;

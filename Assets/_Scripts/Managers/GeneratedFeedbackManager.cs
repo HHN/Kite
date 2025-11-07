@@ -44,7 +44,7 @@ namespace Assets._Scripts.Managers
             }
         }
 
-        // ReSharper disable Unity.PerformanceAnalysis
+        
         public void LoadFeedbacks()
         {
             // 1) Mapping asynchron laden
@@ -116,15 +116,15 @@ namespace Assets._Scripts.Managers
             {
                 if (best.IsFullMatch)
                 {
-                    Debug.Log($"[Matcher] Vollständiger Sub-Pfad gefunden (Länge={best.Entry.Path.Count}):");
-                    Debug.Log("  " + string.Join(" -> ", best.Entry.Path));
+                    //Debug.Log($"[Matcher] Vollständiger Sub-Pfad gefunden (Länge={best.Entry.Path.Count}):");
+                    //Debug.Log("  " + string.Join(" -> ", best.Entry.Path));
                     // Vollständiger Match → Feedback ausgeben
                     return best.Entry.Feedback;
                 }
                 else
                 {
-                    Debug.Log($"[Matcher] KEIN vollständiger Sub-Pfad. Bester Teiltreffer: {best.MatchedCount} Treffer von {best.Entry.Path.Count}");
-                    Debug.Log("  Bester (teilweiser) Sub-Pfad: " + string.Join(" -> ", best.Entry.Path));
+                    //Debug.Log($"[Matcher] KEIN vollständiger Sub-Pfad. Bester Teiltreffer: {best.MatchedCount} Treffer von {best.Entry.Path.Count}");
+                    //Debug.Log("  Bester (teilweiser) Sub-Pfad: " + string.Join(" -> ", best.Entry.Path));
 
                     var full = string.Join(" -> ", best.FullMainPath);
                     var sub  = string.Join(", ", best.Entry.Path);
@@ -419,7 +419,7 @@ private IEnumerator LoadAllFeedbackWithMappingAsync(
             .ToArray();
 
         WebLogger.Log($"Verfügbare Novel-IDs mit Feedback: {string.Join(", ", ids)}");
-        Debug.Log($"Verfügbare Novel-IDs mit Feedback: {string.Join(", ", ids)}");
+        //Debug.Log($"Verfügbare Novel-IDs mit Feedback: {string.Join(", ", ids)}");
     }
     
     /// <summary>

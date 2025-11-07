@@ -164,6 +164,11 @@ namespace Assets._Scripts.Controller.SceneControllers
             novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
             OfflineFeedbackManager.Instance().Clear();
 
+            // --- Automatisches Feedback (aus v2 übernommen) ---
+            GeneratedFeedbackManager.Instance.Reset();
+            GeneratedFeedbackManager.Instance.SetIdForNovel((int)novelToPlay.id);
+            // (Hinweis: LoadFeedbacks() wird global an anderer Stelle erwartet. Falls nötig, dort aufrufen.)
+
             StartCoroutine(BootstrapAudioAndInit());
         }
 
@@ -353,7 +358,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             {
                 if (!string.IsNullOrEmpty(entry.characterName) && entry.prefab != null)
                 {
-                    // TryAdd vermeidet doppelte Contains-Prüfung
                     _characterToPrefabMap.TryAdd(entry.characterName, entry.prefab);
                 }
             }
@@ -405,10 +409,10 @@ namespace Assets._Scripts.Controller.SceneControllers
             CharacterExpressions.Clear();
 
             List<int> characters = novelToPlay.novelEvents
-                .Select(e => e.character) // Select the `character` field
-                .Where(c => c != 0 && c != 1 && c != 4) // Exclude values 0, 1 and 4
-                .Distinct() // Optional: Remove duplicates 
-                .ToList(); // Convert the result to list
+                .Select(e => e.character) 
+                .Where(c => c != 0 && c != 1 && c != 4) 
+                .Distinct()
+                .ToList();
 
             foreach (var characterId in characters)
             {
@@ -450,11 +454,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Handles the confirmation input during gameplay. Executes various checks
-        /// and behaviors based on the current state of the visual novel, such as
-        /// skipping typing effects, processing touch interactions, or advancing
-        /// to the next event in the story sequence. Cancels any ongoing text-to-speech
-        /// playback and ensures proper state transitions for confirmation handling.
+        /// Handles the confirmation input during gameplay.
         /// </summary>
         public void OnConfirm()
         {
@@ -477,8 +477,6 @@ namespace Assets._Scripts.Controller.SceneControllers
 
                 _typingWasSkipped = true;
                 SetTyping(false);
-
-
                 return;
             }
 
@@ -491,24 +489,12 @@ namespace Assets._Scripts.Controller.SceneControllers
             StartCoroutine(PlayNextEvent());
         }
 
-        /// <summary>
-        /// Reads the last saved or triggered event message, uses the text-to-speech manager
-        /// to vocalize it, and then proceeds to play the next event in the scene.
-        /// </summary>
-        /// <returns>
-        /// An IEnumerator for coroutine execution to manage the asynchronous operations
-        /// of text-to-speech and event progression.
-        /// </returns>
         public IEnumerator ReadLast()
         {
             StartCoroutine(TextToSpeechManager.Instance.Speak(TextToSpeechManager.Instance.GetLastMessage()));
             yield return StartCoroutine(PlayNextEvent());
         }
 
-        /// <summary>
-        /// Advances the visual novel scene by registering the current scene in the back stack
-        /// and starting the process to play the next event in the sequence.
-        /// </summary>
         public void Continue()
         {
             if (!_audioReady)
@@ -521,15 +507,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             StartCoroutine(PlayNextEvent());
         }
 
-        /// <summary>
-        /// Executes the next event in the visual novel sequence by managing the event flow,
-        /// handling event-specific preparations, saving the event history, and processing
-        /// various types of events such as background changes, character actions, messages,
-        /// and more. If the event type signals the end of the sequence or requires transitioning
-        /// to the next event, the method recursively triggers itself to continue execution.
-        /// </summary>
-        /// <returns>An IEnumerator used for coroutine execution, allowing asynchronous
-        /// event handling within the visual novel sequence.</returns>
         private IEnumerator PlayNextEvent()
         {
             if (isPaused) yield break;
@@ -638,11 +615,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
         }
 
-        /// <summary>
-        /// Waits for the Text-to-Speech manager to finish speaking before proceeding.
-        /// This ensures that dialogue or text playback has completed before continuing execution.
-        /// </summary>
-        /// <returns>An IEnumerator to be used in coroutine execution, allowing for asynchronous waiting.</returns>
         private IEnumerator WaitForSpeechToFinish()
         {
             if (_speakingCoroutine == null) yield break;
@@ -653,11 +625,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
         }
 
-        /// <summary>
-        /// Prepares for the execution of the next visual novel event by performing necessary cleanup
-        /// and state adjustments such as resetting interaction flags, skipping typewriter animations,
-        /// and evaluating event-specific conditions.
-        /// </summary>
         private void HandleEventPreparation()
         {
             if (selectOptionContinueConversation != null)
@@ -672,27 +639,18 @@ namespace Assets._Scripts.Controller.SceneControllers
                 currentTypeWriter = null;
             }
 
-            // Check if the event meets the conditions 
             if (nextEventToPlay.id.StartsWith("OptionsLabel") && !GameManager.Instance.calledFromReload)
             {
-                // Cut off "OptionsLabel" and save the rest
                 string numericPart = nextEventToPlay.id.Substring("OptionsLabel".Length);
 
-                // Check if the rest is a number
                 if (int.TryParse(numericPart, out _))
                 {
-                    // If the rest is a number, save the event
-                    _optionsId[0] = _optionsId[1]; // Move last event
-                    _optionsId[1] = nextEventToPlay.id; // Save current event
+                    _optionsId[0] = _optionsId[1];
+                    _optionsId[1] = nextEventToPlay.id;
                 }
             }
         }
 
-        /// <summary>
-        /// Handles the playback of sound events during the visual novel's progression based on the specified event parameters.
-        /// Adjusts the flow of the novel by managing sound playback and timing for later events.
-        /// </summary>
-        /// <param name="novelEvent">The visual novel event containing information about the sound to play and related behaviors such as waiting for user confirmation.</param>
         private void HandlePlaySoundEvent(VisualNovelEvent novelEvent)
         {
             if (!_clipsDumpedOnce)
@@ -762,27 +720,16 @@ namespace Assets._Scripts.Controller.SceneControllers
             StartCoroutine(StartNextEventInOneSeconds(1));
         }
 
-
-        /// <summary>
-        /// Handles an event to play animations specified in the given visual novel event.
-        /// If the animation is defined in the event, it prepares and executes the animation process.
-        /// </summary>
-        /// <param name="novelEvent">The visual novel event that contains animation data to be processed.</param>
         private void HandlePlayAnimationEvent(VisualNovelEvent novelEvent)
         {
             SetNextEvent(novelEvent);
 
             if (novelEvent.animationToPlay != "NONE")
             {
-                //currentAnimation = Instantiate(novelEvent.animationToPlay, viewPortOfImages.transform);   //TODO: Anpassen, siehe oben.
+                //currentAnimation = Instantiate(novelEvent.animationToPlay, viewPortOfImages.transform);
             }
         }
 
-        /// <summary>
-        /// Handles GPT prompt events for a given visual novel event, managing server calls
-        /// and user confirmation when necessary.
-        /// </summary>
-        /// <param name="novelEvent">The visual novel event that contains the GPT-related prompt data.</param>
         private void HandleGptPromptEvent(VisualNovelEvent novelEvent)
         {
             SetNextEvent(novelEvent);
@@ -798,14 +745,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             GetCompletionServerCall call = Instantiate(gptServerCallPrefab).GetComponent<GetCompletionServerCall>();
             call.sceneController = this;
             
-            //GptRequestEventOnSuccessHandler onSuccessHandler = new GptRequestEventOnSuccessHandler            //TODO: Wegen CompletionHandler schauen. Vermutlich reicht einer.
-            //{
-            //    VariablesNameForGptPrompt = novelEvent.variablesNameForGptPrompt,
-            //    CompletionHandler = GptCompletionHandlerManager.Instance()
-            //        .GetCompletionHandlerById(novelEvent.gptCompletionHandler)
-            //};
-            //call.OnSuccessHandler = onSuccessHandler;
-            
+            // Optionaler CompletionHandler (auskommentiert in Originalen)
             call.prompt = ReplacePlaceholders(novelEvent.gptPrompt, novelToPlay.GetGlobalVariables());
             call.SendRequest();
             DontDestroyOnLoad(call.gameObject);
@@ -819,12 +759,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             StartCoroutine(PlayNextEvent());
         }
 
-        /// <summary>
-        /// Handles the saving of persistent events by processing the specified visual novel event,
-        /// writing user input to a file, and initiating the next event playback.
-        /// </summary>
-        /// <param name="novelEvent">The visual novel event containing data such as type, value,
-        /// and other attributes related to the event being processed.</param>
         private void HandleSavePersistentEvent(VisualNovelEvent novelEvent)
         {
             SetNextEvent(novelEvent);
@@ -832,12 +766,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             StartCoroutine(PlayNextEvent());
         }
 
-        /// <summary>
-        /// Handles the process of saving a variable associated with a visual novel event,
-        /// updates the global variables, and triggers the next event in the sequence.
-        /// </summary>
-        /// <param name="novelEvent">The visual novel event containing the type-value pair to be saved
-        /// and other event-related data.</param>
         private void HandleSaveVariableEvent(VisualNovelEvent novelEvent)
         {
             SetNextEvent(novelEvent);
@@ -845,11 +773,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             StartCoroutine(PlayNextEvent());
         }
 
-        /// <summary>
-        /// Processes a VisualNovelEvent by evaluating a boolean expression, updating global variables,
-        /// and setting the next event to play in the visual novel.
-        /// </summary>
-        /// <param name="novelEvent">The event containing the boolean expression to evaluate, the variable type for storing the result, and the event transition data.</param>
         private void HandleCalculateVariableFromBooleanExpressionEvent(VisualNovelEvent novelEvent)
         {
             SetNextEvent(novelEvent);
@@ -858,13 +781,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             StartCoroutine(PlayNextEvent());
         }
 
-        /// <summary>
-        /// Evaluates a boolean expression represented as a string and returns the resulting boolean value.
-        /// </summary>
-        /// <param name="expression">The boolean expression to be evaluated. The expression should follow valid
-        /// syntax rules and can include placeholders or boolean literals (true/false).</param>
-        /// <returns>True if the expression evaluates successfully to true, false if it evaluates to false
-        /// or if an error occurs during evaluation.</returns>
         private static bool EvaluateBooleanExpression(string expression)
         {
             if (string.IsNullOrWhiteSpace(expression)) return false;
@@ -886,10 +802,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
         }
 
-        /// <summary>
-        /// Handles the addition of feedback to the offline feedback system and queues the next event in the visual novel sequence.
-        /// </summary>
-        /// <param name="novelEvent">The current visual novel event to process, containing details such as text or value to log for feedback purposes.</param>
         private void HandleAddFeedbackEvent(VisualNovelEvent novelEvent)
         {
             SetNextEvent(novelEvent);
@@ -897,12 +809,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             StartCoroutine(PlayNextEvent());
         }
 
-        /// <summary>
-        /// Handles the addition of feedback based on the specified condition in a visual novel event.
-        /// It evaluates the global variable associated with the event and adds a feedback line
-        /// if the condition is met. Proceeds to play the next event afterward.
-        /// </summary>
-        /// <param name="novelEvent">The visual novel event containing the condition and feedback information.</param>
         private void HandleAddFeedbackUnderConditionEvent(VisualNovelEvent novelEvent)
         {
             SetNextEvent(novelEvent);
@@ -916,36 +822,19 @@ namespace Assets._Scripts.Controller.SceneControllers
             StartCoroutine(PlayNextEvent());
         }
 
-        /// <summary>
-        /// Handles the marking of bias as relevant for a given visual novel event, updates the prompt with bias information,
-        /// and proceeds to execute the next event.
-        /// </summary>
-        /// <param name="novelEvent">The current visual novel event containing bias-related data.</param>
         private void HandleMarkBiasEvent(VisualNovelEvent novelEvent)
         {
             SetNextEvent(novelEvent);
             string biasInformation = novelEvent.relevantBias;
             PromptManager.Instance().AddFormattedLineToPrompt("Hinweis", biasInformation);
-            // NovelBiasManager.Instance().MarkBiasAsRelevant(novelEvent.relevantBias);
             StartCoroutine(PlayNextEvent());
         }
 
-        /// <summary>
-        /// Writes user input to a file by saving the provided type and content
-        /// using the PlayerDataManager for persistent storage.
-        /// </summary>
-        /// <param name="key">The unique type representing the data to save.</param>
-        /// <param name="content">The content or value to associate with the type.</param>
         private void WriteUserInputToFile(string key, string content)
         {
             PlayerDataManager.Instance().SavePlayerData(key, content);
         }
 
-        /// <summary>
-        /// This method sets the next event, updates the background using the NovelImageController, and initiates scrolling and timing
-        /// for the next event to occur.
-        /// </summary>
-        /// <param name="novelEvent">The visual novel event to be handled.</param>
         private void HandleBackgroundEvent(VisualNovelEvent novelEvent)
         {
             SetNextEvent(novelEvent);
@@ -955,12 +844,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             StartCoroutine(StartNextEventInOneSeconds(1));
         }
 
-        /// <summary>
-        /// Handles the event where a character joins the scene during the visual novel flow.
-        /// Sets up the event and updates the character display using the image controller.
-        /// Also manages timing for the next event transition.
-        /// </summary>
-        /// <param name="novelEvent">The visual novel event containing information about the character joining.</param>
         private void HandleCharacterJoinEvent(VisualNovelEvent novelEvent)
         {
             SetNextEvent(novelEvent);
@@ -969,11 +852,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             StartCoroutine(StartNextEventInOneSeconds(1));
         }
 
-        /// <summary>
-        /// Handles the exit of a character during a visual novel event. This involves setting the next event,
-        /// destroying the character's current image, and transitioning to the next event with a delay.
-        /// </summary>
-        /// <param name="novelEvent">The visual novel event that triggers the character's exit.</param>
         private void HandleCharacterExitEvent(VisualNovelEvent novelEvent)
         {
             SetNextEvent(novelEvent);
@@ -983,38 +861,26 @@ namespace Assets._Scripts.Controller.SceneControllers
             StartCoroutine(StartNextEventInOneSeconds(1));
         }
 
-        /// <summary>
-        /// Handles the process of displaying a visual novel message event.
-        /// This includes setting up character expressions, updating the conversation content,
-        /// and preparing for any required user confirmation or proceeding to the next event.
-        /// </summary>
-        /// <param name="novelEvent">The event containing details to display, such as message text, character ID, and expression type.</param>
         private void HandleShowMessageEvent(VisualNovelEvent novelEvent)
         {
-            // Start a speaking coroutine for the text of this event
             CreateSpeakingCoroutine(novelEvent.text);
 
-            // Set the next event in the sequence
             SetNextEvent(novelEvent);
 
-            // Store the character ID for this event
             _novelCharacter = novelEvent.character;
 
-            // Check if this is a valid character that requires expressions
             if (!CharacterExpressions.ContainsKey(_novelCharacter) && _novelCharacter != 0 && _novelCharacter != 1 && _novelCharacter != 4)
             {
                 LogManager.Warning($"Character ID {_novelCharacter} is not registered.");
                 return;
             }
 
-            // Update the character's facial expression if valid
             if (CharacterExpressions.ContainsKey(_novelCharacter) && _novelCharacter != 0 && _novelCharacter != 1 && _novelCharacter != 4)
             {
                 CharacterExpressions[_novelCharacter] = novelEvent.expressionType;
                 _novelImagesController.SetFaceExpression(_novelCharacter, CharacterExpressions[_novelCharacter]);
             }
 
-            // Add message content if this event should be shown
             if (novelEvent.show)
             {
                 conversationContent.AddContent(novelEvent, this);
@@ -1022,24 +888,15 @@ namespace Assets._Scripts.Controller.SceneControllers
                 AddEntryToPlayThroughHistory(CharacterTypeHelper.ValueOf(novelEvent.character), novelEvent.text);
             }
 
-            // Wait for user confirmation if required
             if (novelEvent.waitForUserConfirmation)
             {
                 SetWaitingForConfirmation(true);
                 return;
             }
 
-            // Start the next event after a delay
             StartCoroutine(StartNextEventInOneSeconds(1));
         }
 
-        /// <summary>
-        /// Handles the addition of a choice event within the visual novel.
-        /// It processes the event, updates the conversation content, checks for user confirmation,
-        /// and integrates it into the text-to-speech system.
-        /// </summary>
-        /// <param name="novelEvent">The visual novel event containing the choice
-        /// details to be handled.</param>
         private void HandleAddChoiceEvent(VisualNovelEvent novelEvent)
         {
             SetNextEvent(novelEvent);
@@ -1056,55 +913,46 @@ namespace Assets._Scripts.Controller.SceneControllers
             StartCoroutine(PlayNextEvent());
         }
 
-        /// <summary>
-        /// Handles the event of displaying choices during a visual novel sequence.
-        /// This involves reading choices text via text-to-speech, enabling animations,
-        /// logging the event to playthrough history, and updating the conversation content.
-        /// </summary>
-        /// <param name="novelEvent">The visual novel event containing the character and dialogue options to display.</param>
         private void HandleShowChoicesEvent(VisualNovelEvent novelEvent)
         {
             StartCoroutine(TextToSpeechManager.Instance.ReadChoice());
 
-            // Enable animations when showing choices
             AnimationFlagSingleton.Instance().SetFlag(true);
 
-            // Log the event to the playthrough history, including the character and their dialogue
             AddEntryToPlayThroughHistory(CharacterTypeHelper.ValueOf(novelEvent.character), novelEvent.text);
 
-            // Add the conversation content to the UI or dialogue system
             conversationContent.AddContent(novelEvent, this);
         }
 
-        /// <summary>
-        /// Handles the completion of a visual novel event by updating the player's novel history, triggering animations, and deciding
-        /// the next scene to load based on the completed novel's title.
-        /// </summary>
         public void HandleEndNovelEvent()
         {
             VisualNovelNames currentNovel = VisualNovelNamesHelper.ValueOf((int)novelToPlay.id);
 
+            // --- Automatisches Feedback ziehen (Ansatz aus v2) ---
+            if (GeneratedFeedbackManager.Instance.HasEventsForId((int)novelToPlay.id))
+            {
+                // optionales Logging
+                novelToPlay.feedback = GeneratedFeedbackManager.Instance.GetFeedback();
+                if (!string.IsNullOrEmpty(novelToPlay.feedback))
+                {
+                    novelToPlay.feedback = novelToPlay.feedback.Replace("**", "");
+                    SaveDialogToHistory(novelToPlay.feedback);
+                }
+            }
+
             PlayerDataManager.Instance().SetNovelHistory(playThroughHistory);
             PlayThroughCounterAnimationManager.Instance().SetAnimation(true, currentNovel);
 
-            // Check if the current novel is the introductory dialogue
             if (novelToPlay.title == "Einstiegsdialog")
             {
-                // Load the FoundersBubbleScene to navigate there after the introductory dialogue
                 SceneLoader.LoadFoundersBubbleScene();
-                return; // Exit the method to prevent further scenes from being loaded
+                return;
             }
             
             PlayRecordManager.Instance().IncreasePlayCounterForNovel(currentNovel);
             SceneLoader.LoadFeedbackScene();
         }
 
-        /// <summary>
-        /// Waits for a specified amount of time before initiating the next event in the visual novel sequence.
-        /// Updates character expressions if applicable during the wait.
-        /// </summary>
-        /// <param name="second">The duration, in seconds, to wait before starting the next event.</param>
-        /// <returns>An IEnumerator used to control the timing of the next event.</returns>
         private IEnumerator StartNextEventInOneSeconds(float second)
         {
             if (_novelCharacter != 0 && CharacterExpressions.ContainsKey(_novelCharacter))
@@ -1121,11 +969,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             StartCoroutine(PlayNextEvent());
         }
 
-        /// <summary>
-        /// Displays the player's response to the conversation and handles updating the playthrough history and UI elements.
-        /// </summary>
-        /// <param name="message">The response message from the player that will be displayed.</param>
-        /// <param name="show">Determines whether to display the player's response in the UI.</param>
         public void ShowAnswer(string message, bool show)
         {
             if (!show) return;
@@ -1135,49 +978,28 @@ namespace Assets._Scripts.Controller.SceneControllers
             ScrollToBottom();
         }
 
-        /// <summary>
-        /// Sets the next visual novel event to play based on the provided event ID.
-        /// </summary>
-        /// <param name="id">The unique identifier of the visual novel event to be set as the next event.</param>
         public void SetNextEvent(string id)
         {
             nextEventToPlay = _novelEvents[id];
         }
 
-        /// <summary>
-        /// Sets the next visual novel event to play based on the provided event's next ID.
-        /// </summary>
-        /// <param name="novelEvent">The current visual novel event that specifies the ID of the next event to play.</param>
         private void SetNextEvent(VisualNovelEvent novelEvent)
         {
             string nextEventID = novelEvent.nextId;
             nextEventToPlay = _novelEvents[nextEventID];
         }
 
-        /// <summary>
-        /// Scrolls the chat view to display the latest content at the bottom of the scrollable area
-        /// and updates all text components to reflect any font size changes.
-        /// </summary>
         public void ScrollToBottom()
         {
             StartCoroutine(chatScroll.ScrollToBottom());
             FontSizeManager.Instance().UpdateAllTextComponents();
         }
 
-        /// <summary>
-        /// Sets the state of whether the system is waiting for user confirmation.
-        /// </summary>
-        /// <param name="value">A boolean indicating whether the system should be waiting for confirmation (true) or not (false).</param>
         public void SetWaitingForConfirmation(bool value)
         {
             isWaitingForConfirmation = value;
         }
 
-        /// <summary>
-        /// Sets the typing state for the scene controller. Updates internal state and
-        /// handles confirmation logic depending on the typing state and current conditions.
-        /// </summary>
-        /// <param name="typing">A boolean indicating whether typing is currently in progress.</param>
         public void SetTyping(bool typing)
         {
             if (typing || !isWaitingForConfirmation) return;
@@ -1187,17 +1009,13 @@ namespace Assets._Scripts.Controller.SceneControllers
             float delay = WaitingTime;
             if (_typingWasSkipped)
             {
-                delay = 0f; // Skip waiting time
-                _typingWasSkipped = false; // Reset flag
+                delay = 0f; 
+                _typingWasSkipped = false; 
             }
 
             StartCoroutine(StartNextEventInOneSeconds(delay));
         }
 
-        /// <summary>
-        /// Handles the completion of the current animation, setting the controller to a confirmation waiting state
-        /// and safely destroying the current animation object if it exists.
-        /// </summary>
         public void AnimationFinished()
         {
             SetWaitingForConfirmation(true);
@@ -1208,22 +1026,15 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Adds a new entry to the playthrough history, including the character's role and associated dialogue text.
+        /// Fügt zur History hinzu (bevorzugt v1) und registriert das Ereignis beim GeneratedFeedbackManager (aus v2).
         /// </summary>
-        /// <param name="characterRole">The role of the character (e.g., Player, Intro, etc.) who is speaking or being referenced.</param>
-        /// <param name="text">The dialogue text or content to log for the character.</param>
         private void AddEntryToPlayThroughHistory(CharacterRole characterRole, string text)
         {
             playThroughHistory.Add(CharacterTypeHelper.GetNameOfCharacter(characterRole) + ": " + text);
+            // --- Automatisches Feedback: Event mitschreiben ---
+            GeneratedFeedbackManager.Instance.SetEvent(text);
         }
 
-        /// <summary>
-        /// Replaces placeholders in the specified text with corresponding values from the replacement dictionary.
-        /// Placeholders are defined within "&gt;&lt;" in the text and replaced with mapped values from the dictionary.
-        /// </summary>
-        /// <param name="text">The input text containing placeholders to be replaced.</param>
-        /// <param name="replacements">A dictionary containing the keys and their associated replacement values.</param>
-        /// <returns>The text with placeholders replaced by the corresponding values from the replacement dictionary. If no match is found for a placeholder, it remains unchanged.</returns>
         public static string ReplacePlaceholders(string text, Dictionary<string, string> replacements)
         {
             return Regex.Replace(text, @"\>(.*?)\<", match =>
@@ -1233,51 +1044,33 @@ namespace Assets._Scripts.Controller.SceneControllers
             });
         }
 
-        /// <summary>
-        /// Adds a specified path value to the current visual novel's progression path.
-        /// This is used to track the player's choices and the storyline path they are following.
-        /// </summary>
-        /// <param name="pathValue">The integer value representing the path to be added to the visual novel's progression.</param>
         public void AddPathToNovel(int pathValue)
         {
             novelToPlay.AddToPath(pathValue);
         }
 
-        /// <summary>
-        /// Restores the game state to the last choice's point, including clearing the event history
-        /// and playthrough history beyond this point, and resetting the next event to play.
-        /// It ensures proper adjustments to the conversation content and removes any excess history
-        /// created after the restored choice.
-        /// </summary>
         public void RestoreChoice()
         {
-            // Check if there is a previous choice to restore
             if (string.IsNullOrEmpty(_optionsId[0])) return;
 
-            // The ID of the event we want to restore to 
             string eventIdToRestore = _optionsId[0];
 
-            // Find the index of the event in the eventHistory list
             int indexToRestore = eventHistory.FindIndex(e => e.id == eventIdToRestore);
-            if (indexToRestore == -1) return; // If the event is found in the history
+            if (indexToRestore == -1) return;
 
             if (_optionsCount != 0)
             {
                 indexToRestore -= _optionsCount;
             }
 
-            // Remove the event and all later events from the history
             if (indexToRestore >= 0)
             {
                 eventHistory.RemoveRange(indexToRestore, eventHistory.Count - indexToRestore);
             }
 
-            // Now update playThroughHistory
-            // Search from back to front for the second occurrence of ":"
             int colonCount = 0;
             int indexToRemoveFrom = -1;
 
-            // Traverse the list backwards
             for (int i = playThroughHistory.Count - 1; i >= 0; i--)
             {
                 if (playThroughHistory[i].Trim() != ":") continue;
@@ -1292,7 +1085,6 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             if (indexToRemoveFrom != -1)
             {
-                // Remove all entries from the found index onwards
                 playThroughHistory.RemoveRange(indexToRemoveFrom, playThroughHistory.Count - indexToRemoveFrom);
 
                 _conversationContentGuiController.ClearUIAfter(indexToRemoveFrom, _optionsCount);
@@ -1300,34 +1092,22 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             _optionsCount = 0;
 
-            // Set the previous event as the next event to play, if present
             if (indexToRestore <= 0) return;
 
             SetNextEvent(eventIdToRestore);
             StartCoroutine(PlayNextEvent());
         }
 
-        /// <summary>
-        /// Starts a coroutine to handle text-to-speech functionality for the given text.
-        /// Uses the TextToSpeechManager to initiate the speaking process.
-        /// </summary>
-        /// <param name="text">The text to be spoken by the coroutine.</param>
         private void CreateSpeakingCoroutine(string text)
         {
             _speakingCoroutine = TextToSpeechManager.Instance.Speak(text);
             StartCoroutine(_speakingCoroutine);
         }
 
-        /// <summary>
-        /// Displays or updates the hint message box associated with savegame functionality.
-        /// Ensures that only one instance of the message box is active at a time.
-        /// Initializes and activates the message box using the designated canvas.
-        /// </summary>
         private void ShowHintForSavegameMessageBox()
         {
             if (hintForSavegameMessageBox == null || canvas.IsNullOrDestroyed()) return;
 
-            // Check if the HintForSavegameMessageBox is already loaded and close it if necessary
             if (_hintForSavegameMessageBoxObject != null && !_hintForSavegameMessageBoxObject.IsNullOrDestroyed())
             {
                 _hintForSavegameMessageBoxObject.GetComponent<HintForSavegameMessageBox>().CloseMessageBox();
@@ -1337,12 +1117,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             _hintForSavegameMessageBoxObject.GetComponent<HintForSavegameMessageBox>().Activate();
         }
 
-        /// <summary>
-        /// Resumes the visual novel gameplay from a previously saved state. This method loads
-        /// the saved data, restores the current event, updates the playthrough history,
-        /// reconfigures the GUI, and initializes any required components to continue the
-        /// narrative seamlessly. The gameplay resumes from where the player last left off.
-        /// </summary>
         public void ResumeFromSavedState()
         {
             string novelId = NovelToPlay.id.ToString();
@@ -1354,7 +1128,6 @@ namespace Assets._Scripts.Controller.SceneControllers
                 return;
             }
 
-            // Search for the saved event in the list
             nextEventToPlay = novelToPlay.novelEvents.FirstOrDefault(e => e.id == savedData.currentEventId)
                               ?? novelToPlay.novelEvents[0];
 
@@ -1364,7 +1137,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             _optionsCount = savedData.optionCount;
             eventHistory = savedData.eventHistory;
 
-            // Call ReconstructGuiContent and check the return value 
             conversationContent.ReconstructGuiContent(savedData);
 
             long searchId = novelToPlay.id;
@@ -1373,7 +1145,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             {
                 if (savedData.CharacterPrefabData.TryGetValue(searchId, out CharacterData characterData))
                 {
-                    // Set character attributes based on the found controller
                     ApplyCharacterData(_novelImagesController, characterData);
                 }
             }
@@ -1385,12 +1156,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             StartCoroutine(PlayNextEvent());
         }
 
-        /// <summary>
-        /// Applies character data, such as appearance attributes, to the corresponding character controllers
-        /// managed by the specified NovelImageController.
-        /// </summary>
-        /// <param name="controller">The NovelImageController that manages the list of character controllers.</param>
-        /// <param name="characterData">The CharacterData object containing attribute indices for characters such as skin, hand, clothing, hair, and glasses.</param>
         private void ApplyCharacterData(NovelImageController controller, CharacterData characterData)
         {
             if (controller == null)
@@ -1432,11 +1197,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
         }
 
-        /// <summary>
-        /// Restores the character expressions from saved data by updating the visual novel image controller
-        /// with the previously saved expressions.
-        /// </summary>
-        /// <param name="savedData">An instance of <see cref="NovelSaveData"/> containing the saved character expressions data.</param>
         private void RestoreCharacterExpressions(NovelSaveData savedData)
         {
             foreach (var kvp in savedData.CharacterExpressions)
@@ -1445,10 +1205,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
         }
 
-        /// <summary>
-        /// Restarts the visual novel by deleting its associated save data, resetting the next event to the first
-        /// event in the novel, and starting the next event after a delay.
-        /// </summary>
         public void RestartNovel()
         {
             SaveLoadManager.DeleteNovelSaveData(novelToPlay.id.ToString());
@@ -1458,20 +1214,11 @@ namespace Assets._Scripts.Controller.SceneControllers
             StartCoroutine(StartNextEventInOneSeconds(2));
         }
 
-        /// <summary>
-        /// Retrieves the current visual novel event queued to play.
-        /// </summary>
-        /// <returns>The next event to play in the visual novel.</returns>
         public VisualNovelEvent GetCurrentEvent()
         {
             return nextEventToPlay;
         }
 
-        /// <summary>
-        /// Activates all message boxes within the conversation content by ensuring
-        /// that inactive message box GameObjects are set to active. This is used
-        /// to prepare message boxes for displaying conversation or narrative content.
-        /// </summary>
         private void ActivateMessageBoxes()
         {
             foreach (var messageBox in conversationContent.GuiContent)
@@ -1481,6 +1228,14 @@ namespace Assets._Scripts.Controller.SceneControllers
                     messageBox.SetActive(true);
                 }
             }
+        }
+
+        /// <summary>
+        /// Schreibt einen finalen Feedback-Dialogeintrag in die History (einfache Variante).
+        /// </summary>
+        private void SaveDialogToHistory(string text)
+        {
+            playThroughHistory.Add(text);
         }
     }
 }

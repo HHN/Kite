@@ -45,6 +45,8 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             var privacyManager = PrivacyAndConditionManager.Instance();
             bool alreadyAccepted = privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted();
+            
+            GeneratedFeedbackManager.Instance.LoadFeedbacks();
 
             if (alreadyAccepted)
             {
