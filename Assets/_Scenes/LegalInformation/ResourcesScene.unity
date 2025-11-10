@@ -179,9 +179,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 637309749329025831, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_text
-      value: "KITE II ist ein Forschungsprojekt, das eine interaktive Lernanwendung
-        entwickelt, um Biases in Gr\xFCndungssituationen sichtbar zu machen und Chancengleichheit
-        zu f\xF6rdern."
+      value: "Hier erf\xE4hrst du mehr \xFCber die Hintergr\xFCnde der App. Kite
+        wurde im Rahmen eines Forschungsprojekts entwickelt, um Gr\xFCnderinnen mit
+        KI-gest\xFCtztem Feedback zu unterst\xFCtzen. Ziel ist es, Barrieren im Gr\xFCndungsprozess
+        sichtbar zu machen und Wege aufzuzeigen, sie zu \xFCberwinden. Gef\xF6rdert
+        vom Bundesministerium f\xFCr Familie, Senioren, Frauen und Jugend \u2013
+        gemeinsam mit der Hochschule Heilbronn und der bga."
       objectReference: {fileID: 0}
     - target: {fileID: 637309749329025831, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_fontSize
@@ -237,19 +240,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2895109025299191246, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2895109025299191246, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895109025299191246, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2895109025299191246, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 440
       objectReference: {fileID: 0}
     - target: {fileID: 2895109025299191246, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -254.005
       objectReference: {fileID: 0}
     - target: {fileID: 4182624118086232445, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_Name
@@ -357,7 +364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5491047902461836143, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1951
+      value: -3078.025
       objectReference: {fileID: 0}
     - target: {fileID: 5491047902461836143, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -381,7 +388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7695375102312460022, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_text
-      value: KITE II
+      value: KITE Projektseite
       objectReference: {fileID: 0}
     - target: {fileID: 8021935313076137584, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1051,7 +1058,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "N\xDCTZLICHE LINKS"
+  m_text: "WEITERF\xDCHRENDE LINKS"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
   m_sharedMaterial: {fileID: 3127457962735927120, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
@@ -1140,9 +1147,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 637309749329025831, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_text
-      value: "Das Labor f\xFCr Sozioinformatik der Hochschule Heilbronn erforscht
-        das Zusammenspiel von Mensch, Gesellschaft und Technologie und entwickelt
-        digitale L\xF6sungen f\xFCr soziale Herausforderungen."
+      value: "Das Lab f\xFCr Sozioinformatik erforscht, wie digitale Technologien
+        unser Zusammenleben pr\xE4gen \u2013 und wie sie gesellschaftlich verantwortungsvoll
+        gestaltet werden k\xF6nnen. In Projekten zu Themen wie KI, Gender und Partizipation
+        entwickelt das Team praxisnahe Anwendungen, die soziale Wirkung entfalten."
       objectReference: {fileID: 0}
     - target: {fileID: 637309749329025831, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_fontSize
@@ -1198,19 +1206,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2895109025299191246, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2895109025299191246, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895109025299191246, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2895109025299191246, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 440
       objectReference: {fileID: 0}
     - target: {fileID: 2895109025299191246, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -191.005
       objectReference: {fileID: 0}
     - target: {fileID: 4182624118086232445, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_Name
@@ -1318,7 +1330,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5491047902461836143, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2885
+      value: -2029.015
       objectReference: {fileID: 0}
     - target: {fileID: 5491047902461836143, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1686,9 +1698,9 @@ RectTransform:
   - {fileID: 129885468}
   - {fileID: 2026998068}
   - {fileID: 1967328355}
-  - {fileID: 101105288}
-  - {fileID: 1937094620}
   - {fileID: 984744421}
+  - {fileID: 1937094620}
+  - {fileID: 101105288}
   - {fileID: 1471705520}
   m_Father: {fileID: 701747404}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1997,7 +2009,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540, y: -3352}
+  m_AnchoredPosition: {x: 540, y: -3634.03}
   m_SizeDelta: {x: 880, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1471705521
@@ -2378,7 +2390,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540, y: -2418}
+  m_AnchoredPosition: {x: 540, y: -2522.02}
   m_SizeDelta: {x: 880, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1937094621
@@ -2449,7 +2461,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540, y: -1484}
+  m_AnchoredPosition: {x: 540, y: -1536.01}
   m_SizeDelta: {x: 880, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1967328356
@@ -2676,9 +2688,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 637309749329025831, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_text
-      value: "Die Bundesweite Gr\xFCnderinnenagentur (bga) unterst\xFCtzt Frauen
-        bei der Gr\xFCndung.\nSie bietet Beratung, Informationen und Vernetzung.\nZiel
-        ist mehr Sichtbarkeit und Chancengleichheit f\xFCr Gr\xFCnderinnen."
+      value: "Die bga ist das zentrale Netzwerk f\xFCr Gr\xFCnderinnen in Deutschland.
+        Auf dem Netzwerkportal findest du Informationen, Beratungsm\xF6glichkeiten,
+        Veranstaltungen und Kontakte zu Expert*innen. Ob du dich gerade in der Planung
+        befindest oder bereits gegr\xFCndet hast \u2013 die bga unterst\xFCtzt dich
+        mit Wissen, Inspiration und Vernetzung."
       objectReference: {fileID: 0}
     - target: {fileID: 637309749329025831, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_fontSize
@@ -2718,23 +2732,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2895109025299191246, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2895109025299191246, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2895109025299191246, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2895109025299191246, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 440
       objectReference: {fileID: 0}
     - target: {fileID: 2895109025299191246, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -191.005
       objectReference: {fileID: 0}
     - target: {fileID: 4182624118086232445, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_Name
@@ -2842,7 +2856,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5491047902461836143, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1017
+      value: -1043.005
       objectReference: {fileID: 0}
     - target: {fileID: 5491047902461836143, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
