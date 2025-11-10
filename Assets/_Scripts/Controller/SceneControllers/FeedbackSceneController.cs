@@ -105,7 +105,6 @@ namespace Assets._Scripts.Controller.SceneControllers
                 SaveDialogToHistory(novelToPlay.feedback);
             }
 
-
             // If no feedback exists yet, request it from the server
             if (string.IsNullOrEmpty(novelToPlay.feedback))
             {
@@ -150,6 +149,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             // If feedback already exists, display it
             feedbackText.SetText(novelToPlay.feedback);
             loadingAnimation.SetActive(false);
+            StartCoroutine(TextToSpeechManager.Instance.Speak(novelToPlay.feedback));
         }
 
         /// <summary>
@@ -180,9 +180,10 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </remarks>
         public void OnFinishButton()
         {
-        #if UNITY_IOS
-                    TextToSpeechManager.Instance.CancelSpeak();
-        #endif
+            if (TextToSpeechManager.Instance != null)
+            {
+                TextToSpeechManager.Instance.CancelSpeak();
+            }
                     
             // We go back to the explorer and don't want the back-button to bring us to the feedback scene again
             BackStackManager.Instance.Clear();

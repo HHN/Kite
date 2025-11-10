@@ -1,9 +1,5 @@
 {
   "visualNovels": [
-<<<<<<< HEAD
-    "_novels_twee\\AI_TRAQC",
-=======
->>>>>>> main
     "_novels_twee\\Einstieg",
     "_novels_twee\\Eltern",
     "_novels_twee\\Honorar",
