@@ -153,6 +153,18 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
+        /// Called when the MonoBehaviour will be destroyed.
+        /// Ensures that any ongoing text-to-speech processes are stopped when leaving the scene.
+        /// </summary>
+        private void OnDestroy()
+        {
+            if (TextToSpeechManager.Instance != null)
+            {
+                TextToSpeechManager.Instance.CancelSpeak();
+            }
+        }
+
+        /// <summary>
         /// Handles vertical scrolling using the mouse wheel for the feedback scene.
         /// Adjusts the position of the feedback content displayed within the scroll rect
         /// based on the user's scroll input, ensuring the vertical position remains
@@ -176,7 +188,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         /// <remarks>
         /// This method ensures that the feedback scene is not revisited when navigating back and
-        /// transitions the user to the Founder's Bubble scene after handling necessary cleanup.
+        /// transitions the user to the Founder's Bubble scene after handling the necessary cleanup.
         /// </remarks>
         public void OnFinishButton()
         {
