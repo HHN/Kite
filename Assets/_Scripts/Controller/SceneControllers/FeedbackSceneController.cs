@@ -140,6 +140,18 @@ namespace Assets._Scripts.Controller.SceneControllers
             feedbackText.SetText(novelToPlay.feedback);
             loadingAnimation.SetActive(false);
         }
+        
+        /// <summary>
+        /// Called when the MonoBehaviour will be destroyed.
+        /// Ensures that any ongoing text-to-speech processes are stopped when leaving the scene.
+        /// </summary>
+        private void OnDestroy()
+        {
+            if (TextToSpeechManager.Instance != null)
+            {
+                TextToSpeechManager.Instance.CancelSpeak();
+            }
+        }
 
         /// <summary>
         /// Handles vertical scrolling using the mouse wheel for the feedback scene.
