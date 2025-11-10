@@ -40,6 +40,8 @@ namespace Assets._Scripts.Controller.SceneControllers
         // direkt weiterzuleiten, ohne die Szene je sichtbar zu machen.
         private void Awake()
         {
+            MappingManager mappingManager = MappingManager.Instance;
+            
             InitializeScene();
             ApplyVolumeFromPrefs();
 
@@ -69,7 +71,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             // Bestehende Initialisierungen beibehalten
             TextToSpeechManager ttsManager = TextToSpeechManager.Instance;
-            MappingManager mappingManager = MappingManager.Instance;
+            // MappingManager mappingManager = MappingManager.Instance;
 
             InitializeScene();
             SetupButtonListeners();
