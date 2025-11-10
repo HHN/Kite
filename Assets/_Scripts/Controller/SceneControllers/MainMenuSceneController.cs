@@ -7,6 +7,7 @@ using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.ServerCommunication;
+using Assets._Scripts.ServerCommunication.SceneMetrics;
 using Assets._Scripts.UIElements;
 using TMPro;
 using UnityEngine;
@@ -67,6 +68,13 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void Start()
         {
+            if (!PlayerPrefs.HasKey("StartScene") || PlayerPrefs.GetInt("StartScene") == 0)
+            {
+                PlayerPrefs.SetInt("StartScene", 1);
+                PlayerPrefs.Save();
+                StartCoroutine(SceneMetricsClient.Hit(SceneType.StartScene));
+            }
+            
             if (_skipVisualSetup) return;
 
             // Bestehende Initialisierungen beibehalten
@@ -249,8 +257,14 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// <summary>
         /// Sucht „Einstiegsdialog“ und lädt die PlayNovelScene mit gesetzten Metadaten.
         /// </summary>
-        private static void StartIntroNovel(List<VisualNovel> allNovels)
+        private void StartIntroNovel(List<VisualNovel> allNovels)
         {
+            if (!PlayerPrefs.HasKey("Einstiegsnovel") || PlayerPrefs.GetInt("Einstiegsnovel") == 0)
+            {
+                PlayerPrefs.SetInt("Einstiegsnovel", 1);
+                PlayerPrefs.Save();
+                StartCoroutine(SceneMetricsClient.Hit(SceneType.Einstiegsnovel));
+            }
             foreach (var novel in allNovels)
             {
                 if (novel.title == "Einstiegsdialog")

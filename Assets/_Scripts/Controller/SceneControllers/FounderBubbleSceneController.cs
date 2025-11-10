@@ -5,6 +5,8 @@ using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
+using Assets._Scripts.ServerCommunication;
+using Assets._Scripts.ServerCommunication.SceneMetrics;
 using Assets._Scripts.UIElements.FoundersBubble;
 using Assets._Scripts.Utilities;
 using TMPro;
@@ -77,6 +79,12 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             InitializeManagersAndState();
             SetupMainNovelTiles();
+            if (!PlayerPrefs.HasKey("FoundersBubble") || PlayerPrefs.GetInt("FoundersBubble") == 0)
+            {
+                PlayerPrefs.SetInt("FoundersBubble", 1);
+                PlayerPrefs.Save();
+                StartCoroutine(SceneMetricsClient.Hit(SceneType.FoundersBubble));
+            }
             
             Transform content = GetBurgerMenuContentTransform();
             if (!content) return;
