@@ -179,12 +179,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 637309749329025831, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_text
-      value: "Hier erf\xE4hrst du mehr \xFCber die Hintergr\xFCnde der App. Kite
+      value: "Hier erf\xE4hrst du mehr \xFCber die Hintergr\xFCnde der App. KITE
         wurde im Rahmen eines Forschungsprojekts entwickelt, um Gr\xFCnderinnen mit
         KI-gest\xFCtztem Feedback zu unterst\xFCtzen. Ziel ist es, Barrieren im Gr\xFCndungsprozess
         sichtbar zu machen und Wege aufzuzeigen, sie zu \xFCberwinden. Gef\xF6rdert
-        vom Bundesministerium f\xFCr Familie, Senioren, Frauen und Jugend \u2013
-        gemeinsam mit der Hochschule Heilbronn und der bga."
+        vom Bundesministerium f\xFCr Bildung, Familie, Senioren, Frauen und Jugend
+        \u2013 gemeinsam mit der Hochschule Heilbronn und der bga."
       objectReference: {fileID: 0}
     - target: {fileID: 637309749329025831, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_fontSize
@@ -388,7 +388,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7695375102312460022, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_text
-      value: KITE Projektseite
+      value: KITE-Projektseite
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695375102312460022, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8021935313076137584, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1355,6 +1359,10 @@ PrefabInstance:
     - target: {fileID: 7695375102312460022, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_text
       value: "HHN Lab f\xFCr Sozioinformatik"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695375102312460022, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8021935313076137584, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2897,6 +2905,10 @@ PrefabInstance:
     - target: {fileID: 7695375102312460022, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_text
       value: "Bundesweite Gr\xFCnderinnenagentur"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695375102312460022, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8021935313076137584, guid: 3ddcab1587118a945aef3bb6c5677ec1, type: 3}
       propertyPath: m_AnchorMax.y
