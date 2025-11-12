@@ -4,7 +4,6 @@
             "id": 14,
             "folderName": "",
             "title": "Vertrieb (AI_TRAQC)",
-            "designation": "Vertrieb (AI_TRAQC)",
             "description": "Im Rahmen deiner Aufgabe, KI in der Firma einzuführen, gehst du bei einem Mitarbeiter aus Vertrieb und Marketing vorbei, um mögliche Einsatzbereiche und Potenziale zu besprechen.",
             "feedback": "",
             "context": "",
@@ -6001,8 +6000,7 @@
         {
             "id": 13,
             "folderName": "",
-            "title": "Einstiegsdialog",
-            "designation": "Mehr zu KITE",
+            "title": "Mehr zu KITE",
             "description": "Hier kannst du den Einstiegs-Dialog erneut spielen.",
             "feedback": "",
             "context": "",
@@ -9389,8 +9387,7 @@
         {
             "id": 2,
             "folderName": "",
-            "title": "Telefonat mit den Eltern",
-            "designation": "Eltern informieren",
+            "title": "Eltern informieren",
             "description": "Du hast dich entschieden, ein Unternehmen zu gründen, und teilst das nun deinen Eltern mit.",
             "feedback": "",
             "context": "Es ist das Gespräch einer Gründerin, mit ihrer Mutter. Sie hat sich gründlich informiert und hat sich entschlossen, ein Unternehmen zu gründen. Sie ruft nun ihre Eltern an, um ihnen von dem Gründungsvorhaben zu berichten.",
@@ -15178,8 +15175,7 @@
         {
             "id": 11,
             "folderName": "",
-            "title": "Honorarverhandlung mit Kundin",
-            "designation": "Honorar verhandeln",
+            "title": "Honorar verhandeln",
             "description": "Du bist in Kontakt mit einer Kundin gekommen. Nachdem geklärt wurde, dass deine angebotenen Leistungen zu den Anforderungen deines Gegenübers passen, geht es nun um die Honorarverhandlung.",
             "feedback": "",
             "context": "Es ist das Gespräch einer Gründerin mit einer Kundin. Es geht um die Verhandlung eines Preises. Die Gründerin ist bereit mit ihrem Unternehmen die gewünschte Leistung zu erbringen und hofft auf die Einigung auf eine angemessene Entlohnung.",
@@ -28016,8 +28012,7 @@
         {
             "id": 9,
             "folderName": "",
-            "title": "Gespräch mit einem Investor",
-            "designation": "Investor überzeugen",
+            "title": "Investor überzeugen",
             "description": "Du triffst dich mit einem Angel Investor, der auf einer Pitch Night Interesse an deiner Innovation gezeigt hat und nun mehr erfahren möchte.",
             "feedback": "",
             "context": "Es ist das Gespräch einer Gründerin mit einem Angel Investor. Es geht um die Investition in das Unternehmen der Gründerin. Der Investor ist an der Innovation interessiert. Die Gründerin hofft, dass der Investor in ihre Innovation investieren wird.",
@@ -32724,8 +32719,7 @@
         {
             "id": 10,
             "folderName": "",
-            "title": "Banktermin wegen Kreditbeantragung",
-            "designation": "Kredit beantragen",
+            "title": "Kredit beantragen",
             "description": "Du hast heute einen Banktermin, um einen Kredit zu beantragen.",
             "feedback": "",
             "context": "Es ist das Gespräch einer Gründerin mit einem Bankmitarbeiter. Es geht um einen Kredit. Die Gründerin hat sich gut vorbereitet und hofft Informationen über den Kredit zu erhalten.",
@@ -46912,8 +46906,7 @@
         {
             "id": 4,
             "folderName": "",
-            "title": "Telefonat mit der Notarin",
-            "designation": "Mit Notarin telefonieren",
+            "title": "Mit Notarin telefonieren",
             "description": "Du rufst bei einer Notarin an, um einen Termin für deine Gründung auszumachen.",
             "feedback": "",
             "context": "Es ist das Gespräch einer Gründerin mit einer Notarin. Es geht um die Eintragung des Unternehmens der Gründerin ins Handelsregister. Die Gründerin hat sich gut vorbereitet und hofft einen Termin für eine Eintragung zu erhalten.",
@@ -49970,8 +49963,7 @@
         {
             "id": 3,
             "folderName": "",
-            "title": "Pressegespräch",
-            "designation": "Interview abklären",
+            "title": "Interview abklären",
             "description": "Auf einer Veranstaltung stellst du deine Geschäftsidee vor und wirst danach von einer Journalistin angesprochen.",
             "feedback": "",
             "context": "Es ist das Gespräch einer Gründerin mit einer Journalistin. Die Journalistin hat die Gründerin angesprochen und möchte einen Artikel über sie und ihr Unternehmen schreiben. Die Gründerin freut sich über diese Gelegenheit und hofft auf einen schönen Artikel.",
@@ -57348,8 +57340,7 @@
         {
             "id": 6,
             "folderName": "",
-            "title": "Anmietung eines Büros",
-            "designation": "Büro anmieten",
+            "title": "Büro anmieten",
             "description": "Du hast heute einen Termin für die Besichtigung von Büro-Räumen.",
             "feedback": "",
             "context": "Es ist das Gespräch einer Gründerin mit einem Vermieter. Es geht um die Anmietung von Büro-Räumen. Die Gründerin hat sich gut vorbereitet und hofft, dass sie die Büroräume für ihr Unternehmen bekommt.",

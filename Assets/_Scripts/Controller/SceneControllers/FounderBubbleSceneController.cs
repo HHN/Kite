@@ -211,7 +211,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 }
 
                 novelButtonGameObject.GetComponentInChildren<Button>().name = novelName;
-                novelButtonGameObject.GetComponentInChildren<TextMeshProUGUI>().text = !visualNovel.isKiteNovel ? visualNovel.title : visualNovel.designation;
+                novelButtonGameObject.GetComponentInChildren<TextMeshProUGUI>().text = visualNovel.title;
 
                 // Setup button click handling
                 Button button = novelButtonGameObject.GetComponentInChildren<Button>();
@@ -286,7 +286,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 {
                     if (!_allKiteNovelsById.TryGetValue(entry.novelId, out var visualNovel)) continue;
                     
-                    if (visualNovel.designation.Equals("Mehr zu KITE"))
+                    if (visualNovel.id == 13)
                     {
                         Image[] images = introNovelButton.GetComponentsInChildren<Image>(true);
 
@@ -303,8 +303,8 @@ namespace Assets._Scripts.Controller.SceneControllers
                         }
 
                         introNovelButton.GetComponentInChildren<Button>().onClick.AddListener(OnIntroNovelButton);
-                        introNovelButton.GetComponentInChildren<Button>().name = visualNovel.designation;
-                        introNovelButton.GetComponentInChildren<TextMeshProUGUI>().text = visualNovel.designation;
+                        introNovelButton.GetComponentInChildren<Button>().name = "Mehr zu KITE";
+                        introNovelButton.GetComponentInChildren<TextMeshProUGUI>().text = "Mehr zu KITE";
                     }
                 }
             }
@@ -532,7 +532,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             GameObject burgerMenuButton = Instantiate(burgerMenuButtonPrefab, content);
             burgerMenuButton.name = novelName;
             burgerMenuButton.GetComponentInChildren<Button>().name = novelName;
-            burgerMenuButton.GetComponentInChildren<TextMeshProUGUI>().text = !visualNovel.isKiteNovel ? visualNovel.title : visualNovel.designation;
+            burgerMenuButton.GetComponentInChildren<TextMeshProUGUI>().text = visualNovel.title;
             burgerMenuButton.GetComponentInChildren<Button>().onClick.AddListener(OnButtonFromBurgerMenu);
             burgerMenuButton.GetComponentInChildren<Image>().color = visualNovel.novelColor;
 
@@ -836,7 +836,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             NovelColorManager.Instance().SetColor(visualNovelToDisplay.novelColor);
             PlayManager.Instance().SetColorOfVisualNovelToPlay(visualNovelToDisplay.novelColor);
             PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelName));
-            PlayManager.Instance().SetDesignationOfNovelToPlay(visualNovelToDisplay.designation);
 
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);

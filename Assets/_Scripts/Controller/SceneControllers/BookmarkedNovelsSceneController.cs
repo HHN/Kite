@@ -170,7 +170,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             rectTransform.localScale = Vector3.one;
             rectTransform.anchoredPosition = GetHexPosition(index);
             
-            buttonObject.name = novel.isKiteNovel ? novel.designation : novel.title;
+            buttonObject.name = novel.title;
             SetupButtonUI(buttonObject, novel);
         }
 
@@ -210,7 +210,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             var text = go.GetComponentInChildren<TextMeshProUGUI>();
             if (text != null)
-                text.text = novel.isKiteNovel ? novel.designation : novel.title;
+                text.text = novel.title;
         }
 
         /// <summary>
@@ -374,7 +374,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             playManager.SetVisualNovelToPlay(visualNovel);
             playManager.SetColorOfVisualNovelToPlay(visualNovel.novelColor);
             playManager.SetDisplayNameOfNovelToPlay(visualNovel.title);
-            playManager.SetDesignationOfNovelToPlay(visualNovel.designation);
 
             if (selectNovelSoundPrefab != null)
             {

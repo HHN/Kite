@@ -1,7 +1,6 @@
 {
   "idNumberOfNovel": 13,
-  "titleOfNovel": "Einstiegsdialog",
-  "designationOfNovel": "Mehr zu KITE",
+  "titleOfNovel": "Mehr zu KITE",
   "descriptionOfNovel": "Hier kannst du den Einstiegs-Dialog erneut spielen.",
   "contextForPrompt": "",
   "folderName": "Einstieg",
@@ -11,8 +10,5 @@
   "talkingPartner03" : "",
   "isKiteNovel": true,
   "novelColor": "#AA1C02",
-  "novelFrameColor": "#D04C03",
-  "wordsToReplace": [
-    {"wordToReplace": ">>Charakter01SprichtFriendly:<<", "replaceByValue": ">>Charakter01Laecheln:<<"},
-  ]
+  "novelFrameColor": "#D04C03"
 }

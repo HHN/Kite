@@ -184,9 +184,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 yield break;
             }
 
-            // Replace placeholder words in the event list using metadata replacement rules.
-            jsonStringOfEventList = ReplaceWordsInString(jsonStringOfEventList, kiteNovelMetaData.WordsToReplace);
-
             // Convert the raw text into a structured list of visual novel events.
             List<VisualNovelEvent> kiteNovelEventList = KiteNovelConverter.ConvertTextDocumentIntoEventList(jsonStringOfEventList, kiteNovelMetaData);
 
@@ -265,29 +262,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                     }
                 }
             }
-        }
-
-        /// <summary>
-        /// Replaces specified words in the input string with their corresponding replacement values
-        /// as defined in the provided list of word pairs.
-        /// </summary>
-        /// <param name="input">The input string in which the replacements will be performed.</param>
-        /// <param name="wordsToReplace">A list containing WordPair objects that specify the words to replace and their replacement values.</param>
-        /// <returns>The input string with the specified words replaced based on the word pairs. If no replacements are necessary, the original string is returned.</returns>
-        private string ReplaceWordsInString(string input, List<WordPair> wordsToReplace)
-        {
-            if (wordsToReplace == null || wordsToReplace.Count == 0) return input;
-
-            string result = input;
-            
-            foreach (var word in wordsToReplace)
-            {
-                if (!string.IsNullOrWhiteSpace(word?.WordToReplace) && !string.IsNullOrWhiteSpace(word.ReplaceByValue))
-                {
-                    result = result.Replace(word.WordToReplace, word.ReplaceByValue);
-                }
-            }
-            return result;
         }
 
         /// <summary>

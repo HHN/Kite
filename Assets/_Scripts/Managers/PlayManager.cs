@@ -15,7 +15,6 @@ namespace Assets._Scripts.Managers
         private Color _colorForNovel;
         private Color _foregroundColorForNovel;
         private string _displayName;
-        private string _designation;
 
         /// <summary>
         /// Manages the state and configuration of the visual novel to be played in the application.
@@ -112,29 +111,6 @@ namespace Assets._Scripts.Managers
         public string GetDisplayNameOfNovelToPlay()
         {
             return _displayName;
-        }
-
-        /// <summary>
-        /// Sets the designation identifier of the visual novel to be played.
-        /// This method updates the current designation used for identifying
-        /// the selected visual novel within the application.
-        /// </summary>
-        /// <param name="v">The designation value representing the chosen visual novel.</param>
-        public void SetDesignationOfNovelToPlay(string v)
-        {
-            _designation = v;
-        }
-
-        /// <summary>
-        /// Retrieves the designation (identifier or tag) of the currently selected visual novel to be played.
-        /// This designation is used to uniquely identify the visual novel across the application.
-        /// </summary>
-        /// <returns>
-        /// A string representing the designation of the selected visual novel.
-        /// </returns>
-        public string GetDesignationOfNovelToPlay()
-        {
-            return _designation;
         }
     }
 }

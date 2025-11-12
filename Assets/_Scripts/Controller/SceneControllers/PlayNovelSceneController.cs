@@ -1088,7 +1088,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             PlayThroughCounterAnimationManager.Instance().SetAnimation(true, currentNovel);
 
             // Check if the current novel is the introductory dialogue
-            if (novelToPlay.title == "Einstiegsdialog")
+            if (novelToPlay.id == 13)
             {
                 // Load the FoundersBubbleScene to navigate there after the introductory dialogue
                 SceneLoader.LoadFoundersBubbleScene();

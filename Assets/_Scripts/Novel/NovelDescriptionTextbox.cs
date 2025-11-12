@@ -230,7 +230,6 @@ namespace Assets._Scripts.Novel
             playManager.SetVisualNovelToPlay(visualNovelToDisplay);
             playManager.SetColorOfVisualNovelToPlay(visualNovelToDisplay.novelColor);
             playManager.SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
-            playManager.SetDesignationOfNovelToPlay(visualNovelToDisplay.designation);
         }
 
         /// <summary>

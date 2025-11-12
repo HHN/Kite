@@ -260,7 +260,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Searches for the "Einstiegsdialog" (Intro Novel) and loads the PlayNovelScene with the necessary metadata.
+        /// Searches for the Intro Novel and loads the PlayNovelScene with the necessary metadata.
         /// </summary>
         private void StartIntroNovel(List<VisualNovel> allNovels)
         {
@@ -272,7 +272,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
             foreach (var novel in allNovels)
             {
-                if (novel.title == "Einstiegsdialog")
+                if (novel.id == 13)
                 {
                     GameManager.Instance.IsIntroNovelLoadedFromMainMenu = true;
 
@@ -280,9 +280,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
                     PlayManager.Instance().SetVisualNovelToPlay(novel);
                     PlayManager.Instance().SetColorOfVisualNovelToPlay(novel.novelColor);
-                    PlayManager.Instance().SetDisplayNameOfNovelToPlay(
-                        FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelNames));
-                    PlayManager.Instance().SetDesignationOfNovelToPlay(novel.designation);
+                    PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelNames));
 
                     SceneLoader.LoadPlayNovelScene();
                     break;
