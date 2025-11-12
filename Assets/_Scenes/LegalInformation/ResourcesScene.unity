@@ -184,9 +184,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 637309749329025831, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_text
-      value: "Die Bundesweite Gr\xFCnderinnenagentur (bga) unterst\xFCtzt Frauen
-        bei der Gr\xFCndung.\r\nSie bietet Beratung, Informationen und Vernetzung.\r\nZiel
-        ist mehr Sichtbarkeit und Chancengleichheit f\xFCr Gr\xFCnderinnen."
+      value: "Die bga ist das zentrale Netzwerk f\xFCr Gr\xFCnderinnen in Deutschland.
+        Auf dem Netzwerkportal findest du Informationen, Beratungsm\xF6glichkeiten,
+        Veranstaltungen und Kontakte zu Expert*innen. Ob du dich gerade in der Planung
+        befindest oder bereits gegr\xFCndet hast \u2013 die bga unterst\xFCtzt dich
+        mit Wissen, Inspiration und Vernetzung."
       objectReference: {fileID: 0}
     - target: {fileID: 690559079647284473, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_Name
@@ -198,19 +200,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2895109025299191246, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2895109025299191246, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895109025299191246, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2895109025299191246, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 440
       objectReference: {fileID: 0}
     - target: {fileID: 2895109025299191246, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -191.005
       objectReference: {fileID: 0}
     - target: {fileID: 4182624118086232445, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_Name
@@ -314,7 +320,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5491047902461836143, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1017
+      value: -1043.005
       objectReference: {fileID: 0}
     - target: {fileID: 5491047902461836143, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -331,6 +337,10 @@ PrefabInstance:
     - target: {fileID: 7695375102312460022, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_text
       value: "Bundesgr\xFCnderinnenagentur"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695375102312460022, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8021935313076137584, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_AnchorMax.y
@@ -355,7 +365,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8336452177071078868, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 119715154}
   m_SourcePrefab: {fileID: 100100000, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
 --- !u!114 &119715152 stripped
 MonoBehaviour:
@@ -368,6 +381,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &119715153 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8336452177071078868, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
+  m_PrefabInstance: {fileID: 119715151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &119715154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119715153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1 &129885467
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,9 +1199,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 637309749329025831, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_text
-      value: "Das Labor f\xFCr Sozioinformatik der Hochschule Heilbronn erforscht
-        das Zusammenspiel von Mensch, Gesellschaft und Technologie und entwickelt
-        digitale L\xF6sungen f\xFCr soziale Herausforderungen."
+      value: "Das Lab f\xFCr Sozioinformatik erforscht, wie digitale Technologien
+        unser Zusammenleben pr\xE4gen \u2013 und wie sie gesellschaftlich verantwortungsvoll
+        gestaltet werden k\xF6nnen. In Projekten zu Themen wie KI, Gender und Partizipation
+        entwickelt das Team praxisnahe Anwendungen, die soziale Wirkung entfalten."
       objectReference: {fileID: 0}
     - target: {fileID: 690559079647284473, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_Name
@@ -1185,19 +1218,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2895109025299191246, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2895109025299191246, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895109025299191246, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2895109025299191246, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 440
       objectReference: {fileID: 0}
     - target: {fileID: 2895109025299191246, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -191.005
       objectReference: {fileID: 0}
     - target: {fileID: 4182624118086232445, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_Name
@@ -1301,7 +1338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5491047902461836143, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2885
+      value: -2029.015
       objectReference: {fileID: 0}
     - target: {fileID: 5491047902461836143, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1318,6 +1355,10 @@ PrefabInstance:
     - target: {fileID: 7695375102312460022, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_text
       value: "HHN Lab f\xFCr Sozioinformatik\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695375102312460022, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8021935313076137584, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1342,7 +1383,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8336452177071078868, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1063416643}
   m_SourcePrefab: {fileID: 100100000, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
 --- !u!114 &1063416641 stripped
 MonoBehaviour:
@@ -1355,6 +1399,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1063416642 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8336452177071078868, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
+  m_PrefabInstance: {fileID: 1063416640}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1063416643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063416642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1 &1063740321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,9 +1593,9 @@ RectTransform:
   - {fileID: 129885468}
   - {fileID: 974178470}
   - {fileID: 1967328355}
-  - {fileID: 77431043}
-  - {fileID: 1937094620}
   - {fileID: 279910739}
+  - {fileID: 1937094620}
+  - {fileID: 77431043}
   - {fileID: 1471705520}
   m_Father: {fileID: 701747404}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1841,7 +1904,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540, y: -3352}
+  m_AnchoredPosition: {x: 540, y: -3634.03}
   m_SizeDelta: {x: 880, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1471705521
@@ -2222,7 +2285,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540, y: -2418}
+  m_AnchoredPosition: {x: 540, y: -2522.02}
   m_SizeDelta: {x: 880, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1937094621
@@ -2269,9 +2332,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 637309749329025831, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_text
-      value: "KITE ist ein Forschungsprojekt, das eine interaktive Lernanwendung
-        entwickelt, um Biases in Gr\xFCndungssituationen sichtbar zu machen und Chancengleichheit
-        zu f\xF6rdern."
+      value: "Hier erf\xE4hrst du mehr \xFCber die Hintergr\xFCnde der App. KITE
+        wurde im Rahmen eines Forschungsprojekts entwickelt, um Gr\xFCnderinnen mit
+        KI-gest\xFCtztem Feedback zu unterst\xFCtzen. Ziel ist es, Barrieren im Gr\xFCndungsprozess
+        sichtbar zu machen und Wege aufzuzeigen, sie zu \xFCberwinden. Gef\xF6rdert
+        vom Bundesministerium f\xFCr Bildung, Familie, Senioren, Frauen und Jugend
+        \u2013 gemeinsam mit der Hochschule Heilbronn und der bga."
       objectReference: {fileID: 0}
     - target: {fileID: 690559079647284473, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_Name
@@ -2299,19 +2365,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2895109025299191246, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2895109025299191246, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895109025299191246, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2895109025299191246, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 440
       objectReference: {fileID: 0}
     - target: {fileID: 2895109025299191246, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -254.005
       objectReference: {fileID: 0}
     - target: {fileID: 4182624118086232445, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_Name
@@ -2415,7 +2485,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5491047902461836143, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1951
+      value: -3078.025
       objectReference: {fileID: 0}
     - target: {fileID: 5491047902461836143, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2431,7 +2501,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7695375102312460022, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_text
-      value: KITE
+      value: KITE-Projektseite
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695375102312460022, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8021935313076137584, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2456,7 +2530,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8336452177071078868, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1948894431}
   m_SourcePrefab: {fileID: 100100000, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
 --- !u!114 &1948894429 stripped
 MonoBehaviour:
@@ -2469,6 +2546,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1948894430 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8336452177071078868, guid: 5a28efcc6b4962849a13cb17684b5121, type: 3}
+  m_PrefabInstance: {fileID: 1948894428}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1948894431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948894430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1 &1967328354
 GameObject:
   m_ObjectHideFlags: 0
@@ -2503,7 +2599,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540, y: -1484}
+  m_AnchoredPosition: {x: 540, y: -1536.01}
   m_SizeDelta: {x: 880, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1967328356
