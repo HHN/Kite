@@ -943,7 +943,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             PlayerDataManager.Instance().SetNovelHistory(playThroughHistory);
             PlayThroughCounterAnimationManager.Instance().SetAnimation(true, currentNovel);
 
-            if (novelToPlay.title == "Einstiegsdialog")
+            if (novelToPlay.id == 13)
             {
                 SceneLoader.LoadFoundersBubbleScene();
                 return;

@@ -116,7 +116,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
                 if (allKiteNovelsById.TryGetValue(novelId, out VisualNovel foundNovel))
                 {
-                    string designation = foundNovel.designation;
+                    string foundNovelTitle = foundNovel.title;
 
                     if (!_novelHistoryEntriesDictionary.ContainsKey(novelId))
                     {
@@ -124,7 +124,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                     }
 
                     _novelHistoryEntriesDictionary[novelId].Add(entry);
-                    AddEntryToContainer(entry, _novelContainers[novelId], designation);
+                    AddEntryToContainer(entry, _novelContainers[novelId], foundNovelTitle);
                 }
                 else
                 {

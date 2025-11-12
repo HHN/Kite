@@ -16,7 +16,6 @@ namespace Assets._Scripts.Novel
         public long id;
         public string folderName;
         public string title;
-        public string designation;
         public string description;
         public string feedback;
         public string context;
@@ -150,7 +149,6 @@ namespace Assets._Scripts.Novel
                 id = id,
                 folderName = folderName,
                 title = title,
-                designation = designation,
                 description = description,
                 feedback = feedback,
                 context = context,

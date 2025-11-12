@@ -1,7 +1,6 @@
 {
   "idNumberOfNovel": 9,
-  "titleOfNovel": "Gespräch mit einem Investor",
-  "designationOfNovel": "Investor überzeugen",
+  "titleOfNovel": "Investor überzeugen",
   "descriptionOfNovel": "Du triffst dich mit einem Angel Investor, der auf einer Pitch Night Interesse an deiner Innovation gezeigt hat und nun mehr erfahren möchte.",
   "contextForPrompt": "Es ist das Gespräch einer Gründerin mit einem Angel Investor. Es geht um die Investition in das Unternehmen der Gründerin. Der Investor ist an der Innovation interessiert. Die Gründerin hofft, dass der Investor in ihre Innovation investieren wird.",
   "folderName": "Investor",
@@ -11,8 +10,5 @@
   "talkingPartner03" : "",
   "isKiteNovel": true,
   "novelColor": "#35481A",
-  "novelFrameColor": "#3D8229",
-  "wordsToReplace": [
-    {"wordToReplace": ">>SpielerinCharakterSpricht:<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"}
-	]
+  "novelFrameColor": "#3D8229"
 }

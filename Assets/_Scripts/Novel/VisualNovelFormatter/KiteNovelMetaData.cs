@@ -24,13 +24,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         public string TitleOfNovel { get; set; } = "";
 
         /// <summary>
-        /// Gets or sets the designation or subtitle of the novel within the Kite Novel system.
-        /// This property provides an additional descriptive or identifying label for the novel,
-        /// often used to convey supplemental information about its theme or series.
-        /// </summary>
-        public string DesignationOfNovel { get; set; } = "";
-
-        /// <summary>
         /// Gets or sets the description of the visual novel.
         /// This property provides a textual summary or narrative about the novel,
         /// which helps to convey its theme, setting, and overall storyline within the Kite Novel system.
@@ -94,12 +87,5 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// is applied.
         /// </summary>
         public string NovelFrameColor { get; set; } = "#000000";
-
-        /// <summary>
-        /// Gets or sets the list of word replacement rules for the visual novel.
-        /// Each rule specifies a pair of words, consisting of a target word and its replacement value,
-        /// which are applied to the novel's text content during processing.
-        /// </summary>
-        public List<WordPair> WordsToReplace { get; set; } = new();
     }
 }

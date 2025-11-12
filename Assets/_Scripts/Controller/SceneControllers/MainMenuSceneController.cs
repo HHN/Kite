@@ -253,7 +253,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             foreach (var novel in allNovels)
             {
-                if (novel.title == "Einstiegsdialog")
+                if (novel.id == 13)
                 {
                     GameManager.Instance.IsIntroNovelLoadedFromMainMenu = true;
 
@@ -263,7 +263,6 @@ namespace Assets._Scripts.Controller.SceneControllers
                     PlayManager.Instance().SetColorOfVisualNovelToPlay(novel.novelColor);
                     PlayManager.Instance().SetDisplayNameOfNovelToPlay(
                         FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelNames));
-                    PlayManager.Instance().SetDesignationOfNovelToPlay(novel.designation);
 
                     SceneLoader.LoadPlayNovelScene();
                     break;
