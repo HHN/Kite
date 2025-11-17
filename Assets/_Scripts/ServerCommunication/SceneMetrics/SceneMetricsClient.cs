@@ -1,13 +1,11 @@
 // Assets/_Scripts/ServerCommunication/SceneMetrics/SceneMetricsClient.cs
+
 using System;
 using System.Collections;
-using System.Text;
-using Assets._Scripts.ServerCommunication.SceneMetrics;
-using Assets._Scripts.Utilities; // für BypassCertificate (wie in deinem ServerCall)
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Assets._Scripts.ServerCommunication
+namespace Assets._Scripts.ServerCommunication.SceneMetrics
 {
     [Serializable]
     public class SceneHitResult    { public string scene; public long count; }

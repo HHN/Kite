@@ -20,7 +20,7 @@ namespace Assets._Scripts.Novel
         public string feedback;
         public string context;
         public List<VisualNovelEvent> novelEvents;
-        public Dictionary<string, string> GlobalVariables;
+        public Dictionary<string, string> globalVariables;
         public string playedPath;
         public List<string> characters;
         public bool isKiteNovel;
@@ -28,16 +28,16 @@ namespace Assets._Scripts.Novel
         public Color novelFrameColor;
 
         /// <summary>
-        /// Adds a new global variable to the <see cref="GlobalVariables"/> dictionary.
+        /// Adds a new global variable to the <see cref="globalVariables"/> dictionary.
         /// If the dictionary is null, it will be initialized.
         /// </summary>
         /// <param name="name">The name (type) of the global variable.</param>
         /// <param name="value">The string value of the global variable.</param>
         public void AddGlobalVariable(string name, string value)
         {
-            GlobalVariables ??= new Dictionary<string, string>();
+            globalVariables ??= new Dictionary<string, string>();
 
-            GlobalVariables.Add(name, value);
+            globalVariables.Add(name, value);
         }
 
         /// <summary>
@@ -74,32 +74,27 @@ namespace Assets._Scripts.Novel
         /// <param name="value">The new string value for the variable.</param>
         public void SetGlobalVariable(string varName, string value)
         {
-            GlobalVariables[varName] = value;
+            globalVariables[varName] = value;
         }
 
         /// <summary>
         /// Checks if a global variable with the specified name exists.
         /// </summary>
         /// <param name="name">The name of the variable to check.</param>
-        /// <returns>True if the variable exists and <see cref="GlobalVariables"/> is not null, otherwise false.</returns>
+        /// <returns>True if the variable exists and <see cref="globalVariables"/> is not null, otherwise false.</returns>
         public bool IsVariableExistent(string name)
         {
-            return GlobalVariables != null && GlobalVariables.ContainsKey(name);
+            return globalVariables != null && globalVariables.ContainsKey(name);
         }
 
         /// <summary>
-        /// Removes a global variable with the specified name from the <see cref="GlobalVariables"/> dictionary.
+        /// Removes a global variable with the specified name from the <see cref="globalVariables"/> dictionary.
         /// Does nothing if the dictionary is null.
         /// </summary>
         /// <param name="name">The name of the variable to remove.</param>
         public void RemoveGlobalVariable(string name)
         {
-            if (GlobalVariables == null)
-            {
-                return;
-            }
-
-            GlobalVariables.Remove(name);
+            globalVariables?.Remove(name);
         }
 
         /// <summary>
@@ -109,7 +104,7 @@ namespace Assets._Scripts.Novel
         /// <returns>The string value of the variable if found; otherwise, an empty string.</returns>
         public string GetGlobalVariable(string name)
         {
-            if (GlobalVariables == null || !GlobalVariables.TryGetValue(name, out var variable))
+            if (globalVariables == null || !globalVariables.TryGetValue(name, out var variable))
             {
                 return string.Empty;
             }
@@ -121,10 +116,10 @@ namespace Assets._Scripts.Novel
         /// Retrieves the dictionary of all global variables.
         /// If the dictionary is null, it will be initialized and returned.
         /// </summary>
-        /// <returns>The <see cref="GlobalVariables"/> dictionary.</returns>
+        /// <returns>The <see cref="globalVariables"/> dictionary.</returns>
         public Dictionary<string, string> GetGlobalVariables()
         {
-            return GlobalVariables ??= new Dictionary<string, string>();
+            return globalVariables ??= new Dictionary<string, string>();
         }
 
         /// <summary>
@@ -132,13 +127,13 @@ namespace Assets._Scripts.Novel
         /// </summary>
         public void ClearGlobalVariables()
         {
-            GlobalVariables = new Dictionary<string, string>();
+            globalVariables = new Dictionary<string, string>();
         }
 
         /// <summary>
         /// Creates a deep copy of the current <see cref="VisualNovel"/> instance.
         /// This includes copying primitive types directly, and creating new lists/dictionaries
-        /// for reference types like <see cref="novelEvents"/> and <see cref="GlobalVariables"/>.
+        /// for reference types like <see cref="novelEvents"/> and <see cref="globalVariables"/>.
         /// Each <see cref="VisualNovelEvent"/> within the list is also deep-copied.
         /// </summary>
         /// <returns>A new <see cref="VisualNovel"/> instance that is a deep copy of the original.</returns>
@@ -165,9 +160,9 @@ namespace Assets._Scripts.Novel
                 }
             }
 
-            if (GlobalVariables != null)
+            if (globalVariables != null)
             {
-                newNovel.GlobalVariables = new Dictionary<string, string>(GlobalVariables);
+                newNovel.globalVariables = new Dictionary<string, string>(globalVariables);
             }
 
             return newNovel;

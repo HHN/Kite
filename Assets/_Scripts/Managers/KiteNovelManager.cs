@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Utilities;
-using UnityEngine;
 
 namespace Assets._Scripts.Managers
 {
@@ -42,10 +41,7 @@ namespace Assets._Scripts.Managers
         /// <returns>The singleton instance of KiteNovelManager.</returns>
         public static KiteNovelManager Instance()
         {
-            if (_instance == null)
-            {
-                _instance = new KiteNovelManager();
-            }
+            _instance ??= new KiteNovelManager();
 
             return _instance;
         }

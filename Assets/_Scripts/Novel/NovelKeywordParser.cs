@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Assets._Scripts._Mappings;
 using Assets._Scripts.Novel.VisualNovelFormatter;
 using Assets._Scripts.Utilities;
-using UnityEngine;
 
 namespace Assets._Scripts.Novel
 {
@@ -102,7 +101,7 @@ namespace Assets._Scripts.Novel
                 string numberPart = firstPart.Substring(CharacterPrefix.Length);
                 if (int.TryParse(numberPart, out int charNum))
                 {
-                    string characterName = null;
+                    string characterName;
                     // Improvement: Use an array or dictionary for TalkingPartner access
                     // Instead of if-else if chain
                     switch (charNum)
@@ -150,8 +149,9 @@ namespace Assets._Scripts.Novel
 
                 return model;
             }
+            
             // B. Sound keyword
-            else if (firstPart.StartsWith(SoundPrefix, StringComparison.OrdinalIgnoreCase))
+            if (firstPart.StartsWith(SoundPrefix, StringComparison.OrdinalIgnoreCase))
             {
                 if (parts.Length > 1)
                 {
@@ -166,8 +166,9 @@ namespace Assets._Scripts.Novel
 
                 return model;
             }
+            
             // C. Bias keyword
-            else if (firstPart.StartsWith(BiasPrefix, StringComparison.OrdinalIgnoreCase))
+            if (firstPart.StartsWith(BiasPrefix, StringComparison.OrdinalIgnoreCase))
             {
                 if (parts.Length > 1)
                 {
@@ -203,7 +204,7 @@ namespace Assets._Scripts.Novel
             foreach (string line in fileContent)
             {
                 // If the separator is present in the line, this line is split into multiple tokens.
-                string[] tokens = line.Split(new string[] { ">>--<<" }, StringSplitOptions.RemoveEmptyEntries);
+                string[] tokens = line.Split(new[] { ">>--<<" }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (string token in tokens)
                 {
                     string trimmedToken = token.Trim();

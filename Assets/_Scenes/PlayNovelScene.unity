@@ -131,7 +131,6 @@ GameObject:
   - component: {fileID: 144910132}
   - component: {fileID: 144910131}
   - component: {fileID: 144910130}
-  - component: {fileID: 144910133}
   m_Layer: 6
   m_Name: Scroll View
   m_TagString: Untagged
@@ -227,18 +226,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144910128}
   m_CullTransparentMesh: 1
---- !u!114 &144910133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144910128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e826e8c25bdebc46bd6f0a7e9c7b7eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &198210688
 GameObject:
   m_ObjectHideFlags: 0
@@ -2316,7 +2303,6 @@ MonoBehaviour:
   confirmArea: {fileID: 221629287}
   confirmArea2: {fileID: 813272501}
   chatScroll: {fileID: 1164301132}
-  imageScroll: {fileID: 144910133}
   headerImage: {fileID: 1574087967}
   novelVisuals:
   - {fileID: 781856241913721907, guid: 0befadf77118e9847b85864f275358d1, type: 3}
@@ -2373,7 +2359,6 @@ MonoBehaviour:
     id: 0
     folderName: 
     title: 
-    designation: 
     description: 
     feedback: 
     context: 
@@ -2386,9 +2371,6 @@ MonoBehaviour:
   currentTypeWriter: {fileID: 0}
   selectOptionContinueConversation: {fileID: 0}
   currentTalkingKite2CharacterController: {fileID: 0}
-  timerForHint: 12
-  timerForHintInitial: 3
-  firstUserConfirmation: 1
   isWaitingForConfirmation: 0
   nextEventToPlay:
     id: 
@@ -2400,7 +2382,6 @@ MonoBehaviour:
     clotheSpriteId: 0
     hairSpriteId: 0
     faceSpriteId: 0
-    backgroundSprite: 
     character: 0
     text: 
     animationType: 0

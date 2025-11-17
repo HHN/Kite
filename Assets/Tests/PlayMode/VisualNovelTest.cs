@@ -55,24 +55,15 @@ namespace Tests.PlayMode
             {
                 yield return null;
             }
-            
-            GameObject converter = GameObject.Find("TweeToJsonConverter");
-
-            Assert.NotNull(converter);
-
-            NovelReader novelReader = converter.GetComponent<NovelReader>();
-            
-            // Hole Dir die Instanz einmal in eine lokale Variable:
-            // var novelReader = NovelReader.Instance;
 
             // Starte den Import
-            novelReader.ImportNovel();
+            NovelReader.Instance.ImportNovel();
 
             // Warte, bis er fertig ist
-            yield return new WaitUntil(() => novelReader.IsFinished());
+            yield return new WaitUntil(() => NovelReader.Instance.IsFinished());
 
             // Testende
-            Assert.IsTrue(novelReader.IsFinished(), "ImportNovel sollte am Ende fertig sein.");
+            Assert.IsTrue(NovelReader.Instance.IsFinished(), "ImportNovel sollte am Ende fertig sein.");
         }
 
         [UnityTest]

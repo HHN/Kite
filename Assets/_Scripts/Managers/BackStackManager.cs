@@ -24,6 +24,13 @@ namespace Assets._Scripts.Managers
             _backStack = new Stack<string>();
         }
 
+        /// <summary>
+        /// Provides read-only access to the name of the currently active menu or scene by inspecting the top element of the internal back stack.
+        /// </summary>
+        /// <remarks>
+        /// This property returns the name of the menu/scene currently at the top of the stack (<c>_backStack.Peek()</c>).
+        /// If the back stack is empty (i.e., <c>_backStack.Count == 0</c>), it returns an empty string (<c>""</c>).
+        /// </remarks>
         private string Current => _backStack.Count == 0 ? "" : _backStack.Peek();
 
         /// <summary>

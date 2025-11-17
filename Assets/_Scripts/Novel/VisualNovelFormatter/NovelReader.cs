@@ -78,7 +78,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             {
                 if (listOfAllNovelPaths == null || listOfAllNovelPaths.Count == 0)
                 {
-                    Log($"Loading Novels failed: No Novels found! Path: {fullPath}", LogType.Warning);
+                    LogManager.Warning($"Loading Novels failed: No Novels found! Path: {fullPath}");
 
                     KiteNovelManager.Instance().SetAllKiteNovels(new List<VisualNovel>());
                     return;
@@ -168,7 +168,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             // Skip if metadata couldn't be loaded.
             if (kiteNovelMetaData == null)
             {
-                Log($"Kite Novel Meta Data could not be loaded: {pathOfNovel}", LogType.Warning);
+                LogManager.Warning($"Kite Novel Meta Data could not be loaded: {pathOfNovel}");
 
                 yield break;
             }
@@ -179,7 +179,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             // Skip if event list is empty or missing.
             if (string.IsNullOrEmpty(jsonStringOfEventList))
             {
-                Log($"Kite Novel Event List could not be loaded: {pathOfNovel}", LogType.Warning);
+                LogManager.Warning($"Kite Novel Event List could not be loaded: {pathOfNovel}");
 
                 yield break;
             }
@@ -253,7 +253,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
                     if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
                     {
-                        Log($"Error loading file at {path}: {www.error}", LogType.Error);
+                        LogManager.Error($"Error loading file at {path}: {www.error}");
                         callback(null);
                     }
                     else
@@ -275,31 +275,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             string json = JsonUtility.ToJson(novelListWrapper, true);
             string path = Path.Combine(Application.dataPath, "StreamingAssets/novels.json");
             File.WriteAllText(path, json);
-            Log($"Visual Novels have been successfully converted to JSON format and saved under the following path: {path}");
             _isFinished = true;
         }
-
-        /// <summary>
-        /// Logs a message to the Unity console with the specified log type.
-        /// Allows for categorizing logs into different levels such as Warning or Error.
-        /// </summary>
-        /// <param name="message">The message to log in the console.</param>
-        /// <param name="type">The type of the log message, defaulting to Log. Possible values include Log, Warning, and Error.</param>
-        private void Log(string message, LogType type = LogType.Log)
-        {
-            switch (type)
-            {
-                case LogType.Warning:
-                    LogManager.Warning(message);
-                    break;
-                case LogType.Error:
-                    LogManager.Error(message);
-                    break;
-                default:
-                    LogManager.Info(message);
-                    break;
-            }
-        }
-
     }
 }

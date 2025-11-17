@@ -129,12 +129,6 @@ namespace Assets._Scripts.Managers
             _characterDataDictionary = characterDataList.ToDictionary(entry => entry.id, entry => entry.data);
 
             CheckAndSetAllNovelsStatus();
-            
-            // GlobalVolumeManager.Instance.SetGlobalVolume(0f);
-            // PlayerPrefs.SetInt("IsSoundEffectVolumeOn", 0);
-            // PlayerPrefs.SetFloat("SavedSoundEffectVolume", 0f);
-            // TextToSpeechManager.Instance.DeactivateTTS();
-            // PlayerPrefs.SetInt("TTS", 0);
         }
 
         /// <summary>
@@ -160,9 +154,9 @@ namespace Assets._Scripts.Managers
 
                 novelSaveStatusList.Add(new NovelSaveStatus { novelId = novelId, isSaved = isSaved });
                 
-                if (isSaved && saveData.CharacterPrefabData != null)
+                if (isSaved && saveData.characterPrefabData != null)
                 {
-                    foreach (var kvp in saveData.CharacterPrefabData)
+                    foreach (var kvp in saveData.characterPrefabData)
                     {
                         _characterDataDictionary[kvp.Key] = kvp.Value;
 

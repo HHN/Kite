@@ -15,11 +15,11 @@ namespace Assets._Scripts.Managers
     {
         private static PlayerDataManager _instance;
 
-        private Dictionary<string, string> _playerPrefs = new Dictionary<string, string>();
+        private Dictionary<string, string> _playerPrefs = new();
 
-        private List<string> _keys = new List<string>();
+        private List<string> _keys = new();
 
-        private List<string> _novelHistory = new List<string>();
+        private List<string> _novelHistory = new();
 
         /// <summary>
         /// Provides a global access point to the single instance of the PlayerDataManager class.
@@ -28,10 +28,7 @@ namespace Assets._Scripts.Managers
         /// <returns>The single instance of the PlayerDataManager class.</returns>
         public static PlayerDataManager Instance()
         {
-            if (_instance == null)
-            {
-                _instance = new PlayerDataManager();
-            }
+            _instance ??= new PlayerDataManager();
 
             return _instance;
         }
@@ -48,7 +45,8 @@ namespace Assets._Scripts.Managers
             {
                 return true;
             }
-            else if (UnityEngine.PlayerPrefs.HasKey(key))
+
+            if (UnityEngine.PlayerPrefs.HasKey(key))
             {
                 return true;
             }

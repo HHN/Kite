@@ -17,7 +17,6 @@ namespace Assets._Scripts.Novel
         private const string UnbookmarkedText = "MERKEN";
         private const int IntroNovelId = 13;
 
-
         [Header("UI Elements")] 
         [SerializeField] private Image image;
         [SerializeField] private GameObject smallHead;
@@ -228,8 +227,7 @@ namespace Assets._Scripts.Novel
         {
             var playManager = PlayManager.Instance();
             playManager.SetVisualNovelToPlay(visualNovelToDisplay);
-            playManager.SetColorOfVisualNovelToPlay(visualNovelToDisplay.novelColor);
-            playManager.SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
+            // playManager.SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
         }
 
         /// <summary>

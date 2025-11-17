@@ -171,7 +171,6 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             FontSizeManager.Instance().UpdateAllTextComponents();
             LayoutRebuilder.ForceRebuildLayoutImmediate(contentRectTransform);
-
         }
 
         /// <summary>
@@ -193,7 +192,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void OnBiasClicked(Bias bias)
         {
             ShowBiasDetails(bias.type);
-            
         }
 
         /// <summary>

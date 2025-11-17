@@ -43,17 +43,6 @@ namespace Assets._Scripts.Managers
         }
 
         /// <summary>
-        /// Retrieves the value indicating whether play instructions should be displayed.
-        /// This value determines whether instructional content is shown during novel interaction
-        /// or gameplay, allowing for guidance based on specific settings or user preferences.
-        /// </summary>
-        /// <returns>A boolean value where true indicates that play instructions should be displayed, and false indicates otherwise.</returns>
-        public bool ShowInstruction()
-        {
-            return _showInstruction;
-        }
-
-        /// <summary>
         /// Updates the setting that determines whether play instructions should be shown.
         /// Invokes the internal process to persist the updated value.
         /// </summary>

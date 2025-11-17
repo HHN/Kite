@@ -32,10 +32,7 @@ namespace Assets._Scripts.Managers
         /// </returns>
         public static FavoritesManager Instance()
         {
-            if (_instance == null)
-            {
-                _instance = new FavoritesManager();
-            }
+            _instance ??= new FavoritesManager();
 
             return _instance;
         }
@@ -67,10 +64,7 @@ namespace Assets._Scripts.Managers
         /// <param name="novel">The visual novel to be marked as a favorite.</param>
         public void MarkAsFavorite(VisualNovel novel)
         {
-            if (_favorites == null)
-            {
-                _favorites = LoadFavorites();
-            }
+            _favorites ??= LoadFavorites();
 
             if (!_favorites.favorites.Contains(novel.id))
             {
@@ -85,10 +79,7 @@ namespace Assets._Scripts.Managers
         /// <param name="novel">The visual novel to be unmarked as a favorite.</param>
         public void UnmarkAsFavorite(VisualNovel novel)
         {
-            if (_favorites == null)
-            {
-                _favorites = LoadFavorites();
-            }
+            _favorites ??= LoadFavorites();
 
             if (_favorites.favorites.Contains(novel.id))
             {
