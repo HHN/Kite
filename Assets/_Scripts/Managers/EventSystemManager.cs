@@ -13,12 +13,12 @@ namespace Assets._Scripts.Managers
         /// </summary>
         private class SceneEntry
         {
-            public Scene Scene;
-            public List<EventSystem> Systems;
+            public Scene scene;
+            public List<EventSystem> systems;
         }
 
         // Stack of all scenes with their event systems (index 0 = main scene, then additive)
-        private readonly List<SceneEntry> _sceneStack = new List<SceneEntry>();
+        private readonly List<SceneEntry> _sceneStack = new();
 
         /// <summary>
         /// Initializes the EventSystemManager instance.
@@ -34,7 +34,7 @@ namespace Assets._Scripts.Managers
             // 1) Initially: collect all EventSystems in the active (main) scene
             Scene initial = SceneManager.GetActiveScene();
             var initialSystems = FindEventSystemsInScene(initial);
-            _sceneStack.Add(new SceneEntry { Scene = initial, Systems = initialSystems });
+            _sceneStack.Add(new SceneEntry { scene = initial, systems = initialSystems });
 
             // 2) Subscribe to scene load and unload events
             SceneManager.sceneLoaded   += OnSceneLoaded;
@@ -56,7 +56,7 @@ namespace Assets._Scripts.Managers
         
             // 1) Disable all existing EventSystems
             foreach (var entry in _sceneStack)
-            foreach (var es in entry.Systems)
+            foreach (var es in entry.systems)
                 if (es != null) es.enabled = false;
         
             // 2) Find and activate all EventSystems in the new scene
@@ -65,7 +65,7 @@ namespace Assets._Scripts.Managers
                 es.enabled = true;
         
             // 3) Add the scene and its EventSystems to top of the stack
-            _sceneStack.Add(new SceneEntry { Scene = scene, Systems = newSystems });
+            _sceneStack.Add(new SceneEntry { scene = scene, systems = newSystems });
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Assets._Scripts.Managers
         private void OnSceneUnloaded(Scene scene)
         {
             // 1) Remove the corresponding stack entry
-            var entry = _sceneStack.FirstOrDefault(e => e.Scene == scene);
+            var entry = _sceneStack.FirstOrDefault(e => e.scene == scene);
             if (entry != null)
                 _sceneStack.Remove(entry);
 
@@ -86,7 +86,7 @@ namespace Assets._Scripts.Managers
             
             if (top == null) return;
             
-            foreach (var es in top.Systems)
+            foreach (var es in top.systems)
                 if (es != null)
                     es.enabled = true;
         }

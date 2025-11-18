@@ -39,20 +39,6 @@ namespace Assets._Scripts.Player
             {
                 typewriterCore.SkipTypewriter();
             }
-            else
-            {
-                // _controller.StartTalking();
-            }
-        }
-
-        /// <summary>
-        /// Called when the typewriter effect finishes typing all text.
-        /// This method signals the <see cref="PlayNovelSceneController"/> to stop any
-        /// ongoing character talking animations.
-        /// </summary>
-        public void OnStopTyping()
-        {
-            // _controller.StopTalking();
         }
     }
 }

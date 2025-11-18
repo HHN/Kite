@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using UnityEngine;
 
 namespace Assets._Scripts.Novel.VisualNovelFormatter
 {
@@ -18,7 +17,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         private static readonly Regex StoryDataRegex = new(@":: StoryData\s*\n([\s\S]*?)\n::", RegexOptions.Multiline);
 
         // Regex to match any text inside double square brackets, which are used for links.
-        private static readonly Regex LinkRegex = new Regex(@"\[\[(.*?)\]\]");
+        private static readonly Regex LinkRegex = new(@"\[\[(.*?)\]\]");
 
         /// <summary>
         /// Processes the entire Twee source text and converts it into a list of TweePassage objects.
@@ -151,7 +150,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         }
 
         /// <summary>
-        /// Removes any text enclosed in square brackets (e.g. "[...]" ) from the input and trims the result.
+        /// Removes any text enclosed in square brackets (e.g. "[...]") from the input and trims the result.
         /// </summary>
         /// <param name="input">The input text to process</param>
         /// <returns>The processed string with bracketed text removed and trimmed</returns>
@@ -274,8 +273,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             text = RemoveKeyWords(text);
             // Normalize extra spaces to a single space.
             text = NormalizeSpaces(text);
-            List <string> list = text.Trim().Split(new[] { "\r\n", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries).ToList();
-            int idx = 0;
             return text.Trim().Split(new[] { "\r\n", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries).ToList();
         }
 

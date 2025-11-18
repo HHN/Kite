@@ -7,7 +7,7 @@ namespace Assets._Scripts.UIElements.FoundersBubble
 {
     /// <summary>
     /// Updates the visibility of a UI element (typically an image) to indicate
-    /// whether a specific visual novel is bookmarked/favorited.
+    /// whether a specific visual novel is bookmarked.
     /// </summary>
     public class BookmarkUpdater : MonoBehaviour
     {

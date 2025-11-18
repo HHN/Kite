@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
-using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.UIElements.FoundersBubble;
 using Assets._Scripts.Utilities;
@@ -270,6 +269,11 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
         }
 
+        /// <summary>
+        /// Configures the visual appearance and functionality of the introductory novel button (ID 13).
+        /// It iterates through the novel entries to find the specific intro novel, applies its defined
+        /// frame color and text color, and sets up the click listener for navigation.
+        /// </summary>
         private void SetupIntroNovelButton()
         {
             if (introNovelButton)
@@ -646,6 +650,11 @@ namespace Assets._Scripts.Controller.SceneControllers
             SceneLoader.LoadSettingsScene();
         }
 
+        /// <summary>
+        /// Immediately stops any active scrolling coroutines.
+        /// This method is called to interrupt automated or snapping scroll animations,
+        /// typically in response to direct user input, ensuring the UI remains responsive.
+        /// </summary>
         private void InterruptScrolling()
         {
             _userInterrupted = true;
@@ -663,17 +672,21 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
         }
 
+        /// <summary>
+        /// Checks if the user has provided any input that should interrupt an ongoing process,
+        /// such as an automatic scrolling animation.
+        /// </summary>
+        /// <returns>
+        /// Returns <c>true</c> if any user input (keyboard, mouse, or touch) is detected, otherwise <c>false</c>.
+        /// </returns>
         private bool UserInterruptedByInput()
         {
-            // Tastatur-Eingaben
             if (Input.anyKey || Input.anyKeyDown)
                 return true;
 
-            // Maus-Klick oder gehaltene Taste
             if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(0))
                 return true;
 
-            // Touch-Eingabe (Tap oder Ziehen)
             if (Input.touchCount > 0)
                 return true;
 
@@ -803,6 +816,11 @@ namespace Assets._Scripts.Controller.SceneControllers
             FontSizeManager.Instance().UpdateAllTextComponents();
         }
 
+        /// <summary>
+        /// Hides the textbox from view, typically by deactivating its GameObject.
+        /// This method is used to clear the textbox from the screen when it is no longer needed,
+        /// for example, before showing a new set of choices or ending a conversation segment.
+        /// </summary>
         private void MakeTextboxInvisible()
         {
             if (_lastScaledNovelButton != null)
@@ -816,6 +834,13 @@ namespace Assets._Scripts.Controller.SceneControllers
             novelDescriptionTextbox.gameObject.SetActive(false);
         }
 
+        /// <summary>
+        /// Retrieves the metadata for the specified visual novel, configures the necessary managers (PlayManager, NovelColorManager)
+        /// with the novel's specifications, and subsequently loads the main gameplay scene (<c>PlayNovelScene</c>).
+        /// This method acts as the final step before initiating novel playback.
+        /// </summary>
+        /// <param name="novelName">The Enum value representing the unique identifier of the visual novel selected by the user.</param>
+        /// <param name="isIntroNovel">An optional flag indicating whether the novel is being loaded as an introductory novel. Defaults to <c>false</c>.</param>
         private void LoadAndPlayNovel(VisualNovelNames novelName, bool isIntroNovel = false)
         {
             if (!_allKiteNovelsById.TryGetValue(VisualNovelNamesHelper.ToInt(novelName), out VisualNovel visualNovelToDisplay))
@@ -826,8 +851,6 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
             NovelColorManager.Instance().SetColor(visualNovelToDisplay.novelColor);
-            PlayManager.Instance().SetColorOfVisualNovelToPlay(visualNovelToDisplay.novelColor);
-            PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelName));
 
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
@@ -847,6 +870,12 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         #region Helper Methods
 
+        /// <summary>
+        /// Retrieves the <c>Transform</c> component named "Content" within the children of the burger menu game object.
+        /// This transform is required for setting up and managing the UI elements displayed inside the menu.
+        /// </summary>
+        /// <returns>The <c>Transform</c> component of the "Content" object, or <c>null</c> if the object is not found, 
+        /// in which case an error is logged.</returns>
         private Transform GetBurgerMenuContentTransform()
         {
             Transform[] children = burgerMenu.GetComponentsInChildren<Transform>();
@@ -857,6 +886,10 @@ namespace Assets._Scripts.Controller.SceneControllers
             return content;
         }
 
+        /// <summary>
+        /// Finds the persistent game object named "PlayNovelSceneController" in the scene and safely destroys it.
+        /// This is typically called when leaving the novel playback environment to clean up scene-independent components.
+        /// </summary>
         private void DestroyPlayNovelSceneController()
         {
             GameObject persistentController = GameObject.Find("PlayNovelSceneController");
@@ -866,6 +899,13 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
         }
 
+        /// <summary>
+        /// Calculates the normalized horizontal position required to center the specified button within the scroll view's viewport.
+        /// If scrolling is necessary, it stops any existing snap routine and initiates a new smooth scroll coroutine.
+        /// </summary>
+        /// <param name="buttonRect">The <c>RectTransform</c> of the button element that should be centered in the viewport.</param>
+        /// <returns>True if the scroll area is too small to require snapping (i.e., the content width does not exceed the viewport width), 
+        /// indicating the scroll position was set immediately. False if a new smooth scroll coroutine was started.</returns>
         private bool SnapToButton(RectTransform buttonRect)
         {
             if (_snapCoroutine != null)
@@ -895,6 +935,13 @@ namespace Assets._Scripts.Controller.SceneControllers
             return false;
         }
 
+        /// <summary>
+        /// Implements a smooth, time-based horizontal scrolling animation for the novel buttons scroll view.
+        /// The coroutine interpolates the scroll view's <c>horizontalNormalizedPosition</c> from its current value
+        /// to a specified target position over a given duration.
+        /// </summary>
+        /// <param name="targetNormalizedPosition">The final normalized position (0.0 to 1.0) the scroll view should reach.</param>
+        /// <param name="duration">The total time in seconds the scroll animation should take.</param>
         private IEnumerator SmoothScrollToPosition(float targetNormalizedPosition, float duration)
         {
             float startNormalizedPosition = novelButtonsScrollRect.horizontalNormalizedPosition;

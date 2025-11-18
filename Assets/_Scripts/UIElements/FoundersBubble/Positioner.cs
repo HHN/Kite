@@ -17,7 +17,6 @@ namespace Assets._Scripts.UIElements.FoundersBubble
         [HideInInspector] public int itemIndex;
         [HideInInspector] public float yOffsetAmount;
 
-        private RectTransform _buttonRootRect; // The RectTransform of the button's root GameObject.
         private int _totalNovelCount;
 
         /// <summary>
@@ -27,8 +26,6 @@ namespace Assets._Scripts.UIElements.FoundersBubble
         /// </summary>
         private void Awake()
         {
-            _buttonRootRect = GetComponent<RectTransform>();
-
             if (visualContentRect == null && transform.childCount > 0)
             {
                 visualContentRect = transform.GetChild(0).GetComponent<RectTransform>();

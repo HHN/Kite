@@ -20,7 +20,6 @@ namespace Assets._Scripts.Novel
         public int clotheSpriteId;
         public int hairSpriteId;
         public int faceSpriteId;
-        public string backgroundSprite;
         public int character;
         public string text;
         public int animationType;
@@ -47,35 +46,36 @@ namespace Assets._Scripts.Novel
         /// <returns>A new <see cref="VisualNovelEvent"/> instance that is a deep copy of the original.</returns>
         public VisualNovelEvent DeepCopy()
         {
-            VisualNovelEvent newEvent = new VisualNovelEvent();
-
-            newEvent.id = id;
-            newEvent.nextId = nextId;
-            newEvent.onChoice = onChoice;
-            newEvent.eventType = eventType;
-            newEvent.waitForUserConfirmation = waitForUserConfirmation;
-            newEvent.skinSpriteId = skinSpriteId;
-            newEvent.clotheSpriteId = clotheSpriteId;
-            newEvent.hairSpriteId = hairSpriteId;
-            newEvent.faceSpriteId = faceSpriteId;
-            newEvent.character = character;
-            newEvent.text = text;
-            newEvent.animationType = animationType;
-            newEvent.expressionType = expressionType;
-            newEvent.xPosition = xPosition;
-            newEvent.yPosition = yPosition;
-            newEvent.opinionChoiceNumber = opinionChoiceNumber;
-            newEvent.audioClipToPlay = audioClipToPlay;
-            newEvent.animationToPlay = animationToPlay;
-            newEvent.show = show;
-            newEvent.questionForFreeTextInput = questionForFreeTextInput;
-            newEvent.variablesName = variablesName;
-            newEvent.gptPrompt = gptPrompt;
-            newEvent.variablesNameForGptPrompt = variablesNameForGptPrompt;
-            newEvent.gptCompletionHandler = gptCompletionHandler;
-            newEvent.key = key;
-            newEvent.value = value;
-            newEvent.relevantBias = relevantBias;
+            VisualNovelEvent newEvent = new VisualNovelEvent
+            {
+                id = id,
+                nextId = nextId,
+                onChoice = onChoice,
+                eventType = eventType,
+                waitForUserConfirmation = waitForUserConfirmation,
+                skinSpriteId = skinSpriteId,
+                clotheSpriteId = clotheSpriteId,
+                hairSpriteId = hairSpriteId,
+                faceSpriteId = faceSpriteId,
+                character = character,
+                text = text,
+                animationType = animationType,
+                expressionType = expressionType,
+                xPosition = xPosition,
+                yPosition = yPosition,
+                opinionChoiceNumber = opinionChoiceNumber,
+                audioClipToPlay = audioClipToPlay,
+                animationToPlay = animationToPlay,
+                show = show,
+                questionForFreeTextInput = questionForFreeTextInput,
+                variablesName = variablesName,
+                gptPrompt = gptPrompt,
+                variablesNameForGptPrompt = variablesNameForGptPrompt,
+                gptCompletionHandler = gptCompletionHandler,
+                key = key,
+                value = value,
+                relevantBias = relevantBias
+            };
 
             return newEvent;
         }

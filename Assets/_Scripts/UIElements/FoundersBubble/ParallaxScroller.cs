@@ -1,4 +1,3 @@
-using System.Collections;
 using Assets._Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.UI;
@@ -49,9 +48,9 @@ namespace Assets._Scripts.UIElements.FoundersBubble
                 return;
             }
             
-            for (int i = 0; i < backgroundItemList.Length; i++)
+            foreach (var backgroundItem in backgroundItemList)
             {
-                Instantiate(backgroundItemList[i], backgroundParent);
+                Instantiate(backgroundItem, backgroundParent);
             }
             
             for (int i = 0; i < backgroundItemList.Length; i++)
@@ -61,9 +60,9 @@ namespace Assets._Scripts.UIElements.FoundersBubble
                 rt.SetAsFirstSibling();
             }
             
-            for (int i = 0; i < midgroundItemList.Length; i++)
+            foreach (var midgroundItem in midgroundItemList)
             {
-                Instantiate(midgroundItemList[i], midgroundParent);
+                Instantiate(midgroundItem, midgroundParent);
             }
             
             for (int i = 0; i < midgroundItemList.Length; i++)
@@ -79,8 +78,6 @@ namespace Assets._Scripts.UIElements.FoundersBubble
             _width = scrollRect.content.rect.width - scrollRect.viewport.rect.width;
 
             scrollRect.onValueChanged.AddListener(OnScroll);
-
-            // StartCoroutine(SetInitialScrollDelayed());
         }
 
         /// <summary>

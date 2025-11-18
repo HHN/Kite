@@ -394,12 +394,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9cb9fd1091a53764e98214ab5695497d, type: 3}
   - {fileID: 21300000, guid: f0e4ab31c5cb6de47b99fce4ccfac5a8, type: 3}
   - {fileID: 21300000, guid: 06e5bb096beedd64fb62437d8f2a9357, type: 3}
-  - {fileID: 21300000, guid: 8470e69b50fad2645b977a4ff8536ab6, type: 3}
-  - {fileID: 21300000, guid: 32a794a42eee79f4a86cb22b38cf64a6, type: 3}
-  - {fileID: 21300000, guid: 601a442b4ddfe7a499df60d536c0359c, type: 3}
-  - {fileID: 21300000, guid: a7eb11c853e6a5648a262d8e5872b908, type: 3}
-  - {fileID: 21300000, guid: f0cd2a41e164db74fb5801502b18f8eb, type: 3}
-  - {fileID: 21300000, guid: df333ac9d5c83b444bf27c2070c934e8, type: 3}
   glassesSprites: []
   hairSprites:
   - {fileID: 21300000, guid: 0969c1d7e0f9f814080ca67de6a02d56, type: 3}
@@ -470,6 +464,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -491,6 +487,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0

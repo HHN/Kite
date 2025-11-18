@@ -1,5 +1,4 @@
 using Assets._Scripts.Managers;
-using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
 using TMPro;
 using UnityEngine;
@@ -13,11 +12,6 @@ namespace Assets._Scripts.Novel
     /// </summary>
     public class NovelDescriptionTextbox : MonoBehaviour
     {
-        private const string BookmarkedText = "GEMERKT";
-        private const string UnbookmarkedText = "MERKEN";
-        private const int IntroNovelId = 13;
-
-
         [Header("UI Elements")] 
         [SerializeField] private Image image;
         [SerializeField] private GameObject smallHead;
@@ -33,10 +27,13 @@ namespace Assets._Scripts.Novel
 
         [Header("Visual Novel Data")] 
         [SerializeField] private VisualNovel visualNovelToDisplay;
-        [SerializeField] private VisualNovelNames visualNovelName;
 
         [Header("Appearance")] 
         [SerializeField] private Color colorOfText;
+        
+        private const string BookmarkedText = "GEMERKT";
+        private const string UnbookmarkedText = "MERKEN";
+        private const int IntroNovelId = 13;
 
         /// <summary>
         /// Initializes the NovelDescriptionTextbox by setting up a button click listener.
@@ -91,7 +88,6 @@ namespace Assets._Scripts.Novel
         /// <param name="novelName">The name of the Visual Novel.</param>
         public void SetVisualNovelName(VisualNovelNames novelName)
         {
-            visualNovelName = novelName;
         }
 
         /// <summary>
@@ -228,8 +224,6 @@ namespace Assets._Scripts.Novel
         {
             var playManager = PlayManager.Instance();
             playManager.SetVisualNovelToPlay(visualNovelToDisplay);
-            playManager.SetColorOfVisualNovelToPlay(visualNovelToDisplay.novelColor);
-            playManager.SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
         }
 
         /// <summary>

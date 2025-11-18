@@ -42,10 +42,7 @@ namespace Assets._Scripts.Managers
         /// <returns>The singleton instance of KiteNovelManager.</returns>
         public static KiteNovelManager Instance()
         {
-            if (_instance == null)
-            {
-                _instance = new KiteNovelManager();
-            }
+            _instance ??= new KiteNovelManager();
 
             return _instance;
         }

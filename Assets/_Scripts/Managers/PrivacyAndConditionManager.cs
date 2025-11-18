@@ -74,22 +74,6 @@ namespace Assets._Scripts.Managers
         }
 
         /// <summary>
-        /// Marks the user's consent to data collection as accepted.
-        /// Updates the internal privacy wrapper to reflect the acceptance status for data collection.
-        /// Triggers saving of the updated consent data to persistent storage.
-        /// </summary>
-        public void AcceptDataCollection()
-        {
-            if (_wrapper == null)
-            {
-                _wrapper = LoadPrivacyAndConditionWrapper();
-            }
-
-            _wrapper.acceptedDataCollection = true;
-            Save();
-        }
-
-        /// <summary>
         /// Marks the conditions of usage as not accepted.
         /// Updates the internal state of the PrivacyAndConditionWrapper to reflect
         /// that the conditions of usage have not been agreed upon.
@@ -123,22 +107,6 @@ namespace Assets._Scripts.Managers
         }
 
         /// <summary>
-        /// Marks the user's data collection preference as unaccepted.
-        /// Updates the PrivacyAndConditionWrapper instance to reflect that data collection
-        /// has not been accepted and ensures that the updated data is saved persistently.
-        /// </summary>
-        public void UnacceptedDataCollection()
-        {
-            if (_wrapper == null)
-            {
-                _wrapper = LoadPrivacyAndConditionWrapper();
-            }
-
-            _wrapper.acceptedDataCollection = false;
-            Save();
-        }
-
-        /// <summary>
         /// Loads the current state of privacy and condition settings from persistent storage.
         /// Returns a deserialized PrivacyAndConditionWrapper instance if data exists,
         /// or creates a new default instance with all options set to unaccepted if no data is found.
@@ -158,8 +126,7 @@ namespace Assets._Scripts.Managers
                 return new PrivacyAndConditionWrapper()
                 {
                     acceptedConditions = false,
-                    acceptedPrivacyTerms = false,
-                    acceptedDataCollection = false
+                    acceptedPrivacyTerms = false
                 };
             }
         }
@@ -197,17 +164,6 @@ namespace Assets._Scripts.Managers
         {
             PrivacyAndConditionWrapper wrapper = LoadPrivacyAndConditionWrapper();
             return wrapper.acceptedPrivacyTerms;
-        }
-
-        /// <summary>
-        /// Determines whether the user has accepted data collection policies.
-        /// Retrieves the acceptance status from the stored privacy and condition wrapper.
-        /// </summary>
-        /// <returns>True if data collection is accepted; otherwise, false.</returns>
-        public bool IsDataCollectionAccepted()
-        {
-            PrivacyAndConditionWrapper wrapper = LoadPrivacyAndConditionWrapper();
-            return wrapper.acceptedDataCollection;
         }
     }
 }

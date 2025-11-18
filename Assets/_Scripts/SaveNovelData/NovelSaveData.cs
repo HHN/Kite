@@ -23,8 +23,8 @@ namespace Assets._Scripts.SaveNovelData
         public List<VisualNovelEvent> content;
         public List<string> messageType;
         public int optionCount;
-        public Dictionary<int, int> CharacterExpressions = new();
-        public Dictionary<long, CharacterData> CharacterPrefabData;
+        public Dictionary<int, int> characterExpressions = new();
+        public Dictionary<long, CharacterData> characterPrefabData;
 
         /// <summary>
         /// Converts this instance of <see cref="NovelSaveData"/> into a JSON string.

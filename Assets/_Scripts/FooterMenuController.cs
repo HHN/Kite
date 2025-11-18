@@ -8,6 +8,9 @@ using UnityEngine.UI;
 
 namespace Assets._Scripts
 {
+    /// <summary>
+    /// Configuration data structure for a single button within the application's footer menu.
+    /// </summary>
     [System.Serializable]
     public class FooterButton
     {

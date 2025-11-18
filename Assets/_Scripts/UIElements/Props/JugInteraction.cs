@@ -42,14 +42,12 @@ namespace Assets._Scripts.UIElements.Props
             Image image = instance.GetComponent<Image>();
             if (image == null) yield break;
 
-            // Animation durchlaufen (außer Startbild)
             for (int i = 1; i < animationFrames.Length; i++)
             {
                 image.sprite = animationFrames[i];
                 yield return new WaitForSeconds(0.5f);
             }
 
-            // Startbild wiederherstellen
             image.sprite = animationFrames[0];
         }
     }

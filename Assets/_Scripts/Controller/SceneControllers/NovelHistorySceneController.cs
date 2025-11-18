@@ -7,7 +7,7 @@ using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
-using Assets._Scripts.UIElements.DropDown;
+using Assets._Scripts.UIElements;
 using Assets._Scripts.UIElements.FoundersBubble;
 using Assets._Scripts.Utilities;
 using TMPro;
