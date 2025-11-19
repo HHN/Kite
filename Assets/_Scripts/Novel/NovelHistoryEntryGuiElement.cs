@@ -3,7 +3,8 @@ using System.Collections;
 using System.Text.RegularExpressions;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Player;
-using Assets._Scripts.UIElements.DropDown;
+using Assets._Scripts.UIElements;
+using Assets._Scripts.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,7 +22,6 @@ namespace Assets._Scripts.Novel
         [SerializeField] private TextMeshProUGUI headButtonText;
         [SerializeField] private TextMeshProUGUI dialogText;
         [SerializeField] private TextMeshProUGUI aiFeedbackText;
-        [SerializeField] private DialogHistoryEntry dialogHistoryEntry;
         [SerializeField] private Image image;
         [SerializeField] private Image image01;
         [SerializeField] private Image image02;
@@ -33,10 +33,10 @@ namespace Assets._Scripts.Novel
         [SerializeField] private Button copyFeedbackButton;
         private GameObject _copyNotificationContainer;
 
-#if UNITY_WEBGL && !UNITY_EDITOR
-        [DllImport("__Internal")]
-        private static extern void CopyTextToClipboard(string text);
-#endif
+        #if UNITY_WEBGL && !UNITY_EDITOR
+                [DllImport("__Internal")]
+                private static extern void CopyTextToClipboard(string text);
+        #endif
 
         /// <summary>
         /// Initializes the component by adding listeners to copy buttons and updating all text components.
@@ -56,7 +56,6 @@ namespace Assets._Scripts.Novel
         /// <param name="dialogHistoryEntry">The <see cref="DialogHistoryEntry"/> containing the data for this GUI element.</param>
         public void InitializeEntry(DialogHistoryEntry dialogHistoryEntry)
         {
-            this.dialogHistoryEntry = dialogHistoryEntry;
             headButtonText.text = dialogHistoryEntry.GetDateAndTime();
             dialogText.text = dialogHistoryEntry.GetDialogWithReplacedCharacterDesignation();
             aiFeedbackText.text = dialogHistoryEntry.GetCompletion().Replace("#", "").Replace("*", "").Trim();
@@ -97,16 +96,16 @@ namespace Assets._Scripts.Novel
         /// </summary>
         private void CopyDialog()
         {
-            Debug.Log("KOPIEREN");
+            LogManager.Info("KOPIEREN");
             string pattern = @"<\/?(b|i)>"; // Regex to match <b>, <i>, </b>, </i> tags
             string copyText = Regex.Replace(dialogText.text, pattern, string.Empty);
             copyText = copyText.Replace("\n", "\n\n"); // Replace single newlines with double for better readability when pasted
 
-#if UNITY_WEBGL && !UNITY_EDITOR
-            CopyTextToClipboard(copyText);
-#else
-            GUIUtility.systemCopyBuffer = copyText;
-#endif
+            #if UNITY_WEBGL && !UNITY_EDITOR
+                        CopyTextToClipboard(copyText);
+            #else
+                        GUIUtility.systemCopyBuffer = copyText;
+            #endif
 
             StartCoroutine(ShowCopyPopup("Dialog"));
         }
@@ -118,16 +117,16 @@ namespace Assets._Scripts.Novel
         /// </summary>
         private void CopyFeedback()
         {
-            Debug.Log("KOPIEREN");
+            LogManager.Info("KOPIEREN");
             string pattern = @"<\/?(b|i)>"; // Regex to match <b>, <i>, </b>, </i> tags
             string copyText = Regex.Replace(aiFeedbackText.text, pattern, string.Empty);
             copyText = copyText.Replace("\n", "\n\n"); // Replace single newlines with double for better readability when pasted
 
-#if UNITY_WEBGL && !UNITY_EDITOR
-            CopyTextToClipboard(copyText);
-#else
-            GUIUtility.systemCopyBuffer = copyText;
-#endif
+            #if UNITY_WEBGL && !UNITY_EDITOR
+                        CopyTextToClipboard(copyText);
+            #else
+                        GUIUtility.systemCopyBuffer = copyText;
+            #endif
 
             StartCoroutine(ShowCopyPopup("Feedback"));
         }
@@ -142,7 +141,7 @@ namespace Assets._Scripts.Novel
         {
             if (GameObjectManager.Instance().GetCopyNotification() == null)
             {
-                Debug.Log("Kein GameObject mit dem Tag 'CopyNotification' gefunden.");
+                LogManager.Info("Kein GameObject mit dem Tag 'CopyNotification' gefunden.");
                 yield break; // Exit the coroutine if the object is not found.
             }
 
@@ -153,14 +152,11 @@ namespace Assets._Scripts.Novel
             {
                 if (whatWasCopied == "Feedback")
                 {
-                    // Setze den Text
                     textComponent.text = "Das Feedback wurde in die\r\nZwischenablage kopiert.";
                 }
                 else if (whatWasCopied == "Dialog")
                 {
-                    // Setze den Text
                     textComponent.text = "Der Dialog wurde in die\r\nZwischenablage kopiert.";
-
                 }
             }
 

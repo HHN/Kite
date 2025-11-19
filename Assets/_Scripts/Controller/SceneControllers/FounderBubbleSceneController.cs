@@ -5,7 +5,10 @@ using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
+using Assets._Scripts.ServerCommunication;
+using Assets._Scripts.ServerCommunication.SceneMetrics;
 using Assets._Scripts.UIElements.FoundersBubble;
+using Assets._Scripts.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -75,8 +78,13 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void Start()
         {
             InitializeManagersAndState();
-
             SetupMainNovelTiles();
+            if (!PlayerPrefs.HasKey("FoundersBubble") || PlayerPrefs.GetInt("FoundersBubble") == 0)
+            {
+                PlayerPrefs.SetInt("FoundersBubble", 1);
+                PlayerPrefs.Save();
+                StartCoroutine(SceneMetricsClient.Hit(SceneType.FoundersBubble));
+            }
             
             Transform content = GetBurgerMenuContentTransform();
             if (!content) return;
@@ -129,7 +137,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void InitializeManagersAndState()
         {
-            BackStackManager.Instance().Push(SceneNames.FoundersBubbleScene);
+            BackStackManager.Instance.Push(SceneNames.FoundersBubbleScene);
             DestroyPlayNovelSceneController();
             FooterActivationManager.Instance().SetFooterActivated(true);
             currentlyOpenedVisualNovelPopup = VisualNovelNames.None;
@@ -203,7 +211,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 }
 
                 novelButtonGameObject.GetComponentInChildren<Button>().name = novelName;
-                novelButtonGameObject.GetComponentInChildren<TextMeshProUGUI>().text = !visualNovel.isKiteNovel ? visualNovel.title : visualNovel.designation;
+                novelButtonGameObject.GetComponentInChildren<TextMeshProUGUI>().text = visualNovel.title;
 
                 // Setup button click handling
                 Button button = novelButtonGameObject.GetComponentInChildren<Button>();
@@ -278,7 +286,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 {
                     if (!_allKiteNovelsById.TryGetValue(entry.novelId, out var visualNovel)) continue;
                     
-                    if (visualNovel.designation.Equals("Mehr zu KITE II erfahren"))
+                    if (visualNovel.id == 13)
                     {
                         Image[] images = introNovelButton.GetComponentsInChildren<Image>(true);
 
@@ -295,8 +303,8 @@ namespace Assets._Scripts.Controller.SceneControllers
                         }
 
                         introNovelButton.GetComponentInChildren<Button>().onClick.AddListener(OnIntroNovelButton);
-                        introNovelButton.GetComponentInChildren<Button>().name = "Mehr zu\nKITE II";
-                        introNovelButton.GetComponentInChildren<TextMeshProUGUI>().text = "Mehr zu\nKITE II";
+                        introNovelButton.GetComponentInChildren<Button>().name = "Mehr zu KITE";
+                        introNovelButton.GetComponentInChildren<TextMeshProUGUI>().text = "Mehr zu KITE";
                     }
                 }
             }
@@ -524,7 +532,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             GameObject burgerMenuButton = Instantiate(burgerMenuButtonPrefab, content);
             burgerMenuButton.name = novelName;
             burgerMenuButton.GetComponentInChildren<Button>().name = novelName;
-            burgerMenuButton.GetComponentInChildren<TextMeshProUGUI>().text = !visualNovel.isKiteNovel ? visualNovel.title : visualNovel.designation;
+            burgerMenuButton.GetComponentInChildren<TextMeshProUGUI>().text = visualNovel.title;
             burgerMenuButton.GetComponentInChildren<Button>().onClick.AddListener(OnButtonFromBurgerMenu);
             burgerMenuButton.GetComponentInChildren<Image>().color = visualNovel.novelColor;
 
@@ -603,11 +611,12 @@ namespace Assets._Scripts.Controller.SceneControllers
             _novelId = VisualNovelNamesHelper.ToInt(VisualNovelNames.EinstiegsNovel);
             if (!_allKiteNovelsById.TryGetValue(_novelId, out VisualNovel currentNovel))
             {
-                Debug.LogError($"Novel mit ID {_novelId} nicht im Dictionary gefunden.");
+                LogManager.Error($"Novel mit ID {_novelId} nicht im Dictionary gefunden.");
                 return;
             }
             
             NovelColorManager.Instance().SetColor(currentNovel.novelColor);
+            PlayManager.Instance().SetVisualNovelToPlay(currentNovel);
             
             SceneLoader.LoadPlayInstructionScene();
         }
@@ -645,6 +654,11 @@ namespace Assets._Scripts.Controller.SceneControllers
             SceneLoader.LoadSettingsScene();
         }
 
+        /// <summary>
+        /// Immediately stops any active scrolling coroutines.
+        /// This method is called to interrupt automated or snapping scroll animations,
+        /// typically in response to direct user input, ensuring the UI remains responsive.
+        /// </summary>
         private void InterruptScrolling()
         {
             _userInterrupted = true;
@@ -662,17 +676,21 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
         }
 
+        /// <summary>
+        /// Checks if the user has provided any input that should interrupt an ongoing process,
+        /// such as an automatic scrolling animation.
+        /// </summary>
+        /// <returns>
+        /// Returns <c>true</c> if any user input (keyboard, mouse, or touch) is detected, otherwise <c>false</c>.
+        /// </returns>
         private bool UserInterruptedByInput()
         {
-            // Tastatur-Eingaben
             if (Input.anyKey || Input.anyKeyDown)
                 return true;
 
-            // Maus-Klick oder gehaltene Taste
             if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(0))
                 return true;
 
-            // Touch-Eingabe (Tap oder Ziehen)
             if (Input.touchCount > 0)
                 return true;
 
@@ -756,7 +774,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             _novelId = VisualNovelNamesHelper.ToInt(visualNovel);
             if (!_allKiteNovelsById.TryGetValue(_novelId, out VisualNovel currentNovel))
             {
-                Debug.LogError($"Novel mit ID {_novelId} nicht im Dictionary gefunden.");
+                LogManager.Error($"Novel mit ID {_novelId} nicht im Dictionary gefunden.");
                 return;
             }
 
@@ -775,7 +793,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             if (!isNovelContainedInVersion)
             {
                 novelDescriptionTextbox.gameObject.SetActive(true);
-                novelDescriptionTextbox.SetHead();
+                novelDescriptionTextbox.ActivateHeadIcon();
                 novelDescriptionTextbox.SetVisualNovelName(visualNovel);
                 novelDescriptionTextbox.SetText("Leider ist diese Novel nicht in der Testversion enthalten. Bitte spiele eine andere Novel.");
                 novelDescriptionTextbox.SetColorOfImage(currentNovel.novelColor);
@@ -786,7 +804,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
 
             novelDescriptionTextbox.gameObject.SetActive(true);
-            novelDescriptionTextbox.SetHead();
+            novelDescriptionTextbox.ActivateHeadIcon();
             novelDescriptionTextbox.SetVisualNovel(currentNovel);
             novelDescriptionTextbox.SetVisualNovelName(visualNovel);
             novelDescriptionTextbox.SetText(currentNovel.description);
@@ -802,6 +820,11 @@ namespace Assets._Scripts.Controller.SceneControllers
             FontSizeManager.Instance().UpdateAllTextComponents();
         }
 
+        /// <summary>
+        /// Hides the textbox from view, typically by deactivating its GameObject.
+        /// This method is used to clear the textbox from the screen when it is no longer needed,
+        /// for example, before showing a new set of choices or ending a conversation segment.
+        /// </summary>
         private void MakeTextboxInvisible()
         {
             if (_lastScaledNovelButton != null)
@@ -815,19 +838,24 @@ namespace Assets._Scripts.Controller.SceneControllers
             novelDescriptionTextbox.gameObject.SetActive(false);
         }
 
+        /// <summary>
+        /// Retrieves the metadata for the specified visual novel, configures the necessary managers (PlayManager, NovelColorManager)
+        /// with the novel's specifications, and subsequently loads the main gameplay scene (<c>PlayNovelScene</c>).
+        /// This method acts as the final step before initiating novel playback.
+        /// </summary>
+        /// <param name="novelName">The Enum value representing the unique identifier of the visual novel selected by the user.</param>
+        /// <param name="isIntroNovel">An optional flag indicating whether the novel is being loaded as an introductory novel. Defaults to <c>false</c>.</param>
         private void LoadAndPlayNovel(VisualNovelNames novelName, bool isIntroNovel = false)
         {
             if (!_allKiteNovelsById.TryGetValue(VisualNovelNamesHelper.ToInt(novelName), out VisualNovel visualNovelToDisplay))
             {
-                Debug.LogWarning($"Novel with name {novelName} (ID: {VisualNovelNamesHelper.ToInt(novelName)}) not found in dictionary.");
+                LogManager.Warning($"Novel with name {novelName} (ID: {VisualNovelNamesHelper.ToInt(novelName)}) not found in dictionary.");
                 return;
             }
 
             PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
             NovelColorManager.Instance().SetColor(visualNovelToDisplay.novelColor);
-            PlayManager.Instance().SetColorOfVisualNovelToPlay(visualNovelToDisplay.novelColor);
-            PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelName));
-            PlayManager.Instance().SetDesignationOfNovelToPlay(visualNovelToDisplay.designation);
+            // PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelName));
 
             GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
             DontDestroyOnLoad(buttonSound);
@@ -839,14 +867,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
             else
             {
-                if (ShowPlayInstructionManager.Instance().ShowInstruction() && visualNovelToDisplay.title != "Einstiegsdialog")
-                {
-                    SceneLoader.LoadPlayInstructionScene();
-                }
-                else
-                {
-                    SceneLoader.LoadPlayNovelScene();
-                }
+                SceneLoader.LoadPlayNovelScene();
             }
         }
 
@@ -854,16 +875,26 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         #region Helper Methods
 
+        /// <summary>
+        /// Retrieves the <c>Transform</c> component named "Content" within the children of the burger menu game object.
+        /// This transform is required for setting up and managing the UI elements displayed inside the menu.
+        /// </summary>
+        /// <returns>The <c>Transform</c> component of the "Content" object, or <c>null</c> if the object is not found, 
+        /// in which case an error is logged.</returns>
         private Transform GetBurgerMenuContentTransform()
         {
             Transform[] children = burgerMenu.GetComponentsInChildren<Transform>();
             Transform content = children.FirstOrDefault(k => k.gameObject.name == "Content");
 
-            if (!content) Debug.LogError("Content Transform not found in burgerMenu. Cannot proceed with UI setup.");
+            if (!content) LogManager.Error("Content Transform not found in burgerMenu. Cannot proceed with UI setup.");
 
             return content;
         }
 
+        /// <summary>
+        /// Finds the persistent game object named "PlayNovelSceneController" in the scene and safely destroys it.
+        /// This is typically called when leaving the novel playback environment to clean up scene-independent components.
+        /// </summary>
         private void DestroyPlayNovelSceneController()
         {
             GameObject persistentController = GameObject.Find("PlayNovelSceneController");
@@ -873,6 +904,13 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
         }
 
+        /// <summary>
+        /// Calculates the normalized horizontal position required to center the specified button within the scroll view's viewport.
+        /// If scrolling is necessary, it stops any existing snap routine and initiates a new smooth scroll coroutine.
+        /// </summary>
+        /// <param name="buttonRect">The <c>RectTransform</c> of the button element that should be centered in the viewport.</param>
+        /// <returns>True if the scroll area is too small to require snapping (i.e., the content width does not exceed the viewport width), 
+        /// indicating the scroll position was set immediately. False if a new smooth scroll coroutine was started.</returns>
         private bool SnapToButton(RectTransform buttonRect)
         {
             if (_snapCoroutine != null)
@@ -902,6 +940,13 @@ namespace Assets._Scripts.Controller.SceneControllers
             return false;
         }
 
+        /// <summary>
+        /// Implements a smooth, time-based horizontal scrolling animation for the novel buttons scroll view.
+        /// The coroutine interpolates the scroll view's <c>horizontalNormalizedPosition</c> from its current value
+        /// to a specified target position over a given duration.
+        /// </summary>
+        /// <param name="targetNormalizedPosition">The final normalized position (0.0 to 1.0) the scroll view should reach.</param>
+        /// <param name="duration">The total time in seconds the scroll animation should take.</param>
         private IEnumerator SmoothScrollToPosition(float targetNormalizedPosition, float duration)
         {
             float startNormalizedPosition = novelButtonsScrollRect.horizontalNormalizedPosition;

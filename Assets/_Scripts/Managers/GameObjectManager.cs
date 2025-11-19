@@ -1,3 +1,4 @@
+using Assets._Scripts.Utilities;
 using UnityEngine;
 
 namespace Assets._Scripts.Managers
@@ -56,7 +57,7 @@ namespace Assets._Scripts.Managers
         {
             if (_copyNotification != null)
             {
-                Debug.Log("copyNotification is NOT null");
+                LogManager.Info("copyNotification is NOT null");
             }
 
             return _copyNotification;

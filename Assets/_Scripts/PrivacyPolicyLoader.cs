@@ -1,9 +1,8 @@
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
-using System.IO;
-using System.Collections.Generic;
 using Assets._Scripts.Biases;
+using Assets._Scripts.Utilities;
 
 namespace Assets._Scripts
 {
@@ -15,27 +14,25 @@ namespace Assets._Scripts
     /// </summary>
     public class PrivacyPolicyLoader : MonoBehaviour
     {
-        [Header("Setup")] [SerializeField] private Transform contentParent;
+        [Header("Setup")] 
+        [SerializeField] private Transform contentParent;
         [SerializeField] private string textFileName;
         [SerializeField] private TMP_FontAsset font;
 
-        [Header("Schriftgrößen")] [SerializeField]
-        private int heading1Size = 40;
-
+        [Header("Schriftgrößen")] 
+        [SerializeField] private int heading1Size = 40;
         [SerializeField] private int heading2Size = 38;
         [SerializeField] private int heading3Size = 36;
         [SerializeField] private int heading4Size = 36;
         [SerializeField] private int normalTextSize = 35;
         [SerializeField] private int indentedTextSize = 35;
 
-        [Header("Schriftfarben")] [SerializeField]
-        private Color heading1Color = Color.black;
-
+        [Header("Schriftfarben")] 
+        [SerializeField] private Color heading1Color = Color.black;
         [SerializeField] private Color heading2Color = Color.black;
         [SerializeField] private Color heading3Color = Color.black;
         [SerializeField] private Color heading4Color = Color.black;
         [SerializeField] private Color normalTextColor = Color.black;
-        [SerializeField] private Color indentedTextColor = Color.black;
         [SerializeField] private Color linkColor = Color.blue;
 
         /// <summary>
@@ -59,7 +56,7 @@ namespace Assets._Scripts
 
             if (textAsset == null)
             {
-                Debug.LogError("Textdatei nicht gefunden: " + textFileName + ". Make sure it's in a Resources folder.", this);
+                LogManager.Error("Textdatei nicht gefunden: " + textFileName + ". Make sure it's in a Resources folder.", this);
                 return;
             }
 
@@ -139,7 +136,7 @@ namespace Assets._Scripts
         {
             TextMeshProUGUI textComp = blockGO.AddComponent<TextMeshProUGUI>();
             textComp.font = font;
-            textComp.enableWordWrapping = true;
+            textComp.textWrappingMode = TextWrappingModes.Normal;
             string displaytext = blockText;
 
             if (!string.IsNullOrEmpty(blockText))
@@ -162,14 +159,14 @@ namespace Assets._Scripts
                     {
                         textComp.fontSize = heading2Size;
                         textComp.color = heading2Color;
-                        textComp.fontStyle = TMPro.FontStyles.Bold;
+                        textComp.fontStyle = FontStyles.Bold;
                         displaytext = linkRegex.Replace(blockText.Substring(3), MatchEvaluator);
                     }
                     else if (blockText.StartsWith("# "))
                     {
                         textComp.fontSize = heading1Size;
                         textComp.color = heading1Color;
-                        textComp.fontStyle = TMPro.FontStyles.Bold;
+                        textComp.fontStyle = FontStyles.Bold;
                         displaytext = linkRegex.Replace(blockText.Substring(2), MatchEvaluator);
                     }
                 }
@@ -184,7 +181,7 @@ namespace Assets._Scripts
             {
                 textComp.fontSize = normalTextSize;
                 textComp.color = normalTextColor;
-                displaytext = linkRegex.Replace(blockText, MatchEvaluator);
+                if (blockText != null) displaytext = linkRegex.Replace(blockText, MatchEvaluator);
             }
 
             textComp.text = displaytext;
@@ -206,7 +203,7 @@ namespace Assets._Scripts
             string text = match.Groups["text"].Value;
             string url = match.Groups["url"].Value;
             if (!url.StartsWith("http"))
-                url = "http://" + url;
+                url = "https://" + url;
             return $"<link=\"{url}\"><color=#{ColorUtility.ToHtmlStringRGBA(linkColor)}><u>{text}</u></color></link>";
         }
     }

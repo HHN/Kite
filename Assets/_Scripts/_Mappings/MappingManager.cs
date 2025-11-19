@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Assets._Scripts.Biases;
+using Assets._Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -17,13 +18,13 @@ namespace Assets._Scripts._Mappings
     {
         private static MappingManager _instance;
         
-        public static Dictionary<string, Bias> biases = new(StringComparer.OrdinalIgnoreCase);
+        public static readonly Dictionary<string, Bias> BIASES = new(StringComparer.OrdinalIgnoreCase);
 
         // Mapping-Files
         private static readonly string MappingFileFaceExpression;
         private static readonly string MappingFileCharacter;
         private static readonly string MappingFileSound;
-
+        
         // Dictionaries
         private static Dictionary<string, int> _faceExpressionMapping = new(StringComparer.OrdinalIgnoreCase);
         private static Dictionary<string, int> _characterMapping = new(StringComparer.OrdinalIgnoreCase);
@@ -44,7 +45,9 @@ namespace Assets._Scripts._Mappings
             LoadSoundMappingAsync();
         }
 
-        /// <summary>Singleton</summary>
+        /// <summary>
+        /// Singleton
+        /// </summary>
         public static MappingManager Instance
         {
             get
@@ -63,7 +66,6 @@ namespace Assets._Scripts._Mappings
                         DontDestroyOnLoad(obj);
                     }
                 }
-
                 return _instance;
             }
         }
@@ -99,7 +101,7 @@ namespace Assets._Scripts._Mappings
             }
             else
             {
-                Debug.LogWarning($"Face expression mapping file not found at: {filePath}");
+                LogManager.Warning($"Face expression mapping file not found at: {filePath}");
             }
 #endif
         }
@@ -135,12 +137,18 @@ namespace Assets._Scripts._Mappings
             }
             else
             {
-                Debug.LogWarning($"Character mapping file not found at: {filePath}");
+                LogManager.Warning($"Character mapping file not found at: {filePath}");
             }
 #endif
         }
 
-        // NEU: Sound-Mapping laden
+        /// <summary>
+        /// Asynchronously loads the sound mapping data from the SoundMapping.txt file.
+        /// The loading mechanism is platform-dependent: for WebGL, it uses a UnityWebRequest,
+        /// while for other platforms, it reads the file directly from disk.
+        /// On a successful load, the file content is processed to populate the sound mapping dictionary.
+        /// Logs warnings or errors if the file is not found or cannot be loaded.
+        /// </summary>
         private static void LoadSoundMappingAsync()
         {
 #if UNITY_WEBGL
@@ -166,12 +174,12 @@ namespace Assets._Scripts._Mappings
             }
             else
             {
-                Debug.LogWarning($"Sound mapping file not found at: {filePath}");
+                LogManager.Warning($"Sound mapping file not found at: {filePath}");
             }
 #endif
         }
 
-        // ----------------- BIASES (JSON) -----------------
+// ----------------- BIASES (JSON) -----------------
 
         /// <summary>
         /// Loads bias data from a JSON file and populates the internal dictionary of biases.
@@ -183,26 +191,26 @@ namespace Assets._Scripts._Mappings
             TextAsset json = Resources.Load<TextAsset>("KnowledgeBase");
             if (json == null)
             {
-                Debug.LogError("Bias JSON not found in Resources!");
+                LogManager.Error("Bias JSON not found in Resources!");
                 return;
             }
 
             var wrapper = JsonUtility.FromJson<BiasJsonWrapper>(json.text);
 
-            biases.Clear();
+            BIASES.Clear();
 
             foreach (var item in wrapper.items)
             {
                 if (string.IsNullOrWhiteSpace(item.type))
                 {
-                    Debug.LogWarning("Bias ohne gültigen Key gefunden, wird übersprungen.");
+                    LogManager.Warning("Bias ohne gültigen Key gefunden, wird übersprungen.");
                     continue;
                 }
                 
                 string key = ExtractBiasKey(item.type);
                 if (!string.IsNullOrEmpty(key))
                 {
-                    biases[key] = new Bias
+                    BIASES[key] = new Bias
                     {
                         type = key,
                         category = item.category,
@@ -213,7 +221,7 @@ namespace Assets._Scripts._Mappings
                 }
                 else
                 {
-                    Debug.LogWarning($"Ungültiger Bias-Key: {item.type}");
+                    LogManager.Warning($"Ungültiger Bias-Key: {item.type}");
                 }
             }
         }
@@ -264,12 +272,12 @@ namespace Assets._Scripts._Mappings
                     }
                     else
                     {
-                        Debug.LogWarning($"Invalid face expression mapping value (not an integer): {line}");
+                        LogManager.Warning($"Invalid face expression mapping value (not an integer): {line}");
                     }
                 }
                 else
                 {
-                    Debug.LogWarning($"Invalid mapping line: {line}");
+                    LogManager.Warning($"Invalid mapping line: {line}");
                 }
             }
         }
@@ -299,16 +307,23 @@ namespace Assets._Scripts._Mappings
                     }
                     else
                     {
-                        Debug.LogWarning($"Invalid character mapping value (not an integer): {line}");
+                        LogManager.Warning($"Invalid character mapping value (not an integer): {line}");
                     }
                 }
                 else
                 {
-                    Debug.LogWarning($"Invalid mapping line: {line}");
+                    LogManager.Warning($"Invalid mapping line: {line}");
                 }
             }
         }
 
+        /// <summary>
+        /// Processes the lines from the sound mapping file and populates the given dictionary with the mappings.
+        /// Each line is expected to contain a key-value pair in the format "SoundName:ID".
+        /// Invalid or malformed lines are ignored, and a warning is logged.
+        /// </summary>
+        /// <param name="lines">An array of strings representing the lines from the sound mapping file.</param>
+        /// <param name="mapping">A reference to the dictionary where the mappings will be stored. The keys are the sound names (strings), and the values are the IDs (integers).</param>
         private static void ProcessSoundFile(string[] lines, ref Dictionary<string, int> mapping)
         {
             foreach (string raw in lines)
@@ -328,12 +343,12 @@ namespace Assets._Scripts._Mappings
                     }
                     else
                     {
-                        Debug.LogWarning($"Invalid sound mapping value (not an integer): {line}");
+                        LogManager.Warning($"Invalid sound mapping value (not an integer): {line}");
                     }
                 }
                 else
                 {
-                    Debug.LogWarning($"Invalid mapping line: {line}");
+                    LogManager.Warning($"Invalid mapping line: {line}");
                 }
             }
         }
@@ -354,12 +369,12 @@ namespace Assets._Scripts._Mappings
             if (string.IsNullOrWhiteSpace(key))
                 return key;
 
-            if (biases.TryGetValue(key, out Bias bias))
+            if (BIASES.TryGetValue(key, out Bias bias))
             {
                 return bias.headline;
             }
 
-            Debug.LogWarning($"Bias mapping not found for type: {key}");
+            LogManager.Warning($"Bias mapping not found for type: {key}");
             return key;
         }
 
@@ -372,7 +387,7 @@ namespace Assets._Scripts._Mappings
         /// </returns>
         public static Dictionary<string, Bias> GetAllBiases()
         {
-            return biases;
+            return BIASES;
         }
 
         /// <summary>
@@ -386,7 +401,7 @@ namespace Assets._Scripts._Mappings
             if (string.IsNullOrWhiteSpace(faceExpression)) return -1;
 
             var key = faceExpression.Trim();
-            return _faceExpressionMapping.TryGetValue(key, out int id) ? id : -1;
+            return _faceExpressionMapping.GetValueOrDefault(key, -1);
         }
 
         /// <summary>
@@ -401,7 +416,7 @@ namespace Assets._Scripts._Mappings
             if (string.IsNullOrWhiteSpace(character)) return -1;
 
             var key = character.Trim();
-            return _characterMapping.TryGetValue(key, out int id) ? id : -1;
+            return _characterMapping.GetValueOrDefault(key, -1);
         }
 
         /// <summary>
@@ -412,17 +427,6 @@ namespace Assets._Scripts._Mappings
         public static string MapCharacterToString(int character)
         {
             return character == -1 ? "" : _characterMapping.FirstOrDefault(x => x.Value == character).Key;
-        }
-
-        /// <summary>
-        /// Case-insensitive mapping of sound clip name → int index (from StreamingAssets/SoundMapping.txt).
-        /// </summary>
-        public static int MapSound(string clipName)
-        {
-            if (string.IsNullOrWhiteSpace(clipName)) return -1;
-
-            var key = clipName.Trim();
-            return _soundMapping.TryGetValue(key, out int id) ? id : -1;
         }
     }
 }

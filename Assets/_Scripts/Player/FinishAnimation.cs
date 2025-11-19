@@ -1,4 +1,5 @@
 using Assets._Scripts.Controller.SceneControllers;
+using Assets._Scripts.Utilities;
 using UnityEngine;
 
 namespace Assets._Scripts.Player
@@ -26,7 +27,7 @@ namespace Assets._Scripts.Player
             // If the controller GameObject is not found, exit early.
             if (controller == null)
             {
-                Debug.LogWarning("FinishAnimation: 'Controller' GameObject not found in scene.");
+                LogManager.Warning("FinishAnimation: 'Controller' GameObject not found in scene.");
                 return;
             }
 
@@ -36,7 +37,7 @@ namespace Assets._Scripts.Player
             // If the controller component is not found, exit early.
             if (novelSceneController == null)
             {
-                Debug.LogWarning("FinishAnimation: PlayNovelSceneController component not found on 'Controller' GameObject.");
+                LogManager.Warning("FinishAnimation: PlayNovelSceneController component not found on 'Controller' GameObject.");
                 return;
             }
 

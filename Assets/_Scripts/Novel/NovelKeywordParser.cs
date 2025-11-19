@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Assets._Scripts._Mappings;
 using Assets._Scripts.Novel.VisualNovelFormatter;
-using UnityEngine;
+using Assets._Scripts.Utilities;
 
 namespace Assets._Scripts.Novel
 {
@@ -101,7 +101,7 @@ namespace Assets._Scripts.Novel
                 string numberPart = firstPart.Substring(CharacterPrefix.Length);
                 if (int.TryParse(numberPart, out int charNum))
                 {
-                    string characterName = null;
+                    string characterName;
                     // Improvement: Use an array or dictionary for TalkingPartner access
                     // Instead of if-else if chain
                     switch (charNum)
@@ -110,7 +110,7 @@ namespace Assets._Scripts.Novel
                         case 2: characterName = kiteNovelMetaData.TalkingPartner02; break;
                         case 3: characterName = kiteNovelMetaData.TalkingPartner03; break;
                         default:
-                            Debug.LogWarning($"Unknown Character number '{charNum}' in keyword: {keyword}");
+                            LogManager.Warning($"Unknown Character number '{charNum}' in keyword: {keyword}");
                             return null;
                     }
 
@@ -120,13 +120,13 @@ namespace Assets._Scripts.Novel
                     }
                     else
                     {
-                        Debug.LogWarning($"TalkingPartner{charNum:D2} is null or empty in metadata for keyword: {keyword}");
+                        LogManager.Warning($"TalkingPartner{charNum:D2} is null or empty in metadata for keyword: {keyword}");
                         return null; // No valid character name found
                     }
                 }
                 else
                 {
-                    Debug.LogWarning($"Invalid Character number format in keyword: {keyword}");
+                    LogManager.Warning($"Invalid Character number format in keyword: {keyword}");
                     return null;
                 }
 
@@ -143,14 +143,15 @@ namespace Assets._Scripts.Novel
                 }
                 else
                 {
-                    Debug.LogWarning($"Character keyword '{keyword}' does not contain enough parts for expression.");
+                    LogManager.Warning($"Character keyword '{keyword}' does not contain enough parts for expression.");
                     return null; // At least one expression should be present
                 }
 
                 return model;
             }
+            
             // B. Sound keyword
-            else if (firstPart.StartsWith(SoundPrefix, StringComparison.OrdinalIgnoreCase))
+            if (firstPart.StartsWith(SoundPrefix, StringComparison.OrdinalIgnoreCase))
             {
                 if (parts.Length > 1)
                 {
@@ -159,14 +160,15 @@ namespace Assets._Scripts.Novel
                 }
                 else
                 {
-                    Debug.LogWarning($"Sound keyword '{keyword}' does not specify a sound name.");
+                    LogManager.Warning($"Sound keyword '{keyword}' does not specify a sound name.");
                     return null;
                 }
 
                 return model;
             }
+            
             // C. Bias keyword
-            else if (firstPart.StartsWith(BiasPrefix, StringComparison.OrdinalIgnoreCase))
+            if (firstPart.StartsWith(BiasPrefix, StringComparison.OrdinalIgnoreCase))
             {
                 if (parts.Length > 1)
                 {
@@ -174,7 +176,7 @@ namespace Assets._Scripts.Novel
                 }
                 else
                 {
-                    Debug.LogWarning($"Bias keyword '{keyword}' does not specify a bias name.");
+                    LogManager.Warning($"Bias keyword '{keyword}' does not specify a bias name.");
                     return null;
                 }
 
@@ -182,7 +184,7 @@ namespace Assets._Scripts.Novel
             }
 
             // If none of the expected cases occur, null is returned.
-            Debug.LogWarning($"Unknown keyword format: {keyword}");
+            LogManager.Warning($"Unknown keyword format: {keyword}");
             return null;
         }
 
@@ -202,7 +204,7 @@ namespace Assets._Scripts.Novel
             foreach (string line in fileContent)
             {
                 // If the separator is present in the line, this line is split into multiple tokens.
-                string[] tokens = line.Split(new string[] { ">>--<<" }, StringSplitOptions.RemoveEmptyEntries);
+                string[] tokens = line.Split(new[] { ">>--<<" }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (string token in tokens)
                 {
                     string trimmedToken = token.Trim();

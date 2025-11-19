@@ -8,6 +8,7 @@ using Assets._Scripts.Controller.SceneControllers;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
+using Assets._Scripts.Utilities;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -29,8 +30,7 @@ namespace Assets._Scripts.SaveNovelData
         /// </summary>
         /// <param name="playNovelSceneController">The controller for the current play scene.</param>
         /// <param name="conversationContentGuiController">The controller for the conversation content.</param>
-         public static void SaveNovelData(PlayNovelSceneController playNovelSceneController,
-            ConversationContentGuiController conversationContentGuiController)
+         public static void SaveNovelData(PlayNovelSceneController playNovelSceneController, ConversationContentGuiController conversationContentGuiController)
         {
             // Load all existing saved data as a dictionary to ensure we don't overwrite other novel saves.
             Dictionary<string, NovelSaveData> allSaveData = LoadAllSaveData();
@@ -168,8 +168,8 @@ namespace Assets._Scripts.SaveNovelData
                 visualNovelEvents = conversationContentGuiController.VisualNovelEvents, // Visual novel event history.
                 messageType = messageBoxesNames, // Names of message box prefabs used.
                 optionCount = _count, // Number of "Blue Message Prefab With Trigger" messages.
-                CharacterExpressions = playNovelSceneController.CharacterExpressions, // Character expressions.
-                CharacterPrefabData = characterPrefabData // Data about character prefabs (positions, etc.).
+                characterExpressions = playNovelSceneController.CharacterExpressions, // Character expressions.
+                characterPrefabData = characterPrefabData // Data about character prefabs (positions, etc.).
             };
 
             // Delete any existing save data for this novel ID before saving the new one.
@@ -218,14 +218,12 @@ namespace Assets._Scripts.SaveNovelData
                 }
                 catch (Exception ex)
                 {
-                    Debug.LogError("Fehler beim Laden der Daten: " + ex.Message);
+                    LogManager.Error("Fehler beim Laden der Daten: " + ex.Message);
                     return new Dictionary<string, NovelSaveData>();
                 }
             }
-            else
-            {
-                return new Dictionary<string, NovelSaveData>();
-            }
+
+            return new Dictionary<string, NovelSaveData>();
         }
 
         /// <summary>
@@ -248,7 +246,7 @@ namespace Assets._Scripts.SaveNovelData
             }
             else
             {
-                Debug.LogWarning($"Kein Spielstand für Novel ID {novelId} gefunden.");
+                LogManager.Warning($"Kein Spielstand für Novel ID {novelId} gefunden.");
             }
         }
 

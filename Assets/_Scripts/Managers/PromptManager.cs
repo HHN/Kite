@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Assets._Scripts.Novel;
-using Newtonsoft.Json;
+using Assets._Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.Networking;
 
 namespace Assets._Scripts.Managers
 {
     
-    [System.Serializable]
+    [Serializable]
     public class KnowledgeItem
     {
         public string type;
@@ -19,10 +19,9 @@ namespace Assets._Scripts.Managers
         public string bias;
     }
     
-    [System.Serializable]
+    [Serializable]
     public class KnowledgeBase
     {
-        public string title;
         public List<KnowledgeItem> items;
     }
     
@@ -159,7 +158,7 @@ namespace Assets._Scripts.Managers
             }
             else
             {
-                Debug.LogError("KnowledgeBase not found in Resources!");
+                LogManager.Error("KnowledgeBase not found in Resources!");
             }
         }
 
@@ -172,30 +171,30 @@ namespace Assets._Scripts.Managers
         /// <param name="fileLabel">A label used for logging purposes to identify the type of file being loaded.</param>
         private void LoadTextFile(string path, Action<string> onSuccess, string fileLabel)
         {
-        #if UNITY_WEBGL
-            UnityWebRequest request = UnityWebRequest.Get(path);
-            request.SendWebRequest().completed += (op) =>
-            {
-                if (request.result == UnityWebRequest.Result.Success)
+            #if UNITY_WEBGL
+                UnityWebRequest request = UnityWebRequest.Get(path);
+                request.SendWebRequest().completed += (op) =>
                 {
-                    onSuccess(request.downloadHandler.text);
+                    if (request.result == UnityWebRequest.Result.Success)
+                    {
+                        onSuccess(request.downloadHandler.text);
+                    }
+                    else
+                    {
+                        Application.ExternalCall("logMessage", $"Error loading {fileLabel}: {request.error}");
+                    }
+                };
+            #else
+                if (File.Exists(path))
+                {
+                    string text = File.ReadAllText(path);
+                    onSuccess(text);
                 }
                 else
                 {
-                    Application.ExternalCall("logMessage", $"Error loading {fileLabel}: {request.error}");
+                    LogManager.Warning($"{fileLabel} file not found at: {path}");
                 }
-            };
-        #else
-            if (File.Exists(path))
-            {
-                string text = File.ReadAllText(path);
-                onSuccess(text);
-            }
-            else
-            {
-                Debug.LogWarning($"{fileLabel} file not found at: {path}");
-            }
-        #endif
+            #endif
         }
 
         /// <summary>

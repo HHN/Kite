@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 namespace Assets._Scripts.Managers
 {
@@ -22,10 +21,7 @@ namespace Assets._Scripts.Managers
         /// <returns>A singleton instance of the FooterActivationManager.</returns>
         public static FooterActivationManager Instance()
         {
-            if (_instance == null)
-            {
-                _instance = new FooterActivationManager();
-            }
+            _instance ??= new FooterActivationManager();
 
             return _instance;
         }

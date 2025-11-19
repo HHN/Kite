@@ -1,4 +1,5 @@
 using System.Collections;
+using Assets._Scripts.Utilities;
 using UnityEngine;
 
 namespace Assets._Scripts.Controller
@@ -30,7 +31,7 @@ namespace Assets._Scripts.Controller
             // Check if the Animator component exists
             if (_animator == null)
             {
-                Debug.LogError("Animator not found on GameObject. Please assign an Animator component.");
+                LogManager.Error("Animator not found on GameObject. Please assign an Animator component.");
                 return;
             }
 

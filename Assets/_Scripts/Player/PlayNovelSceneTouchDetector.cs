@@ -1,4 +1,5 @@
 using Assets._Scripts.Controller.SceneControllers;
+using Assets._Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -20,7 +21,6 @@ namespace Assets._Scripts.Player
         /// to ensure it's a genuine tap/click, then notifies the <see cref="PlayNovelSceneController"/>.
         /// </summary>
         /// <param name="eventData">The <see cref="PointerEventData"/> containing information about the pointer event.</param>
-
         public void OnPointerClick(PointerEventData eventData)
         {
             float distance = Vector2.Distance(eventData.pressPosition, eventData.position);
@@ -35,7 +35,7 @@ namespace Assets._Scripts.Player
             }
             else
             {
-                Debug.LogWarning("PlayNovelSceneController.Instance ist nicht gesetzt!");
+                LogManager.Warning("PlayNovelSceneController.Instance ist nicht gesetzt!");
             }
         }
     }

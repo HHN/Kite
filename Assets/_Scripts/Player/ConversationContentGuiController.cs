@@ -35,12 +35,11 @@ namespace Assets._Scripts.Player
         [SerializeField] private GameObject blueMessagePrefabWithTrigger;
         [SerializeField] private GameObject optionsPrefab;
 
-        [Header("UI Buttons")] [SerializeField]
-        private GameObject askForFeelingsButton;
+        [Header("UI Buttons")] 
+        [SerializeField] private GameObject askForFeelingsButton;
 
-        [Header("Undo Choice UI")] [SerializeField]
-        private UndoChoiceMessageBox undoChoiceMessageBoxObject;
-
+        [Header("Undo Choice UI")] 
+        [SerializeField] private UndoChoiceMessageBox undoChoiceMessageBoxObject;
         [SerializeField] private GameObject undoChoiceMessageBox;
 
         [Header("Choice Tracking")]

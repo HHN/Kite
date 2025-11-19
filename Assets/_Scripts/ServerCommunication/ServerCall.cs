@@ -42,7 +42,7 @@ namespace Assets._Scripts.ServerCommunication
             {
                 // Hier wird der Custom-CertificateHandler zugewiesen:
                 webRequest.certificateHandler = new BypassCertificate();
-                //Debug.Log("RequestRegistration");
+                //LogManager.Info("RequestRegistration");
 
                 yield return webRequest.SendWebRequest();
                 HandleWebRequestResult(webRequest);

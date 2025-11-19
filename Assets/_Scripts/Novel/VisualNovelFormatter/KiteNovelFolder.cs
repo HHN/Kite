@@ -17,15 +17,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         }
 
         /// <summary>
-        /// Represents a folder that encapsulates the metadata and associated list of events for a visual novel.
-        /// </summary>
-        public KiteNovelFolder()
-        {
-            NovelMetaData = null;
-            NovelEventList = null;
-        }
-
-        /// <summary>
         /// Gets or sets the metadata associated with the visual novel, encapsulating details such as title,
         /// description, color, character information, and other relevant metadata attributes.
         /// </summary>

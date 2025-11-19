@@ -18,5 +18,14 @@ namespace Assets._Scripts.ServerCommunication
         public static readonly string DATA_LINK = BASE_LINK + "data";
         public static readonly string EXPERT_FEEDBACK_QUESTION = BASE_LINK + "expertfeedbackquestion";
         public static readonly string EXPERT_FEEDBACK_ANSWER = BASE_LINK + "expertfeedbackanswer";
+        
+        
+        public static string METRICS_SCENES_BASE = BASE_LINK + "metrics/scenes";
+        public static string SCENE_HIT(string sceneWire)   => $"{METRICS_SCENES_BASE}/{sceneWire}/hit";
+        public static string SCENE_COUNT(string sceneWire) => $"{METRICS_SCENES_BASE}/{sceneWire}";
+        public static string SCENES_ALL                    => METRICS_SCENES_BASE;
+        
+        public static readonly string PLAYTHROUGHS_BASE = BASE_LINK + "metrics/playthroughs";
+        public static string PLAYTHROUGHS_HIT => PLAYTHROUGHS_BASE + "/hit";
     }
 }

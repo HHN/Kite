@@ -1,5 +1,17 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<<< HEAD:Assets/_Prefabs/UIElements/Buttons/BookmarkedNovelsScene.meta
 guid: 1004304c11a292645bf000e5ac7926b0
+========
+guid: c45636f477a57d945bc78f448b0991f3
+>>>>>>>> main:Assets/WebGLTemplates/zResponsive/Images.meta
+=======
+<<<<<<<< HEAD:Assets/_Prefabs/UIElements/Buttons/KnowledgeBase.meta
+guid: 0474c3c4132c8d1459d1665de5d07218
+========
+guid: 1004304c11a292645bf000e5ac7926b0
+>>>>>>>> main:Assets/_Prefabs/UIElements/Buttons/BookmarkedNovelsScene.meta
+>>>>>>> main
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

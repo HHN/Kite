@@ -1,21 +1,19 @@
 using System;
+using System.IO;
+using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Assets._Scripts._Mappings;
 using Assets._Scripts.Controller.CharacterController;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using Assets._Scripts.SaveNovelData;
 using Assets._Scripts.SceneManagement;
-using Assets._Scripts.ServerCommunication.ServerCalls;
 using Assets._Scripts.UIElements.Messages;
 using Assets._Scripts.Utilities;
 using Plugins.Febucci.Text_Animator.Scripts.Runtime.Components.Typewriter._Core;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -39,36 +37,24 @@ namespace Assets._Scripts.Controller.SceneControllers
     {
         private const float WaitingTime = 0.5f;
 
-        [Header("UI-Komponenten")] [SerializeField]
-        private GameObject viewPort;
+        private static PlayNovelSceneController _instance;
 
+        [Header("UI-Komponenten")] 
+        [SerializeField] private GameObject viewPort;
         [SerializeField] private GameObject conversationViewport;
         [SerializeField] private Button closeButton;
         [SerializeField] private Button legalInformationButton;
-        [SerializeField] private TextMeshProUGUI novelName;
         [SerializeField] private ConversationContentGuiController conversationContent;
         [SerializeField] public Button confirmArea;
         [SerializeField] public Button confirmArea2;
         [SerializeField] private ChatScrollView chatScroll;
-        [SerializeField] private ImageScrollView imageScroll;
-        [SerializeField] private GameObject backgroundBlur;
-        [SerializeField] private GameObject imageAreaBlur;
-        [SerializeField] private GameObject screenContentBlur;
-        [SerializeField] private GameObject backgroundColor;
-        [SerializeField] private GameObject imageAreaColor;
-        [SerializeField] private GameObject screenContentColor;
         [SerializeField] private GameObject headerImage;
 
         [Header("Novel-Visuals und Prefabs")] 
         [SerializeField] private GameObject[] novelVisuals;
-        
         [SerializeField] private List<CharacterVisualEntry> novelVisualMappings = new();
-
         [SerializeField] private GameObject novelImageContainer;
         [SerializeField] private GameObject backgroundContainer;
-        [SerializeField] private GameObject deskContainer;
-        [SerializeField] private GameObject decoDeskContainer;
-        [SerializeField] private GameObject decoBackgroundContainer;
         [SerializeField] private GameObject[] backgroundPrefab;
         [SerializeField] private GameObject[] deskPrefab;
         [SerializeField] private GameObject[] decoDeskPrefab;
@@ -77,39 +63,24 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private GameObject currentDesk;
         [SerializeField] private GameObject currentDecoDesk;
         [SerializeField] private GameObject currentDecoBackground;
-        [SerializeField] private GameObject characterContainer;
         [SerializeField] private GameObject[] novelAnimations;
         [SerializeField] private GameObject viewPortOfImages;
         [SerializeField] private GameObject currentAnimation;
 
-        [Header("GPT und MessageBox")] [SerializeField]
-        private GameObject gptServercallPrefab;
-
+        [Header("GPT und MessageBox")] 
+        [SerializeField] private GameObject gptServerCallPrefab;
         [SerializeField] private LeaveNovelAndGoBackMessageBox leaveGameAndGoBackMessageBoxObject;
         [SerializeField] private GameObject leaveGameAndGoBackMessageBox;
-        private GameObject _hintForSavegameMessageBoxObject;
         [SerializeField] private GameObject hintForSavegameMessageBox;
 
-        [Header("Skript- und Controller-Referenzen")] [SerializeField]
-        private VisualNovel novelToPlay;
-
+        [Header("Skript- und Controller-Referenzen")] 
+        [SerializeField] private VisualNovel novelToPlay;
         [SerializeField] public TypewriterCore currentTypeWriter;
         [SerializeField] public SelectOptionContinueConversation selectOptionContinueConversation;
-
         [SerializeField] private Kite2CharacterController currentTalkingKite2CharacterController;
 
-        [Header("Audio-Komponenten")] [SerializeField]
-        private AudioClip[] clips;
-
-        [Header("Timing")] [SerializeField]
-        private float timerForHint = 12.0f; // Time after which the hint to tap on the screen is shown
-
-        [SerializeField] private float timerForHintInitial = 3.0f;
-        [SerializeField] private bool firstUserConfirmation = true;
-
-        [Header("Spielstatus und Logik")] [SerializeField]
-        private bool isWaitingForConfirmation;
-
+        [Header("Spielstatus und Logik")]
+        [SerializeField] private bool isWaitingForConfirmation;
         [SerializeField] private VisualNovelEvent nextEventToPlay;
         [SerializeField] private bool isTyping;
         [SerializeField] private List<string> playThroughHistory = new();
@@ -117,28 +88,31 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private readonly Dictionary<string, VisualNovelEvent> _novelEvents = new();
         private readonly string[] _optionsId = new string[2];
+        private readonly Dictionary<string, int> _soundIndexByName = new(StringComparer.OrdinalIgnoreCase);
+        private bool _audioReady;
+        private Dictionary<string, GameObject> _characterToPrefabMap;
+
+        private AudioClip[] _clips;
+
+        private bool _clipsDumpedOnce;
         private ConversationContentGuiController _conversationContentGuiController;
+        private GameObject _hintForSavegameMessageBoxObject;
         private int _novelCharacter;
         private NovelImageController _novelImagesController;
+        private int _optionsCount;
         private VisualNovelEvent _savedEventToResume;
+        private IEnumerator _speakingCoroutine;
         private Coroutine _timerCoroutine;
         private bool _typingWasSkipped;
-        private int _optionsCount;
-        private IEnumerator _speakingCoroutine;
-
-        // Character Expressions
-        public Dictionary<int, int> CharacterExpressions { get; } = new();
-
+        
         public bool isPaused;
+
+        public Dictionary<int, int> CharacterExpressions { get; } = new();
         public VisualNovel NovelToPlay => novelToPlay;
         public List<string> PlayThroughHistory => playThroughHistory;
         public string[] OptionsId => _optionsId;
         public List<VisualNovelEvent> EventHistory => eventHistory;
         public NovelImageController NovelImageController => _novelImagesController;
-
-        private static PlayNovelSceneController _instance;
-        
-        private Dictionary<string, GameObject> _characterToPrefabMap;
 
         /// <summary>
         /// Provides a globally accessible instance of the <see cref="PlayNovelSceneController"/> class.
@@ -174,14 +148,173 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void Start()
         {
             FooterActivationManager.Instance().SetFooterActivated(false);
-            
+
             _conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
-
             novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
-
             OfflineFeedbackManager.Instance().Clear();
 
+            StartCoroutine(BootstrapAudioAndInit());
+        }
+
+        /// <summary>
+        /// Executes the initial setup routine required before the game can fully initialize and proceed.
+        /// This coroutine first loads all necessary audio clips by calling <c>LoadAudioClipsFromMapping()</c>.
+        /// Once the audio is loaded, it sets the <c>_audioReady</c> flag to true and proceeds to call the main <c>Initialize()</c> method.
+        /// </summary>
+        private IEnumerator BootstrapAudioAndInit()
+        {
+            yield return StartCoroutine(LoadAudioClipsFromMapping());
+
+            _audioReady = true;
+
             Initialize();
+        }
+
+        /// <summary>
+        /// A debugging utility that logs detailed information about all currently loaded audio clips 
+        /// to the console, prefixed with a specified context string.
+        /// </summary>
+        /// <param name="audioDumpContext">A descriptive string used to identify the source or context of the audio dump 
+        /// (e.g., "Post Load", "Scene Exit").</param>
+        private void DumpClips(string audioDumpContext)
+        {
+            if (_clips == null) return;
+
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.AppendLine($"[AudioDump] ({audioDumpContext}) clips.Length={_clips.Length}");
+
+            for (int i = 0; i < _clips.Length; i++)
+            {
+                var c = _clips[i];
+                if (c == null)
+                {
+                    sb.AppendLine($"  [{i}] null");
+                    continue;
+                }
+                sb.AppendLine($"  [{i}] name='{c.name}', len={c.length:F2}s, samples={c.samples}, freq={c.frequency}, channels={c.channels}, loadState={c.loadState}");
+            }
+        }
+
+        /// <summary>
+        /// Liest SoundMapping.txt (StreamingAssets) und lädt ausschließlich die referenzierten .wav
+        /// aus Assets/_AudioResources. Die Clips landen an ihren Indizes, Lücken bleiben null.
+        /// Es wird auf das vollständige Laden gewartet; bei fehlenden/fehlerhaften Files gibt es Warnungen.
+        /// </summary>
+        private IEnumerator LoadAudioClipsFromMapping()
+        {
+            string mappingPath = Path.Combine(Application.streamingAssetsPath, "SoundMapping.txt");
+            string mappingText;
+
+            if (mappingPath.Contains("://") || mappingPath.Contains(":///"))
+            {
+                using UnityWebRequest req = UnityWebRequest.Get(mappingPath);
+                yield return req.SendWebRequest();
+                if (req.result != UnityWebRequest.Result.Success)
+                {
+                    LogManager.Warning($"[AudioLoad] SoundMapping konnte nicht geladen werden: {req.error} ({mappingPath})");
+                    _clips = Array.Empty<AudioClip>();
+                    yield break;
+                }
+                mappingText = req.downloadHandler.text;
+            }
+            else
+            {
+                if (!File.Exists(mappingPath))
+                {
+                    LogManager.Warning($"[AudioLoad] SoundMapping.txt nicht gefunden unter: {mappingPath}");
+                    _clips = Array.Empty<AudioClip>();
+                    yield break;
+                }
+                mappingText = File.ReadAllText(mappingPath);
+            }
+
+            var pairs = new List<(string name, int index)>();
+            foreach (var raw in mappingText.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                var line = raw.Trim();
+                if (line.Length == 0 || line.StartsWith("#")) continue;
+
+                var parts = line.Split(':');
+                if (parts.Length != 2)
+                {
+                    LogManager.Warning($"[AudioLoad] Zeile ignoriert (kein Name:Index): '{line}'");
+                    continue;
+                }
+
+                var soundPair = parts[0].Trim();
+                if (!int.TryParse(parts[1], out int idx))
+                {
+                    LogManager.Warning($"[AudioLoad] Ungültiger Index in Zeile: '{line}'");
+                    continue;
+                }
+
+                pairs.Add((soundPair, idx));
+            }
+
+            if (pairs.Count == 0)
+            {
+                LogManager.Warning("[AudioLoad] Mapping ist leer – es wird kein Clip geladen.");
+                _clips = Array.Empty<AudioClip>();
+                yield break;
+            }
+
+            int size = pairs.Max(p => p.index) + 1;
+            _clips = new AudioClip[size];
+
+            _soundIndexByName.Clear();
+            for (int i = 0; i < pairs.Count; i++)
+            {
+                _soundIndexByName[pairs[i].name] = pairs[i].index;
+            }
+
+            var missing = new List<string>();
+            int loaded = 0;
+
+            var loadOperations = new List<ResourceRequest>();
+            var loadPairs = new List<(int index, string clipName)>();
+    
+            foreach (var (clipName, index) in pairs)
+            {
+                string resourcePath = "_AudioResources/" + clipName;
+                ResourceRequest request = Resources.LoadAsync<AudioClip>(resourcePath);
+                loadOperations.Add(request);
+                loadPairs.Add((index, clipName));
+            }
+
+            while (loadOperations.Any(op => !op.isDone))
+            {
+                yield return null;
+            }
+
+            for (int i = 0; i < loadOperations.Count; i++)
+            {
+                var clip = loadOperations[i].asset as AudioClip;
+                var (index, clipName) = loadPairs[i];
+        
+                if (clip == null)
+                {
+                    LogManager.Warning($"[AudioLoad] Resources.LoadAsync konnte '{clipName}' nicht finden.");
+                    missing.Add($"{clipName}.wav");
+                    continue;
+                }
+
+                clip.name = clipName;
+
+                if (index >= 0 && index < _clips.Length)
+                {
+                    _clips[index] = clip;
+                    loaded++;
+                }
+                else
+                {
+                    LogManager.Warning($"[AudioLoad] Index außerhalb des Bereichs ({index}) für '{clipName}' (clips.Length={_clips.Length})");
+                }
+            }
+
+            if (missing.Count > 0)
+            {
+                LogManager.Warning($"[AudioLoad] Zusammenfassung: {loaded}/{pairs.Count} Clips geladen. Fehlend/fehlerhaft: {string.Join(", ", missing)}");
+            }
         }
 
         /// <summary>
@@ -199,8 +332,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             novelToPlay.feedback = string.Empty;
             novelToPlay.playedPath = string.Empty;
 
-            novelName.text = novelToPlay.title;
-
             if (novelToPlay.novelEvents.Count <= 0) return;
 
             SetVisualElements();
@@ -216,12 +347,14 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void InitializeCharacterToPrefabMap()
         {
-            _characterToPrefabMap = new Dictionary<string, GameObject>();
+            _characterToPrefabMap = new Dictionary<string, GameObject>(novelVisualMappings.Count, StringComparer.OrdinalIgnoreCase);
+
             foreach (var entry in novelVisualMappings)
             {
-                if (!_characterToPrefabMap.ContainsKey(entry.characterName))
+                if (!string.IsNullOrEmpty(entry.characterName) && entry.prefab != null)
                 {
-                    _characterToPrefabMap.Add(entry.characterName, entry.prefab);
+                    // TryAdd vermeidet doppelte Contains-Prüfung
+                    _characterToPrefabMap.TryAdd(entry.characterName, entry.prefab);
                 }
             }
         }
@@ -244,16 +377,22 @@ namespace Assets._Scripts.Controller.SceneControllers
             {
                 InitializeCharacterToPrefabMap();
             }
+            
+            if (_characterToPrefabMap == null)
+            {
+                LogManager.Error("Character-to-Prefab mapping dictionary failed to initialize. Cannot proceed with UI setup.");
+                return;
+            }
 
             if (!_characterToPrefabMap.TryGetValue(character, out var prefabToInstantiate))
             {
-                Debug.LogWarning($"No prefab found for character '{character}', using fallback.");
+                LogManager.Warning($"No prefab found for character '{character}', using fallback.");
                 prefabToInstantiate = novelVisualMappings.Count > 0 ? novelVisualMappings[0].prefab : null;
             }
 
             if (!prefabToInstantiate)
             {
-                Debug.LogError("No valid prefab to instantiate.");
+                LogManager.Error("No valid prefab to instantiate.");
                 return;
             }
                     
@@ -378,8 +517,13 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         public void Continue()
         {
-            BackStackManager.Instance().Push(SceneNames.PlayNovelScene);
-            
+            if (!_audioReady)
+            {
+                LogManager.Warning("[PlayNovelSceneController] Continue() blocked — audio not ready yet");
+                return;
+            }
+
+            BackStackManager.Instance.Push(SceneNames.PlayNovelScene);
             StartCoroutine(PlayNextEvent());
         }
 
@@ -394,24 +538,17 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// event handling within the visual novel sequence.</returns>
         private IEnumerator PlayNextEvent()
         {
-            // Stop if paused
             if (isPaused) yield break;
             
             if (TextToSpeechManager.Instance.IsTextToSpeechActivated()) yield return WaitForSpeechToFinish();
 
             HandleEventPreparation();
-
             eventHistory.Add(nextEventToPlay);
 
             VisualNovelEventType type = VisualNovelEventTypeHelper.ValueOf(nextEventToPlay.eventType);
 
             switch (type)
             {
-                case VisualNovelEventType.SetBackgroundEvent:
-                {
-                    HandleBackgroundEvent(nextEventToPlay);
-                    break;
-                }
                 case VisualNovelEventType.CharacterJoinEvent:
                 {
                     HandleCharacterJoinEvent(nextEventToPlay);
@@ -451,46 +588,12 @@ namespace Assets._Scripts.Controller.SceneControllers
                     HandlePlaySoundEvent(nextEventToPlay);
                     break;
                 }
-                case VisualNovelEventType.PlayAnimationEvent:
-                {
-                    HandlePlayAnimationEvent(nextEventToPlay);
-                    break;
-                }
-                case VisualNovelEventType.GptPromptEvent:
-                {
-                    HandleGptPromptEvent(nextEventToPlay);
-                    break;
-                }
-                case VisualNovelEventType.SavePersistentEvent:
-                {
-                    HandleSavePersistentEvent(nextEventToPlay);
-                    break;
-                }
-                case VisualNovelEventType.SaveVariableEvent:
-                {
-                    HandleSaveVariableEvent(nextEventToPlay);
-                    break;
-                }
-                case VisualNovelEventType.AddFeedbackEvent:
-                {
-                    HandleAddFeedbackEvent(nextEventToPlay);
-                    break;
-                }
-                case VisualNovelEventType.AddFeedbackUnderConditionEvent:
-                {
-                    HandleAddFeedbackUnderConditionEvent(nextEventToPlay);
-                    break;
-                }
                 case VisualNovelEventType.MarkBiasEvent:
                 {
                     HandleMarkBiasEvent(nextEventToPlay);
                     break;
                 }
-                case VisualNovelEventType.CalculateVariableFromBooleanExpressionEvent:
-                {
-                    HandleCalculateVariableFromBooleanExpressionEvent(nextEventToPlay);
-                    break;
-                }
+                case VisualNovelEventType.None:
                 default:
                 {
                     string nextEventID = nextEventToPlay.nextId;
@@ -525,7 +628,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             if (selectOptionContinueConversation != null)
             {
-                selectOptionContinueConversation.alreadyPlayedNextEvent = true;
                 selectOptionContinueConversation = null;
             }
 
@@ -558,20 +660,57 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// <param name="novelEvent">The visual novel event containing information about the sound to play and related behaviors such as waiting for user confirmation.</param>
         private void HandlePlaySoundEvent(VisualNovelEvent novelEvent)
         {
+            if (!_clipsDumpedOnce)
+            {
+                DumpClips("HandlePlaySoundEvent-enter");
+                _clipsDumpedOnce = true;
+            }
+
             SetNextEvent(novelEvent);
 
-            if (novelEvent.audioClipToPlay != "NONE")
+            string key = novelEvent.audioClipToPlay;
+
+            bool isNone = string.Equals(key, "NONE", StringComparison.OrdinalIgnoreCase);
+            bool isLeaveScene = string.Equals(key, "LEAVESCENE", StringComparison.OrdinalIgnoreCase);
+
+            if (!isNone && !isLeaveScene)
             {
-                int soundIndex = MappingManager.MapSound(novelEvent.audioClipToPlay);
-                if (soundIndex >= 0 && soundIndex < clips.Length)
+                if (string.IsNullOrWhiteSpace(key))
                 {
-                    GlobalVolumeManager.Instance.PlaySound(clips[soundIndex]);
+                    LogManager.Warning("[PlaySound] audioClipToPlay ist leer.");
+                }
+                else if (_soundIndexByName.TryGetValue(key.Trim(), out int idx))
+                {
+
+                    if (idx >= 0 && idx < (_clips?.Length ?? 0))
+                    {
+                        if (_clips != null)
+                        {
+                            var clip = _clips[idx];
+                            if (clip != null)
+                            {
+                                if (clip.loadState == AudioDataLoadState.Unloaded)
+                                {
+                                    clip.LoadAudioData();
+                                }
+                            
+                                GlobalVolumeManager.Instance.PlaySound(clip);
+                            }
+                            else
+                            {
+                                LogManager.Warning($"[PlaySound] Clip an idx {idx} ist NULL (Datei fehlte/Fehler beim Laden?)");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        LogManager.Warning($"[PlaySound] idx {idx} außerhalb von clips (len={(_clips?.Length ?? 0)})");
+                    }
                 }
                 else
                 {
-                    Debug.LogWarning($"Ungültiger Sound-Index oder nicht gefunden: '{novelEvent.audioClipToPlay}'");
+                    LogManager.Warning($"[PlaySound] Kein Mapping für '{key}' (nicht in SoundMapping.txt?)");
                 }
-
             }
 
             if (novelEvent.waitForUserConfirmation)
@@ -579,8 +718,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 SetWaitingForConfirmation(true);
                 return;
             }
-
-            if (novelEvent.audioClipToPlay == "LEAVESCENE")
+            if (isLeaveScene)
             {
                 StartCoroutine(StartNextEventInOneSeconds(2.5f));
                 return;
@@ -588,160 +726,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             StartCoroutine(StartNextEventInOneSeconds(1));
         }
-
-        /// <summary>
-        /// Handles an event to play animations specified in the given visual novel event.
-        /// If the animation is defined in the event, it prepares and executes the animation process.
-        /// </summary>
-        /// <param name="novelEvent">The visual novel event that contains animation data to be processed.</param>
-        private void HandlePlayAnimationEvent(VisualNovelEvent novelEvent)
-        {
-            SetNextEvent(novelEvent);
-
-            if (novelEvent.animationToPlay != "NONE")
-            {
-                //currentAnimation = Instantiate(novelEvent.animationToPlay, viewPortOfImages.transform);   //TODO: Anpassen, siehe oben.
-            }
-        }
-
-        /// <summary>
-        /// Handles GPT prompt events for a given visual novel event, managing server calls
-        /// and user confirmation when necessary.
-        /// </summary>
-        /// <param name="novelEvent">The visual novel event that contains the GPT-related prompt data.</param>
-        private void HandleGptPromptEvent(VisualNovelEvent novelEvent)
-        {
-            SetNextEvent(novelEvent);
-
-            if (novelEvent.gptPrompt == string.Empty
-                || novelEvent.gptPrompt == ""
-                || novelEvent.variablesNameForGptPrompt == string.Empty
-                || novelEvent.variablesNameForGptPrompt == "")
-            {
-                return;
-            }
-
-            GetCompletionServerCall call = Instantiate(gptServercallPrefab).GetComponent<GetCompletionServerCall>();
-            call.sceneController = this;
-            
-            //GptRequestEventOnSuccessHandler onSuccessHandler = new GptRequestEventOnSuccessHandler            //TODO: Wegen CompletionHandler schauen. Vermutlich reicht einer.
-            //{
-            //    VariablesNameForGptPrompt = novelEvent.variablesNameForGptPrompt,
-            //    CompletionHandler = GptCompletionHandlerManager.Instance()
-            //        .GetCompletionHandlerById(novelEvent.gptCompletionHandler)
-            //};
-            //call.OnSuccessHandler = onSuccessHandler;
-            
-            call.prompt = ReplacePlaceholders(novelEvent.gptPrompt, novelToPlay.GetGlobalVariables());
-            call.SendRequest();
-            DontDestroyOnLoad(call.gameObject);
-
-            if (novelEvent.waitForUserConfirmation)
-            {
-                SetWaitingForConfirmation(true);
-                return;
-            }
-
-            StartCoroutine(PlayNextEvent());
-        }
-
-        /// <summary>
-        /// Handles the saving of persistent events by processing the specified visual novel event,
-        /// writing user input to a file, and initiating the next event playback.
-        /// </summary>
-        /// <param name="novelEvent">The visual novel event containing data such as type, value,
-        /// and other attributes related to the event being processed.</param>
-        private void HandleSavePersistentEvent(VisualNovelEvent novelEvent)
-        {
-            SetNextEvent(novelEvent);
-            WriteUserInputToFile(novelEvent.key, ReplacePlaceholders(novelEvent.value, novelToPlay.GetGlobalVariables()));
-            StartCoroutine(PlayNextEvent());
-        }
-
-        /// <summary>
-        /// Handles the process of saving a variable associated with a visual novel event,
-        /// updates the global variables, and triggers the next event in the sequence.
-        /// </summary>
-        /// <param name="novelEvent">The visual novel event containing the type-value pair to be saved
-        /// and other event-related data.</param>
-        private void HandleSaveVariableEvent(VisualNovelEvent novelEvent)
-        {
-            SetNextEvent(novelEvent);
-            novelToPlay.AddGlobalVariable(novelEvent.key, novelEvent.value);
-            StartCoroutine(PlayNextEvent());
-        }
-
-        /// <summary>
-        /// Processes a VisualNovelEvent by evaluating a boolean expression, updating global variables,
-        /// and setting the next event to play in the visual novel.
-        /// </summary>
-        /// <param name="novelEvent">The event containing the boolean expression to evaluate, the variable type for storing the result, and the event transition data.</param>
-        private void HandleCalculateVariableFromBooleanExpressionEvent(VisualNovelEvent novelEvent)
-        {
-            SetNextEvent(novelEvent);
-            string booleanExpression = ReplacePlaceholders(novelEvent.value, novelToPlay.GetGlobalVariables());
-            novelToPlay.AddGlobalVariable(novelEvent.key, EvaluateBooleanExpression(booleanExpression).ToString());
-            StartCoroutine(PlayNextEvent());
-        }
-
-        /// <summary>
-        /// Evaluates a boolean expression represented as a string and returns the resulting boolean value.
-        /// </summary>
-        /// <param name="expression">The boolean expression to be evaluated. The expression should follow valid
-        /// syntax rules and can include placeholders or boolean literals (true/false).</param>
-        /// <returns>True if the expression evaluates successfully to true, false if it evaluates to false
-        /// or if an error occurs during evaluation.</returns>
-        private static bool EvaluateBooleanExpression(string expression)
-        {
-            if (string.IsNullOrWhiteSpace(expression)) return false;
-
-            expression = expression.Replace("true", "True").Replace("TRUE", "True").Replace("false", "False").Replace("FALSE", "False");
-            try
-            {
-                DataTable table = new DataTable();
-                table.Columns.Add("expression", typeof(bool), expression);
-                DataRow row = table.NewRow();
-                table.Rows.Add(row);
-                bool result = (bool)row["expression"];
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Debug.LogWarning($"Error evaluating boolean expression: {ex.Message}");
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Handles the addition of feedback to the offline feedback system and queues the next event in the visual novel sequence.
-        /// </summary>
-        /// <param name="novelEvent">The current visual novel event to process, containing details such as text or value to log for feedback purposes.</param>
-        private void HandleAddFeedbackEvent(VisualNovelEvent novelEvent)
-        {
-            SetNextEvent(novelEvent);
-            OfflineFeedbackManager.Instance().AddLineToPrompt(novelEvent.value);
-            StartCoroutine(PlayNextEvent());
-        }
-
-        /// <summary>
-        /// Handles the addition of feedback based on the specified condition in a visual novel event.
-        /// It evaluates the global variable associated with the event and adds a feedback line
-        /// if the condition is met. Proceeds to play the next event afterward.
-        /// </summary>
-        /// <param name="novelEvent">The visual novel event containing the condition and feedback information.</param>
-        private void HandleAddFeedbackUnderConditionEvent(VisualNovelEvent novelEvent)
-        {
-            SetNextEvent(novelEvent);
-
-            string value = novelToPlay.GetGlobalVariable(novelEvent.key);
-            if (string.Equals(value, "true", StringComparison.OrdinalIgnoreCase))
-            {
-                OfflineFeedbackManager.Instance().AddLineToPrompt(novelEvent.value);
-            }
-
-            StartCoroutine(PlayNextEvent());
-        }
-
+        
         /// <summary>
         /// Handles the marking of bias as relevant for a given visual novel event, updates the prompt with bias information,
         /// and proceeds to execute the next event.
@@ -754,31 +739,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             PromptManager.Instance().AddFormattedLineToPrompt("Hinweis", biasInformation);
             // NovelBiasManager.Instance().MarkBiasAsRelevant(novelEvent.relevantBias);
             StartCoroutine(PlayNextEvent());
-        }
-
-        /// <summary>
-        /// Writes user input to a file by saving the provided type and content
-        /// using the PlayerDataManager for persistent storage.
-        /// </summary>
-        /// <param name="key">The unique type representing the data to save.</param>
-        /// <param name="content">The content or value to associate with the type.</param>
-        private void WriteUserInputToFile(string key, string content)
-        {
-            PlayerDataManager.Instance().SavePlayerData(key, content);
-        }
-
-        /// <summary>
-        /// This method sets the next event, updates the background using the NovelImageController, and initiates scrolling and timing
-        /// for the next event to occur.
-        /// </summary>
-        /// <param name="novelEvent">The visual novel event to be handled.</param>
-        private void HandleBackgroundEvent(VisualNovelEvent novelEvent)
-        {
-            SetNextEvent(novelEvent);
-
-            _novelImagesController.SetBackground();
-            StartCoroutine(imageScroll.ScrollToPoint(0.5f, 1f));
-            StartCoroutine(StartNextEventInOneSeconds(1));
         }
 
         /// <summary>
@@ -829,7 +789,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             // Check if this is a valid character that requires expressions
             if (!CharacterExpressions.ContainsKey(_novelCharacter) && _novelCharacter != 0 && _novelCharacter != 1 && _novelCharacter != 4)
             {
-                Debug.LogWarning($"Character ID {_novelCharacter} is not registered.");
+                LogManager.Warning($"Character ID {_novelCharacter} is not registered.");
                 return;
             }
 
@@ -914,7 +874,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             PlayThroughCounterAnimationManager.Instance().SetAnimation(true, currentNovel);
 
             // Check if the current novel is the introductory dialogue
-            if (novelToPlay.title == "Einstiegsdialog")
+            if (novelToPlay.id == 13)
             {
                 // Load the FoundersBubbleScene to navigate there after the introductory dialogue
                 SceneLoader.LoadFoundersBubbleScene();
@@ -1176,7 +1136,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             if (savedData == null)
             {
-                Debug.LogWarning("No saved data found for the novel.");
+                LogManager.Warning("No saved data found for the novel.");
                 return;
             }
 
@@ -1195,9 +1155,9 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             long searchId = novelToPlay.id;
 
-            if (_novelImagesController != null && savedData.CharacterPrefabData != null)
+            if (_novelImagesController != null && savedData.characterPrefabData != null)
             {
-                if (savedData.CharacterPrefabData.TryGetValue(searchId, out CharacterData characterData))
+                if (savedData.characterPrefabData.TryGetValue(searchId, out CharacterData characterData))
                 {
                     // Set character attributes based on the found controller
                     ApplyCharacterData(_novelImagesController, characterData);
@@ -1221,13 +1181,13 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             if (controller == null)
             {
-                Debug.LogError("ApplyCharacterData failed: controller is null");
+                LogManager.Error("ApplyCharacterData failed: controller is null");
                 return;
             }
 
             if (controller.characterControllers == null || controller.characterControllers.Count == 0)
             {
-                Debug.LogError("ApplyCharacterData failed: characterControllers list is null or empty");
+                LogManager.Error("ApplyCharacterData failed: characterControllers list is null or empty");
                 return;
             }
 
@@ -1241,7 +1201,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
             else
             {
-                Debug.LogWarning("First character controller is missing or null.");
+                LogManager.Warning("First character controller is missing or null.");
             }
 
             if (controller.characterControllers.Count >= 2 && controller.characterControllers[1] != null)
@@ -1254,7 +1214,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
             else
             {
-                Debug.LogWarning("Second character controller is missing or null.");
+                LogManager.Warning("Second character controller is missing or null.");
             }
         }
 
@@ -1265,7 +1225,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// <param name="savedData">An instance of <see cref="NovelSaveData"/> containing the saved character expressions data.</param>
         private void RestoreCharacterExpressions(NovelSaveData savedData)
         {
-            foreach (var kvp in savedData.CharacterExpressions)
+            foreach (var kvp in savedData.characterExpressions)
             {
                 _novelImagesController.SetFaceExpression(kvp.Key, kvp.Value);
             }

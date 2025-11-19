@@ -36,8 +36,12 @@ namespace Assets._Scripts.Player
         {
             if (_cache != null) return;
             _cache = new Dictionary<VisualNovelNames, bool>();
+<<<<<<< HEAD
             foreach (var entry in animations)
                 _cache[entry.novel] = entry.animate;
+=======
+            foreach (var entry in animations) _cache[entry.novel] = entry.animate;
+>>>>>>> main
         }
 
         /// <summary>
@@ -77,8 +81,12 @@ namespace Assets._Scripts.Player
         private void SyncList()
         {
             animations.Clear();
+<<<<<<< HEAD
             foreach (var kvp in _cache)
                 animations.Add(new AnimationEntry { novel = kvp.Key, animate = kvp.Value });
+=======
+            foreach (var kvp in _cache) animations.Add(new AnimationEntry { novel = kvp.Key, animate = kvp.Value });
+>>>>>>> main
         }
     }
 }

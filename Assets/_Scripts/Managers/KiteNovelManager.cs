@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Assets._Scripts.Novel;
-using UnityEngine;
+using Assets._Scripts.Utilities;
 
 namespace Assets._Scripts.Managers
 {
@@ -41,10 +41,7 @@ namespace Assets._Scripts.Managers
         /// <returns>The singleton instance of KiteNovelManager.</returns>
         public static KiteNovelManager Instance()
         {
-            if (_instance == null)
-            {
-                _instance = new KiteNovelManager();
-            }
+            _instance ??= new KiteNovelManager();
 
             return _instance;
         }
@@ -70,7 +67,7 @@ namespace Assets._Scripts.Managers
         {
             if (kiteNovels == null)
             {
-                Debug.LogWarning("List<VisualNovel> kiteNovels is null ");
+                LogManager.Warning("List<VisualNovel> kiteNovels is null ");
             }
             _kiteNovels = kiteNovels;
         }

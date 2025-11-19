@@ -160,9 +160,9 @@ namespace Assets._Scripts.Managers
 
                 novelSaveStatusList.Add(new NovelSaveStatus { novelId = novelId, isSaved = isSaved });
                 
-                if (isSaved && saveData.CharacterPrefabData != null)
+                if (isSaved && saveData.characterPrefabData != null)
                 {
-                    foreach (var kvp in saveData.CharacterPrefabData)
+                    foreach (var kvp in saveData.characterPrefabData)
                     {
                         _characterDataDictionary[kvp.Key] = kvp.Value;
 

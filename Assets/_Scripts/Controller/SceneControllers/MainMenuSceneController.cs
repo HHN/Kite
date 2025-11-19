@@ -7,19 +7,18 @@ using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.ServerCommunication;
+using Assets._Scripts.ServerCommunication.SceneMetrics;
 using Assets._Scripts.UIElements;
+using Assets._Scripts.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
 
 namespace Assets._Scripts.Controller.SceneControllers
 {
     /// <summary>
     /// Controls the main menu scene of the application, managing user interactions
     /// and handling server communication responses specific to the main menu context.
-    /// Inherits from the <see cref="SceneController"/> class and implements the
-    /// <see cref="IOnSuccessHandler"/> interface.
     /// </summary>
     public class MainMenuSceneController : SceneController, IOnSuccessHandler
     {
@@ -27,53 +26,76 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private Button continueTermsAndConditionsButton;
         [SerializeField] private CustomToggle termsOfUseToggle;
         [SerializeField] private CustomToggle dataPrivacyToggle;
-        [SerializeField] private GameObject getVersionServerCallPrefab;
         [SerializeField] private GameObject novelLoader;
         [SerializeField] private TMP_Text versionInfo;
-        
+
         private const int CompatibleServerVersionNumber = 10;
+
+        // Guard: ensures that the continuation flow is only started once
+        private bool _startedNextFlow;
+
+        // If true, Start() skips the visual setup (because we already forward in Awake())
+        private bool _skipVisualSetup;
+
+        /// <summary>
+        /// Runs before the first render frame: ideal for forwarding directly when legal terms are already accepted,
+        /// without ever making the scene visible.
+        /// </summary>
+        private void Awake()
+        {
+            TextToSpeechManager ttsManager = TextToSpeechManager.Instance;
+            MappingManager mappingManager = MappingManager.Instance;
+
+            InitializeScene();
+            ApplyVolumeFromPrefs();
+
+            var privacyManager = PrivacyAndConditionManager.Instance();
+            bool alreadyAccepted = privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted();
+
+            if (alreadyAccepted)
+            {
+                // Szene unsichtbar halten und direkt weiterleiten
+                HideSceneVisuals();
+
+                _skipVisualSetup = true;
+
+                // Optional: if ScreenFade already exists, you can also forward it as follows:
+                // if (ScreenFade.Instance) ScreenFade.Instance.FadeToBlackAndLoad(StartNextFlow);
+                // else StartNextFlow();
+                StartNextFlow();
+            }
+        }
 
         /// <summary>
         /// Initializes the main menu scene and its components when the scene starts.
-        /// This includes initializing the necessary managers, setting up button listeners,
-        /// handling terms and conditions, and setting application version information.
-        /// It also configures global sound effect volume based on player preferences and
-        /// conditionally starts loading novel data if required settings are accepted.
         /// </summary>
         private void Start()
         {
-            // Initialize the TextToSpeechManager
-            TextToSpeechManager ttsManager = TextToSpeechManager.Instance;
+            if (!PlayerPrefs.HasKey("StartScene") || PlayerPrefs.GetInt("StartScene") == 0)
+            {
+                PlayerPrefs.SetInt("StartScene", 1);
+                PlayerPrefs.Save();
+                StartCoroutine(SceneMetricsClient.Hit(SceneType.StartScene));
+            }
+            
+            if (_skipVisualSetup) return;
 
-            MappingManager mappingManager = MappingManager.Instance;
-            // Initialize the scene and set basic settings
             InitializeScene();
-
-            // Set up button listeners to respond to user input
             SetupButtonListeners();
-
-            // Handle terms and conditions and privacy policy
             HandleTermsAndConditions();
 
-            // Get an instance of PrivacyManager to check the current status of privacy acceptance
+            if (versionInfo != null)
+                versionInfo.text = Application.version;
+
+            // If it has already been accepted at this exact moment, forward it directly.
             var privacyManager = PrivacyAndConditionManager.Instance();
-
-            versionInfo.text = Application.version;
-
-            if (PlayerPrefs.GetInt("IsSoundEffectVolumeOn", 1) == 1)
-            {
-                GlobalVolumeManager.Instance.SetGlobalVolume(PlayerPrefs.GetFloat("SavedSoundEffectVolume", 1));
-            }
-            else
-            {
-                GlobalVolumeManager.Instance.SetGlobalVolume(0);
-            }
-
-            // Check if terms and conditions and privacy policy have been accepted
             if (privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted())
             {
-                // Start a coroutine that waits for the novels to load
-                StartCoroutine(WaitForNovelsToLoad());
+                // Keep the panel visible; start scene change immediately (with fade, if available)
+                if (ScreenFade.Instance)
+                    ScreenFade.Instance.FadeToBlackAndLoad(StartNextFlow);
+                else
+                    StartNextFlow();
             }
         }
 
@@ -84,17 +106,26 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void InitializeScene()
         {
-            DontDestroyOnLoad(novelLoader);
+            if (novelLoader != null)
+                DontDestroyOnLoad(novelLoader);
 
             PlayerDataManager.Instance().LoadAllPlayerPrefs();
-            BackStackManager.Instance().Clear();
+            BackStackManager.Instance.Clear();
         }
 
         /// <summary>
-        /// Configures button click event listeners for the main menu scene.
-        /// This involves assigning methods to handle user interactions with
-        /// various UI buttons, initiating appropriate behaviors or navigation
-        /// responses within the main menu context.
+        /// Sets the global volume according to stored PlayerPrefs.
+        /// </summary>
+        private void ApplyVolumeFromPrefs()
+        {
+            if (PlayerPrefs.GetInt("IsSoundEffectVolumeOn", 1) == 1)
+                GlobalVolumeManager.Instance.SetGlobalVolume(PlayerPrefs.GetFloat("SavedSoundEffectVolume", 1));
+            else
+                GlobalVolumeManager.Instance.SetGlobalVolume(0);
+        }
+
+        /// <summary>
+        /// Wiring button events.
         /// </summary>
         private void SetupButtonListeners()
         {
@@ -102,10 +133,8 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Handles the verification and acceptance of terms and conditions as well as privacy policies.
-        /// If the terms and conditions and privacy policies are accepted, the related UI panel is hidden,
-        /// and additional actions such as enabling data collection and checking the application version
-        /// are performed if their prerequisites are met.
+        /// Show/hide panel depending on acceptance status (no forced hide when accepted,
+        /// because we leave the panel visible during the transition).
         /// </summary>
         private void HandleTermsAndConditions()
         {
@@ -113,15 +142,17 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             if (privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted())
             {
-                termsAndConditionPanel.SetActive(false);
+                // Panel can remain visible; the change is triggered in Start().
+                // No SetActive(false) necessary.
+            }
+            else
+            {
+                if (termsAndConditionPanel) termsAndConditionPanel.SetActive(true);
             }
         }
 
         /// <summary>
-        /// Handles the "Continue" button click event within the terms and conditions section of the main menu.
-        /// This method updates the user's acceptance states for terms of use, privacy, and data collection
-        /// and validates the overall acceptance before proceeding to load the appropriate scene or display
-        /// the necessary messages based on the acceptance status.
+        /// Click on “Continue” in the legal panel.
         /// </summary>
         private void OnContinueTermsAndConditionsButton()
         {
@@ -130,49 +161,38 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Updates the acceptance state of terms and conditions based on the user's interaction
-        /// with the corresponding toggles. This includes handling terms of use, data privacy,
-        /// and optional data collection preferences. The method communicates the user's choices
-        /// to the PrivacyAndConditionManager and invokes the appropriate actions, such as
-        /// marking terms as accepted or unaccepted.
+        /// Updates the acceptance status via the PrivacyAndConditionManager.
         /// </summary>
         private void UpdateTermsAcceptance()
         {
             var privacyManager = PrivacyAndConditionManager.Instance();
 
-            UpdateAcceptance(termsOfUseToggle.IsClicked(),
+            UpdateAcceptance(
+                termsOfUseToggle.IsClicked(),
                 privacyManager.AcceptConditionsOfUsage,
                 privacyManager.UnacceptedConditionsOfUsage);
 
-            UpdateAcceptance(dataPrivacyToggle.IsClicked(),
+            UpdateAcceptance(
+                dataPrivacyToggle.IsClicked(),
                 privacyManager.AcceptTermsOfPrivacy,
                 privacyManager.UnacceptedTermsOfPrivacy);
         }
 
         /// <summary>
-        /// Updates the acceptance state based on the provided condition and triggers
-        /// the corresponding action for acceptance or denial.
+        /// Updates the acceptance status and executes the appropriate action (accept or deny).
         /// </summary>
-        /// <param name="isAccepted">A boolean value indicating whether the condition is accepted.</param>
-        /// <param name="acceptAction">The action to execute when the condition is accepted.</param>
-        /// <param name="deniedAction">The action to execute when the condition is denied.</param>
+        /// <param name="isAccepted">A boolean indicating the final decision (true for accepted, false for denied).</param>
+        /// <param name="acceptAction">The action/callback to execute if the status is accepted.</param>
+        /// <param name="deniedAction">The action/callback to execute if the status is denied.</param>
         private void UpdateAcceptance(bool isAccepted, System.Action acceptAction, System.Action deniedAction)
         {
-            if (isAccepted)
-            {
-                acceptAction();
-            }
-            else
-            {
-                deniedAction();
-            }
+            if (isAccepted) acceptAction();
+            else deniedAction();
         }
 
         /// <summary>
-        /// Validates whether the user has accepted the necessary terms of use and privacy conditions.
-        /// If both conditions are accepted, initiates loading of novel data.
-        /// Otherwise, displays a message indicating that the terms and conditions need to be accepted
-        /// before proceeding further.
+        /// Immediately after acceptance: Panel remains visible, interaction is blocked,
+        /// and the scene change starts IMMEDIATELY (with fade, if available).
         /// </summary>
         private void ValidateTermsAndLoadScene()
         {
@@ -181,16 +201,20 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             if (acceptedTermsOfUse && acceptedDataPrivacyTerms)
             {
-                StartCoroutine(WaitForNovelsToLoad());
+                // Keep the panel visible but prevent interaction
+                LockLegalUi();
+
+                // Initiate scene change immediately
+                if (ScreenFade.Instance)
+                    ScreenFade.Instance.FadeToBlackAndLoad(StartNextFlow);
+                else
+                    StartNextFlow();
             }
         }
 
         /// <summary>
-        /// Handles the success response received from the server specific to the main menu context.
-        /// Validates the server version against the compatible version and displays an informational message
-        /// if an update is available.
+        /// The version check remains.
         /// </summary>
-        /// <param name="response">The server response object containing relevant data for processing.</param>
         public void OnSuccess(Response response)
         {
             if (response == null) return;
@@ -202,28 +226,31 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Waits for the list of visual novels to be completely loaded from the kite novel manager.
-        /// This coroutine periodically checks if the novel data has been loaded and performs actions based
-        /// on the application state. It will either start the introductory novel or load the designated
-        /// scene depending on the user's preferences.
+        /// Starts the transition to the actual game/next scene (only once).
         /// </summary>
-        /// <returns>A coroutine that keeps yielding until the novel data is available.</returns>
+        private void StartNextFlow()
+        {
+            if (_startedNextFlow) return;
+            _startedNextFlow = true;
+
+            StartCoroutine(WaitForNovelsToLoad());
+        }
+
+        /// <summary>
+        /// Waits until the novels are loaded, then proceeds, according to settings.
+        /// </summary>
         private IEnumerator WaitForNovelsToLoad()
         {
-            // Initialize an empty list for the visual novels
             List<VisualNovel> allNovels = null;
 
-            // Wait for the novel data to be loaded
             while (allNovels == null || allNovels.Count == 0)
             {
-                // Try to get the list of all available novels
                 allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
-                yield return new WaitForSeconds(0.5f); // Wait half a second and check again
+                yield return new WaitForSeconds(0.5f);
             }
 
             if (!GameManager.Instance.SkipIntroNovel)
             {
-                // Call the method to start the introductory novel and pass the loaded novel list
                 StartIntroNovel(allNovels);
             }
             else
@@ -233,32 +260,64 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Identifies and starts the introductory novel from the provided list of loaded novels.
-        /// If a novel with the title "Einstiegsdialog" is found, it is configured for play,
-        /// applying its unique settings such as ID, color, and display name, and loads the corresponding play novel scene.
+        /// Searches for the Intro Novel and loads the PlayNovelScene with the necessary metadata.
         /// </summary>
-        /// <param name="allNovels">The list of all loaded visual novels to search for the introductory novel.</param>
-        private static void StartIntroNovel(List<VisualNovel> allNovels)
+        private void StartIntroNovel(List<VisualNovel> allNovels)
         {
-            // Iterate through the list of all loaded novels
+            if (!PlayerPrefs.HasKey("Einstiegsnovel") || PlayerPrefs.GetInt("Einstiegsnovel") == 0)
+            {
+                PlayerPrefs.SetInt("Einstiegsnovel", 1);
+                PlayerPrefs.Save();
+                StartCoroutine(SceneMetricsClient.Hit(SceneType.Einstiegsnovel));
+            }
             foreach (var novel in allNovels)
             {
-                // Check if the current novel has the title "Einstiegsdialog" (introductory dialogue)
-                if (novel.title == "Einstiegsdialog")
+                if (novel.id == 13)
                 {
                     GameManager.Instance.IsIntroNovelLoadedFromMainMenu = true;
 
-                    // Convert the novel ID to the corresponding enum
                     VisualNovelNames novelNames = VisualNovelNamesHelper.ValueOf((int)novel.id);
 
-                    PlayManager.Instance().SetVisualNovelToPlay(novel); // Set the novel to be played in the PlayManager          
-                    PlayManager.Instance().SetColorOfVisualNovelToPlay(novel.novelColor); // Set the color for the novel
-                    PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelNames)); // Set the display name for the novel
-                    PlayManager.Instance().SetDesignationOfNovelToPlay(novel.designation);
-                    
-                    // Load the PlayNovelScene
+                    PlayManager.Instance().SetVisualNovelToPlay(novel);
+                    // PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelNames));
+
                     SceneLoader.LoadPlayNovelScene();
+                    break;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Keeps the panel visible but blocks input (prevents double-click or "click-through").
+        /// </summary>
+        private void LockLegalUi()
+        {
+            if (!termsAndConditionPanel) return;
+
+            var cg = termsAndConditionPanel.GetComponent<CanvasGroup>();
+            if (!cg) cg = termsAndConditionPanel.AddComponent<CanvasGroup>();
+
+            cg.interactable = false;
+            cg.blocksRaycasts = true;
+
+            // additionally disable the Continue button (visually/semantically)
+            if (continueTermsAndConditionsButton)
+                continueTermsAndConditionsButton.interactable = false;
+        }
+
+        /// <summary>
+        /// Prevents the scene from becoming visible for one frame (Awake the path when legal terms are already accepted).
+        /// </summary>
+        private void HideSceneVisuals()
+        {
+            var objectOfTypeCanvas = FindObjectOfType<Canvas>();
+            if (objectOfTypeCanvas) objectOfTypeCanvas.enabled = false;
+
+            var cam = Camera.main;
+            if (cam)
+            {
+                cam.clearFlags = CameraClearFlags.SolidColor;
+                cam.backgroundColor = Color.black;
             }
         }
     }

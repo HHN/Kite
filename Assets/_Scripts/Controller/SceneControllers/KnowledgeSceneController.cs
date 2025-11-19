@@ -6,6 +6,7 @@ using Assets._Scripts._Mappings;
 using Assets._Scripts.Biases;
 using Assets._Scripts.Managers;
 using Assets._Scripts.SceneManagement;
+using Assets._Scripts.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -59,19 +60,19 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         public void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.KnowledgeScene);
+            BackStackManager.Instance.Push(SceneNames.KnowledgeScene);
 
-            _biases = MappingManager.biases;
+            _biases = MappingManager.BIASES;
             InitializeCategoryButtons();
 
             InitializeButtonActions();
             AddButtonListeners();
 
             if (biasDetailsObject) _biasDetailsText = biasDetailsObject.GetComponentInChildren<TextMeshProUGUI>();
-            if (_biasDetailsText == null) Debug.LogWarning("Kein TextMeshProUGUI unter biasDetailsObject gefunden.");
+            if (_biasDetailsText == null) LogManager.Warning("Kein TextMeshProUGUI unter biasDetailsObject gefunden.");
             
             if (inputField) inputField.onValueChanged.AddListener(Search);
-            else Debug.LogError("InputField ist nicht zugewiesen.");
+            else LogManager.Error("InputField ist nicht zugewiesen.");
 
             FontSizeManager.Instance().UpdateAllTextComponents();
             StartCoroutine(RebuildLayout());
@@ -170,7 +171,6 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             FontSizeManager.Instance().UpdateAllTextComponents();
             LayoutRebuilder.ForceRebuildLayoutImmediate(contentRectTransform);
-
         }
 
         /// <summary>
@@ -192,7 +192,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void OnBiasClicked(Bias bias)
         {
             ShowBiasDetails(bias.type);
-            
         }
 
         /// <summary>

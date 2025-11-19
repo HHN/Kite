@@ -1,3 +1,4 @@
+using Assets._Scripts.Utilities;
 using UnityEngine;
 
 namespace Assets._Scripts.Managers
@@ -68,7 +69,7 @@ namespace Assets._Scripts.Managers
         {
             if (audioSource == null)
             {
-                Debug.LogError("AudioSource ist null.");
+                LogManager.Error("AudioSource ist null.");
                 return;
             }
 
@@ -94,7 +95,7 @@ namespace Assets._Scripts.Managers
         {
             if (audioSource == null)
             {
-                Debug.LogError("AudioSource ist null. Initialisiere die AudioSource.");
+                LogManager.Error("AudioSource ist null. Initialisiere die AudioSource.");
                 audioSource = gameObject.AddComponent<AudioSource>();
             }
 
@@ -113,7 +114,7 @@ namespace Assets._Scripts.Managers
         {
             if (audioSource == null)
             {
-                Debug.LogError("AudioSource ist null.");
+                LogManager.Error("AudioSource ist null.");
                 return;
             }
 

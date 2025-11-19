@@ -19,11 +19,9 @@ namespace Assets._Scripts.SaveNovelData
         [SerializeField] private TextMeshProUGUI textContinue; // GameObject containing the "Continue" text
         [SerializeField] private TextMeshProUGUI textRestart; // GameObject containing the "Restart" text
 
-        [SerializeField]
-        private GameObject person; // GameObject representing the person or character related to the message
+        [SerializeField] private GameObject person; // GameObject representing the person or character related to the message
 
-        private PlayNovelSceneController
-            _playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
+        private PlayNovelSceneController _playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
 
         /// <summary>
         /// Called when the script instance is being loaded.

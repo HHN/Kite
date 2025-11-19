@@ -21,7 +21,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.LegalNoticeScene);
+            BackStackManager.Instance.Push(SceneNames.LegalNoticeScene);
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
             FontSizeManager.Instance().UpdateAllTextComponents();
         }

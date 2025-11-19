@@ -7,8 +7,9 @@ using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
-using Assets._Scripts.UIElements.DropDown;
+using Assets._Scripts.UIElements;
 using Assets._Scripts.UIElements.FoundersBubble;
+using Assets._Scripts.Utilities;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
@@ -62,7 +63,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// <seealso cref="NovelHistoryEntryGuiElement"/>
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.NovelHistoryScene);
+            BackStackManager.Instance.Push(SceneNames.NovelHistoryScene);
 
             if (copyNotificationContainer != null) InitCopyNotification();
 
@@ -115,7 +116,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
                 if (allKiteNovelsById.TryGetValue(novelId, out VisualNovel foundNovel))
                 {
-                    string designation = foundNovel.designation;
+                    string novelTitle = foundNovel.title;
 
                     if (!_novelHistoryEntriesDictionary.ContainsKey(novelId))
                     {
@@ -123,11 +124,11 @@ namespace Assets._Scripts.Controller.SceneControllers
                     }
 
                     _novelHistoryEntriesDictionary[novelId].Add(entry);
-                    AddEntryToContainer(entry, _novelContainers[novelId], designation);
+                    AddEntryToContainer(entry, _novelContainers[novelId], novelTitle);
                 }
                 else
                 {
-                    Debug.LogWarning($"Novel with ID {novelId} from history entry not found in available Kite Novels. Skipping this entry.");
+                    LogManager.Warning($"Novel with ID {novelId} from history entry not found in available Kite Novels. Skipping this entry.");
                 }
             }
         }
