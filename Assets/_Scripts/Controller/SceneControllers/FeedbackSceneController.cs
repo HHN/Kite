@@ -16,6 +16,7 @@ using Assets._Scripts.ServerCommunication;
 using Assets._Scripts.ServerCommunication.ServerCalls;
 using UnityEngine.Scripting;
 using System.Runtime.InteropServices;
+using Assets._Scripts.ServerCommunication.SceneMetrics;
 
 namespace Assets._Scripts.Controller.SceneControllers
 {
@@ -77,6 +78,14 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void Start()
         {
+            if (!PlayerPrefs.HasKey("Feedback") || PlayerPrefs.GetInt("Feedback") == 0)
+            {
+                PlayerPrefs.SetInt("Feedback", 1);
+                PlayerPrefs.Save();
+                StartCoroutine(SceneMetricsClient.Hit(SceneType.Feedback));
+            }
+            StartCoroutine(SceneMetricsClient.HitPlaythrough());
+
             // Add current scene to back stack for navigation
             BackStackManager.Instance.Push(SceneNames.FeedbackScene);
 
