@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.SceneManagement;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,10 +16,6 @@ namespace Assets._Scripts.Controller.SceneControllers
     public class PlayInstructionSceneController : SceneController
     {
         [SerializeField] private GameObject novel;
-        [SerializeField] private Image textBoxImage;
-        [SerializeField] private TextMeshProUGUI novelName;
-        [SerializeField] private TextMeshProUGUI buttonText;
-        [SerializeField] private Color backgroundColor;
 
         [SerializeField] private Button backToFoundersBubbleButton;
         [SerializeField] private Button playButton;
@@ -48,8 +40,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void Start()
         {
             BackStackManager.Instance.Push(SceneNames.PlayInstructionScene);
-            
-            backgroundColor = PlayManager.Instance().GetColorOfVisualNovelToPlay();
             
             VisualNovel visualNovel = PlayManager.Instance().GetVisualNovelToPlay();
             

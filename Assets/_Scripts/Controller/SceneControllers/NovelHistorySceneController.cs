@@ -7,7 +7,7 @@ using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
-using Assets._Scripts.UIElements.DropDown;
+using Assets._Scripts.UIElements;
 using Assets._Scripts.UIElements.FoundersBubble;
 using Assets._Scripts.Utilities;
 using TMPro;
@@ -116,7 +116,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
                 if (allKiteNovelsById.TryGetValue(novelId, out VisualNovel foundNovel))
                 {
-                    string designation = foundNovel.designation;
+                    string foundNovelTitle = foundNovel.title;
 
                     if (!_novelHistoryEntriesDictionary.ContainsKey(novelId))
                     {
@@ -124,7 +124,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                     }
 
                     _novelHistoryEntriesDictionary[novelId].Add(entry);
-                    AddEntryToContainer(entry, _novelContainers[novelId], designation);
+                    AddEntryToContainer(entry, _novelContainers[novelId], foundNovelTitle);
                 }
                 else
                 {

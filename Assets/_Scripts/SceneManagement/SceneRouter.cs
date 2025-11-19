@@ -39,15 +39,5 @@ namespace Assets._Scripts.SceneManagement
                 _ => SceneNames.MainMenuScene // Default fallback to the Main Menu for any unhandled scene.
             };
         }
-
-        /// <summary>
-        /// Determines the appropriate target scene to navigate to when a "close" button is pressed.
-        /// This implementation always directs to the Main Menu scene, providing a consistent exit point.
-        /// </summary>
-        /// <returns>The string name of the target scene for a "close" action (always Main Menu).</returns>
-        public static string GetTargetSceneForCloseButton()
-        {
-            return SceneNames.MainMenuScene;
-        }
     }
 }

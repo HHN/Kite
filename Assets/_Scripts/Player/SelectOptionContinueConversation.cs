@@ -10,7 +10,6 @@ namespace Assets._Scripts.Player
     /// </summary>
     public class SelectOptionContinueConversation : MonoBehaviour
     {
-        public bool alreadyPlayedNextEvent;
         public PlayNovelSceneController controller;
 
         /// <summary>

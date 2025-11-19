@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using System.Linq;
 using Assets._Scripts._Mappings;
-using UnityEngine;
 
 namespace Assets._Scripts.Biases
 {
@@ -51,7 +49,6 @@ namespace Assets._Scripts.Biases
             return $"<align=center><b>{biasInfo.headline}</b></align>\n\n" +
                    $"{biasInfo.preview}\n\n" +
                    $"{styledDescription}";
-
         }
     }
 }

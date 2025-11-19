@@ -21,7 +21,6 @@ namespace Assets._Scripts.Player
         /// to ensure it's a genuine tap/click, then notifies the <see cref="PlayNovelSceneController"/>.
         /// </summary>
         /// <param name="eventData">The <see cref="PointerEventData"/> containing information about the pointer event.</param>
-
         public void OnPointerClick(PointerEventData eventData)
         {
             float distance = Vector2.Distance(eventData.pressPosition, eventData.position);

@@ -8,7 +8,7 @@ namespace Assets._Scripts.Utilities
     /// This class is primarily used for saving and loading favorite data, typically in formats like JSON,
     /// as it makes a list directly serializable by Unity's JsonUtility or other serialization systems.
     /// </summary>
-    [Serializable] // This attribute makes the class serializable by Unity's JsonUtility and other serializers.
+    [Serializable]
     public class FavoritesWrapper
     {
         public List<long> favorites;

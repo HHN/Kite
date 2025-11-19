@@ -18,14 +18,12 @@ namespace Assets._Scripts.UIElements.Messages
     /// </summary>
     public class LeaveNovelAndGoBackMessageBox : MonoBehaviour
     {
-        [Header("Message Box Text Components")] [SerializeField]
-        private TextMeshProUGUI messageBoxHeadline;
-
+        [Header("Message Box Text Components")] 
+        [SerializeField] private TextMeshProUGUI messageBoxHeadline;
         [SerializeField] private TextMeshProUGUI messageBoxBody;
 
-        [Header("Action Buttons")] [SerializeField]
-        private Button continueButton; // Continue with the novel
-
+        [Header("Action Buttons")] 
+        [SerializeField] private Button continueButton; // Continue with the novel
         [SerializeField] private Button pauseButton; // Pause the novel
         [SerializeField] private Button cancelButton; // Cancel the novel
         [SerializeField] private Button endButton; // End the novel and mark it as completed
@@ -37,16 +35,13 @@ namespace Assets._Scripts.UIElements.Messages
         [SerializeField] private GameObject backgroundCancel;
         [SerializeField] private GameObject backgroundEnd;
 
-        [Header("Miscellaneous Elements")] [SerializeField]
-        private GameObject textContinueButton;
-
+        [Header("Miscellaneous Elements")] 
+        [SerializeField] private GameObject textContinueButton;
         [SerializeField] private GameObject person;
+        [SerializeField] private GameObject messageBox;
 
         private ConversationContentGuiController _conversationContentGuiController; // Reference to the PlayNovelSceneController to manage novel actions
-
         private static PlayNovelSceneController _playNovelSceneController; // Reference to the PlayNovelSceneController to manage novel actions
-
-        [SerializeField] private GameObject messageBox;
 
         /// <summary>
         /// Called when the script instance is being loaded.
@@ -130,7 +125,6 @@ namespace Assets._Scripts.UIElements.Messages
         /// </summary>
         private void OnCancelButton()
         {
-            // Lösche den zugehörigen Speicherstand
             SaveLoadManager.DeleteNovelSaveData(_playNovelSceneController.NovelToPlay.id.ToString());
             GameManager.Instance.CheckAndSetAllNovelsStatus();
             LeaveNovel();

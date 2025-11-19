@@ -4,11 +4,11 @@ using Assets._Scripts.Managers;
 using Assets._Scripts._Mappings;
 using Assets._Scripts.Messages;
 using Assets._Scripts.Novel;
-using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.ServerCommunication;
 using Assets._Scripts.ServerCommunication.SceneMetrics;
 using Assets._Scripts.UIElements;
+using Assets._Scripts.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,7 +25,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private Button continueTermsAndConditionsButton;
         [SerializeField] private CustomToggle termsOfUseToggle;
         [SerializeField] private CustomToggle dataPrivacyToggle;
-        [SerializeField] private GameObject getVersionServerCallPrefab;
         [SerializeField] private GameObject novelLoader;
         [SerializeField] private TMP_Text versionInfo;
 
@@ -268,17 +267,13 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             foreach (var novel in allNovels)
             {
-                if (novel.title == "Einstiegsdialog")
+                if (novel.id == 13)
                 {
                     GameManager.Instance.IsIntroNovelLoadedFromMainMenu = true;
 
                     VisualNovelNames novelNames = VisualNovelNamesHelper.ValueOf((int)novel.id);
 
                     PlayManager.Instance().SetVisualNovelToPlay(novel);
-                    PlayManager.Instance().SetColorOfVisualNovelToPlay(novel.novelColor);
-                    PlayManager.Instance().SetDisplayNameOfNovelToPlay(
-                        FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(novelNames));
-                    PlayManager.Instance().SetDesignationOfNovelToPlay(novel.designation);
 
                     SceneLoader.LoadPlayNovelScene();
                     break;
@@ -309,8 +304,8 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void HideSceneVisuals()
         {
-            var canvas = Object.FindObjectOfType<Canvas>();
-            if (canvas) canvas.enabled = false;
+            var objectOfTypeCanvas = FindObjectOfType<Canvas>();
+            if (objectOfTypeCanvas) objectOfTypeCanvas.enabled = false;
 
             var cam = Camera.main;
             if (cam)

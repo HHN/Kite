@@ -16,10 +16,6 @@ namespace Assets._Scripts.Controller.SceneControllers
     /// </summary>
     public class BookmarkedNovelsSceneController : SceneController
     {
-        private const int ColumnsInEvenRow = 2;
-        private const int ColumnsInOddRow = 1;
-        private const float Sqrt3Half = 0.866025404f; // Sqrt(3) / 2
-        
         [SerializeField] private RectTransform visualNovelHolder;
         [SerializeField] private GameObject novelButtonPrefab;
 
@@ -32,6 +28,10 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         [SerializeField] private float horizontalOffset = 190f;
         [SerializeField] private float verticalOffset = 15.5f;
+        
+        private const int ColumnsInEvenRow = 2;
+        private const int ColumnsInOddRow = 1;
+        private const float Sqrt3Half = 0.866025404f; // Sqrt(3) / 2
         
         private float _prefabWidth;
         private float _prefabHeight;
@@ -170,7 +170,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             rectTransform.localScale = Vector3.one;
             rectTransform.anchoredPosition = GetHexPosition(index);
             
-            buttonObject.name = novel.isKiteNovel ? novel.designation : novel.title;
+            buttonObject.name = novel.title;
             SetupButtonUI(buttonObject, novel);
         }
 
@@ -210,7 +210,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             var text = go.GetComponentInChildren<TextMeshProUGUI>();
             if (text != null)
-                text.text = novel.isKiteNovel ? novel.designation : novel.title;
+                text.text = novel.title;
         }
 
         /// <summary>
@@ -372,9 +372,6 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             var playManager = PlayManager.Instance();
             playManager.SetVisualNovelToPlay(visualNovel);
-            playManager.SetColorOfVisualNovelToPlay(visualNovel.novelColor);
-            playManager.SetDisplayNameOfNovelToPlay(visualNovel.title);
-            playManager.SetDesignationOfNovelToPlay(visualNovel.designation);
 
             if (selectNovelSoundPrefab != null)
             {

@@ -41,11 +41,9 @@ namespace Assets._Scripts.UIElements.TextBoxes
                 gameObject.SetActive(false);
                 return false;
             }
-            else
-            {
-                gameObject.SetActive(true);
-                return true;
-            }
+
+            gameObject.SetActive(true);
+            return true;
         }
     }
 }

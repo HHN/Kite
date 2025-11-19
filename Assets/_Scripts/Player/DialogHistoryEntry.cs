@@ -12,7 +12,7 @@ namespace Assets._Scripts.Player
     [Serializable]
     public class DialogHistoryEntry
     {
-        [SerializeField] private long novelId;
+        [SerializeField] private long id;
         [SerializeField] private string dialog;
         [SerializeField] private string completion;
         [SerializeField] private string dateAndTime;
@@ -23,7 +23,7 @@ namespace Assets._Scripts.Player
         /// <returns>The novel ID.</returns>
         public long GetNovelId()
         {
-            return novelId;
+            return id;
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Assets._Scripts.Player
         /// <param name="novelId">The novel ID to set.</param>
         public void SetNovelId(long novelId)
         {
-            this.novelId = novelId;
+            id = novelId;
         }
 
         /// <summary>
@@ -47,10 +47,10 @@ namespace Assets._Scripts.Player
         /// <summary>
         /// Sets the dialog text for this entry.
         /// </summary>
-        /// <param name="dialog">The dialog string to set.</param>
-        public void SetDialog(string dialog)
+        /// <param name="newDialog">The dialog string to set.</param>
+        public void SetDialog(string newDialog)
         {
-            this.dialog = dialog;
+            dialog = newDialog;
         }
 
         /// <summary>
@@ -65,10 +65,10 @@ namespace Assets._Scripts.Player
         /// <summary>
         /// Sets the date and time for this dialog entry.
         /// </summary>
-        /// <param name="dateAndTime">The date and time string to set.</param>
-        public void SetDateAndTime(string dateAndTime)
+        /// <param name="newDateAndTime">The date and time string to set.</param>
+        public void SetDateAndTime(string newDateAndTime)
         {
-            this.dateAndTime = dateAndTime;
+            dateAndTime = newDateAndTime;
         }
 
         /// <summary>
@@ -83,15 +83,15 @@ namespace Assets._Scripts.Player
         /// <summary>
         /// Sets the AI-generated completion text for this dialog entry.
         /// </summary>
-        /// <param name="completion">The completion string to set.</param>
-        public void SetCompletion(string completion)
+        /// <param name="newCompletion">The completion string to set.</param>
+        public void SetCompletion(string newCompletion)
         {
-            this.completion = completion;
+            this.completion = newCompletion;
         }
 
         /// <summary>
         /// Gets the dialog text with character designations replaced for display purposes.
-        /// Specifically, "Player:" is replaced with "Du:" (You:).
+        /// Specifically, "Player:" is replaced with "Du:".
         /// </summary>
         /// <returns>The dialog string with replaced character designation.</returns>
         public string GetDialogWithReplacedCharacterDesignation()

@@ -46,7 +46,9 @@ namespace Assets._Scripts._Mappings
             LoadSoundMappingAsync();
         }
 
-        /// <summary>Singleton</summary>
+        /// <summary>
+        /// Singleton
+        /// </summary>
         public static MappingManager Instance
         {
             get
@@ -141,7 +143,13 @@ namespace Assets._Scripts._Mappings
 #endif
         }
 
-        // NEU: Sound-Mapping laden
+        /// <summary>
+        /// Asynchronously loads the sound mapping data from the SoundMapping.txt file.
+        /// The loading mechanism is platform-dependent: for WebGL, it uses a UnityWebRequest,
+        /// while for other platforms, it reads the file directly from disk.
+        /// On a successful load, the file content is processed to populate the sound mapping dictionary.
+        /// Logs warnings or errors if the file is not found or cannot be loaded.
+        /// </summary>
         private static void LoadSoundMappingAsync()
         {
 #if UNITY_WEBGL
@@ -310,6 +318,13 @@ namespace Assets._Scripts._Mappings
             }
         }
 
+        /// <summary>
+        /// Processes the lines from the sound mapping file and populates the given dictionary with the mappings.
+        /// Each line is expected to contain a key-value pair in the format "SoundName:ID".
+        /// Invalid or malformed lines are ignored, and a warning is logged.
+        /// </summary>
+        /// <param name="lines">An array of strings representing the lines from the sound mapping file.</param>
+        /// <param name="mapping">A reference to the dictionary where the mappings will be stored. The keys are the sound names (strings), and the values are the IDs (integers).</param>
         private static void ProcessSoundFile(string[] lines, ref Dictionary<string, int> mapping)
         {
             foreach (string raw in lines)

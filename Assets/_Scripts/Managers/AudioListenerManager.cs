@@ -19,12 +19,12 @@ namespace Assets._Scripts.Managers
         /// </summary>
         private class SceneListeners
         {
-            public Scene Scene;
-            public List<AudioListener> Listeners;
+            public Scene scene;
+            public List<AudioListener> listeners;
         }
 
         // Scene listeners stack: [0] = main scene, [1...] = additive scenes in loading order
-        private readonly List<SceneListeners> _sceneStack = new List<SceneListeners>();
+        private readonly List<SceneListeners> _sceneStack = new();
 
         /// <summary>
         /// Initializes the AudioListenerManager by setting it to persist across scene changes,
@@ -44,8 +44,8 @@ namespace Assets._Scripts.Managers
             var initialScene = SceneManager.GetActiveScene();
             var initialListeners = FindObjectsOfType<AudioListener>().ToList();
             _sceneStack.Add(new SceneListeners {
-                Scene = initialScene,
-                Listeners = initialListeners
+                scene = initialScene,
+                listeners = initialListeners
             });
 
             // 3) Register scene load/unload events
@@ -69,7 +69,7 @@ namespace Assets._Scripts.Managers
 
             // 1) Disable all previous listeners
             foreach (var entry in _sceneStack)
-            foreach (var al in entry.Listeners)
+            foreach (var al in entry.listeners)
                 if (al != null) al.enabled = false;
 
             // 2) Find and activate all listeners of the newly loaded scene
@@ -82,8 +82,8 @@ namespace Assets._Scripts.Managers
 
             // 3) Add the scene and its listeners on top of the stack
             _sceneStack.Add(new SceneListeners {
-                Scene     = scene,
-                Listeners = newListeners
+                scene     = scene,
+                listeners = newListeners
             });
         }
 
@@ -98,14 +98,14 @@ namespace Assets._Scripts.Managers
         private void OnSceneUnloaded(Scene scene)
         {
             // 1) Remove entry for the unloaded scene
-            var entry = _sceneStack.FirstOrDefault(e => e.Scene == scene);
+            var entry = _sceneStack.FirstOrDefault(e => e.scene == scene);
             if (entry != null)
                 _sceneStack.Remove(entry);
 
             // 2) Reactivate listeners of the last remaining scene (stack top)
             var top = _sceneStack.LastOrDefault();
             if (top == null) return;
-            foreach (var al in top.Listeners)
+            foreach (var al in top.listeners)
                 if (al != null)
                     al.enabled = true;
         }
@@ -117,7 +117,6 @@ namespace Assets._Scripts.Managers
         /// </summary>
         private void OnDestroy()
         {
-            // Sauber abmelden
             SceneManager.sceneLoaded   -= OnSceneLoaded;
             SceneManager.sceneUnloaded -= OnSceneUnloaded;
         }

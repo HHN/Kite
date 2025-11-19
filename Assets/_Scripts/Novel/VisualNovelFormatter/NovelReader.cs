@@ -78,7 +78,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             {
                 if (listOfAllNovelPaths == null || listOfAllNovelPaths.Count == 0)
                 {
-                    Log($"Loading Novels failed: No Novels found! Path: {fullPath}", LogType.Warning);
+                    LogManager.Warning($"Loading Novels failed: No Novels found! Path: {fullPath}");
 
                     KiteNovelManager.Instance().SetAllKiteNovels(new List<VisualNovel>());
                     return;
@@ -168,7 +168,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             // Skip if metadata couldn't be loaded.
             if (kiteNovelMetaData == null)
             {
-                Log($"Kite Novel Meta Data could not be loaded: {pathOfNovel}", LogType.Warning);
+                LogManager.Warning($"Kite Novel Meta Data could not be loaded: {pathOfNovel}");
 
                 yield break;
             }
@@ -179,13 +179,10 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             // Skip if event list is empty or missing.
             if (string.IsNullOrEmpty(jsonStringOfEventList))
             {
-                Log($"Kite Novel Event List could not be loaded: {pathOfNovel}", LogType.Warning);
+                LogManager.Warning($"Kite Novel Event List could not be loaded: {pathOfNovel}");
 
                 yield break;
             }
-
-            // Replace placeholder words in the event list using metadata replacement rules.
-            jsonStringOfEventList = ReplaceWordsInString(jsonStringOfEventList, kiteNovelMetaData.WordsToReplace);
 
             // Convert the raw text into a structured list of visual novel events.
             List<VisualNovelEvent> kiteNovelEventList = KiteNovelConverter.ConvertTextDocumentIntoEventList(jsonStringOfEventList, kiteNovelMetaData);
@@ -256,7 +253,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
 
                     if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
                     {
-                        Log($"Error loading file at {path}: {www.error}", LogType.Error);
+                        LogManager.Error($"Error loading file at {path}: {www.error}");
                         callback(null);
                     }
                     else
@@ -265,29 +262,6 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                     }
                 }
             }
-        }
-
-        /// <summary>
-        /// Replaces specified words in the input string with their corresponding replacement values
-        /// as defined in the provided list of word pairs.
-        /// </summary>
-        /// <param name="input">The input string in which the replacements will be performed.</param>
-        /// <param name="wordsToReplace">A list containing WordPair objects that specify the words to replace and their replacement values.</param>
-        /// <returns>The input string with the specified words replaced based on the word pairs. If no replacements are necessary, the original string is returned.</returns>
-        private string ReplaceWordsInString(string input, List<WordPair> wordsToReplace)
-        {
-            if (wordsToReplace == null || wordsToReplace.Count == 0) return input;
-
-            string result = input;
-            
-            foreach (var word in wordsToReplace)
-            {
-                if (!string.IsNullOrWhiteSpace(word?.WordToReplace) && !string.IsNullOrWhiteSpace(word.ReplaceByValue))
-                {
-                    result = result.Replace(word.WordToReplace, word.ReplaceByValue);
-                }
-            }
-            return result;
         }
 
         /// <summary>
@@ -301,31 +275,8 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             string json = JsonUtility.ToJson(novelListWrapper, true);
             string path = Path.Combine(Application.dataPath, "StreamingAssets/novels.json");
             File.WriteAllText(path, json);
-            Log($"Visual Novels have been successfully converted to JSON format and saved under the following path: {path}");
+            LogManager.Info($"Visual Novels have been successfully converted to JSON format and saved under the following path: {path}");
             _isFinished = true;
         }
-
-        /// <summary>
-        /// Logs a message to the Unity console with the specified log type.
-        /// Allows for categorizing logs into different levels such as Warning or Error.
-        /// </summary>
-        /// <param name="message">The message to log in the console.</param>
-        /// <param name="type">The type of the log message, defaulting to Log. Possible values include Log, Warning, and Error.</param>
-        private void Log(string message, LogType type = LogType.Log)
-        {
-            switch (type)
-            {
-                case LogType.Warning:
-                    LogManager.Warning(message);
-                    break;
-                case LogType.Error:
-                    LogManager.Error(message);
-                    break;
-                default:
-                    LogManager.Info(message);
-                    break;
-            }
-        }
-
     }
 }
