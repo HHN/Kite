@@ -8,6 +8,7 @@ using Assets._Scripts.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 namespace Assets._Scripts.Novel
 {
@@ -92,6 +93,7 @@ namespace Assets._Scripts.Novel
         /// <summary>
         /// Copies the dialog text to the system clipboard.
         /// Removes HTML bold/italic tags and replaces single newlines with double newlines for better formatting.
+        /// Decodes URL-encoded characters before copying if necessary.
         /// Triggers a popup notification after copying.
         /// </summary>
         private void CopyDialog()
@@ -100,6 +102,20 @@ namespace Assets._Scripts.Novel
             string pattern = @"<\/?(b|i)>"; // Regex to match <b>, <i>, </b>, </i> tags
             string copyText = Regex.Replace(dialogText.text, pattern, string.Empty);
             copyText = copyText.Replace("\n", "\n\n"); // Replace single newlines with double for better readability when pasted
+            
+            // Decode URL-encoded characters if the text contains actual URL-encoding patterns (e.g., %20, %C3%B6)
+            if (ContainsUrlEncodingPattern(copyText))
+            {
+                try
+                {
+                    copyText = Uri.UnescapeDataString(copyText);
+                }
+                catch
+                {
+                    // If decoding fails, use the original text
+                    LogManager.Warning("Failed to decode URL-encoded text, using original text");
+                }
+            }
 
             #if UNITY_WEBGL && !UNITY_EDITOR
                         CopyTextToClipboard(copyText);
@@ -113,6 +129,7 @@ namespace Assets._Scripts.Novel
         /// <summary>
         /// Copies the AI feedback text to the system clipboard.
         /// Removes HTML bold/italic tags and replaces single newlines with double newlines for better formatting.
+        /// Decodes URL-encoded characters before copying if necessary.
         /// Triggers a popup notification after copying.
         /// </summary>
         private void CopyFeedback()
@@ -121,6 +138,20 @@ namespace Assets._Scripts.Novel
             string pattern = @"<\/?(b|i)>"; // Regex to match <b>, <i>, </b>, </i> tags
             string copyText = Regex.Replace(aiFeedbackText.text, pattern, string.Empty);
             copyText = copyText.Replace("\n", "\n\n"); // Replace single newlines with double for better readability when pasted
+            
+            // Decode URL-encoded characters if the text contains actual URL-encoding patterns (e.g., %20, %C3%B6)
+            if (ContainsUrlEncodingPattern(copyText))
+            {
+                try
+                {
+                    copyText = Uri.UnescapeDataString(copyText);
+                }
+                catch
+                {
+                    // If decoding fails, use the original text
+                    LogManager.Warning("Failed to decode URL-encoded text, using original text");
+                }
+            }
 
             #if UNITY_WEBGL && !UNITY_EDITOR
                         CopyTextToClipboard(copyText);
@@ -129,6 +160,18 @@ namespace Assets._Scripts.Novel
             #endif
 
             StartCoroutine(ShowCopyPopup("Feedback"));
+        }
+
+        /// <summary>
+        /// Checks if the text contains actual URL-encoding patterns (like %20, %C3%B6, etc.)
+        /// to distinguish between regular percent signs and actual URL-encoded content.
+        /// </summary>
+        /// <param name="text">The text to check for URL-encoding patterns.</param>
+        /// <returns>True if the text contains URL-encoding patterns, false otherwise.</returns>
+        private bool ContainsUrlEncodingPattern(string text)
+        {
+            // Match patterns like %20, %C3, %B6, etc. (% followed by two hexadecimal digits)
+            return Regex.IsMatch(text, @"%[0-9A-Fa-f]{2}");
         }
 
         /// <summary>
