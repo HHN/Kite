@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets._Scripts._Mappings;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
@@ -53,7 +54,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         [Header("State Management")] 
         [SerializeField] private bool isPopupOpen;
-        [SerializeField] private VisualNovelNames currentlyOpenedVisualNovelPopup;
+        [SerializeField] private string currentlyOpenedVisualNovelPopup;
 
         [Header("Audio")] 
         [SerializeField] private GameObject selectNovelSoundPrefab;
@@ -140,7 +141,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             BackStackManager.Instance.Push(SceneNames.FoundersBubbleScene);
             DestroyPlayNovelSceneController();
             FooterActivationManager.Instance().SetFooterActivated(true);
-            currentlyOpenedVisualNovelPopup = VisualNovelNames.None;
+            currentlyOpenedVisualNovelPopup = "None";
 
             List<VisualNovel> allKiteNovelsList = KiteNovelManager.Instance().GetAllKiteNovels();
             
@@ -180,10 +181,10 @@ namespace Assets._Scripts.Controller.SceneControllers
                 if (!_allKiteNovelsById.TryGetValue(entry.novelId, out var visualNovel)) continue;
 
                 // Get the name of the visual novel
-                string novelName = VisualNovelNamesHelper.GetName(visualNovel.id);
+                string novelName = MappingManager.allNovels.Find(n => n.id == visualNovel.id).title;
 
                 // Skip intro novels (not needed in scroll view)
-                if (novelName.Contains("Einstieg")) continue;
+                if (novelName.Contains("KITE")) continue;
 
                 // Create a button instance from prefab
                 GameObject novelButtonGameObject = Instantiate(novelButtonPrefab, novelButtonsContainer);
@@ -215,12 +216,13 @@ namespace Assets._Scripts.Controller.SceneControllers
 
                 // Setup button click handling
                 Button button = novelButtonGameObject.GetComponentInChildren<Button>();
-                VisualNovelNames novelNamesCopy = VisualNovelNamesHelper.ValueByString(novelButtonGameObject.name);
+                string novelNamesCopy = novelButtonGameObject.name;
                 RectTransform buttonRect = novelButtonGameObject.GetComponent<RectTransform>();
 
                 // Configure bookmark and played status updaters
-                novelButtonGameObject.GetComponentInChildren<BookmarkUpdater>().VisualNovel = VisualNovelNamesHelper.ValueOf((int)visualNovel.id);
-                novelButtonGameObject.GetComponentInChildren<AlreadyPlayedUpdater>().VisualNovel = VisualNovelNamesHelper.ValueOf((int)visualNovel.id);
+                string currentNovel = MappingManager.allNovels.Find(n => n.id == visualNovel.id).title;
+                novelButtonGameObject.GetComponentInChildren<BookmarkUpdater>().VisualNovel = currentNovel;
+                novelButtonGameObject.GetComponentInChildren<AlreadyPlayedUpdater>().VisualNovel = currentNovel;
 
                 // Add click listener
                 button.onClick.AddListener(() => { OnNovelButton(buttonRect, novelNamesCopy); });
@@ -524,10 +526,8 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// <returns>The created burger menu button as a GameObject, or null if the visual novel ID is invalid.</returns>
         private GameObject CreateBurgerMenuButton(VisualNovel visualNovel, Transform content)
         {
-            VisualNovelNames visualNovelName = VisualNovelNamesHelper.ValueOf((int)visualNovel.id);
-            if (visualNovelName == VisualNovelNames.None) return null;
-
-            string novelName = VisualNovelNamesHelper.GetName(visualNovel.id);
+            string novelName = MappingManager.allNovels.Find(n => n.id == visualNovel.id).title;
+            if (novelName == "None") return null;
 
             GameObject burgerMenuButton = Instantiate(burgerMenuButtonPrefab, content);
             burgerMenuButton.name = novelName;
@@ -552,9 +552,9 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void OnButtonFromBurgerMenu()
         {
             GameObject buttonObject = EventSystem.current.currentSelectedGameObject;
-            VisualNovelNames novelNames = VisualNovelNamesHelper.ValueByString(buttonObject.name.Replace("Button", ""));
+            string novelNames = buttonObject.name.Replace("Button", "");
 
-            NovelEntry entry = _isNovelContainedInVersion.FirstOrDefault(novel => novel.novelId == VisualNovelNamesHelper.ToInt(novelNames));
+            NovelEntry entry = _isNovelContainedInVersion.FirstOrDefault(novel => novel.novelId == MappingManager.allNovels.Find(n => n.title.Contains(novelNames)).id);
 
             if (entry == null) return;
 
@@ -569,21 +569,21 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         /// <param name="buttonRect">The RectTransform of the clicked visual novel button.</param>
         /// <param name="novelNames">The enumeration value representing the visual novel associated with the button.</param>
-        private void OnNovelButton(RectTransform buttonRect, VisualNovelNames novelNames)
+        private void OnNovelButton(RectTransform buttonRect, string novelNames)
         {
             if (_lastScaledNovelButton != null)
             {
                 _lastScaledNovelButton.localScale = Vector3.one;
             }
 
-            NovelEntry entry = _isNovelContainedInVersion.FirstOrDefault(novel => novel.novelId == VisualNovelNamesHelper.ToInt(novelNames));
+            NovelEntry entry = _isNovelContainedInVersion.FirstOrDefault(novel => novel.novelId == MappingManager.allNovels.Find(n => n.title == novelNames).id);
             if (entry == null) return;
 
             Image[] images = buttonRect.GetComponentsInChildren<Image>(true);
 
             foreach (Image img in images)
             {
-                if (img.gameObject.name == VisualNovelNamesHelper.GetName(VisualNovelNamesHelper.ToInt(novelNames)))
+                if (img.gameObject.name == novelNames)
                 {
                     img.gameObject.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
                     _lastScaledNovelButton = img.gameObject.transform;
@@ -594,7 +594,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             DisplayTextBoxForVisualNovel(novelNames, entry.isContained);
 
-            if (novelNames == VisualNovelNames.EinstiegsNovel)
+            if (novelNames.Contains("KITE"))
             {
                 novelDescriptionTextbox.DeactivatedBookmarkButton();
             }
@@ -608,7 +608,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void OnIntroNovelButton()
         {
-            _novelId = VisualNovelNamesHelper.ToInt(VisualNovelNames.EinstiegsNovel);
+            _novelId = (int)MappingManager.allNovels.Find(n => n.title.Contains("KITE")).id; 
             if (!_allKiteNovelsById.TryGetValue(_novelId, out VisualNovel currentNovel))
             {
                 LogManager.Error($"Novel mit ID {_novelId} nicht im Dictionary gefunden.");
@@ -769,9 +769,9 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         /// <param name="visualNovel">The visual novel to be displayed in the text box.</param>
         /// <param name="isNovelContainedInVersion">Indicates whether the visual novel is available in the current version.</param>
-        private void DisplayTextBoxForVisualNovel(VisualNovelNames visualNovel, bool isNovelContainedInVersion)
+        private void DisplayTextBoxForVisualNovel(string visualNovel, bool isNovelContainedInVersion)
         {
-            _novelId = VisualNovelNamesHelper.ToInt(visualNovel);
+            _novelId = (int)MappingManager.allNovels.Find(n => n.title == visualNovel).id;
             if (!_allKiteNovelsById.TryGetValue(_novelId, out VisualNovel currentNovel))
             {
                 LogManager.Error($"Novel mit ID {_novelId} nicht im Dictionary gefunden.");
@@ -834,7 +834,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             }
 
             isPopupOpen = false;
-            currentlyOpenedVisualNovelPopup = VisualNovelNames.None;
+            currentlyOpenedVisualNovelPopup = "None";
             novelDescriptionTextbox.gameObject.SetActive(false);
         }
 
@@ -845,11 +845,12 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         /// <param name="novelName">The Enum value representing the unique identifier of the visual novel selected by the user.</param>
         /// <param name="isIntroNovel">An optional flag indicating whether the novel is being loaded as an introductory novel. Defaults to <c>false</c>.</param>
-        private void LoadAndPlayNovel(VisualNovelNames novelName, bool isIntroNovel = false)
+        private void LoadAndPlayNovel(string novelName, bool isIntroNovel = false)
         {
-            if (!_allKiteNovelsById.TryGetValue(VisualNovelNamesHelper.ToInt(novelName), out VisualNovel visualNovelToDisplay))
+            var id = MappingManager.allNovels.Find(n => n.title.Contains(novelName)).id;
+            if (!_allKiteNovelsById.TryGetValue(id, out VisualNovel visualNovelToDisplay))
             {
-                LogManager.Warning($"Novel with name {novelName} (ID: {VisualNovelNamesHelper.ToInt(novelName)}) not found in dictionary.");
+                LogManager.Warning($"Novel with name {novelName} (ID: {id}) not found in dictionary.");
                 return;
             }
 
