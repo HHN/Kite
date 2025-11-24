@@ -196,8 +196,6 @@ Wir haben gesehen, wie stressig es sein kann, ein Unternehmen zu führen. Ein Fr
 :: Kredite [Bias] {"position":"1375,600","size":"100,100"}
 >>Character1|Critical<<
 Kredite könnten zwar eine Möglichkeit sein, aber vergiss die Zinsen und Rückzahlung nicht. Bist du denn sicher, dass du diese finanzielle Belastung stemmen kannst?
->>--<<
->>Bias|SocioeconomicBiases<<
 
 [[Ich werde mich erst mal über die Kreditoptionen schlau machen, und wenn es nicht passt, finde ich schon eine andere Lösung.->Positiv]]
 
@@ -449,7 +447,7 @@ Hallo! Schön, dass du anrufst. Wie geht es dir denn?
 Hallo, Papa. Mir geht es gut. Ist Mama auch da? Ich rufe an, weil ich euch etwas Wichtiges mitteilen möchte.
 
 
-[[Weiter|Weiter2]]
+[[Weiter->Weiter2]]
 
 
 :: Weiter2 {"position":"1350,375","size":"100,100"}
