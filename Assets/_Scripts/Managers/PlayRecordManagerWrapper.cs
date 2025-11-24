@@ -29,7 +29,7 @@ namespace Assets._Scripts.Managers
     [Serializable]
     public struct PlayCountEntry
     {
-        public VisualNovelNames novel;
+        public string novel;
         public int count;
     }
     
@@ -43,7 +43,7 @@ namespace Assets._Scripts.Managers
     {
         public List<PlayCountEntry> playCounts = new();
         
-        private Dictionary<VisualNovelNames, int> _cache;
+        private Dictionary<string, int> _cache;
 
         /// <summary>
         /// Ensures that the internal cache for play counts is initialized and populated.
@@ -56,7 +56,7 @@ namespace Assets._Scripts.Managers
         {
             if (_cache != null) return;
 
-            _cache = new Dictionary<VisualNovelNames, int>();
+            _cache = new Dictionary<string, int>();
             foreach (var entry in playCounts)
             {
                 _cache[entry.novel] = entry.count;
@@ -68,7 +68,7 @@ namespace Assets._Scripts.Managers
         /// </summary>
         /// <param name="novel">The novel for which to retrieve the number of plays.</param>
         /// <returns>The number of plays registered for the specified novel. If no plays are recorded, returns 0.</returns>
-        public int GetNumberOfPlays(VisualNovelNames novel)
+        public int GetNumberOfPlays(string novel)
         {
             EnsureCache();
             return _cache.GetValueOrDefault(novel, 0);
@@ -79,7 +79,7 @@ namespace Assets._Scripts.Managers
         /// </summary>
         /// <param name="novel">The novel for which to set the number of plays.</param>
         /// <param name="numberOfPlays">The number of plays to set for the specified novel.</param>
-        public void SetNumberOfPlays(VisualNovelNames novel, int numberOfPlays)
+        public void SetNumberOfPlays(string novel, int numberOfPlays)
         {
             EnsureCache();
             _cache[novel] = numberOfPlays;
@@ -90,7 +90,7 @@ namespace Assets._Scripts.Managers
         /// Increments the play counter for the specified novel.
         /// </summary>
         /// <param name="novel">The novel for which to increase the play counter.</param>
-        public void IncreasePlayCounter(VisualNovelNames novel)
+        public void IncreasePlayCounter(string novel)
         {
             EnsureCache();
 
@@ -105,7 +105,7 @@ namespace Assets._Scripts.Managers
         /// </summary>
         public void ClearData()
         {
-            _cache = new Dictionary<VisualNovelNames, int>();
+            _cache = new Dictionary<string, int>();
             playCounts.Clear();
         }
 

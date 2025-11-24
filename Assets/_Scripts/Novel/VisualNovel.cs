@@ -14,7 +14,6 @@ namespace Assets._Scripts.Novel
     public class VisualNovel
     {
         public long id;
-        public string folderName;
         public string title;
         public string description;
         public string feedback;
@@ -142,7 +141,6 @@ namespace Assets._Scripts.Novel
             VisualNovel newNovel = new VisualNovel
             {
                 id = id,
-                folderName = folderName,
                 title = title,
                 description = description,
                 feedback = feedback,

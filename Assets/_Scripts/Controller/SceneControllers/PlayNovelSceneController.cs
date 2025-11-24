@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Assets._Scripts._Mappings;
 using Assets._Scripts.Controller.CharacterController;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
@@ -147,6 +148,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void Start()
         {
+            
             FooterActivationManager.Instance().SetFooterActivated(false);
 
             _conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
@@ -805,7 +807,8 @@ namespace Assets._Scripts.Controller.SceneControllers
             {
                 conversationContent.AddContent(novelEvent, this);
 
-                AddEntryToPlayThroughHistory(CharacterTypeHelper.ValueOf(novelEvent.character), novelEvent.text);
+                string character = MappingManager.characterMapping.FirstOrDefault(pair => pair.Value == novelEvent.character).Key;
+                AddEntryToPlayThroughHistory(character, novelEvent.text);
             }
 
             // Wait for user confirmation if required
@@ -856,7 +859,8 @@ namespace Assets._Scripts.Controller.SceneControllers
             AnimationFlagSingleton.Instance().SetFlag(true);
 
             // Log the event to the playthrough history, including the character and their dialogue
-            AddEntryToPlayThroughHistory(CharacterTypeHelper.ValueOf(novelEvent.character), novelEvent.text);
+            string character = MappingManager.characterMapping.FirstOrDefault(pair => pair.Value == novelEvent.character).Key;
+            AddEntryToPlayThroughHistory(character, novelEvent.text);
 
             // Add the conversation content to the UI or dialogue system
             conversationContent.AddContent(novelEvent, this);
@@ -868,7 +872,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         public void HandleEndNovelEvent()
         {
-            VisualNovelNames currentNovel = VisualNovelNamesHelper.ValueOf((int)novelToPlay.id);
+            string currentNovel = MappingManager.allNovels.Find(novel => novel.id == novelToPlay.id).title;
 
             PlayerDataManager.Instance().SetNovelHistory(playThroughHistory);
             PlayThroughCounterAnimationManager.Instance().SetAnimation(true, currentNovel);
@@ -916,7 +920,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             if (!show) return;
 
-            AddEntryToPlayThroughHistory(CharacterRole.Player, message);
+            AddEntryToPlayThroughHistory("Player", message);
             conversationContent.ShowPlayerAnswer(message);
             ScrollToBottom();
         }
@@ -998,9 +1002,10 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         /// <param name="characterRole">The role of the character (e.g., Player, Intro, etc.) who is speaking or being referenced.</param>
         /// <param name="text">The dialogue text or content to log for the character.</param>
-        private void AddEntryToPlayThroughHistory(CharacterRole characterRole, string text)
+        private void AddEntryToPlayThroughHistory(string characterRole, string text)
         {
-            playThroughHistory.Add(CharacterTypeHelper.GetNameOfCharacter(characterRole) + ": " + text);
+            if (characterRole == "None") characterRole = "";
+            playThroughHistory.Add(characterRole + ": " + text);
         }
 
         /// <summary>
