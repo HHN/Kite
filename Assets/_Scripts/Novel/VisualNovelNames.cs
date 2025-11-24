@@ -13,6 +13,7 @@ namespace Assets._Scripts.Novel
         NotariatNovel,
         PresseNovel,
         VermieterNovel,
+        Test,
         HonorarNovel,
         EinstiegsNovel,
         VertriebNovel,
@@ -38,6 +39,7 @@ namespace Assets._Scripts.Novel
                 3 => VisualNovelNames.PresseNovel,
                 4 => VisualNovelNames.NotariatNovel,
                 6 => VisualNovelNames.VermieterNovel,
+                7 => VisualNovelNames.Test,
                 9 => VisualNovelNames.InvestorNovel,
                 10 => VisualNovelNames.BankKreditNovel,
                 11 => VisualNovelNames.HonorarNovel,
@@ -60,6 +62,7 @@ namespace Assets._Scripts.Novel
                 3 => "Presse",
                 4 => "Notarin",
                 6 => "Vermieter",
+                7 => "Test",
                 9 => "Investor",
                 10 => "Bankkredit",
                 11 => "Honorar",
@@ -86,6 +89,8 @@ namespace Assets._Scripts.Novel
                     return VisualNovelNames.NotariatNovel;
                 case "Vermieter":
                     return VisualNovelNames.VermieterNovel;
+                case "Test":
+                    return VisualNovelNames.Test;
                 case "Investor":
                     return VisualNovelNames.InvestorNovel;
                 case "Bankkredit":
@@ -114,6 +119,7 @@ namespace Assets._Scripts.Novel
                 VisualNovelNames.PresseNovel => 3,
                 VisualNovelNames.NotariatNovel => 4,
                 VisualNovelNames.VermieterNovel => 6,
+                VisualNovelNames.Test => 7,
                 VisualNovelNames.InvestorNovel => 9,
                 VisualNovelNames.BankKreditNovel => 10,
                 VisualNovelNames.HonorarNovel => 11,

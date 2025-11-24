@@ -1,7 +1,6 @@
 {
   "idNumberOfNovel": 7,
   "titleOfNovel": "Test",
-  "designationOfNovel": "Eltern",
   "descriptionOfNovel": "",
   "contextForPrompt": "",
   "startTalkingPartnerExpression": "NeutralRelaxed",
@@ -11,6 +10,5 @@
   "isKiteNovel": false,
   "novelColor": "#25650E",
   "novelFrameColor": "#4C9A30",
-  "folderName": "Test",
-  "wordsToReplace": []
+  "folderName": "Test"
 }

@@ -552,6 +552,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void OnButtonFromBurgerMenu()
         {
             GameObject buttonObject = EventSystem.current.currentSelectedGameObject;
+            Debug.Log(buttonObject.name);
             VisualNovelNames novelNames = VisualNovelNamesHelper.ValueByString(buttonObject.name.Replace("Button", ""));
 
             NovelEntry entry = _isNovelContainedInVersion.FirstOrDefault(novel => novel.novelId == VisualNovelNamesHelper.ToInt(novelNames));
