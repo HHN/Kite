@@ -7,7 +7,7 @@ Novel_Bankkredit
   "ifid": "02B60924-2F14-4263-9E80-B8D23E11C937",
   "format": "Harlowe",
   "format-version": "3.3.9",
-  "start": "Anfang",
+  "start": "Start",
   "tag-colors": {
     "Alter": "red",
     "Altersbezogen": "red",
@@ -16,8 +16,6 @@ Novel_Bankkredit
   },
   "zoom": 0.6
 }
-
-
 :: Alleinige Gründerin {"position":"2300,2900","size":"100,100"}
 >>Character1|Dissatisfied<<
 Ja, das ist nur Teil der Risikoabwägung, die wir hier machen müssen. Was passiert, wenn Sie in eine Krise kommen? Also, Sie wissen ja, was Covid mit Selbstständigen gemacht hat. 
@@ -28,7 +26,7 @@ Ja, das ist nur Teil der Risikoabwägung, die wir hier machen müssen. Was passi
 [[Ich habe eher realistischere Risiken ins Auge gefasst. Eine Pandemie erleben wir zum Glück nicht so oft.->Realistischere Risiken]]
 
 
-:: Anfang {"position":"2100,375","size":"100,100"}
+:: Start{"position":"2100,375","size":"100,100"}
 >>Info<<
 Bei deinem Banktermin heute möchtest du einen Kredit beantragen. Du hast deinen Businessplan und alle weiteren benötigten Dokumente bei dir.
 
@@ -635,7 +633,8 @@ Nicht schlecht, das läuft ja bei Cafés und Supermärkten auch gut mit Treuepun
 
 :: Marketing-Expertin [Bias] {"position":"2500,2550","size":"100,100"}
 >>Character1|Critical<<
-Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?>>--<<
+Gut, da haben Sie immerhin eine Expertin an Bord. Aber Sie sind trotzdem allein als Frau in dem Bereich, oder?
+>>--<<
 >>Bias|UndervaluationFemaleManagedCompany<<
 
 [[Ich habe das Unternehmen gegründet, arbeite aber mit anderen zusammen.->Alleinige Gründerin]]
@@ -700,8 +699,8 @@ Und, haben Sie schon etwas unternommen, um den langfristigen Erfolg sicherzustel
 >>--<<
 >>Character1|Laughing<<
 Kundschaft an sich binden ist natürlich super!
->>Character1|Questioning<<
 >>--<<
+>>Character1|Questioning<<
 Wie genau wollen Sie das denn anstellen?
 
 [[Ich plane, eine Community um meine Marke aufzubauen.->Community]]
@@ -921,7 +920,7 @@ Ich bin schon lange in dieser Branche und habe meine Erfahrungen gemacht. Ich gl
 >>Character1|Rejecting<<
 Ich bin mit vielen Frauen befreundet! Da bin ich doch nicht sexistisch!
 
-[[Nur weil man mit Frauen befreundet ist, bedeutet das nicht, dass man frei von Vorurteilen ist. ->Internalisiert Geschäftspartner A]]
+[[Nur weil man mit Frauen befreundet ist, bedeutet das nicht, dass man frei von Vorurteilen ist.->Internalisiert Geschäftspartner A]]
 
 [[Alle können sich sexistisch verhalten. Das passiert auch oft unbewusst.->Internalisiert Geschäftspartner B]]
 
@@ -930,7 +929,7 @@ Ich bin mit vielen Frauen befreundet! Da bin ich doch nicht sexistisch!
 >>Character1|Rejecting<<
 Ich bin mit vielen Frauen befreundet! Da bin ich doch nicht sexistisch!
 
-[[Nur weil man mit Frauen befreundet ist, bedeutet das nicht, dass man frei von Vorurteilen ist. ->Internalisiert Geschäftspartnerin A]]
+[[Nur weil man mit Frauen befreundet ist, bedeutet das nicht, dass man frei von Vorurteilen ist.->Internalisiert Geschäftspartnerin A]]
 
 [[Alle können sich sexistisch verhalten. Das passiert auch oft unbewusst.->Internalisiert Geschäftspartnerin B]]
 
@@ -1041,7 +1040,7 @@ Willkommen. Schön, dass Sie da sind. Setzen Sie sich doch. Kann ich Ihnen etwas
 Hier, bitteschön. So, was kann ich für Sie tun?
 
 
-[[Weiter|Weiter III]]
+[[Weiter->Weiter III]]
 
 
 :: Weiter II {"position":"2250,825","size":"100,100"}
@@ -1049,14 +1048,14 @@ Hier, bitteschön. So, was kann ich für Sie tun?
 Okay, was kann ich heute für Sie tun?
 
 
-[[Weiter|Weiter III]]
+[[Weiter->Weiter III]]
 
 
 :: Weiter III {"position":"2125,1025","size":"100,100"}
 >>Player<<
 Ich würde gern einen Kredit für mein Unternehmen beantragen. Den Businessplan habe ich Ihnen schon geschickt.
 
-[[Weiter|Weiter IV]]
+[[Weiter->Weiter IV]]
 
 
 :: Weiter IV {"position":"2275,1025","size":"100,100"}
@@ -1072,6 +1071,7 @@ Ja, hier sind sie.
 :: Weiter V {"position":"2425,1025","size":"100,100"}
 >>Character1|NeutralRelaxed<<
 Vielen Dank. Lassen Sie mich kurz einen Blick darauf werfen. Ah, das sieht wirklich gut aus. 
+>>--<<
 >>Character1|Smiling<<
 In Ihrem Businessplan haben Sie Ihre Ziele klar definiert und die Finanzprognosen sind überzeugend. In welcher Höhe möchten Sie denn den Kredit beantragen?
 

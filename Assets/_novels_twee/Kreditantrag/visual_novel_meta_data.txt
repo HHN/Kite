@@ -3,12 +3,13 @@
   "titleOfNovel": "Kredit beantragen",
   "descriptionOfNovel": "Du hast heute einen Banktermin, um einen Kredit zu beantragen.",
   "contextForPrompt": "Es ist das Gespräch einer Gründerin mit einem Bankmitarbeiter. Es geht um einen Kredit. Die Gründerin hat sich gut vorbereitet und hofft Informationen über den Kredit zu erhalten.",
-  "folderName": "Kreditantrag",
   "startTalkingPartnerExpression": "NeutralRelaxed",
-  "talkingPartner01" : "Sachbearbeiter",
-  "talkingPartner02" : "",
-  "talkingPartner03" : "",
+  "talkingPartner01": "Bank",
+  "talkingPartner02": "",
+  "talkingPartner03": "",
   "isKiteNovel": true,
   "novelColor": "#0E1A2D",
-  "novelFrameColor": "#234169"
+  "novelFrameColor": "#234169",
+  "folderName": "Kreditantrag",
+  "Start": "Start"
 }
