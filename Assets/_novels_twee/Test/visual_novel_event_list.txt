@@ -196,8 +196,7 @@ Wir haben gesehen, wie stressig es sein kann, ein Unternehmen zu führen. Ein Fr
 :: Kredite [Bias] {"position":"1375,600","size":"100,100"}
 >>Character1|Critical<<
 Kredite könnten zwar eine Möglichkeit sein, aber vergiss die Zinsen und Rückzahlung nicht. Bist du denn sicher, dass du diese finanzielle Belastung stemmen kannst?
->>--<<
->>Bias|SocioeconomicBiases<<
+
 
 [[Ich werde mich erst mal über die Kreditoptionen schlau machen, und wenn es nicht passt, finde ich schon eine andere Lösung.->Positiv]]
 
