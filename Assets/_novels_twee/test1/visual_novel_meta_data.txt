@@ -1,16 +1,15 @@
 {
   "idNumberOfNovel": 2,
   "titleOfNovel": "test1",
-  "designationOfNovel": "Bank",
   "descriptionOfNovel": "",
   "contextForPrompt": "",
   "startTalkingPartnerExpression": "NeutralRelaxed",
-  "talkingPartner01": "Bank",
-  "talkingPartner02": "",
+  "talkingPartner01": "Vater",
+  "talkingPartner02": "Mutter",
   "talkingPartner03": "",
   "isKiteNovel": false,
   "novelColor": "#25650E",
   "novelFrameColor": "#4C9A30",
   "folderName": "test1",
-  "wordsToReplace": []
+  "Start": "Start"
 }
