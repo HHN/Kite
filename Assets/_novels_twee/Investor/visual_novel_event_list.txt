@@ -7,7 +7,7 @@ Novel_Investor
   "ifid": "4711",
   "format": "Harlowe",
   "format-version": "3.3.9",
-  "start": "Willkommen",
+  "start": "Start",
   "tag-colors": {
     "Info": "green",
     "Start": "blue",
@@ -15,8 +15,6 @@ Novel_Investor
   },
   "zoom": 0.6
 }
-
-
 :: Abschluss {"position":"800,3375","size":"100,100"}
 >>Character1|Smiling<<
 Ja, lassen Sie uns im Kontakt bleiben.
@@ -131,8 +129,7 @@ Ja, ein starkes Team ist wichtig, aber Investor*innen schauen auch darauf, wer a
 :: Führungserfahrung Frage [Bias] {"position":"975,975","size":"100,100"}
 >>Character1|Scared<<
 Nein, nein, so meine ich das nicht. Es geht nur darum, dass Männer oft als durchsetzungsfähiger wahrgenommen werden. Das könnte Ihnen helfen.
->>--<<
->>Bias|ProveItAgainBias<<
+
 [[Meinen Sie, mein Auftreten müsste durchsetzungsfähiger wirken, oder geht es eher um das Geschlecht?->Durchsetzungsfähig]]
 
 [[Spannend, wie tief solche Wahrnehmungen verankert sind. Vielleicht braucht die Branche genau deshalb frischen Wind.->Durchsetzungsfähig]]
@@ -257,7 +254,7 @@ Ich finde Ihr Konzept auch spannend, aber ich brauche noch Zeit.
 [[Alles klar. Freue mich darauf, von Ihnen zu hören.->Abschluss]]
 
 
-:: Willkommen {"position":"900,175","size":"100,100"}
+:: Start{"position":"900,175","size":"100,100"}
 >>Info<<
 Du triffst dich mit einem Angel Investor, der auf einer Pitch Night Interesse an deiner Innovation gezeigt hat und nun mehr erfahren möchte.
 [[Anfang]]
