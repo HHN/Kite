@@ -1,7 +1,6 @@
 {
   "idNumberOfNovel": 8,
   "titleOfNovel": "Test42",
-  "designationOfNovel": "",
   "descriptionOfNovel": "Test42",
   "contextForPrompt": "Test42",
   "startTalkingPartnerExpression": "NeutralRelaxed",
@@ -9,8 +8,8 @@
   "talkingPartner02": "Vater",
   "talkingPartner03": "",
   "isKiteNovel": true,
-  "novelColor": "#25650E",
-  "novelFrameColor": "#4C9A30",
+  "novelColor": "#cac4ce",
+  "novelFrameColor": "#ca0000",
   "folderName": "Test42",
-  "wordsToReplace": []
+  "Start": "Start"
 }
