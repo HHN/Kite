@@ -10,5 +10,6 @@
   "isKiteNovel": false,
   "novelColor": "#25650E",
   "novelFrameColor": "#4C9A30",
-  "folderName": "Test"
+  "folderName": "Test",
+  "Start": "Start"
 }
