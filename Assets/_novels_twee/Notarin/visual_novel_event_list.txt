@@ -7,16 +7,14 @@ Novel_Notarin
   "ifid": "C05F2F69-C105-44EC-929A-E7B49BEAB0BB",
   "format": "Harlowe",
   "format-version": "3.3.9",
-  "start": "Anfang",
+  "start": "Start",
   "tag-colors": {
     "Frage": "orange",
     "Bias": "yellow"
   },
   "zoom": 0.6
 }
-
-
-:: Anfang {"position":"900,375","size":"100,100"}
+:: Start{"position":"900,375","size":"100,100"}
 >>Info<<
 Du hast einen Termin mit einer Notarin, um einen Termin für deine Gründung auszumachen.
 >>--<<
@@ -111,9 +109,9 @@ Ich verstehe Ihren Punkt und werde zukünftig darauf achten. In meiner Erfahrung
 >>Character1|NeutralRelaxed<<
 Gut. Nächsten Donnerstag 15 Uhr hätte ich noch einen Termin frei. Würde Ihnen das passen?
 
-[[Ja, das passt mir gut.|Termin Ja]]
+[[Ja, das passt mir gut.->Termin Ja]]
 
-[[Würde auch Freitag 14 Uhr gehen?|Terminänderung]]
+[[Würde auch Freitag 14 Uhr gehen?->Terminänderung]]
 
 
 :: Klarstellung {"position":"1500,575","size":"100,100"}
