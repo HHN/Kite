@@ -1,0 +1,15 @@
+{
+  "idNumberOfNovel": 1,
+  "titleOfNovel": "TestNeu",
+  "descriptionOfNovel": "TestNeu",
+  "contextForPrompt": "TestNeu",
+  "startTalkingPartnerExpression": "NeutralRelaxed",
+  "talkingPartner01": "Notarin",
+  "talkingPartner02": "",
+  "talkingPartner03": "",
+  "isKiteNovel": true,
+  "novelColor": "#cac4ce",
+  "novelFrameColor": "#ca0000",
+  "folderName": "TestNeu",
+  "Start": "Start"
+}
