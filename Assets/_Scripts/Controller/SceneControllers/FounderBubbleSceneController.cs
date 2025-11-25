@@ -184,7 +184,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 string novelName = MappingManager.allNovels.Find(n => n.id == visualNovel.id).title;
 
                 // Skip intro novels (not needed in scroll view)
-                if (novelName.Contains("KITE")) continue;
+                // if (novelName.Contains("KITE")) continue;    // ToDo: Re-enable if needed
 
                 // Create a button instance from prefab
                 GameObject novelButtonGameObject = Instantiate(novelButtonPrefab, novelButtonsContainer);
@@ -222,7 +222,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 // Configure bookmark and played status updaters
                 string currentNovel = MappingManager.allNovels.Find(n => n.id == visualNovel.id).title;
                 novelButtonGameObject.GetComponentInChildren<BookmarkUpdater>().VisualNovel = currentNovel;
-                novelButtonGameObject.GetComponentInChildren<AlreadyPlayedUpdater>().VisualNovel = currentNovel;
+                // novelButtonGameObject.GetComponentInChildren<AlreadyPlayedUpdater>().VisualNovel = currentNovel;
 
                 // Add click listener
                 button.onClick.AddListener(() => { OnNovelButton(buttonRect, novelNamesCopy); });
@@ -433,7 +433,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             foreach (NovelEntry entry in _isNovelContainedInVersion)
             {
                 if (!_allKiteNovelsById.TryGetValue(entry.novelId, out var visualNovel)) continue;
-                if (visualNovel.id == 13) continue; 
+                // if (visualNovel.id == 13) continue; // ToDo: Re-enable if needed
                 
                 GameObject novelButton = CreateBurgerMenuButton(visualNovel, content);
                 if (novelButton)

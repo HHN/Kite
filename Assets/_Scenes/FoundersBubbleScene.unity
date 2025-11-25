@@ -1463,9 +1463,7 @@ MonoBehaviour:
   selectNovelSoundPrefab: {fileID: 5665505778772664329, guid: 0cf6b97a397eb0a499fcd91cb4e550d5, type: 3}
   visualNovelToDisplay:
     id: 0
-    folderName: 
     title: 
-    designation: 
     description: 
     feedback: 
     context: 
@@ -1640,6 +1638,10 @@ PrefabInstance:
     - target: {fileID: 4139954582404095602, guid: 76231234420b36646b2e53e80237c68b, type: 3}
       propertyPath: m_Name
       value: IntroNovelButtonPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139954582404095602, guid: 76231234420b36646b2e53e80237c68b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
