@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using Assets._Scripts._Mappings;
 using Assets._Scripts.Messages;
 using Assets._Scripts.Utilities;
 
@@ -13,7 +15,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         private Dictionary<string, VisualNovelEvent> _novelEvents;
         private VisualNovelEvent _nextEventToTest;
         private VisualNovel _objectUnderTest;
-        private HashSet<CharacterRole> _currentCharacters = new();
+        private HashSet<string> _currentCharacters = new();
         private List<VisualNovelEvent> _choices;
         private HashSet<string> _alreadyPlayedEvents = new();
         private bool _isOriginalTest = true;
@@ -66,7 +68,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             _objectUnderTest.feedback = string.Empty;
             _objectUnderTest.playedPath = string.Empty;
             _novelEvents = new Dictionary<string, VisualNovelEvent>();
-            _currentCharacters = new HashSet<CharacterRole>();
+            _currentCharacters = new HashSet<string>();
             _choices = new List<VisualNovelEvent>();
             _alreadyPlayedEvents = new HashSet<string>();
 
@@ -242,14 +244,16 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// <param name="novelEvent">The VisualNovelEvent instance representing the character join event.</param>
         private void HandleCharacterJoinEvent(VisualNovelEvent novelEvent)
         {
-            CharacterRole role = CharacterTypeHelper.ValueOf(novelEvent.character);
-            if (role == CharacterRole.None)
+            string character = MappingManager.characterMapping.FirstOrDefault(pair => pair.Value == novelEvent.character).Key;
+
+            if (character == "None")
+
             {
                 OnTestFailed(NovelTestMessages.ERR_JOIN_EVENT_WITHOUT_CHARACTER, _objectUnderTest.title, novelEvent.id);
                 return;
             }
 
-            _currentCharacters.Add(role);
+            _currentCharacters.Add(character);
             PlayNextEvent();
         }
 
@@ -260,9 +264,9 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// <param name="novelEvent">The VisualNovelEvent instance containing data about the character exit event.</param>
         private void HandleCharacterExitEvent(VisualNovelEvent novelEvent)
         {
-            CharacterRole role = CharacterTypeHelper.ValueOf(novelEvent.character);
+            string role = MappingManager.characterMapping.FirstOrDefault(pair => pair.Value == novelEvent.character).Key;
             
-            if (role != CharacterRole.None && role != CharacterRole.Outro && role != CharacterRole.Intro && role != CharacterRole.Info && role != CharacterRole.Player)
+            if (role != "None" && role != "Outro" && role != "Intro" && role != "Info" && role != "Player")
             {
                 if (!_currentCharacters.Contains(role))
                 {
@@ -274,7 +278,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             }
             else
             {
-                _currentCharacters = new HashSet<CharacterRole>();
+                _currentCharacters = new HashSet<string>();
             }
 
             PlayNextEvent();
@@ -293,8 +297,9 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 return;
             }
 
-            CharacterRole role = CharacterTypeHelper.ValueOf(novelEvent.character);
-            if (!_currentCharacters.Contains(role) && role != CharacterRole.Intro && role != CharacterRole.Outro && role != CharacterRole.Info && role != CharacterRole.Player)
+            string role = MappingManager.characterMapping.FirstOrDefault(pair => pair.Value == novelEvent.character).Key;
+
+            if (!_currentCharacters.Contains(role) && role != "Intro" && role != "Outro" && role != "Info" && role != "Player")
             {
                 OnTestFailed(NovelTestMessages.ERR_SHOW_MESSAGE_CHARACTER_NOT_IN_SCENE, _objectUnderTest.title, novelEvent.id);
                 return;
@@ -377,8 +382,8 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             if (_nextEventToTest != null) newCopy._nextEventToTest = _nextEventToTest.DeepCopy();
             if (_objectUnderTest != null) newCopy._objectUnderTest = _objectUnderTest.DeepCopy();
 
-            newCopy._currentCharacters = new HashSet<CharacterRole>();
-            foreach (CharacterRole character in _currentCharacters)
+            newCopy._currentCharacters = new HashSet<string>();
+            foreach (string character in _currentCharacters)
             {
                 newCopy._currentCharacters.Add(character);
             }

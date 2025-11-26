@@ -6,23 +6,6 @@ using UnityEngine;
 namespace Assets._Scripts.Managers
 {
     /// <summary>
-    /// Represents the legacy data structure for storing animation states associated with various visual novels.
-    /// This class was previously used to manage the state of playthrough animations for specific visual novels.
-    /// While no longer actively used, it exists for backward compatibility and data migration purposes.
-    /// </summary>
-    [Serializable]
-    public class OldPlayThroughAnimationData
-    {
-        public bool animateNumberForBankkreditNovel;
-        public bool animateNumberForInvestorNovel;
-        public bool animateNumberForElternNovel;
-        public bool animateNumberForNotariatNovel;
-        public bool animateNumberForPresseNovel;
-        public bool animateNumberForHonorarNovel;
-        public bool animateNumberForIntroNovel;
-    }
-
-    /// <summary>
     /// Manages the playthrough counter-animations within the application, providing mechanisms
     /// for enabling, disabling, and querying the state of animations for specific visual novels.
     /// This class is implemented as a singleton to ensure a single global point of access.
@@ -58,9 +41,9 @@ namespace Assets._Scripts.Managers
         /// </summary>
         /// <param name="value">A boolean indicating whether the animation should be enabled or disabled.</param>
         /// <param name="novel">The visual novel for which the animation state is being set.</param>
-        public void SetAnimation(bool value, VisualNovelNames novel)
+        public void SetAnimation(bool value, string novel)
         {
-            if (novel == VisualNovelNames.None) return;
+            if (novel == "None") return;
             _wrapper.SetAnimation(novel, value);
             Save();
         }
@@ -71,9 +54,9 @@ namespace Assets._Scripts.Managers
         /// </summary>
         /// <param name="novel">The visual novel for which the animation state is checked.</param>
         /// <returns>True if the animation is active for the specified novel; otherwise, false.</returns>
-        public bool IsAnimationTrue(VisualNovelNames novel)
+        public bool IsAnimationTrue(string novel)
         {
-            if (novel == VisualNovelNames.None) return false;
+            if (novel == "None") return false;
             return _wrapper.GetAnimation(novel);
         }
 
@@ -103,28 +86,6 @@ namespace Assets._Scripts.Managers
             {
                 string json = PlayerPrefs.GetString(Key);
                 return JsonUtility.FromJson<PlayThroughAnimationData>(json);
-            }
-
-            if (PlayerPrefs.HasKey(OldKey))
-            {
-                string oldJson = PlayerPrefs.GetString(OldKey);
-                var oldData = JsonUtility.FromJson<OldPlayThroughAnimationData>(oldJson);
-
-                var newData = new PlayThroughAnimationData();
-                newData.SetAnimation(VisualNovelNames.BankKreditNovel, oldData.animateNumberForBankkreditNovel);
-                newData.SetAnimation(VisualNovelNames.InvestorNovel, oldData.animateNumberForInvestorNovel);
-                newData.SetAnimation(VisualNovelNames.ElternNovel, oldData.animateNumberForElternNovel);
-                newData.SetAnimation(VisualNovelNames.NotariatNovel, oldData.animateNumberForNotariatNovel);
-                newData.SetAnimation(VisualNovelNames.PresseNovel, oldData.animateNumberForPresseNovel);
-                newData.SetAnimation(VisualNovelNames.HonorarNovel, oldData.animateNumberForHonorarNovel);
-                newData.SetAnimation(VisualNovelNames.EinstiegsNovel, oldData.animateNumberForIntroNovel);
-
-                string newJson = JsonUtility.ToJson(newData);
-                PlayerPrefs.SetString(Key, newJson);
-                PlayerPrefs.Save();
-                PlayerPrefs.DeleteKey(OldKey);
-
-                return newData;
             }
 
             return new PlayThroughAnimationData();

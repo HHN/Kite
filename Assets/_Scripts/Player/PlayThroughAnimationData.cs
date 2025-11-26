@@ -21,11 +21,11 @@ namespace Assets._Scripts.Player
         [Serializable]
         public struct AnimationEntry
         {
-            public VisualNovelNames novel;
+            public string novel;
             public bool animate;
         }
 
-        private Dictionary<VisualNovelNames, bool> _cache;
+        private Dictionary<string, bool> _cache;
 
         /// <summary>
         /// Ensures that the cache mapping visual novel names to their animation states is initialized.
@@ -35,7 +35,7 @@ namespace Assets._Scripts.Player
         private void EnsureCache()
         {
             if (_cache != null) return;
-            _cache = new Dictionary<VisualNovelNames, bool>();
+            _cache = new Dictionary<string, bool>();
             foreach (var entry in animations) _cache[entry.novel] = entry.animate;
         }
 
@@ -46,7 +46,7 @@ namespace Assets._Scripts.Player
         /// </summary>
         /// <param name="novel">The visual novel for which the animation state is being retrieved.</param>
         /// <returns>True if animations are enabled for the specified novel; otherwise, false.</returns>
-        public bool GetAnimation(VisualNovelNames novel)
+        public bool GetAnimation(string novel)
         {
             EnsureCache();
             return _cache.GetValueOrDefault(novel, false);
@@ -60,7 +60,7 @@ namespace Assets._Scripts.Player
         /// </summary>
         /// <param name="novel">The visual novel for which the animation state is being set.</param>
         /// <param name="value">The new animation state to apply to the specified visual novel.</param>
-        public void SetAnimation(VisualNovelNames novel, bool value)
+        public void SetAnimation(string novel, bool value)
         {
             EnsureCache();
             _cache[novel] = value;
