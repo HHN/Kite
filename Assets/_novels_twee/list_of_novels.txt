@@ -9,5 +9,6 @@
     "_novels_twee\\Presse",
     "_novels_twee\\Vermieter",
     "_novels_twee\\Test",
+    "_novels_twee\\Test42",
   ]
 } 

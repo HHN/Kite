@@ -4,7 +4,7 @@
   "descriptionOfNovel": "Du hast heute einen Banktermin, um einen Kredit zu beantragen.",
   "contextForPrompt": "Es ist das Gespräch einer Gründerin mit einem Bankmitarbeiter. Es geht um einen Kredit. Die Gründerin hat sich gut vorbereitet und hofft Informationen über den Kredit zu erhalten.",
   "startTalkingPartnerExpression": "NeutralRelaxed",
-  "talkingPartner01": "Bank",
+  "talkingPartner01": "Sachbearbeiter",
   "talkingPartner02": "",
   "talkingPartner03": "",
   "isKiteNovel": true,
