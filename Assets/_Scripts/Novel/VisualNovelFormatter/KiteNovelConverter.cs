@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Assets._Scripts._Mappings;
 using Assets._Scripts.Utilities;
@@ -35,7 +36,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 {
                     ColorUtility.TryParseHtmlString(folder.NovelMetaData.NovelColor, out novelColor);
                 }
-                
+
                 Color novelFrameColor = Color.black;
                 if (!string.IsNullOrEmpty(folder.NovelMetaData.NovelFrameColor))
                 {
@@ -82,98 +83,184 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         public static List<VisualNovelEvent> ConvertTextDocumentIntoEventList(string tweeFile, KiteNovelMetaData metaData)
         {
             List<VisualNovelEvent> eventList = new List<VisualNovelEvent>();
+
+            // Get the label of the start passage (usually "Start"/"Anfang"/"Willkommen", etc.).
             string startLabel = TweeProcessor.GetStartLabelFromTweeFile(tweeFile);
+
+            // Add the initial "character joins" event.
             InitializeKiteNovelEventList(metaData, eventList, startLabel);
+
             List<TweePassage> passages = TweeProcessor.ProcessTweeFile(tweeFile);
+
+            if (passages == null || passages.Count == 0)
+            {
+                LogManager.Warning($"ConvertTextDocumentIntoEventList: no passages found for novel '{metaData?.TitleOfNovel}'.");
+                return eventList;
+            }
 
             foreach (TweePassage passage in passages)
             {
-                List<string> message = TweeProcessor.ExtractMessageOutOfTweePassage(passage.Passage);
-                List<string> keywords = TweeProcessor.ExtractKeywordOutOfTweePassage(passage.Passage);
-                List<NovelKeywordModel> keywordModels = NovelKeywordParser.ParseKeywordsFromFile(keywords, metaData);
-                
-                string id = passage.Label;
+                if (passage == null)
+                    continue;
 
-                switch (keywordModels.Count)
+                // Skip meta passages that should not create events.
+                if (string.Equals(passage.Label, "StoryTitle", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(passage.Label, "StoryData", StringComparison.OrdinalIgnoreCase))
                 {
-                    case > 1:
+                    continue;
+                }
+
+                try
+                {
+                    List<string> messages = TweeProcessor.ExtractMessageOutOfTweePassage(passage.Passage)
+                                            ?? new List<string>();
+                    List<string> keywords = TweeProcessor.ExtractKeywordOutOfTweePassage(passage.Passage)
+                                            ?? new List<string>();
+                    List<NovelKeywordModel> keywordModels = NovelKeywordParser.ParseKeywordsFromFile(keywords, metaData)
+                                                            ?? new List<NovelKeywordModel>();
+
+                    if (keywordModels.Count == 0)
                     {
-                        string targetString = "";
-                        int messageIndex = 0;
+                        // Nothing to create for this passage.
+                        continue;
+                    }
 
-                        for (int i = 0; i < keywordModels.Count; i++)
+                    string baseId = passage.Label;
+                    string firstLinkTarget = GetFirstLinkTarget(passage);
+
+                    bool hasEndKeyword = keywordModels.Any(m => m.End.HasValue && m.End.Value);
+                    bool hasNonEndKeyword = keywordModels.Any(m => !m.End.GetValueOrDefault());
+
+                    // CASE 1: Passage contains only End keyword(s), e.g. ":: Spielstart >>End<<"
+                    // This must still produce an event with id == passage label,
+                    // otherwise links [[...->Spielstart]] will crash with KeyNotFoundException.
+                    if (hasEndKeyword && !hasNonEndKeyword)
+                    {
+                        // First event in the end chain uses the passage label as id.
+                        HandleEndNovelEvent(baseId, eventList, useLabelAsFirstId: true);
+                        continue;
+                    }
+
+                    // Non-End models are the ones that actually create "normal" events (character, bias, sound, ...).
+                    List<NovelKeywordModel> nonEndModels = keywordModels
+                        .Where(m => !m.End.GetValueOrDefault())
+                        .ToList();
+
+                    if (nonEndModels.Count == 0)
+                    {
+                        // Defensive: should not happen because End-only case is handled above.
+                        continue;
+                    }
+
+                    // CASE 2: Exactly one non-End keyword and no End keyword -> keep simple behavior.
+                    if (nonEndModels.Count == 1 && !hasEndKeyword)
+                    {
+                        string text = messages.Count == 0 ? string.Empty : messages[0];
+                        VisualNovelEvent createdEvent = CreateVisualNovelEventFromKeyword(
+                            passage,
+                            text,
+                            nonEndModels[0],
+                            eventList
+                        );
+
+                        HandleLoop(createdEvent, startLabel, eventList);
+                        HandleDialogueOptionEvent(passage, eventList, createdEvent);
+                        continue;
+                    }
+
+                    // CASE 3: Multiple non-End keywords and/or a mixture with End.
+                    // We create a chain of events from the non-End keywords,
+                    // then optionally append an end chain if an End keyword exists.
+                    int messageIndex = 0;
+                    int nonEndIndex = 0;
+                    VisualNovelEvent lastCreatedEvent = null;
+                    VisualNovelEvent previousCreatedEvent = null;
+
+                    foreach (var model in nonEndModels)
+                    {
+                        string currentMessage;
+
+                        if (messages.Count == 0)
                         {
-                            string currentMessage;
-                            if (message.Count == 0)
-                            {
-                                currentMessage = "";
-                            }
-                            else if (message.Count <= messageIndex)
-                            {
-                                currentMessage = message[^1];
-                            }
-                            else
-                            {
-                                currentMessage = message[messageIndex];
-                            }
-
-                            VisualNovelEvent createdEvent = CreateVisualNovelEventFromKeyword(passage, currentMessage, keywordModels[i], eventList);
-
-                            targetString = targetString switch
-                            {
-                                "" when passage.Links.Any() => passage.Label, // If there is a link to the next event, we use the label bc it is unique
-                                "" when !passage.Links.Any() => passage.Label + "newTarget", // If it's the last event (no next event after this)
-                                _ => targetString
-                            };
-                            
-                            // Not the last element
-                             if (i != keywordModels.Count - 1)
-                            {
-                                createdEvent.id = id; 
-                                var nextId = id + "" + i;
-                                createdEvent.nextId = nextId;
-                                id = createdEvent.nextId;
-                            }
-                            // Last element
-                            else
-                            {
-                                if (createdEvent == null)
-                                {
-                                    eventList[^3].id = id;
-                                }
-                                else
-                                {
-                                    createdEvent.id = id;
-                                    createdEvent.nextId = passage.Links[0].Target;
-                                }
-                                
-                                // If dialogue options are present, process them.
-                                HandleDialogueOptionEvent(passage, eventList, createdEvent);
-                            }
-
-                            // If the event is a dialogue option (eventType 4), increase the message index.
-                            if (createdEvent != null && createdEvent.eventType == 4)
-                            {
-                                messageIndex++;
-                            }
-
-                            // Check if the event creates a loop and adjust if necessary.
-                            HandleLoop(createdEvent, startLabel, eventList);
+                            currentMessage = string.Empty;
+                        }
+                        else if (messageIndex >= messages.Count)
+                        {
+                            // If we run out of messages, reuse the last one.
+                            currentMessage = messages[messages.Count - 1];
+                        }
+                        else
+                        {
+                            currentMessage = messages[messageIndex];
                         }
 
-                        break;
+                        VisualNovelEvent createdEvent = CreateVisualNovelEventFromKeyword(
+                            passage,
+                            currentMessage,
+                            model,
+                            eventList
+                        );
+
+                        if (createdEvent == null)
+                        {
+                            continue;
+                        }
+
+                        // Assign a stable id for each event originating in this passage.
+                        // First event keeps the passage label, following events get an indexed suffix.
+                        createdEvent.id = (nonEndIndex == 0)
+                            ? baseId
+                            : $"{baseId}_{nonEndIndex}";
+
+                        // Link previous event in the same passage chain to the newly created event.
+                        if (previousCreatedEvent != null)
+                        {
+                            previousCreatedEvent.nextId = createdEvent.id;
+                        }
+
+                        previousCreatedEvent = createdEvent;
+                        lastCreatedEvent = createdEvent;
+
+                        // Advance the message index only for ShowMessage events
+                        // (the numeric value 4 is mapped to VisualNovelEventType.ShowMessageEvent).
+                        if (createdEvent.eventType == 4)
+                        {
+                            messageIndex++;
+                        }
+
+                        nonEndIndex++;
                     }
-                    case 1:
+
+                    if (lastCreatedEvent == null)
                     {
-                        var createdEvent = CreateVisualNovelEventFromKeyword(passage, message.Count == 0 ? "" : message[0], keywordModels[0], eventList);
-
-                        // Check if the event creates a loop and adjust if necessary.
-                        HandleLoop(createdEvent, startLabel, eventList);
-
-                        // If dialogue options are present, process them.
-                        HandleDialogueOptionEvent(passage, eventList, createdEvent);
-                        break;
+                        // Nothing usable got created.
+                        continue;
                     }
+
+                    // If we have an End keyword in this passage, append a dedicated end chain
+                    // and connect the last "normal" event to the beginning of that chain.
+                    if (hasEndKeyword)
+                    {
+                        // We already used baseId for the first dialog event in this passage,
+                        // so the end chain must get distinct ids to avoid collisions.
+                        string endChainFirstId = HandleEndNovelEvent(baseId, eventList, useLabelAsFirstId: false);
+                        lastCreatedEvent.nextId = endChainFirstId;
+                    }
+                    else
+                    {
+                        // No End keyword -> follow the normal link to the next passage.
+                        lastCreatedEvent.nextId = firstLinkTarget;
+                    }
+
+                    // Handle potential loops back to the start passage.
+                    HandleLoop(lastCreatedEvent, startLabel, eventList);
+                    // Finally, create choice events if the passage has multiple links.
+                    HandleDialogueOptionEvent(passage, eventList, lastCreatedEvent);
+                }
+                catch (Exception ex)
+                {
+                    // Very important for debugging: one broken passage should not kill the whole novel.
+                    LogManager.Error($"Error while converting passage '{passage.Label}': {ex.Message}");
                 }
             }
 
@@ -181,35 +268,52 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         }
 
         /// <summary>
-        /// Creates a VisualNovelEvent based on the NovelKeywordModel.
-        /// Depending on the fields set in the model (End, Bias, Sound, or Character event),
-        /// the corresponding event is created.
+        /// Safely returns the target of the first link of a passage, or an empty string if no links exist.
         /// </summary>
-        private static VisualNovelEvent CreateVisualNovelEventFromKeyword(TweePassage passage, string originalMessage, NovelKeywordModel model, List<VisualNovelEvent> eventList)
+        private static string GetFirstLinkTarget(TweePassage passage)
+        {
+            if (passage?.Links == null || passage.Links.Count == 0)
+                return string.Empty;
+
+            TweeLink first = passage.Links[0];
+            return first?.Target ?? string.Empty;
+        }
+
+        /// <summary>
+        /// Creates a VisualNovelEvent based on the NovelKeywordModel.
+        /// Depending on the fields set in the model (Bias, Sound, or Character event),
+        /// the corresponding event is created.
+        /// End keywords are handled separately in ConvertTextDocumentIntoEventList.
+        /// </summary>
+        private static VisualNovelEvent CreateVisualNovelEventFromKeyword(
+            TweePassage passage,
+            string originalMessage,
+            NovelKeywordModel model,
+            List<VisualNovelEvent> eventList)
         {
             if (model == null) return null;
 
-            // If the keyword signals the end.
+            // End keywords are handled at passage level (ConvertTextDocumentIntoEventList),
+            // because they sometimes need to be chained after other events.
             if (model.End.HasValue && model.End.Value)
             {
-                HandleEndNovelEvent(passage.Label, eventList);
                 return null;
             }
 
-            // If a bias is defined.
+            // Bias event.
             if (!string.IsNullOrEmpty(model.Bias))
             {
                 return HandleBiasEvent(passage, model.Bias, eventList);
             }
 
-            // If a sound is defined.
+            // Sound event.
             if (!string.IsNullOrEmpty(model.Sound))
             {
                 return HandlePlaySoundEvent(passage, model.Sound, eventList);
             }
 
-            // If it's a character event.
-            int character = model.CharacterIndex; //GetCharacterRoleFromIndex(model.CharacterIndex, metaData);
+            // Character talks event.
+            int character = model.CharacterIndex;
             int expression = model.FaceExpression;
 
             return HandleCharacterTalksEvent(passage, character, originalMessage, expression, eventList);
@@ -252,7 +356,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
             int expression = MappingManager.MapFaceExpressions(metaData.StartTalkingPartnerExpression);
             if (expression == -1)
             {
-                LogManager.Warning("While loading " + metaData.TitleOfNovel + ": Initial character expression " + metaData.StartTalkingPartnerExpression + "not found!");
+                LogManager.Warning("While loading " + metaData.TitleOfNovel + ": Initial character expression " + metaData.StartTalkingPartnerExpression + " not found!");
             }
 
             VisualNovelEvent initialCharacterJoinsEvent = KiteNovelEventFactory.GetCharacterJoinsEvent(connectionLabel, startLabel, character, expression);
@@ -271,7 +375,12 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// <param name="expression">The integer identifier for the character's facial expression during the event.</param>
         /// <param name="list">The list to which the created VisualNovelEvent will be added.</param>
         /// <returns>A VisualNovelEvent object representing the character's action.</returns>
-        private static VisualNovelEvent HandleCharacterTalksEvent(TweePassage passage, int character, string dialogMessage, int expression, List<VisualNovelEvent> list)
+        private static VisualNovelEvent HandleCharacterTalksEvent(
+            TweePassage passage,
+            int character,
+            string dialogMessage,
+            int expression,
+            List<VisualNovelEvent> list)
         {
             string id = passage?.Label;
 
@@ -302,26 +411,42 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         }
 
         /// <summary>
-        /// Handles the creation of specific end-of-novel events, including playing a sound,
-        /// making characters exit, and marking the end of the novel.
-        /// Adds the generated events to the provided list of VisualNovelEvent objects.
+        /// Creates a chain of end-of-novel events (sound -> character exit -> end marker),
+        /// adds them to the list and returns the id of the first event in that chain.
         /// </summary>
-        /// <param name="label">The unique identifier used for labeling the events.</param>
+        /// <param name="label">Base label used for naming the end events.</param>
         /// <param name="list">The list of VisualNovelEvent objects to which the generated events will be added.</param>
-        private static void HandleEndNovelEvent(string label, List<VisualNovelEvent> list)
+        /// <param name="useLabelAsFirstId">
+        /// If true, the first end event will use <paramref name="label"/> as its id.
+        /// This is needed for passages that are directly targeted by links (e.g. [[...->Spielstart]]).
+        /// </param>
+        private static string HandleEndNovelEvent(string label, List<VisualNovelEvent> list, bool useLabelAsFirstId)
         {
-            string label01 = label + "RandomString0012003";
-            string label02 = label01 + "RandomRandom";
-            // Use the sound string directly.
-            string leaveSceneSound = "LeaveScene";
+            string soundId = useLabelAsFirstId ? label : label + "_End_Sound";
+            string exitId = soundId + "_Exit";
+            string endId = soundId + "_Final";
 
-            VisualNovelEvent soundEvent = KiteNovelEventFactory.GetPlaySoundEvent(label, label01, leaveSceneSound);
-            VisualNovelEvent exitEvent = KiteNovelEventFactory.GetCharacterExitsEvent(label01, label02);
-            VisualNovelEvent endEvent = KiteNovelEventFactory.GetEndNovelEvent(label02);
+            const string leaveSceneSound = "LeaveScene";
+
+            VisualNovelEvent soundEvent = KiteNovelEventFactory.GetPlaySoundEvent(soundId, exitId, leaveSceneSound);
+            VisualNovelEvent exitEvent = KiteNovelEventFactory.GetCharacterExitsEvent(exitId, endId);
+            VisualNovelEvent endEvent = KiteNovelEventFactory.GetEndNovelEvent(endId);
 
             list.Add(soundEvent);
             list.Add(exitEvent);
             list.Add(endEvent);
+
+            return soundId;
+        }
+
+        /// <summary>
+        /// Convenience overload that creates an end chain using the label
+        /// as the id of the first end event.
+        /// Used primarily for loop handling.
+        /// </summary>
+        private static void HandleEndNovelEvent(string label, List<VisualNovelEvent> list)
+        {
+            HandleEndNovelEvent(label, list, useLabelAsFirstId: true);
         }
 
         /// <summary>

@@ -7,7 +7,7 @@ Novel_Eltern
   "ifid": "0C5BEB97-6FD6-4221-A123-7D8073DF6482",
   "format": "Harlowe",
   "format-version": "3.3.9",
-  "start": "Start",
+  "start": "Anfang",
   "tag-colors": {
     "Frage": "orange",
     "Bias": "yellow"
@@ -30,7 +30,7 @@ Als Frau wirst du dich trotzdem mehr um die Kinder kümmern müssen und es als U
 [[Ach, lassen wir das. Ich weiß schon, was ich tue.->Negativ]]
 
 
-:: Start{"position":"900,375","size":"100,100"}
+:: Anfang {"position":"900,375","size":"100,100"}
 >>Info<<
 Nachdem du dich gründlich informiert hast, hast du dich dazu entschlossen ein Unternehmen zu gründen. Du hast dir auch schon die nächsten Schritte überlegt und rufst nun deine Eltern an, um ihnen von deinem Gründungsvorhaben zu berichten.
 >>--<<
