@@ -188,14 +188,8 @@ namespace Assets._Scripts.Managers
         /// <param name="displayAfterSelection">Indicates whether additional UI or content should be displayed after the selection.</param>
         /// <param name="index">The index of the selected option.</param>
         /// <returns>An IEnumerator used to manage the timing of events following the selection.</returns>
-        private IEnumerator AfterSelection(string parameterName, string answer, string nextEventID,
-            bool displayAfterSelection, int index)
+        private IEnumerator AfterSelection(string parameterName, string answer, string nextEventID, bool displayAfterSelection, int index)
         {
-#if UNITY_ANDROID
-        TextToSpeechManager.Instance.CancelSpeak();
-#elif UNITY_IOS
-        TextToSpeechManager.Instance.CancelSpeak();
-#endif
             GameManager.Instance.calledFromReload = false;
 
             // Disable animations after the selection
