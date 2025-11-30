@@ -7,15 +7,13 @@ Novel_Eltern
   "ifid": "0C5BEB97-6FD6-4221-A123-7D8073DF6482",
   "format": "Harlowe",
   "format-version": "3.3.9",
-  "start": "Anfang",
+  "start": "Start",
   "tag-colors": {
     "Frage": "orange",
     "Bias": "yellow"
   },
   "zoom": 0.6
 }
-
-
 :: Altes Denken [Bias] {"position":"2300,1325","size":"100,100"}
 >>Character1|Rejecting<<
 Das ist doch etwas ganzes anderes.
@@ -32,7 +30,7 @@ Als Frau wirst du dich trotzdem mehr um die Kinder kümmern müssen und es als U
 [[Ach, lassen wir das. Ich weiß schon, was ich tue.->Negativ]]
 
 
-:: Anfang {"position":"900,375","size":"100,100"}
+:: Start{"position":"900,375","size":"100,100"}
 >>Info<<
 Nachdem du dich gründlich informiert hast, hast du dich dazu entschlossen ein Unternehmen zu gründen. Du hast dir auch schon die nächsten Schritte überlegt und rufst nun deine Eltern an, um ihnen von deinem Gründungsvorhaben zu berichten.
 >>--<<
@@ -412,7 +410,7 @@ Und du kannst auch deinen weiblichen Charme nutzen! Dann helfen Leute dir noch v
 >>--<<
 >>Bias|GenderSpecificStereotypes<<
 
-[[Okay, ich melde mich dann. Ich muss auch schon weiter ->Positiv-Termin End]]
+[[Okay, ich melde mich dann. Ich muss auch schon weiter->Positiv-Termin End]]
 
 [[Also, das würdest du jetzt nicht zu einem Mann sagen. Was soll "weiblicher Charme" überhaupt bedeuten?->Positiv: Benevolenter Sexismus II]]
 
@@ -451,7 +449,7 @@ Hallo! Schön, dass du anrufst. Wie geht es dir denn?
 Hallo, Papa. Mir geht es gut. Ist Mama auch da? Ich rufe an, weil ich euch etwas Wichtiges mitteilen möchte.
 
 
-[[Weiter|Weiter2]]
+[[Weiter->Weiter2]]
 
 
 :: Weiter2 {"position":"1350,375","size":"100,100"}
