@@ -235,17 +235,17 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private IEnumerator WaitForNovelsToLoad()
         {
-            List<VisualNovel> allNovels = null;
+            MappingManager.allNovels = null;
 
-            while (allNovels == null || allNovels.Count == 0)
+            while (MappingManager.allNovels == null || MappingManager.allNovels.Count == 0)
             {
-                allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
+                MappingManager.allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
                 yield return new WaitForSeconds(0.5f);
             }
 
             if (!GameManager.Instance.SkipIntroNovel)
             {
-                StartIntroNovel(allNovels);
+                StartIntroNovel(MappingManager.allNovels);
             }
             else
             {
@@ -270,8 +270,6 @@ namespace Assets._Scripts.Controller.SceneControllers
                 if (novel.id == 13)
                 {
                     GameManager.Instance.IsIntroNovelLoadedFromMainMenu = true;
-
-                    VisualNovelNames novelNames = VisualNovelNamesHelper.ValueOf((int)novel.id);
 
                     PlayManager.Instance().SetVisualNovelToPlay(novel);
 

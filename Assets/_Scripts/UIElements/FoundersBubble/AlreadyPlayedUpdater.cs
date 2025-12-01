@@ -14,15 +14,15 @@ namespace Assets._Scripts.UIElements.FoundersBubble
     /// </summary>
     public class AlreadyPlayedUpdater : MonoBehaviour
     {
-        [SerializeField] private VisualNovelNames visualNovel;
+        [SerializeField] private string visualNovel;
         [SerializeField] private TextMeshProUGUI number;
         [SerializeField] private Animator animator;
         private bool _startedAnimation;
 
         /// <summary>
-        /// Gets or sets the <see cref="VisualNovelNames"/> associated with this updater.
+        /// Gets or sets the <see cref="VisualNovel"/> associated with this updater.
         /// </summary>
-        public VisualNovelNames VisualNovel
+        public string VisualNovel
         {
             get => visualNovel;
             set => visualNovel = value;

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using Assets._Scripts._Mappings;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
@@ -37,8 +38,6 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         [SerializeField] private bool displayNoDataObjectsHint;
 
-        [SerializeField] private List<NovelHistoryEntryGuiElement> novelHistoryEntries;
-
         [SerializeField] private GameObject copyNotificationContainer;
 
         private readonly Dictionary<long, List<DialogHistoryEntry>> _novelHistoryEntriesDictionary = new();
@@ -67,7 +66,6 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             if (copyNotificationContainer != null) InitCopyNotification();
 
-            novelHistoryEntries = new List<NovelHistoryEntryGuiElement>();
             InitializeScene();
 
             StartCoroutine(RebuildLayout());
@@ -140,7 +138,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void CreateNovelContainer(long novelId)
         {
             GameObject novelContainer = Instantiate(containerPrefab, containerParent);
-            novelContainer.name = VisualNovelNamesHelper.GetName(novelId);
+            novelContainer.name = MappingManager.allNovels.Find(n => n.id == novelId).title;
 
             _novelContainers[novelId] = novelContainer;
             _novelHistoryEntriesDictionary[novelId] = new List<DialogHistoryEntry>();
@@ -162,7 +160,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             GameObject reviewContainer = novelContainer.transform.Find("Review Container").gameObject;
             GameObject reviewButton = novelContainer.transform.Find("Review Button").gameObject;
 
-            var visualNovel = VisualNovelNamesHelper.ValueOf((int)entry.GetNovelId());
+            string visualNovel = MappingManager.allNovels.Find(n => n.id == entry.GetNovelId()).title;
 
             if (novel != null) reviewButton.GetComponent<Image>().color = novel.novelColor;
             reviewButton.GetComponentInChildren<TextMeshProUGUI>().text = designation;

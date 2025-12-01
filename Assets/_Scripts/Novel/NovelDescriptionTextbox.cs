@@ -27,6 +27,7 @@ namespace Assets._Scripts.Novel
 
         [Header("Visual Novel Data")] 
         [SerializeField] private VisualNovel visualNovelToDisplay;
+        [SerializeField] private string visualNovelName;
 
         [Header("Appearance")] 
         [SerializeField] private Color colorOfText;
@@ -86,8 +87,9 @@ namespace Assets._Scripts.Novel
         /// Sets the name of the Visual Novel.
         /// </summary>
         /// <param name="novelName">The name of the Visual Novel.</param>
-        public void SetVisualNovelName(VisualNovelNames novelName)
+        public void SetVisualNovelName(string novelName)
         {
+            visualNovelName = novelName;
         }
 
         /// <summary>

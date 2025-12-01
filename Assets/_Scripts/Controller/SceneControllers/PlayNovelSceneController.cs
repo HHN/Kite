@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Assets._Scripts._Mappings;
 using Assets._Scripts.Controller.CharacterController;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
@@ -795,7 +796,8 @@ namespace Assets._Scripts.Controller.SceneControllers
             {
                 conversationContent.AddContent(novelEvent, this);
 
-                AddEntryToPlayThroughHistory(CharacterTypeHelper.ValueOf(novelEvent.character), novelEvent.text);
+                string character = MappingManager.characterMapping.FirstOrDefault(pair => pair.Value == novelEvent.character).Key;
+                AddEntryToPlayThroughHistory(character, novelEvent.text);
             }
 
             if (novelEvent.waitForUserConfirmation)
@@ -842,7 +844,8 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             AnimationFlagSingleton.Instance().SetFlag(true);
 
-            AddEntryToPlayThroughHistory(CharacterTypeHelper.ValueOf(novelEvent.character), novelEvent.text);
+            string character = MappingManager.characterMapping.FirstOrDefault(pair => pair.Value == novelEvent.character).Key;
+            AddEntryToPlayThroughHistory(character, novelEvent.text);
 
             conversationContent.AddContent(novelEvent, this);
         }
@@ -853,7 +856,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         public void HandleEndNovelEvent()
         {
-            VisualNovelNames currentNovel = VisualNovelNamesHelper.ValueOf((int)novelToPlay.id);
+            string currentNovel = MappingManager.allNovels.Find(novel => novel.id == novelToPlay.id).title;
 
             if (GeneratedFeedbackManager.Instance.HasEventsForId((int)novelToPlay.id))
             {
@@ -909,7 +912,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             if (!show) return;
 
-            AddEntryToPlayThroughHistory(CharacterRole.Player, message);
+            AddEntryToPlayThroughHistory("Player", message);
             conversationContent.ShowPlayerAnswer(message);
             ScrollToBottom();
         }
@@ -989,9 +992,11 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// <summary>
         /// Fügt zur History hinzu (bevorzugt v1) und registriert das Ereignis beim GeneratedFeedbackManager (aus v2).
         /// </summary>
-        private void AddEntryToPlayThroughHistory(CharacterRole characterRole, string text)
+        private void AddEntryToPlayThroughHistory(string characterRole, string text)
         {
-            playThroughHistory.Add(CharacterTypeHelper.GetNameOfCharacter(characterRole) + ": " + text);
+            if (characterRole == "None") characterRole = "";
+            playThroughHistory.Add(characterRole + ": " + text);
+
             GeneratedFeedbackManager.Instance.SetEvent(text);
         }
 

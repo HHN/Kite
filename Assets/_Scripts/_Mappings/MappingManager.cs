@@ -7,6 +7,7 @@ using Assets._Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
+using Assets._Scripts.Novel;
 
 namespace Assets._Scripts._Mappings
 {
@@ -20,6 +21,10 @@ namespace Assets._Scripts._Mappings
         private static MappingManager _instance;
         
         public static readonly Dictionary<string, Bias> BIASES = new(StringComparer.OrdinalIgnoreCase);
+        public static Dictionary<string, int> characterMapping = new(StringComparer.OrdinalIgnoreCase);
+        public static List<VisualNovel> allNovels = new();
+
+
 
         // Mapping-Files
         private static readonly string MappingFileFaceExpression;
@@ -28,7 +33,6 @@ namespace Assets._Scripts._Mappings
         
         // Dictionaries
         private static Dictionary<string, int> _faceExpressionMapping = new(StringComparer.OrdinalIgnoreCase);
-        private static Dictionary<string, int> _characterMapping = new(StringComparer.OrdinalIgnoreCase);
         private static Dictionary<string, int> _soundMapping = new(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
@@ -122,7 +126,7 @@ namespace Assets._Scripts._Mappings
                 if (www.result == UnityWebRequest.Result.Success)
                 {
                     string[] lines = www.downloadHandler.text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-                    ProcessCharacterFile(lines, ref _characterMapping);
+                    ProcessCharacterFile(lines, ref characterMapping);
                 }
                 else
                 {
@@ -417,7 +421,7 @@ namespace Assets._Scripts._Mappings
             if (string.IsNullOrWhiteSpace(character)) return -1;
 
             var key = character.Trim();
-            return _characterMapping.GetValueOrDefault(key, -1);
+            return characterMapping.GetValueOrDefault(key, -1);
         }
 
         /// <summary>
@@ -427,7 +431,7 @@ namespace Assets._Scripts._Mappings
         /// <returns>The string representation of the character if found; otherwise, an empty string.</returns>
         public static string MapCharacterToString(int character)
         {
-            return character == -1 ? "" : _characterMapping.FirstOrDefault(x => x.Value == character).Key;
+            return character == -1 ? "" : characterMapping.FirstOrDefault(x => x.Value == character).Key;
         }
         
         /// <summary>

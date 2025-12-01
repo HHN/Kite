@@ -45,9 +45,9 @@ namespace Assets._Scripts.Managers
         /// and persists the updated data. If the provided novel is <c>VisualNovelNames.None</c>, the method performs no action.
         /// </remarks>
         /// <param name="playedNovel">The visual novel for which the play counter should be incremented.</param>
-        public void IncreasePlayCounterForNovel(VisualNovelNames playedNovel)
+        public void IncreasePlayCounterForNovel(string playedNovel)
         {
-            if (playedNovel == VisualNovelNames.None) return;
+            if (playedNovel == "None") return;
 
             _wrapper ??= LoadPlayRecordManagerWrapper();
             _wrapper.IncreasePlayCounter(playedNovel);
@@ -59,7 +59,7 @@ namespace Assets._Scripts.Managers
         /// </summary>
         /// <param name="novel">The visual novel whose playthrough count is to be retrieved.</param>
         /// <returns>The total number of times the specified visual novel has been played.</returns>
-        public int GetNumberOfPlaysForNovel(VisualNovelNames novel)
+        public int GetNumberOfPlaysForNovel(string novel)
         {
             _wrapper ??= LoadPlayRecordManagerWrapper();
             return _wrapper.GetNumberOfPlays(novel);
@@ -82,30 +82,6 @@ namespace Assets._Scripts.Managers
             {
                 string json = PlayerDataManager.Instance().GetPlayerData(Key);
                 return JsonUtility.FromJson<PlayRecordManagerWrapper>(json);
-            }
-
-            if (PlayerPrefs.HasKey(OldKey))
-            {
-                string oldJson = PlayerPrefs.GetString(OldKey);
-                OldPlayRecordManagerWrapper oldData = JsonUtility.FromJson<OldPlayRecordManagerWrapper>(oldJson);
-
-                var newData = new PlayRecordManagerWrapper();
-
-                newData.SetNumberOfPlays(VisualNovelNames.BankKreditNovel, oldData.numberOfPlaysForBankkreditNovel);
-                newData.SetNumberOfPlays(VisualNovelNames.InvestorNovel, oldData.numberOfPlaysForInvestorNovel);
-                newData.SetNumberOfPlays(VisualNovelNames.ElternNovel, oldData.numberOfPlaysForElternNovel);
-                newData.SetNumberOfPlays(VisualNovelNames.NotariatNovel, oldData.numberOfPlaysForNotarinNovel);
-                newData.SetNumberOfPlays(VisualNovelNames.PresseNovel, oldData.numberOfPlaysForPresseNovel);
-                newData.SetNumberOfPlays(VisualNovelNames.HonorarNovel, oldData.numberOfPlaysForHonorarNovel);
-                newData.SetNumberOfPlays(VisualNovelNames.EinstiegsNovel, oldData.numberOfPlaysForIntroNovel);
-                newData.SetNumberOfPlays(VisualNovelNames.VermieterNovel, oldData.numberOfPlaysForVermieterNovel);
-
-                string newJson = JsonUtility.ToJson(newData);
-                PlayerDataManager.Instance().SavePlayerData(Key, newJson);
-
-                PlayerPrefs.DeleteKey(OldKey);
-
-                return newData;
             }
 
             return new PlayRecordManagerWrapper();
