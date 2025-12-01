@@ -14,7 +14,8 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
     {
         // Regex to extract the StoryData block (everything between ":: StoryData" and the next "::") 
         // using multiline mode so that it matches across multiple lines.
-        private static readonly Regex StoryDataRegex = new(@":: StoryData\s*\n([\s\S]*?)\n::", RegexOptions.Multiline);
+        private static readonly Regex StoryDataRegex =
+            new(@":: StoryData\s*[\r\n]+([\s\S]*?)[\r\n]+::", RegexOptions.Multiline);
 
         // Regex to match any text inside double square brackets, which are used for links.
         private static readonly Regex LinkRegex = new(@"\[\[(.*?)\]\]");
@@ -28,52 +29,63 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// <returns>A list of TweePassage objects.</returns>
         public static List<TweePassage> ProcessTweeFile(string tweeSource)
         {
-            // List that will store all passages after processing.
-            List<TweePassage> listOfPassages = new List<TweePassage>();
-            // Dictionary to store passages by their label (for later lookup).
-            Dictionary<string, TweePassage> dictionaryOfPassages = new Dictionary<string, TweePassage>();
+            var listOfPassages = new List<TweePassage>();
+            var dictionaryOfPassages = new Dictionary<string, TweePassage>();
 
-            // Split the full Twee text into individual passage strings.
+            if (string.IsNullOrWhiteSpace(tweeSource))
+                return listOfPassages;
+
+            // Split full Twee text into individual passages
             List<string> passages = SplitTweeIntoPassages(tweeSource);
 
-            // Process each passage string.
             foreach (string passage in passages)
             {
-                // Extract the label (name) of the passage.
                 string label = GetLabelOfPassage(passage);
-                // Skip passages without a valid label or with reserved labels "StoryTitle" or "StoryData".
-                if (string.IsNullOrEmpty(label) || label == "StoryTitle" || label == "StoryData")
+
+                // Skip passages without label or reserved labels
+                if (string.IsNullOrEmpty(label) ||
+                    string.Equals(label, "StoryTitle", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(label, "StoryData", StringComparison.OrdinalIgnoreCase))
                 {
                     continue;
                 }
 
-                // Extract any links that are present within the passage.
                 List<TweeLink> links = GetTweeLinksOfPassage(passage);
-                // Create a TweePassage object with the extracted label, full passage text, and its links.
-                TweePassage tweePassage = new TweePassage(label, passage, links);
-                // Store the passage in the dictionary for later reordering.
-                dictionaryOfPassages[tweePassage.Label] = tweePassage;
+                var tweePassage = new TweePassage(label, passage, links);
+
+                // Overwrite if the same label appears again – last one wins
+                dictionaryOfPassages[label] = tweePassage;
             }
 
-            // Get the label of the starting passage from the Twee file (from the StoryData block).
-            string startLabel = GetStartLabelFromTweeFile(tweeSource);
-            // If the starting label is not found in the dictionary, return the collected passages.
-            if (!dictionaryOfPassages.ContainsKey(startLabel))
-            {
+            if (dictionaryOfPassages.Count == 0)
                 return listOfPassages;
+
+            string startLabel = GetStartLabelFromTweeFile(tweeSource);
+
+            if (!string.IsNullOrEmpty(startLabel) &&
+                dictionaryOfPassages.TryGetValue(startLabel, out TweePassage startObject))
+            {
+                // Put the start passage first
+                listOfPassages.Add(startObject);
+
+                // Add all other passages in any order except the start passage
+                foreach (var kvp in dictionaryOfPassages)
+                {
+                    if (!ReferenceEquals(kvp.Value, startObject))
+                    {
+                        listOfPassages.Add(kvp.Value);
+                    }
+                }
             }
-
-            // Retrieve the starting passage and remove it from the dictionary.
-            TweePassage startObject = dictionaryOfPassages[startLabel];
-            dictionaryOfPassages.Remove(startLabel);
-
-            // Add the remaining passages to the list.
-            listOfPassages.AddRange(dictionaryOfPassages.Values);
-            // Insert the starting passage at the beginning of the list.
-            listOfPassages.Insert(0, startObject);
+            else
+            {
+                // No valid start label found – just return everything
+                listOfPassages.AddRange(dictionaryOfPassages.Values);
+            }
 
             return listOfPassages;
         }
+
 
         /// <summary>
         /// Splits the Twee text into individual passage strings.
@@ -111,43 +123,44 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// <returns>The cleaned label of the passage.</returns>
         private static string GetLabelOfPassage(string passage)
         {
+            if (string.IsNullOrWhiteSpace(passage))
+                return string.Empty;
+
             // A valid passage should start with "::"
             if (!passage.StartsWith("::"))
-            {
-                return "";
-            }
+                return string.Empty;
 
             // Remove the initial "::"
             string passageContent = passage.Substring(2);
-            // Find the index of the first newline, which marks the end of the label/metadata line.
+
+            // Take only the first line (label + optional tags/metadata)
             int contentStartIndex = passageContent.IndexOf('\n');
+            string labelLine = contentStartIndex == -1
+                ? passageContent
+                : passageContent.Substring(0, contentStartIndex);
 
-            // If there is no newline, return the entire content trimmed.
-            if (contentStartIndex == -1)
+            labelLine = labelLine.Trim();
+
+            if (labelLine.Length == 0)
+                return string.Empty;
+
+            // Cut off everything after the first '{' (metadata block),
+            // whether there is a space before it or not.
+            int braceIndex = labelLine.IndexOf('{');
+            if (braceIndex >= 0)
             {
-                return passageContent.Trim();
+                labelLine = labelLine.Substring(0, braceIndex).TrimEnd();
             }
 
-            // Extract the first line that contains the label and potential metadata.
-            string labelAndMetadata = passageContent.Substring(0, contentStartIndex).Trim();
-            // Look for the beginning of metadata (which starts with " {")
-            int labelEndIndex = labelAndMetadata.IndexOf(" {");
+            // Remove any [Tag] blocks (e.g. [Bias])
+            labelLine = RemoveBracketedTextAndTrim(labelLine);
 
-            // If no metadata is found, return the full line as the label.
-            if (labelEndIndex == -1)
-            {
-                return labelAndMetadata;
-            }
+            // Remove optional leading "\ "
+            labelLine = RemoveLeadingBackslashSpace(labelLine);
 
-            // Otherwise, extract only the label part before the metadata.
-            string label = labelAndMetadata.Substring(0, labelEndIndex).Trim();
-            // Remove any leading backslash-space sequences.
-            label = RemoveLeadingBackslashSpace(label);
-            // Remove any text enclosed in square brackets.
-            label = RemoveBracketedTextAndTrim(label);
-            label = label.Trim();
-            return label;
+            return labelLine;
         }
+
 
         /// <summary>
         /// Removes any text enclosed in square brackets (e.g. "[...]") from the input and trims the result.
