@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 namespace Assets._Scripts
 {
     /// <summary>
-    /// Manages Text-to-Speech (TTS) functionality across different platforms (iOS, WebGL, Android)
+    /// Manages Text-to-Speech (TTS) functionality across different platforms
     /// and handles sound effect activation settings. It implements a Singleton pattern to ensure
     /// a single, persistent instance throughout the application.
     /// </summary>
@@ -21,30 +21,12 @@ namespace Assets._Scripts
         private bool _isSpeaking;
         private string _lastMessage = "";
         private bool _wasPaused;
-
-        // ------------------------------------------------
-        // iOS native methods
-        // ------------------------------------------------
-        #if UNITY_IOS && !UNITY_EDITOR
-            [DllImport("__Internal")]
-            private static extern void _InitializeTTS();
-
-            [DllImport("__Internal")]
-            private static extern void _Speak(string message);
-
-            [DllImport("__Internal")]
-            private static extern void _StopSpeaking();
-
-            [DllImport("__Internal")]
-            private static extern bool _IsSpeaking();
-        #else
-            // Fallback implementations for the Unity Editor or other platforms.
-            // These do nothing to prevent errors when not running on a real iOS device.
-            private static void _InitializeTTS() { }
-            private static void _Speak(string message) { }
-            private static void _StopSpeaking() { }
-            private static bool _IsSpeaking() { return false; }
-        #endif
+        
+        // Fallback implementations for the Unity Editor or other platforms.
+        private static void _InitializeTTS() { }
+        private static void _Speak(string message) { }
+        private static void _StopSpeaking() { }
+        private static bool _IsSpeaking() { return false; }
 
         // ------------------------------------------------
         // WebGL JavaScript Plugin Methods
@@ -126,16 +108,7 @@ namespace Assets._Scripts
             _ttsIsActive = PlayerPrefs.GetInt("TTS", 0) != 0;
             _soundEffectIsActive = PlayerPrefs.GetInt("SoundEffect", 0) != 0;
 
-            #if UNITY_ANDROID
-                if (Application.platform == RuntimePlatform.Android)
-                {
-                    // Android-spezifische Initialisierung
-                    StartCoroutine(InitializeTTSAndroid());
-                }
-            #elif UNITY_IOS && !UNITY_EDITOR
-                // iOS-spezifische Initialisierung
-                _InitializeTTS();
-            #elif UNITY_WEBGL && !UNITY_EDITOR
+            #if UNITY_WEBGL && !UNITY_EDITOR
                 // WebGL: JavaScript-Plugin initialisieren
                 TTS_Initialize();
             #endif
@@ -266,7 +239,7 @@ namespace Assets._Scripts
         // ------------------------------------------------
         /// <summary>
         /// Initiates Text-to-Speech playback for a given message.
-        /// This method is platform-dependent, using native calls for iOS/WebGL and Android Java interoperability.
+        /// This method is platform-dependent.
         /// It waits for the speech to complete before yielding.
         /// </summary>
         /// <param name="message">The text message to be spoken.</param>
@@ -284,56 +257,7 @@ namespace Assets._Scripts
             _lastMessage = message;
             _isSpeaking = true;
 
-            #if UNITY_ANDROID
-                // --- Android Implementation ---
-                // Wait until the Android TTS engine is initialized.
-                while (!_isInitialized)
-                {
-                    yield return null;
-                }
-
-                if (_ttsObject != null)
-                {
-                    string utteranceId = "UniqueID_" + System.Guid.NewGuid().ToString();
-                    int apiLevel = GetAndroidSDKVersion();
-
-                    if (apiLevel >= 21) // For Android API Level 21 (Lollipop) and higher.
-                    {
-                        AndroidJavaObject bundleParams = new AndroidJavaObject("android.os.Bundle");
-                        bundleParams.Call("putString", "utteranceId", utteranceId);
-                        _ttsObject.Call<int>("speak", message, 0, bundleParams, utteranceId);
-
-                         // Wait until the TTS engine reports that it has finished speaking.
-                        while (_ttsObject.Call<bool>("isSpeaking"))
-                        {
-                            yield return null;
-                        }
-                    }
-                    else // For Android API Level < 21 (older versions).
-                    {
-                        AndroidJavaObject hashMapParams = new AndroidJavaObject("java.util.HashMap");
-                        hashMapParams.Call<AndroidJavaObject>("put", "utteranceId", utteranceId);
-                        _ttsObject.Call<int>("speak", message, 0, hashMapParams);
-
-                        // For older Android versions, isSpeaking() might not be reliable or available.
-                        // Use a rough estimate of duration to wait.
-                        float estimatedDuration = message.Length * 0.05f;
-                        yield return new WaitForSeconds(estimatedDuration);
-                    }
-                }
-                else
-                {
-                    LogManager.Error("TextToSpeech is not initialized.");
-                }
-
-            #elif UNITY_IOS && !UNITY_EDITOR // iOS Implementation (native plugin).
-                _Speak(message);
-                while (_IsSpeaking())
-                {
-                    yield return null;
-                }
-
-            #elif UNITY_WEBGL && !UNITY_EDITOR // WebGL Implementation (JavaScript plugin).
+            #if UNITY_WEBGL && !UNITY_EDITOR // WebGL Implementation (JavaScript plugin).
                 TTS_Speak(message);
                 // Warte, bis TTS_IsSpeaking() 0 zurückgibt
                 while (TTS_IsSpeaking() == 1)
@@ -351,19 +275,7 @@ namespace Assets._Scripts
         /// </summary>
         public void CancelSpeak()
         {
-            #if UNITY_ANDROID
-                if (_ttsObject != null)
-                {
-                    // For Android, a common way to stop immediately is to speak an empty string.
-                    // This might vary depending on the Android TTS engine's behavior.
-
-                    StartEmptySpeech();
-                    _isSpeaking = false;
-                }
-            #elif UNITY_IOS && !UNITY_EDITOR
-                _StopSpeaking();
-                _isSpeaking = false;
-            #elif UNITY_WEBGL && !UNITY_EDITOR
+            #if UNITY_WEBGL && !UNITY_EDITOR
                 TTS_Stop();
                 _isSpeaking = false;
             #endif
@@ -376,124 +288,11 @@ namespace Assets._Scripts
         /// <returns>True if TTS is speaking, false otherwise.</returns>
         public bool IsSpeaking()
         {
-            #if UNITY_ANDROID
-                return _isSpeaking;
-            #elif UNITY_IOS && !UNITY_EDITOR
-                return _IsSpeaking();
-            #elif UNITY_WEBGL && !UNITY_EDITOR
+            #if UNITY_WEBGL && !UNITY_EDITOR
                 return TTS_IsSpeaking() == 1; // Call JavaScript function and interpret an integer result.
             #else
                 return false;
             #endif
         }
-
-        // ------------------------------------------------
-        // Android-specific Fields and Methods
-        // ------------------------------------------------
-        #if UNITY_ANDROID
-            private AndroidJavaObject _ttsObject;
-            private AndroidJavaObject _locale;
-            private bool _isInitialized;
-
-            private IEnumerator InitializeTTSAndroid()
-            {
-               // Give a short delay to ensure the Unity Android Activity is fully ready.
-                yield return new WaitForSeconds(0.1f);
-
-                using (AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
-                {
-                    AndroidJavaObject unityActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
-
-                    // Create the TextToSpeech instance, passing the Unity Activity and a custom OnInitListener.
-                    _ttsObject = new AndroidJavaObject(
-                        "android.speech.tts.TextToSpeech",
-                        unityActivity,
-                        new OnInitListener(this)
-                    );
-                }
-            }
-
-             /// <summary>
-            /// An inner class that acts as an AndroidJavaProxy for the TextToSpeech.OnInitListener interface.
-            /// It receives the initialization status from the Android TTS engine.
-            /// </summary>
-            private class OnInitListener : AndroidJavaProxy
-            {
-                private readonly TextToSpeechManager _ttsManager;
-
-                public OnInitListener(TextToSpeechManager manager)
-                    : base("android.speech.tts.TextToSpeech$OnInitListener")
-                {
-                    _ttsManager = manager;
-                }
-
-                public void onInit(int status)
-                {
-                    if (status == 0) // SUCCESS
-                    {
-                        _ttsManager._isInitialized = true;
-                        _ttsManager.SetLanguage();
-                    }
-                    else
-                    {
-                        LogManager.Error("Error initializing TextToSpeech.");
-                    }
-                }
-            }
-
-            private void SetLanguage()
-            {
-                // Gewünschte Sprache: Deutsch (Deutschland)
-                AndroidJavaClass localeClass = new AndroidJavaClass("java.util.Locale");
-                _locale = new AndroidJavaObject("java.util.Locale", "de", "DE");
-
-                int result = _ttsObject.Call<int>("setLanguage", _locale);
-
-                if (result == -2) // LANG_MISSING_DATA
-                {
-                    LogManager.Error("The selected language is not available (LANG_MISSING_DATA).");
-                }
-                else if (result == -1) // LANG_NOT_SUPPORTED
-                {
-                    LogManager.Error("The selected language is not supported (LANG_NOT_SUPPORTED).");
-                }
-            }
-
-            private void StartEmptySpeech()
-            {
-                string emptyMessage = "";
-                string utteranceId = "UniqueID_" + System.Guid.NewGuid().ToString();
-                int apiLevel = GetAndroidSDKVersion();
-
-                if (apiLevel >= 21)
-                {
-                    AndroidJavaObject bundleParams = new AndroidJavaObject("android.os.Bundle");
-                    bundleParams.Call("putString", "utteranceId", utteranceId);
-                    _ttsObject.Call<int>("speak", emptyMessage, 0, bundleParams, utteranceId);
-                }
-                else
-                {
-                    AndroidJavaObject hashMapParams = new AndroidJavaObject("java.util.HashMap");
-                    hashMapParams.Call<AndroidJavaObject>("put", "utteranceId", utteranceId);
-                    _ttsObject.Call<int>("speak", emptyMessage, 0, hashMapParams);
-                }
-            }
-
-            private int GetAndroidSDKVersion()
-            {
-                AndroidJavaClass versionClass = new AndroidJavaClass("android.os.Build$VERSION");
-                return versionClass.GetStatic<int>("SDK_INT");
-            }
-
-            private void OnDestroy()
-            {
-                if (_ttsObject != null)
-                {
-                    _ttsObject.Call("shutdown");
-                    _ttsObject.Dispose();
-                    _ttsObject = null;
-                }
-            }
-        #endif
     }
 }

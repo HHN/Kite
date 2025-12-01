@@ -191,11 +191,6 @@ namespace Assets._Scripts.Managers
         private IEnumerator AfterSelection(string parameterName, string answer, string nextEventID,
             bool displayAfterSelection, int index)
         {
-#if UNITY_ANDROID
-        TextToSpeechManager.Instance.CancelSpeak();
-#elif UNITY_IOS
-        TextToSpeechManager.Instance.CancelSpeak();
-#endif
             GameManager.Instance.calledFromReload = false;
 
             // Disable animations after the selection
