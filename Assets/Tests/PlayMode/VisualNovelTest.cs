@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using Assets._Scripts._Mappings;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel.VisualNovelFormatter;
@@ -8,6 +11,7 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
+
 
 namespace Tests.PlayMode
 {
@@ -21,7 +25,8 @@ namespace Tests.PlayMode
 
             SceneLoader.LoadMainMenuScene();
 
-            while (KiteNovelManager.Instance().GetAllKiteNovels() == null || KiteNovelManager.Instance().GetAllKiteNovels().Count == 0)
+            while (KiteNovelManager.Instance().GetAllKiteNovels() == null ||
+                   KiteNovelManager.Instance().GetAllKiteNovels().Count == 0)
             {
                 if (Time.time - startTime > timeout)
                 {
@@ -48,43 +53,124 @@ namespace Tests.PlayMode
         public IEnumerator ImportNovel()
         {
             MappingManager mappingManager = MappingManager.Instance;
-            
+
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("_Scenes/MainMenuSceneTest");
-            
+
             while (!asyncLoad.isDone)
             {
                 yield return null;
             }
 
+            // Start the import
             NovelReader.Instance.ImportNovel();
 
-            // Warte, bis er fertig ist
+            // Wait until the import is finished
             yield return new WaitUntil(() => NovelReader.Instance.IsFinished());
 
-            // Testende
-            Assert.IsTrue(NovelReader.Instance.IsFinished(), "ImportNovel sollte am Ende fertig sein.");
+            // End of test
+            Assert.IsTrue(NovelReader.Instance.IsFinished(), "ImportNovel should be finished at the end.");
         }
 
         [UnityTest]
         public IEnumerator TestKeyWords()
         {
-            // Erstelle ein neues GameObject und f�ge das KeywordTester-Skript hinzu.
+            // Create a new GameObject and add the KeywordTester script.
             GameObject testerObj = new GameObject("KeywordTesterObject");
             KeywordTester tester = testerObj.AddComponent<KeywordTester>();
-            // Optional: Passe den Dateipfad an, falls n�tig.
+
+            // Optional: Adjust the folder path if needed.
             tester.folderPath = "_novels_twee/";
 
-            // Warte eine gewisse Zeit, damit die Coroutine im KeywordTester laufen kann.
-            // Dies ist ein einfaches Beispiel; ggf. musst du hier an deine Testlogik anpassen.
+            // Wait for some time so the coroutine inside KeywordTester can run.
+            // This is a simple example; adapt to your test logic if necessary.
             yield return new WaitForSeconds(2f);
 
-            // Hier k�nntest du weitere Checks einbauen, z.B. anhand interner Tester-Daten.
+            // Here you could add additional checks based on internal tester data.
             Debug.Log("Keyword testing completed.");
 
-            // Zerst�re das Tester-Objekt, um saubere Verh�ltnisse zu schaffen.
-            Object.Destroy(testerObj);
+            // Destroy the tester object to keep the scene clean.
+            UnityEngine.Object.Destroy(testerObj);
 
             yield return null;
+        }
+
+        /// <summary>
+        /// Removes all novels from novels.json whose titles are listed in
+        /// "..\\Assets\\_novels_twee\\list_of_novels_to_remove_from_json.txt"
+        /// under the "visualNovels" array.
+        ///
+        /// This method can be executed directly from the Unity Test Runner.
+        /// </summary>
+        [Test]
+        public void RemoveNovelsListedInFileFromNovelsJson()
+        {
+            string listPath = Path.Combine(
+                Application.dataPath,
+                "_novels_twee",
+                "list_of_novels_to_remove_from_json.txt");
+
+            string novelsJsonPath = Path.Combine(
+                Application.streamingAssetsPath,
+                "novels.json");
+
+            Debug.Log($"[RemoveNovels] List file path: {listPath}");
+            Debug.Log($"[RemoveNovels] novels.json path: {novelsJsonPath}");
+
+            NovelJsonTools.RemoveNovelsByTitle(listPath, novelsJsonPath);
+
+            // Optional: kleine Plausibilitätsprüfung
+            string finalJson = File.ReadAllText(novelsJsonPath, Encoding.UTF8);
+            Assert.IsFalse(string.IsNullOrEmpty(finalJson), "novels.json should not be empty after removal.");
+        }
+
+
+
+        /// <summary>
+        /// Wrapper class for the list of novels to remove.
+        /// File format:
+        /// {
+        ///   "visualNovels": [
+        ///     "Einstieg",
+        ///     "Eltern",
+        ///     "Honorar"
+        ///   ]
+        /// }
+        /// </summary>
+        [Serializable]
+        public class VisualNovelTitlesToRemove
+        {
+            public List<string> visualNovels;
+        }
+
+        /// <summary>
+        /// Complete index structure as in novels.json.
+        /// We map all fields so that nothing is lost when writing back to disk.
+        /// </summary>
+        [Serializable]
+        public class VisualNovelIndex
+        {
+            public List<VisualNovelJson> visualNovels;
+        }
+
+        /// <summary>
+        /// Single entry from novels.json.
+        /// Field names match the JSON keys (lowerCamelCase).
+        /// </summary>
+        [Serializable]
+        public class VisualNovelJson
+        {
+            public int id;
+            public string title;
+            public string description;
+            public string feedback;
+            public string context;
+            public string folderName;
+            public string novelEvents;
+            public bool isKiteNovel;
+            public string novelColor;
+            public string novelFrameColor;
+            public List<string> characters;
+            public string playedPath;
         }
     }
 }
