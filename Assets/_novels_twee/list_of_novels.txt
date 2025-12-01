@@ -1,5 +1,6 @@
 {
   "visualNovels": [
     "_novels_twee\\Einstieg",
+    "_novels_twee\\AD(H)S",
   ]
 } 

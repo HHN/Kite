@@ -1,0 +1,241 @@
+:: StoryTitle
+AD(H)S
+
+
+:: StoryData
+{
+  "ifid": "13FB7335-0F80-4351-B6CD-B0E65E203490",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "start": "Anfang",
+  "zoom": 0.6
+}
+
+
+:: Allein Lassen {"position":"700,825","size":"100,100"}
+>>Character1|Smiling<<
+Okay… ich versuch’s.
+>>--<<
+>>Character1|Scared<<
+Ähm… ich will am liebsten mit allem gleichzeitig anfangen und bin mir unsicher, was gerade am wichtigsten ist.
+
+[[Wir können ja erstmal die Zettel sortieren und dann einen Stapel nach dem anderen durchgehen. ->Struktur Durch Dich]]
+
+[[Wir lassen das so und machen einfach weiter.->Zeitplanung Unsicher]]
+
+[[So kann man doch nicht arbeiten. Du musst dich da einfach besser zusammenreißen.->Offen Konflikt]]
+
+
+:: Anfang {"position":"1125,350","size":"100,100"}
+>>Info<<
+Du sitzt im Büro. Für die nächste Team-Veranstaltung sollst du gemeinsam mit deiner Kollegin Mira die Organisation übernehmen.
+
+[[Weiter->Einstieg]]
+
+
+:: Deeskalation {"position":"1325,1025","size":"100,100"}
+>>Character1|Scared<<
+Okay… neuer Versuch. Aber bitte nicht wieder so Sprüche von wegen „zusammenreißen“.
+
+[[Tut mir leid, ich nehme das wirklich ernst und will helfen, das zu strukturieren.->Struktur Durch Dich]]
+
+[[Das war doch nicht so gemeint. Ach, wir teilen einfach die Aufgaben und planen getrennt.->Ende Negativ]]
+
+
+:: Du Machst Rest {"position":"1675,850","size":"100,100"}
+>>Character1|Relaxed<<
+Ja… gut. Ich schau, wie weit ich komme.
+
+[[Ich schaue später bei dir vorbei, um weiteres zu besprechen, ja?->Nachholen]]
+
+[[Ja, das klappt schon irgendwie.->Ende Neutral]]
+
+[[Oh, ist dir das nicht so lieb? Wir können auch erstmal die Zeitplanung anschauen.->Zeitplanung]]
+
+
+:: Einstieg {"position":"1125,500","size":"100,100"}
+>>Character1|Scared<<
+Hey, hast du kurz? Wir sollen doch diese Teamveranstaltung planen.
+Ich hab schon vieles gesammelt. Also Ideen, To-dos, Namen, aber es ist alles etwas durcheinander.
+>>--<<
+>>Character1|Questioning<<
+Ich wollte erst eine Liste machen, dann kam eine Mail, dann hab ich was zum Raum notiert
+und dann hab ich wieder vergessen, wo ich war. Können wir da gemeinsam draufschauen?
+
+[[Klar, lass uns das in Ruhe sortieren und schauen, was zuerst dran ist.->Unterstützend]]
+
+[[Zeig mal her, wir kriegen das irgendwie hin.->Neutral]]
+
+[[Ich verstehe nicht, warum du das nicht vorher strukturierst.->Unsensibel]]
+
+
+:: Ende Negativ {"position":"1375,1750","size":"100,100"}
+>>Character1|Rejecting<<
+Hm, okay. Dann machen wir das so.
+
+>>Ende<<
+
+
+:: Ende Neutral {"position":"1700,1750","size":"100,100"}
+>>Character1|Critical<<
+Okay, wenn du denkst, dass das so klappt...
+
+>>Ende<<
+
+
+:: Ende Positiv {"position":"750,1750","size":"100,100"}
+>>Character1|Happy<<
+So kann ich richtig gut arbeiten. Danke dir.
+
+>>Ende<<
+
+
+:: Gemeinsam Sortieren {"position":"1100,850","size":"100,100"}
+>>Character1|Questioning<<
+Also, Raum ist wichtig… aber das Programm hängt ja vom Raum ab.
+Und fürs Essen muss ich wissen, wie viele kommen, das steht aber noch gar nicht fest…
+
+[[Weißt du was, ich halte die Reihenfolge fest und lese sie dir vor. Wie klingt das?->Struktur Durch Dich]]
+
+[[Lass uns das doch erstmal so lassen und zur Zeitplanung gehen.->Zeitplanung]]
+
+[[So kann man nicht arbeiten. Du musst dich da einfach besser zusammenreißen.->Offen Konflikt]]
+
+
+:: Kritik Chaos {"position":"1275,875","size":"100,100"}
+>>Character1|Scared<<
+Ja… das ist ja genau das Problem. Ich fang an und dann zerfasert alles irgendwie.
+
+[[Okay, ich helfe dir, das zu ordnen. Wir machen das einfach Schritt für Schritt.->Struktur Durch Dich]]
+
+[[Dann mach du das besser allein, ich steige später nochmal ein.->Du Machst Rest]]
+
+[[Hast du es schonmal mit einem Notizbuch versucht?->Notizbuch]]
+
+
+:: Nachholen {"position":"1675,1275","size":"100,100"}
+>>Character1|Friendly<<
+Es wäre super, wenn du nochmal nachfragen könntest. Ähm… ja, ich hab mich total verheddert. Wenn wir es zusammen machen, kriege ich es sortiert.
+
+[[Okay, wir setzen uns später 30 Minuten hin und gehen alles nacheinander durch.->Struktur Durch Dich]]
+
+[[Ach, schick mir deine Liste, ich baue sie in meinen Plan ein.->Zeitplanung Unsicher]]
+
+
+:: Neutral {"position":"1125,675","size":"100,100"}
+>>Character1|Relaxed<<
+Okay… dann schauen wir halt einfach drauf. Ich weiß, da steckt alles drin, aber sobald ich anfangen will, fühlt es sich an, als ob mein Kopf drei Tabs gleichzeitig aufmacht.
+
+[[Wir fangen oben an und gehen zusammen Punkt für Punkt durch, ja?->Struktur Durch Dich]]
+
+[[Nenne mir mal die drei wichtigsten Dinge, dann können wir priorisieren.->Gemeinsam Sortieren]]
+
+[[Das ist mir zu chaotisch. Ich brauche mehr Ordnung, sonst verliere ich auch den Überblick.->Kritik Chaos]]
+
+
+:: Notizbuch {"position":"1475,1100","size":"100,100"}
+>>Character1|Critical<<
+Hab ich. Ich habe auch mehr als eins. Der Punkt ist nur, dass mein Kopf nicht immer so linear arbeitet wie das Notizbuch.
+
+[[Verstehe, wir können ja erstmal deine Zettel sortieren und dann einen Stapel nach dem anderen durchgehen. ->Struktur Durch Dich]]
+
+[[Probier das dann erstmal alleine und ich schaue später bei dir vorbei, um weiteres zu besprechen, ja?->Nachholen]]
+
+[[Das klingt schon etwas nach einer Ausrede. Alle können sich sortieren, wenn sie wollen.->Vorwurf Ausrede]]
+
+
+:: Offen Konflikt {"position":"1450,825","size":"100,100"}
+>>Character1|Critical<<
+Zusammenreißen bringt mir hier gar nichts. So funktioniert mein Kopf einfach.
+
+[[Ich hab das unglücklich gesagt. Wenn du magst, machen wir einen neuen Versuch.->Deeskalation]]
+
+[[Also, das klingt ja schon wie eine Ausrede.->Vorwurf Ausrede]]
+
+[[Hast du es schonmal mit einem Notizbuch versucht?->Notizbuch]]
+
+
+:: Struktur Durch Dich {"position":"1275,1350","size":"100,100"}
+>>Character1|Friendly<<
+Gut, das hilft mir. Sag du die Reihenfolge, dann fülle ich die Inhalte.
+
+[[Zeitplanung]]
+
+
+:: Unsensibel {"position":"1425,675","size":"100,100"}
+>>Character1|Scared<<
+Hm… ja. Ich weiß, es sieht wild aus. Ich hab’s echt versucht.
+
+[[Komm, wir gehen es trotzdem zusammen durch.->Gemeinsam Sortieren]]
+
+[[Dann mach einfach, was du kannst, ich kümmer mich um den Rest.->Du Machst Rest]]
+
+[[So kann man nicht arbeiten. Du musst dich da einfach besser zusammenreißen.->Offen Konflikt]]
+
+
+:: Unterstützend {"position":"825,675","size":"100,100"}
+>>Character1|Happy<<
+Danke. Wenn jemand mit mir da durchgeht, bekomme ich das besser in eine Reihenfolge.
+Allein verzettle ich mich schnell.
+
+[[Ich schreibe mit, du sagst, was wohin gehört.->Struktur Durch Dich]]
+
+[[Wir sortieren erstmal grob: Raum, Programm, Verpflegung.->Gemeinsam Sortieren]]
+
+[[Sortier du das mal, ich schau später drauf.->Allein Lassen]]
+
+
+:: Vorwurf Ausrede {"position":"1500,1400","size":"100,100"}
+>>Character1|Critical<<
+Ich arbeite anders, nicht weniger. Das ist keine Ausrede. Ich bin ja auch auf dich zugekommen, weil wir das zusammen planen sollen.
+
+[[Weißt du was? Du organisierst einfach deinen Teil und ich meinen. Dann ist das auch geklärt.->Ende Negativ]]
+
+[[Ja, tut mir leid. Okay, lass uns das Punkt für Punkt zusammen durchgehen.->Struktur Durch Dich]]
+
+
+:: Zeiten Offen {"position":"1025,1625","size":"100,100"}
+>>Character1|Questioning<<
+Hm… offen heißt bei mir oft: ich verliere die Hälfte unterwegs. Aber vielleicht klappt es auch.
+
+[[Wie wäre es, wenn wir zumindest die wichtigsten Blöcke grob abstecken?->Zeiten Strukturiert]]
+
+[[Ich finde es lockerer, wenn wir alles wirklich komplett offen lassen.->Ende Neutral]]
+
+
+:: Zeiten Strukturiert {"position":"750,1575","size":"100,100"}
+>>Character1|Relaxed<<
+Ja, das ist gut. Wenn du sagst "20 Minuten für den Einstieg", kann ich das in meinem Kopf besser verankern.
+
+[[Super, dann machen wir das doch so.->Ende Positiv]]
+
+[[Verstehe ich, geht mir genauso.->Ende Positiv]]
+
+
+:: Zeiten Unsensibel {"position":"1175,1500","size":"100,100"}
+>>Character1|Critical<<
+Ich weiß schon, was ich tue. Nur nicht in dieser linearen „Schritt 1, Schritt 2“-Logik.
+
+[[Es tut mir leid, das war unfair. Lass uns schauen, wie wir deine Art zu arbeiten gut einbauen.->Zeiten Strukturiert]]
+
+[[Dann planen wir getrennt. Du machst dein Ding, ich meins.->Ende Negativ]]
+
+
+:: Zeitplanung {"position":"1050,1325","size":"100,100"}
+>>Character1|Relaxed<<
+Ja, also... Wir haben zwei Stunden. Ich würde gerne etwas Interaktives einbauen, aber ich verschätze mich bei Zeiten ständig. Entweder ich rase durch alles oder ich hänge an Details fest.
+
+[[Nicht schlimm, ich schlage mal Zeitrahmen vor, und wenn das für dich auch gut klingt, nehmen wir das.->Zeiten Strukturiert]]
+
+[[Wir können es auch etwas offen lassen und schauen, wie es läuft.->Zeiten Offen]]
+
+[[Also, du solltest wirklich selbst wissen, wie lange Dinge dauern.->Zeiten Unsensibel]]
+
+
+:: Zeitplanung Unsicher {"position":"750,1375","size":"100,100"}
+>>Character1|Questioning<<
+Ich hab kein gutes Gefühl dabei, aber wir können es so versuchen. Wenn ich im Ablauf stecke, verliere ich nur manchmal komplett das Zeitgefühl.
+
+[[Dann lass uns die Zeiten jetzt lieber klar festlegen.->Zeiten Strukturiert]]
+
+[[Ach, mach dir nicht so einen Kopf, dass passt es schon irgendwie.->Ende Neutral]]

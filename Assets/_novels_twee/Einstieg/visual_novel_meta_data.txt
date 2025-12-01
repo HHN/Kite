@@ -3,7 +3,6 @@
   "titleOfNovel": "Mehr zu KITE",
   "descriptionOfNovel": "Hier kannst du den Einstiegs-Dialog erneut spielen.",
   "contextForPrompt": "",
-  "folderName": "Einstieg",
   "startTalkingPartnerExpression": "NeutralRelaxed",
   "talkingPartner01" : "Intro",
   "talkingPartner02" : "",

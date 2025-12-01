@@ -1,0 +1,13 @@
+{
+  "idNumberOfNovel": 1,
+  "titleOfNovel": "AD(H)S",
+  "descriptionOfNovel": "Du sitzt im Büro. Für die nächste Team-Veranstaltung sollst du gemeinsam mit deiner Kollegin Mira die Organisation übernehmen.",
+  "contextForPrompt": "",
+  "startTalkingPartnerExpression": "NeutralRelaxed",
+  "talkingPartner01" : "Intro",
+  "talkingPartner02" : "",
+  "talkingPartner03" : "",
+  "isKiteNovel": true,
+  "novelColor": "#11454A",
+  "novelFrameColor": "#27727F"
+}
