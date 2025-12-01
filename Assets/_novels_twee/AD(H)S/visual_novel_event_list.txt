@@ -92,8 +92,7 @@ So kann ich richtig gut arbeiten. Danke dir.
 
 :: Gemeinsam Sortieren {"position":"1100,850","size":"100,100"}
 >>Character1|Questioning<<
-Also, Raum ist wichtig… aber das Programm hängt ja vom Raum ab.
-Und fürs Essen muss ich wissen, wie viele kommen, das steht aber noch gar nicht fest…
+Also, Raum ist wichtig… aber das Programm hängt ja vom Raum ab. Und fürs Essen muss ich wissen, wie viele kommen, das steht aber noch gar nicht fest…
 
 [[Weißt du was, ich halte die Reihenfolge fest und lese sie dir vor. Wie klingt das?->Struktur Durch Dich]]
 
@@ -155,7 +154,7 @@ Zusammenreißen bringt mir hier gar nichts. So funktioniert mein Kopf einfach.
 [[Hast du es schonmal mit einem Notizbuch versucht?->Notizbuch]]
 
 
-:: Struktur Durch Dich {"position":"1275,1350","size":"100,100"}
+:: Struktur Durch Dich {"position":"1250,1325","size":"100,100"}
 >>Character1|Friendly<<
 Gut, das hilft mir. Sag du die Reihenfolge, dann fülle ich die Inhalte.
 
@@ -164,7 +163,7 @@ Gut, das hilft mir. Sag du die Reihenfolge, dann fülle ich die Inhalte.
 
 :: Unsensibel {"position":"1425,675","size":"100,100"}
 >>Character1|Scared<<
-Hm… ja. Ich weiß, es sieht wild aus. Ich hab’s echt versucht.
+Hm… ja. Ich weiß, es sieht wild aus. Ich hab's echt versucht.
 
 [[Komm, wir gehen es trotzdem zusammen durch.->Gemeinsam Sortieren]]
 
@@ -175,8 +174,7 @@ Hm… ja. Ich weiß, es sieht wild aus. Ich hab’s echt versucht.
 
 :: Unterstützend {"position":"825,675","size":"100,100"}
 >>Character1|Happy<<
-Danke. Wenn jemand mit mir da durchgeht, bekomme ich das besser in eine Reihenfolge.
-Allein verzettle ich mich schnell.
+Danke. Wenn jemand mit mir da durchgeht, bekomme ich das besser in eine Reihenfolge. Allein verzettle ich mich schnell.
 
 [[Ich schreibe mit, du sagst, was wohin gehört.->Struktur Durch Dich]]
 
@@ -205,7 +203,7 @@ Hm… offen heißt bei mir oft: ich verliere die Hälfte unterwegs. Aber viellei
 
 :: Zeiten Strukturiert {"position":"750,1575","size":"100,100"}
 >>Character1|Relaxed<<
-Ja, das ist gut. Wenn du sagst "20 Minuten für den Einstieg", kann ich das in meinem Kopf besser verankern.
+Ja, das ist gut. Wenn du sagst „20 Minuten für den Einstieg“, kann ich das in meinem Kopf besser verankern.
 
 [[Super, dann machen wir das doch so.->Ende Positiv]]
 
