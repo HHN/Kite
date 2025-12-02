@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Assets._Scripts.Utilities;
 using UnityEngine;
 
 namespace Assets._Scripts.Novel.VisualNovelLoader
@@ -44,5 +45,39 @@ namespace Assets._Scripts.Novel.VisualNovelLoader
             get => visualNovels;
             set => visualNovels = value;
         }
+        
+        /// <summary>
+        /// Gibt alle Einträge der Liste in der Konsole aus.
+        /// </summary>
+        public void DebugLogAllNovels()
+        {
+            if (visualNovels == null)
+            {
+                LogManager.Warning("NovelListWrapper.DebugLogAllNovels: visualNovels == null");
+                return;
+            }
+
+            if (visualNovels.Count == 0)
+            {
+                LogManager.Info("NovelListWrapper.DebugLogAllNovels: Liste ist leer.");
+                return;
+            }
+
+            LogManager.Info($"NovelListWrapper.DebugLogAllNovels: {visualNovels.Count} Einträge gefunden.");
+
+            for (int i = 0; i < visualNovels.Count; i++)
+            {
+                VisualNovel vn = visualNovels[i];
+
+                if (vn == null)
+                {
+                    LogManager.Warning($"  [{i}] Eintrag ist NULL.");
+                    continue;
+                }
+
+                LogManager.Info($"  [{i}] {vn.title}");
+            }
+        }
+
     }
 }
