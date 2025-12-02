@@ -41,11 +41,11 @@ namespace Assets._Scripts.Controller.CharacterController
     /// </summary>
     public class NovelImageController : MonoBehaviour
     {
-        [Header("Character Setup")] [SerializeField]
-        private List<Transform> characterContainers;
+        [Header("Character Setup")] 
+        [SerializeField] private List<Transform> characterContainers;
 
-        [Header("Decoration Interactions")] [SerializeField]
-        private DecorationInteraction[] decorations;
+        [Header("Decoration Interactions")] 
+        [SerializeField] private DecorationInteraction[] decorations;
 
         [HideInInspector] public List<Kite2CharacterController> characterControllers = new();
 

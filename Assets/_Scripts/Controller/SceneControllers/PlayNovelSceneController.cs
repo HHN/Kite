@@ -467,6 +467,27 @@ namespace Assets._Scripts.Controller.SceneControllers
         public void OnConfirm()
         {
             TextToSpeechManager.Instance.CancelSpeak();
+            
+            // Stop any currently playing speaking animations
+            if (_novelImagesController != null && _novelImagesController.characterControllers != null)
+            {
+                foreach (var controller in _novelImagesController.characterControllers)
+                {
+                    if (controller != null)
+                    {
+                        
+                        if (_novelCharacter != -1 && CharacterExpressions.ContainsKey(_novelCharacter))
+                        {
+                            if (CharacterExpressions[_novelCharacter] < 13)
+                            {
+                                CharacterExpressions[_novelCharacter] += 13;
+                                _novelImagesController.SetFaceExpression(_novelCharacter, CharacterExpressions[_novelCharacter]);
+                            }
+                        }
+
+                    }
+                }
+            }
 
             Vector2 mousePosition = Input.mousePosition;
 
@@ -477,6 +498,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             if (isTyping)
             {
+                Debug.Log("Skip!");
                 if (currentTypeWriter != null)
                 {
                     currentTypeWriter.SkipTypewriter();
@@ -485,7 +507,6 @@ namespace Assets._Scripts.Controller.SceneControllers
 
                 _typingWasSkipped = true;
                 SetTyping(false);
-
 
                 return;
             }
