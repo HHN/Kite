@@ -204,6 +204,19 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private IEnumerator LoadAudioClipsFromMapping()
         {
+#if UNITY_WEBGL
+            // In WebGL, use relative URL to StreamingAssets
+            string mappingPath = "StreamingAssets/SoundMapping.txt";
+            using UnityWebRequest req = UnityWebRequest.Get(mappingPath);
+            yield return req.SendWebRequest();
+            if (req.result != UnityWebRequest.Result.Success)
+            {
+                LogManager.Warning($"[AudioLoad] SoundMapping konnte nicht geladen werden: {req.error} ({mappingPath})");
+                _clips = Array.Empty<AudioClip>();
+                yield break;
+            }
+            string mappingText = req.downloadHandler.text;
+#else
             string mappingPath = Path.Combine(Application.streamingAssetsPath, "SoundMapping.txt");
             string mappingText;
 
@@ -229,6 +242,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 }
                 mappingText = File.ReadAllText(mappingPath);
             }
+#endif
 
             var pairs = new List<(string name, int index)>();
             foreach (var raw in mappingText.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries))

@@ -44,7 +44,13 @@ namespace Assets._Scripts.Managers
         /// </summary>
         private PromptManager()
         {
+#if UNITY_WEBGL
+            // In WebGL, use relative URL to StreamingAssets
+            _promptPath = "StreamingAssets/Prompt.txt";
+#else
+            // On other platforms, use standard Path.Combine
             _promptPath = Path.Combine(Application.streamingAssetsPath, "Prompt.txt");
+#endif
         }
 
         /// <summary>

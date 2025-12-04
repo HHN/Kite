@@ -44,7 +44,13 @@ namespace Assets._Scripts.Novel.VisualNovelLoader
                 yield break;
             }
 
+#if UNITY_WEBGL
+            // In WebGL, use relative URL to StreamingAssets
+            string fullPath = $"StreamingAssets/{NovelsPath}";
+#else
+            // On other platforms, use standard Path.Combine
             string fullPath = Path.Combine(Application.streamingAssetsPath, NovelsPath);
+#endif
             LogManager.Info($"[NovelLoader] Loading novels from: {fullPath}", this);
 
             yield return StartCoroutine(LoadNovels(fullPath, listOfAllNovel =>
@@ -144,6 +150,29 @@ namespace Assets._Scripts.Novel.VisualNovelLoader
         LogManager.Error($"[NovelLoader] Error loading file at {path}: {ex.Message}", this);
         callback(null);
     }
+#elif UNITY_WEBGL
+            // In WebGL, path is already a relative URL like "StreamingAssets/novels.json"
+            string uri = path;
+            LogManager.Info($"[NovelLoader] (WebGL) Requesting URI: {uri}", this);
+
+            using (UnityWebRequest www = UnityWebRequest.Get(uri))
+            {
+                yield return www.SendWebRequest();
+
+                LogManager.Info($"[NovelLoader] (WebGL) Finished request. Result={www.result}, Error='{www.error}', ResponseCode={www.responseCode}", this);
+
+                if (www.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
+                {
+                    LogManager.Error($"[NovelLoader] Error loading file at {uri}: {www.error}", this);
+                    callback(null);
+                }
+                else
+                {
+                    string text = www.downloadHandler.text;
+                    LogManager.Info($"[NovelLoader] (WebGL) Downloaded {text?.Length ?? 0} characters.", this);
+                    callback(text);
+                }
+            }
 #else
             string uri = path;
             if (!uri.StartsWith("file://"))

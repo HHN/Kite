@@ -38,9 +38,17 @@ namespace Assets._Scripts._Mappings
         /// </summary>
         static MappingManager()
         {
+#if UNITY_WEBGL
+            // In WebGL, use relative URLs to avoid invalid URI format errors
+            MappingFileFaceExpression = "StreamingAssets/FaceExpressionMapping.txt";
+            MappingFileCharacter = "StreamingAssets/CharacterMapping.txt";
+            MappingFileSound = "StreamingAssets/SoundMapping.txt";
+#else
+            // For other platforms, use standard Path.Combine
             MappingFileFaceExpression = Path.Combine(Application.streamingAssetsPath, "FaceExpressionMapping.txt");
             MappingFileCharacter = Path.Combine(Application.streamingAssetsPath, "CharacterMapping.txt");
             MappingFileSound = Path.Combine(Application.streamingAssetsPath, "SoundMapping.txt");
+#endif
 
             LoadBiasesFromJson();
             LoadFaceExpressionMappingAsync();
