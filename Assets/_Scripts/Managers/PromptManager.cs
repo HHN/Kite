@@ -44,7 +44,7 @@ namespace Assets._Scripts.Managers
         /// </summary>
         private PromptManager()
         {
-#if UNITY_WEBGL
+#if UNITY_WEBGL && !UNITY_EDITOR
             // In WebGL, use relative URL to StreamingAssets
             _promptPath = "StreamingAssets/Prompt.txt";
 #else
@@ -177,7 +177,7 @@ namespace Assets._Scripts.Managers
         /// <param name="fileLabel">A label used for logging purposes to identify the type of file being loaded.</param>
         private void LoadTextFile(string path, Action<string> onSuccess, string fileLabel)
         {
-            #if UNITY_WEBGL
+            #if UNITY_WEBGL && !UNITY_EDITOR
                 UnityWebRequest request = UnityWebRequest.Get(path);
                 request.SendWebRequest().completed += (op) =>
                 {

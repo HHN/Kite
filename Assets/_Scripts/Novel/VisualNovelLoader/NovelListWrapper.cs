@@ -59,11 +59,8 @@ namespace Assets._Scripts.Novel.VisualNovelLoader
 
             if (visualNovels.Count == 0)
             {
-                LogManager.Info("NovelListWrapper.DebugLogAllNovels: Liste ist leer.");
                 return;
             }
-
-            LogManager.Info($"NovelListWrapper.DebugLogAllNovels: {visualNovels.Count} Einträge gefunden.");
 
             for (int i = 0; i < visualNovels.Count; i++)
             {
@@ -74,8 +71,6 @@ namespace Assets._Scripts.Novel.VisualNovelLoader
                     LogManager.Warning($"  [{i}] Eintrag ist NULL.");
                     continue;
                 }
-
-                LogManager.Info($"  [{i}] {vn.title}");
             }
         }
 

@@ -38,7 +38,7 @@ namespace Assets._Scripts._Mappings
         /// </summary>
         static MappingManager()
         {
-#if UNITY_WEBGL
+#if UNITY_WEBGL && !UNITY_EDITOR
             // In WebGL, use relative URLs to avoid invalid URI format errors
             MappingFileFaceExpression = "StreamingAssets/FaceExpressionMapping.txt";
             MappingFileCharacter = "StreamingAssets/CharacterMapping.txt";
@@ -89,7 +89,7 @@ namespace Assets._Scripts._Mappings
         /// </summary>
         private static void LoadFaceExpressionMappingAsync()
         {
-#if UNITY_WEBGL
+#if UNITY_WEBGL && !UNITY_EDITOR
             UnityWebRequest www = UnityWebRequest.Get(MappingFileFaceExpression);
             www.SendWebRequest().completed += _ =>
             {
@@ -125,7 +125,8 @@ namespace Assets._Scripts._Mappings
         /// </summary>
         private static void LoadCharacterMappingAsync()
         {
-#if UNITY_WEBGL
+#if UNITY_WEBGL && !UNITY_EDITOR
+            Debug.Log("Fuck");
             UnityWebRequest www = UnityWebRequest.Get(MappingFileCharacter);
             www.SendWebRequest().completed += _ =>
             {
@@ -141,10 +142,11 @@ namespace Assets._Scripts._Mappings
             };
 #else
             var filePath = MappingFileCharacter;
+
             if (File.Exists(filePath))
             {
                 string[] lines = File.ReadAllLines(filePath);
-                ProcessCharacterFile(lines, ref _characterMapping);
+                ProcessCharacterFile(lines, ref characterMapping);
             }
             else
             {
@@ -162,7 +164,7 @@ namespace Assets._Scripts._Mappings
         /// </summary>
         private static void LoadSoundMappingAsync()
         {
-#if UNITY_WEBGL
+#if UNITY_WEBGL && !UNITY_EDITOR
             UnityWebRequest www = UnityWebRequest.Get(MappingFileSound);
             www.SendWebRequest().completed += _ =>
             {

@@ -40,35 +40,23 @@ namespace Assets._Scripts.Novel.VisualNovelLoader
         {
             if (KiteNovelManager.Instance().AreNovelsLoaded())
             {
-                LogManager.Info("[NovelLoader] Novels are already loaded, skipping load.", this);
                 yield break;
             }
 
-#if UNITY_WEBGL
-            // In WebGL, use relative URL to StreamingAssets
-            string fullPath = $"StreamingAssets/{NovelsPath}";
-#else
-            // On other platforms, use standard Path.Combine
             string fullPath = Path.Combine(Application.streamingAssetsPath, NovelsPath);
-#endif
-            LogManager.Info($"[NovelLoader] Loading novels from: {fullPath}", this);
 
             yield return StartCoroutine(LoadNovels(fullPath, listOfAllNovel =>
             {
                 if (listOfAllNovel != null && listOfAllNovel.Count != 0)
                 {
-                    LogManager.Info($"[NovelLoader] LoadNovels callback called with {listOfAllNovel.Count} items.", this);
                     KiteNovelManager.Instance().SetAllKiteNovels(listOfAllNovel);
                 }
                 else
                 {
-                    LogManager.Warning("[NovelLoader] LoadNovels callback returned null or empty list.", this);
+                    LogManager.Warning("Loading Novels failed: No Novels found! Path: " + fullPath);
                 }
             }));
-
-            LogManager.Info("[NovelLoader] LoadAllNovelsFromJson finished.", this);
         }
-
 
         /// <summary>
         /// Loads novels from the given file path and invokes the callback function
@@ -79,8 +67,6 @@ namespace Assets._Scripts.Novel.VisualNovelLoader
         /// <returns>An IEnumerator allowing the operation to be executed asynchronously.</returns>
         private IEnumerator LoadNovels(string path, System.Action<List<VisualNovel>> callback)
         {
-            LogManager.Info($"[NovelLoader] Entering LoadNovels for path: {path}", this);
-
             yield return StartCoroutine(LoadFileContent(path, jsonString =>
             {
                 if (string.IsNullOrEmpty(jsonString))
@@ -91,7 +77,6 @@ namespace Assets._Scripts.Novel.VisualNovelLoader
                 }
 
                 string cleanedJson = CleanJson(jsonString);
-                LogManager.Info($"[NovelLoader] JSON length after cleaning: {cleanedJson.Length}", this);
 
                 try
                 {
@@ -103,7 +88,7 @@ namespace Assets._Scripts.Novel.VisualNovelLoader
 
                     if (kiteNovelList?.VisualNovels != null)
                     {
-                        LogManager.Info($"[NovelLoader] Successfully parsed {kiteNovelList.VisualNovels.Count} novels.", this);
+                        // LogManager.Info($"[NovelLoader] Successfully parsed {kiteNovelList.VisualNovels.Count} novels.", this);
                     }
                     else
                     {
@@ -116,18 +101,10 @@ namespace Assets._Scripts.Novel.VisualNovelLoader
                 catch (JsonException ex)
                 {
                     LogManager.Error($"[NovelLoader] JSON parse error: {ex.Message}", this);
-                    LogManager.Info(
-                        $"[NovelLoader] First 200 chars of JSON:\n{cleanedJson.Substring(0, Mathf.Min(200, cleanedJson.Length))}",
-                        this
-                    );
                     callback(null);
                 }
             }));
-
-            LogManager.Info("[NovelLoader] Leaving LoadNovels (coroutine completed).", this);
         }
-
-
 
         /// <summary>
         /// Reads the content of a file from the specified path and invokes the provided callback
@@ -136,71 +113,30 @@ namespace Assets._Scripts.Novel.VisualNovelLoader
         /// <param name="path">The path to the file from which content is to be read. It can support platform-specific file systems.</param>
         /// <param name="callback">The callback function that handles the file content as a string once loading is complete.</param>
         /// <returns>An IEnumerator to facilitate asynchronous loading of the file content.</returns>
-        private IEnumerator LoadFileContent(string path, System.Action<string> callback)
+        private IEnumerator LoadFileContent(string path, Action<string> callback)
         {
-#if UNITY_IOS
-    try
-    {
-        LogManager.Info($"[NovelLoader] (iOS) Reading file directly: {path}", this);
-        string jsonString = File.ReadAllText(path);
-        callback(jsonString);
-    }
-    catch (System.Exception ex)
-    {
-        LogManager.Error($"[NovelLoader] Error loading file at {path}: {ex.Message}", this);
-        callback(null);
-    }
-#elif UNITY_WEBGL
-            // In WebGL, path is already a relative URL like "StreamingAssets/novels.json"
-            string uri = path;
-            LogManager.Info($"[NovelLoader] (WebGL) Requesting URI: {uri}", this);
-
-            using (UnityWebRequest www = UnityWebRequest.Get(uri))
+            if (Application.platform == RuntimePlatform.IPhonePlayer)
             {
-                yield return www.SendWebRequest();
-
-                LogManager.Info($"[NovelLoader] (WebGL) Finished request. Result={www.result}, Error='{www.error}', ResponseCode={www.responseCode}", this);
-
-                if (www.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
+                string jsonString = File.ReadAllText(path);
+                callback(jsonString);
+            }
+            else
+            {
+                using (UnityWebRequest www = UnityWebRequest.Get(path))
                 {
-                    LogManager.Error($"[NovelLoader] Error loading file at {uri}: {www.error}", this);
-                    callback(null);
-                }
-                else
-                {
-                    string text = www.downloadHandler.text;
-                    LogManager.Info($"[NovelLoader] (WebGL) Downloaded {text?.Length ?? 0} characters.", this);
-                    callback(text);
+                    yield return www.SendWebRequest();
+
+                    if (www.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
+                    {
+                        LogManager.Error($"Error loading file at {path}: {www.error}");
+                        callback(null);
+                    }
+                    else
+                    {
+                        callback(www.downloadHandler.text);
+                    }
                 }
             }
-#else
-            string uri = path;
-            if (!uri.StartsWith("file://"))
-            {
-                uri = "file://" + uri;
-            }
-
-            LogManager.Info($"[NovelLoader] (UWR) Requesting URI: {uri}", this);
-
-            using (UnityWebRequest www = UnityWebRequest.Get(uri))
-            {
-                yield return www.SendWebRequest();
-
-                LogManager.Info($"[NovelLoader] (UWR) Finished request. Result={www.result}, Error='{www.error}', ResponseCode={www.responseCode}", this);
-
-                if (www.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
-                {
-                    LogManager.Error($"[NovelLoader] Error loading file at {uri}: {www.error}", this);
-                    callback(null);
-                }
-                else
-                {
-                    string text = www.downloadHandler.text;
-                    LogManager.Info($"[NovelLoader] (UWR) Downloaded {text?.Length ?? 0} characters.", this);
-                    callback(text);
-                }
-            }
-#endif
         }
 
 

@@ -204,7 +204,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private IEnumerator LoadAudioClipsFromMapping()
         {
-#if UNITY_WEBGL
+#if UNITY_WEBGL && !UNITY_EDITOR
             // In WebGL, use relative URL to StreamingAssets
             string mappingPath = "StreamingAssets/SoundMapping.txt";
             using UnityWebRequest req = UnityWebRequest.Get(mappingPath);
