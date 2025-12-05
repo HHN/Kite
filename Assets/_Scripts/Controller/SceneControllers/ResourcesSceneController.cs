@@ -17,6 +17,7 @@ namespace Assets._Scripts.Controller.SceneControllers
     {
         [SerializeField] private RectTransform layout;
 
+        [SerializeField] private Button linkedInButton;
         [SerializeField] private Button bgaButton;
         [SerializeField] private Button hhnButton;
         [SerializeField] private Button kite2Button;
@@ -33,11 +34,23 @@ namespace Assets._Scripts.Controller.SceneControllers
             BackStackManager.Instance.Push(SceneNames.ResourcesScene);
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
 
+            linkedInButton.onClick.AddListener(OnLinkedInButton);
             bgaButton.onClick.AddListener(OnBgaButton);
             hhnButton.onClick.AddListener(OnHhnButton);
             kite2Button.onClick.AddListener(OnKite2Button);
         }
 
+        /// <summary>
+        /// Handles the click event for the BGA button in the Resources scene.
+        /// </summary>
+        /// <remarks>
+        /// This method is invoked when the BGA button is clicked by the user. It opens the specified URL in the system's default web browser.
+        /// </remarks>
+        private void OnLinkedInButton()
+        {
+            Application.OpenURL("https://www.linkedin.com/groups/16301070/");
+        }        
+        
         /// <summary>
         /// Handles the click event for the BGA button in the Resources scene.
         /// </summary>

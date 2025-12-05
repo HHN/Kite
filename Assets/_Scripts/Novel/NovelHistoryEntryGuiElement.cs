@@ -96,16 +96,29 @@ namespace Assets._Scripts.Novel
         /// </summary>
         private void CopyDialog()
         {
-            LogManager.Info("KOPIEREN");
             string pattern = @"<\/?(b|i)>"; // Regex to match <b>, <i>, </b>, </i> tags
             string copyText = Regex.Replace(dialogText.text, pattern, string.Empty);
             copyText = copyText.Replace("\n", "\n\n"); // Replace single newlines with double for better readability when pasted
+    
+#if !UNITY_WEBGL
+        string decodedText = copyText;
+        try {
+            decodedText = System.Net.WebUtility.UrlDecode(copyText);
+            string secondDecode = System.Net.WebUtility.UrlDecode(decodedText);
+            if (secondDecode != null && secondDecode != decodedText) {
+                decodedText = secondDecode;
+            }
+            copyText = System.Net.WebUtility.HtmlDecode(decodedText);
+        } catch {
+            LogManager.Warning("Fehler beim URL-Dekodieren im Editor/Standalone.");
+        }
+#endif
 
-            #if UNITY_WEBGL && !UNITY_EDITOR
-                CopyTextToClipboard(copyText);
-            #else
-                GUIUtility.systemCopyBuffer = copyText;
-            #endif
+#if UNITY_WEBGL && !UNITY_EDITOR
+                CopyTextToClipboard(copyText); 
+#else
+            GUIUtility.systemCopyBuffer = copyText;
+#endif
 
             StartCoroutine(ShowCopyPopup("Dialog"));
         }
