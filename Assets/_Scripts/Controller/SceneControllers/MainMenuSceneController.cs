@@ -181,17 +181,21 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
         
         /// <summary>
-        /// Wird aufgerufen, wenn der Start-Button geklickt wird.
+        /// Called when the Start button is clicked.
         /// </summary>
         private void OnStartButtonClicked()
         {
-            Debug.Log("Start Button clicked");
-            // Deaktivieren um Mehrfachklick zu verhindern
             startButton.interactable = false;
             logoButton.interactable = false;
 
-            // Ablauf starten
-            StartNextFlow();
+            // Keep the panel visible but prevent interaction
+            LockLegalUi();
+
+            // Initiate scene change immediately
+            if (ScreenFade.Instance)
+                ScreenFade.Instance.FadeToBlackAndLoad(StartNextFlow);
+            else
+                StartNextFlow();
         }
 
         /// <summary>
