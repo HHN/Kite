@@ -1,8 +1,8 @@
 using System.Collections;
-using UnityEngine;
 using System.Runtime.InteropServices;
+using UnityEngine;
 
-namespace Assets._Scripts
+namespace Assets._Scripts.Managers
 {
     /// <summary>
     /// Manages Text-to-Speech (TTS) functionality across different platforms
@@ -104,7 +104,7 @@ namespace Assets._Scripts
         /// </summary>
         private void Start()
         {
-            _ttsIsActive = PlayerPrefs.GetInt("TTS", 0) != 0;
+            _ttsIsActive = PlayerPrefs.GetInt("TTS", 1) != 0;
             _soundEffectIsActive = PlayerPrefs.GetInt("SoundEffect", 0) != 0;
             
             #if UNITY_WEBGL && !UNITY_EDITOR

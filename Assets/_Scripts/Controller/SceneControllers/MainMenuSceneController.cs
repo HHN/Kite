@@ -28,6 +28,10 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private CustomToggle dataPrivacyToggle;
         [SerializeField] private GameObject novelLoader;
         [SerializeField] private TMP_Text versionInfo;
+        [SerializeField] private GameObject startButtonPanel;
+        [SerializeField] private Button startButton;
+        [SerializeField] private Button logoButton;
+        [SerializeField] private Image background;
 
         private const int CompatibleServerVersionNumber = 10;
 
@@ -48,6 +52,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             InitializeScene();
             ApplyVolumeFromPrefs();
+            SetupButtonListeners();
 
             var privacyManager = PrivacyAndConditionManager.Instance();
             bool alreadyAccepted = privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted();
@@ -55,14 +60,21 @@ namespace Assets._Scripts.Controller.SceneControllers
             if (alreadyAccepted)
             {
                 // Szene unsichtbar halten und direkt weiterleiten
-                HideSceneVisuals();
-
+                // HideSceneVisuals();
                 _skipVisualSetup = true;
 
                 // Optional: if ScreenFade already exists, you can also forward it as follows:
                 // if (ScreenFade.Instance) ScreenFade.Instance.FadeToBlackAndLoad(StartNextFlow);
                 // else StartNextFlow();
-                StartNextFlow();
+                // StartNextFlow();
+                
+                if (startButton != null)
+                {
+                    startButtonPanel.SetActive(true);
+                    // background.gameObject.SetActive(true);
+                    
+                    termsAndConditionPanel.SetActive(false);
+                }
             }
         }
 
@@ -81,22 +93,21 @@ namespace Assets._Scripts.Controller.SceneControllers
             if (_skipVisualSetup) return;
 
             InitializeScene();
-            SetupButtonListeners();
             HandleTermsAndConditions();
 
             if (versionInfo != null)
                 versionInfo.text = Application.version;
 
             // If it has already been accepted at this exact moment, forward it directly.
-            var privacyManager = PrivacyAndConditionManager.Instance();
-            if (privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted())
-            {
-                // Keep the panel visible; start scene change immediately (with fade, if available)
-                if (ScreenFade.Instance)
-                    ScreenFade.Instance.FadeToBlackAndLoad(StartNextFlow);
-                else
-                    StartNextFlow();
-            }
+            // var privacyManager = PrivacyAndConditionManager.Instance();
+            // if (privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted())
+            // {
+            //     // Keep the panel visible; start scene change immediately (with fade, if available)
+            //     if (ScreenFade.Instance)
+            //         ScreenFade.Instance.FadeToBlackAndLoad(StartNextFlow);
+            //     else
+            //         StartNextFlow();
+            // }
         }
 
         /// <summary>
@@ -130,6 +141,8 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void SetupButtonListeners()
         {
             continueTermsAndConditionsButton.onClick.AddListener(OnContinueTermsAndConditionsButton);
+            startButton.onClick.AddListener(OnStartButtonClicked);
+            logoButton.onClick.AddListener(OnStartButtonClicked);
         }
 
         /// <summary>
@@ -144,6 +157,13 @@ namespace Assets._Scripts.Controller.SceneControllers
             {
                 // Panel can remain visible; the change is triggered in Start().
                 // No SetActive(false) necessary.
+                if (startButton != null)
+                {
+                    startButtonPanel.gameObject.SetActive(true);
+                    // background.gameObject.SetActive(true);
+                    
+                    termsAndConditionPanel.SetActive(false);
+                }
             }
             else
             {
@@ -158,6 +178,20 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             UpdateTermsAcceptance();
             ValidateTermsAndLoadScene();
+        }
+        
+        /// <summary>
+        /// Wird aufgerufen, wenn der Start-Button geklickt wird.
+        /// </summary>
+        private void OnStartButtonClicked()
+        {
+            Debug.Log("Start Button clicked");
+            // Deaktivieren um Mehrfachklick zu verhindern
+            startButton.interactable = false;
+            logoButton.interactable = false;
+
+            // Ablauf starten
+            StartNextFlow();
         }
 
         /// <summary>

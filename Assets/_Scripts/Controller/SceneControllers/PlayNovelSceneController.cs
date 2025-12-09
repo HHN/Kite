@@ -106,6 +106,8 @@ namespace Assets._Scripts.Controller.SceneControllers
         private Coroutine _timerCoroutine;
         private bool _typingWasSkipped;
         
+        private bool isFirstAudioPlayback = true;
+        
         public bool isPaused;
 
         public Dictionary<int, int> CharacterExpressions { get; } = new();
@@ -148,7 +150,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void Start()
         {
-            
             FooterActivationManager.Instance().SetFooterActivated(false);
 
             _conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
@@ -576,6 +577,12 @@ namespace Assets._Scripts.Controller.SceneControllers
         private IEnumerator PlayNextEvent()
         {
             if (isPaused) yield break;
+            
+            if (isFirstAudioPlayback && TextToSpeechManager.Instance.IsTextToSpeechActivated())
+            {
+                yield return null; // Warte einen Frame, damit der AudioContext reaktiviert werden kann
+                isFirstAudioPlayback = false;
+            }
             
             if (TextToSpeechManager.Instance.IsTextToSpeechActivated()) yield return WaitForSpeechToFinish();
 
