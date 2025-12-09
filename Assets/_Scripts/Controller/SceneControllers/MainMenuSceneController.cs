@@ -27,6 +27,10 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private CustomToggle dataPrivacyToggle;
         [SerializeField] private GameObject novelLoader;
         [SerializeField] private TMP_Text versionInfo;
+        [SerializeField] private GameObject startButtonPanel;
+        [SerializeField] private Button startButton;
+        [SerializeField] private Button logoButton;
+        [SerializeField] private Image background;
 
         private const int CompatibleServerVersionNumber = 10;
 
@@ -40,8 +44,12 @@ namespace Assets._Scripts.Controller.SceneControllers
         // direkt weiterzuleiten, ohne die Szene je sichtbar zu machen.
         private void Awake()
         {
+            TextToSpeechManager ttsManager = TextToSpeechManager.Instance;
+            MappingManager mappingManager = MappingManager.Instance;
+            
             InitializeScene();
             ApplyVolumeFromPrefs();
+            SetupButtonListeners();
 
             var privacyManager = PrivacyAndConditionManager.Instance();
             bool alreadyAccepted = privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted();
@@ -51,14 +59,21 @@ namespace Assets._Scripts.Controller.SceneControllers
             if (alreadyAccepted)
             {
                 // Szene unsichtbar halten und direkt weiterleiten
-                HideSceneVisuals();
-
+                // HideSceneVisuals();
                 _skipVisualSetup = true;
 
                 // Optional: wenn ScreenFade bereits existiert, kann man auch so weiterleiten:
                 // if (ScreenFade.Instance) ScreenFade.Instance.FadeToBlackAndLoad(StartNextFlow);
                 // else StartNextFlow();
-                StartNextFlow();
+                // StartNextFlow();
+                
+                if (startButton != null)
+                {
+                    startButtonPanel.SetActive(true);
+                    // background.gameObject.SetActive(true);
+                    
+                    termsAndConditionPanel.SetActive(false);
+                }
             }
         }
 
@@ -76,27 +91,22 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             if (_skipVisualSetup) return;
 
-            // Bestehende Initialisierungen beibehalten
-            TextToSpeechManager ttsManager = TextToSpeechManager.Instance;
-            MappingManager mappingManager = MappingManager.Instance;
-
             InitializeScene();
-            SetupButtonListeners();
             HandleTermsAndConditions();
 
             if (versionInfo != null)
                 versionInfo.text = Application.version;
 
             // Falls exakt in diesem Moment schon akzeptiert wurde, direkt weiterleiten
-            var privacyManager = PrivacyAndConditionManager.Instance();
-            if (privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted())
-            {
-                // Panel sichtbar lassen; sofort Szenenwechsel starten (mit Fade, wenn vorhanden)
-                if (ScreenFade.Instance)
-                    ScreenFade.Instance.FadeToBlackAndLoad(StartNextFlow);
-                else
-                    StartNextFlow();
-            }
+            // var privacyManager = PrivacyAndConditionManager.Instance();
+            // if (privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted())
+            // {
+            //     // Panel sichtbar lassen; sofort Szenenwechsel starten (mit Fade, wenn vorhanden)
+            //     if (ScreenFade.Instance)
+            //         ScreenFade.Instance.FadeToBlackAndLoad(StartNextFlow);
+            //     else
+            //         StartNextFlow();
+            // }
         }
 
         /// <summary>
@@ -130,6 +140,8 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void SetupButtonListeners()
         {
             continueTermsAndConditionsButton.onClick.AddListener(OnContinueTermsAndConditionsButton);
+            startButton.onClick.AddListener(OnStartButtonClicked);
+            logoButton.onClick.AddListener(OnStartButtonClicked);
         }
 
         /// <summary>
@@ -144,6 +156,13 @@ namespace Assets._Scripts.Controller.SceneControllers
             {
                 // Panel kann sichtbar bleiben; der Wechsel wird in Start() angestoßen.
                 // Kein SetActive(false) nötig.
+                if (startButton != null)
+                {
+                    startButtonPanel.gameObject.SetActive(true);
+                    // background.gameObject.SetActive(true);
+                    
+                    termsAndConditionPanel.SetActive(false);
+                }
             }
             else
             {
@@ -158,6 +177,26 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             UpdateTermsAcceptance();
             ValidateTermsAndLoadScene();
+        }
+        
+        /// <summary>
+        /// Called when the Start button is clicked.
+        /// </summary>
+        private void OnStartButtonClicked()
+        {
+            Debug.Log("Start Button clicked");
+
+            startButton.interactable = false;
+            logoButton.interactable = false;
+
+            // Panel sichtbar lassen, aber Interaktion verhindern
+            LockLegalUi();
+
+            // Szenenwechsel jetzt sofort anstoßen
+            if (ScreenFade.Instance)
+                ScreenFade.Instance.FadeToBlackAndLoad(StartNextFlow);
+            else
+                StartNextFlow();
         }
 
         /// <summary>
