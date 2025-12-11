@@ -23,9 +23,9 @@ namespace Assets._Scripts.Managers
         private static readonly string RootFolder = "Assets/_novels_twee";
 #endif
         private FeedbackMatcher matcher = new FeedbackMatcher();
-        
+
         private static GeneratedFeedbackManager _instance;
-        
+
         public static GeneratedFeedbackManager Instance
         {
             get
@@ -40,11 +40,12 @@ namespace Assets._Scripts.Managers
                         DontDestroyOnLoad(obj);
                     }
                 }
+
                 return _instance;
             }
         }
 
-        
+
         public void LoadFeedbacks()
         {
             // 1) Mapping asynchron laden
@@ -59,7 +60,6 @@ namespace Assets._Scripts.Managers
                 }));
             }));
         }
-
 
 
         public void Reset()
@@ -92,7 +92,7 @@ namespace Assets._Scripts.Managers
             WebLogger.Log("SetEvent: " + eventName);
             matcher.RegisterChoice(eventName);
         }
-        
+
         /// <summary>
         /// Prüft, ob für die gegebene Novel‐ID bereits ein Feedback‐Eintrag mit Event-Listen vorliegt.
         /// </summary>
@@ -127,7 +127,7 @@ namespace Assets._Scripts.Managers
                     //Debug.Log("  Bester (teilweiser) Sub-Pfad: " + string.Join(" -> ", best.Entry.Path));
 
                     var full = string.Join(" -> ", best.FullMainPath);
-                    var sub  = string.Join(", ", best.Entry.Path);
+                    var sub = string.Join(", ", best.Entry.Path);
                     var msg =
                         "Vollständiger Pfad:\n\n" + full + "\n\n" +
                         "Bester (teilweiser) Sub-Pfad:\n\n  - " + sub +
@@ -147,22 +147,23 @@ namespace Assets._Scripts.Managers
                     subPathsString += ("  - " + string.Join(", ", sp));
                 }
             }
+
             string returnString = "Vollständiger Pfad:\n\n" + string.Join(" -> ", fullEvents) + "\n\n" + "Mögliche Sub-Pfade:\n\n" + subPathsString;
             WebLogger.Log(returnString);
             return returnString;
-        } 
-        
+        }
+
         // TODO: Entferne eine LoadFeedbackMethode. Aktuell Duplikat
-        
+
         /// <summary>
-    /// Liest in allen Unterordnern von <paramref name="RootFolder"/>
-    /// - aus visual_novel_meta_data.txt die idNumberOfNovel
-    /// - aus generated_feedback.txt alle (Path, Feedback)-Paare
-    /// und mappt sie auf die jeweilige ID.
-    /// </summary>
-    public static Dictionary<int, List<FeedbackEntry>> LoadAllFeedback()
-{
-    var result = new Dictionary<int, List<FeedbackEntry>>();
+        /// Liest in allen Unterordnern von <paramref name="RootFolder"/>
+        /// - aus visual_novel_meta_data.txt die idNumberOfNovel
+        /// - aus generated_feedback.txt alle (Path, Feedback)-Paare
+        /// und mappt sie auf die jeweilige ID.
+        /// </summary>
+        public static Dictionary<int, List<FeedbackEntry>> LoadAllFeedback()
+        {
+            var result = new Dictionary<int, List<FeedbackEntry>>();
 
 #if UNITY_WEBGL
     // ===== WebGL-Variante: IDs aus NovelMapping.txt holen =====Application.streamingAssetsPath
@@ -218,97 +219,97 @@ namespace Assets._Scripts.Managers
     }
 
 #else
-    // ===== Standardeinleseweg: IDs aus visual_novel_meta_data.txt =====
-    foreach (var folder in Directory.EnumerateDirectories(RootFolder))
-    {
-        var metaFile = Path.Combine(folder, "visual_novel_meta_data.txt");
-        if (!File.Exists(metaFile)) continue;
+            // ===== Standardeinleseweg: IDs aus visual_novel_meta_data.txt =====
+            foreach (var folder in Directory.EnumerateDirectories(RootFolder))
+            {
+                var metaFile = Path.Combine(folder, "visual_novel_meta_data.txt");
+                if (!File.Exists(metaFile)) continue;
 
-        int novelId = ExtractNovelId(metaFile);
+                int novelId = ExtractNovelId(metaFile);
 
-        var feedbackFile = Path.Combine(folder, "generated_feedback.txt");
-        if (!File.Exists(feedbackFile)) continue;
+                var feedbackFile = Path.Combine(folder, "generated_feedback.txt");
+                if (!File.Exists(feedbackFile)) continue;
 
-        var entries = ParseFeedbackFile(feedbackFile);
-        WebLogger.Log($"Folder „{folder}“ → novelId={novelId}, feedback-Entries={entries.Count}");
-        result[novelId] = entries;
-    }
+                var entries = ParseFeedbackFile(feedbackFile);
+                WebLogger.Log($"Folder „{folder}“ → novelId={novelId}, feedback-Entries={entries.Count}");
+                result[novelId] = entries;
+            }
 #endif
 
-    WebLogger.Log("Loaded feedbacks! " + result.Count);
-    return result;
-}
-
-    /// <summary>
-/// Lädt asynchron alle Feedbacks, basierend auf dem übergebenen Mapping.
-/// </summary>
-/// <param name="folderToId">Mapping von Ordnernamen zu Novel-IDs</param>
-/// <param name="onComplete">Callback, das das Dictionary<int, List<FeedbackEntry>> erhält</param>
-private IEnumerator LoadAllFeedbackWithMappingAsync(
-    Dictionary<string,int> folderToId,
-    Action<Dictionary<int,List<FeedbackEntry>>> onComplete)
-{
-    var result = new Dictionary<int, List<FeedbackEntry>>();
-
-#if UNITY_WEBGL
-    // Basis-URL zu Deinen Feedback-Dateien im StreamingAssets
-    string baseUrl = Application.streamingAssetsPath.TrimEnd('/') + "/feedbacks";
-
-    foreach (var kv in folderToId)
-    {
-        string folderName = kv.Key;
-        int    novelId    = kv.Value;
-        string feedbackUrl = $"{baseUrl}/{folderName}/generated_feedback.txt";
-
-        using var www = UnityWebRequest.Get(feedbackUrl);
-        yield return www.SendWebRequest();
-
-        if (www.result != UnityWebRequest.Result.Success)
-        {
-            WebLogger.LogWarning($"[WebGL] Konnte {feedbackUrl} nicht laden: {www.error}");
-            continue;
+            WebLogger.Log("Loaded feedbacks! " + result.Count);
+            return result;
         }
 
-        var content = www.downloadHandler.text;
-        var entries = ParseFeedbackFileFromString(content);
-        WebLogger.Log($"[WebGL] Folder „{folderName}“ → novelId={novelId}, entries={entries.Count}");
-        result[novelId] = entries;
-    }
-#else
-    // Editor/Standalone: Mapping-Keys durchgehen
-    string baseFolder = RootFolder;
-    foreach (var kv in folderToId)
-    {
-        string folderName = kv.Key;
-        int    novelId    = kv.Value;
-        string folderPath = Path.Combine(baseFolder, folderName);
-
-        if (!Directory.Exists(folderPath))
+        /// <summary>
+        /// Lädt asynchron alle Feedbacks, basierend auf dem übergebenen Mapping.
+        /// </summary>
+        /// <param name="folderToId">Mapping von Ordnernamen zu Novel-IDs</param>
+        /// <param name="onComplete">Callback, das das Dictionary<int, List<FeedbackEntry>> erhält</param>
+        private IEnumerator LoadAllFeedbackWithMappingAsync(
+            Dictionary<string,int> folderToId, 
+            Action<Dictionary<int,List<FeedbackEntry>>> onComplete
+            )
         {
-            WebLogger.LogWarning($"[Standalone] Ordner „{folderName}“ unter {baseFolder} nicht gefunden, übersprungen.");
-            continue;
+            var result = new Dictionary<int, List<FeedbackEntry>>();
+
+            #if UNITY_WEBGL
+            // Basis-URL zu Deinen Feedback-Dateien im StreamingAssets
+            string baseUrl = Application.streamingAssetsPath.TrimEnd('/') + "/feedbacks";
+
+            foreach (var kv in folderToId)
+            {
+                string folderName = kv.Key;
+                int    novelId    = kv.Value;
+                string feedbackUrl = $"{baseUrl}/{folderName}/generated_feedback.txt";
+
+                using var www = UnityWebRequest.Get(feedbackUrl);
+                yield return www.SendWebRequest();
+
+                if (www.result != UnityWebRequest.Result.Success)
+                {
+                    WebLogger.LogWarning($"[WebGL] Konnte {feedbackUrl} nicht laden: {www.error}");
+                    continue;
+                }
+
+                var content = www.downloadHandler.text;
+                var entries = ParseFeedbackFileFromString(content);
+                WebLogger.Log($"[WebGL] Folder „{folderName}“ → novelId={novelId}, entries={entries.Count}");
+                result[novelId] = entries;
+            }
+            #else
+            // Editor/Standalone: Mapping-Keys durchgehen
+            string baseFolder = RootFolder;
+            foreach (var kv in folderToId)
+            {
+                string folderName = kv.Key;
+                int    novelId    = kv.Value;
+                string folderPath = Path.Combine(baseFolder, folderName);
+
+                if (!Directory.Exists(folderPath))
+                {
+                    WebLogger.LogWarning($"[Standalone] Ordner „{folderName}“ unter {baseFolder} nicht gefunden, übersprungen.");
+                    continue;
+                }
+
+                string feedbackFile = Path.Combine(folderPath, "generated_feedback.txt");
+                if (!File.Exists(feedbackFile))
+                {
+                    WebLogger.LogWarning($"[Standalone] Keine generated_feedback.txt in „{folderName}“, übersprungen.");
+                    continue;
+                }
+
+                var entries = ParseFeedbackFile(feedbackFile);
+                WebLogger.Log($"Folder „{folderName}“ → novelId={novelId}, feedback-Entries={entries.Count}");
+                result[novelId] = entries;
+            }
+            #endif
+
+            // Callback aufrufen
+            onComplete?.Invoke(result);
+            
+            yield return null;
         }
-
-        string feedbackFile = Path.Combine(folderPath, "generated_feedback.txt");
-        if (!File.Exists(feedbackFile))
-        {
-            WebLogger.LogWarning($"[Standalone] Keine generated_feedback.txt in „{folderName}“, übersprungen.");
-            continue;
-        }
-
-        var entries = ParseFeedbackFile(feedbackFile);
-        WebLogger.Log($"Folder „{folderName}“ → novelId={novelId}, feedback-Entries={entries.Count}");
-        result[novelId] = entries;
-    }
-#endif
-
-    // Callback aufrufen
-    onComplete?.Invoke(result);
-}
-
-       
-        
-        
+    
         private static int ExtractNovelId(string metaFilePath)
         {
             if (!File.Exists(metaFilePath))
@@ -327,7 +328,7 @@ private IEnumerator LoadAllFeedbackWithMappingAsync(
             throw new InvalidDataException($"\"idNumberOfNovel\" nicht gefunden oder ungültig in {metaFilePath}");
         }
 
-        
+
         // TODO: Duplikat. Eines entfernen oder zusammenführen.
         /// <summary>
         /// Liest das Feedback-File ein und liefert pro “###<nummer>[…]…#$%”-Block
@@ -362,14 +363,14 @@ private IEnumerator LoadAllFeedbackWithMappingAsync(
 
                 entries.Add(new FeedbackEntry
                 {
-                    Path     = pathList,
+                    Path = pathList,
                     Feedback = feedback
                 });
             }
 
             return entries;
         }
-        
+
         /// <summary>
         /// Extrahiert FeedbackEntries aus rohem Dateiinhalt (statt „ParseFeedbackFile(string path)“).
         /// </summary>
@@ -382,7 +383,7 @@ private IEnumerator LoadAllFeedbackWithMappingAsync(
             foreach (var block in blocks)
             {
                 int startList = block.IndexOf('[');
-                int endList   = block.IndexOf(']', startList + 1);
+                int endList = block.IndexOf(']', startList + 1);
                 if (startList < 0 || endList < 0) continue;
 
                 var pathList = block
@@ -392,7 +393,7 @@ private IEnumerator LoadAllFeedbackWithMappingAsync(
                     .ToList();
 
                 int startFb = endList + 1;
-                int endFb   = block.IndexOf("#$%", startFb, StringComparison.Ordinal);
+                int endFb = block.IndexOf("#$%", startFb, StringComparison.Ordinal);
                 if (endFb < 0) endFb = block.Length;
 
                 var fb = block.Substring(startFb, endFb - startFb).Trim();
@@ -401,260 +402,266 @@ private IEnumerator LoadAllFeedbackWithMappingAsync(
 
             return entries;
         }
-    
-    /// <summary>
-    /// Gibt in der Unity-Konsole aus, für welche Novel-IDs bereits Feedback-Listen geladen sind.
-    /// </summary>
-    public void DebugPrintAvailableIds()
-    {
-        if (feedbackList == null || feedbackList.Count == 0)
-        {
-            WebLogger.Log("Keine Feedback-Listen geladen.");
-            return;
-        }
 
-        var ids = feedbackList.Keys
-            .OrderBy(id => id)
-            .Select(id => id.ToString())
-            .ToArray();
-
-        WebLogger.Log($"Verfügbare Novel-IDs mit Feedback: {string.Join(", ", ids)}");
-        //Debug.Log($"Verfügbare Novel-IDs mit Feedback: {string.Join(", ", ids)}");
-    }
-    
-    /// <summary>
-    /// Gibt in der Unity-Konsole für jede geladene Novel-ID
-    /// alle Pfade und dazugehörigen Feedback-Texte aus.
-    /// </summary>
-    public void DebugPrintAllFeedbackEntries()
-    {
-        if (feedbackList == null || feedbackList.Count == 0)
+        /// <summary>
+        /// Gibt in der Unity-Konsole aus, für welche Novel-IDs bereits Feedback-Listen geladen sind.
+        /// </summary>
+        public void DebugPrintAvailableIds()
         {
-            WebLogger.Log("Keine Feedback-Daten geladen.");
-            return;
-        }
-
-        foreach (var kv in feedbackList.OrderBy(k => k.Key))
-        {
-            WebLogger.Log($"--- Novel-ID {kv.Key} ({kv.Value.Count} Einträge) ---");
-            foreach (var entry in kv.Value)
+            if (feedbackList == null || feedbackList.Count == 0)
             {
-                WebLogger.Log($"Pfad: {string.Join(" -> ", entry.Path)}");
-                WebLogger.Log($"Feedback: {entry.Feedback}");
+                WebLogger.Log("Keine Feedback-Listen geladen.");
+                return;
+            }
+
+            var ids = feedbackList.Keys
+                .OrderBy(id => id)
+                .Select(id => id.ToString())
+                .ToArray();
+
+            WebLogger.Log($"Verfügbare Novel-IDs mit Feedback: {string.Join(", ", ids)}");
+            //Debug.Log($"Verfügbare Novel-IDs mit Feedback: {string.Join(", ", ids)}");
+        }
+
+        /// <summary>
+        /// Gibt in der Unity-Konsole für jede geladene Novel-ID
+        /// alle Pfade und dazugehörigen Feedback-Texte aus.
+        /// </summary>
+        public void DebugPrintAllFeedbackEntries()
+        {
+            if (feedbackList == null || feedbackList.Count == 0)
+            {
+                WebLogger.Log("Keine Feedback-Daten geladen.");
+                return;
+            }
+
+            foreach (var kv in feedbackList.OrderBy(k => k.Key))
+            {
+                WebLogger.Log($"--- Novel-ID {kv.Key} ({kv.Value.Count} Einträge) ---");
+                foreach (var entry in kv.Value)
+                {
+                    WebLogger.Log($"Pfad: {string.Join(" -> ", entry.Path)}");
+                    WebLogger.Log($"Feedback: {entry.Feedback}");
+                }
             }
         }
     }
-    }
-    
-    
+
+
     public class FeedbackEntry
     {
         public List<string> Path { get; set; } = new();
         public string Feedback { get; set; } = string.Empty;
     }
-    
+
     public class FeedbackMatcher
-{
-    private readonly List<FeedbackEntry> _allEntries = new();
-    private readonly List<string> _chosenEvents = new();
-
-    public void SetFeedbackList(IEnumerable<FeedbackEntry> entries)
     {
-        _allEntries.Clear();
-        _allEntries.AddRange(entries);
-        Reset();
-    }
+        private readonly List<FeedbackEntry> _allEntries = new();
+        private readonly List<string> _chosenEvents = new();
 
-    public void Reset()
-    {
-        _chosenEvents.Clear();
-    }
-
-    public void RegisterChoice(string chosenEvent)
-    {
-        _chosenEvents.Add(chosenEvent);
-    }
-
-    // ---- Auswahl-Logik nur am Ende des Playthroughs ----
-
-    public sealed class BestSelection
-    {
-        public FeedbackEntry Entry { get; set; }     // ausgewählter Eintrag (voll/teilweise)
-        public bool IsFullMatch { get; set; }        // true = kompletter Subpfad enthalten
-        public int MatchedCount { get; set; }        // Anzahl gematchter Elemente (bei Teilmatch)
-        public List<string> FullMainPath { get; set; } // der komplette gewählte Pfad (normalisiert)
-    }
-
-    /// <summary>
-    /// Wählt am Ende den passenden Sub-Pfad:
-    /// 1) Gibt es volle Matches? → nimm den LÄNGSTEN.
-    /// 2) Sonst nimm den Teil-Match mit der höchsten Trefferzahl (LCS).
-    /// </summary>
-    public BestSelection SelectBestEntry()
-    {
-        var main = Normalize(_chosenEvents);
-
-        FeedbackEntry bestFull = null;
-        int bestFullLen = -1;
-
-        FeedbackEntry bestPartial = null;
-        int bestPartialCount = -1;
-        int bestPartialPathLen = -1;
-
-        foreach (var e in _allEntries)
+        public void SetFeedbackList(IEnumerable<FeedbackEntry> entries)
         {
-            var sub = Normalize(e.Path);
+            _allEntries.Clear();
+            _allEntries.AddRange(entries);
+            Reset();
+        }
 
-            if (IsSubsequence(main, sub))
+        public void Reset()
+        {
+            _chosenEvents.Clear();
+        }
+
+        public void RegisterChoice(string chosenEvent)
+        {
+            _chosenEvents.Add(chosenEvent);
+        }
+
+        // ---- Auswahl-Logik nur am Ende des Playthroughs ----
+
+        public sealed class BestSelection
+        {
+            public FeedbackEntry Entry { get; set; } // ausgewählter Eintrag (voll/teilweise)
+            public bool IsFullMatch { get; set; } // true = kompletter Subpfad enthalten
+            public int MatchedCount { get; set; } // Anzahl gematchter Elemente (bei Teilmatch)
+            public List<string> FullMainPath { get; set; } // der komplette gewählte Pfad (normalisiert)
+        }
+
+        /// <summary>
+        /// Wählt am Ende den passenden Sub-Pfad:
+        /// 1) Gibt es volle Matches? → nimm den LÄNGSTEN.
+        /// 2) Sonst nimm den Teil-Match mit der höchsten Trefferzahl (LCS).
+        /// </summary>
+        public BestSelection SelectBestEntry()
+        {
+            var main = Normalize(_chosenEvents);
+
+            FeedbackEntry bestFull = null;
+            int bestFullLen = -1;
+
+            FeedbackEntry bestPartial = null;
+            int bestPartialCount = -1;
+            int bestPartialPathLen = -1;
+
+            foreach (var e in _allEntries)
             {
-                // Vollständiger Match → längsten wählen
-                if (sub.Count > bestFullLen)
+                var sub = Normalize(e.Path);
+
+                if (IsSubsequence(main, sub))
                 {
-                    bestFullLen = sub.Count;
-                    bestFull = e;
+                    // Vollständiger Match → längsten wählen
+                    if (sub.Count > bestFullLen)
+                    {
+                        bestFullLen = sub.Count;
+                        bestFull = e;
+                    }
+
+                    continue;
                 }
-                continue;
+
+                // Teiltreffer per LCS
+                int lcs = LcsLength(main, sub);
+                if (lcs > bestPartialCount ||
+                    (lcs == bestPartialCount && sub.Count > bestPartialPathLen))
+                {
+                    bestPartialCount = lcs;
+                    bestPartialPathLen = sub.Count;
+                    bestPartial = e;
+                }
             }
 
-            // Teiltreffer per LCS
-            int lcs = LcsLength(main, sub);
-            if (lcs > bestPartialCount ||
-               (lcs == bestPartialCount && sub.Count > bestPartialPathLen))
+            if (bestFull != null)
             {
-                bestPartialCount = lcs;
-                bestPartialPathLen = sub.Count;
-                bestPartial = e;
+                return new BestSelection
+                {
+                    Entry = bestFull,
+                    IsFullMatch = true,
+                    MatchedCount = bestFull.Path.Count,
+                    FullMainPath = main
+                };
             }
-        }
 
-        if (bestFull != null)
-        {
+            if (bestPartial != null)
+            {
+                return new BestSelection
+                {
+                    Entry = bestPartial,
+                    IsFullMatch = false,
+                    MatchedCount = bestPartialCount,
+                    FullMainPath = main
+                };
+            }
+
+            // Nichts gefunden (keine Einträge)
             return new BestSelection
             {
-                Entry = bestFull,
-                IsFullMatch = true,
-                MatchedCount = bestFull.Path.Count,
-                FullMainPath = main
-            };
-        }
-
-        if (bestPartial != null)
-        {
-            return new BestSelection
-            {
-                Entry = bestPartial,
+                Entry = null,
                 IsFullMatch = false,
-                MatchedCount = bestPartialCount,
+                MatchedCount = 0,
                 FullMainPath = main
             };
         }
 
-        // Nichts gefunden (keine Einträge)
-        return new BestSelection
+        /// <summary>
+        /// Liefert den Feedback-Text desjenigen Eintrags, der per SelectBestEntry()
+        /// (vollständig) passt. Bei Teilmatch gibt diese Methode null zurück,
+        /// damit der Aufrufer (Manager) den besten Teil-Pfad ausgeben kann.
+        /// </summary>
+        public string? GetFeedback()
         {
-            Entry = null,
-            IsFullMatch = false,
-            MatchedCount = 0,
-            FullMainPath = main
-        };
-    }
-
-    /// <summary>
-    /// Liefert den Feedback-Text desjenigen Eintrags, der per SelectBestEntry()
-    /// (vollständig) passt. Bei Teilmatch gibt diese Methode null zurück,
-    /// damit der Aufrufer (Manager) den besten Teil-Pfad ausgeben kann.
-    /// </summary>
-    public string? GetFeedback()
-    {
-        var best = SelectBestEntry();
-        if (best.Entry != null && best.IsFullMatch)
-            return best.Entry.Feedback;
-        return null;
-    }
-
-    /// <summary>
-    /// Gibt den kompletten Event-Verlauf zurück und alle Sub-Pfade,
-    /// die irgendwo (in richtiger Reihenfolge) darin enthalten sind.
-    /// </summary>
-    public (List<string> FullEvents, List<List<string>> SubPaths) GetStatus()
-    {
-        var full = new List<string>(_chosenEvents);
-
-        var subs = _allEntries
-            .Select(fe => fe.Path)
-            .Where(path => ContainsSubsequenceAnywhere(full, path))
-            .ToList();
-
-        return (full, subs);
-    }
-
-    // ---------- Hilfsfunktionen ----------
-
-    private static List<string> Normalize(IReadOnlyList<string> list)
-        => list.Where(s => !string.IsNullOrWhiteSpace(s))
-               .Select(s => s.Trim())
-               .ToList();
-
-    /// <summary>
-    /// Prüft, ob 'sub' als Subsequenz (mit Gaps) in 'main' vorkommt.
-    /// </summary>
-    private static bool IsSubsequence(IReadOnlyList<string> main, IReadOnlyList<string> sub)
-    {
-        if (sub.Count == 0) return true;
-        int j = 0;
-        for (int i = 0; i < main.Count; i++)
-        {
-            if (string.Equals(main[i], sub[j], StringComparison.Ordinal))
-            {
-                j++;
-                if (j == sub.Count) return true;
-            }
+            var best = SelectBestEntry();
+            if (best.Entry != null && best.IsFullMatch)
+                return best.Entry.Feedback;
+            return null;
         }
-        return false;
-    }
 
-    /// <summary>
-    /// LCS-Länge (Longest Common Subsequence) zwischen zwei Sequenzen.
-    /// Misst die maximale Anzahl von Elementen aus 'sub', die in 'main'
-    /// in derselben Reihenfolge (mit Gaps) vorkommen.
-    /// </summary>
-    private static int LcsLength(IReadOnlyList<string> a, IReadOnlyList<string> b)
-    {
-        int n = a.Count, m = b.Count;
-        if (n == 0 || m == 0) return 0;
-
-        // Speicheroptimierte 2-Zeilen-DP
-        var prev = new int[m + 1];
-        var curr = new int[m + 1];
-
-        for (int i = 1; i <= n; i++)
+        /// <summary>
+        /// Gibt den kompletten Event-Verlauf zurück und alle Sub-Pfade,
+        /// die irgendwo (in richtiger Reihenfolge) darin enthalten sind.
+        /// </summary>
+        public (List<string> FullEvents, List<List<string>> SubPaths) GetStatus()
         {
-            Array.Clear(curr, 0, curr.Length);
-            for (int j = 1; j <= m; j++)
-            {
-                if (string.Equals(a[i - 1], b[j - 1], StringComparison.Ordinal))
-                    curr[j] = prev[j - 1] + 1;
-                else
-                    curr[j] = Math.Max(prev[j], curr[j - 1]);
-            }
-            // swap
-            var tmp = prev; prev = curr; curr = tmp;
-        }
-        return prev[m];
-    }
+            var full = new List<string>(_chosenEvents);
 
-    /// <summary>
-    /// Für Status-Ansicht: einfacher Subsequence-Check (mit Gaps).
-    /// </summary>
-    private static bool ContainsSubsequenceAnywhere(
-        IReadOnlyList<string> main,
-        IReadOnlyList<string> sub)
-    {
-        var mainClean = Normalize(main);
-        var subClean  = Normalize(sub);
-        return IsSubsequence(mainClean, subClean);
+            var subs = _allEntries
+                .Select(fe => fe.Path)
+                .Where(path => ContainsSubsequenceAnywhere(full, path))
+                .ToList();
+
+            return (full, subs);
+        }
+
+        // ---------- Hilfsfunktionen ----------
+
+        private static List<string> Normalize(IReadOnlyList<string> list)
+            => list.Where(s => !string.IsNullOrWhiteSpace(s))
+                .Select(s => s.Trim())
+                .ToList();
+
+        /// <summary>
+        /// Prüft, ob 'sub' als Subsequenz (mit Gaps) in 'main' vorkommt.
+        /// </summary>
+        private static bool IsSubsequence(IReadOnlyList<string> main, IReadOnlyList<string> sub)
+        {
+            if (sub.Count == 0) return true;
+            int j = 0;
+            for (int i = 0; i < main.Count; i++)
+            {
+                if (string.Equals(main[i], sub[j], StringComparison.Ordinal))
+                {
+                    j++;
+                    if (j == sub.Count) return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// LCS-Länge (Longest Common Subsequence) zwischen zwei Sequenzen.
+        /// Misst die maximale Anzahl von Elementen aus 'sub', die in 'main'
+        /// in derselben Reihenfolge (mit Gaps) vorkommen.
+        /// </summary>
+        private static int LcsLength(IReadOnlyList<string> a, IReadOnlyList<string> b)
+        {
+            int n = a.Count, m = b.Count;
+            if (n == 0 || m == 0) return 0;
+
+            // Speicheroptimierte 2-Zeilen-DP
+            var prev = new int[m + 1];
+            var curr = new int[m + 1];
+
+            for (int i = 1; i <= n; i++)
+            {
+                Array.Clear(curr, 0, curr.Length);
+                for (int j = 1; j <= m; j++)
+                {
+                    if (string.Equals(a[i - 1], b[j - 1], StringComparison.Ordinal))
+                        curr[j] = prev[j - 1] + 1;
+                    else
+                        curr[j] = Math.Max(prev[j], curr[j - 1]);
+                }
+
+                // swap
+                var tmp = prev;
+                prev = curr;
+                curr = tmp;
+            }
+
+            return prev[m];
+        }
+
+        /// <summary>
+        /// Für Status-Ansicht: einfacher Subsequence-Check (mit Gaps).
+        /// </summary>
+        private static bool ContainsSubsequenceAnywhere(
+            IReadOnlyList<string> main,
+            IReadOnlyList<string> sub)
+        {
+            var mainClean = Normalize(main);
+            var subClean = Normalize(sub);
+            return IsSubsequence(mainClean, subClean);
+        }
     }
-}
 
 
     public static class WebLogger
@@ -687,6 +694,4 @@ private IEnumerator LoadAllFeedbackWithMappingAsync(
 #endif
         }
     }
-
-
 }

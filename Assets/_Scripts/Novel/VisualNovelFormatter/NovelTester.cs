@@ -244,7 +244,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// <param name="novelEvent">The VisualNovelEvent instance representing the character join event.</param>
         private void HandleCharacterJoinEvent(VisualNovelEvent novelEvent)
         {
-            string character = MappingManager.characterMapping.FirstOrDefault(pair => pair.Value == novelEvent.character).Key;
+            string character = MappingManager._characterMapping.FirstOrDefault(pair => pair.Value == novelEvent.character).Key;
 
             if (character == "None")
 
@@ -264,7 +264,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
         /// <param name="novelEvent">The VisualNovelEvent instance containing data about the character exit event.</param>
         private void HandleCharacterExitEvent(VisualNovelEvent novelEvent)
         {
-            string role = MappingManager.characterMapping.FirstOrDefault(pair => pair.Value == novelEvent.character).Key;
+            string role = MappingManager._characterMapping.FirstOrDefault(pair => pair.Value == novelEvent.character).Key;
             
             if (role != "None" && role != "Outro" && role != "Intro" && role != "Info" && role != "Player")
             {
@@ -297,7 +297,7 @@ namespace Assets._Scripts.Novel.VisualNovelFormatter
                 return;
             }
 
-            string role = MappingManager.characterMapping.FirstOrDefault(pair => pair.Value == novelEvent.character).Key;
+            string role = MappingManager._characterMapping.FirstOrDefault(pair => pair.Value == novelEvent.character).Key;
 
             if (!_currentCharacters.Contains(role) && role != "Intro" && role != "Outro" && role != "Info" && role != "Player")
             {

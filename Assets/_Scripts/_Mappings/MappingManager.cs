@@ -21,10 +21,8 @@ namespace Assets._Scripts._Mappings
         private static MappingManager _instance;
         
         public static readonly Dictionary<string, Bias> BIASES = new(StringComparer.OrdinalIgnoreCase);
-        public static Dictionary<string, int> characterMapping = new(StringComparer.OrdinalIgnoreCase);
+        public static Dictionary<string, int> _characterMapping = new(StringComparer.OrdinalIgnoreCase);
         public static List<VisualNovel> allNovels = new();
-
-
 
         // Mapping-Files
         private static readonly string MappingFileFaceExpression;
@@ -126,7 +124,7 @@ namespace Assets._Scripts._Mappings
                 if (www.result == UnityWebRequest.Result.Success)
                 {
                     string[] lines = www.downloadHandler.text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-                    ProcessCharacterFile(lines, ref characterMapping);
+                    ProcessCharacterFile(lines, ref _characterMapping);
                 }
                 else
                 {
@@ -421,7 +419,7 @@ namespace Assets._Scripts._Mappings
             if (string.IsNullOrWhiteSpace(character)) return -1;
 
             var key = character.Trim();
-            return characterMapping.GetValueOrDefault(key, -1);
+            return _characterMapping.GetValueOrDefault(key, -1);
         }
 
         /// <summary>
@@ -431,7 +429,7 @@ namespace Assets._Scripts._Mappings
         /// <returns>The string representation of the character if found; otherwise, an empty string.</returns>
         public static string MapCharacterToString(int character)
         {
-            return character == -1 ? "" : characterMapping.FirstOrDefault(x => x.Value == character).Key;
+            return character == -1 ? "" : _characterMapping.FirstOrDefault(x => x.Value == character).Key;
         }
         
         /// <summary>

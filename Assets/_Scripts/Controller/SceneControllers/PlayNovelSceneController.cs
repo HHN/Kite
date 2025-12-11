@@ -825,7 +825,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             {
                 conversationContent.AddContent(novelEvent, this);
 
-                string character = MappingManager.characterMapping.FirstOrDefault(pair => pair.Value == novelEvent.character).Key;
+                string character = MappingManager._characterMapping.FirstOrDefault(pair => pair.Value == novelEvent.character).Key;
                 AddEntryToPlayThroughHistory(character, novelEvent.text);
             }
 
@@ -873,7 +873,7 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             AnimationFlagSingleton.Instance().SetFlag(true);
 
-            string character = MappingManager.characterMapping.FirstOrDefault(pair => pair.Value == novelEvent.character).Key;
+            string character = MappingManager._characterMapping.FirstOrDefault(pair => pair.Value == novelEvent.character).Key;
             AddEntryToPlayThroughHistory(character, novelEvent.text);
 
             conversationContent.AddContent(novelEvent, this);
