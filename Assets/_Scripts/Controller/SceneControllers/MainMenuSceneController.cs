@@ -4,7 +4,6 @@ using Assets._Scripts.Managers;
 using Assets._Scripts._Mappings;
 using Assets._Scripts.Messages;
 using Assets._Scripts.Novel;
-using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.ServerCommunication;
 using Assets._Scripts.ServerCommunication.SceneMetrics;
@@ -59,19 +58,11 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             if (alreadyAccepted)
             {
-                // Szene unsichtbar halten und direkt weiterleiten
-                // HideSceneVisuals();
                 _skipVisualSetup = true;
-
-                // Optional: if ScreenFade already exists, you can also forward it as follows:
-                // if (ScreenFade.Instance) ScreenFade.Instance.FadeToBlackAndLoad(StartNextFlow);
-                // else StartNextFlow();
-                // StartNextFlow();
                 
                 if (startButton != null)
                 {
                     startButtonPanel.SetActive(true);
-                    // background.gameObject.SetActive(true);
                     
                     termsAndConditionPanel.SetActive(false);
                 }
@@ -97,17 +88,6 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             if (versionInfo != null)
                 versionInfo.text = Application.version;
-
-            // If it has already been accepted at this exact moment, forward it directly.
-            // var privacyManager = PrivacyAndConditionManager.Instance();
-            // if (privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted())
-            // {
-            //     // Keep the panel visible; start scene change immediately (with fade, if available)
-            //     if (ScreenFade.Instance)
-            //         ScreenFade.Instance.FadeToBlackAndLoad(StartNextFlow);
-            //     else
-            //         StartNextFlow();
-            // }
         }
 
         /// <summary>
@@ -160,7 +140,6 @@ namespace Assets._Scripts.Controller.SceneControllers
                 if (startButton != null)
                 {
                     startButtonPanel.gameObject.SetActive(true);
-                    // background.gameObject.SetActive(true);
                     
                     termsAndConditionPanel.SetActive(false);
                 }
@@ -335,7 +314,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             cg.interactable = false;
             cg.blocksRaycasts = true;
 
-            // additionally disable the Continue button (visually/semantically)
+            // Additionally disable the Continue button (visually/semantically)
             if (continueTermsAndConditionsButton)
                 continueTermsAndConditionsButton.interactable = false;
         }

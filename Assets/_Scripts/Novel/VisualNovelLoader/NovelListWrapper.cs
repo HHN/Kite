@@ -47,7 +47,7 @@ namespace Assets._Scripts.Novel.VisualNovelLoader
         }
         
         /// <summary>
-        /// Gibt alle Einträge der Liste in der Konsole aus.
+        /// Outputs all entries in the list to the console.
         /// </summary>
         public void DebugLogAllNovels()
         {

@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Assets._Scripts.Biases;
-using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Utilities;
 using UnityEngine;
-using UnityEngine.Networking;
 
 namespace Assets._Scripts._Mappings
 {
@@ -281,7 +279,7 @@ namespace Assets._Scripts._Mappings
 
                     if (int.TryParse(valueStr, out int id) && !string.IsNullOrEmpty(key))
                     {
-                        mapping[key] = id; // Dictionary ist case-insensitive
+                        mapping[key] = id; // Dictionary: case-sensitive
                     }
                     else
                     {

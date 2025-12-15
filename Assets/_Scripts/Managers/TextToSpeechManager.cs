@@ -108,7 +108,6 @@ namespace Assets._Scripts.Managers
             _soundEffectIsActive = PlayerPrefs.GetInt("SoundEffect", 0) != 0;
             
             #if UNITY_WEBGL && !UNITY_EDITOR
-                // WebGL: JavaScript-Plugin initialisieren
                 TTS_Initialize();
             #endif
         }

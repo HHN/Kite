@@ -145,17 +145,8 @@ namespace Assets._Scripts.Managers
             }
             else
             {
-                // Überprüft, ob ein Wert für den angegebenen Schlüssel existiert
-                if (UnityEngine.PlayerPrefs.HasKey(key))
-                {
-                    // Gibt den Wert zurück, der dem Schlüssel zugeordnet ist
-                    return UnityEngine.PlayerPrefs.GetString(key);
-                }
-                else
-                {
-                    // Gibt einen leeren String zurück, wenn der Schlüssel nicht existiert
-                    return "";
-                }
+                // Checks whether a value exists for the specified key
+                return UnityEngine.PlayerPrefs.HasKey(key) ? UnityEngine.PlayerPrefs.GetString(key) : "";
             }
         }
 
@@ -168,17 +159,8 @@ namespace Assets._Scripts.Managers
         /// <returns>The value associated with the specified type if it exists; otherwise, an empty string.</returns>
         private string ReadPlayerData(string key)
         {
-            // Überprüft, ob ein Wert für den angegebenen Schlüssel existiert
-            if (UnityEngine.PlayerPrefs.HasKey(key))
-            {
-                // Gibt den Wert zurück, der dem Schlüssel zugeordnet ist
-                return UnityEngine.PlayerPrefs.GetString(key);
-            }
-            else
-            {
-                // Gibt einen leeren String zurück, wenn der Schlüssel nicht existiert
-                return "";
-            }
+            // Checks whether a value exists for the specified key
+            return UnityEngine.PlayerPrefs.HasKey(key) ? UnityEngine.PlayerPrefs.GetString(key) : "";
         }
 
         /// <summary>

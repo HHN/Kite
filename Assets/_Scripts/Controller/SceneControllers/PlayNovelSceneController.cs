@@ -199,9 +199,9 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Liest SoundMapping.txt (StreamingAssets) und lädt ausschließlich die referenzierten .wav
-        /// aus Assets/_AudioResources. Die Clips landen an ihren Indizes, Lücken bleiben null.
-        /// Es wird auf das vollständige Laden gewartet; bei fehlenden/fehlerhaften Files gibt es Warnungen.
+        /// Reads SoundMapping.txt (StreamingAssets) and loads only the referenced .wav files
+        /// from Assets/_AudioResources. The clips are placed at their indices, gaps remain zero.
+        /// Waits for complete loading; warnings are issued for missing/corrupt files.
         /// </summary>
         private IEnumerator LoadAudioClipsFromMapping()
         {
@@ -370,7 +370,6 @@ namespace Assets._Scripts.Controller.SceneControllers
             {
                 if (!string.IsNullOrEmpty(entry.characterName) && entry.prefab != null)
                 {
-                    // TryAdd vermeidet doppelte Contains-Prüfung
                     _characterToPrefabMap.TryAdd(entry.characterName, entry.prefab);
                 }
             }
@@ -580,7 +579,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             
             if (isFirstAudioPlayback && TextToSpeechManager.Instance.IsTextToSpeechActivated())
             {
-                yield return null; // Warte einen Frame, damit der AudioContext reaktiviert werden kann
+                yield return null;
                 isFirstAudioPlayback = false;
             }
             

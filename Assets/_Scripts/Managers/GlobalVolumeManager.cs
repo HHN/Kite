@@ -26,10 +26,8 @@ namespace Assets._Scripts.Managers
             {
                 if (_instance == null)
                 {
-                    // Versuche, eine bestehende Instanz in der Szene zu finden
                     _instance = FindObjectOfType<GlobalVolumeManager>();
 
-                    // Wenn keine Instanz gefunden wurde, erstelle eine neue
                     if (_instance == null)
                     {
                         GameObject obj = new GameObject("GlobalVolumeManager");
