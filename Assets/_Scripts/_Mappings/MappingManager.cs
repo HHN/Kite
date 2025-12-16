@@ -271,7 +271,7 @@ namespace Assets._Scripts._Mappings
 
                     if (int.TryParse(valueStr, out int id) && !string.IsNullOrEmpty(key))
                     {
-                        mapping[key] = id; // Dictionary ist case-insensitive
+                        mapping[key] = id; // Dictionary: case-insensitive
                     }
                     else
                     {
@@ -433,9 +433,9 @@ namespace Assets._Scripts._Mappings
         }
         
         /// <summary>
-        /// Liest die NovelMapping.txt (StreamingAssets/NovelMapping.txt) ein
-        /// und liefert die Zuordnung Ordnername → Novel-ID.
-        /// Im Editor/Standalone synchron, unter WebGL asynchron via UnityWebRequest.
+        /// Reads NovelMapping.txt (StreamingAssets/NovelMapping.txt)
+        /// and returns the mapping folder name → novel ID.
+        /// Synchronous in Editor/Standalone, asynchronous in WebGL via UnityWebRequest.
         /// </summary>
         public IEnumerator LoadNovelMapping(Action<Dictionary<string,int>> onComplete)
         {

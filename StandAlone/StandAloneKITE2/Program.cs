@@ -1,14 +1,13 @@
 ﻿using System;
-<<<<<<< HEAD
 using System.Threading.Tasks;
 using StandAloneKITE2;
 
 public static class Program
 {
-    // HIER umstellen: welches „Programm“ soll laufen?
-    //   App.Twee      -> startet TweePathCalculator
-    //   App.Audit     -> startet FeedbackPathAudit
-    //   App.Coverage  -> startet DialogListCoverageAudit
+    // Change HERE: which “program” should run?
+    //   App.Twee      -> starts TweePathCalculator
+    //   App.Audit     -> starts FeedbackPathAudit
+    //   App.Coverage  -> starts DialogListCoverageAudit
     private const App Active = App.Coverage;
 
     public static async Task Main(string[] args)
@@ -37,7 +36,7 @@ public static class Program
 
     private enum App { Twee, Audit, Coverage }
 }
-=======
+
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -105,9 +104,9 @@ using System.Threading.Tasks;
         }
 
         /// <summary>
-        /// Liest die pathOutput.txt zeilenweise ein, splittet an Zeilen, die mit "################" beginnen,
-        /// entfernt Zwischenblöcke, die nur "PATH...FINISHED" enthalten oder leer sind,
-        /// und gibt die sauberen Prompt-Blöcke als List&lt;string&gt; zurück.
+        /// Reads pathOutput.txt line by line, splits at lines beginning with “################” ,
+        /// removes intermediate blocks that only contain “PATH...FINISHED” or are empty,
+        /// and returns the clean prompt blocks as List&lt;string&gt;.
         /// </summary>
         private static List<string> LoadPromptsFromFile(string filePath)
         {
@@ -116,19 +115,19 @@ using System.Threading.Tasks;
 
             foreach (var rawLine in File.ReadLines(filePath, Encoding.UTF8))
             {
-                // Trennstelle erreicht?
+                // Separation point reached?
                 if (rawLine.StartsWith(Seperator, StringComparison.Ordinal))
                 {
                     if (buffer.Count > 0)
                     {
-                        // Fertigen Prompt bauen und speichern
+                        // Build and save finished prompt
                         prompts.Add(BuildPrompt(buffer));
                         buffer.Clear();
                     }
                     continue;
                 }
 
-                // PATH- oder FINISHED-Zeilen und reine Leerzeilen überspringen
+                // Skip PATH or FINISHED lines and blank lines
                 if (rawLine.StartsWith("PATH", StringComparison.OrdinalIgnoreCase) ||
                     rawLine.Contains("FINISHED", StringComparison.OrdinalIgnoreCase) ||
                     string.IsNullOrWhiteSpace(rawLine))
@@ -136,11 +135,11 @@ using System.Threading.Tasks;
                     continue;
                 }
 
-                // Normale Zeile zum aktuellen Block hinzufügen
+                // Add normal line to current block
                 buffer.Add(rawLine);
             }
 
-            // Letzten Block (falls vorhanden) noch hinzufügen
+            // Add last block (if available)
             if (buffer.Count > 0)
                 prompts.Add(BuildPrompt(buffer));
 
@@ -148,7 +147,7 @@ using System.Threading.Tasks;
         }
 
         /// <summary>
-        /// Hilfsmethode: Fügt die gesammelten Zeilen zu einem Prompt zusammen und trimmt.
+        /// Helper method: Combines the collected lines into a prompt and trims them.
         /// </summary>
         private static string BuildPrompt(IReadOnlyList<string> lines)
         {
@@ -172,14 +171,14 @@ using System.Threading.Tasks;
             string jsonRequest = JsonSerializer.Serialize(requestBody);
             using var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
 
-            // 3) Request absenden
+            // 3) Submit request
             HttpResponseMessage response = await http.PostAsync(ChatEndpoint, content);
             response.EnsureSuccessStatusCode();
 
             string jsonResponse = await response.Content.ReadAsStringAsync();
             using var doc = JsonDocument.Parse(jsonResponse);
 
-            // 4) Antwort extrahieren
+            // 4) Extract response
             string answer = doc
                 .RootElement
                 .GetProperty("choices")[0]
@@ -231,89 +230,89 @@ using System.Threading.Tasks;
         }
         
         /// <summary>
-    /// Extrahiert in der Reihenfolge:
-    /// 1) Blöcke zwischen einem Tag-Marker >>Name|Tag<< und einem Ende-Marker >>--<<
-    /// 2) Zeilen, die mit "Spielerin:" beginnen (ohne dieses Präfix)
-    /// </summary>
-    public static List<string> ExtractInOrder(string input)
-    {
-        var results = new List<string>();
-        var lines = input.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
-
-        // Regex, um "Spielerin: ..." (mit beliebigen Vorlauf‐Spaces) zu erkennen
-        var spielerinPattern = new Regex(@"^\s*Spielerin:\s*(.+)$", RegexOptions.Compiled);
-
-        bool capturing = false;
-        var buffer = new StringBuilder();
-
-        foreach (var line in lines)
+        /// Extracts in the following order:
+        /// 1) Blocks between a tag marker >>Name|Tag<< and an end marker >>--<<
+        /// 2) Lines beginning with “Player:” (without this prefix)
+        /// </summary>
+        public static List<string> ExtractInOrder(string input)
         {
-            // Ist es ein Marker?
-            if (line.StartsWith(">>") && line.EndsWith("<<"))
-            {
-                // Inhalt zwischen >> und <<
-                var content = line.Substring(2, line.Length - 4).Trim();
+            var results = new List<string>();
+            var lines = input.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
 
-                if (content == "--")
+            // Regex to recognize “Player: ...” (with any leading spaces)
+            var spielerinPattern = new Regex(@"^\s*Spielerin:\s*(.+)$", RegexOptions.Compiled);
+
+            bool capturing = false;
+            var buffer = new StringBuilder();
+
+            foreach (var line in lines)
+            {
+                // Is it a marker?
+                if (line.StartsWith(">>") && line.EndsWith("<<"))
                 {
-                    // Ende-Marker: Block abschließen
-                    if (capturing)
+                    // Content between >> and <<
+                    var content = line.Substring(2, line.Length - 4).Trim();
+
+                    if (content == "--")
                     {
-                        var block = buffer.ToString().Trim();
-                        if (block.Length > 0)
-                            results.Add(block);
-                        buffer.Clear();
-                        capturing = false;
+                        // End marker: Complete block
+                        if (capturing)
+                        {
+                            var block = buffer.ToString().Trim();
+                            if (block.Length > 0)
+                                results.Add(block);
+                            buffer.Clear();
+                            capturing = false;
+                        }
+                    }
+                    else
+                    {
+                        // Tag marker: 
+                        //   If we are currently in a block, close it first
+                        if (capturing)
+                        {
+                            var block = buffer.ToString().Trim();
+                            if (block.Length > 0)
+                                results.Add(block);
+                            buffer.Clear();
+                        }
+                        // and always start a new block
+                        capturing = true;
                     }
                 }
                 else
                 {
-                    // Tag-Marker: 
-                    //   Falls wir gerade in einem Block sind, diesen vorher abschließen
-                    if (capturing)
+                    // No marker line:
+                    // 1) Immediately extract player lines
+                    var m = spielerinPattern.Match(line);
+                    if (m.Success)
                     {
-                        var block = buffer.ToString().Trim();
-                        if (block.Length > 0)
-                            results.Add(block);
-                        buffer.Clear();
+                        results.Add(m.Groups[1].Value.Trim());
                     }
-                    // und immer einen neuen Block beginnen
-                    capturing = true;
+                    // 2) Otherwise, if we are in a block, in the buffer
+                    else if (capturing)
+                    {
+                        buffer.AppendLine(line);
+                    }
                 }
             }
-            else
+
+            // If there is still an open block at the end, send it
+            if (capturing)
             {
-                // Keine Marker-Zeile:
-                // 1) Sofort Spiel­er:innen-Zeilen extrahieren
-                var m = spielerinPattern.Match(line);
-                if (m.Success)
-                {
-                    results.Add(m.Groups[1].Value.Trim());
-                }
-                // 2) Ansonsten, falls wir in einem Block sind, in den Puffer
-                else if (capturing)
-                {
-                    buffer.AppendLine(line);
-                }
+                var block = buffer.ToString().Trim();
+                if (block.Length > 0)
+                    results.Add(block);
             }
-        }
 
-        // Falls am Ende noch ein offener Block existiert, abschicken
-        if (capturing)
-        {
-            var block = buffer.ToString().Trim();
-            if (block.Length > 0)
-                results.Add(block);
+            return results;
         }
-
-        return results;
-    }
         
         /// <summary>
-        /// Liest eine Twee-Datei von der angegebenen Datei und gibt den Inhalt als String zurück.
+        /// Reads a Twee file from the specified file and returns its contents as a string.
         /// </summary>
-        /// <param name="filePath">Pfad zur Twee-Datei</param>
-        /// <returns>Inhalt der Twee-Datei als String</returns>
+        /// <param name="filePath">Path to the Twee file</param>
+        /// <returns>Contents of the Twee file as a string</returns>
         public static string ReadTweeFile(string filePath)
         {
             if (!File.Exists(filePath))
@@ -323,7 +322,7 @@ using System.Threading.Tasks;
 
             try
             {
-                // Dateiinhalt einlesen und als String zurückgeben
+                // Read file contents and return as string
                 return File.ReadAllText(filePath);
             }
             catch (Exception ex)
@@ -345,10 +344,10 @@ using System.Threading.Tasks;
                 string key = match.Groups[1].Value.Trim(); // e.g., talkingPartner01
                 string value = match.Groups[2].Value.Trim(); // e.g., Notarin
 
-                string numberMatch = Regex.Match(key, @"\d+").Value; // Extrahiere die Nummer
+                string numberMatch = Regex.Match(key, @"\d+").Value; // Extract the number
                 if (!string.IsNullOrEmpty(value))
                 {
-                    // Dynamisch alle möglichen `Charakter01...` zuordnen
+                    // Dynamically assign all possible `Character01...`
                     string dynamicPattern = $@"Character{int.Parse(numberMatch)}";
 
                     if (!_characterToSpeakerMap.ContainsKey(dynamicPattern))
@@ -358,11 +357,11 @@ using System.Threading.Tasks;
                 }
             }
 
-            // Statische Zuordnungen
+            // Static assignments
             _characterToSpeakerMap[@"InfoNachrichtWirdAngezeigt"] = "Info";
             _characterToSpeakerMap[@"SpielerinCharakterSpricht"] = "Spielerin";
 
-            // Ausgabe der gesamten CharacterToSpeakerMap
+            // Output of the entire CharacterToSpeakerMap
             Console.WriteLine("CharacterToSpeakerMap-Inhalt:");
             foreach (var entry in _characterToSpeakerMap)
             {
@@ -405,7 +404,7 @@ using System.Threading.Tasks;
                 Dictionary<string,int> linkCount = new Dictionary<string,int>();
                 List<(string Speaker, string Text)> conversations = new List<(string Speaker, string Text)>();
 
-                //Speaker ersetzen
+                // Replace speaker
                 foreach (KeyValuePair<string,string> speaker in _characterToSpeakerMap)
                 {
                     if(speaker.Value != "")
@@ -413,7 +412,6 @@ using System.Threading.Tasks;
                         nodeBody = nodeBody.Replace(speaker.Key, speaker.Value);
                     }
                 }
-
                
                 var speakerMatch = Regex.Match(nodeBody, @">>(.*?)\|.*?<<\s*(.*?)\s*>>--<<", RegexOptions.Singleline);
                 if (speakerMatch.Success)
@@ -431,18 +429,18 @@ using System.Threading.Tasks;
                     dialogue = dialogue + $"Bias: {bias}";
                 }
                 
-                // Links extrahieren
+                // Extract links
                 MatchCollection linkMatches = Regex.Matches(nodeBody, linkPattern);
                 foreach (Match linkMatch in linkMatches)
                 {
                     Link targetLink = new Link();
                     if (!string.IsNullOrEmpty(linkMatch.Groups[2].Value))
                     {
-                        targetLink.targetNode = linkMatch.Groups[2].Value.Trim(); // Text nach | oder ->
+                        targetLink.targetNode = linkMatch.Groups[2].Value.Trim(); // Text after | or ->
                     }
                     else if (!string.IsNullOrEmpty(linkMatch.Groups[3].Value))
                     {
-                        targetLink.targetNode = linkMatch.Groups[3].Value.Trim(); // Alleinstehender Text als Link
+                        targetLink.targetNode = linkMatch.Groups[3].Value.Trim(); // Standalone text as a link
                     }
 
                     if (!string.IsNullOrEmpty(targetLink.targetNode))
@@ -461,7 +459,7 @@ using System.Threading.Tasks;
                 }
 
                 nodeBody = Regex.Replace(nodeBody, @"\[\[.*?->.*?\]\]\s*", "", RegexOptions.Singleline);
-                // Speichere Node im Graphen
+                // Save node in graph
                 if (!_graph.ContainsKey(nodeName))
                 {
                     Node newNode = new Node(nodeName, nodeBody, links);
@@ -474,15 +472,15 @@ using System.Threading.Tasks;
                     _graph[nodeName].links.AddRange(links);
                 }
             }
-                // Stelle sicher, dass "Ende" im Graph existiert
-                if (!_graph.ContainsKey("Ende"))
+            
+            // Ensure that “End” exists in the graph
+            if (!_graph.ContainsKey("Ende"))
             {
                 _graph["Ende"] = new Node("Ende", "",new List<Link>());
             }
         }
 
-
-        //Gibt alle Pfade zurück mit Antworten zu den Nodes
+        //Returns all paths with responses to the nodes
         public static List<Dictionary<Node, Link>> GetAllPaths(string startNode)
         {
             Console.WriteLine("GetAllPaths gestartet");
@@ -498,11 +496,10 @@ using System.Threading.Tasks;
                     return;
                 }
 
-                // Füge den aktuellen Knoten zum Pfad hinzu
-
+                // Add the current node to the path
                 List<Link> links = _graph[node.name].links;
 
-                // Wenn Endknoten erreicht
+                // When end nodes are reached
                 if (links.Count == 0 || node.name == "Ende")
                 {
                     allPaths.Add(new Dictionary<Node, Link>(currentPath));
@@ -516,7 +513,6 @@ using System.Threading.Tasks;
                     }
                 }
 
-                //currentPath.RemoveAt(currentPath.Count - 1);
                 currentPath.Remove(node);
             }
 
@@ -524,21 +520,19 @@ using System.Threading.Tasks;
             return allPaths;
         }
 
-        //Reduziert Pfade nur auf Bias-Knoten und gibt einmalige Pfade zurück
-        
-        
+        // Reduces paths to bias nodes only and returns unique paths
         public static List<Dictionary<Node,Link>> ReturnUniquePaths(List<Dictionary<Node, Link>> paths)
         {
             System.IO.File.WriteAllText(OutputFilePath, string.Empty);
             int pathCount = 1;
             List<Dictionary<Node, Link>> newPaths = new List<Dictionary<Node, Link>>();
-            // Iteriert über Liste von Dictionaries
+            // Iterates over list of dictionaries
             foreach(Dictionary<Node, Link> path in paths)
             {
                 bool duplicate = false;
                 Dictionary<Node, Link> newPath = new Dictionary<Node, Link>();
-                // Iteriert über Key-Value-Paare innerhalb der Dictionaries
-                // Wenn ein Bias vorhanden wird das Paar in die PfadListe aufgenommen
+                // Iterates over key-value pairs within the dictionaries.
+                // If a bias exists, the pair is added to the path list.
                 foreach(KeyValuePair<Node,Link> decision in path)
                 {
                     string nodeBody = decision.Key.body;
@@ -548,7 +542,7 @@ using System.Threading.Tasks;
                     }
                 }
                 Console.WriteLine();
-                // Iteriert über die neuen Pfade
+                // Iterates over the new paths
                 foreach(Dictionary<Node, Link> listElement in newPaths)
                 {
                     if(PathEqual(listElement, newPath)) //Checks if the path was documented before
@@ -556,9 +550,9 @@ using System.Threading.Tasks;
                         duplicate = true;
                     }
                 }
-                // Wenn kein Duplikat -> Unique
-                // Schreib in Liste und in File
-                // Zähle Anzahl an Pfaden hoch
+                // If no duplicate -> Unique
+                // Write to list and file
+                // Count number of paths up
                 if(!duplicate) 
                 {
                     newPaths.Add(newPath);
@@ -571,7 +565,7 @@ using System.Threading.Tasks;
             Console.WriteLine("Unique Paths created");
             Console.WriteLine($"Gefundene Pfade: {newPaths.Count}");
             
-            // Iteriert über alle neuen Pfade
+            // Iterates over all new paths
             foreach (Dictionary<Node,Link> path in newPaths)
             {
                 Console.WriteLine("Path:");
@@ -583,7 +577,7 @@ using System.Threading.Tasks;
             return newPaths;
         }
 
-        //Returns true if two paths are equal
+        // Returns true if two paths are equal
         public static bool PathEqual(Dictionary<Node, Link> firstPath, Dictionary<Node, Link> secondPath)
         {
             if(firstPath.Count != secondPath.Count)
@@ -594,7 +588,6 @@ using System.Threading.Tasks;
             {
                 if(secondPath.TryGetValue(decision.Key,out Link value))
                 {
-                    // if(!_graph[value.targetNode].body.Contains("End") && !value.Equals(decision.Value))
                     if(!value.Equals(decision.Value))
                     {
                         return false;
@@ -608,7 +601,7 @@ using System.Threading.Tasks;
             return true;
         }
 
-        //Writes a path into a specified file
+        // Writes a path into a specified file
         public static void WritePath(Dictionary<Node,Link> path)
         {
             foreach(KeyValuePair<Node,Link> node in path)
@@ -621,8 +614,7 @@ using System.Threading.Tasks;
             }
         }
 
-
-        //Simple method for file output
+        // Simple method for file output
         public static void WriteInFile(string output, string path)
         {
             if (!File.Exists(path))
@@ -644,98 +636,34 @@ using System.Threading.Tasks;
             Console.WriteLine($"Gefundene Pfade: {paths.Count}");
             Console.WriteLine();
 
-            // Jede Path-Dictionary-Instanz durchlaufen
+            // Loop through each path dictionary instance
             foreach (var pathDict in paths)
             {
                 Console.WriteLine("Einzelner Pfad:");
 
-                // 1) Jedes Node→Link-Paar ausdrucken
+                // 1) Print each node -> link pair
                 foreach (var kv in pathDict)
                 {
                     Console.WriteLine($"  Node: {kv.Key.name}; Link: {kv.Value.targetNode}");
                 }
 
-                // 2) Nur die Node-Namen in eine "A -> B -> C"-Reihe bringen
+                // 2) Only arrange the node names in an “A -> B -> C” sequence
                 var nodeNames = pathDict.Keys.Select(n => n.name);
                 Console.WriteLine("  Zusammenfassung: " + 
                                   string.Join(" -> ", nodeNames));
 
-                // 3) Optional: Wenn du den dialogue-Inhalt zeigen willst
+                // 3) Optional: If you want to show the dialogue content
                 foreach (var kv in pathDict)
                 {
                     if (!string.IsNullOrWhiteSpace(kv.Key.dialogue))
                         Console.WriteLine($"  {kv.Key.name} sagt: {kv.Key.dialogue.Trim()}");
                 }
 
-                Console.WriteLine(); // Leerzeile zur Trennung
+                Console.WriteLine(); // Blank line for separation
             }
         }
-
-        }
-
-        // public void PrintPaths(List<List<string>> paths)
-        // {
-        //     Console.WriteLine($"Gefundene Pfade: {paths.Count}");
-        //
-        //     foreach (var path in paths)
-        //     {
-        //         string purePath = string.Join(" -> ", path);
-        //         Console.WriteLine($"Pfad: {purePath}");
-        //     }
-        // }
-
-        // --- Auskommentierter Code für spätere Verwendung ---
-
-        /*
-        public void PrintPathsAsConversationAndPath(List<List<string>> paths)
-        {
-            Console.WriteLine($"Gefundene Pfade: {paths.Count}");
-
-            foreach (var path in paths)
-            {
-                string conversation = "Gespräch:\n";
-
-                foreach (string nodeName in path)
-                {
-                    if (Graph.ContainsKey(nodeName))
-                    {
-                        var (_, body, _) = Graph[nodeName];
-
-                        string[] lines = body.Split('\n');
-                        foreach (var line in lines)
-                        {
-                            if (line.Trim().StartsWith(">>") || string.IsNullOrWhiteSpace(line))
-                            {
-                                continue;
-                            }
-
-                            int colonIndex = line.IndexOf(":");
-                            if (colonIndex > -1)
-                            {
-                                string speaker = line.Substring(0, colonIndex).Trim();
-                                string text = line.Substring(colonIndex + 1).Trim();
-
-                                if (CharacterToSpeakerMap.TryGetValue(speaker, out string mappedSpeaker))
-                                {
-                                    speaker = mappedSpeaker;
-                                }
-
-                                conversation += $"{speaker}: {text}\n\n";
-                            }
-                            else
-                            {
-                                conversation += line.Trim() + "\n\n";
-                            }
-                        }
-                    }
-                }
-
-                Console.WriteLine(conversation.Trim());
-            }
-        }
-        */
+    }
     
-
     public class Node
     {
         public string name;
@@ -750,13 +678,13 @@ using System.Threading.Tasks;
             body = _nodeBody;
             links = _links;
         }
-        public override bool Equals(object obj) //Needed for path comparison
+        public override bool Equals(object obj) // Needed for path comparison
         {
             if (obj is not Node other) return false;
             return name == other.name;
         }
 
-        public override int GetHashCode() //Needed for path comparison
+        public override int GetHashCode() // Needed for path comparison
         {
             return HashCode.Combine(name); // Use .NET's built-in hash combiner
         }
@@ -765,15 +693,14 @@ using System.Threading.Tasks;
     {
         public string targetNode;
         public string dialogueText;
-        public override bool Equals(object obj) //Needed for path comparison
+        public override bool Equals(object obj) // Needed for path comparison
         {
             if (obj is not Link other) return false;
             return targetNode == other.targetNode && dialogueText == other.dialogueText;
         }
 
-        public override int GetHashCode() //Needed for path comparison
+        public override int GetHashCode() // Needed for path comparison
         {
             return HashCode.Combine(targetNode, dialogueText); // Use .NET's built-in hash combiner
         }
     }
->>>>>>> main

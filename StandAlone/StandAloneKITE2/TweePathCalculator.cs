@@ -36,12 +36,12 @@ public class TweePathCalculator
     // ==========================================
     public static async Task RunAsync()
     {
-        // 1) Meta- und Twee-Dateien einlesen und parsen
+        // 1) Read and parse meta and twee files
         ParseMetaTweeFile(ReadTweeFile(MetadataFilePath));
         _tweeContent = ReadTweeFile(EventListFilePath);
         ParseTweeFile(_tweeContent);
 
-        // 2) Pfade erzeugen ODER vorhandene pathOutput.txt verwenden
+        // 2) Create paths OR use existing pathOutput.txt
         if (File.Exists(OutputFilePath))
         {
             Console.WriteLine($"[GetAllPaths] Übersprungen: '{OutputFilePath}' existiert bereits. Verwende gespeicherte Pfade.");
@@ -52,7 +52,7 @@ public class TweePathCalculator
             var seen = new HashSet<string>(StringComparer.Ordinal);
             long processed = 0, uniqueCount = 0;
 
-            // Ausgabedatei für die Pfade initial leeren
+            // Initially empty output file for paths
             File.WriteAllText(OutputFilePath, string.Empty, Encoding.UTF8);
 
             await Task.Run(() =>
@@ -65,12 +65,12 @@ public class TweePathCalculator
                 {
                     processed++;
 
-                    // nur die Bias-Entscheidungen extrahieren (wie bisher)
+                    // Extract only the bias decisions (as before)
                     var filtered = path
                         .Where(kv => kv.Key.body.Contains(">>Bias|", StringComparison.Ordinal))
                         .ToDictionary(kv => kv.Key, kv => kv.Value);
 
-                    // Signatur (Achtung: Dictionary-Enumeration ist nicht stabil; belassen wir hier wie bei dir)
+                    // Signature (Note: Dictionary enumeration is not stable; let's leave it here as you have it)
                     var sig = string.Join("→",
                         filtered.Select(kv =>
                             $"{kv.Key.name}|{kv.Value.targetNode}|{(kv.Value.dialogueText ?? string.Empty).Replace("→","↦")}"
@@ -79,7 +79,6 @@ public class TweePathCalculator
                     if (seen.Add(sig))
                     {
                         uniqueCount++;
-                        // in die Datei schreiben
                         WritePath(filtered);
                         WriteInFile("\n################", OutputFilePath);
                         WriteInFile($"PATH {uniqueCount} FINISHED\n", OutputFilePath);
@@ -93,21 +92,21 @@ public class TweePathCalculator
             });
         }
 
-        // 3) Vorhandene response.txt einlesen und dortige Listen-Signaturen sammeln (zum Überspringen bereits verarbeiteter Pfade)
+        // 3) Read existing response.txt and collect list signatures there (to skip paths that have already been processed)
         var existingListSigs = LoadExistingListSignaturesFromResponse(ResponseFilePath);
         int nextIndex = GetNextIndexFromResponse(ResponseFilePath);
 
         Console.WriteLine($"[Resume] Bereits vorhandene Feedback-Einträge: {nextIndex - 1}. Starte bei Index #{nextIndex}.");
         Console.WriteLine($"[Resume] Bereits bekannte Pfad-Listen (Signaturen): {existingListSigs.Count:N0}");
 
-        // 4) Prompts aus pathOutput laden
+        // 4) Load prompts from pathOutput
         var allPrompts = LoadPromptsFromFile(OutputFilePath);
         Console.WriteLine($"[Paths] Geladene Pfade aus pathOutput.txt: {allPrompts.Count:N0}");
 
-        // 5) HTTP vorbereiten
+        // 5) Prepare HTTP
         http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
 
-        // 6) Nur neue Feedbacks generieren (die Liste darf NICHT in existingListSigs vorkommen)
+        // 6) Generate only new feedback (the list must NOT appear in existingListSigs)
         Console.WriteLine($"[Resume] Bereits bekannte Pfad-Signaturen: {existingListSigs.Count:N0}");
 
         int generated = 0;
@@ -118,12 +117,12 @@ public class TweePathCalculator
 
             if (string.IsNullOrWhiteSpace(listSig))
             {
-                // Falls aus irgendeinem Grund keine Liste gebaut werden kann, generieren wir vorsichtshalber (oder überspringen?)
-                // Hier: wir generieren.
+                // If for some reason a list cannot be built, we generate one as a precaution (or skip?).
+                // Here: we generate.
             }
             else if (existingListSigs.Contains(listSig))
             {
-                // Bereits vorhanden -> überspringen
+                // Already exists -> skip
                 continue;
             }
 
@@ -131,19 +130,19 @@ public class TweePathCalculator
             await SendPrompt(prompt, nextIndex);
             Console.WriteLine($"Prompt #{nextIndex} gesendet und Antwort gespeichert.");
 
-            existingListSigs.Add(listSig); // damit bei gleicher Liste später im selben Lauf nicht doppelt gesendet wird
+            existingListSigs.Add(listSig); // So that the same list is not sent twice later in the same run
             nextIndex++;
             generated++;
         }
 
         Console.WriteLine($"[Done] Neu generierte Feedbacks: {generated}.");
         
-        // 7) Cleanup: alle ">--<" aus response.txt entfernen
+        // 7) Cleanup: remove all “>--<” from response.txt
         CleanupResponseFileArtifacts();
     }
     
     /// <summary>
-    /// Entfernt alle Vorkommen des Artefakt-Tokens ">--<" aus response.txt.
+    /// Removes all occurrences of the artifact token “>--<” from response.txt.
     /// </summary>
     private static void CleanupResponseFileArtifacts()
     {
@@ -198,11 +197,11 @@ public class TweePathCalculator
     }
 
     // ==========================================
-    // ======= Hilfsfunktionen für Resume =======
+    // ======= Help functions for Resume =======
     // ==========================================
 
     /// <summary>
-    /// Liest response.txt (falls vorhanden) und extrahiert alle vorhandenen Listen-Signaturen (Zeile mit [ ... ]).
+    /// Reads response.txt (if available) and extracts all existing list signatures (lines containing [ ... ]).
     /// </summary>
     private static HashSet<string> LoadExistingListSignaturesFromResponse(string responsePath)
     {
@@ -211,7 +210,7 @@ public class TweePathCalculator
         if (!File.Exists(responsePath))
             return set;
 
-        // Wir parsen Blöcke ###<n> ... #$% und nehmen die erste Zeile, die wie [ ... ] aussieht.
+        // We parse blocks ###<n> ... #$% and take the first line that looks like [ ... ].
         var content = File.ReadAllText(responsePath, Encoding.UTF8);
         var startRegex = new Regex(@"(?m)^###\s*(\d+)\s*$");
         const string endToken = "#$%";
@@ -227,17 +226,17 @@ public class TweePathCalculator
 
             string block = content.Substring(blockStart, blockEnd - blockStart);
 
-            // erste [ ... ]-Zeile im Block
+            // First [ ... ] line in the block
             string listRaw = ExtractFirstBracketLine(block);
             if (listRaw == null) continue;
 
-            // zur Signatur normalisieren
+            // Normalize to signature
             var inner = listRaw.Trim();
             if (inner.StartsWith("[")) inner = inner[1..];
             if (inner.EndsWith("]")) inner = inner[..^1];
 
             var items = inner.Split(';').Select(NormalizeItem).Where(s => s.Length > 0);
-            var sig = string.Join(" ; ", items); // Semikolon + Spaces stabilisieren
+            var sig = string.Join(" ; ", items); // Semicolon + spaces stabilize
             if (!string.IsNullOrWhiteSpace(sig))
                 set.Add(sig);
         }
@@ -247,7 +246,7 @@ public class TweePathCalculator
     }
 
     /// <summary>
-    /// Bestimmt den nächsten Index (###<n>) für neue Einträge in response.txt.
+    /// Determines the next index (###<n>) for new entries in response.txt.
     /// </summary>
     private static int GetNextIndexFromResponse(string responsePath)
     {
@@ -266,7 +265,7 @@ public class TweePathCalculator
 
     private static string ExtractFirstBracketLine(string block)
     {
-        // Suche nach einer Zeile, die mit '[' beginnt und mit ']' endet (ggf. mit Spaces)
+        // Search for a line that starts with ‘[’ and ends with ‘]’ (with spaces if necessary)
         foreach (var line in block.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None))
         {
             var trimmed = line.Trim();
@@ -281,7 +280,7 @@ public class TweePathCalculator
         if (items == null) return null;
         var norm = items.Select(NormalizeItem).Where(s => s.Length > 0).ToList();
         if (norm.Count == 0) return null;
-        // gleiche Join-Form wie beim Einlesen aus response.txt
+        // same join form as when reading from response.txt
         return string.Join(" ; ", norm);
     }
 
@@ -289,18 +288,18 @@ public class TweePathCalculator
     {
         if (s == null) return "";
         s = s.Trim();
-        s = Regex.Replace(s, @"\s+", " "); // Whitespace zusammenziehen
-        s = s.Replace("→", "↦");           // Kollisionsschutz, falls vorkommend
+        s = Regex.Replace(s, @"\s+", " "); // Collapse whitespace
+        s = s.Replace("→", "↦");           // Collision protection, if applicable
         return s;
     }
 
     // ==========================================
-    // ======= Dein bestehender Code (teils) =====
+    // ======= Your existing code (partial) =====
     // ==========================================
 
     /// <summary>
-    /// Streaming-DFS: liefert jeden vollständigen Pfad als Dictionary zurück.
-    /// Ruft progressCallback(count) bei jedem Pfad auf.
+    /// Streaming DFS: returns each complete path as a dictionary.
+    /// Calls progressCallback(count) for each path.
     /// </summary>
     public static IEnumerable<Dictionary<Node, Link>> StreamAllPaths(
         string startNode,
@@ -348,7 +347,7 @@ public class TweePathCalculator
         var lines = File.ReadAllLines(filePath, Encoding.UTF8);
         var sb = new StringBuilder();
 
-        // Separator: eine Zeile, die nur aus '#' besteht
+        // Separator: a line consisting only of '#'
         var sepRegex = new Regex(@"^\s*#+\s*$");
 
         void flush()
@@ -379,7 +378,7 @@ public class TweePathCalculator
             }
         }
 
-        flush(); // letzten Block mitnehmen
+        flush(); // Take the last block
         return result;
     }
 

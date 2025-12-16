@@ -155,10 +155,10 @@ namespace Assets._Scripts.Controller.SceneControllers
             _conversationContentGuiController = FindAnyObjectByType<ConversationContentGuiController>();
             novelToPlay = PlayManager.Instance().GetVisualNovelToPlay();
 
-            // --- Automatisches Feedback (aus v2 übernommen) ---
+            // --- Automatic feedback (taken from v2) ---
             GeneratedFeedbackManager.Instance.Reset();
             GeneratedFeedbackManager.Instance.SetIdForNovel((int)novelToPlay.id);
-            // (Hinweis: LoadFeedbacks() wird global an anderer Stelle erwartet. Falls nötig, dort aufrufen.)
+            // (Note: LoadFeedbacks() is expected globally elsewhere. If necessary, call it there.)
 
             StartCoroutine(BootstrapAudioAndInit());
         }
@@ -203,9 +203,9 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Liest SoundMapping.txt (StreamingAssets) und lädt ausschließlich die referenzierten .wav
-        /// aus Assets/_AudioResources. Die Clips landen an ihren Indizes, Lücken bleiben null.
-        /// Es wird auf das vollständige Laden gewartet; bei fehlenden/fehlerhaften Files gibt es Warnungen.
+        /// Reads SoundMapping.txt (StreamingAssets) and loads only the referenced .wav files
+        /// from Assets/_AudioResources. The clips are placed at their indices, gaps remain zero.
+        /// Waits for complete loading; warnings are issued for missing/corrupt files.
         /// </summary>
         private IEnumerator LoadAudioClipsFromMapping()
         {
@@ -567,7 +567,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             
             if (isFirstAudioPlayback && TextToSpeechManager.Instance.IsTextToSpeechActivated())
             {
-                yield return null; // Warte einen Frame, damit der AudioContext reaktiviert werden kann
+                yield return null;
                 isFirstAudioPlayback = false;
             }
             
@@ -1019,7 +1019,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Fügt zur History hinzu (bevorzugt v1) und registriert das Ereignis beim GeneratedFeedbackManager (aus v2).
+        /// Adds to history (preferably v1) and registers the event with GeneratedFeedbackManager (from v2).
         /// </summary>
         private void AddEntryToPlayThroughHistory(string characterRole, string text)
         {
@@ -1283,7 +1283,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Schreibt einen finalen Feedback-Dialogeintrag in die History (einfache Variante).
+        /// Writes a final feedback dialog entry to the history (simple variant).
         /// </summary>
         private void SaveDialogToHistory(string text)
         {

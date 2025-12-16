@@ -34,14 +34,9 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         private const int CompatibleServerVersionNumber = 10;
 
-        // Guard: stellt sicher, dass der Weiter-Flow nur einmal gestartet wird
         private bool _startedNextFlow;
-
-        // Wenn true, überspringt Start() das visuelle Setup (weil wir in Awake() schon weiterleiten)
         private bool _skipVisualSetup;
 
-        // Läuft vor dem ersten Render-Frame: ideal, um bei bereits akzeptierten Legalinfos
-        // direkt weiterzuleiten, ohne die Szene je sichtbar zu machen.
         private void Awake()
         {
             TextToSpeechManager ttsManager = TextToSpeechManager.Instance;
@@ -58,20 +53,11 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             if (alreadyAccepted)
             {
-                // Szene unsichtbar halten und direkt weiterleiten
-                // HideSceneVisuals();
                 _skipVisualSetup = true;
-
-                // Optional: wenn ScreenFade bereits existiert, kann man auch so weiterleiten:
-                // if (ScreenFade.Instance) ScreenFade.Instance.FadeToBlackAndLoad(StartNextFlow);
-                // else StartNextFlow();
-                // StartNextFlow();
                 
                 if (startButton != null)
                 {
                     startButtonPanel.SetActive(true);
-                    // background.gameObject.SetActive(true);
-                    
                     termsAndConditionPanel.SetActive(false);
                 }
             }
@@ -96,17 +82,6 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             if (versionInfo != null)
                 versionInfo.text = Application.version;
-
-            // Falls exakt in diesem Moment schon akzeptiert wurde, direkt weiterleiten
-            // var privacyManager = PrivacyAndConditionManager.Instance();
-            // if (privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted())
-            // {
-            //     // Panel sichtbar lassen; sofort Szenenwechsel starten (mit Fade, wenn vorhanden)
-            //     if (ScreenFade.Instance)
-            //         ScreenFade.Instance.FadeToBlackAndLoad(StartNextFlow);
-            //     else
-            //         StartNextFlow();
-            // }
         }
 
         /// <summary>
@@ -124,7 +99,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Setzt die globale Lautstärke gemäß gespeicherten PlayerPrefs.
+        /// Sets the global volume according to stored PlayerPrefs.
         /// </summary>
         private void ApplyVolumeFromPrefs()
         {
@@ -135,7 +110,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Button-Events verdrahten.
+        /// Wire button events.
         /// </summary>
         private void SetupButtonListeners()
         {
@@ -145,8 +120,8 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Panel je nach Akzeptanzstatus ein-/ausblenden (kein Zwangs-Hide bei akzeptiert,
-        /// weil wir beim Übergang das Panel sichtbar lassen).
+        /// Show/hide panel depending on acceptance status (no forced hide when accepted,
+        /// because we leave the panel visible during the transition).
         /// </summary>
         private void HandleTermsAndConditions()
         {
@@ -154,13 +129,9 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             if (privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted())
             {
-                // Panel kann sichtbar bleiben; der Wechsel wird in Start() angestoßen.
-                // Kein SetActive(false) nötig.
                 if (startButton != null)
                 {
                     startButtonPanel.gameObject.SetActive(true);
-                    // background.gameObject.SetActive(true);
-                    
                     termsAndConditionPanel.SetActive(false);
                 }
             }
@@ -171,7 +142,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Klick auf „Weiter“ im Legal-Panel.
+        /// Click on “Continue” in the legal panel.
         /// </summary>
         private void OnContinueTermsAndConditionsButton()
         {
@@ -189,10 +160,8 @@ namespace Assets._Scripts.Controller.SceneControllers
             startButton.interactable = false;
             logoButton.interactable = false;
 
-            // Panel sichtbar lassen, aber Interaktion verhindern
             LockLegalUi();
 
-            // Szenenwechsel jetzt sofort anstoßen
             if (ScreenFade.Instance)
                 ScreenFade.Instance.FadeToBlackAndLoad(StartNextFlow);
             else
@@ -200,7 +169,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Schreibt den Akzeptanzstatus über den PrivacyAndConditionManager fort.
+        /// Updates the acceptance status via the PrivacyAndConditionManager.
         /// </summary>
         private void UpdateTermsAcceptance()
         {
@@ -224,8 +193,8 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Direkt nach dem Akzeptieren: Panel bleibt sichtbar, Interaktion wird gesperrt,
-        /// und der Szenenwechsel startet SOFORT (mit Fade, wenn vorhanden).
+        /// Immediately after acceptance: Panel remains visible, interaction is blocked,
+        /// and the scene change starts IMMEDIATELY (with fade, if available).
         /// </summary>
         private void ValidateTermsAndLoadScene()
         {
@@ -234,10 +203,8 @@ namespace Assets._Scripts.Controller.SceneControllers
 
             if (acceptedTermsOfUse && acceptedDataPrivacyTerms)
             {
-                // Panel sichtbar lassen, aber Interaktion verhindern
                 LockLegalUi();
 
-                // Szenenwechsel jetzt sofort anstoßen
                 if (ScreenFade.Instance)
                     ScreenFade.Instance.FadeToBlackAndLoad(StartNextFlow);
                 else
@@ -246,7 +213,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Version-Check bleibt erhalten.
+        /// Version check remains unchanged.
         /// </summary>
         public void OnSuccess(Response response)
         {
@@ -259,7 +226,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Startet den Übergang zum eigentlichen Spiel/der nächsten Szene (nur einmal).
+        /// Starts the transition to the actual game/next scene (only once).
         /// </summary>
         private void StartNextFlow()
         {
@@ -270,7 +237,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Wartet, bis die Novels geladen sind, und wechselt dann gemäß Einstellung weiter.
+        /// Waits until the novels are loaded, then continues according to the settings.
         /// </summary>
         private IEnumerator WaitForNovelsToLoad()
         {
@@ -293,7 +260,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Sucht „Einstiegsdialog“ und lädt die PlayNovelScene mit gesetzten Metadaten.
+        /// Searches for “Einstiegsnovel” and loads the PlayNovelScene with set metadata.
         /// </summary>
         private void StartIntroNovel(List<VisualNovel> allNovels)
         {
@@ -319,7 +286,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         }
 
         /// <summary>
-        /// Panel sichtbar lassen, aber Eingaben sperren (kein Doppelklick, kein „Durchklicken“).
+        /// Keep panel visible, but disable input (no double-clicking, no “clicking through”).
         /// </summary>
         private void LockLegalUi()
         {
@@ -329,15 +296,14 @@ namespace Assets._Scripts.Controller.SceneControllers
             if (!cg) cg = termsAndConditionPanel.AddComponent<CanvasGroup>();
 
             cg.interactable = false;
-            cg.blocksRaycasts = true; // blockiert Eingaben unter dem Panel
+            cg.blocksRaycasts = true;
 
-            // zusätzlich den Continue-Button deaktivieren (optisch/semantisch)
             if (continueTermsAndConditionsButton)
                 continueTermsAndConditionsButton.interactable = false;
         }
 
         /// <summary>
-        /// Verhindert, dass die Szene einen Frame sichtbar wird (Awake-Pfad bei bereits akzeptierten Legalinfos).
+        /// Prevents the scene from becoming visible for one frame (Awake path for legal information that has already been accepted).
         /// </summary>
         private void HideSceneVisuals()
         {
