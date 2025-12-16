@@ -4,13 +4,13 @@ using System.Text.RegularExpressions;
 namespace StandAloneKITE2
 {
     /// <summary>
-    /// Prüft: Für alle Dialoge in pathOutput.txt wird die Listenform "[...]" erzeugt
-    /// und mit den bereits in response.txt vorhandenen Listen verglichen.
-    /// Fehlende werden am Ende ausgegeben.
+    /// Checks: For all dialogs in pathOutput.txt, the list form “[...]” is generated
+    /// and compared with the lists already present in response.txt.
+    /// Missing ones are output at the end.
     /// </summary>
     public static class DialogListCoverageAudit
     {
-        // Pfade wie von dir angegeben:
+        // Paths as specified by you:
         private const string PathOutputFile = @"..\..\..\Kreditantrag\pathOutput.txt";
         private const string ResponseFile   = @"..\..\..\Kreditantrag\response.txt";
 
@@ -27,12 +27,12 @@ namespace StandAloneKITE2
                 return;
             }
 
-            // 1) Alle Pfad-Blöcke aus pathOutput.txt laden
+            // 1) Load all path blocks from pathOutput.txt
             var pathBlocks = LoadPromptBlocks(PathOutputFile);
             Console.WriteLine($"[Audit] Geladene Pfad-Blöcke: {pathBlocks.Count}");
 
-            // 2) Für jeden Block die Listen-Darstellung bauen (wie in response.txt)
-            var allPathSigs = new Dictionary<string, string>(StringComparer.Ordinal); // sig -> "[...]" (roh)
+            // 2) Build the list representation for each block (as in response.txt)
+            var allPathSigs = new Dictionary<string, string>(StringComparer.Ordinal); // sig -> “[...]” (raw)
             int built = 0;
             foreach (var block in pathBlocks)
             {
@@ -47,11 +47,11 @@ namespace StandAloneKITE2
             }
             Console.WriteLine($"[Audit] Erzeugte eindeutige Listen (Signaturen): {built}");
 
-            // 3) Alle vorhandenen Listen-Signaturen aus response.txt lesen
+            // 3) Read all existing list signatures from response.txt
             var knownSigs = LoadExistingListSignaturesFromResponse(ResponseFile);
             Console.WriteLine($"[Audit] Bekannte Listen aus response.txt (Signaturen): {knownSigs.Count}");
 
-            // 4) Fehlende ermitteln
+            // 4) Determine what is missing
             var missing = allPathSigs.Keys
                                      .Where(sig => !knownSigs.Contains(sig))
                                      .Select(sig => allPathSigs[sig])
@@ -72,11 +72,11 @@ namespace StandAloneKITE2
             Console.WriteLine($"[Audit] Zusammenfassung: total={allPathSigs.Count}, vorhanden={allPathSigs.Count - missing.Count}, fehlend={missing.Count}");
         }
 
-        // ---------- Parser/Utils (kompakt, stabil) ----------
+        // --------- - Parser/Utils (compact, stable) ----------
 
         /// <summary>
-        /// Liest pathOutput.txt in Blöcken, getrennt durch Zeilen, die nur aus '#' bestehen.
-        /// PATH/FINISHED-Zeilen werden entfernt.
+        /// Reads pathOutput.txt in blocks separated by lines consisting only of ‘#’.
+        /// PATH/FINISHED lines are removed.
         /// </summary>
         private static List<string> LoadPromptBlocks(string filePath)
         {
@@ -113,8 +113,8 @@ namespace StandAloneKITE2
         }
 
         /// <summary>
-        /// Extrahiert in Reihenfolge: Blöcke zwischen >>Tag|...<< und >>--<<
-        /// sowie Zeilen "Spielerin: ...".
+        /// Extracts in order: blocks between >>Tag|...<< and >>--<<
+        /// as well as lines “Spielerin: ...”.
         /// </summary>
         private static List<string> ExtractInOrder(string input)
         {
@@ -174,7 +174,9 @@ namespace StandAloneKITE2
             return results;
         }
 
-        /// <summary>Aus pathItems eine stabile Signatur bauen (Trim + Whitespace normalisieren).</summary>
+        /// <summary>
+        /// Build a stable signature from pathItems (trim + normalize whitespace).
+        /// </summary>
         private static string BuildListSignature(IEnumerable<string> items)
         {
             if (items == null) return null;
@@ -182,26 +184,26 @@ namespace StandAloneKITE2
                             .Where(s => s.Length > 0)
                             .ToList();
             if (norm.Count == 0) return null;
-            return string.Join(" ; ", norm); // Semikolon + Space wie im Generator
+            return string.Join(" ; ", norm); // Semicolon + space, as in the generator
         }
 
         private static string NormalizeItem(string s)
         {
             if (s == null) return "";
             s = s.Trim();
-            s = Regex.Replace(s, @"\s+", " "); // Whitespace zusammenziehen
+            s = Regex.Replace(s, @"\s+", " "); // Collapse whitespace
             return s;
         }
 
         /// <summary>
-        /// Parsed response.txt und liefert alle vorhandenen Listen-Signaturen (Zeile mit [ ... ]).
+        /// Parses response.txt and returns all existing list signatures (lines containing [ ... ]).
         /// </summary>
         private static HashSet<string> LoadExistingListSignaturesFromResponse(string responsePath)
         {
             var set = new HashSet<string>(StringComparer.Ordinal);
 
             var content = File.ReadAllText(responsePath, Encoding.UTF8);
-            // Blöcke starten mit "### <zahl>" und enden vor dem nächsten "###" oder #$%
+            // Blocks start with “### <number>” and end before the next “###” or #$%.
             var startRegex = new Regex(@"(?m)^###\s*\d+\s*$");
             const string endToken = "#$%";
 
@@ -216,7 +218,7 @@ namespace StandAloneKITE2
 
                 string block = content.Substring(blockStart, blockEnd - blockStart);
 
-                // erste Zeile, die mit '[' beginnt und mit ']' endet
+                // First line starting with ‘[’ and ending with ']'
                 string listLine = ExtractFirstBracketLine(block);
                 if (listLine == null) continue;
 

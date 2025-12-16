@@ -197,7 +197,7 @@ public class TweePathCalculator
     }
 
     // ==========================================
-    // ======= Help functions for Resume =======
+    // ======= Hilfsfunktionen für Resume =======
     // ==========================================
 
     /// <summary>
@@ -226,7 +226,7 @@ public class TweePathCalculator
 
             string block = content.Substring(blockStart, blockEnd - blockStart);
 
-            // First [ ... ] line in the block
+            // first [ ... ] line in the block
             string listRaw = ExtractFirstBracketLine(block);
             if (listRaw == null) continue;
 

@@ -10,32 +10,32 @@ namespace FeedbackPathAudit
     internal static class FeedbackPathAudit
     {
         // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        // HIER anpassen
+        // Customize HERE
         private const string RESPONSE_FILE   = @"..\..\..\Vermieter\response.txt";
         private const string PATHOUTPUT_FILE = @"..\..\..\Vermieter\pathOutput.txt";
 
-        // Flags: Welche Files prüfen? (können beide true sein)
+        // Flags: Which files to check? (both can be true)
         private const bool ANALYZE_RESPONSE   = true;
         private const bool ANALYZE_PATHOUTPUT = true;
 
-        // Duplikate direkt entfernen? (nur erste Vorkommnis behalten)
+        // Remove duplicates immediately? (keep only the first occurrence)
         private const bool REMOVE_DUPLICATES = false;
 
-        // Optional: Duplikate detailliert auflisten?
+        // Optional: List duplicates in detail?
         private const bool LIST_DUPLICATES = true;
 
-        // Groß-/Kleinschreibung bei Signaturen beachten?
+        // Pay attention to upper/lower case in signatures?
         private static readonly StringComparer SigComparer = StringComparer.Ordinal;
         // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
         private const string RESPONSE_END_TOKEN   = "#$%";
         private const string PATHOUTPUT_SEPARATOR = "################";
 
-        // Einheitliche Repräsentation eines Eintrags
+        // Uniform representation of an entry
         private sealed class Entry
         {
             public int Index { get; }
-            public string Block { get; } // reiner Textinhalt (ohne Marker)
+            public string Block { get; } // Plain text content (without markers)
             public Entry(int index, string block) { Index = index; Block = block; }
         }
 
@@ -67,7 +67,7 @@ namespace FeedbackPathAudit
                 ? ExtractEntriesFromResponse(content)
                 : ExtractEntriesFromPathOutput(content);
 
-            // --- Duplikate zählen (mit Indizes für Detail-Listing) ---
+            // --- Count duplicates (with indexes for detailed listing) ---
             var sigToIndices = new Dictionary<string, List<int>>(SigComparer);
             int nullSigCount = 0;
 
@@ -81,11 +81,11 @@ namespace FeedbackPathAudit
                 }
                 if (!sigToIndices.TryGetValue(sig, out var list))
                     sigToIndices[sig] = list = new List<int>();
-                list.Add(e.Index); // bei pathOutput: PATH-Index, bei response: ###-Index
+                list.Add(e.Index); // For pathOutput: PATH index, for response: ### index
             }
 
             int total      = entries.Count;
-            int unique     = sigToIndices.Count + nullSigCount; // Einträge ohne Signatur separat
+            int unique     = sigToIndices.Count + nullSigCount; // Entries without signature separately
             int duplicates = total - unique;
 
             Console.WriteLine($"Datei:                        {Path.GetFullPath(filePath)}");
@@ -119,7 +119,7 @@ namespace FeedbackPathAudit
             if (!REMOVE_DUPLICATES)
                 return;
 
-            // --- Duplikate entfernen (nur erste Vorkommnis behalten) ---
+            // --- Remove duplicates (keep only the first occurrence) ---
             var seen      = new HashSet<string>(SigComparer);
             var remaining = new List<Entry>(entries.Count);
 
@@ -127,7 +127,7 @@ namespace FeedbackPathAudit
             {
                 var sig = BuildSignature(e.Block, isResponse);
 
-                // Einträge ohne Signatur niemals deduplizieren -> immer behalten
+                // Never deduplicate entries without signatures -> always keep them
                 if (string.IsNullOrWhiteSpace(sig) || seen.Add(sig))
                     remaining.Add(e);
             }
@@ -136,7 +136,7 @@ namespace FeedbackPathAudit
                 ? RebuildResponseFile(remaining)
                 : RebuildPathOutputFile(remaining);
 
-            // Backup mit Zeitstempel (nie überschreiben)
+            // Backup with timestamp (never overwrite)
             string timestamp = DateTime.Now.ToString("yyyy-MM-dd_HHmm-ss");
             string backupPath = Path.Combine(
                 Path.GetDirectoryName(filePath)!,
@@ -154,7 +154,7 @@ namespace FeedbackPathAudit
         }
 
         // ==============================================================
-        // ============= Parsing für response.txt ========================
+        // ============= Parsing for response.txt ========================
         // ==============================================================
         private static List<Entry> ExtractEntriesFromResponse(string content)
         {
@@ -178,23 +178,23 @@ namespace FeedbackPathAudit
         }
 
         // ==============================================================
-        // ============= Parsing für pathOutput.txt ======================
+        // ============= Parsing for pathOutput.txt ======================
         // ==============================================================
         private static List<Entry> ExtractEntriesFromPathOutput(string content)
         {
             /*
-             * Ziel: jeden Blockinhalt mit dem nachfolgenden "PATH X FINISHED" paaren.
+             * Goal: Pair each block content with the following “PATH X FINISHED”.
              * Format:
              *   <BLOCK>
              *   ################
              *   PATH X FINISHED
-             *   [Leerzeilen]
+             *   [Blank lines]
              *   <BLOCK>
              *   ################
              *   PATH Y FINISHED
              *   ...
              *
-             * Vorgehen: Zeilenweise lesen, bis Separator. Danach "PATH (\d+) FINISHED" erwarten.
+             * Procedure: Read line by line until separator. Then expect “PATH (\d+) FINISHED”.
              */
             var entries = new List<Entry>();
             var lines = new List<string>();
@@ -205,40 +205,40 @@ namespace FeedbackPathAudit
             {
                 if (!line.Trim().Equals(PATHOUTPUT_SEPARATOR, StringComparison.Ordinal))
                 {
-                    // Zeilen für den aktuellen Block sammeln
+                    // Collect lines for the current block
                     lines.Add(line);
                     continue;
                 }
 
-                // Separator erreicht: Jetzt die PATH-Zeile(n) lesen
+                // Separator reached: Now read the PATH line(s)
                 var blockText = string.Join(Environment.NewLine, lines).Trim();
                 lines.Clear();
 
-                // Erwartete PATH-Zeile
+                // Expected PATH line
                 string? pathLine;
                 do
                 {
                     pathLine = reader.ReadLine();
-                    if (pathLine == null) break; // Datei-Ende
+                    if (pathLine == null) break; // End of file
                     pathLine = pathLine.Trim();
-                } while (pathLine.Length == 0); // leere Zeilen überspringen
+                } while (pathLine.Length == 0); // Skip empty lines
 
                 if (pathLine == null)
                 {
-                    // Kein PATH-Marker mehr -> ignorieren (Fragment am Ende)
+                    // No more PATH marker -> ignore (fragment at the end)
                     continue;
                 }
 
                 var m = Regex.Match(pathLine, @"^PATH\s+(\d+)\s+FINISHED$", RegexOptions.IgnoreCase);
                 if (!m.Success)
                 {
-                    // Unerwartete Zeile – defensiv: diesen „Block“ ignorieren
+                    // Unexpected line – defensive: ignore this “block”
                     continue;
                 }
 
                 int pathIndex = int.Parse(m.Groups[1].Value);
 
-                // Den Blocktext von evtl. alten PATH-Markern säubern (falls welche im Block stehen sollten)
+                // Clean the block text of any old PATH markers (if there are any in the block)
                 var cleaned = blockText
                     .Split(new[] { "\r\n", "\n" }, StringSplitOptions.None)
                     .Where(l => !l.TrimStart().StartsWith("PATH ", StringComparison.OrdinalIgnoreCase)
@@ -247,25 +247,25 @@ namespace FeedbackPathAudit
 
                 if (cleaned.Count == 0)
                 {
-                    // reiner Marker-Block -> ignorieren
+                    // pure marker block -> ignore
                     continue;
                 }
 
                 var normalizedBlock = string.Join(Environment.NewLine, cleaned).Trim();
                 entries.Add(new Entry(pathIndex, normalizedBlock));
 
-                // Optionale Leerzeilen nach PATH überspringen (werden durch die while-Schleife automatisch abgedeckt)
+                // Optionally skip blank lines after PATH (automatically covered by the while loop)
             }
 
-            // Falls nach letztem PATH noch Zeilen übrig blieben (Fragment ohne Marker) -> ignorieren
+            // If there are still lines left after the last PATH (fragment without marker) -> ignore
 
-            // Sortieren nach PATH-Index, um ein konsistentes Listing zu haben
+            // Sort by PATH index to have a consistent listing
             entries.Sort((a, b) => a.Index.CompareTo(b.Index));
             return entries;
         }
 
         // ==============================================================
-        // ============= Signaturen =====================================
+        // ============= Signatures =====================================
         // ==============================================================
         private static string BuildSignature(string block, bool isResponse)
         {
@@ -274,13 +274,13 @@ namespace FeedbackPathAudit
 
             if (isResponse)
             {
-                // erste [ ... ]-Zeile suchen
+                // Find the first [ ... ] line
                 var listLine = block.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None)
                                     .Select(l => l.Trim())
                                     .FirstOrDefault(l => l.StartsWith("[") && l.EndsWith("]"));
                 if (listLine == null) return null;
 
-                var inner = listLine[1..^1]; // ohne [ ]
+                var inner = listLine[1..^1]; // Without [ ]
                 var items = inner.Split(';')
                                  .Select(NormalizeItem)
                                  .Where(s => s.Length > 0);
@@ -288,7 +288,7 @@ namespace FeedbackPathAudit
             }
             else
             {
-                // pathOutput: alle inhaltlichen Zeilen (Marker wurden bereits entfernt)
+                // pathOutput: all content lines (markers have already been removed)
                 var lines = block.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None)
                                  .Where(l => !string.IsNullOrWhiteSpace(l))
                                  .Select(NormalizeItem);
@@ -300,8 +300,8 @@ namespace FeedbackPathAudit
         {
             if (s == null) return "";
             s = s.Trim();
-            s = Regex.Replace(s, @"\s+", " "); // Whitespace normalisieren
-            s = s.Replace("→", "↦");           // Kollisionsschutz
+            s = Regex.Replace(s, @"\s+", " "); // Normalize whitespace
+            s = s.Replace("→", "↦");           // Collision protection
             return s;
         }
 
@@ -311,7 +311,7 @@ namespace FeedbackPathAudit
         private static string RebuildResponseFile(List<Entry> blocks)
         {
             var sb = new StringBuilder();
-            // nach Index sortieren (falls nötig)
+            // Sort by index (if necessary)
             var ordered = blocks.OrderBy(b => b.Index).ToList();
 
             for (int i = 0; i < ordered.Count; i++)
@@ -330,14 +330,14 @@ namespace FeedbackPathAudit
         private static string RebuildPathOutputFile(List<Entry> blocks)
         {
             var sb = new StringBuilder();
-            // nach Index sortieren (falls nötig)
+            // Sort by index (if necessary)
             var ordered = blocks.OrderBy(b => b.Index).ToList();
 
             for (int i = 0; i < ordered.Count; i++)
             {
-                // Inhalt schreiben
+                // Write content
                 sb.AppendLine(ordered[i].Block.Trim());
-                // Trenner + neu nummerierter Marker (sauber 1..N)
+                // Separator + newly numbered marker (clean 1..N)
                 sb.AppendLine(PATHOUTPUT_SEPARATOR);
                 sb.AppendLine($"PATH {i + 1} FINISHED");
                 sb.AppendLine();
