@@ -321,8 +321,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Datenschutzerkl\xE4rung"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
-  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
+  m_sharedMaterial: {fileID: 3127457962735927120, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -352,7 +352,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1140,7 +1140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7185633893947003524, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}
       propertyPath: m_Name
-      value: Button Prefab (big)
+      value: Button Prefab
       objectReference: {fileID: 0}
     - target: {fileID: 7185633893947003524, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}
       propertyPath: m_IsActive
@@ -1156,7 +1156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7185633894973996858, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}
       propertyPath: m_fontStyle
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7185633894973996858, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}
       propertyPath: m_fontSizeBase
@@ -3766,7 +3766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7185633894973996858, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}
       propertyPath: m_fontStyle
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7185633894973996858, guid: e24be161e5e4a3b439d3ae3cc941cc1c, type: 3}
       propertyPath: m_fontSizeBase
@@ -3897,8 +3897,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Impressum
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
-  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
+  m_sharedMaterial: {fileID: 3127457962735927120, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3928,7 +3928,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -4123,8 +4123,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Nutzungsbedingungen\r"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
-  m_sharedMaterial: {fileID: -2202784698279534550, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
+  m_sharedMaterial: {fileID: 3127457962735927120, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4154,7 +4154,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -4914,6 +4914,33 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3724865061830971831, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
   m_PrefabInstance: {fileID: 3724865060876273101}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2071565435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071565433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17c0de033a503674382715b1eed23730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: _Scripts::Assets._Scripts.PrivacyPolicyLoader
+  contentParent: {fileID: 2071565434}
+  textFileName: LegalNotice
+  font: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
+  heading1Size: 42
+  heading2Size: 40
+  heading3Size: 38
+  heading4Size: 38
+  normalTextSize: 38
+  indentedTextSize: 35
+  heading1Color: {r: 1, g: 1, b: 1, a: 1}
+  heading2Color: {r: 1, g: 1, b: 1, a: 1}
+  heading3Color: {r: 1, g: 1, b: 1, a: 1}
+  heading4Color: {r: 1, g: 1, b: 1, a: 1}
+  normalTextColor: {r: 1, g: 1, b: 1, a: 1}
+  linkColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &2110229543
 GameObject:
   m_ObjectHideFlags: 0
@@ -6311,6 +6338,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3724865061830971825, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
+      propertyPath: m_Spacing
+      value: 42.01
+      objectReference: {fileID: 0}
     - target: {fileID: 3724865061830971828, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
       propertyPath: m_Name
       value: Imprint Container
@@ -6460,9 +6491,33 @@ PrefabInstance:
       value: -1800.1951
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3724865061530330955, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
+    - {fileID: 3724865061989992752, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
+    - {fileID: 3724865061021021794, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
+    - {fileID: 3724865061369116838, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
+    - {fileID: 3724865061082255559, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
+    - {fileID: 3724865060731929157, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
+    - {fileID: 3724865060689056962, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
+    - {fileID: 3724865060838516592, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
+    - {fileID: 3724865060555889083, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
+    - {fileID: 3724865061827068577, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
+    - {fileID: 3724865060712048944, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
+    - {fileID: 3724865061208663000, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
+    - {fileID: 3724865061369367110, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
+    - {fileID: 3724865061814546461, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
+    - {fileID: 3724865061093580348, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
+    - {fileID: 3724865061733851172, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
+    - {fileID: 3724865061514967752, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
+    - {fileID: 3724865061382262667, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
+    - {fileID: 3724865060839464499, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
+    - {fileID: 3724865061794856343, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
+    - {fileID: 3724865061949751589, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3724865061830971828, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2071565435}
   m_SourcePrefab: {fileID: 100100000, guid: 1974280dcb3cccd4b9e9ef39196f6e9d, type: 3}
 --- !u!224 &3953417357263809176
 RectTransform:
