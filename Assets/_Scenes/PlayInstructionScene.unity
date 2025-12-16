@@ -688,7 +688,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "KITE richtet sich an Gr\xFCnderinnen, an Menschen, die mit Gr\xFCnderinnen
-    arbeiten \u2013 z. B. Investorinnen, Beraterinnen, Journalist*innen, Vermietende
+    arbeiten \u2013 z. B. Investor*innen, Berater*innen, Journalist*innen, Vermietende
     \u2013 sowie an Interessierte, die durch Perspektiven\xFCbernahme lernen m\xF6chten."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e36382ed4eb9fd24a9172246c5138020, type: 2}
@@ -1468,7 +1468,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ZUR EINSTIEGS-NOVEL
+  m_text: ZUR EINSTIEGSNOVEL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
   m_sharedMaterial: {fileID: 3127457962735927120, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
@@ -2097,7 +2097,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "KITE - kurz erkl\xE4rt"
+  m_text: "KITE \u2013 kurz erkl\xE4rt"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
   m_sharedMaterial: {fileID: 3127457962735927120, guid: f26252f96c6420c4e8aa4d1fce641a3f, type: 2}
