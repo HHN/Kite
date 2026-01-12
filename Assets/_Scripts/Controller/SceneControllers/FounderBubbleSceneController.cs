@@ -590,7 +590,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 }
             }
 
-            if (SnapToButton(buttonRect)) return;
+            SnapToButton(buttonRect);
 
             DisplayTextBoxForVisualNovel(novelNames, entry.isContained);
 

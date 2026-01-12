@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 90824507}
   - component: {fileID: 90824506}
   m_Layer: 5
-  m_Name: Background
+  m_Name: PanoramaLayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2019,7 +2019,7 @@ GameObject:
   - component: {fileID: 679881963}
   - component: {fileID: 679881964}
   m_Layer: 5
-  m_Name: PanoramaParent
+  m_Name: MiddleLayerParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4186,7 +4186,7 @@ GameObject:
   - component: {fileID: 1790431928}
   - component: {fileID: 1790431927}
   m_Layer: 5
-  m_Name: Panorama
+  m_Name: MiddleLayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4459,7 +4459,7 @@ GameObject:
   - component: {fileID: 2024152029}
   - component: {fileID: 2024152030}
   m_Layer: 5
-  m_Name: BackgroundParent
+  m_Name: PanoramaLayerParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
