@@ -21,7 +21,7 @@ namespace Assets._Scripts.Managers
     public class DialogHistoryManager
     {
         private static DialogHistoryManager _instance;
-        [SerializeField] private DialogHistoryEntryList _entries;
+        private DialogHistoryEntryList _entries;
         private const string Key = "DialogueHistoryEntries";
 
 
@@ -43,10 +43,7 @@ namespace Assets._Scripts.Managers
         /// <returns>The singleton instance of DialogHistoryManager.</returns>
         public static DialogHistoryManager Instance()
         {
-            if (_instance == null)
-            {
-                _instance = new DialogHistoryManager();
-            }
+            _instance ??= new DialogHistoryManager();
 
             return _instance;
         }
@@ -77,7 +74,7 @@ namespace Assets._Scripts.Managers
         /// <param name="entry">The dialog history entry to be added to the list.</param>
         public void AddEntry(DialogHistoryEntry entry)
         {
-            string dialog = entry.GetDialog().Replace("Lea", "Du"); // ToDo: Beobachten, möglicherweise nicht mehr nötig
+            string dialog = entry.GetDialog();
             entry.SetDialog(dialog);
             _entries.entries.Add(entry);
             Save();
@@ -96,7 +93,7 @@ namespace Assets._Scripts.Managers
         /// Saves the current state of dialog history entries to persistent storage.
         /// Serializes the internal dialog history entries list into a JSON format
         /// and uses the PlayerDataManager to store the serialized data under
-        /// a predefined key.
+        /// a predefined type.
         /// Ensures that dialog history can be persisted across application sessions.
         /// </summary>
         private void Save()

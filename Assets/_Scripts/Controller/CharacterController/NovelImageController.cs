@@ -5,6 +5,7 @@ using System.Linq;
 using Assets._Scripts._Mappings;
 using Assets._Scripts.Controller.SceneControllers;
 using Assets._Scripts.Managers;
+using Assets._Scripts.Utilities;
 using UnityEngine;
 
 namespace Assets._Scripts.Controller.CharacterController
@@ -40,11 +41,11 @@ namespace Assets._Scripts.Controller.CharacterController
     /// </summary>
     public class NovelImageController : MonoBehaviour
     {
-        [Header("Character Setup")] [SerializeField]
-        private List<Transform> characterContainers;
+        [Header("Character Setup")] 
+        [SerializeField] private List<Transform> characterContainers;
 
-        [Header("Decoration Interactions")] [SerializeField]
-        private DecorationInteraction[] decorations;
+        [Header("Decoration Interactions")] 
+        [SerializeField] private DecorationInteraction[] decorations;
 
         [HideInInspector] public List<Kite2CharacterController> characterControllers = new();
 
@@ -78,7 +79,7 @@ namespace Assets._Scripts.Controller.CharacterController
 
                 if (matchIndex == -1)
                 {
-                    Debug.LogWarning($"Container '{containerName}' does not match any character in NovelToPlay.characters.");
+                    LogManager.Warning($"Container '{containerName}' does not match any character in NovelToPlay.characters.");
                     continue;
                 }
                 
@@ -98,7 +99,7 @@ namespace Assets._Scripts.Controller.CharacterController
                 }
                 else
                 {
-                    Debug.LogWarning("Character container does not contain a Kite2CharacterController.");
+                    LogManager.Warning("Character container does not contain a Kite2CharacterController.");
                 }
             }
         }
@@ -204,7 +205,7 @@ namespace Assets._Scripts.Controller.CharacterController
                     }
                     else
                     {
-                        Debug.LogWarning($"Prefab {decoration.prefab.name} has no IDecorationInteraction component.");
+                        LogManager.Warning($"Prefab {decoration.prefab.name} has no IDecorationInteraction component.");
                     }
                 }
             }
@@ -247,7 +248,7 @@ namespace Assets._Scripts.Controller.CharacterController
             }
             else
             {
-                Debug.LogWarning($"SetFaceExpression failed: No controller found with characterId {characterId}");
+                LogManager.Warning($"SetFaceExpression failed: No controller found with characterId {characterId}");
             }
         }
     }

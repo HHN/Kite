@@ -1,7 +1,6 @@
 {
   "idNumberOfNovel": 3,
-  "titleOfNovel": "Pressegespräch",
-  "designationOfNovel": "Interview abklären",
+  "titleOfNovel": "Interview abklären",
   "descriptionOfNovel": "Auf einer Veranstaltung stellst du deine Geschäftsidee vor und wirst danach von einer Journalistin angesprochen.",
   "contextForPrompt": "Es ist das Gespräch einer Gründerin mit einer Journalistin. Die Journalistin hat die Gründerin angesprochen und möchte einen Artikel über sie und ihr Unternehmen schreiben. Die Gründerin freut sich über diese Gelegenheit und hofft auf einen schönen Artikel.",
   "folderName": "Presse",
@@ -11,9 +10,5 @@
   "talkingPartner03" : "",
   "isKiteNovel": true,
   "novelColor": "#4E2350",
-  "novelFrameColor": "#7E3B81",
-  "wordsToReplace": [
-	{"wordToReplace": ">>JournalistinSprichtFriendly:<<", "replaceByValue": ">>Charakter01SprichtLaecheln:<<"},
-	{"wordToReplace": ">>SpielerinCharakterSpricht:<<", "replaceByValue": ">>SpielerCharakterSpricht:<<"}	
-	]
+  "novelFrameColor": "#7E3B81"
 }

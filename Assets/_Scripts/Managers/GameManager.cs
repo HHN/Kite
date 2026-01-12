@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets._Scripts._Mappings;
 using Assets._Scripts.Controller.CharacterController;
 using Assets._Scripts.Novel;
 using Assets._Scripts.SaveNovelData;
@@ -144,9 +145,9 @@ namespace Assets._Scripts.Managers
             _characterDataDictionary.Clear();
             characterDataList.Clear();
 
-            foreach (VisualNovelNames novelName in Enum.GetValues(typeof(VisualNovelNames)))
+            foreach (VisualNovel novel in MappingManager.allNovels)
             {
-                string novelId = VisualNovelNamesHelper.ToInt(novelName).ToString();
+                string novelId = novel.id.ToString();
 
                 var saveData = SaveLoadManager.Load(novelId);
                 bool isSaved = saveData != null;
@@ -154,9 +155,9 @@ namespace Assets._Scripts.Managers
 
                 novelSaveStatusList.Add(new NovelSaveStatus { novelId = novelId, isSaved = isSaved });
                 
-                if (isSaved && saveData.CharacterPrefabData != null)
+                if (isSaved && saveData.characterPrefabData != null)
                 {
-                    foreach (var kvp in saveData.CharacterPrefabData)
+                    foreach (var kvp in saveData.characterPrefabData)
                     {
                         _characterDataDictionary[kvp.Key] = kvp.Value;
 

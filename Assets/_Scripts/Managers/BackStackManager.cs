@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Assets._Scripts.Managers
 {
@@ -13,6 +12,8 @@ namespace Assets._Scripts.Managers
         private static BackStackManager _instance;
         private readonly Stack<string> _backStack;
 
+        public static BackStackManager Instance => _instance ??= new BackStackManager();
+
         /// <summary>
         /// Manages a back stack for scene navigation, allowing tracking of scene history
         /// and facilitating navigation operations such as pushing, popping, and clearing scenes.
@@ -24,19 +25,13 @@ namespace Assets._Scripts.Managers
         }
 
         /// <summary>
-        /// Provides a singleton instance of the BackStackManager, ensuring a single global point of access
-        /// for managing the back stack of scenes in the application.
+        /// Provides read-only access to the name of the currently active menu or scene by inspecting the top element of the internal back stack.
         /// </summary>
-        /// <returns>An instance of the BackStackManager.</returns>
-        public static BackStackManager Instance()
-        {
-            if (_instance == null)
-            {
-                _instance = new BackStackManager();
-            }
-
-            return _instance;
-        }
+        /// <remarks>
+        /// This property returns the name of the menu/scene currently at the top of the stack (<c>_backStack.Peek()</c>).
+        /// If the back stack is empty (i.e., <c>_backStack.Count == 0</c>), it returns an empty string (<c>""</c>).
+        /// </remarks>
+        private string Current => _backStack.Count == 0 ? "" : _backStack.Peek();
 
         /// <summary>
         /// Pushes a new scene name onto the back stack if it is not already the current scene.
@@ -45,39 +40,20 @@ namespace Assets._Scripts.Managers
         /// <param name="sceneName">The name of the scene to be added to the back stack.</param>
         public void Push(string sceneName)
         {
-            if (Peek() == sceneName)
-            {
-                return;
-            }
-
+            if (Current == sceneName) return;
             _backStack.Push(sceneName);
         }
 
         /// <summary>
         /// Removes and returns the most recent scene from the back stack.
-        /// If the back stack is empty, returns an empty string.
+        /// If the back stack is empty, it returns an empty string.
         /// </summary>
         /// <returns>The name of the most recent scene if available; otherwise, an empty string.</returns>
         public string Pop()
         {
-            if (_backStack.Count == 0)
-            {
-                return "";
-            }
-
-            string sceneName = _backStack.Peek();
-            _backStack.Pop();
+            if (_backStack.Count == 0) return "";
+            string sceneName = _backStack.Pop();
             return sceneName;
-        }
-
-        /// <summary>
-        /// Retrieves the name of the most recent scene from the back stack without removing it.
-        /// Returns an empty string if the back stack is empty.
-        /// </summary>
-        /// <returns>The name of the most recent scene if available; otherwise, an empty string.</returns>
-        private string Peek()
-        {
-            return _backStack.Count == 0 ? "" : _backStack.Peek();
         }
 
         /// <summary>
@@ -88,6 +64,17 @@ namespace Assets._Scripts.Managers
         public void Clear()
         {
             _backStack.Clear();
+        }
+
+        /// <summary>
+        /// Returns a string representation of the current back stack, showing the sequence
+        /// of scene names in the order they were pushed onto the stack.
+        /// This is useful for debugging or visualizing the navigation history.
+        /// </summary>
+        /// <returns>A string containing the scene names in the back stack, separated by " -> ".</returns>
+        public override string ToString()
+        {
+            return string.Join(" -> ", _backStack.ToArray());
         }
     }
 }

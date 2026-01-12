@@ -23,7 +23,7 @@ Gutes Aussehen und Sachverstand, Sie haben ja bei der Verteilung der Kompetenzen
 >>--<<
 >>Bias|PerformanceAttributionBias<<
 
-[[Soll das etwa ein Kompliment sein? Da fällt mir nichts mehr ein! Konzentrieren wir uns doch auf den Mietprozess konzentrieren, ich habe auch nicht so viel Zeit.->Ärgern]]
+[[Soll das etwa ein Kompliment sein? Da fällt mir nichts mehr ein! Konzentrieren wir uns doch auf den Mietprozess, ich habe auch nicht so viel Zeit.->Ärgern]]
 
 [[Wie geht's jetzt weiter mit dem Mietprozess? Brauchen Sie noch weitere Informationen?->Umlenken]]
 

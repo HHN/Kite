@@ -6,6 +6,7 @@ using Assets._Scripts.Controller.SceneControllers;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using Assets._Scripts.UIElements.TextBoxes;
+using Assets._Scripts.Utilities;
 using UnityEngine;
 
 namespace Assets._Scripts.Managers
@@ -187,14 +188,8 @@ namespace Assets._Scripts.Managers
         /// <param name="displayAfterSelection">Indicates whether additional UI or content should be displayed after the selection.</param>
         /// <param name="index">The index of the selected option.</param>
         /// <returns>An IEnumerator used to manage the timing of events following the selection.</returns>
-        private IEnumerator AfterSelection(string parameterName, string answer, string nextEventID,
-            bool displayAfterSelection, int index)
+        private IEnumerator AfterSelection(string parameterName, string answer, string nextEventID, bool displayAfterSelection, int index)
         {
-#if UNITY_ANDROID
-        TextToSpeechManager.Instance.CancelSpeak();
-#elif UNITY_IOS
-        TextToSpeechManager.Instance.CancelSpeak();
-#endif
             GameManager.Instance.calledFromReload = false;
 
             // Disable animations after the selection
@@ -205,7 +200,7 @@ namespace Assets._Scripts.Managers
             }
             else
             {
-                Debug.LogWarning("AnimationFlagSingleton.Instance() returned null.");
+                LogManager.Warning("AnimationFlagSingleton.Instance() returned null.");
             }
 
             // If already selected, exit the coroutine
@@ -230,7 +225,7 @@ namespace Assets._Scripts.Managers
             }
             else
             {
-                Debug.LogWarning("sceneController is null. Cannot add path to novel.");
+                LogManager.Warning("sceneController is null. Cannot add path to novel.");
             }
 
             // Trigger the animation associated with the parameter
@@ -243,12 +238,12 @@ namespace Assets._Scripts.Managers
             {
                 if (animator == null)
                 {
-                    Debug.LogWarning("Animator component not found on GameObject.");
+                    LogManager.Warning("Animator component not found on GameObject.");
                 }
 
                 if (string.IsNullOrEmpty(parameterName))
                 {
-                    Debug.LogWarning("parameterName is null or empty.");
+                    LogManager.Warning("parameterName is null or empty.");
                 }
             }
             
@@ -258,7 +253,7 @@ namespace Assets._Scripts.Managers
             }
             else
             {
-                Debug.LogWarning("selectedSound is null. Cannot play audio clip.");
+                LogManager.Warning("selectedSound is null. Cannot play audio clip.");
             }
 
             // Wait for the audio and animation to complete
@@ -277,7 +272,7 @@ namespace Assets._Scripts.Managers
                 }
                 else
                 {
-                    Debug.LogWarning("sceneController.confirmArea or its GameObject is null.");
+                    LogManager.Warning("sceneController.confirmArea or its GameObject is null.");
                 }
 
                 if (_sceneController.confirmArea2 != null && _sceneController.confirmArea2.gameObject != null)
@@ -286,7 +281,7 @@ namespace Assets._Scripts.Managers
                 }
                 else
                 {
-                    Debug.LogWarning("sceneController.confirmArea2 or its GameObject is null.");
+                    LogManager.Warning("sceneController.confirmArea2 or its GameObject is null.");
                 }
 
                 // Display the selected answer and handle post-selection behavior
@@ -302,7 +297,7 @@ namespace Assets._Scripts.Managers
             }
             else
             {
-                Debug.LogWarning("sceneController is null.");
+                LogManager.Warning("sceneController is null.");
             }
         }
     }

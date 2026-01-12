@@ -1,0 +1,35 @@
+Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0)
+
+Copyright (c) 2025 Hochschule Heilbronn / Lab for Social Informatics Prof. Dr. Nicola Marsden
+Developed by the project team of "KITE"
+Funded by the German Federal Ministry for Education, Family Affairs, Senior Citizens, Women and Youth (BMBFSFJ) 2023-2025
+
+These contents (texts, prompts, assets, images, audiovisual and other materials) are licensed under the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0).
+
+This means:
+- You are free to use, share, and adapt the materials,
+- provided that proper credit is given to the original creators, and
+- any derivative works are distributed under the same license (CC BY-SA 4.0).
+
+The full license text is available at:
+https://creativecommons.org/licenses/by-sa/4.0/
+
+------------------------------------------------------------
+Deutsche Übersetzung 
+------------------------------------------------------------
+
+Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0)
+
+Copyright (c) 2025 Hochschule Heilbronn / Lab für Sozioinformatik Prof. Dr. Nicola Marsden
+Entwickelt vom Projektteam "KITE"
+Gefördert durch das Bundesministerium für Bildung, Familie, Senioren, Frauen und Jugend (BMBFSFJ) 2023-2025
+
+Diese Inhalte (Texte, Prompts, Assets, Bilder, audiovisuelle und sonstige Materialien) stehen unter der Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0).
+
+Dies bedeutet:
+- Die Inhalte dürfen frei genutzt, geteilt und bearbeitet werden,
+- solange die ursprünglichen Urheber*innen genannt werden und
+- abgeleitete Werke unter derselben Lizenz (CC BY-SA 4.0) weitergegeben werden.
+
+Ein vollständiger Lizenztext ist abrufbar unter:
+https://creativecommons.org/licenses/by-sa/4.0/

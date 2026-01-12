@@ -1,7 +1,7 @@
 using Assets._Scripts.Managers;
 using Assets._Scripts.Messages;
 using Assets._Scripts.SceneManagement;
-using Assets._Scripts.UIElements.Buttons;
+using Assets._Scripts.UIElements;
 using Assets._Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.UI;
@@ -35,7 +35,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.PrivacyPolicyScene);
+            BackStackManager.Instance.Push(SceneNames.PrivacyPolicyScene);
 
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout);
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout02);

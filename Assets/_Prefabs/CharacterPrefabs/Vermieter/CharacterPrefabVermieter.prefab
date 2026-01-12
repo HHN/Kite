@@ -61,11 +61,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinImage: {fileID: 4503084980460225573}
-  glassImage: {fileID: 6750568625383529933}
-  handImage: {fileID: 6183954683827931753}
-  clothesImage: {fileID: 6289610850099512998}
-  hairImage: {fileID: 6434204589533422953}
   faceImage: {fileID: 8722988004786373907}
+  glassImage: {fileID: 6750568625383529933}
+  hairImage: {fileID: 6434204589533422953}
+  clothesImage: {fileID: 6289610850099512998}
+  handImage: {fileID: 6183954683827931753}
   skinSprites:
   - {fileID: 21300000, guid: 8c7ba12561509094e994e87bdc0db61e, type: 3}
   - {fileID: 21300000, guid: 23705b0d83ea24847ad9441c206187ff, type: 3}
@@ -75,15 +75,17 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f0e4ab31c5cb6de47b99fce4ccfac5a8, type: 3}
   - {fileID: 21300000, guid: 06e5bb096beedd64fb62437d8f2a9357, type: 3}
   - {fileID: 21300000, guid: 103d6553852fc5042b29c3832ee45bae, type: 3}
-  - {fileID: 21300000, guid: 8470e69b50fad2645b977a4ff8536ab6, type: 3}
-  - {fileID: 21300000, guid: 32a794a42eee79f4a86cb22b38cf64a6, type: 3}
-  - {fileID: 21300000, guid: 601a442b4ddfe7a499df60d536c0359c, type: 3}
-  - {fileID: 21300000, guid: c1507002ff26c9042939c7fa93e00a2e, type: 3}
-  - {fileID: 21300000, guid: a7eb11c853e6a5648a262d8e5872b908, type: 3}
-  - {fileID: 21300000, guid: f0cd2a41e164db74fb5801502b18f8eb, type: 3}
-  - {fileID: 21300000, guid: df333ac9d5c83b444bf27c2070c934e8, type: 3}
-  - {fileID: 21300000, guid: b2e298bcabca56342b5b9cf26725d87f, type: 3}
   glassesSprites: []
+  hairSprites:
+  - {fileID: 21300000, guid: 127213114e6074542bac86932d73e837, type: 3}
+  - {fileID: 21300000, guid: c9510e5b50caff040aea9d806144c52a, type: 3}
+  - {fileID: 21300000, guid: 0d324b293180faf43b62fd8455ac9b46, type: 3}
+  - {fileID: 21300000, guid: cbbeaa1b4281acf4d88ace23e12c24db, type: 3}
+  clothesSprites:
+  - {fileID: 21300000, guid: 84e9d4e4cce4c9a45b6e143c19ad6282, type: 3}
+  - {fileID: 21300000, guid: ed8513c7c8e7a9b4b9ce2c5c3e55a684, type: 3}
+  - {fileID: 21300000, guid: 642bd07941c36324cae57e48677940dc, type: 3}
+  - {fileID: 21300000, guid: 574eab45ed2d2d444b9f9e62ffba35e9, type: 3}
   handSprites:
     HandColorA:
     - {fileID: 21300000, guid: 832d29c386a1b96469a1a0264fcd1564, type: 3}
@@ -93,22 +95,12 @@ MonoBehaviour:
     - {fileID: 21300000, guid: c1d28d87bace8674fa733d1f6fd8a8e0, type: 3}
     HandColorD:
     - {fileID: 21300000, guid: 68ec5ec9b9fa17241ad9052df5ca1408, type: 3}
-  clothesSprites:
-  - {fileID: 21300000, guid: 84e9d4e4cce4c9a45b6e143c19ad6282, type: 3}
-  - {fileID: 21300000, guid: ed8513c7c8e7a9b4b9ce2c5c3e55a684, type: 3}
-  - {fileID: 21300000, guid: 642bd07941c36324cae57e48677940dc, type: 3}
-  - {fileID: 21300000, guid: 574eab45ed2d2d444b9f9e62ffba35e9, type: 3}
-  hairSprites:
-  - {fileID: 21300000, guid: 127213114e6074542bac86932d73e837, type: 3}
-  - {fileID: 21300000, guid: c9510e5b50caff040aea9d806144c52a, type: 3}
-  - {fileID: 21300000, guid: 0d324b293180faf43b62fd8455ac9b46, type: 3}
-  - {fileID: 21300000, guid: cbbeaa1b4281acf4d88ace23e12c24db, type: 3}
   animator: {fileID: 6155688656520349526}
   skinIndex: 0
   glassIndex: 0
-  handIndex: 
-  clotheIndex: 0
   hairIndex: 0
+  clotheIndex: 0
+  handIndex: 
   characterId: 0
 --- !u!95 &6155688656520349526
 Animator:
@@ -152,6 +144,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -173,6 +167,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0

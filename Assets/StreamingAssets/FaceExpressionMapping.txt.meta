@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/_Scenes/FoundersBubbleTestScene.unity.meta
+guid: 987844fb1740bff4482fa61423ef90d0
+========
 guid: 3633a9c636fc6584bb26017487d85ae0
+>>>>>>>> refs/heads/main:Assets/StreamingAssets/FaceExpressionMapping.txt.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

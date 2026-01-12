@@ -1,7 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Assets._Scripts.Managers;
+using Assets._Scripts.Novel;
 using Assets._Scripts.SceneManagement;
 using TMPro;
 using UnityEngine;
@@ -18,22 +16,18 @@ namespace Assets._Scripts.Controller.SceneControllers
     /// </remarks>
     public class PlayInstructionSceneController : SceneController
     {
-        [SerializeField] private Image novelImage;
+        [SerializeField] private GameObject novel;
         [SerializeField] private Image textBoxImage;
         [SerializeField] private TextMeshProUGUI novelName;
         [SerializeField] private TextMeshProUGUI buttonText;
-        [SerializeField] private Color backgroundColor;
 
+        [SerializeField] private Button backToFoundersBubbleButton;
         [SerializeField] private Button playButton;
-        [SerializeField] private Button playButton2;
-        [SerializeField] private Button backButton;
-        [SerializeField] private Toggle toggle;
-        [SerializeField] private Toggle toggle2;
+        [SerializeField] private Button knowledgeButton;
 
-        [SerializeField] private Image playButtonImage1;
-        [SerializeField] private Image playButtonImage2;
-        [SerializeField] private Image checkBoxImage1;
-        [SerializeField] private Image checkBoxImage2;
+        [SerializeField] private Image backToFoundersBubbleButtonImage;
+        [SerializeField] private Image playButtonImage;
+        [SerializeField] private Image knowledgeButtonImage;
         [SerializeField] private Image headerImage;
 
         private bool _isSyncing;
@@ -49,38 +43,42 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </remarks>
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.PlayInstructionScene);
+            BackStackManager.Instance.Push(SceneNames.PlayInstructionScene);
             
-            backgroundColor = PlayManager.Instance().GetColorOfVisualNovelToPlay();
-            novelName.text = BalanceLineBreaks(PlayManager.Instance().GetDesignationOfNovelToPlay());
-            novelImage.color = backgroundColor;
-            toggle.isOn = false;
-            toggle2.isOn = false;
+            VisualNovel visualNovel = PlayManager.Instance().GetVisualNovelToPlay();
+            
+            Image[] images = novel.GetComponentsInChildren<Image>(true);
 
+            foreach (Image img in images)
+            {
+                if (img.gameObject.name == "ButtonFrame")
+                {
+                    img.color = visualNovel.novelFrameColor;
+                }
+                else if (img.gameObject.name == "NovelName")
+                {
+                    img.color = visualNovel.novelColor;
+                }
+            }
+
+            backToFoundersBubbleButton.onClick.AddListener(OnBackToFoundersBubbleButton);
             playButton.onClick.AddListener(OnPlayButton);
-            playButton2.onClick.AddListener(OnPlayButton);
-
-            toggle.onValueChanged.AddListener((value) => SyncToggles(toggle2, value));
-            toggle2.onValueChanged.AddListener((value) => SyncToggles(toggle, value));
+            knowledgeButton.onClick.AddListener(OnKnowledgeButton);
 
             FontSizeManager.Instance().UpdateAllTextComponents();
-
-            SetColours();
         }
 
         /// <summary>
-        /// Synchronizes the state of two toggles to ensure they have matching values.
-        /// Prevents recursive calls during the synchronization process.
+        /// Handles the event when the "Back to Founders Bubble" button is clicked.
         /// </summary>
-        /// <param name="otherToggle">The toggle whose state needs to be updated to match the current toggle.</param>
-        /// <param name="isOn">The current state of the toggle triggering the synchronization.</param>
-        private void SyncToggles(Toggle otherToggle, bool isOn)
+        /// <remarks>
+        /// This method transitions the current scene to the "FoundersBubble" scene
+        /// using the <see cref="SceneLoader.LoadFoundersBubbleScene"/> method.
+        /// It allows users to navigate back to the FoundersBubble context from the instructional scene.
+        /// </remarks>
+        private void OnBackToFoundersBubbleButton()
         {
-            if (_isSyncing) return; // Prevent recursive calls
-
-            _isSyncing = true; // Start syncing
-            otherToggle.isOn = isOn; // Update the other toggle to match the changed one
-            _isSyncing = false; // End syncing
+            SceneLoader.LoadFoundersBubbleScene();
         }
 
         /// <summary>
@@ -89,78 +87,20 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void OnPlayButton()
         {
-            if (toggle.isOn)
-            {
-                ShowPlayInstructionManager.Instance().SetShowInstruction(false);
-            }
-
+            GameManager.Instance.IsIntroNovelLoadedFromMainMenu = false;
             SceneLoader.LoadPlayNovelScene();
         }
 
         /// <summary>
-        /// This method retrieves a color instance from <see cref="NovelColorManager"/> and applies it
-        /// to the designated elements, including button images, checkbox images, and the header image.
-        /// Ensures consistent theming based on the active visual novel.
+        /// Handles the action triggered when the Knowledge button is clicked.
         /// </summary>
-        private void SetColours()
+        /// <remarks>
+        /// This method loads the knowledge scene by invoking the <see cref="SceneLoader.LoadKnowledgeScene"/> method.
+        /// It facilitates navigation between the instructional scene and the knowledge content of the application.
+        /// </remarks>
+        private void OnKnowledgeButton()
         {
-            playButtonImage1.color = NovelColorManager.Instance().GetColor();
-            playButtonImage2.color = NovelColorManager.Instance().GetColor();
-            checkBoxImage1.color = NovelColorManager.Instance().GetColor();
-            checkBoxImage2.color = NovelColorManager.Instance().GetColor();
-            headerImage.color = NovelColorManager.Instance().GetColor();
+            SceneLoader.LoadKnowledgeScene();
         }
-
-        /// <summary>
-        /// Balances line breaks in a given text input by splitting the text across multiple lines
-        /// to achieve a specified maximum number of lines. Each line will aim to distribute the content
-        /// evenly based on total length.
-        /// </summary>
-        /// <param name="input">The original text input that needs to be balanced across lines.</param>
-        /// <param name="maxLineCount">The maximum number of lines to divide the input into. Default is 2.</param>
-        /// <returns>A string with line breaks added, ensuring the text is divided into no more than the specified number of lines.</returns>
-        private static string BalanceLineBreaks(string input, int maxLineCount = 2)
-        {
-            if (string.IsNullOrWhiteSpace(input))
-                return input;
-
-            // Wörter extrahieren
-            var words = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-
-            if (words.Length == 1)
-                return input; // nur ein Wort, keine Aufteilung nötig
-
-            // Gesamtlänge (ohne Leerzeichen)
-            int totalLength = words.Sum(w => w.Length);
-
-            // Ziel-Länge pro Zeile (ungefähr)
-            int targetLength = totalLength / maxLineCount;
-
-            var lines = new List<string>();
-            var currentLine = new List<string>();
-            int currentLength = 0;
-
-            foreach (var word in words)
-            {
-                if (currentLength + word.Length > targetLength && lines.Count < maxLineCount - 1)
-                {
-                    // Neue Zeile starten
-                    lines.Add(string.Join(" ", currentLine));
-                    currentLine.Clear();
-                    currentLength = 0;
-                }
-
-                currentLine.Add(word);
-                currentLength += word.Length + 1; // +1 für Leerzeichen
-            }
-
-            if (currentLine.Any())
-            {
-                lines.Add(string.Join(" ", currentLine));
-            }
-
-            return string.Join(Environment.NewLine, lines);
-        }
-
     }
 }

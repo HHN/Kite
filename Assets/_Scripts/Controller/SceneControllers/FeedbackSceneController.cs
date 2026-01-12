@@ -2,18 +2,19 @@ using System;
 using System.Collections;
 using System.Globalization;
 using System.Runtime.InteropServices;
+using Assets._Scripts.Handlers;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Messages;
 using Assets._Scripts.Novel;
 using Assets._Scripts.Player;
 using Assets._Scripts.SaveNovelData;
 using Assets._Scripts.SceneManagement;
-using Assets._Scripts.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Assets._Scripts.ServerCommunication;
+using Assets._Scripts.ServerCommunication.SceneMetrics;
 using Assets._Scripts.ServerCommunication.ServerCalls;
 using UnityEngine.Scripting;
 
@@ -33,7 +34,6 @@ namespace Assets._Scripts.Controller.SceneControllers
     [Preserve]
     public class FeedbackSceneController : SceneController, IOnSuccessHandler, IOnErrorHandler
     {
-        [SerializeField] private TextMeshProUGUI feedbackLinkText;
         [SerializeField] private TextMeshProUGUI feedbackText;
         [SerializeField] private TextMeshProUGUI hintText;
         [SerializeField] private GameObject gptServercallPrefab;
@@ -54,15 +54,13 @@ namespace Assets._Scripts.Controller.SceneControllers
 
         [SerializeField] private ScrollRect feedbackScrollRect;
         [SerializeField] private float wheelScrollSpeed = 0.2f;
-        
-        private static readonly string LinkColor = "#F5944E";
 
     #if UNITY_WEBGL && !UNITY_EDITOR
         [DllImport("__Internal")]
         private static extern void CopyTextToClipboard(string text);
     #endif
-
-        private readonly CultureInfo _culture = new CultureInfo("de-DE");
+        
+        private readonly CultureInfo _culture = new("de-DE");
 
         private VisualNovel _novel;
         private string _dialog;
@@ -77,8 +75,15 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void Start()
         {
+            if (!PlayerPrefs.HasKey("Feedback") || PlayerPrefs.GetInt("Feedback") == 0)
+            {
+                PlayerPrefs.SetInt("Feedback", 1);
+                PlayerPrefs.Save();
+                StartCoroutine(SceneMetricsClient.Hit(SceneType.Feedback));
+            }
+            StartCoroutine(SceneMetricsClient.HitPlaythrough());
             // Add current scene to back stack for navigation
-            BackStackManager.Instance().Push(SceneNames.FeedbackScene);
+            BackStackManager.Instance.Push(SceneNames.FeedbackScene);
 
             // Update text components with current font size settings
             FontSizeManager.Instance().UpdateAllTextComponents();
@@ -95,9 +100,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             if (string.IsNullOrEmpty(novelToPlay.feedback))
             {
                 StartWaitingMusic();
-                _novel = PlayManager.Instance().GetVisualNovelToPlay();
-                feedbackLinkText.SetText("Erzähl uns fünf Minuten was Dir aufgefallen ist – dein Feedback hilft uns, KITE II weiterzuentwickeln.\n" +
-                                         $"<color={LinkColor}><link=\"https://9bxji5742ys.typeform.com/to/bNxpDQWc\"><u>[Zur Umfrage]</u></link></color>");
+                _novel = PlayManager.Instance().GetVisualNovelToPlay(); 
                 feedbackText.SetText("Das Feedback wird gerade geladen. Dies dauert durchschnittlich zwischen 30 und 60 Sekunden. Solltest du nicht so lange warten wollen, kannst du dir das Feedback einfach im Archiv anschauen, sobald es fertig ist.");
                 hintText.SetText("Hinweis: Analyse und Feedback wurden durch KI künstlich erzeugt. Eine individuelle Beratung wird hierdurch nicht ersetzt.");
                 
@@ -112,9 +115,9 @@ namespace Assets._Scripts.Controller.SceneControllers
                 // Setup feedback handler
                 FeedbackHandler feedbackHandler = new FeedbackHandler()
                 {
-                    FeedbackSceneController = this,
-                    ID = PlayManager.Instance().GetVisualNovelToPlay().id,
-                    Dialog = _dialog
+                    feedbackSceneController = this,
+                    id = PlayManager.Instance().GetVisualNovelToPlay().id,
+                    dialog = _dialog
                 };
 
                 call.OnSuccessHandler = feedbackHandler;
@@ -125,23 +128,30 @@ namespace Assets._Scripts.Controller.SceneControllers
                 call.SendRequest();
                 DontDestroyOnLoad(call.gameObject);
                 
-                // Clean up saved data
-                string novelId = novelToPlay.id.ToString();
-                NovelSaveData savedData = SaveLoadManager.Load(novelId);
-
-                if (savedData == null)
-                {
-                    return;
-                }
-            
-                SaveLoadManager.DeleteNovelSaveData(novelId);
-                
                 return;
             }
 
             // If feedback already exists, display it
             feedbackText.SetText(novelToPlay.feedback);
             loadingAnimation.SetActive(false);
+        }
+        
+        /// <summary>
+        /// Called when the MonoBehaviour will be destroyed.
+        /// Ensures that any ongoing text-to-speech processes are stopped when leaving the scene.
+        /// </summary>
+        private void OnDestroy()
+        {
+            if (TextToSpeechManager.Instance != null)
+            {
+                TextToSpeechManager.Instance.CancelSpeak();
+            }
+            
+            if (novelToPlay != null)
+            {
+                string novelId = novelToPlay.id.ToString();
+                SaveLoadManager.DeleteNovelSaveData(novelId);
+            }
         }
 
         /// <summary>
@@ -168,16 +178,17 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         /// <remarks>
         /// This method ensures that the feedback scene is not revisited when navigating back and
-        /// transitions the user to the Founder's Bubble scene after handling necessary cleanup.
+        /// transitions the user to the Founder's Bubble scene after handling the necessary cleanup.
         /// </remarks>
         public void OnFinishButton()
         {
-        #if UNITY_IOS
-                    TextToSpeechManager.Instance.CancelSpeak();
-        #endif
+            if (TextToSpeechManager.Instance != null)
+            {
+                TextToSpeechManager.Instance.CancelSpeak();
+            }
                     
             // We go back to the explorer and don't want the back-button to bring us to the feedback scene again
-            BackStackManager.Instance().Clear();
+            BackStackManager.Instance.Clear();
             SceneLoader.LoadFoundersBubbleScene();
         }
 
@@ -277,7 +288,7 @@ namespace Assets._Scripts.Controller.SceneControllers
                 return;
             }
             
-            // Stop background music and show error message
+            // Stop background music and show an error message
             StopWaitingMusic();
             DisplayErrorMessage(ErrorMessages.UNEXPECTED_SERVER_ERROR);
             
@@ -292,7 +303,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             // Read error message via text-to-speech
             StartCoroutine(TextToSpeechManager.Instance.Speak(completion));
             
-            // Update UI elements to show error state
+            // Update UI elements to show the error state
             feedbackText.SetText("Leider ist aktuell keine KI-Analyse verfügbar.");
             loadingAnimation.SetActive(false);
             novelToPlay.feedback = completion;
@@ -355,72 +366,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void PlayResultMusic()
         {
             GlobalVolumeManager.Instance.PlaySound(resultMusic);
-        }
-    }
-
-    /// <summary>
-    /// FeedbackHandler processes the success and error responses for feedback server calls.
-    /// </summary>
-    /// <remarks>
-    /// This class implements the <see cref="IOnSuccessHandler"/> interface to handle successful server responses.
-    /// It also includes error handling logic for unsuccessful call scenarios.
-    /// FeedbackHandler interacts closely with the <see cref="FeedbackSceneController"/> to manage server responses
-    /// tied to the feedback feature.
-    /// </remarks>
-    public class FeedbackHandler : IOnSuccessHandler
-    {
-        public FeedbackSceneController FeedbackSceneController;
-        public long ID;
-        public string Dialog;
-        
-        private readonly CultureInfo _culture = new("de-DE");
-
-        /// <summary>
-        /// Processes the successful response received from the server by performing the following actions:
-        /// - Saves the dialog content to the history for record-keeping.
-        /// - Notifies the <see cref="FeedbackSceneController"/> if it is available, forwarding the response for additional handling.
-        /// </summary>
-        /// <param name="response">The server response containing the completion data to be processed.</param>
-        public void OnSuccess(Response response)
-        {
-            SaveDialogToHistory(response.GetCompletion());
-
-            if (!FeedbackSceneController.IsNullOrDestroyed())
-            {
-                FeedbackSceneController.OnSuccess(response);
-            }
-        }
-
-        /// <summary>
-        /// Handles error scenarios during server communication, processes the error response,
-        /// and delegates error handling to the associated FeedbackSceneController if available.
-        /// </summary>
-        /// <param name="message">The error response received from the server.</param>
-        public void OnError(Response message)
-        {
-            SaveDialogToHistory(message.GetCompletion());
-
-            if (!FeedbackSceneController.IsNullOrDestroyed())
-            {
-                FeedbackSceneController.OnError(message);
-            }
-        }
-
-        /// <summary>
-        /// Saves a dialog entry to the history by creating a new history object,
-        /// populating it with relevant dialog information, and adding it to the dialog history manager.
-        /// </summary>
-        /// <param name="response">The response completion text to be trimmed and stored in the dialog history entry.</param>
-        private void SaveDialogToHistory(string response)
-        {
-            DialogHistoryEntry dialogHistoryEntry = new DialogHistoryEntry();
-            dialogHistoryEntry.SetNovelId(ID);
-            dialogHistoryEntry.SetDialog(Dialog);
-            dialogHistoryEntry.SetCompletion(response.Trim());
-            DateTime now = DateTime.Now;
-            string formattedDateTime = now.ToString("ddd | dd.MM.yyyy | HH:mm", _culture);
-            dialogHistoryEntry.SetDateAndTime(formattedDateTime);
-            DialogHistoryManager.Instance().AddEntry(dialogHistoryEntry);
         }
     }
 }

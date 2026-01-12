@@ -1,3 +1,4 @@
+using Assets._Scripts._Mappings;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
 using UnityEngine;
@@ -7,16 +8,16 @@ namespace Assets._Scripts.UIElements.FoundersBubble
 {
     /// <summary>
     /// Updates the visibility of a UI element (typically an image) to indicate
-    /// whether a specific visual novel is bookmarked/favorited.
+    /// whether a specific visual novel is bookmarked.
     /// </summary>
     public class BookmarkUpdater : MonoBehaviour
     {
-        [SerializeField] private VisualNovelNames visualNovel;
+        [SerializeField] private string visualNovel;
         
         /// <summary>
-        /// Gets or sets the <see cref="VisualNovelNames"/> associated with this updater.
+        /// Gets or sets the <see cref="VisualNovel"/> associated with this updater.
         /// </summary>
-        public VisualNovelNames VisualNovel
+        public string VisualNovel
         {
             get => visualNovel;
             set => visualNovel = value;
@@ -30,7 +31,8 @@ namespace Assets._Scripts.UIElements.FoundersBubble
         /// </summary>
         private void Update()
         {
-            gameObject.GetComponent<Image>().enabled = FavoritesManager.Instance().IsFavorite(VisualNovelNamesHelper.ToInt(visualNovel));
+            long currentNovel = MappingManager.allNovels.Find(n => n.title == visualNovel).id;
+            gameObject.GetComponent<Image>().enabled = FavoritesManager.Instance().IsFavorite(currentNovel);
         }
     }
 }

@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel;
-using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
+using Assets._Scripts.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,17 +17,24 @@ namespace Assets._Scripts.Controller.SceneControllers
     public class BookmarkedNovelsSceneController : SceneController
     {
         [SerializeField] private RectTransform visualNovelHolder;
-        [SerializeField] private Button bankkreditNovel;
-        [SerializeField] private Button investorNovel;
-        [SerializeField] private Button elternNovel;
-        [SerializeField] private Button notarinNovel;
-        [SerializeField] private Button presseNovel;
-        [SerializeField] private Button bueroNovel;
-        [SerializeField] private Button honorarNovel;
+        [SerializeField] private GameObject novelButtonPrefab;
 
         [SerializeField] private GameObject selectNovelSoundPrefab;
 
-        private Dictionary<VisualNovelNames, Button> _novelButtons;
+        [Header("Layout")] 
+        [SerializeField] private int columns = 3;
+        [SerializeField, Range(0.6f, 1.5f)] private float horizontalSpacingMultiplier = 1f;
+        [SerializeField, Range(0.6f, 1.5f)] private float verticalSpacingMultiplier = 1f;
+
+        [SerializeField] private float horizontalOffset = 190f;
+        [SerializeField] private float verticalOffset = 15.5f;
+        
+        private const int ColumnsInEvenRow = 2;
+        private const int ColumnsInOddRow = 1;
+        private const float Sqrt3Half = 0.866025404f; // Sqrt(3) / 2
+        
+        private float _prefabWidth;
+        private float _prefabHeight;
 
         /// <summary>
         /// Initializes the bookmarked novels scene by setting up the back stack, mapping novel buttons to visual novel names,
@@ -36,176 +43,343 @@ namespace Assets._Scripts.Controller.SceneControllers
         public void Start()
         {
             // Add current scene to back stack for navigation
-            BackStackManager.Instance().Push(SceneNames.BookmarkedNovelsScene);
+            BackStackManager.Instance.Push(SceneNames.BookmarkedNovelsScene);
             
-            // Initialize dictionary mapping novel names to UI buttons
-            _novelButtons = new Dictionary<VisualNovelNames, Button>
-            {
-                { VisualNovelNames.BankKreditNovel, bankkreditNovel },
-                { VisualNovelNames.InvestorNovel, investorNovel },
-                { VisualNovelNames.ElternNovel, elternNovel },
-                { VisualNovelNames.NotariatNovel, notarinNovel },
-                { VisualNovelNames.PresseNovel, presseNovel },
-                { VisualNovelNames.VermieterNovel, bueroNovel },
-                { VisualNovelNames.HonorarNovel, honorarNovel },
-            };
+            ClearNovelHolder();
+            CalculatePrefabDimensions();
 
-            // Add click listeners and hide all novel buttons initially
-            foreach (var novelButton in _novelButtons)
-            {
-                novelButton.Value.onClick.AddListener(() => OnNovelButton(novelButton.Key));
-                novelButton.Value.gameObject.SetActive(false);
-            }
-            
-            // Get all available novels and create a lookup by ID
-            List<VisualNovel> allKiteNovels = KiteNovelManager.Instance().GetAllKiteNovels();
-            Dictionary<long, VisualNovel> allKiteNovelsById = allKiteNovels.ToDictionary(novel => novel.id);
-
-            // Get a list of favorite novel IDs
+            Dictionary<long, VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels().ToDictionary(n => n.id);
             List<long> favoriteIds = FavoritesManager.Instance().GetFavoritesIds();
-            int index = 0;
+            
+            if (favoriteIds.Count == 0) return;
+            
+            CreateNovelButtons(favoriteIds, allNovels);
+            AdjustScrollHeight(favoriteIds.Count);
+        }
 
-            // Process each favorite novel
-            foreach (long id in favoriteIds)
+        /// <summary>
+        /// Clears all child objects under the visual novel holder to reset the UI.
+        /// This method ensures that the visual novel holder is emptied before populating it with new data.
+        /// </summary>
+        private void ClearNovelHolder()
+        {
+            for (int i = visualNovelHolder.childCount - 1; i >= 0; i--)
+                Destroy(visualNovelHolder.GetChild(i).gameObject);
+        }
+
+        /// <summary>
+        /// Calculates the dimensions of the novel button prefab for proper layout and rendering.
+        /// Attempts to determine size using its RectTransform and validates the result.
+        /// If the size cannot be determined through RectTransform, fallback logic attempts to use additional layout data.
+        /// Logs an error if the dimensions cannot be determined.
+        /// </summary>
+        private void CalculatePrefabDimensions()
+        {
+            if (novelButtonPrefab == null)
             {
-                if (allKiteNovelsById.TryGetValue(id, out VisualNovel foundNovel))
+                LogManager.Error("NovelButtonPrefab is missing!");
+                return;
+            }
+
+            TryGetSizeFromRectTransform();
+            
+            if (!ValidatePrefabSize())
+            {
+                TryGetSizeFromLayoutElement();
+            }
+
+            if (!ValidatePrefabSize())
+            {
+                LogManager.Error("Could not determine prefab size.");
+            }
+        }
+
+        /// <summary>
+        /// Attempts to retrieve the size dimensions (width and height) of the `novelButtonPrefab`
+        /// from its associated `RectTransform` component. Extracted values are assigned to the
+        /// `_prefabWidth` and `_prefabHeight` fields. If the `sizeDelta` dimensions are nonzero,
+        /// those values are used. Otherwise, the dimensions of the `Rect` are used.
+        /// </summary>
+        private void TryGetSizeFromRectTransform()
+        {
+            RectTransform prefabRect = novelButtonPrefab.GetComponent<RectTransform>();
+            if (prefabRect != null)
+            {
+                _prefabWidth = prefabRect.sizeDelta.x > 0 ? prefabRect.sizeDelta.x : prefabRect.rect.width;
+                _prefabHeight = prefabRect.sizeDelta.y > 0 ? prefabRect.sizeDelta.y : prefabRect.rect.height;
+            }
+        }
+
+        /// <summary>
+        /// Attempts to update the width and height of the prefab by retrieving preferred dimensions
+        /// from the LayoutElement component attached to the prefab. If the LayoutElement exists and
+        /// preferred dimensions are specified, these values are assigned to the prefab's dimensions.
+        /// </summary>
+        private void TryGetSizeFromLayoutElement()
+        {
+            var layoutElement = novelButtonPrefab.GetComponent<LayoutElement>();
+            if (layoutElement != null)
+            {
+                _prefabWidth = layoutElement.preferredWidth > 0 ? layoutElement.preferredWidth : _prefabWidth;
+                _prefabHeight = layoutElement.preferredHeight > 0 ? layoutElement.preferredHeight : _prefabHeight;
+            }
+        }
+
+        /// <summary>
+        /// Validates the dimensions of the prefab by checking if the width and height are both greater than zero.
+        /// </summary>
+        /// <returns>
+        /// Returns true if both width and height of the prefab are greater than zero, otherwise returns false.
+        /// </returns>
+        private bool ValidatePrefabSize()
+        {
+            return _prefabWidth > 0 && _prefabHeight > 0;
+        }
+
+        /// <summary>
+        /// Generates and initializes buttons for the favorite visual novels based on the provided lists of favorite IDs
+        /// and all available novels. Each button is tied to a novel and indexed for a proper UI arrangement.
+        /// </summary>
+        /// <param name="favoriteIds">A list of IDs representing the user's favorite visual novels.</param>
+        /// <param name="allNovelsById">A dictionary containing all available visual novels keyed by their unique IDs.</param>
+        private void CreateNovelButtons(List<long> favoriteIds, Dictionary<long, VisualNovel> allNovelsById)
+        {
+            for (int i = 0; i < favoriteIds.Count; i++)
+            {
+                if (!allNovelsById.TryGetValue(favoriteIds[i], out var novel))
                 {
-                    // Get the button instance for this novel
-                    GameObject novelButtonInstance = GetNovelById(id);
-
-                    if (novelButtonInstance == null)
-                    {
-                        Debug.LogWarning($"Button instance for Novel ID {id} not found in scene. Skipping.");
-                        continue;
-                    }
-
-                    // Position and show the button
-                    Vector3 localPosition = GetLocalPositionByIndex(index);
-                    novelButtonInstance.transform.localPosition = localPosition;
-                    novelButtonInstance.gameObject.SetActive(true);
-
-                    // Set the button text
-                    TextMeshProUGUI novelText = novelButtonInstance.gameObject.GetComponentInChildren<TextMeshProUGUI>();
-                    if (novelText != null)
-                    {
-                        novelText.text = foundNovel.isKiteNovel ? foundNovel.designation : foundNovel.title;
-                    }
-                    else
-                    {
-                        Debug.LogWarning($"TextMeshProUGUI component not found on novel button for ID: {id}");
-                    }
-
-                    index++;
+                    LogManager.Warning($"Favorite ID {favoriteIds[i]} not found in novels.");
+                    continue;
                 }
-                else
+
+                CreateSingleNovelButton(novel, i);
+            }
+        }
+
+        /// <summary>
+        /// Creates a single visual novel button based on the provided visual novel data and its index.
+        /// This method initializes the button's position, scale, name, and visual representation.
+        /// </summary>
+        /// <param name="novel">The visual novel information used to populate the button's details.</param>
+        /// <param name="index">The positional index of the button, used to calculate its placement.</param>
+        private void CreateSingleNovelButton(VisualNovel novel, int index)
+        {
+            GameObject buttonObject = Instantiate(novelButtonPrefab, visualNovelHolder, false);
+            RectTransform rectTransform = buttonObject.GetComponent<RectTransform>();
+            
+            rectTransform.localScale = Vector3.one;
+            rectTransform.anchoredPosition = GetHexPosition(index);
+            
+            buttonObject.name = novel.title;
+            SetupButtonUI(buttonObject, novel);
+        }
+
+        /// <summary>
+        /// Configures the UI and functionality of a button associated with a specific visual novel.
+        /// Sets the button's image, text, and click event handler based on the corresponding visual novel properties.
+        /// </summary>
+        /// <param name="go">The game object representing the button in the UI.</param>
+        /// <param name="novel">The visual novel associated with the button, providing necessary data for configuration.</param>
+        private void SetupButtonUI(GameObject go, VisualNovel novel)
+        {
+            ConfigureButtonImage(go, novel);
+            ConfigureButtonText(go, novel);
+            ConfigureButtonClickHandler(go, novel);
+        }
+
+        /// <summary>
+        /// Configures the image of a button based on the properties of the provided visual novel.
+        /// Updates the button's color using the novel's predefined color attribute.
+        /// </summary>
+        /// <param name="go">The button game object whose image component is to be configured.</param>
+        /// <param name="novel">The visual novel object containing the color properties to apply to the button.</param>
+        private void ConfigureButtonImage(GameObject go, VisualNovel novel)
+        {
+            var image = go.GetComponent<Image>();
+            if (image != null)
+                image.color = novel.novelColor;
+        }
+
+        /// <summary>
+        /// Updates the text component of the button to display information about the given visual novel,
+        /// such as its title or designation, based on whether the novel is categorized as a Kite novel.
+        /// </summary>
+        /// <param name="go">The game object representing the button that will be updated.</param>
+        /// <param name="novel">The visual novel whose details are to be displayed on the button.</param>
+        private void ConfigureButtonText(GameObject go, VisualNovel novel)
+        {
+            var text = go.GetComponentInChildren<TextMeshProUGUI>();
+            if (text != null)
+                text.text = novel.title;
+        }
+
+        /// <summary>
+        /// Configures the click handler for a button associated with a given visual novel,
+        /// ensuring the appropriate action is executed when the button is clicked.
+        /// </summary>
+        /// <param name="go">The GameObject representing the button to configure.</param>
+        /// <param name="novel">The VisualNovel associated with the button that will be passed to the click handler.</param>
+        private void ConfigureButtonClickHandler(GameObject go, VisualNovel novel)
+        {
+            var button = go.GetComponent<Button>();
+            if (button != null)
+            {
+                button.onClick.RemoveAllListeners();
+                button.onClick.AddListener(() => OnNovelSelected(novel));
+            }
+        }
+
+        /// <summary>
+        /// Calculates the hexagonal grid position based on the given index, taking into account
+        /// the horizontal and vertical spacing, as well as the hexagonal row and column alignment.
+        /// </summary>
+        /// <param name="index">The index of the hexagonal grid element for which the position is being calculated.</param>
+        /// <returns>The calculated position as a <see cref="Vector3"/>, representing the local position in the grid.</returns>
+        private Vector3 GetHexPosition(int index)
+        {
+            float horizontalSpacing = _prefabWidth * Sqrt3Half + horizontalOffset;
+            float verticalSpacing = _prefabHeight * 0.5f + verticalOffset;
+            
+            var (row, column) = CalculateHexRowAndColumn(index);
+            
+            float x = CalculateHexXPosition(row, column, horizontalSpacing);
+            float y = -row * verticalSpacing;
+            
+            return new Vector3(x, y, 0f);
+        }
+
+        /// <summary>
+        /// Calculates the hexagonal grid row and column indices based on the provided flat index.
+        /// This method determines the position of a visual element in a hexagonal grid by iterating through rows until the
+        /// specified index is located within a particular row.
+        /// </summary>
+        /// <param name="index">The flat index representing the position in a sequential collection of grid elements.</param>
+        /// <returns>A tuple containing the calculated row and column indices in the hexagonal grid.</returns>
+        private (int row, int column) CalculateHexRowAndColumn(int index)
+        {
+            int remainingIndex = index;
+            int row = 0;
+            int column;
+            
+            while (true)
+            {
+                int columnsInCurrentRow = GetColumnsInRow(row);
+                
+                if (remainingIndex < columnsInCurrentRow)
                 {
-                    Debug.LogWarning($"Favorite Novel with ID {id} not found in allKiteNovels. Skipping.");
+                    column = remainingIndex;
+                    break;
                 }
+                
+                remainingIndex -= columnsInCurrentRow;
+                row++;
             }
             
-            // Adjust the height of the visual novel holder based on the number of novels
-            SetVisualNovelHolderHeight(index);
+            return (row, column);
         }
 
         /// <summary>
-        /// Sets the height of the visual novel holder based on the number of visual novels displayed.
+        /// Determines the number of columns in a given row based on whether the row is odd or even.
         /// </summary>
-        /// <param name="index">The count of visual novels to determine the height of the holder.</param>
-        private void SetVisualNovelHolderHeight(int index)
+        /// <param name="row">The row index for which the number of columns is to be determined.</param>
+        /// <returns>The number of columns in the specified row. Returns COLUMNS_IN_EVEN_ROW for even rows and COLUMNS_IN_ODD_ROW for odd rows.</returns>
+        private int GetColumnsInRow(int row)
         {
-            float height = index switch
+            bool isEvenRow = row % 2 == 0;
+            return isEvenRow ? ColumnsInEvenRow : ColumnsInOddRow;
+        }
+
+        /// <summary>
+        /// Calculates the horizontal X position for a hexagonal grid layout based on the given row, column, and horizontal spacing.
+        /// </summary>
+        /// <param name="row">The row of the hexagonal grid where the element is located.</param>
+        /// <param name="column">The column within the current row of the hexagonal grid.</param>
+        /// <param name="horizontalSpacing">The spacing between columns in the hexagonal grid.</param>
+        /// <returns>Returns the calculated horizontal X position of the hexagonal cell.</returns>
+        private float CalculateHexXPosition(int row, int column, float horizontalSpacing)
+        {
+            int columnsInCurrentRow = GetColumnsInRow(row);
+
+            if (columnsInCurrentRow == ColumnsInEvenRow)
             {
-                12 => 1300,
-                >= 10 => 1200,
-                9 => 1050,
-                >= 7 => 900,
-                6 => 750,
-                >= 4 => 600,
-                3 => 450,
-                _ => 300
-            };
-
-            visualNovelHolder.GetComponent<LayoutElement>().preferredHeight = height;
+                return column == 0 ? -horizontalSpacing : horizontalSpacing;
+            }
+            
+            return 0f;
         }
 
         /// <summary>
-        /// Returns the local position of a UI element based on its index.
+        /// Adjusts the height of the scroll view to accommodate the layout of visual novel buttons,
+        /// ensuring they are arranged correctly based on the number of favorite novels and their grid spacing.
         /// </summary>
-        /// <param name="index">The index for which the local position is to be calculated.</param>
-        /// <returns>A <see cref="Vector3"/> representing the local position corresponding to the specified index.</returns>
-        private static Vector3 GetLocalPositionByIndex(int index)
+        /// <param name="count">The number of favorite visual novels to display, which determines the required height of the scroll.</param>
+        private void AdjustScrollHeight(int count)
         {
-            return index switch
+            float size = _prefabWidth / 2f;
+            GetSpacing(size, out float ySpacing);
+            
+            int totalRows = CalculateTotalRows(count);
+            float requiredHeight = totalRows * ySpacing;
+            
+            visualNovelHolder.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, requiredHeight);
+        }
+
+        /// <summary>
+        /// Calculates the total number of rows required to display a given number of items,
+        /// based on the number of columns that can fit in each row.
+        /// </summary>
+        /// <param name="count">The total number of items to be displayed.</param>
+        /// <returns>The total number of rows required to display all items.</returns>
+        private int CalculateTotalRows(int count)
+        {
+            int totalRows = 0;
+            int remainingItems = count;
+            
+            while (remainingItems > 0)
             {
-                0 => new Vector3(-250f, 0f, 0f),
-                1 => new Vector3(250f, 0f, 0f),
-                2 => new Vector3(0f, -144.5f, 0f),
-                3 => new Vector3(-250f, -290f, 0f),
-                4 => new Vector3(250f, -290f, 0f),
-                5 => new Vector3(0f, -433.5f, 0f),
-                6 => new Vector3(-250f, -578f, 0f),
-                7 => new Vector3(250f, -578f, 0f),
-                8 => new Vector3(0f, -722.5f, 0f),
-                9 => new Vector3(-250f, -868f, 0f),
-                10 => new Vector3(250f, -868f, 0f),
-                11 => new Vector3(0f, -1011.5f, 0f),
-                _ => Vector3.zero
-            };
+                totalRows++;
+                int columnsInCurrentRow = GetColumnsInRow(totalRows - 1);
+                remainingItems -= columnsInCurrentRow;
+            }
+            
+            return totalRows;
         }
 
         /// <summary>
-        /// Retrieves the GameObject representing the novel button associated with the specified novel ID.
+        /// Calculates the horizontal and vertical spacing for elements based on the size of each element
+        /// and the spacing multipliers defined for horizontal and vertical spacing.
         /// </summary>
-        /// <param name="id">The unique identifier of the visual novel to locate the corresponding button.</param>
-        /// <returns>The GameObject of the novel button if found; otherwise, null.</returns>
-        private GameObject GetNovelById(long id)
+        /// <param name="size">The size of the element used to calculate spacing.</param>
+        /// <param name="ySpacing">The calculated vertical spacing for the elements.</param>
+        private void GetSpacing(float size, out float ySpacing)
         {
-            VisualNovelNames visualNovelName = VisualNovelNamesHelper.ValueOf((int)id);
-            return _novelButtons.TryGetValue(visualNovelName, out var button) ? button.gameObject : null;
+            ySpacing = size * 1.5f * verticalSpacingMultiplier;
         }
 
         /// <summary>
         /// Handles the process of loading and preparing the selected visual novel for play.
         /// </summary>
-        /// <param name="visualNovelName">The name of the visual novel to be loaded and played.</param>
-        private void OnNovelButton(VisualNovelNames visualNovelName)
+        /// <param name="visualNovel">The name of the visual novel to be loaded and played.</param>
+        private void OnNovelSelected(VisualNovel visualNovel)
         {
-            VisualNovel visualNovelToDisplay = null;
-            List<VisualNovel> allNovels = KiteNovelManager.Instance().GetAllKiteNovels();
-
-            foreach (VisualNovel novel in allNovels)
-            {
-                if (novel.id == VisualNovelNamesHelper.ToInt(visualNovelName))
-                {
-                    visualNovelToDisplay = novel;
-                    break;
-                }
-            }
-
-            if (visualNovelToDisplay == null)
+            if (visualNovel == null)
             {
                 DisplayErrorMessage("Die gewünschte Novel konnte nicht geladen werden.");
                 return;
             }
 
-            Color novelColor = visualNovelToDisplay.novelColor;
-            NovelColorManager.Instance().SetColor(novelColor);
+            NovelColorManager.Instance().SetColor(visualNovel.novelColor);
 
-            PlayManager.Instance().SetVisualNovelToPlay(visualNovelToDisplay);
-            PlayManager.Instance().SetColorOfVisualNovelToPlay(novelColor);
-            PlayManager.Instance().SetDisplayNameOfNovelToPlay(FoundersBubbleMetaInformation.GetDisplayNameOfNovelToPlay(visualNovelName));
-            PlayManager.Instance().SetDesignationOfNovelToPlay(visualNovelToDisplay.designation);
-            GameObject buttonSound = Instantiate(selectNovelSoundPrefab);
-            DontDestroyOnLoad(buttonSound);
+            var playManager = PlayManager.Instance();
+            playManager.SetVisualNovelToPlay(visualNovel);
 
-            if (ShowPlayInstructionManager.Instance().ShowInstruction())
+            if (selectNovelSoundPrefab != null)
             {
-                SceneLoader.LoadPlayInstructionScene();
+                var sound = Instantiate(selectNovelSoundPrefab);
+                DontDestroyOnLoad(sound);
             }
-            else
-            {
-                SceneLoader.LoadPlayNovelScene();
-            }
+
+            SceneLoader.LoadPlayNovelScene();
         }
     }
 }

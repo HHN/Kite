@@ -1,4 +1,5 @@
 using System;
+using Assets._Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -57,8 +58,6 @@ namespace Assets._Scripts.Controller.CharacterController
         [HideInInspector] public int[] handIndex;
 
         [HideInInspector] public int characterId;
-
-        private static readonly int IsTalking = Animator.StringToHash("isTalking");
 
         private static readonly int[] FaceExpressions = 
         {
@@ -230,7 +229,7 @@ namespace Assets._Scripts.Controller.CharacterController
             
             if (selectedHandColorArray != null && (handSpriteIndex.spriteIndex < 0 || handSpriteIndex.spriteIndex >= selectedHandColorArray.Length))
             {
-                Debug.LogWarning($"Invalid spriteIndex {handSpriteIndex.spriteIndex} for color {handSpriteIndex.colorIndex}");
+                LogManager.Warning($"Invalid spriteIndex {handSpriteIndex.spriteIndex} for color {handSpriteIndex.colorIndex}");
                 return;
             }
 
@@ -315,29 +314,5 @@ namespace Assets._Scripts.Controller.CharacterController
 
             animator.Play(FaceExpressions[expression]);
         }
-
-        /// <summary>
-        /// Activates the "talking" animation for the character by enabling the `isTalking` parameter in the animator.
-        /// </summary>
-        /// <remarks>
-        /// This method interacts with the character's animator to trigger the talking animation state.
-        /// If the animator is null, the method does nothing.
-        /// </remarks>
-        // public void StartTalking()
-        // {
-        //     animator?.SetBool(IsTalking, true);
-        // }
-
-        /// <summary>
-        /// Stops the talking animation of the character by setting the "isTalking" animation flag to false.
-        /// </summary>
-        /// <remarks>
-        /// This method uses the Animator component to control the "isTalking" animation state.
-        /// If the Animator instance is not null, it updates the "isTalking" boolean parameter to false, effectively halting any corresponding talking animations.
-        /// </remarks>
-        // public void StopTalking()
-        // {
-        //     animator?.SetBool(IsTalking, false);
-        // }
     }
 }

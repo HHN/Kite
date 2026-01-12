@@ -1,12 +1,30 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Assets._Scripts.Novel;
+using Assets._Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.Networking;
 
 namespace Assets._Scripts.Managers
 {
+    
+    [Serializable]
+    public class KnowledgeItem
+    {
+        public string type;
+        public string category;
+        public string headline;
+        public string bias;
+    }
+    
+    [Serializable]
+    public class KnowledgeBase
+    {
+        public List<KnowledgeItem> items;
+    }
+    
     /// <summary>
     /// Manages the process of building and handling dialog prompts for a visual novel.
     /// This class is implemented as a singleton to ensure a single instance throughout the application.
@@ -26,7 +44,13 @@ namespace Assets._Scripts.Managers
         /// </summary>
         private PromptManager()
         {
+#if UNITY_WEBGL && !UNITY_EDITOR
+            // In WebGL, use relative URL to StreamingAssets
+            _promptPath = "StreamingAssets/Prompt.txt";
+#else
+            // On other platforms, use standard Path.Combine
             _promptPath = Path.Combine(Application.streamingAssetsPath, "Prompt.txt");
+#endif
         }
 
         /// <summary>
@@ -118,20 +142,29 @@ namespace Assets._Scripts.Managers
         }
 
         /// <summary>
-        /// Loads the knowledge base from a file located in the Resources directory.
-        /// Appends the content of the file to the existing prompt string builder if the file exists.
-        /// Logs an error if the knowledge base file is not found.
+        /// Loads the knowledge base from a JSON file located in the Resources folder.
+        /// Parses the JSON content into a KnowledgeBase object and appends its items to the prompt.
+        /// Ensures the inclusion of details such as type, category, headline, and bias for each knowledge item.
+        /// Logs an error message if the knowledge base file is not found.
         /// </summary>
         private void LoadKnowledgeBaseFromFile()
         {
             TextAsset json = Resources.Load<TextAsset>("KnowledgeBase");
             if (json != null)
             {
-                _prompt.Append(json.text).AppendLine();
+                KnowledgeBase kb = JsonUtility.FromJson<KnowledgeBase>(json.text);
+                foreach (var item in kb.items)
+                {
+                    _prompt.AppendLine($"{item.type}");
+                    _prompt.AppendLine($"{item.category}");
+                    _prompt.AppendLine($"{item.headline}");
+                    _prompt.AppendLine($"{item.bias}");
+                    _prompt.AppendLine();
+                }
             }
             else
             {
-                Debug.LogError("KnowledgeBase not found in Resources!");
+                LogManager.Error("KnowledgeBase not found in Resources!");
             }
         }
 
@@ -144,30 +177,30 @@ namespace Assets._Scripts.Managers
         /// <param name="fileLabel">A label used for logging purposes to identify the type of file being loaded.</param>
         private void LoadTextFile(string path, Action<string> onSuccess, string fileLabel)
         {
-        #if UNITY_WEBGL
-            UnityWebRequest request = UnityWebRequest.Get(path);
-            request.SendWebRequest().completed += (op) =>
-            {
-                if (request.result == UnityWebRequest.Result.Success)
+            #if UNITY_WEBGL && !UNITY_EDITOR
+                UnityWebRequest request = UnityWebRequest.Get(path);
+                request.SendWebRequest().completed += (op) =>
                 {
-                    onSuccess(request.downloadHandler.text);
+                    if (request.result == UnityWebRequest.Result.Success)
+                    {
+                        onSuccess(request.downloadHandler.text);
+                    }
+                    else
+                    {
+                        Application.ExternalCall("logMessage", $"Error loading {fileLabel}: {request.error}");
+                    }
+                };
+            #else
+                if (File.Exists(path))
+                {
+                    string text = File.ReadAllText(path);
+                    onSuccess(text);
                 }
                 else
                 {
-                    Application.ExternalCall("logMessage", $"Error loading {fileLabel}: {request.error}");
+                    LogManager.Warning($"{fileLabel} file not found at: {path}");
                 }
-            };
-        #else
-            if (File.Exists(path))
-            {
-                string text = File.ReadAllText(path);
-                onSuccess(text);
-            }
-            else
-            {
-                Debug.LogWarning($"{fileLabel} file not found at: {path}");
-            }
-        #endif
+            #endif
         }
 
         /// <summary>

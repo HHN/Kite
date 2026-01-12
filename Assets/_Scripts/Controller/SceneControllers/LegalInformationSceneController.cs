@@ -35,7 +35,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </remarks>
         public void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.LegalInformationScene);
+            BackStackManager.Instance.Push(SceneNames.LegalInformationScene);
             
             FontSizeManager.Instance().UpdateAllTextComponents();
             

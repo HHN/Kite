@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Assets._Scripts.Managers;
 using Assets._Scripts.SceneManagement;
 using TMPro;
@@ -8,6 +9,19 @@ using UnityEngine.UI;
 namespace Assets._Scripts
 {
     /// <summary>
+    /// Configuration data structure for a single button within the application's footer menu.
+    /// </summary>
+    [System.Serializable]
+    public class FooterButton
+    {
+        public Button button;
+        public TextMeshProUGUI textElement;
+        public Sprite activeSprite;
+        public Sprite inactiveSprite;
+        public string sceneName;
+    }
+    
+    /// <summary>
     /// Manages the behavior and visual state of the application's footer menu.
     /// It handles navigation between different main scenes and updates the
     /// appearance of the active menu button. It also responds to global footer
@@ -15,39 +29,13 @@ namespace Assets._Scripts
     /// </summary>
     public class FooterMenuController : MonoBehaviour
     {
-        [SerializeField] private Button homeButton;
-        [SerializeField] private Button archivButton;
-        [SerializeField] private Button bookmarkButton;
-        [SerializeField] private Button linksButton;
-        [SerializeField] private Button knowledgeButton;
-
-        [SerializeField] private Sprite homeButtonActiveImage;
-        [SerializeField] private Sprite homeButtonInactiveImage;
-
-        [SerializeField] private Sprite archivButtonActiveImage;
-        [SerializeField] private Sprite archivButtonInactiveImage;
-
-        [SerializeField] private Sprite bookmarkButtonActiveImage;
-        [SerializeField] private Sprite bookmarkButtonInactiveImage;
-
-        [SerializeField] private Sprite linksButtonActiveImage;
-        [SerializeField] private Sprite linksButtonInactiveImage;
-        
-        [SerializeField] private Sprite knowledgeButtonActiveImage;
-        [SerializeField] private Sprite knowledgeButtonInactiveImage;
-
-        [SerializeField] private TextMeshProUGUI startTextElement;
-        [SerializeField] private TextMeshProUGUI archivTextElement;
-        [SerializeField] private TextMeshProUGUI gemerktTextElement;
-        [SerializeField] private TextMeshProUGUI linkTextElement;
-        [SerializeField] private TextMeshProUGUI knowledgeTextElement;
-
-        [SerializeField] private string currentScene;
+        [SerializeField] private List<FooterButton> footerButtons;
+        [SerializeField] private string hexColor = "#B6BBC0";
 
         /// <summary>
-        /// Called when the script instance is being loaded.
-        /// Subscribes to the <see cref="FooterActivationManager.OnActivationChanged"/> event
-        /// to react to global changes in footer visibility.
+        /// Initializes the FooterMenuController when the script instance is being loaded.
+        /// Subscribes to the footer activation change event to dynamically handle changes
+        /// in the activation state and update associated functionality.
         /// </summary>
         private void Awake()
         {
@@ -55,9 +43,8 @@ namespace Assets._Scripts
         }
 
         /// <summary>
-        /// Called when the GameObject is being destroyed.
-        /// Unsubscribes from the <see cref="FooterActivationManager.OnActivationChanged"/> event
-        /// to prevent memory leaks and ensure proper cleanup.
+        /// Cleans up resources and unsubscribes from the footer activation change event when the FooterMenuController is destroyed.
+        /// This ensures that the instance does not remain subscribed to events, preventing potential memory leaks or unintended behavior.
         /// </summary>
         private void OnDestroy()
         {
@@ -71,43 +58,45 @@ namespace Assets._Scripts
         private void Start()
         {
             bool isActive = FooterActivationManager.Instance().IsActivated();
-            SetButtonsActive(isActive);
 
             if (isActive)
                 SetupButtonsAndVisuals();
         }
 
         /// <summary>
-        /// Handles changes in the footer's activation status.
-        /// This method is called when the <see cref="FooterActivationManager.OnActivationChanged"/> event is triggered.
-        /// It dynamically enables/disables buttons and sets up/removes event listeners.
+        /// Handles changes to the activation state of the footer menu.
+        /// Adjusts button visibility and functionality based on the provided activation state.
         /// </summary>
-        /// <param name="newValue">The new activation state of the footer (true for active, false for inactive).</param>
+        /// <param name="newValue">The new activation state of the footer menu. True if the footer should be active; false otherwise.</param>
         private void HandleFooterActivationChanged(bool newValue)
         {
             SetButtonsActive(newValue);
 
             if (newValue)
-            {
                 SetupButtonsAndVisuals();
-            }
             else
-            {
                 RemoveButtonListeners();
-            }
         }
 
         /// <summary>
-        /// Sets the active state of all footer buttons.
+        /// Sets the active state of all buttons in the footer menu.
+        /// Enables or disables the GameObject of each button based on the specified state.
         /// </summary>
-        /// <param name="active">If true, buttons are active; if false, they are inactive.</param>
+        /// <param name="active">If true, all buttons are activated; if false, all buttons are deactivated.</param>
         private void SetButtonsActive(bool active)
         {
-            homeButton.gameObject.SetActive(active);
-            archivButton.gameObject.SetActive(active);
-            bookmarkButton.gameObject.SetActive(active);
-            linksButton.gameObject.SetActive(active);
-            knowledgeButton.gameObject.SetActive(active);
+            foreach (var fb in footerButtons)
+                fb.button.gameObject.SetActive(active);
+        }
+
+        /// <summary>
+        /// Removes all click event listeners from the buttons in the footer menu.
+        /// Ensures that button actions no longer respond to user inputs after being removed.
+        /// </summary>
+        private void RemoveButtonListeners()
+        {
+            foreach (var fb in footerButtons)
+                fb.button.onClick.RemoveAllListeners();
         }
 
         /// <summary>
@@ -115,197 +104,45 @@ namespace Assets._Scripts
         /// </summary>
         private void SetupButtonsAndVisuals()
         {
-            homeButton.onClick.AddListener(OnHomeButton);
-            archivButton.onClick.AddListener(OnArchiveButton);
-            bookmarkButton.onClick.AddListener(OnBookmarkButton);
-            linksButton.onClick.AddListener(OnLinksButton);
-            knowledgeButton.onClick.AddListener(OnKnowledgeButton);
-
-            SetButtonImagesInaktiv();
-            SetTextColorsInaktiv();
-            SetImageForActiveButton();
-        }
-
-        /// <summary>
-        /// Removes all click listeners from the footer buttons.
-        /// This is crucial when the footer is deactivated to avoid calling methods on disabled GameObjects.
-        /// </summary>
-        private void RemoveButtonListeners()
-        {
-            homeButton.onClick.RemoveListener(OnHomeButton);
-            archivButton.onClick.RemoveListener(OnArchiveButton);
-            bookmarkButton.onClick.RemoveListener(OnBookmarkButton);
-            linksButton.onClick.RemoveListener(OnLinksButton);
-            knowledgeButton.onClick.RemoveListener(OnKnowledgeButton);
-        }
-
-        /// <summary>
-        /// Determines the currently active scene and updates the corresponding footer button's
-        /// image to its active sprite and its text to an active color (white).
-        /// </summary>
-        private void SetImageForActiveButton()
-        {
-            string imageName = SceneManager.GetActiveScene().name;
-            currentScene = imageName;
-            switch (imageName)
+            foreach (var fb in footerButtons)
             {
-                case SceneNames.FoundersBubbleScene:
-                    SetHomeButtonImage();
-                    SetTextToActive(startTextElement);
-                    break;
-                case SceneNames.NovelHistoryScene:
-                    SetArchivButtonImage();
-                    SetTextToActive(archivTextElement);
-                    break;
-                case SceneNames.BookmarkedNovelsScene:
-                    SetBookmarkButtonImage();
-                    SetTextToActive(gemerktTextElement);
-                    break;
-                case SceneNames.ResourcesScene:
-                    SetLinksButtonImage();
-                    SetTextToActive(linkTextElement);
-                    break;
-                case SceneNames.KnowledgeScene:
-                    SetKnowledgeButtonImage();
-                    SetTextToActive(knowledgeTextElement);
-                    break;
+                fb.button.onClick.AddListener(() => OnFooterButtonClicked(fb));
+                fb.button.image.sprite = fb.inactiveSprite;
+                if (ColorUtility.TryParseHtmlString(hexColor, out Color color))
+                    fb.textElement.color = color;
             }
+
+            SetActiveButtonVisual();
         }
 
         /// <summary>
-        /// Handles the click event for the Home button.
-        /// Loads the <see cref="SceneNames.FoundersBubbleScene"/> if it's not the current scene.
+        /// Handles the footer button click event to navigate to the associated scene.
+        /// Ensures that the active scene is not reloaded if it matches the button's associated scene.
         /// </summary>
-        private void OnHomeButton()
+        /// <param name="fb">The footer button data associated with the clicked button,
+        /// including the scene name and visual elements for the button.</param>
+        private void OnFooterButtonClicked(FooterButton fb)
         {
-            if (currentScene.Equals(SceneNames.FoundersBubbleScene)) return;
-            SceneLoader.LoadFoundersBubbleScene();
+            if (fb.sceneName == SceneManager.GetActiveScene().name) return;
+
+            SceneLoader.LoadScene(fb.sceneName);
         }
 
         /// <summary>
-        /// Handles the click event for the Archive button.
-        /// Loads the <see cref="SceneNames.NovelHistoryScene"/> if it's not the current scene.
+        /// Updates the visual state of all footer buttons based on the currently active scene.
+        /// Highlights the button associated with the active scene, changing its sprite and text color,
+        /// while reverting others to their default inactive appearance.
         /// </summary>
-        private void OnArchiveButton()
+        private void SetActiveButtonVisual()
         {
-            if (currentScene.Equals(SceneNames.NovelHistoryScene)) return;
-            SceneLoader.LoadNovelHistoryScene();
-        }
+            string currentScene = SceneManager.GetActiveScene().name;
 
-        /// <summary>
-        /// Handles the click event for the Bookmark button.
-        /// Loads the <see cref="SceneNames.BookmarkedNovelsScene"/> if it's not the current scene.
-        /// </summary>
-        private void OnBookmarkButton()
-        {
-            if (currentScene.Equals(SceneNames.BookmarkedNovelsScene)) return;
-            SceneLoader.LoadBookmarkedNovelsScene();
-        }
-
-        /// <summary>
-        /// Handles the click event for the Links button.
-        /// Loads the <see cref="SceneNames.ResourcesScene"/> if it's not the current scene.
-        /// </summary>
-        private void OnLinksButton()
-        {
-            if (currentScene.Equals(SceneNames.ResourcesScene)) return;
-            SceneLoader.LoadResourcesScene();
-        }
-        
-        /// <summary>
-        /// Handles the click event for the Knowledge button.
-        /// Loads the <see cref="SceneNames.KnowledgeScene"/>. There is no explicit check to prevent re-loading
-        /// if it's already the current scene, implying it might be designed to refresh or navigate within.
-        /// </summary>
-        private void OnKnowledgeButton()
-        {
-            SceneLoader.LoadKnowledgeScene();
-        }
-
-        /// <summary>
-        /// Sets all footer button images to their inactive sprite.
-        /// </summary>
-        private void SetButtonImagesInaktiv()
-        {
-            homeButton.image.sprite      = homeButtonInactiveImage;
-            archivButton.image.sprite    = archivButtonInactiveImage;
-            bookmarkButton.image.sprite  = bookmarkButtonInactiveImage;
-            linksButton.image.sprite     = linksButtonInactiveImage;
-            knowledgeButton.image.sprite = knowledgeButtonInactiveImage;
-        }
-
-        /// <summary>
-        /// Sets all footer button text colors to an inactive grey color (#B6BBC0).
-        /// Includes a warning if the color conversion fails.
-        /// </summary>
-        private void SetTextColorsInaktiv()
-        {
-            string hexColor = "#B6BBC0";
-            if (ColorUtility.TryParseHtmlString(hexColor, out Color newColor))
+            foreach (var fb in footerButtons)
             {
-                startTextElement.color     = newColor;
-                archivTextElement.color    = newColor;
-                gemerktTextElement.color   = newColor;
-                linkTextElement.color      = newColor;
-                knowledgeTextElement.color = newColor;
+                bool isActive = fb.sceneName == currentScene;
+                fb.button.image.sprite = isActive ? fb.activeSprite : fb.inactiveSprite;
+                fb.textElement.color  = isActive ? Color.white : ColorUtility.TryParseHtmlString(hexColor, out var c) ? c : Color.gray;
             }
-            else
-            {
-                Debug.LogWarning("Ungültiger Hex-Farbcode: " + hexColor);
-            }
-        }
-
-        /// <summary>
-        /// Sets the text color of a specific TextMeshProUGUI element to active (white).
-        /// Logs a warning if the provided text element is null.
-        /// </summary>
-        /// <param name="textElement">The TextMeshProUGUI element to set to active color.</param>
-        private void SetTextToActive(TextMeshProUGUI textElement)
-        {
-            if (textElement != null)
-                textElement.color = Color.white;
-            else
-                Debug.LogWarning("TextElement ist nicht gesetzt!");
-        }
-
-        /// <summary>
-        /// Sets the Home button's image to its active sprite.
-        /// </summary>
-        private void SetHomeButtonImage()
-        {
-            homeButton.image.sprite = homeButtonActiveImage;
-        }
-
-        /// <summary>
-        /// Sets the Archive button's image to its active sprite.
-        /// </summary>
-        private void SetArchivButtonImage()
-        {
-            archivButton.image.sprite = archivButtonActiveImage;
-        }
-
-        /// <summary>
-        /// Sets the Bookmark button's image to its active sprite.
-        /// </summary>
-        private void SetBookmarkButtonImage()
-        {
-            bookmarkButton.image.sprite = bookmarkButtonActiveImage;
-        }
-
-        /// <summary>
-        /// Sets the Links button's image to its active sprite.
-        /// </summary>
-        private void SetLinksButtonImage()
-        {
-            linksButton.image.sprite = linksButtonActiveImage;
-        }
-        
-        /// <summary>
-        /// Sets the Knowledge button's image to its active sprite.
-        /// </summary>
-        private void SetKnowledgeButtonImage()
-        {
-            knowledgeButton.image.sprite = knowledgeButtonActiveImage;
         }
     }
 }

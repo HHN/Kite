@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Assets._Scripts.Controller.SceneControllers;
 using Assets._Scripts.Managers;
+using Assets._Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,15 +15,14 @@ namespace Assets._Scripts.SceneManagement
     public abstract class SceneLoader
     {
         private const string NovelBaseScene = "PlayNovelScene";
-        private const string DontDestroySceneName = "DontDestroyOnLoad";
 
         /// <summary>
         /// Scenes that should NOT be additive transitions
         /// </summary>
-        private static readonly HashSet<string> SingleLoadExceptions = new HashSet<string>
+        private static readonly HashSet<string> SingleLoadExceptions = new()
         {
-            "FeedBackScene",
-            "FoundersBubbleTestScene"
+            SceneNames.FeedbackScene,
+            SceneNames.FoundersBubbleScene,
         };
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Assets._Scripts.SceneManagement
         /// </summary>
         public static void LoadMainMenuScene()
         {
-            BackStackManager.Instance().Push(SceneNames.MainMenuScene);
+            BackStackManager.Instance.Push(SceneNames.MainMenuScene);
             LoadScene(SceneNames.MainMenuScene);
         }
 
@@ -48,10 +48,10 @@ namespace Assets._Scripts.SceneManagement
         /// </summary>
         public static void LoadPlayNovelScene()
         {
-            BackStackManager.Instance().Clear();
+            BackStackManager.Instance.Clear();
             GameManager.Instance.CheckAndSetAllNovelsStatus();
 
-            BackStackManager.Instance().Push(SceneNames.PlayNovelScene);
+            BackStackManager.Instance.Push(SceneNames.PlayNovelScene);
 
             LoadScene(SceneNames.PlayNovelScene);
         }
@@ -97,14 +97,6 @@ namespace Assets._Scripts.SceneManagement
         }
 
         /// <summary>
-        /// Loads the Resources scene.
-        /// </summary>
-        public static void LoadResourcesScene()
-        {
-            LoadScene(SceneNames.ResourcesScene);
-        }
-
-        /// <summary>
         /// Loads the Legal Information scene.
         /// </summary>
         public static void LoadLegalInformationScene()
@@ -137,14 +129,6 @@ namespace Assets._Scripts.SceneManagement
         }
 
         /// <summary>
-        /// Loads the Bookmarked Novels scene.
-        /// </summary>
-        public static void LoadBookmarkedNovelsScene()
-        {
-            LoadScene(SceneNames.BookmarkedNovelsScene);
-        }
-
-        /// <summary>
         /// Loads the Knowledge scene.
         /// </summary>
         public static void LoadKnowledgeScene()
@@ -162,6 +146,13 @@ namespace Assets._Scripts.SceneManagement
         /// <param name="sceneName">The name of the scene to be loaded.</param>
         public static void LoadScene(string sceneName)
         {
+            Scene activeScene = SceneManager.GetActiveScene();
+            if (activeScene.name == sceneName || _currentSubScene == sceneName)
+            {
+                LogManager.Info($"[SceneLoader] Scene '{sceneName}' ist bereits aktiv. Laden abgebrochen.");
+                return;
+            }
+            
             // ────────────────────────────────────────────────────────────────────────────
             // a) Has _currentSubScene already been unloaded externally? Then reset:
             // ────────────────────────────────────────────────────────────────────────────
@@ -226,45 +217,51 @@ namespace Assets._Scripts.SceneManagement
             if (_currentSubScene == null)
             {
                 var firstOp = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-                firstOp.completed += _ =>
+                if (firstOp != null)
                 {
-                    Scene newlyLoaded = SceneManager.GetSceneByName(sceneName);
-                    if (newlyLoaded.IsValid() && newlyLoaded.isLoaded)
+                    firstOp.completed += _ =>
                     {
-                        // 1. Activate the newly loaded additive scene.
-                        SceneManager.SetActiveScene(newlyLoaded);
-                        // 2. Remember its name for future unloading/control.
-                        _currentSubScene = sceneName;
-                    }
-                };
-                return;
+                        Scene newlyLoaded = SceneManager.GetSceneByName(sceneName);
+                        if (newlyLoaded.IsValid() && newlyLoaded.isLoaded)
+                        {
+                            // 1. Activate the newly loaded additive scene.
+                            SceneManager.SetActiveScene(newlyLoaded);
+                            // 2. Remember its name for future unloading/control.
+                            _currentSubScene = sceneName;
+                        }
+                    };
+                    return;
+                }
             }
 
             // 3c) If a sub-scene is already open, we swap it out:
             //     → Load the new scene first, set it as active, and only then unload the old one.
             {
                 var op = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-                op.completed += _ =>
+                if (op != null)
                 {
-                    // 1. Find the new scene and set it as active.
-                    Scene newScene = SceneManager.GetSceneByName(sceneName);
-                    if (newScene.IsValid() && newScene.isLoaded)
+                    op.completed += _ =>
                     {
-                        SceneManager.SetActiveScene(newScene);
-                        // 2. Now, and only now, unload the old sub-scene (if it still exists and is loaded).
-                        if (!string.IsNullOrEmpty(_currentSubScene))
+                        // 1. Find the new scene and set it as active.
+                        Scene newScene = SceneManager.GetSceneByName(sceneName);
+                        if (newScene.IsValid() && newScene.isLoaded)
                         {
-                            Scene oldScene = SceneManager.GetSceneByName(_currentSubScene);
-                            if (oldScene.IsValid() && oldScene.isLoaded)
+                            SceneManager.SetActiveScene(newScene);
+                            // 2. Now, and only now, unload the old sub-scene (if it still exists and is loaded).
+                            if (!string.IsNullOrEmpty(_currentSubScene))
                             {
-                                SceneManager.UnloadSceneAsync(oldScene);
+                                Scene oldScene = SceneManager.GetSceneByName(_currentSubScene);
+                                if (oldScene.IsValid() && oldScene.isLoaded)
+                                {
+                                    SceneManager.UnloadSceneAsync(oldScene);
+                                }
                             }
-                        }
 
-                        // 3. And finally, store the name of the new sub-scene.
-                        _currentSubScene = sceneName;
-                    }
-                };
+                            // 3. And finally, store the name of the new sub-scene.
+                            _currentSubScene = sceneName;
+                        }
+                    };
+                }
             }
         }
 

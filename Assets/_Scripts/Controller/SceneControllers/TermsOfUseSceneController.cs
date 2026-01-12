@@ -1,7 +1,5 @@
-using System.IO;
 using Assets._Scripts.Managers;
 using Assets._Scripts.SceneManagement;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,7 +20,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void Start()
         {
-            BackStackManager.Instance().Push(SceneNames.TermsOfUseScene);
+            BackStackManager.Instance.Push(SceneNames.TermsOfUseScene);
             LayoutRebuilder.ForceRebuildLayoutImmediate(layout02);
             FontSizeManager.Instance().UpdateAllTextComponents();
         }

@@ -1,0 +1,11 @@
+{ 
+    "visualNovels": [
+        "Eltern informieren",
+        "Honorar verhandeln",
+        "Investor überzeugen",
+        "Kredit beantragen",
+        "Mit Notarin telefonieren",
+        "Interview abklären",
+        "Büro anmieten"
+    ] 
+}

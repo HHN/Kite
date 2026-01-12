@@ -43,17 +43,6 @@ namespace Assets._Scripts.Managers
         }
 
         /// <summary>
-        /// Retrieves the value indicating whether play instructions should be displayed.
-        /// This value determines whether instructional content is shown during novel interaction
-        /// or gameplay, allowing for guidance based on specific settings or user preferences.
-        /// </summary>
-        /// <returns>A boolean value where true indicates that play instructions should be displayed, and false indicates otherwise.</returns>
-        public bool ShowInstruction()
-        {
-            return _showInstruction;
-        }
-
-        /// <summary>
         /// Updates the setting that determines whether play instructions should be shown.
         /// Invokes the internal process to persist the updated value.
         /// </summary>
@@ -66,11 +55,11 @@ namespace Assets._Scripts.Managers
 
         /// <summary>
         /// Loads the value of the setting based on the previously saved player data.
-        /// Retrieves a key from persistent storage to determine if the play instruction should be displayed.
+        /// Retrieves a type from persistent storage to determine if the play instruction should be displayed.
         /// </summary>
         /// <returns>
         /// A boolean value indicating whether the play instruction should be shown.
-        /// Returns true if the key does not exist or its value is set to true; otherwise, false.
+        /// Returns true if the type does not exist or its value is set to true; otherwise, false.
         /// </returns>
         private bool LoadValue()
         {
@@ -87,7 +76,7 @@ namespace Assets._Scripts.Managers
 
         /// <summary>
         /// Persists the current play instruction visibility setting to the storage system.
-        /// Uses the PlayerDataManager to save the setting with an associated key,
+        /// Uses the PlayerDataManager to save the setting with an associated type,
         /// ensuring changes to the instructions' visibility are not lost across sessions.
         /// </summary>
         private void Save()

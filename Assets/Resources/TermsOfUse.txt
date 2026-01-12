@@ -1,10 +1,10 @@
 ## 1. Allgemeines
 
-1.1 Diese Nutzungsbedingungen regeln die Nutzung der Kite II Mobile App,
+1.1 Diese Nutzungsbedingungen regeln die Nutzung der Mobile App KITE,
 
 – nachfolgend: App –,
 
-angeboten von der Hochschule Heilbronn, Körperschaft des öffentlichen Rechts, vertreten durch deren Rektor Prof. Dr.-Ing. Oliver Lenzen, Max-Plack-Straße 39, 74081 Heilbronn.
+angeboten von der Hochschule Heilbronn, Körperschaft des öffentlichen Rechts, vertreten durch deren Rektor Prof. Dr.-Ing. Oliver Lenzen, Max-Planck-Straße 39, 74081 Heilbronn.
 
 – nachfolgend: Hochschule –.
 
@@ -14,7 +14,7 @@ Weitere Informationen über die Hochschule finden Sie im Impressum.
 
 – nachfolgend: Visual Novel –
 
-und so auf spielerische Weise hinsichtlich diskriminierender Inhalte sensibilisiert. Am Ende des jeweils gewählten Visual Novel wird das Gespräch durch Künstliche Intelligenz (KI) analysiert und ein Feedback generiert. Weiterführende Informationen über die App finden Sie auf der Webseite https://kite2.de/.
+und so auf spielerische Weise hinsichtlich diskriminierender Inhalte sensibilisiert. Am Ende des jeweils gewählten Visual Novel wird das Gespräch durch Künstliche Intelligenz (KI) analysiert und ein Feedback generiert. Weiterführende Informationen über die App finden Sie auf der Webseite https://www.hs-heilbronn.de/de/kite-II.
 
 ## 2. Nutzung der App, Missachtung von Rechten der Hochschule
 
@@ -45,7 +45,7 @@ und so auf spielerische Weise hinsichtlich diskriminierender Inhalte sensibilisi
 
 ## 5. Datenschutz
 
-Wir erheben, verarbeiten und nutzen personenbezogene Daten nur, soweit wirklich erforderlich, und das sind keine personenbezogenen Daten, außer Ihrer IP-Adresse. Weiter Informationen finden Sie in der Datenschutzerklärung.
+Wir erheben, verarbeiten und nutzen personenbezogene Daten nur, soweit wirklich erforderlich, und das sind keine personenbezogenen Daten, außer Ihrer IP-Adresse. Weitere Informationen finden Sie in der Datenschutzerklärung.
 
 ## 6. Schlussbestimmungen
 
@@ -55,4 +55,4 @@ Wir erheben, verarbeiten und nutzen personenbezogene Daten nur, soweit wirklich 
 
 6.3 Die Hochschule ist berechtigt, mit einer Ankündigungsfrist von vier Wochen die Rechte und Pflichten zur Nutzung der App ganz oder teilweise auf einen Dritten zu übertragen.
 
-Stand: April 2025
+Stand: Oktober 2025

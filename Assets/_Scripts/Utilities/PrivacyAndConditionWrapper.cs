@@ -12,6 +12,5 @@ namespace Assets._Scripts.Utilities
     {
         public bool acceptedConditions;
         public bool acceptedPrivacyTerms;
-        public bool acceptedDataCollection;
     }
 }

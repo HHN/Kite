@@ -14,7 +14,11 @@ GameObject:
   - component: {fileID: 6155688656520349526}
   - component: {fileID: 4253796331781111194}
   m_Layer: 5
+<<<<<<<< HEAD:Assets/_Prefabs/CharacterPrefabs/Kreditantrag/CharacterPrefabSachbearbeiter.prefab
+  m_Name: CharacterPrefabSachbearbeiter
+========
   m_Name: VorlageCharacterPrefab
+>>>>>>>> refs/heads/main:Assets/_Prefabs/CharacterPrefabs/VorlageCharacterPrefab.prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,6 +79,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f0e4ab31c5cb6de47b99fce4ccfac5a8, type: 3}
   - {fileID: 21300000, guid: 06e5bb096beedd64fb62437d8f2a9357, type: 3}
   - {fileID: 21300000, guid: 103d6553852fc5042b29c3832ee45bae, type: 3}
+<<<<<<<< HEAD:Assets/_Prefabs/CharacterPrefabs/Kreditantrag/CharacterPrefabSachbearbeiter.prefab
   - {fileID: 21300000, guid: 8470e69b50fad2645b977a4ff8536ab6, type: 3}
   - {fileID: 21300000, guid: 32a794a42eee79f4a86cb22b38cf64a6, type: 3}
   - {fileID: 21300000, guid: 601a442b4ddfe7a499df60d536c0359c, type: 3}
@@ -83,8 +88,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f0cd2a41e164db74fb5801502b18f8eb, type: 3}
   - {fileID: 21300000, guid: df333ac9d5c83b444bf27c2070c934e8, type: 3}
   - {fileID: 21300000, guid: b2e298bcabca56342b5b9cf26725d87f, type: 3}
+  glassesSprites: []
+========
   glassesSprites:
   - {fileID: 21300000, guid: 5764f22cf80f5564183b58d58d5a8feb, type: 3}
+>>>>>>>> refs/heads/main:Assets/_Prefabs/CharacterPrefabs/VorlageCharacterPrefab.prefab
   hairSprites:
   - {fileID: 21300000, guid: 4fe08300956c0ee408bd7c4adc48748b, type: 3}
   - {fileID: 21300000, guid: a828de2fa0267c9409ad6205f88fbb83, type: 3}
@@ -153,6 +161,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -174,6 +184,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -514,7 +525,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8c7ba12561509094e994e87bdc0db61e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8fe0fa2011c42eb4cbd2ed83f51ccf2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -874,7 +885,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 723b86f0fd30dd34d91ccd187b0826e7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 155afd554e7302042ba9074e3aa72006, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
