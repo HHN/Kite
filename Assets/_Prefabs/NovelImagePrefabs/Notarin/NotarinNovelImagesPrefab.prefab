@@ -10,11 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 831789010391981580}
   m_Layer: 0
-<<<<<<<< HEAD:Assets/_Prefabs/NovelImagePrefabs/Vermieter/VermieterNovelImagesPrefab.prefab
-  m_Name: VermieterNovelImagesPrefab
-========
   m_Name: NotarinNovelImagesPrefab
->>>>>>>> refs/heads/main:Assets/_Prefabs/NovelImagePrefabs/Notarin/NotarinNovelImagesPrefab.prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -477,7 +473,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3669613035356320353}
   m_Layer: 6
-  m_Name: CharacterContainer
+  m_Name: Character Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -498,13 +494,8 @@ RectTransform:
   - {fileID: 418440323071936871}
   m_Father: {fileID: 7694940209821240600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<<< HEAD:Assets/_Prefabs/NovelImagePrefabs/Vermieter/VermieterNovelImagesPrefab.prefab
-  m_AnchorMin: {x: 0.25, y: 0.05}
-  m_AnchorMax: {x: 1.25, y: 0.55}
-========
   m_AnchorMin: {x: -0.1, y: 0}
   m_AnchorMax: {x: 0.9, y: 0.5}
->>>>>>>> refs/heads/main:Assets/_Prefabs/NovelImagePrefabs/Notarin/NotarinNovelImagesPrefab.prefab
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -517,11 +508,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6949410670094988474}
-<<<<<<<< HEAD:Assets/_Prefabs/NovelImagePrefabs/Vermieter/VermieterNovelImagesPrefab.prefab
-  - component: {fileID: 8342724666542580831}
-========
   - component: {fileID: 1702780890283290133}
->>>>>>>> refs/heads/main:Assets/_Prefabs/NovelImagePrefabs/Notarin/NotarinNovelImagesPrefab.prefab
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -544,11 +531,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 831789010391981580}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<<< HEAD:Assets/_Prefabs/NovelImagePrefabs/Vermieter/VermieterNovelImagesPrefab.prefab
---- !u!114 &8342724666542580831
-========
 --- !u!114 &1702780890283290133
->>>>>>>> refs/heads/main:Assets/_Prefabs/NovelImagePrefabs/Notarin/NotarinNovelImagesPrefab.prefab
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -560,20 +543,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d760dc32eccc49bf935a6a9ae334e70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<<< HEAD:Assets/_Prefabs/NovelImagePrefabs/Vermieter/VermieterNovelImagesPrefab.prefab
-  novelKite2CharacterController: {fileID: 1477663344430832907}
-========
->>>>>>>> refs/heads/main:Assets/_Prefabs/NovelImagePrefabs/Notarin/NotarinNovelImagesPrefab.prefab
   characterContainers:
   - {fileID: 3669613035356320353}
   decorations:
   - prefab: {fileID: 8411936371333490823, guid: 02334970db3300f4797dfc8a311a46c8, type: 3}
     container: {fileID: 5558045549636132440}
-<<<<<<<< HEAD:Assets/_Prefabs/NovelImagePrefabs/Vermieter/VermieterNovelImagesPrefab.prefab
-========
   - prefab: {fileID: 8411936371333490823, guid: ee198f3e5cc9689469d14e822d4417e7, type: 3}
     container: {fileID: 3234276313403849665}
->>>>>>>> refs/heads/main:Assets/_Prefabs/NovelImagePrefabs/Notarin/NotarinNovelImagesPrefab.prefab
   characterControllers: []
 --- !u!1 &5558045549636132440
 GameObject:
@@ -655,14 +631,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1954397873835888628}
-<<<<<<<< HEAD:Assets/_Prefabs/NovelImagePrefabs/Vermieter/VermieterNovelImagesPrefab.prefab
-  - {fileID: 3669613035356320353}
-========
   - {fileID: 1119138364018682958}
   - {fileID: 3669613035356320353}
   - {fileID: 5316091976446384908}
   - {fileID: 3509890071655375629}
->>>>>>>> refs/heads/main:Assets/_Prefabs/NovelImagePrefabs/Notarin/NotarinNovelImagesPrefab.prefab
   - {fileID: 5869069278642351330}
   m_Father: {fileID: 831789010391981580}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -671,11 +643,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
-<<<<<<<< HEAD:Assets/_Prefabs/NovelImagePrefabs/Vermieter/VermieterNovelImagesPrefab.prefab
---- !u!1001 &3047015350086651484
-========
 --- !u!1001 &1267819679743309217
->>>>>>>> refs/heads/main:Assets/_Prefabs/NovelImagePrefabs/Notarin/NotarinNovelImagesPrefab.prefab
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -683,35 +651,7 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3669613035356320353}
     m_Modifications:
-<<<<<<<< HEAD:Assets/_Prefabs/NovelImagePrefabs/Vermieter/VermieterNovelImagesPrefab.prefab
-    - target: {fileID: 1465545687914413254, guid: f0ce20ce584d58b4695d64ab6c6bccf9, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1465545687914413254, guid: f0ce20ce584d58b4695d64ab6c6bccf9, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1465545687914413254, guid: f0ce20ce584d58b4695d64ab6c6bccf9, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1465545687914413254, guid: f0ce20ce584d58b4695d64ab6c6bccf9, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1465545687914413254, guid: f0ce20ce584d58b4695d64ab6c6bccf9, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1465545687914413254, guid: f0ce20ce584d58b4695d64ab6c6bccf9, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1465545687914413254, guid: f0ce20ce584d58b4695d64ab6c6bccf9, type: 3}
-========
     - target: {fileID: 1358891919003197262, guid: 007f6e56dbdaee343967827de74e46f4, type: 3}
->>>>>>>> refs/heads/main:Assets/_Prefabs/NovelImagePrefabs/Notarin/NotarinNovelImagesPrefab.prefab
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
@@ -801,55 +741,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1465545687914413273, guid: 007f6e56dbdaee343967827de74e46f4, type: 3}
       propertyPath: m_Name
-<<<<<<<< HEAD:Assets/_Prefabs/NovelImagePrefabs/Vermieter/VermieterNovelImagesPrefab.prefab
-      value: Character Prefab Vermieter
-      objectReference: {fileID: 0}
-    - target: {fileID: 2006125053318295345, guid: f0ce20ce584d58b4695d64ab6c6bccf9, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2293698212603797059, guid: f0ce20ce584d58b4695d64ab6c6bccf9, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3014206807702693691, guid: f0ce20ce584d58b4695d64ab6c6bccf9, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3084753187287582620, guid: f0ce20ce584d58b4695d64ab6c6bccf9, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3904063642809845299, guid: f0ce20ce584d58b4695d64ab6c6bccf9, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4110506590062096476, guid: f0ce20ce584d58b4695d64ab6c6bccf9, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4110506590062096476, guid: f0ce20ce584d58b4695d64ab6c6bccf9, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4110506590062096476, guid: f0ce20ce584d58b4695d64ab6c6bccf9, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4110506590062096476, guid: f0ce20ce584d58b4695d64ab6c6bccf9, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4126753951640385348, guid: f0ce20ce584d58b4695d64ab6c6bccf9, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-========
       value: Character Prefab Notarin
       objectReference: {fileID: 0}
     - target: {fileID: 1465545687914413273, guid: 007f6e56dbdaee343967827de74e46f4, type: 3}
       propertyPath: m_IsActive
       value: 1
->>>>>>>> refs/heads/main:Assets/_Prefabs/NovelImagePrefabs/Notarin/NotarinNovelImagesPrefab.prefab
       objectReference: {fileID: 0}
     - target: {fileID: 1605649503668890460, guid: 007f6e56dbdaee343967827de74e46f4, type: 3}
       propertyPath: m_SizeDelta.x
@@ -867,19 +763,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
-<<<<<<<< HEAD:Assets/_Prefabs/NovelImagePrefabs/Vermieter/VermieterNovelImagesPrefab.prefab
-    - target: {fileID: 5323860951335119855, guid: f0ce20ce584d58b4695d64ab6c6bccf9, type: 3}
-      propertyPath: m_AspectRatio
-      value: 0.3569336
-      objectReference: {fileID: 0}
-    - target: {fileID: 5855859007694441756, guid: f0ce20ce584d58b4695d64ab6c6bccf9, type: 3}
-========
     - target: {fileID: 6438940700170831803, guid: 007f6e56dbdaee343967827de74e46f4, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8721691660771487528, guid: 007f6e56dbdaee343967827de74e46f4, type: 3}
->>>>>>>> refs/heads/main:Assets/_Prefabs/NovelImagePrefabs/Notarin/NotarinNovelImagesPrefab.prefab
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
@@ -887,24 +775,8 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-<<<<<<<< HEAD:Assets/_Prefabs/NovelImagePrefabs/Vermieter/VermieterNovelImagesPrefab.prefab
-  m_SourcePrefab: {fileID: 100100000, guid: f0ce20ce584d58b4695d64ab6c6bccf9, type: 3}
---- !u!114 &1477663344430832907 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4524035883740533591, guid: f0ce20ce584d58b4695d64ab6c6bccf9, type: 3}
-  m_PrefabInstance: {fileID: 3047015350086651484}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce19c46472896824fb0a14726030f762, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!224 &4476444271392436890 stripped
-========
   m_SourcePrefab: {fileID: 100100000, guid: 007f6e56dbdaee343967827de74e46f4, type: 3}
 --- !u!224 &418440323071936871 stripped
->>>>>>>> refs/heads/main:Assets/_Prefabs/NovelImagePrefabs/Notarin/NotarinNovelImagesPrefab.prefab
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1465545687914413254, guid: 007f6e56dbdaee343967827de74e46f4, type: 3}
   m_PrefabInstance: {fileID: 1267819679743309217}

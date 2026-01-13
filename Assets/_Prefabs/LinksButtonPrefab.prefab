@@ -8,49 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<<< HEAD:Assets/_Prefabs/UIElements/InputFieldPrefab.prefab
-  - component: {fileID: 8435578010755479116}
-  m_Layer: 0
-  m_Name: InputFieldPrefab
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8435578010755479116
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 195449145740237851}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 9057449235054743739}
-  - {fileID: 1712736860626082585}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2585695434386601977
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1712736860626082585}
-  - component: {fileID: 1830592729291847433}
-  - component: {fileID: 6685386656676042284}
-  - component: {fileID: 8943766145132061017}
-========
   - component: {fileID: 5491047902461836143}
   - component: {fileID: 6164501735130386470}
   - component: {fileID: 2213779856181102686}
->>>>>>>> refs/heads/main:Assets/_Prefabs/LinksButtonPrefab.prefab
   m_Layer: 5
   m_Name: LinksButtonPrefab
   m_TagString: Untagged

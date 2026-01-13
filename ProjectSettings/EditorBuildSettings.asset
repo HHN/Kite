@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/_Scenes/PlayNovelScene.unity
     guid: 945b72fd05426924f830464ef17543ec
   - enabled: 1
-    path: Assets/StreamingAssets/FaceExpressionMapping.txt
-    guid: 987844fb1740bff4482fa61423ef90d0
-  - enabled: 1
     path: Assets/_Scenes/FeedbackScene.unity
     guid: b0393e03ad9357e4cafd694c35f17130
   - enabled: 1
