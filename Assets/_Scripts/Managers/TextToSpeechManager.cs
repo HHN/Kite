@@ -104,7 +104,7 @@ namespace Assets._Scripts.Managers
         /// </summary>
         private void Start()
         {
-            _ttsIsActive = PlayerPrefs.GetInt("TTS", 1) != 0;
+            _ttsIsActive = PlayerPrefs.GetInt("TTS", 0) != 0;
             _soundEffectIsActive = PlayerPrefs.GetInt("SoundEffect", 0) != 0;
             
             #if UNITY_WEBGL && !UNITY_EDITOR
