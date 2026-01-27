@@ -81,7 +81,7 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void LoadSettings()
         {
-            _isTextToSpeechActive = PlayerPrefs.GetInt("TTS", 1) != 0;
+            _isTextToSpeechActive = PlayerPrefs.GetInt("TTS", 0) == 1;
             _isSoundActive = PlayerPrefs.GetInt("IsSoundEffectVolumeOn", 1) == 1;
             _soundEffectVolume = PlayerPrefs.GetFloat("SavedSoundEffectVolume", 1f);
             _updatedFontSize = PlayerPrefs.GetInt("SavedFontSize", MinFontSize);
