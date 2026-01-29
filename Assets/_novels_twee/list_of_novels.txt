@@ -1,6 +1,7 @@
 {
   "visualNovels": [
-    "_novels_twee\\AI_TRAQC",
-    "_novels_twee\\Einstieg"
+    "_novels_twee\\Controlling",
+    "_novels_twee\\Einstieg",
+    "_novels_twee\\Vertrieb"
   ]
 } 

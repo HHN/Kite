@@ -1,0 +1,531 @@
+:: StoryTitle
+Controllingmitarbeiter
+
+
+:: StoryData
+{
+  "ifid": "A71C8E4D-2F9A-4D3C-9E8A-71F3C2D6B5E4",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "start": "Anfang",
+  "zoom": 0.6
+}
+
+
+:: Anfang {"position":"1600,150","size":"100,100"}
+>>Info<<
+Du bist Teamleitung im Controlling und suchst das Gespräch mit deinem Mitarbeiter. Das monatliche Reporting kam zuletzt verspätet und enthielt kleinere formale Fehler. Ziel des Gesprächs ist Klarheit, Verbindlichkeit und eine tragfähige Lösung.
+
+[[Ich möchte heute über das monatliche Reporting sprechen. Passt das für dich?->Phase1_Rahmen]]
+[[Wir haben ein Riesenproblem und müssen dringend eine Lösung finden. Dein monatliches Controlling ist eine Katastrophe.->Phase1_Katastrophe]]
+[[Wie geht es dir? Hattest du ein schönes langes Wochenende?->Phase1_Small_Talk]]
+
+
+:: Ende_Fragil {"position":"1675,4200","size":"100,100"}
+>>Character1|Neutral<<
+Verstanden. Dann schauen wir nächsten Monat, ob es besser läuft.
+>>--<<
+>>End<<
+
+
+:: Ende_Nachhaltig {"position":"2400,4150","size":"100,100"}
+>>Character1|Proud<<
+Ja, darauf committe ich mich. Das ist klar, machbar und sinnvoll.
+>>--<<
+>>End<<
+
+
+:: Ende_Tragfaehig {"position":"2100,4175","size":"100,100"}
+>>Character1|Smiling<<
+Okay, so fühlt sich das fair an. Ich weiß, was zu tun ist.
+>>--<<
+>>End<<
+
+
+:: Ende_Vertagt {"position":"2575,4150","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Alles klar. Dann sprechen wir später.
+>>--<<
+>>End<<
+
+
+:: Pfad_Ergebnisdruck {"position":"1525,3750","size":"100,100"}
+>>Character1|Defeated<<
+Okay, dann liefere ich es halt einfach pünktlich ab.
+
+[[Was heißt das konkret für deinen Arbeitsalltag?->Plan_Druck]]
+[[Mir fehlt da noch Verbindlichkeit.->Plan_Druck]]
+
+
+:: Pfad_Strukturiert {"position":"2150,3850","size":"100,100"}
+>>Character1|Neutral<<
+Dann brauche ich aber klare Erwartungen.
+
+[[Was genau änderst du künftig in deinem Ablauf?->Plan_Strukturiert]]
+[[Wie sieht dein Zeitplan konkret aus?->Plan_Strukturiert]]
+[[Woran erkennst du selbst, dass die Qualität stimmt?->Plan_Strukturiert]]
+
+
+:: Pfad_Unterstuetzung {"position":"1975,3825","size":"100,100"}
+>>Character1|Dissatisfied<<
+Eine klare Priorisierung gegenüber Ad-hoc-Anfragen würde helfen.
+
+[[Was änderst du unabhängig davon selbst?->Plan_Unterstuetzung]]
+[[Wie stellst du sicher, dass die Verantwortung bei dir bleibt?->Plan_Unterstuetzung]]
+[[Was meldest du mir frühzeitig?->Plan_Unterstuetzung]]
+
+
+:: Phase1_Absicherung_Rahmen {"position":"1675,700","size":"100,100"}
+>>Character1|Neutral<<
+Okay. Ja, sag, worum es denn genau geht.
+
+[[Wir müssen das jetzt sofort klären. Keine Diskussion.->Phase1_Negativ_Druck]]
+[[Wenn wir es nüchtern betrachten: Wie waren die letzten zwei Reportings in Termin und Qualität?->Phase2_Einschaetzung_MA]]
+
+
+:: Phase1_Katastrophe {"position":"1825,375","size":"100,100"}
+>>Character1|Neutral<<
+Sorry, ich kriege gerade einen Anruf und muss dringend weg, tut mir leid. Ich melde mich!
+
+[[Mir geht es nicht um Vorwürfe, sondern darum, dass wir eine Lösung finden, weil das Reporting besonders im Fokus steht und weiterverwendet wird.->Phase1_Problem_beschreibung]]
+[[Mir ist wichtig, das Thema jetzt sauber zu klären, bleib bitte noch kurz.->Phase1_Rahmen_sachlich]]
+[[Wir können das jetzt kurz klären oder direkt einen festen neuen Termin festmachen. Was ist für dich gerade möglich?->Phase1_Rahmen_sachlich]]
+
+
+:: Phase1_Negativ_Druck {"position":"1650,850","size":"100,100"}
+>>Character1|Defeated<<
+Ich hab's verstanden, aber ich fühl mich gerade ziemlich angegriffen.
+
+[[Okay. Mein Ton war zu scharf. Ich will Klarheit, nicht Druck. Lass uns sachlich bleiben.->Phase2_Istlage]]
+[[Ich verstehe, dass sich das hart anhört. Gleichzeitig ist das Thema wichtig, dass wir uns das jetzt anschauen sollten.->Phase2_Istlage]]
+[[Dann mache ich es ganz klar: Ich habe ein Problem mit Termin- und Qualitätsabweichungen im Reporting.->Phase2_Einstieg_Druck]]
+
+
+:: Phase1_Problem_beschreibung {"position":"1675,525","size":"100,100"}
+>>Character1|Neutral<<
+Okay, ich merke, dass dir das Thema wichtig ist.
+
+[[Ich will kurz den Rahmen setzen und dann deine Sicht hören. Ist das okay?->Phase1_Absicherung_Rahmen]]
+[[Es ist gerade geschäftskritisch. Können wir das jetzt fokussiert klären?->Phase1_Absicherung_Rahmen]]
+
+
+:: Phase1_Rahmen {"position":"1375,375","size":"100,100"}
+>>Character1|Dissatisfied<<
+Ich weiß nicht, warum das jetzt so hoch aufgehängt wird. Ich habe gerade echt viel auf dem Tisch.
+
+[[Es geht mir heute darum, Klarheit ins Reporting zu bringen und eine Lösung zu finden, die für uns beide tragfähig ist. Können wir das so angehen?->Phase1_Absicherung_Rahmen]]
+[[Ich merke, dass es gerade viel ist bei dir. Gleichzeitig ist das Thema im Moment nicht aufschiebbar. Können wir das jetzt kurz sauber klären?->Phase1_Absicherung_Rahmen]]
+[[Lass uns das schnell abhaken, damit wir beide weitermachen können.->Phase1_Katastrophe]]
+
+
+:: Phase1_Rahmen_sachlich {"position":"1950,525","size":"100,100"}
+>>Character1|Dissatisfied<<
+Na gut. Aber ich hoffe, wir machen daraus jetzt kein größeres Thema.
+
+[[Ich möchte dir kurz sagen, worum es mir geht, und dann deine Sicht hören. Passt das?->Phase1_Absicherung_Rahmen]]
+[[Bevor wir in Inhalte gehen: Können wir das Thema jetzt 15 Minuten fokussiert besprechen?->Phase1_Absicherung_Rahmen]]
+[[Wenn gerade wirklich gar nicht geht: Dann lass uns sofort einen festen Termin heute noch setzen.->Phase1_Terminfix]]
+
+
+:: Phase1_Small_Talk {"position":"1600,400","size":"100,100"}
+>>Character1|Smiling<<
+Ich hatte einen tollen Urlaub. Sehr entspannend. Solltest du auch mal probieren, du stehst immer so unter Strom.
+
+[[Ja, worüber ich eigentlich mit dir sprechen wollte: Wie läuft eigentlich gerade das monatliche Controlling?->Phase1_Rahmen]]
+[[Ich habe auch allen Grund, unter Strom zu stehen, wenn ich mir dein Reporting anschaue.->Phase1_Katastrophe]]
+
+
+:: Phase1_Terminfix {"position":"1950,700","size":"100,100"}
+>>Character1|Neutral<<
+Heute Nachmittag ginge es um 16:30 Uhr. Oder morgen früh um 9:00 Uhr.
+
+[[Wir nehmen 16:30 Uhr. Bring bis dahin bitte deine Notizen mit: wo es hakt und was du ändern willst.->Phase2_Terminsetzung]]
+[[Wir nehmen morgen 9:00 Uhr. Und jetzt trotzdem kurz: Was ist gerade dein größter Engpass?->Phase2_Istlage]]
+
+
+:: Phase2_Anspruch_Reaktion {"position":"1350,1325","size":"100,100"}
+>>Character1|Defeated<<
+Ich hätte früher anfangen und mir mehr Puffer einbauen müssen. Und ich hätte konsequenter prüfen sollen, bevor ich es abgebe. Ich glaube, ich habe mich darauf verlassen, dass du die letzten Kleinigkeiten schon siehst.
+
+[[Danke. Welche Wirkung hatte es, dass du dich darauf verlassen hast?->Phase3_Einsicht_Wirkung]]
+[[Was hat dich davon abgehalten, früher anzufangen und zu prüfen?->Phase2_Reaktion]]
+[[Wenn du das nächste Reporting denkst: Was wäre dein erster konkreter Schritt?->Phase3_Einsicht_Handlung]]
+
+
+:: Phase2_Einflussbereich {"position":"1950,1650","size":"100,100"}
+>>Character1|Dissatisfied<<
+Ich habe zu spät priorisiert und zu lange versucht, alles parallel zu bedienen. Ich hätte früher blocken und früher anfangen müssen. Nicht in meinem Einfluss war, dass manche Daten spät kamen und dass durch Anitas Ausfall kurzfristig Aufgaben reingerutscht sind.
+
+[[Danke. Was heißt das konkret für deinen Umgang mit Prioritäten beim nächsten Reporting?->Phase4_Loesung]]
+[[Welche Wirkung hatte es trotz der externen Faktoren, dass es später und mit Fehlern kam?->Phase3_Einsicht_Wirkung]]
+[[Was brauchst du, um deinen Einflussbereich künftig konsequent zu nutzen?->Phase4_Loesung]]
+
+
+:: Phase2_Einschaetzung_MA {"position":"1925,1000","size":"100,100"}
+>>Character1|Defeated<<
+Na ja, ich habe es so zwei Mal 1–2 Tage zu spät abgegeben. Und ich habe mitbekommen, dass du da ein paar Kleinigkeiten korrigieren musstest.
+
+[[Danke. Dann haben wir dieselbe Ausgangslage. Was war aus deiner Sicht der Haupttreiber?->Phase2_Reaktion]]
+[[Welche Wirkung hatte das aus deiner Sicht, dass es später und nicht ganz sauber war?->Phase2_Wirkung_MA]]
+[[Wenn du zurückblickst: Wie kam es zu dieser Mischung aus Verzögerung und kleinen Fehlern?->Phase2_Reflexion_Reaktion]]
+
+
+:: Phase2_Einstieg_Druck {"position":"1300,1150","size":"100,100"}
+>>Character1|Defeated<<
+Okay… dann sag einfach, was dein Problem ist.
+
+[[Es geht darum, dass das Reporting zuletzt nicht verlässlich war.->Phase2_Reaktion]]
+[[Wir müssen darüber sprechen, dass Termine nicht eingehalten wurden.->Phase2_Reaktion]]
+
+
+:: Phase2_Einwand_Arbeitslast {"position":"1775,1550","size":"100,100"}
+>>Character1|Dissatisfied<<
+Der Monat war extrem. Viele Ad-hoc-Anfragen, kaum Luft.
+
+[[Was davon lag in deinem Einflussbereich?->Phase2_Einflussbereich]]
+[[Welche Wirkung hatte das trotzdem?->Phase3_Einsicht_Wirkung]]
+
+
+:: Phase2_Einwand_Kollegin {"position":"1900,1325","size":"100,100"}
+>>Character1|Defeated<<
+Anita war krank und die Daten kamen spät rein. Das hatte ich einfach nicht in der Hand.
+
+[[Das stimmt, darauf hattest du keinen direkten Einfluss. Was lag trotzdem in deinem Verantwortungsbereich?->Phase2_Einflussbereich]]
+[[Welche Auswirkungen hatte es, dass du das nicht frühzeitig adressiert hast?->Phase3_Einsicht_Wirkung]]
+[[Unabhängig davon bleibt das Reporting deine Verantwortung.->Phase2_Impact_Fokussierung]]
+
+
+:: Phase2_Einwand_Ueberblick {"position":"1750,1325","size":"100,100"}
+>>Character1|Defeated<<
+Es kam einfach einiges zusammen in dem Monat.
+
+[[Lass uns das einzeln anschauen. Was war für dich der größte Treiber?->Phase2_Einwand_Kollegin]]
+[[Lass uns zuerst sortieren, was davon in deinem Einfluss lag.->Phase2_Einflussbereich]]
+[[Was genau meinst du mit "einiges"?->Phase2_Einwand_Arbeitslast]]
+
+
+:: Phase2_Impact_Fokussierung {"position":"1625,1650","size":"100,100"}
+>>Character1|Dissatisfied<<
+Okay, verstanden. Unterm Strich kam es zu spät und nicht sauber genug, und das erzeugt Nacharbeit und Unsicherheit bei denen, die damit arbeiten. Ich sehe, dass das so nicht okay ist.
+
+[[Was bedeutet das für deine Rolle im Reporting?->Phase3_Einsicht]]
+[[Angenommen, wir würden die Geschäftsführung fragen: Wie würde sie die Situation vermutlich bewerten?->Phase3_Einsicht]]
+[[Was glaubst du, welche Folgen das hat, wenn man sich auf Termin und Qualität nicht verlassen kann?->Phase3_Einsicht_Vertrauen]]
+[[Können wir festhalten, dass das so für uns beide nicht tragfähig ist?->Phase3_Konsens]]
+
+
+:: Phase2_Istlage {"position":"1650,1000","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Also… grundsätzlich läuft das Reporting ja. Die letzten zwei Monate waren einfach extrem. Ich sehe schon, dass es dadurch später wurde, aber ich fand das nicht dramatisch.
+
+[[Dann bleiben wir kurz bei den Fakten: Was genau war anders als sonst?->Phase2_Istlage_Absicherung]]
+[[Welche Wirkung hatte das aus deiner Sicht, dass es später und nicht ganz sauber war?->Phase2_Wirkung_MA]]
+[[Das ist inakzeptabel. Das darf nicht wieder passieren.->Phase2_Negativ_Wertung]]
+
+
+:: Phase2_Istlage_Absicherung {"position":"1475,1150","size":"100,100"}
+>>Character1|Dissatisfied<<
+Anders war vor allem, dass ich das Reporting später priorisiert habe, weil vieles kurzfristig reinkam. Und bei den Checks war ich am Ende im Zeitdruck, deshalb sind ein paar formale Sachen durchgerutscht.
+
+[[Okay. Dann lass uns bei der Wirkung bleiben: Was hat das ausgelöst?->Phase2_Wirkung_MA]]
+[[Verstanden. Dann schauen wir auf die Ursachen: Was war der größte Treiber, dass du so spät priorisiert hast?->Phase2_Reaktion]]
+[[Und was davon lag klar in deinem Einflussbereich, auch wenn es stressig war?->Phase2_Einflussbereich]]
+
+
+:: Phase2_Kritischer_Moment {"position":"2125,1650","size":"100,100"}
+>>Character1|Defeated<<
+Als klar wurde, dass ich zeitlich ins Hintertreffen gerate, habe ich versucht, es noch irgendwie aufzufangen. Ich habe länger gearbeitet und gehofft, dass ich es trotzdem rechtzeitig sauber fertig bekomme. Rückblickend hätte ich früher ein Signal geben müssen.
+
+[[Welche Wirkung hatte es, dass du kein Signal gegeben hast?->Phase3_Einsicht_Wirkung]]
+[[Was hat dich davon abgehalten, früher Bescheid zu sagen?->Phase2_Zoegergrund]]
+[[Was würdest du an dieser Stelle beim nächsten Mal konkret anders machen?->Phase3_Einsicht_Handlung]]
+
+
+:: Phase2_Negativ_Wertung {"position":"1825,1150","size":"100,100"}
+>>Character1|Defeated<<
+Ich weiß… aber es war nicht aus Absicht. Es war einfach viel.
+
+[[Ich verstehe das. Trotzdem sind Termin und Qualität nicht verhandelbar. Was war der größte Treiber, damit wir ihn konkret bearbeiten?->Phase2_Reaktion]]
+[[Okay. Dann gehen wir es Schritt für Schritt durch. Was genau hat dich aus dem Prozess geworfen?->Phase2_Reaktion]]
+[[Genau deshalb sprechen wir darüber. Lass uns bei der Wirkung bleiben.->Phase2_Impact_Fokussierung]]
+
+
+:: Phase2_Reaktion {"position":"1575,1325","size":"100,100"}
+>>Character1|Defeated<<
+Ich finde, das wird gerade größer gemacht, als es war. Es gab mehrere Faktoren, die das beeinflusst haben.
+
+[[Was genau meinst du mit "mehrere Faktoren"?->Phase2_Einwand_Ueberblick]]
+[[Unabhängig von den Gründen: Lass uns bei der Wirkung bleiben.->Phase2_Impact_Fokussierung]]
+[[Das interessiert mich später. Erst klären wir, was das Ergebnis bedeutet.->Phase2_Impact_Fokussierung]]
+
+
+:: Phase2_Reflexion_Reaktion {"position":"2150,1325","size":"100,100"}
+>>Character1|Dissatisfied<<
+Rückblickend war es vor allem die Mischung. Die Ad-hoc-Anfragen haben Zeit gezogen, und ich habe das Reporting später priorisiert, als gut gewesen wäre. Ich habe gemerkt, dass es eng wird, bin aber davon ausgegangen, dass 1–2 Tage Verzögerung noch okay sind.
+
+[[Du sagst, du bist davon ausgegangen, dass das okay ist. Welche Wirkung hatte das konkret?->Phase3_Einsicht_Wirkung]]
+[[Was davon lag aus deiner Sicht in deinem Einflussbereich?->Phase2_Einflussbereich]]
+[[Wann genau hast du gemerkt, dass es kritisch wird, und was hast du dann getan?->Phase2_Kritischer_Moment]]
+[[Auf einer Skala von 1 bis 10: Wie kritisch würdest du diese Verzögerung rückblickend einschätzen?->Phase3_Einsicht_Skalierung]]
+
+
+:: Phase2_Terminsetzung {"position":"2200,900","size":"100,100"}
+>>Character1|Smiling<<
+Okay, 16:30 Uhr passt. Dann bereite ich das vor und bringe meine Notizen mit.
+
+[[Gut. Dann vertagen wir das Gespräch und sprechen um 16:30 Uhr weiter.->Ende_Vertagt]]
+[[Alles klar. Dann machen wir hier einen Cut und setzen später sauber auf.->Ende_Vertagt]]
+
+
+:: Phase2_Wirkung_MA {"position":"1625,1150","size":"100,100"}
+>>Character1|Dissatisfied<<
+Es erzeugt Stress und Nacharbeit. Und ich merke, dass du dann weniger Vertrauen hast, dass es sauber ist.
+
+[[Okay. Dann lass uns anschauen, wodurch es passiert ist. Was war der Haupttreiber?->Phase2_Reaktion]]
+[[Was hättest du anders machen müssen, statt darauf zu hoffen, dass ich es am Ende glattziehe?->Phase2_Anspruch_Reaktion]]
+
+
+:: Phase2_Zoegergrund {"position":"2125,1825","size":"100,100"}
+>>Character1|Defeated<<
+Ehrlich gesagt wollte ich es erst selbst in den Griff bekommen. Ich dachte, ich schaffe das noch, wenn ich länger arbeite. Und ich wollte nicht schon wieder mit einem Problem kommen, bevor wirklich klar ist, dass es nicht klappt.
+
+[[Welche Wirkung hatte diese Entscheidung?->Phase3_Einsicht_Wirkung]]
+[[Was würdest du in so einer Situation künftig anders machen?->Phase3_Einsicht_Handlung]]
+
+
+:: Phase3_Absicherung_Handlungsbedarf {"position":"2200,2400","size":"100,100"}
+>>Character1|Dissatisfied<<
+Ja, so wie es gelaufen ist, ist das nicht tragfähig. Da müssen wir ran.
+
+[[Gut. Dann lass uns als Nächstes das Ziel fürs nächste Reporting sauber festlegen.->Phase4_Zielklaerung]]
+[[Okay. Bevor wir planen: Was verstehst du ab jetzt konkret unter "termingerecht und sauber"?->Phase4_Zielklaerung]]
+[[Verstanden. Dann schauen wir direkt auf Risiken. Was könnte dich nächsten Monat wieder aus der Spur bringen?->Phase4_Risiken]]
+
+
+
+:: Phase3_Einsicht {"position":"1975,2200","size":"100,100"}
+>>Character1|Defeated<<
+Mir wird klar, dass ich für termingerechte und saubere Zahlen verantwortlich bin, weil andere darauf Entscheidungen treffen. Wenn das nicht passt, habe ich meinen Teil nicht erfüllt, auch wenn es Gründe dafür gab.
+
+[[Was davon liegt klar in deiner Verantwortung, unabhängig von äußeren Umständen?->Phase3_Verantwortungsvertiefung]]
+[[Was genau ist aus deiner Sicht das Ziel für ein gutes Reporting?->Phase4_Zielklaerung]]
+
+
+:: Phase3_Einsicht_Handlung {"position":"1225,2000","size":"100,100"}
+>>Character1|Proud<<
+Ich würde mir direkt zu Beginn einen festen Starttermin setzen und mir im Kalender einen Block nur fürs Reporting reservieren. Außerdem würde ich mir früher einen Zwischenstand anschauen, statt alles bis zum Schluss zu schieben.
+
+[[Gut. Dann sammeln wir kurz Optionen und wählen zwei aus, die du wirklich umsetzt.->Phase3_Ideenpool]]
+[[Bevor wir planen: Wie sicher bist du auf einer Skala von 1–10, dass du das nächsten Monat schaffst?->Phase3_Skalierung_Commit]]
+
+
+:: Phase3_Einsicht_Skalierung {"position":"2250,2000","size":"100,100"}
+>>Character1|Dissatisfied<<
+Wenn ich ehrlich bin, würde ich es heute eher bei einer 7 einordnen. Damals kam es mir harmloser vor, aber mit Abstand sehe ich, dass die Verzögerung und die Fehler mehr Auswirkungen hatten, als ich mir eingestanden habe.
+
+[[Was macht es für dich eher eine 7 als eine 4?->Phase3_Einsicht_Skalierung_Begruendung]]
+[[Was müsste passieren, damit es beim nächsten Mal maximal eine 3 ist?->Phase3_Einsicht_Handlung]]
+[[Können wir festhalten, dass hier klarer Handlungsbedarf besteht?->Phase3_Absicherung_Handlungsbedarf]]
+
+
+:: Phase3_Einsicht_Skalierung_Begruendung {"position":"2075,2000","size":"100,100"}
+>>Character1|Critical<<
+Weil es nicht nur um einen verpassten Termin ging. Die verspätete Abgabe und die Korrekturen kurz vor Schluss haben bei anderen Unsicherheit erzeugt. Das habe ich damals unterschätzt, heute sehe ich das klarer.
+
+[[Welche Wirkung hatte das konkret für die anderen?->Phase3_Einsicht_Wirkung]]
+[[Was bedeutet das für deine Rolle im Reporting?->Phase3_Einsicht]]
+[[Gut, dann lass uns schauen, was du konkret ändern kannst.->Phase4_Loesung]]
+
+
+:: Phase3_Einsicht_Vertrauen {"position":"1475,2000","size":"100,100"}
+>>Character1|Critical<<
+Wenn das häufiger passiert, leidet das Vertrauen in die Zahlen. Und dann werden Entscheidungen entweder verzögert oder auf Basis von Unsicherheit getroffen. Das ist natürlich nicht gut.
+
+[[Können wir festhalten: So wie es war, ist es nicht tragfähig und wir müssen es ändern?->Phase3_Absicherung_Handlungsbedarf]]
+[[Was müsste konkret gegeben sein, damit das Vertrauen wieder stabil ist?->Phase3_Zielbild]]
+
+
+:: Phase3_Einsicht_Wirkung {"position":"1850,2000","size":"100,100"}
+>>Character1|Critical<<
+Wenn man das so betrachtet, ist das natürlich problematisch. Die Zahlen kommen zu spät und nicht sauber genug, und das sorgt für Unsicherheit bei denen, die damit arbeiten müssen.
+
+[[Bevor wir planen: Können wir festhalten, dass das so nicht tragfähig ist?->Phase3_Absicherung_Handlungsbedarf]]
+[[Was bedeutet das konkret für deine Verantwortung im Reporting?->Phase3_Einsicht]]
+[[Können wir festhalten, dass hier Handlungsbedarf besteht?->Phase3_Absicherung_Handlungsbedarf]]
+
+
+:: Phase3_Ideen_konkret {"position":"1675,2800","size":"100,100"}
+>>Character1|Neutral<<
+Okay. Erstens würde ich früher anfangen und mir feste Zeitblöcke setzen. Zweitens würde ich vor Abgabe einen eigenen Qualitätscheck machen.
+
+[[Okay. Woran erkennst du selbst, dass es wirklich sauber ist?->Phase4_WIE_Qualitaet]]
+[[Was könnte diese zwei Punkte im Alltag wieder kippen, und wie gehst du dann damit um?->Phase4_Risiken]]
+
+
+:: Phase3_Ideenpool {"position":"1475,2575","size":"100,100"}
+>>Character1|Neutral<<
+Optionen wären: früher starten, feste Reporting-Zeiten blocken, Checkliste nutzen, Zwischenstand schicken, Puffer einplanen, und ein klares Frühwarnsignal setzen.
+
+[[Was ist ab jetzt für dich das klare Ziel, an dem du dich orientierst?->Phase4_Zielklaerung]][[Okay, dann gebe ich dir einfach eine Checkliste und erinnere dich.->Phase3_Negativ_Helferfalle]]
+
+
+:: Phase3_Konsens {"position":"1650,2000","size":"100,100"}
+>>Character1|Defeated<<
+Ja, okay. Ich sehe, dass das so nicht weitergehen kann.
+
+[[Gut. Dann lass uns das Ziel fürs nächste Reporting klar definieren.->Phase4_Zielklaerung]]
+[[Was würdest du selbst als Mindeststandard ab jetzt setzen?->Phase4_Zielklaerung]]
+[[Was ist aus deiner Sicht der kritische Punkt an der aktuellen Situation?->Phase3_Einsicht_Wirkung]]
+
+
+:: Phase3_Negativ_Helferfalle {"position":"1350,2800","size":"100,100"}
+>>Character1|Neutral<<
+Wenn du mir das gibst und mich erinnerst, wäre das natürlich einfacher.
+
+[[Das mache ich bewusst nicht. Die Verantwortung bleibt bei dir. Welche zwei konkreten Schritte setzt du selbst um?->Phase3_Ideen_konkret]]
+[[Gut, dann übernehme ich es eben. Aber erwarte nicht, dass ich das dauerhaft auffange.->Pfad_Ergebnisdruck]]
+[[Ich unterstütze, aber nicht als Erinnerungssystem. Nenn mir doch zwei konkrete Hebel, die du selbst verantwortest.->Phase3_Ideen_konkret]]
+
+
+:: Phase3_Skalierung_Begruendung {"position":"1225,2350","size":"100,100"}
+>>Character1|Defeated<<
+Weil ich grundsätzlich weiß, was zu tun ist, aber ich war zu spät dran und hab zu lange gehofft, dass ich es noch auffange. Und ich hab zu spät kommuniziert.
+
+[[Gut. Dann halten wir fest: Das ist nicht tragfähig und wir ändern es.->Phase3_Absicherung_Handlungsbedarf]]
+[[Okay. Dann direkt in die Optionen: Welche zwei Hebel setzt du?->Phase3_Ideenpool]]
+
+
+:: Phase3_Skalierung_Commit {"position":"1225,2175","size":"100,100"}
+>>Character1|Critical<<
+Ich würde sagen eine 7. Ich sehe, dass es kritisch ist, aber ich hab Respekt davor, dass wieder Ad-hoc-Sachen reinkommen.
+
+[[Was macht es eher zur 7 als zur 4?->Phase3_Skalierung_Begruendung]]
+[[Was müsste passieren, damit es beim nächsten Mal maximal eine 3 wird?->Phase3_Ideenpool]]
+
+
+:: Phase3_Verantwortungsvertiefung {"position":"1950,2375","size":"100,100"}
+>>Character1|Dissatisfied<<
+Ich muss früher Verantwortung übernehmen, statt darauf zu hoffen, dass es sich am Ende schon irgendwie ausgeht. Dazu gehört auch, rechtzeitig zu sagen, wenn etwas nicht klappt, und nicht erst kurz vor Abgabe.
+
+[[Gut. Dann lass uns konkrete Optionen sammeln. Was sind deine zwei besten Ansätze?->Phase3_Ideenpool]]
+[[Was ist dein erster Schritt, wenn du merkst, es wird wieder eng?->Phase3_Ideenpool]]
+
+
+:: Phase3_Zielbild {"position":"1475,2200","size":"100,100"}
+>>Character1|Neutral<<
+Gut wäre es, wenn die Zahlen pünktlich kommen und so sauber sind, dass niemand Last-Minute korrigieren muss. Und wenn ich früh melde, sobald es kippt.
+
+[[Dann sammeln wir Optionen: Was sind zwei konkrete Hebel, die du selbst setzen kannst?->Phase3_Ideenpool]]
+[[Bevor wir in Optionen gehen: Was war dein Anteil daran, dass es so gelaufen ist?->Phase3_Einsicht]]
+
+
+:: Phase4_Loesung {"position":"1550,3100","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Dann sag mir am besten einfach, wie du es haben willst. Oder wir müssten das eigentlich automatisieren.
+
+[[Ich möchte, dass du Verantwortung für die Lösung übernimmst.->Phase4_Optionen]]
+[[Automatisierung ist langfristig sinnvoll, löst aber nicht den nächsten Monat.->Phase4_Optionen]]
+[[Was kannst du kurzfristig selbst beeinflussen?->Phase4_Optionen]]
+
+
+:: Phase4_Optionen {"position":"1550,3325","size":"100,100"}
+>>Character1|Neutral<<
+Ich sehe mehrere Möglichkeiten. Früher starten, Checklisten nutzen, mehr Puffer einbauen. Oder ich priorisiere härter.
+
+[[Wir gehen strukturiert vor mit klaren Zwischenpunkten.->Pfad_Strukturiert]]
+[[Mir ist das Ergebnis wichtiger als der Weg.->Pfad_Ergebnisdruck]]
+[[Dann lass uns auch über Priorisierung und Unterstützung sprechen.->Pfad_Unterstuetzung]]
+
+
+:: Phase4_Risiken {"position":"2225,3125","size":"100,100"}
+>>Character1|Dissatisfied<<
+Das Risiko ist wieder Zeitdruck durch Ad-hoc-Themen oder verspätete Daten. Dann rutscht das Reporting nach hinten, wenn ich nicht früh genug gegensteuere.
+
+[[Was ist dein Frühwarnsignal, dass es kippt, und wann meldest du es?->Phase4_StepByStep_Eskalation]]
+[[Was ist dein Plan B, wenn Daten wieder zu spät kommen?->Phase4_StepByStep_PlanB]]
+[[Was liegt davon klar in deiner Hand, auch wenn es wieder stressig wird?->Phase4_WIE]]
+
+
+:: Phase4_StepByStep {"position":"1975,3525","size":"100,100"}
+>>Character1|Proud<<
+Ich starte drei Tage früher, blocke feste Zeiten, arbeite mit Checkliste und mache zwei Tage vor Abgabe meinen Qualitätscheck. Den Vorabstand schicke ich dir bis mittags am Vortag, damit wir keine Last-Minute-Korrekturen haben.
+
+[[Gut. Dann committe dich darauf.->Ende_Nachhaltig]]
+[[Wir probieren das aus und reviewen es nach dem nächsten Reporting.->Ende_Tragfaehig]]
+[[Das ist mir zu weich. Ich erwarte, dass es ab sofort ohne Ausnahmen klappt.->Ende_Fragil]]
+
+
+:: Phase4_StepByStep_Eskalation {"position":"2200,3525","size":"100,100"}
+>>Character1|Neutral<<
+Sobald ich merke, dass ich vom Zeitplan abweiche oder Daten fehlen, melde ich mich spätestens zwei Tage vor Abgabe und sage klar, was gefährdet ist.
+
+[[Gut. Darauf möchte ich mich verlassen können.->Ende_Nachhaltig]]
+[[Das probieren wir aus und überprüfen es gemeinsam.->Ende_Tragfaehig]]
+
+
+:: Phase4_StepByStep_PlanB {"position":"2450,3325","size":"100,100"}
+>>Character1|Neutral<<
+Wenn Daten wieder zu spät kommen, arbeite ich an den Teilen weiter, die ich prüfen kann, und dokumentiere, was fehlt. Spätestens zwei Tage vor Abgabe melde ich dir: fehlende Daten, Auswirkung, neue Zeitschiene und was ich bis dahin schon fertig habe.
+
+[[Gut. Dann halte das bitte so als Standard fest.->Ende_Nachhaltig]]
+[[Das ist ein solider Plan. Wir checken nach dem nächsten Reporting, ob es gereicht hat.->Ende_Tragfaehig]]
+[[Das reicht mir noch nicht. Ich will, dass du mir schon beim ersten Risiko ein Signal gibst.->Phase4_StepByStep_Eskalation]]
+
+
+:: Phase4_WIE {"position":"2250,3325","size":"100,100"}
+>>Character1|Neutral<<
+Ich müsste früher anfangen, Zeit blocken und klar priorisieren.
+
+[[Was davon setzt du konkret beim nächsten Reporting um?->Phase4_StepByStep]]
+[[Wie sieht dein Plan B aus, wenn Daten wieder zu spät kommen?->Phase4_StepByStep_PlanB]]
+[[Woran erkennst du selbst, dass die Qualität stimmt, bevor du abgibst?->Phase4_WIE_Qualitaet]]
+
+
+
+:: Phase4_WIE_Qualitaet {"position":"1875,3325","size":"100,100"}
+>>Character1|Proud<<
+Ich arbeite mit einer festen Checkliste und gehe sie Punkt für Punkt durch. Und ich plane auch bewusst Zeit ein, statt es "nebenbei" zu machen.
+
+[[Wie stellst du sicher, dass du das konsequent machst?->Phase4_StepByStep]]
+[[Was tust du genau, um Fehler zu vermeiden?->Phase4_StepByStep]]
+
+
+:: Phase4_WIE_Unterstuetzung {"position":"1700,3325","size":"100,100"}
+>>Character1|Neutral<<
+Hilfreich wäre eine klare Priorisierung gegenüber Ad-hoc-Anfragen. Die Verantwortung für das Reporting bleibt aber bei mir.
+
+[[Was davon brauchst du konkret von mir und was liegt klar bei dir?->Phase4_StepByStep]]
+[[Ich erwarte, dass du das auch ohne zusätzliche Unterstützung sicherstellst.->Pfad_Ergebnisdruck]]
+
+
+:: Phase4_Zielklaerung {"position":"1900,3100","size":"100,100"}
+>>Character1|Neutral<<
+Okay. Für mich heißt das Ziel: Abgabe am vereinbarten Termin, und vor Abgabe ein eigener Qualitätscheck, sodass keine kurzfristige Nacharbeit mehr entsteht.
+
+[[Woran merkst du selbst, dass die Qualität stimmt, bevor du abgibst?->Phase4_WIE_Qualitaet]]
+[[Was brauchst du von mir, damit du das Ziel halten kannst, ohne Verantwortung abzugeben?->Phase4_WIE_Unterstuetzung]]
+
+
+:: Plan_Druck {"position":"1525,4000","size":"100,100"}
+>>Character1|Neutral<<
+Ich schaue, dass es passt. Mehr kann ich gerade nicht sagen.
+
+[[Dann überprüfen wir das nächsten Monat sehr genau.->Ende_Fragil]]
+[[Ich erwarte trotzdem eine sofortige Verbesserung.->Ende_Fragil]]
+
+
+:: Plan_Strukturiert {"position":"2225,4025","size":"100,100"}
+>>Character1|Proud<<
+Ich starte drei Tage früher, nutze eine feste Checkliste, mache zwei Tage vorher einen Selbstcheck und schicke dir einen Vorabstand bis mittags.
+
+[[Darauf committen wir uns verbindlich.->Ende_Nachhaltig]]
+[[So erwarte ich das ab sofort.->Ende_Nachhaltig]]
+
+
+:: Plan_Unterstuetzung {"position":"1975,4000","size":"100,100"}
+>>Character1|Proud<<
+Ich blocke feste Reporting-Zeiten, melde Engpässe früh und bleibe klar verantwortlich.
+
+[[Darauf committen wir uns gemeinsam.->Ende_Tragfaehig]]
+[[Das klingt tragfähig.->Ende_Tragfaehig]]
+[[So erwarte ich das künftig.->Ende_Tragfaehig]]

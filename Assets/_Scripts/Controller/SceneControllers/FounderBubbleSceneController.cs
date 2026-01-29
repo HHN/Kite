@@ -91,14 +91,14 @@ namespace Assets._Scripts.Controller.SceneControllers
             if (!content) return;
             SetupBurgerMenuUI(content);
 
-            if (GameManager.Instance.ShowKiteNovels)
-            {
-                SetupIntroNovelButton();
-            }
-            else
-            {
-                introNovelButton.SetActive(false);
-            }
+            // if (GameManager.Instance.ShowKiteNovels)
+            // {
+            //     SetupIntroNovelButton();
+            // }
+            // else
+            // {
+            introNovelButton.SetActive(false);
+            // }
             
             AddEventListeners();
             PerformPostUISetupActions();
