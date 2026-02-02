@@ -14,7 +14,7 @@ Controllingmitarbeiter
 
 :: Anfang {"position":"1600,150","size":"100,100"}
 >>Info<<
-Du bist Teamleitung im Controlling und suchst das Gespräch mit deinem Mitarbeiter. Das monatliche Reporting kam zuletzt verspätet und enthielt kleinere formale Fehler. Ziel des Gesprächs ist Klarheit, Verbindlichkeit und eine tragfähige Lösung.
+Du bist Teamleitung im Controlling und sprichst mit einem Mitarbeiter über ein monatliches Reporting, das zuletzt verspätet war und kleinere formale Fehler enthielt. Ziel des Gesprächs ist es, gemeinsam Klarheit, Verbindlichkeit und eine tragfähige Lösung zu schaffen.
 
 [[Ich möchte heute über das monatliche Reporting sprechen. Passt das für dich?->Phase1_Rahmen]]
 [[Wir haben ein Riesenproblem und müssen dringend eine Lösung finden. Dein monatliches Controlling ist eine Katastrophe.->Phase1_Katastrophe]]
