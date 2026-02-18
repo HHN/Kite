@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Text;
 
 namespace Assets._Scripts.Managers
 {
@@ -161,72 +160,6 @@ namespace Assets._Scripts.Managers
         {
             // Checks whether a value exists for the specified key
             return UnityEngine.PlayerPrefs.HasKey(key) ? UnityEngine.PlayerPrefs.GetString(key) : "";
-        }
-
-        /// <summary>
-        /// Saves an evaluation for a specific novel into persistent storage, maintaining a record of novel history
-        /// and evaluations using structured formatting. The data is stored in Unity's PlayerPrefs.
-        /// </summary>
-        /// <param name="novelName">The name of the novel for which the evaluation is being saved.</param>
-        /// <param name="evaluation">The evaluation or feedback provided for the novel.</param>
-        public void SaveEvaluation(string novelName, string evaluation)
-        {
-            // Key for PlayerPrefs
-            const string key = "evaluations";
-
-            // Load existing evaluations 
-            string existingEvaluations = UnityEngine.PlayerPrefs.GetString(key, "");
-            string novelHistoryString = CombineSentences(_novelHistory);
-
-            // Define separators
-            const string mainSeparator = "|"; // Separates different evaluations
-            const string subSeparator = "~"; // Separates novel name from flow and evaluation
-            const string flowSeparator = "^"; // Separates flow from evaluation
-
-            // Prepare a new evaluation by combining novel name, flow and evaluation with separators
-            string newEvaluation = novelName + subSeparator + novelHistoryString + flowSeparator + evaluation;
-
-            // Append new evaluation to existing ones
-            if (!string.IsNullOrEmpty(existingEvaluations))
-            {
-                existingEvaluations += mainSeparator;
-            }
-
-            existingEvaluations += newEvaluation;
-
-            UnityEngine.PlayerPrefs.SetString(key, existingEvaluations);
-            UnityEngine.PlayerPrefs.Save();
-        }
-
-        /// <summary>
-        /// Combines a list of strings into a single string, separated by a specified separator.
-        /// </summary>
-        /// <param name="sentences">A list of strings to be combined.</param>
-        /// <returns>A single string containing all the input strings, separated by delimiters.</returns>
-        private string CombineSentences(List<string> sentences)
-        {
-            // Choose a separator guaranteed not to appear in the sentences
-            const string separator = "##";
-
-            // Use StringBuilder to ensure efficiency when concatenating strings
-            StringBuilder combined = new StringBuilder();
-
-            // Iterate through all sentences
-            foreach (string sentence in sentences)
-            {
-                // Append each sentence with the separator
-                combined.Append(sentence);
-                combined.Append(separator);
-            }
-
-            // Remove the last separator
-            if (combined.Length > 0)
-            {
-                combined.Remove(combined.Length - separator.Length, separator.Length);
-            }
-
-            // Return the combined string
-            return combined.ToString();
         }
 
         /// <summary>
