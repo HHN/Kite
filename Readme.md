@@ -1,4 +1,4 @@
-# Kite2
+# Kite
 
 
 ## About the Project
