@@ -155,8 +155,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void OnStartButtonClicked()
         {
-            Debug.Log("Start Button clicked");
-
             startButton.interactable = false;
             logoButton.interactable = false;
 
