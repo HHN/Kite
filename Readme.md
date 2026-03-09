@@ -71,7 +71,7 @@ This project uses standard Unity packages, which are subject to Unity's respecti
 
 ## Deutsche Version
 
-# Kite2
+# Kite
 
 ## Über das Projekt
 
