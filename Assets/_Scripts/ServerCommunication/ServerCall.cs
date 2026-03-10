@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Runtime.InteropServices;
 using System.Text;
 using Assets._Scripts.Controller.SceneControllers;
 using Assets._Scripts.Messages;
@@ -16,6 +17,9 @@ namespace Assets._Scripts.ServerCommunication
     /// </summary>
     public abstract class ServerCall : MonoBehaviour
     {
+        [DllImport("__Internal")]
+        private static extern string GetPassphraseFromBrowser();
+        
         public IOnSuccessHandler OnSuccessHandler;
         public IOnErrorHandler OnErrorHandler;
         public SceneController sceneController;
@@ -61,6 +65,16 @@ namespace Assets._Scripts.ServerCommunication
         {
             UnityWebRequest webRequest = CreateUnityWebRequestObject();
             webRequest.SetRequestHeader("Content-Type", "application/json; charset=utf-8");
+            
+            string secret = "";
+#if UNITY_WEBGL && !UNITY_EDITOR
+    secret = GetPassphraseFromBrowser();
+#else
+            secret = "TEST_KEY_FUER_EDITOR"; // Hier kannst du dein Passwort zum Testen im Editor lassen
+#endif
+
+            webRequest.SetRequestHeader("X-Kite-Passphrase", secret);
+            
             object req = CreateRequestObject();
             if (req != null)
             {
