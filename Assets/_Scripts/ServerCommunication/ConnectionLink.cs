@@ -10,8 +10,6 @@ namespace Assets._Scripts.ServerCommunication
         private static readonly string BASE_LINK = "https://kite2.site/"; // "https://localhost/"; //
 
         public static readonly string COMPLETION_LINK = BASE_LINK + "ai";
-        public static readonly string VERSION_LINK = BASE_LINK + "version";
-        public static readonly string USER_ROLE_LINK = BASE_LINK + "role";
         public static readonly string DATA_LINK = BASE_LINK + "data";
         
         
