@@ -29,17 +29,7 @@ namespace Assets._Scripts.ServerCommunication
         SuccessfullyGotAllDataObjects,
         SuccessfullyAddedDataObject,
         SuccessfullyDeletedDataObject,
-        NoSuchDataObject,
-        SuccessfullyPostetExpertFeedbackQuestion,
-        SuccessfullyDeletedExpertFeedbackQuestion,
-        SuccessfullyFoundExpertFeedbackQuestion,
-        NoSuchExpertFeedbackQuestion,
-        SuccessfullyPostetExpertFeedbackAnswer,
-        SuccessfullyDeletedExpertFeedbackAnswer,
-        SuccessfullyFoundExpertFeedbackAnswer,
-        NoSuchExpertFeedbackAnswer,
-        SuccessfullyGotAllExpertFeedbackQuestions,
-        SuccessfullyGotAllExpertFeedbackAnswers
+        NoSuchDataObject
     }
 
     /// <summary>
@@ -80,16 +70,6 @@ namespace Assets._Scripts.ServerCommunication
                 20 => ResultCode.SuccessfullyAddedDataObject,
                 21 => ResultCode.SuccessfullyDeletedDataObject,
                 22 => ResultCode.NoSuchDataObject,
-                23 => ResultCode.SuccessfullyPostetExpertFeedbackQuestion,
-                24 => ResultCode.SuccessfullyDeletedExpertFeedbackQuestion,
-                25 => ResultCode.SuccessfullyFoundExpertFeedbackQuestion,
-                26 => ResultCode.NoSuchExpertFeedbackQuestion,
-                27 => ResultCode.SuccessfullyPostetExpertFeedbackAnswer,
-                28 => ResultCode.SuccessfullyDeletedExpertFeedbackAnswer,
-                29 => ResultCode.SuccessfullyFoundExpertFeedbackAnswer,
-                30 => ResultCode.NoSuchExpertFeedbackAnswer,
-                31 => ResultCode.SuccessfullyGotAllExpertFeedbackQuestions,
-                32 => ResultCode.SuccessfullyGotAllExpertFeedbackAnswers,
                 _ => ResultCode.None
             };
         }
