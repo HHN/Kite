@@ -9,9 +9,10 @@ namespace Assets._Scripts.ServerCommunication
     {
         private static readonly string BASE_LINK = "https://kite2.site/"; // "https://localhost/"; //
 
+        public static readonly string AUTH_LINK = BASE_LINK + "api/auth/session";
+
         public static readonly string COMPLETION_LINK = BASE_LINK + "ai";
         public static readonly string DATA_LINK = BASE_LINK + "data";
-        
         
         public static string METRICS_SCENES_BASE = BASE_LINK + "metrics/scenes";
         public static string SCENE_HIT(string sceneWire)   => $"{METRICS_SCENES_BASE}/{sceneWire}/hit";
