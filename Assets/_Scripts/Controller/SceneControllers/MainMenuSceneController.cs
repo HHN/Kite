@@ -7,6 +7,7 @@ using Assets._Scripts.Novel;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.ServerCommunication;
 using Assets._Scripts.ServerCommunication.SceneMetrics;
+using Assets._Scripts.ServerCommunication.ServerCalls;
 using Assets._Scripts.UIElements;
 using Assets._Scripts.Utilities;
 using TMPro;
@@ -45,6 +46,8 @@ namespace Assets._Scripts.Controller.SceneControllers
             InitializeScene();
             ApplyVolumeFromPrefs();
             SetupButtonListeners();
+            
+            StartAuthentication();
 
             var privacyManager = PrivacyAndConditionManager.Instance();
             bool alreadyAccepted = privacyManager.IsConditionsAccepted() && privacyManager.IsPrivacyTermsAccepted();
@@ -314,6 +317,17 @@ namespace Assets._Scripts.Controller.SceneControllers
                 cam.clearFlags = CameraClearFlags.SolidColor;
                 cam.backgroundColor = Color.black;
             }
+        }
+        
+        /// <summary>
+        /// Initiates the authentication process by creating and sending an AuthServerCall.
+        /// </summary>
+        private void StartAuthentication()
+        {
+            var go = new GameObject("AuthServerCall_RunOnce");
+            var auth = go.AddComponent<AuthServerCall>();
+            auth.sceneController = this;
+            auth.SendRequest();
         }
     }
 }

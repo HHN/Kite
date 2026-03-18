@@ -44,11 +44,10 @@ namespace Assets._Scripts.ServerCommunication
         {
             using (UnityWebRequest webRequest = CreateRequest())
             {
-                // Hier wird der Custom-CertificateHandler zugewiesen:
                 webRequest.certificateHandler = new BypassCertificate();
-                //LogManager.Info("RequestRegistration");
 
                 yield return webRequest.SendWebRequest();
+                
                 HandleWebRequestResult(webRequest);
             }
 
@@ -75,6 +74,12 @@ namespace Assets._Scripts.ServerCommunication
 
             webRequest.SetRequestHeader("X-Kite-Passphrase", secret);
             
+            // Wenn ein temporäres Token vorhanden ist, Authorization-Header setzen
+            if (TokenManager.HasToken())
+            {
+                webRequest.SetRequestHeader("Authorization", $"Bearer {TokenManager.Token}");
+            }
+            
             object req = CreateRequestObject();
             if (req != null)
             {
@@ -97,29 +102,93 @@ namespace Assets._Scripts.ServerCommunication
             {
                 case UnityWebRequest.Result.Success:
                 {
-                    if (OnSuccessHandler.IsNullOrDestroyed())
+                    // Safety: OnSuccessHandler kann null sein.
+                    if (OnSuccessHandler == null || OnSuccessHandler.IsNullOrDestroyed())
                     {
+                        // Versuche trotzdem Response zu parsen (für Logs/Debugging oder interne Logik)
+                        Response response = null;
+                        try
+                        {
+                            if (webRequest.downloadHandler != null)
+                                response = JsonUtility.FromJson<Response>(webRequest.downloadHandler.text);
+                        }
+                        catch (System.Exception ex)
+                        {
+                            Debug.LogWarning("[ServerCall] Fehler beim Parsen der Response: " + ex.Message);
+                        }
+
+                        if (response != null)
+                            OnResponse(response);
                         break;
                     }
 
-                    Response response = JsonUtility.FromJson<Response>(webRequest.downloadHandler.text);
-                    OnResponse(response);
+                    // Normaler Pfad
+                    Response fullResponse = null;
+                    try
+                    {
+                        if (webRequest.downloadHandler != null)
+                            fullResponse = JsonUtility.FromJson<Response>(webRequest.downloadHandler.text);
+                    }
+                    catch (System.Exception ex)
+                    {
+                        Debug.LogWarning("[ServerCall] Fehler beim Parsen der Response: " + ex.Message);
+                    }
+
+                    OnResponse(fullResponse);
+                    break;
+                }
+                
+                // Behandle Fehlerfälle spezifischer
+                case UnityWebRequest.Result.ProtocolError:
+                {
+                    string errorMessage;
+                    switch (webRequest.responseCode)
+                    {
+                        case 401:
+                            errorMessage = "Deine Sitzung ist abgelaufen. Bitte lade das Spiel neu.";
+                            break;
+                        case 404:
+                            errorMessage = "Die angeforderte Ressource wurde nicht gefunden.";
+                            break;
+                        case 500:
+                        case 502:
+                        case 503:
+                        case 504:
+                            errorMessage = "Ein Server-Problem ist aufgetreten. Bitte versuche es später erneut.";
+                            break;
+                        default:
+                            errorMessage = $"Ein Verbindungsfehler ist aufgetreten (Code: {webRequest.responseCode}).";
+                            break;
+                    }
+
+                    if (sceneController != null)
+                        sceneController.DisplayErrorMessage(errorMessage);
+                    else
+                        Debug.LogWarning($"[ServerCall] {errorMessage}");
+
+                    try { OnResponse(new Response()); } catch { }
                     break;
                 }
                 default:
                 {
                     if (Application.internetReachability == NetworkReachability.NotReachable)
                     {
-                        sceneController.DisplayErrorMessage(ErrorMessages.NO_INTERNET);
-                        Response response = new Response();
-                        OnResponse(response);
+                        if (sceneController != null)
+                            sceneController.DisplayErrorMessage(ErrorMessages.NO_INTERNET);
+                        else
+                            Debug.LogWarning("[ServerCall] Fehler: Keine Internetverbindung.");
                     }
                     else
                     {
-                        sceneController.DisplayErrorMessage($"Unerwarteter Fehler: {webRequest.error}");
-                        Response response = new Response();
-                        OnResponse(response);
+                        // Sonstige Fehler (DNS, ConnectionRefused etc.)
+                        string webErr = webRequest != null ? webRequest.error : "Unbekannter Fehler";
+                        if (sceneController != null)
+                            sceneController.DisplayErrorMessage($"Verbindungsfehler: {webErr}");
+                        else
+                            Debug.LogWarning($"[ServerCall] Verbindungsfehler: {webErr}");
                     }
+                    
+                    try { OnResponse(new Response()); } catch { }
 
                     break;
                 }

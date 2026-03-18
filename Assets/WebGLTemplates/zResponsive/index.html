@@ -149,6 +149,13 @@
 	<canvas id="game-canvas" data-pixel-art="false"></canvas>
 
 	<!-- Unity ersetzt die Platzhalter beim Build -->
+	 <script>
+		window.KITE_CONFIG = {
+			passphrase: "KITE_PASSPHRASE_PLACEHOLDER"
+		};
+	</script>
+
+	<!-- Unity ersetzt die Platzhalter beim Build -->
 	<script src="Build/{{{ LOADER_FILENAME }}}"></script>
 
 	<script>

@@ -8,6 +8,8 @@ namespace Assets._Scripts.ServerCommunication
     public static class ConnectionLink
     {
         private static readonly string BASE_LINK = "https://kite2.site/"; // "https://localhost/"; //
+        
+        public static readonly string AUTH_LINK = BASE_LINK + "api/auth/session";
 
         public static readonly string COMPLETION_LINK = BASE_LINK + "ai";
         public static readonly string DATA_LINK = BASE_LINK + "data";
