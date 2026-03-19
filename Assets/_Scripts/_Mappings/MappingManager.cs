@@ -125,7 +125,6 @@ namespace Assets._Scripts._Mappings
         private static void LoadCharacterMappingAsync()
         {
 #if UNITY_WEBGL && !UNITY_EDITOR
-            Debug.Log("Fuck");
             UnityWebRequest www = UnityWebRequest.Get(MappingFileCharacter);
             www.SendWebRequest().completed += _ =>
             {
