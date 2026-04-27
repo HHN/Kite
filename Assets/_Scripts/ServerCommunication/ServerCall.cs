@@ -6,6 +6,7 @@ using Assets._Scripts.Messages;
 using Assets._Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.Networking;
+using System.Security.Cryptography;
 
 namespace Assets._Scripts.ServerCommunication
 {
@@ -69,22 +70,29 @@ namespace Assets._Scripts.ServerCommunication
 #if UNITY_WEBGL && !UNITY_EDITOR
     secret = GetPassphraseFromBrowser();
 #else
-            secret = "TEST_KEY_FUER_EDITOR"; // Hier kannst du dein Passwort zum Testen im Editor lassen
+            secret = "secret"; // Hier kannst du dein Passwort zum Testen im Editor lassen
 #endif
+            
+            // Create HMAC-Signature
+            string requestBody = "";
+            object req = CreateRequestObject();
+            if (req != null)
+            {
+                requestBody = JsonUtility.ToJson(req); // Jetzt wird requestBody korrekt gefüllt
+                webRequest.uploadHandler = new UploadHandlerRaw(new UTF8Encoding(false).GetBytes(requestBody));
+            }
+            
+            string timestamp = System.DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
+            string dataToSign = timestamp /*+ requestBody*/;
+            string signature = CalculateHMAC(dataToSign, secret);
 
-            webRequest.SetRequestHeader("X-Kite-Passphrase", secret);
+            webRequest.SetRequestHeader("X-Kite-Timestamp", timestamp);
+            webRequest.SetRequestHeader("X-Kite-Signature", signature);
             
             // Wenn ein temporäres Token vorhanden ist, Authorization-Header setzen
             if (TokenManager.HasToken())
             {
                 webRequest.SetRequestHeader("Authorization", $"Bearer {TokenManager.Token}");
-            }
-            
-            object req = CreateRequestObject();
-            if (req != null)
-            {
-                string jsonData = JsonUtility.ToJson(req);
-                webRequest.uploadHandler = new UploadHandlerRaw(new UTF8Encoding(false).GetBytes(jsonData));
             }
 
             return webRequest;
@@ -231,6 +239,30 @@ namespace Assets._Scripts.ServerCommunication
         {
             yield return new WaitForSeconds(seconds);
             Destroy(gameObject);
+        }
+        
+        /// <summary>
+        /// Calculates an HMACSHA256 hash for the given data and key.
+        /// </summary>
+        /// <param name="data">The data to be signed.</param>
+        /// <param name="key">The secret key (passphrase).</param>
+        /// <returns>The HMACSHA256 hash as a lowercase hexadecimal string.</returns>
+        private string CalculateHMAC(string data, string key)
+        {
+            byte[] keyBytes = Encoding.UTF8.GetBytes(key);
+            byte[] dataBytes = Encoding.UTF8.GetBytes(data);
+            
+            using (var hmac = new HMACSHA256(keyBytes))
+            {
+                byte[] hashBytes = hmac.ComputeHash(dataBytes);
+                // Convert the byte array to a hex string
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("x2")); // "x2" formats as a two-digit hexadecimal number
+                }
+                return sb.ToString();
+            }
         }
     }
 }
