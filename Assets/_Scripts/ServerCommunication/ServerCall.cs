@@ -45,8 +45,6 @@ namespace Assets._Scripts.ServerCommunication
         {
             using (UnityWebRequest webRequest = CreateRequest())
             {
-                webRequest.certificateHandler = new BypassCertificate();
-
                 yield return webRequest.SendWebRequest();
                 
                 HandleWebRequestResult(webRequest);
@@ -68,7 +66,7 @@ namespace Assets._Scripts.ServerCommunication
             
             string secret = "";
 #if UNITY_WEBGL && !UNITY_EDITOR
-    secret = GetPassphraseFromBrowser();
+            secret = GetPassphraseFromBrowser();
 #else
             secret = "secret"; // Hier kannst du dein Passwort zum Testen im Editor lassen
 #endif
@@ -78,13 +76,14 @@ namespace Assets._Scripts.ServerCommunication
             object req = CreateRequestObject();
             if (req != null)
             {
-                requestBody = JsonUtility.ToJson(req); // Jetzt wird requestBody korrekt gefüllt
-                webRequest.uploadHandler = new UploadHandlerRaw(new UTF8Encoding(false).GetBytes(requestBody));
+                requestBody = JsonUtility.ToJson(req);
+                byte[] bodyRaw = new UTF8Encoding(false).GetBytes(requestBody);
+                webRequest.uploadHandler = new UploadHandlerRaw(bodyRaw);
             }
             
             string timestamp = System.DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
-            string dataToSign = timestamp /*+ requestBody*/;
-            string signature = CalculateHMAC(dataToSign, secret);
+            string dataToSign = timestamp + requestBody;
+            string signature = CalculateHMACSHA256(dataToSign, secret);
 
             webRequest.SetRequestHeader("X-Kite-Timestamp", timestamp);
             webRequest.SetRequestHeader("X-Kite-Signature", signature);
@@ -110,39 +109,24 @@ namespace Assets._Scripts.ServerCommunication
             {
                 case UnityWebRequest.Result.Success:
                 {
-                    // Safety: OnSuccessHandler kann null sein.
-                    if (OnSuccessHandler == null || OnSuccessHandler.IsNullOrDestroyed())
-                    {
-                        // Versuche trotzdem Response zu parsen (für Logs/Debugging oder interne Logik)
-                        Response response = null;
-                        try
-                        {
-                            if (webRequest.downloadHandler != null)
-                                response = JsonUtility.FromJson<Response>(webRequest.downloadHandler.text);
-                        }
-                        catch (System.Exception ex)
-                        {
-                            Debug.LogWarning("[ServerCall] Fehler beim Parsen der Response: " + ex.Message);
-                        }
-
-                        if (response != null)
-                            OnResponse(response);
-                        break;
-                    }
-
-                    // Normaler Pfad
-                    Response fullResponse = null;
+                    Response response = null;
                     try
                     {
-                        if (webRequest.downloadHandler != null)
-                            fullResponse = JsonUtility.FromJson<Response>(webRequest.downloadHandler.text);
+                        if (webRequest.downloadHandler != null && !string.IsNullOrEmpty(webRequest.downloadHandler.text))
+                        {
+                            response = JsonUtility.FromJson<Response>(webRequest.downloadHandler.text);
+                        }
                     }
                     catch (System.Exception ex)
                     {
                         Debug.LogWarning("[ServerCall] Fehler beim Parsen der Response: " + ex.Message);
                     }
 
-                    OnResponse(fullResponse);
+                    // Führe OnResponse immer aus, wenn wir ein Objekt haben, 
+                    // unabhängig davon, ob ein Handler registriert ist.
+                    if (response != null)
+                        OnResponse(response);
+
                     break;
                 }
                 
@@ -196,9 +180,8 @@ namespace Assets._Scripts.ServerCommunication
                         else
                             Debug.LogWarning($"[ServerCall] Verbindungsfehler: {webErr}");
                     }
-                    
-                    try { OnResponse(new Response()); } catch { }
 
+                    try { OnResponse(new Response()); } catch { }
                     break;
                 }
             }
@@ -247,16 +230,15 @@ namespace Assets._Scripts.ServerCommunication
         /// <param name="data">The data to be signed.</param>
         /// <param name="key">The secret key (passphrase).</param>
         /// <returns>The HMACSHA256 hash as a lowercase hexadecimal string.</returns>
-        private string CalculateHMAC(string data, string key)
+        private string CalculateHMACSHA256(string data, string key)
         {
             byte[] keyBytes = Encoding.UTF8.GetBytes(key);
             byte[] dataBytes = Encoding.UTF8.GetBytes(data);
             
-            using (var hmac = new HMACSHA256(keyBytes))
+            using (HMACSHA256 hmac = new HMACSHA256(keyBytes))
             {
                 byte[] hashBytes = hmac.ComputeHash(dataBytes);
-                // Convert the byte array to a hex string
-                StringBuilder sb = new StringBuilder();
+                StringBuilder sb = new StringBuilder(hashBytes.Length * 2);
                 for (int i = 0; i < hashBytes.Length; i++)
                 {
                     sb.Append(hashBytes[i].ToString("x2")); // "x2" formats as a two-digit hexadecimal number
