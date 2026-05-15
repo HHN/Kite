@@ -295,7 +295,7 @@ namespace Assets._Scripts.Controller.SceneControllers
             // Update button visibility
             finishButtonContainer.SetActive(false);
             finishButtonTopContainer.SetActive(true);
-            finishButtonBottomContainer.SetActive(true);
+            finishButtonBottomContainer.SetActive(false);
             
             // Set error feedback text
             string completion = "Keine Analyse verfügbar – Serverfehler.";

@@ -246,18 +246,37 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// <param name="input">The search query entered by the user.</param>
         private void Search(string input)
         {
+            // First trim the input (remove leading/trailing whitespace)
+            var trimmed = input?.Trim();
+
+            // If trimming leaves nothing: remove previous results and reset the search UI
+            if (string.IsNullOrEmpty(trimmed))
+            {
+                foreach (var btn in _searchResultButtons)
+                {
+                    if (btn != null) Destroy(btn);
+                }
+                _searchResultButtons.Clear();
+
+                CloseSearchBar();
+                return;
+            }
+
+            // For valid input: show search UI
             searchBarButton.gameObject.SetActive(true);
             searchBarImage.gameObject.SetActive(false);
 
             biasInformation.SetActive(false);
             searchList.SetActive(true);
-            
-            foreach (var btn in _searchResultButtons) btn.SetActive(false);
+
+            // Remove previous entries
+            foreach (var btn in _searchResultButtons)
+            {
+                if (btn != null) Destroy(btn);
+            }
             _searchResultButtons.Clear();
 
-            if (string.IsNullOrWhiteSpace(input)) return;
-
-            string inputLower = input.ToLower();
+            string inputLower = trimmed.ToLower();
             var matches = _biases.Values
                 .Where(b => b.headline.ToLower().Contains(inputLower) || b.preview.ToLower().Contains(inputLower));
 
@@ -288,7 +307,21 @@ namespace Assets._Scripts.Controller.SceneControllers
         /// </summary>
         private void CloseSearchBar()
         {
-            inputField.text = "";
+            // Remove previous search result objects
+            foreach (var btn in _searchResultButtons)
+            {
+                if (btn != null) Destroy(btn);
+            }
+            _searchResultButtons.Clear();
+
+            // Temporarily remove listener so setting the text doesn't trigger Search
+            if (inputField != null)
+            {
+                inputField.onValueChanged.RemoveListener(Search);
+                inputField.text = string.Empty;
+                inputField.onValueChanged.AddListener(Search);
+            }
+
             searchBarButton.gameObject.SetActive(false);
             searchBarImage.gameObject.SetActive(true);
 
