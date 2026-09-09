@@ -11,5 +11,6 @@ Investor: 9
 Notarin: 10
 Sachbearbeiter: 11
 Kundin: 12
+Tochter: 13
 
 

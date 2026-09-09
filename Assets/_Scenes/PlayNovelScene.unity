@@ -587,6 +587,7 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 30
   m_lineSpacingMax: 0
@@ -2313,6 +2314,7 @@ MonoBehaviour:
   - {fileID: 781856241913721907, guid: 821483aaec5e17b4b8a7aeaf08fc726e, type: 3}
   - {fileID: 781856241913721907, guid: 42c263b3ce0e2d24bbb694a032ccd4ef, type: 3}
   - {fileID: 781856241913721907, guid: dda9927ec9a0b6343b88a2621d1fe5d9, type: 3}
+  - {fileID: 781856241913721907, guid: f0f33b9f5a53ca241bdd2e27c0afde9e, type: 3}
   novelVisualMappings:
   - characterName: Intro
     prefab: {fileID: 781856241913721907, guid: 42c263b3ce0e2d24bbb694a032ccd4ef, type: 3}
@@ -2332,6 +2334,8 @@ MonoBehaviour:
     prefab: {fileID: 781856241913721907, guid: dda9927ec9a0b6343b88a2621d1fe5d9, type: 3}
   - characterName: Sachbearbeiter
     prefab: {fileID: 781856241913721907, guid: 0befadf77118e9847b85864f275358d1, type: 3}
+  - characterName: Tochter
+    prefab: {fileID: 781856241913721907, guid: f0f33b9f5a53ca241bdd2e27c0afde9e, type: 3}
   novelImageContainer: {fileID: 1655295459}
   backgroundContainer: {fileID: 0}
   backgroundPrefab:
@@ -2357,7 +2361,6 @@ MonoBehaviour:
   hintForSavegameMessageBox: {fileID: 5629918238507184917, guid: 19371ec5265175b4285038aaf97af918, type: 3}
   novelToPlay:
     id: 0
-    folderName: 
     title: 
     description: 
     feedback: 

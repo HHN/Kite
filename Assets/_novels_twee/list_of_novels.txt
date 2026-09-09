@@ -2,5 +2,6 @@
   "visualNovels": [
     "_novels_twee\\Einstieg",
     "_novels_twee\\AD(H)S",
+    "_novels_twee\\Hilfeplanung_mit_Tochter",
   ]
 } 

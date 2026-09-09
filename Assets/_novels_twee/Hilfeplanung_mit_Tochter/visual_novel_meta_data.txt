@@ -1,10 +1,10 @@
 {
   "idNumberOfNovel": 2,
   "titleOfNovel": "Hilfeplanung mit Tochter",
-  "descriptionOfNovel": "...",
-  "contextForPrompt": "",
+  "descriptionOfNovel": "Es ist ein vorbereitendes Einzelgespräch einer Fachkraft des Jugendamts mit der 15-jährigen Mira.",
+  "contextForPrompt": "Es ist ein vorbereitendes Einzelgespräch einer Fachkraft des Jugendamts mit der 15-jährigen Mira. Anwesend sind ausschließlich Mira und die Fachkraft. Für Miras Familie besteht bereits eine Familienhilfe; in zwei Wochen findet ein Hilfeplangespräch statt. Die Fachkraft möchte erfahren, wie Mira ihre aktuelle Situation erlebt und welche Themen aus ihrer Sicht für die weitere Hilfeplanung wichtig sind.",
   "startTalkingPartnerExpression": "NeutralRelaxed",
-  "talkingPartner01" : "Intro",
+  "talkingPartner01" : "Tochter",
   "talkingPartner02" : "",
   "talkingPartner03" : "",
   "isKiteNovel": true,

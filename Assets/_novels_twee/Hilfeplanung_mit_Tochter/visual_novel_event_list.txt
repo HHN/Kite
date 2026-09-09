@@ -642,6 +642,7 @@ Wenn etwas funktioniert, das vorher nicht funktioniert hat. Ich mag es solche Pr
 
 [[Klingt, als würdest du dir vieles selbst beibringen.->S5 Computer Selbstständig]]
 
+>>Bias|OccupationalStereotyping<<
 [[Und woher kommt dann der Teil mit den Menschen?->S5 Menschen]]
 :: S5 Computer Oft {"position":"2100,4675","size":"100,100"}
 >>Character1|Neutral<<

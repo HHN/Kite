@@ -114,6 +114,12 @@ namespace Assets._Scripts.Managers
                                "Nutze geschlechtergerechte Sprache (z.B. Gründer*innen, weibliche Gründerinnen). " +
                                "Richte den Text in der Du-Form an die KI-Einführungsperson. Sei wohlwollend und ermunternd. Formuliere den Text aus einer unbestimmten Ich-Perspektive.");
             }
+            else if ((int)novel.id == 2)
+            {
+                LoadTextFile(Path.Combine(Application.streamingAssetsPath, "TochterPrompt.txt"),
+                    content => { _prompt.Append(content).AppendLine(); },
+                    "Prompt");
+            }
             else
             {
                 LoadPromptFromFile();
