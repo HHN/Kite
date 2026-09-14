@@ -1,5 +1,5 @@
 :: StoryTitle
-Hilfeplanung - Mira
+Hilfeplanung - Lina
 
 
 :: StoryData
@@ -12,16 +12,16 @@ Hilfeplanung - Mira
 }
 
 
-:: S2 Mira Schule {"position":"1275,825","size":"100,100"}
+:: S2 Lina Schule {"position":"1275,825","size":"100,100"}
 >>Character1|Dissatisfied<<
 Eigentlich nur Schule, lernen, wieder Schule. Vor den Ferien wollten auf einmal alle noch irgendwas einsammeln oder fertig haben. War schon nervig, aber ist ja jedes Jahr so.
 
 [[Das kann ich gut verstehen. Die Zeit vor den Ferien ist für viele ziemlich voll.->S2 Schule Overlooked]]
 
-[[Was genau war daran am nervigsten?->S2 Mira Nervig]]
+[[Was genau war daran am nervigsten?->S2 Lina Nervig]]
 
 [[Okay. Dann erzähl mir mal, wie eine normale Woche bei dir aussieht.->S3 Normale Woche]]
-:: S2 Mira Üblich {"position":"1050,825","size":"100,100"}
+:: S2 Lina Üblich {"position":"1050,825","size":"100,100"}
 >>Character1|Neutral<<
 Na ja. Mich manchmal um meinen Bruder kümmern. Einkaufen, wenn was fehlt. Oder schauen, dass zu Hause alles klappt.
 >>--<<
@@ -29,14 +29,14 @@ Na ja. Mich manchmal um meinen Bruder kümmern. Einkaufen, wenn was fehlt. Oder 
 Ist jetzt nichts Besonderes.
 >>--<<
 
-[[Das klingt, als würdest du viel mithelfen.->S2 Mira Helfen]]
+[[Das klingt, als würdest du viel mithelfen.->S2 Lina Helfen]]
 
 [[Wie oft machst du solche Sachen?->S3 Normale Woche]]
 
 [[Viele Jugendliche helfen zu Hause mit. Wie läuft es denn in der Schule gerade?->S2 Schule Care Übergang]]
 :: Anfang {"position":"1600,25","size":"100,100"}
 >>Info<<
-Mira ist 15 und geht in die 9. Klasse. In zwei Wochen ist das Hilfeplangespräch. Du hast sie vorher um ein Gespräch gebeten. Ihr sitzt in einem Besprechungsraum im Jugendamt. Sie hat den Rucksack aufbehalten.
+Lina ist 15 und geht in die 9. Klasse. In zwei Wochen ist das Hilfeplangespräch. Du hast sie vorher um ein Gespräch gebeten. Ihr sitzt in einem Besprechungsraum im Jugendamt.
 
 [[Weiter->Einstieg]]
 
@@ -92,7 +92,7 @@ Also: Bei euch gibt es ja gerade die Familienhilfe. In zwei Wochen sitzen die Er
 
 [[Wie geht es deiner Mutter zurzeit?->S2 Mutter]]
 
-[[Wie geht es dir?->S2 Mira]]
+[[Wie geht es dir?->S2 Lina]]
 
 [[Wie läuft die Schule?->S2 Schule]]
 
@@ -108,7 +108,7 @@ In zwei Wochen ist ja das Hilfeplangespräch, und vorher rede ich mit allen Bete
 
 [[Wie geht es deiner Mutter zurzeit?->S2 Mutter]]
 
-[[Wie geht es dir?->S2 Mira]]
+[[Wie geht es dir?->S2 Lina]]
 
 [[Wie läuft die Schule?->S2 Schule]]
 
@@ -122,89 +122,89 @@ Okay. Dann kurz dazu: Bei euch läuft ja die Familienhilfe. In zwei Wochen gibt 
 
 [[Wie geht es deiner Mutter zurzeit?->S2 Mutter]]
 
-[[Wie geht es dir?->S2 Mira]]
+[[Wie geht es dir?->S2 Lina]]
 
 [[Wie läuft die Schule?->S2 Schule]]
 
 
-:: S2 Mira {"position":"1225,525","size":"100,100"}
+:: S2 Lina {"position":"1225,525","size":"100,100"}
 >>Character1|Neutral<<
 Geht so.
 
-[[Es muss ja auch nicht alles sofort raus. Erzähl einfach ein bisschen, wie die letzten Wochen für dich waren.->S2 Mira Mitgehend]]
+[[Es muss ja auch nicht alles sofort raus. Erzähl einfach ein bisschen, wie die letzten Wochen für dich waren.->S2 Lina Mitgehend]]
 
-[[Woran merkst du gerade, dass es nur "geht so" ist?->S2 Mira Geht So]]
+[[Woran merkst du gerade, dass es nur "geht so" ist?->S2 Lina Geht So]]
 
-[[Du bist ja in der 9. Klasse. Da ist bestimmt auch viel los.-> S2 Mira Schule]]
-:: S2 Mira Entlastung {"position":"950,1275","size":"100,100"}
+[[Du bist ja in der 9. Klasse. Da ist bestimmt auch viel los.-> S2 Lina Schule]]
+:: S2 Lina Entlastung {"position":"950,1275","size":"100,100"}
 >>Character1|Neutral<<
 Ja, wahrscheinlich. Muss ja jemand machen.
 >>--<<
 >>Bias|ParentifiedDaughter<<
 
-[[Mir fällt auf, dass du darüber sprichst, als wäre das selbstverständlich.->S3 Mira Normal]]
+[[Mir fällt auf, dass du darüber sprichst, als wäre das selbstverständlich.->S3 Lina Normal]]
 
-[[Was gehört für dich alles zu "jemand muss es machen"?->S3 Mira Aufgaben]]
+[[Was gehört für dich alles zu "jemand muss es machen"?->S3 Lina Aufgaben]]
 
-[[Und wenn du es nicht machen würdest?->S2 Mira Niemand]]
-:: S2 Mira Freizeit {"position":"1425,1700","size":"100,100"}
+[[Und wenn du es nicht machen würdest?->S2 Lina Niemand]]
+:: S2 Lina Freizeit {"position":"1425,1700","size":"100,100"}
 >>Character1|Neutral<<
 Kommt drauf an. Manchmal zocke ich oder hänge mit Freund*innen rum. Aber oft ist auch einfach keine Zeit dafür.
 
-[[Was hast du denn für Aufgaben, sodass du keine Zeit für anderes hast?->S3 Mira Aufgaben]]
+[[Was hast du denn für Aufgaben, sodass du keine Zeit für anderes hast?->S3 Lina Aufgaben]]
 
-[[Woran merkst du, dass wenig Zeit übrig bleibt?->S2 Mira Kopf Voll]]
+[[Woran merkst du, dass wenig Zeit übrig bleibt?->S2 Lina Kopf Voll]]
 
 [[Erzähl mir mal, wie eine normale Woche bei dir aussieht.->S3 Normale Woche]]
-:: S2 Mira Geht So {"position":"1350,675","size":"100,100"}
+:: S2 Lina Geht So {"position":"1350,675","size":"100,100"}
 >>Character1|Dissatisfied<<
 Na ja, es ist gerade einfach alles ein bisschen viel.
 
-[[Das klingt, als müsstest du an ziemlich viele Dinge gleichzeitig denken.->S2 Mira Viel Denken]]
+[[Das klingt, als müsstest du an ziemlich viele Dinge gleichzeitig denken.->S2 Lina Viel Denken]]
 
 [[Viel in der Schule oder auch zu Hause?->S2 Schule Viel]]
 
 [[Okay. Dann erzähl mir mal von einer normalen Woche.->S3 Normale Woche]]
-:: S2 Mira Helfen {"position":"975,1100","size":"100,100"}
+:: S2 Lina Helfen {"position":"975,1100","size":"100,100"}
 >>Character1|Neutral<<
 Geht eigentlich. Meine Mutter arbeitet ja viel.
 
-[[Das ist sicher eine große Entlastung für sie.->S2 Mira Entlastung]]
+[[Das ist sicher eine große Entlastung für sie.->S2 Lina Entlastung]]
 
-[[Was genau übernimmst du denn alles?->S3 Mira Aufgaben]]
+[[Was genau übernimmst du denn alles?->S3 Lina Aufgaben]]
 
-[[Mir fällt auf, dass du das sofort als normal beschreibst.->S3 Mira Normal]]
-:: S2 Mira Kopf Voll {"position":"1750,1875","size":"100,100"}
+[[Mir fällt auf, dass du das sofort als normal beschreibst.->S3 Lina Normal]]
+:: S2 Lina Kopf Voll {"position":"1750,1875","size":"100,100"}
 >>Character1|Dissatisfied<<
 Keine Ahnung. Schule halt. Und wenn meine Mutter arbeitet, muss ich manchmal noch an Jonas denken oder ob zu Hause alles klappt.
 >>--<<
 >>Bias|ParentifiedDaughter<<
 
-[[Was machst du dann konkret?->S3 Mira Aufgaben]]
+[[Was machst du dann konkret?->S3 Lina Aufgaben]]
 
-[[Wie ist das für dich?->S3 Mira Wie Findest Du Das]]
+[[Wie ist das für dich?->S3 Lina Wie Findest Du Das]]
 
 [[Wie sieht denn eine typische Woche so für dich aus?->S3 Normale Woche]]
-:: S2 Mira Mitgehend {"position":"1150,675","size":"100,100"}
+:: S2 Lina Mitgehend {"position":"1150,675","size":"100,100"}
 >>Character1|Neutral<<
 War eigentlich viel Schule. Und zu Hause halt das Übliche.
 
-[[In der 9. Klasse ist auch einfach viel los.-> S2 Mira Schule]]
+[[In der 9. Klasse ist auch einfach viel los.-> S2 Lina Schule]]
 
-[[Was meinst du mit dem Üblichen?-> S2 Mira Üblich]]
-:: S2 Mira Nervig {"position":"1550,1100","size":"100,100"}
+[[Was meinst du mit dem Üblichen?-> S2 Lina Üblich]]
+:: S2 Lina Nervig {"position":"1550,1100","size":"100,100"}
 >>Character1|Dissatisfied<<
 Dass immer noch irgendwas dazukam.
 >>--<<
 >>Character1|Defeated<<
 Wenn man denkt, man ist fertig, fehlt noch ein Zettel oder jemand will noch irgendwas haben.
 
-[[Klingt, als ob du an ziemlich vieles gleichzeitig denken musstest.->S2 Mira Viel Denken]]
+[[Klingt, als ob du an ziemlich vieles gleichzeitig denken musstest.->S2 Lina Viel Denken]]
 
-[[Und zu Hause war das ähnlich?->S2 Mira zu Hause]]
+[[Und zu Hause war das ähnlich?->S2 Lina zu Hause]]
 
 [[Dann erzähl mir mal, wie eine normale Woche bei dir aussieht.->S3 Normale Woche]]
-:: S2 Mira Niemand {"position":"950,1450","size":"100,100"}
+:: S2 Lina Niemand {"position":"950,1450","size":"100,100"}
 >>Character1|Neutral<<
 Keine Ahnung. Dann müsste meine Mutter halt schauen, wie sie das organisiert.
 >>--<<
@@ -213,32 +213,32 @@ Aber meistens mache ich's einfach.
 >>--<<
 >>Bias|ParentifiedDaughter<<
 
-[[Was machst du denn konkret?->S3 Mira Aufgaben]]
+[[Was machst du denn konkret?->S3 Lina Aufgaben]]
 
 [[Dann schauen wir uns mal eine normale Woche an.->S3 Normale Woche]]
-:: S2 Mira Viel Denken {"position":"1450,1275","size":"100,100"}
+:: S2 Lina Viel Denken {"position":"1450,1275","size":"100,100"}
 >>Character1|Neutral<<
 Ja. Ich muss dann im Kopf behalten, was noch alles ist.
 
-[[Was gehört da alles dazu?->S2 Mira Kopf Voll]]
+[[Was gehört da alles dazu?->S2 Lina Kopf Voll]]
 
-[[Ist das eher in der Schule so oder auch zu Hause?->S2 Mira zu Hause]]
+[[Ist das eher in der Schule so oder auch zu Hause?->S2 Lina zu Hause]]
 
 [[ Dann schauen wir uns mal eine normale Woche an.->S3 Normale Woche]]
-:: S2 Mira zu Hause {"position":"1925,1650","size":"100,100"}
+:: S2 Lina zu Hause {"position":"1925,1650","size":"100,100"}
 >>Character1|Dissatisfied<<
 Weiß nicht. zu Hause gibt's halt auch immer irgendwas.
 
-[[Was meinst du mit "irgendwas"?->S3 Mira Aufgaben]]
+[[Was meinst du mit "irgendwas"?->S3 Lina Aufgaben]]
 
-[[Klingt, als müsstest du an viele Dinge gleichzeitig denken.->S2 Mira Kopf Voll]]
+[[Klingt, als müsstest du an viele Dinge gleichzeitig denken.->S2 Lina Kopf Voll]]
 
 [[Okay. Dann erzähl mir mal von einer normalen Woche.->S3 Normale Woche]]
 :: S2 Mutter {"position":"1600,525","size":"100,100"}
 >>Character1|Dissatisfied<<
 Stressig. Sie hat wieder ständig Schichten getauscht. Letzte Woche war sie fast gar nicht zu Hause.
 
-[[Das klingt nach einer anstrengenden Zeit für euch. Wie war das für dich?->S2 Mutter Für Mira]]
+[[Das klingt nach einer anstrengenden Zeit für euch. Wie war das für dich?->S2 Mutter Für Lina]]
 
 [[Was bedeutet das für euren Alltag zu Hause?->S2 Mutter Alltag]]
 
@@ -249,30 +249,30 @@ Kommt drauf an. Wenn sie viel arbeitet, muss zu Hause halt mehr organisiert werd
 
 [[Was heißt für dich "organisiert werden"?->S2 zu Hause]]
 
-[[Klingt, als müsstest du einiges mitdenken.->S2 Mira Kopf Voll]]
+[[Klingt, als müsstest du einiges mitdenken.->S2 Lina Kopf Voll]]
 
-[[Und wie erlebst du das selbst?->S2 Mira]]
-:: S2 Mutter Für Mira {"position":"1525,675","size":"100,100"}
+[[Und wie erlebst du das selbst?->S2 Lina]]
+:: S2 Mutter Für Lina {"position":"1525,675","size":"100,100"}
 >>Character1|Neutral<<
 Okay? Es war halt so.
 
-[[Hat sich dadurch zu Hause etwas verändert?->S2 Mira zu Hause]]
+[[Hat sich dadurch zu Hause etwas verändert?->S2 Lina zu Hause]]
 
-[[Das klingt, als müsstest du trotzdem an ziemlich viele Dinge gleichzeitig denken.->S2 Mira Viel Denken]]
+[[Das klingt, als müsstest du trotzdem an ziemlich viele Dinge gleichzeitig denken.->S2 Lina Viel Denken]]
 :: S2 Mutter Perspektive {"position":"1700,675","size":"100,100"}
 >>Character1|NeutralRelaxed<<
 Hm, ist schon okay.
 
 [[Und unabhängig von deiner Mutter: Was beschäftigt dich gerade?->S2 Neben Schule]]
 
-[[Wie läuft es denn zu Hause gerade für dich?->S2 Mira zu Hause]]
+[[Wie läuft es denn zu Hause gerade für dich?->S2 Lina zu Hause]]
 :: S2 Neben Schule {"position":"1325,1450","size":"100,100"}
 >>Character1|Neutral<<
 Weiß nicht. Eigentlich nicht viel. Schule halt. Und zu Hause ist meistens auch was los.
 
 [[Was ist denn zu Hause meistens los?->S2 zu Hause]]
 
-[[Womit verbringst du deine Zeit, wenn du mal nichts für die Schule machen musst?->S2 Mira Freizeit]]
+[[Womit verbringst du deine Zeit, wenn du mal nichts für die Schule machen musst?->S2 Lina Freizeit]]
 
 [[Okay. Dann erzähl mir mal von einer normalen Woche.->S3 Normale Woche]]
 :: S2 Schule {"position":"1900,525","size":"100,100"}
@@ -301,14 +301,14 @@ Ganz okay eigentlich. Ich komme mit.
 
 [[Mir fällt auf, dass du sehr schnell sagst, dass alles okay ist.->S2 Schule Schnell Okay]]
 
-[[Gut. Wie läuft es denn zu Hause im Moment?->S2 Mira zu Hause]]
+[[Gut. Wie läuft es denn zu Hause im Moment?->S2 Lina zu Hause]]
 :: S2 Schule Nicht Okay {"position":"1125,1450","size":"100,100"}
 >>Character1|NeutralRelaxed<<
 Wenn irgendwas richtig schiefläuft vielleicht. Aber meistens kriege ich  das schon irgendwie hin.
 >>--<<
 >>Bias|InternalizingOverlooked<<
 
-[[Was musst du denn alles hinkriegen?->S2 Mira Kopf Voll]]
+[[Was musst du denn alles hinkriegen?->S2 Lina Kopf Voll]]
 
 [[Und abgesehen von der Schule? Was beschäftigt dich gerade noch?->S2 Neben Schule]]
 :: S2 Schule Okay {"position":"1850,675","size":"100,100"}
@@ -328,7 +328,7 @@ Ja, eben. Deswegen ist das jetzt auch nichts, worüber man groß reden muss.
 
 [[Und abgesehen von der Schule? Was beschäftigt dich gerade noch?->S2 Neben Schule]]
 
-[[Gut. Wie läuft es denn zu Hause im Moment?->S2 Mira zu Hause]]
+[[Gut. Wie läuft es denn zu Hause im Moment?->S2 Lina zu Hause]]
 :: S2 Schule Schnell Okay {"position":"1125,1275","size":"100,100"}
 >>Character1|Neutral<<
 Na ja. Wenn's nicht okay wäre, würde ich das schon sagen.
@@ -337,7 +337,7 @@ Na ja. Wenn's nicht okay wäre, würde ich das schon sagen.
 
 [[Was heißt für dich "nicht okay"?->S2 Schule Nicht Okay]]
 
-[[Das klingt trotzdem, als müsstest du an ziemlich viele Dinge gleichzeitig denken.->S2 Mira Viel Denken]]
+[[Das klingt trotzdem, als müsstest du an ziemlich viele Dinge gleichzeitig denken.->S2 Lina Viel Denken]]
 
 [[Gut. Was beschäftigt dich außerhalb der Schule gerade?->S2 Neben Schule]]
 :: S2 Schule Viel {"position":"1975,825","size":"100,100"}
@@ -346,18 +346,18 @@ Schon beides irgendwie. In der Schule muss man sowieso an alles denken. Und zu H
 >>--<<
 >>Bias|InternalizingOverlooked<<
 
-[[Was musst du denn alles im Kopf behalten?->S2 Mira Kopf Voll]]
+[[Was musst du denn alles im Kopf behalten?->S2 Lina Kopf Voll]]
 
-[[Was meinst du mit "zu Hause gibt's immer irgendwas"?->S2 Mira zu Hause]]
+[[Was meinst du mit "zu Hause gibt's immer irgendwas"?->S2 Lina zu Hause]]
 
-[[Das klingt, als müsstest du an ziemlich viele Dinge gleichzeitig denken.->S2 Mira Viel Denken]]
+[[Das klingt, als müsstest du an ziemlich viele Dinge gleichzeitig denken.->S2 Lina Viel Denken]]
 :: S2 zu Hause {"position":"1250,1700","size":"100,100"}
 >>Character1|Neutral<<
 Ach, das Übliche. Meine Mutter arbeitet viel und Jonas braucht manchmal irgendwas.
 
-[[Was braucht er denn dann?->S3 Mira Aufgaben]]
+[[Was braucht er denn dann?->S3 Lina Aufgaben]]
 
-[[Klingt, als müsstest du an einiges mitdenken.->S2 Mira Kopf Voll]]
+[[Klingt, als müsstest du an einiges mitdenken.->S2 Lina Kopf Voll]]
 
 [[Dann schauen wir uns mal eine normale Woche an.->S3 Normale Woche]]
 :: S3 Dienstag Einstieg {"position":"1850,3225","size":"100,100"}
@@ -383,16 +383,16 @@ Dann nehme ich Dienstag. Der ist leichter zu erklären.
 [[Was passiert da?->S3 Dienstag Einstieg]]
 
 [[Warum gerade Dienstag?->S3 Dienstag Organisieren]]
-:: S3 Mira Aufgaben {"position":"1375,2025","size":"100,100"}
+:: S3 Lina Aufgaben {"position":"1375,2025","size":"100,100"}
 >>Character1|Neutral<<
 Kommt drauf an. Wenn meine Mutter Spätschicht hat, hole ich Jonas manchmal ab. Oder ich erinnere ihn an Termine und sowas.
 
 [[Und wie oft kommt das ungefähr vor?->S3 Normale Woche]]
 
-[[Wie findest du das selbst?->S3 Mira Wie Findest Du Das]]
+[[Wie findest du das selbst?->S3 Lina Wie Findest Du Das]]
 
-[[Was genau gehört dann alles dazu?->S3 Mira Aufgaben Konkret]]
-:: S3 Mira Aufgaben Konkret {"position":"1300,2225","size":"100,100"}
+[[Was genau gehört dann alles dazu?->S3 Lina Aufgaben Konkret]]
+:: S3 Lina Aufgaben Konkret {"position":"1300,2225","size":"100,100"}
 >>Character1|Neutral<<
 Na ja. Jonas abholen. Schauen, dass er seine Sachen dabeihat. Manchmal Hausaufgaben. Und wenn zu Hause was fehlt, gehe ich auch mal einkaufen.
 >>--<<
@@ -400,10 +400,10 @@ Na ja. Jonas abholen. Schauen, dass er seine Sachen dabeihat. Manchmal Hausaufga
 
 [[Wie oft kommt das ungefähr vor?->S3 Normale Woche]]
 
-[[Und wie ist das für dich?->S3 Mira Wie Findest Du Das]]
+[[Und wie ist das für dich?->S3 Lina Wie Findest Du Das]]
 
 [[Dann erzähl mir mal, wie so eine Woche insgesamt aussieht.->S3 Normale Woche]]
-:: S3 Mira Internalized {"position":"1625,2700","size":"100,100"}
+:: S3 Lina Internalized {"position":"1625,2700","size":"100,100"}
 >>Character1|Neutral<<
 Manche haben wahrscheinlich mehr Zeit. Andere müssen bestimmt auch zu Hause helfen.
 >>--<<
@@ -412,41 +412,41 @@ Manche haben wahrscheinlich mehr Zeit. Andere müssen bestimmt auch zu Hause hel
 [[Was gehört denn für dich zu einer ganz normalen Woche?->S3 Normale Woche]]
  
 [[Gut. Dann schauen wir uns deinen Alltag mal genauer an.->S3 Normale Woche]]
-:: S3 Mira Nachdenken {"position":"1550,2375","size":"100,100"}
+:: S3 Lina Nachdenken {"position":"1550,2375","size":"100,100"}
 >>Character1|Neutral<<
 Ist schon okay so. Na ja, vermutlich machen das andere auch.
 >>--<<
 >>Bias|ParentifiedDaughter<<
 
-[[Wenn du darüber nachdenkst: Wie findest du das eigentlich?->S3 Mira Nachdenken Bewertung]]
+[[Wenn du darüber nachdenkst: Wie findest du das eigentlich?->S3 Lina Nachdenken Bewertung]]
 
 [[Dann schauen wir uns mal an, wie das in einer normalen Woche aussieht.->S3 Normale Woche]]
-:: S3 Mira Nachdenken Bewertung {"position":"1550,2550","size":"100,100"}
+:: S3 Lina Nachdenken Bewertung {"position":"1550,2550","size":"100,100"}
 >>Character1|NeutralRelaxed<<
 Meistens denke ich da nicht groß drüber nach.
 
-[[Macht es einen Unterschied, dass es normal geworden ist?->S3 Mira Normal Geworden]]
+[[Macht es einen Unterschied, dass es normal geworden ist?->S3 Lina Normal Geworden]]
 
-[[Das kann ich verstehen.->S3 Mira Internalized]]
-:: S3 Mira Normal {"position":"1625,2225","size":"100,100"}
+[[Das kann ich verstehen.->S3 Lina Internalized]]
+:: S3 Lina Normal {"position":"1625,2225","size":"100,100"}
 >>Character1|Neutral<<
 Vielleicht. Ich denke nicht mehr groß darüber nach.
 >>--<<
 >>Bias|InternalizingOverlooked<<
 
-[[Was fällt dir dazu gerade ein?->S3 Mira Nachdenken]]
+[[Was fällt dir dazu gerade ein?->S3 Lina Nachdenken]]
 
 [[Dann lass uns einmal auf eine normale Woche schauen.->S3 Normale Woche]]
-:: S3 Mira Normal Geworden {"position":"1475,2700","size":"100,100"}
+:: S3 Lina Normal Geworden {"position":"1475,2700","size":"100,100"}
 >>Character1|Neutral<<
 Weiß nicht. Wenn etwas lange so ist, denkt man halt nicht mehr ständig darüber nach.
 >>--<<
 >>Bias|InternalizingOverlooked<<
 
-[[Mir fällt auf, dass "normal" nicht unbedingt dasselbe ist wie "leicht".->S3 Mira Normal Leicht]]
+[[Mir fällt auf, dass "normal" nicht unbedingt dasselbe ist wie "leicht".->S3 Lina Normal Leicht]]
 
 [[Dann schauen wir uns mal deine Woche genauer an.->S3 Normale Woche]]
-:: S3 Mira Normal Leicht {"position":"1475,2875","size":"100,100"}
+:: S3 Lina Normal Leicht {"position":"1475,2875","size":"100,100"}
 >>Character1|Questioning<<
 Hm. Kann sein. Darüber habe ich eigentlich noch nie nachgedacht.
 >>--<<
@@ -455,15 +455,15 @@ Hm. Kann sein. Darüber habe ich eigentlich noch nie nachgedacht.
 [[Vielleicht hilft es, wenn wir uns eine normale Woche anschauen.->S3 Normale Woche]]
 
 [[Dann schauen wir uns deinen Alltag mal genauer an.->S3 Normale Woche]]
-:: S3 Mira Wie Findest Du Das {"position":"1475,2225","size":"100,100"}
+:: S3 Lina Wie Findest Du Das {"position":"1475,2225","size":"100,100"}
 >>Character1|Neutral<<
 Keine Ahnung. Ist halt so.
 >>--<<
 >>Bias|InternalizingOverlooked<<
 
-[[Macht es einen Unterschied, dass es normal geworden ist?->S3 Mira Normal Geworden]]
+[[Macht es einen Unterschied, dass es normal geworden ist?->S3 Lina Normal Geworden]]
 
-[[Wenn du nicht darüber nachdenken musst: Wie fühlt es sich denn im Alltag an?->S3 Mira Nachdenken]]
+[[Wenn du nicht darüber nachdenken musst: Wie fühlt es sich denn im Alltag an?->S3 Lina Nachdenken]]
 
 [[Okay. Dann schauen wir uns mal eine normale Woche an.->S3 Normale Woche]]
 :: S3 Normale Woche {"position":"1850,2900","size":"100,100"}
