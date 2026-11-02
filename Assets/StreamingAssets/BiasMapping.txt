@@ -1,19 +1,19 @@
-AccessToFinancing: Zugang zu Finanzierung
-GenderPayGap: Geschlechterlohngefälle
-UndervaluationFemaleManagedCompany: Unterbewertung weiblich geführter Unternehmen
-RiskAversionBias: Risikovermeidungs-Bias
-ConfirmationBias: Bestätigungsbias
-Tokenism: Tokenismus
-BiasInThePerceptionOfLeadershipSkills: Verzerrung in der Wahrnehmung von Führungsfähigkeiten
-BenevolentSexism: Wohlwollender Sexismus
-AgeAndGenerationsBiases: Alters- und Generationenbias
-StereotypesAboutWomenInNonTraditionalIndustries: Stereotypen über Frauen in nicht traditionellen Branchen
-Heteronormativity: Heteronormativität
-BiasesAgainstWomenWithChildren: Verzerrungen gegenüber Frauen mit Kindern
-ExpectationsRegardingFamilyPlanning: Erwartungen bezüglich Familienplanung
-WorkLifeBalanceExpectations: Work-Life-Balance-Erwartungen
-GenderSpecificStereotypes: Geschlechtsspezifische Stereotypen
-TightropeBias: Tightrope Bias
-Microaggression: Mikroaggression
-PerformanceAttributionBias: Verzerrung der Leistungszuordnung
-UnconsciousBiasInCommunication: Unbewusste Verzerrung in der Kommunikation
+MotherBlame: Mother Blame
+UnequalParentalResponsibility: Ungleiche Elternverantwortung
+ParentificationAndFeminizedCare: Parentifizierung und feminisierte Sorgeverantwortung
+WellIntentionedAttribution: Wohlmeinende Verantwortungs- oder Stärkenzuschreibung
+OverlookedInternalizingStrain: Übersehene internalisierende Belastung
+Culturalization: Kulturalisierung
+LanguageBasedAttribution: Sprachbezogene Zuschreibung
+StereotypicalInterpretationOfMaleBehavior: Stereotype Deutung männlichen Verhaltens
+Ableism: Ableismus
+AbleismAndFeminizedCare: Ableismus und feminisierte Sorgeverantwortung
+FalseBalanceDigitalControl: False Balance bei digitaler Kontrolle
+VictimBlamingDigitalControl: Victim Blaming bei digitaler Kontrolle
+InformationAsymmetry: Informationsasymmetrie
+AdultCentricCasePlanning: Adultzentrierte Hilfeplanung
+GenderStereotypicalCareerGuidance: Geschlechterstereotype Berufs- und Zukunftsorientierung
+SingleVoiceBias: Ein-Stimmen-Bias und vorschnelle Vervollständigung
+IndividualizationOfStructuralIssues: Individualisierung struktureller Problemlagen
+HeteronormativeOrCisnormativeAssumptions: Heteronormative oder cisnormative Annahmen
+IntersectionalErasure: Intersektionale Ausblendung

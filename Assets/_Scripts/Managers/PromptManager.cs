@@ -120,11 +120,11 @@ namespace Assets._Scripts.Managers
                     content => { _prompt.Append(content).AppendLine(); },
                     "Prompt");
             }
-            else
-            {
-                LoadPromptFromFile();
-                LoadKnowledgeBaseFromFile();
-            }
+            // else
+            // {
+            //     LoadPromptFromFile();
+            //     LoadKnowledgeBaseFromFile();
+            // }
 
             _prompt.Append("Hier ist der Dialog:");
         }

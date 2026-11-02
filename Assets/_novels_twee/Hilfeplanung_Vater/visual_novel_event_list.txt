@@ -1,0 +1,727 @@
+:: StoryTitle
+Hilfeplanung - Vater
+
+
+:: StoryData
+{
+  "ifid": "48779A93-20AD-4BBF-A00A-6BD65064DDA5",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "start": "Anfang",
+  "zoom": 0.6
+}
+
+
+:: Anfang {"position":"1600,25","size":"100,100"}
+>>Info<<
+Herr Sander lebt seit zwei Jahren getrennt von der Familie, zwanzig Minuten entfernt, und arbeitet als Haustechniker mit festen Arbeitszeiten. Die Eltern haben das gemeinsame Sorgerecht, die Kinder sind jedes zweite Wochenende bei ihm. In zwei Wochen ist das Hilfeplangespräch. Du hast ihn vorher um ein Gespräch gebeten. Ihr sitzt in einem Besprechungsraum im Jugendamt.
+
+[[Weiter->Einstieg]]
+
+
+:: Einstieg {"position":"1600,200","size":"100,100"}
+>>Character1|Neutral<<
+Ich weiß ehrlich gesagt nicht genau, warum ich hier bin. Die Familienhilfe läuft doch bei meiner Ex-Frau.
+
+[[Ja, Frau Sander ist die Hauptansprechperson. Ich wollte Sie trotzdem kurz mit ins Boot holen.->S1 Mitgehend]]
+
+[[Was wissen Sie bisher über die Familienhilfe und das Hilfeplangespräch?->S1 Prüfend]]
+
+[[Sie haben gemeinsam mit Frau Sander das Sorgerecht. Damit gehören Sie in die Hilfeplanung und nicht an den Rand.->S1 Benennend]]
+
+
+:: Ending A {"position":"1600,4350","size":"100,100"}
+>>Character1<<
+Gut. Ich bin da.
+>>--<<
+>>Player<<
+Danke für Ihre Zeit, wir sehen uns dann beim Termin.
+>>--<<
+>>Character1<<
+Danke auch. Bis dann.
+>>--<<
+>>End<<
+
+
+:: Ending B {"position":"1775,4350","size":"100,100"}
+>>Character1<<
+Ich weiß nicht, ob ich da dabei sein sollte. Am Ende gibt es nur wieder Streit.
+
+[[Sie sind als Vater eingeladen, und Ihre Sicht gehört dazu. Ob Sie kommen, entscheiden Sie.->Ending B2]]
+
+[[Das ist auch okay. Ich kann Ihre Sicht auch mitnehmen.->Ending B3]]
+
+
+:: Ending B2 {"position":"1675,4525","size":"100,100"}
+>>Character1<<
+Okay. Dann komme ich. Wäre gut, wenn meine Ex-Frau vorher weiß, dass ich dabei bin.
+>>--<<
+>>Player<<
+Das kläre ich vorher mit ihr. Bis in zwei Wochen.
+>>--<<
+>>Character1<<
+Bis dann.
+>>--<<
+>>End<<
+
+
+:: Ending B3 {"position":"1850,4525","size":"100,100"}
+>>Character1<<
+Ja, das ist mir lieber.
+>>--<<
+>>Player<<
+Dann verbleiben wir so. Wenn Sie es sich anders überlegen, ist das natürlich auch kein Problem. Bis dann!
+>>--<<
+>>Character1<<
+Danke. Tschüss.
+>>--<<
+>>Bias|PeripheralFather<<
+>>--<<
+>>End<<
+
+
+:: S1 Benennend {"position":"1775,375","size":"100,100"}
+>>Character1|Neutral<<
+Aha. Das hat mir bisher keiner so gesagt.
+>>--<<
+>>Player<<
+Dann sage ich es jetzt: Sie bekommen eine Einladung zum Hilfeplangespräch in zwei Wochen, und was dort vereinbart wird, können Sie genauso einsehen wie Frau Sander. Bevor es so weit ist, möchte ich wissen, wie Sie die Situation sehen. Und falls ich Begriffe benutze, mit denen Sie nichts anfangen können, unterbrechen Sie mich einfach.
+>>--<<
+>>Bias|InformationAsymmetry<<
+
+[[Wie läuft es denn mit dem Umgang?->S2 Umgang]]
+
+[[Wie erleben Sie Lina gerade?->S2 Lina]]
+
+[[Wie geht es Ihnen mit der Situation?->S2 Vater]]
+
+
+:: S1 Mitgehend {"position":"1425,375","size":"100,100"}
+>>Character1|Neutral<<
+Na gut. Viel mitbekommen habe ich eh nicht.
+>>--<<
+>>Player<<
+In zwei Wochen ist das Hilfeplangespräch, und vorher rede ich mit allen Beteiligten nochmal einzeln. Ihre Sicht als Vater ist da eine gute Ergänzung.
+>>--<<
+>>Bias|PeripheralFather<<
+>>--<<
+>>Bias|InformationAsymmetry<<
+
+[[Wie läuft es denn mit dem Umgang?->S2 Umgang]]
+
+[[Wie erleben Sie Lina gerade?->S2 Lina]]
+
+[[Wie geht es Ihnen mit der Situation?->S2 Vater]]
+
+
+:: S1 Prüfend {"position":"1600,375","size":"100,100"}
+>>Character1|Neutral<<
+Nur das, was meine Ex mir erzählt. Dass da jemand vom Träger kommt, wegen den Kindern und so. Und dass es einen Termin gibt.
+>>--<<
+>>Player<<
+Okay. Dann kurz dazu: Bei Ihrer Familie läuft seit einem halben Jahr die Familienhilfe. In zwei Wochen gibt es ein Hilfeplangespräch. Da schauen alle Beteiligten gemeinsam, wie die Hilfe bisher gelaufen ist und wie es weitergehen soll. Der Hilfeplan ist das Dokument, in dem diese Vereinbarungen festgehalten werden. Als sorgeberechtigter Elternteil werden Sie dazu eingeladen. Mich interessiert heute vor allem, wie Sie die Situation erleben.
+
+[[Wie läuft es denn mit dem Umgang?->S2 Umgang]]
+
+[[Wie erleben Sie Lina gerade?->S2 Lina]]
+
+[[Wie geht es Ihnen mit der Situation?->S2 Vater]]
+
+
+:: S2 Jonas {"position":"1925,1200","size":"100,100"}
+>>Character1<<
+Jonas ist halt ein Junge, der braucht mehr Aufmerksamkeit. Wegen dem gibt es die Familienhilfe ja auch. Schule, Training, der vergisst alles.
+>>--<<
+>>Bias|GenderedCare<<
+
+[[Und wer hält dann alles für ihn zusammen?->S2 Wer Übernimmt]]
+
+[[Klingt, als drehe sich viel um Jonas. Wo bleibt da Lina?->S2 Lina Woran]]
+
+[[Jungs in dem Alter sind halt so.->S2 Jonas Jungs]]
+
+
+:: S2 Jonas Jungs {"position":"1725,1200","size":"100,100"}
+>>Character1<<
+Eben. Mädchen sind da einfach weiter. Und Lina ist ja auch die Ältere.
+>>--<<
+>>Bias|GenderedCare<<
+
+[[Was heißt das im Alltag für Lina?->S2 Wer Übernimmt Alltag]]
+
+[[Dann erzählen Sie mal, wie eine normale Woche bei den beiden aussieht.->S3 Normale Woche]]
+
+
+:: S2 Lina {"position":"2100,1000","size":"100,100"}
+>>Character1<<
+Lina? Der geht's gut. Die war schon immer die Vernünftige. Um die mache ich mir keine Sorgen.
+>>--<<
+>>Bias|InternalizingOverlooked<<
+
+[[Das ist schön zu hören. Und wie ist es bei Jonas?->S2 Jonas]]
+
+[[Woran merken Sie, dass es ihr gut geht?->S2 Lina Woran]]
+
+[[Mir fällt auf, dass "vernünftig" das Erste ist, was Ihnen zu Lina einfällt.->S2 Lina Vernünftig Benannt]]
+
+
+:: S2 Lina Erzählt {"position":"1775,1400","size":"100,100"}
+>>Character1<<
+Dass da eine Frau kommt, die mit ihrer Mutter Pläne macht. Und dass sie Jonas jetzt öfter abholt.
+
+[[Was übernimmt Lina denn sonst noch?->S3 Lina Aufgaben]]
+
+[[Wie oft holt sie Jonas ab?->S3 Normale Woche]]
+
+
+:: S2 Lina Vernünftig Benannt {"position":"2250,1200","size":"100,100"}
+>>Character1<<
+Na ja, ist doch so. Die hat schon früh mitgeholfen. Schon als wir noch zusammeb gewohnt haben.
+
+[[Was hat sie damals übernommen und was heute?->S3 Lina Aufgaben]]
+
+[[Was glauben Sie, wie es Lina damit geht?->S2 Passt Schon]]
+
+
+:: S2 Lina Woran {"position":"2100,1200","size":"100,100"}
+>>Character1<<
+Sie beschwert sich nie. Die Noten passen. Und wenn ich frage, sagt sie "passt schon".
+>>--<<
+>>Bias|InternalizingOverlooked<<
+
+[[Muss "passt schon" heißen, dass es ihr gut geht?->S2 Passt Schon]]
+
+[[Was macht Lina denn so unter der Woche?->S3 Lina Aufgaben]]
+
+
+:: S2 Mutter {"position":"1350,700","size":"100,100"}
+>>Character1<<
+Sie arbeitet zu viel. Ständig tauscht sie Schichten, damit es finanziell reicht. Dann ist sie abends nicht da.
+
+[[Das ist natürlich schwierig, wenn eine Mutter abends so oft weg ist.->S2 Mutter Vorwurf]]
+
+[[Was bedeutet das für die Kinder an solchen Abenden?->S2 Unter der Woche]]
+
+[[Viele Alleinerziehende jonglieren mit Schichten, damit es reicht. Wer übernimmt dann den Rest?->S2 Wer Übernimmt]]
+
+
+:: S2 Mutter Vorwurf {"position":"1350,900","size":"100,100"}
+>>Character1<<
+Sag ich ja. Wenn sie besser planen würde, bräuchte es die ganze Familienhilfe vielleicht gar nicht.
+>>--<<
+>>Bias|MotherBlame<<
+
+[[Mir fällt auf, dass wir gerade vor allem über die Mutter urteilen. An den Abenden ohne sie: Wer kümmert sich da?->S2 Urteilend Wer Übernimmt]]
+
+[[Und wie erleben Sie Lina in der Zeit?->S2 Lina]]
+
+
+:: S2 Passt Schon {"position":"2225,1400","size":"100,100"}
+>>Character1<<
+Hm. Ich habe ehrlich gesagt nie richtig nachgefragt. Sie ist halt wie ihre Mutter, die sagt auch immer, es geht.
+>>--<<
+>>Bias|InternalizingOverlooked<<
+
+[[Was übernimmt Lina denn konkret?->S3 Lina Aufgaben]]
+
+[[Dann schauen wir uns mal eine normale Woche an.->S3 Normale Woche]]
+
+
+:: S2 Umgang {"position":"1425,550","size":"100,100"}
+>>Character1<<
+Jedes zweite Wochenende sind sie bei mir. Freitag hole ich sie ab, Sonntagabend bringe ich sie zurück. Läuft eigentlich.
+>>--<<
+>>Bias|PeripheralFather<<
+
+[[Gut, dass das so zuverlässig klappt. Und mit dem Unterhalt kommen Sie zurecht?->S2 Unterhalt]]
+
+[[Und unter der Woche? Wie viel bekommen Sie da vom Alltag der beiden mit?->S2 Unter der Woche]]
+
+[[Ich frage mich, ob sich das für Sie manchmal eher nach Besuch anfühlt als nach Vatersein.->S2 Umgang Perspektive]]
+
+
+:: S2 Umgang Perspektive {"position":"1550,700","size":"100,100"}
+>>Character1<<
+Na ja. So fühlt sich das manchmal auch an.
+
+[[Wie meinen Sie das?->S2 Vater Rand]]
+
+[[Wie viel bekommen Sie denn unter der Woche mit?->S2 Unter der Woche]]
+
+
+:: S2 Unter der Woche {"position":"1550,1050","size":"100,100"}
+>>Character1<<
+Wenig. Ich telefoniere mal mit Lina. Wenn ihre Mutter Spätschicht hat, kümmert sie sich um Jonas, glaube ich.
+
+[[Was genau übernimmt Lina dann?->S3 Lina Aufgaben]]
+
+[[Wie oft ist das so?->S3 Normale Woche]]
+
+[[Wer könnte das sonst übernehmen?->S3 Wer Sonst]]
+
+
+:: S2 Unterhalt {"position":"1200,700","size":"100,100"}
+>>Character1<<
+Zahle ich. Pünktlich. Da kann sich keiner beschweren.
+>>--<<
+>>Character1<<
+Wenn es nur ums Geld geht, hätten Sie mich auch anrufen können.
+>>--<<
+>>Bias|PeripheralFather<<
+
+[[Nein, es geht nicht nur ums Geld. Wie erleben Sie Lina gerade?->S2 Lina]]
+
+[[Das Thema Unterhalt ist nur einer der Punkte. Wie viel bekommen Sie unter der Woche von den Kindern mit?->S2 Unter der Woche]]
+
+
+:: S2 Urteilend Wer Übernimmt {"position":"1300,1325","size":"100,100"}
+>>Character1<<
+Was heißt hier urteilend. Ich schildere nur meine Wahrnehmung. Lina kümmert sich dann, wenn ihre Mutter nicht da ist. Die macht das schon. Holt Jonas ab, kocht was. Die ist da sehr vernünftig.
+>>--<<
+>>Bias|ParentifiedDaughter<<
+
+[[Mit fünfzehn ist das ganz schön viel.->S3 Lina Viel]]
+
+[[Wie oft kommt das vor?->S3 Normale Woche]]
+
+[[Gut, dass sie schon so selbstständig ist.->S3 Lina Vernünftig]]
+
+
+:: S2 Vater {"position":"1600,550","size":"100,100"}
+>>Character1<<
+Mir? Gut. Also, ich bin ja nicht derjenige, der Hilfe braucht.
+
+[[Dann lassen Sie uns über die Kinder sprechen.->S2 Vater Übergangen]]
+
+[[Sie sind trotzdem Teil der Familie, um die es hier geht. Wie erleben Sie das alles?->S2 Vater Rand]]
+
+[[Wie erleben Sie denn die Situation bei Frau Sander?->S2 Mutter]]
+
+
+:: S2 Vater Haushalt {"position":"1650,900","size":"100,100"}
+>>Character1<<
+Stimmt. Dann bin ich wohl raus. Ich hole sie halt alle zwei Wochen ab.
+>>--<<
+>>Bias|PeripheralFather<<
+
+[[So war das nicht gemeint. Wie erleben Sie Lina gerade?->S2 Lina]]
+
+[[Erzählen Sie mal, was Sie von der Woche der Kinder mitbekommen.->S2 Unter der Woche]]
+
+
+:: S2 Vater Informiert {"position":"1800,900","size":"100,100"}
+>>Character1<<
+Natürlich. Das sind auch meine Kinder. Vielleicht hätte ich ja auch was beitragen können.
+
+[[Was hätten Sie sich vorstellen können?->S3 Beitrag]]
+
+[[Dann holen wir das jetzt nach. Wie erleben Sie Lina gerade?->S2 Lina]]
+
+
+:: S2 Vater Rand {"position":"1700,700","size":"100,100"}
+>>Character1<<
+Ehrlich? Ich erfahre vieles erst hinterher. Dass es eine Familienhilfe gibt, hat mir Lina erzählt. Nicht ihre Mutter. Und auch nicht das Jugendamt.
+>>--<<
+>>Bias|InformationAsymmetry<<
+
+[[Das ist nicht gut gelaufen. Wäre es Ihnen wichtig gewesen, früher informiert zu werden?->S2 Vater Informiert]]
+
+[[Was hat Lina Ihnen denn erzählt?->S2 Lina Erzählt]]
+
+[[Na ja, Sie leben ja auch nicht mehr im Haushalt.->S2 Vater Haushalt]]
+
+
+:: S2 Vater Übergangen {"position":"1825,700","size":"100,100"}
+>>Character1<<
+Genau. Um die Kinder geht's ja.
+>>--<<
+>>Bias|PeripheralFather<<
+
+[[Wie erleben Sie Lina gerade?->S2 Lina]]
+
+[[Was bekommen Sie unter der Woche von den beiden mit?->S2 Unter der Woche]]
+
+
+:: S2 Wer Übernimmt {"position":"1425,1325","size":"100,100"}
+>>Character1<<
+Lina. Die macht das schon. Holt Jonas ab, kocht was. Die ist da sehr vernünftig.
+>>--<<
+>>Bias|ParentifiedDaughter<<
+
+[[Mit fünfzehn ist das ganz schön viel.->S3 Lina Viel]]
+
+[[Wie oft kommt das vor?->S3 Normale Woche]]
+
+[[Gut, dass sie schon so selbstständig ist.->S3 Lina Vernünftig]]
+
+
+:: S2 Wer Übernimmt Alltag {"position":"1600,1325","size":"100,100"}
+>>Character1<<
+Lina holt Jonas ab, kocht was. Die macht das schon. Immerhin ist sie da sehr vernünftig.
+>>--<<
+>>Bias|ParentifiedDaughter<<
+
+[[Mit fünfzehn ist das ganz schön viel.->S3 Lina Viel]]
+
+[[Wie oft kommt das vor?->S3 Normale Woche]]
+
+[[Gut, dass sie schon so selbstständig ist.->S3 Lina Vernünftig]]
+
+
+:: S3 Beitrag {"position":"1500,1600","size":"100,100"}
+>>Character1<<
+Keine Ahnung. Mich hat ja nie jemand gefragt. Ich weiß nicht mal genau, wann ihre Mutter gerade Schicht hat.
+
+[[Dann schauen wir uns zusammen eine normale Woche der Kinder an.->S3 Normale Woche]]
+
+[[Was wissen Sie darüber, was Lina unter der Woche übernimmt?->S3 Lina Aufgaben]]
+
+
+:: S3 Festgelegt {"position":"1800,2100","size":"100,100"}
+>>Character1<<
+Festgelegt hat das keiner. Das hat sich nach der Trennung so ergeben. Ihre Mutter brauchte halt jemanden.
+
+[[Und wer war da sonst noch im Gespräch?->S4 Und Sie]]
+
+[[Schauen wir mal auf eine konkrete Woche.->S3 Normale Woche]]
+
+
+:: S3 Jonas Hilft {"position":"1375,1900","size":"100,100"}
+>>Character1<<
+Jonas? Der ist zwölf. Der soll erstmal seine eigenen Sachen hinkriegen.
+>>--<<
+>>Character1<<
+Lina war mit zwölf aber auch schon so.
+>>--<<
+>>Bias|GenderedCare<<
+
+[[Lina hat mit zwölf also schon mehr übernommen als Jonas heute. Woran liegt das?->S3 Unterschied]]
+
+[[Okay. Dann schauen wir mal auf eine normale Woche.->S3 Normale Woche]]
+
+
+:: S3 Lina Aufgaben {"position":"1725,1900","size":"100,100"}
+>>Character1<<
+Soweit ich weiß: Jonas von der Schule abholen, zum Training bringen, Abendessen machen. Bei den Hausaufgaben hilft sie ihm auch. Sie kann das besser erklären als ich. Und ich habe die ja nur über das Wochenende bei mir.
+>>--<<
+>>Bias|ParentifiedDaughter<<
+
+[[Wie oft ist das in der Woche so?->S3 Normale Woche]]
+
+[[Wer hat das eigentlich so festgelegt?->S3 Festgelegt]]
+
+
+:: S3 Lina Vernünftig {"position":"1650,1600","size":"100,100"}
+>>Character1<<
+Ja, die ist wie ihre Mutter. Bei denen liegt das irgendwie in der Familie.
+>>--<<
+>>Bias|ParentifiedDaughter<<
+>>--<<
+>>Bias|GenderedCare<<
+
+[[Mir fällt auf, dass wir das gerade beide wie eine Charaktereigenschaft beschreiben. Was übernimmt sie denn konkret?->S3 Lina Aufgaben]]
+
+[[Und Jonas, hilft der auch mit?->S3 Jonas Hilft]]
+
+[[Wie oft kommt das vor?->S3 Normale Woche]]
+
+
+:: S3 Lina Viel {"position":"1325,1600","size":"100,100"}
+>>Character1<<
+Ja, schon. Aber sie hat nie gesagt, dass es ihr zu viel ist.
+>>--<<
+>>Bias|InternalizingOverlooked<<
+
+[[Was übernimmt sie denn konkret?->S3 Lina Aufgaben]]
+
+[[Wie oft ist das so?->S3 Normale Woche]]
+
+
+:: S3 Normale Woche {"position":"1600,2100","size":"100,100"}
+>>Character1<<
+Soweit ich weiß, hat ihre Mutter dienstags und donnerstags Spätschicht. Manchmal auch noch mittwochs. Dann ist Lina mit Jonas allein, bis meine Ex-Frau abends heimkommt.
+
+[[Und wie sieht so ein Dienstag bei Ihnen aus?->S4 Dienstag Vater]]
+
+[[Das klingt doch gut organisiert.->S4 Gut Organisiert]]
+
+[[Wer ist an diesen Abenden erreichbar, wenn etwas ist?->S4 Erreichbar]]
+
+
+:: S3 Unterschied {"position":"1375,2100","size":"100,100"}
+>>Character1<<
+Hm. So habe ich das noch nie gesehen. Das hat sich halt so ergeben.
+>>--<<
+>>Bias|GenderedCare<<
+
+[[Schauen wir mal, wie sich das im Alltag verteilt.->S3 Normale Woche]]
+
+[[Oft fallen solche Muster erst auf, wenn man den Wochenablauf genauer betrachtet. Wie läuft das bei Ihnen normalerweise?->S3 Normale Woche]]
+
+
+:: S3 Wer Sonst {"position":"2100,1850","size":"100,100"}
+>>Character1<<
+Na ja, ihre Mutter ist auf Schicht. Und sonst ist ja keiner da.
+
+[[Und Sie?->S4 Und Sie]]
+
+[[Dann schauen wir mal, wie eine normale Woche aussieht.->S3 Normale Woche]]
+
+
+:: S4 Dienstag Vater {"position":"1875,2300","size":"100,100"}
+>>Character1<<
+Dienstag? Ich habe feste Zeiten, um 17 Uhr bin ich fertig. Dann einkaufen, Sport, Fernsehen. Das Übliche.
+
+[[Um 17 Uhr. Wann hat Jonas eigentlich Training?->S4 Ressource]]
+
+[[Klingt nach einem geregelten Feierabend.->S4 Feierabend]]
+
+[[Und unter der Woche sehen Sie die Kinder gar nicht?->S4 Und Sie]]
+
+
+:: S4 Erreichbar {"position":"1650,2300","size":"100,100"}
+>>Character1<<
+Na, ihre Mutter. Wenn sie ans Handy geht. Auf Station klappt das nicht immer.
+
+[[Und Sie?->S4 Und Sie]]
+
+[[Wie ist das wohl für Lina?->S4 Für Lina]]
+
+
+:: S4 Feierabend {"position":"1950,2500","size":"100,100"}
+>>Character1<<
+Ja. Den habe ich mir auch verdient, ich arbeite ja Vollzeit.
+>>--<<
+>>Bias|AdultCenteredPlanning<<
+
+[[Lina hat dienstags keinen Feierabend. Wäre da von Ihrer Seite etwas möglich?->S4 Ressource]]
+
+[[Natürlich. Dann sprechen wir noch darüber, was Lina so macht.->S5 Interessen]]
+
+
+:: S4 Für Lina {"position":"1400,2700","size":"100,100"}
+>>Character1<<
+Hm. Sie hat mal gesagt, dass sie unter der Woche kaum zu ihrem Computerkram kommt. Ich dachte, das ist halt so mit 15.
+>>--<<
+>>Bias|InternalizingOverlooked<<
+
+[[Was müsste sich ändern, damit sie mehr Zeit für sich hat?->S4 Ressource]]
+
+[[Wann sind Sie denn dienstags mit der Arbeit fertig?->S4 Ressource]]
+
+
+:: S4 Gut Organisiert {"position":"1500,2300","size":"100,100"}
+>>Character1<<
+Ja, eigentlich läuft das. Lina kriegt das hin.
+>>--<<
+>>Bias|AdultCenteredPlanning<<
+>>--<<
+>>Bias|ParentifiedDaughter<<
+
+[[Für die Erwachsenen läuft es. Ich frage mich, ob es für Lina auch läuft.->S4 Für Lina]]
+
+[[Gut. Dann sprechen wir noch darüber, was Lina so macht.->S5 Interessen]]
+
+
+:: S4 Lina Fragen {"position":"1550,2975","size":"100,100"}
+>>Character1<<
+Stimmt. Vielleicht will sie das gar nicht abgeben. Oder sie ist froh. Ich weiß es ehrlich gesagt nicht.
+
+[[Das finden wir gemeinsam mit ihr heraus. Was wissen Sie denn darüber, was Lina gerne macht?->S5 Interessen]]
+
+[[Gibt es etwas, bei dem Sie schon mal gedacht haben: "Das kann sie richtig gut"?->S5 Interessen]]
+
+
+:: S4 Ressource {"position":"1625,2800","size":"100,100"}
+>>Character1<<
+ Jonas hat um halb sechs Training, glaube ich. Das könnte ich eigentlich übernehmen. Zumindest dienstags.
+>>--<<
+>>Character1<<
+Aber das muss ich erst mit seiner Mutter klären. Sonst denkt die, ich mische mich ein.
+
+[[Genau dafür ist das Hilfeplangespräch da. Damit mischen Sie sich nicht ein, damit beteiligen Sie sich.->S4 Ressource Benannt]]
+
+[[Das ist wirklich toll, dass Sie das anbieten. Das machen nicht viele Väter.->S4 Vaterbonus]]
+
+[[Wichtig ist, dass wir auch Lina fragen, was sie davon hält.->S4 Lina Fragen]]
+
+
+:: S4 Ressource Benannt {"position":"1750,2975","size":"100,100"}
+>>Character1<<
+Okay. Dann sage ich das da auch so.
+
+[[Und was denken Sie, wie sieht Lina das?->S4 Lina Fragen]]
+
+[[Lassen Sie uns noch kurz darüber sprechen, was Lina so macht.->S5 Interessen]]
+
+
+:: S4 Und Sie {"position":"1725,2500","size":"100,100"}
+>>Character1<<
+Ich? Ich wohne 20 Minuten weg. Aber unter der Woche ist nichts abgesprochen. Das war immer so: Wochenende Papa, Woche Mama.
+>>--<<
+>>Bias|PeripheralFather<<
+
+[[Wann hat Jonas eigentlich Training?->S4 Ressource]]
+
+[[Dann lassen wir das erstmal so, das ist ja so vereinbart.->S4 Vereinbart]]
+
+
+:: S4 Vaterbonus {"position":"1800,2800","size":"100,100"}
+>>Character1<<
+Na ja, so toll ist das jetzt auch nicht. Lina macht das jeden Dienstag.
+>>--<<
+>>Bias|FatherBonus<<
+
+[[Da haben Sie recht. Dann gehört das in den Hilfeplan.->S4 Ressource Benannt]]
+
+[[Dann sprechen wir noch kurz darüber, was Lina so macht.->S5 Interessen]]
+
+
+:: S4 Vereinbart {"position":"1575,2500","size":"100,100"}
+>>Character1<<
+Eben. Ich will mich da auch nicht einmischen, sonst gibt es nur wieder Streit.
+>>--<<
+>>Bias|PeripheralFather<<
+>>--<<
+>>Bias|AdultCenteredPlanning<<
+
+[[Die Vereinbarung haben Erwachsene für Erwachsene gemacht. Ich frage mich, ob sie für Lina noch passt.->S4 Für Lina]]
+
+[[Gut. Dann sprechen wir noch darüber, was Lina so macht.->S5 Interessen]]
+
+
+:: S5 Beides {"position":"1875,3950","size":"100,100"}
+>>Character1<<
+Ja. Vielleicht kann ich ihr da auch was zeigen. Bei uns im Betrieb läuft die ganze Gebäudesteuerung über Software. Das fände sie bestimmt spannend.
+
+[[Das klingt nach einer Idee, die Sie Lina selbst vorschlagen könnten.->S6 Übergang]]
+
+[[Gut. Dann zum Schluss noch zum Hilfeplangespräch.->S6 Übergang]]
+
+
+:: S5 Benannt {"position":"1650,3725","size":"100,100"}
+>>Character1<<
+Stimmt schon. Als wäre das Kümmern schon ihr Beruf.
+
+[[Sie beschreiben gerade vor allem die fürsorgliche Seite von Lina. Was ist dann mit der Website, an der sie gearbeitet hat?->S5 Website Bild]]
+
+[[Lassen Sie uns zum Schluss noch auf das Hilfeplangespräch schauen.->S6 Übergang]]
+
+
+:: S5 Computer {"position":"1475,3325","size":"100,100"}
+>>Character1<<
+Irgendwas mit dem Menü, das ging auf dem Handy nicht. Das hat sie sich alles selbst rausgesucht. Hat ein ganzes Wochenende dran gesessen und sich riesig gefreut, als es lief.
+
+[[Haben Sie ihr das mal so gesagt?->S5 Gesagt]]
+
+[[Und was möchte sie später mal machen?->S5 Später Mal]]
+
+
+:: S5 Erzieherin {"position":"1475,3725","size":"100,100"}
+>>Character1<<
+Eben. Die hat ja quasi schon Übung.
+>>--<<
+>>Bias|OccupationalStereotyping<<
+>>--<<
+>>Bias|GenderedCare<<
+
+[[Mir fällt auf, dass ich gerade ihre Aufgaben zu Hause als Berufsvorbereitung verbucht habe.->S5 Benannt]]
+
+[[Gut. Dann lassen Sie uns zum Schluss noch auf das Hilfeplangespräch schauen.->S6 Übergang]]
+
+
+:: S5 Gesagt {"position":"1400,3500","size":"100,100"}
+>>Character1<<
+Ich habe gesagt, dass sie das gut gemacht hat. Mehr nicht. Ich dachte, das ist halt ein Hobby.
+
+[[Vielleicht ist es mehr als ein Hobby. Wissen Sie, was sie später machen möchte?->S5 Später Mal]]
+
+[[Reden Sie beide manchmal darüber, wie es nach der Schule weitergehen soll?->S5 Später Mal]]
+
+
+:: S5 Interessen {"position":"1625,3200","size":"100,100"}
+>>Character1<<
+Schule läuft, sagt sie. Und sie sitzt viel am Computer. Letztens hat sie die Website von meinem Fußballverein repariert. Da war ich echt platt.
+
+[[Klingt, als hätte sie da ein Händchen für. Was hat sie da gemacht?->S5 Computer]]
+
+[[Und was möchte sie später mal machen?->S5 Später Mal]]
+
+
+:: S5 Später Mal {"position":"1650,3500","size":"100,100"}
+>>Character1<<
+Sie sagt, eher was mit Menschen. Passt ja auch, sie kann gut mit Kindern. Vielleicht Erzieherin, wie ihre Tante.
+>>--<<
+>>Bias|OccupationalStereotyping<<
+
+[[Das passt doch gut zu ihr, so wie sie sich um Jonas kümmert.->S5 Erzieherin]]
+
+[[Und die Arbeit an der Website? Wie passt das zu dem Bild, das Sie gerade von Lina beschreiben?->S5 Website Bild]]
+
+[["Was mit Menschen" und "gut mit Kindern" scheinen bei Lina sehr schnell zusammen zu gehen.->S5 Benannt]]
+
+
+:: S5 Website Bild {"position":"1825,3725","size":"100,100"}
+>>Character1<<
+Hm. Gar nicht, eigentlich. Dabei hat sie da ja richtig was hingekriegt.
+
+[[Vielleicht schließt sich das gar nicht aus. Mit Technik kann man auch für Menschen arbeiten.->S5 Beides]]
+
+[[Vielleicht fragen Sie sie mal danach.->S5 Beides]]
+
+
+:: S6 Benennend Ende {"position":"1775,4175","size":"100,100"}
+>>Character1<<
+Selbst? Vor meiner Ex-Frau und der Familienhelferin? Hm.
+
+[[Ich unterstütze Sie dabei. Möchten Sie beim Gespräch dabei sein?->Ending B]]
+
+[[Lassen Sie es sich durch den Kopf gehen. Wir sehen uns dann beim Hilfeplangespräch.->Ending A]]
+
+
+:: S6 Mitgehend Ende {"position":"1425,4175","size":"100,100"}
+>>Character1<<
+Gerne.
+>>--<<
+>>Player<<
+Ich nehme das mit in die Vorbereitung. Die Einladung zum Hilfeplangespräch bekommen Sie diese Woche noch schriftlich.
+
+[[Dann sehen wir uns beim Hilfeplangespräch.->Ending A]]
+
+[[Möchten Sie beim Gespräch dabei sein?->Ending B]]
+
+
+:: S6 Prüfend Ende {"position":"1600,4175","size":"100,100"}
+>>Character1<<
+Das mit dem Dienstag vielleicht. Und dass ich unter der Woche mehr machen kann, wenn man mich lässt.
+>>--<<
+>>Player<<
+Gut. Das nehme ich als Vorschlag mit, und wir besprechen es mit Frau Sander und mit Lina.
+
+[[Dann sehen wir uns beim Hilfeplangespräch.->Ending A]]
+
+[[Möchten Sie beim Gespräch dabei sein?->Ending B]]
+
+
+:: S6 Vaterbonus Ende {"position":"1950,4175","size":"100,100"}
+>>Character1<<
+Na ja. Sind ja meine Kinder.
+>>--<<
+>>Bias|FatherBonus<<
+
+[[Natürlich. Möchten Sie beim Gespräch dabei sein?->Ending B]]
+
+[[Dann sehen wir uns beim Hilfeplangespräch.->Ending A]]
+
+
+:: S6 Übergang {"position":"1700,3950","size":"100,100"}
+>>Character1<<
+Ich habe gerade das Gefühl, ich weiß weniger über meine Kinder, als ich dachte.
+
+[[Danke, dass Sie so offen waren. Ihre Perspektive fehlt im Hilfeplan bisher.->S6 Mitgehend Ende]]
+
+[[Gibt es etwas von dem, worüber wir gesprochen haben, das in den Hilfeplan gehört?->S6 Prüfend Ende]]
+
+[[Vielleicht sollten Sie das im Gespräch selbst einbringen und nicht nur über mich.->S6 Benennend Ende]]
+
+[[Schön, dass Sie heute überhaupt gekommen sind. Das ist nicht selbstverständlich.->S6 Vaterbonus Ende]]

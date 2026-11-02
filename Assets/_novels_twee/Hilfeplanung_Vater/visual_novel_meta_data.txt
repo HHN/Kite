@@ -1,0 +1,13 @@
+{
+  "idNumberOfNovel": 3,
+  "titleOfNovel": "Hilfeplanung Vater",
+  "descriptionOfNovel": "Herr Sander lebt seit zwei Jahren getrennt von der Familie, zwanzig Minuten entfernt, und arbeitet als Haustechniker mit festen Arbeitszeiten. Die Eltern haben das gemeinsame Sorgerecht, die Kinder sind jedes zweite Wochenende bei ihm.",
+  "contextForPrompt": "Herr Sander lebt seit zwei Jahren getrennt von der Familie, zwanzig Minuten entfernt, und arbeitet als Haustechniker mit festen Arbeitszeiten. Die Eltern haben das gemeinsame Sorgerecht, die Kinder sind jedes zweite Wochenende bei ihm. In zwei Wochen ist das Hilfeplangespräch. Du hast ihn vorher um ein Gespräch gebeten. Ihr sitzt in einem Besprechungsraum im Jugendamt.",
+  "startTalkingPartnerExpression": "NeutralRelaxed",
+  "talkingPartner01" : "Vater",
+  "talkingPartner02" : "",
+  "talkingPartner03" : "",
+  "isKiteNovel": true,
+  "novelColor": "#35481A",
+  "novelFrameColor": "#3D8229"
+}
