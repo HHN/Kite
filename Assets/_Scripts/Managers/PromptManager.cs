@@ -9,7 +9,6 @@ using UnityEngine.Networking;
 
 namespace Assets._Scripts.Managers
 {
-    
     [Serializable]
     public class KnowledgeItem
     {
@@ -18,13 +17,13 @@ namespace Assets._Scripts.Managers
         public string headline;
         public string bias;
     }
-    
+
     [Serializable]
     public class KnowledgeBase
     {
         public List<KnowledgeItem> items;
     }
-    
+
     /// <summary>
     /// Manages the process of building and handling dialog prompts for a visual novel.
     /// This class is implemented as a singleton to ensure a single instance throughout the application.
@@ -102,29 +101,17 @@ namespace Assets._Scripts.Managers
             _prompt = new StringBuilder();
             _dialog = new StringBuilder();
 
-            if ((int)novel.id == 14)
+            if ((int)novel.id == 1)
             {
-                _prompt.Append(novel.context);
-                _prompt.Append("Du bist eine Organisationsentwicklerin und Kommunikationstrainerin. " +
-                               "Deine Aufgabe ist es, den folgenden Dialog dahingehend zu untersuchen, wie kommunikativ geschickt sich die KI-Einführungsperson verhalten hat. " +
-                               "Es ist das Gespräch einer KI-Einführungsperson mit einem Mitarbeiter aus Vertrieb und Marketing. " +
-                               "Schreibe einen Analysetext. Berücksichtige dabei Wissen aus den Bereichen der Einwandbehandlung, Gesprächstechniken, Kommunikationstechniken, Organisationsentwicklung etc. " +
-                               "Analysiere das Verhalten der KI-Einführungsperson und ihre Reaktionen auf den Mitarbeiter mit Bezug zu konkreten Beispielen aus dem Dialog. " +
-                               "Stelle dar, wo die KI-Einführungsperson geschickt agiert hat und wo eher nicht. Deute an, welche Vor- und Nachteile ihr Verhalten haben könnte. " +
-                               "Nutze geschlechtergerechte Sprache (z.B. Gründer*innen, weibliche Gründerinnen). " +
-                               "Richte den Text in der Du-Form an die KI-Einführungsperson. Sei wohlwollend und ermunternd. Formuliere den Text aus einer unbestimmten Ich-Perspektive.");
-            }
-            else if ((int)novel.id == 2)
-            {
-                LoadTextFile(Path.Combine(Application.streamingAssetsPath, "TochterPrompt.txt"),
+                LoadTextFile(Path.Combine(Application.streamingAssetsPath, "Prompt_1.txt"),
                     content => { _prompt.Append(content).AppendLine(); },
                     "Prompt");
             }
-            // else
-            // {
-            //     LoadPromptFromFile();
-            //     LoadKnowledgeBaseFromFile();
-            // }
+            else
+            {
+                LoadPromptFromFile();
+                LoadKnowledgeBaseFromFile();
+            }
 
             _prompt.Append("Hier ist der Dialog:");
         }
@@ -177,20 +164,20 @@ namespace Assets._Scripts.Managers
         /// <param name="fileLabel">A label used for logging purposes to identify the type of file being loaded.</param>
         private void LoadTextFile(string path, Action<string> onSuccess, string fileLabel)
         {
-            #if UNITY_WEBGL
-                UnityWebRequest request = UnityWebRequest.Get(path);
-                request.SendWebRequest().completed += (op) =>
+#if UNITY_WEBGL
+            UnityWebRequest request = UnityWebRequest.Get(path);
+            request.SendWebRequest().completed += (op) =>
+            {
+                if (request.result == UnityWebRequest.Result.Success)
                 {
-                    if (request.result == UnityWebRequest.Result.Success)
-                    {
-                        onSuccess(request.downloadHandler.text);
-                    }
-                    else
-                    {
-                        Application.ExternalCall("logMessage", $"Error loading {fileLabel}: {request.error}");
-                    }
-                };
-            #else
+                    onSuccess(request.downloadHandler.text);
+                }
+                else
+                {
+                    Application.ExternalCall("logMessage", $"Error loading {fileLabel}: {request.error}");
+                }
+            };
+#else
                 if (File.Exists(path))
                 {
                     string text = File.ReadAllText(path);
@@ -200,7 +187,7 @@ namespace Assets._Scripts.Managers
                 {
                     LogManager.Warning($"{fileLabel} file not found at: {path}");
                 }
-            #endif
+#endif
         }
 
         /// <summary>

@@ -1,19 +1,21 @@
+GenderedCare: Geschlechtlich zugewiesene Sorgearbeit
 MotherBlame: Mother Blame
-UnequalParentalResponsibility: Ungleiche Elternverantwortung
-ParentificationAndFeminizedCare: Parentifizierung und feminisierte Sorgeverantwortung
-WellIntentionedAttribution: Wohlmeinende Verantwortungs- oder Stärkenzuschreibung
-OverlookedInternalizingStrain: Übersehene internalisierende Belastung
+ParentifiedDaughter: Parentifizierung und feminisierte Sorgeverantwortung
+PeripheralFather: Peripherer Vater
+FatherBonus: Ungleiche Elternverantwortung
+OccupationalStereotyping: Geschlechterstereotype Berufs- und Zukunftsorientierung
 Culturalization: Kulturalisierung
 LanguageBasedAttribution: Sprachbezogene Zuschreibung
 StereotypicalInterpretationOfMaleBehavior: Stereotype Deutung männlichen Verhaltens
+WellIntentionedAttribution: Wohlmeinende Verantwortungs- oder Stärkenzuschreibung
 Ableism: Ableismus
 AbleismAndFeminizedCare: Ableismus und feminisierte Sorgeverantwortung
-FalseBalanceDigitalControl: False Balance bei digitaler Kontrolle
-VictimBlamingDigitalControl: Victim Blaming bei digitaler Kontrolle
-InformationAsymmetry: Informationsasymmetrie
-AdultCentricCasePlanning: Adultzentrierte Hilfeplanung
-GenderStereotypicalCareerGuidance: Geschlechterstereotype Berufs- und Zukunftsorientierung
-SingleVoiceBias: Ein-Stimmen-Bias und vorschnelle Vervollständigung
-IndividualizationOfStructuralIssues: Individualisierung struktureller Problemlagen
 HeteronormativeOrCisnormativeAssumptions: Heteronormative oder cisnormative Annahmen
 IntersectionalErasure: Intersektionale Ausblendung
+AdultCenteredPlanning: Adultzentrierte Hilfeplanung
+SingleVoiceBias: Ein-Stimmen-Bias und vorschnelle Vervollständigung
+InformationAsymmetry: Informationsasymmetrie
+InternalizingOverlooked: Übersehene internalisierende Belastung
+FalseBalanceDigitalControl: False Balance bei digitaler Kontrolle
+IndividualizationOfStructuralIssues: Individualisierung struktureller Problemlagen
+VictimBlamingDigitalControl: Victim Blaming bei digitaler Kontrolle
