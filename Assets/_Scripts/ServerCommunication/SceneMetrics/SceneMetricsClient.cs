@@ -31,9 +31,6 @@ namespace Assets._Scripts.ServerCommunication.SceneMetrics
                 req.downloadHandler = new DownloadHandlerBuffer();
                 req.SetRequestHeader("Content-Type", "application/json; charset=utf-8");
 
-                // Zertifikats-Bypass analog zu deinem ServerCall
-                req.certificateHandler = new BypassCertificate();
-
                 yield return req.SendWebRequest();
 
                 if (req.result == UnityWebRequest.Result.Success)
@@ -68,7 +65,6 @@ namespace Assets._Scripts.ServerCommunication.SceneMetrics
             string url = ConnectionLink.SCENE_COUNT(scene.ToWireName());
             using (var req = UnityWebRequest.Get(url))
             {
-                req.certificateHandler = new BypassCertificate();
                 yield return req.SendWebRequest();
 
                 if (req.result == UnityWebRequest.Result.Success)
@@ -102,7 +98,6 @@ namespace Assets._Scripts.ServerCommunication.SceneMetrics
                 req.uploadHandler   = new UploadHandlerRaw(Array.Empty<byte>()); // leerer Body
                 req.downloadHandler = new DownloadHandlerBuffer();
                 req.SetRequestHeader("Content-Type", "application/json; charset=utf-8");
-                req.certificateHandler = new BypassCertificate();
 
                 yield return req.SendWebRequest();
 
