@@ -5,7 +5,7 @@
       "type": ">>Bias|GenderedCare<<",
       "category": "Ungleiche Sorge- und Elternverantwortung",
       "headline": "Geschlechtlich zugewiesene Sorgearbeit",
-      "bias": "",
+      "bias": "Ungeprüfte Bestätigung einer geschlechtlich ungleichen Verteilung von Sorge-, Haushalts- und Organisationsaufgaben.",
       "preview": "",
       "description": "Die Fachkraft bestätigt oder übernimmt ungeprüft eine geschlechtlich ungleiche Verteilung von Sorge-, Haushalts- und Organisationsaufgaben. Beiträge von Mädchen werden als Fürsorglichkeit, Reife oder Charaktereigenschaft beschrieben, während vergleichbare Erwartungen an Jungen nicht gestellt werden. Die Verteilung wird als Gegebenheit behandelt statt als Muster hinterfragt, das sich in der Hilfeplanung bearbeiten lässt."
     },
@@ -13,7 +13,7 @@
       "type": ">>Bias|MotherBlame<<",
       "category": "Ungleiche Sorge- und Elternverantwortung",
       "headline": "Mother Blame",
-      "bias": "",
+      "bias": "Einseitige Zuschreibung von Erziehungs-, Versorgungs- oder Organisationsverantwortung an die Mutter unter Ausblendung anderer Beteiligter und Rahmenbedingungen.",
       "preview": "",
       "description": "Die ausgewählte Äußerung der Fachkraft schreibt der Mutter einseitig Verantwortung für Erziehung, Versorgung, Organisation oder Schwierigkeiten des Kindes zu. Beiträge anderer verantwortlicher Personen sowie soziale oder strukturelle Rahmenbedingungen bleiben unberücksichtigt."
     },
@@ -21,7 +21,7 @@
       "type": ">>Bias|ParentifiedDaughter<<",
       "category": "Ungleiche Sorge- und Elternverantwortung",
       "headline": "Parentifizierung und feminisierte Sorgeverantwortung",
-      "bias": "",
+      "bias": "Regelmäßige Übernahme elterlicher oder organisatorischer Aufgaben durch ein Kind wird als selbstverständlich oder besonders lobenswert behandelt, ohne Umfang, Freiwilligkeit und Belastung zu klären.",
       "preview": "",
       "description": "Die Fachkraft behandelt die regelmäßige Übernahme elterlicher oder organisatorischer Aufgaben durch ein Kind als selbstverständlich, altersangemessen oder besonders lobenswert, ohne Umfang, Freiwilligkeit, Auswirkungen und verfügbare erwachsene Unterstützung zu klären. Bei Mädchen kann Sorgearbeit leichter als natürliche Hilfsbereitschaft oder Reife gerahmt werden."
     },
@@ -29,7 +29,7 @@
       "type": ">>Bias|PeripheralFather<<",
       "category": "Ungleiche Sorge- und Elternverantwortung",
       "headline": "Peripherer Vater",
-      "bias": "",
+      "bias": "Die geringe oder rein formale Beteiligung des Vaters wird als unveränderliche Rahmenbedingung behandelt statt als gestaltbare Größe der Hilfeplanung.",
       "preview": "",
       "description": "Die Fachkraft behandelt die geringe, punktuelle oder rein formale Beteiligung des Vaters als unveränderliche Rahmenbedingung. Sie thematisiert seinen Beitrag nicht aktiv als gestaltbare Größe der Hilfeplanung, überlässt Abstimmungen bestehenden Absprachen wie Umgang und Unterhalt und richtet Vereinbarungen sowie Erwartungen primär an Mutter oder Kind. Eine mögliche Beteiligung des Vaters wird weder erkundet noch aktiviert."
     },
@@ -37,7 +37,7 @@
       "type": ">>Bias|FatherBonus<<",
       "category": "Ungleiche Sorge- und Elternverantwortung",
       "headline": "Ungleiche Elternverantwortung",
-      "bias": "",
+      "bias": "Vergleichbare elterliche Beiträge werden ungleich bewertet: Mütterliche Sorgearbeit gilt als selbstverständlich, geringe väterliche Beteiligung wird besonders gewürdigt.",
       "preview": "",
       "description": "Vergleichbare Beiträge von Müttern und Vätern werden unterschiedlich bewertet. Mütterliche Sorgearbeit gilt als selbstverständlich oder unzureichend, während geringe väterliche Beteiligung besonders gewürdigt wird. Die Fachkraft fragt Verantwortlichkeiten nur bei einem Elternteil ab oder formuliert Veränderungsaufträge einseitig."
     },
@@ -45,7 +45,7 @@
       "type": ">>Bias|OccupationalStereotyping<<",
       "category": "Stereotype Zuschreibungen und Deutungen",
       "headline": "Geschlechterstereotype Berufs- und Zukunftsorientierung",
-      "bias": "",
+      "bias": "Lenken von Interessen und Berufs- oder Zukunftsvorstellungen entlang geschlechtlicher Erwartungen.",
       "preview": "",
       "description": "Die Fachkraft lenkt Interessen und Zukunftsvorstellungen entlang geschlechtlicher Erwartungen. Sie stellt technische und soziale Fähigkeiten als Gegensatz dar oder schlägt Mädchen bevorzugt soziale, pflegende oder vermeintlich familienfreundliche Tätigkeiten vor."
     },
@@ -53,7 +53,7 @@
       "type": ">>Bias|Culturalization<<",
       "category": "Stereotype Zuschreibungen und Deutungen",
       "headline": "Kulturalisierung",
-      "bias": "",
+      "bias": "Vorschnelle Erklärung von Verhalten, Konflikten oder Erziehungsweisen durch eine vermeintliche Kultur, Herkunft oder Religion.",
       "preview": "",
       "description": "Die Fachkraft erklärt Verhalten, Konflikte, Erziehungsweisen oder Schwierigkeiten vorschnell durch eine vermeintliche Kultur, Herkunft, Religion oder „Mentalität“. Individuelle, soziale, biografische und strukturelle Erklärungen werden dadurch verdrängt."
     },
@@ -61,7 +61,7 @@
       "type": ">>Bias|LanguageBasedAttribution<<",
       "category": "Stereotype Zuschreibungen und Deutungen",
       "headline": "Sprachbezogene Zuschreibung",
-      "bias": "",
+      "bias": "Gleichsetzung begrenzter Deutschkenntnisse oder eines Sprachmittlungsbedarfs mit mangelnder Einsicht, Bildung oder Erziehungskompetenz.",
       "preview": "",
       "description": "Die Fachkraft setzt begrenzte Deutschkenntnisse, Mehrsprachigkeit oder einen Bedarf an Sprachmittlung mit mangelnder Einsicht, geringer Kooperationsfähigkeit, fehlender Bildung oder eingeschränkter Erziehungskompetenz gleich. Sie prüft nicht, ob Verständigung oder Beteiligung durch geeignete Kommunikation verbessert werden kann."
     },
@@ -69,7 +69,7 @@
       "type": ">>Bias|StereotypicalInterpretationOfMaleBehavior<<",
       "category": "Stereotype Zuschreibungen und Deutungen",
       "headline": "Stereotype Deutung männlichen Verhaltens",
-      "bias": "",
+      "bias": "Verharmlosung oder Überzeichnung von Verhalten als typisch männlich statt situative Deutung.",
       "preview": "",
       "description": "Die Fachkraft verharmlost Aggression, Dominanz, Regelverletzung, Rückzug oder geringe emotionale Kommunikation als typisches Jungen- oder Männerverhalten. Umgekehrt kann sie einen Jungen vorschnell als gefährlich, schwierig, unkooperativ oder gefühllos behandeln."
     },
@@ -77,7 +77,7 @@
       "type": ">>Bias|WellIntentionedAttribution<<",
       "category": "Stereotype Zuschreibungen und Deutungen",
       "headline": "Wohlmeinende Verantwortungs- oder Stärkenzuschreibung",
-      "bias": "",
+      "bias": "Anerkennend wirkende Zuschreibung wie besonders reif oder stark, die Überforderung oder ungleiche Verantwortungsverteilung legitimieren kann.",
       "preview": "",
       "description": "Die Fachkraft bezeichnet ein Kind beispielsweise als besonders reif, stark, fürsorglich oder verantwortungsbewusst. Die Äußerung kann anerkennend wirken, zugleich aber Überforderung oder eine ungleiche Verantwortungsverteilung legitimieren."
     },
@@ -85,7 +85,7 @@
       "type": ">>Bias|Ableism<<",
       "category": "Vielfaltsblinde und normierende Annahmen",
       "headline": "Ableismus",
-      "bias": "",
+      "bias": "Unterschätzung, Bevormundung oder Abwertung einer Person aufgrund einer tatsächlichen oder vermuteten Behinderung oder Beeinträchtigung.",
       "preview": "",
       "description": "Die Fachkraft unterschätzt, bevormundet oder infantilisiert eine Person aufgrund einer tatsächlichen oder vermuteten Behinderung oder Beeinträchtigung. Sie bewertet deren Aussagen als weniger glaubwürdig, spricht eher über als mit der Person oder behandelt institutionelle und kommunikative Barrieren als individuelles Defizit."
     },
@@ -93,7 +93,7 @@
       "type": ">>Bias|AbleismAndFeminizedCare<<",
       "category": "Vielfaltsblinde und normierende Annahmen",
       "headline": "Ableismus und feminisierte Sorgeverantwortung",
-      "bias": "",
+      "bias": "Selbstverständliche Annahme, dass weibliche Familienangehörige behinderungsbezogene Unterstützung übernehmen.",
       "preview": "",
       "description": "Die Fachkraft setzt selbstverständlich voraus, dass eine Mutter, Schwester oder Tochter behinderungsbezogene Unterstützung übernimmt. Sie prüft weder die Selbstbestimmung der unterstützten Person noch eine faire Verteilung und professionelle Absicherung der Sorgearbeit."
     },
@@ -101,7 +101,7 @@
       "type": ">>Bias|HeteronormativeOrCisnormativeAssumptions<<",
       "category": "Vielfaltsblinde und normierende Annahmen",
       "headline": "Heteronormative oder cisnormative Annahmen",
-      "bias": "",
+      "bias": "Voraussetzung bestimmter Familienformen, Zweigeschlechtlichkeit oder traditioneller Geschlechterrollen ohne erkennbare Grundlage.",
       "preview": "",
       "description": "Die Fachkraft setzt ohne Grundlage eine bestimmte Familienform, eine heterosexuelle Partnerschaft, Zweigeschlechtlichkeit oder traditionelle Geschlechterrollen voraus."
     },
@@ -109,7 +109,7 @@
       "type": ">>Bias|IntersectionalErasure<<",
       "category": "Vielfaltsblinde und normierende Annahmen",
       "headline": "Intersektionale Ausblendung",
-      "bias": "",
+      "bias": "Ausblenden einer erkennbaren Überschneidung mehrerer Vielfaltsmerkmale zugunsten einer einzigen Zuschreibung.",
       "preview": "",
       "description": "Die ausgewählte Äußerung berücksichtigt eine ausdrücklich erkennbare Überschneidung von Geschlecht mit beispielsweise Alter, sozialer Lage, Behinderung, Rassifizierung, Migrationserfahrung oder Familienform nicht und reduziert die Situation auf eine einzige Zuschreibung. Erfinde keine nicht genannten Vielfaltsmerkmale."
     },
@@ -117,7 +117,7 @@
       "type": ">>Bias|AdultCenteredPlanning<<",
       "category": "Perspektive und Beteiligung der Klient*in",
       "headline": "Adultzentrierte Hilfeplanung",
-      "bias": "",
+      "bias": "Hilfeplanung wird als Angelegenheit der Erwachsenen behandelt, Beteiligung der jungen Person bleibt auf Anwesenheit reduziert.",
       "preview": "",
       "description": "Die Fachkraft beschreibt die Hilfeplanung als Gespräch oder Entscheidung der Erwachsenen, erhebt die Perspektive der jungen Person lediglich für die eigene Vorbereitung oder entscheidet ohne erkennbare Abstimmung, welche Aussagen weitergegeben werden. Beteiligung wird auf Anwesenheit oder eine Ja-nein-Entscheidung reduziert."
     },
@@ -125,7 +125,7 @@
       "type": ">>Bias|SingleVoiceBias<<",
       "category": "Perspektive und Beteiligung der Klient*in",
       "headline": "Ein-Stimmen-Bias und vorschnelle Vervollständigung",
-      "bias": "",
+      "bias": "Die Sicht einer einzigen Person wird als vollständige Beschreibung der Familie behandelt, fehlende Perspektiven und Dissens verschwinden.",
       "preview": "",
       "description": "Die Fachkraft behandelt die Sicht einer einzigen Person als vollständige Beschreibung der Familie. Berichte über abwesende Personen werden wie bestätigte Tatsachen formuliert; fehlende Perspektiven, Unsicherheiten und möglicher Dissens verschwinden."
     },
@@ -133,7 +133,7 @@
       "type": ">>Bias|InformationAsymmetry<<",
       "category": "Perspektive und Beteiligung der Klient*in",
       "headline": "Informationsasymmetrie",
-      "bias": "",
+      "bias": "Voraussetzung, dass die Klient*in Anlass und Ablauf des Verfahrens bereits kennt, statt selbst für verständliche Information zu sorgen.",
       "preview": "",
       "description": "Die Fachkraft setzt voraus, dass die Klientin Anlass, Ablauf, Beteiligte, Dokumentation oder Folgen des Verfahrens bereits kennt. Sie verweist auf Erklärungen anderer Personen, statt selbst für verständliche und adressat:innengerechte Information zu sorgen."
     },
@@ -141,7 +141,7 @@
       "type": ">>Bias|InternalizingOverlooked<<",
       "category": "Perspektive und Beteiligung der Klient*in",
       "headline": "Übersehene internalisierende Belastung",
-      "bias": "",
+      "bias": "Gutes Funktionieren, gute Leistungen oder relativierende Aussagen werden als Beleg gedeutet, dass keine relevante Belastung besteht.",
       "preview": "",
       "description": "Die Fachkraft deutet knappe oder relativierende Aussagen, gute Leistungen oder sichtbares Funktionieren vorschnell als Beleg dafür, dass keine relevante Belastung besteht. Sie bestätigt diese Deutung oder wechselt das Thema, statt der Klient*in eine weitere eigene Einordnung zu ermöglichen. Dieser Bias liegt bei der Reaktion der Fachkraft, nicht in den relativierenden Aussagen der Klient*in."
     },
@@ -149,7 +149,7 @@
       "type": ">>Bias|FalseBalanceDigitalControl<<",
       "category": "Macht, Kontrolle und strukturelle Bedingungen",
       "headline": "False Balance bei digitaler Kontrolle",
-      "bias": "",
+      "bias": "Digitale Kontrolle und Überwachung werden als symmetrischer Konflikt mit gleicher Verantwortung beider Seiten behandelt.",
       "preview": "",
       "description": "Die Fachkraft behandelt Überwachung, Passwortkontrolle, erzwungene Standortfreigabe, ständige Erreichbarkeit, Drohungen oder Einschränkungen sozialer Kontakte als symmetrischen Beziehungskonflikt mit gleicher Verantwortung beider Seiten. Macht, Zwang und Abhängigkeit werden dadurch ausgeblendet."
     },
@@ -157,7 +157,7 @@
       "type": ">>Bias|IndividualizationOfStructuralIssues<<",
       "category": "Macht, Kontrolle und strukturelle Bedingungen",
       "headline": "Individualisierung struktureller Problemlagen",
-      "bias": "",
+      "bias": "Strukturelle Problemlagen wie Armut oder fehlende Betreuungsangebote werden als individuelles Problem der Familie behandelt.",
       "preview": "",
       "description": "Die Fachkraft behandelt Arbeitszeiten, Armut, fehlende Betreuungsangebote, institutionelle Barrieren, Rassismus, Sexismus oder mangelnde Barrierefreiheit als individuelles Organisations-, Motivations- oder Erziehungsproblem. Veränderungsverantwortung wird einseitig der Familie oder einer einzelnen Person zugewiesen."
     },
@@ -165,7 +165,7 @@
       "type": ">>Bias|VictimBlamingDigitalControl<<",
       "category": "Macht, Kontrolle und strukturelle Bedingungen",
       "headline": "Victim Blaming bei digitaler Kontrolle",
-      "bias": "",
+      "bias": "Nahelegung, die betroffene Person sei für die erfahrene digitale Kontrolle mitverantwortlich.",
       "preview": "",
       "description": "Die Fachkraft legt mit ihrer Formulierung nahe, die betroffene Person sei für die Kontrolle mitverantwortlich, weil sie beispielsweise ein Passwort geteilt, Nachrichten beantwortet, Grenzen nicht deutlich genug gesetzt oder die kontrollierende Person provoziert habe."
     }

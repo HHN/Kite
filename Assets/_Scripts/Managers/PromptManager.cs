@@ -104,28 +104,38 @@ namespace Assets._Scripts.Managers
             if ((int)novel.id == 1)
             {
                 LoadTextFile(Path.Combine(Application.streamingAssetsPath, "Prompt_1.txt"),
-                    content => { _prompt.Append(content).AppendLine(); },
-                    "Prompt");
+                    content =>
+                    {
+                        _prompt.Append(content).AppendLine();
+                        AppendDialogMarker();
+                    },
+                    "Prompt_1",
+                    AppendDialogMarker);
             }
             else
             {
-                LoadPromptFromFile();
-                LoadKnowledgeBaseFromFile();
+                LoadTextFile(_promptPath,
+                    content =>
+                    {
+                        _prompt.Append(content).AppendLine();
+                        LoadKnowledgeBaseFromFile();
+                        AppendDialogMarker();
+                    },
+                    "Prompt",
+                    () =>
+                    {
+                        LoadKnowledgeBaseFromFile();
+                        AppendDialogMarker();
+                    });
             }
-
-            _prompt.Append("Hier ist der Dialog:");
         }
 
         /// <summary>
-        /// Reads the content of a prompt file from the predefined path and appends it
-        /// to the current prompt using a specified callback for handling file content.
-        /// This method ensures the proper integration of external prompt data into the existing system.
+        /// Appends the marker that separates the analysis prompt from the recorded dialog.
         /// </summary>
-        private void LoadPromptFromFile()
+        private void AppendDialogMarker()
         {
-            LoadTextFile(_promptPath,
-                content => { _prompt.Append(content).AppendLine(); },
-                "Prompt");
+            _prompt.Append("Hier ist der Dialog:");
         }
 
         /// <summary>
@@ -156,13 +166,27 @@ namespace Assets._Scripts.Managers
         }
 
         /// <summary>
+        /// Appends a new line of text to the current prompt and dialog builders.
+        /// If the prompt or dialog builders are uninitialized, they are created before appending the line.
+        /// </summary>
+        /// <param name="line">The line of text to add to the prompt and dialog.</param>
+        public void AddLineToPrompt(string line)
+        {
+            _prompt ??= new StringBuilder();
+            _dialog ??= new StringBuilder();
+
+            _prompt.AppendLine(line);
+            _dialog.AppendLine(line);
+        }
+
+        /// <summary>
         /// Loads a text file from the specified path, processes its content, and triggers a callback function upon success.
         /// Provides error handling for different platforms and logs warnings when the file is not found.
         /// </summary>
         /// <param name="path">The file path to the text file to be loaded.</param>
         /// <param name="onSuccess">The action to perform with the file's content once successfully loaded.</param>
         /// <param name="fileLabel">A label used for logging purposes to identify the type of file being loaded.</param>
-        private void LoadTextFile(string path, Action<string> onSuccess, string fileLabel)
+        private void LoadTextFile(string path, Action<string> onSuccess, string fileLabel, Action onFailure = null)
         {
 #if UNITY_WEBGL
             UnityWebRequest request = UnityWebRequest.Get(path);
@@ -175,6 +199,7 @@ namespace Assets._Scripts.Managers
                 else
                 {
                     Application.ExternalCall("logMessage", $"Error loading {fileLabel}: {request.error}");
+                    onFailure?.Invoke();
                 }
             };
 #else
@@ -186,22 +211,9 @@ namespace Assets._Scripts.Managers
                 else
                 {
                     LogManager.Warning($"{fileLabel} file not found at: {path}");
+                    onFailure?.Invoke();
                 }
 #endif
-        }
-
-        /// <summary>
-        /// Appends a new line of text to the current prompt and dialog builders.
-        /// If the prompt or dialog builders are uninitialized, they are created before appending the line.
-        /// </summary>
-        /// <param name="line">The line of text to add to the prompt and dialog.</param>
-        public void AddLineToPrompt(string line)
-        {
-            _prompt ??= new StringBuilder();
-            _dialog ??= new StringBuilder();
-
-            _prompt.AppendLine(line);
-            _dialog.AppendLine(line);
         }
 
         /// <summary>

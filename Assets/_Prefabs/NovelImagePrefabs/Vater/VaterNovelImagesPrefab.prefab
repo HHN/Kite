@@ -398,7 +398,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterContainers:
   - {fileID: 3780887922587301350}
-  - {fileID: 0}
   decorations:
   - prefab: {fileID: 8411936371333490823, guid: b50994c696a0cd248bee354926d1dfa2, type: 3}
     container: {fileID: 0}
