@@ -128,3 +128,7 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# .NET build artifacts (StandAlone tools)
+**/bin/
+**/obj/
