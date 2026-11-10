@@ -1,7 +1,7 @@
 {
   "visualNovels": [
-    "_novels_twee\\Controlling",
-    "_novels_twee\\Einstieg",
-    "_novels_twee\\Vertrieb"
+    "_novels_twee/Controlling",
+    "_novels_twee/Einstieg",
+    "_novels_twee/Vertrieb"
   ]
-} 
+}
