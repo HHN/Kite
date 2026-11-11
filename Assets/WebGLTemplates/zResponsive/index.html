@@ -11,8 +11,16 @@
 
 	<style>
 		:root{
+			/* Default-Werte – werden per JS überschrieben */
+			--circle-size-px: 176px;
+			--circle-top-px: 40px;
+
+			--gap-under-circle: 18px;
+			--wordmark-min: 200px;
+			--wordmark-max: 420px;
+
 			--progress-height: 14px;
-			--accent-green: #00A65C;
+			--accent-orange: #F36E21;
 		}
 
 		html, body {
@@ -36,7 +44,7 @@
 		@media (hover: hover) and (pointer: fine) { #container { outline: 5px solid white; } }
 		@media (hover: none)  and (pointer: coarse){ #container { outline: none; } }
 
-		/* Loading-Overlay (mit Claim, R-KISO-Logo, Progress) */
+		/* Loading-Overlay (mit Logo, Wortmarke, Progress) */
 		#loading{
 			position: absolute; inset: 0;
 			z-index:10; pointer-events:none; transition:opacity .35s ease;
@@ -56,33 +64,55 @@
 			transition: opacity .18s ease; /* erster Sprung: schnell zu Schwarz */
 		}
 
-		/* Branding-Block: Claim über Logo, Progress darunter (wie Unity-Startszene) */
-		.branding{
+		/* Kreis-Box */
+		.brand-mark{
+			position: absolute;
+			left: 50%;
+			top: var(--circle-top-px, 40px); /* Fallbacks für Linter/DevTools */
+			transform: translateX(-50%);
+			width:  var(--circle-size-px, 176px);
+			height: var(--circle-size-px, 176px);
+			border-radius: 50%;
+			background: #fff;
+			display: grid; place-items: center;
+			overflow: hidden;
+			box-shadow: 0 10px 30px rgba(0,0,0,.18);
+		}
+		/* Innen-Logo: 5% kleiner, zentriert */
+		.brand-mark img{
+			width: 95%;
+			height: 95%;
+			object-fit: contain;
+			display: block;
+		}
+
+		/* Bereich unterhalb des Kreises */
+		.below{
 			position: absolute;
 			left: 0; width: 100%;
-			top: 45%;
+			top: calc(
+					var(--circle-top-px, 40px)
+					+ var(--circle-size-px, 176px)
+					+ var(--gap-under-circle, 18px)
+			);
 			display: flex; flex-direction: column; align-items: center;
 		}
-		.claim{
-			width: clamp(220px, 55%, 380px);
-			height: auto; display: block;
-		}
-		.logo{
-			width: clamp(220px, 55%, 380px);
-			height: auto; display: block;
-			margin-top: 18px;
+
+		.wordmark{
+			width: clamp(var(--wordmark-min, 200px), 60%, var(--wordmark-max, 420px));
+			height:auto; display:block;
 			filter: drop-shadow(0 6px 18px rgba(0,0,0,.25));
 		}
 
 		.progress{
-			width: clamp(220px, 55%, 380px);
+			width: clamp(220px, 70%, 380px);
 			height: var(--progress-height, 14px);
 			background:#fff; border-radius:8px; overflow:hidden;
 			box-shadow: 0 6px 18px rgba(0,0,0,.25);
 			margin-top: 20px;
 		}
 		.progress__fill{
-			width:0%; height:100%; background:var(--accent-green, #00A65C);
+			width:0%; height:100%; background:var(--accent-orange, #F36E21);
 			border-radius:8px 0 0 8px; transition: width .2s ease;
 		}
 
@@ -97,11 +127,16 @@
 
 <body>
 <div id="container">
-	<!-- Ladebild: Claim + R-KISO-Logo + Progress -->
+	<!-- Ladebild -->
 	<div id="loading" class="preinit" role="status" aria-live="polite" aria-label="Ladevorgang">
-		<div class="branding">
-			<img class="claim" src="StreamingAssets/R-KISO_Logo_Screen_negativ-weiss.png" alt="reallabor ki im sozialwesen" />
-			<img class="logo" src="StreamingAssets/R-KISO_Logo_Screen_RGB.png" alt="R-KISO-Logo" />
+		<!-- Kreis + Innenlogo -->
+		<div class="brand-mark">
+			<img src="StreamingAssets/Kite_Logo_im_Kreis.png" alt="Kite-Logo" />
+		</div>
+
+		<!-- Unterhalb des Kreises: Wortmarke + Progress -->
+		<div class="below">
+			<img class="wordmark" src="StreamingAssets/kite_logo_ohne_II.png" alt="kite Wortmarke" />
 			<div class="progress" aria-hidden="true">
 				<div id="progress-fill" class="progress__fill"></div>
 			</div>
@@ -113,8 +148,8 @@
 
 	<canvas id="game-canvas" data-pixel-art="false"></canvas>
 
-	<!-- Unity ersetzt die Platzhalter beim Build -->
-	<script>
+			<!-- Unity ersetzt die Platzhalter beim Build -->
+	 <script>
 		window.KITE_CONFIG = {
 			passphrase: "KITE_PASSPHRASE_PLACEHOLDER"
 		};
@@ -176,7 +211,7 @@
 			}
 		}
 
-		/* Container berechnen (1:2 auf Desktop) */
+		/* Container berechnen & CSS-Variablen setzen (26,7% Höhe, Topkante 20,6%) */
 		function onResize(){
 			var container = canvas.parentElement;
 			var isDesktop = matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -195,6 +230,10 @@
 			container.style.width = w+"px"; container.style.height = h+"px";
 			container.style.left = left+"px"; container.style.top = top+"px";
 			canvas.style.width = w+"px"; canvas.style.height = h+"px";
+
+			// 26,7% und 20,6% der Containerhöhe
+			root.style.setProperty("--circle-size-px", (h * 0.267) + "px");
+			root.style.setProperty("--circle-top-px",  (h * 0.206) + "px");
 
 			// Jetzt, wo alles positioniert ist, das Overlay ins Bild holen
 			// per rAF sicherstellen, dass Layout angewandt wurde
@@ -218,6 +257,5 @@
 		function logMessage(m){ console.log(m); }
 	</script>
 </div>
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" nonce="cOXeplUv0rBmW2RVI+oK4A==" data-cf-beacon='{"version":"2024.11.0","token":"36b4216ae2dc4d5488c249161e71fe1e","spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
