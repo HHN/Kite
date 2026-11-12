@@ -20,7 +20,7 @@
 			--wordmark-max: 420px;
 
 			--progress-height: 14px;
-			--accent-orange: #F36E21;
+			--accent-green: #00A65C;
 		}
 
 		html, body {
@@ -66,6 +66,7 @@
 
 		/* Kreis-Box */
 		.brand-mark{
+			display: none; /* Kreis ausgeblendet (R-KISO-Design) */
 			position: absolute;
 			left: 50%;
 			top: var(--circle-top-px, 40px); /* Fallbacks für Linter/DevTools */
@@ -86,33 +87,39 @@
 			display: block;
 		}
 
-		/* Bereich unterhalb des Kreises */
+		/* Bereich unterhalb des Kreises: Vollflaechiges Overlay, Elemente absolut wie in der MainMenuScene */
 		.below{
 			position: absolute;
-			left: 0; width: 100%;
-			top: calc(
-					var(--circle-top-px, 40px)
-					+ var(--circle-size-px, 176px)
-					+ var(--gap-under-circle, 18px)
-			);
-			display: flex; flex-direction: column; align-items: center;
+			inset: 0;
 		}
 
-		.wordmark{
-			width: clamp(var(--wordmark-min, 200px), 60%, var(--wordmark-max, 420px));
-			height:auto; display:block;
+		/* Statt der alten Wortmarke: Claim + R-KISO-Logo (an MainMenuScene angeglichen:
+		   beide 700px von 1080 = 65% Breite, zentriert, Mitten wie im Spiel bei ca. 40% / 50%) */
+		.claim{
+			position: absolute; left: 50%; top: 40%;
+			transform: translate(-50%, -50%);
+			width: 65%;
+			height: auto; display: block;
+		}
+		.logo{
+			position: absolute; left: 50%; top: 50%;
+			transform: translate(-50%, -50%);
+			width: 65%;
+			height: auto; display: block;
 			filter: drop-shadow(0 6px 18px rgba(0,0,0,.25));
 		}
 
 		.progress{
-			width: clamp(220px, 70%, 380px);
+			position: absolute; left: 50%; top: 57.5%;
+			transform: translate(-50%, -50%);
+			width: 65%;
 			height: var(--progress-height, 14px);
 			background:#fff; border-radius:8px; overflow:hidden;
 			box-shadow: 0 6px 18px rgba(0,0,0,.25);
-			margin-top: 20px;
 		}
+
 		.progress__fill{
-			width:0%; height:100%; background:var(--accent-orange, #F36E21);
+			width:0%; height:100%; background:var(--accent-green, #00A65C);
 			border-radius:8px 0 0 8px; transition: width .2s ease;
 		}
 
@@ -136,7 +143,8 @@
 
 		<!-- Unterhalb des Kreises: Wortmarke + Progress -->
 		<div class="below">
-			<img class="wordmark" src="StreamingAssets/kite_logo_ohne_II.png" alt="kite Wortmarke" />
+			<img class="claim" src="StreamingAssets/R-KISO_Logo_Screen_negativ-weiss.png" alt="reallabor ki im sozialwesen" />
+			<img class="logo" src="StreamingAssets/R-KISO_Logo_Screen_RGB.png" alt="R-KISO-Logo" />
 			<div class="progress" aria-hidden="true">
 				<div id="progress-fill" class="progress__fill"></div>
 			</div>
@@ -257,5 +265,6 @@
 		function logMessage(m){ console.log(m); }
 	</script>
 </div>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" nonce="X9usnSRU2LKsgIeX7L7fZw==" data-cf-beacon='{"version":"2024.11.0","token":"36b4216ae2dc4d5488c249161e71fe1e","spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
