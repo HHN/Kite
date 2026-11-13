@@ -4,7 +4,6 @@ using Assets._Scripts.Managers;
 using Assets._Scripts._Mappings;
 using Assets._Scripts.Messages;
 using Assets._Scripts.Novel;
-using Assets._Scripts.Player;
 using Assets._Scripts.SceneManagement;
 using Assets._Scripts.ServerCommunication;
 using Assets._Scripts.ServerCommunication.SceneMetrics;
@@ -31,7 +30,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         [SerializeField] private TMP_Text versionInfo;
         [SerializeField] private GameObject startButtonPanel;
         [SerializeField] private Button startButton;
-        [SerializeField] private Button logoButton;
         [SerializeField] private Image background;
 
         private const int CompatibleServerVersionNumber = 10;
@@ -145,7 +143,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         {
             continueTermsAndConditionsButton.onClick.AddListener(OnContinueTermsAndConditionsButton);
             startButton.onClick.AddListener(OnStartButtonClicked);
-            logoButton.onClick.AddListener(OnStartButtonClicked);
         }
 
         /// <summary>
@@ -189,7 +186,6 @@ namespace Assets._Scripts.Controller.SceneControllers
         private void OnStartButtonClicked()
         {
             startButton.interactable = false;
-            logoButton.interactable = false;
 
             // Keep the panel visible but prevent interaction
             LockLegalUi();

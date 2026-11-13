@@ -4,21 +4,13 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>{{{ PRODUCT_NAME }}}</title>
-	<link rel="icon" href="StreamingAssets/kite_II__Bildmarke_RGB_favicon.svg" type="image/svg+xml" />
+	<link rel="icon" href="StreamingAssets/R-KISO_Logo_Screen_RGB.png" type="image/png" />
 
 	<meta name="viewport"
 		  content="width=device-width,height=device-height,initial-scale=1.0,viewport-fit=cover,user-scalable=no,shrink-to-fit=yes" />
 
 	<style>
 		:root{
-			/* Default-Werte – werden per JS überschrieben */
-			--circle-size-px: 176px;
-			--circle-top-px: 40px;
-
-			--gap-under-circle: 18px;
-			--wordmark-min: 200px;
-			--wordmark-max: 420px;
-
 			--progress-height: 14px;
 			--accent-green: #00A65C;
 		}
@@ -64,45 +56,22 @@
 			transition: opacity .18s ease; /* erster Sprung: schnell zu Schwarz */
 		}
 
-		/* Kreis-Box */
-		.brand-mark{
-			display: none; /* Kreis ausgeblendet (R-KISO-Design) */
-			position: absolute;
-			left: 50%;
-			top: var(--circle-top-px, 40px); /* Fallbacks für Linter/DevTools */
-			transform: translateX(-50%);
-			width:  var(--circle-size-px, 176px);
-			height: var(--circle-size-px, 176px);
-			border-radius: 50%;
-			background: #fff;
-			display: grid; place-items: center;
-			overflow: hidden;
-			box-shadow: 0 10px 30px rgba(0,0,0,.18);
-		}
-		/* Innen-Logo: 5% kleiner, zentriert */
-		.brand-mark img{
-			width: 95%;
-			height: 95%;
-			object-fit: contain;
-			display: block;
-		}
-
 		/* Bereich unterhalb des Kreises: Vollflaechiges Overlay, Elemente absolut wie in der MainMenuScene */
 		.below{
 			position: absolute;
 			inset: 0;
 		}
 
-		/* Statt der alten Wortmarke: Claim + R-KISO-Logo (an MainMenuScene angeglichen:
-		   beide 700px von 1080 = 65% Breite, zentriert, Mitten wie im Spiel bei ca. 40% / 50%) */
+		/* Statt der alten Wortmarke: Claim + R-KISO-Logo (an MainMenuScene im Play Mode angeglichen:
+		   beide 700px von 1080 = 65% Breite, zentriert; reale Geraetepositionen laut Szenen-Geometrie + Fingertest: Claim 48% / Logo 52.5%, Balken bei 58% (Block zuvor 3.25% zu tief) */
 		.claim{
-			position: absolute; left: 50%; top: 40%;
+			position: absolute; left: 50%; top: 48%;
 			transform: translate(-50%, -50%);
 			width: 65%;
 			height: auto; display: block;
 		}
 		.logo{
-			position: absolute; left: 50%; top: 50%;
+			position: absolute; left: 50%; top: 52.5%;
 			transform: translate(-50%, -50%);
 			width: 65%;
 			height: auto; display: block;
@@ -110,7 +79,7 @@
 		}
 
 		.progress{
-			position: absolute; left: 50%; top: 57.5%;
+			position: absolute; left: 50%; top: 58%;
 			transform: translate(-50%, -50%);
 			width: 65%;
 			height: var(--progress-height, 14px);
@@ -136,11 +105,6 @@
 <div id="container">
 	<!-- Ladebild -->
 	<div id="loading" class="preinit" role="status" aria-live="polite" aria-label="Ladevorgang">
-		<!-- Kreis + Innenlogo -->
-		<div class="brand-mark">
-			<img src="StreamingAssets/Kite_Logo_im_Kreis.png" alt="Kite-Logo" />
-		</div>
-
 		<!-- Unterhalb des Kreises: Wortmarke + Progress -->
 		<div class="below">
 			<img class="claim" src="StreamingAssets/R-KISO_Logo_Screen_negativ-weiss.png" alt="reallabor ki im sozialwesen" />
@@ -156,8 +120,8 @@
 
 	<canvas id="game-canvas" data-pixel-art="false"></canvas>
 
-			<!-- Unity ersetzt die Platzhalter beim Build -->
-	 <script>
+	<!-- Unity ersetzt die Platzhalter beim Build -->
+	<script>
 		window.KITE_CONFIG = {
 			passphrase: "KITE_PASSPHRASE_PLACEHOLDER"
 		};
@@ -239,10 +203,6 @@
 			container.style.left = left+"px"; container.style.top = top+"px";
 			canvas.style.width = w+"px"; canvas.style.height = h+"px";
 
-			// 26,7% und 20,6% der Containerhöhe
-			root.style.setProperty("--circle-size-px", (h * 0.267) + "px");
-			root.style.setProperty("--circle-top-px",  (h * 0.206) + "px");
-
 			// Jetzt, wo alles positioniert ist, das Overlay ins Bild holen
 			// per rAF sicherstellen, dass Layout angewandt wurde
 			requestAnimationFrame(revealLoader);
@@ -265,6 +225,6 @@
 		function logMessage(m){ console.log(m); }
 	</script>
 </div>
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" nonce="X9usnSRU2LKsgIeX7L7fZw==" data-cf-beacon='{"version":"2024.11.0","token":"36b4216ae2dc4d5488c249161e71fe1e","spa":2}' crossorigin="anonymous"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" nonce="alnewG2gq5t8gI9x0pmDlw==" data-cf-beacon='{"version":"2024.11.0","token":"36b4216ae2dc4d5488c249161e71fe1e","spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
