@@ -31,20 +31,20 @@ Ich weiß ehrlich gesagt nicht genau, warum ich hier bin. Die Familienhilfe läu
 
 
 :: Ending A {"position":"1600,4350","size":"100,100"}
->>Character1<<
+>>Character1|NeutralRelaxed<<
 Gut. Ich bin da.
 >>--<<
 >>Player<<
 Danke für Ihre Zeit, wir sehen uns dann beim Termin.
 >>--<<
->>Character1<<
+>>Character1|NeutralRelaxed<<
 Danke auch. Bis dann.
 >>--<<
 >>End<<
 
 
 :: Ending B {"position":"1775,4350","size":"100,100"}
->>Character1<<
+>>Character1|Dissatisfied<<
 Ich weiß nicht, ob ich da dabei sein sollte. Am Ende gibt es nur wieder Streit.
 
 [[Sie sind als Vater eingeladen, und Ihre Sicht gehört dazu. Ob Sie kommen, entscheiden Sie.->Ending B2]]
@@ -53,26 +53,26 @@ Ich weiß nicht, ob ich da dabei sein sollte. Am Ende gibt es nur wieder Streit.
 
 
 :: Ending B2 {"position":"1675,4525","size":"100,100"}
->>Character1<<
+>>Character1|NeutralRelaxed<<
 Okay. Dann komme ich. Wäre gut, wenn meine Ex-Frau vorher weiß, dass ich dabei bin.
 >>--<<
 >>Player<<
 Das kläre ich vorher mit ihr. Bis in zwei Wochen.
 >>--<<
->>Character1<<
+>>Character1|NeutralRelaxed<<
 Bis dann.
 >>--<<
 >>End<<
 
 
 :: Ending B3 {"position":"1850,4525","size":"100,100"}
->>Character1<<
+>>Character1|NeutralRelaxed<<
 Ja, das ist mir lieber.
 >>--<<
 >>Player<<
 Dann verbleiben wir so. Wenn Sie es sich anders überlegen, ist das natürlich auch kein Problem. Bis dann!
 >>--<<
->>Character1<<
+>>Character1|NeutralRelaxed<<
 Danke. Tschüss.
 >>--<<
 >>Bias|PeripheralFather<<
@@ -129,7 +129,7 @@ Okay. Dann kurz dazu: Bei Ihrer Familie läuft seit einem halben Jahr die Famili
 
 
 :: S2 Jonas {"position":"1925,1200","size":"100,100"}
->>Character1<<
+>>Character1|Neutral<<
 Jonas ist halt ein Junge, der braucht mehr Aufmerksamkeit. Wegen dem gibt es die Familienhilfe ja auch. Schule, Training, der vergisst alles.
 >>--<<
 >>Bias|GenderedCare<<
@@ -142,7 +142,7 @@ Jonas ist halt ein Junge, der braucht mehr Aufmerksamkeit. Wegen dem gibt es die
 
 
 :: S2 Jonas Jungs {"position":"1725,1200","size":"100,100"}
->>Character1<<
+>>Character1|Neutral<<
 Eben. Mädchen sind da einfach weiter. Und Lina ist ja auch die Ältere.
 >>--<<
 >>Bias|GenderedCare<<
@@ -153,7 +153,7 @@ Eben. Mädchen sind da einfach weiter. Und Lina ist ja auch die Ältere.
 
 
 :: S2 Lina {"position":"2100,1000","size":"100,100"}
->>Character1<<
+>>Character1|NeutralRelaxed<<
 Lina? Der geht's gut. Die war schon immer die Vernünftige. Um die mache ich mir keine Sorgen.
 >>--<<
 >>Bias|InternalizingOverlooked<<
@@ -166,7 +166,7 @@ Lina? Der geht's gut. Die war schon immer die Vernünftige. Um die mache ich mir
 
 
 :: S2 Lina Erzählt {"position":"1775,1400","size":"100,100"}
->>Character1<<
+>>Character1|Neutral<<
 Dass da eine Frau kommt, die mit ihrer Mutter Pläne macht. Und dass sie Jonas jetzt öfter abholt.
 
 [[Was übernimmt Lina denn sonst noch?->S3 Lina Aufgaben]]
@@ -175,8 +175,8 @@ Dass da eine Frau kommt, die mit ihrer Mutter Pläne macht. Und dass sie Jonas j
 
 
 :: S2 Lina Vernünftig Benannt {"position":"2250,1200","size":"100,100"}
->>Character1<<
-Na ja, ist doch so. Die hat schon früh mitgeholfen. Schon als wir noch zusammeb gewohnt haben.
+>>Character1|NeutralRelaxed<<
+Na ja, ist doch so. Die hat schon früh mitgeholfen. Schon als wir noch zusammen gewohnt haben.
 
 [[Was hat sie damals übernommen und was heute?->S3 Lina Aufgaben]]
 
@@ -184,7 +184,7 @@ Na ja, ist doch so. Die hat schon früh mitgeholfen. Schon als wir noch zusammeb
 
 
 :: S2 Lina Woran {"position":"2100,1200","size":"100,100"}
->>Character1<<
+>>Character1|Neutral<<
 Sie beschwert sich nie. Die Noten passen. Und wenn ich frage, sagt sie "passt schon".
 >>--<<
 >>Bias|InternalizingOverlooked<<
@@ -195,7 +195,7 @@ Sie beschwert sich nie. Die Noten passen. Und wenn ich frage, sagt sie "passt sc
 
 
 :: S2 Mutter {"position":"1350,700","size":"100,100"}
->>Character1<<
+>>Character1|Dissatisfied<<
 Sie arbeitet zu viel. Ständig tauscht sie Schichten, damit es finanziell reicht. Dann ist sie abends nicht da.
 
 [[Das ist natürlich schwierig, wenn eine Mutter abends so oft weg ist.->S2 Mutter Vorwurf]]
@@ -206,7 +206,7 @@ Sie arbeitet zu viel. Ständig tauscht sie Schichten, damit es finanziell reicht
 
 
 :: S2 Mutter Vorwurf {"position":"1350,900","size":"100,100"}
->>Character1<<
+>>Character1|Dissatisfied<<
 Sag ich ja. Wenn sie besser planen würde, bräuchte es die ganze Familienhilfe vielleicht gar nicht.
 >>--<<
 >>Bias|MotherBlame<<
@@ -217,7 +217,7 @@ Sag ich ja. Wenn sie besser planen würde, bräuchte es die ganze Familienhilfe 
 
 
 :: S2 Passt Schon {"position":"2225,1400","size":"100,100"}
->>Character1<<
+>>Character1|NeutralRelaxed<<
 Hm. Ich habe ehrlich gesagt nie richtig nachgefragt. Sie ist halt wie ihre Mutter, die sagt auch immer, es geht.
 >>--<<
 >>Bias|InternalizingOverlooked<<
@@ -228,7 +228,7 @@ Hm. Ich habe ehrlich gesagt nie richtig nachgefragt. Sie ist halt wie ihre Mutte
 
 
 :: S2 Umgang {"position":"1425,550","size":"100,100"}
->>Character1<<
+>>Character1|NeutralRelaxed<<
 Jedes zweite Wochenende sind sie bei mir. Freitag hole ich sie ab, Sonntagabend bringe ich sie zurück. Läuft eigentlich.
 >>--<<
 >>Bias|PeripheralFather<<
@@ -241,7 +241,7 @@ Jedes zweite Wochenende sind sie bei mir. Freitag hole ich sie ab, Sonntagabend 
 
 
 :: S2 Umgang Perspektive {"position":"1550,700","size":"100,100"}
->>Character1<<
+>>Character1|Defeated<<
 Na ja. So fühlt sich das manchmal auch an.
 
 [[Wie meinen Sie das?->S2 Vater Rand]]
@@ -250,7 +250,7 @@ Na ja. So fühlt sich das manchmal auch an.
 
 
 :: S2 Unter der Woche {"position":"1550,1050","size":"100,100"}
->>Character1<<
+>>Character1|Neutral<<
 Wenig. Ich telefoniere mal mit Lina. Wenn ihre Mutter Spätschicht hat, kümmert sie sich um Jonas, glaube ich.
 
 [[Was genau übernimmt Lina dann?->S3 Lina Aufgaben]]
@@ -261,10 +261,10 @@ Wenig. Ich telefoniere mal mit Lina. Wenn ihre Mutter Spätschicht hat, kümmert
 
 
 :: S2 Unterhalt {"position":"1200,700","size":"100,100"}
->>Character1<<
+>>Character1|Dissatisfied<<
 Zahle ich. Pünktlich. Da kann sich keiner beschweren.
 >>--<<
->>Character1<<
+>>Character1|Dissatisfied<<
 Wenn es nur ums Geld geht, hätten Sie mich auch anrufen können.
 >>--<<
 >>Bias|PeripheralFather<<
@@ -275,7 +275,7 @@ Wenn es nur ums Geld geht, hätten Sie mich auch anrufen können.
 
 
 :: S2 Urteilend Wer Übernimmt {"position":"1300,1325","size":"100,100"}
->>Character1<<
+>>Character1|Dissatisfied<<
 Was heißt hier urteilend. Ich schildere nur meine Wahrnehmung. Lina kümmert sich dann, wenn ihre Mutter nicht da ist. Die macht das schon. Holt Jonas ab, kocht was. Die ist da sehr vernünftig.
 >>--<<
 >>Bias|ParentifiedDaughter<<
@@ -288,7 +288,7 @@ Was heißt hier urteilend. Ich schildere nur meine Wahrnehmung. Lina kümmert si
 
 
 :: S2 Vater {"position":"1600,550","size":"100,100"}
->>Character1<<
+>>Character1|Dissatisfied<<
 Mir? Gut. Also, ich bin ja nicht derjenige, der Hilfe braucht.
 
 [[Dann lassen Sie uns über die Kinder sprechen.->S2 Vater Übergangen]]
@@ -299,7 +299,7 @@ Mir? Gut. Also, ich bin ja nicht derjenige, der Hilfe braucht.
 
 
 :: S2 Vater Haushalt {"position":"1650,900","size":"100,100"}
->>Character1<<
+>>Character1|Defeated<<
 Stimmt. Dann bin ich wohl raus. Ich hole sie halt alle zwei Wochen ab.
 >>--<<
 >>Bias|PeripheralFather<<
@@ -310,7 +310,7 @@ Stimmt. Dann bin ich wohl raus. Ich hole sie halt alle zwei Wochen ab.
 
 
 :: S2 Vater Informiert {"position":"1800,900","size":"100,100"}
->>Character1<<
+>>Character1|Defeated<<
 Natürlich. Das sind auch meine Kinder. Vielleicht hätte ich ja auch was beitragen können.
 
 [[Was hätten Sie sich vorstellen können?->S3 Beitrag]]
@@ -319,7 +319,7 @@ Natürlich. Das sind auch meine Kinder. Vielleicht hätte ich ja auch was beitra
 
 
 :: S2 Vater Rand {"position":"1700,700","size":"100,100"}
->>Character1<<
+>>Character1|Dissatisfied<<
 Ehrlich? Ich erfahre vieles erst hinterher. Dass es eine Familienhilfe gibt, hat mir Lina erzählt. Nicht ihre Mutter. Und auch nicht das Jugendamt.
 >>--<<
 >>Bias|InformationAsymmetry<<
@@ -332,7 +332,7 @@ Ehrlich? Ich erfahre vieles erst hinterher. Dass es eine Familienhilfe gibt, hat
 
 
 :: S2 Vater Übergangen {"position":"1825,700","size":"100,100"}
->>Character1<<
+>>Character1|Neutral<<
 Genau. Um die Kinder geht's ja.
 >>--<<
 >>Bias|PeripheralFather<<
@@ -343,7 +343,7 @@ Genau. Um die Kinder geht's ja.
 
 
 :: S2 Wer Übernimmt {"position":"1425,1325","size":"100,100"}
->>Character1<<
+>>Character1|NeutralRelaxed<<
 Lina. Die macht das schon. Holt Jonas ab, kocht was. Die ist da sehr vernünftig.
 >>--<<
 >>Bias|ParentifiedDaughter<<
@@ -356,7 +356,7 @@ Lina. Die macht das schon. Holt Jonas ab, kocht was. Die ist da sehr vernünftig
 
 
 :: S2 Wer Übernimmt Alltag {"position":"1600,1325","size":"100,100"}
->>Character1<<
+>>Character1|NeutralRelaxed<<
 Lina holt Jonas ab, kocht was. Die macht das schon. Immerhin ist sie da sehr vernünftig.
 >>--<<
 >>Bias|ParentifiedDaughter<<
@@ -369,7 +369,7 @@ Lina holt Jonas ab, kocht was. Die macht das schon. Immerhin ist sie da sehr ver
 
 
 :: S3 Beitrag {"position":"1500,1600","size":"100,100"}
->>Character1<<
+>>Character1|Defeated<<
 Keine Ahnung. Mich hat ja nie jemand gefragt. Ich weiß nicht mal genau, wann ihre Mutter gerade Schicht hat.
 
 [[Dann schauen wir uns zusammen eine normale Woche der Kinder an.->S3 Normale Woche]]
@@ -378,7 +378,7 @@ Keine Ahnung. Mich hat ja nie jemand gefragt. Ich weiß nicht mal genau, wann ih
 
 
 :: S3 Festgelegt {"position":"1800,2100","size":"100,100"}
->>Character1<<
+>>Character1|Neutral<<
 Festgelegt hat das keiner. Das hat sich nach der Trennung so ergeben. Ihre Mutter brauchte halt jemanden.
 
 [[Und wer war da sonst noch im Gespräch?->S4 Und Sie]]
@@ -387,10 +387,10 @@ Festgelegt hat das keiner. Das hat sich nach der Trennung so ergeben. Ihre Mutte
 
 
 :: S3 Jonas Hilft {"position":"1375,1900","size":"100,100"}
->>Character1<<
+>>Character1|Dissatisfied<<
 Jonas? Der ist zwölf. Der soll erstmal seine eigenen Sachen hinkriegen.
 >>--<<
->>Character1<<
+>>Character1|Neutral<<
 Lina war mit zwölf aber auch schon so.
 >>--<<
 >>Bias|GenderedCare<<
@@ -401,7 +401,7 @@ Lina war mit zwölf aber auch schon so.
 
 
 :: S3 Lina Aufgaben {"position":"1725,1900","size":"100,100"}
->>Character1<<
+>>Character1|Neutral<<
 Soweit ich weiß: Jonas von der Schule abholen, zum Training bringen, Abendessen machen. Bei den Hausaufgaben hilft sie ihm auch. Sie kann das besser erklären als ich. Und ich habe die ja nur über das Wochenende bei mir.
 >>--<<
 >>Bias|ParentifiedDaughter<<
@@ -412,7 +412,7 @@ Soweit ich weiß: Jonas von der Schule abholen, zum Training bringen, Abendessen
 
 
 :: S3 Lina Vernünftig {"position":"1650,1600","size":"100,100"}
->>Character1<<
+>>Character1|NeutralRelaxed<<
 Ja, die ist wie ihre Mutter. Bei denen liegt das irgendwie in der Familie.
 >>--<<
 >>Bias|ParentifiedDaughter<<
@@ -427,7 +427,7 @@ Ja, die ist wie ihre Mutter. Bei denen liegt das irgendwie in der Familie.
 
 
 :: S3 Lina Viel {"position":"1325,1600","size":"100,100"}
->>Character1<<
+>>Character1|Neutral<<
 Ja, schon. Aber sie hat nie gesagt, dass es ihr zu viel ist.
 >>--<<
 >>Bias|InternalizingOverlooked<<
@@ -438,7 +438,7 @@ Ja, schon. Aber sie hat nie gesagt, dass es ihr zu viel ist.
 
 
 :: S3 Normale Woche {"position":"1600,2100","size":"100,100"}
->>Character1<<
+>>Character1|Neutral<<
 Soweit ich weiß, hat ihre Mutter dienstags und donnerstags Spätschicht. Manchmal auch noch mittwochs. Dann ist Lina mit Jonas allein, bis meine Ex-Frau abends heimkommt.
 
 [[Und wie sieht so ein Dienstag bei Ihnen aus?->S4 Dienstag Vater]]
@@ -449,7 +449,7 @@ Soweit ich weiß, hat ihre Mutter dienstags und donnerstags Spätschicht. Manchm
 
 
 :: S3 Unterschied {"position":"1375,2100","size":"100,100"}
->>Character1<<
+>>Character1|Questioning<<
 Hm. So habe ich das noch nie gesehen. Das hat sich halt so ergeben.
 >>--<<
 >>Bias|GenderedCare<<
@@ -460,7 +460,7 @@ Hm. So habe ich das noch nie gesehen. Das hat sich halt so ergeben.
 
 
 :: S3 Wer Sonst {"position":"2100,1850","size":"100,100"}
->>Character1<<
+>>Character1|Neutral<<
 Na ja, ihre Mutter ist auf Schicht. Und sonst ist ja keiner da.
 
 [[Und Sie?->S4 Und Sie]]
@@ -469,7 +469,7 @@ Na ja, ihre Mutter ist auf Schicht. Und sonst ist ja keiner da.
 
 
 :: S4 Dienstag Vater {"position":"1875,2300","size":"100,100"}
->>Character1<<
+>>Character1|NeutralRelaxed<<
 Dienstag? Ich habe feste Zeiten, um 17 Uhr bin ich fertig. Dann einkaufen, Sport, Fernsehen. Das Übliche.
 
 [[Um 17 Uhr. Wann hat Jonas eigentlich Training?->S4 Ressource]]
@@ -480,7 +480,7 @@ Dienstag? Ich habe feste Zeiten, um 17 Uhr bin ich fertig. Dann einkaufen, Sport
 
 
 :: S4 Erreichbar {"position":"1650,2300","size":"100,100"}
->>Character1<<
+>>Character1|Neutral<<
 Na, ihre Mutter. Wenn sie ans Handy geht. Auf Station klappt das nicht immer.
 
 [[Und Sie?->S4 Und Sie]]
@@ -489,7 +489,7 @@ Na, ihre Mutter. Wenn sie ans Handy geht. Auf Station klappt das nicht immer.
 
 
 :: S4 Feierabend {"position":"1950,2500","size":"100,100"}
->>Character1<<
+>>Character1|Dissatisfied<<
 Ja. Den habe ich mir auch verdient, ich arbeite ja Vollzeit.
 >>--<<
 >>Bias|AdultCenteredPlanning<<
@@ -500,7 +500,7 @@ Ja. Den habe ich mir auch verdient, ich arbeite ja Vollzeit.
 
 
 :: S4 Für Lina {"position":"1400,2700","size":"100,100"}
->>Character1<<
+>>Character1|Questioning<<
 Hm. Sie hat mal gesagt, dass sie unter der Woche kaum zu ihrem Computerkram kommt. Ich dachte, das ist halt so mit 15.
 >>--<<
 >>Bias|InternalizingOverlooked<<
@@ -511,7 +511,7 @@ Hm. Sie hat mal gesagt, dass sie unter der Woche kaum zu ihrem Computerkram komm
 
 
 :: S4 Gut Organisiert {"position":"1500,2300","size":"100,100"}
->>Character1<<
+>>Character1|NeutralRelaxed<<
 Ja, eigentlich läuft das. Lina kriegt das hin.
 >>--<<
 >>Bias|AdultCenteredPlanning<<
@@ -524,7 +524,7 @@ Ja, eigentlich läuft das. Lina kriegt das hin.
 
 
 :: S4 Lina Fragen {"position":"1550,2975","size":"100,100"}
->>Character1<<
+>>Character1|Questioning<<
 Stimmt. Vielleicht will sie das gar nicht abgeben. Oder sie ist froh. Ich weiß es ehrlich gesagt nicht.
 
 [[Das finden wir gemeinsam mit ihr heraus. Was wissen Sie denn darüber, was Lina gerne macht?->S5 Interessen]]
@@ -533,10 +533,10 @@ Stimmt. Vielleicht will sie das gar nicht abgeben. Oder sie ist froh. Ich weiß 
 
 
 :: S4 Ressource {"position":"1625,2800","size":"100,100"}
->>Character1<<
- Jonas hat um halb sechs Training, glaube ich. Das könnte ich eigentlich übernehmen. Zumindest dienstags.
+>>Character1|NeutralRelaxed<<
+Jonas hat um halb sechs Training, glaube ich. Das könnte ich eigentlich übernehmen. Zumindest dienstags.
 >>--<<
->>Character1<<
+>>Character1|Dissatisfied<<
 Aber das muss ich erst mit seiner Mutter klären. Sonst denkt die, ich mische mich ein.
 
 [[Genau dafür ist das Hilfeplangespräch da. Damit mischen Sie sich nicht ein, damit beteiligen Sie sich.->S4 Ressource Benannt]]
@@ -547,7 +547,7 @@ Aber das muss ich erst mit seiner Mutter klären. Sonst denkt die, ich mische mi
 
 
 :: S4 Ressource Benannt {"position":"1750,2975","size":"100,100"}
->>Character1<<
+>>Character1|NeutralRelaxed<<
 Okay. Dann sage ich das da auch so.
 
 [[Und was denken Sie, wie sieht Lina das?->S4 Lina Fragen]]
@@ -556,7 +556,7 @@ Okay. Dann sage ich das da auch so.
 
 
 :: S4 Und Sie {"position":"1725,2500","size":"100,100"}
->>Character1<<
+>>Character1|Neutral<<
 Ich? Ich wohne 20 Minuten weg. Aber unter der Woche ist nichts abgesprochen. Das war immer so: Wochenende Papa, Woche Mama.
 >>--<<
 >>Bias|PeripheralFather<<
@@ -567,7 +567,7 @@ Ich? Ich wohne 20 Minuten weg. Aber unter der Woche ist nichts abgesprochen. Das
 
 
 :: S4 Vaterbonus {"position":"1800,2800","size":"100,100"}
->>Character1<<
+>>Character1|Dissatisfied<<
 Na ja, so toll ist das jetzt auch nicht. Lina macht das jeden Dienstag.
 >>--<<
 >>Bias|FatherBonus<<
@@ -578,7 +578,7 @@ Na ja, so toll ist das jetzt auch nicht. Lina macht das jeden Dienstag.
 
 
 :: S4 Vereinbart {"position":"1575,2500","size":"100,100"}
->>Character1<<
+>>Character1|Dissatisfied<<
 Eben. Ich will mich da auch nicht einmischen, sonst gibt es nur wieder Streit.
 >>--<<
 >>Bias|PeripheralFather<<
@@ -591,7 +591,7 @@ Eben. Ich will mich da auch nicht einmischen, sonst gibt es nur wieder Streit.
 
 
 :: S5 Beides {"position":"1875,3950","size":"100,100"}
->>Character1<<
+>>Character1|Smiling<<
 Ja. Vielleicht kann ich ihr da auch was zeigen. Bei uns im Betrieb läuft die ganze Gebäudesteuerung über Software. Das fände sie bestimmt spannend.
 
 [[Das klingt nach einer Idee, die Sie Lina selbst vorschlagen könnten.->S6 Übergang]]
@@ -600,7 +600,7 @@ Ja. Vielleicht kann ich ihr da auch was zeigen. Bei uns im Betrieb läuft die ga
 
 
 :: S5 Benannt {"position":"1650,3725","size":"100,100"}
->>Character1<<
+>>Character1|Questioning<<
 Stimmt schon. Als wäre das Kümmern schon ihr Beruf.
 
 [[Sie beschreiben gerade vor allem die fürsorgliche Seite von Lina. Was ist dann mit der Website, an der sie gearbeitet hat?->S5 Website Bild]]
@@ -609,7 +609,7 @@ Stimmt schon. Als wäre das Kümmern schon ihr Beruf.
 
 
 :: S5 Computer {"position":"1475,3325","size":"100,100"}
->>Character1<<
+>>Character1|Smiling<<
 Irgendwas mit dem Menü, das ging auf dem Handy nicht. Das hat sie sich alles selbst rausgesucht. Hat ein ganzes Wochenende dran gesessen und sich riesig gefreut, als es lief.
 
 [[Haben Sie ihr das mal so gesagt?->S5 Gesagt]]
@@ -618,7 +618,7 @@ Irgendwas mit dem Menü, das ging auf dem Handy nicht. Das hat sie sich alles se
 
 
 :: S5 Erzieherin {"position":"1475,3725","size":"100,100"}
->>Character1<<
+>>Character1|NeutralRelaxed<<
 Eben. Die hat ja quasi schon Übung.
 >>--<<
 >>Bias|OccupationalStereotyping<<
@@ -631,7 +631,7 @@ Eben. Die hat ja quasi schon Übung.
 
 
 :: S5 Gesagt {"position":"1400,3500","size":"100,100"}
->>Character1<<
+>>Character1|Neutral<<
 Ich habe gesagt, dass sie das gut gemacht hat. Mehr nicht. Ich dachte, das ist halt ein Hobby.
 
 [[Vielleicht ist es mehr als ein Hobby. Wissen Sie, was sie später machen möchte?->S5 Später Mal]]
@@ -640,7 +640,7 @@ Ich habe gesagt, dass sie das gut gemacht hat. Mehr nicht. Ich dachte, das ist h
 
 
 :: S5 Interessen {"position":"1625,3200","size":"100,100"}
->>Character1<<
+>>Character1|Smiling<<
 Schule läuft, sagt sie. Und sie sitzt viel am Computer. Letztens hat sie die Website von meinem Fußballverein repariert. Da war ich echt platt.
 
 [[Klingt, als hätte sie da ein Händchen für. Was hat sie da gemacht?->S5 Computer]]
@@ -649,7 +649,7 @@ Schule läuft, sagt sie. Und sie sitzt viel am Computer. Letztens hat sie die We
 
 
 :: S5 Später Mal {"position":"1650,3500","size":"100,100"}
->>Character1<<
+>>Character1|Neutral<<
 Sie sagt, eher was mit Menschen. Passt ja auch, sie kann gut mit Kindern. Vielleicht Erzieherin, wie ihre Tante.
 >>--<<
 >>Bias|OccupationalStereotyping<<
@@ -662,7 +662,7 @@ Sie sagt, eher was mit Menschen. Passt ja auch, sie kann gut mit Kindern. Vielle
 
 
 :: S5 Website Bild {"position":"1825,3725","size":"100,100"}
->>Character1<<
+>>Character1|Questioning<<
 Hm. Gar nicht, eigentlich. Dabei hat sie da ja richtig was hingekriegt.
 
 [[Vielleicht schließt sich das gar nicht aus. Mit Technik kann man auch für Menschen arbeiten.->S5 Beides]]
@@ -671,7 +671,7 @@ Hm. Gar nicht, eigentlich. Dabei hat sie da ja richtig was hingekriegt.
 
 
 :: S6 Benennend Ende {"position":"1775,4175","size":"100,100"}
->>Character1<<
+>>Character1|Questioning<<
 Selbst? Vor meiner Ex-Frau und der Familienhelferin? Hm.
 
 [[Ich unterstütze Sie dabei. Möchten Sie beim Gespräch dabei sein?->Ending B]]
@@ -680,7 +680,7 @@ Selbst? Vor meiner Ex-Frau und der Familienhelferin? Hm.
 
 
 :: S6 Mitgehend Ende {"position":"1425,4175","size":"100,100"}
->>Character1<<
+>>Character1|Smiling<<
 Gerne.
 >>--<<
 >>Player<<
@@ -692,7 +692,7 @@ Ich nehme das mit in die Vorbereitung. Die Einladung zum Hilfeplangespräch beko
 
 
 :: S6 Prüfend Ende {"position":"1600,4175","size":"100,100"}
->>Character1<<
+>>Character1|NeutralRelaxed<<
 Das mit dem Dienstag vielleicht. Und dass ich unter der Woche mehr machen kann, wenn man mich lässt.
 >>--<<
 >>Player<<
@@ -704,7 +704,7 @@ Gut. Das nehme ich als Vorschlag mit, und wir besprechen es mit Frau Sander und 
 
 
 :: S6 Vaterbonus Ende {"position":"1950,4175","size":"100,100"}
->>Character1<<
+>>Character1|NeutralRelaxed<<
 Na ja. Sind ja meine Kinder.
 >>--<<
 >>Bias|FatherBonus<<
@@ -715,7 +715,7 @@ Na ja. Sind ja meine Kinder.
 
 
 :: S6 Übergang {"position":"1700,3950","size":"100,100"}
->>Character1<<
+>>Character1|Defeated<<
 Ich habe gerade das Gefühl, ich weiß weniger über meine Kinder, als ich dachte.
 
 [[Danke, dass Sie so offen waren. Ihre Perspektive fehlt im Hilfeplan bisher.->S6 Mitgehend Ende]]

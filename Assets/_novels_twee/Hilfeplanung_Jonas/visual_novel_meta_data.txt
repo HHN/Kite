@@ -1,0 +1,13 @@
+{
+  "idNumberOfNovel": 5,
+  "titleOfNovel": "Hilfeplanung Jonas",
+  "descriptionOfNovel": "Es ist ein vorbereitendes Einzelgespräch einer Fachkraft des Jugendamts mit dem zwölfjährigen Jonas. Er sitzt der Fachkraft mit hochgezogener Kapuze gegenüber und wirkt abwehrend.",
+  "contextForPrompt": "Es ist ein vorbereitendes Einzelgespräch einer Fachkraft des Jugendamts mit dem zwölfjährigen Jonas, der die sechste Klasse besucht. Anwesend sind ausschließlich Jonas und die Fachkraft; sie sitzen in einem Besprechungsraum im Jugendamt, Jonas trägt die Kapuze und wirkt distanziert und abwehrend. Seine Klassenlehrerin hat sich gemeldet, weil er den Unterricht stört und es zweimal Rangeleien auf dem Pausenhof gab. Für die Familie Sander besteht seit zehn Monaten eine Familienhilfe; in zwei Wochen findet das Hilfeplangespräch statt. Jonas lebt mit seiner fünfzehnjährigen Schwester Lina bei der Mutter, die im Schichtdienst arbeitet. Die Fachkraft möchte Jonas' Sicht auf die Vorfälle und seine familiäre Situation erfahren und ihn auf das Hilfeplangespräch vorbereiten.",
+  "startTalkingPartnerExpression": "NeutralRelaxed",
+  "talkingPartner01" : "Jonas",
+  "talkingPartner02" : "",
+  "talkingPartner03" : "",
+  "isKiteNovel": true,
+  "novelColor": "#0E1A2D",
+  "novelFrameColor": "#234169"
+}

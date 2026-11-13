@@ -2319,6 +2319,10 @@ MonoBehaviour:
     prefab: {fileID: 781856241913721907, guid: f0f33b9f5a53ca241bdd2e27c0afde9e, type: 3}
   - characterName: Vater
     prefab: {fileID: 781856241913721907, guid: ebc6bdfdd70aa494e891416a583ed7eb, type: 3}
+  - characterName: Jonas
+    prefab: {fileID: 781856241913721907, guid: d09ccbf14e9f0ff4da31fb0fcf6d4568, type: 3}
+  - characterName: Mutter
+    prefab: {fileID: 781856241913721907, guid: 4cce7421e3b000d4ab8f423903f3fe31, type: 3}
   novelImageContainer: {fileID: 1655295459}
   backgroundContainer: {fileID: 0}
   backgroundPrefab:

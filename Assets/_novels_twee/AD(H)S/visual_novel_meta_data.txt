@@ -8,6 +8,6 @@
   "talkingPartner02" : "",
   "talkingPartner03" : "",
   "isKiteNovel": true,
-  "novelColor": "#11454A",
-  "novelFrameColor": "#27727F"
+  "novelColor": "#0E1A2D",
+  "novelFrameColor": "#234169"
 }

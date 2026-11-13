@@ -1,0 +1,920 @@
+:: StoryTitle
+Hilfeplanung - Mutter
+
+
+:: StoryData
+{
+  "ifid": "45960175-9277-452D-8811-B50000C9CC2B",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "start": "Anfang",
+  "zoom": 0.6
+}
+
+
+:: Anfang {"position":"600,150","size":"100,100"}
+>>Info<<
+Seit zehn Monaten läuft in der Familie Sander eine Familienhilfe. In zwei Wochen wird im Hilfeplangespräch entschieden, wie es weitergeht. Du hast den Fall vor drei Wochen übernommen. Frau Sander arbeitet Vollzeit im Schichtdienst, Lina und Jonas leben bei ihr. Heute sitzt ihr in ihrer Küche. Sie hat sich für den Termin freigenommen.
+
+[[Weiter->Einstieg]]
+
+
+:: Einstieg {"position":"750,150","size":"100,100"}
+>>Character1|Neutral<<
+Ich hab mir extra freigenommen. Mit den Schichten ist das nicht so einfach.
+
+[[Das rechne ich Ihnen hoch an. Dann fassen wir uns kurz.->S1 Mitgehend]]
+
+[[War Herr Sander zu dem Termin eingeladen?->S1 Prüfend]]
+
+[[Gut. Dann fangen wir mit der Schule an.->S1 Übergehend]]
+
+
+:: Ende A {"position":"750,6000","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Gut. Dann bis in zwei Wochen.
+
+>>--<<
+
+>>Player<<
+Bis dann.
+
+>>--<<
+
+>>End<<
+
+
+:: Ende B {"position":"975,6000","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Gut, danke, dass Sie heute gekommen sind.
+>>--<<
+
+>>Player<<
+Gerne. Wir besprechen die genannten Punkte dann im Hilfeplangespräch.
+>>--<<
+
+>>Character1|Smiling<<
+Ja. Das klingt gut. Vielen Dank und bis dahin.
+
+>>--<<
+
+>>Player<<
+Bis dann!
+>>--<<
+
+>>End<<
+
+
+:: Ende C {"position":"1225,6000","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Das muss ich auch erstmal sacken lassen.
+>>--<<
+>>Player<<
+Verdauen Sie alles auch erstmal. Und wir sehen uns dann in zwei Wochen.
+>>--<<
+>>Character1|NeutralRelaxed<<
+Ja, danke Ihnen. Bis in zwei Wochen.
+>>--<<
+>>Player<<
+Bis dann.
+>>--<<
+>>Bias|GenderedCare<<
+>>--<<
+>>Bias|GenderedCare<<
+
+>>--<<
+
+>>End<<
+
+
+:: S1 Mitgehend {"position":"575,400","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Danke. Ehrlich gesagt ist heute sowieso einer der engeren Tage.
+
+[[Wie läuft es gerade mit Jonas in der Schule?->S2 Schule]]
+
+[[Wie geht es Ihnen im Moment?->S2 Belastung]]
+
+
+:: S1 Prüfend {"position":"750,400","size":"100,100"}
+>>Character1|Dissatisfied<<
+Nein. Wieso? Ich mach das ja.
+>>--<<
+>>Bias|GenderedCare<<
+
+[[Wie hat sich das eigentlich ergeben?->S2 Zuständigkeit]]
+
+[[Erzählen Sie mir erst einmal, wie die letzten Wochen waren.->S2 Belastung]]
+
+
+:: S1 Übergehend {"position":"950,400","size":"100,100"}
+>>Character1|Neutral<<
+Gut.
+
+[[Wie läuft es bei Jonas in der Schule?->S2 Schule]]
+
+[[Wie läuft es bei Lina?->S2 Lina]]
+
+
+:: S2 Belastung {"position":"500,600","size":"100,100"}
+>>Character1|Dissatisfied<<
+Ich krieg das schon hin. Es ist halt viel.
+
+[[Das klingt nach sehr viel. Sie müssen auch mal an sich denken.->S2 Belastung Mitgehend]]
+
+[[Was genau heißt "viel"? Woran merken Sie das zuerst?->S2 Belastung Prüfend]]
+
+
+:: S2 Belastung Mitgehend {"position":"675,600","size":"100,100"}
+>>Character1|Dissatisfied<<
+Das sagen viele. Im Alltag hilft mir das leider nicht besonders.
+>>--<<
+>>Bias|WellIntentionedAttribution<<
+
+[[Wie sieht denn momentan eine typische Woche aus?->S3 Woche]]
+
+[[Dann erzählen Sie mir etwas über die Kinder.->S2 Lina]]
+
+
+:: S2 Belastung Prüfend {"position":"400,750","size":"100,100"}
+>>Character1|Neutral<<
+Dienstage meistens. Wenn ich Spätschicht habe.
+
+[[Wie läuft so ein Dienstag dann ab?->S3 Dienstag Ablauf]]
+
+[[Wer unterstützt Sie an diesen Tagen?->S2 Zuständigkeit]]
+
+
+:: S2 Lina {"position":"1225,650","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Lina macht eigentlich keine Sorgen. Die läuft halt mit.
+>>--<<
+>>Bias|InternalizingOverlooked<<
+
+[[Woran merken Sie das?->S2 Lina Woran]]
+
+[[Dann sprechen wir kurz über Jonas.->S3 Jonas]]
+
+[[Mir fällt auf, dass Sie nicht viel zu Lina zu sagen haben.->S2 Lina Benannt]]
+
+
+:: S2 Lina Benannt {"position":"1325,800","size":"100,100"}
+>>Character1|Questioning<<
+Stimmt. Wahrscheinlich rede ich bei Jonas sofort über Probleme und bei ihr gar nicht.
+>>--<<
+>>Bias|InternalizingOverlooked<<
+
+[[Wie sieht eine normale Woche von Lina aus?->S3 Woche]]
+
+[[Was übernimmt sie zu Hause?->S3 Dienstag]]
+
+
+:: S2 Lina Schweigen {"position":"950,800","size":"100,100"}
+>>Character1|Defeated<<
+Nicht unbedingt. Aber man denkt das irgendwann. Ich hoffe, sie sagt etwas, wenn es Probleme gibt.
+>>--<<
+>>Bias|InternalizingOverlooked<<
+
+[[Wobei hilft sie denn konkret?->S3 Dienstag]]
+
+[[Dann schauen wir uns mal eine normale Woche an.->S3 Woche]]
+
+
+:: S2 Lina Woran {"position":"1125,800","size":"100,100"}
+>>Character1|Neutral<<
+Die Schule läuft. Sie beschwert sich nicht. Und sie hilft viel.
+>>--<<
+>>Bias|InternalizingOverlooked<<
+
+[[Was heißt "hilft viel"?->S3 Dienstag]]
+
+[[Muss Schweigen heißen, dass alles gut ist?->S2 Lina Schweigen]]
+
+
+:: S2 Schule {"position":"850,600","size":"100,100"}
+>>Character1|Dissatisfied<<
+Jonas ist gerade wieder Thema. Es kommen Mails von der Schule.
+
+[[Und wie erleben Sie das?->S3 Jonas]]
+
+[[Kommen wir gleich dazu. Mich interessiert zuerst Ihr Alltag.->S3 Woche]]
+
+[[Wie erlebt Lina das alles?->S2 Lina]]
+
+
+:: S2 Zuständigkeit {"position":"675,750","size":"100,100"}
+>>Character1|Defeated<<
+Vieles bleibt bei mir hängen. Termine, Schule, Arztsachen. Der übliche Kram. Lina unterstützt mich dann viel.
+>>--<<
+>>Bias|GenderedCare<<
+
+[[Welche Aufgaben übernimmt Herr Sander?->S3 Vater]]
+
+[[Was bleibt am häufigsten bei Ihnen hängen?->S3 Woche]]
+
+[[Wie erlebt Lina das alles?->S2 Lina]]
+
+
+:: S3 Arbeit {"position":"1025,1100","size":"100,100"}
+>>Character1|Neutral<<
+Ich arbeite Vollzeit. Anders geht es nicht.
+
+[[Vollzeit mit zwei Kindern und Schichtdienst. Ob das auf Dauer gutgeht?->S3 Arbeit Mitgehend]]
+
+[[Was würde sich ändern, wenn Geld keine Rolle spielen würde?->S3 Arbeit Prüfend]]
+
+[[Verstehe. Reden wir über Jonas.->S3 Jonas]]
+
+
+:: S3 Arbeit Mitgehend {"position":"950,1275","size":"100,100"}
+>>Character1|Defeated<<
+Das frage ich mich manchmal auch.
+>>--<<
+>>Bias|GenderedCare<<
+>>--<<
+>>Bias|IndividualizationOfStructuralIssues<<
+
+[[Wie sieht so ein schwieriger Tag konkret aus?->S3 Dienstag Ablauf]]
+
+[[Sie haben vermutlich keine andere Wahl als Vollzeit zu arbeiten?->S3 Geld]]
+
+
+:: S3 Arbeit Prüfend {"position":"1075,1275","size":"100,100"}
+>>Character1|Smiling<<
+Dann würde ich vermutlich weniger Schichten machen. Vielleicht hätte ich sogar mal einen freien Abend.
+
+[[Welche Tage sind das, an denen es besonders eng wird?->S3 Dienstag]]
+
+[[Spielt Geld dabei die größte Rolle?->S3 Geld]]
+
+
+:: S3 Dienstag {"position":"550,1500","size":"100,100"}
+>>Character1|Neutral<<
+Dienstags und donnerstags meistens. Manchmal kommt noch ein Mittwoch dazu. Dann bin ich bis abends in der Klinik.
+
+[[Und wer kümmert sich in der Zeit um die Kinder?->S3 Wer Kümmert]]
+
+[[Wie funktioniert das konkret?->S3 Dienstag Ablauf]]
+
+[[Das klingt nach einer anspruchsvollen Organisation.->S3 Dienstag Belastung]]
+
+
+:: S3 Dienstag Ablauf {"position":"300,1625","size":"100,100"}
+>>Character1|Neutral<<
+Ich bringe die Kinder morgens zur Schule und fahre dann direkt zur Arbeit. Wenn ich Spätschicht habe, bin ich erst abends wieder zu Hause. Lina holt Jonas meistens vom Training oder von Freunden ab. Sie macht etwas zu essen, schaut nach den Hausaufgaben und die beiden warten, bis ich zurückkomme.
+>>--<<
+>>Bias|ParentifiedDaughter<<
+
+[[Das ist wirklich toll, dass Lina Sie so unterstützt.->S3 Lina Hilft]]
+
+[[An wie vielen Tagen in der Woche ist das so?->S3 Häufigkeit]]
+
+[[Wie erlebt Lina das Ihrer Einschätzung nach?->S3 Lina Belastung]]
+
+
+:: S3 Dienstag Belastung {"position":"550,1650","size":"100,100"}
+>>Character1|Defeated<<
+Man gewöhnt sich daran. Zumindest rede ich mir das ein.
+>>--<<
+>>Bias|GenderedCare<<
+
+[[Wie läuft so ein Dienstag genau ab?->S3 Dienstag Ablauf]]
+
+[[Wer unterstützt Sie dabei?->S3 Wer Kümmert]]
+
+
+:: S3 Geld {"position":"1025,1425","size":"100,100"}
+>>Character1|Dissatisfied<<
+Natürlich. Die Miete wird ja nicht kleiner.
+
+[[Dann ist Vollzeitarbeit eher Voraussetzung als Problem?->S3 Geld Benannt]]
+
+[[Und trotzdem macht Geld allein nicht glücklich.->S3 Geld Belastung]]
+
+
+:: S3 Geld Belastung {"position":"950,1575","size":"100,100"}
+>>Character1|Defeated<<
+Ja. Aber weniger arbeiten kann ich mir eben nicht leisten. 
+>>--<<
+>>Bias|IndividualizationOfStructuralIssues<<
+
+[[An welchen Tagen wird es denn besonders eng?->S3 Dienstag]]
+
+[[Beschreiben Sie mal, wie ein Tag mit Spätschicht aussieht.->S3 Dienstag Ablauf]]
+
+
+:: S3 Geld Benannt {"position":"1125,1575","size":"100,100"}
+>>Character1|Defeated<<
+Genau. Oft habe ich das Gefühl, ich muss rechtfertigen, dass ich überhaupt Vollzeit arbeite.
+
+[[Das hört sich nach viel Stress und Druck an->S3 Geld Belastung]]
+
+[[Wie wirkt sich das auf den Alltag der Kinder an einem Tag mit Spätschicht aus?->S3 Dienstag Ablauf]]
+
+
+:: S3 Häufigkeit {"position":"550,1825","size":"100,100"}
+>>Character1|Neutral<<
+Drei Tage meistens. Manchmal vier.
+
+[[Ist das schon lange so?->S3 Seit Wann]]
+
+[[Wer könnte etwas davon übernehmen?->S4 Vater Mehr]]
+
+
+:: S3 Jonas {"position":"1200,1100","size":"100,100"}
+>>Character1|Dissatisfied<<
+Bei Jonas ist ständig Bewegung drin. Schule, Training, Hausaufgaben.
+
+[[Wer hält das alles zusammen?->S3 Dienstag]]
+
+[[Und wie erlebt Lina das?->S3 Kinder Erleben]]
+
+[[Kommen wir einmal zu einem typischen Dienstag.->S3 Dienstag]]
+
+
+:: S3 Kinder Erleben {"position":"1200,1275","size":"100,100"}
+>>Character1|Neutral<<
+Jonas findet das nervig. Lina sagt meistens nur "passt schon".
+>>--<<
+>>Bias|InternalizingOverlooked<<
+
+[[Muss "passt schon" heißen, dass es ihr gut geht?->S3 Lina Differenz]]
+
+[[Was macht Lina an diesen Tagen konkret?->S3 Dienstag Ablauf]]
+
+
+:: S3 Lina Belastung {"position":"275,2150","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Ich denke, das ist für sie okay. Sie sagt nie, dass ihr etwas zu viel wird.
+>>--<<
+>>Bias|InternalizingOverlooked<<
+
+[[Muss das heißen, dass es ihr gut geht?->S3 Lina Schweigt]]
+
+[[Dann schauen wir auf Ihre Unterlagen.->S4 Aktenlage Einstieg]]
+
+
+:: S3 Lina Differenz {"position":"1200,1425","size":"100,100"}
+>>Character1|Questioning<<
+Das kann ich gar nicht so genau sagen. Vielleicht frage ich zu selten.
+>>--<<
+>>Bias|InternalizingOverlooked<<
+
+[[Dann schauen wir mal auf einen konkreten Dienstag.->S3 Dienstag Ablauf]]
+
+[[Beschreiben Sie mal, wie ein Tag mit Spätschicht aussieht.->S3 Dienstag Ablauf]]
+
+
+:: S3 Lina Hilft {"position":"375,1825","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Ohne sie wäre es deutlich schwieriger.
+>>--<<
+>>Bias|ParentifiedDaughter<<
+
+[[Wie oft passiert das?->S3 Häufigkeit]]
+
+[[Und wie geht es Lina damit?->S3 Lina Belastung]]
+
+
+:: S3 Lina Schweigt {"position":"550,2150","size":"100,100"}
+>>Character1|Defeated<<
+Vermutlich nicht. Aber irgendwann nimmt man es als Zeichen, dass alles okay ist.
+>>--<<
+>>Bias|InternalizingOverlooked<<
+
+[[Was denken Sie, könnte Herr Sander an Aufgaben übernehmen->S4 Vater Möglichkeit]]
+
+[[Kommen wir zu den Unterlagen.->S4 Aktenlage Einstieg]]
+
+
+:: S3 Seit Wann {"position":"650,1975","size":"100,100"}
+>>Character1|Defeated<<
+Eigentlich seit der Trennung. Anfangs weniger. Mittlerweile eher mehr.
+>>--<<
+>>Bias|ParentifiedDaughter<<
+
+[[Wie geht es Lina damit?->S3 Lina Belastung]]
+
+[[Gab es Alternativen dazu?->S4 Vater Mehr]]
+
+
+:: S3 Selbst Belastung {"position":"1025,975","size":"100,100"}
+>>Character1|Dissatisfied<<
+An diesen Tagen habe ich ständig das Gefühl, mehrere Dinge gleichzeitig im Blick behalten zu müssen. Ich bin auf der Arbeit und denke trotzdem daran, ob zu Hause alles klappt.
+
+[[Welche Rolle spielt dabei Ihre Arbeit?->S3 Arbeit]]
+
+[[Wie wird das zu Hause an einem Tag mit Spätschicht organisiert?->S3 Dienstag Ablauf]]
+
+
+:: S3 Vater {"position":"625,1000","size":"100,100"}
+>>Character1|Dissatisfied<<
+Jedes zweite Wochenende nimmt er die Kinder. Unter der Woche eher selten.
+>>--<<
+>>Bias|GenderedCare<<
+
+[[Was übernimmt er darüber hinaus?->S4 Vater Mehr]]
+
+[[Was würde sich ändern, wenn er mehr übernehmen würde?->S4 Vater Mehr]]
+
+[[Gut, kommen wir zu den Spätschichten.->S3 Dienstag Ablauf]]
+
+
+:: S3 Wer Kümmert {"position":"725,1775","size":"100,100"}
+>>Character1|Neutral<<
+Meistens Lina.
+>>--<<
+>>Bias|GenderedCare<<
+>>--<<
+>>Bias|ParentifiedDaughter<<
+
+[[Und wer noch?->S4 Vater Mehr]]
+
+[[Wie lange ist das schon so?->S3 Seit Wann]]
+
+[[Kommen wir zu den Unterlagen.->S4 Aktenlage Einstieg]]
+
+
+:: S3 Woche {"position":"850,975","size":"100,100"}
+>>Character1|Neutral<<
+Montag und Freitag sind meistens okay. Schwierig werden die Tage mit Spätschicht.
+
+[[Welche Tage sind das aktuell?->S3 Dienstag]]
+
+[[Wie erleben die Kinder diese Tage?->S3 Kinder Erleben]]
+
+[[Was macht diese Tage für Sie besonders schwierig?->S3 Selbst Belastung]]
+
+
+:: S4 Akte Benennen {"position":"900,2875","size":"100,100"}
+>>Character1|Defeated<<
+Ja. Das fühlt sich manchmal wirklich so an.
+>>--<<
+>>Bias|MotherBlame<<
+
+[[Wie ist dieser Eintrag entstanden?->S4 Akte Ursprung]]
+
+[[Wie kam es zu dieser Einschätzung?->S4 Akte Ursprung]]
+
+
+:: S4 Akte Direkt {"position":"825,2700","size":"100,100"}
+>>Character1|Dissatisfied<<
+Ehrlich gesagt hat mich das geärgert.
+
+[[Wissen Sie, worauf sich das bezieht? Ich habe den Satz übernommen, ohne ihn zu prüfen.->S4 Akte Prüfen]]
+
+[[Der Satz beschreibt Sie. Nicht die Bedingungen, unter denen Sie leben. Das finde ich einen wichtigen Unterschied.->S4 Akte Benennen]]
+
+
+:: S4 Akte Erlebnis {"position":"975,3125","size":"100,100"}
+>>Character1|Defeated<<
+Ich habe versucht, die Schicht zu tauschen. Hat nicht geklappt. Jonas war krank und am Ende habe ich den Termin vergessen.
+
+[[Das klingt nach vielen Umständen auf einmal.->S4 Akte Umstände]]
+
+[[Und daraus wurde "wenig strukturiert".->S4 Akte Reflexion]]
+
+
+:: S4 Akte Gelesen {"position":"650,2700","size":"100,100"}
+>>Character1|Dissatisfied<<
+Ja. Dieser Satz mit dem "wenig strukturiert".
+
+[[Das steht tatsächlich dort.->S4 Akte Direkt]]
+
+[[Wissen Sie, worauf sich das bezieht?->S4 Akte Prüfen]]
+
+
+:: S4 Akte Gemeinsam {"position":"475,2700","size":"100,100"}
+>>Character1|Neutral<<
+Den Satz, dass ich "wenig strukturiert" sei, habe ich gesehen.
+
+[[Was denken Sie darüber?->S4 Akte Prüfen]]
+
+[[Ich würde gern verstehen, wie es zu dieser Einschätzung kam.->S4 Akte Prüfen]]
+
+
+:: S4 Akte Prüfen {"position":"650,2875","size":"100,100"}
+>>Character1|Neutral<<
+Es geht vermutlich um einen verpassten Termin vor Monaten. Jonas war krank und ich hatte Spätschicht.
+>>--<<
+>>Bias|SingleVoiceBias<<
+
+[[Das war die Grundlage für den Eintrag?->S4 Akte Ursprung]]
+
+[[Wie haben Sie das damals erlebt?->S4 Akte Erlebnis]]
+
+
+:: S4 Akte Reflexion {"position":"900,3275","size":"100,100"}
+>>Character1|Dissatisfied<<
+Wenn man nur den Satz liest, klingt das so als hätte ich nichts im Griff.
+>>--<<
+>>Bias|SingleVoiceBias<<
+
+[[Dann war die Einschätzung vermutlich nicht ganz unbegründet.->S4 Akte Übernehmen]]
+
+[[Sie machen schon viel und Lina unterstützt Sie auch immer wieder. Haben Sie auch Zeit, um mit ihr über sie selbst zu sprechen?->S5 Lina Interessen]]
+
+
+:: S4 Akte Umstände {"position":"1075,3275","size":"100,100"}
+>>Character1|Dissatisfied<<
+Ja. Aber im Bericht steht davon nichts.
+>>--<<
+>>Bias|IndividualizationOfStructuralIssues<<
+
+[[Kommen solche Rahmenbedingungen in Hilfeplänen oft zu kurz?->S4 Akte Reflexion]]
+
+[[Lassen Sie uns auf Lina schauen. Wie erleben Sie Lina im Moment?->S5 Lina Interessen]]
+
+
+:: S4 Akte Ursprung {"position":"750,3125","size":"100,100"}
+>>Character1|Neutral<<
+Soweit ich weiß, ging es um einen einzigen Termin.
+
+[[Hm, ein einzelner verpasster Termin wurde zu einer Beschreibung Ihrer Person.->S4 Akte Reflexion]]
+
+[[Verstehe. Was ist damals passiert?->S4 Akte Erlebnis]]
+
+
+:: S4 Akte Übernehmen {"position":"900,3425","size":"100,100"}
+>>Character1|Defeated<<
+Vielleicht. Trotzdem fühlt es sich nicht schön an, auf so einen Satz reduziert zu werden.
+>>--<<
+>>Bias|SingleVoiceBias<<
+>>--<<
+>>Bias|MotherBlame<<
+
+[[Wenn so viel organisiert werden muss: Was bekommen Sie von Lina im Moment eigentlich mit?->S5 Lina Interessen]]
+
+[[Das verstehe ich. Lassen Sie uns über Lina sprechen. Was beschäftigt sie Ihrer Einschätzung nach gerade?->S5 Lina Interessen]]
+
+
+:: S4 Aktenlage Einstieg {"position":"650,2550","size":"100,100"}
+>>Character1|Questioning<<
+Steht denn etwas Besonderes in den Unterlagen?
+
+[[In den Unterlagen steht, Sie seien "wenig strukturiert".->S4 Akte Direkt]]
+
+[[Ist Ihnen denn etwas aufgefallen, als Sie die Unterlagen gelesen haben?->S4 Akte Gelesen]]
+
+[[Lassen Sie uns gemeinsam auf die bisherigen Einschätzungen schauen.->S4 Akte Gemeinsam]]
+
+
+:: S4 Vater Angebot {"position":"1075,2375","size":"100,100"}
+>>Character1|Neutral<<
+Nicht direkt. Aber wir reden über vieles auch gar nicht.
+
+[[Woran liegt das?->S4 Vater Skepsis]]
+
+[[Das könnte Thema im Hilfeplangespräch werden.->S4 Vater Gespräch]]
+
+
+:: S4 Vater Gespräch {"position":"1075,2550","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Vielleicht wäre das tatsächlich einen Versuch wert.
+
+[[Dann notiere ich das erst einmal als offenen Punkt.->S4 Aktenlage Einstieg]]
+
+[[Gut. Schauen wir auf die bisherigen Unterlagen.->S4 Aktenlage Einstieg]]
+
+
+:: S4 Vater Mehr {"position":"1000,2225","size":"100,100"}
+>>Character1|Defeated<<
+Unter der Woche eigentlich niemand. Mein Ex-Mann hat die Kinder jedes zweite Wochenende.
+>>--<<
+>>Bias|GenderedCare<<
+
+[[Was könnte Herr Sander zusätzlich übernehmen?->S4 Vater Möglichkeit]]
+
+[[Hat er das schon einmal angeboten?->S4 Vater Angebot]]
+
+[[Gut. Schauen wir in die Akte.->S4 Aktenlage Einstieg]]
+
+
+:: S4 Vater Möglichkeit {"position":"925,2375","size":"100,100"}
+>>Character1|Questioning<<
+Vielleicht Fahrdienste. Vielleicht bei den Hausaufgaben helfen? Ehrlich gesagt weiß ich nicht, ob das funktionieren würde.
+
+[[Was würde dagegensprechen?->S4 Vater Skepsis]]
+
+[[Das könnte man im Hilfeplangespräch besprechen.->S4 Vater Gespräch]]
+
+
+:: S4 Vater Skepsis {"position":"900,2550","size":"100,100"}
+>>Character1|Dissatisfied<<
+Sobald es um die Kinder geht, landet wir schnell wieder bei alten Konflikten.
+
+[[Verstehe. Auch das können wir beim Hilfeplangespräch ansprechen.->S4 Vater Gespräch]]
+
+[[Gut. Kommen wir zur Akte.->S4 Aktenlage Einstieg]]
+
+
+:: S5 Alltag Gespräch {"position":"975,3650","size":"100,100"}
+>>Character1|Neutral<<
+Viel Organisatorisches. Wer wann nach Hause kommt. Ob Jonas an alles gedacht hat. Solche Sachen.
+>>--<<
+>>Bias|AdultCenteredPlanning<<
+
+[[Und worüber spricht Lina von sich aus?->S5 Computer]]
+
+[[Haben Sie mit Lina auch mal über ihre berufliche Zukunft gesprochen?->S5 Eigene Themen]]
+
+
+:: S5 Anerkennung {"position":"1125,4150","size":"100,100"}
+>>Character1|Smiling<<
+Vielleicht. Ich glaube, ich habe mich gefreut, dass es funktioniert hat. Aber ich weiß gar nicht, ob ich ihr wirklich gezeigt habe, wie beeindruckt ich war.
+
+[[Was glauben Sie, würde Lina gerne später mal machen?->S5 Zukunft]]
+
+[[Haben Sie mit Lina über ihre berufliche Perspektive gesprochen?->S5 Zukunft]]
+
+
+:: S5 Beides {"position":"1125,4775","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Das stimmt wahrscheinlich.
+
+[[Gut. Dann schauen wir jetzt auf das Hilfeplangespräch.->S6 Einstieg]]
+
+[[Was von den vielen Themen würden Sie gern im Hilfeplangespräch ansprechen?->S6 Einstieg]]
+
+
+:: S5 Beruf Benannt {"position":"1025,4600","size":"100,100"}
+>>Character1|Questioning<<
+Hm. Ja. Als wäre das Kümmern schon automatisch ihr Weg.
+>>--<<
+>>Bias|OccupationalStereotyping<<
+
+[[Und was ist mit ihrem technischen Interesse?->S5 Verbindung]]
+
+[[Ja, kommen wir zur Vereinbarung.->S6 Einstieg]]
+
+
+:: S5 Computer {"position":"1250,3775","size":"100,100"}
+>>Character1|Smiling<<
+Sie sitzt viel am Computer. Aber nicht nur zum Spielen. Sie baut ständig irgendetwas um oder probiert Sachen aus.
+
+[[Was macht sie da genau?->S5 Website]]
+
+[[Erzählt sie Ihnen davon?->S5 Erzählt]]
+
+
+:: S5 Computer Zukunft {"position":"925,4425","size":"100,100"}
+>>Character1|Smiling<<
+Darüber spricht sie mehr. Aber ich verstehe vieles davon nicht.
+
+[[Was erzählt sie Ihnen denn?->S5 Technik Interesse]]
+
+[[Spannend. Und trotzdem denken Sie zuerst an Berufe mit Menschen.->S5 Verbindung]]
+
+
+:: S5 Eigene Themen {"position":"1375,3650","size":"100,100"}
+>>Character1|Neutral<<
+Ja. Wahrscheinlich schon.
+>>--<<
+>>Bias|AdultCenteredPlanning<<
+
+[[Was macht Lina denn, wenn sie Zeit für sich hat?->S5 Computer]]
+
+[[Haben Sie mit Lina über ihre berufliche Perspektive gesprochen?->S5 Zukunft]]
+
+
+:: S5 Erzieherin {"position":"1050,4425","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Vielleicht. Sie kann jedenfalls gut mit Jonas umgehen.
+>>--<<
+>>Bias|OccupationalStereotyping<<
+
+[[Und die Sache mit den Computern?->S5 Verbindung]]
+
+[[Mir fällt auf, dass wir ihre Sorgearbeit gerade ziemlich schnell in einen Beruf übersetzen.->S5 Beruf Benannt]]
+
+
+:: S5 Erzählt {"position":"1000,4025","size":"100,100"}
+>>Character1|Defeated<<
+Ich habe gesagt, dass das gut aussieht. Aber vermutlich habe ich nicht viel mehr dazu gesagt.
+
+[[Vielleicht war das für sie wichtig.->S5 Anerkennung]]
+
+[[Und beruflich? Hat sie Vorstellungen?->S5 Zukunft]]
+
+
+:: S5 Lina Interessen {"position":"1100,3500","size":"100,100"}
+>>Character1|Defeated<<
+Ehrlich gesagt habe ich schon länger nicht so richtig mit ihr gesprochen. Meistens geht es um Schule oder darum, wer wann wo sein muss.
+
+[[Was macht Lina denn gerne, wenn sie Zeit für sich hat?->S5 Computer]]
+
+[[Worüber reden Sie beide normalerweise?->S5 Alltag Gespräch]]
+
+[[Hat Lina mit Ihnen über berufliche Pläne gesprochen?->S5 Zukunft]]
+
+
+:: S5 Menschen {"position":"775,4425","size":"100,100"}
+>>Character1|Questioning<<
+Das weiß ich ehrlich gesagt gar nicht so genau. Ich dachte, weil sie ja gut mit Jonas zurecht kommt, eher etwas in Richtung Erzieherin?
+
+[[Mir fällt auf, dass wir ihre Sorgearbeit gerade ziemlich schnell in einen Beruf übersetzen.->S5 Beruf Benannt]]
+
+[[Vielleicht sollten wir sie selbst fragen.->S5 Selbst Fragen]]
+
+
+:: S5 Selbst Fragen {"position":"725,4775","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Ja. Wahrscheinlich sollte ich sie öfter selbst fragen, statt Vermutungen anzustellen.
+
+[[Gut. Dann nehmen wir das mit ins Hilfeplangespräch.->S6 Einstieg]]
+
+[[Dann kommen wir zur Vorbereitung des Hilfeplangesprächs.->S6 Einstieg]]
+
+
+:: S5 Technik Benannt {"position":"1250,4025","size":"100,100"}
+>>Character1|Smiling<<
+Ich war schon beeindruckt. Sie bringt sich das alles allein bei.
+
+[[Haben Sie ihr das auch gesagt?->S5 Erzählt]]
+
+[[Was möchte sie später einmal machen?->S5 Zukunft]]
+
+
+:: S5 Technik Interesse {"position":"825,4600","size":"100,100"}
+>>Character1|Neutral<<
+Von Programmen. Webseiten. Irgendwelchen Projekten.
+
+[[Klingt nach einem echten Interesse. Vielleicht kann das Soziale und ihr Interesse am Programmieren miteinander verbunden werden.->S5 Verbindung]]
+
+[[Vielleicht sollten wir sie selbst fragen, was sie gerne mal machen möchte.->S5 Selbst Fragen]]
+
+
+:: S5 Verbindung {"position":"900,4775","size":"100,100"}
+>>Character1|Smiling<<
+Eigentlich passt beides nicht schlecht zusammen. Vielleicht denkt sie selbst viel weniger in solchen Schubladen.
+
+[[Genau, es kann bestimmt auch gut miteinander kombiniert werden.->S5 Beides]]
+
+[[Vielleicht sollten wir Lina dazu selbst fragen.->S5 Selbst Fragen]]
+
+
+:: S5 Website {"position":"1250,3900","size":"100,100"}
+>>Character1|Smiling<<
+Vor ein paar Monaten hat sie die Website von einem Sportverein repariert. Irgendetwas mit Menüs und Ansichten auf dem Handy.
+
+[[Das klingt nach ziemlich viel technischem Verständnis.->S5 Technik Benannt]]
+
+[[Und wie haben Sie darauf reagiert?->S5 Erzählt]]
+
+
+:: S5 Zukunft {"position":"950,4250","size":"100,100"}
+>>Character1|Neutral<<
+Ich habe da nicht wirklich mit ihr darüber gesprochen. Manchmal sagt sie, etwas mit Menschen. Dann wieder etwas mit Computern. Etwas Soziales kann ich mir gut bei ihr vorstellen.
+
+[[Was heißt für Lina "etwas mit Menschen"?->S5 Menschen]]
+
+[[Was heißt für Lina "etwas mit Computern"?->S5 Computer Zukunft]]
+
+[[Erzieherin vielleicht? Das würde doch zu ihr passen.->S5 Erzieherin]]
+
+
+:: S6 Aufgaben Benannt {"position":"1250,5100","size":"100,100"}
+>>Character1|Defeated<<
+Na ja. Irgendwer muss es ja machen.
+
+[[Ja, aber die Person muss nicht immer Sie sein. Sie sind nicht das einzige Elternteil.->S6 Benannt Vertiefung]]
+
+[[Würden Sie dem zustimmen?->S6 Benannt Reaktion]]
+
+
+:: S6 Aufgaben Mutter {"position":"825,5225","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Das klingt vernünftig.
+
+[[Dann notiere ich: Nachhilfe organisieren und Kontakt zur Klassenlehrerin halten.->S6 Routine Vertiefung]]
+
+[[Und wer übernimmt den Rest?->S6 Aufgaben Vater]]
+
+
+:: S6 Aufgaben Vater {"position":"975,5225","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Es wäre tatsächlich gut, wenn wir festhalten würden, was mein Ex-Mann machen könnte, um mir etwas an Arbeit abzunehmen.
+
+[[Was genau könnte das sein?->S6 Vater Konkret]]
+
+[[Wäre das realistisch?->S6 Vater Zweifel]]
+
+
+:: S6 Benannt Gefühl {"position":"1225,5500","size":"100,100"}
+>>Character1|Questioning<<
+Ehrlich gesagt etwas seltsam. Als hätte ich manches einfach als gegeben betrachtet.
+>>--<<
+>>Bias|GenderedCare<<
+
+[[Das höre ich öfter.->S7 Abschluss Benannt]]
+
+[[Dann sollten wir das festhalten.->S7 Abschluss Benannt]]
+
+
+:: S6 Benannt Reaktion {"position":"1325,5275","size":"100,100"}
+>>Character1|Neutral<<
+Ich habe mich nie groß darüber beschwert.
+
+[[Darum geht es nicht unbedingt. Sie müssen nicht alles alleine machen.->S6 Benannt Vertiefung]]
+
+[[Trotzdem fällt es auf. Das Hilfeplangespräch ist auch dafür da, um die Arbeit zwischen den Eltern besser aufzuteilen.->S6 Benannt Vertiefung]]
+
+
+:: S6 Benannt Vertiefung {"position":"1175,5275","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Das stimmt schon. Die Kinder sind größtenteils bei mir und so bin ich natürlich auch häufig die erste Ansprechperson.
+>>--<<
+>>Bias|GenderedCare<<
+
+[[Was macht das mit Ihnen, das so auszusprechen?->S6 Benannt Gefühl]]
+
+[[Wir könnten über die Aufgaben, die Herr Sander übernehmen könnte, sprechen.->S6 Aufgaben Vater]]
+
+
+:: S6 Einstieg {"position":"975,4950","size":"100,100"}
+>>Character1|Questioning<<
+Ehrlich gesagt, habe ich das Gefühl, dass es so viele Themen sind, dass ich nicht ganz weiß, was alles konkret im Hilfeplan stehen soll.
+
+[[Sie könnten Jonas bei der Nachhilfe anmelden und Kontakt zur Klassenlehrerin halten.->S6 Aufgaben Mutter]]
+
+[[Wir könnten über die Aufgaben, die Herr Sander übernehmen könnte, sprechen.->S6 Aufgaben Vater]]
+
+[[Nun, mir fällt auf, dass bisher fast alle Aufgaben bei Ihnen landen.->S6 Aufgaben Benannt]]
+
+
+:: S6 Routine Vertiefung {"position":"750,5400","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Das klingt gut.
+>>--<<
+>>Bias|GenderedCare<<
+
+[[Gut. Konkretes können wir im Hilfeplangespräch besprechen.->S7 Abschluss Routine]]
+
+[[Dann halte ich das so fest.->Ende A]]
+
+
+:: S6 Vater Konkret {"position":"900,5400","size":"100,100"}
+>>Character1|Neutral<<
+Vielleicht Fahrten zum Training. Oder einzelne Termine in der Schule.
+
+[[Wie würde sich dadurch Ihr Alltag verändern?->S6 Vater Wirkung]]
+
+[[Dann sollten wir das im Hilfeplangespräch besprechen.->S7 Abschluss Verschoben]]
+
+
+:: S6 Vater Wirkung {"position":"900,5650","size":"100,100"}
+>>Character1|Smiling<<
+Das nimmt mir natürlich Arbeit ab und auch Lina müsste weniger Aufgaben übernehmen, wenn ich Spätschichten habe.
+>>--<<
+>>Bias|GenderedCare<<
+>>--<<
+>>Bias|ParentifiedDaughter<<
+
+[[Das klingt nach einem wichtigen Punkt.->S7 Abschluss Verschoben]]
+
+[[Was würde Lina dazu sagen?->S7 Lina Beteiligung]]
+
+
+:: S6 Vater Zweifel {"position":"1025,5400","size":"100,100"}
+>>Character1|Questioning<<
+Schwer zu sagen. Wir haben das lange nicht ausprobiert.
+
+[[Was müsste passieren, damit es ausprobiert werden kann?->S6 Vater Wirkung]]
+
+[[Dann nehmen wir genau diese Frage mit.->S7 Abschluss Verschoben]]
+
+
+:: S7 Abschluss Benannt {"position":"1225,5800","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Ich habe das noch nie so betrachtet.
+
+[[Manches wirkt selbstverständlich, bis man darüber spricht.->Ende C]]
+
+[[Dann greifen wir das im Hilfeplangespräch wieder auf.->Ende C]]
+
+
+:: S7 Abschluss Routine {"position":"725,5650","size":"100,100"}
+>>Character1|Smiling<<
+Okay, danke dass Sie heute da waren.
+
+[[Danke Ihnen für das Gespräch.->Ende A]]
+
+[[Gerne. Wir sehen uns dann in zwei Wochen.->Ende A]]
+
+
+:: S7 Abschluss Verschoben {"position":"1075,5800","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Ja, natürlich. Das ist auch ihre eigene Perspektive.
+
+[[Genau dafür ist das Hilfeplangespräch da.->Ende B]]
+
+[[Dann nehmen wir das mit.->Ende B]]
+
+
+:: S7 Lina Beteiligung {"position":"900,5800","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Ich kann mir vorstellen, dass sie das auch entlastet. Ich verlasse mich ja schon viel auf sie.
+
+[[Wir können Lina natürlich auch selbst fragen.->S7 Abschluss Verschoben]]
+
+[[Lassen Sie uns das doch beim Hilfeplangespräch thematisieren.->Ende B]]

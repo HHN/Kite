@@ -533,7 +533,7 @@ MonoBehaviour:
   dataPrivacyToggle: {fileID: 36329545836619857}
   novelLoader: {fileID: 1260174985}
   versionInfo: {fileID: 706995368}
-  startButtonPanel: {fileID: 0}
+  startButtonPanel: {fileID: 257948492}
   startButton: {fileID: 1970284620}
   background: {fileID: 0}
 --- !u!4 &110977352

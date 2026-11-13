@@ -1,0 +1,13 @@
+{
+  "idNumberOfNovel": 4,
+  "titleOfNovel": "Hilfeplanung Mutter",
+  "descriptionOfNovel": "Es ist ein vorbereitendes Einzelgespräch einer Fachkraft des Jugendamts mit Frau Sander in ihrer Küche. Sie arbeitet Vollzeit im Schichtdienst und hat sich für den Termin freigenommen.",
+  "contextForPrompt": "Es ist ein vorbereitendes Einzelgespräch einer Fachkraft des Jugendamts mit Frau Sander. Anwesend sind ausschließlich Frau Sander und die Fachkraft; sie sitzen in der Küche der Familie Sander, Frau Sander hat sich für den Termin von ihrer Arbeit im Schichtdienst freigenommen. Die Fachkraft hat den Fall vor drei Wochen übernommen; für die Familie Sander läuft seit zehn Monaten eine Familienhilfe, in zwei Wochen wird im Hilfeplangespräch entschieden, wie es weitergeht. Frau Sander arbeitet Vollzeit im Schichtdienst, Lina (15) und Jonas (12) leben bei ihr; der Vater ist getrennt und hat die Kinder jedes zweite Wochenende. Die Fachkraft möchte erfahren, wie Frau Sander die aktuelle Situation erlebt, welche Unterstützung sie erfährt und welche Themen aus ihrer Sicht für die weitere Hilfeplanung wichtig sind.",
+  "startTalkingPartnerExpression": "NeutralRelaxed",
+  "talkingPartner01" : "Mutter",
+  "talkingPartner02" : "",
+  "talkingPartner03" : "",
+  "isKiteNovel": true,
+  "novelColor": "#3B1A5C",
+  "novelFrameColor": "#7B3FA0"
+}

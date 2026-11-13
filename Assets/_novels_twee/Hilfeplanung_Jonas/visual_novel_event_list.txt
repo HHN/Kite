@@ -1,0 +1,453 @@
+:: StoryTitle
+Hilfeplanung - Jonas
+
+
+:: StoryData
+{
+  "ifid": "06D61F23-6468-4D45-AC2A-6137BE211D68",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "start": "Anfang",
+  "zoom": 0.6
+}
+
+
+:: Anfang {"position":"1350,225","size":"100,100"}
+>>Info<<
+Jonas ist zwölf und geht in die sechste Klasse. Seine Klassenlehrerin hat angerufen: Er stört den Unterricht, zweimal gab es Rangeleien auf dem Pausenhof. Seit zehn Monaten läuft bei der Familie Sander eine Familienhilfe, in zwei Wochen ist das Hilfeplangespräch. Jonas lebt mit seiner Schwester Lina (15) bei der Mutter, die im Schichtdienst arbeitet. Du hast ihn zu einem Gespräch gebeten. Ihr sitzt in einem Besprechungsraum im Jugendamt. Er sitzt dir gegenüber, die Kapuze auf, und sieht auf den Tisch.
+
+[[Weiter->Einstieg]]
+
+
+:: Einstieg {"position":"1350,375","size":"100,100"}
+>>Character1|Neutral<<
+Hi.
+
+[[Hallo Jonas. Deine Klassenlehrerin hat mich angerufen. Sie sagt, du störst den Unterricht.->S1 Fremdbeschreibung]]
+
+[[Hallo Jonas. Weißt du, warum du hier bist?->S1 Weißt Du]]
+
+[[Hallo, Jonas, stimmt's? Ich kenne dich noch gar nicht. Erzähl mir mal etwas von dir.->S1 Kennenlernen]]
+
+
+:: Ende A {"position":"1125,2975","size":"100,100"}
+>>Character1|Neutral<<
+Okay. War's das?
+>>--<<
+>>Player<<
+Das war ein gutes, kurzes Gespräch. Danke, dass du da warst.
+>>--<<
+>>Character1|Neutral<<
+Kann ich jetzt gehen?
+>>--<<
+>>Player<<
+Ja. Bis zum Hilfeplangespräch.
+>>--<<
+>>Character1|NeutralRelaxed<<
+Ja. Tschüss.
+>>--<<
+>>End<<
+
+
+:: Ende B {"position":"1325,2975","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Okay. Dann bis zum nächsten Mal.
+>>--<<
+>>Player<<
+Bis dann. Und danke, dass du mir was erzählt hast.
+>>--<<
+>>Character1|Smiling<<
+Hm. Ja. Ist okay. Tschüss.
+>>--<<
+>>End<<
+
+
+:: Ende C {"position":"1500,2975","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Okay. Ich muss da erstmal darüber nachdenken.
+>>--<<
+>>Player<<
+Das ist in Ordnung. 
+>>--<<
+>>Character1|NeutralRelaxed<<
+Okay. Tschüss.
+>>--<<
+>>Player<<
+Tschüss.
+>>--<<
+>>Bias|IndividualizationOfStructuralIssues<<
+>>--<<
+>>End<<
+
+
+:: Ende D {"position":"800,2975","size":"100,100"}
+>>Character1|Dissatisfied<<
+Ich hab keinen Bock mehr. Ihr entscheidet eh alles.
+>>--<<
+>>Player<<
+Jonas, warte. Bitte.
+>>--<<
+>>Character1|Dissatisfied<<
+Lass mich in Ruhe!
+>>--<<
+>>End<<
+
+
+:: Ende E {"position":"975,2975","size":"100,100"}
+>>Character1|Defeated<<
+Also bin ich schuld, dass Mama nicht mehr kann. Ich ... ich will nach Hause.
+>>--<<
+>>Player<<
+Jonas, das habe ich nicht gesagt. Hier, ein Taschentuch.
+>>--<<
+>>Character1|Defeated<<
+Ich will nach Hause! Und ruf nicht Mama an, die hat schon genug.
+>>--<<
+>>Player<<
+Okay. Wir machen heute Schluss, und ich melde mich bei euch.
+>>--<<
+>>End<<
+
+
+:: S1 Fremdbeschreibung {"position":"1175,550","size":"100,100"}
+>>Character1|Dissatisfied<<
+Die hat's halt auf mich abgesehen. Ich hab nix gemacht, was die anderen nicht auch machen. Keine Ahnung. Kann ich wieder gehen? Ich brauch das hier nicht.
+>>--<<
+>>Bias|StereotypicalInterpretationOfMaleBehavior<<
+
+[[Wenn du nicht reden willst, kann ich dir auch nicht helfen.->S2 Mitgehend]]
+
+[[Du musst nichts sagen. Ich erzähl erst mal, was ich weiß, und du sagst mir, was davon stimmt.->S2 Prüfend]]
+
+[[Dann machen wir es kurz: drei Regeln für die Schule, und du hältst dich dran.->S2 Übergehend]]
+
+
+:: S1 Kennenlernen {"position":"1525,550","size":"100,100"}
+>>Character1|Dissatisfied<<
+Was denn? Ich spiel Fußball. Dienstags ist Training. Mehr gibt's da nicht. Kann ich jetzt wieder gehen? Ich brauch das hier nicht.
+
+[[Wenn du nicht reden willst, kann ich dir auch nicht helfen.->S2 Mitgehend]]
+
+[[Du musst nichts sagen. Ich erzähl erst mal, was ich weiß, und du sagst mir, was davon stimmt.->S2 Prüfend]]
+
+[[Dann machen wir es kurz: drei Regeln für die Schule, und du hältst dich dran.->S2 Übergehend]]
+
+
+:: S1 Weißt Du {"position":"1350,550","size":"100,100"}
+>>Character1|Dissatisfied<<
+Weil ich Mist gebaut hab, oder? Hab ich ja auch. Zweimal. Aber das war nicht nur ich. Egal. Kann ich wieder gehen? Ich brauch das hier nicht.
+
+[[Wenn du nicht reden willst, kann ich dir auch nicht helfen.->S2 Mitgehend]]
+
+[[Du musst nichts sagen. Ich erzähl erst mal, was ich weiß, und du sagst mir, was davon stimmt.->S2 Prüfend]]
+
+[[Dann machen wir es kurz: drei Regeln für die Schule, und du hältst dich dran.->S2 Übergehend]]
+
+
+:: S2 Druck {"position":"1150,900","size":"100,100"}
+>>Character1|Dissatisfied<<
+Dann entscheiden die halt. Ist mir doch egal. Ich geh jetzt.
+>>--<<
+>>Bias|AdultCenteredPlanning<<
+
+[[Setz dich bitte wieder hin. So läuft das hier nicht.->Ende D]]
+
+[[Dann sprechen wir eben mit deiner Mutter allein.->Ende D]]
+
+[[Warte. Ich möchte gerne wissen, was passiert ist, und nicht über dich bestimmen.->S2 Druck Reparatur]]
+
+
+:: S2 Druck Reparatur {"position":"1150,1050","size":"100,100"}
+>>Character1|Questioning<<
+Hm. Echt jetzt? Sonst wollen alle immer nur wissen, was ich falsch gemacht hab.
+
+[[Echt. Du musst nicht alles erzählen. Fang an, wo du willst. Was ist auf dem Pausenhof passiert?->S3 Nerven]]
+
+[[Ja, wirklich. Wie läuft es in der Klasse mit den anderen?->S3 Nerven]]
+
+
+:: S2 Mitgehend {"position":"1175,750","size":"100,100"}
+>>Character1|Dissatisfied<<
+Hab ich ja auch nicht gesagt, dass ich Hilfe brauch. Ich komm alleine klar.
+>>--<<
+>>Bias|StereotypicalInterpretationOfMaleBehavior<<
+>>--<<
+>>Bias|StereotypicalInterpretationOfMaleBehavior<<
+
+[[Dann erzähl mir wenigstens, was auf dem Pausenhof passiert ist.->S3 Nerven]]
+
+[[Wenn du nichts sagst, entscheiden eben andere, was mit dir passiert.->S2 Druck]]
+
+
+:: S2 Prüfend {"position":"1525,750","size":"100,100"}
+>>Character1|Questioning<<
+Und wenn's nicht stimmt?
+
+[[Dann sagst du das. Deine Lehrerin hat erzählt, dass es zweimal Streit auf dem Pausenhof gab. Was ist da passiert?->S3 Nerven]]
+
+[[Dann sagst du das. Zum Beispiel: Seit einer Weile kommt jemand von der Familienhilfe zu euch nach Hause. Weißt du, wozu das gut sein soll?->S2 Verfahren]]
+
+
+:: S2 Regeln {"position":"1350,900","size":"100,100"}
+>>Character1|Defeated<<
+Okay, okay. Mach ich. Wenn die mich einfach in Ruhe lassen würden.
+
+[[Wer lässt dich denn nicht in Ruhe?->S3 Nerven]]
+
+[[Gut. Dann sind wir uns einig. Wie läuft es sonst in der Klasse?->S3 Nerven]]
+
+
+:: S2 Verfahren {"position":"1525,900","size":"100,100"}
+>>Character1|Dissatisfied<<
+Die Frau von der Familienhilfe? Die fragt immer nur, ob ich Hausaufgaben gemacht habe. Mit Mama redet die richtig. Mit mir nicht.
+
+[[Dann sage ich dir, worum es geht: Eure Familie bekommt Unterstützung, und in zwei Wochen sitzen alle zusammen und besprechen, wie es weitergeht. Du darfst mitreden. Wie läuft es denn mit den anderen in deiner Klasse?->S3 Nerven]]
+
+[[Das hätte dir schon früher jemand erklären müssen. Wie läuft es mit den anderen in deiner Klasse?->S3 Nerven]]
+
+
+:: S2 Übergehend {"position":"1350,750","size":"100,100"}
+>>Character1|Questioning<<
+Und wenn ich mich nicht dran halte?
+>>--<<
+>>Bias|AdultCenteredPlanning<<
+
+[[Dann schauen wir weiter. Erst mal die Regeln: nicht dazwischenreden, keine Rangeleien, Hausaufgaben vollständig erledigen.->S2 Regeln]]
+
+[[Dann muss ich mit deiner Mutter und deiner Lehrerin überlegen, was als Nächstes passiert.->S2 Druck]]
+
+
+:: S3 Benennend {"position":"1500,1250","size":"100,100"}
+>>Character1|Questioning<<
+Hä? Mir geht's gut. Wieso is das jetzt wichtig?
+>>--<<
+>>Bias|StereotypicalInterpretationOfMaleBehavior<<
+
+[[Weil hinter "die nerven halt" oft mehr steckt als nerven.->S3 Benennend Frage]]
+
+[[Lassen wir die Vorfälle erst mal. Wie läuft es eigentlich mit deiner Schwester Lina?->S4 Einstieg]]
+
+
+:: S3 Benennend Frage {"position":"1575,1675","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Hm. Lina fragt das manchmal. Ob alles okay ist. Sonst fragt das keiner.
+
+[[Und wie geht es Lina eigentlich selbst?->S4 Einstieg]]
+
+[[Es ist gut, dass sie fragt. Erzähl mir mehr von ihr.->S4 Einstieg]]
+
+
+:: S3 Mitgehend {"position":"1100,1250","size":"100,100"}
+>>Character1|Dissatisfied<<
+Ja. Okay. Hab ich eh nicht vor. Aber die Lehrerin sieht immer nur mich.
+>>--<<
+>>Bias|StereotypicalInterpretationOfMaleBehavior<<
+
+[[Was meinst du damit, sie sieht immer nur dich?->S3 Sieht Nur Mich]]
+
+[[Und wie läuft es eigentlich mit deiner Schwester Lina?->S4 Einstieg]]
+
+
+:: S3 Nerven {"position":"1325,1150","size":"100,100"}
+>>Character1|Dissatisfied<<
+Die nerven halt.
+
+[[Gut, dann vereinbaren wir: nicht mehr zurückhauen.->S3 Mitgehend]]
+
+[[Wer nervt, und was passiert direkt davor?->S3 Prüfend]]
+
+[[Ich merke gerade, ich frage nur nach Regeln und Vorfällen, statt zu fragen, wie es dir geht.->S3 Benennend]]
+
+
+:: S3 Pause {"position":"1400,1675","size":"100,100"}
+>>Character1|Neutral<<
+Geht schon. Die sagen das nur, weil Mama oft arbeitet. Das ist doch nicht schlimm, dass sie arbeitet.
+
+[[Nein, das ist nicht schlimm. Deine Mutter arbeitet, damit es reicht. Und wie ist das für Lina?->S4 Einstieg]]
+
+[[Danke, dass du mir das erzählst. Wie war das eigentlich, als du den Noah geschubst hast?->S3 Prüfend Schubsen]]
+
+
+:: S3 Prüfend {"position":"1325,1400","size":"100,100"}
+>>Character1|Dissatisfied<<
+Der Noah. Und der Elias. Die machen dauernd Sprüche. Und dann sag ich was zurück, und dann ... keine Ahnung.
+
+[[Was sagen die denn?->S3 Prüfend Sagen]]
+
+[[Und was hast du dann gemacht?->S3 Prüfend Schubsen]]
+
+
+:: S3 Prüfend Sagen {"position":"1400,1550","size":"100,100"}
+>>Character1|Defeated<<
+Dass bei uns eh nie jemand zu Hause ist. Und dass Lina meine Mama ist, weil sie mich immer abholt. Ich heul nicht, okay? Das ist mir egal, was die sagen.
+
+[[Und wie ist das für Lina, wenn sie dich abholt und die so etwas sagen?->S4 Einstieg]]
+
+[[Das klingt, als hätte dich das ziemlich getroffen. Wir können kurz Pause machen.->S3 Pause]]
+
+
+:: S3 Prüfend Schubsen {"position":"1225,1675","size":"100,100"}
+>>Character1|Dissatisfied<<
+Ich hab den Noah geschubst. Nur geschubst! Und dann hat die Aufsicht nur mich gesehen. Der Noah kriegt nie Stress.
+
+[[Danke, dass du das so ehrlich sagst. Wie läuft es eigentlich mit Lina?->S4 Einstieg]]
+
+[[Das klingt ungerecht, und ich nehme das ernst. Wie ist es zu Hause, bei dir und deiner Schwester Lina?->S4 Einstieg]]
+
+
+:: S3 Sieht Nur Mich {"position":"1100,1400","size":"100,100"}
+>>Character1|Dissatisfied<<
+Wenn der Noah quatscht, sagt sie nix. Bei mir kommt sofort "Jonas!". Und bei Streit bin ich der, der in der Pause stehen muss.
+
+[[Wer ist Noah, und was passiert zwischen euch?->S3 Prüfend]]
+
+[[Das klingt ungerecht. Und wie läuft es zu Hause mit deiner Schwester Lina?->S4 Einstieg]]
+
+
+:: S4 Benennend {"position":"1500,2025","size":"100,100"}
+>>Character1|Defeated<<
+Hm. Keine Ahnung. Is ja auch egal.
+>>--<<
+>>Bias|InternalizingOverlooked<<
+
+[[Das ist nicht egal. Magst du mir erzählen, was Lina so für dich macht?->S4 Prüfend Lina]]
+
+[[Das muss heute auch nicht alles raus. Dann schauen wir jetzt, wie es weitergehen kann.->S5 Einstieg]]
+
+
+:: S4 Einstieg {"position":"1325,1875","size":"100,100"}
+>>Character1|Defeated<<
+Lina? Die macht ja eh alles richtig. Die kriegt nie Stress. Um die muss sich niemand Sorgen machen.
+
+[[Deine Schwester kommt gut klar, das stimmt.->S4 Mitgehend]]
+
+[[Wie ist das für dich?->S4 Prüfend]]
+
+[[Bei ihr fällt nur nichts auf. Das ist nicht dasselbe wie "alles richtig".->S4 Benennend]]
+
+
+:: S4 Mitgehend {"position":"1150,2025","size":"100,100"}
+>>Character1|Defeated<<
+Siehste. Lina hat die Einsen, ich hab den Ärger. So ist das bei uns.
+>>--<<
+>>Bias|IndividualizationOfStructuralIssues<<
+
+[[Wie ist das für dich, wenn alle das so sehen?->S4 Prüfend]]
+
+[[Dann schauen wir jetzt, was wir für dich tun können.->S5 Einstieg]]
+
+
+:: S4 Prüfend {"position":"1325,2025","size":"100,100"}
+>>Character1|Defeated<<
+Weiß nicht. Alle sagen immer, wie toll sie ist. Und sie ist ja auch nett. Das ist das Blöde.
+
+[[Was macht Lina denn, wenn sie nett zu dir ist?->S4 Prüfend Lina]]
+
+[[Verstehe. Dann schauen wir jetzt, wie es für dich weitergehen kann.->S5 Einstieg]]
+
+
+:: S4 Prüfend Lina {"position":"1425,2175","size":"100,100"}
+>>Character1|Smiling<<
+Dienstags macht sie Abendessen. Sie holt mich vom Training ab. Und sie fragt, ob ich meine Sachen habe. Wenn sie das nicht machen würde, würd ich's vergessen. Mama ist dann ja auf Arbeit.
+
+[[Das ist viel für eine Fünfzehnjährige. Das nehme ich mit, und ich sage dir vorher, was ich davon weitergebe. Jetzt schauen wir, wie es für dich weitergehen kann.->S5 Einstieg]]
+
+[[Danke, das hilft mir. Dann schauen wir jetzt, wie es weitergehen kann.->S5 Einstieg]]
+
+
+:: S5 Bedarf {"position":"1250,2450","size":"100,100"}
+>>Character1|Questioning<<
+Kleine Gruppe? Mit wem denn? Und muss ich da jeden Tag hin?
+
+[[Das ist eine Gruppe mit anderen Kindern in deinem Alter, nachmittags nach der Schule, mit Hilfe bei den Hausaufgaben. Wie oft du hingehst, klären wir mit dir. Was müsste da so sein, damit es für dich okay wäre?->S5 Bedarf Wünsche]]
+
+[[Bevor ich dir das beantworte: Mir ist aufgefallen, dass du oft mit Lina verglichen wirst. Das ist weder für dich noch für sie fair.->S6 Benannt]]
+
+[[Das klären wir später. Hauptsache, wir finden etwas, das in der Schule für Ruhe sorgt.->S6 Routine]]
+
+
+:: S5 Bedarf Wünsche {"position":"1250,2600","size":"100,100"}
+>>Character1|Defeated<<
+Dass ich nicht nur lernen muss. Und dass Fußball nicht ausfällt. Und dass nicht wieder alle denken, ich bin der Problemfall. Ach, egal.
+
+[[Das nehme ich so mit. Wir schauen uns eine Gruppe gemeinsam an, bevor du dich entscheidest.->S6 Verschoben]]
+
+[[Ich glaube, du wirst oft mit Lina verglichen. Das ist weder für dich noch für sie fair.->S6 Benannt]]
+
+[[Gut. Das schreibe ich auf. Mehr brauche ich heute nicht.->S6 Routine]]
+
+
+:: S5 Einstieg {"position":"1250,2300","size":"100,100"}
+>>Character1|Questioning<<
+Und? Was passiert jetzt?
+>>--<<
+>>Player<<
+Ich muss in zwei Wochen mit deiner Mutter, deiner Lehrerin und allen anderen besprechen, wie es weitergeht. Ich überlege schon die ganze Zeit, was dir und deiner Familie helfen könnte.
+
+[[Ich schlage eine Tagesgruppe vor. Dann ist deine Mutter nachmittags entlastet.->S5 Entlastung]]
+
+[[Ich schlage eine Tagesgruppe vor, weil du dort in einer kleinen Gruppe lernen kannst. Was hältst du davon?->S5 Bedarf]]
+
+[[Erst mal rede ich noch mit deiner Lehrerin und danach wieder mit dir.->S5 Lehrerin]]
+
+
+:: S5 Entlastung {"position":"1100,2450","size":"100,100"}
+>>Character1|Defeated<<
+Tagesgruppe? Und das wegen Mama? Also bin ich das Problem. Mama hat eh schon genug.
+>>--<<
+>>Bias|AdultCenteredPlanning<<
+>>--<<
+>>Bias|GenderedCare<<
+
+[[Ja, für deine Mutter ist es gerade sehr viel. Das würde sie entlasten.->Ende E]]
+
+[[Das war ungeschickt von mir. Es geht nicht um deine Mutter, sondern um dich. In einer kleinen Gruppe könntest du Hilfe bei den Hausaufgaben bekommen und etwas mit anderen Kindern machen. Was meinst du?->S5 Bedarf]]
+
+[[Das besprechen wir alles im Hilfeplangespräch. Wichtig ist erst mal, dass es in der Schule ruhiger wird. Dafür machen wir klare Absprachen.->S6 Routine]]
+
+
+:: S5 Lehrerin {"position":"1400,2450","size":"100,100"}
+>>Character1|Questioning<<
+Und was sagt die dann? Dass ich schuld bin?
+
+[[Ich frage sie auch, was vor den Rangeleien passiert, nicht nur, was danach passiert.->S5 Lehrerin Vorher]]
+
+[[Mir fällt auf, dass bei dir viel darauf geschaut wird, was auffällt, und bei Lina darauf, was nicht auffällt. Das ist nicht fair.->S6 Benannt]]
+
+[[Das weiß ich noch nicht. Bis dahin machen wir klare Absprachen für die Schule.->S6 Routine]]
+
+
+:: S5 Lehrerin Vorher {"position":"1400,2600","size":"100,100"}
+>>Character1|Smiling<<
+Vorher? Echt? Das fragt sonst keiner. Die anderen sagen halt Sachen. Aber nie, wenn die Aufsicht kommt.
+
+[[Dann ist das ein Punkt für das Hilfeplangespräch: deine Sicht, nicht nur die der Lehrerin.->S6 Verschoben]]
+
+[[Ich glaube, du wirst oft mit Lina verglichen. Das ist weder für dich noch für sie fair.->S6 Benannt]]
+
+
+:: S6 Benannt {"position":"1500,2800","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Hm. Ja, schon.
+
+[[Du musst dazu nichts sagen. Du kannst jederzeit darauf zurückkommen.->Ende C]]
+
+[[Ich wollte es nur ausgesprochen haben. Wir sehen uns beim nächsten Mal.->Ende C]]
+
+
+:: S6 Routine {"position":"1125,2800","size":"100,100"}
+>>Character1|NeutralRelaxed<<
+Okay. Ist gut.
+
+[[Gut. Dann halte ich das so fest.->Ende A]]
+
+[[Gut. Dann haben wir das.->Ende A]]
+
+
+:: S6 Verschoben {"position":"1325,2800","size":"100,100"}
+>>Character1|Smiling<<
+Okay. Und wir reden nochmal, bevor die anderen dabei sind? Nur wir zwei?
+
+[[Ja. Vor dem Hilfeplangespräch. Und ich sage dir vorher, was ich davon weitergebe.->Ende B]]
+
+[[Ja, ich melde mich bei deiner Mutter, und wir finden einen Termin.->Ende B]]
