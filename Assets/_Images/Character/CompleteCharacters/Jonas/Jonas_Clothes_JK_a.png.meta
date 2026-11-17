@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: d9358154d263e074791abf904e2c4a93
+guid: 6796cfcbee1d1024f875be27fa77d3ce
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -309355619692496643
-    second: Jonas_Hair_1_0
+      213: 1165524542330337035
+    second: Jonas_Clothes_JK_a_0
+  - first:
+      213: -7308533339689888433
+    second: Jonas_Clothes_JK_a_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jonas_Hair_1_0
+      name: Jonas_Clothes_JK_a_0
       rect:
         serializedVersion: 2
-        x: 307
-        y: 2352
-        width: 416
-        height: 327
+        x: 56
+        y: 1359
+        width: 834
+        height: 1309
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +144,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: df835f2f3b2f4bbf0800000000000000
-      internalID: -309355619692496643
+      spriteID: b0779926566cc2010800000000000000
+      internalID: 1165524542330337035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jonas_Clothes_JK_a_1
+      rect:
+        serializedVersion: 2
+        x: 905
+        y: 1297
+        width: 15
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f455faa56afd29a90800000000000000
+      internalID: -7308533339689888433
       vertices: []
       indices: 
       edges: []
@@ -161,7 +186,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Jonas_Hair_1_0: -309355619692496643
+      Jonas_Clothes_JK_a_0: 1165524542330337035
+      Jonas_Clothes_JK_a_1: -7308533339689888433
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
