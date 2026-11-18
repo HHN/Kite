@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Assets._Scripts;
 using Assets._Scripts._Mappings;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Novel.VisualNovelFormatter;
