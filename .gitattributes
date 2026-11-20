@@ -61,3 +61,4 @@
 *.dll filter=lfs diff=lfs merge=lfs -text
 StandAlone/StandAloneKITE2/Honorar/pathOutput.txt filter=lfs diff=lfs merge=lfs -text
 StandAlone/StandAloneKITE2/Presse/pathOutput.txt filter=lfs diff=lfs merge=lfs -text
+*.svg filter=lfs diff=lfs merge=lfs -text
